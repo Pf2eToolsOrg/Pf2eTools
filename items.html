@@ -64,7 +64,7 @@ footer {
 		font-size: 0.8em;
 	}
 	
-	ul.itemlist li span {
+	ul.itemlist li span.source, ul.itemlist li span.type {
 		font-size: 0.8em;
 		margin-left: 1em;
 		display: none;
@@ -156,7 +156,7 @@ footer {
 		color: black;
 	}
 	
-	span.name {
+	table#stats span.name {
 		font-weight: bold;
 	}
 	 
@@ -183,6 +183,7 @@ if (source == " Volo's Guide") source = "VGM";
 if (source == " Princes of the Apocalypse") source = "PotA";
 if (source == " Elemental Evil PDF supplement") source = "EEPC";
 if (source == " elemental evil") source = "PotA";
+if (source == " Storm King's Thunder") source = "SKT";
 if (source == " storm kings thunder") source = "SKT";
 if (source == " Rise of Tiamat Online Supplement") source = "ToD";
 if (source == " tyranny of dragons") source = "ToD";
@@ -235,7 +236,7 @@ window.onload = function() {
 			}
 
 						
-			$(destinationlist).append("<li id='"+i+"'><em class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='source'>Source: "+source+" ("+parsesource(source)+")</span></li>");
+			$(destinationlist).append("<li id='"+i+"'><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='source'>Source: "+source+" ("+parsesource(source)+")</span></li>");
 				
 		}
 		
