@@ -58,8 +58,19 @@ footer {
 		color: white;
 	}
 	
-	ul#monsters li span.source {
+	ul#monsters li span {
 		font-size: 0.8em;
+		margin-left: 1em;
+		display: none;
+	}
+	
+	ul#monsters li:hover span {
+		display: block;
+	}
+	
+	ul#monsters li span.source {
+		display: inline!important;
+		margin-left: 0px!important;
 	}
 	
 	th#name span.source {
@@ -244,11 +255,14 @@ window.onload = function() {
 		for (var i = 0; i < monsters.length; i++) {
 			var name = monsters[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 			var source = monsters[i].getElementsByTagName("type")[0].childNodes[0].nodeValue.split(",");
+			var type = source.slice(0, source.length-1).join(",")
 			source = source[source.length - 1]
 			origsource = parsesourcename(source);
 			source = parsesource(source);
 			
-			$("ul#monsters").append("<li id="+i+">"+name+" <span title='"+origsource+"'class='source source"+source+"'>("+source+")</span></li>");
+			var cr = monsters[i].getElementsByTagName("cr")[0].childNodes[0].nodeValue;
+			
+			$("ul#monsters").append("<li id="+i+">"+name+" <span title='"+origsource+"'class='source source"+source+"'>("+source+")</span> <span>Type: "+type+"</span> <span>CR "+cr+"</span></li>");
 		}
 		
 		$("ul#monsters li").click(function(){
