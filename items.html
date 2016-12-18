@@ -64,6 +64,16 @@ footer {
 		font-size: 0.8em;
 	}
 	
+	ul.itemlist li span {
+		font-size: 0.8em;
+		margin-left: 1em;
+		display: none;
+	}
+	
+	ul.itemlist li:hover span {
+		display: block;
+	}
+	
 	th#name span.source {
 		display: inline-block;
 		float: right;
@@ -160,43 +170,21 @@ footer {
 <script type="text/javascript">
 
 function parsesource (src) {
-source = src;
+source = src
 if (source == " monster manual") source = "MM";
+if (source == " Player's Handbook") source = "PHB";
+if (source == " Dungeon Master's Guide") source = "DMG";
 if (source == " Volo's Guide") source = "VGM";
+if (source == " Princes of the Apocalypse") source = "PotA";
+if (source == " Elemental Evil PDF supplement") source = "EEPC";
 if (source == " elemental evil") source = "PotA";
 if (source == " storm kings thunder") source = "SKT";
 if (source == " tyranny of dragons") source = "ToD";
+if (source == " Out of the Abyss") source = "OotA";
 if (source == " out of the abyss") source = "OotA";
 if (source == " curse of strahd") source = "CoS";
 if (source == " lost mine of phandelver") source = "LMoP";
 return source;
-}
-
-function parsesourcename (src) {
-source = src;
-if (source == " monster manual") source = "Monster Manual";
-if (source == " Volo's Guide") source = "Volo\"s Guide to Monsters";
-if (source == " elemental evil") source = "Princes of the Apocalypse";
-if (source == " storm kings thunder") source = "Storm King\"s Thunder";
-if (source == " tyranny of dragons") source = "Tyranny of Dragons";
-if (source == " out of the abyss") source = "Out of the Abyss";
-if (source == " curse of strahd") source = "Curse of Strahd";
-if (source == " lost mine of phandelver") source = "Lost Mine of Phandelver";
-return source;
-}
-
-var xpchart = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
-
-function addCommas(intNum) {
-  return (intNum + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-}
-
-function parsecr (cr) {
-if (cr === "0") return "0 or 10"
-if (cr === "1/8") return "25"
-if (cr === "1/4") return "50"
-if (cr === "1/2") return "100"
-return addCommas (xpchart[parseInt(cr)-1]);
 }
 
 function parsetype (type) {
@@ -213,6 +201,7 @@ if (type === "P") return "Potion"
 if (type === "ST") return "Staff"
 if (type === "RD") return "Rod"
 if (type === "RG") return "Ring"
+if (type === "WD") return "Wand"
 return "n/a"
 }
 
@@ -235,13 +224,23 @@ window.onload = function() {
 	itemlist = data.getElementsByTagName("item");
 	
 		for (var i = 0; i < itemlist.length; i++) {
-			var name = itemlist[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
-			var type = itemlist[i].getElementsByTagName("type")[0].childNodes[0].nodeValue;
-			if (type === "$") continue;
 			
-			if (itemlist[i].getElementsByTagName("rarity").length || itemlist[i].getElementsByTagName("type")[0].childNodes[0].nodeValue === "W" || itemlist[i].textContent.indexOf("magic") !== -1 || itemlist[i].textContent.indexOf("Devastation Orb") !== -1 || itemlist[i].textContent.indexOf("Storm Boomerang") !== -1 || itemlist[i].textContent.indexOf("Spiked Armor") !== -1 || itemlist[i].textContent.indexOf("Requires Attunement") !== -1) {
-				$("ul.itemlist.magic").append("<li id="+i+">"+name+"</li>");
-			} else $("ul.itemlist.mundane").append("<li id="+i+">"+name+"</li>");
+			var curitem = itemlist[i];
+			var name = curitem.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			
+			var type = curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue;
+			if (type === "$") continue;
+			type = parsetype (type);
+			
+			var source = curitem.getElementsByTagName("text")[curitem.getElementsByTagName("text").length-1].childNodes[0].nodeValue.split(",")[0].split(":")[1];
+			
+			var destinationlist = "ul.itemlist.mundane";
+			if (curitem.getElementsByTagName("rarity").length || curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue === "W" || curitem.textContent.indexOf("magic") !== -1 || curitem.textContent.indexOf("Devastation Orb") !== -1 || curitem.textContent.indexOf("Storm Boomerang") !== -1 || curitem.textContent.indexOf("Spiked Armor") !== -1 || curitem.textContent.indexOf("Requires Attunement") !== -1) {
+				destinationlist = "ul.itemlist.magic";
+			}
+
+						
+			$(destinationlist).append("<li id='"+i+"'>"+name+" <span class='type'>Type: "+type+"</span> <span class='source' title=\""+source+"\">Source: "+source+" ("+parsesource(source)+")</span></li>");
 				
 		}
 		
@@ -251,13 +250,14 @@ window.onload = function() {
 			var curitem = itemlist[id];
 			
 			var name = curitem.getElementsByTagName("name")[0].childNodes[0].nodeValue;
-			$("th#name").html(name);
-			
+			var source = curitem.getElementsByTagName("text")[curitem.getElementsByTagName("text").length-1].childNodes[0].nodeValue.split(",")[0].split(":")[1];
+			sourceshort = parsesource(source);			
+			$("th#name").html(name+" <span title='"+source+"' class='source source"+sourceshort+"'>"+sourceshort+"</span>");
+						
 			var type = parsetype (curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue);
 			$("td span#type").html(type);
 			
-			
-			if (curitem.getElementsByTagName("rarity").length) {
+						if (curitem.getElementsByTagName("rarity").length) {
 				var rarity = curitem.getElementsByTagName("rarity")[0].childNodes[0].nodeValue;
 				$("td span#rarity").html(", "+rarity);
 			} else $("td span#rarity").html("");
