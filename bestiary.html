@@ -84,6 +84,7 @@ footer {
 		display: inline-block;
 		float: right;
 		font-weight: 500;
+		margin-left: 0.5em;
 	}
 	
 	span.sourceMM {
@@ -278,7 +279,7 @@ window.onload = function() {
 			source = source[source.length - 1]
 			origsource = parsesourcename(source);
 			source = parsesource(source);
-			$("th#name").html(name+" <span title='"+origsource+"'class='source source"+source+"'>"+source+"</span>");
+			$("th#name").html("<span title='"+origsource+"'class='source source"+source+"'>"+source+"</span> "+name);
 			
 			var size = mon.getElementsByTagName("size")[0].childNodes[0].nodeValue;
 			if (size == "T") size = "Tiny";

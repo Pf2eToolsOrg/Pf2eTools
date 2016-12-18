@@ -78,6 +78,7 @@ footer {
 		display: inline-block;
 		float: right;
 		font-weight: 500;
+		margin-left: 0.5em;
 	}
 		
 	span.sourceDMG {
@@ -258,7 +259,7 @@ window.onload = function() {
 			var name = curitem.getElementsByTagName("name")[0].childNodes[0].nodeValue;
 			var source = curitem.getElementsByTagName("text")[curitem.getElementsByTagName("text").length-1].childNodes[0].nodeValue.split(",")[0].split(":")[1];
 			sourceshort = parsesource(source);			
-			$("th#name").html(name+" <span title='"+source+"' class='source source"+sourceshort+"'>"+sourceshort+"</span>");
+			$("th#name").html("<span title=\""+source+"\" class='source source"+sourceshort+"'>"+sourceshort+"</span> "+name);
 						
 			var type = parsetype (curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue);
 			$("td span#type").html(type);
