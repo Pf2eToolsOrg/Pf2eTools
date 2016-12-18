@@ -256,6 +256,7 @@ window.onload = function() {
 			var name = monsters[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 			var source = monsters[i].getElementsByTagName("type")[0].childNodes[0].nodeValue.split(",");
 			var type = source.slice(0, source.length-1).join(",")
+			type = type.split(", Volo's Guide")[0];
 			source = source[source.length - 1]
 			origsource = parsesourcename(source);
 			source = parsesource(source);
