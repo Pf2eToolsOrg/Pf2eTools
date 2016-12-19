@@ -221,7 +221,7 @@ function parsedamagetype (damagetype) {
 if (damagetype === "B") return "bludgeoning"
 if (damagetype === "P") return "piercing"
 if (damagetype === "S") return "slashing"
-return "n/a";
+return false;
 }
 
 function parseproperty (property) {
@@ -237,26 +237,31 @@ if (property === "V") return "versatile"
 return "n/a"
 }
 
+function tagcontent (curitem, tag, multi=false) {
+if (!curitem.getElementsByTagName(tag).length) return false;
+return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
+}
+
 window.onload = function() {
 	tabledefault = $("#stats").html();
 	
 	parser = new DOMParser();
 	data = parser.parseFromString(data,"text/xml");
-	itemlist = data.getElementsByTagName("item");
+	var itemlist = data.getElementsByTagName("item");
 	
 		for (var i = 0; i < itemlist.length; i++) {
 			
 			var curitem = itemlist[i];
-			var name = curitem.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			var name = tagcontent (curitem, "name");
 			
-			var type = curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue;
+			var type = tagcontent (curitem, "type");
 			if (type === "$") continue;
 			type = parsetype (type);
 			
 			var source = curitem.getElementsByTagName("text")[curitem.getElementsByTagName("text").length-1].childNodes[0].nodeValue.split(",")[0].split(":")[1];
 			
 			var destinationlist = "ul.itemlist.mundane";
-			if (curitem.getElementsByTagName("rarity").length || curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue === "W" || curitem.textContent.indexOf("magic") !== -1 || curitem.textContent.indexOf("Devastation Orb") !== -1 || curitem.textContent.indexOf("Storm Boomerang") !== -1 || curitem.textContent.indexOf("Spiked Armor") !== -1 || curitem.textContent.indexOf("Requires Attunement") !== -1) {
+			if (curitem.getElementsByTagName("rarity").length || tagcontent (curitem, "type") === "W" || curitem.textContent.indexOf("magic") !== -1 || curitem.textContent.indexOf("Devastation Orb") !== -1 || curitem.textContent.indexOf("Storm Boomerang") !== -1 || curitem.textContent.indexOf("Spiked Armor") !== -1 || curitem.textContent.indexOf("Requires Attunement") !== -1) {
 				destinationlist = "ul.itemlist.magic";
 			}
 
@@ -269,9 +274,8 @@ window.onload = function() {
 			valueNames: ['name', 'source', 'type'],
 			listClass: "mundane"
 		}
-		
-		var mundanelist = new List("itemcontainer", options);
 
+		var mundanelist = new List("itemcontainer", options);
 		options.listClass = "magic";
 		var magiclist = new List("itemcontainer", options);
 		
@@ -280,32 +284,25 @@ window.onload = function() {
 			var id = $(this).attr("id");
 			var curitem = itemlist[id];
 			
-			var name = curitem.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			var name = tagcontent (curitem, "name");
 			var source = curitem.getElementsByTagName("text")[curitem.getElementsByTagName("text").length-1].childNodes[0].nodeValue.split(",")[0].split(":")[1];
 			sourceshort = parsesource(source);			
 			$("th#name").html("<span title=\""+source+"\" class='source source"+sourceshort+"'>"+sourceshort+"</span> "+name);
 			
-			var typeletter = curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue
+			var typeletter = tagcontent (curitem, "type");
 			var type = parsetype (typeletter);
 			$("td span#type").html(type);
 			
-			if (curitem.getElementsByTagName("rarity").length) {
-				var rarity = curitem.getElementsByTagName("rarity")[0].childNodes[0].nodeValue;
-				$("td span#rarity").html(", "+rarity);
-			} else $("td span#rarity").html("");
-						
-			if (typeletter == "W" || typeletter == "R") {
-				
-			}
-			
+			$("td span#rarity").html("")
+			var rarity = tagcontent (curitem, "rarity");
+			if (rarity)	$("td span#rarity").html(", "+rarity);
+	
 			
 			$("span#damage").html("");
 			$("span#damagetype").html("");
 			
-			if (curitem.getElementsByTagName("dmg1").length) {
-				$("span#damage").html(curitem.getElementsByTagName("dmg1")[0].childNodes[0].nodeValue);
-				$("span#damagetype").html(parsedamagetype (curitem.getElementsByTagName("dmgType")[0].childNodes[0].nodeValue));
-			}
+			$("span#damage").html(tagcontent (curitem, "dmg1"));
+			$("span#damagetype").html(parsedamagetype(tagcontent (curitem, "dmgType")));
 			
 			$("span#properties").html("");
 			if (curitem.getElementsByTagName("property").length) {
