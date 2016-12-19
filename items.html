@@ -134,6 +134,10 @@ footer {
 		color: #922610;
 	}
 	
+	table#stats span {
+		vertical-align: top!important;
+	}
+	
 	th.border {
 		height: 10px;
 		background: #e69a28;
@@ -213,6 +217,26 @@ if (type === "WD") return "Wand"
 return "n/a"
 }
 
+function parsedamagetype (damagetype) {
+if (damagetype === "B") return "bludgeoning"
+if (damagetype === "P") return "piercing"
+if (damagetype === "S") return "slashing"
+return "n/a";
+}
+
+function parseproperty (property) {
+if (property === "A") return "ammunition"
+if (property === "LD") return "loading"
+if (property === "L") return "light"
+if (property === "F") return "finesse"
+if (property === "T") return "thrown"
+if (property === "H") return "heavy"
+if (property === "R") return "reach"
+if (property === "2H") return "two-handed"
+if (property === "V") return "versatile"
+return "n/a"
+}
+
 window.onload = function() {
 	tabledefault = $("#stats").html();
 	
@@ -260,14 +284,57 @@ window.onload = function() {
 			var source = curitem.getElementsByTagName("text")[curitem.getElementsByTagName("text").length-1].childNodes[0].nodeValue.split(",")[0].split(":")[1];
 			sourceshort = parsesource(source);			
 			$("th#name").html("<span title=\""+source+"\" class='source source"+sourceshort+"'>"+sourceshort+"</span> "+name);
-						
-			var type = parsetype (curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue);
+			
+			var typeletter = curitem.getElementsByTagName("type")[0].childNodes[0].nodeValue
+			var type = parsetype (typeletter);
 			$("td span#type").html(type);
 			
-						if (curitem.getElementsByTagName("rarity").length) {
+			if (curitem.getElementsByTagName("rarity").length) {
 				var rarity = curitem.getElementsByTagName("rarity")[0].childNodes[0].nodeValue;
 				$("td span#rarity").html(", "+rarity);
 			} else $("td span#rarity").html("");
+						
+			if (typeletter == "W" || typeletter == "R") {
+				
+			}
+			
+			
+			$("span#damage").html("");
+			$("span#damagetype").html("");
+			
+			if (curitem.getElementsByTagName("dmg1").length) {
+				$("span#damage").html(curitem.getElementsByTagName("dmg1")[0].childNodes[0].nodeValue);
+				$("span#damagetype").html(parsedamagetype (curitem.getElementsByTagName("dmgType")[0].childNodes[0].nodeValue));
+			}
+			
+			$("span#properties").html("");
+			if (curitem.getElementsByTagName("property").length) {
+				var properties = curitem.getElementsByTagName("property")[0].childNodes[0].nodeValue.split(",");
+				$("span#damagetype").append(" - ");
+				for (var i = 0; i < properties.length; i++) {
+					var a = b = properties[i];
+					a = parseproperty (a);
+					if (b === "V") a = a + " (" + curitem.getElementsByTagName("dmg2")[0].childNodes[0].nodeValue + ")";
+					if (b === "T" || b === "A") a = a + " (" + curitem.getElementsByTagName("range")[0].childNodes[0].nodeValue + "ft.)";
+					if (i > 0) a = ", "+a;
+					$("span#properties").append(a);
+				}
+			}
+			
+			$("span#value").html("");
+			$("span#weight").html("");			
+			if (curitem.getElementsByTagName("value").length) {
+				var value = curitem.getElementsByTagName("value")[0].childNodes[0].nodeValue;
+				if (curitem.getElementsByTagName("weight").length) value = value + ", ";
+				$("td span#value").html(value);
+			} else $("td span#value").html("");
+						
+			if (curitem.getElementsByTagName("weight").length) {
+				var weight = curitem.getElementsByTagName("weight")[0].childNodes[0].nodeValue;
+				if (weight == 1) {
+					$("td span#weight").html(weight+" lb.");
+				} else $("td span#weight").html(weight+" lbs.");
+			} else $("td span#weight").html("");			
 			
 			var textlist = curitem.getElementsByTagName("text");
 			$("tr.text").remove();
@@ -331,9 +398,13 @@ window.onload = function() {
 		<tr>
 			<td id="typerarityattunement" colspan="6"><span id="type">Type</span><span id="rarity">, rarity</span> <span id="attunement">(requires attunement)</span></td>
 		</tr>
-		<tr id="text"><td></td></tr>
 		<tr>
-			<td colspan="6"id="source">Source: <span>Source</span></td>
+			<td id="valueweight" colspan="2"><span id="value">10gp</span> <span id="weight">45 lbs.</span></td>
+			<td id="damageproperties" colspan="4" style="text-align: right;"><span id="damage">Damage</span> <span id="damagetype">type</span> <span id="properties">(versatile)</span></td>
+		</tr>
+		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+		<tr>
+			<td colspan="6" id="source">Source: <span>Source</span></td>
 		</tr>
 		<tr><th class="border" colspan="6"></th></tr>
 	</table>
