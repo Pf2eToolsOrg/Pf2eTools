@@ -198,6 +198,8 @@ if (!curitem.getElementsByTagName(tag).length) return false;
 return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
 }
 
+window.onload = loadraces;
+
 function loadraces() {
 	tabledefault = $("#stats").html();
 
@@ -218,8 +220,13 @@ function loadraces() {
 		raceslist.sort ("name")
 		
 		$("ul.list li").click(function(){
+			userace ($(this).attr("id"));
+		});
+	}
+		
+	function userace (id) {
 			$("#stats").html(tabledefault);
-			var id = $(this).attr("id");
+			var racelist = racedata.compendium.race;
 			var currace = racelist[id];
 			
 			var name = currace.name;
@@ -250,11 +257,8 @@ function loadraces() {
 				$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+i+"'>"+texthtml+"</td></tr>");
 			}
 			return;			
-		});
+		};
 
-};
-
-window.onload = loadraces;
 </script>
 	
 	

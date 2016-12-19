@@ -217,8 +217,13 @@ function loadfeats() {
 		featslist.sort ("name")
 		
 		$("ul.list li").click(function(){
+			usefeat ($(this).attr("id"));
+		});
+	}
+	
+	function usefeat (id) {
 			$("#stats").html(tabledefault);
-			var id = $(this).attr("id");
+			var featlist = featdata.compendium.feat;
 			var curfeat = featlist[id];
 			
 			var name = curfeat.name;
@@ -240,9 +245,8 @@ function loadfeats() {
 			
 			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
 						
-		});
+		};
 
-};
 
 </script>
 	

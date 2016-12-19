@@ -285,9 +285,14 @@ function loadmonsters() {
 		
 		var monlist = new List("monstercontainer", options)
 		
-		$("ul#monsters li").click(function(){
+		$("ul#monsters li").click(function() {
+			usemonster($(this).attr("id"));
+		});
+	}
+	
+	function usemonster (id) {	
 			$("#stats").html(tabledefault);
-			var id = $(this).attr("id");
+			monsters = monsterdata.compendium.monster;
 			var mon = monsters[id];
 			var name = mon.name;
 			var source = mon.type.split(",");
@@ -521,9 +526,7 @@ function loadmonsters() {
 				
 			}
 			}
-		});
-
-};
+		};
 </script>
 	
 	

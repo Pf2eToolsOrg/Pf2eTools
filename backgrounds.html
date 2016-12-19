@@ -203,7 +203,6 @@ window.onload = loadbackgrounds;
 function loadbackgrounds () {
 	tabledefault = $("#stats").html();
 	
-	console.log(backgrounddata);
 	var bglist = backgrounddata.compendium.background;
 	
 		for (var i = 0; i < bglist.length; i++) {
@@ -221,8 +220,13 @@ function loadbackgrounds () {
 		backgroundslist.sort ("name")
 		
 		$("ul.list li").click(function(){
+			usebackground ($(this).attr("id"));
+		})
+	}
+	
+	function usebackground (id) {
 			$("#stats").html(tabledefault);
-			var id = $(this).attr("id");
+			var bglist = backgrounddata.compendium.background;
 			var curbg = bglist[id];
 			
 			var name = curbg.name;
@@ -245,9 +249,7 @@ function loadbackgrounds () {
 				$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+i+"'>"+texthtml+"</td></tr>");
 			}
 			
-		});
-
-};
+		};
 
 </script>
 	

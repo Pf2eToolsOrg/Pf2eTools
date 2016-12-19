@@ -282,10 +282,14 @@ function loaditems() {
 		var mundanelist = new List("itemcontainer", options);
 		options.listClass = "magic";
 		var magiclist = new List("itemcontainer", options);
-		
 		$("ul.itemlist li").click(function(){
-			$("#currentitem").html(tabledefault);
-			var id = $(this).attr("id");
+			useitem($(this).attr("id"));
+		});
+	}
+	
+	function useitem (id) {
+		$("#currentitem").html(tabledefault);
+			var itemlist = itemdata.compendium.item;
 			var curitem = itemlist[id];
 			
 			var name = curitem.name;
@@ -362,9 +366,8 @@ function loaditems() {
 			
 			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
 			
-		});
+		};
 
-};
 
 </script>
 	
