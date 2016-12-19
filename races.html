@@ -213,6 +213,7 @@ window.onload = function() {
 		}
 		
 		var raceslist = new List("listcontainer", options);
+		raceslist.sort ("name")
 		
 		$("ul.list li").click(function(){
 			$("#stats").html(tabledefault);
