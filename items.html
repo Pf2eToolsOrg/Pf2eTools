@@ -36,6 +36,32 @@ footer {
 	font-size: 90%;
 }
 
+
+input.search {
+	width: 62%;
+}
+
+.sortlabel {
+	display: inline-block;
+	width: 37%;
+	float: right;
+	text-align: right;
+}
+
+.sortlabel span {
+	background: lightgrey;
+	border-radius: 3px;
+	padding: 2px;
+	text-align: right;
+	font-size: 0.5em;
+}
+
+.sortlabel:hover span:hover {
+	background: grey;
+	color: white;
+	cursor: pointer;
+}
+
 	ul.itemlist {
 		list-style-type: none;
 		padding-left: 0px;
@@ -247,6 +273,8 @@ return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
 
 window.onload = loaditems;
 
+var mundanelist;
+var magiclist;
 function loaditems() {
 	tabledefault = $("#stats").html();
 
@@ -279,11 +307,20 @@ function loaditems() {
 			listClass: "mundane"
 		}
 
-		var mundanelist = new List("itemcontainer", options);
+		mundanelist = new List("itemcontainer", options);
 		options.listClass = "magic";
-		var magiclist = new List("itemcontainer", options);
+		magiclist = new List("itemcontainer", options);
+		
 		$("ul.itemlist li").click(function(){
 			useitem($(this).attr("id"));
+		});
+		
+		$("#itemcontainer span.sort").on("click", function() {
+			if ($(this).attr("sortby") === "asc") {
+				$(this).attr("sortby", "desc");
+			} else $(this).attr("sortby", "asc");
+			magiclist.sort($(this).attr("sort"), { order: $(this).attr("sortby") });
+			mundanelist.sort($(this).attr("sort"), { order: $(this).attr("sortby") });
 		});
 	}
 	
@@ -369,6 +406,7 @@ function loaditems() {
 		};
 
 
+
 </script>
 	
 	
@@ -386,7 +424,14 @@ function loaditems() {
 		
 <div class="row">
 <div class="col-sm-6" id="itemcontainer">
-	<h3><input type="text" id="search" class="search" placeholder="Find item..."></h3>
+	<h3>
+		<input type="text" id="search" class="search" placeholder="Find item...">
+		<span class="sortlabel">
+			<span class="sort" sort="name" sortby="asc">Name</span>
+			<span class="sort" sort="source" sortby="asc">Source</span>
+			<span class="sort" sort="type" sortby="asc">Type</span>
+		</span>
+	</h3>
 	<h3>Mundane</h3>
 		<ul class="itemlist mundane">
 	

@@ -36,6 +36,31 @@ footer {
 	font-size: 90%;
 }
 
+
+input.search {
+	width: 62%;
+}
+
+.sortlabel {
+	display: inline-block;
+	width: 37%;
+	float: right;
+	text-align: right;
+}
+
+.sortlabel span {
+	background: lightgrey;
+	border-radius: 3px;
+	padding: 2px;
+	text-align: right;
+	font-size: 0.5em;
+}
+
+.sortlabel:hover span:hover {
+	background: grey;
+	color: white;
+	cursor: pointer;
+}
 	ul.list {
 		list-style-type: none;
 		padding-left: 0px;
@@ -268,7 +293,13 @@ function loadbackgrounds () {
 		
 <div class="row">
 <div class="col-sm-6" id="listcontainer">
-	<h3><input type="text" id="search" class="search" placeholder="Find background..."></h3>
+	<h3>
+		<input type="text" id="search" class="search" placeholder="Find background...">
+		<span class="sortlabel">
+			<span class="sort" data-sort="name">Name</span>
+		</span>
+	</h3>
+
 		<ul class="list backgrounds" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 	
 		</ul>
