@@ -170,8 +170,12 @@ footer {
 		color: black!important;
 	}
 	
-	td#source {
+	table#stats #ability, table#stats #size, table#stats #speed {
 		font-weight: bold;
+	}
+	
+	table#stats #ability span, table#stats #size span, table#stats #speed span {
+		font-weight: normal!important;
 	}
 	
 </style>
@@ -241,6 +245,7 @@ window.onload = function() {
 				texthtml = texthtml + "<span>"+textlist[0].childNodes[0].nodeValue+"</span> "
 				
 				for (var i = 1; i < textlist.length; i++) {
+					if (!textlist[i].childNodes.length) continue;
 					texthtml = texthtml + "<p>"+textlist[i].childNodes[0].nodeValue+"</p>";
 				}
 				
