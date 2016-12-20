@@ -245,6 +245,14 @@ if (!curitem.getElementsByTagName(tag).length) return false;
 return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
 }
 
+function asc_sort(a, b){
+    return ($(b).text()) < ($(a).text()) ? 1 : -1;    
+}
+
+function dec_sort(a, b){
+    return ($(b).text()) > ($(a).text()) ? 1 : -1;    
+}
+
 window.onload = loadspells;
 
 function loadspells() {
@@ -259,8 +267,36 @@ function loadspells() {
 			if (curspell.level !== "0") leveltext = "level"
 			
 			$("ul.spells").append("<li id='"+i+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			
+			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
+				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
+			}
+			
+			if (!$("select.schoolfilter:contains('"+parseschool (curspell.school)+"')").length) {
+				$("select.schoolfilter").append("<option value='"+parseschool (curspell.school)+"'>"+parseschool (curspell.school)+"</option>");
+			}
+			
+			var classlist = curspell.classes.split(",");
+			for (var a = 0; a < classlist.length; a++) {
+				if (classlist[a][0] === " ") classlist[a] = classlist[a].replace(/^\s+|\s+$/g, "")
+				if (!$("select.classfilter option[value='"+classlist[a]+"']").length) {
+					$("select.classfilter").append("<option title=\""+classlist[a]+"\" value='"+classlist[a]+"'>"+classlist[a]+"</option>")
+				}
+			}
+			
 		}
 		
+		$("select.levelfilter option").sort(asc_sort).appendTo('select.levelfilter');
+		$("select.levelfilter option[value=1]").before($("select.levelfilter option[value=All]"));
+		$("select.levelfilter option[value=1]").before($("select.levelfilter option[value=0]"));
+		$("select.levelfilter").val("All");
+		
+		$("select.schoolfilter option").sort(asc_sort).appendTo('select.schoolfilter');
+		$("select.schoolfilter").val("All");
+		
+		$("select.classfilter option").sort(asc_sort).appendTo('select.classfilter');
+		$("select.classfilter").val("All");
+			
 		var options = {
 			valueNames: ['name', 'level', 'school', 'classes'],
 			listClass: "spells"
@@ -272,6 +308,29 @@ function loadspells() {
 		$("ul.list li").click(function(){
 			usespell ($(this).attr("id"));
 		});
+		
+		$("div#filtertools select").change(function(){
+			var levelfilter = $("select.levelfilter").val();
+			if (levelfilter !== "All") levelfilter = parsespelllevel (levelfilter);
+			if (levelfilter !== "All" && levelfilter !== "cantrip") levelfilter = levelfilter+ " level"
+			
+			var schoolfilter = $("select.schoolfilter").val();
+			var classfilter = $("select.classfilter").val();
+			
+			console.log(levelfilter);
+			console.log(schoolfilter);
+			console.log(classfilter);
+			spellslist.filter(function(item) {
+				var rightlevel = false;
+				var rightschool = false;
+				var rightclass = false;
+				if (levelfilter === "All" || item.values().level === levelfilter) rightlevel = true;
+				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
+				if (classfilter === "All " || (item.values().classes.indexOf(classfilter) !== -1 && item.values().classes.indexOf(classfilter+" (") === -1)) rightclass = true;
+				if (rightlevel && rightschool && rightclass) return true;
+				return false;
+			});
+		});	
 	}
 		
 	function usespell (id) {
@@ -325,7 +384,7 @@ function loadspells() {
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
 
-		<h1>spells List</h1>
+		<h1>Spells List</h1>
 		<p>Search by name on the left, click spell name to display on the right.</p>
 		</div>
 	</header>
@@ -334,14 +393,23 @@ function loadspells() {
 		
 <div class="row">
 <div class="col-sm-6" id="listcontainer">
-	<h3>
-		<input type="text" id="search" class="search" placeholder="Find spell...">
+	<h3><input type="text" id="search" class="search" placeholder="Find spell..."></h3>
+	<div id="filtertools">	
 		<span class="sortlabel">
 			<span class="sort" data-sort="name">Name</span>
 			<span class="sort" data-sort="level">Level</span>
 			<span class="sort" data-sort="school">School</span>
 		</span>
-	</h3>
+		<select class="levelfilter">
+			<option value="All">All Levels</option>
+		</select>
+		<select class="schoolfilter">
+			<option value="All">All Schools</option>
+		</select>
+		<select class="classfilter">
+			<option value="All">All Classes</option>
+		</select>
+	</div>
 
 		<ul class="list spells" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 	

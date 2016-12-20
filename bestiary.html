@@ -45,6 +45,11 @@ input.search {
 	width: 50%;
 }
 
+div#filtertools {
+	font-size: 0.8em;
+}
+
+
 .sortlabel {
 	display: inline-block;
 	width: 49%;
@@ -57,7 +62,6 @@ input.search {
 	border-radius: 3px;
 	padding: 2px;
 	text-align: right;
-	font-size: 0.5em;
 }
 
 .sortlabel:hover span:hover {
@@ -285,6 +289,14 @@ if (!curitem.getElementsByTagName(tag).length) return false;
 return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
 }
 
+function asc_sort(a, b){
+    return ($(b).text()) < ($(a).text()) ? 1 : -1;    
+}
+
+function dec_sort(a, b){
+    return ($(b).text()) > ($(a).text()) ? 1 : -1;    
+}
+
 window.onload = loadmonsters;
 
 function loadmonsters() {
@@ -304,7 +316,32 @@ function loadmonsters() {
 			var cr = monsters[i].cr;
 			
 			$("ul#monsters").append("<li id="+i+"><span class='name'>"+name+"</span> <span title='"+origsource+"'class='source source"+source+"'>("+source+")</span> <span class='type'>Type: "+type+"</span> <span class='cr'>CR "+cr+" </span></li>");
+			
+			if (!$("select.typefilter:contains('"+type+"')").length) {
+				$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
+			}
+			if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
+				$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+parsesource(source)+"</option>")
+			}
+			if (!$("select.crfilter option[value='"+cr+"']").length) {
+				$("select.crfilter").append("<option title=\""+cr+"\" value='"+cr+"'>"+cr+"</option>")
+			}
+			
+
+			
 		}
+		
+		$("select.typefilter option").sort(asc_sort).appendTo('select.typefilter');
+		$("select.typefilter").val("All");
+		
+		$("select.crfilter option").sort(asc_sort).appendTo('select.crfilter');
+		for (var b = 9; b > 1; b--) {
+			$("select.crfilter option[value=1]").after($("select.crfilter option[value="+b+"]"))
+		}
+		$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/8']"))
+		$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/4']"))
+		$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/2']"))
+		$("select.crfilter option[value=0]").before($("select.crfilter option[value=All]"))
 		
 		var options = {
 			valueNames: ['name', 'source', 'type', 'cr']
@@ -315,6 +352,25 @@ function loadmonsters() {
 		$("ul#monsters li").click(function() {
 			usemonster($(this).attr("id"));
 		});
+		
+		$("div#filtertools select").change(function(){
+			var typefilter = "Type: "+$("select.typefilter").val();
+			var sourcefilter = $("select.sourcefilter").val();
+			var crfilter = "CR "+$("select.crfilter").val()+" ";
+			
+			console.log(sourcefilter);
+			monlist.filter(function(item) {
+				var righttype = false;
+				var rightsource = false;
+				var rightcr = false;
+				if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
+				if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
+				if (crfilter === "CR All " || item.values().cr === crfilter) rightcr = true;
+				if (righttype && rightsource && rightcr) return true;
+				return false;
+			});
+		});	
+
 	}
 	
 	function usemonster (id) {	
@@ -571,15 +627,25 @@ function loadmonsters() {
 		
 <div class="row">
 <div class="col-sm-6" id="monstercontainer">
-	<h3 style="vertical-align: top;">
-		<input type="text" id="search" class="search" placeholder="Find monster...">
+	<h3 style="vertical-align: top;"><input type="text" id="search" class="search" placeholder="Find monster..."></h3>
+	
+	<div id="filtertools">	
 		<span class="sortlabel">
 			<span class="sort" data-sort="name">Name</span>
 			<span class="sort" data-sort="source">Source</span>
 			<span class="sort" data-sort="type">Type</span>
 			<span class="sort" data-sort="cr">CR</span>
 		</span>
-	</h3>
+		<select class="sourcefilter">
+			<option value="All">All Sources</option>
+		</select>
+		<select class="typefilter">
+			<option value="All">All Types</option>
+		</select>
+		<select class="crfilter">
+			<option value="All">All CRs</option>
+		</select>
+	</div>
 
 
 	<div style="height: 100%; max-height: 600px; overflow-y: scroll; overflow-x: hidden; padding-top: 1em; clear: both;">
