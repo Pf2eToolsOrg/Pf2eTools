@@ -454,7 +454,7 @@ function loadmonsters() {
 			}
 			
 			var skills = mon.skill;
-			if (skills && skills.length > 0) {
+			if (skills && skills.length > 0 && skills[0]) {
 				$("td span#skills").parent().show();
 				$("td span#skills").html(skills);
 			} else {
