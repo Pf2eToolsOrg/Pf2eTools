@@ -245,7 +245,7 @@ function loadraces() {
 		for (var i = 0; i < racelist.length; i++) {
 			var currace = racelist[i];
 			var name = currace.name;
-			$("ul.races").append("<li id='"+i+"'><span class='name'>"+name+"</span></li>");
+			$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
 		}
 		
 		var options = {
@@ -258,7 +258,12 @@ function loadraces() {
 		
 		$("ul.list li").click(function(){
 			userace ($(this).attr("id"));
+			window.location = "#"+$(this).attr("data-link");
 		});
+		
+		if (window.location.hash.length) {
+			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		} else $("ul.list li:eq(0)").click();
 	}
 		
 	function userace (id) {

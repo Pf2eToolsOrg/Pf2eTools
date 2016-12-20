@@ -241,7 +241,7 @@ function loadfeats() {
 		for (var i = 0; i < featlist.length; i++) {
 			var curfeat = featlist[i];
 			var name = curfeat.name;
-			$("ul.feats").append("<li id='"+i+"'><span class='name'>"+name+"</span></li>");
+			$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
 		}
 		
 		var options = {
@@ -254,7 +254,12 @@ function loadfeats() {
 		
 		$("ul.list li").click(function(){
 			usefeat ($(this).attr("id"));
+			window.location = "#"+$(this).attr("data-link");
 		});
+		
+		if (window.location.hash.length) {
+			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		} else $("ul.list li:eq(0)").click();
 	}
 	
 	function usefeat (id) {

@@ -319,7 +319,7 @@ function loadspells() {
 		for (var i = 0; i < classlist.length; i++) {
 			var curclass = classlist[i];
 			
-			$("ul.classes").append("<li id='"+i+"'><span class='name'>"+curclass.name+"</span></li>");
+			$("ul.classes").append("<li id='"+i+"' data-link='"+encodeURI(curclass.name)+"'><span class='name'>"+curclass.name+"</span></li>");
 						
 		}
 					
@@ -329,11 +329,16 @@ function loadspells() {
 		}
 		
 		var classlist = new List("listcontainer", options);
-		classlist.sort ("name")
+		classlist.sort ("name");
 		
 		$("ul.list li").click(function(){
 			useclass($(this).attr("id"));
+			window.location = "#"+$(this).attr("data-link");
 		});
+		
+		if (window.location.hash.length) {
+			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		} else $("ul.list li:eq(0)").click();
 		
 	}
 		

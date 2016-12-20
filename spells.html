@@ -281,7 +281,7 @@ function loadspells() {
 			var leveltext = "";
 			if (curspell.level !== "0") leveltext = "level"
 			
-			$("ul.spells").append("<li id='"+i+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
 			
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -322,7 +322,12 @@ function loadspells() {
 		
 		$("ul.list li").click(function(){
 			usespell ($(this).attr("id"));
+			window.location = "#"+$(this).attr("data-link");
 		});
+		
+		if (window.location.hash.length) {
+			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		} else $("ul.list li:eq(0)").click();
 		
 		$("div#filtertools select").change(function(){
 			var levelfilter = $("select.levelfilter").val();
@@ -342,9 +347,6 @@ function loadspells() {
 				var rightclass = false;
 				if (levelfilter === "All" || item.values().level === levelfilter) rightlevel = true;
 				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
-				// if All
-				// if Cleric but not just Cleric subclass
-				// if Cleric subclass
 				var classes = item.values().classes.split(", ");
 				for (var c = 0; c < classes.length; c++) {
 					if (classes[c] === classfilter) rightclass = true;
