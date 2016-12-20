@@ -420,6 +420,11 @@ function loaditems() {
 				$("span#damagetype").html(parsedamagetype(curitem.dmgType));
 			}
 			
+			if (curitem.type === "S") $("span#damage").html("AC +"+curitem.ac);
+			if (curitem.type === "LA") $("span#damage").html("AC "+curitem.ac+" + Dex");
+			if (curitem.type === "MA") $("span#damage").html("AC "+curitem.ac+" + Dex (max 2)");
+			if (curitem.type === "HA") $("span#damage").html("AC "+curitem.ac);
+			
 			$("span#properties").html("");
 			if (curitem.property) {
 				var properties = curitem.property.split(",");
