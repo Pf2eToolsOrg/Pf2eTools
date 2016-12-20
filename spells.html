@@ -315,8 +315,12 @@ function loadspells() {
 		
 		$("div#filtertools select").change(function(){
 			var levelfilter = $("select.levelfilter").val();
-			if (levelfilter !== "All") levelfilter = parsespelllevel (levelfilter);
-			if (levelfilter !== "All" && levelfilter !== "cantrip") levelfilter = levelfilter+ " level"
+			if (levelfilter !== "All") {
+				levelfilter = parsespelllevel (levelfilter);
+				if (levelfilter !== "cantrip") {
+					levelfilter = levelfilter + " level"
+				} else levelfilter = "cantrip ";
+			}
 			
 			var schoolfilter = $("select.schoolfilter").val();
 			var classfilter = $("select.classfilter").val();
@@ -330,7 +334,7 @@ function loadspells() {
 				var rightclass = false;
 				if (levelfilter === "All" || item.values().level === levelfilter) rightlevel = true;
 				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
-				if (classfilter === "All " || (item.values().classes.indexOf(classfilter) !== -1 && item.values().classes.indexOf(classfilter+" (") === -1)) rightclass = true;
+				if (classfilter === "All" || (item.values().classes.indexOf(classfilter) !== -1 && item.values().classes.indexOf(classfilter+" (") === -1)) rightclass = true;
 				if (rightlevel && rightschool && rightclass) return true;
 				return false;
 			});
