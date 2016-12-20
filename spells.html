@@ -336,16 +336,20 @@ function loadspells() {
 			var schoolfilter = $("select.schoolfilter").val();
 			var classfilter = $("select.classfilter").val();
 			
-			console.log(levelfilter);
-			console.log(schoolfilter);
-			console.log(classfilter);
 			spellslist.filter(function(item) {
 				var rightlevel = false;
 				var rightschool = false;
 				var rightclass = false;
 				if (levelfilter === "All" || item.values().level === levelfilter) rightlevel = true;
 				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
-				if (classfilter === "All" || (item.values().classes.indexOf(classfilter) !== -1 && item.values().classes.indexOf(classfilter+" (") === -1)) rightclass = true;
+				// if All
+				// if Cleric but not just Cleric subclass
+				// if Cleric subclass
+				var classes = item.values().classes.split(",");
+				for (var c = 0; c < classes.length; c++) {
+					if (classes[c] === classfilter || classes[c] === " "+classfilter) rightclass = true;
+				}
+				if (classfilter === "All") rightclass = true;
 				if (rightlevel && rightschool && rightclass) return true;
 				return false;
 			});
