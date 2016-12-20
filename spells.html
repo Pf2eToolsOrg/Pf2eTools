@@ -345,9 +345,9 @@ function loadspells() {
 				// if All
 				// if Cleric but not just Cleric subclass
 				// if Cleric subclass
-				var classes = item.values().classes.split(",");
+				var classes = item.values().classes.split(", ");
 				for (var c = 0; c < classes.length; c++) {
-					if (classes[c] === classfilter || classes[c] === " "+classfilter) rightclass = true;
+					if (classes[c] === classfilter) rightclass = true;
 				}
 				if (classfilter === "All") rightclass = true;
 				if (rightlevel && rightschool && rightclass) return true;
