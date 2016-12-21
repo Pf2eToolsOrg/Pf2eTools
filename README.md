@@ -12,3 +12,5 @@
 [Races](https://5egmegaanon.github.io/5etools/races.html)
 
 [Spells](https://5egmegaanon.github.io/5etools/spells.html)
+
+[CR Calculator](https://5egmegaanon.github.io/5etools/crcalculator.html)
