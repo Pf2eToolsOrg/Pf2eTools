@@ -399,7 +399,8 @@ function loadmonsters() {
 			var size = parsesize (mon.size);
 			$("td span#size").html(size);
 			
-			var type = mon.type.split(",")[0];
+			var type = mon.type.split(",");
+			type = type.slice(0, type.length-1).join(",");
 			$("td span#type").html(type);
 			
 			var alignment = mon.alignment;
