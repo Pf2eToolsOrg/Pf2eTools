@@ -66,7 +66,7 @@ footer {
 
 #crcalc input#hd {
 	float: none;
-	width: 1.5em;
+	width: 2em;
 }
 
 input[type=number]#hd::-webkit-inner-spin-button, 
@@ -160,6 +160,7 @@ function loadpage() {
 		var curval = parseInt($("#attackbonus").val());
 		if (!$(this).is(":checked")) $("#attackbonus").val(curval-10);
 		if ($(this).is(":checked")) $("#attackbonus").val(curval+10);
+		calculatcr();
 	});
 	
 	$("select#size").change(function() {
@@ -185,6 +186,10 @@ function loadpage() {
 		$("#attackbonus").val($(this).children("td:eq(4)").html())
 		if ($("#saveinstead").is(":checked")) $("#attackbonus").val($(this).children("td:eq(6)").html())
 		calculatecr();
+	});
+	
+	$("#hp").focusout(function() {
+		calculatehd();
 	});
 	
 	if (window.location.hash) {
@@ -248,9 +253,21 @@ function calculatecr() {
 		}
 	}
 	
+	calculatehd();
+	
 	window.location = "#"+$("#hp").val()+","+$("#ac").val()+","+$("#dpr").val()+","+$("#attackbonus").val()+","+usesavedc;
 	$("#output").html("<h4>Challenge Rating: "+cr+"</h4>");
+	$("#output").append("<p>Offensive CR: +"+offensiveCR+"</p>");
+	$("#output").append("<p>Defensive CR: +"+defensiveCR+"</p>");
 	$("#output").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
+}
+
+function calculatehd() {
+	var avghp = $("#hdval").html().split("d")[1]/2+1;
+	var conmod = Math.floor(($("#con").val() - 10) / 2);
+	var curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
+	if (!curhd) curhd = 1;
+	$("#hd").val(curhd);
 }
 </script>
 	
