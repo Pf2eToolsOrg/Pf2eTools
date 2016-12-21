@@ -280,8 +280,10 @@ function loadspells() {
 			var name = curspell.name;
 			var leveltext = "";
 			if (curspell.level !== "0") leveltext = "level"
+			var isritual="";
+			if (curspell.ritual === "YES") isritual = " (ritual)";
 			
-			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
 			
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -336,16 +338,17 @@ function loadspells() {
 				if (levelfilter !== "cantrip") {
 					levelfilter = levelfilter + " level"
 				} else levelfilter = "cantrip ";
-			}
+				if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
+			} else if ($(".ritualfilter").val() === "Rituals") levelfilter = "(ritual)"
 			
 			var schoolfilter = $("select.schoolfilter").val();
 			var classfilter = $("select.classfilter").val();
-			
+				
 			spellslist.filter(function(item) {
 				var rightlevel = false;
 				var rightschool = false;
 				var rightclass = false;
-				if (levelfilter === "All" || item.values().level === levelfilter) rightlevel = true;
+				if (levelfilter === "All" || item.values().level.indexOf(levelfilter) !== -1) rightlevel = true;
 				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
 				var classes = item.values().classes.split(", ");
 				for (var c = 0; c < classes.length; c++) {
@@ -439,6 +442,10 @@ function loadspells() {
 		</span>
 		<select class="levelfilter">
 			<option value="All">All Levels</option>
+		</select>
+		<select class="ritualfilter">
+			<option value="All">All Spells</option>
+			<option value="Rituals">Rituals Only</option>
 		</select>
 		<select class="schoolfilter">
 			<option value="All">All Schools</option>
