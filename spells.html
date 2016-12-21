@@ -322,8 +322,18 @@ function loadspells() {
 		var spellslist = new List("listcontainer", options);
 		spellslist.sort ("name")
 		
-		$("ul.list li").click(function(){
-			usespell ($(this).attr("id"));
+		$("ul.list li").mousedown(function(e) {
+			if (e.which === 2) {
+				console.log("#"+$(this).attr("data-link"))
+				window.open("#"+$(this).attr("data-link"), "_blank").focus();
+				e.preventDefault();
+				e.stopPropagation();
+				return;
+			}
+		});
+		
+		$("ul.list li").click(function(e) {
+			usespell($(this).attr("id"));
 			window.location = "#"+$(this).attr("data-link");
 		});
 		

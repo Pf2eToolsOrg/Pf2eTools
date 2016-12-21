@@ -79,7 +79,7 @@ select {
 
 }
 
-	ul.itemlist {
+	ul.list {
 		list-style-type: none;
 		padding-left: 0px;
 		font-size: 1.1em;
@@ -90,34 +90,34 @@ select {
 		padding-top: 1em;
 	}
 	
-	ul.itemlist li {
+	ul.list li {
 		padding: 1px;
 		cursor: pointer;
 	}
 	
-	ul.itemlist li:hover {
+	ul.list li:hover {
 		background: lightgrey;
 	}
 	
-	ul.itemlist li:active {
+	ul.list li:active {
 		color: white;
 	}
 	
-	ul.itemlist li span.source {
+	ul.list li span.source {
 		font-size: 0.8em;
 	}
 	 	
-	ul.itemlist li span.sourcename, ul.itemlist li span.type {
+	ul.list li span.sourcename, ul.list li span.type {
 		font-size: 0.8em;
 		margin-left: 1em;
 		display: none;
 	}
 	
-	ul.itemlist li:hover span {
+	ul.list li:hover span {
 		display: block;
 	}
 	
-	ul.itemlist li:hover span.source {
+	ul.list li:hover span.source {
 		display: inline!important;
 		font-size: 1em!important;
 	}
@@ -317,10 +317,10 @@ function loaditems() {
 			
 			var source = curitem.text[curitem.text.length-1].split(",")[0].split(":")[1];
 			
-			var destinationlist = "ul.itemlist.mundane";
+			var destinationlist = "ul.list.mundane";
 			curitemstring = JSON.stringify (curitem)
 			if (curitem.rarity || curitem.type === "W" || curitemstring.indexOf("magic") !== -1 || curitemstring.indexOf("Devastation Orb") !== -1 || curitemstring.indexOf("Storm Boomerang") !== -1 || curitemstring.indexOf("Spiked Armor") !== -1 || curitemstring.indexOf("Requires Attunement") !== -1) {
-				destinationlist = "ul.itemlist.magic";
+				destinationlist = "ul.list.magic";
 			}
 
 						
@@ -343,14 +343,24 @@ function loaditems() {
 		options.listClass = "magic";
 		magiclist = new List("itemcontainer", options);
 		
-		$("ul.itemlist li").click(function(){
+		$("ul.list li").mousedown(function(e) {
+			if (e.which === 2) {
+				console.log("#"+$(this).attr("data-link"))
+				window.open("#"+$(this).attr("data-link"), "_blank").focus();
+				e.preventDefault();
+				e.stopPropagation();
+				return;
+			}
+		});
+		
+		$("ul.list li").click(function(e) {
 			useitem($(this).attr("id"));
 			window.location = "#"+$(this).attr("data-link");
 		});
 		
 		if (window.location.hash.length) {
-			$("ul.itemlist li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
-		} else $("ul.itemlist li:eq(0)").click();
+			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		} else $("ul.list li:eq(0)").click();
 		
 		$("div#filtertools select").change(function(){
 			var typefilter = "Type: "+$("select.typefilter").val();
@@ -526,11 +536,11 @@ function loaditems() {
 		</select>
 	</div>
 	<h3>Mundane</h3>
-		<ul class="itemlist mundane">
+		<ul class="list mundane">
 	
 		</ul>
 	<h3>Magic</h3>
-		<ul class="itemlist magic">
+		<ul class="list magic">
 		
 		</ul>
 </div>
