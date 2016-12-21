@@ -181,6 +181,15 @@ function loadpage() {
 		calculatecr();
 	});
 	
+	if (window.location.hash) {
+		var curdata = window.location.hash.split("#")[1].split(",")
+		$("#hp").val(curdata[0]);
+		$("#ac").val(curdata[1]);
+		$("#dpr").val(curdata[2]);
+		$("#attackbonus").val(curdata[3]);
+		if (curdata[4] === "true") $("#saveinstead").attr("checked",true);
+	}
+	
 	calculatecr();
 }
 
@@ -233,6 +242,7 @@ function calculatecr() {
 		}
 	}
 	
+	window.location = "#"+$("#hp").val()+","+$("#ac").val()+","+$("#dpr").val()+","+$("#attackbonus").val()+","+usesavedc;
 	$("#output").html("<h4>Challenge Rating: "+cr+"</h4>");
 	$("#output").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
 }
