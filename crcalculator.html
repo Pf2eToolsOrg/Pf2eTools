@@ -151,8 +151,9 @@ function loadpage() {
 	})
 	
 	$("#saveinstead").change(function() {
-		if (!$(this).is(":checked") && $("#attackbonus").val() === "13") $("#attackbonus").val("3");
-		if ($(this).is(":checked") && $("#attackbonus").val() === "3") $("#attackbonus").val("13");
+		var curval = parseInt($("#attackbonus").val());
+		if (!$(this).is(":checked")) $("#attackbonus").val(curval-10);
+		if ($(this).is(":checked")) $("#attackbonus").val(curval+10);
 	});
 	
 	$("select#size").change(function() {
@@ -169,15 +170,18 @@ function loadpage() {
 		var avghp = $("#hdval").html().split("d")[1]/2+1;
 		var conmod = Math.floor(($("#con").val() - 10) / 2);
 		$("#hp").val((avghp + conmod)* $("#hd").val());
-	})
+	});
 	
 	$("#msbcr tr").not(":has(th)").click(function() {
 		$("#hp").val($(this).children("td:eq(3)").html().split("-")[0])
 		$("#ac").val($(this).children("td:eq(2)").html())
 		$("#dpr").val($(this).children("td:eq(5)").html().split("-")[0])
 		$("#attackbonus").val($(this).children("td:eq(4)").html())
+		if ($("#saveinstead").is(":checked")) $("#attackbonus").val($(this).children("td:eq(6)").html())
 		calculatecr();
-	})
+	});
+	
+	calculatecr();
 }
 
 function calculatecr() {
@@ -208,7 +212,6 @@ function calculatecr() {
 		}
 	}
 	
-	console.log (defensiveCR, offensiveCR);
 	
 	var cr = ((eval(offensiveCR) + eval(defensiveCR)) / 2).toString();
 	
