@@ -101,10 +101,21 @@ input[type=number]#hd::-webkit-outer-spin-button {
 #msbcr th {
 	text-align: center;
 	padding: 0 0.5em;
+	cursor: initial!important;
 }
 
 #msbcr tr:nth-child(even) {
 	background: lightgrey;
+}
+
+#msbcr tr {
+	cursor: pointer;
+}
+
+#output {
+	padding: 0.2em;
+	background: lightgrey;
+	border-radius: 0.2em;
 }
 </style>
 
@@ -158,7 +169,14 @@ function loadpage() {
 		var avghp = $("#hdval").html().split("d")[1]/2+1;
 		var conmod = Math.floor(($("#con").val() - 10) / 2);
 		$("#hp").val((avghp + conmod)* $("#hd").val());
-		console.log(avghp)
+	})
+	
+	$("#msbcr tr").not(":has(th)").click(function() {
+		$("#hp").val($(this).children("td:eq(3)").html().split("-")[0])
+		$("#ac").val($(this).children("td:eq(2)").html())
+		$("#dpr").val($(this).children("td:eq(5)").html().split("-")[0])
+		$("#attackbonus").val($(this).children("td:eq(4)").html())
+		calculatecr();
 	})
 }
 
@@ -204,7 +222,16 @@ function calculatecr() {
 	if (cr == "0.0625") cr = "1/8"
 	if (cr.indexOf(".") !== -1) cr = Math.round(cr);
 	
-	$("#output").html("Challenge Rating: "+cr);
+	var finalcr = 0;
+	for (var i = 0; i < msbcr.cr.length; i++) {
+		if (msbcr.cr[i]._cr === cr) {
+			finalcr = i;
+			break;
+		}
+	}
+	
+	$("#output").html("<h4>Challenge Rating: "+cr+"</h4>");
+	$("#output").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
 }
 </script>
 	
@@ -274,9 +301,9 @@ function calculatecr() {
 			</label>
 			<input type="checkbox" id="saveinstead" value="0"><br>
 			<input type="button" id="calculate" value="Calculate"><br><br>
-			<div id="output"></div>
+			<div id="output">Waiting for calculation...</div>
+			<br>
 			<small>
-				<br>
 				<p>CR is the average of defensive CR and offensive CR.</p>
 				<p>Defensive CR is based on the MSbCR chart to the right. Match HP to a given CR, then offset that by half the difference of the creature's AC from that CR's AC value.</p>
 				<p>Similarly, offensive CR is based on damage per round (DPR) offset by their attack bonus or save DC difference. Use whichever of the two is more pertitent to the creature's damage output.</p>
