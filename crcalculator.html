@@ -56,16 +56,24 @@ footer {
 	float: right;
 }
 
+#crcalc select { 
+	margin-left: -1.1em;
+	border-radius: 3px;
+}
 #crcalc input[type=checkbox] {
 	width: auto;
 }
 
 #crcalc input#hd {
 	float: none;
-	width: 2em;
-	border: 1px solid transparent;
+	width: 1.5em;
 }
 
+input[type=number]#hd::-webkit-inner-spin-button, 
+input[type=number]#hd::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
 #crcalc label span.explanation {
 	display: none;
@@ -81,12 +89,6 @@ footer {
 	display: block;
 	width: 18em;
 	font-size: 0.8em;
-}
-
-input[type=number]#hd::-webkit-inner-spin-button, 
-input[type=number]#hd::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
 }
 
 #crcalc input#hd:focus {
@@ -116,6 +118,10 @@ input[type=number]#hd::-webkit-outer-spin-button {
 	padding: 0.2em;
 	background: lightgrey;
 	border-radius: 0.2em;
+}
+
+#instructions p {
+	font-size: small;
 }
 </style>
 
@@ -315,12 +321,6 @@ function calculatecr() {
 			<input type="checkbox" id="saveinstead" value="0"><br>
 			<input type="button" id="calculate" value="Calculate"><br><br>
 			<div id="output">Waiting for calculation...</div>
-			<br>
-			<small>
-				<p>CR is the average of defensive CR and offensive CR.</p>
-				<p>Defensive CR is based on the MSbCR chart to the right. Match HP to a given CR, then offset that by half the difference of the creature's AC from that CR's AC value.</p>
-				<p>Similarly, offensive CR is based on damage per round (DPR) offset by their attack bonus or save DC difference. Use whichever of the two is more pertitent to the creature's damage output.</p>
-			</small>
 		</div>
 		<hr>
 		<div>
@@ -351,10 +351,6 @@ function calculatecr() {
 				</span>
 			</label><input type="number" id="con" value="10" min="1" max="30"><br>
 			<input type="button" id="calculatehp" value="Calculate Average HP"><br>
-			<small>
-				<br>
-				<p>You can calculate average HP based on hit die. Adjust the size, number of hit dice, and the Constitution modifier of the creature.</p>
-			</small>
 		</div>
 	</form>
 </div>
@@ -371,15 +367,24 @@ function calculatecr() {
 			<th>Save DC</th>
 		</tr>
 	</table>
+	<br>
+	<small>
+		<p><strong>Protip:</strong> Click a row to load in that CR's average stats.</p>
+	</small>
 </div>
 
 </div>
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-12" id="instructions">
 		<h3>Instructions</h3>
-		<small>
-			<p>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273 through 283.</p>
-		</small>
+		<p>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273 through 283.</p>
+		<h4>What is CR?</h4>
+		<p>CR is how strong a creature is. It is the average of two values: defensive CR and offensive CR.</p>
+		<p>Defensive CR is based on the MSbCR chart to the right. Match HP to a given CR, then offset that by half the difference of the creature's AC from that CR's AC value.</p>
+		<p>Similarly, offensive CR is based on damage per round (DPR) offset by their attack bonus or save DC difference. Use whichever of the two is more pertitent to the creature's damage output.</p>
+		<h4>Calculating Hit Points</h4>
+		<p>You can calculate average HP based on hit die. Adjust the size, number of hit dice, and the Constitution modifier of the creature.</p>
+		
 	</div>
 </div>
 
