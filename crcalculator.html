@@ -236,7 +236,7 @@ function calculatecr() {
 <div class="row">
 <div class="col-sm-6">
 	<h3>Stats</h3>
-	<form id="crcalc">
+	<form id="crcalc" autocomplete="off">
 		<div>
 			<h4>CR Calculation</h4>
 			<label for="hp">Hit Points
@@ -273,7 +273,8 @@ function calculatecr() {
 				</span>
 			</label>
 			<input type="checkbox" id="saveinstead" value="0"><br>
-			<input type="button" id="calculate" value="Calculate"><br>
+			<input type="button" id="calculate" value="Calculate"><br><br>
+			<div id="output"></div>
 			<small>
 				<br>
 				<p>CR is the average of defensive CR and offensive CR.</p>
@@ -316,7 +317,6 @@ function calculatecr() {
 			</small>
 		</div>
 	</form>
-	<div id="output"></div>
 </div>
 <div class="col-sm-6">
 	<h4>Monster Statistics by Challenge Rating</h4>
