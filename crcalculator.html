@@ -47,9 +47,50 @@ footer {
 	font-size: 90%;
 }
 
-#crcalc input[type=number], #crcalc input[type=checkbox] {
-	position: absolute;
+#crcalc input[type=number], #crcalc input[type=checkbox], .inputwrap {
 	left: 15em;
+	text-align: right;
+	clear: both;
+	margin-bottom: 2px;
+	width: 6em;
+	float: right;
+}
+
+#crcalc input[type=checkbox] {
+	width: auto;
+}
+
+#crcalc input#hd {
+	float: none;
+	width: 2em;
+	border: 1px solid transparent;
+}
+
+
+#crcalc label span.explanation {
+	display: none;
+	font-weight: normal;
+	position: absolute;
+	background: white;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	padding: 3px;
+}
+
+#crcalc label:hover span.explanation {
+	display: block;
+	width: 18em;
+	font-size: 0.8em;
+}
+
+input[type=number]#hd::-webkit-inner-spin-button, 
+input[type=number]#hd::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#crcalc input#hd:focus {
+	border: 1px solid initial;
 }
 
 #msbcr {
@@ -102,6 +143,23 @@ function loadpage() {
 		if (!$(this).is(":checked") && $("#attackbonus").val() === "13") $("#attackbonus").val("3");
 		if ($(this).is(":checked") && $("#attackbonus").val() === "3") $("#attackbonus").val("13");
 	});
+	
+	$("select#size").change(function() {
+		var newsize = $(this).val();
+		if (newsize == "Tiny") $("#hdval").html("d4")
+		if (newsize == "Small") $("#hdval").html("d6")
+		if (newsize == "Medium") $("#hdval").html("d8")
+		if (newsize == "Large") $("#hdval").html("d10")
+		if (newsize == "Huge") $("#hdval").html("d12")
+		if (newsize == "Gargantuan") $("#hdval").html("d20")
+	});
+	
+	$("#calculatehp").click(function() {
+		var avghp = $("#hdval").html().split("d")[1]/2+1;
+		var conmod = Math.floor(($("#con").val() - 10) / 2);
+		$("#hp").val((avghp + conmod)* $("#hd").val());
+		console.log(avghp)
+	})
 }
 
 function calculatecr() {
@@ -179,15 +237,86 @@ function calculatecr() {
 <div class="col-sm-6">
 	<h3>Stats</h3>
 	<form id="crcalc">
-		<label for="hp">Hit Points</label> <input type="number" id="hp" placeholder="Average HP" value="1"><br />
-		<label for="ac">Armor Class</label> <input type="number" id="ac" placeholder="AC" value="13"><br />
-		<label for="dpr">Damage Per Round</label> <input type="number" id="dpr" placeholder="Average DPR" value="1"><br />
-		<label for="attackbonus">Attack Bonus</label> <input type="number" id="attackbonus" placeholder="Attack Bonus" value="3"> <br />
-		<input type="checkbox" id="saveinstead" value="0"><label for="saveinstead">Use Saves?</label><br />
-		<input type="button" id="calculate" value="Calculate">
+		<div>
+			<h4>CR Calculation</h4>
+			<label for="hp">Hit Points
+				<span class="explanation">
+					A creature's hit points determine its defensive CR before it is adjusted by its AC.
+				</span>
+			</label>
+			<input type="number" id="hp" placeholder="Average HP" value="1" min="0" max="850"><br />
+			
+			<label for="ac">Armor Class
+				<span class="explanation">
+					A creature's AC adjusts its defensive CR.
+				</span>
+			</label>
+			<input type="number" id="ac" placeholder="AC" value="13" min="1" max="40"><br />
+			
+			<label for="dpr">Damage Per Round
+				<span class="explanation">
+					A creature's damage per round (DPR) determines its offensive CR, which is offset by its attack bonus or save DC. DPR is determined by averaging its maximum damage output (taking the average of dice rolls, ignoring crits and accuracy) over three rounds. Areas of effect are treated as though they hit two creatures, which fail any involved saving throws.
+				</span>
+			</label>
+			<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br />
+			
+			<label for="attackbonus">Attack Bonus/Save DC
+				<span class="explanation">
+					A creature's attack bonus or save DC adjuts its offensive CR.
+				</span>
+			</label>
+			
+			<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br>
+			<label for="saveinstead">Use Saves?
+				<span class="explanation">
+					If a creature's damage output is more dependent on save-based abilities, its save DC is used for adjusting its offensive CR instead of its attack bonus.
+				</span>
+			</label>
+			<input type="checkbox" id="saveinstead" value="0"><br>
+			<input type="button" id="calculate" value="Calculate"><br>
+			<small>
+				<br>
+				<p>CR is the average of defensive CR and offensive CR.</p>
+				<p>Defensive CR is based on the MSbCR chart to the right. Match HP to a given CR, then offset that by half the difference of the creature's AC from that CR's AC value.</p>
+				<p>Similarly, offensive CR is based on damage per round (DPR) offset by their attack bonus or save DC difference. Use whichever of the two is more pertitent to the creature's damage output.</p>
+			</small>
+		</div>
+		<hr>
+		<div>
+			<h4>Hit Points</h4>
+			<label for="size">Size:
+				<span class="explanation">
+					A creature's size determines the size of its individual hit dice.
+				</span>
+			</label>
+				<span class="inputwrap">
+					<select id="size">
+						<option value="Tiny">Tiny</option>
+						<option value="Small">Small</option>
+						<option value="Medium" selected>Medium</option>
+						<option value="Large">Large</option>
+						<option value="Huge">Huge</option>
+						<option value="Gargantuan">Gargantuan</option>
+					</select>
+				</span><br />
+			<label for="hd">Hit Dice:
+				<span class="explanation">
+					Unlike player characters, the number of hit dice an NPC gets is completely arbitrary. Adjust this amount to taste.
+				</span>
+			</label> <span class="inputwrap"><input type="number" id="hd" value="1"><span id="hdval">d8</span></span><br />
+			<label for="con">Constitution:
+				<span class="explanation">
+					A creature's HP is increases by its Constitution modifier for each hit die it has.
+				</span>
+			</label><input type="number" id="con" value="10" min="1" max="30"><br>
+			<input type="button" id="calculatehp" value="Calculate Average HP"><br>
+			<small>
+				<br>
+				<p>You can calculate average HP based on hit die. Adjust the size, number of hit dice, and the Constitution modifier of the creature.</p>
+			</small>
+		</div>
 	</form>
 	<div id="output"></div>
-	<small>Be sure to read <em>Dungeon Master's Guide</em>, pages 273 through 283.</small>
 </div>
 <div class="col-sm-6">
 	<h4>Monster Statistics by Challenge Rating</h4>
@@ -205,6 +334,15 @@ function calculatecr() {
 </div>
 
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<h3>Instructions</h3>
+		<small>
+			<p>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273 through 283.</p>
+		</small>
+	</div>
+</div>
+
 </main>
 
 
@@ -217,6 +355,11 @@ Would load it in but I want this for offline use too
 var items;
 var tabledefault;
 var msbcr = {"cr":[{"_cr":"0","pb":"2","ac":"13","hpmin":"1","hpmax":"6","attackbonus":"3","dprmin":"0","dprmax":"1","savedc":"13"},{"_cr":"1/8","pb":"2","ac":"13","hpmin":"7","hpmax":"35","attackbonus":"3","dprmin":"2","dprmax":"3","savedc":"13"},{"_cr":"1/4","pb":"2","ac":"13","hpmin":"36","hpmax":"49","attackbonus":"3","dprmin":"4","dprmax":"5","savedc":"13"},{"_cr":"1/2","pb":"2","ac":"13","hpmin":"50","hpmax":"70","attackbonus":"3","dprmin":"6","dprmax":"8","savedc":"13"},{"_cr":"1","pb":"2","ac":"13","hpmin":"71","hpmax":"85","attackbonus":"3","dprmin":"9","dprmax":"14","savedc":"13"},{"_cr":"2","pb":"2","ac":"13","hpmin":"86","hpmax":"100","attackbonus":"3","dprmin":"15","dprmax":"20","savedc":"13"},{"_cr":"3","pb":"2","ac":"13","hpmin":"101","hpmax":"115","attackbonus":"4","dprmin":"21","dprmax":"26","savedc":"13"},{"_cr":"4","pb":"2","ac":"14","hpmin":"116","hpmax":"130","attackbonus":"5","dprmin":"27","dprmax":"32","savedc":"14"},{"_cr":"5","pb":"3","ac":"15","hpmin":"131","hpmax":"145","attackbonus":"6","dprmin":"33","dprmax":"38","savedc":"15"},{"_cr":"6","pb":"3","ac":"15","hpmin":"146","hpmax":"160","attackbonus":"6","dprmin":"39","dprmax":"44","savedc":"15"},{"_cr":"7","pb":"3","ac":"15","hpmin":"161","hpmax":"175","attackbonus":"6","dprmin":"45","dprmax":"50","savedc":"15"},{"_cr":"8","pb":"3","ac":"16","hpmin":"176","hpmax":"190","attackbonus":"7","dprmin":"51","dprmax":"56","savedc":"16"},{"_cr":"9","pb":"4","ac":"16","hpmin":"191","hpmax":"205","attackbonus":"7","dprmin":"57","dprmax":"62","savedc":"16"},{"_cr":"10","pb":"4","ac":"17","hpmin":"206","hpmax":"220","attackbonus":"7","dprmin":"63","dprmax":"68","savedc":"16"},{"_cr":"11","pb":"4","ac":"17","hpmin":"221","hpmax":"235","attackbonus":"8","dprmin":"69","dprmax":"74","savedc":"17"},{"_cr":"12","pb":"4","ac":"17","hpmin":"236","hpmax":"250","attackbonus":"8","dprmin":"75","dprmax":"80","savedc":"18"},{"_cr":"13","pb":"5","ac":"18","hpmin":"251","hpmax":"265","attackbonus":"8","dprmin":"81","dprmax":"86","savedc":"18"},{"_cr":"14","pb":"5","ac":"18","hpmin":"266","hpmax":"280","attackbonus":"8","dprmin":"87","dprmax":"92","savedc":"18"},{"_cr":"15","pb":"5","ac":"18","hpmin":"281","hpmax":"295","attackbonus":"8","dprmin":"93","dprmax":"98","savedc":"18"},{"_cr":"16","pb":"5","ac":"18","hpmin":"296","hpmax":"310","attackbonus":"9","dprmin":"99","dprmax":"104","savedc":"18"},{"_cr":"17","pb":"5","ac":"19","hpmin":"311","hpmax":"325","attackbonus":"10","dprmin":"105","dprmax":"110","savedc":"19"},{"_cr":"18","pb":"6","ac":"19","hpmin":"326","hpmax":"340","attackbonus":"10","dprmin":"111","dprmax":"116","savedc":"19"},{"_cr":"19","pb":"6","ac":"19","hpmin":"341","hpmax":"355","attackbonus":"10","dprmin":"117","dprmax":"122","savedc":"19"},{"_cr":"20","pb":"6","ac":"19","hpmin":"356","hpmax":"400","attackbonus":"10","dprmin":"123","dprmax":"140","savedc":"19"},{"_cr":"21","pb":"7","ac":"19","hpmin":"401","hpmax":"445","attackbonus":"11","dprmin":"141","dprmax":"158","savedc":"20"},{"_cr":"22","pb":"7","ac":"19","hpmin":"446","hpmax":"490","attackbonus":"11","dprmin":"159","dprmax":"176","savedc":"20"},{"_cr":"23","pb":"7","ac":"19","hpmin":"491","hpmax":"535","attackbonus":"11","dprmin":"177","dprmax":"194","savedc":"20"},{"_cr":"24","pb":"7","ac":"19","hpmin":"536","hpmax":"580","attackbonus":"11","dprmin":"195","dprmax":"212","savedc":"21"},{"_cr":"25","pb":"8","ac":"19","hpmin":"581","hpmax":"625","attackbonus":"12","dprmin":"213","dprmax":"230","savedc":"21"},{"_cr":"26","pb":"8","ac":"19","hpmin":"626","hpmax":"670","attackbonus":"12","dprmin":"231","dprmax":"248","savedc":"21"},{"_cr":"27","pb":"8","ac":"19","hpmin":"671","hpmax":"715","attackbonus":"13","dprmin":"249","dprmax":"266","savedc":"22"},{"_cr":"28","pb":"8","ac":"19","hpmin":"716","hpmax":"760","attackbonus":"13","dprmin":"267","dprmax":"284","savedc":"22"},{"_cr":"29","pb":"9","ac":"19","hpmin":"760","hpmax":"805","attackbonus":"13","dprmin":"285","dprmax":"302","savedc":"22"},{"_cr":"30","pb":"9","ac":"19","hpmin":"805","hpmax":"850","attackbonus":"14","dprmin":"303","dprmax":"320","savedc":"23"}]}
+</script>
+
+<script type="text/javascript">
+/*! droll v0.2.0  http://github.com/thebinarypenguin/droll */
+!function(a){"use strict";function b(){this.numDice=0,this.numSides=0,this.modifier=0,this.minResult=0,this.maxResult=0,this.avgResult=0}function c(){this.rolls=[],this.modifier=0,this.total=0}var d={};c.prototype.toString=function(){return 1===this.rolls.length&&0===this.modifier?this.rolls[0]+"":this.rolls.length>1&&0===this.modifier?this.rolls.join(" + ")+" = "+this.total:1===this.rolls.length&&this.modifier>0?this.rolls[0]+" + "+this.modifier+" = "+this.total:this.rolls.length>1&&this.modifier>0?this.rolls.join(" + ")+" + "+this.modifier+" = "+this.total:1===this.rolls.length&&this.modifier<0?this.rolls[0]+" - "+Math.abs(this.modifier)+" = "+this.total:this.rolls.length>1&&this.modifier<0?this.rolls.join(" + ")+" - "+Math.abs(this.modifier)+" = "+this.total:void 0},d.parse=function(a){var c=null,d=new b;return(c=a.match(/^([1-9]\d*)?d([1-9]\d*)([+-]\d+)?$/i))?(d.numDice=c[1]-0||1,d.numSides=c[2]-0,d.modifier=c[3]-0||0,d.minResult=1*d.numDice+d.modifier,d.maxResult=d.numDice*d.numSides+d.modifier,d.avgResult=(d.maxResult-d.minResult)/2,d):!1},d.validate=function(a){return d.parse(a)?!0:!1},d.roll=function(a){var b=null,e=new c;if(b=d.parse(a),!b)return!1;for(var f=0;f<b.numDice;f++)e.rolls[f]=1+Math.floor(Math.random()*b.numSides);e.modifier=b.modifier;for(var g=0;g<e.rolls.length;g++)e.total+=e.rolls[g];return e.total+=e.modifier,e},"undefined"!=typeof module&&module.exports?module.exports=d:a.droll=d}(this);
 </script>
 
 <script type="text/javascript">
