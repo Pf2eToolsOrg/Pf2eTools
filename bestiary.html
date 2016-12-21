@@ -328,7 +328,6 @@ function loadmonsters() {
 			type = type.split(", Volo's Guide")[0];
 			source = source[source.length - 1]
 			origsource = parsesourcename(source);
-			console.log(origsource)
 			source = parsesource(source);
 			
 			var cr = monsters[i].cr;
@@ -367,7 +366,17 @@ function loadmonsters() {
 		
 		var monlist = new List("monstercontainer", options)
 		
-		$("ul#monsters li").click(function() {
+		$("ul#monsters li").mousedown(function(e) {
+			if (e.which === 2) {
+				console.log("#"+$(this).attr("data-link"))
+				window.open("#"+$(this).attr("data-link"), "_blank").focus();
+				e.preventDefault();
+				e.stopPropagation();
+				return;
+			}
+		});
+		
+		$("ul#monsters li").click(function(e) {
 			usemonster($(this).attr("id"));
 			window.location = "#"+$(this).attr("data-link");
 		});
@@ -381,7 +390,6 @@ function loadmonsters() {
 			var sourcefilter = $("select.sourcefilter").val();
 			var crfilter = "CR "+$("select.crfilter").val()+" ";
 			
-			console.log(sourcefilter);
 			monlist.filter(function(item) {
 				var righttype = false;
 				var rightsource = false;
@@ -571,7 +579,7 @@ function loadmonsters() {
 			
 			if (!reactions.length) {
 				var reactionname = reactions.name;
-				console.log(reactionname);
+
 				var reactiontext = reactions.text;
 				var reactiontexthtml = "<span>"+reactiontext+"</span>";
 				for (var n = 1; n < reactiontext.length; n++) {
@@ -584,7 +592,7 @@ function loadmonsters() {
 			
 			if (reactions.length) for (var i = reactions.length-1; i >= 0; i--) {
 				var reactionname = reactions[i].name;
-				console.log(reactionname);
+
 				var reactiontext = reactions[i].text;
 				var reactiontexthtml = "<span>"+reactiontext+"</span>";
 				for (var n = 1; n < reactiontext.length; n++) {
