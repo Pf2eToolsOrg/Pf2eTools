@@ -667,28 +667,23 @@ function loadmonsters() {
 			for (var i = legendaries.length-1; i >= 0; i--) {
 				var legendaryname = "";
 				var legendarytext = legendaries[i].text;
-				var legendarytexthtml = "<span>"+legendarytext+"</span>";
+				var legendarytexthtml = "";
 				
 				if (legendaries[i].name) {
 					legendaryname = legendaries[i].name+".";
-				} else {
-					legendarytexthtml = "<p>"+legendarytext+"</p>";
-				}
+				} 
 				
 				
 				var renderedcount = 0
-				for (var n = 1; n < legendarytext.length; n++) {
-					if (!legendarytext[n]) {
-						legendarytexthtml = legendarytexthtml + "<br />";
-						continue;
-					}
+				for (var n = 0; n < legendarytext.length; n++) {
+					if (!legendarytext[n]) continue;
 					
 					renderedcount++;
 					var firstsecond = ""
 					if (renderedcount === 1) firstsecond = "first ";
 					if (renderedcount === 2) firstsecond = "second ";
 					
-					legendarytexthtml = legendarytexthtml + "<p class='"+renderedcount+"'>"+legendarytext[n]+"</p>";
+					legendarytexthtml = legendarytexthtml + "<p class='"+firstsecond+"'>"+legendarytext[n]+"</p>";
 				}
 				
 				$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary"+i+"'><span class='name'>"+legendaryname+"</span> "+legendarytexthtml+"</td></tr>");
