@@ -51,7 +51,7 @@ input.search {
 	width: 62%;
 }
 
-div#filtertools {
+form#filtertools {
 	font-size: 0.8em;
 }
 
@@ -362,7 +362,7 @@ function loaditems() {
 			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
 		} else $("ul.list li:eq(0)").click();
 		
-		$("div#filtertools select").change(function(){
+		$("form#filtertools select").change(function(){
 			var typefilter = "Type: "+$("select.typefilter").val();
 			var sourcefilter = $("select.sourcefilter").val();
 			
@@ -522,7 +522,7 @@ function loaditems() {
 	<h3>
 		<input type="text" id="search" class="search" placeholder="Find item...">
 	</h3>
-	<div id="filtertools">
+	<form id="filtertools">
 		<span class="sortlabel">
 			<span class="sort" sort="name" sortby="asc">Name</span>
 			<span class="sort" sort="source" sortby="asc">Source</span>
@@ -534,7 +534,7 @@ function loaditems() {
 		<select class="typefilter">
 			<option value="All">All Types</option>
 		</select>
-	</div>
+	</form>
 	<h3>Mundane</h3>
 		<ul class="list mundane">
 	

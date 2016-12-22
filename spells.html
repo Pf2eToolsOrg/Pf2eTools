@@ -51,7 +51,7 @@ input.search {
 	width: 62%;
 }
 
-div#filtertools {
+form#filtertools {
 	font-size: 0.8em;
 }
 
@@ -255,10 +255,6 @@ function parsespelllevel (level) {
 	if (level === "1") return level+"st";
 	return level+"th";
 }
-function tagcontent (curitem, tag, multi=false) {
-if (!curitem.getElementsByTagName(tag).length) return false;
-return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
-}
 
 function asc_sort(a, b){
     return ($(b).text()) < ($(a).text()) ? 1 : -1;    
@@ -283,7 +279,7 @@ function loadspells() {
 			var isritual="";
 			if (curspell.ritual === "YES") isritual = " (ritual)";
 			
-			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
 			
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -324,8 +320,8 @@ function loadspells() {
 		
 		$("ul.list li").mousedown(function(e) {
 			if (e.which === 2) {
-				console.log("#"+$(this).attr("data-link"))
-				window.open("#"+$(this).attr("data-link"), "_blank").focus();
+				console.log("#"+$(this).attr("data-link").toLowerCase())
+				window.open("#"+$(this).attr("data-link").toLowerCase(), "_blank").focus();
 				e.preventDefault();
 				e.stopPropagation();
 				return;
@@ -334,14 +330,14 @@ function loadspells() {
 		
 		$("ul.list li").click(function(e) {
 			usespell($(this).attr("id"));
-			window.location = "#"+$(this).attr("data-link");
+			window.location = "#"+$(this).attr("data-link").toLowerCase();
 		});
 		
 		if (window.location.hash.length) {
-			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+			$("ul.list li[data-link='"+window.location.hash.split("#")[1].toLowerCase()+"']:eq(0)").click();
 		} else $("ul.list li:eq(0)").click();
 		
-		$("div#filtertools select").change(function(){
+		$("form#filtertools select").change(function(){
 			var levelfilter = $("select.levelfilter").val();
 			if (levelfilter !== "All") {
 				levelfilter = parsespelllevel (levelfilter);
@@ -369,9 +365,9 @@ function loadspells() {
 				return false;
 			});
 		});	
-	}
+}
 		
-	function usespell (id) {
+function usespell (id) {
 			$("#stats").html(tabledefault);
 			var spelllist = spelldata.compendium.spell;
 			var curspell = spelllist[id];
@@ -444,7 +440,7 @@ function loadspells() {
 <div class="row">
 <div class="col-sm-6" id="listcontainer">
 	<h3><input type="text" id="search" class="search" placeholder="Find spell..."></h3>
-	<div id="filtertools">	
+	<form id="filtertools">	
 		<span class="sortlabel">
 			<span class="sort" data-sort="name">Name</span>
 			<span class="sort" data-sort="level">Level</span>
@@ -463,7 +459,7 @@ function loadspells() {
 		<select class="classfilter">
 			<option value="All">All Classes</option>
 		</select>
-	</div>
+	</form>
 
 		<ul class="list spells" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 	
