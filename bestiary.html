@@ -244,12 +244,13 @@ form#filtertools {
 		padding-bottom: 0px!important;
 	}
 	
-	tr.trait p:first-of-type, tr.action p:first-of-type, tr.reaction p:first-of-type, tr.legendary p:first-of-type {
-		/* margin-top: 1em!important; */
+	p.first {
 		display: inline;
-		
 	}
 	
+	p.second {
+		margin-top: 1em;
+	}
 	tr td > p.spells {
 		margin-top: 1em!important;
 	}
@@ -556,13 +557,20 @@ function loadmonsters() {
 
 				var traittext = traits[i].text;
 				var traittexthtml = "";
-			//	var traittexthtml = "<span>"+traittext[0]+"</span>";
+				var renderedcount = 0;
 				for (var n = 0; n < traittext.length; n++) {
 					if (!traittext[n]) continue;
-					var spells = "";
-					if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = " class='spells'";
-					if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = " class='spells'";
-					traittexthtml = traittexthtml + "<p"+spells+">"+traittext[n]+"</p>";
+					
+					renderedcount++;
+					var firstsecond = ""
+					if (renderedcount === 1) firstsecond = "first ";
+					if (renderedcount === 2) firstsecond = "second ";
+		
+					var spells = "";	
+					if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
+					if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
+					
+					traittexthtml = traittexthtml + "<p class='"+firstsecond+spells+"'>"+traittext[n]+"</p>";
 				}
 				
 				$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+i+"'><span class='name'>"+traitname+".</span> "+traittexthtml+"</td></tr>");
@@ -584,15 +592,22 @@ function loadmonsters() {
 
 			var actions = mon.action;
 			$("tr.action").remove();
+
 			if (actions) for (var i = actions.length-1; i >= 0; i--) {
 				var actionname = actions[i].name;
 
 				var actiontext = actions[i].text;
 				var actiontexthtml = "";
-				//var actiontexthtml = "<span>"+actiontext+"</span>";
+				var renderedcount = 0;
 				for (var n = 0; n < actiontext.length; n++) {
 					if (!actiontext[n]) continue;
-					actiontexthtml = actiontexthtml + "<p>"+actiontext[n]+"</p>";
+					
+					renderedcount++;
+					var firstsecond = ""
+					if (renderedcount === 1) firstsecond = "first ";
+					if (renderedcount === 2) firstsecond = "second ";
+					
+					actiontexthtml = actiontexthtml + "<p class='"+firstsecond+"'>"+actiontext[n]+"</p>";
 				}
 				
 				$("tr#actions").after("<tr class='action'><td colspan='6' class='action"+i+"'><span class='name'>"+actionname+".</span> "+actiontexthtml+"</td></tr>");
@@ -611,10 +626,16 @@ function loadmonsters() {
 
 				var reactiontext = reactions.text;
 				var reactiontexthtml = "";
-				//var reactiontexthtml = "<span>"+reactiontext+"</span>";
+				var renderedcount = 0
 				for (var n = 0; n < reactiontext.length; n++) {
 					if (!reactiontext[n]) continue;
-					reactiontexthtml = reactiontexthtml + "<p>"+reactiontext[n]+"</p>";
+					
+					renderedcount++;
+					var firstsecond = ""
+					if (renderedcount === 1) firstsecond = "first ";
+					if (renderedcount === 2) firstsecond = "second ";
+					
+					reactiontexthtml = reactiontexthtml + "<p class='"+firstsecond+"'>"+reactiontext[n]+"</p>";
 				}
 				
 				$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction"+i+"'><span class='name'>"+reactionname+".</span> "+reactiontexthtml+"</td></tr>");
@@ -655,12 +676,19 @@ function loadmonsters() {
 				}
 				
 				
+				var renderedcount = 0
 				for (var n = 1; n < legendarytext.length; n++) {
 					if (!legendarytext[n]) {
 						legendarytexthtml = legendarytexthtml + "<br />";
 						continue;
 					}
-					legendarytexthtml = legendarytexthtml + "<p>"+legendarytext[n]+"</p>";
+					
+					renderedcount++;
+					var firstsecond = ""
+					if (renderedcount === 1) firstsecond = "first ";
+					if (renderedcount === 2) firstsecond = "second ";
+					
+					legendarytexthtml = legendarytexthtml + "<p class='"+renderedcount+"'>"+legendarytext[n]+"</p>";
 				}
 				
 				$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary"+i+"'><span class='name'>"+legendaryname+"</span> "+legendarytexthtml+"</td></tr>");
@@ -701,7 +729,7 @@ function loadmonsters() {
 		
 <div class="row">
 <div class="col-sm-5" id="monstercontainer">
-	<h3 style="vertical-align: top;"><input type="text" id="search" class="search" placeholder="Find monster..."></h3>
+	<h3 style="vertical-align: top;"><input type="search" id="search" class="search" placeholder="Find monster..."></h3>
 	
 	<form id="filtertools" autocomplete="off">	
 		<span class="sortlabel">
