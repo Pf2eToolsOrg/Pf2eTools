@@ -548,7 +548,8 @@ function loadmonsters() {
 				for (var n = 1; n < traittext.length; n++) {
 					if (!traittext[n]) continue;
 					var spells = "";
-					if (traitname.indexOf("Spellcasting") !== -1) spells = " class='spells'";
+					if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = " class='spells'";
+					if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = " class='spells'";
 					traittexthtml = traittexthtml + "<p"+spells+">"+traittext[n]+"</p>";
 				}
 				
