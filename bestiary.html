@@ -245,7 +245,17 @@ form#filtertools {
 	}
 	
 	tr.trait p:first-of-type, tr.action p:first-of-type, tr.reaction p:first-of-type, tr.legendary p:first-of-type {
+		/* margin-top: 1em!important; */
+		display: inline;
+		
+	}
+	
+	tr td > p.spells {
 		margin-top: 1em!important;
+	}
+	
+	tr td > p.spells ~ p.spells{
+		margin-top: 0em!important;
 	}
 </style>
 
@@ -545,8 +555,9 @@ function loadmonsters() {
 				var traitname = traits[i].name;
 
 				var traittext = traits[i].text;
-				var traittexthtml = "<span>"+traittext[0]+"</span>";
-				for (var n = 1; n < traittext.length; n++) {
+				var traittexthtml = "";
+			//	var traittexthtml = "<span>"+traittext[0]+"</span>";
+				for (var n = 0; n < traittext.length; n++) {
 					if (!traittext[n]) continue;
 					var spells = "";
 					if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = " class='spells'";
@@ -577,8 +588,9 @@ function loadmonsters() {
 				var actionname = actions[i].name;
 
 				var actiontext = actions[i].text;
-				var actiontexthtml = "<span>"+actiontext+"</span>";
-				for (var n = 1; n < actiontext.length; n++) {
+				var actiontexthtml = "";
+				//var actiontexthtml = "<span>"+actiontext+"</span>";
+				for (var n = 0; n < actiontext.length; n++) {
 					if (!actiontext[n]) continue;
 					actiontexthtml = actiontexthtml + "<p>"+actiontext[n]+"</p>";
 				}
@@ -598,8 +610,9 @@ function loadmonsters() {
 				var reactionname = reactions.name;
 
 				var reactiontext = reactions.text;
-				var reactiontexthtml = "<span>"+reactiontext+"</span>";
-				for (var n = 1; n < reactiontext.length; n++) {
+				var reactiontexthtml = "";
+				//var reactiontexthtml = "<span>"+reactiontext+"</span>";
+				for (var n = 0; n < reactiontext.length; n++) {
 					if (!reactiontext[n]) continue;
 					reactiontexthtml = reactiontexthtml + "<p>"+reactiontext[n]+"</p>";
 				}
