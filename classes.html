@@ -13,7 +13,7 @@ Feel free to use, edit, and redistribute this as you wish.
 I don't own any of the XML data anyway.
 -->
 
-<title>Classes.html 5e</title>
+<title>Classes - 5etools</title>
 
 
 <style type="text/css">
@@ -343,6 +343,7 @@ function loadspells() {
 		
 		$("ul.list li").click(function(e) {
 			useclass($(this).attr("id"));
+			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Classes";
 			window.location = "#"+$(this).attr("data-link");
 		});
 		

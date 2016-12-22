@@ -13,7 +13,7 @@ Feel free to use, edit, and redistribute this as you wish.
 I don't own any of the XML data anyway.
 -->
 
-<title>Spells.html 5e</title>
+<title>Spells - 5etools</title>
 
 
 <style type="text/css">
@@ -279,7 +279,7 @@ function loadspells() {
 			var isritual="";
 			if (curspell.ritual === "YES") isritual = " (ritual)";
 			
-			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' data-name='"+encodeURI(name)+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
 			
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -330,6 +330,7 @@ function loadspells() {
 		
 		$("ul.list li").click(function(e) {
 			usespell($(this).attr("id"));
+			document.title = decodeURI($(this).attr("data-name")) + " - 5etools Spells";
 			window.location = "#"+$(this).attr("data-link").toLowerCase();
 		});
 		

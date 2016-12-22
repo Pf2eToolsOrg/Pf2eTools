@@ -355,6 +355,7 @@ function loaditems() {
 		
 		$("ul.list li").click(function(e) {
 			useitem($(this).attr("id"));
+			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Items";
 			window.location = "#"+$(this).attr("data-link");
 		});
 		

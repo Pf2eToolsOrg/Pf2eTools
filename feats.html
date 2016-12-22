@@ -13,7 +13,7 @@ Feel free to use, edit, and redistribute this as you wish.
 I don't own any of the XML data anyway.
 -->
 
-<title>Feats.html 5e</title>
+<title>Feats - 5etools</title>
 
 
 <style type="text/css">
@@ -264,6 +264,7 @@ function loadfeats() {
 		
 		$("ul.list li").click(function(e) {
 			usefeat($(this).attr("id"));
+			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Feats";
 			window.location = "#"+$(this).attr("data-link");
 		});
 		

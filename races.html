@@ -13,7 +13,7 @@ Feel free to use, edit, and redistribute this as you wish.
 I don't own any of the XML data anyway.
 -->
 
-<title>Races.html 5e</title>
+<title>Races - 5etools</title>
 
 <style type="text/css">
 /*!
@@ -268,6 +268,7 @@ function loadraces() {
 		
 		$("ul.list li").click(function(e) {
 			userace($(this).attr("id"));
+			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Races";
 			window.location = "#"+$(this).attr("data-link");
 		});
 		

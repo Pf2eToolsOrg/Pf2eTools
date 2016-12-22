@@ -15,7 +15,7 @@ I don't own any of the XML data anyway.
 
 -->
 
-<title>Bestiary.html 5e</title>
+<title>Bestiary - 5etools</title>
 
 <style type="text/css">
 /*!
@@ -49,7 +49,7 @@ footer {
 }
 
 input.search {
-	width: 50%;
+	width: 100%;
 }
 
 form#filtertools {
@@ -379,6 +379,7 @@ function loadmonsters() {
 		
 		$("ul.list li").click(function(e) {
 			usemonster($(this).attr("id"));
+			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Bestiary";
 			window.location = "#"+$(this).attr("data-link");
 		});
 		
