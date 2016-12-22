@@ -558,13 +558,13 @@ function loadmonsters() {
 				$("tr.trait").children("td").children("p.spells").each(function() {
 					var spellslist = $(this).html();
 					if (spellslist[0] === "*") return;
-					spellslist = spellslist.split("): ")[1].split(", ");
+					spellslist = spellslist.split(": ")[1].split(", ");
 					for (var i = 0; i < spellslist.length; i++) {
 						spellslist[i] = "<a href='spells.html#"+encodeURI(spellslist[i].replace("*","")).toLowerCase()+"' target='_blank'>"+spellslist[i]+"</a>";
 						if (i !== spellslist.length-1) spellslist[i] = spellslist[i]+", ";
 					}
 					
-					$(this).html($(this).html().split("): ")[0]+"): "+spellslist.join(""))
+					$(this).html($(this).html().split(": ")[0]+": "+spellslist.join(""))
 				});
 					
 			}
