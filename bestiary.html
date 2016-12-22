@@ -570,7 +570,7 @@ function loadmonsters() {
 					if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 					if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 					
-					traittexthtml = traittexthtml + "<p class='"+firstsecond+spells+"'>"+traittext[n]+"</p>";
+					traittexthtml = traittexthtml + "<p class='"+firstsecond+spells+"'>"+traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g,"");+"</p>";
 				}
 				
 				$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+i+"'><span class='name'>"+traitname+".</span> "+traittexthtml+"</td></tr>");
