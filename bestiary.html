@@ -560,7 +560,7 @@ function loadmonsters() {
 					if (spellslist[0] === "*") return;
 					spellslist = spellslist.split(": ")[1].split(", ");
 					for (var i = 0; i < spellslist.length; i++) {
-						spellslist[i] = "<a href='spells.html#"+encodeURI(spellslist[i].replace("*","")).toLowerCase()+"' target='_blank'>"+spellslist[i]+"</a>";
+						spellslist[i] = "<a href='spells.html#"+encodeURI(spellslist[i].replace("*","").replace(/\s\(([^\)]+)\)/g, "").toLowerCase())+"' target='_blank'>"+spellslist[i]+"</a>";
 						if (i !== spellslist.length-1) spellslist[i] = spellslist[i]+", ";
 					}
 					
