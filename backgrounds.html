@@ -236,7 +236,7 @@ function loadbackgrounds () {
 	for (var i = 0; i < bglist.length; i++) {
 		var curbg = bglist[i];
 		var name = curbg.name;
-		$("ul.backgrounds").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
+		$("ul.backgrounds").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name.replace("Variant ","")+"</span></li>");
 	}
 
 	var options = {
