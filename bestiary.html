@@ -251,6 +251,20 @@ tr td > p.spells {
 tr td > p.spells ~ p.spells{
 	margin-top: 0em!important;
 }
+
+#stats span.roller {
+	color: #337ab7;
+	cursor: pointer;
+}
+
+#output {
+	margin-top: 1em;
+	padding: 0.2em 0.7em;
+	background: lightgrey;
+	border-radius: 0.2em;
+	display: none;
+}
+
 </style>
 
 
@@ -572,15 +586,14 @@ function usemonster (id) {
 		$("tr.trait").children("td").children("p.spells").each(function() {
 			var spellslist = $(this).html();
 			if (spellslist[0] === "*") return;
-			spellslist = spellslist.split(": ")[1].split(", ");
+			spellslist = spellslist.split(": ")[1].split(/\, (?!\+)/g);
 			for (var i = 0; i < spellslist.length; i++) {
-				spellslist[i] = "<a href='spells.html#"+encodeURI(spellslist[i].replace("*","").replace(/\s\(([^\)]+)\)/g, "").toLowerCase())+"' target='_blank'>"+spellslist[i]+"</a>";
+				spellslist[i] = "<a href='spells.html#"+encodeURI(spellslist[i].replace(/(\*)| \(([^\)]+)\)/g,"").toLowerCase().replace("'",""))+"' target='_blank'>"+spellslist[i]+"</a>";
 				if (i !== spellslist.length-1) spellslist[i] = spellslist[i]+", ";
 			}
 
 			$(this).html($(this).html().split(": ")[0]+": "+spellslist.join(""))
 		});
-
 	}
 
 	var actions = mon.action;
@@ -686,7 +699,34 @@ function usemonster (id) {
 			$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary"+i+"'><span class='name'></span> <span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn.</span></td></tr>");
 
 		}
+
+
 	}
+
+	// add click links for rollables
+	$("#stats #abilityscores td").each(function() {
+		$(this).wrapInner("<span class='roller' data-roll='1d20"+$(this).children(".mod").html()+"'></span>");
+	});
+
+	$("#skills,#saves").each(function() {
+		$(this).html($(this).html().replace(/\+\d+/g, "<span class='roller' data-roll='1d20$&'>$&</span>"))
+	});
+
+	$("#stats p").each(function() {
+		$(this).html($(this).html().replace(/\d+d\d+(\s?(\-|\+)\s?\d+\s?)?/g, "<span class='roller' data-roll='$&'>$&</span>"));
+
+		$(this).html($(this).html().replace(/(\-|\+)\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>"))
+
+	});
+
+	$("#stats span.roller").click(function() {
+		var roll =$(this).attr("data-roll").replace(/\s+/g, "");
+		var rollresult =  droll.roll(roll).total;
+		var name = $("#name").clone().children().remove().end().text();
+		$("div#output").prepend("<span>"+name + ": " + roll+" rolled for "+rollresult+"<br></span>").show();
+		$("div#output span:eq(10)").remove();
+	})
+
 };
 </script>
 
@@ -828,6 +868,7 @@ function usemonster (id) {
 							<tr><th class="border" colspan="6"></th></tr>
 						</table>
 					</div>
+					<div id="output"></div>
 				</div>
 			</div>
 		</main>
@@ -838,6 +879,7 @@ function usemonster (id) {
 		Would load it in but I want this for offline use too
 	-->
 	<script type="text/javascript" src="data/bestiary.json"></script>
+	<script type="text/javascript" src="js/droll.js"></script>
 	<script type="text/javascript" src="js/list.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
