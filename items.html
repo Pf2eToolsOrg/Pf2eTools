@@ -311,7 +311,7 @@ function loaditems() {
 
 		var destinationlist = "ul.list.mundane";
 		curitemstring = JSON.stringify (curitem)
-		if (curitem.rarity || curitem.type === "W" || curitemstring.indexOf("magic") !== -1 || curitemstring.indexOf("Devastation Orb") !== -1 || curitemstring.indexOf("Storm Boomerang") !== -1 || curitemstring.indexOf("Spiked Armor") !== -1 || curitemstring.indexOf("Requires Attunement") !== -1) {
+		if (curitem.rarity || curitem.type === "W" || curitemstring.search(/((magic)|(Devastation Orb)|(Storm Boomerang)|(\s?Spiked Armor\s?)|(Requires Attunement)|(Bottled Breath))/g) !== -1) {
 			destinationlist = "ul.list.magic";
 		}
 
