@@ -722,9 +722,9 @@ function usemonster (id) {
 	$(".spells span.roller").contents().unwrap();
 	$("#stats span.roller").click(function() {
 		var roll =$(this).attr("data-roll").replace(/\s+/g, "");
-		var rollresult =  droll.roll(roll).total;
+		var rollresult =  droll.roll(roll);
 		var name = $("#name").clone().children().remove().end().text();
-		$("div#output").prepend("<span>"+name + ": " + roll+" rolled for "+rollresult+"<br></span>").show();
+		$("div#output").prepend("<span>"+name + ": " + roll+" rolled for "+rollresult.total+" ("+rollresult.rolls.join(", ")+")<br></span>").show();
 		$("div#output span:eq(10)").remove();
 	})
 
