@@ -106,7 +106,7 @@ input[type=number]#hd::-webkit-outer-spin-button {
 }
 
 #output {
-	padding: 0.2em;
+	padding: 0.2em 0.7em;
 	background: lightgrey;
 	border-radius: 0.2em;
 }
@@ -143,7 +143,7 @@ function loadpage() {
 		calculatecr();
 	})
 
-	$("#crcalc input").focusout(function() {
+	$("#crcalc input").change(function() {
 		calculatecr();
 	})
 
@@ -151,7 +151,7 @@ function loadpage() {
 		var curval = parseInt($("#attackbonus").val());
 		if (!$(this).is(":checked")) $("#attackbonus").val(curval-10);
 		if ($(this).is(":checked")) $("#attackbonus").val(curval+10);
-		calculatcr();
+		calculatecr();
 	});
 
 	$("select#size").change(function() {
@@ -208,7 +208,10 @@ function calculatecr() {
 	for (var i = 0; i < msbcr.cr.length; i++) {
 		var curcr = msbcr.cr[i];
 		if (hp >= parseInt(curcr.hpmin) && hp <= parseInt(curcr.hpmax)) {
-			var defensedifference = i - Math.floor ((parseInt(curcr.ac) - ac) / 2);
+			var defensedifference = ac - parseInt(curcr.ac)
+			if (defensedifference > 0) defensedifference = Math.floor(defensedifference / 2);
+			if (defensedifference < 0) defensedifference = Math.ceil(defensedifference / 2);
+			defensedifference = i - defensedifference;
 			if (defensedifference < 0) defensedifference = 0;
 			if (defensedifference > msbcr.length) defensedifference = msbcr.length-1;
 			defensiveCR = msbcr.cr[defensedifference]._cr;
@@ -216,7 +219,10 @@ function calculatecr() {
 		if (dpr >= curcr.dprmin && dpr <= curcr.dprmax) {
 			var adjuster = parseInt(curcr.attackbonus);
 			if (usesavedc) adjuster = parseInt(curcr.savedc);
-			var attackdifference = i - Math.floor ((adjuster - attackbonus) / 2);
+			var attackdifference = adjuster - attackbonus;
+			if (attackdifference > 0) attackdifference = Math.floor(attackdifference / 2);
+			if (attackdifference < 0) attackdifference = Math.ceil(attackdifference / 2);
+			attackdifference = i - attackdifference;
 			if (attackdifference < 0) attackdifference = 0;
 			if (attackdifference > msbcr.length) attackdifference = msbcr.length-1;
 			offensiveCR = msbcr.cr[attackdifference]._cr;
@@ -244,13 +250,20 @@ function calculatecr() {
 		}
 	}
 
-	calculatehd();
+	var hitdice = calculatehd();
+	var hitdicesize = $("#hdval").html();
+	var conmod = Math.floor(($("#con").val() - 10) / 2);
 
 	window.location = "#"+$("#hp").val()+","+$("#ac").val()+","+$("#dpr").val()+","+$("#attackbonus").val()+","+usesavedc;
+
 	$("#output").html("<h4>Challenge Rating: "+cr+"</h4>");
-	$("#output").append("<p>Offensive CR: +"+offensiveCR+"</p>");
-	$("#output").append("<p>Defensive CR: +"+defensiveCR+"</p>");
+	$("#output").append("<p>Offensive CR: "+offensiveCR+"</p>");
+	$("#output").append("<p>Defensive CR: "+defensiveCR+"</p>");
 	$("#output").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
+	$("#output").append("<p>Hit Points: "+hp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
+	$("#output").append("<p>Armor Class: "+ac+"</p>");
+	$("#output").append("<p>Average Damage Per Round: "+dpr+"</p>");
+	$("#output").append("<p>"+(usesavedc?"Save DC: ":"Attack Bonus: +")+attackbonus+"</p>");
 }
 
 function calculatehd() {
@@ -259,6 +272,7 @@ function calculatehd() {
 	var curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
 	if (!curhd) curhd = 1;
 	$("#hd").val(curhd);
+	return curhd;
 }
 </script>
 
