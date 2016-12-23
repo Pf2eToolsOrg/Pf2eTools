@@ -341,9 +341,9 @@ function loadspells() {
 	});
 
 	$("ul.list li").click(function(e) {
+		window.location.hash = "#"+$(this).attr("data-link");
 		useclass($(this).attr("id"));
 		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Classes";
-		window.location = "#"+$(this).attr("data-link");
 	});
 
 	if (window.location.hash.length) {
