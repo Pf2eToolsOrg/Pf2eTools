@@ -270,7 +270,7 @@ function loadspells() {
 			var isritual="";
 			if (curspell.ritual === "YES") isritual = " (ritual)";
 
-			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' data-name='"+encodeURI(name)+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase().replace("'","")+"' data-name='"+encodeURI(name)+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
