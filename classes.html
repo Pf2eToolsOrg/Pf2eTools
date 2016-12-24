@@ -159,6 +159,7 @@ table.stats, #classtable table {
 	min-width: 200px;
 	background: #fdf1dc;
 	font-size: .9em;
+	position: relative;
 }
 
 table td, table th {
@@ -495,6 +496,7 @@ function useclass (id) {
 		$("select#subclasses span").first().click()
 
 		$(".features a").click(function() {
+			$("html, body").scrollTop( $("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
 			$("#stats").parent().scrollTop($("#stats").parent().scrollTop() + $("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top-70)
 		})
 
