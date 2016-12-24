@@ -207,6 +207,10 @@ table#stats #ability span, table#stats #size span, table#stats #speed span {
 	font-weight: normal!important;
 }
 
+table#stats tr.trait td p:first-of-type {
+	display: inline;
+}
+
 </style>
 
 
@@ -289,17 +293,13 @@ function userace (id) {
 	var traitlist = currace.trait;
 	$("tr.trait").remove();
 	for (var n = traitlist.length-1; n >= 0; n--) {
-		var traitname = traitlist[n].name;
-		var texthtml = "<span class='name'>"+traitname+".</span> ";
-		var textlist = traitlist[n].text;
-		texthtml = texthtml + "<span>"+textlist[0]+"</span> "
-
-		for (var i = 1; i < textlist.length; i++) {
-			if (!textlist[i]) continue;
-			texthtml = texthtml + "<p>"+textlist[i]+"</p>";
+		var traitname = traitlist[n].name+".";
+		if (traitname.indexOf("Variant") !== -1) {
+			traitname = traitname + "</span><p></p><span>"
 		}
+		texthtml = "<span class='name'>"+traitname+"</span> <p>"+traitlist[n].text.join("</p><p>")+"</p>"
 
-		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+i+"'>"+texthtml+"</td></tr>");
+		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+n+"'>"+texthtml+"</td></tr>");
 	}
 	return;
 };
