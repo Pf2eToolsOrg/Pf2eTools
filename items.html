@@ -248,7 +248,7 @@ function parsesource (src) {
 function parsetype (type) {
 	if (type === "G") return "Adventuring Gear"
 	if (type === "A") return "Ammunition"
-	if (type === "M") return "Weapon"
+	if (type === "M") return "Melee Weapon"
 	if (type === "R") return "Ranged Weapon"
 	if (type === "LA") return "Light Armor"
 	if (type === "MA") return "Medium Armor"
@@ -281,6 +281,7 @@ function parseproperty (property) {
 	if (property === "R") return "reach"
 	if (property === "2H") return "two-handed"
 	if (property === "V") return "versatile"
+	if (property === "S") return "special"
 	return "n/a"
 }
 
