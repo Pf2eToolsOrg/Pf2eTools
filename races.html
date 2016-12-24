@@ -294,7 +294,7 @@ function userace (id) {
 	$("tr.trait").remove();
 	for (var n = traitlist.length-1; n >= 0; n--) {
 		var traitname = traitlist[n].name+".";
-		if (traitname.indexOf("Variant") !== -1) {
+		if (traitname.indexOf("Variant Feature") !== -1) {
 			traitname = traitname + "</span><p></p><span>"
 		}
 		texthtml = "<span class='name'>"+traitname+"</span> <p>"+traitlist[n].text.join("</p><p>")+"</p>"
