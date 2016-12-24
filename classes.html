@@ -218,7 +218,12 @@ td#hp h5, td#prof h5, td#equipment h5 {
 	margin-bottom: 0px;
 }
 
+td.feature p {
+	padding: 0 1em;
+}
+
 .feature strong {
+	margin: 0.2em;
 	display: block;
 	border-bottom: 1px solid #922610;
 	color: #922610;
@@ -276,8 +281,19 @@ div#subclasses span.active {
 	color: white;
 }
 
+.subclass strong {
+	color: #337ab7;
+	border-bottom-color: #337ab7;
+}
+
 .feature.subfeature {
-	font-size: 0.8em;
+	font-size: 0.9em;
+	padding-left: 2em;
+}
+
+.feature.subfeature strong {
+	display: inline!important;
+	border-bottom: none!important;
 }
 </style>
 
@@ -355,7 +371,6 @@ function loadspells() {
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
-			console.log("#"+$(this).attr("data-link"))
 			window.open("#"+$(this).attr("data-link"), "_blank").focus();
 			e.preventDefault();
 			e.stopPropagation();
@@ -410,12 +425,13 @@ function useclass (id) {
 		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
 			var curfeature = curlevel.feature[a];
 
-			
+
 			if (curfeature._optional === "YES") {
 				subclasses.push(curfeature);
 			}
 
-			var subfeature = (curfeature.suboption === "YES") ? "subfeature" : "";
+			var subfeature = (curfeature.suboption === "YES") ? " subfeature" : "";
+			var issubclass = (curfeature.subclass !== "undefined" && curfeature.parent === curfeature.subclass)  ? "" : " subclass";
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
@@ -436,7 +452,7 @@ function useclass (id) {
 			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+encodeURI (curfeature.name)+"'>"+curfeature.name+"</a>")
 
 			// display features in bottom section
-			$("#features").after("<tr><td colspan='6' class='feature "+subfeature+"' data-subclass='"+curfeature.subclass+"'><strong id='feature"+encodeURI (curfeature.name)+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
+			$("#features").after("<tr><td colspan='6' class='feature"+subfeature+issubclass+"' data-subclass='"+curfeature.subclass+"'><strong id='feature"+encodeURI (curfeature.name)+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
 		}
 
 	}
@@ -446,12 +462,13 @@ function useclass (id) {
 	$("div#subclasses span").remove();
 	var prevsubclass = 0;
 	for (var i = 0; i < subclasses.length; i++) {
+		
 		if (typeof subclasses[i].issubclass !== "undefined" && subclasses[i].issubclass !== "YES") {
 			$(".feature[data-subclass='"+subclasses[i].subclass+"']").hide();
 			continue;
 		}
 
-		if (!prevsubclass) console.log(prevsubclass = subclasses[i].subclass);
+		if (!prevsubclass) prevsubclass = subclasses[i].subclass;
 
 		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+subclasses[i].name+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em>"+subclasses[i].name.split(": ")[1]+"</span>")
 
