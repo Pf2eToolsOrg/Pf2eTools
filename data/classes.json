@@ -6186,10 +6186,18 @@ var classdata = {
                         ]
                      },
                      {
-                        "name": "Fighting Style: Close Quarters Shooter",
+                        "name": "Fighting Style",
+                        "text": [
+                           "You adopt a particular style of fighting as your specialty. Choose a fighting style from the list of optional features. You can't take the same Fighting Style option more than once, even if you get to choose again."
+                        ]
+                     },
+                     {
+                        "name": "Fighting Style: Close Quarters Shooter (UA)",
                         "text": [
                            "When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6197,6 +6205,8 @@ var classdata = {
                         "text": [
                            "While you are wearing armor, you gain a +1 bonus to AC."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6204,6 +6214,8 @@ var classdata = {
                         "text": [
                            "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6211,13 +6223,17 @@ var classdata = {
                         "text": [
                            "When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll. The weapon must have the two-handed or versatile property for you to gain this benefit."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Fighting Style: Mariner",
+                        "name": "Fighting Style: Mariner (UA)",
                         "text": [
                            "As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6225,13 +6241,17 @@ var classdata = {
                         "text": [
                            "When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Fighting Style: Tunnel Fighter",
+                        "name": "Fighting Style: Tunnel Fighter (UA)",
                         "text": [
                            "As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6285,6 +6305,9 @@ var classdata = {
                            "Preserve Your Own Light. Delight in song and laughter, in beauty and art. If you allow the light to die in your own heart, you can't preserve it in the world.",
                            "Be the Light. Be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all your deeds."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Ancients",
+                        "parent": "Sacred Oath",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6301,6 +6324,9 @@ var classdata = {
                            "Honor. Treat others with fairness, and let your honorable deeds be an example to them. Do as much good as possible while causing the least amount of harm.",
                            "Duty. Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
                         ],
+                        "subclass": "Sacred Oath: Oath of Devotion",
+                        "parent": "Sacred Oath",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6314,6 +6340,9 @@ var classdata = {
                            "By Any Means Necessary. My qualms can't get in the way of exterminating my foes.",
                            "Restitution. If my foes wreak ruin on the world, it is because I failed to stop them. I must help those harmed by their misdeeds."
                         ],
+                        "subclass": "Sacred Oath: Oath of Vengeance",
+                        "parent": "Sacred Oath",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6322,6 +6351,9 @@ var classdata = {
                            "An Oathbreaker is a paladin who breaks his or her sacred oaths to pursue some dark ambition or serve an evil power. Whatever light burned in the paladin's heart has been extinguished. Only darkness remains.",
                            "A paladin must be evil and at least 3rd level to become an Oathbreaker. The paladin replaces the features specific to his or her Sacred Oath with Oathbreaker features."
                         ],
+                        "subclass": "Sacred Oath: Oathbreaker",
+                        "parent": "Sacred Oath",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6340,22 +6372,9 @@ var classdata = {
                            null,
                            "Responsibility: You must deal with the consequences of your actions, and you are responsible for fulfilling your duties and obligations."
                         ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Oath of the Ancients Channel Divinity: Nature's Wrath",
-                        "text": [
-                           "You can use your Channel Divinity to invoke primeval forces to ensnare a foe. As an action, you can cause spectral vines to spring up and reach for a creature within 10 feet of you that you can see. The creature must succeed on a Strength or Dexterity saving throw (its choice) or be restrained. While restrained by the vines, the creature repeats the saving throw at the end of each of its turns. On a success, it frees itself and the vines vanish."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Oath of the Ancients Channel Divinity: Turn the Faithless",
-                        "text": [
-                           "You can use your Channel Divinity to utter ancient words that are painful for fey and fiends to hear. As an action, you present your holy symbol, and each fey or fiend within 30 feet of you that can hear you must make a Wisdom saving throw. On a failed save, the creature is turned for 1 minute or until it takes damage.",
-                           "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action.",
-                           "If the creature's true form is concealed by an illusion, shapeshifting, or other effect, that form is revealed while it is turned."
-                        ],
+                        "subclass": "Sacred Oath: Oath of the Crown",
+                        "parent": "Sacred Oath",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6373,22 +6392,29 @@ var classdata = {
                            null,
                            "17th - commune with nature, tree stride"
                         ],
+                        "subclass": "Sacred Oath: Oath of the Ancients",
+                        "parent": "Oath of the Ancients",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Oath of Devotion Channel Divinity: Sacred Weapon",
+                        "name": "Oath of the Ancients Channel Divinity: Nature's Wrath",
                         "text": [
-                           "As an action, you can imbue one weapon that you are holding with positive energy, using your Channel Divinity. For 1 minute, you add your Charisma modifier to attack rolls made with that weapon (with a minimum bonus of +1). The weapon also emits bright light in a 20-foot radius and dim light 20 feet beyond that. If the weapon is not already magical, it becomes magical for the duration.",
-                           "You can end this effect on your turn as part of any other action. If you are no longer holding or carrying this weapon, or if you fall unconscious, this effect ends."
+                           "You can use your Channel Divinity to invoke primeval forces to ensnare a foe. As an action, you can cause spectral vines to spring up and reach for a creature within 10 feet of you that you can see. The creature must succeed on a Strength or Dexterity saving throw (its choice) or be restrained. While restrained by the vines, the creature repeats the saving throw at the end of each of its turns. On a success, it frees itself and the vines vanish."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Ancients",
+                        "parent": "Oath of the Ancients",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Oath of Devotion Channel Divinity: Turn the Unholy",
+                        "name": "Oath of the Ancients Channel Divinity: Turn the Faithless",
                         "text": [
-                           "As an action, you present your holy symbol and speak a prayer censuring fiends and undead, using your Channel Divinity. Each fiend or undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes damage.",
-                           "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+                           "You can use your Channel Divinity to utter ancient words that are painful for fey and fiends to hear. As an action, you present your holy symbol, and each fey or fiend within 30 feet of you that can hear you must make a Wisdom saving throw. On a failed save, the creature is turned for 1 minute or until it takes damage.",
+                           "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action.",
+                           "If the creature's true form is concealed by an illusion, shapeshifting, or other effect, that form is revealed while it is turned."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Ancients",
+                        "parent": "Oath of the Ancients",
                         "_optional": "YES"
                      },
                      {
@@ -6406,22 +6432,29 @@ var classdata = {
                            null,
                            "17th - commune, flame strike"
                         ],
+                        "subclass": "Sacred Oath: Oath of Devotion",
+                        "parent": "Oath of the Devotion",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Oath of Vengeance Channel Divinity: Abjure Enemy",
+                        "name": "Oath of Devotion Channel Divinity: Sacred Weapon",
                         "text": [
-                           "As an action, you present your holy symbol and speak a prayer of denunciation, using your Channel Divinity. Choose one creature within 60 feet of you that you can see. That creature must make a Wisdom saving throw, unless it is immune to being frightened. Fiends and undead have disadvantage on this saving throw.",
-                           "On a failed save, the creature is frightened for 1 minute or until it takes any damage. While frightened, the creature's speed is 0, and it can't benefit from any bonus to its speed.",
-                           "On a successful save, the creature's speed is halved for 1 minute or until the creature takes any damage."
+                           "As an action, you can imbue one weapon that you are holding with positive energy, using your Channel Divinity. For 1 minute, you add your Charisma modifier to attack rolls made with that weapon (with a minimum bonus of +1). The weapon also emits bright light in a 20-foot radius and dim light 20 feet beyond that. If the weapon is not already magical, it becomes magical for the duration.",
+                           "You can end this effect on your turn as part of any other action. If you are no longer holding or carrying this weapon, or if you fall unconscious, this effect ends."
                         ],
+                        "subclass": "Sacred Oath: Oath of Devotion",
+                        "parent": "Oath of the Devotion",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Oath of Vengeance Channel Divinity: Vow of Enmity",
+                        "name": "Oath of Devotion Channel Divinity: Turn the Unholy",
                         "text": [
-                           "As a bonus action, you can utter a vow of enmity against a creature you can see within 10 feet of you, using your Channel Divinity. You gain advantage on attack rolls against the creature for 1 minute or until it drops to 0 hit points or falls unconscious."
+                           "As an action, you present your holy symbol and speak a prayer censuring fiends and undead, using your Channel Divinity. Each fiend or undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes damage.",
+                           "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
                         ],
+                        "subclass": "Sacred Oath: Oath of Devotion",
+                        "parent": "Oath of the Devotion",
                         "_optional": "YES"
                      },
                      {
@@ -6439,6 +6472,29 @@ var classdata = {
                            null,
                            "17th - hold monster, scrying"
                         ],
+                        "subclass": "Sacred Oath: Oath of Vengeance",
+                        "parent": "Oath of Vengeance",
+                        "suboption": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Oath of Vengeance Channel Divinity: Abjure Enemy",
+                        "text": [
+                           "As an action, you present your holy symbol and speak a prayer of denunciation, using your Channel Divinity. Choose one creature within 60 feet of you that you can see. That creature must make a Wisdom saving throw, unless it is immune to being frightened. Fiends and undead have disadvantage on this saving throw.",
+                           "On a failed save, the creature is frightened for 1 minute or until it takes any damage. While frightened, the creature's speed is 0, and it can't benefit from any bonus to its speed.",
+                           "On a successful save, the creature's speed is halved for 1 minute or until the creature takes any damage."
+                        ],
+                        "subclass": "Sacred Oath: Oath of Vengeance",
+                        "parent": "Oath of Vengeance",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Oath of Vengeance Channel Divinity: Vow of Enmity",
+                        "text": [
+                           "As a bonus action, you can utter a vow of enmity against a creature you can see within 10 feet of you, using your Channel Divinity. You gain advantage on attack rolls against the creature for 1 minute or until it drops to 0 hit points or falls unconscious."
+                        ],
+                        "subclass": "Sacred Oath: Oath of Vengeance",
+                        "parent": "Oath of Vengeance",
                         "_optional": "YES"
                      },
                      {
@@ -6456,6 +6512,9 @@ var classdata = {
                            null,
                            "17th - contagion, dominate person"
                         ],
+                        "subclass": "Sacred Oath: Oathbreaker",
+                        "parent": "Oathbreaker",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6463,6 +6522,8 @@ var classdata = {
                         "text": [
                            "As an action, the paladin targets one undead creature he or she can see within 30 feet of him or her. The target must make a Wisdom saving throw. On a failed save, the target must obey the paladin's commands for the next 24 hours, or until the paladin uses this Channel Divinity option again. An undead whose challenge rating is equal to or greater than the paladin's level is immune to this effect."
                         ],
+                        "subclass": "Sacred Oath: Oathbreaker",
+                        "parent": "Oathbreaker",
                         "_optional": "YES"
                      },
                      {
@@ -6470,6 +6531,8 @@ var classdata = {
                         "text": [
                            "As an action, the paladin channels the darkest emotions and focuses them into a burst of magical menace. Each creature of the paladin's choice within 30 feet of the paladin must make a Wisdom saving throw if it can see the paladin. On a failed save, the target is frightened of the paladin for 1 minute. If a creature frightened by this effect ends its turn more than 30 feet away from the paladin, it can attempt another Wisdom saving throw to end the effect on it."
                         ],
+                        "subclass": "Sacred Oath: Oathbreaker",
+                        "parent": "Oathbreaker",
                         "_optional": "YES"
                      },
                      {
@@ -6487,6 +6550,9 @@ var classdata = {
                            null,
                            "17th - circle of power, geas"
                         ],
+                        "subclass": "Sacred Oath: Oath of the Crown",
+                        "parent": "Oath of the Crown",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6494,6 +6560,8 @@ var classdata = {
                         "text": [
                            "You issue a challenge that compels other creatures to do battle with you. Each creature of your choice that you can see within 30 feet of you must make a Wisdom saving throw. On a failed save, a creature can't willingly move more than 30 feet away from you. This effect ends on the creature if you are incapacitated or die or if the creature is moved more than 30 feet away from you."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Crown",
+                        "parent": "Oath of the Crown",
                         "_optional": "YES"
                      },
                      {
@@ -6501,6 +6569,8 @@ var classdata = {
                         "text": [
                            "As a bonus action, you can bolster injured creatures with your Channel Divinity. Each creature of your choice that can hear you within 30 feet of you regains hit points equal to 1d6 + your Charisma modifier (minimum of 1) if it has no more than half of its hit points."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Crown",
+                        "parent": "Oath of the Crown",
                         "_optional": "YES"
                      }
                   ],
@@ -6549,6 +6619,8 @@ var classdata = {
                            "Beginning at 7th level, ancient magic lies so heavily upon you that it forms an eldritch ward. You and friendly creatures within 10 feet of you have resistance to damage from spells.",
                            "At 18th level, the range of this aura increases to 30 feet."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Ancients",
+                        "parent": "Oath of the Ancients",
                         "_optional": "YES"
                      },
                      {
@@ -6557,6 +6629,8 @@ var classdata = {
                            "Starting at 7th level, you and friendly creatures within 10 feet of you can't be charmed while you are conscious.",
                            "At 18th level, the range of this aura increases to 30 feet."
                         ],
+                        "subclass": "Sacred Oath: Oath of Devotion",
+                        "parent": "Oath of Devotion",
                         "_optional": "YES"
                      },
                      {
@@ -6564,6 +6638,8 @@ var classdata = {
                         "text": [
                            "By 7th level, your supernatural focus helps you close off a foe's retreat. When you hit a creature with an opportunity attack, you can move up to half your speed immediately after the attack and as part of the same reaction. This movement doesn't provoke opportunity attacks."
                         ],
+                        "subclass": "Sacred Oath: Oath of Vengeance",
+                        "parent": "Oath of Vengeance",
                         "_optional": "YES"
                      },
                      {
@@ -6572,6 +6648,8 @@ var classdata = {
                            "Starting at 7th level, the paladin, as well any fiends and undead within 10 feet of the paladin, gains a bonus to melee weapon damage rolls equal to the paladin's Charisma modifier (minimum of +1). A creature can benefit from this feature from only one paladin at a time.",
                            "At 18th level, the range of this aura increases to 30 feet."
                         ],
+                        "subclass": "Sacred Oath: Oathbreaker",
+                        "parent": "Oathbreaker",
                         "_optional": "YES"
                      },
                      {
@@ -6579,6 +6657,8 @@ var classdata = {
                         "text": [
                            "Starting at 7th level, when a creature within 5 feet of you takes damage, you can use your reaction to magically substitute your own health for that of the target creature, causing that creature not to take the damage. Instead, you take the damage. This damage to you can't be reduced or prevented in any way."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Crown",
+                        "parent": "Oath of the Crown",
                         "_optional": "YES"
                      }
                   ],
@@ -6651,6 +6731,8 @@ var classdata = {
                            "Starting at 15th level, when you are reduced to 0 hit points and are not killed outright, you can choose to drop to 1 hit point instead. Once you use this ability, you can't use it again until you finish a long rest.",
                            "Additionally, you suffer none of the drawbacks of old age, and you can't be aged magically."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Ancients",
+                        "parent": "Oath of the Ancients",
                         "_optional": "YES"
                      },
                      {
@@ -6658,6 +6740,8 @@ var classdata = {
                         "text": [
                            "Beginning at 15th level, you are always under the effects of a protection from evil and good spell."
                         ],
+                        "subclass": "Sacred Oath: Oath of Devotion",
+                        "parent": "Oath of Devotion",
                         "_optional": "YES"
                      },
                      {
@@ -6665,6 +6749,8 @@ var classdata = {
                         "text": [
                            "Starting at 15th level, the authority with which you speak your Vow of Enmity gives you greater power over your foe. When a creature under the effect of your Vow of Enmity makes an attack, you can use your reaction to make a melee weapon attack against that creature if it is within range."
                         ],
+                        "subclass": "Sacred Oath: Oath of Vengeance",
+                        "parent": "Oath of Vengeance",
                         "_optional": "YES"
                      },
                      {
@@ -6672,6 +6758,8 @@ var classdata = {
                         "text": [
                            "At 15th level, the paladin gains resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons."
                         ],
+                        "subclass": "Sacred Oath: Oathbreaker",
+                        "parent": "Oathbreaker",
                         "_optional": "YES"
                      },
                      {
@@ -6679,6 +6767,8 @@ var classdata = {
                         "text": [
                            "Starting at 15th level, you have advantage on saving throws to avoid becoming paralyzed or stunned."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Crown",
+                        "parent": "Oath of the Crown",
                         "_optional": "YES"
                      }
                   ],
@@ -6733,6 +6823,8 @@ var classdata = {
                            null,
                            "Once you use this feature, you can't use it again until you finish a long rest."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Ancients",
+                        "parent": "Oath of the Ancients",
                         "_optional": "YES"
                      },
                      {
@@ -6743,6 +6835,8 @@ var classdata = {
                            "In addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead.",
                            "Once you use this feature, you can't use it again until you finish a long rest."
                         ],
+                        "subclass": "Sacred Oath: Oath of Devotion",
+                        "parent": "Oath of Devotion",
                         "_optional": "YES"
                      },
                      {
@@ -6755,6 +6849,8 @@ var classdata = {
                            null,
                            "Once you use this feature, you can't use it again until you finish a long rest."
                         ],
+                        "subclass": "Sacred Oath: Oath of Vengeance",
+                        "parent": "Oath of Vengeance",
                         "_optional": "YES"
                      },
                      {
@@ -6764,6 +6860,8 @@ var classdata = {
                            "While the aura lasts, the paladin can use a bonus action on his or her turn to cause the shadows in the aura to attack one creature. The paladin makes a melee spell attack against the target. If the attack hits, the target takes necrotic damage equal to 3d10 + the paladin's Charisma modifier.",
                            "After activating the aura, the paladin can't do so again until he or she finishes a long rest."
                         ],
+                        "subclass": "Sacred Oath: Oathbreaker",
+                        "parent": "Oathbreaker",
                         "_optional": "YES"
                      },
                      {
@@ -6779,6 +6877,8 @@ var classdata = {
                            null,
                            "This effect ends early if you are incapacitated or die. Once you use this feature, you can't use it again until you finish a long rest."
                         ],
+                        "subclass": "Sacred Oath: Oath of the Crown",
+                        "parent": "Oath of the Crown",
                         "_optional": "YES"
                      }
                   ],
@@ -6964,13 +7064,17 @@ var classdata = {
                         "text": [
                            "You gain a +2 bonus to attack rolls you make with ranged weapons."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Fighting Style: Close Quarters Shooter",
+                        "name": "Fighting Style: Close Quarters Shooter (UA)",
                         "text": [
                            "When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6978,6 +7082,8 @@ var classdata = {
                         "text": [
                            "While you are wearing armor, you gain a +1 bonus to AC."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -6985,20 +7091,26 @@ var classdata = {
                         "text": [
                            "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Fighting Style: Mariner",
+                        "name": "Fighting Style: Mariner (UA)",
                         "text": [
                            "As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Fighting Style: Tunnel Fighter",
+                        "name": "Fighting Style: Tunnel Fighter (UA)",
                         "text": [
                            "As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7006,6 +7118,8 @@ var classdata = {
                         "text": [
                            "When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
                         ],
+                        "parent": "Fighting Style",
+                        "suboption": "YES",
                         "_optional": "YES"
                      }
                   ],
@@ -7024,6 +7138,9 @@ var classdata = {
                         "text": [
                            "Emulating the Hunter archetype means accepting your place as a bulwark between civilization and the terrors of the wilderness. As you walk the Hunter's path, you learn specialized techniques for fighting the threats you face, from rampaging ogres and hordes of orcs to towering giants and terrifying dragons."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Ranger Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7031,13 +7148,19 @@ var classdata = {
                         "text": [
                            "The Beast Master archetype embodies a friendship between the civilized races and the beasts of the world. United in focus, beast and ranger work as one to fight the monstrous foes that threaten civilization and the wilderness alike. Emulating the Beast Master archetype means committing yourself to this ideal, working in partnership with an animal as its companion and friend."
                         ],
+                        "subclass": "Ranger Archetype: Beast Master",
+                        "parent": "Ranger Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Ranger Archetype: Deep Stalker",
+                        "name": "Ranger Archetype: Deep Stalker (UA)",
                         "text": [
                            "Many Deep Stalkers are elves, as those folk know all too well the threat posed by the drow. Deep Stalkers scout for new passages into the Underdark, carefully mapping them and working to ensure they remain watched at all times. They venture into the depths on long, dangerous patrols, disappearing for months at a time. Many of them never return. Deep Stalkers master spells useful in navigating the Underdark, and their combat tactics focus on ambush, surprise, and stealth. They fight alone or in small groups in hostile territory, relying on clever tactics to carry the day."
                         ],
+                        "subclass": "Ranger Archetype: Deep Stalker (UA)",
+                        "parent": "Ranger Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7045,6 +7168,8 @@ var classdata = {
                         "text": [
                            "At 3rd level, you gain one of the following features of your choice: Colossus Slayer, Giant Killer, or Horde Breaker."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Ranger Archetype",
                         "_optional": "YES"
                      },
                      {
@@ -7052,6 +7177,9 @@ var classdata = {
                         "text": [
                            "Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Hunter's Prey",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7059,6 +7187,9 @@ var classdata = {
                         "text": [
                            "When a Large or larger creature within 5 feet of you hits or misses you with an attack, you can use your reaction to attack that creature immediately after its attack, provided that you can see the creature."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Hunter's Prey",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7066,6 +7197,9 @@ var classdata = {
                         "text": [
                            "Once on each of your turns when you make a weapon attack, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target and within range of your weapon."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Hunter's Prey",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7083,13 +7217,17 @@ var classdata = {
                            null,
                            "17th - seeming"
                         ],
+                        "subclass": "Ranger Archetype: Deep Stalker (UA)",
+                        "parent": "Deep Stalker",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Deep Stalker: Underdark Scout (UA)",
+                        "name": "Deep Stalker: Underdark Scout",
                         "text": [
                            "At 3rd level, you master the art of the ambush. On your first turn during combat, you gain a +10 bonus to your speed. If you use the attack action on that turn, you can make one additional attack. You gain an additional benefit on all turns after your first turn. At the end of each such turn, you can attempt to hide as a bonus action if you meet the normal requirements for hiding."
                         ],
+                        "subclass": "Ranger Archetype: Deep Stalker (UA)",
+                        "parent": "Deep Stalker",
                         "_optional": "YES"
                      },
                      {
@@ -7102,6 +7240,8 @@ var classdata = {
                            "While traveling through your favored terrain with only the beast, you can move stealthily at a normal pace.",
                            "If the beast dies, you can obtain another one by spending 8 hours magically bonding with another beast that isn't hostile to you, either the same type of beast as before or a different one."
                         ],
+                        "subclass": "Ranger Archetype: Beast Master",
+                        "parent": "Beast Master",
                         "_optional": "YES"
                      },
                      {
@@ -7160,6 +7300,8 @@ var classdata = {
                         "text": [
                            "At 7th level, you gain one of the following features of your choice: Escape the Horde, Multiattack Defense, or Steel Will."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Hunter",
                         "_optional": "YES"
                      },
                      {
@@ -7167,6 +7309,9 @@ var classdata = {
                         "text": [
                            "Opportunity attacks against you are made with disadvantage."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Defensive Tactics",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7174,6 +7319,9 @@ var classdata = {
                         "text": [
                            "When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Defensive Tactics",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7181,6 +7329,9 @@ var classdata = {
                         "text": [
                            "You have advantage on saving throws against being frightened."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Defensive Tactics",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7188,6 +7339,8 @@ var classdata = {
                         "text": [
                            "On any of your turns when your beast companion doesn't attack, you can use a bonus action to command the beast to take the Dash, Disengage, Dodge, or Help action on its turn."
                         ],
+                        "subclass": "Ranger Archetype: Beast Master",
+                        "parent": "Beast Master",
                         "_optional": "YES"
                      },
                      {
@@ -7195,6 +7348,8 @@ var classdata = {
                         "text": [
                            "At 7th level, you gain proficiency in Wisdom saving throws."
                         ],
+                        "subclass": "Ranger Archetype: Deep Stalker (UA)",
+                        "parent": "Deep Stalker",
                         "_optional": "YES"
                      }
                   ],
@@ -7244,6 +7399,8 @@ var classdata = {
                         "text": [
                            "At 11th level, you gain one of the following features of your choice: Volley or Whirlwind Attack."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Hunter",
                         "_optional": "YES"
                      },
                      {
@@ -7251,6 +7408,9 @@ var classdata = {
                         "text": [
                            "You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon's range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Multiattack",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7258,6 +7418,9 @@ var classdata = {
                         "text": [
                            "You can use your action to make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Multiattack",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7265,6 +7428,8 @@ var classdata = {
                         "text": [
                            "Your beast companion can make two attacks or use Multiattack (if available) when you command it to use the Attack action."
                         ],
+                        "subclass": "Ranger Archetype: Beast Master",
+                        "parent": "Beast Master",
                         "_optional": "YES"
                      },
                      {
@@ -7272,6 +7437,8 @@ var classdata = {
                         "text": [
                            "Starting at 11th level, you have the ability to ensure that your attacks count. If you miss with an attack during your turn, you can immediately make an additional attack. You can gain one additional attack during your turn with this ability."
                         ],
+                        "subclass": "Ranger Archetype: Deep Stalker (UA)",
+                        "parent": "Deep Stalker",
                         "_optional": "YES"
                      }
                   ],
@@ -7313,6 +7480,8 @@ var classdata = {
                         "text": [
                            "At 15th level, you gain one of the following features of your choice: Evasion, Stand Against the Tide, or Uncanny Dodge."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Hunter",
                         "_optional": "YES"
                      },
                      {
@@ -7320,6 +7489,9 @@ var classdata = {
                         "text": [
                            "You can nimbly dodge out of the way of certain area effects, such as a red dragon's fiery breath or a lightning bolt spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Superior Hunter's Defense",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7327,6 +7499,9 @@ var classdata = {
                         "text": [
                            "When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Superior Hunter's Defense",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7334,6 +7509,9 @@ var classdata = {
                         "text": [
                            "When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you."
                         ],
+                        "subclass": "Ranger Archetype: Hunter",
+                        "parent": "Superior Hunter's Defense",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -7341,6 +7519,8 @@ var classdata = {
                         "text": [
                            "Beginning at 15th level, when you cast a spell targeting yourself, you can also affect your beast companion with the spell if the beast is within 30 feet of you."
                         ],
+                        "subclass": "Ranger Archetype: Beast Master",
+                        "parent": "Beast Master",
                         "_optional": "YES"
                      },
                      {
@@ -7348,6 +7528,8 @@ var classdata = {
                         "text": [
                            "At 15th level, you master the ability to disrupt an opponent's attacks. If a creature attacks you and does not have advantage on the attack roll, you can use your reaction to grant it disadvantage on the attack roll. You must use this ability before you know the result of the attack."
                         ],
+                        "subclass": "Ranger Archetype: Deep Stalker (UA)",
+                        "parent": "Deep Stalker",
                         "_optional": "YES"
                      }
                   ],
@@ -9027,7 +9209,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Beast Conclave:: Superior Beast’s Defense",
+                        "name": "Beast Conclave: Superior Beast’s Defense",
                         "text": [
                            "At 15th level, whenever an attacker that your companion can see hits it with an attack, it can use its reaction to halve the attack’s damage against it."
                         ],
@@ -9384,6 +9566,9 @@ var classdata = {
                         "text": [
                            "Some rogues enhance their fine-honed skills of stealth and agility with magic, learning tricks of enchantment and illusion. These rogues include pickpockets and burglars, but also pranksters, mischief-makers, and a significant number of adventurers."
                         ],
+                        "subclass": "Roguish Archetype: Arcane Trickster",
+                        "parent": "Roguish Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -9393,6 +9578,9 @@ var classdata = {
                            null,
                            "Your archetype grants you features at 3rd level and then again at 9th, 13th, and 17th level."
                         ],
+                        "subclass": "Roguish Archetype: Assassin",
+                        "parent": "Roguish Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -9402,6 +9590,9 @@ var classdata = {
                            null,
                            "Source: Sword Coast Adventurer's Guide, p. 135"
                         ],
+                        "subclass": "Roguish Archetype: Mastermind",
+                        "parent": "Roguish Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -9411,6 +9602,9 @@ var classdata = {
                            null,
                            "A swashbuckler excels in single combat, and can fight with two weapons while safely darting away from an opponent. Swashbucklers are especially talented at making difficult maneuvers to escape enemies or attack from an unexpected direction."
                         ],
+                        "subclass": "Roguish Archetype: Swashbuckler",
+                        "parent": "Roguish Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -9420,6 +9614,9 @@ var classdata = {
                            null,
                            "Your archetype grants you features at 3rd level and then again at 9th, 13th, and 17th level."
                         ],
+                        "subclass": "Roguish Archetype: Thief",
+                        "parent": "Roguish Archetype",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -9434,6 +9631,8 @@ var classdata = {
                            "You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature's Wisdom (Perception) check.",
                            "In addition, you can use the bonus action granted by your Cunning Action to control the hand."
                         ],
+                        "subclass": "Roguish Archetype: Arcane Trickster",
+                        "parent": "Arcane Trickster",
                         "_optional": "YES"
                      },
                      {
@@ -9459,13 +9658,17 @@ var classdata = {
                            "Spell save DC = 8 + your proficiency bonus + your Intelligence modifier",
                            "Spell attack modifier = your proficiency bonus + your Intelligence modifier"
                         ],
-						"_optional": "YES"
+                        "subclass": "Roguish Archetype: Arcane Trickster",
+                        "parent": "Arcane Trickster",
+						            "_optional": "YES"
                      },
                      {
                         "name": "Assassin: Assassinate",
                         "text": [
                            "Starting at 3rd level, you are at your deadliest when you get the drop on your enemies. You have advantage on attack rolls against any creature that hasn't taken a turn in the combat yet. In addition, any hit you score against a creature that is surprised is a critical hit."
                         ],
+                        "subclass": "Roguish Archetype: Assassin",
+                        "parent": "Assassin",
                         "_optional": "YES"
                      },
                      {
@@ -9473,6 +9676,8 @@ var classdata = {
                         "text": [
                            "When you choose this archetype at 3rd level, you gain proficiency with the disguise kit and the poisoner's kit."
                         ],
+                        "subclass": "Roguish Archetype: Assassin",
+                        "parent": "Assassin",
                         "_optional": "YES"
                      },
                      {
@@ -9481,6 +9686,8 @@ var classdata = {
                            "When you choose this archetype at 3rd level, you gain proficiency with the disguise kit, the forgery kit, and one gaming set of your choice. You also learn two languages of your choice.",
                            "Additionally, you can unerringly mimic the speech patterns and accent of a creature that you hear speak for at least 1 minute, allowing you to pass yourself off as a native speaker of a particular land, provided that you know the language."
                         ],
+                        "subclass": "Roguish Archetype: Mastermind",
+                        "parent": "Mastermind",
                         "_optional": "YES"
                      },
                      {
@@ -9488,6 +9695,8 @@ var classdata = {
                         "text": [
                            "Starting at 3rd level, you can use the Help action as a bonus action. Additionally, when you use the Help action to aid an ally in attacking a creature, the target of that attack can be within 30 feet of you, rather than 5 feet of you, if the target can see or hear you."
                         ],
+                        "subclass": "Roguish Archetype: Mastermind",
+                        "parent": "Mastermind",
                         "_optional": "YES"
                      },
                      {
@@ -9495,6 +9704,8 @@ var classdata = {
                         "text": [
                            "When you choose this archetype at 3rd level, you learn how to land a strike and then slip away without reprisal. During your turn, if you make a melee attack against a creature, that creature cannot make opportunity attacks against you for the rest of your turn."
                         ],
+                        "subclass": "Roguish Archetype: Swashbuckler",
+                        "parent": "Swashbuckler",
                         "_optional": "YES"
                      },
                      {
@@ -9503,6 +9714,8 @@ var classdata = {
                            "Starting at 3rd level, your unmistakable confidence propels you into battle. You add your Charisma modifier to your initiative rolls.",
                            "In addition, you don't need advantage on your attack roll to use your Sneak Attack if no creature other than your target is within 5 feet of you. All the other rules for the Sneak Attack class feature still apply to you."
                         ],
+                        "subclass": "Roguish Archetype: Swashbuckler",
+                        "parent": "Swashbuckler",
                         "_optional": "YES"
                      },
                      {
@@ -9510,6 +9723,8 @@ var classdata = {
                         "text": [
                            "Starting at 3rd level, you can use the bonus action granted by your Cunning Action to make a Dexterity (Sleight of Hand) check, use your thieves' tools to disarm a trap or open a lock, or take the Use an Object action."
                         ],
+                        "subclass": "Roguish Archetype: Thief",
+                        "parent": "Thief",
                         "_optional": "YES"
                      },
                      {
@@ -9518,6 +9733,8 @@ var classdata = {
                            "When you choose this archetype at 3rd level, you gain the ability to climb faster than normal; climbing no longer costs you extra movement.",
                            "In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier."
                         ],
+                        "subclass": "Roguish Archetype: Thief",
+                        "parent": "Thief",
                         "_optional": "YES"
                      }
                   ],
@@ -9576,6 +9793,8 @@ var classdata = {
                         "text": [
                            "Starting at 9th level, if you are hidden from a creature when you cast a spell on it, the creature has disadvantage on any saving throw it makes against the spell this turn."
                         ],
+                        "subclass": "Roguish Archetype: Arcane Trickster",
+                        "parent": "Arcane Trickster",
                         "_optional": "YES"
                      },
                      {
@@ -9584,6 +9803,8 @@ var classdata = {
                            "Starting at 9th level, you can unfailingly create false identities for yourself. You must spend seven days and 25 gp to establish the history, profession, and affiliations for an identity. You can't establish an identity that belongs to someone else. For example, you might acquire appropriate clothing, letters of introduction, and official-looking certification to establish yourself as a member of a trading house from a remote city so you can insinuate yourself into the company of other wealthy merchants.",
                            "Thereafter, if you adopt the new identity as a disguise, other creatures believe you to be that person until given an obvious reason not to."
                         ],
+                        "subclass": "Roguish Archetype: Assassin",
+                        "parent": "Assassin",
                         "_optional": "YES"
                      },
                      {
@@ -9598,6 +9819,7 @@ var classdata = {
                            null,
                            "At the DM's option, you might also realize you know a piece of the creature's history or one of its personality traits, if it has any."
                         ],
+                        "subclass": "Roguish Archetype: Mastermind",                        "parent": "Mastermind",
                         "_optional": "YES"
                      },
                      {
@@ -9607,6 +9829,8 @@ var classdata = {
                            "If you succeed on the check and the creature is hostile to you, it has disadvantage on attack rolls against targets other than you and can't make opportunity attacks against targets other than you. This effect lasts for 1 minute, until one of your companions attacks the target or affects it with a spell, or until you and the target are more than 60 feet apart.",
                            "If you succeed on the check and the creature isn't hostile to you, it is charmed by you for 1 minute. While charmed, it regards you as a friendly acquaintance. This effect ends immediately if you or your companions do anything harmful to it."
                         ],
+                        "subclass": "Roguish Archetype: Swashbuckler",
+                        "parent": "Swashbuckler",
                         "_optional": "YES"
                      },
                      {
@@ -9614,6 +9838,8 @@ var classdata = {
                         "text": [
                            "Starting at 9th level, you have advantage on a Dexterity (Stealth) check if you move no more than half your speed on the same turn."
                         ],
+                        "subclass": "Roguish Archetype: Thief",
+                        "parent": "Thief",
                         "_optional": "YES"
                      }
                   ],
@@ -9661,6 +9887,8 @@ var classdata = {
                         "text": [
                            "At 13th level, you gain the ability to distract targets with your mage hand. As a bonus action on your turn, you can designate a creature within 5 feet of the spectral hand created by the spell. Doing so gives you advantage on attack rolls against that creature until the end of the turn."
                         ],
+                        "subclass": "Roguish Archetype: Arcane Trickster",
+                        "parent": "Arcane Trickster",
                         "_optional": "YES"
                      },
                      {
@@ -9669,6 +9897,8 @@ var classdata = {
                            "At 13th level, you gain the ability to unerringly mimic another person's speech, writing, and behavior. You must spend at least three hours studying these three components of the person's behavior, listening to speech, examining handwriting, and observing mannerism.",
                            "Your ruse is indiscernible to the casual observer. If a wary creature suspects something is amiss, you have advantage on any Charisma (Deception) check you make to avoid detection."
                         ],
+                        "subclass": "Roguish Archetype: Assassin",
+                        "parent": "Assassin",
                         "_optional": "YES"
                      },
                      {
@@ -9683,6 +9913,8 @@ var classdata = {
                         "text": [
                            "Starting at 13th level, you can use a bonus action on your turn to gain advantage on the next Dexterity (Acrobatics) or Strength (Athletics) check you make during the same turn."
                         ],
+                        "subclass": "Roguish Archetype: Swashbuckler",
+                        "parent": "Swashbuckler",
                         "_optional": "YES"
                      },
                      {
@@ -9690,6 +9922,8 @@ var classdata = {
                         "text": [
                            "By 13th level, you have learned enough about the workings of magic that you can improvise the use of items even when they are not intended for you. You ignore all class, race, and level requirements on the use of magic items."
                         ],
+                        "subclass": "Roguish Archetype: Thief",
+                        "parent": "Thief",
                         "_optional": "YES"
                      }
                   ],
@@ -9738,6 +9972,8 @@ var classdata = {
                            "Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can use your reaction to force the creature to make a saving throw with its spellcasting ability modifier. The DC equals your spell save DC. On a failed save, you negate the spell's effect against you, and you steal the knowledge of the spell if it is at least 1st level and of a level you can cast (it doesn't need to be a wizard spell). For the next 8 hours, you know the spell and can cast it using your spell slots. The creature can't cast that spell until the 8 hours have passed.",
                            "Once you use this feature, you can't use it again until you finish a long rest."
                         ],
+                        "subclass": "Roguish Archetype: Arcane Trickster",
+                        "parent": "Arcane Trickster",
                         "_optional": "YES"
                      },
                      {
@@ -9745,6 +9981,8 @@ var classdata = {
                         "text": [
                            "Starting at 17th level, you become a master of instant death. When you attack and hit a creature that is surprised, it must make a Constitution saving throw (DC 8 + your Dexterity modifier + your proficiency bonus). On a failed save, double the damage of your attack against the creature."
                         ],
+                        "subclass": "Roguish Archetype: Assassin",
+                        "parent": "Assassin",
                         "_optional": "YES"
                      },
                      {
@@ -9753,6 +9991,8 @@ var classdata = {
                            "Starting at 17th level, your thoughts can’t be read by telepathy or other means, unless you allow it. You can present false thoughts by making a Charisma (Deception) check contested by the mind reader's Wisdom (Insight) check.",
                            "Additionally, no matter what you say, magic that would determine if you are telling the truth indicates you are being truthful, if you so choose, and you can't be compelled to tell the truth by magic."
                         ],
+                        "subclass": "Roguish Archetype: Mastermind",
+                        "parent": "Mastermind",
                         "_optional": "YES"
                      },
                      {
@@ -9760,6 +10000,8 @@ var classdata = {
                         "text": [
                            "Beginning at 17th level, your mastery of the blade lets you turn failure to success in combat. If you miss with an attack roll, you can choose to roll it again with advantage. Once you do so, you can't use this feature again until you finish a short or long rest."
                         ],
+                        "subclass": "Roguish Archetype: Swashbuckler",
+                        "parent": "Thief",
                         "_optional": "YES"
                      },
                      {
@@ -9767,6 +10009,8 @@ var classdata = {
                         "text": [
                            "When you reach 17th level, you have become adept at laying ambushes and quickly escaping danger. You can take two turns during the first round of any combat. You take your first turn at your normal initiative and your second turn at your initiative minus 10. You can't use this feature when you are surprised."
                         ],
+                        "subclass": "Roguish Archetype: Thief",
+                        "parent": "Thief",
                         "_optional": "YES"
                      }
                   ],
@@ -9960,6 +10204,9 @@ var classdata = {
                         "text": [
                            "Your innate magic comes from draconic magic that was mingled with your blood or that of your ancestors. Most often, sorcerers with this origin trace their descent back to a mighty sorcerer of ancient times who made a bargain with a dragon or who might even have claimed a dragon parent. Some of these bloodlines are well established in the world, but most are obscure. Any given sorcerer could be the first of a new bloodline, as a result of a pact or some other exceptional circumstance."
                         ],
+                        "subclass": "Sorcerous Origin: Draconic Bloodline",
+                        "parent": "Sorcerous Origin",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -9967,13 +10214,19 @@ var classdata = {
                         "text": [
                            "Your innate magic comes from the wild forces of chaos that underlie the order of creation. You might have endured exposure to some form of raw magic, perhaps through a planar portal leading to Limbo, the Elemental Planes, or the mysterious Far Realm. Perhaps you were blessed by a powerful fey creature or marked by a demon. Or your magic could be a fluke of your birth, with no apparent cause or reason. However it came to be, this chaotic magic churns within you, waiting for any outlet."
                         ],
+                        "subclass": "Sorcerous Origin: Wild Magic",
+                        "parent": "Sorcerous Origin",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Sorcerous Origin: Favored Soul",
+                        "name": "Sorcerous Origin: Favored Soul (UA)",
                         "text": [
                            "You have been chosen by a deity, and bestowed with a fragment of their divine power. You have been fundamentally changed by the touch of this deity, which awakens powerful magical abilities inside you"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Sorcerous Origin",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -9983,10 +10236,13 @@ var classdata = {
                            null,
                            "Storm sorcerers are invaluable members of a ship's crew. Their magic allows them to exert control over wind and weather in their immediate area. Their abilities also prove useful in repelling attacks by sahuagin, pirates, and other waterborne threats."
                         ],
+                        "subclass": "Sorcerous Origin: Storm",
+                        "parent": "Sorcerous Origin",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Sorcerous Origin: Shadow",
+                        "name": "Sorcerous Origin: Shadow (UA)",
                         "text": [
                            "Your innate magic comes from the Shadowfell. You might trace your lineage to an entity from that place, or perhaps you were exposed to its fell energy and transformed in some fundamental manner.",
                            null,
@@ -10000,6 +10256,9 @@ var classdata = {
                            "5 — You have trouble remembering that living creatures and corpses should be treated differently.",
                            "6 — You blinked. Once. Last week."
                         ],
+                        "subclass": "Sorcerous Origin: Shadow (UA)",
+                        "parent": "Sorcerous Origin",
+                        "issubclass": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10007,6 +10266,8 @@ var classdata = {
                         "text": [
                            "At 1st level, you gain proficiency in light armor, medium armor, shields, and simple weapons."
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Favored Soul (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -10014,6 +10275,8 @@ var classdata = {
                         "text": [
                            "At 1st level, you choose one of the cleric class's divine domains. You add that domain's spells for 1st-level clerics to your known spells. These spells do not count against the number of spells you can know, and they are considered to be sorcerer spells for you. When you reach 3rd, 5th, 7th, and 9th levels in the sorcerer class, you likewise learn your domain's spells that become available at those levels."
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Favored Soul (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -10027,6 +10290,9 @@ var classdata = {
                            "7th — blight, death ward",
                            "9th — antilife shell, cloudkill"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10040,6 +10306,9 @@ var classdata = {
                            "7th — arcane eye, confusion",
                            "9th — legend lore, scrying"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10053,6 +10322,9 @@ var classdata = {
                            "7th — death ward, guardian of faith",
                            "9th — mass cure wounds, raise dead"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10066,6 +10338,9 @@ var classdata = {
                            "7th — guardian of faith, wall of fire",
                            "9th — flame strike, scrying"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10079,6 +10354,9 @@ var classdata = {
                            "7th — dominate beast, grasping vine",
                            "9th — insect plague, tree stride"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10092,6 +10370,9 @@ var classdata = {
                            "7th — control water, ice storm",
                            "9th — destructive wave, insect plague"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10105,6 +10386,9 @@ var classdata = {
                            "7th — dimension door, polymorph",
                            "9th — dominate person, modify memory"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10118,27 +10402,31 @@ var classdata = {
                            "7th — freedom of movement, stoneskin",
                            "9th — flame strike, hold monster"
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Chosen of the Gods",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
-                        "name": "Dragon Ancestor",
+                        "name": "Draconic Bloodline: Dragon Ancestor",
                         "text": [
                            "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.",
                            null,
-                           "chose one and delete the others",
-                           "Draconic Ancestor: Black (Acid)",
-                           "Draconic Ancestor: Blue (Lightning)",
-                           "Draconic Ancestor: Brass (Fire)",
-                           "Draconic Ancestor: Bronze (Lightning)",
-                           "Draconic Ancestor: Copper (Acid)",
-                           "Draconic Ancestor: Gold (Fire)",
-                           "Draconic Ancestor: Green (Poison)",
-                           "Draconic Ancestor: Red (Fire)",
-                           "Draconic Ancestor: Silver (Cold)",
-                           "Draconic Ancestor: White (Cold)",
+                           "Black (Acid)",
+                           "Blue (Lightning)",
+                           "Brass (Fire)",
+                           "Bronze (Lightning)",
+                           "Copper (Acid)",
+                           "Gold (Fire)",
+                           "Green (Poison)",
+                           "Red (Fire)",
+                           "Silver (Cold)",
+                           "White (Cold)",
                            null,
                            "You can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your Proficiency bonus is doubled if it applies to the check."
                         ],
+                        "subclass": "Sorcerous Origin: Draconic Bloodline",
+                        "parent": "Draconic Bloodline",
                         "_optional": "YES"
                      },
                      {
@@ -10147,6 +10435,8 @@ var classdata = {
                            "As magic flows through your body, it causes physical traits of your dragon ancestors to emerge. At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this class.",
                            "Additionally, parts of your skin are covered by a thin sheen of dragon-like scales. When you aren't wearing armor, your AC equals 13 + your Dexterity modifier."
                         ],
+                        "subclass": "Sorcerous Origin: Draconic Bloodline",
+                        "parent": "Draconic Bloodline",
                         "_optional": "YES"
                      },
                      {
@@ -10154,6 +10444,8 @@ var classdata = {
                         "text": [
                            "From 1st level, you have darkvision with a range of 60 feet. You can cast darkness by spending 1 sorcery point. You can see through any darkness spell you cast using this ability."
                         ],
+                        "subclass": "Sorcerous Origin: Shadow (UA)",
+                        "parent": "Shadow (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -10161,6 +10453,8 @@ var classdata = {
                         "text": [
                            "Starting at 1st level, your existence in a twilight state between life and death makes you difficult to defeat. Whenever damage reduces you to 0 hit points, you can make a Constitution saving throw (DC 5 + the damage taken). On a success, you instead drop to 1 hit point. You cannot use this feature if you are reduced to 0 hit points by radiant damage or by a critical hit."
                         ],
+                        "subclass": "Sorcerous Origin: Shadow (UA)",
+                        "parent": "Shadow (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -10168,6 +10462,8 @@ var classdata = {
                         "text": [
                            "Starting at 1st level, you can use a bonus action on your turn to cause whirling gusts of elemental air to briefly surround you, immediately before or after you cast a spell of 1st level or higher. Doing so allows you to fly up to 10 feet without provoking opportunity attacks."
                         ],
+                        "subclass": "Sorcerous Origin: Storm",
+                        "parent": "Storm",
                         "_optional": "YES"
                      },
                      {
@@ -10175,6 +10471,8 @@ var classdata = {
                         "text": [
                            "The arcane magic you command is infused with elemental air. You can speak, read, and write Primordial. (Knowing this language allows you to understand and be understood by those who speak its dialects: Aquan, Auran, Ignan, and Terran.)"
                         ],
+                        "subclass": "Sorcerous Origin: Storm",
+                        "parent": "Storm",
                         "_optional": "YES"
                      },
                      {
@@ -10236,6 +10534,8 @@ var classdata = {
                            "97-98 — You are surrounded by faint, ethereal music for the next minute.",
                            "99-100 — You regain all expended sorcery points."
                         ],
+                        "subclass": "Sorcerous Origin: Wild Magic",
+                        "parent": "Wild Magic",
                         "_optional": "YES"
                      },
                      {
@@ -10244,6 +10544,8 @@ var classdata = {
                            "Starting at 1st level, you can manipulate the forces of chance and chaos to gain advantage on one attack roll, ability check, or saving throw. Once you do so, you must finish a long rest before you can use this feature again.",
                            "Any time before you regain the use of this feature, the DM can have you roll on the Wild Magic Surge table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature."
                         ],
+                        "subclass": "Sorcerous Origin: Wild Magic",
+                        "parent": "Wild Magic",
                         "_optional": "YES"
                      }
                   ],
@@ -10291,6 +10593,8 @@ var classdata = {
                         "text": [
                            "When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10299,6 +10603,8 @@ var classdata = {
                            "When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell.",
                            "When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10307,6 +10613,8 @@ var classdata = {
                            "When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls.",
                            "You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10314,6 +10622,8 @@ var classdata = {
                         "text": [
                            "When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10321,6 +10631,8 @@ var classdata = {
                         "text": [
                            "When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10328,6 +10640,8 @@ var classdata = {
                         "text": [
                            "When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10335,6 +10649,8 @@ var classdata = {
                         "text": [
                            "When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -10342,6 +10658,8 @@ var classdata = {
                         "text": [
                            "When you cast a spell that doesn't have a range of self and is incapable of targeting more than one creature at the spell's current level, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip)."
                         ],
+                        "parent": "Metamagic",
+                        "suboption": "YES",
                         "_optional": "YES"
                      }
                   ],
@@ -10367,6 +10685,8 @@ var classdata = {
                            "Starting at 6th level, when you cast a spell that deals damage of the type associated with your draconic ancestry, add your Charisma modifier to one damage roll.",
                            "In addition, you can spend 1 sorcery point to gain resistance to that damage type for 1 hour."
                         ],
+                        "subclass": "Sorcerous Origin: Draconic Bloodline",
+                        "parent": "Draconic Bloodline",
                         "_optional": "YES"
                      },
                      {
@@ -10374,6 +10694,8 @@ var classdata = {
                         "text": [
                            "Starting at 6th level, you have the ability to twist fate using your wild magic. When another creature you can see makes an attack roll, an ability check, or a saving throw, you can use your reaction and spend 2 sorcery points to roll 1d4 and apply the number rolled as a bonus or penalty (your choice) to the creature's roll. You can do so after the creature rolls but before any effects of the roll occur."
                         ],
+                        "subclass": "Sorcerous Origin: Wild Magic",
+                        "parent": "Wild Magic",
                         "_optional": "YES"
                      },
                      {
@@ -10381,6 +10703,8 @@ var classdata = {
                         "text": [
                            "At 6th level, you gain resistance to lightning and thunder damage. In addition, whenever you cast a spell of 1st level or higher that deals lightning or thunder damage, stormy magic erupts from you. This eruption causes creatures of your choice that you can see within 10 feet of you to take lightning or thunder damage (choose each time this ability activates) equal to half your sorcerer level."
                         ],
+                        "subclass": "Sorcerous Origin: Storm",
+                        "parent": "Storm",
                         "_optional": "YES"
                      },
                      {
@@ -10390,6 +10714,8 @@ var classdata = {
                            "If it is raining, you can use an action to cause the rain to stop falling in a 20-foot radius centered on you. You can end this effect as a bonus action.",
                            "If it is windy, you can use a bonus action each round to choose the direction that the wind blows in a 100-foot radius around you. The wind blows in that direction until the end of your next turn. You have no ability to alter the speed of the wind."
                         ],
+                        "subclass": "Sorcerous Origin: Storm",
+                        "parent": "Storm",
                         "_optional": "YES"
                      },
                      {
@@ -10397,6 +10723,8 @@ var classdata = {
                         "text": [
                            "Beginning at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Favored Soul (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -10410,6 +10738,8 @@ var classdata = {
                            null,
                            "The hound appears in an unoccupied space of your choice within 30 feet of the target. Roll initiative for the hound. On its turn, it can move only towards its target by the most direct route, and it can use its action only to attack its target. The hound makes opportunity attack, but only against its target. Additionally, the target has disadvantage on all saving throws against your spells while the hound is within 5 feet of it. The hound disappears if it is reduced to 0 hit points, if its target is reduced to 0 hit points, or after 5 minutes."
                         ],
+                        "subclass": "Sorcerous Origin: Shadow (UA)",
+                        "parent": "Shadow (UA)",
                         "_optional": "YES"
                      }
                   ],
@@ -10434,64 +10764,6 @@ var classdata = {
                         "text": [
                            "At 10th level, you learn an additional metamagic option."
                         ]
-                     },
-                     {
-                        "name": "Metamagic: Careful Spell",
-                        "text": [
-                           "When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Distant Spell",
-                        "text": [
-                           "When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell.",
-                           "When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Empowered Spell",
-                        "text": [
-                           "When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls.",
-                           "You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Extended Spell",
-                        "text": [
-                           "When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Heightened Spell",
-                        "text": [
-                           "When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Quickened Spell",
-                        "text": [
-                           "When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Subtle Spell",
-                        "text": [
-                           "When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Twinned Spell",
-                        "text": [
-                           "When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip)."
-                        ],
-                        "_optional": "YES"
                      }
                   ],
                   "_level": "10"
@@ -10516,6 +10788,8 @@ var classdata = {
                            "At 14th level, you gain the ability to sprout a pair of dragon wings from your back, gaining a flying speed equal to your current speed. You can create these wings as a bonus action on your turn. They last until you dismiss them as a bonus action on your turn.",
                            "You can't manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them."
                         ],
+                        "subclass": "Sorcerous Origin: Draconic Bloodline",
+                        "parent": "Draconic Bloodline",
                         "_optional": "YES"
                      },
                      {
@@ -10524,6 +10798,8 @@ var classdata = {
                            "At 14th level, you gain the ability to sprout a pair of wings from your back (feathered or bat-like, your choice), gaining a flying speed equal to your current walking speed. You can create these wings as a bonus action on your turn. They last until you dismiss them as a bonus action on your turn.",
                            "You can't manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them."
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Favored Soul (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -10531,6 +10807,8 @@ var classdata = {
                         "text": [
                            "Starting at 14th level, when you are hit by a melee attack, you can use your reaction to deal lightning damage to the attacker. The damage equals your sorcerer level. The attacker must also make a Strength saving throw against your sorcerer spell save DC. On a failed save, the attacker is pushed in a straight line up to 20 feet away from you."
                         ],
+                        "subclass": "Sorcerous Origin: Storm",
+                        "parent": "Storm",
                         "_optional": "YES"
                      },
                      {
@@ -10538,6 +10816,8 @@ var classdata = {
                         "text": [
                            "At 14th level, you gain a modicum of control over the surges of your wild magic. Whenever you roll on the Wild Magic Surge table, you can roll twice and use either number."
                         ],
+                        "subclass": "Sorcerous Origin: Wild Magic",
+                        "parent": "Wild Magic",
                         "_optional": "YES"
                      },
                      {
@@ -10545,6 +10825,8 @@ var classdata = {
                         "text": [
                            "At 14th level, you gain the ability to step from one shadow into another. When you are in dim light or darkness, as a bonus action, you can teleport up to 120 feet to an unoccupied space you can see that is also in dim light or darkness."
                         ],
+                        "subclass": "Sorcerous Origin: Shadow (UA)",
+                        "parent": "Shadow (UA)",
                         "_optional": "YES"
                      }
                   ],
@@ -10569,64 +10851,6 @@ var classdata = {
                         "text": [
                            "At 17th level, you learn an additional metamagic option."
                         ]
-                     },
-                     {
-                        "name": "Metamagic: Careful Spell",
-                        "text": [
-                           "When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Distant Spell",
-                        "text": [
-                           "When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell.",
-                           "When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Empowered Spell",
-                        "text": [
-                           "When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls.",
-                           "You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Extended Spell",
-                        "text": [
-                           "When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Heightened Spell",
-                        "text": [
-                           "When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Quickened Spell",
-                        "text": [
-                           "When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Subtle Spell",
-                        "text": [
-                           "When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components."
-                        ],
-                        "_optional": "YES"
-                     },
-                     {
-                        "name": "Metamagic: Twinned Spell",
-                        "text": [
-                           "When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip)."
-                        ],
-                        "_optional": "YES"
                      }
                   ],
                   "_level": "17"
@@ -10638,6 +10862,8 @@ var classdata = {
                         "text": [
                            "Beginning at 18th level, you can channel the dread presence of your dragon ancestor, causing those around you to become awestruck or frightened. As an action, you can spend 5 sorcery points to draw on this power and exude an aura of awe or fear (your choice) to a distance of 60 feet. For 1 minute or until you lose your concentration (as if you were casting a concentration spell), each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours."
                         ],
+                        "subclass": "Sorcerous Origin: Draconic Bloodline",
+                        "parent": "Draconic Bloodline",
                         "_optional": "YES"
                      },
                      {
@@ -10645,6 +10871,8 @@ var classdata = {
                         "text": [
                            "Beginning at 18th level, the harmful energy of your spells intensifies. When you roll damage for a spell and roll the highest number possible on any of the dice, choose one of those dice, roll it again and add that roll to the damage. You can use the feature only once per turn."
                         ],
+                        "subclass": "Sorcerous Origin: Wild Magic",
+                        "parent": "Wild Magic",
                         "_optional": "YES"
                      },
                      {
@@ -10652,6 +10880,8 @@ var classdata = {
                         "text": [
                            "Starting at 18th level, when you cast one of the spells you learned from your Chosen of the Gods class feature, you regain hit points equal to your Charisma modifier (minimum of +1) + the spell's level."
                         ],
+                        "subclass": "Sorcerous Origin: Favored Soul (UA)",
+                        "parent": "Favored Soul (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -10660,6 +10890,8 @@ var classdata = {
                            "At 18th level, you gain a flying speed of 60 feet and immunity to lightning and thunder damage.",
                            "As an action, you can reduce your flying speed to 30 feet for one hour and choose a number of creatures within 30 feet of you equal to 3+your Charisma modifier. The chosen creatures gain a flying speed of 30 feet for 1 hour."
                         ],
+                        "subclass": "Sorcerous Origin: Storm",
+                        "parent": "Storm",
                         "_optional": "YES"
                      },
                      {
@@ -10667,6 +10899,8 @@ var classdata = {
                         "text": [
                            "At 18th level, you can spend 3 sorcery points to transform yourself into a shadow form as a bonus action. In this form, you have resistance to all damage except force damage, and you can move through other creatures and objects as if they were difficult terrain. You take 5 force damage if you end your turn inside an object. You remain in this form for 1 minute."
                         ],
+                        "subclass": "Sorcerous Origin: Shadow (UA)",
+                        "parent": "Shadow (UA)",
                         "_optional": "YES"
                      }
                   ],
