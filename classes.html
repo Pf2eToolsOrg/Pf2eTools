@@ -150,11 +150,11 @@ pan.sourceLMoP {
 	color: lightgreen;
 }
 
-table#stats {
+table.stats {
 	table-layout: fixed;
 }
 
-table#stats, #classtable table {
+table.stats, #classtable table {
 	width: 100%;
 	min-width: 200px;
 	background: #fdf1dc;
@@ -197,7 +197,7 @@ th#name {
 	color: #922610!important;
 }
 
-table#stats span.name {
+table.stats span.name {
 	font-weight: bold;
 }
 
@@ -350,6 +350,7 @@ var classtabledefault ="";
 
 function loadspells() {
 	tabledefault = $("#stats").html();
+	statsprofdefault = $("#statsprof").html();
 	classtabledefault = $("#classtable").html();
 
 	var classlist = classdata.compendium.class;
@@ -396,6 +397,7 @@ function loadspells() {
 
 function useclass (id) {
 	$("#stats").html(tabledefault);
+	$("#statsprof").html(statsprofdefault);
 	$("#classtable").html(classtabledefault);
 	var classlist = classdata.compendium.class;
 	var curclass = classlist[id];
@@ -462,7 +464,7 @@ function useclass (id) {
 	$("div#subclasses span").remove();
 	var prevsubclass = 0;
 	for (var i = 0; i < subclasses.length; i++) {
-		
+
 		if (typeof subclasses[i].issubclass !== "undefined" && subclasses[i].issubclass !== "YES") {
 			$(".feature[data-subclass='"+subclasses[i].subclass+"']").hide();
 			continue;
@@ -584,63 +586,75 @@ function useclass (id) {
 				</table>
 			</div>
 		</div>
+		<hr>
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-md-3">
+				<table id="statsprof" class="stats">
+					<tr><th class="border" colspan="6"></th></tr>
+					<tr>
+						<th id="name" colspan="6">Name</th>
+					</tr>
+					<tr><td class="divider" colspan="6"><div></div></td></tr>
+					<tr>
+						<td id="hp" colspan="6">
+							<h5>Hit Points</h3>
+								<div id="hitdice">
+									<strong>Hit Dice:</strong>
+									<span> </span>
+								</div>
+								<div id="hp1stlevel">
+									<strong>Hit Points at 1st Level:</strong>
+									<span> </span>
+								</div>
+								<div id="hphigherlevels">
+									<strong>Hit Points at Higher Levels:</strong>
+									<span> </span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td id="prof" colspan="6">
+								<h5>Proficiencies</h5>
+								<span>You are proficient with the following items, in addition to any proficiencies provided by your race or background.</span>
+								<div id="armor">
+									<strong>Armor:</strong>
+									<span> </span>
+								</div>
+								<div id="weapons">
+									<strong>Weapons:</strong>
+									<span> </span>
+								</div>
+								<div id="tools">
+									<strong>Tools:</strong>
+									<span> </span>
+								</div>
+								<div id="saves">
+									<strong>Saving Throws:</strong>
+									<span> </span>
+								</div>
+								<div id="skills">
+									<strong>Skills:</strong>
+									<span> </span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td id="equipment" colspan="6">
+								<h5>Starting Equipment</h5>
+								<span>You start with the following items, plus anything provided by your background.</span>
+								<div></div>
+							</td>
+						</tr>
+
+						<tr><th class="border" colspan="6"></th></tr>
+					</table>
+			</div>
+			<div class="col-md-9">
 				<div id="subclasses"></div>
 				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
-					<table id="stats">
+					<table id="stats" class="stats">
 						<tr><th class="border" colspan="6"></th></tr>
-						<tr>
-							<th id="name" colspan="6">Name</th>
-						</tr>
-						<tr><td class="divider" colspan="6"><div></div></td></tr>
-						<tr>
-							<td id="hp" colspan="2">
-								<h5>Hit Points</h3>
-									<div id="hitdice">
-										<strong>Hit Dice:</strong>
-										<span> </span>
-									</div>
-									<div id="hp1stlevel">
-										<strong>Hit Points at 1st Level:</strong>
-										<span> </span>
-									</div>
-									<div id="hphigherlevels">
-										<strong>Hit Points at Higher Levels:</strong>
-										<span> </span>
-									</div>
-								</td>
-								<td id="prof" colspan="2">
-									<h5>Proficiencies</h5>
-									<span>You are proficient with the following items, in addition to any proficiencies provided by your race or background.</span>
-									<div id="armor">
-										<strong>Armor:</strong>
-										<span> </span>
-									</div>
-									<div id="weapons">
-										<strong>Weapons:</strong>
-										<span> </span>
-									</div>
-									<div id="tools">
-										<strong>Tools:</strong>
-										<span> </span>
-									</div>
-									<div id="saves">
-										<strong>Saving Throws:</strong>
-										<span> </span>
-									</div>
-									<div id="skills">
-										<strong>Skills:</strong>
-										<span> </span>
-									</div>
-								</td>
-								<td id="equipment" colspan="2">
-									<h5>Starting Equipment</h5>
-									<span>You start with the following items, plus anything provided by your background.</span>
-									<div></div>
-								</td>
-							</tr>
-							<tr id="features"><td class="divider" colspan="6"><div></div></td></tr>
+							<tr id="features"><td colspan="6"><div></div></td></tr>
 
 							<tr><th class="border" colspan="6"></th></tr>
 						</table>
