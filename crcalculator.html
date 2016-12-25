@@ -114,6 +114,23 @@ input[type=number]#hd::-webkit-outer-spin-button {
 #instructions p {
 	font-size: small;
 }
+
+#monsterfeatures tr th {
+	font-size: 0.8em;
+	vertical-align: bottom;
+	padding: 0.2em 0.7em;
+}
+
+#monsterfeatures tr td {
+		cursor: pointer;
+		font-size: 0.8em;
+		padding: 0.2em 0.7em;
+		vertical-align: top;
+}
+
+#expectedcr {
+		text-align: center;
+}
 </style>
 
 
@@ -147,6 +164,10 @@ function loadpage() {
 		calculatecr();
 	})
 
+	$("#saveprofs, #resistances").change(function() {
+		calculatecr();
+	})
+
 	$("#saveinstead").change(function() {
 		var curval = parseInt($("#attackbonus").val());
 		if (!$(this).is(":checked")) $("#attackbonus").val(curval-10);
@@ -162,6 +183,8 @@ function loadpage() {
 		if (newsize == "Large") $("#hdval").html("d10")
 		if (newsize == "Huge") $("#hdval").html("d12")
 		if (newsize == "Gargantuan") $("#hdval").html("d20")
+		$("#calculatehp").click();
+		calculatecr();
 	});
 
 	$("#calculatehp").click(function() {
@@ -170,7 +193,12 @@ function loadpage() {
 		$("#hp").val((avghp + conmod)* $("#hd").val());
 	});
 
+	$("#hd, #con").change(function() {
+			$("#calculatehp").click();
+	})
+
 	$("#msbcr tr").not(":has(th)").click(function() {
+		$("#expectedcr").val($(this).children("td:eq(0)").html());
 		$("#hp").val($(this).children("td:eq(3)").html().split("-")[0])
 		$("#ac").val($(this).children("td:eq(2)").html())
 		$("#dpr").val($(this).children("td:eq(5)").html().split("-")[0])
@@ -183,27 +211,101 @@ function loadpage() {
 		calculatehd();
 	});
 
+	// parse monsterfeatures
+	for (var i = 0; i < monsterfeatures.length; i++) {
+		var effectoncr = [];
+		if (monsterfeatures[i].hp) effectoncr.push("HP: "+monsterfeatures[i].hp);
+		if (monsterfeatures[i].ac) effectoncr.push("AC: "+monsterfeatures[i].ac);
+		if (monsterfeatures[i].dpr) effectoncr.push("DPR: "+monsterfeatures[i].dpr);
+		if (monsterfeatures[i].attackbonus) effectoncr.push("AB: "+monsterfeatures[i].attackbonus);
+
+		effectoncr = effectoncr.join(", ");
+
+		$("#monsterfeatures table").append("<tr><td><input type='checkbox' id='MF"+monsterfeatures[i].name+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'></td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example+"</td><td>"+monsterfeatures[i].effect+"</td><td>"+effectoncr+"</td></tr>");
+	}
+
+	// parse url
+	function parseurl() {
 	if (window.location.hash) {
 		var curdata = window.location.hash.split("#")[1].split(",")
-		$("#hp").val(curdata[0]);
-		$("#ac").val(curdata[1]);
-		$("#dpr").val(curdata[2]);
-		$("#attackbonus").val(curdata[3]);
-		if (curdata[4] === "true") $("#saveinstead").attr("checked",true);
+		$("#expectedcr").val(curdata[0])
+		$("#hp").val(curdata[1]);
+		$("#ac").val(curdata[2]);
+		$("#dpr").val(curdata[3]);
+		$("#attackbonus").val(curdata[4]);
+		if (curdata[5] === "true") $("#saveinstead").attr("checked",true);
+		$("#size").val(curdata[6])
+		$("#hd").val(curdata[7])
+		$("#con").val(curdata[8])
+		if (curdata[9] === "true") $("#vulnerabilities").attr("checked",true);
+		$("#resistances").val(curdata[10]);
+		if (curdata[11] === "true") $("#flying").attr("checked",true);
+		$("#saveprofs").val(curdata[12])
+
+		curdata = window.location.hash.split("traits:")[1].split(",");
+		for (var i = 1; i < curdata.length; i++) {
+			$("input[id="+curdata[i]+"]").click();
+		}
+		}
 	}
+	parseurl();
+
+	// Monster Features table
+	$("#monsterfeatures tr td").not(":has(input)").click(function() {
+		$(this).siblings().children("input").click();
+		var curfeature = $(this).siblings("td").children("input").attr("id");
+		window.location = window.location.hash+","+curfeature;
+		if ($(this).siblings("td").children("input").prop("checked")) return;
+		window.location = window.location.hash.split(","+curfeature).join("");
+		calculatecr();
+	})
+
+	$("#reset").click(function() {
+			window.location = "";
+			parseurl();
+	})
 
 	calculatecr();
 }
 
 function calculatecr() {
-	var hp = parseInt($("#crcalc #hp").val());
+	var expectedcr = parseInt($("#expectedcr").val());
+
+	var hp = parseInt($("#crcalc #hp").val()) ;
+	if ($("#flying").prop("checked")) hp *= 0.5;
+
+	if ($("#resistances").val() === "res") {
+			if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
+			if (expectedcr >= 5 && expectedcr <= 10) hp *= 1.5;
+			if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.25;
+	}
+	if ($("#resistances").val() === "imm") {
+			if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
+			if (expectedcr >= 5 && expectedcr <= 10) hp *= 2;
+			if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.5;
+			if (expectedcr >= 17) hp *= 1.25;
+	}
+	hp = Math.floor (hp);
+
 	var ac = parseInt($("#crcalc #ac").val());
+	ac += parseInt($("#saveprofs").val()) + parseInt($("#flying").prop("checked")*2);
+
 	var dpr = parseInt($("#crcalc #dpr").val());
+
 	var attackbonus = parseInt($("#crcalc #attackbonus").val());
-	var usesavedc = $("#saveinstead").is(":checked");
+	var usesavedc = $("#saveinstead").prop("checked");
 
 	var offensiveCR = -1;
 	var defensiveCR = -1;
+
+
+	// go through monster features
+	$("#monsterfeatures input:checked").each(function() {
+		if ($(this).attr("data-hp") !== "") hp += parseInt($(this).attr("data-hp"));
+		if ($(this).attr("data-ac") !== "") ac += parseInt($(this).attr("data-ac"));
+		if ($(this).attr("data-dpr") !== "") dpr += parseInt($(this).attr("data-dpr"));
+		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += parseInt($(this).attr("data-attackbonus"));
+	})
 
 	for (var i = 0; i < msbcr.cr.length; i++) {
 		var curcr = msbcr.cr[i];
@@ -254,18 +356,34 @@ function calculatecr() {
 	var hitdicesize = $("#hdval").html();
 	var conmod = Math.floor(($("#con").val() - 10) / 2);
 
-	window.location = "#"+$("#hp").val()+","+$("#ac").val()+","+$("#dpr").val()+","+$("#attackbonus").val()+","+usesavedc;
+	var hash = "#";
+	hash += $("#expectedcr").val()+"," // 0
+	hash += $("#hp").val()+"," // 1
+	hash += $("#ac").val()+"," // 2
+	hash += $("#dpr").val()+"," // 3
+	hash += $("#attackbonus").val()+"," // 4
+	hash += usesavedc+"," // 5
+	hash += $("#size").val()+"," // 6
+	hash += $("#hd").val()+"," // 7
+	hash += $("#con").val()+"," // 8
+	hash += $("#vulnerabilities").prop("checked")+"," // 9
+	hash += $("#resistances").val()+"," // 10
+	hash += $("#flying").prop("checked")+"," // 11
+	hash += $("#saveprofs").val()+",traits:" // 12
+	var hastraits = window.location.hash.split("traits:")[1];
+	if (hastraits !== "undefined") hash += hastraits;
+
+	window.location = hash;
 
 	$("#output").html("<h4>Challenge Rating: "+cr+"</h4>");
 	$("#output").append("<p>Offensive CR: "+offensiveCR+"</p>");
 	$("#output").append("<p>Defensive CR: "+defensiveCR+"</p>");
 	$("#output").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
-	$("#output").append("<p>Hit Points: "+hp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
-	$("#output").append("<p>Armor Class: "+ac+"</p>");
+	$("#output").append("<p>Effective HP: "+hp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
+	$("#output").append("<p>Effective AC: "+ac+"</p>");
 	$("#output").append("<p>Average Damage Per Round: "+dpr+"</p>");
-	$("#output").append("<p>"+(usesavedc?"Save DC: ":"Attack Bonus: +")+attackbonus+"</p>");
+	$("#output").append("<p>"+(usesavedc?"Save DC: ":"Effective Attack Bonus: +")+attackbonus+"</p>");
 }
-
 function calculatehd() {
 	var avghp = $("#hdval").html().split("d")[1]/2+1;
 	var conmod = Math.floor(($("#con").val() - 10) / 2);
@@ -274,6 +392,7 @@ function calculatehd() {
 	$("#hd").val(curhd);
 	return curhd;
 }
+
 </script>
 
 
@@ -300,81 +419,34 @@ function calculatehd() {
 			<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
 		</ul>
 	</nav>
+
 	<main class="container bodyContent">
 
+		<form id="crcalc" autocomplete="off">
 		<div class="row">
 			<div class="col-sm-6">
-				<form id="crcalc" autocomplete="off">
-					<div>
-						<h4>CR Calculation</h4>
-						<label for="hp">Hit Points
-							<span class="explanation">
-								A creature's hit points determine its defensive CR before it is adjusted by its AC.
-							</span>
-						</label>
-						<input type="number" id="hp" placeholder="Average HP" value="1" min="0" max="850"><br />
+				<div id="output">Waiting for calculation...</div>
+				<br>
+				<input type="button" id="reset" value="Reset">
+				<h4>Instructions</h4>
+				<ol>
+					<li>Enter expected CR of creature.</li>
+					<li>Fill in the HP, AC, and other defensive attributes of creature.</li>
+					<li>Fill in offensives attributes of creature. DPR is averaged over three rounds!</li>
+					<li>Click which special Monster Features it has.</li>
+					<li>Done!</li>
+				</ol>
+				<p><small>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273 through 283. You can click on the table to the right to fill in values for a given and adjust to taste. You can hover over the individual labels for a short description of how each attribute contributes to a monster's CR.</small></p>
+				<hr>
+				<label for="expectedcr" style="font-size: 1em;">Expected CR:
+					<span class="explanation">
+						CR calculation begins by determining what the final CR of a monster is.
+					</span>
+				</label>
+				<span class="inputwrap">
+					<input type="text" id="expectedcr" value="0" size="2">
+				</span><br>
 
-						<label for="ac">Armor Class
-							<span class="explanation">
-								A creature's AC adjusts its defensive CR.
-							</span>
-						</label>
-						<input type="number" id="ac" placeholder="AC" value="13" min="1" max="40"><br />
-
-						<label for="dpr">Damage Per Round
-							<span class="explanation">
-								A creature's damage per round (DPR) determines its offensive CR, which is offset by its attack bonus or save DC. DPR is determined by averaging its maximum damage output (taking the average of dice rolls, ignoring crits and accuracy) over three rounds. Areas of effect are treated as though they hit two creatures, which fail any involved saving throws.
-							</span>
-						</label>
-						<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br />
-
-						<label for="attackbonus">Attack Bonus/Save DC
-							<span class="explanation">
-								A creature's attack bonus or save DC adjuts its offensive CR.
-							</span>
-						</label>
-
-						<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br>
-						<label for="saveinstead">Use Saves?
-							<span class="explanation">
-								If a creature's damage output is more dependent on save-based abilities, its save DC is used for adjusting its offensive CR instead of its attack bonus.
-							</span>
-						</label>
-						<input type="checkbox" id="saveinstead" value="0"><br>
-						<input type="button" id="calculate" value="Calculate"><br><br>
-						<div id="output">Waiting for calculation...</div>
-					</div>
-					<hr>
-					<div>
-						<h4>Hit Points</h4>
-						<label for="size">Size:
-							<span class="explanation">
-								A creature's size determines the size of its individual hit dice.
-							</span>
-						</label>
-						<span class="inputwrap">
-							<select id="size">
-								<option value="Tiny">Tiny</option>
-								<option value="Small">Small</option>
-								<option value="Medium" selected>Medium</option>
-								<option value="Large">Large</option>
-								<option value="Huge">Huge</option>
-								<option value="Gargantuan">Gargantuan</option>
-							</select>
-						</span><br />
-						<label for="hd">Hit Dice:
-							<span class="explanation">
-								Unlike player characters, the number of hit dice an NPC gets is completely arbitrary. Adjust this amount to taste.
-							</span>
-						</label> <span class="inputwrap"><input type="number" id="hd" value="1"><span id="hdval">d8</span></span><br />
-						<label for="con">Constitution:
-							<span class="explanation">
-								A creature's HP is increases by its Constitution modifier for each hit die it has.
-							</span>
-						</label><input type="number" id="con" value="10" min="1" max="30"><br>
-						<input type="button" id="calculatehp" value="Calculate Average HP"><br>
-					</div>
-				</form>
 			</div>
 			<div class="col-sm-6">
 				<h4>Monster Statistics by Challenge Rating</h4>
@@ -389,27 +461,140 @@ function calculatehd() {
 						<th>Save DC</th>
 					</tr>
 				</table>
-				<br>
-				<small>
-					<p><strong>Protip:</strong> Click a row to load in that CR's average stats.</p>
-				</small>
 			</div>
 
 		</div>
+		<hr>
+			<div class="row">
+				<div class="col-sm-6">
+					<input type="button" id="calculate" value="Calculate" style="display: none;">
+
+				<h4>Defense</h4>
+				<label for="hp">Hit Points
+					<span class="explanation">
+						A creature's hit points determine its defensive CR before it is adjusted by its AC.
+					</span>
+				</label>
+				<input type="number" id="hp" placeholder="Average HP" value="1" min="0" max="850"><br />
+
+				<label for="ac">Armor Class
+					<span class="explanation">
+						A creature's AC adjusts its defensive CR.
+					</span>
+				</label>
+				<input type="number" id="ac" placeholder="AC" value="13" min="1" max="40"><br />
+				<hr>
+				<label for="size">Size:
+					<span class="explanation">
+						A creature's size determines the size of its individual hit dice.
+					</span>
+				</label>
+				<span class="inputwrap">
+					<select id="size">
+						<option value="Tiny">Tiny</option>
+						<option value="Small">Small</option>
+						<option value="Medium" selected>Medium</option>
+						<option value="Large">Large</option>
+						<option value="Huge">Huge</option>
+						<option value="Gargantuan">Gargantuan</option>
+					</select>
+				</span><br />
+				<label for="hd">Hit Dice:
+					<span class="explanation">
+						Unlike player characters, the number of hit dice an NPC gets is completely arbitrary. Adjust this amount to taste.
+					</span>
+				</label> <span class="inputwrap"><input type="number" id="hd" value="1" min="1" max="999"><span id="hdval">d8</span></span><br />
+				<label for="con">Constitution:
+					<span class="explanation">
+						A creature's HP is increases by its Constitution modifier for each hit die it has.
+					</span>
+				</label><input type="number" id="con" value="10" min="1" max="30"><br>
+				<input type="button" id="calculatehp" value="Calculate Average HP" style="display: none;"><br>
+
+				<label for="vulnerabilities">Vulnerabilities:
+					<span class="explanation">
+						If a creature is vulnerable to common damage types (especially bludgeoning, piercing, and slashing damage), its effective hit points are halved.
+					</span></label>
+				<input type="checkbox" id="vulnerabilities"><br>
+
+				<label for="resistances">Resistances/Immunities:
+					<span class="explanation">
+						A monster's HP is multiplied based on the resistances and immunities has to common damage types (non-magical budgeoning, piercing, and slashing chief among them).
+					</span></label>
+				<span class="inputwrap">
+					<select id="resistances" value="0">
+						<option value="0">None</option>
+						<option value="res">Resistances</option>
+						<option value="imm">Immunities</option>
+					</select>
+				</span><br>
+
+				<label for="flying">Flying at CRs 0-9:
+					<span class="explanation">
+						A monster’s effective AC is increased by 2 if it can fly and deal damage at range, though only if its expected challenge rating is 10 or lower.
+					</span></label>
+				<input type="checkbox" id="flying"><br>
+
+				<label for="saveprofs">Save Proficiencies:
+					<span class="explanation">
+						Increase a creature's effective AC by 2 if it has 3 or 4 saving throw proficiencies, or by 4 if it has 5 or 6.
+					</span></label>
+				<span class="inputwrap">
+					<select id="saveprofs" value="0">
+						<option value="0">0-2</option>
+						<option value="2">3-4</option>
+						<option value="4">5-6</option>
+					</select>
+				</span><br>
+
+			</div>
+			<div class="col-sm-6">
+				<h4>Offensive</h4>
+				<label for="dpr">Damage Per Round
+					<span class="explanation">
+						A creature's damage per round (DPR) determines its offensive CR, which is offset by its attack bonus or save DC. DPR is determined by averaging its maximum damage output (taking the average of dice rolls, ignoring crits and accuracy) over three rounds. Areas of effect are treated as though they hit two creatures, which fail any involved saving throws.
+					</span>
+				</label>
+				<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br />
+
+				<label for="attackbonus">Attack Bonus/Save DC
+					<span class="explanation">
+						A creature's attack bonus or save DC adjuts its offensive CR.
+					</span>
+				</label>
+
+				<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br>
+				<label for="saveinstead">Use Saves?
+					<span class="explanation">
+						If a creature's damage output is more dependent on save-based abilities, its save DC is used for adjusting its offensive CR instead of its attack bonus.
+					</span>
+				</label>
+				<input type="checkbox" id="saveinstead" value="0"><br>
+				<hr>
+
+
+			</div>
+		</div>
+		</form>
+		<hr>
 		<div class="row">
-			<div class="col-sm-12" id="instructions">
-				<h3>Instructions</h3>
-				<p>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273 through 283.</p>
-				<h4>What is CR?</h4>
-				<p>CR is how strong a creature is. It is the average of two values: defensive CR and offensive CR.</p>
-				<p>Defensive CR is based on the MSbCR chart to the right. Match HP to a given CR, then offset that by half the difference of the creature's AC from that CR's AC value.</p>
-				<p>Similarly, offensive CR is based on damage per round (DPR) offset by their attack bonus or save DC difference. Use whichever of the two is more pertitent to the creature's damage output.</p>
-				<h4>Calculating Hit Points</h4>
-				<p>You can calculate average HP based on hit die. Adjust the size, number of hit dice, and the Constitution modifier of the creature.</p>
+			<div class="col-sm-12" id="monsterfeatures">
+				<h4>Monster Features</h4>
+				<span style="text-align: right;">
 
+				</span>
+				<table>
+					<tr>
+						<th>Use?</th>
+						<th>Name</th>
+						<th>Example Monster</th>
+						<th>Effect</th>
+						<th>Effect on Challenge Rating</th>
+					</tr>
+				</table>
 			</div>
 		</div>
-
+		<hr>
 	</main>
 
 
@@ -418,6 +603,7 @@ function calculatehd() {
 	Would load it in but I want this for offline use too
 -->
 <script type="text/javascript" src="data/msbcr.json"></script>
+<script type="text/javascript" src="data/monsterfeatures.json"></script>
 <script type="text/javascript" src="js/list.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
