@@ -310,7 +310,7 @@ function calculatecr() {
 	for (var i = 0; i < msbcr.cr.length; i++) {
 		var curcr = msbcr.cr[i];
 		if (hp >= parseInt(curcr.hpmin) && hp <= parseInt(curcr.hpmax)) {
-			var defensedifference = ac - parseInt(curcr.ac)
+			var defensedifference = parseInt(curcr.ac) - ac;
 			if (defensedifference > 0) defensedifference = Math.floor(defensedifference / 2);
 			if (defensedifference < 0) defensedifference = Math.ceil(defensedifference / 2);
 			defensedifference = i - defensedifference;
@@ -440,7 +440,7 @@ function calculatehd() {
 				<hr>
 				<label for="expectedcr" style="font-size: 1em;">Expected CR:
 					<span class="explanation">
-						CR calculation begins by determining what the final CR of a monster is.
+						CR calculation begins by determining what you want the final CR of the monster to be.
 					</span>
 				</label>
 				<span class="inputwrap">
