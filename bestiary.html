@@ -340,6 +340,7 @@ function loadmonsters() {
 
 	monsters = monsterdata.compendium.monster;
 
+	// parse all the monster data
 	for (var i = 0; i < monsters.length; i++) {
 		var name = monsters[i].name;
 		var source = monsters[i].type.split(",");
@@ -350,6 +351,7 @@ function loadmonsters() {
 		source = parsesource(source);
 
 		var cr = monsters[i].cr;
+
 
 		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span title=\""+origsource+"\" class='source source"+source+"'>("+source+")</span> <span class='type'>Type: "+type+"</span> <span class='cr'>CR "+cr+" </span></li>");
 
@@ -362,9 +364,6 @@ function loadmonsters() {
 		if (!$("select.crfilter option[value='"+cr+"']").length) {
 			$("select.crfilter").append("<option title=\""+cr+"\" value='"+cr+"'>"+cr+"</option>")
 		}
-
-
-
 	}
 
 	$("select.typefilter option").sort(asc_sort).appendTo('select.typefilter');
