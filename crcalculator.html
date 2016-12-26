@@ -128,6 +128,11 @@ input[type=number]#hd::-webkit-outer-spin-button {
 		vertical-align: top;
 }
 
+#monsterfeatures tr td input[type=number] {
+	width: 3em;
+	vertical-align: middle;
+	text-align: right;
+}
 #expectedcr {
 		text-align: center;
 }
@@ -221,7 +226,12 @@ function loadpage() {
 
 		effectoncr = effectoncr.join(", ");
 
-		$("#monsterfeatures table").append("<tr><td><input type='checkbox' id='MF"+monsterfeatures[i].name+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'></td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example+"</td><td>"+monsterfeatures[i].effect+"</td><td>"+effectoncr+"</td></tr>");
+
+		var numbox = "";
+		if (monsterfeatures[i].numbox === "YES") numbox = "<input type='number' value='0'>"
+		$("#monsterfeatures table").append("<tr><td><input type='checkbox' id='MF"+encodeURI(monsterfeatures[i].name)+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'>"+numbox+"</td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example+"</td><td>"+monsterfeatures[i].effect+"</td><td>"+effectoncr+"</td></tr>");
+
+		$("#monsterfeatures tr td:last, #monsterfeatures tr th:last").hide();
 	}
 
 	// parse url
@@ -244,7 +254,8 @@ function loadpage() {
 
 		curdata = window.location.hash.split("traits:")[1].split(",");
 		for (var i = 1; i < curdata.length; i++) {
-			$("input[id="+curdata[i]+"]").click();
+			$("input[id='"+curdata[i].split(":")[0]+"']").click();
+			if (curdata[i].split(":")[1]) $("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
 		}
 		}
 	}
@@ -253,10 +264,20 @@ function loadpage() {
 	// Monster Features table
 	$("#monsterfeatures tr td").not(":has(input)").click(function() {
 		$(this).siblings().children("input").click();
+
 		var curfeature = $(this).siblings("td").children("input").attr("id");
-		window.location = window.location.hash+","+curfeature;
+		var curnumber="";
+		if ($(this).siblings("td").children("input[type=number]").length) curnumber = ":"+$(this).siblings("td").children("input[type=number]").val();
+		window.location = window.location.hash+","+curfeature+curnumber;
+
 		if ($(this).siblings("td").children("input").prop("checked")) return;
+
+		window.location = window.location.hash.split(","+curfeature+curnumber).join("");
+		window.location = window.location.hash.split(","+curfeature+":0").join("");
 		window.location = window.location.hash.split(","+curfeature).join("");
+	})
+
+	$("#monsterfeatures tr td input").change(function() {
 		calculatecr();
 	})
 
@@ -285,7 +306,6 @@ function calculatecr() {
 			if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.5;
 			if (expectedcr >= 17) hp *= 1.25;
 	}
-	hp = Math.floor (hp);
 
 	var ac = parseInt($("#crcalc #ac").val());
 	ac += parseInt($("#saveprofs").val()) + parseInt($("#flying").prop("checked")*2);
@@ -298,14 +318,25 @@ function calculatecr() {
 	var offensiveCR = -1;
 	var defensiveCR = -1;
 
-
 	// go through monster features
 	$("#monsterfeatures input:checked").each(function() {
-		if ($(this).attr("data-hp") !== "") hp += parseInt($(this).attr("data-hp"));
-		if ($(this).attr("data-ac") !== "") ac += parseInt($(this).attr("data-ac"));
-		if ($(this).attr("data-dpr") !== "") dpr += parseInt($(this).attr("data-dpr"));
+		var trait = 0;
+		if ($(this).siblings("input[type=number]").length) trait = $(this).siblings("input[type=number]").val();
+		if ($(this).attr("data-hp") !== "") hp += eval($(this).attr("data-hp"));
+		if ($(this).attr("data-ac") !== "") ac += eval($(this).attr("data-ac"));
+		if ($(this).attr("data-dpr") !== "") dpr += eval($(this).attr("data-dpr"));
 		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += parseInt($(this).attr("data-attackbonus"));
 	})
+
+	hp = Math.floor (hp);
+	dpr = Math.floor (dpr);
+
+	var effectivehp = hp;
+	var effectivedpr = dpr;
+
+	// make sure you don't break the CR
+	if (hp > 850) hp = 850;
+	if (dpr > 320) dpr = 320;
 
 	for (var i = 0; i < msbcr.cr.length; i++) {
 		var curcr = msbcr.cr[i];
@@ -315,7 +346,7 @@ function calculatecr() {
 			if (defensedifference < 0) defensedifference = Math.ceil(defensedifference / 2);
 			defensedifference = i - defensedifference;
 			if (defensedifference < 0) defensedifference = 0;
-			if (defensedifference > msbcr.length) defensedifference = msbcr.length-1;
+			if (defensedifference >= msbcr.cr.length) defensedifference = msbcr.cr.length-1;
 			defensiveCR = msbcr.cr[defensedifference]._cr;
 		}
 		if (dpr >= curcr.dprmin && dpr <= curcr.dprmax) {
@@ -326,7 +357,7 @@ function calculatecr() {
 			if (attackdifference < 0) attackdifference = Math.ceil(attackdifference / 2);
 			attackdifference = i - attackdifference;
 			if (attackdifference < 0) attackdifference = 0;
-			if (attackdifference > msbcr.length) attackdifference = msbcr.length-1;
+			if (attackdifference >= msbcr.cr.length) attackdifference = msbcr.cr.length-1;
 			offensiveCR = msbcr.cr[attackdifference]._cr;
 		}
 	}
@@ -369,7 +400,8 @@ function calculatecr() {
 	hash += $("#vulnerabilities").prop("checked")+"," // 9
 	hash += $("#resistances").val()+"," // 10
 	hash += $("#flying").prop("checked")+"," // 11
-	hash += $("#saveprofs").val()+",traits:" // 12
+	hash += $("#saveprofs").val()+"," // 12
+	hash += "traits:";
 	var hastraits = window.location.hash.split("traits:")[1];
 	if (hastraits !== "undefined") hash += hastraits;
 
@@ -379,11 +411,12 @@ function calculatecr() {
 	$("#output").append("<p>Offensive CR: "+offensiveCR+"</p>");
 	$("#output").append("<p>Defensive CR: "+defensiveCR+"</p>");
 	$("#output").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
-	$("#output").append("<p>Effective HP: "+hp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
+	$("#output").append("<p>Effective HP: "+effectivehp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
 	$("#output").append("<p>Effective AC: "+ac+"</p>");
-	$("#output").append("<p>Average Damage Per Round: "+dpr+"</p>");
+	$("#output").append("<p>Average Damage Per Round: "+effectivedpr+"</p>");
 	$("#output").append("<p>"+(usesavedc?"Save DC: ":"Effective Attack Bonus: +")+attackbonus+"</p>");
 }
+
 function calculatehd() {
 	var avghp = $("#hdval").html().split("d")[1]/2+1;
 	var conmod = Math.floor(($("#con").val() - 10) / 2);
@@ -580,9 +613,6 @@ function calculatehd() {
 		<div class="row">
 			<div class="col-sm-12" id="monsterfeatures">
 				<h4>Monster Features</h4>
-				<span style="text-align: right;">
-
-				</span>
 				<table>
 					<tr>
 						<th>Use?</th>
@@ -592,6 +622,7 @@ function calculatehd() {
 						<th>Effect on Challenge Rating</th>
 					</tr>
 				</table>
+				<p><small><em>Note: not all monster features are covered here. The DMG has specific instructions on how to manage other features.</em></small></p>
 			</div>
 		</div>
 		<hr>
