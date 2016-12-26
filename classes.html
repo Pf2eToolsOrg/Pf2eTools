@@ -383,7 +383,9 @@ function loadspells() {
 	$("ul.list li").click(function(e) {
 		var subclassnumber = window.location.hash.split(/\,/)[1];
 		window.location.hash = "#"+$(this).attr("data-link")+",";
-		window.location.hash += subclassnumber;
+		if (subclassnumber !== "undefined") {
+			window.location.hash += subclassnumber;
+		} else window.location.hash += "-"
 		useclass($(this).attr("id"));
 
 		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Classes";
@@ -481,6 +483,7 @@ function useclass (id) {
 		if ($(this).hasClass("active")) {
 			$(".feature").show();
 			$(this).removeClass("active");
+				window.location.hash = window.location.hash.replace(/\,\S*/g, ",-");
 			return;
 		}
 
