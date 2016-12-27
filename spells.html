@@ -394,7 +394,7 @@ function usespell (id) {
 				texthtml = "<p>"+textlist+"</p>";
 			} else for (var i = 0; i < textlist.length; i++) {
 				if (!textlist[i]) continue;
-				texthtml = texthtml + "<p>"+textlist[i]+"</p>";
+				texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion","")+"</p>";
 			}
 			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
 
