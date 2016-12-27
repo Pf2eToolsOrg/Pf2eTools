@@ -276,6 +276,8 @@ function loadraces() {
 
 function userace (id) {
 	$("#stats").html(tabledefault);
+	$("#stats td").show();
+	
 	var racelist = racedata.compendium.race;
 	var currace = racelist[id];
 
@@ -284,12 +286,14 @@ function userace (id) {
 
 	var size = parsesize (currace.size);
 	$("td#size span").html(size);
+	if (size === "") $("td#size").hide();
 
 	var ability = currace.ability;
 	$("td#ability span").html(ability);
 
 	var speed = currace.speed;
 	$("td#speed span").html(speed+ "ft. ");
+	if (speed === "") $("td#speed").hide();
 
 	var traitlist = currace.trait;
 	$("tr.trait").remove();
