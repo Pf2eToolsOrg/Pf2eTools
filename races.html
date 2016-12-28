@@ -90,11 +90,7 @@ ul.list li:active {
 	color: white;
 }
 
-ul.list li span.source {
-	font-size: 0.8em;
-}
-
-ul.list li span.source, ul.list li span.type {
+ul.list li span.ability, ul.list li span.size {
 	font-size: 0.8em;
 	margin-left: 1em;
 	display: none;
@@ -103,6 +99,7 @@ ul.list li span.source, ul.list li span.type {
 ul.list li:hover span {
 	display: block;
 }
+
 
 th#name span.source {
 	display: inline-block;
@@ -143,7 +140,7 @@ span.sourcePotA {
 	color: blue;
 }
 
-pan.sourceLMoP {
+span.sourceLMoP {
 	color: lightgreen;
 }
 
@@ -242,11 +239,12 @@ function loadraces() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
+		if (!racelist[i].ability) racelist[i].ability = "";
+		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='ability'>"+racelist[i].ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size'>"+parsesize(racelist[i].size)+"</span></li>");
 	}
 
 	var options = {
-		valueNames: ['name'],
+		valueNames: ['name', 'ability', 'size'],
 		listClass: "races"
 	}
 
