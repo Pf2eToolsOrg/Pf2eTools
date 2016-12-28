@@ -218,6 +218,10 @@ td#hp h5, td#prof h5, td#equipment h5 {
 	margin-bottom: 0px;
 }
 
+td.features {
+	width: 50%;
+}
+
 td.feature p {
 	padding: 0 1em;
 }
@@ -530,6 +534,8 @@ function useclass (id) {
 
 	}
 
+	$("#classtable tr").not(":has(th)").append("<td style='width:100%;''></td>")
+
 	$(".feature:contains('Maneuver: ')").css("font-size","0.8em");
 
 	$("div#subclasses span").remove();
@@ -617,9 +623,9 @@ function useclass (id) {
 			</div>
 			<div class="col-sm-9" id="classtable">
 				<table>
-					<tr><th class="border" colspan="13"></th></tr>
+					<tr><th class="border" colspan="14"></th></tr>
 					<tr>
-						<th id="name" colspan="13">Name</th>
+						<th id="name" colspan="14">Name</th>
 					</tr>
 					<tr>
 						<th class="level">Level</th>
@@ -656,7 +662,7 @@ function useclass (id) {
 					<tr id="level18"><td class="level">18th</td><td class="pb">+6</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
 					<tr id="level19"><td class="level">19th</td><td class="pb">+6</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
 					<tr id="level20"><td class="level">20th</td><td class="pb">+6</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr><th class="border" colspan="13"></th></tr>
+					<tr><th class="border" colspan="14"></th></tr>
 				</table>
 			</div>
 		</div>
