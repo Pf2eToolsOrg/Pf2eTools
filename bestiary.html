@@ -712,7 +712,8 @@ function usemonster (id) {
 		$(this).html($(this).html().replace(/\+\d+/g, "<span class='roller' data-roll='1d20$&'>$&</span>"))
 	});
 
-	$("#stats p").each(function() {
+	// inline rollers
+	$("#stats p, #stats span#hp").each(function() {
 		$(this).html($(this).html().replace(/\d+d\d+(\s?(\-|\+)\s?\d+\s?)?/g, "<span class='roller' data-roll='$&'>$&</span>"));
 
 		$(this).html($(this).html().replace(/(\-|\+)\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>"))
