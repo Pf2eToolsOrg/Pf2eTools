@@ -147,7 +147,7 @@ span.sourcePotA {
 	color: blue;
 }
 
-pan.sourceLMoP {
+span.sourceLMoP {
 	color: lightgreen;
 }
 
@@ -163,17 +163,15 @@ table.stats, #classtable table {
 	position: relative;
 }
 
-table td, table th {
-	padding: 1px 0.5em;
-}
-
 table th {
 	color: #922610;
+	padding: 1px 0.5em;
 	vertical-align: bottom;
 }
 
 table td {
 	vertical-align: top;
+	padding: 1px 0.5em;
 }
 
 table span {
@@ -261,6 +259,12 @@ td.feature p {
 	display: none;
 	text-align: center;
 	max-width: 4em;
+}
+
+#classtable .newfeature {
+	text-align: center;
+	width: 1em;
+
 }
 
 div#subclasses {
@@ -418,16 +422,70 @@ function useclass (id) {
 	for (var i = curclass.autolevel.length-1; i >= 0; i--) {
 		var curlevel = curclass.autolevel[i];
 
-
-
-		if (curlevel.slots) {
-			if (curlevel.slots.__text) curlevel.slots = curlevel.slots.__text;
-			var curslots = curlevel.slots.split(",");
-			for (var a = 0; a < curslots.length; a++) {
-				if (curslots[a] === "0") continue;
-				$(".spellslots"+a).show();
-				$("tr#level"+curlevel._level+" td.spellslots"+a).html(curslots[a]);
+// spell slots and table data
+		if (!curlevel.feature) {
+			if (curlevel.slots) {
+				if (curlevel.slots.__text) curlevel.slots = curlevel.slots.__text;
+				var curslots = curlevel.slots.split(",");
+				for (var a = 0; a < curslots.length; a++) {
+					if (curslots[a] === "0") continue;
+					$(".spellslots"+a).show();
+					$("tr#level"+curlevel._level+" td.spellslots"+a).html(curslots[a]);
+				}
 			}
+
+			if (curlevel.spellsknown) {
+				if (!$(".spellsknown").length) {
+					$("th.spellslots0").after("<th class='spellsknown newfeature'>Spells Known</th>");
+					$("td.spellslots0").after("<td class='spellsknown newfeature'></td>");
+					$("#classtable th.border").attr("colspan", $("#classtable th.border").attr("colspan")+1);
+				}
+				$("tr#level"+curlevel._level+" td.spellsknown").html(curlevel.spellsknown);
+			}
+
+			if (curlevel.invocationsknown) {
+				if (!$(".invocationsknown").length) {
+					$("th.spellslots5").after("<th class='spellslots newfeature'>Spell Slots</th> <th class='slotlevel newfeature'>Slot Level</th> <th class='invocationsknown newfeature'>Invocations Known</th>");
+					$("td.spellslots5").after("<td class='spellslots newfeature'></td> <td class='slotlevel newfeature'></td> <td class='invocationsknown newfeature'>Invocations Known</td>");
+					$("#classtable th.border").attr("colspan", $("#classtable th.border").attr("colspan")+3);
+				}
+				$(".spellslots5").hide();
+				$("tr#level"+curlevel._level+" td.spellslots").html(curlevel.spellslots);
+				$("tr#level"+curlevel._level+" td.slotlevel").html(curlevel.slotlevel);
+				$("tr#level"+curlevel._level+" td.invocationsknown").html(curlevel.invocationsknown);
+			}
+
+			if (curlevel.rages) {
+				if (!$(".rages").length) {
+					$("th.spellslots0").before("<th class='rages newfeature'>Rages</th> <th class='ragedamage newfeature'>Rage Damage</th>");
+					$("td.spellslots0").before("<td class='rages newfeature'></td> <td class='ragedamage newfeature'></td>");
+					$("#classtable th.border").attr("colspan", $("#classtable th.border").attr("colspan")+2);
+				}
+				$("tr#level"+curlevel._level+" td.rages").html(curlevel.rages);
+				$("tr#level"+curlevel._level+" td.ragedamage").html(curlevel.ragedamage);
+			}
+
+			if (curlevel.martialarts) {
+				if (!$(".kipoints").length) {
+					$("th.pb").after("<th class='martialarts newfeature'>Martial Arts</th> <th class='kipoints newfeature'>Ki Points</th> <th class='unarmoredmovement newfeature'>Unarmored Movement</th>");
+					$("td.pb").after("<td class='martialarts newfeature'></td> <td class='kipoints newfeature'></td> <td class='unarmoredmovement newfeature'></td>");
+					$("#classtable td.border").attr("colspan", $("#classtable td.border").attr("colspan")+3);
+				}
+				$("tr#level"+curlevel._level+" td.martialarts").html(curlevel.martialarts);
+				$("tr#level"+curlevel._level+" td.kipoints").html(curlevel.kipoints);
+				$("tr#level"+curlevel._level+" td.unarmoredmovement").html(curlevel.unarmoredmovement);
+			}
+
+			if (curlevel.sneakattack) {
+				if (!$(".sneakattack").length) {
+					$("th.pb").after("<th class='sneakattack newfeature'>Sneak Attack</th>");
+					$("td.pb").after("<td class='sneakattack newfeature'></td>");
+					$("#classtable td.border").attr("colspan", $("#classtable td.border").attr("colspan")+1);
+				}
+				$("tr#level"+curlevel._level+" td.sneakattack").html(curlevel.sneakattack);
+			}
+
+// other features
 		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
 			var curfeature = curlevel.feature[a];
 
