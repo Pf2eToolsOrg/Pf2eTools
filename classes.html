@@ -485,6 +485,15 @@ function useclass (id) {
 				$("tr#level"+curlevel._level+" td.sneakattack").html(curlevel.sneakattack);
 			}
 
+			if (curlevel.sorcerypoints) {
+				if (!$(".sorcerypoints").length) {
+					$("th.pb").after("<th class='sorcerypoints newfeature'>Sorcery Points</th>");
+					$("td.pb").after("<td class='sorcerypoints newfeature'></td>");
+					$("#classtable td.border").attr("colspan", $("#classtable td.border").attr("colspan")+1);
+				}
+				$("tr#level"+curlevel._level+" td.sorcerypoints").html(curlevel.sorcerypoints);
+			}
+
 // other features
 		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
 			var curfeature = curlevel.feature[a];
