@@ -553,6 +553,8 @@ function useclass (id) {
 
 	}
 
+	$("div#subclasses span").sort(asc_sort).appendTo("div#subclasses");
+	
 	$("div#subclasses span").click(function() {
 		if ($(this).hasClass("active")) {
 			$(".feature").show();
