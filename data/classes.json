@@ -2236,6 +2236,28 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Divine Domain: City (UA)",
+                        "text": [
+                           "The City domain is concerned with the citizenry, commerce, traffic, and even architecture of modern civilization. In the eyes of a cleric of the city, the center of modern life is a sense and spirit of community, and the gravest enemies of the city are those who seek to harm the common weal of its citizens. ",
+                           null,
+                           "City Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared. They do not count towards your limit.",
+                           null,
+                           "1st - comprehend languages, remote access*",
+                           null,
+                           "3rd - find vehicle*, heat metal",
+                           null,
+                           "5th - lightning bolt, protection from ballistics*",
+                           null,
+                           "7th - locate creature, synchronicity*",
+                           null,
+                           "9th - commune with city*, shutdown*"
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "Divine Domain",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Divine Domain: Death",
                         "text": [
                            "The Death domain is concerned with the forces that cause death, as well as the negative energy that gives rise to undead creatures. Deities such as Chemosh, Myrkul, and WeeJas are patrons of necromancers, death knights, liches, mummy lords, and vampires. Gods of the Death domain also embody murder (Anubis, Bhaal, and Pyremius), pain (Iuz or Loviatar), disease or poison (Incabulos, Talona, or Morgion), and the underworld (Hades and He!).",
@@ -2421,6 +2443,42 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "City Domain: Bonus Cantrip",
+                        "text": [
+                           "When you choose this domain at 1st level, you gain the on/off cantrip in addition to your chosen cantrips. "
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "City",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "City Domain: Bonus Proficiencies",
+                        "text": [
+                           "Also starting at 1st level, you gain proficiency with sidearms and proficiency with vehicles (land). "
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "City",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "City Domain: Heart of the City",
+                        "text": [
+                           "From 1st level, you are able to tap into the spirit of community found in the city. While you are within any city, you can gain advantage on a single Charisma (Deception, Intimidation, or Persuasion) check, and you are considered proficient in the appropriate skill. You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain any expended uses when you finish a long rest."
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "City",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "City Domain: Bonus Proficiencies",
+                        "text": [
+                           "Also starting at 1st level, you gain proficiency with sidearms and proficiency with vehicles (land). "
+                        ],
+                        "subclass": "Divine Domain: City",
+                        "parent": "City",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Death Domain: Bonus Proficiency",
                         "text": [
                            "When the cleric chooses this domain at 1st level, he or she gains proficiency with martial weapons."
@@ -2598,6 +2656,17 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "City Domain Channel Divinity: Spirits of the City",
+                        "text": [
+                          "Starting at 2nd level, you can use your Channel Divinity to call on the city for aid. As an action, you present your holy symbol, and any city utility within 30 feet of you either works perfectly or shuts down entirely for 1 minute (your choice).",
+                          "Additionally, each hostile creature within 30 feet of you must make a Charisma saving throw. On a failed save, the creature is knocked prone or restrained (your choice) by hazards such as entangling wires, high-pressure water erupting from fire hydrants, pavement collapsing to unseen potholes, and so on. A restrained creature can escape by making a successful Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC.",
+                          "This effect is entirely local and affects only utilities within 30 feet of you. Determination of what utilities are available within range and how the physical effects of those utilities manifest are left to the DM."
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "City",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Death Domain Channel Divinity: Touch of Death",
                         "text": [
                            "Starting at 2nd level, the cleric can use Channel Divinity to destroy another creature's life force by touch.",
@@ -2720,6 +2789,15 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "City Domain: Block Watch",
+                        "text": [
+                           "Starting at 6th level, your awareness while in the city extends preternaturally. While in an urban environment, you are considered proficient in the Insight and Perception skills, and you add double your proficiency bonus to Wisdom (Insight) and Wisdom (Perception) checks, instead of your normal proficiency bonus. "
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "City",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Death Domain: Inescapable Destruction",
                         "text": [
                            "Starting at 6th level, the cleric's ability to channel negative energy becomes more potent. Necrotic damage dealt by the character's cleric spells and Channel Divinity options ignores resistance to necrotic damage."
@@ -2826,6 +2904,15 @@ var classdata = {
                         "subclass": "Divine Domain: Arcana",
                         "parent": "Arcana",
                         "_optionl": "YES"
+                     },
+                     {
+                        "name": "City Domain: Divine Strike",
+                        "text": [
+                           "At 8th level, you gain the ability to infuse your weapon strikes with psychic energy borrowed from the citizens of your city. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 psychic damage to the target. When you reach 14th level, the extra psychic damage increases to 2d8."
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "City",
+                        "_optional": "YES"
                      },
                      {
                         "name": "Death Domain: Divine Strike",
@@ -2976,6 +3063,15 @@ var classdata = {
                         ],
                         "subclass": "Divine Domain: Arcana",
                         "parent": "Arcana",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "City Domain: Express Transit",
+                        "text": [
+                           "At 17th level, you can use mass transit routes to transport instantaneously to other points in the city. Starting from a bus stop, train station, subway stop, or other suitable mass transit site within the city, you can teleport to any other similar transit stop within the city, as if you had cast a teleport spell whose destination is a permanent teleportation circle you know. Once you use this feature, you must finish a short or long rest before using it again."
+                        ],
+                        "subclass": "Divine Domain: City (UA)",
+                        "parent": "City",
                         "_optional": "YES"
                      },
                      {
@@ -11193,6 +11289,28 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Otherworldly Patron: Ghost in the Machine (UA)",
+                        "text": [
+                           "You have made a bargain for power granted by an entity that you believe to be completely digital. Whether it is a rogue AI or the spirit of a deceased hacker, the Ghost in the Machine is capable of feats that defy explanation.",
+                           null,
+                           "Expanded Spell List: The Ghost in the Machine lets you choose from an expanded list of spells when you learn a warlock spell. You gain the on/off cantrip, and the following new spells are added to the warlock spell list for you.",
+                           null,
+                           "1st - infallible relay, remote access",
+                           null,
+                           "2nd - arcane hacking, digital phantom",
+                           null,
+                           "3rd - haywire, invisibility to cameras",
+                           null,
+                           "4th - conjure knowbot, system backdoor",
+                           null,
+                           "5th - shutdown, synchronicity"
+                        ],
+                        "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                        "parent": "Otherworldly Patron",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Otherworldly Patron: The Great Old One",
                         "text": [
                            "Your patron is a mysterious entity whose nature is utterly foreign to the fabric of reality. It might come from the Far Realm, the space beyond reality, or it could be one of the elder gods known only in legends. Its motives are incomprehensible to mortals, and its knowledge so immense and ancient that even the greatest libraries pale in comparison to the vast secrets it holds. The Great Old One might be unaware of your existence or entirely indifferent to you, but the secrets you have learned allow you to draw your magic from it. Entities of this type include Ghaunadar, called That Which Lurks; Tharizdun, the Chained God; Dendar, the Night Serpent; Zargon, the Returner; Great Cthulhu; and other unfathomable beings.",
@@ -11271,6 +11389,25 @@ var classdata = {
                         ],
                         "subclass": "Otherworldly Patron: The Archfey",
                         "parent": "The Archfey",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Ghost in the Machine: Bonus Proficiency",
+                        "text": [
+                           "At 1st level, you gain proficiency with hacking tools."
+                        ],
+                        "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                        "parent": "Ghost in the Machine",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Ghost in the Machine: Information Surge",
+                        "text": [
+                          "At 1st level, you gain the ability to temporarily render computerized devices inoperable. As an action, you can target a computerized device within 30 feet of you. If the targeted device is held or otherwise actively used by a living creature, that creature must make an Intelligence saving throw against your spell save DC. On a failed save, the targeted device ceases to function until the end of your next turn. If the targeted device is not held or used by a creature, the DM makes a special saving throw for the device with disadvantage and a +0 modifier. Certain shielded devices might negate the disadvantage, at the DM’s determination.",
+                          "Once you use this feature, you can’t use it again until you finish a short or long rest."
+                        ],
+                        "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                        "parent": "Ghost in the Machine",
                         "_optional": "YES"
                      },
                      {
@@ -11355,6 +11492,17 @@ var classdata = {
                                  "Prerequisite: eldritch blast cantrip",
                                  null,
                                  "When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit."
+                              ],
+                              "parent": "Eldritch Invocation",
+                              "suboption": "YES",
+                              "_optional": "YES"
+                           },
+                           {
+                              "name": "Eldritch Invocation: Arcane Gunslinger (UA)",
+                              "text": [
+                                 "Prerequisite: Pact of the Blade feature",
+                                 null,
+                                 "You can create a pact weapon that is a sidearm or long arm, and you can transform a magical sidearm or long arm into your pact weapon."
                               ],
                               "parent": "Eldritch Invocation",
                               "suboption": "YES",
@@ -11763,6 +11911,15 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Ghost in the Machine: Wire Walk",
+                        "text": [
+                           "Starting at 6th level, you gain the ability to travel short distances over electrical wires, data lines, or telephone cables. As a bonus action, you can touch a device or socket connected to a hardwired network and teleport along this network to another device or socket within your line of sight. Once you use this feature, you can’t use it again until you finish a short or long rest."
+                        ],
+                        "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                        "parent": "Ghost in the Machine",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "The Great Old One: Entropic Ward",
                         "text": [
                            "At 6th level, you learn to magically ward yourself against attack and to turn an enemy's failed strike into good luck for yourself. When a creature makes an attack roll against you, you can use your reaction to impose disadvantage on that roll. If the attack misses you, your next attack roll against the creature has advantage if you make it before the end of your next turn.",
@@ -11847,6 +12004,15 @@ var classdata = {
                         ],
                         "subclass": "Otherworldly Patron: The Fiend",
                         "parent": "The Fiend",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Ghost in the Machine: Personal Encryption",
+                        "text": [
+                          "Beginning at 10th level, you have learned to apply your innate knowledge of encryption to your thoughts, memories, and presence. You have advantage on saving throws against scrying, thought detection, or any other method of magically learning your whereabouts or reading your thoughts. For any such effect that does not grant you a saving throw but which requires the creature targeting you to make an ability check, the check is made with disadvantage."
+                        ],
+                        "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                        "parent": "Ghost in the Machine",
                         "_optional": "YES"
                      },
                      {
@@ -11943,6 +12109,17 @@ var classdata = {
                         ],
                         "subclass": "Otherworldly Patron: The Fiend",
                         "parent": "The Fiend",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Ghost in the Machine: Technovirus",
+                        "text": [
+                          "At 14th level, you gain the ability to infect a humanoid’s body with living circuitry. You can use an action to make a melee attack against a humanoid creature using your spell attack modifier. The target must make a Constitution saving throw against your spell save DC as a techno[organic virus quickly spreads through its body. On a failed save, the target takes 8d10 psychic damage, or half as much damage on a successful one.",
+                          "Additionally, if the target fails the saving throw, you can use an action to issue it a single command, as if you were casting the command' spell. The target makes its saving throw against your command with disadvantage. You can issue this command at any time while the target remains infected.",
+                          "Once you use this feature, you can’t use it again until you finish a long rest, at which point the target is cured of the technovirus. The infection can also be removed with a lesser'restoration spell."
+                        ],
+                        "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                        "parent": "Ghost in the Machine",
                         "_optional": "YES"
                      },
                      {
@@ -12306,6 +12483,18 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Arcane Tradition: Technomancy (UA)",
+                        "text": [
+                          "Unlike the more common arcane traditions based around the schools of magic, the tradition of Technomancy does not focus on a singular type of spellcraft or magical energy. Rather, students of Technomancy concern themselves with how their spells interact with modern technology.",
+                          null,
+                          "Technomancers can make use of technology as both a conduit and a storage space for magic. In a campaign using the optional rules for magic item creation (see the Dungeon Master's Guide), a technomancer might craft disposable electronic devices and smartphone apps in lieu of potions and scrolls."
+                        ],
+                        "subclass": "Arcane Tradition: Technomancy (UA)",
+                        "parent": "Arcane Tradition",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Arcane Tradition: Transmutation",
                         "text": [
                            "You are a student of spells that modify energy and matter. To you, the world is not a fixed thing, but eminently mutable, and you delight in being an agent of change. You wield the raw stuff of creation and learn to alter both physical forms and mental qualities. Your magic gives you the tools to become a smith on reality's forge.",
@@ -12460,6 +12649,24 @@ var classdata = {
                         ],
                         "subclass": "Arcane Tradition: Necromancy",
                         "parent": "Necromancy",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "School of Technomancy: Bonus Proficiencies",
+                        "text": [
+                           "Beginning when you select this arcane tradition at 2nd level, you gain proficiency with sidearms and hacking tools."
+                        ],
+                        "subclass": "Arcane Tradition: Technomancy (UA)",
+                        "parent": "Technomancy",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "School of Technomancy: Technological Savant",
+                        "text": [
+                           "Also at 2nd level, you trade out your spellbook for a specially attuned storage device of your choosing, capable of recording magical data. The computing power of this device must be equal to or greater than a tablet computer. Only one storage device can be attuned to you at any given time. Spells can be copied into this device at half the cost of copying spells into a spellbook."
+                        ],
+                        "subclass": "Arcane Tradition: Technomancy (UA)",
+                        "parent": "Technomancy",
                         "_optional": "YES"
                      },
                      {
@@ -12653,6 +12860,17 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "School of Techomancy: Program Spell",
+                        "text": [
+                          "At 6th level, you can insert a spell within an  electronic device of your choosing, so that by  touching a key or flicking a switch using an  action, the spell activates. All variables of the  spell are set at the time of casting. The computing power of this device must be equal to  or greater than a mobile phone.",
+                          "A programmed spell remains placed in its  device for 48 hours, and is gone once it is  discharged. You can use this feature to place a  programmed spell in only one device at a time,  and a device can hold only one programmed  spell. Only you can activate the programmed  spell in the device. If the device is destroyed, the  programmed spell is lost.",
+                          "A concentration spell placed in a device cannot  be activated while you are concentrating on  another spell. Once you use this feature, you  can’t use it again until you finish a long rest."
+                        ],
+                        "subclass": "Arcane Tradition: Technomancy (UA)",
+                        "parent": "Technomancy",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Artificer: Infuse Weapons and Armor",
                         "text": [
                            "Beginning at 6th level, you can produce magic weapons and armor. You spend 10 minutes focusing your magic on a mundane weapon, suit of armor, shield, or bundle of twenty pieces of ammunition, and expend a spell slot to infuse it with magical energy. The magic item retains its enhancement for 8 hours or until used (in the case of magic ammunition). You can infuse only one item at a time; if you infuse a second one, the first immediately loses its potency. Once you have expended a spell slot to create such an item, you cannot regain that slot until the item becomes nonmagical.",
@@ -12765,6 +12983,17 @@ var classdata = {
                         ],
                         "subclass": "Arcane Tradition: Necromancy",
                         "parent": "Necromancy",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "School of Techomancy: Online Casting",
+                        "text": [
+                          "At 10th level, you can cast spells through  networked electronic devices, including cameras,  mobile phones, and computers. For example, if a  creature is under the observation of a security  camera and you can see the video feed from that  camera on a computer, you can cast a spell into  the computer and out through the security  camera to target that creature.",
+                          "If the spell requires the caster to be seen, the  target must see you or a live image of you. If the  spell requires the caster to be heard, the target must be able to hear you or a live audio  transmission of you. The spell’s range is  determined using the distance from you to your  device, and then from the target to its device.  You must be able to see or otherwise determine the location of the target. This feature can be  used to cast only spells that target specific  creatures. Spells that affect an area are not  subject to online casting.",
+                          "This feature can be used a number of times per  day equal to your Intelligence modifier (minimum of once)."
+                        ],
+                        "subclass": "Arcane Tradition: Technomancy (UA)",
+                        "parent": "Technomancy",
                         "_optional": "YES"
                      },
                      {
@@ -12893,6 +13122,15 @@ var classdata = {
                         ],
                         "subclass": "Arcane Tradition: Transmutation",
                         "parent": "Transmutation",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "School of Techomancy: Chained Device",
+                        "text": [
+                        "By 14th level, you have learned to imprint  vestiges of your consciousness on electronic  devices with significant computing power. When  you cast a concentration spell, you can use a  device whose computing power is equal to or greater than a tablet computer to maintain  concentration of the spell on your behalf. The  device must be held or worn by you to maintain  this effect. If the device is destroyed, taken from  you, dropped, or turned off, the concentration ends. Once you use this feature, you can’t use it  again until you finish a long rest."
+                        ],
+                        "subclass": "Arcane Tradition: Technomancy (UA)",
+                        "parent": "Technomancy",
                         "_optional": "YES"
                      },
                      {
