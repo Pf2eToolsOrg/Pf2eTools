@@ -5015,6 +5015,46 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Martial Archetype: Arcane Archer (UA)",
+                        "text": [
+                           "An Arcane Archer studies a unique elven method of archery that weaves magic into attacks to produce supernatural effects. Among elves, Arcane Archers are some of their most elite warriors. These archers stand watch over the fringes of elven domains, keeping a keen eye out for trespassers and using magic-infused arrows to defeat monsters and invaders before they can reach elven settlements. Over the centuries, the methods of these elf archers have been learned by members of other races who can also balance arcane aptitude with archery."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Martial Archetype",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Martial Archetype: Knight (UA)",
+                        "text": [
+                           "The Knight is a colossus on the battlefield who can shrug off attacks and protect allies from harm. Knights fight from the saddle when they can, and in combat they are expected to seek out and lock down the mightiest of the enemy’s forces. On adventures, they are the armored bulwark that strives to keep the rest of the party safe."
+                        ],
+                        "subclass": "Martial Archetype: Knight (UA)",
+                        "parent": "Martial Archetype",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Martial Archetype: Samurai (UA)",
+                        "text": [
+                           "The Samurai is a fighter who draws on an implacable fighting spirit to overcome enemies. A Samurai’s willpower is nearly unbreakable, and the enemies in a Samurai’s path have two choices: yield or die fighting."
+                        ],
+                        "subclass": "Martial Archetype: Samurai (UA)",
+                        "parent": "Martial Archetype",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Martial Archetype: Sharpshooter (UA)",
+                        "text": [
+                           "The Sharpshooter is a master of ranged combat. An excellent sniper and eagle-eyed scout, this fighter is a perilous foe who can defeat an entire war band so long as they are kept at range."
+                        ],
+                        "subclass": "Martial Archetype: Sharpshooter (UA)",
+                        "parent": "Martial Archetype",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Purple Dragon Knight: Restriction: Knighthood",
                         "text": [
                            "Purple Dragon Knights are tied to a specific order of Cormyrean knighthood.",
@@ -5404,7 +5444,162 @@ var classdata = {
                         "suboption": "YES",
                         "suboption": "YES",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Arcane Archer: Arcane Arrow",
+                        "text": [
+                           "When you choose this archetype at 3rd level, you learn to channel magic into your attacks with a longbow or shortbow.",
+                           "Create Magic Arrow. As a bonus action on your turn, you can create one magic arrow in your hand. The arrow lasts until the end of the turn or until it hits or misses a target. You can fire the arrow from a shortbow or longbow. The arrow is a magic weapon that deals an additional 2d6 force damage on a hit.",
+                           "You have two uses of this feature, and you regain all expended uses of it when you finish a short or long rest.",
+                           "Arcane Shot. When you gain this feature, you learn two Arcane Shot options of your choice (see the Arcane Shots section below). Whenever you create a magic arrow with this feature, you can apply the benefits of one of your Arcane Shot options to that arrow.",
+                           "You gain an additional Arcane Shot option of your choice at 7th, 10th, 15th, and 18th level."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Arcane Archer: Archer's Lore",
+                        "text": [
+                           "At 3rd level, you learn a few skills relating to the typical duties of an Arcane Archer. You learn to understand magical theory and develop survival skills for wandering the wilds.",
+                           "You gain proficiency in two of the following skills of your choice: Arcana, Athletics, Nature, Perception, Stealth, and Survival."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Arcane Archer: Arcane Shots",
+                        "text": [
+                           "The Arcane Arrow feature lets you choose Arcane Shot options at certain levels. The options are presented here in alphabetical order. These are all magical effects."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                       "name": "Beguiling Arrow",
+                       "text": [
+                         "Your enchantment magic causes this arrow to temporarily beguile its target. Choose one of your allies within 30 feet of the target. If the arrow hits the target, the target can’t attack the chosen ally or include that ally in a harmful area of effect until the end of your next turn. The target ignores this effect if it is immune to the charmed condition. This effect also ends if the chosen ally deals any damage to the target."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Brute Bane Arrow",
+                       "text": [
+                         "You weave necromantic magic into your arrow. If a creature is hit by the arrow, any bludgeoning, piercing, or slashing damage dealt by the creature’s attacks is halved until the end of your next turn."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Bursting Arrow",
+                       "text": [
+                         "You imbue your arrow with a blast of force energy drawn from the school of evocation. If you hit a creature with this arrow, each creature within 10 feet of it takes 2d6 force damage."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Defending Arrow",
+                       "text": [
+                         "You use abjuration magic to weave a charm that disrupts your enemy’s magic. A creature hit by this arrow suffers disadvantage on the next attack roll it makes before the end of your next turn."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Grasping Arrow",
+                       "text": [
+                         "When this arrow strikes its target, conjuration magic creates grasping, thorny brambles that wrap around the target. The target hit by the arrow takes a –10 penalty to speed, and it takes 2d6 slashing damage if it moves 1 foot or more without teleporting. The target or any creature that can touch it can use its action to try to remove the brambles, which requires a successful DC 10 Strength check. Otherwise, the brambles last for 1 minute."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Piercing Arrow",
+                       "text": [
+                         "You use transmutation magic to transform your arrow into an ethereal dart that passes through its targets. When you attack with this arrow, it fires forward in a line that is 1 foot wide and 30 feet long. You make a separate attack using your Arcane Arrow against each creature in that line."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Seeking Arrow",
+                       "text": [
+                         "Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. As an action, choose one creature you have seen in the past minute, and make a ranged attack against it, using the Arcane Arrow. The arrow flies around corners if necessary, and this attack ignores three-quarters cover, half cover, and disadvantage caused by the target being out of sight or being at long range. The attack automatically misses if the target is out of the weapon’s range or if there is no path large enough for the arrow to travel to the target. If the arrow hits its target, you know it, but you don’t learn the target’s location unless it’s within your line of sight."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Shadow Arrow",
+                       "text": [
+                         "You weave illusion magic into your arrow, causing it to occlude your foe’s vision with grasping shadows. Until the end of your next turn, the target hit by the arrow can’t see more than 30 feet away."
+                       ],
+                       "subclass": "Martial Archetype: Arcane Archer (UA)",
+                       "parent": "Arcane Shots",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                        "name": "Knight: Born to the Saddle",
+                        "text": [
+                           "Starting at 3rd level, mounting or dismounting a creature costs you only 5 feet of movement, rather than half your speed. In addition, you have advantage on saving throws made to avoid falling off your mount. If you fall off it, you can automatically land on your feet if you aren’t incapacitated and you fall less than 10 feet."
+                        ],
+                        "subclass": "Martial Archetype: Knight (UA)",
+                        "parent": "Knight",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Knight: Implacable Mark",
+                        "text": [
+                           "At 3rd level, you excel at foiling attacks and protecting your allies by menacing your foes. When you hit a creature with a melee weapon attack, the target is marked by you until the end of your next turn. A creature ignores this effect if the creature can’t be frightened.",
+                           "The marked target has disadvantage on any attack roll against a creature other than you or someone else who marked it.",
+                           "If a target marked by you is within 5 feet of you on its turn and it moves at least 1 foot or makes an attack that suffers disadvantage from this feature, you can make one melee weapon attack against it using your reaction. This attack roll has advantage, and if it hits, the attack’s weapon deals extra damage to the target equal to your fighter level.",
+                           "You can make this special attack even if you have already expended your reaction this round, but not if you have already used your reaction this turn. You can make this attack three times, and you regain all expended uses of it when you finish a short or long rest."
+                        ],
+                        "subclass": "Martial Archetype: Knight (UA)",
+                        "parent": "Knight",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Samurai: Fighting Spirit",
+                        "text": [
+                           "Starting at 3rd level, the might of your willpower can shield you and help you strike true. As a bonus action on your turn, you can give yourself two benefits: advantage on all attack rolls and resistance to bludgeoning, piercing, and slashing damage. These benefits last until the end of your next turn.",
+                           " You can use this feature three times. You regain all expended uses of it when you finish a short or long rest."
+                        ],
+                        "subclass": "Martial Archetype: Samurai (UA)",
+                        "parent": "Samurai",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Sharpshooter: Steady Aim",
+                        "text": [
+                           "Beginning when you choose this archetype at 3rd level, your aim becomes deadly. As a bonus action on your turn, you can take careful aim at a creature you can see that is within range of a ranged weapon you’re wielding. Until the end of this turn, your ranged attacks with that weapon gain two benefits against the target:",
+                           "• The attacks ignore half and three-quarters cover.",
+                           "• On each hit, the weapon deals additional damage to the target equal to 2 + half your fighter level.",
+                           "You can use this feature three times. You regain all expended uses of it when you finish a short or long rest."
+                        ],
+                        "subclass": "Martial Archetype: Sharpshooter (UA)",
+                        "parent": "Sharpshooter",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "3"
                },
@@ -5537,7 +5732,54 @@ var classdata = {
                         "subclass": "Martial Archetype: Monster Hunter (UA)",
                         "parent": "Monster Hunter (UA)",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Arcane Archer: Conjure Arrows",
+                        "text": [
+                           "At 7th level, you learn a minor but useful magical trick. As an action, you can conjure 20 nonmagical arrows. The arrows appear in your hand or in a container, such as a quiver, on your body. The arrows remain for 10 minutes or until you use this feature again; they then vanish."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Arcane Archer: Extra Arcane Shot",
+                        "text": [
+                           "At 7th level, you learn an additional Arcane Shot option."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Knight: Noble Cavalry",
+                        "text": [
+                           "At 7th level, you gain proficiency in two of the following skills of your choice: Animal Handling, History, Insight, Persuasion, or Religion. Alternatively, you learn one language of your choice."
+                        ],
+                        "subclass": "Martial Archetype: Knight (UA)",
+                        "parent": "Knight",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Samurai: Elegant Courtier",
+                        "text": [
+                           "Starting at 7th level, your discipline and attention to detail allow you to excel in social situations that require strict adherence to etiquette. You can add your Wisdom modifier to any Charisma check you make to persuade or please a noble or anyone else of high social station.",
+                           " You also gain proficiency in the History, Insight, or Persuasion skill (choose one). Alternatively, you learn one language of your choice."
+                        ],
+                        "subclass": "Martial Archetype: Samurai (UA)",
+                        "parent": "Samurai",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Sharpshooter: Careful Eyes",
+                        "text": [
+                           "Starting at 7th level, you excel at picking out hidden enemies and other threats. You can take the Search action as a bonus action.",
+                           " You also gain proficiency in the Perception, Investigation, or Survival skill (choose one)."
+                        ],
+                        "subclass": "Martial Archetype: Sharpshooter (UA)",
+                        "parent": "Sharpshooter",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "7"
                },
@@ -5648,7 +5890,44 @@ var classdata = {
                         "subclass": "Martial Archetype: Monster Hunter (UA)",
                         "parent": "Monster Hunter (UA)",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Arcane Archer: Extra Arcane Shot",
+                        "text": [
+                           "At 10th level, you learn an additional Arcane Shot option."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Knight: Hold the Line",
+                        "text": [
+                           "At 10th level, you master the ability to harass and slow your enemies. As a reaction when a creature moves at least 1 foot within 5 feet of you, you can make one melee weapon attack against that creature. If you hit, the attack’s weapon deals extra damage to the target equal to half your fighter level, and the target’s speed is reduced to 0 until the end of this turn."
+                        ],
+                        "subclass": "Martial Archetype: Knight (UA)",
+                        "parent": "Knight",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Samurai: Unbreakable Will",
+                        "text": [
+                           "At 10th level, your superior willpower allows you to shrug off mind-assaulting effects. You gain proficiency in Wisdom saving throws. If you already have this proficiency, you gain proficiency in Intelligence or Charisma saving throws (choose one)."
+                        ],
+                        "subclass": "Martial Archetype: Samurai (UA)",
+                        "parent": "Samurai",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Sharpshooter: Close-Quarters Shooting",
+                        "text": [
+                           "At 10th level, you learn to handle yourself in close combat. Making a ranged attack roll while within 5 feet of an enemy doesn’t impose disadvantage on your roll.",
+                           "In addition, if you hit a creature within 5 feet of you with a ranged attack on your turn, that creature can’t take reactions until the end of this turn."
+                        ],
+                        "subclass": "Martial Archetype: Sharpshooter (UA)",
+                        "parent": "Sharpshooter",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "10"
                },
@@ -5780,7 +6059,52 @@ var classdata = {
                         "subclass": "Martial Archetype: Monster Hunter (UA)",
                         "parent": "Monster Hunter (UA)",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Arcane Archer: Ever-Ready Arrow",
+                        "text": [
+                           "Starting at 15th level, you can conjure forth a magic-infused arrow more often than before. One minute after expending your last remaining use of Arcane Arrow, you regain one use of it."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Arcane Archer: Extra Arcane Shot",
+                        "text": [
+                           "At 15th level, you learn an additional Arcane Shot option."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Knight: Rapid Strike",
+                        "text": [
+                           "Starting at 15th level, you learn to trade accuracy for swift strikes. If you have advantage on a weapon attack against a target on your turn, you can forgo that advantage to immediately make an additional weapon attack against the same target as a bonus action."
+                        ],
+                        "subclass": "Martial Archetype: Knight (UA)",
+                        "parent": "Knight",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Samurai: Rapid Strike",
+                        "text": [
+                           "Starting at 15th level, you learn to trade accuracy for swift strikes. If you have advantage on a weapon attack against a target on your turn, you can forgo that advantage to immediately make an additional weapon attack against the same target as a bonus action."
+                        ],
+                        "subclass": "Martial Archetype: Samurai (UA)",
+                        "parent": "Samurai",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Sharpshooter: Rapid Strike",
+                        "text": [
+                           "Starting at 15th level, you learn to trade accuracy for swift strikes. If you have advantage on a weapon attack against a target on your turn, you can forgo that advantage to immediately make an additional weapon attack against the same target as a bonus action."
+                        ],
+                        "subclass": "Martial Archetype: Sharpshooter (UA)",
+                        "parent": "Sharpshooter",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "15"
                },
@@ -5859,7 +6183,54 @@ var classdata = {
                         "subclass": "Martial Archetype: Scout (UA)",
                         "parent": "Scout (UA)",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Arcane Archer: Deadly Arrow",
+                        "text": [
+                           "At 18th level, your Arcane Arrow’s bonus damage increases to 4d6 force damage."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Arcane Archer: Extra Arcane Shot",
+                        "text": [
+                           "At 18th level, you learn an additional Arcane Shot option."
+                        ],
+                        "subclass": "Martial Archetype: Arcane Archer (UA)",
+                        "parent": "Arcane Archer",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Knight: Defender's Blade",
+                        "text": [
+                           "At 18th level, you respond to danger with extraordinary vigilance. You can use your reaction for an opportunity attack even if you have already expended your reaction this round, but not if you have already used your reaction this turn.",
+                           "In addition, you gain a +1 bonus to AC while wearing heavy armor."
+                        ],
+                        "subclass": "Martial Archetype: Knight (UA)",
+                        "parent": "Knight",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Samurai: Strength Before Death",
+                        "text": [
+                           "Starting at 18th level, your fighting spirit can delay the grasp of death. If you take damage that would reduce you to 0 hit points, you can delay that damage and immediately take a bonus turn, interrupting the current turn. You don’t take the damage until the bonus turn ends. It is possible to do things, such as gaining resistance, that change how much of that damage you take.",
+                           "Once you use this feature, you can’t use it again until you finish a long rest."
+                        ],
+                        "subclass": "Martial Archetype: Samurai (UA)",
+                        "parent": "Samurai",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Sharpshooter: Snap Shot",
+                        "text": [
+                           "Starting at 18th level, you are ever ready to spring into action. If you take the Attack action on your first turn of a combat, you can make one additional ranged weapon attack as part of that action."
+                        ],
+                        "subclass": "Martial Archetype: Sharpshooter (UA)",
+                        "parent": "Sharpshooter",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "18"
                },
@@ -6176,6 +6547,26 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Monastic Tradition: Way of the Kensei (UA)",
+                        "text": [
+                           "Monks of the Way of Kensei train relentlessly with their weapons, to the point that the weapon becomes like an extension of the body. A kensei sees a weapon in much the same way a painter regards a brush or a writer sees parchment, ink, and quill. A sword or bow is a tool used to express the beauty and elegance of the martial arts. That such mastery makes a kensei a peerless warrior is but a side effect of intense devotion, practice, and study."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Kensei (UA)",
+                        "parent": "Monastic Tradition",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monastic Tradition: Way of Tranquility (UA)",
+                        "text": [
+                           "Monks of the Way of Tranquility see violence as a last resort. They use diplomacy, mercy, and understanding to resolve conflicts. If pushed, though, they are capable warriors who can bring an end to the unjust or cruel folk who refuse to listen to reason. When adventuring, these monks make excellent diplomats. They are also skilled in the healing arts, and can preserve their allies in the face of daunting foes."
+                        ],
+                        "subclass": "Monastic Tradition: Way of Tranquility (UA)",
+                        "parent": "Monastic Tradition",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Way of Shadow: Shadow Arts",
                         "text": [
                            "You can use your ki to duplicate the effects of certain spells. As an action, you can spend 2 ki points to cast darkness, darkvision, pass without trace, or silence, without providing material components. Additionally, you gain the minor illusion cantrip if you don't already know it."
@@ -6414,6 +6805,43 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Way of the Kensei: Path of the Kensei",
+                        "text": [
+                           "When you choose this tradition at 3rd level, you learn to extend your knowledge of the martial arts beyond the standard array of monk weapons.",
+                           "You gain the following benefits:",
+                           "• You gain proficiency with three martial weapons of your choice. A martial weapon is considered a kensei weapon for you if you’re proficient with it.",
+                           "• Whenever you wield a kensei weapon, you choose whether to use Dexterity or Strength for the attack and damage rolls of the weapon, and you choose whether to use your Martial Arts damage die in place of the weapon’s damage die.",
+                           "• When you take the Attack action on your turn and hit a target with a kensei weapon, you can use a bonus action to pummel the target, dealing an additional 1d4 bludgeoning damage to that target and to any other target you hit with the weapon as part of the Attack.",
+                           "• If you make an unarmed strike as part of the Attack action on your turn and are holding a kensei weapon, you can use that weapon to defend yourself. You gain a +2 bonus to AC until the start of your next turn while you are not incapacitated and the weapon is in your hand."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Kensei (UA)",
+                        "parent": "Way of the Kensei",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of Tranquility: Path of Tranquility",
+                        "text": [
+                           "When you choose this tradition at 3rd level, you can become an island of calm in even the most chaotic of situations. With this feature, you can cast the sanctuary spell on yourself, no material component required, and it lasts up to 8 hours. Its saving throw DC equals 8 + your proficiency bonus + your Wisdom modifier. A creature that succeeds on the save is immune to this effect for 1 hour.",
+                           "Once you cast the spell in this way, you can’t do so again for 1 minute."
+                        ],
+                        "subclass": "Monastic Tradition: Way of Tranquility (UA)",
+                        "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of Tranquility: Healing Hands",
+                        "text": [
+                           "Your mystical touch can heal wounds. Starting at 3rd level, you have a pool of magical healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your monk level × 10.",
+                           "As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in the pool.",
+                           "Instead of healing the creature, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Healing Hands, expending hit points separately for each one.",
+                           "When you use your Flurry of Blows, you can replace one of the unarmed strikes with a use of this feature.",
+                           "This feature has no effect on undead and constructs."
+                        ],
+                        "subclass": "Monastic Tradition: Way of Tranquility (UA)",
+                        "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Deflect Missiles",
                         "text": [
                            "Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d 10 + your Dexterity modifier + your monk level.",
@@ -6534,7 +6962,28 @@ var classdata = {
                         "subclass": "Monastic Tradition: Way of the Sun Soul",
                         "parent": "Way of the Sun Soul",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Way of the Kensei: One with the Blade",
+                        "text": [
+                           "At 6th level, you extend your ki into the weapons you hold, granting you the following benefits.",
+                           "Magic Weapons. Your attacks with your kensei weapons count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.",
+                           "Precise Strike. You can focus your attention on a single target in battle to understand and overcome its defenses. As a bonus action, pick one creature you can see within 30 feet of you. The next weapon attack you make against that creature during the current turn adds double your proficiency bonus to the attack roll, rather than your normal proficiency bonus. Once you use this ability, you can’t use it again until you finish a short or long rest."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Kensei (UA)",
+                        "parent": "Way of the Kensei",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of Tranquility: Emissary of Peace",
+                        "text": [
+                           "At 6th level, you gain the ability to diffuse violent situations. Whenever you make a Charisma check to calm violent emotions or to counsel peace, you have advantage on the roll. You must make this entreaty in good faith; it doesn’t apply if proficiency in the Deception or Intimidation skill applies to your check.",
+                           "You also gain proficiency in the Performance or Persuasion skill (choose one)."
+                        ],
+                        "subclass": "Monastic Tradition: Way of Tranquility (UA)",
+                        "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "6"
                },
@@ -6665,7 +7114,26 @@ var classdata = {
                         "subclass": "Monastic Tradition: Way of the Sun Soul",
                         "parent": "Way of the Sun Soul",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Way of the Kensei: Sharpen the Blade",
+                        "text": [
+                           "At 11th level, you gain the ability to augment your weapons with the strength of your ki. As a bonus action, you can expend up to 3 ki points to grant a weapon you touch a bonus to attack and damage rolls while you wield it. The bonus equals the number of ki points you spent. This bonus lasts for 1 minute."
+                         ],
+                        "subclass": "Monastic Tradition: Way of the Kensei (UA)",
+                        "parent": "Way of the Kensei",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of Tranquility: Douse the Flames of War",
+                        "text": [
+                           "At 11th level, you gain the ability to temporarily extinguish a creature’s violent impulses. As an action, you can touch a creature, and it must make a Wisdom saving throw with a DC equal to 8 + your proficiency bonus + your Wisdom modifier. The target automatically succeeds if it’s missing any of its hit points. If the target fails the save, it can’t attack for 1 minute. During that time, it also can’t cast spells that deal damage or that force someone to make a saving throw.",
+                           " This effect ends if the target is attacked, takes damage, or is forced to make a saving throw or if the target witnesses any of those things happening to its allies."
+                        ],
+                        "subclass": "Monastic Tradition: Way of Tranquility (UA)",
+                        "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "11"
                },
@@ -6800,7 +7268,26 @@ var classdata = {
                         "subclass": "Monastic Tradition: Way of the Sun Soul",
                         "parent": "Way of the Sun Soul",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Way of the Kensei: Unerring Accuracy",
+                        "text": [
+                           "At 17th level, your mastery of weapons grants you extraordinary accuracy. On each of your turns, you can reroll one weapon attack roll you make that misses."
+                         ],
+                        "subclass": "Monastic Tradition: Way of the Kensei (UA)",
+                        "parent": "Way of the Kensei",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of Tranquility: Anger of a Gentle Soul",
+                        "text": [
+                           "At 17th level, you gain the ability to visit vengeance on someone who fells others. If you see a creature reduce another creature to 0 hit points, you can use your reaction to grant yourself a bonus to all damage rolls against the aggressor until the end of your next turn. The bonus equals your monk level.",
+                           " Once you use this ability, you can’t use it again until you finish a short or long rest."
+                        ],
+                        "subclass": "Monastic Tradition: Way of Tranquility (UA)",
+                        "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
                   ],
                   "_level": "17"
                },
@@ -7742,7 +8229,115 @@ var classdata = {
                         "subclass": "Sacred Oath: Oath of the Crown",
                         "parent": "Oath of the Crown",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                       "name": "Sacred Oath: Oath of Conquest (UA)",
+                       "text": [
+                         "The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron  mongers, those who swear this oath gather into  grim orders that serve gods or philosophies of  war and well-ordered might. Some of these  paladins go so far as to consort with the powers  of the Nine Hells. The archdevil Bel, warlord of Avernus, counts many of these paladins called hell knights as his most ardent supporters. Hell knights cover  their armor with trophies taken from fallen  enemies, a grim warning to any who dare oppose  them and the decrees of their lords.",
+                         null,
+                         "Tenets of Conquest",
+                         null,
+                         "A paladin who takes this oath has the tenets of conquest seared on the upper arm. A hell knight's oath appears in Infernal runes, a brutal reminder of vows to the Lords of Hell.",
+                         "Douse the Falem of Hope. It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies will to fight is shattered forever. A blade can end a life. Fear can end an empire",
+                         "Rule with an Iron Fist. Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow.",
+                         "Strength Above All. You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin.",
+                       ],
+                       "subclass": "Sacred Oath: Oath of Conquest (UA)",
+                       "parent": "Sacred Oath",
+                       "issubclass": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Conquest: Oath Spells",
+                       "text": [
+                         "You gain oath spells at the paladin levels listed.",
+                         null,
+                         "3rd - armor of Agathys, command",
+                         null,
+                         "5th - hold person, spiritual weapon",
+                         null,
+                         "9th - bestow curse, fear",
+                         null,
+                         "13th - blight, dominate beast",
+                         null,
+                         "17th - dominate person, insect plaque"
+                       ],
+                       "subclass": "Sacred Oath: Oath of Conquest (UA)",
+                       "parent": "Oath of the Conquest",
+                       "suboption": "YES",
+                       "_optional": "YES"
+                     },
+                     {
+                        "name": "Oath of Conquest Channel Divinity: Conquering Strike",
+                        "text": [
+                         	"You can use your Channel Divinity to break a foe's will. When you hit a  creature with a melee weapon attack as part of  the Attack action, you can also use your Channel  Divinity to force the target to make a Wisdom  saving throw. On a failed save, the target becomes frightened of you for 1 minute. The  frightened creature can repeat this saving throw  at the end of each of its turns, ending the effect  on itself on a success."
+                        ],
+                        "subclass": "Sacred Oath: Oath of Conquest (UA)",
+                        "parent": "Oath of the Conquest",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Oath of Conquest Channel Divinity: Guided Strike",
+                        "text": [
+                     		"You can use your Channel Divinity to strike with supernatural accuracy. When you make an attack roll, you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll, but before the DM says whether the attack hits or misses."
+                        ],
+                        "subclass": "Sacred Oath: Oath of Conquest (UA)",
+                        "parent": "Oath of the Conquest",
+                        "_optional": "YES"
+                     },
+                     {
+                      "name": "Sacred Oath: Oath of Treachery (UA)",
+                      "text": [
+                       "The Oath of Treachery is the path followed by paladins who have forsworn other oaths or who care only for their own power and survival. Commonly known as blackguards, these profane warriors are faithful only to themselves. Anyone desperate enough to follow one of these paladins does so because, while deceitful, these paladins command great power. Those who follow them without falling prey to their treachery hope to indulge in wanton violence and accumulate great treasure. Many of these paladins pay homage to demon lords, especially Grazz't and Orcus. Even the Lords of Hell are loath to ally with these champions of chaos, but sometimes Baalzebul and Glasya find a kindred spirit in a blackguard's penchant for double dealing and treachery.",
+                       null,
+                       "Tenets of Treachery",
+                       null,
+                       "A paladin who embraces the Oath of Treachery owes allegiance to no one. There are no tenets of this oath, for it lacks any substance. Those who are unfortunate enough to have close contact with blackguards have observed that a blackguard's overwhelming concern is power and safety, especially if both can be obtained at the expense of others.",
+                      ],
+                      "subclass": "Sacred Oath: Oath of Treachery (UA)",
+                      "parent": "Sacred Oath",
+                      "issubclass": "YES",
+                      "_optional": "YES"
+                     },
+                     {
+                      "name": "Oath of Treachery: Oath Spells",
+                      "text": [
+                       "You gain oath spells at the paladin levels listed.",
+                       null,
+                       "3rd - charm person, expeditious retreat",
+                       null,
+                       "5th - invisibility, mirror image",
+                       null,
+                       "9th - gaseous form, haste",
+                       null,
+                       "13th - confusion, greater invisibility",
+                       null,
+                       "17th - dominate person, passwall"
+                      ],
+                      "subclass": "Sacred Oath: Oath of Treachery (UA)",
+                      "parent": "Oath of the Treachery",
+                      "suboption": "YES",
+                      "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Treachery Channel Divinity: Conjure Duplicate",
+                       "text": [
+                        "As an action, you create a visual illusion of yourself that lasts for 1 minute, or until you lose your concentration (as if you were concentrating on a spell). The illusion appears in an unoccupied space of your choice that you can see within 30 feet of you. The illusion looks exactly like you; it is silent; it is your size, is insubstantial, and doesn't occupy its space; and it is unaffected by attacks and damage. As a bonus action on your turn, you can move the illusion up to 30 feet to a space you can see, but the illusion must remain within 120 feet of you.",
+                        "For the duration, you can cast spells as though you were in the illusion's space, but you must use your own senses. Additionally, when both you and your illusion are within 5 feet of a creature that can see the illusion, you have advantage on attack rolls against that creature, given how uncanny the illusion is."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Treachery (UA)",
+                       "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Treachery Channel Divinity: Poison Strike",
+                       "text": [
+                      		"You can use your Channel Divinity to make a weapon deadlier. As a bonus action, you touch one weapon or piece of ammunition and conjure a special poison on it. The poison lasts for 1 minute. The next time you hit a target with an attack using that weapon or ammunition, the target takes poison damage immediately after the attack. The poison damage equals 2d10 + your paladin level, or 20 + your paladin level if you had advantage on the attack roll."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Treachery (UA)",
+                       "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
                   ],
                   "_level": "3"
                },
@@ -7830,7 +8425,28 @@ var classdata = {
                         "subclass": "Sacred Oath: Oath of the Crown",
                         "parent": "Oath of the Crown",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Oath of Conquest: Aura of Conquest",
+                        "text": [
+                       "Starting at 7th level, you emanate a menacing  aura while you're not incapacitated. The aura includes your space, extends 10 feet from you in  every direction, and is blocked by total cover.  Any enemy in the aura has disadvantage on  saving throws against being frightened. At 18th level, the range of this aura increases  to 30 feet."
+                        ],
+                        "subclass": "Sacred Oath: Oath of Conquest (UA)",
+                        "parent": "Oath of the Conquest",
+                        "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Treachery: Aura of Treachery",
+                       "text": [
+                      		"Starting at 7th level, you emanate an aura of discord, which gives you the following benefits.",
+                         "Cull the Herd. You have advantage on melee attack rolls against any creature that has one or more of its allies within 5 feet of it.",
+                      		"Treacherous Strike. If a creature within 5 feet of you misses you with a melee attack, you can use your reaction to force the attacker to reroll that attack against a creature of your choice that is also within 5 feet of the attacker. The ability fails and is wasted if the attacker is immune to being charmed.",
+                         "You can use this ability three times. You regain expended uses of it when you finish a short or long rest."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Treachery (UA)",
+                       "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
                   ],
                   "_level": "7"
                },
@@ -7940,7 +8556,25 @@ var classdata = {
                         "subclass": "Sacred Oath: Oath of the Crown",
                         "parent": "Oath of the Crown",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Oath of Conquest: Implacable Spirit",
+                        "text": [
+                     		"Once you reach 15th level, you can no longer be charmed."
+                        ],
+                        "subclass": "Sacred Oath: Oath of Conquest (UA)",
+                        "parent": "Oath of the Conquest",
+                        "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Treachery: Blackguard's Escape",
+                       "text": [
+                         "At 15th level, you have the ability to slip away from your foes. Immediately after you are hit by an attack, you can use your reaction to turn invisible and teleport up to 60 feet to a spot you can see. You remain invisible until the end of your next turn or until you attack, deal damage, or force a creature to make a saving throw. Once you use this feature, you must finish a short or long rest before you can use it again."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Treachery (UA)",
+                       "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
                   ],
                   "_level": "15"
                },
@@ -8050,7 +8684,32 @@ var classdata = {
                         "subclass": "Sacred Oath: Oath of the Crown",
                         "parent": "Oath of the Crown",
                         "_optional": "YES"
-                     }
+                     },
+                     {
+                        "name": "Oath of Conquest: Invincible Conquerer",
+                        "text": [
+                     		"At 20th level, you gain the ability to harness extraordinary martial prowess. As an action, you can magically become an avatar of conquest, gaining the following benefits for 1 minute:",
+                         "- You have resistance to all damage.",
+                         "- When you take the Attack action on your turn, you can make one additional attack as part of that action.",
+                         "- Your melee weapon attacks score a critical hit on a roll of 19 or 20. Once you use this feature, you can't use it again until you finish a long rest."
+                        ],
+                        "subclass": "Sacred Oath: Oath of Conquest (UA)",
+                        "parent": "Oath of the Conquest",
+                        "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Treachery: Icon of Deceit",
+                       "text": [
+                         "At 20th level, you gain the ability to emanate feelings of treachery. As an action, you can magically become a n avatar of deceit, gaining the following benefits for 1 minute:",
+                         "- You are invisible.",
+                         "- If a creature damages you on its turn, it must succeed on a Wisdom saving throw (DC equal to your spell save DC) or you control its next action, provided that you aren't incapacitated when it takes the action . A creature automatically succeeds on the save if the creature is immune to being charmed.",
+                         "- If you have advantage on an attack roll, you gain a bonus to its damage roll equal to your paladin level.",
+                         " Once you use this feature, you can't use it again until you finish a long rest."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Treachery (UA)",
+                       "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
                   ],
                   "_level": "20"
                }
