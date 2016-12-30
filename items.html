@@ -48,6 +48,11 @@ form#filtertools {
 	font-size: 0.8em;
 }
 
+form#filtertools select {
+	displkay: inline-block;
+	margin: 2px;
+}
+
 .sortlabel {
 	display: inline-block;
 	width: 37%;
@@ -56,9 +61,11 @@ form#filtertools {
 }
 
 .sortlabel span {
+	display: inline-block;
 	background: lightgrey;
 	border-radius: 3px;
 	padding: 2px;
+	margin: 1px;
 	text-align: right;
 }
 
@@ -100,7 +107,7 @@ ul.list li span.source {
 	font-size: 0.8em;
 }
 
-ul.list li span.sourcename, ul.list li span.type {
+ul.list li span.sourcename, ul.list li span.type, ul.list li span.rarity {
 	font-size: 0.8em;
 	margin-left: 1em;
 	display: none;
@@ -113,6 +120,10 @@ ul.list li:hover span {
 ul.list li:hover span.source {
 	display: inline!important;
 	font-size: 1em!important;
+}
+
+#itemcontainer h3 {
+	cursor: pointer;
 }
 
 th#name span.source {
@@ -312,6 +323,11 @@ function loaditems() {
 
 		var source = curitem.text[curitem.text.length-1].split(",")[0].split(":")[1];
 
+		var rarity = curitem.rarity;
+		if (!rarity) {
+			rarity = "None";
+		} else rarity = rarity.replace("Rarity: ", "");
+
 		var destinationlist = "ul.list.mundane";
 		curitemstring = JSON.stringify (curitem)
 		if (curitem.rarity || curitem.type === "W" || curitemstring.search(/((magic)|(Devastation Orb)|(Storm Boomerang)|(\s?Spiked Armor\s?)|(Requires Attunement)|(Bottled Breath))/g) !== -1) {
@@ -319,7 +335,7 @@ function loaditems() {
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span></li>");
+		$(destinationlist).append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
 
 		if (!$("select.typefilter:contains('"+type+"')").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
@@ -330,7 +346,7 @@ function loaditems() {
 	}
 
 	var options = {
-		valueNames: ['name', 'source', 'type'],
+		valueNames: ['name', 'source', 'type', 'rarity'],
 		listClass: "mundane"
 	}
 
@@ -361,29 +377,27 @@ function loaditems() {
 	$("form#filtertools select").change(function(){
 		var typefilter = "Type: "+$("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val();
+		var rarityfilter = $("select.rarityfilter").val();
 
-		console.log (sourcefilter)
 		mundanelist.filter(function(item) {
-			var alltypes = false;
-			var allsources = false;
-			if (typefilter === "Type: All") alltypes = true;
-			if (sourcefilter === "All") allsources = true;
-			if (alltypes && allsources) return true;
-			if (alltypes && item.values().source === sourcefilter) return true;
-			if (allsources && item.values().type === typefilter) return true;
-			if (item.values().source === sourcefilter && item.values().type === typefilter) return true;
+			var righttype = false;
+			var rightsource = false;
+			var rightrarity = false;
+			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
+			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
+			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
+			if (righttype && rightsource && rightrarity) return true;
 			return false;
 		});
 
 		magiclist.filter(function(item) {
-			var alltypes = false;
-			var allsources = false;
-			if (typefilter === "Type: All") alltypes = true;
-			if (sourcefilter === "All") allsources = true;
-			if (alltypes && allsources) return true;
-			if (alltypes && item.values().source === sourcefilter) return true;
-			if (allsources && item.values().type === typefilter) return true;
-			if (item.values().source === sourcefilter && item.values().type === typefilter) return true;
+			var righttype = false;
+			var rightsource = false;
+			var rightrarity = false;
+			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
+			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
+			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
+			if (righttype && rightsource && rightrarity) return true;
 			return false;
 		});
 
@@ -394,9 +408,70 @@ function loaditems() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
 		} else $(this).attr("sortby", "asc");
-		magiclist.sort($(this).attr("sort"), { order: $(this).attr("sortby") });
-		mundanelist.sort($(this).attr("sort"), { order: $(this).attr("sortby") });
+		magiclist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortitems });
+		mundanelist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortitems });
 	});
+
+	$("#itemcontainer h3").not(":has(input)").click(function() {
+			if ($(this).next("ul.list").css("max-height") === "500px") {
+					$(this).siblings("ul.list").animate({
+						maxHeight: "250px"
+					});
+					return;
+				}
+
+		$(this).next("ul.list").animate({
+			maxHeight: "500px"
+		}).siblings("ul.list").animate({
+			maxHeight: "0"
+		})
+
+	})
+}
+
+function asc_sort(a, b){
+	return ($(b).text()) < ($(a).text()) ? 1 : -1;
+}
+
+function desc_sort(a, b){
+	return ($(b).text()) > ($(a).text()) ? 1 : -1;
+}
+
+function sortitems(a, b, o) {
+	if (o.valueName === "name") {
+		return ((b._values.name.toLowerCase()) > (a._values.name.toLowerCase())) ? 1 : -1;
+	}
+
+	if (o.valueName === "type") {
+		return ((b._values.type.toLowerCase()) > (a._values.type.toLowerCase())) ? 1 : -1;
+	}
+
+	if (o.valueName === "source") {
+		return ((b._values.source.toLowerCase()) > (a._values.source)) ? 1 : -1;
+	}
+
+	if (o.valueName === "rarity") {
+		a._values.rarity = a._values.rarity.replace("Rarity: ", "")
+		b._values.rarity = b._values.rarity.replace("Rarity: ", "")
+		if (a._values.rarity === "None") a._values.rarity = "0";
+		if (b._values.rarity === "None") b._values.rarity = "0";
+		if (a._values.rarity === "Common") a._values.rarity = "1";
+		if (b._values.rarity === "Common") b._values.rarity = "1";
+		if (a._values.rarity === "Uncommon") a._values.rarity = "2";
+		if (b._values.rarity === "Uncommon") b._values.rarity = "2";
+		if (a._values.rarity === "Rare") a._values.rarity = "3";
+		if (b._values.rarity === "Rare") b._values.rarity = "3";
+		if (a._values.rarity === "Very Rare") a._values.rarity = "4";
+		if (b._values.rarity === "Very Rare") b._values.rarity = "4";
+		if (a._values.rarity === "Legendary") a._values.rarity = "5";
+		if (b._values.rarity === "Legendary") b._values.rarity = "5";
+		if (a._values.rarity === "Artifact") a._values.rarity = "6";
+		if (b._values.rarity === "Artifact") b._values.rarity = "6";
+		return ((b._values.rarity) > (a._values.rarity)) ? 1 : -1;
+	}
+
+	return 1;
+
 }
 
 function useitem (id) {
@@ -523,6 +598,7 @@ function useitem (id) {
 					<span class="sortlabel">
 						<span class="sort" sort="name" sortby="asc">Name</span>
 						<span class="sort" sort="source" sortby="asc">Source</span>
+						<span class="sort" sort="rarity" sortby="asc">Rarity</span>
 						<span class="sort" sort="type" sortby="asc">Type</span>
 					</span>
 					<select class="sourcefilter">
@@ -531,12 +607,23 @@ function useitem (id) {
 					<select class="typefilter">
 						<option value="All">All Types</option>
 					</select>
+					</select>
+					<select class="rarityfilter">
+						<option value="All">All Rarities</option>
+						<option value="None">None</option>
+						<option value="Common">Common</option>
+						<option value="Uncommon">Uncommon</option>
+						<option value="Rare">Rare</option>
+						<option value="Very Rare">Very Rare</option>
+						<option value="Legendary">Legendary</option>
+						<option value="Artifact">Artifact</option>
+					</select>
 				</form>
-				<h3>Mundane</h3>
+				<h3 data-toggle="mundane">Mundane</h3>
 				<ul class="list mundane">
 
 				</ul>
-				<h3>Magic</h3>
+				<h3 data-toggle="magic">Magic</h3>
 				<ul class="list magic">
 
 				</ul>
