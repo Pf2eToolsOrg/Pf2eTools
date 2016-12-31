@@ -387,7 +387,6 @@ function loadmonsters() {
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
-			console.log("#"+$(this).attr("data-link"))
 			window.open("#"+$(this).attr("data-link"), "_blank").focus();
 			e.preventDefault();
 			e.stopPropagation();
@@ -421,6 +420,52 @@ function loadmonsters() {
 			return false;
 		});
 	});
+
+	$("#filtertools span.sort").on("click", function() {
+		if ($(this).attr("sortby") === "asc") {
+			$(this).attr("sortby", "desc");
+		} else $(this).attr("sortby", "asc");
+		monlist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortmonsters });
+	});
+
+}
+
+function asc_sort(a, b){
+	return ($(b).text()) < ($(a).text()) ? 1 : -1;
+}
+
+function desc_sort(a, b){
+	return ($(b).text()) > ($(a).text()) ? 1 : -1;
+}
+
+function sortmonsters(a, b, o) {
+	if (o.valueName === "name") {
+		return ((b._values.name.toLowerCase()) > (a._values.name.toLowerCase())) ? 1 : -1;
+	}
+
+	if (o.valueName === "type") {
+		return ((b._values.type.toLowerCase()) > (a._values.type.toLowerCase())) ? 1 : -1;
+	}
+
+	if (o.valueName === "source") {
+		return ((b._values.source.toLowerCase()) > (a._values.source.toLowerCase())) ? 1 : -1;
+	}
+
+	if (o.valueName === "cr") {
+		acr = a._values.cr.replace("CR ", "").replace(" ", "")
+		bcr = b._values.cr.replace("CR ", "").replace(" ", "")
+		if (acr === "1/2") acr = "-1";
+		if (bcr === "1/2") bcr = "-1";
+		if (acr === "1/4") acr = "-2";
+		if (bcr === "1/4") bcr = "-2";
+		if (acr === "1/8") acr = "-3";
+		if (bcr === "1/8") bcr = "-3";
+		if (acr === "0") acr = "-4";
+		if (bcr === "0") bcr = "-4";
+		return (parseInt(bcr) > parseInt(acr)) ? 1 : -1;
+	}
+
+	return 1;
 
 }
 
@@ -764,10 +809,10 @@ function usemonster (id) {
 
 				<form id="filtertools" autocomplete="off">
 					<span class="sortlabel">
-						<span class="sort" data-sort="name">Name</span>
-						<span class="sort" data-sort="source">Source</span>
-						<span class="sort" data-sort="type">Type</span>
-						<span class="sort" data-sort="cr">CR</span>
+						<span class="sort" sort="name" sortby="asc">Name</span>
+						<span class="sort" sort="source" sortby="asc">Source</span>
+						<span class="sort" sort="type" sortby="asc">Type</span>
+						<span class="sort" sort="cr" sortby="asc">CR</span>
 					</span>
 					<select class="sourcefilter">
 						<option value="All">All Sources</option>
