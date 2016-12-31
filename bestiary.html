@@ -590,6 +590,11 @@ function usemonster (id) {
 		$("td span#senses").html("");
 	}
 
+	var passive = mon.passive;
+	if (passive && passive.length > 0) {
+		$("td span#pp").html(passive)
+	}
+
 	var languages = mon.languages;
 	if (languages && languages.length > 0) {
 		$("td span#languages").html(languages);
