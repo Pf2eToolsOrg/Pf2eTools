@@ -447,7 +447,7 @@ function sortitems(a, b, o) {
 	}
 
 	if (o.valueName === "source") {
-		return ((b._values.source.toLowerCase()) > (a._values.source)) ? 1 : -1;
+		return ((b._values.source.toLowerCase()) > (a._values.source.toLowerCase())) ? 1 : -1;
 	}
 
 	if (o.valueName === "rarity") {
