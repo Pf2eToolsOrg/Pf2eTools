@@ -451,22 +451,22 @@ function sortitems(a, b, o) {
 	}
 
 	if (o.valueName === "rarity") {
-		a._values.rarity = a._values.rarity.replace("Rarity: ", "")
-		b._values.rarity = b._values.rarity.replace("Rarity: ", "")
-		if (a._values.rarity === "None") a._values.rarity = "0";
-		if (b._values.rarity === "None") b._values.rarity = "0";
-		if (a._values.rarity === "Common") a._values.rarity = "1";
-		if (b._values.rarity === "Common") b._values.rarity = "1";
-		if (a._values.rarity === "Uncommon") a._values.rarity = "2";
-		if (b._values.rarity === "Uncommon") b._values.rarity = "2";
-		if (a._values.rarity === "Rare") a._values.rarity = "3";
-		if (b._values.rarity === "Rare") b._values.rarity = "3";
-		if (a._values.rarity === "Very Rare") a._values.rarity = "4";
-		if (b._values.rarity === "Very Rare") b._values.rarity = "4";
-		if (a._values.rarity === "Legendary") a._values.rarity = "5";
-		if (b._values.rarity === "Legendary") b._values.rarity = "5";
-		if (a._values.rarity === "Artifact") a._values.rarity = "6";
-		if (b._values.rarity === "Artifact") b._values.rarity = "6";
+		ararity = a._values.rarity.replace("Rarity: ", "")
+		brarity = b._values.rarity.replace("Rarity: ", "")
+		if (ararity === "None") ararity = "0";
+		if (brarity === "None") brarity = "0";
+		if (ararity === "Common") ararity = "1";
+		if (brarity === "Common") brarity = "1";
+		if (ararity === "Uncommon") ararity = "2";
+		if (brarity === "Uncommon") brarity = "2";
+		if (ararity === "Rare") ararity = "3";
+		if (brarity === "Rare") brarity = "3";
+		if (ararity === "Very Rare") ararity = "4";
+		if (brarity === "Very Rare") brarity = "4";
+		if (ararity === "Legendary") ararity = "5";
+		if (brarity === "Legendary") brarity = "5";
+		if (ararity === "Artifact") ararity = "6";
+		if (brarity === "Artifact") brarity = "6";
 		return ((b._values.rarity) > (a._values.rarity)) ? 1 : -1;
 	}
 
