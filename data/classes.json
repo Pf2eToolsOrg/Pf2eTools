@@ -179,12 +179,6 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Increased Rages",
-                        "text": [
-                           "You may now rage 3 times before a long rest."
-                        ]
-                     },
-                     {
                         "name": "Primal Path",
                         "text": [
                            "At 3rd level, you choose a path that shapes the nature of your rage. Choose the Path of the Berserker or the Path of the Totem Warrior, both detailed at the end of the class description. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels."
@@ -468,9 +462,9 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Increased Rages",
+                        "name": "Path feature",
                         "text": [
-                           "You may now rage 4 times before a long rest."
+                           "At 6th level, you gain a feature from your Primal Path."
                         ]
                      },
                      {
@@ -642,18 +636,18 @@ var classdata = {
                            "Beginning at 9th level, you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack.",
                            "This increases to two additional dice at 13th level and three additional dice at 17th level."
                         ]
-                     },
-                     {
-                        "name": "Increased Rage Damage",
-                        "text": [
-                           "You now have a +3 bonus to melee damage rolls while raging."
-                        ]
                      }
                   ],
                   "_level": "9"
                },
                {
                   "feature": [
+                    {
+                       "name": "Path feature",
+                       "text": [
+                          "At 10th level, you gain a feature from your Primal Path."
+                       ]
+                    },
                      {
                         "name": "Path of the Berserker: Intimidating Presence",
                         "text": [
@@ -734,12 +728,6 @@ var classdata = {
                            "If your DM uses the optional Feats, you can instead take a feat."
                         ]
                      },
-                     {
-                        "name": "Increased Rages",
-                        "text": [
-                           "You may now rage 5 times before a long rest"
-                        ]
-                     }
                   ],
                   "_level": "12"
                },
@@ -756,6 +744,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                       "name": "Path feature",
+                       "text": [
+                          "At 14th level, you gain a feature from your Primal Path."
+                       ]
+                    },
                      {
                         "name": "Path of the Berserker: Retaliation",
                         "text": [
@@ -914,12 +908,6 @@ var classdata = {
                            "If your DM uses the optional Feats, you can instead take a feat."
                         ]
                      },
-                     {
-                        "name": "Increased Rage Damage",
-                        "text": [
-                           "You now have a +4 bonus to melee damage rolls while raging."
-                        ]
-                     }
                   ],
                   "_level": "16"
                },
@@ -931,12 +919,6 @@ var classdata = {
                            "You now roll three additional weapon damage dice when determining the extra damage for a critical hit with a melee attack."
                         ]
                      },
-                     {
-                        "name": "Increased Rages",
-                        "text": [
-                           "You may now rage 6 times before a long rest"
-                        ]
-                     }
                   ],
                   "_level": "17"
                },
@@ -987,12 +969,6 @@ var classdata = {
                            }
                         ]
                      },
-                     {
-                        "name": "Unlimited Rages",
-                        "text": [
-                           "At 20th level, there is no limit to the number of times you may rage."
-                        ]
-                     }
                   ],
                   "_level": "20"
                }
@@ -1182,14 +1158,9 @@ var classdata = {
                         "text": [
                            "Starting at 2nd level, you can add half your proficiency bonus, rounded down, to any ability check you make that doesn't already include your proficiency bonus."
                         ]
-                     }
-                  ],
-                  "_level": "2"
-               },
-               {
-                  "feature": [
+                     },
                      {
-                        "name": "Song of Rest",
+                        "name": "Song of Rest (d6)",
                         "text": [
                            "Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points by spending Hit Dice at the end of the short rest, each of those creatures regains an extra 1d6 hit points.",
                            "The extra hit points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level."
@@ -1473,6 +1444,12 @@ var classdata = {
                         ]
                      },
                      {
+                       "name": "Bard College feature",
+                       "text": [
+                         "At 6th level, you gain a feature from your Bard College."
+                       ]
+                     },
+                     {
                         "name": "College of Glamour: Mantle of Majesty",
                         "text": [
                           "At 6th level, you gain the ability to cloak yourself in a fey magic that makes others want to serve you. As a bonus action, you take on an appearance of unearthly beauty for 1 minute. During this time, you can cast command as a bonus action on each of your turns, without using a spell slot. This effect lasts for 1 minute, and any creature charmed by you automatically fails its saving throw against the spell.",
@@ -1550,7 +1527,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Song of Rest (1d8)",
+                        "name": "Song of Rest (d8)",
                         "text": [
                            "At 9th level, the extra hit points gained from Song of Rest increases to 1d8."
                         ]
@@ -1598,7 +1575,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Song of Rest (1d10)",
+                        "name": "Song of Rest (d10)",
                         "text": [
                            "At 13th level, the extra hit points gained from Song of Rest increases to 1d10."
                         ]
@@ -1614,6 +1591,12 @@ var classdata = {
                            "At 14th level, choose two additional spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.",
                            "The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table."
                         ]
+                     },
+                     {
+                       "name": "Bard College feature",
+                       "text": [
+                         "At 14th level, you gain a feature from your Bard College."
+                       ]
                      },
                      {
                         "name": "College of Glamour: Mantle of Majesty",
@@ -1706,7 +1689,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Song of Rest (1d12)",
+                        "name": "Song of Rest (d12)",
                         "text": [
                            "At 17th level, the extra hit points gained from Song of Rest increases to 1d12."
                         ]
@@ -2427,7 +2410,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Channel Divinity",
+                        "name": "Channel Divinity (1/rest)",
                         "text": [
                            "At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.",
                            "When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.",
@@ -2440,7 +2423,14 @@ var classdata = {
                         "text": [
                            "As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
                            "A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
-                        ]
+                        ],
+                        "_optional": "YES"
+                     },
+                     {
+                       "name": "Divine Domain feature",
+                       "text": [
+                         "At 2nd level, you gain a feature from your Divine Domain."
+                       ]
                      },
                      {
                         "name": "Arcana Domain Channel Divinity: Arcane Abjuration",
@@ -2765,12 +2755,13 @@ var classdata = {
                         "text": [
                            "Starting at 8th level, when an undead of CR 1 or lower fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
                         ]
-                     }
-                  ],
-                  "_level": "8"
-               },
-               {
-                  "feature": [
+                     },
+                     {
+                       "name": "Divine Domain feature",
+                       "text": [
+                         "At 8th level, you gain a feature from your Divine Domain."
+                       ]
+                     },
                      {
                         "name": "Arcana Domain: Potent Spellcasting",
                         "text": [
@@ -2957,6 +2948,12 @@ var classdata = {
                         "text": [
                            "Starting at 17th level, when an undead of CR 4 or lower fails its saving throw against your Turn Undead feature, the creature is instantly destroyed."
                         ]
+                     },
+                     {
+                       "name": "Divine Domain feature",
+                       "text": [
+                         "At 17th level, you gain a feature from your Divine Domain."
+                       ]
                      },
                      {
                         "name": "Arcana Domain: Arcane Mastery",
@@ -3577,6 +3574,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Wild Shape Improvement",
+                      "text": [
+                        "At 4th level, your Wild Shape improves as shown on the Beast Shapes table."
+                      ]
+                    },
                      {
                         "name": "Ability Score Improvement",
                         "text": [
@@ -3589,6 +3592,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Druid Circle feature",
+                      "text": [
+                        "At 6th level, you gain a feature granted by your Druid Circle feature."
+                      ]
+                    },
                      {
                         "name": "Circle of Land: Land's Stride",
                         "text": [
@@ -3641,6 +3650,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Wild Shape Improvement",
+                      "text": [
+                        "At 8th level, your Wild Shape improves as shown on the Beast Shapes table."
+                      ]
+                    },
                      {
                         "name": "Ability Score Improvement",
                         "text": [
@@ -3653,6 +3668,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Druid Circle feature",
+                      "text": [
+                        "At 6th level, you gain a feature granted by your Druid Circle feature."
+                      ]
+                    },
                      {
                         "name": "Circle of Land: Nature's Ward",
                         "text": [
@@ -3717,6 +3738,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Druid Circle feature",
+                      "text": [
+                        "At 6th level, you gain a feature granted by your Druid Circle feature."
+                      ]
+                    },
                      {
                         "name": "Circle of Land: Nature's Sanctuary",
                         "text": [
@@ -4855,6 +4882,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Martial Archetype feature",
+                      "text": [
+                        "At 7th level, you gain a feature granted by your Martial Archetype."
+                      ]
+                    },
                      {
                         "name": "Battle Master: Additional Maneuvers",
                         "text": [
@@ -5023,6 +5056,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Martial Archetype feature",
+                      "text": [
+                        "At 10th level, you gain a feature granted by your Martial Archetype."
+                      ]
+                    },
                      {
                         "name": "Battle Master: Additional Maneuvers",
                         "text": [
@@ -5193,6 +5232,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Martial Archetype feature",
+                      "text": [
+                        "At 15th level, you gain a feature granted by your Martial Archetype."
+                      ]
+                    },
                      {
                         "name": "Battle Master: Additional Maneuvers",
                         "text": [
@@ -5353,6 +5398,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Martial Archetype feature",
+                      "text": [
+                        "At 18th level, you gain a feature granted by your Martial Archetype."
+                      ]
+                    },
                      {
                         "name": "Battle Master: Improved Combat Superiority (d12)",
                         "text": [
@@ -5481,8 +5532,8 @@ var classdata = {
             "autolevel": [
               {
                 "martialarts": "1d4",
-                "kipoints": "-",
-                "unarmoredmovement": "-",
+                "kipoints": "—",
+                "unarmoredmovement": "—",
                 "_level": "1"
               },
               {
@@ -5667,19 +5718,22 @@ var classdata = {
                         "name": "Flurry of Blows",
                         "text": [
                            "Immediately after you take the Attack action on your turn, you can spend 1 ki point to make two unarmed strikes as a bonus action."
-                        ]
+                        ],
+                        "_optional": "YES"
                      },
                      {
                         "name": "Patient Defense",
                         "text": [
                            "You can spend 1 ki point to take the Dodge action as a bonus action on your turn."
-                        ]
+                        ],
+                        "_optional": "YES"
                      },
                      {
                         "name": "Step of the Wind",
                         "text": [
                            "You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn."
-                        ]
+                        ],
+                        "_optional": "YES"
                      },
                      {
                         "name": "Unarmored Movement",
@@ -6096,12 +6150,6 @@ var classdata = {
                         "text": [
                            "Starting at 5th level, you can interfere with the flow of ki in an opponent's body. When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn."
                         ]
-                     },
-                     {
-                        "name": "Martial Arts (1d6)",
-                        "text": [
-                           "You can  now roll a d6 in the place of the normal damage of your unarmed strike or monk weapon."
-                        ]
                      }
                   ],
                   "_level": "5"
@@ -6115,19 +6163,10 @@ var classdata = {
                         ]
                      },
                      {
-                        "name": "Unarmed Movement (+ 15 ft.)",
-                        "text": [
-                           "The bonus to your speed increases to 15 feet while you are not wearing armor or wielding a shield."
-                        ],
-                        "modifier": [
-                           {
-                              "_category": "bonus",
-                              "__text": "speed +5",
-                              "toString": [
-                                 null
-                              ]
-                           }
-                        ]
+                       "name": "Monastic Tradition feature",
+                       "text": [
+                         "At 6th level, you gain one feature granted by your Monastic Tradition."
+                       ]
                      },
                      {
                         "name": "Way of the Four Elements: Extra Elemental Discipline",
@@ -6203,18 +6242,18 @@ var classdata = {
                },
                {
                   "feature": [
+                  {
+                     "name": "Evasion",
+                     "text": [
+                        "At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon's lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
+                     ]
+                  },
                      {
                         "name": "Stillness of Mind",
                         "text": [
                            "Starting at 7th level, you can use your action to end one effect on yourself that is causing you to be charmed or frightened."
                         ]
                      },
-                     {
-                        "name": "Evasion",
-                        "text": [
-                           "At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon's lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
-                        ]
-                     }
                   ],
                   "_level": "7"
                },
@@ -6233,7 +6272,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Unarmored Movement (Vertical Surfaces)",
+                        "name": "Unarmored Movement improvement",
                         "text": [
                            "You gain the ability to move along vertical surfaces and across liquids on your turn without falling during the move."
                         ]
@@ -6248,38 +6287,22 @@ var classdata = {
                         "text": [
                            "At 10th level, your mastery of the ki flowing through you makes you immune to disease and poison."
                         ]
-                     },
-                     {
-                        "name": "Unarmed Movement (+ 20 ft.)",
-                        "text": [
-                           "The bonus to your speed increases to 20 feet while you are not wearing armor or wielding a shield."
-                        ],
-                        "modifier": [
-                           {
-                              "_category": "bonus",
-                              "__text": "speed +5",
-                              "toString": [
-                                 null
-                              ]
-                           }
-                        ]
                      }
                   ],
                   "_level": "10"
                },
                {
                   "feature": [
-
                     {
-                       "name": "Martial Arts (1d8)",
-                       "text": [
-                          "You can  now roll a d8 in the place of the normal damage of your unarmed strike or monk weapon."
-                       ]
+                      "name": "Monastic Tradition feature",
+                      "text": [
+                        "At 11th level, you gain one feature granted by your Monastic Tradition."
+                      ]
                     },
                       {
                         "name": "Way of Shadow: Cloak of Shadows",
                         "text": [
-                           "You have learned to become one with the shadows. When you are in an area of dim light or darkness, you can use your action to become invisible. You remain invisible until you make an attack, cast a spell, or are in an area of bright light."
+                           "By 11th level, you have learned to become one with the shadows. When you are in an area of dim light or darkness, you can use your action to become invisible. You remain invisible until you make an attack, cast a spell, or are in an area of bright light."
                         ],
                         "subclass": "Monastic Tradition: Way of Shadow",
                         "parent": "Way of Shadow",
@@ -6383,21 +6406,6 @@ var classdata = {
                            "Additionally, whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result."
                         ],
                         "proficiency": "constitution, intelligence, wisdom, charisma"
-                     },
-                     {
-                        "name": "Unarmed Movement (+ 25 ft.)",
-                        "text": [
-                           "The bonus to your speed increases to 25 feet while you are not wearing armor or wielding a shield."
-                        ],
-                        "modifier": [
-                           {
-                              "_category": "bonus",
-                              "__text": "speed +5",
-                              "toString": [
-                                 null
-                              ]
-                           }
-                        ]
                      }
                   ],
                   "_level": "14"
@@ -6427,12 +6435,12 @@ var classdata = {
                },
                {
                   "feature": [
-                     {
-                        "name": "Martial Arts (1d10)",
-                        "text": [
-                           "You can  now roll a d10 in the place of the normal damage of your unarmed strike or monk weapon."
-                        ]
-                     },
+                    {
+                      "name": "Monastic Tradition feature",
+                      "text": [
+                        "At 17th level, you gain one feature granted by your Monastic Tradition."
+                      ]
+                    },
                      {
                         "name": "Way of Shadow: Opportunist",
                         "text": [
@@ -6512,21 +6520,6 @@ var classdata = {
                         "text": [
                            "Beginning at 18th level, you can use your action to spend 4 ki points to become invisible for 1 minute. During that time, you also have resistance to all damage but force damage.",
                            "Additionally, you can spend 8 ki points to cast the astral projection spell, without needing material components. When you do so, you can't take any other creatures with you."
-                        ]
-                     },
-                     {
-                        "name": "Unarmed Movement (+ 30 ft.)",
-                        "text": [
-                           "The bonus to your speed increases to 30 feet while you are not wearing armor or wielding a shield."
-                        ],
-                        "modifier": [
-                           {
-                              "_category": "bonus",
-                              "__text": "speed +5",
-                              "toString": [
-                                 null
-                              ]
-                           }
                         ]
                      }
                   ],
@@ -6813,7 +6806,8 @@ var classdata = {
                           "Your oath allows you to channel divine energy to fuel magical effects. Each Channel Divinity option provided by your oath explains how to use it.",
                           "When you use your Channel Divinity, you choose which option to use. You must then finish a short or long rest to use your Channel Divinity again.",
                           "Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your paladin spell save DC."
-                        ]
+                        ],
+                        "_optional": "YES"
                      },
                      {
                         "name": "Sacred Oath: Oath of the Ancients",
@@ -7244,6 +7238,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Sacred Oath feature",
+                      "text": [
+                        "At 7th level, you gain a feature granted to you by your Sacred Oath."
+                      ]
+                    },
                      {
                         "name": "Oath of the Ancients: Aura of Warding",
                         "text": [
@@ -7377,6 +7377,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Sacred Oath feature",
+                      "text": [
+                        "At 15th level, you gain a feature granted to you by your Sacred Oath."
+                      ]
+                    },
                      {
                         "name": "Oath of the Ancients: Undying Sentinel",
                         "text": [
@@ -7459,7 +7465,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Aura of Protection Improvement",
+                        "name": "Aura improvements",
                         "text": [
                            "At 18th level, the range of your Aura of Protection increases to 30 feet."
                         ]
@@ -7481,6 +7487,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Sacred Oath feature",
+                      "text": [
+                        "At 20th level, you gain a feature granted to you by your Sacred Oath."
+                      ]
+                    },
                      {
                         "name": "Oath of the Ancients: Elder Champion",
                         "text": [
@@ -7749,26 +7761,6 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Spellcasting",
-                        "text": [
-                           "By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See chapter 10 for the general rules of spellcasting and chapter 11 for the ranger spell list.",
-                           null,
-                           "Spell Slots",
-                           "The Ranger table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
-                           "For example, if you know the 1st-level spell animal friendship and have a 1st-level and a 2nd-level spell slot available, you can cast animal friendship using either slot.",
-                           null,
-                           "Spells Known of 1st Level and Higher",
-                           "You know two 1st-level spells of your choice from the ranger spell list.",
-                           "You learn an additional ranger spell of your choice at each odd numbered level thereafter. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 5th level in this class, you can learn one new spell of 1st or 2nd level.",
-                           "Additionally, when you gain a level in this class, you can choose one of the ranger spells you know and replace it with another spell from the ranger spell list, which also must be of a level for which you have spell slots.",
-                           null,
-                           "Spellcasting Ability",
-                           "Wisdom is your spellcasting ability for your ranger spells, since your magic draws on your attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a ranger spell you cast and when making an attack roll with one.",
-                           "Spell save DC = 8 + your proficiency bonus + your Wisdom modifier",
-                           "Spell attack modifier = your proficiency bonus + your Wisdom modifier"
-                        ]
-                     },
-                     {
                         "name": "Fighting Style",
                         "text": [
                            "At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options: Archery, Defense, Dueling, Mariner, or Two-Weapon Fighting. You can't take a Fighting Style option more than once, even if you later get to choose again."
@@ -7836,7 +7828,27 @@ var classdata = {
                         "parent": "Fighting Style",
                         "suboption": "YES",
                         "_optional": "YES"
-                     }
+                     },
+                        {
+                           "name": "Spellcasting",
+                           "text": [
+                              "By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See chapter 10 for the general rules of spellcasting and chapter 11 for the ranger spell list.",
+                              null,
+                              "Spell Slots",
+                              "The Ranger table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+                              "For example, if you know the 1st-level spell animal friendship and have a 1st-level and a 2nd-level spell slot available, you can cast animal friendship using either slot.",
+                              null,
+                              "Spells Known of 1st Level and Higher",
+                              "You know two 1st-level spells of your choice from the ranger spell list.",
+                              "You learn an additional ranger spell of your choice at each odd numbered level thereafter. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 5th level in this class, you can learn one new spell of 1st or 2nd level.",
+                              "Additionally, when you gain a level in this class, you can choose one of the ranger spells you know and replace it with another spell from the ranger spell list, which also must be of a level for which you have spell slots.",
+                              null,
+                              "Spellcasting Ability",
+                              "Wisdom is your spellcasting ability for your ranger spells, since your magic draws on your attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a ranger spell you cast and when making an attack roll with one.",
+                              "Spell save DC = 8 + your proficiency bonus + your Wisdom modifier",
+                              "Spell attack modifier = your proficiency bonus + your Wisdom modifier"
+                           ]
+                        },
                   ],
                   "_level": "2"
                },
@@ -7994,15 +8006,10 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Additional Favored Terrains",
+                        "name": "Favored Enemy and Natural Explorer improvements",
                         "text": [
-                           "You gain an additional favored terrain."
-                        ]
-                     },
-                     {
-                        "name": "Additional Favored Enemy",
-                        "text": [
-                           "You choose one additional favored enemy, as well as an associated language. Your choice should reflect the types of monsters you have encountered on your adventures."
+                           "You gain an additional favored terrain.",
+                            "You choose one additional favored enemy, as well as an associated language. Your choice should reflect the types of monsters you have encountered on your adventures."
                         ]
                      }
                   ],
@@ -8010,6 +8017,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Ranger Archetype feature",
+                      "text": [
+                        "At 7th level, you gain a feature granted to you by your Ranger Archetype."
+                      ]
+                    },
                      {
                         "name": "Hunter: Defensive Tactics",
                         "text": [
@@ -8052,7 +8065,7 @@ var classdata = {
                      {
                         "name": "Beast Master: Exceptional Training",
                         "text": [
-                           "On any of your turns when your beast companion doesn't attack, you can use a bonus action to command the beast to take the Dash, Disengage, Dodge, or Help action on its turn."
+                           "Beginning at 7th level, on any of your turns when your beast companion doesn't attack, you can use a bonus action to command the beast to take the Dash, Disengage, Dodge, or Help action on its turn."
                         ],
                         "subclass": "Ranger Archetype: Beast Master",
                         "parent": "Beast Master",
@@ -8099,7 +8112,7 @@ var classdata = {
                         ]
                      },
                      {
-                        "name": "Additional Favored Terrains",
+                        "name": "Natural Explorer improvement",
                         "text": [
                            "You gain an additional favored terrain."
                         ]
@@ -8109,6 +8122,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Ranger Archetype feature",
+                      "text": [
+                        "At 11th level, you gain a feature granted to you by your Ranger Archetype."
+                      ]
+                    },
                      {
                         "name": "Hunter: Multiattack",
                         "text": [
@@ -8180,7 +8199,7 @@ var classdata = {
                         ]
                      },
                      {
-                        "name": "Additional Favored Enemy",
+                        "name": "Favored Enemy improvement",
                         "text": [
                            "You choose one additional favored enemy, as well as an associated language. Your choice should reflect the types of monsters you have encountered on your adventures."
                         ]
@@ -8190,6 +8209,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Ranger Archetype feature",
+                      "text": [
+                        "At 15th level, you gain a feature granted to you by your Ranger Archetype."
+                      ]
+                    },
                      {
                         "name": "Hunter: Superior Hunter's Defense",
                         "text": [
@@ -8305,7 +8330,7 @@ var classdata = {
             "spellAbility": "Wisdom",
             "autolevel": [
               {
-                "spellsknown": "-",
+                "spellsknown": "—",
                  "slots": "0,0,0,0,0,0",
                  "_level": "1"
               },
@@ -8727,6 +8752,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Ranger Conclave feature",
+                      "text": [
+                        "At 5th level, you gain a feature granted to you by your Ranger Conclave."
+                      ]
+                    },
                      {
                         "name": "Beast Conclave: Coordinated Attack",
                         "text": [
@@ -8771,6 +8802,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Ranger Conclave feature",
+                      "text": [
+                        "At 7th level, you gain a feature granted to you by your Ranger Conclave."
+                      ]
+                    },
                      {
                         "name": "Beast Conclave: Beast’s Defense",
                         "text": [
@@ -8864,6 +8901,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Ranger Conclave feature",
+                      "text": [
+                        "At 11th level, you gain a feature granted to you by your Ranger Conclave."
+                      ]
+                    },
                      {
                         "name": "Beast Conclave: Storm of Claw and Fangs",
                         "text": [
@@ -8939,6 +8982,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Ranger Conclave feature",
+                      "text": [
+                        "At 15th level, you gain a feature granted to you by your Ranger Conclave."
+                      ]
+                    },
                      {
                         "name": "Beast Conclave: Superior Beast’s Defense",
                         "text": [
@@ -9573,6 +9622,17 @@ var classdata = {
                   "_level": "5"
                },
                {
+                 "feature": [
+                      {
+                         "name": "Expertise",
+                         "text": [
+                            "At 6th level, you can choose two more of your proficiencies (in skills or with thieves' tools) to gain the benefit of Expertise."
+                         ]
+                      },
+                 ],
+                 "_level": "6"
+               },
+               {
                   "feature": [
                      {
                         "name": "Evasion",
@@ -9597,6 +9657,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Roguish Archetype feature",
+                      "text": [
+                        "At 9th level, you gain a feature granted by your Roguish Archetype."
+                      ]
+                    },
                      {
                         "name": "Arcane Trickster: Magical Ambush",
                         "text": [
@@ -9700,6 +9766,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Roguish Archetype feature",
+                      "text": [
+                        "At 13th level, you gain a feature granted by your Roguish Archetype."
+                      ]
+                    },
                      {
                         "name": "Arcane Trickster: Versatile Trickster",
                         "text": [
@@ -9792,6 +9864,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Roguish Archetype feature",
+                      "text": [
+                        "At 17th level, you gain a feature granted by your Roguish Archetype."
+                      ]
+                    },
                      {
                         "name": "Arcane Trickster: Spell Thief",
                         "text": [
@@ -9896,7 +9974,7 @@ var classdata = {
             "spellAbility": "Charisma",
             "autolevel": [
                {
-                 "sorcerypoints": "-",
+                 "sorcerypoints": "—",
                  "spellsknown": "2",
                   "slots": "4,2,0,0,0,0,0,0,0,0",
                   "_level": "1"
@@ -10429,11 +10507,19 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Font of Magic",
+                      "text": [
+                        "At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects"
+                      ]
+                    },
                      {
                         "name": "Sorcery Points",
                         "text": [
                            "You have 2 sorcery points, and you gain one additional point every time you level up, to a maximum of 20 at level 20. You can never have more sorcery points than shown on the table for your level. You regain all spent sorcery points when you finish a long rest."
-                        ]
+                        ],
+                        "_optional": "YES",
+                        "suboption": "YES"
                      },
                      {
                         "name": "Flexible Casting",
@@ -10450,7 +10536,9 @@ var classdata = {
                            "5th —  7",
                            null,
                            "Converting a Spell Slot to Sorcery Points. As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points  equal to the slot's level."
-                        ]
+                        ],
+                        "_optional": "YES",
+                        "suboption": "YES"
                      }
                   ],
                   "_level": "2"
@@ -10555,6 +10643,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Sorcerous Origin feature",
+                      "text": [
+                        "At 6th level, you gain a feature granted by your Sorcerous Origin."
+                      ]
+                    },
                      {
                         "name": "Draconic Bloodline: Elemental Affinity",
                         "text": [
@@ -10636,7 +10730,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Metamagic Option (3rd)",
+                        "name": "Metamagic",
                         "text": [
                            "At 10th level, you learn an additional metamagic option."
                         ]
@@ -10658,6 +10752,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Sorcerous Origin feature",
+                      "text": [
+                        "At 14th level, you gain a feature granted by your Sorcerous Origin."
+                      ]
+                    },
                      {
                         "name": "Draconic Bloodline: Dragon Wings",
                         "text": [
@@ -10723,7 +10823,7 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Metamagic Option (4th)",
+                        "name": "Metamagic",
                         "text": [
                            "At 17th level, you learn an additional metamagic option."
                         ]
@@ -10733,6 +10833,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Sorcerous Origin feature",
+                      "text": [
+                        "At 18th level, you gain a feature granted by your Sorcerous Origin."
+                      ]
+                    },
                      {
                         "name": "Draconic Bloodline: Draconic Presence",
                         "text": [
@@ -10815,7 +10921,7 @@ var classdata = {
             "autolevel": [
                {
                  "spellsknown": "2",
-                 "invocationsknown": "-",
+                 "invocationsknown": "—",
                  "spellslots": "1",
                  "slotlevel": "1st",
                   "slots": "2,0,0,0,0,0,0,0,0,0",
@@ -11629,6 +11735,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Pact Boon",
+                      "text": [
+                        "At 3rd levei, your otherworldly patron bestows a gift upon you for your loyal service. You gain one of the following features of your choice."
+                      ]
+                    },
                      {
                         "name": "Pact Boon: Pact of the Chain",
                         "text": [
@@ -11637,6 +11749,7 @@ var classdata = {
                            "Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to use its reaction to make one attack of its own."
                         ],
                         "parent": "Pact Boon",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -11647,6 +11760,7 @@ var classdata = {
                            "You can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can't affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks."
                         ],
                         "parent": "Pact Boon",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -11655,6 +11769,7 @@ var classdata = {
                            "Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class's spell list. The cantrips do not need to be from the same spell list. While the book is on your person, you can cast those cantrips at will. They don't count against your number of cantrips known. Any cantrip you cast with this feature is considered a warlock cantrip for you. If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die."
                         ],
                         "parent": "Pact Boon",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -11668,6 +11783,7 @@ var classdata = {
                         ],
                         "subclass": "Otherworldly Patron: The Seeker (UA)",
                         "parent": "Pact Boon",
+                        "suboption": "YES",
                         "_optional": "YES"
                      }
                   ],
@@ -11687,17 +11803,12 @@ var classdata = {
                },
                {
                   "feature": [
-                     {
-                        "name": "Eldritch Invocation",
-                        "text": [
-                           "You learn an additional eldritch invocation"
-                        ]
-                     }
-                  ],
-                  "_level": "5"
-               },
-               {
-                  "feature": [
+                    {
+                      "name": "Otherworldly Patron feature",
+                      "text": [
+                        "At 6th level, you gain a feature granted by your Otherworldly Patron."
+                      ]
+                    },
                      {
                         "name": "The Archfey: Misty Escape",
                         "text": [
@@ -11772,17 +11883,6 @@ var classdata = {
                {
                   "feature": [
                      {
-                        "name": "Eldritch Invocation",
-                        "text": [
-                           "You learn an additional eldritch invocation"
-                        ]
-                     }
-                  ],
-                  "_level": "7"
-               },
-               {
-                  "feature": [
-                     {
                         "name": "Ability Score Improvement",
                         "text": [
                            "When you reach 8th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
@@ -11794,17 +11894,12 @@ var classdata = {
                },
                {
                   "feature": [
-                     {
-                        "name": "Eldritch Invocation",
-                        "text": [
-                           "You learn an additional eldritch invocation"
-                        ]
-                     }
-                  ],
-                  "_level": "9"
-               },
-               {
-                  "feature": [
+                    {
+                      "name": "Otherworldly Patron feature",
+                      "text": [
+                        "At 10th level, you gain a feature granted by your Otherworldly Patron."
+                      ]
+                    },
                      {
                         "name": "The Archfey: Beguiling Defenses",
                         "text": [
@@ -11891,12 +11986,6 @@ var classdata = {
                            "When you reach 12th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
                            "If your DM allows the use of feats, you may instead take a feat."
                         ]
-                     },
-                     {
-                        "name": "Eldritch Invocation",
-                        "text": [
-                           "You learn an additional eldritch invocation"
-                        ]
                      }
                   ],
                   "_level": "12"
@@ -11915,6 +12004,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Otherworldly Patron feature",
+                      "text": [
+                        "At 14th level, you gain a feature granted by your Otherworldly Patron."
+                      ]
+                    },
                      {
                         "name": "The Archfey: Dark Delirium",
                         "text": [
@@ -11995,13 +12090,7 @@ var classdata = {
                },
                {
                   "feature": [
-                     {
-                        "name": "Eldritch Invocation",
-                        "text": [
-                           "You learn an additional eldritch invocation"
-                        ]
-                     },
-                     {
+                    {
                         "name": "Mystic Arcanum (8th level)",
                         "text": [
                            "At 15th level, your patron bestows upon you a magical secret called an arcanum. Choose one 8th-level spell from the warlock spell list as this arcanum.",
@@ -12037,12 +12126,6 @@ var classdata = {
                },
                {
                   "feature": [
-                     {
-                        "name": "Eldritch Invocation",
-                        "text": [
-                           "You learn an additional eldritch invocation"
-                        ]
-                     }
                   ],
                   "_level": "18"
                },
@@ -12668,6 +12751,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Arcane Tradition feature",
+                      "text": [
+                        "At 6th level, you gain a feature granted by your Arcane Tradition."
+                      ]
+                    },
                      {
                         "name": "School of Abjuration: Projected Ward",
                         "text": [
@@ -12821,6 +12910,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Arcane Tradition feature",
+                      "text": [
+                        "At 10th level, you gain a feature granted by your Arcane Tradition."
+                      ]
+                    },
                      {
                         "name": "School of Abjuration: Improved Abjuration",
                         "text": [
@@ -12956,6 +13051,12 @@ var classdata = {
                },
                {
                   "feature": [
+                    {
+                      "name": "Arcane Tradition feature",
+                      "text": [
+                        "At 14th level, you gain a feature granted by your Arcane Tradition."
+                      ]
+                    },
                      {
                         "name": "School of Abjuration: Spell Resistance",
                         "text": [

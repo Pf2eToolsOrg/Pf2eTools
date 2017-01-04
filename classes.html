@@ -220,10 +220,6 @@ td#hp h5, td#prof h5, td#equipment h5 {
 	margin-bottom: 0px;
 }
 
-td.features {
-	width: 50%;
-}
-
 td.feature p {
 	padding: 0 1em;
 }
@@ -261,10 +257,19 @@ td.feature p {
 	width: 1em;
 }
 
-#classtable .spellslots0, #classtable .spellslots1, #classtable .spellslots2, #classtable .spellslots3, #classtable .spellslots4, #classtable .spellslots5, #classtable .spellslots6, #classtable .spellslots7, #classtable .spellslots8, #classtable .spellslots9 {
+#classtable .slots {
 	display: none;
 	text-align: center;
 	max-width: 4em;
+}
+
+#classtable .spellslots0 {
+
+}
+
+td.features {
+	max-width: 100%;
+	white-space: nowrap;
 }
 
 #classtable .newfeature {
@@ -307,6 +312,16 @@ div#subclasses span.active {
 	display: inline!important;
 	border-bottom: none!important;
 }
+
+.slotlabel {
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
+.featurebuffer {
+	width: 100%;
+}
+
 </style>
 
 
@@ -424,6 +439,9 @@ function useclass (id) {
 
 	$("td#prof div#saves span").html(curclass.proficiency);
 
+	$("tr:has(.slotlabel)").hide();
+	$("#classtable tr").not(":has(th)").append("<td class='featurebuffer'></td>");
+
 	var subclasses = [];
 	for (var i = curclass.autolevel.length-1; i >= 0; i--) {
 		var curlevel = curclass.autolevel[i];
@@ -431,8 +449,16 @@ function useclass (id) {
 // spell slots and table data
 		if (!curlevel.feature) {
 			if (curlevel.slots) {
+				$("tr:has(.slotlabel)").show();
 				if (curlevel.slots.__text) curlevel.slots = curlevel.slots.__text;
 				var curslots = curlevel.slots.split(",");
+				if (curslots[0] !== "0" && $("th.slotbuffer").attr("colspan") < 4) {
+					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
+				}
+				$("th.slotlabel").attr("colspan", curslots.length-1);
+				if (curslots.length > 1) $(".featurebuffer").hide();
+
 				for (var a = 0; a < curslots.length; a++) {
 					if (curslots[a] === "0") continue;
 					$(".spellslots"+a).show();
@@ -444,7 +470,8 @@ function useclass (id) {
 				if (!$(".spellsknown").length) {
 					$("th.spellslots0").after("<th class='spellsknown newfeature'>Spells Known</th>");
 					$("td.spellslots0").after("<td class='spellsknown newfeature'></td>");
-					$("#classtable th.border").attr("colspan", $("#classtable th.border").attr("colspan")+1);
+					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
 				}
 				$("tr#level"+curlevel._level+" td.spellsknown").html(curlevel.spellsknown);
 			}
@@ -453,19 +480,20 @@ function useclass (id) {
 				if (!$(".invocationsknown").length) {
 					$("th.spellslots5").after("<th class='spellslots newfeature'>Spell Slots</th> <th class='slotlevel newfeature'>Slot Level</th> <th class='invocationsknown newfeature'>Invocations Known</th>");
 					$("td.spellslots5").after("<td class='spellslots newfeature'></td> <td class='slotlevel newfeature'></td> <td class='invocationsknown newfeature'>Invocations Known</td>");
-					$("#classtable th.border").attr("colspan", $("#classtable th.border").attr("colspan")+3);
+					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+3);
 				}
 				$(".spellslots5").hide();
 				$("tr#level"+curlevel._level+" td.spellslots").html(curlevel.spellslots);
 				$("tr#level"+curlevel._level+" td.slotlevel").html(curlevel.slotlevel);
 				$("tr#level"+curlevel._level+" td.invocationsknown").html(curlevel.invocationsknown);
+				$("tr:has(.slotlabel)").hide();
 			}
 
 			if (curlevel.rages) {
 				if (!$(".rages").length) {
 					$("th.spellslots0").before("<th class='rages newfeature'>Rages</th> <th class='ragedamage newfeature'>Rage Damage</th>");
 					$("td.spellslots0").before("<td class='rages newfeature'></td> <td class='ragedamage newfeature'></td>");
-					$("#classtable th.border").attr("colspan", $("#classtable th.border").attr("colspan")+2);
+					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+2);
 				}
 				$("tr#level"+curlevel._level+" td.rages").html(curlevel.rages);
 				$("tr#level"+curlevel._level+" td.ragedamage").html(curlevel.ragedamage);
@@ -475,7 +503,8 @@ function useclass (id) {
 				if (!$(".kipoints").length) {
 					$("th.pb").after("<th class='martialarts newfeature'>Martial Arts</th> <th class='kipoints newfeature'>Ki Points</th> <th class='unarmoredmovement newfeature'>Unarmored Movement</th>");
 					$("td.pb").after("<td class='martialarts newfeature'></td> <td class='kipoints newfeature'></td> <td class='unarmoredmovement newfeature'></td>");
-					$("#classtable td.border").attr("colspan", $("#classtable td.border").attr("colspan")+3);
+					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+3);
+					$("th.slotbuffer").attr("colspan", $("th.slotbuffer").attr("colspan")+3);
 				}
 				$("tr#level"+curlevel._level+" td.martialarts").html(curlevel.martialarts);
 				$("tr#level"+curlevel._level+" td.kipoints").html(curlevel.kipoints);
@@ -486,7 +515,8 @@ function useclass (id) {
 				if (!$(".sneakattack").length) {
 					$("th.pb").after("<th class='sneakattack newfeature'>Sneak Attack</th>");
 					$("td.pb").after("<td class='sneakattack newfeature'></td>");
-					$("#classtable td.border").attr("colspan", $("#classtable td.border").attr("colspan")+1);
+					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
 				}
 				$("tr#level"+curlevel._level+" td.sneakattack").html(curlevel.sneakattack);
 			}
@@ -495,7 +525,9 @@ function useclass (id) {
 				if (!$(".sorcerypoints").length) {
 					$("th.pb").after("<th class='sorcerypoints newfeature'>Sorcery Points</th>");
 					$("td.pb").after("<td class='sorcerypoints newfeature'></td>");
-					$("#classtable td.border").attr("colspan", $("#classtable td.border").attr("colspan")+1);
+					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
+					console.log($("#classtable td.border").attr("colspan"))
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
 				}
 				$("tr#level"+curlevel._level+" td.sorcerypoints").html(curlevel.sorcerypoints);
 			}
@@ -536,7 +568,9 @@ function useclass (id) {
 
 	}
 
-	$("#classtable tr").not(":has(th)").append("<td style='width:100%;''></td>")
+	$("td.features, td.slots").each(function() {
+		if ($(this).html() === "") $(this).html("—")
+	});
 
 	$(".feature:contains('Maneuver: ')").css("font-size","0.8em");
 
@@ -627,46 +661,52 @@ function useclass (id) {
 			</div>
 			<div class="col-sm-9" id="classtable">
 				<table>
-					<tr><th class="border" colspan="14"></th></tr>
+					<tr><th class="border" colspan="15"></th></tr>
 					<tr>
-						<th id="name" colspan="14">Name</th>
+						<th id="name" colspan="15">Name</th>
+					</tr>
+					<tr>
+						<th class="slotbuffer" colspan="3"></th>
+						<th class="slotlabel" colspan="0">
+							Spell Slots per Spell Level
+						</th>
 					</tr>
 					<tr>
 						<th class="level">Level</th>
 						<th class="pb">Proficiency Bonus</th>
 						<th class="features">Features</th>
-						<th class="spellslots0">Cantrips Known</th>
-						<th class="spellslots1">1st</th>
-						<th class="spellslots2">2nd</th>
-						<th class="spellslots3">3rd</th>
-						<th class="spellslots4">4th</th>
-						<th class="spellslots5">5th</th>
-						<th class="spellslots6">6th</th>
-						<th class="spellslots7">7th</th>
-						<th class="spellslots8">8th</th>
-						<th class="spellslots9">9th</th>
+						<th class="slots spellslots0">Cantrips Known</th>
+						<th class="slots spellslots1">1st</th>
+						<th class="slots spellslots2">2nd</th>
+						<th class="slots spellslots3">3rd</th>
+						<th class="slots spellslots4">4th</th>
+						<th class="slots spellslots5">5th</th>
+						<th class="slots spellslots6">6th</th>
+						<th class="slots spellslots7">7th</th>
+						<th class="slots spellslots8">8th</th>
+						<th class="slots spellslots9">9th</th>
 					</tr>
-					<tr id="level1"><td class="level">1st</td>  <td class="pb">+2</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level2"><td class="level">2nd</td>  <td class="pb">+2</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level3"><td class="level">3rd</td>  <td class="pb">+2</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level4"><td class="level">4th</td>  <td class="pb">+2</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level5"><td class="level">5th</td>  <td class="pb">+3</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level6"><td class="level">6th</td>  <td class="pb">+3</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level7"><td class="level">7th</td>  <td class="pb">+3</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level8"><td class="level">8th</td>  <td class="pb">+3</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level9"><td class="level">9th</td>  <td class="pb">+4</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level10"><td class="level">10th</td><td class="pb">+4</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level11"><td class="level">11th</td><td class="pb">+4</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level12"><td class="level">12th</td><td class="pb">+4</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level13"><td class="level">13th</td><td class="pb">+5</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level14"><td class="level">14th</td><td class="pb">+5</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level15"><td class="level">15th</td><td class="pb">+5</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level16"><td class="level">16th</td><td class="pb">+5</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level17"><td class="level">17th</td><td class="pb">+6</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level18"><td class="level">18th</td><td class="pb">+6</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level19"><td class="level">19th</td><td class="pb">+6</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr id="level20"><td class="level">20th</td><td class="pb">+6</td><td class="features"></td> <td class="spellslots0"></td> <td class="spellslots1"></td> <td class="spellslots2"></td> <td class="spellslots3"></td> <td class="spellslots4"></td> <td class="spellslots5"></td> <td class="spellslots6"></td> <td class="spellslots7"></td> <td class="spellslots8"></td> <td class="spellslots9"></td></tr>
-					<tr><th class="border" colspan="14"></th></tr>
+					<tr id="level1"><td class="level">1st</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level2"><td class="level">2nd</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level3"><td class="level">3rd</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level4"><td class="level">4th</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level5"><td class="level">5th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level6"><td class="level">6th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level7"><td class="level">7th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level8"><td class="level">8th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level9"><td class="level">9th</td>  <td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level10"><td class="level">10th</td><td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level11"><td class="level">11th</td><td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level12"><td class="level">12th</td><td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level13"><td class="level">13th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level14"><td class="level">14th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level15"><td class="level">15th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level16"><td class="level">16th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level17"><td class="level">17th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level18"><td class="level">18th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level19"><td class="level">19th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr id="level20"><td class="level">20th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
+					<tr><th class="border" colspan="15"></th></tr>
 				</table>
 			</div>
 		</div>
