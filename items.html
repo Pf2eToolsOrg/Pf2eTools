@@ -261,6 +261,11 @@ function parsesource (src) {
 
 function parsetype (type) {
 	if (type === "G") return "Adventuring Gear"
+	if (type === "SCF") return "Spellcasting Focus"
+	if (type === "AT") return "Artisan Tools"
+	if (type === "T") return "Tools"
+	if (type === "GS") return "Gaming Sets"
+	if (type === "INS") return "Instrument"
 	if (type === "A") return "Ammunition"
 	if (type === "M") return "Melee Weapon"
 	if (type === "R") return "Ranged Weapon"
@@ -336,9 +341,9 @@ function loaditems() {
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
+		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURI(name)+"\"><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
 
-		if (!$("select.typefilter:contains('"+type+"')").length) {
+		if (!$("select.typefilter:contains(\""+type+"\")").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
 		}
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
@@ -370,6 +375,10 @@ function loaditems() {
 		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Items";
 		window.location = "#"+$(this).attr("data-link");
 	});
+
+	$(".typefilter option").sort(asc_sort).appendTo(".typefilter");
+	$("select.typefilter option[value=All]").prependTo(".typefilter");
+	$(".typefilter").val("All");
 
 	if (window.location.hash.length) {
 		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
@@ -605,7 +614,7 @@ function useitem (id) {
 					<select class="sourcefilter">
 						<option value="All">All Sources</option>
 					</select>
-					<select class="typefilter">
+					<select class="typefilter" value="All">
 						<option value="All">All Types</option>
 					</select>
 					</select>
