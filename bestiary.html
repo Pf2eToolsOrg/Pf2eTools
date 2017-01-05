@@ -355,7 +355,7 @@ function loadmonsters() {
 		var cr = monsters[i].cr;
 
 
-		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span title=\""+origsource+"\" class='source source"+source+"'>("+source+")</span> <span class='type'>Type: "+type+"</span> <span class='cr'>CR "+cr+" </span></li>");
+		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name'>"+name+"</span> <span title=\""+origsource+"\" class='source source"+source+"'>("+source+")</span> <span class='type'>Type: "+type+"</span> <span class='cr'>CR "+cr+" </span></li>");
 
 		if (!$("select.typefilter:contains('"+type+"')").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
@@ -397,7 +397,7 @@ function loadmonsters() {
 
 	$("ul.list li").click(function(e) {
 		usemonster($(this).attr("id"));
-		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Bestiary";
+		document.title = decodeURIComponent($(this).attr("data-link")).replace("%27","'") + " - 5etools Bestiary";
 		window.location = "#"+$(this).attr("data-link");
 	});
 
@@ -639,7 +639,7 @@ function usemonster (id) {
 			if (spellslist[0] === "*") return;
 			spellslist = spellslist.split(": ")[1].split(/\, (?!\+|\dd|appears)/g);
 			for (var i = 0; i < spellslist.length; i++) {
-				spellslist[i] = "<a href='spells.html#"+encodeURI(spellslist[i].replace(/(\*)| \(([^\)]+)\)/g,"").toLowerCase().replace("'",""))+"' target='_blank'>"+spellslist[i]+"</a>";
+				spellslist[i] = "<a href='spells.html#"+encodeURIComponent(spellslist[i].replace(/(\*)| \(([^\)]+)\)/g,"")).toLowerCase().replace("'","%27")+"' target='_blank'>"+spellslist[i]+"</a>";
 				if (i !== spellslist.length-1) spellslist[i] = spellslist[i]+", ";
 			}
 

@@ -341,7 +341,7 @@ function loaditems() {
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURI(name)+"\"><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
+		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).replace("'","%27")+"\"><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
 
 		if (!$("select.typefilter:contains(\""+type+"\")").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
@@ -372,7 +372,7 @@ function loaditems() {
 
 	$("ul.list li").click(function(e) {
 		useitem($(this).attr("id"));
-		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Items";
+		document.title = decodeURIComponent($(this).attr("data-link")).replace("%27","'") + " - 5etools Items";
 		window.location = "#"+$(this).attr("data-link");
 	});
 
