@@ -282,6 +282,7 @@ function parsesource (src) {
 	if (source == " out of the abyss") source = "OotA";
 	if (source == " curse of strahd") source = "CoS";
 	if (source == " lost mine of phandelver") source = "LMoP";
+	if (source == " tome of beasts") source = "ToB 3pp";
 	return source;
 }
 
@@ -295,6 +296,7 @@ function parsesourcename (src) {
 	if (source == " out of the abyss") source = "Out of the Abyss";
 	if (source == " curse of strahd") source = "Curse of Strahd";
 	if (source == " lost mine of phandelver") source = "Lost Mine of Phandelver";
+	if (source == " tome of beasts") source = "Tome of Beasts (3pp)";
 	return source;
 }
 
@@ -385,6 +387,7 @@ function loadmonsters() {
 	}
 
 	var monlist = new List("monstercontainer", options)
+	monlist.sort("name");
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -409,15 +412,19 @@ function loadmonsters() {
 		var typefilter = "Type: "+$("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val();
 		var crfilter = "CR "+$("select.crfilter").val()+" ";
+		var thirdpartyfilter = $("select.3ppfilter").val()+" ";
 
 		monlist.filter(function(item) {
 			var righttype = false;
 			var rightsource = false;
 			var rightcr = false;
+			var rightparty = false;
+
 			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
 			if (crfilter === "CR All " || item.values().cr === crfilter) rightcr = true;
-			if (righttype && rightsource && rightcr) return true;
+			if (thirdpartyfilter === "All " || item.values().source.indexOf("3pp") === -1) rightparty = true;
+			if (righttype && rightsource && rightcr && rightparty) return true;
 			return false;
 		});
 	});
@@ -650,7 +657,7 @@ function usemonster (id) {
 	var actions = mon.action;
 	$("tr.action").remove();
 
-	if (actions) for (var i = actions.length-1; i >= 0; i--) {
+	if (actions && actions.length) for (var i = actions.length-1; i >= 0; i--) {
 		var actionname = actions[i].name;
 
 		var actiontext = actions[i].text;
@@ -674,7 +681,7 @@ function usemonster (id) {
 	$("tr#reactions").hide();
 	$("tr.reaction").remove();
 
-	if (reactions) {
+	if (reactions && reactions.length) {
 
 		$("tr#reactions").show();
 
@@ -716,7 +723,7 @@ function usemonster (id) {
 	var legendaries = mon.legendary;
 	$("tr.legendary").remove();
 	$("tr#legendaries").hide();
-	if (legendaries) {
+	if (legendaries && legendaries.length) {
 		$("tr#legendaries").show();
 
 		var legendarydescription = "<span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn."
@@ -828,6 +835,10 @@ function usemonster (id) {
 					</select>
 					<select class="crfilter">
 						<option value="All">All CRs</option>
+					</select>
+					<select class="3ppfilter">
+						<option value="All">Third Party</option>
+						<option value="None">No Third Party</option>
 					</select>
 				</form>
 
