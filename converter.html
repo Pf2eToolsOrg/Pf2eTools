@@ -204,7 +204,7 @@ function loadparser() {
 
 			// name of monster
 			if (i === 0) {
-				stats.name = curline.replace(/\b\w/g, function(l){ return l.toUpperCase() });
+				stats.name = curline.toLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase() });
 				continue;
 			}
 
@@ -237,7 +237,7 @@ function loadparser() {
 			if (i === 5) continue;
 			// ability scores
 			if (i === 6) {
-				var abilities = curline.split(/ \((\+|\-)?[0-9]*\) ?/g)
+				var abilities = curline.split(/ \((\+|\-|\–|\‒)?[0-9]*\) ?/g)
 				stats.str = abilities[0];
 				stats.dex = abilities[2];
 				stats.con = abilities[4];
@@ -347,7 +347,7 @@ function loadparser() {
 					curline = statblock[i];
 
 					// get paragraphs
-					while (curline && curline.match(/^([A-Z][a-z]+( \(.*\)| )?)+(\.|\!)+/g) === null && !moveon(curline)) {
+					while (curline && curline.match(/^([A-Zot][a-z\']+( \(.*\)| )?)+(\.|\!)+/g) === null && !moveon(curline)) {
 						curtrait.text.push(curline);
 						i++;
 						curline = statblock[i];
