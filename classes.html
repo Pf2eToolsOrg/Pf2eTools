@@ -283,7 +283,7 @@ div#subclasses {
 		text-align: center;
 }
 
-div#subclasses span {
+div#subclasses > span {
 	display: inline-block;
 	font-size: 0.8em;
 	margin: 0.2em;
@@ -407,19 +407,27 @@ function loadspells() {
 	});
 
 	$("ul.list li").click(function(e) {
-		var subclassnumber = window.location.hash.split(/\,/)[1];
+		var subclass = window.location.hash.split(/\,/)[1];
 		window.location.hash = "#"+$(this).attr("data-link")+",";
-		if (subclassnumber !== "undefined") {
-			window.location.hash += subclassnumber;
-		} else window.location.hash += "-"
+		if (subclass !== "undefined") {
+			window.location.hash += subclass;
+		}
 		useclass($(this).attr("id"));
-
+		if (!$("div#subclasses > span:contains("+(decodeURIComponent(window.location.hash).split(/\,/)[1])+")").length) {
+			window.location.hash = window.location.hash.replace(/\,.*/g,",");
+		}
+		
 		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Classes";
 	});
 
 	if (window.location.hash.length) {
 		$("ul.list li[data-link='"+window.location.hash.split(/\#|\,/)[1]+"']:eq(0)").click();
-		$("div#subclasses span:eq("+window.location.hash.split(/\,/)[1]+")").click()
+		if (window.location.hash.split(/\,/)[1].length) {
+			$("div#subclasses > span:contains("+(decodeURIComponent(window.location.hash).split(/\,/)[1])+")").click()
+			if (!$("div#subclasses > span:contains("+(decodeURIComponent(window.location.hash).split(/\,/)[1])+")").length) {
+				window.location.hash = window.location.hash.replace(/\,.*/g,",");
+			}
+		}
 	} else $("ul.list li:eq(0)").click();
 
 }
@@ -560,7 +568,7 @@ function useclass (id) {
 			// write out list to class table
 			var multifeature = "";
 			if (curlevel.feature.length !== 1 && a !== 0) multifeature = ", ";
-			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+encodeURI (curfeature.name)+"'>"+curfeature.name+"</a>")
+			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+encodeURIComponent(curfeature.name).replace("'","%27")+"'>"+curfeature.name+"</a>")
 
 			// display features in bottom section
 			$("#features").after("<tr><td colspan='6' class='feature"+subfeature+issubclass+"' data-subclass='"+curfeature.subclass+"'><strong id='feature"+encodeURI (curfeature.name)+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
@@ -585,30 +593,31 @@ function useclass (id) {
 
 		if (!prevsubclass) prevsubclass = subclasses[i].subclass;
 
-		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+subclasses[i].name+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em>"+subclasses[i].name.split(": ")[1]+"</span>")
+		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+subclasses[i].name+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>")
 
 	}
 
-	$("div#subclasses span").sort(asc_sort).appendTo("div#subclasses");
+	$("div#subclasses > span").sort(asc_sort).appendTo("div#subclasses");
 
-	$("div#subclasses span").click(function() {
+	$("div#subclasses > span").click(function() {
+		var name = $(this).children("span").text();
 		if ($(this).hasClass("active")) {
 			$(".feature").show();
 			$(this).removeClass("active");
-				window.location.hash = window.location.hash.replace(/\,\S*/g, ",-");
+			window.location.hash = window.location.hash.replace(/\,.*/g,",");
 			return;
 		}
 
 		$("div#subclasses span.active").removeClass("active");
 		$(this).addClass("active");
 
-		window.location.hash = window.location.hash.replace(/\,\S*/g, ","+$(this).index())
+		window.location.hash = window.location.hash.replace(/\,\S*/g, ","+encodeURIComponent(name).replace("'","%27"))
 
 		$(".feature[data-subclass!='"+$(this).text()+"'][data-subclass!='undefined']").hide();
 		$(".feature[data-subclass='"+$(this).text()+"']").show();
 	})
 
-		$("select#subclasses span").first().click()
+	//	$("div#subclasses > span").first().click();
 
 		$(".features a").click(function() {
 			$("#stats").parent().scrollTop(0)
