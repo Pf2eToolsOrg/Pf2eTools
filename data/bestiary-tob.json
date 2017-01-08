@@ -1,0 +1,839 @@
+monsterdata.compendium.monster.push(
+{
+ "name": "Nihilith",
+ "size": "L",
+ "type": "undead, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "17 (natural armor)",
+ "hp": "135 (18d10 + 36)",
+ "speed": "10 ft., swim 40 ft., fly 40 ft. (ethereal only)",
+ "str": "21",
+ "dex": "9",
+ "con": "15",
+ "int": "18",
+ "wis": "15",
+ "cha": "18",
+ "save": "Con +6, Int +8, Wis +6",
+ "skill": [
+  "History +12, Perception +10"
+ ],
+ "resist": "acid, fire, lightning, thunder (only when in ethereal form); bludgeoning, piercing and slashing from nonmagical weapons",
+ "immune": "cold, necrotic, poison; bludgeoning, piercing and slashing from nonmagical weapons (only when in ethereal form)",
+ "conditionImmune": "charmed, exhaustion, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained",
+ "senses": "darkvision 120 ft.",
+ "passive": "20",
+ "languages": "Void Speech, telepathy 120 ft.",
+ "cr": "12",
+ "trait": [
+  {
+   "name": "Aboleth Traits",
+   "text": [
+    " Unless noted otherwise or where contradicted below, a nihileth has the same traits as a living aboleth. This includes legendary actions and lair actions."
+   ]
+  },
+  {
+   "name": "Undead Nature",
+   "text": [
+    " A nihileth does not require air, food, drink, or sleep."
+   ]
+  },
+  {
+   "name": "Undead Fortitude",
+   "text": [
+    " If non-radiant damage reduces a nihileth to 0 hit points, it makes a Constitution saving throw with a DC of 5+ the damage taken. If it succeeds, the nihileth drops to 1 hit point instead."
+   ]
+  },
+  {
+   "name": "Dual State",
+   "text": [
+    " A nihileth exists upon the Material Plane in one of two forms and can switch between them at will. In its material form, it has resistance to damage from nonmagical weapons. In its ethereal form, it is immune to damage from nonmagical weapons. The creature’s ethereal form appears as a dark purple outline of its material form, with a blackish-purple haze within. A nihileth in ethereal form can move through air as though it were water, with a fly speed of 40 feet."
+   ]
+  },
+  {
+   "name": "Void Aura",
+   "text": [
+    " A nihileth doesn’t secrete the mucous cloud of an aboleth. Instead, the undead nihileth is surrounded by a chilling cloud. A living creature that starts its turn within 5 feet of a nihileth must make a successful DC 14 Constitution saving throw or be slowed until the start of its next turn. In addition, any creature that has been diseased by a nihileth or a nihilethic zombie takes 7 (2d6) cold damage every time it starts its turn within the aura."
+   ]
+  },
+  {
+   "name": "Infecting Telepathy",
+   "text": [
+    " If a creature communicates telepathically with the nihileth, or uses a psychic attack against it, the nihileth can spread its disease to the creature. The creature must succeed on a DC 14 Wisdom save or become infected with the same disease caused by the nihileth’s tentacle attack. This ability replaces an aboleth’s Probing Telepathy ability."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The nihileth makes three tentacle attacks or three withering touches, depending on what form it is in."
+   ]
+  },
+  {
+   "name": "Tentacle (Material Form Only)",
+   "text": [
+    " Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 12 (2d6 + 5) bludgeoning damage. If the target creature is hit, it must make a successful DC 14 Constitution saving throw or become diseased. The disease has no effect for 1 minute; during that time, it can be removed by lesser restoration or comparable magic. After 1 minute, the diseased creature’s skin becomes translucent and slimy. The creature cannot regain hit points unless it is entirely underwater, and the disease can only be removed by heal or comparable magic. Unless the creature is fully submerged or frequently doused with water, it takes 6 (1d12) acid damage every 10 minutes. If a creature dies while diseased, it rises in 1d6 rounds as a nihilethic zombie. This zombie is permanently dominated by the nihileth."
+   ]
+  },
+  {
+   "name": "Withering Touch (Ethereal Form Only)",
+   "text": [
+    " Melee Weapon Attack: +8 to hit, reach 10 ft., one creature. Hit: 14 (3d6+4) necrotic damage."
+   ]
+  },
+  {
+   "name": "Form Swap",
+   "text": [
+    " As a bonus action, the nihileth can alter between its material and ethereal forms at will."
+   ]
+  },
+  {
+   "name": "Void Body",
+   "text": [
+    " As a reaction, the nihileth can reduce the damage it takes from a single source to 0. Divine damage can only be reduced by half."
+   ]
+  },
+  {
+   "name": "Tail (Material Form Only)",
+   "text": [
+    " As per the aboleth action."
+   ]
+  },
+  {
+   "name": "Enslave (3/day)",
+   "text": [
+    " As per the aboleth action."
+   ]
+  },
+  {
+   "name": "Lair Actions",
+   "text": [
+    " On initiative count 20 (losing initiative ties), the nihileth can take a lair action to create one of the magical effects as per an aboleth, or the void absorbance action listed below. The nihileth cannot use the same effect two rounds in a row.",
+    "• Void absorbance. A nihileth can pull the life force from those it has converted to nihilethic zombies to replenish its own life. This takes 18 (6d6) hit points from zombies within 30 feet of the nihileth, spread evenly between the zombies, and healing the nihileth. If a zombie reaches 0 hit points from this action, it perishes with no Undead Fortitude saving throw."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": [
+  {
+   "name": "",
+   "text": [
+    "A nihileth may take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature’s turn. The nihileth regains spent legendary actions at the start of its turn."
+   ]
+  },
+  {
+   "name": "Detect",
+   "text": [
+    " As per the aboleth action."
+   ]
+  },
+  {
+   "name": "Tail Swipe",
+   "text": [
+    " As per the aboleth action."
+   ]
+  },
+  {
+   "name": "Psychic Drain (Costs 2 Actions)",
+   "text": [
+    " As per the aboleth action."
+   ]
+  }
+ ]
+},
+{
+ "name": "Nihilethic Zombie",
+ "size": "M",
+ "type": "undead, ",
+ "alignment": "neutral evil",
+ "ac": "9 (natural armor)",
+ "hp": "22 (3d8 + 9)",
+ "speed": "20 ft., swim 30 ft.",
+ "str": "13",
+ "dex": "6",
+ "con": "16",
+ "int": "3",
+ "wis": "6",
+ "cha": "5",
+ "save": "Wis +0",
+ "resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+ "immune": "cold, necrotic, poison; bludgeoning, piercing and slashing from nonmagical weapons (only when in ethereal form)",
+ "conditionImmune": "poisoned",
+ "senses": "darkvision 60 ft.",
+ "passive": "8",
+ "languages": "understand Void Speech and the languages it knew in life but can’t speak",
+ "cr": "1",
+ "trait": [
+  {
+   "name": "Dual State",
+   "text": [
+    " Like its nihileth creator, a nihilethic zombie can assume either a material or ethereal form. When in its material form, it has resistance to nonmagical weapons. In its ethereal form, it is immune to nonmagical weapons. Its ethereal form appears as a dark purple outline of its material form, with a blackish-purple haze within."
+   ]
+  },
+  {
+   "name": "Zombie Nature",
+   "text": [
+    " Unless noted otherwise, a nihilethic zombie has the same traits as a zombie, including their Undead Fortitude."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Slam (Material Form Only)",
+   "text": [
+    " Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage and the target must make a successful DC 13 Constitution saving throw or become diseased. The disease has little effect for 1 minute; during that time, it can be removed by bless, lesser restoration, or comparable magic. After 1 minute, the diseased creature’s skin becomes translucent and slimy. The creature cannot regain hit points unless it is at least partially underwater, and the disease can only be removed by heal or comparable magic. Unless the creature is either fully submerged or frequently doused with water, it takes 6 (1d12) acid damage every 10 minutes. If a creature dies while diseased, it rises in 2d6 rounds as a nihilethic zombie. This zombie is permanently dominated by the nihileth that commands the attacking zombie."
+   ]
+  },
+  {
+   "name": "Withering Touch (Ethereal Form)",
+   "text": [
+    " Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) necrotic damage."
+   ]
+  },
+  {
+   "name": "Form Swap",
+   "text": [
+    " As a bonus action, the nihilethic zombie can alter between its material and ethereal forms at will."
+   ]
+  },
+  {
+   "name": "Void Body",
+   "text": [
+    " As a reaction, the nihilethic zombie can reduce the damage it takes from a single source by 1d12 points. This reduction cannot be applied to divine damage."
+   ]
+  },
+  {
+   "name": "Sacrifice Life",
+   "text": [
+    " A nihilethic zombie can sacrifice itself to heal a nihileth within 30 feet of it. All of its remaining hit points transfer to the nihileth in the form of healing. The nihilethic zombie is reduced to 0 hit points and it doesn’t make an Undead Fortitude saving throw. A nihileth cannot be healed above its maximum hit points in this manner."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Abominable Beauty",
+ "size": "M",
+ "type": "fey, tome of beasts",
+ "alignment": "neutral evil",
+ "ac": "18 (natural armor)",
+ "hp": "187 (22d8 + 88)",
+ "speed": "30 ft.",
+ "str": "17",
+ "dex": "18",
+ "con": "18",
+ "int": "17",
+ "wis": "16",
+ "cha": "26",
+ "save": "Dex +8, Con +8, Cha +12",
+ "skill": [
+  "Deception +12, Perception +7, Performance +12,"
+ ],
+ "immune": "fire",
+ "senses": "",
+ "passive": "17",
+ "languages": "Common, Draconic, Elven, Sylvan",
+ "cr": "11",
+ "trait": [],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The abominable beauty makes two slam attacks."
+   ]
+  },
+  {
+   "name": "Slam",
+   "text": [
+    " +8 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) damage plus 28 (8d6) fire damage."
+   ]
+  },
+  {
+   "name": "Blinding Gaze (Recharge 5–6)",
+   "text": [
+    " A creature within 30 feet of the abominable beauty who is targeted by this attack and who meets the abominable beauty’s gaze must succeed on a DC 17 Charisma saving throw or be blinded. If the saving throw succeeds, the target creature is permanently immune to this abominable beauty’s Blinding Gaze."
+   ]
+  },
+  {
+   "name": "Burning Touch",
+   "text": [
+    " The abominable beauty’s slam attacks do 28 (8d6) fire damage. A creature who touches her also takes 28 (8d6) fire damage."
+   ]
+  },
+  {
+   "name": "Deafening Voice (Recharge 5–6)",
+   "text": [
+    " An abominable beauty’s voice is lovely, but any creature within 90 feet and able to hear her when she makes her Deafening Voice attack must succeed on a DC 16 Constitution saving throw or be permanently deafened."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Accursed Defiler",
+ "size": "M",
+ "type": "undead, ",
+ "alignment": "neutral evil",
+ "ac": "12",
+ "hp": "75 (10d8 + 30)",
+ "speed": "30 ft.",
+ "str": "19",
+ "dex": "14",
+ "con": "17",
+ "int": "6",
+ "wis": "15",
+ "cha": "14",
+ "skill": [
+  "Perception +4, Stealth +4"
+ ],
+ "resist": "necrotic; bludgeoning, piercing, and",
+ "immune": "poison",
+ "conditionImmune": "charmed, exhaustion, frightened, poisoned",
+ "senses": "darkvision 60 ft.",
+ "passive": "14",
+ "languages": "understands ancient language, but can’t speak",
+ "cr": "4",
+ "trait": [
+  {
+   "name": "Cursed Existence",
+   "text": [
+    " When it drops to 0 hit points in desert terrain, the accursed defiler’s body disintegrates into sand and a sudden parched breeze. However, unless it was killed in a hallowed location, with radiant damage, or by a blessed creature, the accursed defiler reforms at the next sundown 1d100 miles away in a random direction."
+   ]
+  },
+  {
+   "name": "Sand Shroud",
+   "text": [
+    " A miniature sandstorm constantly whirls around the accursed defiler in a 10-foot radius. This area is lightly obscured to creatures other than an accursed defiler. Wisdom (Survival) checks made to follow tracks left by an accursed defiler or other creatures that were traveling in its sand shroud are made with disadvantage."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The accursed defiler makes two slam attacks."
+   ]
+  },
+  {
+   "name": "Slam",
+   "text": [
+    " Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 11 (2d6 + 4) bludgeoning damage. If a creature is hit by this attack twice in the same round (from the same or different accursed defilers), the target must make a DC 13 Constitution saving throw or gain one level of exhaustion."
+   ]
+  },
+  {
+   "name": "Sandslash (Recharge 5–6)",
+   "text": [
+    " As an action, the accursed defiler intensifies the vortex of sand that surrounds it. All creatures within a 10-foot radius of the accursed defiler take 21 (6d6) slashing damage, or half damage with a successful DC 14 Dexterity saving throw."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Ala",
+ "size": "M",
+ "type": "fey, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "17 (natural armor)",
+ "hp": "127 (15d8 + 60)",
+ "speed": "30 ft., fly 40 ft.",
+ "str": "20",
+ "dex": "16",
+ "con": "18",
+ "int": "10",
+ "wis": "16",
+ "cha": "8",
+ "skill": [
+  "Athletics +8, Perception +9, Stealth +6"
+ ],
+ "immune": "lightning, poison, thunder",
+ "senses": "darkvision 60 ft.",
+ "passive": "19",
+ "languages": "Common, Draconic",
+ "cr": "8",
+ "trait": [
+  {
+   "name": "Flyby",
+   "text": [
+    " The ala doesn’t provoke an opportunity attack when it flies out of an enemy’s reach."
+   ]
+  },
+  {
+   "name": "Poison Flesh",
+   "text": [
+    " The ala’s poison infuses its flesh. A creature that makes a successful bite attack against an ala must make a DC 16 Constitution saving throw; if it fails, the creature takes 10 (3d6) poison damage.",
+    "Storm’s Strength. If an electrical storm is raging around an ala and its target, the saving throw against Lightning’s Kiss is made with disadvantage."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The ala makes two claw attacks or one claw and one bite attack."
+   ]
+  },
+  {
+   "name": "Bite",
+   "text": [
+    " Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 10 (1d10 + 5) piercing damage, and the target must succeed on a DC 16 saving throw or take 10 (3d6) poison damage."
+   ]
+  },
+  {
+   "name": "Claw",
+   "text": [
+    " Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) slashing damage."
+   ]
+  },
+  {
+   "name": "Lightning's Kiss (Recharge 5-6)",
+   "text": [
+    " Ranged Weapon Attack: +6 to hit, range 50 feet, one target. Hit: 28 (8d6) lightning damage, or half damage with a successful DC 16 Dexterity saving throw. Jagged bolts of lightning flash through and around the ala’s whirlwind. It can hurl this lightning with a sudden whipping motion of its tail."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Algorith",
+ "size": "M",
+ "type": "construct, ",
+ "alignment": "lawful neutral",
+ "ac": "18 (natural armor)",
+ "hp": "136 (16d8 + 64)",
+ "speed": "40 ft., fly 40 ft.",
+ "str": "21",
+ "dex": "14",
+ "con": "19",
+ "int": "13",
+ "wis": "16",
+ "cha": "18",
+ "save": "Dex +6, Con +8, Wis +7, Cha +8",
+ "skill": [
+  "Athletics +9, Insight +7, Investigation +5, Perception +7"
+ ],
+ "resist": "acid, cold, lightning",
+ "conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+ "senses": "darkvision 60 ft.",
+ "passive": "17",
+ "languages": "Common, Celestial, Draconic, Infernal",
+ "cr": "10",
+ "trait": [
+  {
+   "name": "Immutable Form",
+   "text": [
+    " The algorith is immune to any spell or effect that would alter its form."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    " The algorith’s innate spellcasting ability is Charisma (spell save DC 16). It can innately cast the following spells, requiring no material components:",
+    "At will: aid, blur, detect magic, dimension door",
+    "5/day: dispel magic",
+    "1/day: commune (5 questions), wall of force"
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The algorith makes two logic razor attacks."
+   ]
+  },
+  {
+   "name": "Logic Razor",
+   "text": [
+    " Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 31 (4d12 + 5) force damage."
+   ]
+  },
+  {
+   "name": "Cone of Negation (Recharge 5-6)",
+   "text": [
+    " An algorith can project a cone of null energy. Targets inside the 30 foot cone take 42 (12d6) force damage and suffer the effect of a dispel magic spell. A successful DC 16 Dexterity saving throw reduces the damage to half and negates the dispel magic effect on that target."
+   ]
+  },
+  {
+   "name": "Reality Bomb (5/Day)",
+   "text": [
+    " The algorith can summon forth a tiny rune of law and throw it as a weapon. Any creature within 30 feet of the square where the reality bomb lands takes 21 (6d6) force damage and is stunned until the start of the algorith’s next turn. A target that makes a successful DC 16 Dexterity saving throw takes half damage and isn’t stunned."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Alseid",
+ "size": "M",
+ "type": "monstrosity, tome of beasts",
+ "alignment": "chaotic neutral",
+ "ac": "14 (leather armor)",
+ "hp": "49 (9d8 + 9)",
+ "speed": "40 ft.",
+ "str": "13",
+ "dex": "17",
+ "con": "12",
+ "int": "8",
+ "wis": "16",
+ "cha": "8",
+ "skill": [
+  "Nature +3, Perception +5, Stealth +5, Survival +5"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "15",
+ "languages": "Common, Elvish, Sylvan",
+ "cr": "1/2",
+ "trait": [
+  {
+   "name": "Woodfriend",
+   "text": [
+    " When in a forest, alseid leave no tracks and automatically discern true north."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Spear",
+   "text": [
+    " Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+   ]
+  },
+  {
+   "name": "Shortbow",
+   "text": [
+    " Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 6 (1d6+3) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Alseid Grovekeeper",
+ "size": "M",
+ "type": "monstrosity, tome of beasts",
+ "alignment": "chaotic neutral",
+ "ac": "15 (studded leather Armor)",
+ "hp": "71 (13d8 + 13)",
+ "speed": "40 ft.",
+ "str": "13",
+ "dex": "17",
+ "con": "12",
+ "int": "8",
+ "wis": "16",
+ "cha": "8",
+ "skill": [
+  "Nature +3, Perception +5, Stealth +5, Survival +5"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "15",
+ "languages": "Common, Elvish, Sylvan",
+ "cr": "3",
+ "trait": [
+  {
+   "name": "Woodfriend",
+   "text": [
+    " When in a forest, alseid leave no tracks and automatically discern true north."
+   ]
+  },
+  {
+   "name": "Spellcasting",
+   "text": [
+    " The grovekeeper is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). It has the following druid spells prepared:",
+    "Cantrips (at will): druidcraft, guidance, produce flame, shillelagh",
+    "1st (4 slots): animal friendship, cure wounds, faerie fire",
+    "2nd (3 slots): animal messenger, heat metal, lesser restoration",
+    "3rd (2 slots): call lightning, dispel magic"
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Quarterstaff",
+   "text": [
+    " Melee Weapon Attack: +3 to hit (+5 with shillelagh), reach 5 ft., one creature.Hit: 4 (1d6 + 1) bludgeoning damage or 5 (1d8 + 1) bludgeoning damage if used in two hands, or 7 (1d8 + 3) bludgeoning damage with shillelagh."
+   ]
+  },
+  {
+   "name": "Shortbow",
+   "text": [
+    " Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 6 (1d6+3) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Amphiptere",
+ "size": "M",
+ "type": "beast, tome of beasts",
+ "alignment": "unaligned",
+ "ac": "15 (natural armor)",
+ "hp": "60 (8d8 + 24)",
+ "speed": "20 ft., climb 20 ft., fly 60 ft., swim 20 ft.",
+ "str": "11",
+ "dex": "18",
+ "con": "17",
+ "int": "2 (−4) 16",
+ "wis": "6 (−2)",
+ "skill": [
+  "Perception +5"
+ ],
+ "senses": "blindsight 10 ft., passive",
+ "languages": "—",
+ "cr": "3",
+ "trait": [
+  {
+   "name": "Flyby",
+   "text": [
+    " The amphiptere doesn’t provoke an opportunity attack when it flies out of an enemy’s reach."
+   ]
+  },
+  {
+   "name": "Swarming",
+   "text": [
+    " Up to two amphipteres can share the same space at the same time. The amphiptere has advantage on melee attack rolls if it is sharing its space with another amphiptere that isn’t incapacitated."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The amphiptere makes one bite attack and one stinger attack."
+   ]
+  },
+  {
+   "name": "Bite",
+   "text": [
+    " Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 7 (1d6 + 4) piercing damage. Stinger. Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 7 (1d6 + 4) piercing damage plus 10 (3d6) poison damage, and the target must make a successful DC 13 Constitution saving throw or be poisoned for 1 hour."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Andrenjinyi",
+ "size": "G",
+ "type": "celestial, tome of beasts",
+ "alignment": "neutral",
+ "ac": "18 (natural armor)",
+ "hp": "228 (13d20 + 91)",
+ "speed": "60 ft., burrow 20 ft., climb 20 ft., swim 60 ft.",
+ "str": "30",
+ "dex": "17",
+ "con": "25",
+ "int": "10",
+ "wis": "18",
+ "cha": "23",
+ "save": "Con +12, Wis +9, Cha +11",
+ "skill": [
+  "Arcana +5, Perception +9, Religion +5"
+ ],
+ "resist": "acid, cold, fire, lightning",
+ "immune": "psychic",
+ "senses": "darkvision 60 ft., tremorsense 120 ft., passive",
+ "languages": "Common, Celestial, Giant, Sylvan",
+ "cr": "15",
+ "trait": [
+  {
+   "name": "Amphibious",
+   "text": [
+    " The andrenjinyi can breathe air and water."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    " The andrenjinyi’s spellcasting ability is Charisma (spell save DC 19, +11 to hit with spell attacks). It can innately cast the following spells, requiring only verbal components:",
+    "At will: create water, speak with animals, stoneshape",
+    "3/day each: control weather, dispel magic, reincarnate",
+    "1/day each: blight, commune with nature, contagion, flesh to stone, plant growth"
+   ]
+  },
+  {
+   "name": "Magic Resistance",
+   "text": [
+    " The andrenjinyi has advantage on saving throws against spells and other magical effects."
+   ]
+  },
+  {
+   "name": "Magic Weapons",
+   "text": [
+    " The andrenjinyi’s weapon attacks are magical."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The andrenjinyi makes two attacks, one with its bite and one with its constriction. If both attacks hit the same target, then the target is Swallowed Whole."
+   ]
+  },
+  {
+   "name": "Bite",
+   "text": [
+    " Melee Weapon Attack: +15 to hit, reach 20 ft., one target. Hit: 36 (4d12 + 10) piercing damage."
+   ]
+  },
+  {
+   "name": "Constrict",
+   "text": [
+    " Melee Weapon Attack: +15 to hit, reach 5 ft., one target. Hit: 36 (4d12 + 10) bludgeoning damage, and the target is grappled (escape DC 20). Until this grapple ends the target is restrained, and the andrenjinyi can’t constrict another target."
+   ]
+  },
+  {
+   "name": "Rainbow Arch",
+   "text": [
+    " The andrenjinyi can instantaneously teleport between sources of fresh water within 1 mile as an action. It can’t move normally or take any other action on the turn when it uses this power. When this power is activated, a rainbow manifests between the origin and destination, lasting for 1 minute."
+   ]
+  },
+  {
+   "name": "Swallow Whole",
+   "text": [
+    " If the bite and constrict attacks hit the same target in one turn, the creature is swallowed whole. The target is blinded and restrained, and has total cover against attacks and other effects outside the andrenjinyi. The target takes no damage inside the andrenjinyi. The andrenjinyi can have three Medium-sized creatures or four Small-sized creatures swallowed at a time. If the andrenjinyi takes 20 damage or more in a single turn from a swallowed creature, the andrenjinyi must succeed on a DC 18 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 5 feet of the andrenjinyi. If the andrenjinyi is slain, a swallowed creature is no longer restrained by it and can escape from the andrenjinyi by using 15 feet of movement, exiting prone. The andrenjinyi can regurgitate swallowed creatures as a free action."
+   ]
+  },
+  {
+   "name": "Transmuting Gullet",
+   "text": [
+    " When a creature is swallowed by an andrenjinyi, it must make a successful DC 19 Wisdom saving throw each round at the end of its turn or be affected by true polymorph into a new form chosen by the andrenjinyi. The effect is permanent until dispelled or ended with a wish or comparable magic."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Angatra",
+ "size": "M",
+ "type": "undead, tome of beasts",
+ "alignment": "neutral evil",
+ "ac": "17 (natural armor)",
+ "hp": "85 (10d8 + 40)",
+ "speed": "50 ft.",
+ "str": "14",
+ "dex": "20",
+ "con": "18",
+ "int": "8",
+ "wis": "12",
+ "cha": "15",
+ "skill": [
+  "Perception +4, Stealth +8"
+ ],
+ "resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical weapons",
+ "immune": "poison",
+ "conditionImmune": "charmed, exhaustion, frightened, poisoned",
+ "senses": "darkvision 60 ft.",
+ "passive": "14",
+ "languages": "all languages it knew in life",
+ "cr": "6",
+ "trait": [
+  {
+   "name": "Agonizing Gaze",
+   "text": [
+    " When a creature that can see the angatra’s eyes starts its turn within 30 feet of the angatra, it must make a DC 13 Charisma saving throw if the angatra isn’t incapacitated and can see the creature. On a failed saving throw, the creature has its pain threshold lowered, so that it becomes vulnerable to all damage types until the end of its next turn. Unless it’s surprised, a creature can avoid the saving throw by averting its eyes at the start of its turn. A creature that averts its eyes can’t see the angatra for one full round, when it chooses anew whether to avert its eyes again. If the creature looks at the angatra in the meantime, it must immediately make the save."
+   ]
+  },
+  {
+   "name": "Ancestral Wrath",
+   "text": [
+    " The angatra immediately recognizes any individual that is descended from its tribe. It has advantage on attack rolls against such creatures, and those creatures have disadvantage on saving throws against the angatra’s traits and attacks."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack: The angatra makes two attacks with its claws",
+   "text": [
+    ""
+   ]
+  },
+  {
+   "name": "Claw",
+   "text": [
+    " Melee Weapon Attack: +8 to hit, reach 5 ft., one creature. Hit: 10 (2d4 + 5) piercing damage, and the creature must succeed on a DC 15 Constitution saving throw or be paralyzed by pain until the end of its next turn."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Chained Angel",
+ "size": "M",
+ "type": "celestial, tome of beasts",
+ "alignment": "neutral evil",
+ "ac": "16 (natural armor)",
+ "hp": "88 (16d8 + 16)",
+ "speed": "30 ft., fly 60 ft.",
+ "str": "18",
+ "dex": "16",
+ "con": "12",
+ "int": "12",
+ "wis": "18",
+ "cha": "20",
+ "save": "Dex +6, Wis+7, Cha +8",
+ "skill": [
+  "Perception +7"
+ ],
+ "senses": "darkvision 200 ft.",
+ "passive": "17",
+ "resist": "piercing",
+ "immune": "fire, radiant",
+ "languages": "Common, Celestial, Infernal",
+ "cr": "8",
+ "trait": [
+  {
+   "name": "Dark Halo",
+   "text": [
+    " A chained angel is immune to direct damage spells from divine casters."
+   ]
+  },
+  {
+   "name": "Redemption",
+   "text": [
+    " Any caster brave enough to cast a knock spell on a chained angel can remove the creature’s shackles—but this always exposes the caster to an immediate fiery greatsword attack as a reaction. If the caster survives that attack, the angel makes an immediate DC 20 Wisdom saving throw; if it succeeds, the angel’s chains fall away and it is restored to its senses and to a Good alignment. If the saving throw fails, any further attempts to cast knock on the angel’s chains fail automatically for one week."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    " The chained angel makes two fiery greatsword attacks."
+   ]
+  },
+  {
+   "name": "Fiery Greatsword",
+   "text": [
+    " Melee Weapon Attack. +7 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage plus 16 (3d10) fire damage."
+   ]
+  },
+  {
+   "name": "Fallen Glory (Recharge 5-6)",
+   "text": [
+    " Ranged Spell Attack. All creatures within 50 feet of the chained angel and in its line of sight take 19 (3d12) radiant damage and are knocked prone, or take half damage and aren’t knocked prone with a successful DC 15 Strength saving throw."
+   ]
+  }
+ ],
+ "reaction": [
+  {
+   "name": "Fiendish Cunning",
+   "text": [
+    " A chained angel can counter and destroy the ongoing effect of one divine spell each round. This functions as a counterspell with +7 spellcasting ability."
+   ]
+  }
+ ],
+ "legendary": []
+}
+);
