@@ -269,7 +269,7 @@ td.feature p {
 
 td.features {
 	max-width: 100%;
-	white-space: nowrap;
+	white-space: pre-wrap;
 }
 
 #classtable .newfeature {
@@ -319,7 +319,7 @@ div#subclasses span.active {
 }
 
 .featurebuffer {
-	width: 100%;
+	width: auto;
 }
 
 </style>
@@ -416,7 +416,7 @@ function loadspells() {
 		if (!$("div#subclasses > span:contains("+(decodeURIComponent(window.location.hash).split(/\,/)[1])+")").length) {
 			window.location.hash = window.location.hash.replace(/\,.*/g,",");
 		}
-		
+
 		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Classes";
 	});
 
