@@ -115,7 +115,7 @@ function loadparser() {
 				stats.legendary = [];
 
 				function moveon(cur) {
-					return (!curline.indexOf("ACTIONS") || !curline.indexOf("LEGENDARY ACTIONS") || !curline.indexOf("REACTIONS"))
+					return (!curline.toUpperCase().indexOf("ACTIONS") || !curline.toUpperCase().indexOf("LEGENDARY ACTIONS") || !curline.toUpperCase().indexOf("REACTIONS"))
 				}
 
 				var curtrait = {};
@@ -130,9 +130,9 @@ function loadparser() {
 				while (i < statblock.length) {
 					if (moveon(curline)) {
 						ontraits = false;
-						onactions = !curline.indexOf("ACTIONS")
-						onreactions = !curline.indexOf("REACTIONS")
-						onlegendaries = !curline.indexOf("LEGENDARY ACTIONS")
+						onactions = !curline.toUpperCase().indexOf("ACTIONS")
+						onreactions = !curline.toUpperCase().indexOf("REACTIONS")
+						onlegendaries = !curline.toUpperCase().indexOf("LEGENDARY ACTIONS")
 						onlegendarydescription = onlegendaries;
 
 						i++;
@@ -156,7 +156,7 @@ function loadparser() {
 					curline = statblock[i];
 
 					// get paragraphs
-					while (curline && curline.match(/^([A-Zot][a-z\']+( \(.*\)| )?)+(\.|\!)+/g) === null && !moveon(curline)) {
+					while (curline && curline.match(/^([A-Zot][a-z\'\’\`]+( \(.*\)| )?)+(\.|\!)+/g) === null && !moveon(curline)) {
 						curtrait.text.push(curline);
 						i++;
 						curline = statblock[i];
