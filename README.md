@@ -4,5 +4,4 @@
 ## To-Do
 - Continue Tome of Beasts entries.
 - Clean up filtering interface.
-- Add Aasimar and Eladrin from DMG.
 - Plan layout of upcoming Mystic disciplines (spells? Special classes.html layout?)
