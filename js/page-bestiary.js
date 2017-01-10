@@ -91,7 +91,7 @@ function loadmonsters() {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
 		}
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
-			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+parsesource(source)+"</option>")
+			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+origsource+"</option>")
 		}
 		if (!$("select.crfilter option[value='"+cr+"']").length) {
 			$("select.crfilter").append("<option title=\""+cr+"\" value='"+cr+"'>"+cr+"</option>")
@@ -136,11 +136,12 @@ function loadmonsters() {
 		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
 	} else $("ul.list li:eq(0)").click();
 
+	// filtering
 	$("form#filtertools select").change(function(){
 		var typefilter = "Type: "+$("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val();
 		var crfilter = "CR "+$("select.crfilter").val()+" ";
-		var thirdpartyfilter = $("select.3ppfilter").val()+" ";
+		var thirdpartyfilter = $("select.3ppfilter").val();
 
 		monlist.filter(function(item) {
 			var righttype = false;
@@ -151,7 +152,9 @@ function loadmonsters() {
 			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
 			if (crfilter === "CR All " || item.values().cr === crfilter) rightcr = true;
-			if (thirdpartyfilter === "All " || item.values().source.indexOf("3pp") === -1) rightparty = true;
+			if (thirdpartyfilter === "All") rightparty = true;
+			if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
+			if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
 			if (righttype && rightsource && rightcr && rightparty) return true;
 			return false;
 		});

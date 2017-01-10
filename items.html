@@ -49,24 +49,22 @@ form#filtertools {
 	font-size: 0.8em;
 }
 
+
 form#filtertools select {
-	displkay: inline-block;
-	margin: 2px;
+	margin: 1px;
 }
 
 .sortlabel {
-	display: inline-block;
-	width: 37%;
+	display: block;
 	float: right;
 	text-align: right;
+	padding: 1px;
 }
 
 .sortlabel span {
-	display: inline-block;
 	background: lightgrey;
 	border-radius: 3px;
 	padding: 2px;
-	margin: 1px;
 	text-align: right;
 }
 
@@ -261,12 +259,6 @@ td#source {
 						<input type="search" id="search" class="search" placeholder="Find item...">
 					</h3>
 					<form id="filtertools">
-						<span class="sortlabel">
-							<span class="sort" sort="name" sortby="asc">Name</span>
-							<span class="sort" sort="source" sortby="asc">Source</span>
-							<span class="sort" sort="rarity" sortby="asc">Rarity</span>
-							<span class="sort" sort="type" sortby="asc">Type</span>
-						</span>
 						<select class="sourcefilter">
 							<option value="All">All Sources</option>
 						</select>
@@ -284,6 +276,12 @@ td#source {
 						<option value="Legendary">Legendary</option>
 						<option value="Artifact">Artifact</option>
 					</select>
+						<span class="sortlabel">
+							<span class="sort" sort="name" sortby="asc">Name</span>
+							<span class="sort" sort="source" sortby="asc">Source</span>
+							<span class="sort" sort="rarity" sortby="asc">Rarity</span>
+							<span class="sort" sort="type" sortby="asc">Type</span>
+						</span>
 				</form>
 				<h3 data-toggle="mundane">Mundane</h3>
 				<ul class="list mundane">

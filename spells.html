@@ -48,12 +48,15 @@ form#filtertools {
 	font-size: 0.8em;
 }
 
+form#filtertools select {
+	margin: 1px;
+}
 
 .sortlabel {
-	display: inline-block;
-	width: 49%;
+	display: block;
 	float: right;
 	text-align: right;
+	padding: 1px;
 }
 
 .sortlabel span {
@@ -68,7 +71,6 @@ form#filtertools {
 	color: white;
 	cursor: pointer;
 }
-
 
 ul.list {
 	list-style-type: none;
@@ -240,11 +242,6 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 			<div class="col-sm-6" id="listcontainer">
 				<h3><input type="search" id="search" class="search" placeholder="Find spell..."></h3>
 				<form id="filtertools">
-					<span class="sortlabel">
-						<span class="sort" data-sort="name">Name</span>
-						<span class="sort" data-sort="level">Level</span>
-						<span class="sort" data-sort="school">School</span>
-					</span>
 					<select class="levelfilter">
 						<option value="All">All Levels</option>
 					</select>
@@ -258,6 +255,11 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 					<select class="classfilter">
 						<option value="All">All Classes</option>
 					</select>
+						<span class="sortlabel">
+							<span class="sort" data-sort="name">Name</span>
+							<span class="sort" data-sort="level">Level</span>
+							<span class="sort" data-sort="school">School</span>
+						</span>
 				</form>
 
 				<ul class="list spells" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">

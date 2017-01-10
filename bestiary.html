@@ -51,11 +51,15 @@ form#filtertools {
 	font-size: 0.8em;
 }
 
+form#filtertools select {
+	margin: 1px;
+}
+
 .sortlabel {
-	display: inline-block;
-	width: 49%;
+	display: block;
 	float: right;
 	text-align: right;
+	padding: 1px;
 }
 
 .sortlabel span {
@@ -298,25 +302,26 @@ tr td > p.spells ~ p.spells{
 				<h3 style="vertical-align: top;"><input type="search" id="search" class="search" placeholder="Find monster..."></h3>
 
 				<form id="filtertools" autocomplete="off">
-					<span class="sortlabel">
-						<span class="sort" sort="name" sortby="asc">Name</span>
-						<span class="sort" sort="source" sortby="asc">Source</span>
-						<span class="sort" sort="type" sortby="asc">Type</span>
-						<span class="sort" sort="cr" sortby="asc">CR</span>
-					</span>
 					<select class="sourcefilter">
 						<option value="All">All Sources</option>
-					</select>
-					<select class="typefilter">
-						<option value="All">All Types</option>
-					</select>
-					<select class="crfilter">
-						<option value="All">All CRs</option>
 					</select>
 					<select class="3ppfilter">
 						<option value="All">Third Party</option>
 						<option value="None">No Third Party</option>
+						<option value="Only">Third Party Only</option>
 					</select>
+					<select class="crfilter">
+						<option value="All">All CRs</option>
+					</select>
+					<select class="typefilter">
+						<option value="All">All Types</option>
+					</select>
+						<span class="sortlabel">
+							<span class="sort" sort="name" sortby="asc">Name</span>
+							<span class="sort" sort="source" sortby="asc">Source</span>
+							<span class="sort" sort="type" sortby="asc">Type</span>
+							<span class="sort" sort="cr" sortby="asc">CR</span>
+						</span>
 				</form>
 
 				<div style="height: 100%; max-height: 600px; overflow-y: scroll; overflow-x: hidden; padding-top: 1em; clear: both;">
