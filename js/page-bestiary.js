@@ -160,13 +160,22 @@ function loadmonsters() {
 		});
 	});
 
-	$("#filtertools span.sort").on("click", function() {
+	$("#filtertools button.sort").on("click", function() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
 		} else $(this).attr("sortby", "asc");
 		monlist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortmonsters });
 	});
 
+		// reset button
+		$("button#reset").click(function() {
+			$("#filtertools select").val("All");
+			$("#search").val("");
+			monlist.search("");
+			monlist.filter();
+			monlist.sort("name");
+			monlist.update();
+		})
 }
 
 function asc_sort(a, b){

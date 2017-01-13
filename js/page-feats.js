@@ -50,6 +50,17 @@ function loadfeats() {
 		if (window.location.hash.length) {
 			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
 		} else $("ul.list li:eq(0)").click();
+
+			// reset button
+			$("button#reset").click(function() {
+				$("#filtertools select").val("All");
+				$("#search").val("");
+				featslist.search("");
+				featslist.filter();
+				featslist.sort("name");
+				featslist.update();
+			})
+
 	}
 
 	function usefeat (id) {

@@ -47,8 +47,8 @@ input.search {
 }
 
 .sortlabel {
-	display: inline-block;
-	width: 37%;
+	display: block;
+	padding: 1px;
 	float: right;
 	text-align: right;
 }
@@ -76,6 +76,7 @@ ul.list {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	padding-top: 1em;
+	clear: both;
 }
 
 ul.list li {
@@ -238,12 +239,15 @@ table#stats tr.trait td p:first-of-type {
 
 		<div class="row">
 			<div class="col-sm-6" id="listcontainer">
-				<h3>
-					<input type="search" id="search" class="search" placeholder="Find race...">
-					<span class="sortlabel">
-						<span class="sort" data-sort="name">Name</span>
+					<div class="input-group">
+						<input type="search" id="search" class="search form-control" placeholder="Find race...">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="reset">Reset</button>
+						</span>
+					</div>
+					<span class="sortlabel btn-group">
+						<button class="sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
 					</span>
-				</h3>
 				<ul class="list races" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 
 				</ul>
@@ -272,7 +276,7 @@ table#stats tr.trait td p:first-of-type {
 		</div>
 	</main>
 	<footer class="container">
-		
+
 	</footer>
 
 

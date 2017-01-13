@@ -56,6 +56,16 @@ function loadraces() {
 	if (window.location.hash.length) {
 		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
 	} else $("ul.list li:eq(0)").click();
+
+	// reset button
+	$("button#reset").click(function() {
+		$("#filtertools select").val("All");
+		$("#search").val("");
+		racelist.search("");
+		racelist.filter();
+		racelist.sort("name");
+		racelist.update();
+	})
 }
 
 function userace (id) {

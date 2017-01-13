@@ -59,19 +59,6 @@ form#filtertools select {
 	padding: 1px;
 }
 
-.sortlabel span {
-	background: lightgrey;
-	border-radius: 3px;
-	padding: 2px;
-	text-align: right;
-}
-
-.sortlabel:hover span:hover {
-	background: grey;
-	color: white;
-	cursor: pointer;
-}
-
 ul.list {
 	list-style-type: none;
 	padding-left: 0px;
@@ -81,6 +68,7 @@ ul.list {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	padding-top: 1em;
+	clear: both;
 }
 
 ul.list li {
@@ -240,7 +228,12 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 
 		<div class="row">
 			<div class="col-sm-6" id="listcontainer">
-				<h3><input type="search" id="search" class="search" placeholder="Find spell..."></h3>
+					<div class="input-group">
+						<input type="search" id="search" class="search form-control" placeholder="Find spell...">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="reset">Reset</button>
+						</span>
+					</div>
 				<form id="filtertools">
 					<select class="levelfilter">
 						<option value="All">All Levels</option>
@@ -255,11 +248,11 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 					<select class="classfilter">
 						<option value="All">All Classes</option>
 					</select>
-						<span class="sortlabel">
-							<span class="sort" data-sort="name">Name</span>
-							<span class="sort" data-sort="level">Level</span>
-							<span class="sort" data-sort="school">School</span>
-						</span>
+					<span class="sortlabel btn-group">
+						<button class="sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+						<button class="sort btn btn-default btn-xs" type="button" data-sort="level">Level</button>
+						<button class="sort btn btn-default btn-xs" type="button" data-sort="school">School</button>
+					</span>
 				</form>
 
 				<ul class="list spells" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">

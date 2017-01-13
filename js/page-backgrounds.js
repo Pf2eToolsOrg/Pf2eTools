@@ -54,6 +54,14 @@ function loadbackgrounds () {
 	if (window.location.hash.length) {
 		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
 	} else $("ul.list li:eq(0)").click();
+
+	// reset button
+	$("button#reset").click(function() {
+		$("#search").val("");
+		backgroundslist.search("");
+		backgroundslist.sort("name");
+		backgroundslist.update();
+	})
 }
 
 function usebackground (id) {

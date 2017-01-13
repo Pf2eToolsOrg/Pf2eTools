@@ -141,6 +141,43 @@ function loadspells() {
 				return false;
 			});
 		});
+
+		$("#filtertools button.sort").on("click", function() {
+			if ($(this).attr("sortby") === "asc") {
+				$(this).attr("sortby", "desc");
+			} else $(this).attr("sortby", "asc");
+			spellslist.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortspells });
+		});
+
+			// reset button
+			$("button#reset").click(function() {
+				$("#filtertools select").val("All");
+				$("#search").val("");
+				spellslist.search("");
+				spellslist.filter();
+				spellslist.sort("name");
+				spellslist.update();
+			})
+}
+
+function sortspells(a, b, o) {
+	if (o.valueName === "name") {
+		return ((b._values.name.toLowerCase()) > (a._values.name.toLowerCase())) ? 1 : -1;
+	}
+
+	if (o.valueName === "school") {
+		return ((b._values.school.toLowerCase()) > (a._values.school.toLowerCase())) ? 1 : -1;
+	}
+
+
+	if (o.valueName === "level") {
+		var alevel = a._values.level.replace(" ", "").replace("cantrip", "0")[0];
+		var blevel = b._values.level.replace(" ", "").replace("cantrip", "0")[0];
+		return (parseInt(blevel) > parseInt(alevel)) ? 1 : -1;
+	}
+
+	return 1;
+
 }
 
 function usespell (id) {

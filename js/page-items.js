@@ -182,7 +182,7 @@ function loaditems() {
 	});
 
 
-	$("#itemcontainer span.sort").on("click", function() {
+	$("#filtertools button.sort").on("click", function() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
 		} else $(this).attr("sortby", "asc");
@@ -205,6 +205,20 @@ function loaditems() {
 		})
 
 	})
+
+		// reset button
+		$("button#reset").click(function() {
+			$("#filtertools select").val("All");
+			$("#search").val("");
+			magiclist.search("");
+			magiclist.filter();
+			magiclist.sort("name");
+			magiclist.update();
+			mundanelist.search("");
+			mundanelist.filter();
+			mundanelist.sort("name");
+			mundanelist.update();
+		})
 }
 
 function asc_sort(a, b){

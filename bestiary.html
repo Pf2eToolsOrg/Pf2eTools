@@ -299,9 +299,14 @@ tr td > p.spells ~ p.spells{
 
 		<div class="row">
 			<div class="col-sm-5" id="monstercontainer">
-				<h3 style="vertical-align: top;"><input type="search" id="search" class="search" placeholder="Find monster..."></h3>
+				<div class="input-group" style="vertical-align: top;">
+					<input type="search" id="search" class="search form-control" placeholder="Find monster...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="reset">Reset</button>
+					</span>
+				</div>
 
-				<form id="filtertools" autocomplete="off">
+				<form id="filtertools" class="form-group" autocomplete="off">
 					<select class="sourcefilter">
 						<option value="All">All Sources</option>
 					</select>
@@ -316,11 +321,11 @@ tr td > p.spells ~ p.spells{
 					<select class="typefilter">
 						<option value="All">All Types</option>
 					</select>
-						<span class="sortlabel">
-							<span class="sort" sort="name" sortby="asc">Name</span>
-							<span class="sort" sort="source" sortby="asc">Source</span>
-							<span class="sort" sort="type" sortby="asc">Type</span>
-							<span class="sort" sort="cr" sortby="asc">CR</span>
+						<span class="sortlabel btn-group">
+							<button class="sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
+							<button class="sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
+							<button class="sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
+							<button class="sort btn btn-default btn-xs" type="button" sort="cr" sortby="asc">CR</button>
 						</span>
 				</form>
 

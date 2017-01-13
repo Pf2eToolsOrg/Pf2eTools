@@ -102,6 +102,15 @@ function loadspells() {
 		}
 	} else $("ul.list li:eq(0)").click();
 
+	// reset button
+	$("button#reset").click(function() {
+		$("#filtertools select").val("All");
+		$("#search").val("");
+		classlist.search("");
+		classlist.filter();
+		classlist.sort("name");
+		classlist.update();
+	})
 }
 
 function useclass (id) {

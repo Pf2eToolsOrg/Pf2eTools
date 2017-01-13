@@ -42,7 +42,6 @@ footer {
 }
 
 input.search {
-	width: 100%;
 }
 
 form#filtertools {
@@ -52,9 +51,9 @@ form#filtertools {
 
 .sortlabel {
 	display: inline-block;
-	width: 49%;
 	float: right;
 	text-align: right;
+	padding: 1px;
 }
 
 .sortlabel span {
@@ -349,10 +348,15 @@ div#subclasses span.active {
 
 		<div class="row">
 			<div class="col-sm-3" id="listcontainer">
-				<h3><input type="search" id="search" class="search" placeholder="Find class..."></h3>
+				<div class="input-group">
+					<input type="search" id="search" class="search form-control" placeholder="Find class...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="reset">Reset</button>
+					</span>
+				</div>
 				<form id="filtertools">
-					<span class="sortlabel">
-						<span class="sort" data-sort="name">Name</span>
+					<span class="sortlabel btn-group">
+						<button class="sort btn btn-default btn-xs" type="button" data-sort="name" sortby="asc">Name</button>
 					</span>
 				</form>
 
