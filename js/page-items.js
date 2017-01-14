@@ -154,7 +154,7 @@ function loaditems() {
 
 	$("form#filtertools select").change(function(){
 		var typefilter = "Type: "+$("select.typefilter").val();
-		var sourcefilter = $("select.sourcefilter").val();
+		var sourcefilter = $("select.sourcefilter").val().replace(" ","");
 		var rarityfilter = $("select.rarityfilter").val();
 
 		mundanelist.filter(function(item) {
@@ -162,7 +162,7 @@ function loaditems() {
 			var rightsource = false;
 			var rightrarity = false;
 			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
-			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
+			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
 			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
 			return false;
@@ -173,7 +173,7 @@ function loaditems() {
 			var rightsource = false;
 			var rightrarity = false;
 			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
-			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
+			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
 			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
 			return false;
