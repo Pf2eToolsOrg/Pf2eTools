@@ -176,8 +176,23 @@ function loadmonsters() {
 			monlist.sort("name");
 			monlist.update();
 		})
+
+		// collapse/expand button
+		$("button#expandcollapse").click(function() {
+			$("main .row:eq(0) > div:eq(0)").toggleClass("col-sm-5").toggle();
+				$("main .row:eq(0) > div:eq(1)").toggleClass("col-sm-12").toggleClass("col-sm-7");
+ 			/*
+				var i = $("main .row:eq(0) > div:eq(1) > div:eq(0)");
+				if (i.css("maxHeight") === "100%") {
+					i.css("maxHeight", "565px");
+				} else i.css("maxHeight", "100%");
+			*/
+				return;
+		})
 }
 
+
+// sorting for form filtering
 function asc_sort(a, b){
 	return ($(b).text()) < ($(a).text()) ? 1 : -1;
 }
@@ -217,6 +232,7 @@ function sortmonsters(a, b, o) {
 
 }
 
+// load selected monster stat block
 function usemonster (id) {
 	$("#stats").html(tabledefault);
 	monsters = monsterdata.compendium.monster;
