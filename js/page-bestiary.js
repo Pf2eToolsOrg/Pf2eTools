@@ -421,7 +421,7 @@ function usemonster (id) {
 	$("tr#reactions").hide();
 	$("tr.reaction").remove();
 
-	if (reactions && reactions.length) {
+	if (reactions && (reactions.text || reactions.length)) {
 
 		$("tr#reactions").show();
 
