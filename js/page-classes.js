@@ -215,7 +215,6 @@ function useclass (id) {
 					$("th.pb").after("<th class='sorcerypoints newfeature'>Sorcery Points</th>");
 					$("td.pb").after("<td class='sorcerypoints newfeature'></td>");
 					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
-					console.log($("#classtable td.border").attr("colspan"))
 					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
 				}
 				$("tr#level"+curlevel._level+" td.sorcerypoints").html(curlevel.sorcerypoints);
