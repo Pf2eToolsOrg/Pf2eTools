@@ -30,9 +30,9 @@ function parsesource (src) {
 function parsetype (type) {
 	if (type === "G") return "Adventuring Gear"
 	if (type === "SCF") return "Spellcasting Focus"
-	if (type === "AT") return "Artisan Tools"
-	if (type === "T") return "Tools "
-	if (type === "GS") return "Gaming Sets"
+	if (type === "AT") return "Artisan Tool"
+	if (type === "T") return "Tool"
+	if (type === "GS") return "Gaming Set"
 	if (type === "INS") return "Instrument"
 	if (type === "A") return "Ammunition"
 	if (type === "M") return "Melee Weapon"
@@ -48,6 +48,8 @@ function parsetype (type) {
 	if (type === "RG") return "Ring"
 	if (type === "WD") return "Wand"
 	if (type === "SC") return "Scroll"
+	if (type === "EXP") return "Explosive"
+	if (type === "GUN") return "Firearm"
 	return "n/a"
 }
 
@@ -55,6 +57,8 @@ function parsedamagetype (damagetype) {
 	if (damagetype === "B") return "bludgeoning"
 	if (damagetype === "P") return "piercing"
 	if (damagetype === "S") return "slashing"
+	if (damagetype === "N") return "necrotic"
+	if (damagetype === "R") return "radiant"
 	return false;
 }
 
@@ -69,6 +73,8 @@ function parseproperty (property) {
 	if (property === "2H") return "two-handed"
 	if (property === "V") return "versatile"
 	if (property === "S") return "special"
+	if (property === "RLD") return "reload"
+	if (property === "BF") return "burst fire"
 	return "n/a"
 }
 
@@ -288,7 +294,7 @@ function useitem (id) {
 	$("span#damage").html("");
 	$("span#damagetype").html("");
 
-	if (curitem.type === "M" || curitem.type == "R") {
+	if (curitem.type === "M" || curitem.type == "R" || curitem.type === "GUN") {
 		$("span#damage").html(curitem.dmg1);
 		$("span#damagetype").html(parsedamagetype(curitem.dmgType));
 	}
@@ -307,6 +313,7 @@ function useitem (id) {
 			a = parseproperty (a);
 			if (b === "V") a = a + " (" + curitem.dmg2 + ")";
 			if (b === "T" || b === "A") a = a + " (" + curitem.range + "ft.)";
+			if (b === "RLD") a = a + " (" + curitem.reload + " shots)";
 			if (i > 0) a = ", "+a;
 			$("span#properties").append(a);
 		}
