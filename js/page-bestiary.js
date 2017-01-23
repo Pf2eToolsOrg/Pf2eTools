@@ -87,7 +87,7 @@ function loadmonsters() {
 
 		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name'>"+name+"</span> <span title=\""+origsource+"\" class='source source"+source+"'>("+source+")</span> <span class='type'>Type: "+type+"</span> <span class='cr'>CR "+cr+" </span></li>");
 
-		if (!$("select.typefilter:contains('"+type+"')").length) {
+		if (!$("select.typefilter:contains('"+type+"')").length && !$("select.typefilter:contains('"+type+" \\(')").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
 		}
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
@@ -98,6 +98,9 @@ function loadmonsters() {
 		}
 	}
 
+	$("select.typefilter").append("<option value='fiend'>fiend</option>")
+	$("select.typefilter").append("<option value='giant'>giant</option>")
+	$("select.typefilter").append("<option value='humanoid'>humanoid</option>")
 	$("select.typefilter option").sort(asc_sort).appendTo('select.typefilter');
 	$("select.typefilter").val("All");
 
