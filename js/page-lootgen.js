@@ -158,7 +158,7 @@ function rollLoot(cr,hoard=false) {
         var roll = droll.roll(curamount).total;
         var magicitems = [];
 
-        $("#output ul:eq(0)").append("<li>x"+roll+" magic items from table "+curtype+":<ul></ul></li>");
+        $("#output ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
 
         for (var i = 0; i < roll; i++) {
 
