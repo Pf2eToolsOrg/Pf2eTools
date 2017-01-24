@@ -11,6 +11,11 @@ window.onload = loadloot;
 
 function loadloot() {
 
+  // clear
+  $("button#clear").click(function() {
+      $("#output").html("");
+  });
+
   // loot rolling button
   $("button#genloot").click(function() {
     rollLoot($("#cr").val(), $("#hoard").prop('checked'));
