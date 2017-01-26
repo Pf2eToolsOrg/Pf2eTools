@@ -127,6 +127,20 @@ function rollLoot(cr,hoard=false) {
       for (var i = 0; i < gems.length; i++) {
         $("#output ul:eq(0) ul:eq(0)").append('<li>'+gems[i]+'</li>');
       }
+
+      $("#output ul:eq(0) ul:eq(0) li").each(function() {
+        var curitem = this;
+        var curamount = 1;
+        $("#output ul:eq(0) ul:eq(0) li").each(function() {
+          if ($(this).text() === $(curitem).text() && this !== curitem) {
+            $(this).remove();
+            curamount++;
+          }
+        })
+        if (curamount > 1) {
+          $(curitem).prepend ("x"+curamount+" ");
+        }
+      })
     }
 
     // magic items
@@ -158,8 +172,8 @@ function rollLoot(cr,hoard=false) {
         var roll = droll.roll(curamount).total;
         var magicitems = [];
 
-        $("#output ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
-
+    //    $("#output ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
+      $("#output ul:eq(0) > li").last().append("<hr>");
         for (var i = 0; i < roll; i++) {
 
           var curmagicitem = null;
@@ -181,8 +195,24 @@ function rollLoot(cr,hoard=false) {
 
 
         for (var i = 0; i < magicitems.length; i++) {
-          $("#output ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
+        //  $("#output ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
+          $("#output ul:eq(0)").append('<li class="magicitem">'+magicitems[i]+'</li>');
         }
+
+
+              $("#output ul:eq(0) > li.magicitem").each(function() {
+                var curitem = this;
+                var curamount = 1;
+                $("#output ul:eq(0) > li.magicitem").each(function() {
+                  if ($(this).text() === $(curitem).text() && this !== curitem) {
+                    $(this).remove();
+                    curamount++;
+                  }
+                })
+                if (curamount > 1) {
+                  $(curitem).prepend ("x"+curamount+" ");
+                }
+              })
 
       }
     }
@@ -190,6 +220,8 @@ function rollLoot(cr,hoard=false) {
       for (var i = 0; i < treasure.length; i++) {
         $("#output ul:eq(0)").prepend('<li>'+treasure[i]+'</li>');
       }
+
+
     }
     return;
   }
