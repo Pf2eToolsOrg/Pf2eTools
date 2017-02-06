@@ -50,6 +50,8 @@ function parsetype (type) {
 	if (type === "SC") return "Scroll"
 	if (type === "EXP") return "Explosive"
 	if (type === "GUN") return "Firearm"
+	if (type === "SIMW") return "Simple Weapon"
+	if (type === "MARW") return "Martial Weapon"
 	return "n/a"
 }
 
@@ -97,9 +99,15 @@ function loaditems() {
 		var curitem = itemlist[i];
 		var name = curitem.name;
 
-		var type = curitem.type;
-		if (type === "$") continue;
-		type = parsetype (type);
+		var type = curitem.type.split(",");
+		if (type[0] === "$") continue;
+
+		for (var j = 0; j < type.length; j++) {
+			type[j] = parsetype (type[j]);
+				if (!$("select.typefilter:contains(\""+type[j]+"\")").length) {
+					$("select.typefilter").append("<option value='"+type[j]+"'>"+type[j]+"</option>")
+				}
+		}
 
 		var source = curitem.text[curitem.text.length-1].split(",")[0].split(":")[1];
 
@@ -110,16 +118,13 @@ function loaditems() {
 
 		var destinationlist = "ul.list.mundane";
 		curitemstring = JSON.stringify (curitem)
-		if (curitem.rarity || curitem.type === "W" || curitemstring.search(/((magic)|(Devastation Orb)|(Storm Boomerang)|(\s?Spiked Armor\s?)|(Requires Attunement)|(Bottled Breath))/g) !== -1) {
+		if (curitem.rarity || type.indexOf("W") !== -1 || curitemstring.search(/((magic)|(Devastation Orb)|(Storm Boomerang)|(\s?Spiked Armor\s?)|(Requires Attunement)|(Bottled Breath))/g) !== -1) {
 			destinationlist = "ul.list.magic";
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).replace("'","%27")+"\"><span class='name'>"+name+"</span> <span class='type'>Type: "+type+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
+		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).replace("'","%27")+"\"><span class='name'>"+name+"</span> <span class='type'>Type: "+type.join(", ")+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
 
-		if (!$("select.typefilter:contains(\""+type+"\")").length) {
-			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
-		}
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
 			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+parsesource(source)+"</option>")
 		}
@@ -159,7 +164,7 @@ function loaditems() {
 	} else $("ul.list li:eq(0)").click();
 
 	$("form#filtertools select").change(function(){
-		var typefilter = "Type: "+$("select.typefilter").val();
+		var typefilter = $("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val().replace(" ","");
 		var rarityfilter = $("select.rarityfilter").val();
 
@@ -167,7 +172,7 @@ function loaditems() {
 			var righttype = false;
 			var rightsource = false;
 			var rightrarity = false;
-			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
+			if (typefilter === "Type: All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
 			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
@@ -178,7 +183,7 @@ function loaditems() {
 			var righttype = false;
 			var rightsource = false;
 			var rightrarity = false;
-			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
+			if (typefilter === "Type: All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
 			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
@@ -282,27 +287,31 @@ function useitem (id) {
 	sourceshort = parsesource(source);
 	$("th#name").html("<span title=\""+source+"\" class='source source"+sourceshort+"'>"+sourceshort+"</span> "+name);
 
-	var typeletter = curitem.type;
-	var type = parsetype (typeletter);
-	$("td span#type").html(type);
+	$("td span#type").html("")
+	$("span#damage").html("");
+	$("span#damagetype").html("");
+	var type = curitem.type.split(",");
+
+	for (var n = 0; n < type.length; n++) {
+		var curtype = type[n];
+		if (n > 0) $("td span#type").append (", ");
+		$("td span#type").append(parsetype(curtype));
+		if (curtype === "M" || curtype === "R" || curtype === "GUN") {
+			$("span#damage").html(curitem.dmg1);
+			$("span#damagetype").html(parsedamagetype(curitem.dmgType));
+		}
+
+		if (curtype === "S") $("span#damage").html("AC +"+curitem.ac);
+		if (curtype === "LA") $("span#damage").html("AC "+curitem.ac+" + Dex");
+		if (curtype === "MA") $("span#damage").html("AC "+curitem.ac+" + Dex (max 2)");
+		if (curtype === "HA") $("span#damage").html("AC "+curitem.ac);
+	}
 
 	$("td span#rarity").html("")
 	var rarity = curitem.rarity;
 	if (rarity)	$("td span#rarity").html(", "+rarity);
 
 
-	$("span#damage").html("");
-	$("span#damagetype").html("");
-
-	if (curitem.type === "M" || curitem.type == "R" || curitem.type === "GUN") {
-		$("span#damage").html(curitem.dmg1);
-		$("span#damagetype").html(parsedamagetype(curitem.dmgType));
-	}
-
-	if (curitem.type === "S") $("span#damage").html("AC +"+curitem.ac);
-	if (curitem.type === "LA") $("span#damage").html("AC "+curitem.ac+" + Dex");
-	if (curitem.type === "MA") $("span#damage").html("AC "+curitem.ac+" + Dex (max 2)");
-	if (curitem.type === "HA") $("span#damage").html("AC "+curitem.ac);
 
 	$("span#properties").html("");
 	if (curitem.property) {
