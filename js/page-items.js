@@ -168,11 +168,12 @@ function loaditems() {
 		var sourcefilter = $("select.sourcefilter").val().replace(" ","");
 		var rarityfilter = $("select.rarityfilter").val();
 
+
 		mundanelist.filter(function(item) {
 			var righttype = false;
 			var rightsource = false;
 			var rightrarity = false;
-			if (typefilter === "Type: All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
+			if (typefilter === "All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
 			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
@@ -183,7 +184,7 @@ function loaditems() {
 			var righttype = false;
 			var rightsource = false;
 			var rightrarity = false;
-			if (typefilter === "Type: All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
+			if (typefilter === "All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
 			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
