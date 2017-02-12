@@ -47,18 +47,12 @@ function loadpage() {
 		if (newsize == "Large") $("#hdval").html("d10")
 		if (newsize == "Huge") $("#hdval").html("d12")
 		if (newsize == "Gargantuan") $("#hdval").html("d20")
-		$("#calculatehp").click();
+		$("#hp").val(calculatehp());
 		calculatecr();
 	});
 
-	$("#calculatehp").click(function() {
-		var avghp = $("#hdval").html().split("d")[1]/2+1;
-		var conmod = Math.floor(($("#con").val() - 10) / 2);
-		$("#hp").val((avghp + conmod)* $("#hd").val());
-	});
-
 	$("#hd, #con").change(function() {
-			$("#calculatehp").click();
+		$("#hp").val(calculatehp());
 	})
 
 	$("#msbcr tr").not(":has(th)").click(function() {
@@ -71,8 +65,8 @@ function loadpage() {
 		calculatecr();
 	});
 
-	$("#hp").focusout(function() {
-		calculatehd();
+	$("#hp").change(function() {
+		$("#hd").val(calculatehd());
 	});
 
 	// parse monsterfeatures
@@ -116,6 +110,8 @@ function loadpage() {
 			$("input[id='"+curdata[i].split(":")[0]+"']").click();
 			if (curdata[i].split(":")[1]) $("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
 		}
+
+		calculatecr();
 		}
 	}
 	parseurl();
@@ -281,6 +277,11 @@ function calculatehd() {
 	var conmod = Math.floor(($("#con").val() - 10) / 2);
 	var curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
 	if (!curhd) curhd = 1;
-	$("#hd").val(curhd);
 	return curhd;
+}
+
+function calculatehp() {
+	var avghp = $("#hdval").html().split("d")[1]/2+1;
+	var conmod = Math.floor(($("#con").val() - 10) / 2);
+	return (avghp + conmod)* $("#hd").val();
 }
