@@ -82,7 +82,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a tiny strip of white cloth)",
                 "duration": "8 hours",
-                "classes": "Cleric, Paladin, Artificer (UA)",
+                "classes": "Cleric, Paladin, Artificer (UA), Cleric (Protection)",
                 "text": [
                     "Your spell bolsters your allies with toughness and resolve. Choose up to three creatures within range. Each target's hit point maximum and current hit points increase by 5 for the duration.",
                     "",
@@ -204,7 +204,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Sorcerer, Wizard",
+                "classes": "Bard, Sorcerer, Wizard, Cleric (Forge)",
                 "text": [
                     "Objects come to life at your command. Choose up to ten nonmagical objects within range that are not being worn or carried. Medium targets count as two objects, Large targets count as four objects, Huge targets count as eight objects. You can't animate any object larger than Huge. Each target animates and becomes a creature under your control until the spell ends or until reduced to 0 hit points.",
                     "",
@@ -237,7 +237,7 @@ var spelldata = {
                 "range": "Self (10-foot radius)",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Cleric (Death), Druid",
+                "classes": "Cleric (Death), Druid, Cleric (Protection), Cleric (Grave)",
                 "text": [
                     "A shimmering barrier extends out from you in a 10-foot radius and moves with you, remaining centered on you and hedging out creatures other than undead and constructs.",
                     "",
@@ -304,7 +304,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a bit of bat fur)",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Cleric (Arcana), Cleric (Knowledge), Wizard, Artificer (UA)",
+                "classes": "Cleric (Arcana), Cleric (Knowledge), Wizard, Artificer (UA), Warlock (Seeker)",
                 "text": [
                     "You create an invisible, magical eye within range that hovers in the air for the duration.",
                     "",
@@ -353,7 +353,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (a cup of water)",
                 "duration": "1 hour",
-                "classes": "Warlock",
+                "classes": "Warlock, Paladin (Conquest)",
                 "text": [
                     "A protective magical force surrounds you, manifesting as a spectral frost that covers you and your gear. You gain 5 temporary hit points for the duration. If a creature hits you with a melee attack while you have these hit points, the creature takes 5 cold damage.",
                     "",
@@ -482,7 +482,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a drop of blood)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Cleric, Paladin (Vengeance)",
+                "classes": "Bard, Cleric, Paladin (Vengeance), Cleric (Grave)",
                 "text": [
                     "Up to three creatures of your choice that you can see within range must make Charisma saving throws. Whenever a target that fails this saving throw makes an attack roll or a saving throw before the spell ends, the target must roll a d4 and subtract the number rolled from the attack roll or saving throw.",
                     "",
@@ -677,7 +677,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S",
                 "duration": "Instantaneous",
-                "classes": "Cleric (Death), Druid, Druid (Desert), Paladin (Oathbreaker), Sorcerer, Warlock, Wizard",
+                "classes": "Cleric (Death), Druid, Druid (Desert), Paladin (Oathbreaker), Sorcerer, Warlock, Wizard, Cleric (Grave), Paladin (Conquest)",
                 "text": [
                     "Necromantic energy washes over a creature of your choice that you can see within range, draining moisture and vitality from it. The target must make a Constitution saving throw. The target takes 8d8 necrotic damage on a failed save, or half as much damage on a successful one. This spell has no effect on undead or constructs.",
                     "",
@@ -697,7 +697,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Paladin",
+                "classes": "Paladin, Sorcerer (Stone)",
                 "text": [
                     "The next time you hit a creature with a melee weapon attack during this spell's duration, you weapon flares with a bright light, and the attack deals an extra 3d8 radiant damage to the target. Additionally, the target must succeed on a Constitution saving throw or be blinded until the spell ends.",
                     "",
@@ -728,7 +728,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S",
                 "duration": "1 minute",
-                "classes": "Cleric (Trickery), Sorcerer, Warlock (Archfey), Wizard, Artificer (UA)",
+                "classes": "Cleric (Trickery), Sorcerer, Warlock (Archfey), Wizard, Artificer (UA), Warlock (Hexblade)",
                 "text": [
                     "Roll a d20 at the end of each of your turns for the duration of the spell. On a roll of 11 or higher, you vanish from your current plane of existence and appear in the Ethereal Plane (the spell fails and the casting is wasted if you were already on that plane). At the start of you next turn, and when the spell ends if you are on the Ethereal Plane, you return to an unoccupied space of your choice that you can see within 10 feet of the space you vanished from. If no unoccupied space is available within that range, you appear in the nearest unoccupied space (chosen at random if more than one space is equally near). You can dismiss this spell as an action.",
                     "",
@@ -794,7 +794,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Paladin",
+                "classes": "Paladin, Warlock (Hexblade), Sorcerer (Stone)",
                 "text": [
                     "The next time you hit a creature with a weapon attack before this spell ends, the weapon gleams with astral radiance as you strike. The attack deals an extra 2d6 radiant damage to the target, which becomes visible if it is invisible, and the target sheds dim light in a 5-foot radius and can't become invisible until the spell ends.",
                     "",
@@ -810,7 +810,7 @@ var spelldata = {
                 "range": "Self (15-foot cone)",
                 "components": "V, S",
                 "duration": "Instantaneous",
-                "classes": "Cleric (Light), Sorcerer, Warlock (Fiend), Wizard, Fighter (Eldritch Knight)",
+                "classes": "Cleric (Light), Sorcerer, Warlock (Fiend), Wizard, Fighter (Eldritch Knight), Warlock (Undying Light)",
                 "text": [
                     "As you hold your hands with thumbs touching and fingers spread, a thin sheet of flames shoots forth from your outstretched fingertips. Each creature in a 15-foot cone must make a Dexterity saving throw. A creature takes 3d6 fire damage on a failed save, or half as much damage on a successful one.",
                     "",
@@ -901,7 +901,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S",
                 "duration": "1 hour",
-                "classes": "Bard, Cleric (Trickery), Druid, Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster)",
+                "classes": "Bard, Cleric (Trickery), Druid, Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster), Paladin (Treachery)",
                 "text": [
                     "You attempt to charm a humanoid you can see within range. It must make a Wisdom saving throw, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is charmed by you until the spell ends or until you or your companions do anything harmful to it. The charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was charmed by you.",
                     "",
@@ -986,7 +986,7 @@ var spelldata = {
                 "range": "1 mile",
                 "components": "V, S, M (a focus worth at least 100 gp, either a jeweled horn for hearing or a glass eye for scrying)",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Bard, Cleric, Sorcerer, Warlock (Great Old One), Wizard",
+                "classes": "Bard, Cleric, Sorcerer, Warlock (Great Old One), Wizard, Warlock (Seeker)",
                 "text": [
                     "You create an invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees). The sensor remains in place for the duration, and it can't be attacked or otherwise interacted with. When you cast the spell, you choose seeing or hearing. You can use the chosen sense through the sensor as if you were in its space. As your action, you can switch between seeing and hearing. A creature that can see the sensor (such as a creature benefiting from see invisibility or truesight) sees a luminous, intangible orb about the size of your fist.",
                     "",
@@ -1072,7 +1072,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V",
                 "duration": "1 round",
-                "classes": "Cleric, Cleric (Knowledge), Paladin, Paladin (Crown), Warlock (Fiend)",
+                "classes": "Cleric, Cleric (Knowledge), Paladin, Paladin (Crown), Warlock (Fiend), Paladin (Conquest)",
                 "text": [
                     "You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. The spell has no effect if the target is undead, if it doesn't understand your language, or if your command is directly harmful to it.",
                     "",
@@ -1100,7 +1100,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (incense and a vial of holy or unholy water)",
                 "duration": "1 minute",
-                "classes": "Cleric, Paladin (Devotion)",
+                "classes": "Cleric, Paladin (Devotion), Warlock (Raven Queen)",
                 "text": [
                     "You contact your deity or a divine proxy and ask up to three questions that can be answered with a yes or no. You must ask your questions before the spell ends. You receive a correct answer for each question.",
                     "",
@@ -1135,7 +1135,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Paladin, Paladin (Crown)",
+                "classes": "Paladin, Paladin (Crown), Cleric (Protection), Sorcerer (Stone)",
                 "text": [
                     "You attempt to compel a creature into a duel. One creature that you can see within range must make a Wisdom saving throw. On a failed save, the creature is drawn to you, compelled by your divine demand. For the duration, it has disadvantage on attack rolls against creatures other than you, and must make a Wisdom saving throw each time it attempts to move to a space that is more than 30 feet away from you, if it succeeds on this saving throw, this spell doesn't restrict the target's movement for that turn.",
                     "",
@@ -1151,7 +1151,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (a pinch of soot and salt)",
                 "duration": "1 hour",
-                "classes": "Bard, Sorcerer, Warlock, Wizard",
+                "classes": "Bard, Sorcerer, Warlock, Wizard, Cleric (City)",
                 "text": [
                     "For the duration, you understand the literal meaning of any spoken language that you hear. You also understand any spoken language that you hear. You also understand any written language that you see, but you must be touching the surface of which the words are written. It takes about 1 minute to read one page of text.",
                     "",
@@ -1181,7 +1181,7 @@ var spelldata = {
                 "range": "Self (60-foot cone)",
                 "components": "V, S, M (a small crystal or glass cone)",
                 "duration": "Instantaneous",
-                "classes": "Druid (Arctic), Sorcerer, Wizard",
+                "classes": "Druid (Arctic), Sorcerer, Wizard, Warlock (Hexblade)",
                 "text": [
                     "A blast of cold air erupts from your hands. Each creature in a 60-foot cone must make a Constitution saving throw. A creature takes 8d8 cold damage on a failed save, or half as much damage on a successful one.",
                     "",
@@ -1199,7 +1199,7 @@ var spelldata = {
                 "range": "90 feet",
                 "components": "V, S, M (three nut shells)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Cleric (Knowledge), Druid, Paladin (Oathbreaker), Sorcerer, Wizard, Rogue (Arcane Trickster)",
+                "classes": "Bard, Cleric (Knowledge), Druid, Paladin (Oathbreaker), Sorcerer, Wizard, Rogue (Arcane Trickster), Paladin (Treachery)",
                 "text": [
                     "This spell assaults and twists creatures' minds, spawning delusions and provoking uncontrolled actions. Each creature in a 10-foot-radius sphere centered on a point you choose within range must succeed on a Wisdom saving throw when you cast this spell or be affected by it.",
                     "",
@@ -1673,7 +1673,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a tiny piece of matter of the same type of the item you plan to create)",
                 "duration": "Special",
-                "classes": "Sorcerer, Wizard, Rogue (Arcane Trickster)",
+                "classes": "Sorcerer, Wizard, Rogue (Arcane Trickster), Cleric (Forge)",
                 "text": [
                     "You pull wisps of shadow material from the Shadowfell to create a nonliving object of vegetable matter within range - soft goods, rope, wood, or something similar. You can also use this spell to create mineral objects such as stone, crystal, or metal. The object created must be no larger than a 5-foot cube, and the object must be of a form and material that you have seen before.",
                     "",
@@ -1787,7 +1787,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S",
                 "duration": "1 hour",
-                "classes": "Cleric, Cleric (Light), Druid, Druid (Grassland), Paladin, Ranger, Sorcerer",
+                "classes": "Cleric, Cleric (Light), Druid, Druid (Grassland), Paladin, Ranger, Sorcerer, Warlock (Undying Light)",
                 "text": [
                     "A 60-foot-radius sphere of light spreads out from a point you choose within range. The sphere is bright light and sheds dim light for an additional 60 feet.",
                     "",
@@ -1804,7 +1804,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S",
                 "duration": "8 hours",
-                "classes": "Cleric, Cleric (Death), Cleric (Life), Paladin, Warlock (Undying), Artificer (UA)",
+                "classes": "Cleric, Cleric (Death), Cleric (Life), Paladin, Warlock (Undying), Artificer (UA), Cleric (Grave)",
                 "text": "You touch a creature and grant it a measure of protection from death. The first time the target would drop to 0 hit points as a result of taking damage, the target instead drops to 1 hit point, and the spell ends. If the spell is still in effect when the target is subjected to an effect that would kill it instantaneously without dealing damage, that effect is instead negated against the target, and the spells ends."
             },
             {
@@ -1852,7 +1852,7 @@ var spelldata = {
                 "range": "Self (30-foot radius)",
                 "components": "V",
                 "duration": "Instantaneous",
-                "classes": "Cleric (Tempest), Paladin",
+                "classes": "Cleric (Tempest), Paladin, Warlock (Hexblade)",
                 "text": "You strike the ground, creating a burst of divine energy that ripples outward from you. Each creature you choose within 30 feet of you must succeed on a Constitution saving throw or take 5d6 thunder damage, as well as 5d6 radiant or necrotic damage (your choice), and be knocked prone. A creature that succeeds on its saving throw takes half as much damage and isn't knocked prone.",
                 "roll": "5d6+5d6"
             },
@@ -2085,7 +2085,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Cleric (Nature), Druid, Sorcerer, Warlock (Archfey), Warlock (Great Old One)",
+                "classes": "Cleric (Nature), Druid, Sorcerer, Warlock (Archfey), Warlock (Great Old One), Paladin (Conquest)",
                 "text": [
                     "You attempt to beguile a beast that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. If you or creatures that are friendly to you are fighting it, it has advantage on the saving throw.",
                     "",
@@ -2127,7 +2127,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Cleric (Trickery), Paladin (Oathbreaker), Sorcerer, Warlock (Archfey), Warlock (Great Old One), Wizard, Rogue (Arcane Trickster)",
+                "classes": "Bard, Cleric (Trickery), Paladin (Oathbreaker), Sorcerer, Warlock (Archfey), Warlock (Great Old One), Wizard, Rogue (Arcane Trickster), Paladin (Conquest), Paladin (Treachery)",
                 "text": [
                     "You attempt to beguile a humanoid that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. If you or creatures that are friendly to you are fighting it, it has advantage on the saving throw.",
                     "",
@@ -2330,7 +2330,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Paladin",
+                "classes": "Paladin, Cleric (Forge), Warlock (Hexblade), Sorcerer (Stone), Sorcerer (Stone)",
                 "text": [
                     "A nonmagical weapon you touch becomes a magic weapon. Choose one of the following damage types - acid, cold, fire, lightning, or thunder. For the duration, the weapon has a +1 bonus to attack rolls and deals an extra 1d4 damage of the chosen type when it hits.",
                     "",
@@ -2497,7 +2497,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Sorcerer, Warlock, Wizard, Artificer (UA)",
+                "classes": "Sorcerer, Warlock, Wizard, Artificer (UA), Paladin (Treachery)",
                 "text": "This spell allows you to move at an incredible pace. When you cast this spell, and then as a bonus action on each of your turns until the spell ends, you can take the Dash action."
             },
             {
@@ -2527,7 +2527,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S",
                 "duration": "Instantaneous",
-                "classes": "Wizard, Artificer (UA)",
+                "classes": "Wizard, Artificer (UA), Cleric (Forge)",
                 "text": [
                     "You convert raw materials into products of the same material. For example, you can fabricate a wooden bridge from a clump of trees, a rope from a patch of hemp, and clothes from flax or wool.",
                     "",
@@ -2559,7 +2559,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (a small amount of alcohol or distilled spirits)",
                 "duration": "1 hour",
-                "classes": "Cleric (Death), Sorcerer, Warlock (Undying), Wizard, Artificer (UA)",
+                "classes": "Cleric (Death), Sorcerer, Warlock (Undying), Wizard, Artificer (UA), Cleric (Grave), Warlock (Raven Queen)",
                 "text": [
                     "Bolstering yourself with a necromantic facsimile of life, you gain 1d4+4 temporary hit points for the duration.",
                     "",
@@ -2575,7 +2575,7 @@ var spelldata = {
                 "range": "Self (30-foot cone)",
                 "components": "V, S, M (a white feather or the heart of a hen)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster)",
+                "classes": "Bard, Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster), Paladin (Conquest)",
                 "text": [
                     "You project a phantasmal image of a creature's worst fears. Each creature in a 30-foot cone must succeed on a Wisdom saving throw or drop whatever it is holding and become frightened for the duration.",
                     "",
@@ -2590,7 +2590,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, M (a white feather or the heart of a hen)",
                 "duration": "1 minute",
-                "classes": "Bard, Sorcerer, Wizard",
+                "classes": "Bard, Sorcerer, Wizard, Warlock (Seeker)",
                 "text": "Reaction - When you or a creature within 60 feet of you falls Choose up to five falling creatures within range. A falling creature's rate of descent slows to 60 feet per round until the spell ends. If the creature lands before the spell ends, it takes no falling damage and can land on its feet, and the spell ends for that creature."
             },
             {
@@ -2622,7 +2622,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (a pinch of graveyard dirt)",
                 "duration": "1 hour",
-                "classes": "Bard, Cleric, Druid, Warlock (Undying), Wizard",
+                "classes": "Bard, Cleric, Druid, Warlock (Undying), Wizard, Warlock (Raven Queen)",
                 "text": [
                     "You touch a willing creature and put it into a cataleptic state that is indistinguishable from death.",
                     "",
@@ -2750,7 +2750,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (a bit of phosphorous or a firefly)",
                 "duration": "10 minutes",
-                "classes": "Warlock (Fiend), Wizard, Fighter (Eldritch Knight)",
+                "classes": "Warlock (Fiend), Wizard, Fighter (Eldritch Knight), Warlock (Undying Light)",
                 "text": [
                     "Thin and wispy flames wreathe your body for the duration, shedding bright light in a 10-foot radius and dim light for an additional 10 feet. You can end the spell early by using an action to dismiss it.",
                     "",
@@ -2843,7 +2843,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S, M (pinch of sulfur)",
                 "duration": "Instantaneous",
-                "classes": "Cleric, Cleric (Light), Cleric (War), Paladin (Devotion), Warlock (Fiend)",
+                "classes": "Cleric, Cleric (Light), Cleric (War), Paladin (Devotion), Warlock (Fiend), Warlock (Undying Light)",
                 "text": [
                     "A vertical column of divine fire roars down from the heavens in a location you specify. Each creature in a 10-foot radius, 40-foot-high cylinder centered on a point within range must make a Dexterity saving throw. A creature takes 4d6 fire damage and 4d6 radiant damage on a failed save, or half as much damage on a successful one.",
                     "",
@@ -2859,7 +2859,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S, M (a bit of tallow, a pinch of brimstone, and a dusting of powdered iron)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Cleric (Light), Druid, Wizard",
+                "classes": "Cleric (Light), Druid, Wizard, Warlock (Undying Light)",
                 "text": [
                     "A 5-foot-diameter sphere of fire appears in an unoccupied space of your choice within range and lasts for the duration. Any creature that ends its turn within 5 feet of the sphere must make a Dexterity saving throw. The creature takes 2d6 fire damage on a failed save, or half as much damage on a successful one.",
                     "",
@@ -3036,7 +3036,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (a bit of gauze and a wisp of smoke)",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Druid (Underdark), Sorcerer, Warlock, Wizard, Artificer (UA)",
+                "classes": "Druid (Underdark), Sorcerer, Warlock, Wizard, Artificer (UA), Paladin (Treachery)",
                 "text": [
                     "You transform a willing creature you touch, along with everything it's wearing and carrying, into a misty cloud for the duration. The spell ends if the creature drops to 0 hit points. An incorporeal creature isn't affected.",
                     "",
@@ -3093,7 +3093,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (a pinch of salt and one copper piece placed on each of the corpse's eyes, which must remain there for the duration)",
                 "duration": "10 days",
-                "classes": "Cleric, Wizard",
+                "classes": "Cleric, Wizard, Cleric (Grave)",
                 "text": [
                     "You touch a corpse or other remains. For the duration, the target is protected from decay and can't become undead.",
                     "",
@@ -3228,7 +3228,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Druid (Underdark), Sorcerer, Warlock (Archfey), Wizard, Rogue (Arcane Trickster)",
+                "classes": "Bard, Druid (Underdark), Sorcerer, Warlock (Archfey), Wizard, Rogue (Arcane Trickster), Paladin (Treachery)",
                 "text": "You or a creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person."
             },
             {
@@ -3279,7 +3279,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V",
                 "duration": "8 hours",
-                "classes": "Cleric, Cleric (Life), Cleric (Light), Paladin (Crown), Paladin (Devotion)",
+                "classes": "Cleric, Cleric (Life), Cleric (Light), Paladin (Crown), Paladin (Devotion), Cleric (Protection)",
                 "text": [
                     "A Large spectral guardian appears and hovers for the duration in an unoccupied space of your choice that you can see within range. The guardian occupies that space and is indistinct except for a gleaming sword and shield emblazoned with the symbol of your deity.",
                     "",
@@ -3482,7 +3482,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a shaving of licorice root)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Druid (Grassland), Paladin (Vengeance), Sorcerer, Wizard, Artificer (UA)",
+                "classes": "Druid (Grassland), Paladin (Vengeance), Sorcerer, Wizard, Artificer (UA), Paladin (Treachery)",
                 "text": [
                     "Choose a willing creature that you can see within range. Until the spell ends, the target's speed is doubled, it gains a +2 bonus to AC, it has advantage on Dexterity saving throws, and it gains an additional action on each of its turns. That action can be used only to take the Attack (one weapon attack only), Dash, Disengage, Hide, or Use an Object action.",
                     "",
@@ -3528,7 +3528,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S, M (a piece of iron and a flame)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Druid",
+                "classes": "Bard, Druid, Cleric (City), Cleric (Forge)",
                 "text": [
                     "Choose a manufactured metal object, such as a metal weapon or a suit of heavy or medium metal armor, that you can see within range. You cause the object to glow red-hot. Any creature in physical contact with the object takes 2d8 fire damage when you cast the spell. Until the spell ends, you can use a bonus action on each of your subsequent turns to cause this damage again.",
                     "",
@@ -3627,7 +3627,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S, M (a small, straight piece of iron)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Bard, Cleric, Druid, Druid (Arctic), Paladin (Vengeance), Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster)",
+                "classes": "Bard, Cleric, Druid, Druid (Arctic), Paladin (Vengeance), Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster), Paladin (Conquest)",
                 "text": [
                     "Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.",
                     "",
@@ -3723,7 +3723,7 @@ var spelldata = {
                 "range": "300 feet",
                 "components": "V, S, M (a pinch of dust and a few drops of water)",
                 "duration": "Instantaneous",
-                "classes": "Cleric (Tempest), Druid, Druid (Arctic), Paladin (Ancients), Sorcerer, Wizard, Fighter (Eldritch Knight)",
+                "classes": "Cleric (Tempest), Druid, Druid (Arctic), Paladin (Ancients), Sorcerer, Wizard, Fighter (Eldritch Knight), Warlock (Raven Queen)",
                 "text": [
                     "A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range. Each creature in the cylinder must make a Dexterity saving throw. A creature takes 2d8 bludgeoning damage and 4d6 cold damage on a failed save, or half as much damage on a successful one.",
                     "",
@@ -3876,7 +3876,7 @@ var spelldata = {
                 "range": "300 feet",
                 "components": "V, S, M (a few grains of sugar, some kernels of grain, and a smear of fat)",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Cleric, Cleric (Nature), Cleric (Tempest), Druid, Druid (Desert), Druid (Grassland), Druid (Swamp), Druid (Underdark), Sorcerer",
+                "classes": "Cleric, Cleric (Nature), Cleric (Tempest), Druid, Druid (Desert), Druid (Grassland), Druid (Swamp), Druid (Underdark), Sorcerer, Paladin (Conquest)",
                 "text": [
                     "Swarming, biting locusts fill a 20-foot-radius sphere centered on a point you choose within range. The sphere spreads around corners. The sphere remains for the duration, and its area is lightly obscured. The sphere's area is difficult terrain.",
                     "",
@@ -3982,7 +3982,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (an eyelash encased in gum arabic)",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Bard, Druid (Grassland), Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster), Artificer (UA)",
+                "classes": "Bard, Druid (Grassland), Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster), Artificer (UA), Paladin (Treachery)",
                 "text": [
                     "A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person. The spell ends for a target that attacks or casts a spell.",
                     "",
@@ -3997,7 +3997,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (a grasshopper's hind leg)",
                 "duration": "1 minute",
-                "classes": "Druid, Ranger, Sorcerer, Wizard, Artificer (UA)",
+                "classes": "Druid, Ranger, Sorcerer, Wizard, Artificer (UA), Warlock (Seeker)",
                 "text": "You touch a creature. The creature's jump distance is tripled until the spell ends."
             },
             {
@@ -4027,7 +4027,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (incense worth at least 250 gp, which the spell consumes, and four ivory strips worth at least 50 gp each)",
                 "duration": "Instantaneous",
-                "classes": "Bard, Cleric, Cleric (Knowledge), Warlock (Undying), Wizard",
+                "classes": "Bard, Cleric, Cleric (Knowledge), Warlock (Undying), Wizard, Warlock (Seeker)",
                 "text": [
                     "Name or describe a person, place, or object. The spell brings to your mind a brief summary of the significant lore about the thing you named. The lore might consist of current tales, forgotten stories, or even secret lore that has never been widely known. If the thing you named isn't of legendary importance, you gain no information.",
                     "",
@@ -4089,7 +4089,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S, M (either a small leather loop or a piece of golden wire bent into a cup shape with a long shank on one end)",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Sorcerer, Wizard",
+                "classes": "Sorcerer, Wizard, Warlock (Seeker)",
                 "text": [
                     "One creature or object of your choice that you can see within range rises vertically, up to 20 feet, and remains suspended there for the duration. The spell can levitate a target that weighs up to 500 pounds. An unwilling creature that succeeds on a Constitution saving throw is unaffected.",
                     "",
@@ -4141,7 +4141,7 @@ var spelldata = {
                 "range": "Self (100-foot line)",
                 "components": "V, S, M (a bit of fur and a rod of amber, crystal, or glass)",
                 "duration": "Instantaneous",
-                "classes": "Druid (Mountain), Sorcerer, Wizard, Fighter (Eldritch Knight)",
+                "classes": "Druid (Mountain), Sorcerer, Wizard, Fighter (Eldritch Knight), Cleric (City)",
                 "text": [
                     "A stroke of lightning forming a line of 100 feet long and 5 feet wide blasts out from you in a direction you choose. Each creature in the line must make a Dexterity saving throw. A creature takes 8d6 lightning damage on a failed save, or half as much damage on a successful one.",
                     "",
@@ -4191,7 +4191,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (a bit of fur from a bloodhound)",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Bard, Cleric, Druid, Druid (Swamp), Paladin, Ranger, Wizard",
+                "classes": "Bard, Cleric, Druid, Druid (Swamp), Paladin, Ranger, Wizard, Cleric (City), Warlock (Raven Queen), Warlock (Seeker)",
                 "text": [
                     "Describe or name a creature that is familiar to you. You sense the direction to the creature's location, as long as that creature is within 1,000 feet of you. If the creature is moving, you know the direction of its movement.",
                     "",
@@ -4208,7 +4208,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (a forked twig)",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Bard, Cleric, Druid, Paladin, Ranger, Wizard",
+                "classes": "Bard, Cleric, Druid, Paladin, Ranger, Wizard, Warlock (Seeker)",
                 "text": [
                     "Describe or name an object that is familiar to you. You sense the direction to the object's location, as long as that object is within 1,000 feet of you. If the object is in motion, you know the direction of its movement.",
                     "",
@@ -4390,7 +4390,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Cleric (Arcana), Cleric (War), Paladin, Wizard, Artificer (UA)",
+                "classes": "Cleric (Arcana), Cleric (War), Paladin, Wizard, Artificer (UA), Cleric (Forge), Warlock (Hexblade), Sorcerer (Stone)",
                 "text": [
                     "You touch a nonmagical weapon. Until the spell ends, that weapon becomes a magic weapon with a +1 bonus to attack rolls and damage rolls.",
                     "",
@@ -4679,7 +4679,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S",
                 "duration": "1 minute",
-                "classes": "Cleric (Trickery), Druid (Coast), Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster)",
+                "classes": "Cleric (Trickery), Druid (Coast), Sorcerer, Warlock, Wizard, Rogue (Arcane Trickster), Paladin (Treachery)",
                 "text": [
                     "Three illusory duplicates of yourself appear in your space. Until the spell ends, the duplicates move with you and mimic your actions, shifting position so it's impossible to track which image is real. You can use your action to dismiss the illusory duplicates.",
                     "",
@@ -4957,7 +4957,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a hemispherical piece of clear crystal and a matching hemispherical piece of gum arabic)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Wizard, Fighter (Eldritch Knight), Artificer (UA)",
+                "classes": "Wizard, Fighter (Eldritch Knight), Artificer (UA), Cleric (Protection)",
                 "text": [
                     "A sphere of shimmering force encloses a creature or object of Large size or smaller within range. An unwilling creature must make a Dexterity saving throw. On a failed save, the creature is enclosed for the duration.",
                     "",
@@ -5002,7 +5002,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a pinch of sesame seeds)",
                 "duration": "1 hour",
-                "classes": "Druid (Mountain), Wizard",
+                "classes": "Druid (Mountain), Wizard, Warlock (Seeker), Paladin (Treachery)",
                 "text": [
                     "A passage appears at a point of your choice that you can see on a wooden, plaster, or stone surface (such as a wall, a ceiling, or a floor) within range, and lasts for the duration. You choose the opening's dimensions - up to 5 feet wide, 8 feet tall, and 20 feet deep. The passage creates no instability in a structure surrounding it.",
                     "",
@@ -5039,7 +5039,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Wizard, Rogue (Arcane Trickster)",
+                "classes": "Wizard, Rogue (Arcane Trickster), Warlock (Hexblade)",
                 "text": [
                     "You tap into the nightmares of a creature you can see within range and create an illusory manifestation of its deepest fears, visible only to that creature. The target must make a Wisdom saving throw. On a failed save, the target becomes frightened for the duration. At the end of each of the target's turns before the spell ends, the target must succeed on a Wisdom saving throw or take 4d10 psychic damage. On a successful save, the spell ends.",
                     "",
@@ -5416,7 +5416,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Cleric, Druid, Druid (Desert), Paladin (Ancients), Paladin (Vengeance), Ranger, Sorcerer, Wizard, Fighter (Eldritch Knight), Artificer (UA)",
+                "classes": "Cleric, Druid, Druid (Desert), Paladin (Ancients), Paladin (Vengeance), Ranger, Sorcerer, Wizard, Fighter (Eldritch Knight), Artificer (UA), Cleric (Forge), Cleric (Protection)",
                 "text": "For the duration, the willing creature you touch has resistance to one damage type of your choice - acid, cold, fire, lightning, or thunder."
             },
             {
@@ -5427,7 +5427,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (holy water or powdered silver and iron, which the spell consumes)",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Cleric, Paladin, Paladin (Devotion), Warlock, Wizard, Fighter (Eldritch Knight)",
+                "classes": "Cleric, Paladin, Paladin (Devotion), Warlock, Wizard, Fighter (Eldritch Knight), Cleric (Protection)",
                 "text": [
                     "Until the spell ends, one willing creature you touch is protected against certain types of creatures - aberrations, celestials, elementals, fey, fiends, and undead.",
                     "",
@@ -5488,7 +5488,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (a diamond worth at least 500 gp, which the spell consumes)",
                 "duration": "Instantaneous",
-                "classes": "Bard, Cleric, Cleric (Life), Paladin",
+                "classes": "Bard, Cleric, Cleric (Life), Paladin, Cleric (Grave)",
                 "text": [
                     "You return a dead creature you touch to life, provided that it has been dead no longer than 10 days. If the creature's soul is both willing and at liberty to rejoin the body, the creature returns to life with 1 hit point.",
                     "",
@@ -5523,7 +5523,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Cleric (Death), Warlock, Wizard",
+                "classes": "Cleric (Death), Warlock, Wizard, Cleric (Grave)",
                 "text": [
                     "A black beam of enervating energy springs from your finger toward a creature within range. Make a ranged spell attack against the target. On a hit, the target deals only half damage with weapon attacks that use Strength until the spell ends.",
                     "",
@@ -5690,7 +5690,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (diamonds worth 300 gp, which the spell consumes)",
                 "duration": "Instantaneous",
-                "classes": "Cleric, Cleric (Life), Paladin, Artificer (UA)",
+                "classes": "Cleric, Cleric (Life), Paladin, Artificer (UA), Cleric (Grave)",
                 "text": "You touch a creature that has died within the last minute. That creature returns to life with 1 hit point. This spell can't return to life a creature that has died of old age, nor can it restore any missing body parts."
             },
             {
@@ -5741,7 +5741,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S, M (a small silver mirror)",
                 "duration": "1 minute",
-                "classes": "Cleric, Paladin (Devotion), Artificer (UA)",
+                "classes": "Cleric, Paladin (Devotion), Artificer (UA), Warlock (Raven Queen)",
                 "text": [
                     "You ward a creature within range against attack. Until the spell ends, any creature who targets the warded creature with an attack or a harmful spell must first make a Wisdom saving throw. On a failed save, the creature must choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from area effects, such as the explosion of a fireball.",
                     "",
@@ -5811,7 +5811,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Paladin",
+                "classes": "Paladin, Cleric (Forge), Sorcerer (Stone)",
                 "text": [
                     "The next time you hit a creature with a melee weapon attack during the spell's duration, your weapon flares with white-hot intensity, and the attack deals an extra 1d6 fire damage to the target and causes the target to ignite in flames. At the start of each of its turns until the spell ends, the target must make a Constitution saving throw. On a failed save, it takes 1d6 fire damage. On a successful save, the spell ends. If the target or a creature within 5 feet of it uses an action to put out the flames, or if some other effect douses the flames (such as the target being submerged in water), the spell ends.",
                     "",
@@ -5857,7 +5857,7 @@ var spelldata = {
                 "range": "Unlimited",
                 "components": "V, S, M (A short piece of fine copper wire)",
                 "duration": "1 round",
-                "classes": "Cleric, Warlock (Great Old One), Wizard, Fighter (Eldritch Knight)",
+                "classes": "Cleric, Warlock (Great Old One), Wizard, Fighter (Eldritch Knight), Warlock (Seeker)",
                 "text": [
                     "You send a short message of twenty-five words or less to a creature with you are familiar. The creature hears the message in its mind, recognizes you as the sender if it knows you, and can answer in a like manner immediately. The spell enables creatures with Intelligence scores of at least 1 to understand the meaning of your message.",
                     "",
@@ -5955,7 +5955,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S",
                 "duration": "1 round",
-                "classes": "Sorcerer, Wizard, Fighter (Eldritch Knight)",
+                "classes": "Sorcerer, Wizard, Fighter (Eldritch Knight), Cleric (Forge), Warlock (Hexblade)",
                 "text": "An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from magic missile."
             },
             {
@@ -6011,7 +6011,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Bard, Cleric, Druid (Desert), Ranger, Warlock (Undying)",
+                "classes": "Bard, Cleric, Druid (Desert), Ranger, Warlock (Undying), Warlock (Raven Queen)",
                 "text": "For the duration, no sound can be created within or pass through a 20-foot-radius sphere centered on a point you choose within range. Any creature or object entirely inside the sphere is immune to thunder damage, and creatures are deafened while entirely inside it. Casting a spell that includes a verbal component is impossible there."
             },
             {
@@ -6111,7 +6111,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S, M (a drop of molasses)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Druid (Arctic), Sorcerer, Wizard",
+                "classes": "Druid (Arctic), Sorcerer, Wizard, Cleric (Protection)",
                 "text": [
                     "You alter time around up to six creatures of your choice in a 40-foot cube within range. Each target must succeed on a Wisdom saving throw or be affected by this spell for the duration.",
                     "",
@@ -6171,7 +6171,7 @@ var spelldata = {
                 "range": "10 feet",
                 "components": "V, S, M (burning incense)",
                 "duration": "10 minutes",
-                "classes": "Bard, Cleric, Cleric (Knowledge), Warlock (Undying)",
+                "classes": "Bard, Cleric, Cleric (Knowledge), Warlock (Undying), Warlock (Raven Queen)",
                 "text": [
                     "You grant the semblance of life and intelligence to a corpse of your choice within range, allowing it to answer the questions you pose. The corpse must still have a mouth and can't be undead. The spell fails if the corpse was the target of this spell within the last 10 days.",
                     "",
@@ -6252,7 +6252,7 @@ var spelldata = {
                 "range": "60 feet",
                 "components": "V, S",
                 "duration": "1 minute",
-                "classes": "Cleric, Cleric (Life), Cleric (War)",
+                "classes": "Cleric, Cleric (Life), Cleric (War), Warlock (Raven Queen)",
                 "text": [
                     "You create a floating, spectral weapon within range that lasts for the duration or until you cast this spell again. When you cast the spell, you can make a melee spell attack against a creature within 5 feet of the weapon. On a hit, the target takes force damage equal to 1d8 + your spellcasting ability modifier.",
                     "",
@@ -6275,7 +6275,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Paladin",
+                "classes": "Paladin, Warlock (Hexblade), Sorcerer (Stone)",
                 "text": "The next time you hit a creature with a melee weapon attack during this spell's duration, your weapon pierces both body and mind, and the attack deals an extra 4d6 psychic damage to the target. The target must make a Wisdom saving throw. On a failed save, it has disadvantage on attack rolls and ability checks, and can't take reactions, until the end of its next turn.",
                 "roll": "4d6"
             },
@@ -6705,7 +6705,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Paladin",
+                "classes": "Paladin, Sorcerer (Stone)",
                 "text": "The first time you hit with a melee weapon attack during this spell's duration, your weapon rings with thunder that is audible within 300 feet of you, and the attack deals an extra 2d6 thunder damage to the target. Additionally, if the target is a creature, it must succeed on a Strength saving throw or be pushed 10 feet away from you and knocked prone.",
                 "roll": "2d6"
             },
@@ -6941,7 +6941,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Cleric (Death), Warlock, Wizard",
+                "classes": "Cleric (Death), Warlock, Wizard, Cleric (Grave)",
                 "text": [
                     "The touch of your shadow-wreathed hand can siphon force from others to heal your wounds. Make a melee spell attack against a creature within your reach. On a hit, the target takes 3d6 necrotic damage, and you regain hit points equal to half the amount of necrotic damage dealt. Until the spell ends, you can make the attack again on each of your turns as an action.",
                     "",
@@ -7002,7 +7002,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S, M (a small piece of phosphorus)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Cleric (Light), Druid, Sorcerer, Warlock (Fiend), Wizard, Fighter (Eldritch Knight)",
+                "classes": "Cleric (Light), Druid, Sorcerer, Warlock (Fiend), Wizard, Fighter (Eldritch Knight), Cleric (Forge)",
                 "text": [
                     "You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot think, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot think. The wall is opaque and lasts for the duration.",
                     "",
@@ -7022,7 +7022,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S, M (a pinch of powder made by crushing a clear gemstone)",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Wizard",
+                "classes": "Wizard, Cleric (Protection)",
                 "text": [
                     "An invisible wall of force springs into existence at a point you choose within range. The wall appears in any orientation you choose, as a horizontal or vertical barrier or at an angle. It can be free floating or resting on a solid surface. You can form it into a hemispherical dome or a sphere with a radius of up to 10 feet, or you can shape a flat surface made up of ten 10-foot-by-10-foot panels. Each panel must be contiguous with another panel. In any form, the wall is 1/4 inch thick. It lasts for the duration. If the wall cuts through a creature's space when it appears, the creature is pushed to one side of the wall (your choice which side).",
                     "",
@@ -7384,7 +7384,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Paladin",
+                "classes": "Paladin, Warlock (Hexblade), Sorcerer (Stone)",
                 "text": "The next time you hit with a melee weapon attack during this spell's duration, your attack deals an extra 1d6 psychic damage. Additionally, if the target is a creature, it must make a Wisdom saving throw or be frightened of you until the spell ends. As an action, the creature can make a Wisdom check against your spell save DC to steel its resolve and end this spell."
             },
             {
@@ -7501,7 +7501,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (hacking tools)",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Warlock (Ghost in the Machine)",
                 "text": [
                   "You gain advantage on all Intelligence checks using hacking tools to break software encryption or online security when using a foreign system. This spell also allows you to break 2nd-level and lower protective spells such as arcane lock or glyph of warding by making an Intelligence check using hacking tools against the spell save DC of the spell’s caster.",
                   "At Higher Levels: When you cast this spell using a spell slot of 3rd level or higher, you can attempt to counteract a spell set to secure the foreign system if the spell’s level is equal to or less than the level of the spell slot you used."
@@ -7515,7 +7515,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S",
                 "duration": "Instantaneous",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Cleric (City)",
                 "text": [
                   "You briefly become one with the city and gain knowledge of the surrounding area. Aboveground, this spell gives you knowledge of the area within 1 mile of you. In sewers and other underground settings, you gain knowledge of the area within 600 feet of you.",
                   "You instantly gain knowledge of up to three facts of your choice about any of the following subjects as they relate to the area:",
@@ -7535,7 +7535,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S",
                 "duration": "10 minutes",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Warlock (Ghost in the Machine)",
                 "text": [
                   "You touch a single computerized device or computer system to conjure a knowbot—a partially sentient piece of software imprinted with vestiges of your own skills and computer abilities. For the duration of the spell, you can use a bonus action to have the knowbot execute a computer-related task that would normally require an action. The knowbot makes Intelligence ability checks using your ability score and proficiency bonuses (including your proficiency with hacking tools, if applicable).",
                   "You have a limited telepathic bond with the knowbot, out to a range of 500 feet from the device or system where the knowbot was conjured. If you move beyond this range, the knowbot disappears in 2d4 rounds, as if the duration of the spell had expired. Moving within range again immediately reestablishes the bond.",
@@ -7550,7 +7550,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (a small piece of copper wire)",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Warlock (Ghost in the Machine)",
                 "text": [
             "This spell works to actively hide your presence within a computer system. For the spell’s duration, you and any other users you choose on your local network gain a +10 bonus to Intelligence checks to avoid detection by administrators, knowbots, tracking software, and the like. Whenever you and your chosen users leave any computer system you are working in while this spell is in effect, all trace of your previous presence in that system is erased."
                 ]
@@ -7563,7 +7563,7 @@ var spelldata = {
                 "range": "30 feet",
                 "components": "V, S",
                 "duration": "8 hours",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Cleric (City)",
                 "text": [
                   "You summon a spirit that assumes the form of a nonmilitary land vehicle of your choice, appearing in an unoccupied space within range. The vehicle has the statistics of a normal vehicle of its sort, though it is celestial, fey, or fiendish (your choice  in origin. The physical characteristics of the vehicle reflect its origin to some degree. For example, a fiendish SUV might be jet black in color, with tinted windows and a sinister-looking front grille.",
                   "You have a supernatural bond with the conjured vehicle that allows you to drive beyond your normal ability. While driving the conjured vehicle, you are considered proficient with vehicles of its type, and you add double your proficiency bonus to ability checks related to driving the vehicle. While driving the vehicle, you can make any spell you cast that targets only you also target the vehicle.",
@@ -7580,7 +7580,7 @@ var spelldata = {
                 "range": "90 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Warlock (Ghost in the Machine)",
                 "text": [
                   "This spell plays havoc with electronic devices, making the use of such devices all but impossible. Each electronic device in a 10-foot-radius sphere centered on a point you choose within range is subject to random behavior while it remains within the area. A device not held by a creature is automatically affected. If an electronic device is held by a creature, that creature must succeed on a Wisdom saving throw or have the device affected by the spell.",
                   "At the start of each of your turns, roll a d6 for each affected device to determine its behavior. Except where otherwise indicated, that behavior lasts until the start of your next turn while this spell is in effect.",
@@ -7592,6 +7592,20 @@ var spelldata = {
                 ]
             },
             {
+                "name": "Infallible Relay (UA)",
+                "level": "3",
+                "school": "D",
+                "time": "1 minute",
+                "range": "Self",
+                "components": "V, S, M (a mobile phone)",
+                "duration": "Concentration, up to 10 minutes",
+                "classes": "Warlock, Sorcerer, Wizard, Warlock (Ghost in the Machine)",
+                "text": [
+                  "With this spell, you can target any creature with whom you have spoken previously, as long as the two of you are on the same plane of existence. When you cast the spell, the nearest functioning telephone or similar communications device within 100 feet of the target begins to ring. If there is no suitable device close enough to the target, the spell fails.",
+                  " The target must make a successful Charisma saving throw or be compelled to answer your call. Once the connection is established, the call is crystal clear and cannot be dropped until the conversation has ended or the spell’s duration ends. You can end the conversation at any time, but a target must succeed on a Charisma saving throw to end the conversation."
+                ]
+            },
+            {
                 "name": "Invisibility to Cameras (UA)",
                 "level": "3",
                 "school": "I",
@@ -7599,7 +7613,7 @@ var spelldata = {
                 "range": "10 feet",
                 "components": "V, S, M (a scrap of black paper)",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Warlock (Ghost in the Machine)",
                 "text": [
                   "Four creatures of your choice within range become undetectable to electronic sensors and cameras for the duration of the spell. Anything a target is wearing or carrying is likewise undetectable as long as it is on the target’s person. The targets remain visible to vision."
                 ]
@@ -7625,7 +7639,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S, M (a shell casing)",
                 "duration": "Concentration, up to 10 minutes",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Cleric (City)",
                 "text": [
                   "This spell enchants the flesh of the target against the impact of bullets. Until the spell ends, the target has resistance to nonmagical ballistic damage."
                 ]
@@ -7638,7 +7652,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S",
                 "duration": "10 minutes",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Cleric (City), Warlock (Ghost in the Machine)",
                 "text": [
                   "You can use any electronic device within range as if it were in your hands. This is not a telekinesis effect. Rather, this spell allows you to simulate a device’s mechanical functions electronically. You are able to access only functions that a person using the device manually would be able to access. You can use remote access with only one device at a time."
                 ]
@@ -7651,7 +7665,7 @@ var spelldata = {
                 "range": "120 feet",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 minute",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Cleric (City), Warlock (Ghost in the Machine)",
                 "text": [
                   "This spell shuts down all electronic devices within range that are not wielded by or under the direct control of a creature. If an electronic device within range is used by a creature, that creature must succeed on a Constitution saving throw to prevent the device from being shut down. While the spell remains active, no electronic device within range can be started or restarted."
                 ]
@@ -7664,7 +7678,7 @@ var spelldata = {
                 "range": "Touch",
                 "components": "V, S",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Cleric (City), Warlock (Ghost in the Machine)",
                 "text": [
                   "The creature you touch feels reality subtly shifted to its favor while this spell is in effect. The target isn’t inconvenienced by mundane delays of any sort. Traffic lights are always green, there’s always a waiting elevator, and a taxi is always around the corner. The target can run at full speed through dense crowds, and attacks of opportunity provoked by the target’s movement are made with disadvantage.",
                   "Synchronicity grants advantage to Dexterity (Stealth) checks, since the target always finds a handy piece of cover available. Additionally, the target has advantage on all ability checks made to drive a vehicle.",
@@ -7679,7 +7693,7 @@ var spelldata = {
                 "range": "Self",
                 "components": "V, S, M (hacking tools)",
                 "duration": "Concentration, up to 1 hour",
-                "classes": "Warlock, Sorcerer, Wizard",
+                "classes": "Warlock, Sorcerer, Wizard, Warlock (Ghost in the Machine)",
                 "text": [
                   "This spell allows you to bypass system security in order to create a secure login on a foreign system. The login you create allows you administrator-level privileges in any computer system not enhanced through technomagic. The login defeats any technomagic spells of 3rd level or lower.",
                   "Once the duration of the spell expires, the login and all privileges are wiped from the system. System logs still show the activity of the user, but the user identification cannot be found or traced.",
