@@ -251,7 +251,8 @@ function useclass (id) {
 			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+encodeURIComponent(curfeature.name).replace("'","%27")+"'>"+curfeature.name+"</a>")
 
 			// display features in bottom section
-			$("#features").after("<tr><td colspan='6' class='feature"+subfeature+issubclass+"' data-subclass='"+curfeature.subclass+"'><strong id='feature"+encodeURI (curfeature.name)+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
+			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
+			$("#features").after("<tr><td colspan='6' class='feature"+subfeature+issubclass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+encodeURI (curfeature.name)+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
 		}
 
 	}
