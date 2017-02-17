@@ -53,11 +53,15 @@ function loadpage() {
 
 	$("#hd, #con").change(function() {
 		$("#hp").val(calculatehp());
+		calculatecr();
 	})
 
 	$("#msbcr tr").not(":has(th)").click(function() {
 		$("#expectedcr").val($(this).children("td:eq(0)").html());
-		$("#hp").val($(this).children("td:eq(3)").html().split("-")[0])
+		var minhp = parseInt($(this).children("td:eq(3)").html().split("-")[0]);
+		var maxhp = parseInt($(this).children("td:eq(3)").html().split("-")[1]);
+		$("#hp").val(minhp + (maxhp - minhp) / 2)
+		$("#hd").val(calculatehd());
 		$("#ac").val($(this).children("td:eq(2)").html())
 		$("#dpr").val($(this).children("td:eq(5)").html().split("-")[0])
 		$("#attackbonus").val($(this).children("td:eq(4)").html())
@@ -67,6 +71,7 @@ function loadpage() {
 
 	$("#hp").change(function() {
 		$("#hd").val(calculatehd());
+		calculatecr();
 	});
 
 	// parse monsterfeatures
@@ -93,28 +98,32 @@ function loadpage() {
 		var curdata = window.location.hash.split("#")[1].split(",")
 		$("#expectedcr").val(curdata[0])
 		$("#hp").val(curdata[1]);
+		$("#hp").val(calculatehp());
 		$("#ac").val(curdata[2]);
 		$("#dpr").val(curdata[3]);
 		$("#attackbonus").val(curdata[4]);
 		if (curdata[5] === "true") $("#saveinstead").attr("checked",true);
 		$("#size").val(curdata[6])
+		$("select#size").change();
 		$("#hd").val(curdata[7])
 		$("#con").val(curdata[8])
+		$("#hp").val(calculatehp());
 		if (curdata[9] === "true") $("#vulnerabilities").attr("checked",true);
 		$("#resistances").val(curdata[10]);
 		if (curdata[11] === "true") $("#flying").attr("checked",true);
 		$("#saveprofs").val(curdata[12])
 
-		curdata = window.location.hash.split("traits:")[1].split(",");
-		for (var i = 1; i < curdata.length; i++) {
-			$("input[id='"+curdata[i].split(":")[0]+"']").click();
-			if (curdata[i].split(":")[1]) $("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
+		if (window.location.hash.indexOf("traits:") !== -1) {
+			curdata = window.location.hash.split("traits:")[1].split(",");
+			for (var i = 1; i < curdata.length; i++) {
+				$("input[id='"+curdata[i].split(":")[0]+"']").click();
+				if (curdata[i].split(":")[1]) 	$("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
+			}
 		}
 
 		calculatecr();
 		}
 	}
-	parseurl();
 
 	// Monster Features table
 	$("#monsterfeatures tr td").not(":has(input)").click(function() {
@@ -141,6 +150,7 @@ function loadpage() {
 			parseurl();
 	})
 
+	parseurl();
 	calculatecr();
 }
 
@@ -228,9 +238,10 @@ function calculatecr() {
 	if (cr == "0.1875") cr = "1/8"
 	if (cr == "0.125") cr = "1/8"
 	if (cr == "0.0625") cr = "1/8"
-	if (cr.indexOf(".") !== -1) cr = Math.round(cr);
+	if (cr.indexOf(".") !== -1) cr = Math.round(cr).toString();
 
 	var finalcr = 0;
+	console.log (cr)
 	for (var i = 0; i < msbcr.cr.length; i++) {
 		if (msbcr.cr[i]._cr === cr) {
 			finalcr = i;
@@ -273,7 +284,7 @@ function calculatecr() {
 }
 
 function calculatehd() {
-	var avghp = $("#hdval").html().split("d")[1]/2+1;
+	var avghp = $("#hdval").html().split("d")[1]/2+0.5;
 	var conmod = Math.floor(($("#con").val() - 10) / 2);
 	var curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
 	if (!curhd) curhd = 1;
@@ -281,7 +292,7 @@ function calculatehd() {
 }
 
 function calculatehp() {
-	var avghp = $("#hdval").html().split("d")[1]/2+1;
+	var avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
 	var conmod = Math.floor(($("#con").val() - 10) / 2);
-	return (avghp + conmod)* $("#hd").val();
+	return Math.round ((avghp + conmod) * $("#hd").val());
 }
