@@ -241,7 +241,6 @@ function calculatecr() {
 	if (cr.indexOf(".") !== -1) cr = Math.round(cr).toString();
 
 	var finalcr = 0;
-	console.log (cr)
 	for (var i = 0; i < msbcr.cr.length; i++) {
 		if (msbcr.cr[i]._cr === cr) {
 			finalcr = i;

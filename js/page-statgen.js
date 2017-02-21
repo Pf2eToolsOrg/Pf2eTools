@@ -16,8 +16,8 @@ function loadstats() {
 	$("#rollbutton").click(rollstats);
 
 	// evaluate
+	var beingchanged = false;
 	$("input.score").change(function() {
-
 		var pointcount = 0;
 		var budget = $("#budget").val();
 		$(".score").each(function() {
@@ -28,14 +28,13 @@ function loadstats() {
 
 		if (pointcount > budget) {
 			$(this).val($(this).data("prev"));
-			return;
+			return false;
 		}
 
 		$(this).next(".finalscore").val($(this).val()+$(this).next(".mod").val());
-
 		$("#remaining").val(budget-pointcount);
-
 		$(this).data("prev", $(this).val());
+
 	})
 
 }
@@ -47,6 +46,7 @@ function rollstats() {
 		curroll = curroll[0] + curroll[1] + curroll[2];
 		rolls.push(curroll);
 	}
+
 	$("#rolled #rolls").prepend("<p>"+rolls.join(", ")+"</p>");
 	$("#rolled #rolls p:eq(10)").remove();
 }

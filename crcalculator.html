@@ -149,22 +149,37 @@ input[type=number]#hd::-webkit-outer-spin-button {
 		</div>
 	</header>
 	<nav class="container">
-		<ul class="nav nav-pills ">
-			<li role="presentation"><a href="5etools.html">5eTools</a></li>
-			<li role="presentation"><a href="classes.html">Classes</a></li>
-			<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
-			<li role="presentation"><a href="feats.html">Feats</a></li>
-			<li role="presentation"><a href="items.html">Items</a></li>
-			<li role="presentation"><a href="races.html">Races</a></li>
-			<li role="presentation"><a href="spells.html">Spells</a></li>
-			<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
-			<li role="presentation"><a href="conditions.html">Conditions</a></li>
-			<li role="presentation"><a href="lootgen.html">Loot Gen</a></li>
-<li role="presentation"><a href="statgen.html">Stats</a></li>
-			<li role="presentation" class="active"><a href="crcalculator.html">CR Calc</a></li>
-			<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
-		</ul>
-	</nav>
+			<ul class="nav nav-pills ">
+				<li role="presentation"><a href="5etools.html">5eTools</a></li>
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="classes.html">Classes</a></li>
+						<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
+						<li role="presentation"><a href="feats.html">Feats</a></li>
+						<li role="presentation"><a href="races.html">Races</a></li>
+					</ul>
+				</li>
+				<li role="presentation" class="dropdown active">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li role="presentation" class="active"><a href="crcalculator.html">CR Calculator</a></li>
+						<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
+						<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
+					</ul>
+				</li>
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
+						<li role="presentation"><a href="conditions.html">Conditions</a></li>
+						<li role="presentation"><a href="items.html">Items</a></li>
+						<li role="presentation"><a href="spells.html">Spells</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a href="statgen.html">Statgen</a></li>
+			</ul>
+		</nav>
 	<main class="container bodyContent">
 
 		<form id="crcalc" autocomplete="off">
