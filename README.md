@@ -14,7 +14,7 @@ Replace: $1$3
 ## How to import 5etools bestiary into Roll20
 Or: how to get every  monster into Roll20 with ease.
 
-1. Go to https://github.com/5egmeganon/D20plus. Follow the instructions for use: install Greasemonkey/Tampermonkey, install the script, then you're good to go.
+1. Go to https://github.com/5egmegaanon/D20plus. Follow the instructions for use: install Greasemonkey/Tampermonkey, install the script, then you're good to go.
 
 2. Open the Roll20 game you want to import the monsters into.
 
