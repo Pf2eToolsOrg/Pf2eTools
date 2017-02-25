@@ -24,3 +24,5 @@ https://raw.githubusercontent.com/5egmegaanon/5etools/master/data/bestiary.json
 4. Let it run. Your journal will fill up with monsters. It's not too laggy but can take a long time because of how many monsters there are.
 
 5. Bam. Done. If you are using the Shaped sheet, be sure to open up the NPC sheets and let them convert before using it.
+
+You can convert stat blocks to JSON for importing via [this converter](https://5egmegaanon.github.io/5etools/converter.html).
