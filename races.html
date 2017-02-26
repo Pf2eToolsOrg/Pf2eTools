@@ -46,6 +46,14 @@ input.search {
 	width: 62%;
 }
 
+form#filtertools {
+	font-size: 0.8em;
+}
+
+form#filtertools select {
+	margin: 1px;
+}
+
 .sortlabel {
 	display: block;
 	padding: 1px;
@@ -92,7 +100,7 @@ ul.list li:active {
 	color: white;
 }
 
-ul.list li span.ability, ul.list li span.size {
+ul.list li span.ability, ul.list li span.size, ul.list li span.source  {
 	font-size: 0.8em;
 	margin-left: 1em;
 	display: none;
@@ -264,9 +272,23 @@ table#stats tr.trait td p:first-of-type {
 							<button class="btn btn-default" type="button" id="reset">Reset</button>
 						</span>
 					</div>
-					<span class="sortlabel btn-group">
-						<button class="sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-					</span>
+					<form id="filtertools">
+						<select class="sourcefilter">
+							<option value="All">All Sources</option>
+						</select>
+						<select class="sizefilter">
+							<option value="All">All Sizes</option>
+						</select>
+						<select class="bonusfilter">
+							<option value="All">All Ability Bonuses</option>
+						</select>
+						<span class="sortlabel btn-group">
+							<button class="sort btn btn-default btn-xs" type="button" data-sort="ability">Ability</button>
+							<button class="sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+							<button class="sort btn btn-default btn-xs" type="button" data-sort="size">Size</button>
+							<button class="sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+						</span>
+					</form>
 				<ul class="list races" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 
 				</ul>

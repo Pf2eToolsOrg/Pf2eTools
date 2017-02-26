@@ -1,4 +1,13 @@
 
+function parsesource (src) {
+	source = src;
+	if (source === "Player's Handbook") source = "PHB";
+	if (source === "Elemental Evil Player's Companion") source = "EEPC";
+	if (source === "Unearthed Arcana: Eberron") source = "UA Eberron";
+	if (source === "Unearthed Arcana: Feats") source = "UA Feats";
+	return source;
+}
+
 
 function parsesize (size) {
 	if (size == "T") size = "Tiny";
@@ -8,6 +17,14 @@ function parsesize (size) {
 	if (size == "H") size = "Huge";
 	if (size == "G") size = "Gargantuan";
 	return size;
+}
+
+function asc_sort(a, b){
+    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+}
+
+function dec_sort(a, b){
+    return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 window.onload = loadfeats;
@@ -20,16 +37,32 @@ function loadfeats() {
 		for (var i = 0; i < featlist.length; i++) {
 			var curfeat = featlist[i];
 			var name = curfeat.name;
-			$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
+			$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='source'>Source: "+curfeat.source+" ("+parsesource(curfeat.source)+")</span></li>");
+
+			if (!$("select.sourcefilter:contains(\""+curfeat.source+"\")").length) {
+				$("select.sourcefilter").append("<option value='"+parsesource(curfeat.source)+"'>"+curfeat.source+"</option>");
+			}
 		}
 
+		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+		$("select.sourcefilter").val("All");
+
 		var options = {
-			valueNames: ['name'],
+			valueNames: ['name', 'source'],
 			listClass: "feats"
 		}
 
 		var featslist = new List("listcontainer", options);
-		featslist.sort ("name")
+		featslist.sort ("name");
+
+		$("form#filtertools select").change(function(){
+			var sourcefilter = $("select.sourcefilter").val();
+
+			featslist.filter(function(item) {
+				if (sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1) return true;
+				return false;
+			});
+		});
 
 		$("ul.list li").mousedown(function(e) {
 			if (e.which === 2) {

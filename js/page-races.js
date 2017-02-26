@@ -1,4 +1,18 @@
 
+function parsesource (src) {
+	source = src;
+	if (source === "Player's Handbook") source = "PHB";
+	if (source === "Elemental Evil Player's Companion") source = "EEPC";
+	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
+	if (source === "Dungeon Master's Guide") source = "DMG";
+	if (source === "Volo's Guide to Monsters") source = "VGM";
+	if (source === "Unearthed Arcana: Eberron") source = "UA Eberron";
+	if (source === "Unearthed Arcana: Waterborne Adventures") source = "UA Waterborne Adventures";
+	if (source === "Unearthed Arcana: That Old Black Magic") source = "UA TOBM";
+	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA Gh";
+	return source;
+}
+
 
 function parsesize (size) {
 	if (size == "T") size = "Tiny";
@@ -15,6 +29,14 @@ function tagcontent (curitem, tag, multi=false) {
 	return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
 }
 
+function asc_sort(a, b){
+    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+}
+
+function dec_sort(a, b){
+    return ($(b).text()) > ($(a).text()) ? 1 : -1;
+}
+
 window.onload = loadraces;
 
 function loadraces() {
@@ -25,17 +47,56 @@ function loadraces() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		if (!racelist[i].ability) racelist[i].ability = "";
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='ability'>"+racelist[i].ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size'>"+parsesize(racelist[i].size)+"</span></li>");
+		if (!currace.ability) currace.ability = "";
+		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='ability'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size'>"+parsesize(currace.size)+"</span> <span class='source'>Source: "+currace.source+" ("+parsesource(currace.source)+")</span></li>");
+
+		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
+			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
+		}
+
+		if (!$("select.sizefilter:contains(\""+parsesize(currace.size)+"\")").length) {
+			$("select.sizefilter").append("<option value='"+parsesize(currace.size)+"'>"+parsesize(currace.size)+"</option>");
+		}
+
+		if (!$("select.bonusfilter:contains(\""+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"\")").length) {
+			$("select.bonusfilter").append("<option value='"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</option>");
+		}
 	}
 
+	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+	$("select.sourcefilter").val("All");
+
+	$("select.sizefilter option").sort(asc_sort).appendTo('select.sizefilter');
+	$("select.sizefilter").val("All");
+
+	$("select.bonusfilter option").sort(asc_sort).appendTo('select.bonusfilter');
+	$("select.bonusfilter").val("All");
+
+
 	var options = {
-		valueNames: ['name', 'ability', 'size'],
+		valueNames: ['name', 'ability', 'size', 'source'],
 		listClass: "races"
 	}
 
 	var raceslist = new List("listcontainer", options);
 	raceslist.sort ("name")
+
+	$("form#filtertools select").change(function(){
+		var sourcefilter = $("select.sourcefilter").val();
+		var sizefilter = $("select.sizefilter").val();
+		var bonusfilter = $("select.bonusfilter").val();
+
+		raceslist.filter(function(item) {
+			var rightsource = false;
+			var rightsize = false;
+			var rightbonuses = false;
+			if (sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1) rightsource = true;
+			if (sizefilter === "All" || item.values().size.indexOf(sizefilter) !== -1) rightsize = true;
+			if (bonusfilter === "All" || item.values().ability.indexOf(bonusfilter) !== -1) rightbonuses = true;
+			if (rightsource && rightsize && rightbonuses) return true;
+			return false;
+		});
+	});
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {

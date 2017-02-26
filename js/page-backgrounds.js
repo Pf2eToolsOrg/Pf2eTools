@@ -8,9 +8,26 @@ function parsesize (size) {
 	return size;
 }
 
+function parsesource (src) {
+	source = src;
+	if (source === "Player's Handbook") source = "PHB";
+	if (source === "Curse of Strahd") source = "CoS";
+	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
+	if (source === "Unearthed Arcana") source = "UA";
+	return source;
+}
+
 function tagcontent (curitem, tag, multi=false) {
 	if (!curitem.getElementsByTagName(tag).length) return false;
 	return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
+}
+
+function asc_sort(a, b){
+    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+}
+
+function dec_sort(a, b){
+    return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 window.onload = loadbackgrounds;
@@ -24,16 +41,33 @@ function loadbackgrounds () {
 	for (var i = 0; i < bglist.length; i++) {
 		var curbg = bglist[i];
 		var name = curbg.name;
-		$("ul.backgrounds").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name.replace("Variant ","")+"</span></li>");
+		$("ul.backgrounds").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name.replace("Variant ","")+"</span> <span class='source'>Source: "+curbg.source+" ("+parsesource(curbg.source)+")</span></li>");
+
+		if (!$("select.sourcefilter:contains(\""+curbg.source+"\")").length) {
+			$("select.sourcefilter").append("<option value='"+parsesource(curbg.source)+"'>"+curbg.source+"</option>");
+		}
 	}
 
+	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+	$("select.sourcefilter").val("All");
+
 	var options = {
-		valueNames: ['name'],
+		valueNames: ['name', 'source'],
 		listClass: "backgrounds"
 	}
 
 	var backgroundslist = new List("listcontainer", options);
 	backgroundslist.sort ("name")
+
+	$("form#filtertools select").change(function(){
+		var sourcefilter = $("select.sourcefilter").val();
+
+		backgroundslist.filter(function(item) {
+			if (sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1) return true;
+			return false;
+		});
+	});
+
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
