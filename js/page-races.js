@@ -58,9 +58,9 @@ function loadraces() {
 			$("select.sizefilter").append("<option value='"+parsesize(currace.size)+"'>"+parsesize(currace.size)+"</option>");
 		}
 
-		if (!$("select.bonusfilter:contains(\""+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"\")").length) {
-			$("select.bonusfilter").append("<option value='"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</option>");
-		}
+		// if (!$("select.bonusfilter:contains(\""+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"\")").length) {
+		// 	$("select.bonusfilter").append("<option value='"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</option>");
+		// }
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
@@ -68,9 +68,6 @@ function loadraces() {
 
 	$("select.sizefilter option").sort(asc_sort).appendTo('select.sizefilter');
 	$("select.sizefilter").val("All");
-
-	$("select.bonusfilter option").sort(asc_sort).appendTo('select.bonusfilter');
-	$("select.bonusfilter").val("All");
 
 
 	var options = {
