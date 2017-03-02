@@ -158,7 +158,6 @@ function calculatecr() {
 	var expectedcr = parseInt($("#expectedcr").val());
 
 	var hp = parseInt($("#crcalc #hp").val()) ;
-	if ($("#flying").prop("checked")) hp *= 0.5;
 
 	if ($("#resistances").val() === "res") {
 			if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
