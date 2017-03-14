@@ -52,6 +52,10 @@ form#filtertools select {
 	margin: 1px;
 }
 
+form#filtertools small:hover {
+	cursor: pointer;
+}
+
 .sortlabel {
 	display: block;
 	float: right;
@@ -272,11 +276,13 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 						<button class="sort btn btn-default btn-xs" type="button" data-sort="level">Level</button>
 						<button class="sort btn btn-default btn-xs" type="button" data-sort="school">School</button>
 					</span>
+					<small><br>Search for "psionics" to see only psionic disciplines.</small>
 				</form>
 
 				<ul class="list spells" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 
 				</ul>
+
 			</div>
 			<div class="col-sm-6">
 				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
