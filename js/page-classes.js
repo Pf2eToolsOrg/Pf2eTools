@@ -265,6 +265,7 @@ function useclass (id) {
 // other features
 		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
 			var curfeature = curlevel.feature[a];
+			var link = curlevel._level + "_" + a;
 
 
 			if (curfeature._optional === "YES") {
@@ -290,11 +291,11 @@ function useclass (id) {
 			// write out list to class table
 			var multifeature = "";
 			if (curlevel.feature.length !== 1 && a !== 0) multifeature = ", ";
-			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+encodeURIComponent(curfeature.name).replace("'","%27")+"'>"+curfeature.name+"</a>")
+			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+link+"'>"+curfeature.name+"</a>")
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			$("#features").after("<tr><td colspan='6' class='feature"+subfeature+issubclass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+encodeURIComponent(curfeature.name).replace("'","%27")+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
+			$("#features").after("<tr><td colspan='6' class='feature"+subfeature+issubclass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
 		}
 
 	}
