@@ -19,11 +19,11 @@ function parseschool (school) {
 	if (school == "N") return "necromancy";
 	if (school == "T") return "transmutation";
 	if (school == "C") return "conjuration";
-	return false;
+	return "";
 }
 
 function parsespelllevel (level) {
-	if (isNaN (level)) return false;
+	if (isNaN (level)) return "";
 	if (level === "0") return "cantrip"
 	if (level === "2") return level+"nd";
 	if (level === "3") return level+"rd";
@@ -49,12 +49,24 @@ function loadspells() {
 		for (var i = 0; i < spelllist.length; i++) {
 			var curspell = spelllist[i];
 			var name = curspell.name;
-			var leveltext = "";
-			if (curspell.level !== "0") leveltext = "level"
-			var isritual="";
-			if (curspell.ritual === "YES") isritual = " (ritual)";
+			if (curspell.level[0] === "P") name += " (Psionics)";
 
-			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name'>"+curspell.name+"</span> <span class='level'>"+parsespelllevel(curspell.level)+" "+leveltext+isritual+"</span> <span class='school'>"+parseschool (curspell.school)+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			var leveltext = parsespelllevel(curspell.level);
+			if (parseInt(curspell.level) > 0) leveltext += " level"
+			if (curspell.ritual === "YES") leveltext += " (ritual)";
+
+			var schooltext = parseschool(curspell.school);
+			if (!schooltext) {
+				if (curspell.level[1] === "D") {
+					schooltext = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
+					schooltext += " Discipline";
+				} else if (curspell.level[1] === "T") {
+					schooltext = "Psionic Talent";
+				}
+			}
+
+
+			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name'>"+name+"</span> <span class='level'>"+leveltext+"</span> <span class='school'>"+schooltext+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -187,24 +199,39 @@ function usespell (id) {
 
 			$("th#name").html(curspell.name);
 
-			$("td span#school").html(parseschool(curspell.school));
-			if (curspell.level === "0") {
-				$("td span#school").css('textTransform', 'capitalize');
-				$("td span#level").css('textTransform', 'lowercase!important');
-				$("td span#level").html(" cantrip").detach().appendTo("td span#school");
+			if (curspell.level[0] !== "P") {
+				$("td span#school").html(parseschool(curspell.school));
+				if (curspell.level === "0") {
+					$("td span#school").css('textTransform', 'capitalize');
+					$("td span#level").css('textTransform', 'lowercase!important');
+					$("td span#level").html(" cantrip").detach().appendTo("td span#school");
+				} else {
+					$("td span#school").css('textTransform', 'lowercase');
+					$("td span#level").html(parsespelllevel (curspell.level)+"-level");
+				}
+
+				if (curspell.ritual === "YES") {
+					$("td span#ritual").show();
+				} else $("td span#ritual").hide();
+
+				$("td#components span").html(curspell.components);
+				$("td#range span").html(curspell.range);
+				$("td#castingtime span").html(curspell.time);
+				$("td#duration span").html(curspell.duration);
 			} else {
-				$("td span#school").css('textTransform', 'lowercase');
-				$("td span#level").html(parsespelllevel (curspell.level)+"-level");
+				var psitype = "";
+				if (curspell.level[1] === "D") {
+					psitype = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
+					psitype += " Discipline";
+				} else if (curspell.level[1] === "T") {
+					psitype = "Psionic Talent";
+				}
+				$("td#levelschoolritual").html(psitype);
+				$("td#castingtime").html("");
+				$("td#range").html("");
+				$("td#components").html("");
+				$("td#duration").html("");
 			}
-
-			if (curspell.ritual === "YES") {
-				$("td span#ritual").show();
-			} else $("td span#ritual").hide();
-
-			$("td#components span").html(curspell.components)
-			$("td#range span").html(curspell.range)
-			$("td#castingtime span").html(curspell.time)
-			$("td#duration span").html(curspell.duration)
 
 			$("tr.text").remove();
 			var textlist = curspell.text;
@@ -214,7 +241,11 @@ function usespell (id) {
 				texthtml = "<p>"+textlist+"</p>";
 			} else for (var i = 0; i < textlist.length; i++) {
 				if (!textlist[i]) continue;
-				texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion","")+"</p>";
+				if (curspell.level[0] !== "P") {
+					texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion","")+"</p>";
+				} else {
+					texthtml = texthtml + "<p>"+textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus)\./g,"<strong>$&</strong>")+"</p>";
+				}
 			}
 			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
 

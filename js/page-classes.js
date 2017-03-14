@@ -165,6 +165,7 @@ function useclass (id) {
 				$("tr#level"+curlevel._level+" td.spellsknown").html(curlevel.spellsknown);
 			}
 
+
 			if (curlevel.invocationsknown) {
 				if (!$(".invocationsknown").length) {
 					$("th.spellslots5").after("<th class='spellslots newfeature'>Spell Slots</th> <th class='slotlevel newfeature'>Slot Level</th> <th class='invocationsknown newfeature'>Invocations Known</th>");
@@ -217,7 +218,48 @@ function useclass (id) {
 					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
 					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
 				}
+
 				$("tr#level"+curlevel._level+" td.sorcerypoints").html(curlevel.sorcerypoints);
+			}
+
+			if (curlevel.psilimit) {
+				if (!$(".psilimit").length) {
+					$("th.spellslots0").after("<th class='psilimit newfeature'>Psi Limit</th>");
+					$("td.spellslots0").after("<td class='psilimit newfeature'></td>");
+					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
+				}
+				$("tr#level"+curlevel._level+" td.psilimit").html(curlevel.psilimit);
+			}
+
+			if (curlevel.psipoints) {
+				if (!$(".psipoints").length) {
+					$("th.spellslots0").after("<th class='psipoints newfeature'>Psi Points</th>");
+					$("td.spellslots0").after("<td class='psipoints newfeature'></td>");
+					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
+				}
+				$("tr#level"+curlevel._level+" td.psipoints").html(curlevel.psipoints);
+			}
+
+			if (curlevel.disciplinesknown) {
+				if (!$(".disciplinesknown").length) {
+					$("th.spellslots0").after("<th class='disciplinesknown newfeature'>Disciplines Known</th>");
+					$("td.spellslots0").after("<td class='disciplinesknown newfeature'></td>");
+					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
+				}
+				$("tr#level"+curlevel._level+" td.disciplinesknown").html(curlevel.disciplinesknown);
+			}
+
+			if (curlevel.talentsknown) {
+				if (!$(".talentsknown").length) {
+					$("th.spellslots0").after("<th class='talentsknown newfeature'>Talents Known</th>");
+					$("td.spellslots0").after("<td class='talentsknown newfeature'></td>");
+					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
+					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
+				}
+				$("tr#level"+curlevel._level+" td.talentsknown").html(curlevel.talentsknown);
 			}
 
 // other features
