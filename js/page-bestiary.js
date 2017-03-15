@@ -85,7 +85,7 @@ function loadmonsters() {
 		var cr = monsters[i].cr;
 
 
-		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'><span style='display: none;'>Type: </span>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></li>");
+		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></li>");
 
 		if (!$("select.typefilter:contains('"+type+"')").length && !$("select.typefilter:contains('"+type+" \\(')").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
@@ -141,7 +141,7 @@ function loadmonsters() {
 
 	// filtering
 	$("form#filtertools select").change(function(){
-		var typefilter = "Type: "+$("select.typefilter").val();
+		var typefilter = $("select.typefilter").val();
 		var sourcefilter = $("select.sourcefilter").val();
 		var crfilter = "CR "+$("select.crfilter").val()+" ";
 		var thirdpartyfilter = $("select.3ppfilter").val();
@@ -152,7 +152,7 @@ function loadmonsters() {
 			var rightcr = false;
 			var rightparty = false;
 
-			if (typefilter === "Type: All" || item.values().type === typefilter) righttype = true;
+			if (typefilter === "All" || item.values().type === typefilter) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")") rightsource = true;
 			if (crfilter === "CR All " || item.values().cr === crfilter) rightcr = true;
 			if (thirdpartyfilter === "All") rightparty = true;
