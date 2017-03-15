@@ -57,9 +57,9 @@ form#filtertools select {
 
 .sortlabel {
 	display: block;
-	float: right;
+	/*float: right;
 	text-align: right;
-	padding: 1px;
+	padding: 1px;*/
 }
 
 .sortlabel span {
@@ -78,12 +78,22 @@ form#filtertools select {
 ul#monsters {
 	list-style-type: none;
 	padding-left: 0px;
-	font-size: 1.1em;
+	height: 100%;
+	max-height: 40em;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding-top: 1em;
+	clear: both;
+	font-size: 0.8em;
 }
 
 ul#monsters li {
 	padding: 1px;
 	cursor: pointer;
+	display: block;
+	border-bottom: 1px solid grey;
+	max-height: 3em;
+	overflow-y: hidden;
 }
 
 ul#monsters li:hover {
@@ -95,16 +105,11 @@ ul#monsters li:active {
 }
 
 ul#monsters li span {
-	font-size: 0.8em;
-	margin-left: 1em;
-	display: none;
+	padding: 1px;
 }
 
 ul#monsters li span.name {
-	font-weight: 400;
-	font-size: initial;
-	margin-left: initial;
-	display: initial;
+	font-weight: bold;
 }
 
 ul#monsters li:hover span {
@@ -112,8 +117,8 @@ ul#monsters li:hover span {
 }
 
 ul#monsters li span.name, ul#monsters li span.source {
-	display: initial;
-	margin-left: initial;
+	display: inline-block;
+	text-transform: capitalize;
 }
 
 th#name span.source {
@@ -159,10 +164,7 @@ span.sourceLMoP {
 
 table#stats {
 	width: 100%;
-	min-width: 200px;
-	max-width: 400px;
 	margin: auto;
-	background: #fdf1dc;
 	font-size: .9em;
 	font-family: 'Convergence', sans-serif;
 	table-layout: fixed;
@@ -170,20 +172,22 @@ table#stats {
 
 table#stats td, table#stats th {
 	padding: 1px 0.7em;
-	color: #922610;
 }
 
 th.border {
 	height: 10px;
 	background: #e69a28;
 	border: 1px solid black;
+	display: none;
 }
 
 td.divider {
 	padding: 0 4px!important;
 }
+
 td.divider div {
-	background: #922610;
+	/*background: #922610;*/
+	background: black;
 	height: 4px;
 	margin: 4px 0;
 }
@@ -223,7 +227,8 @@ tr#actions td, tr#reactions td, tr#legendaries td {
 	font-size: 1.6em;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
-	border-bottom: 1px solid #a8513b;
+	/*border-bottom: 1px solid #a8513b;*/
+	border-bottom: 1px solid black;
 	vertical-align: bottom!important;
 	padding-left: 0.2em;
 }
@@ -317,7 +322,7 @@ tr td > p.spells ~ p.spells{
 
 		<div class="row">
 
-			<div class="col-sm-5" id="monstercontainer">
+			<div class="col-sm-6" id="monstercontainer">
 				<div class="input-group" style="vertical-align: top;">
 					<input type="search" id="search" class="search form-control" placeholder="Find monster...">
 					<span class="input-group-btn">
@@ -341,22 +346,18 @@ tr td > p.spells ~ p.spells{
 						<option value="All">All Types</option>
 					</select>
 						<span class="sortlabel btn-group">
-							<button class="sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
-							<button class="sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
-							<button class="sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
-							<button class="sort btn btn-default btn-xs" type="button" sort="cr" sortby="asc">CR</button>
+							<button class="col-xs-4 sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
+							<button class="col-xs-2 sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
+							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
+							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" sort="cr" sortby="asc">CR</button>
 						</span>
 				</form>
-
-				<div style="height: 100%; max-height: 600px; overflow-y: scroll; overflow-x: hidden; padding-top: 1em; clear: both;">
 					<ul id="monsters" class="list">
 
 					</ul>
-				</div>
 				<hr>
 			</div>
-			<div class="col-sm-7">
-				<div style="height: 100%; max-height: 565px; overflow-y: auto; overflow-x: visible;">
+			<div class="col-sm-6">
 					<table id="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 						<tr>
@@ -438,7 +439,6 @@ tr td > p.spells ~ p.spells{
 							</tr>
 							<tr><th class="border" colspan="6"></th></tr>
 						</table>
-					</div>
 					<div id="output"></div>
 					<br>
 					<button class="btn btn-block btn-default btn-xs" type="button" id="expandcollapse">Toggle Search</button>
