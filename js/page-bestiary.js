@@ -85,7 +85,7 @@ function loadmonsters() {
 		var cr = monsters[i].cr;
 
 
-		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name'>"+name+"</span> <span title=\""+origsource+"\" class='source source"+source+"'>("+source+")</span> <span class='type'>Type: "+type+"</span> <span class='cr'>CR "+cr+" </span></li>");
+		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'><span style='display: none;'>Type: </span>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></li>");
 
 		if (!$("select.typefilter:contains('"+type+"')").length && !$("select.typefilter:contains('"+type+" \\(')").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")

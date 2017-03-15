@@ -58,44 +58,55 @@ form#filtertools small:hover {
 
 .sortlabel {
 	display: block;
-	float: right;
-	text-align: right;
-	padding: 1px;
+	/*float: right;
+	text-align: right;*/
 }
 
 ul.list {
 	list-style-type: none;
 	padding-left: 0px;
-	font-size: 1.1em;
 	height: 100%;
-	max-height: 250px;
+	max-height: 40em;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	padding-top: 1em;
 	clear: both;
+	font-size: 0.8em;
 }
 
 ul.list li {
 	padding: 1px;
 	cursor: pointer;
+	display: block;
+	border-bottom: 1px solid grey;
+	max-height: 3em;
+	overflow-y: hidden;
 }
 
 ul.list li:hover {
 	background: lightgrey;
+	max-height: 100%;
 }
 
 ul.list li:active {
 	color: white;
 }
 
+ul.list li span {
+
+}
+
 ul.list li span.source {
 	font-size: 0.8em;
 }
 
+ul.list li span.name {
+	font-weight: bold;
+}
+
 ul.list li span.level, ul.list li span.classes, ul.list li span.school {
-	font-size: 0.8em;
-	margin-left: 1em;
-	display: none;
+	/*font-size: 0.8em;*/
+	display: inline-block;
 	text-transform: capitalize;
 }
 
@@ -148,9 +159,6 @@ pan.sourceLMoP {
 
 table#stats {
 	width: 100%;
-	min-width: 200px;
-	max-width: 400px;
-	background: #fdf1dc;
 	font-size: .9em;
 	table-layout: fixed;
 }
@@ -160,7 +168,7 @@ table#stats td, table#stats th {
 }
 
 table#stats th {
-	color: #922610;
+	color: rgb(0, 107, 196);
 }
 
 table#stats span {
@@ -170,11 +178,12 @@ table#stats span {
 th.border {
 	height: 10px;
 	background: #e69a28;
-	border: 1px solid black;
+	display: none;
 }
 
 td.divider div {
-	background: #922610;
+	/*background: #922610;*/
+	background: #000;
 	height: 4px;
 	margin: 4px 0;
 }
@@ -250,7 +259,7 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 	<main class="container bodyContent">
 
 		<div class="row">
-			<div class="col-sm-6" id="listcontainer">
+			<div class="col-md-6" id="listcontainer">
 					<div class="input-group">
 						<input type="search" id="search" class="search form-control" placeholder="Find spell...">
 						<span class="input-group-btn">
@@ -271,21 +280,20 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 					<select class="classfilter">
 						<option value="All">All Classes</option>
 					</select>
-					<span class="sortlabel btn-group">
-						<button class="sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-						<button class="sort btn btn-default btn-xs" type="button" data-sort="level">Level</button>
-						<button class="sort btn btn-default btn-xs" type="button" data-sort="school">School</button>
-					</span>
 					<small><br>Search for "psionics" to see only psionic disciplines.</small>
+					<span class="sortlabel btn-group">
+						<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+						<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="level">Level</button>
+						<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="school">School</button>
+						<button class="col-xs-3 sort btn btn-default btn-xs" type="button" disabled>Classes</button>
+					</span>
 				</form>
 
-				<ul class="list spells" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
+				<ul class="list spells">
 
 				</ul>
-
 			</div>
-			<div class="col-sm-6">
-				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
+			<div class="col-md-6">
 					<table id="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 						<tr>
@@ -312,7 +320,6 @@ table#stats #castingtime span, table#stats #range span, table#stats #components 
 						</tr>
 						<tr><th class="border" colspan="6"></th></tr>
 					</table>
-				</div>
 			</div>
 		</div>
 	</main>

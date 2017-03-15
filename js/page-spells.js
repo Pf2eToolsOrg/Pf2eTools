@@ -60,13 +60,15 @@ function loadspells() {
 				if (curspell.level[1] === "D") {
 					schooltext = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
 					schooltext += " Discipline";
+					leveltext = "Discipline";
 				} else if (curspell.level[1] === "T") {
 					schooltext = "Psionic Talent";
+					leveltext = "Talent";
 				}
 			}
 
 
-			$("ul.spells").append("<li id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name'>"+name+"</span> <span class='level'>"+leveltext+"</span> <span class='school'>"+schooltext+"</span> <span class='classes'>"+curspell.classes+"</span> </li>");
+			$("ul.spells").append("<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-4'>"+name+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-3'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> </li>");
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -128,11 +130,14 @@ function loadspells() {
 		$("form#filtertools select").change(function(){
 			var levelfilter = $("select.levelfilter").val();
 			if (levelfilter !== "All") {
-				levelfilter = parsespelllevel (levelfilter);
-				if (levelfilter !== "cantrip") {
-					levelfilter = levelfilter + " level"
-				} else levelfilter = "cantrip ";
-				if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
+
+				if (levelfilter[0] !== "d" && levelfilter[0] !== "t") {
+					levelfilter = parsespelllevel (levelfilter);
+					if (levelfilter !== "cantrip") {
+						levelfilter = levelfilter + " level"
+					} else levelfilter = "cantrip";
+					if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
+				} 
 			} else if ($(".ritualfilter").val() === "Rituals") levelfilter = "(ritual)"
 
 			var schoolfilter = $("select.schoolfilter").val();
@@ -190,6 +195,10 @@ function sortspells(a, b, o) {
 	if (o.valueName === "level") {
 		var alevel = a._values.level.replace(" ", "").replace("cantrip", "0")[0];
 		var blevel = b._values.level.replace(" ", "").replace("cantrip", "0")[0];
+		if (alevel === "D") alevel = "10";
+		if (blevel === "D") blevel = "10";
+		if (alevel === "T") alevel = "11";
+		if (blevel === "T") blevel = "11";
 		return (parseInt(blevel) > parseInt(alevel)) ? 1 : -1;
 	}
 
