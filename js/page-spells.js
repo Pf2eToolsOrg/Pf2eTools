@@ -21,7 +21,7 @@ function parseschool (school) {
 	if (school == "C") return "conjuration";
 	return "";
 }
-
+ 
 function parsespelllevel (level) {
 	if (isNaN (level)) return "";
 	if (level === "0") return "cantrip"
@@ -137,7 +137,7 @@ function loadspells() {
 						levelfilter = levelfilter + " level"
 					} else levelfilter = "cantrip";
 					if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
-				} 
+				}
 			} else if ($(".ritualfilter").val() === "Rituals") levelfilter = "(ritual)"
 
 			var schoolfilter = $("select.schoolfilter").val();
