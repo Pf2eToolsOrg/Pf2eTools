@@ -48,7 +48,7 @@ function loadraces() {
 		var currace = racelist[i];
 		var name = currace.name;
 		if (!currace.ability) currace.ability = "";
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span> <span class='ability'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size'>"+parsesize(currace.size)+"</span> <span class='source'>Source: "+currace.source+" ("+parsesource(currace.source)+")</span></li>");
+		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-3'>"+name+"</span> <span class='ability col-xs-4'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-3' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");

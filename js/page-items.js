@@ -52,6 +52,10 @@ function parsetype (type) {
 	if (type === "GUN") return "Firearm"
 	if (type === "SIMW") return "Simple Weapon"
 	if (type === "MARW") return "Martial Weapon"
+	if (type === "VEH") return "Vehicle"
+	if (type === "TAH") return "Tack and Harness"
+	if (type === "MNT") return "Mount"
+	if (type === "TG") return "Trade Good"
 	return "n/a"
 }
 
@@ -123,10 +127,10 @@ function loaditems() {
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).replace("'","%27")+"\"><span class='name'>"+name+"</span> <span class='type'>Type: "+type.join(", ")+"</span> <span class='sourcename'>Source: "+source+" (<span class='source'>"+parsesource(source)+"</span>)</span> <span class='rarity'>Rarity: "+rarity+"</span></li>");
+		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).replace("'","%27")+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></li>");
 
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
-			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+parsesource(source)+"</option>")
+			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+source+"</option>")
 		}
 	}
 
@@ -175,7 +179,7 @@ function loaditems() {
 			var rightrarity = false;
 			if (typefilter === "All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
-			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
+			if (rarityfilter === "All" || item.values().rarity === rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
 			return false;
 		});
@@ -186,7 +190,7 @@ function loaditems() {
 			var rightrarity = false;
 			if (typefilter === "All" || item.values().type.indexOf(typefilter) !== -1) righttype = true;
 			if (sourcefilter === "All" || item.values().source === "("+sourcefilter+")" || item.values().source === sourcefilter.replace(" ","")) rightsource = true;
-			if (rarityfilter === "All" || item.values().rarity === "Rarity: " + rarityfilter) rightrarity = true;
+			if (rarityfilter === "All" || item.values().rarity === rarityfilter) rightrarity = true;
 			if (righttype && rightsource && rightrarity) return true;
 			return false;
 		});
@@ -211,9 +215,11 @@ function loaditems() {
 				}
 
 		$(this).next("ul.list").animate({
-			maxHeight: "500px"
+			maxHeight: "500px",
+			display: "block"
 		}).siblings("ul.list").animate({
-			maxHeight: "0"
+			maxHeight: "0",
+			display: "none"
 		})
 
 	})

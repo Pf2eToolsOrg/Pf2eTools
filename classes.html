@@ -159,13 +159,12 @@ table.stats {
 table.stats, #classtable table {
 	width: 100%;
 	min-width: 200px;
-	background: #fdf1dc;
 	font-size: .9em;
 	position: relative;
 }
 
 table th {
-	color: #922610;
+	/*color: #922610;*/
 	padding: 1px 0.5em;
 	vertical-align: bottom;
 }
@@ -181,12 +180,12 @@ table span {
 
 th.border {
 	height: 10px;
-	background: #e69a28;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 td.divider div {
-	background: #922610;
+	/*background: #922610;*/
+	background: #000;
 	height: 4px;
 	margin: 4px 0;
 }
@@ -195,7 +194,7 @@ th#name {
 	font-size: 2em;
 	font-family: serif;
 	font-weight: 500;
-	color: #922610!important;
+	/*color: #922610!important;*/
 }
 
 table.stats span.name {
@@ -212,7 +211,7 @@ td#hp, td#prof, td#equipment {
 }
 
 td#hp h5, td#prof h5, td#equipment h5 {
-	color: #922610;
+	/*color: #922610;*/
 	font-family: serif;
 	font-weight: 500;
 	font-size: 1.5em;
@@ -226,8 +225,9 @@ td.feature p {
 .feature strong {
 	margin: 0.2em;
 	display: block;
-	border-bottom: 1px solid #922610;
-	color: #922610;
+	/*border-bottom: 1px solid #922610;*/
+	border-bottom: 1px solid #000;
+	/*color: #922610;*/
 	font-family: serif;
 	font-weight: 500;
 	font-size: 1.5em;
@@ -298,8 +298,10 @@ div#subclasses span.active {
 }
 
 .subclass strong {
-	color: #337ab7;
-	border-bottom-color: #337ab7;
+	color: #666;
+	border-bottom-color: #666;
+	/*color: #337ab7;*/
+	/*border-bottom-color: #337ab7;*/
 }
 
 .feature.subfeature {
@@ -498,7 +500,6 @@ div#subclasses span.active {
 			</div>
 			<div class="col-md-9">
 				<div id="subclasses"></div>
-				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 					<table id="stats" class="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 							<tr id="features"><td colspan="6"><div></div></td></tr>
@@ -506,7 +507,6 @@ div#subclasses span.active {
 							<tr><th class="border" colspan="6"></th></tr>
 						</table>
 
-					</div>
 				</div>
 			</div>
 		</main>

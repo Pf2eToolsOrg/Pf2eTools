@@ -54,48 +54,48 @@ form#filtertools select {
 
 .sortlabel {
 	display: block;
-	float: right;
-	text-align: right;
-	padding: 1px;
+	/*float: right;
+	text-align: right;*/
 }
+
 
 ul.list {
 	list-style-type: none;
 	padding-left: 0px;
-	font-size: 1.1em;
 	height: 100%;
-	max-height: 250px;
+	max-height: 40em;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	padding-top: 1em;
 	clear: both;
+	font-size: 0.8em;
 }
 
 ul.list li {
-	padding: 1px;
+	padding: 1px!important;
 	cursor: pointer;
+	display: block;
+	border-bottom: 1px solid grey;
+	max-height: 3em;
+	overflow-y: hidden;
 }
 
 ul.list li:hover {
 	background: lightgrey;
+	max-height: 100%;
+}
+
+ul.list li span {
+	display: inline-block;
+	padding-left: 0.5em;
 }
 
 ul.list li:active {
 	color: white;
 }
 
-ul.list li span.source {
-	font-size: 0.8em;
-}
-
-ul.list li span.source, ul.list li span.type {
-	font-size: 0.8em;
-	margin-left: 1em;
-	display: none;
-}
-
-ul.list li:hover span {
-	display: block;
+ul.list li span.name {
+	font-weight: bold;
 }
 
 th#name span.source {
@@ -137,15 +137,13 @@ span.sourcePotA {
 	color: blue;
 }
 
-pan.sourceLMoP {
+span.sourceLMoP {
 	color: lightgreen;
 }
 
 table#stats {
 	width: 100%;
-	min-width: 200px;
-	max-width: 400px;
-	background: #fdf1dc;
+	/*background: #fdf1dc;*/
 	font-size: .9em;
 	table-layout: fixed;
 }
@@ -155,7 +153,8 @@ table#stats td, table#stats th {
 }
 
 table#stats th {
-	color: #922610;
+	/*color: #922610;*/
+	color: rgb(0, 107, 196);
 }
 
 table#stats span {
@@ -164,12 +163,13 @@ table#stats span {
 
 th.border {
 	height: 10px;
-	background: #e69a28;
-	border: 1px solid black;
+	/*background: #e69a28;*/
+	/*border: 1px solid black;*/
 }
 
 td.divider div {
-	background: #922610;
+	/*background: #922610;*/
+	background: #000;
 	height: 4px;
 	margin: 4px 0;
 }
@@ -259,8 +259,8 @@ table#stats #ability span, table#stats #size span, table#stats #speed span {
 						<option value="All">All Sources</option>
 					</select>
 					<span class="sortlabel btn-group">
-						<button class="sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-						<button class="sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+						<button class="col-xs-9 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+						<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
 					</span>
 				</form>
 
@@ -269,7 +269,6 @@ table#stats #ability span, table#stats #size span, table#stats #speed span {
 				</ul>
 			</div>
 			<div class="col-sm-6">
-				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 					<table id="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 						<tr>
@@ -278,7 +277,6 @@ table#stats #ability span, table#stats #size span, table#stats #speed span {
 						<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
 						<tr><th class="border" colspan="6"></th></tr>
 					</table>
-				</div>
 			</div>
 		</div>
 	</main>

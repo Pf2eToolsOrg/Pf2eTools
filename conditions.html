@@ -46,23 +46,8 @@ input.search {
 
 .sortlabel {
 	display: block;
-	float: right;
-	text-align: right;
-	padding: 1px;
-}
-
-.sortlabel span {
-	background: lightgrey;
-	border-radius: 3px;
-	padding: 2px;
-	text-align: right;
-	font-size: 0.5em;
-}
-
-.sortlabel:hover span:hover {
-	background: grey;
-	color: white;
-	cursor: pointer;
+	/*float: right;
+	text-align: right;*/
 }
 
 ul.list {
@@ -143,15 +128,12 @@ span.sourcePotA {
 	color: blue;
 }
 
-pan.sourceLMoP {
+span.sourceLMoP {
 	color: lightgreen;
 }
-
 table#stats {
 	width: 100%;
-	min-width: 200px;
-	max-width: 400px;
-	background: #fdf1dc;
+	/*background: #fdf1dc;*/
 	font-size: .9em;
 	table-layout: fixed;
 }
@@ -161,7 +143,8 @@ table#stats td, table#stats th {
 }
 
 table#stats th {
-	color: #922610;
+	/*color: #922610;*/
+	color: rgb(0, 107, 196);
 }
 
 table#stats span {
@@ -170,12 +153,13 @@ table#stats span {
 
 th.border {
 	height: 10px;
-	background: #e69a28;
-	border: 1px solid black;
+	/*background: #e69a28;*/
+	/*border: 1px solid black;*/
 }
 
 td.divider div {
-	background: #922610;
+	/*background: #922610;*/
+	background: #000;
 	height: 4px;
 	margin: 4px 0;
 }
@@ -208,9 +192,10 @@ table#stats #ability span, table#stats #size span, table#stats #speed span {
 	font-weight: normal!important;
 }
 
-td#prerequisite {
-	font-style: italic;
+table#stats tr.trait td p:first-of-type {
+	display: inline;
 }
+
 </style>
 </head>
 <body>
@@ -264,9 +249,10 @@ td#prerequisite {
 							<button class="btn btn-default" type="button" id="reset">Reset</button>
 						</span>
 					</div>
+					<br>
 					<form id="filtertools">
 						<span class="sortlabel btn-group">
-							<button class="sort btn btn-default btn-xs" type="button" data-sort="name" sortby="asc">Name</button>
+							<button class="col-xs-12 sort btn btn-default btn-xs" type="button" data-sort="name" sortby="asc">Name</button>
 						</span>
 					</form>
 				<ul class="list conditions" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">

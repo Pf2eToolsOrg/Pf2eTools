@@ -56,73 +56,51 @@ form#filtertools select {
 
 .sortlabel {
 	display: block;
-	float: right;
-	text-align: right;
-	padding: 1px;
+	/*float: right;
+	text-align: right;*/
 }
 
-.sortlabel span {
-	background: lightgrey;
-	border-radius: 3px;
-	padding: 2px;
-	text-align: right;
-}
-
-.sortlabel:hover span:hover {
-	background: grey;
-	color: white;
+#itemcontainer h3 {
 	cursor: pointer;
-}
-
-select {
-
 }
 
 ul.list {
 	list-style-type: none;
 	padding-left: 0px;
-	font-size: 1.1em;
 	height: 100%;
-	max-height: 250px;
+	max-height: 40em;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	padding-top: 1em;
+	clear: both;
+	font-size: 0.8em;
 }
 
 ul.list li {
-	padding: 1px;
+	padding: 1px!important;
 	cursor: pointer;
+	display: block;
+	border-bottom: 1px solid grey;
+	max-height: 3em;
+	overflow-y: hidden;
 }
 
 ul.list li:hover {
 	background: lightgrey;
+	max-height: 100%;
+}
+
+ul.list li span {
+	display: inline-block;
 }
 
 ul.list li:active {
 	color: white;
 }
 
-ul.list li span.source {
-	font-size: 0.8em;
-}
-
-ul.list li span.sourcename, ul.list li span.type, ul.list li span.rarity {
-	font-size: 0.8em;
-	margin-left: 1em;
-	display: none;
-}
-
-ul.list li:hover span {
-	display: block;
-}
-
-ul.list li:hover span.source {
-	display: inline!important;
-	font-size: 1em!important;
-}
-
-#itemcontainer h3 {
-	cursor: pointer;
+ul.list li span.name {
+	font-weight: bold;
+	padding-left: 0px;
 }
 
 th#name span.source {
@@ -164,26 +142,24 @@ span.sourcePotA {
 	color: blue;
 }
 
-pan.sourceLMoP {
+span.sourceLMoP {
 	color: lightgreen;
 }
 
 table#stats {
 	width: 100%;
-	min-width: 200px;
-	max-width: 400px;
-	background: #fdf1dc;
+	/*background: #fdf1dc;*/
 	font-size: .9em;
 	table-layout: fixed;
 }
 
 table#stats td, table#stats th {
 	padding: 1px 0.3em;
-	vertical-align: top;
 }
 
 table#stats th {
-	color: #922610;
+	/*color: #922610;*/
+	color: rgb(0, 107, 196);
 }
 
 table#stats span {
@@ -192,12 +168,13 @@ table#stats span {
 
 th.border {
 	height: 10px;
-	background: #e69a28;
-	border: 1px solid black;
+	/*background: #e69a28;*/
+	/*border: 1px solid black;*/
 }
 
 td.divider div {
-	background: #922610;
+	/*background: #922610;*/
+	background: #000;
 	height: 4px;
 	margin: 4px 0;
 }
@@ -207,7 +184,6 @@ th#name {
 	font-family: serif;
 	font-weight: 500;
 }
-
 table#stats td#typerarityattunement {
 	font-style: italic;
 	color: black;
@@ -299,10 +275,10 @@ td#source {
 						<option value="Artifact">Artifact</option>
 					</select>
 					<span class="sortlabel btn-group">
-						<button class="sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
-						<button class="sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
-						<button class="sort btn btn-default btn-xs" type="button" sort="rarity" sortby="asc">Rarity</button>
-						<button class="sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
+						<button class="col-xs-4 sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
+						<button class="col-xs-3 sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
+						<button class="col-xs-2 sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
+						<button class="col-xs-3 sort btn btn-default btn-xs" type="button" sort="rarity" sortby="asc">Rarity</button>
 					</span>
 				</form>
 				<h3 data-toggle="mundane">Mundane</h3>
@@ -315,7 +291,6 @@ td#source {
 				</ul>
 			</div>
 			<div class="col-sm-6">
-				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 					<table id="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 						<tr>
@@ -334,7 +309,6 @@ td#source {
 						</tr>
 						<tr><th class="border" colspan="6"></th></tr>
 					</table>
-				</div>
 			</div>
 		</div>
 	</main>
