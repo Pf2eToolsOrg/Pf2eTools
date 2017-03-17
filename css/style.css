@@ -142,8 +142,10 @@ pan.sourceLMoP {
 	color: lightgreen;
 }
 
-table#stats {
+table#stats, table#statsprof {
   font-family: 'Convergence', sans-serif;
+  background: #fdf1dc;
+  border-radius: 10px;
 	width: 100%;
 	font-size: .9em;
 	table-layout: fixed;
@@ -154,7 +156,8 @@ table#stats td, table#stats th {
 }
 
 table#stats th {
-	color: rgb(0, 107, 196);
+	/*color: rgb(0, 107, 196);*/
+  color: #922610;
 }
 
 table#stats span {
@@ -163,13 +166,13 @@ table#stats span {
 
 th.border {
 	height: 10px;
+  border: 1px solid black;
 	background: #e69a28;
-	display: none;
 }
 
 td.divider div {
-	/*background: #922610;*/
-	background: #000;
+	background: #922610;
+	/*background: #000;*/
 	height: 4px;
 	margin: 4px 0;
 }
@@ -216,9 +219,8 @@ tr.text td {
 }
 
 td#source {
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
-
 
 th#name {
 	font-size: 1.8em;
@@ -422,6 +424,7 @@ input[type=number]#hd::-webkit-outer-spin-button {
 
 td#hp, td#prof, td#equipment {
 	font-size: 0.8em;
+  padding: 0.7em;
 }
 
 td#hp h5, td#prof h5, td#equipment h5 {
@@ -450,13 +453,14 @@ td.feature p {
 #classtable table {
 	font-size: 0.8em;
 	width: 100%;
+  background: #fdf1dc;
 }
 
 #classtable table th {
 	color: black;
 }
 
-#classtable table tr:nth-child(even) td {
+#classtable table tr:nth-child(odd) td {
 	background: lightgrey;
 }
 
