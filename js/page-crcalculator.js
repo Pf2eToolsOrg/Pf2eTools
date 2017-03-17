@@ -271,14 +271,14 @@ function calculatecr() {
 
 	window.location = hash;
 
-	$("#output").html("<h4>Challenge Rating: "+cr+"</h4>");
-	$("#output").append("<p>Offensive CR: "+offensiveCR+"</p>");
-	$("#output").append("<p>Defensive CR: "+defensiveCR+"</p>");
-	$("#output").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
-	$("#output").append("<p>Effective HP: "+effectivehp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
-	$("#output").append("<p>Effective AC: "+ac+"</p>");
-	$("#output").append("<p>Average Damage Per Round: "+effectivedpr+"</p>");
-	$("#output").append("<p>"+(usesavedc?"Save DC: ":"Effective Attack Bonus: +")+attackbonus+"</p>");
+	$("#croutput").html("<h4>Challenge Rating: "+cr+"</h4>");
+	$("#croutput").append("<p>Offensive CR: "+offensiveCR+"</p>");
+	$("#croutput").append("<p>Defensive CR: "+defensiveCR+"</p>");
+	$("#croutput").append("<p>Proficiency Bonus: +"+msbcr.cr[finalcr].pb+"</p>");
+	$("#croutput").append("<p>Effective HP: "+effectivehp+" ("+hitdice+hitdicesize+(conmod<0?"":"+")+(conmod*hitdice)+")</p>");
+	$("#croutput").append("<p>Effective AC: "+ac+"</p>");
+	$("#croutput").append("<p>Average Damage Per Round: "+effectivedpr+"</p>");
+	$("#croutput").append("<p>"+(usesavedc?"Save DC: ":"Effective Attack Bonus: +")+attackbonus+"</p>");
 }
 
 function calculatehd() {

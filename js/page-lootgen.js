@@ -13,7 +13,7 @@ function loadloot() {
 
   // clear
   $("button#clear").click(function() {
-      $("#output").html("");
+      $("#lootoutput").html("");
   });
 
   // loot rolling button
@@ -26,8 +26,8 @@ function loadloot() {
 
 // roll for loot
 function rollLoot(cr,hoard=false) {
-  $("#output > ul:eq(4), #output > hr:eq(4)").remove();
-  $("#output").prepend("<ul></ul><hr>")
+  $("#lootoutput > ul:eq(4), #lootoutput > hr:eq(4)").remove();
+  $("#lootoutput").prepend("<ul></ul><hr>")
 
   // find the appropriate table based on CR and if hoard or individual
   var tableset = (hoard) ? lootdata.hoard : lootdata.individual;
@@ -44,7 +44,7 @@ function rollLoot(cr,hoard=false) {
     return;
   }
 
-  //  $("#output").html(JSON.stringify(curtable));
+  //  $("#lootoutput").html(JSON.stringify(curtable));
 
 
   // roll on tables
@@ -75,7 +75,7 @@ function rollLoot(cr,hoard=false) {
       var multiplier = coins[i].split("*")[1];
       coins[i] = droll.roll(roll).total;
       if (multiplier) coins[i] *= parseInt(multiplier);
-      $("#output ul:eq(0)").prepend('<li>'+numberWithCommas(coins[i])+' '+coinnames[i]+'</li>');
+      $("#lootoutput ul:eq(0)").prepend('<li>'+numberWithCommas(coins[i])+' '+coinnames[i]+'</li>');
     }
     return;
 
@@ -117,7 +117,7 @@ function rollLoot(cr,hoard=false) {
       if (usingart) {
         gemartliststring += "<li>x"+roll+" "+numberWithCommas(artgems.type)+" gp art objects:<ul></ul></li>"
       } else gemartliststring += "<li>x"+roll+" "+numberWithCommas(artgems.type)+" gp gemstones:<ul></ul></li>"
-      $("#output ul:eq(0)").append(gemartliststring)
+      $("#lootoutput ul:eq(0)").append(gemartliststring)
       for (var i = 0; i < roll; i++) {
         var tableroll = randomNumber (0, artgemstable.table.length-1);
         var gemstring = artgemstable.table[tableroll]
@@ -125,13 +125,13 @@ function rollLoot(cr,hoard=false) {
       }
 
       for (var i = 0; i < gems.length; i++) {
-        $("#output ul:eq(0) ul:eq(0)").append('<li>'+gems[i]+'</li>');
+        $("#lootoutput ul:eq(0) ul:eq(0)").append('<li>'+gems[i]+'</li>');
       }
 
-      $("#output ul:eq(0) ul:eq(0) li").each(function() {
+      $("#lootoutput ul:eq(0) ul:eq(0) li").each(function() {
         var curitem = this;
         var curamount = 1;
-        $("#output ul:eq(0) ul:eq(0) li").each(function() {
+        $("#lootoutput ul:eq(0) ul:eq(0) li").each(function() {
           if ($(this).text() === $(curitem).text() && this !== curitem) {
             $(this).remove();
             curamount++;
@@ -172,8 +172,8 @@ function rollLoot(cr,hoard=false) {
         var roll = droll.roll(curamount).total;
         var magicitems = [];
 
-    //    $("#output ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
-      $("#output ul:eq(0) > li").last().append("<hr>");
+    //    $("#lootoutput ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
+      $("#lootoutput ul:eq(0) > li").last().append("<hr>");
         for (var i = 0; i < roll; i++) {
 
           var curmagicitem = null;
@@ -195,15 +195,15 @@ function rollLoot(cr,hoard=false) {
 
 
         for (var i = 0; i < magicitems.length; i++) {
-        //  $("#output ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
-          $("#output ul:eq(0)").append('<li class="magicitem">'+magicitems[i]+'</li>');
+        //  $("#lootoutput ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
+          $("#lootoutput ul:eq(0)").append('<li class="magicitem">'+magicitems[i]+'</li>');
         }
 
 
-              $("#output ul:eq(0) > li.magicitem").each(function() {
+              $("#lootoutput ul:eq(0) > li.magicitem").each(function() {
                 var curitem = this;
                 var curamount = 1;
-                $("#output ul:eq(0) > li.magicitem").each(function() {
+                $("#lootoutput ul:eq(0) > li.magicitem").each(function() {
                   if ($(this).text() === $(curitem).text() && this !== curitem) {
                     $(this).remove();
                     curamount++;
@@ -218,7 +218,7 @@ function rollLoot(cr,hoard=false) {
     }
 
       for (var i = 0; i < treasure.length; i++) {
-        $("#output ul:eq(0)").prepend('<li>'+treasure[i]+'</li>');
+        $("#lootoutput ul:eq(0)").prepend('<li>'+treasure[i]+'</li>');
       }
 
 
