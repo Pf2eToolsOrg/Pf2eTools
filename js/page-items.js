@@ -209,7 +209,8 @@ function loaditems() {
 	$("#itemcontainer h3").not(":has(input)").click(function() {
 			if ($(this).next("ul.list").css("max-height") === "500px") {
 					$(this).siblings("ul.list").animate({
-						maxHeight: "250px"
+						maxHeight: "250px",
+						display: "block"
 					});
 					return;
 				}
