@@ -23,16 +23,8 @@ function loadrules() {
 		var currules =  ruleslist[i];
 		var name = currules.name;
     var basedon = "";
-    var rulesid = "";
-
-    if (currules.data["Based On"]) {
-      rulesid = currules.data["Based On"] + currules.id.toString();
-    } else {
-      rulesid = currules.id.toString();
-    }
-
-		if (!currules.ability) currules.ability = "";
-		$("ul.rules").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></li>");
+    var rulesid = currules.id.toString();
+		$("ul.rules."+currules.parentlist).append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></li>");
 	}
 
 	var options = {
@@ -43,6 +35,15 @@ function loadrules() {
 	var ruleslist = new List("listcontainer", options);
 
   ruleslist.sort ("name");
+
+  $("ul.list.rules").each(function() {
+    $(this).children("li").sort(function(a, b) {
+        var sorta = $(a).children("span.id").text();
+        var sortb = $(b).children("span.id").text();
+        console.log(sorta);
+        return (sorta > sortb) ? 1 : -1;
+    }).appendTo(this);
+  });
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {

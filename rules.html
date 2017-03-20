@@ -64,25 +64,26 @@
 	<main class="container bodyContent">
 
 		<div class="row">
-			<div class="col-sm-3" id="listcontainer">
+			<div class="col-sm-12">
+				<aside class="col-sm-3" id="listcontainer">
 
-					<div class="input-group">
-						<input type="search" id="search" class="search form-control" placeholder="Find rules...">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button" id="reset">Reset</button>
-						</span>
-					</div>
-					<form id="filtertools">
-						<span class="sortlabel btn-group">
-							<button class="col-xs-12 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-						</span>
-					</form>
-				<ul class="list rules">
+					<ul class="list rules undefined" style="display: none;"></ul>
+					<h4>Step-by-Step Characters</h4>
+					<ul class="list rules stepbystepcharacters"></ul>
+					<h4>Customization Options</h4>
+					<ul class="list rules customizationoptions"></ul>
+					<h4>Equipment</h4>
+					<ul class="list rules equipment"></ul>
+					<h4>Playing the Game</h4>
+					<ul class="list rules playingthegame"></ul>
+					<h4>Setting</h4>
+					<ul class="list rules setting"></ul>
+					<h4>Hazards</h4>
+					<ul class="list rules hazards"></ul>
 
-				</ul>
-				<small>This page contains rules from SRD5.1.</small>
-			</div>
-			<div class="col-sm-9">
+					<small>This page contains rules from SRD5.1.</small>
+				</aside>
+
 					<div id="rulescontent">
 
 					</div>
