@@ -571,3 +571,44 @@ table#stats.monster span#speed {
 table#stats tr.trait td p:first-of-type {
 	display: inline;
 }
+
+
+/****************************************
+ * Print styles
+ ***************************************/
+
+@media print {
+
+    @page {
+        margin: 10mm 20mm;
+    }
+
+    .divider, nav, hr, 
+    #listcontainer, #subclasses,
+    #itemcontainer, #monstercontainer {
+        display: none;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 5mm;
+    }
+
+    th.border {
+        height: auto;
+        border: 0;
+        border-bottom: .25pt solid black;
+    }
+
+    strong, .name {
+        font-weight: 600;
+    }
+
+    header {
+        visibility: visible;
+    }
+
+    #classtable table tr:nth-child(odd) td {
+        background: lightgrey !important;
+    }
+}
