@@ -13,7 +13,7 @@
 	I don't own any of the XML data anyway.
 -->
 
-<title>Races - 5etools</title>
+<title>Rules - 5etools</title>
 
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/style.css">
@@ -24,21 +24,21 @@
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
 
-			<h1>Races List</h1>
-			<p>Search by name on the left, click race name to display on the right.</p>
+			<h1>Rules</h1>
+			<p>Search by name on the left, click rules name to display on the right.</p>
 		</div>
 	</header>
 	<nav class="container">
 		<ul class="nav nav-pills ">
 			<li role="presentation"><a href="5etools.html">5eTools</a></li>
-<li role="presentation"><a href="rules.html">Rules</a></li>
-			<li role="presentation" class="dropdown active">
+			<li role="presentation" class="active"><a href="rules.html">Rules</a></li>
+			<li role="presentation" class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li role="presentation"><a href="classes.html">Classes</a></li>
 					<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
 					<li role="presentation"><a href="feats.html">Feats</a></li>
-					<li role="presentation" class="active"><a href="races.html">Races</a></li>
+					<li role="presentation"><a href="races.html">Races</a></li>
 				</ul>
 			</li>
 			<li role="presentation" class="dropdown">
@@ -64,59 +64,28 @@
 	<main class="container bodyContent">
 
 		<div class="row">
-			<div class="col-sm-6" id="listcontainer">
+			<div class="col-sm-3" id="listcontainer">
+
 					<div class="input-group">
-						<input type="search" id="search" class="search form-control" placeholder="Find race...">
+						<input type="search" id="search" class="search form-control" placeholder="Find rules...">
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="button" id="reset">Reset</button>
 						</span>
 					</div>
 					<form id="filtertools">
-						<select class="sourcefilter">
-							<option value="All">All Sources</option>
-						</select>
-						<select class="sizefilter">
-							<option value="All">All Sizes</option>
-						</select>
-						<select class="bonusfilter">
-							<option value="All">All Ability Bonuses</option>
-							<option value="Str +">Strength</option>
-							<option value="Dex +">Dexterity</option>
-							<option value="Con +">Constitution</option>
-							<option value="Int +">Intelligence</option>
-							<option value="Wis +">Wisdom</option>
-							<option value="Cha +">Charisma</option>
-							<option value="Choose ">Player's Choice</option>
-						</select>
 						<span class="sortlabel btn-group">
-							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-							<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="ability">Ability</button>
-							<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="size">Size</button>
-							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+							<button class="col-xs-12 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
 						</span>
 					</form>
-				<ul class="list races">
+				<ul class="list rules">
 
 				</ul>
+				<small>This page contains rules from SRD5.1.</small>
 			</div>
-			<div class="col-sm-6">
-					<table id="stats">
-						<tr><th class="border" colspan="6"></th></tr>
-						<tr>
-							<th id="name" colspan="6">Name</th>
-						</tr>
-						<tr>
-							<td id="ability" colspan="6">Ability Scores: <span>+1 Dex</span></td>
-						</tr>
-						<tr>
-							<td id="size" colspan="6">Size:	<span>Medium</span></td>
-						</tr>
-						<tr>
-							<td id="speed" colspan="6">Speed:	<span>30 ft.</span></td>
-						</tr>
-						<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
-						<tr><th class="border" colspan="6"></th></tr>
-					</table>
+			<div class="col-sm-9">
+					<div id="rulescontent">
+
+					</div>
 			</div>
 		</div>
 	</main>
@@ -124,9 +93,8 @@
 
 	</footer>
 
-
-	<script type="text/javascript" src="js/page-races.js"></script>
-	<script type="text/javascript" src="data/races.json"></script>
+	<script type="text/javascript" src="js/page-rules.js"></script>
+	<script type="text/javascript" src="data/rules.json"></script>
 	<script type="text/javascript" src="js/list.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
