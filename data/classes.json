@@ -13584,6 +13584,17 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Arcane Tradition: War Magic (UA)",
+                        "text": [
+                          "A variety of arcane colleges specialize in training wizards for war. The tradition of War Magic blends principles of evocation and abjuration. It teaches techniques that empower a caster’s spells, while also providing methods for a wizard to bolster their own defenses.",
+                          "Followers of this tradition are known as war mages. They see their magic as both a weapon and armor, a resource superior to any flimsy piece of steel. War mages strike fast in battle, using their spells to seize tactical control of a situation. Their spells strike hard, while their defensive skills foil their opponents’ attempts to counterattack."
+                        ],
+                        "subclass": "Arcane Tradition: War Magic (UA)",
+                        "parent": "Arcane Tradition",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Arcane Tradition: Transmutation",
                         "text": [
                            "You are a student of spells that modify energy and matter. To you, the world is not a fixed thing, but eminently mutable, and you delight in being an agent of change. You wield the raw stuff of creation and learn to alter both physical forms and mental qualities. Your magic gives you the tools to become a smith on reality's forge.",
@@ -13772,11 +13783,7 @@ var classdata = {
                      {
                         "name": "Theurgy: Divine Inspiration",
                         "text": [
-                          "When you select this tradition at 2nd level, pick a divine domain from your chosen deity’s list of eligible domains. Alternatively, the following domains are thematically appropriate and easily compatible with the theurgist concept:",
-                          "• Arcana*",
-                          "• Knowledge",
-                          "• Light",
-                          "* From the Sword Coast Adventurers’ Guide."
+                          "When you choose this tradition at 2nd level, choose a domain from your chosen deity’s list of eligible domains (see appendix B, “Gods of the Multiverse,” in the Player’s Handbook for examples). The Knowledge and Light domains are especially appropriate choices for a theurgist."
                         ],
                         "subclass": "Arcane Tradition: Theurgy (UA)",
                         "parent": "Theurgy",
@@ -13787,7 +13794,7 @@ var classdata = {
                         "text": [
                           "Beginning when you select this tradition at 2nd level, whenever you gain a wizard level, you can choose to replace one of the wizard spells you add to your spellbook with a cleric domain spell for your chosen domain. The spell must be of a level for which you have spell slots.",
                           "If you add all of your domain spells to your spellbook, you can subsequently opt to add any spell from the cleric spell list instead. The spell must still be of a level for which you have spell slots.",
-                          "Other wizards cannot copy cleric spells from your spellbook into their own spellbooks."
+                          "Any cleric spell you gain from this feature is considered a wizard spell for you, but other wizards cannot copy cleric spells from your spellbook into their own spellbooks."
                         ],
                         "subclass": "Arcane Tradition: Theurgy (UA)",
                         "parent": "Theurgy",
@@ -13813,6 +13820,25 @@ var classdata = {
                         ],
                         "subclass": "Arcane Tradition: Theurgy (UA)",
                         "parent": "Channel Arcana",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "War Magic: Arcane Deflection",
+                        "text": [
+                        "At 2nd level, you have learned to weave your magic to fortify yourself against harm. When you are hit by an attack or fail a Constitution saving throw, you can use your reaction to gain a +2 bonus to your AC against that attack or a +4 bonus to that saving throw.",
+                        "When you use this feature, you can’t cast spells other than cantrips until the end of your next turn."
+                        ],
+                        "subclass": "Arcane Tradition: War Magic (UA)",
+                        "parent": "War Magic",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "War Magic: Tactical Wit",
+                        "text": [
+                        "Starting at 2nd level, your ability to quickly assess tactical situations allows you to act quickly in battle. You gain a bonus to your initiative rolls equal to your Intelligence modifier."
+                        ],
+                        "subclass": "Arcane Tradition: War Magic (UA)",
+                        "parent": "War Magic",
                         "_optional": "YES"
                      },
                      {
@@ -14061,6 +14087,16 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "War Magic: Power Surge",
+                        "text": [
+                        "Starting at 6th level, you can empower your spells that unleash harm on groups of foes. When you force multiple creatures to make saving throws against the damage of one of your spells, you can increase the spell’s damage by rolling two more of its damage dice. This increase occurs only on the turn you cast the spell.",
+                        "Once you use this feature, you can’t use it again until you finish a short or long rest."
+                        ],
+                        "subclass": "Arcane Tradition: War Magic (UA)",
+                        "parent": "War Magic",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Artificer: Infuse Weapons and Armor",
                         "text": [
                            "Beginning at 6th level, you can produce magic weapons and armor. You spend 10 minutes focusing your magic on a mundane weapon, suit of armor, shield, or bundle of twenty pieces of ammunition, and expend a spell slot to infuse it with magical energy. The magic item retains its enhancement for 8 hours or until used (in the case of magic ammunition). You can infuse only one item at a time; if you infuse a second one, the first immediately loses its potency. Once you have expended a spell slot to create such an item, you cannot regain that slot until the item becomes nonmagical.",
@@ -14214,6 +14250,15 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "War Magic: Durable Magic",
+                        "text": [
+                        "Beginning at 10th level, the magic you channel helps ward off harm. While you maintain concentration on a spell, you have a +2 bonus to AC and all saving throws."
+                        ],
+                        "subclass": "Arcane Tradition: War Magic (UA)",
+                        "parent": "War Magic",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "School of Transmutation: Shapechanger",
                         "text": [
                            "At 10th level, you add the polymorph spell to your spellbook, if it is not there already. You can cast polymorph without expending a spell slot. When you do so, you can target only yourself and transform into a beast whose challenge rating is 1 or lower.",
@@ -14350,6 +14395,15 @@ var classdata = {
                         ],
                         "subclass": "Arcane Tradition: Theurgy (UA)",
                         "parent": "Theurgy",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "War Magic: Durable Magic",
+                        "text": [
+                        "At 14th level, your Arcane Deflection becomes infused with deadly magic. When you use your Arcane Deflection feature, magical energy arcs from you; each creature of your choice within 10 feet of you takes force damage equal to half your wizard level."
+                        ],
+                        "subclass": "Arcane Tradition: War Magic (UA)",
+                        "parent": "War Magic",
                         "_optional": "YES"
                      },
                      {
