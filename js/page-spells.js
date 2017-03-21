@@ -21,7 +21,7 @@ function parseschool (school) {
 	if (school == "C") return "conjuration";
 	return "";
 }
- 
+
 function parsespelllevel (level) {
 	if (isNaN (level)) return "";
 	if (level === "0") return "cantrip"
@@ -29,6 +29,13 @@ function parsespelllevel (level) {
 	if (level === "3") return level+"rd";
 	if (level === "1") return level+"st";
 	return level+"th";
+}
+
+function parsesource (source) {
+	if (source === "PHB") source = "Player's Handbook";
+	if (source === "EEPC") source = "Elemental Evil Player's Companion";
+	if (source === "SCAG") source = "Sword Coast Adventurer's Guide";
+	return source;
 }
 
 function asc_sort(a, b){
@@ -67,8 +74,15 @@ function loadspells() {
 				}
 			}
 
+			var source = "PHB";
+			if (curspell.source) {
+				source = curspell.source;
+			} else {
+				curspell.source = "PHB";
+			}
 
-			$("ul.spells").append("<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-4'>"+name+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-3'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> </li>");
+
+			$("ul.spells").append("<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-3'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> </li>");
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -76,6 +90,10 @@ function loadspells() {
 
 			if (!$("select.schoolfilter:contains('"+parseschool (curspell.school)+"')").length) {
 				$("select.schoolfilter").append("<option value='"+parseschool (curspell.school)+"'>"+parseschool (curspell.school)+"</option>");
+			}
+
+			if (!$("select.sourcefilter:contains(\""+parsesource(source)+"\")").length) {
+				$("select.sourcefilter").append("<option value='"+source+"'>"+parsesource(source)+"</option>");
 			}
 
 			var classlist = curspell.classes.split(",");
@@ -99,8 +117,11 @@ function loadspells() {
 		$("select.classfilter option").sort(asc_sort).appendTo('select.classfilter');
 		$("select.classfilter").val("All");
 
+		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+		$("select.sourcefilter").val("All");
+
 		var options = {
-			valueNames: ['name', 'level', 'school', 'classes'],
+			valueNames: ['name', 'source', 'level', 'school', 'classes'],
 			listClass: "spells"
 		}
 
@@ -142,11 +163,14 @@ function loadspells() {
 
 			var schoolfilter = $("select.schoolfilter").val();
 			var classfilter = $("select.classfilter").val();
+			var sourcefilter = $("select.sourcefilter").val();
 
 			spellslist.filter(function(item) {
 				var rightlevel = false;
 				var rightschool = false;
 				var rightclass = false;
+				var rightsource = false;
+
 				if (levelfilter === "All" || item.values().level.indexOf(levelfilter) !== -1) rightlevel = true;
 				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
 				var classes = item.values().classes.split(", ");
@@ -154,7 +178,8 @@ function loadspells() {
 					if (classes[c] === classfilter) rightclass = true;
 				}
 				if (classfilter === "All") rightclass = true;
-				if (rightlevel && rightschool && rightclass) return true;
+				if (sourcefilter === "All" || item.values().source === sourcefilter) rightsource = true;
+				if (rightlevel && rightschool && rightclass && rightsource) return true;
 				return false;
 			});
 		});
@@ -211,7 +236,9 @@ function usespell (id) {
 			var spelllist = spelldata.compendium.spell;
 			var curspell = spelllist[id];
 
-			$("th#name").html(curspell.name);
+			$("th#name").html("<span title=\""+parsesource(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
+
+			// $("th#name").html(curspell.name);
 
 			if (curspell.level[0] !== "P") {
 				$("td span#school").html(parseschool(curspell.school));
