@@ -35,6 +35,7 @@ function parsesource (source) {
 	if (source === "PHB") source = "Player's Handbook";
 	if (source === "EEPC") source = "Elemental Evil Player's Companion";
 	if (source === "SCAG") source = "Sword Coast Adventurer's Guide";
+	if (source === "UAMystic") source = "Unearthed Arcana: The Mystic Class";
 	return source;
 }
 
@@ -82,7 +83,7 @@ function loadspells() {
 			}
 
 
-			$("ul.spells").append("<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-3'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> </li>");
+			$("ul.spells").append("<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> </li>");
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
