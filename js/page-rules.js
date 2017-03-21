@@ -74,6 +74,10 @@ function loadrules() {
 		 ruleslist.sort("names");
 		 ruleslist.update();
 	})
+
+	$("#listcontainer h4").click(function() {
+		$(this).next().slideToggle();
+	}).css("cursor", "pointer");
 }
 
 function userules (id) {
