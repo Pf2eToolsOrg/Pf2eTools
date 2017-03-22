@@ -101,9 +101,12 @@ ul.list li:hover span {
 
 th#name span.source {
 	display: inline-block;
+  position: relative;
 	float: right;
 	font-weight: 500;
 	margin-left: 0.5em;
+  margin-right: 0.2em;
+  z-index: 1;
 }
 
 span.sourceDMG {
@@ -233,11 +236,13 @@ th#name {
 	font-variant: small-caps;
 	font-weight: 500;
 	padding-left: 0.2em!important;
+  padding-right: 5em!important;
 }
 
 table#stats td#sizetypealignment {
 	font-style: italic;
 	color: black;
+  padding-right: 10em;
 }
 
 td#sizetypealignment span {
@@ -484,11 +489,14 @@ ul.list.rules {
   font-weight: bold;
   font-size: 1.2em;
   color: black;
+  display: block;
 }
 
 #rulescontent table {
   font-size: 0.9em;
   width: 100%;
+  min-width: 250px;
+  display: block;
   margin: 0.2em;
 }
 
@@ -497,7 +505,7 @@ ul.list.rules {
 }
 
 #rulescontent table td {
-  padding: 0.2em;
+  padding: 0.2em 0.5em;
 }
 
 #classtable table .level {
@@ -577,6 +585,35 @@ div#subclasses span.active {
 .featurebuffer {
 	width: auto;
 }
+
+img.token {
+  float: right;
+  width: auto;
+  max-width: 5em;
+  height: auto;
+  position: absolute;
+  right: 1em;
+  z-index: 10;
+}
+
+img.token:hover {
+  max-width: none;
+  right: 0;
+}
+
+/*
+img.token:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 5em;
+    width: 5em;
+    background-image: url(../img/Gauth.png);
+    background-size: 5em 5em;
+    background-repeat: no-repeat;
+  }*/
+
 
 .classes table#stats {
     font-family: inherit;
