@@ -1,30 +1,32 @@
 
 
 function parsesource (src) {
-	source = src;
-	if (source == " monster manual") source = "MM";
-	if (source == " Volo's Guide") source = "VGM";
-	if (source == " elemental evil") source = "PotA";
-	if (source == " storm kings thunder") source = "SKT";
-	if (source == " tyranny of dragons") source = "ToD";
-	if (source == " out of the abyss") source = "OotA";
-	if (source == " curse of strahd") source = "CoS";
-	if (source == " lost mine of phandelver") source = "LMoP";
-	if (source == " tome of beasts") source = "ToB 3pp";
+	source = src.trim();
+	if (source == "monster manual") source = "MM";
+	if (source == "Volo's Guide") source = "VGM";
+	if (source == "elemental evil") source = "PotA";
+	if (source == "storm kings thunder") source = "SKT";
+	if (source == "tyranny of dragons") source = "ToD";
+	if (source == "out of the abyss") source = "OotA";
+	if (source == "curse of strahd") source = "CoS";
+	if (source == "lost mine of phandelver") source = "LMoP";
+	if (source == "Tales from the Yawning Portal") source = "TYP";
+	if (source == "tome of beasts") source = "ToB 3pp";
 	return source;
 }
 
 function parsesourcename (src) {
-	source = src;
-	if (source == " monster manual") source = "Monster Manual";
-	if (source == " Volo's Guide") source = "Volo's Guide to Monsters";
-	if (source == " elemental evil") source = "Princes of the Apocalypse";
-	if (source == " storm kings thunder") source = "Storm King's Thunder";
-	if (source == " tyranny of dragons") source = "Tyranny of Dragons";
-	if (source == " out of the abyss") source = "Out of the Abyss";
-	if (source == " curse of strahd") source = "Curse of Strahd";
-	if (source == " lost mine of phandelver") source = "Lost Mine of Phandelver";
-	if (source == " tome of beasts") source = "Tome of Beasts (3pp)";
+	source = src.trim();
+	if (source == "monster manual") source = "Monster Manual";
+	if (source == "Volo's Guide") source = "Volo's Guide to Monsters";
+	if (source == "elemental evil") source = "Princes of the Apocalypse";
+	if (source == "storm kings thunder") source = "Storm King's Thunder";
+	if (source == "tyranny of dragons") source = "Tyranny of Dragons";
+	if (source == "out of the abyss") source = "Out of the Abyss";
+	if (source == "curse of strahd") source = "Curse of Strahd";
+	if (source == "lost mine of phandelver") source = "Lost Mine of Phandelver";
+	if (source == "tome of beasts") source = "Tome of Beasts (3pp)";
+	if (source == "Tales from the Yawning Portal") source = "Tales from the Yawning Portal";
 	return source;
 }
 
@@ -75,10 +77,19 @@ function loadmonsters() {
 	// parse all the monster data
 	for (var i = 0; i < monsters.length; i++) {
 		var name = monsters[i].name;
-		var source = monsters[i].type.split(",");
-		var type = source.slice(0, source.length-1).join(",")
-		type = type.split(", Volo's Guide")[0];
-		source = source[source.length - 1]
+
+		var source = "";
+		var origsource = "";
+		var type = "";
+		if (monsters[i].source === undefined) {
+			source = monsters[i].type.split(",");
+			type = source.slice(0, source.length-1).join(",")
+			type = type.split(", Volo's Guide")[0];
+			source = source[source.length - 1];
+		} else {
+			source = monsters[i].source;
+			type = monsters[i].type;
+		}
 		origsource = parsesourcename(source);
 		source = parsesource(source);
 
@@ -244,8 +255,18 @@ function usemonster (id) {
 	var mon = monsters[id];
 
 	var name = mon.name;
-	var source = mon.type.split(",");
-	source = source[source.length - 1]
+	var source = "";
+	var origsource = "";
+	var type = "";
+	if (mon.source === undefined) {
+		source = mon.type.split(",");
+		type = source.slice(0, source.length-1).join(",")
+		type = type.split(", Volo's Guide")[0];
+		source = source[source.length - 1];
+	} else {
+		source = mon.source;
+		type = mon.type;
+	}
 	origsource = parsesourcename(source);
 	source = parsesource(source);
 
@@ -261,8 +282,6 @@ function usemonster (id) {
 	var size = parsesize (mon.size);
 	$("td span#size").html(size);
 
-	var type = mon.type.split(",");
-	type = type.slice(0, type.length-1).join(",");
 	$("td span#type").html(type);
 
 	var alignment = mon.alignment;
