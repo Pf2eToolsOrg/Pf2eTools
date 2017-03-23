@@ -57,7 +57,7 @@ function loadrules() {
 
 	$("ul.list li").click(function(e) {
 		userules($(this).attr("id"));
-		document.title = decodeURI($(this).attr("data-link")) + " - 5etools ruless";
+		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Rules";
 		window.location = "#"+$(this).attr("data-link");
 	});
 

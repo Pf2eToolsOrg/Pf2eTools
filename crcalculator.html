@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,13 +14,14 @@
 	I don't own any of the XML data anyway.
 -->
 
-<title>CR Calc - 5etools</title>
+	<title>CR Calc - 5etools</title>
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
 
 </head>
+
 <body>
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
@@ -29,38 +31,45 @@
 		</div>
 	</header>
 	<nav class="container">
-			<ul class="nav nav-pills ">
-				<li role="presentation"><a href="5etools.html">5eTools</a></li>
-<li role="presentation"><a href="rules.html">Rules</a></li>
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="classes.html">Classes</a></li>
-						<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
-						<li role="presentation"><a href="feats.html">Feats</a></li>
-						<li role="presentation"><a href="races.html">Races</a></li>
-					</ul>
-				</li>
-				<li role="presentation" class="dropdown active">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation" class="active"><a href="crcalculator.html">CR Calculator</a></li>
-						<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
-						<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
-					</ul>
-				</li>
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
-						<li role="presentation"><a href="conditions.html">Conditions</a></li>
-						<li role="presentation"><a href="items.html">Items</a></li>
-						<li role="presentation"><a href="spells.html">Spells</a></li>
-					</ul>
-				</li>
-				<li role="presentation"><a href="statgen.html">Statgen</a></li>
-			</ul>
-		</nav>
+		<ul class="nav nav-pills ">
+			<li role="presentation"><a href="5etools.html">5eTools</a></li>
+			<li role="presentation"><a href="rules.html">Rules</a></li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="classes.html">Classes</a></li>
+					<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
+					<li role="presentation"><a href="feats.html">Feats</a></li>
+					<li role="presentation"><a href="races.html">Races</a></li>
+				</ul>
+			</li>
+			<li role="presentation" class="dropdown active">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation" class="active"><a href="crcalculator.html">CR Calculator</a></li>
+					<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
+					<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
+				</ul>
+			</li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
+					<li role="presentation"><a href="conditions.html">Conditions</a></li>
+					<li role="presentation"><a href="items.html">Items</a></li>
+					<li role="presentation"><a href="spells.html">Spells</a></li>
+				</ul>
+			</li>
+			<li role="presentation"><a href="statgen.html">Statgen</a></li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="converter.html">Stat Block to JSON</a></li>
+					<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
 	<main class="container bodyContent">
 
 		<form id="crcalc" autocomplete="off">
@@ -156,13 +165,13 @@
 						<span class="explanation">
 							If a creature is vulnerable to common damage types (especially bludgeoning, piercing, and slashing damage), its effective hit points are halved.
 						</span></label>
-						<input type="checkbox" id="vulnerabilities"><br>
+					<input type="checkbox" id="vulnerabilities"><br>
 
-						<label for="resistances">Resistances/Immunities:
+					<label for="resistances">Resistances/Immunities:
 							<span class="explanation">
 								A monster's HP is multiplied based on the resistances and immunities has to common damage types (non-magical budgeoning, piercing, and slashing chief among them).
 							</span></label>
-							<span class="inputwrap">
+					<span class="inputwrap">
 								<select id="resistances" value="0">
 									<option value="0">None</option>
 									<option value="res">Resistances</option>
@@ -170,17 +179,17 @@
 								</select>
 							</span><br>
 
-							<label for="flying">Flying at CRs 0-9:
+					<label for="flying">Flying at CRs 0-9:
 								<span class="explanation">
 									A monster’s effective AC is increased by 2 if it can fly and deal damage at range, though only if its expected challenge rating is 10 or lower.
 								</span></label>
-								<input type="checkbox" id="flying"><br>
+					<input type="checkbox" id="flying"><br>
 
-								<label for="saveprofs">Save Proficiencies:
+					<label for="saveprofs">Save Proficiencies:
 									<span class="explanation">
 										Increase a creature's effective AC by 2 if it has 3 or 4 saving throw proficiencies, or by 4 if it has 5 or 6.
 									</span></label>
-									<span class="inputwrap">
+					<span class="inputwrap">
 										<select id="saveprofs" value="0">
 											<option value="0">0-2</option>
 											<option value="2">3-4</option>
@@ -188,64 +197,65 @@
 										</select>
 									</span><br>
 
-								</div>
-								<div class="col-sm-6">
-									<h4>Offensive</h4>
-									<label for="dpr">Damage Per Round
+				</div>
+				<div class="col-sm-6">
+					<h4>Offensive</h4>
+					<label for="dpr">Damage Per Round
 										<span class="explanation">
 											A creature's damage per round (DPR) determines its offensive CR, which is offset by its attack bonus or save DC. DPR is determined by averaging its maximum damage output (taking the average of dice rolls, ignoring crits and accuracy) over three rounds. Areas of effect are treated as though they hit two creatures, which fail any involved saving throws.
 										</span>
 									</label>
-									<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br />
+					<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br />
 
-									<label for="attackbonus">Attack Bonus/Save DC
+					<label for="attackbonus">Attack Bonus/Save DC
 										<span class="explanation">
 											A creature's attack bonus or save DC adjuts its offensive CR.
 										</span>
 									</label>
 
-									<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br>
-									<label for="saveinstead">Use Saves?
+					<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br>
+					<label for="saveinstead">Use Saves?
 										<span class="explanation">
 											If a creature's damage output is more dependent on save-based abilities, its save DC is used for adjusting its offensive CR instead of its attack bonus.
 										</span>
 									</label>
-									<input type="checkbox" id="saveinstead" value="0"><br>
-									<hr>
+					<input type="checkbox" id="saveinstead" value="0"><br>
+					<hr>
 
 
-								</div>
-							</div>
-						</form>
-						<hr>
-						<div class="row">
-							<div class="col-sm-12" id="monsterfeatures">
-								<h4>Monster Features</h4>
-								<table>
-									<tr>
-										<th>Use?</th>
-										<th>Name</th>
-										<th>Example Monster</th>
-										<th>Effect</th>
-										<th>Effect on Challenge Rating</th>
-									</tr>
-								</table>
-								<p><small><em>Note: not all monster features are covered here. The DMG has specific instructions on how to manage other features.</em></small></p>
-							</div>
-						</div>
-						<hr>
-					</main>
-					<footer class="container">
+				</div>
+			</div>
+		</form>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12" id="monsterfeatures">
+				<h4>Monster Features</h4>
+				<table>
+					<tr>
+						<th>Use?</th>
+						<th>Name</th>
+						<th>Example Monster</th>
+						<th>Effect</th>
+						<th>Effect on Challenge Rating</th>
+					</tr>
+				</table>
+				<p><small><em>Note: not all monster features are covered here. The DMG has specific instructions on how to manage other features.</em></small></p>
+			</div>
+		</div>
+		<hr>
+	</main>
+	<footer class="container">
 
-					</footer>
+	</footer>
 
-					<script type="text/javascript" src="js/page-crcalculator.js"></script>
-					<script type="text/javascript" src="data/msbcr.json"></script>
-					<script type="text/javascript" src="data/monsterfeatures.json"></script>
-					<script type="text/javascript" src="js/list.js"></script>
-					<script type="text/javascript" src="js/jquery.js"></script>
-					<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/page-crcalculator.js"></script>
+	<script type="text/javascript" src="data/msbcr.json"></script>
+	<script type="text/javascript" src="data/monsterfeatures.json"></script>
+	<script type="text/javascript" src="js/list.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
 
 
-				</body>
-				</html>
+</body>
+
+</html>

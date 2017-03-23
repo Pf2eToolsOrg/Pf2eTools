@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,13 +14,14 @@
 	I don't own any of the XML data anyway.
 -->
 
-<title>Classes - 5etools</title>
+	<title>Classes - 5etools</title>
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
 
 </head>
+
 <body>
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
@@ -31,7 +33,7 @@
 	<nav class="container">
 		<ul class="nav nav-pills ">
 			<li role="presentation"><a href="5etools.html">5eTools</a></li>
-<li role="presentation"><a href="rules.html">Rules</a></li>
+			<li role="presentation"><a href="rules.html">Rules</a></li>
 			<li role="presentation" class="dropdown active">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -59,6 +61,13 @@
 				</ul>
 			</li>
 			<li role="presentation"><a href="statgen.html">Statgen</a></li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="converter.html">Stat Block to JSON</a></li>
+					<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
+				</ul>
+			</li>
 		</ul>
 	</nav>
 	<main class="container bodyContent classes">
@@ -84,7 +93,9 @@
 			</div>
 			<div class="col-sm-9" id="classtable">
 				<table>
-					<tr><th class="border" colspan="15"></th></tr>
+					<tr>
+						<th class="border" colspan="15"></th>
+					</tr>
 					<tr>
 						<th id="name" colspan="15">Name</th>
 					</tr>
@@ -109,27 +120,309 @@
 						<th class="slots spellslots8">8th</th>
 						<th class="slots spellslots9">9th</th>
 					</tr>
-					<tr id="level1"><td class="level">1st</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level2"><td class="level">2nd</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level3"><td class="level">3rd</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level4"><td class="level">4th</td>  <td class="pb">+2</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level5"><td class="level">5th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level6"><td class="level">6th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level7"><td class="level">7th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level8"><td class="level">8th</td>  <td class="pb">+3</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level9"><td class="level">9th</td>  <td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level10"><td class="level">10th</td><td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level11"><td class="level">11th</td><td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level12"><td class="level">12th</td><td class="pb">+4</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level13"><td class="level">13th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level14"><td class="level">14th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level15"><td class="level">15th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level16"><td class="level">16th</td><td class="pb">+5</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level17"><td class="level">17th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level18"><td class="level">18th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level19"><td class="level">19th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr id="level20"><td class="level">20th</td><td class="pb">+6</td><td class="features"></td> <td class="slots spellslots0"></td> <td class="slots spellslots1"></td> <td class="slots spellslots2"></td> <td class="slots spellslots3"></td> <td class="slots spellslots4"></td> <td class="slots spellslots5"></td> <td class="slots spellslots6"></td> <td class="slots spellslots7"></td> <td class="slots spellslots8"></td> <td class="slots spellslots9"></td></tr>
-					<tr><th class="border" colspan="15"></th></tr>
+					<tr id="level1">
+						<td class="level">1st</td>
+						<td class="pb">+2</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level2">
+						<td class="level">2nd</td>
+						<td class="pb">+2</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level3">
+						<td class="level">3rd</td>
+						<td class="pb">+2</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level4">
+						<td class="level">4th</td>
+						<td class="pb">+2</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level5">
+						<td class="level">5th</td>
+						<td class="pb">+3</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level6">
+						<td class="level">6th</td>
+						<td class="pb">+3</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level7">
+						<td class="level">7th</td>
+						<td class="pb">+3</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level8">
+						<td class="level">8th</td>
+						<td class="pb">+3</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level9">
+						<td class="level">9th</td>
+						<td class="pb">+4</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level10">
+						<td class="level">10th</td>
+						<td class="pb">+4</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level11">
+						<td class="level">11th</td>
+						<td class="pb">+4</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level12">
+						<td class="level">12th</td>
+						<td class="pb">+4</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level13">
+						<td class="level">13th</td>
+						<td class="pb">+5</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level14">
+						<td class="level">14th</td>
+						<td class="pb">+5</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level15">
+						<td class="level">15th</td>
+						<td class="pb">+5</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level16">
+						<td class="level">16th</td>
+						<td class="pb">+5</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level17">
+						<td class="level">17th</td>
+						<td class="pb">+6</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level18">
+						<td class="level">18th</td>
+						<td class="pb">+6</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level19">
+						<td class="level">19th</td>
+						<td class="pb">+6</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr id="level20">
+						<td class="level">20th</td>
+						<td class="pb">+6</td>
+						<td class="features"></td>
+						<td class="slots spellslots0"></td>
+						<td class="slots spellslots1"></td>
+						<td class="slots spellslots2"></td>
+						<td class="slots spellslots3"></td>
+						<td class="slots spellslots4"></td>
+						<td class="slots spellslots5"></td>
+						<td class="slots spellslots6"></td>
+						<td class="slots spellslots7"></td>
+						<td class="slots spellslots8"></td>
+						<td class="slots spellslots9"></td>
+					</tr>
+					<tr>
+						<th class="border" colspan="15"></th>
+					</tr>
 				</table>
 			</div>
 		</div>
@@ -137,11 +430,17 @@
 		<div class="row">
 			<div class="col-md-3">
 				<table id="statsprof" class="stats">
-					<tr><th class="border" colspan="6"></th></tr>
+					<tr>
+						<th class="border" colspan="6"></th>
+					</tr>
 					<tr>
 						<th id="name" colspan="6">Name</th>
 					</tr>
-					<tr><td class="divider" colspan="6"><div></div></td></tr>
+					<tr>
+						<td class="divider" colspan="6">
+							<div></div>
+						</td>
+					</tr>
 					<tr>
 						<td id="hp" colspan="6">
 							<h5>Hit Points</h3>
@@ -162,61 +461,71 @@
 						<tr>
 							<td id="prof" colspan="6">
 								<h5>Proficiencies</h5>
-								<span>You are proficient with the following items, in addition to any proficiencies provided by your race or background.</span>
-								<div id="armor">
-									<strong>Armor:</strong>
-									<span> </span>
-								</div>
-								<div id="weapons">
-									<strong>Weapons:</strong>
-									<span> </span>
-								</div>
-								<div id="tools">
-									<strong>Tools:</strong>
-									<span> </span>
-								</div>
-								<div id="saves">
-									<strong>Saving Throws:</strong>
-									<span> </span>
-								</div>
-								<div id="skills">
-									<strong>Skills:</strong>
-									<span> </span>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td id="equipment" colspan="6">
-								<h5>Starting Equipment</h5>
-								<div></div>
-							</td>
-						</tr>
+							<span>You are proficient with the following items, in addition to any proficiencies provided by your race or background.</span>
+							<div id="armor">
+								<strong>Armor:</strong>
+								<span> </span>
+							</div>
+							<div id="weapons">
+								<strong>Weapons:</strong>
+								<span> </span>
+							</div>
+							<div id="tools">
+								<strong>Tools:</strong>
+								<span> </span>
+							</div>
+							<div id="saves">
+								<strong>Saving Throws:</strong>
+								<span> </span>
+							</div>
+							<div id="skills">
+								<strong>Skills:</strong>
+								<span> </span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="equipment" colspan="6">
+							<h5>Starting Equipment</h5>
+							<div></div>
+						</td>
+					</tr>
 
-						<tr><th class="border" colspan="6"></th></tr>
-					</table>
+					<tr>
+						<th class="border" colspan="6"></th>
+					</tr>
+				</table>
 			</div>
 			<div class="col-md-9">
 				<div id="subclasses"></div>
-					<table id="stats" class="stats">
-						<tr><th class="border" colspan="6"></th></tr>
-							<tr id="features"><td colspan="6"><div></div></td></tr>
+				<table id="stats" class="stats">
+					<tr>
+						<th class="border" colspan="6"></th>
+					</tr>
+					<tr id="features">
+						<td colspan="6">
+							<div></div>
+						</td>
+					</tr>
 
-							<tr><th class="border" colspan="6"></th></tr>
-						</table>
+					<tr>
+						<th class="border" colspan="6"></th>
+					</tr>
+				</table>
 
-				</div>
 			</div>
-		</main>
-		<footer class="container">
+		</div>
+	</main>
+	<footer class="container">
 
-		</footer>
-		<script type="text/javascript" src="js/page-classes.js"></script>
-		<script type="text/javascript" src="data/classes.json"></script>
-		<script type="text/javascript" src="js/list.js"></script>
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
+	</footer>
+	<script type="text/javascript" src="js/page-classes.js"></script>
+	<script type="text/javascript" src="data/classes.json"></script>
+	<script type="text/javascript" src="js/list.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
 
-	</body>
+</body>
 
 
-	</html>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,189 +14,68 @@
 	I don't own any of the XML data anyway.
 -->
 
-<title>Converter - 5etools</title>
+	<title>Stat Block Converter - 5etools</title>
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="icon" href="favicon.png">
-
-<style type="text/css">
-header {
-	margin-bottom: 3px;
-	padding: 25px 15px;
-	color: white;
-	background-color: rgb(0, 107, 196);
-}
-
-header p.lead {
-	color: lightgrey;
-}
-
-
-main {
-	padding: 10px 15px;
-}
-
-footer {
-	padding: 20px 15px;
-	font-size: 90%;
-}
-
-input.search {
-	width: 62%;
-}
-
-.sortlabel {
-	display: inline-block;
-	width: 37%;
-	float: right;
-	text-align: right;
-}
-
-.sortlabel span {
-	background: lightgrey;
-	border-radius: 3px;
-	padding: 2px;
-	text-align: right;7
-	font-size: 0.5em;
-}
-
-.sortlabel:hover span:hover {
-	background: grey;
-	color: white;
-	cursor: pointer;
-}
-
-ul.list {
-	list-style-type: none;
-	padding-left: 0px;
-	font-size: 1.1em;
-	height: 100%;
-	max-height: 250px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	padding-top: 1em;
-}
-
-ul.list li {
-	padding: 1px;
-	cursor: pointer;
-}
-
-ul.list li:hover {
-	background: lightgrey;
-}
-
-ul.list li:active {
-	color: white;
-}
-
-ul.list li span.source {
-	font-size: 0.8em;
-}
-
-ul.list li span.source, ul.list li span.type {
-	font-size: 0.8em;
-	margin-left: 1em;
-	display: none;
-}
-
-ul.list li:hover span {
-	display: block;
-}
-
-th#name span.source {
-	display: inline-block;
-	float: right;
-	font-weight: 500;
-	margin-left: 0.5em;
-}
-
-span.sourceDMG {
-	color: purple;
-}
-
-span.sourceMM {
-	color: green;
-}
-
-span.sourceVGM {
-	color: grey;
-}
-
-span.sourceToD {
-	color: orangered;
-}
-
-span.sourceCoS {
-	color: purple;
-}
-
-span.sourceOotA {
-	color: black;
-}
-
-span.sourceSKT {
-	color: darkcyan;
-}
-
-span.sourcePotA {
-	color: blue;
-}
-
-pan.sourceLMoP {
-	color: lightgreen;
-}
-
-table#stats {
-	width: 100%;
-	min-width: 200px;
-	max-width: 400px;
-	background: #fdf1dc;
-	font-size: .9em;
-	table-layout: fixed;
-}
-
-table#stats td, table#stats th {
-	padding: 1px 0.3em;
-}
-
-table#stats th {
-	color: #922610;
-}
-
-table#stats span {
-	vertical-align: top!important;
-}
-
-th.border {
-	height: 10px;
-	background: #e69a28;
-	border: 1px solid black;
-}
-
-td.divider div {
-	background: #922610;
-	height: 4px;
-	margin: 4px 0;
-}
-
-textarea {
-	width: 100%;
-	height: 600px;
-	vertical-align: top;
-	text-align: left;
-	padding: 0;
-}
-</style>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
 
 </head>
+
 <body>
+	<header class="hidden-xs hidden-sm">
+		<div class="container">
+
+			<h1>Stat Block Converter</h1>
+			<p>Input stat block on left, hit parse, copy JSON from right.</p>
+		</div>
+	</header>
+	<nav class="container">
+		<ul class="nav nav-pills ">
+			<li role="presentation"><a href="5etools.html">5eTools</a></li>
+			<li role="presentation"><a href="rules.html">Rules</a></li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="classes.html">Classes</a></li>
+					<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
+					<li role="presentation"><a href="feats.html">Feats</a></li>
+					<li role="presentation"><a href="races.html">Races</a></li>
+				</ul>
+			</li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
+					<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
+					<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
+				</ul>
+			</li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
+					<li role="presentation"><a href="conditions.html">Conditions</a></li>
+					<li role="presentation"><a href="items.html">Items</a></li>
+					<li role="presentation"><a href="spells.html">Spells</a></li>
+				</ul>
+			</li>
+			<li role="presentation"><a href="statgen.html">Statgen</a></li>
+			<li role="presentation" class="dropdown active">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation" class="active"><a href="converter.html">Stat Block to JSON</a></li>
+					<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
 	<main class="container bodyContent">
 
 		<div class="row">
-			<div class="col-sm-6" id="listcontainer">
-				<h3>Statblock <input id="parsestatblock" type="button" value="Parse"></h3>
-<textarea id="statblock">Mammon
+			<div class="col-sm-6">
+				<h3>Statblock <button id="parsestatblock" class="btn">Parse</button></h3>
+				<textarea id="statblock" style="width: 100%; height: 40em;">Mammon
 Huge fiend (devil), lawful evil
 Armor Class 20 (natural armor)
 Hit Points 378 (28d12 + 196)
@@ -227,22 +107,24 @@ Mammon can take 3 legendary actions, choosing from the options below. Only one l
 Attack. Mammon makes one purse or molten coins attack.
 Make It Rain! Mammon casts gold and jewels into a 5-foot radius within 60 feet. One creature within 60 feet of the treasure that can see it must make a DC 24 Wisdom saving throw. On a failure, the creature must use its reaction to move its speed toward the trinkets, which vanish at the end of the turn.
 Deep Pockets (3 actions). Mammon recharges his Your Weight In Gold ability.</textarea>
-					<input type="text" placeholder="Source" id="source" value="">
-				</div>
-				<div class="col-sm-6">
-					<h3>Output</h3>
-					<textarea id="output" readonly></textarea>
-				</div>
+				<input type="text" placeholder="Source" id="source" value="Tome of Beasts"><br>
+				<small>This parser is very particular about its input. Use at your own risk.</small>
 			</div>
-		</main>
-		<footer class="container">
+			<div class="col-sm-6">
+				<h3>Output</h3>
+				<textarea id="jsonoutput" readonly style="width: 100%; height: 40em;"></textarea>
+			</div>
+		</div>
+	</main>
+	<footer class="container">
 
-		</footer>
+	</footer>
 
-		<script type="text/javascript" src="js/page-converter.js"></script>
-		<script type="text/javascript" src="js/list.js"></script>
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/page-converter.js"></script>
+	<script type="text/javascript" src="js/list.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
 
-	</body>
-	</html>
+</body>
+
+</html>

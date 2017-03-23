@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,13 +14,14 @@
 	I don't own any of the XML data anyway.
 -->
 
-<title>Conditions - 5etools</title>
+	<title>Conditions - 5etools</title>
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
 
 </head>
+
 <body>
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
@@ -29,55 +31,62 @@
 		</div>
 	</header>
 	<nav class="container">
-			<ul class="nav nav-pills ">
-				<li role="presentation"><a href="5etools.html">5eTools</a></li>
-<li role="presentation"><a href="rules.html">Rules</a></li>
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="classes.html">Classes</a></li>
-						<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
-						<li role="presentation"><a href="feats.html">Feats</a></li>
-						<li role="presentation"><a href="races.html">Races</a></li>
-					</ul>
-				</li>
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
-						<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
-						<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
-					</ul>
-				</li>
-				<li role="presentation" class="dropdown active">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
-						<li role="presentation" class="active"><a href="conditions.html">Conditions</a></li>
-						<li role="presentation"><a href="items.html">Items</a></li>
-						<li role="presentation"><a href="spells.html">Spells</a></li>
-					</ul>
-				</li>
-				<li role="presentation"><a href="statgen.html">Statgen</a></li>
-			</ul>
-		</nav>
+		<ul class="nav nav-pills ">
+			<li role="presentation"><a href="5etools.html">5eTools</a></li>
+			<li role="presentation"><a href="rules.html">Rules</a></li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="classes.html">Classes</a></li>
+					<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
+					<li role="presentation"><a href="feats.html">Feats</a></li>
+					<li role="presentation"><a href="races.html">Races</a></li>
+				</ul>
+			</li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
+					<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
+					<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
+				</ul>
+			</li>
+			<li role="presentation" class="dropdown active">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
+					<li role="presentation" class="active"><a href="conditions.html">Conditions</a></li>
+					<li role="presentation"><a href="items.html">Items</a></li>
+					<li role="presentation"><a href="spells.html">Spells</a></li>
+				</ul>
+			</li>
+			<li role="presentation"><a href="statgen.html">Statgen</a></li>
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li role="presentation"><a href="converter.html">Stat Block to JSON</a></li>
+					<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
 	<main class="container bodyContent">
 
 		<div class="row">
 			<div class="col-sm-6" id="listcontainer">
 
-					<div class="input-group">
-						<input type="search" id="search" class="search form-control" placeholder="Find condition...">
-						<span class="input-group-btn">
+				<div class="input-group">
+					<input type="search" id="search" class="search form-control" placeholder="Find condition...">
+					<span class="input-group-btn">
 							<button class="btn btn-default" type="button" id="reset">Reset</button>
 						</span>
-					</div>
-					<br>
-					<form id="filtertools">
-						<span class="sortlabel btn-group">
+				</div>
+				<br>
+				<form id="filtertools">
+					<span class="sortlabel btn-group">
 							<button class="col-xs-12 sort btn btn-default btn-xs" type="button" data-sort="name" sortby="asc">Name</button>
 						</span>
-					</form>
+				</form>
 				<ul class="list conditions" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 
 				</ul>
@@ -85,12 +94,20 @@
 			<div class="col-sm-6">
 				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 					<table id="stats">
-						<tr><th class="border" colspan="6"></th></tr>
+						<tr>
+							<th class="border" colspan="6"></th>
+						</tr>
 						<tr>
 							<th id="name" colspan="6">Name</th>
 						</tr>
-						<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-						<tr><th class="border" colspan="6"></th></tr>
+						<tr id="text">
+							<td class="divider" colspan="6">
+								<div></div>
+							</td>
+						</tr>
+						<tr>
+							<th class="border" colspan="6"></th>
+						</tr>
 					</table>
 				</div>
 			</div>
@@ -107,4 +124,5 @@
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 
 </body>
+
 </html>
