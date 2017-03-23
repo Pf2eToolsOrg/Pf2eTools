@@ -11,6 +11,8 @@ function loadparser() {
 		for (var i = 0; i < statblock.length; i++) {
 			var curline = statblock[i];
 
+			stats.source = $("input#source").val();
+			
 			// name of monster
 			if (i === 0) {
 				stats.name = curline.toLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase() });
@@ -20,7 +22,8 @@ function loadparser() {
 			// size type alignment
 			if (i === 1) {
 				stats.size = curline[0];
-				stats.type = curline.split(",")[0].split(" ").splice(1).join(" ") + ", " + $("input#source").val();
+				stats.type = curline.split(",")[0].split(" ").splice(1).join(" "); // + ", " + $("input#source").val();
+				
 				stats.alignment = curline.split(", ")[1];
 				continue;
 			}
