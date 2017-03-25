@@ -46638,7 +46638,406 @@ var monsterdata = {
                 ],
                 "reaction": [],
                 "legendary": []
-            }
+            },
+            {
+ "source": "Tales from the Yawning Portal",
+ "name": "Grenl",
+ "size": "S",
+ "type": "humanoid (goblinoid)",
+ "alignment": "neutral evil",
+ "ac": "15 (leather armor, shield)",
+ "hp": "10 (3d6)",
+ "speed": "30 ft.",
+ "str": "8",
+ "dex": "14",
+ "con": "10",
+ "int": "10",
+ "wis": "13",
+ "cha": "8",
+ "skill": [
+  "Stealth +6"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "9",
+ "languages": "Common, Goblin",
+ "cr": "1/4",
+ "trait": [
+  {
+   "name": "Nimble Escape",
+   "text": [
+    " The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+   ]
+  },
+  {
+   "name": "Spellcasting",
+   "text": [
+    " Grenl is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). She has the following cleric spells prepared:",
+    "• Cantrips (at will): poison spray, thaumaturgy",
+    "• 1st level (2 slots): bane, inflict wounds"
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Scimitar",
+   "text": [
+    " Melee Weapon Attack: +4, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+   ]
+  },
+  {
+   "name": "Shortbow",
+   "text": [
+    " Ranged Weapon Attack: +4, range 80/320 ft., one target. Hit: 5 (1d6+2) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+    "name": "Belak the Outcast",
+    "source": "Tales from the Yawning Portal",
+    "size": "M",
+    "type": "humanoid (any race)",
+    "alignment": "any alignment",
+    "ac": "11 (16 with barkskin)",
+    "hp": "27 (5d8+5)",
+    "speed": "30 ft.",
+    "str": "10",
+    "dex": "12",
+    "con": "13",
+    "int": "12",
+    "wis": "15",
+    "cha": "11",
+    "skill": [
+        "Medicine +4, Nature +3, Perception +4"
+    ],
+    "passive": "14",
+    "languages": "Druidic plus any two languages",
+    "cr": "2",
+    "trait": [{
+        "name": "Spellcasting",
+        "text": [
+            "The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:",
+            null,
+            "• Cantrips (at will): druidcraft, poison spray, shillelagh",
+            "• 1st level (4 slots): cure wounds, entangle, faerie fire, thunderwave",
+            "• 2nd level (3 slots): barkskin, flaming sphere"
+        ]
+    }],
+    "action": [{
+        "name": "Quarterstaff",
+        "text": [
+            "Melee Weapon Attack: +2 to hit (+4 to hit with shillelagh), reach 5 ft., one target. Hit: 3 (1d6) bludgeoning damage, or 6 (1d8 + 2) bludgeoning damage with shillelagh or if wielded with two hands."
+        ],
+        "attack": [
+            "Quarterstaff|2|1d6",
+            "Shillelagh|4|1d8+2"
+        ]
+    }],
+    "spells": "druidcraft, produce flame, shillelagh, entangle, longstrider, speak with animals, thunderwave, animal messenger, barkskin"
+},
+{
+    "name": "Erky Timbers",
+    "source": "Tales from the Yawning Portal",
+    "size": "M",
+    "type": "humanoid (gnome)",
+    "alignment": "any alignment",
+    "ac": "10",
+    "hp": "17 (5d6)",
+    "speed": "30 ft.",
+    "str": "10",
+    "dex": "10",
+    "con": "10",
+    "int": "10",
+    "wis": "14",
+    "cha": "11",
+    "skill": [
+        "Medicine +4, Religion +2"
+    ],
+    "senses": "darkvision 60 ft.",
+    "passive": "12",
+    "languages": "Common, Draconic, Gnomish, and Goblin",
+    "cr": "1/4",
+    "trait": [{
+        "name": "Spellcasting",
+        "text": [
+            "The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared:",
+            null,
+            "• Cantrips (at will): light, sacred flame, thaumaturgy",
+            "• 1st level (3 slots): bless, cure wounds, sanctuary"
+        ]
+    }],
+    "action": [{
+        "name": "Club",
+        "text": [
+            "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+        ],
+        "attack": [
+            "Club|2|1d4"
+        ]
+    },
+    {
+      "name": "Channel Divinity: Turn Undead (1/Short Rest)",
+      "text": [
+        "Erky presents his holy Symbol and speaks a prayer censuring the Undead. Each Undead that can see or hear Erky within 30 feet of him must make a DC 12 Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
+        "A turned creature must spend its turns trying to move as far away from Erky as it can, and it can't willingly move to a space within 30 feet of him. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+      ]
+    }
+    ],
+    "spells": "light, sacred flame, thaumaturgy, bless, cure wounds, sanctuary",
+    "description": "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities."
+},
+{
+    "name": "Durnn",
+    "source": "Tales from the Yawning Portal",
+    "size": "M",
+    "type": "humanoid (goblinoid)",
+    "alignment": "lawful evil",
+    "ac": "19 (splint armor, shield)",
+    "hp": "18 (2d8+2)",
+    "speed": "30 ft.",
+    "str": "15",
+    "dex": "12",
+    "con": "12",
+    "int": "10",
+    "wis": "10",
+    "cha": "9",
+    "senses": "darkvision 60 ft.",
+    "passive": "10",
+    "languages": "Common, Goblin",
+    "cr": "1",
+    "trait": [{
+        "name": "Martial Advantage",
+        "text": [
+            "Once per turn, the hobgoblin can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 ft. of an ally of the hobgoblin that isn't incapacitated."
+        ],
+        "attack": [
+            "Martial Advantage||2d6"
+        ]
+    }],
+    "action": [{
+            "name": "Longsword",
+            "text": [
+                "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) slashing damage, or 6 (1d10 + 2) slashing damage if used with two hands."
+            ],
+            "attack": [
+                "|3|1d8+1"
+            ]
+        },
+        {
+            "name": "Longbow",
+            "text": [
+                "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 5 (1d8 + 1) piercing damage."
+            ],
+            "attack": [
+                "|3|1d8+1"
+            ]
+        }
+    ]
+},
+{
+    "name": "Guthash",
+    "source": "Tales from the Yawning Portal",
+    "size": "M",
+    "type": "beast",
+    "alignment": "unaligned",
+    "ac": "12",
+    "hp": "16 (2d6)",
+    "speed": "30 ft.",
+    "str": "7",
+    "dex": "15",
+    "con": "11",
+    "int": "2",
+    "wis": "10",
+    "cha": "4",
+    "senses": "darkvision 60 ft.",
+    "passive": "10",
+    "cr": "1/4",
+    "action": [{
+        "name": "Bite",
+        "text": [
+            "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage. If the target is a creature, it must succeed on a DC 10 Constitution saving throw or contract a disease. Until the disease is cured, the target can't regain hit points except by magical means, and the target's hit point maximum decreases by 3 (1d6) every 24 hours. If the target's hit point maximum drops to 0 as a result of this disease, the target dies."
+        ],
+        "attack": [
+            "Bite|5|1d4+2"
+        ]
+    }]
+},
+{
+    "name": "Yusdrayl",
+    "source": "Tales from the Yawning Portal",
+    "size": "S",
+    "type": "humanoid (kobold)",
+    "alignment": "lawful evil",
+    "ac": "12 (15 with mage armor)",
+    "hp": "16 (3d6+6)",
+    "speed": "30 ft.",
+    "str": "8",
+    "dex": "15",
+    "con": "14",
+    "int": "10",
+    "wis": "10",
+    "cha": "16",
+    "skill": [ "Arcana +2, Insight +2, Stealth +4"],
+    "senses": "darkvision 60 ft.",
+    "passive": "10",
+    "languages": "Common, Draconic",
+    "cr": "1",
+    "trait": [
+      {
+        "name": "Spellcasting",
+        "text": [
+          "Yusdrayl is a 2nd-level spellcaster. Her spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). She knows the following sorcerer spells:",
+          "• Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp",
+          "• 1st level (4 slots): burning hands, chromatic orb, mage armor"
+        ]
+        },
+        {
+            "name": "Sunlight Sensitivity",
+            "text": [
+                "While in sunlight, Yusdrayl has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+            ]
+        },
+        {
+            "name": "Pack Tactics",
+            "text": [
+                "Yusdrayl has advantage on an attack roll against a creature if at least one of her allies is within 5 ft. of the creature and the ally isn't incapacitated."
+            ]
+        }
+    ],
+    "action": [{
+            "name": "Dagger",
+            "text": [
+                "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+            ],
+            "attack": [
+                "|4|1d4+2"
+            ]
+        }
+    ]
+},
+{
+ "source": "Tales from the Yawning Portal",
+ "name": "Sharwyn Hucrele",
+ "size": "M",
+ "type": "humanoid (human)",
+ "alignment": "neutral evil",
+ "ac": "16 (Barkskin trait)",
+ "hp": "13 (2d8+4)",
+ "speed": "30 ft.",
+ "str": "11",
+ "dex": "13",
+ "con": "14",
+ "int": "16",
+ "wis": "14",
+ "cha": "9",
+ "skill": [
+  "Arcana +5, Insight +4, Persuasion +1"
+ ],
+ "senses": "",
+ "passive": "12",
+ "languages": "Common, Draconic, Goblin",
+ "cr": "1/2",
+ "trait": [
+  {
+   "name": "Barkskin",
+   "text": [
+    " Sharwyn’s AC can’t be lower than 16."
+   ]
+  },
+  {
+   "name": "Special Equipment",
+   "text": [
+    " Sharwyn has a spellbook that contains the spells listed in her Spellcasting trait, plus detect magic and silent image."
+   ]
+  },
+  {
+   "name": "Spellcasting",
+   "text": [
+    " Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). She has the following wizard spells prepared:",
+    "• Cantrips (at will): light, prestidigitation, ray of frost",
+    "• 1st level (2 slots): color spray, magic missile, shield, sleep"
+   ]
+  },
+  {
+   "name": "Tree Thrall",
+   "text": [
+    " If the Gulthias Tree dies, Sharwyn dies 24 hours later."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Dagger",
+   "text": [
+    " Melee Weapon Attack: +4, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "source": "Tales from the Yawning Portal",
+ "name": "Sir Braford",
+ "size": "M",
+ "type": "humanoid (human)",
+ "alignment": "neutral evil",
+ "ac": "18 (chain mail, shield)",
+ "hp": "19 (3d8+6)",
+ "speed": "30 ft.",
+ "str": "16",
+ "dex": "9",
+ "con": "14",
+ "int": "10",
+ "wis": "13",
+ "cha": "14",
+ "skill": [
+  "Athletics +5, Perception +3"
+ ],
+ "senses": "",
+ "passive": "13",
+ "languages": "Common",
+ "cr": "1/2",
+ "trait": [
+  {
+   "name": "Barkskin",
+   "text": [
+    " Sir Braford’s AC can’t be lower than 16."
+   ]
+  },
+  {
+   "name": "Special Equipment",
+   "text": [
+    " Sir Braford wields Shatterspike, a magic longsword that grants a +1 bonus to attack and damage rolls made with it (included in his attack). See the Shatterspike handout for the item’s other properties."
+   ]
+  },
+  {
+   "name": "Tree Thrall",
+   "text": [
+    " If the Gulthias Tree dies, Sir Braford dies 24 hours later."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Longsword",
+   "text": [
+    " Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage, or 9 (1d10 + 4) slashing damage if used with two hands."
+   ]
+  }
+ ],
+ "reaction": [
+  {
+   "name": "Protection",
+   "text": [
+    " When a creature Sir Braford can see attacks a target other than him that is within 5 feet of him, he can use a reaction to use his shield to impose disadvantage on the attack roll."
+   ]
+  }
+ ],
+ "legendary": []
+}
         ],
         "_version": "5"
     }
