@@ -111,13 +111,16 @@ ul.list li:hover span {
 
 th#name span.source {
 	display: inline-block;
-  position: relative;
 	float: right;
 	font-weight: 500;
 	margin-left: 0.5em;
-  margin-right: 0.2em;
   z-index: 1;
   line-height: 100%;
+}
+
+.monster th#name span.source {
+  position: relative;
+  margin-right: 0.2em;
 }
 
 span.sourceDMG {
@@ -251,6 +254,9 @@ th#name {
 	font-variant: small-caps;
 	font-weight: 500;
 	padding-left: 0.2em!important;
+}
+
+.monster th#name {
   padding-right: 5em!important;
 }
 
