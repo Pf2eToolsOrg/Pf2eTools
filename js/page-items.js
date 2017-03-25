@@ -376,7 +376,8 @@ function useitem (id) {
 			continue;
 		}
 
-		texthtml = texthtml + "<p>"+textlist[n]+"</p>";
+		var finaltext = textlist[n].replace(/(Curse|Sentience|Personality)(\.|\:) /g, '<strong>$1.</strong> ');
+		texthtml = texthtml + "<p>"+finaltext+"</p>";
 	}
 
 	$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
