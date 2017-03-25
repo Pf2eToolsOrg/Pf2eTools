@@ -1,29 +1,30 @@
 
 
 function parsesource (src) {
-	source = src
-	if (source == " monster manual") source = "MM";
-	if (source == " Player's Handbook") source = "PHB";
-	if (source == " Dungeon Master's Guide") source = "DMG";
-	if (source == " Volo's Guide") source = "VGM";
-	if (source == " Volo's Guide to Monsters") source = "VGM";
-	if (source == " Princes of the Apocalypse") source = "PotA";
-	if (source == " Elemental Evil PDF supplement") source = "EEPC";
-	if (source == " elemental evil") source = "PotA";
-	if (source == " Storm King's Thunder") source = "SKT";
-	if (source == " storm kings thunder") source = "SKT";
-	if (source == " The Rise of Tiamat") source = "RoT";
-	if (source == " Rise of Tiamat Online Supplement") source = "RoT";
-	if (source == " Hoard of the Dragon Queen") source = "HotDQ";
-	if (source == " tyranny of dragons") source = "ToD";
-	if (source == " Out of the Abyss") source = "OotA";
-	if (source == " out of the abyss") source = "OotA";
-	if (source == " Curse of Strahd") source = "CoS";
-	if (source == " curse of strahd") source = "CoS";
-	if (source == " Sword Coast Adventurer's Guide") source = "SCAG";
-	if (source == " Lost Mines of Phandelver") source = "LMoP";
-	if (source == " lost mine of phandelver") source = "LMoP";
-	if (source == " Modern Magic Unearthed Arcana") source = "UA";
+	source = src.trim();
+	if (source == "monster manual") source = "MM";
+	if (source == "Player's Handbook") source = "PHB";
+	if (source == "Dungeon Master's Guide") source = "DMG";
+	if (source == "Volo's Guide") source = "VGM";
+	if (source == "Volo's Guide to Monsters") source = "VGM";
+	if (source == "Princes of the Apocalypse") source = "PotA";
+	if (source == "Elemental Evil PDF supplement") source = "EEPC";
+	if (source == "elemental evil") source = "PotA";
+	if (source == "Storm King's Thunder") source = "SKT";
+	if (source == "storm kings thunder") source = "SKT";
+	if (source == "The Rise of Tiamat") source = "RoT";
+	if (source == "Rise of Tiamat Online Supplement") source = "RoT";
+	if (source == "Hoard of the Dragon Queen") source = "HotDQ";
+	if (source == "tyranny of dragons") source = "ToD";
+	if (source == "Out of the Abyss") source = "OotA";
+	if (source == "out of the abyss") source = "OotA";
+	if (source == "Curse of Strahd") source = "CoS";
+	if (source == "curse of strahd") source = "CoS";
+	if (source == "Sword Coast Adventurer's Guide") source = "SCAG";
+	if (source == "Lost Mines of Phandelver") source = "LMoP";
+	if (source == "lost mine of phandelver") source = "LMoP";
+	if (source == "Modern Magic Unearthed Arcana") source = "UA";
+	if (source == "Tales from the Yawning Portal") source = "TYP";
 	return source;
 }
 
@@ -291,7 +292,8 @@ function useitem (id) {
 	var curitem = itemlist[id];
 
 	var name = curitem.name;
-	var source = curitem.text[curitem.text.length-1].split(",")[0].split(":")[1];
+	var source = (curitem.source) ? curitem.source : curitem.text[curitem.text.length-1].split(",")[0].split(":")[1];
+
 	sourceshort = parsesource(source);
 	$("th#name").html("<span title=\""+source+"\" class='source source"+sourceshort+"'>"+sourceshort+"</span> "+name);
 
@@ -362,13 +364,20 @@ function useitem (id) {
 			$("td span#attunement").html("("+textlist[n]+")");
 			continue;
 		}
+		if (textlist[n].indexOf(", common") > 0) continue;
+		if (textlist[n].indexOf(", uncommon") > 0) continue;
+		if (textlist[n].indexOf(", rare") > 0) continue;
+		if (textlist[n].indexOf(", very rare") > 0) continue;
+		if (textlist[n].indexOf(", legendary") > 0) continue;
+		if (textlist[n].indexOf("(requires attunement)") > 0) continue;
 		if (textlist[n].split("Rarity:")[1]) continue;
 		if (textlist[n].split("Source:")[1]) {
 			$("td#source span").html(textlist[n].split("Source:")[1]);
 			continue;
 		}
 
-		texthtml = texthtml + "<p>"+textlist[n]+"</p>";
+		var finaltext = textlist[n].replace(/(Curse|Sentience|Personality)(\.|\:) /g, '<strong>$1.</strong> ');
+		texthtml = texthtml + "<p>"+finaltext+"</p>";
 	}
 
 	$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
