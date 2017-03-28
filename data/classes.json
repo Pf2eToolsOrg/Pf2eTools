@@ -5852,6 +5852,16 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Monastic Tradition: Way of the Drunken Master (UA)",
+                        "text": [
+                           "The Way of the Drunken Master teaches its students to move with the jerky, unpredictable movements of a drunkard. A drunken master sways, tottering on unsteady feet, to present what seems like an incompetent combatant but proves frustrating to engage. The drunken master’s erratic stumbles conceal a carefully executed dance of blocks, parries, advances, attacks, and retreats. Cunning warriors can see through the drunken master’s apparent incompetence to recognize the masterful technique employed."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
+                        "parent": "Monastic Tradition",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Way of Shadow: Shadow Arts",
                         "text": [
                            "You can use your ki to duplicate the effects of certain spells. As an action, you can spend 2 ki points to cast darkness, darkvision, pass without trace, or silence, without providing material components. Additionally, you gain the minor illusion cantrip if you don't already know it."
@@ -6127,6 +6137,16 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Way of the Drunken Master: Drunken Technique",
+                        "text": [
+                           "When you choose this tradition at 3rd level, you gain proficiency in the Performance skill if you don’t already have it; your martial arts technique mixes martial training with the precision of a dancer and the antics of a jester.",
+                           "You also learn how to twist and turn quickly as part of your Flurry of Blows. Whenever you use Flurry of Blows, you gain the benefit of the Disengage action, and your walking speed increases by 10 feet until the end of the current turn."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
+                        "parent": "Way of the Drunken Master",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Deflect Missiles",
                         "text": [
                            "Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d 10 + your Dexterity modifier + your monk level.",
@@ -6252,6 +6272,15 @@ var classdata = {
                         ],
                         "subclass": "Monastic Tradition: Way of Tranquility (UA)",
                         "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of the Drunken Master: Tipsy Sway",
+                        "text": [
+                           "At 6th level, your swaying in combat becomes maddeningly unpredictable. As a reaction when an enemy misses you with a melee attack roll, you can cause that attack to hit one creature of your choice, other than the attacker, that you can see within 5 feet of you. Once you use this feature, you can’t use it again until you finish a short or long rest.At 6th level, your swaying in combat becomes maddeningly unpredictable. As a reaction when an enemy misses you with a melee attack roll, you can cause that attack to hit one creature of your choice, other than the attacker, that you can see within 5 feet of you. Once you use this feature, you can’t use it again until you finish a short or long rest."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
+                        "parent": "Way of the Drunken Master",
                         "_optional": "YES"
                      }
                   ],
@@ -6386,6 +6415,15 @@ var classdata = {
                         ],
                         "subclass": "Monastic Tradition: Way of Tranquility (UA)",
                         "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of the Drunken Master: Drunkard's Luck",
+                        "text": [
+                           "Starting at 11th level, you always seem to get a lucky bounce at just the right moment to save you from doom. When you make a saving throw, you can spend 1 ki point to give yourself advantage on that roll. You must decide to use this feature before rolling."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
+                        "parent": "Way of the Drunken Master",
                         "_optional": "YES"
                      }
                   ],
@@ -6525,6 +6563,15 @@ var classdata = {
                         ],
                         "subclass": "Monastic Tradition: Way of Tranquility (UA)",
                         "parent": "Way of Tranquility",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Way of the Drunken Master: Intoxicated Frenzy",
+                        "text": [
+                           "At 17th level, you gain the ability to make an overwhelming number of attacks against a group of enemies. When you use your Flurry of Blows, you can make up to three additional attacks with it (up to a total of five attacks), provided that each Flurry of Blows attack targets a different creature this turn."
+                        ],
+                        "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
+                        "parent": "Way of the Drunken Master",
                         "_optional": "YES"
                      }
                   ],
@@ -7159,7 +7206,7 @@ var classdata = {
                        "You can use your Channel Divinity to strike with supernatural accuracy. When you make an attack roll, you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll, but before the DM says whether the attack hits or misses."
                         ],
                         "subclass": "Sacred Oath: Oath of Conquest (UA)",
-                        "parent": "Oath of the Conquest",
+                        "parent": "Oath of the Conquest (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -7192,7 +7239,7 @@ var classdata = {
                        "17th - dominate person, passwall"
                       ],
                       "subclass": "Sacred Oath: Oath of Treachery (UA)",
-                      "parent": "Oath of the Treachery",
+                      "parent": "Oath of the Treachery (UA)",
                       "suboption": "YES",
                       "_optional": "YES"
                      },
@@ -7214,7 +7261,76 @@ var classdata = {
                        "subclass": "Sacred Oath: Oath of Treachery (UA)",
                        "parent": "Oath of the Treachery (UA)",
                        "_optional": "YES"
-                     }
+                     },
+                     {
+                      "name": "Sacred Oath: Oath of Redemption (UA)",
+                      "text": [
+                       "The Oath of Redemption sets a paladin on a difficult path, one that requires a holy warrior to use violence only as a last resort. Paladins who dedicate themselves to this oath believe that any person can be redeemed and that the path of benevolence and justice is one that anyone can walk. These paladins face evil creatures in the hope of turning them to the light, and the paladins slay them only when such a deed will clearly save other lives. Paladins who follow this path are known as redeemers.",
+                       "While redeemers are idealists, they are no fools. Redeemers know that undead, demons, devils, and other supernatural threats can be inherently evil. Against such foes, the paladins to bear. Yet the redeemers still pray that, one day, even creatures of wickedness will invite their own redemption.",
+                       "",
+                       "Tenets of Redemption",
+                       "The tenets of the Oath of Redemption hold a paladin to a high standard of peace and justice.",
+                       "Peace. Violence is a weapon of last resort. Diplomacy and understanding are the paths to long-lasting peace.",
+                       "Innocence. All people begin life in an innocent state, and it is their environment or the influence of dark forces that drives them to evil. By setting the proper example, and working to heal the wounds of a deeply flawed world, you can set anyone on a righteous path.",
+                       "Patience. Change takes time. Those who have walked the path of the wicked must be given reminders to keep them honest and true. Once you have planted the seed of righteousness in a creature, you must work day after day to allow it to survive and then flourish.",
+                       "Wisdom. Your heart and mind must stay clear, for eventually you will be forced to admit defeat. While every creature can be redeemed, some are so far along the path of evil that you have no choice but to end their lives for the greater good. Any such action must be carefully weighed and the consequences fully understood, but once you have made the decision, follow through with it knowing your path is just."
+                      ],
+                      "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                      "parent": "Sacred Oath",
+                      "issubclass": "YES",
+                      "_optional": "YES"
+                     },
+                     {
+                      "name": "Oath of Redemption: Oath Spells",
+                      "text": [
+                       "You gain oath spells at the paladin levels listed.",
+                       "3rd shield, sleep",
+                       "5th hold person, ray of enfeeblement",
+                       "9th counterspell, hypnotic pattern",
+                       "13th Otiluke’s resilient sphere, stoneskin",
+                       "17th hold monster, wall of force"
+                      ],
+                      "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                      "parent": "Oath of the Redemption (UA)",
+                      "suboption": "YES",
+                      "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Redemption: Armor of Peace",
+                       "text": [
+                        "Starting at 3rd level, your commitment to peace allows you to walk into the most dangerous situations unarmored. While you aren’t wearing armor or wielding a shield, your base AC is 16 + your Dexterity modifier."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                       "parent": "Oath of the Redemption (UA)",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Redemption: Warrior of Reconciliation",
+                       "text": [
+                        "At 3rd level, you foreswear the weapons of war in favor of simple tools. While wielding a simple weapon that deals bludgeoning damage, you gain a special benefit if you reduce a creature to 0 hit points with that weapon and decide to spare the creature’s life. Instead of falling unconscious, the creature is charmed by you for 1 minute. During that time, the charmed creature is peaceful and docile, refusing to move or to take actions or reactions, unless you command it to. You can’t order the creature to attack, force someone to make a saving throw, or cause damage to itself or others. This charmed effect ends early if you are incapacitated or if you or your companions attack the creature, deal damage to it, or force it to make a saving throw. When the effect ends, the creature falls unconscious if it still has 0 hit points."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                       "parent": "Oath of the Redemption (UA)",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Redemption Channel Divinity: Emissary of Peace",
+                       "text": [
+                        "You can use your Channel Divinity to augment your presence with divine power. As a bonus action, you grant yourself a +5 bonus to the next Charisma (Persuasion) check you make within the next minute."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                       "parent": "Oath of the Redemption (UA)",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Redemption Channel Divinity: Rebuke the Violent",
+                       "text": [
+                        "You can use your Channel Divinity to rebuke those who use violence. As a reaction when an enemy within 10 feet of you deals damage with a melee attack against one creature other than you, you force that attacker to make a Wisdom saving throw. On a failed save, the attacker takes radiant damage equal to the damage it just dealt. On a successful save, it takes half as much damage."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                       "parent": "Oath of the Redemption (UA)",
+                       "_optional": "YES"
+                     },
                   ],
                   "_level": "3"
                },
@@ -7328,6 +7444,15 @@ var classdata = {
                        ],
                        "subclass": "Sacred Oath: Oath of Treachery (UA)",
                        "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Redemption: Aura of the Guardian",
+                       "text": [
+                        "Starting at 7th level, you can shield your allies from harm at the cost of your own health. As a reaction when an ally within 10 feet of you takes damage, you instead magically take that damage. This feature doesn’t transfer any other effects that might accompany the damage."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                       "parent": "Oath of the Redemption (UA)",
                        "_optional": "YES"
                      }
                   ],
@@ -7462,6 +7587,15 @@ var classdata = {
                        ],
                        "subclass": "Sacred Oath: Oath of Treachery (UA)",
                        "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Redemption: Protective Spirit",
+                       "text": [
+                        "Starting at 15th level, a holy presence mends your wounds in combat. You regain hit points equal to 1d6 + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren’t incapacitated."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                       "parent": "Oath of the Redemption (UA)",
                        "_optional": "YES"
                      }
                   ],
@@ -7603,6 +7737,18 @@ var classdata = {
                        ],
                        "subclass": "Sacred Oath: Oath of Treachery (UA)",
                        "parent": "Oath of the Treachery (UA)",
+                       "_optional": "YES"
+                     },
+                     {
+                       "name": "Oath of Redemption: Emissary of Redemption",
+                       "text": [
+                        "At 20th level, you become an avatar of peace, which gives you two benefits:",
+                        "• You have resistance to all damage dealt by other creatures (their attacks, spells, and other effects).",
+                        "• Whenever a creature damages you, it takes damage equal to half the amount it dealt to you.",
+                        "If you attack a creature, deal damage to it, or force it to make a saving throw, neither benefit works against that creature until you finish a long rest."
+                       ],
+                       "subclass": "Sacred Oath: Oath of Redemption (UA)",
+                       "parent": "Oath of the Redemption (UA)",
                        "_optional": "YES"
                      }
                   ],
@@ -7924,7 +8070,17 @@ var classdata = {
                            "These rangers dwell in the elder forests of the world. They venture out only rarely, as they consider it their sacred duty to protect the druidic groves and ancient trees that saw the earliest days of the world."
                         ],
                         "subclass": "Ranger Archetype: Primeval Guardian (UA)",
-                        "parent": "Primeval Guardian",
+                        "parent": "Ranger Archetype",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Ranger Archetype: Monster Slayer (UA)",
+                        "text": [
+                           "Rangers of the Slayer Conclave seek out vampires, dragons, evil fey, fiends, and other powerful magical threats. Trained in a variety of arcane and divine techniques to overcome such monsters, slayers are experts at unearthing and defeating mighty foes."
+                        ],
+                        "subclass": "Ranger Archetype: Monster Slayer (UA)",
+                        "parent": "Ranger Archetype",
                         "issubclass": "YES",
                         "_optional": "YES"
                      },
@@ -8082,6 +8238,32 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Monster Slayer: Slayer's Mysticism",
+                        "text": [
+                           "You learn an additional spell when you reach certain levels in this class, as shown in the Slayer Spells table. The spell counts as a ranger spell for you but doesn’t count against the number of ranger spells you know.",
+                           "",
+                           "3rd - protection from evil and good",
+                           "5th - zone of truth",
+                           "9th - magic circle",
+                           "13th - banishment",
+                           "17th - planar binding."
+                        ],
+                        "subclass": "Ranger Archetype: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Slayer's Eye",
+                        "text": [
+                           "Starting at 3rd level, you gain the ability to study and unravel a creature’s defenses. As a bonus action, choose one creature you can see within 120 feet of you. You immediately learn the target’s vulnerabilities, immunities, and resistances. You also learn any special effects triggered when the target takes damage, such as fire damage halting its regeneration.",
+                           "In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra 1d6 damage from the weapon.",
+                           "This benefit lasts until you target a different creature with this feature or until you finish a short or long rest."
+                        ],
+                        "subclass": "Ranger Archetype: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Primeval Awareness",
                         "text": [
                            "Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn't reveal the creatures' location or number."
@@ -8208,6 +8390,15 @@ var classdata = {
                         "subclass": "Ranger Archetype: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
                         "_optional": "YES"
+                      },
+                      {
+                         "name": "Monster Slayer: Supernatural Defense",
+                         "text": [
+                            "At 7th level, you gain extra resilience against your prey’s assaults on your mind and body. Whenever the target of your Slayer’s Eye forces you to make a saving throw, add 1d6 to your roll."
+                         ],
+                         "subclass": "Ranger Archetype: Monster Slayer (UA)",
+                         "parent": "Monster Slayer (UA)",
+                         "_optional": "YES"
                       }
                   ],
                   "_level": "7"
@@ -8321,6 +8512,15 @@ var classdata = {
                         ],
                         "subclass": "Ranger Archetype: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Relentless Slayer",
+                        "text": [
+                           "At 11th level, you gain the ability to foil your foe’s ability to escape. Your study of folklore and arcane knowledge gives you a key insight to keep your prey cornered. If the target of your Slayer’s Eye attempts to teleport, change its shape, travel to another plane of existence, or turn gaseous, you can use your reaction to make a Wisdom check contested by a Wisdom check made by the target. To use this ability, you must be able to see the target and need to be within 30 feet of it. If you succeed, you foil its attempt, causing it to waste the action, bonus action, or reaction it used."
+                        ],
+                        "subclass": "Ranger Archetype: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
                         "_optional": "YES"
                      }
                   ],
@@ -8436,6 +8636,15 @@ var classdata = {
                         ],
                         "subclass": "Ranger Archetype: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Slayer's Counter",
+                        "text": [
+                           "At 15th level, you gain the ability to counterattack when your prey tries to sabotage you. If the target of your Slayer’s Eye forces you to make a saving throw, you can use your reaction to make one weapon attack against it. You make this attack immediately before making the saving throw. If the attack hits, your save automatically succeeds, in addition to the attack’s normal effects."
+                        ],
+                        "subclass": "Ranger Archetype: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
                         "_optional": "YES"
                      }
                   ],
@@ -8816,6 +9025,16 @@ var classdata = {
                         "_optional": "YES"
                      },
                      {
+                        "name": "Ranger Conclave: Monster Slayer (UA)",
+                        "text": [
+                           "Rangers of the Slayer Conclave seek out vampires, dragons, evil fey, fiends, and other powerful magical threats. Trained in a variety of arcane and divine techniques to overcome such monsters, slayers are experts at unearthing and defeating mighty foes."
+                        ],
+                        "subclass": "Ranger Conclave: Monster Slayer (UA)",
+                        "parent": "Ranger Conclave",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Beast Conclave: Animal Companion",
                         "text": [
                            "At 3rd level, you learn to use your magic to create a powerful bond with a creature of the natural world.",
@@ -8993,6 +9212,32 @@ var classdata = {
                         "subclass": "Ranger Conclave: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
                         "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Slayer's Mysticism",
+                        "text": [
+                           "You learn an additional spell when you reach certain levels in this class, as shown in the Slayer Spells table. The spell counts as a ranger spell for you but doesn’t count against the number of ranger spells you know.",
+                           "",
+                           "3rd - protection from evil and good",
+                           "5th - zone of truth",
+                           "9th - magic circle",
+                           "13th - banishment",
+                           "17th - planar binding."
+                        ],
+                        "subclass": "Ranger Conclave: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Slayer's Eye",
+                        "text": [
+                           "Starting at 3rd level, you gain the ability to study and unravel a creature’s defenses. As a bonus action, choose one creature you can see within 120 feet of you. You immediately learn the target’s vulnerabilities, immunities, and resistances. You also learn any special effects triggered when the target takes damage, such as fire damage halting its regeneration.",
+                           "In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra 1d6 damage from the weapon.",
+                           "This benefit lasts until you target a different creature with this feature or until you finish a short or long rest."
+                        ],
+                        "subclass": "Ranger Conclave: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
+                        "_optional": "YES"
                      }
                   ],
                   "_level": "3"
@@ -9060,6 +9305,15 @@ var classdata = {
                         ],
                         "subclass": "Ranger Conclave: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Extra Attack",
+                        "text": [
+                           "Beginning at 5th level, you can attack twice instead of once whenever you take the Attack action on your turn"
+                        ],
+                        "subclass": "Ranger Conclave: Monster Slayer (UA)",
+                        "parent": "Monster Slayer",
                         "_optional": "YES"
                      }
                   ],
@@ -9160,6 +9414,15 @@ var classdata = {
                         "subclass": "Ranger Conclave: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
                         "_optional": "YES"
+                      },
+                      {
+                         "name": "Monster Slayer: Supernatural Defense",
+                         "text": [
+                            "At 7th level, you gain extra resilience against your prey’s assaults on your mind and body. Whenever the target of your Slayer’s Eye forces you to make a saving throw, add 1d6 to your roll."
+                         ],
+                         "subclass": "Ranger Conclave: Monster Slayer (UA)",
+                         "parent": "Monster Slayer (UA)",
+                         "_optional": "YES"
                       }
                   ],
                   "_level": "7"
@@ -9267,6 +9530,15 @@ var classdata = {
                         ],
                         "subclass": "Ranger Conclave: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Relentless Slayer",
+                        "text": [
+                           "At 11th level, you gain the ability to foil your foe’s ability to escape. Your study of folklore and arcane knowledge gives you a key insight to keep your prey cornered. If the target of your Slayer’s Eye attempts to teleport, change its shape, travel to another plane of existence, or turn gaseous, you can use your reaction to make a Wisdom check contested by a Wisdom check made by the target. To use this ability, you must be able to see the target and need to be within 30 feet of it. If you succeed, you foil its attempt, causing it to waste the action, bonus action, or reaction it used."
+                        ],
+                        "subclass": "Ranger Conclave: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
                         "_optional": "YES"
                      }
                   ],
@@ -9376,6 +9648,15 @@ var classdata = {
                         ],
                         "subclass": "Ranger Conclave: Primeval Guardian (UA)",
                         "parent": "Primeval Guardian",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Monster Slayer: Slayer's Counter",
+                        "text": [
+                           "At 15th level, you gain the ability to counterattack when your prey tries to sabotage you. If the target of your Slayer’s Eye forces you to make a saving throw, you can use your reaction to make one weapon attack against it. You make this attack immediately before making the saving throw. If the attack hits, your save automatically succeeds, in addition to the attack’s normal effects."
+                        ],
+                        "subclass": "Ranger Conclave: Monster Slayer (UA)",
+                        "parent": "Monster Slayer (UA)",
                         "_optional": "YES"
                      }
                   ],
