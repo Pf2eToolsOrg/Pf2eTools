@@ -11,4 +11,4 @@ To remove trailing commas in JSON:
 Find: (.*?)(,)(:?\s*]|\s*})
 Replace: $1$3
 
-You can convert stat blocks to JSON for importing via [this converter](https://5egmegaanon.github.io/5etools/converter.html).
+You can convert stat blocks to JSON for importing via [this converter](https://astranauta.github.io/converter.html).
