@@ -284,7 +284,9 @@ function usespell (id) {
 			} else for (var i = 0; i < textlist.length; i++) {
 				if (!textlist[i]) continue;
 				if (curspell.level[0] !== "P") {
-					texthtml = texthtml + "<p>"+textlist[i].replace(/At Higher Levels(\:|\.) /g, "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion.","").replace(/^.*(Psychic Focus|Bestial Transformation|Atonement|Bless Water|Coming of Age|Dedication|Funeral Rite|Investiture|Marriage)+\./g,"<strong>$&</strong>").replace(/^.*\:/g,"<strong>$&</strong>")+"</p>";
+					texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion","").replace(/^.*\:/g,"<strong>$&</strong>")+"</p>";
+				} else {
+					texthtml = texthtml + "<p>"+textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus|Bestial Transformation)\./g,"<strong>$&</strong>")+"</p>";
 				}
 			}
 			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
