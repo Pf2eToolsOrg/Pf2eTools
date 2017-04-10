@@ -4,7 +4,10 @@
 ## To-Do
 - Continue Tome of Beasts entries.
 - Clean up filtering interface.
-- Plan layout of upcoming Mystic disciplines (spells? Special classes.html layout?)
+- Plan layout of upcoming Mystic disciplines
+- Continue adding Unearthed Arcana rules entries.
+- Search engine???
+- <strong>Dedicated servers?????</strong>
 
 ## Notes
 To remove trailing commas in JSON:
