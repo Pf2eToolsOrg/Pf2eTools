@@ -6,7 +6,7 @@ monsterdata.compendium.monster.push(
  "alignment": "chaotic evil",
  "ac": "17 (natural armor)",
  "hp": "135 (18d10 + 36)",
- "speed": "10 ft., swim 40 ft., fly 40 ft. (ethereal only)",
+ "speed": "10 ft., swim 40 ft., fly 40 ft. (ethereal only, hover)",
  "str": "21",
  "dex": "9",
  "con": "15",
@@ -40,7 +40,7 @@ monsterdata.compendium.monster.push(
   {
    "name": "Undead Fortitude",
    "text": [
-    " If non-radiant damage reduces a nihileth to 0 hit points, it makes a Constitution saving throw with a DC of 5+ the damage taken. If it succeeds, the nihileth drops to 1 hit point instead."
+    " If damage reduces the nihileth to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the nihileth drops to 1 hit point instead."
    ]
   },
   {
@@ -88,12 +88,6 @@ monsterdata.compendium.monster.push(
    ]
   },
   {
-   "name": "Void Body",
-   "text": [
-    " As a reaction, the nihileth can reduce the damage it takes from a single source to 0. Divine damage can only be reduced by half."
-   ]
-  },
-  {
    "name": "Tail (Material Form Only)",
    "text": [
     " As per the aboleth action."
@@ -113,7 +107,14 @@ monsterdata.compendium.monster.push(
    ]
   }
  ],
- "reaction": [],
+ "reaction": [
+  {
+   "name": "Void Body",
+   "text": [
+   " As a reaction, the nihileth can reduce the damage it takes from a single source to 0. Radiant damage can only be reduced by half."
+  ]
+ }
+],
  "legendary": [
   {
    "name": "",
@@ -130,7 +131,7 @@ monsterdata.compendium.monster.push(
   {
    "name": "Tail Swipe",
    "text": [
-    " As per the aboleth action."
+    " Melee Weapon Attack: +9 to hit, reach 10 ft. one target. Hit: 15 (3d6 + 5) bludgeoning damage"
    ]
   },
   {
@@ -1563,7 +1564,7 @@ monsterdata.compendium.monster.push(
 {
  "name": "Bastet Temple Cat",
  "size": "S",
- "type": "beast, tome of beasts",
+ "type": "monstrosity, tome of beasts",
  "alignment": "chaotic neutral",
  "ac": "14",
  "hp": "40 (9d6 + 9)",
@@ -3180,7 +3181,7 @@ monsterdata.compendium.monster.push(
 {
  "name": "Cikavak",
  "size": "T",
- "type": "beast, tome of beasts",
+ "type": "monstrosity, tome of beasts",
  "alignment": "neutral",
  "ac": "12",
  "hp": "17 (7d4)",
