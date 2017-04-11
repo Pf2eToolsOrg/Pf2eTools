@@ -9,7 +9,9 @@ function parsesource (src) {
 	if (source === "Unearthed Arcana: Eberron") source = "UA Eberron";
 	if (source === "Unearthed Arcana: Waterborne Adventures") source = "UA Waterborne Adventures";
 	if (source === "Unearthed Arcana: That Old Black Magic") source = "UA TOBM";
-	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA Gh";
+	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA GH";
+	if (source === "Plane Shift Zendikar") source = "PSZ";
+	if (source === "Plane Shift Kaladesh") source = "PSK";
 	return source;
 }
 
