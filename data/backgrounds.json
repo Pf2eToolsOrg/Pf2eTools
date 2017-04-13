@@ -83,6 +83,7 @@ var backgrounddata = {
                   "name": "Flaw",
                   "text": [
                      "",
+					 "d6 - Flaw",
                      "1 - I judge others harshly, and myself even more severely.",
                      "2 - I put too much trust in those who wield power within my temple’s hierarchy.",
                      "3 - My piety sometimes leads me to blindly trust those that profess faith in my god.",
@@ -116,11 +117,85 @@ var backgrounddata = {
                      "A set of fine clothes, a disguise kit, tools of the con of your choice (ten stoppered bottles filled with colored liquid, a set of weighted dice, a deck of marked cards, or a signet ring of an imaginary duke), and a belt pouch containing 15 gp."
                   ]
                },
+			   {
+				  "name": "Favorite Schemes",
+				  "text": [
+				     "Every charlatan has an angle he or she uses in preference to other schemes.  Choose a favorite scam or roll on the table below.",
+				     "\n",
+					 "d6 - Scam",
+					 "1 - I cheat at games of chance.",
+					 "2 - I shave coins or forge documents.",
+					 "3 - I insinuate myself into people's lives to prey on their weakness and secure their fortunes.",
+					 "4 - I put on new identities like clothes.",
+					 "5 - I run sleight-of-hand cons on street corners.",
+					 "6 - I convince people that worthless junk is worth their hard-earned money."
+				   ]
+			   },
                {
                   "name": "Feature: False Identity",
                   "text": [
                      "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy."
                   ]
+               },
+			   {
+			      "name": "Suggested Characteristics",
+                  "text": [
+                     "Charlatans are colorful characters who conceal their true selves behind the masks they construct. They reflect what people want to see, what they want to believe, and how they see the world. But their true selves are sometimes plagued by an uneasy conscience, an old enemy, or deep-seated trust issues."
+                   ]
+               },
+               {
+                  "name": "Personality Trait",
+                  "text": [
+                     "",
+                     "d8 - Trait",
+                     "1 - I fall in and out of love easily, and am always pursuing someone.",
+                     "2 - I have a joke for every occasion, especially occasions where humor is inappropriate.",
+                     "3 - Flattery is my preferred trick for getting what I want.",
+                     "4 - I'm a born gambler who can't resist taking a risk for a potential payoff.",
+                     "5 - I lie about almost everything, even when there's no reason to.",
+                     "6 - Sarcasm and insults are my weapons of choice.",
+                     "7 - I keep multiple holy symbols on me and invoke whatever deity might come in useful at any given moment.",
+                     "8 - I pocket anything I see that might have some value."
+                   ]
+               },
+               {
+                  "name": "Ideal",
+                  "text": [
+                     "",
+                     "d6 - Ideal",
+                     "1 - Independence. I am a free spirit\u2014no one tells me what to do. (Chaotic)",
+                     "2 - Fairness. I never target people who can't afford to lose a few coins. (Lawful)",
+                     "3 - Charity. I distribute the money I acquire to the people who really need it. (Good)",
+                     "4 - Creativity. I never run the same con twice. (Chaotic)",
+                     "5 - Friendship. Material goods come and go. Bonds of friendship last forever. (Good)",
+                     "6 - Aspiration. I'm determined to make something of myself. (Any)"
+                   ]
+               },
+               {
+                  "name": "Bond",
+                  "text": [
+                     "",
+                     "d6 - Bond",
+                     "1 - I fleeced the wrong person and must work to ensure that this individual never crosses paths with me or those I care about.",
+                     "2 - I owe everything to my mentor/u2014a horrible person who's probably rotting in jail somewhere.",
+                     "3 - Somewhere out there, I have a child who doesn't know me. I'm making the world better for him or her.",
+                     "4 - I come from a noble family, and one day I’ll reclaim my lands and title from those who stole them from me.",
+                     "5 - A powerful person killed someone I love. Some day soon, I’ll have my revenge.",
+                     "6 - I swindled and ruined a person who didn’t deserve it. I seek to atone for my misdeeds but might never be able to forgive myself."
+                   ]
+               },
+               {
+                  "name": "Flaw",
+                  "text": [
+                     "",
+					 "d6 - Flaws",
+                     "1 - I can't resist a pretty face.",
+                     "2 - I'm always in debt. I spend my ill-gotten gains on decadent luxuries faster than I bring them in.",
+                     "3 - I'm convinced that no one could ever fool me the way I fool others.",
+                     "4 - I'm too greedy for my own good. I can't resist taking a risk if there's money involved.",
+                     "5 - I can't resist swindling people who are more powerful than me.",
+                     "6 - I hate to admit it and will hate myself for it, but I'll run and preserve my own hide if the going gets tough."
+                   ]
                }
             ]
          },
@@ -380,13 +455,79 @@ var backgrounddata = {
                      "One set of traveler's clothes, any one musical instrument or gaming set you are proficient with, poorly wrought maps from your homeland that depict where you are in Faerûn, a small piece of jewelry worth 10 gp in the style of your homeland's craftsmanship, and a pouch containing 5 gp."
                   ]
                },
+				{
+				"name": "Why Are You Here?",
+				"text": [
+					"A far traveler might have set out on a journey for one of a number of reasons, and the departure from his or her homeland could have been voluntary or involuntary. To determine why you are so far from home, roll on the table below or choose from the options provided. The following section, discussing possible homelands, includes some suggested reasons that are appropriate for each location.",
+					"\n",
+					"d6 - Reason",
+					"1 - Emissary",
+					"2 - Exile",
+					"3 - Fugitive",
+					"4 - Pilgrim",
+					"5 - Sightseer",
+					"6 - Wanderer"
+				]
+				},
                {
                   "name": "Feature: All Eyes on You",
                   "text": [
                      "Your accent, mannerisms, figures of speech, and perhaps even your appearance all mark you as foreign. Curious glances are directed your way wherever you go, which can be a nuisance, but you also gain the friendly interest of scholars and others intrigued by far-off lands, to say nothing of everyday folk who are eager to hear stories of your homeland.",
                      "You can parley this attention into access to people and places you might not otherwise have, for you and your traveling companions. Noble lords, scholars, and merchant princes, to name a few, might be interested in hearing about your distant homeland and people."
                   ]
-               }
+               },
+				{
+				"name": "Personality Trait",
+				"text": [
+					"",
+					"d6 - Trait",
+					"1 - I have different assumptions from those around me concerning personal space, blithely invading others' space in innocence, or reacting to ignorant invasion of my own.",
+					"2 - I have my own ideas about what is and is not food, and I find the eating habits of those around me fascinating, confusing, or revolting.",
+					"3 - I have a strong code of honor or sense of propriety that others don't comprehend.",
+					"4 - I express affection or contempt in ways that are unfamiliar to others.",
+					"5 - I honor my deities through practices that are foreign to this land.",
+					"6 - I begin or end my day with small traditional rituals that are unfamiliar to those around me."
+				]
+				},
+				{
+				"name": "Ideal",
+				"text": [
+					"",
+					"d6 - Ideal",
+					"1 - Open. I have much to learn from the kindly folk I meet along my way. (Good)",
+					"2 - Reserved. As someone new to these strange lands, I am cautious and respectful in my dealings. (Lawful)",
+					"3 - Adventure. I'm far from home, and everything is strange and wonderful! (Chaotic)",
+					"4 - Cunning. Though I may not know their ways, neither do they know mine, which can be to my advantage. (Evil)",
+					"5 - Inquisitive. Everything is new, but I have a thirst to learn. (Neutral)",
+					"6 - Suspicious. I must be careful, for I have no way of telling friend from foe here. (Any)"
+				]
+				},
+				{
+				"name": "Bond",
+				"text": [
+					"",
+					"d6 - Bond",
+					"1 - So long as I have this token from my homeland, I can face any adversity in this strange land.",
+					"2 - The gods of my people are a comfort to me so far away from home.",
+					"3 - I hold no greater cause than my service to my people.",
+					"4 - My freedom is my most precious possession. I'll never let anyone take it from me again.",
+					"5 - I'm fascinated by the beauty and wonder of this new land.",
+					"6 - Though I had no choice, I lament having to leave my loved one(s) behind. I hope to see them again one day.",
+				]
+				},
+				{
+				"name": "Flaw",
+				"text": [
+					"",
+					"d6 - Flaw",
+					"1 - I am secretly (or not so secretly) convinced of the superiority of my own culture over that of this foreign land.",
+					"2 - I pretend not to understand the local language in order to avoid interactions I would rather not have.",
+					"3 - I have a weakness for the new intoxicants and other pleasures of this land.",
+					"4 - I don't take kindly to some of the actions and motivations of the people of this land, because these folks are different from me.",
+					"5 - I consider the adherents of other gods to be deluded innocents at best, or ignorant fools at worst.",
+					"6 - I have a weakness for the exotic beauty of the people of these lands."
+				]
+				}
             ]
          },
          {
