@@ -14,6 +14,7 @@ function parsesource (src) {
 	if (source === "Curse of Strahd") source = "CoS";
 	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
 	if (source === "Unearthed Arcana") source = "UA";
+	if (source === "Plane Shift Innistrad") source = "PSI";
 	return source;
 }
 
