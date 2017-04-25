@@ -5,6 +5,8 @@ function parsesource (src) {
 	if (source === "Elemental Evil Player's Companion") source = "EEPC";
 	if (source === "Unearthed Arcana: Eberron") source = "UA Eberron";
 	if (source === "Unearthed Arcana: Feats") source = "UA Feats";
+	if (source === "Unearthed Arcana: Feats for Skills") source = "UA Skill Feats";
+	if (source === "Unearthed Arcana: Feats for Races") source = "UA Race Feats";
 	return source;
 }
 
