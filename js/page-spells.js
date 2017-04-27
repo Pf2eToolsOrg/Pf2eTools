@@ -36,6 +36,7 @@ function parsesource (source) {
 	if (source === "EEPC") source = "Elemental Evil Player's Companion";
 	if (source === "SCAG") source = "Sword Coast Adventurer's Guide";
 	if (source === "UAMystic") source = "Unearthed Arcana: The Mystic Class";
+	if (source === "BoLS 3pp") source = "Book of Lost Spells (3pp)";
 	return source;
 }
 
@@ -165,12 +166,14 @@ function loadspells() {
 			var schoolfilter = $("select.schoolfilter").val();
 			var classfilter = $("select.classfilter").val();
 			var sourcefilter = $("select.sourcefilter").val();
+			var thirdpartyfilter = $("select.3ppfilter").val();
 
 			spellslist.filter(function(item) {
 				var rightlevel = false;
 				var rightschool = false;
 				var rightclass = false;
 				var rightsource = false;
+				var rightparty = false;
 
 				if (levelfilter === "All" || item.values().level.indexOf(levelfilter) !== -1) rightlevel = true;
 				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
@@ -180,7 +183,10 @@ function loadspells() {
 				}
 				if (classfilter === "All") rightclass = true;
 				if (sourcefilter === "All" || item.values().source === sourcefilter) rightsource = true;
-				if (rightlevel && rightschool && rightclass && rightsource) return true;
+				if (thirdpartyfilter === "All") rightparty = true;
+				if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
+				if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
+				if (rightlevel && rightschool && rightclass && rightsource && rightparty) return true;
 				return false;
 			});
 		});
