@@ -118,6 +118,12 @@ var backgrounddata ={
 									]
 							},
 							{
+									"name": "Feature: False Identity",
+									"text": [
+										"You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy."
+									]
+							},
+							{
 								"name": "Favorite Schemes",
 								"text": [
 									"Every charlatan has an angle he or she uses in preference to other schemes.  Choose a favorite scam or roll on the table below.",
@@ -129,12 +135,6 @@ var backgrounddata ={
 										"4 - I put on new identities like clothes.",
 										"5 - I run sleight-of-hand cons on street corners.",
 										"6 - I convince people that worthless junk is worth their hard-earned money."
-								]
-							},
-							{
-									"name": "Feature: False Identity",
-									"text": [
-										"You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy."
 									]
 							},
 							{
@@ -626,7 +626,15 @@ var backgrounddata ={
 									]
 							},
 							{
-									"name": "Life of Seclusion",
+									"name": "Feature: Discovery",
+									"text": [
+										"The quiet seclusion of your extended hermitage gave you access to a unique and powerful discovery. The exact nature of this revelation depends on the nature of your seclusion. It might be a great truth about the cosmos, the deities, the powerful beings of the outer planes, or the forces of nature. It could be a site that no one else has ever seen. You might have uncovered a fact that has long been forgotten, or unearthed some relic of the past that could rewrite history. It might be information that would be damaging to the people who or consigned you to exile, and hence the reason for your return to society.",
+										null,
+										"Work with your DM to determine the details of your discovery and its impact on the campaign."
+									]
+							},
+							{
+									"name": "Specialty",
 									"text": [
 										"What was the reason for your isolation, and what changed to allow you to end your solitude? You can work with your DM to determine the exact nature of your seclusion, or you can choose or roll on the table below to determine the reason behind your seclusion.",
 										"\n",
@@ -639,14 +647,6 @@ var backgrounddata ={
 										"6 - I needed to commune with nature, far from civilization.",
 										"7 - I was the caretaker of an ancient ruin or relic.",
 										"8 - I was a pilgrim in search of a person, place, or relic of spiritual significance."
-									]
-							},
-							{
-									"name": "Feature: Discovery",
-									"text": [
-										"The quiet seclusion of your extended hermitage gave you access to a unique and powerful discovery. The exact nature of this revelation depends on the nature of your seclusion. It might be a great truth about the cosmos, the deities, the powerful beings of the outer planes, or the forces of nature. It could be a site that no one else has ever seen. You might have uncovered a fact that has long been forgotten, or unearthed some relic of the past that could rewrite history. It might be information that would be damaging to the people who or consigned you to exile, and hence the reason for your return to society.",
-										null,
-										"Work with your DM to determine the details of your discovery and its impact on the campaign."
 									]
 							},
 							{
@@ -990,6 +990,84 @@ var backgrounddata ={
 									"text": [
 										"You have an excellent memory for maps and geography, and you can always recall the general layout of terrain, settlements, and other features around you. In addition, you can find food and fresh water for yourself and up to five other people each day, provided that the land offers berries, small game, water, and so forth."
 									]
+							},
+							{
+									"name": "Specialty",
+									"text": [
+										"You've been to strange places and seen things that others cannot begin to fathom. Consider some of the distant lands you have visited, and how they impacted you. You can roll on the following table to determine your occupation during your time in the wild, or choose one that best fits your character.",
+										"\n",
+										"d10 - Origin",
+										"1 - Forester",
+										"2 - Trapper",
+										"3 - Homesteader",
+										"4 - Guide",
+										"5 - Exile or outcast",
+										"6 - Bounty hunter",
+										"7 - Pilgrim",
+										"8 - Tribal nomad",
+										"9 - Hunter-gatherer",
+										"10 - Tribal marauder"
+									]
+							},
+							{
+									"name": "Suggested Characteristics",
+									"text": [
+										"Often considered rude and uncouth among civilized folk, outlanders have little respect for the niceties of life in the cities. The ties of tribe, clan, family, and the natural world of which they are a part are the most important bonds to most outlanders."
+									]
+							},
+							{
+									"name": "Personality Trait",
+									"text": [
+										"",
+										"d8 - Trait",
+										"1 -  I’m driven by a wanderlust that led me away from home",
+										"2 - I watch over my friends as if they were a litter of newborn pups.",
+										"3 - I once ran twenty-five miles without stopping to warn to my clan of an approaching orc horde. I’d do it again if I had to.",
+										"4 - I have a lesson for every situation, drawn from observing nature.",
+										"5 - I place no stock in wealthy or well-mannered folk. Money and manners won’t save you from a hungry owlbear.",
+										"6 - I’m always picking things up, absently fiddling with them, and sometimes accidentally breaking them.",
+										"7 - I feel far more comfortable around animals than people",
+										"8 - I was, in fact, raised by wolves."
+									]
+							},
+							{
+									"name": "Ideal",
+									"text": [
+										"",
+										"d6 - Ideal",
+										"1 - Change. Life is like the seasons, in constant change, and we must change with it. (Chaotic)",
+										"2 - Greater Good. It is each person’s responsibility to make the most happiness for the whole tribe. (Good)",
+										"3 - Honor. If I dishonor myself, I dishonor my whole clan. (Lawful)",
+										"4 - Might. The strongest are meant to rule. (Evil)",
+										"5 - Nature. The natural world is more important than all the constructs of civilization. (Neutral)",
+										"6 - Glory. I must earn glory in battle, for myself and my clan. (Any)"
+									]
+							},
+							{
+									"name": "Bond",
+									"text": [
+										"",
+										"d6 - Bond",
+										"1 - My family, clan, or tribe is the most important thing in my life, even when they are far from me.",
+										"2 - An injury to the unspoiled wilderness of my home is an injury to me.",
+										"3 - I will bring terrible wrath down on the evildoers who destroyed my homeland.",
+										"4 - I am the last of my tribe, and it is up to me to ensure their names enter legend.",
+										"5 - I suffer awful visions of a coming disaster and will do anything to prevent it.",
+										"6 - It is my duty to provide children to sustain my tribe."
+									]
+							},
+							{
+									"name": "Flaw",
+									"text": [
+										"",
+										"d6 - Flaws",
+										"1 - I am too enamored of ale, wine, and other intoxicants.",
+										"2 - There’s no room for caution in a life lived to the fullest.",
+										"3 - I remember every insult I’ve received and nurse a silent resentment toward anyone who’s ever wronged me.",
+										"4 - I am slow to trust members of other races, tribes, and societies.",
+										"5 -  Violence is my answer to almost any challenge.",
+										"6 -  Don’t expect me to save those who can’t save themselves. It is nature’s way that the strong thrive and the weak perish."
+									]
 							}
 						]
 				},
@@ -1017,11 +1095,17 @@ var backgrounddata ={
 									]
 							},
 							{
+									"name": "Feature: Researcher",
+									"text": [
+										"When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature, Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign."
+									]
+							},
+							{
 									"name": "Specialty",
 									"text": [
 										"To determine the nature of your scholarly training, roll a d8 or choose from the options in the table below.",
 										"\n",
-										"d8 - Specialty",
+										"d8 - Field of Study",
 										"1 - Alchemist",
 										"2 - Astronomer",
 										"3 - Discredited academic",
@@ -1030,12 +1114,12 @@ var backgrounddata ={
 										"6 - Researcher",
 										"7 - Wizard's apprentice",
 										"8 - Scribe"
-								]
+									]
 							},
 							{
-									"name": "Feature: Researcher",
+									"name": "Suggested Characteristics",
 									"text": [
-										"When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature, Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign."
+										"Sages are defined by their extensive studies, and their characteristics reflect this life of study. Devoted to scholarly pursuits, a sage values knowledge highly\u2014sometimes in its own right, sometimes as a means toward other ideals."
 									]
 							},
 							{
@@ -1212,6 +1296,22 @@ var backgrounddata ={
 									"name": "Feature: Military Rank",
 									"text": [
 										"You have a military rank from your career as a soldier. Soldiers loyal to your former military organization still recognize your authority and influence, and they defer to you if they are of a lower rank. You can invoke your rank to exert influence over other soldiers and requisition simple equipment or horses for temporary use. You can also usually gain access to friendly military encampments and fortresses where your rank is recognized."
+									]
+							},
+							{
+									"name": "Specialty",
+									"text": [
+										"During your time as a soldier, you had a specific role to play in your unit or army. Roll a d8 or choose from the options in the table below to determine your role:",
+										"\n",
+										"d8 - Role",
+										"1 - Officer",
+										"2 - Scout",
+										"3 - Infantry",
+										"4 - Cavalry",
+										"5 - Healer",
+										"6 - Quartermaster",
+										"7 - Standard-bearer",
+										"8 - Support staff (cook, blacksmith, or the like)",
 									]
 							},
 							{
