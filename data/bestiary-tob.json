@@ -10866,5 +10866,1162 @@ monsterdata.compendium.monster.push(
  ],
  "reaction": [],
  "legendary": []
+},
+{
+ "name": "Eala",
+ "size": "S",
+ "type": "monstrosity, tome of beasts",
+ "alignment": "unaligned",
+ "ac": "15 (natural)",
+ "hp": "40 (9d6 + 9)",
+ "speed": "10 ft., fly, 60 ft.",
+ "str": "10",
+ "dex": " 16",
+ "con": "12",
+ "int": " 2",
+ "wis": " 12",
+ "cha": " 16",
+ "save": "Dex +5",
+ "immune": "fire",
+ "senses": "darkvision 60 ft.",
+ "passive": "11",
+ "languages": "—",
+ "cr": "2",
+ "trait": [],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The eala makes two attacks with its wing blades."
+   ]
+  },
+  {
+   "name": "Wing Blades",
+   "text": [
+    "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage."
+   ]
+  },
+  {
+   "name": "Fire Breath (recharge 5-6)",
+   "text": [
+    "The eala breathes fire in a 20-foot cone. Every creature in the area must make a DC 11 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save or half as much on a successful one. The eala’s fire breath ignites flammable objects and melts soft metals in the area that aren’t being worn or carried."
+   ]
+  }
+ ],
+ "reaction": [
+  {
+   "name": "Swan Song",
+   "text": [
+    "When the eala is reduced to 0 hit points, it can use its last breath sing a plaintive and beautiful melody. Creatures within 20 feet that can hear the eala must succeed on a DC 13 Charisma saving throw or be incapacitated for 1 round. A creature incapacitated in this way has its speed reduced to 0."
+   ]
+  }
+ ],
+ "legendary": []
+},
+{
+ "name": "Eater Of Dust (Yakat-Shi)",
+ "size": "M",
+ "type": "aberration, tome of beasts",
+ "alignment": "neutral evil",
+ "ac": "17 (natural armor)",
+ "hp": "114 (12d8 + 60)",
+ "speed": "30 ft.",
+ "str": "20",
+ "dex": " 14",
+ "con": "20",
+ "int": " 10",
+ "wis": " 15",
+ "cha": " 17",
+ "save": "Str +9, Con +9, Cha +7",
+ "skill": [
+  "Athletics +9, Intimidate +7, Perception +6"
+ ],
+ "resist": "acid, cold",
+ "immune": "bludgeoning, piercing and slashing from nonmagical weapons",
+ "conditionImmune": "blindness, lightning, poison",
+ "senses": "blindsight 60 ft",
+ "passive": "16",
+ "languages": "understands Abyssal, Common, Infernal, Void Speech, but cannot speak; telepathy 100 ft.",
+ "cr": "9",
+ "trait": [
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The eater of dust’s innate spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+    "3/day each: freedom of movement, inflict wounds, true strike",
+    "1/day each: cure wounds (as 3rd level), magic weapon (as 6th level), misty step"
+   ]
+  },
+  {
+   "name": "Regeneration",
+   "text": [
+    "The eater of dust regains 5 hit points at the start of its turn. If it takes fire damage, this trait does not function at the start of its next turn. The eater of dust dies only if it starts its turn with 0 hit points and does not regenerate."
+   ]
+  },
+  {
+   "name": "Unending Hunger",
+   "text": [
+    "An eater of dust can devour any substance with its mawblade, regardless of composition, and never get full. It can even gain nourishment from eating dust or soil (hence the name given to the race by various fiends). If an eater of dust’s mawblade is ever stolen, lost, or destroyed, it slowly starves to death."
+   ]
+  },
+  {
+   "name": "Weapon Bond",
+   "text": [
+    "A mawblade is part of the eater of dust. It can strike any creature as if it were magically enchanted and made of silver, iron, or other materials required to overcome immunities or resistances. An eater of dust always knows the location of its mawblade as if using the locate creature spell."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The eater of dust makes two mawblade attacks, or makes one mawblade attack and casts inflict wounds."
+   ]
+  },
+  {
+   "name": "Mawblade",
+   "text": [
+    "Melee Weapon Attack: +9 to hit, one target. Hit: 19 (4d6 + 5) piercing damage, and the target must make a successful DC 17 Constitution saving throw or gain one level of exhaustion."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Edimmu",
+ "size": "M",
+ "type": "undead, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "15",
+ "hp": "75 (10d8 + 30)",
+ "speed": "0 ft., fly 60 ft. (hover)",
+ "str": "1",
+ "dex": " 19",
+ "con": "16",
+ "int": " 12",
+ "wis": " 13",
+ "cha": " 13",
+ "resist": "acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+ "immune": "necrotic, poison",
+ "conditionImmune": "charmed, exhaustion, grappled, frightened, paralyzed, petrified, poisoned, prone, restrained, unconscious",
+ "senses": "blindsight 60 ft.",
+ "passive": "11",
+ "languages": "Common but can’t speak",
+ "cr": "4",
+ "trait": [
+  {
+   "name": "Rejuvenation",
+   "text": [
+    "If destroyed, an edimmu rises again in 2d4 days. Permanently destroying one requires properly burying its mortal remains in consecrated or hallowed ground. Edimmus rarely venture more than a mile from the place of their death."
+   ]
+  },
+  {
+   "name": "Incorporeal Movement",
+   "text": [
+    "The edimmu can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Water Siphon",
+   "text": [
+    "Melee Spell Attack: +7 to hit, reach 5 ft., one creature. Hit: 21 (6d6) necrotic damage. The target must succeed on a DC 14 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken and it is stunned for 1 minute and gains one level of exhaustion. A stunned creature repeats the saving throw at the end of each of its turns, ending the stun on itself on a success. The hit point reduction lasts until the creature finishes a long rest and drinks abundant water or until it is affected by greater restoration or comparable magic. The target dies if this effect reduces its hit point maximum to 0."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Eel Hound",
+ "size": "M",
+ "type": "fey, tome of beasts",
+ "alignment": "neutral",
+ "ac": "14 (natural armor)",
+ "hp": "77 (14d8 + 14)",
+ "speed": "30 ft., swim 40 ft.",
+ "str": "19",
+ "dex": " 16",
+ "con": "13",
+ "int": " 6",
+ "wis": " 13",
+ "cha": " 16",
+ "skill": [
+  "Perception +3, Stealth +5"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "13",
+ "languages": "Sylvan",
+ "cr": "2",
+ "trait": [
+  {
+   "name": "Amphibious",
+   "text": [
+    "The eel hound can breathe air and water."
+   ]
+  },
+  {
+   "name": "Pack Tactics",
+   "text": [
+    "The eel hound has advantage on an attack roll against a creature if at least one of the hound’s allies is within 5 feet of the creature and the ally isn’t incapacitated."
+   ]
+  },
+  {
+   "name": "Slick Spittle",
+   "text": [
+    "By spending 2 rounds dribbling spittle on an area, an eel hound can cover a 5-foot square with its slippery saliva. This area is treated as if under the effects of a grease spell, but it lasts for 1 hour."
+   ]
+  },
+  {
+   "name": "Slithering Bite",
+   "text": [
+    "When an eel hound moves adjacent to an enemy and makes a bite attack, it may immediately move up to 5 feet, as long as it stays within 5 feet of the enemy it attacked. If another eel hound already occupies that space, the moving eel hound can keep moving until it reaches an empty space that’s still adjacent to that same enemy."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Bite",
+   "text": [
+    "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) piercing damage, and the target is grappled (escape DC 14)."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Einherjar",
+ "size": "M",
+ "type": "humanoid (extraplanar), tome of beasts",
+ "alignment": "chaotic neutral",
+ "ac": "18 (chain mail and shield)",
+ "hp": "119 (14d8 + 56)",
+ "speed": "30 ft.",
+ "str": "19",
+ "dex": " 16",
+ "con": " 19",
+ "int": " 10",
+ "wis": " 14",
+ "cha": " 11",
+ "skill": [
+  "Animal Handling +5, Intimidation +6, Perception +5"
+ ],
+ "resist": "piercing weapons that are nonmagical",
+ "senses": "darkvision 60 ft., truesight 60 ft.",
+ "passive": "15",
+ "languages": "Celestial, Common",
+ "cr": "7",
+ "trait": [
+  {
+   "name": "Asgardian Battleaxes",
+   "text": [
+    "Made in Valhalla and kept keen with runic magic, Asgardian axes have a +2 enchantment and add a second die of weapon damage. Their magic must be renewed each week by a valkyrie or Odin’s own hand."
+   ]
+  },
+  {
+   "name": "Battle Loving",
+   "text": [
+    "Einherjars relish combat and never turn down a challenge to single combat or shirk a fight, even if the odds are hopeless. After all, Valhalla awaits them."
+   ]
+  },
+  {
+   "name": "Battle Frenzy",
+   "text": [
+    "Once reduced to 30 hp or less, einherjar make all attacks with advantage."
+   ]
+  },
+  {
+   "name": "Fearsome Gaze",
+   "text": [
+    "The stare of an einherjar is especially piercing and intimidating. They make Intimidation checks with advantage."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The einherjar’s innate spellcasting ability is Wisdom (spell save DC 13). It can innately cast the following spells, requiring no material components:",
+    "At will—bless, spare the dying",
+    "1/day—death ward, spirit guardians"
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "An einherjar makes three attacks with its Asgardian battleaxe or one with its handaxe."
+   ]
+  },
+  {
+   "name": "Asgardian Battleaxe",
+   "text": [
+    "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 15 (2d8 + 6) slashing damage when used one handed or 17 (2d10 + 6) when used two-handed."
+   ]
+  },
+  {
+   "name": "Handaxe",
+   "text": [
+    "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 (1d6 + 4) slashing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Eleinomae",
+ "size": "M",
+ "type": "fey, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "18",
+ "hp": "112 (15d8 + 45)",
+ "speed": "30 ft., swim 30 ft.",
+ "str": "13",
+ "dex": " 19",
+ "con": "16",
+ "int": " 14",
+ "wis": " 14",
+ "cha": " 19",
+ "save": "Str +4, Dex +7, Con +6, Int +5, Wis +5, Cha +7",
+ "skill": [
+  "Deception +7, Insight +5, Perception +5"
+ ],
+ "senses": "",
+ "passive": "15",
+ "languages": "Aquan, Common, Elvish, Sylvan",
+ "cr": "5",
+ "trait": [
+  {
+   "name": "Unearthly Grace",
+   "text": [
+    "The eleinomae’s Charisma modifier is added to its armor class (included above)."
+   ]
+  },
+  {
+   "name": "Reed Walk",
+   "text": [
+    "The eleinomae can move across undergrowth or rivers without making an ability check. Additionally, difficult terrain of this kind doesn’t cost it extra moment."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The eleinomae’s innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:",
+    "At will: dancing lights",
+    "3/day each: charm person, suggestion",
+    "2/day each: hallucinatory terrain, major image"
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack: The eleinomae makes three dagger attacks and one reed flower net attack",
+   "text": [
+    ""
+   ]
+  },
+  {
+   "name": "Dagger",
+   "text": [
+    "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d4 + 4) slashing damage plus 3 (1d6) poison damage."
+   ]
+  },
+  {
+   "name": "Reed Flower Net",
+   "text": [
+    "Ranged Weapon Attack: +7 to hit, range 5/15 ft., one Large or smaller creature. Hit: The target has disadvantage on Wisdom saving throws for 1 minute, and is restrained. A creature can free itself or another creature within reach from restraint by using an action to make a successful DC 15 Strength check or by doing 5 slashing damage to the net (AC 10)."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Elemental Locus",
+ "size": "G",
+ "type": "elemental, tome of beasts",
+ "alignment": "neutral",
+ "ac": "16 (natural armor)",
+ "hp": "290 (20d20 + 80)",
+ "speed": "5 ft.",
+ "str": "28",
+ "dex": " 1",
+ "con": " 18",
+ "int": " 10",
+ "wis": " 11",
+ "cha": " 11",
+ "save": "Int +6, Wis +6, Cha +6",
+ "skill": [
+  "Nature +6, Perception +6"
+ ],
+ "resist": "bludgeoning, piercing, and slashing",
+ "immune": "acid, cold, fire, lightning, poison, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+ "conditionImmune": "all",
+ "senses": "darkvision 120 ft., tremorsense 120 ft., passive",
+ "languages": "Primordial",
+ "cr": "17",
+ "trait": [
+  {
+   "name": "Magic Resistance",
+   "text": [
+    "The elemental locus has advantage on saving throws against spells and other magical effects."
+   ]
+  },
+  {
+   "name": "Immortal",
+   "text": [
+    "The elemental locus does not age and does not die when it drops to 0 hit points. If the elemental locus drops to 0 hit points, it falls into a quiescent state for 25 weeks before returning to activity with full hit points. Its spawned elementals continue fighting whatever enemies attacked the elemental locus; if no enemies are present, they defend the locus’s area."
+   ]
+  },
+  {
+   "name": "Massive",
+   "text": [
+    "The elemental locus is larger than most Gargantuan creatures, occupying a space of 60 by 60 feet. Its movement is not affected by difficult terrain or by Huge or smaller creatures. Other creatures can enter and move through the elemental locus’s space, but they must make a successful DC 20 Strength (Athletics) check after each 10 feet of movement. Failure indicates they fall prone and can move no farther that turn."
+   ]
+  },
+  {
+   "name": "Spawn Elementals",
+   "text": [
+    "As a bonus action, the elemental locus loses 82 hit points and spawns an air, earth, fire, or water elemental to serve it. Spawned elementals answer to their creator’s will and are not fully independent. The types of elementals the locus can spawn depend on the terrain it embodies; for example, an elemental locus of the desert can spawn earth, fire, and air elementals, but not water."
+   ]
+  },
+  {
+   "name": "Siege Monster",
+   "text": [
+    "The elemental locus deals double damage to objects and structures."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack: The elemental locus makes two slam attacks",
+   "text": [
+    ""
+   ]
+  },
+  {
+   "name": "Slam",
+   "text": [
+    "Melee Weapon Attack: +15 to hit, reach 15 ft., one target. Hit: 36 (6d8 + 9) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Strength saving throw or be knocked prone."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Shadow Fey",
+ "size": "M",
+ "type": "humanoid (elf), tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "15 (chain shirt)",
+ "hp": "31 (7d8)",
+ "speed": "30 ft.",
+ "str": "10",
+ "dex": " 14",
+ "con": "10",
+ "int": " 11",
+ "wis": " 11",
+ "cha": " 13",
+ "skill": [
+  "Arcana +2, Perception +2"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "12",
+ "languages": "Common, Elvish, Umbral",
+ "cr": "1/4",
+ "trait": [
+  {
+   "name": "Fey Ancestry",
+   "text": [
+    "The shadow fey has advantage on saving throws against being charmed, and magic can’t put it to sleep."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The shadow fey’s innate spellcasting ability is Charisma. It can cast the following spells innately, requiring no material components.",
+    "1/day: misty step (when in shadows, dim light, or darkness only)"
+   ]
+  },
+  {
+   "name": "Sunlight Sensitivity",
+   "text": [
+    "While in sunlight, the shadow fey has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight."
+   ]
+  },
+  {
+   "name": "Traveler in Darkness",
+   "text": [
+    "The shadow fey has advantage on Intelligence (Arcana) checks made to know about shadow roads and shadow magic spells or items."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Shortsword",
+   "text": [
+    "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+   ]
+  },
+  {
+   "name": "Shortbow",
+   "text": [
+    "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Shadow Fey Duelist",
+ "size": "M",
+ "type": "humanoid (elf), tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "17 (studded leather)",
+ "hp": "117 (18d8 + 36)",
+ "speed": "30 ft.",
+ "str": "13",
+ "dex": " 20",
+ "con": "14",
+ "int": " 13",
+ "wis": " 12",
+ "cha": " 16",
+ "save": "Dex +8, Con + 5, Wis + 4, Cha +6",
+ "skill": [
+  "Arcana +4, Deception +6, Perception +4, Stealth +8"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "14",
+ "languages": "Common, Elvish, Umbral",
+ "cr": "6",
+ "trait": [
+  {
+   "name": "Fey Ancestry",
+   "text": [
+    "The shadow fey has advantage on saving throws against being charmed, and magic can’t put it to sleep."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The shadow fey’s innate spellcasting ability is Charisma. It can cast the following spells innately, requiring no material components.",
+    "3/day: misty step (when in shadows, dim light, or darkness only)"
+   ]
+  },
+  {
+   "name": "Sunlight Sensitivity",
+   "text": [
+    "While in sunlight, the shadow fey has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight."
+   ]
+  },
+  {
+   "name": "Traveler in Darkness",
+   "text": [
+    "The shadow fey has advantage on Intelligence (Arcana) checks made to know about shadow roads and shadow magic spells or items."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The shadow fey makes two rapier attacks. If it has a dagger drawn, it can also make one dagger attack."
+   ]
+  },
+  {
+   "name": "Dagger",
+   "text": [
+    "Melee or Ranged Weapon Attack: +8 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 (1d4 + 5) piercing damage, and a target creature must succeed on a DC 15 Constitution saving throw or become poisoned for 1 minute. A poisoned creature repeats the save at the end of each of its turns, ending the effect on a success."
+   ]
+  },
+  {
+   "name": "Rapier",
+   "text": [
+    "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 9 (1d8 + 5) piercing damage plus 7 (2d6) poison damage."
+   ]
+  }
+ ],
+ "reaction": [
+  {
+   "name": "Parry",
+   "text": [
+    "The shadow fey duelist adds 3 to its AC against one melee attack that would hit it. To do so, the duelist must see the attacker and be wielding a melee weapon."
+   ]
+  }
+ ],
+ "legendary": []
+},
+{
+ "name": "Shadow Fey Enchantress",
+ "size": "M",
+ "type": "humanoid (shadow fey), tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "16 (breastplate)",
+ "hp": "123 (19d8 + 38)",
+ "speed": "30 ft.",
+ "str": "10",
+ "dex": " 15",
+ "con": " 14",
+ "int": " 12",
+ "wis": " 17",
+ "cha": " 18",
+ "save": "Dex +5, Wis +6, Cha +7",
+ "skill": [
+  "Arcana +4, Deception +7, Perception +6, Persuasion +7, Stealth +5"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "16",
+ "languages": "Common, Elvish, Umbral",
+ "cr": "7",
+ "trait": [
+  {
+   "name": "Fey Ancestry",
+   "text": [
+    "The shadow fey has advantage on saving throws against being charmed, and magic can’t put her to sleep."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The shadow fey’s innate spellcasting ability is Charisma. She can cast the following spells innately, requiring no material components.",
+    "4/day: misty step (when in shadows, dim light, or darkness only)"
+   ]
+  },
+  {
+   "name": "Spellcasting",
+   "text": [
+    "The shadow fey is a 10th-level spellcaster. Her spellcasting ability is Charisma (save DC 15, +7 to hit with spell attacks). She knows the following bard spells.",
+    "Cantrips (at will): blade ward, friends, message, vicious mockery",
+    "1st level (4 slots): bane, charm person, faerie fire",
+    "2nd level (3 slots): enthrall, hold person",
+    "3rd level (3 slots): conjure fey, fear, hypnotic pattern",
+    "4th level (3 slots): confusion, greater invisibility, phantasmal killer",
+    "5th level (2 slots): animate objects, dominate person, hold monster"
+   ]
+  },
+  {
+   "name": "Sunlight Sensitivity",
+   "text": [
+    "While in sunlight, the shadow fey has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight."
+   ]
+  },
+  {
+   "name": "Traveler in Darkness",
+   "text": [
+    "The shadow fey has advantage on Intelligence (Arcana) checks made to know about shadow roads and shadow magic spells or items."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The shadow fey makes two rapier attacks."
+   ]
+  },
+  {
+   "name": "Rapier",
+   "text": [
+    "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d8 + 2) piercing damage plus 17 (5d6) psychic damage."
+   ]
+  },
+  {
+   "name": "Beguiling Whispers (recharge 5-6)",
+   "text": [
+    "The shadow fey speaks sweet words to a creature she can see within 60 feet, that can hear the enchantress. The creature must succeed on a DC 15 Charisma saving throw or be charmed for 1 minute. While charmed in this way, the creature has disadvantage on Wisdom and Charisma saving throws made to resist spells cast by the enchantress."
+   ]
+  },
+  {
+   "name": "Leadership (recharges after a Short or Long Rest)",
+   "text": [
+    "The enchantress can utter a special command or warning to a creature she can see within 30 feet of her. The creature must not be hostile to the enchantress and it must be able to hear (the command is inaudible to all but the target creature). For 1 minute, the creature adds a d4 to its attack rolls and saving throws. A creature can benefit from only one enchantress’s Leadership at a time. This effect ends if the enchantress is incapacitated."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Shadow Fey Forest Hunter",
+ "size": "M",
+ "type": "humanoid (elf), tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "15 (chain shirt)",
+ "hp": "104 (19d8 + 19)",
+ "speed": "30 ft.",
+ "str": "12",
+ "dex": " 18",
+ "con": "12",
+ "int": " 11",
+ "wis": " 12",
+ "cha": " 16",
+ "save": "Dex +7, Con +4, Cha +6",
+ "skill": [
+  "Arcana +3, Perception +4, Stealth +10, Survival +4"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "14",
+ "languages": "Common, Elvish, Umbral",
+ "cr": "5",
+ "trait": [
+  {
+   "name": "Fey Ancestry",
+   "text": [
+    "The shadow fey has advantage on saving throws against being charmed, and magic can’t put it to sleep."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The shadow fey’s innate spellcasting ability is Charisma. It can cast the following spells innately, requiring no material components.",
+    "3/day: misty step (when in shadows, dim light, or darkness only)"
+   ]
+  },
+  {
+   "name": "Sneak Attack (1/turn)",
+   "text": [
+    "The shadow fey forest hunter does an extra 7 (2d6) damage when it hits a target with a weapon attack that had advantage, or when the target is within 5 feet of an ally of the forest hunter that isn’t incapacitated and the forest hunter doesn’t have disadvantage on the attack roll."
+   ]
+  },
+  {
+   "name": "Sunlight Sensitivity",
+   "text": [
+    "While in sunlight, the shadow fey has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight."
+   ]
+  },
+  {
+   "name": "Traveler in Darkness",
+   "text": [
+    "The shadow fey has advantage on Intelligence (Arcana) checks made to know about shadow roads and shadow magic spells or items."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The shadow fey makes two ranged attacks."
+   ]
+  },
+  {
+   "name": "Rapier",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) piercing damage."
+   ]
+  },
+  {
+   "name": "Longbow",
+   "text": [
+    "Ranged Weapon Attack: +7 to hit, range 150/600 ft., one target. Hit: 8 (1d8 + 4) piercing damage plus 7 (2d6) poison damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Shadow Fey Guardian",
+ "size": "L",
+ "type": "humanoid (elf), tome of beasts",
+ "alignment": "neutral evil",
+ "ac": "15 (chain shirt)",
+ "hp": "110 (13d10 + 39)",
+ "speed": "30 ft.",
+ "str": "18",
+ "dex": " 14",
+ "con": "16",
+ "int": " 6",
+ "wis": " 14",
+ "cha": " 8",
+ "save": "Str +6, Con +5",
+ "skill": [
+  "Athletics +6, Perception +4"
+ ],
+ "conditionImmune": "charmed, frightened",
+ "senses": "darkvision 60 ft.",
+ "passive": "14",
+ "languages": "Common, Elvish, Umbral",
+ "cr": "4",
+ "trait": [
+  {
+   "name": "Fey Ancestry",
+   "text": [
+    "The shadow fey guardian has advantage on saving throws against being charmed, and magic can’t put it to sleep."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The shadow fey’s innate spellcasting ability is Charisma. It can cast the following spells innately, requiring no material components.",
+    "1/day: misty step (when in shadows, dim light, or darkness only)"
+   ]
+  },
+  {
+   "name": "Shadow’s Vigil",
+   "text": [
+    "The shadow fey has advantage on Wisdom (Perception) checks, and magical darkness does not inhibit its darkvision."
+   ]
+  },
+  {
+   "name": "Sunlight Sensitivity",
+   "text": [
+    "While in sunlight, the shadow fey has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight."
+   ]
+  },
+  {
+   "name": "Traveler in Darkness",
+   "text": [
+    "The shadow fey has advantage on Intelligence (Arcana) checks made to know about shadow roads and shadow magic spells or items."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The shadow fey makes two pike attacks."
+   ]
+  },
+  {
+   "name": "Pike",
+   "text": [
+    "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 15 (2d10 + 4) piercing damage."
+   ]
+  },
+  {
+   "name": "Javelin",
+   "text": [
+    "Ranged Weapon Attack: +6 to hit, range 30/120 ft., one target. Hit: 11 (2d6 + 4) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [
+  {
+   "name": "Protect",
+   "text": [
+    "The shadow fey guardian imposes disadvantage on an attack roll against an ally within 5 feet. The guardian must be wielding a melee weapon to use this reaction."
+   ]
+  }
+ ],
+ "legendary": []
+},
+{
+ "name": "Emerald Eye",
+ "size": "T",
+ "type": "construct, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "14",
+ "hp": "54 (12d4 + 24)",
+ "speed": "0 ft., fly 30 ft. (hover)",
+ "str": "3",
+ "dex": " 15",
+ "con": "14",
+ "int": " 15",
+ "wis": " 12",
+ "cha": " 16",
+ "save": "Dex +4, Con +4, Int +4",
+ "skill": [
+  "Acrobatics +4, Arcana +4, Deception +5, History +4, Perception +3, Persuasion +5, Religion +4"
+ ],
+ "resist": "cold, fire; piercing damage",
+ "immune": "poison",
+ "conditionImmune": "blinded, deafened, exhausted, paralyzed, petrified, poisoned, prone, unconscious",
+ "senses": "blindsight 60 ft.",
+ "languages": "Common, Draconic, telepathy 250 ft.",
+ "cr": "1",
+ "trait": [
+  {
+   "name": "Bound",
+   "text": [
+    "An emerald eye cannot move more than 25 feet away from the creature that it is psychically linked to. It begins existence bound to its creator, but a free emerald eye can bind itself to another creature as in the Bind action."
+   ]
+  },
+  {
+   "name": "Immutable Form",
+   "text": [
+    "The emerald eye is immune to any spell or effect that would alter its form."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Slash",
+   "text": [
+    "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 14 (5d4 + 2) slashing damage."
+   ]
+  },
+  {
+   "name": "Attraction (Recharge 5–6)",
+   "text": [
+    "An emerald eye can compel one creature to move toward a particular person or object. If the creature fails a DC 13 Charisma saving throw, it feels a powerful compulsion to move toward whatever the emerald eye chooses. The target creature must be within 25 feet of the emerald eye when attraction is triggered, but the creature is then free to move beyond this range while remaining under the effect. Nothing seems out of the ordinary to the creature, but it does not knowingly put itself or its allies in harm’s way to reach the object. The creature may attempt another DC 13 Charisma saving throw at the start of each of its turns; a success ends the effect."
+   ]
+  },
+  {
+   "name": "Bind (3/Day)",
+   "text": [
+    "The emerald eye can bind itself psychically to a creature with an Intelligence of 6 or greater. The attempt fails if the target succeeds on a DC 13 Charisma saving throw. The attempt is unnoticed by the target, regardless of the result."
+   ]
+  },
+  {
+   "name": "Telepathic Lash (3/Day)",
+   "text": [
+    "An emerald eye can overwhelm one humanoid creature within 25 feet with emotions and impulses the creature is hard-pressed to control. If the target fails a DC 13 Wisdom saving throw, it is stunned for 1 round."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Empty Cloak",
+ "size": "M",
+ "type": "construct, tome of beasts",
+ "alignment": "unaligned",
+ "ac": "13 (natural armor)",
+ "hp": "45 (10d8)",
+ "speed": "0 ft., fly 40 ft.",
+ "str": "18",
+ "dex": " 14",
+ "con": "10",
+ "int": " 10",
+ "wis": " 10",
+ "cha": " 1",
+ "save": "Dex +4, Con +2",
+ "skill": [
+  "Stealth +4"
+ ],
+ "resist": "bludgeoning",
+ "immune": "poison",
+ "conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+ "senses": "darkvision 60 ft.",
+ "passive": "10",
+ "languages": "understands Elvish and Umbral but can’t speak",
+ "cr": "1/2",
+ "trait": [
+  {
+   "name": "Diligent Sentinel",
+   "text": [
+    "Empty cloaks are designed to watch for intruders. They gain advantage on Wisdom (Perception) checks."
+   ]
+  },
+  {
+   "name": "Shadow Construction",
+   "text": [
+    "Empty cloaks are designed with a delicate shadow construction. They burst into pieces, then dissipate into shadow, on a critical hit."
+   ]
+  },
+  {
+   "name": "Wrapping Embrace",
+   "text": [
+    "Empty cloaks can share the same space as one Medium or smaller creature. The empty cloak has advantage on attack rolls against any creature in the same space with it."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Longsword",
+   "text": [
+    "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage."
+   ]
+  },
+  {
+   "name": "Shadow Slam",
+   "text": [
+    "Melee Weapon Attack: +6 to hit, reach 5 ft, one target. Hit: 6 (1d4 + 4) bludgeoning damage."
+   ]
+  },
+  {
+   "name": "Shadow Snare",
+   "text": [
+    "Ranged Weapon Attack: +4 to hit, range 20/60 ft., one target. Hit: Large or smaller creatures are restrained. To escape, the restrained creature or an adjacent ally must use an action to make a successful DC 14 Strength check. The shadow snare has 15 hit points and AC 12."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Eonic Drifter",
+ "size": "M",
+ "type": "humanoid (human), tome of beasts",
+ "alignment": "chaotic neutral",
+ "ac": "13 (leather armor)",
+ "hp": "65 (10d8 + 20)",
+ "speed": "30 ft.",
+ "str": "9",
+ "dex": " 14",
+ "con": "14",
+ "int": " 18",
+ "wis": " 11",
+ "cha": " 13",
+ "skill": [
+  "Arcana +6, History +6"
+ ],
+ "senses": "",
+ "passive": "10",
+ "languages": "Common, Eonic, Giant, Sylvan",
+ "cr": "1",
+ "trait": [],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The eonic drifter can either use Drift Backward or make two attacks with its time warping staff. The eonic drifter’s future self (if present) can only use Drift Forward."
+   ]
+  },
+  {
+   "name": "Time Warping Staff",
+   "text": [
+    "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10 + 2) bludgeoning damage."
+   ]
+  },
+  {
+   "name": "Drift Backward (1/Day)",
+   "text": [
+    "A future self of the eonic drifter materializes in an unoccupied space within 30 feet of the drifter. The future self has the eonic drifter’s stats and its full hit points, and it takes its turn immediately after its present self. Killing the original eonic drifter makes its future self disappear. If the present self sees its future self die, the eonic drifter must make a DC 13 Wisdom saving throw. There is no effect if the save succeeds. If the saving throw fails, roll 1d6 to determine the effect on the eonic drifter: 1 = frightened, 2 = incapacitated, 3 = paralyzed, 4 = unconscious, 5 or 6 = has disadvantage on attack rolls and ability checks. These effects last 1d4 rounds."
+   ]
+  },
+  {
+   "name": "Drift Forward (2/Day)",
+   "text": [
+    "The future self makes a time warping staff attack against a target. If the attack hits, instead of causing bludgeoning damage, both the target and the attacker jump forward through time, effectively ceasing to exist in the present time. They reappear in the same locations 1d4 rounds later, at the end of the present self’s turn. Creatures occupying those locations at that moment are pushed 5 feet in a direction of their own choosing. The target of the drift (but not the future self) must then make a DC 13 Wisdom saving throw, with effects identical to those for the eonic drifter witnessing the death of its future self (see Drift Backward). The future self doesn’t reappear after using this ability the second time; only the target of the drift reappears from the second use. This does not trigger a saving throw for the present self."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Erina Scrounger",
+ "size": "S",
+ "type": "humanoid (erina), tome of beasts",
+ "alignment": "neutral",
+ "ac": "12 (leather armor)",
+ "hp": "22 (4d6 + 8)",
+ "speed": "20 ft., burrow 20 ft.",
+ "str": "9",
+ "dex": " 12",
+ "con": "14",
+ "int": " 13",
+ "wis": " 10",
+ "cha": " 11",
+ "resist": "poison",
+ "senses": "darkvision 60 ft.",
+ "passive": "10",
+ "languages": "Common, Erina",
+ "cr": "1/4",
+ "trait": [
+  {
+   "name": "Keen Smell",
+   "text": [
+    "The erina has advantage on Wisdom (Perception) checks that rely on smell."
+   ]
+  },
+  {
+   "name": "Hardy",
+   "text": [
+    "The erina has advantage on saving throws against poison."
+   ]
+  },
+  {
+   "name": "Spines",
+   "text": [
+    "An enemy who hits the erina with a melee attack while within 5 feet of it takes 2 (1d4) piercing damage."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Dagger",
+   "text": [
+    "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage."
+   ]
+  },
+  {
+   "name": "Sling",
+   "text": [
+    "Ranged Weapon Attack: +3 to hit, range 30/120 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Erina Defender",
+ "size": "S",
+ "type": "humanoid (erina), tome of beasts",
+ "alignment": "neutral",
+ "ac": "15 (chain shirt)",
+ "hp": "44 (8d6 + 16)",
+ "speed": "20 ft., burrow 20 ft.",
+ "str": "11",
+ "dex": " 14",
+ "con": "14",
+ "int": " 13",
+ "wis": " 12",
+ "cha": " 11",
+ "skill": [
+  "Athletics +4, Perception +3"
+ ],
+ "resist": "poison",
+ "senses": "darkvision 60 ft.",
+ "passive": "13",
+ "languages": "Common, Erina",
+ "cr": "1",
+ "trait": [
+  {
+   "name": "Keen Smell",
+   "text": [
+    "The erina has advantage on Wisdom (Perception) checks that rely on smell."
+   ]
+  },
+  {
+   "name": "Hardy",
+   "text": [
+    "The erina has advantage on saving throws against poison."
+   ]
+  },
+  {
+   "name": "Spines",
+   "text": [
+    "An enemy who hits the erina with a melee attack while within 5 feet of it takes 5 (2d4) piercing damage."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The erina defender makes two attacks."
+   ]
+  },
+  {
+   "name": "Shortsword",
+   "text": [
+    "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+   ]
+  },
+  {
+   "name": "Shortbow",
+   "text": [
+    "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [
+  {
+   "name": "Protect",
+   "text": [
+    "The erina imposes disadvantage on an attack roll made against an ally within 5 feet of the erina defender."
+   ]
+  }
+ ],
+ "legendary": []
 }
 );
