@@ -25067,5 +25067,991 @@ monsterdata.compendium.monster.push(
  ],
  "reaction": [],
  "legendary": []
+},
+{
+ "name": "Temple Dog",
+ "size": "M",
+ "type": "celestial, tome of beasts",
+ "alignment": "good",
+ "ac": "15 (natural armor)",
+ "hp": "97 (15d8 + 30)",
+ "speed": "30 ft.",
+ "str": "18",
+ "dex": " 14",
+ "con": "15",
+ "int": " 8",
+ "wis": " 14",
+ "cha": " 10",
+ "save": "Str +7, Con +5, Int +2, Wis +5",
+ "skill": [
+  "Perception +5"
+ ],
+ "resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+ "senses": "darkvision 60 ft.",
+ "passive": "15",
+ "languages": "understands Celestial and Common but can’t speak",
+ "cr": "5",
+ "trait": [
+  {
+   "name": "Magic Resistance",
+   "text": [
+    "The temple dog has advantage on saving throws against spells and other magical effects."
+   ]
+  },
+  {
+   "name": "Protector’s Initiative",
+   "text": [
+    "If the temple dog is entering combat against a clear threat to its temple, it has advantage on its initiative roll."
+   ]
+  },
+  {
+   "name": "Rushing Slam",
+   "text": [
+    "If the temple dog moves at least 10 feet straight toward a target and then makes a slam attack against that target, it can make an additional slam attack against a second creature within 5 feet of the first target as a bonus action."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Bite",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 17 (3d8 + 4) piercing damage plus 9 (2d4 + 4) bludgeoning damage, and the target is grappled (escape DC 14). The target must also make a successful DC 15 Constitution saving throw or be stunned until the end of its next turn."
+   ]
+  },
+  {
+   "name": "Slam",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (3d6 + 4) bludgeoning damage, and the target must succeed on a DC 15 Strength saving throw or be knocked prone and pushed 5 feet. The temple dog can immediately enter the position the target was pushed out of, if it chooses to."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Thuellai",
+ "size": "H",
+ "type": "elemental, tome of beasts",
+ "alignment": "chaotic neutral",
+ "ac": "17",
+ "hp": "149 (13d12 + 65)",
+ "speed": "0 ft., fly 100 ft. (hover)",
+ "str": "22",
+ "dex": " 24",
+ "con": "20",
+ "int": " 10",
+ "wis": " 11",
+ "cha": " 14",
+ "save": "Int +4, Wis +4, Cha +6",
+ "skill": [
+  "Perception +4"
+ ],
+ "resist": "lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+ "immune": "poison",
+ "conditionImmune": "exhaustion, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
+ "senses": "darkvision 60 ft.",
+ "passive": "14",
+ "languages": "Common, Dwarvish, Primordial",
+ "cr": "10",
+ "trait": [
+  {
+   "name": "Air Mastery",
+   "text": [
+    "Airborne creatures have disadvantage on attack rolls against the thuellai."
+   ]
+  },
+  {
+   "name": "Snow Vision",
+   "text": [
+    "The thuellai see perfectly well in snowy conditions. It does not suffer Wisdom (Perception) penalties from snow, whiteout, or snow blindness."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The thuellai makes two claw attacks."
+   ]
+  },
+  {
+   "name": "Claw",
+   "text": [
+    "Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 15 (2d8 + 6) slashing damage plus 26 (4d12) cold damage. If the target is wearing metal armor, it must make a successful DC 17 Constitution saving throw or gain one level of exhaustion."
+   ]
+  },
+  {
+   "name": "Freezing Breath (Recharge 5–6)",
+   "text": [
+    "The thuellai exhales an icy blast in a 40-foot cone. Each target in the area takes 39 (6d12) cold damage, or half damage with a successful DC 17 Constitution saving throw."
+   ]
+  },
+  {
+   "name": "Algid Aura",
+   "text": [
+    "All creatures within 10 feet of a thuellai take 7 (2d6) cold damage at the beginning of the thuellai’s turn. Spells or magical effects that protect against cold are affected as if by a dispel magic spell (the theullai’s effective spellcasting bonus is +5) if a thuellai is within 20 feet of the target at the start of the theullai’s turn, and nonmagical flames within 20 feet of the thuellai are extinguished at the start of its turn."
+   ]
+  },
+  {
+   "name": "Howl of the Maddening Wind (3/day)",
+   "text": [
+    "A thuellai’s howl can cause creatures to temporarily lose their minds and even to attack themselves or their companions. Each target within 100 feet of the theullai and able to hear the howl must make a successful DC 14 Wisdom saving throw or roll 1d8 and consult the table below at the start of its next turn. An affected creature repeats the saving throw at the end of each of its turns; a success ends the effect on itself, but a failure means it must roll again on the table below at the start of its next turn.",
+    "1: Act normally",
+    "2-4: Do nothing but babble incoherently",
+    "5-6: Do 1d8 damage + Str modifier to self with item in hand",
+    "7-8: Attack nearest target; select randomly if more than one"
+   ]
+  },
+  {
+   "name": "Blizzard (1/Day)",
+   "text": [
+    "The thuellai creates an icy blizzard in the area around it. A 50-foot radius sphere surrounding the theullai fills with icy fog, whirling snow, and driving ice crystals. Vision is lightly obscured, and creatures have disadvantage on Wisdom (Perception) checks that rely on vision or hearing. The ground in the affected area becomes difficult terrain. The effect lasts for 10 minutes and moves with the theullai."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Ancient Titan",
+ "size": "G",
+ "type": "celestial (titan), tome of beasts",
+ "alignment": "neutral good",
+ "ac": "15 (breastplate)",
+ "hp": "198 (12d20 + 72)",
+ "speed": "50 ft.",
+ "str": "27",
+ "dex": " 13",
+ "con": "22",
+ "int": " 16",
+ "wis": " 16",
+ "cha": " 20",
+ "save": "Con +10, Wis +7, Cha +9",
+ "skill": [
+  "Athletics +14, Intimidation +9, Perception +7"
+ ],
+ "resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+ "senses": "darkvision 120 ft.",
+ "passive": "17",
+ "languages": "Common, Giant, Primordial, Titan, telepathy 120 ft.",
+ "cr": "12",
+ "trait": [
+  {
+   "name": "Magic Resistance",
+   "text": [
+    "The ancient titan has advantage on saving throws against spells and other magical effects."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The ancient titan’s spellcasting ability is Charisma (spell save DC 17). The ancient titan can innately cast the following spells, requiring no material components:",
+    "3/day: power word stun",
+    "1/day: power word kill"
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack: The ancient titan makes two greatsword attacks or two longbow attacks",
+   "text": [
+    ""
+   ]
+  },
+  {
+   "name": "Greatsword",
+   "text": [
+    "Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 38 (8d6 + 8) slashing damage."
+   ]
+  },
+  {
+   "name": "Longbow",
+   "text": [
+    "Ranged Weapon Attack: +5 to hit, range 150/640 ft., one target. Hit: 19 (4d8 + 1) piercing damage."
+   ]
+  },
+  {
+   "name": "Eldritch Singularity (Recharge 5–6)",
+   "text": [
+    "The ancient titan opens a momentary rupture in the eldritch source that fuels its words of power. This rupture appears at a spot designated by the titan within 100 feet. Any creature within 60 feet of the spot must make a DC 17 Constitution saving throw. On a failure, the creature takes 28 (8d6) force damage, falls prone, and is pulled 1d6 x 10 feet toward the eldritch singularity, taking an additional 3 (1d6) bludgeoning damage per 10 feet they were dragged. If the saving throw succeeds, the target takes half as much force damage and isn’t knocked prone or pulled. The spot where the rupture occurs becomes the center of a 60-foot-radius antimagic field until the end of the ancient titan’s next turn. The titan’s spells are not affected by this antimagic field."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Degenerate Titan",
+ "size": "H",
+ "type": "giant, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "12 (crude armored coat)",
+ "hp": "161 (14d12 + 70)",
+ "speed": "40 ft.",
+ "str": "24",
+ "dex": " 6",
+ "con": " 20",
+ "int": " 6",
+ "wis": " 9",
+ "cha": " 7",
+ "skill": [
+  "Intimidation +1, Perception +2"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "12",
+ "languages": "Titan",
+ "cr": "8",
+ "trait": [
+  {
+   "name": "Magic Resistance",
+   "text": [
+    "The degenerate titan has advantage on saving throws against spells and other magical effects."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The degenerate titan makes two greatclub attacks."
+   ]
+  },
+  {
+   "name": "Greatclub",
+   "text": [
+    "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 20 (3d8 + 7) bludgeoning damage."
+   ]
+  },
+  {
+   "name": "Rock",
+   "text": [
+    "Ranged Weapon Attack: +10 to hit, range 60/240 ft., one target. Hit: 29 (4d10 + 7) bludgeoning damage."
+   ]
+  },
+  {
+   "name": "Earthstrike (Recharge 4–6)",
+   "text": [
+    "The degenerate titan slams his fists onto the ground, creating a shockwave in a line 60 feet long and 10 feet wide. Each creature in the line takes 35 (10d6) force damage and is flung up 20 feet away from the titan and knocked prone; a successful DC 18 Dexterity saving throw halves the damage and prevents the creature from being flung or knocked prone. A creature that’s flung against an unyielding object such as a wall or floor takes 3 (1d6) bludgeoning damage for every 10 feet it was thrown. If it collides with another creature, that creature must succeed on a DC 18 Dexterity saving throw or take the same damage (1d6 bludgeoning per 10 feet) and be knocked prone."
+   ]
+  },
+  {
+   "name": "Shout of the Void (Recharge 4–6)",
+   "text": [
+    "The degenerate titan utters a scream that rends reality in a 30-foot cone. Any ongoing spell or magical effect of 3rd level or lower in the area ends. For every spell or effect of 4th level or higher in the area, the degenerate titan makes a Constitution check against DC (10 + the level of the spell or effect). On a success, the spell or effect ends."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Titanoboa",
+ "size": "G",
+ "type": "beast, tome of beasts",
+ "alignment": "unaligned",
+ "ac": "14 (natural armor)",
+ "hp": "232 (15d20 + 75)",
+ "speed": "40 ft., climb 40 ft., swim 40 ft.",
+ "str": "26",
+ "dex": " 10",
+ "con": "20",
+ "int": " 3",
+ "wis": " 10",
+ "cha": " 3",
+ "save": "Dex +5, Wis +5",
+ "skill": [
+  "Perception +5"
+ ],
+ "senses": "blindsight 10 ft.",
+ "passive": "15",
+ "languages": "—",
+ "cr": "12",
+ "trait": [
+  {
+   "name": "Slither",
+   "text": [
+    "If the titanoboa hasn’t eaten a Huge creature in the last 24 hours, it can move through a space as narrow as 10 feet wide without squeezing, or 5 feet while squeezing."
+   ]
+  },
+  {
+   "name": "Sparkling Scales",
+   "text": [
+    "The titanoboa’s scales refract light in iridescent cascades that are hypnotic to gaze upon. If the titanoboa is in bright light, a creature within 30 feet that looks at it must make a successful DC 17 Wisdom saving throw or be stunned until the end of its next turn. Unless surprised, a creature can avoid the saving throw by choosing to avert its eyes at the start of its turn. A creature that averts its eyes can’t see the titanoboa until the start of its next turn, when it can choose to avert its eyes again. If the creature looks at the titanoboa in the meantime, it must immediately make the saving throw."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The titanoboa makes one bite attack and one constrict attack."
+   ]
+  },
+  {
+   "name": "Bite",
+   "text": [
+    "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 21 (3d8 + 8) piercing damage. If the target is a Huge or smaller creature, it must succeed on a DC 18 Dexterity saving throw or be swallowed by the titanoboa. A swallowed creature is blinded and restrained, has total cover against attacks and other effects outside the snake, and takes 21 (6d6) acid damage at the start of each of the titanoboa’s turns. If the titanoboa takes 30 damage or more on a single turn from a creature inside it, the titanoboa must succeed on a DC 15 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the titanoboa. If the titanoboa dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+   ]
+  },
+  {
+   "name": "Constrict",
+   "text": [
+    "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 27 (3d12 + 8) bludgeoning damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the titanoboa can’t constrict another target."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Tophet",
+ "size": "H",
+ "type": "construct, tome of beasts",
+ "alignment": "neutral evil",
+ "ac": "16 (natural armor)",
+ "hp": "184 (16d12 + 80)",
+ "speed": "30 ft.",
+ "str": "24",
+ "dex": " 10",
+ "con": "20",
+ "int": " 6",
+ "wis": " 10",
+ "cha": " 10",
+ "save": "Str +10, Con +8, Dex +3",
+ "skill": [
+  "Perception +3"
+ ],
+ "resist": "necrotic",
+ "immune": "fire, cold",
+ "conditionImmune": "exhaustion, frightened, paralyzed, petrified, poisoned",
+ "senses": "darkvision 200 ft.",
+ "passive": "13",
+ "languages": "Common",
+ "cr": "8",
+ "trait": [
+  {
+   "name": "Fiery Heart",
+   "text": [
+    "A tophet’s inner fire can be ignited or doused at will. Its heat is such that all creatures have resistance to cold damage while within 30 feet of the tophet."
+   ]
+  },
+  {
+   "name": "Burning Belly",
+   "text": [
+    "Creatures inside a tophet’s burning core take 21 (6d6) fire damage at the start of each of the tophet’s turns. Escaping from a tophet’s belly takes 10 feet of movement and a successful DC 16 Dexterity (Acrobatics) check."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "A tophet makes two attacks, no more than one of which can be a gout of flame."
+   ]
+  },
+  {
+   "name": "Slam",
+   "text": [
+    "Melee Weapon Attack. +10 to hit, reach 5 ft., one target. Hit: 12 (1d10 + 7) bludgeoning damage. The target is also knocked inside the tophet’s burning belly if the attack scores a critical hit."
+   ]
+  },
+  {
+   "name": "Gout of Flame",
+   "text": [
+    "The tophet targets a point within 100 feet of itself that it can see. All targets within 10 feet of that point take 22 (4d10) fire damage, or half damage with a successful DC 16 Dexterity saving throw."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Tosculi Hive-Queen",
+ "size": "L",
+ "type": "monstrosity, tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "17",
+ "hp": "157 (15d10 + 75)",
+ "speed": "40 ft., fly 60 ft.",
+ "str": "17",
+ "dex": " 24",
+ "con": "20",
+ "int": " 16",
+ "wis": " 16",
+ "cha": " 18",
+ "save": "Dex +12, Con +10, Wis +8, Cha +9",
+ "skill": [
+  "Perception +8"
+ ],
+ "immune": "poison",
+ "conditionImmune": "charmed, poisoned",
+ "senses": "darkvision 60 ft.",
+ "passive": "18",
+ "languages": "Common, Deep Speech, Gnoll, Infernal, Tosculi",
+ "cr": "12",
+ "trait": [
+  {
+   "name": "Legendary Resistance (3/Day)",
+   "text": [
+    "If the hive-queen fails a saving throw, it can choose to succeed instead."
+   ]
+  },
+  {
+   "name": "Hive Mind",
+   "text": [
+    "The hive-queen is the psychic nexus for every tosculi in her hive. She is aware of the direction and distance to all members of the hive, can telepathically communicate with them when they are within 20 miles, and can sense what they sense when they are within 1 mile of her. Tosculi from her hive that travel more than 20 miles away instinctively know the direction and distance to the hive and try to return. Hive-queens sometimes dispatch rescue missions to recover separated members of the hive."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The hive-queen makes four scimitar attacks."
+   ]
+  },
+  {
+   "name": "Scimitar",
+   "text": [
+    "Melee Weapon Attack: +12 to hit, reach 5 ft., one target. Hit: 14 (2d6 + 7) slashing damage."
+   ]
+  },
+  {
+   "name": "Stinger",
+   "text": [
+    "Melee Weapon Attack: +12 to hit, reach 5 ft., one creature. Hit: 10 (1d6 + 7) piercing damage, and the target must succeed on a DC 18 Constitution saving throw or be paralyzed for 1 minute. A paralyzed target repeats the saving throw at the end of each of its turns, ending the effect on itself on a success."
+   ]
+  },
+  {
+   "name": "Glitter Dust",
+   "text": [
+    "The hive-queen produces a cloud of glittering golden particles in a 30-foot radius. Each creature that is not a tosculi in the area must succeed on a DC 18 Constitution saving throw or be blinded for 1 minute. A blinded creature repeats the saving throw at the end of each of its turns, ending the effect on itself on a success."
+   ]
+  },
+  {
+   "name": "Implant Egg",
+   "text": [
+    "The hive-queen implants an egg into an incapacitated creature within 5 feet of her that is neither undead nor a construct. Until the egg hatches or is removed, the creature is poisoned, paralyzed, and does not need to eat or drink. The egg hatches in 1d6 weeks, and the larval tosculi kills the host creature. The implanted egg can be removed with a successful DC 20 Wisdom (Medicine) check or by a spell or magical effect that cures disease."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": [
+  {
+   "name": "",
+   "text": [
+    "The hive-queen can take 3 legendary actions, choosing from the options below. Only one option can be used at a time and only at the end of another creature’s turn. The hive-queen regains spent legendary actions at the start of its turn."
+   ]
+  },
+  {
+   "name": "Flight",
+   "text": [
+    "The hive-queen flies up to half its flying speed."
+   ]
+  },
+  {
+   "name": "Stinger Attack",
+   "text": [
+    "The hive-queen makes one stinger attack."
+   ]
+  },
+  {
+   "name": "Glitter Dust (Costs 2 Actions)",
+   "text": [
+    "The hive-queen uses Glitter Dust."
+   ]
+  }
+ ]
+},
+{
+ "name": "Tosculi Warrior",
+ "size": "S",
+ "type": "monstrosity, tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "15",
+ "hp": "58 (9d6 + 27)",
+ "speed": "20 ft., fly 60 ft.",
+ "str": "12",
+ "dex": " 20",
+ "con": "16",
+ "int": " 10",
+ "wis": " 12",
+ "cha": " 12",
+ "senses": "darkvision 60 ft.",
+ "passive": "11",
+ "languages": "Tosculi",
+ "cr": "2",
+ "trait": [
+  {
+   "name": "Skittering",
+   "text": [
+    "Up to two tosculi can share the same space at one time. The tosculi has advantage on attack rolls while sharing its space with another tosculi that isn’t incapacitated."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The tosculi warrior makes one bite attack, one claws attack, and one stinger attack."
+   ]
+  },
+  {
+   "name": "Bite",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 7 (1d4 + 5) piercing damage."
+   ]
+  },
+  {
+   "name": "Claws",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 10 (2d4 + 5) slashing damage."
+   ]
+  },
+  {
+   "name": "Stinger",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 7 (1d4 + 5) piercing damage, and the target must succeed on a DC 13 Constitution saving throw against poison or be paralyzed for 1 minute. A paralyzed target repeats the saving throw at the end of each of its turns, ending the effect on itself on a success."
+   ]
+  },
+  {
+   "name": "Prepare Host",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one paralyzed creature. Hit: 10 (2d4 + 5) piercing damage, and the target is paralyzed for 8 hours. The paralysis can be ended with a successful DC 20 Wisdom (Medicine) check or by a spell or magical effect that cures disease. (Because only paralyzed creatures can be targeted, a hit by this attack is automatically a critical hit; bonus damage is included in the damage listing.)"
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Tosculi Drone",
+ "size": "S",
+ "type": "monstrosity, tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "13",
+ "hp": "22 (4d6 + 8)",
+ "speed": "20 ft.",
+ "str": "8",
+ "dex": " 16",
+ "con": "14",
+ "int": " 8",
+ "wis": " 12",
+ "cha": " 4",
+ "senses": "darkvision 60 ft.",
+ "passive": "11",
+ "languages": "Tosculi",
+ "cr": "1/2",
+ "trait": [
+  {
+   "name": "Gliding Wings",
+   "text": [
+    "The tosculi drone can use its wings to slowly descend when falling (as if under the effect of the feather fall spell). It can move up to 5 feet horizontally for every foot it falls. The tosculi drone can’t gain height with these wings alone. If subjected to a strong wind or lift of any kind, it can use the updraft to glide farther."
+   ]
+  },
+  {
+   "name": "Skittering",
+   "text": [
+    "Up to two tosculi can share the same space at one time. The tosculi has advantage on melee attack rolls while sharing its space with another tosculi that isn’t incapacitated."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Claws",
+   "text": [
+    "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) slashing damage."
+   ]
+  },
+  {
+   "name": "Light Crossbow",
+   "text": [
+    "Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 7 (1d8 + 3) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Tosculi Elite Bow Raider",
+ "size": "M",
+ "type": "humanoid (tosculi), tome of beasts",
+ "alignment": "lawful evil",
+ "ac": "16 (natural armor)",
+ "hp": "97 (13d8 + 39)",
+ "speed": "30 ft., fly 60 ft.",
+ "str": "14",
+ "dex": " 18",
+ "con": "17",
+ "int": " 12",
+ "wis": " 14",
+ "cha": " 12",
+ "skill": [
+  "Perception +6, Stealth +7"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "16",
+ "languages": "Gnoll, Infernal, Tosculi",
+ "cr": "5",
+ "trait": [
+  {
+   "name": "Deadly Precision",
+   "text": [
+    "The tosculi elite bow raider’s ranged attacks do an extra 9 (2d8) damage (included below)."
+   ]
+  },
+  {
+   "name": "Evasive",
+   "text": [
+    "Ranged weapon attacks against the tosculi elite bow raider have disadvantage."
+   ]
+  },
+  {
+   "name": "Keen Smell",
+   "text": [
+    "The tosculi elite bow raider has advantage on Wisdom (Perception) checks that rely on smell."
+   ]
+  },
+  {
+   "name": "Skirmisher",
+   "text": [
+    "The tosculi elite bow raider can Dash as a bonus action."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The tosculi elite bow raider makes two longbow attacks or two claws attacks."
+   ]
+  },
+  {
+   "name": "Claws",
+   "text": [
+    "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6 + 4) slashing damage."
+   ]
+  },
+  {
+   "name": "Longbow",
+   "text": [
+    "Ranged Weapon Attack: +7 to hit, range 150/600 ft., one target. Hit: 17 (3d8 + 4) piercing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Treacle",
+ "size": "T",
+ "type": "ooze, tome of beasts",
+ "alignment": "unaligned",
+ "ac": "13 (natural armor)",
+ "hp": "22 (4d4 + 12)",
+ "speed": "15 ft., climb 10 ft.",
+ "str": "4",
+ "dex": " 6",
+ "con": " 17",
+ "int": " 1",
+ "wis": " 1",
+ "cha": " 10",
+ "skill": [
+  "Deception +4"
+ ],
+ "senses": "blindsight 60 ft.",
+ "passive": "10",
+ "languages": "—",
+ "cr": "1/4",
+ "trait": [
+  {
+   "name": "Amorphous",
+   "text": [
+    "The treacle can move through a space as narrow as 1 inch wide without squeezing."
+   ]
+  },
+  {
+   "name": "Charming Presence",
+   "text": [
+    "The treacle has an uncanny ability to sense and to play off of another creature’s emotions. It uses Charisma (Deception) to oppose Wisdom (Insight or Perception) skill checks made to see through its ruse, and it has advantage on its check."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Reshape",
+   "text": [
+    "The treacle assumes the shape of any tiny creature or object. A reshaped treacle gains the movement of its new form but no other special qualities."
+   ]
+  },
+  {
+   "name": "Blood Drain (1/hour)",
+   "text": [
+    "A treacle touching the skin of a warm-blooded creature inflicts 4 (1d8) necrotic damage per hour of contact, and the victim’s maximum hit points are reduced by the same number. Blood is drained so slowly that the victim doesn’t notice the damage unless he or she breaks contact with the treacle (sets it down or hands it to someone else, for example). When contact is broken, the victim notices blood on his or her skin or clothes with a successful DC 13 Wisdom (Perception) check."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Weeping Treant",
+ "size": "H",
+ "type": "plant, tome of beasts",
+ "alignment": "neutral",
+ "ac": "17 (natural armor)",
+ "hp": "105 (10d12 + 40)",
+ "speed": "30 ft.",
+ "str": "21",
+ "dex": " 8",
+ "con": " 20",
+ "int": " 12",
+ "wis": " 16",
+ "cha": " 11",
+ "resist": "bludgeoning and piercing from nonmagical weapons",
+ "senses": "darkvision 60 ft.",
+ "passive": "13",
+ "languages": "Common, Druidic, Elvish, Sylvan",
+ "cr": "6",
+ "trait": [
+  {
+   "name": "Siege Monster",
+   "text": [
+    "The treant deals double damage to objects and structures."
+   ]
+  },
+  {
+   "name": "Treespeech",
+   "text": [
+    "A weeping treant can converse with plants, and most plants greet them with a friendly or helpful attitude."
+   ]
+  },
+  {
+   "name": "Acidic Tears",
+   "text": [
+    "Thick tears of dark sap stream continuously down the treant’s face and trunk. These tears are highly acidic—anyone who attacks the treant from a range of 5 feet or less must succeed on a DC 15 Dexterity saving throw or take 6 (1d12) acid damage from splashed tears. This acidic matter continues doing 6 (1d12) acid damage at the start of each of the creature’s turns until it or an adjacent ally uses an action to wipe off the tears or three rounds elapse."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The treant makes three slam attacks."
+   ]
+  },
+  {
+   "name": "Slam",
+   "text": [
+    "Melee Weapon Attack: +8 to hit, reach 5 ft., single target. Hit: 15 (3d6 + 5) bludgeoning damage."
+   ]
+  },
+  {
+   "name": "Rock",
+   "text": [
+    "Ranged Weapon Attack: +8 to hit, range 60/180 ft., one target. Hit: 21 (3d10 + 5) bludgeoning damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Lake Troll",
+ "size": "L",
+ "type": "giant, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "15 (natural armor)",
+ "hp": "126 (12d10 + 60)",
+ "speed": "20 ft., swim 40 ft.",
+ "str": "20",
+ "dex": " 13",
+ "con": "20",
+ "int": " 8",
+ "wis": " 10",
+ "cha": " 6",
+ "skill": [
+  "Perception +3"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "13",
+ "languages": "Common, Giant",
+ "cr": "7",
+ "trait": [
+  {
+   "name": "Amphibious",
+   "text": [
+    "The lake troll can breathe air and water."
+   ]
+  },
+  {
+   "name": "Keen Smell",
+   "text": [
+    "The lake troll has advantage on Wisdom (Perception) checks that rely on smell."
+   ]
+  },
+  {
+   "name": "Regeneration",
+   "text": [
+    "The lake troll regains 10 hit points at the start of its turn. If the lake troll takes cold or fire damage, it regains only 5 hit points at the start of its next turn; if it takes both cold and fire damage, this trait doesn’t function at the start of the lake troll’s next turn. The lake troll dies only if it starts its turn with 0 hit points and doesn’t regenerate."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The lake troll makes one bite attack and two claw attacks."
+   ]
+  },
+  {
+   "name": "Bite",
+   "text": [
+    "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 9 (1d8 + 5) slashing damage."
+   ]
+  },
+  {
+   "name": "Claws",
+   "text": [
+    "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) piercing damage. If the lake troll hits a creature with both claw attacks in the same turn, the target creature must make a successful DC 16 Dexterity saving throw or its weapon (if any) gains a permanent and cumulative -1 penalty to damage rolls. If the penalty reaches –5, the weapon is destroyed. A damaged weapon can be repaired with appropriate artisan’s tools during a long rest."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Trollkin Reaver",
+ "size": "M",
+ "type": "humanoid (trollkin), tome of beasts",
+ "alignment": "neutral",
+ "ac": "14 (hide armor)",
+ "hp": "82 (11d8 + 33)",
+ "speed": "30 ft.",
+ "str": "19",
+ "dex": " 13",
+ "con": "16",
+ "int": " 11",
+ "wis": " 12",
+ "cha": " 13",
+ "save": "Con +5, Wis +3, Cha +3",
+ "skill": [
+  "Intimidation +5, Survival +3"
+ ],
+ "senses": "darkvision 60 ft.",
+ "passive": "11",
+ "languages": "Common, Trollkin",
+ "cr": "4",
+ "trait": [
+  {
+   "name": "Regeneration",
+   "text": [
+    "The trollkin reaver regains 10 hit points at the start of its turn. This trait doesn’t function if the trollkin took acid or fire damage since the end of its previous turn. The trollkin dies if it starts its turn with 0 hit points and doesn’t regenerate."
+   ]
+  },
+  {
+   "name": "Thick Hide",
+   "text": [
+    "The trollkin reaver’s skin is thick and tough, granting it a +1 bonus to AC. This bonus is already factored into the trollkin’s AC."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The trollkin raider makes three melee attacks: two with its claws and one with its bite, or two with its battleaxe and one with its handaxe, or it makes two ranged attacks with its handaxes."
+   ]
+  },
+  {
+   "name": "Bite",
+   "text": [
+    "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d4 + 4) piercing damage."
+   ]
+  },
+  {
+   "name": "Claw",
+   "text": [
+    "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d4 + 4) slashing damage."
+   ]
+  },
+  {
+   "name": "Battleaxe",
+   "text": [
+    "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage or 9 (1d10 + 4) slashing damage if used with two hands. Using the battleaxe two-handed prevents using the handaxe."
+   ]
+  },
+  {
+   "name": "Handaxe",
+   "text": [
+    "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 (1d6 + 4) slashing damage."
+   ]
+  },
+  {
+   "name": "Howl of Battle (Recharge 6)",
+   "text": [
+    "Up to three allies who can hear the trollkin reaver and are within 30 feet of it can each make one melee attack as a reaction."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
+},
+{
+ "name": "Tusked Skyfish",
+ "size": "L",
+ "type": "aberration, tome of beasts",
+ "alignment": "lawful good",
+ "ac": "14 (natural armor)",
+ "hp": "102 (12d10 + 36)",
+ "speed": "5 ft., fly 20 ft. (hover)",
+ "str": "17",
+ "dex": " 12",
+ "con": "17",
+ "int": " 3",
+ "wis": " 14",
+ "cha": " 10",
+ "immune": "lightning",
+ "senses": "darkvision 60 ft.",
+ "passive": "12",
+ "languages": "—",
+ "cr": "4",
+ "trait": [
+  {
+   "name": "Tendril Curtain",
+   "text": [
+    "When the tusked skyfish is flying, its wispy, electrified tendrils dangle beneath it and touch all creatures within 20 feet directly below its space as it moves. Any creatures in the path of its movement take 10 (3d6) lightning damage, or half damage with a successful DC 13 Dexterity saving throw."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The tusked skyfish makes one gore attack and one tentacles attack."
+   ]
+  },
+  {
+   "name": "Gore",
+   "text": [
+    "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 12 (2d8 + 3) piercing damage."
+   ]
+  },
+  {
+   "name": "Tentacles",
+   "text": [
+    "Melee Weapon Attack: +5 to hit, reach 10 ft., one creature. Hit: 13 (3d6 + 3) bludgeoning damage plus 10 (3d6) lightning damage. The target is also grappled (escape DC 13). Until this grapple ends, the target is restrained. While grappling the target, the tusked skyfish can’t use this attack against other targets. When the tusked skyfish moves, a Medium or smaller target it is grappling moves with it."
+   ]
+  },
+  {
+   "name": "Stench Spray (Recharge 5–6)",
+   "text": [
+    "The tusked skyfish sprays foul-smelling liquid in a line 20 feet long and 5 feet wide. Each creature in that line must make a successful DC 13 Constitution saving throw or become poisoned for 1 minute. If the saving throw fails by 5 or more, the creature falls unconscious for the same duration. A poisoned creature repeats the saving throw at the end of each of its turns, ending the effect on itself on a success."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
 }
 );
