@@ -26053,5 +26053,248 @@ monsterdata.compendium.monster.push(
  ],
  "reaction": [],
  "legendary": []
+},
+{
+ "name": "Uraeus",
+ "size": "T",
+ "type": "celestial, tome of beasts",
+ "alignment": "lawful neutral",
+ "ac": "14 (natural armor)",
+ "hp": "40 (9d4 + 18)",
+ "speed": "30 ft., fly 60 ft.",
+ "str": "6",
+ "dex": " 15",
+ "con": "14",
+ "int": " 10",
+ "wis": " 14",
+ "cha": " 9",
+ "skill": [
+  "Perception +4"
+ ],
+ "resist": "fire; bludgeoning, piercing, and slashing damage from nonmagical weapons",
+ "immune": "poison",
+ "conditionImmune": "poisoned",
+ "senses": "blindsight 10 ft.",
+ "passive": "14",
+ "languages": "understands Celestial and Common but can’t speak",
+ "cr": "2",
+ "trait": [
+  {
+   "name": "Flyby",
+   "text": [
+    "The uraeus doesn’t provoke opportunity attacks when it flies out of an enemy’s reach."
+   ]
+  },
+  {
+   "name": "Ward Bond",
+   "text": [
+    "As a bonus action, the uraeus forms a magical bond with a willing creature within 5 feet. Afterward, no matter how great the distance between them, the uraeus knows the distance and direction to its bonded ward and is aware of the creature’s general state of health. The bond lasts until the uraeus or the ward dies, or the uraeus ends the bond as an action."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Bite",
+   "text": [
+    "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage plus 9 (2d8) poison damage, and the target must make a successful DC 12 Constitution saving throw or be poisoned for 1 minute. While poisoned in this way, the target takes 9 (2d8) fire damage at the start of its turn. A poisoned creature repeats the saving throw at the end of its turn, ending the effect on a success."
+   ]
+  },
+  {
+   "name": "Searing Breath (Recharge 5-6)",
+   "text": [
+    "The uraeus exhales a 15-foot cone of fire. Creatures in the area take 10 (3d6) fire damage, or half damage with a successful DC 12 Dexterity saving throw."
+   ]
+  }
+ ],
+ "reaction": [
+  {
+   "name": "Bonded Savior",
+   "text": [
+    "When the uraeus’ bonded ward takes damage, the uraeus can transfer the damage to itself instead. The uraeus’ damage resistance and immunity don’t apply to transferred damage."
+   ]
+  }
+ ],
+ "legendary": []
+},
+{
+ "name": "Urochar (Strangling Watcher)",
+ "size": "H",
+ "type": "aberration, tome of beasts",
+ "alignment": "chaotic evil",
+ "ac": "19 (natural armor)",
+ "hp": "256 (19d12 + 133)",
+ "speed": "40 ft., climb 20 ft.",
+ "str": "24",
+ "dex": " 15",
+ "con": "24",
+ "int": " 14",
+ "wis": " 14",
+ "cha": " 20",
+ "save": "Dex +8, Con +13, Wis +9, Cha +11",
+ "skill": [
+  "Perception +8, Stealth +8"
+ ],
+ "resist": "cold, lightning; bludgeoning, piercing, and slashing from nonmagical weapons that aren’t silvered",
+ "immune": "thunder",
+ "conditionImmune": "frightened",
+ "senses": "truesight 120 ft.",
+ "passive": "19",
+ "languages": "understands Darakhul and Void Speech",
+ "cr": "17",
+ "trait": [
+  {
+   "name": "Death Throes",
+   "text": [
+    "When a strangling watcher dies, it releases all the fear it consumed in its lifetime in a single, soul-rending wave. All creatures within 60 feet of it must succeed on a DC 19 Charisma saving throw or become frightened. A frightened creature takes 13 (2d12) psychic damage at the start of each of its turns from the centuries of accumulated dread. It can repeat the Charisma saving throw at the end of each of its turns, ending the effect on a success."
+   ]
+  },
+  {
+   "name": "Innate Spellcasting",
+   "text": [
+    "The watcher’s innate spellcasting ability is Charisma (spell save DC 19). It can cast the following spells, requiring no material components:",
+    "At will: feather fall",
+    "3/day each: blur, meld into stone, phantasmal killer",
+    "1/day each: black tentacles, eyebite, greater invisibility"
+   ]
+  },
+  {
+   "name": "Spider Climb",
+   "text": [
+    "The watcher can climb any surface, including upside down on ceilings, without making an ability check."
+   ]
+  },
+  {
+   "name": "Squeeze",
+   "text": [
+    "Despite their size, strangling watchers have slender, boneless bodies, enabling them to squeeze through passages only a Small-sized creature could fit through, without affecting their movement or combat capabilities."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The watcher makes four attacks with its tentacles."
+   ]
+  },
+  {
+   "name": "Tentacle",
+   "text": [
+    "Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 20 (3d8 + 7) bludgeoning damage, and the target is grappled (escape DC 17). Until this grapple ends, the target is restrained. Each of its four tentacles can grapple one target."
+   ]
+  },
+  {
+   "name": "Paralyzing Gaze (Recharge 5–6)",
+   "text": [
+    "The watcher can target one creature within 60 feet with its eerie gaze. The target must succeed on a DC 19 Wisdom saving throw or become paralyzed for 1 minute. The paralyzed target can repeat the saving throw at the end of each of its turns, ending the effect on a success. If a target’s saving throw is successful or the effect ends for it, the target is immune to the watcher’s gaze for the next 24 hours."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": [
+  {
+   "name": "",
+   "text": [
+    "The urochar can take 3 legendary actions, choosing from the options below. Only one option can be used at a time and only at the end of another creature’s turn. The strangling watcher regains spent legendary actions at the start of its turn."
+   ]
+  },
+  {
+   "name": "Crush Attack",
+   "text": [
+    "The urochar crushes one creature grappled by its tentacle. The target takes 25 (4d8 + 7) bludgeoning damage."
+   ]
+  },
+  {
+   "name": "Tentacle Attack",
+   "text": [
+    "The watcher makes one tentacle attack."
+   ]
+  },
+  {
+   "name": "Tentacle Leap (Costs 2 Actions)",
+   "text": [
+    "Using a tentacle, the urochar moves up to 20 feet to an unoccupied space adjacent to a wall, ceiling, floor, or other solid surface. This move doesn’t trigger reactions. The urochar must have at least one tentacle free (not grappling a creature) to use this action. Grappled creatures move with the urochar."
+   ]
+  }
+ ]
+},
+{
+ "name": "Ushabti",
+ "size": "L",
+ "type": "construct, tome of beasts",
+ "alignment": "unaligned",
+ "ac": "18 (natural armor)",
+ "hp": "105 (10d10 + 50)",
+ "speed": "30 ft.",
+ "str": "21",
+ "dex": " 17",
+ "con": " 20",
+ "int": " 11",
+ "wis": " 19",
+ "cha": " 9",
+ "save": "Dex +7, Cha +3",
+ "skill": [
+  "Arcana +4, History +4, Perception +8"
+ ],
+ "immune": "poison, psychic; bludgeoning, piercing, and slashing from nonmagical weapons",
+ "conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+ "senses": "darkvision 60 ft.",
+ "passive": "18",
+ "languages": "Ancient language of DM’s choice",
+ "cr": "9",
+ "trait": [
+  {
+   "name": "Dynastic Aura",
+   "text": [
+    "A creature that starts its turn within 15 feet of the ushabti must make a DC 17 Constitution saving throw, unless the ushabti is incapacitated. On a failed save, the creature has its breath stolen; it takes 9 (2d8) necrotic damage, and until the end of the ushabti’s next turn, can’t cast spells that require a verbal component or speak louder than a whisper. If a creature’s saving throw is successful, the creature is immune to this ushabti’s Dynastic Aura for the next 24 hours."
+   ]
+  },
+  {
+   "name": "Healing Leech",
+   "text": [
+    "If a creature within 30 feet of the ushabti regains hit points from a spell or a magical effect, the creature gains only half the normal number of hit points and the ushabti gains the other half."
+   ]
+  },
+  {
+   "name": "Immutable Form",
+   "text": [
+    "The ushabti is immune to any spell or effect that would alter its form."
+   ]
+  },
+  {
+   "name": "Magic Resistance",
+   "text": [
+    "The ushabti has advantage on saving throws against spells and other magical effects."
+   ]
+  },
+  {
+   "name": "Magic Weapons",
+   "text": [
+    "The ushabti’s weapon attacks are magical."
+   ]
+  }
+ ],
+ "action": [
+  {
+   "name": "Multiattack",
+   "text": [
+    "The ushabti makes one attack with Medjai’s scepter and one with its khopesh."
+   ]
+  },
+  {
+   "name": "Medjai’s Scepter",
+   "text": [
+    "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) bludgeoning damage plus 10 (3d6) poison damage."
+   ]
+  },
+  {
+   "name": "Khopesh",
+   "text": [
+    "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) slashing damage."
+   ]
+  }
+ ],
+ "reaction": [],
+ "legendary": []
 }
 );
