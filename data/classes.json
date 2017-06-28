@@ -3720,7 +3720,7 @@
                         "_optional": "YES"
                      },
                      {
-                        "name": "Bear Spirit",
+                        "name": "Spirit Totem: Bear Spirit",
                         "text": [
                           "The bear spirit grants you and your allies its might and endurance. Each creature of your choice in the aura when the spirit appears gains temporary hit points equal to 5 + your druid level. In addition, you and your allies gain advantage on Strength checks and Strength saving throws while in the aura."
                         ],
@@ -3730,7 +3730,7 @@
                         "_optional": "YES"
                      },
                      {
-                        "name": "Hawk Spirit",
+                        "name": "Spirit Totem: Hawk Spirit",
                         "text": [
                           "The hawk spirit is a consummate hunter, marking your enemies with its keen sight. When a creature makes an attack roll against a target in the spirit’s aura, you can use your reaction to grant advantage to that attack roll."
                         ],
@@ -3740,7 +3740,7 @@
                         "_optional": "YES"
                      },
                      {
-                        "name": "Unicorn Spirit",
+                        "name": "Spirit Totem: Unicorn Spirit",
                         "text": [
                           "The unicorn spirit lends its protection to those nearby. You and your allies gain advantage on all ability checks made to detect creatures in the spirit’s aura. In addition, if you cast a spell with a spell slot that restores hit points to anyone inside or outside the aura, each creature of your choice in the aura also regains hit points equal to your druid level."
                         ],
@@ -4453,6 +4453,16 @@
                         "_optional": "YES"
                      },
                      {
+                        "name": "Martial Archetype: Cavalier v2 (UA)",
+                        "text": [
+                           "The archetypal Cavalier excels at mounted combat. Usually born among the nobility and raised at court, a Cavalier is equally at home leading a cavalry charge or exchanging repartee at a state dinner. Cavaliers also learn how to guard those in their charge from harm, often serving as the protectors of their superiors and of the weak. Drawn to right wrongs or earn prestige, many of these fighters leave their lives of comfort to embark on glorious adventure."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Martial Archetype",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Martial Archetype: Eldritch Knight",
                         "text": [
                            "The archetypal Eldritch Knight combines the martial mastery common to all fighters with a careful study of magic. Eldritch Knights use magical techniques similar to those practiced by wizards. They focus their study on two of the eight schools of magic\u2014abjuration and evocation. Abjuration spells grant an Eldritch Knight additional protection in battle, and evocation spells deal damage to many foes at once, extending the fighter's reach in combat. These knights learn a comparatively small number of spells, committing them to memory instead of keeping them in a spellbook."
@@ -4592,12 +4602,31 @@
                         "_optional": "YES"
                      },
                      {
+                        "name": "Cavalier: Bonus Proficiencies",
+                        "text": [
+                           "When you choose this archetype at 3rd level, you gain proficiency in one of the following skills of your choice: Animal Handling, History, Insight, Performance, or Persuasion. Alternatively, you learn one language of your choice."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier v2 (UA)",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Cavalier: Born to the Saddle",
                         "text": [
                            "At 3rd level, you have advantage on saving throws made to avoid falling off your mount. If you fall off your mount, you always land on your feet if you are capable of taking actions. Mounting or dismounting a creature costs you only 5 feet of movement, rather than half your speed."
                         ],
                         "subclass": "Martial Archetype: Cavalier (UA)",
                         "parent": "Cavalier (UA)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Cavalier: Born to the Saddle",
+                        "text": [
+                          "Starting at 3rd level, your mastery as a rider becomes apparent. You have advantage on saving throws made to avoid falling off your mount. If you fall off your mount and descend no more than 10 feet, you can land on your feet if you’re not incapacitated.",
+                          "Finally, mounting or dismounting a creature costs you only 5 feet of movement, rather than half your speed."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier v2 (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -4622,6 +4651,61 @@
                         ],
                         "subclass": "Martial Archetype: Cavalier (UA)",
                         "parent": "Cavalier (UA)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Cavalier: Combat Superiority",
+                        "text": [
+                          "At 3rd level, you gain a set of combat abilities, referred to as maneuvers, which are fueled by special dice called superiority dice.",
+                          null,
+                          "Superiority Dice",
+                          "You have four superiority dice, which are d8s. A superiority die is expended when you use it. You regain all your expended superiority dice when you finish a short or long rest.",
+                          "You gain another superiority die at 7th level and one more at 15th level.",
+                          null,
+                          "Maneuvers. You spend your superiority dice on your maneuvers. You can use more than one maneuver per turn, but no more than one maneuver per attack. You know the following maneuvers:"
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier v2 (UA)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Control Mount",
+                        "text": [
+                          "When you make a Wisdom (Animal Handling) check to influence a creature that you or an ally is riding, you can expend one superiority die, roll it, and add the number rolled to the check. You can do this before or after rolling the d20, but before applying the results of the check."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier: Combat Superiority",
+                        "suboption": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Precision Attack",
+                        "text": [
+                          "When you make a weapon attack against a creature, you can expend one superiority die, roll it, and add it to the attack roll. You can use this ability before or after rolling the d20, but before any of the effects of the attack are applied."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier: Combat Superiority",
+                        "suboption": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Trip Attack",
+                        "text": [
+                          "When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. Roll the die, and add it to the attack’s damage roll. If the target is Large or smaller, it must also succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked prone."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier: Combat Superiority",
+                        "suboption": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Warding Maneuver",
+                        "text": [
+                          "If you or a creature within 5 feet of you is hit by an attack, you can expend one superiority die as a reaction if you’re wielding a weapon or a shield. Roll the die, and add the number rolled to the target’s AC against that attack. If the attack still hits, the target has resistance against the attack’s damage."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier: Combat Superiority",
+                        "suboption": "YES",
                         "_optional": "YES"
                      },
                      {
@@ -5318,6 +5402,15 @@
                         "_optional": "YES"
                      },
                      {
+                        "name": "Cavalier: Ferocious Charger",
+                        "text": [
+                           "At 7th level, you gain additional benefits when you use your Trip Attack maneuver. You can expend up to two superiority dice on it, adding both dice to the damage roll. When you spend two dice in this way, the target has disadvantage on its Strength saving throw to avoid being knocked prone."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier v2 (UA)",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Monster Hunter: Monster Slayer",
                         "text": [
                           "At 7th level, whenever you expend superiority dice to add to a damage roll, you can expend up to two dice instead of just one, adding both to the roll. Both dice are expended as normal. If the target of your attack is an aberration, a fey, a fiend, or an undead, you deal maximum damage with both dice, instead of rolling them."
@@ -5488,6 +5581,15 @@
                         ],
                         "subclass": "Martial Archetype: Cavalier (UA)",
                         "parent": "Cavalier (UA)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Cavalier: Improved Combat Superiority",
+                        "text": [
+                           "At 10th level, your superiority dice turn into d10s. At 18th level, they turn into d12s."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier v2 (UA)",
                         "_optional": "YES"
                      },
                      {
@@ -5675,6 +5777,15 @@
                         "_optional": "YES"
                      },
                      {
+                        "name": "Cavalier: Relentless",
+                        "text": [
+                           "Starting at 15th level, when you roll initiative and have no superiority dice remaining, you regain one superiority die."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier v2 (UA)",
+                        "_optional": "YES"
+                     },
+                     {
                         "name": "Scout: Relentless",
                         "text": [
                            "Starting at 15th level, when you roll initiative and have no superiority dice remaining, you regain 1 superiority die."
@@ -5829,6 +5940,15 @@
                         ],
                         "subclass": "Martial Archetype: Cavalier (UA)",
                         "parent": "Cavalier (UA)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Cavalier: Improved Combat Superiority",
+                        "text": [
+                           "At 18th level, your superiority dice turn into d12s."
+                        ],
+                        "subclass": "Martial Archetype: Cavalier v2 (UA)",
+                        "parent": "Cavalier v2 (UA)",
                         "_optional": "YES"
                      },
                      {
