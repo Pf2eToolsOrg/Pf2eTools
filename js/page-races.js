@@ -12,6 +12,8 @@ function parsesource (src) {
 	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA GH";
 	if (source === "Plane Shift Zendikar") source = "PSZ";
 	if (source === "Plane Shift Kaladesh") source = "PSK";
+	if (source === "Plane Shift Innistrad") source = "PSI";
+	if (source === "Plane Shift Amonkhet") source = "PSA";
 	return source;
 }
 
