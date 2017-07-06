@@ -2320,7 +2320,7 @@
                      {
                         "name": "Divine Domain: Solidarity (UA; Oketra)",
                         "text": [
-                          "The worthy must know and respect all others whom the God-Pharaoh deems worthy, for in the afterlife, all will be united in purpose and action.",
+                          "\"The worthy must know and respect all others whom the God-Pharaoh deems worthy, for in the afterlife, all will be united in purpose and action.\"",
                            "Oketra is charged with expounding upon this teaching of the God-Pharaoh, instilling in every initiate the virtue of solidarity. She forges each group of children into a crop of acolytes with just one purpose: to be judged worthy of a glorious afterlife. And she instills in each crop the ability to unite in a single action in pursuit of that purpose. She is fond of poetic imagery to communicate her ideals.",
                            null,
                            "Solidarity Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
@@ -2336,6 +2336,28 @@
                           "9th - circle of power, mass cure wounds"
                         ],
                         "subclass": "Divine Domain: Solidarity (UA; Oketra)",
+                        "parent": "Divine Domain",
+                        "issubclass": "YES",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Divine Domain: Ambition (UA; Bontu)",
+                        "text": [
+                          "\"The worthy shall strive for greatness—supremacy in life leads to supremacy in the afterlife.\"",
+                           "Bontu has fully embraced this dictum, and though she expends little effort in teaching it, she surely leads by example. Her viziers subtly plant the seeds that flower into the ambition the God-Pharaoh desires. Through insinuation, they remind acolytes and initiates alike that achieving one’s place in the afterlife at the expense of others is not shameful, but is proof of the initiate’s determination and drive. Nothing is more important than that drive, they suggest—not the bonds of a crop, not friendship or love. Not even devotion to a deity.",
+                           null,
+                           "Ambition Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+                          "1st - bane, disguise self",
+                          null,
+                          "3rd - mirror image, ray of enfeeblement",
+                          null,
+                          "5th - bestow curse, vampiric touch",
+                          null,
+                          "7th - death ward, dimension door",
+                          null,
+                          "9th - dominate person, modify memory"
+                        ],
+                        "subclass": "Divine Domain: Ambition (UA; Bontu)",
                         "parent": "Divine Domain",
                         "issubclass": "YES",
                         "_optional": "YES"
@@ -2606,6 +2628,16 @@
                         "subclass": "Divine Domain: Solidarity (UA; Oketra)",
                         "parent": "Solidarity (Oketra)",
                         "_optional": "YES"
+                     },
+                     {
+                        "name": "Ambition (Bontu) Domain: Warding Flare",
+                        "text": [
+                          "When you choose this domain at 1st level, you can interpose divine light between yourself and an attacking enemy. When you are attacked by a creature within 30 feet of you that you can see, you can use your reaction to impose disadvantage on the attack roll, causing light to flare before the attacker before it hits or misses. An attacker that can’t be blinded is immune to this feature.",
+                          "You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.",
+                        ],
+                        "subclass": "Divine Domain: Ambition (UA; Bontu)",
+                        "parent": "Ambition (Bontu)",
+                        "_optional": "YES"
                      }
                   ],
                   "_level": "1"
@@ -2800,6 +2832,17 @@
                         "subclass": "Divine Domain: Solidarity (UA; Oketra)",
                         "parent": "Solidarity (Oketra)",
                         "_optional": "YES"
+                     },
+                     {
+                        "name": "Ambition (Bontu) Domain Channel Divinity: Invoke Duplicity ",
+                        "text": [
+                          "Starting at 2nd level, you can use your Channel Divinity to create an illusory duplicate of yourself.",
+                          "As an action, you create a perfect illusion of yourself that lasts for 1 minute, or until you lose your concentration (as if you were concentrating on a spell). The illusion appears in an unoccupied space that you can see within 30 feet of you. As a bonus action on your turn, you can move the illusion up to 30 feet to a space you can see, but it must remain within 120 feet of you.",
+                          "For the duration, you can cast spells as though you were in the illusion’s space, but you must use your own senses. Additionally, when both you and your illusion are within 5 feet of a creature that can see the illusion, you have advantage on attack rolls against that creature, given how distracting the illusion is to the target."
+                        ],
+                        "subclass": "Divine Domain: Ambition (UA; Bontu)",
+                        "parent": "Ambition (Bontu)",
+                        "_optional": "YES"
                      }
                   ],
                   "_level": "2"
@@ -2980,6 +3023,15 @@
                         "subclass": "Divine Domain: Solidarity (UA; Oketra)",
                         "parent": "Solidarity (Oketra)",
                         "_optional": "YES"
+                     },
+                     {
+                        "name": "Ambition (Bontu) Domain Channel Divinity: Cloak of Shadows",
+                        "text": [
+                           "Starting at 6th level, you can use your Channel Divinity to vanish. As an action, you become invisible until the end of your next turn. You become visible if you attack or cast a spell."
+                        ],
+                        "subclass": "Divine Domain: Ambition (UA; Bontu)",
+                        "parent": "Ambition (Bontu)",
+                        "_optional": "YES"
                      }
                   ],
                   "_level": "6"
@@ -3138,6 +3190,15 @@
                         ],
                         "subclass": "Divine Domain: Solidarity (UA; Oketra)",
                         "parent": "Solidarity (Oketra)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Ambition (Bontu) Domain: Potent Spellcasting",
+                        "text": [
+                           "Starting at 8th level, you add your Wisdom modifier to the damage you deal with any cleric cantrip."
+                        ],
+                        "subclass": "Divine Domain: Ambition (UA; Bontu)",
+                        "parent": "Ambition (Bontu)",
                         "_optional": "YES"
                      }
                   ],
@@ -3349,12 +3410,21 @@
                         "_optional": "YES"
                      },
                      {
-                        "name": "Solidarity (Oketra) Domain: Supreme Healing ",
+                        "name": "Solidarity (Oketra) Domain: Supreme Healing",
                         "text": [
                            "Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring 2d6 hit points to a creature, you restore 12."
                         ],
                         "subclass": "Divine Domain: Solidarity (UA; Oketra)",
                         "parent": "Solidarity (Oketra)",
+                        "_optional": "YES"
+                     },
+                     {
+                        "name": "Ambition (Bontu) Domain: Improved Duplicity",
+                        "text": [
+                           "At 17th level, you can create up to four duplicates of yourself, instead of one, when you use Invoke Duplicity. As a bonus action on your turn, you can move any number of them up to 30 feet, to a maximum range of 120 feet."
+                        ],
+                        "subclass": "Divine Domain: Ambition (UA; Bontu)",
+                        "parent": "Ambition (Bontu)",
                         "_optional": "YES"
                      }
                   ],
