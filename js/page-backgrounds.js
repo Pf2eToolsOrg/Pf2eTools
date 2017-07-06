@@ -15,6 +15,7 @@ function parsesource (src) {
 	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
 	if (source === "Unearthed Arcana") source = "UA";
 	if (source === "Plane Shift Innistrad") source = "PSI";
+	if (source === "Plane Shift Amonkhet") source = "PSA";
 	return source;
 }
 
@@ -113,12 +114,32 @@ function usebackground (id) {
 		var traitname = traitlist[n].name;
 		var texthtml = "<span class='name'>"+traitname+".</span> ";
 		var textlist = traitlist[n].text;
-		texthtml = texthtml + "<span>"+textlist[0]+"</span> "
+		texthtml = texthtml + "<span>"+textlist[0]+"</span> ";
 
 		for (var i = 1; i < textlist.length; i++) {
 			if (!textlist[i]) continue;
 			if (textlist[i].indexOf ("Source: ") !== -1) continue;
 			texthtml = texthtml + "<p>"+textlist[i]+"</p>";
+		}
+
+        var subtraitlist = traitlist[n].subtrait;
+		if (subtraitlist !== undefined) {
+			var k = 0;
+            var subtrait;
+			for (var j = 0; j < subtraitlist.length; j++) {
+                texthtml = texthtml + "<p class='subtrait'>";
+				subtrait = subtraitlist[j];
+				texthtml = texthtml + "<span class='name'>"+subtrait.name+".</span> ";
+				for (k = 0; k < subtrait.text.length; k++) {
+					if (!subtrait.text[k]) continue;
+					if (k === 0) {
+                        texthtml = texthtml + "<span>" + subtrait.text[k] + "</span>";
+                    } else {
+                        texthtml = texthtml + "<p class='subtrait'>" + subtrait.text[k] + "</p>";
+					}
+				}
+                texthtml = texthtml + "</p>";
+			}
 		}
 
 		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+i+"'>"+texthtml+"</td></tr>");
