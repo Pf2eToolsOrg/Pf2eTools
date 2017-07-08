@@ -83,8 +83,28 @@ function loadspells() {
 				curspell.source = "PHB";
 			}
 
+            var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> ";
+             if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
+                var textlist = curspell.text;
 
-			$("ul.spells").append("<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> </li>");
+                var psisearch = "";
+                for (var j = 0; j < textlist.length; ++j) {
+                    var regex = /^((.* )\(.*psi.*?\)|Bestial Transformation)\./g;
+                    var matches = regex.exec(textlist[j]);
+
+                    if (matches) {
+                        var cleanedpsi = matches[1].trim();
+                        if (cleanedpsi.indexOf("(") != -1) {
+                            cleanedpsi = cleanedpsi.substring(0, cleanedpsi.indexOf("("));
+                        }
+                        psisearch += '"' + cleanedpsi.trim() + '" '
+                    }
+                }
+
+                toadd = toadd + "<span class='disciplinesearch' style='display: none'>"+psisearch+"</span>";
+             }
+             toadd = toadd + "</li>";
+			$("ul.spells").append(toadd);
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
 				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
@@ -123,7 +143,7 @@ function loadspells() {
 		$("select.sourcefilter").val("All");
 
 		var options = {
-			valueNames: ['name', 'source', 'level', 'school', 'classes'],
+			valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch'],
 			listClass: "spells"
 		}
 
