@@ -149,9 +149,9 @@ function loadparser() {
 					if (!onlegendarydescription) {
 						// first pargraph
 						curtrait.name = curline.split(/(\.|\!)/g)[0];
-						curtrait.text.push(curline.split(".").splice(1).join("."));
+						curtrait.text.push(curline.split(".").splice(1).join(".").trim());
 					} else {
-						curtrait.text.push(curline);
+						curtrait.text.push(curline.trim());
 						onlegendarydescription = false;
 					}
 
@@ -160,7 +160,7 @@ function loadparser() {
 
 					// get paragraphs
 					while (curline && curline.match(/^([A-Zot][a-z\'\’\`]+( \(.*\)| )?)+(\.|\!)+/g) === null && !moveon(curline)) {
-						curtrait.text.push(curline);
+						curtrait.text.push(curline.trim());
 						i++;
 						curline = statblock[i];
 					};
