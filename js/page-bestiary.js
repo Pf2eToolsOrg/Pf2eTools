@@ -14,6 +14,7 @@ function parsesource (src) {
 	if (source === "tome of beasts") source = "ToB 3pp";
 	if (source === "Plane Shift Amonkhet") source = "PSA";
 	if (source === "Plane Shift Innistrad") source = "PSI";
+	if (source === "Plane Shift Zendikar") source = "PSZ";
 	return source;
 }
 
