@@ -13,6 +13,7 @@ function parsesource (src) {
 	if (source === "Tales from the Yawning Portal") source = "TYP";
 	if (source === "tome of beasts") source = "ToB 3pp";
 	if (source === "Plane Shift Amonkhet") source = "PSA";
+	if (source === "Plane Shift Innistrad") source = "PSI";
 	return source;
 }
 
@@ -29,6 +30,7 @@ function parsesourcename (src) {
 	if (source === "tome of beasts") source = "Tome of Beasts (3pp)";
 	if (source === "Tales from the Yawning Portal") source = "Tales from the Yawning Portal";
 	if (source === "Plane Shift Amonkhet") source = "Plane Shift Amonkhet";
+	if (source === "Plane Shift Innistrad") source = "Plane Shift Innistrad";
 	return source;
 }
 
