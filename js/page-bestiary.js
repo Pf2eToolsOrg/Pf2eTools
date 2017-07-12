@@ -2,43 +2,46 @@
 
 function parsesource (src) {
 	source = src.trim();
-	if (source == "monster manual") source = "MM";
-	if (source == "Volo's Guide") source = "VGM";
-	if (source == "elemental evil") source = "PotA";
-	if (source == "storm kings thunder") source = "SKT";
-	if (source == "tyranny of dragons") source = "ToD";
-	if (source == "out of the abyss") source = "OotA";
-	if (source == "curse of strahd") source = "CoS";
-	if (source == "lost mine of phandelver") source = "LMoP";
-	if (source == "Tales from the Yawning Portal") source = "TYP";
-	if (source == "tome of beasts") source = "ToB 3pp";
-	if (source == "Plane Shift Amonkhet") source = "PSA";
+	if (source === "monster manual") source = "MM";
+	if (source === "Volo's Guide") source = "VGM";
+	if (source === "elemental evil") source = "PotA";
+	if (source === "storm kings thunder") source = "SKT";
+	if (source === "tyranny of dragons") source = "ToD";
+	if (source === "out of the abyss") source = "OotA";
+	if (source === "curse of strahd") source = "CoS";
+	if (source === "lost mine of phandelver") source = "LMoP";
+	if (source === "Tales from the Yawning Portal") source = "TYP";
+	if (source === "tome of beasts") source = "ToB 3pp";
+	if (source === "Plane Shift Amonkhet") source = "PSA";
+	if (source === "Plane Shift Innistrad") source = "PSI";
+	if (source === "Plane Shift Zendikar") source = "PSZ";
 	return source;
 }
 
 function parsesourcename (src) {
 	source = src.trim();
-	if (source == "monster manual") source = "Monster Manual";
-	if (source == "Volo's Guide") source = "Volo's Guide to Monsters";
-	if (source == "elemental evil") source = "Princes of the Apocalypse";
-	if (source == "storm kings thunder") source = "Storm King's Thunder";
-	if (source == "tyranny of dragons") source = "Tyranny of Dragons";
-	if (source == "out of the abyss") source = "Out of the Abyss";
-	if (source == "curse of strahd") source = "Curse of Strahd";
-	if (source == "lost mine of phandelver") source = "Lost Mine of Phandelver";
-	if (source == "tome of beasts") source = "Tome of Beasts (3pp)";
-	if (source == "Tales from the Yawning Portal") source = "Tales from the Yawning Portal";
-	if (source == "Plane Shift Amonkhet") source = "Plane Shift Amonkhet";
+	if (source === "monster manual") source = "Monster Manual";
+	if (source === "Volo's Guide") source = "Volo's Guide to Monsters";
+	if (source === "elemental evil") source = "Princes of the Apocalypse";
+	if (source === "storm kings thunder") source = "Storm King's Thunder";
+	if (source === "tyranny of dragons") source = "Tyranny of Dragons";
+	if (source === "out of the abyss") source = "Out of the Abyss";
+	if (source === "curse of strahd") source = "Curse of Strahd";
+	if (source === "lost mine of phandelver") source = "Lost Mine of Phandelver";
+	if (source === "tome of beasts") source = "Tome of Beasts (3pp)";
+	if (source === "Tales from the Yawning Portal") source = "Tales from the Yawning Portal";
+	if (source === "Plane Shift Amonkhet") source = "Plane Shift Amonkhet";
+	if (source === "Plane Shift Innistrad") source = "Plane Shift Innistrad";
 	return source;
 }
 
 function parsesize (size) {
-	if (size == "T") size = "Tiny";
-	if (size == "S") size = "Small";
-	if (size == "M") size = "Medium";
-	if (size == "L") size = "Large";
-	if (size == "H") size = "Huge";
-	if (size == "G") size = "Gargantuan";
+	if (size === "T") size = "Tiny";
+	if (size === "S") size = "Small";
+	if (size === "M") size = "Medium";
+	if (size === "L") size = "Large";
+	if (size === "H") size = "Huge";
+	if (size === "G") size = "Gargantuan";
 	return size;
 }
 
