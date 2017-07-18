@@ -1,23 +1,23 @@
-window.onload = loadconditions;
+window.onload = loadrewards;
 var tabledefault = "";
 
-function loadconditions() {
+function loadrewards() {
 	tabledefault = $("#stats").html();
-	var conditionlist = conditiondata;
+	var rewardlist = rewarddata;
 
-		for (var i = 0; i < conditionlist.length; i++) {
-			var curcondition = conditionlist[i];
-			var name = curcondition.name;
-			$("ul.conditions").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
+		for (var i = 0; i < rewardlist.length; i++) {
+			var curreward = rewardlist[i];
+			var name = curreward.name;
+			$("ul.rewards").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
 		}
 
 		var options = {
 			valueNames: ['name'],
-			listClass: "conditions"
+			listClass: "rewards"
 		}
 
-		var conditionslist = new List("listcontainer", options);
-		conditionslist.sort ("name")
+		var rewardslist = new List("listcontainer", options);
+		rewardslist.sort ("name")
 
 		$("ul.list li").mousedown(function(e) {
 			if (e.which === 2) {
@@ -30,8 +30,8 @@ function loadconditions() {
 		});
 
 		$("ul.list li").click(function(e) {
-			usecondition($(this).attr("id"));
-			document.title = decodeURI($(this).attr("data-link")) + " - 5etools conditions";
+			usereward($(this).attr("id"));
+			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Rewards";
 			window.location = "#"+$(this).attr("data-link");
 		});
 
@@ -43,25 +43,25 @@ function loadconditions() {
 			$("button#reset").click(function() {
 				$("#filtertools select").val("All");
 				$("#search").val("");
-				conditionslist.search("");
-				conditionslist.filter();
-				conditionslist.sort("name");
-				conditionslist.update();
+				rewardlist.search("");
+				rewardlist.filter();
+				rewardlist.sort("name");
+				rewardlist.update();
 			})
 
 	}
 
-	function usecondition (id) {
+	function usereward (id) {
 			$("#stats").html(tabledefault);
-			var conditionlist = conditiondata;
-			var curcondition = conditionlist[id];
+			var rewardlist = rewarddata;
+			var curreward = rewardlist[id];
 
-			var name = curcondition.name;
+			var name = curreward.name;
 			$("th#name").html(name);
 
 			$("tr.text").remove();
 
-			var textlist = curcondition.text;
+			var textlist = curreward.text;
 			var texthtml = "";
 
 			for (var i = 0; i < textlist.length; i++) {
