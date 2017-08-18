@@ -24,7 +24,7 @@ function parseschool (school) {
 
 function parsespelllevel (level) {
 	if (isNaN (level)) return "";
-	if (level === "0") return "cantrip"
+	if (level === "0") return "cantrip";
 	if (level === "2") return level+"nd";
 	if (level === "3") return level+"rd";
 	if (level === "1") return level+"st";
@@ -36,12 +36,69 @@ function parsesource (source) {
 	if (source === "EEPC") source = "Elemental Evil Player's Companion";
 	if (source === "SCAG") source = "Sword Coast Adventurer's Guide";
 	if (source === "UAMystic") source = "Unearthed Arcana: The Mystic Class";
+	if (source === "UAStarterSpells") source = "Unearthed Arcana: Starter Spells";
+	if (source === "UAModern") source = "Unearthed Arcana: Modern Magic";
+	if (source === "UATOBM") source = "Unearthed Arcana: That Old Black Magic";
 	if (source === "BoLS 3pp") source = "Book of Lost Spells (3pp)";
 	return source;
 }
 
+const SELF_RANGE_OFFSET = -0.5;
+const FEET_PER_MILE = 5280;
+const ALL_RANGES = -2; // used in spells.html where the filter is defined
+const SELF_RANGE = -1;
+const TOUCH_RANGE = 0;
+const SIGHT_RANGE = 900000000;
+const UNLIMITED_RANGE = 900000001;
+const SPECIAL_RANGE = 1000000000;
+const VARIABLE_RANGE = 1000000001;
+const UNKNOWN_RANGE = 1000000002;
+const DISTANCE_REGEX = /(\d+) feet|(1) foot/; // eg "120 feet" or "1 foot"
+const SELF_AREA_REGEX = /self \((\d+)-foot(-.*?)? .*\)/; // eg "Self (100-foot line)" or "Self (10-foot-radius hemisphere)"
+const MILE_DISTANCE_REGEX = /(\d+) miles|(1) mile/; // eg "500 miles" or "1 mile"
+const MILE_SELF_AREA_REGEX = /self \((\d+)-mile .*\)/; // eg "Self (5-mile radius)"
+function normaliserange(range) {
+	range = range.toLowerCase();
+    if (range === "self") return SELF_RANGE;
+    if (range === "touch") return TOUCH_RANGE;
+    if (range === "sight") return SIGHT_RANGE;
+    if (range === "unlimited") return UNLIMITED_RANGE;
+    if (range === "special") return SPECIAL_RANGE;
+    if (range === "varies") return VARIABLE_RANGE;
+
+    var out = "";
+    var matchesDistance = DISTANCE_REGEX.exec(range.trim());
+    if (matchesDistance) {
+        out = matchesDistance[1] === undefined ? matchesDistance[2] : matchesDistance[1];
+        return parseInt(out);
+    }
+
+    var matchesSelfArea = SELF_AREA_REGEX.exec(range.trim());
+    if (matchesSelfArea) {
+        return parseInt(matchesSelfArea[1]) + SELF_RANGE_OFFSET;
+    }
+
+    var matchesMileDistance = MILE_DISTANCE_REGEX.exec(range.trim());
+    if (matchesMileDistance) {
+    	out = matchesMileDistance[1] === undefined ? matchesMileDistance[2] : matchesMileDistance[1];
+        return parseInt(out) * FEET_PER_MILE;
+    }
+
+    var matchesSelfMileArea = MILE_SELF_AREA_REGEX.exec(range.trim());
+    if (matchesSelfMileArea) {
+        return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) + SELF_RANGE_OFFSET;
+    }
+
+    console.log("failed to find range for: " + range);
+    return UNKNOWN_RANGE;
+}
+
 function asc_sort(a, b){
     return ($(b).text()) < ($(a).text()) ? 1 : -1;
+}
+
+function asc_sort_range(a, b){
+    return (parseInt(b.value)) < parseInt((a.value)) ? 1 : -1;
 }
 
 function dec_sort(a, b){
@@ -83,7 +140,11 @@ function loadspells() {
 				curspell.source = "PHB";
 			}
 
-            var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes col-xs-3'>"+curspell.classes+"</span> ";
+			if (!curspell.range) {
+                curspell.range = "Varies";
+			}
+
+            var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-2'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes col-xs-2'>"+curspell.classes+"</span> <span class='range col-xs-2'>"+curspell.range+"</span>";
              if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
                 var textlist = curspell.text;
 
@@ -126,6 +187,10 @@ function loadspells() {
 				}
 			}
 
+			// TODO range filter
+            if (!$("select.rangefilter:contains(\""+curspell.range+"\")").length) {
+                $("select.rangefilter").append("<option value='"+normaliserange(curspell.range)+"'>"+curspell.range+"</option>");
+            }
 		}
 
 		$("select.levelfilter option").sort(asc_sort).appendTo('select.levelfilter');
@@ -142,13 +207,16 @@ function loadspells() {
 		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 		$("select.sourcefilter").val("All");
 
+   		$("select.rangefilter option").sort(asc_sort_range).appendTo('select.rangefilter');
+   		$("select.rangefilter").val(ALL_RANGES.toString());
+
 		var options = {
-			valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch'],
+			valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch', 'range'],
 			listClass: "spells"
-		}
+		};
 
 		var spellslist = new List("listcontainer", options);
-		spellslist.sort ("name")
+		spellslist.sort ("name");
 
 		$("ul.list li").mousedown(function(e) {
 			if (e.which === 2) {
@@ -186,14 +254,16 @@ function loadspells() {
 			var schoolfilter = $("select.schoolfilter").val();
 			var classfilter = $("select.classfilter").val();
 			var sourcefilter = $("select.sourcefilter").val();
-			var thirdpartyfilter = $("select.3ppfilter").val();
+			// var thirdpartyfilter = $("select.3ppfilter").val();
+			var rangefilter = parseInt($("select.rangefilter").val());
 
 			spellslist.filter(function(item) {
 				var rightlevel = false;
 				var rightschool = false;
 				var rightclass = false;
 				var rightsource = false;
-				var rightparty = false;
+				var rightparty = true;
+				var rightrange = false;
 
 				if (levelfilter === "All" || item.values().level.indexOf(levelfilter) !== -1) rightlevel = true;
 				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
@@ -203,10 +273,11 @@ function loadspells() {
 				}
 				if (classfilter === "All") rightclass = true;
 				if (sourcefilter === "All" || item.values().source === sourcefilter) rightsource = true;
-				if (thirdpartyfilter === "All") rightparty = true;
-				if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
-				if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
-				if (rightlevel && rightschool && rightclass && rightsource && rightparty) return true;
+				// if (thirdpartyfilter === "All") rightparty = true;
+				// if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
+				// if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
+                if (rangefilter === ALL_RANGES || normaliserange(item.values().range) === rangefilter) rightrange = true;
+				if (rightlevel && rightschool && rightclass && rightsource && rightparty && rightrange) return true;
 				return false;
 			});
 		});
@@ -254,70 +325,74 @@ function sortspells(a, b, o) {
 		return (parseInt(blevel) > parseInt(alevel)) ? 1 : -1;
 	}
 
-	return 1;
+    if (o.valueName === "range") {
+        return (normaliserange(b._values.range.toLowerCase()) > normaliserange(a._values.range)) ? 1 : -1;
+    }
+
+	return 0;
 
 }
 
 function usespell (id) {
-			$("#stats").html(tabledefault);
-			var spelllist = spelldata.compendium.spell;
-			var curspell = spelllist[id];
+    $("#stats").html(tabledefault);
+    var spelllist = spelldata.compendium.spell;
+    var curspell = spelllist[id];
 
-			$("th#name").html("<span title=\""+parsesource(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
+    $("th#name").html("<span title=\""+parsesource(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
 
-			// $("th#name").html(curspell.name);
+    // $("th#name").html(curspell.name);
 
-			if (curspell.level[0] !== "P") {
-				$("td span#school").html(parseschool(curspell.school));
-				if (curspell.level === "0") {
-					$("td span#school").css('textTransform', 'capitalize');
-					$("td span#level").css('textTransform', 'lowercase!important');
-					$("td span#level").html(" cantrip").detach().appendTo("td span#school");
-				} else {
-					$("td span#school").css('textTransform', 'lowercase');
-					$("td span#level").html(parsespelllevel (curspell.level)+"-level");
-				}
+    if (curspell.level[0] !== "P") {
+        $("td span#school").html(parseschool(curspell.school));
+        if (curspell.level === "0") {
+            $("td span#school").css('textTransform', 'capitalize');
+            $("td span#level").css('textTransform', 'lowercase!important');
+            $("td span#level").html(" cantrip").detach().appendTo("td span#school");
+        } else {
+            $("td span#school").css('textTransform', 'lowercase');
+            $("td span#level").html(parsespelllevel (curspell.level)+"-level");
+        }
 
-				if (curspell.ritual === "YES") {
-					$("td span#ritual").show();
-				} else $("td span#ritual").hide();
+        if (curspell.ritual === "YES") {
+            $("td span#ritual").show();
+        } else $("td span#ritual").hide();
 
-				$("td#components span").html(curspell.components);
-				$("td#range span").html(curspell.range);
-				$("td#castingtime span").html(curspell.time);
-				$("td#duration span").html(curspell.duration);
-			} else {
-				var psitype = "";
-				if (curspell.level[1] === "D") {
-					psitype = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
-					psitype += " Discipline";
-				} else if (curspell.level[1] === "T") {
-					psitype = "Psionic Talent";
-				}
-				$("td#levelschoolritual").html(psitype);
-				$("td#castingtime").html("");
-				$("td#range").html("");
-				$("td#components").html("");
-				$("td#duration").html("");
-			}
+        $("td#components span").html(curspell.components);
+        $("td#range span").html(curspell.range);
+        $("td#castingtime span").html(curspell.time);
+        $("td#duration span").html(curspell.duration);
+    } else {
+        var psitype = "";
+        if (curspell.level[1] === "D") {
+            psitype = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
+            psitype += " Discipline";
+        } else if (curspell.level[1] === "T") {
+            psitype = "Psionic Talent";
+        }
+        $("td#levelschoolritual").html(psitype);
+        $("td#castingtime").html("");
+        $("td#range").html("");
+        $("td#components").html("");
+        $("td#duration").html("");
+    }
 
-			$("tr.text").remove();
-			var textlist = curspell.text;
-			var texthtml = "";
+    $("tr.text").remove();
+    var textlist = curspell.text;
+    var texthtml = "";
 
-			if (textlist[0].length === 1) {
-				texthtml = "<p>"+textlist+"</p>";
-			} else for (var i = 0; i < textlist.length; i++) {
-				if (!textlist[i]) continue;
-				if (curspell.level[0] !== "P") {
-					texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion","").replace(/^.*\:/g,"<strong>$&</strong>")+"</p>";
-				} else {
-					texthtml = texthtml + "<p>"+textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus|Bestial Transformation)\./g,"<strong>$&</strong>")+"</p>";
-				}
-			}
-			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
+    if (textlist[0].length === 1) {
+        texthtml = "<p>"+textlist+"</p>";
+    } else for (var i = 0; i < textlist.length; i++) {
+        if (!textlist[i]) continue;
+        if (curspell.level[0] !== "P") {
+            texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion","").replace(/^.*\:/g,"<strong>$&</strong>")+"</p>";
+        } else {
+            texthtml = texthtml + "<p>"+textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus|Bestial Transformation)\./g,"<strong>$&</strong>")+"</p>";
+        }
+    }
+    $("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
 
-			$("td#classes span").html(curspell.classes);
+    $("td#classes span").html(curspell.classes);
 
-			return;
-		};
+    return;
+};
