@@ -297,6 +297,7 @@ function loadspells() {
 			// reset button
 			$("button#reset").click(function() {
 				$("#filtertools select").val("All");
+				$(".rangefilter").val(-2);
 				$("#search").val("");
 				spellslist.search("");
 				spellslist.filter();
