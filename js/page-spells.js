@@ -43,7 +43,7 @@ function parsesource (source) {
 	return source;
 }
 
-const SELF_RANGE_OFFSET = -0.5;
+const SELF_RANGE_OFFSET = -4;
 const FEET_PER_MILE = 5280;
 const ALL_RANGES = -2; // used in spells.html where the filter is defined
 const SELF_RANGE = -1;
