@@ -58,8 +58,8 @@ const SELF_AREA_RADIUS_REGEX = /self \((\d+)-foot radius\)/; // eg "Self (10-foo
 const SELF_AREA_SPHERE_REGEX = /self \((\d+)-foot-radius sphere\)/; // eg "Self (10-foot-radius sphere)"
 const SELF_AREA_CUBE_REGEX = /self \((\d+)-foot cube\)/; // eg "Self (10-foot-radius sphere)"
 const SELF_AREA_HEMISPHERE_REGEX = /self \((\d+)-foot-radius hemisphere\)/; // eg "Self (10-foot-radius hemisphere)"
-const SELF_AREA_CONE_REGEX = /self \((\d+)-foot cone\)/; // eg "Self (10-foot-radius hemisphere)"
-const SELF_AREA_LINE_REGEX = /self \((\d+)-foot line\)/; // eg "Self (10-foot-radius hemisphere)"
+const SELF_AREA_LINE_REGEX = /self \((\d+)-foot line\)/; // eg "Self (10-foot line)"
+const SELF_AREA_CONE_REGEX = /self \((\d+)-foot cone\)/; // eg "Self (10-foot cone)"
 const MILE_DISTANCE_REGEX = /(\d+) miles|(1) mile/; // eg "500 miles" or "1 mile"
 const MILE_SELF_AREA_REGEX = /self \((\d+)-mile .*\)/; // eg "Self (5-mile radius)"
 function normaliserange(range) {
@@ -80,32 +80,32 @@ function normaliserange(range) {
 
     var matchesSelfAreaRadius = SELF_AREA_RADIUS_REGEX.exec(range.trim());
     if (matchesSelfAreaRadius) {
-        return parseInt(matchesSelfAreaRadius[1]) - 1;
+        return parseInt(matchesSelfAreaRadius[1]) + 3;
     }
 
     var matchesSelfAreaSphere = SELF_AREA_SPHERE_REGEX.exec(range.trim());
     if (matchesSelfAreaSphere) {
-        return parseInt(matchesSelfAreaSphere[1]) - 2;
+        return parseInt(matchesSelfAreaSphere[1]) + 4;
     }
 
     var matchesSelfAreaCube = SELF_AREA_CUBE_REGEX.exec(range.trim());
     if (matchesSelfAreaCube) {
-        return parseInt(matchesSelfAreaCube[1]) - 3;
+        return parseInt(matchesSelfAreaCube[1]) + 5;
     }
 
     var matchesSelfAreaHemisphere = SELF_AREA_HEMISPHERE_REGEX.exec(range.trim());
     if (matchesSelfAreaHemisphere) {
-        return parseInt(matchesSelfAreaHemisphere[1]) - 4;
-    }
-
-    var matchesSelfAreaCone = SELF_AREA_CONE_REGEX.exec(range.trim());
-    if (matchesSelfAreaCone) {
-        return parseInt(matchesSelfAreaCone[1]) - 5;
+        return parseInt(matchesSelfAreaHemisphere[1]) + 6;
     }
 
     var matchesSelfAreaLine = SELF_AREA_LINE_REGEX.exec(range.trim());
     if (matchesSelfAreaLine) {
-        return parseInt(matchesSelfAreaLine[1]) - 6;
+        return parseInt(matchesSelfAreaLine[1]) + 7;
+    }
+
+    var matchesSelfAreaCone = SELF_AREA_CONE_REGEX.exec(range.trim());
+    if (matchesSelfAreaCone) {
+        return parseInt(matchesSelfAreaCone[1]) + SELF_RANGE_OFFSET;
     }
 
     var matchesMileDistance = MILE_DISTANCE_REGEX.exec(range.trim());
@@ -116,7 +116,7 @@ function normaliserange(range) {
 
     var matchesSelfMileArea = MILE_SELF_AREA_REGEX.exec(range.trim());
     if (matchesSelfMileArea) {
-        return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) + SELF_RANGE_OFFSET;
+        return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) - 7;
     }
 
     console.log("failed to find range for: " + range);
