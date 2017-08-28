@@ -43,7 +43,7 @@ function parsesource (source) {
 	return source;
 }
 
-const SELF_RANGE_OFFSET = -0.5;
+const SELF_RANGE_OFFSET = -4;
 const FEET_PER_MILE = 5280;
 const ALL_RANGES = -2; // used in spells.html where the filter is defined
 const SELF_RANGE = -1;
@@ -54,7 +54,12 @@ const SPECIAL_RANGE = 1000000000;
 const VARIABLE_RANGE = 1000000001;
 const UNKNOWN_RANGE = 1000000002;
 const DISTANCE_REGEX = /(\d+) feet|(1) foot/; // eg "120 feet" or "1 foot"
-const SELF_AREA_REGEX = /self \((\d+)-foot(-.*?)? .*\)/; // eg "Self (100-foot line)" or "Self (10-foot-radius hemisphere)"
+const SELF_AREA_RADIUS_REGEX = /self \((\d+)-foot radius\)/; // eg "Self (10-foot radius)"
+const SELF_AREA_SPHERE_REGEX = /self \((\d+)-foot-radius sphere\)/; // eg "Self (10-foot-radius sphere)"
+const SELF_AREA_CUBE_REGEX = /self \((\d+)-foot cube\)/; // eg "Self (10-foot-radius sphere)"
+const SELF_AREA_HEMISPHERE_REGEX = /self \((\d+)-foot-radius hemisphere\)/; // eg "Self (10-foot-radius hemisphere)"
+const SELF_AREA_LINE_REGEX = /self \((\d+)-foot line\)/; // eg "Self (10-foot line)"
+const SELF_AREA_CONE_REGEX = /self \((\d+)-foot cone\)/; // eg "Self (10-foot cone)"
 const MILE_DISTANCE_REGEX = /(\d+) miles|(1) mile/; // eg "500 miles" or "1 mile"
 const MILE_SELF_AREA_REGEX = /self \((\d+)-mile .*\)/; // eg "Self (5-mile radius)"
 function normaliserange(range) {
@@ -73,9 +78,34 @@ function normaliserange(range) {
         return parseInt(out);
     }
 
-    var matchesSelfArea = SELF_AREA_REGEX.exec(range.trim());
-    if (matchesSelfArea) {
-        return parseInt(matchesSelfArea[1]) + SELF_RANGE_OFFSET;
+    var matchesSelfAreaRadius = SELF_AREA_RADIUS_REGEX.exec(range.trim());
+    if (matchesSelfAreaRadius) {
+        return parseInt(matchesSelfAreaRadius[1]) + 3;
+    }
+
+    var matchesSelfAreaSphere = SELF_AREA_SPHERE_REGEX.exec(range.trim());
+    if (matchesSelfAreaSphere) {
+        return parseInt(matchesSelfAreaSphere[1]) + 4;
+    }
+
+    var matchesSelfAreaCube = SELF_AREA_CUBE_REGEX.exec(range.trim());
+    if (matchesSelfAreaCube) {
+        return parseInt(matchesSelfAreaCube[1]) + 5;
+    }
+
+    var matchesSelfAreaHemisphere = SELF_AREA_HEMISPHERE_REGEX.exec(range.trim());
+    if (matchesSelfAreaHemisphere) {
+        return parseInt(matchesSelfAreaHemisphere[1]) + 6;
+    }
+
+    var matchesSelfAreaLine = SELF_AREA_LINE_REGEX.exec(range.trim());
+    if (matchesSelfAreaLine) {
+        return parseInt(matchesSelfAreaLine[1]) + 7;
+    }
+
+    var matchesSelfAreaCone = SELF_AREA_CONE_REGEX.exec(range.trim());
+    if (matchesSelfAreaCone) {
+        return parseInt(matchesSelfAreaCone[1]) + SELF_RANGE_OFFSET;
     }
 
     var matchesMileDistance = MILE_DISTANCE_REGEX.exec(range.trim());
@@ -86,7 +116,7 @@ function normaliserange(range) {
 
     var matchesSelfMileArea = MILE_SELF_AREA_REGEX.exec(range.trim());
     if (matchesSelfMileArea) {
-        return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) + SELF_RANGE_OFFSET;
+        return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) - 7;
     }
 
     console.log("failed to find range for: " + range);
@@ -297,6 +327,7 @@ function loadspells() {
 			// reset button
 			$("button#reset").click(function() {
 				$("#filtertools select").val("All");
+				$(".rangefilter").val(-2);
 				$("#search").val("");
 				spellslist.search("");
 				spellslist.filter();
@@ -385,7 +416,7 @@ function usespell (id) {
     } else for (var i = 0; i < textlist.length; i++) {
         if (!textlist[i]) continue;
         if (curspell.level[0] !== "P") {
-            texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ").replace("This spell can be found in the Elemental Evil Player's Companion","").replace(/^.*\:/g,"<strong>$&</strong>")+"</p>";
+            texthtml = texthtml + "<p>"+textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ") + "</p>";
         } else {
             texthtml = texthtml + "<p>"+textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus|Bestial Transformation)\./g,"<strong>$&</strong>")+"</p>";
         }
@@ -395,4 +426,4 @@ function usespell (id) {
     $("td#classes span").html(curspell.classes);
 
     return;
-};
+}
