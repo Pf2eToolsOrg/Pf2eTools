@@ -1,24 +1,24 @@
 
 
 function parsesize (size) {
-	if (size == "T") size = "Tiny";
-	if (size == "S") size = "Small";
-	if (size == "M") size = "Medium";
-	if (size == "L") size = "Large";
-	if (size == "H") size = "Huge";
-	if (size == "G") size = "Gargantuan";
+	if (size === "T") size = "Tiny";
+	if (size === "S") size = "Small";
+	if (size === "M") size = "Medium";
+	if (size === "L") size = "Large";
+	if (size === "H") size = "Huge";
+	if (size === "G") size = "Gargantuan";
 	return size;
 }
 
 function parseschool (school) {
-	if (school == "A") return "abjuration";
-	if (school == "EV") return "evocation";
-	if (school == "EN") return "enchantment";
-	if (school == "I") return "illusion";
-	if (school == "D") return "divination";
-	if (school == "N") return "necromancy";
-	if (school == "T") return "transmutation";
-	if (school == "C") return "conjuration";
+	if (school === "A") return "abjuration";
+	if (school === "EV") return "evocation";
+	if (school === "EN") return "enchantment";
+	if (school === "I") return "illusion";
+	if (school === "D") return "divination";
+	if (school === "N") return "necromancy";
+	if (school === "T") return "transmutation";
+	if (school === "C") return "conjuration";
 	return "";
 }
 
@@ -174,7 +174,7 @@ function loadspells() {
                 curspell.range = "Varies";
 			}
 
-            var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-2'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes col-xs-2'>"+curspell.classes+"</span> <span class='range col-xs-2'>"+curspell.range+"</span>";
+            var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3'>"+curspell.range+"</span>";
              if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
                 var textlist = curspell.text;
 
