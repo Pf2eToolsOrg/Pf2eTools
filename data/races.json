@@ -156,7 +156,8 @@ var racedata = {
                {
                   "name": "Draconic Ancestry",
                   "text": [
-                     "You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table. (Player's Handbook p. 34)"
+                     "You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table.",
+                     "<table><thead><tr><th>Dragon</th><th>Damage Type</th><th>Breath Weapon</th></tr></thead><tbody><tr><td>Black</td><td>Acid</td><td>5 by 30ft. line (Dex. save)</td></tr><tr><td>Blue</td><td>Lightning</td><td>5 by 30ft. line (Dex. save)</td></tr><tr><td>Brass</td><td>Fire</td><td>5 by 30ft. line (Dex. save)</td></tr><tr><td>Bronze</td><td>Lightning</td><td>5 by 30ft. line (Dex. save)</td></tr><tr><td>Copper</td><td>Acid</td><td>15ft. cone (Dex. save)</td></tr><tr><td>Cold</td><td>Fire</td><td>15ft. cone (Dex. save)</td></tr><tr><td>Green</td><td>Poison</td><td>15ft. cone (Con. save)</td></tr><tr><td>Red</td><td>Fire</td><td>15ft. cone (Dex. save)</td></tr><tr><td>Silver</td><td>Cold</td><td>15ft. cone (Con. save)</td></tr><tr><td>White</td><td>Cold</td><td>15ft. cone (Con. save)</td></tr></tbody></table>"
                   ]
                },
                {
@@ -2158,14 +2159,7 @@ var racedata = {
                          "Each time you finish a long rest, you gain the ability to cast cantrips and spells randomly determined from a short list. At 1st level, you can cast a cantrip. When you reach 3rd level, you can also cast a 1st-level spell. At 5th level, you can cast a 2nd-level spell.",
                          "You can cast a spell gained from this trait only once until you complete your next long rest. You can cast a cantrip gained from this trait at will, as normal. For 1st-level spells whose effect changes if cast using a spell slot of 2nd level or higher, you cast the spell as if using a 2nd-level slot. Spells of 2nd level are cast as if using a 2nd-level slot",
                          "At the end of each long rest, you lose the cantrips and spells previously granted by this feature, even if you did not cast them. You replace those cantrips and spells by rolling for new ones on the Abyssal Arcana Spells table. Roll separately for each cantrip and spell. If you roll the same spell or cantrip you gained at the end of your previous long rest, roll again until you get a different result.",
-                         "",
-                         "d6 \u2014 1st level \u2014 3rd level \u2014 5th level:",
-                         "1 \u2014 dancing lights \u2014 burning hands \u2014 alter self",
-                         "2 \u2014 true strike \u2014 charm person \u2014 darkness",
-                         "3 \u2014 light \u2014 magic missile \u2014 invisibility",
-                         "4 \u2014 message \u2014 cure wounds \u2014 levitate",
-                         "5 \u2014 spare the dying \u2014 Tasha's hideous laughter \u2014 mirror image",
-                         "6 \u2014 prestidigitation \u2014 thunderwave \u2014 spider climb"
+                         "<table><thead><tr><th>d6</th><th>1st Level</th><th>3rd Level</th><th>5th Level</th></tr></thead><tbody><tr><td>1</td><td>Dancing lights</td><td>Burning hands</td><td>Alter self</td></tr><tr><td>2</td><td>True strike</td><td>Charm person</td><td>Darkness</td></tr><tr><td>3</td><td>Light</td><td>Magic missile</td><td>Invisibility</td></tr><tr><td>4</td><td>Message</td><td>Cure wounds</td><td>Levitate</td></tr><tr><td>5</td><td>Spare the dying</td><td>Tasha's hideous laughter</td><td>Mirror image</td></tr><tr><td>6</td><td>Prestidigitation</td><td>Thunderwave</td><td>Spider climb</td></tr></tbody></table>"
                      ]
                  },
                  {
@@ -3186,6 +3180,122 @@ var racedata = {
                   "name": "Languages",
                   "text": [
                     "You can speak, read, and write Common and Naga."
+                  ]
+                }
+              ]
+            },
+            {
+               "name": "Elf (Eladrin)",
+               "source": "Unearthed Arcana: Eladrin and Gith",
+               "size": "M",
+               "speed": "30",
+               "ability": "Dex 2, Choose Int 1 or Cha 1",
+               "proficiency": "Perception",
+               "trait": [
+                  {
+                     "name": "Darkvision",
+                     "text": [
+                        "Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+                     ]
+                  },
+                  {
+                     "name": "Keen Senses",
+                     "text": [
+                        "You have proficiency in the Perception skill."
+                     ]
+                  },
+                  {
+                     "name": "Fey Ancestry",
+                     "text": [
+                        "You have advantage on saving throws against being charmed, and magic can't put you to sleep."
+                     ]
+                  },
+                  {
+                     "name": "Trance",
+                     "text": [
+                        "Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is \"trance.\") While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep."
+                     ]
+                  },
+                  {
+                     "name": "Languages",
+                     "text": [
+                        "You can speak, read, and write Common and Elvish. Elvish is fluid, with subtle intonations and intricate grammar. Elven literature is rich and varied, and their songs and poems are famous among other races. Many bards learn their language so they can add Elvish ballads to their repertoires."
+                     ]
+                  },
+                  {
+                     "name": "Fey Step",
+                     "text": [
+                        "As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. Once you use this trait, you can't do so again until you finish a short or long rest."
+                     ]
+                  },
+                  {
+                     "name": "Shifting Seasons",
+                     "text": [
+                        "At the end of each short or long rest, you can align yourself with the magic of one season, regardless of the season that is dominating your personality. Doing so allows you to cast a certain cantrip, as shown in the Shifting Seasons Cantrips table. When you align yourself with a season's magic, you lose the cantrip associated with the previous season and gain the cantrip associated with the new season. ",
+                       "Your spellcasting ability for these cantrips is Intelligence or Charisma, whichever is higher.",
+                       "<table><thead><tr><th>Season</th><th>Cantrip</th></tr></thead><tbody><tr><td>Autumn</td><td>Friends</td></tr><tr><td>Winter</td><td>Chill touch</td></tr><tr><td>Spring</td><td>Minor illusion</td></tr><tr><td>Summer</td><td>Fire bolt</td></tr></tbody></table>"
+                     ]
+                  }
+               ]
+            },
+            {
+              "name": "Gith (Githyanki)",
+              "source": "Unearthed Arcana: Eladrin and Gith",
+              "ability": "Str 2, Int 1",
+              "size": "M",
+              "speed": "30",
+              "trait": [
+                {
+                  "name": "Decadent Mastery ",
+                  "text": [
+                    "You learn one language of your choice, and you are proficient with one skill or tool of your choice. In the timeless city of Tu'narath, githyanki have bountiful time to master odd bits of knowledge."
+                  ]
+                },
+                {
+                  "name": "Martial Prodigy",
+                  "text": [
+                    "You are proficient with light and medium armor. Your people are ever ready for war."
+                  ]
+                },
+                {
+                  "name": "Githyanki Psionics",
+                  "text": [
+                    "You know the mage hand cantrip. When you reach 3rd level, you can cast jump once with this trait, and you regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the misty step spell once with this trait, and you regain the ability to do so when you finish a long rest.",
+                    "Intelligence is your spellcasting ability for these spells. You can cast all of them without components."
+                  ]
+                },
+                {
+                  "name": "Languages",
+                  "text": [
+                    "You can speak, read, and write Common and Gith."
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Gith (Githzerai)",
+              "source": "Unearthed Arcana: Eladrin and Gith",
+              "ability": "Wis 2, Int 1",
+              "size": "M",
+              "speed": "30",
+              "trait": [
+                {
+                  "name": "Monastic Training",
+                  "text": [
+                    "You gain a +1 bonus to AC while you aren't wearing medium or heavy armor and aren't using a shield. All githzerai receive basic training from monks, and the monks among them are unmatched in their defensive abilities."
+                  ]
+                },
+                {
+                  "name": "Githzerai Psionics",
+                  "text": [
+                    "You know the mage hand cantrip. When you reach 3rd level, you can cast shield once with this trait, and you regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the detect thoughts spell once with this trait, and you regain the ability to do so when you finish a long rest.",
+                    "Wisdom is your spellcasting ability for these spells. You can cast all of them without components."
+                  ]
+                },
+                {
+                  "name": "Languages",
+                  "text": [
+                    "You can speak, read, and write Common and Gith."
                   ]
                 }
               ]
