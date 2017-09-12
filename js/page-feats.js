@@ -7,6 +7,7 @@ function parsesource (src) {
 	if (source === "Unearthed Arcana: Feats") source = "UA Feats";
 	if (source === "Unearthed Arcana: Feats for Skills") source = "UA Feats for Skills";
 	if (source === "Unearthed Arcana: Feats for Races") source = "UA Feats for Races";
+	if (source === "Plane Shift: Kaladesh") source = "Plane Shift Kaladesh";
 	return source;
 }
 
