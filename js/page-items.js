@@ -350,6 +350,14 @@ function useitem (id) {
     $("tr.text").remove();
     var texthtml = "";
     $("td span#attunement").html("");
+
+    if (curtype === "HA" && curitem.strength !== undefined) {
+        texthtml += "<p>If the wearer has a Strength score lower than " + curitem.strength + ", their speed is reduced by 10 feet.</p>";
+    }
+    if ((curtype === "S" || curtype === "LA" ||curtype === "MA"|| curtype === "HA") && curitem.stealth === "YES") {
+        texthtml += "<p>The wearer has disadvantage on Stealth (Dexterity) checks.</p>";
+    }
+
     for (var n = 0; n < textlist.length; n++) {
         if (!textlist[n]) continue;
         var curtextstring = JSON.stringify (textlist[n]);
