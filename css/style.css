@@ -485,20 +485,54 @@ td#hp h5, td#prof h5, td#equipment h5 {
 	margin-bottom: 0px;
 }
 
-td.feature p {
+
+/* section: class features */
+td._class_feature p {
 	padding: 0 1em;
 }
-
-.feature strong {
+td._class_feature.feature strong {
 	margin: 0.2em;
 	display: block;
-	/*border-bottom: 1px solid #922610;*/
 	border-bottom: 1px solid #000;
 	color: #922610;
 	font-family: serif;
 	font-weight: 500;
 	font-size: 1.5em;
 }
+td._class_feature.subclassfeature strong {
+	margin: 0.2em;
+	display: block;
+	border-bottom: 1px solid #337ab7;
+	color: #337ab7;
+	font-family: serif;
+	font-weight: 500;
+	font-size: 1.5em;
+}
+td._class_feature.subclasssubfeature {
+	font-size: 0.9em;
+}
+td._class_feature.subclasssubfeature strong {
+	margin: 0.2em;
+	display: inline;
+	border-bottom: none;
+	color: #337ab7;
+	font-family: serif;
+	font-weight: 500;
+	font-size: 1.5em;
+}
+td._class_feature.subfeature {
+	font-size: 0.9em;
+}
+td._class_feature.subfeature strong {
+	margin: 0.2em;
+	display: inline;
+	border-bottom: none;
+	color: #922610;
+	font-family: serif;
+	font-weight: 500;
+	font-size: 1.5em;
+}
+/* end section: class features */
 
 #classtable table {
 	font-size: 0.8em;
@@ -598,23 +632,6 @@ div#subclasses > span {
 div#subclasses span.active {
 	background: #337ab7;
 	color: white;
-}
-
-.subclass strong {
-	/*color: #666;*/
-	/*border-bottom-color: #666;*/
-	color: #337ab7;
-	border-bottom-color: #337ab7;
-}
-
-.feature.subfeature {
-	font-size: 0.9em;
-	padding-left: 2em;
-}
-
-.feature.subfeature strong {
-	display: inline!important;
-	border-bottom: none!important;
 }
 
 .slotlabel {

@@ -131,7 +131,7 @@ function useclass (id) {
 	for (var i = curclass.autolevel.length-1; i >= 0; i--) {
 		var curlevel = curclass.autolevel[i];
 
-// spell slots and table data
+        // spell slots and table data
 		if (!curlevel.feature) {
 			if (curlevel.slots) {
 				$("tr:has(.slotlabel)").show();
@@ -258,7 +258,7 @@ function useclass (id) {
 				$("tr#level"+curlevel._level+" td.talentsknown").html(curlevel.talentsknown);
 			}
 
-// other features
+        // other features
 		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
 			var curfeature = curlevel.feature[a];
 			var link = curlevel._level + "_" + a;
@@ -268,8 +268,11 @@ function useclass (id) {
 				subclasses.push(curfeature);
 			}
 
-			var subfeature = (curfeature.suboption === "YES") ? " subfeature" : "";
-			var issubclass = (curfeature.subclass !== "undefined" && curfeature.parent === curfeature.subclass)  ? "" : " subclass";
+            var styleClass = "";
+			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
+            else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
+            else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
+            else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
@@ -291,7 +294,7 @@ function useclass (id) {
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			$("#features").after("<tr><td colspan='6' class='feature"+subfeature+issubclass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
+			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
 		}
 
 	}
