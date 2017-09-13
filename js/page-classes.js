@@ -300,8 +300,6 @@ function useclass (id) {
 		if ($(this).html() === "") $(this).html("—")
 	});
 
-	$(".feature:contains('Maneuver: ')").css("font-size","0.8em");
-
 	$("div#subclasses span").remove();
 	var prevsubclass = 0;
 	for (var i = 0; i < subclasses.length; i++) {
