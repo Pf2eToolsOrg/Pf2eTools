@@ -333,8 +333,8 @@ function useclass (id) {
 
 		window.location.hash = window.location.hash.replace(/\,\S*/g, ","+encodeURIComponent(name).replace("'","%27"));
 
-		$(".feature[data-subclass!='"+$(this).text()+"'][data-subclass!='undefined']").hide();
-		$(".feature[data-subclass='"+$(this).text()+"']").show();
+		$("._class_feature[data-subclass!='"+$(this).text()+"'][data-subclass!='undefined']").hide();
+		$("._class_feature[data-subclass='"+$(this).text()+"']").show();
 	});
 
 	//	$("div#subclasses > span").first().click();
