@@ -322,7 +322,7 @@ function useclass (id) {
 	$("div#subclasses > span").click(function() {
 		var name = $(this).children("span").text();
 		if ($(this).hasClass("active")) {
-			$(".feature").show();
+			$("._class_feature").show();
 			$(this).removeClass("active");
 			window.location.hash = window.location.hash.replace(/\,.*/g,",");
 			return;
