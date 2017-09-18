@@ -6,10 +6,12 @@ function parsesource (src) {
 	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
 	if (source === "Dungeon Master's Guide") source = "DMG";
 	if (source === "Volo's Guide to Monsters") source = "VGM";
-	if (source === "Unearthed Arcana: Eberron") source = "UA Eberron";
-	if (source === "Unearthed Arcana: Waterborne Adventures") source = "UA Waterborne Adventures";
+	if (source === "Unearthed Arcana: Eberron") source = "UA E";
+	if (source === "Unearthed Arcana: Waterborne Adventures") source = "UA WA";
 	if (source === "Unearthed Arcana: That Old Black Magic") source = "UA TOBM";
 	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA GH";
+	if (source === "Unearthed Arcana: Eladrin and Gith") source = "UA EG";
+	if (source === "The Tortle Package") source = "TP";
 	if (source === "Plane Shift Zendikar") source = "PSZ";
 	if (source === "Plane Shift Kaladesh") source = "PSK";
 	if (source === "Plane Shift Innistrad") source = "PSI";
@@ -52,7 +54,7 @@ function loadraces() {
 		var currace = racelist[i];
 		var name = currace.name;
 		if (!currace.ability) currace.ability = "";
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-3'>"+name+"</span> <span class='ability col-xs-4'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-3' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
+		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
