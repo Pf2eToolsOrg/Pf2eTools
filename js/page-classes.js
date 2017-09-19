@@ -270,6 +270,7 @@ function useclass (id) {
 
             var styleClass = "";
 			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
+            else if (curfeature.subclass === undefined && curfeature.suboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubfeature";
             else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
             else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
             else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
