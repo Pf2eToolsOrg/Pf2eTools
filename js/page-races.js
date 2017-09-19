@@ -6,7 +6,7 @@ function parsesource (src) {
 	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
 	if (source === "Dungeon Master's Guide") source = "DMG";
 	if (source === "Volo's Guide to Monsters") source = "VGM";
-	if (source === "Unearthed Arcana: Eberron") source = "UA E";
+	if (source === "Unearthed Arcana: Eberron") source = "UA Eb";
 	if (source === "Unearthed Arcana: Waterborne Adventures") source = "UA WA";
 	if (source === "Unearthed Arcana: That Old Black Magic") source = "UA TOBM";
 	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA GH";
