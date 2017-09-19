@@ -190,6 +190,15 @@
                 "_optional": "YES"
               },
               {
+                "name": "Path of the Berserker: Frenzy",
+                "text": [
+                  "Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion."
+                ],
+                "subclass": "Primal Path: Path of the Berserker",
+                "parent": "Path of the Berserker",
+                "_optional": "YES"
+              },
+              {
                 "name": "Primal Path: Path of the Totem Warrior",
                 "text": [
                   "The Path of the Totem Warrior is a spiritual journey, as the barbarian accepts a spirit animal as guide, protector, and inspiration. In battle, your totem spirit fills you with supernatural might, adding magical fuel to your barbarian rage.",
@@ -198,6 +207,76 @@
                 "subclass": "Path of the Totem Warrior",
                 "parent": "Primal Path",
                 "issubclass": "YES",
+                "_optional": "YES"
+              },
+
+              {
+                "name": "Path of the Totem Warrior: Spirit Seeker",
+                "text": [
+                  "Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. At 3rd level when you adopt this path, you gain the ability to cast the beast sense and speak with animals spells, but only as rituals, as described in chapter 10."
+                ],
+                "subclass": "Primal Path: Path of the Totem Warrior",
+                "parent": "Path of the Totem Warrior",
+                "_optional": "YES"
+              },
+              {
+                "name": "Path of the Totem Warrior: Totem Spirit",
+                "text": [
+                  "At 3rd level, when you adopt this path, you choose a totem spirit and gain its feature. You must make or acquire a physical totem object\u2014an amulet or similar adornment\u2014that incorporates fur or feathers, claws, teeth, or bones of the totem animal. At your option, you also gain minor physical attributes that are reminiscent of your totem spirit. For example, if you have a bear totem spirit, you might be unusually hairy and thick-skinned, or if your totem is the eagle, your eyes turn bright yellow.",
+                  "Your totem animal might be an animal related to those listed here but more appropriate to your homeland. For example, you could choose a hawk or vulture in place of an eagle."
+                ],
+                "subclass": "Primal Path: Path of the Totem Warrior",
+                "parent": "Path of the Totem Warrior",
+                "_optional": "YES"
+              },
+              {
+                "name": "Totem Spirit: Bear",
+                "text": [
+                  "While raging, you have resistance to all damage except psychic damage. The spirit of the bear makes you tough enough to stand up to any punishment."
+                ],
+                "subclass": "Primal Path: Path of the Totem Warrior",
+                "parent": "Path of the Totem Warrior: Totem Spirit",
+                "suboption": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "Totem Spirit: Eagle",
+                "text": [
+                  "While you're raging and aren't wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the Dash action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease."
+                ],
+                "subclass": "Primal Path: Path of the Totem Warrior",
+                "parent": "Path of the Totem Warrior: Totem Spirit",
+                "suboption": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "Totem Spirit: Elk",
+                "text": [
+                  "While you're raging and aren't wearing heaving armor, your walking speed increases by 15 feet. The spirit of the elk makes you extraordinarily swift."
+                ],
+                "subclass": "Primal Path: Path of the Totem Warrior",
+                "parent": "Path of the Totem Warrior: Totem Spirit",
+                "suboption": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "Totem Spirit: Tiger",
+                "text": [
+                  "While raging, you can add 10 feet to your long jump distance and 3 feet to your high jump distance. The spirit of the tiger empowers your leaps."
+                ],
+                "subclass": "Primal Path: Path of the Totem Warrior",
+                "parent": "Path of the Totem Warrior: Totem Spirit",
+                "suboption": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "Totem Spirit: Wolf",
+                "text": [
+                  "While you're raging, your friends have advantage on melee attack rolls against any creature within 5 feet of you that is hostile to you. The spirit of the wolf makes you a leader of hunters."
+                ],
+                "subclass": "Primal Path: Path of the Totem Warrior",
+                "parent": "Path of the Totem Warrior: Totem Spirit",
+                "suboption": "YES",
                 "_optional": "YES"
               },
               {
@@ -215,6 +294,17 @@
                 "text": [
                   "Only dwarves can follow the Path of the Battlerager. The battlerager fills a particular niche in dwarven society and culture.",
                   "Your DM can lift this restriction to better suit the campaign. The restriction exists for the Forgotten Realms. It might not apply to your DM's setting or your DM's version of the Realms."
+                ],
+                "subclass": "Primal Path: Path of the Battlerager",
+                "parent": "Path of the Battlerager",
+                "_optional": "YES"
+              },
+              {
+                "name": "Path of the Battlerager: Battlerager Armor",
+                "text": [
+                  "When you choose this path at 3rd level, you gain the ability to use spiked armor as a weapon.",
+                  "While you are wearing spiked armor and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
+                  "Additionally, when you use the Attack action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
                 ],
                 "subclass": "Primal Path: Path of the Battlerager",
                 "parent": "Path of the Battlerager",
@@ -339,95 +429,6 @@
                 ],
                 "subclass": "Primal Path: Path of the Zealot (UA)",
                 "parent": "Path of the Zealot",
-                "_optional": "YES"
-              },
-              {
-                "name": "Path of the Battlerager: Battlerager Armor",
-                "text": [
-                  "When you choose this path at 3rd level, you gain the ability to use spiked armor as a weapon.",
-                  "While you are wearing spiked armor and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
-                  "Additionally, when you use the Attack action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
-                ],
-                "subclass": "Primal Path: Path of the Battlerager",
-                "parent": "Path of the Battlerager",
-                "_optional": "YES"
-              },
-              {
-                "name": "Path of the Berserker: Frenzy",
-                "text": [
-                  "Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion."
-                ],
-                "subclass": "Primal Path: Path of the Berserker",
-                "parent": "Path of the Berserker",
-                "_optional": "YES"
-              },
-              {
-                "name": "Path of the Totem Warrior: Spirit Seeker",
-                "text": [
-                  "Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. At 3rd level when you adopt this path, you gain the ability to cast the beast sense and speak with animals spells, but only as rituals, as described in chapter 10."
-                ],
-                "subclass": "Primal Path: Path of the Totem Warrior",
-                "parent": "Path of the Totem Warrior",
-                "_optional": "YES"
-              },
-              {
-                "name": "Path of the Totem Warrior: Totem Spirit",
-                "text": [
-                  "At 3rd level, when you adopt this path, you choose a totem spirit and gain its feature. You must make or acquire a physical totem object\u2014an amulet or similar adornment\u2014that incorporates fur or feathers, claws, teeth, or bones of the totem animal. At your option, you also gain minor physical attributes that are reminiscent of your totem spirit. For example, if you have a bear totem spirit, you might be unusually hairy and thick-skinned, or if your totem is the eagle, your eyes turn bright yellow.",
-                  "Your totem animal might be an animal related to those listed here but more appropriate to your homeland. For example, you could choose a hawk or vulture in place of an eagle."
-                ],
-                "subclass": "Primal Path: Path of the Totem Warrior",
-                "parent": "Path of the Totem Warrior",
-                "_optional": "YES"
-              },
-              {
-                "name": "Totem Spirit: Bear",
-                "text": [
-                  "While raging, you have resistance to all damage except psychic damage. The spirit of the bear makes you tough enough to stand up to any punishment."
-                ],
-                "subclass": "Primal Path: Path of the Totem Warrior",
-                "parent": "Path of the Totem Warrior: Totem Spirit",
-                "suboption": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Totem Spirit: Eagle",
-                "text": [
-                  "While you're raging and aren't wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the Dash action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease."
-                ],
-                "subclass": "Primal Path: Path of the Totem Warrior",
-                "parent": "Path of the Totem Warrior: Totem Spirit",
-                "suboption": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Totem Spirit: Elk",
-                "text": [
-                  "While you're raging and aren't wearing heaving armor, your walking speed increases by 15 feet. The spirit of the elk makes you extraordinarily swift."
-                ],
-                "subclass": "Primal Path: Path of the Totem Warrior",
-                "parent": "Path of the Totem Warrior: Totem Spirit",
-                "suboption": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Totem Spirit: Tiger",
-                "text": [
-                  "While raging, you can add 10 feet to your long jump distance and 3 feet to your high jump distance. The spirit of the tiger empowers your leaps."
-                ],
-                "subclass": "Primal Path: Path of the Totem Warrior",
-                "parent": "Path of the Totem Warrior: Totem Spirit",
-                "suboption": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Totem Spirit: Wolf",
-                "text": [
-                  "While you're raging, your friends have advantage on melee attack rolls against any creature within 5 feet of you that is hostile to you. The spirit of the wolf makes you a leader of hunters."
-                ],
-                "subclass": "Primal Path: Path of the Totem Warrior",
-                "parent": "Path of the Totem Warrior: Totem Spirit",
-                "suboption": "YES",
                 "_optional": "YES"
               }
             ],
