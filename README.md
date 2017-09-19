@@ -1,6 +1,9 @@
 ## 5e Tools
 [Go to 5etools](5etools.html)
 
+## Style Guidelines
+- Use tabs over spaces.
+
 ## To-Do
 - Clean up filtering interface.
 - Plan layout of upcoming Mystic disciplines
