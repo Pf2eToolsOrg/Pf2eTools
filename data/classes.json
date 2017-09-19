@@ -12763,6 +12763,27 @@
           {
             "feature": [
               {
+                "name": "Pact Magic",
+                "text": [
+                  "Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the warlock spell list.",
+                  "Cantrips",
+                  "You know two cantrips of your choice from the warlock spell list. You learn additional warlock cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Warlock table.",
+                  "Spell Slots",
+                  "The Warlock table shows how many spell slots you have. The table also shows what the level of those slots is; all of your spell slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.",
+                  "For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell thunderwave, you must spend one of those slots, and you cast it as a 3rd-level spell.",
+                  "Spells Known of 1st Level and Higher",
+                  "At 1st level, you know two 1st-level spells of your choice from the warlock spell list.",
+                  "You learn a new warlock spell every time you gain a level from 2 through 9, as well as at level 19. A spell you choose must be of a level no higher than what's shown in the table's Slot Level column for your level. When you reach 6th level, for example, you learn a new warlock spell, which can be 1st, 2nd, or 3rd level.",
+                  "Additionally, when you gain a level in this class, you can choose one of the warlock spells you know and replace it with another spell from the warlock spell list, which also must be of a level for which you have spell slots.",
+                  "Spellcasting Ability",
+                  "Charisma is your spellcasting ability for your warlock spells, so you use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a warlock spell you cast and when making an attack roll with one.",
+                  "Spell save DC: 8 + Proficiency bonus + Charisma modifier",
+                  "Spell attack modifier: Proficiency bonus + Charisma modifier",
+                  "Spellcasting Focus",
+                  "You can use an arcane focus (found in chapter 5) as a spellcasting focus for your warlock spells."
+                ]
+              },
+              {
                 "name": "Otherworldly Patron",
                 "text": [
                   "At 1st level, you have struck a bargain with an otherworldly being of your choice. Your choice grants you features at 1st level and again at 6th, 10th, and 14th level."
@@ -12785,6 +12806,16 @@
                 "_optional": "YES"
               },
               {
+                "name": "The Archfey: Fey Presence",
+                "text": [
+                  "Starting at 1st level, your patron bestows upon you the ability to project the beguiling and fearsome presence of the fey. As an action, you can cause each creature in a 10-foot cube originating from you to make a Wisdom saving throw against your warlock spell save DC. The creatures that fail their saving throws are all charmed or frightened by you (your choice) until the end of your next turn.",
+                  "Once you use this feature, you can't use it again until you finish a short or long rest."
+                ],
+                "subclass": "Otherworldly Patron: The Archfey",
+                "parent": "The Archfey",
+                "_optional": "YES"
+              },
+              {
                 "name": "Otherworldly Patron: The Fiend",
                 "text": [
                   "You have made a pact with a fiend from the lower planes of existence, a being whose aims are evil, even if you strive against those aims. Such beings desire the corruption or destruction of all things, ultimately including you. Fiends powerful enough to forge a pact include demon lords such as Demogorgon, Orcus, Fraz'Urb-luu, and Baphomet; archdevils such as Asmodeus, Dispater, Mephistopheles, and Belial; pit fiends and balors that are especially mighty; and ultroloths and other lords of the yugoloths.",
@@ -12798,6 +12829,15 @@
                 "subclass": "Otherworldly Patron: The Fiend",
                 "parent": "Otherworldly Patron",
                 "issubclass": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "The Fiend: Dark One's Blessing",
+                "text": [
+                  "Starting at 1st level, when you reduce a hostile creature to 0 hit points, you gain temporary hit points equal to your Charisma modifier + your warlock level (minimum of 1)."
+                ],
+                "subclass": "Otherworldly Patron: The Fiend",
+                "parent": "The Fiend",
                 "_optional": "YES"
               },
               {
@@ -12817,6 +12857,25 @@
                 "_optional": "YES"
               },
               {
+                "name": "Ghost in the Machine: Bonus Proficiency",
+                "text": [
+                  "At 1st level, you gain proficiency with hacking tools."
+                ],
+                "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                "parent": "Ghost in the Machine",
+                "_optional": "YES"
+              },
+              {
+                "name": "Ghost in the Machine: Information Surge",
+                "text": [
+                  "At 1st level, you gain the ability to temporarily render computerized devices inoperable. As an action, you can target a computerized device within 30 feet of you. If the targeted device is held or otherwise actively used by a living creature, that creature must make an Intelligence saving throw against your spell save DC. On a failed save, the targeted device ceases to function until the end of your next turn. If the targeted device is not held or used by a creature, the DM makes a special saving throw for the device with disadvantage and a +0 modifier. Certain shielded devices might negate the disadvantage, at the DM's determination.",
+                  "Once you use this feature, you can't use it again until you finish a short or long rest."
+                ],
+                "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+                "parent": "Ghost in the Machine",
+                "_optional": "YES"
+              },
+              {
                 "name": "Otherworldly Patron: The Great Old One",
                 "text": [
                   "Your patron is a mysterious entity whose nature is utterly foreign to the fabric of reality. It might come from the Far Realm, the space beyond reality, or it could be one of the elder gods known only in legends. Its motives are incomprehensible to mortals, and its knowledge so immense and ancient that even the greatest libraries pale in comparison to the vast secrets it holds. The Great Old One might be unaware of your existence or entirely indifferent to you, but the secrets you have learned allow you to draw your magic from it. Entities of this type include Ghaunadar, called That Which Lurks; Tharizdun, the Chained God; Dendar, the Night Serpent; Zargon, the Returner; Great Cthulhu; and other unfathomable beings.",
@@ -12830,6 +12889,15 @@
                 "subclass": "Otherworldly Patron: The Great Old One",
                 "parent": "Otherworldly Patron",
                 "issubclass": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "The Great Old One: Awakened Mind",
+                "text": [
+                  "Starting at 1st level, your alien knowledge gives you the ability to touch the minds of other creatures. You can communicate telepathically with any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language."
+                ],
+                "subclass": "Otherworldly Patron: The Great Old One",
+                "parent": "The Great Old One",
                 "_optional": "YES"
               },
               {
@@ -12848,6 +12916,16 @@
                 "subclass": "Otherworldly Patron: The Undying",
                 "parent": "Otherworldly Patron",
                 "issubclass": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "The Undying: Among the Dead",
+                "text": [
+                  "Starting at 1st level, you learn the spare the dying cantrip, which counts as a warlock cantrip for you. You also have advantage on saving throws against any disease.",
+                  "Additionally, undead have difficulty harming you. If an undead targets you directly with an attack or a harmful spell, that creature must make a Wisdom saving throw against your spell save DC (an undead needn't make the save when it includes you in an area effect, such as the explosion of fireball). On a failed save, the creature must choose a new target or forfeit targeting someone instead of you, potentially wasting the attack or spell. On a successful save, the creature is immune to this effect for 24 hours. An undead is also immune to this effect for 24 hours if you target it with an attack or a harmful spell."
+                ],
+                "subclass": "Otherworldly Patron: The Undying",
+                "parent": "The Undying",
                 "_optional": "YES"
               },
               {
@@ -12877,6 +12955,15 @@
                 "_optional": "YES"
               },
               {
+                "name": "The Undying Light: Radiant Soul",
+                "text": [
+                  "Starting at 1st level, your link to the Positive Plane allows you to serve as a conduit for radiant energy. You have resistance to radiant damage, and when you cast a spell that deals radiant damage or fire damage, you add your Charisma modifier to that damage. Additionally, you know the sacred flame and light cantrips and can cast them at will. They don't count against your number of cantrips known."
+                ],
+                "subclass": "Otherworldly Patron: The Undying Light (UA)",
+                "parent": "The Undying Light",
+                "_optional": "YES"
+              },
+              {
                 "name": "Otherworldly Patron: The Celestial (UA)",
                 "text": [
                   "Your patron is a powerful being of the Upper Planes. You have bound yourself to an ancient empyrean, solar, ki-rin, or unicorn or to another entity that resides in the planes of everlasting bliss. Your pact with that being allows you to experience the barest touch of the holy light that illuminates the multiverse.",
@@ -12895,6 +12982,26 @@
                 "_optional": "YES"
               },
               {
+                "name": "The Celestial: Bonus Cantrips",
+                "text": [
+                  "At 1st level, you learn the sacred flame and light cantrips. They count as warlock cantrips for you, but they don't count against your number of cantrips known."
+                ],
+                "subclass": "Otherworldly Patron: The Celestial (UA)",
+                "parent": "The Celestial",
+                "_optional": "YES"
+              },
+              {
+                "name": "The Celestial: Healing Light",
+                "text": [
+                  "At 1st level, you gain the ability to channel celestial energy to heal wounds. You have a pool of d6s that you spend to fuel this healing. The number of dice in the pool equals 1 + your warlock level.",
+                  "As a bonus action, you can touch a creature and heal it, spending dice from the pool. The maximum number of dice you can spend at once equals your Charisma modifier (minimum of one die). Roll the dice you spend, add them together, and restore a number of hit points equal to the total.",
+                  "Your pool regains all expended dice when you finish a long rest."
+                ],
+                "subclass": "Otherworldly Patron: The Celestial (UA)",
+                "parent": "The Celestial",
+                "_optional": "YES"
+              },
+              {
                 "name": "Otherworldly Patron: The Seeker (UA)",
                 "text": [
                   "Your patron is an inscrutable being who travels the Astral Plane in search of knowledge and secrets. In return for your patron's gifts, you wander the world seeking lore that you can share with the Seeker.",
@@ -12910,6 +13017,16 @@
                 "subclass": "Otherworldly Patron: The Seeker (UA)",
                 "parent": "Otherworldly Patron",
                 "issubclass": "YES",
+                "_optional": "YES"
+              },
+              {
+                "name": "The Seeker: Shielding Aurora",
+                "text": [
+                  "Starting at 1st level, you can invoke the Seeker's power to protect you from harm. As a bonus action, you create a whirling aurora of brilliant energy that swirls around you. Until the end of your next turn, you gain resistance to all damage, and if a hostile creature ends its turn within 10 feet of you, it takes radiant damage equal to your warlock level + your Charisma modifier.",
+                  "Once you use this feature, you can't use it again until you finish a short or long rest."
+                ],
+                "subclass": "Otherworldly Patron: The Seeker (UA)",
+                "parent": "The Seeker",
                 "_optional": "YES"
               },
               {
@@ -12948,99 +13065,16 @@
                 "_optional": "YES"
               },
               {
-                "name": "The Archfey: Fey Presence",
+                "name": "The Raven Queen: Sentinel Raven",
                 "text": [
-                  "Starting at 1st level, your patron bestows upon you the ability to project the beguiling and fearsome presence of the fey. As an action, you can cause each creature in a 10-foot cube originating from you to make a Wisdom saving throw against your warlock spell save DC. The creatures that fail their saving throws are all charmed or frightened by you (your choice) until the end of your next turn.",
-                  "Once you use this feature, you can't use it again until you finish a short or long rest."
+                  "Starting at 1st level, you gain the service of a spirit sent by the Raven Queen to watch over you. The spirit assumes the form and game statistics of a raven, and it always obeys your commands, which you can give telepathically while it is within 100 feet of you.",
+                  "While the raven is perched on your shoulder, you gain darkvision with a range of 30 feet and a bonus to your passive Wisdom (Perception) score and to Wisdom (Perception) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is incapacitated.",
+                  "You can see through the raven's eyes and hear what it hears while it is within 100 feet of you. In combat, you roll initiative for the raven and control how it acts. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.",
+                  "The raven doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The raven vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles.",
+                  "At the end of a short or long rest, you can call the raven back to you\u2014no matter where it is or whether it died\u2014and it reappears within 5 feet of you."
                 ],
-                "subclass": "Otherworldly Patron: The Archfey",
-                "parent": "The Archfey",
-                "_optional": "YES"
-              },
-              {
-                "name": "Ghost in the Machine: Bonus Proficiency",
-                "text": [
-                  "At 1st level, you gain proficiency with hacking tools."
-                ],
-                "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
-                "parent": "Ghost in the Machine",
-                "_optional": "YES"
-              },
-              {
-                "name": "Ghost in the Machine: Information Surge",
-                "text": [
-                  "At 1st level, you gain the ability to temporarily render computerized devices inoperable. As an action, you can target a computerized device within 30 feet of you. If the targeted device is held or otherwise actively used by a living creature, that creature must make an Intelligence saving throw against your spell save DC. On a failed save, the targeted device ceases to function until the end of your next turn. If the targeted device is not held or used by a creature, the DM makes a special saving throw for the device with disadvantage and a +0 modifier. Certain shielded devices might negate the disadvantage, at the DM's determination.",
-                  "Once you use this feature, you can't use it again until you finish a short or long rest."
-                ],
-                "subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
-                "parent": "Ghost in the Machine",
-                "_optional": "YES"
-              },
-              {
-                "name": "The Fiend: Dark One's Blessing",
-                "text": [
-                  "Starting at 1st level, when you reduce a hostile creature to 0 hit points, you gain temporary hit points equal to your Charisma modifier + your warlock level (minimum of 1)."
-                ],
-                "subclass": "Otherworldly Patron: The Fiend",
-                "parent": "The Fiend",
-                "_optional": "YES"
-              },
-              {
-                "name": "The Great Old One: Awakened Mind",
-                "text": [
-                  "Starting at 1st level, your alien knowledge gives you the ability to touch the minds of other creatures. You can communicate telepathically with any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language."
-                ],
-                "subclass": "Otherworldly Patron: The Great Old One",
-                "parent": "The Great Old One",
-                "_optional": "YES"
-              },
-              {
-                "name": "The Undying: Among the Dead",
-                "text": [
-                  "Starting at 1st level, you learn the spare the dying cantrip, which counts as a warlock cantrip for you. You also have advantage on saving throws against any disease.",
-                  "Additionally, undead have difficulty harming you. If an undead targets you directly with an attack or a harmful spell, that creature must make a Wisdom saving throw against your spell save DC (an undead needn't make the save when it includes you in an area effect, such as the explosion of fireball). On a failed save, the creature must choose a new target or forfeit targeting someone instead of you, potentially wasting the attack or spell. On a successful save, the creature is immune to this effect for 24 hours. An undead is also immune to this effect for 24 hours if you target it with an attack or a harmful spell."
-                ],
-                "subclass": "Otherworldly Patron: The Undying",
-                "parent": "The Undying",
-                "_optional": "YES"
-              },
-              {
-                "name": "The Undying Light: Radiant Soul",
-                "text": [
-                  "Starting at 1st level, your link to the Positive Plane allows you to serve as a conduit for radiant energy. You have resistance to radiant damage, and when you cast a spell that deals radiant damage or fire damage, you add your Charisma modifier to that damage. Additionally, you know the sacred flame and light cantrips and can cast them at will. They don't count against your number of cantrips known."
-                ],
-                "subclass": "Otherworldly Patron: The Undying Light (UA)",
-                "parent": "The Undying Light",
-                "_optional": "YES"
-              },
-              {
-                "name": "The Celestial: Bonus Cantrips",
-                "text": [
-                  "At 1st level, you learn the sacred flame and light cantrips. They count as warlock cantrips for you, but they don't count against your number of cantrips known."
-                ],
-                "subclass": "Otherworldly Patron: The Celestial (UA)",
-                "parent": "The Celestial",
-                "_optional": "YES"
-              },
-              {
-                "name": "The Celestial: Healing Light",
-                "text": [
-                  "At 1st level, you gain the ability to channel celestial energy to heal wounds. You have a pool of d6s that you spend to fuel this healing. The number of dice in the pool equals 1 + your warlock level.",
-                  "As a bonus action, you can touch a creature and heal it, spending dice from the pool. The maximum number of dice you can spend at once equals your Charisma modifier (minimum of one die). Roll the dice you spend, add them together, and restore a number of hit points equal to the total.",
-                  "Your pool regains all expended dice when you finish a long rest."
-                ],
-                "subclass": "Otherworldly Patron: The Celestial (UA)",
-                "parent": "The Celestial",
-                "_optional": "YES"
-              },
-              {
-                "name": "The Seeker: Shielding Aurora",
-                "text": [
-                  "Starting at 1st level, you can invoke the Seeker's power to protect you from harm. As a bonus action, you create a whirling aurora of brilliant energy that swirls around you. Until the end of your next turn, you gain resistance to all damage, and if a hostile creature ends its turn within 10 feet of you, it takes radiant damage equal to your warlock level + your Charisma modifier.",
-                  "Once you use this feature, you can't use it again until you finish a short or long rest."
-                ],
-                "subclass": "Otherworldly Patron: The Seeker (UA)",
-                "parent": "The Seeker",
+                "subclass": "Otherworldly Patron: The Raven Queen (UA)",
+                "parent": "The Raven Queen",
                 "_optional": "YES"
               },
               {
@@ -13064,40 +13098,6 @@
                 "subclass": "Otherworldly Patron: The Hexblade (UA)",
                 "parent": "The Hexblade",
                 "_optional": "YES"
-              },
-              {
-                "name": "The Raven Queen: Sentinel Raven",
-                "text": [
-                  "Starting at 1st level, you gain the service of a spirit sent by the Raven Queen to watch over you. The spirit assumes the form and game statistics of a raven, and it always obeys your commands, which you can give telepathically while it is within 100 feet of you.",
-                  "While the raven is perched on your shoulder, you gain darkvision with a range of 30 feet and a bonus to your passive Wisdom (Perception) score and to Wisdom (Perception) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is incapacitated.",
-                  "You can see through the raven's eyes and hear what it hears while it is within 100 feet of you. In combat, you roll initiative for the raven and control how it acts. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.",
-                  "The raven doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The raven vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles.",
-                  "At the end of a short or long rest, you can call the raven back to you\u2014no matter where it is or whether it died\u2014and it reappears within 5 feet of you."
-                ],
-                "subclass": "Otherworldly Patron: The Raven Queen (UA)",
-                "parent": "The Raven Queen",
-                "_optional": "YES"
-              },
-              {
-                "name": "Pact Magic",
-                "text": [
-                  "Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the warlock spell list.",
-                  "Cantrips",
-                  "You know two cantrips of your choice from the warlock spell list. You learn additional warlock cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Warlock table.",
-                  "Spell Slots",
-                  "The Warlock table shows how many spell slots you have. The table also shows what the level of those slots is; all of your spell slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.",
-                  "For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell thunderwave, you must spend one of those slots, and you cast it as a 3rd-level spell.",
-                  "Spells Known of 1st Level and Higher",
-                  "At 1st level, you know two 1st-level spells of your choice from the warlock spell list.",
-                  "You learn a new warlock spell every time you gain a level from 2 through 9, as well as at level 19. A spell you choose must be of a level no higher than what's shown in the table's Slot Level column for your level. When you reach 6th level, for example, you learn a new warlock spell, which can be 1st, 2nd, or 3rd level.",
-                  "Additionally, when you gain a level in this class, you can choose one of the warlock spells you know and replace it with another spell from the warlock spell list, which also must be of a level for which you have spell slots.",
-                  "Spellcasting Ability",
-                  "Charisma is your spellcasting ability for your warlock spells, so you use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a warlock spell you cast and when making an attack roll with one.",
-                  "Spell save DC: 8 + Proficiency bonus + Charisma modifier",
-                  "Spell attack modifier: Proficiency bonus + Charisma modifier",
-                  "Spellcasting Focus",
-                  "You can use an arcane focus (found in chapter 5) as a spellcasting focus for your warlock spells."
-                ]
               }
             ],
             "_level": "1"
