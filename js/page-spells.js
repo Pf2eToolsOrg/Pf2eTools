@@ -136,7 +136,6 @@ function dec_sort(a, b){
 }
 
 window.onload = loadspells;
-window.onhashchange = hashchange;
 
 function loadspells() {
 	tabledefault = $("#stats").html();
@@ -361,12 +360,6 @@ function sortspells(a, b, o) {
 
 	return 0;
 
-}
-
-function hashchange(e) {
-	var $el = $("ul.list li[data-link='"+window.location.hash.split("#")[1].toLowerCase()+"']:eq(0)");
-	usespell($el.attr("id"));
-	document.title = decodeURIComponent($el.attr("data-name")).replace("%27","'") + " - 5etools Spells";
 }
 
 function usespell (id) {
