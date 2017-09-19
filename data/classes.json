@@ -6328,6 +6328,13 @@
           {
             "feature": [
               {
+                "name": "Deflect Missiles",
+                "text": [
+                  "Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d10 + your Dexterity modifier + your monk level.",
+                  "If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack (range 20 feet/60 feet) with the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack."
+                ]
+              },
+              {
                 "name": "Monastic Tradition",
                 "text": [
                   "When you reach 3rd level, you commit yourself to a monastic tradition: the Way of the Open Hand, the Way of Shadow, or the Way of the Four Elements. Your tradition grants you features at 3rd level and again at 6th, 11th, and 17th level."
@@ -6344,6 +6351,15 @@
                 "_optional": "YES"
               },
               {
+                "name": "Way of Shadow: Shadow Arts",
+                "text": [
+                  "You can use your ki to duplicate the effects of certain spells. As an action, you can spend 2 ki points to cast darkness, darkvision, pass without trace, or silence, without providing material components. Additionally, you gain the minor illusion cantrip if you don't already know it."
+                ],
+                "subclass": "Monastic Tradition: Way of Shadow",
+                "parent": "Way of Shadow",
+                "_optional": "YES"
+              },
+              {
                 "name": "Monastic Tradition: Way of the Open Hand",
                 "text": [
                   "Monks of the Way of the Open Hand are the ultimate masters of martial arts combat, whether armed or unarmed. They learn techniques to push and trip their opponents, manipulate ki to heal damage to their bodies, and practice advanced meditation that can protect them from harm."
@@ -6351,86 +6367,6 @@
                 "subclass": "Monastic Tradition: Way of the Open Hand",
                 "parent": "Monastic Tradition",
                 "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Monastic Tradition: Way of the Four Elements",
-                "text": [
-                  "You follow a monastic tradition that teaches you to harness the elements. When you focus your ki, you can align yourself with the forces of creation and bend the four elements to your will, using them as an extension of your body. Some members of this tradition dedicate themselves to a single element, but others weave the elements together.",
-                  "Many monks of this tradition tattoo their bodies with representations of their ki powers, commonly imagined as coiling dragons, but also as phoenixes, fish, plants, mountains, and cresting waves."
-                ],
-                "subclass": "Monastic Tradition: Way of the Four Elements",
-                "parent": "Monastic Tradition",
-                "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Monastic Tradition: Way of the Long Death",
-                "text": [
-                  "Monks of the Way of the Long Death are obsessed with the meaning and mechanics of dying. They capture creatures and prepare elaborate experiments to capture, record, and understand the moments of their demise. They use this knowledge to guide their understanding of martial arts, yielding a deadly fighting style."
-                ],
-                "subclass": "Monastic Tradition: Way of the Long Death",
-                "parent": "Monastic Tradition",
-                "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Monastic Tradition: Way of the Sun Soul",
-                "text": [
-                  "Monks of the Way of the Sun Soul learn to channel their own life energy into searing bolts of light. They teach that meditation can unlock the ability to unleash the indomitable light shed by the soul of every living creature."
-                ],
-                "subclass": "Monastic Tradition: Way of the Sun Soul",
-                "parent": "Monastic Tradition",
-                "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Monastic Tradition: Way of the Kensei (UA)",
-                "text": [
-                  "Monks of the Way of Kensei train relentlessly with their weapons, to the point that the weapon becomes like an extension of the body. A kensei sees a weapon in much the same way a painter regards a brush or a writer sees parchment, ink, and quill. A sword or bow is a tool used to express the beauty and elegance of the martial arts. That such mastery makes a kensei a peerless warrior and is but a side effect of intense devotion, practice, and study."
-                ],
-                "subclass": "Monastic Tradition: Way of the Kensei (UA)",
-                "parent": "Monastic Tradition",
-                "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Monastic Tradition: Way of the Kensei (Revised UA)",
-                "text": [
-                  "Monks of the Way of Kensei train relentlessly with their weapons, to the point that the weapon becomes like an extension of the body. A kensei sees a weapon in much the same way a painter regards a brush or a writer sees parchment, ink, and quill. A sword or bow is a tool used to express the beauty and elegance of the martial arts. That such mastery makes a kensei a peerless warrior is but a side effect of intense devotion, practice, and study."
-                ],
-                "subclass": "Monastic Tradition: Way of the Kensei (Revised UA)",
-                "parent": "Monastic Tradition",
-                "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Monastic Tradition: Way of Tranquility (UA)",
-                "text": [
-                  "Monks of the Way of Tranquility see violence as a last resort. They use diplomacy, mercy, and understanding to resolve conflicts. If pushed, though, they are capable warriors who can bring an end to the unjust or cruel folk who refuse to listen to reason. When adventuring, these monks make excellent diplomats. They are also skilled in the healing arts, and can preserve their allies in the face of daunting foes."
-                ],
-                "subclass": "Monastic Tradition: Way of Tranquility (UA)",
-                "parent": "Monastic Tradition",
-                "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Monastic Tradition: Way of the Drunken Master (UA)",
-                "text": [
-                  "The Way of the Drunken Master teaches its students to move with the jerky, unpredictable movements of a drunkard. A drunken master sways, tottering on unsteady feet, to present what seems like an incompetent combatant but proves frustrating to engage. The drunken master's erratic stumbles conceal a carefully executed dance of blocks, parries, advances, attacks, and retreats. Cunning warriors can see through the drunken master's apparent incompetence to recognize the masterful technique employed."
-                ],
-                "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
-                "parent": "Monastic Tradition",
-                "issubclass": "YES",
-                "_optional": "YES"
-              },
-              {
-                "name": "Way of Shadow: Shadow Arts",
-                "text": [
-                  "You can use your ki to duplicate the effects of certain spells. As an action, you can spend 2 ki points to cast darkness, darkvision, pass without trace, or silence, without providing material components. Additionally, you gain the minor illusion cantrip if you don't already know it."
-                ],
-                "subclass": "Monastic Tradition: Way of Shadow",
-                "parent": "Way of Shadow",
                 "_optional": "YES"
               },
               {
@@ -6443,6 +6379,17 @@
                 ],
                 "subclass": "Monastic Tradition: Way of the Open Hand",
                 "parent": "Way of the Open Hand",
+                "_optional": "YES"
+              },
+              {
+                "name": "Monastic Tradition: Way of the Four Elements",
+                "text": [
+                  "You follow a monastic tradition that teaches you to harness the elements. When you focus your ki, you can align yourself with the forces of creation and bend the four elements to your will, using them as an extension of your body. Some members of this tradition dedicate themselves to a single element, but others weave the elements together.",
+                  "Many monks of this tradition tattoo their bodies with representations of their ki powers, commonly imagined as coiling dragons, but also as phoenixes, fish, plants, mountains, and cresting waves."
+                ],
+                "subclass": "Monastic Tradition: Way of the Four Elements",
+                "parent": "Monastic Tradition",
+                "issubclass": "YES",
                 "_optional": "YES"
               },
               {
@@ -6634,12 +6581,32 @@
                 "_optional": "YES"
               },
               {
+                "name": "Monastic Tradition: Way of the Long Death",
+                "text": [
+                  "Monks of the Way of the Long Death are obsessed with the meaning and mechanics of dying. They capture creatures and prepare elaborate experiments to capture, record, and understand the moments of their demise. They use this knowledge to guide their understanding of martial arts, yielding a deadly fighting style."
+                ],
+                "subclass": "Monastic Tradition: Way of the Long Death",
+                "parent": "Monastic Tradition",
+                "issubclass": "YES",
+                "_optional": "YES"
+              },
+              {
                 "name": "Way of the Long Death: Touch of Death",
                 "text": [
                   "Starting when you choose this tradition at 3rd level, your study of death allows you to extract vitality from another creature as it nears its demise. When you reduce a creature within 5 feet of you to 0 hit points, you gain temporary hit points equal to your Wisdom modifier + your monk level (minimum of 1 temporary hit point)."
                 ],
                 "subclass": "Monastic Tradition: Way of the Long Death",
                 "parent": "Way of the Long Death",
+                "_optional": "YES"
+              },
+              {
+                "name": "Monastic Tradition: Way of the Sun Soul",
+                "text": [
+                  "Monks of the Way of the Sun Soul learn to channel their own life energy into searing bolts of light. They teach that meditation can unlock the ability to unleash the indomitable light shed by the soul of every living creature."
+                ],
+                "subclass": "Monastic Tradition: Way of the Sun Soul",
+                "parent": "Monastic Tradition",
+                "issubclass": "YES",
                 "_optional": "YES"
               },
               {
@@ -6651,6 +6618,16 @@
                 ],
                 "subclass": "Monastic Tradition: Way of the Sun Soul",
                 "parent": "Way of the Sun Soul",
+                "_optional": "YES"
+              },
+              {
+                "name": "Monastic Tradition: Way of the Kensei (UA)",
+                "text": [
+                  "Monks of the Way of Kensei train relentlessly with their weapons, to the point that the weapon becomes like an extension of the body. A kensei sees a weapon in much the same way a painter regards a brush or a writer sees parchment, ink, and quill. A sword or bow is a tool used to express the beauty and elegance of the martial arts. That such mastery makes a kensei a peerless warrior and is but a side effect of intense devotion, practice, and study."
+                ],
+                "subclass": "Monastic Tradition: Way of the Kensei (UA)",
+                "parent": "Monastic Tradition",
+                "issubclass": "YES",
                 "_optional": "YES"
               },
               {
@@ -6668,6 +6645,16 @@
                 "_optional": "YES"
               },
               {
+                "name": "Monastic Tradition: Way of the Kensei (Revised UA)",
+                "text": [
+                  "Monks of the Way of Kensei train relentlessly with their weapons, to the point that the weapon becomes like an extension of the body. A kensei sees a weapon in much the same way a painter regards a brush or a writer sees parchment, ink, and quill. A sword or bow is a tool used to express the beauty and elegance of the martial arts. That such mastery makes a kensei a peerless warrior is but a side effect of intense devotion, practice, and study."
+                ],
+                "subclass": "Monastic Tradition: Way of the Kensei (Revised UA)",
+                "parent": "Monastic Tradition",
+                "issubclass": "YES",
+                "_optional": "YES"
+              },
+              {
                 "name": "Way of the Kensei: Path of the Kensei",
                 "text": [
                   "When you choose this tradition at 3rd level, you learn to extend your knowledge of the martial arts beyond the standard array of monk weapons.",
@@ -6678,6 +6665,16 @@
                 ],
                 "subclass": "Monastic Tradition: Way of the Kensei (Revised UA)",
                 "parent": "Way of the Kensei",
+                "_optional": "YES"
+              },
+              {
+                "name": "Monastic Tradition: Way of Tranquility (UA)",
+                "text": [
+                  "Monks of the Way of Tranquility see violence as a last resort. They use diplomacy, mercy, and understanding to resolve conflicts. If pushed, though, they are capable warriors who can bring an end to the unjust or cruel folk who refuse to listen to reason. When adventuring, these monks make excellent diplomats. They are also skilled in the healing arts, and can preserve their allies in the face of daunting foes."
+                ],
+                "subclass": "Monastic Tradition: Way of Tranquility (UA)",
+                "parent": "Monastic Tradition",
+                "issubclass": "YES",
                 "_optional": "YES"
               },
               {
@@ -6704,6 +6701,16 @@
                 "_optional": "YES"
               },
               {
+                "name": "Monastic Tradition: Way of the Drunken Master (UA)",
+                "text": [
+                  "The Way of the Drunken Master teaches its students to move with the jerky, unpredictable movements of a drunkard. A drunken master sways, tottering on unsteady feet, to present what seems like an incompetent combatant but proves frustrating to engage. The drunken master's erratic stumbles conceal a carefully executed dance of blocks, parries, advances, attacks, and retreats. Cunning warriors can see through the drunken master's apparent incompetence to recognize the masterful technique employed."
+                ],
+                "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
+                "parent": "Monastic Tradition",
+                "issubclass": "YES",
+                "_optional": "YES"
+              },
+              {
                 "name": "Way of the Drunken Master: Drunken Technique",
                 "text": [
                   "When you choose this tradition at 3rd level, you gain proficiency in the Performance skill if you don't already have it; your martial arts technique mixes martial training with the precision of a dancer and the antics of a jester.",
@@ -6712,13 +6719,6 @@
                 "subclass": "Monastic Tradition: Way of the Drunken Master (UA)",
                 "parent": "Way of the Drunken Master",
                 "_optional": "YES"
-              },
-              {
-                "name": "Deflect Missiles",
-                "text": [
-                  "Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d10 + your Dexterity modifier + your monk level.",
-                  "If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack (range 20 feet/60 feet) with the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack."
-                ]
               }
             ],
             "_level": "3"
