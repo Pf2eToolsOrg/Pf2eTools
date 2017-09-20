@@ -160,7 +160,8 @@ function userace (id) {
 		if (traitname.indexOf("Variant Feature") !== -1) {
 			traitname = traitname + "</span><p></p><span>"
 		}
-		texthtml = "<span class='name'>"+traitname+"</span> <p>"+traitlist[n].text.join("</p><p></p><p>")+"</p>"
+
+		texthtml = "<span class='name'>"+traitname+"</span> " + utils_combineText(traitlist[n].text);
 
 		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+n+"'>"+texthtml+"</td></tr>");
 	}
