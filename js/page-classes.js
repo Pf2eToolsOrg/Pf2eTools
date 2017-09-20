@@ -273,7 +273,7 @@ function useclass (id) {
 			}
 
 			var subfeature = (curfeature.suboption === "YES") ? " subfeature" : "";
-			var issubclass = (curfeature.subclass !== "undefined" && curfeature.parent === curfeature.subclass)  ? "" : " subclass";
+			var issubclass = (curfeature.subclass !== "undefined" && curfeature.parent === curfeature.subclass)	 ? "" : " subclass";
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);

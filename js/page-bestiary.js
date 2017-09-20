@@ -203,7 +203,7 @@ function loadmonsters() {
 		$("button#expandcollapse").click(function() {
 			$("main .row:eq(0) > div:eq(0)").toggleClass("col-sm-5").toggle();
 				$("main .row:eq(0) > div:eq(1)").toggleClass("col-sm-12").toggleClass("col-sm-7");
- 			/*
+			/*
 				var i = $("main .row:eq(0) > div:eq(1) > div:eq(0)");
 				if (i.css("maxHeight") === "100%") {
 					i.css("maxHeight", "565px");

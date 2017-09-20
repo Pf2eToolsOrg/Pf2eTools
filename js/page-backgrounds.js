@@ -25,11 +25,11 @@ function tagcontent (curitem, tag, multi=false) {
 }
 
 function asc_sort(a, b){
-    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+	return ($(b).text()) < ($(a).text()) ? 1 : -1;
 }
 
 function dec_sort(a, b){
-    return ($(b).text()) > ($(a).text()) ? 1 : -1;
+	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 window.onload = loadbackgrounds;
@@ -122,23 +122,23 @@ function usebackground (id) {
 			texthtml = texthtml + "<p>"+textlist[i]+"</p>";
 		}
 
-        var subtraitlist = traitlist[n].subtrait;
+		var subtraitlist = traitlist[n].subtrait;
 		if (subtraitlist !== undefined) {
 			var k = 0;
-            var subtrait;
+			var subtrait;
 			for (var j = 0; j < subtraitlist.length; j++) {
-                texthtml = texthtml + "<p class='subtrait'>";
+				texthtml = texthtml + "<p class='subtrait'>";
 				subtrait = subtraitlist[j];
 				texthtml = texthtml + "<span class='name'>"+subtrait.name+".</span> ";
 				for (k = 0; k < subtrait.text.length; k++) {
 					if (!subtrait.text[k]) continue;
 					if (k === 0) {
-                        texthtml = texthtml + "<span>" + subtrait.text[k] + "</span>";
-                    } else {
-                        texthtml = texthtml + "<p class='subtrait'>" + subtrait.text[k] + "</p>";
+						texthtml = texthtml + "<span>" + subtrait.text[k] + "</span>";
+					} else {
+						texthtml = texthtml + "<p class='subtrait'>" + subtrait.text[k] + "</p>";
 					}
 				}
-                texthtml = texthtml + "</p>";
+				texthtml = texthtml + "</p>";
 			}
 		}
 
