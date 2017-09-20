@@ -31,15 +31,34 @@ function parsespelllevel (level) {
 	return level+"th";
 }
 
+const SRC_PHB = "PHB";
+const SRC_EEPC = "EEPC";
+const SRC_SCAG = "SCAG";
+const SRC_UAMystic = "UAMystic";
+const SRC_UAStarterSpells = "UAStarterSpells";
+const SRC_UAModern = "UAModern";
+const SRC_UATOBM = "UATOBM";
+const SRC_BOLS_3PP = "BoLS 3pp";
 function parsesource (source) {
-	if (source === "PHB") source = "Player's Handbook";
-	if (source === "EEPC") source = "Elemental Evil Player's Companion";
-	if (source === "SCAG") source = "Sword Coast Adventurer's Guide";
-	if (source === "UAMystic") source = "Unearthed Arcana: The Mystic Class";
-	if (source === "UAStarterSpells") source = "Unearthed Arcana: Starter Spells";
-	if (source === "UAModern") source = "Unearthed Arcana: Modern Magic";
-	if (source === "UATOBM") source = "Unearthed Arcana: That Old Black Magic";
-	if (source === "BoLS 3pp") source = "Book of Lost Spells (3pp)";
+	if (source === SRC_PHB) source = "Player's Handbook";
+	if (source === SRC_EEPC) source = "Elemental Evil Player's Companion";
+	if (source === SRC_SCAG) source = "Sword Coast Adventurer's Guide";
+	if (source === SRC_UAMystic) source = "Unearthed Arcana: The Mystic Class";
+	if (source === SRC_UAStarterSpells) source = "Unearthed Arcana: Starter Spells";
+	if (source === SRC_UAModern) source = "Unearthed Arcana: Modern Magic";
+	if (source === SRC_UATOBM) source = "Unearthed Arcana: That Old Black Magic";
+	if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
+	return source;
+}
+function abbreviateSource(source) {
+	if (source === SRC_PHB) source = "PHB";
+	if (source === SRC_EEPC) source = "EEPC";
+	if (source === SRC_SCAG) source = "SCAG";
+	if (source === SRC_UAMystic) source = "UAM";
+	if (source === SRC_UAStarterSpells) source = "UASS";
+	if (source === SRC_UAModern) source = "UAMM";
+	if (source === SRC_UATOBM) source = "UAOBM";
+	if (source === SRC_BOLS_3PP) source = "BLS";
 	return source;
 }
 
@@ -148,7 +167,7 @@ function loadspells() {
 			if (curspell.level[0] === "P") name += " (Psionics)";
 
 			var leveltext = parsespelllevel(curspell.level);
-			if (parseInt(curspell.level) > 0) leveltext += " level"
+			// if (parseInt(curspell.level) > 0) leveltext += " level"
 			if (curspell.ritual === "YES") leveltext += " (ritual)";
 
 			var schooltext = parseschool(curspell.school);
@@ -174,7 +193,7 @@ function loadspells() {
 				curspell.range = "Varies";
 			}
 
-			var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3'>"+name+"</span> <span class='source col-xs-2' title=\""+parsesource(source)+"\">"+source+"</span> <span class='level col-xs-2'>"+leveltext+"</span> <span class='school col-xs-2'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3'>"+curspell.range+"</span>";
+			var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
 			 if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
 				var textlist = curspell.text;
 
