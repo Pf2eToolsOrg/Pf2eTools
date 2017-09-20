@@ -11,7 +11,7 @@ function utils_combineText(textList) {
 }
 
 function utils_makeTable(tableObject) {
-    let tableStack = "<table><caption>" + tableObject.caption + "</caption><thead><tr><td>" + tableObject.thead.join("</td><td>") + "</td></tr></thead>";
+    let tableStack = "<table><caption>" + tableObject.caption + "</caption><thead><tr><th>" + tableObject.thead.join("</th><th>") + "</th></tr></thead>";
     for (let i = 0; i < tableObject.tbody.length; ++i) {
         tableStack += "<tr><td>" + tableObject.tbody[i].join("</td><td>") + "</td></tr>";
     }
