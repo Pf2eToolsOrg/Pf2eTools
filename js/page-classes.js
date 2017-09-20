@@ -295,7 +295,15 @@ function useclass (id) {
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
+			let textStack = "";
+			for (let i = 0; i < curfeature.text.length; ++i) {
+				if (curfeature.text[i].istable === "YES") {
+					textStack += makeTable(curfeature.text[i]);
+				} else {
+					textStack += "<p>" + curfeature.text[i] + "</p>";
+				}
+			}
+			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong>" + textStack + "</td></tr>");
 		}
 
 	}
@@ -347,4 +355,12 @@ function useclass (id) {
 		});
 
 	return;
+}
+
+function makeTable(tableObject) {
+    let tableStack = "<table><caption>" + tableObject.caption + "</caption><thead><tr><td>" + tableObject.thead.join("</td><td>") + "</td></tr></thead>";
+	for (let i = 0; i < tableObject.tbody.length; ++i) {
+		tableStack += "<tr><td>" + tableObject.tbody[i].join("</td><td>") + "</td></tr>";
+	}
+	return tableStack;
 }
