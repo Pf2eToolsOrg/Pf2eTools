@@ -24,6 +24,7 @@ function parsesource (src) {
     if (source === "lost mine of phandelver") source = "LMoP";
     if (source === "Modern Magic Unearthed Arcana") source = "UA";
     if (source === "Tales from the Yawning Portal") source = "TYP";
+    if (source === "Tomb of Annihilation") source = "ToA";
     return source;
 }
 

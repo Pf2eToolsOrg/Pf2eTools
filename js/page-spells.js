@@ -278,8 +278,6 @@ function loadspells() {
 		});
 
 		$("ul.list li").click(function(e) {
-			usespell($(this).attr("id"));
-			document.title = decodeURIComponent($(this).attr("data-name")).replace("%27","'") + " - 5etools Spells";
 			window.location = "#"+$(this).attr("data-link").toLowerCase();
 		});
 
