@@ -44,7 +44,7 @@ function rollLoot(cr,hoard=false) {
 		return;
 	}
 
-	//	$("#lootoutput").html(JSON.stringify(curtable));
+	//$("#lootoutput").html(JSON.stringify(curtable));
 
 
 	// roll on tables
@@ -172,7 +172,7 @@ function rollLoot(cr,hoard=false) {
 				var roll = droll.roll(curamount).total;
 				var magicitems = [];
 
-		//		$("#lootoutput ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
+		//$("#lootoutput ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
 			$("#lootoutput ul:eq(0) > li").last().append("<hr>");
 				for (var i = 0; i < roll; i++) {
 
@@ -195,7 +195,7 @@ function rollLoot(cr,hoard=false) {
 
 
 				for (var i = 0; i < magicitems.length; i++) {
-				//	$("#lootoutput ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
+				//$("#lootoutput ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
 					$("#lootoutput ul:eq(0)").append('<li class="magicitem">'+magicitems[i]+'</li>');
 				}
 

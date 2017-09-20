@@ -19,8 +19,8 @@ function loadrules() {
 
 	var ruleslist = rulesdata.compendium.rules;
 
-	for (var i = 0; i <	 ruleslist.length; i++) {
-		var currules =	ruleslist[i];
+	for (var i = 0; i < ruleslist.length; i++) {
+		var currules = ruleslist[i];
 		var name = currules.name;
 	var basedon = "";
 	var rulesid = currules.id.toString();
@@ -84,7 +84,7 @@ function userules (id) {
 	$("#rulescontent").html(contentdefault);
 
 	var ruleslist = rulesdata.compendium.rules;
-	var currules =	ruleslist[id];
+	var currules = ruleslist[id];
 
   $("#rulescontent").html(currules.htmlcontent);
   $("#rulescontent").prepend(`<h1>`+currules.name+`</h1>`)

@@ -313,7 +313,7 @@ function useitem (id) {
 
 	$("td span#rarity").html("");
 	var rarity = curitem.rarity;
-	if (rarity)	$("td span#rarity").html(", "+rarity);
+	if (rarity) $("td span#rarity").html(", "+rarity);
 
 
 

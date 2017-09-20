@@ -194,7 +194,7 @@ function loadspells() {
 			}
 
 			var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
-			 if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
+			if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
 				var textlist = curspell.text;
 
 				var psisearch = "";
@@ -212,8 +212,8 @@ function loadspells() {
 				}
 
 				toadd = toadd + "<span class='disciplinesearch' style='display: none'>"+psisearch+"</span>";
-			 }
-			 toadd = toadd + "</li>";
+			}
+			toadd = toadd + "</li>";
 			$("ul.spells").append(toadd);
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
