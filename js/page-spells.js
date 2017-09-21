@@ -154,7 +154,19 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = loadspells;
+window.onload = init;
+window.onhashchange = function hashchange(e) { spell_hashchange() };
+
+function init() {
+	loadspells();
+	spell_hashchange();
+}
+
+function spell_hashchange() {
+	let $el = $("ul.list li[data-link='"+window.location.hash.split("#")[1].toLowerCase()+"']:eq(0)");
+	usespell($el.attr("id"));
+	document.title = decodeURIComponent($el.attr("data-name")).replace("%27","'") + " - 5etools Spells";
+}
 
 function loadspells() {
 	tabledefault = $("#stats").html();
@@ -236,7 +248,6 @@ function loadspells() {
 				}
 			}
 
-			// TODO range filter
 			if (!$("select.rangefilter:contains(\""+curspell.range+"\")").length) {
 				$("select.rangefilter").append("<option value='"+normaliserange(curspell.range)+"'>"+curspell.range+"</option>");
 			}
