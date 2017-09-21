@@ -51,15 +51,15 @@ function parsesource (source) {
 	return source;
 }
 function abbreviateSource(source) {
-    if (source === SRC_PHB) source = "PHB";
-    if (source === SRC_EEPC) source = "EEPC";
-    if (source === SRC_SCAG) source = "SCAG";
-    if (source === SRC_UAMystic) source = "UAM";
-    if (source === SRC_UAStarterSpells) source = "UASS";
-    if (source === SRC_UAModern) source = "UAMM";
-    if (source === SRC_UATOBM) source = "UAOBM";
-    if (source === SRC_BOLS_3PP) source = "BLS";
-    return source;
+	if (source === SRC_PHB) source = "PHB";
+	if (source === SRC_EEPC) source = "EEPC";
+	if (source === SRC_SCAG) source = "SCAG";
+	if (source === SRC_UAMystic) source = "UAM";
+	if (source === SRC_UAStarterSpells) source = "UASS";
+	if (source === SRC_UAModern) source = "UAMM";
+	if (source === SRC_UATOBM) source = "UAOBM";
+	if (source === SRC_BOLS_3PP) source = "BLS";
+	return source;
 }
 
 const SELF_RANGE_OFFSET = -4;
@@ -83,75 +83,75 @@ const MILE_DISTANCE_REGEX = /(\d+) miles|(1) mile/; // eg "500 miles" or "1 mile
 const MILE_SELF_AREA_REGEX = /self \((\d+)-mile .*\)/; // eg "Self (5-mile radius)"
 function normaliserange(range) {
 	range = range.toLowerCase();
-    if (range === "self") return SELF_RANGE;
-    if (range === "touch") return TOUCH_RANGE;
-    if (range === "sight") return SIGHT_RANGE;
-    if (range === "unlimited") return UNLIMITED_RANGE;
-    if (range === "special") return SPECIAL_RANGE;
-    if (range === "varies") return VARIABLE_RANGE;
+	if (range === "self") return SELF_RANGE;
+	if (range === "touch") return TOUCH_RANGE;
+	if (range === "sight") return SIGHT_RANGE;
+	if (range === "unlimited") return UNLIMITED_RANGE;
+	if (range === "special") return SPECIAL_RANGE;
+	if (range === "varies") return VARIABLE_RANGE;
 
-    var out = "";
-    var matchesDistance = DISTANCE_REGEX.exec(range.trim());
-    if (matchesDistance) {
-        out = matchesDistance[1] === undefined ? matchesDistance[2] : matchesDistance[1];
-        return parseInt(out);
-    }
+	var out = "";
+	var matchesDistance = DISTANCE_REGEX.exec(range.trim());
+	if (matchesDistance) {
+		out = matchesDistance[1] === undefined ? matchesDistance[2] : matchesDistance[1];
+		return parseInt(out);
+	}
 
-    var matchesSelfAreaRadius = SELF_AREA_RADIUS_REGEX.exec(range.trim());
-    if (matchesSelfAreaRadius) {
-        return parseInt(matchesSelfAreaRadius[1]) + 3;
-    }
+	var matchesSelfAreaRadius = SELF_AREA_RADIUS_REGEX.exec(range.trim());
+	if (matchesSelfAreaRadius) {
+		return parseInt(matchesSelfAreaRadius[1]) + 3;
+	}
 
-    var matchesSelfAreaSphere = SELF_AREA_SPHERE_REGEX.exec(range.trim());
-    if (matchesSelfAreaSphere) {
-        return parseInt(matchesSelfAreaSphere[1]) + 4;
-    }
+	var matchesSelfAreaSphere = SELF_AREA_SPHERE_REGEX.exec(range.trim());
+	if (matchesSelfAreaSphere) {
+		return parseInt(matchesSelfAreaSphere[1]) + 4;
+	}
 
-    var matchesSelfAreaCube = SELF_AREA_CUBE_REGEX.exec(range.trim());
-    if (matchesSelfAreaCube) {
-        return parseInt(matchesSelfAreaCube[1]) + 5;
-    }
+	var matchesSelfAreaCube = SELF_AREA_CUBE_REGEX.exec(range.trim());
+	if (matchesSelfAreaCube) {
+		return parseInt(matchesSelfAreaCube[1]) + 5;
+	}
 
-    var matchesSelfAreaHemisphere = SELF_AREA_HEMISPHERE_REGEX.exec(range.trim());
-    if (matchesSelfAreaHemisphere) {
-        return parseInt(matchesSelfAreaHemisphere[1]) + 6;
-    }
+	var matchesSelfAreaHemisphere = SELF_AREA_HEMISPHERE_REGEX.exec(range.trim());
+	if (matchesSelfAreaHemisphere) {
+		return parseInt(matchesSelfAreaHemisphere[1]) + 6;
+	}
 
-    var matchesSelfAreaLine = SELF_AREA_LINE_REGEX.exec(range.trim());
-    if (matchesSelfAreaLine) {
-        return parseInt(matchesSelfAreaLine[1]) + 7;
-    }
+	var matchesSelfAreaLine = SELF_AREA_LINE_REGEX.exec(range.trim());
+	if (matchesSelfAreaLine) {
+		return parseInt(matchesSelfAreaLine[1]) + 7;
+	}
 
-    var matchesSelfAreaCone = SELF_AREA_CONE_REGEX.exec(range.trim());
-    if (matchesSelfAreaCone) {
-        return parseInt(matchesSelfAreaCone[1]) + SELF_RANGE_OFFSET;
-    }
+	var matchesSelfAreaCone = SELF_AREA_CONE_REGEX.exec(range.trim());
+	if (matchesSelfAreaCone) {
+		return parseInt(matchesSelfAreaCone[1]) + SELF_RANGE_OFFSET;
+	}
 
-    var matchesMileDistance = MILE_DISTANCE_REGEX.exec(range.trim());
-    if (matchesMileDistance) {
-    	out = matchesMileDistance[1] === undefined ? matchesMileDistance[2] : matchesMileDistance[1];
-        return parseInt(out) * FEET_PER_MILE;
-    }
+	var matchesMileDistance = MILE_DISTANCE_REGEX.exec(range.trim());
+	if (matchesMileDistance) {
+		out = matchesMileDistance[1] === undefined ? matchesMileDistance[2] : matchesMileDistance[1];
+		return parseInt(out) * FEET_PER_MILE;
+	}
 
-    var matchesSelfMileArea = MILE_SELF_AREA_REGEX.exec(range.trim());
-    if (matchesSelfMileArea) {
-        return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) - 7;
-    }
+	var matchesSelfMileArea = MILE_SELF_AREA_REGEX.exec(range.trim());
+	if (matchesSelfMileArea) {
+		return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) - 7;
+	}
 
-    console.log("failed to find range for: " + range);
-    return UNKNOWN_RANGE;
+	console.log("failed to find range for: " + range);
+	return UNKNOWN_RANGE;
 }
 
 function asc_sort(a, b){
-    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+	return ($(b).text()) < ($(a).text()) ? 1 : -1;
 }
 
 function asc_sort_range(a, b){
-    return (parseInt(b.value)) < parseInt((a.value)) ? 1 : -1;
+	return (parseInt(b.value)) < parseInt((a.value)) ? 1 : -1;
 }
 
 function dec_sort(a, b){
-    return ($(b).text()) > ($(a).text()) ? 1 : -1;
+	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 window.onload = loadspells;
@@ -190,30 +190,30 @@ function loadspells() {
 			}
 
 			if (!curspell.range) {
-                curspell.range = "Varies";
+				curspell.range = "Varies";
 			}
 
-            var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
-             if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
-                var textlist = curspell.text;
+			var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
+			if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
+				var textlist = curspell.text;
 
-                var psisearch = "";
-                for (var j = 0; j < textlist.length; ++j) {
-                    var regex = /^((.* )\(.*psi.*?\)|Bestial Transformation)\./g;
-                    var matches = regex.exec(textlist[j]);
+				var psisearch = "";
+				for (var j = 0; j < textlist.length; ++j) {
+					var regex = /^((.* )\(.*psi.*?\)|Bestial Transformation)\./g;
+					var matches = regex.exec(textlist[j]);
 
-                    if (matches) {
-                        var cleanedpsi = matches[1].trim();
-                        if (cleanedpsi.indexOf("(") != -1) {
-                            cleanedpsi = cleanedpsi.substring(0, cleanedpsi.indexOf("("));
-                        }
-                        psisearch += '"' + cleanedpsi.trim() + '" '
-                    }
-                }
+					if (matches) {
+						var cleanedpsi = matches[1].trim();
+						if (cleanedpsi.indexOf("(") != -1) {
+							cleanedpsi = cleanedpsi.substring(0, cleanedpsi.indexOf("("));
+						}
+						psisearch += '"' + cleanedpsi.trim() + '" '
+					}
+				}
 
-                toadd = toadd + "<span class='disciplinesearch' style='display: none'>"+psisearch+"</span>";
-             }
-             toadd = toadd + "</li>";
+				toadd = toadd + "<span class='disciplinesearch' style='display: none'>"+psisearch+"</span>";
+			}
+			toadd = toadd + "</li>";
 			$("ul.spells").append(toadd);
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
@@ -237,9 +237,9 @@ function loadspells() {
 			}
 
 			// TODO range filter
-            if (!$("select.rangefilter:contains(\""+curspell.range+"\")").length) {
-                $("select.rangefilter").append("<option value='"+normaliserange(curspell.range)+"'>"+curspell.range+"</option>");
-            }
+			if (!$("select.rangefilter:contains(\""+curspell.range+"\")").length) {
+				$("select.rangefilter").append("<option value='"+normaliserange(curspell.range)+"'>"+curspell.range+"</option>");
+			}
 		}
 
 		$("select.levelfilter option").sort(asc_sort).appendTo('select.levelfilter');
@@ -256,8 +256,8 @@ function loadspells() {
 		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 		$("select.sourcefilter").val("All");
 
-   		$("select.rangefilter option").sort(asc_sort_range).appendTo('select.rangefilter');
-   		$("select.rangefilter").val(ALL_RANGES.toString());
+		$("select.rangefilter option").sort(asc_sort_range).appendTo('select.rangefilter');
+		$("select.rangefilter").val(ALL_RANGES.toString());
 
 		var options = {
 			valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch', 'range'],
@@ -323,7 +323,7 @@ function loadspells() {
 				// if (thirdpartyfilter === "All") rightparty = true;
 				// if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
 				// if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
-                if (rangefilter === ALL_RANGES || normaliserange(item.values().range) === rangefilter) rightrange = true;
+				if (rangefilter === ALL_RANGES || normaliserange(item.values().range) === rangefilter) rightrange = true;
 				if (rightlevel && rightschool && rightclass && rightsource && rightparty && rightrange) return true;
 				return false;
 			});
@@ -373,79 +373,79 @@ function sortspells(a, b, o) {
 		return (parseInt(blevel) > parseInt(alevel)) ? 1 : -1;
 	}
 
-    if (o.valueName === "range") {
-        return (normaliserange(b._values.range.toLowerCase()) > normaliserange(a._values.range)) ? 1 : -1;
-    }
+	if (o.valueName === "range") {
+		return (normaliserange(b._values.range.toLowerCase()) > normaliserange(a._values.range)) ? 1 : -1;
+	}
 
 	return 0;
 
 }
 
 function usespell (id) {
-    $("#stats").html(tabledefault);
-    var spelllist = spelldata.compendium.spell;
-    var curspell = spelllist[id];
+	$("#stats").html(tabledefault);
+	var spelllist = spelldata.compendium.spell;
+	var curspell = spelllist[id];
 
-    $("th#name").html("<span title=\""+parsesource(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
+	$("th#name").html("<span title=\""+parsesource(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
 
-    // $("th#name").html(curspell.name);
+	// $("th#name").html(curspell.name);
 
-    if (curspell.level[0] !== "P") {
-        $("td span#school").html(parseschool(curspell.school));
-        if (curspell.level === "0") {
-            $("td span#school").css('textTransform', 'capitalize');
-            $("td span#level").css('textTransform', 'lowercase!important');
-            $("td span#level").html(" cantrip").detach().appendTo("td span#school");
-        } else {
-            $("td span#school").css('textTransform', 'lowercase');
-            $("td span#level").html(parsespelllevel (curspell.level)+"-level");
-        }
-
-        if (curspell.ritual === "YES") {
-            $("td span#ritual").show();
-        } else $("td span#ritual").hide();
-
-        $("td#components span").html(curspell.components);
-        $("td#range span").html(curspell.range);
-        $("td#castingtime span").html(curspell.time);
-        $("td#duration span").html(curspell.duration);
-    } else {
-        var psitype = "";
-        if (curspell.level[1] === "D") {
-            psitype = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
-            psitype += " Discipline";
-        } else if (curspell.level[1] === "T") {
-            psitype = "Psionic Talent";
-        }
-        $("td#levelschoolritual").html(psitype);
-        $("td#castingtime").html("");
-        $("td#range").html("");
-        $("td#components").html("");
-        $("td#duration").html("");
-    }
-
-    $("tr.text").remove();
-    var textlist = curspell.text;
-    var texthtml = "";
-
-    if (textlist[0].length === 1) {
-        texthtml = "<p>"+textlist+"</p>";
-    } else for (var i = 0; i < textlist.length; i++) {
-    	// FIXME this information should be kept in JSON instead of being parsed out
-		if (textlist[i].istable === "YES") {
-            texthtml += utils_makeTable(textlist[i]);
+	if (curspell.level[0] !== "P") {
+		$("td span#school").html(parseschool(curspell.school));
+		if (curspell.level === "0") {
+			$("td span#school").css('textTransform', 'capitalize');
+			$("td span#level").css('textTransform', 'lowercase!important');
+			$("td span#level").html(" cantrip").detach().appendTo("td span#school");
 		} else {
-            if (!textlist[i]) continue;
-            if (curspell.level[0] !== "P") {
-                texthtml = texthtml + "<p>" + textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ") + "</p>";
-            } else {
-                texthtml = texthtml + "<p>" + textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus|Bestial Transformation)\./g, "<strong>$&</strong>") + "</p>";
-            }
-        }
-    }
-    $("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
+			$("td span#school").css('textTransform', 'lowercase');
+			$("td span#level").html(parsespelllevel (curspell.level)+"-level");
+		}
 
-    $("td#classes span").html(curspell.classes);
+		if (curspell.ritual === "YES") {
+			$("td span#ritual").show();
+		} else $("td span#ritual").hide();
 
-    return;
+		$("td#components span").html(curspell.components);
+		$("td#range span").html(curspell.range);
+		$("td#castingtime span").html(curspell.time);
+		$("td#duration span").html(curspell.duration);
+	} else {
+		var psitype = "";
+		if (curspell.level[1] === "D") {
+			psitype = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
+			psitype += " Discipline";
+		} else if (curspell.level[1] === "T") {
+			psitype = "Psionic Talent";
+		}
+		$("td#levelschoolritual").html(psitype);
+		$("td#castingtime").html("");
+		$("td#range").html("");
+		$("td#components").html("");
+		$("td#duration").html("");
+	}
+
+	$("tr.text").remove();
+	var textlist = curspell.text;
+	var texthtml = "";
+
+	if (textlist[0].length === 1) {
+		texthtml = "<p>"+textlist+"</p>";
+	} else for (var i = 0; i < textlist.length; i++) {
+		// FIXME this information should be kept in JSON instead of being parsed out
+		if (textlist[i].istable === "YES") {
+			texthtml += utils_makeTable(textlist[i]);
+		} else {
+			if (!textlist[i]) continue;
+			if (curspell.level[0] !== "P") {
+				texthtml = texthtml + "<p>" + textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ") + "</p>";
+			} else {
+				texthtml = texthtml + "<p>" + textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus|Bestial Transformation)\./g, "<strong>$&</strong>") + "</p>";
+			}
+		}
+	}
+	$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
+
+	$("td#classes span").html(curspell.classes);
+
+	return;
 }

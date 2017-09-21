@@ -117,7 +117,7 @@ function loadpage() {
 			curdata = window.location.hash.split("traits:")[1].split(",");
 			for (var i = 1; i < curdata.length; i++) {
 				$("input[id='"+curdata[i].split(":")[0]+"']").click();
-				if (curdata[i].split(":")[1]) 	$("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
+				if (curdata[i].split(":")[1]) $("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
 			}
 		}
 

@@ -36,11 +36,11 @@ function tagcontent (curitem, tag, multi=false) {
 }
 
 function asc_sort(a, b){
-    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+	return ($(b).text()) < ($(a).text()) ? 1 : -1;
 }
 
 function dec_sort(a, b){
-    return ($(b).text()) > ($(a).text()) ? 1 : -1;
+	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 window.onload = loadraces;
@@ -64,9 +64,9 @@ function loadraces() {
 			$("select.sizefilter").append("<option value='"+parsesize(currace.size)+"'>"+parsesize(currace.size)+"</option>");
 		}
 
-		// if (!$("select.bonusfilter:contains(\""+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"\")").length) {
-		// 	$("select.bonusfilter").append("<option value='"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</option>");
-		// }
+		//if (!$("select.bonusfilter:contains(\""+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"\")").length) {
+		//	$("select.bonusfilter").append("<option value='"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</option>");
+		//}
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');

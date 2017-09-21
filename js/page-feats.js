@@ -23,11 +23,11 @@ function parsesize (size) {
 }
 
 function asc_sort(a, b){
-    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+	return ($(b).text()) < ($(a).text()) ? 1 : -1;
 }
 
 function dec_sort(a, b){
-    return ($(b).text()) > ($(a).text()) ? 1 : -1;
+	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 window.onload = loadfeats;

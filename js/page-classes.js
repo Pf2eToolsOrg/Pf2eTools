@@ -131,7 +131,7 @@ function useclass (id) {
 	for (var i = curclass.autolevel.length-1; i >= 0; i--) {
 		var curlevel = curclass.autolevel[i];
 
-        // spell slots and table data
+		// spell slots and table data
 		if (!curlevel.feature) {
 			if (curlevel.slots) {
 				$("tr:has(.slotlabel)").show();
@@ -258,7 +258,7 @@ function useclass (id) {
 				$("tr#level"+curlevel._level+" td.talentsknown").html(curlevel.talentsknown);
 			}
 
-        // other features
+		// other features
 		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
 			var curfeature = curlevel.feature[a];
 			var link = curlevel._level + "_" + a;
@@ -268,12 +268,12 @@ function useclass (id) {
 				subclasses.push(curfeature);
 			}
 
-            var styleClass = "";
+			var styleClass = "";
 			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
-            else if (curfeature.subclass === undefined && curfeature.suboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubfeature";
-            else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
-            else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
-            else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
+			else if (curfeature.subclass === undefined && curfeature.suboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubfeature";
+			else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
+			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
+			else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
