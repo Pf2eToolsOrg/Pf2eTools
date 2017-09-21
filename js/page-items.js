@@ -362,24 +362,29 @@ function useitem (id) {
     for (var n = 0; n < textlist.length; n++) {
         if (!textlist[n]) continue;
         var curtextstring = JSON.stringify (textlist[n]);
-        if (curtextstring.indexOf("Requires Attunement") !== -1) {
-            $("td span#attunement").html("("+textlist[n]+")");
-            continue;
-        }
-        if (textlist[n].indexOf(", common") > 0) continue;
-        if (textlist[n].indexOf(", uncommon") > 0) continue;
-        if (textlist[n].indexOf(", rare") > 0) continue;
-        if (textlist[n].indexOf(", very rare") > 0) continue;
-        if (textlist[n].indexOf(", legendary") > 0) continue;
-        if (textlist[n].indexOf("(requires attunement)") > 0) continue;
-        if (textlist[n].split("Rarity:")[1]) continue;
-        if (textlist[n].split("Source:")[1]) {
-            $("td#source span").html(textlist[n].split("Source:")[1]);
-            continue;
-        }
+        if (textlist[n].istable === "YES") {
+            texthtml += utils_makeTable(textlist[n]);
+        } else {
+            // FIXME this data should be included in the JSON
+            if (curtextstring.indexOf("Requires Attunement") !== -1) {
+                $("td span#attunement").html("(" + textlist[n] + ")");
+                continue;
+            }
+            if (textlist[n].indexOf(", common") > 0) continue;
+            if (textlist[n].indexOf(", uncommon") > 0) continue;
+            if (textlist[n].indexOf(", rare") > 0) continue;
+            if (textlist[n].indexOf(", very rare") > 0) continue;
+            if (textlist[n].indexOf(", legendary") > 0) continue;
+            if (textlist[n].indexOf("(requires attunement)") > 0) continue;
+            if (textlist[n].split("Rarity:")[1]) continue;
+            if (textlist[n].split("Source:")[1]) {
+                $("td#source span").html(textlist[n].split("Source:")[1]);
+                continue;
+            }
 
-        var finaltext = textlist[n].replace(/(Curse|Sentience|Personality)(\.|\:) /g, '<strong>$1.</strong> ');
-        texthtml = texthtml + "<p>"+finaltext+"</p>";
+            var finaltext = textlist[n].replace(/(Curse|Sentience|Personality)(\.|\:) /g, '<strong>$1.</strong> ');
+            texthtml = texthtml + "<p>"+finaltext+"</p>";
+        }
     }
 
     $("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");

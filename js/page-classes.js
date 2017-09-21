@@ -295,7 +295,7 @@ function useclass (id) {
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong> <p>"+curfeature.text.join("</p><p>")+"</td></tr>");
+			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong>" + utils_combineText(curfeature.text) + "</td></tr>");
 		}
 
 	}

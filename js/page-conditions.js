@@ -61,14 +61,5 @@ function loadconditions() {
 
 			$("tr.text").remove();
 
-			var textlist = curcondition.text;
-			var texthtml = "";
-
-			for (var i = 0; i < textlist.length; i++) {
-				if (!textlist[i]) continue;
-				texthtml = texthtml + "<p>"+textlist[i]+"</p>";
-			}
-
-			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
-
-		};
+			$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curcondition.text)+"</td></tr>");
+		}

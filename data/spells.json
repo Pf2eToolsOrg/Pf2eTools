@@ -189,7 +189,60 @@ var spelldata = {
                     "Objects come to life at your command. Choose up to ten nonmagical objects within range that are not being worn or carried. Medium targets count as two objects, Large targets count as four objects, Huge targets count as eight objects. You can't animate any object larger than Huge. Each target animates and becomes a creature under your control until the spell ends or until reduced to 0 hit points.",
                     "As a bonus action, you can mentally command any creature you made with this spell if the creature is within 500 feet of you (if you control multiple creatures, you can command any or all of them at the same time, issuing the same command to each one). You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.",
                     "Animated Object Statistics",
-                    "<table><thead><tr><th>Size</th><th>HP</th><th>AC</th><th>Attack</th><th>Str</th><th>Dex</th></tr></thead><tbody><tr><td>Tiny </td><td>20 </td><td>18 </td><td>+8 to hit, 1d4 + 4 damage</td><td>4</td><td>18</td></tr><tr><td>Small </td><td>25 </td><td>16 </td><td>+6 to hit, ld8 + 2 damage</td><td>6</td><td>14</td></tr><tr><td>Medium </td><td>40 </td><td>13 </td><td>+5 to hit. 2d6 + 1 damage</td><td>10</td><td>12</td></tr><tr><td>Large </td><td>50 </td><td>10 </td><td>+6 to hit. 2dl0 + 2 damage</td><td>14</td><td>10</td></tr><tr><td>Huge </td><td>80</td><td>10 </td><td>+8 to hit. 2d12 + 4 damage</td><td>18</td><td>6</td></tr></tbody></table>",
+                    {
+                        "istable": "YES",
+                        "caption": "Animated Object Statistics",
+                        "thead": [
+                            "Size",
+                            "HP",
+                            "AC",
+                            "Attack",
+                            "Str",
+                            "Dex"
+                        ],
+                        "tbody": [
+                            [
+                                "Tiny ",
+                                "20 ",
+                                "18 ",
+                                "+8 to hit, 1d4 + 4 damage",
+                                "4",
+                                "18"
+                            ],
+                            [
+                                "Small ",
+                                "25 ",
+                                "16 ",
+                                "+6 to hit, ld8 + 2 damage",
+                                "6",
+                                "14"
+                            ],
+                            [
+                                "Medium ",
+                                "40 ",
+                                "13 ",
+                                "+5 to hit. 2d6 + 1 damage",
+                                "10",
+                                "12"
+                            ],
+                            [
+                                "Large ",
+                                "50 ",
+                                "10 ",
+                                "+6 to hit. 2dl0 + 2 damage",
+                                "14",
+                                "10"
+                            ],
+                            [
+                                "Huge ",
+                                "80",
+                                "10 ",
+                                "+8 to hit. 2d12 + 4 damage",
+                                "18",
+                                "6"
+                            ]
+                        ]
+                    },
                     "An animated object is a construct with AC, hit points, attacks, Strength, and Dexterity determine by its size. Its Constitution is 10 and its Intelligence and Wisdom are 3, and its Charisma is 1. Its speed is 30 feet, if the objects lack legs or other appendages it can use for locomotion, it instead has a flying speed of 30 feet and can hover. If the object is securely attached to a surface or larger object, such as a chain bolted to a wall, its speed is 0. It has blindsight with a radius of 30 feet and is blind beyond that distance. When the animated object drops to 0 hit points, it reverts to its original object form, and any remaining damage carries over to its original object form.",
                     "If you command an object to attack, it can make a single melee attack against a creature within 5 feet of it. It makes a slam attack with an attack bonus and bludgeoning damage determine by its size. The DM might rule that a specific object inflicts slashing or piercing damage based on its form.",
                     "At Higher Levels: If you cast this spell using a spell slot of 6th level or higher, you can animate two additional objects for each slot level above 5th."
@@ -1067,7 +1120,32 @@ var spelldata = {
                 "text": [
                     "This spell assaults and twists creatures' minds, spawning delusions and provoking uncontrolled actions. Each creature in a 10-foot-radius sphere centered on a point you choose within range must succeed on a Wisdom saving throw when you cast this spell or be affected by it.",
                     "An affected target can't take reactions and must roll a d10 at the start of each of its turns to determine its behavior for that turn.",
-                    "<table><thead><tr><th>d10</th><th>Behavior</th></tr></thead><tbody><tr><td>1</td><td>The creature uses all its movement to move in a random direction. To determine the direction, roll a d8 and assign a direction to each die face. The creature doesn't take an action this turn.</td></tr><tr><td>2-6</td><td>The creature doesn't move or take actions this turn.</td></tr><tr><td>7-8</td><td>The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.</td></tr><tr><td>9-10</td><td>The creature can act and move normally.</td></tr></tbody></table>",
+                    {
+                        "istable": "YES",
+                        "caption": "Confusion Behaviour",
+                        "thead": [
+                            "d10",
+                            "Behavior"
+                        ],
+                        "tbody": [
+                            [
+                                "1",
+                                "The creature uses all its movement to move in a random direction. To determine the direction, roll a d8 and assign a direction to each die face. The creature doesn't take an action this turn."
+                            ],
+                            [
+                                "2-6",
+                                "The creature doesn't move or take actions this turn."
+                            ],
+                            [
+                                "7-8",
+                                "The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn."
+                            ],
+                            [
+                                "9-10",
+                                "The creature can act and move normally."
+                            ]
+                        ]
+                    },
                     "At the end of its turns, an affected target can make a Wisdom saving throw. If it succeeds, this effect ends for that target.",
                     "At Higher Levels: When you cast this spell using a spell slot of 5th level or higher, the radius of the sphere increases by 5 feet for each slot above 4th."
                 ],
@@ -1317,12 +1395,100 @@ var spelldata = {
                     "You take control of the weather within 5 miles of you for the duration. You must be outdoors to cast this spell. Moving to a place where you don't have a clear path to the sky ends the spell early.",
                     "When you cast the spell, you change the current weather conditions, which are determined by the DM based on the climate and season. You can change precipitation, temperature, and wind. It takes 1d4 x 10 minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal.",
                     "When you change the weather conditions, find a current condition on the following tables and change its stage by one, up or down. When changing the wind, you can change its direction.",
-                    "Precipitation:",
-                    "<table><thead><tr><th>Stage</th><th>Condition</th></tr></thead><tbody><tr><td>1</td><td>Clear</td></tr><tr><td>2</td><td>Light clouds</td></tr><tr><td>3</td><td>Overcast or ground fog</td></tr><tr><td>4</td><td>Rain, hail or snow</td></tr><tr><td>5</td><td>Torrential rain, driving hail or blizzard</td></tr></tbody></table>",
-                    "Temperature:",
-                    "<table><thead><tr><th>Stage</th><th>Condition</th></tr></thead><tbody><tr><td>1</td><td>Unbearable heat</td></tr><tr><td>2</td><td>Hot</td></tr><tr><td>3</td><td>Warm</td></tr><tr><td>4</td><td>Cool</td></tr><tr><td>5</td><td>Cold</td></tr><tr><td>6</td><td>Arctic cold</td></tr></tbody></table>",
-                    "Wind:",
-                    "<table><thead><tr><th>Stage</th><th>Condition</th></tr></thead><tbody><tr><td>1</td><td>Calm</td></tr><tr><td>2</td><td>Moderate wind</td></tr><tr><td>3</td><td>Strong wind</td></tr><tr><td>4</td><td>Gale</td></tr><tr><td>5</td><td>Storm</td></tr></tbody></table>"
+                    {
+                        "istable": "YES",
+                        "caption": "Precipitation",
+                        "thead": [
+                            "Stage",
+                            "Condition"
+                        ],
+                        "tbody": [
+                            [
+                                "1",
+                                "Clear"
+                            ],
+                            [
+                                "2",
+                                "Light clouds"
+                            ],
+                            [
+                                "3",
+                                "Overcast or ground fog"
+                            ],
+                            [
+                                "4",
+                                "Rain, hail or snow"
+                            ],
+                            [
+                                "5",
+                                "Torrential rain, driving hail or blizzard"
+                            ]
+                        ]
+                    },
+                    {
+                        "istable": "YES",
+                        "caption": "Temperature",
+                        "thead": [
+                            "Stage",
+                            "Condition"
+                        ],
+                        "tbody": [
+                            [
+                                "1",
+                                "Unbearable heat"
+                            ],
+                            [
+                                "2",
+                                "Hot"
+                            ],
+                            [
+                                "3",
+                                "Warm"
+                            ],
+                            [
+                                "4",
+                                "Cool"
+                            ],
+                            [
+                                "5",
+                                "Cold"
+                            ],
+                            [
+                                "6",
+                                "Arctic cold"
+                            ]
+                        ]
+                    },
+                    {
+                        "istable": "YES",
+                        "caption": "Wind",
+                        "thead": [
+                            "Stage",
+                            "Condition"
+                        ],
+                        "tbody": [
+                            [
+                                "1",
+                                "Calm"
+                            ],
+                            [
+                                "2",
+                                "Moderate wind"
+                            ],
+                            [
+                                "3",
+                                "Strong wind"
+                            ],
+                            [
+                                "4",
+                                "Gale"
+                            ],
+                            [
+                                "5",
+                                "Storm"
+                            ]
+                        ]
+                    }
                 ],
                 "roll": "1d4*10"
             },
@@ -1449,7 +1615,36 @@ var spelldata = {
                 "text": [
                     "You pull wisps of shadow material from the Shadowfell to create a nonliving object of vegetable matter within range - soft goods, rope, wood, or something similar. You can also use this spell to create mineral objects such as stone, crystal, or metal. The object created must be no larger than a 5-foot cube, and the object must be of a form and material that you have seen before.",
                     "The duration depends on the object's material. If the object is composed of multiple materials, use the shortest duration.",
-                    "<table><thead><tr><th>Material</th><th>Duration</th></tr></thead><tbody><tr><td>Vegetable matter</td><td>1 day</td></tr><tr><td>Stone or crystal</td><td>12 hours</td></tr><tr><td>Precious metals</td><td>1 hour</td></tr><tr><td>Gems</td><td>10 minutes</td></tr><tr><td>Adamantine or mithral</td><td>1 minute</td></tr></tbody></table>",
+                    {
+                        "istable": "YES",
+                        "caption": "Creation",
+                        "thead": [
+                            "Material",
+                            "Duration"
+                        ],
+                        "tbody": [
+                            [
+                                "Vegetable matter",
+                                "1 day"
+                            ],
+                            [
+                                "Stone or crystal",
+                                "12 hours"
+                            ],
+                            [
+                                "Precious metals",
+                                "1 hour"
+                            ],
+                            [
+                                "Gems",
+                                "10 minutes"
+                            ],
+                            [
+                                "Adamantine or mithral",
+                                "1 minute"
+                            ]
+                        ]
+                    },
                     "Using any material created by this spell as another spell's material component causes that spell to fail.",
                     "At Higher Levels: When you cast this spell using a spell slot of 6th level or higher, the cube increases by 5 feet for each slot level above 5th."
                 ]
@@ -4892,7 +5087,72 @@ var spelldata = {
                 "text": [
                     "You touch a dead humanoid or a piece of a dead humanoid. Provided that the creature has been dead no longer than 10 days, the spell forms a new adult body for it and then calls the soul to enter that body. If the target's soul isn't free or willing to do so, the spell fails.",
                     "The magic fashions a new body for the creature to inhabit, which likely causes the creature's race to change. The DM rolls a d100 and consults the following table to determine what form the creature takes when restored to life, or the DM chooses a form.",
-                    "<table><thead><tr><th>d100</th><th>Race</th></tr></thead><tbody><tr><td>01-04</td><td>Dragonborn</td></tr><tr><td>05-13</td><td>Dwarf, hill</td></tr><tr><td>14-21</td><td>Dwarf, mountain</td></tr><tr><td>22-25</td><td>Elf, dark</td></tr><tr><td>26-34</td><td>Elf, high</td></tr><tr><td>35-42</td><td>Elf, wood</td></tr><tr><td>43-46</td><td>Gnome, forest</td></tr><tr><td>47-52</td><td>Gnome, rock</td></tr><tr><td>53-56</td><td>Half-elf</td></tr><tr><td>57-60</td><td>Half-orc</td></tr><tr><td>61-68</td><td>Halfling, lightfoot</td></tr><tr><td>69-76</td><td>Halfling, stout</td></tr><tr><td>77-96</td><td>Human</td></tr><tr><td>97-00</td><td>Tiefling</td></tr></tbody></table>",
+                    {
+                        "istable": "YES",
+                        "caption": "Reincarnate Races",
+                        "thead": [
+                            "d100",
+                            "Race"
+                        ],
+                        "tbody": [
+                            [
+                                "01-04",
+                                "Dragonborn"
+                            ],
+                            [
+                                "05-13",
+                                "Dwarf, hill"
+                            ],
+                            [
+                                "14-21",
+                                "Dwarf, mountain"
+                            ],
+                            [
+                                "22-25",
+                                "Elf, dark"
+                            ],
+                            [
+                                "26-34",
+                                "Elf, high"
+                            ],
+                            [
+                                "35-42",
+                                "Elf, wood"
+                            ],
+                            [
+                                "43-46",
+                                "Gnome, forest"
+                            ],
+                            [
+                                "47-52",
+                                "Gnome, rock"
+                            ],
+                            [
+                                "53-56",
+                                "Half-elf"
+                            ],
+                            [
+                                "57-60",
+                                "Half-orc"
+                            ],
+                            [
+                                "61-68",
+                                "Halfling, lightfoot"
+                            ],
+                            [
+                                "69-76",
+                                "Halfling, stout"
+                            ],
+                            [
+                                "77-96",
+                                "Human"
+                            ],
+                            [
+                                "97-00",
+                                "Tiefling"
+                            ]
+                        ]
+                    },
                     "The reincarnated creature recalls its former life and experiences. It retains the capabilities it had in its original form, except it exchanges its original race for the new one and changes its racial traits accordingly."
                 ]
             },
@@ -5042,8 +5302,50 @@ var spelldata = {
                 "classes": "Bard, Cleric, Cleric (Knowledge), Cleric (Light), Druid, Druid (Coast), Druid (Swamp), Paladin (Vengeance), Warlock, Wizard",
                 "text": [
                     "You can see and hear a particular creature you choose that is on the same plane of existence as you. The target must make a Wisdom saving throw, which is modified by how well you know the target and the sort of physical connection you have to it. If a target knows you're casting this spell, it can fail the saving throw voluntarily if it wants to be observed.",
-                    "<table><thead><tr><th>Knowledge</th><th>Save Modifier</th></tr></thead><tbody><tr><td>Secondhand (you have heard of the target)</td><td>+5</td></tr><tr><td>Firsthand (you have met the target) </td><td>+0</td></tr><tr><td>Familiar (you know the target well) </td><td>-5</td></tr></tbody></table>",
-                    "<table><thead><tr><th>Connection</th><th>Save Modifier</th></tr></thead><tbody><tr><td>Likeness or picture</td><td>-2</td></tr><tr><td>Possession or garment</td><td>-4</td></tr><tr><td>Body part, lock of hair, bit of nail, or the like</td><td>-10</td></tr></tbody></table>",
+                    {
+                        "istable": "YES",
+                        "caption": "Knowledge of Target",
+                        "thead": [
+                            "Knowledge",
+                            "Save Modifier"
+                        ],
+                        "tbody": [
+                            [
+                                "Secondhand (you have heard of the target)",
+                                "+5"
+                            ],
+                            [
+                                "Firsthand (you have met the target) ",
+                                "+0"
+                            ],
+                            [
+                                "Familiar (you know the target well) ",
+                                "-5"
+                            ]
+                        ]
+                    },
+                    {
+                        "istable": "YES",
+                        "caption": "Connection to Target",
+                        "thead": [
+                            "Connection",
+                            "Save Modifier"
+                        ],
+                        "tbody": [
+                            [
+                                "Likeness or picture",
+                                "-2"
+                            ],
+                            [
+                                "Possession or garment",
+                                "-4"
+                            ],
+                            [
+                                "Body part, lock of hair, bit of nail, or the like",
+                                "-10"
+                            ]
+                        ]
+                    },
                     "On a successful save, the target isn't affected, and you can't use this spell against it again for 24 hours.",
                     "On a failed save, the spell creates an invisible sensor within 10 feet of the target. You can see and hear through the sensor as if you were there. The sensor moves with the target, remaining within 10 feet of it for the duration. A creature that can see invisible objects sees the sensor as a luminous orb about the size of your fist.",
                     "Instead of targeting a creature, you can choose a location you have seen before as the target of this spell. When you do, the sensor appears at that location and doesn't move."
@@ -5726,7 +6028,68 @@ var spelldata = {
                 "classes": "Bard, Sorcerer, Wizard",
                 "text": [
                     "This spell instantly transports you and up to eight willing creatures of your choice that you can see within range, or a single object that you can see within range, to a destination you select. If you target an object, it must be able to fit entirely inside a 10-foot cube, and it can't be held or carried by an unwilling creature. The destination you choose must be known to you, and it must be on the same plane of existence as you. Your familiarity with the destination determines whether you arrive there successfully. The DM rolls d100 and consults the table.",
-                    "<table><thead><tr> <th>Familiarity</th> <th>Mishap</th> <th>Similar Area</th> <th>Off Target</th> <th>On Target</th> </tr></thead><tbody><tr> <td>Permanent Circle</td> <td>—</td> <td>—</td> <td>—</td> <td>01-100</td> </tr> <tr> <td>Associated Object</td> <td>—</td> <td>—</td> <td>—</td> <td>01-100</td> </tr> <tr> <td>Very Familiar</td> <td>01-05</td> <td>06-13</td> <td>14-24</td> <td>25-100</td> </tr> <tr> <td>Seen Casually</td> <td>01-33</td> <td>34-43</td> <td>44-53</td> <td>54-100</td> </tr> <tr> <td>Viewed Once</td> <td>01-43</td> <td>44-53</td> <td>54-73</td> <td>74-100</td> </tr> <tr> <td>Description</td> <td>01-43</td> <td>44-53</td> <td>54-73</td> <td>74-100</td> </tr> <tr> <td>False Description</td> <td>01-50</td> <td>51-100</td> <td>—</td> <td>—</td> </tr> </tbody></table>",
+                    {
+                        "istable": "YES",
+                        "caption": "Teleportation",
+                        "thead": [
+                            "Familiarity",
+                            "Mishap",
+                            "Similar Area",
+                            "Off Target",
+                            "On Target"
+                        ],
+                        "tbody": [
+                            [
+                                "Permanent Circle",
+                                "—",
+                                "—",
+                                "—",
+                                "01-100"
+                            ],
+                            [
+                                "Associated Object",
+                                "—",
+                                "—",
+                                "—",
+                                "01-100"
+                            ],
+                            [
+                                "Very Familiar",
+                                "01-05",
+                                "06-13",
+                                "14-24",
+                                "25-100"
+                            ],
+                            [
+                                "Seen Casually",
+                                "01-33",
+                                "34-43",
+                                "44-53",
+                                "54-100"
+                            ],
+                            [
+                                "Viewed Once",
+                                "01-43",
+                                "44-53",
+                                "54-73",
+                                "74-100"
+                            ],
+                            [
+                                "Description",
+                                "01-43",
+                                "44-53",
+                                "54-73",
+                                "74-100"
+                            ],
+                            [
+                                "False Description",
+                                "01-50",
+                                "51-100",
+                                "—",
+                                "—"
+                            ]
+                        ]
+                    },
                     "Familiarity: \"Permanent Circle\" means a permanent teleportation circle whose sigil sequence you know. \"Associated Object\" means that you possess an object taken from the desired destination within the last six months, such as a book from a wizard's library, bed linen from a royal suite, or a chunk of marble from a Lich's secret tomb.",
                     "\"Very Familiar\" is a place you have been very often, a place you have carefully studied, or a place you can see when you cast the spell. \"Seen Casually\" is some place you have seen more than once but with which you aren't very familiar. \"Viewed Once\" is a place you have seen once, possibly using magic. \"Description\" is a place whose location and appearance you know through someone else's description, perhaps from a map.",
                     "\"False Description\" is a place that doesn't exist. Perhaps you tried to scry an enemy's sanctum but instead viewed an illusion, or you are attempting to teleport to a familiar location that no longer exists.",
@@ -7514,7 +7877,48 @@ var spelldata = {
                 "classes": "Sorcerer",
                 "text": [
                     "You hurl an undulating, warbling mass of chaotic energy at one creature in range. Make a ranged spell attack against the target. On a hit, the target takes 2d8 damage. Choose one of the d8s. The number it rolled determines the type of damage, as shown below.",
-                    "<table><thead><tr><th>d8</th><th>Damage Type</th></tr></thead><tbody><tr><td>1</td><td>Acid</td></tr><tr><td>2</td><td>Cold</td></tr><tr><td>3</td><td>Fire</td></tr><tr><td>4</td><td>Force</td></tr><tr><td>5</td><td>Lightning</td></tr><tr><td>6</td><td>Poison</td></tr><tr><td>7</td><td>Psychic</td></tr><tr><td>8</td><td>Thunder</td></tr></tbody></table>",
+                    {
+                        "istable": "YES",
+                        "caption": "Chaos Bolt",
+                        "thead": [
+                            "d8",
+                            "Damage Type"
+                        ],
+                        "tbody": [
+                            [
+                                "1",
+                                "Acid"
+                            ],
+                            [
+                                "2",
+                                "Cold"
+                            ],
+                            [
+                                "3",
+                                "Fire"
+                            ],
+                            [
+                                "4",
+                                "Force"
+                            ],
+                            [
+                                "5",
+                                "Lightning"
+                            ],
+                            [
+                                "6",
+                                "Poison"
+                            ],
+                            [
+                                "7",
+                                "Psychic"
+                            ],
+                            [
+                                "8",
+                                "Thunder"
+                            ]
+                        ]
+                    },
                     "If you roll the same number on both d8s, the chaotic energy leaps from the target to a different creature of your choice within 30 feet of it. Make a new attack roll against the new target, and make a new damage roll, which could cause the chaotic energy to leap again. A creature can be targeted only once by this mass of chaotic energy.",
                     "At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, each target takes extra damage of the type rolled. The extra damage equals 1d6 for each slot level above 1st."
                 ]
