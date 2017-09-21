@@ -15,6 +15,7 @@ function parsesource (src) {
 	if (source === "Plane Shift Kaladesh") source = "PSK";
 	if (source === "Plane Shift Zendikar") source = "PSZ";
 	if (source === "Tomb of Annihilation") source = "ToA";
+	if (source === "The Tortle Package") source = "TTP";
 	return source;
 }
 
