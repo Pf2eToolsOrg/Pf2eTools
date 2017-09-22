@@ -1,7 +1,6 @@
-window.onload = loadconditions;
 var tabledefault = "";
 
-function loadconditions() {
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 	var conditionlist = conditiondata;
 
@@ -30,13 +29,11 @@ function loadconditions() {
 		});
 
 		$("ul.list li").click(function(e) {
-			usecondition($(this).attr("id"));
-			document.title = decodeURI($(this).attr("data-link")) + " - 5etools conditions";
 			window.location = "#"+$(this).attr("data-link");
 		});
 
 		if (window.location.hash.length) {
-			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+			window.onhashchange();
 		} else $("ul.list li:eq(0)").click();
 
 			// reset button
@@ -49,9 +46,9 @@ function loadconditions() {
 				conditionslist.update();
 			})
 
-	}
+}
 
-	function usecondition (id) {
+function loadhash (id) {
 			$("#stats").html(tabledefault);
 			var conditionlist = conditiondata;
 			var curcondition = conditionlist[id];

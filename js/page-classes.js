@@ -1,5 +1,3 @@
-
-
 function parsesize (size) {
 	if (size === "T") size = "Tiny";
 	if (size === "S") size = "Small";
@@ -25,9 +23,9 @@ function parseschool (school) {
 function parsespelllevel (level) {
 	if (isNaN (level)) return false;
 	if (level === "0") return "cantrip";
+	if (level === "1") return level+"st";
 	if (level === "2") return level+"nd";
 	if (level === "3") return level+"rd";
-	if (level === "1") return level+"st";
 	return level+"th";
 }
 
@@ -39,11 +37,10 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = loadspells;
 var tabledefault="";
 var classtabledefault ="";
 
-function loadspells() {
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 	statsprofdefault = $("#statsprof").html();
 	classtabledefault = $("#classtable").html();
@@ -75,27 +72,11 @@ function loadspells() {
 	});
 
 	$("ul.list li").click(function(e) {
-		var subclass = window.location.hash.split(/\,/)[1];
-		window.location.hash = "#"+$(this).attr("data-link")+",";
-		if (subclass !== "undefined") {
-			window.location.hash += subclass;
-		}
-		useclass($(this).attr("id"));
-		if (!$("div#subclasses > span:contains("+(decodeURIComponent(window.location.hash).split(/\,/)[1])+")").length) {
-			window.location.hash = window.location.hash.replace(/\,.*/g,",");
-		}
-
-		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Classes";
+		window.location.hash = "#"+$(this).attr("data-link");
 	});
 
 	if (window.location.hash.length) {
-		$("ul.list li[data-link='"+window.location.hash.split(/\#|\,/)[1]+"']:eq(0)").click();
-		if (window.location.hash.split(/\,/)[1].length) {
-			$("div#subclasses > span:contains("+(decodeURIComponent(window.location.hash).split(/\,/)[1])+")").click();
-			if (!$("div#subclasses > span:contains("+(decodeURIComponent(window.location.hash).split(/\,/)[1])+")").length) {
-				window.location.hash = window.location.hash.replace(/\,.*/g,",");
-			}
-		}
+		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
 
 	// reset button
@@ -109,7 +90,7 @@ function loadspells() {
 	})
 }
 
-function useclass (id) {
+function loadhash (id) {
 	$("#stats").html(tabledefault);
 	$("#statsprof").html(statsprofdefault);
 	$("#classtable").html(classtabledefault);
@@ -318,33 +299,36 @@ function useclass (id) {
 		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+subclasses[i].name+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
 	}
 
-	$("div#subclasses > span").sort(asc_sort).appendTo("div#subclasses");
-
-	$("div#subclasses > span").click(function() {
-		var name = $(this).children("span").text();
-		if ($(this).hasClass("active")) {
-			$("._class_feature").show();
-			$(this).removeClass("active");
-			window.location.hash = window.location.hash.replace(/\,.*/g,",");
-			return;
-		}
-
-		$("div#subclasses span.active").removeClass("active");
-		$(this).addClass("active");
-
-		window.location.hash = window.location.hash.replace(/\,\S*/g, ","+encodeURIComponent(name).replace("'","%27"));
-
-		$("._class_feature[data-subclass!='"+$(this).text()+"'][data-subclass!='undefined']").hide();
-		$("._class_feature[data-subclass='"+$(this).text()+"']").show();
+	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
+	$("#subclasses > span").click(function() {
+		const name = $(this).children("span").text()
+		if ($(this).hasClass("active"))
+			window.location.hash = window.location.hash.replace(/\,.*/, "")
+		else
+			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27"))
 	});
 
-	//	$("div#subclasses > span").first().click();
-
-		$(".features a").click(function() {
-			$("#stats").parent().scrollTop(0)
-			$("#stats").parent().scrollTop($("#stats").parent().scrollTop() + $("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
-			$("html, body").scrollTop($("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
-		});
+	$(".features a").click(function() {
+		$("#stats").parent().scrollTop(0)
+		$("#stats").parent().scrollTop($("#stats").parent().scrollTop() + $("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
+		$("html, body").scrollTop($("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
+	});
 
 	return;
 }
+
+function loadsub(sub) {
+	const $el = $(`#subclasses span:contains('${decodeURIComponent(sub)}')`).first();
+	if ($el.hasClass("active")) {
+		$("._class_feature").show();
+		$el.removeClass("active");
+		return;
+	}
+
+	$("#subclasses .active").removeClass("active");
+	$el.addClass("active");
+
+	$("._class_feature[data-subclass!='"+$el.text()+"'][data-subclass!='undefined']").hide();
+	$("._class_feature[data-subclass='"+$el.text()+"']").show();
+}
+

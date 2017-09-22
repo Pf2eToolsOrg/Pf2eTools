@@ -32,11 +32,9 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = loadbackgrounds;
-
 var tabledefault = "";
 
-function loadbackgrounds () {
+window.onload = function load () {
 	tabledefault = $("#stats").html();
 	var bglist = backgrounddata.compendium.background;
 
@@ -82,13 +80,11 @@ function loadbackgrounds () {
 	});
 
 	$("ul.list li").click(function(e) {
-		usebackground($(this).attr("id"));
-		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Backgrounds";
 		window.location = "#"+$(this).attr("data-link");
 	});
 
 	if (window.location.hash.length) {
-		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
 
 	// reset button
@@ -100,7 +96,7 @@ function loadbackgrounds () {
 	})
 }
 
-function usebackground (id) {
+function loadhash (id) {
 	$("#stats").html(tabledefault);
 	var bglist = backgrounddata.compendium.background;
 	var curbg = bglist[id];
