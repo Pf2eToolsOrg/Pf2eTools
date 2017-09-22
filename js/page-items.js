@@ -85,11 +85,10 @@ function parseproperty (property) {
 	return "n/a"
 }
 
-window.onload = loaditems;
-
 var mundanelist;
 var magiclist;
-function loaditems() {
+
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 
 	var itemlist = itemdata.compendium.item;
@@ -150,8 +149,6 @@ function loaditems() {
 	});
 
 	$("ul.list li").click(function(e) {
-		useitem($(this).attr("id"));
-		document.title = decodeURIComponent($(this).attr("data-link")).replace("%27","'") + " - 5etools Items";
 		window.location = "#"+$(this).attr("data-link");
 	});
 
@@ -160,7 +157,7 @@ function loaditems() {
 	$(".typefilter").val("All");
 
 	if (window.location.hash.length) {
-		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
 
 	$("form#filtertools select").change(function(){
@@ -280,7 +277,7 @@ function sortitems(a, b, o) {
 
 }
 
-function useitem (id) {
+function loadhash (id) {
 	$("#currentitem").html(tabledefault);
 	var itemlist = itemdata.compendium.item;
 	var curitem = itemlist[id];

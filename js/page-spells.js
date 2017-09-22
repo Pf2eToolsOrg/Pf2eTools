@@ -154,21 +154,7 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = init;
-window.onhashchange = function hashchange(e) { spell_hashchange() };
-
-function init() {
-	loadspells();
-	spell_hashchange();
-}
-
-function spell_hashchange() {
-	let $el = $("ul.list li[data-link='"+window.location.hash.split("#")[1].toLowerCase()+"']:eq(0)");
-	usespell($el.attr("id"));
-	document.title = decodeURIComponent($el.attr("data-name")).replace("%27","'") + " - 5etools Spells";
-}
-
-function loadspells() {
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 
 	var spelllist = spelldata.compendium.spell;
@@ -205,7 +191,7 @@ function loadspells() {
 				curspell.range = "Varies";
 			}
 
-			var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' data-name='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
+			var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
 			if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
 				var textlist = curspell.text;
 
@@ -280,8 +266,7 @@ function loadspells() {
 
 		$("ul.list li").mousedown(function(e) {
 			if (e.which === 2) {
-				console.log("#"+$(this).attr("data-link").toLowerCase())
-				window.open("#"+$(this).attr("data-link").toLowerCase(), "_blank").focus();
+				window.open("#"+$(this).attr("data-link"), "_blank").focus();
 				e.preventDefault();
 				e.stopPropagation();
 				return;
@@ -289,11 +274,11 @@ function loadspells() {
 		});
 
 		$("ul.list li").click(function(e) {
-			window.location = "#"+$(this).attr("data-link").toLowerCase();
+			window.location = "#"+$(this).attr("data-link");
 		});
 
 		if (window.location.hash.length) {
-			$("ul.list li[data-link='"+window.location.hash.split("#")[1].toLowerCase()+"']:eq(0)").click();
+			window.onhashchange();
 		} else $("ul.list li:eq(0)").click();
 
 		$("form#filtertools select").change(function(){
@@ -362,7 +347,7 @@ function loadspells() {
 				spellslist.sort("name");
 				spellslist.update();
 			})
-}
+};
 
 function sortspells(a, b, o) {
 	if (o.valueName === "name") {
@@ -392,7 +377,7 @@ function sortspells(a, b, o) {
 
 }
 
-function usespell (id) {
+function loadhash (id) {
 	$("#stats").html(tabledefault);
 	var spelllist = spelldata.compendium.spell;
 	var curspell = spelllist[id];

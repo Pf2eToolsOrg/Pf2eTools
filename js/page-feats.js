@@ -30,10 +30,9 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = loadfeats;
 var tabledefault = "";
 
-function loadfeats() {
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 	var featlist = featdata.compendium.feat;
 
@@ -78,13 +77,11 @@ function loadfeats() {
 		});
 
 		$("ul.list li").click(function(e) {
-			usefeat($(this).attr("id"));
-			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Feats";
 			window.location = "#"+$(this).attr("data-link");
 		});
 
 		if (window.location.hash.length) {
-			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+			window.onhashchange();
 		} else $("ul.list li:eq(0)").click();
 
 			// reset button
@@ -97,9 +94,9 @@ function loadfeats() {
 				featslist.update();
 			})
 
-	}
+}
 
-	function usefeat (id) {
+function loadhash (id) {
 			$("#stats").html(tabledefault);
 			var featlist = featdata.compendium.feat;
 			var curfeat = featlist[id];
@@ -123,4 +120,4 @@ function loadfeats() {
 
 			$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
 
-		};
+};

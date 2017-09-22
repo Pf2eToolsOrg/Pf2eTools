@@ -43,9 +43,7 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = loadraces;
-
-function loadraces() {
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 
 	var racelist = racedata.compendium.race;
@@ -112,13 +110,11 @@ function loadraces() {
 	});
 
 	$("ul.list li").click(function(e) {
-		userace($(this).attr("id"));
-		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Races";
 		window.location = "#"+$(this).attr("data-link");
 	});
 
 	if (window.location.hash.length) {
-		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
 
 	// reset button
@@ -132,7 +128,7 @@ function loadraces() {
 	})
 }
 
-function userace (id) {
+function loadhash (id) {
 	$("#stats").html(tabledefault);
 	$("#stats td").show();
 
