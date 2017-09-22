@@ -12,9 +12,7 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = loadrules;
-
-function loadrules() {
+window.onload = function load() {
 	contentdefault = $("#rulescontent").html();
 
 	var ruleslist = rulesdata.compendium.rules;
@@ -22,9 +20,10 @@ function loadrules() {
 	for (var i = 0; i < ruleslist.length; i++) {
 		var currules = ruleslist[i];
 		var name = currules.name;
-	var basedon = "";
-	var rulesid = currules.id.toString();
-		$("ul.rules."+currules.parentlist).append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></li>");
+		var basedon = "";
+		var rulesid = currules.id.toString();
+		const encoded = encodeURI(name);
+		$("ul.rules."+currules.parentlist).append("<li id='"+i+"' data-link='"+encoded.toLowerCase()+"' data-name='"+encoded+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></li>");
 	}
 
 	var options = {
@@ -56,13 +55,11 @@ function loadrules() {
 	});
 
 	$("ul.list li").click(function(e) {
-		userules($(this).attr("id"));
-		document.title = decodeURI($(this).attr("data-link")) + " - 5etools Rules";
 		window.location = "#"+$(this).attr("data-link");
 	});
 
 	if (window.location.hash.length) {
-		$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
 
 	// reset button
@@ -80,7 +77,7 @@ function loadrules() {
 	}).css("cursor", "pointer");
 }
 
-function userules (id) {
+function loadhash (id) {
 	$("#rulescontent").html(contentdefault);
 
 	var ruleslist = rulesdata.compendium.rules;
