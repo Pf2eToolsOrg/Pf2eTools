@@ -154,21 +154,7 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-window.onload = init;
-window.onhashchange = function hashchange(e) { spell_hashchange() };
-
-function init() {
-	loadspells();
-	spell_hashchange();
-}
-
-function spell_hashchange() {
-	let $el = $("ul.list li[data-link='"+window.location.hash.split("#")[1].toLowerCase()+"']:eq(0)");
-	usespell($el.attr("id"));
-	document.title = decodeURIComponent($el.attr("data-name")).replace("%27","'") + " - 5etools Spells";
-}
-
-function loadspells() {
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 
 	var spelllist = spelldata.compendium.spell;
@@ -293,7 +279,7 @@ function loadspells() {
 		});
 
 		if (window.location.hash.length) {
-			$("ul.list li[data-link='"+window.location.hash.split("#")[1].toLowerCase()+"']:eq(0)").click();
+			window.onhashchange();
 		} else $("ul.list li:eq(0)").click();
 
 		$("form#filtertools select").change(function(){
@@ -362,7 +348,7 @@ function loadspells() {
 				spellslist.sort("name");
 				spellslist.update();
 			})
-}
+};
 
 function sortspells(a, b, o) {
 	if (o.valueName === "name") {
@@ -392,7 +378,7 @@ function sortspells(a, b, o) {
 
 }
 
-function usespell (id) {
+function loadhash (id) {
 	$("#stats").html(tabledefault);
 	var spelllist = spelldata.compendium.spell;
 	var curspell = spelllist[id];
