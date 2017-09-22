@@ -1,7 +1,6 @@
-window.onload = loadrewards;
 var tabledefault = "";
 
-function loadrewards() {
+window.onload = function load() {
 	tabledefault = $("#stats").html();
 	var rewardlist = rewarddata;
 
@@ -30,13 +29,11 @@ function loadrewards() {
 		});
 
 		$("ul.list li").click(function(e) {
-			usereward($(this).attr("id"));
-			document.title = decodeURI($(this).attr("data-link")) + " - 5etools Rewards";
 			window.location = "#"+$(this).attr("data-link");
 		});
 
 		if (window.location.hash.length) {
-			$("ul.list li[data-link='"+window.location.hash.split("#")[1]+"']:eq(0)").click();
+			window.onhashchange();
 		} else $("ul.list li:eq(0)").click();
 
 			// reset button
@@ -49,9 +46,9 @@ function loadrewards() {
 				rewardlist.update();
 			})
 
-	}
+}
 
-	function usereward (id) {
+function loadhash (id) {
 			$("#stats").html(tabledefault);
 			var rewardlist = rewarddata;
 			var curreward = rewardlist[id];
