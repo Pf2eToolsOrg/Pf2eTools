@@ -215,7 +215,11 @@ window.onload = function load() {
 			$("ul.spells").append(toadd);
 
 			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
-				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+parsespelllevel(curspell.level)+"</option>");
+				let levelFilterText = parsespelllevel(curspell.level);
+				if (levelFilterText !== "cantrip") {
+					levelFilterText = levelFilterText + " level";
+				}
+				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+levelFilterText+"</option>");
 			}
 
 			if (!$("select.schoolfilter:contains('"+parseschool (curspell.school)+"')").length) {
@@ -287,9 +291,6 @@ window.onload = function load() {
 
 				if (levelfilter[0] !== "d" && levelfilter[0] !== "t") {
 					levelfilter = parsespelllevel (levelfilter);
-					if (levelfilter !== "cantrip") {
-						levelfilter = levelfilter + " level"
-					} else levelfilter = "cantrip";
 					if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
 				}
 			} else if ($(".ritualfilter").val() === "Rituals") levelfilter = "(ritual)"

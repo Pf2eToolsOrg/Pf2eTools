@@ -11,9 +11,30 @@ function utils_combineText(textList) {
 }
 
 function utils_makeTable(tableObject) {
-    let tableStack = "<table><caption>" + tableObject.caption + "</caption><thead><tr><th>" + tableObject.thead.join("</th><th>") + "</th></tr></thead>";
+    let tableStack = "<table><caption>" + tableObject.caption + "</caption><thead><tr>";
+
+    for (let i = 0; i < tableObject.thead.length; ++i) {
+        tableStack += "<th" + makeTableThClassText(tableObject, i) + ">" + tableObject.thead[i] + "</th>"
+    }
+
+	tableStack += "</tr></thead>";
     for (let i = 0; i < tableObject.tbody.length; ++i) {
-        tableStack += "<tr><td>" + tableObject.tbody[i].join("</td><td>") + "</td></tr>";
+        tableStack += "<tr>";
+        for (let j = 0; j < tableObject.tbody[i].length; ++j) {
+			tableStack += "<td" + makeTableTdClassText(tableObject, j) + ">" + tableObject.tbody[i][j] + "</td>";
+        }
+		tableStack += "</tr>";
     }
     return tableStack;
+}
+
+function makeTableThClassText(tableObject, i) {
+    return (tableObject.thstyleclass === undefined || i >= tableObject.thstyleclass.length ? "" : " class=\"" + tableObject.thstyleclass[i] + "\"")
+}
+function makeTableTdClassText(tableObject, i) {
+    if (tableObject.tdstyleclass !== undefined) {
+		return (tableObject.tdstyleclass === undefined || i >= tableObject.tdstyleclass.length ? "" : " class=\"" + tableObject.tdstyleclass[i] + "\"")
+    } else {
+        return makeTableThClassText(tableObject, i);
+    }
 }
