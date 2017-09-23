@@ -180,7 +180,7 @@ monsterdata.compendium.monster.push (
 	"wis": "16",
 	"cha": "18",
 	"save": "Dex +5, Cha +7",
-	"skill": ["Deception + 7, History +9, Insight +6, Survival +9"],
+	"skill": ["Deception +7, History +9, Insight +6, Survival +9"],
 	"immune": "cold (while wearing the Ring of Winter)",
 	"passive": "13",
 	"languages": "Common, Draconic, Dwarvish, Goblin",
@@ -223,7 +223,7 @@ monsterdata.compendium.monster.push (
 				"The Ring of Winter has 12 charges and regains all its expended charges daily at dawn. While attuned to and wearing the ring, Artus can expend the necessary number of charges to activate one of the following properties:", 
 				"• Artus can expend 1 charge and use the ring to lower the temperature in a 120-foot·radius sphere centered on a point he can see within 300 feet of him. The temperature in that area drops 20 degrees per minute, to a minimum of -30 degrees Fahrenheit. Frost and ice begin to form on surfaces once the temperature drops below 32 degrees. This effect is permanent unless Artus uses the ring to end the effect as an action, at which point the temperature in the area returns to normal at a rate of 10 degrees per minute.", 
 				"• Artus can cast one of the following spells from the ring (spell save DC 17) by expending the necessary number of charges: Bigby's hand (2 charges) the hand is made of ice, is immune to cold damage, and deals bludgeoning damage instead of force damage as a clenched fist), cone of cold (2 charges), flesh to ice (3 charges; as flesh to stone except that the target turns to solid ice with the density and durability of stone), ice storm (2 charges), Otiluke's freezing sphere (3 charges), sleet storm (1 charge), spike growth (1 charge) the spikes are made of ice), or wall of ice (2 charges).", 
-				"• Artus can expend the necessary number of charges and use the ring to create either an inanimate ice object (2 charges) or an animated ice creature (4 charges). The ice object can't have any moving parts, must be able to fit inside a 10-foot cube, and has the density and durability of metal or stone (Artus's choice). The ice creature must be modeled after a beast with a challenge rating of 2 or less. The ice creature has the same statistics as the beast it models, with the following changes: the creature is a construct with vulnerability to fire damage, immunity to cold and poison damage, and immunity to the following conditions: charmed, exhaustion, frightened, paralyzed, petrified, and poisoned. The ice creature obeys only its creator's commands. The the object or creature appears in an unoccupied space within 60 feet of Artus. It melts into a pool of normal water after 24 hours or when it drops to O hit points. In extreme heat, it loses 5 (1d10) hit points per minute as it melts. Use the guidelines in chapter 8 of the Dungeon Master's Guide to determine the hit points of an inanimate object if they become necessary."
+				"• Artus can expend the necessary number of charges and use the ring to create either an inanimate ice object (2 charges) or an animated ice creature (4 charges). The ice object can't have any moving parts, must be able to fit inside a 10-foot cube, and has the density and durability of metal or stone (Artus's choice). The ice creature must be modeled after a beast with a challenge rating of 2 or less. The ice creature has the same statistics as the beast it models, with the following changes: the creature is a construct with vulnerability to fire damage, immunity to cold and poison damage, and immunity to the following conditions: charmed, exhaustion, frightened, paralyzed, petrified, and poisoned. The ice creature obeys only its creator's commands. The the object or creature appears in an unoccupied space within 60 feet of Artus. It melts into a pool of normal water after 24 hours or when it drops to 0 hit points. In extreme heat, it loses 5 (1d10) hit points per minute as it melts. Use the guidelines in chapter 8 of the Dungeon Master's Guide to determine the hit points of an inanimate object if they become necessary."
 			]
 		}
 	]
@@ -1027,7 +1027,7 @@ monsterdata.compendium.monster.push (
 	"wis": "18",
 	"cha": "21",
 	"save": "Con +6, Wis +7",
-	"skill": ["Deception +8, Persuasion +S, Religion +7, Stealth +6"],
+	"skill": ["Deception +8, Persuasion +5, Religion +7, Stealth +6"],
 	"immune": "poison",
 	"conditionImmune": "poisoned",
 	"senses": "darkvision 60 ft.",
@@ -1219,7 +1219,7 @@ monsterdata.compendium.monster.push (
 	"int": "13",
 	"wis": "14",
 	"cha": "15",
-	"skill": ["Athletics +2, Perception +4, Stealth +S, Survival +6"],
+	"skill": ["Athletics +2, Perception +4, Stealth +5, Survival +6"],
 	"senses": "darkvision 60 ft.",
 	"passive": "14",
 	"languages": "Common plus any one language",
@@ -1445,7 +1445,59 @@ monsterdata.compendium.monster.push (
 		{
 			"name": "Dagger",
 			"text": [
-				"Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 (ld4 + 1) piercing damage."
+				"Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 (1d4 + 1) piercing damage."
+			]
+		}
+	]
+},
+{
+	"source": "Tome of Beasts",
+	"name": "Xandala",
+	"size": "M",
+	"type": "humanoid (half-elf)",
+	"alignment": "neutral evil",
+	"ac": "13 (natural armor)",
+	"hp": "71 (11d8 + 22)",
+	"speed": "30 ft.",
+	"str": "10",
+	"dex": "11",
+	"con": "14",
+	"int": "18",
+	"wis": "16",
+	"cha": "18",
+	"save": "Int +7, Wis +6",
+	"skill": [
+		"Arcana +7, Deception +10, History +7, Insight +6, Survival +6"
+	],
+	"senses": "",
+	"passive": "13",
+	"languages": "Common, Draconic, Dwarvish, Elvish, Halfling",
+	"cr": "7",
+	"trait": [
+		{
+			"name": "Spellcasting",
+			"text": [
+				"Xandala is a 9th-level spellcaster. Her spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell at· tacks). Xandala has the following sorcerer spells prepared:",
+				"Cantrips (at will): acid splash, fire bolt, light, mage hand, ray of frost",
+				"1st level (4 slots): chromatic orb, feather fall, shield",
+				"2nd level (4 slots): invisibility, misty step",
+				"3rd level (3 slots): fireball, fly",
+				"4th level (3 slots): ice storm, polymorph",
+				"5th level (1 slot): dominate person"
+			]
+		},
+		{
+			"name": "Quickened Spell (3/ Day)",
+			"text": [
+				"When she casts a spell that has a casting time of 1 action, Xandala changes the casting time to 1 bonus action for that casting."
+			]
+		}
+	],
+	"action": [
+		{
+			"name": "Quarterstaff",
+			"text": [
+				"Melee Weapon Attack:+3 to hit, reach 5 ft., one target. Hit: 3 (1d6) bludgeoning damage, or 4 (1d8) bludgeoning damage when used with two hands."
 			]
 		}
 	]
@@ -1488,7 +1540,7 @@ monsterdata.compendium.monster.push (
 		{
 			"name": "Touch",
 			"text": [
-				"Melee Weapon Attack: +3 to hit, reach S ft., one creature. Hit: 13 (3d8) psychic damage. If the target is a humanoid that drops to 0 hit points as a result of this damage, it dies and is implanted with a yellow musk creeper bulb. Unless the bulb is destroyed, the corpse animates as a yellow musk zombie after being dead for 24 hours. The bulb is destroyed if the creature is raised from the dead before it can transform into a yellow musk zombie, or if the corpse is targeted by a remove curse spell or similar magic before it animates."
+				"Melee Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 13 (3d8) psychic damage. If the target is a humanoid that drops to 0 hit points as a result of this damage, it dies and is implanted with a yellow musk creeper bulb. Unless the bulb is destroyed, the corpse animates as a yellow musk zombie after being dead for 24 hours. The bulb is destroyed if the creature is raised from the dead before it can transform into a yellow musk zombie, or if the corpse is targeted by a remove curse spell or similar magic before it animates."
 			]
 		},
 		{
@@ -1531,7 +1583,7 @@ monsterdata.compendium.monster.push (
 		{
 			"name": "Slam",
 			"text": [
-				"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: S (1d8 + 1) bludgeoning damage."
+				"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) bludgeoning damage."
 			]
 		}
 	]
