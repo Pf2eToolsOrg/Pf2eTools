@@ -111,6 +111,8 @@ window.onload = function load() {
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
 			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+origsource+"</option>")
 		}
+		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+		$("select.sourcefilter").val("All");
 		if (!$("select.crfilter option[value='"+cr+"']").length) {
 			$("select.crfilter").append("<option title=\""+cr+"\" value='"+cr+"'>"+cr+"</option>")
 		}
