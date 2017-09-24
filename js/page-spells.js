@@ -159,195 +159,195 @@ window.onload = function load() {
 
 	var spelllist = spelldata.compendium.spell;
 
-		for (var i = 0; i < spelllist.length; i++) {
-			var curspell = spelllist[i];
-			var name = curspell.name;
-			if (curspell.level[0] === "P") name += " (Psionics)";
+	for (var i = 0; i < spelllist.length; i++) {
+		var curspell = spelllist[i];
+		var name = curspell.name;
+		if (curspell.level[0] === "P") name += " (Psionics)";
 
-			var leveltext = parsespelllevel(curspell.level);
-			// if (parseInt(curspell.level) > 0) leveltext += " level"
-			if (curspell.ritual === "YES") leveltext += " (ritual)";
+		var leveltext = parsespelllevel(curspell.level);
+		// if (parseInt(curspell.level) > 0) leveltext += " level"
+		if (curspell.ritual === "YES") leveltext += " (ritual)";
 
-			var schooltext = parseschool(curspell.school);
-			if (!schooltext) {
-				if (curspell.level[1] === "D") {
-					schooltext = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
-					schooltext += " Discipline";
-					leveltext = "Discipline";
-				} else if (curspell.level[1] === "T") {
-					schooltext = "Psionic Talent";
-					leveltext = "Talent";
-				}
-			}
-
-			var source = "PHB";
-			if (curspell.source) {
-				source = curspell.source;
-			} else {
-				curspell.source = "PHB";
-			}
-
-			if (!curspell.range) {
-				curspell.range = "Varies";
-			}
-
-			var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
-			if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
-				var textlist = curspell.text;
-
-				var psisearch = "";
-				for (var j = 0; j < textlist.length; ++j) {
-					var regex = /^((.* )\(.*psi.*?\)|Bestial Transformation)\./g;
-					var matches = regex.exec(textlist[j]);
-
-					if (matches) {
-						var cleanedpsi = matches[1].trim();
-						if (cleanedpsi.indexOf("(") != -1) {
-							cleanedpsi = cleanedpsi.substring(0, cleanedpsi.indexOf("("));
-						}
-						psisearch += '"' + cleanedpsi.trim() + '" '
-					}
-				}
-
-				toadd = toadd + "<span class='disciplinesearch' style='display: none'>"+psisearch+"</span>";
-			}
-			toadd = toadd + "</li>";
-			$("ul.spells").append(toadd);
-
-			if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
-				let levelFilterText = parsespelllevel(curspell.level);
-				if (levelFilterText !== "cantrip") {
-					levelFilterText = levelFilterText + " level";
-				}
-				$("select.levelfilter").append("<option value='"+curspell.level+"'>"+levelFilterText+"</option>");
-			}
-
-			if (!$("select.schoolfilter:contains('"+parseschool (curspell.school)+"')").length) {
-				$("select.schoolfilter").append("<option value='"+parseschool (curspell.school)+"'>"+parseschool (curspell.school)+"</option>");
-			}
-
-			if (!$("select.sourcefilter:contains(\""+parsesource(source)+"\")").length) {
-				$("select.sourcefilter").append("<option value='"+source+"'>"+parsesource(source)+"</option>");
-			}
-
-			var classlist = curspell.classes.split(",");
-			for (var a = 0; a < classlist.length; a++) {
-				if (classlist[a][0] === " ") classlist[a] = classlist[a].replace(/^\s+|\s+$/g, "")
-				if (!$("select.classfilter option[value='"+classlist[a]+"']").length) {
-					$("select.classfilter").append("<option title=\""+classlist[a]+"\" value='"+classlist[a]+"'>"+classlist[a]+"</option>")
-				}
-			}
-
-			if (!$("select.rangefilter:contains(\""+curspell.range+"\")").length) {
-				$("select.rangefilter").append("<option value='"+normaliserange(curspell.range)+"'>"+curspell.range+"</option>");
+		var schooltext = parseschool(curspell.school);
+		if (!schooltext) {
+			if (curspell.level[1] === "D") {
+				schooltext = curspell.classes.split(/Mystic \(/g)[1].split(")")[0];
+				schooltext += " Discipline";
+				leveltext = "Discipline";
+			} else if (curspell.level[1] === "T") {
+				schooltext = "Psionic Talent";
+				leveltext = "Talent";
 			}
 		}
 
-		$("select.levelfilter option").sort(asc_sort).appendTo('select.levelfilter');
-		$("select.levelfilter option[value=1]").before($("select.levelfilter option[value=All]"));
-		$("select.levelfilter option[value=1]").before($("select.levelfilter option[value=0]"));
-		$("select.levelfilter").val("All");
+		var source = "PHB";
+		if (curspell.source) {
+			source = curspell.source;
+		} else {
+			curspell.source = "PHB";
+		}
 
-		$("select.schoolfilter option").sort(asc_sort).appendTo('select.schoolfilter');
-		$("select.schoolfilter").val("All");
+		if (!curspell.range) {
+			curspell.range = "Varies";
+		}
 
-		$("select.classfilter option").sort(asc_sort).appendTo('select.classfilter');
-		$("select.classfilter").val("All");
+		var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
+		if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
+			var textlist = curspell.text;
 
-		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
-		$("select.sourcefilter").val("All");
+			var psisearch = "";
+			for (var j = 0; j < textlist.length; ++j) {
+				var regex = /^((.* )\(.*psi.*?\)|Bestial Transformation)\./g;
+				var matches = regex.exec(textlist[j]);
 
-		$("select.rangefilter option").sort(asc_sort_range).appendTo('select.rangefilter');
-		$("select.rangefilter").val(ALL_RANGES.toString());
-
-		var options = {
-			valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch', 'range'],
-			listClass: "spells"
-		};
-
-		var spellslist = new List("listcontainer", options);
-		spellslist.sort ("name");
-
-		$("ul.list li").mousedown(function(e) {
-			if (e.which === 2) {
-				window.open("#"+$(this).attr("data-link"), "_blank").focus();
-				e.preventDefault();
-				e.stopPropagation();
-				return;
+				if (matches) {
+					var cleanedpsi = matches[1].trim();
+					if (cleanedpsi.indexOf("(") != -1) {
+						cleanedpsi = cleanedpsi.substring(0, cleanedpsi.indexOf("("));
+					}
+					psisearch += '"' + cleanedpsi.trim() + '" '
+				}
 			}
+
+			toadd = toadd + "<span class='disciplinesearch' style='display: none'>"+psisearch+"</span>";
+		}
+		toadd = toadd + "</li>";
+		$("ul.spells").append(toadd);
+
+		if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
+			let levelFilterText = parsespelllevel(curspell.level);
+			if (levelFilterText !== "cantrip") {
+				levelFilterText = levelFilterText + " level";
+			}
+			$("select.levelfilter").append("<option value='"+curspell.level+"'>"+levelFilterText+"</option>");
+		}
+
+		if (!$("select.schoolfilter:contains('"+parseschool (curspell.school)+"')").length) {
+			$("select.schoolfilter").append("<option value='"+parseschool (curspell.school)+"'>"+parseschool (curspell.school)+"</option>");
+		}
+
+		if (!$("select.sourcefilter:contains(\""+parsesource(source)+"\")").length) {
+			$("select.sourcefilter").append("<option value='"+source+"'>"+parsesource(source)+"</option>");
+		}
+
+		var classlist = curspell.classes.split(",");
+		for (var a = 0; a < classlist.length; a++) {
+			if (classlist[a][0] === " ") classlist[a] = classlist[a].replace(/^\s+|\s+$/g, "")
+			if (!$("select.classfilter option[value='"+classlist[a]+"']").length) {
+				$("select.classfilter").append("<option title=\""+classlist[a]+"\" value='"+classlist[a]+"'>"+classlist[a]+"</option>")
+			}
+		}
+
+		if (!$("select.rangefilter:contains(\""+curspell.range+"\")").length) {
+			$("select.rangefilter").append("<option value='"+normaliserange(curspell.range)+"'>"+curspell.range+"</option>");
+		}
+	}
+
+	$("select.levelfilter option").sort(asc_sort).appendTo('select.levelfilter');
+	$("select.levelfilter option[value=1]").before($("select.levelfilter option[value=All]"));
+	$("select.levelfilter option[value=1]").before($("select.levelfilter option[value=0]"));
+	$("select.levelfilter").val("All");
+
+	$("select.schoolfilter option").sort(asc_sort).appendTo('select.schoolfilter');
+	$("select.schoolfilter").val("All");
+
+	$("select.classfilter option").sort(asc_sort).appendTo('select.classfilter');
+	$("select.classfilter").val("All");
+
+	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+	$("select.sourcefilter").val("All");
+
+	$("select.rangefilter option").sort(asc_sort_range).appendTo('select.rangefilter');
+	$("select.rangefilter").val(ALL_RANGES.toString());
+
+	var options = {
+		valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch', 'range'],
+		listClass: "spells"
+	};
+
+	var spellslist = new List("listcontainer", options);
+	spellslist.sort ("name");
+
+	$("ul.list li").mousedown(function(e) {
+		if (e.which === 2) {
+			window.open("#"+$(this).attr("data-link"), "_blank").focus();
+			e.preventDefault();
+			e.stopPropagation();
+			return;
+		}
+	});
+
+	$("ul.list li").click(function(e) {
+		window.location = "#"+$(this).attr("data-link");
+	});
+
+	if (window.location.hash.length) {
+		window.onhashchange();
+	} else $("ul.list li:eq(0)").click();
+
+	$("form#filtertools select").change(function(){
+		var levelfilter = $("select.levelfilter").val();
+		if (levelfilter !== "All") {
+
+			if (levelfilter[0] !== "d" && levelfilter[0] !== "t") {
+				levelfilter = parsespelllevel (levelfilter);
+				if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
+			}
+		} else if ($(".ritualfilter").val() === "Rituals") levelfilter = "(ritual)"
+
+		var schoolfilter = $("select.schoolfilter").val();
+		var classfilter = $("select.classfilter").val();
+		var sourcefilter = $("select.sourcefilter").val();
+		// var thirdpartyfilter = $("select.3ppfilter").val();
+		var rangefilter = parseInt($("select.rangefilter").val());
+
+		spellslist.filter(function(item) {
+			var rightlevel = false;
+			var rightschool = false;
+			var rightclass = false;
+			var rightsource = false;
+			var rightparty = true;
+			var rightrange = false;
+
+			if (levelfilter === "All" || item.values().level.indexOf(levelfilter) !== -1) rightlevel = true;
+			if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
+			var classes = item.values().classes.split(", ");
+			for (var c = 0; c < classes.length; c++) {
+				if (classes[c] === classfilter) rightclass = true;
+			}
+			if (classfilter === "All") rightclass = true;
+			if (sourcefilter === "All" || item.values().source === sourcefilter) rightsource = true;
+			// if (thirdpartyfilter === "All") rightparty = true;
+			// if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
+			// if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
+			if (rangefilter === ALL_RANGES || normaliserange(item.values().range) === rangefilter) rightrange = true;
+			if (rightlevel && rightschool && rightclass && rightsource && rightparty && rightrange) return true;
+			return false;
 		});
+	});
 
-		$("ul.list li").click(function(e) {
-			window.location = "#"+$(this).attr("data-link");
-		});
+	$("#filtertools small").click(function() {
+		$("#search").val("psionics");
+		spellslist.search("psionics");
+	})
 
-		if (window.location.hash.length) {
-			window.onhashchange();
-		} else $("ul.list li:eq(0)").click();
+	$("#filtertools button.sort").on("click", function() {
+		if ($(this).attr("sortby") === "asc") {
+			$(this).attr("sortby", "desc");
+		} else $(this).attr("sortby", "asc");
+		spellslist.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortspells });
+	});
 
-		$("form#filtertools select").change(function(){
-			var levelfilter = $("select.levelfilter").val();
-			if (levelfilter !== "All") {
-
-				if (levelfilter[0] !== "d" && levelfilter[0] !== "t") {
-					levelfilter = parsespelllevel (levelfilter);
-					if ($(".ritualfilter").val() === "Rituals") levelfilter = levelfilter + " (ritual)"
-				}
-			} else if ($(".ritualfilter").val() === "Rituals") levelfilter = "(ritual)"
-
-			var schoolfilter = $("select.schoolfilter").val();
-			var classfilter = $("select.classfilter").val();
-			var sourcefilter = $("select.sourcefilter").val();
-			// var thirdpartyfilter = $("select.3ppfilter").val();
-			var rangefilter = parseInt($("select.rangefilter").val());
-
-			spellslist.filter(function(item) {
-				var rightlevel = false;
-				var rightschool = false;
-				var rightclass = false;
-				var rightsource = false;
-				var rightparty = true;
-				var rightrange = false;
-
-				if (levelfilter === "All" || item.values().level.indexOf(levelfilter) !== -1) rightlevel = true;
-				if (schoolfilter === "All" || item.values().school === schoolfilter) rightschool = true;
-				var classes = item.values().classes.split(", ");
-				for (var c = 0; c < classes.length; c++) {
-					if (classes[c] === classfilter) rightclass = true;
-				}
-				if (classfilter === "All") rightclass = true;
-				if (sourcefilter === "All" || item.values().source === sourcefilter) rightsource = true;
-				// if (thirdpartyfilter === "All") rightparty = true;
-				// if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
-				// if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
-				if (rangefilter === ALL_RANGES || normaliserange(item.values().range) === rangefilter) rightrange = true;
-				if (rightlevel && rightschool && rightclass && rightsource && rightparty && rightrange) return true;
-				return false;
-			});
-		});
-
-		$("#filtertools small").click(function() {
-			$("#search").val("psionics");
-			spellslist.search("psionics");
-		})
-
-		$("#filtertools button.sort").on("click", function() {
-			if ($(this).attr("sortby") === "asc") {
-				$(this).attr("sortby", "desc");
-			} else $(this).attr("sortby", "asc");
-			spellslist.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortspells });
-		});
-
-			// reset button
-			$("button#reset").click(function() {
-				$("#filtertools select").val("All");
-				$(".rangefilter").val(-2);
-				$("#search").val("");
-				spellslist.search("");
-				spellslist.filter();
-				spellslist.sort("name");
-				spellslist.update();
-			})
+	// reset button
+	$("button#reset").click(function() {
+		$("#filtertools select").val("All");
+		$(".rangefilter").val(-2);
+		$("#search").val("");
+		spellslist.search("");
+		spellslist.filter();
+		spellslist.sort("name");
+		spellslist.update();
+	})
 };
 
 function sortspells(a, b, o) {

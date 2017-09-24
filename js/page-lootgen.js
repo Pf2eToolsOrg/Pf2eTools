@@ -13,7 +13,7 @@ function loadloot() {
 
 	// clear
 	$("button#clear").click(function() {
-			$("#lootoutput").html("");
+		$("#lootoutput").html("");
 	});
 
 	// loot rolling button
@@ -172,8 +172,8 @@ function rollLoot(cr,hoard=false) {
 				var roll = droll.roll(curamount).total;
 				var magicitems = [];
 
-		//$("#lootoutput ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
-			$("#lootoutput ul:eq(0) > li").last().append("<hr>");
+				//$("#lootoutput ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
+				$("#lootoutput ul:eq(0) > li").last().append("<hr>");
 				for (var i = 0; i < roll; i++) {
 
 					var curmagicitem = null;
@@ -195,33 +195,33 @@ function rollLoot(cr,hoard=false) {
 
 
 				for (var i = 0; i < magicitems.length; i++) {
-				//$("#lootoutput ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
+					//$("#lootoutput ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
 					$("#lootoutput ul:eq(0)").append('<li class="magicitem">'+magicitems[i]+'</li>');
 				}
 
 
-							$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
-								var curitem = this;
-								var curamount = 1;
-								$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
-									if ($(this).text() === $(curitem).text() && this !== curitem) {
-										$(this).remove();
-										curamount++;
-									}
-								})
-								if (curamount > 1) {
-									$(curitem).prepend ("x"+curamount+" ");
-								}
-							})
+				$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
+					var curitem = this;
+					var curamount = 1;
+					$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
+						if ($(this).text() === $(curitem).text() && this !== curitem) {
+							$(this).remove();
+							curamount++;
+						}
+					})
+					if (curamount > 1) {
+						$(curitem).prepend ("x"+curamount+" ");
+					}
+				})
 
 			}
 		}
 
-			for (var i = 0; i < treasure.length; i++) {
-				$("#lootoutput ul:eq(0)").prepend('<li>'+treasure[i]+'</li>');
-			}
-
-
+		for (var i = 0; i < treasure.length; i++) {
+			$("#lootoutput ul:eq(0)").prepend('<li>'+treasure[i]+'</li>');
 		}
-		return;
+
+
 	}
+	return;
+}
