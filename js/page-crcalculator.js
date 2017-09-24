@@ -94,34 +94,34 @@ function loadpage() {
 
 	// parse url
 	function parseurl() {
-	if (window.location.hash) {
-		var curdata = window.location.hash.split("#")[1].split(",")
-		$("#expectedcr").val(curdata[0])
-		$("#hp").val(curdata[1]);
-		$("#hp").val(calculatehp());
-		$("#ac").val(curdata[2]);
-		$("#dpr").val(curdata[3]);
-		$("#attackbonus").val(curdata[4]);
-		if (curdata[5] === "true") $("#saveinstead").attr("checked",true);
-		$("#size").val(curdata[6])
-		$("select#size").change();
-		$("#hd").val(curdata[7])
-		$("#con").val(curdata[8])
-		$("#hp").val(calculatehp());
-		if (curdata[9] === "true") $("#vulnerabilities").attr("checked",true);
-		$("#resistances").val(curdata[10]);
-		if (curdata[11] === "true") $("#flying").attr("checked",true);
-		$("#saveprofs").val(curdata[12])
+		if (window.location.hash) {
+			var curdata = window.location.hash.split("#")[1].split(",")
+			$("#expectedcr").val(curdata[0])
+			$("#hp").val(curdata[1]);
+			$("#hp").val(calculatehp());
+			$("#ac").val(curdata[2]);
+			$("#dpr").val(curdata[3]);
+			$("#attackbonus").val(curdata[4]);
+			if (curdata[5] === "true") $("#saveinstead").attr("checked",true);
+			$("#size").val(curdata[6])
+			$("select#size").change();
+			$("#hd").val(curdata[7])
+			$("#con").val(curdata[8])
+			$("#hp").val(calculatehp());
+			if (curdata[9] === "true") $("#vulnerabilities").attr("checked",true);
+			$("#resistances").val(curdata[10]);
+			if (curdata[11] === "true") $("#flying").attr("checked",true);
+			$("#saveprofs").val(curdata[12])
 
-		if (window.location.hash.indexOf("traits:") !== -1) {
-			curdata = window.location.hash.split("traits:")[1].split(",");
-			for (var i = 1; i < curdata.length; i++) {
-				$("input[id='"+curdata[i].split(":")[0]+"']").click();
-				if (curdata[i].split(":")[1]) $("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
+			if (window.location.hash.indexOf("traits:") !== -1) {
+				curdata = window.location.hash.split("traits:")[1].split(",");
+				for (var i = 1; i < curdata.length; i++) {
+					$("input[id='"+curdata[i].split(":")[0]+"']").click();
+					if (curdata[i].split(":")[1]) $("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
+				}
 			}
-		}
 
-		calculatecr();
+			calculatecr();
 		}
 	}
 
@@ -146,8 +146,8 @@ function loadpage() {
 	})
 
 	$("#reset").click(function() {
-			window.location = "";
-			parseurl();
+		window.location = "";
+		parseurl();
 	})
 
 	parseurl();
@@ -160,15 +160,15 @@ function calculatecr() {
 	var hp = parseInt($("#crcalc #hp").val()) ;
 
 	if ($("#resistances").val() === "res") {
-			if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
-			if (expectedcr >= 5 && expectedcr <= 10) hp *= 1.5;
-			if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.25;
+		if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
+		if (expectedcr >= 5 && expectedcr <= 10) hp *= 1.5;
+		if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.25;
 	}
 	if ($("#resistances").val() === "imm") {
-			if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
-			if (expectedcr >= 5 && expectedcr <= 10) hp *= 2;
-			if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.5;
-			if (expectedcr >= 17) hp *= 1.25;
+		if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
+		if (expectedcr >= 5 && expectedcr <= 10) hp *= 2;
+		if (expectedcr >= 11 && expectedcr <= 16) hp *= 1.5;
+		if (expectedcr >= 17) hp *= 1.25;
 	}
 
 	var ac = parseInt($("#crcalc #ac").val());
