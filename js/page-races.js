@@ -21,12 +21,12 @@ function parsesource (src) {
 
 
 function parsesize (size) {
-	if (size == "T") size = "Tiny";
-	if (size == "S") size = "Small";
-	if (size == "M") size = "Medium";
-	if (size == "L") size = "Large";
-	if (size == "H") size = "Huge";
-	if (size == "G") size = "Gargantuan";
+	if (size === "T") size = "Tiny";
+	if (size === "S") size = "Small";
+	if (size === "M") size = "Medium";
+	if (size === "L") size = "Large";
+	if (size === "H") size = "Huge";
+	if (size === "G") size = "Gargantuan";
 	return size;
 }
 
@@ -43,6 +43,55 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
+function getAttributeText(race) {
+	let atts = [];
+	if (race.ability !== undefined) {
+		handleAttribute("Str");
+		handleAttribute("Dex");
+		handleAttribute("Con");
+		handleAttribute("Int");
+		handleAttribute("Wis");
+		handleAttribute("Cha");
+		handleAttributesChoose();
+		return atts.join(", ");
+	}
+	return "";
+
+	function handleAttribute(att) {
+		if (race.ability[att.toLowerCase()] !== undefined) atts.push(att + " " + (race.ability[att.toLowerCase()].includes("-") ? "" : "+") + race.ability[att.toLowerCase()]);
+	}
+
+	function handleAttributesChoose() {
+		if (race.ability.choose !== undefined) {
+			for (let i = 0; i < race.ability.choose.length; ++i) {
+				let item = race.ability.choose[i];
+				let outStack = "Choose ";
+				let allAttributes = item.from.length === 6;
+				if (allAttributes) {
+					outStack += "any ";
+				}
+				if (item.amount !== undefined && item.amount > 1) {
+					outStack += getAmountString(item.amount) + " ";
+				}
+				if (allAttributes) {
+					outStack += "+1";
+				} else {
+					for (let j = 0; j < item.from.length; ++j) {
+						let capitalisedAtt = item.from[j].charAt(0).toUpperCase() + item.from[j].slice(1);
+						outStack += capitalisedAtt + " +1" + (j === item.from.length-1 ? "" : " or ");
+					}
+				}
+				atts.push(outStack)
+			}
+		}
+	}
+
+	function getAmountString(amount) {
+		if (amount === 1) return "one";
+		if (amount === 2) return "two";
+	}
+}
+
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 
@@ -51,8 +100,7 @@ window.onload = function load() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		if (!currace.ability) currace.ability = "";
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
+		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+getAttributeText(currace)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
@@ -61,10 +109,6 @@ window.onload = function load() {
 		if (!$("select.sizefilter:contains(\""+parsesize(currace.size)+"\")").length) {
 			$("select.sizefilter").append("<option value='"+parsesize(currace.size)+"'>"+parsesize(currace.size)+"</option>");
 		}
-
-		//if (!$("select.bonusfilter:contains(\""+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"\")").length) {
-		//	$("select.bonusfilter").append("<option value='"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"'>"+currace.ability.replace(/(?:\s)(\d)/g, " +$1")+"</option>");
-		//}
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
@@ -142,7 +186,7 @@ function loadhash (id) {
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 
-	var ability = currace.ability.replace(/(?:\s)(\d)/g, " +$1");
+	var ability = getAttributeText(currace);
 	$("td#ability span").html(ability);
 
 	var speed = currace.speed;
