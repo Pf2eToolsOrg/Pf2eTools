@@ -1,6 +1,6 @@
 
 function parsesource (src) {
-	source = src.trim();
+	let source = src.trim();
 	if (source === "monster manual") source = "MM";
 	if (source === "Player's Handbook") source = "PHB";
 	if (source === "Dungeon Master's Guide") source = "DMG";
@@ -108,7 +108,7 @@ window.onload = function load() {
 			}
 		}
 
-		var source = curitem.text[curitem.text.length-1].split(",")[0].split(":")[1];
+		var source = curitem.text[curitem.text.length-1].split(",")[0].split(":")[1].trim();
 
 		var rarity = curitem.rarity;
 		if (!rarity) {
@@ -127,6 +127,8 @@ window.onload = function load() {
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
 			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+source+"</option>")
 		}
+		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
+		$("select.sourcefilter").val("All");
 	}
 
 	var options = {
