@@ -239,7 +239,7 @@ function loadhash (id) {
 				$("tr#level"+curlevel._level+" td.talentsknown").html(curlevel.talentsknown);
 			}
 
-		// other features
+			// other features
 		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
 			var curfeature = curlevel.feature[a];
 			var link = curlevel._level + "_" + a;
