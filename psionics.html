@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Psionics - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm">
+	<div class="container">
+
+		<h1>Psionics List</h1>
+		<p>Search by name on the left, click psionic name to display on the right.</p>
+	</div>
+</header>
+<nav class="container">
+	<ul class="nav nav-pills ">
+		<li role="presentation"><a href="5etools.html">5eTools</a></li>
+		<li role="presentation"><a href="rules.html">Rules</a></li>
+		<li role="presentation" class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player Options <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li role="presentation"><a href="classes.html">Classes</a></li>
+				<li role="presentation"><a href="backgrounds.html">Backgrounds</a></li>
+				<li role="presentation"><a href="feats.html">Feats</a></li>
+				<li role="presentation"><a href="races.html">Races</a></li>
+			</ul>
+		</li>
+		<li role="presentation" class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">DM Tools <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
+				<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
+				<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
+			</ul>
+		</li>
+		<li role="presentation" class="dropdown active">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
+				<li role="presentation"><a href="conditions.html">Conditions</a></li>
+				<li role="presentation"><a href="items.html">Items</a></li>
+				<li role="presentation" class="active"><a href="spells.html">Spells</a></li>
+				<li role="presentation"><a href="rewards.html">Other Rewards</a></li>
+			</ul>
+		</li>
+		<li role="presentation"><a href="statgen.html">Statgen</a></li>
+		<li role="presentation" class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Utilities<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li role="presentation"><a href="converter.html">Stat Block to JSON</a></li>
+				<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
+			</ul>
+		</li>
+		</li>
+	</ul>
+</nav>
+<main class="container bodyContent">
+
+	<div class="row">
+		<div class="col-md-6" id="listcontainer">
+			<div class="input-group">
+				<input type="search" id="search" class="search form-control" placeholder="Find psionic...">
+				<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
+			</div>
+			<form id="filtertools">
+				<select class="sourcefilter">
+					<option value="All">All Sources</option>
+				</select>
+				<select class="typefilter">
+					<option value="All">All Types</option>
+				</select>
+				<select class="orderfilter">
+					<option value="All">All Orders</option>
+				</select>
+				<span class="sortlabel btn-group">
+					<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source" disabled>Source</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="type">Types</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="order">Orders</button>
+				</span>
+			</form>
+
+			<ul class="list psionics">
+				<!-- populated by javascript -->
+			</ul>
+		</div>
+		<div class="col-md-6">
+			<table id="stats">
+				<tr>
+					<th class="border" colspan="6"></th>
+				</tr>
+				<tr>
+					<th id="name" colspan="6">Name</th>
+				</tr>
+				<tr>
+					<td id="ordertype" colspan="6"><span id="order"></span> <span id="type">talent</span></td>
+				</tr>
+				<tr>
+					<td id="duration" colspan="6">Duration: <span>Concentration, up to 1 minute</span></td>
+				</tr>
+				<tr id="text">
+					<td class="divider" colspan="6">
+						<div></div>
+					</td>
+				</tr>
+				<tr>
+					<th class="border" colspan="6"></th>
+				</tr>
+			</table>
+		</div>
+	</div>
+</main>
+<footer class="container">
+
+</footer>
+
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/page-psionics.js"></script>
+<script type="text/javascript" src="data/psionics.json"></script>
+<script type="text/javascript" src="js/list.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
+</body>
+
+</html>
