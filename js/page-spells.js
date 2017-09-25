@@ -227,7 +227,7 @@ window.onload = function load() {
 		}
 
 		if (!$("select.sourcefilter:contains(\""+parsesource(source)+"\")").length) {
-			$("select.sourcefilter").append("<option value='"+source+"'>"+parsesource(source)+"</option>");
+			$("select.sourcefilter").append("<option value='"+abbreviateSource(source)+"'>"+parsesource(source)+"</option>");
 		}
 
 		var classlist = curspell.classes.split(",");
