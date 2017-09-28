@@ -272,7 +272,11 @@ function loadhash (id) {
 			// write out list to class table
 			var multifeature = "";
 			if (curlevel.feature.length !== 1 && a !== 0) multifeature = ", ";
-			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+link+"'>"+curfeature.name+"</a>");
+			let featureSpan = document.createElement('span');
+			featureSpan.setAttribute('data-link', link);
+            featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
+            featureSpan.innerHTML = curfeature.name;
+			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
@@ -315,6 +319,11 @@ function loadhash (id) {
 	});
 
 	return;
+}
+
+function scrollToFeature(ele) {
+	let goTo = document.getElementById("feature"+ele);
+    goTo.scrollIntoView();
 }
 
 function loadsub(sub) {
