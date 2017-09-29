@@ -17451,43 +17451,107 @@
 						{
 							"name": "Spellcasting",
 							"text": [
-								"As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power. See chapter 10 for the general rules of spellcasting and chapter 11 for the wizard spell list.",
-								"Cantrips",
-								"At 1st level, you know three cantrips of your choice from the wizard spell list. You learn additional wizard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Wizard table.",
-								"Spellbook",
-								"At 1st level, you have a spellbook containing six 1st-level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind.",
-								"Preparing and Casting Spells",
+								"As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power. See chapter 10 for the general rules of spellcasting and chapter 11 for the wizard spell list."
+							]
+						},
+						{
+							"name": "Cantrips",
+							"text": [
+								"At 1st level, you know three cantrips of your choice from the wizard spell list. You learn additional wizard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Wizard table."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellbook",
+							"text": [
+								"At 1st level, you have a spellbook containing six 1st-level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Preparing and Casting Spells",
+							"text": [
 								"The Wizard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 								"You prepare the list of wizard spells that are available for you to cast. To do so, choose a number of wizard spells from your spellbook equal to your Intelligence modifier + your wizard level (minimum of one spell). The spells must be of a level for which you have spell slots.",
 								"For example, if you're a 3rd-level wizard, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination, chosen from your spellbook. If you prepare the 1st-level spell magic missile, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
-								"You can change your list of prepared spells when you finish a long rest. Preparing a new list of wizard spells requires time spent studying your spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per spell level for each spell on your list.",
-								"Spellcasting Ability",
+								"You can change your list of prepared spells when you finish a long rest. Preparing a new list of wizard spells requires time spent studying your spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per spell level for each spell on your list."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Ability",
+							"text": [
 								"Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.",
-								"Spell save DC = 8 + your proficiency bonus + your Intelligence modifier",
-								"Spell attack modifier = your proficiency bonus + your Intelligence modifier",
-								"Ritual Casting",
-								"You can cast a wizard spell as a ritual if that spell has the ritual tag and you have the spell in your spellbook. You don't need to have the spell prepared.",
-								"Spellcasting Focus",
-								"You can use an arcane focus (found in chapter 5) as a spellcasting focus for your wizard spells.",
-								"Learning Spells of 1st Level and Higher",
-								"Each time you gain a wizard level, you can add two wizard spells of your choice to your spellbook. Each of these spells must be of a level for which you have spell slots, as shown on the Wizard table. On your adventures, you might find other spells that you can add to your spellbook (see the \"Your Spellbook\" sidebar)."
-							]
+								{
+									"hassavedc": "YES",
+									"hasattackmod": "YES",
+									"name": "Spell",
+									"attributes": ["int"]
+								}
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Ritual Casting",
+							"text": [
+								"You can cast a wizard spell as a ritual if that spell has the ritual tag and you have the spell in your spellbook. You don't need to have the spell prepared."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Focus",
+							"text": [
+								"You can use an arcane focus (found in chapter 5) as a spellcasting focus for your wizard spells."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Learning Spells of 1st Level and Higher",
+							"text": [
+								"Each time you gain a wizard level, you can add two wizard spells of your choice to your spellbook. Each of these spells must be of a level for which you have spell slots, as shown on the Wizard table. On your adventures, you might find other spells that you can add to your spellbook (see \"Your Spellbook\")."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
 						},
 						{
 							"name": "Your Spellbook",
 							"text": [
 								"The spells that you add to your spellbook as you gain levels reflect the arcane research you conduct on your own, as well as intellectual breakthroughs you have had about the nature of the multiverse. You might find other spells during your adventures. You could discover a spell recorded on a scroll in an evil wizard's chest, for example, or in a dusty tome in an ancient library.",
-								"Copying a Spell into the Book.",
+								"A spellbook doesn't contain cantrips."
+							]
+						},
+						{
+							"name": "Copying a Spell into the Book",
+							"text": [
 								"When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it.",
 								"Copying a spell into your spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your spellbook using your own notation.",
-								"For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells.",
-								"Replacing the Book.",
+								"For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells."
+							],
+							"parent": "Your Spellbook",
+							"suboption": "YES"
+						},
+						{
+							"name": "Replacing the Book",
+							"text": [
 								"You can copy a spell from your own spellbook into another book\u2014for example, if you want to make a backup copy of your spellbook. This is just like copying a new spell into your spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell.",
-								"If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place.",
-								"A spellbook doesn't contain cantrips.",
-								"The Book's Appearance.",
+								"If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place."
+							],
+							"parent": "Your Spellbook",
+							"suboption": "YES"
+						},
+						{
+							"name": "The Book's Appearance",
+							"text": [
 								"Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-edged tome you found in an ancient library, or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap."
-							]
+							],
+							"parent": "Your Spellbook",
+							"suboption": "YES"
 						}
 					],
 					"_level": "1"
@@ -18239,14 +18303,50 @@
 						{
 							"name": "School of Divination: The Third Eye",
 							"text": [
-								"Starting at 10th level, you can use your action to increase your powers of perception. When you do so, choose one of the following benefits, which lasts until you are incapacitated or you take a short or long rest. You can't use the feature again until you finish a rest.",
-								"Darkvision. You gain darkvision out to a range of 60 feet.",
-								"Ethereal Sight. You can see into the Ethereal Plane within 60 feet of you.",
-								"Greater Comprehension. You can read any language.",
-								"See Invisibility. You can see invisible creatures and objects within 10 feet of you that are within line of sight."
+								"Starting at 10th level, you can use your action to increase your powers of perception. When you do so, choose one of the following benefits, which lasts until you are incapacitated or you take a short or long rest. You can't use the feature again until you finish a rest."
 							],
 							"subclass": "Arcane Tradition: Divination",
 							"parent": "Divination",
+							"_optional": "YES"
+						},
+						{
+							"name": "Darkvision",
+							"text": [
+								"You gain darkvision out to a range of 60 feet."
+							],
+							"subclass": "Arcane Tradition: Divination",
+							"parent": "The Third Eye",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Ethereal Sight",
+							"text": [
+								"You can see into the Ethereal Plane within 60 feet of you."
+							],
+							"subclass": "Arcane Tradition: Divination",
+							"parent": "The Third Eye",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Greater Comprehension",
+							"text": [
+								"You can read any language."
+							],
+							"subclass": "Arcane Tradition: Divination",
+							"parent": "The Third Eye",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "See Invisibility",
+							"text": [
+								"You can see invisible creatures and objects within 10 feet of you that are within line of sight."
+							],
+							"subclass": "Arcane Tradition: Divination",
+							"parent": "The Third Eye",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -18465,14 +18565,50 @@
 						{
 							"name": "School of Transmutation: Master Transmuter",
 							"text": [
-								"Starting at 14th level, you can use your action to consume the reserve of transmutation magic stored within your transmuter's stone in a single burst. When you do so, choose one of the following effects. Your transmuter's stone is destroyed and can't be remade until you finish a long rest.",
-								"Major Transformation. You can transmute one nonmagical object\u2014no larger than a 5-foot cube\u2014into another nonmagical object of similar size and mass and of equal or lesser value. You must spend 10 minutes handling the object to transform it.",
-								"Panacea. You remove all curses, diseases, and poisons affecting a creature that you touch with the transmuter's stone. The creature also regains all its hit points.",
-								"Restore Life. You cast the raise dead spell on a creature you touch with the transmuter's stone, without expending a spell slot or needing to have the spell in your spellbook.",
-								"Restore Youth. You touch the transmuter's stone to a willing creature, and that creature's apparent age is reduced by 3d10 years, to a minimum of 13 years. This effect doesn't extend the creature's lifespan."
+								"Starting at 14th level, you can use your action to consume the reserve of transmutation magic stored within your transmuter's stone in a single burst. When you do so, choose one of the following effects. Your transmuter's stone is destroyed and can't be remade until you finish a long rest."
 							],
 							"subclass": "Arcane Tradition: Transmutation",
 							"parent": "Transmutation",
+							"_optional": "YES"
+						},
+						{
+							"name": "Major Transformation",
+							"text": [
+								"You can transmute one nonmagical object\u2014no larger than a 5-foot cube\u2014into another nonmagical object of similar size and mass and of equal or lesser value. You must spend 10 minutes handling the object to transform it."
+							],
+							"subclass": "Arcane Tradition: Transmutation",
+							"parent": "Master Transmuter",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Panacea",
+							"text": [
+								"You remove all curses, diseases, and poisons affecting a creature that you touch with the transmuter's stone. The creature also regains all its hit points."
+							],
+							"subclass": "Arcane Tradition: Transmutation",
+							"parent": "Master Transmuter",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Restore Life",
+							"text": [
+								"You cast the raise dead spell on a creature you touch with the transmuter's stone, without expending a spell slot or needing to have the spell in your spellbook."
+							],
+							"subclass": "Arcane Tradition: Transmutation",
+							"parent": "Master Transmuter",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Restore Youth",
+							"text": [
+								"You touch the transmuter's stone to a willing creature, and that creature's apparent age is reduced by 3d10 years, to a minimum of 13 years. This effect doesn't extend the creature's lifespan."
+							],
+							"subclass": "Arcane Tradition: Transmutation",
+							"parent": "Master Transmuter",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
