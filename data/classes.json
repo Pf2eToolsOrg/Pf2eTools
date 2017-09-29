@@ -15273,23 +15273,57 @@
 						{
 							"name": "Pact Magic",
 							"text": [
-								"Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the warlock spell list.",
-								"Cantrips",
-								"You know two cantrips of your choice from the warlock spell list. You learn additional warlock cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Warlock table.",
-								"Spell Slots",
+								"Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the warlock spell list."
+							]
+						},
+						{
+							"name": "Cantrips",
+							"text": [
+								"You know two cantrips of your choice from the warlock spell list. You learn additional warlock cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Warlock table."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spell Slots",
+							"text": [
 								"The Warlock table shows how many spell slots you have. The table also shows what the level of those slots is; all of your spell slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.",
-								"For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell thunderwave, you must spend one of those slots, and you cast it as a 3rd-level spell.",
-								"Spells Known of 1st Level and Higher",
+								"For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell thunderwave, you must spend one of those slots, and you cast it as a 3rd-level spell."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spells Known of 1st Level and Higher",
+							"text": [
 								"At 1st level, you know two 1st-level spells of your choice from the warlock spell list.",
 								"You learn a new warlock spell every time you gain a level from 2 through 9, as well as at level 19. A spell you choose must be of a level no higher than what's shown in the table's Slot Level column for your level. When you reach 6th level, for example, you learn a new warlock spell, which can be 1st, 2nd, or 3rd level.",
-								"Additionally, when you gain a level in this class, you can choose one of the warlock spells you know and replace it with another spell from the warlock spell list, which also must be of a level for which you have spell slots.",
-								"Spellcasting Ability",
+								"Additionally, when you gain a level in this class, you can choose one of the warlock spells you know and replace it with another spell from the warlock spell list, which also must be of a level for which you have spell slots."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Ability",
+							"text": [
 								"Charisma is your spellcasting ability for your warlock spells, so you use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a warlock spell you cast and when making an attack roll with one.",
-								"Spell save DC: 8 + Proficiency bonus + Charisma modifier",
-								"Spell attack modifier: Proficiency bonus + Charisma modifier",
-								"Spellcasting Focus",
+								{
+									"hassavedc": "YES",
+									"hasattackmod": "YES",
+									"name": "Spell",
+									"attributes": ["cha"]
+								}
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Focus",
+							"text": [
 								"You can use an arcane focus (found in chapter 5) as a spellcasting focus for your warlock spells."
-							]
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
 						},
 						{
 							"name": "Otherworldly Patron",
@@ -15300,8 +15334,17 @@
 						{
 							"name": "Otherworldly Patron: The Archfey",
 							"text": [
-								"Your patron is a lord or lady of the fey, a creature of legend who holds secrets that were forgotten before the mortal races were born. This being's motivations are often inscrutable, and sometimes whimsical, and might involve a striving for greater magical power or the settling of age-old grudges. Beings of this sort include the Prince of Frost; the Queen of Air and Darkness, ruler of the Gloaming Court; Titania of the Summer Court; her consort Oberon, the Green Lord; Hyrsam, the Prince of Fools; and ancient hags.",
-								"Expanded Spell List: The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+								"Your patron is a lord or lady of the fey, a creature of legend who holds secrets that were forgotten before the mortal races were born. This being's motivations are often inscrutable, and sometimes whimsical, and might involve a striving for greater magical power or the settling of age-old grudges. Beings of this sort include the Prince of Frost; the Queen of Air and Darkness, ruler of the Gloaming Court; Titania of the Summer Court; her consort Oberon, the Green Lord; Hyrsam, the Prince of Fools; and ancient hags."
+							],
+							"subclass": "Otherworldly Patron: The Archfey",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
+								"The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
 									"caption": "Archfey Expanded Spells",
@@ -15338,8 +15381,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Archfey",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Archfey",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15355,8 +15398,17 @@
 						{
 							"name": "Otherworldly Patron: The Fiend",
 							"text": [
-								"You have made a pact with a fiend from the lower planes of existence, a being whose aims are evil, even if you strive against those aims. Such beings desire the corruption or destruction of all things, ultimately including you. Fiends powerful enough to forge a pact include demon lords such as Demogorgon, Orcus, Fraz'Urb-luu, and Baphomet; archdevils such as Asmodeus, Dispater, Mephistopheles, and Belial; pit fiends and balors that are especially mighty; and ultroloths and other lords of the yugoloths.",
-								"Expanded Spell List: The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+								"You have made a pact with a fiend from the lower planes of existence, a being whose aims are evil, even if you strive against those aims. Such beings desire the corruption or destruction of all things, ultimately including you. Fiends powerful enough to forge a pact include demon lords such as Demogorgon, Orcus, Fraz'Urb-luu, and Baphomet; archdevils such as Asmodeus, Dispater, Mephistopheles, and Belial; pit fiends and balors that are especially mighty; and ultroloths and other lords of the yugoloths."
+							],
+							"subclass": "Otherworldly Patron: The Fiend",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
+								"The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
 									"caption": "Fiend Expanded Spells",
@@ -15393,8 +15445,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Fiend",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Fiend",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15409,8 +15461,17 @@
 						{
 							"name": "Otherworldly Patron: Ghost in the Machine (UA)",
 							"text": [
-								"You have made a bargain for power granted by an entity that you believe to be completely digital. Whether it is a rogue AI or the spirit of a deceased hacker, the Ghost in the Machine is capable of feats that defy explanation.",
-								"Expanded Spell List: The Ghost in the Machine lets you choose from an expanded list of spells when you learn a warlock spell. You gain the on/off cantrip, and the following new spells are added to the warlock spell list for you.",
+								"You have made a bargain for power granted by an entity that you believe to be completely digital. Whether it is a rogue AI or the spirit of a deceased hacker, the Ghost in the Machine is capable of feats that defy explanation."
+							],
+							"subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
+								"The Ghost in the Machine lets you choose from an expanded list of spells when you learn a warlock spell. You gain the on/off cantrip, and the following new spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
 									"caption": "Ghost in the Machine Expanded Spells",
@@ -15447,8 +15508,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: Ghost in the Machine (UA)",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "Ghost in the Machine",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15474,7 +15535,16 @@
 							"name": "Otherworldly Patron: The Great Old One",
 							"text": [
 								"Your patron is a mysterious entity whose nature is utterly foreign to the fabric of reality. It might come from the Far Realm, the space beyond reality, or it could be one of the elder gods known only in legends. Its motives are incomprehensible to mortals, and its knowledge so immense and ancient that even the greatest libraries pale in comparison to the vast secrets it holds. The Great Old One might be unaware of your existence or entirely indifferent to you, but the secrets you have learned allow you to draw your magic from it. Entities of this type include Ghaunadar, called That Which Lurks; Tharizdun, the Chained God; Dendar, the Night Serpent; Zargon, the Returner; Great Cthulhu; and other unfathomable beings.",
-								"Expanded Spell List: The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+							],
+							"subclass": "Otherworldly Patron: The Great Old One",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
+								"The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
 									"caption": "Great Old One Expanded Spells",
@@ -15511,8 +15581,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Great Old One",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Great Old One",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15528,8 +15598,16 @@
 							"name": "Otherworldly Patron: The Undying",
 							"text": [
 								"Death holds no sway over your patron, who has unlocked the secrets of everlasting life, although such a prize\u2014like all power\u2014comes at a price. Once mortal, the Undying has seen mortal lifetimes pass like the seasons, like the flicker of endless days and nights. It has the secrets of the ages to share, secrets of life and death. Beings of this sort include Vecna, Lord of the Hand and the Eye; the dread Iuz; the lich-queen Vol; the Undying Court of Aerenal; Vlaakith, lich-queen of the githyanki; and the deathless wizard Fistandantalus.",
-								"In the Realms, Undying patrons include Larloch the Shadow King, legendary master of Warlock's Crypt, and Gilgeam, the God-King of Unther.",
-								"Expanded Spell List:",
+								"In the Realms, Undying patrons include Larloch the Shadow King, legendary master of Warlock's Crypt, and Gilgeam, the God-King of Unther."
+							],
+							"subclass": "Otherworldly Patron: The Undying",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
 								"The Undying lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
@@ -15567,8 +15645,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Undying",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Undying",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15624,8 +15702,16 @@
 											"In a dark area, you always carry a lit torch or lantern. Putting it down is an unbearable thought."
 										]
 									]
-								},
-								"Expanded Spell List:",
+								}
+							],
+							"subclass": "Otherworldly Patron: The Undying Light (UA)",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
 								"The Undying Light lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
@@ -15663,8 +15749,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Undying Light (UA)",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Undying Light",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15680,8 +15766,16 @@
 							"name": "Otherworldly Patron: The Celestial (UA)",
 							"text": [
 								"Your patron is a powerful being of the Upper Planes. You have bound yourself to an ancient empyrean, solar, ki-rin, or unicorn or to another entity that resides in the planes of everlasting bliss. Your pact with that being allows you to experience the barest touch of the holy light that illuminates the multiverse.",
-								"Being connected to such power can cause changes in your behavior and beliefs. You might find yourself driven to annihilate the undead, to defeat fiends, and to protect the innocent. At times, your heart might also be filled with a longing for the celestial realm of your patron, a desire to wander that paradise for the rest of your days. But you know that your mission is among mortals for now and that your pact binds you to bring light to the dark places of the world.",
-								"Expanded Spell List:",
+								"Being connected to such power can cause changes in your behavior and beliefs. You might find yourself driven to annihilate the undead, to defeat fiends, and to protect the innocent. At times, your heart might also be filled with a longing for the celestial realm of your patron, a desire to wander that paradise for the rest of your days. But you know that your mission is among mortals for now and that your pact binds you to bring light to the dark places of the world."
+							],
+							"subclass": "Otherworldly Patron: The Celestial (UA)",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
 								"The Celestial lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
@@ -15719,8 +15813,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Celestial (UA)",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Celestial",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15747,8 +15841,16 @@
 							"name": "Otherworldly Patron: The Seeker (UA)",
 							"text": [
 								"Your patron is an inscrutable being who travels the Astral Plane in search of knowledge and secrets. In return for your patron's gifts, you wander the world seeking lore that you can share with the Seeker.",
-								"Your patron could be any deity or other powerful entity dedicated to knowledge or forgotten lore. Celestian is an ideal patron for a Greyhawk campaign, and was the inspiration for this concept. In the Forgotten Realms, your patron might be Azuth or Oghma. Aureon makes an excellent patron in Eberron, while in Krynn and the Dragonlance campaign setting, Gilean is a good match for the Seeker's role.",
-								"Expanded Spell List:",
+								"Your patron could be any deity or other powerful entity dedicated to knowledge or forgotten lore. Celestian is an ideal patron for a Greyhawk campaign, and was the inspiration for this concept. In the Forgotten Realms, your patron might be Azuth or Oghma. Aureon makes an excellent patron in Eberron, while in Krynn and the Dragonlance campaign setting, Gilean is a good match for the Seeker's role."
+							],
+							"subclass": "Otherworldly Patron: The Seeker (UA)",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
 								"The Seeker lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
@@ -15786,8 +15888,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Seeker (UA)",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Seeker",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -15804,7 +15906,15 @@
 							"name": "Otherworldly Patron: The Hexblade (UA)",
 							"text": [
 								"You have made your pact with a powerful, sentient magic weapon carved from the stuff of the Shadowfell. The mighty sword Blackrazor is the most notable of these weapons, several of which have spread across the multiverse over the ages. These weapons grow stronger as they consume the life essence of their victims. The strongest of them can use their ties to the Shadowfell to offer power to mortals who serve them. The Raven Queen forged the first of these weapons. They, along with the hexblade warlocks, are another tool she can use to manipulate events in the Material Plane to her inscrutable ends.",
-								"Expanded Spell List:",
+							],
+							"subclass": "Otherworldly Patron: The Hexblade (UA)",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
 								"The Hexblade lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
@@ -15842,16 +15952,24 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Hexblade (UA)",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Hexblade",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
 							"name": "Otherworldly Patron: The Raven Queen (UA)",
 							"text": [
 								"You patron is the Raven Queen, a mysterious being who rules the Shadowfell from a palace of ice deep within that dread realm. The Raven Queen watches over the world, anticipating each creature's death and ensuring that it meets its end at the proscribed time and place. As the ruler of the Shadowfell, she dwells in a decayed, dark reflection of the world. Her ability to reach into the world is limited. Thus, she turns to mortal warlocks to serve her will. Warlocks sworn to the Raven Queen receive visions and whispers from her in their dreams, sending them on quests and warning them of impending dangers.",
-								"The Raven Queen's followers are expected to serve her will in the world. She concerns herself with ensuring that those fated to die pass from the world as expected, and bids her agents to defeat those who seek to cheat death through undeath or other imitations of immortality. She hates intelligent undead and expects her followers to strike them down, whereas mindless undead such as skeletons and zombies are little more than stumbling automatons in her eyes.",
-								"Expanded Spell List:",
+								"The Raven Queen's followers are expected to serve her will in the world. She concerns herself with ensuring that those fated to die pass from the world as expected, and bids her agents to defeat those who seek to cheat death through undeath or other imitations of immortality. She hates intelligent undead and expects her followers to strike them down, whereas mindless undead such as skeletons and zombies are little more than stumbling automatons in her eyes."
+							],
+							"subclass": "Otherworldly Patron: The Raven Queen (UA)",
+							"parent": "Otherworldly Patron",
+							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Expanded Spell List",
+							"text": [
 								"The Raven Queen lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 								{
 									"istable": "YES",
@@ -15889,8 +16007,8 @@
 								}
 							],
 							"subclass": "Otherworldly Patron: The Raven Queen (UA)",
-							"parent": "Otherworldly Patron",
-							"issubclass": "YES",
+							"parent": "The Raven Queen",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
