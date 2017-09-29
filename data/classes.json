@@ -8659,19 +8659,41 @@
 						{
 							"name": "Spellcasting",
 							"text": [
-								"By 2nd level, you have learned to draw on divine magic through meditation and prayer to cast spells as a cleric does. See chapter 10 for the general rules of spellcasting and chapter 11 for the paladin spell list.",
-								"Preparing and Casting Spells",
+								"By 2nd level, you have learned to draw on divine magic through meditation and prayer to cast spells as a cleric does. See chapter 10 for the general rules of spellcasting and chapter 11 for the paladin spell list."
+							]
+						},
+						{
+							"name": "Preparing and Casting Spells",
+							"text": [
 								"The Paladin table shows how many spell slots you have to cast your spells. To cast one of your paladin spells of 1st level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 								"You prepare the list of paladin spells that are available for you to cast, choosing from the paladin spell list. When you do so, choose a number of paladin spells equal to your Charisma modifier + half your paladin level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots.",
 								"For example, if you are a 5th-level paladin, you have four 1st-level and two 2nd-level spell slots. With a Charisma of 14, your list of prepared spells can include four spells of 1st or 2nd-level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
-								"You can change your list of prepared spells when you finish a long rest. Preparing a new list of paladin spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.",
-								"Spellcasting Ability",
+								"You can change your list of prepared spells when you finish a long rest. Preparing a new list of paladin spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
+							],
+							"parent": "",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Ability",
+							"text": [
 								"Charisma is your spellcasting ability for your paladin spells, since their power derives from the strength of your convictions. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a paladin spell you cast and when making an attack roll with one.",
-								"Spell save DC = 8 + your proficiency bonus + your Charisma modifier",
-								"Spell attack modifier = your proficiency bonus + your Charisma modifier",
-								"Spellcasting Focus",
+								{
+									"hassavedc": "YES",
+									"hasattackmod": "YES",
+									"name": "Spell",
+									"attributes": ["cha"]
+								}
+							],
+							"parent": "",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Focus",
+							"text": [
 								"You can use a holy symbol (found in chapter 5) as a spellcasting focus for your paladin spells."
-							]
+							],
+							"parent": "",
+							"suboption": "YES"
 						}
 					],
 					"_level": "2"
@@ -8703,17 +8725,61 @@
 						{
 							"name": "Sacred Oath: Oath of the Ancients",
 							"text": [
-								"The Oath of the Ancients is as old as the race of elves and the rituals of the druids. Sometimes called fey knights, green knights, or horned knights, paladins who swear this oath cast their lot with the side of the light in the cosmic struggle against darkness because they love the beautiful and life-giving things of the world, not necessarily because they believe in principles of honor, courage, and justice. They adorn their armor and clothing with images of growing things\u2014leaves, antlers, or flowers\u2014to reflect their commitment to preserving life and light in the world.",
-								"Tenets of the Ancients:",
-								"The tenets of the Oath of the Ancients have been preserved for uncounted centuries. This oath emphasizes the principles of good above any concerns of law or chaos. Its four central principles are simple.",
-								"Kindle the Light. Through your acts of mercy, kindness, and forgiveness, kindle the light of hope in the world, beating back despair.",
-								"Shelter the Light. Where there is good, beauty, love, and laughter in the world, stand against the wickedness that would swallow it. Where life flourishes, stand against the forces that would render it barren.",
-								"Preserve Your Own Light. Delight in song and laughter, in beauty and art. If you allow the light to die in your own heart, you can't preserve it in the world.",
-								"Be the Light. Be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all your deeds."
+								"The Oath of the Ancients is as old as the race of elves and the rituals of the druids. Sometimes called fey knights, green knights, or horned knights, paladins who swear this oath cast their lot with the side of the light in the cosmic struggle against darkness because they love the beautiful and life-giving things of the world, not necessarily because they believe in principles of honor, courage, and justice. They adorn their armor and clothing with images of growing things\u2014leaves, antlers, or flowers\u2014to reflect their commitment to preserving life and light in the world."
 							],
 							"subclass": "Sacred Oath: Oath of the Ancients",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of the Ancients: Tenets of the Ancients",
+							"text": [
+								"The tenets of the Oath of the Ancients have been preserved for uncounted centuries. This oath emphasizes the principles of good above any concerns of law or chaos. Its four central principles are simple.",
+							],
+							"subclass": "Sacred Oath: Oath of the Ancients",
+							"parent": "Oath of the Ancients",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Kindle the Light",
+							"text": [
+								"Through your acts of mercy, kindness, and forgiveness, kindle the light of hope in the world, beating back despair."
+							],
+							"subclass": "Sacred Oath: Oath of the Ancients",
+							"parent": "Tenets of the Ancients",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Shelter the Light",
+							"text": [
+								"Where there is good, beauty, love, and laughter in the world, stand against the wickedness that would swallow it. Where life flourishes, stand against the forces that would render it barren."
+							],
+							"subclass": "Sacred Oath: Oath of the Ancients",
+							"parent": "Tenets of the Ancients",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Preserve Your Own Light",
+							"text": [
+								"Delight in song and laughter, in beauty and art. If you allow the light to die in your own heart, you can't preserve it in the world."
+							],
+							"subclass": "Sacred Oath: Oath of the Ancients",
+							"parent": "Tenets of the Ancients",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Be the Light",
+							"text": [
+								"Be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all your deeds."
+							],
+							"subclass": "Sacred Oath: Oath of the Ancients",
+							"parent": "Tenets of the Ancients",
+							"subsuboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -8783,18 +8849,71 @@
 						{
 							"name": "Sacred Oath: Oath of Devotion",
 							"text": [
-								"The Oath of Devotion binds a paladin to the loftiest ideals of justice, virtue, and order. Sometimes called cavaliers, white knights, or holy warriors, these paladins meet the ideal of the knight in shining armor, acting with honor in pursuit of justice and the greater good. They hold themselves to the highest standards of conduct, and some, for better or worse, hold the rest of the world to the same standards. Many who swear this oath are devoted to gods of law and good and use their gods' tenets as the measure of their devotion. They hold angels\u2014the perfect servants of good\u2014as their ideals, and incorporate images of angelic wings into their helmets or coats of arms.",
-								"Tenets of Devotion:",
-								"Though the exact words and strictures of the Oath of Devotion vary, paladins of this oath share these tenets.",
-								"Honesty. Don't lie or cheat. Let your word be your promise.",
-								"Courage. Never fear to act, though caution is wise.",
-								"Compassion. Aid others, protect the weak, and punish those who threaten them. Show mercy to your foes, but temper it with wisdom.",
-								"Honor. Treat others with fairness, and let your honorable deeds be an example to them. Do as much good as possible while causing the least amount of harm.",
-								"Duty. Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
+								"The Oath of Devotion binds a paladin to the loftiest ideals of justice, virtue, and order. Sometimes called cavaliers, white knights, or holy warriors, these paladins meet the ideal of the knight in shining armor, acting with honor in pursuit of justice and the greater good. They hold themselves to the highest standards of conduct, and some, for better or worse, hold the rest of the world to the same standards. Many who swear this oath are devoted to gods of law and good and use their gods' tenets as the measure of their devotion. They hold angels\u2014the perfect servants of good\u2014as their ideals, and incorporate images of angelic wings into their helmets or coats of arms."
 							],
 							"subclass": "Sacred Oath: Oath of Devotion",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of Devotion: Tenets of Devotion",
+							"text": [
+								"Though the exact words and strictures of the Oath of Devotion vary, paladins of this oath share these tenets."
+							],
+							"subclass": "Sacred Oath: Oath of Devotion",
+							"parent": "Oath of Devotion",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Honesty",
+							"text": [
+								"Don't lie or cheat. Let your word be your promise."
+							],
+							"subclass": "Sacred Oath: Oath of Devotion",
+							"parent": "",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Courage",
+							"text": [
+								"Never fear to act, though caution is wise."
+							],
+							"subclass": "Sacred Oath: Oath of Devotion",
+							"parent": "Tenets of Devotion",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Compassion",
+							"text": [
+								"Aid others, protect the weak, and punish those who threaten them. Show mercy to your foes, but temper it with wisdom."
+							],
+							"subclass": "Sacred Oath: Oath of Devotion",
+							"parent": "Tenets of Devotion",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Honor",
+							"text": [
+								"Treat others with fairness, and let your honorable deeds be an example to them. Do as much good as possible while causing the least amount of harm."
+							],
+							"subclass": "Sacred Oath: Oath of Devotion",
+							"parent": "Tenets of Devotion",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Duty",
+							"text": [
+								"Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
+							],
+							"subclass": "Sacred Oath: Oath of Devotion",
+							"parent": "Tenets of Devotion",
+							"subsuboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -8864,17 +8983,61 @@
 						{
 							"name": "Sacred Oath: Oath of Vengeance",
 							"text": [
-								"The Oath of Vengeance is a solemn commitment to punish those who have committed a grievous sin. When evil forces slaughter helpless villagers, when an entire people turns against the will of the gods, when a thieves' guild grows too violent and powerful, when a dragon rampages through the countryside - at times like these, paladins arise and swear an Oath of Vengeance to set right that which has gone wrong. To these paladins\u2014sometimes called avengers or dark knights\u2014their own purity is not as important as delivering justice.",
-								"Tenets of Vengeance:",
-								"The tenets of the Oath of Vengeance vary by paladin, but all the tenets revolve around punishing wrongdoers by any means necessary. Paladins who uphold these tenets are willing to sacrifice even their own righteousness to mete out justice upon those who do evil, so the paladins are often neutral or lawful neutral in alignment. The core principles of the tenets are brutally simple.",
-								"Fight the Greater Evil. Faced with a choice of fighting my sworn foes or combating a lesser evil. I choose the greater evil.",
-								"No Mercy for the Wicked. Ordinary foes might win my mercy, but my sworn enemies do not.",
-								"By Any Means Necessary. My qualms can't get in the way of exterminating my foes.",
-								"Restitution. If my foes wreak ruin on the world, it is because I failed to stop them. I must help those harmed by their misdeeds."
+								"The Oath of Vengeance is a solemn commitment to punish those who have committed a grievous sin. When evil forces slaughter helpless villagers, when an entire people turns against the will of the gods, when a thieves' guild grows too violent and powerful, when a dragon rampages through the countryside - at times like these, paladins arise and swear an Oath of Vengeance to set right that which has gone wrong. To these paladins\u2014sometimes called avengers or dark knights\u2014their own purity is not as important as delivering justice."
 							],
 							"subclass": "Sacred Oath: Oath of Vengeance",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of Vengeance: Tenets of Vengeance",
+							"text": [
+								"The tenets of the Oath of Vengeance vary by paladin, but all the tenets revolve around punishing wrongdoers by any means necessary. Paladins who uphold these tenets are willing to sacrifice even their own righteousness to mete out justice upon those who do evil, so the paladins are often neutral or lawful neutral in alignment. The core principles of the tenets are brutally simple."
+							],
+							"subclass": "Sacred Oath: Oath of Vengeance",
+							"parent": "Oath of Vengeance",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Fight the Greater Evil",
+							"text": [
+								"Faced with a choice of fighting my sworn foes or combating a lesser evil. I choose the greater evil."
+							],
+							"subclass": "Sacred Oath: Oath of Vengeance",
+							"parent": "Tenets of Vengeance",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "No Mercy for the Wicked",
+							"text": [
+								"Ordinary foes might win my mercy, but my sworn enemies do not."
+							],
+							"subclass": "Sacred Oath: Oath of Vengeance",
+							"parent": "Tenets of Vengeance",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "By Any Means Necessary",
+							"text": [
+								"My qualms can't get in the way of exterminating my foes."
+							],
+							"subclass": "Sacred Oath: Oath of Vengeance",
+							"parent": "Tenets of Vengeance",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Restitution",
+							"text": [
+								"If my foes wreak ruin on the world, it is because I failed to stop them. I must help those harmed by their misdeeds."
+							],
+							"subclass": "Sacred Oath: Oath of Vengeance",
+							"parent": "Tenets of Vengeance",
+							"subsuboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -9017,17 +9180,61 @@
 						{
 							"name": "Sacred Oath: Oath of the Crown",
 							"text": [
-								"The Oath of the Crown is sworn to the ideals of civilization, be it the spirit of a nation, fealty to a sovereign, or service to a deity of law and rulership. The paladins who swear this oath dedicate themselves to serving society and, in particular, the laws that hold society together. These paladins are the watchful guardians on the walls, standing against the chaotic tides of barbarism that threaten to tear down all that civilization has built, and are commonly known as guardians, exemplars, or sentinels. Often, paladins who swear this oath are members of an order of knighthood in service to a nation or sovereign, and undergo their oath as part of their admission to the order's ranks.",
-								"Tenets of the Crown:",
-								"The tenets of the Oath of the Crown are often set by the sovereign to which their oath is sworn, but generally emphasize the following tenets.",
-								"Law. The law is paramount. It is the mortar that holds the stones of civilization together, and it must be respected.",
-								"Loyalty. Your word is your bond. Without loyalty, oaths and laws are meaningless.",
-								"Courage. You must be willing to do what needs to be done for the sake of order, even in the face of overwhelming odds. If you don't act, then who will?",
-								"Responsibility. You must deal with the consequences of your actions, and you are responsible for fulfilling your duties and obligations."
+								"The Oath of the Crown is sworn to the ideals of civilization, be it the spirit of a nation, fealty to a sovereign, or service to a deity of law and rulership. The paladins who swear this oath dedicate themselves to serving society and, in particular, the laws that hold society together. These paladins are the watchful guardians on the walls, standing against the chaotic tides of barbarism that threaten to tear down all that civilization has built, and are commonly known as guardians, exemplars, or sentinels. Often, paladins who swear this oath are members of an order of knighthood in service to a nation or sovereign, and undergo their oath as part of their admission to the order's ranks."
 							],
 							"subclass": "Sacred Oath: Oath of the Crown",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of the Crown: Tenets of the Crown",
+							"text": [
+								"The tenets of the Oath of the Crown are often set by the sovereign to which their oath is sworn, but generally emphasize the following tenets."
+							],
+							"subclass": "Sacred Oath: Oath of the Crown",
+							"parent": "Oath of the Crown",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Law",
+							"text": [
+								"The law is paramount. It is the mortar that holds the stones of civilization together, and it must be respected."
+							],
+							"subclass": "Sacred Oath: Oath of the Crown",
+							"parent": "Tenets of the Crown",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Loyalty",
+							"text": [
+								"Your word is your bond. Without loyalty, oaths and laws are meaningless."
+							],
+							"subclass": "Sacred Oath: Oath of the Crown",
+							"parent": "Tenets of the Crown",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Courage",
+							"text": [
+								"You must be willing to do what needs to be done for the sake of order, even in the face of overwhelming odds. If you don't act, then who will?"
+							],
+							"subclass": "Sacred Oath: Oath of the Crown",
+							"parent": "Tenets of the Crown",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Responsibility",
+							"text": [
+								"You must deal with the consequences of your actions, and you are responsible for fulfilling your duties and obligations."
+							],
+							"subclass": "Sacred Oath: Oath of the Crown",
+							"parent": "Tenets of the Crown",
+							"subsuboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -9095,16 +9302,51 @@
 						{
 							"name": "Sacred Oath: Oath of Conquest (UA)",
 							"text": [
-								"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron  mongers, those who swear this oath gather into  grim orders that serve gods or philosophies of  war and well-ordered might. Some of these  paladins go so far as to consort with the powers  of the Nine Hells. The archdevil Bel, warlord of Avernus, counts many of these paladins called hell knights as his most ardent supporters. Hell knights cover  their armor with trophies taken from fallen  enemies, a grim warning to any who dare oppose  them and the decrees of their lords.",
-								"Tenets of Conquest:",
-								"A paladin who takes this oath has the tenets of conquest seared on the upper arm. A hell knight's oath appears in Infernal runes, a brutal reminder of vows to the Lords of Hell.",
-								"Douse the Flame of Hope. It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies will to fight is shattered forever. A blade can end a life. Fear can end an empire.",
-								"Rule with an Iron Fist. Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow.",
-								"Strength Above All. You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin."
+								"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron  mongers, those who swear this oath gather into  grim orders that serve gods or philosophies of  war and well-ordered might. Some of these  paladins go so far as to consort with the powers  of the Nine Hells. The archdevil Bel, warlord of Avernus, counts many of these paladins called hell knights as his most ardent supporters. Hell knights cover  their armor with trophies taken from fallen  enemies, a grim warning to any who dare oppose  them and the decrees of their lords."
 							],
 							"subclass": "Sacred Oath: Oath of Conquest (UA)",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of Conquest: Tenets of Conquest",
+							"text": [
+								"A paladin who takes this oath has the tenets of conquest seared on the upper arm. A hell knight's oath appears in Infernal runes, a brutal reminder of vows to the Lords of Hell."
+							],
+							"subclass": "Sacred Oath: Oath of Conquest (UA)",
+							"parent": "Oath of Conquest",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Douse the Flame of Hope",
+							"text": [
+								"It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies will to fight is shattered forever. A blade can end a life. Fear can end an empire."
+							],
+							"subclass": "Sacred Oath: Oath of Conquest (UA)",
+							"parent": "Tenets of Conquest",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Rule with an Iron Fist",
+							"text": [
+								"Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow."
+							],
+							"subclass": "Sacred Oath: Oath of Conquest (UA)",
+							"parent": "Tenets of Conquest",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Strength Above All",
+							"text": [
+								"You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin."
+							],
+							"subclass": "Sacred Oath: Oath of Conquest (UA)",
+							"parent": "Tenets of Conquest",
+							"subsuboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -9174,15 +9416,50 @@
 							"text": [
 								"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron mongers, those who swear this oath gather into grim orders that serve gods or philosophies of war and well-ordered might.",
 								"Some of these paladins go so far as to consort with the powers of the Nine Hells, valuing the rule of law over the balm of mercy. The archdevil Bel, warlord of Avernus, counts many of these paladins\u2014called hell knights\u2014as his most ardent supporters. Hell knights cover their armor with trophies taken from fallen enemies, a grim warning to any who dare oppose them and the decrees of their lords. These knights are often most fiercely resisted by other paladins of this oath, who believe that the hell knights have wandered too far into darkness.",
-								"Tenets of Conquest:",
-								"A paladin who takes this oath has the tenets of conquest seared on the upper arm. A hell knight's oath appears in Infernal runes, a brutal reminder of vows to the Lords of Hell.",
-								"Douse the Flame of Hope. It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies' will to fight is shattered forever. A blade can end a life. Fear can end an empire.",
-								"Rule with an Iron Fist. Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow.",
-								"Strength Above All. You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin."
 							],
 							"subclass": "Sacred Oath: Oath of Conquest v2 (UA)",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of Conquest: Tenets of Conquest",
+							"text": [
+								"A paladin who takes this oath has the tenets of conquest seared on the upper arm. A hell knight's oath appears in Infernal runes, a brutal reminder of vows to the Lords of Hell."
+							],
+							"subclass": "",
+							"parent": "",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Douse the Flame of Hope",
+							"text": [
+								"It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies' will to fight is shattered forever. A blade can end a life. Fear can end an empire."
+							],
+							"subclass": "",
+							"parent": "",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Rule with an Iron Fist",
+							"text": [
+								"Once you have conquered, tolerate no dissent. Your word is law. Those who obey it shall be favored. Those who defy it shall be punished as an example to all who might follow."
+							],
+							"subclass": "",
+							"parent": "",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Strength Above All",
+							"text": [
+								"You shall rule until a stronger one arises. Then you must grow mightier and meet the challenge, or fall to your own ruin."
+							],
+							"subclass": "",
+							"parent": "",
+							"subsuboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -9250,13 +9527,21 @@
 						{
 							"name": "Sacred Oath: Oath of Treachery (UA)",
 							"text": [
-								"The Oath of Treachery is the path followed by paladins who have forsworn other oaths or who care only for their own power and survival. Commonly known as blackguards, these profane warriors are faithful only to themselves. Anyone desperate enough to follow one of these paladins does so because, while deceitful, these paladins command great power. Those who follow them without falling prey to their treachery hope to indulge in wanton violence and accumulate great treasure. Many of these paladins pay homage to demon lords, especially Grazz't and Orcus. Even the Lords of Hell are loath to ally with these champions of chaos, but sometimes Baalzebul and Glasya find a kindred spirit in a blackguard's penchant for double dealing and treachery.",
-								"Tenets of Treachery:",
-								"A paladin who embraces the Oath of Treachery owes allegiance to no one. There are no tenets of this oath, for it lacks any substance. Those who are unfortunate enough to have close contact with blackguards have observed that a blackguard's overwhelming concern is power and safety, especially if both can be obtained at the expense of others."
+								"The Oath of Treachery is the path followed by paladins who have forsworn other oaths or who care only for their own power and survival. Commonly known as blackguards, these profane warriors are faithful only to themselves. Anyone desperate enough to follow one of these paladins does so because, while deceitful, these paladins command great power. Those who follow them without falling prey to their treachery hope to indulge in wanton violence and accumulate great treasure. Many of these paladins pay homage to demon lords, especially Grazz't and Orcus. Even the Lords of Hell are loath to ally with these champions of chaos, but sometimes Baalzebul and Glasya find a kindred spirit in a blackguard's penchant for double dealing and treachery."
 							],
 							"subclass": "Sacred Oath: Oath of Treachery (UA)",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of Treachery: Tenets of Treachery",
+							"text": [
+								"A paladin who embraces the Oath of Treachery owes allegiance to no one. There are no tenets of this oath, for it lacks any substance. Those who are unfortunate enough to have close contact with blackguards have observed that a blackguard's overwhelming concern is power and safety, especially if both can be obtained at the expense of others."
+							],
+							"subclass": "Sacred Oath: Oath of Treachery (UA)",
+							"parent": "Oath of Treachery",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -9327,16 +9612,60 @@
 							"text": [
 								"The Oath of Redemption sets a paladin on a difficult path, one that requires a holy warrior to use violence only as a last resort. Paladins who dedicate themselves to this oath believe that any person can be redeemed and that the path of benevolence and justice is one that anyone can walk. These paladins face evil creatures in the hope of turning them to the light, and the paladins slay them only when such a deed will clearly save other lives. Paladins who follow this path are known as redeemers.",
 								"While redeemers are idealists, they are no fools. Redeemers know that undead, demons, devils, and other supernatural threats can be inherently evil. Against such foes, the paladins bring the full wrath of their weapons and spells to bear. Yet the redeemers still pray that, one day, even creatures of wickedness will invite their own redemption.",
-								"Tenets of Redemption:",
-								"The tenets of the Oath of Redemption hold a paladin to a high standard of peace and justice.",
-								"Peace. Violence is a weapon of last resort. Diplomacy and understanding are the paths to long-lasting peace.",
-								"Innocence. All people begin life in an innocent state, and it is their environment or the influence of dark forces that drives them to evil. By setting the proper example, and working to heal the wounds of a deeply flawed world, you can set anyone on a righteous path.",
-								"Patience. Change takes time. Those who have walked the path of the wicked must be given reminders to keep them honest and true. Once you have planted the seed of righteousness in a creature, you must work day after day to allow it to survive and then flourish.",
-								"Wisdom. Your heart and mind must stay clear, for eventually you will be forced to admit defeat. While every creature can be redeemed, some are so far along the path of evil that you have no choice but to end their lives for the greater good. Any such action must be carefully weighed and the consequences fully understood, but once you have made the decision, follow through with it knowing your path is just."
 							],
 							"subclass": "Sacred Oath: Oath of Redemption (UA)",
 							"parent": "Sacred Oath",
 							"issubclass": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Oath of Redemption: Tenets of Redemption",
+							"text": [
+								"The tenets of the Oath of Redemption hold a paladin to a high standard of peace and justice."
+							],
+							"subclass": "Sacred Oath: Oath of Redemption (UA)",
+							"parent": "Oath of Redemption",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Peace",
+							"text": [
+								"Violence is a weapon of last resort. Diplomacy and understanding are the paths to long-lasting peace."
+							],
+							"subclass": "Sacred Oath: Oath of Redemption (UA)",
+							"parent": "Tenets of Redemption",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Innocence",
+							"text": [
+								"All people begin life in an innocent state, and it is their environment or the influence of dark forces that drives them to evil. By setting the proper example, and working to heal the wounds of a deeply flawed world, you can set anyone on a righteous path."
+							],
+							"subclass": "Sacred Oath: Oath of Redemption (UA)",
+							"parent": "Tenets of Redemption",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Patience",
+							"text": [
+								"Change takes time. Those who have walked the path of the wicked must be given reminders to keep them honest and true. Once you have planted the seed of righteousness in a creature, you must work day after day to allow it to survive and then flourish."
+							],
+							"subclass": "Sacred Oath: Oath of Redemption (UA)",
+							"parent": "Tenets of Redemption",
+							"subsuboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Wisdom",
+							"text": [
+								"Your heart and mind must stay clear, for eventually you will be forced to admit defeat. While every creature can be redeemed, some are so far along the path of evil that you have no choice but to end their lives for the greater good. Any such action must be carefully weighed and the consequences fully understood, but once you have made the decision, follow through with it knowing your path is just."
+							],
+							"subclass": "Sacred Oath: Oath of Redemption (UA)",
+							"parent": "Tenets of Redemption",
+							"subsuboption": "YES",
 							"_optional": "YES"
 						},
 						{
@@ -9536,13 +9865,31 @@
 						{
 							"name": "Oath of Treachery: Aura of Treachery",
 							"text": [
-								"Starting at 7th level, you emanate an aura of discord, which gives you the following benefits.",
-								"Cull the Herd. You have advantage on melee attack rolls against any creature that has one or more of its allies within 5 feet of it.",
-								"Treacherous Strike. If a creature within 5 feet of you misses you with a melee attack, you can use your reaction to force the attacker to reroll that attack against a creature of your choice that is also within 5 feet of the attacker. The ability fails and is wasted if the attacker is immune to being charmed.",
-								"You can use this ability three times. You regain expended uses of it when you finish a short or long rest."
+								"Starting at 7th level, you emanate an aura of discord, which gives you the following benefits."
 							],
 							"subclass": "Sacred Oath: Oath of Treachery (UA)",
 							"parent": "Oath of the Treachery (UA)",
+							"_optional": "YES"
+						},
+						{
+							"name": "Cull the Herd",
+							"text": [
+								"You have advantage on melee attack rolls against any creature that has one or more of its allies within 5 feet of it."
+							],
+							"subclass": "Sacred Oath: Oath of Treachery (UA)",
+							"parent": "Aura of Treachery",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Treacherous Strike",
+							"text": [
+								"If a creature within 5 feet of you misses you with a melee attack, you can use your reaction to force the attacker to reroll that attack against a creature of your choice that is also within 5 feet of the attacker. The ability fails and is wasted if the attacker is immune to being charmed.",
+								"You can use this ability three times. You regain expended uses of it when you finish a short or long rest."
+							],
+							"subclass": "Sacred Oath: Oath of Treachery (UA)",
+							"parent": "Aura of Treachery",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{

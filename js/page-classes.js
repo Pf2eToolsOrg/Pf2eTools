@@ -250,11 +250,14 @@ function loadhash (id) {
 			}
 
 			var styleClass = "";
-			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
+			if (curfeature.subclass === undefined && curfeature.suboption === undefined  && curfeature.subsuboption === undefined) styleClass = "feature";
 			else if (curfeature.subclass === undefined && curfeature.suboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubfeature";
 			else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
-			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
+			else if (curfeature.subclass === undefined && curfeature.subsuboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubsubfeature";
+			else if (curfeature.subclass === undefined && curfeature.subsuboption === "YES") styleClass = "subsubfeature";
+			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined && curfeature.subsuboption === undefined) styleClass = "subclassfeature";
 			else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
+			else if (curfeature.subclass !== undefined && curfeature.subsuboption === "YES") styleClass = "subclasssubsubfeature";
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
