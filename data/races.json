@@ -478,7 +478,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -702,7 +702,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -985,15 +985,58 @@ var racedata = {
 						]
 					},
 					{
+						"name": "Infernal Legacy",
+						"text": [
+							"You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the hellish rebuke spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the darkness spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+						]
+					},
+					{
 						"name": "Languages",
 						"text": [
 							"You can speak, read, and write Common and Infernal."
 						]
+					}
+				]
+			},
+			{
+				"name": "Tiefling (Variant Infernal)",
+				"source": "Sword Coast Adventurer's Guide",
+				"size": "M",
+				"speed": "30",
+				"ability": {
+					"cha": "2",
+					"choose": [
+						{
+							"predefined": [
+								{
+									"cha": "2",
+									"int": "1"
+								},
+								{
+									"dex": "2",
+									"int": "1"
+								}
+							]
+						}
+					]
+				},
+				"trait": [
+					{
+						"name": "Darkvision",
+						"text": [
+							"Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+						]
 					},
 					{
-						"name": "Feral (Variant)",
+						"name": "Hellish Resistance",
 						"text": [
-							"Your Intelligence score increases by 1, and your Dexterity score increases by 2. This replaces the Ability Score Increase trait."
+							"You have resistance to fire damage."
+						]
+					},
+					{
+						"name": "Languages",
+						"text": [
+							"You can speak, read, and write Common and Infernal."
 						]
 					},
 					{
@@ -1008,28 +1051,28 @@ var racedata = {
 						"suboption": "YES"
 					},
 					{
-						"name": "Devil's Tongue (SCAG)",
+						"name": "Devil's Tongue",
 						"text": [
 							"You know the vicious mockery cantrip. When your reach 3rd level, you can cast the charm person spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the enthrall spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
 						],
 						"suboption": "YES"
 					},
 					{
-						"name": "Hellfire (SCAG)",
+						"name": "Hellfire",
 						"text": [
 							"You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the burning hands spell once per day as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the darkness spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
 						],
 						"suboption": "YES"
 					},
 					{
-						"name": "Winged (SCAG)",
+						"name": "Winged",
 						"text": [
 							"You have bat-like wings sprouting form on your shoulder blades. You have a flying speed of 30 feet."
 						],
 						"suboption": "YES"
 					},
 					{
-						"name": "Appearance (Variant)",
+						"name": "Appearance",
 						"text": [
 							"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose 1d4 + 1 of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone"
 						]
@@ -1253,7 +1296,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -1278,16 +1321,35 @@ var racedata = {
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
+						"optionheading": "YES"
+					},
+					{
+						"name": "Keen Senses",
 						"text": [
-							"Keen Senses",
-							"You have proficiency in the Perception skill",
-							"Elf Weapon Training",
-							"You have proficiency with the longsword, shortsword, shortbow, and longbow.",
-							"Fleet of Foot",
-							"Your base walking speed increases to 35 feet.",
-							"Mask of the Wild",
+							"You have proficiency in the Perception skill."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Elf Weapon Training",
+						"text": [
+							"You have proficiency with the longsword, shortsword, shortbow, and longbow."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Fleet of Foot",
+						"text": [
+							"Your base walking speed increases to 35 feet."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Mask of the Wild",
+						"text": [
 							"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
-						]
+						],
+						"suboption": "YES"
 					},
 					{
 						"name": "Languages",
@@ -1307,7 +1369,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -1332,14 +1394,28 @@ var racedata = {
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
+						"optionheading": "YES"
+					},
+					{
+						"name": "Keen Senses",
 						"text": [
-							"Keen Senses",
-							"You have proficiency in the Perception skill",
-							"Elf Weapon Training",
-							"You have proficiency with the longsword, shortsword, shortbow, and longbow.",
-							"Cantrip",
+							"You have proficiency in the Perception skill."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Elf Weapon Training",
+						"text": [
+							"You have proficiency with the longsword, shortsword, shortbow, and longbow."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Cantrip",
+						"text": [
 							"You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
-						]
+						],
+						"suboption": "YES"
 					},
 					{
 						"name": "Languages",
@@ -1359,7 +1435,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -1384,12 +1460,21 @@ var racedata = {
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
+						"optionheading": "YES"
+					},
+					{
+						"name": "Keen Senses",
 						"text": [
-							"Keen Senses",
-							"You have proficiency in the Perception skill",
-							"Drow Magic",
+							"You have proficiency in the Perception skill."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Drow Magic",
+						"text": [
 							"You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day; you must finish a long rest in order to cast the spell again using this trait. When you reach 5th level, you can also cast the darkness spell once per day; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-						]
+						],
+						"suboption": "YES"
 					},
 					{
 						"name": "Languages",
@@ -1409,7 +1494,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -1434,12 +1519,21 @@ var racedata = {
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
+						"optionheading": "YES"
+					},
+					{
+						"name": "Keen Senses",
 						"text": [
-							"Keen Senses",
-							"You have proficiency in the Perception skill",
-							"Swim",
-							"You gain a swimming speed of 30."
-						]
+							"You have proficiency in the Perception skill."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Swim",
+						"text": [
+							"You gain a swimming speed of 30ft."
+						],
+						"suboption": "YES"
 					},
 					{
 						"name": "Languages",
@@ -2346,8 +2440,8 @@ var racedata = {
 			{
 				"name": "Revenant",
 				"source": "Unearthed Arcana: Gothic Heroes",
-				"size": "",
-				"speed": "",
+				"size": "V",
+				"speed": "Varies",
 				"ability": {
 					"con": "1"
 				},
@@ -2362,20 +2456,53 @@ var racedata = {
 					},
 					{
 						"name": "Racial Adjustments",
+						"optionheading": "YES",
 						"text": [
-							"For races that don't have subrace options, taking on the revenant subrace means making changes to your character's base traits, as follows. (This playtest article provides options only for human and dragonborn characters. Because half-elves and half-orcs have no subrace options, they shouldn't be used with these revenant subrace rules.)",
-							"Human Revenant. If you want to play a human revenant, modify the human's Ability Score Increase trait to the following: Two different ability scores of your choice increase by 1. If you use the variant human traits, remove the Skills trait and the Feat trait.",
-							"Dragonborn Revenant. If you want to play a dragonborn revenant, modify the dragonborn's Ability Score Increase trait to the following: Your Strength score increases by 1, and your Charisma score increases by 1. Additionally, your Draconic Ancestry trait uses necrotic damage as its damage type, replacing the damage type that applies to your breath weapon and your damage resistance.",
-							"Tiefling Revenant. A prior installment of Unearthed Arcana outlined two tiefling variants that make use of subraces. Use that article to make a tiefling revenant, replacing the subrace options with the revenant subrace options."
+							"For races that don't have subrace options, taking on the revenant subrace means making changes to your character's base traits, as follows. (This playtest article provides options only for human and dragonborn characters. Any other races which do not have subrace options should not be used with these revenant subrace rules.)"
 						]
+					},
+					{
+						"name": "Human Revenant",
+						"text": [
+							"If you want to play a human revenant, modify the human's Ability Score Increase trait to the following: Two different ability scores of your choice increase by 1. If you use the variant human traits, remove the Skills trait and the Feat trait."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Dragonborn Revenant",
+						"text": [
+							"If you want to play a dragonborn revenant, modify the dragonborn's Ability Score Increase trait to the following: Your Strength score increases by 1, and your Charisma score increases by 1. Additionally, your Draconic Ancestry trait uses necrotic damage as its damage type, replacing the damage type that applies to your breath weapon and your damage resistance."
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Tiefling Revenant",
+						"text": [
+							"A prior installment of Unearthed Arcana (That Old Black Magic) outlined two tiefling variants that make use of subraces. Use that article to make a tiefling revenant, replacing the subrace options with the revenant subrace options. The base tiefling traits from the article are as follows:"
+						],
+						"suboption": "YES"
+					},
+					{
+						"name": "Ability Score Increase",
+						"text": [
+							"Ability Score Increase. Your Charisma score increases by 2."
+						],
+						"subsuboption": "YES"
+					},
+					{
+						"name": "Languages",
+						"text": [
+							"You can speak, read, and write Common."
+						],
+						"subsuboption": "YES"
 					},
 					{
 						"name": "Relentless Nature",
 						"text": [
 							"Your DM assigns a goal to you—typically, one related to your character's death. The goal must be a specific task you can complete, such as slaying an enemy or liberating an area and its people. Until you fulfill that goal, you gain the following benefits:",
-							"â€¢ If you are below half your hit point maximum at the start of your turn, you regain 1 hit point. ",
-							"â€¢ If you die, you return to life 24 hours after death. If your body is destroyed, you reform within 1 mile of the place of your death at a spot determined by the DM. If your equipment was also destroyed, you do not regain it.",
-							"â€¢ You know the distance and direction between you and any creature involved in your goal, such as a person you seek vengeance against or someone you pledged to defend. This awareness fails if the creature is on another plane of existence. ",
+							"• If you are below half your hit point maximum at the start of your turn, you regain 1 hit point. ",
+							"• If you die, you return to life 24 hours after death. If your body is destroyed, you reform within 1 mile of the place of your death at a spot determined by the DM. If your equipment was also destroyed, you do not regain it.",
+							"• You know the distance and direction between you and any creature involved in your goal, such as a person you seek vengeance against or someone you pledged to defend. This awareness fails if the creature is on another plane of existence. ",
 							"When your goal is complete, you finally find rest. You die and cannot be restored to life."
 						]
 					}
@@ -2462,7 +2589,7 @@ var racedata = {
 					{
 						"name": "Abyssal Fortitude",
 						"text": [
-							"Your hit point maximum increases by half your level (minimum 1)"
+							"Your hit point maximum increases by half your level (minimum 1)."
 						],
 						"modifier": "Hit Points +1"
 					},
@@ -3016,7 +3143,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -3183,7 +3310,7 @@ var racedata = {
 					{
 						"name": "Vedalken Cunning",
 						"text": [
-							"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic"
+							"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
 						]
 					},
 					{
@@ -3355,7 +3482,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["str", "dex", "con", "int", "wis", "cha"],
-							"amount": 2
+							"count": 2
 						}
 					]
 				},
@@ -3580,7 +3707,7 @@ var racedata = {
 					"choose": [
 						{
 							"from": ["int", "cha"],
-							"amount": 1
+							"count": 1
 						}
 					]
 				},
@@ -3625,7 +3752,7 @@ var racedata = {
 					{
 						"name": "Shifting Seasons",
 						"text": [
-							"At the end of each short or long rest, you can align yourself with the magic of one season, regardless of the season that is dominating your personality. Doing so allows you to cast a certain cantrip, as shown in the Shifting Seasons Cantrips table. When you align yourself with a season's magic, you lose the cantrip associated with the previous season and gain the cantrip associated with the new season. ",
+							"At the end of each short or long rest, you can align yourself with the magic of one season, regardless of the season that is dominating your personality. Doing so allows you to cast a certain cantrip, as shown in the Shifting Seasons Cantrips table. When you align yourself with a season's magic, you lose the cantrip associated with the previous season and gain the cantrip associated with the new season.",
 							"Your spellcasting ability for these cantrips is Intelligence or Charisma, whichever is higher.",
 							{
 								"istable": "YES",
