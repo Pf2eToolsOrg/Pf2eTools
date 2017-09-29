@@ -312,12 +312,6 @@ function loadhash (id) {
 			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27"))
 	});
 
-	$(".features a").click(function() {
-		$("#stats").parent().scrollTop(0)
-		$("#stats").parent().scrollTop($("#stats").parent().scrollTop() + $("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
-		$("html, body").scrollTop($("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
-	});
-
 	return;
 }
 
