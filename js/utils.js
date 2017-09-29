@@ -1,11 +1,17 @@
 function utils_combineText(textList) {
 	let textStack = "";
 	for (let i = 0; i < textList.length; ++i) {
-		if (textList[i].istable === "YES") {
-			textStack += utils_makeTable(textList[i]);
-		} else if (textList[i].isspellability === "YES") {
-			textStack += utils_makeSpellAbilityDc(textList[i]);
-			textStack += utils_makeSpellAttackModifier(textList[i]);
+		if (typeof textList[i] === 'object') {
+			if (textList[i].istable === "YES") {
+				textStack += utils_makeTable(textList[i]);
+			}
+			if (textList[i].hassavedc === "YES") {
+				textStack += utils_makeAttDc(textList[i]);
+			}
+			if (textList[i].hasattackmod === "YES") {
+				textStack += utils_makeAttAttackMod(textList[i]);
+
+			}
 		} else {
 			textStack += "<p>" + textList[i] + "</p>";
 		}
@@ -31,12 +37,23 @@ function utils_makeTable(tableObject) {
 	return tableStack;
 }
 
-function utils_makeSpellAbilityDc(spellAttObject) {
-	return "<p class='spellabilitysubtext'><span>Spell save DC</span> = 8 + your proficiency bonus + your " + parse_attAbvToFull(spellAttObject.attribute) + " modifier</p>"
+function utils_makeAttDc(attDcObj) {
+	return "<p class='spellabilitysubtext'><span>" + attDcObj.name + "save DC</span> = 8 + your proficiency bonus + your " + utils_makeAttChoose(attDcObj.attributes) + "</p>"
 
 }
-function utils_makeSpellAttackModifier(spellAttObject) {
-	return "<p class='spellabilitysubtext'><span>Spell attack modifier</span> = your proficiency bonus + your " + parse_attAbvToFull(spellAttObject.attribute) + " modifier</p>"
+function utils_makeAttAttackMod(attAtkObj) {
+	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + "attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
+}
+function utils_makeAttChoose(attList) {
+	if (attList.length === 1) {
+		return parse_attAbvToFull(attList[0]) + " modifier";
+	} else {
+		let attsTemp = [];
+		for (let i = 0; i < attList.length; ++i) {
+			attsTemp.push(parse_attAbvToFull(attList[i]));
+		}
+		return attsTemp.join(" or ") + " modifier (your choice)";
+	}
 }
 
 function makeTableThClassText(tableObject, i) {
