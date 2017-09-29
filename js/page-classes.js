@@ -279,7 +279,7 @@ function loadhash (id) {
 			featureSpan.setAttribute('data-link', link);
             featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
             featureSpan.innerHTML = curfeature.name;
-			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
+			if (curfeature._optional !== "YES" && curfeature.suboption !== "YES" && curfeature.subsuboption !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
