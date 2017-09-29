@@ -7480,7 +7480,12 @@
 								"Starting at 2nd level, your training allows you to harness the mystic energy of ki. Your access to this energy is represented by a number of ki points. Your monk level determines the number of points you have, as shown in the Ki Points column of the Monk table.",
 								"You can spend these points to fuel various ki features. You start knowing three such features: Flurry of Blows, Patient Defense, and Step of the Wind. You learn more ki features as you gain levels in this class.",
 								"When you spend a ki point, it is unavailable until you finish a short or long rest, at the end of which you draw all of your expended ki back into yourself. You must spend at least 30 minutes of the rest meditating to regain your ki points.",
-								"Some of your ki features require your target to make a saving throw to resist the feature's effects. The saving throw DC is calculated as follows: Ki save DC = 8 + your proficiency bonus + your Wisdom modifier"
+								"Some of your ki features require your target to make a saving throw to resist the feature's effects. The saving throw DC is calculated as follows:",
+								{
+									"hassavedc": "YES",
+									"name": "Ki",
+									"attributes": ["wis"]
+								}
 							]
 						},
 						{
@@ -8023,23 +8028,59 @@
 						{
 							"name": "Way of the Kensei: One with the Blade",
 							"text": [
-								"At 6th level, you extend your ki into the weapons you hold, granting you the following benefits:",
-								"Magic Weapons. Your attacks with your kensei weapons count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.",
-								"Precise Strike. You can focus your attention on a single target in battle to understand and overcome its defenses. As a bonus action, pick one creature you can see within 30 feet of you. The next weapon attack you make against that creature during the current turn adds double your proficiency bonus to the attack roll, rather than your normal proficiency bonus. Once you use this ability, you can't use it again until you finish a short or long rest."
+								"At 6th level, you extend your ki into the weapons you hold, granting you the following benefits:"
 							],
 							"subclass": "Monastic Tradition: Way of the Kensei (UA)",
 							"parent": "Way of the Kensei",
 							"_optional": "YES"
 						},
 						{
+							"name": "Magic Weapons",
+							"text": [
+								"Your attacks with your kensei weapons count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.",
+							],
+							"subclass": "Monastic Tradition: Way of the Kensei (UA)",
+							"parent": "One with the Blade",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Precise Strike",
+							"text": [
+								"You can focus your attention on a single target in battle to understand and overcome its defenses. As a bonus action, pick one creature you can see within 30 feet of you. The next weapon attack you make against that creature during the current turn adds double your proficiency bonus to the attack roll, rather than your normal proficiency bonus. Once you use this ability, you can't use it again until you finish a short or long rest."
+							],
+							"subclass": "Monastic Tradition: Way of the Kensei (UA)",
+							"parent": "One with the Blade",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
 							"name": "Way of the Kensei: One with the Blade",
 							"text": [
-								"At 6th level, you extend your ki into the weapons you hold, granting you the following benefits.",
-								"Magic Kensei Weapons. Your attacks with your kensei weapons count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.",
-								"Precise Strike. When you hit a target with a kensei weapon, you can spend 1 ki point to cause the weapon to deal extra damage to the target equal to your Martial Arts die. You can use this feature only once on each of your turns.",
+								"At 6th level, you extend your ki into the weapons you hold, granting you the following benefits."
 							],
 							"subclass": "Monastic Tradition: Way of the Kensei v2 (UA)",
 							"parent": "Way of the Kensei",
+							"_optional": "YES"
+						},
+						{
+							"name": "Magic Kensei Weapons",
+							"text": [
+								"Your attacks with your kensei weapons count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage."
+							],
+							"subclass": "Monastic Tradition: Way of the Kensei v2 (UA)",
+							"parent": "One with the Blade",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Precise Strike",
+							"text": [
+								"When you hit a target with a kensei weapon, you can spend 1 ki point to cause the weapon to deal extra damage to the target equal to your Martial Arts die. You can use this feature only once on each of your turns."
+							],
+							"subclass": "Monastic Tradition: Way of the Kensei v2 (UA)",
+							"parent": "One with the Blade",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{

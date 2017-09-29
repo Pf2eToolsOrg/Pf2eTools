@@ -38,11 +38,11 @@ function utils_makeTable(tableObject) {
 }
 
 function utils_makeAttDc(attDcObj) {
-	return "<p class='spellabilitysubtext'><span>" + attDcObj.name + "save DC</span> = 8 + your proficiency bonus + your " + utils_makeAttChoose(attDcObj.attributes) + "</p>"
+	return "<p class='spellabilitysubtext'><span>" + attDcObj.name + " save DC</span> = 8 + your proficiency bonus + your " + utils_makeAttChoose(attDcObj.attributes) + "</p>"
 
 }
 function utils_makeAttAttackMod(attAtkObj) {
-	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + "attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
+	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + " attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
 }
 function utils_makeAttChoose(attList) {
 	if (attList.length === 1) {
