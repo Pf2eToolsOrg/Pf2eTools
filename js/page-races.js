@@ -195,15 +195,32 @@ function loadhash (id) {
 
 	var traitlist = currace.trait;
 	$("tr.trait").remove();
-	for (var n = traitlist.length-1; n >= 0; n--) {
-		var traitname = traitlist[n].name+".";
-		if (traitname.indexOf("Variant Feature") !== -1) {
-			traitname = traitname + "</span><p></p><span>"
+	for (let n = 0; n < traitlist.length; ++n) {
+		let trait = traitlist[n];
+        let parent = $('table#stats tbody tr:last');
+        let toAddTr = document.createElement('tr');
+        toAddTr.className = 'trait';
+        let toAddTd = document.createElement('td');
+        toAddTd.className = 'trait'+n;
+        toAddTd.colSpan = 6;
+		let toAdd;
+		if (trait.optionheading === "YES") {
+			toAdd = document.createElement('span');
+			toAdd.className = 'name';
+            toAdd.innerHTML = trait.name;
+            toAddTd.append(toAdd);
+		} else {
+            toAdd = document.createElement('span');
+            toAdd.className = 'name';
+            toAdd.innerHTML = trait.name + ".";
+            toAddTd.append(toAdd);
+            toAddTd.innerHTML += " " + (utils_combineText(traitlist[n].text));
+            if (trait.suboption === "YES") {
+				toAddTd.className = "suboption";
+			}
 		}
-
-		texthtml = "<span class='name'>"+traitname+"</span> " + utils_combineText(traitlist[n].text);
-
-		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+n+"'>"+texthtml+"</td></tr>");
+        toAddTr.appendChild(toAddTd);
+        parent.before(toAddTr);
 	}
 	return;
 };
