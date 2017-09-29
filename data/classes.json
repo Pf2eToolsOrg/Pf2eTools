@@ -2013,38 +2013,76 @@
 							"name": "Spellcasting",
 							"text": [
 								"As a conduit for divine power, you can cast cleric spells. See chapter 10 for the general rules of spellcasting and chapter 11 for a selection of cleric spells.",
-								"Cantrips",
-								"At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table.",
-								"Preparing and Casting Spells",
+							]
+						},
+						{
+							"name": "Cantrips",
+							"text": [
+								"At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Preparing and Casting Spells",
+							"text": [
 								"The Cleric table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
 								"You prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots.",
 								"For example, if you are a 3rd-level cleric, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
-								"You can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.",
-								"Spellcasting Ability",
+								"You can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Ability",
+							"text": [
 								"Wisdom is your spellcasting ability for your cleric spells. The power of your spells comes from your devotion to your deity. You use your Wisdom whenever a cleric spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a cleric spell you cast and when making an attack roll with one.",
-								"Spell save DC = 8 + your proficiency bonus + your Wisdom modifier",
-								"Spell attack modifier = your proficiency bonus + your Wisdom modifier",
-								"Ritual Casting",
-								"You can cast a cleric spell as a ritual if that spell has the ritual tag and you have the spell prepared.",
-								"Spellcasting Focus",
+								{
+									"isspellability": "YES",
+									"attribute": "wis"
+								}
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Ritual Casting",
+							"text": [
+								"You can cast a cleric spell as a ritual if that spell has the ritual tag and you have the spell prepared."
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
+						},
+						{
+							"name": "Spellcasting Focus",
+							"text": [
 								"You can use a holy symbol (found in chapter 5) as a spellcasting focus for your cleric spells."
-							]
+							],
+							"parent": "Spellcasting",
+							"suboption": "YES"
 						},
 						{
 							"name": "Divine Domain",
 							"text": [
-								"Choose one domain related to your deity from the list of available domains. Each domain is detailed in their own feature, and each one provides examples of gods associated with it. Your choice grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels.",
-								"Domain Spells",
+								"Choose one domain related to your deity from the list of available domains. Each domain is detailed in their own feature, and each one provides examples of gods associated with it. Your choice grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels."
+							]
+						},
+						{
+							"name": "Domain Spells",
+							"text": [
 								"Each domain has a list of spells\u2014its domain spells\u2014that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.",
 								"If you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you."
-							]
+							],
+							"parent": "Divine Domain",
+							"suboption": "YES"
 						},
 						{
 							"name": "Divine Domain: Arcana",
 							"text": [
 								"Magic is an energy that suffuses the multiverse and that fuels both destruction and creation. Gods of the Arcana domain know the secrets and potential of magic intimately. For some of these gods, magical knowledge is a great responsibility that comes with a special understanding of the nature of reality. Other gods of Arcana see magic as pure power, to be used as its wielder sees fit.",
 								"The gods of this domain are often associated with knowledge, as learning and arcane power tend to go hand-in-hand. In the Realms, deities of this domain include Azuth and Mystra, as well as Corellon Larethian of the elven pantheon. In other worlds, this domain includes Hecate, Math Mathonwy, and Isis; the triple moon gods of Solinari, Lunitari, and Nuitari of Krynn; and Boccob, Vecna, and WeeJas of Greyhawk.",
-								"Arcana Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared. They do not count towards your limit.",
+								"At each indicated cleric level, add the listed spells to your spells prepared. They do not count towards your limit.",
 								{
 									"istable": "YES",
 									"caption": "Arcana Domain Spells",
@@ -2098,7 +2136,7 @@
 							"name": "Divine Domain: City (UA)",
 							"text": [
 								"The City domain is concerned with the citizenry, commerce, traffic, and even architecture of modern civilization. In the eyes of a cleric of the city, the center of modern life is a sense and spirit of community, and the gravest enemies of the city are those who seek to harm the common weal of its citizens. ",
-								"City Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared. They do not count towards your limit.",
+								"At each indicated cleric level, add the listed spells to your spells prepared. They do not count towards your limit.",
 								{
 									"istable": "YES",
 									"caption": "City Domain Spells",
@@ -2179,7 +2217,7 @@
 							"name": "Divine Domain: Death",
 							"text": [
 								"The Death domain is concerned with the forces that cause death, as well as the negative energy that gives rise to undead creatures. Deities such as Chemosh, Myrkul, and WeeJas are patrons of necromancers, death knights, liches, mummy lords, and vampires. Gods of the Death domain also embody murder (Anubis, Bhaal, and Pyremius), pain (Iuz or Loviatar), disease or poison (Incabulos, Talona, or Morgion), and the underworld (Hades and He!).",
-								"Death Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared. They do not count towards your limit.",
+								"At each indicated cleric level, add the listed spells to your spells prepared. They do not count towards your limit.",
 								{
 									"istable": "YES",
 									"caption": "Death Domain Spells",
@@ -2242,7 +2280,7 @@
 							"name": "Divine Domain: Knowledge",
 							"text": [
 								"The gods of knowledge\u2014including Oghma, Boccob, Gilean, Aureon, and Thoth\u2014value learning and understanding above all. Some teach that knowledge is to be gathered and shared in libraries and universities, or promote the practical knowledge of craft and invention. Some deities hoard knowledge and keep its secrets to themselves. And some promise their followers that they will gain tremendous power if they unlock the secrets of the multiverse. Followers of these gods study esoteric lore, collect old tomes, delve into the secret places of the earth, and learn all they can. Some gods of knowledge promote the practical knowledge of craft and invention, including smith deities like Gond, Reorx, Onatar, Moradin, Hephaestus, and Goibhniu.",
-								"Knowledge Domain Spells: At each indicated cleric level, you add the listed spells to your spells prepared.",
+								"At each indicated cleric level, you add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Knowledge Domain Spells",
@@ -2309,7 +2347,7 @@
 							"name": "Divine Domain: Life",
 							"text": [
 								"The Life domain focuses on the vibrant positive energy\u2014one of the fundamental forces of the universe\u2014that sustains all life. The gods of life promote vitality and health through healing the sick and wounded, caring for those in need, and driving away the forces of death and undeath. Almost any non-evil deity can claim influence over this domain, particularly agricultural deities (such as Chauntea, Arawai, and Demeter), sun gods (such as Lathander, Pelor, and Re-Horakhty), gods of healing or endurance (such as Ilmater, Mishakal, Apollo, and Diancecht), and gods of home and community (such as Hestia, Hathor, and Boldrei).",
-								"Life Domain Spells: At each indicated cleric level, you add the listed spells to your spells prepared.",
+								"At each indicated cleric level, you add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Life Domain Spells",
@@ -2372,7 +2410,7 @@
 							"name": "Divine Domain: Light",
 							"text": [
 								"Gods of light\u2014including Helm, Lathander, Pholtus, Branchala, the Silver Flame, Belenus, Apollo, and Re-Horakhty\u2014promote the ideals of rebirth and renewal, truth, vigilance, and beauty, often using the symbol of the sun. Some of these gods are portrayed as the sun itself or as a charioteer who guides the sun across the sky. Others are tireless sentinels whose eyes pierce every shadow and see through every deception. Some are deities of beauty and artistry, who teach that art is a vehicle for the soul's improvement. Clerics of a god of light are enlightened souls infused with radiance and the power of their gods' discerning vision, charged with chasing away lies and burning away darkness.",
-								"Light Domain Spells: At each indicated cleric level, you add the listed spells to your spells prepared.",
+								"At each indicated cleric level, you add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Light Domain Spells",
@@ -2436,7 +2474,7 @@
 							"name": "Divine Domain: Nature",
 							"text": [
 								"Gods of nature are as varied as the natural world itself, from inscrutable gods of the deep forests (such as Silvanus, Obad-Hai, Chislev, Balinor, and Pan) to friendly deities associated with particular springs and groves (such as Eldath). Druids revere nature as a whole and might serve one of these deities, practicing mysterious rites and reciting all-but-forgotten prayers in their own secret tongue. But many of these gods have clerics as well, champions who take a more active role in advancing the interests of a particular nature god. These clerics might hunt the evil monstrosities that despoil the woodlands, bless the harvest of the faithful, or wither the crops of those who anger their gods.",
-								"Nature Domain Spells: At each indicated cleric level, you add the listed spells to your spells prepared.",
+								"At each indicated cleric level, you add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Nature Domain Spells",
@@ -2499,7 +2537,7 @@
 							"name": "Divine Domain: Tempest",
 							"text": [
 								"Gods whose portfolios include the Tempest domain\u2014including Talos, Umberlee, Kord, Zeboim, the Devourer, Zeus, and Thor\u2014govern storms, sea, and sky. They include gods of lightning and thunder, gods of earthquakes, some fire gods, and certain gods of violence, physical strength, and courage. In some pantheons, a god of this domain rules over other deities and is known for swift justice delivered by thunderbolts. In the pantheons of seafaring people, gods of this domain are ocean deities and the patrons of sailors. Tempest gods send their clerics to inspire fear in the common folk, either to keep those folk on the path of righteousness or to encourage them to offer sacrifices of propitiation to ward off divine wrath.",
-								"Tempest Domain Spells: At each indicated cleric level, you add the listed spells to your spells prepared.",
+								"At each indicated cleric level, you add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Tempest Domain Spells",
@@ -2563,7 +2601,7 @@
 							"name": "Divine Domain: Trickery",
 							"text": [
 								"Gods of trickery\u2014such as Tymora, Beshaba, Olidammara, the Traveler, Garl Glittergold, and Loki\u2014are mischief-makers and instigators who stand as a constant challenge to the accepted order among both gods and mortals. They're patrons of thieves, scoundrels, gamblers, rebels, and liberators. Their clerics are a disruptive force in the world, puncturing pride, mocking tyrants, stealing from the rich, freeing captives, and flouting hollow traditions. They prefer subterfuge, pranks, deception, and theft rather than direct confrontation.",
-								"Trickery Domain Spells: At each indicated cleric level, you add the listed spells to your spells prepared.",
+								"At each indicated cleric level, you add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Trickery Domain Spells",
@@ -2617,7 +2655,7 @@
 							"name": "Divine Domain: War",
 							"text": [
 								"War has many manifestations. It can make heroes of ordinary people. It can be desperate and horrific, with acts of cruelty and cowardice eclipsing instances of excellence and courage. In either case, the gods of war watch over warriors and reward them for their great deeds. The clerics of such gods excel in battle, inspiring others to fight the good fight or offering acts of violence as prayers. Gods of war include champions of honor and chivalry (such as Torm, Heironeous, and Kiri-Jolith) as well as gods of destruction and pillage (such as Erythnul, the Fury, Gruumsh, and Ares) and gods of conquest and domination (such as Bane, Hextor, and Maglubiyet). Other war gods (such as Tempus, Nike, and Nuada) take a more neutral stance, promoting war in all its manifestations and supporting warriors in any circumstance.",
-								"War Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "War Domain Spells",
@@ -2680,7 +2718,7 @@
 							"name": "Divine Domain: Forge (UA)",
 							"text": [
 								"The gods of the forge are patrons of artisans who work with metal, from a humble blacksmith who keeps a village in horseshoes and plow blades to the mighty elf artisan whose diamond-tipped arrows of mithral have felled demon lords. The gods of the forge teach that, with patience and hard work, even the most intractable metal can transform from a lump of ore to a beautifully wrought object. Clerics of these deities quest to search for objects lost to the forces of darkness, liberate mines overrun by orcs, and uncover rare and wondrous materials necessary to create potent magic items. Followers of these gods take great pride in their work, and they are willing to craft and use heavy armor and powerful weapons to protect them. Deities of this domain include Gond, Reorx, Onatar, Moradin, Hephaestus, and Goibhniu.",
-								"Forge Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Forge Domain Spells",
@@ -2744,7 +2782,7 @@
 							"name": "Divine Domain: Grave (UA)",
 							"text": [
 								"Gods of the grave watch over the line between life and death. To these deities, death and the afterlife are a foundational part of the multiverse's workings. To resist death, or to desecrate the dead's rest, is an abomination. Deities of the grave include Kelemvor, WeeJas, the ancestral spirits of the Undying Court, Hades, Anubis, and Osiris. These deities teach their followers to respect the dead and pay them due homage. Followers of these deities seek to put restless spirits to rest, destroy the undead wherever they find them, and ease the suffering of dying creatures. Their magic also allows them to stave off a creature's death, though they refuse to use such magic to extend a creature's lifespan beyond its mortal limits.",
-								"Grave Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Grave Domain Spells",
@@ -2817,7 +2855,7 @@
 							"name": "Divine Domain: Protection (UA)",
 							"text": [
 								"The protection domain is the purview of deities who charge their followers to shield the weak from the strong. The gods' faithful dwell in villages and towns on the borderlands, where they help bolster defenses and seek out evils to defeat. These gods believe that a strong shield and a suit of armor is the best defense against evil, second only to a stout mace on hand to respond to any attacks in kind. Deities who grant this domain include Helm, Ilmater, Torm, Tyr, Heironeous, St. Cuthbert, Paladine, Dol Dorn, the Silver Flame, Bahamut, Yondalla, Athena, and Odin.",
-								"Protection Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Protection Domain Spells",
@@ -2881,7 +2919,7 @@
 							"text": [
 								"\"The worthy must know and respect all others whom the God-Pharaoh deems worthy, for in the afterlife, all will be united in purpose and action.\"",
 								"Oketra is charged with expounding upon this teaching of the God-Pharaoh, instilling in every initiate the virtue of solidarity. She forges each group of children into a crop of acolytes with just one purpose: to be judged worthy of a glorious afterlife. And she instills in each crop the ability to unite in a single action in pursuit of that purpose. She is fond of poetic imagery to communicate her ideals.",
-								"Solidarity Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Solidarity Domain Spells",
@@ -2945,7 +2983,7 @@
 							"text": [
 								"\"The worthy shall hone a strong body that can withstand the boundless energies of the afterlife.\"",
 								"It falls to Rhonas to instill this teaching in those who would enter the afterlife\u2014but to his mind, the words themselves don't matter. Strength can't be taught. It must be built through practice and training. Rhonas demonstrates his teachings by his example, rather than by giving his students any kind of academic instruction. He welcomes the people of Naktamun to stand by the Hekma and watch him as he storms into the desert to battle the greatest horrors. He encourages them to observe his indomitable strength, for though they will never equal it, they can aspire to mimicry. He invites them to scrutinize every move and practice what they see.",
-								"Strength Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Strength Domain Spells",
@@ -3009,7 +3047,7 @@
 							"text": [
 								"\"The worthy shall strive for greatness\u2014supremacy in life leads to supremacy in the afterlife.\"",
 								"Bontu has fully embraced this dictum, and though she expends little effort in teaching it, she surely leads by example. Her viziers subtly plant the seeds that flower into the ambition the God-Pharaoh desires. Through insinuation, they remind acolytes and initiates alike that achieving one's place in the afterlife at the expense of others is not shameful, but is proof of the initiate's determination and drive. Nothing is more important than that drive, they suggest\u2014not the bonds of a crop, not friendship or love. Not even devotion to a deity.",
-								"Ambition Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Ambition Domain Spells",
@@ -3065,7 +3103,7 @@
 							"text": [
 								"\"The worthy shall rush to the God-Pharaoh's side with relentless zeal, rising to overcome every obstacle in their way.\"",
 								"The God-Pharaoh expects those he welcomes into the afterlife to desire it above all other pleasures and achievements, and for them to show their dedication, passion, and fervor through their actions. Hazoret is charged with cultivating this zeal in the initiates who come under her care, and she has undertaken the task with appropriate enthusiasm. She recognizes, however, that the best way to teach zeal is by demonstrating it.",
-								"Zeal Domain Spells: At each indicated cleric level, add the listed spells to your spells prepared.",
+								"At each indicated cleric level, add the listed spells to your spells prepared.",
 								{
 									"istable": "YES",
 									"caption": "Zeal Domain Spells",
@@ -3839,11 +3877,29 @@
 							"text": [
 								"Starting at 17th level, you can call up visions of the past that relate to an object you hold or your immediate surroundings. You spend at least 1 minute in meditation and prayer, then receive dreamlike, shadowy glimpses of recent events. You can meditate in this way for a number of minutes equal to your Wisdom score and must maintain concentration during that time, as if you were casting a spell.",
 								"Once you use this feature, you can't use it again until you finish a short or long rest.",
-								"Object Reading. Holding an object as you meditate, you can see visions of the object's previous owner. After meditating for 1 minute, you learn how the owner acquired and lost the object, as well as the most recent significant event involving the object and that owner. If the object was owned by another creature in the recent past (within a number of days equal to your Wisdom score), you can spend 1 additional minute for each owner to learn the same information about that creature.",
-								"Area Reading. As you meditate, you see visions of recent events in your immediate vicinity (a room, street, tunnel, clearing, or the like, up to a 50-foot cube), going back a number of days equal to your Wisdom score. For each minute you meditate, you learn about one significant event, beginning with the most recent. Significant events typically involve powerful emotions, such as battles and betrayals, marriages and murders, births and funerals. However, they might also include more mundane events that are nevertheless important in your current situation."
 							],
 							"subclass": "Divine Domain: Knowledge",
 							"parent": "Knowledge",
+							"_optional": "YES"
+						},
+						{
+							"name": "Object Reading",
+							"text": [
+								"Holding an object as you meditate, you can see visions of the object's previous owner. After meditating for 1 minute, you learn how the owner acquired and lost the object, as well as the most recent significant event involving the object and that owner. If the object was owned by another creature in the recent past (within a number of days equal to your Wisdom score), you can spend 1 additional minute for each owner to learn the same information about that creature."
+							],
+							"subclass": "Divine Domain: Knowledge",
+							"parent": "Visions of the Past",
+							"suboption": "YES",
+							"_optional": "YES"
+						},
+						{
+							"name": "Area Reading",
+							"text": [
+								"As you meditate, you see visions of recent events in your immediate vicinity (a room, street, tunnel, clearing, or the like, up to a 50-foot cube), going back a number of days equal to your Wisdom score. For each minute you meditate, you learn about one significant event, beginning with the most recent. Significant events typically involve powerful emotions, such as battles and betrayals, marriages and murders, births and funerals. However, they might also include more mundane events that are nevertheless important in your current situation."
+							],
+							"subclass": "Divine Domain: Knowledge",
+							"parent": "Visions of the Past",
+							"suboption": "YES",
 							"_optional": "YES"
 						},
 						{
