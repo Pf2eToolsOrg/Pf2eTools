@@ -1,3 +1,4 @@
+
 function parsesource (src) {
 	source = src;
 	if (source === "Player's Handbook") source = "PHB";
@@ -44,21 +45,23 @@ function dec_sort(a, b){
 }
 
 function getAttributeText(race) {
+	const ATTRIBUTES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
 	let atts = [];
 	if (race.ability !== undefined) {
-		handleAttribute("Str");
-		handleAttribute("Dex");
-		handleAttribute("Con");
-		handleAttribute("Int");
-		handleAttribute("Wis");
-		handleAttribute("Cha");
+		handleAllAttributes(atts, race.ability);
 		handleAttributesChoose();
-		return atts.join(", ");
+		return atts.join("; ");
 	}
 	return "";
 
-	function handleAttribute(att) {
-		if (race.ability[att.toLowerCase()] !== undefined) atts.push(att + " " + (race.ability[att.toLowerCase()].includes("-") ? "" : "+") + race.ability[att.toLowerCase()]);
+	function handleAllAttributes(targetArray, abilityList) {
+		for (let a = 0; a < ATTRIBUTES.length; ++a) {
+			handleAttribute(targetArray, abilityList, ATTRIBUTES[a])
+		}
+	}
+
+	function handleAttribute(targetArray, parent, att) {
+		if (parent[att.toLowerCase()] !== undefined) targetArray.push(att + " " + (parent[att.toLowerCase()].includes("-") ? "" : "+") + parent[att.toLowerCase()]);
 	}
 
 	function handleAttributesChoose() {
@@ -66,19 +69,28 @@ function getAttributeText(race) {
 			for (let i = 0; i < race.ability.choose.length; ++i) {
 				let item = race.ability.choose[i];
 				let outStack = "Choose ";
-				let allAttributes = item.length === 6;
-				if (allAttributes) {
-					outStack += "any ";
-				}
-				if (item.amount !== undefined && item.amount > 1) {
-					outStack += getAmountString(item.amount) + " ";
-				}
-				if (allAttributes) {
-					outStack += "+1";
+				if (item.predefined !== undefined) {
+					for (let j = 0; j < item.predefined.length; ++j) {
+						let subAtts = [];
+						handleAllAttributes(subAtts, item.predefined[j]);
+						outStack += subAtts.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
+					}
 				} else {
-					for (let j = 0; j < item.length; ++j) {
-						let capitalisedAtt = item[j].charAt(0).toUpperCase() + item[j].slice(1);
-						outStack += capitalisedAtt + " +1" + (j === item.length-1 ? "" : " or ");
+					let allAttributes = item.from.length === 6;
+					let amount = item.amount === undefined ? "1" : item.amount;
+					if (allAttributes) {
+						outStack += "any ";
+					}
+					if (item.count !== undefined && item.count > 1) {
+						outStack += getNumberString(item.count) + " ";
+					}
+					if (allAttributes) {
+						outStack += "+" + amount;
+					} else {
+						for (let j = 0; j < item.from.length; ++j) {
+							let capitalisedAtt = item.from[j].charAt(0).toUpperCase() + item.from[j].slice(1);
+							outStack += capitalisedAtt + " +" + amount + (j === item.from.length - 1 ? "" : " or ");
+						}
 					}
 				}
 				atts.push(outStack)
@@ -86,9 +98,11 @@ function getAttributeText(race) {
 		}
 	}
 
-	function getAmountString(amount) {
+	function getNumberString(amount) {
 		if (amount === 1) return "one";
 		if (amount === 2) return "two";
+		if (amount === 3) return "three";
+		else return amount;
 	}
 }
 
@@ -189,21 +203,41 @@ function loadhash (id) {
 	var ability = getAttributeText(currace);
 	$("td#ability span").html(ability);
 
-	var speed = currace.speed;
-	$("td#speed span").html(speed+ "ft. ");
+	var speed = currace.speed + (currace.speed === "Varies" ? "" : "ft. ");
+	$("td#speed span").html(speed);
 	if (speed === "") $("td#speed").hide();
 
 	var traitlist = currace.trait;
 	$("tr.trait").remove();
-	for (var n = traitlist.length-1; n >= 0; n--) {
-		var traitname = traitlist[n].name+".";
-		if (traitname.indexOf("Variant Feature") !== -1) {
-			traitname = traitname + "</span><p></p><span>"
+	for (let n = 0; n < traitlist.length; ++n) {
+		let trait = traitlist[n];
+		let parent = $('table#stats tbody tr:last');
+		let toAddTr = document.createElement('tr');
+		toAddTr.className = 'trait';
+		let toAddTd = document.createElement('td');
+		toAddTd.className = 'trait'+n;
+		toAddTd.colSpan = 6;
+		let toAdd;
+		if (trait.optionheading === "YES") {
+			toAdd = document.createElement('span');
+			toAdd.className = 'name';
+			toAdd.innerHTML = trait.name + (traitlist[n].text === undefined ? "" : ".");
+			toAddTd.append(toAdd);
+			toAddTd.innerHTML += " " + (utils_combineText(traitlist[n].text));
+		} else {
+			toAdd = document.createElement('span');
+			toAdd.className = 'name';
+			toAdd.innerHTML = trait.name + ".";
+			toAddTd.append(toAdd);
+			toAddTd.innerHTML += " " + (utils_combineText(traitlist[n].text));
+			if (trait.suboption === "YES") {
+				toAddTd.className = "suboption";
+			} else if (trait.subsuboption === "YES") {
+				toAddTd.className = "subsuboption";
+			}
 		}
-
-		texthtml = "<span class='name'>"+traitname+"</span> " + utils_combineText(traitlist[n].text, "p");
-
-		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+n+"'>"+texthtml+"</td></tr>");
+		toAddTr.appendChild(toAddTd);
+		parent.before(toAddTr);
 	}
 	return;
 };
