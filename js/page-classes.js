@@ -311,7 +311,7 @@ function loadhash (id) {
 
 		if (!prevsubclass) prevsubclass = subclasses[i].subclass;
 
-		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+subclasses[i].name+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
+		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+(subclasses[i].name)+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
 	}
 
 	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
@@ -320,7 +320,7 @@ function loadhash (id) {
 		if ($(this).hasClass("active"))
 			window.location.hash = window.location.hash.replace(/\,.*/, "")
 		else
-			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name.toLowerCase()).replace("'", "%27"))
+			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27"))
 	});
 
 	return;
@@ -347,4 +347,3 @@ function loadsub(sub) {
 	$(".subclass-prefix").hide();
 	$("._class_feature[data-subclass='"+$el.text()+"']").show();
 }
-
