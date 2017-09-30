@@ -58,5 +58,5 @@ function loadhash (id) {
 
 	$("tr.text").remove();
 
-	$("tr#text").after("<tr class='text'><td colspan='6'><p>"+utils_combineText(curcondition.text)+"</p></td></tr>");
+	$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curcondition.text, "p")+"</td></tr>");
 }

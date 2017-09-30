@@ -288,7 +288,7 @@ function loadhash (id) {
 				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><p><span id='feature" + link + "'>" + subclassPrefix + curfeature.name + ".</span> " + utils_combineText(curfeature.text) + "</p></td></tr>");
 			} else {
 				let name = removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name;
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + subclassPrefix + name + "</strong><p>" + utils_combineText(curfeature.text) + "</p></td></tr>");
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + subclassPrefix + name + "</strong>" + utils_combineText(curfeature.text, "p") + "</td></tr>");
 			}
 		}
 

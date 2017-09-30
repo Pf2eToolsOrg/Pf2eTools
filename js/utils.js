@@ -1,4 +1,5 @@
-function utils_combineText(textList) {
+function utils_combineText(textList, tagPerItem) {
+	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
 	let textStack = "";
 	for (let i = 0; i < textList.length; ++i) {
 		if (typeof textList[i] === 'object') {
@@ -10,10 +11,11 @@ function utils_combineText(textList) {
 			}
 			if (textList[i].hasattackmod === "YES") {
 				textStack += utils_makeAttAttackMod(textList[i]);
-
 			}
 		} else {
-			textStack += textList[i];
+			let openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
+			let closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
+			textStack += openTag + textList[i] + closeTag;
 		}
 	}
 	return textStack;

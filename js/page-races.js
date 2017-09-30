@@ -201,7 +201,7 @@ function loadhash (id) {
 			traitname = traitname + "</span><p></p><span>"
 		}
 
-		texthtml = "<span class='name'>"+traitname+"</span> <p>" + utils_combineText(traitlist[n].text) +"</p>";
+		texthtml = "<span class='name'>"+traitname+"</span> " + utils_combineText(traitlist[n].text, "p");
 
 		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+n+"'>"+texthtml+"</td></tr>");
 	}
