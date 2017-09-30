@@ -26,6 +26,7 @@ function parsesize (size) {
 	if (size === "L") size = "Large";
 	if (size === "H") size = "Huge";
 	if (size === "G") size = "Gargantuan";
+	if (size === "V") size = "Varies";
 	return size;
 }
 
@@ -65,7 +66,7 @@ function getAttributeText(race) {
 			for (let i = 0; i < race.ability.choose.length; ++i) {
 				let item = race.ability.choose[i];
 				let outStack = "Choose ";
-				let allAttributes = item.from.length === 6;
+				let allAttributes = item.length === 6;
 				if (allAttributes) {
 					outStack += "any ";
 				}
@@ -75,9 +76,9 @@ function getAttributeText(race) {
 				if (allAttributes) {
 					outStack += "+1";
 				} else {
-					for (let j = 0; j < item.from.length; ++j) {
-						let capitalisedAtt = item.from[j].charAt(0).toUpperCase() + item.from[j].slice(1);
-						outStack += capitalisedAtt + " +1" + (j === item.from.length-1 ? "" : " or ");
+					for (let j = 0; j < item.length; ++j) {
+						let capitalisedAtt = item[j].charAt(0).toUpperCase() + item[j].slice(1);
+						outStack += capitalisedAtt + " +1" + (j === item.length-1 ? "" : " or ");
 					}
 				}
 				atts.push(outStack)
