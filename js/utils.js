@@ -13,7 +13,7 @@ function utils_combineText(textList) {
 
 			}
 		} else {
-			textStack += "<p>" + textList[i] + "</p>";
+			textStack += textList[i];
 		}
 	}
 	return textStack;

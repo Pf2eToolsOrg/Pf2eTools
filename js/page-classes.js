@@ -249,15 +249,13 @@ function loadhash (id) {
 				subclasses.push(curfeature);
 			}
 
-			var styleClass = "";
-			if (curfeature.subclass === undefined && curfeature.suboption === undefined  && curfeature.subsuboption === undefined) styleClass = "feature";
-			else if (curfeature.subclass === undefined && curfeature.suboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubfeature";
-			else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
-			else if (curfeature.subclass === undefined && curfeature.subsuboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubsubfeature";
-			else if (curfeature.subclass === undefined && curfeature.subsuboption === "YES") styleClass = "subsubfeature";
-			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined && curfeature.subsuboption === undefined) styleClass = "subclassfeature";
-			else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
-			else if (curfeature.subclass !== undefined && curfeature.subsuboption === "YES") styleClass = "subclasssubsubfeature";
+			let isHeaderInline = curfeature.suboption === "2";
+			let styleClass = "";
+			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
+			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined && curfeature._optional === "YES") styleClass = "optionalsubfeature sub" + curfeature.suboption;
+			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined) styleClass = "subfeature sub" + curfeature.suboption;
+			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
+			else if (curfeature.subclass !== undefined && curfeature.suboption !== undefined) styleClass = "subclasssubfeature sub" + curfeature.suboption;
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
@@ -283,7 +281,11 @@ function loadhash (id) {
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong>" + utils_combineText(curfeature.text) + "</td></tr>");
+			if (isHeaderInline) {
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><p><span id='feature" + link + "'>" + curfeature.name + ".</span> " + utils_combineText(curfeature.text) + "</p></td></tr>");
+			} else {
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + curfeature.name + "</strong><p>" + utils_combineText(curfeature.text) + "</p></td></tr>");
+			}
 		}
 
 	}
