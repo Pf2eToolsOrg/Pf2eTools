@@ -22,7 +22,7 @@ window.onload = function load() {
 		var name = currules.name;
 		var basedon = "";
 		var rulesid = currules.id.toString();
-		$("ul.rules."+currules.parentlist).append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></li>");
+		$("ul.rules."+currules.parentlist).append("<li id='"+i+"' data-link='"+encodeURI(name.toLowerCase())+"' title='"+name+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></li>");
 	}
 
 	var options = {
