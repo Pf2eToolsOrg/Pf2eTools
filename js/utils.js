@@ -1,5 +1,6 @@
-function utils_combineText(textList, tagPerItem) {
+function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
+	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
 	let textStack = "";
 	for (let i = 0; i < textList.length; ++i) {
 		if (typeof textList[i] === 'object') {
@@ -15,7 +16,8 @@ function utils_combineText(textList, tagPerItem) {
 		} else {
 			let openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
 			let closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
-			textStack += openTag + textList[i] + closeTag;
+			let inlineTitle = textBlockInlineTitle !== null && i === 0 ? textBlockInlineTitle : "";
+			textStack += openTag + inlineTitle + textList[i] + closeTag;
 		}
 	}
 	return textStack;
