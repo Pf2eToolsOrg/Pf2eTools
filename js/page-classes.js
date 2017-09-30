@@ -284,13 +284,14 @@ function loadhash (id) {
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
 			let subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
+			let dataSubclass = curfeature.subclass === undefined ? undefined : curfeature.subclass.toLowerCase();
 			if (isInlineHeader) {
 				let namePart = curfeature.name === undefined ? null : "<span id='feature" + link + "' class='inline-header'>" + subclassPrefix + curfeature.name + ".</span> ";
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + utils_combineText(curfeature.text, "p", namePart) + "</td></tr>");
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + dataSubclass + "' data-ua='" + dataua + "'>" + utils_combineText(curfeature.text, "p", namePart) + "</td></tr>");
 			} else {
 				let namePart = curfeature.name === undefined ? "" : "<strong id='feature" + link + "'>" + subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name) + "</strong>";
 				let prerequisitePart = curfeature.prerequisite === undefined ? "" : "<p class='prerequisite'>Prerequisite: " + curfeature.prerequisite + "</p>";
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + namePart + prerequisitePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + dataSubclass + "' data-ua='" + dataua + "'>" + namePart + prerequisitePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
 			}
 		}
 
@@ -301,26 +302,17 @@ function loadhash (id) {
 	});
 
 	$("div#subclasses span").remove();
-	var prevsubclass = 0;
 	for (var i = 0; i < subclasses.length; i++) {
-
-		if (typeof subclasses[i].issubclass !== "undefined" && subclasses[i].issubclass !== "YES") {
-			$(".feature[data-subclass='"+subclasses[i].subclass+"']").hide();
-			continue;
-		}
-
-		if (!prevsubclass) prevsubclass = subclasses[i].subclass;
-
-		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+(subclasses[i].name)+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
+		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+(subclasses[i].name.toLowerCase())+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
 	}
 
 	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
 	$("#subclasses > span").click(function() {
 		const name = $(this).children("span").text()
 		if ($(this).hasClass("active"))
-			window.location.hash = window.location.hash.replace(/\,.*/, "")
+			window.location.hash = window.location.hash.replace(/\,.*/, "").toLowerCase()
 		else
-			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27"))
+			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27")).toLowerCase()
 	});
 
 	return;
@@ -332,7 +324,16 @@ function scrollToFeature(ele) {
 }
 
 function loadsub(sub) {
-	const $el = $(`#subclasses span:contains('${decodeURIComponent(sub)}')`).first();
+	let subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
+	let $el;
+	for (let i = 0; i < subClassSpanList.length; ++i) {
+		if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
+			&& subClassSpanList[i].getAttribute('data-subclass').includes(decodeURIComponent(sub.toLowerCase()))) {
+			$el = $(subClassSpanList[i]);
+			break;
+		}
+	}
+
 	if ($el.hasClass("active")) {
 		$("._class_feature").show();
 		$(".subclass-prefix").show();
@@ -343,7 +344,7 @@ function loadsub(sub) {
 	$("#subclasses .active").removeClass("active");
 	$el.addClass("active");
 
-	$("._class_feature[data-subclass!='"+$el.text()+"'][data-subclass!='undefined']").hide();
+	$("._class_feature[data-subclass!='"+$el.text().toLowerCase()+"'][data-subclass!='undefined']").hide();
 	$(".subclass-prefix").hide();
-	$("._class_feature[data-subclass='"+$el.text()+"']").show();
+	$("._class_feature[data-subclass='"+$el.text().toLowerCase()+"']").show();
 }

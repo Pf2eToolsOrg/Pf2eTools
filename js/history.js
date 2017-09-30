@@ -7,6 +7,7 @@ window.onhashchange = function hashchange(e) {
 		document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
 	}
 
-	if (sub)
+	if (sub) {
 		loadsub(sub)
+	}
 }
