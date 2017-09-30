@@ -285,10 +285,11 @@ function loadhash (id) {
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
 			let subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
 			if (isInlineHeader) {
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><p><span id='feature" + link + "'>" + subclassPrefix + curfeature.name + ".</span> " + utils_combineText(curfeature.text) + "</p></td></tr>");
+				let namePart = curfeature.name === undefined ? "" : "<span id='feature" + link + "'>" + subclassPrefix + curfeature.name + ".</span> ";
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><p>" + namePart + utils_combineText(curfeature.text) + "</p></td></tr>");
 			} else {
-				let name = removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name;
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + subclassPrefix + name + "</strong>" + utils_combineText(curfeature.text, "p") + "</td></tr>");
+				let namePart = curfeature.name === undefined ? "" : "<strong id='feature" + link + "'>" + subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name) + "</strong>";
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + namePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
 			}
 		}
 
