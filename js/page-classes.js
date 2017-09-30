@@ -249,12 +249,15 @@ function loadhash (id) {
 				subclasses.push(curfeature);
 			}
 
-			var styleClass = "";
+			let styleClass = "";
+			let isInlineHeader = curfeature.suboption === "2";
+			let removeSubclassNamePrefix = curfeature.subclass !== undefined && curfeature.suboption === undefined;
+			let hasSubclassPrefix = curfeature.subclass !== undefined && curfeature.suboption === "1";
 			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
-			else if (curfeature.subclass === undefined && curfeature.suboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubfeature";
-			else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
+			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined && curfeature._optional === "YES") styleClass = "optionalsubfeature sub" + curfeature.suboption;
+			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined) styleClass = "subfeature sub" + curfeature.suboption;
 			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
-			else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
+			else if (curfeature.subclass !== undefined && curfeature.suboption !== undefined) styleClass = "subclasssubfeature sub" + curfeature.suboption;
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
@@ -276,11 +279,18 @@ function loadhash (id) {
 			featureSpan.setAttribute('data-link', link);
             featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
             featureSpan.innerHTML = curfeature.name;
-			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
+			if (curfeature._optional !== "YES" && curfeature.suboption === undefined) $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong>" + utils_combineText(curfeature.text) + "</td></tr>");
+			let subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
+			if (isInlineHeader) {
+				let namePart = curfeature.name === undefined ? null : "<span id='feature" + link + "' class='inline-header'>" + subclassPrefix + curfeature.name + ".</span> ";
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + utils_combineText(curfeature.text, "p", namePart) + "</td></tr>");
+			} else {
+				let namePart = curfeature.name === undefined ? "" : "<strong id='feature" + link + "'>" + subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name) + "</strong>";
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + namePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
+			}
 		}
 
 	}
@@ -324,6 +334,7 @@ function loadsub(sub) {
 	const $el = $(`#subclasses span:contains('${decodeURIComponent(sub)}')`).first();
 	if ($el.hasClass("active")) {
 		$("._class_feature").show();
+		$(".subclass-prefix").show();
 		$el.removeClass("active");
 		return;
 	}
@@ -332,6 +343,7 @@ function loadsub(sub) {
 	$el.addClass("active");
 
 	$("._class_feature[data-subclass!='"+$el.text()+"'][data-subclass!='undefined']").hide();
+	$(".subclass-prefix").hide();
 	$("._class_feature[data-subclass='"+$el.text()+"']").show();
 }
 
