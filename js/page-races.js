@@ -114,7 +114,7 @@ window.onload = function load() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+getAttributeText(currace)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
+		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name.toLowerCase())+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+getAttributeText(currace)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
