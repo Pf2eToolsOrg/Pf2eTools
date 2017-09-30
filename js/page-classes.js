@@ -289,7 +289,8 @@ function loadhash (id) {
 				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + utils_combineText(curfeature.text, "p", namePart) + "</td></tr>");
 			} else {
 				let namePart = curfeature.name === undefined ? "" : "<strong id='feature" + link + "'>" + subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name) + "</strong>";
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + namePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
+				let prerequisitePart = curfeature.prerequisite === undefined ? "" : "<p class='prerequisite'>Prerequisite: " + curfeature.prerequisite + "</p>";
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'>" + namePart + prerequisitePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
 			}
 		}
 
