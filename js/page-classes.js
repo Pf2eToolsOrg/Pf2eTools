@@ -50,7 +50,7 @@ window.onload = function load() {
 	for (var i = 0; i < classlist.length; i++) {
 		var curclass = classlist[i];
 
-		$("ul.classes").append("<li id='"+i+"' title='"+curclass.name+"' data-link='"+encodeURI(curclass.name.toLowerCase())+"'><span class='name'>"+curclass.name+"</span></li>");
+		$("ul.classes").append("<li id='"+i+"' title='"+curclass.name+"' data-link='"+encodeURI(curclass.name())+"'><span class='name'>"+curclass.name+"</span></li>");
 
 	}
 
@@ -320,7 +320,7 @@ function loadhash (id) {
 		if ($(this).hasClass("active"))
 			window.location.hash = window.location.hash.replace(/\,.*/, "")
 		else
-			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name.toLowerCase()).replace("'", "%27"))
+			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name()).replace("'", "%27"))
 	});
 
 	return;
