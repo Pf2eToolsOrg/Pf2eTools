@@ -24,7 +24,11 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 }
 
 function utils_makeTable(tableObject) {
-	let tableStack = "<table><caption>" + tableObject.caption + "</caption><thead><tr>";
+	let tableStack = "<table>";
+	if (tableObject.caption !== undefined) {
+		tableStack += "<caption>" + tableObject.caption + "</caption>";
+	}
+	tableStack += "<thead><tr>";
 
 	for (let i = 0; i < tableObject.thead.length; ++i) {
 		tableStack += "<th" + makeTableThClassText(tableObject, i) + ">" + tableObject.thead[i] + "</th>"
