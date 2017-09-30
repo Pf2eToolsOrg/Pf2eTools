@@ -249,8 +249,9 @@ function loadhash (id) {
 				subclasses.push(curfeature);
 			}
 
-			let isHeaderInline = curfeature.suboption === "2";
 			let styleClass = "";
+			let isHeaderInline = curfeature.suboption === "2";
+			let hasSubclassPrefix = curfeature.subclass !== undefined && curfeature.suboption === "1";
 			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
 			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined && curfeature._optional === "YES") styleClass = "optionalsubfeature sub" + curfeature.suboption;
 			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined) styleClass = "subfeature sub" + curfeature.suboption;
@@ -281,10 +282,11 @@ function loadhash (id) {
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
+			let subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
 			if (isHeaderInline) {
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><p><span id='feature" + link + "'>" + curfeature.name + ".</span> " + utils_combineText(curfeature.text) + "</p></td></tr>");
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><p><span id='feature" + link + "'>" + subclassPrefix + curfeature.name + ".</span> " + utils_combineText(curfeature.text) + "</p></td></tr>");
 			} else {
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + curfeature.name + "</strong><p>" + utils_combineText(curfeature.text) + "</p></td></tr>");
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + subclassPrefix + curfeature.name + "</strong><p>" + utils_combineText(curfeature.text) + "</p></td></tr>");
 			}
 		}
 
@@ -335,6 +337,7 @@ function loadsub(sub) {
 	const $el = $(`#subclasses span:contains('${decodeURIComponent(sub)}')`).first();
 	if ($el.hasClass("active")) {
 		$("._class_feature").show();
+		$(".subclass-prefix").show();
 		$el.removeClass("active");
 		return;
 	}
@@ -343,6 +346,7 @@ function loadsub(sub) {
 	$el.addClass("active");
 
 	$("._class_feature[data-subclass!='"+$el.text()+"'][data-subclass!='undefined']").hide();
+	$(".subclass-prefix").hide();
 	$("._class_feature[data-subclass='"+$el.text()+"']").show();
 }
 
