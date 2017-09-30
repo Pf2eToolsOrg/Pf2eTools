@@ -1,4 +1,3 @@
-
 function parsesource (src) {
 	source = src;
 	if (source === "Player's Handbook") source = "PHB";
