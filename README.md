@@ -1,6 +1,8 @@
 ## 5e Tools
 [Go to 5etools](5etools.html)
 
+[Join the 5etools Discord here!](https://discord.gg/B2J9gM9)
+
 ## Style Guidelines
 - Use tabs over spaces.
 
