@@ -39,7 +39,7 @@ window.onload = function load() {
 	for (var i = 0; i < featlist.length; i++) {
 		var curfeat = featlist[i];
 		var name = curfeat.name;
-		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name col-xs-9'>"+name+"</span> <span class='source col-xs-3' title='"+curfeat.source+"'>"+parsesource(curfeat.source)+"</span></li>");
+		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name.toLowerCase())+"' title='"+name+"'><span class='name col-xs-9'>"+name+"</span> <span class='source col-xs-3' title='"+curfeat.source+"'>"+parsesource(curfeat.source)+"</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+curfeat.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(curfeat.source)+"'>"+curfeat.source+"</option>");
