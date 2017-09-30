@@ -250,7 +250,8 @@ function loadhash (id) {
 			}
 
 			let styleClass = "";
-			let isHeaderInline = curfeature.suboption === "2";
+			let isInlineHeader = curfeature.suboption === "2";
+			let removeSubclassNamePrefix = curfeature.subclass !== undefined && curfeature.suboption === undefined;
 			let hasSubclassPrefix = curfeature.subclass !== undefined && curfeature.suboption === "1";
 			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
 			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined && curfeature._optional === "YES") styleClass = "optionalsubfeature sub" + curfeature.suboption;
@@ -278,15 +279,16 @@ function loadhash (id) {
 			featureSpan.setAttribute('data-link', link);
             featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
             featureSpan.innerHTML = curfeature.name;
-			if (curfeature._optional !== "YES" && curfeature.suboption !== "YES" && curfeature.subsuboption !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
+			if (curfeature._optional !== "YES" && curfeature.suboption === undefined) $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
 			let subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
-			if (isHeaderInline) {
+			if (isInlineHeader) {
 				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><p><span id='feature" + link + "'>" + subclassPrefix + curfeature.name + ".</span> " + utils_combineText(curfeature.text) + "</p></td></tr>");
 			} else {
-				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + subclassPrefix + curfeature.name + "</strong><p>" + utils_combineText(curfeature.text) + "</p></td></tr>");
+				let name = removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name;
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + curfeature.subclass + "' data-ua='" + dataua + "'><strong id='feature" + link + "'>" + subclassPrefix + name + "</strong><p>" + utils_combineText(curfeature.text) + "</p></td></tr>");
 			}
 		}
 
