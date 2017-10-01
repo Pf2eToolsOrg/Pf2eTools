@@ -223,7 +223,7 @@ function loadhash (id) {
 			toAdd.className = 'name';
 			toAdd.innerHTML = trait.name + (traitlist[n].text === undefined ? "" : ".");
 			toAddTd.append(toAdd);
-			toAddTd.innerHTML += " " + (utils_combineText(traitlist[n].text));
+			toAddTd.innerHTML += traitlist[n].text === undefined ? "" : " " + (utils_combineText(traitlist[n].text));
 		} else {
 			toAdd = document.createElement('span');
 			toAdd.className = 'name';
