@@ -50,7 +50,7 @@ window.onload = function load() {
 	for (var i = 0; i < classlist.length; i++) {
 		var curclass = classlist[i];
 
-		$("ul.classes").append("<li id='"+i+"' title='"+curclass.name+"' data-link='"+encodeURI(curclass.name.toLowerCase())+"'><span class='name'>"+curclass.name+"</span></li>");
+		$("ul.classes").append("<li id='"+i+"' title='"+curclass.name+"' data-link='"+encodeURI(curclass.name).toLowerCase()+"'><span class='name'>"+curclass.name+"</span></li>");
 
 	}
 

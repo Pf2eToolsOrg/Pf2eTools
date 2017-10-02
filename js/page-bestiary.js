@@ -103,7 +103,7 @@ window.onload = function load() {
 		var cr = monsters[i].cr;
 
 
-		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name.toLowerCase()).replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></li>");
+		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></li>");
 
 		if (!$("select.typefilter:contains('"+type+"')").length && !$("select.typefilter:contains('"+type+" \\(')").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
@@ -440,7 +440,7 @@ function loadhash (id) {
 			if (spellslist[0] === "*") return;
 			spellslist = spellslist.split(": ")[1].split(/\, (?!\+|\dd|appears|inside gems)/g);
 			for (var i = 0; i < spellslist.length; i++) {
-				spellslist[i] = "<a href='spells.html#"+encodeURIComponent((spellslist[i].replace(/(\*)| \(([^\)]+)\)/g,"").toLowerCase())).toLowerCase().replace("'","%27")+"' target='_blank'>"+spellslist[i]+"</a>";
+				spellslist[i] = "<a href='spells.html#"+encodeURIComponent((spellslist[i].replace(/(\*)| \(([^\)]+)\)/g,""))).toLowerCase().replace("'","%27")+"' target='_blank'>"+spellslist[i]+"</a>";
 				if (i !== spellslist.length-1) spellslist[i] = spellslist[i]+", ";
 			}
 
