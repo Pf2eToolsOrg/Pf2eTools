@@ -34,7 +34,7 @@ function utils_makeTable(tableObject) {
 		tableStack += "<th" + makeTableThClassText(tableObject, i) + ">" + tableObject.thead[i] + "</th>"
 	}
 
-	tableStack += "</tr></thead>";
+	tableStack += "</tr></thead><tbody>";
 	for (let i = 0; i < tableObject.tbody.length; ++i) {
 		tableStack += "<tr>";
 		for (let j = 0; j < tableObject.tbody[i].length; ++j) {
@@ -42,6 +42,7 @@ function utils_makeTable(tableObject) {
 		}
 		tableStack += "</tr>";
 	}
+	tableStack += "</tbody></table>";
 	return tableStack;
 }
 
