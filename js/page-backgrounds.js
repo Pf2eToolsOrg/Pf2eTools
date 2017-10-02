@@ -41,7 +41,7 @@ window.onload = function load () {
 	for (var i = 0; i < bglist.length; i++) {
 		var curbg = bglist[i];
 		var name = curbg.name;
-		$("ul.backgrounds").append("<li id='"+i+"' data-link='"+encodeURI(name.toLowerCase())+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+curbg.source+"'>"+parsesource(curbg.source)+"</span></li>");
+		$("ul.backgrounds").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+curbg.source+"'>"+parsesource(curbg.source)+"</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+curbg.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(curbg.source)+"'>"+curbg.source+"</option>");
