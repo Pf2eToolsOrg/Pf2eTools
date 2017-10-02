@@ -72,24 +72,24 @@
 				<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
 			</div>
 			<form id="filtertools">
-				<select class="sourcefilter">
+				<select id="sourceFilter">
 					<option value="All">All Sources</option>
 				</select>
-				<select class="typefilter">
+				<select id="typeFilter">
 					<option value="All">All Types</option>
 				</select>
-				<select class="orderfilter">
+				<select id="orderFilter">
 					<option value="All">All Orders</option>
 				</select>
 				<span class="sortlabel btn-group">
-					<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source" disabled>Source</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="type">Types</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="order">Orders</button>
+					<button class="col-xs-5 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="type">Type</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="order">Order</button>
 				</span>
 			</form>
 
-			<ul class="list psionics">
+			<ul id="psionics-list" class="list psionics">
 				<!-- populated by javascript -->
 			</ul>
 		</div>

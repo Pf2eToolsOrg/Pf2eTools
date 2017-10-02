@@ -1,3 +1,4 @@
+// TEXT COMBINING ======================================================================================================
 function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
 	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
@@ -76,7 +77,7 @@ function makeTableTdClassText(tableObject, i) {
 	}
 }
 
-// PARSING FUNCTIONS ===================================================================================================
+// PARSING =============================================================================================================
 function parse_attAbvToFull(attribute) {
 	const ABV_TO_FULL = {
 		"str": "Strength",
@@ -87,4 +88,40 @@ function parse_attAbvToFull(attribute) {
 		"cha": "Charisma"
 	};
 	return ABV_TO_FULL[attribute.toLowerCase()];
+}
+
+const SRC_PHB = "PHB";
+const SRC_EEPC = "EEPC";
+const SRC_SCAG = "SCAG";
+const SRC_UAMystic = "UAMystic";
+const SRC_UAStarterSpells = "UAStarterSpells";
+const SRC_UAModern = "UAModern";
+const SRC_UATOBM = "UATOBM";
+const SRC_BOLS_3PP = "BoLS 3pp";
+function parse_sourceToFull (source) {
+	if (source === SRC_PHB) source = "Player's Handbook";
+	if (source === SRC_EEPC) source = "Elemental Evil Player's Companion";
+	if (source === SRC_SCAG) source = "Sword Coast Adventurer's Guide";
+	if (source === SRC_UAMystic) source = "Unearthed Arcana: The Mystic Class";
+	if (source === SRC_UAStarterSpells) source = "Unearthed Arcana: Starter Spells";
+	if (source === SRC_UAModern) source = "Unearthed Arcana: Modern Magic";
+	if (source === SRC_UATOBM) source = "Unearthed Arcana: That Old Black Magic";
+	if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
+	return source;
+}
+function parse_sourceToAbv(source) {
+	if (source === SRC_PHB) source = "PHB";
+	if (source === SRC_EEPC) source = "EEPC";
+	if (source === SRC_SCAG) source = "SCAG";
+	if (source === SRC_UAMystic) source = "UAM";
+	if (source === SRC_UAStarterSpells) source = "UASS";
+	if (source === SRC_UAModern) source = "UAMM";
+	if (source === SRC_UATOBM) source = "UAOBM";
+	if (source === SRC_BOLS_3PP) source = "BLS";
+	return source;
+}
+
+// DATA LINKS ==========================================================================================================
+function utils_nameToDataLink(name) {
+	return encodeURIComponent(name.toLowerCase()).replace("'","%27");
 }

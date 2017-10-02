@@ -31,37 +31,6 @@ function parsespelllevel (level) {
 	return level+"th";
 }
 
-const SRC_PHB = "PHB";
-const SRC_EEPC = "EEPC";
-const SRC_SCAG = "SCAG";
-const SRC_UAMystic = "UAMystic";
-const SRC_UAStarterSpells = "UAStarterSpells";
-const SRC_UAModern = "UAModern";
-const SRC_UATOBM = "UATOBM";
-const SRC_BOLS_3PP = "BoLS 3pp";
-function parsesource (source) {
-	if (source === SRC_PHB) source = "Player's Handbook";
-	if (source === SRC_EEPC) source = "Elemental Evil Player's Companion";
-	if (source === SRC_SCAG) source = "Sword Coast Adventurer's Guide";
-	if (source === SRC_UAMystic) source = "Unearthed Arcana: The Mystic Class";
-	if (source === SRC_UAStarterSpells) source = "Unearthed Arcana: Starter Spells";
-	if (source === SRC_UAModern) source = "Unearthed Arcana: Modern Magic";
-	if (source === SRC_UATOBM) source = "Unearthed Arcana: That Old Black Magic";
-	if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
-	return source;
-}
-function abbreviateSource(source) {
-	if (source === SRC_PHB) source = "PHB";
-	if (source === SRC_EEPC) source = "EEPC";
-	if (source === SRC_SCAG) source = "SCAG";
-	if (source === SRC_UAMystic) source = "UAM";
-	if (source === SRC_UAStarterSpells) source = "UASS";
-	if (source === SRC_UAModern) source = "UAMM";
-	if (source === SRC_UATOBM) source = "UAOBM";
-	if (source === SRC_BOLS_3PP) source = "BLS";
-	return source;
-}
-
 const SELF_RANGE_OFFSET = -4;
 const FEET_PER_MILE = 5280;
 const ALL_RANGES = -2; // used in spells.html where the filter is defined
@@ -191,7 +160,7 @@ window.onload = function load() {
 			curspell.range = "Varies";
 		}
 
-		var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name.toLowerCase()).replace("'","%27")+"' title='"+name+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
+		var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name.toLowerCase()).replace("'","%27")+"' title='"+name+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parse_sourceToFull(source)+"\">"+parse_sourceToAbv(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
 		if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
 			var textlist = curspell.text;
 
@@ -226,8 +195,8 @@ window.onload = function load() {
 			$("select.schoolfilter").append("<option value='"+parseschool (curspell.school)+"'>"+parseschool (curspell.school)+"</option>");
 		}
 
-		if (!$("select.sourcefilter:contains(\""+parsesource(source)+"\")").length) {
-			$("select.sourcefilter").append("<option value='"+abbreviateSource(source)+"'>"+parsesource(source)+"</option>");
+		if (!$("select.sourcefilter:contains(\""+parse_sourceToFull(source)+"\")").length) {
+			$("select.sourcefilter").append("<option value='"+parse_sourceToAbv(source)+"'>"+parse_sourceToFull(source)+"</option>");
 		}
 
 		var classlist = curspell.classes.split(",");
@@ -383,7 +352,7 @@ function loadhash (id) {
 	var spelllist = spelldata.compendium.spell;
 	var curspell = spelllist[id];
 
-	$("th#name").html("<span title=\""+parsesource(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
+	$("th#name").html("<span title=\""+parse_sourceToFull(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
 
 	// $("th#name").html(curspell.name);
 
