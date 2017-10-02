@@ -50,7 +50,7 @@ window.onload = function load() {
 	for (var i = 0; i < classlist.length; i++) {
 		var curclass = classlist[i];
 
-		$("ul.classes").append("<li id='"+i+"' data-link='"+encodeURI(curclass.name)+"'><span class='name'>"+curclass.name+"</span></li>");
+		$("ul.classes").append("<li id='"+i+"' title='"+curclass.name+"' data-link='"+encodeURI(curclass.name.toLowerCase())+"'><span class='name'>"+curclass.name+"</span></li>");
 
 	}
 
@@ -249,12 +249,15 @@ function loadhash (id) {
 				subclasses.push(curfeature);
 			}
 
-			var styleClass = "";
+			let styleClass = "";
+			let isInlineHeader = curfeature.suboption === "2";
+			let removeSubclassNamePrefix = curfeature.subclass !== undefined && curfeature.suboption === undefined;
+			let hasSubclassPrefix = curfeature.subclass !== undefined && curfeature.suboption === "1";
 			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
-			else if (curfeature.subclass === undefined && curfeature.suboption === "YES" && curfeature._optional === "YES") styleClass = "optionalsubfeature";
-			else if (curfeature.subclass === undefined && curfeature.suboption === "YES") styleClass = "subfeature";
+			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined && curfeature._optional === "YES") styleClass = "optionalsubfeature sub" + curfeature.suboption;
+			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined) styleClass = "subfeature sub" + curfeature.suboption;
 			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
-			else if (curfeature.subclass !== undefined && curfeature.suboption === "YES") styleClass = "subclasssubfeature";
+			else if (curfeature.subclass !== undefined && curfeature.suboption !== undefined) styleClass = "subclasssubfeature sub" + curfeature.suboption;
 
 			if (curfeature.name === "Starting Proficiencies") {
 				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
@@ -272,11 +275,24 @@ function loadhash (id) {
 			// write out list to class table
 			var multifeature = "";
 			if (curlevel.feature.length !== 1 && a !== 0) multifeature = ", ";
-			if (curfeature._optional !== "YES") $("tr#level"+curlevel._level+" td.features").prepend(multifeature+"<a href='"+window.location.hash+"' data-link='"+link+"'>"+curfeature.name+"</a>");
+			let featureSpan = document.createElement('span');
+			featureSpan.setAttribute('data-link', link);
+            featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
+            featureSpan.innerHTML = curfeature.name;
+			if (curfeature._optional !== "YES" && curfeature.suboption === undefined) $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			$("#features").after("<tr><td colspan='6' class='_class_feature "+styleClass+"' data-subclass='"+curfeature.subclass+"' data-ua='"+dataua+"'><strong id='feature"+link+"'>"+curfeature.name+"</strong>" + utils_combineText(curfeature.text) + "</td></tr>");
+			let subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
+			let dataSubclass = curfeature.subclass === undefined ? undefined : curfeature.subclass.toLowerCase();
+			if (isInlineHeader) {
+				let namePart = curfeature.name === undefined ? null : "<span id='feature" + link + "' class='inline-header'>" + subclassPrefix + curfeature.name + ".</span> ";
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + dataSubclass + "' data-ua='" + dataua + "'>" + utils_combineText(curfeature.text, "p", namePart) + "</td></tr>");
+			} else {
+				let namePart = curfeature.name === undefined ? "" : "<strong id='feature" + link + "'>" + subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name) + "</strong>";
+				let prerequisitePart = curfeature.prerequisite === undefined ? "" : "<p class='prerequisite'>Prerequisite: " + curfeature.prerequisite + "</p>";
+				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + dataSubclass + "' data-ua='" + dataua + "'>" + namePart + prerequisitePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
+			}
 		}
 
 	}
@@ -286,41 +302,41 @@ function loadhash (id) {
 	});
 
 	$("div#subclasses span").remove();
-	var prevsubclass = 0;
 	for (var i = 0; i < subclasses.length; i++) {
-
-		if (typeof subclasses[i].issubclass !== "undefined" && subclasses[i].issubclass !== "YES") {
-			$(".feature[data-subclass='"+subclasses[i].subclass+"']").hide();
-			continue;
-		}
-
-		if (!prevsubclass) prevsubclass = subclasses[i].subclass;
-
-		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+subclasses[i].name+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
+		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+(subclasses[i].name.toLowerCase())+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
 	}
 
 	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
 	$("#subclasses > span").click(function() {
 		const name = $(this).children("span").text()
 		if ($(this).hasClass("active"))
-			window.location.hash = window.location.hash.replace(/\,.*/, "")
+			window.location.hash = window.location.hash.replace(/\,.*/, "").toLowerCase()
 		else
-			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27"))
-	});
-
-	$(".features a").click(function() {
-		$("#stats").parent().scrollTop(0)
-		$("#stats").parent().scrollTop($("#stats").parent().scrollTop() + $("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
-		$("html, body").scrollTop($("td.feature strong[id='feature"+$(this).attr("data-link")+"']").position().top);
+			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27")).toLowerCase()
 	});
 
 	return;
 }
 
+function scrollToFeature(ele) {
+	let goTo = document.getElementById("feature"+ele);
+    goTo.scrollIntoView();
+}
+
 function loadsub(sub) {
-	const $el = $(`#subclasses span:contains('${decodeURIComponent(sub)}')`).first();
+	let subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
+	let $el;
+	for (let i = 0; i < subClassSpanList.length; ++i) {
+		if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
+			&& subClassSpanList[i].getAttribute('data-subclass').includes(decodeURIComponent(sub.toLowerCase()))) {
+			$el = $(subClassSpanList[i]);
+			break;
+		}
+	}
+
 	if ($el.hasClass("active")) {
 		$("._class_feature").show();
+		$(".subclass-prefix").show();
 		$el.removeClass("active");
 		return;
 	}
@@ -328,7 +344,7 @@ function loadsub(sub) {
 	$("#subclasses .active").removeClass("active");
 	$el.addClass("active");
 
-	$("._class_feature[data-subclass!='"+$el.text()+"'][data-subclass!='undefined']").hide();
-	$("._class_feature[data-subclass='"+$el.text()+"']").show();
+	$("._class_feature[data-subclass!='"+$el.text().toLowerCase()+"'][data-subclass!='undefined']").hide();
+	$(".subclass-prefix").hide();
+	$("._class_feature[data-subclass='"+$el.text().toLowerCase()+"']").show();
 }
-

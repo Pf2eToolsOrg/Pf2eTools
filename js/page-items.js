@@ -1,30 +1,24 @@
 
 function parsesource (src) {
 	let source = src.trim();
-	if (source === "monster manual") source = "MM";
-	if (source === "Player's Handbook") source = "PHB";
-	if (source === "Dungeon Master's Guide") source = "DMG";
-	if (source === "Volo's Guide") source = "VGM";
-	if (source === "Volo's Guide to Monsters") source = "VGM";
-	if (source === "Princes of the Apocalypse") source = "PotA";
-	if (source === "Elemental Evil PDF supplement") source = "EEPC";
-	if (source === "elemental evil") source = "PotA";
-	if (source === "Storm King's Thunder") source = "SKT";
-	if (source === "storm kings thunder") source = "SKT";
-	if (source === "The Rise of Tiamat") source = "RoT";
-	if (source === "Rise of Tiamat Online Supplement") source = "RoT";
-	if (source === "Hoard of the Dragon Queen") source = "HotDQ";
-	if (source === "tyranny of dragons") source = "ToD";
-	if (source === "Out of the Abyss") source = "OotA";
-	if (source === "out of the abyss") source = "OotA";
 	if (source === "Curse of Strahd") source = "CoS";
-	if (source === "curse of strahd") source = "CoS";
-	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
+	if (source === "Dungeon Master's Guide") source = "DMG";
+	if (source === "Elemental Evil PDF supplement") source = "EEPC";
+	if (source === "Hoard of the Dragon Queen") source = "HotDQ";
 	if (source === "Lost Mines of Phandelver") source = "LMoP";
-	if (source === "lost mine of phandelver") source = "LMoP";
-	if (source === "Modern Magic Unearthed Arcana") source = "UA";
+	if (source === "Monster Manual") source = "MM";
+	if (source === "Out of the Abyss") source = "OotA";
+	if (source === "Player's Handbook") source = "PHB";
+	if (source === "Princes of the Apocalypse") source = "PotA";
+	if (source === "Rise of Tiamat Online Supplement") source = "RoT";
+	if (source === "Storm King's Thunder") source = "SKT";
+	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
 	if (source === "Tales from the Yawning Portal") source = "TYP";
+	if (source === "The Rise of Tiamat") source = "RoT";
 	if (source === "Tomb of Annihilation") source = "ToA";
+	if (source === "Tyranny of Dragons") source = "ToD";
+	if (source === "Unearthed Arcana Modern Magic") source = "UAMM";
+	if (source === "Volo's Guide to Monsters") source = "VGM";
 	return source;
 }
 
@@ -122,7 +116,7 @@ window.onload = function load() {
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).replace("'","%27")+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></li>");
+		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name.toLowerCase()).replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></li>");
 
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
 			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+source+"</option>")

@@ -191,7 +191,7 @@ window.onload = function load() {
 			curspell.range = "Varies";
 		}
 
-		var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name).replace("'","%27")+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
+		var toadd = "<li class='row' id='"+i+"' data-link='"+encodeURIComponent(name.toLowerCase()).replace("'","%27")+"' title='"+name+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parsesource(source)+"\">"+abbreviateSource(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span>";
 		if (curspell.level[0] === "P" && curspell.level[1] === "D") { // if it's a psionic discipline, make an invisible search field with all the modes associated
 			var textlist = curspell.text;
 
@@ -227,7 +227,7 @@ window.onload = function load() {
 		}
 
 		if (!$("select.sourcefilter:contains(\""+parsesource(source)+"\")").length) {
-			$("select.sourcefilter").append("<option value='"+source+"'>"+parsesource(source)+"</option>");
+			$("select.sourcefilter").append("<option value='"+abbreviateSource(source)+"'>"+parsesource(source)+"</option>");
 		}
 
 		var classlist = curspell.classes.split(",");

@@ -2,11 +2,12 @@ window.onhashchange = function hashchange(e) {
 	const [link, sub] = window.location.hash.slice(1).split(',');
 
 	if (!e || !sub) {
-		const $el = $(`ul.list li[data-link='${link}']:eq(0)`);
+		const $el = $(`ul.list li[data-link='${link.toLowerCase()}']:eq(0)`);
 		loadhash($el.attr("id"));
-		document.title = decodeURIComponent($el.attr("data-link")).replace("%27","'") + " - 5etools";
+		document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
 	}
 
-	if (sub)
+	if (sub) {
 		loadsub(sub)
+	}
 }

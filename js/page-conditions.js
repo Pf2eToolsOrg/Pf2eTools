@@ -7,7 +7,7 @@ window.onload = function load() {
 	for (var i = 0; i < conditionlist.length; i++) {
 		var curcondition = conditionlist[i];
 		var name = curcondition.name;
-		$("ul.conditions").append("<li id='"+i+"' data-link='"+encodeURI(name)+"'><span class='name'>"+name+"</span></li>");
+		$("ul.conditions").append("<li id='"+i+"' data-link='"+encodeURI(name.toLowerCase())+"' title='"+name+"'><span class='name' title='"+name+"'>"+name+"</span></li>");
 	}
 
 	var options = {
@@ -58,5 +58,5 @@ function loadhash (id) {
 
 	$("tr.text").remove();
 
-	$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curcondition.text)+"</td></tr>");
+	$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curcondition.text, "p")+"</td></tr>");
 }
