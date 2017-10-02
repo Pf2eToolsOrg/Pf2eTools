@@ -7,7 +7,7 @@ window.onload = function load() {
 	for (var i = 0; i < rewardlist.length; i++) {
 		var curreward = rewardlist[i];
 		var name = curreward.name;
-		$("ul.rewards").append("<li id='"+i+"' data-link='"+encodeURI(name.toLowerCase())+"' title='"+name+"'><span class='name'>"+name+"</span></li>");
+		$("ul.rewards").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name'>"+name+"</span></li>");
 	}
 
 	var options = {

@@ -116,7 +116,7 @@ window.onload = function load() {
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name.toLowerCase()).replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></li>");
+		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).toLowerCase().replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></li>");
 
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
 			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+source+"</option>")
