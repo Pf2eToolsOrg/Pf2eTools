@@ -1,50 +1,58 @@
+const STR_EMPTY = "";
+
+const ID_PSIONICS_LIST = "psionicsList";
+const ID_LIST_CONTAINER = "listContainer";
+const ID_SOURCE_FILTER = "sourceFilter";
+const ID_TYPE_FILTER = "typeFilter";
+const ID_ORDER_FILTER = "orderFilter";
+const ID_STATS_NAME = "name";
+const ID_STATS_ORDER_AND_TYPE = "orderAndType";
+const ID_STATS_DURATION = "duration";
+const ID_TEXT = "text";
+
+const JSON_ITEM_NAME = "name";
+const JSON_ITEM_SOURCE = "source";
+const JSON_ITEM_TYPE = "type";
+const JSON_ITEM_ORDER = "order";
+const JSON_ITEM_TEXT = "text";
+
+const ELE_SPAN = "span";
+const ELE_LI = "li";
+const ELE_OPTION = "option";
+const ELE_P = "p";
+
+const ATB_ID = "id";
+const ATB_CLASS = "class";
+const ATB_DATA_LINK = "data-link";
+const ATB_TITLE = "title";
+const ATB_VALUE = "value";
+
+const CLS_PSIONICS = "psionics";
+const CLS_ROW = "row";
+const CLS_COL1 = "col-xs-5";
+const CLS_COL2 = "col-xs-2";
+const CLS_COL3 = "col-xs-2";
+const CLS_COL4 = "col-xs-2";
+
+const LIST_NAME = "name";
+const LIST_SOURCE = "source";
+const LIST_TYPE = "type";
+const LIST_ORDER = "order";
+
+const STR_ABV_TYPE_TALENT = "T";
+const STR_ABV_TYPE_DISCIPLINE = "D";
+
+const STR_TYPE_TALENT = "Talent";
+const STR_TYPE_DISCIPLINE = "Discipline";
+
 window.onload = function load() {
-	const STR_EMPTY = "";
+	const TABLE_VIEW = document.getElementById(ID_PSIONICS_LIST);
 
-	const ID_PSIONICS_LIST = "psionicsList";
-	const ID_LIST_CONTAINER = "listContainer";
-	const ID_SOURCE_FILTER = "sourceFilter";
-	const ID_TYPE_FILTER = "typeFilter";
-	const ID_ORDER_FILTER = "orderFilter";
-
-	const JSON_ITEM_SOURCE = "source";
-	const JSON_ITEM_TYPE = "type";
-	const JSON_ITEM_ORDER = "order";
-
-	const ELE_SPAN = "span";
-	const ELE_LI = "li";
-	const ELE_OPTION = "option";
-
-	const ATB_ID = "id";
-	const ATB_CLASS = "class";
-	const ATB_DATA_LINK = "data-link";
-	const ATB_TITLE = "title";
-	const ATB_VALUE = "value";
-
-	const CLS_PSIONICS = "psionics";
-	const CLS_ROW = "row";
-	const CLS_COL1 = "col-xs-5";
-	const CLS_COL2 = "col-xs-2";
-	const CLS_COL3 = "col-xs-2";
-	const CLS_COL4 = "col-xs-2";
-
-	const LIST_NAME = "name";
-	const LIST_SOURCE = "source";
-	const LIST_TYPE = "type";
-	const LIST_ORDER = "order";
-
-	const STR_ABV_TYPE_TALENT = "T";
-	const STR_ABV_TYPE_DISCIPLINE = "D";
-
-	const STR_TYPE_TALENT = "Talent";
-	const STR_TYPE_DISCIPLINE = "Discipline";
-
-	const tableView = document.getElementById(ID_PSIONICS_LIST);
-
-	let psionicList = psionicdata.compendium.psionic;
-	populateListView(psionicList);
-	initFiltersAndSearch(psionicList);
+	const PSIONIC_LIST = psionicdata.compendium.psionic;
+	populateListView(PSIONIC_LIST);
+	initFiltersAndSearch(PSIONIC_LIST);
 	initListLibrary();
+	selectFirstPsionic();
 
 	function populateListView(psionicList) {
 		for (let i = 0; i < psionicList.length; ++i) {
@@ -55,45 +63,53 @@ window.onload = function load() {
 			listItem.appendChild(getSourceSpan(psionic));
 			listItem.appendChild(getTypeSpan(psionic));
 			listItem.appendChild(getOrderSpan(psionic));
+			listItem.addEventListener("click", listItemClick, false);
 
-			tableView.appendChild(listItem);
+			TABLE_VIEW.appendChild(listItem);
 		}
 
 		function getListItem(psionic, i) {
 			let listItem = document.createElement(ELE_LI);
 			listItem.setAttribute(ATB_CLASS, CLS_ROW);
 			listItem.setAttribute(ATB_ID, String(i));
-			listItem.setAttribute(ATB_DATA_LINK, utils_nameToDataLink(psionic.name));
-			listItem.setAttribute(ATB_TITLE, psionic.name);
+			listItem.setAttribute(ATB_DATA_LINK, utils_nameToDataLink(psionic[JSON_ITEM_NAME]));
+			listItem.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
 			return listItem;
 		}
 		function getNameSpan(psionic) {
 			let span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_NAME);
 			span.classList.add(CLS_COL1);
-			span.innerHTML = psionic.name;
+			span.innerHTML = psionic[JSON_ITEM_NAME];
 			return span;
 		}
 		function getSourceSpan(psionic) {
 			let span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_SOURCE);
 			span.classList.add(CLS_COL2);
-			span.innerHTML = parse_sourceToAbv(psionic.source);
+			span.innerHTML = parse_sourceToAbv(psionic[JSON_ITEM_SOURCE]);
 			return span;
 		}
 		function getTypeSpan(psionic) {
 			let span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_TYPE);
 			span.classList.add(CLS_COL3);
-			span.innerHTML = parse_psionicTypeToFull(psionic.type);
+			span.innerHTML = parse_psionicTypeToFull(psionic[JSON_ITEM_TYPE]);
 			return span;
 		}
 		function getOrderSpan(psionic) {
 			let span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_ORDER);
 			span.classList.add(CLS_COL4);
-			span.innerHTML = parse_psionicOrderToFull(psionic.order);
+			span.innerHTML = parse_psionicOrderToFull(psionic[JSON_ITEM_ORDER]);
 			return span;
+		}
+		function listItemClick(event) {
+			loadDataLink(this);
+
+			function loadDataLink(listItem) {
+				window.location = "#" + listItem.getAttribute(ATB_DATA_LINK);
+			}
 		}
 	}
 
@@ -107,8 +123,8 @@ window.onload = function load() {
 		initFilters();
 
 		function populateFilterSets() {
-			for (let i = 0; i < psionicList.length; ++i) {
-				let psionic = psionicList[i];
+			for (let i = 0; i < PSIONIC_LIST.length; ++i) {
+				let psionic = PSIONIC_LIST[i];
 				for (let id in filters) {
 					if (filters.hasOwnProperty(id)) {
 						let filterObj = filters[id];
@@ -188,13 +204,40 @@ window.onload = function load() {
 		}
 	}
 
-	function parse_psionicTypeToFull(type) {
-		if (type === STR_ABV_TYPE_TALENT) return STR_TYPE_TALENT;
-		else if (type === STR_ABV_TYPE_DISCIPLINE) return STR_TYPE_DISCIPLINE;
-		else return type;
-	}
-	function parse_psionicOrderToFull(order) {
-		return order === undefined ? STR_EMPTY : order;
+	function selectFirstPsionic() {
+		let listItems = TABLE_VIEW.getElementsByTagName(ELE_LI);
+		if (listItems.length > 0) {
+			listItems[0].click();
+		}
 	}
 };
 
+function loadhash (jsonIndex) {
+	const STATS_NAME = document.getElementById(ID_STATS_NAME);
+	const STATS_ORDER_AND_TYPE = document.getElementById(ID_STATS_ORDER_AND_TYPE);
+	const STATS_DURATION = document.getElementById(ID_STATS_DURATION);
+	const STATS_TEXT = document.getElementById(ID_TEXT);
+
+	let selectedPsionic = psionicdata.compendium.psionic[jsonIndex];
+
+	STATS_NAME.innerHTML = selectedPsionic[JSON_ITEM_NAME];
+	if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_TALENT) loadTalent();
+	else if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_DISCIPLINE) loadDiscipline();
+
+	function loadTalent() {
+		STATS_ORDER_AND_TYPE.innerHTML = parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
+		STATS_TEXT.innerHTML = utils_combineText(selectedPsionic[JSON_ITEM_TEXT], ELE_P);
+	}
+	function loadDiscipline() {
+		STATS_ORDER_AND_TYPE.innerHTML = "{0} ({1})".formatUnicorn(parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]), selectedPsionic[JSON_ITEM_ORDER]);
+	}
+}
+
+function parse_psionicTypeToFull(type) {
+	if (type === STR_ABV_TYPE_TALENT) return STR_TYPE_TALENT;
+	else if (type === STR_ABV_TYPE_DISCIPLINE) return STR_TYPE_DISCIPLINE;
+	else return type;
+}
+function parse_psionicOrderToFull(order) {
+	return order === undefined ? STR_EMPTY : order;
+}
