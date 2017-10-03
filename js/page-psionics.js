@@ -1,4 +1,8 @@
 const STR_EMPTY = "";
+const STR_ABV_TYPE_TALENT = "T";
+const STR_ABV_TYPE_DISCIPLINE = "D";
+const STR_TYPE_TALENT = "Talent";
+const STR_TYPE_DISCIPLINE = "Discipline";
 
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_LIST_CONTAINER = "listContainer";
@@ -15,6 +19,7 @@ const JSON_ITEM_SOURCE = "source";
 const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_ORDER = "order";
 const JSON_ITEM_TEXT = "text";
+const JSON_ITEM_DURATION = "duration";
 
 const ELE_SPAN = "span";
 const ELE_LI = "li";
@@ -38,12 +43,6 @@ const LIST_NAME = "name";
 const LIST_SOURCE = "source";
 const LIST_TYPE = "type";
 const LIST_ORDER = "order";
-
-const STR_ABV_TYPE_TALENT = "T";
-const STR_ABV_TYPE_DISCIPLINE = "D";
-
-const STR_TYPE_TALENT = "Talent";
-const STR_TYPE_DISCIPLINE = "Discipline";
 
 window.onload = function load() {
 	const TABLE_VIEW = document.getElementById(ID_PSIONICS_LIST);
@@ -227,9 +226,21 @@ function loadhash (jsonIndex) {
 	function loadTalent() {
 		STATS_ORDER_AND_TYPE.innerHTML = parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
 		STATS_TEXT.innerHTML = utils_combineText(selectedPsionic[JSON_ITEM_TEXT], ELE_P);
+		STATS_DURATION.innerHTML = STR_EMPTY;
 	}
 	function loadDiscipline() {
 		STATS_ORDER_AND_TYPE.innerHTML = "{0} ({1})".formatUnicorn(parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]), selectedPsionic[JSON_ITEM_ORDER]);
+
+		STATS_DURATION.innerHTML = getDurationString();
+	}
+	function getDurationString() {
+		let duration = selectedPsionic[JSON_ITEM_DURATION];
+		if (duration === undefined) return STR_EMPTY;
+		else return getDurationElement();
+
+		function getDurationElement() {
+
+		}
 	}
 }
 
