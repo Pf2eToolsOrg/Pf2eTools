@@ -355,6 +355,11 @@ function sortspells(a, b, o) {
 		return compareNames(a, b);
 	}
 
+    if (o.valueName === "source") {
+        if ((b._values.source.toLowerCase()) === (a._values.source.toLowerCase())) return compareNames(a, b);
+        return ((b._values.source.toLowerCase()) > (a._values.source.toLowerCase())) ? 1 : -1;
+    }
+
 	if (o.valueName === "school") {
 		if ((b._values.school.toLowerCase()) === (a._values.school.toLowerCase())) return compareNames(a, b);
 		return ((b._values.school.toLowerCase()) > (a._values.school.toLowerCase())) ? 1 : -1;
