@@ -4,6 +4,8 @@ const STR_ABV_TYPE_DISCIPLINE = "D";
 const STR_TYPE_TALENT = "Talent";
 const STR_TYPE_DISCIPLINE = "Discipline";
 
+const TMP_TYPE_ORDER = "{0} ({1})";
+
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_LIST_CONTAINER = "listContainer";
 const ID_SOURCE_FILTER = "sourceFilter";
@@ -229,7 +231,7 @@ function loadhash (jsonIndex) {
 		STATS_DURATION.innerHTML = STR_EMPTY;
 	}
 	function loadDiscipline() {
-		STATS_ORDER_AND_TYPE.innerHTML = "{0} ({1})".formatUnicorn(parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]), selectedPsionic[JSON_ITEM_ORDER]);
+		STATS_ORDER_AND_TYPE.innerHTML = TMP_TYPE_ORDER.formatUnicorn(parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]), selectedPsionic[JSON_ITEM_ORDER]);
 
 		STATS_DURATION.innerHTML = getDurationString();
 	}
