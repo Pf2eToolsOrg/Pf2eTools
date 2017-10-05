@@ -77,14 +77,17 @@ function getAttributeText(race) {
 					}
 				} else {
 					let allAttributes = item.from.length === 6;
+					let allAttributesWithParent = isAllAttributesWithParent(item);
 					let amount = item.amount === undefined ? "1" : item.amount;
 					if (allAttributes) {
 						outStack += "any ";
+					} else if (allAttributesWithParent) {
+						outStack += "any other ";
 					}
 					if (item.count !== undefined && item.count > 1) {
 						outStack += getNumberString(item.count) + " ";
 					}
-					if (allAttributes) {
+					if (allAttributes || allAttributesWithParent) {
 						outStack += "+" + amount;
 					} else {
 						for (let j = 0; j < item.from.length; ++j) {
@@ -94,6 +97,20 @@ function getAttributeText(race) {
 					}
 				}
 				atts.push(outStack)
+			}
+
+			function isAllAttributesWithParent(item) {
+				let tempAttributes = [];
+				for (let i = 0; i < ATTRIBUTES.length; ++i) {
+					tempAttributes.push(ATTRIBUTES[i].toLowerCase());
+				}
+				for (let i = 0; i < item.from.length; ++i) {
+					let attb = item.from[i].toLowerCase();
+					if (!tempAttributes.includes(attb)) {
+						tempAttributes.push(attb)
+					}
+				}
+				return tempAttributes.length === 6;
 			}
 		}
 	}
