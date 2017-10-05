@@ -1,4 +1,5 @@
 const STR_EMPTY = "";
+const STR_VOID_LINK = "javascript:void(0)";
 const STR_SLUG_DASH = "-";
 const STR_JOIN_MODE_LIST = ",";
 const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
@@ -54,7 +55,7 @@ const JSON_ITEM_MODE_CONCENTRATION_UNIT = "unit";
 
 const ELE_SPAN = "span";
 const ELE_LI = "li";
-const ELE_OPTION = "option";
+const ELE_A = "a";
 const ELE_P = "p";
 
 const ATB_ID = "id";
@@ -62,6 +63,7 @@ const ATB_CLASS = "class";
 const ATB_DATA_LINK = "data-link";
 const ATB_TITLE = "title";
 const ATB_VALUE = "value";
+const ATB_HREF = "href";
 
 const CLS_PSIONICS = "psionics";
 const CLS_ROW = "row";
@@ -195,16 +197,17 @@ window.onload = function load() {
 		}
 
 		function initFilters() { // TODO
-			addOptions();
+			addListItems();
+			initDropdowns();
 
-			function addOptions() {
+			function addListItems() {
 				for (let id in filters) {
 					if (filters.hasOwnProperty(id)) {
 						let filterBox = document.getElementById(id);
 
 						sortStrings(filters[id].list);
 						for (let i = 0; i < filters[id].list.length; ++i) {
-							let option = getFilterOption(filters[id].list[i], filters[id].renderer);
+							let option = getFilterListItem(filters[id].list[i], filters[id].renderer);
 							filterBox.appendChild(option);
 						}
 					}
@@ -220,16 +223,27 @@ window.onload = function load() {
 					else if (b < a) return 1;
 					else if (a > b) return -1;
 				}
-				function getFilterOption(str, renderer) {
-					let option = document.createElement(ELE_OPTION);
-					option.setAttribute(ATB_VALUE, stringToSlug(str));
-					option.innerHTML = renderer(str);
-					return option;
+				function getFilterListItem(str, renderer) {
+					let listItem = document.createElement(ELE_LI);
+					listItem.setAttribute(ATB_VALUE, stringToSlug(str));
+					let filterLink = document.createElement(ELE_A);
+                    filterLink.setAttribute(ATB_HREF, STR_VOID_LINK);
+                    filterLink.innerHTML = renderer(str);
+                    listItem.appendChild(filterLink);
+					return listItem;
 				}
+                function stringToSlug(str) {
+                    return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+                }
 			}
 
-			function stringToSlug(str) {
-				return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+			function initDropdowns() {
+				// FIXME rewrite this -- should toggle child menu on hover, keep child menu active when child menu is hovered,
+				$('.dropdown-submenu a.submenu-parent').on("click", function(e){
+					$(this).next('ul').toggle();
+					e.stopPropagation();
+					e.preventDefault();
+				});
 			}
 		}
 

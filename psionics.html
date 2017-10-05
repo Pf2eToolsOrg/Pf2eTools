@@ -68,19 +68,36 @@
 	<div class="row">
 		<div class="col-md-6" id="listContainer">
 			<div class="input-group">
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Filter <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-submenu">
+							<a class="submenu-parent" href="javascript:void(0)">Sources <span class="caret"></span></a>
+							<ul class="dropdown-menu" id="sourceFilter">
+								<li><a href="javascript:void(0)">Select All</a></li>
+								<li class="divider"></li>
+							</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a class="submenu-parent" href="javascript:void(0)">Types <span class="caret"></span></a>
+							<ul class="dropdown-menu" id="typeFilter">
+								<li><a href="javascript:void(0)">Select All</a></li>
+								<li class="divider"></li>
+							</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a class="submenu-parent" href="javascript:void(0)">Orders <span class="caret"></span></a>
+							<ul class="dropdown-menu" id="orderFilter">
+								<li><a href="javascript:void(0)">Select All</a></li>
+								<li class="divider"></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 				<input type="search" id="search" class="search form-control" placeholder="Find psionic...">
 				<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
 			</div>
 			<form id="filtertools">
-				<select id="sourceFilter">
-					<option value="All">All Sources</option>
-				</select>
-				<select id="typeFilter">
-					<option value="All">All Types</option>
-				</select>
-				<select id="orderFilter">
-					<option value="All">All Orders</option>
-				</select>
 				<span class="sortlabel btn-group">
 					<button class="col-xs-5 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
 					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
