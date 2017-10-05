@@ -1,6 +1,7 @@
 const STR_EMPTY = "";
 const STR_VOID_LINK = "javascript:void(0)";
 const STR_SLUG_DASH = "-";
+const STR_FILTER_TICK = "\u2714";
 const STR_JOIN_MODE_LIST = ",";
 const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
 const STR_JOIN_MODE_TITLE = " ";
@@ -57,6 +58,10 @@ const ELE_SPAN = "span";
 const ELE_LI = "li";
 const ELE_A = "a";
 const ELE_P = "p";
+const ELE_DIV = "div";
+
+const EVNT_MOUSEOVER = "mouseover";
+const EVNT_MOUSEOUT = "mouseout";
 
 const ATB_ID = "id";
 const ATB_CLASS = "class";
@@ -64,6 +69,10 @@ const ATB_DATA_LINK = "data-link";
 const ATB_TITLE = "title";
 const ATB_VALUE = "value";
 const ATB_HREF = "href";
+const ATB_STYLE = "style";
+
+const STL_DISPLAY_INITIAL = "display: initial";
+const STL_DISPLAY_NONE = "display: none";
 
 const CLS_PSIONICS = "psionics";
 const CLS_ROW = "row";
@@ -73,6 +82,10 @@ const CLS_COL3 = "col-xs-2";
 const CLS_COL4 = "col-xs-2";
 const CLS_HIDDEN = "hidden";
 const CLS_ORDER_NONE = "psi-list-order-none";
+const CLS_FLTR_FLEX = "psi-filter";
+const CLS_FLTR_TICK = "psi-tick";
+const CLS_FLTR_SUBMENU = "dropdown-submenu";
+const CLS_FLTR_MENU = "dropdown-menu";
 
 const LIST_NAME = "name";
 const LIST_SOURCE = "source";
@@ -226,9 +239,25 @@ window.onload = function load() {
 				function getFilterListItem(str, renderer) {
 					let listItem = document.createElement(ELE_LI);
 					listItem.setAttribute(ATB_VALUE, stringToSlug(str));
+
 					let filterLink = document.createElement(ELE_A);
                     filterLink.setAttribute(ATB_HREF, STR_VOID_LINK);
-                    filterLink.innerHTML = renderer(str);
+
+                    let filterFlex = document.createElement(ELE_DIV);
+					filterFlex.setAttribute(ATB_CLASS, CLS_FLTR_FLEX);
+
+					let filterText = document.createElement(ELE_SPAN);
+					filterText.innerHTML = renderer(str);
+
+                    let filterTick = document.createElement(ELE_SPAN);
+					filterTick.setAttribute(ATB_CLASS, CLS_FLTR_TICK);
+					filterTick.innerHTML = STR_FILTER_TICK;
+
+					filterFlex.appendChild(filterText);
+					filterFlex.appendChild(filterTick);
+
+					filterLink.appendChild(filterFlex);
+
                     listItem.appendChild(filterLink);
 					return listItem;
 				}
@@ -238,12 +267,42 @@ window.onload = function load() {
 			}
 
 			function initDropdowns() {
-				// FIXME rewrite this -- should toggle child menu on hover, keep child menu active when child menu is hovered,
-				$('.dropdown-submenu a.submenu-parent').on("click", function(e){
-					$(this).next('ul').toggle();
-					e.stopPropagation();
-					e.preventDefault();
-				});
+				let subMenus = document.getElementsByClassName(CLS_FLTR_SUBMENU);
+				for (let i = 0; i < subMenus.length; ++i) {
+					addDropdownMouseover(subMenus[i]);
+					addDropdownMouseout(subMenus[i]);
+				}
+
+				function addDropdownMouseover(listItem) {
+					listItem.addEventListener(
+						EVNT_MOUSEOVER,
+						function(event) {
+							let dropdownMenu = listItem.getElementsByClassName(CLS_FLTR_MENU)[0];
+							show(dropdownMenu);
+							event.stopPropagation();
+						},
+						false
+					);
+				}
+				function addDropdownMouseout(listItem) {
+					let dropdownMenu = listItem.getElementsByClassName(CLS_FLTR_MENU)[0];
+					listItem.addEventListener(
+						EVNT_MOUSEOUT,
+						function(event) {
+							hide(dropdownMenu);
+							event.stopPropagation();
+						},
+						false
+					);
+					dropdownMenu.addEventListener(
+						EVNT_MOUSEOUT,
+						function(event) {
+							hide(dropdownMenu);
+							event.stopPropagation();
+						},
+						false
+					);
+				}
 			}
 		}
 
@@ -385,4 +444,10 @@ function parse_psionicTypeToFull(type) {
 }
 function parse_psionicOrderToFull(order) {
 	return order === undefined ? STR_ORDER_NONE : order;
+}
+function show(element) {
+	element.setAttribute(ATB_STYLE, STL_DISPLAY_INITIAL);
+}
+function hide(element) {
+	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
