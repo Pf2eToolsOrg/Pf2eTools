@@ -1,27 +1,3 @@
-
-function parsesource (src) {
-	source = src;
-	if (source === "Player's Handbook") source = "PHB";
-	if (source === "Elemental Evil Player's Companion") source = "EEPC";
-	if (source === "Unearthed Arcana: Eberron") source = "UA Eberron";
-	if (source === "Unearthed Arcana: Feats") source = "UA Feats";
-	if (source === "Unearthed Arcana: Feats for Skills") source = "UA Feats for Skills";
-	if (source === "Unearthed Arcana: Feats for Races") source = "UA Feats for Races";
-	if (source === "Plane Shift: Kaladesh") source = "Plane Shift Kaladesh";
-	return source;
-}
-
-
-function parsesize (size) {
-	if (size == "T") size = "Tiny";
-	if (size == "S") size = "Small";
-	if (size == "M") size = "Medium";
-	if (size == "L") size = "Large";
-	if (size == "H") size = "Huge";
-	if (size == "G") size = "Gargantuan";
-	return size;
-}
-
 function asc_sort(a, b){
 	return ($(b).text()) < ($(a).text()) ? 1 : -1;
 }
@@ -39,10 +15,10 @@ window.onload = function load() {
 	for (var i = 0; i < featlist.length; i++) {
 		var curfeat = featlist[i];
 		var name = curfeat.name;
-		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name+"</span> <span class='source col-xs-3' title='"+curfeat.source+"'>"+parsesource(curfeat.source)+"</span></li>");
+		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name+"</span> <span class='source col-xs-2' title='"+curfeat.source+"'>"+parse_abbreviateSource(curfeat.source)+"</span></li>");
 
-		if (!$("select.sourcefilter:contains(\""+curfeat.source+"\")").length) {
-			$("select.sourcefilter").append("<option value='"+parsesource(curfeat.source)+"'>"+curfeat.source+"</option>");
+		if (!$("select.sourcefilter:contains(\""+parse_sourceToFull(curfeat.source)+"\")").length) {
+			$("select.sourcefilter").append("<option value='"+parse_abbreviateSource(curfeat.source)+"'>"+parse_sourceToFull(curfeat.source)+"</option>");
 		}
 	}
 
@@ -105,19 +81,56 @@ function loadhash (id) {
 	$("th#name").html(name);
 
 	$("td#prerequisite").html("")
-	var prerequisite = curfeat.prerequisite;
+	var prerequisite = utils_makePrerequisite(curfeat.prerequisite);
 	if (prerequisite) $("td#prerequisite").html("Prerequisite: "+prerequisite);
 
 	$("tr.text").remove();
 
-	var textlist = curfeat.text;
-	var texthtml = "";
+	addAttributeItem(curfeat.ability, curfeat.text);
 
-	for (var i = 0; i < textlist.length; i++) {
-		if (!textlist[i]) continue;
-		texthtml = texthtml + "<p>"+textlist[i]+"</p>";
-	}
+	$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curfeat.text, "p")+"</td></tr>");
 
-	$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
+	function addAttributeItem(abilityObj, textArray) {
+		if (abilityObj === undefined) return;
+		for (let i = 0; i < textArray.length; ++i) { // insert the new list item at the head of the first list we find list
+			if (textArray[i].islist === "YES") {
+                textArray[i].items.unshift(abilityObjToListItem())
+            }
+		}
 
+        function abilityObjToListItem() {
+        	let listItem = {};
+            listItem.text = attChooseText(abilityObj);
+			return listItem;
+
+			function attChooseText() {
+				const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
+				if (abilityObj.choose === undefined) {
+                    let abbArr = [];
+                    for (let att in abilityObj) {
+                        if(!abilityObj.hasOwnProperty(att)) continue;
+                        abbArr.push("Increase your " + parse_attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
+                    }
+                    return abbArr.join(" ");
+				} else {
+                    let abbArr = [];
+					for (let i = 0; i < abilityObj.choose.length; ++i) {
+                        if (abilityObj.choose[i].from.length === 6) {
+                            abbArr.push("Increase one ability score of your choice by " + abilityObj.choose.amount + TO_MAX_OF_TWENTY);
+                        } else {
+                        	let from = abilityObj.choose[i].from;
+                        	let amount = abilityObj.choose[i].amount;
+                        	let abbChoices = [];
+                        	for (let j = 0; j < from.length; ++j) {
+                                abbChoices.push(parse_attAbvToFull(from[j]));
+							}
+							let abbChoicesText = utils_joinPhraseArray(abbChoices, ", ", " or ");
+                            abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY)
+						}
+					}
+                    return abbArr.join(" ");
+				}
+			}
+		}
+    }
 };
