@@ -1,6 +1,9 @@
+let amount
+
 window.onload = function load() {
 	$("#rollbutton").click(rollstats);
 	$(".base").on('input', changeBase);
+	$("input.choose").on('change', choose);
 
 	const names = racedata.compendium.race.map(x => x.name).sort()
 	const options = names.map(name => `<option>${name}</option>`).join()
@@ -26,6 +29,12 @@ function getCost(n) {
 	return 9
 }
 
+function choose() {
+	$(".racial", this.parentNode.parentNode)
+		.val(this.checked ? amount : 0)
+	changeTotal()
+}
+
 function changeRace() {
 	const race = this.value
 	const stats = racedata.compendium.race
@@ -38,13 +47,14 @@ function changeRace() {
 	changeTotal()
 
 	if (!stats.choose)
-		return $("#choose").hide()
+		return $(".choose").hide()
 
-	const choose = stats.choose[0]
-	let text = choose.predefined //ONLY feral tiefling
-		? "Choose CHA +2 or DEX +2, and add INT +1"
-		: `Choose ${choose.count} +1 from ${choose.from.join(', ').toUpperCase()}`
-	$("#choose").text(text).show()
+	const {count, from} = stats.choose[0]
+	amount = stats.choose[0].amount || 1
+
+	$("td.choose").text(`Choose ${count}`).show()
+	from.forEach(key =>
+		$(`#${key} .choose`).prop('checked', false).show())
 }
 
 function changeTotal() {
