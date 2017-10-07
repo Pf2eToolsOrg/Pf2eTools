@@ -22,6 +22,7 @@ Replace: $1$3
 #### Character replacement:
 - ’ should be replaced with '
 - — should be replaced with \u2014
+- “ and ” should be replaced with "
 
 ## How to import 5etools bestiary into Roll20
 Or: how to get every  monster into Roll20 with ease.
