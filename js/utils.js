@@ -558,14 +558,17 @@ class FilterBox {
 								if (parentElement !== null) {
 									parentElement.menuChildren.push(cb);
 								}
+								liLink.cb = cb;
 								return cb;
 							}
 						}
 
 						function clickHandler(event) {
 							stopEvent(event);
-							let cb = liLink.getElementsByTagName(ELE_INPUT)[0];
-							toggleCheckBox(cb);
+							toggleCheckBox(liLink.cb);
+							for (let i = 0; i < innLi.menuChildren.length; ++i) {
+								setCheckBox(innLi.menuChildren[i], liLink.cb.checked);
+							}
 						}
 						function cbClickHandler(event) {
 							event.stopPropagation();
@@ -645,6 +648,9 @@ class Filter {
 function toggleCheckBox(cb) {
 	if (cb.checked === true) cb.checked = false;
 	else cb.checked = true;
+}
+function setCheckBox(cb, checked) {
+	cb.checked = checked;
 }
 function stopEvent(event) {
 	event.stopPropagation();
