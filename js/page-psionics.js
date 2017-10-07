@@ -162,11 +162,12 @@ window.onload = function load() {
 
 	function initFiltersAndSearch() {
 		const filters = {};
-		filters[ID_SOURCE_FILTER] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceToFull(str); }};
-		filters[ID_TYPE_FILTER] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
-		filters[ID_ORDER_FILTER] = {item: JSON_ITEM_ORDER, list: [], renderer: function(str) { return parse_psionicOrderToFull(str); }};
+		filters["Source"] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceToFull(str); }};
+		filters["Type"] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
+		filters["Order"] = {item: JSON_ITEM_ORDER, list: [], renderer: function(str) { return parse_psionicOrderToFull(str); }};
 
 		populateFilterSets();
+		sortFilterSets();
 		initFilters();
 		initResetButton();
 
@@ -184,102 +185,35 @@ window.onload = function load() {
 				}
 			}
 		}
+		function sortFilterSets() {
+			for (let id in filters) {
+				if (filters.hasOwnProperty(id)) {
+					sortStrings(filters[id].list);
+				}
+			}
+
+			function sortStrings(toSort) {
+				toSort.sort(sortStringsComparator);
+			}
+			function sortStringsComparator(a, b) {
+				a = a.toLowerCase();
+				b = b.toLowerCase();
+				if (a === b) return 0;
+				else if (b < a) return 1;
+				else if (a > b) return -1;
+			}
+		}
 
 		function initFilters() { // TODO
-			addListItems();
-			initDropdowns();
-
-			function addListItems() {
-				for (let id in filters) {
-					if (filters.hasOwnProperty(id)) {
-						let filterBox = document.getElementById(id);
-
-						sortStrings(filters[id].list);
-						for (let i = 0; i < filters[id].list.length; ++i) {
-							let option = getFilterListItem(filters[id].list[i], filters[id].renderer);
-							filterBox.appendChild(option);
-						}
-					}
-				}
-
-				function sortStrings(toSort) {
-					toSort.sort(sortStringsComparator);
-				}
-				function sortStringsComparator(a, b) {
-					a = a.toLowerCase();
-					b = b.toLowerCase();
-					if (a === b) return 0;
-					else if (b < a) return 1;
-					else if (a > b) return -1;
-				}
-				function getFilterListItem(str, renderer) {
-					let listItem = document.createElement(ELE_LI);
-					listItem.setAttribute(ATB_VALUE, stringToSlug(str));
-
-					let filterLink = document.createElement(ELE_A);
-                    filterLink.setAttribute(ATB_HREF, STR_VOID_LINK);
-
-                    let filterFlex = document.createElement(ELE_DIV);
-					filterFlex.setAttribute(ATB_CLASS, CLS_FLTR_FLEX);
-
-					let filterText = document.createElement(ELE_SPAN);
-					filterText.innerHTML = renderer(str);
-
-                    let filterTick = document.createElement(ELE_SPAN);
-					filterTick.setAttribute(ATB_CLASS, CLS_FLTR_TICK);
-					filterTick.innerHTML = STR_FILTER_TICK;
-
-					filterFlex.appendChild(filterText);
-					filterFlex.appendChild(filterTick);
-
-					filterLink.appendChild(filterFlex);
-
-                    listItem.appendChild(filterLink);
-					return listItem;
-				}
-                function stringToSlug(str) {
-                    return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
-                }
-			}
-
-			function initDropdowns() {
-				let subMenus = document.getElementsByClassName(CLS_FLTR_SUBMENU);
-				for (let i = 0; i < subMenus.length; ++i) {
-					addDropdownMouseover(subMenus[i]);
-					addDropdownMouseout(subMenus[i]);
-				}
-
-				function addDropdownMouseover(listItem) {
-					listItem.addEventListener(
-						EVNT_MOUSEOVER,
-						function(event) {
-							let dropdownMenu = listItem.getElementsByClassName(CLS_FLTR_MENU)[0];
-							show(dropdownMenu);
-							event.stopPropagation();
-						},
-						false
-					);
-				}
-				function addDropdownMouseout(listItem) {
-					let dropdownMenu = listItem.getElementsByClassName(CLS_FLTR_MENU)[0];
-					listItem.addEventListener(
-						EVNT_MOUSEOUT,
-						function(event) {
-							hide(dropdownMenu);
-							event.stopPropagation();
-						},
-						false
-					);
-					dropdownMenu.addEventListener(
-						EVNT_MOUSEOUT,
-						function(event) {
-							hide(dropdownMenu);
-							event.stopPropagation();
-						},
-						false
-					);
+			let listParent = document.getElementById("filter-search-input-group");
+			let filterList = [];
+			for (let title in filters) {
+				if (filters.hasOwnProperty(title)) {
+					filterList.push(new Filter(title, filters[title].item, filters[title].list, filters[title].renderer, parse_stringToSlug));
 				}
 			}
+			let filterBox = new FilterBox(listParent, filterList);
+			filterBox.render();
 		}
 
 		function initResetButton() { // TODO
@@ -420,10 +354,4 @@ function parse_psionicTypeToFull(type) {
 }
 function parse_psionicOrderToFull(order) {
 	return order === undefined ? STR_ORDER_NONE : order;
-}
-function show(element) {
-	element.setAttribute(ATB_STYLE, STL_DISPLAY_INITIAL);
-}
-function hide(element) {
-	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }

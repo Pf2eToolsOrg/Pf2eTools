@@ -11,9 +11,12 @@ const ELE_LI = "li";
 const ELE_A = "a";
 const ELE_P = "p";
 const ELE_DIV = "div";
+const ELE_BUTTON = "button";
+const ELE_INPUT = "input";
 
 const EVNT_MOUSEOVER = "mouseover";
 const EVNT_MOUSEOUT = "mouseout";
+const EVNT_MOUSELEAVE = "mouseleave";
 const EVNT_CLICK = "click";
 
 const ATB_ID = "id";
@@ -23,6 +26,9 @@ const ATB_TITLE = "title";
 const ATB_VALUE = "value";
 const ATB_HREF = "href";
 const ATB_STYLE = "style";
+const ATB_CHECKED = "checked";
+const ATB_TYPE = "type";
+const ATB_ONCLICK = "onclick";
 
 const STL_DISPLAY_INITIAL = "display: initial";
 const STL_DISPLAY_NONE = "display: none";
@@ -421,22 +427,239 @@ function parse_sourceToAbv(source) {
     return source;
 }
 
+function parse_stringToSlug(str) {
+	return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+}
+
 // DATA LINKS ==========================================================================================================
 function utils_nameToDataLink(name) {
 	return encodeURIComponent(name.toLowerCase()).replace("'","%27");
 }
 
 // FILTERS =============================================================================================================
-function addFilterMenu(buttonInputGroup, filterList) {
+class FilterBox {
+	constructor(inputGroup, filterList) {
+		this.inputGroup = inputGroup;
+		this.filterList = filterList;
+	}
 
-	function makeOuter() {
-		let outer = document.createElement(ELE_UL);
+	render() {
+		let buttonGroup = getButtonGroup();
+
+		let outer = makeOuterList();
+		for (let i = 0; i < this.filterList.length; ++i) {
+			outer.appendChild(makeOuterItem(this.filterList[i]));
+		}
+		buttonGroup.appendChild(outer);
+		this.inputGroup.insertBefore(buttonGroup, this.inputGroup.firstChild);
+
+		function getButtonGroup() {
+			let buttonGroup = document.createElement(ELE_DIV);
+			buttonGroup.setAttribute(ATB_CLASS, FilterBox.CLS_INPUT_GROUP_BUTTON);
+			let filterButton = getFilterButton();
+			buttonGroup.appendChild(filterButton);
+			return buttonGroup;
+
+			function getFilterButton() {
+				let button = document.createElement(ELE_BUTTON);
+				button.classList.add("btn");
+				button.classList.add("btn-default");
+				button.classList.add("dropdown-toggle");
+				button.setAttribute("data-toggle", "dropdown");
+				button.innerHTML = "Filter <span class='caret'></span>";
+				return button;
+			}
+		}
+
+		function makeOuterList() {
+			let outL = document.createElement(ELE_UL);
+			outL.setAttribute(ATB_CLASS, FilterBox.CLS_DROPDOWN_MENU);
+			return outL;
+		}
+
+		function makeOuterItem(filter) {
+			let outI = document.createElement(ELE_LI);
+			outI.setAttribute(ATB_CLASS, FilterBox.CLS_DROPDOWN_SUBMENU);
+			let innerListHeader = makeInnerHeader();
+			outI.appendChild(innerListHeader);
+			let innerList = makeInnerList();
+			outI.appendChild(innerList);
+			addEventHandlers();
+
+			return outI;
+
+			function makeInnerHeader() {
+				let inH = document.createElement(ELE_A);
+				inH.setAttribute(ATB_CLASS, FilterBox.CLS_SUBMENU_PARENT);
+				inH.setAttribute(ATB_HREF, STR_VOID_LINK);
+				inH.innerHTML = filter.header + " <span class='caret'></span>";
+				return inH;
+			}
+
+			function makeInnerList() {
+				let inL = document.createElement(ELE_UL);
+				inL.setAttribute(ATB_CLASS, FilterBox.CLS_DROPDOWN_MENU);
+				let selectAll = makeAllInnerItem();
+				inL.appendChild(selectAll);
+				inL.appendChild(makeInnerDividerItem());
+				for (let j = 0; j < filter.items.length; ++j) {
+					let displayText = filter.displayFunction(filter.items[j]);
+					let valueText = filter.valueFunction(filter.items[j]);
+					inL.appendChild(makeInnerItem(displayText, valueText, true, selectAll));
+				}
+				return inL;
+
+				function makeAllInnerItem() {
+					return makeInnerItem("Select All", FilterBox.VAL_SELECT_ALL, true);
+				}
+
+				function makeInnerDividerItem() {
+					let divLi = document.createElement(ELE_LI);
+					divLi.setAttribute(ATB_CLASS, FilterBox.CLS_DIVIDER);
+					return divLi;
+				}
+
+				function makeInnerItem(displayText, valueText, isChecked, parentElement) { // TODO use value
+					parentElement = parentElement === undefined || parentElement === null ? null : parentElement;
+					let innLi = document.createElement(ELE_LI);
+					innLi.menuChildren = [];
+
+					let child = getChild();
+
+					innLi.appendChild(child);
+					return innLi;
+
+					function getChild() {
+						let liLink = document.createElement(ELE_A); // bootstrap v3 requires dropdowns to contain links...
+						liLink.setAttribute(ATB_HREF, STR_VOID_LINK);
+						liLink.appendChild(getChild());
+						liLink.addEventListener(EVNT_CLICK, clickHandler);
+						return liLink;
+
+						function getChild() {
+							let liWrapper = document.createElement(ELE_DIV);
+							liWrapper.setAttribute(ATB_CLASS, FilterBox.CLS_FILTER_SUBLIST_ITEM_WRAPPER);
+							liWrapper.append(getTextChild());
+							liWrapper.append(getCheckboxChild());
+							return liWrapper;
+
+							function getTextChild() {
+								let text = document.createElement(ELE_SPAN);
+								text.setAttribute(ATB_CLASS, "filter-sublist-item-text");
+								text.innerHTML = displayText;
+								return text;
+							}
+							function getCheckboxChild() {
+								let cb = document.createElement(ELE_INPUT);
+								cb.setAttribute(ATB_CLASS, "filter-checkbox");
+								cb.setAttribute(ATB_TYPE, "checkbox");
+								cb.addEventListener(EVNT_CLICK, cbClickHandler);
+								if (isChecked) cb.checked  = true;
+								if (parentElement !== null) {
+									parentElement.menuChildren.push(cb);
+								}
+								return cb;
+							}
+						}
+
+						function clickHandler(event) {
+							stopEvent(event);
+							let cb = liLink.getElementsByTagName(ELE_INPUT)[0];
+							toggleCheckBox(cb);
+						}
+						function cbClickHandler(event) {
+							event.stopPropagation();
+						}
+					}
+				}
+			}
+
+			function addEventHandlers() {
+				outI.addEventListener(
+					EVNT_CLICK,
+					function(event) {
+						stopEvent(event);
+						show(innerList);
+					},
+					false
+				);
+
+				outI.addEventListener(
+					EVNT_MOUSEOVER,
+					function(event) {
+						stopEvent(event);
+						show(innerList);
+					},
+					false
+				);
+
+				outI.addEventListener(
+					EVNT_MOUSEOUT,
+					function(event) {
+						stopEvent(event);
+						hide(innerList);
+					},
+					false
+				);
+
+				innerList.addEventListener(
+					EVNT_MOUSEOUT,
+					function(event) {
+						stopEvent(event);
+					},
+					false
+				);
+				innerList.addEventListener(
+					EVNT_MOUSELEAVE,
+					function(event) {
+						stopEvent(event);
+						if (event.toElement.className === FilterBox.CLS_SUBMENU_PARENT && event.toElement !== outI) hide(innerList);
+					},
+					false
+				);
+				$(buttonGroup).on({
+					"hide.bs.dropdown":  function() { hide(innerList); }
+				});
+			}
+		}
 	}
 }
-class filter {
-	constructor(items, displayFunction, valueFunction) {
+FilterBox.CLS_INPUT_GROUP_BUTTON = "input-group-btn";
+FilterBox.CLS_DROPDOWN_MENU = "dropdown-menu";
+FilterBox.CLS_DROPDOWN_SUBMENU = "dropdown-submenu";
+FilterBox.CLS_FILTER_SUBLIST_ITEM_WRAPPER = "filter-sublist-item-wrapper";
+FilterBox.CLS_SUBMENU_PARENT = "submenu-parent";
+FilterBox.CLS_DIVIDER = "divider";
+FilterBox.VAL_SELECT_ALL = "select-all";
+class Filter {
+	constructor(header, listClass, items, displayFunction, valueFunction) {
+		this.header = header;
+		this.listClass = listClass;
 		this.items = items;
 		this.displayFunction = displayFunction;
 		this.valueFunction = valueFunction;
 	}
+}
+
+// CONVENIENCE/ELEMENTS ================================================================================================
+function toggleCheckBox(cb) {
+	if (cb.checked === true) cb.checked = false;
+	else cb.checked = true;
+}
+function stopEvent(event) {
+	event.stopPropagation();
+	event.preventDefault();
+}
+function toggleVisible(element) {
+	if (isShowing(element)) hide(element);
+	else show(element);
+}
+function isShowing(element) {
+	return element.hasAttribute(ATB_STYLE) && element.getAttribute(ATB_STYLE).includes(STL_DISPLAY_INITIAL);
+}
+function show(element) {
+	element.setAttribute(ATB_STYLE, STL_DISPLAY_INITIAL);
+}
+function hide(element) {
+	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
