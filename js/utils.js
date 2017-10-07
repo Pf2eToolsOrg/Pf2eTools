@@ -17,6 +17,7 @@ const ELE_INPUT = "input";
 const EVNT_MOUSEOVER = "mouseover";
 const EVNT_MOUSEOUT = "mouseout";
 const EVNT_MOUSELEAVE = "mouseleave";
+const EVNT_MOUSEENTER = "mouseenter";
 const EVNT_CLICK = "click";
 
 const ATB_ID = "id";
@@ -505,7 +506,7 @@ class FilterBox {
 				for (let j = 0; j < filter.items.length; ++j) {
 					let displayText = filter.displayFunction(filter.items[j]);
 					let valueText = filter.valueFunction(filter.items[j]);
-					inL.appendChild(makeInnerItem(displayText, valueText, true, selectAll));
+					inL.appendChild(makeInnerItem(displayText, valueText, true, selectAll.cb));
 				}
 				return inL;
 
@@ -519,10 +520,9 @@ class FilterBox {
 					return divLi;
 				}
 
-				function makeInnerItem(displayText, valueText, isChecked, parentElement) { // TODO use value
-					parentElement = parentElement === undefined || parentElement === null ? null : parentElement;
+				function makeInnerItem(displayText, valueText, isChecked, parentCheckBox) { // TODO use value
+					parentCheckBox = parentCheckBox === undefined || parentCheckBox === null ? null : parentCheckBox;
 					let innLi = document.createElement(ELE_LI);
-					innLi.menuChildren = [];
 
 					let child = getChild();
 
@@ -554,20 +554,37 @@ class FilterBox {
 								cb.setAttribute(ATB_CLASS, "filter-checkbox");
 								cb.setAttribute(ATB_TYPE, "checkbox");
 								cb.addEventListener(EVNT_CLICK, cbClickHandler);
+								cb.childCheckBoxes = [];
 								if (isChecked) cb.checked  = true;
-								if (parentElement !== null) {
-									parentElement.menuChildren.push(cb);
+								if (parentCheckBox !== null) {
+									parentCheckBox.childCheckBoxes.push(cb);
 								}
-								liLink.cb = cb;
+								innLi.cb = cb;
 								return cb;
 							}
 						}
 
 						function clickHandler(event) {
 							stopEvent(event);
-							toggleCheckBox(liLink.cb);
-							for (let i = 0; i < innLi.menuChildren.length; ++i) {
-								setCheckBox(innLi.menuChildren[i], liLink.cb.checked);
+							toggleCheckBox(innLi.cb);
+							for (let i = 0; i < innLi.cb.childCheckBoxes.length; ++i) {
+								innLi.cb.childCheckBoxes[i].checked = innLi.cb.checked; // set all the children to the parent's value
+							}
+							if (parentCheckBox !== null) {
+								if (parentCheckBox.checked && !innLi.cb.checked) {
+									// if we unchecked a child, we're no longer selecting all children, so uncheck the parent
+									parentCheckBox.checked = false;
+								} else if (!parentCheckBox.checked && innLi.cb.checked) {
+									// if we checked a child, check if all the children are checked, and if so, check the parent
+									let allChecked = true;
+									for (let i = 0; i < parentCheckBox.childCheckBoxes.length; ++i) {
+										if (!parentCheckBox.childCheckBoxes[i].checked) {
+											allChecked = false;
+											break;
+										}
+									}
+									if (allChecked) parentCheckBox.checked = true;
+								}
 							}
 						}
 						function cbClickHandler(event) {
@@ -578,6 +595,16 @@ class FilterBox {
 			}
 
 			function addEventHandlers() {
+				// open sub-menu when we hover over sub-menu header
+				outI.addEventListener(
+					EVNT_MOUSEOVER,
+					function(event) {
+						stopEvent(event);
+						show(innerList);
+					},
+					false
+				);
+				// click version, required for mobile to function
 				outI.addEventListener(
 					EVNT_CLICK,
 					function(event) {
@@ -587,24 +614,25 @@ class FilterBox {
 					false
 				);
 
+				// close other sub-menus when we hover over a sub-menu header
 				outI.addEventListener(
-					EVNT_MOUSEOVER,
+					EVNT_MOUSEENTER,
 					function(event) {
 						stopEvent(event);
-						show(innerList);
+						let allOutIs = outI.parentNode.childNodes;
+						for (let i = 0; i < allOutIs.length; ++i) {
+							if (outI !== allOutIs[i]) {
+								let childMenus = allOutIs[i].getElementsByClassName(FilterBox.CLS_DROPDOWN_MENU);
+								for (let j = 0; j < childMenus.length; ++j) {
+									hide(childMenus[j]);
+								}
+							}
+						}
 					},
 					false
 				);
 
-				outI.addEventListener(
-					EVNT_MOUSEOUT,
-					function(event) {
-						stopEvent(event);
-						hide(innerList);
-					},
-					false
-				);
-
+				// prevent the sub-menu from closing on moving the cursor to the page
 				innerList.addEventListener(
 					EVNT_MOUSEOUT,
 					function(event) {
@@ -612,14 +640,8 @@ class FilterBox {
 					},
 					false
 				);
-				innerList.addEventListener(
-					EVNT_MOUSELEAVE,
-					function(event) {
-						stopEvent(event);
-						if (event.toElement.className === FilterBox.CLS_SUBMENU_PARENT && event.toElement !== outI) hide(innerList);
-					},
-					false
-				);
+
+				// reset the menus on closing the filter interface
 				$(buttonGroup).on({
 					"hide.bs.dropdown":  function() { hide(innerList); }
 				});
@@ -648,9 +670,6 @@ class Filter {
 function toggleCheckBox(cb) {
 	if (cb.checked === true) cb.checked = false;
 	else cb.checked = true;
-}
-function setCheckBox(cb, checked) {
-	cb.checked = checked;
 }
 function stopEvent(event) {
 	event.stopPropagation();
