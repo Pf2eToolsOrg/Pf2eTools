@@ -195,7 +195,7 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
                     if (!pre.proficiency[j].hasOwnProperty(type)) continue;
                     if (type === "armor") {
                     	if (shorthand) {
-							outStack.push("prof " + parse_abbreviateArmor(pre.proficiency[j][type]) + " armor");
+							outStack.push("prof " + parse_armorToAbv(pre.proficiency[j][type]) + " armor");
 						} else {
 							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
 						}
@@ -336,7 +336,7 @@ const ARMR_HEAVY = "heavy";
 const ARMR_LIGHT_ABBV = "l.";
 const ARMR_MEDIUM_ABBV = "m.";
 const ARMR_HEAVY_ABBV = "h.";
-function parse_abbreviateArmor(armor) {
+function parse_armorToAbv(armor) {
 	if (armor === ARMR_LIGHT) armor = ARMR_LIGHT_ABBV;
 	if (armor === ARMR_MEDIUM) armor = ARMR_MEDIUM_ABBV;
 	if (armor === ARMR_HEAVY) armor = ARMR_HEAVY_ABBV;
@@ -375,7 +375,7 @@ function parse_sourceToFull (source) {
     if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
     return source;
 }
-function parse_abbreviateSource(source) {
+function parse_sourceToAbv(source) {
     if (source === SRC_PHB) source = "PHB";
     if (source === SRC_EEPC) source = "EEPC";
     if (source === SRC_SCAG) source = "SCAG";
