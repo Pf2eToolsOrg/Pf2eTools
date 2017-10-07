@@ -86,9 +86,25 @@
 					<select class="sourcefilter">
 							<option value="All">All Sources</option>
 						</select>
+					<select class="bonusfilter">
+						<option value="All">All Ability Bonuses</option>
+						<option value="Str +">Strength</option>
+						<option value="Dex +">Dexterity</option>
+						<option value="Con +">Constitution</option>
+						<option value="Int +">Intelligence</option>
+						<option value="Wis +">Wisdom</option>
+						<option value="Cha +">Charisma</option>
+						<option value="Choose ">Player's Choice</option>
+					</select>
+					<!-- PREREQUISITE FILTER -->
+					<!--<select class="prerequisitefilter">-->
+						<!--<option value="All">All Prerequisites</option>-->
+					<!--</select>-->
 					<span class="sortlabel btn-group">
-							<button class="col-xs-9 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+							<button class="col-xs-3 col-xs-3-8 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+							<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+							<button class="col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="ability">Ability</button>
+							<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="prerequisite">Prerequisite</button>
 						</span>
 				</form>
 				<ul class="list feats">
@@ -122,6 +138,7 @@
 
 	</footer>
 
+	<script type="text/javascript" src="js/utils.js"></script>
 	<script type="text/javascript" src="js/history.js"></script>
 	<script type="text/javascript" src="js/page-feats.js"></script>
 	<script type="text/javascript" src="data/feats.json"></script>
