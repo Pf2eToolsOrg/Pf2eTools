@@ -9,35 +9,56 @@ function dec_sort(a, b){
 var tabledefault = "";
 
 window.onload = function load() {
+	const NONE = "None";
 	tabledefault = $("#stats").html();
 	var featlist = featdata.compendium.feat;
 
 	for (var i = 0; i < featlist.length; i++) {
 		var curfeat = featlist[i];
 		var name = curfeat.name;
-		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name+"</span> <span class='source col-xs-2' title='"+curfeat.source+"'>"+parse_abbreviateSource(curfeat.source)+"</span></li>");
+		let attbText = utils_getAttributeText(curfeat.ability);
+		if (!attbText) attbText = NONE;
+		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
+		if (!prereqText) prereqText = NONE;
+		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1 col-xs-1-7' title='"+curfeat.source+"'>"+parse_abbreviateSource(curfeat.source)+"</span> <span class='ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-6'>" + attbText + "</span><span class='prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3'>" + prereqText + "</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+parse_sourceToFull(curfeat.source)+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parse_abbreviateSource(curfeat.source)+"'>"+parse_sourceToFull(curfeat.source)+"</option>");
 		}
+
+		// PREREQUISITE FILTER
+		// let prereqList = utils_makePrerequisite(curfeat.prerequisite, false, true);
+		// let prereqAbvList = utils_makePrerequisite(curfeat.prerequisite, true, true);
+		// if (prereqList.length === prereqAbvList.length) {
+		// 	for (let j = 0; j < prereqList.length; ++j) {
+		// 		if (!$("select.prerequisitefilter:contains(\""+prereqList[j].uppercaseFirst()+"\")").length) {
+		// 			$("select.prerequisitefilter").append("<option value='"+prereqAbvList[j]+"'>"+prereqList[j].uppercaseFirst()+"</option>");
+		// 		}
+		// 	}
+		// } else {
+		// 	console.log("prerequisite list and shorthand prerequisite list had different lengths!")
+		// }
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 	$("select.sourcefilter").val("All");
 
 	var options = {
-		valueNames: ['name', 'source'],
+		valueNames: ['name', 'source', 'ability', 'prerequisite'],
 		listClass: "feats"
-	}
+	};
 
 	var featslist = new List("listcontainer", options);
 	featslist.sort ("name");
 
 	$("form#filtertools select").change(function(){
-		var sourcefilter = $("select.sourcefilter").val();
+		let sourcefilter = $("select.sourcefilter").val();
+		let bonusfilter = $("select.bonusfilter").val();
 
 		featslist.filter(function(item) {
-			if (sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1) return true;
+			let rightsource = sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1;
+			let rightbonuses = bonusfilter === "All" || item.values().ability.indexOf(bonusfilter) !== -1 || item.values().ability.toLowerCase().indexOf("choose any") !== -1;
+			if (rightsource && rightbonuses) return true;
 			return false;
 		});
 	});
@@ -92,8 +113,9 @@ function loadhash (id) {
 
 	function addAttributeItem(abilityObj, textArray) {
 		if (abilityObj === undefined) return;
-		for (let i = 0; i < textArray.length; ++i) { // insert the new list item at the head of the first list we find list
-			if (textArray[i].islist === "YES") {
+		for (let i = 0; i < textArray.length; ++i) { // insert the new list item at the head of the first list we find list; flag with "hasabilityitem" so we don't do it more than once
+			if (textArray[i].islist === "YES" && textArray[i].hasabilityitem !== "YES") {
+				textArray[i].hasabilityitem = "YES";
                 textArray[i].items.unshift(abilityObjToListItem())
             }
 		}
@@ -116,7 +138,11 @@ function loadhash (id) {
                     let abbArr = [];
 					for (let i = 0; i < abilityObj.choose.length; ++i) {
                         if (abilityObj.choose[i].from.length === 6) {
-                            abbArr.push("Increase one ability score of your choice by " + abilityObj.choose.amount + TO_MAX_OF_TWENTY);
+                        	if (abilityObj.choose[i].textreference === "YES") { // only used in "Resilient"
+								abbArr.push("Increase the chosen ability score by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
+							} else {
+								abbArr.push("Increase one ability score of your choice by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
+							}
                         } else {
                         	let from = abilityObj.choose[i].from;
                         	let amount = abilityObj.choose[i].amount;

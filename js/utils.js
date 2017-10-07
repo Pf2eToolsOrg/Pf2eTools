@@ -1,3 +1,28 @@
+// STRING ==============================================================================================================
+function utils_joinPhraseArray(array, joiner, lastJoiner) {
+	if (array.length === 0) return "";
+	if (array.length === 1) return array[0];
+	if (array.length === 2) return array.join(lastJoiner);
+	else {
+		let outStr = "";
+		for (let i = 0; i < array.length; ++i) {
+			outStr += array[i];
+			if (i < array.length-2) outStr += joiner;
+			else if (i === array.length-2) outStr += lastJoiner
+		}
+		return outStr;
+	}
+}
+
+String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
+	function () {
+		let str = this.toString();
+		if (str.length === 0) return str;
+		if (str.length === 1) return str.charAt(0).toUpperCase();
+		return str.charAt(0).toUpperCase() + str.slice(1);;
+	};
+
+// TEXT COMBINING ======================================================================================================
 function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
 	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
@@ -6,6 +31,9 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 		if (typeof textList[i] === 'object') {
             if (textList[i].islist === "YES") {
                 textStack += utils_makeList(textList[i]);
+			}
+			if (textList[i].hassubtitle === "YES") {
+				textStack += utils_combineText(textList[i].text, tagPerItem, utils_makeSubHeader(textList[i].title));
 			}
 			if (textList[i].istable === "YES") {
 				textStack += utils_makeTable(textList[i]);
@@ -59,9 +87,21 @@ function utils_makeAttAttackMod(attAtkObj) {
 function utils_makeList(listObj) {
 	let outStack = "<ul>";
 	for (let i = 0; i < listObj.items.length; ++i) {
-		outStack += "<li>" + listObj.items[i].text + "</li>"
+		let cur = listObj.items[i];
+		outStack += "<li>";
+		for (let j = 0; j < cur.text.length; ++j) {
+			if (cur.text[j].hassubtitle === "YES") {
+				outStack += "<br>" + utils_makeSubHeader(cur.text[j].title) + cur.text[j].text;
+			} else {
+				outStack += cur.text[j];
+			}
+		}
+		outStack += "</li>";
 	}
 	return outStack + "</ul>";
+}
+function utils_makeSubHeader(text) {
+	return "<span class='stats-sub-header'>" + text + ".</span> "
 }
 function utils_makeAttChoose(attList) {
 	if (attList.length === 1) {
@@ -86,14 +126,28 @@ function makeTableTdClassText(tableObject, i) {
 	}
 }
 
-function utils_makePrerequisite(prereqList) {
+function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
+	shorthand = shorthand === undefined || shorthand === null ? false : shorthand;
+	makeAsArray = makeAsArray === undefined || makeAsArray === null ? false : makeAsArray;
     let outStack = [];
     if (prereqList === undefined || prereqList === null) return "";
 	for (let i = 0; i < prereqList.length; ++i) {
         let pre = prereqList[i];
         if (pre.race !== undefined) {
 			for (let j = 0; j < pre.race.length; ++j) {
-                outStack.push(pre.race[j].name + (pre.race[j].subrace !== undefined ? "(" + pre.race[j].subrace + ")" : ""))
+				if (shorthand) {
+					const DASH = "-";
+					let raceNameParts = pre.race[j].name.split(DASH);
+					let raceName = [];
+					for (let k = 0; k < raceNameParts.length; ++k) {
+						raceName.push(raceNameParts[k].uppercaseFirst());
+					}
+					raceName = raceName.join(DASH);
+					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
+				} else {
+					let raceName = j === 0 ? pre.race[j].name.uppercaseFirst() : pre.race[j].name;
+					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
+				}
 			}
 		}
 		if (pre.ability !== undefined) {
@@ -102,7 +156,11 @@ function utils_makePrerequisite(prereqList) {
             for (let j = 0; j < pre.ability.length; ++j) {
                 for (let att in pre.ability[j]) {
                     if (!pre.ability[j].hasOwnProperty(att)) continue;
-                    outStack.push(parse_attAbvToFull(att) + (attCount === pre.ability.length -1 ? " 13 or higher" : ""));
+                    if (shorthand) {
+						outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length -1 ? " 13+" : ""));
+					} else {
+						outStack.push(parse_attAbvToFull(att) + (attCount === pre.ability.length -1 ? " 13 or higher" : ""));
+					}
                     attCount++;
                 }
             }
@@ -112,31 +170,114 @@ function utils_makePrerequisite(prereqList) {
             for (let j = 0; j < pre.proficiency.length; ++j) {
                 for (let type in pre.proficiency[j]) { // type is armor/weapon/etc.
                     if (!pre.proficiency[j].hasOwnProperty(type)) continue;
-                    if (type === "armor") outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
+                    if (type === "armor") {
+                    	if (shorthand) {
+							outStack.push("prof " + parse_abbreviateArmor(pre.proficiency[j][type]) + " armor");
+						} else {
+							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
+						}
+					}
 					else console.log("unimplemented proficiency type in utils_makePrerequisite")
                 }
             }
 		}
 		if (pre.spellcasting === "YES") {
-            outStack.push("The ability to cast at least one spell");
+        	if (shorthand) {
+				outStack.push("Spellcasting");
+			} else {
+				outStack.push("The ability to cast at least one spell");
+			}
 		}
 	}
-	return utils_joinPhraseArray(outStack, ", ", " or ");
+	if (makeAsArray) {
+		return outStack;
+	} else {
+		if (shorthand) return outStack.join("/");
+		else return utils_joinPhraseArray(outStack, ", ", " or ");
+	}
 }
 
-function utils_joinPhraseArray(array, joiner, lastJoiner) {
-    if (array.length === 0) return "";
-    if (array.length === 1) return array[0];
-    if (array.length === 2) return array.join(lastJoiner);
-    else {
-        let outStr = "";
-        for (let i = 0; i < array.length; ++i) {
-            outStr += array[i];
-            if (i < array.length-2) outStr += joiner;
-            else if (i === array.length-2) outStr += lastJoiner
-        }
-        return outStr;
-    }
+function utils_getAttributeText(attObj) {
+	const ATTRIBUTES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
+	let mainAtts = [];
+	let atts = [];
+	if (attObj !== undefined) {
+		handleAllAttributes(attObj);
+		handleAttributesChoose();
+		return atts.join("; ");
+	}
+	return "";
+
+	function handleAllAttributes(abilityList) {
+		for (let a = 0; a < ATTRIBUTES.length; ++a) {
+			handleAttribute(abilityList, ATTRIBUTES[a])
+		}
+	}
+
+	function handleAttribute(parent, att) {
+		if (parent[att.toLowerCase()] !== undefined) {
+			atts.push(att + " " + (parent[att.toLowerCase()] < 0 ? "" : "+") + parent[att.toLowerCase()]);
+			mainAtts.push(att);
+		}
+	}
+
+	function handleAttributesChoose() {
+		if (attObj.choose !== undefined) {
+			for (let i = 0; i < attObj.choose.length; ++i) {
+				let item = attObj.choose[i];
+				let outStack = "Choose ";
+				if (item.predefined !== undefined) {
+					for (let j = 0; j < item.predefined.length; ++j) {
+						let subAtts = [];
+						handleAllAttributes(subAtts, item.predefined[j]);
+						outStack += subAtts.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
+					}
+				} else {
+					let allAttributes = item.from.length === 6;
+					let allAttributesWithParent = isAllAttributesWithParent(item);
+					let amount = item.amount === undefined ? "1" : item.amount;
+					if (allAttributes) {
+						outStack += "any ";
+					} else if (allAttributesWithParent) {
+						outStack += "any other ";
+					}
+					if (item.count !== undefined && item.count > 1) {
+						outStack += getNumberString(item.count) + " ";
+					}
+					if (allAttributes || allAttributesWithParent) {
+						outStack += "+" + amount;
+					} else {
+						for (let j = 0; j < item.from.length; ++j) {
+							let capitalisedAtt = item.from[j].charAt(0).toUpperCase() + item.from[j].slice(1);
+							outStack += capitalisedAtt + " +" + amount + (j === item.from.length - 1 ? "" : " or ");
+						}
+					}
+				}
+				atts.push(outStack)
+			}
+
+			function isAllAttributesWithParent(item) {
+				let tempAttributes = [];
+				for (let i = 0; i < mainAtts.length; ++i) {
+					tempAttributes.push(mainAtts[i].toLowerCase());
+				}
+				for (let i = 0; i < item.from.length; ++i) {
+					let attb = item.from[i].toLowerCase();
+					if (!tempAttributes.includes(attb)) {
+						tempAttributes.push(attb)
+					}
+				}
+				return tempAttributes.length === 6;
+			}
+		}
+	}
+
+	function getNumberString(amount) {
+		if (amount === 1) return "one";
+		if (amount === 2) return "two";
+		if (amount === 3) return "three";
+		else return amount;
+	}
 }
 
 // PARSING FUNCTIONS ===================================================================================================
@@ -150,6 +291,19 @@ function parse_attAbvToFull(attribute) {
 		"cha": "Charisma"
 	};
 	return ABV_TO_FULL[attribute.toLowerCase()];
+}
+
+const ARMR_LIGHT = "light";
+const ARMR_MEDIUM = "medium";
+const ARMR_HEAVY = "heavy";
+const ARMR_LIGHT_ABBV = "l.";
+const ARMR_MEDIUM_ABBV = "m.";
+const ARMR_HEAVY_ABBV = "h.";
+function parse_abbreviateArmor(armor) {
+	if (armor === ARMR_LIGHT) armor = ARMR_LIGHT_ABBV;
+	if (armor === ARMR_MEDIUM) armor = ARMR_MEDIUM_ABBV;
+	if (armor === ARMR_HEAVY) armor = ARMR_HEAVY_ABBV;
+	return armor;
 }
 
 const SRC_PHB = "PHB";
