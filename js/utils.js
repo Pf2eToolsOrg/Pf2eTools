@@ -91,7 +91,7 @@ function utils_makeList(listObj) {
 		outStack += "<li>";
 		for (let j = 0; j < cur.text.length; ++j) {
 			if (cur.text[j].hassubtitle === "YES") {
-				outStack += "<br>" + utils_makeSubHeader(cur.text[j].title) + cur.text[j].text;
+				outStack += "<br>" + utils_makeListSubHeader(cur.text[j].title) + cur.text[j].text;
 			} else {
 				outStack += cur.text[j];
 			}
@@ -102,6 +102,9 @@ function utils_makeList(listObj) {
 }
 function utils_makeSubHeader(text) {
 	return "<span class='stats-sub-header'>" + text + ".</span> "
+}
+function utils_makeListSubHeader(text) {
+	return "<span class='stats-list-sub-header'>" + text + ".</span> "
 }
 function utils_makeAttChoose(attList) {
 	if (attList.length === 1) {
@@ -235,7 +238,8 @@ function utils_getAttributeText(attObj) {
 				} else {
 					let allAttributes = item.from.length === 6;
 					let allAttributesWithParent = isAllAttributesWithParent(item);
-					let amount = item.amount === undefined ? "1" : item.amount;
+					let amount = item.amount === undefined ? 1 : item.amount;
+					amount = (amount < 0 ? "" : "+") + amount;
 					if (allAttributes) {
 						outStack += "any ";
 					} else if (allAttributesWithParent) {
@@ -245,11 +249,24 @@ function utils_getAttributeText(attObj) {
 						outStack += getNumberString(item.count) + " ";
 					}
 					if (allAttributes || allAttributesWithParent) {
-						outStack += "+" + amount;
+						outStack += amount;
 					} else {
 						for (let j = 0; j < item.from.length; ++j) {
-							let capitalisedAtt = item.from[j].charAt(0).toUpperCase() + item.from[j].slice(1);
-							outStack += capitalisedAtt + " +" + amount + (j === item.from.length - 1 ? "" : " or ");
+							let suffix = "";
+							if (item.from.length > 1) {
+								if (j === item.from.length-2) {
+									suffix = " or ";
+								} else if (j < item.from.length-2) {
+									suffix = ", "
+								}
+							}
+							let thsAmount = " " + amount;
+							if (item.from.length > 1) {
+								if (j !== item.from.length-1) {
+									thsAmount = "";
+								}
+							}
+							outStack += item.from[j].uppercaseFirst() + thsAmount + suffix;
 						}
 					}
 				}
