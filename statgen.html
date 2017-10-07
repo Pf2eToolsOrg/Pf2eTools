@@ -97,31 +97,72 @@
 			</div>
 			<div class="col-sm-9 statmethod" id="pointbuy">
 				<h3>Point Buy</h3>
-				<form id="pointbuy">
-					<label for="budget">Budget: </label><input type="number" id="budget" min="0" max="54" value="27"><br>
-					<label for="remaining">Remaining: </label><input type="number" id="remaining" min="0" max="54" value="27" readonly><br>
-					<hr>
-					<label for="str">Strength: </label><input type="number" class="score" id="str" min="8" max="15" value="8" data-prev="8"><br>
-					<label for="dex">Dexterity: </label><input type="number" class="score" id="dex" min="8" max="15" value="8" data-prev="8"><br>
-					<label for="con">Constitution: </label><input type="number" class="score" id="con" min="8" max="15" value="8" data-prev="8"><br>
-					<label for="int">Intelligence: </label><input type="number" class="score" id="int" min="8" max="15" value="8" data-prev="8"><br>
-					<label for="wis">Wisdom: </label><input type="number" class="score" id="wis" min="8" max="15" value="8" data-prev="8"><br>
-					<label for="cha">Charisma: </label><input type="number" class="score" id="cha" min="8" max="15" value="8" data-prev="8"><br>
-					<p>A point budget is used to buy ability scores (default: 27). A score costs 1 point to increase for each step above 8 to a maximum of 15, with 14 and 15 each costing one extra point.</p>
-
-				</form>
+				<label>Budget: <input id="budget" type="number" min="10" value="27"></label>
+				<label>Remaining: <input id="remaining" type="number" min="10" value="27" readonly></label>
+				<table>
+					<th><td>Base</td><td>Racial</td><td>Total</td><td>Mod</td><td class="choose"></td></th>
+					<tr id="str">
+						<td>STR</td>
+						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+						<td><input type="number" class="racial" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="checkbox" class="choose"></td>
+					</tr>
+					<tr id="dex">
+						<td>DEX</td>
+						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+						<td><input type="number" class="racial" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="checkbox" class="choose"></td>
+					</tr>
+					<tr id="con">
+						<td>CON</td>
+						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+						<td><input type="number" class="racial" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="checkbox" class="choose"></td>
+					</tr>
+					<tr id="int">
+						<td>INT</td>
+						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+						<td><input type="number" class="racial" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="checkbox" class="choose"></td>
+					</tr>
+					<tr id="wis">
+						<td>WIS</td>
+						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+						<td><input type="number" class="racial" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="checkbox" class="choose"></td>
+					</tr>
+					<tr id="cha">
+						<td>CHA</td>
+						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+						<td><input type="number" class="racial" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="number" readonly></td>
+						<td><input type="checkbox" class="choose"></td>
+					</tr>
+				</table>
+				<select id="race"></select>
+				<p id="choose"></p>
 			</div>
 		</div>
 	</main>
-
 
 	<!--
 	All the embedded crap.
 	Would load it in but I want this for offline use too
 -->
+	<script type="text/javascript" src="data/races.json"></script>
 	<script type="text/javascript" src="js/page-statgen.js"></script>
 	<script type="text/javascript" src="js/droll.js"></script>
-	<script type="text/javascript" src="js/list.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 

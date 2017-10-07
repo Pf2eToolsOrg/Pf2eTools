@@ -44,68 +44,6 @@ function dec_sort(a, b){
 	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
-function getAttributeText(race) {
-	const ATTRIBUTES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
-	let atts = [];
-	if (race.ability !== undefined) {
-		handleAllAttributes(atts, race.ability);
-		handleAttributesChoose();
-		return atts.join("; ");
-	}
-	return "";
-
-	function handleAllAttributes(targetArray, abilityList) {
-		for (let a = 0; a < ATTRIBUTES.length; ++a) {
-			handleAttribute(targetArray, abilityList, ATTRIBUTES[a])
-		}
-	}
-
-	function handleAttribute(targetArray, parent, att) {
-		if (parent[att.toLowerCase()] !== undefined) targetArray.push(att + " " + (parent[att.toLowerCase()].includes("-") ? "" : "+") + parent[att.toLowerCase()]);
-	}
-
-	function handleAttributesChoose() {
-		if (race.ability.choose !== undefined) {
-			for (let i = 0; i < race.ability.choose.length; ++i) {
-				let item = race.ability.choose[i];
-				let outStack = "Choose ";
-				if (item.predefined !== undefined) {
-					for (let j = 0; j < item.predefined.length; ++j) {
-						let subAtts = [];
-						handleAllAttributes(subAtts, item.predefined[j]);
-						outStack += subAtts.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
-					}
-				} else {
-					let allAttributes = item.from.length === 6;
-					let amount = item.amount === undefined ? "1" : item.amount;
-					if (allAttributes) {
-						outStack += "any ";
-					}
-					if (item.count !== undefined && item.count > 1) {
-						outStack += getNumberString(item.count) + " ";
-					}
-					if (allAttributes) {
-						outStack += "+" + amount;
-					} else {
-						for (let j = 0; j < item.from.length; ++j) {
-							let capitalisedAtt = item.from[j].charAt(0).toUpperCase() + item.from[j].slice(1);
-							outStack += capitalisedAtt + " +" + amount + (j === item.from.length - 1 ? "" : " or ");
-						}
-					}
-				}
-				atts.push(outStack)
-			}
-		}
-	}
-
-	function getNumberString(amount) {
-		if (amount === 1) return "one";
-		if (amount === 2) return "two";
-		if (amount === 3) return "three";
-		else return amount;
-	}
-}
-
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 
@@ -114,7 +52,7 @@ window.onload = function load() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name.toLowerCase())+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+getAttributeText(currace)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
+		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
 
 		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
@@ -200,7 +138,7 @@ function loadhash (id) {
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 
-	var ability = getAttributeText(currace);
+	var ability = utils_getAttributeText(currace.ability);
 	$("td#ability span").html(ability);
 
 	var speed = currace.speed + (currace.speed === "Varies" ? "" : "ft. ");
@@ -219,17 +157,11 @@ function loadhash (id) {
 		toAddTd.colSpan = 6;
 		let toAdd;
 		if (trait.optionheading === "YES") {
-			toAdd = document.createElement('span');
-			toAdd.className = 'name';
-			toAdd.innerHTML = trait.name + (traitlist[n].text === undefined ? "" : ".");
-			toAddTd.append(toAdd);
-			toAddTd.innerHTML += traitlist[n].text === undefined ? "" : " " + (utils_combineText(traitlist[n].text));
+			let header = "<span class='name'>" + trait.name + (traitlist[n].text === undefined ? undefined : ".") + "</span> ";
+			toAddTd.innerHTML = traitlist[n].text === undefined ? "" : " " + (utils_combineText(traitlist[n].text, "p", header));
 		} else {
-			toAdd = document.createElement('span');
-			toAdd.className = 'name';
-			toAdd.innerHTML = trait.name + ".";
-			toAddTd.append(toAdd);
-			toAddTd.innerHTML += " " + (utils_combineText(traitlist[n].text));
+			let header = "<span class='name'>" + trait.name + ".</span> ";
+			toAddTd.innerHTML = (utils_combineText(traitlist[n].text, "p", header));
 			if (trait.suboption === "YES") {
 				toAddTd.className = "suboption";
 			} else if (trait.subsuboption === "YES") {
