@@ -157,17 +157,11 @@ function loadhash (id) {
 		toAddTd.colSpan = 6;
 		let toAdd;
 		if (trait.optionheading === "YES") {
-			toAdd = document.createElement('span');
-			toAdd.className = 'name';
-			toAdd.innerHTML = trait.name + (traitlist[n].text === undefined ? "" : ".");
-			toAddTd.append(toAdd);
-			toAddTd.innerHTML += traitlist[n].text === undefined ? "" : " " + (utils_combineText(traitlist[n].text));
+			let header = "<span class='name'>" + trait.name + (traitlist[n].text === undefined ? undefined : ".") + "</span> ";
+			toAddTd.innerHTML = traitlist[n].text === undefined ? "" : " " + (utils_combineText(traitlist[n].text, "p", header));
 		} else {
-			toAdd = document.createElement('span');
-			toAdd.className = 'name';
-			toAdd.innerHTML = trait.name + ".";
-			toAddTd.append(toAdd);
-			toAddTd.innerHTML += " " + (utils_combineText(traitlist[n].text));
+			let header = "<span class='name'>" + trait.name + ".</span> ";
+			toAddTd.innerHTML = (utils_combineText(traitlist[n].text, "p", header));
 			if (trait.suboption === "YES") {
 				toAddTd.className = "suboption";
 			} else if (trait.subsuboption === "YES") {
