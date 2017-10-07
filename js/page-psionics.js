@@ -1,5 +1,3 @@
-const STR_EMPTY = "";
-const STR_VOID_LINK = "javascript:void(0)";
 const STR_SLUG_DASH = "-";
 const STR_FILTER_TICK = "\u2714";
 const STR_JOIN_MODE_LIST = ",";
@@ -54,26 +52,6 @@ const JSON_ITEM_MODE_CONCENTRATION = "concentration";
 const JSON_ITEM_MODE_CONCENTRATION_DURATION = "duration";
 const JSON_ITEM_MODE_CONCENTRATION_UNIT = "unit";
 
-const ELE_SPAN = "span";
-const ELE_LI = "li";
-const ELE_A = "a";
-const ELE_P = "p";
-const ELE_DIV = "div";
-
-const EVNT_MOUSEOVER = "mouseover";
-const EVNT_MOUSEOUT = "mouseout";
-
-const ATB_ID = "id";
-const ATB_CLASS = "class";
-const ATB_DATA_LINK = "data-link";
-const ATB_TITLE = "title";
-const ATB_VALUE = "value";
-const ATB_HREF = "href";
-const ATB_STYLE = "style";
-
-const STL_DISPLAY_INITIAL = "display: initial";
-const STL_DISPLAY_NONE = "display: none";
-
 const CLS_PSIONICS = "psionics";
 const CLS_ROW = "row";
 const CLS_COL1 = "col-xs-5";
@@ -92,8 +70,6 @@ const LIST_SOURCE = "source";
 const LIST_TYPE = "type";
 const LIST_ORDER = "order";
 const LIST_MODE_LIST = "mode-list";
-
-const EVENT_CLICK = "click";
 
 window.onload = function load() {
 	const TABLE_VIEW = document.getElementById(ID_PSIONICS_LIST);
@@ -114,7 +90,7 @@ window.onload = function load() {
 			listItem.appendChild(getTypeSpan(psionic));
 			listItem.appendChild(getOrderSpan(psionic));
 			listItem.appendChild(getHiddenModeSpan(psionic));
-			listItem.addEventListener(EVENT_CLICK, listItemClick, false);
+			listItem.addEventListener(EVNT_CLICK, listItemClick, false);
 
 			TABLE_VIEW.appendChild(listItem);
 		}
@@ -308,7 +284,7 @@ window.onload = function load() {
 
 		function initResetButton() { // TODO
 			const RESET_BUTTON = document.getElementById(ID_RESET_BUTTON);
-			RESET_BUTTON.addEventListener(EVENT_CLICK, resetButtonClick, false);
+			RESET_BUTTON.addEventListener(EVNT_CLICK, resetButtonClick, false);
 
 			function resetButtonClick(event) {
 

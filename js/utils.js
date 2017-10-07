@@ -1,3 +1,32 @@
+const STR_EMPTY = "";
+const STR_VOID_LINK = "javascript:void(0)";
+
+const TYP_STRING = "string";
+const TYP_NUMBER = "number";
+const TYP_OBJECT = "object";
+
+const ELE_SPAN = "span";
+const ELE_UL = "ul";
+const ELE_LI = "li";
+const ELE_A = "a";
+const ELE_P = "p";
+const ELE_DIV = "div";
+
+const EVNT_MOUSEOVER = "mouseover";
+const EVNT_MOUSEOUT = "mouseout";
+const EVNT_CLICK = "click";
+
+const ATB_ID = "id";
+const ATB_CLASS = "class";
+const ATB_DATA_LINK = "data-link";
+const ATB_TITLE = "title";
+const ATB_VALUE = "value";
+const ATB_HREF = "href";
+const ATB_STYLE = "style";
+
+const STL_DISPLAY_INITIAL = "display: initial";
+const STL_DISPLAY_NONE = "display: none";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -7,7 +36,7 @@ String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
 		if (arguments.length) {
 			var t = typeof arguments[0];
 			var key;
-			var args = ("string" === t || "number" === t) ?
+			var args = (TYP_STRING === t || TYP_NUMBER === t) ?
 				Array.prototype.slice.call(arguments)
 				: arguments[0];
 
@@ -48,7 +77,7 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
 	let textStack = "";
 	for (let i = 0; i < textList.length; ++i) {
-		if (typeof textList[i] === 'object') {
+		if (typeof textList[i] === TYP_OBJECT) {
             if (textList[i].islist === "YES") {
                 textStack += utils_makeList(textList[i]);
 			}
@@ -395,4 +424,19 @@ function parse_sourceToAbv(source) {
 // DATA LINKS ==========================================================================================================
 function utils_nameToDataLink(name) {
 	return encodeURIComponent(name.toLowerCase()).replace("'","%27");
+}
+
+// FILTERS =============================================================================================================
+function addFilterMenu(buttonInputGroup, filterList) {
+
+	function makeOuter() {
+		let outer = document.createElement(ELE_UL);
+	}
+}
+class filter {
+	constructor(items, displayFunction, valueFunction) {
+		this.items = items;
+		this.displayFunction = displayFunction;
+		this.valueFunction = valueFunction;
+	}
 }
