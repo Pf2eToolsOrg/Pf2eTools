@@ -1,4 +1,4 @@
-let amount
+let amount, count
 
 window.onload = function load() {
 	$("#rollbutton").click(rollstats);
@@ -30,6 +30,9 @@ function getCost(n) {
 }
 
 function choose() {
+	if ($("input.choose:checked").length > count)
+		return this.checked = false
+
 	$(".racial", this.parentNode.parentNode)
 		.val(this.checked ? amount : 0)
 	changeTotal()
@@ -45,16 +48,17 @@ function changeRace() {
 		$(`#${key} .racial`).val(stats[key])
 
 	changeTotal()
+	$(".choose").hide().prop('checked', false)
 
 	if (!stats.choose)
-		return $(".choose").hide()
+		return
 
-	const {count, from} = stats.choose[0]
+	const {from} = stats.choose[0]
 	amount = stats.choose[0].amount || 1
+	count = stats.choose[0].count
 
 	$("td.choose").text(`Choose ${count}`).show()
-	from.forEach(key =>
-		$(`#${key} .choose`).prop('checked', false).show())
+	from.forEach(key => $(`#${key} .choose`).show())
 }
 
 function changeTotal() {
