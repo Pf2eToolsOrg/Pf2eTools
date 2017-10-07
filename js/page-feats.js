@@ -20,9 +20,9 @@ window.onload = function load() {
 		if (!attbText) attbText = NONE;
 		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
 		if (!prereqText) prereqText = NONE;
-		const CLS_COL_1 = "name col-xs-3 col-xs-3-7";
+		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";
 		const CLS_COL_2 = "source col-xs-1 col-xs-1-7";
-		const CLS_COL_3 = "ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-6";
+		const CLS_COL_3 = "ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
 		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='" + CLS_COL_1 + "'>"+name+"</span> <span class='" + CLS_COL_2 + "' title='"+curfeat.source+"'>"+parse_abbreviateSource(curfeat.source)+"</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></li>");
 
