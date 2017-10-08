@@ -412,19 +412,19 @@ function parse_sourceToFull (source) {
     return source;
 }
 const sourceToAbv = {};
-sourceToAbv.SRC_PHB = "PHB";
-sourceToAbv.SRC_EEPC = "EEPC";
-sourceToAbv.SRC_SCAG = "SCAG";
-sourceToAbv.SRC_UAMystic = "UAM";
-sourceToAbv.SRC_UAStarterSpells = "UASS";
-sourceToAbv.SRC_UAModern = "UAMM";
-sourceToAbv.SRC_UATOBM = "UAOBM";
-sourceToAbv.SRC_UAEBB = "UAEB";
-sourceToAbv.SRC_UAFT = "UAFT";
-sourceToAbv.SRC_UAFFS = "UAFFS";
-sourceToAbv.SRC_UAFFR = "UAFFR";
-sourceToAbv.SRC_PSK = "PSK";
-sourceToAbv.SRC_BOLS_3PP = "BLS";
+sourceToAbv[SRC_PHB] = "PHB";
+sourceToAbv[SRC_EEPC] = "EEPC";
+sourceToAbv[SRC_SCAG] = "SCAG";
+sourceToAbv[SRC_UAMystic] = "UAM";
+sourceToAbv[SRC_UAStarterSpells] = "UASS";
+sourceToAbv[SRC_UAModern] = "UAMM";
+sourceToAbv[SRC_UATOBM] = "UAOBM";
+sourceToAbv[SRC_UAEBB] = "UAEB";
+sourceToAbv[SRC_UAFT] = "UAFT";
+sourceToAbv[SRC_UAFFS] = "UAFFS";
+sourceToAbv[SRC_UAFFR] = "UAFFR";
+sourceToAbv[SRC_PSK] = "PSK";
+sourceToAbv[SRC_BOLS_3PP] = "BLS";
 function parse_sourceToAbv(source) {
 	if (sourceToAbv[source] !== undefined) return sourceToAbv[source];
     return source;
