@@ -451,8 +451,7 @@ class FilterBox {
 
 		let outer = makeOuterList();
 		for (let i = 0; i < this.filterList.length; ++i) {
-			this.headers[this.filterList[i].header] = [];
-			outer.appendChild(makeOuterItem(this.filterList[i]));
+			outer.appendChild(makeOuterItem(this, this.filterList[i]));
 		}
 		buttonGroup.appendChild(outer);
 		this.inputGroup.insertBefore(buttonGroup, this.inputGroup.firstChild);
@@ -481,7 +480,7 @@ class FilterBox {
 			return outL;
 		}
 
-		function makeOuterItem(filter) {
+		function makeOuterItem(self, filter) {
 			let outI = document.createElement(ELE_LI);
 			outI.setAttribute(ATB_CLASS, FilterBox.CLS_DROPDOWN_SUBMENU);
 			let innerListHeader = makeInnerHeader();
@@ -514,7 +513,7 @@ class FilterBox {
 				return inL;
 
 				function makeAllInnerItem() {
-					return makeInnerItem(FilterBox.VAL_SELECT_ALL, "Select All", FilterBox.VAL_SELECT_ALL, true);
+					return makeInnerItem(filter.header, "Select All", FilterBox.VAL_SELECT_ALL, true);
 				}
 
 				function makeInnerDividerItem() {
@@ -563,11 +562,21 @@ class FilterBox {
 									parentCheckBox.childCheckBoxes.push(cb);
 								}
 								innLi.cb = cb;
-								let valueObj = {};
-								valueObj.value = valueText;
-								valueObj.cb = cb;
-								this.headers[header] = valueObj; // TODO need to pass in headers object
+								addToValueMap();
 								return cb;
+
+								function addToValueMap() {
+									let valueObj;
+									if (self.headers[header] !== undefined) valueObj = self.headers[header];
+									else {
+										valueObj = {entries: []};
+										self.headers[header] = valueObj;
+									}
+									let entry = {};
+									entry.value = valueText;
+									entry.cb = cb;
+									valueObj.entries.push(entry);
+								}
 							}
 						}
 
@@ -594,8 +603,7 @@ class FilterBox {
 								}
 							}
 
-							let eventOut = new Event("valchange");
-							this.inputGroup.dispatchEvent(eventOut);
+							self._fireValChangeEvent();
 						}
 					}
 				}
@@ -657,7 +665,40 @@ class FilterBox {
 	}
 
 	getValues() {
-		return this.headers;
+		let outObj = {};
+		for (let header in this.headers) {
+			if (!this.headers.hasOwnProperty(header)) continue;
+			let cur = this.headers[header];
+			let tempList = [];
+			for (let i = 0; i < cur.entries.length; ++i) {
+				let headerObj = {};
+				headerObj.value = cur.entries[i].value;
+				headerObj.selected = cur.entries[i].cb.checked;
+				tempList.push(headerObj);
+			}
+			outObj[header] = tempList;
+		}
+		return outObj;
+	}
+
+	addEventListener (type, listener, useCapture) {
+		this.inputGroup.addEventListener(type, listener, useCapture)
+	}
+
+	reset() {
+		for (let header in this.headers) {
+			if (!this.headers.hasOwnProperty(header)) continue;
+			let cur = this.headers[header];
+			for (let i = 0; i < cur.entries.length; ++i) {
+				cur.entries[i].cb.checked = true;
+			}
+		}
+		this._fireValChangeEvent();
+	}
+
+	_fireValChangeEvent() {
+		let eventOut = new Event(FilterBox.EVNT_VALCHANGE);
+		this.inputGroup.dispatchEvent(eventOut);
 	}
 }
 FilterBox.CLS_INPUT_GROUP_BUTTON = "input-group-btn";
@@ -667,6 +708,7 @@ FilterBox.CLS_FILTER_SUBLIST_ITEM_WRAPPER = "filter-sublist-item-wrapper";
 FilterBox.CLS_SUBMENU_PARENT = "submenu-parent";
 FilterBox.CLS_DIVIDER = "divider";
 FilterBox.VAL_SELECT_ALL = "select-all";
+FilterBox.EVNT_VALCHANGE = "valchange";
 class Filter {
 	constructor(header, listClass, items, displayFunction, valueFunction) {
 		this.header = header;

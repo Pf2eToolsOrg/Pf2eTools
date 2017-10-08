@@ -24,9 +24,8 @@ const TMP_MODE_TITLE_CONCENTRATION = "conc., {0} {1}.";
 
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_LIST_CONTAINER = "listContainer";
-const ID_SOURCE_FILTER = "sourceFilter";
-const ID_TYPE_FILTER = "typeFilter";
-const ID_ORDER_FILTER = "orderFilter";
+const ID_SEARCH_BAR = "filter-search-input-group";
+const ID_SEARCH = "search";
 const ID_RESET_BUTTON = "reset";
 const ID_STATS_NAME = "name";
 const ID_STATS_ORDER_AND_TYPE = "orderAndType";
@@ -75,14 +74,14 @@ window.onload = function load() {
 	const TABLE_VIEW = document.getElementById(ID_PSIONICS_LIST);
 
 	const PSIONIC_LIST = psionicdata.compendium.psionic;
-	populateListView(PSIONIC_LIST);
-	initFiltersAndSearch(PSIONIC_LIST);
-	initListLibrary();
+	populateListView();
+	let listView = initListLibrary();
+	initFiltersAndSearch(listView);
 	selectInitialPsionic();
 
-	function populateListView(psionicList) {
-		for (let i = 0; i < psionicList.length; ++i) {
-			let psionic = psionicList[i];
+	function populateListView() {
+		for (let i = 0; i < PSIONIC_LIST.length; ++i) {
+			let psionic = PSIONIC_LIST[i];
 
 			let listItem = getListItem(psionic, i);
 			listItem.appendChild(getNameSpan(psionic));
@@ -160,7 +159,7 @@ window.onload = function load() {
 		}
 	}
 
-	function initFiltersAndSearch() {
+	function initFiltersAndSearch(listView) {
 		const filters = {};
 		filters["Source"] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceToFull(str); }};
 		filters["Type"] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
@@ -168,8 +167,8 @@ window.onload = function load() {
 
 		populateFilterSets();
 		sortFilterSets();
-		initFilters();
-		initResetButton();
+		let filterBox = initFilters();
+		initResetButton(listView, filterBox);
 
 		function populateFilterSets() {
 			for (let i = 0; i < PSIONIC_LIST.length; ++i) {
@@ -204,32 +203,37 @@ window.onload = function load() {
 			}
 		}
 
-		function initFilters() { // TODO
-			let listParent = document.getElementById("filter-search-input-group");
+		function initFilters() {
+			let filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 			let filterList = [];
 			for (let title in filters) {
 				if (filters.hasOwnProperty(title)) {
 					filterList.push(new Filter(title, filters[title].item, filters[title].list, filters[title].renderer, parse_stringToSlug));
 				}
 			}
-			let filterBox = new FilterBox(listParent, filterList);
+			let filterBox = new FilterBox(filterAndSearchBar, filterList);
 			filterBox.render();
 
 			filterBox.addEventListener(
-				"valchange",
-				function (event) {
-					console.log(event);
+				FilterBox.EVNT_VALCHANGE,
+				function (event) { // TODO
 					console.log(filterBox.getValues());
 				}
-			)
+			);
+
+			return filterBox;
 		}
 
-		function initResetButton() { // TODO
+		function initResetButton(listView, filterBox) {
 			const RESET_BUTTON = document.getElementById(ID_RESET_BUTTON);
 			RESET_BUTTON.addEventListener(EVNT_CLICK, resetButtonClick, false);
 
 			function resetButtonClick(event) {
-
+				let searchBox = document.getElementById(ID_SEARCH);
+				searchBox.value = STR_EMPTY;
+				listView.search(STR_EMPTY);
+				listView.sort(LIST_NAME);
+				filterBox.reset(); // TODO
 			}
 		}
 	}
@@ -243,6 +247,7 @@ window.onload = function load() {
 
 		let psionicsList = new List(ID_LIST_CONTAINER, options);
 		psionicsList.sort(LIST_NAME);
+		return psionicsList;
 
 		function listSort(itemA, itemB, options) {
 			if (options.valueName === LIST_NAME) return compareBy(LIST_NAME);
