@@ -1,5 +1,4 @@
 const STR_SLUG_DASH = "-";
-const STR_FILTER_TICK = "\u2714";
 const STR_JOIN_MODE_LIST = ",";
 const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
 const STR_JOIN_MODE_TITLE = " ";
@@ -59,10 +58,6 @@ const CLS_COL3 = "col-xs-2";
 const CLS_COL4 = "col-xs-2";
 const CLS_HIDDEN = "hidden";
 const CLS_ORDER_NONE = "psi-list-order-none";
-const CLS_FLTR_FLEX = "psi-filter";
-const CLS_FLTR_TICK = "psi-tick";
-const CLS_FLTR_SUBMENU = "dropdown-submenu";
-const CLS_FLTR_MENU = "dropdown-menu";
 
 const LIST_NAME = "name";
 const LIST_SOURCE = "source";
@@ -225,10 +220,10 @@ window.onload = function load() {
 						let f = filterBox.getValues();
 						let v = item.values();
 
-						// FIXME this is broken for "Order"
-						return filterMatches(HDR_SOURCE) && filterMatches(HDR_TYPE) && filterMatches(HDR_ORDER);
+						return filterMatches(HDR_SOURCE, LIST_SOURCE) && filterMatches(HDR_TYPE, LIST_TYPE) && filterMatches(HDR_ORDER, LIST_ORDER);
 
-						function filterMatches(header) {
+						function filterMatches(header, listAttrib) {
+							if (header === HDR_ORDER) console.log(f, v);
 							for (let t in f[header]) {
 								if (!f[header].hasOwnProperty(t)) continue;
 								if (t === FilterBox.VAL_SELECT_ALL && f[header][t]) return true;
@@ -237,7 +232,7 @@ window.onload = function load() {
 								let originalList = filters[header].list;
 								for (let i = 0; i < originalList.length; ++i) {
 									if (parse_stringToSlug(originalList[i]) === t) {
-										return v.type === filters[header].renderer(originalList[i]);
+										if (v[listAttrib] === filters[header].renderer(originalList[i])) return true;
 									}
 								}
 							}
