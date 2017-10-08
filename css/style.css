@@ -29,6 +29,16 @@ footer {
 	font-size: 90%;
 }
 
+.hidden {
+    display: none;
+}
+.bold {
+    font-weight: bold;
+}
+.float-end {
+    float: none;
+}
+
 input.search {
 	width: 62%;
 }
@@ -878,6 +888,27 @@ table#stats p.subtrait {
 .col-xs-1-7 {
 	width: 14.16666666666666%;
 }
+.dropdown-submenu {
+	position: relative;
+}
+.dropdown-submenu .dropdown-menu {
+	top: 0;
+	left: 100%;
+	margin-top: -1px;
+}
+
+/* Psionics */
+.psi-order-and-talent {
+    font-style: italic;
+}
+.psi-focus-title {
+    font-style: italic;
+    font-weight: bold;
+}
+.psi-mode-title {
+    font-style: italic;
+    font-weight: bold;
+}
 
 .stats-sub-header {
     font-style: italic;
@@ -890,4 +921,20 @@ table#stats p.subtrait {
 }
 .list-entry-none {
     font-style: italic;
+}
+
+
+.filter-sublist-item-wrapper {
+    display: -webkit-flex;
+    display: flex;
+}
+.filter-sublist-item-text {
+    margin-right: 20px;
+}
+input[type=checkbox].filter-checkbox {
+    margin-left: auto;
+    padding: 0 10px;
+}
+input[type=checkbox].readonly {
+    pointer-events: none;
 }

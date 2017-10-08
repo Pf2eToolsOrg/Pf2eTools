@@ -1,4 +1,60 @@
+const STR_EMPTY = "";
+const STR_VOID_LINK = "javascript:void(0)";
+
+const TYP_STRING = "string";
+const TYP_NUMBER = "number";
+const TYP_OBJECT = "object";
+
+const ELE_SPAN = "span";
+const ELE_UL = "ul";
+const ELE_LI = "li";
+const ELE_A = "a";
+const ELE_P = "p";
+const ELE_DIV = "div";
+const ELE_BUTTON = "button";
+const ELE_INPUT = "input";
+
+const EVNT_MOUSEOVER = "mouseover";
+const EVNT_MOUSEOUT = "mouseout";
+const EVNT_MOUSELEAVE = "mouseleave";
+const EVNT_MOUSEENTER = "mouseenter";
+const EVNT_CLICK = "click";
+
+const ATB_ID = "id";
+const ATB_CLASS = "class";
+const ATB_DATA_LINK = "data-link";
+const ATB_TITLE = "title";
+const ATB_VALUE = "value";
+const ATB_HREF = "href";
+const ATB_STYLE = "style";
+const ATB_CHECKED = "checked";
+const ATB_TYPE = "type";
+const ATB_ONCLICK = "onclick";
+
+const STL_DISPLAY_INITIAL = "display: initial";
+const STL_DISPLAY_NONE = "display: none";
+
 // STRING ==============================================================================================================
+// Appropriated from StackOverflow (literally, the site uses this code)
+String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
+	function () {
+		"use strict";
+		var str = this.toString();
+		if (arguments.length) {
+			var t = typeof arguments[0];
+			var key;
+			var args = (TYP_STRING === t || TYP_NUMBER === t) ?
+				Array.prototype.slice.call(arguments)
+				: arguments[0];
+
+			for (key in args) {
+				str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+			}
+		}
+
+		return str;
+	};
+
 function utils_joinPhraseArray(array, joiner, lastJoiner) {
 	if (array.length === 0) return "";
 	if (array.length === 1) return array[0];
@@ -28,7 +84,7 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
 	let textStack = "";
 	for (let i = 0; i < textList.length; ++i) {
-		if (typeof textList[i] === 'object') {
+		if (typeof textList[i] === TYP_OBJECT) {
             if (textList[i].islist === "YES") {
                 textStack += utils_makeList(textList[i]);
 			}
@@ -175,7 +231,7 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
                     if (!pre.proficiency[j].hasOwnProperty(type)) continue;
                     if (type === "armor") {
                     	if (shorthand) {
-							outStack.push("prof " + parse_abbreviateArmor(pre.proficiency[j][type]) + " armor");
+							outStack.push("prof " + parse_armorToAbv(pre.proficiency[j][type]) + " armor");
 						} else {
 							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
 						}
@@ -297,7 +353,7 @@ function utils_getAttributeText(attObj) {
 	}
 }
 
-// PARSING FUNCTIONS ===================================================================================================
+// PARSING =============================================================================================================
 function parse_attAbvToFull(attribute) {
 	const ABV_TO_FULL = {
 		"str": "Strength",
@@ -316,7 +372,7 @@ const ARMR_HEAVY = "heavy";
 const ARMR_LIGHT_ABBV = "l.";
 const ARMR_MEDIUM_ABBV = "m.";
 const ARMR_HEAVY_ABBV = "h.";
-function parse_abbreviateArmor(armor) {
+function parse_armorToAbv(armor) {
 	if (armor === ARMR_LIGHT) armor = ARMR_LIGHT_ABBV;
 	if (armor === ARMR_MEDIUM) armor = ARMR_MEDIUM_ABBV;
 	if (armor === ARMR_HEAVY) armor = ARMR_HEAVY_ABBV;
@@ -355,19 +411,60 @@ function parse_sourceToFull (source) {
     if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
     return source;
 }
-function parse_abbreviateSource(source) {
-    if (source === SRC_PHB) source = "PHB";
-    if (source === SRC_EEPC) source = "EEPC";
-    if (source === SRC_SCAG) source = "SCAG";
-    if (source === SRC_UAMystic) source = "UAM";
-    if (source === SRC_UAStarterSpells) source = "UASS";
-    if (source === SRC_UAModern) source = "UAMM";
-    if (source === SRC_UATOBM) source = "UAOBM";
-    if (source === SRC_UAEBB) source = "UAEB";
-    if (source === SRC_UAFT) source = "UAFT";
-    if (source === SRC_UAFFS) source = "UAFFS";
-    if (source === SRC_UAFFR) source = "UAFFR";
-    if (source === SRC_PSK) source = "PSK";
-    if (source === SRC_BOLS_3PP) source = "BLS";
+const sourceToAbv = {};
+sourceToAbv.SRC_PHB = "PHB";
+sourceToAbv.SRC_EEPC = "EEPC";
+sourceToAbv.SRC_SCAG = "SCAG";
+sourceToAbv.SRC_UAMystic = "UAM";
+sourceToAbv.SRC_UAStarterSpells = "UASS";
+sourceToAbv.SRC_UAModern = "UAMM";
+sourceToAbv.SRC_UATOBM = "UAOBM";
+sourceToAbv.SRC_UAEBB = "UAEB";
+sourceToAbv.SRC_UAFT = "UAFT";
+sourceToAbv.SRC_UAFFS = "UAFFS";
+sourceToAbv.SRC_UAFFR = "UAFFR";
+sourceToAbv.SRC_PSK = "PSK";
+sourceToAbv.SRC_BOLS_3PP = "BLS";
+function parse_sourceToAbv(source) {
+	if (sourceToAbv[source] !== undefined) return sourceToAbv[source];
     return source;
+}
+function parse_abvToSource(abv) {
+	for (let v in sourceToAbv) {
+		if (!sourceToAbv.hasOwnProperty(v)) continue;
+		if (sourceToAbv[v] === abv) return v
+	}
+	return abv;
+}
+
+function parse_stringToSlug(str) {
+	return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+}
+
+// DATA LINKS ==========================================================================================================
+function utils_nameToDataLink(name) {
+	return encodeURIComponent(name.toLowerCase()).replace("'","%27");
+}
+
+// CONVENIENCE/ELEMENTS ================================================================================================
+function toggleCheckBox(cb) {
+	if (cb.checked === true) cb.checked = false;
+	else cb.checked = true;
+}
+function stopEvent(event) {
+	event.stopPropagation();
+	event.preventDefault();
+}
+function toggleVisible(element) {
+	if (isShowing(element)) hide(element);
+	else show(element);
+}
+function isShowing(element) {
+	return element.hasAttribute(ATB_STYLE) && element.getAttribute(ATB_STYLE).includes(STL_DISPLAY_INITIAL);
+}
+function show(element) {
+	element.setAttribute(ATB_STYLE, STL_DISPLAY_INITIAL);
+}
+function hide(element) {
+	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
