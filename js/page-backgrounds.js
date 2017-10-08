@@ -108,20 +108,17 @@ function loadhash (id) {
 	$("tr.trait").remove();
 	for (var n = traitlist.length-1; n >= 0; n--) {
 		var traitname = traitlist[n].name;
-		var texthtml = "<span class='name'>"+traitname+".</span> ";
-		var textlist = traitlist[n].text;
-		texthtml = texthtml + "<span>"+textlist[0]+"</span> ";
 
-		for (var i = 1; i < textlist.length; i++) {
-			if (!textlist[i]) continue;
-			if (textlist[i].indexOf ("Source: ") !== -1) continue;
-			texthtml = texthtml + "<p>"+textlist[i]+"</p>";
-		}
+		var texthtml = "";
+		let headerText = "<span class='name'>"+traitname+".</span> ";
+
+		texthtml += utils_combineText(traitlist[n].text, "p", headerText);
 
 		var subtraitlist = traitlist[n].subtrait;
 		if (subtraitlist !== undefined) {
 			var k = 0;
 			var subtrait;
+
 			for (var j = 0; j < subtraitlist.length; j++) {
 				texthtml = texthtml + "<p class='subtrait'>";
 				subtrait = subtraitlist[j];
@@ -138,7 +135,7 @@ function loadhash (id) {
 			}
 		}
 
-		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait"+i+"'>"+texthtml+"</td></tr>");
+		$("tr#traits").after("<tr class='trait'><td colspan='6'>"+texthtml+"</td></tr>");
 	}
 
 };
