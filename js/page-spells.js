@@ -295,11 +295,6 @@ window.onload = function load() {
 		});
 	});
 
-	$("#filtertools small").click(function() {
-		$("#search").val("psionics");
-		spellslist.search("psionics");
-	})
-
 	$("#filtertools button.sort").on("click", function() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
