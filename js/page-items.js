@@ -266,6 +266,8 @@ function sortitems(a, b, o) {
 		if (brarity === "Legendary") brarity = "5";
 		if (ararity === "Artifact") ararity = "6";
 		if (brarity === "Artifact") brarity = "6";
+		if (ararity === "Unknown") ararity = "7";
+		if (brarity === "Unknown") brarity = "7";
 		return ((b._values.rarity) > (a._values.rarity)) ? 1 : -1;
 	}
 
