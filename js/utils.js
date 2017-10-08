@@ -411,21 +411,30 @@ function parse_sourceToFull (source) {
     if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
     return source;
 }
+const sourceToAbv = {};
+sourceToAbv.SRC_PHB = "PHB";
+sourceToAbv.SRC_EEPC = "EEPC";
+sourceToAbv.SRC_SCAG = "SCAG";
+sourceToAbv.SRC_UAMystic = "UAM";
+sourceToAbv.SRC_UAStarterSpells = "UASS";
+sourceToAbv.SRC_UAModern = "UAMM";
+sourceToAbv.SRC_UATOBM = "UAOBM";
+sourceToAbv.SRC_UAEBB = "UAEB";
+sourceToAbv.SRC_UAFT = "UAFT";
+sourceToAbv.SRC_UAFFS = "UAFFS";
+sourceToAbv.SRC_UAFFR = "UAFFR";
+sourceToAbv.SRC_PSK = "PSK";
+sourceToAbv.SRC_BOLS_3PP = "BLS";
 function parse_sourceToAbv(source) {
-    if (source === SRC_PHB) source = "PHB";
-    if (source === SRC_EEPC) source = "EEPC";
-    if (source === SRC_SCAG) source = "SCAG";
-    if (source === SRC_UAMystic) source = "UAM";
-    if (source === SRC_UAStarterSpells) source = "UASS";
-    if (source === SRC_UAModern) source = "UAMM";
-    if (source === SRC_UATOBM) source = "UAOBM";
-    if (source === SRC_UAEBB) source = "UAEB";
-    if (source === SRC_UAFT) source = "UAFT";
-    if (source === SRC_UAFFS) source = "UAFFS";
-    if (source === SRC_UAFFR) source = "UAFFR";
-    if (source === SRC_PSK) source = "PSK";
-    if (source === SRC_BOLS_3PP) source = "BLS";
+	if (sourceToAbv[source] !== undefined) return sourceToAbv[source];
     return source;
+}
+function parse_abvToSource(abv) {
+	for (let v in sourceToAbv) {
+		if (!sourceToAbv.hasOwnProperty(v)) continue;
+		if (sourceToAbv[v] === abv) return v
+	}
+	return abv;
 }
 
 function parse_stringToSlug(str) {
@@ -669,14 +678,11 @@ class FilterBox {
 		for (let header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
 			let cur = this.headers[header];
-			let tempList = [];
+			let tempObj = {};
 			for (let i = 0; i < cur.entries.length; ++i) {
-				let headerObj = {};
-				headerObj.value = cur.entries[i].value;
-				headerObj.selected = cur.entries[i].cb.checked;
-				tempList.push(headerObj);
+				tempObj[cur.entries[i].value] = cur.entries[i].cb.checked;
 			}
-			outObj[header] = tempList;
+			outObj[header] = tempObj;
 		}
 		return outObj;
 	}

@@ -160,10 +160,14 @@ window.onload = function load() {
 	}
 
 	function initFiltersAndSearch(listView) {
+		const HDR_SOURCE = "Source";
+		const HDR_TYPE = "Type";
+		const HDR_ORDER = "Order";
+
 		const filters = {};
-		filters["Source"] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceToFull(str); }};
-		filters["Type"] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
-		filters["Order"] = {item: JSON_ITEM_ORDER, list: [], renderer: function(str) { return parse_psionicOrderToFull(str); }};
+		filters[HDR_SOURCE] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceToFull(str); }};
+		filters[HDR_TYPE] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
+		filters[HDR_ORDER] = {item: JSON_ITEM_ORDER, list: [], renderer: function(str) { return parse_psionicOrderToFull(str); }};
 
 		populateFilterSets();
 		sortFilterSets();
@@ -216,8 +220,30 @@ window.onload = function load() {
 
 			filterBox.addEventListener(
 				FilterBox.EVNT_VALCHANGE,
-				function (event) { // TODO
-					console.log(filterBox.getValues());
+				function (event) {
+					listView.filter(function(item) {
+						let f = filterBox.getValues();
+						let v = item.values();
+
+						// FIXME this is broken for "Order"
+						return filterMatches(HDR_SOURCE) && filterMatches(HDR_TYPE) && filterMatches(HDR_ORDER);
+
+						function filterMatches(header) {
+							for (let t in f[header]) {
+								if (!f[header].hasOwnProperty(t)) continue;
+								if (t === FilterBox.VAL_SELECT_ALL && f[header][t]) return true;
+								if (!f[header][t]) continue;
+
+								let originalList = filters[header].list;
+								for (let i = 0; i < originalList.length; ++i) {
+									if (parse_stringToSlug(originalList[i]) === t) {
+										return v.type === filters[header].renderer(originalList[i]);
+									}
+								}
+							}
+							return false;
+						}
+					});
 				}
 			);
 
@@ -233,7 +259,8 @@ window.onload = function load() {
 				searchBox.value = STR_EMPTY;
 				listView.search(STR_EMPTY);
 				listView.sort(LIST_NAME);
-				filterBox.reset(); // TODO
+				filterBox.reset();
+				listView.filter();
 			}
 		}
 	}
