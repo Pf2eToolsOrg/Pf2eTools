@@ -442,6 +442,8 @@ class FilterBox {
 	constructor(inputGroup, filterList) {
 		this.inputGroup = inputGroup;
 		this.filterList = filterList;
+
+		this.headers = {};
 	}
 
 	render() {
@@ -449,6 +451,7 @@ class FilterBox {
 
 		let outer = makeOuterList();
 		for (let i = 0; i < this.filterList.length; ++i) {
+			this.headers[this.filterList[i].header] = [];
 			outer.appendChild(makeOuterItem(this.filterList[i]));
 		}
 		buttonGroup.appendChild(outer);
@@ -520,7 +523,7 @@ class FilterBox {
 					return divLi;
 				}
 
-				function makeInnerItem(displayText, valueText, isChecked, parentCheckBox) { // TODO use value
+				function makeInnerItem(displayText, valueText, isChecked, parentCheckBox) {
 					parentCheckBox = parentCheckBox === undefined || parentCheckBox === null ? null : parentCheckBox;
 					let innLi = document.createElement(ELE_LI);
 
@@ -553,20 +556,29 @@ class FilterBox {
 								let cb = document.createElement(ELE_INPUT);
 								cb.setAttribute(ATB_CLASS, "filter-checkbox");
 								cb.setAttribute(ATB_TYPE, "checkbox");
-								cb.addEventListener(EVNT_CLICK, cbClickHandler);
 								cb.childCheckBoxes = [];
 								if (isChecked) cb.checked  = true;
 								if (parentCheckBox !== null) {
 									parentCheckBox.childCheckBoxes.push(cb);
 								}
 								innLi.cb = cb;
+								let valueObj = {};
+								valueObj.value = valueText;
+								valueObj.cb = cb;
 								return cb;
 							}
 						}
 
 						function clickHandler(event) {
+							// TODO directly clicking the checkbox is broken
 							stopEvent(event);
-							toggleCheckBox(innLi.cb);
+							if (event.srcElement.className === "filter-checkbox") {
+								console.log(event.srcElement.checked)
+							}
+							if (event.srcElement !== innLi.cb) {
+								console.log("toggling")
+								toggleCheckBox(innLi.cb);
+							}
 							for (let i = 0; i < innLi.cb.childCheckBoxes.length; ++i) {
 								innLi.cb.childCheckBoxes[i].checked = innLi.cb.checked; // set all the children to the parent's value
 							}
@@ -586,9 +598,7 @@ class FilterBox {
 									if (allChecked) parentCheckBox.checked = true;
 								}
 							}
-						}
-						function cbClickHandler(event) {
-							event.stopPropagation();
+							console.log("clickhandler");
 						}
 					}
 				}
@@ -647,6 +657,10 @@ class FilterBox {
 				});
 			}
 		}
+	}
+
+	getValues() {
+
 	}
 }
 FilterBox.CLS_INPUT_GROUP_BUTTON = "input-group-btn";
