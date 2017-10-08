@@ -57,7 +57,7 @@ const CLS_COL2 = "col-xs-2";
 const CLS_COL3 = "col-xs-2";
 const CLS_COL4 = "col-xs-2";
 const CLS_HIDDEN = "hidden";
-const CLS_ORDER_NONE = "psi-list-order-none";
+const CLS_LI_NONE = "list-entry-none";
 
 const LIST_NAME = "name";
 const LIST_SOURCE = "source";
@@ -124,7 +124,7 @@ window.onload = function load() {
 			span.classList.add(CLS_COL4);
 			let spanText = parse_psionicOrderToFull(psionic[JSON_ITEM_ORDER]);
 			if (spanText === STR_ORDER_NONE) {
-				span.classList.add(CLS_ORDER_NONE);
+				span.classList.add(CLS_LI_NONE);
 			}
 			span.innerHTML = spanText;
 			return span;
@@ -189,6 +189,9 @@ window.onload = function load() {
 					sortStrings(filters[id].list);
 				}
 			}
+
+			// add this after sorting, as the last element
+			filters[HDR_ORDER].list.push(STR_ORDER_NONE);
 
 			function sortStrings(toSort) {
 				toSort.sort(sortStringsComparator);
