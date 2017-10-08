@@ -214,6 +214,14 @@ window.onload = function load() {
 			}
 			let filterBox = new FilterBox(listParent, filterList);
 			filterBox.render();
+
+			filterBox.addEventListener(
+				"valchange",
+				function (event) {
+					console.log(event);
+					console.log(filterBox.getValues());
+				}
+			)
 		}
 
 		function initResetButton() { // TODO

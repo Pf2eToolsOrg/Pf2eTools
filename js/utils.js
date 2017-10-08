@@ -509,12 +509,12 @@ class FilterBox {
 				for (let j = 0; j < filter.items.length; ++j) {
 					let displayText = filter.displayFunction(filter.items[j]);
 					let valueText = filter.valueFunction(filter.items[j]);
-					inL.appendChild(makeInnerItem(displayText, valueText, true, selectAll.cb));
+					inL.appendChild(makeInnerItem(filter.header, displayText, valueText, true, selectAll.cb));
 				}
 				return inL;
 
 				function makeAllInnerItem() {
-					return makeInnerItem("Select All", FilterBox.VAL_SELECT_ALL, true);
+					return makeInnerItem(FilterBox.VAL_SELECT_ALL, "Select All", FilterBox.VAL_SELECT_ALL, true);
 				}
 
 				function makeInnerDividerItem() {
@@ -523,7 +523,7 @@ class FilterBox {
 					return divLi;
 				}
 
-				function makeInnerItem(displayText, valueText, isChecked, parentCheckBox) {
+				function makeInnerItem(header, displayText, valueText, isChecked, parentCheckBox) {
 					parentCheckBox = parentCheckBox === undefined || parentCheckBox === null ? null : parentCheckBox;
 					let innLi = document.createElement(ELE_LI);
 
@@ -566,6 +566,7 @@ class FilterBox {
 								let valueObj = {};
 								valueObj.value = valueText;
 								valueObj.cb = cb;
+								this.headers[header] = valueObj; // TODO need to pass in headers object
 								return cb;
 							}
 						}
@@ -592,6 +593,9 @@ class FilterBox {
 									if (allChecked) parentCheckBox.checked = true;
 								}
 							}
+
+							let eventOut = new Event("valchange");
+							this.inputGroup.dispatchEvent(eventOut);
 						}
 					}
 				}
@@ -653,7 +657,7 @@ class FilterBox {
 	}
 
 	getValues() {
-
+		return this.headers;
 	}
 }
 FilterBox.CLS_INPUT_GROUP_BUTTON = "input-group-btn";
