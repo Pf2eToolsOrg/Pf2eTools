@@ -554,7 +554,8 @@ class FilterBox {
 							}
 							function getCheckboxChild() {
 								let cb = document.createElement(ELE_INPUT);
-								cb.setAttribute(ATB_CLASS, "filter-checkbox");
+								cb.classList.add("filter-checkbox");
+								cb.classList.add("readonly");
 								cb.setAttribute(ATB_TYPE, "checkbox");
 								cb.childCheckBoxes = [];
 								if (isChecked) cb.checked  = true;
@@ -570,15 +571,8 @@ class FilterBox {
 						}
 
 						function clickHandler(event) {
-							// TODO directly clicking the checkbox is broken
 							stopEvent(event);
-							if (event.srcElement.className === "filter-checkbox") {
-								console.log(event.srcElement.checked)
-							}
-							if (event.srcElement !== innLi.cb) {
-								console.log("toggling")
-								toggleCheckBox(innLi.cb);
-							}
+							toggleCheckBox(innLi.cb);
 							for (let i = 0; i < innLi.cb.childCheckBoxes.length; ++i) {
 								innLi.cb.childCheckBoxes[i].checked = innLi.cb.checked; // set all the children to the parent's value
 							}
@@ -598,7 +592,6 @@ class FilterBox {
 									if (allChecked) parentCheckBox.checked = true;
 								}
 							}
-							console.log("clickhandler");
 						}
 					}
 				}
