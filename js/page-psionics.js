@@ -140,6 +140,12 @@ window.onload = function load() {
 			let outArray = [];
 			for (let i = 0; i < modeList.length; ++i) {
 				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i][JSON_ITEM_MODE_TITLE]));
+				if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
+					let subModes = modeList[i][JSON_ITEM_SUBMODES];
+					for (let j = 0; j < subModes.length; ++j) {
+						outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j][JSON_ITEM_MODE_TITLE]))
+					}
+				}
 			}
 			return outArray.join(STR_JOIN_MODE_LIST);
 		}
