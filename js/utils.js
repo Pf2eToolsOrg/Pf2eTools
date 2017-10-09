@@ -80,34 +80,41 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 
 // TEXT COMBINING ======================================================================================================
 function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
-	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
-	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
-	let textStack = "";
-	for (let i = 0; i < textList.length; ++i) {
-		if (typeof textList[i] === TYP_OBJECT) {
+    tagPerItem = tagPerItem === undefined ? null : tagPerItem;
+    textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
+    let textStack = "";
+    if (typeof textList === TYP_STRING) {
+        return getString(textList, true)
+    }
+    for (let i = 0; i < textList.length; ++i) {
+        if (typeof textList[i] === TYP_OBJECT) {
             if (textList[i].islist === "YES") {
                 textStack += utils_makeList(textList[i]);
-			}
-			if (textList[i].hassubtitle === "YES") {
-				textStack += utils_combineText(textList[i].text, tagPerItem, utils_makeSubHeader(textList[i].title));
-			}
-			if (textList[i].istable === "YES") {
-				textStack += utils_makeTable(textList[i]);
-			}
-			if (textList[i].hassavedc === "YES") {
-				textStack += utils_makeAttDc(textList[i]);
-			}
-			if (textList[i].hasattackmod === "YES") {
-				textStack += utils_makeAttAttackMod(textList[i]);
-			}
-		} else {
-			let openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
-			let closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
-			let inlineTitle = textBlockInlineTitle !== null && i === 0 ? textBlockInlineTitle : "";
-			textStack += openTag + inlineTitle + textList[i] + closeTag;
-		}
-	}
-	return textStack;
+            }
+            if (textList[i].hassubtitle === "YES") {
+                textStack += utils_combineText(textList[i].text, tagPerItem, utils_makeSubHeader(textList[i].title));
+            }
+            if (textList[i].istable === "YES") {
+                textStack += utils_makeTable(textList[i]);
+            }
+            if (textList[i].hassavedc === "YES") {
+                textStack += utils_makeAttDc(textList[i]);
+            }
+            if (textList[i].hasattackmod === "YES") {
+                textStack += utils_makeAttAttackMod(textList[i]);
+            }
+        } else {
+            textStack += getString(textList[i], textBlockInlineTitle !== null && i === 0)
+        }
+    }
+    return textStack;
+
+    function getString(text, addTitle) {
+        let openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
+        let closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
+        let inlineTitle = addTitle ? textBlockInlineTitle : "";
+        return openTag + inlineTitle + text + closeTag;
+    }
 }
 
 function utils_makeTable(tableObject) {
