@@ -47,19 +47,16 @@ window.onload = function load() {
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 	$("select.sourcefilter").val("All");
 
-	var options = {
+	const list = search({
 		valueNames: ['name', 'source', 'ability', 'prerequisite'],
 		listClass: "feats"
-	};
-
-	var featslist = new List("listcontainer", options);
-	featslist.sort ("name");
+	});
 
 	$("form#filtertools select").change(function(){
 		let sourcefilter = $("select.sourcefilter").val();
 		let bonusfilter = $("select.bonusfilter").val();
 
-		featslist.filter(function(item) {
+		list.filter(function(item) {
 			let rightsource = sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1;
 			let rightbonuses = bonusfilter === "All" || item.values().ability.indexOf(bonusfilter) !== -1 || item.values().ability.toLowerCase().indexOf("choose any") !== -1;
 			if (rightsource && rightbonuses) return true;
@@ -84,16 +81,6 @@ window.onload = function load() {
 	if (window.location.hash.length) {
 		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$("#search").val("");
-		featslist.search("");
-		featslist.filter();
-		featslist.sort("name");
-		featslist.update();
-	})
 
 }
 

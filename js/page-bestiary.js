@@ -133,12 +133,9 @@ window.onload = function load() {
 	$("select.crfilter option[value=1]").before($("select.crfilter option[value='1/2']"))
 	$("select.crfilter option[value=0]").before($("select.crfilter option[value=All]"))
 
-	var options = {
+	const list = search({
 		valueNames: ['name', 'source', 'type', 'cr']
-	}
-
-	var monlist = new List("monstercontainer", options)
-	monlist.sort("name");
+	})
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -164,7 +161,7 @@ window.onload = function load() {
 		var crfilter = "CR "+$("select.crfilter").val()+" ";
 		var thirdpartyfilter = $("select.3ppfilter").val();
 
-		monlist.filter(function(item) {
+		list.filter(function(item) {
 			var righttype = false;
 			var rightsource = false;
 			var rightcr = false;
@@ -185,18 +182,8 @@ window.onload = function load() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
 		} else $(this).attr("sortby", "asc");
-		monlist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortmonsters });
+		list.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortmonsters });
 	});
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$("#search").val("");
-		monlist.search("");
-		monlist.filter();
-		monlist.sort("name");
-		monlist.update();
-	})
 
 	// collapse/expand button
 	$("button#expandcollapse").click(function() {

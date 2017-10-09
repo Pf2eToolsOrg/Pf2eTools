@@ -54,13 +54,10 @@ window.onload = function load() {
 
 	}
 
-	var options = {
+	const list = search({
 		valueNames: ['name'],
 		listClass: "classes"
-	};
-
-	var classlist = new List("listcontainer", options);
-	classlist.sort ("name");
+	});
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -78,16 +75,6 @@ window.onload = function load() {
 	if (window.location.hash.length) {
 		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$("#search").val("");
-		classlist.search("");
-		classlist.filter();
-		classlist.sort("name");
-		classlist.update();
-	})
 }
 
 function loadhash (id) {

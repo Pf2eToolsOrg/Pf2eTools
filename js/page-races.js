@@ -70,20 +70,17 @@ window.onload = function load() {
 	$("select.sizefilter").val("All");
 
 
-	var options = {
+	const list = search({
 		valueNames: ['name', 'ability', 'size', 'source'],
 		listClass: "races"
-	}
-
-	var raceslist = new List("listcontainer", options);
-	raceslist.sort ("name")
+	});
 
 	$("form#filtertools select").change(function(){
 		var sourcefilter = $("select.sourcefilter").val();
 		var sizefilter = $("select.sizefilter").val();
 		var bonusfilter = $("select.bonusfilter").val();
 
-		raceslist.filter(function(item) {
+		list.filter(function(item) {
 			var rightsource = false;
 			var rightsize = false;
 			var rightbonuses = false;
@@ -112,16 +109,6 @@ window.onload = function load() {
 	if (window.location.hash.length) {
 		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$("#search").val("");
-		racelist.search("");
-		racelist.filter();
-		racelist.sort("name");
-		racelist.update();
-	})
 }
 
 function loadhash (id) {

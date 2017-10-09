@@ -24,8 +24,6 @@ const TMP_MODE_TITLE_CONCENTRATION = "conc., {0} {1}.";
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_LIST_CONTAINER = "listContainer";
 const ID_SEARCH_BAR = "filter-search-input-group";
-const ID_SEARCH = "search";
-const ID_RESET_BUTTON = "reset";
 const ID_STATS_NAME = "name";
 const ID_STATS_ORDER_AND_TYPE = "orderAndType";
 const ID_STATS_DURATION = "duration";
@@ -167,7 +165,6 @@ window.onload = function load() {
 		populateFilterSets();
 		sortFilterSets();
 		let filterBox = initFilters();
-		initResetButton(listView, filterBox);
 
 		function populateFilterSets() {
 			for (let i = 0; i < PSIONIC_LIST.length; ++i) {
@@ -248,31 +245,14 @@ window.onload = function load() {
 			return filterBox;
 		}
 
-		function initResetButton(listView, filterBox) {
-			const RESET_BUTTON = document.getElementById(ID_RESET_BUTTON);
-			RESET_BUTTON.addEventListener(EVNT_CLICK, resetButtonClick, false);
-
-			function resetButtonClick(event) {
-				let searchBox = document.getElementById(ID_SEARCH);
-				searchBox.value = STR_EMPTY;
-				listView.search(STR_EMPTY);
-				listView.sort(LIST_NAME);
-				filterBox.reset();
-				listView.filter();
-			}
-		}
 	}
 
 	function initListLibrary() {
-		let options = {
+		return search({
 			valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
 			listClass: CLS_PSIONICS,
 			sortFunction: listSort
-		};
-
-		let psionicsList = new List(ID_LIST_CONTAINER, options);
-		psionicsList.sort(LIST_NAME);
-		return psionicsList;
+		});
 
 		function listSort(itemA, itemB, options) {
 			if (options.valueName === LIST_NAME) return compareBy(LIST_NAME);

@@ -51,18 +51,15 @@ window.onload = function load () {
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 	$("select.sourcefilter").val("All");
 
-	var options = {
+	const list = search({
 		valueNames: ['name', 'source'],
 		listClass: "backgrounds"
-	}
-
-	var backgroundslist = new List("listcontainer", options);
-	backgroundslist.sort ("name")
+	})
 
 	$("form#filtertools select").change(function(){
 		var sourcefilter = $("select.sourcefilter").val();
 
-		backgroundslist.filter(function(item) {
+		list.filter(function(item) {
 			if (sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1) return true;
 			return false;
 		});
@@ -86,14 +83,6 @@ window.onload = function load () {
 	if (window.location.hash.length) {
 		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#search").val("");
-		backgroundslist.search("");
-		backgroundslist.sort("name");
-		backgroundslist.update();
-	})
 }
 
 function loadhash (id) {

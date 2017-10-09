@@ -33,7 +33,7 @@ function parsespelllevel (level) {
 
 const SELF_RANGE_OFFSET = -4;
 const FEET_PER_MILE = 5280;
-const ALL_RANGES = -2; // used in spells.html where the filter is defined
+const ALL_RANGES = 'All'; // used in spells.html where the filter is defined
 const SELF_RANGE = -1;
 const TOUCH_RANGE = 0;
 const SIGHT_RANGE = 900000000;
@@ -230,12 +230,10 @@ window.onload = function load() {
 	$("select.rangefilter option").sort(asc_sort_range).appendTo('select.rangefilter');
 	$("select.rangefilter").val(ALL_RANGES.toString());
 
-	var options = {
+	const list = search({
 		valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch', 'range'],
 		listClass: "spells"
-	};
-	var spellslist = new List("listcontainer", options);
-	spellslist.sort ("name");
+	});
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -270,7 +268,7 @@ window.onload = function load() {
 		// var thirdpartyfilter = $("select.3ppfilter").val();
 		var rangefilter = parseInt($("select.rangefilter").val());
 
-		spellslist.filter(function(item) {
+		list.filter(function(item) {
 			var rightlevel = false;
 			var rightschool = false;
 			var rightclass = false;
@@ -299,19 +297,8 @@ window.onload = function load() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
 		} else $(this).attr("sortby", "asc");
-		spellslist.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortspells });
+		list.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortspells });
 	});
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$(".rangefilter").val(-2);
-		$("#search").val("");
-		spellslist.search("");
-		spellslist.filter();
-		spellslist.sort("name");
-		spellslist.update();
-	})
 };
 
 function sortspells(a, b, o) {
