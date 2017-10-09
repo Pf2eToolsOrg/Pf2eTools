@@ -15,6 +15,7 @@ const TMP_DESCRIPTION = "<p>{0}</p>";
 const TMP_FOCUS = "<p><span class='psi-focus-title'>Psycic Focus.</span> {0}</p>";
 const TMP_HIDDEN_MODE = "\"{0}\"";
 const TMP_MODE_TITLE = "<span class='psi-mode-title'>{0}.</span> ";
+const TMP_MODE_SUB_TITLE = "<span class='psi-mode-sub-title'>{0}.</span> ";
 const TMP_MODE_WITH_SUB_MODE = "{0}{1}";
 const TMP_MODE_TITLE_BRACKET_PART = "({0})";
 const TMP_MODE_TITLE_COST = "{0} psi";
@@ -22,7 +23,6 @@ const TMP_MODE_TITLE_COST_RANGE = "{0}-{1}";
 const TMP_MODE_TITLE_CONCENTRATION = "conc., {0} {1}.";
 
 const ID_PSIONICS_LIST = "psionicsList";
-const ID_LIST_CONTAINER = "listContainer";
 const ID_SEARCH_BAR = "filter-search-input-group";
 const ID_STATS_NAME = "name";
 const ID_STATS_ORDER_AND_TYPE = "orderAndType";
@@ -140,6 +140,12 @@ window.onload = function load() {
 			let outArray = [];
 			for (let i = 0; i < modeList.length; ++i) {
 				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i][JSON_ITEM_MODE_TITLE]));
+				if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
+					let subModes = modeList[i][JSON_ITEM_SUBMODES];
+					for (let j = 0; j < subModes.length; ++j) {
+						outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j][JSON_ITEM_MODE_TITLE]))
+					}
+				}
 			}
 			return outArray.join(STR_JOIN_MODE_LIST);
 		}
@@ -320,35 +326,46 @@ function loadhash (jsonIndex) {
 			return TMP_FOCUS.formatUnicorn(selectedPsionic[JSON_ITEM_FOCUS]);
 		}
 		function getModeString(modeIndex) {
-			let modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle());
+			let modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(selectedPsionic[JSON_ITEM_MODES][modeIndex]));
 			if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES] === undefined) return modeString;
-			let subModeString = ""; // TODO
+			let subModeString = getSubModeString();
 			return TMP_MODE_WITH_SUB_MODE.formatUnicorn(modeString, subModeString);
 
-			function getModeTitle() {
+            function getSubModeString() {
+            	let modeStrings = [];
+                let subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
+                for (let i = 0; i < subModes.length; ++i) {
+                    modeStrings.push(utils_combineText(subModes[i][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(subModes[i], true)));
+				}
+                return modeStrings.join(STR_EMPTY);
+            }
+
+			function getModeTitle(mode, subMode) {
+                subMode = subMode === undefined || subMode === null ? false : subMode;
 				let modeTitleArray = [];
-				modeTitleArray.push(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TITLE]);
+				modeTitleArray.push(mode[JSON_ITEM_MODE_TITLE]);
 				let bracketPart = getModeTitleBracketPart();
 				if (bracketPart !== null) modeTitleArray.push(bracketPart);
-				return TMP_MODE_TITLE.formatUnicorn(modeTitleArray.join(STR_JOIN_MODE_TITLE));
+				if (subMode) return TMP_MODE_SUB_TITLE.formatUnicorn(modeTitleArray.join(STR_JOIN_MODE_TITLE));
+				else return TMP_MODE_TITLE.formatUnicorn(modeTitleArray.join(STR_JOIN_MODE_TITLE));
 
 				function getModeTitleBracketPart() {
 					let modeTitleBracketArray = [];
 
-					if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_COST]) modeTitleBracketArray.push(getModeTitleCost());
-					if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_CONCENTRATION]) modeTitleBracketArray.push(getModeTitleConcentration());
+					if (mode[JSON_ITEM_MODE_COST]) modeTitleBracketArray.push(getModeTitleCost());
+					if (mode[JSON_ITEM_MODE_CONCENTRATION]) modeTitleBracketArray.push(getModeTitleConcentration());
 
 					if (modeTitleBracketArray.length === 0) return null;
 					return TMP_MODE_TITLE_BRACKET_PART.formatUnicorn(modeTitleBracketArray.join(STR_JOIN_MODE_TITLE_BRACKET_PART_LIST));
 
 					function getModeTitleCost() {
-						let costMin = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MIN];
-						let costMax = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MAX];
+						let costMin = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MIN];
+						let costMax = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MAX];
 						let costString = costMin === costMax ? costMin : TMP_MODE_TITLE_COST_RANGE.formatUnicorn(costMin, costMax);
 						return TMP_MODE_TITLE_COST.formatUnicorn(costString)
 					}
 					function getModeTitleConcentration() {
-						return TMP_MODE_TITLE_CONCENTRATION.formatUnicorn(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_DURATION], selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_UNIT])
+						return TMP_MODE_TITLE_CONCENTRATION.formatUnicorn(mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_DURATION], mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_UNIT])
 					}
 				}
 			}
