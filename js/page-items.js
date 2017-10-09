@@ -130,9 +130,9 @@ window.onload = function load() {
 		listClass: "mundane"
 	};
 
-	mundanelist = new List("itemcontainer", options);
+	mundanelist = search(options);
 	options.listClass = "magic";
-	magiclist = new List("itemcontainer", options);
+	magiclist = search(options);
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -212,20 +212,6 @@ window.onload = function load() {
 			display: "none"
 		})
 	});
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$("#search").val("");
-		magiclist.search("");
-		magiclist.filter();
-		magiclist.sort("name");
-		magiclist.update();
-		mundanelist.search("");
-		mundanelist.filter();
-		mundanelist.sort("name");
-		mundanelist.update();
-	})
 }
 
 function asc_sort(a, b){

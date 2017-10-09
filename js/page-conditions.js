@@ -10,13 +10,10 @@ window.onload = function load() {
 		$("ul.conditions").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name' title='"+name+"'>"+name+"</span></li>");
 	}
 
-	var options = {
+	const list = search({
 		valueNames: ['name'],
 		listClass: "conditions"
-	}
-
-	var conditionslist = new List("listcontainer", options);
-	conditionslist.sort ("name")
+	});
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -35,16 +32,6 @@ window.onload = function load() {
 	if (window.location.hash.length) {
 		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$("#search").val("");
-		conditionslist.search("");
-		conditionslist.filter();
-		conditionslist.sort("name");
-		conditionslist.update();
-	})
 
 }
 
