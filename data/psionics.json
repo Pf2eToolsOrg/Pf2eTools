@@ -760,12 +760,46 @@ let psionicdata = {
 						"text": [
 							"Choose one object you can see within 60 feet of you that isn't being worn or carried by another creature and that isn't secured in place. It can't be larger than 20 feet on a side, and its maximum weight depends on the psi points spent on this ability, as shown below.",
 							"As an action, you move the object up to 60 feet, and you must keep the object within sight during this movement. If the object ends this movement in the air, it falls. If the object would fall on a creature, the creature must succeed on a DC 10 Dexterity saving throw or take damage as listed on the table below.",
-							"Psi Spent --- Maximum Weight --- Bludgeoning Damage",
-							"2 -------------------- 25 lbs. ------------------------ 2d6",
-							"3 -------------------- 50 lbs. ------------------------ 4d6",
-							"5 -------------------- 250 lbs. ----------------------- 6d6",
-							"6 -------------------- 500 lbs. ----------------------- 7d6",
-							"7 -------------------- 1,000 lbs. --------------------- 8d6"
+							{
+								"istable": "YES",
+								"thead": [
+									"Psi Spent",
+									"Maximum Weight",
+									"Bludgeoning Damage"
+								],
+								"thstyleclass": [
+									"col-xs-3 text-align-center",
+									"col-xs-6 text-align-center",
+									"col-xs-3 text-align-center"
+								],
+								"tbody": [
+									[
+										"2",
+										"25 lbs.",
+										"2d6"
+									],
+									[
+										"3",
+										"50 lbs.",
+										"4d6"
+									],
+									[
+										"5",
+										"250 lbs.",
+										"6d6"
+									],
+									[
+										"6",
+										"500 lbs.",
+										"7d6"
+									],
+									[
+										"7",
+										"1,000 lbs.",
+										"8d6"
+									]
+								]
+							}
 						]
 					},
 					{
