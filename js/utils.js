@@ -474,9 +474,11 @@ function search(options) {
 	const list = new List("listcontainer", options);
 	list.sort("name")
 	$("#reset").click(function() {
+		$("#filtertools select").val("All");
 		$("#search").val("");
 		list.search("");
 		list.sort("name");
 		list.update();
 	})
+	return list
 }

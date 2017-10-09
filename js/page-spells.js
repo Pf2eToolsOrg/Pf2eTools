@@ -33,7 +33,7 @@ function parsespelllevel (level) {
 
 const SELF_RANGE_OFFSET = -4;
 const FEET_PER_MILE = 5280;
-const ALL_RANGES = -2; // used in spells.html where the filter is defined
+const ALL_RANGES = 'All'; // used in spells.html where the filter is defined
 const SELF_RANGE = -1;
 const TOUCH_RANGE = 0;
 const SIGHT_RANGE = 900000000;
