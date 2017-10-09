@@ -33,7 +33,6 @@ function parsespelllevel (level) {
 
 const SELF_RANGE_OFFSET = -4;
 const FEET_PER_MILE = 5280;
-const ALL_RANGES = 'All'; // used in spells.html where the filter is defined
 const SELF_RANGE = -1;
 const TOUCH_RANGE = 0;
 const SIGHT_RANGE = 900000000;
@@ -228,7 +227,7 @@ window.onload = function load() {
 	$("select.sourcefilter").val("All");
 
 	$("select.rangefilter option").sort(asc_sort_range).appendTo('select.rangefilter');
-	$("select.rangefilter").val(ALL_RANGES.toString());
+	$("select.rangefilter").val("All");
 
 	const list = search({
 		valueNames: ['name', 'source', 'level', 'school', 'classes', 'disciplinesearch', 'range'],
@@ -266,7 +265,7 @@ window.onload = function load() {
 		var classfilter = $("select.classfilter").val();
 		var sourcefilter = $("select.sourcefilter").val();
 		// var thirdpartyfilter = $("select.3ppfilter").val();
-		var rangefilter = parseInt($("select.rangefilter").val());
+		var rangefilter = parseInt($("select.rangefilter").val()) || "All";
 
 		list.filter(function(item) {
 			var rightlevel = false;
@@ -287,7 +286,7 @@ window.onload = function load() {
 			// if (thirdpartyfilter === "All") rightparty = true;
 			// if (thirdpartyfilter === "None" && item.values().source.indexOf("3pp") === -1) rightparty = true;
 			// if (thirdpartyfilter === "Only" && item.values().source.indexOf("3pp") !== -1) rightparty = true;
-			if (rangefilter === ALL_RANGES || normaliserange(item.values().range) === rangefilter) rightrange = true;
+			if (rangefilter === "All" || normaliserange(item.values().range) === rangefilter) rightrange = true;
 			if (rightlevel && rightschool && rightclass && rightsource && rightparty && rightrange) return true;
 			return false;
 		});
