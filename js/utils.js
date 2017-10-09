@@ -37,23 +37,23 @@ const STL_DISPLAY_NONE = "display: none";
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
-	function () {
-		"use strict";
-		var str = this.toString();
-		if (arguments.length) {
-			var t = typeof arguments[0];
-			var key;
-			var args = (TYP_STRING === t || TYP_NUMBER === t) ?
-				Array.prototype.slice.call(arguments)
-				: arguments[0];
+function () {
+	"use strict";
+	var str = this.toString();
+	if (arguments.length) {
+		var t = typeof arguments[0];
+		var key;
+		var args = (TYP_STRING === t || TYP_NUMBER === t) ?
+		Array.prototype.slice.call(arguments)
+		: arguments[0];
 
-			for (key in args) {
-				str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
-			}
+		for (key in args) {
+			str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
 		}
+	}
 
-		return str;
-	};
+	return str;
+};
 
 function utils_joinPhraseArray(array, joiner, lastJoiner) {
 	if (array.length === 0) return "";
@@ -66,27 +66,30 @@ function utils_joinPhraseArray(array, joiner, lastJoiner) {
 			if (i < array.length-2) outStr += joiner;
 			else if (i === array.length-2) outStr += lastJoiner
 		}
-		return outStr;
-	}
+	return outStr;
+}
 }
 
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
-	function () {
-		let str = this.toString();
-		if (str.length === 0) return str;
-		if (str.length === 1) return str.charAt(0).toUpperCase();
-		return str.charAt(0).toUpperCase() + str.slice(1);
-	};
+function () {
+	let str = this.toString();
+	if (str.length === 0) return str;
+	if (str.length === 1) return str.charAt(0).toUpperCase();
+	return str.charAt(0).toUpperCase() + str.slice(1);
+};
 
 // TEXT COMBINING ======================================================================================================
 function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
 	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
 	let textStack = "";
+	if (typeof textList === TYP_STRING) {
+		return getString(textList, true)
+	}
 	for (let i = 0; i < textList.length; ++i) {
 		if (typeof textList[i] === TYP_OBJECT) {
-            if (textList[i].islist === "YES") {
-                textStack += utils_makeList(textList[i]);
+			if (textList[i].islist === "YES") {
+				textStack += utils_makeList(textList[i]);
 			}
 			if (textList[i].hassubtitle === "YES") {
 				textStack += utils_combineText(textList[i].text, tagPerItem, utils_makeSubHeader(textList[i].title));
@@ -101,13 +104,17 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 				textStack += utils_makeAttAttackMod(textList[i]);
 			}
 		} else {
-			let openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
-			let closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
-			let inlineTitle = textBlockInlineTitle !== null && i === 0 ? textBlockInlineTitle : "";
-			textStack += openTag + inlineTitle + textList[i] + closeTag;
+			textStack += getString(textList[i], textBlockInlineTitle !== null && i === 0)
 		}
 	}
 	return textStack;
+
+	function getString(text, addTitle) {
+		let openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
+		let closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
+		let inlineTitle = addTitle ? textBlockInlineTitle : "";
+		return openTag + inlineTitle + text + closeTag;
+	}
 }
 
 function utils_makeTable(tableObject) {
@@ -188,11 +195,11 @@ function makeTableTdClassText(tableObject, i) {
 function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 	shorthand = shorthand === undefined || shorthand === null ? false : shorthand;
 	makeAsArray = makeAsArray === undefined || makeAsArray === null ? false : makeAsArray;
-    let outStack = [];
-    if (prereqList === undefined || prereqList === null) return "";
+	let outStack = [];
+	if (prereqList === undefined || prereqList === null) return "";
 	for (let i = 0; i < prereqList.length; ++i) {
-        let pre = prereqList[i];
-        if (pre.race !== undefined) {
+		let pre = prereqList[i];
+		if (pre.race !== undefined) {
 			for (let j = 0; j < pre.race.length; ++j) {
 				if (shorthand) {
 					const DASH = "-";
@@ -210,50 +217,50 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 			}
 		}
 		if (pre.ability !== undefined) {
-        	// this assumes all ability requirements are the same (13), correct as of 2017-10-06
-        	let attCount = 0;
-            for (let j = 0; j < pre.ability.length; ++j) {
-                for (let att in pre.ability[j]) {
-                    if (!pre.ability[j].hasOwnProperty(att)) continue;
-                    if (shorthand) {
+			// this assumes all ability requirements are the same (13), correct as of 2017-10-06
+			let attCount = 0;
+			for (let j = 0; j < pre.ability.length; ++j) {
+				for (let att in pre.ability[j]) {
+					if (!pre.ability[j].hasOwnProperty(att)) continue;
+					if (shorthand) {
 						outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length -1 ? " 13+" : ""));
 					} else {
 						outStack.push(parse_attAbvToFull(att) + (attCount === pre.ability.length -1 ? " 13 or higher" : ""));
 					}
-                    attCount++;
-                }
-            }
+					attCount++;
+				}
+			}
 		}
 		if (pre.proficiency !== undefined) {
-        	// only handles armor proficiency requirements,
-            for (let j = 0; j < pre.proficiency.length; ++j) {
-                for (let type in pre.proficiency[j]) { // type is armor/weapon/etc.
-                    if (!pre.proficiency[j].hasOwnProperty(type)) continue;
-                    if (type === "armor") {
-                    	if (shorthand) {
+			// only handles armor proficiency requirements,
+			for (let j = 0; j < pre.proficiency.length; ++j) {
+				for (let type in pre.proficiency[j]) { // type is armor/weapon/etc.
+					if (!pre.proficiency[j].hasOwnProperty(type)) continue;
+					if (type === "armor") {
+						if (shorthand) {
 							outStack.push("prof " + parse_armorToAbv(pre.proficiency[j][type]) + " armor");
 						} else {
 							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
 						}
 					}
 					else console.log("unimplemented proficiency type in utils_makePrerequisite")
-                }
-            }
-		}
-		if (pre.spellcasting === "YES") {
-        	if (shorthand) {
-				outStack.push("Spellcasting");
-			} else {
-				outStack.push("The ability to cast at least one spell");
-			}
+				}
 		}
 	}
-	if (makeAsArray) {
-		return outStack;
-	} else {
-		if (shorthand) return outStack.join("/");
-		else return utils_joinPhraseArray(outStack, ", ", " or ");
+	if (pre.spellcasting === "YES") {
+		if (shorthand) {
+			outStack.push("Spellcasting");
+		} else {
+			outStack.push("The ability to cast at least one spell");
+		}
 	}
+}
+if (makeAsArray) {
+	return outStack;
+} else {
+	if (shorthand) return outStack.join("/");
+	else return utils_joinPhraseArray(outStack, ", ", " or ");
+}
 }
 
 function utils_getAttributeText(attObj) {
@@ -396,20 +403,20 @@ const SRC_BOLS_3PP = "BoLS 3pp";
 const UA_PREFIX = "Unearthed Arcana: ";
 const PS_PREFIX = "Plane Shift: ";
 function parse_sourceToFull (source) {
-    if (source === SRC_PHB) source = "Player's Handbook";
-    if (source === SRC_EEPC) source = "Elemental Evil Player's Companion";
-    if (source === SRC_SCAG) source = "Sword Coast Adventurer's Guide";
-    if (source === SRC_UAMystic) source = UA_PREFIX + "The Mystic Class";
-    if (source === SRC_UAStarterSpells) source = UA_PREFIX + "Starter Spells";
-    if (source === SRC_UAModern) source = UA_PREFIX + "Modern Magic";
-    if (source === SRC_UATOBM) source = UA_PREFIX + "That Old Black Magic";
-    if (source === SRC_UAEBB) source = UA_PREFIX + "Eberron";
-    if (source === SRC_UAFT) source = UA_PREFIX + "Feats";
-    if (source === SRC_UAFFS) source = UA_PREFIX + "Feats for Skills";
-    if (source === SRC_UAFFR) source = UA_PREFIX + "Feats for Races";
-    if (source === SRC_PSK) source = PS_PREFIX + "Kaladesh";
-    if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
-    return source;
+	if (source === SRC_PHB) source = "Player's Handbook";
+	if (source === SRC_EEPC) source = "Elemental Evil Player's Companion";
+	if (source === SRC_SCAG) source = "Sword Coast Adventurer's Guide";
+	if (source === SRC_UAMystic) source = UA_PREFIX + "The Mystic Class";
+	if (source === SRC_UAStarterSpells) source = UA_PREFIX + "Starter Spells";
+	if (source === SRC_UAModern) source = UA_PREFIX + "Modern Magic";
+	if (source === SRC_UATOBM) source = UA_PREFIX + "That Old Black Magic";
+	if (source === SRC_UAEBB) source = UA_PREFIX + "Eberron";
+	if (source === SRC_UAFT) source = UA_PREFIX + "Feats";
+	if (source === SRC_UAFFS) source = UA_PREFIX + "Feats for Skills";
+	if (source === SRC_UAFFR) source = UA_PREFIX + "Feats for Races";
+	if (source === SRC_PSK) source = PS_PREFIX + "Kaladesh";
+	if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
+	return source;
 }
 const sourceToAbv = {};
 sourceToAbv[SRC_PHB] = "PHB";
@@ -427,14 +434,14 @@ sourceToAbv[SRC_PSK] = "PSK";
 sourceToAbv[SRC_BOLS_3PP] = "BLS";
 function parse_sourceToAbv(source) {
 	if (sourceToAbv[source] !== undefined) return sourceToAbv[source];
-    return source;
+	return source;
 }
 function parse_abvToSource(abv) {
 	for (let v in sourceToAbv) {
 		if (!sourceToAbv.hasOwnProperty(v)) continue;
 		if (sourceToAbv[v] === abv) return v
 	}
-	return abv;
+return abv;
 }
 
 function parse_stringToSlug(str) {

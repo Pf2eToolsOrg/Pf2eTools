@@ -7,7 +7,8 @@ window.onload = function load() {
 	for (var i = 0; i < rewardlist.length; i++) {
 		var curreward = rewardlist[i];
 		var name = curreward.name;
-		$("ul.rewards").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name'>"+name+"</span></li>");
+		let displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
+		$("ul.rewards").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name'>"+displayName+"</span></li>");
 	}
 
 	const list = search({
@@ -39,7 +40,7 @@ function loadhash (id) {
 	var rewardlist = rewarddata;
 	var curreward = rewardlist[id];
 
-	var name = curreward.name;
+	var name = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
 	$("th#name").html(name);
 
 	$("tr.text").remove();
@@ -47,11 +48,10 @@ function loadhash (id) {
 	var textlist = curreward.text;
 	var texthtml = "";
 
-	for (var i = 0; i < textlist.length; i++) {
-		if (!textlist[i]) continue;
-		texthtml = texthtml + "<p>"+textlist[i]+"</p>";
-	}
+	if (curreward.ability !== undefined) texthtml += utils_combineText(curreward.ability.text, "p", "<span class='bold'>Ability Score Adjustment:</span> ");
+	if (curreward.signaturespells !== undefined) texthtml += utils_combineText(curreward.signaturespells.text, "p", "<span class='bold'>Signature Spells:</span> ");
+	texthtml += utils_combineText(textlist, "p");
 
-	$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
+	$("tr#text").after("<tr class='text'><td colspan='6'>"+texthtml+"</td></tr>");
 
 };
