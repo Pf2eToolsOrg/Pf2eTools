@@ -10,13 +10,10 @@ window.onload = function load() {
 		$("ul.rewards").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name'>"+name+"</span></li>");
 	}
 
-	var options = {
+	const list = search({
 		valueNames: ['name'],
 		listClass: "rewards"
-	}
-
-	var rewardslist = new List("listcontainer", options);
-	rewardslist.sort ("name")
+	});
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -35,17 +32,6 @@ window.onload = function load() {
 	if (window.location.hash.length) {
 		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
-
-	// reset button
-	$("button#reset").click(function() {
-		$("#filtertools select").val("All");
-		$("#search").val("");
-		rewardlist.search("");
-		rewardlist.filter();
-		rewardlist.sort("name");
-		rewardlist.update();
-	})
-
 }
 
 function loadhash (id) {
