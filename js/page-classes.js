@@ -75,6 +75,7 @@ window.onload = function load() {
 	if (window.location.hash.length) {
 		window.onhashchange();
 	} else $("ul.list li:eq(0)").click();
+}
 
 function loadhash (id) {
 	$("#stats").html(tabledefault);
