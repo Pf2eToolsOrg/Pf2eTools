@@ -331,7 +331,6 @@ function loadhash (jsonIndex) {
                 for (let i = 0; i < subModes.length; ++i) {
                     modeStrings.push(utils_combineText(subModes[i][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(subModes[i], true)));
 				}
-                console.log(modeStrings); // TODO fix up
                 return modeStrings.join(STR_EMPTY);
             }
 
