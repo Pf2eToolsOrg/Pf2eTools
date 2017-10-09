@@ -34,7 +34,7 @@ function parsespelllevel (level) {
 const SELF_RANGE_OFFSET = -4;
 const FEET_PER_MILE = 5280;
 const SELF_RANGE = -1;
-const TOUCH_RANGE = 0;
+const TOUCH_RANGE = 1;
 const SIGHT_RANGE = 900000000;
 const UNLIMITED_RANGE = 900000001;
 const SPECIAL_RANGE = 1000000000;
