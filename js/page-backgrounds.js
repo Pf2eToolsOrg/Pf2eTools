@@ -16,6 +16,7 @@ function parsesource (src) {
 	if (source === "Unearthed Arcana") source = "UA";
 	if (source === "Plane Shift Innistrad") source = "PSI";
 	if (source === "Plane Shift Amonkhet") source = "PSA";
+	if (source === "Tomb of Annihilation") source = "ToA";
 	return source;
 }
 
