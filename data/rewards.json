@@ -203,11 +203,11 @@ var rewarddata = [
 		"name": "Baphomet",
 		"ability":
 		{
-			"text":"Up to a +4 bonus to Strength, Wisdom, or both"
+			"text": "Up to a +4 bonus to Strength, Wisdom, or both"
 		},
 		"signaturespells":
 		{
-			"text":"Hunter’s mark (1st level), beast sense (2nd level), slow (3rd level)"
+			"text": "Hunter's mark (1st level), beast sense (2nd level), slow (3rd level)"
 		},
 		"text": [
 			"Baphomet grants the gifts of cunning and physical power. He grants his rank and file followers the Unerring Tracker trait, and cult leaders gain the Incite the Hunters trait. All of his devotees also gain the Labyrinthine Recall trait.",
@@ -219,7 +219,7 @@ var rewarddata = [
 			{
 				"hassubtitle": "YES",
 				"title": "Incite the Hunters (Recharges after a Short or Long Rest)",
-				"text": "As an action, this creature allows each ally within 30 feet of it that has the Unerring Tracker trait to make one weapon attack as a reaction against the target of that ally’s Unerring Tracker."
+				"text": "As an action, this creature allows each ally within 30 feet of it that has the Unerring Tracker trait to make one weapon attack as a reaction against the target of that ally's Unerring Tracker."
 			},
 			{
 				"hassubtitle": "YES",
@@ -234,14 +234,14 @@ var rewarddata = [
 		"name": "Demogorgon",
 		"ability":
 		{
-			"text":"Up to a +4 bonus to Strength, Charisma, or both"
+			"text": "Up to a +4 bonus to Strength, Charisma, or both"
 		},
 		"signaturespells":
 		{
-			"text":"Charm person (1st level), enlarge/reduce (2nd level), vampiric touch (3rd level)"
+			"text": "Charm person (1st level), enlarge/reduce (2nd level), vampiric touch (3rd level)"
 		},
 		"text": [
-			"Demogorgon’s followers are typically lone killers driven by the whispering voice of their master. His most blessed followers gain the Two Minds of Madness trait.",
+			"Demogorgon's followers are typically lone killers driven by the whispering voice of their master. His most blessed followers gain the Two Minds of Madness trait.",
 			{
 				"hassubtitle": "YES",
 				"title": "Two Minds of Madness",
@@ -251,26 +251,152 @@ var rewarddata = [
 		"type": "Demonic",
 		"source": "UAFiendishOptions"
 	},
-
 	{
-		"name": "Fraz-Urb’luu",
+		"name": "Fraz-Urb'luu",
 		"ability":
 		{
-			"text":"Up to a +4 bonus to Wisdom, Charisma, or both"
+			"text": "Up to a +4 bonus to Wisdom, Charisma, or both"
 		},
 		"signaturespells":
 		{
-			"text":"Minor illusion (cantrip), disguise self (1st level), invisibility (2nd level), hypnotic pattern (3rd level)"
+			"text": "Minor illusion (cantrip), disguise self (1st level), invisibility (2nd level), hypnotic pattern (3rd level)"
 		},
 		"text": [
-			"As a master of deceit, Fraz-Urb’luu teaches his initiates the secrets of lies and illusions. They can also gain the Liar’s Eye trait.",
+			"As a master of deceit, Fraz-Urb'luu teaches his initiates the secrets of lies and illusions. They can also gain the Liar's Eye trait.",
 			{
 				"hassubtitle": "YES",
-				"title": "Liar’s Eye",
-				"text": [
-					"This creature has advantage on Wisdom (Insight or Perception) checks.",
-					"As a bonus action, it automatically detects the location of all illusions and hidden creatures within 15 feet of it."
-				]
+				"title": "Liar's Eye",
+				"text": "This creature has advantage on Wisdom (Insight or Perception) checks.<br> As a bonus action, it automatically detects the location of all illusions and hidden creatures within 15 feet of it."
+			}
+		],
+		"type": "Demonic",
+		"source": "UAFiendishOptions"
+	},
+	{
+		"name": "Graz'zt",
+		"ability":
+		{
+			"text":"Up to a +4 bonus to Constitution, Charisma, or both"
+		},
+		"signaturespells":
+		{
+			"text":"False life (1st level), hold person (2nd level), fear (3rd level)"
+		},
+		"text": [
+			"The Lord of Forbidden Pleasures grants his cultists the ability to transform even the most hideous pain into pleasure. His cultists gain the Joy from Pain trait, while his cult leaders gain the Master of Pleasures trait.",
+			{
+				"hassubtitle": "YES",
+				"title": "Joy from Pain",
+				"text": "Whenever this creature suffers a critical hit, it can make one melee weapon attack as a reaction."
+			},
+			{
+				"hassubtitle": "YES",
+				"title": "Master of Pleasures",
+				"text": "As a reaction when this creature takes damage, it can magically grant 5 temporary hit points to itself and up to three allies within 30 feet of it."
+			}
+		],
+		"type": "Demonic",
+		"source": "UAFiendishOptions"
+	},
+	{
+		"name": "Juiblex",
+		"ability":
+		{
+			"text": "Up to a +8 bonus to Constitution, with an equal penalty to Intelligence, Wisdom, and Charisma"
+		},
+		"signaturespells":
+		{
+			"text": "None"
+		},
+		"text": [
+			"The Faceless Lord's followers are bizarre loners who prefer the company of slimes and oozes to other creatures. They gain the hardiness of a slime at the cost of their minds. Lesser followers gain the Liquid Movement trait. The most dedicated devotees of ooze also gain the Slimy Organs trait.",
+			{
+				"hassubtitle": "YES",
+				"title": "Liquid Movement",
+				"text": "As an action, this creature can move up to 20 feet through spaces no more than an inch in diameter. It must end this movement in a space that can accommodate its full size. Otherwise, it takes 5 force damage and returns to the space where it began this movement."
+			},
+			{
+				"hassubtitle": "YES",
+				"title": "Slimy Organs",
+				"text": "This creature has resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.<br> Whenever it suffers a critical hit or is reduced to 0 hit points, all creatures within 5 feet of it take acid damage equal to its number of Hit Dice."
+			}
+		],
+		"type": "Demonic",
+		"source": "UAFiendishOptions"
+	},
+	{
+		"name": "Orcus",
+		"ability":
+		{
+			"text": "Up to a +4 bonus to Intelligence, Wisdom, or both"
+		},
+		"signaturespells":
+		{
+			"text": "False life (1st level), ray of enfeeblement (2nd level), animate dead (3rd level)"
+		},
+		"text": [
+			"In most cases, Orcus transforms his followers into undead creatures such as ghouls and wights. Sometimes he needs his followers to retain their mortal forms, to more easily infiltrate a kingdom or city. He grants rank and file cultists the Undying Soul trait, and his cult leaders gain the Aura of Death trait.",
+			{
+				"hassubtitle": "YES",
+				"title": "Undying Soul (Recharges after a Short or Long Rest)",
+				"text": "If this creature is reduced to 0 hit points, it immediately makes a DC 10 Constitution saving throw. If it succeeds, it is instead reduced to 1 hit point."
+			},
+			{
+				"hassubtitle": "YES",
+				"title": "Aura of Death",
+				"text": "This creature emanates a deathly aura that extends 30 feet in every direction from its space while it isn't incapacitated. The aura is blocked by total cover. While in the aura, the creature and any friendly undead are immune to the frightened condition and have resistance to radiant damage. Enemies suffer disadvantage on death saving throws while in the aura."
+			}
+		],
+		"type": "Demonic",
+		"source": "UAFiendishOptions"
+	},
+	{
+		"name": "Yeenoghu",
+		"ability":
+		{
+			"text": "Up to a +4 bonus to Strength and Dexterity, with an equal penalty to Intelligence and Charisma"
+		},
+		"signaturespells":
+		{
+			"text": "Tasha's hideous laughter (1st level), crown of madness (2nd level), fear (3rd level)"
+		},
+		"text": [
+			"Yeenoghu's followers form roving packs of cannibalistic marauders. They grow more like gnolls in temperament and action with each passing day. His most devoted followers gain the Gnashing Jaws action option and the Rampage trait, while cult leaders gain the Aura of Bloodthirst trait.",
+			{
+				"hassubtitle": "YES",
+				"title": "Gnashing Jaws",
+				"text": "Melee Weapon Attack: bonus to hit equal to this creature's proficiency bonus plus its Strength modifier, reach 5 ft., one target. Hit: 1d4 + this creature's Strength modifier piercing damage."
+			},
+			{
+				"hassubtitle": "YES",
+				"title": "Rampage",
+				"text": "When this creature reduces a creature to 0 hit points with a melee attack on its turn, it can take a bonus action to move up to half its speed and make its Gnashing Jaws attack once."
+			},
+			{
+				"hassubtitle": "YES",
+				"title": "Aura of Bloodthirst",
+				"text": "If this creature isn't incapacitated, any creature with the Rampage trait can make its Gnashing Jaws attack as a bonus action while within 10 feet of this creature."
+			}
+		],
+		"type": "Demonic",
+		"source": "UAFiendishOptions"
+	},
+	{
+		"name": "Zuggtmoy",
+		"ability":
+		{
+			"text": "Up to a +4 bonus to Constitution, with an equal penalty to Intelligence, Wisdom, and Charisma"
+		},
+		"signaturespells":
+		{
+			"text": "None"
+		},
+		"text": [
+			"Zuggtmoy's followers are primarily mindless victims of her children's strange spores. The spores burrow into a victim's brain, turning it into a fanatic servitor. They gain the Spore Kissed trait.",
+			{
+				"hassubtitle": "YES",
+				"title": "Spore Kissed",
+				"text": "This creature is immune to the charmed and frightened conditions. In addition, if it is reduced to 0 hit points, each creature within 10 feet of it takes poison damage equal to its number of Hit Dice."
 			}
 		],
 		"type": "Demonic",

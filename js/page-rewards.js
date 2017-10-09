@@ -40,7 +40,7 @@ function loadhash (id) {
 	var rewardlist = rewarddata;
 	var curreward = rewardlist[id];
 
-	var name = curreward.name;
+	var name = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
 	$("th#name").html(name);
 
 	$("tr.text").remove();
