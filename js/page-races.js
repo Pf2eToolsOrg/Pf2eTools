@@ -11,6 +11,7 @@ function parsesource (src) {
 	if (source === "Unearthed Arcana: That Old Black Magic") source = "UA TOBM";
 	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA GH";
 	if (source === "Unearthed Arcana: Eladrin and Gith") source = "UA EG";
+    if (source === "Unearthed Arcana: Fiendish Options") source = "UA FO";
 	if (source === "The Tortle Package") source = "TP";
 	if (source === "Plane Shift Zendikar") source = "PSZ";
 	if (source === "Plane Shift Kaladesh") source = "PSK";
@@ -144,8 +145,8 @@ function loadhash (id) {
 		toAddTd.colSpan = 6;
 		let toAdd;
 		if (trait.optionheading === "YES") {
-			let header = "<span class='name'>" + trait.name + (traitlist[n].text === undefined ? undefined : ".") + "</span> ";
-			toAddTd.innerHTML = traitlist[n].text === undefined ? "" : " " + (utils_combineText(traitlist[n].text, "p", header));
+			let header = "<span class='name'>" + trait.name + (traitlist[n].text === undefined ? "" : ".") + "</span> ";
+			toAddTd.innerHTML = traitlist[n].text === undefined ? header : " " + (utils_combineText(traitlist[n].text, "p", header));
 		} else {
 			let header = "<span class='name'>" + trait.name + ".</span> ";
 			toAddTd.innerHTML = (utils_combineText(traitlist[n].text, "p", header));
