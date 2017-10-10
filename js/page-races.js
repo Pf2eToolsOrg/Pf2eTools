@@ -11,7 +11,7 @@ function parsesource (src) {
 	if (source === "Unearthed Arcana: That Old Black Magic") source = "UA TOBM";
 	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA GH";
 	if (source === "Unearthed Arcana: Eladrin and Gith") source = "UA EG";
-    if (source === "Unearthed Arcana: Fiendish Options") source = "UA FO";
+	if (source === "Unearthed Arcana: Fiendish Options") source = "UA FO";
 	if (source === "The Tortle Package") source = "TP";
 	if (source === "Plane Shift Zendikar") source = "PSZ";
 	if (source === "Plane Shift Kaladesh") source = "PSK";
