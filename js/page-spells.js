@@ -349,11 +349,7 @@ function loadhash (id) {
 			texthtml += utils_makeTable(textlist[i]);
 		} else {
 			if (!textlist[i]) continue;
-			if (curspell.level[0] !== "P") {
-				texthtml = texthtml + "<p>" + textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ") + "</p>";
-			} else {
-				texthtml = texthtml + "<p>" + textlist[i].replace(/^.*(\(.*psi.*?\)|Psychic Focus|Bestial Transformation)\./g, "<strong>$&</strong>") + "</p>";
-			}
+			texthtml = texthtml + "<p>" + textlist[i].replace("At Higher Levels: ", "<strong>At Higher Levels:</strong> ") + "</p>";
 		}
 	}
 	$("tr#text").after("<tr class='text'><td colspan='6' class='text"+i+"'>"+texthtml+"</td></tr>");
