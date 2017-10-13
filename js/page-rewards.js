@@ -16,6 +16,14 @@ window.onload = function load() {
 		listClass: "rewards"
 	});
 
+	$("#filtertools select").change(function(e) {
+		const type = this.value
+		if (type === "All")
+			return list.filter()
+
+		list.filter(item => item.values().name.startsWith(type))
+	})
+
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
 			console.log("#"+$(this).attr("data-link"))
