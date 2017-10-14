@@ -1,6 +1,6 @@
 
 function parsesource (src) {
-	source = src;
+	let source = src;
 	if (source === "Player's Handbook") source = "PHB";
 	if (source === "Elemental Evil Player's Companion") source = "EEPC";
 	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
@@ -95,7 +95,6 @@ window.onload = function load() {
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
-			console.log("#"+$(this).attr("data-link"))
 			window.open("#"+$(this).attr("data-link"), "_blank").focus();
 			e.preventDefault();
 			e.stopPropagation();
@@ -160,4 +159,4 @@ function loadhash (id) {
 		parent.before(toAddTr);
 	}
 	return;
-};
+}

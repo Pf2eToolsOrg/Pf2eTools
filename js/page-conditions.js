@@ -17,7 +17,6 @@ window.onload = function load() {
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
-			console.log("#"+$(this).attr("data-link"))
 			window.open("#"+$(this).attr("data-link"), "_blank").focus();
 			e.preventDefault();
 			e.stopPropagation();

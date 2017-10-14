@@ -104,7 +104,6 @@ function normaliserange(range) {
 		return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) - 7;
 	}
 
-	console.log("failed to find range for: " + range);
 	return UNKNOWN_RANGE;
 }
 

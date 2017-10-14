@@ -229,7 +229,6 @@ window.onload = function load() {
 						return filterMatches(HDR_SOURCE, LIST_SOURCE) && filterMatches(HDR_TYPE, LIST_TYPE) && filterMatches(HDR_ORDER, LIST_ORDER);
 
 						function filterMatches(header, listAttrib) {
-							if (header === HDR_ORDER) console.log(f, v);
 							for (let t in f[header]) {
 								if (!f[header].hasOwnProperty(t)) continue;
 								if (t === FilterBox.VAL_SELECT_ALL && f[header][t]) return true;

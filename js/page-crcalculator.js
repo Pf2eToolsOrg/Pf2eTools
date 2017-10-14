@@ -75,8 +75,8 @@ function loadpage() {
 	});
 
 	// parse monsterfeatures
-	for (var i = 0; i < monsterfeatures.length; i++) {
-		var effectoncr = [];
+	for (let i = 0; i < monsterfeatures.length; i++) {
+		let effectoncr = [];
 		if (monsterfeatures[i].hp) effectoncr.push("HP: "+monsterfeatures[i].hp);
 		if (monsterfeatures[i].ac) effectoncr.push("AC: "+monsterfeatures[i].ac);
 		if (monsterfeatures[i].dpr) effectoncr.push("DPR: "+monsterfeatures[i].dpr);
@@ -85,7 +85,7 @@ function loadpage() {
 		effectoncr = effectoncr.join(", ");
 
 
-		var numbox = "";
+		let numbox = "";
 		if (monsterfeatures[i].numbox === "YES") numbox = "<input type='number' value='0'>"
 		$("#monsterfeatures table").append("<tr><td><input type='checkbox' id='MF"+encodeURI(monsterfeatures[i].name).toLowerCase()+"' title='"+monsterfeatures[i].name+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'>"+numbox+"</td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example+"</td><td>"+monsterfeatures[i].effect+"</td><td>"+effectoncr+"</td></tr>");
 
@@ -240,7 +240,7 @@ function calculatecr() {
 	if (cr.indexOf(".") !== -1) cr = Math.round(cr).toString();
 
 	var finalcr = 0;
-	for (var i = 0; i < msbcr.cr.length; i++) {
+	for (let i = 0; i < msbcr.cr.length; i++) {
 		if (msbcr.cr[i]._cr === cr) {
 			finalcr = i;
 			break;

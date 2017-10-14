@@ -2,6 +2,10 @@
 
 window.onload = loadparser
 
+function moveon(cur) {
+	return (!curline.toUpperCase().indexOf("ACTIONS") || !curline.toUpperCase().indexOf("LEGENDARY ACTIONS") || !curline.toUpperCase().indexOf("REACTIONS"))
+}
+
 function loadparser() {
 	// parse it on click
 	$("button#parsestatblock").click(function() {
@@ -117,10 +121,6 @@ function loadparser() {
 				stats.reaction = [];
 				stats.legendary = [];
 
-				function moveon(cur) {
-					return (!curline.toUpperCase().indexOf("ACTIONS") || !curline.toUpperCase().indexOf("LEGENDARY ACTIONS") || !curline.toUpperCase().indexOf("REACTIONS"))
-				}
-
 				var curtrait = {};
 
 				var ontraits = true;
@@ -163,7 +163,7 @@ function loadparser() {
 						curtrait.text.push(curline.trim());
 						i++;
 						curline = statblock[i];
-					};
+					}
 
 					if (ontraits) stats.trait.push(curtrait);
 					if (onactions) stats.action.push(curtrait);
