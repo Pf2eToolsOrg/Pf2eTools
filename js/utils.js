@@ -243,7 +243,6 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
 						}
 					}
-					else console.log("unimplemented proficiency type in utils_makePrerequisite")
 				}
 			}
 		}
@@ -336,22 +335,22 @@ function utils_getAttributeText(attObj) {
 				atts.push(outStack)
 			}
 
-			function isAllAttributesWithParent(item) {
-				let tempAttributes = [];
-				for (let i = 0; i < mainAtts.length; ++i) {
-					tempAttributes.push(mainAtts[i].toLowerCase());
-				}
-				for (let i = 0; i < item.from.length; ++i) {
-					let attb = item.from[i].toLowerCase();
-					if (!tempAttributes.includes(attb)) {
-						tempAttributes.push(attb)
-					}
-				}
-				return tempAttributes.length === 6;
-			}
 		}
 	}
 
+	function isAllAttributesWithParent(item) {
+		let tempAttributes = [];
+		for (let i = 0; i < mainAtts.length; ++i) {
+			tempAttributes.push(mainAtts[i].toLowerCase());
+		}
+		for (let i = 0; i < item.from.length; ++i) {
+			let attb = item.from[i].toLowerCase();
+			if (!tempAttributes.includes(attb)) {
+				tempAttributes.push(attb)
+			}
+		}
+		return tempAttributes.length === 6;
+	}
 	function getNumberString(amount) {
 		if (amount === 1) return "one";
 		if (amount === 2) return "two";

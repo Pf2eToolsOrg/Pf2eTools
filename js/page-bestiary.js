@@ -1,5 +1,5 @@
 function parsesource (src) {
-	source = src.trim();
+	let source = src.trim();
 	if (source === "monster manual") source = "MM";
 	if (source === "Volo's Guide") source = "VGM";
 	if (source === "elemental evil") source = "PotA";
@@ -20,7 +20,7 @@ function parsesource (src) {
 }
 
 function parsesourcename (src) {
-	source = src.trim();
+	let source = src.trim();
 	if (source === "monster manual") source = "Monster Manual";
 	if (source === "Volo's Guide") source = "Volo's Guide to Monsters";
 	if (source === "elemental evil") source = "Princes of the Apocalypse";
@@ -66,14 +66,6 @@ function parsecr (cr) {
 function tagcontent (curitem, tag, multi=false) {
 	if (!curitem.getElementsByTagName(tag).length) return false;
 	return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
-}
-
-function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
-}
-
-function dec_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 window.onload = function load() {
@@ -223,8 +215,8 @@ function sortmonsters(a, b, o) {
 	}
 
 	if (o.valueName === "cr") {
-		acr = a._values.cr.replace("CR ", "").replace(" ", "")
-		bcr = b._values.cr.replace("CR ", "").replace(" ", "")
+		let acr = a._values.cr.replace("CR ", "").replace(" ", "")
+		let bcr = b._values.cr.replace("CR ", "").replace(" ", "")
 		if (acr === "1/2") acr = "-1";
 		if (bcr === "1/2") bcr = "-1";
 		if (acr === "1/4") acr = "-2";
@@ -266,7 +258,6 @@ function loadhash (id) {
 		$(x).parent().siblings(".source").css("margin-right", "-4.8em");
 		$(x).remove();
 		return;
-		this.src = "img/default.png";
 	}
 
 	$("th#name").html("<span title=\""+origsource+"\" class='source source"+source+"'>"+source+"<br></span> <a href='img/"+source+"/"+name+".png' target='_blank'><img src='img/"+source+"/"+name+".png' class='token' onerror='imgError(this)'></a>"+name);
@@ -423,10 +414,10 @@ function loadhash (id) {
 
 		// parse spells, make hyperlinks
 		$("tr.trait").children("td").children("p.spells").each(function() {
-			var spellslist = $(this).html();
+			let spellslist = $(this).html();
 			if (spellslist[0] === "*") return;
 			spellslist = spellslist.split(": ")[1].split(/\, (?!\+|\dd|appears|inside gems)/g);
-			for (var i = 0; i < spellslist.length; i++) {
+			for (let i = 0; i < spellslist.length; i++) {
 				spellslist[i] = "<a href='spells.html#"+encodeURIComponent((spellslist[i].replace(/(\*)| \(([^\)]+)\)/g,""))).toLowerCase().replace("'","%27")+"' target='_blank'>"+spellslist[i]+"</a>";
 				if (i !== spellslist.length-1) spellslist[i] = spellslist[i]+", ";
 			}
@@ -435,20 +426,20 @@ function loadhash (id) {
 		});
 	}
 
-	var actions = mon.action;
+	let actions = mon.action;
 	$("tr.action").remove();
 
-	if (actions && actions.length) for (var i = actions.length-1; i >= 0; i--) {
-		var actionname = actions[i].name;
+	if (actions && actions.length) for (let i = actions.length-1; i >= 0; i--) {
+		let actionname = actions[i].name;
 
-		var actiontext = actions[i].text;
-		var actiontexthtml = "";
-		var renderedcount = 0;
-		for (var n = 0; n < actiontext.length; n++) {
+		let actiontext = actions[i].text;
+		let actiontexthtml = "";
+		let renderedcount = 0;
+		for (let n = 0; n < actiontext.length; n++) {
 			if (!actiontext[n]) continue;
 
 			renderedcount++;
-			var firstsecond = ""
+			let firstsecond = ""
 			if (renderedcount === 1) firstsecond = "first ";
 			if (renderedcount === 2) firstsecond = "second ";
 
@@ -458,7 +449,7 @@ function loadhash (id) {
 		$("tr#actions").after("<tr class='action'><td colspan='6' class='action"+i+"'><span class='name'>"+actionname+".</span> "+actiontexthtml+"</td></tr>");
 	}
 
-	var reactions = mon.reaction;
+	let reactions = mon.reaction;
 	$("tr#reactions").hide();
 	$("tr.reaction").remove();
 
@@ -467,16 +458,16 @@ function loadhash (id) {
 		$("tr#reactions").show();
 
 		if (!reactions.length) {
-			var reactionname = reactions.name;
+			let reactionname = reactions.name;
 
-			var reactiontext = reactions.text;
-			var reactiontexthtml = "";
-			var renderedcount = 0
-			for (var n = 0; n < reactiontext.length; n++) {
+			let reactiontext = reactions.text;
+			let reactiontexthtml = "";
+			let renderedcount = 0
+			for (let n = 0; n < reactiontext.length; n++) {
 				if (!reactiontext[n]) continue;
 
 				renderedcount++;
-				var firstsecond = ""
+				let firstsecond = ""
 				if (renderedcount === 1) firstsecond = "first ";
 				if (renderedcount === 2) firstsecond = "second ";
 
@@ -486,12 +477,12 @@ function loadhash (id) {
 			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction"+i+"'><span class='name'>"+reactionname+".</span> "+reactiontexthtml+"</td></tr>");
 		}
 
-		if (reactions.length) for (var i = reactions.length-1; i >= 0; i--) {
-			var reactionname = reactions[i].name;
+		if (reactions.length) for (let i = reactions.length-1; i >= 0; i--) {
+			let reactionname = reactions[i].name;
 
-			var reactiontext = reactions[i].text;
-			var reactiontexthtml = "<span>"+reactiontext+"</span>";
-			for (var n = 1; n < reactiontext.length; n++) {
+			let reactiontext = reactions[i].text;
+			let reactiontexthtml = "<span>"+reactiontext+"</span>";
+			for (let n = 1; n < reactiontext.length; n++) {
 				if (!reactiontext[n]) continue;
 				reactiontexthtml = reactiontexthtml + "<p>"+reactiontext[n]+"</p>";
 			}
@@ -501,30 +492,30 @@ function loadhash (id) {
 	}
 
 
-	var legendaries = mon.legendary;
+	let legendaries = mon.legendary;
 	$("tr.legendary").remove();
 	$("tr#legendaries").hide();
 	if (legendaries && legendaries.length) {
 		$("tr#legendaries").show();
 
-		var legendarydescription = "<span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn."
+		let legendarydescription = "<span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn."
 
-		for (var i = legendaries.length-1; i >= 0; i--) {
-			var legendaryname = "";
-			var legendarytext = legendaries[i].text;
-			var legendarytexthtml = "";
+		for (let i = legendaries.length-1; i >= 0; i--) {
+			let legendaryname = "";
+			let legendarytext = legendaries[i].text;
+			let legendarytexthtml = "";
 
 			if (legendaries[i].name) {
 				legendaryname = legendaries[i].name+".";
 			}
 
 
-			var renderedcount = 0
-			for (var n = 0; n < legendarytext.length; n++) {
+			let renderedcount = 0
+			for (let n = 0; n < legendarytext.length; n++) {
 				if (!legendarytext[n]) continue;
 
 				renderedcount++;
-				var firstsecond = ""
+				let firstsecond = ""
 				if (renderedcount === 1) firstsecond = "first ";
 				if (renderedcount === 2) firstsecond = "second ";
 
@@ -567,4 +558,4 @@ function loadhash (id) {
 		$("div#output").prepend("<span>"+name + ": <em>"+roll+"</em> rolled for <strong>"+rollresult.total+"</strong> (<em>"+rollresult.rolls.join(", ")+"</em>)<br></span>").show();
 		$("div#output span:eq(5)").remove();
 	})
-};
+}
