@@ -483,9 +483,9 @@ function search(options) {
 	$("#reset").click(function() {
 		$("#filtertools select").val("All");
 		$("#search").val("");
-		list.search("");
+		list.search();
 		list.sort("name");
-		list.update();
+		list.filter();
 	})
 	return list
 }
