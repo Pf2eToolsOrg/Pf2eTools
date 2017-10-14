@@ -31,17 +31,16 @@ window.onload = function load() {
 	}
 
 	var ruleslist = new List("listcontainer", options);
+	ruleslist.sort ("name");
 
-  ruleslist.sort ("name");
-
-  $("ul.list.rules").each(function() {
-	$(this).children("li").sort(function(a, b) {
-		var sorta = $(a).children("span.id").text();
-		var sortb = $(b).children("span.id").text();
-		console.log(sorta);
-		return (sorta > sortb) ? 1 : -1;
-	}).appendTo(this);
-  });
+	$("ul.list.rules").each(function() {
+		$(this).children("li").sort(function(a, b) {
+			var sorta = $(a).children("span.id").text();
+			var sortb = $(b).children("span.id").text();
+			console.log(sorta);
+			return (sorta > sortb) ? 1 : -1;
+		}).appendTo(this);
+	});
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
@@ -82,6 +81,6 @@ function loadhash (id) {
 	var ruleslist = rulesdata.compendium.rules;
 	var currules = ruleslist[id];
 
-  $("#rulescontent").html(currules.htmlcontent);
-  $("#rulescontent").prepend(`<h1>`+currules.name+`</h1>`)
+	$("#rulescontent").html(currules.htmlcontent);
+	$("#rulescontent").prepend(`<h1>`+currules.name+`</h1>`)
 }

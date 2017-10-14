@@ -44,8 +44,8 @@ function () {
 		var t = typeof arguments[0];
 		var key;
 		var args = (TYP_STRING === t || TYP_NUMBER === t) ?
-		Array.prototype.slice.call(arguments)
-		: arguments[0];
+			Array.prototype.slice.call(arguments)
+			: arguments[0];
 
 		for (key in args) {
 			str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
@@ -66,8 +66,8 @@ function utils_joinPhraseArray(array, joiner, lastJoiner) {
 			if (i < array.length-2) outStr += joiner;
 			else if (i === array.length-2) outStr += lastJoiner
 		}
-	return outStr;
-}
+		return outStr;
+	}
 }
 
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
@@ -245,22 +245,22 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 					}
 					else console.log("unimplemented proficiency type in utils_makePrerequisite")
 				}
+			}
+		}
+		if (pre.spellcasting === "YES") {
+			if (shorthand) {
+				outStack.push("Spellcasting");
+			} else {
+				outStack.push("The ability to cast at least one spell");
+			}
 		}
 	}
-	if (pre.spellcasting === "YES") {
-		if (shorthand) {
-			outStack.push("Spellcasting");
-		} else {
-			outStack.push("The ability to cast at least one spell");
-		}
+	if (makeAsArray) {
+		return outStack;
+	} else {
+		if (shorthand) return outStack.join("/");
+		else return utils_joinPhraseArray(outStack, ", ", " or ");
 	}
-}
-if (makeAsArray) {
-	return outStack;
-} else {
-	if (shorthand) return outStack.join("/");
-	else return utils_joinPhraseArray(outStack, ", ", " or ");
-}
 }
 
 function utils_getAttributeText(attObj) {
@@ -441,7 +441,7 @@ function parse_abvToSource(abv) {
 		if (!sourceToAbv.hasOwnProperty(v)) continue;
 		if (sourceToAbv[v] === abv) return v
 	}
-return abv;
+	return abv;
 }
 
 function parse_stringToSlug(str) {
