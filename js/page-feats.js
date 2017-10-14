@@ -107,47 +107,47 @@ function loadhash (id) {
 		for (let i = 0; i < textArray.length; ++i) { // insert the new list item at the head of the first list we find list; flag with "hasabilityitem" so we don't do it more than once
 			if (textArray[i].islist === "YES" && textArray[i].hasabilityitem !== "YES") {
 				textArray[i].hasabilityitem = "YES";
-                textArray[i].items.unshift(abilityObjToListItem())
-            }
+				textArray[i].items.unshift(abilityObjToListItem())
+			}
 		}
 
-        function abilityObjToListItem() {
-        	let listItem = {};
-            listItem.text = attChooseText(abilityObj);
+		function abilityObjToListItem() {
+			let listItem = {};
+			listItem.text = attChooseText(abilityObj);
 			return listItem;
 
 			function attChooseText() {
 				const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
 				if (abilityObj.choose === undefined) {
-                    let abbArr = [];
-                    for (let att in abilityObj) {
-                        if(!abilityObj.hasOwnProperty(att)) continue;
-                        abbArr.push("Increase your " + parse_attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
-                    }
-                    return abbArr.join(" ");
+					let abbArr = [];
+					for (let att in abilityObj) {
+						if(!abilityObj.hasOwnProperty(att)) continue;
+						abbArr.push("Increase your " + parse_attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
+					}
+					return abbArr.join(" ");
 				} else {
-                    let abbArr = [];
+					let abbArr = [];
 					for (let i = 0; i < abilityObj.choose.length; ++i) {
-                        if (abilityObj.choose[i].from.length === 6) {
-                        	if (abilityObj.choose[i].textreference === "YES") { // only used in "Resilient"
+						if (abilityObj.choose[i].from.length === 6) {
+							if (abilityObj.choose[i].textreference === "YES") { // only used in "Resilient"
 								abbArr.push("Increase the chosen ability score by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
 							} else {
 								abbArr.push("Increase one ability score of your choice by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
 							}
-                        } else {
-                        	let from = abilityObj.choose[i].from;
-                        	let amount = abilityObj.choose[i].amount;
-                        	let abbChoices = [];
-                        	for (let j = 0; j < from.length; ++j) {
-                                abbChoices.push(parse_attAbvToFull(from[j]));
+						} else {
+							let from = abilityObj.choose[i].from;
+							let amount = abilityObj.choose[i].amount;
+							let abbChoices = [];
+							for (let j = 0; j < from.length; ++j) {
+								abbChoices.push(parse_attAbvToFull(from[j]));
 							}
 							let abbChoicesText = utils_joinPhraseArray(abbChoices, ", ", " or ");
-                            abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY)
+							abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY)
 						}
 					}
-                    return abbArr.join(" ");
+					return abbArr.join(" ");
 				}
 			}
 		}
-    }
+	}
 };

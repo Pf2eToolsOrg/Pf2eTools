@@ -331,17 +331,17 @@ function loadhash (jsonIndex) {
 			let subModeString = getSubModeString();
 			return TMP_MODE_WITH_SUB_MODE.formatUnicorn(modeString, subModeString);
 
-            function getSubModeString() {
-            	let modeStrings = [];
-                let subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
-                for (let i = 0; i < subModes.length; ++i) {
-                    modeStrings.push(utils_combineText(subModes[i][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(subModes[i], true)));
+			function getSubModeString() {
+				let modeStrings = [];
+				let subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
+				for (let i = 0; i < subModes.length; ++i) {
+					modeStrings.push(utils_combineText(subModes[i][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(subModes[i], true)));
 				}
-                return modeStrings.join(STR_EMPTY);
-            }
+				return modeStrings.join(STR_EMPTY);
+			}
 
 			function getModeTitle(mode, subMode) {
-                subMode = subMode === undefined || subMode === null ? false : subMode;
+				subMode = subMode === undefined || subMode === null ? false : subMode;
 				let modeTitleArray = [];
 				modeTitleArray.push(mode[JSON_ITEM_MODE_TITLE]);
 				let bracketPart = getModeTitleBracketPart();
