@@ -48,7 +48,9 @@ function loadhash (id) {
 	var textlist = curcult.text;
 	var texthtml = "";
 
-	if (curcult.cultists !== undefined) texthtml += utils_combineText(curcult.cultists.text, "p", "<span class='bold'>Goal:</span> ");
+	if (curcult.goal !== undefined) texthtml += utils_combineText(curcult.goal.text, "p", "<span class='bold'>Goal:</span> ");
+	if (curcult.cultists !== undefined) texthtml += utils_combineText(curcult.cultists.text, "p", "<span class='bold'>Cultists:</span> ");
+	if (curreward.signaturespells !== undefined) texthtml += utils_combineText(curreward.signaturespells.text, "p", "<span class='bold'>Signature Spells:</span> ");
 	texthtml += utils_combineText(textlist, "p");
 
 	$("tr#text").after("<tr class='text'><td colspan='6'>"+texthtml+"</td></tr>");

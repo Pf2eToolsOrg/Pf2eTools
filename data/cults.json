@@ -14,8 +14,14 @@ var cultdata = [
 	},
 	{
 		"name": "Cult of Baalzebul",
-		"goal": "Restoration of honor and respect, at the cost of those who stole it",
-		"cultists": "Any NPC or monster who has suffered a fall from grace",
+		"goal": 
+		{
+			"text": "Restoration of honor and respect, at the cost of those who stole it",
+		},
+		"cultists": 
+		{
+			"text": "Any NPC or monster who has suffered a fall from grace"
+		},
 		"signaturespells":
 		{
 			"text": "Minor illusion (cantrip), disguise self (1st level), phantasmal force (2nd level), major image (3rd level)"
@@ -33,21 +39,32 @@ var cultdata = [
 	},
 	{
 		"name": "Cult of Dispater",
-		"goal": "Power gained and used in secret, influence exerted via blackmail, control of people and organizations through knowledge of their weaknesses and shames",
-		"cultists": "Any NPC or monster who has suffered a fall from grace",
+		"goal": 
+		{
+			"text": "Power gained and used in secret, influence exerted via blackmail, control of people and organizations through knowledge of their weaknesses and shames",
+		},
+		"cultists": 
+		{
+			"text": "Acolyte, bandit, bandit captain, cult fanatic, cultist, mage, noble, spy"
+		},
 		"signaturespells":
 		{
-			"text": "Minor illusion (cantrip), disguise self (1st level), phantasmal force (2nd level), major image (3rd level)"
+			"text": "Guidance (cantrip), identify (1st level), see invisibility (2nd level), clairvoyance (3rd level)"
 		},
 		"text": [
-			"Baalzebul typically recruits individuals rather than cults. He offers hope to those whose failures drive them to seek redemption.",
-			"Baalzebul sometimes increases the Charisma of those who follow him. He also grants a boon, the Path of Baalzebul trait, that allows a favored cultist to look good in light of an ally’s failure.",
+			"Dispater trades in secrets, offering them in return for a creature’s soul. His cults typically trade secrets to devils in return for other information. They often hatch conspiracies aimed at toppling and replacing governments or religious orders.",
+			"Renegade mind flayers sometimes strike pacts with Dispater in search of the secrets needed to forever escape an Elder Brain’s domination.",
+			"Cultists can gain the Infernal Insight trait. Cult leaders might also have the Vexing Escape trait."
 			{
 				"hassubtitle": "YES",
-				"title": "Path of Baalzebul",
-				"text": "As a bonus action on its turn, this creature can choose one ally it can see within 30 feet of it. Until the start of this creature’s next turn, it gains advantage on all ability checks and attack rolls, while the chosen ally suffers disadvantage on all ability checks, attack rolls, and saving throws."
+				"title": "Infernal Insight (Recharges after a Short or Long Rest)",
+				"text": "As a bonus action, this creature gains advantage on all ability checks and attack rolls it makes until the end of the current turn."
+			},
+			{
+				"hassubtitle": "YES",
+				"title": "Vexing Escape (1/Day)",
+				"text": "As a reaction when this creature takes damage, it reduces that damage to 0 and teleports up to 60 feet to an unoccupied space it can see."
 			}
 		],
 		"source": "UAFiendishOptions"
-	}
-]
+	},
