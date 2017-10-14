@@ -40,7 +40,6 @@ function rollLoot(cr,hoard=false) {
 	}
 
 	if (!curtable) {
-		console.log("No table found");
 		return;
 	}
 
@@ -49,7 +48,6 @@ function rollLoot(cr,hoard=false) {
 
 	// roll on tables
 	var lootroll = randomNumber (1, 100);
-	console.log("Loot roll: ", lootroll);
 	var loottable = curtable.table;
 	var loot = null;
 	for (var i = 0; i < loottable.length; i++) {
@@ -60,19 +58,18 @@ function rollLoot(cr,hoard=false) {
 	}
 
 	if (!loot) {
-		console.log("Loot rolling error");
 		return;
 	}
 
 
 	// take care of individual treasure
 	if (!hoard) {
-		var coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp]
-		var coinnames = ["cp","sp","ep","gp","pp"];
-		for (var i = coins.length-1; i >= 0; i--) {
+		let coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp]
+		let coinnames = ["cp","sp","ep","gp","pp"];
+		for (let i = coins.length-1; i >= 0; i--) {
 			if (!coins[i]) continue;
-			var roll = coins[i].split("*")[0];
-			var multiplier = coins[i].split("*")[1];
+			let roll = coins[i].split("*")[0];
+			let multiplier = coins[i].split("*")[1];
 			coins[i] = droll.roll(roll).total;
 			if (multiplier) coins[i] *= parseInt(multiplier);
 			$("#lootoutput ul:eq(0)").prepend('<li>'+numberWithCommas(coins[i])+' '+coinnames[i]+'</li>');
@@ -81,13 +78,13 @@ function rollLoot(cr,hoard=false) {
 
 		// and now for hoards
 	} else {
-		var treasure = [];
-		var coins = [curtable.coins.cp, curtable.coins.sp, curtable.coins.ep, curtable.coins.gp, curtable.coins.pp]
-		var coinnames = ["cp","sp","ep","gp","pp"];
-		for (var i = coins.length-1; i >= 0; i--) {
+		let treasure = [];
+		let coins = [curtable.coins.cp, curtable.coins.sp, curtable.coins.ep, curtable.coins.gp, curtable.coins.pp]
+		let coinnames = ["cp","sp","ep","gp","pp"];
+		for (let i = coins.length-1; i >= 0; i--) {
 			if (!coins[i]) continue;
-			var roll = coins[i].split("*")[0];
-			var multiplier = coins[i].split("*")[1];
+			let roll = coins[i].split("*")[0];
+			let multiplier = coins[i].split("*")[1];
 			coins[i] = droll.roll(roll).total;
 			if (multiplier) coins[i] *= parseInt(multiplier);
 			treasure.push(String(numberWithCommas(coins[i])+" "+coinnames[i]));
@@ -101,8 +98,8 @@ function rollLoot(cr,hoard=false) {
 
 		if (artgems) {
 			// get the appropriate table set
-			var artgemstable = ((loot.gems || loot.artobjects) && loot.artobjects) ? lootdata.artobjects : lootdata.gemstones;
-			for (var i = 0; i < artgemstable.length; i++) {
+			let artgemstable = ((loot.gems || loot.artobjects) && loot.artobjects) ? lootdata.artobjects : lootdata.gemstones;
+			for (let i = 0; i < artgemstable.length; i++) {
 				if (artgemstable[i].type === artgems.type) {
 					artgemstable = artgemstable[i];
 					break;
@@ -110,27 +107,27 @@ function rollLoot(cr,hoard=false) {
 			}
 
 			// number of rolls on the table
-			var roll = droll.roll(artgems.amount).total;
-			var gems = [];
+			let roll = droll.roll(artgems.amount).total;
+			let gems = [];
 
-			var gemartliststring = ""
+			let gemartliststring = ""
 			if (usingart) {
 				gemartliststring += "<li>x"+roll+" "+numberWithCommas(artgems.type)+" gp art objects:<ul></ul></li>"
 			} else gemartliststring += "<li>x"+roll+" "+numberWithCommas(artgems.type)+" gp gemstones:<ul></ul></li>"
 			$("#lootoutput ul:eq(0)").append(gemartliststring)
-			for (var i = 0; i < roll; i++) {
-				var tableroll = randomNumber (0, artgemstable.table.length-1);
-				var gemstring = artgemstable.table[tableroll]
+			for (let i = 0; i < roll; i++) {
+				let tableroll = randomNumber (0, artgemstable.table.length-1);
+				let gemstring = artgemstable.table[tableroll]
 				gems.push(gemstring);
 			}
 
-			for (var i = 0; i < gems.length; i++) {
+			for (let i = 0; i < gems.length; i++) {
 				$("#lootoutput ul:eq(0) ul:eq(0)").append('<li>'+gems[i]+'</li>');
 			}
 
 			$("#lootoutput ul:eq(0) ul:eq(0) li").each(function() {
-				var curitem = this;
-				var curamount = 1;
+				let curitem = this;
+				let curamount = 1;
 				$("#lootoutput ul:eq(0) ul:eq(0) li").each(function() {
 					if ($(this).text() === $(curitem).text() && this !== curitem) {
 						$(this).remove();
@@ -155,13 +152,13 @@ function rollLoot(cr,hoard=false) {
 				magicitemtableamounts.push(loot.magicitems.amount.split(",")[1])
 			}
 
-			for (var v = 0; v < magicitemtabletype.length; v++) {
-				var curtype = magicitemtabletype[v];
-				var curamount = magicitemtableamounts[v];
+			for (let v = 0; v < magicitemtabletype.length; v++) {
+				let curtype = magicitemtabletype[v];
+				let curamount = magicitemtableamounts[v];
 
 				// find the appropriate table
-				var magicitemstable = lootdata.magicitems;
-				for (var i = 0; i < magicitemstable.length; i++) {
+				let magicitemstable = lootdata.magicitems;
+				for (let i = 0; i < magicitemstable.length; i++) {
 					if (magicitemstable[i].type === curtype) {
 						magicitemstable = magicitemstable[i];
 						break;
@@ -169,24 +166,23 @@ function rollLoot(cr,hoard=false) {
 				}
 
 				// number of rolls on the table
-				var roll = droll.roll(curamount).total;
-				var magicitems = [];
+				let roll = droll.roll(curamount).total;
+				let magicitems = [];
 
 				//$("#lootoutput ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
 				$("#lootoutput ul:eq(0) > li").last().append("<hr>");
-				for (var i = 0; i < roll; i++) {
+				for (let i = 0; i < roll; i++) {
 
-					var curmagicitem = null;
-					var itemroll = randomNumber(1,100);
-					console.log("item roll: ", itemroll)
-					for (var n = 0; n < magicitemstable.table.length; n++) {
+					let curmagicitem = null;
+					let itemroll = randomNumber(1,100);
+					for (let n = 0; n < magicitemstable.table.length; n++) {
 						if (itemroll >= parseInt(magicitemstable.table[n].min) && itemroll <= parseInt(magicitemstable.table[n].max)) {
 							curmagicitem = magicitemstable.table[n];
 							break;
 						}
 					}
 
-					var magicitemstring = curmagicitem.item;
+					let magicitemstring = curmagicitem.item;
 					if (curmagicitem.table) {
 						magicitemstring += " (" + curmagicitem.table[randomNumber (0, curmagicitem.table.length-1)] + ")";
 					}
@@ -194,15 +190,15 @@ function rollLoot(cr,hoard=false) {
 				}
 
 
-				for (var i = 0; i < magicitems.length; i++) {
+				for (let i = 0; i < magicitems.length; i++) {
 					//$("#lootoutput ul:eq(0) li:contains('table "+curtype+"') ul:eq(0)").append('<li>'+magicitems[i]+'</li>');
 					$("#lootoutput ul:eq(0)").append('<li class="magicitem">'+magicitems[i]+'</li>');
 				}
 
 
 				$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
-					var curitem = this;
-					var curamount = 1;
+					let curitem = this;
+					let curamount = 1;
 					$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
 						if ($(this).text() === $(curitem).text() && this !== curitem) {
 							$(this).remove();
@@ -217,7 +213,7 @@ function rollLoot(cr,hoard=false) {
 			}
 		}
 
-		for (var i = 0; i < treasure.length; i++) {
+		for (let i = 0; i < treasure.length; i++) {
 			$("#lootoutput ul:eq(0)").prepend('<li>'+treasure[i]+'</li>');
 		}
 

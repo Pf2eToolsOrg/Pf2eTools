@@ -227,9 +227,9 @@ function loadhash (id) {
 			}
 
 			// other features
-		} else for (var a = curlevel.feature.length-1; a >= 0; a--) {
-			var curfeature = curlevel.feature[a];
-			var link = curlevel._level + "_" + a;
+		} else for (let a = curlevel.feature.length-1; a >= 0; a--) {
+			let curfeature = curlevel.feature[a];
+			let link = curlevel._level + "_" + a;
 
 
 			if (curfeature._optional === "YES") {
@@ -289,7 +289,7 @@ function loadhash (id) {
 	});
 
 	$("div#subclasses span").remove();
-	for (var i = 0; i < subclasses.length; i++) {
+	for (let i = 0; i < subclasses.length; i++) {
 		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+(subclasses[i].name.toLowerCase())+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
 	}
 

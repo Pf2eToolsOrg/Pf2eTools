@@ -136,7 +136,6 @@ window.onload = function load() {
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
-			console.log("#"+$(this).attr("data-link"));
 			window.open("#"+$(this).attr("data-link"), "_blank").focus();
 			e.preventDefault();
 			e.stopPropagation();
@@ -236,8 +235,8 @@ function sortitems(a, b, o) {
 	}
 
 	if (o.valueName === "rarity") {
-		ararity = a._values.rarity.replace("Rarity: ", "");
-		brarity = b._values.rarity.replace("Rarity: ", "");
+		let ararity = a._values.rarity.replace("Rarity: ", "");
+		let brarity = b._values.rarity.replace("Rarity: ", "");
 		if (ararity === "None") ararity = "0";
 		if (brarity === "None") brarity = "0";
 		if (ararity === "Common") ararity = "1";
@@ -340,9 +339,9 @@ function loadhash (id) {
 		texthtml += "<p>The wearer has disadvantage on Stealth (Dexterity) checks.</p>";
 	}
 
-	for (var n = 0; n < textlist.length; n++) {
+	for (let n = 0; n < textlist.length; n++) {
 		if (!textlist[n]) continue;
-		var curtextstring = JSON.stringify (textlist[n]);
+		let curtextstring = JSON.stringify (textlist[n]);
 		if (textlist[n].istable === "YES") {
 			texthtml += utils_makeTable(textlist[n]);
 		} else {
@@ -363,7 +362,7 @@ function loadhash (id) {
 				continue;
 			}
 
-			var finaltext = textlist[n].replace(/(Curse|Sentience|Personality)(\.|\:) /g, '<strong>$1.</strong> ');
+			let finaltext = textlist[n].replace(/(Curse|Sentience|Personality)(\.|\:) /g, '<strong>$1.</strong> ');
 			texthtml = texthtml + "<p>"+finaltext+"</p>";
 		}
 	}

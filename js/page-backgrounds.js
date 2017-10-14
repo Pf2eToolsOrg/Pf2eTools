@@ -9,7 +9,7 @@ function parsesize (size) {
 }
 
 function parsesource (src) {
-	source = src;
+	let source = src;
 	if (source === "Player's Handbook") source = "PHB";
 	if (source === "Curse of Strahd") source = "CoS";
 	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
@@ -69,7 +69,6 @@ window.onload = function load () {
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
-			console.log("#"+$(this).attr("data-link"))
 			window.open("#"+$(this).attr("data-link"), "_blank").focus();
 			e.preventDefault();
 			e.stopPropagation();
@@ -128,4 +127,4 @@ function loadhash (id) {
 		$("tr#traits").after("<tr class='trait'><td colspan='6'>"+texthtml+"</td></tr>");
 	}
 
-};
+}

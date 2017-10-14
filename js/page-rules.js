@@ -30,21 +30,19 @@ window.onload = function load() {
 		listClass: "rules"
 	}
 
-	var ruleslist = new List("listcontainer", options);
-	ruleslist.sort ("name");
+	const list = new List("listcontainer", options);
+	list.sort ("name");
 
 	$("ul.list.rules").each(function() {
 		$(this).children("li").sort(function(a, b) {
 			var sorta = $(a).children("span.id").text();
 			var sortb = $(b).children("span.id").text();
-			console.log(sorta);
 			return (sorta > sortb) ? 1 : -1;
 		}).appendTo(this);
 	});
 
 	$("ul.list li").mousedown(function(e) {
 		if (e.which === 2) {
-			console.log("#"+$(this).attr("data-link"))
 			window.open("#"+$(this).attr("data-link"), "_blank").focus();
 			e.preventDefault();
 			e.stopPropagation();
@@ -64,10 +62,10 @@ window.onload = function load() {
 	$("button#reset").click(function() {
 		$("#filtertools select").val("All");
 		$("#search").val("");
-		 ruleslist.search("");
-		 ruleslist.filter();
-		 ruleslist.sort("names");
-		 ruleslist.update();
+		list.search("");
+		list.filter();
+		list.sort("names");
+		list.update();
 	})
 
 	$("#listcontainer h4").click(function() {
