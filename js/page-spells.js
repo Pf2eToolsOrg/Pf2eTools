@@ -305,10 +305,10 @@ function sortspells(a, b, o) {
 		return compareNames(a, b);
 	}
 
-    if (o.valueName === "source") {
-        if ((b._values.source.toLowerCase()) === (a._values.source.toLowerCase())) return compareNames(a, b);
-        return ((b._values.source.toLowerCase()) > (a._values.source.toLowerCase())) ? 1 : -1;
-    }
+	if (o.valueName === "source") {
+		if ((b._values.source.toLowerCase()) === (a._values.source.toLowerCase())) return compareNames(a, b);
+		return ((b._values.source.toLowerCase()) > (a._values.source.toLowerCase())) ? 1 : -1;
+	}
 
 	if (o.valueName === "school") {
 		if ((b._values.school.toLowerCase()) === (a._values.school.toLowerCase())) return compareNames(a, b);
@@ -322,8 +322,8 @@ function sortspells(a, b, o) {
 		if (blevel === "D") blevel = "10";
 		if (alevel === "T") alevel = "11";
 		if (blevel === "T") blevel = "11";
-        alevel = (alevel.length < 2 ? "0" + alevel : alevel) + (a._values.level.includes("ritual") ? " ritual" : "");
-        blevel = (blevel.length < 2 ? "0" + blevel : blevel) + (b._values.level.includes("ritual") ? " ritual" : "");
+		alevel = (alevel.length < 2 ? "0" + alevel : alevel) + (a._values.level.includes("ritual") ? " ritual" : "");
+		blevel = (blevel.length < 2 ? "0" + blevel : blevel) + (b._values.level.includes("ritual") ? " ritual" : "");
 		if (blevel === alevel) return compareNames(a, b);
 		return (blevel > alevel) ? 1 : -1;
 	}
@@ -336,9 +336,9 @@ function sortspells(a, b, o) {
 	return 0;
 
 	function compareNames(a, b) {
-        if (b._values.name.toLowerCase() === (a._values.name.toLowerCase())) return 0;
-        else if ((b._values.name.toLowerCase()) > (a._values.name.toLowerCase())) return 1;
-        else if ((b._values.name.toLowerCase()) < (a._values.name.toLowerCase())) return -1;
+		if (b._values.name.toLowerCase() === (a._values.name.toLowerCase())) return 0;
+		else if ((b._values.name.toLowerCase()) > (a._values.name.toLowerCase())) return 1;
+		else if ((b._values.name.toLowerCase()) < (a._values.name.toLowerCase())) return -1;
 	}
 }
 

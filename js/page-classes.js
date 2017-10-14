@@ -264,8 +264,8 @@ function loadhash (id) {
 			if (curlevel.feature.length !== 1 && a !== 0) multifeature = ", ";
 			let featureSpan = document.createElement('span');
 			featureSpan.setAttribute('data-link', link);
-            featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
-            featureSpan.innerHTML = curfeature.name;
+			featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
+			featureSpan.innerHTML = curfeature.name;
 			if (curfeature._optional !== "YES" && curfeature.suboption === undefined) $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
 
 			// display features in bottom section
@@ -307,7 +307,7 @@ function loadhash (id) {
 
 function scrollToFeature(ele) {
 	let goTo = document.getElementById("feature"+ele);
-    goTo.scrollIntoView();
+	goTo.scrollIntoView();
 }
 
 function loadsub(sub) {
