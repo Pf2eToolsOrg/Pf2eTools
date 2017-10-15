@@ -22,7 +22,6 @@ const EVNT_CLICK = "click";
 
 const ATB_ID = "id";
 const ATB_CLASS = "class";
-const ATB_DATA_LINK = "data-link";
 const ATB_TITLE = "title";
 const ATB_VALUE = "value";
 const ATB_HREF = "href";
