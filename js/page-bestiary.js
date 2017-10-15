@@ -366,7 +366,7 @@ function loadhash (id) {
 	if (languages && languages.length > 0) {
 		$("td span#languages").html(languages);
 	} else {
-		$("td span#languages").html("-");
+		$("td span#languages").html("\u2014");
 	}
 
 	var cr = mon.cr;
