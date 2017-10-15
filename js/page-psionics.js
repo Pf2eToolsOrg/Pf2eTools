@@ -76,22 +76,23 @@ window.onload = function load() {
 		for (let i = 0; i < PSIONIC_LIST.length; ++i) {
 			let psionic = PSIONIC_LIST[i];
 
-			let listItem = getListItem(psionic, i);
-			listItem.appendChild(getNameSpan(psionic));
-			listItem.appendChild(getSourceSpan(psionic));
-			listItem.appendChild(getTypeSpan(psionic));
-			listItem.appendChild(getOrderSpan(psionic));
-			listItem.appendChild(getHiddenModeSpan(psionic));
-			listItem.addEventListener(EVNT_CLICK, listItemClick, false);
+			const link = document.createElement('a');
+			link.setAttribute(ATB_ID, String(i));
+			link.href = '#' +  utils_nameToDataLink(psionic[JSON_ITEM_NAME]);
+			link.appendChild(getNameSpan(psionic));
+			link.appendChild(getSourceSpan(psionic));
+			link.appendChild(getTypeSpan(psionic));
+			link.appendChild(getOrderSpan(psionic));
+			link.appendChild(getHiddenModeSpan(psionic));
 
+			let listItem = getListItem(psionic, i);
+			listItem.appendChild(link);
 			TABLE_VIEW.appendChild(listItem);
 		}
 
 		function getListItem(psionic, i) {
 			let listItem = document.createElement(ELE_LI);
 			listItem.setAttribute(ATB_CLASS, CLS_ROW);
-			listItem.setAttribute(ATB_ID, String(i));
-			listItem.setAttribute(ATB_DATA_LINK, utils_nameToDataLink(psionic[JSON_ITEM_NAME]));
 			listItem.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
 			return listItem;
 		}
@@ -148,13 +149,6 @@ window.onload = function load() {
 				}
 			}
 			return outArray.join(STR_JOIN_MODE_LIST);
-		}
-		function listItemClick(event) {
-			loadDataLink(this);
-
-			function loadDataLink(listItem) {
-				window.location = TMP_WINDOW_HASH.formatUnicorn(listItem.getAttribute(ATB_DATA_LINK));
-			}
 		}
 	}
 

@@ -116,7 +116,7 @@ window.onload = function load() {
 		}
 
 
-		$(destinationlist).append("<li id='"+i+"' data-link=\""+encodeURIComponent(name).toLowerCase().replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></li>");
+		$(destinationlist).append("<li><a id='"+i+"' href=\"#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-2' title=\""+source+"\"><span class='source'>"+parsesource(source)+"</span></span> <span class='rarity col-xs-3'>"+rarity+"</span></a></li>");
 
 		if (!$("select.sourcefilter option[value='"+parsesource(source)+"']").length) {
 			$("select.sourcefilter").append("<option title=\""+source+"\" value='"+parsesource(source)+"'>"+source+"</option>")
@@ -134,26 +134,13 @@ window.onload = function load() {
 	options.listClass = "magic";
 	magiclist = search(options);
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location = "#"+$(this).attr("data-link");
-	});
-
 	$(".typefilter option").sort(asc_sort).appendTo(".typefilter");
 	$("select.typefilter option[value=All]").prependTo(".typefilter");
 	$(".typefilter").val("All");
 
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
+	} else $("#listcontainer a").get(0).click();
 
 	$("form#filtertools select").change(function(){
 		var typefilter = $("select.typefilter").val();

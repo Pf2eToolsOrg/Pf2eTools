@@ -50,7 +50,7 @@ window.onload = function load() {
 	for (var i = 0; i < classlist.length; i++) {
 		var curclass = classlist[i];
 
-		$("ul.classes").append("<li id='"+i+"' title='"+curclass.name+"' data-link='"+encodeURI(curclass.name).toLowerCase()+"'><span class='name'>"+curclass.name+"</span></li>");
+		$("ul.classes").append("<li><a id='"+i+"' title='"+curclass.name+"' href='#"+encodeURI(curclass.name).toLowerCase()+"'><span class='name'>"+curclass.name+"</span></a></li>");
 
 	}
 
@@ -59,22 +59,9 @@ window.onload = function load() {
 		listClass: "classes"
 	});
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location.hash = "#"+$(this).attr("data-link");
-	});
-
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
+	} else $("#listcontainer a").get(0).click();
 }
 
 function loadhash (id) {

@@ -95,7 +95,7 @@ window.onload = function load() {
 		var cr = monsters[i].cr;
 
 
-		$("ul#monsters").append("<li id="+i+" data-link='"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></li>");
+		$("ul#monsters").append("<li><a id="+i+" href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span title=\""+origsource+"\" class='col-xs-2 source source"+source+"'>("+source+")</span> <span class='type col-xs-3'>"+type+"</span> <span class='col-xs-3 cr'>CR "+cr+" </span></a></li>");
 
 		if (!$("select.typefilter:contains('"+type+"')").length && !$("select.typefilter:contains('"+type+" \\(')").length) {
 			$("select.typefilter").append("<option value='"+type+"'>"+type+"</option>")
@@ -129,22 +129,9 @@ window.onload = function load() {
 		valueNames: ['name', 'source', 'type', 'cr']
 	})
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location = "#"+$(this).attr("data-link");
-	});
-
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
+	} else $("#listcontainer a").get(0).click();
 
 	// filtering
 	$("form#filtertools select").change(function(){
