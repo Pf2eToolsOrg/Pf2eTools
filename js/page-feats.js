@@ -24,7 +24,7 @@ window.onload = function load() {
 		const CLS_COL_2 = "source col-xs-1 col-xs-1-7";
 		const CLS_COL_3 = "ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='" + CLS_COL_1 + "'>"+name+"</span> <span class='" + CLS_COL_2 + "' title='"+curfeat.source+"'>"+parse_sourceToAbv(curfeat.source)+"</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></li>");
+		$("ul.feats").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='" + CLS_COL_1 + "'>"+name+"</span> <span class='" + CLS_COL_2 + "' title='"+curfeat.source+"'>"+parse_sourceToAbv(curfeat.source)+"</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
 
 		if (!$("select.sourcefilter:contains(\""+parse_sourceToFull(curfeat.source)+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parse_sourceToAbv(curfeat.source)+"'>"+parse_sourceToFull(curfeat.source)+"</option>");
@@ -64,23 +64,9 @@ window.onload = function load() {
 		});
 	});
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location = "#"+$(this).attr("data-link");
-	});
-
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
-
+	} else $("#listcontainer a").get(0).click();
 }
 
 function loadhash (id) {

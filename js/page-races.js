@@ -53,7 +53,7 @@ window.onload = function load() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		$("ul.races").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></li>");
+		$("ul.races").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></a></li>");
 
 		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
@@ -93,22 +93,9 @@ window.onload = function load() {
 		});
 	});
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location = "#"+$(this).attr("data-link");
-	});
-
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
+	} else $("#listcontainer a").get(0).click();
 }
 
 function loadhash (id) {

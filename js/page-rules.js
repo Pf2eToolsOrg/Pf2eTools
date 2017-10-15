@@ -22,7 +22,7 @@ window.onload = function load() {
 		var name = currules.name;
 		var basedon = "";
 		var rulesid = currules.id.toString();
-		$("ul.rules."+currules.parentlist).append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></li>");
+		$("ul.rules."+currules.parentlist).append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-12'>"+name+"</span> <span class='id' style='display: none;'>"+rulesid+"</span></a></li>");
 	}
 
 	var options = {
@@ -41,22 +41,9 @@ window.onload = function load() {
 		}).appendTo(this);
 	});
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location = "#"+$(this).attr("data-link");
-	});
-
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
+	} else $("#listcontainer a").get(0).click();
 
 	// reset button
 	$("button#reset").click(function() {

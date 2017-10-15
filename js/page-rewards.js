@@ -8,7 +8,7 @@ window.onload = function load() {
 		var curreward = rewardlist[i];
 		var name = curreward.name;
 		let displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-		$("ul.rewards").append("<li id='"+i+"' data-link='"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name'>"+displayName+"</span></li>");
+		$("ul.rewards").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name'>"+displayName+"</span></a></li>");
 	}
 
 	const list = search({
@@ -24,22 +24,9 @@ window.onload = function load() {
 		list.filter(item => item.values().name.startsWith(type))
 	})
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location = "#"+$(this).attr("data-link");
-	});
-
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
+	} else $("#listcontainer a").get(0).click();
 }
 
 function loadhash (id) {
@@ -60,5 +47,4 @@ function loadhash (id) {
 	texthtml += utils_combineText(textlist, "p");
 
 	$("tr#text").after("<tr class='text'><td colspan='6'>"+texthtml+"</td></tr>");
-
 }
