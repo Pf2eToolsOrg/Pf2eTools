@@ -199,22 +199,9 @@ window.onload = function load() {
 		listClass: "spells"
 	});
 
-	$("ul.list li").mousedown(function(e) {
-		if (e.which === 2) {
-			window.open("#"+$(this).attr("data-link"), "_blank").focus();
-			e.preventDefault();
-			e.stopPropagation();
-			return;
-		}
-	});
-
-	$("ul.list li").click(function(e) {
-		window.location = "#"+$(this).attr("data-link");
-	});
-
 	if (window.location.hash.length) {
 		window.onhashchange();
-	} else $("ul.list li:eq(0)").click();
+	} else $("#listcontainer a").get(0).click();
 
 	$("form#filtertools select").change(function(){
 		var levelfilter = $("select.levelfilter").val();
