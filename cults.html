@@ -14,7 +14,7 @@
 	I don't own any of the XML data anyway.
 -->
 
-	<title>Spells - 5etools</title>
+	<title>Cults - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -26,8 +26,8 @@
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
 
-			<h1>Spells List</h1>
-			<p>Search by name on the left, click spell name to display on the right.</p>
+			<h1>Cults List</h1>
+			<p>Search by name on the left, click cult name to display on the right.</p>
 		</div>
 	</header>
 	<nav class="container">
@@ -56,9 +56,9 @@
 				<ul class="dropdown-menu">
 					<li role="presentation"><a href="bestiary.html">Bestiary</a></li>
 					<li role="presentation"><a href="conditions.html">Conditions</a></li>
-					<li role="presentation"><a href="cults.html">Cults</a></li>
+					<li role="presentation" class="active"><a href="cults.html">Cults</a></li>
 					<li role="presentation"><a href="items.html">Items</a></li>
-					<li role="presentation" class="active"><a href="spells.html">Spells</a></li>
+					<li role="presentation"><a href="spells.html">Spells</a></li>
 					<li role="presentation"><a href="psionics.html">Psionics</a></li>
 					<li role="presentation"><a href="rewards.html">Other Rewards</a></li>
 				</ul>
@@ -76,87 +76,43 @@
 	<main class="container bodyContent">
 
 		<div class="row">
-			<div class="col-md-7" id="listcontainer">
+			<div class="col-sm-6" id="listcontainer">
+
 				<div class="input-group">
-					<input type="search" id="search" class="search form-control" placeholder="Find spell...">
+					<input type="search" id="search" class="search form-control" placeholder="Find cult...">
 					<span class="input-group-btn">
 							<button class="btn btn-default" type="button" id="reset">Reset</button>
 						</span>
 				</div>
+				<br>
 				<form id="filtertools">
-					<select class="sourcefilter">
-						<option value="All">All Sources</option>
-					</select>
-					<!--<select class="3ppfilter">-->
-						<!--<option value="All">Third Party</option>-->
-						<!--<option value="None">No Third Party</option>-->
-						<!--<option value="Only">Third Party Only</option>-->
-					<!--</select>-->
-					<select class="levelfilter">
-						<option value="All">All Levels</option>
-					</select>
-					<select class="schoolfilter">
-						<option value="All">All Schools</option>
-					</select>
-					<select class="ritualfilter">
-						<option value="All">All Spells</option>
-						<option value="Rituals">Rituals Only</option>
-					</select>
-					<select class="rangefilter">
-						<option value="All">All Ranges</option>
-					</select>
-					<select class="classfilter">
-						<option value="All">All Classes</option>
-					</select>
 					<span class="sortlabel btn-group">
-						<button class="col-xs-3 col-xs-3-7 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-						<button class="col-xs-1 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
-						<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="level">Level</button>
-						<button class="col-xs-2 col-xs-2-5 sort btn btn-default btn-xs" type="button" data-sort="school">School</button>
-						<!--<button class="col-xs-2 sort btn btn-default btn-xs" type="button" disabled>Classes</button>-->
-						<button class="col-xs-3 col-xs-3-1 sort btn btn-default btn-xs" type="button" data-sort="range">Range</button>
-					</span>
+							<button class="col-xs-12 sort btn btn-default btn-xs" type="button" data-sort="name" sortby="asc">Name</button>
+						</span>
 				</form>
-
-				<ul class="list spells">
+				<ul class="list cults" style="height: 100%; max-height: 600px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
 
 				</ul>
 			</div>
-			<div class="col-md-5">
-				<table id="stats">
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-					<tr>
-						<th id="name" colspan="6">Name</th>
-					</tr>
-					<tr>
-						<td id="levelschoolritual" colspan="6"><span id="level">1st-level</span> <span id="school">evocation</span> <span id="ritual">(ritual)</span></td>
-					</tr>
-					<tr>
-						<td id="castingtime" colspan="6">Casting Time: <span>1 action</span></td>
-					</tr>
-					<tr>
-						<td id="range" colspan="6">Range: <span>30 feet</span></td>
-					</tr>
-					<tr>
-						<td id="components" colspan="6">Components: <span>V, S, M (salt)</span></td>
-					</tr>
-					<tr>
-						<td id="duration" colspan="6">Duration: <span>Concentration, up to 1 minute</span></td>
-					</tr>
-					<tr id="text">
-						<td class="divider" colspan="6">
-							<div></div>
-						</td>
-					</tr>
-					<tr>
-						<td id="classes" colspan="6">Classes: <span>wizard</span></td>
-					</tr>
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-				</table>
+			<div class="col-sm-6">
+				<div style="height: 100%; max-height: 660px; overflow-y: auto; overflow-x: visible; padding-top: 1em;">
+					<table id="stats">
+						<tr>
+							<th class="border" colspan="6"></th>
+						</tr>
+						<tr>
+							<th id="name" colspan="6">Name</th>
+						</tr>
+						<tr id="text">
+							<td class="divider" colspan="6">
+								<div></div>
+							</td>
+						</tr>
+						<tr>
+							<th class="border" colspan="6"></th>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</main>
@@ -164,11 +120,10 @@
 
 	</footer>
 
-	<script type="text/javascript" src="js/utils.js"></script>
 	<script type="text/javascript" src="js/history.js"></script>
-	<script type="text/javascript" src="js/page-spells.js"></script>
-	<script type="text/javascript" src="data/spells.json"></script>
-	<script type="text/javascript" src="data/spells-bols.json"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/page-cults.js"></script>
+	<script type="text/javascript" src="data/cults.json"></script>
 	<script type="text/javascript" src="js/list.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
