@@ -3,7 +3,7 @@
 window.onload = loadparser
 
 function moveon(cur) {
-	return (!curline.toUpperCase().indexOf("ACTIONS") || !curline.toUpperCase().indexOf("LEGENDARY ACTIONS") || !curline.toUpperCase().indexOf("REACTIONS"))
+	return (!cur.toUpperCase().indexOf("ACTIONS") || !cur.toUpperCase().indexOf("LEGENDARY ACTIONS") || !cur.toUpperCase().indexOf("REACTIONS"))
 }
 
 function loadparser() {
