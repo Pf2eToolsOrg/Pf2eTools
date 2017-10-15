@@ -285,7 +285,7 @@ function loadhash (id) {
 	}
 
 	$("td.features, td.slots, td.newfeature").each(function() {
-		if ($(this).html() === "") $(this).html("—")
+		if ($(this).html() === "") $(this).html("\u2014")
 	});
 
 	$("div#subclasses span").remove();
