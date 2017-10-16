@@ -1,13 +1,3 @@
-function parsesize (size) {
-	if (size === "T") size = "Tiny";
-	if (size === "S") size = "Small";
-	if (size === "M") size = "Medium";
-	if (size === "L") size = "Large";
-	if (size === "H") size = "Huge";
-	if (size === "G") size = "Gargantuan";
-	return size;
-}
-
 function parseschool (school) {
 	if (school === "A") return "abjuration";
 	if (school === "EV") return "evocation";
@@ -29,94 +19,30 @@ function parsespelllevel (level) {
 	return level+"th";
 }
 
-const SELF_RANGE_OFFSET = -4;
-const FEET_PER_MILE = 5280;
-const SELF_RANGE = -1;
-const TOUCH_RANGE = 1;
-const SIGHT_RANGE = 900000000;
-const UNLIMITED_RANGE = 900000001;
-const SPECIAL_RANGE = 1000000000;
-const VARIABLE_RANGE = 1000000001;
-const UNKNOWN_RANGE = 1000000002;
-const DISTANCE_REGEX = /(\d+) feet|(1) foot/; // eg "120 feet" or "1 foot"
-const SELF_AREA_RADIUS_REGEX = /self \((\d+)-foot radius\)/; // eg "Self (10-foot radius)"
-const SELF_AREA_SPHERE_REGEX = /self \((\d+)-foot-radius sphere\)/; // eg "Self (10-foot-radius sphere)"
-const SELF_AREA_CUBE_REGEX = /self \((\d+)-foot cube\)/; // eg "Self (10-foot-radius sphere)"
-const SELF_AREA_HEMISPHERE_REGEX = /self \((\d+)-foot-radius hemisphere\)/; // eg "Self (10-foot-radius hemisphere)"
-const SELF_AREA_LINE_REGEX = /self \((\d+)-foot line\)/; // eg "Self (10-foot line)"
-const SELF_AREA_CONE_REGEX = /self \((\d+)-foot cone\)/; // eg "Self (10-foot cone)"
-const MILE_DISTANCE_REGEX = /(\d+) miles|(1) mile/; // eg "500 miles" or "1 mile"
-const MILE_SELF_AREA_REGEX = /self \((\d+)-mile .*\)/; // eg "Self (5-mile radius)"
 function normaliserange(range) {
+	var out=0;
+	var adjust = 0;
 	range = range.toLowerCase();
-	if (range === "self") return SELF_RANGE;
-	if (range === "touch") return TOUCH_RANGE;
-	if (range === "sight") return SIGHT_RANGE;
-	if (range === "unlimited") return UNLIMITED_RANGE;
-	if (range === "special") return SPECIAL_RANGE;
-	if (range === "varies") return VARIABLE_RANGE;
-
-	var out = "";
-	var matchesDistance = DISTANCE_REGEX.exec(range.trim());
-	if (matchesDistance) {
-		out = matchesDistance[1] === undefined ? matchesDistance[2] : matchesDistance[1];
-		return parseInt(out);
+	if (range === "self") return -1;
+	if (range === "touch") return 2;
+	if (range === "sight") return 2*5280*12; // typically a few miles out-of-doors; the following values are simply very large numbers appropriately ordered in size
+	if (range === "unlimited on the same plane") return 900000000; // a value from BoLS, so that it still works if/when we add it back in
+	if (range === "unlimited") return 900000001;
+	if (range === "special") return 1000000000;
+	if (range === "varies") return 1000000001;
+	if (range.substr(0, 6) === "self (") {
+		range = (range.substr(6).replace("-"," "));
+		adjust = 1; // This will make the "self (" ranges appear immediately after the equivalent non-self ranges
 	}
-
-	var matchesSelfAreaRadius = SELF_AREA_RADIUS_REGEX.exec(range.trim());
-	if (matchesSelfAreaRadius) {
-		return parseInt(matchesSelfAreaRadius[1]) + 3;
-	}
-
-	var matchesSelfAreaSphere = SELF_AREA_SPHERE_REGEX.exec(range.trim());
-	if (matchesSelfAreaSphere) {
-		return parseInt(matchesSelfAreaSphere[1]) + 4;
-	}
-
-	var matchesSelfAreaCube = SELF_AREA_CUBE_REGEX.exec(range.trim());
-	if (matchesSelfAreaCube) {
-		return parseInt(matchesSelfAreaCube[1]) + 5;
-	}
-
-	var matchesSelfAreaHemisphere = SELF_AREA_HEMISPHERE_REGEX.exec(range.trim());
-	if (matchesSelfAreaHemisphere) {
-		return parseInt(matchesSelfAreaHemisphere[1]) + 6;
-	}
-
-	var matchesSelfAreaLine = SELF_AREA_LINE_REGEX.exec(range.trim());
-	if (matchesSelfAreaLine) {
-		return parseInt(matchesSelfAreaLine[1]) + 7;
-	}
-
-	var matchesSelfAreaCone = SELF_AREA_CONE_REGEX.exec(range.trim());
-	if (matchesSelfAreaCone) {
-		return parseInt(matchesSelfAreaCone[1]) + SELF_RANGE_OFFSET;
-	}
-
-	var matchesMileDistance = MILE_DISTANCE_REGEX.exec(range.trim());
-	if (matchesMileDistance) {
-		out = matchesMileDistance[1] === undefined ? matchesMileDistance[2] : matchesMileDistance[1];
-		return parseInt(out) * FEET_PER_MILE;
-	}
-
-	var matchesSelfMileArea = MILE_SELF_AREA_REGEX.exec(range.trim());
-	if (matchesSelfMileArea) {
-		return (parseInt(matchesSelfMileArea[1]) * FEET_PER_MILE) - 7;
-	}
-
-	return UNKNOWN_RANGE;
-}
-
-function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
-}
-
-function asc_sort_range(a, b){
-	return (parseInt(b.value)) < parseInt((a.value)) ? 1 : -1;
-}
-
-function dec_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
+	if (range.indexOf("line)") > -1) adjust += 1;
+	if (range.indexOf("radius)") > -1) adjust += 2;
+	if (range.indexOf("cone)") > -1) adjust += 3;
+	if (range.indexOf("hemisphere)") > -1) adjust += 4;
+	if (range.indexOf(" sphere)") > -1) adjust += 5;
+	if (range.indexOf("cube)") > -1) adjust += 6;
+	if (range.indexOf(" ") > -1) out = 12*parseInt(range.substr(0,range.indexOf(" "))); // convert the out value to inches (to make single feet range differences larger than any adjustment)
+	if (range.indexOf("mile") > -1) out = out * 5280;
+	return out+adjust;
 }
 
 window.onload = function load() {
@@ -281,8 +207,8 @@ function sortspells(a, b, o) {
 	}
 
 	if (o.valueName === "range") {
-		if (normaliserange(b._values.range.toLowerCase()) === normaliserange(a._values.range)) return compareNames(a, b);
-		return (normaliserange(b._values.range.toLowerCase()) > normaliserange(a._values.range)) ? 1 : -1;
+		if (normaliserange(b._values.range) === normaliserange(a._values.range)) return compareNames(a, b);
+		return (normaliserange(b._values.range) > normaliserange(a._values.range)) ? 1 : -1;
 	}
 
 	return 0;

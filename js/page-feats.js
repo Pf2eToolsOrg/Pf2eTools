@@ -1,11 +1,3 @@
-function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
-}
-
-function dec_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
-}
-
 var tabledefault = "";
 
 window.onload = function load() {
@@ -24,7 +16,7 @@ window.onload = function load() {
 		const CLS_COL_2 = "source col-xs-1 col-xs-1-7";
 		const CLS_COL_3 = "ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='" + CLS_COL_1 + "'>"+name+"</span> <span class='" + CLS_COL_2 + "' title='"+curfeat.source+"'>"+parse_sourceToAbv(curfeat.source)+"</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
+		$("ul.feats").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='" + CLS_COL_1 + "'>"+name+"</span> <span class='" + CLS_COL_2 + "' title='"+parse_sourceToFull(curfeat.source)+"'>"+parse_sourceToAbv(curfeat.source)+"</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
 
 		if (!$("select.sourcefilter:contains(\""+parse_sourceToFull(curfeat.source)+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parse_sourceToAbv(curfeat.source)+"'>"+parse_sourceToFull(curfeat.source)+"</option>");
