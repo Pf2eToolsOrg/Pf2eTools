@@ -1,17 +1,3 @@
-
-function tagcontent (curitem, tag, multi=false) {
-	if (!curitem.getElementsByTagName(tag).length) return false;
-	return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
-}
-
-function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
-}
-
-function dec_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
-}
-
 window.onload = function load() {
 	contentdefault = $("#rulescontent").html();
 

@@ -1,4 +1,3 @@
-
 function parsesource (src) {
 	let source = src.trim();
 	if (source === "Curse of Strahd") source = "CoS";
@@ -198,14 +197,6 @@ window.onload = function load() {
 			display: "none"
 		})
 	});
-}
-
-function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
-}
-
-function desc_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 function sortitems(a, b, o) {
