@@ -1,13 +1,3 @@
-function parsesize (size) {
-	if (size == "T") size = "Tiny";
-	if (size == "S") size = "Small";
-	if (size == "M") size = "Medium";
-	if (size == "L") size = "Large";
-	if (size == "H") size = "Huge";
-	if (size == "G") size = "Gargantuan";
-	return size;
-}
-
 function parsesource (src) {
 	let source = src;
 	if (source === "Player's Handbook") source = "PHB";
@@ -18,19 +8,6 @@ function parsesource (src) {
 	if (source === "Plane Shift Amonkhet") source = "PSA";
 	if (source === "Tomb of Annihilation") source = "ToA";
 	return source;
-}
-
-function tagcontent (curitem, tag, multi=false) {
-	if (!curitem.getElementsByTagName(tag).length) return false;
-	return curitem.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
-}
-
-function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
-}
-
-function dec_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
 
 var tabledefault = "";

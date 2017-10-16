@@ -1,42 +1,3 @@
-function parsesize (size) {
-	if (size === "T") size = "Tiny";
-	if (size === "S") size = "Small";
-	if (size === "M") size = "Medium";
-	if (size === "L") size = "Large";
-	if (size === "H") size = "Huge";
-	if (size === "G") size = "Gargantuan";
-	return size;
-}
-
-function parseschool (school) {
-	if (school === "A") return "abjuration";
-	if (school === "EV") return "evocation";
-	if (school === "EN") return "enchantment";
-	if (school === "I") return "illusion";
-	if (school === "D") return "divination";
-	if (school === "N") return "necromancy";
-	if (school === "T") return "transmutation";
-	if (school === "C") return "conjuration";
-	return false;
-}
-
-function parsespelllevel (level) {
-	if (isNaN (level)) return false;
-	if (level === "0") return "cantrip";
-	if (level === "1") return level+"st";
-	if (level === "2") return level+"nd";
-	if (level === "3") return level+"rd";
-	return level+"th";
-}
-
-function asc_sort(a, b){
-	return ($(b).text()) < ($(a).text()) ? 1 : -1;
-}
-
-function dec_sort(a, b){
-	return ($(b).text()) > ($(a).text()) ? 1 : -1;
-}
-
 var tabledefault="";
 var classtabledefault ="";
 
@@ -44,18 +5,15 @@ window.onload = function load() {
 	tabledefault = $("#stats").html();
 	statsprofdefault = $("#statsprof").html();
 	classtabledefault = $("#classtable").html();
-
 	var classlist = classdata.compendium.class;
 
 	for (var i = 0; i < classlist.length; i++) {
 		var curclass = classlist[i];
-
-		$("ul.classes").append("<li><a id='"+i+"' title='"+curclass.name+"' href='#"+encodeURI(curclass.name).toLowerCase()+"'><span class='name'>"+curclass.name+"</span></a></li>");
-
+		$("ul.classes").append("<li><a id='"+i+"' href='#"+encodeURI(curclass.name).toLowerCase()+"' title='"+curclass.name+"'><span class='name col-xs-9'>"+curclass.name+"</span><span class='source col-xs-3' title='"+parse_sourceToFull(curclass.source)+"'>"+curclass.source+"</span></a></li>");
 	}
 
 	const list = search({
-		valueNames: ['name'],
+		valueNames: ['name', 'source'],
 		listClass: "classes"
 	});
 

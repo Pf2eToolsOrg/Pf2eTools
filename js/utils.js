@@ -371,6 +371,23 @@ function parse_attAbvToFull(attribute) {
 	return ABV_TO_FULL[attribute.toLowerCase()];
 }
 
+function parsesize (size) {
+	if (size === "T") size = "Tiny";
+	if (size === "S") size = "Small";
+	if (size === "M") size = "Medium";
+	if (size === "L") size = "Large";
+	if (size === "H") size = "Huge";
+	if (size === "G") size = "Gargantuan";
+	if (size === "V") size = "Varies";
+	return size;
+}
+
+function getmodifiertext (score) {
+	var modifier = Math.floor((score - 10) / 2);
+	if (modifier >= 0) modifier = "+"+modifier;
+	return modifier;
+}
+
 const ARMR_LIGHT = "light";
 const ARMR_MEDIUM = "medium";
 const ARMR_HEAVY = "heavy";
@@ -387,6 +404,8 @@ function parse_armorToAbv(armor) {
 const SRC_PHB = "PHB";
 const SRC_EEPC = "EEPC";
 const SRC_SCAG = "SCAG";
+const SRC_UAA = "UAA";
+const SRC_UATMC = "UATMC";
 const SRC_UAMystic = "UAMystic";
 const SRC_UAStarterSpells = "UAStarterSpells";
 const SRC_UAModern = "UAModern";
@@ -395,15 +414,18 @@ const SRC_UAEBB = "UAEB";
 const SRC_UAFT = "UAFT";
 const SRC_UAFFS = "UAFFS";
 const SRC_UAFFR = "UAFFR";
+const SRC_UATRR = "UATRR";
 const SRC_PSK = "PSK";
 const SRC_BOLS_3PP = "BoLS 3pp";
 
 const UA_PREFIX = "Unearthed Arcana: ";
 const PS_PREFIX = "Plane Shift: ";
 function parse_sourceToFull (source) {
-	if (source === SRC_PHB) source = "Player's Handbook";
-	if (source === SRC_EEPC) source = "Elemental Evil Player's Companion";
-	if (source === SRC_SCAG) source = "Sword Coast Adventurer's Guide";
+	if (source === SRC_PHB) source = "Player\u2019s Handbook";
+	if (source === SRC_EEPC) source = "Elemental Evil Player\u2019s Companion";
+	if (source === SRC_SCAG) source = "Sword Coast Adventurer\u2019s Guide";
+	if (source === SRC_UAA) source = UA_PREFIX + "Artificer";
+	if (source === SRC_UATMC) source = UA_PREFIX + "The Mystic Class";
 	if (source === SRC_UAMystic) source = UA_PREFIX + "The Mystic Class";
 	if (source === SRC_UAStarterSpells) source = UA_PREFIX + "Starter Spells";
 	if (source === SRC_UAModern) source = UA_PREFIX + "Modern Magic";
@@ -414,6 +436,7 @@ function parse_sourceToFull (source) {
 	if (source === SRC_UAFFR) source = UA_PREFIX + "Feats for Races";
 	if (source === SRC_PSK) source = PS_PREFIX + "Kaladesh";
 	if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
+	if (source === SRC_UATRR) source = UA_PREFIX + "The Ranger, Revised";
 	return source;
 }
 const sourceToAbv = {};
@@ -486,4 +509,18 @@ function search(options) {
 		list.filter();
 	})
 	return list
+}
+
+// SORTING =============================================================================================================
+
+function asc_sort(a, b){
+	return ($(b).text()) < ($(a).text()) ? 1 : -1;
+}
+
+function asc_sort_range(a, b){
+	return (parseInt(b.value)) < parseInt((a.value)) ? 1 : -1;
+}
+
+function desc_sort(a, b){
+	return ($(b).text()) > ($(a).text()) ? 1 : -1;
 }
