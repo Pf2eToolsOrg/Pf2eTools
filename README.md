@@ -41,4 +41,4 @@ You can convert stat blocks to JSON for importing via [this converter](converter
 
 ## License
 
-This project is licensed under the terms of [the MIT license](/blob/master/LICENSE).
+This project is licensed under the terms of the MIT license.
