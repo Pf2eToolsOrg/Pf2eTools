@@ -53,8 +53,6 @@ form#filtertools small:hover {
 }
 .sortlabel {
 	display: block;
-	/*float: right;
-	text-align: right;*/
 }
 ul.list {
 	list-style-type: none;
@@ -85,8 +83,9 @@ ul.list li:active {
 ul.list li span.name {
 	font-weight: bold;
 }
-ul.list li span.level, ul.list li span.classes, ul.list li span.school {
-	/*font-size: 0.8em;*/
+ul.list li span.level,
+ul.list li span.classes,
+ul.list li span.school {
 	display: inline-block;
 	text-transform: capitalize;
 }
@@ -139,7 +138,8 @@ span.sourceEEPC {
 	color: white;
 	text-shadow: 0 0 3px #000;
 }
-table#stats, table#statsprof {
+table#stats,
+table#statsprof {
 	font-family: 'Convergence', sans-serif;
 	background: #fdf1dc;
 	border-radius: 10px;
@@ -147,11 +147,11 @@ table#stats, table#statsprof {
 	font-size: 0.9em;
 	table-layout: fixed;
 }
-table#stats td, table#stats th {
+table#stats td,
+table#stats th {
 	padding: 1px 0.3em;
 }
 table#stats th {
-	/*color: rgb(0, 107, 196);*/
 	color: #922610;
 }
 table#stats span {
@@ -166,7 +166,6 @@ table#stats tr.text li {
 }
 
 /* sub-tables */
-
 table#stats table {
 	width: 100%;
 	margin-bottom: 5px;
@@ -180,12 +179,6 @@ table#stats table caption {
 table#stats table tbody tr:nth-child(odd) {
 	background: #e4d8c3;
 }
-table#stats table tbody tr {
-	/* stub */
-}
-table#stats table thead tr th {
-	/* stub */
-}
 th.border {
 	height: 10px;
 	border: 1px solid black;
@@ -193,7 +186,6 @@ th.border {
 }
 td.divider div {
 	background: #922610;
-	/*background: #000;*/
 	height: 4px;
 	margin: 4px 0;
 }
@@ -212,10 +204,18 @@ tr.text td {
 td#levelschoolritual {
 	font-style: italic;
 }
-table#stats #castingtime, table#stats #range, table#stats #components, table#stats #duration, table#stats #classes {
+table#stats #castingtime,
+table#stats #range,
+table#stats #components,
+table#stats #duration,
+table#stats #classes {
 	font-weight: bold;
 }
-table#stats #castingtime span, table#stats #range span, table#stats #components span, table#stats #duration span, table#stats #classes span {
+table#stats #castingtime span,
+table#stats #range span,
+table#stats #components span,
+table#stats #duration span,
+table#stats #classes span {
 	font-weight: normal !important;
 }
 table#stats td#typerarityattunement {
@@ -228,9 +228,6 @@ table#stats span.name {
 tr.text td {
 	padding-bottom: 0.7em !important;
 	color: black !important;
-}
-td#source {
-	/*font-weight: bold;*/
 }
 th#name {
 	font-size: 1.8em;
@@ -278,16 +275,19 @@ table#stats tr.trait td.subsuboption {
 	font-size: 0.9em;
 	padding: 1px 1.5em;
 }
-tr#actions td, tr#reactions td, tr#legendaries td {
+tr#actions td,
+tr#reactions td,
+tr#legendaries td {
 	font-size: 1.6em;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
-	/*border-bottom: 1px solid #a8513b;*/
 	border-bottom: 1px solid #000;
 	vertical-align: bottom !important;
 	padding-left: 0.2em;
 }
-tr#actions td span, tr#reactions td span, tr#legendaries td span {
+tr#actions td span,
+tr#reactions td span,
+tr#legendaries td span {
 	display: block;
 	margin-bottom: -0.3em;
 	font-weight: 100;
@@ -295,11 +295,17 @@ tr#actions td span, tr#reactions td span, tr#legendaries td span {
 tr#abilitynames th {
 	color: inherit;
 }
-tr.trait td, tr.action td, tr.reaction td, tr.legendary td {
+tr.trait td,
+tr.action td,
+tr.reaction td,
+tr.legendary td {
 	padding-bottom: 0.7em !important;
 	color: black !important;
 }
-tr.trait:last-of-type td, tr.action:last-of-type td, tr.reaction:last-of-type td, tr.legendary:last-of-type td {
+tr.trait:last-of-type td,
+tr.action:last-of-type td,
+tr.reaction:last-of-type td,
+tr.legendary:last-of-type td {
 	padding-bottom: 0 !important;
 }
 p.first {
@@ -308,10 +314,10 @@ p.first {
 p.second {
 	margin-top: 1em;
 }
-tr td>p.spells {
+tr td > p.spells {
 	margin-top: 1em !important;
 }
-tr td>p.spells~p.spells {
+tr td > p.spells ~ p.spells {
 	margin-top: 0 !important;
 }
 #stats span.roller {
@@ -330,7 +336,9 @@ div#lootoutput {
 	padding-top: 1em;
 	clear: both;
 }
-#crcalc input[type=number], #crcalc input[type=checkbox], .inputwrap {
+#crcalc input[type=number],
+#crcalc input[type=checkbox],
+.inputwrap {
 	left: 15em;
 	text-align: right;
 	clear: both;
@@ -354,7 +362,8 @@ div#lootoutput {
 	text-align: center;
 	display: inline-block;
 }
-input[type=number]#hd::-webkit-inner-spin-button, input[type=number]#hd::-webkit-outer-spin-button {
+input[type=number]#hd::-webkit-inner-spin-button,
+input[type=number]#hd::-webkit-outer-spin-button {
 	margin: 0;
 }
 #crcalc label span.explanation {
@@ -416,12 +425,15 @@ input[type=number]#hd::-webkit-inner-spin-button, input[type=number]#hd::-webkit
 #expectedcr {
 	text-align: center;
 }
-td#hp, td#prof, td#equipment {
+td#hp,
+td#prof,
+td#equipment {
 	font-size: 0.8em;
 	padding: 0.7em;
 }
-td#hp h5, td#prof h5, td#equipment h5 {
-	/*color: #922610;*/
+td#hp h5,
+td#prof h5,
+td#equipment h5 {
 	font-family: serif;
 	font-weight: 500;
 	font-size: 1.5em;
@@ -508,9 +520,6 @@ table#stats td._class_feature.feature table {
 	margin: 0 1.2em;
 	width: calc(100% - 2.4em);
 }
-table#stats td._class_feature table caption {
-	/*color: black;*/
-}
 table#stats td._class_feature table th {
 	color: black;
 }
@@ -531,7 +540,8 @@ table#stats td._class_feature p.spellabilitysubtext span {
 #classtable table th {
 	color: black;
 }
-#classtable table tr:nth-child(odd) td, #rulescontent table tbody tr:nth-child(odd) td {
+#classtable table tr:nth-child(odd) td,
+#rulescontent table tbody tr:nth-child(odd) td {
 	background: lightgrey;
 }
 aside#listcontainer {
@@ -596,7 +606,7 @@ div#subclasses {
 	padding: 0 1em 0.5em;
 	text-align: center;
 }
-div#subclasses>span {
+div#subclasses > span {
 	display: inline-block;
 	font-size: 0.8em;
 	margin: 0.2em;
@@ -629,20 +639,6 @@ img.token:hover {
 	max-width: none;
 	right: 0;
 }
-
-/*
-img.token:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    right: 0;
-    height: 5em;
-    width: 5em;
-    background-image: url(../img/Gauth.png);
-    background-size: 5em 5em;
-    background-repeat: no-repeat;
-    }*/
-
 .classes table#stats {
 	font-family: inherit;
 }
@@ -653,10 +649,14 @@ tr.trait td {
 	padding-bottom: 0.7em !important;
 	color: black !important;
 }
-table#stats #ability, table#stats #size, table#stats #speed {
+table#stats #ability,
+table#stats #size,
+table#stats #speed {
 	font-weight: bold;
 }
-table#stats #ability span, table#stats #size span, table#stats #speed span {
+table#stats #ability span,
+table#stats #size span,
+table#stats #speed span {
 	font-weight: normal !important;
 }
 table#stats.monster span#speed {
@@ -681,13 +681,21 @@ table#stats p.subtrait {
 	@page {
 		margin: 10mm 20mm;
 	}
-	@page: left {
+
+	@page :left {
 		margin: 10mm 25mm 10mm 15mm;
 	}
-	@page: right {
+
+	@page :right {
 		margin: 10mm 15mm 10mm 25mm;
 	}
-	.divider, nav, hr, #listcontainer, #subclasses, #itemcontainer, #monstercontainer {
+	.divider,
+	nav,
+	hr,
+	#listcontainer,
+	#subclasses,
+	#itemcontainer,
+	#monstercontainer {
 		display: none;
 	}
 	table {
@@ -699,7 +707,8 @@ table#stats p.subtrait {
 		border: 0;
 		border-bottom: 0.25pt solid black;
 	}
-	strong, .name {
+	strong,
+	.name {
 		font-weight: 600;
 	}
 	header {
