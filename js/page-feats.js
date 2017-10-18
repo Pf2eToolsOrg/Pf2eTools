@@ -18,7 +18,15 @@ window.onload = function load() {
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
 		$("ul.feats").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='" + CLS_COL_1 + "'>"+name+"</span> <span class='" + CLS_COL_2 + "' title='"+parse_sourceToFull(curfeat.source)+"'>"+parse_sourceToAbv(curfeat.source)+"</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
 
-		if (!$("select.sourcefilter:contains(\""+parse_sourceToFull(curfeat.source)+"\")").length) {
+        let sourceInList = false;
+        $('select.sourcefilter option').each(function(){
+            if (this.value === curfeat.source) {
+                sourceInList = true;
+                return false;
+            }
+        });
+
+		if (!sourceInList) {
 			$("select.sourcefilter").append("<option value='"+parse_sourceToAbv(curfeat.source)+"'>"+parse_sourceToFull(curfeat.source)+"</option>");
 		}
 
