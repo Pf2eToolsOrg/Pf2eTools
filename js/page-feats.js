@@ -18,13 +18,13 @@ window.onload = function load() {
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
 		$("ul.feats").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='" + CLS_COL_1 + "'>"+name+"</span> <span class='" + CLS_COL_2 + "' title='"+parse_sourceToFull(curfeat.source)+"'>"+parse_sourceToAbv(curfeat.source)+"</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
 
-        let sourceInList = false;
-        $('select.sourcefilter option').each(function(){
-            if (this.value === curfeat.source) {
-                sourceInList = true;
-                return false;
-            }
-        });
+		let sourceInList = false;
+		$('select.sourcefilter option').each(function(){
+			if (this.value === curfeat.source) {
+				sourceInList = true;
+				return false;
+			}
+		});
 
 		if (!sourceInList) {
 			$("select.sourcefilter").append("<option value='"+parse_sourceToAbv(curfeat.source)+"'>"+parse_sourceToFull(curfeat.source)+"</option>");
@@ -116,23 +116,23 @@ function loadhash (id) {
 						if (abilityObj.choose[i].from.length === 6) {
 							if (abilityObj.choose[i].textreference === "YES") { // only used in "Resilient"
 								abbArr.push("Increase the chosen ability score by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
-							} else {
-								abbArr.push("Increase one ability score of your choice by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
-							}
 						} else {
-							let from = abilityObj.choose[i].from;
-							let amount = abilityObj.choose[i].amount;
-							let abbChoices = [];
-							for (let j = 0; j < from.length; ++j) {
-								abbChoices.push(parse_attAbvToFull(from[j]));
-							}
-							let abbChoicesText = utils_joinPhraseArray(abbChoices, ", ", " or ");
-							abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY)
+							abbArr.push("Increase one ability score of your choice by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
 						}
+					} else {
+						let from = abilityObj.choose[i].from;
+						let amount = abilityObj.choose[i].amount;
+						let abbChoices = [];
+						for (let j = 0; j < from.length; ++j) {
+							abbChoices.push(parse_attAbvToFull(from[j]));
+						}
+						let abbChoicesText = utils_joinPhraseArray(abbChoices, ", ", " or ");
+						abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY)
 					}
-					return abbArr.join(" ");
 				}
+				return abbArr.join(" ");
 			}
 		}
 	}
+}
 }
