@@ -29,9 +29,6 @@ window.onload = function load() {
 			if (window.location.hash.length) {
 				window.onhashchange();
 			} else $("#listcontainer a").get(0).click();
-		},
-		error: function(jqXHR, textStatus, errorThrown ) {
-			console.log("Failed to load classes JSON: ", jqXHR, textStatus, errorThrown )
 		}
 	});
 }
