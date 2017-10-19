@@ -1,32 +1,43 @@
 var tabledefault="";
 var classtabledefault ="";
 
+let classlist;
+
 window.onload = function load() {
-	tabledefault = $("#stats").html();
-	statsprofdefault = $("#statsprof").html();
-	classtabledefault = $("#classtable").html();
-	var classlist = classdata.compendium.class;
+	let jsonURL = "data/classes.json";
 
-	for (var i = 0; i < classlist.length; i++) {
-		var curclass = classlist[i];
-		$("ul.classes").append("<li><a id='"+i+"' href='#"+encodeURI(curclass.name).toLowerCase()+"' title='"+curclass.name+"'><span class='name col-xs-9'>"+curclass.name+"</span><span class='source col-xs-3' title='"+parse_sourceToFull(curclass.source)+"'>"+curclass.source+"</span></a></li>");
-	}
+	let request = new XMLHttpRequest();
+	request.open('GET', jsonURL, true);
+	request.onload = function() {
+		let data = JSON.parse(this.response);
 
-	const list = search({
-		valueNames: ['name', 'source'],
-		listClass: "classes"
-	});
+		classlist = data.class;
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+		tabledefault = $("#stats").html();
+		statsprofdefault = $("#statsprof").html();
+		classtabledefault = $("#classtable").html();
+
+		for (var i = 0; i < classlist.length; i++) {
+			var curclass = classlist[i];
+			$("ul.classes").append("<li><a id='"+i+"' href='#"+encodeURI(curclass.name).toLowerCase()+"' title='"+curclass.name+"'><span class='name col-xs-9'>"+curclass.name+"</span><span class='source col-xs-3' title='"+parse_sourceToFull(curclass.source)+"'>"+curclass.source+"</span></a></li>");
+		}
+
+		const list = search({
+			valueNames: ['name', 'source'],
+			listClass: "classes"
+		});
+
+		if (window.location.hash.length) {
+			window.onhashchange();
+		} else $("#listcontainer a").get(0).click();
+	};
+	request.send();
 }
 
 function loadhash (id) {
 	$("#stats").html(tabledefault);
 	$("#statsprof").html(statsprofdefault);
 	$("#classtable").html(classtabledefault);
-	var classlist = classdata.compendium.class;
 	var curclass = classlist[id];
 
 	$("th#name").html(curclass.name);
