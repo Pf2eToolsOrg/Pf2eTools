@@ -6,9 +6,11 @@ let classlist;
 window.onload = function load() {
 	let jsonURL = "data/classes.json";
 
-	fetch(jsonURL).then(function(response) {
-		return response.json();
-	}).then(function(data) {
+	let request = new XMLHttpRequest();
+	request.open('GET', jsonURL, true);
+	request.onload = function() {
+		let data = JSON.parse(this.response);
+
 		classlist = data.class;
 
 		tabledefault = $("#stats").html();
@@ -28,7 +30,8 @@ window.onload = function load() {
 		if (window.location.hash.length) {
 			window.onhashchange();
 		} else $("#listcontainer a").get(0).click();
-	});
+	};
+	request.send();
 }
 
 function loadhash (id) {
