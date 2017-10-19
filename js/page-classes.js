@@ -30,8 +30,8 @@ window.onload = function load() {
 				window.onhashchange();
 			} else $("#listcontainer a").get(0).click();
 		},
-		error: function(jqXHR, textStatus, textStatus) {
-			console.log("Failed to load classes JSON: ", jqXHR, textStatus, textStatus)
+		error: function(jqXHR, textStatus, errorThrown ) {
+			console.log("Failed to load classes JSON: ", jqXHR, textStatus, errorThrown )
 		}
 	});
 }
