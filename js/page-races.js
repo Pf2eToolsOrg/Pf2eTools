@@ -96,12 +96,13 @@ function loadhash (id) {
 	var traitlist = currace.trait;
 	$("tr.trait").remove();
 
+	let statsText = "<tr class='text'><td colspan='6'>";
 	for (let n = 0; n < traitlist.length; ++n) {
 		const trait = traitlist[n];
-		const parent = $('table#stats tbody tr:last');
 
 		const header = "<span class='name'>" + trait.name + ".</span> ";
-		parent.before("<tr class='text'><td colspan='6'>" + utils_combineText(traitlist[n].text, "p", header) + "</td></tr>");
+		statsText += utils_combineText(traitlist[n].text, "p", header)
 	}
-	return;
+	statsText += "</td></tr>";
+	$('table#stats tbody tr:last').before(statsText);
 }
