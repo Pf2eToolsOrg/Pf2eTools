@@ -927,9 +927,21 @@ var racedata =
 						"text": [
 							"You have proficiency with artisan's tools (tinker's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time.",
 							"When you create a device, choose one of the following options:",
-							"Clockwork Toy. This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.",
-							"Fire Starter. The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.",
-							"Music Box. When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
+							{
+								"hassubtitle": "YES",
+								"title": "Clockwork Toy",
+								"text": "This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents."
+							},
+							{
+								"hassubtitle": "YES",
+								"title": "Fire Starter",
+								"text": "The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action."
+							},
+							{
+								"hassubtitle": "YES",
+								"title": "Music Box",
+								"text": "When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
+							}
 						]
 					}
 				]
@@ -1050,36 +1062,37 @@ var racedata =
 						]
 					},
 					{
-						"name": "Variant Features (Choose 1)",
-						"optionheading": "YES"
-					},
-					{
-						"name": "Infernal Legacy (PHB)",
+						"name": "Variant Feature (Choose 1)",
 						"text": [
-							"You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the hellish rebuke spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the darkness spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Devil's Tongue",
-						"text": [
-							"You know the vicious mockery cantrip. When your reach 3rd level, you can cast the charm person spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the enthrall spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Hellfire",
-						"text": [
-							"You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the burning hands spell once per day as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the darkness spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Winged",
-						"text": [
-							"You have bat-like wings sprouting form on your shoulder blades. You have a flying speed of 30 feet."
-						],
-						"suboption": "YES"
+							{
+								"title": "Infernal Legacy (PHB)",
+								"text": [
+									"You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the hellish rebuke spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the darkness spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Devil's Tongue",
+								"text": [
+									"You know the vicious mockery cantrip. When your reach 3rd level, you can cast the charm person spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the enthrall spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Hellfire",
+								"text": [
+									"You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the burning hands spell once per day as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the darkness spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Winged",
+								"text": [
+									"You have bat-like wings sprouting form on your shoulder blades. You have a flying speed of 30 feet."
+								],
+								"hassubtitle": "YES"
+							}
+						]
 					},
 					{
 						"name": "Appearance",
@@ -1337,35 +1350,36 @@ var racedata =
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
-						"optionheading": "YES"
-					},
-					{
-						"name": "Keen Senses",
 						"text": [
-							"You have proficiency in the Perception skill."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Elf Weapon Training",
-						"text": [
-							"You have proficiency with the longsword, shortsword, shortbow, and longbow."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Fleet of Foot",
-						"text": [
-							"Your base walking speed increases to 35 feet."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Mask of the Wild",
-						"text": [
-							"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
-						],
-						"suboption": "YES"
+							{
+								"title": "Keen Senses",
+								"text": [
+									"You have proficiency in the Perception skill."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Elf Weapon Training",
+								"text": [
+									"You have proficiency with the longsword, shortsword, shortbow, and longbow."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Fleet of Foot",
+								"text": [
+									"Your base walking speed increases to 35 feet."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Mask of the Wild",
+								"text": [
+									"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+								],
+								"hassubtitle": "YES"
+							}
+						]
 					},
 					{
 						"name": "Languages",
@@ -1416,28 +1430,29 @@ var racedata =
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
-						"optionheading": "YES"
-					},
-					{
-						"name": "Keen Senses",
 						"text": [
-							"You have proficiency in the Perception skill."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Elf Weapon Training",
-						"text": [
-							"You have proficiency with the longsword, shortsword, shortbow, and longbow."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Cantrip",
-						"text": [
-							"You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
-						],
-						"suboption": "YES"
+							{
+								"title": "Keen Senses",
+								"text": [
+									"You have proficiency in the Perception skill."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Elf Weapon Training",
+								"text": [
+									"You have proficiency with the longsword, shortsword, shortbow, and longbow."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Cantrip",
+								"text": [
+									"You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+								],
+								"hassubtitle": "YES"
+							}
+						]
 					},
 					{
 						"name": "Languages",
@@ -1488,21 +1503,22 @@ var racedata =
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
-						"optionheading": "YES"
-					},
-					{
-						"name": "Keen Senses",
 						"text": [
-							"You have proficiency in the Perception skill."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Drow Magic",
-						"text": [
-							"You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day; you must finish a long rest in order to cast the spell again using this trait. When you reach 5th level, you can also cast the darkness spell once per day; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-						],
-						"suboption": "YES"
+							{
+								"title": "Keen Senses",
+								"text": [
+									"You have proficiency in the Perception skill."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Drow Magic",
+								"text": [
+									"You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day; you must finish a long rest in order to cast the spell again using this trait. When you reach 5th level, you can also cast the darkness spell once per day; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+								],
+								"hassubtitle": "YES"
+							}
+						]
 					},
 					{
 						"name": "Languages",
@@ -1553,21 +1569,22 @@ var racedata =
 					},
 					{
 						"name": "Variant Feature (Choose 1)",
-						"optionheading": "YES"
-					},
-					{
-						"name": "Keen Senses",
 						"text": [
-							"You have proficiency in the Perception skill."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Swim",
-						"text": [
-							"You gain a swimming speed of 30ft."
-						],
-						"suboption": "YES"
+							{
+								"title": "Keen Senses",
+								"text": [
+									"You have proficiency in the Perception skill."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Swim",
+								"text": [
+									"You gain a swimming speed of 30ft."
+								],
+								"hassubtitle": "YES"
+							}
+						]
 					},
 					{
 						"name": "Languages",
@@ -2490,45 +2507,44 @@ var racedata =
 					},
 					{
 						"name": "Racial Adjustments",
-						"optionheading": "YES",
 						"text": [
-							"For races that don't have subrace options, taking on the revenant subrace means making changes to your character's base traits, as follows. (This playtest article provides options only for human and dragonborn characters. Any other races which do not have subrace options should not be used with these revenant subrace rules.)"
+							"For races that don't have subrace options, taking on the revenant subrace means making changes to your character's base traits, as follows. (This playtest article provides options only for human and dragonborn characters. Any other races which do not have subrace options should not be used with these revenant subrace rules.)",
+							{
+								"title": "Human Revenant",
+								"text": [
+									"If you want to play a human revenant, modify the human's Ability Score Increase trait to the following: Two different ability scores of your choice increase by 1. If you use the variant human traits, remove the Skills trait and the Feat trait."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Dragonborn Revenant",
+								"text": [
+									"If you want to play a dragonborn revenant, modify the dragonborn's Ability Score Increase trait to the following: Your Strength score increases by 1, and your Charisma score increases by 1. Additionally, your Draconic Ancestry trait uses necrotic damage as its damage type, replacing the damage type that applies to your breath weapon and your damage resistance."
+								],
+								"hassubtitle": "YES"
+							},
+							{
+								"title": "Tiefling Revenant",
+								"text": [
+									"A prior installment of Unearthed Arcana (That Old Black Magic) outlined two tiefling variants that make use of subraces. Use that article to make a tiefling revenant, replacing the subrace options with the revenant subrace options. The base tiefling traits from the article are as follows:",
+									{
+										"title": "Ability Score Increase",
+										"text": [
+											"Ability Score Increase. Your Charisma score increases by 2."
+										],
+										"hassubtitle": "YES"
+									},
+									{
+										"title": "Languages",
+										"text": [
+											"You can speak, read, and write Common."
+										],
+										"hassubtitle": "YES"
+									}
+								],
+								"hassubtitle": "YES"
+							}
 						]
-					},
-					{
-						"name": "Human Revenant",
-						"text": [
-							"If you want to play a human revenant, modify the human's Ability Score Increase trait to the following: Two different ability scores of your choice increase by 1. If you use the variant human traits, remove the Skills trait and the Feat trait."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Dragonborn Revenant",
-						"text": [
-							"If you want to play a dragonborn revenant, modify the dragonborn's Ability Score Increase trait to the following: Your Strength score increases by 1, and your Charisma score increases by 1. Additionally, your Draconic Ancestry trait uses necrotic damage as its damage type, replacing the damage type that applies to your breath weapon and your damage resistance."
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Tiefling Revenant",
-						"text": [
-							"A prior installment of Unearthed Arcana (That Old Black Magic) outlined two tiefling variants that make use of subraces. Use that article to make a tiefling revenant, replacing the subrace options with the revenant subrace options. The base tiefling traits from the article are as follows:"
-						],
-						"suboption": "YES"
-					},
-					{
-						"name": "Ability Score Increase",
-						"text": [
-							"Ability Score Increase. Your Charisma score increases by 2."
-						],
-						"subsuboption": "YES"
-					},
-					{
-						"name": "Languages",
-						"text": [
-							"You can speak, read, and write Common."
-						],
-						"subsuboption": "YES"
 					},
 					{
 						"name": "Relentless Nature",

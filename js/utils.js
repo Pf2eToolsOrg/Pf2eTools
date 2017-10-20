@@ -91,6 +91,10 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 				textStack += utils_makeList(textList[i]);
 			}
 			if (textList[i].hassubtitle === "YES") {
+				// if required, add inline header before we go deeper
+				if (textBlockInlineTitle !== null && i === 0) {
+					textStack += textBlockInlineTitle;
+				}
 				textStack += utils_combineText(textList[i].text, tagPerItem, utils_makeSubHeader(textList[i].title));
 			}
 			if (textList[i].istable === "YES") {

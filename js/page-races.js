@@ -95,29 +95,13 @@ function loadhash (id) {
 
 	var traitlist = currace.trait;
 	$("tr.trait").remove();
+
 	for (let n = 0; n < traitlist.length; ++n) {
-		let trait = traitlist[n];
-		let parent = $('table#stats tbody tr:last');
-		let toAddTr = document.createElement('tr');
-		toAddTr.className = 'trait';
-		let toAddTd = document.createElement('td');
-		toAddTd.className = 'trait'+n;
-		toAddTd.colSpan = 6;
-		let toAdd;
-		if (trait.optionheading === "YES") {
-			let header = "<span class='name'>" + trait.name + (traitlist[n].text === undefined ? "" : ".") + "</span> ";
-			toAddTd.innerHTML = traitlist[n].text === undefined ? header : " " + (utils_combineText(traitlist[n].text, "p", header));
-		} else {
-			let header = "<span class='name'>" + trait.name + ".</span> ";
-			toAddTd.innerHTML = (utils_combineText(traitlist[n].text, "p", header));
-			if (trait.suboption === "YES") {
-				toAddTd.className = "suboption";
-			} else if (trait.subsuboption === "YES") {
-				toAddTd.className = "subsuboption";
-			}
-		}
-		toAddTr.appendChild(toAddTd);
-		parent.before(toAddTr);
+		const trait = traitlist[n];
+		const parent = $('table#stats tbody tr:last');
+
+		const header = "<span class='name'>" + trait.name + ".</span> ";
+		parent.before("<tr class='text'><td colspan='6'>" + utils_combineText(traitlist[n].text, "p", header) + "</td></tr>");
 	}
 	return;
 }
