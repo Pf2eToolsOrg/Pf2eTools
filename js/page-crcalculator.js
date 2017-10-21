@@ -1,11 +1,9 @@
-var xpchart = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
-
 window.onload = loadpage;
 
 function loadpage() {
-	for (var i = 0; i < msbcr.cr.length; i++) {
+	for (let i = 0; i < msbcr.cr.length; i++) {
 		var curcr = msbcr.cr[i];
-		$("#msbcr").append("<tr><td>"+curcr._cr+"</td><td>"+curcr.pb+"</td><td>"+curcr.ac+"</td><td>"+curcr.hpmin+"-"+curcr.hpmax+"</td><td>"+curcr.attackbonus+"</td><td>"+curcr.dprmin+"-"+curcr.dprmax+"</td><td>"+curcr.savedc+"</td></tr>")
+		$("#msbcr").append("<tr><td>"+curcr._cr+"</td><td>"+parsecr (curcr._cr)+"</td><td>"+curcr.pb+"</td><td>"+curcr.ac+"</td><td>"+curcr.hpmin+"-"+curcr.hpmax+"</td><td>"+curcr.attackbonus+"</td><td>"+curcr.dprmin+"-"+curcr.dprmax+"</td><td>"+curcr.savedc+"</td></tr>")
 	}
 
 	$("input#calculate").click(function() {
@@ -46,14 +44,14 @@ function loadpage() {
 
 	$("#msbcr tr").not(":has(th)").click(function() {
 		$("#expectedcr").val($(this).children("td:eq(0)").html());
-		var minhp = parseInt($(this).children("td:eq(3)").html().split("-")[0]);
-		var maxhp = parseInt($(this).children("td:eq(3)").html().split("-")[1]);
+		var minhp = parseInt($(this).children("td:eq(4)").html().split("-")[0]);
+		var maxhp = parseInt($(this).children("td:eq(4)").html().split("-")[1]);
 		$("#hp").val(minhp + (maxhp - minhp) / 2)
 		$("#hd").val(calculatehd());
-		$("#ac").val($(this).children("td:eq(2)").html())
-		$("#dpr").val($(this).children("td:eq(5)").html().split("-")[0])
-		$("#attackbonus").val($(this).children("td:eq(4)").html())
-		if ($("#saveinstead").is(":checked")) $("#attackbonus").val($(this).children("td:eq(6)").html())
+		$("#ac").val($(this).children("td:eq(3)").html())
+		$("#dpr").val($(this).children("td:eq(6)").html().split("-")[0])
+		$("#attackbonus").val($(this).children("td:eq(5)").html())
+		if ($("#saveinstead").is(":checked")) $("#attackbonus").val($(this).children("td:eq(7)").html())
 		calculatecr();
 	});
 
@@ -69,22 +67,17 @@ function loadpage() {
 		if (monsterfeatures[i].ac) effectoncr.push("AC: "+monsterfeatures[i].ac);
 		if (monsterfeatures[i].dpr) effectoncr.push("DPR: "+monsterfeatures[i].dpr);
 		if (monsterfeatures[i].attackbonus) effectoncr.push("AB: "+monsterfeatures[i].attackbonus);
-
 		effectoncr = effectoncr.join(", ");
-
-
 		let numbox = "";
 		if (monsterfeatures[i].numbox === "YES") numbox = "<input type='number' value='0'>"
-		$("#monsterfeatures table").append("<tr><td><input type='checkbox' id='MF"+encodeURI(monsterfeatures[i].name).toLowerCase()+"' title='"+monsterfeatures[i].name+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'>"+numbox+"</td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example+"</td><td>"+monsterfeatures[i].effect+"</td><td>"+effectoncr+"</td></tr>");
-
-		$("#monsterfeatures tr td:last, #monsterfeatures tr th:last").hide();
+		$("#monsterfeatures table").append("<tr><td style=\"white-space: nowrap\"><input type='checkbox' id='MF"+encodeURI(monsterfeatures[i].name).toLowerCase()+"' title='"+monsterfeatures[i].name+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'>"+numbox+"</td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example.replace(", ",",<br />")+"</td><td><span title=\""+effectoncr+"\" class=\"explanation\">"+monsterfeatures[i].effect+"</span></td></tr>");
 	}
 
 	// parse url
 	function parseurl() {
 		if (window.location.hash) {
 			var curdata = window.location.hash.split("#")[1].split(",")
-			$("#expectedcr").val(curdata[0])
+			$("#expectedcr").val(curdata[0]);
 			$("#hp").val(curdata[1]);
 			$("#hp").val(calculatehp());
 			$("#ac").val(curdata[2]);
@@ -103,12 +96,11 @@ function loadpage() {
 
 			if (window.location.hash.indexOf("traits:") !== -1) {
 				curdata = window.location.hash.split("traits:")[1].split(",");
-				for (var i = 1; i < curdata.length; i++) {
+				for (let i = 1; i < curdata.length; i++) {
 					$("input[id='"+curdata[i].split(":")[0]+"']").click();
 					if (curdata[i].split(":")[1]) $("input[id='"+curdata[i].split(":")[0]+"']").siblings("input[type=number]").val(curdata[i].split(":")[1])
 				}
 			}
-
 			calculatecr();
 		}
 	}
@@ -159,9 +151,7 @@ function calculatecr() {
 		if (expectedcr >= 17) hp *= 1.25;
 	}
 
-	var ac = parseInt($("#crcalc #ac").val());
-	ac += parseInt($("#saveprofs").val()) + parseInt($("#flying").prop("checked")*2);
-
+	var ac = parseInt($("#crcalc #ac").val()) + parseInt($("#saveprofs").val()) + parseInt($("#flying").prop("checked")*2);
 	var dpr = parseInt($("#crcalc #dpr").val());
 
 	var attackbonus = parseInt($("#crcalc #attackbonus").val());
@@ -174,9 +164,9 @@ function calculatecr() {
 	$("#monsterfeatures input:checked").each(function() {
 		var trait = 0;
 		if ($(this).siblings("input[type=number]").length) trait = $(this).siblings("input[type=number]").val();
-		if ($(this).attr("data-hp") !== "") hp += eval($(this).attr("data-hp"));
-		if ($(this).attr("data-ac") !== "") ac += eval($(this).attr("data-ac"));
-		if ($(this).attr("data-dpr") !== "") dpr += eval($(this).attr("data-dpr"));
+		if ($(this).attr("data-hp") !== "") hp += parseInt(eval($(this).attr("data-hp")));
+		if ($(this).attr("data-ac") !== "") ac += parseInt(eval($(this).attr("data-ac")));
+		if ($(this).attr("data-dpr") !== "") dpr += parseInt(eval($(this).attr("data-dpr")));
 		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += parseInt($(this).attr("data-attackbonus"));
 	})
 
@@ -190,7 +180,7 @@ function calculatecr() {
 	if (hp > 850) hp = 850;
 	if (dpr > 320) dpr = 320;
 
-	for (var i = 0; i < msbcr.cr.length; i++) {
+	for (let i = 0; i < msbcr.cr.length; i++) {
 		var curcr = msbcr.cr[i];
 		if (hp >= parseInt(curcr.hpmin) && hp <= parseInt(curcr.hpmax)) {
 			var defensedifference = parseInt(curcr.ac) - ac;
@@ -213,7 +203,6 @@ function calculatecr() {
 			offensiveCR = msbcr.cr[attackdifference]._cr;
 		}
 	}
-
 
 	var cr = ((eval(offensiveCR) + eval(defensiveCR)) / 2).toString();
 
@@ -238,7 +227,6 @@ function calculatecr() {
 	var hitdice = calculatehd();
 	var hitdicesize = $("#hdval").html();
 	var conmod = Math.floor(($("#con").val() - 10) / 2);
-
 	var hash = "#";
 	hash += $("#expectedcr").val()+"," // 0
 	hash += $("#hp").val()+"," // 1
@@ -267,6 +255,7 @@ function calculatecr() {
 	$("#croutput").append("<p>Effective AC: "+ac+"</p>");
 	$("#croutput").append("<p>Average Damage Per Round: "+effectivedpr+"</p>");
 	$("#croutput").append("<p>"+(usesavedc?"Save DC: ":"Effective Attack Bonus: +")+attackbonus+"</p>");
+	$("#croutput").append("<p>Experience Points: "+parsecr (msbcr.cr[finalcr]._cr)+"</p>");
 }
 
 function calculatehd() {
