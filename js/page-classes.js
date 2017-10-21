@@ -17,7 +17,7 @@ window.onload = function load() {
 		statsprofdefault = $("#statsprof").html();
 		classtabledefault = $("#classtable").html();
 
-		for (var i = 0; i < classlist.length; i++) {
+		for (let i = 0; i < classlist.length; i++) {
 			var curclass = classlist[i];
 			$("ul.classes").append("<li><a id='"+i+"' href='#"+encodeURI(curclass.name).toLowerCase()+"' title='"+curclass.name+"'><span class='name col-xs-9'>"+curclass.name+"</span><span class='source col-xs-3' title='"+parse_sourceToFull(curclass.source)+"'>"+curclass.source+"</span></a></li>");
 		}
@@ -52,7 +52,7 @@ function loadhash (id) {
 	$("#classtable tr").not(":has(th)").append("<td class='featurebuffer'></td>");
 
 	var subclasses = [];
-	for (var i = curclass.autolevel.length-1; i >= 0; i--) {
+	for (let i = curclass.autolevel.length-1; i >= 0; i--) {
 		var curlevel = curclass.autolevel[i];
 
 		// spell slots and table data
