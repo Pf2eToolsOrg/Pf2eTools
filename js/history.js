@@ -1,13 +1,12 @@
 window.onhashchange = function hashchange(e) {
-	const [link, sub] = window.location.hash.slice(1).split(',');
+	const [link, ...sub] = window.location.hash.slice(1).split(',');
 
-	if (!e || !sub) {
-		const $el = $(`#listcontainer a[href='#${link.toLowerCase()}']`);
+	if (!e || sub.length === 0) {
+		const $list = $("#listcontainer");
+		const $el = $list.find(`a[href='#${link.toLowerCase()}']`);
 		loadhash($el.attr("id"));
 		document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
 	}
 
-	if (sub) {
-		loadsub(sub)
-	}
-}
+	if (typeof loadsub === "function" && sub.length > 0) loadsub(sub)
+};

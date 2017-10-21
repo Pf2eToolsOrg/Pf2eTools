@@ -1,3 +1,6 @@
+const HASH_SUBCLASS = "subclass:";
+const HASH_FEATURE = "feature:";
+
 var tabledefault="";
 var classtabledefault ="";
 
@@ -185,8 +188,7 @@ function loadhash (id) {
 			// other features
 		} else for (let a = curlevel.feature.length-1; a >= 0; a--) {
 			let curfeature = curlevel.feature[a];
-			let link = curlevel._level + "_" + a;
-
+			let link = curfeature.name === undefined ? a : encodeURIComponent(curfeature.name.toLowerCase());
 
 			if (curfeature._optional === "YES") {
 				subclasses.push(curfeature);
@@ -218,9 +220,12 @@ function loadhash (id) {
 			// write out list to class table
 			var multifeature = "";
 			if (curlevel.feature.length !== 1 && a !== 0) multifeature = ", ";
-			let featureSpan = document.createElement('span');
-			featureSpan.setAttribute('data-link', link);
-			featureSpan.onclick = function() {scrollToFeature(featureSpan.getAttribute('data-link'))};
+			let featureSpan = document.createElement(ELE_A);
+			featureSpan.setAttribute(ATB_HREF, getFeatureHash(link));
+			featureSpan.setAttribute(ATB_CLASS, "featurelink");
+			featureSpan.addEventListener("click", function() {
+				document.getElementById("feature"+link).scrollIntoView();
+			})
 			featureSpan.innerHTML = curfeature.name;
 			if (curfeature._optional !== "YES" && curfeature.suboption === undefined) $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
 
@@ -252,42 +257,135 @@ function loadhash (id) {
 	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
 	$("#subclasses > span").click(function() {
 		const name = $(this).children("span").text()
-		if ($(this).hasClass("active"))
-			window.location.hash = window.location.hash.replace(/\,.*/, "").toLowerCase()
-		else
-			window.location.hash = window.location.hash.replace(/\,.*|$/, "," + encodeURIComponent(name).replace("'", "%27")).toLowerCase()
+		window.location.hash = getSubclassedHash($(this), name)
 	});
+
+	function getSubclassedHash(subButton, name) {
+		const outStack = [];
+		const split = window.location.hash.split(",");
+
+		if (subButton.hasClass("active")) {
+			for (let i = 0; i < split.length; i++) {
+				const hashPart = split[i];
+				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart)
+			}
+		} else {
+			let hasSubclassHash = false;
+			const subclassLink = "subclass:" + encodeURIComponent(name).replace("'", "%27");
+
+			for (let i = 0; i < split.length; i++) {
+				const hashPart = split[i];
+				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
+				else {
+					outStack.push(subclassLink);
+					hasSubclassHash = true;
+				}
+			}
+
+			if (!hasSubclassHash) outStack.push(subclassLink);
+		}
+
+		return outStack.join(",").toLowerCase();
+	}
+
+	function getFeatureHash(featureLink) {
+		const hashFeatureLink = HASH_FEATURE + featureLink;
+		const outStack = [];
+		const split = window.location.hash.split(",");
+
+		let hasFeature = false;
+
+		for (let i = 0; i < split.length; i++) {
+			const hashPart = split[i];
+			if (!hashPart.startsWith(HASH_FEATURE)) outStack.push(hashPart);
+			else {
+				outStack.push(hashFeatureLink);
+				hasFeature = true;
+			}
+		}
+
+		if (!hasFeature) outStack.push(hashFeatureLink);
+
+		return outStack.join(",").toLowerCase();
+	}
 
 	return;
 }
 
-function scrollToFeature(ele) {
-	let goTo = document.getElementById("feature"+ele);
-	goTo.scrollIntoView();
-}
-
+let curSub = null;
 function loadsub(sub) {
-	let subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
-	let $el;
-	for (let i = 0; i < subClassSpanList.length; ++i) {
-		if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
-			&& subClassSpanList[i].getAttribute('data-subclass').includes(decodeURIComponent(sub.toLowerCase()))) {
-			$el = $(subClassSpanList[i]);
-			break;
-		}
+	let subclass = null;
+	let feature = null;
+
+	for (let i = 0; i < sub.length; i++) {
+		let hashPart = sub[i];
+
+		if (hashPart.startsWith(HASH_SUBCLASS)) subclass = hashPart.slice(HASH_SUBCLASS.length);
+		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart.slice(HASH_FEATURE.length);
 	}
 
-	if ($el.hasClass("active")) {
+	if (subclass !== null) {
+		addFeatureHashes(subclass);
+
+		let $el;
+		let subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
+		for (let i = 0; i < subClassSpanList.length; ++i) {
+			if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
+				&& subClassSpanList[i].getAttribute('data-subclass').includes(decodeURIComponent(subclass.toLowerCase()))) {
+				$el = $(subClassSpanList[i]);
+				break;
+			}
+		}
+
+		if ($el.hasClass("active")) {
+			$("._class_feature").show();
+			$(".subclass-prefix").show();
+			$el.removeClass("active");
+		}
+
+		$("#subclasses .active").removeClass("active");
+		$el.addClass("active");
+
+		$("._class_feature[data-subclass!='"+$el.text().toLowerCase()+"'][data-subclass!='undefined']").hide();
+		$(".subclass-prefix").hide();
+		$("._class_feature[data-subclass='"+$el.text().toLowerCase()+"']").show();
+	} else {
+		addFeatureHashes();
+		$("#subclasses .active").removeClass("active");
 		$("._class_feature").show();
 		$(".subclass-prefix").show();
-		$el.removeClass("active");
-		return;
 	}
 
-	$("#subclasses .active").removeClass("active");
-	$el.addClass("active");
+	if (feature !== null && curSub === subclass) {
+		document.getElementById("feature"+feature).scrollIntoView();
+	}
 
-	$("._class_feature[data-subclass!='"+$el.text().toLowerCase()+"'][data-subclass!='undefined']").hide();
-	$(".subclass-prefix").hide();
-	$("._class_feature[data-subclass='"+$el.text().toLowerCase()+"']").show();
+	function addFeatureHashes (subclass) {
+		subclass = (subclass === undefined || subclass === null) ? null : HASH_SUBCLASS + encodeURIComponent(subclass);
+		let needsSubClass = subclass !== null;
+		$(".featurelink").each(
+			function() {
+				const splitHash = this.href.split(",");
+				const hashStack = [];
+
+				for (let i = 0; i < splitHash.length; i++) {
+					let hashPart = splitHash[i];
+
+					if (hashPart.startsWith(HASH_SUBCLASS)) {
+						if (subclass !== null) {
+							hashStack.push(subclass);
+							needsSubClass = false;
+						}
+					}
+					else hashStack.push(hashPart);
+				}
+
+				if (needsSubClass) hashStack.push(subclass);
+
+				this.href = hashStack.join(",")
+			}
+		)
+	}
+
+	curSub = subclass;
 }
