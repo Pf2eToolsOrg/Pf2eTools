@@ -70,7 +70,7 @@ window.onload = function load() {
 		}
 
 		var schooltext = parseschool(curspell.school);
-		var toadd = "<li class='row'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parse_sourceToFull(source)+"\">"+parse_sourceToAbv(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span></a></li>";
+		var toadd = "<li class='row'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-3 col-xs-3-7'>"+name+"</span> <span class='source col-xs-1' title=\""+parse_sourceJsonToFull(source)+"\">"+parse_sourceJsonToAbv(source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='school col-xs-2 col-xs-2-5'>"+schooltext+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-3 col-xs-3-1'>"+curspell.range+"</span></a></li>";
 		$("ul.spells").append(toadd);
 
 		if (!$("select.levelfilter:contains('"+parsespelllevel(curspell.level)+"')").length) {
@@ -85,8 +85,8 @@ window.onload = function load() {
 			$("select.schoolfilter").append("<option value='"+parseschool (curspell.school)+"'>"+parseschool (curspell.school)+"</option>");
 		}
 
-		if (!$("select.sourcefilter:contains(\""+parse_sourceToFull(source)+"\")").length) {
-			$("select.sourcefilter").append("<option value='"+parse_sourceToAbv(source)+"'>"+parse_sourceToFull(source)+"</option>");
+		if (!$("select.sourcefilter:contains(\""+parse_sourceJsonToFull(source)+"\")").length) {
+			$("select.sourcefilter").append("<option value='"+parse_sourceJsonToAbv(source)+"'>"+parse_sourceJsonToFull(source)+"</option>");
 		}
 
 		var classlist = curspell.classes.split(",");
@@ -225,7 +225,7 @@ function loadhash (id) {
 	var spelllist = spelldata.compendium.spell;
 	var curspell = spelllist[id];
 
-	$("th#name").html("<span title=\""+parse_sourceToFull(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
+	$("th#name").html("<span title=\""+parse_sourceJsonToFull(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
 
 	// $("th#name").html(curspell.name);
 

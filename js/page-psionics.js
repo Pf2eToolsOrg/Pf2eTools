@@ -107,7 +107,7 @@ window.onload = function load() {
 			let span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_SOURCE);
 			span.classList.add(CLS_COL2);
-			span.innerHTML = parse_sourceToAbv(psionic[JSON_ITEM_SOURCE]);
+			span.innerHTML = parse_sourceJsonToAbv(psionic[JSON_ITEM_SOURCE]);
 			return span;
 		}
 		function getTypeSpan(psionic) {
@@ -158,7 +158,7 @@ window.onload = function load() {
 		const HDR_ORDER = "Order";
 
 		const filters = {};
-		filters[HDR_SOURCE] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceToFull(str); }};
+		filters[HDR_SOURCE] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceJsonToFull(str); }};
 		filters[HDR_TYPE] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
 		filters[HDR_ORDER] = {item: JSON_ITEM_ORDER, list: [], renderer: function(str) { return parse_psionicOrderToFull(str); }};
 

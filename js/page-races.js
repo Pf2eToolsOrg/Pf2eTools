@@ -27,14 +27,14 @@ window.onload = function load() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		$("ul.races").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parsesize(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></a></li>");
+		$("ul.races").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parse_sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></a></li>");
 
 		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
 			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
 		}
 
-		if (!$("select.sizefilter:contains(\""+parsesize(currace.size)+"\")").length) {
-			$("select.sizefilter").append("<option value='"+parsesize(currace.size)+"'>"+parsesize(currace.size)+"</option>");
+		if (!$("select.sizefilter:contains(\""+parse_sizeAbvToFull(currace.size)+"\")").length) {
+			$("select.sizefilter").append("<option value='"+parse_sizeAbvToFull(currace.size)+"'>"+parse_sizeAbvToFull(currace.size)+"</option>");
 		}
 	}
 
@@ -82,7 +82,7 @@ function loadhash (id) {
 	var name = currace.name;
 	$("th#name").html(name);
 
-	var size = parsesize (currace.size);
+	var size = parse_sizeAbvToFull (currace.size);
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 
