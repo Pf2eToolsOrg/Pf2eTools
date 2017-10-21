@@ -39,20 +39,6 @@ function parsesourcename (src) {
 	return source;
 }
 
-var xpchart = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
-
-function addCommas(intNum) {
-	return (intNum + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-}
-
-function parsecr (cr) {
-	if (cr === "0") return "0 or 10"
-	if (cr === "1/8") return "25"
-	if (cr === "1/4") return "50"
-	if (cr === "1/2") return "100"
-	return addCommas (xpchart[parseInt(cr)-1]);
-}
-
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 
@@ -415,7 +401,7 @@ function loadhash (id) {
 				reactiontexthtml = reactiontexthtml + "<p class='"+firstsecond+"'>"+reactiontext[n]+"</p>";
 			}
 
-			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction"+i+"'><span class='name'>"+reactionname+".</span> "+reactiontexthtml+"</td></tr>");
+			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction0'><span class='name'>"+reactionname+".</span> "+reactiontexthtml+"</td></tr>");
 		}
 
 		if (reactions.length) for (let i = reactions.length-1; i >= 0; i--) {
@@ -467,7 +453,7 @@ function loadhash (id) {
 		}
 
 		if ($("tr.legendary").length && !$("tr.legendary span.name:empty").length && !$("tr.legendary span.name:contains(Legendary Actions)").length) {
-			$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary"+i+"'><span class='name'></span> <span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn.</span></td></tr>");
+			$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary0'><span class='name'></span> <span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn.</span></td></tr>");
 
 		}
 

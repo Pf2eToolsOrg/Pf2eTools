@@ -79,7 +79,7 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div id="croutput">Waiting for calculation...</div>
-					<br>
+					<br />
 					<input type="button" id="reset" value="Reset">
 					<h4>Instructions</h4>
 					<ol>
@@ -89,7 +89,7 @@
 						<li>Click which special Monster Features it has.</li>
 						<li>Done!</li>
 					</ol>
-					<p><small>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273 through 283. You can click on the table to the right to fill in values for a given and adjust to taste. You can hover over the individual labels for a short description of how each attribute contributes to a monster's CR.</small></p>
+					<p><small>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273 through 283. You can click on the table to the right to fill in values for a given and adjust to taste. You can hover over the individual labels for a short description of how each attribute contributes to a monster's CR. You can also hover over each feature description to see how that feature affects the calculations.</small></p>
 					<hr>
 					<label for="expectedcr" style="font-size: 1em;">Expected CR:
 						<span class="explanation">
@@ -98,45 +98,67 @@
 					</label>
 					<span class="inputwrap">
 						<input type="text" id="expectedcr" value="0" size="2">
-					</span><br>
-
+					</span><br />
 				</div>
 				<div class="col-sm-6">
 					<h4>Monster Statistics by Challenge Rating</h4>
 					<table id="msbcr">
 						<tr>
 							<th>CR</th>
-							<th>Prof. Bonus</th>
-							<th>Armor Class</th>
-							<th>Hit Points</th>
-							<th>Attack Bonus</th>
-							<th>Damage/Round</th>
-							<th>Save DC</th>
+							<th>XP</th>
+							<th>Prof.<br />Bonus</th>
+							<th>Armor<br />Class</th>
+							<th>Hit<br />Points</th>
+							<th>Attack<br />Bonus</th>
+							<th>Damage/<br />Round</th>
+							<th>Save<br />DC</th>
 						</tr>
 					</table>
 				</div>
-
 			</div>
 			<hr>
 			<div class="row">
 				<div class="col-sm-6">
 					<input type="button" id="calculate" value="Calculate" style="display: none;">
-
-					<h4>Defense</h4>
-					<label for="hp">Hit Points
+					<h4>Defensive</h4>
+					<label for="hp">Hit Points:
 						<span class="explanation">
 							A creature's hit points determine its defensive CR before it is adjusted by its AC.
 						</span>
 					</label>
 					<input type="number" id="hp" placeholder="Average HP" value="1" min="0" max="850"><br />
-
-					<label for="ac">Armor Class
+					<label for="ac">Armor Class:
 						<span class="explanation">
 							A creature's AC adjusts its defensive CR.
 						</span>
 					</label>
-					<input type="number" id="ac" placeholder="AC" value="13" min="1" max="40"><br />
-					<hr>
+					<input type="number" id="ac" placeholder="AC" value="13" min="1" max="40">
+				</div>
+				<div class="col-sm-6">
+					<h4>Offensive</h4>
+					<label for="dpr">Damage Per Round:
+						<span class="explanation">
+							A creature's damage per round (DPR) determines its offensive CR, which is offset by its attack bonus or save DC. DPR is determined by averaging its maximum damage output (taking the average of dice rolls, ignoring crits and accuracy) over three rounds. Areas of effect are treated as though they hit two creatures, which fail any involved saving throws.
+						</span>
+					</label>
+					<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br />
+					<label for="attackbonus">Attack Bonus/Save DC:
+						<span class="explanation">
+							A creature's attack bonus or save DC adjuts its offensive CR.
+						</span>
+					</label>
+					<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br />
+					<label for="saveinstead">Use Saves?
+						<span class="explanation">
+							If a creature's damage output is more dependent on save-based abilities, its save DC is used for adjusting its offensive CR instead of its attack bonus.
+						</span>
+					</label>
+					<input type="checkbox" id="saveinstead" value="0">
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-6">
 					<label for="size">Size:
 						<span class="explanation">
 							A creature's size determines the size of its individual hit dice.
@@ -156,76 +178,55 @@
 						<span class="explanation">
 							Unlike player characters, the number of hit dice an NPC gets is completely arbitrary. Adjust this amount to taste.
 						</span>
-					</label> <span class="inputwrap"><input type="number" id="hd" value="1" min="1" max="999"><span id="hdval">d8</span></span><br />
+					</label>
+					<span class="inputwrap">
+						<input type="number" id="hd" value="1" min="1" max="999"><span id="hdval">d8</span>
+					</span><br />
 					<label for="con">Constitution:
 						<span class="explanation">
 							A creature's HP is increases by its Constitution modifier for each hit die it has.
 						</span>
-					</label><input type="number" id="con" value="10" min="1" max="30"><br>
-					<input type="button" id="calculatehp" value="Calculate Average HP" style="display: none;"><br>
-
+					</label>
+					<input type="number" id="con" value="10" min="1" max="30"><br />
+					<input type="button" id="calculatehp" value="Calculate Average HP" style="display: none;">
+				</div>
+				<div class="col-sm-6">
 					<label for="vulnerabilities">Vulnerabilities:
 						<span class="explanation">
 							If a creature is vulnerable to common damage types (especially bludgeoning, piercing, and slashing damage), its effective hit points are halved.
-						</span></label>
-					<input type="checkbox" id="vulnerabilities"><br>
-
+						</span>
+					</label>
+					<input type="checkbox" id="vulnerabilities"><br />
 					<label for="resistances">Resistances/Immunities:
-							<span class="explanation">
-								A monster's HP is multiplied based on the resistances and immunities has to common damage types (non-magical budgeoning, piercing, and slashing chief among them).
-							</span></label>
+						<span class="explanation">
+							A monster's HP is multiplied based on the resistances and immunities has to common damage types (non-magical budgeoning, piercing, and slashing chief among them).
+						</span>
+					</label>
 					<span class="inputwrap">
-								<select id="resistances">
-									<option value="0" selected>None</option>
-									<option value="res">Resistances</option>
-									<option value="imm">Immunities</option>
-								</select>
-							</span><br>
-
+						<select id="resistances">
+							<option value="0" selected>None</option>
+							<option value="res">Resistances</option>
+							<option value="imm">Immunities</option>
+						</select>
+					</span><br />
 					<label for="flying">Flying at CRs 0-9:
-								<span class="explanation">
-									A monster's effective AC is increased by 2 if it can fly and deal damage at range, though only if its expected challenge rating is 10 or lower.
-								</span></label>
-					<input type="checkbox" id="flying"><br>
-
+						<span class="explanation">
+							A monster's effective AC is increased by 2 if it can fly and deal damage at range, though only if its expected challenge rating is 10 or lower.
+						</span>
+					</label>
+					<input type="checkbox" id="flying"><br />
 					<label for="saveprofs">Save Proficiencies:
-									<span class="explanation">
-										Increase a creature's effective AC by 2 if it has 3 or 4 saving throw proficiencies, or by 4 if it has 5 or 6.
-									</span></label>
+						<span class="explanation">
+							Increase a creature's effective AC by 2 if it has 3 or 4 saving throw proficiencies, or by 4 if it has 5 or 6.
+						</span>
+					</label>
 					<span class="inputwrap">
-										<select id="saveprofs">
-											<option value="0" selected>0-2</option>
-											<option value="2">3-4</option>
-											<option value="4">5-6</option>
-										</select>
-									</span><br>
-
-				</div>
-				<div class="col-sm-6">
-					<h4>Offensive</h4>
-					<label for="dpr">Damage Per Round
-										<span class="explanation">
-											A creature's damage per round (DPR) determines its offensive CR, which is offset by its attack bonus or save DC. DPR is determined by averaging its maximum damage output (taking the average of dice rolls, ignoring crits and accuracy) over three rounds. Areas of effect are treated as though they hit two creatures, which fail any involved saving throws.
-										</span>
-									</label>
-					<input type="number" id="dpr" placeholder="Average DPR" value="1" min="0" max="320"><br />
-
-					<label for="attackbonus">Attack Bonus/Save DC
-										<span class="explanation">
-											A creature's attack bonus or save DC adjuts its offensive CR.
-										</span>
-									</label>
-
-					<input type="number" id="attackbonus" placeholder="Attack Bonus" value="3" min="-5" max="19"><br>
-					<label for="saveinstead">Use Saves?
-										<span class="explanation">
-											If a creature's damage output is more dependent on save-based abilities, its save DC is used for adjusting its offensive CR instead of its attack bonus.
-										</span>
-									</label>
-					<input type="checkbox" id="saveinstead" value="0"><br>
-					<hr>
-
-
+						<select id="saveprofs">
+							<option value="0" selected>0-2</option>
+							<option value="2">3-4</option>
+							<option value="4">5-6</option>
+						</select>
+					</span><br />
 				</div>
 			</div>
 		</form>
@@ -237,12 +238,11 @@
 					<tr>
 						<th>Use?</th>
 						<th>Name</th>
-						<th>Example Monster</th>
-						<th>Effect</th>
-						<th>Effect on Challenge Rating</th>
+						<th style="white-space: nowrap">Example Monster</th>
+						<th>Feature Description</th>
 					</tr>
 				</table>
-				<p><small><em>Note: not all monster features are covered here. The DMG has specific instructions on how to manage other features.</em></small></p>
+				<p><small><em>Note: Not all monster features are covered here. The DMG has specific instructions on how to manage other features.</em></small></p>
 			</div>
 		</div>
 		<hr>
@@ -258,7 +258,6 @@
 	<script type="text/javascript" src="js/list.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
-
 
 </body>
 
