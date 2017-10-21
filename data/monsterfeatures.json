@@ -63,6 +63,25 @@ var monsterfeatures = [
 		"attackbonus": ""
 	},
 	{
+		"name": "Heated Body",
+		"example": "Azer",
+		"effect": "Touching or hitting the creature while within 5 ft. of it causes damage.",
+		"hp": "",
+		"ac": "",
+		"dpr": "trait",
+		"attackbonus": "",
+		"numbox": "YES"
+	},
+	{
+		"name": "Horrifying Visage",
+		"example": "Banshee",
+		"effect": "Each non-undead creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+		"hp": "Math.floor((expectedcr <= 10) ? hp * 0.25 : 0)",
+		"ac": "",
+		"dpr": "",
+		"attackbonus": ""
+	},
+	{
 		"name": "Legendary Resistance",
 		"example": "Tarrasque",
 		"effect": "If the creature fails a saving throw, it can choose to succeed instead. Input the number of uses per day.",
@@ -137,11 +156,11 @@ var monsterfeatures = [
 		"attackbonus": ""
 	},
 	{
-		"name": "Undead Fortitude",
-		"example": "Zombie",
-		"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radient nature.",
-		"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
-		"ac": "",
+		"name": "Shadow Stealth",
+		"example": "Shadow Demon",
+		"effect": "While in dim light or darkness, the demon can take the Hide action as a bonus action.",
+		"hp": "",
+		"ac": "4",
 		"dpr": "",
 		"attackbonus": ""
 	},
@@ -160,6 +179,24 @@ var monsterfeatures = [
 		"effect": "The creature can turn invisible as an action or bonus action.",
 		"hp": "",
 		"ac": "2",
+		"dpr": "",
+		"attackbonus": ""
+	},
+	{
+		"name": "Undead Fortitude",
+		"example": "Zombie",
+		"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radient nature.",
+		"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
+		"ac": "",
+		"dpr": "",
+		"attackbonus": ""
+	},
+	{
+		"name": "Web",
+		"example": "Giant Spider",
+		"effect": "Ranged Weapon Attack that restrains target on hit.",
+		"hp": "",
+		"ac": "1",
 		"dpr": "",
 		"attackbonus": ""
 	}
