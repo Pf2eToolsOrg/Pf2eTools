@@ -11,6 +11,7 @@ window.onload = function load() {
 
 	let request = new XMLHttpRequest();
 	request.open('GET', jsonURL, true);
+	request.overrideMimeType("application/json");
 	request.onload = function() {
 		let data = JSON.parse(this.response);
 
