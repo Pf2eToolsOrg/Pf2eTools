@@ -241,7 +241,7 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 					if (!pre.proficiency[j].hasOwnProperty(type)) continue;
 					if (type === "armor") {
 						if (shorthand) {
-							outStack.push("prof " + parse_armorToAbv(pre.proficiency[j][type]) + " armor");
+							outStack.push("prof " + parse_armorFullToAbv(pre.proficiency[j][type]) + " armor");
 						} else {
 							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
 						}
@@ -363,46 +363,61 @@ function utils_getAttributeText(attObj) {
 }
 
 // PARSING =============================================================================================================
-function parse_attAbvToFull(attribute) {
-	const ABV_TO_FULL = {
-		"str": "Strength",
-		"dex": "Dexterity",
-		"con": "Constitution",
-		"int": "Intelligence",
-		"wis": "Wisdom",
-		"cha": "Charisma"
-	};
-	return ABV_TO_FULL[attribute.toLowerCase()];
+function _parse_aToB(abMap, a) {
+	a = a.trim();
+	if (abMap[a] !== undefined) return abMap[a];
+	return a;
+}
+function _parse_bToA(abMap, b) {
+	b = b.trim();
+	for (let v in abMap) {
+		if (!abMap.hasOwnProperty(v)) continue;
+		if (abMap[v] === b) return v
+	}
+	return b;
 }
 
-function parsesize (size) {
-	if (size === "T") size = "Tiny";
-	if (size === "S") size = "Small";
-	if (size === "M") size = "Medium";
-	if (size === "L") size = "Large";
-	if (size === "H") size = "Huge";
-	if (size === "G") size = "Gargantuan";
-	if (size === "V") size = "Varies";
-	return size;
+const ATB_ABV_TO_FULL = {
+	"str": "Strength",
+	"dex": "Dexterity",
+	"con": "Constitution",
+	"int": "Intelligence",
+	"wis": "Wisdom",
+	"cha": "Charisma"
+};
+function parse_attAbvToFull(abv) {
+	return _parse_aToB(ATB_ABV_TO_FULL, abv);
+}
+function parse_attFullToAbv(full) {
+	return _parse_bToA(ATB_ABV_TO_FULL, full);
 }
 
-function getmodifiertext (score) {
-	var modifier = Math.floor((score - 10) / 2);
+const SIZE_ABV_TO_FULL = {
+	"T": "Tiny",
+	"S": "Small",
+	"M": "Medium",
+	"L": "Large",
+	"H": "Huge",
+	"G": "Gargantuan",
+	"V": "Varies"
+};
+function parse_sizeAbvToFull (abv) {
+	return _parse_aToB(SIZE_ABV_TO_FULL, abv);
+}
+
+function getAbilityModifier (abilityScore) {
+	let modifier = Math.floor((abilityScore - 10) / 2);
 	if (modifier >= 0) modifier = "+"+modifier;
 	return modifier;
 }
 
-const ARMR_LIGHT = "light";
-const ARMR_MEDIUM = "medium";
-const ARMR_HEAVY = "heavy";
-const ARMR_LIGHT_ABBV = "l.";
-const ARMR_MEDIUM_ABBV = "m.";
-const ARMR_HEAVY_ABBV = "h.";
-function parse_armorToAbv(armor) {
-	if (armor === ARMR_LIGHT) armor = ARMR_LIGHT_ABBV;
-	if (armor === ARMR_MEDIUM) armor = ARMR_MEDIUM_ABBV;
-	if (armor === ARMR_HEAVY) armor = ARMR_HEAVY_ABBV;
-	return armor;
+const ARMOR_ABV_TO_FULL = {
+	"l.": "light",
+	"m.": "medium",
+	"h.": "heavy",
+};
+function parse_armorFullToAbv(armor) {
+	return _parse_bToA(ARMOR_ABV_TO_FULL, armor);
 }
 
 const SRC_PHB = "PHB";
@@ -424,49 +439,45 @@ const SRC_BOLS_3PP = "BoLS 3pp";
 
 const UA_PREFIX = "Unearthed Arcana: ";
 const PS_PREFIX = "Plane Shift: ";
-function parse_sourceToFull (source) {
-	if (source === SRC_PHB) source = "Player\u2019s Handbook";
-	if (source === SRC_EEPC) source = "Elemental Evil Player\u2019s Companion";
-	if (source === SRC_SCAG) source = "Sword Coast Adventurer\u2019s Guide";
-	if (source === SRC_UAA) source = UA_PREFIX + "Artificer";
-	if (source === SRC_UATMC) source = UA_PREFIX + "The Mystic Class";
-	if (source === SRC_UAMystic) source = UA_PREFIX + "The Mystic Class";
-	if (source === SRC_UAStarterSpells) source = UA_PREFIX + "Starter Spells";
-	if (source === SRC_UAModern) source = UA_PREFIX + "Modern Magic";
-	if (source === SRC_UATOBM) source = UA_PREFIX + "That Old Black Magic";
-	if (source === SRC_UAEBB) source = UA_PREFIX + "Eberron";
-	if (source === SRC_UAFT) source = UA_PREFIX + "Feats";
-	if (source === SRC_UAFFS) source = UA_PREFIX + "Feats for Skills";
-	if (source === SRC_UAFFR) source = UA_PREFIX + "Feats for Races";
-	if (source === SRC_PSK) source = PS_PREFIX + "Kaladesh";
-	if (source === SRC_BOLS_3PP) source = "Book of Lost Spells (3pp)";
-	if (source === SRC_UATRR) source = UA_PREFIX + "The Ranger, Revised";
-	return source;
+
+const SOURCE_JSON_TO_FULL = {}
+SOURCE_JSON_TO_FULL[SRC_PHB] = "Player\u2019s Handbook";
+SOURCE_JSON_TO_FULL[SRC_EEPC] = "Elemental Evil Player\u2019s Companion";
+SOURCE_JSON_TO_FULL[SRC_SCAG] = "Sword Coast Adventurer\u2019s Guide";
+SOURCE_JSON_TO_FULL[SRC_UAA] = UA_PREFIX + "Artificer";
+SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
+SOURCE_JSON_TO_FULL[SRC_UAMystic] = UA_PREFIX + "The Mystic Class";
+SOURCE_JSON_TO_FULL[SRC_UAStarterSpells] = UA_PREFIX + "Starter Spells";
+SOURCE_JSON_TO_FULL[SRC_UAModern] = UA_PREFIX + "Modern Magic";
+SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
+SOURCE_JSON_TO_FULL[SRC_UAEBB] = UA_PREFIX + "Eberron";
+SOURCE_JSON_TO_FULL[SRC_UAFT] = UA_PREFIX + "Feats";
+SOURCE_JSON_TO_FULL[SRC_UAFFS] = UA_PREFIX + "Feats for Skills";
+SOURCE_JSON_TO_FULL[SRC_UAFFR] = UA_PREFIX + "Feats for Races";
+SOURCE_JSON_TO_FULL[SRC_PSK] = PS_PREFIX + "Kaladesh";
+SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
+SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
+
+const SOURCE_JSON_TO_ABV = {};
+SOURCE_JSON_TO_ABV[SRC_PHB] = "PHB";
+SOURCE_JSON_TO_ABV[SRC_EEPC] = "EEPC";
+SOURCE_JSON_TO_ABV[SRC_SCAG] = "SCAG";
+SOURCE_JSON_TO_ABV[SRC_UAMystic] = "UAM";
+SOURCE_JSON_TO_ABV[SRC_UAStarterSpells] = "UASS";
+SOURCE_JSON_TO_ABV[SRC_UAModern] = "UAMM";
+SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
+SOURCE_JSON_TO_ABV[SRC_UAEBB] = "UAEB";
+SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
+SOURCE_JSON_TO_ABV[SRC_UAFFS] = "UAFFS";
+SOURCE_JSON_TO_ABV[SRC_UAFFR] = "UAFFR";
+SOURCE_JSON_TO_ABV[SRC_PSK] = "PSK";
+SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BLS";
+
+function parse_sourceJsonToFull (source) {
+	return _parse_aToB(SOURCE_JSON_TO_FULL, source);
 }
-const sourceToAbv = {};
-sourceToAbv[SRC_PHB] = "PHB";
-sourceToAbv[SRC_EEPC] = "EEPC";
-sourceToAbv[SRC_SCAG] = "SCAG";
-sourceToAbv[SRC_UAMystic] = "UAM";
-sourceToAbv[SRC_UAStarterSpells] = "UASS";
-sourceToAbv[SRC_UAModern] = "UAMM";
-sourceToAbv[SRC_UATOBM] = "UAOBM";
-sourceToAbv[SRC_UAEBB] = "UAEB";
-sourceToAbv[SRC_UAFT] = "UAFT";
-sourceToAbv[SRC_UAFFS] = "UAFFS";
-sourceToAbv[SRC_UAFFR] = "UAFFR";
-sourceToAbv[SRC_PSK] = "PSK";
-sourceToAbv[SRC_BOLS_3PP] = "BLS";
-function parse_sourceToAbv(source) {
-	if (sourceToAbv[source] !== undefined) return sourceToAbv[source];
-	return source;
-}
-function parse_abvToSource(abv) {
-	for (let v in sourceToAbv) {
-		if (!sourceToAbv.hasOwnProperty(v)) continue;
-		if (sourceToAbv[v] === abv) return v
-	}
-	return abv;
+function parse_sourceJsonToAbv(source) {
+	return _parse_aToB(SOURCE_JSON_TO_ABV, source);
 }
 
 function parse_stringToSlug(str) {

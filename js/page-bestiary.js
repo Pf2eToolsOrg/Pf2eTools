@@ -226,7 +226,7 @@ function loadhash (id) {
 
 	$("th#name").html("<span title=\""+origsource+"\" class='source source"+source+"'>"+source+"<br></span> <a href='img/"+source+"/"+name+".png' target='_blank'><img src='img/"+source+"/"+name+".png' class='token' onerror='imgError(this)'></a>"+name);
 
-	$("td span#size").html(parsesize (mon.size));
+	$("td span#size").html(parse_sizeAbvToFull (mon.size));
 
 	$("td span#type").html(type);
 
@@ -239,22 +239,22 @@ function loadhash (id) {
 	$("td span#speed").html(mon.speed);
 
 	$("td#str span.score").html(mon.str);
-	$("td#str span.mod").html(getmodifiertext (mon.str));
+	$("td#str span.mod").html(getAbilityModifier (mon.str));
 
 	$("td#dex span.score").html(mon.dex);
-	$("td#dex span.mod").html(getmodifiertext (mon.dex));
+	$("td#dex span.mod").html(getAbilityModifier (mon.dex));
 
 	$("td#con span.score").html(mon.con);
-	$("td#con span.mod").html(getmodifiertext (mon.con));
+	$("td#con span.mod").html(getAbilityModifier (mon.con));
 
 	$("td#int span.score").html(mon.int);
-	$("td#int span.mod").html(getmodifiertext (mon.int));
+	$("td#int span.mod").html(getAbilityModifier (mon.int));
 
 	$("td#wis span.score").html(mon.wis);
-	$("td#wis span.mod").html(getmodifiertext (mon.wis));
+	$("td#wis span.mod").html(getAbilityModifier (mon.wis));
 
 	$("td#cha span.score").html(mon.cha);
-	$("td#cha span.mod").html(getmodifiertext (mon.cha));
+	$("td#cha span.mod").html(getAbilityModifier (mon.cha));
 
 	var saves = mon.save;
 	if (saves && saves.length > 0) {

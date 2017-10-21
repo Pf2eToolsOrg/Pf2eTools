@@ -14,7 +14,7 @@ window.onload = function load() {
 		const CLS_COL_2 = "source col-xs-1 col-xs-1-7";
 		const CLS_COL_3 = "ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append("<li><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + parse_sourceToFull(curfeat.source) + "'>" + parse_sourceToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
+		$("ul.feats").append("<li><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + parse_sourceJsonToFull(curfeat.source) + "'>" + parse_sourceJsonToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
 		let sourceInList = false;
 		$('select.sourcefilter option').each(function() {
 			if (this.value === curfeat.source) {
@@ -23,7 +23,7 @@ window.onload = function load() {
 			}
 		});
 		if (!sourceInList) {
-			$("select.sourcefilter").append("<option value='" + parse_sourceToAbv(curfeat.source) + "'>" + parse_sourceToFull(curfeat.source) + "</option>");
+			$("select.sourcefilter").append("<option value='" + parse_sourceJsonToAbv(curfeat.source) + "'>" + parse_sourceJsonToFull(curfeat.source) + "</option>");
 		}
 		// PREREQUISITE FILTER
 		// let prereqList = utils_makePrerequisite(curfeat.prerequisite, false, true);

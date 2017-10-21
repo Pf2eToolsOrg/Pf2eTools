@@ -19,7 +19,7 @@ window.onload = function load() {
 
 		for (let i = 0; i < classlist.length; i++) {
 			var curclass = classlist[i];
-			$("ul.classes").append("<li><a id='"+i+"' href='#"+encodeURI(curclass.name).toLowerCase()+"' title='"+curclass.name+"'><span class='name col-xs-9'>"+curclass.name+"</span><span class='source col-xs-3' title='"+parse_sourceToFull(curclass.source)+"'>"+curclass.source+"</span></a></li>");
+			$("ul.classes").append("<li><a id='"+i+"' href='#"+encodeURI(curclass.name).toLowerCase()+"' title='"+curclass.name+"'><span class='name col-xs-9'>"+curclass.name+"</span><span class='source col-xs-3' title='"+parse_sourceJsonToFull(curclass.source)+"'>"+curclass.source+"</span></a></li>");
 		}
 
 		const list = search({
