@@ -21,6 +21,7 @@ const TMP_MODE_TITLE_BRACKET_PART = "({0})";
 const TMP_MODE_TITLE_COST = "{0} psi";
 const TMP_MODE_TITLE_COST_RANGE = "{0}-{1}";
 const TMP_MODE_TITLE_CONCENTRATION = "conc., {0} {1}.";
+const TMP_LIST_ITEM_HREF = "#{0}";
 
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_SEARCH_BAR = "filter-search-input-group";
@@ -77,9 +78,10 @@ window.onload = function load() {
 		for (let i = 0; i < PSIONIC_LIST.length; ++i) {
 			let psionic = PSIONIC_LIST[i];
 
-			const link = document.createElement('a');
+			const link = document.createElement(ELE_A);
 			link.setAttribute(ATB_ID, String(i));
-			link.href = '#' +  utils_nameToDataLink(psionic[JSON_ITEM_NAME]);
+			link.setAttribute(ATB_HREF, TMP_LIST_ITEM_HREF.formatUnicorn(utils_nameToDataLink(psionic[JSON_ITEM_NAME])));
+			link.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
 			link.appendChild(getNameSpan(psionic));
 			link.appendChild(getSourceSpan(psionic));
 			link.appendChild(getTypeSpan(psionic));
