@@ -14,29 +14,9 @@ window.onload = function load() {
 		const CLS_COL_2 = "source col-xs-1 col-xs-1-7";
 		const CLS_COL_3 = "ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append("<li><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + parse_sourceJsonToFull(curfeat.source) + "'>" + parse_sourceJsonToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
-		let sourceInList = false;
-		$('select.sourcefilter option').each(function() {
-			if (this.value === curfeat.source) {
-				sourceInList = true;
-				return false;
-			}
-		});
-		if (!sourceInList) {
-			$("select.sourcefilter").append("<option value='" + parse_sourceJsonToAbv(curfeat.source) + "'>" + parse_sourceJsonToFull(curfeat.source) + "</option>");
-		}
-		// PREREQUISITE FILTER
-		// let prereqList = utils_makePrerequisite(curfeat.prerequisite, false, true);
-		// let prereqAbvList = utils_makePrerequisite(curfeat.prerequisite, true, true);
-		// if (prereqList.length === prereqAbvList.length) {
-		// 	for (let j = 0; j < prereqList.length; ++j) {
-		// 		if (!$("select.prerequisitefilter:contains(\""+prereqList[j].uppercaseFirst()+"\")").length) {
-		// 			$("select.prerequisitefilter").append("<option value='"+prereqAbvList[j]+"'>"+prereqList[j].uppercaseFirst()+"</option>");
-		// 		}
-		// 	}
-		// } else {
-		// 	console.log("prerequisite list and shorthand prerequisite list had different lengths!")
-		// }
+		$("ul.feats").append("<li><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + curfeat.source + "'>" + parse_sourceJsonToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
+
+		addDropdownOption($("select.sourcefilter"), parse_sourceJsonToAbv(curfeat.source), parse_sourceJsonToFull(curfeat.source));
 	}
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 	$("select.sourcefilter").val("All");
@@ -48,7 +28,7 @@ window.onload = function load() {
 		let sourcefilter = $("select.sourcefilter").val();
 		let bonusfilter = $("select.bonusfilter").val();
 		list.filter(function(item) {
-			let rightsource = sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1;
+			let rightsource = sourcefilter === "All" || item.values().source === sourcefilter;
 			let rightbonuses = bonusfilter === "All" || item.values().ability.indexOf(bonusfilter) !== -1 || item.values().ability.toLowerCase().indexOf("choose any") !== -1;
 			if (rightsource && rightbonuses) return true;
 			return false;

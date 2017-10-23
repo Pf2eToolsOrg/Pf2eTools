@@ -1,24 +1,3 @@
-function parsesource (src) {
-	let source = src;
-	if (source === "Player's Handbook") source = "PHB";
-	if (source === "Elemental Evil Player's Companion") source = "EEPC";
-	if (source === "Sword Coast Adventurer's Guide") source = "SCAG";
-	if (source === "Dungeon Master's Guide") source = "DMG";
-	if (source === "Volo's Guide to Monsters") source = "VGM";
-	if (source === "Unearthed Arcana: Eberron") source = "UA Eb";
-	if (source === "Unearthed Arcana: Waterborne Adventures") source = "UA WA";
-	if (source === "Unearthed Arcana: That Old Black Magic") source = "UA TOBM";
-	if (source === "Unearthed Arcana: Gothic Heroes") source = "UA GH";
-	if (source === "Unearthed Arcana: Eladrin and Gith") source = "UA EG";
-	if (source === "Unearthed Arcana: Fiendish Options") source = "UA FO";
-	if (source === "The Tortle Package") source = "TP";
-	if (source === "Plane Shift Zendikar") source = "PSZ";
-	if (source === "Plane Shift Kaladesh") source = "PSK";
-	if (source === "Plane Shift Innistrad") source = "PSI";
-	if (source === "Plane Shift Amonkhet") source = "PSA";
-	return source;
-}
-
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 
@@ -27,11 +6,9 @@ window.onload = function load() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		$("ul.races").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parse_sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parsesource(currace.source)+"</span></a></li>");
+		$("ul.races").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parse_sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parse_sourceJsonToAbv(currace.source)+"</span></a></li>");
 
-		if (!$("select.sourcefilter:contains(\""+currace.source+"\")").length) {
-			$("select.sourcefilter").append("<option value='"+parsesource(currace.source)+"'>"+currace.source+"</option>");
-		}
+		addDropdownOption($("select.sourcefilter"), parse_sourceJsonToAbv(currace.source), parse_sourceJsonToFull(currace.source));
 
 		if (!$("select.sizefilter:contains(\""+parse_sizeAbvToFull(currace.size)+"\")").length) {
 			$("select.sizefilter").append("<option value='"+parse_sizeAbvToFull(currace.size)+"'>"+parse_sizeAbvToFull(currace.size)+"</option>");

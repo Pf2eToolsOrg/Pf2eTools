@@ -436,40 +436,43 @@ function parse_armorFullToAbv(armor) {
 	return _parse_bToA(ARMOR_ABV_TO_FULL, armor);
 }
 
-const SRC_CoS="curse of strahd";
+const SRC_CoS = "CoS";
 const SRC_DMG = "DMG";
 const SRC_EEPC = "EEPC";
-const SRC_LMoP="lost mine of phandelver";
-const SRC_MM="monster manual";
-const SRC_OotA="out of the abyss";
+const SRC_LMoP = "LMoP";
+const SRC_MM = "MM";
+const SRC_OotA = "OotA";
 const SRC_PHB = "PHB";
-const SRC_PotA="elemental evil";
-const SRC_SKT="storm kings thunder";
+const SRC_PotA = "PotA";
+const SRC_SKT = "SKT";
 const SRC_SCAG = "SCAG";
-const SRC_TYP="Tales from the Yawning Portal";
-const SRC_TTP="The Tortle Package";
-const SRC_ToA="Tomb of Annihilation";
-const SRC_ToD="tyranny of dragons";
-const SRC_VGM="Volo's Guide";
-const SRC_PSA="Plane Shift Amonkhet";
-const SRC_PSI="Plane Shift Innistrad";
+const SRC_TYP = "TftYP";
+const SRC_TTP = "TTP";
+const SRC_ToA = "ToA";
+const SRC_ToD = "ToD";
+const SRC_VGM = "VGM";
+const SRC_PSA = "PSA";
+const SRC_PSI = "PSI";
 const SRC_PSK = "PSK";
-const SRC_PSKa = "Plane Shift Kaladesh";
-const SRC_PSZ="Plane Shift Zendikar";
-const SRC_UAA = "UAA";
-const SRC_UAEBB = "UAEB";
-const SRC_UAFT = "UAFT";
-const SRC_UAFFS = "UAFFS";
-const SRC_UAFFR = "UAFFR";
+const SRC_PSZ = "PSZ";
+
+const SRC_UAA = "UAArtificer";
+const SRC_UAEBB = "UAEberron";
+const SRC_UAFT = "UAFeats";
+const SRC_UAFFS = "UAFeatsForSkills";
+const SRC_UAFFR = "UAFeatsForRaces";
 const SRC_UAFO = "UAFiendishOptions";
 const SRC_UAModern = "UAModern";
 const SRC_UAStarterSpells = "UAStarterSpells";
-const SRC_UATOBM = "UATOBM";
-const SRC_UATMC = "UATMC";
-const SRC_UAMystic = "UAMystic";
-const SRC_UATRR = "UATRR";
+const SRC_UATOBM = "UAThatOldBlackMagic";
+const SRC_UATMC = "UATheMysticClass";
+const SRC_UATRR = "UATheRangerRevised";
+const SRC_UAEAG = "UAEladrinAndGith";
+const SRC_UAGH = "UAGothicHeroes";
+const SRC_UAWA = "UAWaterborneAdventures";
+
 const SRC_BOLS_3PP = "BoLS 3pp";
-const SRC_ToB_3PP="tome of beasts";
+const SRC_ToB_3PP = "ToB 3pp";
 
 const UA_PREFIX = "Unearthed Arcana: ";
 const PS_PREFIX = "Plane Shift: ";
@@ -493,7 +496,6 @@ SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
 SOURCE_JSON_TO_FULL[SRC_PSA] = PS_PREFIX + "Amonkhet";
 SOURCE_JSON_TO_FULL[SRC_PSI] = PS_PREFIX + "Innistrad";
 SOURCE_JSON_TO_FULL[SRC_PSK] = PS_PREFIX + "Kaladesh";
-SOURCE_JSON_TO_FULL[SRC_PSKa] = PS_PREFIX + "Kaladesh";
 SOURCE_JSON_TO_FULL[SRC_PSZ] = PS_PREFIX + "Zendikar";
 SOURCE_JSON_TO_FULL[SRC_UAA] = UA_PREFIX + "Artificer";
 SOURCE_JSON_TO_FULL[SRC_UAEBB] = UA_PREFIX + "Eberron";
@@ -505,8 +507,10 @@ SOURCE_JSON_TO_FULL[SRC_UAModern] = UA_PREFIX + "Modern Magic";
 SOURCE_JSON_TO_FULL[SRC_UAStarterSpells] = UA_PREFIX + "Starter Spells";
 SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
 SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
-SOURCE_JSON_TO_FULL[SRC_UAMystic] = UA_PREFIX + "The Mystic Class";
 SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
+SOURCE_JSON_TO_FULL[SRC_UAEAG] = UA_PREFIX + "Eladrin and Gith";
+SOURCE_JSON_TO_FULL[SRC_UAGH] = UA_PREFIX + "Gothic Heroes";
+SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
 SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
 SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts (3pp)";
 
@@ -521,7 +525,7 @@ SOURCE_JSON_TO_ABV[SRC_PHB] = "PHB";
 SOURCE_JSON_TO_ABV[SRC_PotA] = "PotA";
 SOURCE_JSON_TO_ABV[SRC_SKT] = "SKT";
 SOURCE_JSON_TO_ABV[SRC_SCAG] = "SCAG";
-SOURCE_JSON_TO_ABV[SRC_TYP] = "TYP";
+SOURCE_JSON_TO_ABV[SRC_TYP] = "TftYP";
 SOURCE_JSON_TO_ABV[SRC_TTP] = "TTP";
 SOURCE_JSON_TO_ABV[SRC_ToA] = "ToA";
 SOURCE_JSON_TO_ABV[SRC_ToD] = "ToD";
@@ -529,7 +533,6 @@ SOURCE_JSON_TO_ABV[SRC_VGM] = "VGM";
 SOURCE_JSON_TO_ABV[SRC_PSA] = "PSA";
 SOURCE_JSON_TO_ABV[SRC_PSI] = "PSI";
 SOURCE_JSON_TO_ABV[SRC_PSK] = "PSK";
-SOURCE_JSON_TO_ABV[SRC_PSKa] = "PSK";
 SOURCE_JSON_TO_ABV[SRC_PSZ] = "PSZ";
 SOURCE_JSON_TO_ABV[SRC_UAA] = "UAA";
 SOURCE_JSON_TO_ABV[SRC_UAEBB] = "UAEB";
@@ -541,9 +544,11 @@ SOURCE_JSON_TO_ABV[SRC_UAModern] = "UAMM";
 SOURCE_JSON_TO_ABV[SRC_UAStarterSpells] = "UASS";
 SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
-SOURCE_JSON_TO_ABV[SRC_UAMystic] = "UAM";
 SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
-SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BLS";
+SOURCE_JSON_TO_ABV[SRC_UAEAG] = "UAEaG";
+SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
+SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
+SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
 function parse_sourceJsonToFull (source) {
@@ -597,6 +602,19 @@ function search(options) {
 		list.filter();
 	})
 	return list
+}
+
+function addDropdownOption(dropdown, optionVal, optionText) {
+	let inOptions = false;
+	dropdown.find("option").each(function() {
+		if (this.value === optionVal) {
+			inOptions = true;
+			return false;
+		}
+	});
+	if (!inOptions) {
+		dropdown.append("<option value='" + optionVal + "'>" + optionText + "</option>");
+	}
 }
 
 // SORTING =============================================================================================================
