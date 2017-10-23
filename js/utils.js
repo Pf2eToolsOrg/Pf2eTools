@@ -436,9 +436,6 @@ function parse_armorFullToAbv(armor) {
 	return _parse_bToA(ARMOR_ABV_TO_FULL, armor);
 }
 
-const SRC_ALCoS = "ALCoS";
-const SRC_ALEE = "ALEE";
-const SRC_ALRoD = "ALRoD";
 const SRC_CoS = "CoS";
 const SRC_DMG = "DMG";
 const SRC_EEPC = "EEPC";
@@ -459,6 +456,10 @@ const SRC_TTP = "TTP";
 const SRC_TYP = "TftYP";
 const SRC_VGM = "VGM";
 
+const SRC_ALCoS = "ALCurseOfStrahd";
+const SRC_ALEE = "ALElementalEvil";
+const SRC_ALRoD = "ALRageOfDemons";
+
 const SRC_UAA = "UAArtificer";
 const SRC_UAEAG = "UAEladrinAndGith";
 const SRC_UAEBB = "UAEberron";
@@ -477,7 +478,7 @@ const SRC_UAWA = "UAWaterborneAdventures";
 const SRC_BOLS_3PP = "BoLS 3pp";
 const SRC_ToB_3PP = "ToB 3pp";
 
-const AL_PREFIX = "Adventure League: ";
+const AL_PREFIX = "Adventurers League: ";
 const PS_PREFIX = "Plane Shift: ";
 const UA_PREFIX = "Unearthed Arcana: ";
 
