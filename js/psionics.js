@@ -282,13 +282,10 @@ window.onload = function load() {
 	}
 
 	function selectInitialPsionic() {
-		if (window.location.hash.length === 0) {
-			let listItems = TABLE_VIEW.getElementsByTagName(ELE_A);
-			if (listItems.length > 0) {
-				listItems[0].click();
-			}
-		} else {
-			window.onhashchange();
+		initHistory();
+		let listItems = TABLE_VIEW.getElementsByTagName(ELE_A);
+		if (listItems.length > 0) {
+			listItems[0].click();
 		}
 	}
 };
