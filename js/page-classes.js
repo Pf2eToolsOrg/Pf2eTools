@@ -31,9 +31,7 @@ window.onload = function load() {
 			listClass: "classes"
 		});
 
-		if (window.location.hash.length) {
-			window.onhashchange();
-		} else $("#listcontainer a").get(0).click();
+		initHistory()
 	};
 	request.send();
 }
