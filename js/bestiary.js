@@ -47,9 +47,7 @@ window.onload = function load() {
 		valueNames: ["name", "source", "type", "cr"]
 	})
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory()
 
 	// filtering
 	$("form#filtertools select").change(function(){
