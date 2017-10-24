@@ -288,7 +288,7 @@ window.onload = function load() {
 				listItems[0].click();
 			}
 		} else {
-			window.onhashchange();
+			initHistory();
 		}
 	}
 };
