@@ -132,9 +132,7 @@ window.onload = function load() {
 		listClass: "spells"
 	});
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory()
 
 	$("form#filtertools select").change(function(){
 		let sourcefilter = $("select.sourcefilter").val();
