@@ -24,9 +24,7 @@ window.onload = function load() {
 		list.filter(item => item.values().name.startsWith(type))
 	})
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory()
 }
 
 function loadhash (id) {

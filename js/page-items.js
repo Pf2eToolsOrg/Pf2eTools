@@ -137,9 +137,7 @@ window.onload = function load() {
 	$("select.typefilter option[value=All]").prependTo(".typefilter");
 	$(".typefilter").val("All");
 
-	if (window.location.hash.length) {
-		window.onhashchange();
-	} else $("#listcontainer a").get(0).click();
+	initHistory()
 
 	$("form#filtertools select").change(function(){
 		var typefilter = $("select.typefilter").val();
