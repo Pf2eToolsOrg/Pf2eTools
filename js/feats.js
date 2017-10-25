@@ -6,15 +6,16 @@ window.onload = function load() {
 	for (var i = 0; i < featlist.length; i++) {
 		var curfeat = featlist[i];
 		var name = curfeat.name;
-		let attbText = utils_getAttributeText(curfeat.ability);
-		if (!attbText) attbText = NONE;
+		const ability = utils_getAbilityData(curfeat.ability);
+		if (!ability.asText) ability.asText = NONE;
+		const isAbilityChoose = ability.asText.toLowerCase().includes("choose any");
 		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
 		if (!prereqText) prereqText = NONE;
 		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";
 		const CLS_COL_2 = "source col-xs-1 col-xs-1-7";
-		const CLS_COL_3 = "ability " + (attbText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
+		const CLS_COL_3 = "ability " + (ability.asText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append("<li><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + curfeat.source + "'>" + parse_sourceJsonToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + attbText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
+		$("ul.feats").append("<li "+FLTR_SOURCE+"='"+curfeat.source+"' "+FLTR_ABILITIES+"='"+ability.asFilterCollection+"' "+FLTR_ABILITIES_CHOOSE+"='"+isAbilityChoose+"'><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + parse_sourceJsonToFull(curfeat.source) + "'>" + parse_sourceJsonToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + ability.asText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
 
 		addDropdownOption($("select.sourcefilter"), parse_sourceJsonToAbv(curfeat.source), parse_sourceJsonToFull(curfeat.source));
 	}
@@ -28,8 +29,9 @@ window.onload = function load() {
 		let sourcefilter = $("select.sourcefilter").val();
 		let bonusfilter = $("select.bonusfilter").val();
 		list.filter(function(item) {
-			let rightsource = sourcefilter === "All" || item.values().source === sourcefilter;
-			let rightbonuses = bonusfilter === "All" || item.values().ability.indexOf(bonusfilter) !== -1 || item.values().ability.toLowerCase().indexOf("choose any") !== -1;
+			let rightsource = sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter;
+			const bonusList = item.elm.getAttribute(FLTR_ABILITIES).split(FLTR_LIST_SEP);
+			let rightbonuses = bonusfilter === "All" || bonusfilter === "Any" && item.elm.getAttribute(FLTR_ABILITIES_CHOOSE) === "true" && bonusList.length === 6 || bonusList.includes(bonusfilter);
 			if (rightsource && rightbonuses) return true;
 			return false;
 		});

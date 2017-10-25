@@ -7,7 +7,7 @@ window.onload = function load () {
 	for (var i = 0; i < bglist.length; i++) {
 		var curbg = bglist[i];
 		var name = curbg.name;
-		$("ul.backgrounds").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+parse_sourceJsonToFull(curbg.source)+"'>"+parse_sourceJsonToAbv(curbg.source)+"</span></a></li>");
+		$("ul.backgrounds").append("<li "+FLTR_SOURCE+"='"+curbg.source+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+parse_sourceJsonToFull(curbg.source)+"'>"+parse_sourceJsonToAbv(curbg.source)+"</span></a></li>");
 
 		addDropdownOption($("select.sourcefilter"), parse_sourceJsonToAbv(curbg.source), parse_sourceJsonToFull(curbg.source))
 	}
@@ -18,20 +18,20 @@ window.onload = function load () {
 	const list = search({
 		valueNames: ['name', 'source'],
 		listClass: "backgrounds"
-	})
+	});
 
 	$("form#filtertools select").change(function(){
 		var sourcefilter = $("select.sourcefilter").val();
 
 		list.filter(function(item) {
-			if (sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1) return true;
+			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) return true;
 			return false;
 		});
 	});
 
 
 	initHistory()
-}
+};
 
 function loadhash (id) {
 	$("#stats").html(tabledefault);

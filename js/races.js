@@ -6,13 +6,12 @@ window.onload = function load() {
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
 		var name = currace.name;
-		$("ul.races").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+utils_getAttributeText(currace.ability)+"</span> <span class='size col-xs-2'>"+parse_sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+currace.source+"\">"+parse_sourceJsonToAbv(currace.source)+"</span></a></li>");
+		const ability = utils_getAbilityData(currace.ability);
+		const isChooseAbility = ability.asText.toLowerCase().includes("choose");
+		$("ul.races").append("<li "+FLTR_SOURCE+"='"+currace.source+"' "+FLTR_SIZE+"='"+currace.size+"' "+FLTR_ABILITIES+"='"+ability.asFilterCollection+"' "+FLTR_ABILITIES_CHOOSE+"='"+isChooseAbility+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+ability.asText+"</span> <span class='size col-xs-2'>"+parse_sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+parse_sourceJsonToFull(currace.source)+"\">"+parse_sourceJsonToAbv(currace.source)+"</span></a></li>");
 
-		addDropdownOption($("select.sourcefilter"), parse_sourceJsonToAbv(currace.source), parse_sourceJsonToFull(currace.source));
-
-		if (!$("select.sizefilter:contains(\""+parse_sizeAbvToFull(currace.size)+"\")").length) {
-			$("select.sizefilter").append("<option value='"+parse_sizeAbvToFull(currace.size)+"'>"+parse_sizeAbvToFull(currace.size)+"</option>");
-		}
+		addDropdownOption($("select.sourcefilter"), currace.source, parse_sourceJsonToFull(currace.source));
+		addDropdownOption($("select.sizefilter"), currace.size, parse_sizeAbvToFull(currace.size));
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
@@ -36,9 +35,10 @@ window.onload = function load() {
 			var rightsource = false;
 			var rightsize = false;
 			var rightbonuses = false;
-			if (sourcefilter === "All" || item.values().source.indexOf(sourcefilter) !== -1) rightsource = true;
-			if (sizefilter === "All" || item.values().size.indexOf(sizefilter) !== -1) rightsize = true;
-			if (bonusfilter === "All" || item.values().ability.indexOf(bonusfilter) !== -1) rightbonuses = true;
+			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) rightsource = true;
+			if (sizefilter === "All" || item.elm.getAttribute(FLTR_SIZE) === sizefilter) rightsize = true;
+			const bonusList = item.elm.getAttribute(FLTR_ABILITIES).split(FLTR_LIST_SEP);
+			rightbonuses = bonusfilter === "All" || bonusfilter === "Choose" && item.elm.getAttribute(FLTR_ABILITIES_CHOOSE) === "true" && bonusList.length === 6 || bonusList.includes(bonusfilter);
 			if (rightsource && rightsize && rightbonuses) return true;
 			return false;
 		});
@@ -61,7 +61,7 @@ function loadhash (id) {
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 
-	var ability = utils_getAttributeText(currace.ability);
+	var ability = utils_getAbilityData(currace.ability);
 	$("td#ability span").html(ability);
 
 	var speed = currace.speed + (currace.speed === "Varies" ? "" : "ft. ");

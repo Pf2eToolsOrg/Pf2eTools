@@ -12,9 +12,10 @@ function hashchange(e) {
 }
 
 function initHistory() {
-	window.onhashchange = hashchange
-	if (window.location.hash.length)
-		hashchange()
-	else
-		location.replace($("#listcontainer a").attr('href'))
+	window.onhashchange = hashchange;
+	if (window.location.hash.length) {
+		hashchange();
+	} else {
+		location.replace($("#listcontainer .list a").attr('href'));
+	}
 }

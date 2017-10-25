@@ -35,6 +35,22 @@ const ATB_ONCLICK = "onclick";
 const STL_DISPLAY_INITIAL = "display: initial";
 const STL_DISPLAY_NONE = "display: none";
 
+const FLTR_SOURCE = "filterSource";
+const FLTR_TYPE = "filterType";
+const FLTR_CR = "filterCr";
+const FLTR_3PP = "filter3pp";
+const FLTR_ABILITIES = "filterAbilities";
+const FLTR_ORDER = "filterOrder";
+const FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
+const FLTR_SIZE = "filterSize";
+const FLTR_LEVEL = "filterLevel";
+const FLTR_SCHOOL = "filterSchool";
+const FLTR_RANGE = "filterRange";
+const FLTR_CLASS = "filterClass";
+const FLTR_META = "filterMeta";
+const FLTR_ACTION = "filterAction";
+const FLTR_LIST_SEP = ";";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -267,55 +283,64 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 	}
 }
 
-function utils_getAttributeText(attObj) {
-	const ATTRIBUTES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
-	let mainAtts = [];
-	let atts = [];
-	if (attObj !== undefined) {
-		handleAllAttributes(attObj);
-		handleAttributesChoose();
-		return atts.join("; ");
+class AbilityData {
+	constructor(asText, asCollection) {
+		this.asText = asText;
+		this.asCollection = asCollection;
+		this.asFilterCollection = asCollection.join(FLTR_LIST_SEP);
 	}
-	return "";
+}
+function utils_getAbilityData(abObj) {
+	const ABILITIES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
+	let mainAbs = [];
+	let allAbs = [];
+	let abs = [];
+	if (abObj !== undefined) {
+		handleAllAbilities(abObj);
+		handleAbilitiesChoose();
+		return new AbilityData(abs.join("; "), allAbs);
+	}
+	return new AbilityData("", []);
 
-	function handleAllAttributes(abilityList) {
-		for (let a = 0; a < ATTRIBUTES.length; ++a) {
-			handleAttribute(abilityList, ATTRIBUTES[a])
+	function handleAllAbilities(abilityList) {
+		for (let a = 0; a < ABILITIES.length; ++a) {
+			handleAbility(abilityList, ABILITIES[a])
 		}
 	}
 
-	function handleAttribute(parent, att) {
-		if (parent[att.toLowerCase()] !== undefined) {
-			atts.push(att + " " + (parent[att.toLowerCase()] < 0 ? "" : "+") + parent[att.toLowerCase()]);
-			mainAtts.push(att);
+	function handleAbility(parent, ab) {
+		if (parent[ab.toLowerCase()] !== undefined) {
+			abs.push(ab + " " + (parent[ab.toLowerCase()] < 0 ? "" : "+") + parent[ab.toLowerCase()]);
+			mainAbs.push(ab);
+			allAbs.push(ab.toLowerCase());
 		}
 	}
 
-	function handleAttributesChoose() {
-		if (attObj.choose !== undefined) {
-			for (let i = 0; i < attObj.choose.length; ++i) {
-				let item = attObj.choose[i];
+	function handleAbilitiesChoose() {
+		if (abObj.choose !== undefined) {
+			for (let i = 0; i < abObj.choose.length; ++i) {
+				let item = abObj.choose[i];
 				let outStack = "Choose ";
 				if (item.predefined !== undefined) {
 					for (let j = 0; j < item.predefined.length; ++j) {
-						let subAtts = [];
-						handleAllAttributes(subAtts, item.predefined[j]);
-						outStack += subAtts.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
+						let subAbs = [];
+						handleAllAbilities(subAbs, item.predefined[j]);
+						outStack += subAbs.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
 					}
 				} else {
-					let allAttributes = item.from.length === 6;
-					let allAttributesWithParent = isAllAttributesWithParent(item);
+					let allAbilities = item.from.length === 6;
+					let allAbilitiesWithParent = isAllAbilitiesWithParent(item);
 					let amount = item.amount === undefined ? 1 : item.amount;
 					amount = (amount < 0 ? "" : "+") + amount;
-					if (allAttributes) {
+					if (allAbilities) {
 						outStack += "any ";
-					} else if (allAttributesWithParent) {
+					} else if (allAbilitiesWithParent) {
 						outStack += "any other ";
 					}
 					if (item.count !== undefined && item.count > 1) {
 						outStack += getNumberString(item.count) + " ";
 					}
-					if (allAttributes || allAttributesWithParent) {
+					if (allAbilities || allAbilitiesWithParent) {
 						outStack += amount;
 					} else {
 						for (let j = 0; j < item.from.length; ++j) {
@@ -337,24 +362,23 @@ function utils_getAttributeText(attObj) {
 						}
 					}
 				}
-				atts.push(outStack)
+				abs.push(outStack)
 			}
 
 		}
 	}
 
-	function isAllAttributesWithParent(item) {
-		let tempAttributes = [];
-		for (let i = 0; i < mainAtts.length; ++i) {
-			tempAttributes.push(mainAtts[i].toLowerCase());
+	function isAllAbilitiesWithParent(chooseAbs) {
+		let tempAbilities = [];
+		for (let i = 0; i < mainAbs.length; ++i) {
+			tempAbilities.push(mainAbs[i].toLowerCase());
 		}
-		for (let i = 0; i < item.from.length; ++i) {
-			let attb = item.from[i].toLowerCase();
-			if (!tempAttributes.includes(attb)) {
-				tempAttributes.push(attb)
-			}
+		for (let i = 0; i < chooseAbs.from.length; ++i) {
+			let ab = chooseAbs.from[i].toLowerCase();
+			if (!tempAbilities.includes(ab)) tempAbilities.push(ab);
+			if (!allAbs.includes(ab.toLowerCase)) allAbs.push(ab.toLowerCase());
 		}
-		return tempAttributes.length === 6;
+		return tempAbilities.length === 6;
 	}
 	function getNumberString(amount) {
 		if (amount === 1) return "one";
@@ -417,14 +441,20 @@ function addCommas(intNum) {
 	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 }
 
-const xpchart = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
+const XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000]
+function parse_crToXp (cr) {
+	if (cr === "0") return "0 or 10";
+	if (cr === "1/8") return "25";
+	if (cr === "1/4") return "50";
+	if (cr === "1/2") return "100";
+	return addCommas (XP_CHART[parseInt(cr)-1]);
+}
 
-function parsecr (cr) {
-	if (cr === "0") return "0 or 10"
-	if (cr === "1/8") return "25"
-	if (cr === "1/4") return "50"
-	if (cr === "1/2") return "100"
-	return addCommas (xpchart[parseInt(cr)-1]);
+function parse_crToNumber (cr) {
+	let parts = cr.trim().split("/");
+	if (parts.length === 1) return Number(parts[0]);
+	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
+	else return 0;
 }
 
 const ARMOR_ABV_TO_FULL = {
@@ -640,13 +670,23 @@ function addDropdownOption(dropdown, optionVal, optionText) {
 // SORTING =============================================================================================================
 
 function asc_sort(a, b){
+	if ($(b).text() === $(a).text()) return 0;
 	return $(b).text() < $(a).text() ? 1 : -1;
 }
 
 function asc_sort_range(a, b){
+	if (parseInt(b.value) === parseInt(a.value)) return 0;
 	return parseInt(b.value) < parseInt(a.value) ? 1 : -1;
 }
 
 function desc_sort(a, b){
+	if ($(b).text() === $(a).text()) return 0;
 	return $(b).text() > $(a).text() ? 1 : -1;
+}
+
+function asc_sort_cr(a, b) {
+	let aNum = parse_crToNumber($(a).text());
+	let bNum = parse_crToNumber($(b).text());
+	if (aNum === bNum) return 0;
+	return bNum < aNum ? 1 : -1;
 }
