@@ -61,19 +61,14 @@ function rollLoot(cr,hoard=false) {
 		return;
 	}
 
-
 	// take care of individual treasure
 	if (!hoard) {
-		let coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp]
-		let coinnames = ["cp","sp","ep","gp","pp"];
-		for (let i = coins.length-1; i >= 0; i--) {
-			if (!coins[i]) continue;
-			let roll = coins[i].split("*")[0];
-			let multiplier = coins[i].split("*")[1];
-			coins[i] = droll.roll(roll).total;
-			if (multiplier) coins[i] *= parseInt(multiplier);
-			$("#lootoutput ul:eq(0)").prepend("<li>"+numberWithCommas(coins[i])+" "+coinnames[i]+"</li>");
-		}
+		const generatedCoins = generateCoinsFromLoot(loot);
+
+		generatedCoins.forEach((coin) => {
+			$("#lootoutput ul:eq(0)").prepend("<li>"+ numberWithCommas(coin.value) + " " + coin.denomination + "</li>");
+		});
+
 		return;
 
 		// and now for hoards
@@ -81,14 +76,13 @@ function rollLoot(cr,hoard=false) {
 		let treasure = [];
 		let coins = [curtable.coins.cp, curtable.coins.sp, curtable.coins.ep, curtable.coins.gp, curtable.coins.pp]
 		let coinnames = ["cp","sp","ep","gp","pp"];
-		for (let i = coins.length-1; i >= 0; i--) {
-			if (!coins[i]) continue;
-			let roll = coins[i].split("*")[0];
-			let multiplier = coins[i].split("*")[1];
-			coins[i] = droll.roll(roll).total;
-			if (multiplier) coins[i] *= parseInt(multiplier);
-			treasure.push(String(numberWithCommas(coins[i])+" "+coinnames[i]));
-		}
+
+		const generatedCoins = generateCoinsFromLoot(curtable.coins);
+
+		generatedCoins.forEach((coin) => {
+			treasure.push(String(numberWithCommas(coin.value) + " " + coin.denomination));
+
+		});
 
 		// gems and art objects
 
@@ -220,4 +214,33 @@ function rollLoot(cr,hoard=false) {
 
 	}
 	return;
+}
+
+function generateCoinsFromLoot(loot){
+	let retVal = [];
+	const coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp]
+	const coinnames = ["cp","sp","ep","gp","pp"];
+
+	for (let i = coins.length-1; i >= 0; i--) {
+		if (!coins[i]){
+			continue;
+		} 
+
+		const roll = coins[i].split("*")[0];
+		const multiplier = coins[i].split("*")[1];
+
+		let rolledValue = droll.roll(roll).total;
+
+		if (multiplier){
+			rolledValue *= parseInt(multiplier);
+		}
+
+		const coin = {};
+		coin.denomination = coinnames[i];
+		coin.value = rolledValue;
+
+		retVal.push(coin);
+	}
+
+	return retVal;
 }
