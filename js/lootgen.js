@@ -61,34 +61,18 @@ function rollLoot(cr,hoard=false) {
 		return;
 	}
 
-
 	// take care of individual treasure
 	if (!hoard) {
-		let coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp]
-		let coinnames = ["cp","sp","ep","gp","pp"];
-		for (let i = coins.length-1; i >= 0; i--) {
-			if (!coins[i]) continue;
-			let roll = coins[i].split("*")[0];
-			let multiplier = coins[i].split("*")[1];
-			coins[i] = droll.roll(roll).total;
-			if (multiplier) coins[i] *= parseInt(multiplier);
-			$("#lootoutput ul:eq(0)").prepend("<li>"+numberWithCommas(coins[i])+" "+coinnames[i]+"</li>");
-		}
+		const formattedCoins = getFormattedCoinsForDisplay(loot);
+		$("#lootoutput ul:eq(0)").prepend(`<li> ${formattedCoins} </li>`);
+
 		return;
 
 		// and now for hoards
 	} else {
 		let treasure = [];
-		let coins = [curtable.coins.cp, curtable.coins.sp, curtable.coins.ep, curtable.coins.gp, curtable.coins.pp]
-		let coinnames = ["cp","sp","ep","gp","pp"];
-		for (let i = coins.length-1; i >= 0; i--) {
-			if (!coins[i]) continue;
-			let roll = coins[i].split("*")[0];
-			let multiplier = coins[i].split("*")[1];
-			coins[i] = droll.roll(roll).total;
-			if (multiplier) coins[i] *= parseInt(multiplier);
-			treasure.push(String(numberWithCommas(coins[i])+" "+coinnames[i]));
-		}
+
+		treasure.push(getFormattedCoinsForDisplay(curtable.coins));
 
 		// gems and art objects
 
@@ -220,4 +204,87 @@ function rollLoot(cr,hoard=false) {
 
 	}
 	return;
+}
+
+/**
+ * @param  {LootTable} loot - the loot table from which we will extract coin values
+ * @return {string} a string representing a nested bulleted list of coin values,
+ * 					along with a total sum in GP.
+ */
+function getFormattedCoinsForDisplay(loot){
+	const generatedCoins = generateCoinsFromLoot(loot);
+
+	let individuallyFormattedCoins = [];
+	generatedCoins.forEach((coin) => {
+		individuallyFormattedCoins.unshift("<li>"+ numberWithCommas(coin.value) + " " + coin.denomination + "</li>");
+	});
+
+	const totalValueGP = getGPValueFromCoins(generatedCoins);
+
+	const combinedFormattedCoins = individuallyFormattedCoins.reduce((total, formattedCoin) => {
+		return total += formattedCoin;
+	}, "");
+
+	return `${totalValueGP} gp total<ul> ${combinedFormattedCoins}</ul>`;
+}
+
+/**
+ * @param  {LootTable} loot - the loot table from which we will extract coin values
+ * @return {Array<Coin>} - a list of coins contained in the loot table
+ */
+function generateCoinsFromLoot(loot){
+	let retVal = [];
+
+	const coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp]
+	const coinnames = ["cp","sp","ep","gp","pp"];
+
+	for (let i = coins.length-1; i >= 0; i--) {
+		if (!coins[i]){
+			continue;
+		} 
+
+		const roll = coins[i].split("*")[0];
+		const multiplier = coins[i].split("*")[1];
+
+		let rolledValue = droll.roll(roll).total;
+
+		if (multiplier){
+			rolledValue *= parseInt(multiplier);
+		}
+
+		const coin = {};
+		coin.denomination = coinnames[i];
+		coin.value = rolledValue;
+
+		retVal.push(coin);
+	}
+
+	return retVal;
+}
+
+/**
+ * @param  {Array<Coin>} coins - a list of coins to convert to GP
+ * @return {number} the combined value of all the coins supplied, in GP, truncated to two decimal places
+ */
+function getGPValueFromCoins(coins){
+	const initialValue = 0;
+
+	let retVal = coins.reduce((total, coin) => {
+		switch(coin.denomination){
+		case "cp":
+			return total += (coin.value * 0.01);
+		case "sp":
+			return total += (coin.value * 0.1);
+		case "ep":
+			return total += (coin.value * 0.5);
+		case "gp":
+			return total += coin.value;
+		case "pp":
+			return total += (coin.value * 10);
+		default:
+			return total;
+		}
+	}, initialValue);
+
+	return parseFloat(retVal.toFixed(2));
 }
