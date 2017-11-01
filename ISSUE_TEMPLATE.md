@@ -1,11 +1,15 @@
-HAY DUDES I FOUND A BUG
+Please fill out as much of this template as possible/is applicable.
 
-Browser (Chromium, Firefox, Edge, etc):
+Is this a bug or a feature request:
 
-Platform (Windows, iOS, Android, etc):
+Issue:
 
-Page(s) the bug occurs on:
+Page(s) affected:
 
 Reproduction steps:
 
 Additional information:
+
+Browser (Chromium, Firefox, Edge, etc):
+
+Platform (Windows, iOS, Android, etc):
