@@ -51,6 +51,9 @@ const FLTR_META = "filterMeta";
 const FLTR_ACTION = "filterAction";
 const FLTR_LIST_SEP = ";";
 
+const STYLESHEET_DEFAULT = "default";
+const STYLESHEET_ALTERNATE = "alternate";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -771,3 +774,23 @@ function compareNames(a, b) {
 	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
 	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
 }
+
+// NIGHT MODE ==========================================================================================================
+let styleSwitcher;
+function toggleActiveStylesheet() {
+	styleSwitcher.toggleActiveStyleSheet();
+}
+
+window.addEventListener("load", function() {
+	styleSwitcher = new StyleSwitcher($(".nightModeToggle"));
+
+	// load user's preferred CSS
+	let cookie = StyleSwitcher.readCookie("style");
+	cookie = cookie ? cookie : StyleSwitcher.getPreferredStyleSheet();
+	styleSwitcher.setActiveStyleSheet(cookie);
+});
+
+window.addEventListener("unload", function() {
+	const title = StyleSwitcher.getActiveStyleSheet();
+	StyleSwitcher.createCookie("style", title, 365);
+});

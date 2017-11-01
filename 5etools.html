@@ -20,6 +20,8 @@
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/day.css" title="default">
+	<link rel="stylesheet alternate" href="css/night.css" title="alternate" disabled>
 	<link rel="icon" href="favicon.png">
 
 </head>
@@ -73,6 +75,9 @@
 					<li role="presentation"><a href="editor.html">WYSIWYG Editor</a></li>
 				</ul>
 			</li>
+			<li role="presentation">
+				<a class="nightModeToggle" href="#" onclick="toggleActiveStylesheet(); return false;">Night Mode</a>
+			</li>
 		</ul>
 	</nav>
 	<main class="container bodyContent">
@@ -121,10 +126,10 @@
 	</main>
 	<footer class="container">
 	</footer>
+
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="lib/jquery.js"></script>
 	<script type="text/javascript" src="lib/bootstrap.js"></script>
-
-
 </body>
-
 </html>

@@ -16,12 +16,6 @@
 header {
 	margin-bottom: 3px;
 	padding: 25px 15px;
-	color: white;
-	background-color: rgb(0, 107, 196);
-}
-
-header p.lead {
-	color: lightgrey;
 }
 
 main {
@@ -97,7 +91,6 @@ ul.list li {
 }
 
 ul.list li:hover {
-	background: lightgrey;
 	max-height: 100%;
 }
 
@@ -155,7 +148,7 @@ span.sourceCoS {
 }
 
 span.sourceOotA {
-	color: black;
+	color: grey;
 }
 
 span.sourceSKT {
@@ -182,7 +175,6 @@ span.sourceEEPC {
 table#stats,
 table#statsprof {
 	font-family: 'Convergence', sans-serif;
-	background: #fdf1dc;
 	border-radius: 10px;
 	width: 100%;
 	font-size: 0.9em;
@@ -225,14 +217,8 @@ table#stats table caption {
 	margin-left: 5px;
 }
 
-table#stats table tbody tr:nth-child(odd) {
-	background: #e4d8c3;
-}
-
 th.border {
 	height: 10px;
-	border: 1px solid black;
-	background: #e69a28;
 }
 
 td.divider div {
@@ -253,7 +239,6 @@ table#stats span.name {
 
 tr.text td {
 	padding-bottom: 0.7em !important;
-	color: black !important;
 }
 
 td#levelschoolritual {
@@ -277,7 +262,6 @@ table#stats #classes span {
 }
 
 table#stats td#typerarityattunement {
-	font-style: italic;
 	color: black;
 }
 
@@ -287,7 +271,6 @@ table#stats span.name {
 
 tr.text td {
 	padding-bottom: 0.7em !important;
-	color: black !important;
 }
 
 th#name {
@@ -304,7 +287,6 @@ th#name {
 
 table#stats td#sizetypealignment {
 	font-style: italic;
-	color: black;
 	padding-right: 10em;
 }
 
@@ -376,7 +358,6 @@ tr.action td,
 tr.reaction td,
 tr.legendary td {
 	padding-bottom: 0.7em !important;
-	color: black !important;
 }
 
 tr.trait:last-of-type td,
@@ -410,7 +391,6 @@ tr td > p.spells ~ p.spells {
 #output {
 	margin: 1em 0;
 	padding: 0.2em 0.7em;
-	background: lightgrey;
 	border-radius: 0.2em;
 	display: none;
 }
@@ -462,7 +442,6 @@ input[type=number]#hd::-webkit-outer-spin-button {
 	font-weight: normal;
 	position: absolute;
 	background: white;
-	border: 1px solid lightgrey;
 	border-radius: 3px;
 	padding: 3px;
 }
@@ -488,17 +467,12 @@ input[type=number]#hd::-webkit-outer-spin-button {
 	cursor: initial !important;
 }
 
-#msbcr tr:nth-child(even) {
-	background: lightgrey;
-}
-
 #msbcr tr {
 	cursor: pointer;
 }
 
 #croutput {
 	padding: 0.2em 0.7em;
-	background: lightgrey;
 	border-radius: 0.2em;
 }
 
@@ -555,7 +529,6 @@ td._class_feature.feature strong {
 	margin: 0.2em;
 	display: block;
 	border-bottom: 1px solid #000;
-	color: #922610;
 	font-family: serif;
 	font-weight: 500;
 	font-size: 1.5em;
@@ -592,7 +565,6 @@ td._class_feature.subfeature strong {
 	margin: 0.2em;
 	display: inline;
 	border-bottom: none;
-	color: #922610;
 	font-family: serif;
 	font-weight: 500;
 	font-size: 1.3em;
@@ -637,10 +609,6 @@ table#stats td._class_feature.feature table {
 	width: calc(100% - 2.4em);
 }
 
-table#stats td._class_feature table th {
-	color: black;
-}
-
 table#stats td._class_feature p.spellabilitysubtext {
 	text-align: center;
 }
@@ -654,16 +622,6 @@ table#stats td._class_feature p.spellabilitysubtext span {
 #classtable table {
 	font-size: 0.8em;
 	width: 100%;
-	background: #fdf1dc;
-}
-
-#classtable table th {
-	color: black;
-}
-
-#classtable table tr:nth-child(odd) td,
-#rulescontent table tbody tr:nth-child(odd) td {
-	background: lightgrey;
 }
 
 aside#listcontainer {
@@ -680,7 +638,6 @@ ul.list.rules {
 #rulescontent caption {
 	font-weight: bold;
 	font-size: 1.2em;
-	color: black;
 	display: block;
 }
 
@@ -737,7 +694,6 @@ div#subclasses > span {
 	font-size: 0.8em;
 	margin: 0.2em;
 	padding: 0.5em;
-	background: lightgrey;
 	border-radius: 0.5em;
 	cursor: pointer;
 }
@@ -781,7 +737,6 @@ img.token:hover {
 
 tr.trait td {
 	padding-bottom: 0.7em !important;
-	color: black !important;
 }
 
 table#stats #ability,
