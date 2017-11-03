@@ -61,9 +61,9 @@ function () {
 	"use strict";
 	let str = this.toString();
 	if (arguments.length) {
-		let t = typeof arguments[0];
+		const t = typeof arguments[0];
 		let key;
-		let args = TYP_STRING === t || TYP_NUMBER === t ?
+		const args = TYP_STRING === t || TYP_NUMBER === t ?
 			Array.prototype.slice.call(arguments)
 			: arguments[0];
 
@@ -92,7 +92,7 @@ function utils_joinPhraseArray(array, joiner, lastJoiner) {
 
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 function () {
-	let str = this.toString();
+	const str = this.toString();
 	if (str.length === 0) return str;
 	if (str.length === 1) return str.charAt(0).toUpperCase();
 	return str.charAt(0).toUpperCase() + str.slice(1);
@@ -109,6 +109,9 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	for (let i = 0; i < textList.length; ++i) {
 		if (typeof textList[i] === TYP_OBJECT) {
 			if (textList[i].islist === "YES") {
+				textStack += utils_makeOldList(textList[i]);
+			}
+			if (textList[i].type === "list") {
 				textStack += utils_makeList(textList[i]);
 			}
 			if (textList[i].hassubtitle === "YES") {
@@ -134,9 +137,9 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	return textStack;
 
 	function getString(text, addTitle) {
-		let openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
-		let closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
-		let inlineTitle = addTitle ? textBlockInlineTitle : "";
+		const openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
+		const closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
+		const inlineTitle = addTitle ? textBlockInlineTitle : "";
 		return openTag + inlineTitle + text + closeTag;
 	}
 }
@@ -171,21 +174,36 @@ function utils_makeAttDc(attDcObj) {
 function utils_makeAttAttackMod(attAtkObj) {
 	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + " attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
 }
-function utils_makeList(listObj) {
+function utils_makeOldList(listObj) { //to handle islist === "YES"
 	let outStack = "<ul>";
 	for (let i = 0; i < listObj.items.length; ++i) {
-		let cur = listObj.items[i];
+		const cur = listObj.items[i];
 		outStack += "<li>";
-		for (let j = 0; j < cur.text.length; ++j) {
-			if (cur.text[j].hassubtitle === "YES") {
-				outStack += "<br>" + utils_makeListSubHeader(cur.text[j].title) + cur.text[j].text;
+		for (let j = 0; j < cur.entries.length; ++j) {
+			if (cur.entries[j].hassubtitle === "YES") {
+				outStack += "<br>" + utils_makeListSubHeader(cur.entries[j].title) + cur.entries[j].entries;
 			} else {
-				outStack += cur.text[j];
+				outStack += cur.entries[j];
 			}
 		}
 		outStack += "</li>";
 	}
 	return outStack + "</ul>";
+}
+function utils_makeList(listObj) { //to handle type === "list"
+	let listTag = "ul";
+	const subtype = listObj.subtype;
+	let suffix = "";
+	if(subtype === "ordered") {
+		listTag = "ol";
+		if (listObj.ordering) suffix = " type=\""+listObj.ordering+"\"";
+	}//NOTE: "description" lists are more complex - can handle those later if required
+	let outStack = "<"+listTag+suffix+">";
+	for (let i = 0; i < listObj.items.length; ++i) {
+		outStack += "<li>"+listObj.items[i]+"</li>";
+	}
+	return outStack + "</"+listTag+">";
+
 }
 function utils_makeSubHeader(text) {
 	return "<span class='stats-sub-header'>" + text + ".</span> "
@@ -197,7 +215,7 @@ function utils_makeAttChoose(attList) {
 	if (attList.length === 1) {
 		return parse_attAbvToFull(attList[0]) + " modifier";
 	} else {
-		let attsTemp = [];
+		const attsTemp = [];
 		for (let i = 0; i < attList.length; ++i) {
 			attsTemp.push(parse_attAbvToFull(attList[i]));
 		}
@@ -219,15 +237,15 @@ function makeTableTdClassText(tableObject, i) {
 function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 	shorthand = shorthand === undefined || shorthand === null ? false : shorthand;
 	makeAsArray = makeAsArray === undefined || makeAsArray === null ? false : makeAsArray;
-	let outStack = [];
+	const outStack = [];
 	if (prereqList === undefined || prereqList === null) return "";
 	for (let i = 0; i < prereqList.length; ++i) {
-		let pre = prereqList[i];
+		const pre = prereqList[i];
 		if (pre.race !== undefined) {
 			for (let j = 0; j < pre.race.length; ++j) {
 				if (shorthand) {
 					const DASH = "-";
-					let raceNameParts = pre.race[j].name.split(DASH);
+					const raceNameParts = pre.race[j].name.split(DASH);
 					let raceName = [];
 					for (let k = 0; k < raceNameParts.length; ++k) {
 						raceName.push(raceNameParts[k].uppercaseFirst());
@@ -235,7 +253,7 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 					raceName = raceName.join(DASH);
 					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
 				} else {
-					let raceName = j === 0 ? pre.race[j].name.uppercaseFirst() : pre.race[j].name;
+					const raceName = j === 0 ? pre.race[j].name.uppercaseFirst() : pre.race[j].name;
 					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
 				}
 			}
@@ -244,7 +262,7 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 			// this assumes all ability requirements are the same (13), correct as of 2017-10-06
 			let attCount = 0;
 			for (let j = 0; j < pre.ability.length; ++j) {
-				for (let att in pre.ability[j]) {
+				for (const att in pre.ability[j]) {
 					if (!pre.ability[j].hasOwnProperty(att)) continue;
 					if (shorthand) {
 						outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length -1 ? " 13+" : ""));
@@ -258,7 +276,7 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 		if (pre.proficiency !== undefined) {
 			// only handles armor proficiency requirements,
 			for (let j = 0; j < pre.proficiency.length; ++j) {
-				for (let type in pre.proficiency[j]) { // type is armor/weapon/etc.
+				for (const type in pre.proficiency[j]) { // type is armor/weapon/etc.
 					if (!pre.proficiency[j].hasOwnProperty(type)) continue;
 					if (type === "armor") {
 						if (shorthand) {
@@ -295,9 +313,9 @@ class AbilityData {
 }
 function utils_getAbilityData(abObj) {
 	const ABILITIES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
-	let mainAbs = [];
-	let allAbs = [];
-	let abs = [];
+	const mainAbs = [];
+	const allAbs = [];
+	const abs = [];
 	if (abObj !== undefined) {
 		handleAllAbilities(abObj);
 		handleAbilitiesChoose();
@@ -322,17 +340,17 @@ function utils_getAbilityData(abObj) {
 	function handleAbilitiesChoose() {
 		if (abObj.choose !== undefined) {
 			for (let i = 0; i < abObj.choose.length; ++i) {
-				let item = abObj.choose[i];
+				const item = abObj.choose[i];
 				let outStack = "Choose ";
 				if (item.predefined !== undefined) {
 					for (let j = 0; j < item.predefined.length; ++j) {
-						let subAbs = [];
+						const subAbs = [];
 						handleAllAbilities(subAbs, item.predefined[j]);
 						outStack += subAbs.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
 					}
 				} else {
-					let allAbilities = item.from.length === 6;
-					let allAbilitiesWithParent = isAllAbilitiesWithParent(item);
+					const allAbilities = item.from.length === 6;
+					const allAbilitiesWithParent = isAllAbilitiesWithParent(item);
 					let amount = item.amount === undefined ? 1 : item.amount;
 					amount = (amount < 0 ? "" : "+") + amount;
 					if (allAbilities) {
@@ -372,12 +390,12 @@ function utils_getAbilityData(abObj) {
 	}
 
 	function isAllAbilitiesWithParent(chooseAbs) {
-		let tempAbilities = [];
+		const tempAbilities = [];
 		for (let i = 0; i < mainAbs.length; ++i) {
 			tempAbilities.push(mainAbs[i].toLowerCase());
 		}
 		for (let i = 0; i < chooseAbs.from.length; ++i) {
-			let ab = chooseAbs.from[i].toLowerCase();
+			const ab = chooseAbs.from[i].toLowerCase();
 			if (!tempAbilities.includes(ab)) tempAbilities.push(ab);
 			if (!allAbs.includes(ab.toLowerCase)) allAbs.push(ab.toLowerCase());
 		}
@@ -399,7 +417,7 @@ function _parse_aToB(abMap, a) {
 }
 function _parse_bToA(abMap, b) {
 	b = b.trim();
-	for (let v in abMap) {
+	for (const v in abMap) {
 		if (!abMap.hasOwnProperty(v)) continue;
 		if (abMap[v] === b) return v
 	}
@@ -455,7 +473,7 @@ function parse_crToXp (cr) {
 }
 
 function parse_crToNumber (cr) {
-	let parts = cr.trim().split("/");
+	const parts = cr.trim().split("/");
 	if (parts.length === 1) return Number(parts[0]);
 	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
 	else return 0;
@@ -753,8 +771,8 @@ function asc_sort(a, b){
 }
 
 function asc_sort_cr(a, b) {
-	let aNum = parse_crToNumber($(a).text());
-	let bNum = parse_crToNumber($(b).text());
+	const aNum = parse_crToNumber($(a).text());
+	const bNum = parse_crToNumber($(b).text());
 	if (aNum === bNum) return 0;
 	return bNum < aNum ? 1 : -1;
 }
@@ -773,4 +791,16 @@ function compareNames(a, b) {
 	if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
 	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
 	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
+}
+
+// JSON LOADING ========================================================================================================
+function loadJSON(url, onLoadFunction) {
+	const request = new XMLHttpRequest();
+	request.open('GET', url, true);
+	request.overrideMimeType("application/json");
+	request.onload = function() {
+		const data = JSON.parse(this.response);
+		onLoadFunction(data);
+	};
+	request.send();
 }

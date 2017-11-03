@@ -1,11 +1,18 @@
-var tabledefault = "";
+const JSON_URL = "data/feats.json";
+let tabledefault = "";
+let featlist;
+
 window.onload = function load() {
+	loadJSON(JSON_URL, onJsonLoad);
+};
+
+function onJsonLoad(data) {
 	const NONE = "None";
 	tabledefault = $("#stats").html();
-	var featlist = featdata.compendium.feat;
-	for (var i = 0; i < featlist.length; i++) {
-		var curfeat = featlist[i];
-		var name = curfeat.name;
+	featlist = data.feat;
+	for (let i = 0; i < featlist.length; i++) {
+		const curfeat = featlist[i];
+		const name = curfeat.name;
 		const ability = utils_getAbilityData(curfeat.ability);
 		if (!ability.asText) ability.asText = NONE;
 		const isAbilityChoose = ability.asText.toLowerCase().includes("choose any");
@@ -26,12 +33,12 @@ window.onload = function load() {
 		listClass: "feats"
 	});
 	$("form#filtertools select").change(function() {
-		let sourcefilter = $("select.sourcefilter").val();
-		let bonusfilter = $("select.bonusfilter").val();
+		const sourcefilter = $("select.sourcefilter").val();
+		const bonusfilter = $("select.bonusfilter").val();
 		list.filter(function(item) {
-			let rightsource = sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter;
+			const rightsource = sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter;
 			const bonusList = item.elm.getAttribute(FLTR_ABILITIES).split(FLTR_LIST_SEP);
-			let rightbonuses = bonusfilter === "All" || bonusfilter === "Any" && item.elm.getAttribute(FLTR_ABILITIES_CHOOSE) === "true" && bonusList.length === 6 || bonusList.includes(bonusfilter);
+			const rightbonuses = bonusfilter === "All" || bonusfilter === "Any" && item.elm.getAttribute(FLTR_ABILITIES_CHOOSE) === "true" && bonusList.length === 6 || bonusList.includes(bonusfilter);
 			if (rightsource && rightbonuses) return true;
 			return false;
 		});
@@ -41,7 +48,6 @@ window.onload = function load() {
 
 function loadhash(id) {
 	$("#stats").html(tabledefault);
-	var featlist = featdata.compendium.feat;
 	var curfeat = featlist[id];
 	var name = curfeat.name;
 	$("th#name").html(name);
@@ -49,55 +55,48 @@ function loadhash(id) {
 	var prerequisite = utils_makePrerequisite(curfeat.prerequisite);
 	if (prerequisite) $("td#prerequisite").html("Prerequisite: " + prerequisite);
 	$("tr.text").remove();
-	addAttributeItem(curfeat.ability, curfeat.text);
-	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(curfeat.text, "p") + "</td></tr>");
+	addAttributeItem(curfeat.ability, curfeat.entries);
+	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(curfeat.entries, "p") + "</td></tr>");
 
 	function addAttributeItem(abilityObj, textArray) {
 		if (abilityObj === undefined) return;
 		for (let i = 0; i < textArray.length; ++i) { // insert the new list item at the head of the first list we find list; flag with "hasabilityitem" so we don't do it more than once
-			if (textArray[i].islist === "YES" && textArray[i].hasabilityitem !== "YES") {
+			if (textArray[i].type === "list" && textArray[i].hasabilityitem !== "YES") {
 				textArray[i].hasabilityitem = "YES";
 				textArray[i].items.unshift(abilityObjToListItem())
 			}
 		}
 
 		function abilityObjToListItem() {
-			let listItem = {};
-			listItem.text = attChooseText(abilityObj);
-			return listItem;
-
-			function attChooseText() {
-				const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
-				if (abilityObj.choose === undefined) {
-					let abbArr = [];
-					for (let att in abilityObj) {
-						if (!abilityObj.hasOwnProperty(att)) continue;
-						abbArr.push("Increase your " + parse_attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
-					}
-					return abbArr.join(" ");
-				} else {
-					let abbArr = [];
-					for (let i = 0; i < abilityObj.choose.length; ++i) {
-						if (abilityObj.choose[i].from.length === 6) {
-							if (abilityObj.choose[i].textreference === "YES") { // only used in "Resilient"
-								abbArr.push("Increase the chosen ability score by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
-							} else {
-								abbArr.push("Increase one ability score of your choice by " + abilityObj.choose[i].amount + TO_MAX_OF_TWENTY);
-							}
+			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
+			const abbArr = [];
+			if (abilityObj.choose === undefined) {
+				for (const att in abilityObj) {
+					if (!abilityObj.hasOwnProperty(att)) continue;
+					abbArr.push("Increase your " + parse_attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
+				}
+			} else {
+				const choose=abilityObj.choose;
+				for (let i = 0; i < choose.length; ++i) {
+					if (choose[i].from.length === 6) {
+						if (choose[i].textreference === "YES") { // only used in "Resilient"
+							abbArr.push("Increase the chosen ability score by " + choose[i].amount + TO_MAX_OF_TWENTY);
 						} else {
-							let from = abilityObj.choose[i].from;
-							let amount = abilityObj.choose[i].amount;
-							let abbChoices = [];
-							for (let j = 0; j < from.length; ++j) {
-								abbChoices.push(parse_attAbvToFull(from[j]));
-							}
-							let abbChoicesText = utils_joinPhraseArray(abbChoices, ", ", " or ");
-							abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY)
+							abbArr.push("Increase one ability score of your choice by " + choose[i].amount + TO_MAX_OF_TWENTY);
 						}
+					} else {
+						const from = choose[i].from;
+						const amount = choose[i].amount;
+						const abbChoices = [];
+						for (let j = 0; j < from.length; ++j) {
+							abbChoices.push(parse_attAbvToFull(from[j]));
+						}
+						const abbChoicesText = utils_joinPhraseArray(abbChoices, ", ", " or ");
+						abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY);
 					}
-					return abbArr.join(" ");
 				}
 			}
+			return abbArr.join(" ");
 		}
 	}
 }
