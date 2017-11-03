@@ -1,12 +1,18 @@
-var tabledefault = "";
+const JSON_URL = "data/conditions.json";
+let tabledefault = "";
+let conditionlist;
 
 window.onload = function load() {
-	tabledefault = $("#stats").html();
-	var conditionlist = conditiondata;
+	loadJSON(JSON_URL, onJsonLoad);
+};
 
-	for (var i = 0; i < conditionlist.length; i++) {
-		var curcondition = conditionlist[i];
-		var name = curcondition.name;
+function onJsonLoad(data) {
+	conditionlist = data.condition;
+
+	tabledefault = $("#stats").html();
+
+	for (let i = 0; i < conditionlist.length; i++) {
+		const name = conditionlist[i].name;
 		$("ul.conditions").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name' title='"+name+"'>"+name+"</span></a></li>");
 	}
 
@@ -20,13 +26,8 @@ window.onload = function load() {
 
 function loadhash (id) {
 	$("#stats").html(tabledefault);
-	var conditionlist = conditiondata;
-	var curcondition = conditionlist[id];
-
-	var name = curcondition.name;
-	$("th#name").html(name);
-
+	const curcondition = conditionlist[id];
+	$("th#name").html(curcondition.name);
 	$("tr.text").remove();
-
-	$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curcondition.text, "p")+"</td></tr>");
+	$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curcondition.entries, "p")+"</td></tr>");
 }
