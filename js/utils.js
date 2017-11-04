@@ -174,6 +174,27 @@ function utils_makeAttDc(attDcObj) {
 function utils_makeAttAttackMod(attAtkObj) {
 	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + " attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
 }
+function utils_makeLink(linkObj) {
+	let href;
+	if (linkObj.href.type === "internal") {
+		href = `${linkObj.href.path}#`;
+		if (linkObj.href.hash !== undefined) {
+			if (linkObj.href.hash.type === "constant") {
+				href += linkObj.href.hash.value;
+			} else if (linkObj.href.hash.type === "multipart") {
+				const partStack = [];
+				for (let i = 0; i < linkObj.href.hash.parts.length; i++) {
+					const part = linkObj.href.hash.parts[i];
+					partStack.push(`${part.key}:${part.value}`)
+				}
+				href += partStack.join(",");
+			}
+		}
+	} else if (linkObj.href.type === "external") {
+		href = linkObj.href.url;
+	}
+	return `<a href='${href}' target='_blank'>${linkObj.text}</a>`;
+}
 function utils_makeOldList(listObj) { //to handle islist === "YES"
 	let outStack = "<ul>";
 	for (let i = 0; i < listObj.items.length; ++i) {
@@ -200,7 +221,16 @@ function utils_makeList(listObj) { //to handle type === "list"
 	}//NOTE: "description" lists are more complex - can handle those later if required
 	let outStack = "<"+listTag+suffix+">";
 	for (let i = 0; i < listObj.items.length; ++i) {
-		outStack += "<li>"+listObj.items[i]+"</li>";
+		const listItem = listObj.items[i];
+		outStack += "<li>";
+		for (let j = 0; j < listItem.length; ++j) {
+			if (listItem[j].type === "link") {
+				outStack += utils_makeLink(listItem[j]);
+			} else {
+				outStack += listItem[j];
+			}
+		}
+		outStack += "</li>";
 	}
 	return outStack + "</"+listTag+">";
 
