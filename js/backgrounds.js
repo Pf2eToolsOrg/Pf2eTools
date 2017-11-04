@@ -1,12 +1,19 @@
-var tabledefault = "";
+const JSON_URL = "data/backgrounds.json";
+let tabledefault = "";
+let bglist;
 
-window.onload = function load () {
+window.onload = function load() {
+	loadJSON(JSON_URL, onJsonLoad);
+};
+
+function onJsonLoad(data) {
+	bglist = data.background;
+
 	tabledefault = $("#stats").html();
-	var bglist = backgrounddata.compendium.background;
 
 	for (var i = 0; i < bglist.length; i++) {
-		var curbg = bglist[i];
-		var name = curbg.name;
+		const curbg = bglist[i];
+		const name = curbg.name;
 		$("ul.backgrounds").append("<li "+FLTR_SOURCE+"='"+curbg.source+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+parse_sourceJsonToFull(curbg.source)+"'>"+parse_sourceJsonToAbv(curbg.source)+"</span></a></li>");
 
 		addDropdownOption($("select.sourcefilter"), curbg.source, parse_sourceJsonToFull(curbg.source))
@@ -21,7 +28,7 @@ window.onload = function load () {
 	});
 
 	$("form#filtertools select").change(function(){
-		var sourcefilter = $("select.sourcefilter").val();
+		const sourcefilter = $("select.sourcefilter").val();
 
 		list.filter(function(item) {
 			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) return true;
@@ -29,38 +36,31 @@ window.onload = function load () {
 		});
 	});
 
-
 	initHistory()
-};
+}
 
 function loadhash (id) {
 	$("#stats").html(tabledefault);
-	var bglist = backgrounddata.compendium.background;
-	var curbg = bglist[id];
-
-	var name = curbg.name;
-	$("th#name").html(name);
-
-	var traitlist = curbg.trait;
+	const curbg = bglist[id];
+	const name = curbg.name;
+	const source = curbg.source;
+	const sourceAbv = parse_sourceJsonToAbv(source);
+	const sourceFull = parse_sourceJsonToFull(source);
+	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+name);
+	const traitlist = curbg.trait;
 	$("tr.trait").remove();
-	for (var n = traitlist.length-1; n >= 0; n--) {
-		var traitname = traitlist[n].name;
 
-		var texthtml = "";
-		let headerText = "<span class='name'>"+traitname+".</span> ";
+	for (let n = traitlist.length-1; n >= 0; n--) {
+		let texthtml = "";
+		texthtml += utils_combineText(traitlist[n].text, "p", "<span class='name'>"+traitlist[n].name+".</span> ");
 
-		texthtml += utils_combineText(traitlist[n].text, "p", headerText);
-
-		var subtraitlist = traitlist[n].subtrait;
+		const subtraitlist = traitlist[n].subtrait;
 		if (subtraitlist !== undefined) {
-			var k = 0;
-			var subtrait;
-
 			for (var j = 0; j < subtraitlist.length; j++) {
 				texthtml = texthtml + "<p class='subtrait'>";
-				subtrait = subtraitlist[j];
+				const subtrait = subtraitlist[j];
 				texthtml = texthtml + "<span class='name'>"+subtrait.name+".</span> ";
-				for (k = 0; k < subtrait.text.length; k++) {
+				for (let k = 0; k < subtrait.text.length; k++) {
 					if (!subtrait.text[k]) continue;
 					if (k === 0) {
 						texthtml = texthtml + "<span>" + subtrait.text[k] + "</span>";
