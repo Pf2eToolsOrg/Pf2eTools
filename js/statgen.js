@@ -44,7 +44,7 @@ function changeRace() {
 		.find(({name}) => name === race).ability
 
 	$(".racial").val(0)
-	for (let key in stats)
+	for (const key in stats)
 		$(`#${key} .racial`).val(stats[key])
 
 	changeTotal()

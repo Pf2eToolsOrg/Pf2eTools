@@ -5,15 +5,15 @@ window.onload = function load() {
 
 	for (let i = 0; i < itemlist.length; i++) {
 
-		let curitem = itemlist[i];
+		const curitem = itemlist[i];
 		if (curitem.type === "$") continue;
 
-		let name = curitem.name;
-		let rarity = curitem.rarity;
-		let source = curitem.source;
-		let sourceAbv = parse_sourceJsonToAbv(source);
-		let sourceFull = parse_sourceJsonToFull(source);
-		let type = curitem.type.split(",");
+		const name = curitem.name;
+		const rarity = curitem.rarity;
+		const source = curitem.source;
+		const sourceAbv = parse_sourceJsonToAbv(source);
+		const sourceFull = parse_sourceJsonToFull(source);
+		const type = curitem.type.split(",");
 
 		for (let j = 0; j < type.length; j++) {
 			type[j] = parse_itemTypeToAbv(type[j]);
@@ -135,20 +135,20 @@ function loadhash (id) {
 	const ammoFirearmText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. The ammunition of a firearm is destroyed upon use.")+ammoGenericText;
 	const ammoNormalText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.")+ammoGenericText;
 	$("#currentitem").html(tabledefault);
-	let curitem = itemdata.compendium.item[id];
-	let attunetext = curitem.reqAttune
-	let name = curitem.name;
-	let rarity = curitem.rarity;
-	let source = curitem.source;
-	let textlist = curitem.text;
-	let type = curitem.type.split(",");
+	const curitem = itemdata.compendium.item[id];
+	const attunetext = curitem.reqAttune
+	const name = curitem.name;
+	const rarity = curitem.rarity;
+	const source = curitem.source;
+	const textlist = curitem.text;
+	const type = curitem.type.split(",");
 	let value = curitem.value;
-	let weight = curitem.weight;
+	const weight = curitem.weight;
 	let texthtml = "";
 	let notseenbonus=true;
 
-	let sourceAbv = parse_sourceJsonToAbv(source);
-	let sourceFull = parse_sourceJsonToFull(source);
+	const sourceAbv = parse_sourceJsonToAbv(source);
+	const sourceFull = parse_sourceJsonToFull(source);
 	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+name);
 	$("td#source span").html(sourceFull+", page "+curitem.page);
 
@@ -168,7 +168,7 @@ function loadhash (id) {
 	if (textlist) {
 		for (let n = 0; n < textlist.length; n++) {
 			if (!textlist[n]) continue;
-			let curtextstring = JSON.stringify (textlist[n]);
+			const curtextstring = JSON.stringify (textlist[n]);
 			if (textlist[n].istable === "YES") {
 				texthtml += utils_makeTable(textlist[n]);
 			} else {
@@ -184,14 +184,14 @@ function loadhash (id) {
 	$("span#damage").html("");
 	$("span#damagetype").html("");
 	for (let n = 0; n < type.length; n++) {
-		let curtype = type[n];
+		const curtype = type[n];
 		// FIXME
 		// Look for: % of Life Stealing, % of Vengeance, % of Warning, % of Wounding, %, Mariner's %, Mind Blade %, Mind Carapace %, Mithral%, Nine Lives Stealer %, Vicious %, Vorpal %, Legendary Resistance, Luck, Wish, Rod of the Pact Keeper%, Scroll of Protection from %, Spell Scroll
 		if (n > 0) $("td span#type").append (", ");
 		$("td span#type").append(parse_itemTypeToAbv(curtype));
 		if (curtype === "MNT" || curtype === "VEH") {
-			let speed=curitem.speed;
-			let capacity=curitem.carryingcapacity;
+			const speed=curitem.speed;
+			const capacity=curitem.carryingcapacity;
 			if (speed) $("span#damage").append("Speed="+speed);
 			if (speed && capacity) $("span#damage").append(curtype === "MNT" ? ", " : "<br>");
 			if (capacity) {
@@ -258,7 +258,7 @@ function loadhash (id) {
 
 	$("span#properties").html("");
 	if (curitem.property) {
-		let properties = curitem.property.split(",");
+		const properties = curitem.property.split(",");
 		$("span#damagetype").append(" - ");
 		for (let i = 0; i < properties.length; i++) {
 			let a = b = properties[i];

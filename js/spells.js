@@ -25,7 +25,7 @@ function normalisetime(time) {
 	if (time === "1 bonus action") return 2;
 	if (time === "1 reaction") return 3;
 	if (time === "1 reaction ...") return 4;
-	let offset=time.indexOf(" ");
+	const offset=time.indexOf(" ");
 	if (offset < 0) return 100000;
 	let multiplier=1;
 	if (time.indexOf("round") > -1) multiplier=6;
@@ -70,11 +70,11 @@ const META_TECHNOMAGIC = "Technomagic";
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 
-	let spelllist = spelldata.compendium.spell;
+	const spelllist = spelldata.compendium.spell;
 
 	for (let i = 0; i < spelllist.length; i++) {
-		let curspell = spelllist[i];
-		let name = curspell.name;
+		const curspell = spelllist[i];
+		const name = curspell.name;
 		let leveltext = parsespelllevel(curspell.level);
 		if (curspell.ritual === "YES") leveltext += " (ritual)";
 		if (curspell.technomagic === "YES") leveltext += " (tech.)";
@@ -93,7 +93,7 @@ window.onload = function load() {
 		let action = trimcastingtime(curspell.time).split(" ")[1];
 		if (action.charAt(action.length-1) === "s") action = action.substr(0, action.length-1);
 
-		let toadd = "<li class='row' "+FLTR_LEVEL+"='"+curspell.level+"' "+FLTR_SCHOOL+"='"+curspell.school+"' "+FLTR_SOURCE+"='"+curspell.source+"' "+FLTR_RANGE+"='"+normaliserange(curspell.range)+"' "+FLTR_CLASS+"='"+classFilterList+"' "+FLTR_META+"='"+metaTagsString+"' "+FLTR_ACTION+"='"+action+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title=\""+name+"\"><span class='name col-xs-3 col-xs-3-5'>"+name+"</span> <span class='source col-xs-1' title=\""+parse_sourceJsonToFull(curspell.source)+"\">"+parse_sourceJsonToAbv(curspell.source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='time col-xs-1 col-xs-1-7'>"+trimcastingtime(curspell.time)+"</span> <span class='school col-xs-1 col-xs-1-7'>"+parseschool(curspell.school)+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-2 col-xs-2-4'>"+curspell.range+"</span></a></li>";
+		const toadd = "<li class='row' "+FLTR_LEVEL+"='"+curspell.level+"' "+FLTR_SCHOOL+"='"+curspell.school+"' "+FLTR_SOURCE+"='"+curspell.source+"' "+FLTR_RANGE+"='"+normaliserange(curspell.range)+"' "+FLTR_CLASS+"='"+classFilterList+"' "+FLTR_META+"='"+metaTagsString+"' "+FLTR_ACTION+"='"+action+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title=\""+name+"\"><span class='name col-xs-3 col-xs-3-5'>"+name+"</span> <span class='source col-xs-1' title=\""+parse_sourceJsonToFull(curspell.source)+"\">"+parse_sourceJsonToAbv(curspell.source)+"</span> <span class='level col-xs-1 col-xs-1-7'>"+leveltext+"</span> <span class='time col-xs-1 col-xs-1-7'>"+trimcastingtime(curspell.time)+"</span> <span class='school col-xs-1 col-xs-1-7'>"+parseschool(curspell.school)+"</span> <span class='classes' style='display: none'>"+curspell.classes+"</span> <span class='range col-xs-2 col-xs-2-4'>"+curspell.range+"</span></a></li>";
 		$("ul.spells").append(toadd);
 
 		const spellFilterText = parsespelllevel(curspell.level) === "cantrip" ? parsespelllevel(curspell.level) : parsespelllevel(curspell.level) + " level";
@@ -129,13 +129,13 @@ window.onload = function load() {
 	initHistory();
 
 	$("form#filtertools select").change(function(){
-		let sourcefilter = $("select.sourcefilter").val();
-		let levelfilter = $("select.levelfilter").val();
-		let timefilter = $("select.timefilter").val();
-		let schoolfilter = $("select.schoolfilter").val();
-		let rangefilter = $("select.rangefilter").val();
-		let metaFilter = $("select.metafilter").val();
-		let classfilter = $("select.classfilter").val();
+		const sourcefilter = $("select.sourcefilter").val();
+		const levelfilter = $("select.levelfilter").val();
+		const timefilter = $("select.timefilter").val();
+		const schoolfilter = $("select.schoolfilter").val();
+		const rangefilter = $("select.rangefilter").val();
+		const metaFilter = $("select.metafilter").val();
+		const classfilter = $("select.classfilter").val();
 		//let thirdpartyfilter = $("select.3ppfilter").val();
 
 		list.filter(function(item) {
@@ -146,7 +146,7 @@ window.onload = function load() {
 			let rightrange = false;
 			let rightMeta = false;
 			let rightclass = false;
-			let rightparty = true;
+			const rightparty = true;
 
 			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) rightsource = true;
 			if (levelfilter === "All" || item.elm.getAttribute(FLTR_LEVEL) === levelfilter) rightlevel = true;
@@ -156,7 +156,7 @@ window.onload = function load() {
 			if (metaFilter === "All" || item.elm.getAttribute(FLTR_META).split(FLTR_LIST_SEP).includes(metaFilter)) rightMeta = true;
 
 
-			let classes = item.elm.getAttribute(FLTR_CLASS).split(FLTR_LIST_SEP);
+			const classes = item.elm.getAttribute(FLTR_CLASS).split(FLTR_LIST_SEP);
 			for (let c = 0; c < classes.length; c++) {
 				if (classes[c] === classfilter) rightclass = true;
 			}
@@ -217,7 +217,7 @@ function sortspells(a, b, o) {
 
 function loadhash (id) {
 	$("#stats").html(tabledefault);
-	let curspell = spelldata.compendium.spell[id];
+	const curspell = spelldata.compendium.spell[id];
 
 	$("th#name").html("<span title=\""+parse_sourceJsonToFull(curspell.source)+"\" class='source source"+curspell.source+"'>"+curspell.source+"</span> "+curspell.name);
 
@@ -245,7 +245,7 @@ function loadhash (id) {
 	$("td#duration span").html(curspell.duration);
 
 	$("tr.text").remove();
-	let textlist = curspell.text;
+	const textlist = curspell.text;
 	let texthtml = "";
 
 	if (textlist[0].length === 1) {

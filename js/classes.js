@@ -7,13 +7,13 @@ var classtabledefault ="";
 let classlist;
 
 window.onload = function load() {
-	let jsonURL = "data/classes.json";
+	const jsonURL = "data/classes.json";
 
-	let request = new XMLHttpRequest();
+	const request = new XMLHttpRequest();
 	request.open('GET', jsonURL, true);
 	request.overrideMimeType("application/json");
 	request.onload = function() {
-		let data = JSON.parse(this.response);
+		const data = JSON.parse(this.response);
 
 		classlist = data.class;
 
@@ -186,17 +186,17 @@ function loadhash (id) {
 
 			// other features
 		} else for (let a = curlevel.feature.length-1; a >= 0; a--) {
-			let curfeature = curlevel.feature[a];
-			let link = curfeature.name === undefined ? a : encodeURIComponent(curfeature.name.toLowerCase());
+			const curfeature = curlevel.feature[a];
+			const link = curfeature.name === undefined ? a : encodeURIComponent(curfeature.name.toLowerCase());
 
 			if (curfeature._optional === "YES") {
 				subclasses.push(curfeature);
 			}
 
 			let styleClass = "";
-			let isInlineHeader = curfeature.suboption === "2";
-			let removeSubclassNamePrefix = curfeature.subclass !== undefined && curfeature.suboption === undefined;
-			let hasSubclassPrefix = curfeature.subclass !== undefined && curfeature.suboption === "1";
+			const isInlineHeader = curfeature.suboption === "2";
+			const removeSubclassNamePrefix = curfeature.subclass !== undefined && curfeature.suboption === undefined;
+			const hasSubclassPrefix = curfeature.subclass !== undefined && curfeature.suboption === "1";
 			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
 			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined && curfeature._optional === "YES") styleClass = "optionalsubfeature sub" + curfeature.suboption;
 			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined) styleClass = "subfeature sub" + curfeature.suboption;
@@ -219,7 +219,7 @@ function loadhash (id) {
 			// write out list to class table
 			var multifeature = "";
 			if (curlevel.feature.length !== 1 && a !== 0) multifeature = ", ";
-			let featureSpan = document.createElement(ELE_A);
+			const featureSpan = document.createElement(ELE_A);
 			featureSpan.setAttribute(ATB_HREF, getFeatureHash(link));
 			featureSpan.setAttribute(ATB_CLASS, "featurelink");
 			featureSpan.addEventListener("click", function() {
@@ -230,14 +230,14 @@ function loadhash (id) {
 
 			// display features in bottom section
 			var dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			let subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
-			let dataSubclass = curfeature.subclass === undefined ? undefined : curfeature.subclass.toLowerCase();
+			const subclassPrefix = hasSubclassPrefix ? "<span class='subclass-prefix'>" + curfeature.subclass.split(": ")[1] +": </span>" : "";
+			const dataSubclass = curfeature.subclass === undefined ? undefined : curfeature.subclass.toLowerCase();
 			if (isInlineHeader) {
-				let namePart = curfeature.name === undefined ? null : "<span id='feature" + link + "' class='inline-header'>" + subclassPrefix + curfeature.name + ".</span> ";
+				const namePart = curfeature.name === undefined ? null : "<span id='feature" + link + "' class='inline-header'>" + subclassPrefix + curfeature.name + ".</span> ";
 				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + dataSubclass + "' data-ua='" + dataua + "'>" + utils_combineText(curfeature.text, "p", namePart) + "</td></tr>");
 			} else {
-				let namePart = curfeature.name === undefined ? "" : "<strong id='feature" + link + "'>" + subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name) + "</strong>";
-				let prerequisitePart = curfeature.prerequisite === undefined ? "" : "<p class='prerequisite'>Prerequisite: " + curfeature.prerequisite + "</p>";
+				const namePart = curfeature.name === undefined ? "" : "<strong id='feature" + link + "'>" + subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name) + "</strong>";
+				const prerequisitePart = curfeature.prerequisite === undefined ? "" : "<p class='prerequisite'>Prerequisite: " + curfeature.prerequisite + "</p>";
 				$("#features").after("<tr><td colspan='6' class='_class_feature " + styleClass + "' data-subclass='" + dataSubclass + "' data-ua='" + dataua + "'>" + namePart + prerequisitePart + utils_combineText(curfeature.text, "p") + "</td></tr>");
 			}
 		}
@@ -317,7 +317,7 @@ function loadsub(sub) {
 	let feature = null;
 
 	for (let i = 0; i < sub.length; i++) {
-		let hashPart = sub[i];
+		const hashPart = sub[i];
 
 		if (hashPart.startsWith(HASH_SUBCLASS)) subclass = hashPart.slice(HASH_SUBCLASS.length);
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart.slice(HASH_FEATURE.length);
@@ -327,7 +327,7 @@ function loadsub(sub) {
 		addFeatureHashes(subclass);
 
 		let $el;
-		let subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
+		const subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
 		for (let i = 0; i < subClassSpanList.length; ++i) {
 			if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
 				&& subClassSpanList[i].getAttribute('data-subclass').includes(decodeURIComponent(subclass.toLowerCase()))) {
@@ -368,7 +368,7 @@ function loadsub(sub) {
 				const hashStack = [];
 
 				for (let i = 0; i < splitHash.length; i++) {
-					let hashPart = splitHash[i];
+					const hashPart = splitHash[i];
 
 					if (hashPart.startsWith(HASH_SUBCLASS)) {
 						if (subclass !== null) {
