@@ -11,8 +11,8 @@ window.onload = function load() {
 		var type = monsters[i].type;
 		var cr = monsters[i].cr;
 
-		let abvSource = parse_sourceJsonToAbv(source);
-		let is3pp = source.includes("3pp");
+		const abvSource = parse_sourceJsonToAbv(source);
+		const is3pp = source.includes("3pp");
 
 		$("ul#monsters").append("<li "+FLTR_TYPE+"='"+type+"' "+FLTR_SOURCE+"='"+source+"' "+FLTR_CR+"='"+cr+"' "+FLTR_3PP+"='"+is3pp+"'><a id="+i+" href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-4 col-xs-4-2'>"+name+"</span> <span title=\""+fullsource+"\" class='col-xs-1 col-xs-1-8 source source"+abvSource+"'>"+abvSource+"</span> <span class='type col-xs-4 col-xs-4-3'>"+type+"</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>"+cr+"</span></a></li>");
 
@@ -273,12 +273,12 @@ function loadhash (id) {
 		});
 	}
 
-	let actions = mon.action;
+	const actions = mon.action;
 	$("tr.action").remove();
 
 	if (actions && actions.length) for (let i = actions.length-1; i >= 0; i--) {
-		let actionname = actions[i].name;
-		let actiontext = actions[i].text;
+		const actionname = actions[i].name;
+		const actiontext = actions[i].text;
 		let actiontexthtml = "";
 		let renderedcount = 0;
 		for (let n = 0; n < actiontext.length; n++) {
@@ -295,7 +295,7 @@ function loadhash (id) {
 		$("tr#actions").after("<tr class='action'><td colspan='6' class='action"+i+"'><span class='name'>"+actionname+".</span> "+actiontexthtml+"</td></tr>");
 	}
 
-	let reactions = mon.reaction;
+	const reactions = mon.reaction;
 	$("tr#reactions").hide();
 	$("tr.reaction").remove();
 
@@ -304,8 +304,8 @@ function loadhash (id) {
 		$("tr#reactions").show();
 
 		if (!reactions.length) {
-			let reactionname = reactions.name;
-			let reactiontext = reactions.text;
+			const reactionname = reactions.name;
+			const reactiontext = reactions.text;
 			let reactiontexthtml = "";
 			let renderedcount = 0
 			for (let n = 0; n < reactiontext.length; n++) {
@@ -323,9 +323,9 @@ function loadhash (id) {
 		}
 
 		if (reactions.length) for (let i = reactions.length-1; i >= 0; i--) {
-			let reactionname = reactions[i].name;
+			const reactionname = reactions[i].name;
 
-			let reactiontext = reactions[i].text;
+			const reactiontext = reactions[i].text;
 			let reactiontexthtml = "<span>"+reactiontext+"</span>";
 			for (let n = 1; n < reactiontext.length; n++) {
 				if (!reactiontext[n]) continue;
@@ -336,17 +336,17 @@ function loadhash (id) {
 		}
 	}
 
-	let legendaries = mon.legendary;
+	const legendaries = mon.legendary;
 	$("tr.legendary").remove();
 	$("tr#legendaries").hide();
 	if (legendaries && legendaries.length) {
 		$("tr#legendaries").show();
 
-		let legendarydescription = "<span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn."
+		const legendarydescription = "<span>"+name+" can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. "+name+" regains spent legendary actions at the start of his turn."
 
 		for (let i = legendaries.length-1; i >= 0; i--) {
 			let legendaryname = "";
-			let legendarytext = legendaries[i].text;
+			const legendarytext = legendaries[i].text;
 			let legendarytexthtml = "";
 
 			if (legendaries[i].name) {

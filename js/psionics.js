@@ -68,13 +68,13 @@ window.onload = function load() {
 
 	const PSIONIC_LIST = psionicdata.compendium.psionic;
 	populateListView();
-	let listView = initListLibrary();
+	const listView = initListLibrary();
 	initFiltersAndSearch(listView);
 	selectInitialPsionic();
 
 	function populateListView() {
 		for (let i = 0; i < PSIONIC_LIST.length; ++i) {
-			let psionic = PSIONIC_LIST[i];
+			const psionic = PSIONIC_LIST[i];
 
 			const link = document.createElement(ELE_A);
 			link.setAttribute(ATB_ID, String(i));
@@ -86,13 +86,13 @@ window.onload = function load() {
 			link.appendChild(getOrderSpan(psionic));
 			link.appendChild(getHiddenModeSpan(psionic));
 
-			let listItem = getListItem(psionic);
+			const listItem = getListItem(psionic);
 			listItem.appendChild(link);
 			TABLE_VIEW.appendChild(listItem);
 		}
 
 		function getListItem(psionic) {
-			let listItem = document.createElement(ELE_LI);
+			const listItem = document.createElement(ELE_LI);
 			listItem.setAttribute(ATB_CLASS, CLS_ROW);
 			listItem.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
 			listItem.setAttribute(FLTR_SOURCE, psionic[JSON_ITEM_SOURCE]);
@@ -102,14 +102,14 @@ window.onload = function load() {
 			return listItem;
 		}
 		function getNameSpan(psionic) {
-			let span = document.createElement(ELE_SPAN);
+			const span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_NAME);
 			span.classList.add(CLS_COL1);
 			span.innerHTML = psionic[JSON_ITEM_NAME];
 			return span;
 		}
 		function getSourceSpan(psionic) {
-			let span = document.createElement(ELE_SPAN);
+			const span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_SOURCE);
 			span.classList.add(CLS_COL2);
 			span.setAttribute(ATB_TITLE, parse_sourceJsonToFull(psionic[JSON_ITEM_SOURCE]));
@@ -117,17 +117,17 @@ window.onload = function load() {
 			return span;
 		}
 		function getTypeSpan(psionic) {
-			let span = document.createElement(ELE_SPAN);
+			const span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_TYPE);
 			span.classList.add(CLS_COL3);
 			span.innerHTML = parse_psionicTypeToFull(psionic[JSON_ITEM_TYPE]);
 			return span;
 		}
 		function getOrderSpan(psionic) {
-			let span = document.createElement(ELE_SPAN);
+			const span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_ORDER);
 			span.classList.add(CLS_COL4);
-			let spanText = parse_psionicOrderToFull(psionic[JSON_ITEM_ORDER]);
+			const spanText = parse_psionicOrderToFull(psionic[JSON_ITEM_ORDER]);
 			if (spanText === STR_ORDER_NONE) {
 				span.classList.add(CLS_LI_NONE);
 			}
@@ -135,20 +135,20 @@ window.onload = function load() {
 			return span;
 		}
 		function getHiddenModeSpan(psionic) {
-			let span = document.createElement(ELE_SPAN);
+			const span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_MODE_LIST);
 			span.classList.add(CLS_HIDDEN);
 			span.innerHTML = getHiddenModeList(psionic);
 			return span;
 		}
 		function getHiddenModeList(psionic) {
-			let modeList = psionic[JSON_ITEM_MODES];
+			const modeList = psionic[JSON_ITEM_MODES];
 			if (modeList === undefined) return STR_EMPTY;
-			let outArray = [];
+			const outArray = [];
 			for (let i = 0; i < modeList.length; ++i) {
 				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i][JSON_ITEM_MODE_TITLE]));
 				if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
-					let subModes = modeList[i][JSON_ITEM_SUBMODES];
+					const subModes = modeList[i][JSON_ITEM_SUBMODES];
 					for (let j = 0; j < subModes.length; ++j) {
 						outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j][JSON_ITEM_MODE_TITLE]))
 					}
@@ -170,15 +170,15 @@ window.onload = function load() {
 
 		populateFilterSets();
 		sortFilterSets();
-		let filterBox = initFilters();
+		const filterBox = initFilters();
 		initResetButton(filterBox);
 
 		function populateFilterSets() {
 			for (let i = 0; i < PSIONIC_LIST.length; ++i) {
-				let psionic = PSIONIC_LIST[i];
-				for (let id in filters) {
+				const psionic = PSIONIC_LIST[i];
+				for (const id in filters) {
 					if (filters.hasOwnProperty(id)) {
-						let filterObj = filters[id];
+						const filterObj = filters[id];
 
 						if (psionic[filterObj.item] !== undefined && filterObj.list.indexOf(psionic[filterObj.item]) === -1) {
 							filterObj.list.push(psionic[filterObj.item]);
@@ -188,7 +188,7 @@ window.onload = function load() {
 			}
 		}
 		function sortFilterSets() {
-			for (let id in filters) {
+			for (const id in filters) {
 				if (filters.hasOwnProperty(id)) {
 					sortStrings(filters[id].list);
 				}
@@ -210,14 +210,14 @@ window.onload = function load() {
 		}
 
 		function initFilters() {
-			let filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
-			let filterList = [];
-			for (let title in filters) {
+			const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
+			const filterList = [];
+			for (const title in filters) {
 				if (filters.hasOwnProperty(title)) {
 					filterList.push(new Filter(title, filters[title].item, filters[title].list, filters[title].renderer, parse_stringToSlug));
 				}
 			}
-			let filterBox = new FilterBox(filterAndSearchBar, filterList);
+			const filterBox = new FilterBox(filterAndSearchBar, filterList);
 			filterBox.render();
 
 			filterBox.addEventListener(
@@ -229,7 +229,7 @@ window.onload = function load() {
 						return filterMatches(HDR_SOURCE, FLTR_SOURCE) && filterMatches(HDR_TYPE, FLTR_TYPE) && filterMatches(HDR_ORDER, FLTR_ORDER);
 
 						function filterMatches(header, filterProperty) {
-							for (let t in f[header]) {
+							for (const t in f[header]) {
 								if (!f[header].hasOwnProperty(t)) continue;
 								if (t === FilterBox.VAL_SELECT_ALL && f[header][t]) return true;
 								if (!f[header][t]) continue;
@@ -268,13 +268,13 @@ window.onload = function load() {
 			else return compareByOrDefault(options.valueName, LIST_NAME);
 
 			function compareBy(valueName) {
-				let aValue = itemA.values()[valueName].toLowerCase();
-				let bValue = itemB.values()[valueName].toLowerCase();
+				const aValue = itemA.values()[valueName].toLowerCase();
+				const bValue = itemB.values()[valueName].toLowerCase();
 				if (aValue === bValue) return 0;
 				return (aValue > bValue) ? 1 : -1;
 			}
 			function compareByOrDefault(valueName, defaultValueName) {
-				let initialCompare = compareBy(valueName);
+				const initialCompare = compareBy(valueName);
 				return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
 			}
 		}
@@ -291,7 +291,7 @@ function loadhash (jsonIndex) {
 	const STATS_DURATION = document.getElementById(ID_STATS_DURATION);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
-	let selectedPsionic = psionicdata.compendium.psionic[jsonIndex];
+	const selectedPsionic = psionicdata.compendium.psionic[jsonIndex];
 
 	STATS_NAME.innerHTML = selectedPsionic[JSON_ITEM_NAME];
 	if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_TALENT) loadTalent();
@@ -308,7 +308,7 @@ function loadhash (jsonIndex) {
 		STATS_DURATION.innerHTML = getDurationString();
 
 		function getTextString() {
-			let modeStringArray = [];
+			const modeStringArray = [];
 			for (let i = 0; i < selectedPsionic[JSON_ITEM_MODES].length; ++i) {
 				modeStringArray.push(getModeString(i));
 			}
@@ -322,14 +322,14 @@ function loadhash (jsonIndex) {
 			return TMP_FOCUS.formatUnicorn(selectedPsionic[JSON_ITEM_FOCUS]);
 		}
 		function getModeString(modeIndex) {
-			let modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(selectedPsionic[JSON_ITEM_MODES][modeIndex]));
+			const modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(selectedPsionic[JSON_ITEM_MODES][modeIndex]));
 			if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES] === undefined) return modeString;
-			let subModeString = getSubModeString();
+			const subModeString = getSubModeString();
 			return TMP_MODE_WITH_SUB_MODE.formatUnicorn(modeString, subModeString);
 
 			function getSubModeString() {
-				let modeStrings = [];
-				let subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
+				const modeStrings = [];
+				const subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
 				for (let i = 0; i < subModes.length; ++i) {
 					modeStrings.push(utils_combineText(subModes[i][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(subModes[i], true)));
 				}
@@ -338,15 +338,15 @@ function loadhash (jsonIndex) {
 
 			function getModeTitle(mode, subMode) {
 				subMode = subMode === undefined || subMode === null ? false : subMode;
-				let modeTitleArray = [];
+				const modeTitleArray = [];
 				modeTitleArray.push(mode[JSON_ITEM_MODE_TITLE]);
-				let bracketPart = getModeTitleBracketPart();
+				const bracketPart = getModeTitleBracketPart();
 				if (bracketPart !== null) modeTitleArray.push(bracketPart);
 				if (subMode) return TMP_MODE_SUB_TITLE.formatUnicorn(modeTitleArray.join(STR_JOIN_MODE_TITLE));
 				else return TMP_MODE_TITLE.formatUnicorn(modeTitleArray.join(STR_JOIN_MODE_TITLE));
 
 				function getModeTitleBracketPart() {
-					let modeTitleBracketArray = [];
+					const modeTitleBracketArray = [];
 
 					if (mode[JSON_ITEM_MODE_COST]) modeTitleBracketArray.push(getModeTitleCost());
 					if (mode[JSON_ITEM_MODE_CONCENTRATION]) modeTitleBracketArray.push(getModeTitleConcentration());
@@ -355,9 +355,9 @@ function loadhash (jsonIndex) {
 					return TMP_MODE_TITLE_BRACKET_PART.formatUnicorn(modeTitleBracketArray.join(STR_JOIN_MODE_TITLE_BRACKET_PART_LIST));
 
 					function getModeTitleCost() {
-						let costMin = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MIN];
-						let costMax = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MAX];
-						let costString = costMin === costMax ? costMin : TMP_MODE_TITLE_COST_RANGE.formatUnicorn(costMin, costMax);
+						const costMin = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MIN];
+						const costMax = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MAX];
+						const costString = costMin === costMax ? costMin : TMP_MODE_TITLE_COST_RANGE.formatUnicorn(costMin, costMax);
 						return TMP_MODE_TITLE_COST.formatUnicorn(costString)
 					}
 					function getModeTitleConcentration() {
@@ -368,7 +368,7 @@ function loadhash (jsonIndex) {
 		}
 	}
 	function getDurationString() {
-		let duration = selectedPsionic[JSON_ITEM_DURATION];
+		const duration = selectedPsionic[JSON_ITEM_DURATION];
 		if (duration === undefined) return STR_EMPTY;
 		else return getDurationElement();
 

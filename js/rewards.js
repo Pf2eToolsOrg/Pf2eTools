@@ -7,7 +7,7 @@ window.onload = function load() {
 	for (var i = 0; i < rewardlist.length; i++) {
 		var curreward = rewardlist[i];
 		var name = curreward.name;
-		let displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
+		const displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
 		$("ul.rewards").append("<li class='row' "+FLTR_SOURCE+"='"+curreward.source+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-10'>"+displayName+"</span> <span class='source col-xs-2' title='"+parse_sourceJsonToFull(curreward.source)+"'>"+parse_sourceJsonToAbv(curreward.source)+"</span></a></li>");
 
 		addDropdownOption($("select.sourcefilter"), curreward.source, parse_sourceJsonToFull(curreward.source));

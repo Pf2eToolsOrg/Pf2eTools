@@ -7,9 +7,9 @@ class FilterBox {
 	}
 
 	render() {
-		let buttonGroup = getButtonGroup();
+		const buttonGroup = getButtonGroup();
 
-		let outer = makeOuterList();
+		const outer = makeOuterList();
 		for (let i = 0; i < this.filterList.length; ++i) {
 			outer.appendChild(makeOuterItem(this, this.filterList[i]));
 		}
@@ -17,14 +17,14 @@ class FilterBox {
 		this.inputGroup.insertBefore(buttonGroup, this.inputGroup.firstChild);
 
 		function getButtonGroup() {
-			let buttonGroup = document.createElement(ELE_DIV);
+			const buttonGroup = document.createElement(ELE_DIV);
 			buttonGroup.setAttribute(ATB_CLASS, FilterBox.CLS_INPUT_GROUP_BUTTON);
-			let filterButton = getFilterButton();
+			const filterButton = getFilterButton();
 			buttonGroup.appendChild(filterButton);
 			return buttonGroup;
 
 			function getFilterButton() {
-				let button = document.createElement(ELE_BUTTON);
+				const button = document.createElement(ELE_BUTTON);
 				button.classList.add("btn");
 				button.classList.add("btn-default");
 				button.classList.add("dropdown-toggle");
@@ -35,24 +35,24 @@ class FilterBox {
 		}
 
 		function makeOuterList() {
-			let outL = document.createElement(ELE_UL);
+			const outL = document.createElement(ELE_UL);
 			outL.setAttribute(ATB_CLASS, FilterBox.CLS_DROPDOWN_MENU);
 			return outL;
 		}
 
 		function makeOuterItem(self, filter) {
-			let outI = document.createElement(ELE_LI);
+			const outI = document.createElement(ELE_LI);
 			outI.setAttribute(ATB_CLASS, FilterBox.CLS_DROPDOWN_SUBMENU);
-			let innerListHeader = makeInnerHeader();
+			const innerListHeader = makeInnerHeader();
 			outI.appendChild(innerListHeader);
-			let innerList = makeInnerList();
+			const innerList = makeInnerList();
 			outI.appendChild(innerList);
 			addEventHandlers();
 
 			return outI;
 
 			function makeInnerHeader() {
-				let inH = document.createElement(ELE_A);
+				const inH = document.createElement(ELE_A);
 				inH.setAttribute(ATB_CLASS, FilterBox.CLS_SUBMENU_PARENT);
 				inH.setAttribute(ATB_HREF, STR_VOID_LINK);
 				inH.innerHTML = filter.header + " <span class='caret'></span>";
@@ -60,14 +60,14 @@ class FilterBox {
 			}
 
 			function makeInnerList() {
-				let inL = document.createElement(ELE_UL);
+				const inL = document.createElement(ELE_UL);
 				inL.setAttribute(ATB_CLASS, FilterBox.CLS_DROPDOWN_MENU);
-				let selectAll = makeAllInnerItem();
+				const selectAll = makeAllInnerItem();
 				inL.appendChild(selectAll);
 				inL.appendChild(makeInnerDividerItem());
 				for (let j = 0; j < filter.items.length; ++j) {
-					let displayText = filter.displayFunction(filter.items[j]);
-					let valueText = filter.valueFunction(filter.items[j]);
+					const displayText = filter.displayFunction(filter.items[j]);
+					const valueText = filter.valueFunction(filter.items[j]);
 					inL.appendChild(makeInnerItem(filter.header, displayText, valueText, true, selectAll.cb));
 				}
 				return inL;
@@ -77,42 +77,42 @@ class FilterBox {
 				}
 
 				function makeInnerDividerItem() {
-					let divLi = document.createElement(ELE_LI);
+					const divLi = document.createElement(ELE_LI);
 					divLi.setAttribute(ATB_CLASS, FilterBox.CLS_DIVIDER);
 					return divLi;
 				}
 
 				function makeInnerItem(header, displayText, valueText, isChecked, parentCheckBox) {
 					parentCheckBox = parentCheckBox === undefined || parentCheckBox === null ? null : parentCheckBox;
-					let innLi = document.createElement(ELE_LI);
+					const innLi = document.createElement(ELE_LI);
 
-					let child = getChild();
+					const child = getChild();
 
 					innLi.appendChild(child);
 					return innLi;
 
 					function getChild() {
-						let liLink = document.createElement(ELE_A); // bootstrap v3 requires dropdowns to contain links...
+						const liLink = document.createElement(ELE_A); // bootstrap v3 requires dropdowns to contain links...
 						liLink.setAttribute(ATB_HREF, STR_VOID_LINK);
 						liLink.appendChild(getChild());
 						liLink.addEventListener(EVNT_CLICK, clickHandler);
 						return liLink;
 
 						function getChild() {
-							let liWrapper = document.createElement(ELE_DIV);
+							const liWrapper = document.createElement(ELE_DIV);
 							liWrapper.setAttribute(ATB_CLASS, FilterBox.CLS_FILTER_SUBLIST_ITEM_WRAPPER);
 							liWrapper.append(getTextChild());
 							liWrapper.append(getCheckboxChild());
 							return liWrapper;
 
 							function getTextChild() {
-								let text = document.createElement(ELE_SPAN);
+								const text = document.createElement(ELE_SPAN);
 								text.setAttribute(ATB_CLASS, "filter-sublist-item-text");
 								text.innerHTML = displayText;
 								return text;
 							}
 							function getCheckboxChild() {
-								let cb = document.createElement(ELE_INPUT);
+								const cb = document.createElement(ELE_INPUT);
 								cb.classList.add("filter-checkbox");
 								cb.classList.add("readonly");
 								cb.setAttribute(ATB_TYPE, "checkbox");
@@ -132,7 +132,7 @@ class FilterBox {
 										valueObj = {entries: []};
 										self.headers[header] = valueObj;
 									}
-									let entry = {};
+									const entry = {};
 									entry.value = valueText;
 									entry.cb = cb;
 									valueObj.entries.push(entry);
@@ -194,10 +194,10 @@ class FilterBox {
 					EVNT_MOUSEENTER,
 					function(event) {
 						stopEvent(event);
-						let allOutIs = outI.parentNode.childNodes;
+						const allOutIs = outI.parentNode.childNodes;
 						for (let i = 0; i < allOutIs.length; ++i) {
 							if (outI !== allOutIs[i]) {
-								let childMenus = allOutIs[i].getElementsByClassName(FilterBox.CLS_DROPDOWN_MENU);
+								const childMenus = allOutIs[i].getElementsByClassName(FilterBox.CLS_DROPDOWN_MENU);
 								for (let j = 0; j < childMenus.length; ++j) {
 									hide(childMenus[j]);
 								}
@@ -225,11 +225,11 @@ class FilterBox {
 	}
 
 	getValues() {
-		let outObj = {};
-		for (let header in this.headers) {
+		const outObj = {};
+		for (const header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
-			let cur = this.headers[header];
-			let tempObj = {};
+			const cur = this.headers[header];
+			const tempObj = {};
 			for (let i = 0; i < cur.entries.length; ++i) {
 				tempObj[cur.entries[i].value] = cur.entries[i].cb.checked;
 			}
@@ -243,9 +243,9 @@ class FilterBox {
 	}
 
 	reset() {
-		for (let header in this.headers) {
+		for (const header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
-			let cur = this.headers[header];
+			const cur = this.headers[header];
 			for (let i = 0; i < cur.entries.length; ++i) {
 				cur.entries[i].cb.checked = true;
 			}
@@ -254,7 +254,7 @@ class FilterBox {
 	}
 
 	_fireValChangeEvent() {
-		let eventOut = new Event(FilterBox.EVNT_VALCHANGE);
+		const eventOut = new Event(FilterBox.EVNT_VALCHANGE);
 		this.inputGroup.dispatchEvent(eventOut);
 	}
 }

@@ -2,7 +2,7 @@ window.onload = loadpage;
 
 function loadpage() {
 	for (let i = 0; i < msbcr.cr.length; i++) {
-		let curcr = msbcr.cr[i];
+		const curcr = msbcr.cr[i];
 		$("#msbcr").append("<tr><td>"+curcr._cr+"</td><td>"+parse_crToXp (curcr._cr)+"</td><td>"+curcr.pb+"</td><td>"+curcr.ac+"</td><td>"+curcr.hpmin+"-"+curcr.hpmax+"</td><td>"+curcr.attackbonus+"</td><td>"+curcr.dprmin+"-"+curcr.dprmax+"</td><td>"+curcr.savedc+"</td></tr>")
 	}
 
@@ -19,14 +19,14 @@ function loadpage() {
 	})
 
 	$("#saveinstead").change(function() {
-		let curval = parseInt($("#attackbonus").val());
+		const curval = parseInt($("#attackbonus").val());
 		if (!$(this).is(":checked")) $("#attackbonus").val(curval-10);
 		if ($(this).is(":checked")) $("#attackbonus").val(curval+10);
 		calculatecr();
 	});
 
 	$("select#size").change(function() {
-		let newsize = $(this).val();
+		const newsize = $(this).val();
 		if (newsize == "Tiny") $("#hdval").html("d4")
 		if (newsize == "Small") $("#hdval").html("d6")
 		if (newsize == "Medium") $("#hdval").html("d8")
@@ -44,8 +44,8 @@ function loadpage() {
 
 	$("#msbcr tr").not(":has(th)").click(function() {
 		$("#expectedcr").val($(this).children("td:eq(0)").html());
-		let minhp = parseInt($(this).children("td:eq(4)").html().split("-")[0]);
-		let maxhp = parseInt($(this).children("td:eq(4)").html().split("-")[1]);
+		const minhp = parseInt($(this).children("td:eq(4)").html().split("-")[0]);
+		const maxhp = parseInt($(this).children("td:eq(4)").html().split("-")[1]);
 		$("#hp").val(minhp + (maxhp - minhp) / 2)
 		$("#hd").val(calculatehd());
 		$("#ac").val($(this).children("td:eq(3)").html())
@@ -109,7 +109,7 @@ function loadpage() {
 	$("#monsterfeatures tr td").not(":has(input)").click(function() {
 		$(this).siblings().children("input").click();
 
-		let curfeature = $(this).siblings("td").children("input").attr("id");
+		const curfeature = $(this).siblings("td").children("input").attr("id");
 		let curnumber="";
 		if ($(this).siblings("td").children("input[type=number]").length) curnumber = ":"+$(this).siblings("td").children("input[type=number]").val();
 		window.location = window.location.hash+","+curfeature+curnumber;
@@ -135,7 +135,7 @@ function loadpage() {
 }
 
 function calculatecr() {
-	let expectedcr = parseInt($("#expectedcr").val());
+	const expectedcr = parseInt($("#expectedcr").val());
 
 	let hp = parseInt($("#crcalc #hp").val()) ;
 
@@ -155,7 +155,7 @@ function calculatecr() {
 	let dpr = parseInt($("#crcalc #dpr").val());
 
 	let attackbonus = parseInt($("#crcalc #attackbonus").val());
-	let usesavedc = $("#saveinstead").prop("checked");
+	const usesavedc = $("#saveinstead").prop("checked");
 
 	let offensiveCR = -1;
 	let defensiveCR = -1;
@@ -173,15 +173,15 @@ function calculatecr() {
 	hp = Math.floor (hp);
 	dpr = Math.floor (dpr);
 
-	let effectivehp = hp;
-	let effectivedpr = dpr;
+	const effectivehp = hp;
+	const effectivedpr = dpr;
 
 	// make sure you don't break the CR
 	if (hp > 850) hp = 850;
 	if (dpr > 320) dpr = 320;
 
 	for (let i = 0; i < msbcr.cr.length; i++) {
-		let curcr = msbcr.cr[i];
+		const curcr = msbcr.cr[i];
 		if (hp >= parseInt(curcr.hpmin) && hp <= parseInt(curcr.hpmax)) {
 			let defensedifference = parseInt(curcr.ac) - ac;
 			if (defensedifference > 0) defensedifference = Math.floor(defensedifference / 2);
@@ -224,9 +224,9 @@ function calculatecr() {
 		}
 	}
 
-	let hitdice = calculatehd();
-	let hitdicesize = $("#hdval").html();
-	let conmod = Math.floor(($("#con").val() - 10) / 2);
+	const hitdice = calculatehd();
+	const hitdicesize = $("#hdval").html();
+	const conmod = Math.floor(($("#con").val() - 10) / 2);
 	let hash = "#";
 	hash += $("#expectedcr").val()+"," // 0
 	hash += $("#hp").val()+"," // 1
@@ -242,7 +242,7 @@ function calculatecr() {
 	hash += $("#flying").prop("checked")+"," // 11
 	hash += $("#saveprofs").val()+"," // 12
 	hash += "traits:";
-	let hastraits = window.location.hash.split("traits:")[1];
+	const hastraits = window.location.hash.split("traits:")[1];
 	if (hastraits !== "undefined") hash += hastraits;
 
 	window.location = hash;
@@ -259,15 +259,15 @@ function calculatecr() {
 }
 
 function calculatehd() {
-	let avghp = $("#hdval").html().split("d")[1]/2+0.5;
-	let conmod = Math.floor(($("#con").val() - 10) / 2);
+	const avghp = $("#hdval").html().split("d")[1]/2+0.5;
+	const conmod = Math.floor(($("#con").val() - 10) / 2);
 	let curhd = Math.floor(parseInt($("#hp").val()) / (avghp + conmod));
 	if (!curhd) curhd = 1;
 	return curhd;
 }
 
 function calculatehp() {
-	let avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
-	let conmod = Math.floor(($("#con").val() - 10) / 2);
+	const avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
+	const conmod = Math.floor(($("#con").val() - 10) / 2);
 	return Math.round ((avghp + conmod) * $("#hd").val());
 }

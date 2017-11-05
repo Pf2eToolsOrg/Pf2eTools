@@ -70,7 +70,7 @@ function rollLoot(cr,hoard=false) {
 
 		// and now for hoards
 	} else {
-		let treasure = [];
+		const treasure = [];
 
 		treasure.push(getFormattedCoinsForDisplay(curtable.coins));
 
@@ -91,8 +91,8 @@ function rollLoot(cr,hoard=false) {
 			}
 
 			// number of rolls on the table
-			let roll = droll.roll(artgems.amount).total;
-			let gems = [];
+			const roll = droll.roll(artgems.amount).total;
+			const gems = [];
 
 			let gemartliststring = ""
 			if (usingart) {
@@ -100,8 +100,8 @@ function rollLoot(cr,hoard=false) {
 			} else gemartliststring += "<li>x"+roll+" "+numberWithCommas(artgems.type)+" gp gemstones:<ul></ul></li>"
 			$("#lootoutput ul:eq(0)").append(gemartliststring)
 			for (let i = 0; i < roll; i++) {
-				let tableroll = randomNumber (0, artgemstable.table.length-1);
-				let gemstring = artgemstable.table[tableroll]
+				const tableroll = randomNumber (0, artgemstable.table.length-1);
+				const gemstring = artgemstable.table[tableroll]
 				gems.push(gemstring);
 			}
 
@@ -110,7 +110,7 @@ function rollLoot(cr,hoard=false) {
 			}
 
 			$("#lootoutput ul:eq(0) ul:eq(0) li").each(function() {
-				let curitem = this;
+				const curitem = this;
 				let curamount = 1;
 				$("#lootoutput ul:eq(0) ul:eq(0) li").each(function() {
 					if ($(this).text() === $(curitem).text() && this !== curitem) {
@@ -137,8 +137,8 @@ function rollLoot(cr,hoard=false) {
 			}
 
 			for (let v = 0; v < magicitemtabletype.length; v++) {
-				let curtype = magicitemtabletype[v];
-				let curamount = magicitemtableamounts[v];
+				const curtype = magicitemtabletype[v];
+				const curamount = magicitemtableamounts[v];
 
 				// find the appropriate table
 				let magicitemstable = lootdata.magicitems;
@@ -150,15 +150,15 @@ function rollLoot(cr,hoard=false) {
 				}
 
 				// number of rolls on the table
-				let roll = droll.roll(curamount).total;
-				let magicitems = [];
+				const roll = droll.roll(curamount).total;
+				const magicitems = [];
 
 				//$("#lootoutput ul:eq(0)").append("<li><span class='unselectable'>x"+roll+" magic items from table "+curtype+":</span><ul></ul></li>");
 				$("#lootoutput ul:eq(0) > li").last().append("<hr>");
 				for (let i = 0; i < roll; i++) {
 
 					let curmagicitem = null;
-					let itemroll = randomNumber(1,100);
+					const itemroll = randomNumber(1,100);
 					for (let n = 0; n < magicitemstable.table.length; n++) {
 						if (itemroll >= parseInt(magicitemstable.table[n].min) && itemroll <= parseInt(magicitemstable.table[n].max)) {
 							curmagicitem = magicitemstable.table[n];
@@ -181,7 +181,7 @@ function rollLoot(cr,hoard=false) {
 
 
 				$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
-					let curitem = this;
+					const curitem = this;
 					let curamount = 1;
 					$("#lootoutput ul:eq(0) > li.magicitem").each(function() {
 						if ($(this).text() === $(curitem).text() && this !== curitem) {
@@ -214,7 +214,7 @@ function rollLoot(cr,hoard=false) {
 function getFormattedCoinsForDisplay(loot){
 	const generatedCoins = generateCoinsFromLoot(loot);
 
-	let individuallyFormattedCoins = [];
+	const individuallyFormattedCoins = [];
 	generatedCoins.forEach((coin) => {
 		individuallyFormattedCoins.unshift("<li>"+ numberWithCommas(coin.value) + " " + coin.denomination + "</li>");
 	});
@@ -233,7 +233,7 @@ function getFormattedCoinsForDisplay(loot){
  * @return {Array<Coin>} - a list of coins contained in the loot table
  */
 function generateCoinsFromLoot(loot){
-	let retVal = [];
+	const retVal = [];
 
 	const coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp]
 	const coinnames = ["cp","sp","ep","gp","pp"];
@@ -269,7 +269,7 @@ function generateCoinsFromLoot(loot){
 function getGPValueFromCoins(coins){
 	const initialValue = 0;
 
-	let retVal = coins.reduce((total, coin) => {
+	const retVal = coins.reduce((total, coin) => {
 		switch(coin.denomination){
 		case "cp":
 			return total += (coin.value * 0.01);
