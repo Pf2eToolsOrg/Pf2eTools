@@ -690,6 +690,15 @@ div#subclasses {
 	text-align: center;
 }
 
+div#subclasses > span.divider {
+	padding: 0;
+	width: 1em;
+	display: inline-block;
+	cursor: default;
+	margin: 0;
+	border-radius: 0;
+}
+
 div#subclasses > span {
 	display: inline-block;
 	font-size: 0.8em;
@@ -697,6 +706,7 @@ div#subclasses > span {
 	padding: 0.5em;
 	border-radius: 0.5em;
 	cursor: pointer;
+	user-select: none;
 }
 
 div#subclasses span.active {

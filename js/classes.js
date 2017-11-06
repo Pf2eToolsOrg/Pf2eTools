@@ -1,5 +1,6 @@
 const HASH_SUBCLASS = "subclass:";
 const HASH_FEATURE = "feature:";
+const HASH_HIDE_FEATURES = "hidefeatures:";
 
 var tabledefault="";
 var classtabledefault ="";
@@ -259,6 +260,13 @@ function loadhash (id) {
 		window.location.hash = handleSubclassClick($(this), name)
 	});
 
+	$("div#subclasses").prepend($(`<span class="divider">`));
+	const toggle = $(`<span class="active" id="class-features-toggle"><span>Class Features</span></span>`);
+	$("div#subclasses").prepend(toggle)
+	toggle.click(function() {
+		window.location.hash = handleToggleFeaturesClicks($(this))
+	});
+
 	const subclassHashK = "subclass:";
 	function handleSubclassClick(subButton, name) {
 		const outStack = [];
@@ -307,6 +315,23 @@ function loadhash (id) {
 		return outStack.join(",").toLowerCase();
 	}
 
+	function handleToggleFeaturesClicks(subButton) {
+		const outStack = [];
+		const split = window.location.hash.split(",");
+
+		for (let i = 0; i < split.length; i++) {
+			const hashPart = split[i];
+			if (!hashPart.startsWith(HASH_HIDE_FEATURES)) outStack.push(hashPart);
+		}
+		if (subButton.hasClass("active")) {
+			outStack.push(HASH_HIDE_FEATURES + "true")
+		} else {
+			outStack.push(HASH_HIDE_FEATURES + "false")
+		}
+
+		return outStack.join(",").toLowerCase();
+	}
+
 	function getFeatureHash(featureLink) {
 		const hashFeatureLink = HASH_FEATURE + featureLink;
 		const outStack = [];
@@ -333,6 +358,7 @@ function loadsub(sub) {
 	let rawSubclasses = null;
 	let subclasses = null;
 	let feature = null;
+	let hideClassFeatures = null;
 
 	for (let i = 0; i < sub.length; i++) {
 		const hashPart = sub[i];
@@ -342,6 +368,7 @@ function loadsub(sub) {
 			subclasses = hashPart.slice(HASH_SUBCLASS.length).split("+");
 		}
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart.slice(HASH_FEATURE.length);
+		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = hashPart.slice(HASH_HIDE_FEATURES.length) === "true";
 	}
 
 	if (subclasses !== null) {
@@ -350,9 +377,10 @@ function loadsub(sub) {
 		const $toShow = [];
 		const $toHide = [];
 		const subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
-		for (let i = 0; i < subClassSpanList.length; ++i) {
+		outer: for (let i = 0; i < subClassSpanList.length; ++i) {
 			let shown = false;
 			for (let j = 0; j < subclasses.length; j++) {
+				if (subClassSpanList[i].getAttribute('data-subclass') === "none") continue outer; // the class features pill
 				let sc = decodeURIComponent(subclasses[j].toLowerCase());
 				if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
 					&& subClassSpanList[i].getAttribute('data-subclass').split(":").slice(1).join(":").trim() === sc.trim()) {
@@ -397,6 +425,15 @@ function loadsub(sub) {
 		displayAll();
 	}
 
+	const cfToggle = $("#class-features-toggle");
+	if (hideClassFeatures !== null && hideClassFeatures) {
+		cfToggle.removeClass("active");
+		$(`._class_feature[data-subclass="undefined"]`).hide();
+	} else {
+		cfToggle.addClass("active");
+		$(`._class_feature[data-subclass="undefined"]`).show();
+	}
+
 	function addFeatureHashes (rawSubclasses) {
 		rawSubclasses = (rawSubclasses === undefined || rawSubclasses === null) ? null : rawSubclasses;
 		let needsSubClass = rawSubclasses !== null;
@@ -426,7 +463,7 @@ function loadsub(sub) {
 
 	function displayAll() {
 		addFeatureHashes();
-		$("#subclasses .active").removeClass("active");
+		$("#subclasses .active").not("#class-features-toggle").removeClass("active");
 		$("._class_feature").show();
 		$(".subclass-prefix").show();
 	}
