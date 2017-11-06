@@ -283,7 +283,7 @@ function loadhash (id) {
 					const subClassStack = [];
 					const subClasses = hashPart.substr(subclassHashK.length).split("+");
 					for (let j = 0; j < subClasses.length; j++) {
-						let subClass = subClasses[j];
+						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
 					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join("+"));
@@ -299,7 +299,7 @@ function loadhash (id) {
 					const subClassStack = [];
 					const subClasses = hashPart.substr(subclassHashK.length).split("+");
 					for (let j = 0; j < subClasses.length; j++) {
-						let subClass = subClasses[j];
+						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
 					subClassStack.push(encodedSubClass);
@@ -381,7 +381,7 @@ function loadsub(sub) {
 			let shown = false;
 			for (let j = 0; j < subclasses.length; j++) {
 				if (subClassSpanList[i].getAttribute('data-subclass') === "none") continue outer; // the class features pill
-				let sc = decodeURIComponent(subclasses[j].toLowerCase());
+				const sc = decodeURIComponent(subclasses[j].toLowerCase());
 				if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
 					&& subClassSpanList[i].getAttribute('data-subclass').split(":").slice(1).join(":").trim() === sc.trim()) {
 
@@ -400,14 +400,14 @@ function loadsub(sub) {
 			displayAll();
 		} else {
 			for (let i = 0; i < $toShow.length; i++) {
-				let $el = $toShow[i];
+				const $el = $toShow[i];
 				if (!$el.hasClass("active")) {
 					$el.addClass("active");
 				}
 				$("._class_feature[data-subclass='"+$el.text().toLowerCase()+"']").show();
 			}
 			for (let i = 0; i < $toHide.length; i++) {
-				let $el = $toHide[i];
+				const $el = $toHide[i];
 				if ($el.hasClass("active")) {
 					$el.removeClass("active");
 				}
