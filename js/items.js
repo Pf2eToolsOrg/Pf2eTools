@@ -3,6 +3,27 @@ window.onload = function load() {
 
 	const itemlist = itemdata.compendium.item;
 
+	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
+	const filterList = [];
+	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], parse_sourceJsonToFull, parse_stringToSlug);
+	filterList.push(sourceFilter);
+	const typeFilter = new Filter("Type", FLTR_TYPE, [], Filter.asIs, Filter.asIs);
+	filterList.push(typeFilter);
+	const rarityFilter = new Filter("Rarity", FLTR_RARITY, [
+		"None",
+		"Common",
+		"Uncommon",
+		"Rare",
+		"Rare",
+		"Legendary",
+		"Artifact",
+		"Unknown",
+	], Filter.asIs, parse_stringToSlug);
+	filterList.push(rarityFilter);
+	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, parse_stringToSlug);
+	filterList.push(attunementFilter);
+	const filterBox = new FilterBox(filterAndSearchBar, filterList);
+
 	for (let i = 0; i < itemlist.length; i++) {
 
 		const curitem = itemlist[i];
@@ -14,18 +35,36 @@ window.onload = function load() {
 		const sourceAbv = parse_sourceJsonToAbv(source);
 		const sourceFull = parse_sourceJsonToFull(source);
 		const type = curitem.type.split(",");
-
 		for (let j = 0; j < type.length; j++) {
 			type[j] = parse_itemTypeToAbv(type[j]);
-			if (!$("select.typefilter option[value='"+type[j]+"']").length) $("select.typefilter").append("<option value='"+type[j]+"'>"+type[j]+"</option>");
+		}
+		const typeList = type.join(","); // for filter to use
+
+		let attunement = "No";
+		if (curitem.reqAttune !== undefined) {
+			if (curitem.reqAttune === "YES") attunement = "Yes";
+			else if (curitem.reqAttune === "OPTIONAL") attunement = "Optional";
+			else if (curitem.reqAttune.toLowerCase().startsWith("by")) attunement = "By...";
+			else attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
 		}
 
-		$("ul.list."+(rarity !== "None" || curitem.reqAttune || type === "W" ? "magic" : "mundane")).append("<li><a id='"+i+"' href=\"#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"\" title=\""+name+"\"><span class='name col-xs-4'>"+name+"</span> <span class='type col-xs-4 col-xs-4-3'>"+type.join(", ")+"</span> <span class='sourcename col-xs-1 col-xs-1-7' title=\""+sourceFull+"\"><span class='source'>"+sourceAbv+"</span></span> <span class='rarity col-xs-2'>"+rarity+"</span></a></li>");
+		// populate table
+		$("ul.list."+(rarity !== "None" || curitem.reqAttune || type === "W" ? "magic" : "mundane")).append(`<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}'><a id='${i}' href="#${encodeForHash(name)}" title="${name}"><span class='name col-xs-4'>${name}</span> <span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span> <span class='sourcename col-xs-1 col-xs-1-7' title="${sourceFull}"><span class='source'>${sourceAbv}</span></span> <span class='rarity col-xs-2'>${rarity}</span></a></li>`);
 
-		if (!$("select.sourcefilter option[value='"+sourceAbv+"']").length) $("select.sourcefilter").append("<option title=\""+source+"\" value='"+sourceAbv+"'>"+sourceFull+"</option>");
-		$("select.sourcefilter option").sort(asc_sort).appendTo("select.sourcefilter");
-		$("select.sourcefilter").val("All");
+		// populate filters
+		if ($.inArray(source, sourceFilter.items) === -1) {
+			sourceFilter.items.push(source);
+		}
+		for (let j = 0; j < type.length; ++j) {
+			const aType = type[j];
+			if ($.inArray(aType, typeFilter.items) === -1) {
+				typeFilter.items.push(aType);
+			}
+		}
 	}
+	// sort filters
+	sourceFilter.items.sort(ascSort);
+	typeFilter.items.sort(ascSort);
 
 	const options = {
 		valueNames: ["name", "source", "type", "rarity"],
@@ -36,32 +75,40 @@ window.onload = function load() {
 	options.listClass = "magic";
 	const magiclist = search(options);
 
-	$(".typefilter option").sort(asc_sort).appendTo(".typefilter");
-	$("select.typefilter option[value=All]").prependTo(".typefilter");
-	$(".typefilter").val("All");
+	// add filter reset to reset button
+	$(ID_RESET_BUTTON).on(EVNT_CLICK, function() {filterBox.reset();}, false);
 
-	initHistory()
+	filterBox.render();
+	initHistory();
 
-	$("form#filtertools select").change(function(){
-		const typefilter = $("select.typefilter").val();
-		const sourcefilter = $("select.sourcefilter").val();
-		const rarityfilter = $("select.rarityfilter").val();
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		function () {
+			mundanelist.filter(listFilter);
 
-		mundanelist.filter(function(item) {
-			const righttype = typefilter === "All" || item.values().type.indexOf(typefilter) !== -1;
-			const rightsource = sourcefilter === "All" || item.values().source === sourcefilter;
-			const rightrarity = rarityfilter === "All" || item.values().rarity === rarityfilter;
-			return righttype && rightsource && rightrarity;
-		});
+			magiclist.filter(listFilter);
+		}
+	);
 
-		magiclist.filter(function(item) {
-			const righttype = typefilter === "All" || item.values().type.indexOf(typefilter) !== -1;
-			const rightsource = sourcefilter === "All" || item.values().source === sourcefilter;
-			const rightrarity = rarityfilter === "All" || item.values().rarity === rarityfilter;
-			return righttype && rightsource && rightrarity;
-		});
+	function listFilter(item) {
+		const f = filterBox.getValues();
+		const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][sourceFilter.valueFunction($(item.elm).attr(sourceFilter.storageAttribute))];
+		const allTypes = $(item.elm).attr(typeFilter.storageAttribute).split(",");
+		let anyRightType = false;
+		for (let i = 0; i < allTypes.length; i++) {
+			const t = allTypes[i];
+			if (f[typeFilter.header][t]) {
+				anyRightType = true;
+				break;
+			}
+		}
+		const rightType = f[typeFilter.header][FilterBox.VAL_SELECT_ALL] || anyRightType;
+		const rightRarity = f[rarityFilter.header][FilterBox.VAL_SELECT_ALL] || f[rarityFilter.header][rarityFilter.valueFunction($(item.elm).attr(rarityFilter.storageAttribute))];
+		const rightAttunement = f[attunementFilter.header][FilterBox.VAL_SELECT_ALL] || f[attunementFilter.header][attunementFilter.valueFunction($(item.elm).attr(attunementFilter.storageAttribute))];
 
-	});
+		return rightSource && rightType && rightRarity && rightAttunement;
+	}
 
 	$("#filtertools button.sort").on("click", function() {
 		if ($(this).attr("sortby") === "asc") {

@@ -3,6 +3,9 @@ const STR_VOID_LINK = "javascript:void(0)";
 const STR_SLUG_DASH = "-";
 const STR_APOSTROPHE = "\u2019";
 
+const ID_SEARCH_BAR = "filter-search-input-group";
+const ID_RESET_BUTTON = "reset";
+
 const TYP_STRING = "string";
 const TYP_NUMBER = "number";
 const TYP_OBJECT = "object";
@@ -49,6 +52,8 @@ const FLTR_RANGE = "filterRange";
 const FLTR_CLASS = "filterClass";
 const FLTR_META = "filterMeta";
 const FLTR_ACTION = "filterAction";
+const FLTR_RARITY = "filterRarity";
+const FLTR_ATTUNEMENT = "filterAttunement";
 const FLTR_LIST_SEP = ";";
 
 const STYLESHEET_DEFAULT = "default";
@@ -781,6 +786,7 @@ function search(options) {
 }
 
 function addDropdownOption(dropdown, optionVal, optionText) {
+	if (optionVal === undefined || optionVal === null) return;
 	let inOptions = false;
 	dropdown.find("option").each(function() {
 		if (this.value === optionVal) {
@@ -799,6 +805,11 @@ function encodeForHash(str) {
 }
 
 // SORTING =============================================================================================================
+// TODO refactor
+function ascSort(a, b) {
+	if (b === a) return 0;
+	return b < a ? 1 : -1;
+}
 
 function asc_sort(a, b){
 	if ($(b).text() === $(a).text()) return 0;

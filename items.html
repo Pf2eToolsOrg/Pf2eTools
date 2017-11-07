@@ -82,37 +82,12 @@
 
 		<div class="row">
 			<div class="col-sm-6" id="listcontainer">
-				<div class="input-group" style="vertical-align: top;">
+				<div class="input-group" id="filter-search-input-group" style="vertical-align: top;">
 					<input type="search" id="search" class="search form-control" placeholder="Find item...">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button" id="reset">Reset</button>
 					</span>
 				</div>
-				<form id="filtertools">
-					<select class="sourcefilter">
-						<option value="All">All Sources</option>
-					</select>
-					<select class="typefilter">
-						<option value="All">All Types</option>
-					</select>
-					<select class="rarityfilter">
-						<option value="All">All Rarities</option>
-						<option value="None">None</option>
-						<option value="Common">Common</option>
-						<option value="Uncommon">Uncommon</option>
-						<option value="Rare">Rare</option>
-						<option value="Very Rare">Very Rare</option>
-						<option value="Legendary">Legendary</option>
-						<option value="Artifact">Artifact</option>
-						<option value="Unknown">Unknown</option>
-					</select>
-					<span class="sortlabel btn-group">
-						<button class="col-xs-4 sort btn btn-default btn-xs" type="button" sort="name" sortby="asc">Name</button>
-						<button class="col-xs-4 col-xs-4-3 sort btn btn-default btn-xs" type="button" sort="type" sortby="asc">Type</button>
-						<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" sort="source" sortby="asc">Source</button>
-						<button class="col-xs-2 sort btn btn-default btn-xs" type="button" sort="rarity" sortby="asc">Rarity</button>
-					</span>
-				</form>
 				<h3 data-toggle="mundane">Mundane</h3>
 				<ul class="list mundane">
 
@@ -157,6 +132,7 @@
 	</footer>
 
 	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/filter.js"></script>
 	<script type="text/javascript" src="js/history.js"></script>
 	<script type="text/javascript" src="js/items.js"></script>
 	<script type="text/javascript" src="data/items.json"></script>

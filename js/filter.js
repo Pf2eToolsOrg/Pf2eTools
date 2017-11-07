@@ -55,7 +55,7 @@ class FilterBox {
 				const inH = document.createElement(ELE_A);
 				inH.setAttribute(ATB_CLASS, FilterBox.CLS_SUBMENU_PARENT);
 				inH.setAttribute(ATB_HREF, STR_VOID_LINK);
-				inH.innerHTML = filter.header + " <span class='caret'></span>";
+				inH.innerHTML = filter.header + " <span class='caret caret-right'></span>";
 				return inH;
 			}
 
@@ -267,11 +267,12 @@ FilterBox.CLS_DIVIDER = "divider";
 FilterBox.VAL_SELECT_ALL = "select-all";
 FilterBox.EVNT_VALCHANGE = "valchange";
 class Filter {
-	constructor(header, listClass, items, displayFunction, valueFunction) {
+	constructor(header, storageAttribute, items, displayFunction, valueFunction) {
 		this.header = header;
-		this.listClass = listClass;
+		this.storageAttribute = storageAttribute;
 		this.items = items;
 		this.displayFunction = displayFunction;
 		this.valueFunction = valueFunction;
 	}
 }
+Filter.asIs = function(str) { return str; };
