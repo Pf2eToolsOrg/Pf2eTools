@@ -38,7 +38,7 @@ window.onload = function load() {
 		for (let j = 0; j < type.length; j++) {
 			type[j] = parse_itemTypeToAbv(type[j]);
 		}
-		let typeList = type.join(","); // for filter to use
+		const typeList = type.join(","); // for filter to use
 
 		let attunement = "No";
 		if (curitem.reqAttune !== undefined) {
