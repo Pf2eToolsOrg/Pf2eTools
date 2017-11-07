@@ -54,9 +54,9 @@ StyleSwitcher.STYLE_NIGHT = "night";
 // NIGHT MODE ==========================================================================================================
 const styleSwitcher = new StyleSwitcher();
 // load user's preferred CSS
-let cookie = StyleSwitcher.readCookie("style");
-cookie = cookie ? cookie : StyleSwitcher.STYLE_DAY;
-styleSwitcher.setActiveStyleSheet(cookie);
+styleSwitcher.cookie = StyleSwitcher.readCookie("style");
+styleSwitcher.cookie = styleSwitcher.cookie ? styleSwitcher.cookie : StyleSwitcher.STYLE_DAY;
+styleSwitcher.setActiveStyleSheet(styleSwitcher.cookie);
 
 window.addEventListener("unload", function() {
 	const title = styleSwitcher.getActiveStyleSheet();
