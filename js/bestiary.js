@@ -14,7 +14,7 @@ window.onload = function load() {
 		const abvSource = parse_sourceJsonToAbv(source);
 		const is3pp = source.includes("3pp");
 
-		$("ul#monsters").append("<li "+FLTR_TYPE+"='"+type+"' "+FLTR_SOURCE+"='"+source+"' "+FLTR_CR+"='"+cr+"' "+FLTR_3PP+"='"+is3pp+"'><a id="+i+" href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title=\""+name+"\"><span class='name col-xs-4 col-xs-4-2'>"+name+"</span> <span title=\""+fullsource+"\" class='col-xs-1 col-xs-1-8 source source"+abvSource+"'>"+abvSource+"</span> <span class='type col-xs-4 col-xs-4-3'>"+type+"</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>"+cr+"</span></a></li>");
+		$("ul#monsters").append(`<li ${FLTR_TYPE}='${type}' ${FLTR_SOURCE}='${source}' ${FLTR_CR}='${cr}' ${FLTR_3PP}='${is3pp}'><a id=${i} href='#${encodeForHash(name)}_${encodeForHash(source)}' title="${name}"><span class='name col-xs-4 col-xs-4-2'>${name}</span> <span title="${fullsource}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span> <span class='type col-xs-4 col-xs-4-3'>${type}</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>${cr}</span></a></li>`);
 
 		addDropdownOption($("select.typefilter"), type, parse_sourceJsonToFull(type));
 		addDropdownOption($("select.sourcefilter"), source, fullsource);

@@ -793,6 +793,11 @@ function addDropdownOption(dropdown, optionVal, optionText) {
 	}
 }
 
+// ENCODING/DECODING ===================================================================================================
+function encodeForHash(str) {
+	return encodeURIComponent(str).toLowerCase().replace("'","%27")
+}
+
 // SORTING =============================================================================================================
 
 function asc_sort(a, b){
