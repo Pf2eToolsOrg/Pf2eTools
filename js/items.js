@@ -14,7 +14,7 @@ window.onload = function load() {
 		"Common",
 		"Uncommon",
 		"Rare",
-		"Rare",
+		"Very Rare",
 		"Legendary",
 		"Artifact",
 		"Unknown",
