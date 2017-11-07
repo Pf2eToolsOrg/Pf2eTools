@@ -22,8 +22,6 @@ const TMP_MODE_TITLE_CONCENTRATION = "conc., {0} {1}.";
 const TMP_LIST_ITEM_HREF = "#{0}";
 
 const ID_PSIONICS_LIST = "psionicsList";
-const ID_SEARCH_BAR = "filter-search-input-group";
-const ID_RESET_BUTTON = "reset";
 const ID_STATS_NAME = "name";
 const ID_STATS_ORDER_AND_TYPE = "orderAndType";
 const ID_STATS_DURATION = "duration";
