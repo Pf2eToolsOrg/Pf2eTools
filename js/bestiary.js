@@ -1,15 +1,27 @@
+const BESTIARY_JSON_URL = "data/bestiary.json";
+const BESTIARY_TOB_JSON_URL = "data/bestiary-tob.json";
+
 window.onload = function load() {
 	tabledefault = $("#stats").html();
+	loadJSON(BESTIARY_JSON_URL, addToB);
+};
 
-	monsters = monsterdata.compendium.monster;
+function addToB(mainData) {
+	loadJSON(BESTIARY_TOB_JSON_URL, populate, mainData);
+}
+
+let monsters;
+function populate(tobData, mainData) {
+	monsters = mainData[0].monster;
+	monsters.concat(tobData.monster);
 
 	// parse all the monster data
-	for (var i = 0; i < monsters.length; i++) {
-		var name = monsters[i].name;
-		var source = monsters[i].source;
-		var fullsource = parse_sourceJsonToFull(source);
-		var type = monsters[i].type;
-		var cr = monsters[i].cr;
+	for (let i = 0; i < monsters.length; i++) {
+		const name = monsters[i].name;
+		const source = monsters[i].source;
+		const fullsource = parse_sourceJsonToFull(source);
+		const type = monsters[i].type;
+		const cr = monsters[i].cr;
 
 		const abvSource = parse_sourceJsonToAbv(source);
 		const is3pp = source.includes("3pp");
@@ -72,13 +84,6 @@ window.onload = function load() {
 	$("button#expandcollapse").click(function() {
 		$("main .row:eq(0) > div:eq(0)").toggleClass("col-sm-5").toggle();
 		$("main .row:eq(0) > div:eq(1)").toggleClass("col-sm-12").toggleClass("col-sm-7");
-		/*
-			var i = $("main .row:eq(0) > div:eq(1) > div:eq(0)");
-			if (i.css("maxHeight") === "100%") {
-				i.css("maxHeight", "565px");
-			} else i.css("maxHeight", "100%");
-		*/
-		return;
 	})
 }
 
@@ -117,7 +122,7 @@ function sortmonsters(a, b, o) {
 // load selected monster stat block
 function loadhash (id) {
 	$("#stats").html(tabledefault);
-	var mon = monsterdata.compendium.monster[id];
+	var mon = monsters[id];
 	var name = mon.name;
 	var source = mon.source;
 	var fullsource = parse_sourceJsonToFull(source);

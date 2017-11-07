@@ -840,13 +840,13 @@ function compareNames(a, b) {
 }
 
 // JSON LOADING ========================================================================================================
-function loadJSON(url, onLoadFunction) {
+function loadJSON(url, onLoadFunction, ...otherData) {
 	const request = new XMLHttpRequest();
 	request.open('GET', url, true);
 	request.overrideMimeType("application/json");
 	request.onload = function() {
 		const data = JSON.parse(this.response);
-		onLoadFunction(data);
+		onLoadFunction(data, otherData);
 	};
 	request.send();
 }
