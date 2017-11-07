@@ -110,27 +110,6 @@ window.onload = function load() {
 		return rightSource && rightType && rightRarity && rightAttunement;
 	}
 
-	$("form#filtertools select").change(function(){
-		const typefilter = $("select.typefilter").val();
-		const sourcefilter = $("select.sourcefilter").val();
-		const rarityfilter = $("select.rarityfilter").val();
-
-		mundanelist.filter(function(item) {
-			const righttype = typefilter === "All" || item.values().type.indexOf(typefilter) !== -1;
-			const rightsource = sourcefilter === "All" || item.values().source === sourcefilter;
-			const rightrarity = rarityfilter === "All" || item.values().rarity === rarityfilter;
-			return righttype && rightsource && rightrarity;
-		});
-
-		magiclist.filter(function(item) {
-			const righttype = typefilter === "All" || item.values().type.indexOf(typefilter) !== -1;
-			const rightsource = sourcefilter === "All" || item.values().source === sourcefilter;
-			const rightrarity = rarityfilter === "All" || item.values().rarity === rarityfilter;
-			return righttype && rightsource && rightrarity;
-		});
-
-	});
-
 	$("#filtertools button.sort").on("click", function() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
