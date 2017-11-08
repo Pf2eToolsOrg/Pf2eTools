@@ -7,19 +7,7 @@ const STR_TYPE_TALENT = "Talent";
 const STR_TYPE_DISCIPLINE = "Discipline";
 const STR_ORDER_NONE = "None";
 
-const TMP_TYPE_ORDER = "{0} {1}";
-const TMP_DISCIPLINE_TEXT = "{0}{1}{2}";
-const TMP_DESCRIPTION = "<p>{0}</p>";
-const TMP_FOCUS = "<p><span class='psi-focus-title'>Psycic Focus.</span> {0}</p>";
-const TMP_HIDDEN_MODE = "\"{0}\"";
-const TMP_MODE_TITLE = "<span class='psi-mode-title'>{0}.</span> ";
-const TMP_MODE_SUB_TITLE = "<span class='psi-mode-sub-title'>{0}.</span> ";
-const TMP_MODE_WITH_SUB_MODE = "{0}{1}";
-const TMP_MODE_TITLE_BRACKET_PART = "({0})";
-const TMP_MODE_TITLE_COST = "{0} psi";
-const TMP_MODE_TITLE_COST_RANGE = "{0}-{1}";
-const TMP_MODE_TITLE_CONCENTRATION = "conc., {0} {1}.";
-const TMP_LIST_ITEM_HREF = "#{0}";
+const TMP_HIDDEN_MODE = `"{0}"`;
 
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_STATS_NAME = "name";
@@ -76,7 +64,7 @@ window.onload = function load() {
 
 			const link = document.createElement(ELE_A);
 			link.setAttribute(ATB_ID, String(i));
-			link.setAttribute(ATB_HREF, TMP_LIST_ITEM_HREF.formatUnicorn(utils_nameToDataLink(psionic[JSON_ITEM_NAME])));
+			link.setAttribute(ATB_HREF, `#${utils_nameToDataLink(psionic[JSON_ITEM_NAME])}`);
 			link.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
 			link.appendChild(getNameSpan(psionic));
 			link.appendChild(getSourceSpan(psionic));
@@ -301,7 +289,7 @@ function loadhash (jsonIndex) {
 		STATS_DURATION.innerHTML = STR_EMPTY;
 	}
 	function loadDiscipline() {
-		STATS_ORDER_AND_TYPE.innerHTML = TMP_TYPE_ORDER.formatUnicorn(selectedPsionic[JSON_ITEM_ORDER], parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]));
+		STATS_ORDER_AND_TYPE.innerHTML = `${selectedPsionic[JSON_ITEM_ORDER]} ${parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE])}`;
 		STATS_TEXT.innerHTML = getTextString();
 		STATS_DURATION.innerHTML = getDurationString();
 
@@ -311,19 +299,19 @@ function loadhash (jsonIndex) {
 				modeStringArray.push(getModeString(i));
 			}
 
-			return TMP_DISCIPLINE_TEXT.formatUnicorn(getDescriptionString(), getFocusString(), modeStringArray.join(STR_EMPTY));
+			return `${getDescriptionString()}${getFocusString()}${modeStringArray.join(STR_EMPTY)}`;
 		}
 		function getDescriptionString() {
-			return TMP_DESCRIPTION.formatUnicorn(selectedPsionic[JSON_ITEM_DESCRIPTION]);
+			return `<p>${selectedPsionic[JSON_ITEM_DESCRIPTION]}</p>`;
 		}
 		function getFocusString() {
-			return TMP_FOCUS.formatUnicorn(selectedPsionic[JSON_ITEM_FOCUS]);
+			return `<p><span class='psi-focus-title'>Psycic Focus.</span> ${selectedPsionic[JSON_ITEM_FOCUS]}</p>`;
 		}
 		function getModeString(modeIndex) {
 			const modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(selectedPsionic[JSON_ITEM_MODES][modeIndex]));
 			if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES] === undefined) return modeString;
 			const subModeString = getSubModeString();
-			return TMP_MODE_WITH_SUB_MODE.formatUnicorn(modeString, subModeString);
+			return `${modeString}${subModeString}`;
 
 			function getSubModeString() {
 				const modeStrings = [];
@@ -340,8 +328,8 @@ function loadhash (jsonIndex) {
 				modeTitleArray.push(mode[JSON_ITEM_MODE_TITLE]);
 				const bracketPart = getModeTitleBracketPart();
 				if (bracketPart !== null) modeTitleArray.push(bracketPart);
-				if (subMode) return TMP_MODE_SUB_TITLE.formatUnicorn(modeTitleArray.join(STR_JOIN_MODE_TITLE));
-				else return TMP_MODE_TITLE.formatUnicorn(modeTitleArray.join(STR_JOIN_MODE_TITLE));
+				if (subMode) return `<span class='psi-mode-sub-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
+				else return `<span class='psi-mode-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
 
 				function getModeTitleBracketPart() {
 					const modeTitleBracketArray = [];
@@ -350,16 +338,16 @@ function loadhash (jsonIndex) {
 					if (mode[JSON_ITEM_MODE_CONCENTRATION]) modeTitleBracketArray.push(getModeTitleConcentration());
 
 					if (modeTitleBracketArray.length === 0) return null;
-					return TMP_MODE_TITLE_BRACKET_PART.formatUnicorn(modeTitleBracketArray.join(STR_JOIN_MODE_TITLE_BRACKET_PART_LIST));
+					return `(${modeTitleBracketArray.join(STR_JOIN_MODE_TITLE_BRACKET_PART_LIST)})`;
 
 					function getModeTitleCost() {
 						const costMin = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MIN];
 						const costMax = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MAX];
-						const costString = costMin === costMax ? costMin : TMP_MODE_TITLE_COST_RANGE.formatUnicorn(costMin, costMax);
-						return TMP_MODE_TITLE_COST.formatUnicorn(costString)
+						const costString = costMin === costMax ? costMin : `${costMin}-${costMax}`;
+						return `${costString} psi`;
 					}
 					function getModeTitleConcentration() {
-						return TMP_MODE_TITLE_CONCENTRATION.formatUnicorn(mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_DURATION], mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_UNIT])
+						return `conc., ${mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_DURATION]} ${mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_UNIT]}.`
 					}
 				}
 			}
