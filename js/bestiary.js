@@ -4,7 +4,6 @@ const BESTIARY_TOB_JSON_URL = "data/bestiary-tob.json";
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 	loadJSON(BESTIARY_JSON_URL, addToB);
-	loadJSON(BESTIARY_TOB_JSON_URL, addToB)
 };
 
 function addToB(mainData) {
@@ -14,7 +13,7 @@ function addToB(mainData) {
 let monsters;
 function populate(tobData, mainData) {
 	monsters = mainData[0].monster;
-	monsters.concat(tobData.monster);
+	monsters = monsters.concat(tobData.monster);
 
 	// parse all the monster data
 	for (let i = 0; i < monsters.length; i++) {
