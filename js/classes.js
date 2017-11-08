@@ -1,7 +1,9 @@
 const HASH_SUBCLASS = "subclass:";
 const HASH_FEATURE = "feature:";
 const HASH_HIDE_FEATURES = "hidefeatures:";
+const HASH_LIST_SEP = "_";
 
+// TODO this is going to be added to the JSON in the upcoming class JSON overhaul
 const SUBCLASS_LEVEL_TITLES = ["Artificer Specialist", "Masterwork Feature", "Primal Path", "Path Feature", "Bard College", "Bard College feature", "Divine Domain", "Divine Domain feature", "Druid Circle", "Druid Circle feature", "Martial Archetype", "Martial Archetype feature", "Monastic Tradition", "Monastic Tradition feature", "Mystic Order", "Mystic Order feature", "Sacred Oath", "Sacred Oath feature", "Ranger Archetype", "Ranger Archetype feature", "Ranger Conclave", "Ranger Conclave feature", "Roguish Archetype", "Roguish Archetype feature", "Sorcerous Origin", "Sorcerous Origin feature", "Otherworldly Patron", "Otherworldly Patron feature", "Arcane Tradition", "Arcane Tradition feature"];
 
 var tabledefault="";
@@ -253,7 +255,7 @@ function loadhash (id) {
 
 	$("div#subclasses span").remove();
 	for (let i = 0; i < subclasses.length; i++) {
-		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+(subclasses[i].name.toLowerCase())+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
+		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend(`<span class='active' data-subclass='${(subclasses[i].name.toLowerCase())}'><em style='display: none;'>${subclasses[i].name.split(": ")[0]}: </em><span>${subclasses[i].name.split(": ")[1]}</span></span>`);
 	}
 
 	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
@@ -277,18 +279,18 @@ function loadhash (id) {
 		const encodedSubClass = encodeURIComponent(name).replace("'", "%27").toLowerCase();
 		const subclassLink = subclassHashK + encodedSubClass;
 
-		if (subButton.hasClass("active")) {
+		if (subButton.hasClass("active") && window.location.hash.includes(HASH_SUBCLASS)) {
 			for (let i = 0; i < split.length; i++) {
 				const hashPart = split[i];
 				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
 				else {
 					const subClassStack = [];
-					const subClasses = hashPart.substr(subclassHashK.length).split("+");
+					const subClasses = hashPart.substr(subclassHashK.length).split(HASH_LIST_SEP);
 					for (let j = 0; j < subClasses.length; j++) {
 						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
-					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join("+"));
+					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join(HASH_LIST_SEP));
 				}
 			}
 		} else {
@@ -299,13 +301,13 @@ function loadhash (id) {
 				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
 				else {
 					const subClassStack = [];
-					const subClasses = hashPart.substr(subclassHashK.length).split("+");
+					const subClasses = hashPart.substr(subclassHashK.length).split(HASH_LIST_SEP);
 					for (let j = 0; j < subClasses.length; j++) {
 						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
 					subClassStack.push(encodedSubClass);
-					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join("+"));
+					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join(HASH_LIST_SEP));
 
 					hasSubclassHash = true;
 				}
@@ -355,7 +357,6 @@ function loadhash (id) {
 		return outStack.join(",").toLowerCase();
 	}
 
-	// this is going to be added to the JSON in the upcoming class JSON overhaul
 	function isGainSubclassFeature(featureName) {
 		if (featureName === undefined) return false;
 		for (let i = 0; i < SUBCLASS_LEVEL_TITLES.length; i++) {
@@ -376,7 +377,7 @@ function loadsub(sub) {
 
 		if (hashPart.startsWith(HASH_SUBCLASS)) {
 			rawSubclasses = hashPart;
-			subclasses = hashPart.slice(HASH_SUBCLASS.length).split("+");
+			subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 		}
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart.slice(HASH_FEATURE.length);
 		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = hashPart.slice(HASH_HIDE_FEATURES.length) === "true";
@@ -474,7 +475,7 @@ function loadsub(sub) {
 
 	function displayAll() {
 		addFeatureHashes();
-		$("#subclasses .active").not("#class-features-toggle").removeClass("active");
+		$("#subclasses > span").not("#class-features-toggle").addClass("active");
 		$("._class_feature").show();
 		$(".subclass-prefix").show();
 	}
