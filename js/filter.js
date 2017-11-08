@@ -253,6 +253,18 @@ class FilterBox {
 		this._fireValChangeEvent();
 	}
 
+	deselectIf(func, filterHeader) {
+		const cur = this.headers[filterHeader];
+		for (let i = 0; i < cur.entries.length; ++i) {
+			const curEntry = cur.entries[i];
+			if (func(curEntry.value)) {
+				cur.entries[i].cb.checked = false;
+			}
+		}
+		this._fireValChangeEvent();
+	}
+
+
 	_fireValChangeEvent() {
 		const eventOut = new Event(FilterBox.EVNT_VALCHANGE);
 		this.inputGroup.dispatchEvent(eventOut);
