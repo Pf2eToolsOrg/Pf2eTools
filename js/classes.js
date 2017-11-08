@@ -1,6 +1,7 @@
 const HASH_SUBCLASS = "subclass:";
 const HASH_FEATURE = "feature:";
 const HASH_HIDE_FEATURES = "hidefeatures:";
+const HASH_LIST_SEP = "_";
 
 const SUBCLASS_LEVEL_TITLES = ["Artificer Specialist", "Masterwork Feature", "Primal Path", "Path Feature", "Bard College", "Bard College feature", "Divine Domain", "Divine Domain feature", "Druid Circle", "Druid Circle feature", "Martial Archetype", "Martial Archetype feature", "Monastic Tradition", "Monastic Tradition feature", "Mystic Order", "Mystic Order feature", "Sacred Oath", "Sacred Oath feature", "Ranger Archetype", "Ranger Archetype feature", "Ranger Conclave", "Ranger Conclave feature", "Roguish Archetype", "Roguish Archetype feature", "Sorcerous Origin", "Sorcerous Origin feature", "Otherworldly Patron", "Otherworldly Patron feature", "Arcane Tradition", "Arcane Tradition feature"];
 
@@ -283,12 +284,12 @@ function loadhash (id) {
 				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
 				else {
 					const subClassStack = [];
-					const subClasses = hashPart.substr(subclassHashK.length).split("+");
+					const subClasses = hashPart.substr(subclassHashK.length).split(HASH_LIST_SEP);
 					for (let j = 0; j < subClasses.length; j++) {
 						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
-					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join("+"));
+					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join(HASH_LIST_SEP));
 				}
 			}
 		} else {
@@ -299,13 +300,13 @@ function loadhash (id) {
 				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
 				else {
 					const subClassStack = [];
-					const subClasses = hashPart.substr(subclassHashK.length).split("+");
+					const subClasses = hashPart.substr(subclassHashK.length).split(HASH_LIST_SEP);
 					for (let j = 0; j < subClasses.length; j++) {
 						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
 					subClassStack.push(encodedSubClass);
-					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join("+"));
+					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join(HASH_LIST_SEP));
 
 					hasSubclassHash = true;
 				}
@@ -376,7 +377,7 @@ function loadsub(sub) {
 
 		if (hashPart.startsWith(HASH_SUBCLASS)) {
 			rawSubclasses = hashPart;
-			subclasses = hashPart.slice(HASH_SUBCLASS.length).split("+");
+			subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 		}
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart.slice(HASH_FEATURE.length);
 		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = hashPart.slice(HASH_HIDE_FEATURES.length) === "true";
