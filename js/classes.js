@@ -253,7 +253,7 @@ function loadhash (id) {
 
 	$("div#subclasses span").remove();
 	for (let i = 0; i < subclasses.length; i++) {
-		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend("<span data-subclass='"+(subclasses[i].name.toLowerCase())+"'><em style='display: none;'>"+subclasses[i].name.split(": ")[0]+": </em><span>"+subclasses[i].name.split(": ")[1]+"</span></span>");
+		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend(`<span class='active' data-subclass='${(subclasses[i].name.toLowerCase())}'><em style='display: none;'>${subclasses[i].name.split(": ")[0]}: </em><span>${subclasses[i].name.split(": ")[1]}</span></span>`);
 	}
 
 	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
@@ -277,7 +277,7 @@ function loadhash (id) {
 		const encodedSubClass = encodeURIComponent(name).replace("'", "%27").toLowerCase();
 		const subclassLink = subclassHashK + encodedSubClass;
 
-		if (subButton.hasClass("active")) {
+		if (subButton.hasClass("active") && window.location.hash.includes(HASH_SUBCLASS)) {
 			for (let i = 0; i < split.length; i++) {
 				const hashPart = split[i];
 				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
@@ -474,7 +474,7 @@ function loadsub(sub) {
 
 	function displayAll() {
 		addFeatureHashes();
-		$("#subclasses .active").not("#class-features-toggle").removeClass("active");
+		$("#subclasses > span").not("#class-features-toggle").addClass("active");
 		$("._class_feature").show();
 		$(".subclass-prefix").show();
 	}
