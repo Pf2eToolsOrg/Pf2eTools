@@ -3,6 +3,7 @@ const HASH_FEATURE = "feature:";
 const HASH_HIDE_FEATURES = "hidefeatures:";
 const HASH_LIST_SEP = "_";
 
+// TODO this is going to be added to the JSON in the upcoming class JSON overhaul
 const SUBCLASS_LEVEL_TITLES = ["Artificer Specialist", "Masterwork Feature", "Primal Path", "Path Feature", "Bard College", "Bard College feature", "Divine Domain", "Divine Domain feature", "Druid Circle", "Druid Circle feature", "Martial Archetype", "Martial Archetype feature", "Monastic Tradition", "Monastic Tradition feature", "Mystic Order", "Mystic Order feature", "Sacred Oath", "Sacred Oath feature", "Ranger Archetype", "Ranger Archetype feature", "Ranger Conclave", "Ranger Conclave feature", "Roguish Archetype", "Roguish Archetype feature", "Sorcerous Origin", "Sorcerous Origin feature", "Otherworldly Patron", "Otherworldly Patron feature", "Arcane Tradition", "Arcane Tradition feature"];
 
 var tabledefault="";
@@ -356,7 +357,6 @@ function loadhash (id) {
 		return outStack.join(",").toLowerCase();
 	}
 
-	// this is going to be added to the JSON in the upcoming class JSON overhaul
 	function isGainSubclassFeature(featureName) {
 		if (featureName === undefined) return false;
 		for (let i = 0; i < SUBCLASS_LEVEL_TITLES.length; i++) {
