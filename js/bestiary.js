@@ -4,6 +4,7 @@ const BESTIARY_TOB_JSON_URL = "data/bestiary-tob.json";
 window.onload = function load() {
 	tabledefault = $("#stats").html();
 	loadJSON(BESTIARY_JSON_URL, addToB);
+	loadJSON(BESTIARY_TOB_JSON_URL, addToB)
 };
 
 function addToB(mainData) {
