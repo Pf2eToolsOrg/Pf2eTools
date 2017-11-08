@@ -56,9 +56,6 @@ const FLTR_RARITY = "filterRarity";
 const FLTR_ATTUNEMENT = "filterAttunement";
 const FLTR_LIST_SEP = ";";
 
-const STYLESHEET_DEFAULT = "default";
-const STYLESHEET_ALTERNATE = "alternate";
-
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
