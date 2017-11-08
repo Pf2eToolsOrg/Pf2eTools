@@ -216,15 +216,15 @@ window.onload = function load() {
 		}
 	);
 
-	// default de-select UA sources
-	filterBox.deselectIf(function(val) { return val.startsWith("UA") }, sourceFilter.header);
-
 	$("#filtertools button.sort").on("click", function() {
 		if ($(this).attr("sortby") === "asc") {
 			$(this).attr("sortby", "desc");
 		} else $(this).attr("sortby", "asc");
 		list.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortspells });
 	});
+
+	// default de-select UA sources
+	filterBox.deselectIf(function(val) { return val === "EEPC" || val.startsWith("UA") }, sourceFilter.header);
 };
 
 function sortspells(a, b, o) {
