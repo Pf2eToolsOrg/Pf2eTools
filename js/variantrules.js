@@ -49,7 +49,7 @@ function onJsonLoad(data) {
 	);
 
 	// add filter reset to reset button
-	$(ID_RESET_BUTTON).on(EVNT_CLICK, function() {filterBox.reset();}, false);
+	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {filterBox.reset();}, false);
 
 	filterBox.render();
 	initHistory()
