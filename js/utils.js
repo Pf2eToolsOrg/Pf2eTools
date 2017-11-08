@@ -565,6 +565,7 @@ const SRC_UATMC = "UATheMysticClass";
 const SRC_UATOBM = "UAThatOldBlackMagic";
 const SRC_UATRR = "UATheRangerRevised";
 const SRC_UAWA = "UAWaterborneAdventures";
+const SRC_UAVR = "UAVariantRules";
 
 const SRC_BOLS_3PP = "BoLS 3pp";
 const SRC_ToB_3PP = "ToB 3pp";
@@ -614,6 +615,7 @@ SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
 SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
 SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
 SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
+SOURCE_JSON_TO_FULL[SRC_UAVR] = UA_PREFIX + "Variant Rules";
 SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
 SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts (3pp)";
 
@@ -658,6 +660,7 @@ SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
 SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
 SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
+SOURCE_JSON_TO_ABV[SRC_UAVR] = "UAVR";
 SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 

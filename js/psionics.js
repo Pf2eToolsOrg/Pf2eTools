@@ -220,7 +220,7 @@ window.onload = function load() {
 
 			filterBox.addEventListener(
 				FilterBox.EVNT_VALCHANGE,
-				function (event) {
+				function () {
 					listView.filter(function(item) {
 						const f = filterBox.getValues();
 
@@ -245,11 +245,11 @@ window.onload = function load() {
 		}
 	}
 
-	function initResetButton(listView, filterBox) {
+	function initResetButton(filterBox) {
 		const RESET_BUTTON = document.getElementById(ID_RESET_BUTTON);
 		RESET_BUTTON.addEventListener(EVNT_CLICK, resetButtonClick, false);
 
-		function resetButtonClick(event) {
+		function resetButtonClick() {
 			filterBox.reset();
 		}
 	}

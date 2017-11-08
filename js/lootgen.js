@@ -271,18 +271,18 @@ function getGPValueFromCoins(coins){
 
 	const retVal = coins.reduce((total, coin) => {
 		switch(coin.denomination){
-		case "cp":
-			return total += (coin.value * 0.01);
-		case "sp":
-			return total += (coin.value * 0.1);
-		case "ep":
-			return total += (coin.value * 0.5);
-		case "gp":
-			return total += coin.value;
-		case "pp":
-			return total += (coin.value * 10);
-		default:
-			return total;
+			case "cp":
+				return total += (coin.value * 0.01);
+			case "sp":
+				return total += (coin.value * 0.1);
+			case "ep":
+				return total += (coin.value * 0.5);
+			case "gp":
+				return total += coin.value;
+			case "pp":
+				return total += (coin.value * 10);
+			default:
+				return total;
 		}
 	}, initialValue);
 
