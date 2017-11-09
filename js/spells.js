@@ -89,6 +89,7 @@ function onJsonLoad(data) {
 	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
 		[
 			"Actions",
+			"Bonus",
 			"Reactions",
 			"Rounds",
 			"Minutes",
