@@ -118,6 +118,13 @@ function onJsonLoad(data) {
 		const classlist = curspell.classes.split(",");
 		for (let a = 0; a < classlist.length; a++) {
 			classlist[a] = classlist[a].trim();
+		}
+		if ($.inArray("Wizard", classlist) !== -1 && curspell.level <= 4) {
+			classlist.push("Fighter (Eldritch Knight)");
+			classlist.push("Rogue (Arcane Trickster)");
+		}
+		for (let a = 0; a < classlist.length; a++) {
+			classlist[a] = classlist[a].trim();
 			if ($.inArray(classlist[a], classFilter.items) === -1) classFilter.items.push(classlist[a]);
 			classlist[a] = parse_stringToSlug(classlist[a]);
 		}
