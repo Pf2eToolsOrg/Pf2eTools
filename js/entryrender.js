@@ -236,6 +236,7 @@ class EntryRenderer {
 						switch (tag) {
 							case "@spell":
 								fauxEntry.href.path = "spells.html";
+								fauxEntry.href.hash = fauxEntry.href.hash += "_phb";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@item":
