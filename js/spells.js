@@ -236,7 +236,7 @@ function onJsonLoad(data) {
 	}
 
 	initHistory();
-};
+}
 
 function sortspells(a, b, o) {
 	if (o.valueName === "name") {
