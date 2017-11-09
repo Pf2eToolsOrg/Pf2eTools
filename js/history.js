@@ -1,8 +1,8 @@
 function hashchange(e) {
-	const [link, ...sub] = window.location.hash.slice(1).split(',');
+	const [link, ...sub] = _getHashParts();
 
 	if (!e || sub.length === 0) {
-		const $el = $(`#listcontainer a[href='#${link.toLowerCase()}']`);
+		const $el = _getListElem(link);
 		loadhash($el.attr("id"));
 		document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
 	}
@@ -18,4 +18,17 @@ function initHistory() {
 	} else {
 		location.replace($("#listcontainer .list a").attr('href'));
 	}
+}
+
+function getSelectedListElement() {
+	const [link, ...sub] = _getHashParts();
+	return _getListElem(link);
+}
+
+function _getHashParts() {
+	return window.location.hash.slice(1).split(',');
+}
+
+function _getListElem(link) {
+	return $(`#listcontainer a[href='#${link.toLowerCase()}']`);
 }

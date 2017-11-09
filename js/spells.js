@@ -1,3 +1,5 @@
+const JSON_URL = "data/spells.json";
+
 function parseschool (school) {
 	if (school === "A") return "Abjuration";
 	if (school === "EV") return "Evocation";
@@ -69,9 +71,14 @@ const META_RITUAL = "Rituals";
 const META_TECHNOMAGIC = "Technomagic";
 
 window.onload = function load() {
+	loadJSON(JSON_URL, onJsonLoad);
+};
+
+let spelllist;
+function onJsonLoad(data) {
 	tabledefault = $("#stats").html();
 
-	const spelllist = spelldata.compendium.spell;
+	spelllist = data.spell;
 
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 
@@ -177,7 +184,6 @@ window.onload = function load() {
 	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {filterBox.reset();}, false);
 
 	filterBox.render();
-	initHistory();
 
 	// filtering function
 	$(filterBox).on(
@@ -224,8 +230,13 @@ window.onload = function load() {
 	});
 
 	// default de-select UA sources
-	filterBox.deselectIf(function(val) { return val === "EEPC" || val.startsWith("UA") }, sourceFilter.header);
-};
+	if (window.location.hash.length) {
+		const spellSource = spelllist[getSelectedListElement().attr("id")].source;
+		filterBox.deselectIf(function(val) { return val === "EEPC" && spellSource !== val || val.startsWith("UA") && spellSource !== val}, sourceFilter.header);
+	}
+
+	initHistory();
+}
 
 function sortspells(a, b, o) {
 	if (o.valueName === "name") {
@@ -266,7 +277,7 @@ function sortspells(a, b, o) {
 
 function loadhash (id) {
 	$("#stats").html(tabledefault);
-	const curspell = spelldata.compendium.spell[id];
+	const curspell = spelllist[id];
 
 	$("th#name").html(`<span title="${parse_sourceJsonToFull(curspell.source)}" class='source source${curspell.source}'>${curspell.source}</span> ${curspell.name}`);
 
