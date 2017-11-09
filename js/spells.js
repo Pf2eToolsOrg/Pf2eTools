@@ -133,7 +133,7 @@ function onJsonLoad(data) {
 		const spellFilterText = parsespelllevel(curspell.level) === CANTRIP ? parsespelllevel(curspell.level) : parsespelllevel(curspell.level) + " level";
 
 		// populate table
-		const toadd = `<li class='row' ${FLTR_LEVEL}='${spellFilterText}' ${FLTR_SCHOOL}='${curspell.school}' ${FLTR_SOURCE}='${curspell.source}' ${FLTR_RANGE}='${curspell.range}' ${FLTR_CLASS}='${classFilterList}' ${FLTR_META}='${metaTagsString}' ${FLTR_ACTION}='${action}'><a id='${i}' href='#${encodeURIComponent(name).toLowerCase().replace("'","%27")}' title="${name}"><span class='name col-xs-3 col-xs-3-5'>${name}</span> <span class='source col-xs-1' title="${parse_sourceJsonToFull(curspell.source)}">${parse_sourceJsonToAbv(curspell.source)}</span> <span class='level col-xs-1 col-xs-1-7'>${leveltext}</span> <span class='time col-xs-1 col-xs-1-7'>${trimcastingtime(curspell.time)}</span> <span class='school col-xs-1 col-xs-1-7'>${parseschool(curspell.school)}</span> <span class='classes' style='display: none'>${curspell.classes}</span> <span class='range col-xs-2 col-xs-2-4'>${curspell.range}</span></a></li>`;
+		const toadd = `<li class='row' ${FLTR_LEVEL}='${spellFilterText}' ${FLTR_SCHOOL}='${curspell.school}' ${FLTR_SOURCE}='${curspell.source}' ${FLTR_RANGE}='${curspell.range}' ${FLTR_CLASS}='${classFilterList}' ${FLTR_META}='${metaTagsString}' ${FLTR_ACTION}='${action}'><a id='${i}' href='#${encodeForHash(name)}_${encodeForHash(curspell.source)}' title="${name}"><span class='name col-xs-3 col-xs-3-5'>${name}</span> <span class='source col-xs-1 source${curspell.source}' title="${parse_sourceJsonToFull(curspell.source)}">${parse_sourceJsonToAbv(curspell.source)}</span> <span class='level col-xs-1 col-xs-1-7'>${leveltext}</span> <span class='time col-xs-1 col-xs-1-7'>${trimcastingtime(curspell.time)}</span> <span class='school col-xs-1 col-xs-1-7'>${parseschool(curspell.school)}</span> <span class='classes' style='display: none'>${curspell.classes}</span> <span class='range col-xs-2 col-xs-2-4'>${curspell.range}</span></a></li>`;
 		$("ul.spells").append(toadd);
 
 
@@ -234,6 +234,8 @@ function onJsonLoad(data) {
 	if (window.location.hash.length) {
 		const spellSource = spelllist[getSelectedListElement().attr("id")].source;
 		filterBox.deselectIf(function(val) { return val === "EEPC" && spellSource !== val || val.startsWith("UA") && spellSource !== val}, sourceFilter.header);
+	} else {
+		filterBox.deselectIf(function(val) { return val === "EEPC" || val.startsWith("UA") }, sourceFilter.header);
 	}
 
 	initHistory();
