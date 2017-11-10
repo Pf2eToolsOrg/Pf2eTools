@@ -16,6 +16,17 @@
  */
 class EntryRenderer {
 
+	/**
+	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
+	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
+	 * the result.
+	 *
+	 * @param entry An "entry" usually defined in JSON. There ought to be a schema for it somewhere (TODO)
+	 * @param textStack A reference to an array, which will hold all our strings as we recurse
+	 * @param depth The current recursion depth. Optional; default 0, or -1 for type "section" entries
+	 * @param prefix The (optional) prefix to be added to the textStack before whatever is added by the current call
+	 * @param suffix The (optional) suffix to be added to the textStack after whatever is added by the current call
+	 */
 	recursiveEntryRender(entry, textStack, depth, prefix, suffix) {
 		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
 		prefix = prefix === undefined || prefix === null ? "" : prefix;
