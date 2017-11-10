@@ -497,6 +497,7 @@ function addCommas(intNum) {
 const XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000];
 
 function parse_crToXp (cr) {
+	if (cr === "Unknown") return "Unknown";
 	if (cr === "0") return "0 or 10";
 	if (cr === "1/8") return "25";
 	if (cr === "1/4") return "50";
