@@ -1,7 +1,16 @@
-window.onload = function load() {
-	tabledefault = $("#stats").html();
+const JSON_URL = "data/items.json";
+const TYPE_DOSH ="$";
+let tabledefault = "";
+let itemlist;
 
-	const itemlist = itemdata.compendium.item;
+window.onload = function load() {
+	loadJSON(JSON_URL, onJsonLoad);
+};
+
+function onJsonLoad(data) {
+	itemlist = data.item;
+
+	tabledefault = $("#stats").html();
 
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 	const filterList = [];
@@ -27,8 +36,6 @@ window.onload = function load() {
 	for (let i = 0; i < itemlist.length; i++) {
 
 		const curitem = itemlist[i];
-		if (curitem.type === "$") continue;
-
 		const name = curitem.name;
 		const rarity = curitem.rarity;
 		const source = curitem.source;
@@ -76,7 +83,10 @@ window.onload = function load() {
 	const magiclist = search(options);
 
 	// add filter reset to reset button
-	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {filterBox.reset();}, false);
+	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
+		filterBox.reset();
+		deselectDosh(true);
+	}, false);
 
 	filterBox.render();
 	initHistory();
@@ -117,6 +127,29 @@ window.onload = function load() {
 		magiclist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortitems });
 		mundanelist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortitems });
 	});
+
+	// default de-select Dosh types
+	deselectDosh(true);
+
+	function deselectDosh(hardDeselect) {
+		hardDeselect = hardDeselect === undefined || hardDeselect === null ? false : hardDeselect;
+		if (window.location.hash.length) {
+			let itemType = itemlist[getSelectedListElement().attr("id")].type;
+			if (hardDeselect && itemType === TYPE_DOSH) {
+				deselNoHash();
+			} else {
+				itemType = itemlist[getSelectedListElement().attr("id")].type;
+				filterBox.deselectIf(function (val) {
+					return val === TYPE_DOSH && itemType !== val
+				}, sourceFilter.header);
+			}
+		} else {
+			deselNoHash();
+		}
+		function deselNoHash() {
+			filterBox.deselectIf(function(val) { return val === TYPE_DOSH }, typeFilter.header);
+		}
+	}
 
 	$("#itemcontainer h3").not(":has(input)").click(function() {
 		if ($(this).next("ul.list").css("max-height") === "500px") {
@@ -182,7 +215,7 @@ function loadhash (id) {
 	const ammoFirearmText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. The ammunition of a firearm is destroyed upon use.")+ammoGenericText;
 	const ammoNormalText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.")+ammoGenericText;
 	$("#currentitem").html(tabledefault);
-	const curitem = itemdata.compendium.item[id];
+	const curitem = itemlist[id];
 	const attunetext = curitem.reqAttune
 	const name = curitem.name;
 	const rarity = curitem.rarity;
