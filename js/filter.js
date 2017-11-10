@@ -245,9 +245,18 @@ class FilterBox {
 	}
 
 	/**
-	 * Get a map of {Filter.header: {map of Filter.items (with Filter.valueFunction applied): <true/false> matching the state of the checkbox}}
+	 * Get a map of {Filter.header: {map of Filter.items (with Filter.valueFunction applied): <true/false> matching
+	 * the state of the checkbox}}
+	 * Note that there is a special entry in the second map ({Filter.items: booleans}) with the
+	 * key `FilterBox.VAL_SELECT_ALL` as a convenience flag for "all items in this category selected"
 	 *
-	 * @returns {{}} wot I explained in the pseudocode above
+	 * @returns the map described above e.g.
+	 *
+	 * {
+	 *  "Source": { "select-all": false, "PHB": true, "DMG": false},
+	 *  "School": { "select-all": true, "A": true, "EV": true }
+     * }
+	 *
 	 */
 	getValues() {
 		const outObj = {};
