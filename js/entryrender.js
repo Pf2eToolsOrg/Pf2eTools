@@ -20,7 +20,7 @@ class EntryRenderer {
 	 * @param entry An "entry" usually defined in JSON. There ought to be a schema for it somewhere (TODO)
 	 *
 	 * @param textStack A reference to an array, which will hold all our strings as we recurse
-	 * @param depth The current recursion depth. Optional, default 0, or -1 for type "section" entries
+	 * @param depth The current recursion depth. Optional; default 0, or -1 for type "section" entries
 	 * @param prefix The (optional) prefix to be added to the textStack before whatever is added by the current call
 	 * @param suffix The (optional) suffix to be added to the textStack after whatever is added by the current call
 	 */
