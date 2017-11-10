@@ -188,7 +188,10 @@ function onJsonLoad(data) {
 	});
 
 	// add filter reset to reset button
-	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {filterBox.reset();}, false);
+	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
+		filterBox.reset();
+		deselectUaEepc(true);
+	}, false);
 
 	filterBox.render();
 
@@ -236,15 +239,30 @@ function onJsonLoad(data) {
 		list.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortspells });
 	});
 
-	// default de-select UA sources
-	if (window.location.hash.length) {
-		const spellSource = spelllist[getSelectedListElement().attr("id")].source;
-		filterBox.deselectIf(function(val) { return val === "EEPC" && spellSource !== val || val.startsWith("UA") && spellSource !== val}, sourceFilter.header);
-	} else {
-		filterBox.deselectIf(function(val) { return val === "EEPC" || val.startsWith("UA") }, sourceFilter.header);
-	}
+	// default de-select UA and EEPC sources
+	deselectUaEepc();
 
 	initHistory();
+
+	function deselectUaEepc(hardDeselect) {
+		hardDeselect = hardDeselect === undefined || hardDeselect === null ? false : hardDeselect;
+		if (window.location.hash.length) {
+			let spellSource = spelllist[getSelectedListElement().attr("id")].source;
+			if (hardDeselect && (spellSource === SRC_EEPC || spellSource.startsWith(SRC_UA_PREFIX))) {
+				deselNoHash();
+			} else {
+				spellSource = spelllist[getSelectedListElement().attr("id")].source;
+				filterBox.deselectIf(function (val) {
+					return val === SRC_EEPC && spellSource !== val || val.startsWith(SRC_UA_PREFIX) && spellSource !== val
+				}, sourceFilter.header);
+			}
+		} else {
+			deselNoHash();
+		}
+		function deselNoHash() {
+			filterBox.deselectIf(function(val) { return val === SRC_EEPC || val.startsWith(SRC_UA_PREFIX) }, sourceFilter.header);
+		}
+	}
 }
 
 function sortspells(a, b, o) {
@@ -258,8 +276,8 @@ function sortspells(a, b, o) {
 	}
 
 	if (o.valueName === "level") {
-		let alevel = a._values.level.replace(" ", "").replace("cantrip", "0")[0];
-		let blevel = b._values.level.replace(" ", "").replace("cantrip", "0")[0];
+		let alevel = a._values.level.toLowerCase().replace(" ", "").replace("cantrip", "0")[0];
+		let blevel = b._values.level.toLowerCase().replace(" ", "").replace("cantrip", "0")[0];
 		alevel = (alevel.length < 2 ? "0" + alevel : alevel) + (a._values.level.includes("ritual") ? " 1" : "") + (a._values.level.includes("tech") ? " 2" : "");
 		blevel = (blevel.length < 2 ? "0" + blevel : blevel) + (b._values.level.includes("ritual") ? " 1" : "") + (b._values.level.includes("tech") ? " 2" : "");
 		if (blevel === alevel) return compareNames(a, b);
