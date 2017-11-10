@@ -245,7 +245,7 @@ class FilterBox {
 	}
 
 	/**
-	 * Get a map of Filter.header -> Filter.valueFunction(Filter.items[x]) -> <true/false> matching the state of the checkbox
+	 * Get a map of {Filter.header: {map of Filter.items (with Filter.valueFunction applied): <true/false> matching the state of the checkbox}}
 	 *
 	 * @returns {{}} wot I explained in the pseudocode above
 	 */
