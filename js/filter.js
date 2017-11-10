@@ -10,7 +10,8 @@
  */
 class FilterBox {
 	/**
-	 * Init this bizzatch.
+	 * A FilterBox which sits in the search bar. See the Spells or Psionics page for a live example. Allows selection
+	 * of multiple sources/spell schools/item types/etc.
 	 *
 	 * @param inputGroup the search bar DOM element to add the button to
 	 * @param filterList a list of `Filter` objects to build the menus from
