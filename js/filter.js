@@ -1,11 +1,12 @@
 /**
- *
  * The API is as follows:
  * - render()
  * - getValues()
  * - addEventListener(type, listener, useCapture)
  * - reset()
- * - deselectIf()
+ * - deselectIf(func, Filter.header)
+ *
+ * See the docs for each function for full explanations.
  */
 class FilterBox {
 	/**
