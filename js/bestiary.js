@@ -21,7 +21,7 @@ function populate(tobData, mainData) {
 		const source = monsters[i].source;
 		const fullsource = parse_sourceJsonToFull(source);
 		const type = monsters[i].type;
-		const cr = monsters[i].cr;
+		const cr = monsters[i].cr === undefined ? "Unknown" : monsters[i].cr;
 
 		const abvSource = parse_sourceJsonToAbv(source);
 		const is3pp = source.includes("3pp");
@@ -102,6 +102,8 @@ function sortmonsters(a, b, o) {
 	}
 
 	if (o.valueName === "cr") {
+		if (a._values.cr === undefined)  return -1;
+		if (b._values.cr === undefined)  return 1;
 		let acr = a._values.cr.replace("CR ", "").replace(" ", "")
 		let bcr = b._values.cr.replace("CR ", "").replace(" ", "")
 		if (acr === "1/2") acr = "-1";
@@ -234,7 +236,7 @@ function loadhash (id) {
 		$("td span#languages").html("\u2014");
 	}
 
-	var cr = mon.cr;
+	var cr = mon.cr === undefined ? "Unknown": mon.cr;
 	$("td span#cr").html(cr);
 	$("td span#xp").html(parse_crToXp(cr));
 
