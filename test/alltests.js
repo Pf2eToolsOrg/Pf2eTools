@@ -14,6 +14,7 @@ function validateSchema(){
 
 	// Push all validation results here
 	results.push(validateClassesWith(validator));
+	// results.push(validateVariantFeaturesWith(validator)); // TODO validate this file
 
 	results.forEach( (result) => {
 		if(!result.valid){
@@ -25,7 +26,7 @@ function validateSchema(){
 	// Reporting
 	console.log(errors);
 	if(errors.length > 0){
-		console.error(errors);
+		console.error(JSON.stringify(errors, null, 2));
 		console.warn(`Tests failed: ${errors.length}`);
 		process.exit(TESTS_FAILED);
 	}
@@ -53,5 +54,15 @@ function attachHelperSchemaTo(validator){
 function validateClassesWith(validator){
 	const classesSchema = require("./schema/classes.json");
 	const classes = require("../data/classes.json")
-	return validator.validate(classes, classesSchema);
+	return validator.validate(classes, classesSchema, {nestedErrors: true});
+}
+
+/**
+ * Validates variantrules.json using its corresponding schema
+ * @return {jsonschema.Result} The result of the validation.
+ */
+function validateVariantFeaturesWith(validator){
+	const variantRulesSchema = require("./schema/variantrules.json");
+	const variantRules = require("../data/variantrules.json")
+	return validator.validate(variantRules, variantRulesSchema, {nestedErrors: true});
 }

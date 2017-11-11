@@ -36,7 +36,25 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								
+
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryInlineEntries": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "inline"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
 							}
 						}
 					},
@@ -216,11 +234,70 @@
 					"additionalProperties": false
 				}
 			]
+		},
+		"entryLink": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "link"},
+						"text": {
+							"type": "string"
+						},
+						"href": {
+							"oneOf": [
+								{
+									"properties": {
+										"type": {"const": "internal"},
+										"path": {
+											"type": "string"
+										},
+										"hash": {
+											"type": "string"
+										},
+										"subhashes": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"key": {
+														"type": "string"
+													},
+													"value": {
+														"type": "string"
+													}
+												},
+												"required": ["key", "value"],
+												"additionalProperties": false
+											}
+										}
+									},
+									"required": ["path"],
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"type": {"const": "external"},
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": ["url"],
+									"additionalProperties": false
+								}
+							]
+						}
+					},
+					"required": ["text", "href"],
+					"additionalProperties": false
+				}
+			]
 		}
 	},
 
 	"anyOf": [
 		{"$ref": "#/definitions/entryEntries"},
+		{"$ref": "#/definitions/entryInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
 		{"$ref": "#/definitions/entryTable"},
 		{"$ref": "#/definitions/entryList"},
@@ -229,6 +306,7 @@
 		{"$ref": "#/definitions/entryDice"},
 		{"$ref": "#/definitions/entryAbilityDc"},
 		{"$ref": "#/definitions/entryAbilityAttackMod"},
+		{"$ref": "#/definitions/entryLink"},
 		{"type": "string"},
 		{"type": "integer"}
 	]
