@@ -171,7 +171,6 @@ function utils_makeTable(tableObject) {
 
 function utils_makeAttDc(attDcObj) {
 	return "<p class='spellabilitysubtext'><span>" + attDcObj.name + " save DC</span> = 8 + your proficiency bonus + your " + utils_makeAttChoose(attDcObj.attributes) + "</p>"
-
 }
 function utils_makeAttAttackMod(attAtkObj) {
 	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + " attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
@@ -566,6 +565,7 @@ const SRC_UATOBM = SRC_UA_PREFIX + "ThatOldBlackMagic";
 const SRC_UATRR = SRC_UA_PREFIX + "TheRangerRevised";
 const SRC_UAWA = SRC_UA_PREFIX + "WaterborneAdventures";
 const SRC_UAVR = SRC_UA_PREFIX + "VariantRules";
+const SRC_UALDR = SRC_UA_PREFIX + "LightDarkUnderdark";
 
 const SRC_BOLS_3PP = "BoLS 3pp";
 const SRC_ToB_3PP = "ToB 3pp";
@@ -617,6 +617,7 @@ SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
 SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
 SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
 SOURCE_JSON_TO_FULL[SRC_UAVR] = UA_PREFIX + "Variant Rules";
+SOURCE_JSON_TO_FULL[SRC_UALDR] = UA_PREFIX + "Light, Dark, Underdark!";
 SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
 SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts (3pp)";
 
@@ -663,6 +664,7 @@ SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
 SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
 SOURCE_JSON_TO_ABV[SRC_UAVR] = "UAVR";
+SOURCE_JSON_TO_ABV[SRC_UALDR] = "UALDU";
 SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
@@ -720,6 +722,30 @@ function parse_dmgTypeToFull (dmgType) {
 	return _parse_aToB(DMGTYPE_JSON_TO_FULL, dmgType);
 }
 
+const NUMBERS_ONES = ['','one','two','three','four','five','six','seven','eight','nine'];
+const NUMBERS_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+const NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+function parse_numberToString(num) {
+	if (num === 0) return "zero";
+	else return parse_hundreds(num);
+
+	function parse_hundreds(num){
+		if (num > 99){
+			return NUMBERS_ONES[Math.floor(num/100)]+" hundred "+parse_tens(num%100);
+		}
+		else{
+			return parse_tens(num);
+		}
+	}
+	function parse_tens(num){
+		if (num<10) return NUMBERS_ONES[num];
+		else if (num>=10 && num<20) return NUMBERS_TEENS[num-10];
+		else{
+			return NUMBERS_TENS[Math.floor(num/10)]+" "+NUMBERS_ONES[num%10];
+		}
+	}
+}
+
 const PROPERTY_JSON_TO_ABV = {
 	"2H": "two-handed",
 	"A": "ammunition",
@@ -746,6 +772,7 @@ function utils_nameToDataLink(name) {
 }
 
 // CONVENIENCE/ELEMENTS ================================================================================================
+// TODO refactor/remove (switch to jQuery versions)
 function toggleCheckBox(cb) {
 	if (cb.checked === true) cb.checked = false;
 	else cb.checked = true;
@@ -768,7 +795,7 @@ function hide(element) {
 	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
 
-// search
+// SEARCH AND FILTER ===================================================================================================
 function search(options) {
 	const list = new List("listcontainer", options);
 	list.sort("name")
@@ -835,6 +862,12 @@ function compareNames(a, b) {
 	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
 	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
 }
+
+// ARRAYS ==============================================================================================================
+Array.prototype.joinConjunct = String.prototype.joinConjunct ||
+function (joinWith, conjunctWith) {
+	return this.length === 1 ? String(this[0]) : this.length === 2 ? this.join(conjunctWith) : this.slice(0, -1).join(joinWith) + conjunctWith + this.slice(-1);
+};
 
 // JSON LOADING ========================================================================================================
 function loadJSON(url, onLoadFunction, ...otherData) {

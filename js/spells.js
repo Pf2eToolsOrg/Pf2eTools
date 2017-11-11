@@ -76,7 +76,7 @@ window.onload = function load() {
 
 let spelllist;
 function onJsonLoad(data) {
-	tabledefault = $("#stats").html();
+	tableDefault = $("#stats").html();
 
 	spelllist = data.spell;
 
@@ -304,7 +304,7 @@ function sortspells(a, b, o) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
+	$("#stats").html(tableDefault);
 	const curspell = spelllist[id];
 
 	$("th#name").html(`<span title="${parse_sourceJsonToFull(curspell.source)}" class='source source${curspell.source}'>${curspell.source}</span> ${curspell.name}`);

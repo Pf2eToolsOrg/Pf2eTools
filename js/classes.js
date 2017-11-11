@@ -1,296 +1,282 @@
-const HASH_SUBCLASS = "subclass:";
-const HASH_FEATURE = "feature:";
-const HASH_HIDE_FEATURES = "hidefeatures:";
+const HASH_SUBCLASS = "sub:";
+const HASH_FEATURE = "f:";
+const HASH_HIDE_FEATURES = "hideclassfs:";
+const HASH_ALL_SOURCES = "allsrc:";
 const HASH_LIST_SEP = "_";
+const HASH_SUB_LIST_SEP = "~";
 
-// TODO this is going to be added to the JSON in the upcoming class JSON overhaul
-const SUBCLASS_LEVEL_TITLES = ["Artificer Specialist", "Masterwork Feature", "Primal Path", "Path Feature", "Bard College", "Bard College feature", "Divine Domain", "Divine Domain feature", "Druid Circle", "Druid Circle feature", "Martial Archetype", "Martial Archetype feature", "Monastic Tradition", "Monastic Tradition feature", "Mystic Order", "Mystic Order feature", "Sacred Oath", "Sacred Oath feature", "Ranger Archetype", "Ranger Archetype feature", "Ranger Conclave", "Ranger Conclave feature", "Roguish Archetype", "Roguish Archetype feature", "Sorcerous Origin", "Sorcerous Origin feature", "Otherworldly Patron", "Otherworldly Patron feature", "Arcane Tradition", "Arcane Tradition feature"];
+const CLSS_FEATURE_LINK = "feature-link";
+const CLSS_ACTIVE = "active";
+const CLSS_SUBCLASS_PILL = "sc-pill";
+const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
+const CLSS_OTHER_SOURCES_ACTIVE = "os-active";
+const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
+const CLSS_CLASS_FEATURE = "class-feature";
+const CLSS_SUBCLASS_FEATURE = "subclass-feature";
+const CLSS_GAIN_SUBCLASS_FEATURE = "gain-subclass-feature";
+const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 
-var tabledefault="";
-var classtabledefault ="";
+const ID_CLASS_FEATURES_TOGGLE = "cf-toggle";
+const ID_OTHER_SOURCES_TOGGLE = "os-toggle";
 
-let classlist;
+const STR_PROF_NONE = "none";
+
+const ATB_DATA_SC = "data-subclass";
+const ATB_DATA_SRC = "data-source";
+
+let tableDefault;
+let statsProfDefault;
+let classTableDefault;
+
+let classes;
+
+const jsonURL = "data/classes.json";
+
+const renderer = new EntryRenderer();
 
 window.onload = function load() {
-	const jsonURL = "data/classes.json";
+	loadJSON(jsonURL, onJsonLoad);
+};
 
-	const request = new XMLHttpRequest();
-	request.open('GET', jsonURL, true);
-	request.overrideMimeType("application/json");
-	request.onload = function() {
-		const data = JSON.parse(this.response);
+function getClassHash(aClass) {
+	return `#${encodeForHash(aClass.name)}${HASH_LIST_SEP}${encodeForHash(aClass.source)}`;
+}
 
-		classlist = data.class;
+function getEncodedSubclass(name, source) {
+	return `${encodeForHash(name)}${HASH_SUB_LIST_SEP}${encodeForHash(source)}`;
+}
 
-		tabledefault = $("#stats").html();
-		statsprofdefault = $("#statsprof").html();
-		classtabledefault = $("#classtable").html();
+function isNonstandardSource(source) {
+	return source.startsWith(SRC_UA_PREFIX) || source === SRC_PSA || source === SRC_PSK;
+}
 
-		for (let i = 0; i < classlist.length; i++) {
-			var curclass = classlist[i];
-			$("ul.classes").append("<li><a id='"+i+"' href='#"+encodeURI(curclass.name).toLowerCase()+"' title='"+curclass.name+"'><span class='name col-xs-9'>"+curclass.name+"</span><span class='source col-xs-3' title='"+parse_sourceJsonToFull(curclass.source)+"'>"+parse_sourceJsonToAbv(curclass.source)+"</span></a></li>");
-		}
+function onJsonLoad(data) {
+	classes = data.class;
 
-		const list = search({
-			valueNames: ['name', 'source'],
-			listClass: "classes"
-		});
+	tableDefault = $("#stats").html();
+	statsProfDefault = $("#statsprof").html();
+	classTableDefault = $("#classtable").html();
 
-		initHistory()
-	};
-	request.send();
+	for (let i = 0; i < classes.length; i++) {
+		const curClass = classes[i];
+		$("ul.classes").append(`<li><a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'><span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${parse_sourceJsonToFull(curClass.source)}'>${parse_sourceJsonToAbv(curClass.source)}</span></a></li>`);
+	}
+
+	const list = search({
+		valueNames: ['name', 'source'],
+		listClass: "classes"
+	});
+
+	initHistory()
 }
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
-	$("#statsprof").html(statsprofdefault);
-	$("#classtable").html(classtabledefault);
-	var curclass = classlist[id];
+	$("#stats").html(tableDefault);
+	$("#statsprof").html(statsProfDefault);
+	$("#classtable").html(classTableDefault);
+	const curClass = classes[id];
 
-	$("th#name").html(curclass.name);
+	// name
+	$("th#nameTable").html(curClass.name);
+	$("th#nameSummary").html(curClass.name);
 
-	$("td#hp div#hitdice span").html("1d"+curclass.hd);
-	$("td#hp div#hp1stlevel span").html(curclass.hd+" + your Constitution modifier");
-	$("td#hp div#hphigherlevels span").html("1d"+curclass.hd+" (or "+(curclass.hd/2+1)+") + your Constitution modifier per "+curclass.name+" level after 1st");
+	// SUMMARY SIDEBAR =================================================================================================
+	// hit dice and HP
+	$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(curClass.hd));
+	$("td#hp div#hp1stlevel span").html(curClass.hd.faces+" + your Constitution modifier");
+	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(curClass.hd)} (or ${(curClass.hd.faces/2+1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
 
-	$("td#prof div#saves span").html(curclass.proficiency);
+	// save proficiency
+	$("td#prof div#saves span").html(curClass.proficiency.map(p => parse_attAbvToFull(p)).join(", "));
 
-	$("tr:has(.slotlabel)").hide();
-	$("#classtable tr").not(":has(th)").append("<td class='featurebuffer'></td>");
+	// starting proficiencies
+	const sProfs = curClass.startingProficiencies;
+	const profSel = $("td#prof");
+	profSel.find("div#armor span").html(sProfs.armor === undefined ? STR_PROF_NONE : sProfs.armor.map(a => a === "light" || a === "medium" || a === "heavy" ? a+" armor": a).join(", "));
+	profSel.find("div#weapons span").html(sProfs.weapons === undefined ? STR_PROF_NONE : sProfs.weapons.map(w => w === "simple" || w === "martial" ? w+" weapons" : w).join(", "));
+	profSel.find("div#tools span").html(sProfs.tools === undefined ? STR_PROF_NONE : sProfs.tools.join(", "));
+	profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : getSkillProfString(sProfs.skills));
+	function getSkillProfString(skills) {
+		const numString = parse_numberToString(skills.choose);
+		return skills.from.length === 18 ? `Choose any ${numString}.` :`Choose ${numString} from ${skills.from.joinConjunct(", ", ", and ")}.`
+	}
 
-	var subclasses = [];
-	for (let i = curclass.autolevel.length-1; i >= 0; i--) {
-		var curlevel = curclass.autolevel[i];
+	// starting equipment
+	const sEquip = curClass.startingEquipment;
+	const fromBackground = sEquip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "";
+	const defList = sEquip.default.length === 0 ? "" : `<ul><li>${sEquip.default.join("</li><li>")}</ul>`;
+	const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${sEquip.goldAlternative} gp to buy your own equipment.</p>`;
+	$("#equipment").find("div").html(`${fromBackground}${defList}${goldAlt}`);
 
-		// spell slots and table data
-		if (!curlevel.feature) {
-			if (curlevel.slots) {
-				$("tr:has(.slotlabel)").show();
-				if (curlevel.slots.__text) curlevel.slots = curlevel.slots.__text;
-				var curslots = curlevel.slots.split(",");
-				if (curslots[0] !== "0" && $("th.slotbuffer").attr("colspan") < 4) {
-					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-				$("th.slotlabel").attr("colspan", curslots.length-1);
-				if (curslots.length > 1) $(".featurebuffer").hide();
 
-				for (var a = 0; a < curslots.length; a++) {
-					if (curslots[a] === "0") continue;
-					$(".spellslots"+a).show();
-					$("tr#level"+curlevel._level+" td.spellslots"+a).html(curslots[a]);
-				}
+	// FEATURE TABLE ===================================================================================================
+	const tData = curClass.classTableGroups;
+	const groupHeaders = $("#groupHeaders");
+	const colHeaders = $("#colHeaders");
+	for (let i = 0; i < tData.length; i++) {
+		const tGroup = tData[i];
+
+		const hasTitle = tGroup.title !== undefined;
+		groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}">${hasTitle ? tGroup.title : ""}</th>`);
+
+		for (let j = 0; j < tGroup.colLabels.length; j++) {
+			const lbl = tGroup.colLabels[j];
+			colHeaders.append(`<th class="centred-col">${lbl}</th>`)
+		}
+
+		for (let j = 0; j < 20; j++) {
+			const tr = $(`#level${j+1}`);
+			for (let k = 0; k < tGroup.rows[j].length; k++) {
+				let entry = tGroup.rows[j][k];
+				if (entry === 0) entry = "\u2014";
+				const stack = [];
+				renderer.recursiveEntryRender(entry, stack, "", "");
+				tr.append(`<td class="centred-col">${stack.join("")}</td>`)
 			}
+		}
+	}
 
-			if (curlevel.spellsknown) {
-				if (!$(".spellsknown").length) {
-					$("th.spellslots0").after("<th class='spellsknown newfeature'>Spells Known</th>");
-					$("td.spellslots0").after("<td class='spellsknown newfeature'></td>");
-					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-				$("tr#level"+curlevel._level+" td.spellsknown").html(curlevel.spellsknown);
-			}
+	// FEATURE DESCRIPTIONS ============================================================================================
+	const renderStack = [];
+	const topBorder = $("#ftTopBorder");
+	let subclassIndex = 0; // the subclass array is not 20 elements
+	for (let i = 0; i < 20; i++) {
+		// track class table feature names
+		const tblLvlFeatures = $(`#level${i+1}`).find(".features");
+		const featureNames = [];
 
+		// add class features to render stack
+		const lvlFeatureList = curClass.classFeatures[i];
+		for (let j = 0; j < lvlFeatureList.length; j++) {
+			const feature = lvlFeatureList[j];
+			const featureId = HASH_FEATURE+encodeForHash(feature.name)+"_"+i;
 
-			if (curlevel.invocationsknown) {
-				if (!$(".invocationsknown").length) {
-					$("th.spellslots5").after("<th class='spellslots newfeature'>Spell Slots</th> <th class='slotlevel newfeature'>Slot Level</th> <th class='invocationsknown newfeature'>Invocations Known</th>");
-					$("td.spellslots5").after("<td class='spellslots newfeature'></td> <td class='slotlevel newfeature'></td> <td class='invocationsknown newfeature'>Invocations Known</td>");
-					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+3);
-				}
-				$(".spellslots5").hide();
-				$("tr#level"+curlevel._level+" td.spellslots").html(curlevel.spellslots);
-				$("tr#level"+curlevel._level+" td.slotlevel").html(curlevel.slotlevel);
-				$("tr#level"+curlevel._level+" td.invocationsknown").html(curlevel.invocationsknown);
-				$("tr:has(.slotlabel)").hide();
-			}
-
-			if (curlevel.rages) {
-				if (!$(".rages").length) {
-					$("th.spellslots0").before("<th class='rages newfeature'>Rages</th> <th class='ragedamage newfeature'>Rage Damage</th>");
-					$("td.spellslots0").before("<td class='rages newfeature'></td> <td class='ragedamage newfeature'></td>");
-					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+2);
-				}
-				$("tr#level"+curlevel._level+" td.rages").html(curlevel.rages);
-				$("tr#level"+curlevel._level+" td.ragedamage").html(curlevel.ragedamage);
-			}
-
-			if (curlevel.martialarts) {
-				if (!$(".kipoints").length) {
-					$("th.pb").after("<th class='martialarts newfeature'>Martial Arts</th> <th class='kipoints newfeature'>Ki Points</th> <th class='unarmoredmovement newfeature'>Unarmored Movement</th>");
-					$("td.pb").after("<td class='martialarts newfeature'></td> <td class='kipoints newfeature'></td> <td class='unarmoredmovement newfeature'></td>");
-					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+3);
-					$("th.slotbuffer").attr("colspan", $("th.slotbuffer").attr("colspan")+3);
-				}
-				$("tr#level"+curlevel._level+" td.martialarts").html(curlevel.martialarts);
-				$("tr#level"+curlevel._level+" td.kipoints").html(curlevel.kipoints);
-				$("tr#level"+curlevel._level+" td.unarmoredmovement").html(curlevel.unarmoredmovement);
-			}
-
-			if (curlevel.sneakattack) {
-				if (!$(".sneakattack").length) {
-					$("th.pb").after("<th class='sneakattack newfeature'>Sneak Attack</th>");
-					$("td.pb").after("<td class='sneakattack newfeature'></td>");
-					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-				$("tr#level"+curlevel._level+" td.sneakattack").html(curlevel.sneakattack);
-			}
-
-			if (curlevel.sorcerypoints) {
-				if (!$(".sorcerypoints").length) {
-					$("th.pb").after("<th class='sorcerypoints newfeature'>Sorcery Points</th>");
-					$("td.pb").after("<td class='sorcerypoints newfeature'></td>");
-					$("#classtable td.border").attr("colspan", parseInt($("#classtable td.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-
-				$("tr#level"+curlevel._level+" td.sorcerypoints").html(curlevel.sorcerypoints);
-			}
-
-			if (curlevel.psilimit) {
-				if (!$(".psilimit").length) {
-					$("th.spellslots0").after("<th class='psilimit newfeature'>Psi Limit</th>");
-					$("td.spellslots0").after("<td class='psilimit newfeature'></td>");
-					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-				$("tr#level"+curlevel._level+" td.psilimit").html(curlevel.psilimit);
-			}
-
-			if (curlevel.psipoints) {
-				if (!$(".psipoints").length) {
-					$("th.spellslots0").after("<th class='psipoints newfeature'>Psi Points</th>");
-					$("td.spellslots0").after("<td class='psipoints newfeature'></td>");
-					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-				$("tr#level"+curlevel._level+" td.psipoints").html(curlevel.psipoints);
-			}
-
-			if (curlevel.disciplinesknown) {
-				if (!$(".disciplinesknown").length) {
-					$("th.spellslots0").after("<th class='disciplinesknown newfeature'>Disciplines Known</th>");
-					$("td.spellslots0").after("<td class='disciplinesknown newfeature'></td>");
-					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-				$("tr#level"+curlevel._level+" td.disciplinesknown").html(curlevel.disciplinesknown);
-			}
-
-			if (curlevel.talentsknown) {
-				if (!$(".talentsknown").length) {
-					$("th.spellslots0").after("<th class='talentsknown newfeature'>Talents Known</th>");
-					$("td.spellslots0").after("<td class='talentsknown newfeature'></td>");
-					$("#classtable th.border").attr("colspan", parseInt($("#classtable th.border").attr("colspan"))+1);
-					$("th.slotbuffer").attr("colspan", parseInt($("th.slotbuffer").attr("colspan"))+1);
-				}
-				$("tr#level"+curlevel._level+" td.talentsknown").html(curlevel.talentsknown);
-			}
-
-			// other features
-		} else for (let a = curlevel.feature.length-1; a >= 0; a--) {
-			const curfeature = curlevel.feature[a];
-			const link = curfeature.name === undefined ? a : encodeURIComponent(curfeature.name.toLowerCase());
-
-			if (curfeature._optional === "YES") {
-				subclasses.push(curfeature);
-			}
-
-			let styleClass = "";
-			const isInlineHeader = curfeature.suboption === "2";
-			const removeSubclassNamePrefix = curfeature.subclass !== undefined && curfeature.suboption === undefined;
-			const hasSubclassPrefix = curfeature.subclass !== undefined && curfeature.suboption === "1";
-			if (curfeature.subclass === undefined && curfeature.suboption === undefined) styleClass = "feature";
-			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined && curfeature._optional === "YES") styleClass = "optionalsubfeature sub" + curfeature.suboption;
-			else if (curfeature.subclass === undefined && curfeature.suboption !== undefined) styleClass = "subfeature sub" + curfeature.suboption;
-			else if (curfeature.subclass !== undefined && curfeature.suboption === undefined) styleClass = "subclassfeature";
-			else if (curfeature.subclass !== undefined && curfeature.suboption !== undefined) styleClass = "subclasssubfeature sub" + curfeature.suboption;
-
-			if (curfeature.name === "Starting Proficiencies") {
-				$("td#prof div#armor span").html(curfeature.text[1].split(":")[1]);
-				$("td#prof div#weapons span").html(curfeature.text[2].split(":")[1]);
-				$("td#prof div#tools span").html(curfeature.text[3].split(":")[1]);
-				$("td#prof div#skills span").html(curfeature.text[4].split(":")[1]);
-				continue;
-			}
-
-			if (curfeature.name === "Starting Equipment") {
-				$("#equipment div").html("<p>"+curfeature.text.join("</p><p>"));
-				continue;
-			}
-
-			// write out list to class table
-			const multifeature = curlevel.feature.length !== 1 && a !== 0 ? ", " : "";
-			const featureSpan = document.createElement(ELE_A);
-			featureSpan.setAttribute(ATB_HREF, getFeatureHash(link));
-			featureSpan.setAttribute(ATB_CLASS, "featurelink");
-			featureSpan.addEventListener("click", function() {
-				document.getElementById("feature"+link).scrollIntoView();
+			const featureLink = $(`<a href="${getClassHash(curClass)}${HASH_PART_SEP}${HASH_FEATURE}${encodeForHash(feature.name)}" class="${CLSS_FEATURE_LINK}">${feature.name}</a>`);
+			featureLink.click(function() {
+				document.getElementById(featureId).scrollIntoView();
 			});
-			featureSpan.innerHTML = curfeature.name;
-			if (curfeature._optional !== "YES" && curfeature.suboption === undefined) $("tr#level"+curlevel._level+" td.features").prepend(featureSpan).prepend(multifeature);
+			featureNames.push(featureLink);
 
-			// display features in bottom section
-			const gainSubclassFeature = isGainSubclassFeature(curfeature.name);
-			const dataua = (curfeature.subclass !== undefined && curfeature.subclass.indexOf(" (UA)") !== -1) ? "true" : "false";
-			const subclassPrefix = hasSubclassPrefix ? `<span class='subclass-prefix'>${curfeature.subclass.split(": ")[1]}: </span>` : "";
-			const dataSubclass = curfeature.subclass === undefined ? undefined : curfeature.subclass.toLowerCase();
-			if (isInlineHeader) {
-				const namePart = curfeature.name === undefined ? null : `<span id='feature${link}' class='inline-header'>${subclassPrefix + curfeature.name}.</span> `;
-				$("#features").after(`<tr><td colspan='6' class='_class_feature ${styleClass}' data-subclass='${dataSubclass}' data-ua='${dataua}'>${utils_combineText(curfeature.text, "p", namePart)}</td></tr>`);
-			} else {
-				const namePart = curfeature.name === undefined ? "" : `<strong id='feature${link}'>${subclassPrefix + (removeSubclassNamePrefix ? curfeature.name.split(": ")[1] : curfeature.name)}</strong>`;
-				const prerequisitePart = curfeature.prerequisite === undefined ? "" : `<p class='prerequisite'>Prerequisite: ${curfeature.prerequisite}</p>`;
-				$("#features").after(`<tr><td colspan='6' class='_class_feature ${styleClass}' data-subclass='${dataSubclass}' data-ua='${dataua}' data-gain-sc-feature='${gainSubclassFeature}'>${namePart + prerequisitePart + utils_combineText(curfeature.text, "p")}</td></tr>`);
+			const styleClasses = [CLSS_CLASS_FEATURE];
+			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
+
+			renderer.recursiveEntryRender(feature, renderStack, 0, `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, `</td></tr>`);
+
+			// add subclass features to render stack if appropriate
+			if (feature.gainSubclassFeature) {
+				for (let k = 0; k < curClass.subclasses.length; k++) {
+					const subClass = curClass.subclasses[k];
+					for (let l = 0; l < subClass.subclassFeatures[subclassIndex].length; l++) {
+						const subFeature = subClass.subclassFeatures[subclassIndex][l];
+
+						// if this is not the subclass intro, add the subclass to the feature name
+						// this will only be shown if there are multiple subclasses displayed
+						if (subFeature.name === undefined) {
+							for (let m = 0; m < subFeature.entries.length; m++) {
+								const childEntry = subFeature.entries[m];
+								if (childEntry.name !== undefined) {
+									childEntry.name = `<span class="${CLSS_SUBCLASS_PREFIX}">${subClass.name}: </span>${childEntry.name}`;
+								}
+							}
+						}
+
+						const styleClasses = [CLSS_SUBCLASS_FEATURE];
+						const hideSource = isNonstandardSource(subClass.source);
+						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${hideSource ? `style="display: none;"` : ""} ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`);
+					}
+				}
+				subclassIndex++;
 			}
 		}
 
+		// render class table feature names
+		if (featureNames.length === 0) tblLvlFeatures.html("\u2014");
+		else {
+			for (let j = 0; j < featureNames.length; j++) {
+				tblLvlFeatures.append(featureNames[j]);
+				if (j < featureNames.length-1) tblLvlFeatures.append(", ");
+			}
+		}
+	}
+	topBorder.after(renderStack.join(""));
+
+	// CLASS FEATURE/UA/SUBCLASS PILL BUTTONS ==========================================================================
+	const subclassPillWrapper = $("div#subclasses");
+	// remove any from previous class
+	subclassPillWrapper.find("span").remove();
+
+	// show/hide class features pill
+	makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true);
+
+	// show/hide UA/other sources
+	makeGenericTogglePill("All Sources", CLSS_OTHER_SOURCES_ACTIVE, ID_OTHER_SOURCES_TOGGLE, HASH_ALL_SOURCES, false);
+
+	// spacer before the subclass pills
+	subclassPillWrapper.append($(`<span class="divider">`));
+
+	// subclass pills
+	const subClasses = curClass.subclasses.map(sc => ({"name": sc.name, "source": sc.source})).sort(function(a, b){return ascSort(a.name, b.name)});
+	for (let i = 0; i < subClasses.length; i++) {
+		const nonStandardSource = isNonstandardSource(subClasses[i].source);
+		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
+		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}"><span>${subClasses[i].name}</span></span>`);
+		pill.click(function() {
+			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, subClasses[i].source);
+		});
+		if (nonStandardSource) pill.hide();
+		subclassPillWrapper.append(pill);
 	}
 
-	$("td.features, td.slots, td.newfeature").each(function() {
-		if ($(this).html() === "") $(this).html("\u2014")
-	});
+	// helper functions
+	function makeGenericTogglePill(pillText, pillActiveClass, pillId, hashKey, defaultActive) {
+		const classFeatureToggle = $(`<span id="${pillId}"><span>${pillText}</span></span>`);
+		if (defaultActive) classFeatureToggle.addClass(pillActiveClass);
+		subclassPillWrapper.append(classFeatureToggle);
+		classFeatureToggle.click(function() {
+			let active = $(this).hasClass(pillActiveClass);
+			if (!defaultActive) active = !active;
+			handleToggleFeaturesClicks(active)
+		});
 
-	$("div#subclasses span").remove();
-	for (let i = 0; i < subclasses.length; i++) {
-		if (subclasses[i].issubclass === "YES") $("div#subclasses").prepend(`<span class='active' data-subclass='${(subclasses[i].name.toLowerCase())}'><em style='display: none;'>${subclasses[i].name.split(": ")[0]}: </em><span>${subclasses[i].name.split(": ")[1]}</span></span>`);
+		function handleToggleFeaturesClicks(isPillActive) {
+			const outStack = [];
+			const split = window.location.hash.split(HASH_PART_SEP);
+
+			for (let i = 0; i < split.length; i++) {
+				const hashPart = split[i];
+				if (!hashPart.startsWith(hashKey)) outStack.push(hashPart);
+			}
+			if (isPillActive) {
+				outStack.push(hashKey + "true")
+			} else {
+				outStack.push(hashKey + "false")
+			}
+
+			window.location.hash = outStack.join(HASH_PART_SEP).toLowerCase();
+		}
 	}
 
-	$("#subclasses > span").sort(asc_sort).appendTo("#subclasses");
-	$("#subclasses > span").click(function() {
-		const name = $(this).children("span").text()
-		window.location.hash = handleSubclassClick($(this), name)
-	});
-
-	$("div#subclasses").prepend($(`<span class="divider">`));
-	const toggle = $(`<span class="alt-active" id="class-features-toggle"><span>Class Features</span></span>`);
-	$("div#subclasses").prepend(toggle)
-	toggle.click(function() {
-		window.location.hash = handleToggleFeaturesClicks($(this))
-	});
-
-	const subclassHashK = "subclass:";
-	function handleSubclassClick(subButton, name) {
+	function handleSubclassClick(isPillActive, subclassName, subclassSource) {
 		const outStack = [];
-		const split = window.location.hash.split(",");
+		const split = window.location.hash.split(HASH_PART_SEP);
 
-		const encodedSubClass = encodeURIComponent(name).replace("'", "%27").toLowerCase();
-		const subclassLink = subclassHashK + encodedSubClass;
+		const encodedSubClass = getEncodedSubclass(subclassName, subclassSource);
+		const subclassLink = HASH_SUBCLASS + encodedSubClass;
 
-		if (subButton.hasClass("active") && window.location.hash.includes(HASH_SUBCLASS)) {
+		if (isPillActive && window.location.hash.includes(HASH_SUBCLASS)) {
 			for (let i = 0; i < split.length; i++) {
 				const hashPart = split[i];
 				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
 				else {
 					const subClassStack = [];
-					const subClasses = hashPart.substr(subclassHashK.length).split(HASH_LIST_SEP);
+					const subClasses = hashPart.substr(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 					for (let j = 0; j < subClasses.length; j++) {
 						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
-					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join(HASH_LIST_SEP));
+					if (subClassStack.length > 0) outStack.push(HASH_SUBCLASS + subClassStack.join(HASH_LIST_SEP));
 				}
 			}
 		} else {
@@ -301,13 +287,13 @@ function loadhash (id) {
 				if (!hashPart.startsWith(HASH_SUBCLASS)) outStack.push(hashPart);
 				else {
 					const subClassStack = [];
-					const subClasses = hashPart.substr(subclassHashK.length).split(HASH_LIST_SEP);
+					const subClasses = hashPart.substr(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 					for (let j = 0; j < subClasses.length; j++) {
 						const subClass = subClasses[j];
 						if (subClass !== encodedSubClass) subClassStack.push(subClass);
 					}
 					subClassStack.push(encodedSubClass);
-					if (subClassStack.length > 0) outStack.push(subclassHashK + subClassStack.join(HASH_LIST_SEP));
+					if (subClassStack.length > 0) outStack.push(HASH_SUBCLASS + subClassStack.join(HASH_LIST_SEP));
 
 					hasSubclassHash = true;
 				}
@@ -316,53 +302,7 @@ function loadhash (id) {
 			if (!hasSubclassHash) outStack.push(subclassLink);
 		}
 
-		return outStack.join(",").toLowerCase();
-	}
-
-	function handleToggleFeaturesClicks(subButton) {
-		const outStack = [];
-		const split = window.location.hash.split(",");
-
-		for (let i = 0; i < split.length; i++) {
-			const hashPart = split[i];
-			if (!hashPart.startsWith(HASH_HIDE_FEATURES)) outStack.push(hashPart);
-		}
-		if (subButton.hasClass("alt-active")) {
-			outStack.push(HASH_HIDE_FEATURES + "true")
-		} else {
-			outStack.push(HASH_HIDE_FEATURES + "false")
-		}
-
-		return outStack.join(",").toLowerCase();
-	}
-
-	function getFeatureHash(featureLink) {
-		const hashFeatureLink = HASH_FEATURE + featureLink;
-		const outStack = [];
-		const split = window.location.hash.split(",");
-
-		let hasFeature = false;
-
-		for (let i = 0; i < split.length; i++) {
-			const hashPart = split[i];
-			if (!hashPart.startsWith(HASH_FEATURE)) outStack.push(hashPart);
-			else {
-				outStack.push(hashFeatureLink);
-				hasFeature = true;
-			}
-		}
-
-		if (!hasFeature) outStack.push(hashFeatureLink);
-
-		return outStack.join(",").toLowerCase();
-	}
-
-	function isGainSubclassFeature(featureName) {
-		if (featureName === undefined) return false;
-		for (let i = 0; i < SUBCLASS_LEVEL_TITLES.length; i++) {
-			if (SUBCLASS_LEVEL_TITLES[i].trim().toLowerCase() === featureName.trim().toLowerCase()) return true;
-		}
-		return false;
+		window.location.hash = outStack.join(HASH_PART_SEP).toLowerCase();
 	}
 }
 
@@ -371,6 +311,7 @@ function loadsub(sub) {
 	let subclasses = null;
 	let feature = null;
 	let hideClassFeatures = null;
+	let showAllSources = null;
 
 	for (let i = 0; i < sub.length; i++) {
 		const hashPart = sub[i];
@@ -381,6 +322,35 @@ function loadsub(sub) {
 		}
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart.slice(HASH_FEATURE.length);
 		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = hashPart.slice(HASH_HIDE_FEATURES.length) === "true";
+		if (hashPart.startsWith(HASH_ALL_SOURCES)) showAllSources = hashPart.slice(HASH_ALL_SOURCES.length) === "true";
+	}
+
+	// unselect any pills that would be hidden
+	if (subclasses !== null && showAllSources === false) {
+		const toDeselect = [];
+		$(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}.${CLSS_ACTIVE}`).each(function(){
+			$this = $(this);
+			const thisSc = getEncodedSubclass($this.attr(ATB_DATA_SC), $this.attr(ATB_DATA_SRC));
+			if ($.inArray(subclasses, thisSc)) {
+				toDeselect.push(thisSc)
+			}
+		});
+		const toKeep = subclasses.filter(sc => toDeselect.indexOf(sc) < 0);
+		if (toKeep.length !== subclasses.length) {
+			const newHashStack = [];
+			for (let i = 0; i < sub.length; i++) {
+				const hashPart = sub[i];
+
+				if (!hashPart.startsWith(HASH_SUBCLASS)) newHashStack.push(hashPart);
+				else newHashStack.push(HASH_SUBCLASS + toKeep.join(HASH_LIST_SEP))
+			}
+			const curParts = _getHashParts();
+			if (curParts.length > 1) {
+				const newParts = [curParts[0]].concat(newHashStack);
+				window.location.hash = HASH_START + newParts.join(HASH_PART_SEP);
+			}
+			return;
+		}
 	}
 
 	if (subclasses !== null) {
@@ -388,70 +358,79 @@ function loadsub(sub) {
 
 		const $toShow = [];
 		const $toHide = [];
-		const subClassSpanList = document.getElementById("subclasses").getElementsByTagName("span");
-		outer: for (let i = 0; i < subClassSpanList.length; ++i) {
-			let shown = false;
-			for (let j = 0; j < subclasses.length; j++) {
-				if (subClassSpanList[i].getAttribute('data-subclass') === "none") continue outer; // the class features pill
-				const sc = decodeURIComponent(subclasses[j].toLowerCase());
-				if (subClassSpanList[i].getAttribute('data-subclass') !== undefined && subClassSpanList[i].getAttribute('data-subclass') !== null
-					&& subClassSpanList[i].getAttribute('data-subclass').split(":").slice(1).join(":").trim() === sc.trim()) {
+		const $subClassSpanList = $(`.${CLSS_SUBCLASS_PILL}`);
+		$subClassSpanList.each(
+			function() {
+				$this = $(this);
+				const thisSc = getEncodedSubclass($this.attr(ATB_DATA_SC), $this.attr(ATB_DATA_SRC));
+				let shown = false;
 
-					shown = true;
-					break;
+				for (let j = 0; j < subclasses.length; j++) {
+					const sc = subclasses[j].toLowerCase();
+					if (sc.trim() === thisSc) {
+						shown = true;
+						break;
+					}
+				}
+				if (shown) {
+					$toShow.push($this);
+				} else {
+					$toHide.push($this);
 				}
 			}
-			if (shown) {
-				$toShow.push($(subClassSpanList[i]));
-			} else {
-				$toHide.push($(subClassSpanList[i]));
-			}
-		}
+		);
 
 		if ($toShow.length === 0) {
-			displayAll();
+			displayAllSubclasses();
 		} else {
-			for (let i = 0; i < $toShow.length; i++) {
-				const $el = $toShow[i];
-				if (!$el.hasClass("active")) {
-					$el.addClass("active");
-				}
-				$("._class_feature[data-subclass='"+$el.text().toLowerCase()+"']").show();
-			}
-			for (let i = 0; i < $toHide.length; i++) {
-				const $el = $toHide[i];
-				if ($el.hasClass("active")) {
-					$el.removeClass("active");
-				}
-				$("._class_feature[data-subclass='"+$el.text().toLowerCase()+"']").hide();
-			}
+			$.each($toShow, function(i, v) {
+				v.addClass(CLSS_ACTIVE);
+				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
+			});
+			$.each($toHide, function(i, v) {
+				v.removeClass(CLSS_ACTIVE);
+				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
+			});
 		}
 
 		// show subclass prefixes if we're displaying more than 1 subclass
 		if ($toShow.length !== 1) {
-			$(".subclass-prefix").show();
+			$(`.${CLSS_SUBCLASS_PREFIX}`).show();
 		} else {
-			$(".subclass-prefix").hide();
+			$(`.${CLSS_SUBCLASS_PREFIX}`).hide();
 		}
 	} else {
-		displayAll();
+		displayAllSubclasses();
 	}
 
-	const cfToggle = $("#class-features-toggle");
+	// hide class features as required
+	const cfToggle = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
+	const toToggleCf= $(`.${CLSS_CLASS_FEATURE}`).not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
 	if (hideClassFeatures !== null && hideClassFeatures) {
-		cfToggle.removeClass("alt-active");
-		$(`._class_feature[data-subclass="undefined"][data-gain-sc-feature="false"]`).hide();
+		cfToggle.removeClass(CLSS_CLASS_FEATURES_ACTIVE);
+		toToggleCf.hide();
 	} else {
-		cfToggle.addClass("alt-active");
-		$(`._class_feature[data-subclass="undefined"][data-gain-sc-feature="false"]`).show();
+		cfToggle.addClass(CLSS_CLASS_FEATURES_ACTIVE);
+		toToggleCf.show();
+	}
+
+	// show UA/etc content as required
+	const srcToggle = $(`#${ID_OTHER_SOURCES_TOGGLE}`);
+	const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`);
+	if (showAllSources !== null && showAllSources) {
+		srcToggle.addClass(CLSS_OTHER_SOURCES_ACTIVE);
+		toToggleSrc.show();
+	} else {
+		srcToggle.removeClass(CLSS_OTHER_SOURCES_ACTIVE);
+		toToggleSrc.hide();
 	}
 
 	function addFeatureHashes (rawSubclasses) {
 		rawSubclasses = (rawSubclasses === undefined || rawSubclasses === null) ? null : rawSubclasses;
 		let needsSubClass = rawSubclasses !== null;
-		$(".featurelink").each(
+		$(`.${CLSS_FEATURE_LINK}`).each(
 			function() {
-				const splitHash = this.href.split(",");
+				const splitHash = this.href.split(HASH_START)[1].split(HASH_PART_SEP);
 				const hashStack = [];
 
 				for (let i = 0; i < splitHash.length; i++) {
@@ -468,15 +447,19 @@ function loadsub(sub) {
 
 				if (needsSubClass) hashStack.push(rawSubclasses);
 
-				this.href = hashStack.join(",")
+				this.href = HASH_START+hashStack.join(HASH_PART_SEP)
 			}
 		)
 	}
 
-	function displayAll() {
+	function displayAllSubclasses() {
 		addFeatureHashes();
-		$("#subclasses > span").not("#class-features-toggle").addClass("active");
-		$("._class_feature").show();
-		$(".subclass-prefix").show();
+		$(`.${CLSS_SUBCLASS_PILL}`).addClass(CLSS_ACTIVE);
+		$(`.${CLSS_SUBCLASS_FEATURE}`).show();
+		$(`.${CLSS_SUBCLASS_PREFIX}`).show();
+		// if we're hiding features from some sources, make sure these stay hidden
+		if (showAllSources !== null && showAllSources === false) {
+			$(`.${CLSS_SUBCLASS_FEATURE}.${CLSS_NON_STANDARD_SOURCE}`).hide();
+		}
 	}
 }

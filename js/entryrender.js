@@ -16,6 +16,18 @@
  */
 class EntryRenderer {
 
+	static getEntryDice(entry) {
+		// TODO make droll integration optional
+		const toAdd = String(entry.number) + "d" + entry.faces;
+		if (typeof droll !== "undefined" && entry.rollable === true) {
+			// TODO output this somewhere nice
+			// TODO make this less revolting
+			return `<span class='roller unselectable' onclick="if (this.rolled) { this.innerHTML = this.innerHTML.split('=')[0].trim()+' = '+droll.roll('${toAdd}').total; } else { this.rolled = true; this.innerHTML += ' = '+droll.roll('${toAdd}').total; }">${toAdd}</span>`;
+		} else {
+			return toAdd;
+		}
+	}
+
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
 	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
@@ -29,37 +41,24 @@ class EntryRenderer {
 	 */
 	recursiveEntryRender(entry, textStack, depth, prefix, suffix) {
 		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
-		prefix = prefix === undefined || prefix === null ? "" : prefix;
-		suffix = suffix === undefined || suffix === null ? "" : suffix;
+		prefix = prefix === undefined || prefix === null ? null : prefix;
+		suffix = suffix === undefined || suffix === null ? null : suffix;
+		if (textStack.length === 0 && prefix === null && suffix === null) {
+			prefix = "<p>";
+			suffix = "</p>";
+		}
 
-		if (prefix) textStack.push(prefix);
+		if (prefix !== null) textStack.push(prefix);
 		if (typeof entry === "object") {
 			// the root entry (e.g. "Rage" in barbarian "classFeatures") is assumed to be of type "entries"
 			const type = entry.type === undefined || entry.type === "section" ? "entries" : entry.type;
 			switch (type) {
+				// TODO add an "insert box" type
 				case "entries":
+					handleEntries(this);
+					break;
 				case "options":
-					const inlineTitle = depth >= 2;
-					if (inlineTitle) {
-						textStack.push("<p>");
-						for (let i = 0; i < entry.entries.length; i++) {
-							const nextPrefix = i === 0 ? "<p>" + entry.name !== undefined ? "<span class='statsInlineHead'>" + entry.name + ".</span> " : "" : "<p>";
-							const nextSuffix = "</p>";
-
-							this.recursiveEntryRender(
-								entry.entries[i],
-								textStack,
-								depth + 1,
-								nextPrefix,
-								nextSuffix
-							);
-						}
-					} else {
-						if (entry.name !== undefined) textStack.push("<span class='" + (depth === -1 ? "statsBlockSectionHead" : depth === 0 ? "statsBlockHead" : "statsBlockSubHead") + "'>" + entry.name + "</span>");
-						for (let i = 0; i < entry.entries.length; i++) {
-							this.recursiveEntryRender(entry.entries[i], textStack, depth + 1, "<p>", "</p>");
-						}
-					}
+					handleOptions(this);
 					break;
 				case "list":
 					textStack.push("<ul>");
@@ -83,14 +82,13 @@ class EntryRenderer {
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value + "ft.");
 					break;
 				case "dice":
-					// TODO make this (optionally) clickable to roll the dice?
-					textStack.push(String(entry.number) + "d" + entry.faces);
+					textStack.push(EntryRenderer.getEntryDice(entry));
 					break;
 				case "abilityDc":
-					// something similar to `utils_makeAttDc` but with new naming conventions
+					textStack.push(`<span class='spell-ability'><span>${entry.name} save DC</span> = 8 + your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
 					break;
 				case "abilityAttackMod":
-					// something similar to `utils_makeAttAttackMod` but with new naming conventions
+					textStack.push(`<span class='spell-ability'><span>${entry.name} attack modifier</span> = your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
 					break;
 				case "link":
 					renderLink(entry);
@@ -99,10 +97,10 @@ class EntryRenderer {
 		} else if (typeof entry === "string") {
 			renderString(this);
 		} else {
-			// for ints etc
+			// for ints or any other types which do not require specific rendering
 			textStack.push(entry);
 		}
-		if (suffix) textStack.push(suffix);
+		if (suffix !== null) textStack.push(suffix);
 
 		function renderTable(self) {
 			// TODO add handling for rowLabel property
@@ -110,13 +108,13 @@ class EntryRenderer {
 			textStack.push("<table>");
 
 			if (entry.caption !== undefined) {
-				textStack.push("<caption>" + entry.caption + "</caption>");
+				textStack.push(`<caption>${entry.caption}</caption>`);
 			}
 			textStack.push("<thead>");
 			textStack.push("<tr>");
 
 			for (let i = 0; i < entry.colLabels.length; ++i) {
-				textStack.push("<th" + getTableThClassText(i) + ">" + entry.colLabels[i] + "</th>");
+				textStack.push(`<th ${getTableThClassText(i)}>${entry.colLabels[i]}</th>`);
 			}
 
 			textStack.push("</tr>");
@@ -126,7 +124,7 @@ class EntryRenderer {
 			for (let i = 0; i < entry.rows.length; ++i) {
 				textStack.push("<tr>");
 				for (let j = 0; j < entry.rows[i].length; ++j) {
-					textStack.push("<td" + makeTableTdClassText(j) + ">");
+					textStack.push(`<td ${makeTableTdClassText(j)}>`);
 					self.recursiveEntryRender(entry.rows[i][j], textStack, depth + 1);
 					textStack.push("</td>");
 				}
@@ -137,80 +135,57 @@ class EntryRenderer {
 			textStack.push("</table>");
 
 			function getTableThClassText(i) {
-				return entry.colStyles === undefined || i >= entry.colStyles.length ? "" : " class=\"" + entry.colStyles[i] + "\"";
+				return entry.colStyles === undefined || i >= entry.colStyles.length ? "" :  `class="${entry.colStyles[i]}"`;
 			}
 
 			function makeTableTdClassText(i) {
 				if (entry.rowStyles !== undefined) {
-					return entry.rowStyles === undefined || i >= entry.rowStyles.length ? "" : " class=\"" + entry.rowStyles[i] + "\"";
+					return entry.rowStyles === undefined || i >= entry.rowStyles.length ? "" : `class="${entry.rowStyles[i]}"`;
 				} else {
 					return getTableThClassText(i);
 				}
 			}
 		}
 
-		function renderLink(entry) {
-			/*
-			// TODO schema this somewhere
-			"entryLink": {
-				"allOf" : [
-					{"$ref" : "#/definitions/entry"},
-					{
-						"properties": {
-							"type": {"const": "link"},
-							"text": {
-								"type": "string"
-							},
-							"href": {
-								"oneOf": [
-									{
-										"properties": {
-											"type": {"const": "internal"},
-											"path": {
-												"type": "string"
-											},
-											"hash": {
-												"type": "string"
-											},
-											"subhashes": {
-												"type": "array",
-												"items": {
-													"type": "object",
-													"properties": {
-														"key": {
-															"type": "string"
-														},
-														"value": {
-															"type": "string"
-														}
-													},
-													"required": ["key", "value"],
-													"additionalProperties": false
-												}
-											}
-										},
-										"required": ["type", "path"],
-										"additionalProperties": false
-									},
-									{
-										"properties": {
-											"type": {"const": "external"},
-											"url": {
-												"type": "string"
-											}
-										},
-										"required": ["type", "url"],
-										"additionalProperties": false
-									}
-								]
-							}
-						},
-						"required": ["text", "href"],
-						"additionalProperties": false
-					}
-				]
+
+		function handleEntries(self) {
+			handleEntriesAndOptions(self);
+		}
+
+		function handleOptions(self) {
+			handleEntriesAndOptions(self);
+		}
+
+		function handleEntriesAndOptions(self) {
+			const inlineTitle = depth >= 2;
+			if (inlineTitle) {
+				for (let i = 0; i < entry.entries.length; i++) {
+
+					const nextPrefix = i !== 0 ? "<p>" : entry.name !== undefined ? `<span class='${EntryRenderer.HEAD_2}'>${entry.name}.</span> ` : null;
+					const nextSuffix = i === entry.entries.length-1 ? null : "</p>";
+
+					self.recursiveEntryRender(
+						entry.entries[i],
+						textStack,
+						depth + 1,
+						nextPrefix,
+						nextSuffix
+					);
+				}
+			} else {
+				if (entry.name !== undefined) {
+					const headerClass = depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1;
+					textStack.push(`<span class='${headerClass}'>${entry.name}</span>`);
+				}
+				for (let i = 0; i < entry.entries.length; i++) {
+					const nextPrefix = i === 0 ? null : "<p>";
+					const nextSuffix = i === entry.entries.length-1 ? null : "</p>";
+					self.recursiveEntryRender(entry.entries[i], textStack, depth + 1, nextPrefix, nextSuffix);
+				}
 			}
-			 */
+		}
+
+		function renderLink(entry) {
 			let href;
 			if (entry.href.type === "internal") {
 				href = `${entry.href.path}#`;
@@ -234,6 +209,7 @@ class EntryRenderer {
 			if (tagSplit.length > 1) {
 				for (let i = 0; i < tagSplit.length; i++) {
 					const s = tagSplit[i];
+					if (s === undefined || s === null || s === "") continue;
 					if (s.charAt(0) === "@") {
 						const [tag, text] = splitFirstSpace(s);
 						const fauxEntry = {
@@ -290,3 +266,7 @@ class EntryRenderer {
 }
 EntryRenderer.RE_INLINE = /{(@.*? .*?)}/g;
 EntryRenderer.RE_INLINE_CLASS = /(.*?) \((.*?)\)/;
+EntryRenderer.HEAD_NEG_1 = "statsBlockSectionHead";
+EntryRenderer.HEAD_0 = "statsBlockHead";
+EntryRenderer.HEAD_1 = "statsBlockSubHead";
+EntryRenderer.HEAD_2 = "statsInlineHead";

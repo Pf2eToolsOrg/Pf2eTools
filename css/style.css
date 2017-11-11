@@ -238,12 +238,6 @@ td.divider div {
 	margin: 4px 0;
 }
 
-th#name {
-	font-size: 1.5em;
-	font-family: serif;
-	font-weight: 500;
-}
-
 table#stats span.name {
 	font-weight: bold;
 }
@@ -284,6 +278,8 @@ tr.text td {
 	padding-bottom: 0.7em !important;
 }
 
+th#nameTable,
+th#nameSummary,
 th#name {
 	font-size: 1.8em;
 	font-family: 'Andada', serif;
@@ -394,7 +390,7 @@ tr td > p.spells ~ p.spells {
 	margin-top: 0 !important;
 }
 
-#stats span.roller {
+span.roller {
 	color: #337ab7;
 	cursor: pointer;
 }
@@ -529,6 +525,10 @@ td#equipment h5 {
 	font-weight: 500;
 	font-size: 1.5em;
 	margin-bottom: 0;
+}
+
+td#equipment ul {
+	padding: 0 0 0 1.7em;
 }
 
 /* section: class features */
@@ -691,9 +691,13 @@ td.features {
 	white-space: pre-wrap;
 }
 
-#classtable .newfeature {
+ul.list.classes {
+	overflow-y: initial;
+}
+
+#classtable .centred-col {
 	text-align: center;
-	width: 1em;
+	width: 3em;
 }
 
 div#subclasses {
@@ -725,14 +729,31 @@ div#subclasses span.active {
 	color: white;
 }
 
-div#subclasses span.alt-active {
+div#subclasses span.cf-active {
 	background: #922610;
 	color: white;
 }
 
-.slotlabel {
+div#subclasses span.os-active {
+	background: #1d965d;
+	color: white;
+}
+
+#classtable .colGroupTitle {
 	text-align: center;
-	border-bottom: 1px solid #000;
+}
+
+#classtable .colGroupTitle::after {
+	display: block;
+	content: "";
+	position: relative;
+	left: 0;
+	bottom: 0;
+	height: 1px;
+	width: 96%;
+	border-bottom: 1px solid black;
+	margin: 0 auto;
+	padding: 0;
 }
 
 .featurebuffer {

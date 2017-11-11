@@ -5,11 +5,12 @@
   "license": "MIT",
   "description": "A site dedicated to making playing games with your friends as easy as possible.",
   "scripts": {
-    "test": "eslint js && stylelint css/style.css"
+    "test": "eslint js && stylelint css/style.css && node ./test/alltests.js"
   },
   "repository": "astranauta/astranauta.github.io",
   "dependencies": {
     "eslint": "^4.9.0",
+    "jsonschema": "^1.2.0",
     "stylelint": "^8.2.0",
     "stylelint-config-standard": "^17.0.0"
   }
