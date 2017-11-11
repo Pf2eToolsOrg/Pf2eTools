@@ -76,6 +76,8 @@ function loadhash (id) {
 	$("#classtable").html(classTableDefault);
 	const curClass = classes[id];
 
+	const isUaClass = isNonstandardSource(curClass.source);
+
 	// name
 	$("th#nameTable").html(curClass.name);
 	$("th#nameSummary").html(curClass.name);
@@ -210,7 +212,7 @@ function loadhash (id) {
 	makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true);
 
 	// show/hide UA/other sources
-	makeGenericTogglePill("All Sources", CLSS_OTHER_SOURCES_ACTIVE, ID_OTHER_SOURCES_TOGGLE, HASH_ALL_SOURCES, false);
+	const allSourcesToggle = makeGenericTogglePill("All Sources", CLSS_OTHER_SOURCES_ACTIVE, ID_OTHER_SOURCES_TOGGLE, HASH_ALL_SOURCES, false);
 
 	// spacer before the subclass pills
 	subclassPillWrapper.append($(`<span class="divider">`));
@@ -229,16 +231,20 @@ function loadhash (id) {
 		subclassPillWrapper.append(pill);
 	}
 
+	// if this is a UA class, toggle the "All Sources" button
+	if (isUaClass) allSourcesToggle.click();
+
 	// helper functions
 	function makeGenericTogglePill(pillText, pillActiveClass, pillId, hashKey, defaultActive) {
-		const classFeatureToggle = $(`<span id="${pillId}"><span>${pillText}</span></span>`);
-		if (defaultActive) classFeatureToggle.addClass(pillActiveClass);
-		subclassPillWrapper.append(classFeatureToggle);
-		classFeatureToggle.click(function() {
+		const pill = $(`<span id="${pillId}"><span>${pillText}</span></span>`);
+		if (defaultActive) pill.addClass(pillActiveClass);
+		subclassPillWrapper.append(pill);
+		pill.click(function() {
 			let active = $(this).hasClass(pillActiveClass);
 			if (!defaultActive) active = !active;
 			handleToggleFeaturesClicks(active)
 		});
+		return pill;
 
 		function handleToggleFeaturesClicks(isPillActive) {
 			const outStack = [];
