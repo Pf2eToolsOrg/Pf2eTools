@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/draft-06/schema#",
 
 	"title": "ClassArray",
-	"type": "array",
+	"type": "object",
 
 	"definitions": {
 		"classTableGroup": {
@@ -70,14 +70,10 @@
 					"items": {
 						"$ref": "/Entry"
 					}
-				},
-				"source": {
-					"type": "string"
 				}
 			},
 			"required": [
-				"entries",
-				"source"
+				"entries"
 			],
 			"additionalProperties": false
 		},
@@ -94,11 +90,15 @@
 						"items": {"$ref": "#/definitions/subclassFeature"}
 					},
 					"maxItems": 20
+				},
+				"source": {
+					"type": "string"
 				}
 			},
 			"required": [
 				"name",
-				"subclassFeatures"
+				"subclassFeatures",
+				"source"
 			],
 			"additionalProperties": false
 		},
@@ -121,6 +121,9 @@
 						},
 						"faces": {
 							"type": "integer"
+						},
+						"rollable": {
+							"type": "boolean"
 						}
 					},
 					"required": [
@@ -259,5 +262,10 @@
 		}
 	},
 
-	"items": {"$ref": "#/definitions/class"}
+	"properties": {
+		"class": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/class"}
+		}
+	}
 }

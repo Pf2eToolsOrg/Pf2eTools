@@ -9,6 +9,9 @@
 	"definitions" : {
 		"entry": {
 			"properties": {
+				"name": {
+					"type": "string"
+				},
 				"type": {
 					"type": "string"
 				},
@@ -160,7 +163,10 @@
 						},
 						"faces": {
 							"type": "integer"
-						}
+						},
+                        "rollable": {
+                            "type": "boolean"
+                        }
 					},
 					"required": ["number", "faces"],
 					"additionalProperties": false
