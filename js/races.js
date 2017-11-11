@@ -1,5 +1,5 @@
 window.onload = function load() {
-	tabledefault = $("#stats").html();
+	tableDefault = $("#stats").html();
 
 	var racelist = racedata.compendium.race;
 
@@ -48,7 +48,7 @@ window.onload = function load() {
 }
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
+	$("#stats").html(tableDefault);
 	$("#stats td").show();
 
 	var racelist = racedata.compendium.race;

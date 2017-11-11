@@ -1,3 +1,6 @@
+const HASH_PART_SEP = ",";
+const HASH_START = "#";
+
 function hashchange(e) {
 	const [link, ...sub] = _getHashParts();
 
@@ -26,7 +29,7 @@ function getSelectedListElement() {
 }
 
 function _getHashParts() {
-	return window.location.hash.slice(1).split(',');
+	return window.location.hash.slice(1).split(HASH_PART_SEP);
 }
 
 function _getListElem(link) {
