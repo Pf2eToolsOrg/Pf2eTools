@@ -729,7 +729,6 @@ SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
 function parse_sourceJsonToFull (source) {
-	if (!SOURCE_JSON_TO_FULL[source]) console.log(source.slice(2))
 	return _parse_aToB(SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
 }
 function parse_sourceJsonToAbv(source) {

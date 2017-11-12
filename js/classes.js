@@ -51,7 +51,7 @@ function onJsonLoad(data) {
 	classes = data.class;
 
 	// alphabetically sort subclasses
-	for (let c of classes) {
+	for (const c of classes) {
 		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
 	}
 
