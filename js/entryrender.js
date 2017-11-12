@@ -93,6 +93,13 @@ class EntryRenderer {
 				case "link":
 					renderLink(entry);
 					break;
+				// TODO
+				case "invocation":
+					handleInvocation(this);
+					break;
+				case "patron":
+					handlePatron(this);
+					break
 			}
 		} else if (typeof entry === "string") {
 			renderString(this);
@@ -149,25 +156,37 @@ class EntryRenderer {
 
 
 		function handleEntries(self) {
-			handleEntriesAndOptions(self);
+			handleEntriesOptionsInvocationPatron(self, true);
 		}
 
 		function handleOptions(self) {
-			handleEntriesAndOptions(self);
+			handleEntriesOptionsInvocationPatron(self, false);
 		}
 
-		function handleEntriesAndOptions(self) {
+		function handleInvocation(self) {
+			handleEntriesOptionsInvocationPatron(self, true);
+		}
+
+		function handlePatron(self) {
+			handleEntriesOptionsInvocationPatron(self, false);
+		}
+
+		function handleEntriesOptionsInvocationPatron(self, incDepth) {
 			const inlineTitle = depth >= 2;
+			const nextDepth = incDepth ? depth+1 : depth;
+			let nextPrefix;
+			let nextSuffix;
 			if (inlineTitle) {
 				for (let i = 0; i < entry.entries.length; i++) {
 
-					const nextPrefix = i !== 0 ? "<p>" : entry.name !== undefined ? `<span class='${EntryRenderer.HEAD_2}'>${entry.name}.</span> ` : null;
-					const nextSuffix = i === entry.entries.length-1 ? null : "</p>";
+					nextPrefix = i !== 0 ? "<p>" : entry.name !== undefined ? `<span class='${EntryRenderer.HEAD_2}'>${entry.name}.</span> ` : null;
+					applyPrerequisite(i);
+					nextSuffix = i === entry.entries.length-1 ? null : "</p>";
 
 					self.recursiveEntryRender(
 						entry.entries[i],
 						textStack,
-						depth + 1,
+						nextDepth,
 						nextPrefix,
 						nextSuffix
 					);
@@ -178,10 +197,16 @@ class EntryRenderer {
 					textStack.push(`<span class='${headerClass}'>${entry.name}</span>`);
 				}
 				for (let i = 0; i < entry.entries.length; i++) {
-					const nextPrefix = i === 0 ? null : "<p>";
-					const nextSuffix = i === entry.entries.length-1 ? null : "</p>";
-					self.recursiveEntryRender(entry.entries[i], textStack, depth + 1, nextPrefix, nextSuffix);
+					nextPrefix = i === 0 ? null : "<p>";
+					applyPrerequisite(i);
+					nextSuffix = i === entry.entries.length-1 ? null : "</p>";
+					self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, nextPrefix, nextSuffix);
 				}
+			}
+
+			function applyPrerequisite(i) {
+				const prereqText = `<span class="prerequisite">Prerequisite: ${entry.prerequisite}</span>`;
+				if (i === 0 && entry.prerequisite !== undefined) nextPrefix = nextPrefix === null ? prereqText : nextPrefix+prereqText;
 			}
 		}
 
