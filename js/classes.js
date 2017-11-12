@@ -388,7 +388,7 @@ function loadsub(sub) {
 		if ($toShow.length === 0) {
 			displayAllSubclasses();
 		} else {
-			let otherSrcSubFeat = $(`p.${CLSS_NON_STANDARD_SOURCE}`);
+			const otherSrcSubFeat = $(`p.${CLSS_NON_STANDARD_SOURCE}`);
 			$.each($toShow, function(i, v) {
 				v.addClass(CLSS_ACTIVE);
 				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
