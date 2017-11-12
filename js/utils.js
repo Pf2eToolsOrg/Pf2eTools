@@ -52,6 +52,7 @@ const FLTR_RANGE = "filterRange";
 const FLTR_CLASS = "filterClass";
 const FLTR_META = "filterMeta";
 const FLTR_ACTION = "filterAction";
+const FLTR_TIER = "filterTier";
 const FLTR_RARITY = "filterRarity";
 const FLTR_ATTUNEMENT = "filterAttunement";
 const FLTR_LIST_SEP = ";";
