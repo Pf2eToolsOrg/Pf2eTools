@@ -13,7 +13,17 @@
 				"subclasses": {
 					"type": "array",
 					"items": {
-						"type": "string"
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							}
+						},
+						"required": ["name", "source"],
+						"additionalProperties": false
 					}
 				},
 				"colLabels": {
