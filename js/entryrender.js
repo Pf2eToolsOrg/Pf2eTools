@@ -183,7 +183,7 @@ class EntryRenderer {
 					const styleClasses = [];
 					if (isNonstandardSource(entry.entries[i].source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 					if (i === 0 && entry.name !== undefined) styleClasses.push(EntryRenderer.HEAD_2);
-					if (entry.entries[i].type === "invocation" && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
+					if ((entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
 					const styleString = styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
 
 					dataString = getDataString(i);
@@ -209,7 +209,7 @@ class EntryRenderer {
 				for (let i = 0; i < entry.entries.length; i++) {
 					const styleClasses = [];
 					if (isNonstandardSource(entry.entries[i].source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-					if (entry.entries[i].type === "invocation" && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
+					if ((entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
 					const styleString = styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
 
 					dataString = getDataString(i);
@@ -223,10 +223,8 @@ class EntryRenderer {
 
 			function getDataString(i) {
 				let dataString = "";
-				if (entry.entries[i].type === "invocation") {
-					if (entry.entries[i].subclass !== undefined) {
-						dataString = `${ATB_DATA_SC}="${entry.entries[i].subclass.name}" ${ATB_DATA_SRC}="${entry.entries[i].subclass.source}"`;
-					}
+				if (entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") {
+					if (entry.entries[i].subclass !== undefined) dataString = `${ATB_DATA_SC}="${entry.entries[i].subclass.name}" ${ATB_DATA_SRC}="${entry.entries[i].subclass.source}"`;
 					else dataString = `${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}" ${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"`;
 				}
 				return dataString;
