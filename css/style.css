@@ -1072,3 +1072,57 @@ input[type=checkbox].readonly {
 	padding: 1px;
 	text-decoration: none;
 }
+
+/* ENTRY RENDERING CSS */
+table#stats div.statsBlockSectionHead > span.entry-title,
+table#stats div.statsBlockHead > span.entry-title,
+table#stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	color: #922610;
+	display: block;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
+}
+
+table#stats div.statsBlockSectionHead > span.entry-title {
+	font-size: 1.8em;
+}
+
+table#stats div.statsBlockHead > span.entry-title {
+	font-size: 1.5em;
+	border-bottom: 1px solid #922610;
+	margin: 0.2em;
+}
+
+table#stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	font-size: 1.4em;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+}
+
+table#stats tr.subclass-feature div.statsBlockHead > span.entry-title,
+table#stats tr.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	color: #337ab7;
+	border-bottom-color: #337ab7;
+}
+
+table#stats tr.spicy-sauce.subclass-feature div.statsBlockHead > span.entry-title,
+table#stats tr.spicy-sauce.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
+table#stats tr.class-feature p.spicy-sauce div.statsBlockHead > span.entry-title,
+table#stats tr.class-feature p.spicy-sauce div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	color: #1d965d;
+	border-bottom-color: #1d965d;
+}
+
+table#stats div.statsInlineHead > span.entry-title {
+	font-style: italic;
+	font-weight: bold;
+}
+
+table#stats div.statsInlineHead > p {
+	display: inline;
+}
+
+table#stats div.statsInlineHead {
+	margin-bottom: 5px;
+}

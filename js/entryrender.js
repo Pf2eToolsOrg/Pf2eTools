@@ -33,27 +33,27 @@ class EntryRenderer {
 	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
 	 * the result.
 	 *
-	 * @param entry An "entry" usually defined in JSON. There ought to be a schema for it somewhere (TODO)
+	 * @param entry An "entry" usually defined in JSON. A schema is available in tests/schema
 	 * @param textStack A reference to an array, which will hold all our strings as we recurse
 	 * @param depth The current recursion depth. Optional; default 0, or -1 for type "section" entries
 	 * @param prefix The (optional) prefix to be added to the textStack before whatever is added by the current call
 	 * @param suffix The (optional) suffix to be added to the textStack after whatever is added by the current call
+	 * @param forcePrefixSuffix force the prefix and suffix to be added (useful for the first call from external code)
 	 */
-	recursiveEntryRender(entry, textStack, depth, prefix, suffix) {
+	recursiveEntryRender(entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
 		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
 		prefix = prefix === undefined || prefix === null ? null : prefix;
 		suffix = suffix === undefined || suffix === null ? null : suffix;
-		if (textStack.length === 0 && prefix === null && suffix === null) {
-			prefix = "<p>";
-			suffix = "</p>";
-		}
+		forcePrefixSuffix = forcePrefixSuffix === undefined || forcePrefixSuffix === null ? false : forcePrefixSuffix;
 
-		if (prefix !== null) textStack.push(prefix);
+		if (forcePrefixSuffix) renderPrefix();
 		if (typeof entry === "object") {
 			// the root entry (e.g. "Rage" in barbarian "classFeatures") is assumed to be of type "entries"
 			const type = entry.type === undefined || entry.type === "section" ? "entries" : entry.type;
 			switch (type) {
 				// TODO add an "insert box" type
+
+				// recursive
 				case "entries":
 					handleEntries(this);
 					break;
@@ -70,6 +70,26 @@ class EntryRenderer {
 				case "table":
 					renderTable(this);
 					break;
+				case "invocation":
+					handleInvocation(this);
+					break;
+				case "patron":
+					handlePatron(this);
+					break;
+
+				// block
+				case "abilityDc":
+					renderPrefix();
+					textStack.push(`<span class='spell-ability'><span>${entry.name} save DC</span> = 8 + your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
+					renderSuffix();
+					break;
+				case "abilityAttackMod":
+					if (prefix !== null) textStack.push(prefix);
+					textStack.push(`<span class='spell-ability'><span>${entry.name} attack modifier</span> = your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
+					if (suffix !== null) textStack.push(suffix);
+					break;
+
+				// inline
 				case "inline":
 					for (let i = 0; i < entry.entries.length; i++) {
 						this.recursiveEntryRender(entry.entries[i], textStack, depth);
@@ -84,30 +104,32 @@ class EntryRenderer {
 				case "dice":
 					textStack.push(EntryRenderer.getEntryDice(entry));
 					break;
-				case "abilityDc":
-					textStack.push(`<span class='spell-ability'><span>${entry.name} save DC</span> = 8 + your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
-					break;
-				case "abilityAttackMod":
-					textStack.push(`<span class='spell-ability'><span>${entry.name} attack modifier</span> = your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
-					break;
 				case "link":
 					renderLink(entry);
 					break;
-				// TODO
-				case "invocation":
-					handleInvocation(this);
-					break;
-				case "patron":
-					handlePatron(this);
-					break
 			}
-		} else if (typeof entry === "string") {
+		} else if (typeof entry === "string") { // block
+			renderPrefix();
 			renderString(this);
-		} else {
+			renderSuffix();
+		} else { // block
 			// for ints or any other types which do not require specific rendering
+			renderPrefix();
 			textStack.push(entry);
+			renderSuffix();
 		}
-		if (suffix !== null) textStack.push(suffix);
+		if (forcePrefixSuffix) renderSuffix();
+
+		function renderPrefix() {
+			if (prefix !== null) {
+				textStack.push(prefix);
+			}
+		}
+		function renderSuffix() {
+			if (suffix !== null) {
+				textStack.push(suffix);
+			}
+		}
 
 		function renderTable(self) {
 			// TODO add handling for rowLabel property
@@ -175,66 +197,39 @@ class EntryRenderer {
 		function handleEntriesOptionsInvocationPatron(self, incDepth) {
 			const inlineTitle = depth >= 2;
 			const nextDepth = incDepth ? depth+1 : depth;
-			let dataString;
-			let nextPrefix;
-			let nextSuffix;
-			if (inlineTitle) {
-				for (let i = 0; i < entry.entries.length; i++) {
+			const styleString = getStyleString();
+			const dataString = getDataString();
+			const preReqText = getPreReqText();
+			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
 
-					const styleClasses = [];
-					if (isNonstandardSource(entry.entries[i].source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-					if (i === 0 && entry.name !== undefined) styleClasses.push(EntryRenderer.HEAD_2);
-					if ((entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
-					const styleString = styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
+			textStack.push(`<div ${dataString} ${styleString}>${headerSpan}${preReqText}`);
+			for (let i = 0; i < entry.entries.length; i++) {
+				self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, "<p>", "</p>");
+			}
+			textStack.push("</div>");
 
-					dataString = getDataString(i);
-
-					nextPrefix = i !== 0 ? `<p ${styleString} ${dataString}>` : entry.name !== undefined ? `<span ${styleString} ${dataString}>${entry.name}.</span> ` : null;
-					addPrerequisiteText(i);
-					nextSuffix = i === entry.entries.length-1 ? null : "</p>";
-
-					self.recursiveEntryRender(
-						entry.entries[i],
-						textStack,
-						nextDepth,
-						nextPrefix,
-						nextSuffix
-					);
-				}
-			} else {
-				if (entry.name !== undefined) {
-					const headerClass = depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1;
-					textStack.push(`<span class='${headerClass}'>${entry.name}</span>`);
-				}
-
-				for (let i = 0; i < entry.entries.length; i++) {
-					const styleClasses = [];
-					if (isNonstandardSource(entry.entries[i].source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-					if ((entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
-					const styleString = styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
-
-					dataString = getDataString(i);
-
-					nextPrefix = i === 0 ? null : `<p ${styleString} ${dataString}>`;
-					addPrerequisiteText(i);
-					nextSuffix = i === entry.entries.length-1 ? null : "</p>";
-					self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, nextPrefix, nextSuffix);
-				}
+			function getStyleString() {
+				const styleClasses = [];
+				if (isNonstandardSource(entry.source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+				if (inlineTitle && entry.name !== undefined) styleClasses.push(EntryRenderer.HEAD_2);
+				else styleClasses.push(depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1);
+				if ((entry.type === "invocation" || entry.type === "patron") && entry.subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
+				return styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
 			}
 
-			function getDataString(i) {
+			function getDataString() {
 				let dataString = "";
-				if (entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") {
-					const titleString = entry.entries[i].source ? `title="Source: ${parse_sourceJsonToFull(entry.entries[i].source)}"` : "";
-					if (entry.entries[i].subclass !== undefined) dataString = `${ATB_DATA_SC}="${entry.entries[i].subclass.name}" ${ATB_DATA_SRC}="${entry.entries[i].subclass.source}" ${titleString}`;
+				if (entry.type === "invocation" || entry.type === "patron") {
+					const titleString = entry.source ? `title="Source: ${parse_sourceJsonToFull(entry.source)}"` : "";
+					if (entry.subclass !== undefined) dataString = `${ATB_DATA_SC}="${entry.subclass.name}" ${ATB_DATA_SRC}="${entry.subclass.source}" ${titleString}`;
 					else dataString = `${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}" ${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}" ${titleString}`;
 				}
 				return dataString;
 			}
 
-			function addPrerequisiteText(i) {
-				const prereqText = `<span class="prerequisite">Prerequisite: ${entry.prerequisite}</span>`;
-				if (i === 0 && entry.prerequisite !== undefined) nextPrefix = nextPrefix === null ? prereqText : nextPrefix+prereqText;
+			function getPreReqText() {
+				if (entry.prerequisite) return `<span class="prerequisite">Prerequisite: ${entry.prerequisite}</span>`;
+				return "";
 			}
 		}
 
