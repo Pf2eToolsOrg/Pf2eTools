@@ -1,22 +1,37 @@
 const ITEMS_JSON_URL = "data/items.json";
 const WEAPONS_JSON_URL = "data/weapons.json";
+const MAGIC_VARIANTS_JSON_URL = "data/magicvariants.json";
 const TYPE_DOSH ="$";
 let tabledefault = "";
 let itemList;
 let weaponList;
+let variantList;
 
 window.onload = function load() {
 	loadJSON(ITEMS_JSON_URL, addWeapons);
 };
 
 function addWeapons(itemData) {
-	loadJSON(WEAPONS_JSON_URL, mergeWeapons, itemData);
+	itemList = itemData.item;
+	loadJSON(WEAPONS_JSON_URL, addVariants);
 }
 
-function mergeWeapons(weaponData, itemData) {
-	itemList = itemData[0].item;
+function addVariants(weaponData) {
 	weaponList = weaponData.weapon;
+	loadJSON(MAGIC_VARIANTS_JSON_URL, mergeWeaponsAndPopulate);
+}
+
+function mergeWeaponsAndPopulate(variantData) {
+	variantList = variantData.variant;
 	itemList = itemList.concat(weaponList);
+
+	for (let i = 0; i < weaponList.length; i++) {
+		const curWeapon = weaponList[i];
+		for (let j = 0; j < variantList.length; j++) {
+			const curVariant = variantList[j];
+			//FINISH ME. Merge weapons and variants where the requirements are met.
+		}
+	}
 
 	tabledefault = $("#stats").html();
 
@@ -26,6 +41,12 @@ function mergeWeapons(weaponData, itemData) {
 	filterList.push(sourceFilter);
 	const typeFilter = new Filter("Type", FLTR_TYPE, [], Filter.asIs, Filter.asIs);
 	filterList.push(typeFilter);
+	const tierFilter = new Filter("Tier", FLTR_TIER, [
+		"None",
+		"Minor",
+		"Major",
+	], Filter.asIs, Filter.asIs);
+	filterList.push(tierFilter);
 	const rarityFilter = new Filter("Rarity", FLTR_RARITY, [
 		"None",
 		"Common",
@@ -35,7 +56,7 @@ function mergeWeapons(weaponData, itemData) {
 		"Legendary",
 		"Artifact",
 		"Unknown",
-	], Filter.asIs, parse_stringToSlug);
+	], Filter.asIs, Filter.asIs);
 	filterList.push(rarityFilter);
 	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, parse_stringToSlug);
 	filterList.push(attunementFilter);
@@ -57,7 +78,9 @@ function mergeWeapons(weaponData, itemData) {
 		if (curitem.type) type.push(parse_itemTypeToAbv(curitem.type));
 		const typeList = type.join(","); // for filter to use
 		itemList[i].typeText = type.join(", ");
-
+		const tierTags = [];
+		if (curitem.tier) tierTags.push(curitem.tier);
+		const tierTagsString = tierTags.join(FLTR_LIST_SEP);
 		let attunement = "No";
 		if (curitem.reqAttune !== undefined) {
 			if (curitem.reqAttune === "YES") attunement = "Yes";
@@ -67,17 +90,17 @@ function mergeWeapons(weaponData, itemData) {
 		}
 
 		// populate table
-		$("ul.list."+((rarity !== "None" && rarity !== "Unknown") || curitem.reqAttune || curitem.wondrous ? "magic" : "mundane")).append(`<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}'><a id='${i}' href="#${encodeForHash(name)}" title="${name}"><span class='name col-xs-4'>${name}</span> <span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span> <span class='sourcename col-xs-1 col-xs-1-7' title="${sourceFull}"><span class='source'>${sourceAbv}</span></span> <span class='rarity col-xs-2'>${rarity}</span></a></li>`);
+		$("ul.list."+((rarity !== "None" && rarity !== "Unknown") || curitem.tier || curitem.reqAttune || curitem.wondrous ? "magic" : "mundane")).append(`<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}'><a id='${i}' href="#${encodeForHash(name)}" title="${name}"><span class='name col-xs-4'>${name}</span> <span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span> <span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span> <span class='rarity col-xs-2'>${rarity}</span></a></li>`);
 
 		// populate filters
-		if ($.inArray(source, sourceFilter.items) === -1) {
-			sourceFilter.items.push(source);
-		}
+		if ($.inArray(source, sourceFilter.items) === -1) sourceFilter.items.push(source);
 		for (let j = 0; j < type.length; ++j) {
 			const aType = type[j];
-			if ($.inArray(aType, typeFilter.items) === -1) {
-				typeFilter.items.push(aType);
-			}
+			if ($.inArray(aType, typeFilter.items) === -1) typeFilter.items.push(aType);
+		}
+		for (let j = 0; j < tierTags.length; ++j) {
+			const aTier = tierTags[j];
+			if ($.inArray(aTier, tierFilter.items) === -1) tierFilter.items.push(aTier);
 		}
 	}
 	// sort filters
@@ -124,10 +147,11 @@ function mergeWeapons(weaponData, itemData) {
 			}
 		}
 		const rightType = f[typeFilter.header][FilterBox.VAL_SELECT_ALL] || anyRightType;
+		const rightTier = f[tierFilter.header][FilterBox.VAL_SELECT_ALL] || f[tierFilter.header][tierFilter.valueFunction($(item.elm).attr(tierFilter.storageAttribute))];
 		const rightRarity = f[rarityFilter.header][FilterBox.VAL_SELECT_ALL] || f[rarityFilter.header][rarityFilter.valueFunction($(item.elm).attr(rarityFilter.storageAttribute))];
 		const rightAttunement = f[attunementFilter.header][FilterBox.VAL_SELECT_ALL] || f[attunementFilter.header][attunementFilter.valueFunction($(item.elm).attr(attunementFilter.storageAttribute))];
 
-		return rightSource && rightType && rightRarity && rightAttunement;
+		return rightSource && rightType && rightTier && rightRarity && rightAttunement;
 	}
 
 	$("#filtertools button.sort").on("click", function() {
@@ -230,6 +254,7 @@ function loadhash (id) {
 	const attunetext = item.reqAttune
 	const name = item.name;
 	const rarity = item.rarity;
+	const tier = item.tier;
 	const source = item.source;
 	const textlist = item.text;
 	const dmg1 = item.dmg1;
@@ -264,9 +289,8 @@ function loadhash (id) {
 			if (textlist[n].istable === "YES") {
 				texthtml += utils_makeTable(textlist[n]);
 			} else {
-				//"Strong" the first six or fewer words that are followed by a period.
+				//FIX ME. Modify the JSON to include all required empasis.
 				//If you need to stop a short initial sentence from being empasized then add a space to the start of that JSON text entry
-				//NOTE: Colons are no longer used as the delimiter for this kind of emphasis, i.e. they are NOT replaced with a period.
 				texthtml = texthtml + "<p>"+textlist[n].replace(/^(\w+'*\s?){1,6}(:|\.) /g, "<strong>$&</strong>")+"</p>";
 			}
 		}
@@ -277,8 +301,6 @@ function loadhash (id) {
 	$("span#damagetype").html("");
 	$("td span#type").append(item.typeText);
 
-	// FIXME
-	// Look for: % of Life Stealing, % of Vengeance, % of Warning, % of Wounding, %, Mariner's %, Mind Blade %, Mind Carapace %, Mithral%, Nine Lives Stealer %, Vicious %, Vorpal %, Legendary Resistance, Luck, Wish, Rod of the Pact Keeper%, Scroll of Protection from %, Spell Scroll
 	if (type === "MNT" || type === "VEH") {
 		const speed=item.speed;
 		const capacity=item.carryingcapacity;
@@ -336,7 +358,8 @@ function loadhash (id) {
 	if (type === "R") texthtml += emphasize("Range", "A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range.");
 
 	$("td span#rarity").html("");
-	if (rarity) $("td span#rarity").html(", "+rarity);
+	if (tier) $("td span#rarity").append(", "+tier);
+	if (rarity) $("td span#rarity").append(", "+rarity);
 
 	$("span#properties").html("");
 	if (item.property) {
