@@ -169,7 +169,7 @@ function loadhash (id) {
 			const styleClasses = [CLSS_CLASS_FEATURE];
 			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
 
-			renderer.recursiveEntryRender(feature, renderStack, 0, `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, `</td></tr>`);
+			renderer.recursiveEntryRender(feature, renderStack, 0, `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, `</td></tr>`, true);
 
 			// add subclass features to render stack if appropriate
 			if (feature.gainSubclassFeature) {
@@ -192,7 +192,7 @@ function loadhash (id) {
 						const styleClasses = [CLSS_SUBCLASS_FEATURE];
 						const hideSource = isNonstandardSource(subClass.source) || isSuperceded(subClass.name, subClass.source);
 						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`);
+						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`, true);
 					}
 				}
 				subclassIndex++;
