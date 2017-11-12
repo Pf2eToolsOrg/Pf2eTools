@@ -567,14 +567,31 @@ const SRC_UAFFS = SRC_UA_PREFIX + "FeatsForSkills";
 const SRC_UAFO = SRC_UA_PREFIX + "FiendishOptions";
 const SRC_UAFT = SRC_UA_PREFIX + "Feats";
 const SRC_UAGH = SRC_UA_PREFIX + "GothicHeroes";
-const SRC_UAModern = SRC_UA_PREFIX + "Modern";
-const SRC_UAStarterSpells = SRC_UA_PREFIX + "StarterSpells";
+const SRC_UAMDM = SRC_UA_PREFIX + "ModernMagic";
+const SRC_UASSP = SRC_UA_PREFIX + "StarterSpells";
 const SRC_UATMC = SRC_UA_PREFIX + "TheMysticClass";
 const SRC_UATOBM = SRC_UA_PREFIX + "ThatOldBlackMagic";
 const SRC_UATRR = SRC_UA_PREFIX + "TheRangerRevised";
 const SRC_UAWA = SRC_UA_PREFIX + "WaterborneAdventures";
 const SRC_UAVR = SRC_UA_PREFIX + "VariantRules";
 const SRC_UALDR = SRC_UA_PREFIX + "LightDarkUnderdark";
+const SRC_UARAR = SRC_UA_PREFIX + "RangerAndRogue";
+const SRC_UAATOSC = SRC_UA_PREFIX + "ATrioOfSubclasses";
+const SRC_UABPP = SRC_UA_PREFIX + "BarbarianPrimalPaths";
+const SRC_UARSC = SRC_UA_PREFIX + "RevisedSubclasses";
+const SRC_UAKOO = SRC_UA_PREFIX + "KitsOfOld";
+const SRC_UABBC = SRC_UA_PREFIX + "BardBardColleges";
+const SRC_UACDD = SRC_UA_PREFIX + "ClericDivineDomains";
+const SRC_UAD = SRC_UA_PREFIX + "Druid";
+const SRC_UARCO = SRC_UA_PREFIX + "RevisedClassOptions";
+const SRC_UAF = SRC_UA_PREFIX + "Fighter";
+const SRC_UAM = SRC_UA_PREFIX + "Monk";
+const SRC_UAP = SRC_UA_PREFIX + "Paladin";
+const SRC_UAMC = SRC_UA_PREFIX + "ModifyingClasses";
+const SRC_UAS = SRC_UA_PREFIX + "Sorcerer";
+const SRC_UAWAW = SRC_UA_PREFIX + "WarlockAndWizard";
+const SRC_UATF = SRC_UA_PREFIX + "TheFaithful";
+const SRC_UAWR = SRC_UA_PREFIX + "WizardRevisited";
 
 const SRC_BOLS_3PP = "BoLS 3pp";
 const SRC_ToB_3PP = "ToB 3pp";
@@ -619,14 +636,31 @@ SOURCE_JSON_TO_FULL[SRC_UAFFS] = UA_PREFIX + "Feats for Skills";
 SOURCE_JSON_TO_FULL[SRC_UAFO] = UA_PREFIX + "Fiendish Options";
 SOURCE_JSON_TO_FULL[SRC_UAFT] = UA_PREFIX + "Feats";
 SOURCE_JSON_TO_FULL[SRC_UAGH] = UA_PREFIX + "Gothic Heroes";
-SOURCE_JSON_TO_FULL[SRC_UAModern] = UA_PREFIX + "Modern Magic";
-SOURCE_JSON_TO_FULL[SRC_UAStarterSpells] = UA_PREFIX + "Starter Spells";
+SOURCE_JSON_TO_FULL[SRC_UAMDM] = UA_PREFIX + "Modern Magic";
+SOURCE_JSON_TO_FULL[SRC_UASSP] = UA_PREFIX + "Starter Spells";
 SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
 SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
 SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
 SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
 SOURCE_JSON_TO_FULL[SRC_UAVR] = UA_PREFIX + "Variant Rules";
 SOURCE_JSON_TO_FULL[SRC_UALDR] = UA_PREFIX + "Light, Dark, Underdark!";
+SOURCE_JSON_TO_FULL[SRC_UARAR] = UA_PREFIX + "Ranger and Rogue";
+SOURCE_JSON_TO_FULL[SRC_UAATOSC] = UA_PREFIX + "A Trio of Subclasses";
+SOURCE_JSON_TO_FULL[SRC_UABPP] = UA_PREFIX + "Barbarian Primal Paths";
+SOURCE_JSON_TO_FULL[SRC_UARSC] = UA_PREFIX + "Revised Subclasses";
+SOURCE_JSON_TO_FULL[SRC_UAKOO] = UA_PREFIX + "Kits of Old";
+SOURCE_JSON_TO_FULL[SRC_UABBC] = UA_PREFIX + "Bard: Bard Colleges";
+SOURCE_JSON_TO_FULL[SRC_UACDD] = UA_PREFIX + "Cleric: Divine Domains";
+SOURCE_JSON_TO_FULL[SRC_UAD] = UA_PREFIX + "Druid";
+SOURCE_JSON_TO_FULL[SRC_UARCO] = UA_PREFIX + "Revised Class Options";
+SOURCE_JSON_TO_FULL[SRC_UAF] = UA_PREFIX + "Fighter";
+SOURCE_JSON_TO_FULL[SRC_UAM] = UA_PREFIX + "Monk";
+SOURCE_JSON_TO_FULL[SRC_UAP] = UA_PREFIX + "Paladin";
+SOURCE_JSON_TO_FULL[SRC_UAMC] = UA_PREFIX + "Modifying Classes";
+SOURCE_JSON_TO_FULL[SRC_UAS] = UA_PREFIX + "Sorcerer";
+SOURCE_JSON_TO_FULL[SRC_UAWAW] = UA_PREFIX + "Warlock and Wizard";
+SOURCE_JSON_TO_FULL[SRC_UATF] = UA_PREFIX + "The Faithful";
+SOURCE_JSON_TO_FULL[SRC_UAWR] = UA_PREFIX + "Wizard Revisited";
 SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
 SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts (3pp)";
 
@@ -666,26 +700,47 @@ SOURCE_JSON_TO_ABV[SRC_UAFFS] = "UAFFS";
 SOURCE_JSON_TO_ABV[SRC_UAFO] = "UAFO";
 SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
 SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
-SOURCE_JSON_TO_ABV[SRC_UAModern] = "UAMM";
-SOURCE_JSON_TO_ABV[SRC_UAStarterSpells] = "UASS";
+SOURCE_JSON_TO_ABV[SRC_UAMDM] = "UAMM";
+SOURCE_JSON_TO_ABV[SRC_UASSP] = "UASS";
 SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
 SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
 SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
 SOURCE_JSON_TO_ABV[SRC_UAVR] = "UAVR";
 SOURCE_JSON_TO_ABV[SRC_UALDR] = "UALDU";
+SOURCE_JSON_TO_ABV[SRC_UARAR] = "UARAR";
+SOURCE_JSON_TO_ABV[SRC_UAATOSC] = "UAATOSC";
+SOURCE_JSON_TO_ABV[SRC_UABPP] = "UABPP";
+SOURCE_JSON_TO_ABV[SRC_UARSC] = "UARSC";
+SOURCE_JSON_TO_ABV[SRC_UAKOO] = "UAKOO";
+SOURCE_JSON_TO_ABV[SRC_UABBC] = "UABBC";
+SOURCE_JSON_TO_ABV[SRC_UACDD] = "UACDD";
+SOURCE_JSON_TO_ABV[SRC_UAD] = "UAD";
+SOURCE_JSON_TO_ABV[SRC_UARCO] = "UARCO";
+SOURCE_JSON_TO_ABV[SRC_UAF] = "UAF";
+SOURCE_JSON_TO_ABV[SRC_UAM] = "UAM";
+SOURCE_JSON_TO_ABV[SRC_UAP] = "UAP";
+SOURCE_JSON_TO_ABV[SRC_UAMC] = "UAMC";
+SOURCE_JSON_TO_ABV[SRC_UAS] = "UAS";
+SOURCE_JSON_TO_ABV[SRC_UAWAW] = "UAWAW";
+SOURCE_JSON_TO_ABV[SRC_UATF] = "UATF";
+SOURCE_JSON_TO_ABV[SRC_UAWR] = "UAWR";
 SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
 function parse_sourceJsonToFull (source) {
-	return _parse_aToB(SOURCE_JSON_TO_FULL, source).replace("'",STR_APOSTROPHE);
+	return _parse_aToB(SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
 }
 function parse_sourceJsonToAbv(source) {
 	return _parse_aToB(SOURCE_JSON_TO_ABV, source);
 }
 
 function isSuperceded(name, source) {
-	return (name !== undefined && name !== null && source !== undefined && source !== null) && (name === "Way of the Sun Soul" && source === SRC_SCAG);
+	return (name !== undefined && name !== null && source !== undefined && source !== null) &&
+		(name === "Way of the Sun Soul" && source === SRC_SCAG) ||
+		(name === "Mastermind" && source === SRC_SCAG) ||
+		(name === "Swashbuckler" && source === SRC_SCAG) ||
+		(name === "Storm" && source === SRC_SCAG);
 }
 
 function isNonstandardSource(source) {
