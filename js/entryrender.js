@@ -197,17 +197,8 @@ class EntryRenderer {
 		function handleEntriesOptionsInvocationPatron(self, incDepth) {
 			const inlineTitle = depth >= 2;
 			const nextDepth = incDepth ? depth+1 : depth;
-			let dataString;
-
-			const styleClasses = [];
-			if (isNonstandardSource(entry.source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-			if (inlineTitle && entry.name !== undefined) styleClasses.push(EntryRenderer.HEAD_2);
-			else styleClasses.push(depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1);
-			if ((entry.type === "invocation" || entry.type === "patron") && entry.subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
-			const styleString = styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
-
-			dataString = getDataString();
-
+			const styleString = getStyleString();
+			const dataString = getDataString();
 			const preReqText = getPreReqText();
 			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
 
@@ -217,6 +208,14 @@ class EntryRenderer {
 			}
 			textStack.push("</div>");
 
+			function getStyleString() {
+				const styleClasses = [];
+				if (isNonstandardSource(entry.source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+				if (inlineTitle && entry.name !== undefined) styleClasses.push(EntryRenderer.HEAD_2);
+				else styleClasses.push(depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1);
+				if ((entry.type === "invocation" || entry.type === "patron") && entry.subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
+				return styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
+			}
 
 			function getDataString() {
 				let dataString = "";
