@@ -178,7 +178,7 @@ function loadhash (id) {
 						if (subFeature.name === undefined) {
 							for (let m = 0; m < subFeature.entries.length; m++) {
 								const childEntry = subFeature.entries[m];
-								if (childEntry.name !== undefined) {
+								if (childEntry.name !== undefined && !childEntry.name.startsWith(`<span class="${CLSS_SUBCLASS_PREFIX}">`)) {
 									childEntry.name = `<span class="${CLSS_SUBCLASS_PREFIX}">${subClass.name}: </span>${childEntry.name}`;
 								}
 							}
@@ -187,7 +187,6 @@ function loadhash (id) {
 						const styleClasses = [CLSS_SUBCLASS_FEATURE];
 						const hideSource = isNonstandardSource(subClass.source);
 						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-						// ${hideSource ? `style="display: none;"` : ""}
 						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`);
 					}
 				}
