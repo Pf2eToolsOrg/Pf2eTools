@@ -684,6 +684,10 @@ function parse_sourceJsonToAbv(source) {
 	return _parse_aToB(SOURCE_JSON_TO_ABV, source);
 }
 
+function isSuperceded(name, source) {
+	return (name !== undefined && name !== null && source !== undefined && source !== null) && (name === "Way of the Sun Soul" && source === SRC_SCAG);
+}
+
 function isNonstandardSource(source) {
 	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source === SRC_PSA || source === SRC_PSK || source === SRC_EEPC || source === SRC_PSI || source === SRC_PSZ);
 }
