@@ -160,6 +160,7 @@ class EntryRenderer {
 		}
 
 		function handleOptions(self) {
+			entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
 			handleEntriesOptionsInvocationPatron(self, false);
 		}
 
@@ -224,8 +225,9 @@ class EntryRenderer {
 			function getDataString(i) {
 				let dataString = "";
 				if (entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") {
-					if (entry.entries[i].subclass !== undefined) dataString = `${ATB_DATA_SC}="${entry.entries[i].subclass.name}" ${ATB_DATA_SRC}="${entry.entries[i].subclass.source}"`;
-					else dataString = `${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}" ${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"`;
+					const titleString = entry.entries[i].source ? `title="Source: ${parse_sourceJsonToFull(entry.entries[i].source)}"` : "";
+					if (entry.entries[i].subclass !== undefined) dataString = `${ATB_DATA_SC}="${entry.entries[i].subclass.name}" ${ATB_DATA_SRC}="${entry.entries[i].subclass.source}" ${titleString}`;
+					else dataString = `${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}" ${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}" ${titleString}`;
 				}
 				return dataString;
 			}
@@ -274,25 +276,27 @@ class EntryRenderer {
 						switch (tag) {
 							case "@spell":
 								fauxEntry.href.path = "spells.html";
-								fauxEntry.href.hash = fauxEntry.href.hash += "_phb";
+								fauxEntry.href.hash = fauxEntry.href.hash += "_phb"; // TODO pass this in
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@item":
 								fauxEntry.href.path = "items.html";
+								// TODO add source
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@class":
 								const classMatch = EntryRenderer.RE_INLINE_CLASS.exec(text);
 								if (classMatch) {
-									fauxEntry.href.hash = classMatch[1].trim();
+									fauxEntry.href.hash = classMatch[1].trim(); // TODO pass this in
 									fauxEntry.href.subhashes = [{"key": "subclass", "value": classMatch[2].trim()}]
 								}
 								fauxEntry.href.path = "classes.html";
-								fauxEntry.href.hash = fauxEntry.href.hash += "_phb";
+								fauxEntry.href.hash = fauxEntry.href.hash += "_phb"; // TODO pass this in
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@creature":
 								fauxEntry.href.path = "bestiary.html";
+								fauxEntry.href.hash = fauxEntry.href.hash += "_mm"; // TODO pass this in
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@bold":

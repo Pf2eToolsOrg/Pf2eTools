@@ -50,6 +50,11 @@ function getTableDataScData(scName, scSource) {
 function onJsonLoad(data) {
 	classes = data.class;
 
+	// alphabetically sort subclasses
+	for (let c of classes) {
+		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+	}
+
 	tableDefault = $("#stats").html();
 	statsProfDefault = $("#statsprof").html();
 	classTableDefault = $("#classtable").html();
@@ -354,7 +359,7 @@ function loadsub(sub) {
 				const hashPart = sub[i];
 
 				if (!hashPart.startsWith(HASH_SUBCLASS)) newHashStack.push(hashPart);
-				else newHashStack.push(HASH_SUBCLASS + toKeep.join(HASH_LIST_SEP))
+				else if (toKeep.length > 0) newHashStack.push(HASH_SUBCLASS + toKeep.join(HASH_LIST_SEP))
 			}
 			const curParts = _getHashParts();
 			if (curParts.length > 1) {
