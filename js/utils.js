@@ -59,6 +59,8 @@ const FLTR_LIST_SEP = ";";
 const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 const CLSS_SUBCLASS_FEATURE = "subclass-feature";
 
+const ATB_DATA_LIST_SEP = "||";
+const ATB_DATA_PART_SEP = "::";
 const ATB_DATA_SC = "data-subclass";
 const ATB_DATA_SRC = "data-source";
 

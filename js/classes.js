@@ -20,6 +20,7 @@ const STR_PROF_NONE = "none";
 
 const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
+const ATB_DATA_SC_LIST = "data-subclass-list";
 
 let tableDefault;
 let statsProfDefault;
@@ -41,6 +42,10 @@ function getClassHash(aClass) {
 
 function getEncodedSubclass(name, source) {
 	return `${encodeForHash(name)}${HASH_SUB_LIST_SEP}${encodeForHash(source)}`;
+}
+
+function getTableDataScData(scName, scSource) {
+	return scName+ATB_DATA_PART_SEP+scSource;
 }
 
 function onJsonLoad(data) {
@@ -112,11 +117,15 @@ function loadhash (id) {
 		const tGroup = tData[i];
 
 		const hasTitle = tGroup.title !== undefined;
-		groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}">${hasTitle ? tGroup.title : ""}</th>`);
+		let subclassData = "";
+		if (tGroup.subclasses !== undefined) {
+			subclassData = `${ATB_DATA_SC_LIST}="${tGroup.subclasses.map(s => getTableDataScData(s.name, s.source)).join(ATB_DATA_LIST_SEP)}"`;
+		}
+		groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}" ${subclassData}>${hasTitle ? tGroup.title : ""}</th>`);
 
 		for (let j = 0; j < tGroup.colLabels.length; j++) {
 			const lbl = tGroup.colLabels[j];
-			colHeaders.append(`<th class="centred-col">${lbl}</th>`)
+			colHeaders.append(`<th class="centred-col" ${subclassData}>${lbl}</th>`)
 		}
 
 		for (let j = 0; j < 20; j++) {
@@ -126,7 +135,7 @@ function loadhash (id) {
 				if (entry === 0) entry = "\u2014";
 				const stack = [];
 				renderer.recursiveEntryRender(entry, stack, "", "");
-				tr.append(`<td class="centred-col">${stack.join("")}</td>`)
+				tr.append(`<td class="centred-col" ${subclassData}>${stack.join("")}</td>`)
 			}
 		}
 	}
@@ -334,7 +343,7 @@ function loadsub(sub) {
 	if (subclasses !== null && hideOtherSources) {
 		const toDeselect = [];
 		$(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}.${CLSS_ACTIVE}`).each(function(){
-			$this = $(this);
+			const $this = $(this);
 			const thisSc = getEncodedSubclass($this.attr(ATB_DATA_SC), $this.attr(ATB_DATA_SRC));
 			if ($.inArray(subclasses, thisSc)) {
 				toDeselect.push(thisSc)
@@ -366,7 +375,7 @@ function loadsub(sub) {
 		const $subClassSpanList = $(`.${CLSS_SUBCLASS_PILL}`);
 		$subClassSpanList.each(
 			function() {
-				$this = $(this);
+				const $this = $(this);
 				const thisSc = getEncodedSubclass($this.attr(ATB_DATA_SC), $this.attr(ATB_DATA_SRC));
 				let shown = false;
 
@@ -389,21 +398,60 @@ function loadsub(sub) {
 			displayAllSubclasses();
 		} else {
 			const otherSrcSubFeat = $(`p.${CLSS_NON_STANDARD_SOURCE}`);
+			const showInTable = [];
+
 			$.each($toShow, function(i, v) {
 				v.addClass(CLSS_ACTIVE);
 				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
 				if (hideOtherSources) otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 				else otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
+
+				const asInTable = getTableDataScData(v.attr(ATB_DATA_SC), v.attr(ATB_DATA_SRC));
+				showInTable.push(asInTable);
+				handleTableGroups(asInTable, true);
 			});
+
 			$.each($toHide, function(i, v) {
 				v.removeClass(CLSS_ACTIVE);
 				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 				otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
+
+				const asInTable = getTableDataScData(v.attr(ATB_DATA_SC), v.attr(ATB_DATA_SRC));
+				handleTableGroups(asInTable, false);
 			});
+
 			if (hideOtherSources) {
 				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).hide();
 			} else {
 				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).show();
+			}
+
+			function handleTableGroups(asInTable, show) {
+				$(`[data-subclass-list]`).each(
+					function() {
+						const $this = $(this);
+						const scs = $this.attr(ATB_DATA_SC_LIST).split(ATB_DATA_LIST_SEP);
+
+						// if another class has shown this item, don't hide it
+						if (!show) {
+							for (let i = 0; i < scs.length; i++) {
+								const sc = scs[i];
+								if ($.inArray(sc, showInTable) !== -1) {
+									return;
+								}
+							}
+						}
+
+						for (let i = 0; i < scs.length; i++) {
+							const sc = scs[i];
+							if (sc === asInTable) {
+								if (show) $this.show();
+								else $this.hide();
+								break;
+							}
+						}
+					}
+				);
 			}
 		}
 
@@ -472,5 +520,12 @@ function loadsub(sub) {
 		if (hideOtherSources) {
 			$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
 		}
+		// show all table col groups
+		// TODO add handling for non-standard sources if UA non-caster->caster subclass are introduced
+		$(`[data-subclass-list]`).each(
+			function() {
+				$(this).show();
+			}
+		);
 	}
 }
