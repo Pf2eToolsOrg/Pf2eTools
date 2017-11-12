@@ -294,6 +294,34 @@
 			]
 		}
 	},
+	"entryInvocation": {
+		"allOf" : [
+			{"$ref" : "#/definitions/entry"},
+			{
+				"properties": {
+					"type": {"const": "invocation"},
+					"prerequisite": {
+						"type": "string"
+					}
+				},
+				"required": ["name"],
+				"additionalProperties": false
+			}
+		]
+	},
+
+	"entryPatron": {
+		"allOf" : [
+			{"$ref" : "#/definitions/entry"},
+			{
+				"properties": {
+					"type": {"const": "patron"}
+				},
+				"required": ["name"],
+				"additionalProperties": false
+			}
+		]
+	},
 
 	"anyOf": [
 		{"$ref": "#/definitions/entryEntries"},
