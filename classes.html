@@ -24,40 +24,38 @@
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 
 	<style>
-		table#stats span.statsBlockHead {
+		table#stats span.statsBlockHead,
+		table#stats span.statsBlockSubHead {
 			color: #922610;
 			display: block;
-			font-size: 1.5em;
 			font-family: 'Andada', serif;
 			font-variant: small-caps;
 			font-weight: 500;
+		}
+		table#stats span.statsBlockHead {
+			font-size: 1.5em;
 			border-bottom: 1px solid #922610;
 			margin: 0.2em;
 		}
-		table#stats .subclass-feature span.statsBlockHead  {
-			color: #337ab7;
-			border-bottom-color: #337ab7;
-		}
-		table#stats .spicy-sauce.subclass-feature span.statsBlockHead  {
-			color: #1d965d;
-			border-bottom-color: #1d965d;
-		}
 		table#stats span.statsBlockSubHead  {
-			color: #922610;
-			display: block;
 			font-size: 1.4em;
 			font-family: 'Andada', serif;
 			font-variant: small-caps;
-			font-weight: 500;
 		}
-		table#stats .subclass-feature span.statsBlockSubHead  {
+
+		table#stats tr.subclass-feature span.statsBlockHead,
+		table#stats tr.subclass-feature span.statsBlockSubHead  {
 			color: #337ab7;
 			border-bottom-color: #337ab7;
 		}
-		table#stats .spicy-sauce.subclass-feature span.statsBlockSubHead  {
+		table#stats tr.spicy-sauce.subclass-feature span.statsBlockHead,
+		table#stats tr.spicy-sauce.subclass-feature span.statsBlockSubHead,
+		table#stats tr.class-feature p.spicy-sauce span.statsBlockHead,
+		table#stats tr.class-feature p.spicy-sauce span.statsBlockSubHead {
 			color: #1d965d;
 			border-bottom-color: #1d965d;
 		}
+
 		table#stats span.statsInlineHead {
 			font-style: italic;
 			font-weight: bold;

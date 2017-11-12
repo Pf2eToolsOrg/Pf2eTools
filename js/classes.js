@@ -12,17 +12,14 @@ const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
 const CLSS_OTHER_SOURCES_ACTIVE = "os-active";
 const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
 const CLSS_CLASS_FEATURE = "class-feature";
-const CLSS_SUBCLASS_FEATURE = "subclass-feature";
 const CLSS_GAIN_SUBCLASS_FEATURE = "gain-subclass-feature";
-const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
-
 const ID_CLASS_FEATURES_TOGGLE = "cf-toggle";
 const ID_OTHER_SOURCES_TOGGLE = "os-toggle";
 
 const STR_PROF_NONE = "none";
 
-const ATB_DATA_SC = "data-subclass";
-const ATB_DATA_SRC = "data-source";
+const ATB_DATA_FEATURE_LINK = "data-flink";
+const ATB_DATA_FEATURE_ID = "data-flink-id";
 
 let tableDefault;
 let statsProfDefault;
@@ -44,10 +41,6 @@ function getClassHash(aClass) {
 
 function getEncodedSubclass(name, source) {
 	return `${encodeForHash(name)}${HASH_SUB_LIST_SEP}${encodeForHash(source)}`;
-}
-
-function isNonstandardSource(source) {
-	return source.startsWith(SRC_UA_PREFIX) || source === SRC_PSA || source === SRC_PSK;
 }
 
 function onJsonLoad(data) {
@@ -153,7 +146,8 @@ function loadhash (id) {
 			const feature = lvlFeatureList[j];
 			const featureId = HASH_FEATURE+encodeForHash(feature.name)+"_"+i;
 
-			const featureLink = $(`<a href="${getClassHash(curClass)}${HASH_PART_SEP}${HASH_FEATURE}${encodeForHash(feature.name)}" class="${CLSS_FEATURE_LINK}">${feature.name}</a>`);
+			const featureLinkPart = HASH_FEATURE+encodeForHash(feature.name)+i;
+			const featureLink = $(`<a href="${getClassHash(curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
 			featureLink.click(function() {
 				document.getElementById(featureId).scrollIntoView();
 			});
@@ -185,7 +179,8 @@ function loadhash (id) {
 						const styleClasses = [CLSS_SUBCLASS_FEATURE];
 						const hideSource = isNonstandardSource(subClass.source);
 						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${hideSource ? `style="display: none;"` : ""} ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`);
+						// ${hideSource ? `style="display: none;"` : ""}
+						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`);
 					}
 				}
 				subclassIndex++;
@@ -202,6 +197,9 @@ function loadhash (id) {
 		}
 	}
 	topBorder.after(renderStack.join(""));
+
+	// hide UA/other sources by default
+	$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
 
 	// CLASS FEATURE/UA/SUBCLASS PILL BUTTONS ==========================================================================
 	const subclassPillWrapper = $("div#subclasses");
@@ -312,8 +310,10 @@ function loadhash (id) {
 	}
 }
 
+let prevFeature = null;
 function loadsub(sub) {
-	let rawSubclasses = null;
+	const curHash = window.location.hash;
+
 	let subclasses = null;
 	let feature = null;
 	let hideClassFeatures = null;
@@ -322,17 +322,16 @@ function loadsub(sub) {
 	for (let i = 0; i < sub.length; i++) {
 		const hashPart = sub[i];
 
-		if (hashPart.startsWith(HASH_SUBCLASS)) {
-			rawSubclasses = hashPart;
-			subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
-		}
-		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart.slice(HASH_FEATURE.length);
+		if (hashPart.startsWith(HASH_SUBCLASS)) subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
+		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart;
 		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = hashPart.slice(HASH_HIDE_FEATURES.length) === "true";
 		if (hashPart.startsWith(HASH_ALL_SOURCES)) showAllSources = hashPart.slice(HASH_ALL_SOURCES.length) === "true";
 	}
 
-	// unselect any pills that would be hidden
-	if (subclasses !== null && showAllSources === false) {
+	const hideOtherSources = showAllSources === null || showAllSources === false;
+
+	// deselect any pills that would be hidden
+	if (subclasses !== null && hideOtherSources) {
 		const toDeselect = [];
 		$(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}.${CLSS_ACTIVE}`).each(function(){
 			$this = $(this);
@@ -360,7 +359,7 @@ function loadsub(sub) {
 	}
 
 	if (subclasses !== null) {
-		addFeatureHashes(rawSubclasses);
+		updateClassTableLinks();
 
 		const $toShow = [];
 		const $toHide = [];
@@ -389,14 +388,23 @@ function loadsub(sub) {
 		if ($toShow.length === 0) {
 			displayAllSubclasses();
 		} else {
+			let otherSrcSubFeat = $(`p.${CLSS_NON_STANDARD_SOURCE}`);
 			$.each($toShow, function(i, v) {
 				v.addClass(CLSS_ACTIVE);
 				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
+				if (hideOtherSources) otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
+				else otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
 			});
 			$.each($toHide, function(i, v) {
 				v.removeClass(CLSS_ACTIVE);
 				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
+				otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 			});
+			if (hideOtherSources) {
+				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).hide();
+			} else {
+				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).show();
+			}
 		}
 
 		// show subclass prefixes if we're displaying more than 1 subclass
@@ -423,49 +431,46 @@ function loadsub(sub) {
 	// show UA/etc content as required
 	const srcToggle = $(`#${ID_OTHER_SOURCES_TOGGLE}`);
 	const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`);
-	if (showAllSources !== null && showAllSources) {
-		srcToggle.addClass(CLSS_OTHER_SOURCES_ACTIVE);
-		toToggleSrc.show();
-	} else {
+	if (hideOtherSources) {
 		srcToggle.removeClass(CLSS_OTHER_SOURCES_ACTIVE);
 		toToggleSrc.hide();
+	} else {
+		srcToggle.addClass(CLSS_OTHER_SOURCES_ACTIVE);
+		toToggleSrc.show();
 	}
 
-	function addFeatureHashes (rawSubclasses) {
-		rawSubclasses = (rawSubclasses === undefined || rawSubclasses === null) ? null : rawSubclasses;
-		let needsSubClass = rawSubclasses !== null;
+	// scroll to the linked feature if required
+	if (feature !== null && (prevFeature === null || prevFeature !== feature)) {
+		document.getElementById($(`[${ATB_DATA_FEATURE_LINK}="${feature}"]`)[0].getAttribute(ATB_DATA_FEATURE_ID)).scrollIntoView();
+		prevFeature = feature;
+	}
+
+	updateClassTableLinks();
+
+	function updateClassTableLinks () {
+		const hashParts = curHash.slice(1).split(HASH_PART_SEP);
+		const outParts = [];
+		for (let i = 0; i < hashParts.length; i++) {
+			const part = hashParts[i];
+			if (!part.startsWith(HASH_FEATURE)) outParts.push(part);
+		}
 		$(`.${CLSS_FEATURE_LINK}`).each(
 			function() {
-				const splitHash = this.href.split(HASH_START)[1].split(HASH_PART_SEP);
-				const hashStack = [];
-
-				for (let i = 0; i < splitHash.length; i++) {
-					const hashPart = splitHash[i];
-
-					if (hashPart.startsWith(HASH_SUBCLASS)) {
-						if (rawSubclasses !== null) {
-							hashStack.push(rawSubclasses);
-							needsSubClass = false;
-						}
-					}
-					else hashStack.push(hashPart);
-				}
-
-				if (needsSubClass) hashStack.push(rawSubclasses);
-
-				this.href = HASH_START+hashStack.join(HASH_PART_SEP)
+				const $this = $(this);
+				this.href = HASH_START+outParts.join(HASH_PART_SEP)+HASH_PART_SEP+$this.attr(ATB_DATA_FEATURE_LINK);
 			}
 		)
 	}
 
 	function displayAllSubclasses() {
-		addFeatureHashes();
+		updateClassTableLinks();
 		$(`.${CLSS_SUBCLASS_PILL}`).addClass(CLSS_ACTIVE);
 		$(`.${CLSS_SUBCLASS_FEATURE}`).show();
 		$(`.${CLSS_SUBCLASS_PREFIX}`).show();
+		$(`p.${CLSS_NON_STANDARD_SOURCE}`).show();
 		// if we're hiding features from some sources, make sure these stay hidden
-		if (showAllSources !== null && showAllSources === false) {
-			$(`.${CLSS_SUBCLASS_FEATURE}.${CLSS_NON_STANDARD_SOURCE}`).hide();
+		if (hideOtherSources) {
+			$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
 		}
 	}
 }
