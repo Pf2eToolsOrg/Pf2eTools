@@ -398,7 +398,7 @@ function loadsub(sub) {
 			displayAllSubclasses();
 		} else {
 			const otherSrcSubFeat = $(`p.${CLSS_NON_STANDARD_SOURCE}`);
-			const showInTable = [];
+			const shownInTable = [];
 
 			$.each($toShow, function(i, v) {
 				v.addClass(CLSS_ACTIVE);
@@ -407,8 +407,8 @@ function loadsub(sub) {
 				else otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
 
 				const asInTable = getTableDataScData(v.attr(ATB_DATA_SC), v.attr(ATB_DATA_SRC));
-				showInTable.push(asInTable);
-				handleTableGroups(asInTable, true);
+				shownInTable.push(asInTable);
+				handleTableGroups(shownInTable, asInTable, true);
 			});
 
 			$.each($toHide, function(i, v) {
@@ -417,41 +417,13 @@ function loadsub(sub) {
 				otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 
 				const asInTable = getTableDataScData(v.attr(ATB_DATA_SC), v.attr(ATB_DATA_SRC));
-				handleTableGroups(asInTable, false);
+				handleTableGroups(shownInTable, asInTable, false);
 			});
 
 			if (hideOtherSources) {
 				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).hide();
 			} else {
 				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).show();
-			}
-
-			function handleTableGroups(asInTable, show) {
-				$(`[data-subclass-list]`).each(
-					function() {
-						const $this = $(this);
-						const scs = $this.attr(ATB_DATA_SC_LIST).split(ATB_DATA_LIST_SEP);
-
-						// if another class has shown this item, don't hide it
-						if (!show) {
-							for (let i = 0; i < scs.length; i++) {
-								const sc = scs[i];
-								if ($.inArray(sc, showInTable) !== -1) {
-									return;
-								}
-							}
-						}
-
-						for (let i = 0; i < scs.length; i++) {
-							const sc = scs[i];
-							if (sc === asInTable) {
-								if (show) $this.show();
-								else $this.hide();
-								break;
-							}
-						}
-					}
-				);
 			}
 		}
 
@@ -494,6 +466,34 @@ function loadsub(sub) {
 	}
 
 	updateClassTableLinks();
+
+	function handleTableGroups(shownInTable, tableDataTag, show) {
+		$(`[data-subclass-list]`).each(
+			function() {
+				const $this = $(this);
+				const scs = $this.attr(ATB_DATA_SC_LIST).split(ATB_DATA_LIST_SEP);
+
+				// if another class has shown this item, don't hide it
+				if (!show) {
+					for (let i = 0; i < scs.length; i++) {
+						const sc = scs[i];
+						if ($.inArray(sc, shownInTable) !== -1) {
+							return;
+						}
+					}
+				}
+
+				for (let i = 0; i < scs.length; i++) {
+					const sc = scs[i];
+					if (sc === tableDataTag) {
+						if (show) $this.show();
+						else $this.hide();
+						break;
+					}
+				}
+			}
+		);
+	}
 
 	function updateClassTableLinks () {
 		const hashParts = curHash.slice(1).split(HASH_PART_SEP);
