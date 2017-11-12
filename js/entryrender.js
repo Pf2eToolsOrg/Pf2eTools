@@ -262,6 +262,7 @@ class EntryRenderer {
 									fauxEntry.href.subhashes = [{"key": "subclass", "value": classMatch[2].trim()}]
 								}
 								fauxEntry.href.path = "classes.html";
+								fauxEntry.href.hash = fauxEntry.href.hash += "_phb";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@creature":
