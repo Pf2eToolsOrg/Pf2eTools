@@ -1,4 +1,5 @@
 const HASH_PART_SEP = ",";
+const HASH_LIST_SEP = "_";
 const HASH_START = "#";
 
 function hashchange(e) {

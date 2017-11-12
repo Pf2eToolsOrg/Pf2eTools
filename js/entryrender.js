@@ -63,7 +63,7 @@ class EntryRenderer {
 				case "list":
 					textStack.push("<ul>");
 					for (let i = 0; i < entry.items.length; i++) {
-						this.recursiveEntryRender(entry.items[i], textStack, depth + 1, "<li>", "</li>");
+						this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${isNonstandardSource(entry.items[i].source) ? `class="${CLSS_NON_STANDARD_SOURCE}"` : ""}>`, "</li>");
 					}
 					textStack.push("</ul>");
 					break;
@@ -174,13 +174,22 @@ class EntryRenderer {
 		function handleEntriesOptionsInvocationPatron(self, incDepth) {
 			const inlineTitle = depth >= 2;
 			const nextDepth = incDepth ? depth+1 : depth;
+			let dataString;
 			let nextPrefix;
 			let nextSuffix;
 			if (inlineTitle) {
 				for (let i = 0; i < entry.entries.length; i++) {
 
-					nextPrefix = i !== 0 ? "<p>" : entry.name !== undefined ? `<span class='${EntryRenderer.HEAD_2}'>${entry.name}.</span> ` : null;
-					applyPrerequisite(i);
+					const styleClasses = [];
+					if (isNonstandardSource(entry.entries[i].source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+					if (i === 0 && entry.name !== undefined) styleClasses.push(EntryRenderer.HEAD_2);
+					if ((entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
+					const styleString = styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
+
+					dataString = getDataString(i);
+
+					nextPrefix = i !== 0 ? `<p ${styleString} ${dataString}>` : entry.name !== undefined ? `<span ${styleString} ${dataString}>${entry.name}.</span> ` : null;
+					addPrerequisiteText(i);
 					nextSuffix = i === entry.entries.length-1 ? null : "</p>";
 
 					self.recursiveEntryRender(
@@ -196,15 +205,32 @@ class EntryRenderer {
 					const headerClass = depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1;
 					textStack.push(`<span class='${headerClass}'>${entry.name}</span>`);
 				}
+
 				for (let i = 0; i < entry.entries.length; i++) {
-					nextPrefix = i === 0 ? null : "<p>";
-					applyPrerequisite(i);
+					const styleClasses = [];
+					if (isNonstandardSource(entry.entries[i].source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+					if ((entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") && entry.entries[i].subclass !== undefined) styleClasses.push(CLSS_SUBCLASS_FEATURE);
+					const styleString = styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
+
+					dataString = getDataString(i);
+
+					nextPrefix = i === 0 ? null : `<p ${styleString} ${dataString}>`;
+					addPrerequisiteText(i);
 					nextSuffix = i === entry.entries.length-1 ? null : "</p>";
 					self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, nextPrefix, nextSuffix);
 				}
 			}
 
-			function applyPrerequisite(i) {
+			function getDataString(i) {
+				let dataString = "";
+				if (entry.entries[i].type === "invocation" || entry.entries[i].type === "patron") {
+					if (entry.entries[i].subclass !== undefined) dataString = `${ATB_DATA_SC}="${entry.entries[i].subclass.name}" ${ATB_DATA_SRC}="${entry.entries[i].subclass.source}"`;
+					else dataString = `${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}" ${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"`;
+				}
+				return dataString;
+			}
+
+			function addPrerequisiteText(i) {
 				const prereqText = `<span class="prerequisite">Prerequisite: ${entry.prerequisite}</span>`;
 				if (i === 0 && entry.prerequisite !== undefined) nextPrefix = nextPrefix === null ? prereqText : nextPrefix+prereqText;
 			}
@@ -262,6 +288,7 @@ class EntryRenderer {
 									fauxEntry.href.subhashes = [{"key": "subclass", "value": classMatch[2].trim()}]
 								}
 								fauxEntry.href.path = "classes.html";
+								fauxEntry.href.hash = fauxEntry.href.hash += "_phb";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@creature":
@@ -295,3 +322,4 @@ EntryRenderer.HEAD_NEG_1 = "statsBlockSectionHead";
 EntryRenderer.HEAD_0 = "statsBlockHead";
 EntryRenderer.HEAD_1 = "statsBlockSubHead";
 EntryRenderer.HEAD_2 = "statsInlineHead";
+EntryRenderer.DATA_NONE = "data-none";

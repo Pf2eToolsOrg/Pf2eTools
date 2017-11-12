@@ -56,6 +56,14 @@ const FLTR_RARITY = "filterRarity";
 const FLTR_ATTUNEMENT = "filterAttunement";
 const FLTR_LIST_SEP = ";";
 
+const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
+const CLSS_SUBCLASS_FEATURE = "subclass-feature";
+
+const ATB_DATA_LIST_SEP = "||";
+const ATB_DATA_PART_SEP = "::";
+const ATB_DATA_SC = "data-subclass";
+const ATB_DATA_SRC = "data-source";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -673,6 +681,10 @@ function parse_sourceJsonToFull (source) {
 }
 function parse_sourceJsonToAbv(source) {
 	return _parse_aToB(SOURCE_JSON_TO_ABV, source);
+}
+
+function isNonstandardSource(source) {
+	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source === SRC_PSA || source === SRC_PSK || source === SRC_EEPC || source === SRC_PSI || source === SRC_PSZ);
 }
 
 function parse_stringToSlug(str) {
