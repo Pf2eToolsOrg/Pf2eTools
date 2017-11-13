@@ -228,12 +228,12 @@ function loadhash (id) {
 	subclassPillWrapper.append($(`<span class="divider">`));
 
 	// subclass pills
-	const subClasses = curClass.subclasses.map(sc => ({"name": sc.name, "source": sc.source})).sort(function(a, b){return ascSort(a.name, b.name)});
+	const subClasses = curClass.subclasses.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName})).sort(function(a, b){return ascSort(a.name, b.name)});
 	for (let i = 0; i < subClasses.length; i++) {
 		const nonStandardSource = isNonstandardSource(subClasses[i].source) || isSuperceded(subClasses[i].name, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${parse_sourceJsonToFull(subClasses[i].source)}"><span>${subClasses[i].name}</span></span>`);
+		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${parse_sourceJsonToFull(subClasses[i].source)}"><span>${subClasses[i].shortName}</span></span>`);
 		pill.click(function() {
 			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, subClasses[i].source);
 		});

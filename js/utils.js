@@ -740,7 +740,7 @@ function isSuperceded(name, source) {
 		(name === "Way of the Sun Soul" && source === SRC_SCAG) ||
 		(name === "Mastermind" && source === SRC_SCAG) ||
 		(name === "Swashbuckler" && source === SRC_SCAG) ||
-		(name === "Storm" && source === SRC_SCAG);
+		(name === "Storm Sorcery" && source === SRC_SCAG);
 }
 
 function isNonstandardSource(source) {
