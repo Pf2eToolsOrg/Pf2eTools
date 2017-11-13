@@ -79,7 +79,7 @@ function mergeWeaponsAndPopulate(variantData) {
 		const typeList = type.join(","); // for filter to use
 		itemList[i].typeText = type.join(", ");
 		const tierTags = [];
-		if (curitem.tier) tierTags.push(curitem.tier);
+		tierTags.push(curitem.tier ? curitem.tier : "None");
 		const tierTagsString = tierTags.join(FLTR_LIST_SEP);
 		let attunement = "No";
 		if (curitem.reqAttune !== undefined) {
