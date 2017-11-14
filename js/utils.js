@@ -592,6 +592,7 @@ const SRC_UAS = SRC_UA_PREFIX + "Sorcerer";
 const SRC_UAWAW = SRC_UA_PREFIX + "WarlockAndWizard";
 const SRC_UATF = SRC_UA_PREFIX + "TheFaithful";
 const SRC_UAWR = SRC_UA_PREFIX + "WizardRevisited";
+const SRC_UAESR = SRC_UA_PREFIX + "ElfSubraces";
 
 const SRC_BOLS_3PP = "BoLS 3pp";
 const SRC_ToB_3PP = "ToB 3pp";
@@ -661,6 +662,7 @@ SOURCE_JSON_TO_FULL[SRC_UAS] = UA_PREFIX + "Sorcerer";
 SOURCE_JSON_TO_FULL[SRC_UAWAW] = UA_PREFIX + "Warlock and Wizard";
 SOURCE_JSON_TO_FULL[SRC_UATF] = UA_PREFIX + "The Faithful";
 SOURCE_JSON_TO_FULL[SRC_UAWR] = UA_PREFIX + "Wizard Revisited";
+SOURCE_JSON_TO_FULL[SRC_UAESR] = UA_PREFIX + "Elf Subraces";
 SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
 SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts (3pp)";
 
@@ -725,6 +727,7 @@ SOURCE_JSON_TO_ABV[SRC_UAS] = "UAS";
 SOURCE_JSON_TO_ABV[SRC_UAWAW] = "UAWAW";
 SOURCE_JSON_TO_ABV[SRC_UATF] = "UATF";
 SOURCE_JSON_TO_ABV[SRC_UAWR] = "UAWR";
+SOURCE_JSON_TO_ABV[SRC_UAESR] = "UAESR";
 SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 

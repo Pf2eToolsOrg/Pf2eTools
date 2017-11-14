@@ -1,7 +1,14 @@
+const JSON_URL = "data/races.json";
+
 window.onload = function load() {
+	loadJSON(JSON_URL, onJsonLoad)
+};
+
+let racelist;
+function onJsonLoad (data) {
 	tableDefault = $("#stats").html();
 
-	var racelist = racedata.compendium.race;
+	racelist = data.race;
 
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
@@ -51,7 +58,6 @@ function loadhash (id) {
 	$("#stats").html(tableDefault);
 	$("#stats td").show();
 
-	var racelist = racedata.compendium.race;
 	var currace = racelist[id];
 
 	var name = currace.name;
