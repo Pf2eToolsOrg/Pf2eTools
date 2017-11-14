@@ -6651,7 +6651,7 @@
 			"classes": "Bard, Druid, Sorcerer",
 			"text": [
 				"A strong wind (20 miles per hour) blows around you in a 10-foot radius and moves with you, remaining centered on you. The wind lasts for the spell's duration.",
-				"The wind has the following effects.",
+				"The wind has the following effects:",
 				"• It deafens you and other creatures in its area.",
 				"• It extinguishes unprotected flames in its area that are torch-sized or smaller.",
 				"• The area is difficult terrain for creatures other than you.",
@@ -7051,10 +7051,35 @@
 			"text": [
 				"This spell plays havoc with electronic devices, making the use of such devices all but impossible. Each electronic device in a 10-foot-radius sphere centered on a point you choose within range is subject to random behavior while it remains within the area. A device not held by a creature is automatically affected. If an electronic device is held by a creature, that creature must succeed on a Wisdom saving throw or have the device affected by the spell.",
 				"At the start of each of your turns, roll a d6 for each affected device to determine its behavior. Except where otherwise indicated, that behavior lasts until the start of your next turn while this spell is in effect.",
-				"1: The device shuts down and must be restarted. Do not roll again for this device until it is restarted.",
-				"2–4: The device does not function.",
-				"5: The device experiences a power surge, causing an electric shock to the wielder (if any) and one random creature within 5 feet of the device. Each affected creature must make a Dexterity saving throw against your spell save DC, taking 6d6 lightning damage on a failed save, or half as much damage on a successful one.",
-				"6: The device is usable as normal.",
+				{
+					"istable": "YES",
+					"thead": [
+						"d6",
+						"Effect"
+					],
+					"thstyleclass": [
+						"col-xs-1 text-align-center",
+						"col-xs-11"
+					],
+					"tbody": [
+						[
+							"1",
+							"The device shuts down and must be restarted. Do not roll again for this device until it is restarted."
+						],
+						[
+							"2\u20114",
+							"The device does not function."
+						],
+						[
+							"5",
+							"The device experiences a power surge, causing an electric shock to the wielder (if any) and one random creature within 5 feet of the device. Each affected creature must make a Dexterity saving throw against your spell save DC, taking 6d6 lightning damage on a failed save, or half as much damage on a successful one."
+						],
+						[
+							"6",
+							"The device is usable as normal."
+						]
+					]
+				},
 				"At Higher Levels: When you cast this spell using a spell slot of 4th level or higher, the radius of the sphere affected by the spell increases by 5 feet for each slot level above 3rd."
 			]
 		},
