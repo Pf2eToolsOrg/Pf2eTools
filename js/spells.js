@@ -331,8 +331,16 @@ function onJsonLoad(data) {
 
 		if (spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
-			spell.classes.fromSubclass.push({class: {name: STR_FIGHTER, source: SRC_PHB}, subclass: {name: STR_ELD_KNIGHT, source: SRC_PHB}});
-			spell.classes.fromSubclass.push({class: {name: STR_ROGUE, source: SRC_PHB}, subclass: {name: STR_ARC_TCKER, source: SRC_PHB}})
+			if (spell.level < 5) {
+				spell.classes.fromSubclass.push({
+					class: {name: STR_FIGHTER, source: SRC_PHB},
+					subclass: {name: STR_ELD_KNIGHT, source: SRC_PHB}
+				});
+				spell.classes.fromSubclass.push({
+					class: {name: STR_ROGUE, source: SRC_PHB},
+					subclass: {name: STR_ARC_TCKER, source: SRC_PHB}
+				})
+			}
 		}
 
 		// used for sorting
@@ -533,7 +541,13 @@ function loadhash (id) {
 
 	const entryList = {type: "entries", entries: spell.entries};
 
-	renderer.recursiveEntryRender(entryList, renderStack, 1, `<tr class='text'><td colspan='6' class='text'>`, `</td></tr>`, true);
+	renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+	renderer.recursiveEntryRender(entryList, renderStack, 1);
+
+	const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
+
+	renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
+	renderStack.push(`</td></tr>`);
 
 	renderStack.push(`<tr><td id="classes" colspan="6"><span class="bold">Classes: </span>${getTblClassesStr(spell.classes)}</td></tr>`);
 

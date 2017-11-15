@@ -263,8 +263,8 @@ class EntryRenderer {
 					if (s.charAt(0) === "@") {
 						const [tag, text] = splitFirstSpace(s);
 
-						const textParts = text.split("|");
-						const hash = textParts.map(s => s.trim()).join(HASH_LIST_SEP);
+						const [name, source, displayText, ...others] = text.split("|");
+						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
 
 						const fauxEntry = {
 							"type": "link",
@@ -272,17 +272,17 @@ class EntryRenderer {
 								"type": "internal",
 								"hash": hash
 							},
-							"text": textParts[0]
+							"text": (displayText ? displayText : name)
 						};
 						switch (tag) {
 							case "@spell":
 								fauxEntry.href.path = "spells.html";
-								if (textParts.length === 1) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@item":
 								fauxEntry.href.path = "items.html";
-								fauxEntry.href.hash = fauxEntry.href.hash += "_dmg"; // TODO pass this in
+								if (!source) fauxEntry.href.hash += "_dmg";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@class":
@@ -292,12 +292,12 @@ class EntryRenderer {
 									fauxEntry.href.subhashes = [{"key": "sub", "value": classMatch[2].trim() + "~phb"}] // TODO pass this in
 								}
 								fauxEntry.href.path = "classes.html";
-								if (textParts.length === 1) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@creature":
 								fauxEntry.href.path = "bestiary.html";
-								if (textParts.length === 1) fauxEntry.href.hash += HASH_LIST_SEP + SRC_MM;
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_MM;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@bold":
