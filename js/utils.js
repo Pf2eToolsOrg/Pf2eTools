@@ -263,8 +263,9 @@ function utils_makeAttChoose(attList) {
 	}
 }
 function utils_makeRoller(text) {
-	return text.replace(/([1-9]\d*)?d([1-9]\d*)([+-]\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>");
+	return text.replace(/([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>");
 }
+
 
 function makeTableThClassText(tableObject, i) {
 	return tableObject.thstyleclass === undefined || i >= tableObject.thstyleclass.length ? "" : " class=\"" + tableObject.thstyleclass[i] + "\"";
