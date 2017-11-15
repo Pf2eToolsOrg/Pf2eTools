@@ -234,8 +234,8 @@ th.border {
 
 td.divider div {
 	background: #922610;
-	height: 4px;
-	margin: 4px 0;
+	height: 2px;
+	margin: 6px 0;
 }
 
 table#stats span.name {
@@ -248,22 +248,6 @@ tr.text td {
 
 td#levelschoolritual {
 	font-style: italic;
-}
-
-table#stats #castingtime,
-table#stats #range,
-table#stats #components,
-table#stats #duration,
-table#stats #classes {
-	font-weight: bold;
-}
-
-table#stats #castingtime span,
-table#stats #range span,
-table#stats #components span,
-table#stats #duration span,
-table#stats #classes span {
-	font-weight: normal !important;
 }
 
 table#stats td#typerarityattunement {
@@ -380,14 +364,6 @@ p.first {
 
 p.second {
 	margin-top: 1em;
-}
-
-tr td > p.spells {
-	margin-top: 1em !important;
-}
-
-tr td > p.spells ~ p.spells {
-	margin-top: 0 !important;
 }
 
 span.roller {
@@ -697,7 +673,8 @@ ul.list.classes {
 
 #classtable .centred-col {
 	text-align: center;
-	width: 3.2em;
+	min-width: 1em;
+	max-width: 3.2em;
 }
 
 div#subclasses {
@@ -822,6 +799,39 @@ table#stats p.subtrait {
 
 .no-wrap {
 	white-space: nowrap;
+}
+
+/* spells page */
+.school_A {
+	color: #81a7e7;
+}
+
+.school_V {
+	color: #e74e2e;
+}
+
+.school_E {
+	color: #e975ca;
+}
+
+.school_I {
+	color: #8e65b8;
+}
+
+.school_D {
+	color: #869eaf;
+}
+
+.school_N {
+	color: #aff386;
+}
+
+.school_T {
+	color: #b97d3f;
+}
+
+.school_C {
+	color: #f3d163;
 }
 
 /****************************************

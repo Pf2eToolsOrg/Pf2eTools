@@ -370,8 +370,8 @@ class Filter {
 		this.header = header;
 		this.storageAttribute = storageAttribute;
 		this.items = items;
-		this.displayFunction = displayFunction;
-		this.valueFunction = valueFunction;
+		this.displayFunction = displayFunction === undefined || displayFunction === null ? Filter.asIs : displayFunction;
+		this.valueFunction = valueFunction === undefined || valueFunction === null ? Filter.asIs : valueFunction;
 	}
 }
 

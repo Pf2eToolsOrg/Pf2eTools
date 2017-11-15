@@ -38,6 +38,7 @@ const ATB_ONCLICK = "onclick";
 const STL_DISPLAY_INITIAL = "display: initial";
 const STL_DISPLAY_NONE = "display: none";
 
+const FLTR_ID = "filterId";
 const FLTR_SOURCE = "filterSource";
 const FLTR_TYPE = "filterType";
 const FLTR_CR = "filterCr";
@@ -901,8 +902,15 @@ function addDropdownOption(dropdown, optionVal, optionText) {
 }
 
 // ENCODING/DECODING ===================================================================================================
-function encodeForHash(str) {
-	return encodeURIComponent(str).toLowerCase().replace("'","%27")
+function encodeForHash(toEncode) {
+	if (toEncode instanceof Array) {
+		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
+	} else {
+		return encodeForHashHelper(toEncode);
+	}
+	function encodeForHashHelper(part) {
+		return encodeURIComponent(part).toLowerCase().replace("'","%27")
+	}
 }
 
 // SORTING =============================================================================================================

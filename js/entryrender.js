@@ -22,6 +22,8 @@ class EntryRenderer {
 		if (typeof droll !== "undefined" && entry.rollable === true) {
 			// TODO output this somewhere nice
 			// TODO make this less revolting
+
+			// TODO output to small tooltip-stype bubble? Close on mouseout
 			return `<span class='roller unselectable' onclick="if (this.rolled) { this.innerHTML = this.innerHTML.split('=')[0].trim()+' = '+droll.roll('${toAdd}').total; } else { this.rolled = true; this.innerHTML += ' = '+droll.roll('${toAdd}').total; }">${toAdd}</span>`;
 		} else {
 			return toAdd;
@@ -260,18 +262,22 @@ class EntryRenderer {
 					if (s === undefined || s === null || s === "") continue;
 					if (s.charAt(0) === "@") {
 						const [tag, text] = splitFirstSpace(s);
+
+						const textParts = text.split("|");
+						const hash = textParts.map(s => s.trim()).join(HASH_LIST_SEP);
+
 						const fauxEntry = {
 							"type": "link",
 							"href": {
 								"type": "internal",
-								"hash": text
+								"hash": hash
 							},
-							"text": text
+							"text": textParts[0]
 						};
 						switch (tag) {
 							case "@spell":
 								fauxEntry.href.path = "spells.html";
-								fauxEntry.href.hash = fauxEntry.href.hash += "_phb"; // TODO pass this in
+								if (textParts.length === 1) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@item":
@@ -283,15 +289,15 @@ class EntryRenderer {
 								const classMatch = EntryRenderer.RE_INLINE_CLASS.exec(text);
 								if (classMatch) {
 									fauxEntry.href.hash = classMatch[1].trim(); // TODO pass this in
-									fauxEntry.href.subhashes = [{"key": "subclass", "value": classMatch[2].trim()}]
+									fauxEntry.href.subhashes = [{"key": "sub", "value": classMatch[2].trim() + "~phb"}] // TODO pass this in
 								}
 								fauxEntry.href.path = "classes.html";
-								fauxEntry.href.hash = fauxEntry.href.hash += "_phb"; // TODO pass this in
+								if (textParts.length === 1) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@creature":
 								fauxEntry.href.path = "bestiary.html";
-								fauxEntry.href.hash = fauxEntry.href.hash += "_mm"; // TODO pass this in
+								if (textParts.length === 1) fauxEntry.href.hash += HASH_LIST_SEP + SRC_MM;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@bold":
