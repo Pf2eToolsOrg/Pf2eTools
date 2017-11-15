@@ -10,7 +10,7 @@ function loadRaceJson() {
 
 window.onload = function load() {
 	loadRaceJson();
-}
+};
 
 function onJsonLoad(data) {
 	raceData = data.race;
@@ -19,8 +19,8 @@ function onJsonLoad(data) {
 	$(".base").on("input", changeBase);
 	$("input.choose").on("change", choose);
 
-	const names = raceData.map(x => x.name).sort()
-	const options = names.map(name => `<option>${name}</option>`).join()
+	const names = raceData.map(x => x.name).sort();
+	const options = names.map(name => `<option>${name}</option>`).join();
 	$("#race").append(options).change(changeRace).change();
 
 	if (window.location.hash)
@@ -33,68 +33,68 @@ window.onhashchange = function hashchange() {
 	const hash = window.location.hash.slice(1);
 	$(".statmethod").hide();
 	$("#" + hash).show();
-}
+};
 
 function getCost(n) {
 	if (n < 14)
-		return n - 8
+		return n - 8;
 	if (n === 14)
-		return 7
+		return 7;
 	return 9
 }
 
 function choose() {
 	if ($("input.choose:checked").length > count)
-		return this.checked = false
+		return this.checked = false;
 
 	$(".racial", this.parentNode.parentNode)
-		.val(this.checked ? amount : 0)
+		.val(this.checked ? amount : 0);
 	changeTotal()
 }
 
 function changeRace() {
-	const race = this.value
+	const race = this.value;
 	const stats = raceData
-		.find(({name}) => name === race).ability
+		.find(({name}) => name === race).ability;
 
-	$(".racial").val(0)
+	$(".racial").val(0);
 	for (const key in stats)
 		$(`#${key} .racial`).val(stats[key])
 
-	changeTotal()
-	$(".choose").hide().prop("checked", false)
+	changeTotal();
+	$(".choose").hide().prop("checked", false);
 
 	if (!stats.choose)
-		return
+		return;
 
-	const {from} = stats.choose[0]
-	amount = stats.choose[0].amount || 1
-	count = stats.choose[0].count
+	const {from} = stats.choose[0];
+	amount = stats.choose[0].amount || 1;
+	count = stats.choose[0].count;
 
-	$("td.choose").text(`Choose ${count}`).show()
+	$("td.choose").text(`Choose ${count}`).show();
 	from.forEach(key => $(`#${key} .choose`).show())
 }
 
 function changeTotal() {
 	$("#pointbuy tr[id]").each((i, el) => {
-		const [base, racial, total, mod] = $("input", el).get()
-		const raw = total.value = Number(base.value) + Number(racial.value)
+		const [base, racial, total, mod] = $("input", el).get();
+		const raw = total.value = Number(base.value) + Number(racial.value);
 		mod.value = Math.floor((raw - 10) / 2)
 	})
 }
 
 function changeBase(e) {
-	const budget = Number($("#budget").val())
+	const budget = Number($("#budget").val());
 
-	let cost = 0
+	let cost = 0;
 	$(".base").each((i, el) =>
-		cost += getCost(Number(el.value)))
+		cost += getCost(Number(el.value)));
 
 	if (cost > budget)
-		return this.value = this.dataset.prev
+		return this.value = this.dataset.prev;
 
-	this.dataset.prev = this.value
-	$("#remaining").val(budget - cost)
+	this.dataset.prev = this.value;
+	$("#remaining").val(budget - cost);
 
 	changeTotal()
 }
