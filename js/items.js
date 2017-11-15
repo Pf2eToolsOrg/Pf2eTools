@@ -1,38 +1,107 @@
 const ITEMS_JSON_URL = "data/items.json";
-const WEAPONS_JSON_URL = "data/weapons.json";
+const BASIC_ITEMS_JSON_URL = "data/basicitems.json";
 const MAGIC_VARIANTS_JSON_URL = "data/magicvariants.json";
 const TYPE_DOSH ="$";
 let tabledefault = "";
 let itemList;
-let weaponList;
+let basicItemList;
 let variantList;
 
 window.onload = function load() {
-	loadJSON(ITEMS_JSON_URL, addWeapons);
+	loadJSON(ITEMS_JSON_URL, addBasicItems);
 };
 
-function addWeapons(itemData) {
+function addBasicItems(itemData) {
 	itemList = itemData.item;
-	loadJSON(WEAPONS_JSON_URL, addVariants);
+	loadJSON(BASIC_ITEMS_JSON_URL, addVariants);
 }
 
-function addVariants(weaponData) {
-	weaponList = weaponData.weapon;
-	loadJSON(MAGIC_VARIANTS_JSON_URL, mergeWeaponsAndPopulate);
+function addVariants(basicItemData) {
+	basicItemList = basicItemData.basicitem;
+	loadJSON(MAGIC_VARIANTS_JSON_URL, mergeBasicItems);
 }
 
-function mergeWeaponsAndPopulate(variantData) {
+function emphasize (strongWords, normalWords) { // FIX ME: Replace HTML tags with inline tags once we have the recursive renderer
+	return "<p><strong>"+strongWords+".</strong> "+normalWords+"</p>";
+}
+
+function mergeBasicItems(variantData) {
 	variantList = variantData.variant;
-	itemList = itemList.concat(weaponList);
+	itemList = itemList.concat(basicItemList);
 
-	for (let i = 0; i < weaponList.length; i++) {
-		const curWeapon = weaponList[i];
+	for (let i = 0; i < basicItemList.length; i++) {
+		const curBasicItem = basicItemList[i];
+		if(curBasicItem.text === undefined) curBasicItem.text=[];
 		for (let j = 0; j < variantList.length; j++) {
 			const curVariant = variantList[j];
-			//FINISH ME. Merge weapons and variants where the requirements are met.
+			const curRequires = curVariant.requires;
+			let hasRequired = true;
+			for (const requiredProperty in curRequires) if (curRequires.hasOwnProperty(requiredProperty) && curBasicItem[requiredProperty] !== curRequires[requiredProperty]) hasRequired=false;
+			if (curVariant.excludes) {
+				const curExcludes = curVariant.excludes;
+				for (const excludedProperty in curExcludes) if (curExcludes.hasOwnProperty(excludedProperty) && curBasicItem[excludedProperty] === curExcludes[excludedProperty]) hasRequired=false;
+			}
+			if (hasRequired) {
+				const curInherits = curVariant.inherits
+				const tmpBasicItem = JSON.parse(JSON.stringify(curBasicItem));
+				delete tmpBasicItem.value; // Magic items do not inherit the value of the non-magical item
+				for (const inheritedProperty in curInherits) {
+					if (curInherits.hasOwnProperty(inheritedProperty)) {
+						if (inheritedProperty === "namePrefix") {
+							tmpBasicItem.name = curInherits.namePrefix+tmpBasicItem.name;
+						} else if (inheritedProperty === "nameSuffix") {
+							const tmpName = tmpBasicItem.name;
+							tmpBasicItem.name = tmpName.indexOf(" (") !== -1 ? tmpName.replace(" (", curInherits.nameSuffix+" (") : tmpName+curInherits.nameSuffix;
+						} else if (inheritedProperty === "text") {
+							for (let k = curInherits.text.length-1; k > -1; k--) {
+								let tmpText = curInherits.text[k];
+								if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", parse_dmgTypeToFull(tmpBasicItem.dmgType));
+								if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
+								tmpBasicItem.text.unshift(tmpText);
+							}
+						} else
+							tmpBasicItem[inheritedProperty] = curInherits[inheritedProperty];
+					}
+				}
+				itemList.push(tmpBasicItem);
+			}
 		}
 	}
+	enhanceItems();
+}
 
+function enhanceItems() { //FIX ME Move the texthtml processing from loadhash to here to make life easier for the renderer
+	populateTablesAndFilters();
+}
+
+function rarityValue(rarity) { //Ordered by most frequently occuring rarities in the JSON
+	if (rarity === "Rare") return 3;
+	if (rarity === "None") return 0;
+	if (rarity === "Uncommon") return 2;
+	if (rarity === "Very Rare") return 4;
+	if (rarity === "Legendary") return 5;
+	if (rarity === "Artifact") return 6;
+	if (rarity === "Unknown") return 7;
+	if (rarity === "Common") return 1;
+	return 0;
+}
+
+function sortitems(a, b, o) {
+	if (o.valueName === "name") {
+		return b._values.name.toLowerCase() > a._values.name.toLowerCase() ? 1 : -1;
+	} else if (o.valueName === "type") {
+		if (b._values.type === a._values.type) return compareNames(a, b);
+		return b._values.type.toLowerCase() > a._values.type.toLowerCase() ? 1 : -1;
+	} else if (o.valueName === "source") {
+		if (b._values.source === a._values.source) return compareNames(a, b);
+		return b._values.source.toLowerCase() > a._values.source.toLowerCase() ? 1 : -1;
+	} else if (o.valueName === "rarity") {
+		if (b._values.rarity === a._values.rarity) return compareNames(a, b);
+		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
+	} else return 1;
+}
+
+function populateTablesAndFilters() {
 	tabledefault = $("#stats").html();
 
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
@@ -61,9 +130,9 @@ function mergeWeaponsAndPopulate(variantData) {
 	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, parse_stringToSlug);
 	filterList.push(attunementFilter);
 	const filterBox = new FilterBox(filterAndSearchBar, filterList);
+	const liList = {mundane:"", magic:""}; // store the <li> tag content here and change the DOM once for each after the loop
 
 	for (let i = 0; i < itemList.length; i++) {
-
 		const curitem = itemList[i];
 		const name = curitem.name;
 		const rarity = curitem.rarity;
@@ -77,7 +146,7 @@ function mergeWeaponsAndPopulate(variantData) {
 		if (curitem.weaponCategory) type.push(curitem.weaponCategory+" Weapon");
 		if (curitem.type) type.push(parse_itemTypeToAbv(curitem.type));
 		const typeList = type.join(","); // for filter to use
-		itemList[i].typeText = type.join(", ");
+		itemList[i].typeText = type.join(", "); // for loadhash to use
 		const tierTags = [];
 		tierTags.push(curitem.tier ? curitem.tier : "None");
 		const tierTagsString = tierTags.join(FLTR_LIST_SEP);
@@ -89,20 +158,16 @@ function mergeWeaponsAndPopulate(variantData) {
 			else attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
 		}
 
-		// populate table
-		$("ul.list."+((rarity !== "None" && rarity !== "Unknown") || curitem.tier || curitem.reqAttune || curitem.wondrous ? "magic" : "mundane")).append(`<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}'><a id='${i}' href="#${encodeForHash(name)}" title="${name}"><span class='name col-xs-4'>${name}</span> <span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span> <span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span> <span class='rarity col-xs-2'>${rarity}</span></a></li>`);
+		liList[rarity === "None" || rarity === "Unknown" ? "mundane" : "magic"] += `<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}'><a id='${i}' href="#${encodeForHash(name)}" title="${name}"><span class='name col-xs-4'>${name}</span> <span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span> <span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span> <span class='rarity col-xs-2'>${rarity}</span></a></li>`;
 
 		// populate filters
 		if ($.inArray(source, sourceFilter.items) === -1) sourceFilter.items.push(source);
-		for (let j = 0; j < type.length; ++j) {
-			const aType = type[j];
-			if ($.inArray(aType, typeFilter.items) === -1) typeFilter.items.push(aType);
-		}
-		for (let j = 0; j < tierTags.length; ++j) {
-			const aTier = tierTags[j];
-			if ($.inArray(aTier, tierFilter.items) === -1) tierFilter.items.push(aTier);
-		}
+		for (let j = 0; j < type.length; ++j) if ($.inArray(type[j], typeFilter.items) === -1) typeFilter.items.push(type[j]);
+		for (let j = 0; j < tierTags.length; ++j) if ($.inArray(tierTags[j], tierFilter.items) === -1) tierFilter.items.push(tierTags[j]);
 	}
+	// populate table
+	$("ul.list.mundane").append(liList.mundane);
+	$("ul.list.magic").append(liList.magic);
 	// sort filters
 	sourceFilter.items.sort(ascSort);
 	typeFilter.items.sort(ascSort);
@@ -205,103 +270,51 @@ function mergeWeaponsAndPopulate(variantData) {
 	});
 }
 
-function rarityValue(rarity) {
-//Ordered by most frequently occuring rarities in the JSON
-	if (rarity === "Rare") return 3;
-	if (rarity === "None") return 0;
-	if (rarity === "Uncommon") return 2;
-	if (rarity === "Very Rare") return 4;
-	if (rarity === "Legendary") return 5;
-	if (rarity === "Artifact") return 6;
-	if (rarity === "Unknown") return 7;
-	if (rarity === "Common") return 1;
-	return 0;
-}
-
-function sortitems(a, b, o) {
-	if (o.valueName === "name") {
-		return b._values.name.toLowerCase() > a._values.name.toLowerCase() ? 1 : -1;
-	}
-
-	if (o.valueName === "type") {
-		if (b._values.type === a._values.type) return compareNames(a, b);
-		return b._values.type.toLowerCase() > a._values.type.toLowerCase() ? 1 : -1;
-	}
-
-	if (o.valueName === "source") {
-		if (b._values.source === a._values.source) return compareNames(a, b);
-		return b._values.source.toLowerCase() > a._values.source.toLowerCase() ? 1 : -1;
-	}
-
-	if (o.valueName === "rarity") {
-		if (b._values.rarity === a._values.rarity) return compareNames(a, b);
-		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
-	}
-
-	return 1;
-}
-
-function emphasize (strongWords, normalWords) {
-	return "<p><strong>"+strongWords+".</strong> "+normalWords+"</p>";
-}
-
 function loadhash (id) {
 	const ammoGenericText="<p>If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way.</p>";
 	const ammoFirearmText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. The ammunition of a firearm is destroyed upon use.")+ammoGenericText;
 	const ammoNormalText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.")+ammoGenericText;
 	$("#currentitem").html(tabledefault);
 	const item = itemList[id];
-	const attunetext = item.reqAttune
-	const name = item.name;
-	const rarity = item.rarity;
-	const tier = item.tier;
-	const source = item.source;
-	const textlist = item.text;
-	const dmg1 = item.dmg1;
-	let type = "";
-	if (item.type) type = item.type;
-	let value = item.value;
-	const weight = item.weight;
-	let texthtml = "";
 
+	const source = item.source;
 	const sourceAbv = parse_sourceJsonToAbv(source);
 	const sourceFull = parse_sourceJsonToFull(source);
-	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+name);
+	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+item.name);
 	$("td#source span").html(sourceFull+", page "+item.page);
 
+	let value = item.value;
+	const weight = item.weight;
 	$("span#value").html("");
 	if (value) {
 		if (weight) value = value + ", ";
 		$("td span#value").html(value);
 	} else $("td span#value").html("");
-
 	$("span#weight").html("");
 	$("td span#weight").html(weight ? weight+(weight == 1 ? " lb." : " lbs.") : "");
 
+	$("td span#rarity").html("");
+	const tier = item.tier;
+	if (tier) $("td span#rarity").append(", "+tier);
+	const rarity = item.rarity;
+	if (rarity) $("td span#rarity").append(", "+rarity);
+
+	const attunetext = item.reqAttune
 	$("td span#attunement").html(attunetext ? (attunetext === "OPTIONAL" ? "(Attunement Optional)" : "(Requires Attunement"+(attunetext === "YES" ? "" : " "+attunetext)+")") : "");
 
-	$("tr.text").remove();
-
-	if (textlist) {
-		for (let n = 0; n < textlist.length; n++) {
-			if (!textlist[n]) continue;
-			const curtextstring = JSON.stringify (textlist[n]);
-			if (textlist[n].istable === "YES") {
-				texthtml += utils_makeTable(textlist[n]);
-			} else {
-				//FIX ME. Modify the JSON to include all required empasis.
-				//If you need to stop a short initial sentence from being empasized then add a space to the start of that JSON text entry
-				texthtml = texthtml + "<p>"+textlist[n].replace(/^(\w+'*\s?){1,6}(:|\.) /g, "<strong>$&</strong>")+"</p>";
-			}
-		}
-	}
-
-	$("td span#type").html("");
+	$("td span#type").html(item.typeText);
 	$("span#damage").html("");
 	$("span#damagetype").html("");
-	$("td span#type").append(item.typeText);
-
-	if (type === "MNT" || type === "VEH") {
+	let type = "";
+	if (item.type) type = item.type;
+	if (item.weaponCategory) {
+		if(item.dmg1) $("span#damage").html(utils_makeRoller(item.dmg1));
+		if(item.dmgType) $("span#damagetype").html(parse_dmgTypeToFull(item.dmgType));
+	} else if (type === "LA" ||type === "MA"|| type === "HA") {
+		$("span#damage").html("AC "+item.ac+(type === "LA" ? " + Dex" : (type === "MA" ? " + Dex (max 2)" : "")));
+	} else if (type === "S") {
+		$("span#damage").html("AC +"+item.ac);
+	} else if (type === "MNT" || type === "VEH") {
 		const speed=item.speed;
 		const capacity=item.carryingcapacity;
 		if (speed) $("span#damage").append("Speed="+speed);
@@ -311,34 +324,34 @@ function loadhash (id) {
 			if (capacity.indexOf("ton") === -1 && capacity.indexOf("passenger") === -1) $("span#damage").append(capacity == 1 ? " lb." : " lbs.");
 		}
 	}
-	if (item.weaponCategory) {
-		$("span#damage").html(dmg1);
-		if(item.dmgType) $("span#damagetype").html(parse_dmgTypeToFull(item.dmgType));
+
+	$("tr.text").remove();
+	const textlist = item.text;
+	let texthtml = "";
+	if (textlist) {
+		for (let n = 0; n < textlist.length; n++) {
+			if (!textlist[n]) continue;
+			if (textlist[n].istable === "YES") {
+				texthtml += utils_makeTable(textlist[n]);
+			} else {
+				//FIX ME. Modify the JSON to include all required empasis.
+				//If you need to stop a short initial sentence from being empasized then add a space to the start of that JSON text entry
+				texthtml = texthtml + "<p>"+textlist[n].replace(/^(\w+'*\s?){1,6}(:|\.) /g, "<strong>$&</strong>")+"</p>";
+			}
+		}
 	}
 	if (type === "LA" ||type === "MA"|| type === "HA") {
-		if (type === "LA") $("span#damage").html("AC "+item.ac+" + Dex");
-		if (type === "MA") $("span#damage").html("AC "+item.ac+" + Dex (max 2)");
-		if (type === "HA") $("span#damage").html("AC "+item.ac);
-		if (item.genericBonus) texthtml += "<p>You have a "+item.genericBonus+" bonus to AC while wearing this armor.</p>";
 		if (item.resist) texthtml += "<p>You have resistance to "+item.resist+" damage while you wear this armor.</p>";
 		if (type === "HA" && item.strength) texthtml += "<p>If the wearer has a Strength score lower than " + item.strength + ", their speed is reduced by 10 feet.</p>";
-		if (name.indexOf("Adamantine ") !== -1) texthtml += "<p>This suit of armor is reinforced with adamantine, one of the hardest substances in existence. While you're wearing it, any critical hit against you becomes a normal hit.</p>";
-		if (item.stealth === "YES") texthtml += "<p>The wearer has disadvantage on Stealth (Dexterity) checks.</p>";
-	} else if (type === "A" || type === "AF") {
-		if (item.genericBonus) texthtml += "<p>You have a "+item.genericBonus+" bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical.</p>";
-		texthtml += type === "A" ? ammoNormalText : ammoFirearmText;
-	} else if (type === "S") {
-		if (item.genericBonus) texthtml += "<p>While holding this shield, you have a "+item.genericBonus+" bonus to AC. This bonus is in addition to the shield's normal bonus to AC.</p>";
-		$("span#damage").html("AC +"+item.ac);
-	} else if (item.weaponCategory) {
-		if (item.genericBonus) texthtml += "<p>You have a "+item.genericBonus+" bonus to attack "+(dmg1 ? "and damage " : "")+"rolls made with this weapon.</p>";
+		if (item.stealth) texthtml += "<p>The wearer has disadvantage on Stealth (Dexterity) checks.</p>";
+	} else if (type === "A") {
+		texthtml += item.age ? ammoFirearmText : ammoNormalText;
 	} else if (type === "AT") {
 		texthtml += "<p>These special tools include the items needed to pursue a craft or trade. Proficiency with a set of artisan's tools lets you add your proficiency bonus to any ability checks you make using the tools in your craft. Each type of artisan's tools requires a separate proficiency.</p>";
 	} else if (type === "GS") {
 		texthtml += "<p>If you are proficient with a gaming set, you can add your proficiency bonus to ability checks you make to play a game with that set. Each type of gaming set requires a separate proficiency.</p>";
 	} else if (type === "INS") {
 		texthtml += "<p>If you have proficiency with a given musical instrument, you can add your proficiency bonus to any ability checks you make to play music with the instrument.</p><p>A bard can use a musical instrument as a spellcasting focus, substituting it for any material component that does not list a cost.</p><p>Each type of musical instrument requires a separate proficiency.</p>";
-		if (name.indexOf("Instrument of the Bards, ") !== -1) texthtml = "<p>An instrument of the bards is an exquisite example of its kind, superior to an ordinary instrument in every way. Seven types of these instruments exist, each named after a legendary bard college. A creature that attempts to play the instrument without being attuned to it must succeed on a DC 15 Wisdom saving throw or take 2d4 psychic damage.</p><p>You can use an action to play the instrument and cast one of its spells. Once the instrument has been used to cast a spell, it can't be used to cast that spell again until the next dawn. The spells use your spellcasting ability and spell save DC.</p><p>When you use the instrument to cast a spell that causes targets to become charmed on a failed save, the targets have disadvantage on the saving throw. This effect applies whether you are using the instrument as the source of the spell or as a spellcasting focus</p><p>All instruments of the bards can be used to cast the following spells: <a href=\"spells.html#fly\" target=\"_blank\">fly</a>, <a href=\"spells.html#invisibility\" target=\"_blank\">invisibility</a>, <a href=\"spells.html#levitate\" target=\"_blank\">levitate</a>, and <a href=\"spells.html#protection%20from%20evil%20and%20good\" target=\"_blank\">protection from evil and good</a>.</p>"+texthtml;
 	} else if (type === "P") {
 		if (item.resist) texthtml += "<p>When you drink this potion, you gain resistance to "+item.resist+" damage for 1 hour.</p>";
 	} else if (type === "RG") {
@@ -349,27 +362,17 @@ function loadhash (id) {
 		if (item.scfType === "holy") texthtml += "<p>A holy symbol is a representation of a god or pantheon.</p><p>A cleric or paladin can use a holy symbol as a spellcasting focus, using it in place of any material components which do not list a cost. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.</p>";
 	} else if (type === "TG") {
 		texthtml += "<p>Most wealth is not in coins. It is measured in livestock, grain, land, rights to collect taxes, or rights to resources (such as a mine or a forest).</p><p>Guilds, nobles, and royalty regulate trade. Chartered companies are granted rights to conduct trade along certain routes, to send merchant ships to various ports, or to buy or sell specific goods. Guilds set prices for the goods or services that they control, and determine who may or may not offer those goods and services. Merchants commonly exchange trade goods without using currency.</p>";
-	} else if (item.wondrous) {
-		if (item.bagOfTricks) texthtml = "<p>This ordinary bag, made from "+item.bagOfTricks+" cloth, appears empty. Reaching inside the bag, however, reveals the presence of a small, fuzzy object.</p><p>You can use an action to pull the fuzzy object from the bag and throw it up to 20 feet. When the object lands, it transforms into a creature you determine by rolling a d8 and consulting the table. The creature vanishes at the next dawn or when it is reduced to 0 hit points.</p><p>The creature is friendly to you and your companions, and it acts on your turn. You can use a bonus action to command how the creature moves and what action it takes on its next turn, or to give it general orders, such as to attack your enemies. In the absence of such orders, the creature acts in a fashion appropriate to its nature.</p><p>Once three fuzzy objects have been pulled from the bag, the bag can't be used again until the next dawn.</p>"+texthtml;
-		if (name.indexOf("Figurine of Wondrous Power, ") !== -1) texthtml = "A figurine of wondrous power is a statuette of a beast small enough to fit in a pocket. If you use an action to speak the command word and throw the figurine to a point on the ground within 60 feet of you, the figurine becomes a living creature. If the space where the creature would appear is occupied by other creatures or objects, or if there isn't enough space for the creature, the figurine doesn't become a creature.</p><p>The creature is friendly to you and your companions. It understands your languages and obeys your spoken commands. If you issue no commands, the creature defends itself but takes no other actions.</p><p>The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.</p>" + texthtml;
-		if (name.indexOf("Quaal's Feather Token, ") !== -1) texthtml = "<p>This tiny object looks like a feather.</p>" + texthtml;
-		if (name.indexOf("Ioun Stone, ") !== -1) texthtml = "<p>An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.</p><p>When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.</p><p>A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.</p>" + texthtml;
 	}
 	if (type === "R") texthtml += emphasize("Range", "A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range.");
-
-	$("td span#rarity").html("");
-	if (tier) $("td span#rarity").append(", "+tier);
-	if (rarity) $("td span#rarity").append(", "+rarity);
 
 	$("span#properties").html("");
 	if (item.property) {
 		const properties = item.property.split(",");
-		$("span#damagetype").append(" - ");
 		for (let i = 0; i < properties.length; i++) {
 			let a = b = properties[i];
 			a = parse_propertyToAbv (a);
 			if (b === "V") {
-				a = a + " (" + item.dmg2 + ")";
+				a = a + " (" + utils_makeRoller(item.dmg2) + ")";
 				texthtml += emphasize("Versatile", "This weapon can be used with one or two hands. A damage value in parentheses appears with the property \u2014 the damage when the weapon is used with two hands to make a melee attack.");
 			}
 			if (b === "T" || b === "A") a = a + " (" + item.range + "ft.)";
@@ -377,22 +380,27 @@ function loadhash (id) {
 				a = a + " (" + item.reload + " shots)";
 				texthtml += emphasize("Reload", "A limited number of shots can be made with a weapon that has the reload property. A character must then reload it using an action or a bonus action (the character's choice).");
 			}
-			if (i > 0) a = ", "+a;
+			a = (i > 0 ? ", " : (item.dmg1 ? "- " : "")) + a;
 			$("span#properties").append(a);
 			if (b === "2H") texthtml += emphasize("Two-Handed", "This weapon requires two hands to use.");
-			if (b === "A") texthtml += ammoNormalText;
-			if (b === "AF") texthtml += ammoFirearmText;
+			if (b === "A") texthtml += item.age ? ammoFirearmText : ammoNormalText;
 			if (b === "BF") texthtml += emphasize("Burst Fire", "A weapon that has the burst fire property can make a single-target attack, or it can spray a 10-foot-cube area within normal range with shots. Each creature in the area must succeed on a DC 15 Dexterity saving throw or take the weapon's normal damage. This action uses ten pieces of ammunition.");
 			if (b === "F") texthtml += emphasize("Finesse", "When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls.");
 			if (b === "H") texthtml += emphasize("Heavy", "Small creatures have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small creature to use effectively.");
 			if (b === "L") texthtml += emphasize("Light", "A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons.");
 			if (b === "LD") texthtml += emphasize("Loading", "Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make.");
 			if (b === "R") texthtml += emphasize("Reach", "This weapon adds 5 feet to your reach when you attack with it.");
-			if (b === "S") texthtml += name.substr(0,3) === "Net" ? emphasize("Special", "A Large or smaller creature hit by a net is restrained until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make.") : emphasize("Special", "You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted.");
-			if (b === "T") texthtml += emphasize("Thrown.</strong> If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property.");
+			if (b === "T") texthtml += emphasize("Thrown", "If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property.");
 		}
 	}
-	//If a non-hyperlinked version of texthtml is required then use this instead:
-	//$("tr#text").after("<tr class='text'><td colspan='6' class='text1'>"+texthtml.replace(/<a[^>]+>/ig, "").replace(/<\/a>/ig, "")+"</td></tr>");
-	$("tr#text").after("<tr class='text'><td colspan='6' class='text1'>"+texthtml+"</td></tr>");
+
+	$("tr#text").after("<tr class='text'><td colspan='6' class='text1'>"+utils_makeRoller(texthtml)+"</td></tr>");
+	$(".items span.roller").contents().unwrap();
+	$("#stats span.roller").click(function() {
+		var roll =$(this).attr("data-roll").replace(/\s+/g, "");
+		var rollresult =  droll.roll(roll);
+		var name = $("#name").clone().children().remove().end().text();
+		$("div#output").prepend("<span>"+name + ": <em>"+roll+"</em> rolled for <strong>"+rollresult.total+"</strong> (<em>"+rollresult.rolls.join(", ")+"</em>)<br></span>").show();
+		$("div#output span:eq(5)").remove();
+	})
 }

@@ -262,6 +262,9 @@ function utils_makeAttChoose(attList) {
 		return attsTemp.join(" or ") + " modifier (your choice)";
 	}
 }
+function utils_makeRoller(text) {
+	return text.replace(/([1-9]\d*)?d([1-9]\d*)([+-]\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>");
+}
 
 function makeTableThClassText(tableObject, i) {
 	return tableObject.thstyleclass === undefined || i >= tableObject.thstyleclass.length ? "" : " class=\"" + tableObject.thstyleclass[i] + "\"";
@@ -756,7 +759,6 @@ function parse_stringToSlug(str) {
 
 const ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
-	"AF": "Ammunition", //Firearms
 	"AT": "Artisan Tool",
 	"EXP": "Explosive",
 	"G": "Adventuring Gear",
@@ -824,7 +826,6 @@ function parse_numberToString(num) {
 const PROPERTY_JSON_TO_ABV = {
 	"2H": "two-handed",
 	"A": "ammunition",
-	"AF": "ammunition", //Firearms
 	"BF": "burst fire",
 	"F": "finesse",
 	"H": "heavy",
