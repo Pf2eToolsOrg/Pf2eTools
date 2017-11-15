@@ -1,11 +1,25 @@
-let amount, count
+const RACE_JSON_URL = "data/races.json";
+
+let amount, count;
+
+let raceData;
+
+function loadRaceJson() {
+	loadJSON(RACE_JSON_URL, onJsonLoad)
+}
 
 window.onload = function load() {
+	loadRaceJson();
+}
+
+function onJsonLoad(data) {
+	raceData = data.race;
+
 	$("#rollbutton").click(rollstats);
 	$(".base").on("input", changeBase);
 	$("input.choose").on("change", choose);
 
-	const names = racedata.compendium.race.map(x => x.name).sort()
+	const names = raceData.map(x => x.name).sort()
 	const options = names.map(name => `<option>${name}</option>`).join()
 	$("#race").append(options).change(changeRace).change();
 
@@ -40,7 +54,7 @@ function choose() {
 
 function changeRace() {
 	const race = this.value
-	const stats = racedata.compendium.race
+	const stats = raceData
 		.find(({name}) => name === race).ability
 
 	$(".racial").val(0)
