@@ -276,7 +276,7 @@ class EntryRenderer {
 								break;
 							case "@item":
 								fauxEntry.href.path = "items.html";
-								// TODO add source
+								fauxEntry.href.hash = fauxEntry.href.hash += "_dmg"; // TODO pass this in
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@class":
