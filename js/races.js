@@ -1,7 +1,14 @@
-window.onload = function load() {
-	tabledefault = $("#stats").html();
+const JSON_URL = "data/races.json";
 
-	var racelist = racedata.compendium.race;
+window.onload = function load() {
+	loadJSON(JSON_URL, onJsonLoad)
+};
+
+let racelist;
+function onJsonLoad (data) {
+	tableDefault = $("#stats").html();
+
+	racelist = data.race;
 
 	for (var i = 0; i < racelist.length; i++) {
 		var currace = racelist[i];
@@ -48,10 +55,9 @@ window.onload = function load() {
 }
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
+	$("#stats").html(tableDefault);
 	$("#stats td").show();
 
-	var racelist = racedata.compendium.race;
 	var currace = racelist[id];
 
 	var name = currace.name;

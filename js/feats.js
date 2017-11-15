@@ -19,10 +19,10 @@ function onJsonLoad(data) {
 		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
 		if (!prereqText) prereqText = NONE;
 		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";
-		const CLS_COL_2 = "source col-xs-1 col-xs-1-7";
+		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 source${curfeat.source}`;
 		const CLS_COL_3 = "ability " + (ability.asText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append("<li "+FLTR_SOURCE+"='"+curfeat.source+"' "+FLTR_ABILITIES+"='"+ability.asFilterCollection+"' "+FLTR_ABILITIES_CHOOSE+"='"+isAbilityChoose+"'><a id='" + i + "' href='#" + encodeURI(name).toLowerCase() + "' title='" + name + "'><span class='" + CLS_COL_1 + "'>" + name + "</span> <span class='" + CLS_COL_2 + "' title='" + parse_sourceJsonToFull(curfeat.source) + "'>" + parse_sourceJsonToAbv(curfeat.source) + "</span> <span class='" + CLS_COL_3 + "'>" + ability.asText + "</span><span class='" + CLS_COL_4 + "'>" + prereqText + "</span></a></li>");
+		$("ul.feats").append(`<li ${FLTR_SOURCE}='${curfeat.source}' ${FLTR_ABILITIES}='${ability.asFilterCollection}' ${FLTR_ABILITIES_CHOOSE}='${isAbilityChoose}'><a id='${i}' href='#${encodeForHash(name)+HASH_LIST_SEP+encodeForHash(curfeat.source)}' title='${name}'><span class='${CLS_COL_1}'>${name}</span> <span class='${CLS_COL_2}' title='${parse_sourceJsonToFull(curfeat.source)}'>${parse_sourceJsonToAbv(curfeat.source)}</span> <span class='${CLS_COL_3}'>${ability.asText}</span><span class='${CLS_COL_4}'>${prereqText}</span></a></li>`);
 
 		addDropdownOption($("select.sourcefilter"), curfeat.source, parse_sourceJsonToFull(curfeat.source));
 	}

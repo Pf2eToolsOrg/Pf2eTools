@@ -238,12 +238,6 @@ td.divider div {
 	margin: 4px 0;
 }
 
-th#name {
-	font-size: 1.5em;
-	font-family: serif;
-	font-weight: 500;
-}
-
 table#stats span.name {
 	font-weight: bold;
 }
@@ -284,6 +278,8 @@ tr.text td {
 	padding-bottom: 0.7em !important;
 }
 
+th#nameTable,
+th#nameSummary,
 th#name {
 	font-size: 1.8em;
 	font-family: 'Andada', serif;
@@ -394,7 +390,7 @@ tr td > p.spells ~ p.spells {
 	margin-top: 0 !important;
 }
 
-#stats span.roller {
+span.roller {
 	color: #337ab7;
 	cursor: pointer;
 }
@@ -531,6 +527,10 @@ td#equipment h5 {
 	margin-bottom: 0;
 }
 
+td#equipment ul {
+	padding: 0 0 0 1.7em;
+}
+
 /* section: class features */
 
 td._class_feature p {
@@ -611,9 +611,9 @@ table#stats td._class_feature table {
 	width: calc(100% - 1.8em);
 }
 
-td._class_feature p.prerequisite {
+td span.prerequisite {
 	font-style: italic;
-	margin-bottom: 2px;
+	display: block;
 }
 
 table#stats td._class_feature.feature table {
@@ -691,9 +691,13 @@ td.features {
 	white-space: pre-wrap;
 }
 
-#classtable .newfeature {
+ul.list.classes {
+	overflow-y: initial;
+}
+
+#classtable .centred-col {
 	text-align: center;
-	width: 1em;
+	width: 3.2em;
 }
 
 div#subclasses {
@@ -725,14 +729,31 @@ div#subclasses span.active {
 	color: white;
 }
 
-div#subclasses span.alt-active {
+div#subclasses span.cf-active {
 	background: #922610;
 	color: white;
 }
 
-.slotlabel {
+div#subclasses span.os-active {
+	background: #1d965d;
+	color: white;
+}
+
+#classtable .colGroupTitle {
 	text-align: center;
-	border-bottom: 1px solid #000;
+}
+
+#classtable .colGroupTitle::after {
+	display: block;
+	content: "";
+	position: relative;
+	left: 0;
+	bottom: 0;
+	height: 1px;
+	width: 96%;
+	border-bottom: 1px solid black;
+	margin: 0 auto;
+	padding: 0;
 }
 
 .featurebuffer {
@@ -1050,4 +1071,58 @@ input[type=checkbox].readonly {
 	overflow: hidden;
 	padding: 1px;
 	text-decoration: none;
+}
+
+/* ENTRY RENDERING CSS */
+table#stats div.statsBlockSectionHead > span.entry-title,
+table#stats div.statsBlockHead > span.entry-title,
+table#stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	color: #922610;
+	display: block;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
+}
+
+table#stats div.statsBlockSectionHead > span.entry-title {
+	font-size: 1.8em;
+}
+
+table#stats div.statsBlockHead > span.entry-title {
+	font-size: 1.5em;
+	border-bottom: 1px solid #922610;
+	margin: 0.2em;
+}
+
+table#stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	font-size: 1.4em;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+}
+
+table#stats tr.subclass-feature div.statsBlockHead > span.entry-title,
+table#stats tr.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	color: #337ab7;
+	border-bottom-color: #337ab7;
+}
+
+table#stats tr.spicy-sauce.subclass-feature div.statsBlockHead > span.entry-title,
+table#stats tr.spicy-sauce.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
+table#stats tr.class-feature p.spicy-sauce div.statsBlockHead > span.entry-title,
+table#stats tr.class-feature p.spicy-sauce div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	color: #1d965d;
+	border-bottom-color: #1d965d;
+}
+
+table#stats div.statsInlineHead > span.entry-title {
+	font-style: italic;
+	font-weight: bold;
+}
+
+table#stats div.statsInlineHead > p {
+	display: inline;
+}
+
+table#stats div.statsInlineHead {
+	margin-bottom: 5px;
 }

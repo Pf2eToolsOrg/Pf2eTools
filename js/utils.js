@@ -52,9 +52,18 @@ const FLTR_RANGE = "filterRange";
 const FLTR_CLASS = "filterClass";
 const FLTR_META = "filterMeta";
 const FLTR_ACTION = "filterAction";
+const FLTR_TIER = "filterTier";
 const FLTR_RARITY = "filterRarity";
 const FLTR_ATTUNEMENT = "filterAttunement";
 const FLTR_LIST_SEP = ";";
+
+const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
+const CLSS_SUBCLASS_FEATURE = "subclass-feature";
+
+const ATB_DATA_LIST_SEP = "||";
+const ATB_DATA_PART_SEP = "::";
+const ATB_DATA_SC = "data-subclass";
+const ATB_DATA_SRC = "data-source";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -171,7 +180,6 @@ function utils_makeTable(tableObject) {
 
 function utils_makeAttDc(attDcObj) {
 	return "<p class='spellabilitysubtext'><span>" + attDcObj.name + " save DC</span> = 8 + your proficiency bonus + your " + utils_makeAttChoose(attDcObj.attributes) + "</p>"
-
 }
 function utils_makeAttAttackMod(attAtkObj) {
 	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + " attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
@@ -253,6 +261,9 @@ function utils_makeAttChoose(attList) {
 		}
 		return attsTemp.join(" or ") + " modifier (your choice)";
 	}
+}
+function utils_makeRoller(text) {
+	return text.replace(/([1-9]\d*)?d([1-9]\d*)([+-]\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>");
 }
 
 function makeTableThClassText(tableObject, i) {
@@ -559,13 +570,32 @@ const SRC_UAFFS = SRC_UA_PREFIX + "FeatsForSkills";
 const SRC_UAFO = SRC_UA_PREFIX + "FiendishOptions";
 const SRC_UAFT = SRC_UA_PREFIX + "Feats";
 const SRC_UAGH = SRC_UA_PREFIX + "GothicHeroes";
-const SRC_UAModern = SRC_UA_PREFIX + "Modern";
-const SRC_UAStarterSpells = SRC_UA_PREFIX + "StarterSpells";
+const SRC_UAMDM = SRC_UA_PREFIX + "ModernMagic";
+const SRC_UASSP = SRC_UA_PREFIX + "StarterSpells";
 const SRC_UATMC = SRC_UA_PREFIX + "TheMysticClass";
 const SRC_UATOBM = SRC_UA_PREFIX + "ThatOldBlackMagic";
 const SRC_UATRR = SRC_UA_PREFIX + "TheRangerRevised";
 const SRC_UAWA = SRC_UA_PREFIX + "WaterborneAdventures";
 const SRC_UAVR = SRC_UA_PREFIX + "VariantRules";
+const SRC_UALDR = SRC_UA_PREFIX + "LightDarkUnderdark";
+const SRC_UARAR = SRC_UA_PREFIX + "RangerAndRogue";
+const SRC_UAATOSC = SRC_UA_PREFIX + "ATrioOfSubclasses";
+const SRC_UABPP = SRC_UA_PREFIX + "BarbarianPrimalPaths";
+const SRC_UARSC = SRC_UA_PREFIX + "RevisedSubclasses";
+const SRC_UAKOO = SRC_UA_PREFIX + "KitsOfOld";
+const SRC_UABBC = SRC_UA_PREFIX + "BardBardColleges";
+const SRC_UACDD = SRC_UA_PREFIX + "ClericDivineDomains";
+const SRC_UAD = SRC_UA_PREFIX + "Druid";
+const SRC_UARCO = SRC_UA_PREFIX + "RevisedClassOptions";
+const SRC_UAF = SRC_UA_PREFIX + "Fighter";
+const SRC_UAM = SRC_UA_PREFIX + "Monk";
+const SRC_UAP = SRC_UA_PREFIX + "Paladin";
+const SRC_UAMC = SRC_UA_PREFIX + "ModifyingClasses";
+const SRC_UAS = SRC_UA_PREFIX + "Sorcerer";
+const SRC_UAWAW = SRC_UA_PREFIX + "WarlockAndWizard";
+const SRC_UATF = SRC_UA_PREFIX + "TheFaithful";
+const SRC_UAWR = SRC_UA_PREFIX + "WizardRevisited";
+const SRC_UAESR = SRC_UA_PREFIX + "ElfSubraces";
 
 const SRC_BOLS_3PP = "BoLS 3pp";
 const SRC_ToB_3PP = "ToB 3pp";
@@ -610,13 +640,32 @@ SOURCE_JSON_TO_FULL[SRC_UAFFS] = UA_PREFIX + "Feats for Skills";
 SOURCE_JSON_TO_FULL[SRC_UAFO] = UA_PREFIX + "Fiendish Options";
 SOURCE_JSON_TO_FULL[SRC_UAFT] = UA_PREFIX + "Feats";
 SOURCE_JSON_TO_FULL[SRC_UAGH] = UA_PREFIX + "Gothic Heroes";
-SOURCE_JSON_TO_FULL[SRC_UAModern] = UA_PREFIX + "Modern Magic";
-SOURCE_JSON_TO_FULL[SRC_UAStarterSpells] = UA_PREFIX + "Starter Spells";
+SOURCE_JSON_TO_FULL[SRC_UAMDM] = UA_PREFIX + "Modern Magic";
+SOURCE_JSON_TO_FULL[SRC_UASSP] = UA_PREFIX + "Starter Spells";
 SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
 SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
 SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
 SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
 SOURCE_JSON_TO_FULL[SRC_UAVR] = UA_PREFIX + "Variant Rules";
+SOURCE_JSON_TO_FULL[SRC_UALDR] = UA_PREFIX + "Light, Dark, Underdark!";
+SOURCE_JSON_TO_FULL[SRC_UARAR] = UA_PREFIX + "Ranger and Rogue";
+SOURCE_JSON_TO_FULL[SRC_UAATOSC] = UA_PREFIX + "A Trio of Subclasses";
+SOURCE_JSON_TO_FULL[SRC_UABPP] = UA_PREFIX + "Barbarian Primal Paths";
+SOURCE_JSON_TO_FULL[SRC_UARSC] = UA_PREFIX + "Revised Subclasses";
+SOURCE_JSON_TO_FULL[SRC_UAKOO] = UA_PREFIX + "Kits of Old";
+SOURCE_JSON_TO_FULL[SRC_UABBC] = UA_PREFIX + "Bard: Bard Colleges";
+SOURCE_JSON_TO_FULL[SRC_UACDD] = UA_PREFIX + "Cleric: Divine Domains";
+SOURCE_JSON_TO_FULL[SRC_UAD] = UA_PREFIX + "Druid";
+SOURCE_JSON_TO_FULL[SRC_UARCO] = UA_PREFIX + "Revised Class Options";
+SOURCE_JSON_TO_FULL[SRC_UAF] = UA_PREFIX + "Fighter";
+SOURCE_JSON_TO_FULL[SRC_UAM] = UA_PREFIX + "Monk";
+SOURCE_JSON_TO_FULL[SRC_UAP] = UA_PREFIX + "Paladin";
+SOURCE_JSON_TO_FULL[SRC_UAMC] = UA_PREFIX + "Modifying Classes";
+SOURCE_JSON_TO_FULL[SRC_UAS] = UA_PREFIX + "Sorcerer";
+SOURCE_JSON_TO_FULL[SRC_UAWAW] = UA_PREFIX + "Warlock and Wizard";
+SOURCE_JSON_TO_FULL[SRC_UATF] = UA_PREFIX + "The Faithful";
+SOURCE_JSON_TO_FULL[SRC_UAWR] = UA_PREFIX + "Wizard Revisited";
+SOURCE_JSON_TO_FULL[SRC_UAESR] = UA_PREFIX + "Elf Subraces";
 SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells (3pp)";
 SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts (3pp)";
 
@@ -656,21 +705,52 @@ SOURCE_JSON_TO_ABV[SRC_UAFFS] = "UAFFS";
 SOURCE_JSON_TO_ABV[SRC_UAFO] = "UAFO";
 SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
 SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
-SOURCE_JSON_TO_ABV[SRC_UAModern] = "UAMM";
-SOURCE_JSON_TO_ABV[SRC_UAStarterSpells] = "UASS";
+SOURCE_JSON_TO_ABV[SRC_UAMDM] = "UAMM";
+SOURCE_JSON_TO_ABV[SRC_UASSP] = "UASS";
 SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
 SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
 SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
 SOURCE_JSON_TO_ABV[SRC_UAVR] = "UAVR";
+SOURCE_JSON_TO_ABV[SRC_UALDR] = "UALDU";
+SOURCE_JSON_TO_ABV[SRC_UARAR] = "UARAR";
+SOURCE_JSON_TO_ABV[SRC_UAATOSC] = "UAATOSC";
+SOURCE_JSON_TO_ABV[SRC_UABPP] = "UABPP";
+SOURCE_JSON_TO_ABV[SRC_UARSC] = "UARSC";
+SOURCE_JSON_TO_ABV[SRC_UAKOO] = "UAKOO";
+SOURCE_JSON_TO_ABV[SRC_UABBC] = "UABBC";
+SOURCE_JSON_TO_ABV[SRC_UACDD] = "UACDD";
+SOURCE_JSON_TO_ABV[SRC_UAD] = "UAD";
+SOURCE_JSON_TO_ABV[SRC_UARCO] = "UARCO";
+SOURCE_JSON_TO_ABV[SRC_UAF] = "UAF";
+SOURCE_JSON_TO_ABV[SRC_UAM] = "UAM";
+SOURCE_JSON_TO_ABV[SRC_UAP] = "UAP";
+SOURCE_JSON_TO_ABV[SRC_UAMC] = "UAMC";
+SOURCE_JSON_TO_ABV[SRC_UAS] = "UAS";
+SOURCE_JSON_TO_ABV[SRC_UAWAW] = "UAWAW";
+SOURCE_JSON_TO_ABV[SRC_UATF] = "UATF";
+SOURCE_JSON_TO_ABV[SRC_UAWR] = "UAWR";
+SOURCE_JSON_TO_ABV[SRC_UAESR] = "UAESR";
 SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BolS (3pp)";
 SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
 function parse_sourceJsonToFull (source) {
-	return _parse_aToB(SOURCE_JSON_TO_FULL, source).replace("'",STR_APOSTROPHE);
+	return _parse_aToB(SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
 }
 function parse_sourceJsonToAbv(source) {
 	return _parse_aToB(SOURCE_JSON_TO_ABV, source);
+}
+
+function isSuperceded(name, source) {
+	return (name !== undefined && name !== null && source !== undefined && source !== null) &&
+		(name === "Way of the Sun Soul" && source === SRC_SCAG) ||
+		(name === "Mastermind" && source === SRC_SCAG) ||
+		(name === "Swashbuckler" && source === SRC_SCAG) ||
+		(name === "Storm Sorcery" && source === SRC_SCAG);
+}
+
+function isNonstandardSource(source) {
+	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source === SRC_PSA || source === SRC_PSK || source === SRC_EEPC || source === SRC_PSI || source === SRC_PSZ);
 }
 
 function parse_stringToSlug(str) {
@@ -679,36 +759,27 @@ function parse_stringToSlug(str) {
 
 const ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
-	"AF": "Ammunition", //Firearms
 	"AT": "Artisan Tool",
 	"EXP": "Explosive",
-	"FUT": "Futuristic",
 	"G": "Adventuring Gear",
 	"GS": "Gaming Set",
-	"GUN": "Firearm",
 	"HA": "Heavy Armor",
 	"INS": "Instrument",
 	"LA": "Light Armor",
 	"M": "Melee Weapon",
 	"MA": "Medium Armor",
-	"MARW": "Martial Weapon",
 	"MNT": "Mount",
-	"MOD": "Modern",
 	"P": "Potion",
 	"R": "Ranged Weapon",
 	"RD": "Rod",
-	"REN": "Renaissance",
 	"RG": "Ring",
 	"S": "Shield",
 	"SC": "Scroll",
 	"SCF": "Spellcasting Focus",
-	"SIMW": "Simple Weapon",
-	"ST": "Staff",
 	"T": "Tool",
 	"TAH": "Tack and Harness",
 	"TG": "Trade Good",
 	"VEH": "Vehicle",
-	"W": "Wondrous Item",
 	"WD": "Wand"
 };
 
@@ -728,10 +799,33 @@ function parse_dmgTypeToFull (dmgType) {
 	return _parse_aToB(DMGTYPE_JSON_TO_FULL, dmgType);
 }
 
+const NUMBERS_ONES = ['','one','two','three','four','five','six','seven','eight','nine'];
+const NUMBERS_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+const NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+function parse_numberToString(num) {
+	if (num === 0) return "zero";
+	else return parse_hundreds(num);
+
+	function parse_hundreds(num){
+		if (num > 99){
+			return NUMBERS_ONES[Math.floor(num/100)]+" hundred "+parse_tens(num%100);
+		}
+		else{
+			return parse_tens(num);
+		}
+	}
+	function parse_tens(num){
+		if (num<10) return NUMBERS_ONES[num];
+		else if (num>=10 && num<20) return NUMBERS_TEENS[num-10];
+		else{
+			return NUMBERS_TENS[Math.floor(num/10)]+" "+NUMBERS_ONES[num%10];
+		}
+	}
+}
+
 const PROPERTY_JSON_TO_ABV = {
 	"2H": "two-handed",
 	"A": "ammunition",
-	"AF": "ammunition", //Firearms
 	"BF": "burst fire",
 	"F": "finesse",
 	"H": "heavy",
@@ -754,6 +848,7 @@ function utils_nameToDataLink(name) {
 }
 
 // CONVENIENCE/ELEMENTS ================================================================================================
+// TODO refactor/remove (switch to jQuery versions)
 function toggleCheckBox(cb) {
 	if (cb.checked === true) cb.checked = false;
 	else cb.checked = true;
@@ -776,7 +871,7 @@ function hide(element) {
 	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
 
-// search
+// SEARCH AND FILTER ===================================================================================================
 function search(options) {
 	const list = new List("listcontainer", options);
 	list.sort("name")
@@ -843,6 +938,12 @@ function compareNames(a, b) {
 	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
 	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
 }
+
+// ARRAYS ==============================================================================================================
+Array.prototype.joinConjunct = String.prototype.joinConjunct ||
+function (joinWith, conjunctWith) {
+	return this.length === 1 ? String(this[0]) : this.length === 2 ? this.join(conjunctWith) : this.slice(0, -1).join(joinWith) + conjunctWith + this.slice(-1);
+};
 
 // JSON LOADING ========================================================================================================
 function loadJSON(url, onLoadFunction, ...otherData) {
