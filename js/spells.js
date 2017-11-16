@@ -331,15 +331,16 @@ function onJsonLoad(data) {
 
 		if (spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
-			if (spell.level < 5) {
-				spell.classes.fromSubclass.push({
-					class: {name: STR_FIGHTER, source: SRC_PHB},
-					subclass: {name: STR_ELD_KNIGHT, source: SRC_PHB}
-				});
-				spell.classes.fromSubclass.push({
-					class: {name: STR_ROGUE, source: SRC_PHB},
-					subclass: {name: STR_ARC_TCKER, source: SRC_PHB}
-				})
+			spell.classes.fromSubclass.push({
+				class: {name: STR_FIGHTER, source: SRC_PHB},
+				subclass: {name: STR_ELD_KNIGHT, source: SRC_PHB}
+			});
+			spell.classes.fromSubclass.push({
+				class: {name: STR_ROGUE, source: SRC_PHB},
+				subclass: {name: STR_ARC_TCKER, source: SRC_PHB}
+			});
+			if (spell.level > 4) {
+				spell.scrollNote = true;
 			}
 		}
 
@@ -547,6 +548,12 @@ function loadhash (id) {
 	if (spell.entriesHigherLevel) {
 		const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
 		renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
+	}
+
+	if (spell.scrollNote) {
+		renderer.recursiveEntryRender(
+			`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`
+		, renderStack, 2);
 	}
 
 	renderStack.push(`</td></tr>`);
