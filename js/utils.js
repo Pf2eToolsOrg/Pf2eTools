@@ -553,7 +553,22 @@ class Parser {
 	static propertyToAbv (property) {
 		return Parser._parse_aToB(Parser.PROPERTY_JSON_TO_ABV, property);
 	}
+
+	static spSchoolAbvToFull(school) {
+		return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
+	}
 }
+
+Parser.SP_SCHOOL_ABV_TO_FULL = {
+	"A": "Abjuration",
+	"V": "Evocation",
+	"E": "Enchantment",
+	"I": "Illusion",
+	"D": "Divination",
+	"N": "Necromancy",
+	"T": "Transmutation",
+	"C": "Conjuration"
+};
 
 Parser.ATB_ABV_TO_FULL = {
 	"str": "Strength",

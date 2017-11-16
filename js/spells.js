@@ -39,35 +39,22 @@ const TM_MINS = "minute";
 const TM_HRS = "hour";
 const TO_HIDE_SINGLETON_TIMES = [TM_ACTION, TM_B_ACTION, TM_REACTION, TM_ROUND];
 
-const SKL_ABJ = "A";
-const SKL_EVO = "V";
-const SKL_ENC = "E";
-const SKL_ILL = "I";
-const SKL_DIV = "D";
-const SKL_NEC = "N";
-const SKL_TRA = "T";
-const SKL_CON = "C";
-function getSchoolStr(school) {
-	if (school === SKL_ABJ) return "Abjuration";
-	if (school === SKL_EVO) return "Evocation";
-	if (school === SKL_ENC) return "Enchantment";
-	if (school === SKL_ILL) return "Illusion";
-	if (school === SKL_DIV) return "Divination";
-	if (school === SKL_NEC) return "Necromancy";
-	if (school === SKL_TRA) return "Transmutation";
-	if (school === SKL_CON) return "Conjuration";
-}
-
-const CANTRIP = "Cantrip";
+const STR_CANTRIP = "Cantrip";
 function getTblSpellLevelStr (level) {
-	if (level === 0) return CANTRIP;
+	if (level === 0) return STR_CANTRIP;
 	if (level === 1) return level+"st";
 	if (level === 2) return level+"nd";
 	if (level === 3) return level+"rd";
 	return level+"th";
 }
-function getSpellLevelStr (level) {
-	return level === 0 ? getTblSpellLevelStr(level) : getTblSpellLevelStr(level) + "-level";
+
+function spLevelSchoolMetaStr(level, school, meta) {
+	const levelPart = level === 0 ? getTblSpellLevelStr(level) : getTblSpellLevelStr(level) + "-level";
+	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school)}`;
+	// these tags are (so far) mutually independent, so we don't need to combine the text
+	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
+	if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
+	return levelSchoolStr;
 }
 function getFltrSpellLevelStr(level) {
 	return level === 0 ? getTblSpellLevelStr(level) : getTblSpellLevelStr(level) + " level";
@@ -179,7 +166,7 @@ function getTblTimeStr(time) {
 	}
 }
 
-function getTimeStr(times) {
+function spTimeStr(times) {
 	return times.map(t => `${getTimeStrHelper(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or  ");
 }
 
@@ -187,7 +174,7 @@ function getTimeStrHelper(time) {
 	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
 }
 
-function getRangeStr(range) {
+function spRangeStr(range) {
 	switch(range.type) {
 		case RNG_SPECIAL:
 			return "Special";
@@ -239,7 +226,7 @@ function getFltrActionVal(unit) {
 	return getSingletonUnit(unit);
 }
 
-function getComponentsStr(comp) {
+function spComponentsStr(comp) {
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
@@ -250,7 +237,7 @@ function getComponentsStr(comp) {
 	return out.join(", ");
 }
 
-function getDurationStr(dur) {
+function spDurationStr(dur) {
 	return dur.map(d => {
 		switch (d.type) {
 			case "special":
@@ -268,7 +255,7 @@ function getDurationStr(dur) {
 	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
 }
 
-function getTblClassesStr(classes) {
+function spClassesStr(classes) {
 	return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
 		(classes.fromSubclass ?
 			", " + classes.fromSubclass.sort((a, b) => {
@@ -298,7 +285,7 @@ function onJsonLoad(data) {
 	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull);
 	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
 	const metaFilter = new Filter("Type", FLTR_META, [META_RITUAL, META_TECHNOMAGIC]);
-	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], getSchoolStr);
+	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], Parser.spSchoolAbvToFull);
 	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
 		[
 			"Action",
@@ -308,7 +295,7 @@ function onJsonLoad(data) {
 			"Minutes",
 			"Hours"
 		], Filter.asIs, getFltrActionVal);
-	const rangeFilter = new Filter("Range", FLTR_RANGE, [], getRangeStr, getRangeStr);
+	const rangeFilter = new Filter("Range", FLTR_RANGE, [], spRangeStr, spRangeStr);
 	const normalizedRangeItems = [];
 	const classFilter = new Filter("Class", FLTR_CLASS, []);
 	const filterList = [
@@ -355,11 +342,11 @@ function onJsonLoad(data) {
 					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
 					<span class='source col-xs-1 source${spell.source}' title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
 					<span class='level col-xs-1 col-xs-1-7'>${levelText}</span>
-					<span class='time col-xs-1 col-xs-1-7' title="${getTimeStr(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
-					<span class='school col-xs-1 col-xs-1-7 school_${spell.school}' title="${getSchoolStr(spell.school)}">${getSchoolStr(spell.school)}</span>
-					<span class='range col-xs-2 col-xs-2-4'>${getRangeStr(spell.range)}</span>
+					<span class='time col-xs-1 col-xs-1-7' title="${spTimeStr(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
+					<span class='school col-xs-1 col-xs-1-7 school_${spell.school}' title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToFull(spell.school)}</span>
+					<span class='range col-xs-2 col-xs-2-4'>${spRangeStr(spell.range)}</span>
 					
-					<span class='classes' style='display: none'>${getTblClassesStr(spell.classes)}</span>
+					<span class='classes' style='display: none'>${spClassesStr(spell.classes)}</span>
 				</a>
 			</li>`;
 		$("ul.spells").append(tableItem);
@@ -389,8 +376,8 @@ function onJsonLoad(data) {
 
 	function ascSortSpellLevel(a, b) {
 		if (a === b) return 0;
-		if (a === CANTRIP) return -1;
-		if (b === CANTRIP) return 1;
+		if (a === STR_CANTRIP) return -1;
+		if (b === STR_CANTRIP) return 1;
 		return ascSort(a, b);
 	}
 
@@ -425,7 +412,7 @@ function onJsonLoad(data) {
 					|| (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
 				const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
 				const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
-				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeStr(s.range)];
+				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][spRangeStr(s.range)];
 				// TODO good solution for subclasses
 				const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
 					|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
@@ -524,19 +511,15 @@ function loadhash (id) {
 
 	renderStack.push(`<tr><th id="name" colspan="6"><span style="float: left">${spell.name}</span><span style="float: right" class="source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
 
-	let levelSchoolStr = spell.level === 0 ? `${getSchoolStr(spell.school)} ${getSpellLevelStr(spell.level)}`: `${getSpellLevelStr(spell.level)} ${getSchoolStr(spell.school)}`;
-	// these tags are (so far) mutually independent, so we don't need to combine the text
-	if (spell.meta && spell.meta.ritual) levelSchoolStr += " (ritual)";
-	if (spell.meta && spell.meta.technomagic) levelSchoolStr += " (technomagic)";
-	renderStack.push(`<tr><td id="levelschoolritual" style="text-transform: lowercase;" colspan="6"><span>${levelSchoolStr}</span></td></tr>`);
+	renderStack.push(`<tr><td id="levelschoolritual" style="text-transform: lowercase;" colspan="6"><span>${spLevelSchoolMetaStr(spell.level, spell.school, spell.meta)}</span></td></tr>`);
 
-	renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${getTimeStr(spell.time)}</td></tr>`);
+	renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${spTimeStr(spell.time)}</td></tr>`);
 
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Range: </span>${getRangeStr(spell.range)}</td></tr>`);
+	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Range: </span>${spRangeStr(spell.range)}</td></tr>`);
 
-	renderStack.push(`<tr><td id="components" colspan="6"><span class="bold">Components: </span>${getComponentsStr(spell.components)}</td></tr>`);
+	renderStack.push(`<tr><td id="components" colspan="6"><span class="bold">Components: </span>${spComponentsStr(spell.components)}</td></tr>`);
 
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Duration: </span>${getDurationStr(spell.duration)}</td></tr>`);
+	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Duration: </span>${spDurationStr(spell.duration)}</td></tr>`);
 
 	renderStack.push(`<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>`);
 
@@ -558,7 +541,7 @@ function loadhash (id) {
 
 	renderStack.push(`</td></tr>`);
 
-	renderStack.push(`<tr><td id="classes" colspan="6"><span class="bold">Classes: </span>${getTblClassesStr(spell.classes)}</td></tr>`);
+	renderStack.push(`<tr><td id="classes" colspan="6"><span class="bold">Classes: </span>${spClassesStr(spell.classes)}</td></tr>`);
 
 	const topBorder = $("#topBorder");
 	topBorder.after(renderStack.join(""));
