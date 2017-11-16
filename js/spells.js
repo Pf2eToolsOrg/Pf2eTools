@@ -553,7 +553,7 @@ function loadhash (id) {
 	if (spell.scrollNote) {
 		renderer.recursiveEntryRender(
 			`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`
-		, renderStack, 2);
+			, renderStack, 2);
 	}
 
 	renderStack.push(`</td></tr>`);
