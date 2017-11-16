@@ -544,9 +544,11 @@ function loadhash (id) {
 	renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
 
-	const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
+	if (spell.entriesHigherLevel) {
+		const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
+		renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
+	}
 
-	renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
 	renderStack.push(`</td></tr>`);
 
 	renderStack.push(`<tr><td id="classes" colspan="6"><span class="bold">Classes: </span>${getTblClassesStr(spell.classes)}</td></tr>`);
