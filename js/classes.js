@@ -211,7 +211,7 @@ function loadhash (id) {
 	topBorder.after(renderStack.join(""));
 
 	// hide UA/other sources by default
-	$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
+	//$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
 
 	// CLASS FEATURE/UA/SUBCLASS PILL BUTTONS ==========================================================================
 	const subclassPillWrapper = $("div#subclasses");
