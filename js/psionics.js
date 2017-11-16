@@ -98,8 +98,8 @@ window.onload = function load() {
 			const span = document.createElement(ELE_SPAN);
 			span.classList.add(LIST_SOURCE);
 			span.classList.add(CLS_COL2);
-			span.setAttribute(ATB_TITLE, parse_sourceJsonToFull(psionic[JSON_ITEM_SOURCE]));
-			span.innerHTML = parse_sourceJsonToAbv(psionic[JSON_ITEM_SOURCE]);
+			span.setAttribute(ATB_TITLE, Parser.sourceJsonToFull(psionic[JSON_ITEM_SOURCE]));
+			span.innerHTML = Parser.sourceJsonToAbv(psionic[JSON_ITEM_SOURCE]);
 			return span;
 		}
 		function getTypeSpan(psionic) {
@@ -150,7 +150,7 @@ window.onload = function load() {
 		const HDR_ORDER = "Order";
 
 		const filters = {};
-		filters[HDR_SOURCE] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return parse_sourceJsonToFull(str); }};
+		filters[HDR_SOURCE] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return Parser.sourceJsonToFull(str); }};
 		filters[HDR_TYPE] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
 		filters[HDR_ORDER] = {item: JSON_ITEM_ORDER, list: [], renderer: function(str) { return parse_psionicOrderToFull(str); }};
 
@@ -200,7 +200,7 @@ window.onload = function load() {
 			const filterList = [];
 			for (const title in filters) {
 				if (filters.hasOwnProperty(title)) {
-					filterList.push(new Filter(title, filters[title].item, filters[title].list, filters[title].renderer, parse_stringToSlug));
+					filterList.push(new Filter(title, filters[title].item, filters[title].list, filters[title].renderer, Parser.stringToSlug));
 				}
 			}
 			const filterBox = new FilterBox(filterAndSearchBar, filterList);
@@ -221,7 +221,7 @@ window.onload = function load() {
 								if (!f[header][t]) continue;
 
 
-								if (f[header][parse_stringToSlug(item.elm.getAttribute(filterProperty))] && parse_stringToSlug(item.elm.getAttribute(filterProperty)) === t) return true;
+								if (f[header][Parser.stringToSlug(item.elm.getAttribute(filterProperty))] && Parser.stringToSlug(item.elm.getAttribute(filterProperty)) === t) return true;
 							}
 							return false;
 						}

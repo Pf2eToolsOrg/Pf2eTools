@@ -222,7 +222,7 @@ class EntryRenderer {
 			function getDataString() {
 				let dataString = "";
 				if (entry.type === "invocation" || entry.type === "patron") {
-					const titleString = entry.source ? `title="Source: ${parse_sourceJsonToFull(entry.source)}"` : "";
+					const titleString = entry.source ? `title="Source: ${Parser.sourceJsonToFull(entry.source)}"` : "";
 					if (entry.subclass !== undefined) dataString = `${ATB_DATA_SC}="${entry.subclass.name}" ${ATB_DATA_SRC}="${entry.subclass.source}" ${titleString}`;
 					else dataString = `${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}" ${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}" ${titleString}`;
 				}

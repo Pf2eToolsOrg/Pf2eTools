@@ -15,14 +15,14 @@ function onJsonLoad(data) {
 
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 	const filterList = [];
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], parse_sourceJsonToFull, parse_stringToSlug);
+	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull, Parser.stringToSlug);
 	filterList.push(sourceFilter);
 	const filterBox = new FilterBox(filterAndSearchBar, filterList);
 
 	for (let i = 0; i < rulesList.length; i++) {
 		const curRule = rulesList[i];
 		// populate table
-		$("ul.variantRules").append(`<li ${FLTR_SOURCE}='${curRule.source}'><a id='${i}' href='#${encodeForHash(curRule.name)}_${encodeForHash(curRule.source)}' title='${curRule.name}'><span class='name col-xs-10'>${curRule.name}</span><span class='source col-xs-2' title='${parse_sourceJsonToFull(curRule.source)}'>${parse_sourceJsonToAbv(curRule.source)}</span></a></li>`);
+		$("ul.variantRules").append(`<li ${FLTR_SOURCE}='${curRule.source}'><a id='${i}' href='#${encodeForHash(curRule.name)}_${encodeForHash(curRule.source)}' title='${curRule.name}'><span class='name col-xs-10'>${curRule.name}</span><span class='source col-xs-2' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span></a></li>`);
 
 		// populate filters
 		if ($.inArray(curRule.source, sourceFilter.items) === -1) {

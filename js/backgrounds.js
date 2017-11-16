@@ -14,9 +14,9 @@ function onJsonLoad(data) {
 	for (var i = 0; i < bglist.length; i++) {
 		const curbg = bglist[i];
 		const name = curbg.name;
-		$("ul.backgrounds").append("<li "+FLTR_SOURCE+"='"+curbg.source+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+parse_sourceJsonToFull(curbg.source)+"'>"+parse_sourceJsonToAbv(curbg.source)+"</span></a></li>");
+		$("ul.backgrounds").append("<li "+FLTR_SOURCE+"='"+curbg.source+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-9'>"+name.replace("Variant ","")+"</span> <span class='source col-xs-3' title='"+Parser.sourceJsonToFull(curbg.source)+"'>"+Parser.sourceJsonToAbv(curbg.source)+"</span></a></li>");
 
-		addDropdownOption($("select.sourcefilter"), curbg.source, parse_sourceJsonToFull(curbg.source))
+		addDropdownOption($("select.sourcefilter"), curbg.source, Parser.sourceJsonToFull(curbg.source))
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
@@ -44,8 +44,8 @@ function loadhash (id) {
 	const curbg = bglist[id];
 	const name = curbg.name;
 	const source = curbg.source;
-	const sourceAbv = parse_sourceJsonToAbv(source);
-	const sourceFull = parse_sourceJsonToFull(source);
+	const sourceAbv = Parser.sourceJsonToAbv(source);
+	const sourceFull = Parser.sourceJsonToFull(source);
 	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+name);
 	const traitlist = curbg.trait;
 	$("tr.trait").remove();

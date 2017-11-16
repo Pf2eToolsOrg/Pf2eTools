@@ -269,16 +269,16 @@ function getDurationStr(dur) {
 }
 
 function getTblClassesStr(classes) {
-	return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${parse_sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
+	return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
 		(classes.fromSubclass ?
 			", " + classes.fromSubclass.sort((a, b) => {
 				const byName = ascSort(a.class.name, b.class.name);
 				return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
-			}).map(c => `<span title="Source: ${parse_sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${parse_sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
+			}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
 }
 
 function getClassFilterStr(c) {
-	return `${c.name}${c.source !== SRC_PHB ? ` (${parse_sourceJsonToAbv(c.source)})` : ""}`;
+	return `${c.name}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
 }
 
 window.onload = function load() {
@@ -295,7 +295,7 @@ function onJsonLoad(data) {
 
 	// TODO concentration filter
 	// TODO components filter
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], parse_sourceJsonToFull);
+	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull);
 	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
 	const metaFilter = new Filter("Type", FLTR_META, [META_RITUAL, META_TECHNOMAGIC]);
 	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], getSchoolStr);
@@ -353,7 +353,7 @@ function onJsonLoad(data) {
 			<li class='row' ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${encodeForHash([spell.name, spell.source])}' title="${spell.name}">
 					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
-					<span class='source col-xs-1 source${spell.source}' title="${parse_sourceJsonToFull(spell.source)}">${parse_sourceJsonToAbv(spell.source)}</span>
+					<span class='source col-xs-1 source${spell.source}' title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
 					<span class='level col-xs-1 col-xs-1-7'>${levelText}</span>
 					<span class='time col-xs-1 col-xs-1-7' title="${getTimeStr(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
 					<span class='school col-xs-1 col-xs-1-7 school_${spell.school}' title="${getSchoolStr(spell.school)}">${getSchoolStr(spell.school)}</span>
@@ -522,7 +522,7 @@ function loadhash (id) {
 
 	const renderStack = [];
 
-	renderStack.push(`<tr><th id="name" colspan="6"><span style="float: left">${spell.name}</span><span style="float: right" class="source${spell.source}" title="${parse_sourceJsonToFull(spell.source)}">${parse_sourceJsonToAbv(spell.source)}</span></th></tr>`);
+	renderStack.push(`<tr><th id="name" colspan="6"><span style="float: left">${spell.name}</span><span style="float: right" class="source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
 
 	let levelSchoolStr = spell.level === 0 ? `${getSchoolStr(spell.school)} ${getSpellLevelStr(spell.level)}`: `${getSpellLevelStr(spell.level)} ${getSchoolStr(spell.school)}`;
 	// these tags are (so far) mutually independent, so we don't need to combine the text

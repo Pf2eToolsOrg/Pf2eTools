@@ -55,7 +55,7 @@ function mergeBasicItems(variantData) {
 						} else if (inheritedProperty === "text") {
 							for (let k = curInherits.text.length-1; k > -1; k--) {
 								let tmpText = curInherits.text[k];
-								if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", parse_dmgTypeToFull(tmpBasicItem.dmgType));
+								if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", Parser.dmgTypeToFull(tmpBasicItem.dmgType));
 								if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
 								tmpBasicItem.text.unshift(tmpText);
 							}
@@ -106,7 +106,7 @@ function populateTablesAndFilters() {
 
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 	const filterList = [];
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], parse_sourceJsonToFull, parse_stringToSlug);
+	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull, Parser.stringToSlug);
 	filterList.push(sourceFilter);
 	const typeFilter = new Filter("Type", FLTR_TYPE, [], Filter.asIs, Filter.asIs);
 	filterList.push(typeFilter);
@@ -127,7 +127,7 @@ function populateTablesAndFilters() {
 		"Unknown",
 	], Filter.asIs, Filter.asIs);
 	filterList.push(rarityFilter);
-	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, parse_stringToSlug);
+	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, Parser.stringToSlug);
 	filterList.push(attunementFilter);
 	const filterBox = new FilterBox(filterAndSearchBar, filterList);
 	const liList = {mundane:"", magic:""}; // store the <li> tag content here and change the DOM once for each after the loop
@@ -137,14 +137,14 @@ function populateTablesAndFilters() {
 		const name = curitem.name;
 		const rarity = curitem.rarity;
 		const source = curitem.source;
-		const sourceAbv = parse_sourceJsonToAbv(source);
-		const sourceFull = parse_sourceJsonToFull(source);
+		const sourceAbv = Parser.sourceJsonToAbv(source);
+		const sourceFull = Parser.sourceJsonToFull(source);
 		const type = [];
 		if (curitem.wondrous) type.push("Wondrous Item");
 		if (curitem.technology) type.push(curitem.technology);
 		if (curitem.age) type.push(curitem.age);
 		if (curitem.weaponCategory) type.push(curitem.weaponCategory+" Weapon");
-		if (curitem.type) type.push(parse_itemTypeToAbv(curitem.type));
+		if (curitem.type) type.push(Parser.itemTypeToAbv(curitem.type));
 		const typeList = type.join(","); // for filter to use
 		itemList[i].typeText = type.join(", "); // for loadhash to use
 		const tierTags = [];
@@ -278,8 +278,8 @@ function loadhash (id) {
 	const item = itemList[id];
 
 	const source = item.source;
-	const sourceAbv = parse_sourceJsonToAbv(source);
-	const sourceFull = parse_sourceJsonToFull(source);
+	const sourceAbv = Parser.sourceJsonToAbv(source);
+	const sourceFull = Parser.sourceJsonToFull(source);
 	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+item.name);
 	$("td#source span").html(sourceFull+", page "+item.page);
 
@@ -309,7 +309,7 @@ function loadhash (id) {
 	if (item.type) type = item.type;
 	if (item.weaponCategory) {
 		if(item.dmg1) $("span#damage").html(utils_makeRoller(item.dmg1));
-		if(item.dmgType) $("span#damagetype").html(parse_dmgTypeToFull(item.dmgType));
+		if(item.dmgType) $("span#damagetype").html(Parser.dmgTypeToFull(item.dmgType));
 	} else if (type === "LA" ||type === "MA"|| type === "HA") {
 		$("span#damage").html("AC "+item.ac+(type === "LA" ? " + Dex" : (type === "MA" ? " + Dex (max 2)" : "")));
 	} else if (type === "S") {
@@ -370,7 +370,7 @@ function loadhash (id) {
 		const properties = item.property.split(",");
 		for (let i = 0; i < properties.length; i++) {
 			let a = b = properties[i];
-			a = parse_propertyToAbv (a);
+			a = Parser.propertyToAbv (a);
 			if (b === "V") {
 				a = a + " (" + utils_makeRoller(item.dmg2) + ")";
 				texthtml += emphasize("Versatile", "This weapon can be used with one or two hands. A damage value in parentheses appears with the property \u2014 the damage when the weapon is used with two hands to make a melee attack.");
