@@ -16,6 +16,12 @@
  */
 function EntryRenderer() {
 
+	this.wrapperTag = "div";
+
+	this.setWrapperTag = function (tag) {
+		this.wrapperTag = tag;
+	};
+
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
 	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
@@ -199,13 +205,13 @@ function EntryRenderer() {
 			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
 
 			if (entry.entries || entry.name) {
-				textStack.push(`<div ${dataString} ${styleString}>${headerSpan}${preReqText}`);
+				textStack.push(`<${self.wrapperTag} ${dataString} ${styleString}>${headerSpan}${preReqText}`);
 				if (entry.entries) {
 					for (let i = 0; i < entry.entries.length; i++) {
 						self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, "<p>", "</p>");
 					}
 				}
-				textStack.push("</div>");
+				textStack.push(`</${self.wrapperTag}>`);
 			}
 
 			function getStyleString() {
