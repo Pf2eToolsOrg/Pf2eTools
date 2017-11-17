@@ -14,21 +14,7 @@
  * // render the final product by joining together all the collected strings
  * $("#myElement").html(toDisplay.join(""));
  */
-class EntryRenderer {
-
-	static getEntryDice(entry) {
-		// TODO make droll integration optional
-		const toAdd = String(entry.number) + "d" + entry.faces;
-		if (typeof droll !== "undefined" && entry.rollable === true) {
-			// TODO output this somewhere nice
-			// TODO make this less revolting
-
-			// TODO output to small tooltip-stype bubble? Close on mouseout
-			return `<span class='roller unselectable' onclick="if (this.rolled) { this.innerHTML = this.innerHTML.split('=')[0].trim()+' = '+droll.roll('${toAdd}').total; } else { this.rolled = true; this.innerHTML += ' = '+droll.roll('${toAdd}').total; }">${toAdd}</span>`;
-		} else {
-			return toAdd;
-		}
-	}
+function EntryRenderer() {
 
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
@@ -42,7 +28,7 @@ class EntryRenderer {
 	 * @param suffix The (optional) suffix to be added to the textStack after whatever is added by the current call
 	 * @param forcePrefixSuffix force the prefix and suffix to be added (useful for the first call from external code)
 	 */
-	recursiveEntryRender(entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
+	this.recursiveEntryRender = function(entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
 		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
 		prefix = prefix === undefined || prefix === null ? null : prefix;
 		suffix = suffix === undefined || suffix === null ? null : suffix;
@@ -65,9 +51,9 @@ class EntryRenderer {
 				case "list":
 					if (entry.items) {
 						textStack.push("<ul>");
-							for (let i = 0; i < entry.items.length; i++) {
-								this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${isNonstandardSource(entry.items[i].source) ? `class="${CLSS_NON_STANDARD_SOURCE}"` : ""}>`, "</li>");
-							}
+						for (let i = 0; i < entry.items.length; i++) {
+							this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${isNonstandardSource(entry.items[i].source) ? `class="${CLSS_NON_STANDARD_SOURCE}"` : ""}>`, "</li>");
+						}
 						textStack.push("</ul>");
 					}
 					break;
@@ -380,8 +366,23 @@ class EntryRenderer {
 				return out;
 			}
 		}
-	}
+	};
 }
+
+EntryRenderer.getEntryDice = function (entry) {
+	// TODO make droll integration optional
+	const toAdd = String(entry.number) + "d" + entry.faces;
+	if (typeof droll !== "undefined" && entry.rollable === true) {
+		// TODO output this somewhere nice
+		// TODO make this less revolting
+
+		// TODO output to small tooltip-stype bubble? Close on mouseout
+		return `<span class='roller unselectable' onclick="if (this.rolled) { this.innerHTML = this.innerHTML.split('=')[0].trim()+' = '+droll.roll('${toAdd}').total; } else { this.rolled = true; this.innerHTML += ' = '+droll.roll('${toAdd}').total; }">${toAdd}</span>`;
+	} else {
+		return toAdd;
+	}
+};
+
 EntryRenderer.RE_INLINE_CLASS = /(.*?) \((.*?)\)/;
 EntryRenderer.HEAD_NEG_1 = "statsBlockSectionHead";
 EntryRenderer.HEAD_0 = "statsBlockHead";
