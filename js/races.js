@@ -75,7 +75,7 @@ function loadhash (id) {
 	if (typeof currace.speed === "string") {
 		speed = currace.speed + (currace.speed === "Varies" ? "" : "ft. ");
 	} else {
-		speed = currace.speed.walk = currace.speed.walk + "ft.";
+		speed = currace.speed.walk + "ft.";
 		if (currace.speed.climb) speed += `, climb ${currace.speed.climb}ft.`
 	}
 	$("td#speed span").html(speed);
