@@ -474,7 +474,10 @@ function utils_getAbilityData(abObj) {
 }
 
 // PARSING =============================================================================================================
-const Parser = {};
+const pParser = "test1";
+let qParser = "test2";
+var rParser = "test3";
+Parser = {};
 Parser._parse_aToB = function (abMap, a) {
 	a = a.trim();
 	if (abMap[a] !== undefined) return abMap[a];
