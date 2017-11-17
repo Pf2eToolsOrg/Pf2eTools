@@ -63,11 +63,13 @@ class EntryRenderer {
 					handleOptions(this);
 					break;
 				case "list":
-					textStack.push("<ul>");
-					for (let i = 0; i < entry.items.length; i++) {
-						this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${isNonstandardSource(entry.items[i].source) ? `class="${CLSS_NON_STANDARD_SOURCE}"` : ""}>`, "</li>");
+					if (entry.items) {
+						textStack.push("<ul>");
+							for (let i = 0; i < entry.items.length; i++) {
+								this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${isNonstandardSource(entry.items[i].source) ? `class="${CLSS_NON_STANDARD_SOURCE}"` : ""}>`, "</li>");
+							}
+						textStack.push("</ul>");
 					}
-					textStack.push("</ul>");
 					break;
 				case "table":
 					renderTable(this);
@@ -93,8 +95,10 @@ class EntryRenderer {
 
 				// inline
 				case "inline":
-					for (let i = 0; i < entry.entries.length; i++) {
-						this.recursiveEntryRender(entry.entries[i], textStack, depth);
+					if (entry.entries) {
+						for (let i = 0; i < entry.entries.length; i++) {
+							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+						}
 					}
 					break;
 				case "bonus":
@@ -144,8 +148,10 @@ class EntryRenderer {
 			textStack.push("<thead>");
 			textStack.push("<tr>");
 
-			for (let i = 0; i < entry.colLabels.length; ++i) {
-				textStack.push(`<th ${getTableThClassText(i)}>${entry.colLabels[i]}</th>`);
+			if (entry.colLabels) {
+				for (let i = 0; i < entry.colLabels.length; ++i) {
+					textStack.push(`<th ${getTableThClassText(i)}>${entry.colLabels[i]}</th>`);
+				}
 			}
 
 			textStack.push("</tr>");
@@ -184,8 +190,10 @@ class EntryRenderer {
 		}
 
 		function handleOptions(self) {
-			entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
-			handleEntriesOptionsInvocationPatron(self, false);
+			if (entry.entries) {
+				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
+				handleEntriesOptionsInvocationPatron(self, false);
+			}
 		}
 
 		function handleInvocation(self) {
@@ -204,11 +212,15 @@ class EntryRenderer {
 			const preReqText = getPreReqText();
 			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
 
-			textStack.push(`<div ${dataString} ${styleString}>${headerSpan}${preReqText}`);
-			for (let i = 0; i < entry.entries.length; i++) {
-				self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, "<p>", "</p>");
+			if (entry.entries || entry.name) {
+				textStack.push(`<div ${dataString} ${styleString}>${headerSpan}${preReqText}`);
+				if (entry.entries) {
+					for (let i = 0; i < entry.entries.length; i++) {
+						self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, "<p>", "</p>");
+					}
+				}
+				textStack.push("</div>");
 			}
-			textStack.push("</div>");
 
 			function getStyleString() {
 				const styleClasses = [];
