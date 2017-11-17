@@ -8,9 +8,9 @@ window.onload = function load() {
 		var curreward = rewardlist[i];
 		var name = curreward.name;
 		const displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-		$("ul.rewards").append("<li class='row' "+FLTR_SOURCE+"='"+curreward.source+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-10'>"+displayName+"</span> <span class='source col-xs-2' title='"+parse_sourceJsonToFull(curreward.source)+"'>"+parse_sourceJsonToAbv(curreward.source)+"</span></a></li>");
+		$("ul.rewards").append("<li class='row' "+FLTR_SOURCE+"='"+curreward.source+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-10'>"+displayName+"</span> <span class='source col-xs-2' title='"+Parser.sourceJsonToFull(curreward.source)+"'>"+Parser.sourceJsonToAbv(curreward.source)+"</span></a></li>");
 
-		addDropdownOption($("select.sourcefilter"), curreward.source, parse_sourceJsonToFull(curreward.source));
+		addDropdownOption($("select.sourcefilter"), curreward.source, Parser.sourceJsonToFull(curreward.source));
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
@@ -41,7 +41,7 @@ function loadhash (id) {
 	var curreward = rewardlist[id];
 
 	var name = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-	$("th#name").html("<span title=\""+parse_sourceJsonToFull(curreward.source)+"\" class='source source"+parse_sourceJsonToAbv(curreward.source)+"'>"+parse_sourceJsonToAbv(curreward.source)+"</span> "+name);
+	$("th#name").html("<span title=\""+Parser.sourceJsonToFull(curreward.source)+"\" class='source source"+Parser.sourceJsonToAbv(curreward.source)+"'>"+Parser.sourceJsonToAbv(curreward.source)+"</span> "+name);
 
 	$("tr.text").remove();
 

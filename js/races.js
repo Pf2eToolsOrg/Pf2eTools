@@ -15,10 +15,10 @@ function onJsonLoad (data) {
 		var name = currace.name;
 		const ability = utils_getAbilityData(currace.ability);
 		const isChooseAbility = ability.asText.toLowerCase().includes("choose");
-		$("ul.races").append("<li "+FLTR_SOURCE+"='"+currace.source+"' "+FLTR_SIZE+"='"+currace.size+"' "+FLTR_ABILITIES+"='"+ability.asFilterCollection+"' "+FLTR_ABILITIES_CHOOSE+"='"+isChooseAbility+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+ability.asText+"</span> <span class='size col-xs-2'>"+parse_sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+parse_sourceJsonToFull(currace.source)+"\">"+parse_sourceJsonToAbv(currace.source)+"</span></a></li>");
+		$("ul.races").append("<li "+FLTR_SOURCE+"='"+currace.source+"' "+FLTR_SIZE+"='"+currace.size+"' "+FLTR_ABILITIES+"='"+ability.asFilterCollection+"' "+FLTR_ABILITIES_CHOOSE+"='"+isChooseAbility+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+ability.asText+"</span> <span class='size col-xs-2'>"+Parser.sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+Parser.sourceJsonToFull(currace.source)+"\">"+Parser.sourceJsonToAbv(currace.source)+"</span></a></li>");
 
-		addDropdownOption($("select.sourcefilter"), currace.source, parse_sourceJsonToFull(currace.source));
-		addDropdownOption($("select.sizefilter"), currace.size, parse_sizeAbvToFull(currace.size));
+		addDropdownOption($("select.sourcefilter"), currace.source, Parser.sourceJsonToFull(currace.source));
+		addDropdownOption($("select.sizefilter"), currace.size, Parser.sizeAbvToFull(currace.size));
 	}
 
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
@@ -64,7 +64,7 @@ function loadhash (id) {
 	var name = currace.name;
 	$("th#name").html(name);
 
-	var size = parse_sizeAbvToFull (currace.size);
+	var size = Parser.sizeAbvToFull (currace.size);
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 

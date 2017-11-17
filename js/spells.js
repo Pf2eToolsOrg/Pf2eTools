@@ -8,28 +8,11 @@ const P_NORMALISED_TIME= "normalisedTime";
 const P_SCHOOL = "school";
 const P_NORMALISED_RANGE = "normalisedRange";
 
-const RNG_SPECIAL =  "special";
-const RNG_POINT =  "point";
-const RNG_LINE =  "line";
-const RNG_CUBE = "cube";
-const RNG_CONE = "cone";
-const RNG_RADIUS = "radius";
-const RNG_SPHERE = "sphere";
-const RNG_HEMISPHERE  = "hemisphere";
-const RNG_SELF = "self";
-const RNG_SIGHT = "sight";
-const RNG_UNLIMITED = "unlimited";
-const RNG_UNLIMITED_SAME_PLANE = "plane";
-const RNG_TOUCH = "touch";
-
 const STR_WIZARD = "Wizard";
 const STR_FIGHTER = "Fighter";
 const STR_ELD_KNIGHT = "Eldritch Knight";
 const STR_ROGUE = "Rogue";
 const STR_ARC_TCKER = "Arcane Trickster";
-
-const UNT_FEET = "feet";
-const UNT_MILES = "miles";
 
 const TM_ACTION = "action";
 const TM_B_ACTION = "bonus action";
@@ -39,38 +22,8 @@ const TM_MINS = "minute";
 const TM_HRS = "hour";
 const TO_HIDE_SINGLETON_TIMES = [TM_ACTION, TM_B_ACTION, TM_REACTION, TM_ROUND];
 
-const SKL_ABJ = "A";
-const SKL_EVO = "V";
-const SKL_ENC = "E";
-const SKL_ILL = "I";
-const SKL_DIV = "D";
-const SKL_NEC = "N";
-const SKL_TRA = "T";
-const SKL_CON = "C";
-function getSchoolStr(school) {
-	if (school === SKL_ABJ) return "Abjuration";
-	if (school === SKL_EVO) return "Evocation";
-	if (school === SKL_ENC) return "Enchantment";
-	if (school === SKL_ILL) return "Illusion";
-	if (school === SKL_DIV) return "Divination";
-	if (school === SKL_NEC) return "Necromancy";
-	if (school === SKL_TRA) return "Transmutation";
-	if (school === SKL_CON) return "Conjuration";
-}
-
-const CANTRIP = "Cantrip";
-function getTblSpellLevelStr (level) {
-	if (level === 0) return CANTRIP;
-	if (level === 1) return level+"st";
-	if (level === 2) return level+"nd";
-	if (level === 3) return level+"rd";
-	return level+"th";
-}
-function getSpellLevelStr (level) {
-	return level === 0 ? getTblSpellLevelStr(level) : getTblSpellLevelStr(level) + "-level";
-}
 function getFltrSpellLevelStr(level) {
-	return level === 0 ? getTblSpellLevelStr(level) : getTblSpellLevelStr(level) + " level";
+	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
 }
 
 function getNormalisedTime(time) {
@@ -175,110 +128,17 @@ function getTblTimeStr(time) {
 	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
 		return time.unit.uppercaseFirst();
 	} else {
-		return getTimeStrHelper(time);
+		return Parser.getTimeToFull(time);
 	}
-}
-
-function getTimeStr(times) {
-	return times.map(t => `${getTimeStrHelper(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or  ");
-}
-
-function getTimeStrHelper(time) {
-	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
-}
-
-function getRangeStr(range) {
-	switch(range.type) {
-		case RNG_SPECIAL:
-			return "Special";
-		case RNG_POINT:
-			return renderPoint();
-		case RNG_LINE:
-		case RNG_CUBE:
-		case RNG_CONE:
-		case RNG_RADIUS:
-		case RNG_SPHERE:
-		case RNG_HEMISPHERE:
-			return renderArea();
-	}
-
-	function renderPoint() {
-		const dist = range.distance;
-		switch (dist.type) {
-			case UNT_FEET:
-			case UNT_MILES:
-				return `${dist.amount} ${dist.amount === 1 ? getSingletonUnit(dist.type) : dist.type}`;
-			case RNG_SELF:
-				return "Self";
-			case RNG_SIGHT:
-				return "Sight";
-			case RNG_UNLIMITED:
-				return "Unlimited";
-			case RNG_TOUCH:
-				return "Touch";
-		}
-	}
-	function renderArea() {
-		const size = range.distance;
-		return `${size.amount}-${getSingletonUnit(size.type)}${getAreaStyleStr()}`;
-
-		function getAreaStyleStr() {
-			return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
-		}
-	}
-}
-
-function getSingletonUnit(unit) {
-	if (unit === UNT_FEET) return "foot";
-	if (unit.charAt(unit.length-1) === "s") return unit.slice(0, -1);
-	return unit;
 }
 
 function getFltrActionVal(unit) {
 	unit = unit.toLowerCase();
-	return getSingletonUnit(unit);
-}
-
-function getComponentsStr(comp) {
-	const out = [];
-	if (comp.v) out.push("V");
-	if (comp.s) out.push("S");
-	if (comp.m) {
-		out.push("M");
-		if (comp.m.length) out.push(`(${comp.m})`)
-	}
-	return out.join(", ");
-}
-
-function getDurationStr(dur) {
-	return dur.map(d => {
-		switch (d.type) {
-			case "special":
-				return "Special";
-			case "instant":
-				return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
-			case "timed":
-				const con = d.concentration;
-				const upTo = d.duration.upTo;
-				return `${con ? "Concentration, " : ""}${upTo && con ? "u" : upTo ? "U" : ""}${upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? getSingletonUnit(d.duration.type) : d.duration.type}`;
-			case "permanent":
-				return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
-
-		}
-	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
-}
-
-function getTblClassesStr(classes) {
-	return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${parse_sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
-		(classes.fromSubclass ?
-			", " + classes.fromSubclass.sort((a, b) => {
-				const byName = ascSort(a.class.name, b.class.name);
-				return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
-			}).map(c => `<span title="Source: ${parse_sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${parse_sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
+	return Parser.getSingletonUnit(unit);
 }
 
 function getClassFilterStr(c) {
-	return `${c.name}${c.source !== SRC_PHB ? ` (${parse_sourceJsonToAbv(c.source)})` : ""}`;
+	return `${c.name}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
 }
 
 window.onload = function load() {
@@ -295,10 +155,10 @@ function onJsonLoad(data) {
 
 	// TODO concentration filter
 	// TODO components filter
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], parse_sourceJsonToFull);
+	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull);
 	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
 	const metaFilter = new Filter("Type", FLTR_META, [META_RITUAL, META_TECHNOMAGIC]);
-	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], getSchoolStr);
+	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], Parser.spSchoolAbvToFull);
 	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
 		[
 			"Action",
@@ -308,7 +168,7 @@ function onJsonLoad(data) {
 			"Minutes",
 			"Hours"
 		], Filter.asIs, getFltrActionVal);
-	const rangeFilter = new Filter("Range", FLTR_RANGE, [], getRangeStr, getRangeStr);
+	const rangeFilter = new Filter("Range", FLTR_RANGE, [], Parser.spRangeToFull, Parser.spRangeToFull);
 	const normalizedRangeItems = [];
 	const classFilter = new Filter("Class", FLTR_CLASS, []);
 	const filterList = [
@@ -325,7 +185,7 @@ function onJsonLoad(data) {
 	for (let i = 0; i < spellList.length; i++) {
 		const spell = spellList[i];
 
-		let levelText = getTblSpellLevelStr(spell.level);
+		let levelText = Parser.spLevelToFull(spell.level);
 		if (spell.meta && spell.meta.ritual) levelText += " (ritual)";
 		if (spell.meta && spell.meta.technomagic) levelText += " (tech.)";
 
@@ -353,13 +213,13 @@ function onJsonLoad(data) {
 			<li class='row' ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${encodeForHash([spell.name, spell.source])}' title="${spell.name}">
 					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
-					<span class='source col-xs-1 source${spell.source}' title="${parse_sourceJsonToFull(spell.source)}">${parse_sourceJsonToAbv(spell.source)}</span>
+					<span class='source col-xs-1 source${spell.source}' title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
 					<span class='level col-xs-1 col-xs-1-7'>${levelText}</span>
-					<span class='time col-xs-1 col-xs-1-7' title="${getTimeStr(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
-					<span class='school col-xs-1 col-xs-1-7 school_${spell.school}' title="${getSchoolStr(spell.school)}">${getSchoolStr(spell.school)}</span>
-					<span class='range col-xs-2 col-xs-2-4'>${getRangeStr(spell.range)}</span>
+					<span class='time col-xs-1 col-xs-1-7' title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
+					<span class='school col-xs-1 col-xs-1-7 school_${spell.school}' title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToFull(spell.school)}</span>
+					<span class='range col-xs-2 col-xs-2-4'>${Parser.spRangeToFull(spell.range)}</span>
 					
-					<span class='classes' style='display: none'>${getTblClassesStr(spell.classes)}</span>
+					<span class='classes' style='display: none'>${Parser.spClassesToFull(spell.classes)}</span>
 				</a>
 			</li>`;
 		$("ul.spells").append(tableItem);
@@ -389,8 +249,8 @@ function onJsonLoad(data) {
 
 	function ascSortSpellLevel(a, b) {
 		if (a === b) return 0;
-		if (a === CANTRIP) return -1;
-		if (b === CANTRIP) return 1;
+		if (a === STR_CANTRIP) return -1;
+		if (b === STR_CANTRIP) return 1;
 		return ascSort(a, b);
 	}
 
@@ -425,7 +285,7 @@ function onJsonLoad(data) {
 					|| (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
 				const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
 				const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
-				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeStr(s.range)];
+				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][Parser.spRangeToFull(s.range)];
 				// TODO good solution for subclasses
 				const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
 					|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
@@ -522,21 +382,17 @@ function loadhash (id) {
 
 	const renderStack = [];
 
-	renderStack.push(`<tr><th id="name" colspan="6"><span style="float: left">${spell.name}</span><span style="float: right" class="source${spell.source}" title="${parse_sourceJsonToFull(spell.source)}">${parse_sourceJsonToAbv(spell.source)}</span></th></tr>`);
+	renderStack.push(`<tr><th id="name" colspan="6"><span style="float: left">${spell.name}</span><span style="float: right" class="source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
 
-	let levelSchoolStr = spell.level === 0 ? `${getSchoolStr(spell.school)} ${getSpellLevelStr(spell.level)}`: `${getSpellLevelStr(spell.level)} ${getSchoolStr(spell.school)}`;
-	// these tags are (so far) mutually independent, so we don't need to combine the text
-	if (spell.meta && spell.meta.ritual) levelSchoolStr += " (ritual)";
-	if (spell.meta && spell.meta.technomagic) levelSchoolStr += " (technomagic)";
-	renderStack.push(`<tr><td id="levelschoolritual" style="text-transform: lowercase;" colspan="6"><span>${levelSchoolStr}</span></td></tr>`);
+	renderStack.push(`<tr><td id="levelschoolritual" style="text-transform: lowercase;" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta)}</span></td></tr>`);
 
-	renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${getTimeStr(spell.time)}</td></tr>`);
+	renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>`);
 
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Range: </span>${getRangeStr(spell.range)}</td></tr>`);
+	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>`);
 
-	renderStack.push(`<tr><td id="components" colspan="6"><span class="bold">Components: </span>${getComponentsStr(spell.components)}</td></tr>`);
+	renderStack.push(`<tr><td id="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>`);
 
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Duration: </span>${getDurationStr(spell.duration)}</td></tr>`);
+	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>`);
 
 	renderStack.push(`<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>`);
 
@@ -552,7 +408,7 @@ function loadhash (id) {
 
 	renderStack.push(`</td></tr>`);
 
-	renderStack.push(`<tr class="text"><td id="classes" colspan="6"><span class="bold">Classes: </span>${getTblClassesStr(spell.classes)}</td></tr>`);
+	renderStack.push(`<tr class="text"><td id="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spClassesToFull(spell.classes)}</td></tr>`);
 
 	if (spell.scrollNote) {
 		renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
