@@ -285,12 +285,12 @@ function loadhash (id) {
 	const sourceAbv = Parser.sourceJsonToAbv(source);
 	const sourceFull = Parser.sourceJsonToFull(source);
 	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+item.name);
-	$("td span#source").html(sourceFull+", page "+item.page);
+	$("td#source span").html(sourceFull+", page "+item.page);
 
 	$("td span#value").html(item.value ? item.value+(item.weight ? ", " : "") : "");
 	$("td span#weight").html(item.weight ? item.weight+(item.weight == 1 ? " lb." : " lbs.") : "");
 	$("td span#rarity").html((item.tier ? ", "+item.tier : "")+(item.rarity ? ", "+item.rarity : ""));
-	$("td span#attunement").html(item.reqAttune);
+	$("td span#attunement").html(item.reqAttune ? item.reqAttune : "");
 	$("td span#type").html(item.typeText);
 
 	$("span#damage").html("");
