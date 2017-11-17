@@ -85,6 +85,25 @@ RNG_TOUCH = "touch";
 UNT_FEET = "feet";
 UNT_MILES = "miles";
 
+const STR_CANTRIP = "Cantrip";
+
+const RNG_SPECIAL =  "special";
+const RNG_POINT =  "point";
+const RNG_LINE =  "line";
+const RNG_CUBE = "cube";
+const RNG_CONE = "cone";
+const RNG_RADIUS = "radius";
+const RNG_SPHERE = "sphere";
+const RNG_HEMISPHERE  = "hemisphere";
+const RNG_SELF = "self";
+const RNG_SIGHT = "sight";
+const RNG_UNLIMITED = "unlimited";
+const RNG_UNLIMITED_SAME_PLANE = "plane";
+const RNG_TOUCH = "touch";
+
+const UNT_FEET = "feet";
+const UNT_MILES = "miles";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -971,7 +990,7 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 
 Parser.NUMBERS_ONES = ['','one','two','three','four','five','six','seven','eight','nine'];
 Parser.NUMBERS_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']
 
 Parser.PROPERTY_JSON_TO_ABV = {
 	"2H": "two-handed",
