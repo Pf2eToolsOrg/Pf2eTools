@@ -474,220 +474,222 @@ function utils_getAbilityData(abObj) {
 }
 
 // PARSING =============================================================================================================
-class Parser {
-	static _parse_aToB(abMap, a) {
-		a = a.trim();
-		if (abMap[a] !== undefined) return abMap[a];
-		return a;
+const Parser = {};
+Parser._parse_aToB = function (abMap, a) {
+	a = a.trim();
+	if (abMap[a] !== undefined) return abMap[a];
+	return a;
+};
+
+Parser._parse_bToA= function (abMap, b) {
+	b = b.trim();
+	for (const v in abMap) {
+		if (!abMap.hasOwnProperty(v)) continue;
+		if (abMap[v] === b) return v
 	}
-	static _parse_bToA(abMap, b) {
-		b = b.trim();
-		for (const v in abMap) {
-			if (!abMap.hasOwnProperty(v)) continue;
-			if (abMap[v] === b) return v
+	return b;
+};
+
+Parser.attAbvToFull= function (abv) {
+	return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
+};
+
+Parser.attFullToAbv= function (full) {
+	return Parser._parse_bToA(Parser.ATB_ABV_TO_FULL, full);
+};
+
+Parser.sizeAbvToFull = function (abv) {
+	return Parser._parse_aToB(Parser.SIZE_ABV_TO_FULL, abv);
+};
+
+Parser.getAbilityModifier = function (abilityScore) {
+	let modifier = Math.floor((abilityScore - 10) / 2);
+	if (modifier >= 0) modifier = "+"+modifier;
+	return modifier;
+};
+
+Parser._addCommas= function (intNum) {
+	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+};
+
+Parser.crToXp = function (cr) {
+	if (cr === "Unknown") return "Unknown";
+	if (cr === "0") return "0 or 10";
+	if (cr === "1/8") return "25";
+	if (cr === "1/4") return "50";
+	if (cr === "1/2") return "100";
+	return Parser._addCommas (Parser.XP_CHART[parseInt(cr)-1]);
+};
+
+Parser.crToNumber = function (cr) {
+	const parts = cr.trim().split("/");
+	if (parts.length === 1) return Number(parts[0]);
+	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
+	else return 0;
+};
+
+Parser.armorFullToAbv= function (armor) {
+	return Parser._parse_bToA(Parser.ARMOR_ABV_TO_FULL, armor);
+};
+
+Parser.sourceJsonToFull = function (source) {
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
+};
+Parser.sourceJsonToAbv= function (source) {
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
+};
+
+Parser.stringToSlug= function (str) {
+	return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+};
+
+Parser.itemTypeToAbv = function (type) {
+	return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
+};
+
+Parser.dmgTypeToFull = function (dmgType) {
+	return Parser._parse_aToB(Parser.DMGTYPE_JSON_TO_FULL, dmgType);
+};
+
+Parser.numberToString= function (num) {
+	if (num === 0) return "zero";
+	else return parse_hundreds(num);
+
+	function parse_hundreds(num){
+		if (num > 99){
+			return Parser.NUMBERS_ONES[Math.floor(num/100)]+" hundred "+parse_tens(num%100);
 		}
-		return b;
-	}
-	static attAbvToFull(abv) {
-		return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
-	}
-	static attFullToAbv(full) {
-		return Parser._parse_bToA(Parser.ATB_ABV_TO_FULL, full);
-	}
-
-	static sizeAbvToFull (abv) {
-		return Parser._parse_aToB(Parser.SIZE_ABV_TO_FULL, abv);
-	}
-
-	static getAbilityModifier (abilityScore) {
-		let modifier = Math.floor((abilityScore - 10) / 2);
-		if (modifier >= 0) modifier = "+"+modifier;
-		return modifier;
-	}
-
-	static _addCommas(intNum) {
-		return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
-	}
-
-	static crToXp (cr) {
-		if (cr === "Unknown") return "Unknown";
-		if (cr === "0") return "0 or 10";
-		if (cr === "1/8") return "25";
-		if (cr === "1/4") return "50";
-		if (cr === "1/2") return "100";
-		return Parser._addCommas (Parser.XP_CHART[parseInt(cr)-1]);
-	}
-
-	static crToNumber (cr) {
-		const parts = cr.trim().split("/");
-		if (parts.length === 1) return Number(parts[0]);
-		else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
-		else return 0;
-	}
-
-	static armorFullToAbv(armor) {
-		return Parser._parse_bToA(Parser.ARMOR_ABV_TO_FULL, armor);
-	}
-
-	static sourceJsonToFull (source) {
-		return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
-	}
-	static sourceJsonToAbv(source) {
-		return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
-	}
-
-	static stringToSlug(str) {
-		return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
-	}
-
-	static itemTypeToAbv (type) {
-		return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
-	}
-
-	static dmgTypeToFull (dmgType) {
-		return Parser._parse_aToB(Parser.DMGTYPE_JSON_TO_FULL, dmgType);
-	}
-
-	static numberToString(num) {
-		if (num === 0) return "zero";
-		else return parse_hundreds(num);
-
-		function parse_hundreds(num){
-			if (num > 99){
-				return Parser.NUMBERS_ONES[Math.floor(num/100)]+" hundred "+parse_tens(num%100);
-			}
-			else{
-				return parse_tens(num);
-			}
-		}
-		function parse_tens(num){
-			if (num<10) return Parser.NUMBERS_ONES[num];
-			else if (num>=10 && num<20) return Parser.NUMBERS_TEENS[num-10];
-			else{
-				return Parser.NUMBERS_TENS[Math.floor(num/10)]+" "+Parser.NUMBERS_ONES[num%10];
-			}
+		else{
+			return parse_tens(num);
 		}
 	}
+	function parse_tens(num){
+		if (num<10) return Parser.NUMBERS_ONES[num];
+		else if (num>=10 && num<20) return Parser.NUMBERS_TEENS[num-10];
+		else{
+			return Parser.NUMBERS_TENS[Math.floor(num/10)]+" "+Parser.NUMBERS_ONES[num%10];
+		}
+	}
+};
 
-	static propertyToAbv (property) {
-		return Parser._parse_aToB(Parser.PROPERTY_JSON_TO_ABV, property);
+Parser.propertyToAbv = function (property) {
+	return Parser._parse_aToB(Parser.PROPERTY_JSON_TO_ABV, property);
+};
+
+// sp-prefix functions are for parsing spell data, and shared with the roll20 script
+Parser.spSchoolAbvToFull= function (school) {
+	return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
+};
+
+Parser.spLevelToFull = function (level) {
+	if (level === 0) return STR_CANTRIP;
+	if (level === 1) return level+"st";
+	if (level === 2) return level+"nd";
+	if (level === 3) return level+"rd";
+	return level+"th";
+};
+
+Parser.spLevelSchoolMetaToFull= function (level, school, meta) {
+	const levelPart = level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + "-level";
+	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school)}`;
+	// these tags are (so far) mutually independent, so we don't need to combine the text
+	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
+	if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
+	return levelSchoolStr;
+};
+
+Parser.spTimeListToFull= function (times) {
+	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or ");
+};
+
+Parser.getTimeToFull= function (time) {
+	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
+};
+
+Parser.spRangeToFull= function (range) {
+	switch(range.type) {
+		case RNG_SPECIAL:
+			return "Special";
+		case RNG_POINT:
+			return renderPoint();
+		case RNG_LINE:
+		case RNG_CUBE:
+		case RNG_CONE:
+		case RNG_RADIUS:
+		case RNG_SPHERE:
+		case RNG_HEMISPHERE:
+			return renderArea();
 	}
 
-	// sp-prefix functions are for parsing spell data, and shared with the roll20 script
-	static spSchoolAbvToFull(school) {
-		return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
+	function renderPoint() {
+		const dist = range.distance;
+		switch (dist.type) {
+			case UNT_FEET:
+			case UNT_MILES:
+				return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
+			case RNG_SELF:
+				return "Self";
+			case RNG_SIGHT:
+				return "Sight";
+			case RNG_UNLIMITED:
+				return "Unlimited";
+			case RNG_TOUCH:
+				return "Touch";
+		}
 	}
+	function renderArea() {
+		const size = range.distance;
+		return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
 
-	static spLevelToFull (level) {
-		if (level === 0) return STR_CANTRIP;
-		if (level === 1) return level+"st";
-		if (level === 2) return level+"nd";
-		if (level === 3) return level+"rd";
-		return level+"th";
+		function getAreaStyleStr() {
+			return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
+		}
 	}
+};
 
-	static spLevelSchoolMetaToFull(level, school, meta) {
-		const levelPart = level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + "-level";
-		let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school)}`;
-		// these tags are (so far) mutually independent, so we don't need to combine the text
-		if (meta && meta.ritual) levelSchoolStr += " (ritual)";
-		if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
-		return levelSchoolStr;
+Parser.getSingletonUnit= function (unit) {
+	if (unit === UNT_FEET) return "foot";
+	if (unit.charAt(unit.length-1) === "s") return unit.slice(0, -1);
+	return unit;
+};
+
+Parser.spComponentsToFull= function (comp) {
+	const out = [];
+	if (comp.v) out.push("V");
+	if (comp.s) out.push("S");
+	if (comp.m) {
+		out.push("M");
+		if (comp.m.length) out.push(`(${comp.m})`)
 	}
+	return out.join(", ");
+};
 
-	static spTimeListToFull(times) {
-		return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or ");
-	}
-
-	static getTimeToFull(time) {
-		return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
-	}
-
-	static spRangeToFull(range) {
-		switch(range.type) {
-			case RNG_SPECIAL:
+Parser.spDurationToFull= function (dur) {
+	return dur.map(d => {
+		switch (d.type) {
+			case "special":
 				return "Special";
-			case RNG_POINT:
-				return renderPoint();
-			case RNG_LINE:
-			case RNG_CUBE:
-			case RNG_CONE:
-			case RNG_RADIUS:
-			case RNG_SPHERE:
-			case RNG_HEMISPHERE:
-				return renderArea();
+			case "instant":
+				return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
+			case "timed":
+				const con = d.concentration;
+				const upTo = d.duration.upTo;
+				return `${con ? "Concentration, " : ""}${upTo && con ? "u" : upTo ? "U" : ""}${upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
+			case "permanent":
+				return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
+
 		}
+	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
+};
 
-		function renderPoint() {
-			const dist = range.distance;
-			switch (dist.type) {
-				case UNT_FEET:
-				case UNT_MILES:
-					return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
-				case RNG_SELF:
-					return "Self";
-				case RNG_SIGHT:
-					return "Sight";
-				case RNG_UNLIMITED:
-					return "Unlimited";
-				case RNG_TOUCH:
-					return "Touch";
-			}
-		}
-		function renderArea() {
-			const size = range.distance;
-			return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
-
-			function getAreaStyleStr() {
-				return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
-			}
-		}
-	}
-
-	static getSingletonUnit(unit) {
-		if (unit === UNT_FEET) return "foot";
-		if (unit.charAt(unit.length-1) === "s") return unit.slice(0, -1);
-		return unit;
-	}
-
-	static spComponentsToFull(comp) {
-		const out = [];
-		if (comp.v) out.push("V");
-		if (comp.s) out.push("S");
-		if (comp.m) {
-			out.push("M");
-			if (comp.m.length) out.push(`(${comp.m})`)
-		}
-		return out.join(", ");
-	}
-
-	static spDurationToFull(dur) {
-		return dur.map(d => {
-			switch (d.type) {
-				case "special":
-					return "Special";
-				case "instant":
-					return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
-				case "timed":
-					const con = d.concentration;
-					const upTo = d.duration.upTo;
-					return `${con ? "Concentration, " : ""}${upTo && con ? "u" : upTo ? "U" : ""}${upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
-				case "permanent":
-					return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
-
-			}
-		}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
-	}
-
-	static spClassesToFull(classes) {
-		return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
-			(classes.fromSubclass ?
-				", " + classes.fromSubclass.sort((a, b) => {
-					const byName = ascSort(a.class.name, b.class.name);
-					return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
-				}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
-	}
-}
+Parser.spClassesToFull= function (classes) {
+	return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
+		(classes.fromSubclass ?
+			", " + classes.fromSubclass.sort((a, b) => {
+				const byName = ascSort(a.class.name, b.class.name);
+				return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
+			}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
+};
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {
 	"A": "Abjuration",
@@ -969,7 +971,7 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 
 Parser.NUMBERS_ONES = ['','one','two','three','four','five','six','seven','eight','nine'];
 Parser.NUMBERS_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']
+Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
 
 Parser.PROPERTY_JSON_TO_ABV = {
 	"2H": "two-handed",
@@ -1031,7 +1033,7 @@ function hide(element) {
 // SEARCH AND FILTER ===================================================================================================
 function search(options) {
 	const list = new List("listcontainer", options);
-	list.sort("name")
+	list.sort("name");
 	$("#reset").click(function() {
 		$("#filtertools").find("select").val("All");
 		$("#search").val("");
