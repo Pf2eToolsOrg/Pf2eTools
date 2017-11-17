@@ -85,6 +85,19 @@ function populate(tobData, mainData) {
 		$("main .row:eq(0) > div:eq(0)").toggleClass("col-sm-5").toggle();
 		$("main .row:eq(0) > div:eq(1)").toggleClass("col-sm-12").toggleClass("col-sm-7");
 	})
+
+	// proficiency bonus/dice toggle
+	const profBonusDiceBtn = $("button#profbonusdice");
+	profBonusDiceBtn.useDice = false;
+	profBonusDiceBtn.click(function() {
+		// TODO switch the rollers to using PD/PB
+		if (this.useDice) {
+			this.innerHTML = "Use Proficiency Dice";
+		} else {
+			this.innerHTML = "Use Proficiency Bonus"
+		}
+		this.useDice = !this.useDice;
+	})
 }
 
 // sorting for form filtering
