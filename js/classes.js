@@ -518,7 +518,7 @@ function loadsub(sub) {
 		$(`.${CLSS_SUBCLASS_PILL}`).addClass(CLSS_ACTIVE);
 		$(`.${CLSS_SUBCLASS_FEATURE}`).show();
 		$(`.${CLSS_SUBCLASS_PREFIX}`).show();
-		$(`p.${CLSS_NON_STANDARD_SOURCE}`).show();
+		$(`div.${CLSS_NON_STANDARD_SOURCE}`).show();
 		// if we're hiding features from some sources, make sure these stay hidden
 		if (hideOtherSources) {
 			$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
