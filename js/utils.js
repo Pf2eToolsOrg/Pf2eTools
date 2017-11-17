@@ -1,89 +1,89 @@
-const STR_EMPTY = "";
-const STR_VOID_LINK = "javascript:void(0)";
-const STR_SLUG_DASH = "-";
-const STR_APOSTROPHE = "\u2019";
+STR_EMPTY = "";
+STR_VOID_LINK = "javascript:void(0)";
+STR_SLUG_DASH = "-";
+STR_APOSTROPHE = "\u2019";
 
-const ID_SEARCH_BAR = "filter-search-input-group";
-const ID_RESET_BUTTON = "reset";
+ID_SEARCH_BAR = "filter-search-input-group";
+ID_RESET_BUTTON = "reset";
 
-const TYP_STRING = "string";
-const TYP_NUMBER = "number";
-const TYP_OBJECT = "object";
+TYP_STRING = "string";
+TYP_NUMBER = "number";
+TYP_OBJECT = "object";
 
-const ELE_SPAN = "span";
-const ELE_UL = "ul";
-const ELE_LI = "li";
-const ELE_A = "a";
-const ELE_P = "p";
-const ELE_DIV = "div";
-const ELE_BUTTON = "button";
-const ELE_INPUT = "input";
+ELE_SPAN = "span";
+ELE_UL = "ul";
+ELE_LI = "li";
+ELE_A = "a";
+ELE_P = "p";
+ELE_DIV = "div";
+ELE_BUTTON = "button";
+ELE_INPUT = "input";
 
-const EVNT_MOUSEOVER = "mouseover";
-const EVNT_MOUSEOUT = "mouseout";
-const EVNT_MOUSELEAVE = "mouseleave";
-const EVNT_MOUSEENTER = "mouseenter";
-const EVNT_CLICK = "click";
+EVNT_MOUSEOVER = "mouseover";
+EVNT_MOUSEOUT = "mouseout";
+EVNT_MOUSELEAVE = "mouseleave";
+EVNT_MOUSEENTER = "mouseenter";
+EVNT_CLICK = "click";
 
-const ATB_ID = "id";
-const ATB_CLASS = "class";
-const ATB_TITLE = "title";
-const ATB_VALUE = "value";
-const ATB_HREF = "href";
-const ATB_STYLE = "style";
-const ATB_CHECKED = "checked";
-const ATB_TYPE = "type";
-const ATB_ONCLICK = "onclick";
+ATB_ID = "id";
+ATB_CLASS = "class";
+ATB_TITLE = "title";
+ATB_VALUE = "value";
+ATB_HREF = "href";
+ATB_STYLE = "style";
+ATB_CHECKED = "checked";
+ATB_TYPE = "type";
+ATB_ONCLICK = "onclick";
 
-const STL_DISPLAY_INITIAL = "display: initial";
-const STL_DISPLAY_NONE = "display: none";
+STL_DISPLAY_INITIAL = "display: initial";
+STL_DISPLAY_NONE = "display: none";
 
-const FLTR_ID = "filterId";
-const FLTR_SOURCE = "filterSource";
-const FLTR_TYPE = "filterType";
-const FLTR_CR = "filterCr";
-const FLTR_3PP = "filter3pp";
-const FLTR_ABILITIES = "filterAbilities";
-const FLTR_ORDER = "filterOrder";
-const FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
-const FLTR_SIZE = "filterSize";
-const FLTR_LEVEL = "filterLevel";
-const FLTR_SCHOOL = "filterSchool";
-const FLTR_RANGE = "filterRange";
-const FLTR_CLASS = "filterClass";
-const FLTR_META = "filterMeta";
-const FLTR_ACTION = "filterAction";
-const FLTR_TIER = "filterTier";
-const FLTR_RARITY = "filterRarity";
-const FLTR_ATTUNEMENT = "filterAttunement";
-const FLTR_LIST_SEP = ";";
+FLTR_ID = "filterId";
+FLTR_SOURCE = "filterSource";
+FLTR_TYPE = "filterType";
+FLTR_CR = "filterCr";
+FLTR_3PP = "filter3pp";
+FLTR_ABILITIES = "filterAbilities";
+FLTR_ORDER = "filterOrder";
+FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
+FLTR_SIZE = "filterSize";
+FLTR_LEVEL = "filterLevel";
+FLTR_SCHOOL = "filterSchool";
+FLTR_RANGE = "filterRange";
+FLTR_CLASS = "filterClass";
+FLTR_META = "filterMeta";
+FLTR_ACTION = "filterAction";
+FLTR_TIER = "filterTier";
+FLTR_RARITY = "filterRarity";
+FLTR_ATTUNEMENT = "filterAttunement";
+FLTR_LIST_SEP = ";";
 
-const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
-const CLSS_SUBCLASS_FEATURE = "subclass-feature";
+CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
+CLSS_SUBCLASS_FEATURE = "subclass-feature";
 
-const ATB_DATA_LIST_SEP = "||";
-const ATB_DATA_PART_SEP = "::";
-const ATB_DATA_SC = "data-subclass";
-const ATB_DATA_SRC = "data-source";
+ATB_DATA_LIST_SEP = "||";
+ATB_DATA_PART_SEP = "::";
+ATB_DATA_SC = "data-subclass";
+ATB_DATA_SRC = "data-source";
 
-const STR_CANTRIP = "Cantrip";
+STR_CANTRIP = "Cantrip";
 
-const RNG_SPECIAL =  "special";
-const RNG_POINT =  "point";
-const RNG_LINE =  "line";
-const RNG_CUBE = "cube";
-const RNG_CONE = "cone";
-const RNG_RADIUS = "radius";
-const RNG_SPHERE = "sphere";
-const RNG_HEMISPHERE  = "hemisphere";
-const RNG_SELF = "self";
-const RNG_SIGHT = "sight";
-const RNG_UNLIMITED = "unlimited";
-const RNG_UNLIMITED_SAME_PLANE = "plane";
-const RNG_TOUCH = "touch";
+RNG_SPECIAL =  "special";
+RNG_POINT =  "point";
+RNG_LINE =  "line";
+RNG_CUBE = "cube";
+RNG_CONE = "cone";
+RNG_RADIUS = "radius";
+RNG_SPHERE = "sphere";
+RNG_HEMISPHERE  = "hemisphere";
+RNG_SELF = "self";
+RNG_SIGHT = "sight";
+RNG_UNLIMITED = "unlimited";
+RNG_UNLIMITED_SAME_PLANE = "plane";
+RNG_TOUCH = "touch";
 
-const UNT_FEET = "feet";
-const UNT_MILES = "miles";
+UNT_FEET = "feet";
+UNT_MILES = "miles";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -474,9 +474,6 @@ function utils_getAbilityData(abObj) {
 }
 
 // PARSING =============================================================================================================
-const pParser = "test1";
-let qParser = "test2";
-var rParser = "test3";
 Parser = {};
 Parser._parse_aToB = function (abMap, a) {
 	a = a.trim();
