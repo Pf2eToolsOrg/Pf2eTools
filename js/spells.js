@@ -550,15 +550,17 @@ function loadhash (id) {
 		renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
 	}
 
+	renderStack.push(`</td></tr>`);
+
+	renderStack.push(`<tr class="text"><td id="classes" colspan="6"><span class="bold">Classes: </span>${getTblClassesStr(spell.classes)}</td></tr>`);
+
 	if (spell.scrollNote) {
+		renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
 		renderer.recursiveEntryRender(
 			`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`
 			, renderStack, 2);
+		renderStack.push(`</section></td></tr>`);
 	}
-
-	renderStack.push(`</td></tr>`);
-
-	renderStack.push(`<tr><td id="classes" colspan="6"><span class="bold">Classes: </span>${getTblClassesStr(spell.classes)}</td></tr>`);
 
 	const topBorder = $("#topBorder");
 	topBorder.after(renderStack.join(""));
