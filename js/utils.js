@@ -1,89 +1,89 @@
-const STR_EMPTY = "";
-const STR_VOID_LINK = "javascript:void(0)";
-const STR_SLUG_DASH = "-";
-const STR_APOSTROPHE = "\u2019";
+STR_EMPTY = "";
+STR_VOID_LINK = "javascript:void(0)";
+STR_SLUG_DASH = "-";
+STR_APOSTROPHE = "\u2019";
 
-const ID_SEARCH_BAR = "filter-search-input-group";
-const ID_RESET_BUTTON = "reset";
+ID_SEARCH_BAR = "filter-search-input-group";
+ID_RESET_BUTTON = "reset";
 
-const TYP_STRING = "string";
-const TYP_NUMBER = "number";
-const TYP_OBJECT = "object";
+TYP_STRING = "string";
+TYP_NUMBER = "number";
+TYP_OBJECT = "object";
 
-const ELE_SPAN = "span";
-const ELE_UL = "ul";
-const ELE_LI = "li";
-const ELE_A = "a";
-const ELE_P = "p";
-const ELE_DIV = "div";
-const ELE_BUTTON = "button";
-const ELE_INPUT = "input";
+ELE_SPAN = "span";
+ELE_UL = "ul";
+ELE_LI = "li";
+ELE_A = "a";
+ELE_P = "p";
+ELE_DIV = "div";
+ELE_BUTTON = "button";
+ELE_INPUT = "input";
 
-const EVNT_MOUSEOVER = "mouseover";
-const EVNT_MOUSEOUT = "mouseout";
-const EVNT_MOUSELEAVE = "mouseleave";
-const EVNT_MOUSEENTER = "mouseenter";
-const EVNT_CLICK = "click";
+EVNT_MOUSEOVER = "mouseover";
+EVNT_MOUSEOUT = "mouseout";
+EVNT_MOUSELEAVE = "mouseleave";
+EVNT_MOUSEENTER = "mouseenter";
+EVNT_CLICK = "click";
 
-const ATB_ID = "id";
-const ATB_CLASS = "class";
-const ATB_TITLE = "title";
-const ATB_VALUE = "value";
-const ATB_HREF = "href";
-const ATB_STYLE = "style";
-const ATB_CHECKED = "checked";
-const ATB_TYPE = "type";
-const ATB_ONCLICK = "onclick";
+ATB_ID = "id";
+ATB_CLASS = "class";
+ATB_TITLE = "title";
+ATB_VALUE = "value";
+ATB_HREF = "href";
+ATB_STYLE = "style";
+ATB_CHECKED = "checked";
+ATB_TYPE = "type";
+ATB_ONCLICK = "onclick";
 
-const STL_DISPLAY_INITIAL = "display: initial";
-const STL_DISPLAY_NONE = "display: none";
+STL_DISPLAY_INITIAL = "display: initial";
+STL_DISPLAY_NONE = "display: none";
 
-const FLTR_ID = "filterId";
-const FLTR_SOURCE = "filterSource";
-const FLTR_TYPE = "filterType";
-const FLTR_CR = "filterCr";
-const FLTR_3PP = "filter3pp";
-const FLTR_ABILITIES = "filterAbilities";
-const FLTR_ORDER = "filterOrder";
-const FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
-const FLTR_SIZE = "filterSize";
-const FLTR_LEVEL = "filterLevel";
-const FLTR_SCHOOL = "filterSchool";
-const FLTR_RANGE = "filterRange";
-const FLTR_CLASS = "filterClass";
-const FLTR_META = "filterMeta";
-const FLTR_ACTION = "filterAction";
-const FLTR_TIER = "filterTier";
-const FLTR_RARITY = "filterRarity";
-const FLTR_ATTUNEMENT = "filterAttunement";
-const FLTR_LIST_SEP = ";";
+FLTR_ID = "filterId";
+FLTR_SOURCE = "filterSource";
+FLTR_TYPE = "filterType";
+FLTR_CR = "filterCr";
+FLTR_3PP = "filter3pp";
+FLTR_ABILITIES = "filterAbilities";
+FLTR_ORDER = "filterOrder";
+FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
+FLTR_SIZE = "filterSize";
+FLTR_LEVEL = "filterLevel";
+FLTR_SCHOOL = "filterSchool";
+FLTR_RANGE = "filterRange";
+FLTR_CLASS = "filterClass";
+FLTR_META = "filterMeta";
+FLTR_ACTION = "filterAction";
+FLTR_TIER = "filterTier";
+FLTR_RARITY = "filterRarity";
+FLTR_ATTUNEMENT = "filterAttunement";
+FLTR_LIST_SEP = ";";
 
-const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
-const CLSS_SUBCLASS_FEATURE = "subclass-feature";
+CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
+CLSS_SUBCLASS_FEATURE = "subclass-feature";
 
-const ATB_DATA_LIST_SEP = "||";
-const ATB_DATA_PART_SEP = "::";
-const ATB_DATA_SC = "data-subclass";
-const ATB_DATA_SRC = "data-source";
+ATB_DATA_LIST_SEP = "||";
+ATB_DATA_PART_SEP = "::";
+ATB_DATA_SC = "data-subclass";
+ATB_DATA_SRC = "data-source";
 
-const STR_CANTRIP = "Cantrip";
+STR_CANTRIP = "Cantrip";
 
-const RNG_SPECIAL =  "special";
-const RNG_POINT =  "point";
-const RNG_LINE =  "line";
-const RNG_CUBE = "cube";
-const RNG_CONE = "cone";
-const RNG_RADIUS = "radius";
-const RNG_SPHERE = "sphere";
-const RNG_HEMISPHERE  = "hemisphere";
-const RNG_SELF = "self";
-const RNG_SIGHT = "sight";
-const RNG_UNLIMITED = "unlimited";
-const RNG_UNLIMITED_SAME_PLANE = "plane";
-const RNG_TOUCH = "touch";
+RNG_SPECIAL =  "special";
+RNG_POINT =  "point";
+RNG_LINE =  "line";
+RNG_CUBE = "cube";
+RNG_CONE = "cone";
+RNG_RADIUS = "radius";
+RNG_SPHERE = "sphere";
+RNG_HEMISPHERE  = "hemisphere";
+RNG_SELF = "self";
+RNG_SIGHT = "sight";
+RNG_UNLIMITED = "unlimited";
+RNG_UNLIMITED_SAME_PLANE = "plane";
+RNG_TOUCH = "touch";
 
-const UNT_FEET = "feet";
-const UNT_MILES = "miles";
+UNT_FEET = "feet";
+UNT_MILES = "miles";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -474,220 +474,222 @@ function utils_getAbilityData(abObj) {
 }
 
 // PARSING =============================================================================================================
-class Parser {
-	static _parse_aToB(abMap, a) {
-		a = a.trim();
-		if (abMap[a] !== undefined) return abMap[a];
-		return a;
+Parser = {};
+Parser._parse_aToB = function (abMap, a) {
+	a = a.trim();
+	if (abMap[a] !== undefined) return abMap[a];
+	return a;
+};
+
+Parser._parse_bToA= function (abMap, b) {
+	b = b.trim();
+	for (const v in abMap) {
+		if (!abMap.hasOwnProperty(v)) continue;
+		if (abMap[v] === b) return v
 	}
-	static _parse_bToA(abMap, b) {
-		b = b.trim();
-		for (const v in abMap) {
-			if (!abMap.hasOwnProperty(v)) continue;
-			if (abMap[v] === b) return v
+	return b;
+};
+
+Parser.attAbvToFull= function (abv) {
+	return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
+};
+
+Parser.attFullToAbv= function (full) {
+	return Parser._parse_bToA(Parser.ATB_ABV_TO_FULL, full);
+};
+
+Parser.sizeAbvToFull = function (abv) {
+	return Parser._parse_aToB(Parser.SIZE_ABV_TO_FULL, abv);
+};
+
+Parser.getAbilityModifier = function (abilityScore) {
+	let modifier = Math.floor((abilityScore - 10) / 2);
+	if (modifier >= 0) modifier = "+"+modifier;
+	return modifier;
+};
+
+Parser._addCommas= function (intNum) {
+	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+};
+
+Parser.crToXp = function (cr) {
+	if (cr === "Unknown") return "Unknown";
+	if (cr === "0") return "0 or 10";
+	if (cr === "1/8") return "25";
+	if (cr === "1/4") return "50";
+	if (cr === "1/2") return "100";
+	return Parser._addCommas (Parser.XP_CHART[parseInt(cr)-1]);
+};
+
+Parser.crToNumber = function (cr) {
+	const parts = cr.trim().split("/");
+	if (parts.length === 1) return Number(parts[0]);
+	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
+	else return 0;
+};
+
+Parser.armorFullToAbv= function (armor) {
+	return Parser._parse_bToA(Parser.ARMOR_ABV_TO_FULL, armor);
+};
+
+Parser.sourceJsonToFull = function (source) {
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
+};
+Parser.sourceJsonToAbv= function (source) {
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
+};
+
+Parser.stringToSlug= function (str) {
+	return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+};
+
+Parser.itemTypeToAbv = function (type) {
+	return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
+};
+
+Parser.dmgTypeToFull = function (dmgType) {
+	return Parser._parse_aToB(Parser.DMGTYPE_JSON_TO_FULL, dmgType);
+};
+
+Parser.numberToString= function (num) {
+	if (num === 0) return "zero";
+	else return parse_hundreds(num);
+
+	function parse_hundreds(num){
+		if (num > 99){
+			return Parser.NUMBERS_ONES[Math.floor(num/100)]+" hundred "+parse_tens(num%100);
 		}
-		return b;
-	}
-	static attAbvToFull(abv) {
-		return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
-	}
-	static attFullToAbv(full) {
-		return Parser._parse_bToA(Parser.ATB_ABV_TO_FULL, full);
-	}
-
-	static sizeAbvToFull (abv) {
-		return Parser._parse_aToB(Parser.SIZE_ABV_TO_FULL, abv);
-	}
-
-	static getAbilityModifier (abilityScore) {
-		let modifier = Math.floor((abilityScore - 10) / 2);
-		if (modifier >= 0) modifier = "+"+modifier;
-		return modifier;
-	}
-
-	static _addCommas(intNum) {
-		return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
-	}
-
-	static crToXp (cr) {
-		if (cr === "Unknown") return "Unknown";
-		if (cr === "0") return "0 or 10";
-		if (cr === "1/8") return "25";
-		if (cr === "1/4") return "50";
-		if (cr === "1/2") return "100";
-		return Parser._addCommas (Parser.XP_CHART[parseInt(cr)-1]);
-	}
-
-	static crToNumber (cr) {
-		const parts = cr.trim().split("/");
-		if (parts.length === 1) return Number(parts[0]);
-		else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
-		else return 0;
-	}
-
-	static armorFullToAbv(armor) {
-		return Parser._parse_bToA(Parser.ARMOR_ABV_TO_FULL, armor);
-	}
-
-	static sourceJsonToFull (source) {
-		return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
-	}
-	static sourceJsonToAbv(source) {
-		return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
-	}
-
-	static stringToSlug(str) {
-		return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
-	}
-
-	static itemTypeToAbv (type) {
-		return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
-	}
-
-	static dmgTypeToFull (dmgType) {
-		return Parser._parse_aToB(Parser.DMGTYPE_JSON_TO_FULL, dmgType);
-	}
-
-	static numberToString(num) {
-		if (num === 0) return "zero";
-		else return parse_hundreds(num);
-
-		function parse_hundreds(num){
-			if (num > 99){
-				return Parser.NUMBERS_ONES[Math.floor(num/100)]+" hundred "+parse_tens(num%100);
-			}
-			else{
-				return parse_tens(num);
-			}
-		}
-		function parse_tens(num){
-			if (num<10) return Parser.NUMBERS_ONES[num];
-			else if (num>=10 && num<20) return Parser.NUMBERS_TEENS[num-10];
-			else{
-				return Parser.NUMBERS_TENS[Math.floor(num/10)]+" "+Parser.NUMBERS_ONES[num%10];
-			}
+		else{
+			return parse_tens(num);
 		}
 	}
+	function parse_tens(num){
+		if (num<10) return Parser.NUMBERS_ONES[num];
+		else if (num>=10 && num<20) return Parser.NUMBERS_TEENS[num-10];
+		else{
+			return Parser.NUMBERS_TENS[Math.floor(num/10)]+" "+Parser.NUMBERS_ONES[num%10];
+		}
+	}
+};
 
-	static propertyToAbv (property) {
-		return Parser._parse_aToB(Parser.PROPERTY_JSON_TO_ABV, property);
+Parser.propertyToAbv = function (property) {
+	return Parser._parse_aToB(Parser.PROPERTY_JSON_TO_ABV, property);
+};
+
+// sp-prefix functions are for parsing spell data, and shared with the roll20 script
+Parser.spSchoolAbvToFull= function (school) {
+	return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
+};
+
+Parser.spLevelToFull = function (level) {
+	if (level === 0) return STR_CANTRIP;
+	if (level === 1) return level+"st";
+	if (level === 2) return level+"nd";
+	if (level === 3) return level+"rd";
+	return level+"th";
+};
+
+Parser.spLevelSchoolMetaToFull= function (level, school, meta) {
+	const levelPart = level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + "-level";
+	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school)}`;
+	// these tags are (so far) mutually independent, so we don't need to combine the text
+	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
+	if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
+	return levelSchoolStr;
+};
+
+Parser.spTimeListToFull= function (times) {
+	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or ");
+};
+
+Parser.getTimeToFull= function (time) {
+	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
+};
+
+Parser.spRangeToFull= function (range) {
+	switch(range.type) {
+		case RNG_SPECIAL:
+			return "Special";
+		case RNG_POINT:
+			return renderPoint();
+		case RNG_LINE:
+		case RNG_CUBE:
+		case RNG_CONE:
+		case RNG_RADIUS:
+		case RNG_SPHERE:
+		case RNG_HEMISPHERE:
+			return renderArea();
 	}
 
-	// sp-prefix functions are for parsing spell data, and shared with the roll20 script
-	static spSchoolAbvToFull(school) {
-		return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
+	function renderPoint() {
+		const dist = range.distance;
+		switch (dist.type) {
+			case UNT_FEET:
+			case UNT_MILES:
+				return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
+			case RNG_SELF:
+				return "Self";
+			case RNG_SIGHT:
+				return "Sight";
+			case RNG_UNLIMITED:
+				return "Unlimited";
+			case RNG_TOUCH:
+				return "Touch";
+		}
 	}
+	function renderArea() {
+		const size = range.distance;
+		return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
 
-	static spLevelToFull (level) {
-		if (level === 0) return STR_CANTRIP;
-		if (level === 1) return level+"st";
-		if (level === 2) return level+"nd";
-		if (level === 3) return level+"rd";
-		return level+"th";
+		function getAreaStyleStr() {
+			return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
+		}
 	}
+};
 
-	static spLevelSchoolMetaToFull(level, school, meta) {
-		const levelPart = level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + "-level";
-		let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school)}`;
-		// these tags are (so far) mutually independent, so we don't need to combine the text
-		if (meta && meta.ritual) levelSchoolStr += " (ritual)";
-		if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
-		return levelSchoolStr;
+Parser.getSingletonUnit= function (unit) {
+	if (unit === UNT_FEET) return "foot";
+	if (unit.charAt(unit.length-1) === "s") return unit.slice(0, -1);
+	return unit;
+};
+
+Parser.spComponentsToFull= function (comp) {
+	const out = [];
+	if (comp.v) out.push("V");
+	if (comp.s) out.push("S");
+	if (comp.m) {
+		out.push("M");
+		if (comp.m.length) out.push(`(${comp.m})`)
 	}
+	return out.join(", ");
+};
 
-	static spTimeListToFull(times) {
-		return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or ");
-	}
-
-	static getTimeToFull(time) {
-		return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
-	}
-
-	static spRangeToFull(range) {
-		switch(range.type) {
-			case RNG_SPECIAL:
+Parser.spDurationToFull= function (dur) {
+	return dur.map(d => {
+		switch (d.type) {
+			case "special":
 				return "Special";
-			case RNG_POINT:
-				return renderPoint();
-			case RNG_LINE:
-			case RNG_CUBE:
-			case RNG_CONE:
-			case RNG_RADIUS:
-			case RNG_SPHERE:
-			case RNG_HEMISPHERE:
-				return renderArea();
+			case "instant":
+				return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
+			case "timed":
+				const con = d.concentration;
+				const upTo = d.duration.upTo;
+				return `${con ? "Concentration, " : ""}${upTo && con ? "u" : upTo ? "U" : ""}${upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
+			case "permanent":
+				return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
+
 		}
+	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
+};
 
-		function renderPoint() {
-			const dist = range.distance;
-			switch (dist.type) {
-				case UNT_FEET:
-				case UNT_MILES:
-					return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
-				case RNG_SELF:
-					return "Self";
-				case RNG_SIGHT:
-					return "Sight";
-				case RNG_UNLIMITED:
-					return "Unlimited";
-				case RNG_TOUCH:
-					return "Touch";
-			}
-		}
-		function renderArea() {
-			const size = range.distance;
-			return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
-
-			function getAreaStyleStr() {
-				return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
-			}
-		}
-	}
-
-	static getSingletonUnit(unit) {
-		if (unit === UNT_FEET) return "foot";
-		if (unit.charAt(unit.length-1) === "s") return unit.slice(0, -1);
-		return unit;
-	}
-
-	static spComponentsToFull(comp) {
-		const out = [];
-		if (comp.v) out.push("V");
-		if (comp.s) out.push("S");
-		if (comp.m) {
-			out.push("M");
-			if (comp.m.length) out.push(`(${comp.m})`)
-		}
-		return out.join(", ");
-	}
-
-	static spDurationToFull(dur) {
-		return dur.map(d => {
-			switch (d.type) {
-				case "special":
-					return "Special";
-				case "instant":
-					return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
-				case "timed":
-					const con = d.concentration;
-					const upTo = d.duration.upTo;
-					return `${con ? "Concentration, " : ""}${upTo && con ? "u" : upTo ? "U" : ""}${upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
-				case "permanent":
-					return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
-
-			}
-		}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
-	}
-
-	static spClassesToFull(classes) {
-		return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
-			(classes.fromSubclass ?
-				", " + classes.fromSubclass.sort((a, b) => {
-					const byName = ascSort(a.class.name, b.class.name);
-					return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
-				}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
-	}
-}
+Parser.spClassesToFull= function (classes) {
+	return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
+		(classes.fromSubclass ?
+			", " + classes.fromSubclass.sort((a, b) => {
+				const byName = ascSort(a.class.name, b.class.name);
+				return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
+			}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
+};
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {
 	"A": "Abjuration",
@@ -969,7 +971,7 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 
 Parser.NUMBERS_ONES = ['','one','two','three','four','five','six','seven','eight','nine'];
 Parser.NUMBERS_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']
+Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
 
 Parser.PROPERTY_JSON_TO_ABV = {
 	"2H": "two-handed",
@@ -1031,7 +1033,7 @@ function hide(element) {
 // SEARCH AND FILTER ===================================================================================================
 function search(options) {
 	const list = new List("listcontainer", options);
-	list.sort("name")
+	list.sort("name");
 	$("#reset").click(function() {
 		$("#filtertools").find("select").val("All");
 		$("#search").val("");
