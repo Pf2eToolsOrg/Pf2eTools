@@ -66,6 +66,25 @@ const ATB_DATA_PART_SEP = "::";
 const ATB_DATA_SC = "data-subclass";
 const ATB_DATA_SRC = "data-source";
 
+const STR_CANTRIP = "Cantrip";
+
+const RNG_SPECIAL =  "special";
+const RNG_POINT =  "point";
+const RNG_LINE =  "line";
+const RNG_CUBE = "cube";
+const RNG_CONE = "cone";
+const RNG_RADIUS = "radius";
+const RNG_SPHERE = "sphere";
+const RNG_HEMISPHERE  = "hemisphere";
+const RNG_SELF = "self";
+const RNG_SIGHT = "sight";
+const RNG_UNLIMITED = "unlimited";
+const RNG_UNLIMITED_SAME_PLANE = "plane";
+const RNG_TOUCH = "touch";
+
+const UNT_FEET = "feet";
+const UNT_MILES = "miles";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -554,8 +573,119 @@ class Parser {
 		return Parser._parse_aToB(Parser.PROPERTY_JSON_TO_ABV, property);
 	}
 
+	// sp-prefix functions are for parsing spell data, and shared with the roll20 script
 	static spSchoolAbvToFull(school) {
 		return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
+	}
+
+	static spLevelToFull (level) {
+		if (level === 0) return STR_CANTRIP;
+		if (level === 1) return level+"st";
+		if (level === 2) return level+"nd";
+		if (level === 3) return level+"rd";
+		return level+"th";
+	}
+
+	static spLevelSchoolMetaToFull(level, school, meta) {
+		const levelPart = level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + "-level";
+		let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school)}`;
+		// these tags are (so far) mutually independent, so we don't need to combine the text
+		if (meta && meta.ritual) levelSchoolStr += " (ritual)";
+		if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
+		return levelSchoolStr;
+	}
+
+	static spTimeListToFull(times) {
+		return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or ");
+	}
+
+	static getTimeToFull(time) {
+		return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
+	}
+
+	static spRangeToFull(range) {
+		switch(range.type) {
+			case RNG_SPECIAL:
+				return "Special";
+			case RNG_POINT:
+				return renderPoint();
+			case RNG_LINE:
+			case RNG_CUBE:
+			case RNG_CONE:
+			case RNG_RADIUS:
+			case RNG_SPHERE:
+			case RNG_HEMISPHERE:
+				return renderArea();
+		}
+
+		function renderPoint() {
+			const dist = range.distance;
+			switch (dist.type) {
+				case UNT_FEET:
+				case UNT_MILES:
+					return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
+				case RNG_SELF:
+					return "Self";
+				case RNG_SIGHT:
+					return "Sight";
+				case RNG_UNLIMITED:
+					return "Unlimited";
+				case RNG_TOUCH:
+					return "Touch";
+			}
+		}
+		function renderArea() {
+			const size = range.distance;
+			return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
+
+			function getAreaStyleStr() {
+				return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
+			}
+		}
+	}
+
+	static getSingletonUnit(unit) {
+		if (unit === UNT_FEET) return "foot";
+		if (unit.charAt(unit.length-1) === "s") return unit.slice(0, -1);
+		return unit;
+	}
+
+	static spComponentsToFull(comp) {
+		const out = [];
+		if (comp.v) out.push("V");
+		if (comp.s) out.push("S");
+		if (comp.m) {
+			out.push("M");
+			if (comp.m.length) out.push(`(${comp.m})`)
+		}
+		return out.join(", ");
+	}
+
+	static spDurationToFull(dur) {
+		return dur.map(d => {
+			switch (d.type) {
+				case "special":
+					return "Special";
+				case "instant":
+					return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
+				case "timed":
+					const con = d.concentration;
+					const upTo = d.duration.upTo;
+					return `${con ? "Concentration, " : ""}${upTo && con ? "u" : upTo ? "U" : ""}${upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
+				case "permanent":
+					return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
+
+			}
+		}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
+	}
+
+	static spClassesToFull(classes) {
+		return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
+			(classes.fromSubclass ?
+				", " + classes.fromSubclass.sort((a, b) => {
+					const byName = ascSort(a.class.name, b.class.name);
+					return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
+				}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
 	}
 }
 
