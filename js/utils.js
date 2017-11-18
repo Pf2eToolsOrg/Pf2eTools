@@ -683,12 +683,26 @@ Parser.spDurationToFull= function (dur) {
 };
 
 Parser.spClassesToFull= function (classes) {
-	return classes.fromClassList.sort((a, b) => ascSort(a.name, b.name)).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`).join(", ") +
-		(classes.fromSubclass ?
-			", " + classes.fromSubclass.sort((a, b) => {
-				const byName = ascSort(a.class.name, b.class.name);
-				return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
-			}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.subclass.source)}">(${c.subclass.name})</span>`).join(", ") : "")
+	const fromSubclasses = Parser.spSubclassesToFull(classes);
+	return Parser.spMainClassesToFull(classes) + (fromSubclasses ? ", " + fromSubclasses : "");
+};
+
+Parser.spMainClassesToFull = function (classes) {
+	return classes.fromClassList
+		.sort((a, b) => ascSort(a.name, b.name))
+		.map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`)
+		.join(", ");
+};
+
+Parser.spSubclassesToFull = function (classes) {
+	if (!classes.fromSubclass) return "";
+	return classes.fromSubclass
+		.sort((a, b) => {
+			const byName = ascSort(a.class.name, b.class.name);
+			return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
+		})
+		.map(c => `<span class="italic" title="Source: ${Parser.sourceJsonToFull(c.subclass.source)}">${c.subclass.name}${c.subclass.subSubclass ? ` (${c.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span>`)
+		.join(", ");
 };
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {
