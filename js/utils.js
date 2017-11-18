@@ -1,3 +1,7 @@
+const HASH_PART_SEP = ",";
+const HASH_LIST_SEP = "_";
+const HASH_START = "#";
+
 STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";
 STR_SLUG_DASH = "-";
@@ -1027,6 +1031,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"M": "Melee Weapon",
 	"MA": "Medium Armor",
 	"MNT": "Mount",
+	"MV": "Magical Variant",
 	"P": "Potion",
 	"R": "Ranged Weapon",
 	"RD": "Rod",

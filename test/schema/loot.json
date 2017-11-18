@@ -1,0 +1,255 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"definitions": {
+		"cr": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 30,
+			"required": [
+				"type",
+				"minimum",
+				"maximum"
+			],
+			"additionalProperties": false
+		},
+		"d100": {
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 100,
+			"required": [
+				"type",
+				"minimum",
+				"maximum"
+			],
+			"additionalProperties": false
+		},
+		"coin": {
+			"type": "object",
+			"properties": {
+				"cp": {
+					"type": "string"
+				},
+				"sp": {
+					"type": "string"
+				},
+				"ep": {
+					"type": "string"
+				},
+				"gp": {
+					"type": "string"
+				},
+				"pp": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"lootTypeAmount": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"amount": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"amount"
+			],
+			"additionalProperties": false
+		},
+		"gems_or_art": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"table": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "string"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"type",
+					"table"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"type": "object",
+	"properties": {
+		"individual": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"mincr": {
+						"$ref": "#/definitions/cr"
+					},
+					"maxcr": {
+						"$ref": "#/definitions/cr"
+					},
+					"table": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "object",
+							"properties": {
+								"min": {
+									"$ref": "#/definitions/d100"
+								},
+								"max": {
+									"$ref": "#/definitions/d100"
+								},
+								"coins": {
+									"$ref": "#/definitions/coin"
+								}
+							},
+							"required": [
+								"min",
+								"max",
+								"coins"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"name",
+					"mincr",
+					"maxcr",
+					"table"
+				],
+				"additionalProperties": false
+			}
+		},
+		"hoard": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"mincr": {
+						"$ref": "#/definitions/cr"
+					},
+					"maxcr": {
+						"$ref": "#/definitions/cr"
+					},
+					"coins": {
+						"$ref": "#/definitions/coin"
+					},
+					"table": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "object",
+							"properties": {
+								"min": {
+									"$ref": "#/definitions/d100"
+								},
+								"max": {
+									"$ref": "#/definitions/d100"
+								},
+								"gems": {
+									"$ref": "#/definitions/lootTypeAmount"
+								},
+								"artobjects": {
+									"$ref": "#/definitions/lootTypeAmount"
+								},
+								"magicitems": {
+									"$ref": "#/definitions/lootTypeAmount"
+								}
+							},
+							"required": [
+								"min",
+								"max"
+							],
+							"additionalProperties": false
+						}
+					}
+				},
+				"required": [
+					"name",
+					"mincr",
+					"maxcr",
+					"coins",
+					"table"
+				],
+				"additionalProperties": false
+			}
+		},
+		"gemstones": {
+			"$ref": "#/definitions/gems_or_art"
+		},
+		"artobjects": {
+			"$ref": "#/definitions/gems_or_art"
+		},
+		"magicitems": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"table": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "object",
+							"properties": {
+								"min": {
+									"$ref": "#/definitions/d100"
+								},
+								"max": {
+									"$ref": "#/definitions/d100"
+								},
+								"item": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"required": [
+					"name",
+					"type",
+					"table"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"individual",
+		"hoard",
+		"gemstones",
+		"artobjects",
+		"magicitems"
+	],
+	"additionalProperties": false
+}
