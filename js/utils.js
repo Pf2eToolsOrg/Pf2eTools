@@ -688,7 +688,7 @@ Parser.spClassesToFull= function (classes) {
 			", " + classes.fromSubclass.sort((a, b) => {
 				const byName = ascSort(a.class.name, b.class.name);
 				return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
-			}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">(${c.subclass.name})</span>`).join(", ") : "")
+			}).map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span> <span title="Source: ${Parser.sourceJsonToFull(c.subclass.source)}">(${c.subclass.name})</span>`).join(", ") : "")
 };
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {
