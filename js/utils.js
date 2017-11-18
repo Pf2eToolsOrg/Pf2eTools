@@ -1,3 +1,7 @@
+const HASH_PART_SEP = ",";
+const HASH_LIST_SEP = "_";
+const HASH_START = "#";
+
 STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";
 STR_SLUG_DASH = "-";
