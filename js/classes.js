@@ -190,7 +190,7 @@ function loadhash (id) {
 						}
 
 						const styleClasses = [CLSS_SUBCLASS_FEATURE];
-						const hideSource = isNonstandardSource(subClass.source) || isSuperceded(subClass.name, subClass.source);
+						const hideSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
 						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`, true);
 					}
@@ -228,12 +228,15 @@ function loadhash (id) {
 	subclassPillWrapper.append($(`<span class="divider">`));
 
 	// subclass pills
-	const subClasses = curClass.subclasses.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName})).sort(function(a, b){return ascSort(a.name, b.name)});
+	const subClasses = curClass.subclasses
+		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
+		.sort(function(a, b){return ascSort(a.name, b.name)});
 	for (let i = 0; i < subClasses.length; i++) {
-		const nonStandardSource = isNonstandardSource(subClasses[i].source) || isSuperceded(subClasses[i].name, subClasses[i].source);
+		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${subClasses[i].shortName}</span></span>`);
+		const pillText = hasBeenReprinted(subClasses[i].shortName, subClasses[i].source) ? `${subClasses[i].shortName} (${Parser.sourceJsonToAbv(subClasses[i].source)})` : subClasses[i].shortName;
+		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
 		pill.click(function() {
 			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, subClasses[i].source);
 		});
