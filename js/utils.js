@@ -506,8 +506,12 @@ Parser.sizeAbvToFull = function (abv) {
 	return Parser._parse_aToB(Parser.SIZE_ABV_TO_FULL, abv);
 };
 
+Parser.getAbilityModNumber = function (abilityScore) {
+	return Math.floor((abilityScore - 10) / 2);
+};
+
 Parser.getAbilityModifier = function (abilityScore) {
-	let modifier = Math.floor((abilityScore - 10) / 2);
+	let modifier = Parser.getAbilityModNumber(abilityScore);
 	if (modifier >= 0) modifier = "+"+modifier;
 	return modifier;
 };
@@ -517,7 +521,7 @@ Parser._addCommas= function (intNum) {
 };
 
 Parser.crToXp = function (cr) {
-	if (cr === "Unknown") return "Unknown";
+	if (cr === "Unknown" || cr === undefined) return "Unknown";
 	if (cr === "0") return "0 or 10";
 	if (cr === "1/8") return "25";
 	if (cr === "1/4") return "50";
@@ -526,6 +530,7 @@ Parser.crToXp = function (cr) {
 };
 
 Parser.crToNumber = function (cr) {
+	if (cr === "Unknown" || cr === undefined) return 100;
 	const parts = cr.trim().split("/");
 	if (parts.length === 1) return Number(parts[0]);
 	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
