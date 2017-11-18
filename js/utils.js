@@ -1003,12 +1003,12 @@ Parser.PROPERTY_JSON_TO_ABV = {
 };
 
 // SOURCES =============================================================================================================
-function isSuperceded(name, source) {
-	return (name !== undefined && name !== null && source !== undefined && source !== null) &&
-		(name === "Way of the Sun Soul" && source === SRC_SCAG) ||
-		(name === "Mastermind" && source === SRC_SCAG) ||
-		(name === "Swashbuckler" && source === SRC_SCAG) ||
-		(name === "Storm Sorcery" && source === SRC_SCAG);
+function isSuperceded(shortName, source) {
+	return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
+		(shortName === "Sun Soul" && source === SRC_SCAG) ||
+		(shortName === "Mastermind" && source === SRC_SCAG) ||
+		(shortName === "Swashbuckler" && source === SRC_SCAG) ||
+		(shortName === "Storm" && source === SRC_SCAG);
 }
 
 function isNonstandardSource(source) {
