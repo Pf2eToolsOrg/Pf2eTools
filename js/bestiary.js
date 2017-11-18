@@ -469,7 +469,6 @@ function loadhash (id) {
 		// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
 		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
 		// (Siri integration forthcoming)
-
 		const titleMaybe = attemptToGetTitle(this);
 		$(this).html($(this).html().replace(/(\-|\+)?\d+(?= to hit)/g, function(match) {
 			const bonus = Number(match);
@@ -524,7 +523,7 @@ function loadhash (id) {
 			roll = $this.attr("data-roll").replace(/\s+/g, "");
 			rollResult =  droll.roll(roll);
 		}
-		let name = $("#name").clone().children().remove().end().text();
+		const name = $("#name").clone().children().remove().end().text();
 		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$this.attr("title") ? `${$this.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
 	})
