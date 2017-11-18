@@ -434,7 +434,6 @@ function loadhash (id) {
 	renderStack.push(`<tr class="text"><td id="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
 
 	if (spell.classes.fromSubclass) {
-		console.log(JSON.stringify(spell.classes.fromSubclass, null, 4)) // FIXME remove
 		const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes);
 		renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${currentAndLegacy[0]}</td></tr>`);
 		if (currentAndLegacy[1]) {
