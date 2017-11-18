@@ -14,7 +14,7 @@ function validateSchema(){
 
 	// Push all validation results here
 	results.push(validateClassesWith(validator));
-	// results.push(validateVariantFeaturesWith(validator)); // TODO validate this file
+	results.push(validateVariantFeaturesWith(validator));
 
 	results.forEach( (result) => {
 		if(!result.valid){
@@ -53,7 +53,7 @@ function attachHelperSchemaTo(validator){
  */
 function validateClassesWith(validator){
 	const classesSchema = require("./schema/classes.json");
-	const classes = require("../data/classes.json")
+	const classes = require("../data/classes.json");
 	return validator.validate(classes, classesSchema, {nestedErrors: true});
 }
 
@@ -63,6 +63,6 @@ function validateClassesWith(validator){
  */
 function validateVariantFeaturesWith(validator){
 	const variantRulesSchema = require("./schema/variantrules.json");
-	const variantRules = require("../data/variantrules.json")
+	const variantRules = require("../data/variantrules.json");
 	return validator.validate(variantRules, variantRulesSchema, {nestedErrors: true});
 }
