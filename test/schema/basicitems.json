@@ -1,0 +1,98 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"basicitem": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"rarity": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "string"
+					},
+					"ac": {
+						"type": "string"
+					},
+					"age": {
+						"type": "string"
+					},
+					"armor": {
+						"type": "boolean"
+					},
+					"axe": {
+						"type": "boolean"
+					},
+					"dmg1": {
+						"type": "string"
+					},
+					"dmg2": {
+						"type": "string"
+					},
+					"dmgType": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"property": {
+						"type": "string"
+					},
+					"range": {
+						"type": "string"
+					},
+					"reload": {
+						"type": "string"
+					},
+					"stealth": {
+						"type": "boolean"
+					},
+					"strength": {
+						"type": "string"
+					},
+					"sword": {
+						"type": "boolean"
+					},
+					"technology": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"weapon": {
+						"type": "boolean"
+					},
+					"weaponCategory": {
+						"type": "string"
+					},
+					"weight": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"type",
+					"rarity",
+					"source",
+					"page"
+				],
+				"additionalProperties": false
+			}
+		}
+	}
+}
