@@ -15,6 +15,7 @@ function validateSchema(){
 	// Push all validation results here
 	results.push(validateClassesWith(validator));
 	results.push(validateVariantFeaturesWith(validator));
+	results.push(validateSpellsWith(validator));
 
 	results.forEach( (result) => {
 		if(!result.valid){
@@ -65,4 +66,15 @@ function validateVariantFeaturesWith(validator){
 	const variantRulesSchema = require("./schema/variantrules.json");
 	const variantRules = require("../data/variantrules.json");
 	return validator.validate(variantRules, variantRulesSchema, {nestedErrors: true});
+}
+
+
+/**
+ * Validates variantrules.json using its corresponding schema
+ * @return {jsonschema.Result} The result of the validation.
+ */
+function validateSpellsWith(validator){
+	const spellSchema = require("./schema/spells.json");
+	const spells = require("../data/spells.json");
+	return validator.validate(spells, spellSchema, {nestedErrors: true});
 }
