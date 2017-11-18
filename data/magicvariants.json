@@ -2,6 +2,10 @@
 	"variant": [
 		{
 			"name": "Armor +1",
+			"type": "MV",
+			"entries": [
+				"You have a +1 bonus to AC while wearing this armor."
+			],
 			"requires": {
 				"armor": true
 			},
@@ -28,6 +32,10 @@
 		},
 		{
 			"name": "Armor +2",
+			"type": "MV",
+			"entries": [
+				"You have a +2 bonus to AC while wearing this armor."
+			],
 			"requires": {
 				"armor": true
 			},
@@ -54,6 +62,10 @@
 		},
 		{
 			"name": "Armor +3",
+			"type": "MV",
+			"entries": [
+				"You have a +3 bonus to AC while wearing this armor."
+			],
 			"requires": {
 				"armor": true
 			},
@@ -80,6 +92,10 @@
 		},
 		{
 			"name": "Shield +1",
+			"type": "MV",
+			"entries": [
+				"While holding this shield, you have a +1 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+			],
 			"requires": {
 				"type": "S"
 			},
@@ -106,6 +122,10 @@
 		},
 		{
 			"name": "Shield +2",
+			"type": "MV",
+			"entries": [
+				"While holding this shield, you have a +2 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+			],
 			"requires": {
 				"type": "S"
 			},
@@ -132,6 +152,10 @@
 		},
 		{
 			"name": "Shield +3",
+			"type": "MV",
+			"entries": [
+				"While holding this shield, you have a +3 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+			],
 			"requires": {
 				"type": "S"
 			},
@@ -158,6 +182,7 @@
 		},
 		{
 			"name": "Armor of Gleaming",
+			"type": "MV",
 			"requires": {
 				"armor": true
 			},
@@ -174,6 +199,8 @@
 		},
 		{
 			"name": "Armor of Acid Resistance",
+			"type": "MV",
+			"resist": "acid",
 			"requires": {
 				"armor": true
 			},
@@ -189,6 +216,8 @@
 		},
 		{
 			"name": "Armor of Cold Resistance",
+			"type": "MV",
+			"resist": "cold",
 			"requires": {
 				"armor": true
 			},
@@ -204,6 +233,8 @@
 		},
 		{
 			"name": "Armor of Fire Resistance",
+			"type": "MV",
+			"resist": "fire",
 			"requires": {
 				"armor": true
 			},
@@ -219,6 +250,8 @@
 		},
 		{
 			"name": "Armor of Force Resistance",
+			"type": "MV",
+			"resist": "force",
 			"requires": {
 				"armor": true
 			},
@@ -234,6 +267,8 @@
 		},
 		{
 			"name": "Armor of Lightning Resistance",
+			"type": "MV",
+			"resist": "lightning",
 			"requires": {
 				"armor": true
 			},
@@ -249,6 +284,8 @@
 		},
 		{
 			"name": "Armor of Necrotic Resistance",
+			"type": "MV",
+			"resist": "necrotic",
 			"requires": {
 				"armor": true
 			},
@@ -264,6 +301,8 @@
 		},
 		{
 			"name": "Armor of Poison Resistance",
+			"type": "MV",
+			"resist": "poison",
 			"requires": {
 				"armor": true
 			},
@@ -279,6 +318,8 @@
 		},
 		{
 			"name": "Armor of Psychic Resistance",
+			"type": "MV",
+			"resist": "psychic",
 			"requires": {
 				"armor": true
 			},
@@ -294,6 +335,8 @@
 		},
 		{
 			"name": "Armor of Radiant Resistance",
+			"type": "MV",
+			"resist": "radiant",
 			"requires": {
 				"armor": true
 			},
@@ -309,6 +352,8 @@
 		},
 		{
 			"name": "Armor of Thunder Resistance",
+			"type": "MV",
+			"resist": "thunder",
 			"requires": {
 				"armor": true
 			},
@@ -323,7 +368,19 @@
 			}
 		},
 		{
-			"name": "Adamantine Armor Heavy",
+			"name": "Armor of Vulnerability",
+			"type": "MV",
+			"entries": [
+				"While wearing this armor, you have resistance to one of the following damage types: bludgeoning, piercing, or slashing.",
+				"Curse. This armor is cursed, a fact that is revealed only when an identify spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to piercing and slashing damage."
+			],
+			"requires": {
+				"name": "Does not match with any name"
+			}
+		},
+		{
+			"name": "Adamantine Armor",
+			"type": "MV",
 			"requires": {
 				"type": "HA"
 			},
@@ -340,6 +397,9 @@
 		},
 		{
 			"name": "Adamantine Armor Medium",
+			"entries": [
+				"Not for display - this generic variant is covered by 'Adamantine Armor'"
+			],
 			"requires": {
 				"type": "MA"
 			},
@@ -359,6 +419,7 @@
 		},
 		{
 			"name": "Cast-Off Armor",
+			"type": "MV",
 			"requires": {
 				"armor": true
 			},
@@ -375,6 +436,7 @@
 		},
 		{
 			"name": "Mariner's Armor",
+			"type": "MV",
 			"requires": {
 				"armor": true
 			},
@@ -391,6 +453,7 @@
 		},
 		{
 			"name": "Mind Carapace Armor",
+			"type": "MV",
 			"requires": {
 				"type": "HA"
 			},
@@ -406,7 +469,8 @@
 			}
 		},
 		{
-			"name": "Mithral Armor Heavy",
+			"name": "Mithral Armor",
+			"type": "MV",
 			"requires": {
 				"type": "HA"
 			},
@@ -424,6 +488,9 @@
 		},
 		{
 			"name": "Mithral Armor Medium",
+			"entries": [
+				"Not for display - this generic variant is covered by 'Mithral Armor'"
+			],
 			"requires": {
 				"type": "MA"
 			},
@@ -444,6 +511,7 @@
 		},
 		{
 			"name": "Moon—Touched Sword",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -460,6 +528,7 @@
 		},
 		{
 			"name": "Smoldering Armor",
+			"type": "MV",
 			"requires": {
 				"armor": true
 			},
@@ -476,6 +545,10 @@
 		},
 		{
 			"name": "Ammunition +1",
+			"type": "MV",
+			"entries": [
+				"You have a +1 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+			],
 			"requires": {
 				"type": "A"
 			},
@@ -509,6 +582,10 @@
 		},
 		{
 			"name": "Ammunition +2",
+			"type": "MV",
+			"entries": [
+				"You have a +2 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+			],
 			"requires": {
 				"type": "A"
 			},
@@ -542,6 +619,10 @@
 		},
 		{
 			"name": "Ammunition +3",
+			"type": "MV",
+			"entries": [
+				"You have a +3 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+			],
 			"requires": {
 				"type": "A"
 			},
@@ -575,6 +656,7 @@
 		},
 		{
 			"name": "Walloping Ammunition",
+			"type": "MV",
 			"requires": {
 				"type": "A"
 			},
@@ -590,7 +672,11 @@
 			}
 		},
 		{
-			"name": "Net +1",
+			"name": "Weapon (no damage) +1",
+			"type": "MV",
+			"entries": [
+				"You have a +1 bonus to attack rolls made with this weapon."
+			],
 			"requires": {
 				"name": "Net"
 			},
@@ -607,7 +693,11 @@
 			}
 		},
 		{
-			"name": "Net +2",
+			"name": "Weapon (no damage) +2",
+			"type": "MV",
+			"entries": [
+				"You have a +2 bonus to attack rolls made with this weapon."
+			],
 			"requires": {
 				"name": "Net"
 			},
@@ -624,7 +714,11 @@
 			}
 		},
 		{
-			"name": "Net +3",
+			"name": "Weapon (no damage) +3",
+			"type": "MV",
+			"entries": [
+				"You have a +3 bonus to attack rolls made with this weapon."
+			],
 			"requires": {
 				"name": "Net"
 			},
@@ -642,6 +736,10 @@
 		},
 		{
 			"name": "Weapon +1",
+			"type": "MV",
+			"entries": [
+				"You have a +1 bonus to attack and damage rolls made with this weapon."
+			],
 			"requires": {
 				"weapon": true
 			},
@@ -662,6 +760,10 @@
 		},
 		{
 			"name": "Weapon +2",
+			"type": "MV",
+			"entries": [
+				"You have a +2 bonus to attack and damage rolls made with this weapon."
+			],
 			"requires": {
 				"weapon": true
 			},
@@ -682,6 +784,10 @@
 		},
 		{
 			"name": "Weapon +3",
+			"type": "MV",
+			"entries": [
+				"You have a +3 bonus to attack and damage rolls made with this weapon."
+			],
 			"requires": {
 				"weapon": true
 			},
@@ -702,6 +808,7 @@
 		},
 		{
 			"name": "Weapon of Warning",
+			"type": "MV",
 			"requires": {
 				"weapon": true
 			},
@@ -710,11 +817,15 @@
 				"rarity": "Uncommon",
 				"source": "DMG",
 				"page": "213",
-				"nameSuffix": " of Warning"
+				"nameSuffix": " of Warning",
+				"entries": [
+					"This magic weapon warns you of danger. While the weapon is on your person, you have advantage on initiative rolls. In addition, you and any of your companions within 30 feet of you can't be surprised, except when incapacitated by something other than nonmagical sleep. The weapon magically awakens you and your companions within range if any of you are sleeping naturally when combat begins."
+				]
 			}
 		},
 		{
 			"name": "Berserker Axe",
+			"type": "MV",
 			"requires": {
 				"axe": true
 			},
@@ -750,6 +861,7 @@
 		},
 		{
 			"name": "Dancing Sword",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -769,6 +881,7 @@
 		},
 		{
 			"name": "Defender",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -787,6 +900,7 @@
 		},
 		{
 			"name": "Dragon Slayer",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -820,6 +934,7 @@
 		},
 		{
 			"name": "Flame Tongue",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -837,6 +952,7 @@
 		},
 		{
 			"name": "Frost Brand",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -855,7 +971,8 @@
 			}
 		},
 		{
-			"name": "Giant Slayer Axe",
+			"name": "Giant Slayer",
+			"type": "MV",
 			"requires": {
 				"axe": true
 			},
@@ -889,6 +1006,9 @@
 		},
 		{
 			"name": "Giant Slayer Sword",
+			"entries": [
+				"Not for display - this generic variant is covered by 'Giant Slayer'"
+			],
 			"requires": {
 				"sword": true
 			},
@@ -922,6 +1042,7 @@
 		},
 		{
 			"name": "Holy Avenger",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -956,6 +1077,7 @@
 		},
 		{
 			"name": "Luck Blade",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -998,6 +1120,7 @@
 		},
 		{
 			"name": "Mind Blade",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -1014,6 +1137,7 @@
 		},
 		{
 			"name": "Nine Lives Stealer",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -1048,6 +1172,7 @@
 		},
 		{
 			"name": "Sword of Life Stealing",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -1065,6 +1190,7 @@
 		},
 		{
 			"name": "Sword of Sharpness",
+			"type": "MV",
 			"requires": {
 				"sword": true,
 				"dmgType": "S"
@@ -1085,6 +1211,7 @@
 		},
 		{
 			"name": "Sword of Vengeance",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -1121,6 +1248,7 @@
 		},
 		{
 			"name": "Sword of Wounding",
+			"type": "MV",
 			"requires": {
 				"sword": true
 			},
@@ -1139,6 +1267,7 @@
 		},
 		{
 			"name": "Vicious Weapon",
+			"type": "MV",
 			"requires": {
 				"weapon": true
 			},
@@ -1159,6 +1288,7 @@
 		},
 		{
 			"name": "Vorpal Sword",
+			"type": "MV",
 			"requires": {
 				"sword": true,
 				"dmgType": "S"

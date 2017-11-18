@@ -1026,6 +1026,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"M": "Melee Weapon",
 	"MA": "Medium Armor",
 	"MNT": "Mount",
+	"MV": "Magical Variant",
 	"P": "Potion",
 	"R": "Ranged Weapon",
 	"RD": "Rod",
