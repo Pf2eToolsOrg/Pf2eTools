@@ -701,8 +701,54 @@ Parser.spSubclassesToFull = function (classes) {
 			const byName = ascSort(a.class.name, b.class.name);
 			return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
 		})
-		.map(c => `<span class="italic" title="Source: ${Parser.sourceJsonToFull(c.subclass.source)}">${c.subclass.name}${c.subclass.subSubclass ? ` (${c.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(c.class.source)}">${c.class.name}</span>`)
+		.map(c => Parser._spSubclassItem(c))
 		.join(", ");
+};
+
+Parser._spSubclassItem = function (fromSubclass) {
+	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
+};
+
+/**
+ * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
+ *
+ * @param classes a spell.classes JSON item
+ * @returns {*[]} A two-element array. First item is a string of all the current subclasses, second item a string of
+ * all the legacy/superceded subclasses
+ */
+Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
+	const out = [[], []];
+	if (!classes.fromSubclass) return out;
+	const curNames = new Set();
+	const toCheck = [];
+	classes.fromSubclass
+		.sort((a, b) => {
+			const byName = ascSort(a.class.name, b.class.name);
+			return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
+		})
+		.forEach(c => {
+			const nm = c.subclass.name;
+			const src = c.subclass.source;
+			const toAdd = Parser._spSubclassItem(c);
+			if (hasBeenReprinted(nm, src)) {
+				out[1].push(toAdd);
+			}
+			else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
+				const cleanName = nm.split("(")[0].trim().split(/v\d+/)[0].trim();
+				toCheck.push({"name": cleanName, "ele": toAdd});
+			} else {
+				out[0].push(toAdd);
+				curNames.add(nm);
+			}
+		});
+	toCheck.forEach(n => {
+		if (curNames.has(n.name)) {
+			out[1].push(n.ele);
+		} else {
+			out[0].push(n.ele);
+		}
+	});
+	return [out[0].join(", "), out[1].join(", ")];
 };
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {
@@ -1003,7 +1049,7 @@ Parser.PROPERTY_JSON_TO_ABV = {
 };
 
 // SOURCES =============================================================================================================
-function isSuperceded(shortName, source) {
+function hasBeenReprinted(shortName, source) {
 	return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
 		(shortName === "Sun Soul" && source === SRC_SCAG) ||
 		(shortName === "Mastermind" && source === SRC_SCAG) ||
