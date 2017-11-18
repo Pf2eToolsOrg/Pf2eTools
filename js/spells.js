@@ -10,9 +10,14 @@ const P_NORMALISED_RANGE = "normalisedRange";
 
 const STR_WIZARD = "Wizard";
 const STR_FIGHTER = "Fighter";
-const STR_ELD_KNIGHT = "Eldritch Knight";
 const STR_ROGUE = "Rogue";
+const STR_CLERIC = "Cleric";
+const STR_SORCERER = "Sorcerer";
+const STR_ELD_KNIGHT = "Eldritch Knight";
 const STR_ARC_TCKER = "Arcane Trickster";
+const STR_DIV_SOUL = "Divine Soul";
+const STR_FAV_SOUL_V2 = "Favored Soul v2 (UA)";
+const STR_FAV_SOUL_V3 = "Favored Soul v3 (UA)";
 
 const TM_ACTION = "action";
 const TM_B_ACTION = "bonus action";
@@ -189,6 +194,7 @@ function onJsonLoad(data) {
 		if (spell.meta && spell.meta.ritual) levelText += " (ritual)";
 		if (spell.meta && spell.meta.technomagic) levelText += " (tech.)";
 
+		// add eldritch knight and arcane trickster
 		if (spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
 			spell.classes.fromSubclass.push({
@@ -202,6 +208,23 @@ function onJsonLoad(data) {
 			if (spell.level > 4) {
 				spell.scrollNote = true;
 			}
+		}
+
+		// add divine soul, favored soul v2, favored soul v3
+		if (spell.classes.fromClassList.filter(c => c.name === STR_CLERIC && c.source === SRC_PHB).length) {
+			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
+			spell.classes.fromSubclass.push({
+				class: {name: STR_SORCERER, source: SRC_PHB},
+				subclass: {name: STR_DIV_SOUL, source: SRC_XGE}
+			});
+			spell.classes.fromSubclass.push({
+				class: {name: STR_SORCERER, source: SRC_PHB},
+				subclass: {name: STR_FAV_SOUL_V2, source: SRC_UAS}
+			});
+			spell.classes.fromSubclass.push({
+				class: {name: STR_SORCERER, source: SRC_PHB},
+				subclass: {name: STR_FAV_SOUL_V3, source: SRC_UARSC}
+			});
 		}
 
 		// used for sorting
