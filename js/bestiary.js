@@ -19,16 +19,16 @@ function populate(tobData, mainData) {
 	for (let i = 0; i < monsters.length; i++) {
 		const name = monsters[i].name;
 		const source = monsters[i].source;
-		const fullsource = parse_sourceJsonToFull(source);
+		const fullsource = Parser.sourceJsonToFull(source);
 		const type = monsters[i].type;
 		const cr = monsters[i].cr === undefined ? "Unknown" : monsters[i].cr;
 
-		const abvSource = parse_sourceJsonToAbv(source);
+		const abvSource = Parser.sourceJsonToAbv(source);
 		const is3pp = source.includes("3pp");
 
 		$("ul#monsters").append(`<li ${FLTR_TYPE}='${type}' ${FLTR_SOURCE}='${source}' ${FLTR_CR}='${cr}' ${FLTR_3PP}='${is3pp}'><a id=${i} href='#${encodeForHash(name)}_${encodeForHash(source)}' title="${name}"><span class='name col-xs-4 col-xs-4-2'>${name}</span> <span title="${fullsource}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span> <span class='type col-xs-4 col-xs-4-3'>${type}</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>${cr}</span></a></li>`);
 
-		addDropdownOption($("select.typefilter"), type, parse_sourceJsonToFull(type));
+		addDropdownOption($("select.typefilter"), type, Parser.sourceJsonToFull(type));
 		addDropdownOption($("select.sourcefilter"), source, fullsource);
 		addDropdownOption($("select.crfilter"), cr, cr);
 
@@ -140,9 +140,9 @@ function loadhash (id) {
 	var mon = monsters[id];
 	var name = mon.name;
 	var source = mon.source;
-	var fullsource = parse_sourceJsonToFull(source);
+	var fullsource = Parser.sourceJsonToFull(source);
 	var type = mon.type;
-	source = parse_sourceJsonToAbv(source);
+	source = Parser.sourceJsonToAbv(source);
 
 	imgError = function(x) {
 		$(x).parent().siblings(".source").css("margin-right", "-4.8em");
@@ -152,7 +152,7 @@ function loadhash (id) {
 
 	$("th#name").html("<span title=\""+fullsource+"\" class='source source"+source+"'>"+source+"<br></span> <a href=\"img/"+source+"/"+name+".png\" target='_blank'><img src=\"img/"+source+"/"+name+".png\" class='token' onerror='imgError(this)'></a>"+name);
 
-	$("td span#size").html(parse_sizeAbvToFull (mon.size));
+	$("td span#size").html(Parser.sizeAbvToFull (mon.size));
 
 	$("td span#type").html(type);
 
@@ -165,22 +165,22 @@ function loadhash (id) {
 	$("td span#speed").html(mon.speed);
 
 	$("td#str span.score").html(mon.str);
-	$("td#str span.mod").html(getAbilityModifier (mon.str));
+	$("td#str span.mod").html(Parser.getAbilityModifier (mon.str));
 
 	$("td#dex span.score").html(mon.dex);
-	$("td#dex span.mod").html(getAbilityModifier (mon.dex));
+	$("td#dex span.mod").html(Parser.getAbilityModifier (mon.dex));
 
 	$("td#con span.score").html(mon.con);
-	$("td#con span.mod").html(getAbilityModifier (mon.con));
+	$("td#con span.mod").html(Parser.getAbilityModifier (mon.con));
 
 	$("td#int span.score").html(mon.int);
-	$("td#int span.mod").html(getAbilityModifier (mon.int));
+	$("td#int span.mod").html(Parser.getAbilityModifier (mon.int));
 
 	$("td#wis span.score").html(mon.wis);
-	$("td#wis span.mod").html(getAbilityModifier (mon.wis));
+	$("td#wis span.mod").html(Parser.getAbilityModifier (mon.wis));
 
 	$("td#cha span.score").html(mon.cha);
-	$("td#cha span.mod").html(getAbilityModifier (mon.cha));
+	$("td#cha span.mod").html(Parser.getAbilityModifier (mon.cha));
 
 	var saves = mon.save;
 	if (saves && saves.length > 0) {
@@ -251,7 +251,7 @@ function loadhash (id) {
 
 	var cr = mon.cr === undefined ? "Unknown": mon.cr;
 	$("td span#cr").html(cr);
-	$("td span#xp").html(parse_crToXp(cr));
+	$("td span#xp").html(Parser.crToXp(cr));
 
 	var traits = mon.trait;
 	$("tr.trait").remove();

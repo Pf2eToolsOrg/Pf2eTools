@@ -21,8 +21,8 @@ function addVariants(basicItemData) {
 	loadJSON(MAGIC_VARIANTS_JSON_URL, mergeBasicItems);
 }
 
-function emphasize (strongWords, normalWords) { // FIX ME: Replace HTML tags with inline tags once we have the recursive renderer
-	return "<p><strong>"+strongWords+".</strong> "+normalWords+"</p>";
+function emphasize (strongWords, normalWords) { // FIX ME: Replace HTML tags with inline tags if still needed
+	return "<p><b><i>"+strongWords+".</i></b> "+normalWords+"</p>";
 }
 
 function mergeBasicItems(variantData) {
@@ -31,7 +31,7 @@ function mergeBasicItems(variantData) {
 
 	for (let i = 0; i < basicItemList.length; i++) {
 		const curBasicItem = basicItemList[i];
-		if(curBasicItem.text === undefined) curBasicItem.text=[];
+		if(curBasicItem.entries === undefined) curBasicItem.entries=[];
 		for (let j = 0; j < variantList.length; j++) {
 			const curVariant = variantList[j];
 			const curRequires = curVariant.requires;
@@ -53,11 +53,11 @@ function mergeBasicItems(variantData) {
 							const tmpName = tmpBasicItem.name;
 							tmpBasicItem.name = tmpName.indexOf(" (") !== -1 ? tmpName.replace(" (", curInherits.nameSuffix+" (") : tmpName+curInherits.nameSuffix;
 						} else if (inheritedProperty === "text") {
-							for (let k = curInherits.text.length-1; k > -1; k--) {
-								let tmpText = curInherits.text[k];
-								if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", parse_dmgTypeToFull(tmpBasicItem.dmgType));
+							for (let k = curInherits.entries.length-1; k > -1; k--) {
+								let tmpText = curInherits.entries[k];
+								if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", Parser.dmgTypeToFull(tmpBasicItem.dmgType));
 								if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
-								tmpBasicItem.text.unshift(tmpText);
+								tmpBasicItem.entries.unshift(tmpText);
 							}
 						} else
 							tmpBasicItem[inheritedProperty] = curInherits[inheritedProperty];
@@ -106,7 +106,7 @@ function populateTablesAndFilters() {
 
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 	const filterList = [];
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], parse_sourceJsonToFull, parse_stringToSlug);
+	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull, Parser.stringToSlug);
 	filterList.push(sourceFilter);
 	const typeFilter = new Filter("Type", FLTR_TYPE, [], Filter.asIs, Filter.asIs);
 	filterList.push(typeFilter);
@@ -127,7 +127,7 @@ function populateTablesAndFilters() {
 		"Unknown",
 	], Filter.asIs, Filter.asIs);
 	filterList.push(rarityFilter);
-	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, parse_stringToSlug);
+	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, Parser.stringToSlug);
 	filterList.push(attunementFilter);
 	const filterBox = new FilterBox(filterAndSearchBar, filterList);
 	const liList = {mundane:"", magic:""}; // store the <li> tag content here and change the DOM once for each after the loop
@@ -137,14 +137,14 @@ function populateTablesAndFilters() {
 		const name = curitem.name;
 		const rarity = curitem.rarity;
 		const source = curitem.source;
-		const sourceAbv = parse_sourceJsonToAbv(source);
-		const sourceFull = parse_sourceJsonToFull(source);
+		const sourceAbv = Parser.sourceJsonToAbv(source);
+		const sourceFull = Parser.sourceJsonToFull(source);
 		const type = [];
 		if (curitem.wondrous) type.push("Wondrous Item");
 		if (curitem.technology) type.push(curitem.technology);
 		if (curitem.age) type.push(curitem.age);
 		if (curitem.weaponCategory) type.push(curitem.weaponCategory+" Weapon");
-		if (curitem.type) type.push(parse_itemTypeToAbv(curitem.type));
+		if (curitem.type) type.push(Parser.itemTypeToAbv(curitem.type));
 		const typeList = type.join(","); // for filter to use
 		itemList[i].typeText = type.join(", "); // for loadhash to use
 		const tierTags = [];
@@ -152,12 +152,20 @@ function populateTablesAndFilters() {
 		const tierTagsString = tierTags.join(FLTR_LIST_SEP);
 		let attunement = "No";
 		if (curitem.reqAttune !== undefined) {
-			if (curitem.reqAttune === "YES") attunement = "Yes";
-			else if (curitem.reqAttune === "OPTIONAL") attunement = "Optional";
-			else if (curitem.reqAttune.toLowerCase().startsWith("by")) attunement = "By...";
-			else attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
+			if (curitem.reqAttune === "YES") {
+				attunement = "Yes";
+				itemList[i].reqAttune = "(Requires Attunement)"
+			} else if (curitem.reqAttune === "OPTIONAL") {
+				attunement = "Optional";
+				itemList[i].reqAttune = "(Attunement Optional)"
+			} else if (curitem.reqAttune.toLowerCase().startsWith("by")) {
+				attunement = "By...";
+				itemList[i].reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
+			} else {
+				attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
+				itemList[i].reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
+			}
 		}
-
 		liList[rarity === "None" || rarity === "Unknown" ? "mundane" : "magic"] += `<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}'><a id='${i}' href="#${encodeForHash(name)}_${encodeForHash(source)}" title="${name}"><span class='name col-xs-4'>${name}</span> <span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span> <span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span> <span class='rarity col-xs-2'>${rarity}</span></a></li>`;
 
 		// populate filters
@@ -215,7 +223,6 @@ function populateTablesAndFilters() {
 		const rightTier = f[tierFilter.header][FilterBox.VAL_SELECT_ALL] || f[tierFilter.header][tierFilter.valueFunction($(item.elm).attr(tierFilter.storageAttribute))];
 		const rightRarity = f[rarityFilter.header][FilterBox.VAL_SELECT_ALL] || f[rarityFilter.header][rarityFilter.valueFunction($(item.elm).attr(rarityFilter.storageAttribute))];
 		const rightAttunement = f[attunementFilter.header][FilterBox.VAL_SELECT_ALL] || f[attunementFilter.header][attunementFilter.valueFunction($(item.elm).attr(attunementFilter.storageAttribute))];
-
 		return rightSource && rightType && rightTier && rightRarity && rightAttunement;
 	}
 
@@ -270,46 +277,29 @@ function populateTablesAndFilters() {
 	});
 }
 
+const renderer = new EntryRenderer();
 function loadhash (id) {
-	const ammoGenericText="<p>If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way.</p>";
-	const ammoFirearmText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. The ammunition of a firearm is destroyed upon use.")+ammoGenericText;
-	const ammoNormalText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.")+ammoGenericText;
 	$("#currentitem").html(tabledefault);
 	const item = itemList[id];
-
 	const source = item.source;
-	const sourceAbv = parse_sourceJsonToAbv(source);
-	const sourceFull = parse_sourceJsonToFull(source);
+	const sourceAbv = Parser.sourceJsonToAbv(source);
+	const sourceFull = Parser.sourceJsonToFull(source);
 	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+item.name);
 	$("td#source span").html(sourceFull+", page "+item.page);
 
-	let value = item.value;
-	const weight = item.weight;
-	$("span#value").html("");
-	if (value) {
-		if (weight) value = value + ", ";
-		$("td span#value").html(value);
-	} else $("td span#value").html("");
-	$("span#weight").html("");
-	$("td span#weight").html(weight ? weight+(weight == 1 ? " lb." : " lbs.") : "");
-
-	$("td span#rarity").html("");
-	const tier = item.tier;
-	if (tier) $("td span#rarity").append(", "+tier);
-	const rarity = item.rarity;
-	if (rarity) $("td span#rarity").append(", "+rarity);
-
-	const attunetext = item.reqAttune
-	$("td span#attunement").html(attunetext ? (attunetext === "OPTIONAL" ? "(Attunement Optional)" : "(Requires Attunement"+(attunetext === "YES" ? "" : " "+attunetext)+")") : "");
-
+	$("td span#value").html(item.value ? item.value+(item.weight ? ", " : "") : "");
+	$("td span#weight").html(item.weight ? item.weight+(item.weight == 1 ? " lb." : " lbs.") : "");
+	$("td span#rarity").html((item.tier ? ", "+item.tier : "")+(item.rarity ? ", "+item.rarity : ""));
+	$("td span#attunement").html(item.reqAttune ? item.reqAttune : "");
 	$("td span#type").html(item.typeText);
+
 	$("span#damage").html("");
 	$("span#damagetype").html("");
 	let type = "";
 	if (item.type) type = item.type;
 	if (item.weaponCategory) {
 		if(item.dmg1) $("span#damage").html(utils_makeRoller(item.dmg1));
-		if(item.dmgType) $("span#damagetype").html(parse_dmgTypeToFull(item.dmgType));
+		if(item.dmgType) $("span#damagetype").html(Parser.dmgTypeToFull(item.dmgType));
 	} else if (type === "LA" ||type === "MA"|| type === "HA") {
 		$("span#damage").html("AC "+item.ac+(type === "LA" ? " + Dex" : (type === "MA" ? " + Dex (max 2)" : "")));
 	} else if (type === "S") {
@@ -326,20 +316,17 @@ function loadhash (id) {
 	}
 
 	$("tr.text").remove();
-	const textlist = item.text;
 	let texthtml = "";
-	if (textlist) {
-		for (let n = 0; n < textlist.length; n++) {
-			if (!textlist[n]) continue;
-			if (textlist[n].istable === "YES") {
-				texthtml += utils_makeTable(textlist[n]);
-			} else {
-				//FIX ME. Modify the JSON to include all required empasis.
-				//If you need to stop a short initial sentence from being empasized then add a space to the start of that JSON text entry
-				texthtml = texthtml + "<p>"+textlist[n].replace(/^(\w+'*\s?){1,6}(:|\.) /g, "<strong>$&</strong>")+"</p>";
-			}
-		}
+	if (item.entries) {
+		const entryList = {type: "entries", entries: item.entries};
+		const renderStack = [];
+		renderer.recursiveEntryRender(entryList, renderStack, 1);
+		texthtml = renderStack.join("");
 	}
+
+	const ammoGenericText="<p>If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way.</p>";
+	const ammoFirearmText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. The ammunition of a firearm is destroyed upon use.")+ammoGenericText;
+	const ammoNormalText=emphasize("Ammunition", "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.")+ammoGenericText;
 	if (type === "LA" ||type === "MA"|| type === "HA") {
 		if (item.resist) texthtml += "<p>You have resistance to "+item.resist+" damage while you wear this armor.</p>";
 		if (type === "HA" && item.strength) texthtml += "<p>If the wearer has a Strength score lower than " + item.strength + ", their speed is reduced by 10 feet.</p>";
@@ -370,7 +357,7 @@ function loadhash (id) {
 		const properties = item.property.split(",");
 		for (let i = 0; i < properties.length; i++) {
 			let a = b = properties[i];
-			a = parse_propertyToAbv (a);
+			a = Parser.propertyToAbv (a);
 			if (b === "V") {
 				a = a + " (" + utils_makeRoller(item.dmg2) + ")";
 				texthtml += emphasize("Versatile", "This weapon can be used with one or two hands. A damage value in parentheses appears with the property \u2014 the damage when the weapon is used with two hands to make a melee attack.");

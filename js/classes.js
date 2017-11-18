@@ -61,7 +61,7 @@ function onJsonLoad(data) {
 
 	for (let i = 0; i < classes.length; i++) {
 		const curClass = classes[i];
-		$("ul.classes").append(`<li><a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'><span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${parse_sourceJsonToFull(curClass.source)}'>${parse_sourceJsonToAbv(curClass.source)}</span></a></li>`);
+		$("ul.classes").append(`<li><a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'><span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span></a></li>`);
 	}
 
 	const list = search({
@@ -91,7 +91,7 @@ function loadhash (id) {
 	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(curClass.hd)} (or ${(curClass.hd.faces/2+1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
 
 	// save proficiency
-	$("td#prof div#saves span").html(curClass.proficiency.map(p => parse_attAbvToFull(p)).join(", "));
+	$("td#prof div#saves span").html(curClass.proficiency.map(p => Parser.attAbvToFull(p)).join(", "));
 
 	// starting proficiencies
 	const sProfs = curClass.startingProficiencies;
@@ -101,7 +101,7 @@ function loadhash (id) {
 	profSel.find("div#tools span").html(sProfs.tools === undefined ? STR_PROF_NONE : sProfs.tools.join(", "));
 	profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : getSkillProfString(sProfs.skills));
 	function getSkillProfString(skills) {
-		const numString = parse_numberToString(skills.choose);
+		const numString = Parser.numberToString(skills.choose);
 		return skills.from.length === 18 ? `Choose any ${numString}.` :`Choose ${numString} from ${skills.from.joinConjunct(", ", ", and ")}.`
 	}
 
@@ -190,7 +190,7 @@ function loadhash (id) {
 						}
 
 						const styleClasses = [CLSS_SUBCLASS_FEATURE];
-						const hideSource = isNonstandardSource(subClass.source) || isSuperceded(subClass.name, subClass.source);
+						const hideSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
 						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`, true);
 					}
@@ -228,12 +228,15 @@ function loadhash (id) {
 	subclassPillWrapper.append($(`<span class="divider">`));
 
 	// subclass pills
-	const subClasses = curClass.subclasses.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName})).sort(function(a, b){return ascSort(a.name, b.name)});
+	const subClasses = curClass.subclasses
+		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
+		.sort(function(a, b){return ascSort(a.name, b.name)});
 	for (let i = 0; i < subClasses.length; i++) {
-		const nonStandardSource = isNonstandardSource(subClasses[i].source) || isSuperceded(subClasses[i].name, subClasses[i].source);
+		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${parse_sourceJsonToFull(subClasses[i].source)}"><span>${subClasses[i].shortName}</span></span>`);
+		const pillText = hasBeenReprinted(subClasses[i].shortName, subClasses[i].source) ? `${subClasses[i].shortName} (${Parser.sourceJsonToAbv(subClasses[i].source)})` : subClasses[i].shortName;
+		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
 		pill.click(function() {
 			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, subClasses[i].source);
 		});

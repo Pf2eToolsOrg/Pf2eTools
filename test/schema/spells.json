@@ -1,0 +1,295 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"title": "SpellsArray",
+	"type": "object",
+
+	"definitions": {
+		"spell": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"level": {
+					"type": "integer"
+				},
+				"school": {
+					"type": "string",
+					"enum": [
+						"A",
+						"V",
+						"E",
+						"I",
+						"D",
+						"N",
+						"T",
+						"C"
+					]
+				},
+				"meta": {
+					"type": "object",
+					"properties": {
+						"ritual": {
+							"type": "boolean"
+						},
+						"technomagic": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				"time": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/time"
+					}
+				},
+				"range": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": [
+								"special",
+								"point",
+								"line",
+								"cube",
+								"cone",
+								"radius",
+								"sphere",
+								"hemisphere",
+								"self",
+								"sight",
+								"unlimited",
+								"plane",
+								"touch"
+							]
+						},
+						"distance": {
+							"type": "object",
+							"properties": {
+								"type": {
+									"type": "string",
+									"enum": [
+										"feet",
+										"miles",
+										"self",
+										"touch",
+										"special",
+										"unlimited",
+										"sight"
+									]
+								},
+								"amount": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"type"
+							],
+							"additionalProperties": false
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false
+				},
+				"components": {
+					"type": "object",
+					"properties": {
+						"v": {
+							"type": "boolean"
+						},
+						"s": {
+							"type": "boolean"
+						},
+						"m": {
+							"type": ["boolean", "string"]
+						}
+					},
+					"additionalProperties": false
+				},
+				"duration": {
+					"type": "array",
+					"items": {"$ref": "#/definitions/duration"}
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"entriesHigherLevel": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"classes": {
+					"type": "object",
+					"properties": {
+						"fromClassList": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/class"
+							}
+						},
+						"fromSubclass": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"class": {
+										"$ref": "#/definitions/class"
+									},
+									"subclass": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											},
+											"subSubclass": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"source"
+										],
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"class",
+									"subclass"
+								],
+								"additionalProperties": false
+							}
+						}
+					},
+					"required": [
+						"fromClassList"
+					],
+					"additionalProperties": false
+				},
+				"source": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"level",
+				"school",
+				"time",
+				"range",
+				"components",
+				"duration",
+				"classes",
+				"entries",
+				"source"
+			],
+			"additionalProperties": false
+		},
+
+
+
+		"time": {
+			"properties": {
+				"number": {
+					"type": "integer"
+				},
+				"unit": {
+					"type": "string"
+				},
+				"condition": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"unit"
+			],
+			"additionalProperties": false
+		},
+
+		"duration": {
+			"properties": {
+				"type": {
+					"type": "string",
+					"enum": [
+						"instant",
+						"timed",
+						"permanent",
+						"special"
+					]
+				},
+				"duration": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": [
+								"hours",
+								"minutes",
+								"rounds",
+								"days"
+							]
+						},
+						"amount": {
+							"type": "integer"
+						},
+						"upTo": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false
+				},
+				"concentration": {
+					"type": "boolean"
+				},
+				"ends": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["dispell", "trigger"]
+					}
+				},
+				"condition": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type"
+			],
+			"additionalProperties": false
+		},
+
+		"class": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"source"
+			],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"spell": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/spell"}
+		}
+	}
+}

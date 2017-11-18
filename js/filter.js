@@ -360,10 +360,10 @@ class Filter {
 	 * Note that you can pass a pointer to a list, and add items afterwards. Call `render()` to display them.
 	 *
 	 * @param displayFunction A function to apply to each item in items when displaying the FilterBox on the page e.g.
-	 * parse_sourceJsonToFull - alternatively, use `Filter.asIs` to keep the items as-is when rendering them on the page
+	 * Parser.sourceJsonToFull - alternatively, use `Filter.asIs` to keep the items as-is when rendering them on the page
 	 *
 	 * @param valueFunction A function to apply to each item in items prior to storing them internally in FilterBox.
-	 * Only affects the keys returned by `getValues()` (I think) e.g. parse_sourceJsonToAbv - alternatively, use
+	 * Only affects the keys returned by `getValues()` (I think) e.g. Parser.sourceJsonToAbv - alternatively, use
 	 * `Filter.asIs` to keep the items as-is when using them as keys in the object returned by `getValues()`
 	 */
 	constructor(header, storageAttribute, items, displayFunction, valueFunction) {

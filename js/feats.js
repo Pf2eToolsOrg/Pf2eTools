@@ -22,9 +22,9 @@ function onJsonLoad(data) {
 		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 source${curfeat.source}`;
 		const CLS_COL_3 = "ability " + (ability.asText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append(`<li ${FLTR_SOURCE}='${curfeat.source}' ${FLTR_ABILITIES}='${ability.asFilterCollection}' ${FLTR_ABILITIES_CHOOSE}='${isAbilityChoose}'><a id='${i}' href='#${encodeForHash(name)+HASH_LIST_SEP+encodeForHash(curfeat.source)}' title='${name}'><span class='${CLS_COL_1}'>${name}</span> <span class='${CLS_COL_2}' title='${parse_sourceJsonToFull(curfeat.source)}'>${parse_sourceJsonToAbv(curfeat.source)}</span> <span class='${CLS_COL_3}'>${ability.asText}</span><span class='${CLS_COL_4}'>${prereqText}</span></a></li>`);
+		$("ul.feats").append(`<li ${FLTR_SOURCE}='${curfeat.source}' ${FLTR_ABILITIES}='${ability.asFilterCollection}' ${FLTR_ABILITIES_CHOOSE}='${isAbilityChoose}'><a id='${i}' href='#${encodeForHash(name)+HASH_LIST_SEP+encodeForHash(curfeat.source)}' title='${name}'><span class='${CLS_COL_1}'>${name}</span> <span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span> <span class='${CLS_COL_3}'>${ability.asText}</span><span class='${CLS_COL_4}'>${prereqText}</span></a></li>`);
 
-		addDropdownOption($("select.sourcefilter"), curfeat.source, parse_sourceJsonToFull(curfeat.source));
+		addDropdownOption($("select.sourcefilter"), curfeat.source, Parser.sourceJsonToFull(curfeat.source));
 	}
 	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
 	$("select.sourcefilter").val("All");
@@ -73,7 +73,7 @@ function loadhash(id) {
 			if (abilityObj.choose === undefined) {
 				for (const att in abilityObj) {
 					if (!abilityObj.hasOwnProperty(att)) continue;
-					abbArr.push("Increase your " + parse_attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
+					abbArr.push("Increase your " + Parser.attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
 				}
 			} else {
 				const choose=abilityObj.choose;
@@ -89,7 +89,7 @@ function loadhash(id) {
 						const amount = choose[i].amount;
 						const abbChoices = [];
 						for (let j = 0; j < from.length; ++j) {
-							abbChoices.push(parse_attAbvToFull(from[j]));
+							abbChoices.push(Parser.attAbvToFull(from[j]));
 						}
 						const abbChoicesText = utils_joinPhraseArray(abbChoices, ", ", " or ");
 						abbArr.push("Increase your " + abbChoicesText + " by " + amount + TO_MAX_OF_TWENTY);
