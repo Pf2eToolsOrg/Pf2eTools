@@ -734,7 +734,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 				out[1].push(toAdd);
 			}
 			else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
-				const cleanName = nm.split("(")[0].trim().split(/v\d+/)[0].trim();
+				const cleanName = mapClassShortNameToMostRecent(nm.split("(")[0].trim().split(/v\d+/)[0].trim());
 				toCheck.push({"name": cleanName, "ele": toAdd});
 			} else {
 				out[0].push(toAdd);
@@ -749,6 +749,21 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 		}
 	});
 	return [out[0].join(", "), out[1].join(", ")];
+
+	/**
+	 * Get the most recent iteration of a subclass name
+	 */
+	function mapClassShortNameToMostRecent(shortName) {
+		switch (shortName) {
+			case "Favored Soul":
+				return "Divine Soul";
+			case "Undying Light":
+				return "Celestial";
+			case "Deep Stalker":
+				return "Gloom Stalker";
+		}
+		return shortName;
+	}
 };
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {
