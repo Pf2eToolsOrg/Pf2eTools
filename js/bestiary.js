@@ -469,6 +469,8 @@ function loadhash (id) {
 		// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
 		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
 		// (Siri integration forthcoming)
+
+		const titleMaybe = attemptToGetTitle(this);
 		$(this).html($(this).html().replace(/(\-|\+)?\d+(?= to hit)/g, function(match) {
 			const bonus = Number(match);
 
@@ -478,7 +480,7 @@ function loadhash (id) {
 			if (expectedPB > 0) {
 				const profDiceString = `1d${expectedPB*2}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-				return `<span class='roller' data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${match}</span>`
+				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${match}</span>`
 			} else {
 				return `<span class='roller' data-roll='1d20${match}'>${match}</span>`; // if there was no proficiency bonus to work with, fall back on this
 			}
@@ -488,7 +490,20 @@ function loadhash (id) {
 		addNonD20Rollers(this);
 	});
 	function addNonD20Rollers (ele) {
-		$(ele).html($(ele).html().replace(/\d+d\d+(\s?(\-|\+)\s?\d+\s?)?/g, "<span class='roller' data-roll='$&'>$&</span>"));
+		$(ele).html($(ele).html().replace(/\d+d\d+(\s?(\-|\+)\s?\d+\s?)?/g, function(match) {
+			const titleMaybe = attemptToGetTitle(ele);
+			return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
+		}));
+	}
+	function attemptToGetTitle(ele) {
+		let titleMaybe = $(ele.parentElement).find(".name")[0];
+		if (titleMaybe !== undefined) {
+			titleMaybe = titleMaybe.innerHTML;
+			if (titleMaybe) {
+				titleMaybe = titleMaybe.substring(0, titleMaybe.length-1).trim();
+			}
+		}
+		return titleMaybe;
 	}
 
 	$(".spells span.roller").contents().unwrap();
