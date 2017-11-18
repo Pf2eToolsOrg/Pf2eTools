@@ -70,7 +70,7 @@ function validateVariantFeaturesWith(validator){
 
 
 /**
- * Validates variantrules.json using its corresponding schema
+ * Validates spells.json using its corresponding schema
  * @return {jsonschema.Result} The result of the validation.
  */
 function validateSpellsWith(validator){
