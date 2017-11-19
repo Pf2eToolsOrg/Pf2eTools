@@ -538,9 +538,7 @@ function loadhash (id) {
 			roll = $this.attr("data-roll").replace(/\s+/g, "");
 			rollResult = droll.roll(roll);
 		}
-		const name = $("#name").clone().children().remove().end().text();
-		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$this.attr("title") ? `${$this.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
-		$("div#output span:eq(5)").remove();
+		outputRollResult($this, roll, rollResult);
 	});
 
 	$("#stats").find("span.dc-roller").click(function() {
@@ -550,11 +548,15 @@ function loadhash (id) {
 		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
 			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
 			rollResult = droll.roll(roll);
-			const name = $("#name").clone().children().remove().end().text();
-			$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$this.attr("title") ? `${$this.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
-			$("div#output span:eq(5)").remove();
+			outputRollResult($this, roll, rollResult);
 		}
 	});
+
+	function outputRollResult($ele, roll, rollResult) {
+		const name = $("#name").clone().children().remove().end().text();
+		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
+		$("div#output span:eq(5)").remove();
+	}
 }
 
 const ATB_PROF_MODE = "mode";
