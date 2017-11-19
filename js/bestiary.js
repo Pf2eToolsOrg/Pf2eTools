@@ -418,7 +418,6 @@ function loadhash (id) {
 		// function () { $(this).html($(this).html().replace(/\+\d+/g, "<span class='roller' data-roll='1d20$&'>$&</span>")) }
 	}
 	function makeSkillRoller() {
-		// mon.skill is always a 1-length array, with no negative modifiers
 		const $this = $(this);
 		const skills = $this.html().split(",").map(s => s.trim());
 		const out = [];
@@ -431,14 +430,13 @@ function loadhash (id) {
 
 			const expert = (pB === expectedPB * 2) ? 2 : 1;
 			const pBonusStr = `+${bonus}`;
-			const pDiceStr = `${expert}d${pB*(3-expert)}+${fromAbility}`;
+			const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
 
 			out.push(renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, false));
 		});
 		$this.html(out.join(", "));
 	}
 	function makeSaveRoller() {
-		// mon.save has no negative modifiers
 		const $this = $(this);
 		const saves = $this.html().split(",").map(s => s.trim());
 		const out = [];
@@ -451,7 +449,7 @@ function loadhash (id) {
 
 			const expert = (pB === expectedPB * 2) ? 2 : 1;
 			const pBonusStr = `+${bonus}`;
-			const pDiceStr = `${expert}d${pB*(3-expert)}+${fromAbility}`;
+			const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
 
 			out.push(renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, true));
 		});
@@ -574,7 +572,6 @@ const CR_TO_PROF = {
 	"29"		: 9,
 	"30"		: 9
 };
-const skillSaveRe = /\+\d+/g;
 const SKILL_TO_ATB_ABV = {
 	"athletics": "dex",
 	"acrobatics": "dex",
