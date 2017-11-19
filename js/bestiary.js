@@ -90,7 +90,6 @@ function populate(tobData, mainData) {
 	const profBonusDiceBtn = $("button#profbonusdice");
 	profBonusDiceBtn.useDice = false;
 	profBonusDiceBtn.click(function() {
-		// TODO switch the rollers to using PD/PB
 		if (this.useDice) {
 			this.innerHTML = "Use Proficiency Dice";
 			$("#stats").find(`span.roller[${ATB_PROF_MODE}]`).each(function() {
@@ -410,12 +409,12 @@ function loadhash (id) {
 		$(this).wrapInner("<span class='roller' data-roll='1d20" + $(this).children(".mod").html() + "'></span>");
 	});
 
+	const isProfDiceMode = $("button#profbonusdice")[0].useDice;
 	if (mon.skill) {
 		$("#skills").each(makeSkillRoller);
 	}
 	if (mon.save) {
 		$("#saves").each(makeSaveRoller);
-		// function () { $(this).html($(this).html().replace(/\+\d+/g, "<span class='roller' data-roll='1d20$&'>$&</span>")) }
 	}
 	function makeSkillRoller() {
 		const $this = $(this);
@@ -456,7 +455,8 @@ function loadhash (id) {
 		$this.html(out.join(", "));
 	}
 	function renderSkillOrSaveRoller(itemName, profBonusString, profDiceString, isSave) {
-		return `${itemName} <span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${profBonusString}</span>`;
+		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
+		return `${itemName} <span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
 	}
 
 	// inline rollers
@@ -477,7 +477,9 @@ function loadhash (id) {
 			if (expectedPB > 0) {
 				const profDiceString = `1d${expectedPB*2}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${match}</span>`
+				const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
+
+				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${isProfDiceMode ? profDiceString : match}</span>`
 			} else {
 				return `<span class='roller' data-roll='1d20${match}'>${match}</span>`; // if there was no proficiency bonus to work with, fall back on this
 			}
