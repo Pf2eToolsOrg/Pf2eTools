@@ -92,14 +92,14 @@ function populate(tobData, mainData) {
 	profBonusDiceBtn.click(function() {
 		if (this.useDice) {
 			this.innerHTML = "Use Proficiency Dice";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}]`).each(function() {
+			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function() {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_BONUS);
 				$this.html($this.attr(ATB_PROF_BONUS_STR));
 			})
 		} else {
 			this.innerHTML = "Use Proficiency Bonus";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}]`).each(function() {
+			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function() {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_DICE);
 				$this.html($this.attr(ATB_PROF_DICE_STR));
@@ -468,6 +468,8 @@ function loadhash (id) {
 		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
 		// (Siri integration forthcoming)
 		const titleMaybe = attemptToGetTitle(this);
+		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
+
 		$(this).html($(this).html().replace(/(\-|\+)?\d+(?= to hit)/g, function(match) {
 			const bonus = Number(match);
 
@@ -477,13 +479,26 @@ function loadhash (id) {
 			if (expectedPB > 0) {
 				const profDiceString = `1d${expectedPB*2}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-				const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
-
-				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${isProfDiceMode ? profDiceString : match}</span>`
+				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${isProfDiceMode ? profDiceString : match}</span>`
 			} else {
 				return `<span class='roller' data-roll='1d20${match}'>${match}</span>`; // if there was no proficiency bonus to work with, fall back on this
 			}
-		}))
+		}));
+
+		$(this).html($(this).html().replace(/DC\s*(\d+)/g, function(match, capture) {
+			const dc = Number(capture);
+
+			const expectedPB = getProfBonusFromCr(mon.cr);
+
+			if (expectedPB > 0) {
+				const withoutPB = dc - expectedPB;
+				const profDiceString = `1d${(expectedPB*2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+
+				return `DC <span class="dc-roller" ${titleMaybe ? `title="${titleMaybe}"` : ""} ${ATB_PROF_MODE}="${mode}" data-roll-alt="${profDiceString}" data-bonus="${capture}" ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${capture}">${isProfDiceMode ? profDiceString : capture}</span>`;
+			} else {
+				return match; // if there was no proficiency bonus to work with, fall back on this
+			}
+		}));
 	});
 	$("#stats span#hp").each(function() {
 		addNonD20Rollers(this);
@@ -521,12 +536,25 @@ function loadhash (id) {
 			rollResult.total += res2.total;
 		} else {
 			roll = $this.attr("data-roll").replace(/\s+/g, "");
-			rollResult =  droll.roll(roll);
+			rollResult = droll.roll(roll);
 		}
 		const name = $("#name").clone().children().remove().end().text();
 		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$this.attr("title") ? `${$this.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
-	})
+	});
+
+	$("#stats").find("span.dc-roller").click(function() {
+		const $this = $(this);
+		let roll;
+		let rollResult;
+		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
+			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
+			rollResult = droll.roll(roll);
+			const name = $("#name").clone().children().remove().end().text();
+			$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$this.attr("title") ? `${$this.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
+			$("div#output span:eq(5)").remove();
+		}
+	});
 }
 
 const ATB_PROF_MODE = "mode";
