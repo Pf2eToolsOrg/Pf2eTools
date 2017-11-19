@@ -90,17 +90,16 @@ function populate(tobData, mainData) {
 	const profBonusDiceBtn = $("button#profbonusdice");
 	profBonusDiceBtn.useDice = false;
 	profBonusDiceBtn.click(function() {
-		// TODO switch the rollers to using PD/PB
 		if (this.useDice) {
 			this.innerHTML = "Use Proficiency Dice";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}]`).each(function() {
+			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function() {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_BONUS);
 				$this.html($this.attr(ATB_PROF_BONUS_STR));
 			})
 		} else {
 			this.innerHTML = "Use Proficiency Bonus";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}]`).each(function() {
+			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function() {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_DICE);
 				$this.html($this.attr(ATB_PROF_DICE_STR));
@@ -410,15 +409,14 @@ function loadhash (id) {
 		$(this).wrapInner("<span class='roller' data-roll='1d20" + $(this).children(".mod").html() + "'></span>");
 	});
 
+	const isProfDiceMode = $("button#profbonusdice")[0].useDice;
 	if (mon.skill) {
 		$("#skills").each(makeSkillRoller);
 	}
 	if (mon.save) {
 		$("#saves").each(makeSaveRoller);
-		// function () { $(this).html($(this).html().replace(/\+\d+/g, "<span class='roller' data-roll='1d20$&'>$&</span>")) }
 	}
 	function makeSkillRoller() {
-		// mon.skill is always a 1-length array, with no negative modifiers
 		const $this = $(this);
 		const skills = $this.html().split(",").map(s => s.trim());
 		const out = [];
@@ -431,14 +429,13 @@ function loadhash (id) {
 
 			const expert = (pB === expectedPB * 2) ? 2 : 1;
 			const pBonusStr = `+${bonus}`;
-			const pDiceStr = `${expert}d${pB*(3-expert)}+${fromAbility}`;
+			const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
 
 			out.push(renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, false));
 		});
 		$this.html(out.join(", "));
 	}
 	function makeSaveRoller() {
-		// mon.save has no negative modifiers
 		const $this = $(this);
 		const saves = $this.html().split(",").map(s => s.trim());
 		const out = [];
@@ -451,14 +448,15 @@ function loadhash (id) {
 
 			const expert = (pB === expectedPB * 2) ? 2 : 1;
 			const pBonusStr = `+${bonus}`;
-			const pDiceStr = `${expert}d${pB*(3-expert)}+${fromAbility}`;
+			const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
 
 			out.push(renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, true));
 		});
 		$this.html(out.join(", "));
 	}
 	function renderSkillOrSaveRoller(itemName, profBonusString, profDiceString, isSave) {
-		return `${itemName} <span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${profBonusString}</span>`;
+		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
+		return `${itemName} <span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
 	}
 
 	// inline rollers
@@ -470,6 +468,8 @@ function loadhash (id) {
 		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
 		// (Siri integration forthcoming)
 		const titleMaybe = attemptToGetTitle(this);
+		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
+
 		$(this).html($(this).html().replace(/(\-|\+)?\d+(?= to hit)/g, function(match) {
 			const bonus = Number(match);
 
@@ -479,11 +479,26 @@ function loadhash (id) {
 			if (expectedPB > 0) {
 				const profDiceString = `1d${expectedPB*2}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${PROF_MODE_BONUS}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${match}</span>`
+				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${isProfDiceMode ? profDiceString : match}</span>`
 			} else {
 				return `<span class='roller' data-roll='1d20${match}'>${match}</span>`; // if there was no proficiency bonus to work with, fall back on this
 			}
-		}))
+		}));
+
+		$(this).html($(this).html().replace(/DC\s*(\d+)/g, function(match, capture) {
+			const dc = Number(capture);
+
+			const expectedPB = getProfBonusFromCr(mon.cr);
+
+			if (expectedPB > 0) {
+				const withoutPB = dc - expectedPB;
+				const profDiceString = `1d${(expectedPB*2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+
+				return `DC <span class="dc-roller" ${titleMaybe ? `title="${titleMaybe}"` : ""} ${ATB_PROF_MODE}="${mode}" data-roll-alt="${profDiceString}" data-bonus="${capture}" ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${capture}">${isProfDiceMode ? profDiceString : capture}</span>`;
+			} else {
+				return match; // if there was no proficiency bonus to work with, fall back on this
+			}
+		}));
 	});
 	$("#stats span#hp").each(function() {
 		addNonD20Rollers(this);
@@ -521,12 +536,27 @@ function loadhash (id) {
 			rollResult.total += res2.total;
 		} else {
 			roll = $this.attr("data-roll").replace(/\s+/g, "");
-			rollResult =  droll.roll(roll);
+			rollResult = droll.roll(roll);
 		}
+		outputRollResult($this, roll, rollResult);
+	});
+
+	$("#stats").find("span.dc-roller").click(function() {
+		const $this = $(this);
+		let roll;
+		let rollResult;
+		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
+			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
+			rollResult = droll.roll(roll);
+			outputRollResult($this, roll, rollResult);
+		}
+	});
+
+	function outputRollResult($ele, roll, rollResult) {
 		const name = $("#name").clone().children().remove().end().text();
-		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$this.attr("title") ? `${$this.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
+		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
-	})
+	}
 }
 
 const ATB_PROF_MODE = "mode";
@@ -574,7 +604,6 @@ const CR_TO_PROF = {
 	"29"		: 9,
 	"30"		: 9
 };
-const skillSaveRe = /\+\d+/g;
 const SKILL_TO_ATB_ABV = {
 	"athletics": "dex",
 	"acrobatics": "dex",
