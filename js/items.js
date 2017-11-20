@@ -73,7 +73,7 @@ function mergeBasicItems(variantData) {
 }
 
 function pushObject(targetObject, objectToBePushed) {
-	let copiedObject = JSON.parse(JSON.stringify(targetObject));
+	const copiedObject = JSON.parse(JSON.stringify(targetObject));
 	copiedObject.push(objectToBePushed);
 	return copiedObject;
 }
@@ -374,9 +374,9 @@ function loadhash (id) {
 	$("tr#text").after("<tr class='text'><td colspan='6' class='text1'>"+utils_makeRoller(texthtml)+"</td></tr>");
 	$(".items span.roller").contents().unwrap();
 	$("#stats span.roller").click(function() {
-		let roll =$(this).attr("data-roll").replace(/\s+/g, "");
-		let rollresult =  droll.roll(roll);
-		let name = $("#name").clone().children().remove().end().text();
+		const roll =$(this).attr("data-roll").replace(/\s+/g, "");
+		const rollresult =  droll.roll(roll);
+		const name = $("#name").clone().children().remove().end().text();
 		$("div#output").prepend("<span>"+name + ": <em>"+roll+"</em> rolled for <strong>"+rollresult.total+"</strong> (<em>"+rollresult.rolls.join(", ")+"</em>)<br></span>").show();
 		$("div#output span:eq(5)").remove();
 	})
