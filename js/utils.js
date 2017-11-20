@@ -581,10 +581,6 @@ Parser.numberToString= function (num) {
 	}
 };
 
-Parser.propertyToAbv = function (property) {
-	return Parser._parse_aToB(Parser.PROPERTY_JSON_TO_ABV, property);
-};
-
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
 Parser.spSchoolAbvToFull= function (school) {
 	return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
@@ -1021,6 +1017,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] 		= "ToB (3pp)";
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
+	"AF": "Ammunition",
 	"AT": "Artisan Tool",
 	"EXP": "Explosive",
 	"G": "Adventuring Gear",
@@ -1057,21 +1054,6 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 Parser.NUMBERS_ONES = ['','one','two','three','four','five','six','seven','eight','nine'];
 Parser.NUMBERS_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
 Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
-
-Parser.PROPERTY_JSON_TO_ABV = {
-	"2H": "two-handed",
-	"A": "ammunition",
-	"BF": "burst fire",
-	"F": "finesse",
-	"H": "heavy",
-	"L": "light",
-	"LD": "loading",
-	"R": "reach",
-	"RLD": "reload",
-	"S": "special",
-	"T": "thrown",
-	"V": "versatile"
-};
 
 // SOURCES =============================================================================================================
 function hasBeenReprinted(shortName, source) {

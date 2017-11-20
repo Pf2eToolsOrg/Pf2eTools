@@ -1,5 +1,62 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
+	"definitions": {
+		"itemLookup": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"abbreviation": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"anyOf" : [
+					{
+						"required": [
+							"abbreviation",
+							"source",
+							"page",
+							"name",
+							"entries"
+						]
+					},
+					{
+						"required": [
+							"abbreviation",
+							"source",
+							"page",
+							"entries"
+						]
+					},
+					{
+						"required": [
+							"abbreviation",
+							"source",
+							"page",
+							"name"
+						]
+					}
+				],
+				"additionalProperties": false
+			}
+		}
+	},
 	"type": "object",
 	"properties": {
 		"basicitem": {
@@ -28,6 +85,9 @@
 					},
 					"age": {
 						"type": "string"
+					},
+					"ammunition": {
+						"type": "boolean"
 					},
 					"armor": {
 						"type": "boolean"
@@ -93,6 +153,13 @@
 				],
 				"additionalProperties": false
 			}
+		},
+		"itemProperty": {
+			"$ref": "#/definitions/itemLookup"
+		},
+		"itemType": {
+			"$ref": "#/definitions/itemLookup"
 		}
-	}
+	},
+	"additionalProperties": false
 }
