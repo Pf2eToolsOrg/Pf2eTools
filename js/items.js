@@ -31,6 +31,15 @@ function addVariants(basicItemData) {
 function mergeBasicItems(variantData) {
 	variantList = variantData.variant;
 	itemList = itemList.concat(basicItemList);
+	for (let i = 0; i < variantList.length; i++) {
+		variantList[i].tier = variantList[i].inherits.tier;
+		variantList[i].rarity = variantList[i].inherits.rarity;
+		variantList[i].source = variantList[i].inherits.source;
+		variantList[i].page = variantList[i].inherits.page;
+		if(!variantList[i].entries && variantList[i].inherits.entries) variantList[i].entries=JSON.parse(JSON.stringify(variantList[i].inherits.entries));
+		if(variantList[i].requires.armor) variantList[i].armor = variantList[i].requires.armor
+	}
+	itemList = itemList.concat(variantList);
 	for (let i = 0; i < basicItemList.length; i++) {
 		const curBasicItem = basicItemList[i];
 		if(curBasicItem.entries === undefined) curBasicItem.entries=[];

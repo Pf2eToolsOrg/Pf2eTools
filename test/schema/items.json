@@ -1,0 +1,145 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"item": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"rarity": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "string"
+					},
+					"ac": {
+						"type": "string"
+					},
+					"age": {
+						"type": "string"
+					},
+					"ammunition": {
+						"type": "boolean"
+					},
+					"armor": {
+						"type": "boolean"
+					},
+					"axe": {
+						"type": "boolean"
+					},
+					"carryingcapacity": {
+						"type": "string"
+					},
+					"dmg1": {
+						"type": "string"
+					},
+					"dmg2": {
+						"type": "string"
+					},
+					"dmgType": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"modifier": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"_category": {
+									"type": "string"
+								},
+								"__text": {
+									"type": "string"
+								},
+								"toString": {
+									"type": "array"
+								}
+							},
+							"required": [
+								"_category",
+								"__text",
+								"toString"
+							],
+							"additionalProperties": false
+						}
+					},
+					"property": {
+						"type": "string"
+					},
+					"range": {
+						"type": "string"
+					},
+					"reload": {
+						"type": "string"
+					},
+					"reqAttune": {
+						"type": "string"
+					},
+					"resist": {
+						"type": "string"
+					},
+					"scfType": {
+						"type": "string"
+					},
+					"speed": {
+						"type": "string"
+					},
+					"stealth": {
+						"type": "boolean"
+					},
+					"strength": {
+						"type": "string"
+					},
+					"sword": {
+						"type": "boolean"
+					},
+					"technology": {
+						"type": "string"
+					},
+					"tier": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"weapon": {
+						"type": "boolean"
+					},
+					"weaponCategory": {
+						"type": "string"
+					},
+					"weight": {
+						"type": "string"
+					},
+					"wondrous": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"name",
+					"rarity",
+					"source",
+					"page"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"additionalProperties": false
+}
