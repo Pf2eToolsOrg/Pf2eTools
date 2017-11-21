@@ -544,6 +544,9 @@ Parser.armorFullToAbv= function (armor) {
 Parser.sourceJsonToFull = function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
 };
+Parser.sourceJsonToFullTrimUa = function (source) {
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE).replace(UA_PREFIX, UA_PREFIX_SHORT);
+};
 Parser.sourceJsonToAbv= function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
@@ -886,6 +889,7 @@ SRC_ToB_3PP = "ToB 3pp";
 AL_PREFIX = "Adventurers League: ";
 PS_PREFIX = "Plane Shift: ";
 UA_PREFIX = "Unearthed Arcana: ";
+UA_PREFIX_SHORT = "UA: ";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CoS] 		= "Curse of Strahd";

@@ -27,6 +27,12 @@ const TM_MINS = "minute";
 const TM_HRS = "hour";
 const TO_HIDE_SINGLETON_TIMES = [TM_ACTION, TM_B_ACTION, TM_REACTION, TM_ROUND];
 
+const F_RNG_POINT = "Point";
+const F_RNG_AREA = "Area";
+const F_RNG_SELF = "Self";
+const F_RNG_TOUCH = "Touch";
+const F_RNG_SPECIAL = "Special";
+
 function getFltrSpellLevelStr(level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
 }
@@ -160,8 +166,9 @@ function onJsonLoad(data) {
 
 	// TODO concentration filter
 	// TODO components filter
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull);
+	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFullTrimUa);
 	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
+	const classFilter = new Filter("Class", FLTR_CLASS, []);
 	const metaFilter = new Filter("Type", FLTR_META, [META_RITUAL, META_TECHNOMAGIC]);
 	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], Parser.spSchoolAbvToFull);
 	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
@@ -173,17 +180,23 @@ function onJsonLoad(data) {
 			"Minutes",
 			"Hours"
 		], Filter.asIs, getFltrActionVal);
-	const rangeFilter = new Filter("Range", FLTR_RANGE, [], Parser.spRangeToFull, Parser.spRangeToFull);
+	const rangeFilter = new Filter("Range", FLTR_RANGE,
+		[
+			F_RNG_SELF,
+			F_RNG_TOUCH,
+			F_RNG_POINT,
+			F_RNG_AREA,
+			F_RNG_SPECIAL
+		]);
 	const normalizedRangeItems = [];
-	const classFilter = new Filter("Class", FLTR_CLASS, []);
 	const filterList = [
 		sourceFilter,
 		levelFilter,
+		classFilter,
 		metaFilter,
 		schoolFilter,
 		timeFilter,
-		rangeFilter,
-		classFilter
+		rangeFilter
 	];
 	const filterBox = new FilterBox(filterAndSearchBar, filterList);
 
@@ -251,10 +264,11 @@ function onJsonLoad(data) {
 		if ($.inArray(spell.source, sourceFilter.items) === -1) sourceFilter.items.push(spell.source);
 		if ($.inArray(spell.level, levelFilter.items) === -1) levelFilter.items.push(spell.level);
 		if ($.inArray(spell.school, schoolFilter.items) === -1) schoolFilter.items.push(spell.school);
-		if ($.inArray(spell[P_NORMALISED_RANGE], normalizedRangeItems) === -1) {
-			rangeFilter.items.push(spell.range);
-			normalizedRangeItems.push(spell[P_NORMALISED_RANGE]);
-		}
+		// FIXME remove
+		// if ($.inArray(spell[P_NORMALISED_RANGE], normalizedRangeItems) === -1) {
+		// 	rangeFilter.items.push(spell.range);
+		// 	normalizedRangeItems.push(spell[P_NORMALISED_RANGE]);
+		// }
 		// TODO good solution for subclasses
 		spell.classes.fromClassList.forEach(c => {
 			const withSrc = getClassFilterStr(c);
@@ -267,7 +281,7 @@ function onJsonLoad(data) {
 	levelFilter.items.sort(ascSortSpellLevel);
 	metaFilter.items.sort(ascSort);
 	schoolFilter.items.sort(ascSort);
-	rangeFilter.items.sort(ascSortSpellRange);
+	// rangeFilter.items.sort(ascSortSpellRange); // FIXME remove
 	classFilter.items.sort(ascSort);
 
 	function ascSortSpellLevel(a, b) {

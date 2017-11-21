@@ -9,6 +9,20 @@ let tableDefault;
 
 const entryRenderer = new EntryRenderer();
 
+function getNames(nameStack, entry) {
+	if (entry.name) nameStack.push(entry.name);
+	if (entry.entries) {
+		for (const eX of entry.entries) {
+			getNames(nameStack, eX);
+		}
+	}
+	if (entry.items) {
+		for (const eX of entry.items) {
+			getNames(nameStack, eX);
+		}
+	}
+}
+
 function onJsonLoad(data) {
 	rulesList = data;
 	tableDefault = $("#stats").html();
@@ -21,8 +35,14 @@ function onJsonLoad(data) {
 
 	for (let i = 0; i < rulesList.length; i++) {
 		const curRule = rulesList[i];
+
+		const searchStack = [];
+		for (const e1 of curRule.entries) {
+			getNames(searchStack, e1);
+		}
+
 		// populate table
-		$("ul.variantRules").append(`<li ${FLTR_SOURCE}='${curRule.source}'><a id='${i}' href='#${encodeForHash(curRule.name)}_${encodeForHash(curRule.source)}' title='${curRule.name}'><span class='name col-xs-10'>${curRule.name}</span><span class='source col-xs-2' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span></a></li>`);
+		$("ul.variantRules").append(`<li ${FLTR_SOURCE}='${curRule.source}'><a id='${i}' href='#${encodeForHash(curRule.name)}_${encodeForHash(curRule.source)}' title='${curRule.name}'><span class='name col-xs-10'>${curRule.name}</span><span class='source col-xs-2' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span><span class="search hidden">${searchStack.join(",")}</span></a></li>`);
 
 		// populate filters
 		if ($.inArray(curRule.source, sourceFilter.items) === -1) {
@@ -31,7 +51,7 @@ function onJsonLoad(data) {
 	}
 
 	const list = search({
-		valueNames: ['name', 'source'],
+		valueNames: ['name', 'source', 'search'],
 		listClass: "variantRules"
 	});
 
