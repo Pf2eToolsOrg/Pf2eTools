@@ -39,7 +39,8 @@ class FilterBox {
 		// selection library
 		$.fn.select2.defaults.set("theme", "bootstrap");
 		$(".locationMultiple").select2({
-			width: null
+			width: null,
+			closeOnSelect: false
 		});
 
 		addShowHideHandlers();
@@ -228,7 +229,6 @@ class FilterBox {
 	 * @param filterHeader the Filter.header for the Filter.items to call func(val) on
 	 */
 	deselectIf(func, filterHeader) {
-		// TODO fix
 		const cur = this.headers[filterHeader];
 		let anyDeselected = false;
 		const values = cur.ele.val();
