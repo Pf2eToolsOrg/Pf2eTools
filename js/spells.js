@@ -1,6 +1,7 @@
 const JSON_URL = "data/spells.json";
 
-const META_RITUAL = "Rituals";
+const META_NONE = "None";
+const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
 
 const P_LEVEL = "level";
@@ -135,6 +136,29 @@ function getNormalisedRange(range) {
 	}
 }
 
+function getRangeType(range) {
+	switch(range.type) {
+		case RNG_SPECIAL:
+			return F_RNG_SPECIAL;
+		case RNG_POINT:
+			switch (range.distance.type) {
+				case RNG_SELF:
+					return F_RNG_SELF;
+				case RNG_TOUCH:
+					return F_RNG_TOUCH;
+				default:
+					return F_RNG_POINT;
+			}
+		case RNG_LINE:
+		case RNG_CONE:
+		case RNG_RADIUS:
+		case RNG_HEMISPHERE:
+		case RNG_SPHERE:
+		case RNG_CUBE:
+			return F_RNG_AREA
+	}
+}
+
 function getTblTimeStr(time) {
 	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
 		return time.unit.uppercaseFirst();
@@ -169,7 +193,7 @@ function onJsonLoad(data) {
 	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFullTrimUa);
 	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
 	const classFilter = new Filter("Class", FLTR_CLASS, []);
-	const metaFilter = new Filter("Type", FLTR_META, [META_RITUAL, META_TECHNOMAGIC]);
+	const metaFilter = new Filter("Tag", FLTR_META, [META_NONE, META_RITUAL, META_TECHNOMAGIC]);
 	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], Parser.spSchoolAbvToFull);
 	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
 		[
@@ -319,10 +343,10 @@ function onJsonLoad(data) {
 				const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
 				const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
 				const rightMeta = f[metaFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
+					|| (!s.meta && f[metaFilter.header][META_NONE]) || (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
 				const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
 				const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
-				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][Parser.spRangeToFull(s.range)];
+				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
 				// TODO good solution for subclasses
 				const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
 					|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;

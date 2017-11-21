@@ -32,7 +32,6 @@ class FilterBox {
 		const $outer = makeOuterList();
 		for (let i = 0; i < this.filterList.length; ++i) {
 			$outer.append(makeOuterItem(this, this.filterList[i]));
-			if (i < this.filterList.length -1) $outer.append(`<div class="divider"/>`)
 		}
 		$(this.inputGroup).append($outer);
 		$(this.inputGroup).prepend($buttonGroup);
@@ -256,7 +255,6 @@ FilterBox.CLS_DROPDOWN_MENU_FILTER = "dropdown-menu-filter";
 FilterBox.CLS_DROPDOWN_SUBMENU = "dropdown-submenu";
 FilterBox.CLS_FILTER_SUBLIST_ITEM_WRAPPER = "filter-sublist-item-wrapper";
 FilterBox.CLS_SUBMENU_PARENT = "submenu-parent";
-FilterBox.CLS_DIVIDER = "divider";
 FilterBox.VAL_SELECT_ALL = "select-all";
 FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox.P_IS_OPEN = "isOpen";
