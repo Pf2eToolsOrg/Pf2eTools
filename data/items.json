@@ -1216,6 +1216,7 @@
 		{
 			"name": "Armor of Invulnerability",
 			"type": "HA",
+			"armor": true,
 			"weight": "65",
 			"ac": "18",
 			"strength": "15",
@@ -1232,6 +1233,7 @@
 		{
 			"name": "Armor of Vulnerability (Bludgeoning)",
 			"type": "HA",
+			"armor": true,
 			"weight": "65",
 			"ac": "18",
 			"strength": "15",
@@ -1249,6 +1251,7 @@
 		{
 			"name": "Armor of Vulnerability (Piercing)",
 			"type": "HA",
+			"armor": true,
 			"weight": "65",
 			"ac": "18",
 			"strength": "15",
@@ -1266,6 +1269,7 @@
 		{
 			"name": "Armor of Vulnerability (Slashing)",
 			"type": "HA",
+			"armor": true,
 			"weight": "65",
 			"ac": "18",
 			"strength": "15",
@@ -1946,6 +1950,7 @@
 		{
 			"name": "Black Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -2082,6 +2087,7 @@
 		{
 			"name": "Blue Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -2294,6 +2300,7 @@
 		{
 			"name": "Brass Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -2332,6 +2339,7 @@
 		{
 			"name": "Bronze Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -2909,6 +2917,7 @@
 		{
 			"name": "Copper Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -3512,6 +3521,7 @@
 		{
 			"name": "Demon Armor",
 			"type": "HA",
+			"armor": true,
 			"weight": "65",
 			"ac": "18",
 			"strength": "15",
@@ -3806,6 +3816,7 @@
 		{
 			"name": "Dwarven Plate",
 			"type": "HA",
+			"armor": true,
 			"weight": "65",
 			"ac": "18",
 			"strength": "15",
@@ -3878,6 +3889,7 @@
 		{
 			"name": "Efreeti Chain",
 			"type": "HA",
+			"armor": true,
 			"weight": "55",
 			"ac": "16",
 			"strength": "13",
@@ -3976,6 +3988,7 @@
 		{
 			"name": "Elven Chain",
 			"type": "MA",
+			"armor": true,
 			"weight": "20",
 			"ac": "13",
 			"tier": "Major",
@@ -4385,6 +4398,7 @@
 		{
 			"name": "Glamoured Studded Leather",
 			"type": "LA",
+			"armor": true,
 			"weight": "13",
 			"ac": "13",
 			"tier": "Major",
@@ -4491,6 +4505,7 @@
 		{
 			"name": "Gold Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -4543,6 +4558,7 @@
 		{
 			"name": "Green Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -7433,6 +7449,7 @@
 		{
 			"name": "Red Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -8129,7 +8146,7 @@
 			"entries": [
 				"This rod has a flanged head and the following properties.",
 				"Alertness. While holding the rod, you have advantage on Wisdom (Perception) checks and on rolls for initiative.",
-				"Spells. While holding the rod, you can use an action to cast one of the following spells from it: {@spell detect evil and good|phb}, {@spell detect magic|phb}, <a href=\"spells.html#detect%20poison%20and%20disease_phb\" target=\"_blank\">detect poison and disease</a>, or see <a href=\"spells.html#invisibility_phb\" target=\"_blank\">invisibility</a>.",
+				"Spells. While holding the rod, you can use an action to cast one of the following spells from it: {@spell detect evil and good|phb}, {@spell detect magic|phb}, {@spell detect poison and disease|phb}, or {@spell see invisibility|phb}.",
 				"Protective Aura. As an action, you can plant the haft end of the rod in the ground, whereupon the rod's head sheds bright light in a 60-foot radius and dim light for an additional 60 feet. While in that bright light, you and any creature that is friendly to you gain a +1 bonus to AC and saving throws and can sense the location of any invisible hostile creature that is also in the bright light.",
 				"The rod's head stops glowing and the effect ends after 10 minutes, or when a creature uses an action to pull the rod from the ground. This property can't be used again until the next dawn."
 			]
@@ -8210,6 +8227,22 @@
 			"entries": [
 				"While holding this rod, you gain a +1 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
 				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
+			],
+			"modifier": [
+				{
+					"_category": "bonus",
+					"__text": "spell attack +1",
+					"toString": [
+						null
+					]
+				},
+				{
+					"_category": "bonus",
+					"__text": "spell dc +1",
+					"toString": [
+						null
+					]
+				}
 			]
 		},
 		{
@@ -8224,6 +8257,22 @@
 			"entries": [
 				"While holding this rod, you gain a +2 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
 				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
+			],
+			"modifier": [
+				{
+					"_category": "bonus",
+					"__text": "spell attack +2",
+					"toString": [
+						null
+					]
+				},
+				{
+					"_category": "bonus",
+					"__text": "spell dc +2",
+					"toString": [
+						null
+					]
+				}
 			]
 		},
 		{
@@ -8238,6 +8287,22 @@
 			"entries": [
 				"While holding this rod, you gain a +3 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
 				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
+			],
+			"modifier": [
+				{
+					"_category": "bonus",
+					"__text": "spell attack +3",
+					"toString": [
+						null
+					]
+				},
+				{
+					"_category": "bonus",
+					"__text": "spell dc +3",
+					"toString": [
+						null
+					]
+				}
 			]
 		},
 		{
@@ -8627,6 +8692,7 @@
 		{
 			"name": "Silver Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -11138,7 +11204,7 @@
 			"reqAttune": "YES",
 			"entries": [
 				"Crafted by the drow, this slim black wand has 7 charges. While holding it, you can use an action to expend 1 of its charges to cause a small glob of viscous material to launch from the tip at one creature within 60 feet of you. Make a ranged attack roll against the target, with a bonus equal to your spellcasting modifier (or your Intelligence modifier, if you don't have a spellcasting modifier) plus your proficiency bonus. On a hit, the glob expands and dries on the target, which is restrained for 1 hour. After that time, the viscous material cracks and falls away.",
-				"Applying a pint or more of alcohol to the restrained creature dissolves the glob instantly, as does the application of <a href=\"items.html#oil%20of%20etherealness\" target=\"_blank\">oil of etherealness_dmg</a> or <a href=\"items.html#universal%20solvent_dmg\" target=\"_blank\">universal solvent</a>. The glob also dissolves instantly if exposed to sunlight. No other nonmagical process can remove the viscous material until it deteriorates on its own.",
+				"Applying a pint or more of alcohol to the restrained creature dissolves the glob instantly, as does the application of {@item oil of etherealness|dmg} or {@item universal solvent|dmg}. The glob also dissolves instantly if exposed to sunlight. No other nonmagical process can remove the viscous material until it deteriorates on its own.",
 				"The wand regains 1d6+1 expended charges daily at midnight. If you expend the wands last charge, roll a d20. On a 1, the wand melts into harmless slime and is destroyed.",
 				"A wand of viscous globs is destroyed if exposed to sunlight for 1 hour without interruption."
 			]
@@ -11453,6 +11519,7 @@
 		{
 			"name": "White Dragon Scale Mail",
 			"type": "MA",
+			"armor": true,
 			"weight": "45",
 			"ac": "14",
 			"stealth": true,
@@ -12775,6 +12842,7 @@
 		{
 			"name": "Scorpion Armor",
 			"type": "HA",
+			"armor": true,
 			"weight": "65",
 			"ac": "18",
 			"strength": "15",

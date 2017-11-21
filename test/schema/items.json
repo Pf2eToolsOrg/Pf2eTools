@@ -1,65 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"definitions": {
-		"itemLookup": {
-			"type": "array",
-			"uniqueItems": true,
-			"items": {
-				"type": "object",
-				"properties": {
-					"abbreviation": {
-						"type": "string"
-					},
-					"source": {
-						"type": "string"
-					},
-					"page": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"entries": {
-						"type": "array",
-						"items": {
-							"$ref": "/Entry"
-						}
-					}
-				},
-				"anyOf" : [
-					{
-						"required": [
-							"abbreviation",
-							"source",
-							"page",
-							"name",
-							"entries"
-						]
-					},
-					{
-						"required": [
-							"abbreviation",
-							"source",
-							"page",
-							"entries"
-						]
-					},
-					{
-						"required": [
-							"abbreviation",
-							"source",
-							"page",
-							"name"
-						]
-					}
-				],
-				"additionalProperties": false
-			}
-		}
-	},
 	"type": "object",
 	"properties": {
-		"basicitem": {
+		"item": {
 			"type": "array",
 			"uniqueItems": true,
 			"items": {
@@ -95,6 +38,9 @@
 					"axe": {
 						"type": "boolean"
 					},
+					"carryingcapacity": {
+						"type": "string"
+					},
 					"dmg1": {
 						"type": "string"
 					},
@@ -110,6 +56,29 @@
 							"$ref": "/Entry"
 						}
 					},
+					"modifier": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"_category": {
+									"type": "string"
+								},
+								"__text": {
+									"type": "string"
+								},
+								"toString": {
+									"type": "array"
+								}
+							},
+							"required": [
+								"_category",
+								"__text",
+								"toString"
+							],
+							"additionalProperties": false
+						}
+					},
 					"property": {
 						"type": "string"
 					},
@@ -117,6 +86,18 @@
 						"type": "string"
 					},
 					"reload": {
+						"type": "string"
+					},
+					"reqAttune": {
+						"type": "string"
+					},
+					"resist": {
+						"type": "string"
+					},
+					"scfType": {
+						"type": "string"
+					},
+					"speed": {
 						"type": "string"
 					},
 					"stealth": {
@@ -131,6 +112,9 @@
 					"technology": {
 						"type": "string"
 					},
+					"tier": {
+						"type": "string"
+					},
 					"value": {
 						"type": "string"
 					},
@@ -142,23 +126,19 @@
 					},
 					"weight": {
 						"type": "string"
+					},
+					"wondrous": {
+						"type": "boolean"
 					}
 				},
 				"required": [
 					"name",
-					"type",
 					"rarity",
 					"source",
 					"page"
 				],
 				"additionalProperties": false
 			}
-		},
-		"itemProperty": {
-			"$ref": "#/definitions/itemLookup"
-		},
-		"itemType": {
-			"$ref": "#/definitions/itemLookup"
 		}
 	},
 	"additionalProperties": false

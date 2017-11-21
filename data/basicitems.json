@@ -235,7 +235,13 @@
 			"source": "PHB",
 			"page": "149",
 			"entries": [
-				"Special. You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+				{
+					"type": "entries",
+					"name": "Special",
+					"entries": [
+						"You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+					]
+				}
 			]
 		},
 		{
@@ -352,7 +358,13 @@
 			"source": "PHB",
 			"page": "149",
 			"entries": [
-				"Special. A Large or smaller creature hit by a net is restrained until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+				{
+					"type": "entries",
+					"name": "Special",
+					"entries": [
+						"A Large or smaller creature hit by a net is restrained until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+					]
+				}
 			]
 		},
 		{
@@ -577,7 +589,7 @@
 			"weight": "3",
 			"dmg1": "1d10",
 			"dmgType": "P",
-			"property": "A,LD",
+			"property": "AF,LD",
 			"range": "30/90",
 			"source": "DMG",
 			"page": "268"
@@ -594,7 +606,7 @@
 			"weight": "10",
 			"dmg1": "1d12",
 			"dmgType": "P",
-			"property": "A,LD,2H",
+			"property": "AF,LD,2H",
 			"range": "40/120",
 			"source": "DMG",
 			"page": "268"
@@ -610,7 +622,7 @@
 			"weight": "3",
 			"dmg1": "2d6",
 			"dmgType": "P",
-			"property": "A,RLD",
+			"property": "AF,RLD",
 			"range": "50/150",
 			"reload": "15",
 			"source": "DMG",
@@ -627,7 +639,7 @@
 			"weight": "3",
 			"dmg1": "2d8",
 			"dmgType": "P",
-			"property": "A,RLD",
+			"property": "AF,RLD",
 			"range": "40/120",
 			"reload": "6",
 			"source": "DMG",
@@ -644,7 +656,7 @@
 			"weight": "8",
 			"dmg1": "2d10",
 			"dmgType": "P",
-			"property": "A,RLD,2H",
+			"property": "AF,RLD,2H",
 			"range": "80/240",
 			"reload": "5",
 			"source": "DMG",
@@ -661,7 +673,7 @@
 			"weight": "8",
 			"dmg1": "2d8",
 			"dmgType": "P",
-			"property": "A,BF,RLD,2H",
+			"property": "AF,BF,RLD,2H",
 			"range": "80/240",
 			"reload": "30",
 			"source": "DMG",
@@ -678,7 +690,7 @@
 			"weight": "7",
 			"dmg1": "2d8",
 			"dmgType": "P",
-			"property": "A,RLD,2H",
+			"property": "AF,RLD,2H",
 			"range": "30/90",
 			"reload": "2",
 			"source": "DMG",
@@ -695,7 +707,7 @@
 			"weight": "2",
 			"dmg1": "3d6",
 			"dmgType": "R",
-			"property": "A,RLD",
+			"property": "AF,RLD",
 			"range": "30/120",
 			"reload": "50",
 			"source": "DMG",
@@ -712,7 +724,7 @@
 			"weight": "10",
 			"dmg1": "6d8",
 			"dmgType": "N",
-			"property": "A,RLD,2H",
+			"property": "AF,RLD,2H",
 			"range": "120/360",
 			"reload": "2",
 			"source": "DMG",
@@ -729,7 +741,7 @@
 			"weight": "7",
 			"dmg1": "3d8",
 			"dmgType": "R",
-			"property": "A,RLD,2H",
+			"property": "AF,RLD,2H",
 			"range": "100/300",
 			"reload": "30",
 			"source": "DMG",
@@ -738,6 +750,7 @@
 		{
 			"name": "Arrow",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "5cp",
 			"weight": "0.05",
@@ -747,6 +760,7 @@
 		{
 			"name": "Arrows (20)",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "1gp",
 			"weight": "1",
@@ -756,6 +770,7 @@
 		{
 			"name": "Blowgun Needle",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "2cp",
 			"weight": "0.02",
@@ -765,6 +780,7 @@
 		{
 			"name": "Blowgun Needles (50)",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "1gp",
 			"weight": "1",
@@ -774,6 +790,7 @@
 		{
 			"name": "Crossbow Bolt",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "5cp",
 			"weight": "0.075",
@@ -783,6 +800,7 @@
 		{
 			"name": "Crossbow Bolts (20)",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "1gp",
 			"weight": "1.5",
@@ -792,6 +810,7 @@
 		{
 			"name": "Sling Bullet",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "0.2cp",
 			"weight": "0.075",
@@ -801,6 +820,7 @@
 		{
 			"name": "Sling Bullets (20)",
 			"type": "A",
+			"ammunition": true,
 			"rarity": "None",
 			"value": "4cp",
 			"weight": "1.5",
@@ -809,7 +829,8 @@
 		},
 		{
 			"name": "Renaissance Bullets (10)",
-			"type": "A",
+			"type": "AF",
+			"ammunition": true,
 			"age": "Renaissance",
 			"rarity": "None",
 			"value": "3gp",
@@ -819,7 +840,8 @@
 		},
 		{
 			"name": "Modern Bullets (10)",
-			"type": "A",
+			"type": "AF",
+			"ammunition": true,
 			"age": "Modern",
 			"rarity": "None",
 			"weight": "1",
@@ -828,7 +850,8 @@
 		},
 		{
 			"name": "Energy Cell",
-			"type": "A",
+			"type": "AF",
+			"ammunition": true,
 			"age": "Futuristic",
 			"rarity": "None",
 			"weight": "0.3125",
@@ -1040,6 +1063,269 @@
 			"page": "144",
 			"entries": [
 				"A shield is made from wood or metal and is carried in one hand. Wielding a shield increases your Armor Class by 2. You can benefit from only one shield at a time."
+			]
+		}
+	],
+	"itemProperty": [
+		{
+			"abbreviation": "A",
+			"source": "PHB",
+			"page": "146",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield."
+					]
+				},
+				"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+			]
+		},
+		{
+			"abbreviation": "AF",
+			"source": "DMG",
+			"page": "267",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. The ammunition of a firearm is destroyed upon use."
+					]
+				},
+				"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+			]
+		},
+		{
+			"abbreviation": "BF",
+			"source": "DMG",
+			"page": "267",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Burst Fire",
+					"entries": [
+						"A weapon that has the burst fire property can make a single-target attack, or it can spray a 10-foot-cube area within normal range with shots. Each creature in the area must succeed on a DC 15 Dexterity saving throw or take the weapon's normal damage. This action uses ten pieces of ammunition."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "F",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Finesse",
+					"entries": [
+						"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "H",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Small creatures have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small creature to use effectively."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "L",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "LD",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Loading",
+					"entries": [
+						"Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "R",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Reach",
+					"entries": [
+						"This weapon adds 5 feet to your reach when you attack with it. This property also determines your reach for opportunity attacks with a reach weapon."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "RLD",
+			"source": "DMG",
+			"page": "267",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Reload",
+					"entries": [
+						"A limited number of shots can be made with a weapon that has the reload property. A character must then reload it using an action or a bonus action (the character's choice)."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "S",
+			"source": "PHB",
+			"page": "147",
+			"name": "special"
+		},
+		{
+			"abbreviation": "T",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "2H",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "V",
+			"source": "PHB",
+			"page": "147",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property \u2014 the damage when the weapon is used with two hands to make a melee attack."
+					]
+				}
+			]
+		}
+	],
+	"itemType": [
+		{
+			"abbreviation": "A",
+			"source": "PHB",
+			"page": "146",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield."
+					]
+				},
+				"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+			]
+		},
+		{
+			"abbreviation": "AF",
+			"source": "DMG",
+			"page": "267",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. The ammunition of a firearm is destroyed upon use."
+					]
+				},
+				"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+			]
+		},
+		{
+			"abbreviation": "AT",
+			"source": "PHB",
+			"page": "154",
+			"name": "Artisan Tools",
+			"entries": [
+				"These special tools include the items needed to pursue a craft or trade. Proficiency with a set of artisan's tools lets you add your proficiency bonus to any ability checks you make using the tools in your craft. Each type of artisan's tools requires a separate proficiency."
+			]
+		},
+		{
+			"abbreviation": "GS",
+			"source": "PHB",
+			"page": "154",
+			"name": "Gaming Set",
+			"entries": [
+				"If you are proficient with a gaming set, you can add your proficiency bonus to ability checks you make to play a game with that set. Each type of gaming set requires a separate proficiency."
+			]
+		},
+		{
+			"abbreviation": "INS",
+			"source": "PHB",
+			"page": "154",
+			"name": "Instrument",
+			"entries": [
+				"If you have proficiency with a given musical instrument, you can add your proficiency bonus to any ability checks you make to play music with the instrument.",
+				"A bard can use a musical instrument as a spellcasting focus, substituting it for any material component that does not list a cost.",
+				"Each type of musical instrument requires a separate proficiency."
+			]
+		},
+		{
+			"abbreviation": "R",
+			"source": "PHB",
+			"page": "146",
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				}
+			]
+		},
+		{
+			"abbreviation": "TG",
+			"source": "PHB",
+			"page": "146",
+			"name": "Trade Good",
+			"entries": [
+				"Most wealth is not in coins. It is measured in livestock, grain, land, rights to collect taxes, or rights to resources (such as a mine or a forest).",
+				"Guilds, nobles, and royalty regulate trade. Chartered companies are granted rights to conduct trade along certain routes, to send merchant ships to various ports, or to buy or sell specific goods. Guilds set prices for the goods or services that they control, and determine who may or may not offer those goods and services. Merchants commonly exchange trade goods without using currency."
 			]
 		}
 	]
