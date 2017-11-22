@@ -1,6 +1,11 @@
 const JSON_URL = "data/spells.json";
 
-const META_NONE = "None";
+// toss these into the "Tags" section to save screen space
+const META_ADD_CONC = "Concentration";
+const META_ADD_V = "Verbal";
+const META_ADD_S = "Somatic";
+const META_ADD_M = "Material";
+// real meta tags
 const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
 
@@ -215,7 +220,10 @@ function onJsonLoad(data) {
 	const levelFilter = new Filter({header: "Level", items: [], displayFn: getFltrSpellLevelStr});
 	const classFilter = new Filter({header: "Class", items: []});
 	const subclassFilter = new Filter({header: "Subclass", items: [], desel: deselectSubclasses});
-	const metaFilter = new Filter({header: "Tag", items: [META_NONE, META_RITUAL, META_TECHNOMAGIC]});
+	const metaFilter = new Filter({
+		header: "Tag",
+		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
+	});
 	const schoolFilter = new Filter({header: "School", items: [], displayFn: Parser.spSchoolAbvToFull});
 	const timeFilter = new Filter({
 		header: "Cast Time",
@@ -333,7 +341,6 @@ function onJsonLoad(data) {
 	// sort filters
 	sourceFilter.items.sort(ascSort);
 	levelFilter.items.sort(ascSortSpellLevel);
-	metaFilter.items.sort(ascSort);
 	schoolFilter.items.sort(ascSort);
 	classFilter.items.sort(ascSort);
 	subclassFilter.items.sort(ascSort);
@@ -370,13 +377,20 @@ function onJsonLoad(data) {
 
 			const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
 			const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
+			// TODO handle inverse
 			const rightMeta = f[metaFilter.header][FilterBox.VAL_SELECT_ALL]
-				|| (!s.meta && f[metaFilter.header][META_NONE]) || (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
+				|| ( s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC] && s.meta.technomagic)) )
+				|| ( f[metaFilter.header][META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
+				|| ( f[metaFilter.header][META_ADD_V] && s.components.v )
+				|| ( f[metaFilter.header][META_ADD_S] && s.components.s )
+				|| ( f[metaFilter.header][META_ADD_M] && s.components.m );
 			const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
 			const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
 			const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
+			// TODO handle inverse
 			const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
 				|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
+			// TODO handle inverse
 			const rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
 				|| s.classes.fromSubclass && s.classes.fromSubclass.map(sc => f[subclassFilter.header][getClassFilterStr(sc.subclass)]).filter(b => b).length > 0;
 

@@ -84,7 +84,8 @@ class FilterBox {
 
 			addEventHandlers();
 
-			self.headers[filter.header] = {size: filter.items.length, ele: $multi};
+			const newHeader = {size: filter.items.length, ele: $multi, invert: false};
+			self.headers[filter.header] = newHeader;
 
 			return $outI;
 
@@ -92,10 +93,23 @@ class FilterBox {
 				const $line = $(`<div class="h-wrap"/>`);
 				const $label = `<div>${filter.header}</div>`;
 				$line.append($label);
-				const $all = $(`<button class="btn btn-default btn-xs" style="margin-left: auto">All</button>`);
+				const $invert = $(`<button class="btn btn-default btn-xs" style="margin-left: auto">Invert</button>`);
+				$line.append($invert);
+				const $all = $(`<button class="btn btn-default btn-xs" style="margin-left: 15px">All</button>`);
 				$line.append($all);
 				const $clear = $(`<button class="btn btn-default btn-xs" style="margin-left: 5px">Clear</button>`);
 				$line.append($clear);
+
+				$invert.on(EVNT_CLICK, function() {
+					newHeader.invert = !newHeader.invert;
+					filter.invert = newHeader.invert;
+					if (newHeader.invert) {
+						$outI.addClass("filter-invert")
+					} else {
+						$outI.removeClass("filter-invert")
+					}
+					self._fireValChangeEvent();
+				});
 
 				$clear.on(EVNT_CLICK, function() {
 					$multi.find("option").prop("selected", false);
@@ -182,15 +196,31 @@ class FilterBox {
 			const tempObj = {};
 
 			const values = cur.ele.val();
-			if (values.length === cur.size) {
-				// everything is selected
-				tempObj[FilterBox.VAL_SELECT_ALL] = true;
-			} else {
-				for (let i = 0; i < values.length; ++i) {
-					tempObj[values[i]] = true;
+			if (!cur.invert) {
+				if (values.length === cur.size) {
+					// everything is selected
+					tempObj[FilterBox.VAL_SELECT_ALL] = true;
+				} else {
+					for (let i = 0; i < values.length; ++i) {
+						tempObj[values[i]] = true;
+					}
 				}
+				outObj[header] = tempObj;
+			} else {
+				if (values.length === 0) { // probably bugged if there's no filter items
+					// everything is unselected
+					tempObj[FilterBox.VAL_SELECT_ALL] = true;
+				} else {
+					const valSet = new Set(values);
+					cur.ele.find("option").get().map(o => o.value).forEach(v => {
+						if (!valSet.has(v)) {
+							tempObj[v] = true;
+						}
+					});
+				}
+
+				outObj[header] = tempObj;
 			}
-			outObj[header] = tempObj;
 		}
 		return outObj;
 	}
@@ -305,5 +335,11 @@ class Filter {
 		this.displayFn = options.displayFn;
 		this.valueFn = options.valueFn;
 		this.desel = options.desel;
+
+		this.invert = false;
+	}
+
+	isInverted() {
+		return this.invert;
 	}
 }
