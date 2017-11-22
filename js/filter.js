@@ -128,7 +128,6 @@ class FilterBox {
 			}
 
 			function addEventHandlers() {
-				// TODO
 				$multi.on("change", function () {
 					self._fireValChangeEvent();
 				})
@@ -235,7 +234,7 @@ class FilterBox {
 		for (let i = 0; i < values.length; ++i) {
 			const value = values[i];
 			if (func(value)) {
-				cur.ele.find(`option[value=${value}]`).prop("selected", false);
+				cur.ele.find(`option[value="${value}"]`).prop("selected", false);
 				anyDeselected = true;
 			}
 		}
