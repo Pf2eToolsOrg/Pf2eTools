@@ -55,6 +55,7 @@ FLTR_LEVEL = "filterLevel";
 FLTR_SCHOOL = "filterSchool";
 FLTR_RANGE = "filterRange";
 FLTR_CLASS = "filterClass";
+FLTR_SUBCLASS = "filterSubclass";
 FLTR_META = "filterMeta";
 FLTR_ACTION = "filterAction";
 FLTR_TIER = "filterTier";

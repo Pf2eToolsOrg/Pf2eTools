@@ -173,7 +173,8 @@ function getFltrActionVal(unit) {
 }
 
 function getClassFilterStr(c) {
-	return `${c.name}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
+	const nm = c.name.split("(")[0].trim();
+	return `${nm}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
 }
 
 window.onload = function load() {
@@ -193,6 +194,7 @@ function onJsonLoad(data) {
 	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFullTrimUa);
 	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
 	const classFilter = new Filter("Class", FLTR_CLASS, []);
+	const subclassFilter = new Filter("Subclass", FLTR_SUBCLASS, []);
 	const metaFilter = new Filter("Tag", FLTR_META, [META_NONE, META_RITUAL, META_TECHNOMAGIC]);
 	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], Parser.spSchoolAbvToFull);
 	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
@@ -217,6 +219,7 @@ function onJsonLoad(data) {
 		sourceFilter,
 		levelFilter,
 		classFilter,
+		subclassFilter,
 		metaFilter,
 		schoolFilter,
 		timeFilter,
@@ -224,6 +227,8 @@ function onJsonLoad(data) {
 	];
 	const filterBox = new FilterBox(filterAndSearchBar, filterList);
 
+	const spellTable = $("ul.spells");
+	let tempString = "";
 	for (let i = 0; i < spellList.length; i++) {
 		const spell = spellList[i];
 
@@ -269,7 +274,7 @@ function onJsonLoad(data) {
 		spell[P_NORMALISED_RANGE] = getNormalisedRange(spell.range);
 
 		// populate table
-		const tableItem = `
+		tempString += `
 			<li class='row' ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${encodeForHash([spell.name, spell.source])}' title="${spell.name}">
 					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
@@ -282,41 +287,38 @@ function onJsonLoad(data) {
 					<span class='classes' style='display: none'>${Parser.spClassesToFull(spell.classes)}</span>
 				</a>
 			</li>`;
-		$("ul.spells").append(tableItem);
 
 		// populate filters
 		if ($.inArray(spell.source, sourceFilter.items) === -1) sourceFilter.items.push(spell.source);
 		if ($.inArray(spell.level, levelFilter.items) === -1) levelFilter.items.push(spell.level);
 		if ($.inArray(spell.school, schoolFilter.items) === -1) schoolFilter.items.push(spell.school);
-		// FIXME remove
-		// if ($.inArray(spell[P_NORMALISED_RANGE], normalizedRangeItems) === -1) {
-		// 	rangeFilter.items.push(spell.range);
-		// 	normalizedRangeItems.push(spell[P_NORMALISED_RANGE]);
-		// }
-		// TODO good solution for subclasses
+		if (spell.classes.fromSubclass) {
+			spell.classes.fromSubclass.forEach(c => {
+				const withSrc = getClassFilterStr(c.subclass);
+				if ($.inArray(withSrc, subclassFilter.items) === -1) subclassFilter.items.push(withSrc);
+			});
+		}
 		spell.classes.fromClassList.forEach(c => {
 			const withSrc = getClassFilterStr(c);
 			if($.inArray(withSrc, classFilter.items) === -1) classFilter.items.push(withSrc);
 		});
 	}
 
+	spellTable.append(tempString);
+
 	// sort filters
 	sourceFilter.items.sort(ascSort);
 	levelFilter.items.sort(ascSortSpellLevel);
 	metaFilter.items.sort(ascSort);
 	schoolFilter.items.sort(ascSort);
-	// rangeFilter.items.sort(ascSortSpellRange); // FIXME remove
 	classFilter.items.sort(ascSort);
+	subclassFilter.items.sort(ascSort);
 
 	function ascSortSpellLevel(a, b) {
 		if (a === b) return 0;
 		if (a === STR_CANTRIP) return -1;
 		if (b === STR_CANTRIP) return 1;
 		return ascSort(a, b);
-	}
-
-	function ascSortSpellRange(a, b) {
-		return getNormalisedRange(a) - getNormalisedRange(b);
 	}
 
 	const list = search({
