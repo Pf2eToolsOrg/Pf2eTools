@@ -34,7 +34,14 @@ function _getHashParts() {
 }
 
 function _getListElem(link) {
-	return $(`#listcontainer a[href='#${link.toLowerCase()}']`);
+	const toFind = `a[href='#${link.toLowerCase()}']`;
+	for (const item of $("#listcontainer")[0]["list"].items) {
+		const $elm = $(item.elm).find(toFind);
+		if ($elm[0]) {
+			return $elm
+		}
+	}
+	return undefined;
 }
 
 function _freshLoad() {

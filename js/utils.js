@@ -1112,6 +1112,7 @@ function search(options) {
 		list.sort("name");
 		list.filter();
 	});
+	$("#listcontainer")[0].list = list;
 	return list
 }
 
