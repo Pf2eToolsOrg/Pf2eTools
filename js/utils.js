@@ -60,7 +60,6 @@ FLTR_ACTION = "filterAction";
 FLTR_TIER = "filterTier";
 FLTR_RARITY = "filterRarity";
 FLTR_ATTUNEMENT = "filterAttunement";
-FLTR_CATEGORY = "filterCategory";
 FLTR_LIST_SEP = ";";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
@@ -1029,7 +1028,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"M": "Melee Weapon",
 	"MA": "Medium Armor",
 	"MNT": "Mount",
-	"GV": "Generic Variant",
+	"MV": "Magical Variant",
 	"P": "Potion",
 	"R": "Ranged Weapon",
 	"RD": "Rod",
