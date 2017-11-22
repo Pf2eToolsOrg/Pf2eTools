@@ -188,10 +188,6 @@ table#statsprof {
 	background: transparent;
 }
 
-table#stats table tbody tr:nth-child(odd) {
-	background: transparent;
-}
-
 th.border {
 	border: transparent;
 	background: transparent;
@@ -267,6 +263,7 @@ table#stats td._class_feature table th {
 	color: grey;
 }
 
+#stats table tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
 #rulescontent table tbody tr:nth-child(odd) td {
 	background: black;
