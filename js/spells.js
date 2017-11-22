@@ -33,7 +33,6 @@ const F_RNG_AREA = "Area";
 const F_RNG_SELF = "Self";
 const F_RNG_TOUCH = "Touch";
 const F_RNG_SPECIAL = "Special";
-const F_SCLASS_ALL = " All"; // leading space a simple hack to have it sorted first - doesn't get rendered
 
 function getFltrSpellLevelStr(level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
@@ -195,7 +194,7 @@ function deselectUaEepc(val) {
 }
 
 function deselectSubclasses(val) {
-	return val !== F_SCLASS_ALL;
+	return true;
 }
 
 window.onload = function load() {
@@ -215,7 +214,7 @@ function onJsonLoad(data) {
 	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullTrimUa, desel: deselectUaEepc});
 	const levelFilter = new Filter({header: "Level", items: [], displayFn: getFltrSpellLevelStr});
 	const classFilter = new Filter({header: "Class", items: []});
-	const subclassFilter = new Filter({header: "Subclass", items: [F_SCLASS_ALL], desel: deselectSubclasses});
+	const subclassFilter = new Filter({header: "Subclass", items: [], desel: deselectSubclasses});
 	const metaFilter = new Filter({header: "Tag", items: [META_NONE, META_RITUAL, META_TECHNOMAGIC]});
 	const schoolFilter = new Filter({header: "School", items: [], displayFn: Parser.spSchoolAbvToFull});
 	const timeFilter = new Filter({
@@ -319,8 +318,8 @@ function onJsonLoad(data) {
 		if ($.inArray(spell.school, schoolFilter.items) === -1) schoolFilter.items.push(spell.school);
 		if (spell.classes.fromSubclass) {
 			spell.classes.fromSubclass.forEach(c => {
-				const withSrc = getClassFilterStr(c.subclass);
-				if ($.inArray(withSrc, subclassFilter.items) === -1) subclassFilter.items.push(withSrc);
+				const scWithSrc = getClassFilterStr(c.subclass);
+				if ($.inArray(scWithSrc, subclassFilter.items) === -1) subclassFilter.items.push(scWithSrc);
 			});
 		}
 		spell.classes.fromClassList.forEach(c => {
@@ -376,11 +375,12 @@ function onJsonLoad(data) {
 			const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
 			const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
 			const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
-			// TODO good solution for subclasses
 			const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
 				|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
+			const rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
+				|| s.classes.fromSubclass && s.classes.fromSubclass.map(sc => f[subclassFilter.header][getClassFilterStr(sc.subclass)]).filter(b => b).length > 0;
 
-			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClass;
+			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && (rightClass || rightSubclass);
 		});
 	}
 
