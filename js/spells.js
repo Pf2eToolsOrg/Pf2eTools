@@ -33,6 +33,7 @@ const F_RNG_AREA = "Area";
 const F_RNG_SELF = "Self";
 const F_RNG_TOUCH = "Touch";
 const F_RNG_SPECIAL = "Special";
+const F_SCLASS_ALL = " All"; // leading space a simple hack to have it sorted first - doesn't get rendered
 
 function getFltrSpellLevelStr(level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
@@ -177,6 +178,26 @@ function getClassFilterStr(c) {
 	return `${nm}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
 }
 
+function deselectUaEepc(val) {
+	if (window.location.hash.length) {
+		let spellSource = spellList[getSelectedListElement().attr("id")].source;
+		if (spellSource === SRC_EEPC || spellSource.startsWith(SRC_UA_PREFIX)) {
+			return deSelNoHash();
+		} else {
+			return val === SRC_EEPC && spellSource !== val || val.startsWith(SRC_UA_PREFIX) && spellSource !== val;
+		}
+	} else {
+		return deSelNoHash();
+	}
+	function deSelNoHash() {
+		return val === SRC_EEPC || val.startsWith(SRC_UA_PREFIX);
+	}
+}
+
+function deselectSubclasses(val) {
+	return val !== F_SCLASS_ALL;
+}
+
 window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad);
 };
@@ -191,30 +212,34 @@ function onJsonLoad(data) {
 
 	// TODO concentration filter
 	// TODO components filter
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFullTrimUa);
-	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
-	const classFilter = new Filter("Class", FLTR_CLASS, []);
-	const subclassFilter = new Filter("Subclass", FLTR_SUBCLASS, []);
-	const metaFilter = new Filter("Tag", FLTR_META, [META_NONE, META_RITUAL, META_TECHNOMAGIC]);
-	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], Parser.spSchoolAbvToFull);
-	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
-		[
+	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullTrimUa, desel: deselectUaEepc});
+	const levelFilter = new Filter({header: "Level", items: [], displayFn: getFltrSpellLevelStr});
+	const classFilter = new Filter({header: "Class", items: []});
+	const subclassFilter = new Filter({header: "Subclass", items: [F_SCLASS_ALL], desel: deselectSubclasses});
+	const metaFilter = new Filter({header: "Tag", items: [META_NONE, META_RITUAL, META_TECHNOMAGIC]});
+	const schoolFilter = new Filter({header: "School", items: [], displayFn: Parser.spSchoolAbvToFull});
+	const timeFilter = new Filter({
+		header: "Cast Time",
+		items: [
 			"Action",
 			"Bonus Action",
 			"Reaction",
 			"Rounds",
 			"Minutes",
 			"Hours"
-		], Filter.asIs, getFltrActionVal);
-	const rangeFilter = new Filter("Range", FLTR_RANGE,
-		[
+		],
+		valueFn: getFltrActionVal
+	});
+	const rangeFilter = new Filter({
+		header: "Range",
+		items: [
 			F_RNG_SELF,
 			F_RNG_TOUCH,
 			F_RNG_POINT,
 			F_RNG_AREA,
 			F_RNG_SPECIAL
-		]);
-	const normalizedRangeItems = [];
+		]
+	});
 	const filterList = [
 		sourceFilter,
 		levelFilter,
@@ -329,7 +354,6 @@ function onJsonLoad(data) {
 	// add filter reset to reset button
 	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
 		filterBox.reset();
-		deselectUaEepc(true);
 	}, false);
 
 	filterBox.render();
@@ -337,26 +361,28 @@ function onJsonLoad(data) {
 	// filtering function
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
-		function () {
-			list.filter(function(item) {
-				const f = filterBox.getValues();
-				const s = spellList[$(item.elm).attr(FLTR_ID)];
-
-				const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
-				const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
-				const rightMeta = f[metaFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| (!s.meta && f[metaFilter.header][META_NONE]) || (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
-				const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
-				const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
-				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
-				// TODO good solution for subclasses
-				const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
-
-				return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClass;
-			});
-		}
+		handleFilterChange
 	);
+
+	function handleFilterChange() {
+		list.filter(function(item) {
+			const f = filterBox.getValues();
+			const s = spellList[$(item.elm).attr(FLTR_ID)];
+
+			const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
+			const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
+			const rightMeta = f[metaFilter.header][FilterBox.VAL_SELECT_ALL]
+				|| (!s.meta && f[metaFilter.header][META_NONE]) || (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
+			const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
+			const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
+			const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
+			// TODO good solution for subclasses
+			const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
+				|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
+
+			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClass;
+		});
+	}
 
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
 		if ($(this).attr("sortby") === "asc") {
@@ -365,30 +391,8 @@ function onJsonLoad(data) {
 		list.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortSpells });
 	});
 
-	// default de-select UA and EEPC sources
-	deselectUaEepc();
-
 	initHistory();
-
-	function deselectUaEepc(hardDeselect) {
-		hardDeselect = hardDeselect === undefined || hardDeselect === null ? false : hardDeselect;
-		if (window.location.hash.length) {
-			let spellSource = spellList[getSelectedListElement().attr("id")].source;
-			if (hardDeselect && (spellSource === SRC_EEPC || spellSource.startsWith(SRC_UA_PREFIX))) {
-				deSelNoHash();
-			} else {
-				spellSource = spellList[getSelectedListElement().attr("id")].source;
-				filterBox.deselectIf(function (val) {
-					return val === SRC_EEPC && spellSource !== val || val.startsWith(SRC_UA_PREFIX) && spellSource !== val
-				}, sourceFilter.header);
-			}
-		} else {
-			deSelNoHash();
-		}
-		function deSelNoHash() {
-			filterBox.deselectIf(function(val) { return val === SRC_EEPC || val.startsWith(SRC_UA_PREFIX) }, sourceFilter.header);
-		}
-	}
+	handleFilterChange();
 }
 
 function sortSpells(a, b, o) {

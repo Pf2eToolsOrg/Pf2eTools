@@ -118,9 +118,14 @@ class FilterBox {
 
 				for (const item of filter.items) {
 					const $opt = $("<option/>");
-					$opt.val(filter.valueFunction(item));
-					$opt.html(filter.displayFunction(item));
-					$opt.prop("selected", true);
+					const val = filter.valueFn ? filter.valueFn(item) : item;
+					$opt.val(val);
+					$opt.html(filter.displayFn ? filter.displayFn(item) : item);
+					if (!filter.desel || (filter.desel && !filter.desel(val))) {
+						$opt.prop("selected", true);
+					} else {
+						$opt.prop("selected", false);
+					}
 					$box.append($opt)
 				}
 
@@ -156,7 +161,7 @@ class FilterBox {
 	}
 
 	/**
-	 * Get a map of {Filter.header: {map of Filter.items (with Filter.valueFunction applied): <true/false> matching
+	 * Get a map of {Filter.header: {map of Filter.items (with Filter.valueFn applied): <true/false> matching
 	 * the state of the checkbox}}
 	 * Note that there is a special entry in the second map ({Filter.items: booleans}) with the
 	 * key `FilterBox.VAL_SELECT_ALL` as a convenience flag for "all items in this category selected"
@@ -211,10 +216,23 @@ class FilterBox {
 		for (const header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
 			const cur = this.headers[header];
-			cur.ele.find("option").prop("selected", true);
-			cur.ele.trigger("change");
+			const filter = this.filterList.filter(f => f.header === header)[0];
+			let anyChanged = false;
+
+			cur.ele.find("option").each(function() {
+				if (!filter.desel || (filter.desel && !filter.desel(this.value))) {
+					this.selected = true;
+					anyChanged = true;
+				} else {
+					this.selected = false;
+					anyChanged = true;
+				}
+			});
+
+			if (anyChanged) {
+				cur.ele.trigger("change");
+			}
 		}
-		this._fireValChangeEvent();
 	}
 
 	/**
@@ -223,11 +241,12 @@ class FilterBox {
 	 * Useful to e.g. de-select all "Unearthed Arcana"-source items.
 	 *
 	 * @param func a function taking a single argument and returning true/false, which is called on
-	 * the Filter.valueFunction(Filter.items[x])
+	 * the Filter.valueFn(Filter.items[x])
 	 *
 	 * @param filterHeader the Filter.header for the Filter.items to call func(val) on
 	 */
 	deselectIf(func, filterHeader) {
+		// TODO optimise
 		const cur = this.headers[filterHeader];
 		let anyDeselected = false;
 		const values = cur.ele.val();
@@ -239,7 +258,6 @@ class FilterBox {
 			}
 		}
 		cur.ele.trigger("change");
-		this._fireValChangeEvent();
 	}
 
 
@@ -261,35 +279,31 @@ class Filter {
 	/**
 	 * A single filter category
 	 *
-	 * @param header the category header, e.g. "Source"
+	 * @param options an object with the following properties:
 	 *
-	 * @param storageAttribute the HTML property which the FilterBox will read to get the value for each list item
-	 * e.g. FLTR_SOURCE
+	 *   header: the category header e.g. "Source"
 	 *
-	 * @param items a list of items to display (after applying the displayFunction) in the FilterBox once `render()`
-	 * has been called e.g. ["PHB", "DMG"]
-	 * Note that you can pass a pointer to a list, and add items afterwards. Call `render()` to display them.
+	 *   items: a list of items to display (after applying the displayFn) in the FilterBox once `render()`
+	 *     has been called e.g. ["PHB", "DMG"]
+	 *     Note that you can pass a pointer to a list, and add items afterwards. Call `render()` to display them.
 	 *
-	 * @param displayFunction A function to apply to each item in items when displaying the FilterBox on the page e.g.
-	 * Parser.sourceJsonToFull - alternatively, use `Filter.asIs` to keep the items as-is when rendering them on the page
+	 *   (OPTIONAL)
+	 *   displayFn: A function to apply to each item in items when displaying the FilterBox on the page
+	 *     e.g. Parser.sourceJsonToFull
 	 *
-	 * @param valueFunction A function to apply to each item in items prior to storing them internally in FilterBox.
-	 * Only affects the keys returned by `getValues()` (I think) e.g. Parser.sourceJsonToAbv - alternatively, use
-	 * `Filter.asIs` to keep the items as-is when using them as keys in the object returned by `getValues()`
+	 *   (OPTIONAL)
+	 *   valueFn: A function[1] to apply to each item to convert it to a HTML `value`
+	 *     Affects the keys returned by `getValues()`
+	 *     e.g. `Parser.sourceJsonToAbv`
+	 *
+	 *   (OPTIONAL)
+	 *   desel: a function, defaults items as deselected if `desel(valueFn(item))` is true
 	 */
-	constructor(header, storageAttribute, items, displayFunction, valueFunction) {
-		this.header = header;
-		this.storageAttribute = storageAttribute;
-		this.items = items;
-		this.displayFunction = displayFunction === undefined || displayFunction === null ? Filter.asIs : displayFunction;
-		this.valueFunction = valueFunction === undefined || valueFunction === null ? Filter.asIs : valueFunction;
+	constructor(options) {
+		this.header = options.header;
+		this.items = options.items;
+		this.displayFn = options.displayFn;
+		this.valueFn = options.valueFn;
+		this.desel = options.desel;
 	}
 }
-
-/**
- * Cheeky function to just render a string as-is
- *
- * @param str the input
- * @returns {*} the output, which is... just the input.
- */
-Filter.asIs = function(str) { return str; };
