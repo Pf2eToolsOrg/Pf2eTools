@@ -198,7 +198,9 @@ function populateTablesAndFilters() {
 				itemList[i].reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
 			}
 		}
-		liList[rarity === "None" || rarity === "Unknown" ? "mundane" : "magic"] += `<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}'><a id='${i}' href="#${encodeForHash(name)}_${encodeForHash(source)}" title="${name}"><span class='name col-xs-4'>${name}</span> <span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span> <span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span> <span class='rarity col-xs-2'>${rarity}</span></a></li>`;
+		liList[rarity === "None" || rarity === "Unknown" ? "mundane" : "magic"] += `
+			<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}' ${FLTR_CATEGORY}='${category}'>
+				<a id='${i}' href="#${encodeForHash(name)}_${encodeForHash(source)}" title="${name}">
 					<span class='name col-xs-4'>${name}</span>
 					<span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span>
 					<span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span>
