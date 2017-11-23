@@ -387,14 +387,31 @@ function onJsonLoad(data) {
 			const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
 			const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
 			const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
-			// TODO handle inverse
-			const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
-				|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
-			// TODO handle inverse
-			const rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
-				|| s.classes.fromSubclass && s.classes.fromSubclass.map(sc => f[subclassFilter.header][getClassFilterStr(sc.subclass)]).filter(b => b).length > 0;
+			let rightClass;
+			if (!classFilter.isInverted()) {
+				rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
+					|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
+			} else {
+				rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
+					|| s.classes.fromClassList.map(c => !f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length === 0;
+			}
+			let rightSubclass;
+			if (!subclassFilter.isInverted()) {
+				rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
+					|| s.classes.fromSubclass && s.classes.fromSubclass.map(sc => f[subclassFilter.header][getClassFilterStr(sc.subclass)]).filter(b => b).length > 0;
+			} else {
+				rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
+					|| !s.classes.fromSubclass || s.classes.fromSubclass.map(sc => !f[subclassFilter.header][getClassFilterStr(sc.subclass)]).filter(b => b).length === 0;
+			}
 
-			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && (rightClass || rightSubclass);
+			let rightClassAndSubclass;
+			if (classFilter.isInverted() || subclassFilter.isInverted()) {
+				rightClassAndSubclass = rightClass && rightSubclass;
+			} else {
+				rightClassAndSubclass = rightClass || rightSubclass;
+			}
+
+			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClassAndSubclass;
 		});
 	}
 
