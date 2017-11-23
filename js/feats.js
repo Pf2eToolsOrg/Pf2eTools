@@ -8,7 +8,7 @@ const ABIL_CON = "Constitution";
 const ABIL_INT = "Intelligence";
 const ABIL_WIS = "Wisdom";
 const ABIL_CHA = "Charisma";
-const ABIL_CHOOSE = "Choose Any";
+const ABIL_CH_ANY = "Choose Any";
 const ABIL_NONE = "None";
 
 function deselUa(val) {
@@ -36,7 +36,7 @@ function onJsonLoad(data) {
 			ABIL_INT,
 			ABIL_WIS,
 			ABIL_CHA,
-			ABIL_CHOOSE,
+			ABIL_CH_ANY,
 			ABIL_NONE
 		]
 	});
@@ -111,12 +111,22 @@ function onJsonLoad(data) {
 			const ft = featlist[$(item.elm).attr(FLTR_ID)];
 
 			const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][ft.source];
-			const rightAsi = f[asiFilter.header][FilterBox.VAL_SELECT_ALL]
-				|| ft._pAbility.asCollection.filter(a => f[asiFilter.header][Parser.attAbvToFull(a)]).length > 0; // TODO handle "choose any" and "none"
-
+			const rightAsi = handleAsiConditions(ft, f[asiFilter.header], asiFilter.isInverted());
 
 			return rightSource && rightAsi;
 		});
+	}
+	function handleAsiConditions(ft, valGroup, isInverted) {
+		if (valGroup[FilterBox.VAL_SELECT_ALL]) return true;
+		if (!isInverted) {
+			return (valGroup[ABIL_NONE] && ft._pAbility.asText === NONE)
+				|| (valGroup[ABIL_CH_ANY] && ft._pAbility.asText.includes("choose any"))
+				|| ft._pAbility.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
+		} else {
+			return (!valGroup[ABIL_NONE] || (valGroup[ABIL_NONE] && !(ft._pAbility.asText === NONE)))
+				&& (!valGroup[ABIL_CH_ANY] || (valGroup[ABIL_CH_ANY] && !ft._pAbility.asText.includes("choose any")))
+				&& (ft._pAbility.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
+		}
 	}
 	// TODO
 /*	$("form#filtertools select").change(function() {
