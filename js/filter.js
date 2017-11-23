@@ -21,6 +21,7 @@ class FilterBox {
 		this.filterList = filterList;
 
 		this.headers = {};
+		this._$boxes = [];
 	}
 
 	/**
@@ -87,6 +88,8 @@ class FilterBox {
 			const newHeader = {size: filter.items.length, ele: $multi, invert: false};
 			self.headers[filter.header] = newHeader;
 
+			self._$boxes.push($outI);
+
 			return $outI;
 
 			function makeHeaderLine() {
@@ -104,9 +107,9 @@ class FilterBox {
 					newHeader.invert = !newHeader.invert;
 					filter.invert = newHeader.invert;
 					if (newHeader.invert) {
-						$outI.addClass("filter-invert")
+						$outI.addClass(FilterBox.CLS_FILTER_INVERT)
 					} else {
-						$outI.removeClass("filter-invert")
+						$outI.removeClass(FilterBox.CLS_FILTER_INVERT)
 					}
 					self._fireValChangeEvent();
 				});
@@ -243,11 +246,20 @@ class FilterBox {
 	 * Note that this does not re-apply any deselectIf(...)s you might have applied earlier.
 	 */
 	reset() {
+		$.each(this._$boxes, function (i, $ele) {
+			$ele.removeClass(FilterBox.CLS_FILTER_INVERT)
+		});
 		for (const header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
 			const cur = this.headers[header];
 			const filter = this.filterList.filter(f => f.header === header)[0];
 			let anyChanged = false;
+
+			if (cur.invert || filter.invert) {
+				cur.invert = false;
+				filter.invert = false;
+				anyChanged = true;
+			}
 
 			cur.ele.find("option").each(function() {
 				if (!filter.desel || (filter.desel && !filter.desel(this.value))) {
@@ -302,6 +314,7 @@ FilterBox.CLS_DROPDOWN_MENU_FILTER = "dropdown-menu-filter";
 FilterBox.CLS_DROPDOWN_SUBMENU = "dropdown-submenu";
 FilterBox.CLS_FILTER_SUBLIST_ITEM_WRAPPER = "filter-sublist-item-wrapper";
 FilterBox.CLS_SUBMENU_PARENT = "submenu-parent";
+FilterBox.CLS_FILTER_INVERT = "filter-invert";
 FilterBox.VAL_SELECT_ALL = "select-all";
 FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox.P_IS_OPEN = "isOpen";
