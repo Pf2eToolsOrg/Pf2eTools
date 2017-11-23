@@ -307,7 +307,7 @@ function populateTablesAndFilters() {
 				deselNoHash();
 			} else {
 				filterBox.deselectIf(function (val) {
-					return val === CATEGORY_SPECIFIC_VARIANT && itemCategory !== val
+					return val === categoryFilter.valueFunction(CATEGORY_SPECIFIC_VARIANT) && categoryFilter.valueFunction(itemCategory) !== val
 				}, categoryFilter.header);
 			}
 		} else {
@@ -315,7 +315,7 @@ function populateTablesAndFilters() {
 		}
 		function deselNoHash() {
 			filterBox.deselectIf(function(val) {
-				return val === CATEGORY_SPECIFIC_VARIANT
+				return val === categoryFilter.valueFunction(CATEGORY_SPECIFIC_VARIANT)
 			}, categoryFilter.header);
 		}
 	}
