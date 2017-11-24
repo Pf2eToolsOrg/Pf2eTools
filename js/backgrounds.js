@@ -65,7 +65,7 @@ function loadhash (id) {
 	const source = curbg.source;
 	const sourceAbv = Parser.sourceJsonToAbv(source);
 	const sourceFull = Parser.sourceJsonToFull(source);
-	$("th#name").html(`<span title="${sourceFull}" class='source source${sourceAbv}'>${sourceAbv}</span> ${name}`);
+	$("th#name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
 	const traitlist = curbg.trait;
 	$("tr.trait").remove();
 
