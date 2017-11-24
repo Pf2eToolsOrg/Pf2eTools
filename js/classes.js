@@ -59,10 +59,13 @@ function onJsonLoad(data) {
 	statsProfDefault = $("#statsprof").html();
 	classTableDefault = $("#classtable").html();
 
+	const classTable = $("ul.classes");
+	let tempString = "";
 	for (let i = 0; i < classes.length; i++) {
 		const curClass = classes[i];
-		$("ul.classes").append(`<li><a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'><span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span></a></li>`);
+		tempString += `<li><a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'><span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span></a></li>`;
 	}
+	classTable.append(tempString);
 
 	const list = search({
 		valueNames: ['name', 'source'],
@@ -117,6 +120,7 @@ function loadhash (id) {
 	const tData = curClass.classTableGroups;
 	const groupHeaders = $("#groupHeaders");
 	const colHeaders = $("#colHeaders");
+	const levelTrs = [];
 	for (let i = 0; i < tData.length; i++) {
 		const tGroup = tData[i];
 
@@ -134,6 +138,7 @@ function loadhash (id) {
 
 		for (let j = 0; j < 20; j++) {
 			const tr = $(`#level${j+1}`);
+			levelTrs[j] = tr;
 			for (let k = 0; k < tGroup.rows[j].length; k++) {
 				let entry = tGroup.rows[j][k];
 				if (entry === 0) entry = "\u2014";
@@ -150,7 +155,7 @@ function loadhash (id) {
 	let subclassIndex = 0; // the subclass array is not 20 elements
 	for (let i = 0; i < 20; i++) {
 		// track class table feature names
-		const tblLvlFeatures = $(`#level${i+1}`).find(".features");
+		const tblLvlFeatures = levelTrs[i].find(".features");
 		const featureNames = [];
 
 		// add class features to render stack
