@@ -18,20 +18,18 @@ function onJsonLoad(data) {
 	let tempString = "";
 	for (let i = 0; i < bgList.length; i++) {
 		const bg = bgList[i];
-		const name = bg.name;
 
 		// populate table
 		tempString +=
 			`<li ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${encodeURI(name).toLowerCase()}' title='${name}'>
-					<span class='name col-xs-9'>${name.replace("Variant ","")}</span> 
+				<a id='${i}' href='#${encodeURI(bg.name).toLowerCase()}' title='${bg.name}'>
+					<span class='name col-xs-9'>${bg.name.replace("Variant ","")}</span> 
 					<span class='source col-xs-3 source${bg.source}' title='${Parser.sourceJsonToFull(bg.source)}'>${Parser.sourceJsonToAbv(bg.source)}</span>
 				</a>
 			</li>`;
 
 		// populate filters
-		if ($.inArray(bg.source, sourceFilter.items) === -1) sourceFilter.items.push(bg.source);
-		addDropdownOption($("select.sourcefilter"), bg.source, Parser.sourceJsonToFull(bg.source))
+		sourceFilter.addIfAbsent(bg.source);
 	}
 	bgTable.append(tempString);
 
