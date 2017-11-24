@@ -265,8 +265,8 @@ function onJsonLoad(data) {
 		const spell = spellList[i];
 
 		let levelText = Parser.spLevelToFull(spell.level);
-		if (spell.meta && spell.meta.ritual) levelText += " (ritual)";
-		if (spell.meta && spell.meta.technomagic) levelText += " (tech.)";
+		if (spell.meta && spell.meta.ritual) levelText += " (rit.)";
+		if (spell.meta && spell.meta.technomagic) levelText += " (tec.)";
 
 		// add eldritch knight and arcane trickster
 		if (spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
@@ -379,13 +379,7 @@ function onJsonLoad(data) {
 
 			const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
 			const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
-			// TODO handle inverse
-			const rightMeta = f[metaFilter.header][FilterBox.VAL_SELECT_ALL]
-				|| ( s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC] && s.meta.technomagic)) )
-				|| ( f[metaFilter.header][META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
-				|| ( f[metaFilter.header][META_ADD_V] && s.components.v )
-				|| ( f[metaFilter.header][META_ADD_S] && s.components.s )
-				|| ( f[metaFilter.header][META_ADD_M] && s.components.m );
+			const rightMeta = handleMetaConditions(s, f[metaFilter.header], metaFilter.isInverted());
 			const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
 			const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
 			const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
@@ -417,6 +411,23 @@ function onJsonLoad(data) {
 
 			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClassAndSubclass;
 		});
+	}
+	function handleMetaConditions(s, valGroup, isInverted) {
+		if (valGroup[FilterBox.VAL_SELECT_ALL]) return true;
+		if (!isInverted) {
+			return ( s.meta && ((valGroup[META_RITUAL] && s.meta.ritual) || (valGroup[META_TECHNOMAGIC] && s.meta.technomagic)) )
+				|| ( valGroup[META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
+				|| ( valGroup[META_ADD_V] && s.components.v )
+				|| ( valGroup[META_ADD_S] && s.components.s )
+				|| ( valGroup[META_ADD_M] && s.components.m );
+		} else {
+			return ( implies(s.meta && s.meta.ritual, valGroup[META_RITUAL]) )
+				&& ( implies(s.meta && s.meta.technomagic, valGroup[META_TECHNOMAGIC]) )
+				&& ( implies(s.duration.filter(d => d.concentration).length, valGroup[META_ADD_CONC]) )
+				&& ( implies(s.components.v, valGroup[META_ADD_V]) )
+				&& ( implies(s.components.s, valGroup[META_ADD_S]) )
+				&& ( implies(s.components.m, valGroup[META_ADD_M]) );
+		}
 	}
 
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
