@@ -1094,6 +1094,17 @@ function hide(element) {
 	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
 
+function xor(a, b) {
+	return !a !== !b;
+}
+
+/**
+ * > implying
+ */
+function implies(a, b) {
+	return (!a) || b;
+}
+
 // SEARCH AND FILTER ===================================================================================================
 function search(options) {
 	const list = new List("listcontainer", options);

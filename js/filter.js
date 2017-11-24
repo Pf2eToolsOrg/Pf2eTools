@@ -216,9 +216,7 @@ class FilterBox {
 				} else {
 					const valSet = new Set(values);
 					cur.ele.find("option").get().map(o => o.value).forEach(v => {
-						if (!valSet.has(v)) {
-							tempObj[v] = true;
-						}
+						tempObj[v] = !valSet.has(v);
 					});
 				}
 
