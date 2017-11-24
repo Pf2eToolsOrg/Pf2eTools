@@ -214,8 +214,6 @@ function onJsonLoad(data) {
 
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 
-	// TODO concentration filter
-	// TODO components filter
 	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullTrimUa, desel: deselectUaEepc});
 	const levelFilter = new Filter({header: "Level", items: [], displayFn: getFltrSpellLevelStr});
 	const classFilter = new Filter({header: "Class", items: []});
