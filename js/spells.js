@@ -375,6 +375,8 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const s = spellList[$(item.elm).attr(FLTR_ID)];
 
+			let valGroup;
+
 			const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
 			const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
 			// TODO handle inverse
@@ -388,22 +390,22 @@ function onJsonLoad(data) {
 			const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
 			const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
 			let rightClass;
-			// TODO fix inverse
+			valGroup = f[classFilter.header];
 			if (!classFilter.isInverted()) {
 				rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
+					|| s.classes.fromClassList.filter(c => valGroup[getClassFilterStr(c)]).length > 0;
 			} else {
 				rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromClassList.map(c => !f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length === 0;
+					|| s.classes.fromClassList.filter(c => !valGroup[getClassFilterStr(c)]).length === 0;
 			}
 			let rightSubclass;
-			// TODO fix inverse
+			valGroup = f[subclassFilter.header];
 			if (!subclassFilter.isInverted()) {
 				rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromSubclass && s.classes.fromSubclass.map(sc => f[subclassFilter.header][getClassFilterStr(sc.subclass)]).filter(b => b).length > 0;
+					|| s.classes.fromSubclass && s.classes.fromSubclass.filter(sc => valGroup[getClassFilterStr(sc.subclass)]).length > 0;
 			} else {
 				rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| !s.classes.fromSubclass || s.classes.fromSubclass.map(sc => !f[subclassFilter.header][getClassFilterStr(sc.subclass)]).filter(b => b).length === 0;
+					|| !s.classes.fromSubclass || s.classes.fromSubclass.filter(sc => !valGroup[getClassFilterStr(sc.subclass)]).length === 0;
 			}
 
 			let rightClassAndSubclass;
