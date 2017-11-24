@@ -24,7 +24,7 @@ function onJsonLoad(data) {
 	tabledefault = $("#stats").html();
 	featlist = data.feat;
 
-	// TODO ASI filter, prerequisite filter
+	// TODO prerequisite filter
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullTrimUa, desel: deselUa});
 	const asiFilter = new Filter({
@@ -60,10 +60,6 @@ function onJsonLoad(data) {
 		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 source${curfeat.source}`;
 		const CLS_COL_3 = "ability " + (ability.asText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-
-		// TODO
-		// const isAbilityChoose = ability.asText.toLowerCase().includes("choose any");
-		// ${FLTR_SOURCE}='${curfeat.source}' ${FLTR_ABILITIES}='${ability.asFilterCollection}' ${FLTR_ABILITIES_CHOOSE}='${isAbilityChoose}'
 
 		tempString += `
 			<li ${FLTR_ID}="${i}">
@@ -120,26 +116,14 @@ function onJsonLoad(data) {
 		if (valGroup[FilterBox.VAL_SELECT_ALL]) return true;
 		if (!isInverted) {
 			return (valGroup[ABIL_NONE] && ft._pAbility.asText === NONE)
-				|| (valGroup[ABIL_CH_ANY] && ft._pAbility.asText.includes("choose any"))
+				|| (valGroup[ABIL_CH_ANY] && ft._pAbility.asText.toLowerCase().includes("choose any"))
 				|| ft._pAbility.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
 		} else {
-			return (!valGroup[ABIL_NONE] || (valGroup[ABIL_NONE] && !(ft._pAbility.asText === NONE)))
-				&& (!valGroup[ABIL_CH_ANY] || (valGroup[ABIL_CH_ANY] && !ft._pAbility.asText.includes("choose any")))
+			return ( implies(ft._pAbility.asText === NONE, valGroup[ABIL_NONE]) )
+				&& ( implies(ft._pAbility.asText.toLowerCase().includes("choose any"), valGroup[ABIL_CH_ANY]) )
 				&& (ft._pAbility.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
 		}
 	}
-	// TODO
-/*	$("form#filtertools select").change(function() {
-		const sourcefilter = $("select.sourcefilter").val();
-		const bonusfilter = $("select.bonusfilter").val();
-		list.filter(function(item) {
-			const rightsource = sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter;
-			const bonusList = item.elm.getAttribute(FLTR_ABILITIES).split(FLTR_LIST_SEP);
-			const rightbonuses = bonusfilter === "All" || bonusfilter === "Any" && item.elm.getAttribute(FLTR_ABILITIES_CHOOSE) === "true" && bonusList.length === 6 || bonusList.includes(bonusfilter);
-			if (rightsource && rightbonuses) return true;
-			return false;
-		});
-	});*/
 
 	initHistory();
 	handleFilterChange();
