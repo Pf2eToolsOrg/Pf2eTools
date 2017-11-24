@@ -26,7 +26,7 @@ function onJsonLoad(data) {
 
 	// TODO prerequisite filter
 	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
-	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullTrimUa, desel: deselUa});
+	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullCompactPrefix, desel: deselUa});
 	const asiFilter = new Filter({
 		header: "Ability Bonus",
 		items: [

@@ -14,10 +14,12 @@ class FilterBox {
 	 * of multiple sources/spell schools/item types/etc.
 	 *
 	 * @param inputGroup the search bar DOM element to add the button to
+	 * @param resetButton element to bind a reset-on-click to
 	 * @param filterList a list of `Filter` objects to build the menus from
 	 */
-	constructor(inputGroup, filterList) {
+	constructor(inputGroup, resetButton, filterList) {
 		this.inputGroup = inputGroup;
+		this.resetButton = resetButton;
 		this.filterList = filterList;
 
 		this.headers = {};
@@ -45,6 +47,7 @@ class FilterBox {
 		});
 
 		addShowHideHandlers();
+		addResetHandler(this);
 
 		function getButtonGroup() {
 			const $buttonGroup = $(`<div id="filter-toggle-btn"/>`);
@@ -174,6 +177,14 @@ class FilterBox {
 			$outer.on(EVNT_CLICK, function (e) {
 				e.stopPropagation();
 			});
+		}
+
+		function addResetHandler(self) {
+			if (self.resetButton !== null && self.resetButton !== undefined) {
+				self.resetButton.addEventListener(EVNT_CLICK, function () {
+					self.reset();
+				}, false);
+			}
 		}
 	}
 

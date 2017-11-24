@@ -212,9 +212,7 @@ function onJsonLoad(data) {
 
 	spellList = data.spell;
 
-	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
-
-	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullTrimUa, desel: deselectUaEepc});
+	const sourceFilter = getSourceFilter({desel: deselectUaEepc});
 	const levelFilter = new Filter({header: "Level", items: [], displayFn: getFltrSpellLevelStr});
 	const classFilter = new Filter({header: "Class", items: []});
 	const subclassFilter = new Filter({header: "Subclass", items: [], desel: deselectSubclasses});
@@ -245,7 +243,8 @@ function onJsonLoad(data) {
 			F_RNG_SPECIAL
 		]
 	});
-	const filterList = [
+
+	const filterBox = initFilterBox(
 		sourceFilter,
 		levelFilter,
 		classFilter,
@@ -254,8 +253,7 @@ function onJsonLoad(data) {
 		schoolFilter,
 		timeFilter,
 		rangeFilter
-	];
-	const filterBox = new FilterBox(filterAndSearchBar, filterList);
+	);
 
 	const spellTable = $("ul.spells");
 	let tempString = "";
@@ -319,18 +317,16 @@ function onJsonLoad(data) {
 			</li>`;
 
 		// populate filters
-		if ($.inArray(spell.source, sourceFilter.items) === -1) sourceFilter.items.push(spell.source);
-		if ($.inArray(spell.level, levelFilter.items) === -1) levelFilter.items.push(spell.level);
-		if ($.inArray(spell.school, schoolFilter.items) === -1) schoolFilter.items.push(spell.school);
+		sourceFilter.addIfAbsent(spell.source);
+		levelFilter.addIfAbsent(spell.level);
+		schoolFilter.addIfAbsent(spell.school);
 		if (spell.classes.fromSubclass) {
 			spell.classes.fromSubclass.forEach(c => {
-				const scWithSrc = getClassFilterStr(c.subclass);
-				if ($.inArray(scWithSrc, subclassFilter.items) === -1) subclassFilter.items.push(scWithSrc);
+				subclassFilter.addIfAbsent(getClassFilterStr(c.subclass));
 			});
 		}
 		spell.classes.fromClassList.forEach(c => {
-			const withSrc = getClassFilterStr(c);
-			if($.inArray(withSrc, classFilter.items) === -1) classFilter.items.push(withSrc);
+			classFilter.addIfAbsent(getClassFilterStr(c));
 		});
 	}
 
@@ -354,11 +350,6 @@ function onJsonLoad(data) {
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
 		listClass: "spells"
 	});
-
-	// add filter reset to reset button
-	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
-		filterBox.reset();
-	}, false);
 
 	filterBox.render();
 

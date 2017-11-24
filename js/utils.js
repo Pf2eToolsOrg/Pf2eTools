@@ -537,8 +537,12 @@ Parser.armorFullToAbv= function (armor) {
 Parser.sourceJsonToFull = function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
 };
-Parser.sourceJsonToFullTrimUa = function (source) {
-	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE).replace(UA_PREFIX, UA_PREFIX_SHORT);
+Parser.sourceJsonToFullCompactPrefix = function (source) {
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source)
+		.replace("'", STR_APOSTROPHE)
+		.replace(UA_PREFIX, UA_PREFIX_SHORT)
+		.replace(AL_PREFIX, AL_PREFIX_SHORT)
+		.replace(PS_PREFIX, PS_PREFIX_SHORT);
 };
 Parser.sourceJsonToAbv= function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
@@ -876,7 +880,9 @@ SRC_BOLS_3PP = "BoLS 3pp";
 SRC_ToB_3PP = "ToB 3pp";
 
 AL_PREFIX = "Adventurers League: ";
+AL_PREFIX_SHORT = "AL: ";
 PS_PREFIX = "Plane Shift: ";
+PS_PREFIX_SHORT = "PS: ";
 UA_PREFIX = "Unearthed Arcana: ";
 UA_PREFIX_SHORT = "UA: ";
 
@@ -1118,6 +1124,16 @@ function search(options) {
 	});
 	$("#listcontainer")[0].list = list;
 	return list
+}
+
+function getSourceFilter(options) {
+	const allOptions = {header: "Source", items: [], displayFn: Parser.sourceJsonToFullCompactPrefix};
+	if (options) Object.assign(allOptions, options); // merge in anything we get passed
+	return new Filter(allOptions);
+}
+
+function initFilterBox(...filterList) {
+	return new FilterBox(document.getElementById(ID_SEARCH_BAR), document.getElementById(ID_RESET_BUTTON), filterList);
 }
 
 function addDropdownOption(dropdown, optionVal, optionText) {
