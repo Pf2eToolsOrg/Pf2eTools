@@ -403,7 +403,7 @@ function onJsonLoad(data) {
 			}
 
 			let rightClassAndSubclass;
-			if (classFilter.isInverted() || subclassFilter.isInverted()) {
+			if ( (classFilter.isInverted() || subclassFilter.isInverted()) && !(classFilter.isInverted() && !subclassFilter.isInverted()) ) {
 				rightClassAndSubclass = rightClass && rightSubclass;
 			} else {
 				rightClassAndSubclass = rightClass || rightSubclass;
