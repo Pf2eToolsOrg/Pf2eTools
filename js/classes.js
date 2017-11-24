@@ -63,7 +63,12 @@ function onJsonLoad(data) {
 	let tempString = "";
 	for (let i = 0; i < classes.length; i++) {
 		const curClass = classes[i];
-		tempString += `<li><a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'><span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span></a></li>`;
+		tempString +=
+			`<li>
+				<a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'>
+					<span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span>
+				</a>
+			</li>`;
 	}
 	classTable.append(tempString);
 
