@@ -96,7 +96,7 @@ class FilterBox {
 				const $line = $(`<div class="h-wrap"/>`);
 				const $label = `<div>${filter.header}</div>`;
 				$line.append($label);
-				const $invert = $(`<button class="btn btn-default btn-xs" style="margin-left: auto">Invert</button>`);
+				const $invert = $(`<button class="btn btn-default btn-xs invert-button" style="margin-left: auto">Invert</button>`);
 				$line.append($invert);
 				const $all = $(`<button class="btn btn-default btn-xs" style="margin-left: 15px">All</button>`);
 				$line.append($all);
@@ -313,6 +313,7 @@ FilterBox.CLS_FILTER_INVERT = "filter-invert";
 FilterBox.VAL_SELECT_ALL = "select-all";
 FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox.P_IS_OPEN = "isOpen";
+
 class Filter {
 	/**
 	 * A single filter category
@@ -347,7 +348,18 @@ class Filter {
 		this.invert = false;
 	}
 
+	/**
+	 * @returns {boolean} true if this filter has been inverted; false otherwise
+	 */
 	isInverted() {
 		return this.invert;
+	}
+
+	/**
+	 * Add an item if it doesn't already exist in the filter
+	 * @param item the item to add
+	 */
+	addIfAbsent(item) {
+		if ($.inArray(item, this.items) === -1) this.items.push(item);
 	}
 }
