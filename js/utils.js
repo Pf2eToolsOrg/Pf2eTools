@@ -288,7 +288,7 @@ function utils_makeAttChoose(attList) {
 	}
 }
 function utils_makeRoller(text) {
-	return text.replace(/([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>");
+	return text.replace(/([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>").replace(/(\-|\+)?\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(bonus of )(=?\-|\+\d+)/g, "$1<span class='roller' data-roll='1d20$2'>$2</span>");
 }
 
 

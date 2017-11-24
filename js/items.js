@@ -1,8 +1,6 @@
 const ITEMS_JSON_URL = "data/items.json";
 const BASIC_ITEMS_JSON_URL = "data/basicitems.json";
 const MAGIC_VARIANTS_JSON_URL = "data/magicvariants.json";
-const TYPE_DOSH = "$";
-const CATEGORY_SPECIFIC_VARIANT = "Specific Variant";
 let tabledefault = "";
 let itemList;
 let basicItemList;
@@ -45,10 +43,11 @@ function mergeBasicItems(variantData) {
 		const curBasicItem = basicItemList[i];
 		basicItemList[i].category = "Basic";
 		if(curBasicItem.entries === undefined) curBasicItem.entries=[];
+		const curBasicItemName = curBasicItem.name.toLowerCase();
 		for (let j = 0; j < variantList.length; j++) {
 			const curVariant = variantList[j];
 			const curRequires = curVariant.requires;
-			let hasRequired = true;
+			let hasRequired = curBasicItemName.indexOf(" (") === -1;
 			for (const requiredProperty in curRequires) if (curRequires.hasOwnProperty(requiredProperty) && curBasicItem[requiredProperty] !== curRequires[requiredProperty]) hasRequired=false;
 			if (curVariant.excludes) {
 				const curExcludes = curVariant.excludes;
@@ -64,13 +63,15 @@ function mergeBasicItems(variantData) {
 						if (inheritedProperty === "namePrefix") {
 							tmpBasicItem.name = curInherits.namePrefix+tmpBasicItem.name;
 						} else if (inheritedProperty === "nameSuffix") {
-							const tmpName = tmpBasicItem.name;
-							tmpBasicItem.name = tmpName.indexOf(" (") !== -1 ? tmpName.replace(" (", curInherits.nameSuffix+" (") : tmpName+curInherits.nameSuffix;
+							tmpBasicItem.name += curInherits.nameSuffix;
 						} else if (inheritedProperty === "entries") {
 							for (let k = curInherits.entries.length-1; k > -1; k--) {
 								let tmpText = curInherits.entries[k];
-								if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", Parser.dmgTypeToFull(tmpBasicItem.dmgType));
-								if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
+								if (tmpText.typeOf === "string") {
+									if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", Parser.dmgTypeToFull(tmpBasicItem.dmgType));
+									if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
+									if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(curBasicItemName);
+								}
 								tmpBasicItem.entries.unshift(tmpText);
 							}
 						} else
@@ -198,7 +199,7 @@ function populateTablesAndFilters() {
 				itemList[i].reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
 			}
 		}
-		liList[rarity === "None" || rarity === "Unknown" ? "mundane" : "magic"] += `
+		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
 			<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}' ${FLTR_CATEGORY}='${category}'>
 				<a id='${i}' href="#${encodeForHash(name)}_${encodeForHash(source)}" title="${name}">
 					<span class='name col-xs-4'>${name}</span>
@@ -232,8 +233,7 @@ function populateTablesAndFilters() {
 	// add filter reset to reset button
 	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
 		filterBox.reset();
-		deselectDosh(true);
-		deselectSpecificVariants(true);
+		deselectFilters(true);
 	}, false);
 
 	filterBox.render();
@@ -274,49 +274,31 @@ function populateTablesAndFilters() {
 		mundanelist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortItems });
 	});
 
-	// De-select Dosh types and Specific Variants by default
-	deselectDosh(true);
-	deselectSpecificVariants(true);
+	deselectFilters(true);
 
-	function deselectDosh(hardDeselect) {
-		hardDeselect = hardDeselect === undefined || hardDeselect === null ? false : hardDeselect;
-		if (window.location.hash.length) {
-			const itemType = itemList[getSelectedListElement().attr("id")].type;
-			if (itemType === TYPE_DOSH && hardDeselect) {
-				deselNoHash();
-			} else {
-				filterBox.deselectIf(function (val) {
-					return val === TYPE_DOSH && itemType !== val
-				}, typeFilter.header);
-			}
-		} else {
-			deselNoHash();
-		}
-		function deselNoHash() {
-			filterBox.deselectIf(function(val) {
-				return val === TYPE_DOSH
-			}, typeFilter.header);
-		}
+	function deselectFilters(hardDeselect) {
+		deselectFilter(hardDeselect, typeFilter, "type", "$");
+		deselectFilter(hardDeselect, categoryFilter, "category", "Specific Variant");
 	}
 
-	function deselectSpecificVariants(hardDeselect) {
+	function deselectFilter(hardDeselect, filterName, deselectProperty, deselectValue) {
 		hardDeselect = hardDeselect === undefined || hardDeselect === null ? false : hardDeselect;
 		if (window.location.hash.length) {
-			const itemCategory = itemList[getSelectedListElement().attr("id")].category;
-			if (itemCategory === CATEGORY_SPECIFIC_VARIANT && hardDeselect) {
+			const itemProperty = itemList[getSelectedListElement().attr("id")][deselectProperty];
+			if (itemProperty === filterName.valueFunction(deselectValue) && hardDeselect) {
 				deselNoHash();
 			} else {
 				filterBox.deselectIf(function (val) {
-					return val === categoryFilter.valueFunction(CATEGORY_SPECIFIC_VARIANT) && categoryFilter.valueFunction(itemCategory) !== val
-				}, categoryFilter.header);
+					return val === filterName.valueFunction(deselectValue) && filterName.valueFunction(itemProperty) !== val
+				}, filterName.header);
 			}
 		} else {
 			deselNoHash();
 		}
 		function deselNoHash() {
 			filterBox.deselectIf(function(val) {
-				return val === categoryFilter.valueFunction(CATEGORY_SPECIFIC_VARIANT)
-			}, categoryFilter.header);
+				return val === typeFilter.valueFunction(deselectValue)
+			}, typeFilter.header);
 		}
 	}
 
@@ -328,7 +310,6 @@ function populateTablesAndFilters() {
 			});
 			return;
 		}
-
 		$(this).next("ul.list").animate({
 			maxHeight: "500px",
 			display: "block"
@@ -346,8 +327,8 @@ function loadhash (id) {
 	const source = item.source;
 	const sourceAbv = Parser.sourceJsonToAbv(source);
 	const sourceFull = Parser.sourceJsonToFull(source);
-	$("th#name").html("<span title=\""+sourceFull+"\" class='source source"+sourceAbv+"'>"+sourceAbv+"</span> "+item.name);
-	$("td#source span").html(sourceFull+", page "+item.page);
+	$("th#name").html(`<span title="${sourceFull}" class='source source${sourceAbv}'>${sourceAbv}</span>${item.name}`);
+	$("td#source span").html(`${sourceFull}, page ${item.page}`);
 
 	$("td span#value").html(item.value ? item.value+(item.weight ? ", " : "") : "");
 	$("td span#weight").html(item.weight ? item.weight+(item.weight == 1 ? " lb." : " lbs.") : "");
@@ -382,30 +363,26 @@ function loadhash (id) {
 		for (let i = 0; i < properties.length; i++) {
 			let a = b = properties[i];
 			a = propertyList[a].name;
-			if (b === "V") a = a + " (" + utils_makeRoller(item.dmg2) + ")";
-			if (b === "T" || b === "A" || b === "AF") a = a + " (" + item.range + "ft.)";
-			if (b === "RLD") a = a + " (" + item.reload + " shots)";
+			if (b === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
+			if (b === "T" || b === "A" || b === "AF") a = `${a} (${item.range}ft.)`;
+			if (b === "RLD") a = `${a} (${item.reload} shots)`;
 			a = (i > 0 ? ", " : (item.dmg1 ? "- " : "")) + a;
 			$("span#properties").append(a);
 		}
 	}
 
 	$("tr.text").remove();
-	let texthtml = "";
-	if (item.entries) {
-		const entryList = {type: "entries", entries: item.entries};
-		const renderStack = [];
-		renderer.recursiveEntryRender(entryList, renderStack, 1);
-		texthtml = renderStack.join("");
-	}
+	const entryList = {type: "entries", entries: item.entries};
+	const renderStack = [];
+	renderer.recursiveEntryRender(entryList, renderStack, 1);
+	$("tr#text").after(`<tr class='text'><td colspan='6' class='text1'>${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>"+item.name.toLowerCase()+"</i>")}</td></tr>`);
 
-	$("tr#text").after("<tr class='text'><td colspan='6' class='text1'>"+utils_makeRoller(texthtml)+"</td></tr>");
 	$(".items span.roller").contents().unwrap();
 	$("#stats span.roller").click(function() {
 		const roll =$(this).attr("data-roll").replace(/\s+/g, "");
 		const rollresult =  droll.roll(roll);
 		const name = $("#name").clone().children().remove().end().text();
-		$("div#output").prepend("<span>"+name + ": <em>"+roll+"</em> rolled for <strong>"+rollresult.total+"</strong> (<em>"+rollresult.rolls.join(", ")+"</em>)<br></span>").show();
+		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled for <strong>${rollresult.total}</strong> (<em>${rollresult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
 	})
 }
