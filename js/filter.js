@@ -286,18 +286,15 @@ class FilterBox {
 	 * @param filterHeader the Filter.header for the Filter.items to call func(val) on
 	 */
 	deselectIf(func, filterHeader) {
-		// TODO optimise
 		const cur = this.headers[filterHeader];
 		let anyDeselected = false;
-		const values = cur.ele.val();
-		for (let i = 0; i < values.length; ++i) {
-			const value = values[i];
-			if (func(value)) {
-				cur.ele.find(`option[value="${value}"]`).prop("selected", false);
+		cur.ele.find("option").each(function() {
+			if (func(this.value)) {
+				this.selected = false;
 				anyDeselected = true;
 			}
-		}
-		cur.ele.trigger("change");
+		});
+		if (anyDeselected) cur.ele.trigger("change");
 	}
 
 
