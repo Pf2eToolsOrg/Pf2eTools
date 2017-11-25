@@ -1,3 +1,4 @@
+"use strict";
 const ITEMS_JSON_URL = "data/items.json";
 const BASIC_ITEMS_JSON_URL = "data/basicitems.json";
 const MAGIC_VARIANTS_JSON_URL = "data/magicvariants.json";
@@ -67,7 +68,7 @@ function mergeBasicItems(variantData) {
 						} else if (inheritedProperty === "entries") {
 							for (let k = curInherits.entries.length-1; k > -1; k--) {
 								let tmpText = curInherits.entries[k];
-								if (tmpText.typeOf === "string") {
+								if (typeof(tmpText) === "string") {
 									if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", Parser.dmgTypeToFull(tmpBasicItem.dmgType));
 									if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
 									if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(curBasicItemName);
@@ -361,11 +362,11 @@ function loadhash (id) {
 	if (item.property) {
 		const properties = item.property.split(",");
 		for (let i = 0; i < properties.length; i++) {
-			let a = b = properties[i];
-			a = propertyList[a].name;
-			if (b === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
-			if (b === "T" || b === "A" || b === "AF") a = `${a} (${item.range}ft.)`;
-			if (b === "RLD") a = `${a} (${item.reload} shots)`;
+			const prop = properties[i];
+			let a = propertyList[prop].name;
+			if (prop === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
+			if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range}ft.)`;
+			if (prop === "RLD") a = `${a} (${item.reload} shots)`;
 			a = (i > 0 ? ", " : (item.dmg1 ? "- " : "")) + a;
 			$("span#properties").append(a);
 		}
