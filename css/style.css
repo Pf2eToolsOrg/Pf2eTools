@@ -1024,14 +1024,13 @@ table#stats p.subtrait {
 	display: flex;
 }
 
+/**** Search and filter bar ****/
 .dropdown-menu-filter {
-	width: 100%;
+	width: calc(100% + 2px);
 	max-height: 600px;
 	overflow-y: scroll;
-}
-
-.dropdown-menu-filter .filter-item:nth-child(odd) {
-
+	margin-left: -1px;
+	margin-top: -1px;
 }
 
 .dropdown-menu-filter ul.select2-selection__rendered {
@@ -1048,6 +1047,38 @@ table#stats p.subtrait {
 	border-color: #adadad;
 	box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
 	outline: 0;
+}
+
+#filter-search-input-group :first-child {
+	border-bottom-left-radius: 0;
+}
+
+/* display "Reset" button as the last child */
+button#reset {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	z-index: 2;
+	margin-left: -1px;
+}
+
+/* fix sort button spacing and corners */
+#listcontainer .btn-group .btn {
+	border-top: 0;
+}
+
+#listcontainer .btn-group .btn+.btn:not(:last-child) {
+	margin-left: 0;
+	border-left: 0;
+	border-top: 0;
+}
+
+#listcontainer .btn-group .btn:first-child {
+	border-top-left-radius: 0;
+}
+
+#listcontainer .btn-group .btn:last-child {
+	border-top-right-radius: 0;
 }
 
 /* Psionics */
