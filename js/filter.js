@@ -88,10 +88,8 @@ class FilterBox {
 
 			addEventHandlers();
 
-			const newHeader = {size: filter.items.length, ele: $multi, invert: false};
+			const newHeader = {size: filter.items.length, ele: $multi, invert: false, outer: $outI, filter: filter};
 			self.headers[filter.header] = newHeader;
-
-			self._$boxes.push($outI);
 
 			return $outI;
 
@@ -103,8 +101,10 @@ class FilterBox {
 				$line.append($invert);
 				const $all = $(`<button class="btn btn-default btn-xs" style="margin-left: 15px">All</button>`);
 				$line.append($all);
-				const $clear = $(`<button class="btn btn-default btn-xs" style="margin-left: 5px">Clear</button>`);
-				$line.append($clear);
+				const $none = $(`<button class="btn btn-default btn-xs" style="margin-left: 5px">None</button>`);
+				$line.append($none);
+				const $default = $(`<button class="btn btn-default btn-xs" style="margin-left: 5px">Default</button>`);
+				$line.append($default);
 
 				$invert.on(EVNT_CLICK, function() {
 					newHeader.invert = !newHeader.invert;
@@ -117,7 +117,7 @@ class FilterBox {
 					self._fireValChangeEvent();
 				});
 
-				$clear.on(EVNT_CLICK, function() {
+				$none.on(EVNT_CLICK, function() {
 					$multi.find("option").prop("selected", false);
 					$multi.trigger("change");
 				});
@@ -125,6 +125,10 @@ class FilterBox {
 				$all.on(EVNT_CLICK, function() {
 					$multi.find("option").prop("selected", true);
 					$multi.trigger("change");
+				});
+
+				$default.on(EVNT_CLICK, function() {
+					self._reset(filter.header);
 				});
 
 				return $line;
@@ -251,38 +255,44 @@ class FilterBox {
 	}
 
 	/**
-	 * Reset the selected filters to default (everything selected).
-	 * Note that this does not re-apply any deselectIf(...)s you might have applied earlier.
+	 * Reset the selected filters to default, applying any `desel` functions from the filters
 	 */
 	reset() {
-		$.each(this._$boxes, function (i, $ele) {
-			$ele.removeClass(FilterBox.CLS_FILTER_INVERT)
-		});
 		for (const header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
-			const cur = this.headers[header];
-			const filter = this.filterList.filter(f => f.header === header)[0];
-			let anyChanged = false;
+			this._reset(header);
+		}
+	}
 
-			if (cur.invert || filter.invert) {
-				cur.invert = false;
-				filter.invert = false;
+	/**
+	 * Helper which resets an section of the filter
+	 * @param header the name of the section to reset
+	 * @private
+	 */
+	_reset(header) {
+		const cur = this.headers[header];
+		const filter = cur.filter;
+		let anyChanged = false;
+
+		if (cur.invert || filter.invert) {
+			cur.outer.removeClass(FilterBox.CLS_FILTER_INVERT);
+			cur.invert = false;
+			filter.invert = false;
+			anyChanged = true;
+		}
+
+		cur.ele.find("option").each(function() {
+			if (!filter.desel || (filter.desel && !filter.desel(this.value))) {
+				this.selected = true;
+				anyChanged = true;
+			} else {
+				this.selected = false;
 				anyChanged = true;
 			}
+		});
 
-			cur.ele.find("option").each(function() {
-				if (!filter.desel || (filter.desel && !filter.desel(this.value))) {
-					this.selected = true;
-					anyChanged = true;
-				} else {
-					this.selected = false;
-					anyChanged = true;
-				}
-			});
-
-			if (anyChanged) {
-				cur.ele.trigger("change");
-			}
+		if (anyChanged) {
+			cur.ele.trigger("change");
 		}
 	}
 
@@ -308,7 +318,10 @@ class FilterBox {
 		if (anyDeselected) cur.ele.trigger("change");
 	}
 
-
+	/**
+	 * @private
+	 * Helper which dispatched the event when the filter needs to fire a "changed" event
+	 */
 	_fireValChangeEvent() {
 		const eventOut = new Event(FilterBox.EVNT_VALCHANGE);
 		this.inputGroup.dispatchEvent(eventOut);
