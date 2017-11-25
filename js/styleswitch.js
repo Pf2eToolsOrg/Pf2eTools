@@ -217,7 +217,7 @@ tr.legendary td {
 }
 
 #output {
-	background: black;
+	background: rgba(0, 0, 0, 0.31);;
 }
 
 #crcalc label span.explanation {
@@ -225,11 +225,11 @@ tr.legendary td {
 }
 
 #msbcr tr:nth-child(even) {
-	background: black;
+	background: rgba(0, 0, 0, 0.31);
 }
 
 #croutput {
-	background: black;
+	background: rgba(0, 0, 0, 0.31);
 }
 
 /* section: class features */
@@ -265,8 +265,10 @@ table#stats td._class_feature table th {
 
 #stats table tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
-#rulescontent table tbody tr:nth-child(odd) td {
-	background: black;
+#rulescontent table tbody tr:nth-child(odd) td,
+ul.list li:nth-child(odd),
+#monsterfeatures tr:nth-child(odd) {
+	background: rgba(0, 0, 0, 0.31);
 }
 
 #rulescontent caption {
