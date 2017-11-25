@@ -471,7 +471,7 @@
 				"stealth": false,
 				"namePrefix": "Mithral ",
 				"entries": [
-					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity (Stealth) checks or has a Strength requirement, the mithral version of the armor doesn't."
+					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks or has a Strength requirement, the mithral version of the armor doesn't."
 				]
 			}
 		},
@@ -494,7 +494,7 @@
 				"stealth": false,
 				"namePrefix": "Mithral ",
 				"entries": [
-					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity (Stealth) checks or has a Strength requirement, the mithral version of the armor doesn't."
+					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks or has a Strength requirement, the mithral version of the armor doesn't."
 				]
 			}
 		},
@@ -1099,6 +1099,23 @@
 		{
 			"name": "Luck Blade",
 			"type": "GV",
+			"entries": [
+				"You gain a +1 bonus to attack and damage rolls made with this magic weapon. While the sword is on your person, you also gain a +1 bonus to saving throws.",
+				{
+					"type": "entries",
+					"name": "Luck",
+					"entries": [
+						"If the sword is on your person, you can call on its luck (no action required) to reroll one attack roll, ability check, or saving throw you dislike. You must use the second roll. This property can't be used again until the next dawn."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Wish",
+					"entries": [
+						"The sword has 1d4 - 1 charges. While holding it, you can use an action to expend 1 charge and cast the <a href=\"spells.html#wish_phb\" target=\"_blank\">wish</a> spell from it. This property can't be used again until the next dawn. The sword loses this property if it has no charges."
+					]
+				}
+			],
 			"requires": {
 				"sword": true
 			},
@@ -1111,8 +1128,20 @@
 				"reqAttune": "YES",
 				"entries": [
 					"You gain a +1 bonus to attack and damage rolls made with this magic weapon. While the sword is on your person, you also gain a +1 bonus to saving throws.",
-					"Luck. If the sword is on your person, you can call on its luck (no action required) to reroll one attack roll, ability check, or saving throw you dislike. You must use the second roll. This property can't be used again until the next dawn.",
-					"Wish. The sword has 1d4 - 1 charges. While holding it, you can use an action to expend 1 charge and cast the <a href=\"spells.html#wish_phb\" target=\"_blank\">wish</a> spell from it. This property can't be used again until the next dawn. The sword loses this property if it has no charges."
+					{
+						"type": "entries",
+						"name": "Luck",
+						"entries": [
+							"If the sword is on your person, you can call on its luck (no action required) to reroll one attack roll, ability check, or saving throw you dislike. You must use the second roll. This property can't be used again until the next dawn."
+						]
+					},
+					{
+						"type": "entries",
+						"name": "Wish",
+						"entries": [
+							"The sword has 1d4 - 1 charges. While holding it, you can use an action to expend 1 charge and cast the <a href=\"spells.html#wish_phb\" target=\"_blank\">wish</a> spell from it. This property can't be used again until the next dawn. The sword loses this property if it has no charges."
+						]
+					}
 				],
 				"modifier": [
 					{
@@ -1282,7 +1311,7 @@
 				"reqAttune": "YES",
 				"entries": [
 					"Hit points lost to this weapon's damage can be regained only through a short or long rest, rather than by regeneration, magic, or any other means.",
-					"Once per turn, when you hit a creature with an attack using this magic weapon, you can wound the target. At the start of each of the wounded creature's turns, it takes 1d4 necrotic damage for each time you've wounded it, and it can then make a DC 15 Constitution saving throw, ending the effect of all such wounds on itself on a success. Alternatively, the wounded creature, or a creature within 5 feet of it, can use an action to make a DC 15 Wisdom (Medicine) check, ending the effect of such wounds on it on a success."
+					"Once per turn, when you hit a creature with an attack using this magic weapon, you can wound the target. At the start of each of the wounded creature's turns, it takes 1d4 necrotic damage for each time you've wounded it, and it can then make a DC 15 Constitution saving throw, ending the effect of all such wounds on itself on a success. Alternatively, the wounded creature, or a creature within 5 feet of it, can use an action to make a DC 15 Wisdom ({@skill Medicine}) check, ending the effect of such wounds on it on a success."
 				]
 			}
 		},
