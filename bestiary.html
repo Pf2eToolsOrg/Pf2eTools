@@ -251,5 +251,11 @@
 	<script type="text/javascript" src="lib/list.js"></script>
 	<script type="text/javascript" src="lib/jquery.js"></script>
 	<script type="text/javascript" src="lib/bootstrap.js"></script>
+	<script type="text/javascript">
+	imgError = function (x) {
+		$(x).parent().siblings(".source").css("margin-right", "-4.8em");
+		$(x).remove();
+	};
+</script>
 </body>
 </html>

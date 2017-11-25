@@ -1,3 +1,4 @@
+"use strict";
 window.onload = loadeditor
 
 function loadeditor() {

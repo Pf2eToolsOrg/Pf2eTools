@@ -1,4 +1,6 @@
+"use strict";
 const JSON_URL = "data/races.json";
+let tableDefault = "";
 
 window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad)

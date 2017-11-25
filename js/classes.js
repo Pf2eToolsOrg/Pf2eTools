@@ -1,3 +1,4 @@
+"use strict";
 const HASH_SUBCLASS = "sub:";
 const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";

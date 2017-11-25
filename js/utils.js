@@ -1,100 +1,100 @@
+"use strict";
 const HASH_PART_SEP = ",";
 const HASH_LIST_SEP = "_";
 const HASH_START = "#";
 
-STR_EMPTY = "";
-STR_VOID_LINK = "javascript:void(0)";
-STR_SLUG_DASH = "-";
-STR_APOSTROPHE = "\u2019";
+const STR_EMPTY = "";
+const STR_VOID_LINK = "javascript:void(0)";
+const STR_SLUG_DASH = "-";
+const STR_APOSTROPHE = "\u2019";
 
-ID_SEARCH_BAR = "filter-search-input-group";
-ID_RESET_BUTTON = "reset";
+const ID_SEARCH_BAR = "filter-search-input-group";
+const ID_RESET_BUTTON = "reset";
 
-TYP_STRING = "string";
-TYP_NUMBER = "number";
-TYP_OBJECT = "object";
+const TYP_STRING = "string";
+const TYP_NUMBER = "number";
+const TYP_OBJECT = "object";
 
-ELE_SPAN = "span";
-ELE_UL = "ul";
-ELE_LI = "li";
-ELE_A = "a";
-ELE_P = "p";
-ELE_DIV = "div";
-ELE_BUTTON = "button";
-ELE_INPUT = "input";
+const ELE_SPAN = "span";
+const ELE_UL = "ul";
+const ELE_LI = "li";
+const ELE_A = "a";
+const ELE_P = "p";
+const ELE_DIV = "div";
+const ELE_BUTTON = "button";
+const ELE_INPUT = "input";
 
-EVNT_MOUSEOVER = "mouseover";
-EVNT_MOUSEOUT = "mouseout";
-EVNT_MOUSELEAVE = "mouseleave";
-EVNT_MOUSEENTER = "mouseenter";
-EVNT_CLICK = "click";
+const EVNT_MOUSEOVER = "mouseover";
+const EVNT_MOUSEOUT = "mouseout";
+const EVNT_MOUSELEAVE = "mouseleave";
+const EVNT_MOUSEENTER = "mouseenter";
+const EVNT_CLICK = "click";
 
-ATB_ID = "id";
-ATB_CLASS = "class";
-ATB_TITLE = "title";
-ATB_VALUE = "value";
-ATB_HREF = "href";
-ATB_STYLE = "style";
-ATB_CHECKED = "checked";
-ATB_TYPE = "type";
-ATB_ONCLICK = "onclick";
+const ATB_ID = "id";
+const ATB_CLASS = "class";
+const ATB_TITLE = "title";
+const ATB_VALUE = "value";
+const ATB_HREF = "href";
+const ATB_STYLE = "style";
+const ATB_CHECKED = "checked";
+const ATB_TYPE = "type";
+const ATB_ONCLICK = "onclick";
 
-STL_DISPLAY_INITIAL = "display: initial";
-STL_DISPLAY_NONE = "display: none";
+const STL_DISPLAY_INITIAL = "display: initial";
+const STL_DISPLAY_NONE = "display: none";
 
-FLTR_ID = "filterId";
-FLTR_SOURCE = "filterSource";
-FLTR_TYPE = "filterType";
-FLTR_CR = "filterCr";
-FLTR_3PP = "filter3pp";
-FLTR_ABILITIES = "filterAbilities";
-FLTR_ORDER = "filterOrder";
-FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
-FLTR_SIZE = "filterSize";
-FLTR_LEVEL = "filterLevel";
-FLTR_SCHOOL = "filterSchool";
-FLTR_RANGE = "filterRange";
-FLTR_CLASS = "filterClass";
-FLTR_META = "filterMeta";
-FLTR_ACTION = "filterAction";
-FLTR_TIER = "filterTier";
-FLTR_RARITY = "filterRarity";
-FLTR_ATTUNEMENT = "filterAttunement";
-FLTR_CATEGORY = "filterCategory";
-FLTR_LIST_SEP = ";";
+const FLTR_ID = "filterId";
+const FLTR_SOURCE = "filterSource";
+const FLTR_TYPE = "filterType";
+const FLTR_CR = "filterCr";
+const FLTR_3PP = "filter3pp";
+const FLTR_ABILITIES = "filterAbilities";
+const FLTR_ORDER = "filterOrder";
+const FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
+const FLTR_SIZE = "filterSize";
+const FLTR_LEVEL = "filterLevel";
+const FLTR_SCHOOL = "filterSchool";
+const FLTR_RANGE = "filterRange";
+const FLTR_CLASS = "filterClass";
+const FLTR_META = "filterMeta";
+const FLTR_ACTION = "filterAction";
+const FLTR_TIER = "filterTier";
+const FLTR_RARITY = "filterRarity";
+const FLTR_ATTUNEMENT = "filterAttunement";
+const FLTR_CATEGORY = "filterCategory";
+const FLTR_LIST_SEP = ";";
 
-CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
-CLSS_SUBCLASS_FEATURE = "subclass-feature";
+const CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
+const CLSS_SUBCLASS_FEATURE = "subclass-feature";
 
-ATB_DATA_LIST_SEP = "||";
-ATB_DATA_PART_SEP = "::";
-ATB_DATA_SC = "data-subclass";
-ATB_DATA_SRC = "data-source";
+const ATB_DATA_LIST_SEP = "||";
+const ATB_DATA_PART_SEP = "::";
+const ATB_DATA_SC = "data-subclass";
+const ATB_DATA_SRC = "data-source";
 
-STR_CANTRIP = "Cantrip";
+const STR_CANTRIP = "Cantrip";
 
-RNG_SPECIAL =  "special";
-RNG_POINT =  "point";
-RNG_LINE =  "line";
-RNG_CUBE = "cube";
-RNG_CONE = "cone";
-RNG_RADIUS = "radius";
-RNG_SPHERE = "sphere";
-RNG_HEMISPHERE  = "hemisphere";
-RNG_SELF = "self";
-RNG_SIGHT = "sight";
-RNG_UNLIMITED = "unlimited";
-RNG_UNLIMITED_SAME_PLANE = "plane";
-RNG_TOUCH = "touch";
+const RNG_SPECIAL =  "special";
+const RNG_POINT =  "point";
+const RNG_LINE =  "line";
+const RNG_CUBE = "cube";
+const RNG_CONE = "cone";
+const RNG_RADIUS = "radius";
+const RNG_SPHERE = "sphere";
+const RNG_HEMISPHERE  = "hemisphere";
+const RNG_SELF = "self";
+const RNG_SIGHT = "sight";
+const RNG_UNLIMITED = "unlimited";
+const RNG_UNLIMITED_SAME_PLANE = "plane";
+const RNG_TOUCH = "touch";
 
-UNT_FEET = "feet";
-UNT_MILES = "miles";
+const UNT_FEET = "feet";
+const UNT_MILES = "miles";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
 function () {
-	"use strict";
 	let str = this.toString();
 	if (arguments.length) {
 		const t = typeof arguments[0];
@@ -288,7 +288,7 @@ function utils_makeAttChoose(attList) {
 	}
 }
 function utils_makeRoller(text) {
-	return text.replace(/([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>").replace(/(\-|\+)?\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(\-|\+)?\d+(?= bonus to)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(bonus of )(=?\-|\+\d+)/g, "$1<span class='roller' data-roll='1d20$2'>$2</span>");
+	return text.replace(/([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g, "<span class='roller' data-roll='$&'>$&</span>").replace(/(-|\+)?\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(-|\+)?\d+(?= bonus to)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(bonus of )(=?-|\+\d+)/g, "$1<span class='roller' data-roll='1d20$2'>$2</span>");
 }
 
 
@@ -479,7 +479,7 @@ function utils_getAbilityData(abObj) {
 }
 
 // PARSING =============================================================================================================
-Parser = {};
+const Parser = {};
 Parser._parse_aToB = function (abMap, a) {
 	a = a.trim();
 	if (abMap[a] !== undefined) return abMap[a];
@@ -686,9 +686,7 @@ Parser.spDurationToFull= function (dur) {
 			case "instant":
 				return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
 			case "timed":
-				const con = d.concentration;
-				const upTo = d.duration.upTo;
-				return `${con ? "Concentration, " : ""}${upTo && con ? "u" : upTo ? "U" : ""}${upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
+				return `${d.concentration ? "Concentration, " : ""}${d.duration.upTo && d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
 			case "permanent":
 				return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
 
@@ -818,79 +816,79 @@ Parser.ARMOR_ABV_TO_FULL = {
 	"h.": "heavy",
 };
 
-SRC_CoS 	= "CoS";
-SRC_DMG 	= "DMG";
-SRC_EEPC 	= "EEPC";
-SRC_EET 	= "EET";
-SRC_HotDQ 	= "HotDQ";
-SRC_LMoP 	= "LMoP";
-SRC_MM 		= "MM";
-SRC_OotA 	= "OotA";
-SRC_PHB 	= "PHB";
-SRC_PotA 	= "PotA";
-SRC_PSA 	= "PSA";
-SRC_PSI 	= "PSI";
-SRC_PSK 	= "PSK";
-SRC_PSZ 	= "PSZ";
-SRC_RoT 	= "RoT";
-SRC_RoTOS 	= "RoTOS";
-SRC_SCAG 	= "SCAG";
-SRC_SKT 	= "SKT";
-SRC_ToA 	= "ToA";
-SRC_ToD 	= "ToD";
-SRC_TTP 	= "TTP";
-SRC_TYP 	= "TftYP";
-SRC_VGM 	= "VGM";
-SRC_XGE 	= "XGE";
-SRC_OGA 	= "OGA";
+const SRC_CoS 	= "CoS";
+const SRC_DMG 	= "DMG";
+const SRC_EEPC 	= "EEPC";
+const SRC_EET 	= "EET";
+const SRC_HotDQ 	= "HotDQ";
+const SRC_LMoP 	= "LMoP";
+const SRC_MM 		= "MM";
+const SRC_OotA 	= "OotA";
+const SRC_PHB 	= "PHB";
+const SRC_PotA 	= "PotA";
+const SRC_PSA 	= "PSA";
+const SRC_PSI 	= "PSI";
+const SRC_PSK 	= "PSK";
+const SRC_PSZ 	= "PSZ";
+const SRC_RoT 	= "RoT";
+const SRC_RoTOS 	= "RoTOS";
+const SRC_SCAG 	= "SCAG";
+const SRC_SKT 	= "SKT";
+const SRC_ToA 	= "ToA";
+const SRC_ToD 	= "ToD";
+const SRC_TTP 	= "TTP";
+const SRC_TYP 	= "TftYP";
+const SRC_VGM 	= "VGM";
+const SRC_XGE 	= "XGE";
+const SRC_OGA 	= "OGA";
 
-SRC_ALCoS 	= "ALCurseOfStrahd";
-SRC_ALEE 	= "ALElementalEvil";
-SRC_ALRoD 	= "ALRageOfDemons";
+const SRC_ALCoS 	= "ALCurseOfStrahd";
+const SRC_ALEE 	= "ALElementalEvil";
+const SRC_ALRoD 	= "ALRageOfDemons";
 
-SRC_UA_PREFIX = "UA";
+const SRC_UA_PREFIX = "UA";
 
-SRC_UAA 		= SRC_UA_PREFIX + "Artificer";
-SRC_UAEAG 		= SRC_UA_PREFIX + "EladrinAndGith";
-SRC_UAEBB 		= SRC_UA_PREFIX + "Eberron";
-SRC_UAFFR 		= SRC_UA_PREFIX + "FeatsForRaces";
-SRC_UAFFS 		= SRC_UA_PREFIX + "FeatsForSkills";
-SRC_UAFO 		= SRC_UA_PREFIX + "FiendishOptions";
-SRC_UAFT 		= SRC_UA_PREFIX + "Feats";
-SRC_UAGH 		= SRC_UA_PREFIX + "GothicHeroes";
-SRC_UAMDM 		= SRC_UA_PREFIX + "ModernMagic";
-SRC_UASSP 		= SRC_UA_PREFIX + "StarterSpells";
-SRC_UATMC 		= SRC_UA_PREFIX + "TheMysticClass";
-SRC_UATOBM 		= SRC_UA_PREFIX + "ThatOldBlackMagic";
-SRC_UATRR 		= SRC_UA_PREFIX + "TheRangerRevised";
-SRC_UAWA 		= SRC_UA_PREFIX + "WaterborneAdventures";
-SRC_UAVR 		= SRC_UA_PREFIX + "VariantRules";
-SRC_UALDR 		= SRC_UA_PREFIX + "LightDarkUnderdark";
-SRC_UARAR 		= SRC_UA_PREFIX + "RangerAndRogue";
-SRC_UAATOSC 	= SRC_UA_PREFIX + "ATrioOfSubclasses";
-SRC_UABPP 		= SRC_UA_PREFIX + "BarbarianPrimalPaths";
-SRC_UARSC 		= SRC_UA_PREFIX + "RevisedSubclasses";
-SRC_UAKOO 		= SRC_UA_PREFIX + "KitsOfOld";
-SRC_UABBC 		= SRC_UA_PREFIX + "BardBardColleges";
-SRC_UACDD 		= SRC_UA_PREFIX + "ClericDivineDomains";
-SRC_UAD 		= SRC_UA_PREFIX + "Druid";
-SRC_UARCO 		= SRC_UA_PREFIX + "RevisedClassOptions";
-SRC_UAF 		= SRC_UA_PREFIX + "Fighter";
-SRC_UAM 		= SRC_UA_PREFIX + "Monk";
-SRC_UAP 		= SRC_UA_PREFIX + "Paladin";
-SRC_UAMC 		= SRC_UA_PREFIX + "ModifyingClasses";
-SRC_UAS 		= SRC_UA_PREFIX + "Sorcerer";
-SRC_UAWAW 		= SRC_UA_PREFIX + "WarlockAndWizard";
-SRC_UATF 		= SRC_UA_PREFIX + "TheFaithful";
-SRC_UAWR 		= SRC_UA_PREFIX + "WizardRevisited";
-SRC_UAESR 		= SRC_UA_PREFIX + "ElfSubraces";
+const SRC_UAA 		= SRC_UA_PREFIX + "Artificer";
+const SRC_UAEAG 		= SRC_UA_PREFIX + "EladrinAndGith";
+const SRC_UAEBB 		= SRC_UA_PREFIX + "Eberron";
+const SRC_UAFFR 		= SRC_UA_PREFIX + "FeatsForRaces";
+const SRC_UAFFS 		= SRC_UA_PREFIX + "FeatsForSkills";
+const SRC_UAFO 		= SRC_UA_PREFIX + "FiendishOptions";
+const SRC_UAFT 		= SRC_UA_PREFIX + "Feats";
+const SRC_UAGH 		= SRC_UA_PREFIX + "GothicHeroes";
+const SRC_UAMDM 		= SRC_UA_PREFIX + "ModernMagic";
+const SRC_UASSP 		= SRC_UA_PREFIX + "StarterSpells";
+const SRC_UATMC 		= SRC_UA_PREFIX + "TheMysticClass";
+const SRC_UATOBM 		= SRC_UA_PREFIX + "ThatOldBlackMagic";
+const SRC_UATRR 		= SRC_UA_PREFIX + "TheRangerRevised";
+const SRC_UAWA 		= SRC_UA_PREFIX + "WaterborneAdventures";
+const SRC_UAVR 		= SRC_UA_PREFIX + "VariantRules";
+const SRC_UALDR 		= SRC_UA_PREFIX + "LightDarkUnderdark";
+const SRC_UARAR 		= SRC_UA_PREFIX + "RangerAndRogue";
+const SRC_UAATOSC 	= SRC_UA_PREFIX + "ATrioOfSubclasses";
+const SRC_UABPP 		= SRC_UA_PREFIX + "BarbarianPrimalPaths";
+const SRC_UARSC 		= SRC_UA_PREFIX + "RevisedSubclasses";
+const SRC_UAKOO 		= SRC_UA_PREFIX + "KitsOfOld";
+const SRC_UABBC 		= SRC_UA_PREFIX + "BardBardColleges";
+const SRC_UACDD 		= SRC_UA_PREFIX + "ClericDivineDomains";
+const SRC_UAD 		= SRC_UA_PREFIX + "Druid";
+const SRC_UARCO 		= SRC_UA_PREFIX + "RevisedClassOptions";
+const SRC_UAF 		= SRC_UA_PREFIX + "Fighter";
+const SRC_UAM 		= SRC_UA_PREFIX + "Monk";
+const SRC_UAP 		= SRC_UA_PREFIX + "Paladin";
+const SRC_UAMC 		= SRC_UA_PREFIX + "ModifyingClasses";
+const SRC_UAS 		= SRC_UA_PREFIX + "Sorcerer";
+const SRC_UAWAW 		= SRC_UA_PREFIX + "WarlockAndWizard";
+const SRC_UATF 		= SRC_UA_PREFIX + "TheFaithful";
+const SRC_UAWR 		= SRC_UA_PREFIX + "WizardRevisited";
+const SRC_UAESR 		= SRC_UA_PREFIX + "ElfSubraces";
 
-SRC_BOLS_3PP = "BoLS 3pp";
-SRC_ToB_3PP = "ToB 3pp";
+const SRC_BOLS_3PP = "BoLS 3pp";
+const SRC_ToB_3PP = "ToB 3pp";
 
-AL_PREFIX = "Adventurers League: ";
-PS_PREFIX = "Plane Shift: ";
-UA_PREFIX = "Unearthed Arcana: ";
+const AL_PREFIX = "Adventurers League: ";
+const PS_PREFIX = "Plane Shift: ";
+const UA_PREFIX = "Unearthed Arcana: ";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CoS] 		= "Curse of Strahd";

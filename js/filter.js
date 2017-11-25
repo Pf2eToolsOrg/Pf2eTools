@@ -1,3 +1,4 @@
+"use strict";
 /**
  * The API is as follows:
  * - render()

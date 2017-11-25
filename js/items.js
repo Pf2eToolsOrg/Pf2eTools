@@ -68,7 +68,7 @@ function mergeBasicItems(variantData) {
 						} else if (inheritedProperty === "entries") {
 							for (let k = curInherits.entries.length-1; k > -1; k--) {
 								let tmpText = curInherits.entries[k];
-								if (typeof(tmpText) === "string") {
+								if (typeof tmpText === "string") {
 									if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", Parser.dmgTypeToFull(tmpBasicItem.dmgType));
 									if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
 									if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(curBasicItemName);
@@ -344,7 +344,7 @@ function loadhash (id) {
 		if(item.dmg1) $("span#damage").html(utils_makeRoller(item.dmg1));
 		if(item.dmgType) $("span#damagetype").html(Parser.dmgTypeToFull(item.dmgType));
 	} else if (type === "LA" ||type === "MA"|| type === "HA") {
-		$("span#damage").html("AC "+item.ac+(type === "LA" ? " + Dex" : (type === "MA" ? " + Dex (max 2)" : "")));
+		$("span#damage").html("AC "+item.ac+(type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : ""));
 	} else if (type === "S") {
 		$("span#damage").html("AC +"+item.ac);
 	} else if (type === "MNT" || type === "VEH") {
@@ -367,7 +367,7 @@ function loadhash (id) {
 			if (prop === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
 			if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range}ft.)`;
 			if (prop === "RLD") a = `${a} (${item.reload} shots)`;
-			a = (i > 0 ? ", " : (item.dmg1 ? "- " : "")) + a;
+			a = (i > 0 ? ", " : item.dmg1 ? "- " : "") + a;
 			$("span#properties").append(a);
 		}
 	}

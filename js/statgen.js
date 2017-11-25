@@ -1,3 +1,4 @@
+"use strict";
 const RACE_JSON_URL = "data/races.json";
 
 let amount, count;
