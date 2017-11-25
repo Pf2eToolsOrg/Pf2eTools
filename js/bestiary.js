@@ -17,18 +17,21 @@ function populate(tobData, mainData) {
 
 	// parse all the monster data
 	for (let i = 0; i < monsters.length; i++) {
-		const name = monsters[i].name;
-		const source = monsters[i].source;
+		const mon = monsters[i];
+
+		const name = mon.name;
+		const source = mon.source;
 		const fullsource = Parser.sourceJsonToFull(source);
-		const type = monsters[i].type;
-		const cr = monsters[i].cr === undefined ? "Unknown" : monsters[i].cr;
+		const fullType = Parser.monTypeToFull(mon.type);
+		mon._pType = fullType; // store the parsed type
+		const cr = mon.cr === undefined ? "Unknown" : mon.cr;
 
 		const abvSource = Parser.sourceJsonToAbv(source);
 		const is3pp = source.includes("3pp");
 
-		$("ul#monsters").append(`<li ${FLTR_TYPE}='${type}' ${FLTR_SOURCE}='${source}' ${FLTR_CR}='${cr}' ${FLTR_3PP}='${is3pp}'><a id=${i} href='#${encodeForHash(name)}_${encodeForHash(source)}' title="${name}"><span class='name col-xs-4 col-xs-4-2'>${name}</span> <span title="${fullsource}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span> <span class='type col-xs-4 col-xs-4-3'>${type}</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>${cr}</span></a></li>`);
+		$("ul#monsters").append(`<li ${FLTR_TYPE}='${fullType}' ${FLTR_SOURCE}='${source}' ${FLTR_CR}='${cr}' ${FLTR_3PP}='${is3pp}'><a id=${i} href='#${encodeForHash(name)}_${encodeForHash(source)}' title="${name}"><span class='name col-xs-4 col-xs-4-2'>${name}</span> <span title="${fullsource}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span> <span class='type col-xs-4 col-xs-4-3'>${fullType}</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>${cr}</span></a></li>`);
 
-		addDropdownOption($("select.typefilter"), type, Parser.sourceJsonToFull(type));
+		addDropdownOption($("select.typefilter"), fullType, Parser.sourceJsonToFull(fullType));
 		addDropdownOption($("select.sourcefilter"), source, fullsource);
 		addDropdownOption($("select.crfilter"), cr, cr);
 
@@ -116,7 +119,7 @@ function sortmonsters(a, b, o) {
 	}
 
 	if (o.valueName === "type") {
-		return ((b._values.type.toLowerCase()) > (a._values.type.toLowerCase())) ? 1 : -1;
+		return ((b._values._pType.toLowerCase()) > (a._values._pType.toLowerCase())) ? 1 : -1;
 	}
 
 	if (o.valueName === "source") {
@@ -152,7 +155,7 @@ function loadhash (id) {
 	var name = mon.name;
 	var source = mon.source;
 	var fullsource = Parser.sourceJsonToFull(source);
-	var type = mon.type;
+	var type = mon._pType;
 	source = Parser.sourceJsonToAbv(source);
 
 	imgError = function (x) {

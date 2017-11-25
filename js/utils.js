@@ -726,6 +726,16 @@ Parser._spSubclassItem = function (fromSubclass) {
 	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
+Parser.monTypeToFull = function(type) {
+	if (typeof type === "string") return type; // handles e.g. "fey"
+	const tags = [];
+	for (const tag of type.tags) {
+		if (typeof tag === "string") tags.push(tag); // handles e.g. "fiend (devil)"
+		else tags.push(`${tag.prefix} ${tag.tag}`); // handles e.g. "humanoid (Chondathan human)"
+	}
+	return `${type.type} (${tags.join(", ")})`;
+};
+
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
  *
