@@ -1,3 +1,4 @@
+"use strict";
 const JSON_URL = "data/spells.json";
 
 const META_RITUAL = "Rituals";
@@ -26,6 +27,8 @@ const TM_ROUND = "round";
 const TM_MINS = "minute";
 const TM_HRS = "hour";
 const TO_HIDE_SINGLETON_TIMES = [TM_ACTION, TM_B_ACTION, TM_REACTION, TM_ROUND];
+
+let tableDefault = "";
 
 function getFltrSpellLevelStr(level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";

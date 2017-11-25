@@ -1,5 +1,7 @@
+"use strict";
 const BESTIARY_JSON_URL = "data/bestiary.json";
 const BESTIARY_TOB_JSON_URL = "data/bestiary-tob.json";
+let tableDefault = "";
 
 window.onload = function load() {
 	tableDefault = $("#stats").html();
@@ -16,17 +18,17 @@ function populate(tobData, mainData) {
 	monsters = monsters.concat(tobData.monster);
 
 	// parse all the monster data
+	let liList = "";
 	for (let i = 0; i < monsters.length; i++) {
 		const name = monsters[i].name;
 		const source = monsters[i].source;
 		const fullsource = Parser.sourceJsonToFull(source);
 		const type = monsters[i].type;
 		const cr = monsters[i].cr === undefined ? "Unknown" : monsters[i].cr;
-
 		const abvSource = Parser.sourceJsonToAbv(source);
 		const is3pp = source.includes("3pp");
 
-		$("ul#monsters").append(`<li ${FLTR_TYPE}='${type}' ${FLTR_SOURCE}='${source}' ${FLTR_CR}='${cr}' ${FLTR_3PP}='${is3pp}'><a id=${i} href='#${encodeForHash(name)}_${encodeForHash(source)}' title="${name}"><span class='name col-xs-4 col-xs-4-2'>${name}</span> <span title="${fullsource}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span> <span class='type col-xs-4 col-xs-4-3'>${type}</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>${cr}</span></a></li>`);
+		liList += `<li ${FLTR_TYPE}='${type}' ${FLTR_SOURCE}='${source}' ${FLTR_CR}='${cr}' ${FLTR_3PP}='${is3pp}'><a id=${i} href='#${encodeForHash(name)}_${encodeForHash(source)}' title="${name}"><span class='name col-xs-4 col-xs-4-2'>${name}</span> <span title="${fullsource}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span> <span class='type col-xs-4 col-xs-4-3'>${type}</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>${cr}</span></a></li>`;
 
 		addDropdownOption($("select.typefilter"), type, Parser.sourceJsonToFull(type));
 		addDropdownOption($("select.sourcefilter"), source, fullsource);
@@ -36,6 +38,7 @@ function populate(tobData, mainData) {
 		$("select.sourcefilter").val("All");
 	}
 
+	$("ul#monsters").append(liList);
 	$("select.typefilter option").sort(asc_sort).appendTo('select.typefilter');
 	$("select.typefilter").val("All");
 
@@ -155,13 +158,8 @@ function loadhash (id) {
 	var type = mon.type;
 	source = Parser.sourceJsonToAbv(source);
 
-	imgError = function (x) {
-		$(x).parent().siblings(".source").css("margin-right", "-4.8em");
-		$(x).remove();
-
-	};
-
-	$("th#name").html("<span title=\"" + fullsource + "\" class='source source" + source + "'>" + source + "<br></span> <a href=\"img/" + source + "/" + name + ".png\" target='_blank'><img src=\"img/" + source + "/" + name + ".png\" class='token' onerror='imgError(this)'></a>" + name);
+	const imgSource = `img/${source}/${name}.png`;
+	$("th#name").html(`<span title="${fullsource}" class='source source${source}'>${source}<br></span> <a href="${imgSource}" target='_blank'><img src="${imgSource}" class='token' onerror='imgError(this)'></a>${name}`);
 
 	$("td span#size").html(Parser.sizeAbvToFull(mon.size));
 
@@ -285,8 +283,7 @@ function loadhash (id) {
 			if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 			if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 
-			traittexthtml = traittexthtml + "<p class='" + firstsecond + spells + "'>" + traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "");
-			+"</p>";
+			traittexthtml = traittexthtml + "<p class='" + firstsecond + spells + "'>" + traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "")+"</p>";
 		}
 
 		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait" + i + "'><span class='name'>" + traitname + ".</span> " + traittexthtml + "</td></tr>");

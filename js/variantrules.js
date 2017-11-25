@@ -1,3 +1,4 @@
+"use strict";
 const JSON_URL = "data/variantrules.json";
 
 window.onload = function load() {

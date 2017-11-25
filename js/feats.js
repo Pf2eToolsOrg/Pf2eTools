@@ -1,3 +1,4 @@
+"use strict";
 const JSON_URL = "data/feats.json";
 let tabledefault = "";
 let featlist;

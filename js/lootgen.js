@@ -1,3 +1,4 @@
+"use strict";
 const LOOT_JSON_URL = "data/loot.json";
 const renderer = new EntryRenderer();
 let lootList;
@@ -92,8 +93,8 @@ function rollLoot(cr,hoard=false) {
 		}
 		// magic items
 		if (loot.magicitems) {
-			magicitemtabletype = [];
-			magicitemtableamounts = [];
+			const magicitemtabletype = [];
+			const magicitemtableamounts = [];
 			magicitemtabletype.push(loot.magicitems.type.split(",")[0])
 			magicitemtableamounts.push(loot.magicitems.amount.split(",")[0])
 			if (loot.magicitems.type.indexOf(",") !== -1) {
@@ -226,7 +227,7 @@ function randomNumber (min, max) {
 
 function parseLink (rawText) {
 	if (rawText.startsWith("{@item ")) {
-		stack = [];
+		const stack = [];
 		renderer.recursiveEntryRender(rawText, stack);
 		return stack.join("");
 	} else return rawText;

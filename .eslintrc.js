@@ -1,31 +1,31 @@
 module.exports = {
+	"extends": "eslint:recommended",
 	"env": {
 		"browser": true,
 		"es6": true
 	},
-	"globals": {
-		"$": true,
-		"droll": true,
-	},
 	"rules": {
-		"no-console": 2,
-		"no-extra-semi": 2,
-		"no-inner-declarations": 2,
-		"no-mixed-spaces-and-tabs": 2,
-		"no-redeclare": 2,
-		"no-unreachable": 2,
+		"block-scoped-var": "error",
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"no-alert": "error",
+		"no-case-declarations": "off",
+		"no-undef": "off",
+		"no-unused-expressions": "error",
+		"no-unused-vars": "off",
+		"no-useless-escape": "off",
+		"no-with": "error",
 		"prefer-const": [
 			"warn",
 			{
 				"destructuring": "any",
 				"ignoreReadBeforeAssign": false
 			}
-		],
-
-		"indent": [
-			"error",
-			"tab",
-            { "SwitchCase": 1 }
 		]
 	}
 }

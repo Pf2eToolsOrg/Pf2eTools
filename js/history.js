@@ -1,3 +1,4 @@
+"use strict";
 function hashchange(e) {
 	const [link, ...sub] = _getHashParts();
 
