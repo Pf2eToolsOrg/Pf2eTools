@@ -156,12 +156,17 @@ function loadhash (id) {
 	source = Parser.sourceJsonToAbv(source);
 
 	imgError = function (x) {
-		$(x).parent().siblings(".source").css("margin-right", "-4.8em");
+		$(x).closest("th").css("padding-right", "0.2em");
 		$(x).remove();
-
 	};
 
-	$("th#name").html("<span title=\"" + fullsource + "\" class='source source" + source + "'>" + source + "<br></span> <a href=\"img/" + source + "/" + name + ".png\" target='_blank'><img src=\"img/" + source + "/" + name + ".png\" class='token' onerror='imgError(this)'></a>" + name);
+	$("th#name").html(
+		`<span class="stats-name">${name}</span>
+		<span class="stats-source source${source}" title="${Parser.sourceJsonToFull(source)}">${Parser.sourceJsonToAbv(source)}</span>
+		<a href="img/${source}/${name}.png" target='_blank'>
+			<img src="img/${source}/${name}.png" class='token' onerror='imgError(this)'>
+		</a>`
+	);
 
 	$("td span#size").html(Parser.sizeAbvToFull(mon.size));
 
