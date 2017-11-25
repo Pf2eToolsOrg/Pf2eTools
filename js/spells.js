@@ -202,6 +202,47 @@ function deselectSubclasses(val) {
 	return true;
 }
 
+function filterMetaMatch(valGroup, s) {
+	return ( s.meta && ((valGroup[META_RITUAL] && s.meta.ritual) || (valGroup[META_TECHNOMAGIC] && s.meta.technomagic)) )
+		|| ( valGroup[META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
+		|| ( valGroup[META_ADD_V] && s.components.v )
+		|| ( valGroup[META_ADD_S] && s.components.s )
+		|| ( valGroup[META_ADD_M] && s.components.m );
+}
+
+function filterMetaMatchInverted(valGroup, s) {
+	return ( implies(s.meta && s.meta.ritual, valGroup[META_RITUAL]) )
+		&& ( implies(s.meta && s.meta.technomagic, valGroup[META_TECHNOMAGIC]) )
+		&& ( implies(s.duration.filter(d => d.concentration).length, valGroup[META_ADD_CONC]) )
+		&& ( implies(s.components.v, valGroup[META_ADD_V]) )
+		&& ( implies(s.components.s, valGroup[META_ADD_S]) )
+		&& ( implies(s.components.m, valGroup[META_ADD_M]) );
+}
+
+function filterTimeMatch(valGroup, time) {
+	return time.map(t => valGroup[t.unit]).filter(b => b).length > 0;
+}
+
+function rangeFilterMatch(valGroup, range) {
+	return valGroup[getRangeType(range)];
+}
+
+function filterClassMatch(valGroup, classes) {
+	return classes.fromClassList.filter(c => valGroup[getClassFilterStr(c)]).length > 0;
+}
+
+function filterClassMatchInverted(valGroup, classes) {
+	return classes.fromClassList.filter(c => !valGroup[getClassFilterStr(c)]).length === 0;
+}
+
+function filterSubclassMatch(valGroup, classes) {
+	return  classes.fromSubclass && classes.fromSubclass.filter(sc => valGroup[getClassFilterStr(sc.subclass)]).length > 0;
+}
+
+function filterSubclassMatchInverted(valGroup, classes) {
+	return !classes.fromSubclass || classes.fromSubclass.filter(sc => !valGroup[getClassFilterStr(sc.subclass)]).length === 0;
+}
+
 window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad);
 };
@@ -214,11 +255,13 @@ function onJsonLoad(data) {
 
 	const sourceFilter = getSourceFilter({desel: deselectUaEepc});
 	const levelFilter = new Filter({header: "Level", items: [], displayFn: getFltrSpellLevelStr});
-	const classFilter = new Filter({header: "Class", items: []});
-	const subclassFilter = new Filter({header: "Subclass", items: [], desel: deselectSubclasses});
+	const classFilter = new Filter({header: "Class", items: [], matchFn: filterClassMatch, matchFnInv: filterClassMatchInverted});
+	const subclassFilter = new Filter({header: "Subclass", items: [], desel: deselectSubclasses, matchFn: filterSubclassMatch, matchFnInv: filterSubclassMatchInverted});
 	const metaFilter = new Filter({
 		header: "Tag",
-		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
+		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC],
+		matchFn: filterMetaMatch,
+		matchFnInv: filterMetaMatchInverted
 	});
 	const schoolFilter = new Filter({header: "School", items: [], displayFn: Parser.spSchoolAbvToFull});
 	const timeFilter = new Filter({
@@ -231,7 +274,8 @@ function onJsonLoad(data) {
 			"Minutes",
 			"Hours"
 		],
-		valueFn: getFltrActionVal
+		valueFn: getFltrActionVal,
+		matchFn: filterTimeMatch
 	});
 	const rangeFilter = new Filter({
 		header: "Range",
@@ -241,7 +285,8 @@ function onJsonLoad(data) {
 			F_RNG_POINT,
 			F_RNG_AREA,
 			F_RNG_SPECIAL
-		]
+		],
+		matchFn: rangeFilterMatch
 	});
 
 	const filterBox = initFilterBox(
@@ -364,32 +409,14 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const s = spellList[$(item.elm).attr(FLTR_ID)];
 
-			let valGroup;
-
-			const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
-			const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
-			const rightMeta = handleMetaConditions(s, f[metaFilter.header], metaFilter.isInverted());
-			const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
-			const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
-			const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][getRangeType(s.range)];
-			let rightClass;
-			valGroup = f[classFilter.header];
-			if (!classFilter.isInverted()) {
-				rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromClassList.filter(c => valGroup[getClassFilterStr(c)]).length > 0;
-			} else {
-				rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromClassList.filter(c => !valGroup[getClassFilterStr(c)]).length === 0;
-			}
-			let rightSubclass;
-			valGroup = f[subclassFilter.header];
-			if (!subclassFilter.isInverted()) {
-				rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromSubclass && s.classes.fromSubclass.filter(sc => valGroup[getClassFilterStr(sc.subclass)]).length > 0;
-			} else {
-				rightSubclass = f[subclassFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| !s.classes.fromSubclass || s.classes.fromSubclass.filter(sc => !valGroup[getClassFilterStr(sc.subclass)]).length === 0;
-			}
+			const rightSource = sourceFilter.matches(f, s.source);
+			const rightLevel = levelFilter.matches(f, s.level);
+			const rightMeta = metaFilter.matches(f, s);
+			const rightSchool = schoolFilter.matches(f, s.school);
+			const rightTime = timeFilter.matches(f, s.time);
+			const rightRange = rangeFilter.matches(f, s.range);
+			let rightClass = classFilter.matches(f, s.classes);
+			let rightSubclass = subclassFilter.matches(f, s.classes);
 
 			let rightClassAndSubclass;
 			if ( (classFilter.isInverted() || subclassFilter.isInverted()) && !(classFilter.isInverted() && !subclassFilter.isInverted()) ) {
@@ -400,23 +427,6 @@ function onJsonLoad(data) {
 
 			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClassAndSubclass;
 		});
-	}
-	function handleMetaConditions(s, valGroup, isInverted) {
-		if (valGroup[FilterBox.VAL_SELECT_ALL]) return true;
-		if (!isInverted) {
-			return ( s.meta && ((valGroup[META_RITUAL] && s.meta.ritual) || (valGroup[META_TECHNOMAGIC] && s.meta.technomagic)) )
-				|| ( valGroup[META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
-				|| ( valGroup[META_ADD_V] && s.components.v )
-				|| ( valGroup[META_ADD_S] && s.components.s )
-				|| ( valGroup[META_ADD_M] && s.components.m );
-		} else {
-			return ( implies(s.meta && s.meta.ritual, valGroup[META_RITUAL]) )
-				&& ( implies(s.meta && s.meta.technomagic, valGroup[META_TECHNOMAGIC]) )
-				&& ( implies(s.duration.filter(d => d.concentration).length, valGroup[META_ADD_CONC]) )
-				&& ( implies(s.components.v, valGroup[META_ADD_V]) )
-				&& ( implies(s.components.s, valGroup[META_ADD_S]) )
-				&& ( implies(s.components.m, valGroup[META_ADD_M]) );
-		}
 	}
 
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {

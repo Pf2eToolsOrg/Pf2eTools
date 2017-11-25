@@ -1049,7 +1049,8 @@ table#stats p.subtrait {
 	outline: 0;
 }
 
-#filter-search-input-group :first-child {
+#filter-search-input-group > *:first-child,
+#filter-search-input-group > *:first-child .btn {
 	border-bottom-left-radius: 0;
 }
 
@@ -1063,21 +1064,21 @@ button#reset {
 }
 
 /* fix sort button spacing and corners */
-#listcontainer .btn-group .btn {
+#listcontainer .sortlabel.btn-group .btn {
 	border-top: 0;
 }
 
-#listcontainer .btn-group .btn+.btn:not(:last-child) {
+#listcontainer .sortlabel.btn-group .btn+.btn:not(:last-child) {
 	margin-left: 0;
 	border-left: 0;
 	border-top: 0;
 }
 
-#listcontainer .btn-group .btn:first-child {
+#listcontainer .sortlabel.btn-group .btn:first-child {
 	border-top-left-radius: 0;
 }
 
-#listcontainer .btn-group .btn:last-child {
+#listcontainer .sortlabel.btn-group .btn:last-child {
 	border-top-right-radius: 0;
 }
 

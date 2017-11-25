@@ -64,6 +64,7 @@ ATB_DATA_SC = "data-subclass";
 ATB_DATA_SRC = "data-source";
 
 STR_CANTRIP = "Cantrip";
+STR_NONE = "None";
 
 RNG_SPECIAL =  "special";
 RNG_POINT =  "point";
@@ -81,6 +82,14 @@ RNG_TOUCH = "touch";
 
 UNT_FEET = "feet";
 UNT_MILES = "miles";
+
+ABIL_STR = "Strength";
+ABIL_DEX = "Dexterity";
+ABIL_CON = "Constitution";
+ABIL_INT = "Intelligence";
+ABIL_WIS = "Wisdom";
+ABIL_CHA = "Charisma";
+ABIL_CH_ANY = "Choose Any";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -366,10 +375,10 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 }
 
 class AbilityData {
-	constructor(asText, asCollection) {
+	constructor(asText, asTextShort, asCollection) {
 		this.asText = asText;
+		this.asTextShort = asTextShort;
 		this.asCollection = asCollection;
-		this.asFilterCollection = asCollection.join(FLTR_LIST_SEP);
 	}
 }
 function utils_getAbilityData(abObj) {
@@ -377,12 +386,13 @@ function utils_getAbilityData(abObj) {
 	const mainAbs = [];
 	const allAbs = [];
 	const abs = [];
+	const shortAbs = [];
 	if (abObj !== undefined) {
 		handleAllAbilities(abObj);
 		handleAbilitiesChoose();
-		return new AbilityData(abs.join("; "), allAbs);
+		return new AbilityData(abs.join("; "), shortAbs.join("; "), allAbs);
 	}
-	return new AbilityData("", []);
+	return new AbilityData("", "", []);
 
 	function handleAllAbilities(abilityList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
@@ -392,7 +402,9 @@ function utils_getAbilityData(abObj) {
 
 	function handleAbility(parent, ab) {
 		if (parent[ab.toLowerCase()] !== undefined) {
-			abs.push(ab + " " + (parent[ab.toLowerCase()] < 0 ? "" : "+") + parent[ab.toLowerCase()]);
+			const toAdd = `${ab} ${(parent[ab.toLowerCase()] < 0 ? "" : "+")}${parent[ab.toLowerCase()]}`;
+			abs.push(toAdd);
+			shortAbs.push(toAdd);
 			mainAbs.push(ab);
 			allAbs.push(ab.toLowerCase());
 		}
@@ -402,7 +414,7 @@ function utils_getAbilityData(abObj) {
 		if (abObj.choose !== undefined) {
 			for (let i = 0; i < abObj.choose.length; ++i) {
 				const item = abObj.choose[i];
-				let outStack = "Choose ";
+				let outStack = "";
 				if (item.predefined !== undefined) {
 					for (let j = 0; j < item.predefined.length; ++j) {
 						const subAbs = [];
@@ -444,9 +456,9 @@ function utils_getAbilityData(abObj) {
 						}
 					}
 				}
-				abs.push(outStack)
+				abs.push("Choose " + outStack);
+				shortAbs.push(outStack.uppercaseFirst());
 			}
-
 		}
 	}
 
@@ -819,10 +831,6 @@ SRC_MM 		= "MM";
 SRC_OotA 	= "OotA";
 SRC_PHB 	= "PHB";
 SRC_PotA 	= "PotA";
-SRC_PSA 	= "PSA";
-SRC_PSI 	= "PSI";
-SRC_PSK 	= "PSK";
-SRC_PSZ 	= "PSZ";
 SRC_RoT 	= "RoT";
 SRC_RoTOS 	= "RoTOS";
 SRC_SCAG 	= "SCAG";
@@ -838,6 +846,13 @@ SRC_OGA 	= "OGA";
 SRC_ALCoS 	= "ALCurseOfStrahd";
 SRC_ALEE 	= "ALElementalEvil";
 SRC_ALRoD 	= "ALRageOfDemons";
+
+SRC_PS_PREFIX = "PS";
+
+SRC_PSA 	= SRC_PS_PREFIX + "A";
+SRC_PSI 	= SRC_PS_PREFIX + "I";
+SRC_PSK 	= SRC_PS_PREFIX + "K";
+SRC_PSZ 	= SRC_PS_PREFIX + "Z";
 
 SRC_UA_PREFIX = "UA";
 
@@ -1127,9 +1142,49 @@ function search(options) {
 }
 
 function getSourceFilter(options) {
-	const allOptions = {header: "Source", items: [], displayFn: Parser.sourceJsonToFullCompactPrefix};
-	if (options) Object.assign(allOptions, options); // merge in anything we get passed
-	return new Filter(allOptions);
+	const baseOptions = {
+		header: "Source",
+		items: [],
+		displayFn: Parser.sourceJsonToFullCompactPrefix,
+		desel: function(val) {
+			return val.startsWith(SRC_UA_PREFIX) || val.startsWith(SRC_PS_PREFIX);
+		}
+	};
+	return getFilterWithMergedOptions(baseOptions, options);
+}
+
+function getAsiFilter(options) {
+	const baseOptions = {
+		header: "Ability Bonus",
+		items: [
+			ABIL_STR,
+			ABIL_DEX,
+			ABIL_CON,
+			ABIL_INT,
+			ABIL_WIS,
+			ABIL_CHA,
+			ABIL_CH_ANY
+		],
+		matchFn: filterAsiMatch,
+		matchFnInv: filterAsiMatchInverted
+	};
+	return getFilterWithMergedOptions(baseOptions, options);
+
+	function filterAsiMatch(valGroup, parsedAsi) {
+		return (valGroup[STR_NONE] && parsedAsi.asText === STR_NONE)
+			|| (valGroup[ABIL_CH_ANY] && parsedAsi.asText.toLowerCase().includes("choose any"))
+			|| parsedAsi.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
+	}
+	function filterAsiMatchInverted(valGroup, parsedAsi) {
+		return ( implies(parsedAsi.asText === STR_NONE, valGroup[STR_NONE]) )
+			&& ( implies(parsedAsi.asText.toLowerCase().includes("choose any"), valGroup[ABIL_CH_ANY]) )
+			&& (parsedAsi.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
+	}
+}
+
+function getFilterWithMergedOptions(baseOptions, addOptions) {
+	if (addOptions) Object.assign(baseOptions, addOptions); // merge in anything we get passed
+	return new Filter(baseOptions);
 }
 
 function initFilterBox(...filterList) {

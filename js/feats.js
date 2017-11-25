@@ -2,15 +2,6 @@ const JSON_URL = "data/feats.json";
 let tabledefault = "";
 let featlist;
 
-const ABIL_STR = "Strength";
-const ABIL_DEX = "Dexterity";
-const ABIL_CON = "Constitution";
-const ABIL_INT = "Intelligence";
-const ABIL_WIS = "Wisdom";
-const ABIL_CHA = "Charisma";
-const ABIL_CH_ANY = "Choose Any";
-const ABIL_NONE = "None";
-
 function deselUa(val) {
 	return val.startsWith(SRC_UA_PREFIX);
 }
@@ -20,25 +11,13 @@ window.onload = function load() {
 };
 
 function onJsonLoad(data) {
-	const NONE = "None";
 	tabledefault = $("#stats").html();
 	featlist = data.feat;
 
 	// TODO prerequisite filter
-	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullCompactPrefix, desel: deselUa});
-	const asiFilter = new Filter({
-		header: "Ability Bonus",
-		items: [
-			ABIL_STR,
-			ABIL_DEX,
-			ABIL_CON,
-			ABIL_INT,
-			ABIL_WIS,
-			ABIL_CHA,
-			ABIL_CH_ANY,
-			ABIL_NONE
-		]
-	});
+	const sourceFilter = getSourceFilter();
+	const asiFilter = getAsiFilter();
+	asiFilter.addIfAbsent(STR_NONE);
 	const filterBox = initFilterBox(
 		sourceFilter,
 		asiFilter
@@ -50,14 +29,14 @@ function onJsonLoad(data) {
 		const curfeat = featlist[i];
 		const name = curfeat.name;
 		const ability = utils_getAbilityData(curfeat.ability);
-		if (!ability.asText) ability.asText = NONE;
+		if (!ability.asText) ability.asText = STR_NONE;
 		curfeat._pAbility = ability; // save regenerating it when filtering
 		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
-		if (!prereqText) prereqText = NONE;
+		if (!prereqText) prereqText = STR_NONE;
 		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";
 		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 source${curfeat.source}`;
-		const CLS_COL_3 = "ability " + (ability.asText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
-		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
+		const CLS_COL_3 = "ability " + (ability.asText === STR_NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
+		const CLS_COL_4 = "prerequisite " + (prereqText === STR_NONE ? "list-entry-none " : "") + "col-xs-3";
 
 		tempString += `
 			<li ${FLTR_ID}="${i}">
@@ -97,23 +76,11 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const ft = featlist[$(item.elm).attr(FLTR_ID)];
 
-			const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][ft.source];
-			const rightAsi = handleAsiConditions(ft, f[asiFilter.header], asiFilter.isInverted());
+			const rightSource = sourceFilter.matches(f, ft.source);
+			const rightAsi = asiFilter.matches(f, ft._pAbility);
 
 			return rightSource && rightAsi;
 		});
-	}
-	function handleAsiConditions(ft, valGroup, isInverted) {
-		if (valGroup[FilterBox.VAL_SELECT_ALL]) return true;
-		if (!isInverted) {
-			return (valGroup[ABIL_NONE] && ft._pAbility.asText === NONE)
-				|| (valGroup[ABIL_CH_ANY] && ft._pAbility.asText.toLowerCase().includes("choose any"))
-				|| ft._pAbility.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
-		} else {
-			return ( implies(ft._pAbility.asText === NONE, valGroup[ABIL_NONE]) )
-				&& ( implies(ft._pAbility.asText.toLowerCase().includes("choose any"), valGroup[ABIL_CH_ANY]) )
-				&& (ft._pAbility.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
-		}
 	}
 
 	initHistory();

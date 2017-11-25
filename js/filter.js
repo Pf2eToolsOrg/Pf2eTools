@@ -23,7 +23,6 @@ class FilterBox {
 		this.filterList = filterList;
 
 		this.headers = {};
-		this._$boxes = [];
 	}
 
 	/**
@@ -31,13 +30,14 @@ class FilterBox {
 	 */
 	render() {
 		const $buttonGroup = getButtonGroup();
+		const $inputGroup = $(this.inputGroup);
 
 		const $outer = makeOuterList();
 		for (let i = 0; i < this.filterList.length; ++i) {
 			$outer.append(makeOuterItem(this, this.filterList[i]));
 		}
-		$(this.inputGroup).append($outer);
-		$(this.inputGroup).prepend($buttonGroup);
+		$inputGroup.append($outer);
+		$inputGroup.prepend($buttonGroup);
 
 		// selection library
 		$.fn.select2.defaults.set("theme", "bootstrap");
@@ -99,12 +99,14 @@ class FilterBox {
 				$line.append($label);
 				const $invert = $(`<button class="btn btn-default btn-xs invert-button" style="margin-left: auto">Invert</button>`);
 				$line.append($invert);
-				const $all = $(`<button class="btn btn-default btn-xs" style="margin-left: 15px">All</button>`);
-				$line.append($all);
-				const $none = $(`<button class="btn btn-default btn-xs" style="margin-left: 5px">None</button>`);
-				$line.append($none);
-				const $default = $(`<button class="btn btn-default btn-xs" style="margin-left: 5px">Default</button>`);
-				$line.append($default);
+				const $quickBtns = $(`<span class="btn-group" style="margin-left: 12px"/>`);
+				const $all = $(`<button class="btn btn-default btn-xs">All</button>`);
+				$quickBtns.append($all);
+				const $none = $(`<button class="btn btn-default btn-xs">None</button>`);
+				$quickBtns.append($none);
+				const $default = $(`<button class="btn btn-default btn-xs">Default</button>`);
+				$quickBtns.append($default);
+				$line.append($quickBtns);
 
 				$invert.on(EVNT_CLICK, function() {
 					newHeader.invert = !newHeader.invert;
@@ -361,6 +363,8 @@ class Filter {
 	 *
 	 *   (OPTIONAL)
 	 *   desel: a function, defaults items as deselected if `desel(valueFn(item))` is true
+	 *
+	 *   TODO docs for other shite
 	 */
 	constructor(options) {
 		this.header = options.header;
@@ -368,6 +372,8 @@ class Filter {
 		this.displayFn = options.displayFn;
 		this.valueFn = options.valueFn;
 		this.desel = options.desel;
+		this.matchFn = options.matchFn ? options.matchFn : Filter.basicMatchFn;
+		this.matchFnInv = options.matchFnInv;
 
 		this.invert = false;
 	}
@@ -386,4 +392,25 @@ class Filter {
 	addIfAbsent(item) {
 		if ($.inArray(item, this.items) === -1) this.items.push(item);
 	}
+
+	matches(valObj, toCheck) {
+		if (valObj[this.header][FilterBox.VAL_SELECT_ALL]) return true;
+		if (this.isInverted() && this.matchFnInv) {
+			return this.matchFnInv(valObj[this.header], toCheck);
+		} else {
+			return this.matchFn(valObj[this.header], toCheck);
+		}
+	}
 }
+
+/**
+ * An example of a basic filter which could be used by `Filter.matches(..)`
+ * If no `matchFn` is specified for a `Filter`, this is the default match function.
+ *
+ * @param valGroup A group from the current filter values (all current filter values returned by `FilterBox.getValues()`)
+ * @param toCheck The value compare with the selected filters (e.g. `spell.level`)
+ * @returns {*}
+ */
+Filter.basicMatchFn = function(valGroup, toCheck) {
+	return valGroup[toCheck];
+};
