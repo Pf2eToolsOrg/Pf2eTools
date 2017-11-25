@@ -25,7 +25,6 @@ function onJsonLoad(data) {
 	featlist = data.feat;
 
 	// TODO prerequisite filter
-	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
 	const sourceFilter = new Filter({header: "Source", items: [], displayFn: Parser.sourceJsonToFullCompactPrefix, desel: deselUa});
 	const asiFilter = new Filter({
 		header: "Ability Bonus",
@@ -40,11 +39,10 @@ function onJsonLoad(data) {
 			ABIL_NONE
 		]
 	});
-	const filterList = [
+	const filterBox = initFilterBox(
 		sourceFilter,
 		asiFilter
-	];
-	const filterBox = new FilterBox(filterAndSearchBar, filterList);
+	);
 
 	const featTable = $("ul.feats");
 	let tempString = "";
@@ -72,11 +70,9 @@ function onJsonLoad(data) {
 			</li>`;
 
 		// populate filters
-		if ($.inArray(curfeat.source, sourceFilter.items) === -1) sourceFilter.items.push(curfeat.source);
+		sourceFilter.addIfAbsent(curfeat.source);
 	}
-
 	featTable.append(tempString);
-
 
 	// sort filters
 	sourceFilter.items.sort(ascSort);
@@ -86,11 +82,6 @@ function onJsonLoad(data) {
 		valueNames: ['name', 'source', 'ability', 'prerequisite'],
 		listClass: "feats"
 	});
-
-	// add filter reset to reset button
-	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
-		filterBox.reset();
-	}, false);
 
 	filterBox.render();
 
@@ -131,15 +122,15 @@ function onJsonLoad(data) {
 
 function loadhash(id) {
 	$("#stats").html(tabledefault);
-	var curfeat = featlist[id];
-	var name = curfeat.name;
-	$("th#name").html(name);
-	$("td#prerequisite").html("")
-	var prerequisite = utils_makePrerequisite(curfeat.prerequisite);
-	if (prerequisite) $("td#prerequisite").html("Prerequisite: " + prerequisite);
+	const feat = featlist[id];
+
+	$("th#name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${feat.source}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>`);
+
+	const prerequisite = utils_makePrerequisite(feat.prerequisite);
+	$("td#prerequisite").html(prerequisite ? "Prerequisite: " + prerequisite : "");
 	$("tr.text").remove();
-	addAttributeItem(curfeat.ability, curfeat.entries);
-	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(curfeat.entries, "p") + "</td></tr>");
+	addAttributeItem(feat.ability, feat.entries);
+	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(feat.entries, "p") + "</td></tr>");
 
 	function addAttributeItem(abilityObj, textArray) {
 		if (abilityObj === undefined) return;
