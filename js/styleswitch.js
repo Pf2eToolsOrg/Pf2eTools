@@ -225,7 +225,7 @@ tr.legendary td {
 }
 
 #msbcr tr:nth-child(even) {
-	background-color: rgba(0, 0, 0, 0.31);
+	background: rgba(0, 0, 0, 0.31);
 }
 
 #croutput {
@@ -268,7 +268,7 @@ table#stats td._class_feature table th {
 #rulescontent table tbody tr:nth-child(odd) td,
 ul.list li:nth-child(odd),
 #monsterfeatures tr:nth-child(odd) {
-	background-color: rgba(0, 0, 0, 0.31);
+	background: rgba(0, 0, 0, 0.31);
 }
 
 #rulescontent caption {
