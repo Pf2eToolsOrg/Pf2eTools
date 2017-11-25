@@ -14,7 +14,7 @@ function onJsonLoad(data) {
 	tabledefault = $("#stats").html();
 	featlist = data.feat;
 
-	// TODO prerequisite filter
+	// TODO prerequisite filter?
 	const sourceFilter = getSourceFilter();
 	const asiFilter = getAsiFilter();
 	asiFilter.addIfAbsent(STR_NONE);
