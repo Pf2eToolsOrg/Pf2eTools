@@ -1140,10 +1140,10 @@
 			"entries": [
 				"This item first appears to be a Large sealed iron barrel weighing 500 pounds. The barrel has a hidden catch, which can be found with a successful DC 20 Intelligence (Investigation) check. Releasing the catch unlocks a hatch at one end of the barrel, allowing two Medium or smaller creatures to crawl inside. Ten levers are set in a row at the far end, each in a neutral position, able to move either up or down. When certain levers are used, the apparatus transforms to resemble a giant lobster.",
 				"The apparatus of Kwalish is a Large object with the following statistics:",
-				"Armor Class: 20",
-				"Hit Points: 200",
-				"Speed: 30 ft., swim 30 ft. (or 0 ft. for both if the legs and tail aren't extended)",
-				"Damage Immunities: poison, psychic",
+				"{@bold Armor Class:} 20",
+				"{@bold Hit Points:} 200",
+				"{@bold Speed:} 30 ft., swim 30 ft. (or 0 ft. for both if the legs and tail aren't extended)",
+				"{@bold Damage Immunities:} poison, psychic",
 				"To be used as a vehicle, the apparatus requires one pilot. While the apparatus's hatch is closed, the compartment is airtight and watertight. The compartment holds enough air for 10 hours of breathing, divided by the number of breathing creatures inside.",
 				" The apparatus floats on water. It can also go underwater to a depth of 900 feet. Below that, the vehicle takes 2d6 bludgeoning damage per minute from pressure.",
 				"A creature in the compartment can use an action to move as many as two of the apparatus's levers up or down. After each use, a lever goes back to its neutral position. Each lever, from left to right, functions as shown in the Apparatus of Kwalish Levers table.",
@@ -1181,8 +1181,8 @@
 						],
 						[
 							"5",
-							"Each extended claw makes the following melee weapon attack: +8 to hit, reach 5 ft., one target. Hit: 7 (2d6) bludgeoning damage.",
-							"Each extended claw makes the following melee weapon attack: +8 to hit, reach 5 ft., one target. Hit: The target is grappled (escape DC 15)."
+							"Each extended claw makes the following melee weapon attack: +8 to hit, reach 5 ft., one target. {@italic Hit:} 7 (2d6) bludgeoning damage.",
+							"Each extended claw makes the following melee weapon attack: +8 to hit, reach 5 ft., one target. {@italic Hit:} The target is grappled (escape DC 15)."
 						],
 						[
 							"6",
@@ -1245,7 +1245,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"While wearing this armor, you have resistance to bludgeoning damage.",
-				"Curse. This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to piercing and slashing damage."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to piercing and slashing damage."
+					]
+				}
 			]
 		},
 		{
@@ -1263,7 +1269,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"While wearing this armor, you have resistance to piercing damage.",
-				"Curse. This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to bludgeoning and slashing damage."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to bludgeoning and slashing damage."
+					]
+				}
 			]
 		},
 		{
@@ -1281,20 +1293,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"While wearing this armor, you have resistance to slashing damage.",
-				"Curse. This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to bludgeoning and piercing damage."
-			]
-		},
-		{
-			"name": "Arrow of Slaying",
-			"type": "A",
-			"weight": "0.05",
-			"tier": "Minor",
-			"rarity": "Very Rare",
-			"source": "DMG",
-			"page": "152",
-			"entries": [
-				"An arrow of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both arrows of dragon slaying and arrows of blue dragon slaying. If a creature belonging to the type, race, or group associated with an arrow of slaying takes damage from the arrow, the creature must make a DC 17 Constitution saving throw, taking an extra 6d10 piercing damage on a failed save, or half as much extra damage on a successful one.",
-				"Once an arrow of slaying deals its extra damage to a creature, it becomes a nonmagical arrow."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This armor is cursed, a fact that is revealed only when an {@spell identify|phb} spell is cast on the armor or you attune to it. Attuning to the armor curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic; removing the armor fails to end the curse. While cursed you have vulnerability to bludgeoning and piercing damage."
+					]
+				}
 			]
 		},
 		{
@@ -1455,7 +1460,7 @@
 					"rows": [
 						[
 							"01",
-							"5d4 toadstools sprout. If a creature eats a toadstool, roll any die. On an odd roll, the eater must succeed on a DC 15 Constitution saving throw or take Sd6 poison damage and become poisoned for 1 hour. On an even roll, the eater gains 5d6 temporary hit points for 1 hour."
+							"5d4 toadstools sprout. If a creature eats a toadstool, roll any die. On an odd roll, the eater must succeed on a DC 15 Constitution saving throw or take 5d6 poison damage and become poisoned for 1 hour. On an even roll, the eater gains 5d6 temporary hit points for 1 hour."
 						],
 						[
 							"02-10",
@@ -1807,7 +1812,7 @@
 			"source": "DMG",
 			"page": "154",
 			"entries": [
-				"This small black sphere measures \u00BE of an inch in diameter and weighs an ounce. Typically, 1d4+4 beads of force are found together.",
+				"This small black sphere measures \u00BE of an inch in diameter and weighs an ounce. Typically, 1d4+4{@italic beads of force} are found together.",
 				"You can use an action to throw the bead up to 60 feet. The bead explodes on impact and is destroyed. Each creature within a 10-foot radius of where the bead landed must succeed on a DC 15 Dexterity saving throw or take 5d4 force damage. A sphere of transparent force then encloses the area for 1 minute. Any creature that failed the save and is completely within the area is trapped inside this sphere. Creatures that succeeded on the save, or are partially within the area, are pushed away from the center of the sphere until they are no longer inside it. Only breathable air can pass through the sphere's wall. No attack or other effect can.",
 				"An enclosed creature can use its action to push against the sphere's wall, moving the sphere up to half the creature's walking speed. The sphere can be picked up, and its magic causes it to weigh only 1 pound, regardless of the weight of creatures inside."
 			]
@@ -1851,13 +1856,23 @@
 			"reqAttune": "YES",
 			"entries": [
 				"While wearing this belt, you gain the following benefits:",
-				"• Your Constitution score increases by 2, to a maximum of 20.",
-				"• You have advantage on Charisma (Persuasion) checks made to interact with dwarves.",
+				{
+					"type": "list",
+					"items": [
+						"Your Constitution score increases by 2, to a maximum of 20.",
+						"You have advantage on Charisma (Persuasion) checks made to interact with dwarves."
+					]
+				},
 				"In addition, while attuned to the belt, you have a 50 percent chance each day at dawn of growing a full beard if you're capable of growing one, or a visibly thicker beard if you already have one.",
 				"If you aren't a dwarf, you gain the following additional benefits while wearing the belt:",
-				"• You have advantage on saving throws against poison, and you have resistance against poison damage.",
-				"• You have darkvision out to a range of 60 feet.",
-				"• You can speak, read, and write Dwarvish."
+				{
+					"type": "list",
+					"items": [
+						"You have advantage on saving throws against poison, and you have resistance against poison damage.",
+						"You have darkvision out to a range of 60 feet.",
+						"You can speak, read, and write Dwarvish."
+					]
+				}
 			],
 			"modifier": [
 				{
@@ -2051,19 +2066,6 @@
 			"entries": [
 				"Kavan was a ruthless chieftain whose tribe lived in the Balinok Mountains centuries before the arrival of {@creature Strahd von Zarovich|CoS}. Although he was very much alive, Kavan had some traits in common with vampires: he slept during the day and hunted at night, he drank the blood of his prey, and he lived underground. In battle, he wielded a spear stained with blood. His was the first blood spear, a weapon that drains life from those it kills and transfers that life to its wielder, imbuing that individual with the stamina to keep fighting.",
 				"When you hit with a melee attack using this magic spear and reduce the target to 0 hit points, you gain 2d6 temporary hit points."
-			]
-		},
-		{
-			"name": "Blowgun Needle of Slaying",
-			"type": "A",
-			"weight": "0.02",
-			"tier": "Minor",
-			"rarity": "Very Rare",
-			"source": "DMG",
-			"page": "152",
-			"entries": [
-				"A blowgun needle of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both needles of dragon slaying and needles of blue dragon slaying. If a creature belonging to the type, race, or group associated with a needle of slaying takes damage from the needle the creature must make a DC 17 Constitution saving throw, taking an extra 6d10 piercing damage on a failed save, or half as much extra damage on a successful one.",
-				"Once a needle of slaying deals its extra damage to a creature, it becomes a nonmagical blowgun needle."
 			]
 		},
 		{
@@ -2588,7 +2590,7 @@
 			"page": "157",
 			"entries": [
 				"You can speak the carpet's command word as an action to make the carpet hover and fly. It moves according to your spoken directions, provided that you are within 30 feet of it.",
-				"A 3 ft. x 5 ft. carpet can carry up to 200 lb. at a fly speed of 80 feet. A carpet can carry up to twice the weight shown on the table, but it flies at half speed if it carries more than its normal capacity."
+				"A 3 ft. x 5 ft. carpet can carry up to 200 lb. at a fly speed of 80 feet. A carpet can carry up to twice this weight, but it flies at half speed if it carries more than its normal capacity."
 			]
 		},
 		{
@@ -2600,7 +2602,7 @@
 			"page": "157",
 			"entries": [
 				"You can speak the carpet's command word as an action to make the carpet hover and fly. It moves according to your spoken directions, provided that you are within 30 feet of it.",
-				"A 4 ft. x 6 ft. carpet can carry up to 400 lb. at a fly speed of 60 feet. A carpet can carry up to twice the weight shown on the table, but it flies at half speed if it carries more than its normal capacity."
+				"A 4 ft. x 6 ft. carpet can carry up to 400 lb. at a fly speed of 60 feet. A carpet can carry up to twice this weight, but it flies at half speed if it carries more than its normal capacity."
 			]
 		},
 		{
@@ -2612,7 +2614,7 @@
 			"page": "157",
 			"entries": [
 				"You can speak the carpet's command word as an action to make the carpet hover and fly. It moves according to your spoken directions, provided that you are within 30 feet of it.",
-				"A 5 ft. x 7 ft. carpet can carry up to 600 lb. at a fly speed of 40 feet. A carpet can carry up to twice the weight shown on the table, but it flies at half speed if it carries more than its normal capacity."
+				"A 5 ft. x 7 ft. carpet can carry up to 600 lb. at a fly speed of 40 feet. A carpet can carry up to twice this weight, but it flies at half speed if it carries more than its normal capacity."
 			]
 		},
 		{
@@ -2624,7 +2626,7 @@
 			"page": "157",
 			"entries": [
 				"You can speak the carpet's command word as an action to make the carpet hover and fly. It moves according to your spoken directions, provided that you are within 30 feet of it.",
-				"A 6 ft. x 9 ft. carpet can carry up to 800 lb. at a fly speed of 30 feet. A carpet can carry up to twice the weight shown on the table, but it flies at half speed if it carries more than its normal capacity."
+				"A 6 ft. x 9 ft. carpet can carry up to 800 lb. at a fly speed of 30 feet. A carpet can carry up to twice this weight, but it flies at half speed if it carries more than its normal capacity."
 			]
 		},
 		{
@@ -2657,7 +2659,7 @@
 			"source": "DMG",
 			"page": "158",
 			"entries": [
-				"While incense is burning in this censer, you can use an action to speak the censer's command word and summon an {@spell air elemental|phb}, as if you had cast the {@spell conjure elemental|phb} spell. The censer can't be used this way again until the next dawn.",
+				"While incense is burning in this censer, you can use an action to speak the censer's command word and summon an {@creature air elemental|mm}, as if you had cast the {@spell conjure elemental|phb} spell. The censer can't be used this way again until the next dawn.",
 				"This 6-inch-wide, 1-foot-high vessel resembles a chalice with a decorated lid. It weighs 1 pound."
 			]
 		},
@@ -2767,11 +2769,16 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This fine garment is made of black silk interwoven with faint silvery threads. While wearing it, you gain the following benefits:",
-				"• You have resistance to poison damage.",
-				"• You have a climbing speed equal to your walking speed.",
-				"• You can move up, down, and across vertical surfaces and upside down along ceilings, while leaving your hands free.",
-				"• You can't be caught in webs of any sort and can move through webs as if they were difficult terrain.",
-				"• You can use an action to cast the {@spell web|phb} spell (save DC 13). The web created by the spell fills twice its normal area. Once used, this property of the cloak can't be used again until the next dawn."
+				{
+					"type": "list",
+					"items": [
+						"You have resistance to poison damage.",
+						"You have a climbing speed equal to your walking speed.",
+						"You can move up, down, and across vertical surfaces and upside down along ceilings, while leaving your hands free.",
+						"You can't be caught in webs of any sort and can move through webs as if they were difficult terrain.",
+						"You can use an action to cast the {@spell web|phb} spell (save DC 13). The web created by the spell fills twice its normal area. Once used, this property of the cloak can't be used again until the next dawn."
+					]
+				}
 			]
 		},
 		{
@@ -2953,19 +2960,6 @@
 			]
 		},
 		{
-			"name": "Crossbow Bolt of Slaying",
-			"type": "A",
-			"weight": "0.075",
-			"tier": "Minor",
-			"rarity": "Very Rare",
-			"source": "DMG",
-			"page": "152",
-			"entries": [
-				"A crossbow bolt of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both bolts of dragon slaying and bolts of blue dragon slaying. If a creature belonging to the type, race, or group associated with a bolt of slaying takes damage from the bolt the creature must make a DC 17 Constitution saving throw, taking an extra 6d10 piercing damage on a failed save, or half as much extra damage on a successful one.",
-				"Once a bolt of slaying deals its extra damage to a creature, it becomes a nonmagical crossbow bolt."
-			]
-		},
-		{
 			"name": "Crowbar",
 			"type": "G",
 			"rarity": "None",
@@ -3010,8 +3004,8 @@
 			"page": "159",
 			"reqAttune": "YES",
 			"entries": [
-				"This crystal ball is about 6 inches in diameter. While touching it, you can cast the {@spell scrying|phb} spell (save DC 17) with it.",
-				"You can use an action to cast the {@spell detect thoughts|phb} spell (save DC 17) while you are {@spell scrying|phb} with the crystal ball, targeting creatures you can see within 30 feet of the spell's sensor. You don't need to concentrate on this {@spell detect thoughts|phb} to maintain it during its duration, but it ends if {@spell scrying|phb} ends."
+				"This {@item crystal ball|dmg} is about 6 inches in diameter. While touching it, you can cast the {@spell scrying|phb} spell (save DC 17) with it.",
+				"You can use an action to cast the {@spell detect thoughts|phb} spell (save DC 17) while you are {@spell scrying|phb} with the {@item crystal ball|dmg}, targeting creatures you can see within 30 feet of the spell's sensor. You don't need to concentrate on this {@spell detect thoughts|phb} to maintain it during its duration, but it ends if {@spell scrying|phb} ends."
 			]
 		},
 		{
@@ -3024,8 +3018,8 @@
 			"page": "159",
 			"reqAttune": "YES",
 			"entries": [
-				"This crystal ball is about 6 inches in diameter. While touching it, you can cast the {@spell scrying|phb} spell (save DC 17) with it.",
-				"While {@spell scrying|phb} with the crystal ball, you can communicate telepathically with creatures you can see within 30 feet of the spell's sensor. You can also use an action to cast the {@spell suggestion|phb} spell (save DC 17) through the sensor on one of those creatures. You don't need to concentrate on this suggestion to maintain it during its duration, but it ends if {@spell scrying|phb} ends. Once used, the suggestion power of the crystal ball can't be used again until the next dawn."
+				"This {@item crystal ball|dmg} is about 6 inches in diameter. While touching it, you can cast the {@spell scrying|phb} spell (save DC 17) with it.",
+				"While {@spell scrying|phb} with the {@item crystal ball|dmg}, you can communicate telepathically with creatures you can see within 30 feet of the spell's sensor. You can also use an action to cast the {@spell suggestion|phb} spell (save DC 17) through the sensor on one of those creatures. You don't need to concentrate on this suggestion to maintain it during its duration, but it ends if {@spell scrying|phb} ends. Once used, the suggestion power of the {@item crystal ball|dmg} can't be used again until the next dawn."
 			]
 		},
 		{
@@ -3038,8 +3032,8 @@
 			"page": "159",
 			"reqAttune": "YES",
 			"entries": [
-				"This crystal ball is about 6 inches in diameter. While touching it, you can cast the {@spell scrying|phb} spell (save DC 17) with it.",
-				"While {@spell scrying|phb} with the crystal ball, you have truesight with a radius of 120 feet centered on the spell's sensor."
+				"This {@item crystal ball|dmg} is about 6 inches in diameter. While touching it, you can cast the {@spell scrying|phb} spell (save DC 17) with it.",
+				"While {@spell scrying|phb} with the {@item crystal ball|dmg}, you have truesight with a radius of 120 feet centered on the spell's sensor."
 			]
 		},
 		{
@@ -3215,9 +3209,14 @@
 			"entries": [
 				"This stoppered flask sloshes when shaken, as if it contains water. The decanter weighs 2 pounds.",
 				"You can use an action to remove the stopper and speak one of three command words, whereupon an amount of fresh water or salt water (your choice) pours out of the flask. The water stops pouring out at the start of your next turn. Choose from the following options:",
-				"• \"Stream\" produces 1 gallon of water.",
-				"• \"Fountain\" produces 5 gallons of water.",
-				"• \"Geyser\" produces 30 gallons of water that gushes forth in a geyser 30 feet long and 1 foot wide. As a bonus action while holding the decanter, you can aim the geyser at a creature you can see within 30 feet of you. The target must succeed on a DC 13 Strength saving throw or take 1d4 bludgeoning damage and fall prone. Instead of a creature, you can target an object that isn't being worn or carried and that weighs no more than 200 pounds. The object is either knocked over or pushed up to 15 feet away from you."
+				{
+					"type": "list",
+					"items": [
+						"\"Stream\" produces 1 gallon of water.",
+						"\"Fountain\" produces 5 gallons of water.",
+						"\"Geyser\" produces 30 gallons of water that gushes forth in a geyser 30 feet long and 1 foot wide. As a bonus action while holding the decanter, you can aim the geyser at a creature you can see within 30 feet of you. The target must succeed on a DC 13 Strength saving throw or take 1d4 bludgeoning damage and fall prone. Instead of a creature, you can target an object that isn't being worn or carried and that weighs no more than 200 pounds. The object is either knocked over or pushed up to 15 feet away from you."
+					]
+				}
 			]
 		},
 		{
@@ -3230,7 +3229,7 @@
 			"entries": [
 				"This box contains a set of parchment cards. A full deck has 34 cards. A deck found as treasure is usually missing 1d20-1 cards.",
 				"The magic of the deck functions only if cards are drawn at random (you can use an altered deck of playing cards to simulate the deck). You can use an action to draw a card at random from the deck and throw it to the ground at a point within 30 feet of you.",
-				"An illusion of one or more creatures forms over the thrown card and remains until dispelled. An illusory creature appears real, of the appropriate size, and behaves as if it were a real creature (as presented in the Monster Manual), except that it can do no harm. While you are within 120 feet of the illusory creature and can see it, you can use an action to move it magically anywhere within 30 feet of its card. Any physical interaction with the illusory creature reveals it to be an illusion, because objects pass through it. Someone who uses an action to visually inspect the creature identifies it as illusory with a successful DC 15 Intelligence (Investigation) check. The creature then appears translucent.",
+				"An illusion of one or more creatures forms over the thrown card and remains until dispelled. An illusory creature appears real, of the appropriate size, and behaves as if it were a real creature, except that it can do no harm. While you are within 120 feet of the illusory creature and can see it, you can use an action to move it magically anywhere within 30 feet of its card. Any physical interaction with the illusory creature reveals it to be an illusion, because objects pass through it. Someone who uses an action to visually inspect the creature identifies it as illusory with a successful DC 15 Intelligence (Investigation) check. The creature then appears translucent.",
 				"The illusion lasts until its card is moved or the illusion is dispelled. When the illusion ends, the image on its card disappears, and that card can't be used again.",
 				{
 					"type": "table",
@@ -3391,6 +3390,14 @@
 				"Before you draw a card, you must declare how many cards you intend to draw and then draw them randomly (you can use an altered deck of playing cards to simulate the deck). Any cards drawn in excess of this number have no effect. Otherwise, as soon as you draw a card from the deck, its magic takes effect. You must draw each card no more than 1 hour after the previous draw. If you fail to draw the chosen number, the remaining number of cards fly from the deck on their own and take effect all at once.",
 				"Once a card is drawn, it fades from existence. Unless the card is the Fool or the Jester, the card reappears in the deck, making it possible to draw the same card twice.",
 				{
+					"type": "entries",
+					"name": "A Question of Enmity",
+					"entries": [
+						"Two of the cards in a deck of many things can earn a character the enmity of another being. With the Flames card, the enmity is overt. The character should experience the devil's malevolent efforts on multiple occasions. Seeking out the fiend shouldn't be a simple task, and the adventurer should clash with the devil's allies and followers a few times before being able to confront the devil itself."
+					]
+				},
+				"In the case of the Rogue card, the enmity is secret and should come from someone thought to be a friend or an ally. As Dungeon Master, you should wait for a dramatically appropriate moment to reveal this enmity, leaving the adventurer guessing who is likely to become a betrayer.",
+				{
 					"type": "table",
 					"colLabels": [
 						"Playing Card",
@@ -3533,7 +3540,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"While wearing this armor, you gain a +1 bonus to AC, and you can understand and speak Abyssal. In addition, the armor's clawed gauntlets turn unarmed strikes with your hands into magic weapons that deal slashing damage, with a +1 bonus to attack and damage rolls and a damage die of 1d8.",
-				"Curse. Once you don this cursed armor, you can't doff it unless you are targeted by the {@spell remove curse|phb} spell or similar magic. While wearing the armor, you have disadvantage on attack rolls against demons and on saving throws against their spells and special abilities."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"Once you don this cursed armor, you can't doff it unless you are targeted by the {@spell remove curse|phb} spell or similar magic. While wearing the armor, you have disadvantage on attack rolls against demons and on saving throws against their spells and special abilities."
+					]
+				}
 			]
 		},
 		{
@@ -8632,7 +8645,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"While holding this shield, you have resistance to damage from ranged weapon attacks.",
-				"Curse. This shield is cursed. Attuning to it curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic. Removing the shield fails to end the curse on you. Whenever a ranged weapon attack is made against a target within 10 feet of you, the curse causes you to become the target instead."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This shield is cursed. Attuning to it curses you until you are targeted by the {@spell remove curse|phb} spell or similar magic. Removing the shield fails to end the curse on you. Whenever a ranged weapon attack is made against a target within 10 feet of you, the curse causes you to become the target instead."
+					]
+				}
 			]
 		},
 		{
@@ -8723,19 +8742,6 @@
 			"weight": "10",
 			"source": "PHB",
 			"page": "150"
-		},
-		{
-			"name": "Sling Bullet of Slaying",
-			"type": "A",
-			"weight": "0.075",
-			"tier": "Major",
-			"rarity": "Very Rare",
-			"source": "DMG",
-			"page": "152",
-			"entries": [
-				"A sling bullet of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both bullets of dragon slaying and bullets of blue dragon slaying. If a creature belonging to the type, race, or group associated with a bullet of slaying takes damage from the bullet the creature must make a DC 17 Constitution saving throw, taking an extra 6d10 piercing damage on a failed save, or half as much extra damage on a successful one.",
-				"Once a bullet of slaying deals its extra damage to a creature, it becomes a nonmagical sling bullet."
-			]
 		},
 		{
 			"name": "Slippers of Spider Climbing",
@@ -12313,7 +12319,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"While you wear this gold bracelet, it grants you immunity to being petrified, and it allows you to cast {@spell flesh to stone|phb} (save DC 15) as an action. Once the spell has been cast three times, the bracelet can no longer cast it. Thereafter, you can cast {@spell stone shape|phb} as an action. After you have done this thirteen times, the bracelet loses its magic and turns from gold to lead.",
-				"Curse. The bracelet's affinity with earth manifests as an unusual curse. Creatures of flesh that are strongly related to earth and stone, such as stone giants and dwarves, have advantage on the saving throw against {@spell flesh to stone|phb} cast from the bracelet. If such a creature's save is successful, the bracelet breaks your attunement to it and casts the spell on you. You make your saving throw with disadvantage, and on a failed save you are petrified instantly."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"The bracelet's affinity with earth manifests as an unusual curse. Creatures of flesh that are strongly related to earth and stone, such as stone giants and dwarves, have advantage on the saving throw against {@spell flesh to stone|phb} cast from the bracelet. If such a creature's save is successful, the bracelet breaks your attunement to it and casts the spell on you. You make your saving throw with disadvantage, and on a failed save you are petrified instantly."
+					]
+				}
 			]
 		},
 		{
@@ -12337,7 +12349,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This dark cloak is made of cured {@creature hell hound|mm} hide. As an action, you can command the cloak to transform you into a {@creature hell hound|mm} for up to 1 hour. The transformation otherwise functions as the {@spell polymorph|phb} spell, but you can use a bonus action to revert to your normal form.",
-				"Curse. This cloak is cursed with the essence of a {@creature hell hound|mm}, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the cloak, keeping it within reach at all times.",
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This cloak is cursed with the essence of a {@creature hell hound|mm}, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the cloak, keeping it within reach at all times."
+					]
+				},
 				"The sixth time you use the cloak, and each time thereafter, you must make a DC 15 Charisma saving throw. On a failed save, the transformation lasts until dispelled or until you drop to 0 hit points, and you can't willingly return to normal form. If you ever remain in {@creature hell hound|mm} form for 6 hours, the transformation becomes permanent and you lose your sense of self. All your statistics are then replaced by those of a {@creature hell hound|mm}. Thereafter, only {@spell remove curse|phb} or similar magic allows you to regain your identity and return to normal. If you remain in this permanent form for 6 days, only a {@spell wish|phb} spell can reverse the transformation."
 			]
 		},
@@ -12350,7 +12368,13 @@
 			"page": "228",
 			"entries": [
 				"This stone is a large gem worth 150 gp.",
-				"Curse. The stone is cursed, but its magical nature is hidden; {@spell detect magic|phb} doesn't detect it. An {@spell identify|phb} spell reveals the stone's true nature. If you use the Dash or Disengage action while the stone is on your person, its curse activates. Until the curse is broken with {@spell remove curse|phb} or similar magic, your speed is reduced by 5 feet, and your maximum load and maximum lift capacities are halved. You also become unwilling to part with the stone."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"The stone is cursed, but its magical nature is hidden; {@spell detect magic|phb} doesn't detect it. An {@spell identify|phb} spell reveals the stone's true nature. If you use the Dash or Disengage action while the stone is on your person, its curse activates. Until the curse is broken with {@spell remove curse|phb} or similar magic, your speed is reduced by 5 feet, and your maximum load and maximum lift capacities are halved. You also become unwilling to part with the stone."
+					]
+				}
 			]
 		},
 		{
@@ -12458,7 +12482,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back co your hand immediately.",
-				"Curse. This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one.",
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one."
+					]
+				},
 				"Whenever you roll a 1 on an attack roll using this weapon, the weapon bends or flies to hit you in the back. Make a new attack roll with advantage against your own AC. If the result is a hit, you take damage as if you had attacked yourself with the spear."
 			]
 		},
@@ -12477,7 +12507,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you throw it, its normal and long ranges both increase by 30 feet. and it deals one extra die of damage on a hit. After you throw it and it hits or misses, it flies back co your hand immediately.",
-				"Curse. This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one.",
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with {@spell remove curse|phb} or similar magic, you are unwilling to part with the weapon, keeping it within reach at all times. In addition, you have disadvantage on attack rolls made with weapons other than this one."
+					]
+				},
 				"Whenever you roll a 1 on an attack roll using this weapon, the weapon bends or flies to hit you in the back. Make a new attack roll with advantage against your own AC. If the result is a hit, you take damage as if you had attacked yourself with the spear."
 			]
 		},
@@ -12491,7 +12527,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This polished agate appears to be a {@item stone of good luck|dmg} to anyone who tries to {@spell identify|phb} it, and it confers that item's property while on your person.",
-				"Curse. This item is cursed. While it is on your person, you take a -2 penalty to ability checks and saving throws. Until the curse is discovered, the DM secretly applies this penalty, assuming you are adding the item's bonus. You are unwilling to part with the stone until the curse is broken with {@spell remove curse|phb} or similar magic."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This item is cursed. While it is on your person, you take a -2 penalty to ability checks and saving throws. Until the curse is discovered, the DM secretly applies this penalty, assuming you are adding the item's bonus. You are unwilling to part with the stone until the curse is broken with {@spell remove curse|phb} or similar magic."
+					]
+				}
 			]
 		},
 		{
@@ -12855,7 +12897,13 @@
 				"• The armor improves your combat readiness, granting you a +5 bonus to initiative as long as you aren't incapacitated.",
 				"• The armor doesn't impose disadvantage on your Dexterity (Stealth) checks.",
 				"• The armor doesn't impose disadvantage on saving throws made to resist the effects of extreme heat (see chapter 5 of the Dungeon Master's Guide).",
-				"Curse. This armor is cursed. Whenever you don or doff it, you must make a DC 15 Constitution saving throw, taking 100 (10d10+45) poison damage on a failed save, or half as much damage on a successful one. Only a {@spell wish|phb} spell can remove the armor's curse."
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This armor is cursed. Whenever you don or doff it, you must make a DC 15 Constitution saving throw, taking 100 (10d10+45) poison damage on a failed save, or half as much damage on a successful one. Only a {@spell wish|phb} spell can remove the armor's curse."
+					]
+				}
 			]
 		},
 		{
