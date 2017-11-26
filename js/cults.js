@@ -1,15 +1,22 @@
 "use strict";
-var tabledefault = "";
 
+let tableDefault;
 window.onload = function load() {
-	tabledefault = $("#stats").html();
-	var cultlist = cultdata;
+	tableDefault = $("#stats").html();
+	const cultList = cultdata;
 
-	for (var i = 0; i < cultlist.length; i++) {
-		var curcult = cultlist[i];
-		var name = curcult.name;
-		$("ul.cults").append("<li><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name' title='"+name+"'>"+name+"</span></a></li>");
+	let tempString = "";
+	for (let i = 0; i < cultList.length; i++) {
+		const cult = cultList[i];
+
+		tempString += `
+			<li>
+				<a id='${i}' href='#${encodeURI(cult.name).toLowerCase()}' title='${cult.name}'>
+					<span class='name' title='${cult.name}'>${cult.name}</span>
+				</a>
+			</li>`;
 	}
+	$("ul.cults").append(tempString);
 
 	const list = search({
 		valueNames: ['name'],
@@ -17,20 +24,20 @@ window.onload = function load() {
 	});
 
 	initHistory()
-}
+};
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
-	var cultlist = cultdata;
-	var curcult = cultlist[id];
+	$("#stats").html(tableDefault);
+	const cultlist = cultdata;
+	const curcult = cultlist[id];
 
-	var name = curcult.name;
+	const name = curcult.name;
 	$("th#name").html(name);
 
 	$("tr.text").remove();
 
-	var textlist = curcult.text;
-	var texthtml = "";
+	const textlist = curcult.text;
+	let texthtml = "";
 
 	if (curcult.goal !== undefined) texthtml += utils_combineText(curcult.goal.text, "p", "<span class='bold'>Goals:</span> ");
 	if (curcult.cultists !== undefined) texthtml += utils_combineText(curcult.cultists.text, "p", "<span class='bold'>Typical Cultist:</span> ");
