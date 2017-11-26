@@ -14,7 +14,7 @@ function onJsonLoad (data) {
 
 	const sourceFilter = getSourceFilter();
 	const asiFilter = getAsiFilter();
-	const sizeFilter = new Filter({header: "Size", items: [], displayFn: Parser.sizeAbvToFull});
+	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 
 	const filterBox = initFilterBox(
 		sourceFilter,

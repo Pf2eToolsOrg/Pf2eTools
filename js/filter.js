@@ -349,9 +349,11 @@ class Filter {
 	 *
 	 *   header: the category header e.g. "Source"
 	 *
+	 *   (OPTIONAL)
 	 *   items: a list of items to display (after applying the displayFn) in the FilterBox once `render()`
 	 *     has been called e.g. ["PHB", "DMG"]
-	 *     Note that you can pass a pointer to a list, and add items afterwards. Call `render()` to display them.
+	 *     Note that you can pass a pointer to a list, and add items afterwards. Or pass nothing, which is equivalent to
+	 *     passing an empty list. The contents are only evaluated once `render()` is called.
 	 *
 	 *   (OPTIONAL)
 	 *   displayFn: A function to apply to each item in items when displaying the FilterBox on the page
@@ -369,7 +371,7 @@ class Filter {
 	 */
 	constructor(options) {
 		this.header = options.header;
-		this.items = options.items;
+		this.items = options.items ? options.items : [];
 		this.displayFn = options.displayFn;
 		this.valueFn = options.valueFn;
 		this.desel = options.desel;
@@ -414,4 +416,12 @@ class Filter {
  */
 Filter.basicMatchFn = function(valGroup, toCheck) {
 	return valGroup[toCheck];
+};
+
+/**
+ * An extremely simple deselect function. Simply deselects everything.
+ * Useful for creating filter boxes where the default is "everything deselected"
+ */
+Filter.deselAll = function(val) {
+	return true;
 };

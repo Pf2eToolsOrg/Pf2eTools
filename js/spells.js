@@ -202,10 +202,6 @@ function deselectUaEepc(val) {
 	}
 }
 
-function deselectSubclasses(val) {
-	return true;
-}
-
 function filterMetaMatch(valGroup, s) {
 	return ( s.meta && ((valGroup[META_RITUAL] && s.meta.ritual) || (valGroup[META_TECHNOMAGIC] && s.meta.technomagic)) )
 		|| ( valGroup[META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
@@ -258,16 +254,16 @@ function onJsonLoad(data) {
 	spellList = data.spell;
 
 	const sourceFilter = getSourceFilter({desel: deselectUaEepc});
-	const levelFilter = new Filter({header: "Level", items: [], displayFn: getFltrSpellLevelStr});
-	const classFilter = new Filter({header: "Class", items: [], matchFn: filterClassMatch, matchFnInv: filterClassMatchInverted});
-	const subclassFilter = new Filter({header: "Subclass", items: [], desel: deselectSubclasses, matchFn: filterSubclassMatch, matchFnInv: filterSubclassMatchInverted});
+	const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
+	const classFilter = new Filter({header: "Class", matchFn: filterClassMatch, matchFnInv: filterClassMatchInverted});
+	const subclassFilter = new Filter({header: "Subclass", desel: Filter.deselAll, matchFn: filterSubclassMatch, matchFnInv: filterSubclassMatchInverted});
 	const metaFilter = new Filter({
 		header: "Tag",
 		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC],
 		matchFn: filterMetaMatch,
 		matchFnInv: filterMetaMatchInverted
 	});
-	const schoolFilter = new Filter({header: "School", items: [], displayFn: Parser.spSchoolAbvToFull});
+	const schoolFilter = new Filter({header: "School", displayFn: Parser.spSchoolAbvToFull});
 	const timeFilter = new Filter({
 		header: "Cast Time",
 		items: [
@@ -369,14 +365,10 @@ function onJsonLoad(data) {
 		sourceFilter.addIfAbsent(spell.source);
 		levelFilter.addIfAbsent(spell.level);
 		schoolFilter.addIfAbsent(spell.school);
+		spell.classes.fromClassList.forEach(c => classFilter.addIfAbsent(getClassFilterStr(c)));
 		if (spell.classes.fromSubclass) {
-			spell.classes.fromSubclass.forEach(c => {
-				subclassFilter.addIfAbsent(getClassFilterStr(c.subclass));
-			});
+			spell.classes.fromSubclass.forEach(c => subclassFilter.addIfAbsent(getClassFilterStr(c.subclass)));
 		}
-		spell.classes.fromClassList.forEach(c => {
-			classFilter.addIfAbsent(getClassFilterStr(c));
-		});
 	}
 
 	spellTable.append(tempString);

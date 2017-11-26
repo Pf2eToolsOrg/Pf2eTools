@@ -731,17 +731,30 @@ Parser._spSubclassItem = function (fromSubclass) {
 	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
-Parser.monTypeToPrimary = function(type) {
-	return typeof type === "string" ? type : type.type;
-};
-Parser.monTypeToFull = function(type) {
-	if (typeof type === "string") return type; // handles e.g. "fey"
-	const tags = [];
-	for (const tag of type.tags) {
-		if (typeof tag === "string") tags.push(tag); // handles e.g. "fiend (devil)"
-		else tags.push(`${tag.prefix} ${tag.tag}`); // handles e.g. "humanoid (Chondathan human)"
+Parser.monTypeToFullObj = function(type) {
+	const out = {type: "", tags: [], asText: ""};
+
+	if (typeof type === "string") {
+		// handles e.g. "fey"
+		out.type = type;
+		out.asText = type;
+		return out;
 	}
-	return `${type.type} (${tags.join(", ")})`;
+	const tempTags = [];
+	for (const tag of type.tags) {
+		if (typeof tag === "string") {
+			// handles e.g. "fiend (devil)"
+			out.tags.push(tag);
+			tempTags.push(tag);
+		} else {
+			// handles e.g. "humanoid (Chondathan human)"
+			out.tags.push(tag.tag);
+			tempTags.push(`${tag.prefix} ${tag.tag}`);
+		}
+	}
+	out.type = type.type;
+	out.asText = `${type.type} (${tempTags.join(", ")})`;
+	return out;
 };
 
 /**
@@ -1194,7 +1207,6 @@ function search(options) {
 function getSourceFilter(options) {
 	const baseOptions = {
 		header: "Source",
-		items: [],
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
 		desel: function(val) {
 			return val.startsWith(SRC_UA_PREFIX) || val.startsWith(SRC_PS_PREFIX) || val.endsWith(SRC_3PP_SUFFIX);
@@ -1239,20 +1251,6 @@ function getFilterWithMergedOptions(baseOptions, addOptions) {
 
 function initFilterBox(...filterList) {
 	return new FilterBox(document.getElementById(ID_SEARCH_BAR), document.getElementById(ID_RESET_BUTTON), filterList);
-}
-
-function addDropdownOption(dropdown, optionVal, optionText) {
-	if (optionVal === undefined || optionVal === null) return;
-	let inOptions = false;
-	dropdown.find("option").each(function() {
-		if (this.value === optionVal) {
-			inOptions = true;
-			return false;
-		}
-	});
-	if (!inOptions) {
-		dropdown.append("<option value='" + optionVal + "'>" + optionText + "</option>");
-	}
 }
 
 // ENCODING/DECODING ===================================================================================================

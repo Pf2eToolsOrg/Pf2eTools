@@ -14,6 +14,14 @@ function typeValue(type) {
 	return type.toLowerCase(); // lol
 }
 
+function filterTagsMatch(valGroup, tags) {
+	return tags.filter(t => valGroup[t]).length > 0;
+}
+
+function filterTagsMatchInverted(valGroup, tags) {
+	return tags.filter(t => !valGroup[t]).length === 0;
+}
+
 window.onload = function load() {
 	tableDefault = $("#stats").html();
 	loadJSON(BESTIARY_JSON_URL, addToB);
@@ -27,10 +35,9 @@ let monsters;
 function populate(tobData, mainData) {
 	monsters = mainData[0].monster.concat(tobData.monster);
 
-	// TODO type tag filter
 	// TODO alignment filter
 	const sourceFilter = getSourceFilter();
-	const crFilter = new Filter({header: "CR", items: []});
+	const crFilter = new Filter({header: "CR"});
 	const typeFilter = new Filter({
 		header: "Type",
 		items: [
@@ -51,11 +58,13 @@ function populate(tobData, mainData) {
 		],
 		valueFn: typeValue
 	});
+	const tagFilter = new Filter({header: "Type Tag", desel: Filter.deselAll, matchFn: filterTagsMatch, matchFnInv: filterTagsMatchInverted});
 
 	const filterBox = initFilterBox(
 		sourceFilter,
 		crFilter,
-		typeFilter
+		typeFilter,
+		tagFilter
 	);
 
 	const table = $("ul.monsters");
@@ -64,9 +73,7 @@ function populate(tobData, mainData) {
 	for (let i = 0; i < monsters.length; i++) {
 		const mon = monsters[i];
 
-		const fullType = Parser.monTypeToFull(mon.type);
-		mon._pType = Parser.monTypeToPrimary(mon.type);
-		mon._pTypeWithTags = fullType; // store the parsed type
+		mon._pType = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon.cr = mon.cr === undefined ? "Unknown" : mon.cr;
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
@@ -76,7 +83,7 @@ function populate(tobData, mainData) {
 				<a id=${i} href='#${encodeForHash(mon.name)}_${encodeForHash(mon.source)}' title="${mon.name}">
 					<span class='name col-xs-4 col-xs-4-2'>${mon.name}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span>
-					<span class='type col-xs-4 col-xs-4-3'>${fullType}</span>
+					<span class='type col-xs-4 col-xs-4-3'>${mon._pType.asText}</span>
 					<span class='col-xs-1 col-xs-1-7 text-align-center cr'>${mon.cr}</span>
 				</a>
 			</li>`;
@@ -84,6 +91,7 @@ function populate(tobData, mainData) {
 		// populate filters
 		sourceFilter.addIfAbsent(mon.source);
 		crFilter.addIfAbsent(mon.cr);
+		mon._pType.tags.forEach(t => tagFilter.addIfAbsent(t));
 	}
 	table.append(textStack);
 
@@ -112,9 +120,17 @@ function populate(tobData, mainData) {
 
 			const rightSource = sourceFilter.matches(f, m.source);
 			const rightCr = crFilter.matches(f, m.cr);
-			const rightType = typeFilter.matches(f, m._pType);
+			const rightType = typeFilter.matches(f, m._pType.type);
+			const rightTag = tagFilter.matches(f, m._pType.tags);
 
-			return rightSource && rightCr && rightType
+			let rightTypeAndTag;
+			if ( (typeFilter.isInverted() || tagFilter.isInverted()) && !(typeFilter.isInverted() && !tagFilter.isInverted()) ) {
+				rightTypeAndTag = rightType && rightTag;
+			} else {
+				rightTypeAndTag = rightType || rightTag;
+			}
+
+			return rightSource && rightCr && rightTypeAndTag;
 		});
 	}
 
