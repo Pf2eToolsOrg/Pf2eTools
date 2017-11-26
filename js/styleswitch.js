@@ -272,6 +272,14 @@ ul.list li:nth-child(odd),
 	background: rgba(0, 0, 0, 0.31);
 }
 
+#stats table tbody tr:nth-child(odd):hover,
+#classtable table tr:nth-child(odd) td:hover,
+#rulescontent table tbody tr:nth-child(odd) td:hover,
+ul.list li:nth-child(odd):hover,
+#monsterfeatures tr:nth-child(odd):hover {
+	background: black;
+}
+
 #rulescontent caption {
 	color: grey;
 }
