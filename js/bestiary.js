@@ -99,6 +99,7 @@ function populate(tobData, mainData) {
 	sourceFilter.items.sort(ascSort);
 	crFilter.items.sort(ascSortCr);
 	typeFilter.items.sort(ascSort);
+	tagFilter.items.sort(ascSort);
 
 	const list = search({
 		valueNames: ["name", "source", "type", "cr"],
@@ -185,7 +186,7 @@ function sortMonsters(a, b, o) {
 	}
 
 	if (o.valueName === "type") {
-		return ascSort(a._pTypes, b._pTypes);
+		return ascSort(a._pTypes.asText, b._pTypes.asText);
 	}
 
 	if (o.valueName === "source") {
@@ -205,8 +206,7 @@ function loadhash (id) {
 	var mon = monsters[id];
 	var name = mon.name;
 	var source = mon.source;
-	var fullsource = Parser.sourceJsonToFull(source);
-	var type = mon._pTypes;
+	var type = mon._pTypes.asText;
 	source = Parser.sourceJsonToAbv(source);
 
 	imgError = function (x) {
