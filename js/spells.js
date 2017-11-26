@@ -188,7 +188,7 @@ function getClassFilterStr(c) {
 
 function deselectUaEepc(val) {
 	if (window.location.hash.length) {
-		let spellSource = spellList[getSelectedListElement().attr("id")].source;
+		const spellSource = spellList[getSelectedListElement().attr("id")].source;
 		if (spellSource === SRC_EEPC || spellSource.startsWith(SRC_UA_PREFIX)) {
 			return deSelNoHash();
 		} else {
@@ -411,8 +411,8 @@ function onJsonLoad(data) {
 			const rightSchool = schoolFilter.matches(f, s.school);
 			const rightTime = timeFilter.matches(f, s.time);
 			const rightRange = rangeFilter.matches(f, s.range);
-			let rightClass = classFilter.matches(f, s.classes);
-			let rightSubclass = subclassFilter.matches(f, s.classes);
+			const rightClass = classFilter.matches(f, s.classes);
+			const rightSubclass = subclassFilter.matches(f, s.classes);
 
 			let rightClassAndSubclass;
 			if ( (classFilter.isInverted() || subclassFilter.isInverted()) && !(classFilter.isInverted() && !subclassFilter.isInverted()) ) {
