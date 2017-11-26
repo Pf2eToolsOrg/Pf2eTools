@@ -45,7 +45,7 @@ function onJsonLoad(data) {
 			<li ${FLTR_ID}='${i}'>
 				<a id='${i}' href='#${encodeForHash(curRule.name)}_${encodeForHash(curRule.source)}' title='${curRule.name}'>
 					<span class='name col-xs-10'>${curRule.name}</span>
-					<span class='source col-xs-2' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span>
+					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(curRule.source)}' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>
 				</a>
 			</li>`;
