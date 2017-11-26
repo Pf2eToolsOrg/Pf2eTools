@@ -25,16 +25,15 @@ function onJsonLoad (data) {
 	const racesTable = $("ul.races");
 	let tempString = "";
 	for (let i = 0; i < raceList.length; i++) {
-		let race = raceList[i];
-		let name = race.name;
+		const race = raceList[i];
 
 		const ability = utils_getAbilityData(race.ability);
 		race._pAbility = ability;
 
 		tempString +=
 			`<li ${FLTR_ID}='${i}'>
-				<a id='${i}' href='#${encodeURI(name).toLowerCase()}' title='${name}'>
-					<span class='name col-xs-4'>${name}</span>
+				<a id='${i}' href='#${encodeURI(race.name).toLowerCase()}' title='${race.name}'>
+					<span class='name col-xs-4'>${race.name}</span>
 					<span class='ability col-xs-4'>${ability.asTextShort}</span>
 					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>
 					<span class='source col-xs-2 source${race.source}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
@@ -102,15 +101,15 @@ function loadhash (id) {
 	$("#stats").html(tableDefault);
 	$("#stats td").show();
 
-	let race = raceList[id];
+	const race = raceList[id];
 
 	$("th#name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
 
-	let size = Parser.sizeAbvToFull (race.size);
+	const size = Parser.sizeAbvToFull (race.size);
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 
-	let ability = utils_getAbilityData(race.ability);
+	const ability = utils_getAbilityData(race.ability);
 	$("td#ability span").html(ability.asText);
 
 	let speed;
@@ -123,7 +122,7 @@ function loadhash (id) {
 	$("td#speed span").html(speed);
 	if (speed === "") $("td#speed").hide();
 
-	let traitlist = race.trait;
+	const traitlist = race.trait;
 	if (traitlist) {
 		$("tr.trait").remove();
 
