@@ -726,6 +726,9 @@ Parser._spSubclassItem = function (fromSubclass) {
 	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
+Parser.monTypeToPrimary = function(type) {
+	return typeof type === "string" ? type : type.type;
+};
 Parser.monTypeToFull = function(type) {
 	if (typeof type === "string") return type; // handles e.g. "fey"
 	const tags = [];
@@ -1244,16 +1247,6 @@ function asc_sort_cr(a, b) {
 	const bNum = Parser.crToNumber($(b).text());
 	if (aNum === bNum) return 0;
 	return bNum < aNum ? 1 : -1;
-}
-
-function asc_sort_range(a, b){
-	if (parseInt(b.value) === parseInt(a.value)) return 0;
-	return parseInt(b.value) < parseInt(a.value) ? 1 : -1;
-}
-
-function desc_sort(a, b){
-	if ($(b).text() === $(a).text()) return 0;
-	return $(b).text() > $(a).text() ? 1 : -1;
 }
 
 function compareNames(a, b) {

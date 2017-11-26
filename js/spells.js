@@ -1,3 +1,5 @@
+"use strict";
+
 const JSON_URL = "data/spells.json";
 
 // toss these into the "Tags" section to save screen space
@@ -247,6 +249,7 @@ window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
+let tableDefault;
 let spellList;
 function onJsonLoad(data) {
 	tableDefault = $("#stats").html();
@@ -430,10 +433,11 @@ function onJsonLoad(data) {
 	}
 
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
-		if ($(this).attr("sortby") === "asc") {
-			$(this).attr("sortby", "desc");
-		} else $(this).attr("sortby", "asc");
-		list.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortSpells });
+		const $this = $(this);
+		if ($this.attr("sortby") === "asc") {
+			$this.attr("sortby", "desc");
+		} else $this.attr("sortby", "asc");
+		list.sort($this.data("sort"), { order: $this.attr("sortby"), sortFunction: sortSpells });
 	});
 
 	initHistory();
