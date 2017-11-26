@@ -1,3 +1,4 @@
+"use strict";
 const JSON_URL = "data/conditions.json";
 let tabledefault = "";
 let conditionlist;

@@ -1,5 +1,7 @@
+"use strict";
 const BESTIARY_JSON_URL = "data/bestiary.json";
 const BESTIARY_TOB_JSON_URL = "data/bestiary-tob.json";
+let tableDefault = "";
 
 function ascSortCr(a, b) {
 	// always put unknown values last
@@ -326,8 +328,7 @@ function loadhash (id) {
 			if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 			if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 
-			traittexthtml = traittexthtml + "<p class='" + firstsecond + spells + "'>" + traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "");
-			+"</p>";
+			traittexthtml = traittexthtml + "<p class='" + firstsecond + spells + "'>" + traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "")+"</p>";
 		}
 
 		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait" + i + "'><span class='name'>" + traitname + ".</span> " + traittexthtml + "</td></tr>");

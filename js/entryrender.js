@@ -266,7 +266,7 @@ function EntryRenderer() {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@italic") {
+					if (tag === "@bold" || tag === "@italic" || tag === "@skill" || tag === "@action") {
 						switch (tag) {
 							case "@bold":
 								textStack.push(`<b>`);
@@ -277,6 +277,12 @@ function EntryRenderer() {
 								textStack.push(`<i>`);
 								self.recursiveEntryRender(text, textStack, depth);
 								textStack.push(`</i>`);
+								break;
+							case "@action": // Convert this to a tag once the rules data are more navigable
+								textStack.push(`<span title="${Parser.actionToExplanation(text)}" class="explanation">${text}</span>`);
+								break;
+							case "@skill": // Convert this to a tag once the rules data are more navigable
+								textStack.push(`<span title="${Parser.skillToExplanation(text)}" class="explanation">${text}</span>`);
 								break;
 						}
 					} else {

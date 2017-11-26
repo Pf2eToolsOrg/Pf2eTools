@@ -1,3 +1,6 @@
+"use strict";
+let contentdefault="";
+
 window.onload = function load() {
 	contentdefault = $("#rulescontent").html();
 

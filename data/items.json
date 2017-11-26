@@ -1138,7 +1138,7 @@
 			"source": "DMG",
 			"page": "151",
 			"entries": [
-				"This item first appears to be a Large sealed iron barrel weighing 500 pounds. The barrel has a hidden catch, which can be found with a successful DC 20 Intelligence (Investigation) check. Releasing the catch unlocks a hatch at one end of the barrel, allowing two Medium or smaller creatures to crawl inside. Ten levers are set in a row at the far end, each in a neutral position, able to move either up or down. When certain levers are used, the apparatus transforms to resemble a giant lobster.",
+				"This item first appears to be a Large sealed iron barrel weighing 500 pounds. The barrel has a hidden catch, which can be found with a successful DC 20 Intelligence ({@skill Investigation}) check. Releasing the catch unlocks a hatch at one end of the barrel, allowing two Medium or smaller creatures to crawl inside. Ten levers are set in a row at the far end, each in a neutral position, able to move either up or down. When certain levers are used, the apparatus transforms to resemble a giant lobster.",
 				"The apparatus of Kwalish is a Large object with the following statistics:",
 				"{@bold Armor Class:} 20",
 				"{@bold Hit Points:} 200",
@@ -1860,7 +1860,7 @@
 					"type": "list",
 					"items": [
 						"Your Constitution score increases by 2, to a maximum of 20.",
-						"You have advantage on Charisma (Persuasion) checks made to interact with dwarves."
+						"You have advantage on Charisma ({@skill Persuasion}) checks made to interact with dwarves."
 					]
 				},
 				"In addition, while attuned to the belt, you have a 50 percent chance each day at dawn of growing a full beard if you're capable of growing one, or a visibly thicker beard if you already have one.",
@@ -2138,11 +2138,16 @@
 				"A heavy clasp, wrought to look like angel wings, keeps the book's contents secure. Only a creature of good alignment that is attuned to the book can release the clasp that holds it shut. Once the book is opened, the attuned creature must spend 80 hours reading and studying the book to digest its contents and gain its benefits. Other creatures that peruse the book's open pages can read the text but glean no deeper meaning and reap no benefits. An evil creature that tries to read from the book takes 24d6 radiant damage. This damage ignores resistance and immunity, and can't be reduced or avoided by any means. A creature reduced to 0 hit points by this damage disappears in a blinding flash and is destroyed, leaving its possessions behind.",
 				"Benefits granted by the Book of Exalted Deeds last only as long as you strive to do good. If you fail to perform at least one act of kindness or generosity within the span of 10 days, or if you willingly perform an evil act, you lose all the benefits granted by the book.",
 				"Random Properties. The Book of Exalted Deeds has the following random properties:",
-				"• 2 minor beneficial properties",
-				"• 2 major beneficial properties",
+				{
+					"type": "list",
+					"items": [
+						"2 minor beneficial properties",
+						"2 major beneficial properties"
+					]
+				},
 				"Increased Wisdom. After you spend the requisite amount of time reading and studying the book, your Wisdom score increases by 2, to a maximum of 24. You can't gain this benefit from the book more than once.",
 				"Enlightened Magic. Once you've read and studied the book, any spell slot you expend to cast a cleric or paladin spell counts as a spell slot of one level higher.",
-				"Halo. Once you've read and studied the book, you gain a protective halo. This halo sheds bright light in a 10-foot radius and dim light for an additional 10 feet. You can dismiss or manifest the halo as a bonus action. While present, the halo gives you advantage on Charisma (Persuasion) checks made to interact with good creatures and Charisma (Intimidation) checks made to interact with evil creatures. In addition, fiends and undead within the halo's bright light make attack rolls against you with disadvantage.",
+				"Halo. Once you've read and studied the book, you gain a protective halo. This halo sheds bright light in a 10-foot radius and dim light for an additional 10 feet. You can dismiss or manifest the halo as a bonus action. While present, the halo gives you advantage on Charisma ({@skill Persuasion}) checks made to interact with good creatures and Charisma (Intimidation) checks made to interact with evil creatures. In addition, fiends and undead within the halo's bright light make attack rolls against you with disadvantage.",
 				"Destroying the Book. It is rumored that the Book of Exalted Deeds can't be destroyed as long as good exists in the multiverse. However, drowning the book in the River Styx removes all writing and imagery from its pages and renders the book powerless for 1d100 years."
 			]
 		},
@@ -2163,12 +2168,17 @@
 				"Whenever a non-evil creature attunes to the Book of Vile Darkness, that creature must make a DC 17 Charisma saving throw. On a failed save, the creature's alignment changes to neutral evil.",
 				"The Book of Vile Darkness remains with you only as long as you strive to work evil in the world. If you fail to perform at least one evil act within the span of 10 days, or if you willingly perform a good act, the book disappears. If you die while attuned to the book, an entity of great evil claims your soul. You can't be restored to life by any means while your soul remains imprisoned.",
 				"Random Properties. The Book of Vile Darkness has the following random properties:",
-				"• 3 minor beneficial properties",
-				"• 1 major beneficial property",
-				"• 3 minor detrimental properties",
-				"• 2 major detrimental properties",
+				{
+					"type": "list",
+					"items": [
+						"3 minor beneficial properties",
+						"1 major beneficial property",
+						"3 minor detrimental properties",
+						"2 major detrimental properties"
+					]
+				},
 				"Adjusted Ability Scores. After you spend the requisite amount of time reading and studying the book, one ability score of your choice increases by 2, to a maximum of 24. Another ability score of your choice decreases by 2, to a minimum of 3. The book can't adjust your ability scores again.",
-				"Mark of Darkness. After you spend the requisite amount of time reading and studying the book, you acquire a physical disfigurement as a hideous sign of your devotion to vile darkness. An evil rune might appear on your face, your eyes might become glossy black, or horns might sprout from your forehead. Or you might become wizened and hideous, lose all facial features, gain a forked tongue, or some other feature the DM chooses. The mark of darkness grants you advantage on Charisma (Persuasion) checks made to interact with evil creatures and Charisma (Intimidation) checks made to interact with non-evil creatures.",
+				"Mark of Darkness. After you spend the requisite amount of time reading and studying the book, you acquire a physical disfigurement as a hideous sign of your devotion to vile darkness. An evil rune might appear on your face, your eyes might become glossy black, or horns might sprout from your forehead. Or you might become wizened and hideous, lose all facial features, gain a forked tongue, or some other feature the DM chooses. The mark of darkness grants you advantage on Charisma ({@skill Persuasion}) checks made to interact with evil creatures and Charisma (Intimidation) checks made to interact with non-evil creatures.",
 				"Command Evil. While you are attuned to the book and holding it, you can use an action to cast the {@spell dominate monster|phb} spell on an evil target (save DC 18). You can't use this property again until the next dawn.",
 				"Dark Lore. You can reference the Book of Vile Darkness whenever you make an Intelligence check to recall information about some aspect of evil, such as lore about demons. When you do so, double your proficiency bonus on that check.",
 				"Dark Speech. While you carry the Book of Vile Darkness and are attuned to it, you can use an action to recite word from its pages in a foul language known as Dark Speech. Each time you do so, you take 1d12 psychic damage, and each non-evil creature within 15 feet of you takes 3d6 psychic damage.",
@@ -2186,7 +2196,7 @@
 			"source": "DMG",
 			"page": "155",
 			"entries": [
-				"While you wear these boots, your steps make no sound, regardless of the surface you are moving across. You also have advantage on Dexterity (Stealth) checks that rely on moving silently."
+				"While you wear these boots, your steps make no sound, regardless of the surface you are moving across. You also have advantage on Dexterity ({@skill Stealth}) checks that rely on moving silently."
 			]
 		},
 		{
@@ -2236,9 +2246,14 @@
 			"reqAttune": "YES",
 			"entries": [
 				"These furred boots are snug and feel quite warm. While you wear them, you gain the following benefits:",
-				"• You have resistance to cold damage.",
-				"• You ignore difficult terrain created by ice or snow.",
-				"• You can tolerate temperatures as low as -50 degrees Fahrenheit without any additional protection. If you wear heavy clothes, you can tolerate temperatures as low as -100 degrees Fahrenheit."
+				{
+					"type": "list",
+					"items": [
+						"You have resistance to cold damage.",
+						"You ignore difficult terrain created by ice or snow.",
+						"You can tolerate temperatures as low as -50 degrees Fahrenheit without any additional protection. If you wear heavy clothes, you can tolerate temperatures as low as -100 degrees Fahrenheit."
+					]
+				}
 			]
 		},
 		{
@@ -2414,20 +2429,25 @@
 			"page": "151",
 			"entries": [
 				"Includes:",
-				"• a backpack",
-				"• a bag of 1,000 ball bearings",
-				"• 10 feet of string",
-				"• a bell",
-				"• 5 candles",
-				"• a crowbar",
-				"• a hammer",
-				"• 10 pitons",
-				"• a {@item hooded lantern|phb}",
-				"• 2 flasks of oil",
-				"• 5 days rations",
-				"• a tinderbox",
-				"• a waterskin",
-				"• 50 feet of hempen rope"
+				{
+					"type": "list",
+					"items": [
+						"a backpack",
+						"a bag of 1,000 ball bearings",
+						"10 feet of string",
+						"a bell",
+						"5 candles",
+						"a crowbar",
+						"a hammer",
+						"10 pitons",
+						"a {@item hooded lantern|phb}",
+						"2 flasks of oil",
+						"5 days rations",
+						"a tinderbox",
+						"a waterskin",
+						"50 feet of hempen rope"
+					]
+				}
 			]
 		},
 		{
@@ -2802,7 +2822,7 @@
 			"page": "158",
 			"reqAttune": "YES",
 			"entries": [
-				"While you wear this cloak with its hood up, Wisdom (Perception) checks made to see you have disadvantage. and you have advantage on Dexterity (Stealth) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
+				"While you wear this cloak with its hood up, Wisdom ({@skill Perception}) checks made to see you have disadvantage. and you have advantage on Dexterity ({@skill Stealth}) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
 			]
 		},
 		{
@@ -2838,7 +2858,7 @@
 			"page": "159",
 			"reqAttune": "YES",
 			"entries": [
-				"While wearing this cloak, you have advantage on Dexterity (Stealth) checks. In an area of dim light or darkness, you can grip the edges of the cloak with both hands and use it to fly at a speed of 40 feet. If you ever fail to grip the cloak's edges while flying in this way, or if you are no longer in dim light or darkness, you lose this flying speed.",
+				"While wearing this cloak, you have advantage on Dexterity ({@skill Stealth}) checks. In an area of dim light or darkness, you can grip the edges of the cloak with both hands and use it to fly at a speed of 40 feet. If you ever fail to grip the cloak's edges while flying in this way, or if you are no longer in dim light or darkness, you lose this flying speed.",
 				"While wearing the cloak in an area of dim light or darkness, you can use your action to cast {@spell polymorph|phb} on yourself, transforming into a {@creature bat|mm}. While you are in the form of the {@creature bat|mm}, you retain your Intelligence, Wisdom, and Charisma scores. The cloak can't be used this way again until the next dawn."
 			]
 		},
@@ -3229,7 +3249,7 @@
 			"entries": [
 				"This box contains a set of parchment cards. A full deck has 34 cards. A deck found as treasure is usually missing 1d20-1 cards.",
 				"The magic of the deck functions only if cards are drawn at random (you can use an altered deck of playing cards to simulate the deck). You can use an action to draw a card at random from the deck and throw it to the ground at a point within 30 feet of you.",
-				"An illusion of one or more creatures forms over the thrown card and remains until dispelled. An illusory creature appears real, of the appropriate size, and behaves as if it were a real creature, except that it can do no harm. While you are within 120 feet of the illusory creature and can see it, you can use an action to move it magically anywhere within 30 feet of its card. Any physical interaction with the illusory creature reveals it to be an illusion, because objects pass through it. Someone who uses an action to visually inspect the creature identifies it as illusory with a successful DC 15 Intelligence (Investigation) check. The creature then appears translucent.",
+				"An illusion of one or more creatures forms over the thrown card and remains until dispelled. An illusory creature appears real, of the appropriate size, and behaves as if it were a real creature, except that it can do no harm. While you are within 120 feet of the illusory creature and can see it, you can use an action to move it magically anywhere within 30 feet of its card. Any physical interaction with the illusory creature reveals it to be an illusion, because objects pass through it. Someone who uses an action to visually inspect the creature identifies it as illusory with a successful DC 15 Intelligence ({@skill Investigation}) check. The creature then appears translucent.",
 				"The illusion lasts until its card is moved or the illusion is dispelled. When the illusion ends, the image on its card disappears, and that card can't be used again.",
 				{
 					"type": "table",
@@ -3622,7 +3642,7 @@
 			"page": "165",
 			"entries": [
 				"You can use an action to place these shackles on an incapacitated creature. The shackles adjust to fit a creature of Small to Large size. In addition to serving as mundane manacles, the shackles prevent a creature bound by them from using any method of extradimensional movement, including teleportation or travel to a different plane of existence. They don't prevent the creature from passing-through an interdimensional portal.",
-				"You and any creature you designate when you use the shackles can use an action to remove them. Once every 30 days, the bound creature can make a DC 30 Strength Athletics) check. On a success, the creature breaks free and destroys the shackles."
+				"You and any creature you designate when you use the shackles can use an action to remove them. Once every 30 days, the bound creature can make a DC 30 Strength ({@skill Athletics}) check. On a success, the creature breaks free and destroys the shackles."
 			]
 		},
 		{
@@ -3635,17 +3655,22 @@
 			"page": "151",
 			"entries": [
 				"Includes:",
-				"• a chest",
-				"• 2 cases for maps and scrolls",
-				"• a set of fine clothes",
-				"• a bottle of ink",
-				"• an ink pen",
-				"• a lamp",
-				"• 2 flasks of oil",
-				"• 5 sheets of paper",
-				"• a vial of perfume",
-				"• sealing wax",
-				"• soap."
+				{
+					"type": "list",
+					"items": [
+						"a chest",
+						"2 cases for maps and scrolls",
+						"a set of fine clothes",
+						"a bottle of ink",
+						"an ink pen",
+						"a lamp",
+						"2 flasks of oil",
+						"5 sheets of paper",
+						"a vial of perfume",
+						"sealing wax",
+						"soap."
+					]
+				}
 			]
 		},
 		{
@@ -3744,9 +3769,14 @@
 				"A steel trident decorated with bronze barnacles along the upper part of its haft, Drown has a sea-green jewel just below the tines and a silver shell at the end of its haft. It floats on the surface if dropped onto water, and it floats in place if it is released underwater. The trident is always cool to the touch, and it is immune to any damage due to exposure to water. Drown contains a spark of {@creature Olhydra|mm}, the Princess of Evil Water.",
 				"You gain a +1 bonus to attack and damage rolls made with this magic weapon. When you hit with it, the targets take an extra 1d8 cold damage.",
 				"Water Mastery. You gain the following benefits while you hold Drown:",
-				"• You can speak Aquan fluently.",
-				"• You have resistance to cold damage.",
-				"• You can cast {@spell dominate monster|phb} (save DC 17) on a {@creature water elemental|mm}. Once you have done so, Drown can't be used this way again until the next dawn.",
+				{
+					"type": "list",
+					"items": [
+						"You can speak Aquan fluently.",
+						"You have resistance to cold damage.",
+						"You can cast {@spell dominate monster|phb} (save DC 17) on a {@creature water elemental|mm}. Once you have done so, Drown can't be used this way again until the next dawn."
+					]
+				},
 				"Tears of Endless Anguish. While inside a water node, you can perform a ritual called the Tears of Endless Anguish, using Drown to create a {@item devastation orb of water|PotA}. Once you perform the ritual, Drown can't be used to perform the ritual again until the next dawn.",
 				"Flaw. Drown makes its wielder covetous. While attuned to the weapon, you gain the following flaw: \"I demand and deserve the largest share of the spoils, and I refuse to part with anything that's mine.\" In addition, if you are attuned to Drown for 24 consecutive hours, barnacles form on your skin. The barnacles can be removed with a {@spell greater restoration|phb} spell or similar magic, but not while you are attuned to the weapon."
 			]
@@ -3779,15 +3809,20 @@
 			"page": "151",
 			"entries": [
 				"Includes:",
-				"• a backpack",
-				"• a crowbar",
-				"• a hammer",
-				"• 10 pitons",
-				"• 10 torches",
-				"• a tinderbox",
-				"• 10 days of rations",
-				"• a waterskin",
-				"• 50 feet of hempen rope"
+				{
+					"type": "list",
+					"items": [
+						"a backpack",
+						"a crowbar",
+						"a hammer",
+						"10 pitons",
+						"10 torches",
+						"a tinderbox",
+						"10 days of rations",
+						"a waterskin",
+						"50 feet of hempen rope"
+					]
+				}
 			]
 		},
 		{
@@ -4022,13 +4057,18 @@
 			"page": "151",
 			"entries": [
 				"Includes:",
-				"• a backpack",
-				"• a bedroll",
-				"• 2 costumes",
-				"• 5 candles",
-				"• 5 days of rations",
-				"• a waterskin",
-				"• a disguise kit."
+				{
+					"type": "list",
+					"items": [
+						"a backpack",
+						"a bedroll",
+						"2 costumes",
+						"5 candles",
+						"5 days of rations",
+						"a waterskin",
+						"a disguise kit."
+					]
+				}
 			]
 		},
 		{
@@ -4065,14 +4105,19 @@
 			"page": "151",
 			"entries": [
 				"Includes:",
-				"• a backpack",
-				"• a bedroll",
-				"• a mess kit",
-				"• a tinderbox",
-				"• 10 torches",
-				"• 10 days of rations",
-				"• a waterskin",
-				"• 50 feet of hempen rope"
+				{
+					"type": "list",
+					"items": [
+						"a backpack",
+						"a bedroll",
+						"a mess kit",
+						"a tinderbox",
+						"10 torches",
+						"10 days of rations",
+						"a waterskin",
+						"50 feet of hempen rope"
+					]
+				}
 			]
 		},
 		{
@@ -4090,20 +4135,35 @@
 				"To attune to the eye, you must gouge out your own eye and press the artifact into the empty socket. The eye grafts itself to your head and remains there until you die. Once in place, the eye transforms into a golden eye with a slit for a pupil, much like that of a cat. If the eye is ever removed, you die.",
 				"To attune to the hand, you must lop off your left hand at the wrist and the press the artifact against the stump. The hand grafts itself to your arm and becomes a functioning appendage. If the hand is ever removed, you die.",
 				"Random Properties. The Eye of Vecna and the {@item Hand of Vecna|dmg} each have the following random properties:",
-				"• 1 minor beneficial property",
-				"• 1 major beneficial property",
-				"• 1 minor detrimental property",
+				{
+					"type": "list",
+					"items": [
+						"1 minor beneficial property",
+						"1 major beneficial property",
+						"1 minor detrimental property"
+					]
+				},
 				"Properties of the Eye. Your alignment changes to neutral evil, and you gain the following benefits:",
-				"• You have truesight.",
-				"• You can use an action to see as if you were wearing a {@item ring of X-ray vision|dmg}. You can end this effect as a bonus action.",
-				"• The eye has 8 charges. You can use an action and expend 1 or more charges to cast one of the following spells (save DC 18) from it: {@spell clairvoyance|phb} (2 charges), {@spell crown of madness|phb} (1 charge), {@spell disintegrate|phb} (4 charges), {@spell dominate monster|phb} (5 charges), or {@spell eyebite|phb} (4 charges). The eye regains 1d4+4 expended charges daily at dawn. Each time you cast a spell from the eye, there is a 5 percent chance that Vecna tears your soul from your body, devours it, and then takes control of the body like a puppet. If that happens, you become an NPC under the DM's control.",
+				{
+					"type": "list",
+					"items": [
+						"You have truesight.",
+						"You can use an action to see as if you were wearing a {@item ring of X-ray vision|dmg}. You can end this effect as a bonus action.",
+						"The eye has 8 charges. You can use an action and expend 1 or more charges to cast one of the following spells (save DC 18) from it: {@spell clairvoyance|phb} (2 charges), {@spell crown of madness|phb} (1 charge), {@spell disintegrate|phb} (4 charges), {@spell dominate monster|phb} (5 charges), or {@spell eyebite|phb} (4 charges). The eye regains 1d4+4 expended charges daily at dawn. Each time you cast a spell from the eye, there is a 5 percent chance that Vecna tears your soul from your body, devours it, and then takes control of the body like a puppet. If that happens, you become an NPC under the DM's control."
+					]
+				},
 				"Properties of the Eye and Hand. If you are attuned to both the hand and eye, you gain the following additional benefits:",
-				"• You are immune to disease and poison.",
-				"• Using the eye's X-ray vision never causes you to suffer exhaustion.",
-				"• You experience premonitions of danger and, unless you are incapacitated, can't be surprised.",
-				"• If you start your turn with at least 1 hit point, you regain 1dl0 hit points.",
-				"• If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the {@item Hand of Vecna|dmg}. You can do so by using an action to make a melee attack against a creature you can reach, using your choice your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
-				"• You can use an action to cast {@spell wish|phb}. This property can't be used again until 30 days have passed.",
+				{
+					"type": "list",
+					"items": [
+						"You are immune to disease and poison.",
+						"Using the eye's X-ray vision never causes you to suffer exhaustion.",
+						"You experience premonitions of danger and, unless you are incapacitated, can't be surprised.",
+						"If you start your turn with at least 1 hit point, you regain 1dl0 hit points.",
+						"If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the {@item Hand of Vecna|dmg}. You can do so by using an action to make a melee attack against a creature you can reach, using your choice your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
+						"You can use an action to cast {@spell wish|phb}. This property can't be used again until 30 days have passed."
+					]
+				},
 				"Destroying the Eye and Hand. If the Eye of Vecna and the {@item Hand of Vecna|dmg} are both attached to the same creature, and that creature is slain by the {@item Sword of Kas|dmg}, both the eye and the hand burst into flame, turn to ash, and are destroyed forever. Any other attempt to destroy the eye or hand seems to work, but the artifact reappears in one of Vecna's many hidden vaults, where it waits to be rediscovered."
 			]
 		},
@@ -4127,7 +4187,7 @@
 			"source": "DMG",
 			"page": "168",
 			"entries": [
-				"These crystal lenses fit over the eyes. While wearing them, you can see much better than normal out to a range of 1 foot. You have advantage on Intelligence (Investigation) checks that rely on sight while searching an area or studying an object within that range."
+				"These crystal lenses fit over the eyes. While wearing them, you can see much better than normal out to a range of 1 foot. You have advantage on Intelligence ({@skill Investigation}) checks that rely on sight while searching an area or studying an object within that range."
 			]
 		},
 		{
@@ -4139,7 +4199,7 @@
 			"page": "168",
 			"reqAttune": "YES",
 			"entries": [
-				"These crystal lenses fit over the eyes. While wearing them, you have advantage on Wisdom (Perception) checks that rely on sight. In conditions of clear visibility, you can make out details of even extremely distant creatures and objects as small as 2 feet across."
+				"These crystal lenses fit over the eyes. While wearing them, you have advantage on Wisdom ({@skill Perception}) checks that rely on sight. In conditions of clear visibility, you can make out details of even extremely distant creatures and objects as small as 2 feet across."
 			]
 		},
 		{
@@ -4200,9 +4260,14 @@
 				"The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.",
 				"{@creature riding horse|mm|Ivory Goats}.",
 				"These ivory statuettes of goats are always created in sets of three. Each goat looks unique and functions differently from the others. Their properties are as follows:",
-				"• The goat of traveling can become a Large goat with the same statistics as a {@creature riding horse|mm}. It has 24 charges, and each hour or portion thereof it spends in beast form costs 1 charge. While it has charges, you can use it as often as you wish. When it runs out of charges, it reverts to a figurine and can't be used again until 7 days have passed, when it regains all its charges.",
-				"• The goat of travail becomes a {@creature giant goat|mm} for up to 3 hours. Once it has been used, it can't be used again until 30 days have passed.",
-				"• The goat of terror becomes a {@creature giant goat|mm} for up to 3 hours. The goat can't attack, but you can remove its horns and use them as weapons. One horn becomes a +1 lance, and the other becomes a +2 longsword. Removing a horn requires an action, and the weapons disappear and the horns return when the goat reverts to figurine form. In addition, the goat radiates a 30-foot-radius aura of terror while you are riding it. Any creature hostile to you that starts its turn in the aura must succeed on a DC 15 Wisdom saving throw or be frightened of the goat for 1 minute, or until the goat reverts to figurine form. The frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. Once it successfully saves against the effect, a creature is immune to the goat's aura for the next 24 hours. Once the figurine has been used, it can't be used again until 15 days have passed."
+				{
+					"type": "list",
+					"items": [
+						"The goat of traveling can become a Large goat with the same statistics as a {@creature riding horse|mm}. It has 24 charges, and each hour or portion thereof it spends in beast form costs 1 charge. While it has charges, you can use it as often as you wish. When it runs out of charges, it reverts to a figurine and can't be used again until 7 days have passed, when it regains all its charges.",
+						"The goat of travail becomes a {@creature giant goat|mm} for up to 3 hours. Once it has been used, it can't be used again until 30 days have passed.",
+						"The goat of terror becomes a {@creature giant goat|mm} for up to 3 hours. The goat can't attack, but you can remove its horns and use them as weapons. One horn becomes a +1 lance, and the other becomes a +2 longsword. Removing a horn requires an action, and the weapons disappear and the horns return when the goat reverts to figurine form. In addition, the goat radiates a 30-foot-radius aura of terror while you are riding it. Any creature hostile to you that starts its turn in the aura must succeed on a DC 15 Wisdom saving throw or be frightened of the goat for 1 minute, or until the goat reverts to figurine form. The frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. Once it successfully saves against the effect, a creature is immune to the goat's aura for the next 24 hours. Once the figurine has been used, it can't be used again until 15 days have passed."
+					]
+				}
 			]
 		},
 		{
@@ -4388,9 +4453,14 @@
 			"page": "171",
 			"entries": [
 				"This prism has 50 charges. While you are holding it, you can use an action to speak one of three command words to cause one of the following effects:",
-				"• The first command word causes the gem to shed bright light in a 30-foot radius and dim light for an additional 30 feet. This effect doesn't expend a charge. It lasts until you use a bonus action to repeat the command word or until you use another function of the gem.",
-				"• The second command word expends 1 charge and causes the gem to fire a brilliant beam of light at one creature you can see within 60 feet of you. The creature must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-				"• The third command word expends 5 charges and causes the gem to flare with blinding light in a 30-foot cone originating from it. Each creature in the cone must make a saving throw as if struck by the beam created with the second command word.",
+				{
+					"type": "list",
+					"items": [
+						"The first command word causes the gem to shed bright light in a 30-foot radius and dim light for an additional 30 feet. This effect doesn't expend a charge. It lasts until you use a bonus action to repeat the command word or until you use another function of the gem.",
+						"The second command word expends 1 charge and causes the gem to fire a brilliant beam of light at one creature you can see within 60 feet of you. The creature must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"The third command word expends 5 charges and causes the gem to flare with blinding light in a 30-foot cone originating from it. Each creature in the cone must make a saving throw as if struck by the beam created with the second command word."
+					]
+				},
 				"When all of the gem's charges are expended, the gem becomes a nonmagical jewel worth 50 gp."
 			]
 		},
@@ -4461,7 +4531,7 @@
 			"page": "172",
 			"reqAttune": "YES",
 			"entries": [
-				"These gloves seem to almost meld into your hands when you don them. When a ranged weapon attack hits you while you're wearing them, you can use your reaction to reduce the damage by 1d10 +your Dexterity modifier. provided that you have a free hand. If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in that hand."
+				"These gloves seem to almost meld into your hands when you don them. When a ranged weapon attack hits you while you're wearing them, you can use your reaction to reduce the damage by 1d10 + your Dexterity modifier. provided that you have a free hand. If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in that hand."
 			]
 		},
 		{
@@ -4473,7 +4543,7 @@
 			"page": "172",
 			"reqAttune": "YES",
 			"entries": [
-				"While wearing these gloves, climbing and swimming don't cost you extra movement, and you gain a +5 bonus to Strength (Athletics) checks made to climb or swim."
+				"While wearing these gloves, climbing and swimming don't cost you extra movement, and you gain a +5 bonus to Strength ({@skill Athletics}) checks made to climb or swim."
 			]
 		},
 		{
@@ -4484,7 +4554,7 @@
 			"source": "DMG",
 			"page": "172",
 			"entries": [
-				"These gloves are invisible while worn. While wearing them, you gain a +5 bonus to Dexterity (Sleight of Hand) checks and Dexterity checks made to pick locks."
+				"These gloves are invisible while worn. While wearing them, you gain a +5 bonus to Dexterity ({@skill Sleight of Hand}) checks and Dexterity checks made to pick locks."
 			]
 		},
 		{
@@ -4648,8 +4718,13 @@
 			"page": "173",
 			"entries": [
 				"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
-				"Giant's Bane (Requires Attunement):",
-				"You must be wearing a belt of giant strength (any variety) and {@item gauntlets of ogre power|dmg} to attune to this weapon. The attunement ends if you take off either of those items. While you are attuned to this weapon and holding it, your Strength score increases by 4 and can exceed 20, but not 30. When you roll a 20 on an attack roll made with this weapon against a giant, the giant must succeed on a DC 17 Constitution saving throw or die.",
+				{
+					"type": "entries",
+					"name": "Giant's Bane (Requires Attunement)",
+					"entries": [
+						"You must be wearing a {@italic belt of giant strength} (any variety) and {@item gauntlets of ogre power|dmg} to attune to this weapon. The attunement ends if you take off either of those items. While you are attuned to this weapon and holding it, your Strength score increases by 4 and can exceed 20, but not 30. When you roll a 20 on an attack roll made with this weapon against a giant, the giant must succeed on a DC 17 Constitution saving throw or die."
+					]
+				},
 				"The hammer also has 5 charges. While attuned to it, you can expend 1 charge and make a ranged weapon attack with the hammer, hurling it as if it had the thrown property with a normal range of 20 feet and a long range of 60 feet. If the attack hits, the hammer unleashes a thunderclap audible out to 300 feet. The target and every creature within 30 feet of it must succeed on a DC 17 Constitution saving throw or be stunned until the end of your next turn. The hammer regains 1d4+1 expended charges daily at dawn."
 			]
 		},
@@ -4668,20 +4743,35 @@
 				"To attune to the eye, you must gouge out your own eye and press the artifact into the empty socket. The eye grafts itself to your head and remains there until you die. Once in place, the eye transforms into a golden eye with a slit for a pupil, much like that of a cat. If the eye is ever removed, you die.",
 				"To attune to the hand, you must lop off your left hand at the wrist and the press the artifact against the stump. The hand grafts itself to your arm and becomes a functioning appendage. If the hand is ever removed, you die.",
 				"Random Properties. The {@item Eye of Vecna|dmg} and the Hand of Vecna each have the following random properties:",
-				"• 1 minor beneficial property",
-				"• 1 major beneficial property",
-				"• 1 minor detrimental property",
+				{
+					"type": "list",
+					"items": [
+						"1 minor beneficial property",
+						"1 major beneficial property",
+						"1 minor detrimental property"
+					]
+				},
 				"Properties of the Hand. Your alignment changes neutral evil, and you gain the following benefits:",
-				"• Your Strength score becomes 20, unless it is already 20 or higher.",
-				"• Any melee spell attack you make with the hand, and any melee weapon attack made with a weapon held by it, deals an extra 2d8 cold damage on a hit.",
-				"• The hand has 8 charges. You can use an action and expend 1 or more charges to cast one of the following spells (save DC 18) from it: {@spell finger of death|phb} (5 charges), {@spell sleep|phb} (1 charge), {@spell slow|phb} (2 charges), or {@spell teleport|phb} (3 charges). The hand regains 1d4+4 expended charges daily at dawn. Each time you cast a spell from the hand, it casts the {@spell suggestion|phb} spell on you (save DC 18), demanding that you commit an evil act. The hand might have a specific act in mind or leave it up to you.",
+				{
+					"type": "list",
+					"items": [
+						"Your Strength score becomes 20, unless it is already 20 or higher.",
+						"Any melee spell attack you make with the hand, and any melee weapon attack made with a weapon held by it, deals an extra 2d8 cold damage on a hit.",
+						"The hand has 8 charges. You can use an action and expend 1 or more charges to cast one of the following spells (save DC 18) from it: {@spell finger of death|phb} (5 charges), {@spell sleep|phb} (1 charge), {@spell slow|phb} (2 charges), or {@spell teleport|phb} (3 charges). The hand regains 1d4+4 expended charges daily at dawn. Each time you cast a spell from the hand, it casts the {@spell suggestion|phb} spell on you (save DC 18), demanding that you commit an evil act. The hand might have a specific act in mind or leave it up to you."
+					]
+				},
 				"Properties of the Eye and Hand. If you are attuned to both the hand and eye, you gain the following additional benefits:",
-				"• You are immune to disease and poison.",
-				"• Using the eye's X-ray vision never causes you to suffer exhaustion.",
-				"• You experience premonitions of danger and, unless you are incapacitated, can't be surprised.",
-				"• If you start your turn with at least 1 hit point, you regain 1dl0 hit points.",
-				"• If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the Hand of Vecna. You can do so by using an action to make a melee attack against a creature you can reach, using your choice your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
-				"• You can use an action to cast {@spell wish|phb}. This property can't be used again until 30 days have passed.",
+				{
+					"type": "list",
+					"items": [
+						"You are immune to disease and poison.",
+						"Using the eye's X-ray vision never causes you to suffer exhaustion.",
+						"You experience premonitions of danger and, unless you are incapacitated, can't be surprised.",
+						"If you start your turn with at least 1 hit point, you regain 1dl0 hit points.",
+						"If a creature has a skeleton, you can attempt to turn its bones to jelly with a touch of the Hand of Vecna. You can do so by using an action to make a melee attack against a creature you can reach, using your choice your melee attack bonus for weapons or spells. On a hit, the target must succeed on a DC 18 Constitution saving throw or drop to 0 hit points.",
+						"You can use an action to cast {@spell wish|phb}. This property can't be used again until 30 days have passed."
+					]
+				},
 				"Destroying the Eye and Hand. If the {@item Eye of Vecna|dmg} and the Hand of Vecna are both attached to the same creature, and that creature is slain by the {@item Sword of Kas|dmg}, both the eye and the hand burst into flame, turn to ash, and are destroyed forever. Any other attempt to destroy the eye or hand seems to work, but the artifact reappears in one of Vecna's many hidden vaults, where it waits to be rediscovered."
 			]
 		},
@@ -4737,7 +4827,7 @@
 			"source": "PHB",
 			"page": "151",
 			"entries": [
-				"This kit is a leather pouch containing bandages, salves, and splints. The kit has ten uses. As an action, you can expend one use of the kit to stabilize a creature that has 0 hit points, without needing to make a Wisdom (Medicine) check."
+				"This kit is a leather pouch containing bandages, salves, and splints. The kit has ten uses. As an action, you can expend one use of the kit to stabilize a creature that has 0 hit points, without needing to make a Wisdom ({@skill Medicine}) check."
 			]
 		},
 		{
@@ -4751,10 +4841,15 @@
 			"entries": [
 				"This dazzling helm is set with 1d10 diamonds, 2d10 rubies, 3d10 fire opals, and 4d10 opals. Any gem pried from the helm crumbles to dust. When all the gems are removed or destroyed, the helm loses its magic.",
 				"You gain the following benefits while wearing it:",
-				"• You can use an action to cast one of the following spells (save DC 18), using one of the helm's gems of the specified type as a component: {@spell daylight|phb} (opal), {@spell fireball|phb} (fire opal), {@spell prismatic spray|phb} (diamond), or {@spell wall of fire|phb} (ruby). The gem is destroyed when the spell is cast and disappears from the helm.",
-				"• As long as it has at least one diamond, the helm emits dim light in a 30-foot radius when at least one undead is within that area. Any undead that starts its turn in that area takes 1d6 radiant damage.",
-				"• As long as the helm has at least one ruby, you have resistance to fire damage.",
-				"• As long as the helm has at least one fire opal, you can use an action and speak a command word to cause one weapon you are holding to burst into flames. The flames emit bright light in a 10-foot radius and dim light for an additional 10 feet. The flames are harmless to you and the weapon. When you hit with an attack using the blazing weapon, the target takes an extra 1d6 fire damage. The flames last until you use a bonus action to speak the command word again or until you drop or stow the weapon.",
+				{
+					"type": "list",
+					"items": [
+						"You can use an action to cast one of the following spells (save DC 18), using one of the helm's gems of the specified type as a component: {@spell daylight|phb} (opal), {@spell fireball|phb} (fire opal), {@spell prismatic spray|phb} (diamond), or {@spell wall of fire|phb} (ruby). The gem is destroyed when the spell is cast and disappears from the helm.",
+						"As long as it has at least one diamond, the helm emits dim light in a 30-foot radius when at least one undead is within that area. Any undead that starts its turn in that area takes 1d6 radiant damage.",
+						"As long as the helm has at least one ruby, you have resistance to fire damage.",
+						"As long as the helm has at least one fire opal, you can use an action and speak a command word to cause one weapon you are holding to burst into flames. The flames emit bright light in a 10-foot radius and dim light for an additional 10 feet. The flames are harmless to you and the weapon. When you hit with an attack using the blazing weapon, the target takes an extra 1d6 fire damage. The flames last until you use a bonus action to speak the command word again or until you drop or stow the weapon."
+					]
+				},
 				"Roll a d20 if you are wearing the helm and take fire damage as a result of failing a saving throw against a spell. On a roll of 1, the helm emits beams of light from its remaining gems. Each creature within 60 feet of the helm other than you must succeed on a DC 17 Dexterity saving throw or be struck by a beam, taking radiant damage equal to the number of gems in the helm. The helm and its gems are then destroyed."
 			]
 		},
@@ -5234,10 +5329,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Absorption. ",
 				"While this pale lavender ellipsoid orbits your head, you can use your reaction to cancel a spell of 4th level or lower cast by a creature you can see and targeting only you.",
 				"Once the stone has canceled 20 levels of spells, it burns out and turns dull gray, losing its magic. If you are targeted by a spell whose level is higher than the number of spell levels the stone has left, the stone can't cancel it."
 			]
@@ -5251,10 +5345,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Agility. ",
 				"Your Dexterity score increases by 2, to a maximum of 20, while this deep red sphere orbits your head."
 			]
 		},
@@ -5267,10 +5360,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Awareness. ",
 				"You can't be surprised while this dark blue rhomboid orbits your head."
 			]
 		},
@@ -5283,10 +5375,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Fortitude. ",
 				"Your Constitution score increases by 2, to a maximum of 20, while this pink rhomboid orbits your head."
 			]
 		},
@@ -5299,10 +5390,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Greater Absorption. ",
 				"While this marbled lavender and green ellipsoid orbits your head, you can use your reaction to cancel a spell of 8th level or lower cast by a creature you can see and targeting only you. Once the stone has canceled 50 levels of spells, it burns out and turns dull gray, losing its magic. If you are targeted by a spell whose level is higher than the number of spell levels the stone has left, the stone can't cancel it."
 			]
 		},
@@ -5315,10 +5405,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Insight. ",
 				"Your Wisdom score increases by 2, to a maximum of 20, while this incandescent blue sphere orbits your head."
 			]
 		},
@@ -5331,10 +5420,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Intellect. ",
 				"Your Intelligence score increases by 2, to a maximum of 20, while this marbled scarlet and blue sphere orbits your head."
 			]
 		},
@@ -5347,10 +5435,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Leadership. ",
 				"Your Charisma score increases by 2, to a maximum of 20, while this marbled pink and green sphere orbits your head."
 			]
 		},
@@ -5363,10 +5450,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Mastery. ",
 				"Your proficiency bonus increases by 1 while this pale green prism orbits your head."
 			]
 		},
@@ -5379,10 +5465,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Protection. ",
 				"You gain a +1 bonus to AC while this dusty rose prism orbits your head."
 			]
 		},
@@ -5395,10 +5480,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Regeneration. ",
 				"You regain 15 hit points at the end of each hour this pearly white spindle orbits your head, provided that you have at least 1 hit point."
 			]
 		},
@@ -5411,10 +5495,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Reserve. ",
 				"This vibrant purple prism stores spells cast into it, holding them until you use them. The stone can store up to 3 levels worth of spells at a time. When found, it contains 1d4-1 levels of stored spells chosen by the DM.",
 				"Any creature can cast a spell of 1st through 3rd level into the stone by touching it as the spell is cast. The spell has no effect, other than to be stored in the stone. If the stone can't hold the spell, the spell is expended without effect. The level of the slot used to cast the spell determines how much space it uses.",
 				"While this stone orbits your head, you can cast any spell stored in it. The spell uses the slot level, spell save DC, spell attack bonus, and spellcasting ability of the original caster, but is otherwise treated as if you cast the spell. The spell cast from the stone is no longer stored in it, freeing up space."
@@ -5429,10 +5512,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Strength. ",
 				"Your Strength score increases by 2, to a maximum of 20, while this pale blue rhomboid orbits your head."
 			]
 		},
@@ -5445,10 +5527,9 @@
 			"page": "176",
 			"reqAttune": "YES",
 			"entries": [
-				"An Ioun stone is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of Ioun stone exist, each type a distinct combination of shape and color.",
-				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.",
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of 1d3 feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
-				"Sustenance. ",
 				"You don't need to eat or drink while this clear spindle orbits your head."
 			]
 		},
@@ -5659,11 +5740,16 @@
 				"A {@item war pick|phb} forged from a single piece of iron, Ironfang has a fang-like head inscribed with ancient runes. The pick is heavy in the hand, but when the wielder swings the pick in anger, the weapon seems almost weightless. This weapon is immune to any form of rust, acid, or corrosion \u2014 nothing seems to mark it. Ironfang contains a spark of {@creature Ogremoch|mm}, the Prince of Evil Earth.",
 				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you hit with it, the target takes an extra 1d8 thunder damage.",
 				"Earth Mastery. You gain the following benefits while you hold Ironfang:",
-				"• You can speak Terran fluently.",
-				"• You have resistance to acid damage.",
-				"• You have tremorsense out to a range of 60 feet.",
-				"• You can sense the presence of precious metals and stones within 60 feet of you, but not their exact location.",
-				"• You can cast {@spell dominate monster|phb} (save DC 17) on an {@creature earth elemental|mm}. Once you have done so, Ironfang can't be used this way again until the next dawn.",
+				{
+					"type": "list",
+					"items": [
+						"You can speak Terran fluently.",
+						"You have resistance to acid damage.",
+						"You have tremorsense out to a range of 60 feet.",
+						"You can sense the presence of precious metals and stones within 60 feet of you, but not their exact location.",
+						"You can cast {@spell dominate monster|phb} (save DC 17) on an {@creature earth elemental|mm}. Once you have done so, Ironfang can't be used this way again until the next dawn."
+					]
+				},
 				"Shatter. Ironfang has 3 charges. You can use your action to expend 1 charge and cast the 2nd-level version of {@spell shatter|phb} (DC 17). Ironfang regains 1d3 expended charges daily at dawn.",
 				"The Rumbling. While inside an earth node, you can perform a ritual called the Rumbling, using Ironfang to create a {@item devastation orb of earth|PotA}. Once you perform the ritual, Ironfang can't be used to perform the ritual again until the next dawn.",
 				"Flaw. Ironfang heightens its wielder's destructive nature. While attuned to the weapon, you gain the following flaw: \"I like to break things and cause ruin.\""
@@ -5808,9 +5894,14 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This dwarven battle-helm consists of a sturdy open-faced steel helmet, decorated with a golden circlet above the brow from which seven small gold spikes project upward. You gain the following benefits while wearing the crown:",
-				"• You have resistance to psychic damage.",
-				"• You have advantage on saving throws against effects that would charm you.",
-				"• You can use a bonus action to inspire one creature you can see that is within 60 feet of you and that can see or hear you. Once before the end of your next turn, the inspired creature can roll a d6 and add the number rolled to one ability check, attack roll, or saving throw it makes. This uses 1 charge from the crown. It has 3 charges, and it regains 1d3 expended charges daily at dawn."
+				{
+					"type": "list",
+					"items": [
+						"You have resistance to psychic damage.",
+						"You have advantage on saving throws against effects that would charm you.",
+						"You can use a bonus action to inspire one creature you can see that is within 60 feet of you and that can see or hear you. Once before the end of your next turn, the inspired creature can roll a d6 and add the number rolled to one ability check, attack roll, or saving throw it makes. This uses 1 charge from the crown. It has 3 charges, and it regains 1d3 expended charges daily at dawn."
+					]
+				}
 			]
 		},
 		{
@@ -5877,7 +5968,7 @@
 			"page": "180",
 			"reqAttune": "YES",
 			"entries": [
-				"This magic weapon has 3 charges. While holding it, you can use an action and expend 1 charge to release a wave of terror. Each creature of your choice in a 30-foot radius extending from you must succeed on a DC 15 Wisdom saving throw or become frightened of you for 1 minute. While it is frightened in this way, a creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action it can use only the Dash action or try to escape from an effect that prevents it from moving. If it has nowhere it can move, the creature can use the Dodge action. At the end of each of its turns, a creature can repeat the saving throw, ending the effect on itself on a success.",
+				"This magic weapon has 3 charges. While holding it, you can use an action and expend 1 charge to release a wave of terror. Each creature of your choice in a 30-foot radius extending from you must succeed on a DC 15 Wisdom saving throw or become frightened of you for 1 minute. While it is frightened in this way, a creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If it has nowhere it can move, the creature can use the {@action Dodge} action. At the end of each of its turns, a creature can repeat the saving throw, ending the effect on itself on a success.",
 				"The mace regains 1d3 expended charges daily at dawn."
 			]
 		},
@@ -5974,7 +6065,7 @@
 			"source": "DMG",
 			"page": "180",
 			"entries": [
-				"This book describes fitness exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Strength score increase- by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
+				"This book describes fitness exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Strength score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
 			]
 		},
 		{
@@ -6148,18 +6239,22 @@
 			"page": "209",
 			"entries": [
 				"Includes:",
-				"• a chest",
-				"• a crowbar",
-				"• a hammer",
-				"• three wooden stakes",
-				"• a holy symbol",
-				"• a flask of holy water",
-				"• a set of manacles",
-				"• a steel mirror",
-				"• a flask of oil",
-				"• a tinderbox",
-				"• 3 torches",
-				"Cost: 33 gp"
+				{
+					"type": "list",
+					"items": [
+						"a chest",
+						"a crowbar",
+						"a hammer",
+						"three wooden stakes",
+						"a holy symbol",
+						"a flask of holy water",
+						"a set of manacles",
+						"a steel mirror",
+						"a flask of oil",
+						"a tinderbox",
+						"3 torches"
+					]
+				}
 			]
 		},
 		{
@@ -6501,9 +6596,14 @@
 				"While attuned to an orb, you can use an action to peer into the orb's depths and speak its command word. You must then make a DC 15 Charisma check. On a successful check, you control the orb for as long as you remain attuned to it. On a failed check, you become charmed by the orb for as long as you remain attuned to it.",
 				"While you are charmed by the orb, you can't voluntarily end your attunement to it, and the orb casts {@spell suggestion|phb} on you at will (save DC 18), urging you to work toward the evil ends it desires. The dragon essence within the orb might want many things: the annihilation of a particular people, freedom from the orb, to spread suffering in the world, to advance the worship of Takhisis ({@creature Tiamat|ToD|Tiamat's} name on Krynn), or something else the DM decides.",
 				"Random Properties. An Orb of Dragon kind has the following random properties:",
-				"• 2 minor beneficial properties",
-				"• 1 minor detrimental property",
-				"• 1 major detrimental property",
+				{
+					"type": "list",
+					"items": [
+						"2 minor beneficial properties",
+						"1 minor detrimental property",
+						"1 major detrimental property"
+					]
+				},
 				"Spells. The orb has 7 charges and regains 1d4+3 expended charges daily at dawn. If you control the orb, you can use an action and expend 1 or more charges to cast one of the following spells (save DC 18) from it: {@spell cure wounds|phb} (5th-level version, 3 charges), {@spell daylight|phb} (1 charge), {@spell death ward|phb} (2 charges), or {@spell scrying|phb} (3 charges). You can also use an action to cast the {@spell detect magic|phb} spell from the orb without using any charges.",
 				"Call Dragons. While you control the orb, you can use an action to cause the artifact to issue a telepathic call that extends in all directions for 40 miles. Evil dragons in range feel compelled to come to the orb as soon as possible by the most direct route. Dragon deities such as {@creature Tiamat|ToD} are unaffected by this call. Dragons drawn to the orb might be hostile toward you for compelling them against their will. Once you have used this property, it can't be used again for 1 hour.",
 				"Destroying an Orb. An Orb of Dragonkind appears fragile but is impervious to most damage, including the attacks and breath weapons of dragons. A {@spell disintegrate|phb} spell or one good hit from a +3 magic weapon is sufficient to destroy an orb, however."
@@ -6541,10 +6641,15 @@
 			"entries": [
 				"A mighty axe wielded long ago by the dwarf king Torhild Flametongue, Orcsplitter is a battered weapon that appears unremarkable at first glance. Its head is graven with the Dwarvish runes for \"orc,\" but the runes are depicted with a gap or slash through the markings; the word \"orc\" is literally split in two.",
 				"You gain the following benefits while holding this magic weapon:",
-				"• You gain a +2 bonus to attack and damage rolls made with it.",
-				"• When you roll a 20 on an attack roll with this weapon against an {@creature orc|mm}, that {@creature orc|mm} must succeed on a DC 17 Constitution saving throw or drop to 0 hit points.",
-				"• You can't be surprised by {@creature orc|mm|orcs} while you're not incapacitated. You are also aware when {@creature orc|mm|orcs} are within 120 feet of you and aren't behind total cover, although you don't know their location.",
-				"• You and any of your friends within 30 feet of you can't be frightened while you're not incapacitated.",
+				{
+					"type": "list",
+					"items": [
+						"You gain a +2 bonus to attack and damage rolls made with it.",
+						"When you roll a 20 on an attack roll with this weapon against an {@creature orc|mm}, that {@creature orc|mm} must succeed on a DC 17 Constitution saving throw or drop to 0 hit points.",
+						"You can't be surprised by {@creature orc|mm|orcs} while you're not incapacitated. You are also aware when {@creature orc|mm|orcs} are within 120 feet of you and aren't behind total cover, although you don't know their location.",
+						"You and any of your friends within 30 feet of you can't be frightened while you're not incapacitated."
+					]
+				},
 				"Sentience. Orcsplitter is a sentient, lawful good weapon with an Intelligence of 6, a Wisdom of 15, and a Charisma of 10. It can see and hear out to 120 feet and has darkvision. It communicates by transmitting emotions to its wielder, although on rare occasions it uses a limited form of telepathy to bring to the wielder's mind a couplet or stanza of ancient Dwarvish verse.",
 				"Personality. Orcsplitter is grim, taciturn, and inflexible. It knows little more than the desire to face {@creature orc|mm|orcs} in battle and serve a courageous, just wielder. It disdains cowards and any form of duplicity, deception, or disloyalty. The weapon's purpose is to defend dwarves and to serve as a symbol of dwarven resolve. It hates the traditional foes of dwarves \u2014 giants, goblins, and, most of all, {@creature orc|mm|orcs} \u2014 and silently urges its possessor to meet such creatures in battle."
 			]
@@ -6746,7 +6851,7 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This dark spider-silk cloak is made by {@creature drow|mm}. It is a {@item cloak of elvenkind|dmg}. It loses its magic if exposed to sunlight for 1 hour without interruption.",
-				"While you wear this cloak with its hood up, Wisdom (Perception) checks made to see you have disadvantage. and you have advantage on Dexterity (Stealth) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
+				"While you wear this cloak with its hood up, Wisdom ({@skill Perception}) checks made to see you have disadvantage. and you have advantage on Dexterity ({@skill Stealth}) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
 			]
 		},
 		{
@@ -6758,7 +6863,7 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This dark spider-silk cloak is made by {@creature drow|mm}. It is a {@item cloak of elvenkind|dmg}. It also grants resistance to fire damage while you wear it. It loses its magic if exposed to sunlight for 1 hour without interruption.",
-				"While you wear this cloak with its hood up, Wisdom (Perception) checks made to see you have disadvantage. and you have advantage on Dexterity (Stealth) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
+				"While you wear this cloak with its hood up, Wisdom ({@skill Perception}) checks made to see you have disadvantage. and you have advantage on Dexterity ({@skill Stealth}) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
 			]
 		},
 		{
@@ -6877,7 +6982,7 @@
 			"source": "DMG",
 			"page": "187",
 			"entries": [
-				"When you drink this potion, you gain a climbing speed equal to your walking speed for 1 hour. During this time, you have advantage on Strength (Athletics) checks you make to climb. The potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors."
+				"When you drink this potion, you gain a climbing speed equal to your walking speed for 1 hour. During this time, you have advantage on Strength ({@skill Athletics}) checks you make to climb. The potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors."
 			]
 		},
 		{
@@ -7308,16 +7413,21 @@
 			"page": "151",
 			"entries": [
 				"Includes:",
-				"• a backpack",
-				"• a blanket",
-				"• 10 candles",
-				"• a tinderbox",
-				"• an alms box",
-				"• 2 blocks of incense",
-				"• a censer",
-				"• vestments",
-				"• 2 days of rations",
-				"• a waterskin."
+				{
+					"type": "list",
+					"items": [
+						"a backpack",
+						"a blanket",
+						"10 candles",
+						"a tinderbox",
+						"an alms box",
+						"2 blocks of incense",
+						"a censer",
+						"vestments",
+						"2 days of rations",
+						"a waterskin."
+					]
+				}
 			]
 		},
 		{
@@ -7508,9 +7618,14 @@
 				"The ring has 5 charges. It regains 1d4+1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
 				"You can expend 2 of the ring's charges to cast {@spell dominate monster|phb} on an {@spell air elemental|phb}. In addition, when you fall, you descend 60 feet per round and take no damage from falling. You can also speak and understand Auran.",
 				"If you help slay an {@spell air elemental|phb} while attuned to the ring, you gain access to the following additional properties:",
-				"• You have resistance to lightning damage.",
-				"• You have a flying speed equal to your walking speed and can hover.",
-				"• You can cast the following spells from the ring, expending the necessary number of charges: {@spell chain lightning|phb} (3 charges), {@spell gust of wind|phb} (2 charges), or {@spell wind wall|phb} (1 charge)."
+				{
+					"type": "list",
+					"items": [
+						"You have resistance to lightning damage.",
+						"You have a flying speed equal to your walking speed and can hover.",
+						"You can cast the following spells from the ring, expending the necessary number of charges: {@spell chain lightning|phb} (3 charges), {@spell gust of wind|phb} (2 charges), or {@spell wind wall|phb} (1 charge)."
+					]
+				}
 			]
 		},
 		{
@@ -7522,9 +7637,14 @@
 			"page": "189",
 			"entries": [
 				"This ring has 3 charges, and it regains 1d3 expended charges daily at dawn. While wearing the ring, you can use an action to expend 1 of its charges to cast one of the following spells:",
-				"• {@spell Animal friendship|phb} (save DC 13)",
-				"• {@spell Fear|phb} (save DC 13), targeting only beasts that have an Intelligence of 3 or lower",
-				"• {@spell Speak with animals|phb}"
+				{
+					"type": "list",
+					"items": [
+						"{@spell Animal friendship|phb} (save DC 13)",
+						"{@spell Fear|phb} (save DC 13), targeting only beasts that have an Intelligence of 3 or lower",
+						"{@spell Speak with animals|phb}"
+					]
+				}
 			]
 		},
 		{
@@ -7564,9 +7684,14 @@
 				"The ring has 5 charges. It regains 1d4+1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
 				"You can expend 2 of the ring's charges to cast {@spell dominate monster|phb} on an {@creature earth elemental|mm}. In addition, you can move in difficult terrain that is composed of rubble, rocks, or dirt as if it were normal terrain. You can also speak and understand Terran.",
 				"If you help slay an {@creature earth elemental|mm} while attuned to the ring, you gain access to the following additional properties:",
-				"• You have resistance to acid damage.",
-				"• You can move through solid earth or rock as if those areas were difficult terrain. If you end your turn there, you are shunted out to the nearest unoccupied space you last occupied.",
-				"• You can cast the following spells from the ring, expending the necessary number of charges: {@spell stone shape|phb} (2 charges), {@spell stoneskin|phb} (3 charges), or {@spell wall of stone|phb} (3 charges)."
+				{
+					"type": "list",
+					"items": [
+						"You have resistance to acid damage.",
+						"You can move through solid earth or rock as if those areas were difficult terrain. If you end your turn there, you are shunted out to the nearest unoccupied space you last occupied.",
+						"You can cast the following spells from the ring, expending the necessary number of charges: {@spell stone shape|phb} (2 charges), {@spell stoneskin|phb} (3 charges), or {@spell wall of stone|phb} (3 charges)."
+					]
+				}
 			]
 		},
 		{
@@ -7606,8 +7731,13 @@
 				"The ring has 5 charges. It regains 1d4+1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
 				"You can expend 2 of the ring's charges to cast {@spell dominate monster|phb} on a {@creature fire elemental|mm}. In addition, you have resistance to fire damage. You can also speak and understand Ignan.",
 				"If you help slay a {@creature fire elemental|mm} while attuned to the ring, you gain access to the following additional properties:",
-				"• You are immune to fire damage.",
-				"• You can cast the following spells from the ring, expending the necessary number of charges: {@spell burning hands|phb} (1 charge), {@spell fireball|phb} (2 charges), and {@spell wall of fire|phb} (3 charges)."
+				{
+					"type": "list",
+					"items": [
+						"You are immune to fire damage.",
+						"You can cast the following spells from the ring, expending the necessary number of charges: {@spell burning hands|phb} (1 charge), {@spell fireball|phb} (2 charges), and {@spell wall of fire|phb} (3 charges)."
+					]
+				}
 			]
 		},
 		{
@@ -7884,8 +8014,13 @@
 				"The ring has 5 charges. It regains 1d4+1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
 				"You can expend 2 of the ring's charges to cast {@spell dominate monster|phb} on a {@creature water elemental|mm}. In addition, you can stand on and walk across liquid surfaces as if they were solid ground. You can also speak and understand Aquan.",
 				"If you help slay a {@creature water elemental|mm} while attuned to the ring, you gain access to the following additional properties:",
-				"• You can breathe underwater and have a swimming speed equal to your walking speed.",
-				"• You can cast the following spells from the ring, expending the necessary number of charges: {@spell create or destroy water|phb} (1 charge), {@spell control water|phb} (3 charges), {@spell ice storm|phb} (2 charges), or {@spell wall of ice|phb} (3 charges)."
+				{
+					"type": "list",
+					"items": [
+						"You can breathe underwater and have a swimming speed equal to your walking speed.",
+						"You can cast the following spells from the ring, expending the necessary number of charges: {@spell create or destroy water|phb} (1 charge), {@spell control water|phb} (3 charges), {@spell ice storm|phb} (2 charges), or {@spell wall of ice|phb} (3 charges)."
+					]
+				}
 			]
 		},
 		{
@@ -7935,9 +8070,14 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This robe is adorned with eyelike patterns. While you wear the robe, you gain the following benefits:",
-				"• The robe lets you see in all directions, and you have advantage on Wisdom (Perception) checks that rely on sight.",
-				"• You have darkvision out to a range of 120 feet.",
-				"• You can see invisible creatures and objects, as well as see into the Ethereal Plane, out to a range of 120 feet.",
+				{
+					"type": "list",
+					"items": [
+						"The robe lets you see in all directions, and you have advantage on Wisdom ({@skill Perception}) checks that rely on sight.",
+						"You have darkvision out to a range of 120 feet.",
+						"You can see invisible creatures and objects, as well as see into the Ethereal Plane, out to a range of 120 feet."
+					]
+				},
 				"The eyes on the robe can't be closed or averted. Although you can close or avert your own eyes, you are never considered to be doing so while wearing this robe.",
 				"A {@spell light|phb} spell cast on the robe or a {@spell daylight|phb} spell cast within 5 feet of the robe causes you to be blinded for 1 minute. At the end of each of your turns, you can make a Constitution saving throw (DC 11 for {@spell light|phb} or DC 15 for {@spell daylight|phb}), ending the blindness on a success."
 			]
@@ -7999,12 +8139,17 @@
 			"entries": [
 				"This robe has cloth patches of various shapes and colors covering it. While wearing the robe. you can use an action to detach one of the patches, causing it to become the object or creature it represents. Once the last patch is removed, the robe becomes an ordinary garment.",
 				"The robe has two of each of the following patches:",
-				"• Dagger",
-				"• Bullseye lantern (filled and lit)",
-				"• Steel mirror",
-				"• 10-foot pole",
-				"• Hempen rope (50 feet, coiled)",
-				"• Sack",
+				{
+					"type": "list",
+					"items": [
+						"Dagger",
+						"Bullseye lantern (filled and lit)",
+						"Steel mirror",
+						"10-foot pole",
+						"Hempen rope (50 feet, coiled)",
+						"Sack"
+					]
+				},
 				"In addition, the robe has 4d4 other patches. The DM chooses the patches or determines them randomly.",
 				{
 					"type": "table",
@@ -8084,9 +8229,14 @@
 			"entries": [
 				"This elegant garment is made from exquisite cloth of white, gray, or black and adorned with silvery runes. The robe's color corresponds to the alignment for which the item was created. A white robe was made for good, gray for neutral, and black for evil. You can't attune to a robe of the archmagi that doesn't correspond to your alignment.",
 				"You gain these benefits while wearing the robe:",
-				"• If you aren't wearing armor, your base Armor Class is 15 + your Dexterity modifier.",
-				"• You have advantage on saving throws against spell and other magical effects.",
-				"• Your spell save DC and spell attack bonus each increase by 2."
+				{
+					"type": "list",
+					"items": [
+						"If you aren't wearing armor, your base Armor Class is 15 + your Dexterity modifier.",
+						"You have advantage on saving throws against spell and other magical effects.",
+						"Your spell save DC and spell attack bonus each increase by 2."
+					]
+				}
 			],
 			"modifier": [
 				{
@@ -8158,7 +8308,7 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This rod has a flanged head and the following properties.",
-				"Alertness. While holding the rod, you have advantage on Wisdom (Perception) checks and on rolls for initiative.",
+				"Alertness. While holding the rod, you have advantage on Wisdom ({@skill Perception}) checks and on rolls for initiative.",
 				"Spells. While holding the rod, you can use an action to cast one of the following spells from it: {@spell detect evil and good|phb}, {@spell detect magic|phb}, {@spell detect poison and disease|phb}, or {@spell see invisibility|phb}.",
 				"Protective Aura. As an action, you can plant the haft end of the rod in the ground, whereupon the rod's head sheds bright light in a 60-foot radius and dim light for an additional 60 feet. While in that bright light, you and any creature that is friendly to you gain a +1 bonus to AC and saving throws and can sense the location of any invisible hostile creature that is also in the bright light.",
 				"The rod's head stops glowing and the effect ends after 10 minutes, or when a creature uses an action to pull the rod from the ground. This property can't be used again until the next dawn."
@@ -8411,8 +8561,13 @@
 			"reqAttune": "YES",
 			"entries": [
 				"If you hold this beetle-shaped medallion in your hand for 1 round, an inscription appears on its surface revealing its magical nature. It provides two benefits while it is on your person:",
-				"• You have advantage on saving throws against spells.",
-				"• The scarab has 12 charges. If you fail a saving throw against a necromancy spell or a harmful effect originating from an undead creature, you can use your reaction to expend 1 charge and turn the failed save into a successful one. The scarab crumbles into powder and is destroyed when its last charge is expended."
+				{
+					"type": "list",
+					"items": [
+						"You have advantage on saving throws against spells.",
+						"The scarab has 12 charges. If you fail a saving throw against a necromancy spell or a harmful effect originating from an undead creature, you can use your reaction to expend 1 charge and turn the failed save into a successful one. The scarab crumbles into powder and is destroyed when its last charge is expended."
+					]
+				}
 			]
 		},
 		{
@@ -8425,13 +8580,18 @@
 			"page": "151",
 			"entries": [
 				"Includes:",
-				"• a backpack",
-				"• a book of lore",
-				"• a bottle of ink",
-				"• an ink pen",
-				"• 10 sheets of parchment",
-				"• a little bag of sand",
-				"• a small knife."
+				{
+					"type": "list",
+					"items": [
+						"a backpack",
+						"a book of lore",
+						"a bottle of ink",
+						"an ink pen",
+						"10 sheets of parchment",
+						"a little bag of sand",
+						"a small knife."
+					]
+				}
 			]
 		},
 		{
@@ -8570,7 +8730,7 @@
 			"source": "DMG",
 			"page": "199",
 			"entries": [
-				"While holding this shield, you have advantage on initiative rolls and Wisdom (Perception) checks. The shield is emblazoned with a symbol of an eye."
+				"While holding this shield, you have advantage on initiative rolls and Wisdom ({@skill Perception}) checks. The shield is emblazoned with a symbol of an eye."
 			],
 			"modifier": [
 				{
@@ -8606,7 +8766,7 @@
 				"Icy Mantle. As an action, you can touch yourself or another creature with water on your finger. The water creates an icy mantle of protection. The next time within the next minute that the target takes bludgeoning, slashing, or piercing damage, that damage is reduced to 0, and the mantle is destroyed. Once you use this property, you can't use it again until you finish a short or long rest.",
 				"Winters Howl. As an action, you can cast {@spell sleet storm|phb} (spell save DC 17). You regain this ability after you finish a short or long rest.",
 				"Gift of Frost. You can transfer the shard's magic to a nonmagical item\u2014a cloak or a pair of boots-by tracing the ise rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the shard is destroyed, and the rune appears in blue on the chosen item, which gains a benefit based on its form:",
-				"Cloak. The cloak is now a rare magic item that requires attunement. While wearing it, you have resistance to fire damage, and you have advantage on Dexterity (Stealth) checks made while in snowy terrain.",
+				"Cloak. The cloak is now a rare magic item that requires attunement. While wearing it, you have resistance to fire damage, and you have advantage on Dexterity ({@skill Stealth}) checks made while in snowy terrain.",
 				"Boots. The pair of boots is now a rare magic item that requires attunement. While wearing it, you ignore difficult terrain while walking, and you can walk on water."
 			],
 			"rarity": "Very Rare"
@@ -8946,7 +9106,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 11. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of +5.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 11 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 11 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -8961,7 +9121,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 12. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of +5.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 12 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 12 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -8976,7 +9136,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 13. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 15 and an attack bonus of +7.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 13 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 13 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -8991,7 +9151,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 14. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 15 and an attack bonus of +7.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 14 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 14 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -9006,7 +9166,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 15. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 17 and an attack bonus of +9.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 15 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 15 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -9021,7 +9181,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 16. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 17 and an attack bonus of +9.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 16 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 16 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -9036,7 +9196,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 17. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 18 and an attack bonus of +10.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 17 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 17 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -9051,7 +9211,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 18. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 18 and an attack bonus of +10.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 18 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 18 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -9066,7 +9226,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 19. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 19 and an attack bonus of +11.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 19 Intelligence (Arcana) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 19 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -9081,7 +9241,7 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of +5.",
-				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence ({@skill Arcana}) check with a DC equal to 10. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 			]
 		},
 		{
@@ -9120,8 +9280,8 @@
 			"entries": [
 				"This 2-foot-diameter black sphere is a hole in the multiverse, hovering in space and stabilized by a magical field surrounding it.",
 				"The sphere obliterates all matter it passes through and all matter that passes through it. Artifacts are the exception. Unless an artifact is susceptible to damage from a sphere of annihilation, it passes through the sphere unscathed. Anything else that touches the sphere but isn't wholly engulfed and obliterated by it takes 4d10 force damage.",
-				"The sphere is stationary until someone controls it. If you are within 60 feet of an uncontrolled sphere, you can use an action to make a DC 25 Intelligence (Arcana) check. On a success, the sphere levitates in one direction of your choice, up to a number of feet equal to 5 x your Intelligence modifier (minimum 5 feet). On a failure, the sphere moves 10 feet toward you. A creature whose space the sphere enters must succeed on a DC 13 Dexterity saving throw or be touched by it, taking 4d10 force damage.",
-				"If you attempt to control a sphere that is under another creature's control, you make an Intelligence (Arcana) check contested by the other creature's Intelligence (Arcana) check. The winner of the contest gains control of the sphere and can levitate it as normal.",
+				"The sphere is stationary until someone controls it. If you are within 60 feet of an uncontrolled sphere, you can use an action to make a DC 25 Intelligence ({@skill Arcana}) check. On a success, the sphere levitates in one direction of your choice, up to a number of feet equal to 5 x your Intelligence modifier (minimum 5 feet). On a failure, the sphere moves 10 feet toward you. A creature whose space the sphere enters must succeed on a DC 13 Dexterity saving throw or be touched by it, taking 4d10 force damage.",
+				"If you attempt to control a sphere that is under another creature's control, you make an Intelligence ({@skill Arcana}) check contested by the other creature's Intelligence ({@skill Arcana}) check. The winner of the contest gains control of the sphere and can levitate it as normal.",
 				"If the sphere comes into contact with a planar portal, such as that created by the {@spell gate|phb} spell, or an extradimensional space, such as that within a {@item portable hole|dmg}, the DM determines randomly what happens, using the following table.",
 				{
 					"type": "table",
@@ -9522,7 +9682,7 @@
 			"page": "223",
 			"reqAttune": "YES",
 			"entries": [
-				"Created by the stone giant librarians of Gravenhollow, this nineteen-inch-long shard of quartz grants you advantage on Intelligence (investigation) checks while it is on your person.",
+				"Created by the stone giant librarians of Gravenhollow, this nineteen-inch-long shard of quartz grants you advantage on Intelligence ({@skill Investigation}) checks while it is on your person.",
 				"The crystal has 10 charges. While holding it, you can use an action to expend some of its charges to cast one of the following spells from it: {@spell speak with animals|phb} (2 charges), {@spell speak with dead|phb} (4 charges), or {@spell speak with plants|phb} (3 charges).",
 				"When you cast a {@spell divination|phb} spell, you can use the crystal in place of one material component that would normally be consumed by the spell, at a cost of 1 charge per level of the spell. The crystal is not consumed when used in this way.",
 				"The crystal regains 1d6+4 expended charges daily at dawn. If you expend the crystal's last charge, roll a d20. On a 1, the crystal vanishes, lost forever."
@@ -9605,10 +9765,15 @@
 				"The Sword of Kas is a magic, sentient longsword that grants a +3 bonus to attack and damage rolls made with it. It scores a critical hit on a roll of 19 or 20, and deals an extra 2d10 slashing damage to undead.",
 				"If the sword isn't bathed in blood within 1 minute of being drawn from its scabbard, its wielder must make a DC 15 Charisma saving throw. On a successful save, the wielder takes 3d6 psychic damage. On a failed save, the wielder is dominated by the sword, as if by the {@spell dominate monster|phb} spell, and the sword demands that it be bathed in blood. The spell effect ends when the sword's demand is met.",
 				"Random Properties. The Sword of Kas has the following random properties:",
-				"• 1 minor beneficial property",
-				"• 1 major beneficial property",
-				"• 1 minor detrimental property",
-				"• 1 major detrimental property",
+				{
+					"type": "list",
+					"items": [
+						"1 minor beneficial property",
+						"1 major beneficial property",
+						"1 minor detrimental property",
+						"1 major detrimental property"
+					]
+				},
 				"Spirit of Kas. While the sword is on your person, you add a d10 to your initiative at the start of every combat. In addition, when you use an action to attack with the sword, you can transfer some or all of its attack bonus to your Armor Class instead. The adjusted bonuses remain in effect until the start of your next turn.",
 				"Spells. While the sword is on your person, you can use an action to cast one of the following spells (save 18) from it: {@spell call lightning|phb}, {@spell divine word|phb}, or {@spell finger of death|phb}. Once you use the sword to cast a spell, you can't cast that spell again from it until the next dawn.",
 				"Sentience. The Sword of Kas is a sentient chaotic evil weapon with an Intelligence of 15, a Wisdom of 13, and a Charisma of 16. It has hearing and darkvision out to 2 range of 120 feet.",
@@ -9658,7 +9823,7 @@
 			"page": "207",
 			"reqAttune": "YES",
 			"entries": [
-				"When you make an Intelligence (Arcana) check to control a {@item sphere of annihilation|dmg} while you are holding this talisman, you double your proficiency bonus on the check. In addition, when you start your turn with control over a {@item sphere of annihilation|dmg}, you can use an action to levitate it 10 feet plus a number of additional feet equal to 10 x your Intelligence modifier."
+				"When you make an Intelligence ({@skill Arcana}) check to control a {@item sphere of annihilation|dmg} while you are holding this talisman, you double your proficiency bonus on the check. In addition, when you start your turn with control over a {@item sphere of annihilation|dmg}, you can use an action to levitate it 10 feet plus a number of additional feet equal to 10 x your Intelligence modifier."
 			]
 		},
 		{
@@ -9734,9 +9899,14 @@
 				"A flint dagger, Tinderstrike is uncommonly sharp, and sparks cascade off its edge whenever it strikes something solid. Its handle is always warm to the touch, and the blade smolders for 1d4 minutes after it is used to deal damage. It contains a spark of {@creature Imix|PotA}, Prince of Evil Fire.",
 				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. When you hit with it, the target takes an extra 2d6 fire damage.",
 				"Fire Mastery. You gain the following benefits while you hold Tinderstrike:",
-				"• You can speak Ignan fluently.",
-				"• You have resistance to fire damage.",
-				"• You can cast {@spell dominate monster|phb} (save DC 17) on a {@creature fire elemental|mm}. Once you have done so, Tinderstrike can't be used this way again until the next dawn.",
+				{
+					"type": "list",
+					"items": [
+						"You can speak Ignan fluently.",
+						"You have resistance to fire damage.",
+						"You can cast {@spell dominate monster|phb} (save DC 17) on a {@creature fire elemental|mm}. Once you have done so, Tinderstrike can't be used this way again until the next dawn."
+					]
+				},
 				"Dance of the All-Consuming Fire: While inside a fire node, you can perform a ritual called the Dance of the All-Consuming Fire, using Tinderstrike to create a {@item devastation orb of fire|PotA}. Once you perform the ritual, Tinderstrike can't be used to perform the ritual again until the next dawn.",
 				"Flaw. Tinderstrike makes its wielder impatient and rash. While attuned to the weapon, you gain the following flaw: \"I act without thinking and take risks without weighing the consequences.\""
 			]
@@ -11121,10 +11291,15 @@
 				"Any creature besides {@creature Orcus|OotA} that tries to attune to the wand must make a DC 17 Constitution saving throw. On a successful save, the creature takes 10d6 necrotic damage. On a failed save, the creature dies and rises as a {@creature zombie|mm}.",
 				"In the hands of one who is attuned to it, the wand can be wielded as a magic mace that grants a +3 bonus to attack and damage rolls made with it. The wand deals an extra 2d12 necrotic damage on a hit.",
 				"Random Properties. The Wand of Orcus has the following random properties:",
-				"• 2 minor beneficial properties",
-				"• 1 major beneficial property",
-				"• 2 minor detrimental properties",
-				"• 1 major detrimental property",
+				{
+					"type": "list",
+					"items": [
+						"2 minor beneficial properties",
+						"1 major beneficial property",
+						"2 minor detrimental properties",
+						"1 major detrimental property"
+					]
+				},
 				"The detrimental properties of the Wand of Orcus are suppressed while the wand is attuned to {@creature Orcus|OotA} himself.",
 				"Protection. You gain a +3 bonus to Armor Class while holding the wand.",
 				"Spells. The wand has 7 charges. While holding it, you can use an action and expend 1 or more of its charges to cast one of the following spells (save DC 18) from it: {@spell animate dead|phb} (1 charge), {@spell blight|phb} (2 charges), {@spell circle of death|phb} (3 charges), {@spell finger of death|phb} (3 charges), {@spell power word kill|phb} (4 charges), or {@spell speak with dead|phb} (1 charge). The wand regains 1d4+3 expended charges daily at dawn.",
@@ -11577,9 +11752,14 @@
 				"A silver spear, Windvane has dark sapphires on the filigreed surface of its polished head. Held by its shining haft, the weapon feels insubstantial, as if clutching a cool, gently flowing breeze. The spear contains a spark of {@creature Yan-C-Bin|PotA}, the Prince of Evil Air.",
 				"You have a +2 bonus to attack and damage rolls made with this magic weapon, which has the finesse weapon property. When you hit with it, the target takes an extra 1d6 lightning damage.",
 				"Air Mastery. You gain the following benefits while you hold Windvane:",
-				"• You can speak Auran fluently.",
-				"• You have resistance to lightning damage.",
-				"• You can cast {@spell dominate monster|phb} (save DC 17) on an {@spell air elemental|phb}. Once you have done so, Windvane can't be used this way again until the next dawn.",
+				{
+					"type": "list",
+					"items": [
+						"You can speak Auran fluently.",
+						"You have resistance to lightning damage.",
+						"You can cast {@spell dominate monster|phb} (save DC 17) on an {@spell air elemental|phb}. Once you have done so, Windvane can't be used this way again until the next dawn."
+					]
+				},
 				"Song of the Four Winds. While inside an air node, you can perform a ritual called the Song of the Four Winds, using Windvane to create a {@item devastation orb of air|PotA}. Once you perform the ritual, Windvane can't be used to perform the ritual again until the next dawn.",
 				"Flaw. Windvane makes its wielder mercurial and unreliable. While attuned to the weapon, you gain the following flaw: \"I break my vows and plans. Duty and honor mean nothing to me.\"",
 				"Thrown. If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property.",
@@ -12396,7 +12576,7 @@
 			"source": "TftYP",
 			"page": "228",
 			"entries": [
-				"This whistle is carved from transparent crystal, and it resembles a tiny dragon curled up like a snail. The name Night Caller is etched on the whistle in Dwarvish runes. If a character succeeds on a DC 20 Intelligence (Arcana or History) check, the character recalls lore that says the {@creature duergar|mm} made several such whistles for various groups in an age past.",
+				"This whistle is carved from transparent crystal, and it resembles a tiny dragon curled up like a snail. The name Night Caller is etched on the whistle in Dwarvish runes. If a character succeeds on a DC 20 Intelligence ({@skill Arcana} or {@skill History}) check, the character recalls lore that says the {@creature duergar|mm} made several such whistles for various groups in an age past.",
 				"If you blow the whistle in darkness or under the night sky, it allows you to cast the {@spell animate dead|phb} spell. The target can be affected through up to 10 feet of soft earth or similar material, and if it is, it takes 1 minute to claw its way to the surface to serve you. Once the whistle has animated an undead creature, it can't do so again until 7 days have passed.",
 				"Once every 24 hours, you can blow the whistle to reassert control over one or two creatures you animated with it."
 			]
@@ -12585,10 +12765,15 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This +3 dagger belongs to {@creature Artus Cimber|ToA}. While you have the dagger drawn, you can use a bonus action to activate one of the following properties:",
-				"• Cause a blue gem set into the dagger's pommel to shed bright light in a 20-foot radius and dim light for an additional 20 feet, or make the gem go dark.",
-				"• Turn the dagger into a compass that, while resting on your palm, points north.",
-				"• Cast {@spell dimension door|phb} from the dagger. Once this property is used, it can't be used again until the next dawn.",
-				"• Cast {@spell compulsion|phb} (save DC 15) from the dagger. The range of the spell increases to 90 feet but it targets only spiders that are beasts. Once this property is used, it can't be used again until the next dawn."
+				{
+					"type": "list",
+					"items": [
+						"Cause a blue gem set into the dagger's pommel to shed bright light in a 20-foot radius and dim light for an additional 20 feet, or make the gem go dark.",
+						"Turn the dagger into a compass that, while resting on your palm, points north.",
+						"Cast {@spell dimension door|phb} from the dagger. Once this property is used, it can't be used again until the next dawn.",
+						"Cast {@spell compulsion|phb} (save DC 15) from the dagger. The range of the spell increases to 90 feet but it targets only spiders that are beasts. Once this property is used, it can't be used again until the next dawn."
+					]
+				}
 			]
 		},
 		{
@@ -12608,10 +12793,15 @@
 			"entries": [
 				"This crooked staff is carved from bone and topped with the skull of a forgotten {@creature archmage|ToA} whom {@creature Acererak|ToA} destroyed long ago. Etched into the skull's forehead is {@creature acererak|ToA|Acererak's} rune, which is known on many worlds as a sign of death.",
 				"Beneficial Properties. While the staff is on your person, you gain the following benefits:",
-				"• Your proficiency bonus to Intelligence (Arcana) and Intelligence (History) checks is doubled.",
-				"• You can't be blinded, charmed, deafened, frightened, petrified, or stunned.",
-				"• Undead with a challenge rating of 2 or lower will neither threaten nor attack you unless you harm them.",
-				"• You can wield the staff as a +3 quarterstaff that deals an extra 10 (3d6) necrotic damage on a hit.",
+				{
+					"type": "list",
+					"items": [
+						"Your proficiency bonus to Intelligence (Arcana) and Intelligence (History) checks is doubled.",
+						"You can't be blinded, charmed, deafened, frightened, petrified, or stunned.",
+						"Undead with a challenge rating of 2 or lower will neither threaten nor attack you unless you harm them.",
+						"You can wield the staff as a +3 quarterstaff that deals an extra 10 (3d6) necrotic damage on a hit."
+					]
+				},
 				"Invoke Curse. The Staff of the Forgotten One has 7 charges and regains 1 d4+3 expended charges daily at dawn. While holding the staff, you can use an action to expend 1 charge and target one creature you can see within 60 feet of you. The target must succeed on a Constitution saving throw (using your spell save DC) or be cursed. While cursed in this way, the target can't regain hit points and has vulnerability to necrotic damage. A {@spell greater restoration|phb}, {@spell remove curse|phb}, or similar spell ends the curse on the target.",
 				"The Forgotten One. The bodiless life force of a dead {@creature archmage|mm} empowers the staff and is imprisoned within it. The rune carved into the staff's skull protects {@creature Acererak|ToA} from th is spirit's vengeance. Each time a creature other than {@creature Acererak|ToA} expends any of the staff's charges, there is a 50 percent chance that the life force tries to possess the staff wielder. The wielder must succeed on a DC 20 Charisma saving throw or be possessed, becoming an NPC under the DM's control. If the intruding life force is targeted by magic such as a {@spells dispel evil and good|phb} spell, it becomes trapped in th e staff once more. Once it takes control of another creature, the insane spirit of the dead {@creature archmage|mm} attempts to destroy the staff.",
 				"Destroying the Staff. A creature in possession of the staff can use an action to break it over one knee or a solid surface. The staff is destroyed and releases its remaining magic in an explosion that expands to fill a 30-foot-radius sphere centered on it. Each creature in the area must make a DC 18 Dexterity saving throw, taking 132 (24d10) force damage on a failed save, or half as much damage on a successful one. When the staff is destroyed, the life force of the Forgotten One is released to the afterlife. Where it goes is anyone's guess."
@@ -12712,9 +12902,14 @@
 				"Frozen Time. As long as you wear the ring, you don't age naturally. This effect is similar to suspended animation, in that your age doesn't catch up to you once the ring is removed. The ring doesn't protect its wearer from magical or supernatural aging effects, such as the Horrifying Visage of a {@creature ghost|mm}.",
 				"Cold Immunity. While attuned to and wearing the ring, you have immunity to cold damage and don't suffer any ill effects from extreme cold (see chapter 5 of the Dungeon's Master Guide).",
 				"Magic. The Ring of Winter has 12 charges and regains all its expended charges daily at dawn. While wearing the ring, you can expend the necessary number of charges to activate one of the following properties:",
-				"• You can expend 1 charge as an action and use the ring to lower the temperature in a 120-foot-radius sphere centered on a point you can see within 300 feet of you. The temperature in that area drops 20 degrees Per minute, to a minimum of -30 degrees Fahrenheit. Frost and ice begin to form on surfaces once the temperature drops below 32 degrees. This effect is permanent unless you use the ring to end it as an action, at which point the temperature in the area returns to normal at a rate of 10 degrees per minute.",
-				"• You can cast one of the following spells from the ring (spell save DC 17) by expending the necessary number of charges: {@spell Bigby's hand|phb} (2 charges; the hand is made of ice, is immune to cold damage, and deals bludgeoning damage instead of force damage as a clenched fist), {@spell cone of cold|phb} (2 charges), flesh to ice (3 charges; as {@spell flesh to stone|phb} except that the target turns to solid ice with the density and durability of stone), {@spell ice storm|phb} (2 charges), {@spell Otiluke's freezing sphere|phb} (3 charges), {@spell sleet storm|phb} (1 charge), {@spell spike growth|phb} (1 charge; the spikes are made of ice), or {@spell wall of ice|phb} (2 charges).",
-				"• You can expend the necessary number of charges as an action and use the ring to create either an inanimate ice object (2 charges) or an animated ice creature (4 charges). The ice object can't have any moving parts, must be able to fit inside a 10-foot cube, and has the density and durability of metal or stone (your choice). The ice creature must be modeled after a beast with a challenge rating of 2 or less. The ice creature has the same statistics as the beast it models, with the following changes: the creature is a construct with vulnerability to fire damage, immunity to cold and poison damage, and immunity to the following conditions: charmed, exhaustion, frightened, paralyzed, petrified, and poisoned. The ice creature obeys only its creator's commands. The ice object or creature appears in an unoccupied space within 60 feet of you. It melts into a pool of normal water after 24 hours or when it drops to 0 hit points. In extreme heat, it loses 5 (1d10) hit points per minute as it melts. Use the guidelines in ch apter 8 of the Dungeon Master's Guide to determine the hit points of an inanimate object if they become necessary.",
+				{
+					"type": "list",
+					"items": [
+						"You can expend 1 charge as an action and use the ring to lower the temperature in a 120-foot-radius sphere centered on a point you can see within 300 feet of you. The temperature in that area drops 20 degrees Per minute, to a minimum of -30 degrees Fahrenheit. Frost and ice begin to form on surfaces once the temperature drops below 32 degrees. This effect is permanent unless you use the ring to end it as an action, at which point the temperature in the area returns to normal at a rate of 10 degrees per minute.",
+						"You can cast one of the following spells from the ring (spell save DC 17) by expending the necessary number of charges: {@spell Bigby's hand|phb} (2 charges; the hand is made of ice, is immune to cold damage, and deals bludgeoning damage instead of force damage as a clenched fist), {@spell cone of cold|phb} (2 charges), flesh to ice (3 charges; as {@spell flesh to stone|phb} except that the target turns to solid ice with the density and durability of stone), {@spell ice storm|phb} (2 charges), {@spell Otiluke's freezing sphere|phb} (3 charges), {@spell sleet storm|phb} (1 charge), {@spell spike growth|phb} (1 charge; the spikes are made of ice), or {@spell wall of ice|phb} (2 charges).",
+						"You can expend the necessary number of charges as an action and use the ring to create either an inanimate ice object (2 charges) or an animated ice creature (4 charges). The ice object can't have any moving parts, must be able to fit inside a 10-foot cube, and has the density and durability of metal or stone (your choice). The ice creature must be modeled after a beast with a challenge rating of 2 or less. The ice creature has the same statistics as the beast it models, with the following changes: the creature is a construct with vulnerability to fire damage, immunity to cold and poison damage, and immunity to the following conditions: charmed, exhaustion, frightened, paralyzed, petrified, and poisoned. The ice creature obeys only its creator's commands. The ice object or creature appears in an unoccupied space within 60 feet of you. It melts into a pool of normal water after 24 hours or when it drops to 0 hit points. In extreme heat, it loses 5 (1d10) hit points per minute as it melts. Use the guidelines in chapter 8 of the Dungeon Master's Guide to determine the hit points of an inanimate object if they become necessary."
+					]
+				},
 				"Other Properties. The Ring of Winter is rumored to possess other properties that can be activated only by an evil being whose will the ring can't break. Frost giants have long believed that the ring can be used to freeze entire worlds, while a {@creature djinni|mm} in the service of a Calishite pasha once claimed that the ring could be used to summon and control white dragons, as well as the mighty ice primordial named Cryonax.",
 				"Destroying the Ring. The ring is nigh indestructible, resisting even the most intense magical heat. If it is placed on the finger of the powerful archfey known as the Summer Queen, the ring melts away and is destroyed forever."
 			]
@@ -12894,9 +13089,14 @@
 			"reqAttune": "YES",
 			"entries": [
 				"This suit of plate armor is fashioned from {@creature giant scorpion|mm} chitin. While wearing this armor, you gain the following benefits:",
-				"• The armor improves your combat readiness, granting you a +5 bonus to initiative as long as you aren't incapacitated.",
-				"• The armor doesn't impose disadvantage on your Dexterity (Stealth) checks.",
-				"• The armor doesn't impose disadvantage on saving throws made to resist the effects of extreme heat (see chapter 5 of the Dungeon Master's Guide).",
+				{
+					"type": "list",
+					"items": [
+						"The armor improves your combat readiness, granting you a +5 bonus to initiative as long as you aren't incapacitated.",
+						"The armor doesn't impose disadvantage on your Dexterity ({@skill Stealth}) checks.",
+						"The armor doesn't impose disadvantage on saving throws made to resist the effects of extreme heat (see chapter 5 of the Dungeon Master's Guide)."
+					]
+				},
 				{
 					"type": "entries",
 					"name": "Curse",
@@ -13017,8 +13217,13 @@
 			"reqAttune": "by a Warlock",
 			"entries": [
 				"This amulet is fashioned from a single shard of resilient extraplanar material originating from the realm of your warlock patron. While you are wearing it, you gain the following benefits:",
-				"• You can use the amulet as a spellcasting focus for your warlock spells.",
-				"• You can try to cast a cantrip that you don't know. The cantrip must be on the warlock spell list, and you must make a DC 10 Intelligence (Arcana) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
+				{
+					"type": "list",
+					"items": [
+						"You can use the amulet as a spellcasting focus for your warlock spells.",
+						"You can try to cast a cantrip that you don't know. The cantrip must be on the warlock spell list, and you must make a DC 10 Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
+					]
+				}
 			]
 		},
 		{
@@ -13087,8 +13292,13 @@
 			"reqAttune": "by a Wizard",
 			"entries": [
 				"This antiquated, cone—shaped hat is adorned with gold crescent moons and stars. While you are wearing it, you gain the following benefits:",
-				"• You can use the hat as a spellcasting focus for your wizard spells.",
-				"• You can try to cast a cantrip that you don't know. The cantrip must be on the wizard spell list, and you must make a DC 10 Intelligence (Arcana) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
+				{
+					"type": "list",
+					"items": [
+						"You can use the hat as a spellcasting focus for your wizard spells.",
+						"You can try to cast a cantrip that you don't know. The cantrip must be on the wizard spell list, and you must make a DC 10 Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
+					]
+				}
 			]
 		},
 		{
