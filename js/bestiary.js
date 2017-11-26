@@ -26,6 +26,7 @@ function populate(tobData, mainData) {
 	monsters = mainData[0].monster.concat(tobData.monster);
 
 	// TODO type tag filter
+	// TODO alignment filter
 	const sourceFilter = getSourceFilter();
 	const crFilter = new Filter({header: "CR", items: []});
 	const typeFilter = new Filter({
@@ -116,6 +117,7 @@ function populate(tobData, mainData) {
 	}
 
 	initHistory();
+	handleFilterChange();
 
 	// sorting headers
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {

@@ -904,8 +904,9 @@ SRC_UATF 		= SRC_UA_PREFIX + "TheFaithful";
 SRC_UAWR 		= SRC_UA_PREFIX + "WizardRevisited";
 SRC_UAESR 		= SRC_UA_PREFIX + "ElfSubraces";
 
-SRC_BOLS_3PP = "BoLS 3pp";
-SRC_ToB_3PP = "ToB 3pp";
+SRC_3PP_SUFFIX = " 3pp";
+SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
+SRC_ToB_3PP = "ToB" + SRC_3PP_SUFFIX;
 
 AL_PREFIX = "Adventurers League: ";
 AL_PREFIX_SHORT = "AL: ";
@@ -913,6 +914,7 @@ PS_PREFIX = "Plane Shift: ";
 PS_PREFIX_SHORT = "PS: ";
 UA_PREFIX = "Unearthed Arcana: ";
 UA_PREFIX_SHORT = "UA: ";
+PP3_SUFFIX = " (3pp)";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CoS] 		= "Curse of Strahd";
@@ -977,8 +979,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] 		= UA_PREFIX + "Warlock and Wizard";
 Parser.SOURCE_JSON_TO_FULL[SRC_UATF] 		= UA_PREFIX + "The Faithful";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] 		= UA_PREFIX + "Wizard Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] 		= UA_PREFIX + "Elf Subraces";
-Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] 	= "Book of Lost Spells (3pp)";
-Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] 	= "Tome of Beasts (3pp)";
+Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] 	= "Book of Lost Spells" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] 	= "Tome of Beasts" + PP3_SUFFIX;
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CoS] 			= "CoS";
@@ -1160,7 +1162,7 @@ function getSourceFilter(options) {
 		items: [],
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
 		desel: function(val) {
-			return val.startsWith(SRC_UA_PREFIX) || val.startsWith(SRC_PS_PREFIX);
+			return val.startsWith(SRC_UA_PREFIX) || val.startsWith(SRC_PS_PREFIX) || val.endsWith(SRC_3PP_SUFFIX);
 		}
 	};
 	return getFilterWithMergedOptions(baseOptions, options);
