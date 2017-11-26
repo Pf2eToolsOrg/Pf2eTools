@@ -67,7 +67,8 @@ function onJsonLoad(data) {
 		tempString +=
 			`<li>
 				<a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'>
-					<span class='name col-xs-8'>${curClass.name}</span><span class='source col-xs-4 text-align-center' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span>
+					<span class='name col-xs-8'>${curClass.name}</span>
+					<span class='source col-xs-4 text-align-center source${Parser.sourceJsonToAbv(curClass.source)}' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span>
 				</a>
 			</li>`;
 	}
