@@ -13,6 +13,14 @@
 	user-select: none;
 }
 
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
 header {
 	margin-bottom: 3px;
 	padding: 25px 15px;
@@ -117,13 +125,12 @@ ul.list li:hover span {
 	display: block;
 }
 
-th#name span.source {
-	display: inline-block;
+th#name span.stats-name {
+	float: left;
+}
+
+th#name span.stats-source {
 	float: right;
-	font-weight: 500;
-	margin-left: 0.5em;
-	z-index: 1;
-	line-height: 100%;
 }
 
 .monster th#name span.source {
@@ -277,7 +284,7 @@ th#name {
 }
 
 .monster th#name {
-	padding-right: 5em !important;
+	padding-right: 5em;
 }
 
 table#stats td#sizetypealignment {
@@ -1007,30 +1014,76 @@ table#stats p.subtrait {
 	width: 10%;
 }
 
-.dropdown-submenu {
-	position: relative;
+.filter-item > div {
+	padding: 3px 10px;
+	font-size: 1.1em;
+	font-weight: bold;
 }
 
-.dropdown-submenu .dropdown-menu {
-	top: 0;
-	left: 100%;
+.filter-item > span {
+	padding: 3px;
+}
+
+.h-wrap {
+	display: flex;
+}
+
+/**** Search and filter bar ****/
+.dropdown-menu-filter {
+	width: calc(100% + 2px);
+	max-height: 600px;
+	overflow-y: scroll;
+	margin-left: -1px;
 	margin-top: -1px;
-	overflow-y: auto;
-	max-height: 500px;
 }
 
-.caret-right {
-	border-left: 4px dashed;
-	border-left: 4px solid\9;
-	border-top: 4px solid transparent;
-	border-bottom: 4px solid transparent;
+.dropdown-menu-filter ul.select2-selection__rendered {
+	background-color: #f7f7f7;
 }
 
-.caret-right {
-	border-left: 4px dashed;
-	border-left: 4px solid\9;
-	border-top: 4px solid transparent;
-	border-bottom: 4px solid transparent;
+.dropdown-menu-filter .filter-invert ul.select2-selection__rendered {
+	background-color: #fee4e2;
+}
+
+.filter-invert .invert-button {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+	outline: 0;
+}
+
+#filter-search-input-group > *:first-child,
+#filter-search-input-group > *:first-child .btn {
+	border-bottom-left-radius: 0;
+}
+
+/* display "Reset" button as the last child */
+button#reset {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	z-index: 2;
+	margin-left: -1px;
+}
+
+/* fix sort button spacing and corners */
+#listcontainer .sortlabel.btn-group .btn {
+	border-top: 0;
+}
+
+#listcontainer .sortlabel.btn-group .btn + .btn:not(:last-child) {
+	margin-left: 0;
+	border-left: 0;
+	border-top: 0;
+}
+
+#listcontainer .sortlabel.btn-group .btn:first-child {
+	border-top-left-radius: 0;
+}
+
+#listcontainer .sortlabel.btn-group .btn:last-child {
+	border-top-right-radius: 0;
 }
 
 /* Psionics */
@@ -1086,7 +1139,7 @@ input[type=checkbox].readonly {
 	pointer-events: none;
 }
 
-#listcontainer li {
+#listcontainer > ul > li {
 	padding: 0;
 }
 

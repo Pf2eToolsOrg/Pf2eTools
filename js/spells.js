@@ -1,7 +1,14 @@
 "use strict";
+
 const JSON_URL = "data/spells.json";
 
-const META_RITUAL = "Rituals";
+// toss these into the "Tags" section to save screen space
+const META_ADD_CONC = "Concentration";
+const META_ADD_V = "Verbal";
+const META_ADD_S = "Somatic";
+const META_ADD_M = "Material";
+// real meta tags
+const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
 
 const P_LEVEL = "level";
@@ -28,7 +35,13 @@ const TM_MINS = "minute";
 const TM_HRS = "hour";
 const TO_HIDE_SINGLETON_TIMES = [TM_ACTION, TM_B_ACTION, TM_REACTION, TM_ROUND];
 
-let tableDefault = "";
+const F_RNG_POINT = "Point";
+const F_RNG_AREA = "Area";
+const F_RNG_SELF = "Self";
+const F_RNG_TOUCH = "Touch";
+const F_RNG_SPECIAL = "Special";
+
+let tableDefault;
 
 function getFltrSpellLevelStr(level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
@@ -132,6 +145,29 @@ function getNormalisedRange(range) {
 	}
 }
 
+function getRangeType(range) {
+	switch(range.type) {
+		case RNG_SPECIAL:
+			return F_RNG_SPECIAL;
+		case RNG_POINT:
+			switch (range.distance.type) {
+				case RNG_SELF:
+					return F_RNG_SELF;
+				case RNG_TOUCH:
+					return F_RNG_TOUCH;
+				default:
+					return F_RNG_POINT;
+			}
+		case RNG_LINE:
+		case RNG_CONE:
+		case RNG_RADIUS:
+		case RNG_HEMISPHERE:
+		case RNG_SPHERE:
+		case RNG_CUBE:
+			return F_RNG_AREA
+	}
+}
+
 function getTblTimeStr(time) {
 	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
 		return time.unit.uppercaseFirst();
@@ -146,7 +182,65 @@ function getFltrActionVal(unit) {
 }
 
 function getClassFilterStr(c) {
-	return `${c.name}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
+	const nm = c.name.split("(")[0].trim();
+	return `${nm}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
+}
+
+function deselectUaEepc(val) {
+	if (window.location.hash.length) {
+		const spellSource = spellList[getSelectedListElement().attr("id")].source;
+		if (spellSource === SRC_EEPC || spellSource.startsWith(SRC_UA_PREFIX)) {
+			return deSelNoHash();
+		} else {
+			return val === SRC_EEPC && spellSource !== val || val.startsWith(SRC_UA_PREFIX) && spellSource !== val;
+		}
+	} else {
+		return deSelNoHash();
+	}
+	function deSelNoHash() {
+		return val === SRC_EEPC || val.startsWith(SRC_UA_PREFIX);
+	}
+}
+
+function filterMetaMatch(valGroup, s) {
+	return ( s.meta && ((valGroup[META_RITUAL] && s.meta.ritual) || (valGroup[META_TECHNOMAGIC] && s.meta.technomagic)) )
+		|| ( valGroup[META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
+		|| ( valGroup[META_ADD_V] && s.components.v )
+		|| ( valGroup[META_ADD_S] && s.components.s )
+		|| ( valGroup[META_ADD_M] && s.components.m );
+}
+
+function filterMetaMatchInverted(valGroup, s) {
+	return ( implies(s.meta && s.meta.ritual, valGroup[META_RITUAL]) )
+		&& ( implies(s.meta && s.meta.technomagic, valGroup[META_TECHNOMAGIC]) )
+		&& ( implies(s.duration.filter(d => d.concentration).length, valGroup[META_ADD_CONC]) )
+		&& ( implies(s.components.v, valGroup[META_ADD_V]) )
+		&& ( implies(s.components.s, valGroup[META_ADD_S]) )
+		&& ( implies(s.components.m, valGroup[META_ADD_M]) );
+}
+
+function filterTimeMatch(valGroup, time) {
+	return time.map(t => valGroup[t.unit]).filter(b => b).length > 0;
+}
+
+function rangeFilterMatch(valGroup, range) {
+	return valGroup[getRangeType(range)];
+}
+
+function filterClassMatch(valGroup, classes) {
+	return classes.fromClassList.filter(c => valGroup[getClassFilterStr(c)]).length > 0;
+}
+
+function filterClassMatchInverted(valGroup, classes) {
+	return classes.fromClassList.filter(c => !valGroup[getClassFilterStr(c)]).length === 0;
+}
+
+function filterSubclassMatch(valGroup, classes) {
+	return  classes.fromSubclass && classes.fromSubclass.filter(sc => valGroup[getClassFilterStr(sc.subclass)]).length > 0;
+}
+
+function filterSubclassMatchInverted(valGroup, classes) {
+	return !classes.fromSubclass || classes.fromSubclass.filter(sc => !valGroup[getClassFilterStr(sc.subclass)]).length === 0;
 }
 
 window.onload = function load() {
@@ -159,43 +253,61 @@ function onJsonLoad(data) {
 
 	spellList = data.spell;
 
-	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
-
-	// TODO concentration filter
-	// TODO components filter
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull);
-	const levelFilter = new Filter("Level", FLTR_LEVEL, [], getFltrSpellLevelStr);
-	const metaFilter = new Filter("Type", FLTR_META, [META_RITUAL, META_TECHNOMAGIC]);
-	const schoolFilter = new Filter("School", FLTR_SCHOOL, [], Parser.spSchoolAbvToFull);
-	const timeFilter = new Filter("Cast Time", FLTR_ACTION,
-		[
+	const sourceFilter = getSourceFilter({desel: deselectUaEepc});
+	const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
+	const classFilter = new Filter({header: "Class", matchFn: filterClassMatch, matchFnInv: filterClassMatchInverted});
+	const subclassFilter = new Filter({header: "Subclass", desel: Filter.deselAll, matchFn: filterSubclassMatch, matchFnInv: filterSubclassMatchInverted});
+	const metaFilter = new Filter({
+		header: "Tag",
+		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC],
+		matchFn: filterMetaMatch,
+		matchFnInv: filterMetaMatchInverted
+	});
+	const schoolFilter = new Filter({header: "School", displayFn: Parser.spSchoolAbvToFull});
+	const timeFilter = new Filter({
+		header: "Cast Time",
+		items: [
 			"Action",
 			"Bonus Action",
 			"Reaction",
 			"Rounds",
 			"Minutes",
 			"Hours"
-		], Filter.asIs, getFltrActionVal);
-	const rangeFilter = new Filter("Range", FLTR_RANGE, [], Parser.spRangeToFull, Parser.spRangeToFull);
-	const normalizedRangeItems = [];
-	const classFilter = new Filter("Class", FLTR_CLASS, []);
-	const filterList = [
+		],
+		valueFn: getFltrActionVal,
+		matchFn: filterTimeMatch
+	});
+	const rangeFilter = new Filter({
+		header: "Range",
+		items: [
+			F_RNG_SELF,
+			F_RNG_TOUCH,
+			F_RNG_POINT,
+			F_RNG_AREA,
+			F_RNG_SPECIAL
+		],
+		matchFn: rangeFilterMatch
+	});
+
+	const filterBox = initFilterBox(
 		sourceFilter,
 		levelFilter,
+		classFilter,
+		subclassFilter,
 		metaFilter,
 		schoolFilter,
 		timeFilter,
-		rangeFilter,
-		classFilter
-	];
-	const filterBox = new FilterBox(filterAndSearchBar, filterList);
+		rangeFilter
+	);
 
+	const spellTable = $("ul.spells");
+	let tempString = "";
 	for (let i = 0; i < spellList.length; i++) {
 		const spell = spellList[i];
 
 		let levelText = Parser.spLevelToFull(spell.level);
-		if (spell.meta && spell.meta.ritual) levelText += " (ritual)";
-		if (spell.meta && spell.meta.technomagic) levelText += " (tech.)";
+		if (spell.meta && spell.meta.ritual) levelText += " (rit.)";
+		if (spell.meta && spell.meta.technomagic) levelText += " (tec.)";
 
 		// add eldritch knight and arcane trickster
 		if (spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
@@ -235,7 +347,7 @@ function onJsonLoad(data) {
 		spell[P_NORMALISED_RANGE] = getNormalisedRange(spell.range);
 
 		// populate table
-		const tableItem = `
+		tempString += `
 			<li class='row' ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${encodeForHash([spell.name, spell.source])}' title="${spell.name}">
 					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
@@ -248,30 +360,25 @@ function onJsonLoad(data) {
 					<span class='classes' style='display: none'>${Parser.spClassesToFull(spell.classes)}</span>
 				</a>
 			</li>`;
-		$("ul.spells").append(tableItem);
 
 		// populate filters
-		if ($.inArray(spell.source, sourceFilter.items) === -1) sourceFilter.items.push(spell.source);
-		if ($.inArray(spell.level, levelFilter.items) === -1) levelFilter.items.push(spell.level);
-		if ($.inArray(spell.school, schoolFilter.items) === -1) schoolFilter.items.push(spell.school);
-		if ($.inArray(spell[P_NORMALISED_RANGE], normalizedRangeItems) === -1) {
-			rangeFilter.items.push(spell.range);
-			normalizedRangeItems.push(spell[P_NORMALISED_RANGE]);
+		sourceFilter.addIfAbsent(spell.source);
+		levelFilter.addIfAbsent(spell.level);
+		schoolFilter.addIfAbsent(spell.school);
+		spell.classes.fromClassList.forEach(c => classFilter.addIfAbsent(getClassFilterStr(c)));
+		if (spell.classes.fromSubclass) {
+			spell.classes.fromSubclass.forEach(c => subclassFilter.addIfAbsent(getClassFilterStr(c.subclass)));
 		}
-		// TODO good solution for subclasses
-		spell.classes.fromClassList.forEach(c => {
-			const withSrc = getClassFilterStr(c);
-			if($.inArray(withSrc, classFilter.items) === -1) classFilter.items.push(withSrc);
-		});
 	}
+
+	spellTable.append(tempString);
 
 	// sort filters
 	sourceFilter.items.sort(ascSort);
 	levelFilter.items.sort(ascSortSpellLevel);
-	metaFilter.items.sort(ascSort);
 	schoolFilter.items.sort(ascSort);
-	rangeFilter.items.sort(ascSortSpellRange);
 	classFilter.items.sort(ascSort);
+	subclassFilter.items.sort(ascSort);
 
 	function ascSortSpellLevel(a, b) {
 		if (a === b) return 0;
@@ -280,78 +387,54 @@ function onJsonLoad(data) {
 		return ascSort(a, b);
 	}
 
-	function ascSortSpellRange(a, b) {
-		return getNormalisedRange(a) - getNormalisedRange(b);
-	}
-
 	const list = search({
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
 		listClass: "spells"
 	});
-
-	// add filter reset to reset button
-	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
-		filterBox.reset();
-		deselectUaEepc(true);
-	}, false);
 
 	filterBox.render();
 
 	// filtering function
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
-		function () {
-			list.filter(function(item) {
-				const f = filterBox.getValues();
-				const s = spellList[$(item.elm).attr(FLTR_ID)];
-
-				const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][s.source];
-				const rightLevel = f[levelFilter.header][FilterBox.VAL_SELECT_ALL] || f[levelFilter.header][s.level];
-				const rightMeta = f[metaFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| (s.meta && ((f[metaFilter.header][META_RITUAL] && s.meta.ritual) || (f[metaFilter.header][META_TECHNOMAGIC]) && s.meta.technomagic));
-				const rightSchool = f[schoolFilter.header][FilterBox.VAL_SELECT_ALL] || f[schoolFilter.header][s.school];
-				const rightTime = f[timeFilter.header][FilterBox.VAL_SELECT_ALL] || s.time.map(t => f[timeFilter.header][t.unit]).filter(b => b).length > 0;
-				const rightRange = f[rangeFilter.header][FilterBox.VAL_SELECT_ALL] || f[rangeFilter.header][Parser.spRangeToFull(s.range)];
-				// TODO good solution for subclasses
-				const rightClass = f[classFilter.header][FilterBox.VAL_SELECT_ALL]
-					|| s.classes.fromClassList.map(c => f[classFilter.header][getClassFilterStr(c)]).filter(b => b).length > 0;
-
-				return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClass;
-			});
-		}
+		handleFilterChange
 	);
 
+	function handleFilterChange() {
+		list.filter(function(item) {
+			const f = filterBox.getValues();
+			const s = spellList[$(item.elm).attr(FLTR_ID)];
+
+			const rightSource = sourceFilter.matches(f, s.source);
+			const rightLevel = levelFilter.matches(f, s.level);
+			const rightMeta = metaFilter.matches(f, s);
+			const rightSchool = schoolFilter.matches(f, s.school);
+			const rightTime = timeFilter.matches(f, s.time);
+			const rightRange = rangeFilter.matches(f, s.range);
+			const rightClass = classFilter.matches(f, s.classes);
+			const rightSubclass = subclassFilter.matches(f, s.classes);
+
+			let rightClassAndSubclass;
+			if ( (classFilter.isInverted() || subclassFilter.isInverted()) && !(classFilter.isInverted() && !subclassFilter.isInverted()) ) {
+				rightClassAndSubclass = rightClass && rightSubclass;
+			} else {
+				rightClassAndSubclass = rightClass || rightSubclass;
+			}
+
+			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClassAndSubclass;
+		});
+	}
+
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
-		if ($(this).attr("sortby") === "asc") {
-			$(this).attr("sortby", "desc");
-		} else $(this).attr("sortby", "asc");
-		list.sort($(this).data("sort"), { order: $(this).attr("sortby"), sortFunction: sortSpells });
+		const $this = $(this);
+		if ($this.attr("sortby") === "asc") {
+			$this.attr("sortby", "desc");
+		} else $this.attr("sortby", "asc");
+		list.sort($this.data("sort"), { order: $this.attr("sortby"), sortFunction: sortSpells });
 	});
 
-	// default de-select UA and EEPC sources
-	deselectUaEepc();
-
 	initHistory();
-
-	function deselectUaEepc(hardDeselect) {
-		hardDeselect = hardDeselect === undefined || hardDeselect === null ? false : hardDeselect;
-		if (window.location.hash.length) {
-			let spellSource = spellList[getSelectedListElement().attr("id")].source;
-			if (hardDeselect && (spellSource === SRC_EEPC || spellSource.startsWith(SRC_UA_PREFIX))) {
-				deSelNoHash();
-			} else {
-				spellSource = spellList[getSelectedListElement().attr("id")].source;
-				filterBox.deselectIf(function (val) {
-					return val === SRC_EEPC && spellSource !== val || val.startsWith(SRC_UA_PREFIX) && spellSource !== val
-				}, sourceFilter.header);
-			}
-		} else {
-			deSelNoHash();
-		}
-		function deSelNoHash() {
-			filterBox.deselectIf(function(val) { return val === SRC_EEPC || val.startsWith(SRC_UA_PREFIX) }, sourceFilter.header);
-		}
-	}
+	handleFilterChange();
 }
 
 function sortSpells(a, b, o) {
@@ -408,7 +491,7 @@ function loadhash (id) {
 
 	const renderStack = [];
 
-	renderStack.push(`<tr><th id="name" colspan="6"><span style="float: left">${spell.name}</span><span style="float: right" class="source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
+	renderStack.push(`<tr><th id="name" colspan="6"><span class="stats-name">${spell.name}</span><span class="stats-source source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
 
 	renderStack.push(`<tr><td id="levelschoolritual" style="text-transform: lowercase;" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta)}</span></td></tr>`);
 

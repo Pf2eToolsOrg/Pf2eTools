@@ -1,56 +1,94 @@
 "use strict";
-var tabledefault = "";
+
+const JSON_URL = "data/rewards.json";
+
+let tableDefault;
+let rewardList;
 
 window.onload = function load() {
-	tabledefault = $("#stats").html();
-	var rewardlist = rewarddata;
+	loadJSON(JSON_URL, onJsonLoad);
+};
 
-	for (var i = 0; i < rewardlist.length; i++) {
-		var curreward = rewardlist[i];
-		var name = curreward.name;
-		const displayName = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-		$("ul.rewards").append("<li class='row' "+FLTR_SOURCE+"='"+curreward.source+"'><a id='"+i+"' href='#"+encodeURIComponent(name).toLowerCase().replace("'","%27")+"' title='"+name+"'><span class='name col-xs-10'>"+displayName+"</span> <span class='source col-xs-2' title='"+Parser.sourceJsonToFull(curreward.source)+"'>"+Parser.sourceJsonToAbv(curreward.source)+"</span></a></li>");
+function onJsonLoad(data) {
+	tableDefault = $("#stats").html();
+	rewardList = data.reward;
 
-		addDropdownOption($("select.sourcefilter"), curreward.source, Parser.sourceJsonToFull(curreward.source));
+	const sourceFilter = getSourceFilter();
+	const typeFilter = new Filter({
+		header: "Type",
+		items: [
+			"Blessing",
+			"Boon",
+			"Charm",
+			"Demonic Boon"
+		]
+	});
+
+	const filterBox = initFilterBox(sourceFilter, typeFilter);
+
+	let tempString = "";
+	for (let i = 0; i < rewardList.length; i++) {
+		const reward = rewardList[i];
+		const displayName = reward.type === "Demonic Boon" ? "Demonic Boon: " + reward.name : reward.name;
+
+		tempString += `
+			<li class='row' ${FLTR_ID}='${i}'>
+				<a id='${i}' href='#${encodeURIComponent(reward.name).toLowerCase().replace("'","%27")}' title='${reward.name}'>
+					<span class='name col-xs-10'>${displayName}</span>
+					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(reward.source)}' title='${Parser.sourceJsonToFull(reward.source)}'>${Parser.sourceJsonToAbv(reward.source)}</span>
+				</a>
+			</li>`;
+
+		// populate filters
+		sourceFilter.addIfAbsent(reward.source);
 	}
+	$("ul.rewards").append(tempString);
 
-	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
-	$("select.sourcefilter").val("All");
+	// sort filters
+	sourceFilter.items.sort(ascSort);
 
 	const list = search({
 		valueNames: ["name", "source"],
 		listClass: "rewards"
 	});
 
-	$("#filtertools select").change(function(e) {
-		const typeFilter = $("select.typefilter").val();
-		const sourceFilter = $("select.sourcefilter").val();
+	filterBox.render();
 
-		list.filter(item => {
-			const rightType = typeFilter === "All" || item.values().name.startsWith(typeFilter);
-			const rightSource = sourceFilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourceFilter;
-			return rightType && rightSource;
-		})
-	})
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	function handleFilterChange() {
+		list.filter(function(item) {
+			const f = filterBox.getValues();
+			const r = rewardList[$(item.elm).attr(FLTR_ID)];
+
+			const rightSource = sourceFilter.matches(f, r.source);
+			const rightType = typeFilter.matches(f, r.type);
+
+			return rightSource && rightType;
+		});
+	}
 
 	initHistory()
 }
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
-	var rewardlist = rewarddata;
-	var curreward = rewardlist[id];
+	$("#stats").html(tableDefault);
+	const reward = rewardList[id];
 
-	var name = curreward.type === "Demonic" ? "Demonic Boon: " + curreward.name : curreward.name;
-	$("th#name").html("<span title=\""+Parser.sourceJsonToFull(curreward.source)+"\" class='source source"+Parser.sourceJsonToAbv(curreward.source)+"'>"+Parser.sourceJsonToAbv(curreward.source)+"</span> "+name);
+	const name = reward.type === "Demonic Boon" ? "Demonic Boon: " + reward.name : reward.name;
+	$("th#name").html(`<span class="stats-name">${name}</span><span class="stats-source source${reward.source}" title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>`);
 
 	$("tr.text").remove();
 
-	var textlist = curreward.text;
-	var texthtml = "";
+	const textlist = reward.text;
+	let texthtml = "";
 
-	if (curreward.ability !== undefined) texthtml += utils_combineText(curreward.ability.text, "p", "<span class='bold'>Ability Score Adjustment:</span> ");
-	if (curreward.signaturespells !== undefined) texthtml += utils_combineText(curreward.signaturespells.text, "p", "<span class='bold'>Signature Spells:</span> ");
+	if (reward.ability !== undefined) texthtml += utils_combineText(reward.ability.text, "p", "<span class='bold'>Ability Score Adjustment:</span> ");
+	if (reward.signaturespells !== undefined) texthtml += utils_combineText(reward.signaturespells.text, "p", "<span class='bold'>Signature Spells:</span> ");
 	texthtml += utils_combineText(textlist, "p");
 
 	$("tr#text").after("<tr class='text'><td colspan='6'>"+texthtml+"</td></tr>");

@@ -175,11 +175,6 @@ input.search {
 	background-color: transparent !important;
 }
 
-form#filtertools select {
-	margin: 1px;
-	background-color: transparent !important;
-}
-
 ul.list li:hover {
 	background: black;
 }

@@ -151,18 +151,44 @@ function sortItems(a, b, o) {
 	} else return 1;
 }
 
+function deselectFilter(deselectProperty, deselectValue) {
+	return function(val) {
+		if (window.location.hash.length) {
+			const itemProperty = itemList[getSelectedListElement().attr("id")][deselectProperty];
+			if (itemProperty === deselectValue) {
+				return deselNoHash();
+			} else {
+				return val === deselectValue && itemProperty !== val;
+			}
+		} else {
+			deselNoHash();
+		}
+
+		function deselNoHash() {
+			return val === deselectValue;
+		}
+	}
+}
+
+function filterTypeMatch(valGroup, types) {
+	return types.filter(t => valGroup[t]).length > 0;
+}
+
+function filterTypeMatchInverted(valGroup, types) {
+	return types.filter(t => !valGroup[t]).length === 0;
+}
+
 function populateTablesAndFilters() {
 	tabledefault = $("#stats").html();
 
-	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull, Parser.stringToSlug);
-	const typeFilter = new Filter("Type", FLTR_TYPE, [], Filter.asIs, Filter.asIs);
-	const tierFilter = new Filter("Tier", FLTR_TIER, ["None", "Minor", "Major"], Filter.asIs, Filter.asIs);
-	const rarityFilter = new Filter("Rarity", FLTR_RARITY, ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown"], Filter.asIs, Filter.asIs);
-	const attunementFilter = new Filter("Attunement", FLTR_ATTUNEMENT, ["Yes", "By...", "Optional", "No"], Filter.asIs, Parser.stringToSlug);
-	const categoryFilter = new Filter("Category", FLTR_CATEGORY, ["Basic", "Generic Variant", "Specific Variant", "Other"], Filter.asIs, Parser.stringToSlug);
-	const filterList = [sourceFilter, typeFilter, tierFilter, rarityFilter, attunementFilter, categoryFilter];
-	const filterBox = new FilterBox(filterAndSearchBar, filterList);
+	const sourceFilter = getSourceFilter();
+	const typeFilter = new Filter({header: "Type", desel: deselectFilter("type", "$"), matcFn: filterTypeMatch, matchFnInv: filterTypeMatchInverted});
+	const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
+	const rarityFilter = new Filter({header: "Rarity", items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown"]});
+	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"]});
+	const categoryFilter = new Filter({header: "Category", items: ["Basic", "Generic Variant", "Specific Variant", "Other"], desel: deselectFilter("category", "Specific Variant")});
+
+	const filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, attunementFilter, categoryFilter);
 	const liList = {mundane:"", magic:""}; // store the <li> tag content here and change the DOM once for each property after the loop
 
 	for (let i = 0; i < itemList.length; i++) {
@@ -179,8 +205,7 @@ function populateTablesAndFilters() {
 		if (curitem.age) type.push(curitem.age);
 		if (curitem.weaponCategory) type.push(curitem.weaponCategory+" Weapon");
 		if (curitem.type) type.push(Parser.itemTypeToAbv(curitem.type));
-		const typeList = type.join(","); // for filter to use
-		itemList[i].typeText = type.join(", "); // for loadhash to use
+		curitem.typeText = type.join(", "); // for loadhash to use
 		const tierTags = [];
 		tierTags.push(curitem.tier ? curitem.tier : "None");
 		const tierTagsString = tierTags.join(FLTR_LIST_SEP);
@@ -188,20 +213,25 @@ function populateTablesAndFilters() {
 		if (curitem.reqAttune !== undefined) {
 			if (curitem.reqAttune === "YES") {
 				attunement = "Yes";
-				itemList[i].reqAttune = "(Requires Attunement)"
+				curitem.reqAttune = "(Requires Attunement)"
 			} else if (curitem.reqAttune === "OPTIONAL") {
 				attunement = "Optional";
-				itemList[i].reqAttune = "(Attunement Optional)"
+				curitem.reqAttune = "(Attunement Optional)"
 			} else if (curitem.reqAttune.toLowerCase().startsWith("by")) {
 				attunement = "By...";
-				itemList[i].reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
+				curitem.reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
 			} else {
 				attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
-				itemList[i].reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
+				curitem.reqAttune = "(Requires Attunement "+curitem.reqAttune+")";
 			}
 		}
+		// for filter to use
+		curitem._pTypes = type;
+		curitem._pTier = tierTagsString;
+		curitem._pAttunement = attunement;
+
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
-			<li ${FLTR_SOURCE}='${source}' ${FLTR_TYPE}='${typeList}' ${FLTR_TIER}='${tierTagsString}' ${FLTR_RARITY}='${rarity}' ${FLTR_ATTUNEMENT}='${attunement}' ${FLTR_CATEGORY}='${category}'>
+			<li ${FLTR_ID}=${i}>
 				<a id='${i}' href="#${encodeForHash(name)}_${encodeForHash(source)}" title="${name}">
 					<span class='name col-xs-4'>${name}</span>
 					<span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span>
@@ -211,9 +241,9 @@ function populateTablesAndFilters() {
 			</li>`;
 
 		// populate filters
-		if ($.inArray(source, sourceFilter.items) === -1) sourceFilter.items.push(source);
-		for (let j = 0; j < type.length; ++j) if ($.inArray(type[j], typeFilter.items) === -1) typeFilter.items.push(type[j]);
-		for (let j = 0; j < tierTags.length; ++j) if ($.inArray(tierTags[j], tierFilter.items) === -1) tierFilter.items.push(tierTags[j]);
+		sourceFilter.addIfAbsent(source);
+		type.forEach(t => typeFilter.addIfAbsent(t));
+		tierTags.forEach(tt => tierFilter.addIfAbsent(tt));
 	}
 	// populate table
 	$("ul.list.mundane").append(liList.mundane);
@@ -231,79 +261,40 @@ function populateTablesAndFilters() {
 	options.listClass = "magic";
 	const magiclist = search(options);
 
-	// add filter reset to reset button
-	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {
-		filterBox.reset();
-		deselectFilters(true);
-	}, false);
-
 	filterBox.render();
-	initHistory();
 
 	// filtering function
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
-		function () {
-			mundanelist.filter(listFilter);
-			magiclist.filter(listFilter);
-		}
+		handleFilterChange
 	);
 
 	function listFilter(item) {
 		const f = filterBox.getValues();
-		const rightSource = f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][sourceFilter.valueFunction($(item.elm).attr(sourceFilter.storageAttribute))];
-		const allTypes = $(item.elm).attr(typeFilter.storageAttribute).split(",");
-		let anyRightType = false;
-		for (let i = 0; i < allTypes.length; i++) {
-			const t = allTypes[i];
-			if (f[typeFilter.header][t]) {
-				anyRightType = true;
-				break;
-			}
-		}
-		const rightType = f[typeFilter.header][FilterBox.VAL_SELECT_ALL] || anyRightType;
-		const rightTier = f[tierFilter.header][FilterBox.VAL_SELECT_ALL] || f[tierFilter.header][tierFilter.valueFunction($(item.elm).attr(tierFilter.storageAttribute))];
-		const rightRarity = f[rarityFilter.header][FilterBox.VAL_SELECT_ALL] || f[rarityFilter.header][rarityFilter.valueFunction($(item.elm).attr(rarityFilter.storageAttribute))];
-		const rightAttunement = f[attunementFilter.header][FilterBox.VAL_SELECT_ALL] || f[attunementFilter.header][attunementFilter.valueFunction($(item.elm).attr(attunementFilter.storageAttribute))];
-		const rightCategory = f[categoryFilter.header][FilterBox.VAL_SELECT_ALL] || f[categoryFilter.header][categoryFilter.valueFunction($(item.elm).attr(categoryFilter.storageAttribute))];
+		const i = itemList[$(item.elm).attr(FLTR_ID)];
+
+		const rightSource = sourceFilter.matches(f, i.source);
+		const rightType = typeFilter.matches(f, i._pTypes);
+		const rightTier = tierFilter.matches(f, i._pTier);
+		const rightRarity = rarityFilter.matches(f, i.rarity);
+		const rightAttunement = attunementFilter.matches(f, i._pAttunement);
+		const rightCategory = categoryFilter.matches(f, i.category);
+
 		return rightSource && rightType && rightTier && rightRarity && rightAttunement && rightCategory;
 	}
 
-	$("#filtertools button.sort").on("click", function() {
+	function handleFilterChange() {
+		mundanelist.filter(listFilter);
+		magiclist.filter(listFilter);
+	}
+
+	$("#filtertools").find("button.sort").on("click", function() {
 		$(this).attr("sortby", $(this).attr("sortby") === "asc" ? "desc" : "asc");
 		magiclist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortItems });
 		mundanelist.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortItems });
 	});
 
-	deselectFilters(true);
-
-	function deselectFilters(hardDeselect) {
-		deselectFilter(hardDeselect, typeFilter, "type", "$");
-		deselectFilter(hardDeselect, categoryFilter, "category", "Specific Variant");
-	}
-
-	function deselectFilter(hardDeselect, filterName, deselectProperty, deselectValue) {
-		hardDeselect = hardDeselect === undefined || hardDeselect === null ? false : hardDeselect;
-		if (window.location.hash.length) {
-			const itemProperty = itemList[getSelectedListElement().attr("id")][deselectProperty];
-			if (itemProperty === filterName.valueFunction(deselectValue) && hardDeselect) {
-				deselNoHash();
-			} else {
-				filterBox.deselectIf(function (val) {
-					return val === filterName.valueFunction(deselectValue) && filterName.valueFunction(itemProperty) !== val
-				}, filterName.header);
-			}
-		} else {
-			deselNoHash();
-		}
-		function deselNoHash() {
-			filterBox.deselectIf(function(val) {
-				return val === typeFilter.valueFunction(deselectValue)
-			}, typeFilter.header);
-		}
-	}
-
-	$("#itemcontainer h3").not(":has(input)").click(function() {
+	$("#itemcontainer").find("h3").not(":has(input)").click(function() {
 		if ($(this).next("ul.list").css("max-height") === "500px") {
 			$(this).siblings("ul.list").animate({
 				maxHeight: "250px",
@@ -319,6 +310,9 @@ function populateTablesAndFilters() {
 			display: "none"
 		})
 	});
+
+	initHistory();
+	handleFilterChange();
 }
 
 const renderer = new EntryRenderer();
@@ -326,9 +320,8 @@ function loadhash (id) {
 	$("#currentitem").html(tabledefault);
 	const item = itemList[id];
 	const source = item.source;
-	const sourceAbv = Parser.sourceJsonToAbv(source);
 	const sourceFull = Parser.sourceJsonToFull(source);
-	$("th#name").html(`<span title="${sourceFull}" class='source source${sourceAbv}'>${sourceAbv}</span>${item.name}`);
+	$("th#name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
 	$("td#source span").html(`${sourceFull}, page ${item.page}`);
 
 	$("td span#value").html(item.value ? item.value+(item.weight ? ", " : "") : "");

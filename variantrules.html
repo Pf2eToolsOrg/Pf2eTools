@@ -9,6 +9,8 @@
     <title>Variant Rules - 5etools</title>
 
     <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/select2.css">
+	<link rel="stylesheet" href="css/select2-bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="favicon.png">
 
@@ -81,12 +83,12 @@
                     <button class="btn btn-default" type="button" id="reset">Reset</button>
                 </span>
             </div>
-            <form id="filtertools">
-                <span class="sortlabel btn-group">
-                    <button class="col-xs-10 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-                    <button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
-                </span>
-            </form>
+
+            <div id="filtertools" class="sortlabel btn-group">
+				<button class="col-xs-10 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+            </div>
+
             <ul class="list variantRules"></ul>
         </div>
         <div class="col-sm-6">
@@ -114,6 +116,7 @@
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/select2.js"></script>
 
 </body>
 </html>

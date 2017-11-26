@@ -10,49 +10,75 @@ let tableDefault;
 
 const entryRenderer = new EntryRenderer();
 
+function getNames(nameStack, entry) {
+	if (entry.name) nameStack.push(entry.name);
+	if (entry.entries) {
+		for (const eX of entry.entries) {
+			getNames(nameStack, eX);
+		}
+	}
+	if (entry.items) {
+		for (const eX of entry.items) {
+			getNames(nameStack, eX);
+		}
+	}
+}
+
 function onJsonLoad(data) {
 	rulesList = data;
 	tableDefault = $("#stats").html();
 
-	const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
-	const filterList = [];
-	const sourceFilter = new Filter("Source", FLTR_SOURCE, [], Parser.sourceJsonToFull, Parser.stringToSlug);
-	filterList.push(sourceFilter);
-	const filterBox = new FilterBox(filterAndSearchBar, filterList);
+	const sourceFilter = getSourceFilter();
+	const filterBox = initFilterBox(sourceFilter);
 
+	let tempString = "";
 	for (let i = 0; i < rulesList.length; i++) {
 		const curRule = rulesList[i];
+
+		const searchStack = [];
+		for (const e1 of curRule.entries) {
+			getNames(searchStack, e1);
+		}
+
 		// populate table
-		$("ul.variantRules").append(`<li ${FLTR_SOURCE}='${curRule.source}'><a id='${i}' href='#${encodeForHash(curRule.name)}_${encodeForHash(curRule.source)}' title='${curRule.name}'><span class='name col-xs-10'>${curRule.name}</span><span class='source col-xs-2' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span></a></li>`);
+		tempString += `
+			<li ${FLTR_ID}='${i}'>
+				<a id='${i}' href='#${encodeForHash(curRule.name)}_${encodeForHash(curRule.source)}' title='${curRule.name}'>
+					<span class='name col-xs-10'>${curRule.name}</span>
+					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(curRule.source)}' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span>
+					<span class="search hidden">${searchStack.join(",")}</span>
+				</a>
+			</li>`;
 
 		// populate filters
-		if ($.inArray(curRule.source, sourceFilter.items) === -1) {
-			sourceFilter.items.push(curRule.source);
-		}
+		sourceFilter.addIfAbsent(curRule.source);
 	}
+	$("ul.variantRules").append(tempString);
 
 	const list = search({
-		valueNames: ['name', 'source'],
+		valueNames: ['name', 'source', 'search'],
 		listClass: "variantRules"
 	});
 
 	sourceFilter.items.sort(ascSort);
 
+	filterBox.render();
+
 	// filtering function
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
-		function () {
-			list.filter(function(item) {
-				const f = filterBox.getValues();
-				return f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][sourceFilter.valueFunction($(item.elm).attr(sourceFilter.storageAttribute))];
-			});
-		}
+		handleFilterChange
 	);
 
-	// add filter reset to reset button
-	document.getElementById(ID_RESET_BUTTON).addEventListener(EVNT_CLICK, function() {filterBox.reset();}, false);
+	function handleFilterChange() {
+		list.filter(function(item) {
+			const f = filterBox.getValues();
+			const r = rulesList[$(item.elm).attr(FLTR_ID)];
 
-	filterBox.render();
+			return sourceFilter.matches(f, r.source);
+		});
+	}
+
 	initHistory()
 }
 

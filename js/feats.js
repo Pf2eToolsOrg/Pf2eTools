@@ -3,61 +3,102 @@ const JSON_URL = "data/feats.json";
 let tabledefault = "";
 let featlist;
 
+function deselUa(val) {
+	return val.startsWith(SRC_UA_PREFIX);
+}
+
 window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
 function onJsonLoad(data) {
-	const NONE = "None";
 	tabledefault = $("#stats").html();
 	featlist = data.feat;
+
+	// TODO prerequisite filter?
+	const sourceFilter = getSourceFilter();
+	const asiFilter = getAsiFilter();
+	asiFilter.addIfAbsent(STR_NONE);
+	const filterBox = initFilterBox(
+		sourceFilter,
+		asiFilter
+	);
+
+	const featTable = $("ul.feats");
+	let tempString = "";
 	for (let i = 0; i < featlist.length; i++) {
 		const curfeat = featlist[i];
 		const name = curfeat.name;
 		const ability = utils_getAbilityData(curfeat.ability);
-		if (!ability.asText) ability.asText = NONE;
-		const isAbilityChoose = ability.asText.toLowerCase().includes("choose any");
+		if (!ability.asText) ability.asText = STR_NONE;
+		curfeat._pAbility = ability; // save regenerating it when filtering
 		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
-		if (!prereqText) prereqText = NONE;
+		if (!prereqText) prereqText = STR_NONE;
 		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";
 		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 source${curfeat.source}`;
-		const CLS_COL_3 = "ability " + (ability.asText === NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
-		const CLS_COL_4 = "prerequisite " + (prereqText === NONE ? "list-entry-none " : "") + "col-xs-3";
-		$("ul.feats").append(`<li ${FLTR_SOURCE}='${curfeat.source}' ${FLTR_ABILITIES}='${ability.asFilterCollection}' ${FLTR_ABILITIES_CHOOSE}='${isAbilityChoose}'><a id='${i}' href='#${encodeForHash(name)+HASH_LIST_SEP+encodeForHash(curfeat.source)}' title='${name}'><span class='${CLS_COL_1}'>${name}</span> <span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span> <span class='${CLS_COL_3}'>${ability.asText}</span><span class='${CLS_COL_4}'>${prereqText}</span></a></li>`);
+		const CLS_COL_3 = "ability " + (ability.asText === STR_NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
+		const CLS_COL_4 = "prerequisite " + (prereqText === STR_NONE ? "list-entry-none " : "") + "col-xs-3";
 
-		addDropdownOption($("select.sourcefilter"), curfeat.source, Parser.sourceJsonToFull(curfeat.source));
+		tempString += `
+			<li ${FLTR_ID}="${i}">
+				<a id='${i}' href='#${encodeForHash(name)+HASH_LIST_SEP+encodeForHash(curfeat.source)}' title='${name}'>
+					<span class='${CLS_COL_1}'>${name}</span>
+					<span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span>
+					<span class='${CLS_COL_3}'>${ability.asText}</span>
+					<span class='${CLS_COL_4}'>${prereqText}</span>
+				</a>
+			</li>`;
+
+		// populate filters
+		sourceFilter.addIfAbsent(curfeat.source);
 	}
-	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
-	$("select.sourcefilter").val("All");
+	featTable.append(tempString);
+
+	// sort filters
+	sourceFilter.items.sort(ascSort);
+
+	// init list
 	const list = search({
 		valueNames: ['name', 'source', 'ability', 'prerequisite'],
 		listClass: "feats"
 	});
-	$("form#filtertools select").change(function() {
-		const sourcefilter = $("select.sourcefilter").val();
-		const bonusfilter = $("select.bonusfilter").val();
+
+	filterBox.render();
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	// filtering function
+	function handleFilterChange() {
 		list.filter(function(item) {
-			const rightsource = sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter;
-			const bonusList = item.elm.getAttribute(FLTR_ABILITIES).split(FLTR_LIST_SEP);
-			const rightbonuses = bonusfilter === "All" || bonusfilter === "Any" && item.elm.getAttribute(FLTR_ABILITIES_CHOOSE) === "true" && bonusList.length === 6 || bonusList.includes(bonusfilter);
-			if (rightsource && rightbonuses) return true;
-			return false;
+			const f = filterBox.getValues();
+			const ft = featlist[$(item.elm).attr(FLTR_ID)];
+
+			const rightSource = sourceFilter.matches(f, ft.source);
+			const rightAsi = asiFilter.matches(f, ft._pAbility);
+
+			return rightSource && rightAsi;
 		});
-	});
-	initHistory()
+	}
+
+	initHistory();
+	handleFilterChange();
 }
 
 function loadhash(id) {
 	$("#stats").html(tabledefault);
-	var curfeat = featlist[id];
-	var name = curfeat.name;
-	$("th#name").html(name);
-	$("td#prerequisite").html("")
-	var prerequisite = utils_makePrerequisite(curfeat.prerequisite);
-	if (prerequisite) $("td#prerequisite").html("Prerequisite: " + prerequisite);
+	const feat = featlist[id];
+
+	$("th#name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${feat.source}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>`);
+
+	const prerequisite = utils_makePrerequisite(feat.prerequisite);
+	$("td#prerequisite").html(prerequisite ? "Prerequisite: " + prerequisite : "");
 	$("tr.text").remove();
-	addAttributeItem(curfeat.ability, curfeat.entries);
-	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(curfeat.entries, "p") + "</td></tr>");
+	addAttributeItem(feat.ability, feat.entries);
+	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(feat.entries, "p") + "</td></tr>");
 
 	function addAttributeItem(abilityObj, textArray) {
 		if (abilityObj === undefined) return;

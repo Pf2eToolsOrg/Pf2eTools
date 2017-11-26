@@ -6,54 +6,94 @@ window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad)
 };
 
-let racelist;
+let raceList;
 function onJsonLoad (data) {
 	tableDefault = $("#stats").html();
 
-	racelist = data.race;
+	raceList = data.race;
 
-	for (var i = 0; i < racelist.length; i++) {
-		var currace = racelist[i];
-		var name = currace.name;
-		const ability = utils_getAbilityData(currace.ability);
-		const isChooseAbility = ability.asText.toLowerCase().includes("choose");
-		$("ul.races").append("<li "+FLTR_SOURCE+"='"+currace.source+"' "+FLTR_SIZE+"='"+currace.size+"' "+FLTR_ABILITIES+"='"+ability.asFilterCollection+"' "+FLTR_ABILITIES_CHOOSE+"='"+isChooseAbility+"'><a id='"+i+"' href='#"+encodeURI(name).toLowerCase()+"' title='"+name+"'><span class='name col-xs-4'>"+name+"</span> <span class='ability col-xs-4'>"+ability.asText+"</span> <span class='size col-xs-2'>"+Parser.sizeAbvToFull(currace.size)+"</span> <span class='source col-xs-2' title=\""+Parser.sourceJsonToFull(currace.source)+"\">"+Parser.sourceJsonToAbv(currace.source)+"</span></a></li>");
+	const sourceFilter = getSourceFilter();
+	const asiFilter = getAsiFilter();
+	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 
-		addDropdownOption($("select.sourcefilter"), currace.source, Parser.sourceJsonToFull(currace.source));
-		addDropdownOption($("select.sizefilter"), currace.size, Parser.sizeAbvToFull(currace.size));
+	const filterBox = initFilterBox(
+		sourceFilter,
+		asiFilter,
+		sizeFilter
+	);
+
+	const racesTable = $("ul.races");
+	let tempString = "";
+	for (let i = 0; i < raceList.length; i++) {
+		const race = raceList[i];
+
+		const ability = utils_getAbilityData(race.ability);
+		race._pAbility = ability;
+
+		tempString +=
+			`<li ${FLTR_ID}='${i}'>
+				<a id='${i}' href='#${encodeURI(race.name).toLowerCase()}' title='${race.name}'>
+					<span class='name col-xs-4'>${race.name}</span>
+					<span class='ability col-xs-4'>${ability.asTextShort}</span>
+					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>
+					<span class='source col-xs-2 source${race.source}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+				</a>
+			</li>`;
+
+		// populate filters
+		sourceFilter.addIfAbsent(race.source);
+		sizeFilter.addIfAbsent(race.size);
 	}
 
-	$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
-	$("select.sourcefilter").val("All");
+	racesTable.append(tempString);
 
-	$("select.sizefilter option").sort(asc_sort).appendTo('select.sizefilter');
-	$("select.sizefilter").val("All");
+	// sort filters
+	sourceFilter.items.sort(ascSort);
+	sizeFilter.items.sort(ascSortSize);
 
+	function ascSortSize(a, b) {
+		return ascSort(toNum(a), toNum(b));
+
+		function toNum(size) {
+			switch (size) {
+				case "M":
+					return 0;
+				case "S":
+					return -1;
+				case "V":
+					return 1;
+			}
+		}
+	}
 
 	const list = search({
 		valueNames: ['name', 'ability', 'size', 'source'],
 		listClass: "races"
 	});
 
-	$("form#filtertools select").change(function(){
-		var sourcefilter = $("select.sourcefilter").val();
-		var sizefilter = $("select.sizefilter").val();
-		var bonusfilter = $("select.bonusfilter").val();
+	filterBox.render();
 
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	function handleFilterChange() {
 		list.filter(function(item) {
-			var rightsource = false;
-			var rightsize = false;
-			var rightbonuses = false;
-			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) rightsource = true;
-			if (sizefilter === "All" || item.elm.getAttribute(FLTR_SIZE) === sizefilter) rightsize = true;
-			const bonusList = item.elm.getAttribute(FLTR_ABILITIES).split(FLTR_LIST_SEP);
-			rightbonuses = bonusfilter === "All" || bonusfilter === "Choose" && item.elm.getAttribute(FLTR_ABILITIES_CHOOSE) === "true" && bonusList.length === 6 || bonusList.includes(bonusfilter);
-			if (rightsource && rightsize && rightbonuses) return true;
-			return false;
-		});
-	});
+			const f = filterBox.getValues();
+			const r = raceList[$(item.elm).attr(FLTR_ID)];
 
-	initHistory()
+			const rightSource = sourceFilter.matches(f, r.source);
+			const rightAsi = asiFilter.matches(f, r._pAbility);
+			const rightSize = sizeFilter.matches(f, r.size);
+
+			return rightSource && rightAsi && rightSize;
+		})
+	}
+
+	initHistory();
+	handleFilterChange();
 }
 
 const renderer = new EntryRenderer();
@@ -61,29 +101,28 @@ function loadhash (id) {
 	$("#stats").html(tableDefault);
 	$("#stats td").show();
 
-	var currace = racelist[id];
+	const race = raceList[id];
 
-	var name = currace.name;
-	$("th#name").html(name);
+	$("th#name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
 
-	var size = Parser.sizeAbvToFull (currace.size);
+	const size = Parser.sizeAbvToFull (race.size);
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 
-	var ability = utils_getAbilityData(currace.ability);
+	const ability = utils_getAbilityData(race.ability);
 	$("td#ability span").html(ability.asText);
 
 	let speed;
-	if (typeof currace.speed === "string") {
-		speed = currace.speed + (currace.speed === "Varies" ? "" : "ft. ");
+	if (typeof race.speed === "string") {
+		speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
 	} else {
-		speed = currace.speed.walk + "ft.";
-		if (currace.speed.climb) speed += `, climb ${currace.speed.climb}ft.`
+		speed = race.speed.walk + "ft.";
+		if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
 	}
 	$("td#speed span").html(speed);
 	if (speed === "") $("td#speed").hide();
 
-	var traitlist = currace.trait;
+	const traitlist = race.trait;
 	if (traitlist) {
 		$("tr.trait").remove();
 
@@ -91,14 +130,14 @@ function loadhash (id) {
 		for (let n = 0; n < traitlist.length; ++n) {
 			const trait = traitlist[n];
 
-			const header = "<span class='name'>" + trait.name + ".</span> ";
+			const header = `<span class='name'>${trait.name}.</span> `;
 			statsText += utils_combineText(traitlist[n].text, "p", header)
 		}
 		statsText += "</td></tr>";
 		$('table#stats tbody tr:last').before(statsText);
-	} else if (currace.entries) {
+	} else if (race.entries) {
 		const renderStack = [];
-		const faux = {"type": "entries", "entries": currace.entries};
+		const faux = {"type": "entries", "entries": race.entries};
 
 		renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
 

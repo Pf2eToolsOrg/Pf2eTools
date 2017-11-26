@@ -3,6 +3,25 @@ const BESTIARY_JSON_URL = "data/bestiary.json";
 const BESTIARY_TOB_JSON_URL = "data/bestiary-tob.json";
 let tableDefault = "";
 
+function ascSortCr(a, b) {
+	// always put unknown values last
+	if (a === "Unknown" || a === undefined) a = "999";
+	if (b === "Unknown" || b === undefined) b = "999";
+	return ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
+}
+
+function typeValue(type) {
+	return type.toLowerCase(); // lol
+}
+
+function filterTagsMatch(valGroup, tags) {
+	return tags.filter(t => valGroup[t]).length > 0;
+}
+
+function filterTagsMatchInverted(valGroup, tags) {
+	return tags.filter(t => !valGroup[t]).length === 0;
+}
+
 window.onload = function load() {
 	tableDefault = $("#stats").html();
 	loadJSON(BESTIARY_JSON_URL, addToB);
@@ -14,76 +33,121 @@ function addToB(mainData) {
 
 let monsters;
 function populate(tobData, mainData) {
-	monsters = mainData[0].monster;
-	monsters = monsters.concat(tobData.monster);
+	monsters = mainData[0].monster.concat(tobData.monster);
 
-	// parse all the monster data
-	let liList = "";
+	// TODO alignment filter
+	const sourceFilter = getSourceFilter();
+	const crFilter = new Filter({header: "CR"});
+	const typeFilter = new Filter({
+		header: "Type",
+		items: [
+			"Aberration",
+			"Beast",
+			"Celestial",
+			"Construct",
+			"Dragon",
+			"Elemental",
+			"Fey",
+			"Fiend",
+			"Giant",
+			"Humanoid",
+			"Monstrosity",
+			"Ooze",
+			"Plant",
+			"Undead"
+		],
+		valueFn: typeValue
+	});
+	const tagFilter = new Filter({header: "Type Tag", desel: Filter.deselAll, matchFn: filterTagsMatch, matchFnInv: filterTagsMatchInverted});
+
+	const filterBox = initFilterBox(
+		sourceFilter,
+		crFilter,
+		typeFilter,
+		tagFilter
+	);
+
+	const table = $("ul.monsters");
+	let textStack = "";
+	// build the table
 	for (let i = 0; i < monsters.length; i++) {
-		const name = monsters[i].name;
-		const source = monsters[i].source;
-		const fullsource = Parser.sourceJsonToFull(source);
-		const type = monsters[i].type;
-		const cr = monsters[i].cr === undefined ? "Unknown" : monsters[i].cr;
-		const abvSource = Parser.sourceJsonToAbv(source);
-		const is3pp = source.includes("3pp");
+		const mon = monsters[i];
 
-		liList += `<li ${FLTR_TYPE}='${type}' ${FLTR_SOURCE}='${source}' ${FLTR_CR}='${cr}' ${FLTR_3PP}='${is3pp}'><a id=${i} href='#${encodeForHash(name)}_${encodeForHash(source)}' title="${name}"><span class='name col-xs-4 col-xs-4-2'>${name}</span> <span title="${fullsource}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span> <span class='type col-xs-4 col-xs-4-3'>${type}</span> <span class='col-xs-1 col-xs-1-7 text-align-center cr'>${cr}</span></a></li>`;
+		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
+		mon.cr = mon.cr === undefined ? "Unknown" : mon.cr;
 
-		addDropdownOption($("select.typefilter"), type, Parser.sourceJsonToFull(type));
-		addDropdownOption($("select.sourcefilter"), source, fullsource);
-		addDropdownOption($("select.crfilter"), cr, cr);
+		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
-		$("select.sourcefilter option").sort(asc_sort).appendTo('select.sourcefilter');
-		$("select.sourcefilter").val("All");
+		textStack +=
+			`<li ${FLTR_ID}='${i}'>
+				<a id=${i} href='#${encodeForHash(mon.name)}_${encodeForHash(mon.source)}' title="${mon.name}">
+					<span class='name col-xs-4 col-xs-4-2'>${mon.name}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span>
+					<span class='type col-xs-4 col-xs-4-3'>${mon._pTypes.asText}</span>
+					<span class='col-xs-1 col-xs-1-7 text-align-center cr'>${mon.cr}</span>
+				</a>
+			</li>`;
+
+		// populate filters
+		sourceFilter.addIfAbsent(mon.source);
+		crFilter.addIfAbsent(mon.cr);
+		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 	}
+	table.append(textStack);
 
-	$("ul#monsters").append(liList);
-	$("select.typefilter option").sort(asc_sort).appendTo('select.typefilter');
-	$("select.typefilter").val("All");
-
-	$("select.crfilter option").sort(asc_sort_cr).appendTo('select.crfilter');
-	$("select.crfilter option[value=0]").before($("select.crfilter option[value=All]"));
-	$("select.crfilter").val("All");
+	// sort filters
+	sourceFilter.items.sort(ascSort);
+	crFilter.items.sort(ascSortCr);
+	typeFilter.items.sort(ascSort);
+	tagFilter.items.sort(ascSort);
 
 	const list = search({
-		valueNames: ["name", "source", "type", "cr"]
+		valueNames: ["name", "source", "type", "cr"],
+		listClass: "monsters"
 	});
+
+	filterBox.render();
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	function handleFilterChange() {
+		list.filter(function(item) {
+			const f = filterBox.getValues();
+			const m = monsters[$(item.elm).attr(FLTR_ID)];
+
+			const rightSource = sourceFilter.matches(f, m.source);
+			const rightCr = crFilter.matches(f, m.cr);
+			const rightType = typeFilter.matches(f, m._pTypes.type);
+			const rightTag = tagFilter.matches(f, m._pTypes.tags);
+
+			let rightTypeAndTag;
+			if ( (typeFilter.isInverted() || tagFilter.isInverted()) && !(typeFilter.isInverted() && !tagFilter.isInverted()) ) {
+				rightTypeAndTag = rightType && rightTag;
+			} else {
+				rightTypeAndTag = rightType || rightTag;
+			}
+
+			return rightSource && rightCr && rightTypeAndTag;
+		});
+	}
 
 	initHistory();
+	handleFilterChange();
 
-	// filtering
-	$("form#filtertools select").change(function(){
-		var typefilter = $("select.typefilter").val();
-		var sourcefilter = $("select.sourcefilter").val();
-		var crfilter = $("select.crfilter").val();
-		var thirdpartyfilter = $("select.pp3filter").val();
-
-		list.filter(function(item) {
-			var righttype = false;
-			var rightsource = false;
-			var rightcr = false;
-			var rightparty = false;
-
-			if (typefilter === "All" || item.elm.getAttribute(FLTR_TYPE) === typefilter) righttype = true;
-			if (sourcefilter === "All" || item.elm.getAttribute(FLTR_SOURCE) === sourcefilter) rightsource = true;
-			if (crfilter === "All" || item.elm.getAttribute(FLTR_CR) === crfilter) rightcr = true;
-			if (thirdpartyfilter === "All") rightparty = true;
-			if (thirdpartyfilter === "None" && item.elm.getAttribute(FLTR_3PP) === "false") rightparty = true;
-			if (thirdpartyfilter === "Only" && item.elm.getAttribute(FLTR_3PP) === "true") rightparty = true;
-			if (righttype && rightsource && rightcr && rightparty) return true;
-			return false;
-		});
+	// sorting headers
+	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
+		const $this = $(this);
+		if ($this.data("sortby") === "asc") {
+			$this.data("sortby", "desc");
+		} else $this.data("sortby", "asc");
+		list.sort($this.data("sort"), { order: $this.data("sortby"), sortFunction: sortMonsters });
 	});
 
-	$("#filtertools button.sort").on("click", function() {
-		if ($(this).attr("sortby") === "asc") {
-			$(this).attr("sortby", "desc");
-		} else $(this).attr("sortby", "asc");
-		list.sort($(this).attr("sort"), { order: $(this).attr("sortby"), sortFunction: sortmonsters });
-	});
-
-	// collapse/expand button
+	// collapse/expand search button
 	$("button#expandcollapse").click(function() {
 		$("main .row:eq(0) > div:eq(0)").toggleClass("col-sm-5").toggle();
 		$("main .row:eq(0) > div:eq(1)").toggleClass("col-sm-12").toggleClass("col-sm-7");
@@ -113,39 +177,27 @@ function populate(tobData, mainData) {
 }
 
 // sorting for form filtering
-function sortmonsters(a, b, o) {
+function sortMonsters(a, b, o) {
+	a = monsters[a.elm.getAttribute(FLTR_ID)];
+	b = monsters[b.elm.getAttribute(FLTR_ID)];
+
 	if (o.valueName === "name") {
-		return ((b._values.name.toLowerCase()) > (a._values.name.toLowerCase())) ? 1 : -1;
+		return ascSort(a.name, b.name);
 	}
 
 	if (o.valueName === "type") {
-		return ((b._values.type.toLowerCase()) > (a._values.type.toLowerCase())) ? 1 : -1;
+		return ascSort(a._pTypes.asText, b._pTypes.asText);
 	}
 
 	if (o.valueName === "source") {
-		return ((b._values.source.toLowerCase()) > (a._values.source.toLowerCase())) ? 1 : -1;
+		return ascSort(a.source, b.source);
 	}
 
 	if (o.valueName === "cr") {
-		// always put the unknown items last
-		if (a._values.cr === undefined || a._values.cr === "Unknown")  return -1;
-		if (b._values.cr === undefined || b._values.cr === "Unknown")  return 1;
-		if ((a._values.cr === undefined || a._values.cr === "Unknown") && (b._values.cr === undefined || b._values.cr === "Unknown")) return 0;
-		let acr = a._values.cr.replace("CR ", "").replace(" ", "");
-		let bcr = b._values.cr.replace("CR ", "").replace(" ", "");
-		if (acr === "1/2") acr = "-1";
-		if (bcr === "1/2") bcr = "-1";
-		if (acr === "1/4") acr = "-2";
-		if (bcr === "1/4") bcr = "-2";
-		if (acr === "1/8") acr = "-3";
-		if (bcr === "1/8") bcr = "-3";
-		if (acr === "0") acr = "-4";
-		if (bcr === "0") bcr = "-4";
-		return (parseInt(bcr) > parseInt(acr)) ? 1 : -1;
+		return ascSortCr(a.cr, b.cr)
 	}
 
-	return 1;
-
+	return 0;
 }
 
 // load selected monster stat block
@@ -154,12 +206,21 @@ function loadhash (id) {
 	var mon = monsters[id];
 	var name = mon.name;
 	var source = mon.source;
-	var fullsource = Parser.sourceJsonToFull(source);
-	var type = mon.type;
+	var type = mon._pTypes.asText;
 	source = Parser.sourceJsonToAbv(source);
 
-	const imgSource = `img/${source}/${name}.png`;
-	$("th#name").html(`<span title="${fullsource}" class='source source${source}'>${source}<br></span> <a href="${imgSource}" target='_blank'><img src="${imgSource}" class='token' onerror='imgError(this)'></a>${name}`);
+	imgError = function (x) {
+		$(x).closest("th").css("padding-right", "0.2em");
+		$(x).remove();
+	};
+
+	$("th#name").html(
+		`<span class="stats-name">${name}</span>
+		<span class="stats-source source${source}" title="${Parser.sourceJsonToFull(source)}">${Parser.sourceJsonToAbv(source)}</span>
+		<a href="img/${source}/${name}.png" target='_blank'>
+			<img src="img/${source}/${name}.png" class='token' onerror='imgError(this)'>
+		</a>`
+	);
 
 	$("td span#size").html(Parser.sizeAbvToFull(mon.size));
 
@@ -550,7 +611,7 @@ function loadhash (id) {
 	});
 
 	function outputRollResult($ele, roll, rollResult) {
-		const name = $("#name").clone().children().remove().end().text();
+		const name = $("#name .stats-name").text();
 		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
 	}
@@ -604,14 +665,14 @@ const CR_TO_PROF = {
 const SKILL_TO_ATB_ABV = {
 	"athletics": "dex",
 	"acrobatics": "dex",
-	"sleight of Hand": "dex",
+	"sleight of hand": "dex",
 	"stealth": "dex",
 	"arcana": "int",
 	"history": "int",
 	"investigation": "int",
 	"nature": "int",
 	"religion": "int",
-	"animal Handling": "wis",
+	"animal handling": "wis",
 	"insight": "wis",
 	"medicine":  "wis",
 	"perception": "wis",

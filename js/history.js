@@ -35,7 +35,19 @@ function _getHashParts() {
 }
 
 function _getListElem(link) {
-	return $(`#listcontainer a[href='#${link.toLowerCase()}']`);
+	const toFind = `a[href='#${link.toLowerCase()}']`;
+	const listWrapper = $("#listcontainer");
+	if (listWrapper.data("lists")) {
+		for (const list of listWrapper.data("lists")) {
+			for (const item of list.items) {
+				const $elm = $(item.elm).find(toFind);
+				if ($elm[0]) {
+					return $elm
+				}
+			}
+		}
+	}
+	return undefined;
 }
 
 function _freshLoad() {

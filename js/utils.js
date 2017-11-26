@@ -47,16 +47,8 @@ FLTR_SOURCE = "filterSource";
 FLTR_TYPE = "filterType";
 FLTR_CR = "filterCr";
 FLTR_3PP = "filter3pp";
-FLTR_ABILITIES = "filterAbilities";
 FLTR_ORDER = "filterOrder";
-FLTR_ABILITIES_CHOOSE = "filterAbilitiesChoose";
 FLTR_SIZE = "filterSize";
-FLTR_LEVEL = "filterLevel";
-FLTR_SCHOOL = "filterSchool";
-FLTR_RANGE = "filterRange";
-FLTR_CLASS = "filterClass";
-FLTR_META = "filterMeta";
-FLTR_ACTION = "filterAction";
 FLTR_TIER = "filterTier";
 FLTR_RARITY = "filterRarity";
 FLTR_ATTUNEMENT = "filterAttunement";
@@ -72,6 +64,7 @@ ATB_DATA_SC = "data-subclass";
 ATB_DATA_SRC = "data-source";
 
 STR_CANTRIP = "Cantrip";
+STR_NONE = "None";
 
 RNG_SPECIAL =  "special";
 RNG_POINT =  "point";
@@ -89,6 +82,14 @@ RNG_TOUCH = "touch";
 
 UNT_FEET = "feet";
 UNT_MILES = "miles";
+
+ABIL_STR = "Strength";
+ABIL_DEX = "Dexterity";
+ABIL_CON = "Constitution";
+ABIL_INT = "Intelligence";
+ABIL_WIS = "Wisdom";
+ABIL_CHA = "Charisma";
+ABIL_CH_ANY = "Choose Any";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -373,10 +374,10 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 }
 
 class AbilityData {
-	constructor(asText, asCollection) {
+	constructor(asText, asTextShort, asCollection) {
 		this.asText = asText;
+		this.asTextShort = asTextShort;
 		this.asCollection = asCollection;
-		this.asFilterCollection = asCollection.join(FLTR_LIST_SEP);
 	}
 }
 function utils_getAbilityData(abObj) {
@@ -384,12 +385,13 @@ function utils_getAbilityData(abObj) {
 	const mainAbs = [];
 	const allAbs = [];
 	const abs = [];
+	const shortAbs = [];
 	if (abObj !== undefined) {
 		handleAllAbilities(abObj);
 		handleAbilitiesChoose();
-		return new AbilityData(abs.join("; "), allAbs);
+		return new AbilityData(abs.join("; "), shortAbs.join("; "), allAbs);
 	}
-	return new AbilityData("", []);
+	return new AbilityData("", "", []);
 
 	function handleAllAbilities(abilityList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
@@ -399,7 +401,9 @@ function utils_getAbilityData(abObj) {
 
 	function handleAbility(parent, ab) {
 		if (parent[ab.toLowerCase()] !== undefined) {
-			abs.push(ab + " " + (parent[ab.toLowerCase()] < 0 ? "" : "+") + parent[ab.toLowerCase()]);
+			const toAdd = `${ab} ${(parent[ab.toLowerCase()] < 0 ? "" : "+")}${parent[ab.toLowerCase()]}`;
+			abs.push(toAdd);
+			shortAbs.push(toAdd);
 			mainAbs.push(ab);
 			allAbs.push(ab.toLowerCase());
 		}
@@ -409,7 +413,7 @@ function utils_getAbilityData(abObj) {
 		if (abObj.choose !== undefined) {
 			for (let i = 0; i < abObj.choose.length; ++i) {
 				const item = abObj.choose[i];
-				let outStack = "Choose ";
+				let outStack = "";
 				if (item.predefined !== undefined) {
 					for (let j = 0; j < item.predefined.length; ++j) {
 						const subAbs = [];
@@ -451,9 +455,9 @@ function utils_getAbilityData(abObj) {
 						}
 					}
 				}
-				abs.push(outStack)
+				abs.push("Choose " + outStack);
+				shortAbs.push(outStack.uppercaseFirst());
 			}
-
 		}
 	}
 
@@ -543,6 +547,13 @@ Parser.armorFullToAbv= function (armor) {
 
 Parser.sourceJsonToFull = function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
+};
+Parser.sourceJsonToFullCompactPrefix = function (source) {
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source)
+		.replace("'", STR_APOSTROPHE)
+		.replace(UA_PREFIX, UA_PREFIX_SHORT)
+		.replace(AL_PREFIX, AL_PREFIX_SHORT)
+		.replace(PS_PREFIX, PS_PREFIX_SHORT);
 };
 Parser.sourceJsonToAbv= function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
@@ -720,6 +731,32 @@ Parser._spSubclassItem = function (fromSubclass) {
 	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
+Parser.monTypeToFullObj = function(type) {
+	const out = {type: "", tags: [], asText: ""};
+
+	if (typeof type === "string") {
+		// handles e.g. "fey"
+		out.type = type;
+		out.asText = type;
+		return out;
+	}
+	const tempTags = [];
+	for (const tag of type.tags) {
+		if (typeof tag === "string") {
+			// handles e.g. "fiend (devil)"
+			out.tags.push(tag);
+			tempTags.push(tag);
+		} else {
+			// handles e.g. "humanoid (Chondathan human)"
+			out.tags.push(tag.tag);
+			tempTags.push(`${tag.prefix} ${tag.tag}`);
+		}
+	}
+	out.type = type.type;
+	out.asText = `${type.type} (${tempTags.join(", ")})`;
+	return out;
+};
+
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
  *
@@ -825,10 +862,6 @@ SRC_MM 		= "MM";
 SRC_OotA 	= "OotA";
 SRC_PHB 	= "PHB";
 SRC_PotA 	= "PotA";
-SRC_PSA 	= "PSA";
-SRC_PSI 	= "PSI";
-SRC_PSK 	= "PSK";
-SRC_PSZ 	= "PSZ";
 SRC_RoT 	= "RoT";
 SRC_RoTOS 	= "RoTOS";
 SRC_SCAG 	= "SCAG";
@@ -844,6 +877,13 @@ SRC_OGA 	= "OGA";
 SRC_ALCoS 	= "ALCurseOfStrahd";
 SRC_ALEE 	= "ALElementalEvil";
 SRC_ALRoD 	= "ALRageOfDemons";
+
+SRC_PS_PREFIX = "PS";
+
+SRC_PSA 	= SRC_PS_PREFIX + "A";
+SRC_PSI 	= SRC_PS_PREFIX + "I";
+SRC_PSK 	= SRC_PS_PREFIX + "K";
+SRC_PSZ 	= SRC_PS_PREFIX + "Z";
 
 SRC_UA_PREFIX = "UA";
 
@@ -882,12 +922,17 @@ SRC_UATF 		= SRC_UA_PREFIX + "TheFaithful";
 SRC_UAWR 		= SRC_UA_PREFIX + "WizardRevisited";
 SRC_UAESR 		= SRC_UA_PREFIX + "ElfSubraces";
 
-SRC_BOLS_3PP = "BoLS 3pp";
-SRC_ToB_3PP = "ToB 3pp";
+SRC_3PP_SUFFIX = " 3pp";
+SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
+SRC_ToB_3PP = "ToB" + SRC_3PP_SUFFIX;
 
 AL_PREFIX = "Adventurers League: ";
+AL_PREFIX_SHORT = "AL: ";
 PS_PREFIX = "Plane Shift: ";
+PS_PREFIX_SHORT = "PS: ";
 UA_PREFIX = "Unearthed Arcana: ";
+UA_PREFIX_SHORT = "UA: ";
+PP3_SUFFIX = " (3pp)";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CoS] 		= "Curse of Strahd";
@@ -952,8 +997,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] 		= UA_PREFIX + "Warlock and Wizard";
 Parser.SOURCE_JSON_TO_FULL[SRC_UATF] 		= UA_PREFIX + "The Faithful";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] 		= UA_PREFIX + "Wizard Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] 		= UA_PREFIX + "Elf Subraces";
-Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] 	= "Book of Lost Spells (3pp)";
-Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] 	= "Tome of Beasts (3pp)";
+Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] 	= "Book of Lost Spells" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] 	= "Tome of Beasts" + PP3_SUFFIX;
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CoS] 			= "CoS";
@@ -1133,6 +1178,17 @@ function hide(element) {
 	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
 
+function xor(a, b) {
+	return !a !== !b;
+}
+
+/**
+ * > implying
+ */
+function implies(a, b) {
+	return (!a) || b;
+}
+
 // SEARCH AND FILTER ===================================================================================================
 function search(options) {
 	const list = new List("listcontainer", options);
@@ -1144,21 +1200,62 @@ function search(options) {
 		list.sort("name");
 		list.filter();
 	});
+	const listWrapper = $("#listcontainer");
+	if (listWrapper.data("lists")) {
+		listWrapper.data("lists").push(list);
+	} else {
+		listWrapper.data("lists", [list]);
+	}
 	return list
 }
 
-function addDropdownOption(dropdown, optionVal, optionText) {
-	if (optionVal === undefined || optionVal === null) return;
-	let inOptions = false;
-	dropdown.find("option").each(function() {
-		if (this.value === optionVal) {
-			inOptions = true;
-			return false;
+function getSourceFilter(options) {
+	const baseOptions = {
+		header: "Source",
+		displayFn: Parser.sourceJsonToFullCompactPrefix,
+		desel: function(val) {
+			return val.startsWith(SRC_UA_PREFIX) || val.startsWith(SRC_PS_PREFIX) || val.endsWith(SRC_3PP_SUFFIX);
 		}
-	});
-	if (!inOptions) {
-		dropdown.append("<option value='" + optionVal + "'>" + optionText + "</option>");
+	};
+	return getFilterWithMergedOptions(baseOptions, options);
+}
+
+function getAsiFilter(options) {
+	const baseOptions = {
+		header: "Ability Bonus",
+		items: [
+			ABIL_STR,
+			ABIL_DEX,
+			ABIL_CON,
+			ABIL_INT,
+			ABIL_WIS,
+			ABIL_CHA,
+			ABIL_CH_ANY
+		],
+		matchFn: filterAsiMatch,
+		matchFnInv: filterAsiMatchInverted
+	};
+	return getFilterWithMergedOptions(baseOptions, options);
+
+	function filterAsiMatch(valGroup, parsedAsi) {
+		return (valGroup[STR_NONE] && parsedAsi.asText === STR_NONE)
+			|| (valGroup[ABIL_CH_ANY] && parsedAsi.asText.toLowerCase().includes("choose any"))
+			|| parsedAsi.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
 	}
+	function filterAsiMatchInverted(valGroup, parsedAsi) {
+		return ( implies(parsedAsi.asText === STR_NONE, valGroup[STR_NONE]) )
+			&& ( implies(parsedAsi.asText.toLowerCase().includes("choose any"), valGroup[ABIL_CH_ANY]) )
+			&& (parsedAsi.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
+	}
+}
+
+function getFilterWithMergedOptions(baseOptions, addOptions) {
+	if (addOptions) Object.assign(baseOptions, addOptions); // merge in anything we get passed
+	return new Filter(baseOptions);
+}
+
+function initFilterBox(...filterList) {
+	return new FilterBox(document.getElementById(ID_SEARCH_BAR), document.getElementById(ID_RESET_BUTTON), filterList);
 }
 
 // ENCODING/DECODING ===================================================================================================
@@ -1190,16 +1287,6 @@ function asc_sort_cr(a, b) {
 	const bNum = Parser.crToNumber($(b).text());
 	if (aNum === bNum) return 0;
 	return bNum < aNum ? 1 : -1;
-}
-
-function asc_sort_range(a, b){
-	if (parseInt(b.value) === parseInt(a.value)) return 0;
-	return parseInt(b.value) < parseInt(a.value) ? 1 : -1;
-}
-
-function desc_sort(a, b){
-	if ($(b).text() === $(a).text()) return 0;
-	return $(b).text() > $(a).text() ? 1 : -1;
 }
 
 function compareNames(a, b) {
