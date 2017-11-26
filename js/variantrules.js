@@ -77,7 +77,7 @@ function onJsonLoad(data) {
 
 			return sourceFilter.matches(f, r.source);
 		});
-	};
+	}
 
 	initHistory()
 }
