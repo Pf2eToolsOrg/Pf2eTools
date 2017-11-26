@@ -395,5 +395,3 @@ EntryRenderer.HEAD_0 = "statsBlockHead";
 EntryRenderer.HEAD_1 = "statsBlockSubHead";
 EntryRenderer.HEAD_2 = "statsInlineHead";
 EntryRenderer.DATA_NONE = "data-none";
-
-TEST_VAR = "123123";
