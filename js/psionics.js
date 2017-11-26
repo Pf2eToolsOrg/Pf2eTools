@@ -1,4 +1,7 @@
 "use strict";
+
+const JSON_URL = "data/psionics.json";
+
 const STR_JOIN_MODE_LIST = ",";
 const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
 const STR_JOIN_MODE_TITLE = " ";
@@ -50,227 +53,110 @@ const LIST_TYPE = "type";
 const LIST_ORDER = "order";
 const LIST_MODE_LIST = "mode-list";
 
+function getHiddenModeList(psionic) {
+	const modeList = psionic[JSON_ITEM_MODES];
+	if (modeList === undefined) return STR_EMPTY;
+	const outArray = [];
+	for (let i = 0; i < modeList.length; ++i) {
+		outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i][JSON_ITEM_MODE_TITLE]));
+		if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
+			const subModes = modeList[i][JSON_ITEM_SUBMODES];
+			for (let j = 0; j < subModes.length; ++j) {
+				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j][JSON_ITEM_MODE_TITLE]))
+			}
+		}
+	}
+	return outArray.join(STR_JOIN_MODE_LIST);
+}
+
 window.onload = function load() {
-	const TABLE_VIEW = document.getElementById(ID_PSIONICS_LIST);
-
-	const PSIONIC_LIST = psionicdata.compendium.psionic;
-	populateListView();
-	const listView = initListLibrary();
-	initFiltersAndSearch(listView);
-	selectInitialPsionic();
-
-	function populateListView() {
-		for (let i = 0; i < PSIONIC_LIST.length; ++i) {
-			const psionic = PSIONIC_LIST[i];
-
-			const link = document.createElement(ELE_A);
-			link.setAttribute(ATB_ID, String(i));
-			link.setAttribute(ATB_HREF, `#${utils_nameToDataLink(psionic[JSON_ITEM_NAME])}`);
-			link.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
-			link.appendChild(getNameSpan(psionic));
-			link.appendChild(getSourceSpan(psionic));
-			link.appendChild(getTypeSpan(psionic));
-			link.appendChild(getOrderSpan(psionic));
-			link.appendChild(getHiddenModeSpan(psionic));
-
-			const listItem = getListItem(psionic);
-			listItem.appendChild(link);
-			TABLE_VIEW.appendChild(listItem);
-		}
-
-		function getListItem(psionic) {
-			const listItem = document.createElement(ELE_LI);
-			listItem.setAttribute(ATB_CLASS, CLS_ROW);
-			listItem.setAttribute(ATB_TITLE, psionic[JSON_ITEM_NAME]);
-			listItem.setAttribute(FLTR_SOURCE, psionic[JSON_ITEM_SOURCE]);
-			listItem.setAttribute(FLTR_TYPE, psionic[JSON_ITEM_TYPE]);
-			const order = psionic[JSON_ITEM_ORDER] === undefined ? STR_ORDER_NONE : psionic[JSON_ITEM_ORDER];
-			listItem.setAttribute(FLTR_ORDER, order);
-			return listItem;
-		}
-		function getNameSpan(psionic) {
-			const span = document.createElement(ELE_SPAN);
-			span.classList.add(LIST_NAME);
-			span.classList.add(CLS_COL1);
-			span.innerHTML = psionic[JSON_ITEM_NAME];
-			return span;
-		}
-		function getSourceSpan(psionic) {
-			const span = document.createElement(ELE_SPAN);
-			span.classList.add(LIST_SOURCE);
-			span.classList.add(CLS_COL2);
-			span.setAttribute(ATB_TITLE, Parser.sourceJsonToFull(psionic[JSON_ITEM_SOURCE]));
-			span.innerHTML = Parser.sourceJsonToAbv(psionic[JSON_ITEM_SOURCE]);
-			return span;
-		}
-		function getTypeSpan(psionic) {
-			const span = document.createElement(ELE_SPAN);
-			span.classList.add(LIST_TYPE);
-			span.classList.add(CLS_COL3);
-			span.innerHTML = parse_psionicTypeToFull(psionic[JSON_ITEM_TYPE]);
-			return span;
-		}
-		function getOrderSpan(psionic) {
-			const span = document.createElement(ELE_SPAN);
-			span.classList.add(LIST_ORDER);
-			span.classList.add(CLS_COL4);
-			const spanText = parse_psionicOrderToFull(psionic[JSON_ITEM_ORDER]);
-			if (spanText === STR_ORDER_NONE) {
-				span.classList.add(CLS_LI_NONE);
-			}
-			span.innerHTML = spanText;
-			return span;
-		}
-		function getHiddenModeSpan(psionic) {
-			const span = document.createElement(ELE_SPAN);
-			span.classList.add(LIST_MODE_LIST);
-			span.classList.add(CLS_HIDDEN);
-			span.innerHTML = getHiddenModeList(psionic);
-			return span;
-		}
-		function getHiddenModeList(psionic) {
-			const modeList = psionic[JSON_ITEM_MODES];
-			if (modeList === undefined) return STR_EMPTY;
-			const outArray = [];
-			for (let i = 0; i < modeList.length; ++i) {
-				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i][JSON_ITEM_MODE_TITLE]));
-				if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
-					const subModes = modeList[i][JSON_ITEM_SUBMODES];
-					for (let j = 0; j < subModes.length; ++j) {
-						outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j][JSON_ITEM_MODE_TITLE]))
-					}
-				}
-			}
-			return outArray.join(STR_JOIN_MODE_LIST);
-		}
-	}
-
-	function initFiltersAndSearch(listView) {
-		const HDR_SOURCE = "Source";
-		const HDR_TYPE = "Type";
-		const HDR_ORDER = "Order";
-
-		const filters = {};
-		filters[HDR_SOURCE] = {item: JSON_ITEM_SOURCE, list: [], renderer: function(str) { return Parser.sourceJsonToFull(str); }};
-		filters[HDR_TYPE] = {item: JSON_ITEM_TYPE, list: [], renderer: function(str) { return parse_psionicTypeToFull(str); }};
-		filters[HDR_ORDER] = {item: JSON_ITEM_ORDER, list: [], renderer: function(str) { return parse_psionicOrderToFull(str); }};
-
-		populateFilterSets();
-		sortFilterSets();
-		const filterBox = initFilters();
-		initResetButton(filterBox);
-
-		function populateFilterSets() {
-			for (let i = 0; i < PSIONIC_LIST.length; ++i) {
-				const psionic = PSIONIC_LIST[i];
-				for (const id in filters) {
-					if (filters.hasOwnProperty(id)) {
-						const filterObj = filters[id];
-
-						if (psionic[filterObj.item] !== undefined && filterObj.list.indexOf(psionic[filterObj.item]) === -1) {
-							filterObj.list.push(psionic[filterObj.item]);
-						}
-					}
-				}
-			}
-		}
-		function sortFilterSets() {
-			for (const id in filters) {
-				if (filters.hasOwnProperty(id)) {
-					sortStrings(filters[id].list);
-				}
-			}
-
-			// add this after sorting, as the last element
-			filters[HDR_ORDER].list.push(STR_ORDER_NONE);
-
-			function sortStrings(toSort) {
-				toSort.sort(sortStringsComparator);
-			}
-			function sortStringsComparator(a, b) {
-				a = a.toLowerCase();
-				b = b.toLowerCase();
-				if (a === b) return 0;
-				else if (b < a) return 1;
-				else if (a > b) return -1;
-			}
-		}
-
-		function initFilters() {
-			const filterAndSearchBar = document.getElementById(ID_SEARCH_BAR);
-			const filterList = [];
-			for (const title in filters) {
-				if (filters.hasOwnProperty(title)) {
-					filterList.push(new Filter(title, filters[title].item, filters[title].list, filters[title].renderer, Parser.stringToSlug));
-				}
-			}
-			const filterBox = new FilterBox(filterAndSearchBar, filterList);
-			filterBox.render();
-
-			filterBox.addEventListener(
-				FilterBox.EVNT_VALCHANGE,
-				function () {
-					listView.filter(function(item) {
-						const f = filterBox.getValues();
-
-						return filterMatches(HDR_SOURCE, FLTR_SOURCE) && filterMatches(HDR_TYPE, FLTR_TYPE) && filterMatches(HDR_ORDER, FLTR_ORDER);
-
-						function filterMatches(header, filterProperty) {
-							for (const t in f[header]) {
-								if (!f[header].hasOwnProperty(t)) continue;
-								if (t === FilterBox.VAL_SELECT_ALL && f[header][t]) return true;
-								if (!f[header][t]) continue;
-
-
-								if (f[header][Parser.stringToSlug(item.elm.getAttribute(filterProperty))] && Parser.stringToSlug(item.elm.getAttribute(filterProperty)) === t) return true;
-							}
-							return false;
-						}
-					});
-				}
-			);
-
-			return filterBox;
-		}
-	}
-
-	function initResetButton(filterBox) {
-		const RESET_BUTTON = document.getElementById(ID_RESET_BUTTON);
-		RESET_BUTTON.addEventListener(EVNT_CLICK, resetButtonClick, false);
-
-		function resetButtonClick() {
-			filterBox.reset();
-		}
-	}
-
-	function initListLibrary() {
-		return search({
-			valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
-			listClass: CLS_PSIONICS,
-			sortFunction: listSort
-		});
-
-		function listSort(itemA, itemB, options) {
-			if (options.valueName === LIST_NAME) return compareBy(LIST_NAME);
-			else return compareByOrDefault(options.valueName, LIST_NAME);
-
-			function compareBy(valueName) {
-				const aValue = itemA.values()[valueName].toLowerCase();
-				const bValue = itemB.values()[valueName].toLowerCase();
-				if (aValue === bValue) return 0;
-				return (aValue > bValue) ? 1 : -1;
-			}
-			function compareByOrDefault(valueName, defaultValueName) {
-				const initialCompare = compareBy(valueName);
-				return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
-			}
-		}
-	}
-
-	function selectInitialPsionic() {
-		initHistory();
-	}
+	loadJSON(JSON_URL, onJsonLoad);
 };
+
+let PSIONIC_LIST;
+function onJsonLoad(data) {
+	PSIONIC_LIST = data.psionic;
+
+	const sourceFilter = getSourceFilter({
+		desel: function(val) {
+			return false;
+		}
+	});
+	const typeFilter = new Filter({header: "Type", items: ["D", "T"], displayFn: parse_psionicTypeToFull});
+	const orderFilter = new Filter({header: "Order", items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", STR_ORDER_NONE], valueFn: parse_psionicOrderToFull});
+
+	const filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
+
+	let tempString = "";
+	PSIONIC_LIST.forEach(function(p, i) {
+		p[JSON_ITEM_ORDER] = parse_psionicOrderToFull(p[JSON_ITEM_ORDER]);
+
+		tempString += `
+			<li class='row' ${FLTR_ID}="${i}">
+				<a id='${i}' href='#${encodeForHash([p[JSON_ITEM_NAME], p[JSON_ITEM_SOURCE]])}' title="${p[JSON_ITEM_NAME]}">
+					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
+					<span class='${LIST_SOURCE} ${CLS_COL2}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
+					<span class='${LIST_TYPE} ${CLS_COL3}'>${parse_psionicTypeToFull(p[JSON_ITEM_TYPE])}</span>
+					<span class='${LIST_ORDER} ${CLS_COL4} ${p[JSON_ITEM_ORDER] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p[JSON_ITEM_ORDER]}</span>
+					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
+				</a>
+			</li>
+		`;
+
+		// populate filters
+		sourceFilter.addIfAbsent(p[JSON_ITEM_SOURCE]);
+	});
+	$(`#${ID_PSIONICS_LIST}`).append(tempString);
+
+	// sort filters
+	sourceFilter.items.sort(ascSort);
+
+	const list = search({
+		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
+		listClass: CLS_PSIONICS,
+		sortFunction: listSort
+	});
+
+	function listSort(itemA, itemB, options) {
+		if (options.valueName === LIST_NAME) return compareBy(LIST_NAME);
+		else return compareByOrDefault(options.valueName, LIST_NAME);
+
+		function compareBy(valueName) {
+			const aValue = itemA.values()[valueName].toLowerCase();
+			const bValue = itemB.values()[valueName].toLowerCase();
+			if (aValue === bValue) return 0;
+			return (aValue > bValue) ? 1 : -1;
+		}
+		function compareByOrDefault(valueName, defaultValueName) {
+			const initialCompare = compareBy(valueName);
+			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
+		}
+	}
+
+	filterBox.render();
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	function handleFilterChange() {
+		list.filter(function (item) {
+			const f = filterBox.getValues();
+			const p = PSIONIC_LIST[$(item.elm).attr(FLTR_ID)];
+
+			const rightSource = sourceFilter.matches(f, p.source);
+			const rightType = typeFilter.matches(f, p.type);
+			const rightOrder = orderFilter.matches(f, p.order);
+
+			return rightSource && rightType && rightOrder;
+		});
+	}
+
+	initHistory();
+	handleFilterChange();
+}
 
 function loadhash (jsonIndex) {
 	const STATS_NAME = document.getElementById(ID_STATS_NAME);
@@ -278,7 +164,7 @@ function loadhash (jsonIndex) {
 	const STATS_DURATION = document.getElementById(ID_STATS_DURATION);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
-	const selectedPsionic = psionicdata.compendium.psionic[jsonIndex];
+	const selectedPsionic = PSIONIC_LIST[jsonIndex];
 
 	STATS_NAME.innerHTML = selectedPsionic[JSON_ITEM_NAME];
 	if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_TALENT) loadTalent();
