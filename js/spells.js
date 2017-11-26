@@ -41,7 +41,7 @@ const F_RNG_SELF = "Self";
 const F_RNG_TOUCH = "Touch";
 const F_RNG_SPECIAL = "Special";
 
-let tableDefault = "";
+let tableDefault;
 
 function getFltrSpellLevelStr(level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
@@ -251,7 +251,6 @@ window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
-let tableDefault;
 let spellList;
 function onJsonLoad(data) {
 	tableDefault = $("#stats").html();
