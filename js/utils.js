@@ -1200,7 +1200,12 @@ function search(options) {
 		list.sort("name");
 		list.filter();
 	});
-	$("#listcontainer")[0].list = list;
+	const listWrapper = $("#listcontainer");
+	if (listWrapper.data("lists")) {
+		listWrapper.data("lists").push(list);
+	} else {
+		listWrapper.data("lists", [list]);
+	}
 	return list
 }
 

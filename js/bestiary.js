@@ -73,7 +73,7 @@ function populate(tobData, mainData) {
 	for (let i = 0; i < monsters.length; i++) {
 		const mon = monsters[i];
 
-		mon._pType = Parser.monTypeToFullObj(mon.type); // store the parsed type
+		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon.cr = mon.cr === undefined ? "Unknown" : mon.cr;
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
@@ -83,7 +83,7 @@ function populate(tobData, mainData) {
 				<a id=${i} href='#${encodeForHash(mon.name)}_${encodeForHash(mon.source)}' title="${mon.name}">
 					<span class='name col-xs-4 col-xs-4-2'>${mon.name}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span>
-					<span class='type col-xs-4 col-xs-4-3'>${mon._pType.asText}</span>
+					<span class='type col-xs-4 col-xs-4-3'>${mon._pTypes.asText}</span>
 					<span class='col-xs-1 col-xs-1-7 text-align-center cr'>${mon.cr}</span>
 				</a>
 			</li>`;
@@ -91,7 +91,7 @@ function populate(tobData, mainData) {
 		// populate filters
 		sourceFilter.addIfAbsent(mon.source);
 		crFilter.addIfAbsent(mon.cr);
-		mon._pType.tags.forEach(t => tagFilter.addIfAbsent(t));
+		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 	}
 	table.append(textStack);
 
@@ -120,8 +120,8 @@ function populate(tobData, mainData) {
 
 			const rightSource = sourceFilter.matches(f, m.source);
 			const rightCr = crFilter.matches(f, m.cr);
-			const rightType = typeFilter.matches(f, m._pType.type);
-			const rightTag = tagFilter.matches(f, m._pType.tags);
+			const rightType = typeFilter.matches(f, m._pTypes.type);
+			const rightTag = tagFilter.matches(f, m._pTypes.tags);
 
 			let rightTypeAndTag;
 			if ( (typeFilter.isInverted() || tagFilter.isInverted()) && !(typeFilter.isInverted() && !tagFilter.isInverted()) ) {
@@ -185,7 +185,7 @@ function sortMonsters(a, b, o) {
 	}
 
 	if (o.valueName === "type") {
-		return ascSort(a._pType, b._pType);
+		return ascSort(a._pTypes, b._pTypes);
 	}
 
 	if (o.valueName === "source") {
@@ -206,7 +206,7 @@ function loadhash (id) {
 	var name = mon.name;
 	var source = mon.source;
 	var fullsource = Parser.sourceJsonToFull(source);
-	var type = mon._pType;
+	var type = mon._pTypes;
 	source = Parser.sourceJsonToAbv(source);
 
 	imgError = function (x) {
