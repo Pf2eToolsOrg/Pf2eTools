@@ -112,7 +112,7 @@ function loadhash (id) {
 	profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : getSkillProfString(sProfs.skills));
 	function getSkillProfString(skills) {
 		const numString = Parser.numberToString(skills.choose);
-		return skills.from.length === 18 ? `Choose any ${numString}.` :`Choose ${numString} from ${skills.from.joinConjunct(", ", ", and ")}.`
+		return skills.from.length === 18 ? `Choose any ${numString}.` :`Choose ${numString} from ${joinConjunct(skills.from,", ", ", and ")}.`
 	}
 
 	// starting equipment

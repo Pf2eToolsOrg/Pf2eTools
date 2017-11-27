@@ -533,6 +533,15 @@ Parser.crToXp = function (cr) {
 	return Parser._addCommas (Parser.XP_CHART[parseInt(cr)-1]);
 };
 
+LEVEL_TO_XP_EASY = [0, 25, 50, 75, 125, 250, 300, 350, 450, 550, 600, 800, 1000, 1100, 1250, 1400, 1600, 2000, 2100, 2400, 2800];
+LEVEL_TO_XP_MEDIUM = [0, 50, 100, 150, 250, 500, 600, 750, 900, 1100, 1200, 1600, 2000, 2200, 2500, 2800, 3200, 3900, 4100, 4900, 5700];
+LEVEL_TO_XP_HARD = [0, 75, 150, 225, 375, 750, 900, 1100, 1400, 1600, 1900, 2400, 3000, 3400, 3800, 4300, 4800, 5900, 6300, 7300, 8500];
+LEVEL_TO_XP_DEADLY = [0, 100, 200, 400, 500, 1100, 1400, 1700, 2100, 2400, 2800, 3600, 4500, 5100, 5700, 6400, 7200, 8800, 9500, 10900, 12700];
+
+Parser.levelToXpThreshold = function (level) {
+	return [LEVEL_TO_XP_EASY[level], LEVEL_TO_XP_MEDIUM[level], LEVEL_TO_XP_HARD[level], LEVEL_TO_XP_DEADLY[level]];
+};
+
 Parser.crToNumber = function (cr) {
 	if (cr === "Unknown" || cr === undefined) return 100;
 	const parts = cr.trim().split("/");
@@ -681,10 +690,7 @@ Parser.spComponentsToFull= function (comp) {
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
-	if (comp.m) {
-		out.push("M");
-		if (comp.m.length) out.push(`(${comp.m})`)
-	}
+	if (comp.m) out.push("M"+(comp.m.length ?` (${comp.m})` : ""));
 	return out.join(", ");
 };
 
@@ -835,12 +841,15 @@ Parser.ATB_ABV_TO_FULL = {
 };
 
 Parser.SIZE_ABV_TO_FULL = {
+	"F": "Fine",
+	"D": "Diminutive",
 	"T": "Tiny",
 	"S": "Small",
 	"M": "Medium",
 	"L": "Large",
 	"H": "Huge",
 	"G": "Gargantuan",
+	"C": "Colossal",
 	"V": "Varies"
 };
 
@@ -1296,10 +1305,9 @@ function compareNames(a, b) {
 }
 
 // ARRAYS ==============================================================================================================
-Array.prototype.joinConjunct = String.prototype.joinConjunct ||
-function (joinWith, conjunctWith) {
-	return this.length === 1 ? String(this[0]) : this.length === 2 ? this.join(conjunctWith) : this.slice(0, -1).join(joinWith) + conjunctWith + this.slice(-1);
-};
+function joinConjunct(arr, joinWith, conjunctWith) {
+	return arr.length === 1 ? String(arr[0]) : arr.length === 2 ? arr.join(conjunctWith) : arr.slice(0, -1).join(joinWith) + conjunctWith + arr.slice(-1);
+}
 
 // JSON LOADING ========================================================================================================
 function loadJSON(url, onLoadFunction, ...otherData) {
