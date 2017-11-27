@@ -161,7 +161,7 @@ function deselectFilter(deselectProperty, deselectValue) {
 				return val === deselectValue && itemProperty !== val;
 			}
 		} else {
-			deselNoHash();
+			return deselNoHash();
 		}
 
 		function deselNoHash() {
