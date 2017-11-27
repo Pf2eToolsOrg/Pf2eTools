@@ -623,7 +623,7 @@ Parser.spLevelToFull = function (level) {
 };
 
 Parser.spLevelSchoolMetaToFull= function (level, school, meta) {
-	const levelPart = level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + "-level";
+	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : Parser.spLevelToFull(level) + "-level";
 	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school)}`;
 	// these tags are (so far) mutually independent, so we don't need to combine the text
 	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
