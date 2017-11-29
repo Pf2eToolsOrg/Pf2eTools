@@ -182,7 +182,7 @@ function populateTablesAndFilters() {
 	tabledefault = $("#stats").html();
 
 	const sourceFilter = getSourceFilter();
-	const typeFilter = new Filter({header: "Type", desel: deselectFilter("type", "$"), matcFn: filterTypeMatch, matchFnInv: filterTypeMatchInverted});
+	const typeFilter = new Filter({header: "Type", desel: deselectFilter("type", "$"), matchFn: filterTypeMatch, matchFnInv: filterTypeMatchInverted});
 	const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
 	const rarityFilter = new Filter({header: "Rarity", items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown"]});
 	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"]});
