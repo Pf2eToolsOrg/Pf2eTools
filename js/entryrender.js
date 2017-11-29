@@ -17,9 +17,23 @@
 function EntryRenderer() {
 
 	this.wrapperTag = "div";
+	this.baseUrl = "";
 
+	/**
+	 * Set the tag used to group rendered elements
+	 * @param tag to use
+	 */
 	this.setWrapperTag = function (tag) {
 		this.wrapperTag = tag;
+	};
+
+	/**
+	 * Set the base url for rendered links.
+	 * Usage: `renderer.setBaseUrl("https://www.cool.site/")` (note the "http" prefix and "/" suffix)
+	 * @param url to use
+	 */
+	this.setBaseUrl = function(url) {
+		this.baseUrl = url;
 	};
 
 	/**
@@ -103,7 +117,7 @@ function EntryRenderer() {
 					textStack.push(EntryRenderer.getEntryDice(entry));
 					break;
 				case "link":
-					renderLink(entry);
+					renderLink(this, entry);
 					break;
 			}
 		} else if (typeof entry === "string") { // block
@@ -239,10 +253,11 @@ function EntryRenderer() {
 			}
 		}
 
-		function renderLink(entry) {
+		function renderLink(self, entry) {
 			let href;
 			if (entry.href.type === "internal") {
-				href = `${entry.href.path}#`;
+				// baseURL is blank by default
+				href = `${self.baseUrl}${entry.href.path}#`;
 				if (entry.href.hash !== undefined) {
 					href += encodeForHash(entry.href.hash);
 					if (entry.href.subhashes !== undefined) {
