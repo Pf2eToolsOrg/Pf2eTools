@@ -271,6 +271,10 @@ ul.list li:nth-child(odd):hover {
 	background: black;
 }
 
+ul.list li {
+	border-bottom: none;
+}
+
 #rulescontent caption {
 	color: grey;
 }
