@@ -16,7 +16,7 @@ function onJsonLoad(data) {
 	featlist = data.feat;
 
 	// TODO prerequisite filter?
-	const sourceFilter = getSourceFilter(true);
+	const sourceFilter = getSourceFilter();
 	const asiFilter = getAsiFilter();
 	const filterBox = initFilterBox(
 		sourceFilter,

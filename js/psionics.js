@@ -77,7 +77,7 @@ let PSIONIC_LIST;
 function onJsonLoad(data) {
 	PSIONIC_LIST = data.psionic;
 
-	const sourceFilter = getSourceFilter(false, {
+	const sourceFilter = getSourceFilter({
 		deselFn: function(val) {
 			return false;
 		}

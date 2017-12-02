@@ -739,21 +739,33 @@ Parser.monTypeToFullObj = function(type) {
 		out.asText = type;
 		return out;
 	}
+
 	const tempTags = [];
-	for (const tag of type.tags) {
-		if (typeof tag === "string") {
-			// handles e.g. "fiend (devil)"
-			out.tags.push(tag);
-			tempTags.push(tag);
-		} else {
-			// handles e.g. "humanoid (Chondathan human)"
-			out.tags.push(tag.tag);
-			tempTags.push(`${tag.prefix} ${tag.tag}`);
+	if (type.tags) {
+		for (const tag of type.tags) {
+			if (typeof tag === "string") {
+				// handles e.g. "fiend (devil)"
+				out.tags.push(tag);
+				tempTags.push(tag);
+			} else {
+				// handles e.g. "humanoid (Chondathan human)"
+				out.tags.push(tag.tag);
+				tempTags.push(`${tag.prefix} ${tag.tag}`);
+			}
 		}
 	}
 	out.type = type.type;
-	out.asText = `${type.type} (${tempTags.join(", ")})`;
+	if (type.swarmSize) {
+		out.tags.push("swarm");
+		out.asText = `swarm of ${Parser.sizeAbvToFull(type.swarmSize).toLowerCase()} ${Parser.monTypeToPlural(type.type)}`;
+	} else {
+		out.asText = `${type.type} (${tempTags.join(", ")})`;
+	}
 	return out;
+};
+
+Parser.monTypeToPlural = function(type) {
+	return Parser._parse_aToB(Parser.MON_TYPE_TO_PLURAL, type);
 };
 
 /**
@@ -832,6 +844,36 @@ Parser.ATB_ABV_TO_FULL = {
 	"wis": "Wisdom",
 	"cha": "Charisma"
 };
+
+TP_ABERRATION = "aberration";
+TP_BEAST = "beast";
+TP_CELESTIAL = "celestial";
+TP_CONSTRUCT = "construct";
+TP_DRAGON = "dragon";
+TP_ELEMENTAL = "elemental";
+TP_FEY = "fey";
+TP_FIEND = "fiend";
+TP_GIANT = "giant";
+TP_HUMANOID = "humanoid";
+TP_MONSTROSITY = "monstrosity";
+TP_OOZE = "ooze";
+TP_PLANT = "plant";
+TP_UNDEAD = "undead";
+Parser.MON_TYPE_TO_PLURAL = {};
+Parser.MON_TYPE_TO_PLURAL[TP_ABERRATION] = "aberrations";
+Parser.MON_TYPE_TO_PLURAL[TP_BEAST] = "beasts";
+Parser.MON_TYPE_TO_PLURAL[TP_CELESTIAL] = "celestials";
+Parser.MON_TYPE_TO_PLURAL[TP_CONSTRUCT] = "constructs";
+Parser.MON_TYPE_TO_PLURAL[TP_DRAGON] = "dragons";
+Parser.MON_TYPE_TO_PLURAL[TP_ELEMENTAL] = "elementals";
+Parser.MON_TYPE_TO_PLURAL[TP_FEY] = "fey";
+Parser.MON_TYPE_TO_PLURAL[TP_FIEND] = "fiends";
+Parser.MON_TYPE_TO_PLURAL[TP_GIANT] = "giants";
+Parser.MON_TYPE_TO_PLURAL[TP_HUMANOID] = "humanoids";
+Parser.MON_TYPE_TO_PLURAL[TP_MONSTROSITY] = "monstrosities";
+Parser.MON_TYPE_TO_PLURAL[TP_OOZE] = "oozes";
+Parser.MON_TYPE_TO_PLURAL[TP_PLANT] = "plants";
+Parser.MON_TYPE_TO_PLURAL[TP_UNDEAD] = "undead";
 
 SZ_FINE = "F";
 SZ_DIMINUTIVE = "D";
@@ -1222,21 +1264,16 @@ function search(options) {
 
 /**
  * Generic source filter
- * @param positiveFilter true if desired sources should be selected, false or undefined if undesired sources should be
  * deselected. If there are more items to be deselected than selected, it is advisable to set this to "true"
  * @param options overrides for the default filter options
  * @returns {*} a `Filter`
  */
-function getSourceFilter(positiveFilter, options) {
+function getSourceFilter(options) {
 	const baseOptions = {
 		header: "Source",
-		displayFn: Parser.sourceJsonToFullCompactPrefix
+		displayFn: Parser.sourceJsonToFullCompactPrefix,
+		selFn: defaultSourceSelFn
 	};
-	if (positiveFilter) {
-		baseOptions.selFn = defaultSourceSelFn;
-	} else {
-		baseOptions.deselFn = defaultSourceDeselFn;
-	}
 	return getFilterWithMergedOptions(baseOptions, options);
 }
 
