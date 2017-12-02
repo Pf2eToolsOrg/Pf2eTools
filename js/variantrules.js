@@ -79,7 +79,8 @@ function onJsonLoad(data) {
 		});
 	}
 
-	initHistory()
+	initHistory();
+	handleFilterChange();
 }
 
 function loadhash (id) {
