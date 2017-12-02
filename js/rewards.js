@@ -69,7 +69,8 @@ function onJsonLoad(data) {
 		});
 	}
 
-	initHistory()
+	initHistory();
+	handleFilterChange();
 }
 
 function loadhash (id) {
@@ -85,7 +86,7 @@ function loadhash (id) {
 	let texthtml = "";
 
 	if (reward.ability !== undefined) texthtml += utils_combineText(reward.ability.text, "p", "<span class='bold'>Ability Score Adjustment:</span> ");
-	if (reward.signaturespells !== undefined) texthtml += utils_combineText(reward.signaturespells.text, "p", "<span class='bold'>Signature Spells:</span> ");
+	if (reward.signaturespells !== undefined) texthtml += utils_combineText(reward.signaturespells.text ? reward.signaturespells.text : "None", "p", "<span class='bold'>Signature Spells:</span> ");
 	texthtml += utils_combineText(textlist, "p");
 
 	$("tr#text").after("<tr class='text'><td colspan='6'>"+texthtml+"</td></tr>");
