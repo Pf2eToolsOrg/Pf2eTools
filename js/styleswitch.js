@@ -181,12 +181,12 @@ ul.list li:hover {
 
 table#stats,
 table#statsprof {
-	background: transparent;
+	background: #272727;
 }
 
 th.border {
-	border: transparent;
-	background: transparent;
+	border: 1px solid #6f6f6f;
+	background: #565656;
 }
 
 tr.text td {
@@ -252,11 +252,15 @@ table#stats td._class_feature table th {
 /* end section: class features */
 
 #classtable table {
-	background: transparent;
+	background: #272727;
 }
 
 #classtable table th {
 	color: grey;
+}
+
+#classtable .colGroupTitle::after{	
+	border-color: #ababab;
 }
 
 #stats table tbody tr:nth-child(odd),
