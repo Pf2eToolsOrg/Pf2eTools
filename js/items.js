@@ -55,7 +55,7 @@ function mergeBasicItems(variantData) {
 				for (const excludedProperty in curExcludes) if (curExcludes.hasOwnProperty(excludedProperty) && curBasicItem[excludedProperty] === curExcludes[excludedProperty]) hasRequired=false;
 			}
 			if (hasRequired) {
-				const curInherits = curVariant.inherits
+				const curInherits = curVariant.inherits;
 				const tmpBasicItem = JSON.parse(JSON.stringify(curBasicItem));
 				delete tmpBasicItem.value; // Magic items do not inherit the value of the non-magical item
 				tmpBasicItem.category = "Specific Variant";
@@ -94,9 +94,10 @@ function pushObject(targetObject, objectToBePushed) {
 
 function enhanceItems() {
 	for (let i = 0; i < itemList.length; i++) {
+		const item = itemList[i];
+		if (item.noDisplay) continue;
 		if (itemList[i].type === "GV") itemList[i].category = "Generic Variant";
 		if (itemList[i].category === undefined) itemList[i].category = "Other";
-		const item = itemList[i];
 		if (item.entries === undefined) itemList[i].entries=[];
 		if (item.type && typeList[item.type]) for (let j = 0; j < typeList[item.type].entries.length; j++) itemList[i].entries = pushObject(itemList[i].entries,typeList[item.type].entries[j]);
 		if (item.property) {
@@ -170,23 +171,15 @@ function deselectFilter(deselectProperty, deselectValue) {
 	}
 }
 
-function filterTypeMatch(valGroup, types) {
-	return types.filter(t => valGroup[t]).length > 0;
-}
-
-function filterTypeMatchInverted(valGroup, types) {
-	return types.filter(t => !valGroup[t]).length === 0;
-}
-
 function populateTablesAndFilters() {
 	tabledefault = $("#stats").html();
 
 	const sourceFilter = getSourceFilter();
-	const typeFilter = new Filter({header: "Type", desel: deselectFilter("type", "$"), matchFn: filterTypeMatch, matchFnInv: filterTypeMatchInverted});
+	const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
 	const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
 	const rarityFilter = new Filter({header: "Rarity", items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown"]});
 	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"]});
-	const categoryFilter = new Filter({header: "Category", items: ["Basic", "Generic Variant", "Specific Variant", "Other"], desel: deselectFilter("category", "Specific Variant")});
+	const categoryFilter = new Filter({header: "Category", items: ["Basic", "Generic Variant", "Specific Variant", "Other"], deselFn: deselectFilter("category", "Specific Variant")});
 
 	const filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, attunementFilter, categoryFilter);
 	const liList = {mundane:"", magic:""}; // store the <li> tag content here and change the DOM once for each property after the loop
@@ -208,7 +201,6 @@ function populateTablesAndFilters() {
 		curitem.typeText = type.join(", "); // for loadhash to use
 		const tierTags = [];
 		tierTags.push(curitem.tier ? curitem.tier : "None");
-		const tierTagsString = tierTags.join(FLTR_LIST_SEP);
 		let attunement = "No";
 		if (curitem.reqAttune !== undefined) {
 			if (curitem.reqAttune === "YES") {
@@ -226,9 +218,9 @@ function populateTablesAndFilters() {
 			}
 		}
 		// for filter to use
-		curitem._pTypes = type;
-		curitem._pTier = tierTagsString;
-		curitem._pAttunement = attunement;
+		curitem._fTypes = type;
+		curitem._fTier = tierTags;
+		curitem._fAttunement = attunement;
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
 			<li ${FLTR_ID}=${i}>
@@ -273,19 +265,28 @@ function populateTablesAndFilters() {
 		const f = filterBox.getValues();
 		const i = itemList[$(item.elm).attr(FLTR_ID)];
 
-		const rightSource = sourceFilter.matches(f, i.source);
-		const rightType = typeFilter.matches(f, i._pTypes);
-		const rightTier = tierFilter.matches(f, i._pTier);
-		const rightRarity = rarityFilter.matches(f, i.rarity);
-		const rightAttunement = attunementFilter.matches(f, i._pAttunement);
-		const rightCategory = categoryFilter.matches(f, i.category);
-
-		return rightSource && rightType && rightTier && rightRarity && rightAttunement && rightCategory;
+		return sourceFilter.toDisplay(f, i.source) &&
+		typeFilter.toDisplay(f, i._fTypes) &&
+		tierFilter.toDisplay(f, i._fTier) &&
+		rarityFilter.toDisplay(f, i.rarity) &&
+		attunementFilter.toDisplay(f, i._fAttunement) &&
+		categoryFilter.toDisplay(f, i.category);
 	}
 
 	function handleFilterChange() {
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);
+
+		hideListIfEmpty(mundanelist, $(`.ele-mundane`));
+		hideListIfEmpty(magiclist, $(`.ele-magic`));
+	}
+
+	function hideListIfEmpty(list, $eles) {
+		if (list.visibleItems.length === 0) {
+			$eles.hide();
+		} else {
+			$eles.show();
+		}
 	}
 
 	$("#filtertools").find("button.sort").on("click", function() {

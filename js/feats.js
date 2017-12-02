@@ -16,9 +16,8 @@ function onJsonLoad(data) {
 	featlist = data.feat;
 
 	// TODO prerequisite filter?
-	const sourceFilter = getSourceFilter();
+	const sourceFilter = getSourceFilter(true);
 	const asiFilter = getAsiFilter();
-	asiFilter.addIfAbsent(STR_NONE);
 	const filterBox = initFilterBox(
 		sourceFilter,
 		asiFilter
@@ -31,7 +30,7 @@ function onJsonLoad(data) {
 		const name = curfeat.name;
 		const ability = utils_getAbilityData(curfeat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
-		curfeat._pAbility = ability; // save regenerating it when filtering
+		curfeat._fAbility = ability.asCollection; // used when filtering
 		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
 		if (!prereqText) prereqText = STR_NONE;
 		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";
@@ -77,10 +76,7 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const ft = featlist[$(item.elm).attr(FLTR_ID)];
 
-			const rightSource = sourceFilter.matches(f, ft.source);
-			const rightAsi = asiFilter.matches(f, ft._pAbility);
-
-			return rightSource && rightAsi;
+			return sourceFilter.toDisplay(f, ft.source) && asiFilter.toDisplay(f, ft._fAbility);
 		});
 	}
 

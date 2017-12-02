@@ -34,6 +34,13 @@ const TM_ROUND = "round";
 const TM_MINS = "minute";
 const TM_HRS = "hour";
 const TO_HIDE_SINGLETON_TIMES = [TM_ACTION, TM_B_ACTION, TM_REACTION, TM_ROUND];
+const TIME_UNITS_TO_FULL = {};
+TIME_UNITS_TO_FULL[TM_ACTION] = "Action";
+TIME_UNITS_TO_FULL[TM_B_ACTION] = "Bonus Action";
+TIME_UNITS_TO_FULL[TM_REACTION] = "Reaction";
+TIME_UNITS_TO_FULL[TM_ROUND] = "Rounds";
+TIME_UNITS_TO_FULL[TM_MINS] = "Minutes";
+TIME_UNITS_TO_FULL[TM_HRS] = "Hours";
 
 const F_RNG_POINT = "Point";
 const F_RNG_AREA = "Area";
@@ -176,9 +183,8 @@ function getTblTimeStr(time) {
 	}
 }
 
-function getFltrActionVal(unit) {
-	unit = unit.toLowerCase();
-	return Parser.getSingletonUnit(unit);
+function getTimeDisplay(timeUnit) {
+	return TIME_UNITS_TO_FULL[timeUnit];
 }
 
 function getClassFilterStr(c) {
@@ -186,61 +192,19 @@ function getClassFilterStr(c) {
 	return `${nm}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
 }
 
-function deselectUaEepc(val) {
-	if (window.location.hash.length) {
-		const spellSource = spellList[getSelectedListElement().attr("id")].source;
-		if (spellSource === SRC_EEPC || spellSource.startsWith(SRC_UA_PREFIX)) {
-			return deSelNoHash();
-		} else {
-			return val === SRC_EEPC && spellSource !== val || val.startsWith(SRC_UA_PREFIX) && spellSource !== val;
-		}
-	} else {
-		return deSelNoHash();
-	}
-	function deSelNoHash() {
-		return val === SRC_EEPC || val.startsWith(SRC_UA_PREFIX);
-	}
+function selNotUaEepc(val) {
+	return val !== SRC_EEPC && !val.startsWith(SRC_UA_PREFIX);
 }
 
-function filterMetaMatch(valGroup, s) {
-	return ( s.meta && ((valGroup[META_RITUAL] && s.meta.ritual) || (valGroup[META_TECHNOMAGIC] && s.meta.technomagic)) )
-		|| ( valGroup[META_ADD_CONC] && s.duration.filter(d => d.concentration).length )
-		|| ( valGroup[META_ADD_V] && s.components.v )
-		|| ( valGroup[META_ADD_S] && s.components.s )
-		|| ( valGroup[META_ADD_M] && s.components.m );
-}
-
-function filterMetaMatchInverted(valGroup, s) {
-	return ( implies(s.meta && s.meta.ritual, valGroup[META_RITUAL]) )
-		&& ( implies(s.meta && s.meta.technomagic, valGroup[META_TECHNOMAGIC]) )
-		&& ( implies(s.duration.filter(d => d.concentration).length, valGroup[META_ADD_CONC]) )
-		&& ( implies(s.components.v, valGroup[META_ADD_V]) )
-		&& ( implies(s.components.s, valGroup[META_ADD_S]) )
-		&& ( implies(s.components.m, valGroup[META_ADD_M]) );
-}
-
-function filterTimeMatch(valGroup, time) {
-	return time.map(t => valGroup[t.unit]).filter(b => b).length > 0;
-}
-
-function rangeFilterMatch(valGroup, range) {
-	return valGroup[getRangeType(range)];
-}
-
-function filterClassMatch(valGroup, classes) {
-	return classes.fromClassList.filter(c => valGroup[getClassFilterStr(c)]).length > 0;
-}
-
-function filterClassMatchInverted(valGroup, classes) {
-	return classes.fromClassList.filter(c => !valGroup[getClassFilterStr(c)]).length === 0;
-}
-
-function filterSubclassMatch(valGroup, classes) {
-	return  classes.fromSubclass && classes.fromSubclass.filter(sc => valGroup[getClassFilterStr(sc.subclass)]).length > 0;
-}
-
-function filterSubclassMatchInverted(valGroup, classes) {
-	return !classes.fromSubclass || classes.fromSubclass.filter(sc => !valGroup[getClassFilterStr(sc.subclass)]).length === 0;
+function getMetaFilterObj(s) {
+	const out = [];
+	if (s.meta && s.meta.ritual) out.push(META_RITUAL);
+	if (s.meta && s.meta.technomagic) out.push(META_TECHNOMAGIC);
+	if (s.duration.filter(d => d.concentration).length) out.push(META_ADD_CONC);
+	if (s.components.v) out.push(META_ADD_V);
+	if (s.components.s) out.push(META_ADD_S);
+	if (s.components.m) out.push(META_ADD_M);
+	return out;
 }
 
 window.onload = function load() {
@@ -253,29 +217,26 @@ function onJsonLoad(data) {
 
 	spellList = data.spell;
 
-	const sourceFilter = getSourceFilter({desel: deselectUaEepc});
+	const sourceFilter = getSourceFilter(true, {selFn: selNotUaEepc});
 	const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
-	const classFilter = new Filter({header: "Class", matchFn: filterClassMatch, matchFnInv: filterClassMatchInverted});
-	const subclassFilter = new Filter({header: "Subclass", desel: Filter.deselAll, matchFn: filterSubclassMatch, matchFnInv: filterSubclassMatchInverted});
+	const classFilter = new Filter({header: "Class"});
+	const subclassFilter = new Filter({header: "Subclass"});
 	const metaFilter = new Filter({
 		header: "Tag",
-		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC],
-		matchFn: filterMetaMatch,
-		matchFnInv: filterMetaMatchInverted
+		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
 	});
 	const schoolFilter = new Filter({header: "School", displayFn: Parser.spSchoolAbvToFull});
 	const timeFilter = new Filter({
 		header: "Cast Time",
 		items: [
-			"Action",
-			"Bonus Action",
-			"Reaction",
-			"Rounds",
-			"Minutes",
-			"Hours"
+			TM_ACTION,
+			TM_B_ACTION,
+			TM_REACTION,
+			TM_ROUND,
+			TM_MINS,
+			TM_HRS
 		],
-		valueFn: getFltrActionVal,
-		matchFn: filterTimeMatch
+		displayFn: getTimeDisplay
 	});
 	const rangeFilter = new Filter({
 		header: "Range",
@@ -285,8 +246,7 @@ function onJsonLoad(data) {
 			F_RNG_POINT,
 			F_RNG_AREA,
 			F_RNG_SPECIAL
-		],
-		matchFn: rangeFilterMatch
+		]
 	});
 
 	const filterBox = initFilterBox(
@@ -346,6 +306,13 @@ function onJsonLoad(data) {
 		spell[P_NORMALISED_TIME] = getNormalisedTime(spell.time);
 		spell[P_NORMALISED_RANGE] = getNormalisedRange(spell.range);
 
+		// used for filtering
+		spell._fMeta = getMetaFilterObj(spell);
+		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
+		spell._fSubclasses = spell.classes.fromSubclass ? spell.classes.fromSubclass.map(c => getClassFilterStr(c.subclass)) : [];
+		spell._fTimeType = spell.time.map(t => t.unit);
+		spell._fRangeType = getRangeType(spell.range);
+
 		// populate table
 		tempString += `
 			<li class='row' ${FLTR_ID}="${i}">
@@ -365,10 +332,8 @@ function onJsonLoad(data) {
 		sourceFilter.addIfAbsent(spell.source);
 		levelFilter.addIfAbsent(spell.level);
 		schoolFilter.addIfAbsent(spell.school);
-		spell.classes.fromClassList.forEach(c => classFilter.addIfAbsent(getClassFilterStr(c)));
-		if (spell.classes.fromSubclass) {
-			spell.classes.fromSubclass.forEach(c => subclassFilter.addIfAbsent(getClassFilterStr(c.subclass)));
-		}
+		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
+		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
 	}
 
 	spellTable.append(tempString);
@@ -405,23 +370,7 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const s = spellList[$(item.elm).attr(FLTR_ID)];
 
-			const rightSource = sourceFilter.matches(f, s.source);
-			const rightLevel = levelFilter.matches(f, s.level);
-			const rightMeta = metaFilter.matches(f, s);
-			const rightSchool = schoolFilter.matches(f, s.school);
-			const rightTime = timeFilter.matches(f, s.time);
-			const rightRange = rangeFilter.matches(f, s.range);
-			const rightClass = classFilter.matches(f, s.classes);
-			const rightSubclass = subclassFilter.matches(f, s.classes);
-
-			let rightClassAndSubclass;
-			if ( (classFilter.isInverted() || subclassFilter.isInverted()) && !(classFilter.isInverted() && !subclassFilter.isInverted()) ) {
-				rightClassAndSubclass = rightClass && rightSubclass;
-			} else {
-				rightClassAndSubclass = rightClass || rightSubclass;
-			}
-
-			return rightSource && rightLevel && rightMeta && rightSchool && rightTime && rightRange && rightClassAndSubclass;
+			return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
 		});
 	}
 

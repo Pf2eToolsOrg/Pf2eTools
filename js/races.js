@@ -12,7 +12,7 @@ function onJsonLoad (data) {
 
 	raceList = data.race;
 
-	const sourceFilter = getSourceFilter();
+	const sourceFilter = getSourceFilter(true);
 	const asiFilter = getAsiFilter();
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 
@@ -28,7 +28,7 @@ function onJsonLoad (data) {
 		const race = raceList[i];
 
 		const ability = utils_getAbilityData(race.ability);
-		race._pAbility = ability;
+		race._fAbility = ability.asCollection; // used for filtering
 
 		tempString +=
 			`<li ${FLTR_ID}='${i}'>
@@ -84,9 +84,9 @@ function onJsonLoad (data) {
 			const f = filterBox.getValues();
 			const r = raceList[$(item.elm).attr(FLTR_ID)];
 
-			const rightSource = sourceFilter.matches(f, r.source);
-			const rightAsi = asiFilter.matches(f, r._pAbility);
-			const rightSize = sizeFilter.matches(f, r.size);
+			const rightSource = sourceFilter.toDisplay(f, r.source);
+			const rightAsi = asiFilter.toDisplay(f, r._fAbility);
+			const rightSize = sizeFilter.toDisplay(f, r.size);
 
 			return rightSource && rightAsi && rightSize;
 		})

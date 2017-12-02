@@ -10,18 +10,6 @@ function ascSortCr(a, b) {
 	return ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
-function typeValue(type) {
-	return type.toLowerCase(); // lol
-}
-
-function filterTagsMatch(valGroup, tags) {
-	return tags.filter(t => valGroup[t]).length > 0;
-}
-
-function filterTagsMatchInverted(valGroup, tags) {
-	return tags.filter(t => !valGroup[t]).length === 0;
-}
-
 window.onload = function load() {
 	tableDefault = $("#stats").html();
 	loadJSON(BESTIARY_JSON_URL, addToB);
@@ -38,31 +26,48 @@ function populate(tobData, mainData) {
 	// TODO alignment filter
 	const sourceFilter = getSourceFilter();
 	const crFilter = new Filter({header: "CR"});
+	const sizeFilter = new Filter({
+		header: "Size",
+		items: [
+			SZ_FINE,
+			SZ_DIMINUTIVE,
+			SZ_TINY,
+			SZ_SMALL,
+			SZ_MEDIUM,
+			SZ_LARGE,
+			SZ_HUGE,
+			SZ_GARGANTUAN,
+			SZ_COLOSSAL,
+			SZ_VARIES
+		],
+		displayFn: Parser.sizeAbvToFull
+	});
 	const typeFilter = new Filter({
 		header: "Type",
 		items: [
-			"Aberration",
-			"Beast",
-			"Celestial",
-			"Construct",
-			"Dragon",
-			"Elemental",
-			"Fey",
-			"Fiend",
-			"Giant",
-			"Humanoid",
-			"Monstrosity",
-			"Ooze",
-			"Plant",
-			"Undead"
+			"aberration",
+			"beast",
+			"celestial",
+			"construct",
+			"dragon",
+			"elemental",
+			"fey",
+			"fiend",
+			"giant",
+			"humanoid",
+			"monstrosity",
+			"ooze",
+			"plant",
+			"undead"
 		],
-		valueFn: typeValue
+		displayFn: uppercaseFirst
 	});
-	const tagFilter = new Filter({header: "Type Tag", desel: Filter.deselAll, matchFn: filterTagsMatch, matchFnInv: filterTagsMatchInverted});
+	const tagFilter = new Filter({header: "Tag", displayFn: uppercaseFirst});
 
 	const filterBox = initFilterBox(
 		sourceFilter,
 		crFilter,
+		sizeFilter,
 		typeFilter,
 		tagFilter
 	);
@@ -83,7 +88,7 @@ function populate(tobData, mainData) {
 				<a id=${i} href='#${encodeForHash(mon.name)}_${encodeForHash(mon.source)}' title="${mon.name}">
 					<span class='name col-xs-4 col-xs-4-2'>${mon.name}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span>
-					<span class='type col-xs-4 col-xs-4-3'>${mon._pTypes.asText}</span>
+					<span class='type col-xs-4 col-xs-4-3'>${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class='col-xs-1 col-xs-1-7 text-align-center cr'>${mon.cr}</span>
 				</a>
 			</li>`;
@@ -119,19 +124,11 @@ function populate(tobData, mainData) {
 			const f = filterBox.getValues();
 			const m = monsters[$(item.elm).attr(FLTR_ID)];
 
-			const rightSource = sourceFilter.matches(f, m.source);
-			const rightCr = crFilter.matches(f, m.cr);
-			const rightType = typeFilter.matches(f, m._pTypes.type);
-			const rightTag = tagFilter.matches(f, m._pTypes.tags);
-
-			let rightTypeAndTag;
-			if ( (typeFilter.isInverted() || tagFilter.isInverted()) && !(typeFilter.isInverted() && !tagFilter.isInverted()) ) {
-				rightTypeAndTag = rightType && rightTag;
-			} else {
-				rightTypeAndTag = rightType || rightTag;
-			}
-
-			return rightSource && rightCr && rightTypeAndTag;
+			return sourceFilter.toDisplay(f, m.source) &&
+			crFilter.toDisplay(f, m.cr) &&
+			sizeFilter.toDisplay(f, m.size) &&
+			typeFilter.toDisplay(f, m._pTypes.type) &&
+			tagFilter.toDisplay(f, m._pTypes.tags);
 		});
 	}
 
@@ -149,8 +146,7 @@ function populate(tobData, mainData) {
 
 	// collapse/expand search button
 	$("button#expandcollapse").click(function() {
-		$("main .row:eq(0) > div:eq(0)").toggleClass("col-sm-5").toggle();
-		$("main .row:eq(0) > div:eq(1)").toggleClass("col-sm-12").toggleClass("col-sm-7");
+		$(`#listcontainer`).toggle();
 	});
 
 	// proficiency bonus/dice toggle

@@ -46,17 +46,20 @@ function onJsonLoad(data) {
 
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
-		function() {
-			list.filter(function(item) {
-				const f = filterBox.getValues();
-				const bg = bgList[$(item.elm).attr(FLTR_ID)];
-
-				return f[sourceFilter.header][FilterBox.VAL_SELECT_ALL] || f[sourceFilter.header][bg.source];
-			});
-		}
+		handleFilterChange
 	);
 
-	initHistory()
+	function handleFilterChange() {
+		list.filter(function(item) {
+			const f = filterBox.getValues();
+			const bg = bgList[$(item.elm).attr(FLTR_ID)];
+
+			return sourceFilter.toDisplay(f, bg.source);
+		});
+	}
+
+	initHistory();
+	handleFilterChange();
 }
 
 function loadhash (id) {

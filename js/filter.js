@@ -24,39 +24,38 @@ class FilterBox {
 		this.filterList = filterList;
 
 		this.headers = {};
+		this.$disabledOverlay = $(`<div class="list-disabled-overlay"/>`);
 	}
 
 	/**
 	 * Render the "Filters" button in the inputGroup
 	 */
 	render() {
-		const $buttonGroup = getButtonGroup();
+		this.$list = $(`#listcontainer`).find(`.list`);
+
+		const $filterButton = getFilterButton();
+		this.$miniView = getMiniView();
 		const $inputGroup = $(this.inputGroup);
 
 		const $outer = makeOuterList();
 		for (let i = 0; i < this.filterList.length; ++i) {
-			$outer.append(makeOuterItem(this, this.filterList[i]));
+			$outer.append(makeOuterItem(i, this, this.filterList[i], this.$miniView));
+			if (i < this.filterList.length-1) $outer.append(makeDivider());
 		}
+		$inputGroup.prepend($filterButton);
 		$inputGroup.append($outer);
-		$inputGroup.prepend($buttonGroup);
+		$inputGroup.after(this.$miniView);
 
-		// selection library
-		$.fn.select2.defaults.set("theme", "bootstrap");
-		$(".locationMultiple").select2({
-			width: null,
-			closeOnSelect: false
-		});
-
-		addShowHideHandlers();
+		addShowHideHandlers(this);
 		addResetHandler(this);
 
-		function getButtonGroup() {
-			const $buttonGroup = $(`<div id="filter-toggle-btn"/>`);
-			$buttonGroup.addClass(FilterBox.CLS_INPUT_GROUP_BUTTON);
+		function getFilterButton() {
+			const $buttonWrapper = $(`<div id="filter-toggle-btn"/>`);
+			$buttonWrapper.addClass(FilterBox.CLS_INPUT_GROUP_BUTTON);
 
 			const filterButton = getFilterButton();
-			$buttonGroup.append(filterButton);
-			return $buttonGroup;
+			$buttonWrapper.append(filterButton);
+			return $buttonWrapper;
 
 			function getFilterButton() {
 				const button = document.createElement(ELE_BUTTON);
@@ -69,6 +68,10 @@ class FilterBox {
 			}
 		}
 
+		function getMiniView() {
+			return $(`<div class="mini-view btn-group"/>`);
+		}
+
 		function makeOuterList() {
 			const $outL = $("<ul/>");
 			$outL.addClass(FilterBox.CLS_DROPDOWN_MENU);
@@ -76,20 +79,17 @@ class FilterBox {
 			return $outL;
 		}
 
-		function makeOuterItem(self, filter) {
+		function makeOuterItem(i, self, filter, $miniView) {
 			const $outI = $("<li/>");
 			$outI.addClass("filter-item");
-			// TODO
 
-			const $multi = makeMultiPicker();
+			const $grid = makePillGrid();
 			const $innerListHeader = makeHeaderLine();
 
 			$outI.append($innerListHeader);
-			$outI.append($multi);
+			$outI.append($grid);
 
-			addEventHandlers();
-
-			const newHeader = {size: filter.items.length, ele: $multi, invert: false, outer: $outI, filter: filter};
+			const newHeader = {index: i, size: filter.items.length, ele: $grid,outer: $outI, filter: filter};
 			self.headers[filter.header] = newHeader;
 
 			return $outI;
@@ -98,36 +98,87 @@ class FilterBox {
 				const $line = $(`<div class="h-wrap"/>`);
 				const $label = `<div>${filter.header}</div>`;
 				$line.append($label);
-				const $invert = $(`<button class="btn btn-default btn-xs invert-button" style="margin-left: auto">Invert</button>`);
-				$line.append($invert);
-				const $quickBtns = $(`<span class="btn-group" style="margin-left: 12px"/>`);
+
+				const $quickBtns = $(`<span class="btn-group" style="margin-left: auto;"/>`);
 				const $all = $(`<button class="btn btn-default btn-xs">All</button>`);
 				$quickBtns.append($all);
+				const $clear = $(`<button class="btn btn-default btn-xs">Clear</button>`);
+				$quickBtns.append($clear);
 				const $none = $(`<button class="btn btn-default btn-xs">None</button>`);
 				$quickBtns.append($none);
 				const $default = $(`<button class="btn btn-default btn-xs">Default</button>`);
 				$quickBtns.append($default);
 				$line.append($quickBtns);
 
-				$invert.on(EVNT_CLICK, function() {
-					newHeader.invert = !newHeader.invert;
-					filter.invert = newHeader.invert;
-					if (newHeader.invert) {
-						$outI.addClass(FilterBox.CLS_FILTER_INVERT)
+				const $summary = $(`<span class="summary" style="margin-left: auto;"/>`);
+				const $summaryInclude = $(`<span class="include" title="Hiding  includes"/>`);
+				const $summarySpacer = $(`<span class="spacer"/>`);
+				const $summaryExclude = $(`<span class="exclude" title="Hidden excludes"/>`);
+				$summary.append($summaryInclude);
+				$summary.append($summarySpacer);
+				$summary.append($summaryExclude);
+				$summary.hide();
+				$line.append($summary);
+
+				const $showHide = $(`<button class="btn btn-default btn-xs show-hide-button" style="margin-left: 12px;">Hide</button>`);
+				$line.append($showHide);
+
+				$showHide.on(EVNT_CLICK, function() {
+					if ($grid.is(":hidden")) {
+						$showHide.text("Hide");
+						$grid.show();
+						$quickBtns.show();
+						$summary.hide();
+						$showHide.css("margin-left", "12px");
 					} else {
-						$outI.removeClass(FilterBox.CLS_FILTER_INVERT)
+						$showHide.text("Show");
+						$grid.hide();
+						$quickBtns.hide();
+						const counts = $grid.data("getCounts")();
+						if (counts.yes > 0 || counts.no > 0) {
+							if (counts.yes > 0) {
+								$summaryInclude.prop("title", `${counts.yes} hidden 'required' tag${counts.yes > 1 ? "s" : ""}`);
+								$summaryInclude.text(counts.yes);
+								$summaryInclude.show();
+							} else {
+								$summaryInclude.hide();
+							}
+							if (counts.yes > 0 && counts.no > 0) {
+								$summarySpacer.show();
+							} else {
+								$summarySpacer.hide();
+							}
+							if (counts.no > 0) {
+								$summaryExclude.prop("title", `${counts.no} hidden 'excluded' tag${counts.no > 1 ? "s" : ""}`);
+								$summaryExclude.text(counts.no);
+								$summaryExclude.show();
+							} else {
+								$summaryExclude.hide();
+							}
+							$showHide.css("margin-left", "12px");
+							$summary.show();
+						} else {
+							$showHide.css("margin-left", "auto");
+						}
 					}
-					self._fireValChangeEvent();
 				});
 
 				$none.on(EVNT_CLICK, function() {
-					$multi.find("option").prop("selected", false);
-					$multi.trigger("change");
+					$grid.find(".filter-pill").each(function() {
+						$(this).data("setter")(false);
+					});
 				});
 
 				$all.on(EVNT_CLICK, function() {
-					$multi.find("option").prop("selected", true);
-					$multi.trigger("change");
+					$grid.find(".filter-pill").each(function() {
+						$(this).data("setter")(true);
+					});
+				});
+
+				$clear.on(EVNT_CLICK, function() {
+					$grid.find(".filter-pill").each(function() {
+						$(this).data("setter")(null);
+					});
 				});
 
 				$default.on(EVNT_CLICK, function() {
@@ -137,43 +188,124 @@ class FilterBox {
 				return $line;
 			}
 
-			function makeMultiPicker() {
-				const $box = $("<select/>");
-				$box.addClass("locationMultiple");
-				$box.addClass("form-control");
-				$box.attr("multiple", "multiple");
+			function makePillGrid() {
+				const $pills = [];
+				const $grid = $(`<div class="pill-grid"/>`);
 
-				for (const item of filter.items) {
-					const $opt = $("<option/>");
-					const val = filter.valueFn ? filter.valueFn(item) : item;
-					$opt.val(val);
-					$opt.html(filter.displayFn ? filter.displayFn(item) : item);
-					if (!filter.desel || (filter.desel && !filter.desel(val))) {
-						$opt.prop("selected", true);
-					} else {
-						$opt.prop("selected", false);
-					}
-					$box.append($opt)
+				function cycleState($pill, $miniPill, forward) {
+					const curIndex = FilterBox._PILL_STATES.indexOf($pill.attr("state"));
+
+					let newIndex = forward ? curIndex+1 : curIndex-1;
+					if (newIndex >= FilterBox._PILL_STATES.length) newIndex = 0;
+					else if (newIndex < 0) newIndex = FilterBox._PILL_STATES.length-1;
+					$pill.attr("state", FilterBox._PILL_STATES[newIndex]);
+					$miniPill.attr("state", FilterBox._PILL_STATES[newIndex]);
 				}
 
-				return $box;
-			}
+				for (const item of filter.items) {
+					const $pill = $(`<div class="filter-pill"/>`);
+					const $miniPill = $(`<div class="mini-pill group${i}"/>`);
 
-			function addEventHandlers() {
-				$multi.on("change", function () {
-					self._fireValChangeEvent();
-				})
+					const display = filter.displayFn ? filter.displayFn(item) : item;
+
+					$pill.val(item);
+					$pill.html(display);
+					$miniPill.html(display);
+
+					$pill.attr("state", FilterBox._PILL_STATES[0]);
+					$miniPill.attr("state", FilterBox._PILL_STATES[0]);
+
+					$miniPill.on(EVNT_CLICK, function() {
+						$pill.attr("state", FilterBox._PILL_STATES[0]);
+						$miniPill.attr("state", FilterBox._PILL_STATES[0]);
+						self._fireValChangeEvent();
+					});
+
+					$pill.on(EVNT_CLICK, function() {
+						cycleState($pill, $miniPill, true);
+					});
+
+					$pill.on("contextmenu",function(e){
+						e.preventDefault();
+						cycleState($pill, $miniPill, false);
+					});
+
+					$pill.data(
+						"setter",
+						(function(toVal) {
+							$pill.attr("state", toVal);
+							$miniPill.attr("state", toVal);
+						})
+					);
+					$pill.data("resetter",
+						(function() {
+							if (filter.deselFn && filter.deselFn(item)) {
+								$pill.attr("state", "no");
+								$miniPill.attr("state", "no");
+							} else if (filter.selFn && filter.selFn(item)) {
+								$pill.attr("state", "yes");
+								$miniPill.attr("state", "yes");
+							} else {
+								$pill.attr("state", "ignore");
+								$miniPill.attr("state", "ignore");
+							}
+						})
+					);
+					$pill.data("resetter")();
+
+					$grid.append($pill);
+					$miniView.append($miniPill);
+					$pills.push($pill);
+				}
+
+				$grid.data(
+					"getValues",
+					function() {
+						const out = {};
+						const _totals = {yes: 0, no: 0, ignored: 0};
+						$pills.forEach(function(p) {
+							const state = p.attr("state");
+							out[p.val()] = state === "yes" ? 1 : state === "no" ? -1 : 0;
+							const countName = state === "yes" ? "yes" : state === "no" ? "no" : "ignored";
+							_totals[countName] = _totals[countName]+1;
+						});
+						out._totals = _totals;
+						return out;
+					}
+				);
+
+				$grid.data(
+					"getCounts",
+					function() {
+						const out = {"yes": 0, "no": 0};
+						$pills.forEach(function(p) {
+							const state = p.attr("state");
+							if (out[state] !== undefined) out[state] = out[state] + 1;
+						});
+						return out;
+					}
+				);
+
+				return $grid;
 			}
 		}
 
-		function addShowHideHandlers() {
+		function makeDivider() {
+			return $(`<div class="pill-grid-divider"/>`);
+		}
+
+		function addShowHideHandlers(self) {
 			// watch for the button changing to "open"
 			const $filterToggleButton = $("#filter-toggle-btn");
 			const observer = new MutationObserver(function(mutations) {
 				mutations.forEach(function(mutationRecord) {
 					if (!$filterToggleButton.hasClass("open")) {
+						self.$disabledOverlay.detach();
 						$outer.hide();
+						// fire an event when the form is closed
+						self._fireValChangeEvent();
 					} else {
+						self.$list.parent().append(self.$disabledOverlay);
 						$outer.show();
 					}
 				});
@@ -196,16 +328,17 @@ class FilterBox {
 	}
 
 	/**
-	 * Get a map of {Filter.header: {map of Filter.items (with Filter.valueFn applied): <true/false> matching
-	 * the state of the checkbox}}
-	 * Note that there is a special entry in the second map ({Filter.items: booleans}) with the
-	 * key `FilterBox.VAL_SELECT_ALL` as a convenience flag for "all items in this category selected"
+	 * Get a map of {Filter.header: {map of Filter.items: <1/0/-1> representing the state
+	 * to each pill}}
+	 * Additionally, include an element per filter which gives the total of 1/0/-1 entries
+	 * Note that 1 represents a "required" pill, 0 represents an "ignored" pill, and -1 respresents an "excluded"
+	 * pill.
 	 *
 	 * @returns the map described above e.g.
 	 *
 	 * {
-	 *  "Source": { "select-all": false, "PHB": true, "DMG": false},
-	 *  "School": { "select-all": true, "A": true, "EV": true }
+	 *  "Source": { "PHB": 1, "DMG": 0, "_totals": { "yes": 1, "no": 0, "ignored": 1 } },
+	 *  "School": { "A": 0, "EV": -1, "_totals": { "yes": 0, "no": 1, "ignored": 1 } }
      * }
 	 *
 	 */
@@ -213,33 +346,7 @@ class FilterBox {
 		const outObj = {};
 		for (const header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
-			const cur = this.headers[header];
-			const tempObj = {};
-
-			const values = cur.ele.val();
-			if (!cur.invert) {
-				if (values.length === cur.size) {
-					// everything is selected
-					tempObj[FilterBox.VAL_SELECT_ALL] = true;
-				} else {
-					for (let i = 0; i < values.length; ++i) {
-						tempObj[values[i]] = true;
-					}
-				}
-				outObj[header] = tempObj;
-			} else {
-				if (values.length === 0) { // probably bugged if there's no filter items
-					// everything is unselected
-					tempObj[FilterBox.VAL_SELECT_ALL] = true;
-				} else {
-					const valSet = new Set(values);
-					cur.ele.find("option").get().map(o => o.value).forEach(v => {
-						tempObj[v] = !valSet.has(v);
-					});
-				}
-
-				outObj[header] = tempObj;
-			}
+			outObj[header] = this.headers[header].ele.data("getValues")();
 		}
 		return outObj;
 	}
@@ -258,13 +365,14 @@ class FilterBox {
 	}
 
 	/**
-	 * Reset the selected filters to default, applying any `desel` functions from the filters
+	 * Reset the selected filters to default, applying any `selFn` and `deselFn` functions from the filters
 	 */
 	reset() {
 		for (const header in this.headers) {
 			if (!this.headers.hasOwnProperty(header)) continue;
 			this._reset(header);
 		}
+		this._fireValChangeEvent();
 	}
 
 	/**
@@ -274,51 +382,9 @@ class FilterBox {
 	 */
 	_reset(header) {
 		const cur = this.headers[header];
-		const filter = cur.filter;
-		let anyChanged = false;
-
-		if (cur.invert || filter.invert) {
-			cur.outer.removeClass(FilterBox.CLS_FILTER_INVERT);
-			cur.invert = false;
-			filter.invert = false;
-			anyChanged = true;
-		}
-
-		cur.ele.find("option").each(function() {
-			if (!filter.desel || (filter.desel && !filter.desel(this.value))) {
-				this.selected = true;
-				anyChanged = true;
-			} else {
-				this.selected = false;
-				anyChanged = true;
-			}
+		cur.ele.find(".filter-pill").each(function() {
+			$(this).data("resetter")();
 		});
-
-		if (anyChanged) {
-			cur.ele.trigger("change");
-		}
-	}
-
-	/**
-	 * Deselect values for a Filter.header which cause func to evaluate to true
-	 *
-	 * Useful to e.g. de-select all "Unearthed Arcana"-source items.
-	 *
-	 * @param func a function taking a single argument and returning true/false, which is called on
-	 * the Filter.valueFn(Filter.items[x])
-	 *
-	 * @param filterHeader the Filter.header for the Filter.items to call func(val) on
-	 */
-	deselectIf(func, filterHeader) {
-		const cur = this.headers[filterHeader];
-		let anyDeselected = false;
-		cur.ele.find("option").each(function() {
-			if (func(this.value)) {
-				this.selected = false;
-				anyDeselected = true;
-			}
-		});
-		if (anyDeselected) cur.ele.trigger("change");
 	}
 
 	/**
@@ -333,13 +399,8 @@ class FilterBox {
 FilterBox.CLS_INPUT_GROUP_BUTTON = "input-group-btn";
 FilterBox.CLS_DROPDOWN_MENU = "dropdown-menu";
 FilterBox.CLS_DROPDOWN_MENU_FILTER = "dropdown-menu-filter";
-FilterBox.CLS_DROPDOWN_SUBMENU = "dropdown-submenu";
-FilterBox.CLS_FILTER_SUBLIST_ITEM_WRAPPER = "filter-sublist-item-wrapper";
-FilterBox.CLS_SUBMENU_PARENT = "submenu-parent";
-FilterBox.CLS_FILTER_INVERT = "filter-invert";
-FilterBox.VAL_SELECT_ALL = "select-all";
 FilterBox.EVNT_VALCHANGE = "valchange";
-FilterBox.P_IS_OPEN = "isOpen";
+FilterBox._PILL_STATES = ["ignore", "yes", "no"];
 
 class Filter {
 	/**
@@ -360,32 +421,18 @@ class Filter {
 	 *     e.g. Parser.sourceJsonToFull
 	 *
 	 *   (OPTIONAL)
-	 *   valueFn: A function[1] to apply to each item to convert it to a HTML `value`
-	 *     Affects the keys returned by `getValues()`
-	 *     e.g. `Parser.sourceJsonToAbv`
+	 *   selFn: a function, defaults items as "match this" if `selFn(item)` is true
 	 *
 	 *   (OPTIONAL)
-	 *   desel: a function, defaults items as deselected if `desel(valueFn(item))` is true
+	 *   deselFn: a function, defaults items as "do not match this" if `deselFn(item)` is true
 	 *
-	 *   TODO docs for other shite
 	 */
 	constructor(options) {
 		this.header = options.header;
 		this.items = options.items ? options.items : [];
 		this.displayFn = options.displayFn;
-		this.valueFn = options.valueFn;
-		this.desel = options.desel;
-		this.matchFn = options.matchFn ? options.matchFn : Filter.basicMatchFn;
-		this.matchFnInv = options.matchFnInv;
-
-		this.invert = false;
-	}
-
-	/**
-	 * @returns {boolean} true if this filter has been inverted; false otherwise
-	 */
-	isInverted() {
-		return this.invert;
+		this.selFn = options.selFn;
+		this.deselFn = options.deselFn;
 	}
 
 	/**
@@ -396,27 +443,52 @@ class Filter {
 		if ($.inArray(item, this.items) === -1) this.items.push(item);
 	}
 
-	matches(valObj, toCheck) {
-		if (valObj[this.header][FilterBox.VAL_SELECT_ALL]) return true;
-		if (this.isInverted() && this.matchFnInv) {
-			return this.matchFnInv(valObj[this.header], toCheck);
+	/**
+	 * Takes the output of `FilterBox.getValues()` and an item to check or array of items to check, and matches the
+	 * filter against it/them.
+	 *
+	 * @param valObj `FilterBox.getValues()` returned object
+	 * @param toCheck item or array of items to match against
+	 * @returns {*} true if this item should be displayed, false otherwise
+	 */
+	toDisplay(valObj, toCheck) {
+		const map = valObj[this.header];
+		const totals = map._totals;
+		if (toCheck instanceof Array) {
+
+			let display = false;
+			// default to displaying
+			if (totals.yes === 0) {
+				display = true;
+			}
+			let hide = false;
+			for (let i = 0; i < toCheck.length; i++) {
+				const item = toCheck[i];
+
+				// if any are 1 (green) include if they match
+				if (map[item] === 1) {
+					display = true;
+				}
+				// if any are -1 (red) exclude if they match
+				if (map[item] === -1) {
+					hide = true;
+				}
+			}
+
+			return display && !hide;
 		} else {
-			return this.matchFn(valObj[this.header], toCheck);
+			return doCheck(toCheck);
+		}
+
+		function doCheck() {
+			if (totals.yes > 0) {
+				return map[toCheck] === 1;
+			} else {
+				return map[toCheck] >= 0;
+			}
 		}
 	}
 }
-
-/**
- * An example of a basic filter which could be used by `Filter.matches(..)`
- * If no `matchFn` is specified for a `Filter`, this is the default match function.
- *
- * @param valGroup A group from the current filter values (all current filter values returned by `FilterBox.getValues()`)
- * @param toCheck The value compare with the selected filters (e.g. `spell.level`)
- * @returns {*}
- */
-Filter.basicMatchFn = function(valGroup, toCheck) {
-	return valGroup[toCheck];
-};
 
 /**
  * An extremely simple deselect function. Simply deselects everything.

@@ -65,10 +65,7 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const r = rewardList[$(item.elm).attr(FLTR_ID)];
 
-			const rightSource = sourceFilter.matches(f, r.source);
-			const rightType = typeFilter.matches(f, r.type);
-
-			return rightSource && rightType;
+			return sourceFilter.toDisplay(f, r.source) && typeFilter.toDisplay(f, r.type);
 		});
 	}
 

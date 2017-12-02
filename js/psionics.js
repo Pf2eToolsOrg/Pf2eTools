@@ -77,13 +77,13 @@ let PSIONIC_LIST;
 function onJsonLoad(data) {
 	PSIONIC_LIST = data.psionic;
 
-	const sourceFilter = getSourceFilter({
-		desel: function(val) {
+	const sourceFilter = getSourceFilter(false, {
+		deselFn: function(val) {
 			return false;
 		}
 	});
 	const typeFilter = new Filter({header: "Type", items: ["D", "T"], displayFn: parse_psionicTypeToFull});
-	const orderFilter = new Filter({header: "Order", items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", STR_ORDER_NONE], valueFn: parse_psionicOrderToFull});
+	const orderFilter = new Filter({header: "Order", items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", STR_ORDER_NONE]});
 
 	const filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
 
@@ -146,9 +146,9 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const p = PSIONIC_LIST[$(item.elm).attr(FLTR_ID)];
 
-			const rightSource = sourceFilter.matches(f, p.source);
-			const rightType = typeFilter.matches(f, p.type);
-			const rightOrder = orderFilter.matches(f, p.order);
+			const rightSource = sourceFilter.toDisplay(f, p.source);
+			const rightType = typeFilter.toDisplay(f, p.type);
+			const rightOrder = orderFilter.toDisplay(f, p.order);
 
 			return rightSource && rightType && rightOrder;
 		});

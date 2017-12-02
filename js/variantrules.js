@@ -75,7 +75,7 @@ function onJsonLoad(data) {
 			const f = filterBox.getValues();
 			const r = rulesList[$(item.elm).attr(FLTR_ID)];
 
-			return sourceFilter.matches(f, r.source);
+			return sourceFilter.toDisplay(f, r.source);
 		});
 	}
 
