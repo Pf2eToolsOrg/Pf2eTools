@@ -307,6 +307,10 @@ tr.trait td {
 	background: #323232;
 }
 
+.list-disabled-overlay::after {
+	background: rgba(34, 34, 34, 0.65);
+}
+
 `;
 
 class StyleSwitcher {
