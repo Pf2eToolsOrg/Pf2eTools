@@ -290,7 +290,7 @@ tr.trait td {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #565656;
+	background: #475B6B;
 }
 
 /**** Search and filter bar ****/
