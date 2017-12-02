@@ -6,14 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--
-	XML data was compiled by a reddit community for use with the "Fight Club 5" app.
-	Google "5e xml files" for more info.
-
-	Feel free to use, edit, and redistribute this as you wish.
-	I don't own any of the XML data anyway.
--->
-
 	<title>Lootgen - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -27,9 +19,8 @@
 <body>
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
-
 			<h1>Loot Gen</h1>
-			<p>Input CR, if it's a hoard or not, then roll loot.</p>
+			<p>Input CR, if it's a hoard or not, then Roll Loot!</p>
 		</div>
 	</header>
 	<nav class="container">
@@ -80,24 +71,23 @@
 		</ul>
 	</nav>
 	<main class="container bodyContent">
-
 		<div class="row">
 			<div class="col-sm-5">
 				<form id="controls">
 					<div class="input-group">
 						<span class="input-group-addon">CR</span>
 						<select class="form-control" id="cr">
-							<option value="0" selected>CR 0-4</option>
-							<option value="5">CR 5-10</option>
-							<option value="11">CR 11-16</option>
-							<option value="17">CR 17+</option>
+							<option value="0" selected>0-4</option>
+							<option value="5">5-10</option>
+							<option value="11">11-16</option>
+							<option value="17">17+</option>
 						</select>
 						<span class="input-group-addon" style="vertical-align: bottom;"><label for="hoard">Hoard? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;"></label></span>
 					</div><br>
 					<button type="button" class="btn btn-default btn-block" id="genloot">Roll Loot!</button><br>
 					<button type="button" class="btn btn-default pull-right" id="clear">Clear</button>
 				</form>
-				<p><small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small></p>
+				<p><small>Based on the tables and rules in <em>Dungeon Master's Guide</em>, pages 133-149.</small></p>
 			</div>
 			<div class="col-sm-7">
 				<h4>Loot</h4>
