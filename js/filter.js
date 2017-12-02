@@ -165,19 +165,19 @@ class FilterBox {
 
 				$none.on(EVNT_CLICK, function() {
 					$grid.find(".filter-pill").each(function() {
-						$(this).data("setter")(false);
+						$(this).data("setter")(FilterBox._PILL_STATES[2]);
 					});
 				});
 
 				$all.on(EVNT_CLICK, function() {
 					$grid.find(".filter-pill").each(function() {
-						$(this).data("setter")(true);
+						$(this).data("setter")(FilterBox._PILL_STATES[1]);
 					});
 				});
 
 				$clear.on(EVNT_CLICK, function() {
 					$grid.find(".filter-pill").each(function() {
-						$(this).data("setter")(null);
+						$(this).data("setter")(FilterBox._PILL_STATES[0]);
 					});
 				});
 

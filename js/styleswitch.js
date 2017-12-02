@@ -290,7 +290,7 @@ tr.trait td {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #565656;
+	background: #475B6B;
 }
 
 /**** Search and filter bar ****/
@@ -305,6 +305,10 @@ tr.trait td {
 
 .dropdown-menu-filter .pill-grid .filter-pill:hover:not([state]) {
 	background: #323232;
+}
+
+.list-disabled-overlay::after {
+	background: rgba(34, 34, 34, 0.65);
 }
 
 `;
