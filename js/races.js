@@ -12,7 +12,7 @@ function onJsonLoad (data) {
 
 	raceList = data.race;
 
-	const sourceFilter = getSourceFilter(true);
+	const sourceFilter = getSourceFilter();
 	const asiFilter = getAsiFilter();
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 

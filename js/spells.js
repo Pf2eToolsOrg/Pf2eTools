@@ -217,7 +217,7 @@ function onJsonLoad(data) {
 
 	spellList = data.spell;
 
-	const sourceFilter = getSourceFilter(true, {selFn: selNotUaEepc});
+	const sourceFilter = getSourceFilter({selFn: selNotUaEepc});
 	const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
 	const classFilter = new Filter({header: "Class"});
 	const subclassFilter = new Filter({header: "Subclass"});
