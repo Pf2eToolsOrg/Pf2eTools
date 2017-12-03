@@ -25,7 +25,6 @@ class FilterBox {
 
 		this.headers = {};
 		this.$disabledOverlay = $(`<div class="list-disabled-overlay"/>`);
-		this.cookieValues = JSON.parse(Cookies.get(FilterBox._COOKIE_NAME));
 	}
 
 	/**
@@ -49,7 +48,6 @@ class FilterBox {
 
 		addShowHideHandlers(this);
 		addResetHandler(this);
-		addCookieHandler(this);
 
 		function getFilterButton() {
 			const $buttonWrapper = $(`<div id="filter-toggle-btn"/>`);
@@ -253,13 +251,7 @@ class FilterBox {
 							}
 						})
 					);
-					if (self.cookieValues && self.cookieValues[filter.header] && self.cookieValues[filter.header][item] !== undefined) {
-						let valNum = self.cookieValues[filter.header][item];
-						if (valNum < 0) valNum = 2;
-						$pill.data("setter")(FilterBox._PILL_STATES[valNum]);
-					} else {
-						$pill.data("resetter")();
-					}
+					$pill.data("resetter")();
 
 					$grid.append($pill);
 					$miniView.append($miniPill);
@@ -332,13 +324,6 @@ class FilterBox {
 					self.reset();
 				}, false);
 			}
-		}
-
-		function addCookieHandler(self) {
-			window.addEventListener("unload", function() {
-				const state = self.getValues();
-				Cookies.set(FilterBox._COOKIE_NAME, state, {expires: 365, path: window.location.pathname})
-			});
 		}
 	}
 
@@ -416,7 +401,6 @@ FilterBox.CLS_DROPDOWN_MENU = "dropdown-menu";
 FilterBox.CLS_DROPDOWN_MENU_FILTER = "dropdown-menu-filter";
 FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox._PILL_STATES = ["ignore", "yes", "no"];
-FilterBox._COOKIE_NAME = "filterState";
 
 class Filter {
 	/**
