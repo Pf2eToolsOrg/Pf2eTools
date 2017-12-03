@@ -471,21 +471,40 @@ function loadhash (id) {
 	}
 	function makeSkillRoller() {
 		const $this = $(this);
-		const skills = $this.html().split(",").map(s => s.trim());
+
+		const re = /,\s*(?![^()]*\))/g; // Don't split commas within parentheses
+		const skills = $this.html().split(re).map(s => s.trim());
 		const out = [];
+
 		skills.map(s => {
-			const spl = s.split("+").map(s => s.trim());
-			const bonus = Number(spl[1]);
-			const fromAbility = Parser.getAbilityModNumber(mon[getAttribute(spl[0])]);
-			const expectedPB = getProfBonusFromCr(mon.cr);
-			const pB = bonus - fromAbility;
+			const re = /(\-|\+)?\d+|(?:[^\+]|\n(?!\+))+/g; // Split before and after each bonus
+			const spl = s.match(re);
 
-			const expert = (pB === expectedPB * 2) ? 2 : 1;
-			const pBonusStr = `+${bonus}`;
-			const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
+			const skillName = spl[0].trim();
 
-			out.push(renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, false));
-		});
+			var skillString = "";
+			spl.map(b => {
+				const re = /(\-|\+)?\d+/;
+
+				if (b.match(re)){
+					const bonus = Number(b);
+					const fromAbility = Parser.getAbilityModNumber(mon[getAttribute(skillName)]);
+					const expectedPB = getProfBonusFromCr(mon.cr);
+					const pB = bonus - fromAbility;
+		
+					const expert = (pB === expectedPB * 2) ? 2 : 1;
+					const pBonusStr = `+${bonus}`;
+					const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
+		
+					skillString += renderSkillOrSaveRoller(skillName, pBonusStr, pDiceStr, false);
+				} else {
+					skillString += b;
+				}				
+			});
+
+			out.push(skillString);
+		});		
+
 		$this.html(out.join(", "));
 	}
 	function makeSaveRoller() {
@@ -503,13 +522,13 @@ function loadhash (id) {
 			const pBonusStr = `+${bonus}`;
 			const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
 
-			out.push(renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, true));
+			out.push(spl[0] + ' ' + renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, true));
 		});
 		$this.html(out.join(", "));
 	}
 	function renderSkillOrSaveRoller(itemName, profBonusString, profDiceString, isSave) {
 		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
-		return `${itemName} <span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
+		return `<span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
 	}
 
 	// inline rollers
