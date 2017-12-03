@@ -194,6 +194,10 @@ function sortMonsters(a, b, o) {
 	return 0;
 }
 
+function objToTitleCaseStringWithCommas(obj) {
+	return Object.keys(obj).map(function(k){return k.uppercaseFirst() + ' ' + obj[k]}).join(', ');
+}
+
 // load selected monster stat block
 function loadhash (id) {
 	$("#stats").html(tableDefault);
@@ -255,9 +259,9 @@ function loadhash (id) {
 	}
 
 	var skills = mon.skill;
-	if (skills && skills.length > 0 && skills[0]) {
+	if (skills) {
 		$("td span#skills").parent().show();
-		$("td span#skills").html(skills);
+		$("td span#skills").html(objToTitleCaseStringWithCommas(skills));
 	} else {
 		$("td span#skills").parent().hide();
 	}
