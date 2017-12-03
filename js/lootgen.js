@@ -11,11 +11,36 @@ function loadloot(lootData) {
 	lootList = lootData;
 	$("button#clear").click(function() {$("#lootoutput").html("");});
 	$("button#genloot").click(function() {rollLoot();});
+	$("#itemselection").change(function() {displayTable();});
 	return;
 }
 
+function displayTable() {
+	const curval = parseInt($("#itemselection").val());
+	if (curval === -1) {
+		$("div#itemtable").hide();
+		$("div#output").hide();
+	} else {
+		const ItemsTable = lootList.magicitems[curval];
+		let	htmlText = `<table id="stats"><caption>${ItemsTable.name}</caption><thead><tr ><th class="col-xs-2 text-align-center"><span class="roller" data-roll="d100">d100</span></th><th class="col-xs-10">Magic Item</th></tr></thead>`;
+		for (let i=0; i < ItemsTable.table.length; i++) {
+			const range = ItemsTable.table[i].min === ItemsTable.table[i].max ? ItemsTable.table[i].min : `${ItemsTable.table[i].min}-${ItemsTable.table[i].max}`
+			htmlText += `<tr><td class="text-align-center">${range}</td><td>${parseLink(ItemsTable.table[i].item)}</td></tr>`;
+		}
+		htmlText += "</table>";
+		$("div#itemtable").html(htmlText).show();
+		$("#itemtable span.roller").click(function() {
+			const roll =$(this).attr("data-roll").replace(/\s+/g, "");
+			const rollresult =  droll.roll(roll);
+			const name = $("#name").clone().children().remove().end().text();
+			$("div#output").prepend(`<span>${ItemsTable.name}: <em>${roll}</em> rolled for <strong>${rollresult.total}</strong> (<em>${rollresult.rolls.join(", ")}</em>)<br></span>`).show();
+			$("div#output span:eq(5)").remove();
+		})
+	}
+}
+
 function rollLoot() {
-	const cr = $("#cr").val()
+	const cr = $("#cr").val();
 	const hoard = $("#hoard").prop("checked");
 	$("#lootoutput > ul:eq(4), #lootoutput > hr:eq(4)").remove();
 	$("#lootoutput").prepend("<ul></ul><hr>")
@@ -132,7 +157,7 @@ function randomNumber(min, max) {
 }
 
 function parseLink(rawText) {
-	if (rawText.startsWith("{@item ")) {
+	if (rawText.indexOf("{@item ") !== -1) {
 		const stack = [];
 		renderer.recursiveEntryRender(rawText, stack);
 		return stack.join("");

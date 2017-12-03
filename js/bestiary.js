@@ -138,9 +138,7 @@ function populate(tobData, mainData) {
 	// sorting headers
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
 		const $this = $(this);
-		if ($this.data("sortby") === "asc") {
-			$this.data("sortby", "desc");
-		} else $this.data("sortby", "asc");
+		$this.data("sortby", $this.data("sortby") === "asc" ? "desc" : "asc");
 		list.sort($this.data("sort"), { order: $this.data("sortby"), sortFunction: sortMonsters });
 	});
 
@@ -249,7 +247,7 @@ function loadhash (id) {
 	$("td#cha span.mod").html(Parser.getAbilityModifier(mon.cha));
 
 	var saves = mon.save;
-	if (saves && saves.length > 0) {
+	if (saves) {
 		$("td span#saves").parent().show();
 		$("td span#saves").html(saves);
 	} else {
@@ -265,7 +263,7 @@ function loadhash (id) {
 	}
 
 	var dmgvuln = mon.vulnerable;
-	if (dmgvuln && dmgvuln.length > 0) {
+	if (dmgvuln) {
 		$("td span#dmgvuln").parent().show();
 		$("td span#dmgvuln").html(dmgvuln);
 	} else {
@@ -273,7 +271,7 @@ function loadhash (id) {
 	}
 
 	var dmgres = mon.resist;
-	if (dmgres && dmgres.length > 0) {
+	if (dmgres) {
 		$("td span#dmgres").parent().show();
 		$("td span#dmgres").html(dmgres);
 	} else {
@@ -281,7 +279,7 @@ function loadhash (id) {
 	}
 
 	var dmgimm = mon.immune;
-	if (dmgimm && dmgimm.length > 0) {
+	if (dmgimm) {
 		$("td span#dmgimm").parent().show();
 		$("td span#dmgimm").html(dmgimm);
 	} else {
@@ -289,7 +287,7 @@ function loadhash (id) {
 	}
 
 	var conimm = mon.conditionImmune;
-	if (conimm && conimm.length > 0) {
+	if (conimm) {
 		$("td span#conimm").parent().show();
 		$("td span#conimm").html(conimm);
 	} else {
@@ -297,19 +295,17 @@ function loadhash (id) {
 	}
 
 	var senses = mon.senses;
-	if (senses && senses.length > 0) {
+	if (senses) {
 		$("td span#senses").html(senses + ", ");
 	} else {
 		$("td span#senses").html("");
 	}
 
-	var passive = mon.passive;
-	if (passive && passive.length > 0) {
-		$("td span#pp").html(passive)
-	}
+	var passive = mon.passive || "10"; // Modify this once we have Perception as a JSON property
+	$("td span#pp").html(passive)
 
 	var languages = mon.languages;
-	if (languages && languages.length > 0) {
+	if (languages) {
 		$("td span#languages").html(languages);
 	} else {
 		$("td span#languages").html("\u2014");
@@ -324,7 +320,6 @@ function loadhash (id) {
 
 	if (traits) for (var i = traits.length - 1; i >= 0; i--) {
 		var traitname = traits[i].name;
-
 		var traittext = traits[i].text;
 		var traittexthtml = "";
 		var renderedcount = 0;
