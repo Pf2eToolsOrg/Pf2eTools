@@ -9,34 +9,33 @@ window.onload = function load() {
 
 function loadloot(lootData) {
 	lootList = lootData;
-	$("button#clear").click(function() {$("#lootoutput").html("");});
+	$("button#clear").click(function() {
+		$("#classtable").html("");
+		$("#lootoutput").html("");});
 	$("button#genloot").click(function() {rollLoot();});
-	$("#itemselection").change(function() {displayTable();});
 	return;
 }
 
-function displayTable() {
-	const curval = parseInt($("#itemselection").val());
-	if (curval === -1) {
-		$("div#itemtable").hide();
-		$("div#output").hide();
-	} else {
-		const ItemsTable = lootList.magicitems[curval];
-		let	htmlText = `<table id="stats"><caption>${ItemsTable.name}</caption><thead><tr ><th class="col-xs-2 text-align-center"><span class="roller" data-roll="d100">d100</span></th><th class="col-xs-10">Magic Item</th></tr></thead>`;
-		for (let i=0; i < ItemsTable.table.length; i++) {
-			const range = ItemsTable.table[i].min === ItemsTable.table[i].max ? ItemsTable.table[i].min : `${ItemsTable.table[i].min}-${ItemsTable.table[i].max}`
-			htmlText += `<tr><td class="text-align-center">${range}</td><td>${parseLink(ItemsTable.table[i].item)}</td></tr>`;
-		}
-		htmlText += "</table>";
-		$("div#itemtable").html(htmlText).show();
-		$("#itemtable span.roller").click(function() {
-			const roll =$(this).attr("data-roll").replace(/\s+/g, "");
-			const rollresult =  droll.roll(roll);
-			const name = $("#name").clone().children().remove().end().text();
-			$("div#output").prepend(`<span>${ItemsTable.name}: <em>${roll}</em> rolled for <strong>${rollresult.total}</strong> (<em>${rollresult.rolls.join(", ")}</em>)<br></span>`).show();
-			$("div#output span:eq(5)").remove();
-		})
+function displayTable(arrayEntry) {
+	const ItemsTable = lootList.magicitems[arrayEntry];
+	let	htmlText = `<table id="stats"><caption>${ItemsTable.name}</caption><thead><tr ><th class="col-xs-2 text-align-center"><span class="roller" onclick="rollAgainstTable(${arrayEntry});">d100</span></th><th class="col-xs-10">Magic Item</th></tr></thead>`;
+	for (let i=0; i < ItemsTable.table.length; i++) {
+		const range = ItemsTable.table[i].min === ItemsTable.table[i].max ? ItemsTable.table[i].min : `${ItemsTable.table[i].min}-${ItemsTable.table[i].max}`
+		htmlText += `<tr><td class="text-align-center">${range}</td><td>${parseLink(ItemsTable.table[i].item)}</td></tr>`;
 	}
+	htmlText += "</table>";
+	$("div#classtable").html(htmlText).show();
+}
+
+function rollAgainstTable(arrayEntry){
+	const magicitemstable = lootList.magicitems[arrayEntry];
+	let curmagicitem = null;
+	const itemroll = randomNumber(1,100);
+	for (let n = 0; n < magicitemstable.table.length; n++) if (itemroll >= magicitemstable.table[n].min && itemroll <= magicitemstable.table[n].max) curmagicitem = magicitemstable.table[n];
+	curmagicitem = parseLink(curmagicitem.table ? curmagicitem.table[randomNumber(0, curmagicitem.table.length-1)] : curmagicitem.item);
+	$("#lootoutput > ul:eq(4), #lootoutput > hr:eq(4)").remove();
+	$("#lootoutput").prepend("<ul></ul><hr>");
+	$("#lootoutput ul:eq(0)").append("<li>"+"Rolled a "+itemroll+" against "+magicitemstable.name+":<ul><li>"+curmagicitem+"</li></ul></li>");
 }
 
 function rollLoot() {
@@ -78,7 +77,13 @@ function rollLoot() {
 				const curtype = magicitemtabletype[v];
 				const curamount = magicitemtableamounts[v];
 				let magicitemstable = lootList.magicitems;
-				for (let i = 0; i < magicitemstable.length; i++) if (magicitemstable[i].type === curtype) magicitemstable = magicitemstable[i];
+				let tablearrayentry = 0;
+				for (let i = 0; i < magicitemstable.length; i++) {
+					if (magicitemstable[i].type === curtype) {
+						tablearrayentry = i;
+						magicitemstable = magicitemstable[tablearrayentry];
+					}
+				}
 				const roll = droll.roll(curamount).total;
 				const magicitems = [];
 				for (let i = 0; i < roll; i++) {
@@ -87,7 +92,7 @@ function rollLoot() {
 					for (let n = 0; n < magicitemstable.table.length; n++) if (itemroll >= magicitemstable.table[n].min && itemroll <= magicitemstable.table[n].max) curmagicitem = magicitemstable.table[n];
 					magicitems.push(parseLink(curmagicitem.table ? curmagicitem.table[randomNumber(0, curmagicitem.table.length-1)] : curmagicitem.item));
 				}
-				$("#lootoutput ul:eq(0)").append("<li>"+(magicitems.length > 1 ? "x"+magicitems.length+" " : "")+"Magic Item"+(roll > 1 ? "s" : "")+" (Table "+curtype+"):<ul>"+sortArrayAndCountDupes(magicitems)+"</ul></li>");
+				$("#lootoutput ul:eq(0)").append("<li>"+(magicitems.length > 1 ? "x"+magicitems.length+" " : "")+"Magic Item"+(roll > 1 ? "s" : "")+` (<a onclick="displayTable(${tablearrayentry});">Table ${curtype}</a>):<ul>${sortArrayAndCountDupes(magicitems)}</ul></li>`);
 			}
 		}
 		for (let i = 0; i < treasure.length; i++) $("#lootoutput ul:eq(0)").prepend(`<li>${treasure[i]}</li>`);

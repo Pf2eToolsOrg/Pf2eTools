@@ -21,7 +21,7 @@
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
 			<h1>Loot Gen</h1>
-			<p>Input CR, if it's a hoard or not, then Roll Loot!</p>
+			<p>Choose Challenge Rating, if it's a hoard or not, then Roll Loot!</p>
 		</div>
 	</header>
 	<nav class="container">
@@ -76,20 +76,7 @@
 			<div class="col-sm-5">
 				<form id="controls">
 					<div class="input-group">
-						<span class="input-group-addon">Item Table</span>
-						<select class="form-control" id="itemselection">
-							<option value="-1" selected></option>
-							<option value="0">A</option>
-							<option value="1">B</option>
-							<option value="2">C</option>
-							<option value="3">D</option>
-							<option value="4">E</option>
-							<option value="5">F</option>
-							<option value="6">G</option>
-							<option value="7">H</option>
-							<option value="8">I</option>
-						</select>
-						<span class="input-group-addon">CR</span>
+						<span class="input-group-addon">Challenge Rating</span>
 						<select class="form-control" id="cr">
 							<option value="0" selected>0-4</option>
 							<option value="5">5-10</option>
@@ -100,15 +87,13 @@
 					</div><br>
 					<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
 					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
-					<p><small>Select an Item Table if you'd prefer to roll your own random item.<br>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small></p>
+					<p><small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small></p>
 				</form>
-				<div id="itemtable"></div>
-				<div id="output"></div>
+				<div id="classtable"></div>
 			</div>
 			<div class="col-sm-7">
 				<h4>Loot</h4>
-				<div id="lootoutput">
-				</div>
+				<div id="lootoutput"></div>
 			</div>
 		</div>
 	</main>

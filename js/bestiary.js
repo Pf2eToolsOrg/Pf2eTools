@@ -77,7 +77,6 @@ function populate(tobData, mainData) {
 	// build the table
 	for (let i = 0; i < monsters.length; i++) {
 		const mon = monsters[i];
-
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon.cr = mon.cr === undefined ? "Unknown" : mon.cr;
 
@@ -452,7 +451,9 @@ function loadhash (id) {
 		}
 
 		if ($("tr.legendary").length && !$("tr.legendary span.name:empty").length && !$("tr.legendary span.name:contains(Legendary Actions)").length) {
-			$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary0'><span class='name'></span> <span>" + name + " can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. " + name + " regains spent legendary actions at the start of his turn.</span></td></tr>");
+			const legendaryActions = mon.legendaryActions || 3;
+			const legendaryName = name.split(",");
+			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary0'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
 		}
 
 	}
