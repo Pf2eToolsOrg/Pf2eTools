@@ -15,13 +15,17 @@ window.onload = function load() {
 	loadJSON(BESTIARY_JSON_URL, addToB);
 };
 
+const legendaryGroupList = {};
 function addToB(mainData) {
+	// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name; do the same with the ToB data in the callback function
+	for (let i = 0; i < mainData.legendaryGroup.length; i++) legendaryGroupList[mainData.legendaryGroup[i].name] = {"lairActions": mainData.legendaryGroup[i].lairActions, "regionalEffects": mainData.legendaryGroup[i].regionalEffects};
 	loadJSON(BESTIARY_TOB_JSON_URL, populate, mainData);
 }
 
 let monsters;
 function populate(tobData, mainData) {
 	monsters = mainData[0].monster.concat(tobData.monster);
+	for (let i = 0; i < tobData.legendaryGroup.length; i++) legendaryGroupList[tobData.legendaryGroup[i].name] = {"lairActions": tobData.legendaryGroup[i].lairActions, "regionalEffects": tobData.legendaryGroup[i].regionalEffects};
 
 	// TODO alignment filter
 	const sourceFilter = getSourceFilter();
@@ -63,13 +67,15 @@ function populate(tobData, mainData) {
 		displayFn: uppercaseFirst
 	});
 	const tagFilter = new Filter({header: "Tag", displayFn: uppercaseFirst});
+	const miscFilter = new Filter({header: "Miscellaneous", items: ["Legendary"], displayFn: uppercaseFirst});
 
 	const filterBox = initFilterBox(
 		sourceFilter,
 		crFilter,
 		sizeFilter,
 		typeFilter,
-		tagFilter
+		tagFilter,
+		miscFilter
 	);
 
 	const table = $("ul.monsters");
@@ -96,6 +102,7 @@ function populate(tobData, mainData) {
 		sourceFilter.addIfAbsent(mon.source);
 		crFilter.addIfAbsent(mon.cr);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
+		mon._fMisc = mon.legendary ? ["Legendary"] : [];
 	}
 	table.append(textStack);
 
@@ -127,7 +134,8 @@ function populate(tobData, mainData) {
 			crFilter.toDisplay(f, m.cr) &&
 			sizeFilter.toDisplay(f, m.size) &&
 			typeFilter.toDisplay(f, m._pTypes.type) &&
-			tagFilter.toDisplay(f, m._pTypes.tags);
+			tagFilter.toDisplay(f, m._pTypes.tags) &&
+			miscFilter.toDisplay(f, m._fMisc);
 		});
 	}
 
@@ -197,9 +205,12 @@ function objToTitleCaseStringWithCommas(obj) {
 	return Object.keys(obj).map(function(k){return k.uppercaseFirst() + ' ' + obj[k]}).join(', ');
 }
 
+const renderer = new EntryRenderer();
 // load selected monster stat block
 function loadhash (id) {
 	$("#stats").html(tableDefault);
+	let renderStack = [];
+	const entryList = {};
 	var mon = monsters[id];
 	var name = mon.name;
 	var source = mon.source;
@@ -258,9 +269,11 @@ function loadhash (id) {
 	}
 
 	var skills = mon.skill;
+	let perception = 0;
 	if (skills) {
 		$("td span#skills").parent().show();
 		$("td span#skills").html(objToTitleCaseStringWithCommas(skills));
+		if (skills.perception) perception = parseInt(skills.perception);
 	} else {
 		$("td span#skills").parent().hide();
 	}
@@ -304,7 +317,7 @@ function loadhash (id) {
 		$("td span#senses").html("");
 	}
 
-	var passive = mon.passive || "10"; // Modify this once we have Perception as a JSON property
+	var passive = mon.passive || (10 + perception).toString;
 	$("td span#pp").html(passive)
 
 	var languages = mon.languages;
@@ -423,39 +436,47 @@ function loadhash (id) {
 	const legendaries = mon.legendary;
 	$("tr.legendary").remove();
 	$("tr#legendaries").hide();
-	if (legendaries && legendaries.length) {
+	if (legendaries) {
 		$("tr#legendaries").show();
-
 		for (let i = legendaries.length - 1; i >= 0; i--) {
-			let legendaryname = "";
+			const legendaryname = legendaries[i].name ? legendaries[i].name + "." : "";
 			const legendarytext = legendaries[i].text;
 			let legendarytexthtml = "";
-
-			if (legendaries[i].name) {
-				legendaryname = legendaries[i].name + ".";
-			}
-
 			let renderedcount = 0;
 			for (let n = 0; n < legendarytext.length; n++) {
 				if (!legendarytext[n]) continue;
-
 				renderedcount++;
 				let firstsecond = "";
 				if (renderedcount === 1) firstsecond = "first ";
 				if (renderedcount === 2) firstsecond = "second ";
-
-				legendarytexthtml = legendarytexthtml + "<p class='" + firstsecond + "'>" + legendarytext[n] + "</p>";
+				legendarytexthtml += `<p class='${firstsecond}'>${legendarytext[n]}</p>`;
 			}
-
-			$("tr#legendaries").after("<tr class='legendary'><td colspan='6' class='legendary" + i + "'><span class='name'>" + legendaryname + "</span> " + legendarytexthtml + "</td></tr>");
+			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'>${legendaryname}</span> ${legendarytexthtml}</td></tr>`);
 		}
-
 		if ($("tr.legendary").length && !$("tr.legendary span.name:empty").length && !$("tr.legendary span.name:contains(Legendary Actions)").length) {
 			const legendaryActions = mon.legendaryActions || 3;
 			const legendaryName = name.split(",");
-			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary0'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
+			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
 		}
+	}
 
+	const legendaryGroup = mon.legendaryGroup;
+	$("tr.lairaction").remove();
+	$("tr#lairactions").hide();
+	$("tr.regionaleffect").remove();
+	$("tr#regionaleffects").hide();
+	if (legendaryGroup) {
+		$("tr#lairactions").show();
+		$("tr#regionaleffects").show();
+		const thisGroup = legendaryGroupList[legendaryGroup];
+		let entryList = {type: "entries", entries: thisGroup.lairActions};
+		renderStack = [];
+		renderer.recursiveEntryRender(entryList, renderStack);
+		$("tr#lairactions").after(`<tr class='lairaction'><td colspan='6' class='legendary'>${renderStack.join("")}</td></tr>`);
+		entryList = {type: "entries", entries: thisGroup.regionalEffects};
+		renderStack = [];
+		renderer.recursiveEntryRender(entryList, renderStack);
+		$("tr#regionaleffects").after(`<tr class='regionaleffect'><td colspan='6' class='legendary'>${renderStack.join("")}</td></tr>`);
 	}
 
 	// add click links for rollables

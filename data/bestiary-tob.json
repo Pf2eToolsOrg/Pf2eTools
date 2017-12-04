@@ -330,6 +330,7 @@
 					]
 				}
 			],
+			"legendaryGroup": "Flame Dragon",
 			"legendary": [
 				{
 					"name": "Detect",
@@ -1665,6 +1666,7 @@
 					]
 				}
 			],
+			"legendaryGroup": "Flame Dragon",
 			"legendary": [
 				{
 					"name": "Detect",
@@ -10973,7 +10975,8 @@
 						"The dragon exhales fire in a 10-foot cone. Each creature in that area takes 24 (7d6) fire damage, or half damage with a successful DC 12 Dexterity saving throw."
 					]
 				}
-			]
+			],
+			"legendaryGroup": "Flame Dragon"
 		},
 		{
 			"name": "Flutterflesh",
@@ -28504,7 +28507,8 @@
 						"The dragon exhales fire in a 30-foot cone. Each creature in that area takes 56 (16d6) fire damage, or half damage with a successful DC 16 Dexterity saving throw."
 					]
 				}
-			]
+			],
+			"legendaryGroup": "Flame Dragon"
 		},
 		{
 			"name": "Young Mithral Dragon",
@@ -29198,6 +29202,34 @@
 						"The zmey headling exhales fire in a 30-foot cone. Each creature in that area takes 16 (3d10) fire damage, or half damage with a successful DC 16 Dexterity saving throw."
 					]
 				}
+			]
+		}
+	],
+	"legendaryGroup": [
+		{
+			"name": "Flame Dragon",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"A cloud of smoke swirls in a 20-foot-radius sphere centered on a point the dragon can see within 120 feet of it. The cloud spreads around corners and the area is lightly obscured. Each creature in the cloud must succeed on a DC 15 Constitution saving throw or be blinded for 1 minute. A blinded creature repeats the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"The ground erupts with volcanic force at a point the dragon can see within 120 feet of it. Any creature within 20 feet of the point must make a successful DC 15 Dexterity saving throw or be knocked prone and trapped in the ground. A creature trapped in this way is restrained and can't stand up. A creature can end the restraint if it or another creature takes an action to make a successful DC 15 Strength check.",
+						"wall of fire rises up from the ground within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 5 feet thick, can take any shape the dragon wants, and blocks line of sight. When the wall appears, each creature in its area must make a DC 15 Dexterity saving throw. A creature that fails the saving throw takes 21 (6d6) fire damage. Each creature that enters the wall for the first time each turn or ends its turn there takes 21 (6d6) fire damage. The wall is extinguished when the dragon uses this lair action again or when the dragon dies."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing a legendary flame dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Arguments and misunderstandings erupt easily within 6 miles of the lair. Friendships are easily broken and criminal acts are common.",
+						"Temperatures rise within 6 miles of the lair. Crops wither, producing famines.",
+						"Sulfur geysers form in and around the dragon’s lair. Some of them erupt only once an hour, so they're spotted only with a successful DC 20 Wisdom (Perception) check. A creature on top of an erupting geyser takes 21 (6d6) fire damage, or half damage with a successful DC 15 Dexterity saving throw."
+					]
+				},
+				"If the dragon dies, the arguments and misunderstandings disappear immediately and the temperatures go back to normal within 1d10 days. Any geysers remain where they are."
 			]
 		}
 	]

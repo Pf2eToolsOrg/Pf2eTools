@@ -276,6 +276,9 @@
 						],
 						"additionalProperties": false
 					},
+					"legendaryGroup": {
+						"type": "string"
+					},
 					"legendaryActions": {
 						"type": "number"
 					},
@@ -330,6 +333,36 @@
 					"str",
 					"type",
 					"wis"
+				],
+				"additionalProperties": false
+			}
+		},
+		"legendaryGroup": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"lairActions": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"regionalEffects": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"required": [
+					"name",
+					"lairActions",
+					"regionalEffects"
 				],
 				"additionalProperties": false
 			}
