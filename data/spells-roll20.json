@@ -820,7 +820,7 @@
 			"name": "Compulsion",
 			"source": "PHB",
 			"data": {
-				"Saving Throws": "Wisdom"
+				"Save": "Wisdom"
 			}
 		},
 		{
@@ -3025,12 +3025,16 @@
 		{
 			"name": "Haywire (UA)",
 			"source": "UAModernMagic",
-			"data": {}
+			"data": {
+				"Save": "Wisdom"
+			}
 		},
 		{
 			"name": "Infallible Relay (UA)",
 			"source": "UAModernMagic",
-			"data": {}
+			"data": {
+				"Save": "Charisma"
+			}
 		},
 		{
 			"name": "Invisibility to Cameras (UA)",
@@ -3055,7 +3059,9 @@
 		{
 			"name": "Shutdown (UA)",
 			"source": "UAModernMagic",
-			"data": {}
+			"data": {
+				"Save": "Constitution"
+			}
 		},
 		{
 			"name": "Synchronicity (UA)",
@@ -3070,7 +3076,11 @@
 		{
 			"name": "Cause Fear (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Save": "Wisdom",
+				"Target": "One creature you can see within range",
+				"Save Success": "Effect ends on creature"
+			}
 		},
 		{
 			"name": "Ceremony (UA)",
@@ -3080,7 +3090,14 @@
 		{
 			"name": "Chaos Bolt (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Damage": "2d8",
+				"Damage Type": "Variable",
+				"Target": "One creature in range",
+				"Spell Attack": "Ranged",
+				"Higher Spell Slot Die": "d6",
+				"Higher Spell Slot Dice": "1"
+			}
 		},
 		{
 			"name": "Guiding Hand (UA)",
@@ -3090,27 +3107,49 @@
 		{
 			"name": "Hand of Radiance (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Save": "Constitution",
+				"Damage": "1d6",
+				"Damage Type": "Radiant",
+				"Damage Progression": "Cantrip Dice",
+				"Target": "Each creature of your choice that you can see within range"
+			}
 		},
 		{
 			"name": "Healing Elixir (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Healing": "2d4+2"
+			}
 		},
 		{
 			"name": "Infestation (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Save": "Constitution",
+				"Damage": "1d6",
+				"Damage Type": "Piercing",
+				"Damage Progression": "Cantrip Dice",
+				"Target": "One creature you can see within range"
+			}
 		},
 		{
 			"name": "Primal Savagery (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Damage": "1d10",
+				"Damage Type": "Piercing or slashing damage (your choice)",
+				"Damage Progression": "Cantrip Dice",
+				"Target": "One creature within 5 feet of you",
+				"Spell Attack": "Melee"
+			}
 		},
 		{
 			"name": "Puppet (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Save": "Constitution"
+			}
 		},
 		{
 			"name": "Sense Emotion (UA)",
@@ -3120,7 +3159,9 @@
 		{
 			"name": "Snare (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Save": "Dexterity"
+			}
 		},
 		{
 			"name": "Sudden Awakening (UA)",
@@ -3130,12 +3171,22 @@
 		{
 			"name": "Toll the Dead (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Save": "Wisdom",
+				"Damage": "1d12",
+				"Damage Type": "Necrotic",
+				"Damage Progression": "Cantrip Dice",
+				"Target": "One creature you can see within range",
+				"Secondary Damage": "1d8",
+				"Secondary Damage Type": "Necrotic"
+			}
 		},
 		{
 			"name": "Unearthly Chorus (UA)",
 			"source": "UAStarterSpells",
-			"data": {}
+			"data": {
+				"Save": "Charisma"
+			}
 		},
 		{
 			"name": "Virtue (UA)",
@@ -3155,12 +3206,16 @@
 		{
 			"name": "Conjure Barlgura (UA)",
 			"source": "UAThatOldBlackMagic",
-			"data": {}
+			"data": {
+				"Save": "Charisma"
+			}
 		},
 		{
 			"name": "Conjure Hezrou (UA)",
 			"source": "UAThatOldBlackMagic",
-			"data": {}
+			"data": {
+				"Save": "Charisma"
+			}
 		},
 		{
 			"name": "Conjure Lesser Demon (UA)",
@@ -3170,12 +3225,16 @@
 		{
 			"name": "Conjure Shadow Demon (UA)",
 			"source": "UAThatOldBlackMagic",
-			"data": {}
+			"data": {
+				"Save": "Charisma"
+			}
 		},
 		{
 			"name": "Conjure Vrock (UA)",
 			"source": "UAThatOldBlackMagic",
-			"data": {}
+			"data": {
+				"Save": "Charisma"
+			}
 		},
 		{
 			"name": "Abi-Dalzim's Horrid Wilting",
@@ -3246,7 +3305,7 @@
 			"source": "XGE",
 			"data": {
 				"Save": "Wisdom",
-				"Target": "One creature you can see",
+				"Target": "One creature you can see within range",
 				"Save Success": "Effect ends on creature"
 			}
 		},

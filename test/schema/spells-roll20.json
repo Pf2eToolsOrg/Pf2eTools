@@ -1,0 +1,84 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"title": "SpellMetaArray",
+	"type": "object",
+
+	"definitions": {
+		"spellMeta": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"data": {
+					"type": "object",
+					"properties": {
+						"Save": {
+							"type": "string"
+						},
+						"Damage": {
+							"type": "string"
+						},
+						"Damage Type": {
+							"type": "string"
+						},
+						"Damage Progression": {
+							"type": "string"
+						},
+						"Target": {
+							"type": "string"
+						},
+						"Healing": {
+							"type": "string"
+						},
+						"Spell Attack": {
+							"type": "string"
+						},
+						"Save Success": {
+							"type": "string"
+						},
+						"Higher Spell Slot Die": {
+							"type": "string"
+						},
+						"Higher Spell Slot Dice": {
+							"type": "string"
+						},
+						"Add Casting Modifier": {
+							"type": "string"
+						},
+						"Secondary Damage": {
+							"type": "string"
+						},
+						"Secondary Damage Type": {
+							"type": "string"
+						},
+						"Higher Level Healing": {
+							"type": "string"
+						},
+						"Higher Spell Slot Bonus": {
+							"type": "string"
+						},
+						"Secondary Higher Spell Slot Die": {
+							"type": "string"
+						},
+						"Secondary Higher Spell Slot Dice":{
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"required": ["name", "source", "data"],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"spell": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/spellMeta"}
+		}
+	}
+}
