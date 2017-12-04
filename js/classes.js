@@ -242,7 +242,7 @@ function loadhash (id) {
 	// subclass pills
 	const subClasses = curClass.subclasses
 		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
-		.sort(function(a, b){return ascSort(a.name, b.name)});
+		.sort(function(a, b){return ascSort(a.shortName, b.shortName)});
 	for (let i = 0; i < subClasses.length; i++) {
 		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
