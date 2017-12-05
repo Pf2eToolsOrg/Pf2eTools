@@ -40,7 +40,7 @@ function onJsonLoad(data) {
 
 		tempString +=
 			`<li>
-				<span class="name" title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.location}</span>
+				<span class="name" onclick="showHideList(this)" title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.location}</span>
 				${makeContentsBlock(i, loc)}
 			</li>`;
 	}
@@ -52,6 +52,11 @@ function onJsonLoad(data) {
 	});
 
 	initHistory();
+}
+
+function showHideList(ele) {
+	const $ele = $(ele);
+	$ele.next(`ul`).toggle();
 }
 
 function loadhash(id) {

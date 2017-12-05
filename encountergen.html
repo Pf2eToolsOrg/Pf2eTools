@@ -43,7 +43,7 @@
 		}
 
 		span.name {
-			cursor: default;
+			user-select: none;
 			font-weight: bold;
 			font-size: 1.2em;
 		}
@@ -56,14 +56,33 @@
 			border-bottom: none;
 		}
 
-		#statscontainer {
+		#listcontainer {
+			flex: 3;
+		}
+
+		#tablecontainer {
+			flex: 7;
 			display: flex;
 			flex-direction: column;
+		}
+
+		#statscontainer {
+			overflow-y: auto;
 		}
 
 		.search-box {
 			flex-shrink: 0;
 			margin-bottom: 5px;
+		}
+
+		#output {
+			display: block;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.rolltable {
+			display: flex;
 		}
 	</style>
 </head>
@@ -127,7 +146,7 @@
 
 
 		<div class="container view-col-wrapper">
-			<div class="view-col" id="listcontainer" style="flex: 3">
+			<div class="view-col" id="listcontainer">
 				<div class="input-group search-box">
 					<input type="search" id="search" class="search form-control" placeholder="Find location...">
 					<span class="input-group-btn">
@@ -139,12 +158,20 @@
 					<!-- populate with JS -->
 				</ul>
 			</div>
-			<div class="view-col rolltable" id="statscontainer" style="flex: 7">
-				<table id="stats">
-					<!-- populate with JS -->
-				</table>
 
-				<div id="output"></div>
+			<div class="view-col" id="tablecontainer">
+				<div id="output">
+					<span><br></span>
+					<span><br></span>
+					<span><br></span>
+					<span><br></span>
+					<span><br></span>
+				</div>
+				<div class="rolltable" id="statscontainer">
+					<table id="stats">
+						<!-- populate with JS -->
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
