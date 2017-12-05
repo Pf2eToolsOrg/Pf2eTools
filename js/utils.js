@@ -699,7 +699,11 @@ Parser.spDurationToFull= function (dur) {
 			case "timed":
 				return `${d.concentration ? "Concentration, " : ""}${d.duration.upTo && d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? Parser.getSingletonUnit(d.duration.type) : d.duration.type}`;
 			case "permanent":
-				return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : undefined).join(" or ")}`
+				if (d.ends) {
+					return `Until ${d.ends.map(m => m === "dispell" ? "dispelled" : m === "trigger" ? "triggered" : m === "discharge" ? "discharged" : undefined).join(" or ")}`
+				} else {
+					return "Permanent";
+				}
 
 		}
 	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
