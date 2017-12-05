@@ -45,13 +45,7 @@
 		span.location {
 			cursor: default;
 			font-weight: bold;
-			font-size: 1.1em;
-		}
-
-		span.location span.source {
-			cursor: default;
-			font-weight: normal;
-			font-size: 1.1em;
+			font-size: 1.2em;
 		}
 
 		ul.encounters > li {
@@ -66,11 +60,16 @@
 			display: flex;
 			flex-direction: column;
 		}
+
+		.search-box {
+			flex-shrink: 0;
+			margin-bottom: 5px;
+		}
 	</style>
 </head>
 
 <body>
-	<div class="viewport-wrapper">
+<div class="viewport-wrapper">
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
 			<h1>Encounter Gen</h1>
@@ -129,7 +128,7 @@
 
 	<div class="container view-col-wrapper">
 		<div class="view-col" id="listcontainer" style="flex: 3">
-			<div class="input-group">
+			<div class="input-group search-box">
 				<input type="search" id="search" class="search form-control" placeholder="Find location...">
 				<span class="input-group-btn">
 					<button class="btn btn-default reset" type="button">Reset</button>

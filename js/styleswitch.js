@@ -1,6 +1,6 @@
 "use strict";
 const DAY_CSS =
-`
+	`
 header {
 	color: white;
 	background-color: rgb(0, 107, 196);
@@ -117,7 +117,7 @@ tr.trait td {
 }
 `;
 const NIGHT_CSS =
-`
+	`
 header {
 	color: white;
 	background-color: transparent;
@@ -265,12 +265,26 @@ table#stats td._class_feature table th {
 #classtable table tr:nth-child(odd) td,
 #rulescontent table tbody tr:nth-child(odd) td,
 ul.list li:nth-child(odd),
+ul.list.encounters > li > ul > li:nth-child(odd),
 #monsterfeatures tr:nth-child(odd) {
 	background: rgba(0, 0, 0, 0.31);
 }
 
+ul.list.encounters > li > span:first-child {
+	color: #999;
+}
+
+ul.list.encounters > li > ul > li > a:hover,
 ul.list li:nth-child(odd):hover {
 	background: black;
+}
+
+ul.list.encounters li:nth-child(odd) {
+	background: none;
+}
+
+ul.list.encounters li:nth-child(odd):hover {
+	background: none;
 }
 
 ul.list li {
