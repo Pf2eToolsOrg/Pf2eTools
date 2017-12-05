@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Lootgen - 5etools</title>
+	<title>Encounters - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -15,13 +15,66 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<style id="dynamicStyle"></style> <!-- populated with JS -->
 	<script type="text/javascript" src="js/styleswitch.js"></script>
+
+	<style>
+		#listcontainer > ul > li {
+			max-height: initial;
+		}
+
+		ul.list li:hover {
+			background: inherit;
+		}
+
+		ul.list li:active {
+			color: inherit;
+		}
+
+		ul.list a:hover {
+			background: lightgrey;
+		}
+
+		ul {
+			margin-left: 0;
+			padding-left: 0px;
+		}
+
+		ul.list li {
+			max-height: none;
+		}
+
+		span.location {
+			cursor: default;
+			font-weight: bold;
+			font-size: 1.1em;
+		}
+
+		span.location span.source {
+			cursor: default;
+			font-weight: normal;
+			font-size: 1.1em;
+		}
+
+		ul.encounters > li {
+			border-bottom: none;
+			margin-bottom: 5px;
+		}
+		ul.encounters > li > ul > li:last-child {
+			border-bottom: none;
+		}
+
+		#statscontainer {
+			display: flex;
+			flex-direction: column;
+		}
+	</style>
 </head>
 
 <body>
+	<div class="viewport-wrapper">
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
-			<h1>Loot Gen</h1>
-			<p>Choose Challenge Rating, if it's a hoard or not, then Roll Loot!</p>
+			<h1>Encounter Gen</h1>
+			<p>Choose a setting and level range, then roll the d100!</p>
 		</div>
 	</header>
 	<nav class="container">
@@ -42,8 +95,8 @@
 				<ul class="dropdown-menu">
 					<li role="presentation"><a href="crcalculator.html">CR Calculator</a></li>
 					<li role="presentation"><a href="http://kobold.club" target="_blank" title="I could literally never build something better than Kobold Fight Club">Encounter Builder</a></li>
-					<li role="presentation"><a href="encountergen.html">Encounter Generator</a></li>
-					<li role="presentation" class="active"><a href="lootgen.html">Loot Generator</a></li>
+					<li role="presentation" class="active"><a href="encountergen.html">Encounter Generator</a></li>
+					<li role="presentation"><a href="lootgen.html">Loot Generator</a></li>
 				</ul>
 			</li>
 			<li role="presentation" class="dropdown">
@@ -72,43 +125,39 @@
 			</li>
 		</ul>
 	</nav>
-	<main class="container bodyContent">
-		<div class="row">
-			<div class="col-sm-5">
-				<form id="controls">
-					<div class="input-group">
-						<span class="input-group-addon">Challenge Rating</span>
-						<select class="form-control" id="cr">
-							<option value="0" selected>0-4</option>
-							<option value="5">5-10</option>
-							<option value="11">11-16</option>
-							<option value="17">17+</option>
-						</select>
-						<span class="input-group-addon" style="vertical-align: bottom;"><label for="hoard">Hoard? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;"></label></span>
-					</div><br>
-					<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
-					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
-					<p><small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small></p>
-				</form>
-				<div id="classtable"></div>
+
+
+	<div class="container view-col-wrapper">
+		<div class="view-col" id="listcontainer" style="flex: 3">
+			<div class="input-group">
+				<input type="search" id="search" class="search form-control" placeholder="Find location...">
+				<span class="input-group-btn">
+					<button class="btn btn-default reset" type="button">Reset</button>
+				</span>
 			</div>
-			<div class="col-sm-7">
-				<h4>Loot</h4>
-				<div id="lootoutput"></div>
-			</div>
+
+			<ul class="list encounters">
+				<!-- populate with JS -->
+			</ul>
 		</div>
-	</main>
-	<footer class="container">
+		<div class="view-col rolltable" id="statscontainer" style="flex: 7">
+			<table id="stats">
+				<!-- populate with JS -->
+			</table>
 
-	</footer>
+			<div id="output"></div>
+		</div>
+	</div>
+</div>
 
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/entryrender.js"></script>
-	<script type="text/javascript" src="js/lootgen.js"></script>
-	<script type="text/javascript" src="lib/droll.js"></script>
-	<script type="text/javascript" src="lib/list.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/encountergen.js"></script>
+<script type="text/javascript" src="lib/droll.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
 
 </body>
 

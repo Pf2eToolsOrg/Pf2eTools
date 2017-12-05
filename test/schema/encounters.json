@@ -1,0 +1,83 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"title": "EncounterArray",
+	"type": "object",
+
+	"definitions": {
+		"encounterTableRow": {
+			"properties": {
+				"min": {
+					"type": "integer"
+				},
+				"max": {
+					"type": "integer"
+				},
+				"enc": {
+					"$ref": "/Entry"
+				}
+			},
+			"required": [
+				"min",
+				"max",
+				"enc"
+			],
+			"additionalProperties": false
+		},
+
+		"encounterTable": {
+			"properties": {
+				"minlvl": {
+					"type": "integer"
+				},
+				"maxlvl": {
+					"type": "integer"
+				},
+				"table": {
+					"type": "array",
+					"items": "#/definitions/encounterTableRow"
+				}
+			},
+			"required": [
+				"minlvl",
+				"maxlvl",
+				"table"
+			],
+			"additionalProperties": false
+		},
+
+		"encounter": {
+			"properties": {
+				"location": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"tables": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/encounterTable"
+					}
+				}
+			},
+			"required": [
+				"location",
+				"source",
+				"tables"
+			],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"encounter": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/encounter"
+			}
+		}
+	},
+
+	"required": "encounter",
+	"additionalProperties": false
+}

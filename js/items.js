@@ -376,7 +376,7 @@ function loadhash (id) {
 	$("#stats span.roller").click(function() {
 		const roll =$(this).attr("data-roll").replace(/\s+/g, "");
 		const rollresult =  droll.roll(roll);
-		const name = $("#name").clone().children().remove().end().text();
+		const name = $(".stats-name").text();
 		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled for <strong>${rollresult.total}</strong> (<em>${rollresult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
 	})
