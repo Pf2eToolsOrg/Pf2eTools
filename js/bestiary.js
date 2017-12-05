@@ -102,7 +102,7 @@ function populate(tobData, mainData) {
 		sourceFilter.addIfAbsent(mon.source);
 		crFilter.addIfAbsent(mon.cr);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
-		mon._fMisc = mon.legendary ? ["Legendary"] : [];
+		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 	}
 	table.append(textStack);
 
@@ -210,7 +210,7 @@ const renderer = new EntryRenderer();
 function loadhash (id) {
 	$("#stats").html(tableDefault);
 	let renderStack = [];
-	const entryList = {};
+	let entryList = {};
 	var mon = monsters[id];
 	var name = mon.name;
 	var source = mon.source;
@@ -466,17 +466,17 @@ function loadhash (id) {
 	$("tr.regionaleffect").remove();
 	$("tr#regionaleffects").hide();
 	if (legendaryGroup) {
-		$("tr#lairactions").show();
-		$("tr#regionaleffects").show();
 		const thisGroup = legendaryGroupList[legendaryGroup];
-		let entryList = {type: "entries", entries: thisGroup.lairActions};
+		if (thisGroup.lairActions) renderSection("lairaction", thisGroup.lairActions);
+		if (thisGroup.regionalEffects) renderSection("regionaleffect", thisGroup.regionalEffects);
+	}
+
+	function renderSection(sectionClass, sectionEntries) {
+		$(`tr#${sectionClass}s`).show();
+		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
 		renderer.recursiveEntryRender(entryList, renderStack);
-		$("tr#lairactions").after(`<tr class='lairaction'><td colspan='6' class='legendary'>${renderStack.join("")}</td></tr>`);
-		entryList = {type: "entries", entries: thisGroup.regionalEffects};
-		renderStack = [];
-		renderer.recursiveEntryRender(entryList, renderStack);
-		$("tr#regionaleffects").after(`<tr class='regionaleffect'><td colspan='6' class='legendary'>${renderStack.join("")}</td></tr>`);
+		$(`tr#${sectionClass}s`).after(`<tr class='${sectionClass}'><td colspan='6' class='legendary'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
 	}
 
 	// add click links for rollables
