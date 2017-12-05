@@ -30,7 +30,6 @@ window.onload = function load() {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
-let list;
 function onJsonLoad(data) {
 	encounterList = data.encounter;
 
@@ -47,18 +46,10 @@ function onJsonLoad(data) {
 	}
 	encountersList.append(tempString);
 
-	list = search({
+	const list = search({
 		valueNames: ["name"],
 		listClass: "encounters"
 	});
-
-	list.sortFunction = function(a, b, o) {
-		const aTxt = $(a.elm).find(".name").text();
-		const bTxt = $(b.elm).find(".name").text();
-		return list.utils.naturalSort(aTxt, bTxt);
-	};
-
-	list.sort(list.sortFunction);
 
 	initHistory();
 }
