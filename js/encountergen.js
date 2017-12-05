@@ -40,14 +40,14 @@ function onJsonLoad(data) {
 
 		tempString +=
 			`<li>
-				<span class='location' title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.location}</span>			
+				<span class="name" title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.location}</span>
 				${makeContentsBlock(i, loc)}
 			</li>`;
 	}
 	encountersList.append(tempString);
 
-	const list =search("listcontainer", {
-		valueNames: ['location'],
+	const list = search({
+		valueNames: ["name"],
 		listClass: "encounters"
 	});
 
