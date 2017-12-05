@@ -1,6 +1,6 @@
 "use strict";
 const DAY_CSS =
-	`
+`
 header {
 	color: white;
 	background-color: rgb(0, 107, 196);
@@ -117,7 +117,7 @@ tr.trait td {
 }
 `;
 const NIGHT_CSS =
-	`
+`
 header {
 	color: white;
 	background-color: transparent;
