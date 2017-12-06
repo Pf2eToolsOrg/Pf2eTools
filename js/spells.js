@@ -1,6 +1,7 @@
 "use strict";
 
-const JSON_URL = "data/spells.json";
+const JSON_SRC_INDEX = "index.json";
+const JSON_DIR = "data/spells/";
 
 // toss these into the "Tags" section to save screen space
 const META_ADD_CONC = "Concentration";
@@ -176,11 +177,15 @@ function getRangeType(range) {
 }
 
 function getTblTimeStr(time) {
+	// TODO change "bonus action" to "bonus" in the JSON, and update this to match (will require updates to parsing functions also)
+	let temp;
 	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
-		return time.unit.uppercaseFirst();
+		temp = time.unit.uppercaseFirst();
 	} else {
-		return Parser.getTimeToFull(time);
+		temp = Parser.getTimeToFull(time);
 	}
+	if (temp.toLowerCase().endsWith("bonus action")) temp = temp.substr(0, temp.length-4)+"n.";
+	return temp;
 }
 
 function getTimeDisplay(timeUnit) {
@@ -190,10 +195,6 @@ function getTimeDisplay(timeUnit) {
 function getClassFilterStr(c) {
 	const nm = c.name.split("(")[0].trim();
 	return `${nm}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
-}
-
-function selNotUaEepc(val) {
-	return val !== SRC_EEPC && !val.startsWith(SRC_UA_PREFIX);
 }
 
 function getMetaFilterObj(s) {
@@ -207,63 +208,184 @@ function getMetaFilterObj(s) {
 	return out;
 }
 
+function ascSortSpellLevel(a, b) {
+	if (a === b) return 0;
+	if (a === STR_CANTRIP) return -1;
+	if (b === STR_CANTRIP) return 1;
+	return ascSort(a, b);
+}
+
 window.onload = function load() {
-	loadJSON(JSON_URL, onJsonLoad);
+	loadJSON(JSON_DIR+JSON_SRC_INDEX, onIndexLoad);
 };
 
-let spellList;
-function onJsonLoad(data) {
+let loadedSources;
+function onIndexLoad(src2UrlMap) {
+	// track loaded sources
+	loadedSources = {};
+	Object.keys(src2UrlMap).forEach(src => loadedSources[src] = {url: JSON_DIR+src2UrlMap[src], loaded: false});
+
+	// collect a list of sources to load
+	const sources = Object.keys(src2UrlMap);
+	const defaultSel = sources.filter(s => defaultSourceSelFn(s));
+	const userSel = FilterBox.getSelectedSources();
+
+	// remove any sources that don't have URLs
+	const allSources = defaultSel.filter(src => src2UrlMap[src]);
+	// add any sources from the user's saved filters, provided they have URLs and haven't already been added
+	if (userSel) {
+		userSel
+			.filter(src => src2UrlMap[src])
+			.filter(src => $.inArray(src, allSources) === -1)
+			.forEach(src => allSources.push(src));
+	}
+	// add source from the current hash, if there is one
+	if (window.location.hash.length) {
+		const [link, ...sub] = _getHashParts();
+		const src = link.split(HASH_LIST_SEP)[1];
+		const hashSrcs = {};
+		sources.forEach(src => hashSrcs[encodeForHash(src)] = src);
+		const mapped = hashSrcs[src];
+		if (mapped && $.inArray(mapped, allSources) === -1) {
+			allSources.push(mapped);
+		}
+	}
+
+	// make a list of src : url objects
+	const toLoads = allSources.map(src => ({src: src, url: JSON_DIR+src2UrlMap[src]}));
+
+	pageInit();
+
+	if (toLoads.length > 0) {
+		chainLoad(toLoads, 0, [], function(dataStack) {
+			let toAdd = [];
+			dataStack.forEach(d => toAdd = toAdd.concat(d.spell));
+			addSpells(toAdd);
+		});
+	}
+}
+
+let list;
+const sourceFilter = getSourceFilter();
+const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
+const classFilter = new Filter({header: "Class"});
+const subclassFilter = new Filter({header: "Subclass"});
+const metaFilter = new Filter({
+	header: "Tag",
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
+});
+const schoolFilter = new Filter({header: "School", displayFn: Parser.spSchoolAbvToFull});
+const timeFilter = new Filter({
+	header: "Cast Time",
+	items: [
+		TM_ACTION,
+		TM_B_ACTION,
+		TM_REACTION,
+		TM_ROUND,
+		TM_MINS,
+		TM_HRS
+	],
+	displayFn: getTimeDisplay
+});
+const rangeFilter = new Filter({
+	header: "Range",
+	items: [
+		F_RNG_SELF,
+		F_RNG_TOUCH,
+		F_RNG_POINT,
+		F_RNG_AREA,
+		F_RNG_SPECIAL
+	]
+});
+const filterBox = initFilterBox(
+	sourceFilter,
+	levelFilter,
+	classFilter,
+	subclassFilter,
+	metaFilter,
+	schoolFilter,
+	timeFilter,
+	rangeFilter
+);
+function pageInit() {
 	tableDefault = $("#stats").html();
+	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource));
 
-	spellList = data.spell;
-
-	const sourceFilter = getSourceFilter({selFn: selNotUaEepc});
-	const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
-	const classFilter = new Filter({header: "Class"});
-	const subclassFilter = new Filter({header: "Subclass"});
-	const metaFilter = new Filter({
-		header: "Tag",
-		items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
-	});
-	const schoolFilter = new Filter({header: "School", displayFn: Parser.spSchoolAbvToFull});
-	const timeFilter = new Filter({
-		header: "Cast Time",
-		items: [
-			TM_ACTION,
-			TM_B_ACTION,
-			TM_REACTION,
-			TM_ROUND,
-			TM_MINS,
-			TM_HRS
-		],
-		displayFn: getTimeDisplay
-	});
-	const rangeFilter = new Filter({
-		header: "Range",
-		items: [
-			F_RNG_SELF,
-			F_RNG_TOUCH,
-			F_RNG_POINT,
-			F_RNG_AREA,
-			F_RNG_SPECIAL
-		]
+	list = search({
+		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
+		listClass: "spells"
 	});
 
-	const filterBox = initFilterBox(
-		sourceFilter,
-		levelFilter,
-		classFilter,
-		subclassFilter,
-		metaFilter,
-		schoolFilter,
-		timeFilter,
-		rangeFilter
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
 	);
+
+	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
+		const $this = $(this);
+		if ($this.attr("sortby") === "asc") {
+			$this.attr("sortby", "desc");
+		} else $this.attr("sortby", "asc");
+		list.sort($this.data("sort"), { order: $this.attr("sortby"), sortFunction: sortSpells });
+	});
+}
+
+function handleFilterChange() {
+	list.filter(function(item) {
+		const f = filterBox.getValues();
+		const s = spellList[$(item.elm).attr(FLTR_ID)];
+
+		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
+	});
+}
+
+function chainLoad(toLoads, index, dataStack, onLoadFunction) {
+	const toLoad = toLoads[index];
+	// on loading the last item, pass the loaded data to onLoadFunction
+	if (index === toLoads.length-1) {
+		loadJSON(
+			toLoad.url,
+			function(data) {
+				loadedSources[toLoad.src].loaded = true;
+				dataStack.push(data);
+				onLoadFunction(dataStack);
+				initHistory();
+				handleFilterChange();
+			}
+		)
+	} else {
+		loadJSON(
+			toLoad.url,
+			function(data) {
+				loadedSources[toLoad.src].loaded = true;
+				dataStack.push(data);
+				chainLoad(toLoads, index+1, dataStack, onLoadFunction)
+			}
+		)
+	}
+}
+
+function loadSource(src, val) {
+	const toLoad = loadedSources[src];
+	if (!toLoad.loaded && val === "yes") {
+		console.log("LOADING ", src); // FIXME remove
+		loadJSON(toLoad.url, function(data) {
+			addSpells(data.spell);
+			toLoad.loaded = true;
+		});
+	}
+}
+
+let spellList = [];
+let spI = 0;
+function addSpells(data) {
+	spellList = spellList.concat(data);
 
 	const spellTable = $("ul.spells");
 	let tempString = "";
-	for (let i = 0; i < spellList.length; i++) {
-		const spell = spellList[i];
+	for ( ; spI < spellList.length; spI++) {
+		const spell = spellList[spI];
 
 		let levelText = Parser.spLevelToFull(spell.level);
 		if (spell.meta && spell.meta.ritual) levelText += " (rit.)";
@@ -315,13 +437,13 @@ function onJsonLoad(data) {
 
 		// populate table
 		tempString += `
-			<li class='row' ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${encodeForHash([spell.name, spell.source])}' title="${spell.name}">
+			<li class='row' ${FLTR_ID}="${spI}">
+				<a id='${spI}' href='#${encodeForHash([spell.name, spell.source])}' title="${spell.name}">
 					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
-					<span class='source col-xs-1 source${spell.source}' title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
-					<span class='level col-xs-1 col-xs-1-7'>${levelText}</span>
+					<span class='source col-xs-1 col-xs-1-7 source${Parser.stringToCasedSlug(spell.source)}' title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
+					<span class='level col-xs-1 col-xs-1-5'>${levelText}</span>
 					<span class='time col-xs-1 col-xs-1-7' title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
-					<span class='school col-xs-1 col-xs-1-7 school_${spell.school}' title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToFull(spell.school)}</span>
+					<span class='school col-xs-1 col-xs-1-2 school_${spell.school}' title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
 					<span class='range col-xs-2 col-xs-2-4'>${Parser.spRangeToFull(spell.range)}</span>
 					
 					<span class='classes' style='display: none'>${Parser.spClassesToFull(spell.classes)}</span>
@@ -329,7 +451,6 @@ function onJsonLoad(data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(spell.source);
 		levelFilter.addIfAbsent(spell.level);
 		schoolFilter.addIfAbsent(spell.school);
 		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
@@ -345,45 +466,10 @@ function onJsonLoad(data) {
 	classFilter.items.sort(ascSort);
 	subclassFilter.items.sort(ascSort);
 
-	function ascSortSpellLevel(a, b) {
-		if (a === b) return 0;
-		if (a === STR_CANTRIP) return -1;
-		if (b === STR_CANTRIP) return 1;
-		return ascSort(a, b);
-	}
-
-	const list = search({
-		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
-		listClass: "spells"
-	});
+	list.reIndex();
+	list.sort("name");
 
 	filterBox.render();
-
-	// filtering function
-	$(filterBox).on(
-		FilterBox.EVNT_VALCHANGE,
-		handleFilterChange
-	);
-
-	function handleFilterChange() {
-		list.filter(function(item) {
-			const f = filterBox.getValues();
-			const s = spellList[$(item.elm).attr(FLTR_ID)];
-
-			return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
-		});
-	}
-
-	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
-		const $this = $(this);
-		if ($this.attr("sortby") === "asc") {
-			$this.attr("sortby", "desc");
-		} else $this.attr("sortby", "asc");
-		list.sort($this.data("sort"), { order: $this.attr("sortby"), sortFunction: sortSpells });
-	});
-
-	initHistory();
-	handleFilterChange();
 }
 
 function sortSpells(a, b, o) {

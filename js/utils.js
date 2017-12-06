@@ -563,8 +563,12 @@ Parser.sourceJsonToAbv= function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
 
-Parser.stringToSlug= function (str) {
+Parser.stringToSlug = function (str) {
 	return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+};
+
+Parser.stringToCasedSlug = function (str) {
+	return str.replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
 };
 
 Parser.itemTypeToAbv = function (type) {
@@ -607,6 +611,10 @@ Parser.numberToString= function (num) {
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
 Parser.spSchoolAbvToFull= function (school) {
 	return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
+};
+
+Parser.spSchoolAbvToShort= function (school) {
+	return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_SHORT, school);
 };
 
 Parser.spLevelToFull = function (level) {
@@ -840,6 +848,17 @@ Parser.SP_SCHOOL_ABV_TO_FULL = {
 	"N": "Necromancy",
 	"T": "Transmutation",
 	"C": "Conjuration"
+};
+
+Parser.SP_SCHOOL_ABV_TO_SHORT = {
+	"A": "Abj.",
+	"V": "Evoc.",
+	"E": "Ench.",
+	"I": "Illu.",
+	"D": "Divin.",
+	"N": "Necro.",
+	"T": "Trans.",
+	"C": "Conj."
 };
 
 Parser.ATB_ABV_TO_FULL = {
@@ -1122,7 +1141,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAWAW] 		= "UAWAW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UATF] 		= "UATF";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAWR] 		= "UAWR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAESR] 		= "UAESR";
-Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] 	= "BolS (3pp)";
+Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] 	= "BoLS (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] 		= "ToB (3pp)";
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
@@ -1276,7 +1295,7 @@ function search(options) {
  */
 function getSourceFilter(options) {
 	const baseOptions = {
-		header: "Source",
+		header: FilterBox.SOURCE_HEADER,
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
 		selFn: defaultSourceSelFn
 	};
