@@ -31,7 +31,7 @@ There are several options for running a local/offline copy of 5etools, including
 
 **Intermediate:** When using Chrome (or similar), a command-line switch is required to load some pages locally. On Windows, this can be accomplished by creating a Chrome shortcut and editing the properties of the shortcut to add `--allow-file-access-from-files` to the shortcut `Target`:
 
-![Chrome tutorial](https://raw.githubusercontent.com/astranauta/astranauta.github.io/master/chrome-tutorial.png "Chrome tutorial")
+![Chrome tutorial](https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/chrome-tutorial.png "Chrome tutorial")
 
 Be sure to close any running Chrome instances (and kill any remaining Chrome processes as required) before opening the shortcut. A summary of the security implications can be found [here](https://superuser.com/a/873527).
  
@@ -40,7 +40,7 @@ Be sure to close any running Chrome instances (and kill any remaining Chrome pro
 ## How to import 5etools beasts/spells/items into Roll20
 1. Get Greasemonkey (Firefox) or Tampermonkey (Chrome).
 
-2. Click [here](https://github.com/astranauta/5etoolsR20/raw/master/5etoolsR20.user.js) and install the script.
+2. Click [here](https://github.com/TheGiddyLimit/5etoolsR20/raw/master/5etoolsR20.user.js) and install the script.
 
 3. Open the Roll20 game where you want the stuff imported.
 
