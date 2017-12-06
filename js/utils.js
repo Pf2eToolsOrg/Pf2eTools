@@ -1201,7 +1201,7 @@ function hasBeenReprinted(shortName, source) {
 }
 
 function isNonstandardSource(source) {
-	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source === SRC_PSA || source === SRC_PSK || source === SRC_EEPC || source === SRC_PSI || source === SRC_PSZ);
+	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source === SRC_PSA || source === SRC_PSK || source === SRC_EEPC || source === SRC_PSI || source === SRC_PSZ || source === SRC_OGA);
 }
 
 // DATA LINKS ==========================================================================================================
