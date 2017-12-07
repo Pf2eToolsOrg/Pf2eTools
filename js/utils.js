@@ -669,6 +669,8 @@ Parser.spRangeToFull= function (range) {
 				return "Sight";
 			case RNG_UNLIMITED:
 				return "Unlimited";
+			case RNG_UNLIMITED_SAME_PLANE:
+				return "Unlimited on the same plane";
 			case RNG_TOUCH:
 				return "Touch";
 		}
