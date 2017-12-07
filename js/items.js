@@ -69,8 +69,8 @@ function mergeBasicItems(variantData) {
 							for (let k = curInherits.entries.length-1; k > -1; k--) {
 								let tmpText = curInherits.entries[k];
 								if (typeof tmpText === "string") {
-									if (tmpBasicItem.dmgType) tmpText = tmpText.replace("{@dmgType}", Parser.dmgTypeToFull(tmpBasicItem.dmgType));
-									if (curInherits.genericBonus) tmpText = tmpText.replace("{@genericBonus}", curInherits.genericBonus);
+									if (tmpBasicItem.dmgType) tmpText = tmpText.replace(/{@dmgType}/g, Parser.dmgTypeToFull(tmpBasicItem.dmgType));
+									if (curInherits.genericBonus) tmpText = tmpText.replace(/{@genericBonus}/g, curInherits.genericBonus);
 									if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(curBasicItemName);
 								}
 								tmpBasicItem.entries.unshift(tmpText);

@@ -246,8 +246,8 @@ function loadhash (id) {
 	$("th#name").html(
 		`<span class="stats-name">${name}</span>
 		<span class="stats-source source${source}" title="${Parser.sourceJsonToFull(source)}">${Parser.sourceJsonToAbv(source)}</span>
-		<a href="img/${source}/${name}.png" target='_blank'>
-			<img src="img/${source}/${name}.png" class='token' onerror='imgError(this)'>
+		<a href="img/${source}/${name.replace(/"/g, "")}.png" target='_blank'>
+			<img src="img/${source}/${name.replace(/"/g, "")}.png" class='token' onerror='imgError(this)'>
 		</a>`
 	);
 
@@ -625,7 +625,7 @@ function loadhash (id) {
 			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
 			// hacks because droll doesn't support e.g. "1d20+1d4+2" :joy: :ok_hand:
 			const multi = roll.split(";");
-			roll = roll.replace(";", "+");
+			roll = roll.replace(/;/g, "+");
 			rollResult =  droll.roll(multi[0]);
 			const res2 = droll.roll(multi[1]);
 			rollResult.rolls = rollResult.rolls.concat(res2.rolls);

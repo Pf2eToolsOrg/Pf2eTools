@@ -71,7 +71,7 @@ function loadpage() {
 		effectoncr = effectoncr.join(", ");
 		let numbox = "";
 		if (monsterfeatures[i].numbox === "YES") numbox = "<input type='number' value='0'>"
-		$("#monsterfeatures table").append("<tr><td style=\"white-space: nowrap\"><input type='checkbox' id='MF"+encodeURI(monsterfeatures[i].name).toLowerCase()+"' title='"+monsterfeatures[i].name+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'>"+numbox+"</td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example.replace(", ",",<br />")+"</td><td><span title=\""+effectoncr+"\" class=\"explanation\">"+monsterfeatures[i].effect+"</span></td></tr>");
+		$("#monsterfeatures table").append("<tr><td style=\"white-space: nowrap\"><input type='checkbox' id='MF"+encodeURI(monsterfeatures[i].name).toLowerCase()+"' title='"+monsterfeatures[i].name+"' data-hp='"+monsterfeatures[i].hp+"' data-ac='"+monsterfeatures[i].ac+"' data-dpr='"+monsterfeatures[i].dpr+"' data-attackbonus='"+monsterfeatures[i].attackbonus+"'>"+numbox+"</td><td>"+monsterfeatures[i].name+"</td><td>"+monsterfeatures[i].example.replace(/, /g,",<br />")+"</td><td><span title=\""+effectoncr+"\" class=\"explanation\">"+monsterfeatures[i].effect+"</span></td></tr>");
 	}
 
 	// parse url
