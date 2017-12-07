@@ -17,26 +17,17 @@ fs.readdirSync("./test/schema")
 	if (file !== helperFile) results.push(validator.validate(require(`../data/${file}`), require(`./schema/${file}`), {nestedErrors: true}));
 });
 
-// Custom handling for the new spells data layout TODO expand to cover everything; refactor with monster code below
-fs.readdirSync(`./data/spells`)
-	.filter(file => file.startsWith("spells") || file.startsWith("roll20"))
-	.forEach(file => {
-		if (file.startsWith("spells")) {
-			results.push(validator.validate(require(`../data/spells/${file}`), require(`./schema/spells/spells.json`), {nestedErrors: true}));
-		} else {
-			results.push(validator.validate(require(`../data/spells/${file}`), require(`./schema/spells/roll20.json`), {nestedErrors: true}));
-		}
-});
-
-// Custom handling for the new monster data layout TODO expand to cover everything; refactor with spell code above
-fs.readdirSync(`./data/bestiary`)
-	.filter(file => file.startsWith("bestiary") || file.startsWith("meta"))
-	.forEach(file => {
-		if (file.startsWith("bestiary")) {
-			results.push(validator.validate(require(`../data/bestiary/${file}`), require(`./schema/bestiary/bestiary.json`), {nestedErrors: true}));
-		} else {
-			results.push(validator.validate(require(`../data/bestiary/${file}`), require(`./schema/bestiary/meta.json`), {nestedErrors: true}));
-		}
+fs.readdirSync(`./test/schema`)
+	.filter(category => !category.endsWith(".json")) // only directories
+	.forEach(category => {
+		console.log(`Testing category ${category}`);
+		const schemas = fs.readdirSync(`./test/schema/${category}`);
+		fs.readdirSync(`./data/${category}`).forEach(dataFile => {
+			schemas.filter(schema => dataFile.startsWith(schema.split(".")[0])).forEach(schema => {
+				console.log(`Testing data/${category}/${dataFile}`.padEnd(50), ` against schema/${category}/${schema}`);
+				results.push(validator.validate(require(`../data/${category}/${dataFile}`), require(`./schema/${category}/${schema}`), {nestedErrors: true}));
+			})
+		})
 	});
 
 results.forEach( (result) => {
