@@ -303,13 +303,13 @@
 										"type": "string"
 									}
 								},
-							"attack": {
-								"type": "array",
-								"uniqueItems": true,
-								"items": {
-									"type": "string"
+								"attack": {
+									"type": "array",
+									"uniqueItems": true,
+									"items": {
+										"type": "string"
+									}
 								}
-							}
 							},
 							"required": [
 								"name",
@@ -339,36 +339,6 @@
 					"str",
 					"type",
 					"wis"
-				],
-				"additionalProperties": false
-			}
-		},
-		"legendaryGroup": {
-			"type": "array",
-			"uniqueItems": true,
-			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"lairActions": {
-						"type": "array",
-						"items": {
-							"$ref": "/Entry"
-						}
-					},
-					"regionalEffects": {
-						"type": "array",
-						"items": {
-							"$ref": "/Entry"
-						}
-					}
-				},
-				"required": [
-					"name",
-					"lairActions",
-					"regionalEffects"
 				],
 				"additionalProperties": false
 			}

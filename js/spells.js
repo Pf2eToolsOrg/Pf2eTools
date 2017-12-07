@@ -1,7 +1,7 @@
 "use strict";
 
-const JSON_SRC_INDEX = "index.json";
 const JSON_DIR = "data/spells/";
+const JSON_LIST_NAME = "spell";
 
 // toss these into the "Tags" section to save screen space
 const META_ADD_CONC = "Concentration";
@@ -216,60 +216,8 @@ function ascSortSpellLevel(a, b) {
 }
 
 window.onload = function load() {
-	loadJSON(JSON_DIR+JSON_SRC_INDEX, onIndexLoad);
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells)
 };
-
-let loadedSources;
-function onIndexLoad(src2UrlMap) {
-	// track loaded sources
-	loadedSources = {};
-	Object.keys(src2UrlMap).forEach(src => loadedSources[src] = {url: JSON_DIR+src2UrlMap[src], loaded: false});
-
-	// collect a list of sources to load
-	const sources = Object.keys(src2UrlMap);
-	const defaultSel = sources.filter(s => defaultSourceSelFn(s));
-	const userSel = FilterBox.getSelectedSources();
-
-	const allSources = [];
-
-	// add any sources from the user's saved filters, provided they have URLs and haven't already been added
-	if (userSel) {
-		userSel
-			.filter(src => src2UrlMap[src])
-			.filter(src => $.inArray(src, allSources) === -1)
-			.forEach(src => allSources.push(src));
-	}
-	// if there's no saved filters, load the defaults
-	if (allSources.length === 0) {
-		// remove any sources that don't have URLs
-		defaultSel.filter(src => src2UrlMap[src]).forEach(src => allSources.push(src));
-	}
-
-	// add source from the current hash, if there is one
-	if (window.location.hash.length) {
-		const [link, ...sub] = _getHashParts();
-		const src = link.split(HASH_LIST_SEP)[1];
-		const hashSrcs = {};
-		sources.forEach(src => hashSrcs[encodeForHash(src)] = src);
-		const mapped = hashSrcs[src];
-		if (mapped && $.inArray(mapped, allSources) === -1) {
-			allSources.push(mapped);
-		}
-	}
-
-	// make a list of src : url objects
-	const toLoads = allSources.map(src => ({src: src, url: JSON_DIR+src2UrlMap[src]}));
-
-	pageInit();
-
-	if (toLoads.length > 0) {
-		chainLoad(toLoads, 0, [], function(dataStack) {
-			let toAdd = [];
-			dataStack.forEach(d => toAdd = toAdd.concat(d.spell));
-			addSpells(toAdd);
-		});
-	}
-}
 
 let list;
 const sourceFilter = getSourceFilter();
@@ -313,9 +261,12 @@ const filterBox = initFilterBox(
 	timeFilter,
 	rangeFilter
 );
-function pageInit() {
+
+function pageInit(loadedSources) {
 	tableDefault = $("#stats").html();
-	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource));
+
+	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
+	sourceFilter.items.sort(ascSort);
 
 	list = search({
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
@@ -344,42 +295,6 @@ function handleFilterChange() {
 
 		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
 	});
-}
-
-function chainLoad(toLoads, index, dataStack, onLoadFunction) {
-	const toLoad = toLoads[index];
-	// on loading the last item, pass the loaded data to onLoadFunction
-	if (index === toLoads.length-1) {
-		loadJSON(
-			toLoad.url,
-			function(data) {
-				loadedSources[toLoad.src].loaded = true;
-				dataStack.push(data);
-				onLoadFunction(dataStack);
-				initHistory();
-				handleFilterChange();
-			}
-		)
-	} else {
-		loadJSON(
-			toLoad.url,
-			function(data) {
-				loadedSources[toLoad.src].loaded = true;
-				dataStack.push(data);
-				chainLoad(toLoads, index+1, dataStack, onLoadFunction)
-			}
-		)
-	}
-}
-
-function loadSource(src, val) {
-	const toLoad = loadedSources[src];
-	if (!toLoad.loaded && val === "yes") {
-		loadJSON(toLoad.url, function(data) {
-			addSpells(data.spell);
-			toLoad.loaded = true;
-		});
-	}
 }
 
 let spellList = [];
@@ -465,7 +380,6 @@ function addSpells(data) {
 	spellTable.append(tempString);
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
 	levelFilter.items.sort(ascSortSpellLevel);
 	schoolFilter.items.sort(ascSort);
 	classFilter.items.sort(ascSort);
