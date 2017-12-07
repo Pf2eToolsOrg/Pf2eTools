@@ -10,6 +10,36 @@
  * See the docs for each function for full explanations.
  */
 class FilterBox {
+
+	static getSelectedSources() {
+		const cookie = Cookies.get(FilterBox._COOKIE_NAME);
+		if (cookie) {
+			const parsed = JSON.parse(cookie);
+			const sources = parsed[FilterBox.SOURCE_HEADER];
+			if (sources) {
+				const totals = sources._totals;
+				delete sources._totals;
+				if (totals.yes || totals.no) {
+					if (totals.yes) {
+						// if any are green, return only these
+						return Object.keys(sources).filter(k => sources[k] === 1)
+					}
+					if (totals.no) {
+						// otherwise, if we have any white, return these
+						return Object.keys(sources).filter(k => sources[k] !== -1)
+					}
+				} else {
+					// need to load all sources
+					return Object.keys(sources);
+				}
+				return null;
+			} else {
+				return null;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * A FilterBox which sits in the search bar. See the Spells or Psionics page for a live example. Allows selection
 	 * of multiple sources/spell schools/item types/etc.
@@ -27,12 +57,19 @@ class FilterBox {
 		this.$disabledOverlay = $(`<div class="list-disabled-overlay"/>`);
 		const cookie = Cookies.get(FilterBox._COOKIE_NAME);
 		this.cookieValues = cookie ? JSON.parse(cookie) : null;
+		this.$rendered = [];
+		this.dropdownVisible = false;
 	}
 
 	/**
 	 * Render the "Filters" button in the inputGroup
 	 */
 	render() {
+		// save the current values to re-apply if we're re-rendering
+		const curValues = this.$rendered.length > 0 ? this.getValues() : null;
+		// remove any previously rendered elements
+		this._wipeRendered();
+
 		this.$list = $(`#listcontainer`).find(`.list`);
 
 		const $filterButton = getFilterButton();
@@ -45,12 +82,19 @@ class FilterBox {
 			if (i < this.filterList.length-1) $outer.append(makeDivider());
 		}
 		$inputGroup.prepend($filterButton);
+		this.$rendered.push($filterButton);
 		$inputGroup.append($outer);
+		this.$rendered.push($outer);
 		$inputGroup.after(this.$miniView);
+		this.$rendered.push(this.$miniView);
 
 		addShowHideHandlers(this);
 		addResetHandler(this);
 		addCookieHandler(this);
+
+		if (this.dropdownVisible) {
+			$filterButton.find("button").click();
+		}
 
 		function getFilterButton() {
 			const $buttonWrapper = $(`<div id="filter-toggle-btn"/>`);
@@ -92,8 +136,7 @@ class FilterBox {
 			$outI.append($innerListHeader);
 			$outI.append($grid);
 
-			const newHeader = {index: i, size: filter.items.length, ele: $grid,outer: $outI, filter: filter};
-			self.headers[filter.header] = newHeader;
+			self.headers[filter.header] = {index: i, ele: $grid,outer: $outI, filter: filter};
 
 			return $outI;
 
@@ -206,12 +249,15 @@ class FilterBox {
 				}
 
 				for (const item of filter.items) {
+					const iText = item instanceof FilterItem ? item.item : item;
+					const iChangeFn = item instanceof FilterItem ? item.changeFn : null;
+
 					const $pill = $(`<div class="filter-pill"/>`);
 					const $miniPill = $(`<div class="mini-pill group${i}"/>`);
 
-					const display = filter.displayFn ? filter.displayFn(item) : item;
+					const display = filter.displayFn ? filter.displayFn(iText) : iText;
 
-					$pill.val(item);
+					$pill.val(iText);
 					$pill.html(display);
 					$miniPill.html(display);
 
@@ -221,50 +267,82 @@ class FilterBox {
 					$miniPill.on(EVNT_CLICK, function() {
 						$pill.attr("state", FilterBox._PILL_STATES[0]);
 						$miniPill.attr("state", FilterBox._PILL_STATES[0]);
+						handlePillChange(iText, iChangeFn, FilterBox._PILL_STATES[0]);
 						self._fireValChangeEvent();
 					});
 
 					$pill.on(EVNT_CLICK, function() {
 						cycleState($pill, $miniPill, true);
+						handlePillChange(iText, iChangeFn, $pill.attr("state"));
 					});
 
 					$pill.on("contextmenu",function(e){
 						e.preventDefault();
 						cycleState($pill, $miniPill, false);
+						handlePillChange(iText, iChangeFn, $pill.attr("state"));
 					});
 
+					// bind getters and resetters
 					$pill.data(
 						"setter",
 						(function(toVal) {
-							$pill.attr("state", toVal);
-							$miniPill.attr("state", toVal);
+							_setter($pill, $miniPill, toVal, iText, iChangeFn, false);
 						})
 					);
 					$pill.data("resetter",
 						(function() {
-							if (filter.deselFn && filter.deselFn(item)) {
-								$pill.attr("state", "no");
-								$miniPill.attr("state", "no");
-							} else if (filter.selFn && filter.selFn(item)) {
-								$pill.attr("state", "yes");
-								$miniPill.attr("state", "yes");
-							} else {
-								$pill.attr("state", "ignore");
-								$miniPill.attr("state", "ignore");
-							}
+							_resetter($pill, $miniPill, iText, iChangeFn, false);
 						})
 					);
-					if (self.cookieValues && self.cookieValues[filter.header] && self.cookieValues[filter.header][item] !== undefined) {
-						let valNum = self.cookieValues[filter.header][item];
+
+					// If re-render, use previous values. Otherwise, if there's a cookie, cookie values. Otherwise, default the pills
+					if (curValues) {
+						let valNum = curValues[filter.header][iText];
 						if (valNum < 0) valNum = 2;
-						$pill.data("setter")(FilterBox._PILL_STATES[valNum]);
+						_setter($pill, $miniPill, FilterBox._PILL_STATES[valNum], iText, iChangeFn, true);
+					} else if (self.cookieValues && self.cookieValues[filter.header] && self.cookieValues[filter.header][iText] !== undefined) {
+						let valNum = self.cookieValues[filter.header][iText];
+						if (valNum < 0) valNum = 2;
+						_setter($pill, $miniPill, FilterBox._PILL_STATES[valNum], iText, iChangeFn, true);
 					} else {
-						$pill.data("resetter")();
+						_resetter($pill, $miniPill, iText, iChangeFn, true);
 					}
 
 					$grid.append($pill);
 					$miniView.append($miniPill);
 					$pills.push($pill);
+				}
+
+				// allows silent (pill change function not triggered) sets
+				function _setter($pill, $miniPill, toVal, iText, iChangeFn, silent) {
+					$pill.attr("state", toVal);
+					$miniPill.attr("state", toVal);
+					if (!silent) {
+						handlePillChange(iText, iChangeFn, toVal);
+					}
+				}
+
+				// allows silent (pill change function not triggered) resets
+				function _resetter($pill, $miniPill, iText, iChangeFn, silent) {
+					if (filter.deselFn && filter.deselFn(iText)) {
+						$pill.attr("state", "no");
+						$miniPill.attr("state", "no");
+					} else if (filter.selFn && filter.selFn(iText)) {
+						$pill.attr("state", "yes");
+						$miniPill.attr("state", "yes");
+					} else {
+						$pill.attr("state", "ignore");
+						$miniPill.attr("state", "ignore");
+					}
+					if (!silent) {
+						handlePillChange(iText, iChangeFn, $pill.attr("state"));
+					}
+				}
+
+				function handlePillChange(iText, iChangeFn, val) {
+					if (iChangeFn) {
+						iChangeFn(iText, val);
+					}
 				}
 
 				$grid.data(
@@ -310,12 +388,14 @@ class FilterBox {
 				mutations.forEach(function(mutationRecord) {
 					if (!$filterToggleButton.hasClass("open")) {
 						self.$disabledOverlay.detach();
+						self.dropdownVisible = false;
 						$outer.hide();
 						// fire an event when the form is closed
 						self._fireValChangeEvent();
 					} else {
 						self.$list.parent().append(self.$disabledOverlay);
 						$outer.show();
+						self.dropdownVisible = true;
 					}
 				});
 			});
@@ -404,18 +484,29 @@ class FilterBox {
 	}
 
 	/**
-	 * @private
 	 * Helper which dispatched the event when the filter needs to fire a "changed" event
+	 * @private
 	 */
 	_fireValChangeEvent() {
 		const eventOut = new Event(FilterBox.EVNT_VALCHANGE);
 		this.inputGroup.dispatchEvent(eventOut);
+	}
+
+	/**
+	 * Clean up any previously rendered elements
+	 * @private
+	 */
+	_wipeRendered() {
+		this.$rendered.forEach($e => $e.remove());
+		this.$rendered = [];
+		this.$disabledOverlay.detach();
 	}
 }
 FilterBox.CLS_INPUT_GROUP_BUTTON = "input-group-btn";
 FilterBox.CLS_DROPDOWN_MENU = "dropdown-menu";
 FilterBox.CLS_DROPDOWN_MENU_FILTER = "dropdown-menu-filter";
 FilterBox.EVNT_VALCHANGE = "valchange";
+FilterBox.SOURCE_HEADER = "Source";
 FilterBox._PILL_STATES = ["ignore", "yes", "no"];
 FilterBox._COOKIE_NAME = "filterState";
 
@@ -432,6 +523,7 @@ class Filter {
 	 *     has been called e.g. ["PHB", "DMG"]
 	 *     Note that you can pass a pointer to a list, and add items afterwards. Or pass nothing, which is equivalent to
 	 *     passing an empty list. The contents are only evaluated once `render()` is called.
+	 *     The items themselves can be strings or `FilterItem`s.
 	 *
 	 *   (OPTIONAL)
 	 *   displayFn: A function to apply to each item in items when displaying the FilterBox on the page
@@ -506,6 +598,19 @@ class Filter {
 		}
 	}
 }
+
+class FilterItem {
+	/**
+	 * An alternative to string `Filter.items` with a change-handling function
+	 * @param item string
+	 * @param changeFn called when this item is clicked/etc; calls `changeFn(item)`
+	 */
+	constructor(item, changeFn) {
+		this.item = item;
+		this.changeFn = changeFn;
+	}
+}
+
 
 /**
  * An extremely simple deselect function. Simply deselects everything.
