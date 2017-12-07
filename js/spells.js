@@ -1,6 +1,7 @@
 "use strict";
 
 const JSON_DIR = "data/spells/";
+const JSON_LIST_NAME = "spell";
 
 // toss these into the "Tags" section to save screen space
 const META_ADD_CONC = "Concentration";
@@ -215,7 +216,7 @@ function ascSortSpellLevel(a, b) {
 }
 
 window.onload = function load() {
-	multisourceLoad(JSON_DIR, "spell", pageInit, addSpells)
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells)
 };
 
 let list;
@@ -263,7 +264,9 @@ const filterBox = initFilterBox(
 
 function pageInit(loadedSources) {
 	tableDefault = $("#stats").html();
-	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource));
+
+	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
+	sourceFilter.items.sort(ascSort);
 
 	list = search({
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
@@ -292,16 +295,6 @@ function handleFilterChange() {
 
 		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
 	});
-}
-
-function loadSource(src, val) {
-	const toLoad = loadedSources[src];
-	if (!toLoad.loaded && val === "yes") {
-		loadJSON(toLoad.url, function(data) {
-			addSpells(data.spell);
-			toLoad.loaded = true;
-		});
-	}
 }
 
 let spellList = [];
@@ -387,7 +380,6 @@ function addSpells(data) {
 	spellTable.append(tempString);
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
 	levelFilter.items.sort(ascSortSpellLevel);
 	schoolFilter.items.sort(ascSort);
 	classFilter.items.sort(ascSort);

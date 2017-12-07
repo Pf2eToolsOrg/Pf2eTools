@@ -4,14 +4,14 @@ const JSON_SRC_INDEX = "index.json";
 
 /**
  * @param jsonDir the directory containing JSON for this page
- * @param dataCategory the name of the root JSON property for the list of data
+ * @param jsonListName the name of the root JSON property for the list of data
  * @param pageInitFn function to be run once the index has loaded, should accept an object of src:URL mappings
  * @param dataFn function to be run when all data has been loaded, should accept a list of objects custom to the page
- * (e.g. spell data objects for the spell page) which were found in the `dataCategory` list
+ * (e.g. spell data objects for the spell page) which were found in the `jsonListName` list
  */
-function multisourceLoad(jsonDir, dataCategory, pageInitFn, dataFn) {
+function multisourceLoad(jsonDir, jsonListName, pageInitFn, dataFn) {
 	// load the index
-	loadJSON(jsonDir+JSON_SRC_INDEX, function(index) { _onIndexLoad(index, jsonDir, dataCategory, pageInitFn, dataFn) });
+	loadJSON(jsonDir+JSON_SRC_INDEX, function(index) { _onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn) });
 }
 
 let loadedSources;
@@ -71,5 +71,17 @@ function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 				addFn(toAdd);
 			}
 		);
+	}
+}
+
+function loadSource(jsonListName, dataFn) {
+	return function(src, val) {
+		const toLoad = loadedSources[src];
+		if (!toLoad.loaded && val === "yes") {
+			loadJSON(toLoad.url, function(data) {
+				dataFn(data[jsonListName]);
+				toLoad.loaded = true;
+			});
+		}
 	}
 }
