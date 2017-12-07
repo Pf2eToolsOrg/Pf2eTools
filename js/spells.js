@@ -263,13 +263,22 @@ function onIndexLoad(src2UrlMap) {
 	pageInit();
 
 	if (toLoads.length > 0) {
-		chainLoad(toLoads, 0, [], function(dataStack) {
-			let toAdd = [];
-			dataStack.forEach(d => toAdd = toAdd.concat(d.spell));
-			addSpells(toAdd);
-		});
+		chainLoadJSON(
+			toLoads,
+			0,
+			[],
+			function(toLoad) {
+				loadedSources[toLoad.src].loaded = true;
+			},
+			function(dataStack) {
+				let toAdd = [];
+				dataStack.forEach(d => toAdd = toAdd.concat(d.spell));
+				addSpells(toAdd);
+			}
+		);
 	}
 }
+
 
 let list;
 const sourceFilter = getSourceFilter();
@@ -344,32 +353,6 @@ function handleFilterChange() {
 
 		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
 	});
-}
-
-function chainLoad(toLoads, index, dataStack, onLoadFunction) {
-	const toLoad = toLoads[index];
-	// on loading the last item, pass the loaded data to onLoadFunction
-	if (index === toLoads.length-1) {
-		loadJSON(
-			toLoad.url,
-			function(data) {
-				loadedSources[toLoad.src].loaded = true;
-				dataStack.push(data);
-				onLoadFunction(dataStack);
-				initHistory();
-				handleFilterChange();
-			}
-		)
-	} else {
-		loadJSON(
-			toLoad.url,
-			function(data) {
-				loadedSources[toLoad.src].loaded = true;
-				dataStack.push(data);
-				chainLoad(toLoads, index+1, dataStack, onLoadFunction)
-			}
-		)
-	}
 }
 
 function loadSource(src, val) {

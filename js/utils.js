@@ -1401,3 +1401,39 @@ function loadJSON(url, onLoadFunction, ...otherData) {
 	};
 	request.send();
 }
+
+/**
+ * Loads a sequence of URLs, then calls a final function once all the data is ready
+ * @param toLoads array of objects, which should have a `url` property
+ * @param index 0 on the first call
+ * @param dataStack an empty array on the first call
+ * @param onEachLoadFunction function to call after each load completes. Should accept a `toLoad` and the data returned
+ * from the load
+ * @param onFinalLoadFunction final function to call once all data has been loaded, should accept the `dataStack` array as
+ * an argument
+ */
+function chainLoadJSON(toLoads, index, dataStack, onEachLoadFunction, onFinalLoadFunction) {
+	const toLoad = toLoads[index];
+	// on loading the last item, pass the loaded data to onFinalLoadFunction
+	if (index === toLoads.length-1) {
+		loadJSON(
+			toLoad.url,
+			function(data) {
+				onEachLoadFunction(toLoad, data);
+				dataStack.push(data);
+				onFinalLoadFunction(dataStack);
+				initHistory();
+				handleFilterChange();
+			}
+		)
+	} else {
+		loadJSON(
+			toLoad.url,
+			function(data) {
+				onEachLoadFunction(toLoad, data);
+				dataStack.push(data);
+				chainLoadJSON(toLoads, index+1, dataStack, onEachLoadFunction, onFinalLoadFunction)
+			}
+		)
+	}
+}
