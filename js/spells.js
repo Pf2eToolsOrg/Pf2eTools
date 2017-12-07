@@ -230,8 +230,8 @@ function onIndexLoad(src2UrlMap) {
 	const defaultSel = sources.filter(s => defaultSourceSelFn(s));
 	const userSel = FilterBox.getSelectedSources();
 
-	// remove any sources that don't have URLs
-	const allSources = defaultSel.filter(src => src2UrlMap[src]);
+	const allSources = [];
+
 	// add any sources from the user's saved filters, provided they have URLs and haven't already been added
 	if (userSel) {
 		userSel
@@ -239,6 +239,12 @@ function onIndexLoad(src2UrlMap) {
 			.filter(src => $.inArray(src, allSources) === -1)
 			.forEach(src => allSources.push(src));
 	}
+	// if there's no saved filters, load the defaults
+	if (allSources.length === 0) {
+		// remove any sources that don't have URLs
+		defaultSel.filter(src => src2UrlMap[src]).forEach(src => allSources.push(src));
+	}
+
 	// add source from the current hash, if there is one
 	if (window.location.hash.length) {
 		const [link, ...sub] = _getHashParts();
@@ -369,7 +375,6 @@ function chainLoad(toLoads, index, dataStack, onLoadFunction) {
 function loadSource(src, val) {
 	const toLoad = loadedSources[src];
 	if (!toLoad.loaded && val === "yes") {
-		console.log("LOADING ", src); // FIXME remove
 		loadJSON(toLoad.url, function(data) {
 			addSpells(data.spell);
 			toLoad.loaded = true;
