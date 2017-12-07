@@ -550,11 +550,11 @@ Parser.armorFullToAbv= function (armor) {
 };
 
 Parser.sourceJsonToFull = function (source) {
-	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace("'", STR_APOSTROPHE);
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source)
-		.replace("'", STR_APOSTROPHE)
+		.replace(/'/g, STR_APOSTROPHE)
 		.replace(UA_PREFIX, UA_PREFIX_SHORT)
 		.replace(AL_PREFIX, AL_PREFIX_SHORT)
 		.replace(PS_PREFIX, PS_PREFIX_SHORT);
@@ -1229,11 +1229,6 @@ function isNonstandardSource(source) {
 	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA);
 }
 
-// DATA LINKS ==========================================================================================================
-function utils_nameToDataLink(name) {
-	return encodeURIComponent(name.toLowerCase()).replace("'","%27");
-}
-
 // CONVENIENCE/ELEMENTS ================================================================================================
 // TODO refactor/remove (switch to jQuery versions)
 function toggleCheckBox(cb) {
@@ -1356,7 +1351,7 @@ function encodeForHash(toEncode) {
 		return encodeForHashHelper(toEncode);
 	}
 	function encodeForHashHelper(part) {
-		return encodeURIComponent(part).toLowerCase().replace("'","%27")
+		return encodeURIComponent(part).toLowerCase().replace(/'/g,"%27")
 	}
 }
 
