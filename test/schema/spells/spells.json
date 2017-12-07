@@ -56,12 +56,7 @@
 								"cone",
 								"radius",
 								"sphere",
-								"hemisphere",
-								"self",
-								"sight",
-								"unlimited",
-								"plane",
-								"touch"
+								"hemisphere"
 							]
 						},
 						"distance": {
@@ -76,6 +71,7 @@
 										"touch",
 										"special",
 										"unlimited",
+										"plane",
 										"sight"
 									]
 								},
@@ -233,8 +229,11 @@
 							"enum": [
 								"hours",
 								"minutes",
+								"turns",
 								"rounds",
-								"days"
+								"weeks",
+								"days",
+								"years"
 							]
 						},
 						"amount": {
@@ -256,7 +255,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"enum": ["dispell", "trigger"]
+						"enum": ["dispell", "trigger", "discharge"]
 					}
 				},
 				"condition": {
