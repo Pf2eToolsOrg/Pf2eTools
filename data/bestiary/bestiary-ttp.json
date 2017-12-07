@@ -1,0 +1,296 @@
+{
+	"monster": [
+		{
+			"source": "TTP",
+			"name": "Decapus",
+			"size": "L",
+			"type": "monstrosity",
+			"alignment": "unaligned",
+			"ac": "14 (natural armor)",
+			"hp": "75 (10d10+20)",
+			"speed": "15 ft., climb 30 ft.",
+			"str": "15",
+			"dex": "14",
+			"con": "14",
+			"int": "4",
+			"wis": "10",
+			"cha": "7",
+			"skill": {
+				"athletics": "+4",
+				"perception": "+2",
+				"stealth": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": "12",
+			"cr": "4",
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The decapus makes two attacks: one with its bite and one with its tentacles."
+					]
+				},
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft, one creature grappled by the decapus. Hit: 7 (2d4+2) piercing damage."
+					],
+					"attack": [
+						"Bite|7|2d4+2"
+					]
+				},
+				{
+					"name": "Tentacles",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 10 ft. one target. Hit: 24 (9d4+2) bludgeoning damage or 14 (5d4+2) bludgeoning damage if the decapus is grappling a creature other than the target or if the decapus is on the ground or floor. The target is also grappled (escape DC 14) unless the decapus is already grappling a creature. Until this grapple ends, the target is restrained."
+					],
+					"attack": [
+						"All Tentacles|4|9d4+2",
+						"Tentacles|4|5d4+2"
+					]
+				}
+			]
+		},
+		{
+			"source": "TTP",
+			"name": "Geonid",
+			"size": "S",
+			"type": "elemental",
+			"alignment": "neutral",
+			"ac": "17 (natural armor)",
+			"hp": "26 (4d6+12)",
+			"speed": "30 ft.",
+			"str": "12",
+			"dex": "10",
+			"con": "16",
+			"int": "9",
+			"wis": "14",
+			"cha": "11",
+			"skill": {
+				"perception": "+4",
+				"stealth": "+2"
+			},
+			"senses": "darkvision 60 ft., tremorsense 30ft.",
+			"passive": "14",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Boulder Guise",
+					"text": [
+						"While fully withdrawn into its shell, the geonid can't see and is indistinguishable from a small boulder"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Stone Tell",
+					"text": [
+						"The geonid touches a stone object or surface and knows what types of creatures have been within 10 feet of that stone in the past 24 hours. The geonid can also determine the number of creatures of each type, but not their identities."
+					]
+				},
+				{
+					"name": "Club",
+					"text": [
+						"Melee Weapon Attack: +3 to hit, reach 5 ft, one target. Hit: 3 (1d4+1) bludgeoning damage."
+					],
+					"attack": [
+						"Club|3|1d4+1"
+					]
+				}
+			]
+		},
+		{
+			"source": "TTP",
+			"name": "Topi",
+			"size": "S",
+			"type": "undead",
+			"alignment": "chaotic evil",
+			"ac": "13 (natural armor)",
+			"hp": "13 (3d6+3)",
+			"speed": "30 ft.",
+			"str": "7",
+			"dex": "15",
+			"con": "12",
+			"int": "6",
+			"wis": "10",
+			"cha": "5",
+			"resist": "bludgeoning",
+			"immune": "poison",
+			"conditionImmune": "poisoned",
+			"senses": "darkvision 60 ft.",
+			"languages": "understands the languages it knew in life but can't speak",
+			"passive": "10",
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Turn Resistance",
+					"text": [
+						"The topi has advantage on saving throws against any effect that turns undead."
+					]
+				},
+				{
+					"name": "Undead Fortitude",
+					"text": [
+						"If damage reduces the topi to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the topi drops to 1 hit point instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Venomous Claws",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft, one target. Hit: 4 (1d4+2) slashing damage plus 2 (1d4) poison damage, and the target must succeed on a DC 11 Constitution saving throw or be poisoned until the end of the target's next turn."
+					],
+					"attack": [
+						"Venomous Claws|4|1d4+1+1d4"
+					]
+				}
+			]
+		},
+		{
+			"source": "TTP",
+			"name": "Tortle",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"tortle"
+				]
+			},
+			"alignment": "lawful good",
+			"ac": "17 (natural armor)",
+			"hp": "22 (4d8+4)",
+			"speed": "30 ft.",
+			"str": "15",
+			"dex": "10",
+			"con": "12",
+			"int": "11",
+			"wis": "13",
+			"cha": "12",
+			"skill": {
+				"athletics": "+4",
+				"survival": "+3"
+			},
+			"languages": "Aquan, Common",
+			"passive": "11",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"text": [
+						"The tortle can hold its breath for 1 hour."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claws",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft, one target. Hit: 4 (1d4+2) slashing damage."
+					],
+					"attack": [
+						"Claws|4|1d4+1"
+					]
+				},
+				{
+					"name": "Quarterstaff",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft, one target. Hit: 5 (1d6+2) bludgeoning damage, or 6 (1d8+2) bludgeoning damage when used with two hands."
+					],
+					"attack": [
+						"Quarterstaff|4|1d6+2",
+						"Two Handed|4|1d8+2"
+					]
+				},
+				{
+					"name": "Light Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +2 to hit, range 80/320 ft., one target. Hit: 4 (1d8) piercing piercing damage."
+					],
+					"attack": [
+						"Light Crossbow|2|1d8"
+					]
+				},
+				{
+					"name": "Shell Defense",
+					"text": [
+						"The tortle withdraws into its shell. Until it emerges, it gains a +4 bonus to AC and has advantage on Strength and Constitution saving throws. While in its shell, the tortle is prone, its speed is 0 and can't increase, it has disadvantage on Dexterity saving throws, it can't take reactions, and the only action it can take is a bonus action to emerge."
+					]
+				}
+			]
+		},
+		{
+			"source": "TTP",
+			"name": "Tortle Druid",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"tortle"
+				]
+			},
+			"alignment": "lawful neutral",
+			"ac": "17 (natural armor)",
+			"hp": "33 (6d8+6)",
+			"speed": "30 ft.",
+			"str": "14",
+			"dex": "10",
+			"con": "12",
+			"int": "11",
+			"wis": "15",
+			"cha": "12",
+			"skill": {
+				"animal handling": "+4",
+				"nature": "+2",
+				"survival": "+4"
+			},
+			"languages": "Aquan, Common",
+			"passive": "12",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"text": [
+						"The tortle can hold its breath for 1 hour."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"The tortle is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:",
+						"Cantrips (at will): druidcraft, guidance, produce flame",
+						"1st level (4 slots): animal friendship, cure wounds, speak with animals, thunderwave",
+						"2nd level (3 slots): darkvision, hold person"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claws",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft, one target. Hit: 4 (1d4+2) slashing damage."
+					],
+					"attack": [
+						"Claws|4|1d4+1"
+					]
+				},
+				{
+					"name": "Quarterstaff",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft, one target. Hit: 5 (1d6+2) bludgeoning damage, or 6 (1d8+2) bludgeoning damage when used with two hands."
+					],
+					"attack": [
+						"Quarterstaff|4|1d6+2",
+						"Two Handed|4|1d8+2"
+					]
+				},
+				{
+					"name": "Shell Defense",
+					"text": [
+						"The tortle withdraws into its shell. Until it emerges, it gains a +4 bonus to AC and has advantage on Strength and Constitution saving throws. While in its shell, the tortle is prone, its speed is 0 and can't increase, it has disadvantage on Dexterity saving throws, it can't take reactions, and the only action it can take is a bonus action to emerge."
+					]
+				}
+			]
+		}
+	]
+}

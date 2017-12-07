@@ -1,0 +1,2508 @@
+{
+	"monster": [
+		{
+			"source": "TftYP",
+			"name": "Animated Table",
+			"size": "L",
+			"type": "construct",
+			"alignment": "unaligned",
+			"ac": "15 (natural armor)",
+			"hp": "39 (6d10+6)",
+			"speed": "40 ft.",
+			"str": "18",
+			"dex": "8",
+			"con": "13",
+			"int": "1",
+			"wis": "3",
+			"cha": "1",
+			"immune": "poison, psychic",
+			"conditionImmune": "blinded, charmed, deafeaned, exhaustion, frightened, paralyzed, petrified, poisoned",
+			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"passive": "6",
+			"languages": "-",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Antimagic Susceptibility",
+					"text": [
+						"The table is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the table must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"text": [
+						"While the table remains motionless, it is indistinguishable from a normal table."
+					]
+				},
+				{
+					"name": "Charge",
+					"text": [
+						"If the table moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 9 (2d8) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Ram",
+					"text": [
+						"Melee Weapon Attack: +6, reach 5 ft., one target. Hit: 13 (2d8+4) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Belak the Outcast",
+			"source": "TftYP",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"any race"
+				]
+			},
+			"alignment": "any alignment",
+			"ac": "11 (16 with barkskin)",
+			"hp": "27 (5d8+5)",
+			"speed": "30 ft.",
+			"str": "10",
+			"dex": "12",
+			"con": "13",
+			"int": "12",
+			"wis": "15",
+			"cha": "11",
+			"skill": {
+				"medicine": "+4",
+				"nature": "+3",
+				"perception": "+4"
+			},
+			"passive": "14",
+			"languages": "Druidic plus any two languages",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Spellcasting",
+					"text": [
+						"The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:",
+						"• Cantrips (at will): druidcraft, poison spray, shillelagh",
+						"• 1st level (4 slots): cure wounds, entangle, faerie fire, thunderwave",
+						"• 2nd level (3 slots): barkskin, flaming sphere"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"text": [
+						"Melee Weapon Attack: +2 to hit (+4 to hit with shillelagh), reach 5 ft., one target. Hit: 3 (1d6) bludgeoning damage, or 6 (1d8+2) bludgeoning damage with shillelagh or if wielded with two hands."
+					],
+					"attack": [
+						"Quarterstaff|2|1d6",
+						"Shillelagh|4|1d8+2"
+					]
+				}
+			],
+			"spells": "druidcraft, produce flame, shillelagh, entangle, longstrider, speak with animals, thunderwave, animal messenger, barkskin"
+		},
+		{
+			"source": "TftYP",
+			"name": "Centaur Mummy",
+			"size": "L",
+			"type": "undead",
+			"alignment": "lawful evil",
+			"ac": "13 (natural armor)",
+			"hp": "85 (10d10+30)",
+			"speed": "30 ft.",
+			"str": "20",
+			"dex": "12",
+			"con": "16",
+			"int": "5",
+			"wis": "14",
+			"cha": "12",
+			"save": "Wis +5",
+			"vulnerable": "fire",
+			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": "necrotic, poison",
+			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": "12",
+			"languages": "Common, Sylvan",
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Charge",
+					"text": [
+						"If the centaur mummy moves at least 20 feet straight toward a target and then hits it with a pike attack on the same turn, the target takes an extra 10 (3d6) piercing damage."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The centaur mummy makes two melee attacks, one with its pike and one with its hooves, or it attacks with its pike and uses Dreadful Glare."
+					]
+				},
+				{
+					"name": "Pike",
+					"text": [
+						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 10 (1d10+5) piercing damage."
+					]
+				},
+				{
+					"name": "Hooves",
+					"text": [
+						"Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) piercing damage plus 10 (3d6) necrotic damage. If the target is a creature, it must succeed on a DC 14 Constitution saving throw or be cursed with mummy rot. The cursed target can't regain hit points, and its hit point maximum decreases by 10 (3d6) for every 24 hours that elapse. If the curse reduces the target's hit point maximum to 0, the target dies, and its body turns to dust. The curse lasts until removed by the remove curse spell or similar magic."
+					]
+				},
+				{
+					"name": "Dreadful Glare",
+					"text": [
+						"The centaur mummy targets one creature it can see within 60 feet of it. If the target can see the mummy, the target must succeed on a DC 12 Wisdom saving throw against this magic or become frightened until the end of the mummy's next turn. If the target fails the saving throw by 5 or more, it is also paralyzed for the same duration. A target that succeeds on the saving throw is immune to the Dreadful Glare of all mummies (but not mummy lords) for the next 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Choker",
+			"size": "S",
+			"type": "aberration",
+			"alignment": "chaotic evil",
+			"ac": "16 (natural armor)",
+			"hp": "13 (3d6+3)",
+			"speed": "30 ft.",
+			"str": "16",
+			"dex": "14",
+			"con": "13",
+			"int": "4",
+			"wis": "12",
+			"cha": "7",
+			"skill": {
+				"stealth": "+6"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": "11",
+			"languages": "Deep Speech",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Aberrant Quickness (Recharge after a Short or Long Rest)",
+					"text": [
+						"The choker can take an extra action on its turn."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"text": [
+						"The choker can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The choker makes two tentacle attacks."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 5 (ld4+3) bludgeoning damage plus 3 (ld6) piercing damage. If the target is a Large or smaller creature, it is grappled (escape DC 15). Until this grapple ends, the target is restrained, and the choker can't use this tentacle on another target (the choker has two tentacles). If this attack is a critical hit, the target also can't breathe or speak until the grapple ends ."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Deathlock Wight",
+			"size": "M",
+			"type": "undead",
+			"alignment": "neutral evil",
+			"ac": "12 (15 with mage armor)",
+			"hp": "37 (5d8+15)",
+			"speed": "30 ft.",
+			"str": "11",
+			"dex": "14",
+			"con": "16",
+			"int": "12",
+			"wis": "14",
+			"cha": "16",
+			"save": "Wis +4",
+			"skill": {
+				"arcana": "+3",
+				"perception": "+4"
+			},
+			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": "poison",
+			"conditionImmune": "exhaustion, poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": "14",
+			"languages": "the languages it knew in life",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						"The wight's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no verbal or material components:",
+						"At will: detect magic, disguise self, mage armor",
+						"1/day each: fear, hold person, misty step"
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, the wight has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The wight attacks twice with Grave Bolt."
+					]
+				},
+				{
+					"name": "Grave Bolt",
+					"text": [
+						"Ranged Spell Attack: +5 to hit, range 120 ft., one target. Hit: 7 (1d8+3) necrotic damage."
+					]
+				},
+				{
+					"name": "Life Drain",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 9 (2d6+2) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken.",
+						"This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. A humanoid slain by this attack rises 24 hours later as a zombie under the wight's control, unless the humanoid is restored to life or its body is destroyed. The wight can have no more than twelve zombies under its control at one time."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Dread Warrior",
+			"size": "M",
+			"type": "undead",
+			"alignment": "neutral evil",
+			"ac": "18 (chain mail, shield)",
+			"hp": "37 (5d8+15)",
+			"speed": "30 ft.",
+			"str": "15",
+			"dex": "11",
+			"con": "16",
+			"int": "10",
+			"wis": "12",
+			"cha": "10",
+			"save": "Wis +3",
+			"skill": {
+				"athletics": "+4",
+				"perception": "+3"
+			},
+			"immune": "poison",
+			"conditionImmune": "exhaustion, poisoned",
+			"senses": "darkvision 60 ft .",
+			"passive": "13",
+			"languages": "Common",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Undead Fortitude",
+					"text": [
+						"If damage reduces the dread warrior to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the dread warrior drops to 1 hit point instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The dread warrior makes two melee attacks."
+					]
+				},
+				{
+					"name": "Battleaxe",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage, or 7 (1d10+2) slashing damage if wielded with two hands."
+					]
+				},
+				{
+					"name": "Javelin",
+					"text": [
+						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Duergar Spy",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": "lawful evil",
+			"ac": "15 (studded leather)",
+			"hp": "33 (6d8+6)",
+			"speed": "25 ft.",
+			"str": "10",
+			"dex": "16",
+			"con": "12",
+			"int": "12",
+			"wis": "10",
+			"cha": "13",
+			"skill": {
+				"deception": "+5",
+				"insight": "+2",
+				"investigation": "+5",
+				"perception": "+4",
+				"persuasion": "+3",
+				"sleight of hand": "+5",
+				"stealth": "+7"
+			},
+			"resist": "poison",
+			"senses": "darkvision 120 ft.",
+			"passive": "14",
+			"languages": "Dwarvish, Undercommon",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Cunning Action",
+					"text": [
+						"On each of its turns, the spy can use a bonus action to take the Dash, Disengage, or Hide action."
+					]
+				},
+				{
+					"name": "Duergar Resilience",
+					"text": [
+						"The spy has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+					]
+				},
+				{
+					"name": "Sneak Attack",
+					"text": [
+						"Once per turn, the spy can deal an extra 7 (2d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the spy that isn't incapacitated and the spy doesn't have disadvantage on the attack roll."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, the spy has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The spy makes two shortsword attacks."
+					]
+				},
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"text": [
+						"For 1 minute, the spy magically increases in size, along with anything it is wearing or carrying. While enlarged, the spy is Large, doubles her damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If the spy lacks the room to become Large, it attains the maximum size possible in the space available."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage, or 10 (2d6+3) piercing damage while enlarged."
+					]
+				},
+				{
+					"name": "Hand Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +5 to hit, range 30/120 ft., one target. Hit: 6 (1d6+3) piercing damage."
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"text": [
+						"The spy magically turns invisible until it attacks, deals damage, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the spy wears or carries is invisible with it."
+					]
+				}
+			]
+		},
+		{
+			"name": "Durnn",
+			"source": "TftYP",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"goblinoid"
+				]
+			},
+			"alignment": "lawful evil",
+			"ac": "19 (splint armor, shield)",
+			"hp": "18 (2d8+2)",
+			"speed": "30 ft.",
+			"str": "15",
+			"dex": "12",
+			"con": "12",
+			"int": "10",
+			"wis": "10",
+			"cha": "9",
+			"senses": "darkvision 60 ft.",
+			"passive": "10",
+			"languages": "Common, Goblin",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Martial Advantage",
+					"text": [
+						"Once per turn, the hobgoblin can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 ft. of an ally of the hobgoblin that isn't incapacitated."
+					],
+					"attack": [
+						"Martial Advantage||2d6"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Longsword",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d8+1) slashing damage, or 6 (1d10+2) slashing damage if used with two hands."
+					],
+					"attack": [
+						"|3|1d8+1"
+					]
+				},
+				{
+					"name": "Longbow",
+					"text": [
+						"Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 5 (1d8+1) piercing damage."
+					],
+					"attack": [
+						"|3|1d8+1"
+					]
+				}
+			]
+		},
+		{
+			"name": "Erky Timbers",
+			"source": "TftYP",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"gnome"
+				]
+			},
+			"alignment": "any alignment",
+			"ac": "10",
+			"hp": "17 (5d6)",
+			"speed": "30 ft.",
+			"str": "10",
+			"dex": "10",
+			"con": "10",
+			"int": "10",
+			"wis": "14",
+			"cha": "11",
+			"skill": {
+				"medicine": "+4",
+				"religion": "+2"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": "12",
+			"languages": "Common, Draconic, Gnomish, and Goblin",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Spellcasting",
+					"text": [
+						"The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared:",
+						"• Cantrips (at will): light, sacred flame, thaumaturgy",
+						"• 1st level (3 slots): bless, cure wounds, sanctuary"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Club",
+					"text": [
+						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+					],
+					"attack": [
+						"Club|2|1d4"
+					]
+				},
+				{
+					"name": "Channel Divinity: Turn Undead (1/Short Rest)",
+					"text": [
+						"Erky presents his holy Symbol and speaks a prayer censuring the Undead. Each Undead that can see or hear Erky within 30 feet of him must make a DC 12 Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
+						"A turned creature must spend its turns trying to move as far away from Erky as it can, and it can't willingly move to a space within 30 feet of him. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+					]
+				}
+			],
+			"spells": "light, sacred flame, thaumaturgy, bless, cure wounds, sanctuary",
+			"description": "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities."
+		},
+		{
+			"name": "Four-Armed Gargoyle",
+			"source": "TftYP",
+			"size": "M",
+			"type": "elemental",
+			"alignment": "chaotic evil",
+			"ac": "15 (natural armor)",
+			"hp": "63 (7d8+21)",
+			"speed": "30 ft., fly 60 ft.",
+			"str": "15",
+			"dex": "11",
+			"con": "16",
+			"int": "6",
+			"wis": "11",
+			"cha": "7",
+			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine",
+			"immune": "poison",
+			"conditionImmune": "exhaustion, petrified, poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": "10",
+			"languages": "Terran",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "False Appearance",
+					"text": [
+						"While the gargoyle remains motion less, it is indistinguishable from an inanimate statue."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The gargoyle makes three attacks: one with its bite and two with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					],
+					"attack": [
+						"Bite|4|1d6+2"
+					]
+				},
+				{
+					"name": "Claws",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage."
+					],
+					"attack": [
+						"Claws|4|1d6+2"
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Giant Crayfish",
+			"size": "L",
+			"type": "beast",
+			"alignment": "unaligned",
+			"ac": "15 (natural armor)",
+			"hp": "45 (7dl0+7)",
+			"speed": "30 ft., swim 30 ft.",
+			"str": "15",
+			"dex": "13",
+			"con": "13",
+			"int": "1",
+			"wis": "9",
+			"cha": "3",
+			"skill": {
+				"stealth": "+3"
+			},
+			"senses": "blindsight 30 ft.",
+			"passive": "9",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The giant crayfish can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The giant crayfish makes two claw attacks."
+					]
+				},
+				{
+					"name": "Claw ",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) bludgeoning damage, and the target is grappled (escape DC 12). The crayfish has two claws, each of which can grapple only one target."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Giant Ice Toad",
+			"size": "L",
+			"type": "monstrosity",
+			"alignment": "neutral",
+			"ac": "14 (natural armor)",
+			"hp": "52 (7d10+14)",
+			"speed": "30 ft.",
+			"str": "16",
+			"dex": "13",
+			"con": "14",
+			"int": "8",
+			"wis": "10",
+			"cha": "6",
+			"immune": "cold",
+			"senses": "darkvision 60 ft.",
+			"passive": "10",
+			"languages": "Ice Toad",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The toad can breathe air and water."
+					]
+				},
+				{
+					"name": "Cold Aura",
+					"text": [
+						"Any creature that starts its turn within 10 feet of the toad takes 5 (1d10) cold damage."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"text": [
+						"The toad's long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) piercing damage, and the target is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the toad can't bite another target."
+					]
+				},
+				{
+					"name": "Swallow",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one Medium or smaller creature the toad is grappling. Hit: 10 (2d6+3) piercing damage, the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the toad, and it takes 10 (3d6) acid damage and 11 (2d10) cold damage at the start of each of the toad's turns. The toad can have only one target swallowed at a time.",
+						"If the toad dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 5 feet of movement, exiting prone."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Giant Skeleton",
+			"size": "H",
+			"type": "undead",
+			"alignment": "neutral evil",
+			"ac": "17 (natural armor)",
+			"hp": "115 (10d12+50)",
+			"speed": "30 ft.",
+			"str": "21",
+			"dex": "10",
+			"con": "20",
+			"int": "4",
+			"wis": "6",
+			"cha": "6",
+			"immune": "poison",
+			"conditionImmune": "exhaustion, poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": "8",
+			"languages": "understands Giant but can't speak",
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Evasion",
+					"text": [
+						"If the skeleton is subjected to an effect that allows it to make a saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"text": [
+						"The skeleton has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Turn Immunity",
+					"text": [
+						"The skeleton is immune to effects that turn undead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The skeleton makes three scimitar attacks."
+					]
+				},
+				{
+					"name": "Scimitar",
+					"text": [
+						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 15 (3d6+5) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Giant Subterranean Lizard",
+			"size": "H",
+			"type": "beast",
+			"alignment": "unaligned",
+			"ac": "14 (natural armor)",
+			"hp": "66 (7d12+21)",
+			"speed": "30 ft., swim 50 ft.",
+			"str": "21",
+			"dex": "9",
+			"con": "17",
+			"int": "2",
+			"wis": "10",
+			"cha": "7",
+			"skill": {
+				"stealth": "+3"
+			},
+			"passive": "10",
+			"languages": "-",
+			"cr": "4",
+			"trait": [],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The lizard makes two attacks: one with its bite and one with its tail. One attack can be replaced by Swallow."
+					]
+				},
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 16 (2d10+5) piercing damage and the target is grappled (escape DC 15). Until this grapple ends, the target is restrained, and the lizard can't bite another target."
+					]
+				},
+				{
+					"name": "Tail",
+					"text": [
+						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 12 (2d6+5) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"name": "Swallow",
+					"text": [
+						"Melee Weapon Attack: +7 to hit, reach 5 ft., one Medium or smaller creature the lizard is grappling. Hit: 16 (2d10+5) piercing damage. The target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it has total cover against attacks and other effects outside the lizard, and it takes 10 (3d6) acid damage at the start of each of the lizard's turns. The lizard can have only one target swallowed at a time.",
+						"If the lizard dies, a swallowed creature is no longer restrained by it and can escape from the corpse using 10 feet of movement, exiting prone."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Greater Zombie",
+			"size": "M",
+			"type": "undead",
+			"alignment": "neutral evil",
+			"ac": "15 (natural armor)",
+			"hp": "97 (13d8+39)",
+			"speed": "30 ft.",
+			"str": "18",
+			"dex": "10",
+			"con": "17",
+			"int": "4",
+			"wis": "6",
+			"cha": "6",
+			"save": "Wis +1",
+			"resist": "cold, necrotic",
+			"immune": "poison",
+			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": "8",
+			"languages": "understands the languages it knew in life but can't speak",
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Turn Resistance",
+					"text": [
+						"The zombie has advantage on saving throws against any effect that turns undead. Undead Fortitude. If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the lich drops to 1 hit point instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The zombie makes two melee attacks."
+					]
+				},
+				{
+					"name": "Empowered Slam",
+					"text": [
+						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) bludgeoning damage and 7 (2d6) necrotic damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Grenl",
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"goblinoid"
+				]
+			},
+			"alignment": "neutral evil",
+			"ac": "15 (leather armor, shield)",
+			"hp": "10 (3d6)",
+			"speed": "30 ft.",
+			"str": "8",
+			"dex": "14",
+			"con": "10",
+			"int": "10",
+			"wis": "13",
+			"cha": "8",
+			"skill": {
+				"stealth": "+6"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": "9",
+			"languages": "Common, Goblin",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Nimble Escape",
+					"text": [
+						"The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Grenl is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). She has the following cleric spells prepared:",
+						"• Cantrips (at will): poison spray, thaumaturgy",
+						"• 1st level (2 slots): bane, inflict wounds"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Scimitar",
+					"text": [
+						"Melee Weapon Attack: +4, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"text": [
+						"Ranged Weapon Attack: +4, range 80/320 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guthash",
+			"source": "TftYP",
+			"size": "M",
+			"type": "beast",
+			"alignment": "unaligned",
+			"ac": "12",
+			"hp": "16 (2d6)",
+			"speed": "30 ft.",
+			"str": "7",
+			"dex": "15",
+			"con": "11",
+			"int": "2",
+			"wis": "10",
+			"cha": "4",
+			"senses": "darkvision 60 ft.",
+			"passive": "10",
+			"cr": "1/4",
+			"action": [
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage. If the target is a creature, it must succeed on a DC 10 Constitution saving throw or contract a disease. Until the disease is cured, the target can't regain hit points except by magical means, and the target's hit point maximum decreases by 3 (1d6) every 24 hours. If the target's hit point maximum drops to 0 as a result of this disease, the target dies."
+					],
+					"attack": [
+						"Bite|5|1d4+2"
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Huge Giant Crab",
+			"size": "H",
+			"type": "beast",
+			"alignment": "unaligned",
+			"ac": "15 (natural armor)",
+			"hp": "161 (14d12+70)",
+			"speed": "30 ft., swim 30 ft.",
+			"str": "20",
+			"dex": "15",
+			"con": "20",
+			"int": "1",
+			"wis": "9",
+			"cha": "3",
+			"skill": {
+				"stealth": "+4"
+			},
+			"conditionImmune": "charmed, frightened, paralyzed (due to run-covered copper band on claw)",
+			"senses": "blindsight 30 ft.",
+			"passive": "9",
+			"languages": "-",
+			"cr": "8",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The crab can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claw",
+					"text": [
+						"Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 27 (4d10+5) bludgeoning damage, and the target is grappled, escape DC 14. The crab has two claws, each of which can grapple only one target."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Kalka-Kylla",
+			"size": "L",
+			"type": "monstrosity",
+			"alignment": "neutral",
+			"ac": "15 (natural armor)",
+			"hp": "85 (10d10+30)",
+			"speed": "30 ft., swim 30 ft.",
+			"str": "17",
+			"dex": "12",
+			"con": "16",
+			"int": "15",
+			"wis": "16",
+			"cha": "12",
+			"skill": {
+				"deception": "+3",
+				"insight": "+5",
+				"stealth": "+3"
+			},
+			"senses": "blindsight 30 ft.",
+			"passive": "13",
+			"languages": "Olman",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"Kalka-Kylla can breathe air and water."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"text": [
+						"While Kalka-Kylla remains motionless and hidden in its shell, it is indistinguishable from a polished boulder."
+					]
+				},
+				{
+					"name": "Shell",
+					"text": [
+						"Kalka-Kylla can use a bonus action to retract into or emerge from its shell. While retracted, Kalka-Kylla gains a +4 bonus to AC, and it has a speed of 0 and can't benefit from bonuses to speed."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"Kalka-Kylla makes two claw attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) bludgeoning damage, and if the target is a Medium or smaller creature, it is grappled (escape DC 13). Until this grapple ends, the target is restrained. Kalka-Kylla has two claws, each of which can grapple only one target."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Kelpie",
+			"size": "M",
+			"type": "plant",
+			"alignment": "neutral evil",
+			"ac": "14 (natural armor)",
+			"hp": "67 (9d8+27)",
+			"speed": "10 ft., swim 30 ft.",
+			"str": "14",
+			"dex": "14",
+			"con": "16",
+			"int": "7",
+			"wis": "12",
+			"cha": "10",
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"resist": "fire; bludgeoning, piercing",
+			"conditionImmune": "blinded, deafened, exhaustion",
+			"senses": "blindsight 60 ft.",
+			"passive": "13",
+			"languages": "Common, Sylvan",
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The kelpie can breathe air and water."
+					]
+				},
+				{
+					"name": "Seaweed Shape",
+					"text": [
+						"The kelpie can use its action to reshape its body into the form of a humanoid or beast that is Small, Medium, or Large. Its statistics are otherwise unchanged. The disguise is convincing, unless the kelpie is in bright light or the viewer is within 30 feet of it, in which case the seams between the seaweed strands are visible. The kelpie returns to its true form if takes a bonus action to do so or if it dies."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"text": [
+						"While the kelpie remains motionless in its true form, it is indistinguishable from normal seaweed."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The kelpie makes two slam attacks."
+					]
+				},
+				{
+					"name": "Slam",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 11 (2d8+2) piercing damage. If the target is a Medium or smaller creature, it is grappled (escape DC 12)."
+					]
+				},
+				{
+					"name": "Drowning Hypnosis",
+					"text": [
+						"The kelpie chooses one humanoid it can see within 150 feet of it. If the target can see the kelpie, the target must succeed on a DC 11 Wisdom saving throw or be magically charmed while the kelpie maintains concentration, up to 10 minutes (as if concentrating on a spell). The charmed target is incapacitated, and instead of holding its breath underwater, it tries to breathe normally and immediately runs out of breath, unless it can breathe water. If the charmed target is more than 5 feet away from the kelpie, the target must move on its turn toward the kelpie by the most direct route, trying to get within 5 feet. It doesn't avoid opportunity attacks.",
+						"Before moving into damaging terrain, such as lava or a pit, and whenever it takes damage from a source other than the kelpie or drowning, the target can repeat the saving throw. A charmed target can also repeat the saving throw at the end of each of its turns. If the saving throw is successful, the effect ends on it.",
+						"A target that successfully saves is immune to this kelpie's hypnosis for the next 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Malformed Kraken",
+			"size": "H",
+			"type": "monstrosity",
+			"alignment": "chaotic evil",
+			"ac": "17 (natural armor)",
+			"hp": "172 (15d12+75)",
+			"speed": "20 ft., swim 40 ft.",
+			"str": "25",
+			"dex": "11",
+			"con": "20",
+			"int": "11",
+			"wis": "15",
+			"cha": "15",
+			"save": "Str +11, Con +9, Int +4, Wis +6, Cha +6",
+			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": "lightning",
+			"conditionImmune": "frightened, paralyzed",
+			"senses": "truesight 60 ft.",
+			"passive": "12",
+			"languages": "understands Common but can't speak; telepathy 60 ft.",
+			"cr": "10",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The kraken can breathe air and water."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"text": [
+						"The kraken deals double damage to objects and structures."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The kraken makes three tentacle attacks. One of them can be replaced with a bite attack, and any of them can be replaced with Fling."
+					]
+				},
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +11 to hit, reach 5 ft., one target. Hit: 16 (2d8+7) piercing damage."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"text": [
+						"Melee Weapon Attack: +11 to hit, reach 20 ft., one target. Hit: 14 (2d6+7) bludgeoning damage, and the target is grappled (escape DC 16). Until this grapple ends, the target is restrained. The kraken has ten tentacles, each of which can grapple one target."
+					]
+				},
+				{
+					"name": "Fling",
+					"text": [
+						"One Medium or smaller object held or creature grappled by the kraken 's tentacles is thrown up to 60 feet in a random direction and knocked prone. If a thrown target strikes a solid surface, the target takes 3 (1d6) bludgeoning damage for every 10 feet it was thrown. If the target is thrown at another creature, that creature must succeed on a DC 16 Dexterity saving throw or take the same damage and be knocked prone."
+					]
+				},
+				{
+					"name": "Lightning Storm",
+					"text": [
+						"The kraken creates three bolts of lightning, each of which can strike a target the kraken can see within 150 feet of it. A target must make a DC 16 Dexterity saving throw, taking 16 (3d10) lightning damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Nahual",
+			"size": "M",
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"demon"
+				]
+			},
+			"alignment": "chaotic evil",
+			"ac": "14",
+			"hp": "52 (8d8+16)",
+			"speed": "30 ft.",
+			"str": "11",
+			"dex": "18",
+			"con": "14",
+			"int": "11",
+			"wis": "12",
+			"cha": "14",
+			"skill": {
+				"deception": "+6",
+				"insight": "+3"
+			},
+			"conditionImmune": "charmed",
+			"senses": "darkvision 60 ft.",
+			"passive": "11",
+			"languages": "Common",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Shapechanger",
+					"text": [
+						"The doppelganger can use its action to polymorph into a Small or Medium humanoid it has seen, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+					]
+				},
+				{
+					"name": "Ambusher",
+					"text": [
+						"In the first round of a combat, the doppelganger has advantage on attack rolls against any creature it has surprised."
+					]
+				},
+				{
+					"name": "Surprise Attack",
+					"text": [
+						"If the doppelganger surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 10 (3d6) damage from the attack."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The doppelganger makes two melee attacks."
+					]
+				},
+				{
+					"name": "Slam",
+					"text": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Read Thoughts",
+					"text": [
+						"The doppelganger magically reads the surface thoughts of one creature within 60 ft. of it. The effect can penetrate barriers, but 3 ft. of wood or dirt, 2 ft. of stone, 2 inches of metal, or a thin sheet of lead blocks it. While the target is in range, the doppelganger can continue reading its thoughts, as long as the doppelganger's concentration isn't broken (as if concentrating on a spell). While reading the target's mind, the doppelganger has advantage on Wisdom (Insight) and Charisma (Deception, Intimidation, and Persuasion) checks against the target."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Nereid",
+			"size": "M",
+			"type": "fey",
+			"alignment": "any chaotic alignment",
+			"ac": "13",
+			"hp": "44 (8d8+8)",
+			"speed": "30 ft., swim 60 ft.",
+			"str": "10",
+			"dex": "17",
+			"con": "12",
+			"int": "13",
+			"wis": "14",
+			"cha": "16",
+			"skill": {
+				"acrobatics": "+5",
+				"nature": "+3",
+				"stealth": "+5",
+				"survival": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": "12",
+			"languages": "Aquan, Common, Elvish, Sylvan",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The nereid can breathe air and water."
+					]
+				},
+				{
+					"name": "Aquatic Invisibility",
+					"text": [
+						"If immersed in water, the nereid can make itself invisible as a bonus action. It remains invisible until it leaves the water, ends the invisibility as a bonus action, or dies."
+					]
+				},
+				{
+					"name": "Mantle Dependent",
+					"text": [
+						"The nereid wears a mantle of silky cloth the color of sea foam, which holds the creature's spirit. The mantle has an AC and hit points equal to that of the nereid, but the garment can't be directly harmed while the nereid wears it. If the mantle is destroyed, the nereid becomes poisoned and dies within 1 hour. A nereid is willing to do anything in its power to recover the mantle if it is stolen, including serving the thief."
+					]
+				},
+				{
+					"name": "Shape Water",
+					"text": [
+						"The nereid can cast control water at will, requiring no components. Its spellcasting ability for it is Charisma. This use of the spell has a range of 30 feet and can affect a cube of water no larger than 30 feet on a side."
+					]
+				},
+				{
+					"name": "Speak With Animals",
+					"text": [
+						"The nereid can comprehend and verbally communicate with beasts."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Blinding Acid",
+					"text": [
+						"Melee or Ranged Spell Attack: +5 to hit, reach 5 ft. or range 30 ft., one target. Hit: 16 (2d12+3) acid damage, and the target is blinded until the start of the nereid's next turn."
+					]
+				},
+				{
+					"name": "Drowning Kiss (Recharge 5-6)",
+					"text": [
+						"The nereid touches one creature it can see within 5 feet of it. The target must succeed on a DC 13 Constitution saving throw or take 22 (3d12+3) acid damage. On a failure, it also runs out of breath and can't speak for 1 minute. At the end of each of its turns, it can repeat the save, ending the effect on itself on a success."
+					]
+				},
+				{
+					"name": "Water Lash",
+					"text": [
+						"The nereid causes a 5-foot cube of water within 60 feet of it to take a shape of its choice and strike one target it can see within 5 feet of that water. The target must make a DC 13 Strength saving throw. On a failed save, it takes 17 (4d6+3) bludgeoning damage, and if it is a Large or smaller creature, it is pushed up to 15 feet in a straight line or is knocked prone (nereid's choice). On a successful save, the target takes half as much damage and isn't pushed or knocked prone."
+					]
+				}
+			]
+		},
+		{
+			"name": "Nimira",
+			"source": "TftYP",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": "lawful evil",
+			"ac": "17 (splint armor)",
+			"hp": "52 (8d8+16)",
+			"speed": "25 ft.",
+			"str": "14",
+			"dex": "11",
+			"con": "14",
+			"int": "11",
+			"wis": "10",
+			"cha": "9",
+			"resist": "poison",
+			"senses": "darkvision 120 ft.",
+			"passive": "10",
+			"languages": "Dwarvish, Undercommon",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Duergar Resilience",
+					"text": [
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"text": [
+						"For 1 minute, the duergar magically increases in size, along with anything it is wearing or carrying. While enlarged, the duergar is Large, doubles its damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If the duergar lacks the room to become Large, it attains the maximum size possible in the space available."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"text": [
+						"Multiattack. Nimira makes two greatsword attacks."
+					]
+				},
+				{
+					"name": "Greatsword",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) slashing damage, or 16 (4d6+2) slashing damage while enlarged."
+					]
+				},
+				{
+					"name": "War Pick",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage, or 11 (2d8+2) piercing damage while enlarged."
+					],
+					"attack": [
+						"War Pick|4|1d8+2",
+						"Enlarged|4|2d8+2"
+					]
+				},
+				{
+					"name": "Javelin",
+					"text": [
+						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, or 9 (2d6+2) piercing damage while enlarged."
+					],
+					"attack": [
+						"Javelin|4|1d6+2",
+						"Enlarged|4|2d6+2"
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"text": [
+						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it ."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Ooze Master",
+			"size": "H",
+			"type": "undead",
+			"alignment": "lawful evil",
+			"ac": "9 (natural armor)",
+			"hp": "138 (12d12+60)",
+			"speed": "30 ft., climb 30 ft.",
+			"str": "16",
+			"dex": "1",
+			"con": "20",
+			"int": "17",
+			"wis": "10",
+			"cha": "16",
+			"save": "Int +7, Wis +4",
+			"skill": {
+				"arcana": "+7",
+				"insight": "+4"
+			},
+			"resist": "lightning, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": "acid, cold, poison",
+			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, poisoned, prone",
+			"senses": "blindsight 120 ft.",
+			"passive": "10",
+			"languages": "Common, Primordial, Thayan",
+			"cr": "10",
+			"trait": [
+				{
+					"name": "Corrosive Form",
+					"text": [
+						"A creature that touches the Ooze Master or hits it with a melee attack while within 5 feet of it takes 9 (2d8) acid damage. Any nonmagical weapon that hits the Ooze Master corrodes. After dealing damage, the weapon takes a permanent and cumulative -1 penalty to damage rolls. If its penalty drops to -5, the weapon is destroyed. Nonmagical ammunition that hits the Ooze Master is destroyed after dealing damage.",
+						"The Ooze Master can eat through 2-inch-thick, nonmagical wood or metal in 1 round."
+					]
+				},
+				{
+					"name": "Instinctive Attack",
+					"text": [
+						"When the Ooze Master casts a spell with a casting time of 1 action, it can make one pseudopod attack as a bonus action."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"The Ooze Master is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 15, +7 to hit with spell attacks). It has the following wizard spells prepared:",
+						"Cantrips (at will): acid splash, friends, mage hand, poison spray",
+						"1st level (4 slots): charm person, detect magic, magic missile, ray of sickness",
+						"2nd level (3 slots): detect thoughts, Melf's acid arrow, suggestion",
+						"3rd level (3 slots): fear, slow, stinking cloud",
+						"4th level (3 slots): confusion, Evard's black tentacles",
+						"5th level (1 slot): cloudkill"
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"text": [
+						"The Ooze Master can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Pseudopod",
+					"text": [
+						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 13 (3d6+3) bludgeoning damage plus 10 (3d6) acid damage."
+					]
+				}
+			],
+			"reaction": {
+				"name": "Instinctive Charm",
+				"text": [
+					"If a creature the Ooze Master can see makes an attack roll against it while within 30 feet of it, the Ooze Master can use a reaction to divert the attack if another creature is within the attack's range. The attacker must make a DC 15 Wisdom saving throw. On a failed save, the attacker targets the creature that is closest to it, not including itself or the Ooze Master. If multiple creatures are closest, the attacker chooses which one to target. On a successful save, the attacker is immune to this Instinctive Charm for 24 hours. Creatures that can't be charmed are immune to this effect."
+				]
+			}
+		},
+		{
+			"source": "TftYP",
+			"name": "Sea Lion",
+			"size": "L",
+			"type": "monstrosity",
+			"alignment": "unaligned",
+			"ac": "15 (natural armor)",
+			"hp": "90 (12d10+24)",
+			"speed": "10 ft., swim 40 ft.",
+			"str": "17",
+			"dex": "15",
+			"con": "15",
+			"int": "3",
+			"wis": "12",
+			"cha": "8",
+			"skill": {
+				"perception": "+4",
+				"stealth": "+5"
+			},
+			"passive": "14",
+			"languages": "-",
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The sea lion can breathe air and water."
+					]
+				},
+				{
+					"name": "Keen Smell",
+					"text": [
+						"The sea lion has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"text": [
+						"The sea lion has advantage on an attack roll against a creature if at least one of the sea lion's allies is within 5 feet of the creature and the ally isn't incapacitated."
+					]
+				},
+				{
+					"name": "Swimming Leap",
+					"text": [
+						"With a 10-foot swimming start, the sea lion can long jump out of or across the water up to 25 feet."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The sea lion makes three attacks: one bite attack and two claw attacks."
+					]
+				},
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"text": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Sharwyn Hucrele",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": "neutral evil",
+			"ac": "16 (Barkskin trait)",
+			"hp": "13 (2d8+4)",
+			"speed": "30 ft.",
+			"str": "11",
+			"dex": "13",
+			"con": "14",
+			"int": "16",
+			"wis": "14",
+			"cha": "9",
+			"skill": {
+				"arcana": "+5",
+				"insight": "+4",
+				"persuasion": "+1"
+			},
+			"passive": "12",
+			"languages": "Common, Draconic, Goblin",
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Barkskin",
+					"text": [
+						"Sharwyn's AC can't be lower than 16."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"text": [
+						"Sharwyn has a spellbook that contains the spells listed in her Spellcasting trait, plus detect magic and silent image."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). She has the following wizard spells prepared:",
+						"• Cantrips (at will): light, prestidigitation, ray of frost",
+						"• 1st level (2 slots): color spray, magic missile, shield, sleep"
+					]
+				},
+				{
+					"name": "Tree Thrall",
+					"text": [
+						"If the Gulthias Tree dies, Sharwyn dies 24 hours later."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"text": [
+						"Melee Weapon Attack: +4, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Sir Braford",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": "neutral evil",
+			"ac": "18 (chain mail, shield)",
+			"hp": "19 (3d8+6)",
+			"speed": "30 ft.",
+			"str": "16",
+			"dex": "9",
+			"con": "14",
+			"int": "10",
+			"wis": "13",
+			"cha": "14",
+			"skill": {
+				"athletics": "+5",
+				"perception": "+3"
+			},
+			"passive": "13",
+			"languages": "Common",
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Barkskin",
+					"text": [
+						"Sir Braford's AC can't be lower than 16."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"text": [
+						"Sir Braford wields Shatterspike, a magic longsword that grants a +1 bonus to attack and damage rolls made with it (included in his attack). See the Shatterspike handout for the item's other properties."
+					]
+				},
+				{
+					"name": "Tree Thrall",
+					"text": [
+						"If the Gulthias Tree dies, Sir Braford dies 24 hours later."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Longsword",
+					"text": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage, or 9 (1d10+4) slashing damage if used with two hands."
+					]
+				}
+			],
+			"reaction": {
+				"name": "Protection",
+				"text": [
+					"When a creature Sir Braford can see attacks a target other than him that is within 5 feet of him, he can use a reaction to use his shield to impose disadvantage on the attack roll."
+				]
+			}
+		},
+		{
+			"source": "TftYP",
+			"name": "Siren",
+			"size": "M",
+			"type": "fey",
+			"alignment": "chaotic good",
+			"ac": "14",
+			"hp": "38 (7d8+7)",
+			"speed": "30 ft., swim 30 ft.",
+			"str": "10",
+			"dex": "18",
+			"con": "12",
+			"int": "13",
+			"wis": "14",
+			"cha": "16",
+			"skill": {
+				"medicine": "+4",
+				"nature": "+3",
+				"stealth": "+6",
+				"survival": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": "12",
+			"languages": "Common, Elvish, Sylvan",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"Siren can breathe air and water."
+					]
+				},
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						"Siren's innate spellcasting ability is Charisma (spell save DC 13). She can innately cast the following spells, requiring no material components:",
+						"1/day each: charm person, fog cloud, greater invisibility, polymorph (self only)"
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"text": [
+						"Siren has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Shortsword",
+					"text": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
+					]
+				},
+				{
+					"name": "Stupefying Touch",
+					"text": [
+						"Siren touches one creature she can see within 5 feet of her. The creature must succeed on a DC 13 Intelligence saving throw or take 13 (3d6+3) psychic damage and be stunned until the start of Siren's next turn."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Snarla",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human",
+					"shapechanger"
+				]
+			},
+			"alignment": "chaotic evil",
+			"ac": "11 (in humanoid form, 12 in wolf or hybrid form)",
+			"hp": "58 (9d8+18)",
+			"speed": "30 ft. (40 ft. in wolf form)",
+			"str": "15",
+			"dex": "13",
+			"con": "14",
+			"int": "16",
+			"wis": "11",
+			"cha": "10",
+			"skill": {
+				"perception": "+4"
+			},
+			"immune": "bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
+			"passive": "14",
+			"languages": "Common (can't speak in wolf form)",
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Shapechanger",
+					"text": [
+						"The werewolf can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+					]
+				},
+				{
+					"name": "Keen Hearing And Smell",
+					"text": [
+						"The werewolf has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Snarla is a 6th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). She has the following wizard spells prepared:",
+						"Cantrips (at will): fire bolt, light, mage hand, shocking grasp",
+						"1st level (4 slots): magic missile, shield, thunderwave",
+						"2nd level (3 slots): mirror image, web",
+						"3rd level (3 slots): dispel magic, fear, haste, stinking cloud"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack (Humanoid or Hybrid Form Only)",
+					"text": [
+						"The werewolf makes two attacks: one with its bite and one with its claws or spear."
+					]
+				},
+				{
+					"name": "Bite (Wolf or Hybrid Form Only)",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage. If the target is a humanoid, it must succeed on a DC 12 Constitution saving throw or be cursed with werewolf lycanthropy."
+					]
+				},
+				{
+					"name": "Claws (Hybrid Form Only)",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (2d4+2) slashing damage."
+					]
+				},
+				{
+					"name": "Spear (Humanoid Form Only)",
+					"text": [
+						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one creature. Hit: 5 (1d6+2) piercing damage, or 6 (1d8+2) piercing damage if used with two hands to make a melee attack."
+					]
+				}
+			]
+		},
+		{
+			"name": "Snurrevin",
+			"source": "TftYP",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": "lawful evil",
+			"ac": "16 (scale mail, shield)",
+			"hp": "45 (7d8+14)",
+			"speed": "25 ft.",
+			"str": "14",
+			"dex": "11",
+			"con": "14",
+			"int": "14",
+			"wis": "10",
+			"cha": "9",
+			"resist": "poison",
+			"senses": "darkvision 120 ft.",
+			"passive": "10",
+			"languages": "Dwarvish, Undercommon",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Duergar Resilience",
+					"text": [
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Snurrevin is a 3rd-level spellcaster. His spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). He has the following wizard spells prepared:",
+						"Cantrips (at will): fire bolt, mage hand, minor illusion, shocking grasp",
+						"1st level (4 slots): color spray, shield, silent image",
+						"2nd level (2 slots): hold person, shatter"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"text": [
+						"For 1 minute, the duergar magically increases in size, along with anything it is wearing or carrying. While enlarged, the duergar is Large, doubles its damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If the duergar lacks the room to become Large, it attains the maximum size possible in the space available."
+					]
+				},
+				{
+					"name": "War Pick",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage, or 11 (2d8+2) piercing damage while enlarged."
+					],
+					"attack": [
+						"War Pick|4|1d8+2",
+						"Enlarged|4|2d8+2"
+					]
+				},
+				{
+					"name": "Javelin",
+					"text": [
+						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage, or 9 (2d6+2) piercing damage while enlarged."
+					],
+					"attack": [
+						"Javelin|4|1d6+2",
+						"Enlarged|4|2d6+2"
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"text": [
+						"The duergar magically turns invisible until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it ."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Tarul Var",
+			"size": "M",
+			"type": "undead",
+			"alignment": "neutral evil",
+			"ac": "16 (natural armor)",
+			"hp": "105 (14d8+42)",
+			"speed": "30 ft.",
+			"str": "11",
+			"dex": "16",
+			"con": "16",
+			"int": "19",
+			"wis": "14",
+			"cha": "16",
+			"save": "Con +8, Int +9, Wis +7",
+			"skill": {
+				"arcana": "+9",
+				"history": "+9",
+				"insight": "+7",
+				"perception": "+7"
+			},
+			"resist": "cold, lightning, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": "poison",
+			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": "17",
+			"languages": "Abyssal, Common, Infernal, Primordial, Thayan",
+			"cr": "13",
+			"trait": [
+				{
+					"name": "Focused Conjuration",
+					"text": [
+						"While Var is concentrating on a conjuration spell, his concentration can't be broken as a result of taking damage."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"text": [
+						"If Var fails a saving throw, he can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"text": [
+						"If Var is destroyed but his phylactery remains intact, Var gains a new body in 1d10 days, regaining all his hit points and becoming active again. The new body appears within 5 feet of the phylactery."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Var is a 12th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). He has the following wizard spells prepared:",
+						"Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation, ray of frost",
+						"1st level (4 slots): detect magic, magic missile, shield, unseen servant*",
+						"2nd level (3 slots): detect thoughts, flaming sphere*, mirror image, scorching ray",
+						"3rd level (3 slots): counterspell, dispel magic, fireball",
+						"4th level (3 slots): dimension door*, Evard's black tentacles*",
+						"5th level (3 slots): cloudkill*, scrying",
+						"6th level (1 slot): circle of death",
+						"*Conjuration spell of 1st level or higher"
+					]
+				},
+				{
+					"name": "Turn Resistance",
+					"text": [
+						"Var has advantage on saving throws against any effect that turns undead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Paralyzing Touch",
+					"text": [
+						"Melee Spell Attack: +9 to hit, reach 5 ft., one creature. Hit: 10 (3d6) cold damage. The target must succeed on a DC 17 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				},
+				{
+					"name": "Benign Transposition",
+					"text": [
+						"Var teleports up to 30 feet to an unoccupied space he can see. Alternatively, he can choose a space within range that is occupied by a Small or Medium creature. If that creature is willing, both creatures teleport, swapping places. Var can use this feature again only after he finishes a long rest or casts a conjuration spell of 1st level or higher."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Cantrip",
+					"text": [
+						"Var casts a cantrip."
+					]
+				},
+				{
+					"name": "Paralyzing Touch (Costs 2 Actions)",
+					"text": [
+						"Var uses Paralyzing Touch ."
+					]
+				},
+				{
+					"name": "Frightening Gaze (Costs 2 Actions)",
+					"text": [
+						"Var fixes his gaze on one creature he can see within 10 feet of him . The target must succeed on a DC 17 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to Var's gaze for the next 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Tecuziztecatl",
+			"size": "L",
+			"type": "monstrosity",
+			"alignment": "neutral",
+			"ac": "13 (natural armor)",
+			"hp": "102 (12d10+36)",
+			"speed": "30 ft., climb 30 ft., swim 30 ft.",
+			"str": "17",
+			"dex": "10",
+			"con": "16",
+			"int": "15",
+			"wis": "16",
+			"cha": "13",
+			"skill": {
+				"deception": "+3",
+				"stealth": "+2"
+			},
+			"resist": "bludgeoning from nonmagical attacks",
+			"immune": "acid",
+			"senses": "blindsight 30 ft.",
+			"passive": "13",
+			"languages": "Olman, Primal",
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"Tecuziztecatl can breathe air and water."
+					]
+				},
+				{
+					"name": "Glowing",
+					"text": [
+						"Tecuziztecatl sheds dim light within 20 feet of itself."
+					]
+				},
+				{
+					"name": "Flexible",
+					"text": [
+						"Tecuziztecatl can enter a space large enough for a Medium creature without squeezing."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"text": [
+						"Tecuziztecatl can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"Tecuziztecatl makes two pseudopod attacks."
+					]
+				},
+				{
+					"name": "Pseudopod",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 12 (2d8+3) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Spit Acid (Recharge 4-6)",
+					"text": [
+						"Tecuziztecatl exhales acid in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 13 Dexterity saving throw, taking 18 (4d8) acid damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Thayan Apprentice",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": "any non-good alignment",
+			"ac": "12 (15 with mage armor)",
+			"hp": "27 (5d8+5)",
+			"speed": "30 ft.",
+			"str": "10",
+			"dex": "14",
+			"con": "12",
+			"int": "15",
+			"wis": "13",
+			"cha": "11",
+			"skill": {
+				"arcana": "+4"
+			},
+			"passive": "11",
+			"languages": "Common, Thayan",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Doomvault Devotion",
+					"text": [
+						"Within the Doomvault, the apprentice has advantage on saving throws against being charmed or frightened ."
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"The apprentice is a 4th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). It has the following wizard spells prepared:",
+						"Cantrips (at will): fire bolt, mage hand, prestidigitation, shocking grasp",
+						"1st level (4 slots): burning hands, detect magic, mage armor, shield",
+						"2nd level (3 slots): blur, scorching ray"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"text": [
+						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Thayan Warrior",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": "any non-good alignment",
+			"ac": "16 (chain shirt, shield)",
+			"hp": "52 (8d8+16)",
+			"speed": "30 ft.",
+			"str": "16",
+			"dex": "13",
+			"con": "14",
+			"int": "10",
+			"wis": "11",
+			"cha": "11",
+			"skill": {
+				"perception": "+2"
+			},
+			"passive": "12",
+			"languages": "Common, Thayan",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Doomvault Devotion",
+					"text": [
+						"Within the Doomvault, the warrior has advantage on saving throws against being charmed or frightened."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"text": [
+						"The warrior has advantage on an attack roll against a creature if at least one of the warrior's allies is within 5 feet of the creature and the ally isn't incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The warrior makes two melee attacks."
+					]
+				},
+				{
+					"name": "Longsword",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage, or 8 (1d10+3) slashing damage if used with two hands."
+					]
+				},
+				{
+					"name": "Javelin",
+					"text": [
+						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 6 (1d6+3) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Thorn Slinger",
+			"size": "L",
+			"type": "plant",
+			"alignment": "unaligned",
+			"ac": "11",
+			"hp": "32 (5dl0+5)",
+			"speed": "10 ft.",
+			"str": "13",
+			"dex": "12",
+			"con": "12",
+			"int": "1",
+			"wis": "10",
+			"cha": "1",
+			"conditionImmune": "blinded, deafened, frightened",
+			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"passive": "10",
+			"languages": "-",
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Adhesive Blossoms",
+					"text": [
+						"The thorn slinger adheres to anything that touches it. A Medium or smaller creature adhered to the thorn slinger is also grappled by it (escape DC 11). Ability checks made to escape this grapple have disadvantage.",
+						"At the end of each of the thorn slinger's turns, anything grappled by it takes 3 (1d6) acid damage."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"text": [
+						"While the thorn slinger remains motionless, it is indistinguishable from an inanimate bush."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Thorns",
+					"text": [
+						"Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30 ft., one target. Hit: 8 (2d6+1) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Tloques-Popolocas",
+			"size": "M",
+			"type": "undead",
+			"alignment": "neutral evil",
+			"ac": "15 (natural armor)",
+			"hp": "82 (11d8+33)",
+			"speed": "30 ft.",
+			"str": "16",
+			"dex": "16",
+			"con": "16",
+			"int": "11",
+			"wis": "10",
+			"cha": "12",
+			"save": "Dex +6, Wis +3",
+			"skill": {
+				"perception": "+3",
+				"stealth": "+7"
+			},
+			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"senses": "darkvision 60 ft.",
+			"passive": "13",
+			"languages": "the languages it knew in life",
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Regeneration",
+					"text": [
+						"The vampire regains 10 hit points at the start of its turn if it has at least 1 hit point and isn't in sunlight or running water. If the vampire takes radiant damage or damage from holy water, this trait doesn't function at the start of the vampire's next turn."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"text": [
+						"The vampire can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Vampire Weaknesses",
+					"text": [
+						"The vampire has the following flaws: ",
+						"• Forbiddance. The vampire can't enter a residence without an invitation from one of the occupants.",
+						"• Harmed by Running Water. The vampire takes 20 acid damage when it ends its turn in running water.",
+						"• Stake to the Heart. The vampire is destroyed if a piercing weapon made of wood is driven into its heart while it is incapacitated in its resting place.",
+						"• Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
+					]
+				},
+				{
+					"name": "Shapechanger",
+					"text": [
+						"If the vampire isn't in sun light or running water, it can use its action to Polymorph into a Tiny bat, or back into its true form.",
+						"While in bat form, the vampire can't speak, its walking speed is 5 feet, and it has a flying speed of 30 feet. Its Statistics, other than its size and speed, are unchanged. Anything it is wearing transforms with it, but nothing it is carrying does. It reverts to its true form if it dies."
+					]
+				},
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						"Tloques can cast hold person (DC 14) at will, requiring no components, but his target must be able to see him."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The vampire makes two attacks."
+					]
+				},
+				{
+					"name": "Claws",
+					"text": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 8 (2d4+3) slashing damage. Instead of dealing damage, the vampire can grapple the target, escape DC 13."
+					]
+				},
+				{
+					"name": "Children of the Night (1/Day)",
+					"text": [
+						"The vampire magically calls 2d4 swarms of bats, provided that the sun isn't up. The called creatures arrive in 1d4 rounds, acting as allies of the vampire and obeying its spoken commands. The beasts remain for 1 hour, until the vampire dies, or until the vampire dismisses them as a bonus action."
+					]
+				},
+				{
+					"name": "Tloques' Berserker Axe +2",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (1d8+5) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Vampiric Mist",
+			"size": "M",
+			"type": "undead",
+			"alignment": "chaotic evil",
+			"ac": "13",
+			"hp": "45 (6d8+18)",
+			"speed": "0 ft., fly 30 ft. (hover)",
+			"str": "6",
+			"dex": "16",
+			"con": "16",
+			"int": "6",
+			"wis": "12",
+			"cha": "7",
+			"save": "Wis +3",
+			"resist": "acid, cold, lightning, necrotic, thunder; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": "poison",
+			"conditionImmune": "charmed, exhaustion, grappled, paralyzed, petrified, poisoned, prone, restrained",
+			"senses": "darkvision 60 ft.",
+			"passive": "11",
+			"languages": "-",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Blood Sense",
+					"text": [
+						"The vampiric mist can sense living creatures that have blood or similar vital fluids in a radius of 60 feet."
+					]
+				},
+				{
+					"name": "Forbiddance",
+					"text": [
+						"The vampiric mist can't enter a residence without an invitation from one of the occupants."
+					]
+				},
+				{
+					"name": "Misty Form",
+					"text": [
+						"The vampiric mist can occupy another creature's space and vice versa. In addition, if air can pass through a space, the mist can pass through it without squeezing. Each foot of movement in water costs it 2 extra feet, rather than 1 extra foot. The mist can't manipulate objects in any way that requires hands; it can apply simple force only."
+					]
+				},
+				{
+					"name": "Sunlight Hypersensitivity",
+					"text": [
+						"The vampiric mist takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, the mist has disadvantage on attack rolls and ability checks."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Blood Drain",
+					"text": [
+						"One creature in the vampiric mist's space must make a DC 13 Constitution saving throw (undead and constructs automatically succeed). On a failed save, the target takes 10 (2d6+3) necrotic damage, its hit point maximum is reduced by an amount equal to the necrotic damage taken, and the mist regains hit points equal to that amount. This reduction to the target's hit point maximum lasts until the target finishes a long rest. It dies if this effect reduces its hit point maximum to 0."
+					]
+				}
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "White Maw",
+			"size": "G",
+			"type": "ooze",
+			"alignment": "chaotic neutral",
+			"ac": "5",
+			"hp": "217 (14d20+70)",
+			"speed": "10 ft.",
+			"str": "18",
+			"dex": "1",
+			"con": "20",
+			"int": "12",
+			"wis": "10",
+			"cha": "3",
+			"resist": "acid, cold, fire",
+			"immune": "poison",
+			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, poisoned, prone",
+			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"passive": "10",
+			"languages": "telepathy 50 ft.",
+			"cr": "10",
+			"trait": [
+				{
+					"name": "Amorphous Form",
+					"text": [
+						"White Maw can occupy another creature's space and vice versa."
+					]
+				},
+				{
+					"name": "Corrode Metal",
+					"text": [
+						"Any nonmagical weapon made of metal that hits White Maw corrodes. After dealing damage, the weapon takes a permanent and cumulative -1 penalty to damage rolls. if its penalty drops to -5, the weapon is destroyed. Nonmagical ammunition made of metal that hits White Maw is destroyed after dealing damage.",
+						"White Maw can eat through 2-inch-thick, nonmagical metal in 1 round."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"text": [
+						"While White Maw remains motionless, it is indistinguishable from white stone."
+					]
+				},
+				{
+					"name": "Killer Response",
+					"text": [
+						"Any creature that starts its turn in White Maw's space is targeted by a pseudopod attack if White Maw isn't incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Pseudopod",
+					"text": [
+						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 22 (4d8+4) bludgeoning damage plus 9 (2d8) acid damage. If the target is wearing nonmagical metal armor, its armor is partly corroded and takes a permanent and cumulative -1 penalty to the AC it offers. The armor is destroyed if the penalty reduces its AC to 10."
+					]
+				}
+			]
+		},
+		{
+			"name": "Yusdrayl",
+			"source": "TftYP",
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"kobold"
+				]
+			},
+			"alignment": "lawful evil",
+			"ac": "12 (15 with mage armor)",
+			"hp": "16 (3d6+6)",
+			"speed": "30 ft.",
+			"str": "8",
+			"dex": "15",
+			"con": "14",
+			"int": "10",
+			"wis": "10",
+			"cha": "16",
+			"skill": {
+				"arcana": "+2",
+				"insight": "+2",
+				"stealth": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": "10",
+			"languages": "Common, Draconic",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Yusdrayl is a 2nd-level spellcaster. Her spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). She knows the following sorcerer spells:",
+						"• Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp",
+						"• 1st level (4 slots): burning hands, chromatic orb, mage armor"
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, Yusdrayl has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"text": [
+						"Yusdrayl has advantage on an attack roll against a creature if at least one of her allies is within 5 ft. of the creature and the ally isn't incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage."
+					],
+					"attack": [
+						"|4|1d4+2"
+					]
+				}
+			]
+		}
+	]
+}

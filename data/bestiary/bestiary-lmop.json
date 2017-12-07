@@ -1,0 +1,291 @@
+{
+	"monster": [
+		{
+			"name": "Evil Mage",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"source": "LMoP",
+			"alignment": "lawful evil",
+			"ac": "12",
+			"hp": "22 (5d8)",
+			"speed": "30 ft.",
+			"str": "9",
+			"dex": "14",
+			"con": "11",
+			"int": "17",
+			"wis": "12",
+			"cha": "11",
+			"save": "Int +5, Wis +3",
+			"skill": {
+				"arcana": "+5",
+				"history": "+5"
+			},
+			"passive": "11",
+			"languages": "Common, Draconic, Dwarvish, Elvish",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Spellcasting",
+					"text": [
+						"The mage is a 4th-level spellcaster that uses Intelligence as its spellcasting ability (spell save DC 13; +5 to hit with spell attacks). The mage knows the following spells from the wizard's spell list:",
+						"• Cantrips (at will): light, mage hand, shocking grasp",
+						"• 1st Level (4 slots): charm person, magic missile",
+						"• 2nd Level (3 slots): hold person, misty step"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"text": [
+						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 3 (1d8-1) bludgeoning damage."
+					],
+					"attack": [
+						"One Handed|1|1d6-1",
+						"Two Handed|1|1d8-1"
+					]
+				}
+			],
+			"spells": "light, mage hand, shocking grasp, charm person, magic missile, hold person, misty step"
+		},
+		{
+			"name": "Mormesk the Wraith",
+			"size": "M",
+			"type": "undead",
+			"source": "LMoP",
+			"alignment": "neutral evil",
+			"ac": "13",
+			"hp": "45 (6d8+18)",
+			"speed": "0 ft., fly 60 ft.",
+			"str": "6",
+			"dex": "16",
+			"con": "16",
+			"int": "12",
+			"wis": "14",
+			"cha": "15",
+			"resist": "acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
+			"immune": "necrotic, poison",
+			"conditionImmune": "charmed, grappled, paralyzed, petrified, poisoned, prone, restrained",
+			"senses": "darkvision 60 ft.",
+			"passive": "12",
+			"languages": "Common, Infernal",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Incorporeal Movement",
+					"text": [
+						"The wraith can move through an object or another creature, but can't stop there."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, the wraith has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Life Drain",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 16 (3d8+3) necrotic damage, and the target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. If this attack reduces the target's hit point maximum to 0, the target dies. This reduction to the target's hit point maximum lasts until the target finishes a long rest."
+					],
+					"attack": [
+						"Life Drain|5|3d8+3"
+					]
+				}
+			]
+		},
+		{
+			"name": "Nezznar the Black Spider",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"elf"
+				]
+			},
+			"source": "LMoP",
+			"alignment": "neutral evil",
+			"ac": "11 (14 with mage armor)",
+			"hp": "27 (6d8)",
+			"speed": "30 ft.",
+			"str": "9",
+			"dex": "13",
+			"con": "10",
+			"int": "16",
+			"wis": "14",
+			"cha": "13",
+			"save": "Int +5, Wis +4",
+			"skill": {
+				"arcana": "+5",
+				"perception": "+4",
+				"stealth": "+3"
+			},
+			"senses": "darkvision 120 ft.",
+			"passive": "14",
+			"languages": "Elvish, Undercommon",
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Special Equipment",
+					"text": [
+						"Nezznar has a spider staff."
+					]
+				},
+				{
+					"name": "Fey Ancestry",
+					"text": [
+						"Nezznar has advantage on saving throws against being charmed, and magic can't put him to sleep."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"Nezznar has disadvantage on attack rolls when he or his target is in sunlight."
+					]
+				},
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						"Nezznar can innately cast the following spells, requiring no material components:",
+						"• At will: dancing lights",
+						"• 1/day each: darkness, faerie fire (save DC 12)"
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Nezznar is a 4th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13; +5 to hit with spell attacks). Nezznar has the following spells prepared from the wizard's spell list:",
+						"• Cantrips (at will): mage hand, ray of frost, shocking grasp",
+						"• 1st Level (4 slots): mage armor, magic missile, shield",
+						"• 2nd Level (3 slots): invisibility, suggestion"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Spider Staff",
+					"text": [
+						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage plus 3 (1d6) poison damage."
+					],
+					"attack": [
+						"One Handed|1|1d6-1+1d6",
+						"Two Handed|1|1d8-1+1d6"
+					]
+				}
+			],
+			"spells": "dancing lights, darkness, faerie fire, mage hand, ray of frost, shocking grasp, mage armor, magic missile, shield, invisibility, suggestion"
+		},
+		{
+			"name": "Redbrand Ruffian",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"source": "LMoP",
+			"alignment": "neutral evil",
+			"ac": "14 (studded leather armor)",
+			"hp": "16 (3d8+3)",
+			"speed": "30 ft.",
+			"str": "11",
+			"dex": "14",
+			"con": "12",
+			"int": "9",
+			"wis": "9",
+			"cha": "11",
+			"skill": {
+				"intimidation": "+2"
+			},
+			"passive": "9",
+			"languages": "Common",
+			"cr": "1/2",
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The ruffian makes two melee attacks."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					],
+					"attack": [
+						"Shortsword|4|1d6+2"
+					]
+				}
+			]
+		},
+		{
+			"name": "Sildar Hallwinter",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"source": "LMoP",
+			"alignment": "neutral good",
+			"ac": "16 (chain mail)",
+			"hp": "27 (5d8+5)",
+			"speed": "30 ft.",
+			"str": "13",
+			"dex": "10",
+			"con": "12",
+			"int": "10",
+			"wis": "11",
+			"cha": "10",
+			"save": "Str +3, Con +3",
+			"skill": {
+				"perception": "+2"
+			},
+			"passive": "12",
+			"languages": "Common",
+			"cr": "1",
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"Sildar makes two melee attacks."
+					]
+				},
+				{
+					"name": "Longsword",
+					"text": [
+						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8+1) slashing damage."
+					],
+					"attack": [
+						"One Handed|3|1d8+1",
+						"Two Handed|3|1d10+1"
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +2 to hit, range 100 ft./400 ft., one target. Hit: 5 (1d10) piercing damage."
+					],
+					"attack": [
+						"Heavy Crossbow|2|1d10"
+					]
+				}
+			],
+			"reaction": {
+				"name": "Parry",
+				"text": [
+					"When an attacker hits Sildar with a melee attack and Sildar can see the attacker, he can roll 1d6 and add the number rolled to his AC against the triggering attack, provided that he's wielding a melee weapon."
+				]
+			}
+		}
+	]
+}
