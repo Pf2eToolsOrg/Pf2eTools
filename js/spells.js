@@ -215,7 +215,7 @@ function ascSortSpellLevel(a, b) {
 }
 
 window.onload = function load() {
-	multisourceLoad(JSON_DIR, "spell", addSpells)
+	multisourceLoad(JSON_DIR, "spell", pageInit, addSpells)
 };
 
 let list;
@@ -260,7 +260,8 @@ const filterBox = initFilterBox(
 	timeFilter,
 	rangeFilter
 );
-function pageInit() {
+
+function pageInit(loadedSources) {
 	tableDefault = $("#stats").html();
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource));
 

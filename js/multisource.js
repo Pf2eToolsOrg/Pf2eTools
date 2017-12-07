@@ -2,13 +2,20 @@
 
 const JSON_SRC_INDEX = "index.json";
 
-function multisourceLoad(jsonDir, dataCategory, dataFn) {
+/**
+ * @param jsonDir the directory containing JSON for this page
+ * @param dataCategory the name of the root JSON property for the list of data
+ * @param pageInitFn function to be run once the index has loaded, should accept an object of src:URL mappings
+ * @param dataFn function to be run when all data has been loaded, should accept a list of objects custom to the page
+ * (e.g. spell data objects for the spell page) which were found in the `dataCategory` list
+ */
+function multisourceLoad(jsonDir, dataCategory, pageInitFn, dataFn) {
 	// load the index
-	loadJSON(jsonDir+JSON_SRC_INDEX, function(index) { onIndexLoad(index, jsonDir, dataCategory, dataFn) });
+	loadJSON(jsonDir+JSON_SRC_INDEX, function(index) { _onIndexLoad(index, jsonDir, dataCategory, pageInitFn, dataFn) });
 }
 
 let loadedSources;
-function onIndexLoad(src2UrlMap, jsonDir, dataProp, addFunction) {
+function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 	// track loaded sources
 	loadedSources = {};
 	Object.keys(src2UrlMap).forEach(src => loadedSources[src] = {url: jsonDir+src2UrlMap[src], loaded: false});
@@ -48,7 +55,7 @@ function onIndexLoad(src2UrlMap, jsonDir, dataProp, addFunction) {
 	// make a list of src : url objects
 	const toLoads = allSources.map(src => ({src: src, url: jsonDir+src2UrlMap[src]}));
 
-	pageInit();
+	pageInitFn(loadedSources);
 
 	if (toLoads.length > 0) {
 		chainLoadJSON(
@@ -61,7 +68,7 @@ function onIndexLoad(src2UrlMap, jsonDir, dataProp, addFunction) {
 			function(dataStack) {
 				let toAdd = [];
 				dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
-				addFunction(toAdd);
+				addFn(toAdd);
 			}
 		);
 	}
