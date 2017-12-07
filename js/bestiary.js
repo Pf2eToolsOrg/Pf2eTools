@@ -421,25 +421,6 @@ function loadhash (id) {
 
 		$("tr#reactions").show();
 
-		if (!reactions.length) {
-			const reactionname = reactions.name;
-			const reactiontext = reactions.text;
-			let reactiontexthtml = "";
-			let renderedcount = 0;
-			for (let n = 0; n < reactiontext.length; n++) {
-				if (!reactiontext[n]) continue;
-
-				renderedcount++;
-				let firstsecond = "";
-				if (renderedcount === 1) firstsecond = "first ";
-				if (renderedcount === 2) firstsecond = "second ";
-
-				reactiontexthtml = reactiontexthtml + "<p class='" + firstsecond + "'>" + reactiontext[n] + "</p>";
-			}
-
-			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction0'><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</td></tr>");
-		}
-
 		if (reactions.length) for (let i = reactions.length - 1; i >= 0; i--) {
 			const reactionname = reactions[i].name;
 
