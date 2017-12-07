@@ -1404,6 +1404,7 @@ function loadJSON(url, onLoadFunction, ...otherData) {
 
 /**
  * Loads a sequence of URLs, then calls a final function once all the data is ready
+ * TODO these could be done in parallel
  * @param toLoads array of objects, which should have a `url` property
  * @param index 0 on the first call
  * @param dataStack an empty array on the first call
