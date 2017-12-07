@@ -13,7 +13,7 @@ function ascSortCr(a, b) {
 	return ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
-let meta = {};
+const meta = {};
 function loadMeta(nextFunction) {
 	loadJSON(JSON_DIR+META_URL, function(data) {
 		// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name

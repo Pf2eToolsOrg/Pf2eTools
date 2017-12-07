@@ -1,0 +1,39 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"definitions": {
+		"legendaryGroup": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"lairActions": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"regionalEffects": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				}
+			},
+			"required": [
+				"name"
+			],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"legendaryGroup": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {"$ref": "#/definitions/legendaryGroup"}
+		}
+	},
+	"additionalProperties": false
+}

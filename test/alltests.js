@@ -17,7 +17,7 @@ fs.readdirSync("./test/schema")
 	if (file !== helperFile) results.push(validator.validate(require(`../data/${file}`), require(`./schema/${file}`), {nestedErrors: true}));
 });
 
-// Custom handling for the new spells data layout TODO expand to cover everything
+// Custom handling for the new spells data layout TODO expand to cover everything; refactor with monster code below
 fs.readdirSync(`./data/spells`)
 	.filter(file => file.startsWith("spells") || file.startsWith("roll20"))
 	.forEach(file => {
@@ -27,6 +27,17 @@ fs.readdirSync(`./data/spells`)
 			results.push(validator.validate(require(`../data/spells/${file}`), require(`./schema/spells/roll20.json`), {nestedErrors: true}));
 		}
 });
+
+// Custom handling for the new monster data layout TODO expand to cover everything; refactor with spell code above
+fs.readdirSync(`./data/bestiary`)
+	.filter(file => file.startsWith("bestiary") || file.startsWith("meta"))
+	.forEach(file => {
+		if (file.startsWith("bestiary")) {
+			results.push(validator.validate(require(`../data/bestiary/${file}`), require(`./schema/bestiary/bestiary.json`), {nestedErrors: true}));
+		} else {
+			results.push(validator.validate(require(`../data/bestiary/${file}`), require(`./schema/bestiary/meta.json`), {nestedErrors: true}));
+		}
+	});
 
 results.forEach( (result) => {
 	if (!result.valid) errors = errors.concat(result.errors);
