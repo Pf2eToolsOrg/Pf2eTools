@@ -2732,13 +2732,15 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Instinctive Charm (Recharges after the Enchanter Casts an Enchantment Spell of 1st level or Higher)",
-				"text": [
-					"The enchanter tries to magically divert an attack made against it, provided that the attacker is within 30 feet of it and visible to it. The enchanter must decide to do so before the attack hits or misses.",
-					"The attacker must make a DC 14 Wisdom saving throw. On a failed save, the attacker targets the creature closest to it, other than the enchanter or itself. If multiple creatures are closest, the attacker chooses which one to target."
-				]
-			},
+			"reaction": [
+				{
+					"name": "Instinctive Charm (Recharges after the Enchanter Casts an Enchantment Spell of 1st level or Higher)",
+					"text": [
+						"The enchanter tries to magically divert an attack made against it, provided that the attacker is within 30 feet of it and visible to it. The enchanter must decide to do so before the attack hits or misses.",
+						"The attacker must make a DC 14 Wisdom saving throw. On a failed save, the attacker targets the creature closest to it, other than the enchanter or itself. If multiple creatures are closest, the attacker chooses which one to target."
+					]
+				}
+			],
 			"spells": "friends, mage hand, mending, message, charm person, mage armor, magic missile, hold person, invisibility, suggestion, fireball, haste, tongues, dominate beast, stoneskin, hold monster"
 		},
 		{
@@ -3735,12 +3737,14 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Vengeful Strike",
-				"text": [
-					"In response to a gnoll being reduced to 0 hit points within 30 feet of the witherling, the witherling makes a melee attack."
-				]
-			}
+			"reaction": [
+				{
+					"name": "Vengeful Strike",
+					"text": [
+						"In response to a gnoll being reduced to 0 hit points within 30 feet of the witherling, the witherling makes a melee attack."
+					]
+				}
+			]
 		},
 		{
 			"name": "Green Guard Drake",
@@ -5081,12 +5085,14 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Deflect Missile",
-				"text": [
-					"In response to being hit by a ranged weapon attack, the adept deflects the missile. The damage it takes from the attack is reduced by 1d10+3. If the damage is reduced to 0, the adept catches the missile if it's small enough to hold in one hand and the adept has a hand free."
-				]
-			}
+			"reaction": [
+				{
+					"name": "Deflect Missile",
+					"text": [
+						"In response to being hit by a ranged weapon attack, the adept deflects the missile. The damage it takes from the attack is reduced by 1d10+3. If the damage is reduced to 0, the adept catches the missile if it's small enough to hold in one hand and the adept has a hand free."
+					]
+				}
+			]
 		},
 		{
 			"name": "Master Thief",
@@ -5168,12 +5174,14 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Uncanny Dodge",
-				"text": [
-					"The thief halves the damage that it takes from an attack that hits it. The thief must be able to see the attacker."
-				]
-			}
+			"reaction": [
+				{
+					"name": "Uncanny Dodge",
+					"text": [
+						"The thief halves the damage that it takes from an attack that hits it. The thief must be able to see the attacker."
+					]
+				}
+			]
 		},
 		{
 			"name": "Maw Demon",
@@ -5514,12 +5522,14 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Spell Reflection",
-				"text": [
-					"If the morkoth makes a successful saving throw against a spell, or a spell attack misses it, the morkoth can choose another creature (including the spellcaster) it can see within 120 feet of it. The spell targets the chosen creature instead of the morkoth. If the spell forced a saving throw, the chosen creature makes its own save. If the spell was an attack, the attack roll is rerolled against the chosen creature."
-				]
-			}
+			"reaction": [
+				{
+					"name": "Spell Reflection",
+					"text": [
+						"If the morkoth makes a successful saving throw against a spell, or a spell attack misses it, the morkoth can choose another creature (including the spellcaster) it can see within 120 feet of it. The spell targets the chosen creature instead of the morkoth. If the spell forced a saving throw, the chosen creature makes its own save. If the spell was an attack, the attack roll is rerolled against the chosen creature."
+					]
+				}
+			]
 		},
 		{
 			"name": "Mouth of Grolantor",
@@ -5977,15 +5987,17 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Reversal of Fortune",
-				"text": [
-					"In response to another creature dealing damage to the nilbog, the nilbog reduces the damage to 0 and regains 1d6 hit points."
-				],
-				"attack": [
-					"Reversal of Fortune||1d6"
-				]
-			},
+			"reaction": [
+				{
+					"name": "Reversal of Fortune",
+					"text": [
+						"In response to another creature dealing damage to the nilbog, the nilbog reduces the damage to 0 and regains 1d6 hit points."
+					],
+					"attack": [
+						"Reversal of Fortune||1d6"
+					]
+				}
+			],
 			"spells": "mage hand, Tasha's hideous laughter, vicious mockery, confusion"
 		},
 		{
@@ -7482,12 +7494,14 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Unbridled Fury",
-				"text": [
-					"In response to being hit by a melee attack, the tanarukk can make one melee weapon attack with advantage against the attacker."
-				]
-			}
+			"reaction": [
+				{
+					"name": "Unbridled Fury",
+					"text": [
+						"In response to being hit by a melee attack, the tanarukk can make one melee weapon attack with advantage against the attacker."
+					]
+				}
+			]
 		},
 		{
 			"name": "Thorny",
@@ -8092,12 +8106,14 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Guided Strike (Recharges after a Short or Long Rest)",
-				"text": [
-					"The priest grants a +10 bonus to an attack roll made by itself or another creature within 30 feet of it. The priest can make this choice after the roll is made but before it hits or misses."
-				]
-			},
+			"reaction": [
+				{
+					"name": "Guided Strike (Recharges after a Short or Long Rest)",
+					"text": [
+						"The priest grants a +10 bonus to an attack roll made by itself or another creature within 30 feet of it. The priest can make this choice after the roll is made but before it hits or misses."
+					]
+				}
+			],
 			"spells": "light, mending, sacred flame, spare the dying, divine favor, guiding bolt, healing word, shield of faith, lesser restoration, magic weapon, prayer of healing, silence, spiritual weapon, beacon of hope, crusader's mantle, dispel magic, revivify, spirit guardians, water wall, banishment, freedom of movement, guardian of faith, stoneskin , flame strike, mass cure wounds, hold monster"
 		},
 		{
@@ -8160,12 +8176,14 @@
 					]
 				}
 			],
-			"reaction": {
-				"name": "Misty Escape (Recharges after a Short or Long Rest)",
-				"text": [
-					"In response to taking damage, the warlock turns invisible and teleports up to 60 feet to an unoccupied space it can see. It remains invisible until the start of its next turn or until it attacks, makes a damage roll, or casts a spell."
-				]
-			},
+			"reaction": [
+				{
+					"name": "Misty Escape (Recharges after a Short or Long Rest)",
+					"text": [
+						"In response to taking damage, the warlock turns invisible and teleports up to 60 feet to an unoccupied space it can see. It remains invisible until the start of its next turn or until it attacks, makes a damage roll, or casts a spell."
+					]
+				}
+			],
 			"spells": "disguise self, mage armor, silent image, speak with animals, conjure fey, dancing lights, eldritch blast, friends, mage hand, minor illusion, prestidigitation, vicious mockery, blink, charm person, dimension door, dominate beast, faerie fire, fear, hold monster, misty step, phantasmal force, seeming, sleep"
 		},
 		{
