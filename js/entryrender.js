@@ -98,13 +98,18 @@ function EntryRenderer() {
 				// block
 				case "abilityDc":
 					renderPrefix();
-					textStack.push(`<span class='spell-ability'><span>${entry.name} save DC</span> = 8 + your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
+					textStack.push(`<span class='ability-block'><span>${entry.name} save DC</span> = 8 + your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
 					renderSuffix();
 					break;
 				case "abilityAttackMod":
-					if (prefix !== null) textStack.push(prefix);
-					textStack.push(`<span class='spell-ability'><span>${entry.name} attack modifier</span> = your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
-					if (suffix !== null) textStack.push(suffix);
+					renderPrefix();
+					textStack.push(`<span class='ability-block'><span>${entry.name} attack modifier</span> = your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
+					renderSuffix();
+					break;
+				case "abilityGeneric":
+					renderPrefix();
+					textStack.push(`<span class='ability-block'><span>${entry.name}</span> = ${entry.text} ${utils_makeAttChoose(entry.attributes)}</span>`);
+					renderSuffix();
 					break;
 
 				// inline
@@ -291,11 +296,13 @@ function EntryRenderer() {
 
 					if (tag === "@bold" || tag === "@italic" || tag === "@skill" || tag === "@action") {
 						switch (tag) {
+							case "@b":
 							case "@bold":
 								textStack.push(`<b>`);
 								self.recursiveEntryRender(text, textStack, depth);
 								textStack.push(`</b>`);
 								break;
+							case "@i":
 							case "@italic":
 								textStack.push(`<i>`);
 								self.recursiveEntryRender(text, textStack, depth);
