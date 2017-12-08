@@ -176,7 +176,7 @@ function loadhash (id) {
 			featureLink.click(function() {
 				document.getElementById(featureId).scrollIntoView();
 			});
-			featureNames.push(featureLink);
+			if (feature.type !== "inset") featureNames.push(featureLink);
 
 			const styleClasses = [CLSS_CLASS_FEATURE];
 			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);

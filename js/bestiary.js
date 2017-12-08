@@ -182,6 +182,12 @@ function addMonsters(data) {
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 	}
+	let lastSearch = null;
+	if (list.searched) {
+		lastSearch = $(`#search`).val();
+		list.search("");
+	}
+
 	table.append(textStack);
 
 	// sort filters
@@ -190,6 +196,7 @@ function addMonsters(data) {
 	tagFilter.items.sort(ascSort);
 
 	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
 
 	filterBox.render();
