@@ -137,7 +137,7 @@ function EntryRenderer() {
 				// list items
 				case "item":
 					renderPrefix();
-					this.recursiveEntryRender(entry.entry, textStack, depth, `<p><span class="bold">${entry.name}.</span> `, "</p>");
+					this.recursiveEntryRender(entry.entry, textStack, depth, `<p><span class="bold">${entry.name}</span> `, "</p>");
 					renderSuffix();
 					break;
 
