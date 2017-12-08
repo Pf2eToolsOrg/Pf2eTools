@@ -70,7 +70,8 @@ function EntryRenderer() {
 					break;
 				case "list":
 					if (entry.items) {
-						textStack.push("<ul>");
+						if (entry.name) textStack.push(`<p class="list-name">${entry.name}</p>`);
+						textStack.push(`<ul ${entry.style ? `class="${entry.style}"` : ""}>`);
 						for (let i = 0; i < entry.items.length; i++) {
 							this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${isNonstandardSource(entry.items[i].source) ? `class="${CLSS_NON_STANDARD_SOURCE}"` : ""}>`, "</li>");
 						}
@@ -132,6 +133,14 @@ function EntryRenderer() {
 				case "link":
 					renderLink(this, entry);
 					break;
+
+				// list items
+				case "item":
+					renderPrefix();
+					this.recursiveEntryRender(entry.entry, textStack, depth, `<p><span class="bold">${entry.name}.</span> `, "</p>");
+					renderSuffix();
+					break;
+
 			}
 		} else if (typeof entry === "string") { // block
 			renderPrefix();
