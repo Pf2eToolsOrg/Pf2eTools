@@ -58,10 +58,8 @@ function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 	pageInitFn(loadedSources);
 
 	if (toLoads.length > 0) {
-		chainLoadJSON(
+		multiLoadJSON(
 			toLoads,
-			0,
-			[],
 			function(toLoad) {
 				loadedSources[toLoad.src].loaded = true;
 			},
@@ -69,6 +67,9 @@ function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 				let toAdd = [];
 				dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
 				addFn(toAdd);
+
+				initHistory();
+				handleFilterChange();
 			}
 		);
 	}
