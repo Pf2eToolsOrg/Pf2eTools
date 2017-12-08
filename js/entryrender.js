@@ -80,6 +80,14 @@ function EntryRenderer() {
 				case "table":
 					renderTable(this);
 					break;
+				case "inset":
+					textStack.push(`<${this.wrapperTag} class="statsBlockInset">`);
+					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title">${entry.name}</span>`);
+					for (let i = 0; i < entry.entries.length; i++) {
+						this.recursiveEntryRender(entry.entries[i], textStack, 2, "<p>", "</p>");
+					}
+					textStack.push(`</${this.wrapperTag}>`);
+					break;
 				case "invocation":
 					handleInvocation(this);
 					break;

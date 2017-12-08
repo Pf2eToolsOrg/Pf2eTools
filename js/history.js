@@ -1,4 +1,5 @@
 "use strict";
+
 function hashchange(e) {
 	const [link, ...sub] = _getHashParts();
 
@@ -51,5 +52,5 @@ function _getListElem(link) {
 }
 
 function _freshLoad() {
-	location.replace($("#listcontainer .list a").attr('href'));
+	location.replace($("#listcontainer").find(".list a").attr('href'));
 }
