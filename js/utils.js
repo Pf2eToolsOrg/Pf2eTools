@@ -1309,7 +1309,7 @@ function getSourceFilter(options) {
 }
 
 function defaultSourceDeselFn(val) {
-	return val.startsWith(SRC_UA_PREFIX) || val.startsWith(SRC_PS_PREFIX) || val.endsWith(SRC_3PP_SUFFIX) || val === SRC_OGA;
+	return isNonstandardSource(val);
 }
 
 function defaultSourceSelFn(val) {
