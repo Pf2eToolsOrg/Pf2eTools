@@ -1235,7 +1235,7 @@ function hasBeenReprinted(shortName, source) {
 }
 
 function isNonstandardSource(source) {
-	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA);
+	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.endsWith(SRC_3PP_SUFFIX) || source === SRC_OGA);
 }
 
 // CONVENIENCE/ELEMENTS ================================================================================================
