@@ -2172,7 +2172,7 @@
 			    "type": "entries",
 			    "name": "Morale Rating",
 			    "entries": [
-					"Morale is a rating like an ability score modifier. It ranges from –10 to +10. These rules sometimes require a unit to make a check using its morale rating; roll a d20, add the unit’s morale rating, and compare the total to the relevant DC, just as for an ability check.",
+					"Morale is a rating like an ability score modifier. It ranges from -10 to +10. These rules sometimes require a unit to make a check using its morale rating; roll a d20, add the unit’s morale rating, and compare the total to the relevant DC, just as for an ability check.",
 					"You select a morale rating for each unit involved in a battle. Assign the rating based on how the unit has been treated by its allies and commanders, the stakes of the battle, the unit’s investment in the outcome, and any other factors that you think should play a role.",
 					{
 						"type": "table",
@@ -2185,10 +2185,10 @@
 							"col-xs-6"
 						],
 						"rows": [
-							["–10",	"Openly rebellious"],
-							["–8",	"Mutinous"],
-							["–4",	"Disgruntled"],
-							["–2",	"Shaky"],
+							["-10",	"Openly rebellious"],
+							["-8",	"Mutinous"],
+							["-4",	"Disgruntled"],
+							["-2",	"Shaky"],
 							["0",	"The typical unit"],
 							["+2",	"Motivated"],
 							["+4",	"Stalwart"],
@@ -2617,5 +2617,216 @@
 			}
 	    ],
 	    "source": "UAThreePillarExperience"
+	},
+	{
+	    "type": "section",
+	    "name": "Greyhawk Initiative",
+	    "entries": [
+	        {
+	            "type": "entries",
+	            "name": "Overview",
+	            "entries": [
+					"The Greyhawk initiative variant institutes the following rules, which replace the standard initiative system.",
+					{
+					    "type": "entries",
+					    "entries": [
+					       {
+					           "type": "entries",
+					           "name": "Rounds",
+					           "entries": [
+								   "Combat is organized into rounds. Each round, everyone involved in the combat has a chance to move and take actions, as with standard initiative. But the durations of effects are measured in rounds, rather than ending during a specific creature’s turn."
+					           ]
+					       },
+							{
+							    "type": "entries",
+							    "name": "Variable Turn Order",
+							    "entries": [
+									"Each round, every creature involved in the battle rolls initiative. The order in which creatures take their turns changes from round to round, making it impossible to predict how events in combat will unfold."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Initiative Dice",
+							    "entries": [
+									"Rather than making a d20 roll for initiative, characters and monsters might roll a variety of initiative dice—normally d4 to d10. If you roll more than one initiative die, you add the results together to determine your initiative. The number and type of initiative dice you roll depend on the types of activities you want your character to undertake during the next round."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Initiative Count",
+							    "entries": [
+									"Under the standard system, creatures with higher initiative have a chance to act each round before creatures with lower initiative. With this variant system, @{b initiative now runs from low to high}. Creatures with a lower initiative roll can act in combat before creatures with a higher initiative roll."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Order of Operations",
+							    "entries": [
+									"These rules make it more likely for certain actions to take place earlier in a round, and for other actions to take place later. Missile fire usually occurs first, melee attacks next, and spellcasting last. This is just an overall pattern, though, not an ironclad rule. As with the standard initiative system, the luck of the dice always determines exactly when combatants act."
+							    ]
+							}
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Rounds",
+					    "entries": [
+							"Combat under this system is divided into rounds, each of which continues to represent about 6 seconds of action.",
+							{
+							    "type": "entries",
+							    "name": "Durations",
+							    "entries": [
+									"Any effect that normally lasts until the end of a turn instead lasts until the end of the round during which that turn takes place. Similarly, any effect that normally lasts until the start of a turn now lasts until the start of the round during which that turn takes place. If the order in which effects end is important for some reason, roll a d20 for each effect (rerolling any ties). The effect with the lowest roll ends first, with the others ending in order of their results from lowest to highest."
+							    ]
+							}
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Surprise",
+					    "entries": [
+							"A surprised creature adds +10 to its initiative result and cannot take reactions while it is surprised. A creature is surprised until the end of the round during which it is surprised."
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Determine Action Order",
+					    "entries": [
+							"Before a round begins, each creature involved in a combat decides what it wants to do and rolls initiative. Your chosen actions determine which initiative dice you roll.",
+							"Actions are broken down by speed. Because a lower initiative count allows a creature to act more quickly, fast or simple actions use smaller dice and more complex actions use larger dice.",
+							"When rolling initiative, you roll all the dice that represent your actions, then add up the result. You do not add any modifier (including your Dexterity modifier) to this roll.",
+							{
+								"type": "table",
+								"caption": "Initiative Dice",
+								"colLabels": [
+									"Die", "Action"
+								],
+								"colStyles": [
+									"col-xs-3",
+									"col-xs-9"
+								],
+								"rows": [
+									["d4",	"Ranged attack"],
+									["d6",	"Movement"],
+									["",	"Swap gear"],
+									["",	"Any other action"],
+									["d8",	"Melee attack"],
+									["d10",	"Cast a spell"]
+								]
+							},
+							{
+							    "type": "entries",
+							    "name": "Multiple Dice",
+							    "entries": [
+									"It is common for characters to roll multiple dice for initiative. If you want to move in toward a foe and make a melee attack, you roll and add together 1d6 for movement and 1d8 for the attack. The result is your initiative."
+							    ]
+							},
+							{
+							    "type": "inset",
+							    "name": "Variant: Weapon Speed",
+							    "entries": [
+									"If you want to add more distinction to weapons at the cost of speed, replace rolling a d4 for ranged attacks and a d8 for melee attacks with the following:",
+									"When determining initiative, a creature attacking with a weapon rolls initiative dice equal to the damage dice rolled for the weapon. Use the base damage listed in the Weapons table in chapter 5 of the {@i Player’s Handbook}, ignoring additional damage granted by spells, magical effects, feats, and so on."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Bonus Actions",
+							    "entries": [
+									"If you want to use a bonus action on your turn, you roll an additional die that corresponds to the type of action you plan to take with your bonus action. That die is added to any dice you roll for your movement and your normal action."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Multiple Actions",
+							    "entries": [
+									"If an effect grants you an additional action without the use of a bonus action, you roll an initiative die for only one of your actions. Use the largest die that corresponds to any one of the actions you plan to take."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Reactions and Forced Activities",
+							    "entries": [
+									"Initiative covers only the actions you take on your turn, so that using a reaction has no effect on your initiative. You can take one reaction per round, as normal, unless an ability grants you more. Likewise, any activities you are forced to undertake not on your turn (typically in response to another creature’s actions) have no effect on your initiative."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Delaying",
+							    "entries": [
+									"You cannot use the Ready action under these rules, but you can instead choose to delay your turn. Instead of taking your turn on your initiative count, you simply act on a later initiative count, before or after other creatures as you choose. If more than one creature has chosen to delay, each creature’s original initiative needs to be noted. Whenever a delaying creature decides to act, another delaying creature with a lower initiative can decide to act immediately before it."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Swapping Gear",
+							    "entries": [
+									"If you want to sheathe or drop a weapon, you roll an additional 1d6 for your initiative. You can decide to swap your gear at any point during your turn."
+							    ]
+							}
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Creatures Unable to Act",
+					    "entries": [
+							"Any creature that is unable to take actions (most likely because it is incapacitated) does not roll initiative. Any effects that such creatures must resolve, such as death saving throws, are resolved at the end of the round."
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Choosing Another Creature's Actions",
+					    "entries": [
+							"If you are in a position to choose the actions that another creature takes on its turn (for example, if you have successfully targeted that creature with the dominate monster spell), you roll initiative for the actions you plan to have the creature take, then add that result to your initiative. The final result is the creature’s initiative.",
+							"In general, if an effect causes a creature to change its actions and it has not yet taken a turn, the creature rerolls its initiative and adds the result to the initiative of the creature or effect that triggered the change."
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Action Declaration and Resolution",
+					    "entries": [
+							"At the start of a round, each combatant chooses actions for the round. At this stage, actions do not need any more detail than what is needed to determine the initiative roll. A character can plan on casting a spell, but does not yet need to pick a specific spell or a target. A character planning on moving doesn’t need to have a destination in mind.",
+							"During its turn, each combatant then chooses specific targets, spells, and so on for its chosen actions. The only restriction is that a creature cannot choose actions not covered by its initiative roll. As such, you might find that you need to alter the details of your plans as the action unfolds—meaning that it’s often desirable to leave yourself options when you choose which actions to roll for."
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Ties",
+					    "entries": [
+							"If two creatures tie for initiative, those creatures act in order of Dexterity, with the highest Dexterity going first. If both creatures have the same Dexterity, roll randomly to determine which one acts first."
+					    ]
+					},
+					{
+					    "type": "inset",
+					    "name": "Variant: Spell Disruption",
+					    "entries": [
+							"For added AD&D flavor, you can introduce the spell disruption rule. Under this rule, if a creature that wants to cast a spell takes damage during the round before it can act, it is restricted to casting cantrips on its turn."
+					    ]
+					},
+					{
+					    "type": "entries",
+					    "name": "Special Rules",
+					    "entries": [
+							"Certain effects can alter initiative rolls in the game.",
+							{
+							    "type": "entries",
+							    "name": "Initiative Bonuses or Penalties",
+							    "entries": [
+									"Though this system does not apply a creature’s Dexterity modifier to its initiative rolls, other effects can alter initiative. If an effect would grant you a bonus to your initiative roll under the standard system, instead reduce the size of one die you roll for initiative, so that a d6 becomes a d4, a d4 becomes a d3, and so on. In the case of a penalty to your initiative, you apply the reverse process, increasing the size of one die rolled instead."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Advantage or Disadvantage",
+							    "entries": [
+									"If an effect would grant you advantage or disadvantage on your initiative roll under the standard system, you apply that to the largest initiative die you roll (or to one of those initiative dice if you roll more than one of the same type). Roll the initiative die twice, using the lowest roll if you have advantage or the highest roll if you have disadvantage."
+							    ]
+							}
+					    ]
+					}
+				]
+	        }
+	    ],
+	    "source": "UAGreyhawkInitiative"
 	}
 ]

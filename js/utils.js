@@ -1003,6 +1003,7 @@ SRC_UAWR 		= SRC_UA_PREFIX + "WizardRevisited";
 SRC_UAESR 		= SRC_UA_PREFIX + "ElfSubraces";
 SRC_UAMAC 		= SRC_UA_PREFIX + "MassCombat";
 SRC_UA3PE 		= SRC_UA_PREFIX + "ThreePillarExperience";
+SRC_UAGHI 		= SRC_UA_PREFIX + "GreyhawkInitiative";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
@@ -1081,6 +1082,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] 		= UA_PREFIX + "Wizard Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] 		= UA_PREFIX + "Elf Subraces";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] 		= UA_PREFIX + "Mass Combat";
 Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] 		= UA_PREFIX + "Three-Pillar Experience";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] 		= UA_PREFIX + "Greyhawk Initiative";
 Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] 	= "Book of Lost Spells" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] 	= "Tome of Beasts" + PP3_SUFFIX;
 
@@ -1149,6 +1151,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAWR] 		= "UAWR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAESR] 		= "UAESR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAMAC] 		= "UAMAC";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA3PE] 		= "UA3PE";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAGHI] 		= "UAGHI";
 Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] 	= "BoLS (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] 		= "ToB (3pp)";
 
