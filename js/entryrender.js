@@ -141,6 +141,21 @@ function EntryRenderer() {
 					renderSuffix();
 					break;
 
+				// images
+				case "image":
+					renderPrefix();
+					let href;
+					if (entry.href.type === "internal") {
+						href = `${this.baseUrl}img/${entry.href.path}`
+					}
+					textStack.push(`
+						<a href="${href}" target='_blank'>
+							<img src="${href}" >
+						</a>
+					`);
+					renderSuffix();
+					break;
+
 			}
 		} else if (typeof entry === "string") { // block
 			renderPrefix();

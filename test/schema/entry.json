@@ -389,6 +389,42 @@
 					"additionalProperties": false
 				}
 			]
+		},
+		"entryImage": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "image"},
+						"href": {
+							"oneOf": [
+								{
+									"properties": {
+										"type": {"const": "internal"},
+										"path": {
+											"type": "string"
+										}
+									},
+									"required": ["path"],
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"type": {"const": "external"},
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": ["url"],
+									"additionalProperties": false
+								}
+							]
+						}
+					},
+					"required": ["href"],
+					"additionalProperties": false
+				}
+			]
 		}
 	},
 
@@ -409,6 +445,7 @@
 		{"$ref": "#/definitions/entryPatron"},
 		{"$ref": "#/definitions/entryInset"},
 		{"$ref": "#/definitions/entryItem"},
+		{"$ref": "#/definitions/entryImage"},
 		{"type": "string"},
 		{"type": "integer"}
 	]
