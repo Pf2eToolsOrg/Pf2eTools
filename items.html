@@ -23,6 +23,33 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<style id="dynamicStyle"></style> <!-- populated with JS -->
 	<script type="text/javascript" src="js/styleswitch.js"></script>
+
+	<style>
+		@media (max-height: 700px) {
+			.viewport-wrapper {
+				bottom: auto;
+			}
+
+			.view-col-wrapper {
+				flex-direction: column;
+				max-height: none;
+				height: auto;
+			}
+
+			ul.list {
+				max-height: 20em;
+			}
+		}
+
+		h3.ele-mundane,
+		h3.ele-magic {
+			font-size: 18px;
+			margin: 0;
+		}
+		h3.ele-mundane {
+			margin-top: 5px;
+		}
+	</style>
 </head>
 
 <body>
