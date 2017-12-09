@@ -2,14 +2,14 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
-function makeContentsBlock(adv) {
+function makeContentsBlock(adv, addPrefix) {
 	let out =
 		"<ul>";
 
 	adv.contents.forEach((c, i) => {
 		out +=
-			`<li><a href="adventure.html#${adv.id},${i}">${(c.part ? `Part ${c.part} \u2014 ` : "")}${c.name}</a></li>`;
-		out += makeSectionsBlock(adv.id, i, c);
+			`<li><a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}">${(c.part ? `Part ${c.part} \u2014 ` : "")}${c.name}</a></li>`;
+		out += makeHeadersBlock(adv.id, i, c, addPrefix);
 	});
 
 	out +=
@@ -17,12 +17,12 @@ function makeContentsBlock(adv) {
 	return out;
 }
 
-function makeSectionsBlock(advId, chapterIndex, chapter) {
+function makeHeadersBlock(advId, chapterIndex, chapter, addPrefix) {
 	let out =
 		"<ul>";
-	chapter.sections.forEach(c => {
+	chapter.headers.forEach(c => {
 		out +=
-			`<li><a href="adventure.html#${advId},${chapterIndex},${encodeForHash(c)}">${c}</a></li>`
+			`<li><a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${encodeForHash(c)}" data-chapter="${chapterIndex}" data-header="${c}">${c}</a></li>`
 	});
 	out +=
 		"</ul>";
