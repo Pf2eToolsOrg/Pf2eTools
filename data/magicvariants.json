@@ -1365,6 +1365,88 @@
 					}
 				]
 			}
+		},
+		{
+			"name": "Adamantine Weapon",
+			"type": "GV",
+			"entries": [
+				"Melee weapons made of or coated with adamantine are unusually effective when used to break objects. Whenever an adamantine weapon hits an object, the hit is a critical hit.",
+				"The adamantine version of a melee weapon costs 500 gp more than the normal version, whether the weapon is made of the metal or coated with it."
+			],
+			"requires": {
+				"weapon": true
+			},
+			"excludes": {
+				"name": "Net"
+			},
+			"inherits": {
+				"rarity": "Unknown",
+				"tier": "Major",
+				"source": "XGE",
+				"page": "71",
+				"namePrefix": "Adamantine ",
+				"entries": [
+					"Whenever you hit an object with this weapon, the hit is a critical hit."
+				]
+			}
+		},
+		{
+			"name": "Adamantine Ammunition",
+			"type": "GV",
+			"entries": [
+				"Ammunition made of or coated with adamantine is unusually effective when used to break objects. Whenever a piece of adamantine ammunition hits an object, the hit is a critical hit.",
+				"The adamantine version of ten pieces of ammunition costs 500 gp more than the normal version, whether the ammunition is made of the metal or coated with it."
+			],
+			"requires": {
+				"ammunition": true
+			},
+			"inherits": {
+				"tier": "Minor",
+				"rarity": "Unknown",
+				"source": "XGE",
+				"page": "71",
+				"namePrefix": "Adamantine ",
+				"entries": [
+					"Whenever you hit an object using this ammunition, the hit is a critical hit."
+				]
+			}
+		},
+		{
+			"name": "Silvered Weapon",
+			"type": "GV",
+			"entries": [
+				"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver weapons, so cautious adventurers invest extra coin to plate their weapons with silver. You can silver a single weapon for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the weapon without making it less effective."
+			],
+			"requires": {
+				"weapon": true
+			},
+			"excludes": {
+				"name": "Net"
+			},
+			"inherits": {
+				"rarity": "Unknown",
+				"tier": "Major",
+				"source": "PHB",
+				"page": "148",
+				"namePrefix": "Adamantine "
+			}
+		},
+		{
+			"name": "Silvered Ammunition",
+			"type": "GV",
+			"entries": [
+				"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver ammunition, so cautious adventurers invest extra coin to plate their ammunition in silver. You can silver ten pieces of ammunition for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the ammunition without making it less effective."
+			],
+			"requires": {
+				"ammunition": true
+			},
+			"inherits": {
+				"tier": "Minor",
+				"rarity": "Unknown",
+				"source": "PHB",
+				"page": "148",
+				"namePrefix": "Adamantine "
+			}
 		}
 	]
 }
