@@ -1293,6 +1293,15 @@ button#reset {
 	margin-left: -1px;
 }
 
+button#hidesearch {
+	border-radius: 0;
+	border-left: 0;
+}
+
+div#showsearch {
+	display: none;
+}
+
 /* fix sort button spacing and corners */
 #listcontainer .sortlabel.btn-group .btn {
 	border-top: 0;
@@ -1418,12 +1427,26 @@ table#stats tr.class-feature div.statsBlockHead .spicy-sauce div.statsBlockSubHe
 	border-bottom-color: #1d965d;
 }
 
+table#stats div.statsInlineHead > span.entry-title::before {
+	width: 0.7em;
+	height: 1px;
+	display: inline-block;
+	content: "";
+	padding: 0;
+	margin: 0;
+}
+
 table#stats div.statsInlineHead > span.entry-title {
 	font-style: italic;
 	font-weight: bold;
 }
 
 table#stats div.statsInlineHead > p {
+	text-indent: 0.7em;
+	margin-bottom: 0;
+}
+
+table#stats div.statsInlineHead > p:first-of-type {
 	display: inline;
 }
 
@@ -1475,4 +1498,5 @@ table#stats tr.text ul.list-hang p {
 table#stats tr.text img {
 	max-width: 100%;
 	margin: 5px auto 0;
+	display: block;
 }

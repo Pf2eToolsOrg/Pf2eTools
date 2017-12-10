@@ -1434,3 +1434,35 @@ function multiLoadJSON(toLoads, onEachLoadFunction, onFinalLoadFunction) {
 		)
 	});
 }
+
+// SHOW/HIDE SEARCH ====================================================================================================
+function addListShowHide() {
+	const toInjectShow = `
+		<div class="col-xs-12" id="showsearch">
+			<button class="btn btn-block btn-default btn-xs" type="button">Show Search</button>
+			<br>
+		</div>	
+	`;
+
+	const toInjectHide = `
+		<button class="btn btn-default" type="button" id="hidesearch">Hide</button>
+	`;
+
+	$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
+	$(`#statscontainer`).prepend(toInjectShow);
+
+	const listContainer = $(`#listcontainer`);
+	const showSearchWrpr = $("div#showsearch");
+	const hideSearchBtn = $("button#hidesearch");
+	// collapse/expand search button
+	hideSearchBtn.click(function() {
+		listContainer.hide();
+		showSearchWrpr.show();
+		hideSearchBtn.hide();
+	});
+	showSearchWrpr.find("button").click(function() {
+		listContainer.show();
+		showSearchWrpr.hide();
+		hideSearchBtn.show();
+	});
+}
