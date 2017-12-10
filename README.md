@@ -3,27 +3,6 @@
 
 [Join the 5etools Discord here!](https://discord.gg/B2J9gM9)
 
-## Style Guidelines
-- Use tabs over spaces.
-
-## To-Do
-- Clean up filtering interface.
-- Plan layout of upcoming Mystic disciplines
-- Continue adding Unearthed Arcana rules entries.
-- A search engine?
-- Dedicated servers??
-- Continue cleaning up the website.
-
-## Notes
-To remove trailing commas in JSON:
-Find: (.*?)(,)(:?\s*]|\s*})
-Replace: $1$3
-
-#### Character replacement:
-- ’ should be replaced with '
-- — should be replaced with \u2014
-- “ and ” should be replaced with "
-
 ## Running 5etools Locally (Offline Copy)
 There are several options for running a local/offline copy of 5etools, including:
 
@@ -51,6 +30,24 @@ Be sure to close any running Chrome instances (and kill any remaining Chrome pro
 6. Bam. Done. If you are using the Shaped sheet, be sure to open up the NPC sheets and let them convert before using it.
 
 You can convert stat blocks to JSON for importing via [this converter](converter.html).
+
+## Dev Notes
+
+### Style Guidelines
+- Use tabs over spaces.
+
+### JSON Cleaning
+#### Trailing commas
+To remove trailing commas in JSON:
+
+Find: (.*?)(,)(:?\s*]|\s*})
+
+Replace: $1$3
+
+#### Character replacement:
+- ’ should be replaced with '
+- — should be replaced with \u2014
+- “ and ” should be replaced with "
 
 ## License
 
