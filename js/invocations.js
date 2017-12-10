@@ -187,10 +187,10 @@ function loadhash (jsonIndex) {
 	function loadInvocation() {
 
 		const prereqs = [
-		    selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE  ? null : parsePatron(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])+` patron`,
-		    selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE  ? null : parsePact(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]),
-		    selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE  ? null : parselevel(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL])+` level`,
-		    selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE  ? null : parseSpell(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]),
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE  ? null : parsePatron(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])+` patron`,
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE  ? null : parsePact(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]),
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE  ? null : parselevel(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL])+` level`,
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE  ? null : parseSpell(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]),
 		].filter(f => f);
 		STATS_PREREQUISITES.innerHTML = prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
 
