@@ -2,18 +2,12 @@
 
 const JSON_URL = "data/invocations.json";
 
-const STR_JOIN_MODE_LIST = ",";
-const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
-const STR_JOIN_MODE_TITLE = " ";
-
 const STR_PACT_NONE = "Any";
 const STR_PATRON_NONE = "Any";
 const STR_LEVEL_NONE = "Any";
 const STR_SPELL_NONE = "None";
 
-const TMP_HIDDEN_MODE = `"{0}"`;
-
-const ID_INVOCATION_LIST = "invocationsList"
+const ID_INVOCATION_LIST = "invocationsList";
 const ID_STATS_NAME = "name";
 const ID_STATS_PREREQUISITES = "prerequisites";
 const ID_TEXT = "text";
@@ -28,14 +22,11 @@ const JSON_ITEM_TEXT = "text";
 const JSON_ITEM_PREREQUISITES = "prerequisites";
 
 const CLS_INVOCATION = "invocations";
-const CLS_ROW = "row";
 const CLS_COL1 = "col-xs-4";
-const CLS_COL2 = "col-xs-2";
-const CLS_COL3 = "col-xs-3";
-const CLS_COL4 = "col-xs-3";
-const CLS_COL5 = "col-xs-2";
-const CLS_COL6 = "col-xs-2";
-const CLS_HIDDEN = "hidden";
+const CLS_COL2 = "col-xs-1 col-xs-1-7";
+const CLS_COL3 = "col-xs-1 col-xs-1-2";
+const CLS_COL4 = "col-xs-2 col-xs-2-4";
+const CLS_COL5 = "col-xs-2 col-xs-2-7";
 const CLS_LI_NONE = "list-entry-none";
 
 const LIST_NAME = "name";
@@ -61,7 +52,6 @@ function parselevel (level) {
 function parseSpell (spell) {
 	if (spell === "Eldritch Blast") return spell+" cantrip";
 	if (spell === "Hex/Curse") return "Hex spell or a warlock feature that curses";
-	if (spell === undefined) return STR_SPELL_NONE;
 	return STR_SPELL_NONE
 }
 
@@ -69,27 +59,24 @@ function parsePact (pact) {
 	if (pact === "Chain") return "Pact of the Chain";
 	if (pact === "Tome") return "Pact of the Tome";
 	if (pact === "Blade") return "Pact of the Blade";
-	if (pact === undefined) return STR_PACT_NONE;
 	return STR_PACT_NONE;
 }
 
-function parsePatron (patron) {
+function parsePatronToShort (patron) {
 	if (patron === STR_PATRON_NONE) return STR_PATRON_NONE;
-	if (patron === undefined) return STR_PATRON_NONE;
-	return "The "+patron;
+	return /^The (.*?)$/.exec(patron)[1];
 }
-
 
 let INVOCATION_LIST;
 function onJsonLoad(data) {
 	INVOCATION_LIST = data.invocation;
 
-	const sourceFilter = getSourceFilter({
-		deselFn: function(val) {
-			return false;
-		}
+	const sourceFilter = getSourceFilter();
+	const patronFilter = new Filter({
+		header: "Patron",
+		items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", STR_PATRON_NONE],
+		displayFn: parsePatronToShort
 	});
-	const patronFilter = new Filter({header: "Patron", items: ["Archfey", "Fiend", "Great Old One", "Hexblade", "Raven Queen", "Seeker", STR_PATRON_NONE], displayFn: parsePatron});
 	const pactFilter = new Filter({header: "Pact", items: ["Chain", "Tome", "Blade", STR_PACT_NONE], displayFn: parsePact});
 	const spellFilter = new Filter({header: "Spell or Feature", items: ["Eldritch Blast", "Hex/Curse", STR_SPELL_NONE]});
 	const levelFilter = new Filter({header: "Warlock Level", items: ["5", "7", "9", "12", "15", "18", STR_LEVEL_NONE]});
@@ -112,8 +99,9 @@ function onJsonLoad(data) {
 				<a id='${i}' href='#${encodeForHash([p[JSON_ITEM_NAME], p[JSON_ITEM_SOURCE]])}' title="${p[JSON_ITEM_NAME]}">
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
 					<span class='${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
-					<span class='${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? CLS_LI_NONE : STR_EMPTY}'>${parsePact(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT])}</span>
-					<span class='${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? CLS_LI_NONE : STR_EMPTY}'>${parsePatron(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
+					<span class='${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]}</span>
+					<span class='${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? CLS_LI_NONE : STR_EMPTY}'>${parsePatronToShort(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
+					<span class='${LIST_SPELL} ${CLS_COL5} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]}</span>
 				</a>
 			</li>
 		`;
@@ -187,7 +175,7 @@ function loadhash (jsonIndex) {
 	function loadInvocation() {
 
 		const prereqs = [
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE  ? null : parsePatron(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])+` patron`,
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE  ? null : `${selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON]} patron`,
 			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE  ? null : parsePact(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]),
 			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE  ? null : parselevel(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL])+` level`,
 			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE  ? null : parseSpell(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]),
