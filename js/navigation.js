@@ -5,7 +5,7 @@ window.addEventListener('load', currentPage, false);
 
 function currentPage(){
 	let currentPage = window.location.pathname;
-	currentPage = currentPage.slice(1);
+	currentPage = currentPage.substr(currentPage.lastIndexOf('/') + 1);
 
 	const current = document.querySelectorAll('a[href="'+currentPage+'"]');
 	current[0].parentNode.className = 'active';
