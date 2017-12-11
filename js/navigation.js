@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 window.addEventListener('load', navigation, false);
 window.addEventListener('load', currentPage, false);
