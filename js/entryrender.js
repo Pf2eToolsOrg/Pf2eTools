@@ -330,8 +330,16 @@ function EntryRenderer() {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action") {
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action"
+						|| tag === "@link") { // FIXME remove "@link"
 						switch (tag) {
+							// FIXME remove "@link"
+							case "@link":
+								textStack.push(`<u>`);
+								self.recursiveEntryRender(text, textStack, depth);
+								textStack.push(`</u>`);
+								break;
+
 							case "@b":
 							case "@bold":
 								textStack.push(`<b>`);
