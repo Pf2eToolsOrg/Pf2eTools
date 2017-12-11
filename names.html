@@ -49,11 +49,11 @@
 			font-size: 1.2em;
 		}
 
-		ul.encounters > li {
+		ul.names > li {
 			border-bottom: none;
 			margin-bottom: 5px;
 		}
-		ul.encounters > li > ul > li:last-child {
+		ul.names > li > ul > li:last-child {
 			border-bottom: none;
 		}
 
@@ -92,26 +92,24 @@
 	<div class="viewport-wrapper">
 		<header class="hidden-xs hidden-sm">
 			<div class="container">
-				<h1>Encounter Gen</h1>
-				<p>Choose a setting and level range, then roll the d100!</p>
+				<h1>Names</h1>
+				<p>You want to name your character what now?!</p>
 			</div>
 		</header>
 <nav class="container" id="navigation">
     <ul class="nav nav-pills" id="navbar">
     </ul>
 </nav>
-
-
 		<div class="container view-col-wrapper">
 			<div class="view-col" id="listcontainer">
 				<div class="input-group search-box">
-					<input type="search" id="search" class="search form-control" placeholder="Find location...">
+					<input type="search" id="search" class="search form-control" placeholder="Find race...">
 					<span class="input-group-btn">
 						<button class="btn btn-default reset" id="reset" type="button">Reset</button>
 					</span>
 				</div>
 
-				<ul class="list encounters">
+				<ul class="list names">
 					<!-- populate with JS -->
 				</ul>
 			</div>
@@ -136,7 +134,7 @@
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
-<script type="text/javascript" src="js/encountergen.js"></script>
+<script type="text/javascript" src="js/names.js"></script>
 <script type="text/javascript" src="lib/droll.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>

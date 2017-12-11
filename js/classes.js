@@ -415,7 +415,7 @@ function loadsub(sub) {
 		if ($toShow.length === 0) {
 			displayAllSubclasses();
 		} else {
-			const otherSrcSubFeat = $(`p.${CLSS_NON_STANDARD_SOURCE}`);
+			const otherSrcSubFeat = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
 			const shownInTable = [];
 
 			$.each($toShow, function(i, v) {

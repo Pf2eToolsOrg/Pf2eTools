@@ -110,10 +110,7 @@ function pageInit(loadedSources) {
 		list.sort($this.data("sort"), { order: $this.data("sortby"), sortFunction: sortMonsters });
 	});
 
-	// collapse/expand search button
-	$("button#expandcollapse").click(function() {
-		$(`#listcontainer`).toggle();
-	});
+	addListShowHide();
 
 	// proficiency bonus/dice toggle
 	const profBonusDiceBtn = $("button#profbonusdice");
@@ -475,7 +472,7 @@ function loadhash (id) {
 	$("tr.regionaleffect").remove();
 	$("tr#regionaleffects").hide();
 	if (legendaryGroup) {
-		const thisGroup = legendaryGroupList[legendaryGroup];
+		const thisGroup = meta[legendaryGroup];
 		if (thisGroup.lairActions) renderSection("lairaction", thisGroup.lairActions);
 		if (thisGroup.regionalEffects) renderSection("regionaleffect", thisGroup.regionalEffects);
 	}
