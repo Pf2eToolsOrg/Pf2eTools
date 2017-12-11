@@ -1,11 +1,22 @@
 "use strict";
 
-window.addEventListener('load', navigation, false);
-window.addEventListener('load', currentPage, false);
+window.addEventListener(
+	'load',
+	function() {
+		navigation();
+		currentPage();
+	}, false
+);
+
+const CHILD_PAGES = {
+	"adventure.html": "adventures.html"
+};
 
 function currentPage(){
 	let currentPage = window.location.pathname;
 	currentPage = currentPage.substr(currentPage.lastIndexOf('/') + 1);
+
+	if (CHILD_PAGES[currentPage]) currentPage = CHILD_PAGES[currentPage];
 
 	const current = document.querySelectorAll(`a[href="${currentPage}"]`);
 	current[0].parentNode.className = 'active';
@@ -33,6 +44,7 @@ function navigation() {
 	LIDropdown('navbar','dms','dropdown');
 	A('dms','dmOption','dropdown-toggle','dropdown','#','button','true','false',"DM Tools <span class='caret'></span>");
 	UL('dms','ul_dms','dropdown-menu');
+	LI('ul_dms','adventures.html','Adventures');
 	LI('ul_dms','crcalculator.html','CR Calculator');
 	LISpecial('ul_dms','http://kobold.club','Encounter Builder','_blank','I could literally never build something better than Kobold Fight Club');
 	LI('ul_dms','encountergen.html','Encounter Generator');

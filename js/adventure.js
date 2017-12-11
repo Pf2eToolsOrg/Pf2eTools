@@ -30,7 +30,7 @@ function onJsonLoad(data) {
 				<a id="${i}" href='#${adv.id},0' title='${adv.name}'>
 					<span class='name'>${adv.name}</span> 
 				</a>
-				${makeContentsBlock(adv, false)}
+				${makeContentsBlock(adv, false, true)}
 			</li>`;
 	}
 	adventuresList.append(tempString);
