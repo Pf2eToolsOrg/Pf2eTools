@@ -7,7 +7,7 @@ function currentPage(){
 	let currentPage = window.location.pathname;
 	currentPage = currentPage.substr(currentPage.lastIndexOf('/') + 1);
 
-	const current = document.querySelectorAll('a[href="'+currentPage+'"]');
+	const current = document.querySelectorAll(`a[href="${currentPage}"]`);
 	current[0].parentNode.className = 'active';
 
 	const parent = current[0].parentNode.parentNode.parentNode;
