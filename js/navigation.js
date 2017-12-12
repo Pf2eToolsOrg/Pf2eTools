@@ -61,6 +61,18 @@ function navigation() {
 
 	LISwitcher('navbar','daynightMode','nightModeToggle','#','styleSwitcher.toggleActiveStyleSheet(); return false;');
 
+	/**
+	* Adds a link for the LIDropdowns
+	* @param {String} append_to_id - Which ID does this link belong too .
+	* @param {String} _id - What ID should this link have.
+	* @param {String} _class - What class(es) should this link have.
+	* @param {String} _datatoggle - What type of datatoggle.
+	* @param {String} _href - Where does this link to.
+	* @param {String} _role - Specific role.
+	* @param {String} _ariahaspop - Aria has pop.
+	* @param {String} _ariaexpanded - Default state.
+	* @param {String} _text - Text of the link.
+	*/
 	function A(append_to_id, _id, _class, _datatoggle, _href, _role, _ariahaspop, _ariaexpanded, _text){
 		const a = document.createElement('a');
 		a.id = _id;
@@ -76,6 +88,12 @@ function navigation() {
 		appendTo.appendChild(a);
 	}
 
+	/**
+	* Adds a new list to the navigation bar
+	* @param {String} append_to_id - Which ID does this link belong too .
+	* @param {String} ul_id - What ID should this UL have.
+	* @param {String} _class - What class(es) should this link have.
+	*/
 	function UL(append_to_id, ul_id, _class) {
 		const ul = document.createElement('ul');
 		ul.id = ul_id;
@@ -85,6 +103,12 @@ function navigation() {
 		appendTo.appendChild(ul);
 	}
 
+	/**
+	* Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
+	* @param {String} append_to_id - Which ID does this link belong too .
+	* @param {String} a_href - Where does this link to.
+	* @param {String} a_text - What text does this link have.
+	*/
 	function LI(append_to_id, a_href, a_text) {
 		const a = document.createElement('a');
 		a.href = a_href;
@@ -99,6 +123,14 @@ function navigation() {
 		appendTo.appendChild(li);
 	}
 
+	/**
+	* Adds a new outbound item to the navigation bar. Can be used either in root, or in a different UL.
+	* @param {String} append_to_id - Which ID does this link belong too .
+	* @param {String} a_href - Where does this link to.
+	* @param {String} a_text - What text does this link have.
+	* @param {String} a_target - Where does this link target too.
+	* @param {String} a_title - What subtext does this link have.
+	*/
 	function LISpecial(append_to_id, a_href, a_text, a_target, a_title) {
 		const a = document.createElement('a');
 		a.href = a_href;
@@ -115,6 +147,12 @@ function navigation() {
 		appendTo.appendChild(li);
 	}
 
+	/**
+	* Adds a new dropdown starting list to the navigation bar
+	* @param {String} append_to_id - Which ID does this link belong too .
+	* @param {String} li_id - What ID should this LI have.
+	* @param {String} _class - What class(es) should this LI have.
+	*/
 	function LIDropdown(append_to_id, li_id, _class) {
 		const li = document.createElement('li');
 		li.id = li_id;
@@ -125,6 +163,14 @@ function navigation() {
 		appendTo.appendChild(li);
 	}
 	
+	/**
+	* Special LI for the Day/Night Switcher
+	* @param {String} append_to_id - Which ID does this link belong too .
+	* @param {String} li_id - What ID should this LI have.
+	* @param {String} a_class - What class(es) should this link have.
+	* @param {String} a_href - Where does this link to.
+	* @param {String} a_class - What should the link do when you click on it.
+	*/
 	function LISwitcher(append_to_id, li_id, a_class, a_href, a_onclick){
 		const a = document.createElement('a');
 		a.href = a_href;
