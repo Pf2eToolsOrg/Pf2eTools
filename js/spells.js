@@ -377,6 +377,12 @@ function addSpells(data) {
 		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
 	}
 
+	let lastSearch = null;
+	if (list.searched) {
+		lastSearch = $(`#search`).val();
+		list.search("");
+	}
+
 	spellTable.append(tempString);
 
 	// sort filters
@@ -386,6 +392,7 @@ function addSpells(data) {
 	subclassFilter.items.sort(ascSort);
 
 	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
 
 	filterBox.render();
@@ -449,11 +456,7 @@ function loadhash (id) {
 
 	renderStack.push(`<tr><td id="levelschoolritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta)}</span></td></tr>`);
 
-	if(spell.time[0].description){
- 		renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}, ${spell.time[0].description}</td></tr>`);
- 	}else{
- 		renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>`);
- 	}
+	renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>`);
 
 	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>`);
 

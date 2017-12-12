@@ -110,10 +110,7 @@ function pageInit(loadedSources) {
 		list.sort($this.data("sort"), { order: $this.data("sortby"), sortFunction: sortMonsters });
 	});
 
-	// collapse/expand search button
-	$("button#expandcollapse").click(function() {
-		$(`#listcontainer`).toggle();
-	});
+	addListShowHide();
 
 	// proficiency bonus/dice toggle
 	const profBonusDiceBtn = $("button#profbonusdice");
@@ -182,6 +179,12 @@ function addMonsters(data) {
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 	}
+	let lastSearch = null;
+	if (list.searched) {
+		lastSearch = $(`#search`).val();
+		list.search("");
+	}
+
 	table.append(textStack);
 
 	// sort filters
@@ -190,6 +193,7 @@ function addMonsters(data) {
 	tagFilter.items.sort(ascSort);
 
 	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
 
 	filterBox.render();
@@ -468,7 +472,7 @@ function loadhash (id) {
 	$("tr.regionaleffect").remove();
 	$("tr#regionaleffects").hide();
 	if (legendaryGroup) {
-		const thisGroup = legendaryGroupList[legendaryGroup];
+		const thisGroup = meta[legendaryGroup];
 		if (thisGroup.lairActions) renderSection("lairaction", thisGroup.lairActions);
 		if (thisGroup.regionalEffects) renderSection("regionaleffect", thisGroup.regionalEffects);
 	}

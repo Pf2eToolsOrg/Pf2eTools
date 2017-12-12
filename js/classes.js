@@ -176,7 +176,7 @@ function loadhash (id) {
 			featureLink.click(function() {
 				document.getElementById(featureId).scrollIntoView();
 			});
-			featureNames.push(featureLink);
+			if (feature.type !== "inset") featureNames.push(featureLink);
 
 			const styleClasses = [CLSS_CLASS_FEATURE];
 			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
@@ -415,7 +415,7 @@ function loadsub(sub) {
 		if ($toShow.length === 0) {
 			displayAllSubclasses();
 		} else {
-			const otherSrcSubFeat = $(`p.${CLSS_NON_STANDARD_SOURCE}`);
+			const otherSrcSubFeat = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
 			const shownInTable = [];
 
 			$.each($toShow, function(i, v) {

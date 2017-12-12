@@ -325,6 +325,10 @@ tr.trait td {
 	background: rgba(34, 34, 34, 0.65);
 }
 
+table#stats div.statsBlockInset {
+	background-color: #323431;
+}
+
 `;
 
 class StyleSwitcher {
