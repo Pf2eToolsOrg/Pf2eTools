@@ -1,3 +1,7 @@
+///////////////////////////////////////////////////////////////////////////////
+// Strict mode should not be used, as the roll20 script depends on this file //
+///////////////////////////////////////////////////////////////////////////////
+
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_START = "#";
@@ -1001,6 +1005,9 @@ SRC_UAWAW 		= SRC_UA_PREFIX + "WarlockAndWizard";
 SRC_UATF 		= SRC_UA_PREFIX + "TheFaithful";
 SRC_UAWR 		= SRC_UA_PREFIX + "WizardRevisited";
 SRC_UAESR 		= SRC_UA_PREFIX + "ElfSubraces";
+SRC_UAMAC 		= SRC_UA_PREFIX + "MassCombat";
+SRC_UA3PE 		= SRC_UA_PREFIX + "ThreePillarExperience";
+SRC_UAGHI 		= SRC_UA_PREFIX + "GreyhawkInitiative";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
@@ -1077,6 +1084,9 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] 		= UA_PREFIX + "Warlock and Wizard";
 Parser.SOURCE_JSON_TO_FULL[SRC_UATF] 		= UA_PREFIX + "The Faithful";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] 		= UA_PREFIX + "Wizard Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] 		= UA_PREFIX + "Elf Subraces";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] 		= UA_PREFIX + "Mass Combat";
+Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] 		= UA_PREFIX + "Three-Pillar Experience";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] 		= UA_PREFIX + "Greyhawk Initiative";
 Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] 	= "Book of Lost Spells" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] 	= "Tome of Beasts" + PP3_SUFFIX;
 
@@ -1143,6 +1153,9 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAWAW] 		= "UAWAW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UATF] 		= "UATF";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAWR] 		= "UAWR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAESR] 		= "UAESR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAMAC] 		= "UAMAC";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA3PE] 		= "UA3PE";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAGHI] 		= "UAGHI";
 Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] 	= "BoLS (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] 		= "ToB (3pp)";
 
@@ -1226,7 +1239,7 @@ function hasBeenReprinted(shortName, source) {
 }
 
 function isNonstandardSource(source) {
-	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA);
+	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.endsWith(SRC_3PP_SUFFIX) || source === SRC_OGA);
 }
 
 // CONVENIENCE/ELEMENTS ================================================================================================
@@ -1300,7 +1313,7 @@ function getSourceFilter(options) {
 }
 
 function defaultSourceDeselFn(val) {
-	return val.startsWith(SRC_UA_PREFIX) || val.startsWith(SRC_PS_PREFIX) || val.endsWith(SRC_3PP_SUFFIX) || val === SRC_OGA;
+	return isNonstandardSource(val);
 }
 
 function defaultSourceSelFn(val) {
@@ -1423,5 +1436,37 @@ function multiLoadJSON(toLoads, onEachLoadFunction, onFinalLoadFunction) {
 				}
 			}
 		)
+	});
+}
+
+// SHOW/HIDE SEARCH ====================================================================================================
+function addListShowHide() {
+	const toInjectShow = `
+		<div class="col-xs-12" id="showsearch">
+			<button class="btn btn-block btn-default btn-xs" type="button">Show Search</button>
+			<br>
+		</div>	
+	`;
+
+	const toInjectHide = `
+		<button class="btn btn-default" type="button" id="hidesearch">Hide</button>
+	`;
+
+	$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
+	$(`#statscontainer`).prepend(toInjectShow);
+
+	const listContainer = $(`#listcontainer`);
+	const showSearchWrpr = $("div#showsearch");
+	const hideSearchBtn = $("button#hidesearch");
+	// collapse/expand search button
+	hideSearchBtn.click(function() {
+		listContainer.hide();
+		showSearchWrpr.show();
+		hideSearchBtn.hide();
+	});
+	showSearchWrpr.find("button").click(function() {
+		listContainer.show();
+		showSearchWrpr.hide();
+		hideSearchBtn.show();
 	});
 }

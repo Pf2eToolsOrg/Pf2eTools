@@ -1,0 +1,66 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"title": "Invocations",
+	"type": "object",
+
+	"definitions": {
+		"invocation": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"prerequisites": {
+					"type": "object",
+					"properties": {
+						"spell": {
+							"type": "string",
+							"enum": [
+								"Eldritch Blast", "Hex/Curse"
+							]
+						},
+						"pact": {
+							"type": "string",
+							"enum": [
+								"Chain", "Tome", "Blade"
+							]
+						},
+						"patron": {
+							"type": "string",
+							"enum": [
+								"The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker"
+							]
+						},
+						"level": {
+							"type": "integer",
+							"enum": [5, 7, 9, 12, 15, 18]
+						}
+					},
+					"additionalProperties": false
+				},
+				"text": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"source": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"text",
+				"source"
+			],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"invocation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/invocation"}
+		}
+	},
+	"additionalProperties": false
+}

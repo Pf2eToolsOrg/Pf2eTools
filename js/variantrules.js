@@ -79,6 +79,7 @@ function onJsonLoad(data) {
 		});
 	}
 
+	addListShowHide();
 	initHistory();
 	handleFilterChange();
 }

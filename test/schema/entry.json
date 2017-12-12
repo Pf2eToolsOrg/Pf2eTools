@@ -128,6 +128,12 @@
 				{
 					"properties": {
 						"type": {"const": "list"},
+						"style": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
 						"items": {
 							"type": "array",
 							"items": {
@@ -235,6 +241,31 @@
 				}
 			]
 		},
+		"abilityGeneric": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "abilityGeneric"},
+						"name": {
+							"type": "string"
+						},
+						"text": {
+							"type": "string"
+						},
+						"attributes": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": ["str", "dex", "con", "int", "wis", "cha"]
+							}
+						}
+					},
+					"required": ["name", "text", "attributes"],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryLink": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
@@ -292,35 +323,109 @@
 					"additionalProperties": false
 				}
 			]
+		},
+		"entryInvocation": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "invocation"},
+						"prerequisite": {
+							"type": "string"
+						}
+					},
+					"required": ["name"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryPatron": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "patron"}
+					},
+					"required": ["name"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryInset": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "inset"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["name", "entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryItem": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "item"},
+						"name": {
+							"type": "string"
+						},
+						"entry": {
+							"$ref": "/Entry"
+						}
+					},
+					"required": ["name", "entry"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryImage": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "image"},
+						"href": {
+							"oneOf": [
+								{
+									"properties": {
+										"type": {"const": "internal"},
+										"path": {
+											"type": "string"
+										}
+									},
+									"required": ["path"],
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"type": {"const": "external"},
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": ["url"],
+									"additionalProperties": false
+								}
+							]
+						}
+					},
+					"required": ["href"],
+					"additionalProperties": false
+				}
+			]
 		}
-	},
-	"entryInvocation": {
-		"allOf" : [
-			{"$ref" : "#/definitions/entry"},
-			{
-				"properties": {
-					"type": {"const": "invocation"},
-					"prerequisite": {
-						"type": "string"
-					}
-				},
-				"required": ["name"],
-				"additionalProperties": false
-			}
-		]
-	},
-
-	"entryPatron": {
-		"allOf" : [
-			{"$ref" : "#/definitions/entry"},
-			{
-				"properties": {
-					"type": {"const": "patron"}
-				},
-				"required": ["name"],
-				"additionalProperties": false
-			}
-		]
 	},
 
 	"anyOf": [
@@ -334,7 +439,13 @@
 		{"$ref": "#/definitions/entryDice"},
 		{"$ref": "#/definitions/entryAbilityDc"},
 		{"$ref": "#/definitions/entryAbilityAttackMod"},
+		{"$ref": "#/definitions/abilityGeneric"},
 		{"$ref": "#/definitions/entryLink"},
+		{"$ref": "#/definitions/entryInvocation"},
+		{"$ref": "#/definitions/entryPatron"},
+		{"$ref": "#/definitions/entryInset"},
+		{"$ref": "#/definitions/entryItem"},
+		{"$ref": "#/definitions/entryImage"},
 		{"type": "string"},
 		{"type": "integer"}
 	]

@@ -6,15 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--
-	XML data was compiled by a reddit community for use with the "Fight Club 5" app.
-	Google "5e xml files" for more info.
-
-	Feel free to use, edit, and redistribute this as you wish.
-	I don't own any of the XML data anyway.
--->
-
-	<title>Races - 5etools</title>
+	<title>Eldritch Invocations - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -23,7 +15,8 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<style id="dynamicStyle"></style> <!-- populated with JS -->
 	<script type="text/javascript" src="js/styleswitch.js"></script>
-	<script type="text/javascript" src="js/navigation.js"></script>
+	    <script type="text/javascript" src="js/navigation.js"></script>
+	<style> .col-xs-4 {  padding-right: 12px;}</style>
 </head>
 
 <body>
@@ -31,8 +24,8 @@
 		<header class="hidden-xs hidden-sm">
 			<div class="container">
 
-				<h1>Races List</h1>
-				<p>Search by name on the left, click race name to display on the right.</p>
+				<h1>Eldritch Invocation List</h1>
+				<p>Search by name on the left, click invocation name to display on the right.</p>
 			</div>
 		</header>
 <nav class="container" id="navigation">
@@ -43,20 +36,22 @@
 		<div class="container view-col-wrapper">
 			<div class="view-col" id="listcontainer">
 				<div class="input-group" id="filter-search-input-group">
-					<input type="search" id="search" class="search form-control" placeholder="Find race...">
-					<span class="input-group-btn">
-							<button class="btn btn-default" type="button" id="reset">Reset</button>
-						</span>
+					<input type="search" id="search" class="search form-control" placeholder="Find invocation...">
+					<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
 				</div>
 				<div id="filtertools" class="sortlabel btn-group">
 					<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-					<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="ability">Ability</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="size">Size</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+					<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+					<button class="col-xs-1 col-xs-1-2 sort btn btn-default btn-xs" type="button" data-sort="pact">Pact</button>
+					<button class="col-xs-2 col-xs-2-4 sort btn btn-default btn-xs" type="button" data-sort="patron">Patron</button>
+					<button class="col-xs-2 col-xs-2-7 sort btn btn-default btn-xs" type="button" data-sort="spell">Spell</button>
 				</div>
 
-				<ul class="list races"></ul>
+				<ul id="invocationsList" class="list invocations">
+					<!-- populated by javascript -->
+				</ul>
 			</div>
+
 			<div id="statscontainer" class="view-col">
 				<table id="stats">
 					<tr>
@@ -66,18 +61,11 @@
 						<th id="name" colspan="6">Name</th>
 					</tr>
 					<tr>
-						<td id="ability" colspan="6">Ability Scores: <span>+1 Dex</span></td>
+						<td id="prerequisites" colspan="6" class="psi-order-and-talent">Prerequisites: <span id="order"></span> <span id="type"></span></td>
 					</tr>
+					<tr><td class="divider" colspan="6"><div></div></td></tr>
 					<tr>
-						<td id="size" colspan="6">Size: <span>Medium</span></td>
-					</tr>
-					<tr>
-						<td id="speed" colspan="6">Speed: <span>30 ft.</span></td>
-					</tr>
-					<tr id="traits">
-						<td class="divider" colspan="6">
-							<div></div>
-						</td>
+						<td colspan="6" id="text"></td>
 					</tr>
 					<tr>
 						<th class="border" colspan="6"></th>
@@ -90,8 +78,7 @@
 	<script type="text/javascript" src="js/utils.js"></script>
 	<script type="text/javascript" src="js/filter.js"></script>
 	<script type="text/javascript" src="js/history.js"></script>
-	<script type="text/javascript" src="js/entryrender.js"></script>
-	<script type="text/javascript" src="js/races.js"></script>
+	<script type="text/javascript" src="js/invocations.js"></script>
 	<script type="text/javascript" src="lib/list.js"></script>
 	<script type="text/javascript" src="lib/jquery.js"></script>
 	<script type="text/javascript" src="lib/bootstrap.js"></script>
