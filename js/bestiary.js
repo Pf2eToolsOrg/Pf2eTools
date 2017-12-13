@@ -430,7 +430,7 @@ function loadhash (id) {
 				reactiontexthtml = reactiontexthtml + "<p>" + reactiontext[n] + "</p>";
 			}
 
-			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction" + i + "'><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</td></tr>");
+			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction" + i + "'><p><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</p></td></tr>");
 		}
 	}
 
