@@ -70,6 +70,7 @@ function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 
 				initHistory();
 				handleFilterChange();
+				addListShowHide();
 			}
 		);
 	}
