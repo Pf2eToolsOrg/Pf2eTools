@@ -110,8 +110,6 @@ function pageInit(loadedSources) {
 		list.sort($this.data("sort"), { order: $this.data("sortby"), sortFunction: sortMonsters });
 	});
 
-	addListShowHide();
-
 	// proficiency bonus/dice toggle
 	const profBonusDiceBtn = $("button#profbonusdice");
 	profBonusDiceBtn.useDice = false;
@@ -197,9 +195,6 @@ function addMonsters(data) {
 	list.sort("name");
 
 	filterBox.render();
-
-	initHistory();
-	handleFilterChange();
 }
 
 // sorting for form filtering
