@@ -424,13 +424,13 @@ function loadhash (id) {
 			const reactionname = reactions[i].name;
 
 			const reactiontext = reactions[i].text;
-			let reactiontexthtml = "<span>" + reactiontext + "</span>";
+			let reactiontexthtml = "<p>" + reactiontext + "</p>";
 			for (let n = 1; n < reactiontext.length; n++) {
 				if (!reactiontext[n]) continue;
 				reactiontexthtml = reactiontexthtml + "<p>" + reactiontext[n] + "</p>";
 			}
 
-			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction" + i + "'><p><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</p></td></tr>");
+			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction" + i + "'><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</td></tr>");
 		}
 	}
 
