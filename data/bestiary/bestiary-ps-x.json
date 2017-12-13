@@ -1,0 +1,105 @@
+{
+	"monster": [
+		{
+			"source": "PSX",
+			"name": "Chupacabra",
+			"size": "M",
+			"type": "monstrosity",
+			"alignment": "neutral evil",
+			"ac": "14 (natural armor)",
+			"hp": "45 (6d8+18)",
+			"speed": "30 ft.",
+			"str": "15",
+			"dex": "14",
+			"con": "16",
+			"int": "6",
+			"wis": "13",
+			"cha": "9",
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"senses": "dark vision 120 ft.",
+			"passive": "13",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Sunlight Sensitivity",
+					"text": [
+						"While in sunlight, the chupacabra has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"name": "Drain Blood",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one creature that is prone, incapacitated, or restrained. Hit: 5 (1d6+2) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the chupacabra regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Pin",
+					"text": [
+						"If a creature within 5 feet of the chupacabra stands up, the chupacabra can use its reaction to make a bite attack."
+					]
+				}
+			]
+		},
+		{
+			"source": "PSX",
+			"name": "Frilled Deathspitter",
+			"size": "S",
+			"type": "beast",
+			"alignment": "unaligned",
+			"ac": "13 (natural armor)",
+			"hp": "18 (4d6+4)",
+			"speed": "40 ft.",
+			"str": "20",
+			"dex": "16",
+			"con": "13",
+			"int": "4",
+			"wis": "12",
+			"cha": "6",
+			"skill": {
+				"perception": "+3"
+			},
+			"passive": "13",
+			"cr": "1/2",
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The deathspitter makes three attacks: one with its bite and two with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage."
+					]
+				},
+				{
+					"name": "Spit Poison",
+					"text": [
+						"Ranged Weapon Attack: +4 to hit, range 15/30 ft., one creature. Hit: The target must make a DC 13 Constitution saving throw, taking 18 (4d8) poison damage on a failed save, or half as much damage on a successful one. In addition, a creature that fails its saving throw is blinded until the end of the deathspitter’s next turn."
+					]
+				}
+			]
+		}
+	]
+}

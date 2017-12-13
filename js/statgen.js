@@ -11,6 +11,7 @@ function loadRaceJson() {
 
 window.onload = function load() {
 	loadRaceJson();
+	prevent();
 };
 
 function onJsonLoad(data) {
@@ -28,6 +29,24 @@ function onJsonLoad(data) {
 		window.onhashchange();
 	else
 		window.location.hash = "#rolled";
+}
+
+function prevent() {
+	for (let i = 1; i < 7; ++i) {
+		const input = $(`#inputBox${i}`);
+		input.on(`change`, function(e) {
+			var num = parseInt(this.value, 10),
+				min = 8,
+				max = 15;
+			if (isNaN(num)) {
+				this.value = `8`;
+				return;
+			}
+			this.value = Math.max(num, min);
+			this.value = Math.min(num, max);
+			changeTotal();
+		})
+	};
 }
 
 window.onhashchange = function hashchange() {
