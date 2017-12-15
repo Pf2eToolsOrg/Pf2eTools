@@ -3,11 +3,11 @@ const JSON_URL = "data/conditions.json";
 let tableDefault;
 let conditionList;
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	conditionList = data.condition;
 
 	tableDefault = $("#stats").html();
@@ -37,5 +37,5 @@ function loadhash (id) {
 	const curcondition = conditionList[id];
 	$("th#name").html(curcondition.name);
 	$("tr.text").remove();
-	$("tr#text").after("<tr class='text'><td colspan='6'>"+utils_combineText(curcondition.entries, "p")+"</td></tr>");
+	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(curcondition.entries, "p") + "</td></tr>");
 }

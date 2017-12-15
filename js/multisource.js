@@ -9,16 +9,19 @@ const JSON_SRC_INDEX = "index.json";
  * @param dataFn function to be run when all data has been loaded, should accept a list of objects custom to the page
  * (e.g. spell data objects for the spell page) which were found in the `jsonListName` list
  */
-function multisourceLoad(jsonDir, jsonListName, pageInitFn, dataFn) {
+function multisourceLoad (jsonDir, jsonListName, pageInitFn, dataFn) {
 	// load the index
-	loadJSON(jsonDir+JSON_SRC_INDEX, function(index) { _onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn) });
+	loadJSON(jsonDir + JSON_SRC_INDEX, function (index) {
+		_onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn)
+	});
 }
 
 let loadedSources;
-function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
+
+function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 	// track loaded sources
 	loadedSources = {};
-	Object.keys(src2UrlMap).forEach(src => loadedSources[src] = {url: jsonDir+src2UrlMap[src], loaded: false});
+	Object.keys(src2UrlMap).forEach(src => loadedSources[src] = {url: jsonDir + src2UrlMap[src], loaded: false});
 
 	// collect a list of sources to load
 	const sources = Object.keys(src2UrlMap);
@@ -53,17 +56,17 @@ function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 	}
 
 	// make a list of src : url objects
-	const toLoads = allSources.map(src => ({src: src, url: jsonDir+src2UrlMap[src]}));
+	const toLoads = allSources.map(src => ({src: src, url: jsonDir + src2UrlMap[src]}));
 
 	pageInitFn(loadedSources);
 
 	if (toLoads.length > 0) {
 		multiLoadJSON(
 			toLoads,
-			function(toLoad) {
+			function (toLoad) {
 				loadedSources[toLoad.src].loaded = true;
 			},
-			function(dataStack) {
+			function (dataStack) {
 				let toAdd = [];
 				dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
 				addFn(toAdd);
@@ -76,11 +79,11 @@ function _onIndexLoad(src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 	}
 }
 
-function loadSource(jsonListName, dataFn) {
-	return function(src, val) {
+function loadSource (jsonListName, dataFn) {
+	return function (src, val) {
 		const toLoad = loadedSources[src];
 		if (!toLoad.loaded && val === "yes") {
-			loadJSON(toLoad.url, function(data) {
+			loadJSON(toLoad.url, function (data) {
 				dataFn(data[jsonListName]);
 				toLoad.loaded = true;
 			});

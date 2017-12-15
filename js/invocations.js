@@ -36,21 +36,20 @@ const LIST_PACT = "pact";
 const LIST_LEVEL = "level";
 const LIST_SPELL = "spell";
 
-
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
 function parselevel (level) {
-	if (isNaN (level)) return "";
-	if (level === "2") return level+"nd";
-	if (level === "3") return level+"rd";
-	if (level === "1") return level+"st";
-	return level+"th";
+	if (isNaN(level)) return "";
+	if (level === "2") return level + "nd";
+	if (level === "3") return level + "rd";
+	if (level === "1") return level + "st";
+	return level + "th";
 }
 
 function parseSpell (spell) {
-	if (spell === "Eldritch Blast") return spell+" cantrip";
+	if (spell === "Eldritch Blast") return spell + " cantrip";
 	if (spell === "Hex/Curse") return "Hex spell or a warlock feature that curses";
 	return STR_SPELL_NONE
 }
@@ -68,7 +67,8 @@ function parsePatronToShort (patron) {
 }
 
 let INVOCATION_LIST;
-function onJsonLoad(data) {
+
+function onJsonLoad (data) {
 	INVOCATION_LIST = data.invocation;
 
 	const sourceFilter = getSourceFilter();
@@ -77,22 +77,26 @@ function onJsonLoad(data) {
 		items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", STR_PATRON_NONE],
 		displayFn: parsePatronToShort
 	});
-	const pactFilter = new Filter({header: "Pact", items: ["Chain", "Tome", "Blade", STR_PACT_NONE], displayFn: parsePact});
-	const spellFilter = new Filter({header: "Spell or Feature", items: ["Eldritch Blast", "Hex/Curse", STR_SPELL_NONE]});
+	const pactFilter = new Filter({
+		header: "Pact",
+		items: ["Chain", "Tome", "Blade", STR_PACT_NONE],
+		displayFn: parsePact
+	});
+	const spellFilter = new Filter({
+		header: "Spell or Feature",
+		items: ["Eldritch Blast", "Hex/Curse", STR_SPELL_NONE]
+	});
 	const levelFilter = new Filter({header: "Warlock Level", items: ["5", "7", "9", "12", "15", "18", STR_LEVEL_NONE]});
-
 
 	const filterBox = initFilterBox(sourceFilter, pactFilter, patronFilter, spellFilter, levelFilter);
 
 	let tempString = "";
-	INVOCATION_LIST.forEach(function(p, i) {
-		//if (!p.prerequisites) p.pact = STR_PACT_NONE;
+	INVOCATION_LIST.forEach(function (p, i) {
 		if (!p.prerequisites) p.prerequisites = {};
 		if (!p.prerequisites.pact) p.prerequisites.pact = STR_PACT_NONE;
 		if (!p.prerequisites.patron) p.prerequisites.patron = STR_PATRON_NONE;
 		if (!p.prerequisites.spell) p.prerequisites.spell = STR_SPELL_NONE;
 		if (!p.prerequisites.level) p.prerequisites.level = STR_LEVEL_NONE;
-
 
 		tempString += `
 			<li class='row' ${FLTR_ID}="${i}">
@@ -119,17 +123,18 @@ function onJsonLoad(data) {
 		sortFunction: listSort
 	});
 
-	function listSort(itemA, itemB, options) {
+	function listSort (itemA, itemB, options) {
 		if (options.valueName === LIST_NAME) return compareBy(LIST_NAME);
 		else return compareByOrDefault(options.valueName, LIST_NAME);
 
-		function compareBy(valueName) {
+		function compareBy (valueName) {
 			const aValue = itemA.values()[valueName].toLowerCase();
 			const bValue = itemB.values()[valueName].toLowerCase();
 			if (aValue === bValue) return 0;
 			return (aValue > bValue) ? 1 : -1;
 		}
-		function compareByOrDefault(valueName, defaultValueName) {
+
+		function compareByOrDefault (valueName, defaultValueName) {
 			const initialCompare = compareBy(valueName);
 			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
 		}
@@ -143,16 +148,16 @@ function onJsonLoad(data) {
 		handleFilterChange
 	);
 
-	function handleFilterChange() {
+	function handleFilterChange () {
 		list.filter(function (item) {
 			const f = filterBox.getValues();
 			const p = INVOCATION_LIST[$(item.elm).attr(FLTR_ID)];
 
 			const rightSource = sourceFilter.toDisplay(f, p.source);
-			const rightPact = pactFilter.toDisplay(f,p.prerequisites.pact);
-			const rightPatron = patronFilter.toDisplay(f,p.prerequisites.patron);
-			const rightSpell = spellFilter.toDisplay(f,p.prerequisites.spell);
-			const rightLevel = levelFilter.toDisplay(f,p.prerequisites.level);
+			const rightPact = pactFilter.toDisplay(f, p.prerequisites.pact);
+			const rightPatron = patronFilter.toDisplay(f, p.prerequisites.patron);
+			const rightSpell = spellFilter.toDisplay(f, p.prerequisites.spell);
+			const rightLevel = levelFilter.toDisplay(f, p.prerequisites.level);
 			return rightSource && rightPact && rightPatron && rightSpell && rightLevel;
 		});
 	}
@@ -172,13 +177,12 @@ function loadhash (jsonIndex) {
 
 	loadInvocation();
 
-	function loadInvocation() {
-
+	function loadInvocation () {
 		const prereqs = [
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE  ? null : `${selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON]} patron`,
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE  ? null : parsePact(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]),
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE  ? null : parselevel(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL])+` level`,
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE  ? null : parseSpell(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]),
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? null : `${selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON]} patron`,
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? null : parsePact(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]),
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE ? null : parselevel(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL]) + ` level`,
+			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? null : parseSpell(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL])
 		].filter(f => f);
 		STATS_PREREQUISITES.innerHTML = prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
 

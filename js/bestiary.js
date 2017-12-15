@@ -6,7 +6,7 @@ const JSON_LIST_NAME = "monster";
 
 let tableDefault = "";
 
-function ascSortCr(a, b) {
+function ascSortCr (a, b) {
 	// always put unknown values last
 	if (a === "Unknown" || a === undefined) a = "999";
 	if (b === "Unknown" || b === undefined) b = "999";
@@ -14,8 +14,9 @@ function ascSortCr(a, b) {
 }
 
 const meta = {};
-function loadMeta(nextFunction) {
-	loadJSON(JSON_DIR+META_URL, function(data) {
+
+function loadMeta (nextFunction) {
+	loadJSON(JSON_DIR + META_URL, function (data) {
 		// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
 		for (let i = 0; i < data.legendaryGroup.length; i++) {
 			meta[data.legendaryGroup[i].name] = {
@@ -28,8 +29,8 @@ function loadMeta(nextFunction) {
 	});
 }
 
-window.onload = function load() {
-	loadMeta(function() {
+window.onload = function load () {
+	loadMeta(function () {
 		multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters);
 	});
 };
@@ -86,7 +87,7 @@ const filterBox = initFilterBox(
 	miscFilter
 );
 
-function pageInit(loadedSources) {
+function pageInit (loadedSources) {
 	tableDefault = $("#stats").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
@@ -104,26 +105,26 @@ function pageInit(loadedSources) {
 	);
 
 	// sorting headers
-	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
+	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 		const $this = $(this);
 		$this.data("sortby", $this.data("sortby") === "asc" ? "desc" : "asc");
-		list.sort($this.data("sort"), { order: $this.data("sortby"), sortFunction: sortMonsters });
+		list.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortMonsters});
 	});
 
 	// proficiency bonus/dice toggle
 	const profBonusDiceBtn = $("button#profbonusdice");
 	profBonusDiceBtn.useDice = false;
-	profBonusDiceBtn.click(function() {
+	profBonusDiceBtn.click(function () {
 		if (this.useDice) {
 			this.innerHTML = "Use Proficiency Dice";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function() {
+			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_BONUS);
 				$this.html($this.attr(ATB_PROF_BONUS_STR));
 			})
 		} else {
 			this.innerHTML = "Use Proficiency Bonus";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function() {
+			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_DICE);
 				$this.html($this.attr(ATB_PROF_DICE_STR));
@@ -133,8 +134,8 @@ function pageInit(loadedSources) {
 	})
 }
 
-function handleFilterChange() {
-	list.filter(function(item) {
+function handleFilterChange () {
+	list.filter(function (item) {
 		const f = filterBox.getValues();
 		const m = monsters[$(item.elm).attr(FLTR_ID)];
 
@@ -149,13 +150,14 @@ function handleFilterChange() {
 
 let monsters = [];
 let mI = 0;
-function addMonsters(data) {
+
+function addMonsters (data) {
 	monsters = monsters.concat(data);
 
 	const table = $("ul.monsters");
 	let textStack = "";
 	// build the table
-	for ( ; mI < monsters.length; mI++) {
+	for (; mI < monsters.length; mI++) {
 		const mon = monsters[mI];
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon.cr = mon.cr === undefined ? "Unknown" : mon.cr;
@@ -198,7 +200,7 @@ function addMonsters(data) {
 }
 
 // sorting for form filtering
-function sortMonsters(a, b, o) {
+function sortMonsters (a, b, o) {
 	a = monsters[a.elm.getAttribute(FLTR_ID)];
 	b = monsters[b.elm.getAttribute(FLTR_ID)];
 
@@ -221,11 +223,14 @@ function sortMonsters(a, b, o) {
 	return 0;
 }
 
-function objToTitleCaseStringWithCommas(obj) {
-	return Object.keys(obj).map(function(k){return k.uppercaseFirst() + ' ' + obj[k]}).join(', ');
+function objToTitleCaseStringWithCommas (obj) {
+	return Object.keys(obj).map(function (k) {
+		return k.uppercaseFirst() + ' ' + obj[k]
+	}).join(', ');
 }
 
 const renderer = new EntryRenderer();
+
 // load selected monster stat block
 function loadhash (id) {
 	$("#stats").html(tableDefault);
@@ -354,62 +359,66 @@ function loadhash (id) {
 	var traits = mon.trait;
 	$("tr.trait").remove();
 
-	if (traits) for (var i = traits.length - 1; i >= 0; i--) {
-		var traitname = traits[i].name;
-		var traittext = traits[i].text;
-		var traittexthtml = "";
-		var renderedcount = 0;
-		for (var n = 0; n < traittext.length; n++) {
-			if (!traittext[n]) continue;
+	if (traits) {
+		for (var i = traits.length - 1; i >= 0; i--) {
+			var traitname = traits[i].name;
+			var traittext = traits[i].text;
+			var traittexthtml = "";
+			var renderedcount = 0;
+			for (var n = 0; n < traittext.length; n++) {
+				if (!traittext[n]) continue;
 
-			renderedcount++;
-			var firstsecond = "";
-			if (renderedcount === 1) firstsecond = "first ";
-			if (renderedcount === 2) firstsecond = "second ";
+				renderedcount++;
+				var firstsecond = "";
+				if (renderedcount === 1) firstsecond = "first ";
+				if (renderedcount === 2) firstsecond = "second ";
 
-			var spells = "";
-			if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
-			if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
+				var spells = "";
+				if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
+				if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 
-			traittexthtml = traittexthtml + "<p class='" + firstsecond + spells + "'>" + traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "")+"</p>";
-		}
-
-		$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait" + i + "'><span class='name'>" + traitname + ".</span> " + traittexthtml + "</td></tr>");
-
-		// parse spells, make hyperlinks
-		$("tr.trait").children("td").children("p.spells").each(function () {
-			let spellslist = $(this).html();
-			if (spellslist[0] === "*") return;
-			spellslist = spellslist.split(": ")[1].split(/\, (?!\+|\dd|appears|inside gems)/g);
-			for (let i = 0; i < spellslist.length; i++) {
-				spellslist[i] = "<a href='spells.html#" + encodeURIComponent((spellslist[i].replace(/(\*)| \(([^\)]+)\)/g, ""))).toLowerCase().replace("'", "%27") + "_" + "phb' target='_blank'>" + spellslist[i] + "</a>";
-				if (i !== spellslist.length - 1) spellslist[i] = spellslist[i] + ", ";
+				traittexthtml = traittexthtml + "<p class='" + firstsecond + spells + "'>" + traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "") + "</p>";
 			}
 
-			$(this).html($(this).html().split(": ")[0] + ": " + spellslist.join(""))
-		});
+			$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait" + i + "'><span class='name'>" + traitname + ".</span> " + traittexthtml + "</td></tr>");
+
+			// parse spells, make hyperlinks
+			$("tr.trait").children("td").children("p.spells").each(function () {
+				let spellslist = $(this).html();
+				if (spellslist[0] === "*") return;
+				spellslist = spellslist.split(": ")[1].split(/, (?!\+|\dd|appears|inside gems)/g);
+				for (let i = 0; i < spellslist.length; i++) {
+					spellslist[i] = "<a href='spells.html#" + encodeURIComponent((spellslist[i].replace(/(\*)| \(([^)]+)\)/g, ""))).toLowerCase().replace("'", "%27") + "_" + "phb' target='_blank'>" + spellslist[i] + "</a>";
+					if (i !== spellslist.length - 1) spellslist[i] = spellslist[i] + ", ";
+				}
+
+				$(this).html($(this).html().split(": ")[0] + ": " + spellslist.join(""))
+			});
+		}
 	}
 
 	const actions = mon.action;
 	$("tr.action").remove();
 
-	if (actions && actions.length) for (let i = actions.length - 1; i >= 0; i--) {
-		const actionname = actions[i].name;
-		const actiontext = actions[i].text;
-		let actiontexthtml = "";
-		let renderedcount = 0;
-		for (let n = 0; n < actiontext.length; n++) {
-			if (!actiontext[n]) continue;
+	if (actions && actions.length) {
+		for (let i = actions.length - 1; i >= 0; i--) {
+			const actionname = actions[i].name;
+			const actiontext = actions[i].text;
+			let actiontexthtml = "";
+			let renderedcount = 0;
+			for (let n = 0; n < actiontext.length; n++) {
+				if (!actiontext[n]) continue;
 
-			renderedcount++;
-			let firstsecond = "";
-			if (renderedcount === 1) firstsecond = "first ";
-			if (renderedcount === 2) firstsecond = "second ";
+				renderedcount++;
+				let firstsecond = "";
+				if (renderedcount === 1) firstsecond = "first ";
+				if (renderedcount === 2) firstsecond = "second ";
 
-			actiontexthtml = actiontexthtml + "<p class='"+firstsecond+"'>"+actiontext[n]+"</p>";
+				actiontexthtml = actiontexthtml + "<p class='" + firstsecond + "'>" + actiontext[n] + "</p>";
+			}
+
+			$("tr#actions").after("<tr class='action'><td colspan='6' class='action" + i + "'><span class='name'>" + actionname + ".</span> " + actiontexthtml + "</td></tr>");
 		}
-
-		$("tr#actions").after("<tr class='action'><td colspan='6' class='action"+i+"'><span class='name'>"+actionname+".</span> "+actiontexthtml+"</td></tr>");
 	}
 
 	const reactions = mon.reaction;
@@ -417,20 +426,21 @@ function loadhash (id) {
 	$("tr.reaction").remove();
 
 	if (reactions && (reactions.text || reactions.length)) {
-
 		$("tr#reactions").show();
 
-		if (reactions.length) for (let i = reactions.length - 1; i >= 0; i--) {
-			const reactionname = reactions[i].name;
+		if (reactions.length) {
+			for (let i = reactions.length - 1; i >= 0; i--) {
+				const reactionname = reactions[i].name;
 
-			const reactiontext = reactions[i].text;
-			let reactiontexthtml = "<p>" + reactiontext + "</p>";
-			for (let n = 1; n < reactiontext.length; n++) {
-				if (!reactiontext[n]) continue;
-				reactiontexthtml = reactiontexthtml + "<p>" + reactiontext[n] + "</p>";
+				const reactiontext = reactions[i].text;
+				let reactiontexthtml = "<p>" + reactiontext + "</p>";
+				for (let n = 1; n < reactiontext.length; n++) {
+					if (!reactiontext[n]) continue;
+					reactiontexthtml = reactiontexthtml + "<p>" + reactiontext[n] + "</p>";
+				}
+
+				$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction" + i + "'><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</td></tr>");
 			}
-
-			$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction" + i + "'><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</td></tr>");
 		}
 	}
 
@@ -472,7 +482,7 @@ function loadhash (id) {
 		if (thisGroup.regionalEffects) renderSection("regionaleffect", thisGroup.regionalEffects);
 	}
 
-	function renderSection(sectionClass, sectionEntries) {
+	function renderSection (sectionClass, sectionEntries) {
 		$(`tr#${sectionClass}s`).show();
 		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
@@ -492,7 +502,8 @@ function loadhash (id) {
 	if (mon.save) {
 		$("#saves").each(makeSaveRoller);
 	}
-	function makeSkillRoller() {
+
+	function makeSkillRoller () {
 		const $this = $(this);
 
 		const re = /,\s*(?![^()]*\))/g; // Don't split commas within parentheses
@@ -500,37 +511,38 @@ function loadhash (id) {
 		const out = [];
 
 		skills.map(s => {
-			const re = /(\-|\+)?\d+|(?:[^\+]|\n(?!\+))+/g; // Split before and after each bonus
+			const re = /([-+])?\d+|(?:[^+]|\n(?!\+))+/g; // Split before and after each bonus
 			const spl = s.match(re);
 
 			const skillName = spl[0].trim();
 
 			var skillString = "";
 			spl.map(b => {
-				const re = /(\-|\+)?\d+/;
+				const re = /([-+])?\d+/;
 
-				if (b.match(re)){
+				if (b.match(re)) {
 					const bonus = Number(b);
 					const fromAbility = Parser.getAbilityModNumber(mon[getAttribute(skillName)]);
 					const expectedPB = getProfBonusFromCr(mon.cr);
 					const pB = bonus - fromAbility;
-		
+
 					const expert = (pB === expectedPB * 2) ? 2 : 1;
 					const pBonusStr = `+${bonus}`;
-					const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
-		
+					const pDiceStr = `${expert}d${pB * (3 - expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
+
 					skillString += renderSkillOrSaveRoller(skillName, pBonusStr, pDiceStr, false);
 				} else {
 					skillString += b;
-				}				
+				}
 			});
 
 			out.push(skillString);
-		});		
+		});
 
 		$this.html(out.join(", "));
 	}
-	function makeSaveRoller() {
+
+	function makeSaveRoller () {
 		const $this = $(this);
 		const saves = $this.html().split(",").map(s => s.trim());
 		const out = [];
@@ -543,19 +555,20 @@ function loadhash (id) {
 
 			const expert = (pB === expectedPB * 2) ? 2 : 1;
 			const pBonusStr = `+${bonus}`;
-			const pDiceStr = `${expert}d${pB*(3-expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
+			const pDiceStr = `${expert}d${pB * (3 - expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
 
 			out.push(spl[0] + ' ' + renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, true));
 		});
 		$this.html(out.join(", "));
 	}
-	function renderSkillOrSaveRoller(itemName, profBonusString, profDiceString, isSave) {
+
+	function renderSkillOrSaveRoller (itemName, profBonusString, profDiceString, isSave) {
 		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
 		return `<span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
 	}
 
 	// inline rollers
-	$("#stats p").each(function(){
+	$("#stats p").each(function () {
 		addNonD20Rollers(this);
 
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -565,14 +578,14 @@ function loadhash (id) {
 		const titleMaybe = attemptToGetTitle(this);
 		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
 
-		$(this).html($(this).html().replace(/(\-|\+)?\d+(?= to hit)/g, function(match) {
+		$(this).html($(this).html().replace(/([-+])?\d+(?= to hit)/g, function (match) {
 			const bonus = Number(match);
 
 			const expectedPB = getProfBonusFromCr(mon.cr);
 			const withoutPB = bonus - expectedPB;
 
 			if (expectedPB > 0) {
-				const profDiceString = `1d${expectedPB*2}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+				const profDiceString = `1d${expectedPB * 2}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
 				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${isProfDiceMode ? profDiceString : match}</span>`
 			} else {
@@ -580,14 +593,14 @@ function loadhash (id) {
 			}
 		}));
 
-		$(this).html($(this).html().replace(/DC\s*(\d+)/g, function(match, capture) {
+		$(this).html($(this).html().replace(/DC\s*(\d+)/g, function (match, capture) {
 			const dc = Number(capture);
 
 			const expectedPB = getProfBonusFromCr(mon.cr);
 
 			if (expectedPB > 0) {
 				const withoutPB = dc - expectedPB;
-				const profDiceString = `1d${(expectedPB*2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+				const profDiceString = `1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
 				return `DC <span class="dc-roller" ${titleMaybe ? `title="${titleMaybe}"` : ""} ${ATB_PROF_MODE}="${mode}" data-roll-alt="${profDiceString}" data-bonus="${capture}" ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${capture}">${isProfDiceMode ? profDiceString : capture}</span>`;
 			} else {
@@ -595,28 +608,30 @@ function loadhash (id) {
 			}
 		}));
 	});
-	$("#stats span#hp").each(function() {
+	$("#stats span#hp").each(function () {
 		addNonD20Rollers(this);
 	});
+
 	function addNonD20Rollers (ele) {
-		$(ele).html($(ele).html().replace(/\d+d\d+(\s?(\-|\+)\s?\d+\s?)?/g, function(match) {
+		$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
 			const titleMaybe = attemptToGetTitle(ele);
 			return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
 		}));
 	}
-	function attemptToGetTitle(ele) {
+
+	function attemptToGetTitle (ele) {
 		let titleMaybe = $(ele.parentElement).find(".name")[0];
 		if (titleMaybe !== undefined) {
 			titleMaybe = titleMaybe.innerHTML;
 			if (titleMaybe) {
-				titleMaybe = titleMaybe.substring(0, titleMaybe.length-1).trim();
+				titleMaybe = titleMaybe.substring(0, titleMaybe.length - 1).trim();
 			}
 		}
 		return titleMaybe;
 	}
 
 	$(".spells span.roller").contents().unwrap();
-	$("#stats").find("span.roller").click(function() {
+	$("#stats").find("span.roller").click(function () {
 		const $this = $(this);
 		let roll;
 		let rollResult;
@@ -625,7 +640,7 @@ function loadhash (id) {
 			// hacks because droll doesn't support e.g. "1d20+1d4+2" :joy: :ok_hand:
 			const multi = roll.split(";");
 			roll = roll.replace(/;/g, "+");
-			rollResult =  droll.roll(multi[0]);
+			rollResult = droll.roll(multi[0]);
 			const res2 = droll.roll(multi[1]);
 			rollResult.rolls = rollResult.rolls.concat(res2.rolls);
 			rollResult.total += res2.total;
@@ -636,7 +651,7 @@ function loadhash (id) {
 		outputRollResult($this, roll, rollResult);
 	});
 
-	$("#stats").find("span.dc-roller").click(function() {
+	$("#stats").find("span.dc-roller").click(function () {
 		const $this = $(this);
 		let roll;
 		let rollResult;
@@ -647,9 +662,9 @@ function loadhash (id) {
 		}
 	});
 
-	function outputRollResult($ele, roll, rollResult) {
+	function outputRollResult ($ele, roll, rollResult) {
 		const name = $("#name .stats-name").text();
-		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : "" }for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
+		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : ""}for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
 	}
 }
@@ -659,45 +674,47 @@ const ATB_PROF_BONUS_STR = "profBonusStr";
 const ATB_PROF_DICE_STR = "profDiceStr";
 const PROF_MODE_BONUS = "bonus";
 const PROF_MODE_DICE = "dice";
-function getProfBonusFromCr(cr) {
+
+function getProfBonusFromCr (cr) {
 	if (CR_TO_PROF[cr]) return CR_TO_PROF[cr];
 	return 0;
 }
+
 const CR_TO_PROF = {
-	"0"			: 2,
-	"1/8"		: 2,
-	"1/4"		: 2,
-	"1/2"		: 2,
-	"1"			: 2,
-	"2"			: 2,
-	"3"			: 2,
-	"4"			: 2,
-	"5"			: 3,
-	"6"			: 3,
-	"7"			: 3,
-	"8"			: 3,
-	"9"			: 4,
-	"10"		: 4,
-	"11"		: 4,
-	"12"		: 4,
-	"13"		: 5,
-	"14"		: 5,
-	"15"		: 5,
-	"16"		: 5,
-	"17"		: 6,
-	"18"		: 6,
-	"19"		: 6,
-	"20"		: 6,
-	"21"		: 7,
-	"22"		: 7,
-	"23"		: 7,
-	"24"		: 7,
-	"25"		: 8,
-	"26"		: 8,
-	"27"		: 8,
-	"28"		: 8,
-	"29"		: 9,
-	"30"		: 9
+	"0": 2,
+	"1/8": 2,
+	"1/4": 2,
+	"1/2": 2,
+	"1": 2,
+	"2": 2,
+	"3": 2,
+	"4": 2,
+	"5": 3,
+	"6": 3,
+	"7": 3,
+	"8": 3,
+	"9": 4,
+	"10": 4,
+	"11": 4,
+	"12": 4,
+	"13": 5,
+	"14": 5,
+	"15": 5,
+	"16": 5,
+	"17": 6,
+	"18": 6,
+	"19": 6,
+	"20": 6,
+	"21": 7,
+	"22": 7,
+	"23": 7,
+	"24": 7,
+	"25": 8,
+	"26": 8,
+	"27": 8,
+	"28": 8,
+	"29": 9,
+	"30": 9
 };
 const SKILL_TO_ATB_ABV = {
 	"athletics": "dex",
@@ -711,7 +728,7 @@ const SKILL_TO_ATB_ABV = {
 	"religion": "int",
 	"animal handling": "wis",
 	"insight": "wis",
-	"medicine":  "wis",
+	"medicine": "wis",
 	"perception": "wis",
 	"survival": "wis",
 	"deception": "cha",
@@ -719,6 +736,7 @@ const SKILL_TO_ATB_ABV = {
 	"performance": "cha",
 	"persuasion": "cha"
 };
-function getAttribute(skill) {
+
+function getAttribute (skill) {
 	return SKILL_TO_ATB_ABV[skill.toLowerCase().trim()];
 }
