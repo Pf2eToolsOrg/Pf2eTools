@@ -34,17 +34,12 @@ const STATS_MAX = 15;
 function prevent () {
 	for (let i = 1; i < 7; ++i) {
 		const input = $(`#inputBox${i}`);
-		input.on("change", function (e) {
-			let num = parseInt(this.value);
-
-			if (num < STATS_MIN) {
-				this.value = "8"
-			}
-			if (num > STATS_MAX) {
-				this.value = "15"
-			}
+		input.on("change", function(e) {
+			let num = parseInt(this.value)
 			if (isNaN(num)) {
-				this.value = "8"
+				this.value = 8;
+			} else {
+				this.value = Math.max(Math.min(num, STATS_MAX), STATS_MIN);
 			}
 			changeTotal();
 		})
