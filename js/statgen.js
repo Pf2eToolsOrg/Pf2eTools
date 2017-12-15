@@ -38,15 +38,12 @@ function prevent() {
 			let num = parseInt(this.value),
 				min = 8,
 				max = 15;
-			if (num < min) {
-				this.value = "8"
-			};
-			if (num > max) {
-				this.value = "15"
-			};
 			if (isNaN(num)) {
-				this.value = "8"
-			};
+				this.value = 8;
+			}
+			else {
+				this.value = Math.max(Math.min(num, max), min);
+			}
 			changeTotal();
 		})
 	};
