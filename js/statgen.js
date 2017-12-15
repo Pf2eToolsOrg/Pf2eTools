@@ -34,16 +34,19 @@ function onJsonLoad(data) {
 function prevent() {
 	for (let i = 1; i < 7; ++i) {
 		const input = $(`#inputBox${i}`);
-		input.on(`change`, function(e) {
-			var num = parseInt(this.value, 10),
+		input.on("change", function(e) {
+			let num = parseInt(this.value),
 				min = 8,
 				max = 15;
+			if (num < min) {
+				this.value = "8"
+			};
+			if (num > max) {
+				this.value = "15"
+			};
 			if (isNaN(num)) {
-				this.value = `8`;
-				return;
-			}
-			this.value = Math.max(num, min);
-			this.value = Math.min(num, max);
+				this.value = "8"
+			};
 			changeTotal();
 		})
 	};
