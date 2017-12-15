@@ -5,7 +5,7 @@ const JSON_URL = "data/names.json";
 let nameList;
 const renderer = new EntryRenderer();
 
-function makeContentsBlock(i, loc) {
+function makeContentsBlock (i, loc) {
 	let out =
 		"<ul>";
 
@@ -22,15 +22,15 @@ function makeContentsBlock(i, loc) {
 	return out;
 }
 
-function getTableName(loc, table) {
+function getTableName (loc, table) {
 	return `${loc.race} - ${table.option}`;
 }
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	nameList = data.name;
 
 	const namesList = $("ul.names");
@@ -54,18 +54,18 @@ function onJsonLoad(data) {
 	initHistory();
 }
 
-function showHideList(ele) {
+function showHideList (ele) {
 	const $ele = $(ele);
 	$ele.next(`ul`).toggle();
 }
 
-function loadhash(id) {
+function loadhash (id) {
 	const [iLoad, jLoad] = id.split(",").map(n => Number(n));
 	const race = nameList[iLoad];
 	const table = race.tables[jLoad].table;
 	const tableName = getTableName(race, race.tables[jLoad]);
 
-	let	htmlText = `
+	let htmlText = `
 		<tr>
 			<td colspan="6">
 				<table>
@@ -91,11 +91,11 @@ function loadhash(id) {
 	$("#stats").html(htmlText);
 }
 
-function pad(number) {
+function pad (number) {
 	return String(number).padStart(2, "0");
 }
 
-function getRenderedText(rawText) {
+function getRenderedText (rawText) {
 	if (rawText.indexOf("{@") !== -1) {
 		const stack = [];
 		renderer.recursiveEntryRender(rawText, stack);
@@ -103,7 +103,7 @@ function getRenderedText(rawText) {
 	} else return rawText;
 }
 
-function rollAgainstTable(iLoad, jLoad) {
+function rollAgainstTable (iLoad, jLoad) {
 	iLoad = Number(iLoad);
 	jLoad = Number(jLoad);
 	const race = nameList[iLoad];
@@ -112,7 +112,7 @@ function rollAgainstTable(iLoad, jLoad) {
 
 	const die = "1d100";
 	const roll = droll.roll(die);
-	roll.total = roll.total-1; // -1 since droll thinks d100's go from 1-100
+	roll.total = roll.total - 1; // -1 since droll thinks d100's go from 1-100
 
 	let result;
 	for (let i = 0; i < rollTable.length; i++) {
@@ -124,7 +124,7 @@ function rollAgainstTable(iLoad, jLoad) {
 	}
 
 	// add dice results
-	result = result.replace(DICE_REGEX, function(match) {
+	result = result.replace(DICE_REGEX, function (match) {
 		const resultRoll = droll.roll(match);
 		return `<span class="roller" onclick="reroll(this)">${match}</span> <span class="result">(${resultRoll.total})</span>`
 	});
@@ -134,7 +134,7 @@ function rollAgainstTable(iLoad, jLoad) {
 	$("div#output > span:eq(5)").remove();
 }
 
-function reroll(ele) {
+function reroll (ele) {
 	const $ele = $(ele);
 	const resultRoll = droll.roll($ele.html());
 	$ele.next(".result").html(`(${resultRoll.total})`)

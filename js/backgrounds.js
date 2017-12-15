@@ -3,11 +3,11 @@ const JSON_URL = "data/backgrounds.json";
 let tabledefault = "";
 let bgList;
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	bgList = data.background;
 
 	tabledefault = $("#stats").html();
@@ -24,7 +24,7 @@ function onJsonLoad(data) {
 		tempString +=
 			`<li ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${encodeURI(bg.name).toLowerCase()}' title='${bg.name}'>
-					<span class='name col-xs-9'>${bg.name.replace("Variant ","")}</span> 
+					<span class='name col-xs-9'>${bg.name.replace("Variant ", "")}</span> 
 					<span class='source col-xs-3 source${bg.source}' title='${Parser.sourceJsonToFull(bg.source)}'>${Parser.sourceJsonToAbv(bg.source)}</span>
 				</a>
 			</li>`;
@@ -49,8 +49,8 @@ function onJsonLoad(data) {
 		handleFilterChange
 	);
 
-	function handleFilterChange() {
-		list.filter(function(item) {
+	function handleFilterChange () {
+		list.filter(function (item) {
 			const f = filterBox.getValues();
 			const bg = bgList[$(item.elm).attr(FLTR_ID)];
 
@@ -73,16 +73,16 @@ function loadhash (id) {
 	const traitlist = curbg.trait;
 	$("tr.trait").remove();
 
-	for (let n = traitlist.length-1; n >= 0; n--) {
+	for (let n = traitlist.length - 1; n >= 0; n--) {
 		let texthtml = "";
-		texthtml += utils_combineText(traitlist[n].text, "p", "<span class='name'>"+traitlist[n].name+".</span> ");
+		texthtml += utils_combineText(traitlist[n].text, "p", "<span class='name'>" + traitlist[n].name + ".</span> ");
 
 		const subtraitlist = traitlist[n].subtrait;
 		if (subtraitlist !== undefined) {
 			for (let j = 0; j < subtraitlist.length; j++) {
 				texthtml = texthtml + "<p class='subtrait'>";
 				const subtrait = subtraitlist[j];
-				texthtml = texthtml + "<span class='name'>"+subtrait.name+".</span> ";
+				texthtml = texthtml + "<span class='name'>" + subtrait.name + ".</span> ";
 				for (let k = 0; k < subtrait.text.length; k++) {
 					if (!subtrait.text[k]) continue;
 					if (k === 0) {
@@ -95,7 +95,6 @@ function loadhash (id) {
 			}
 		}
 
-		$("tr#traits").after("<tr class='trait'><td colspan='6'>"+texthtml+"</td></tr>");
+		$("tr#traits").after("<tr class='trait'><td colspan='6'>" + texthtml + "</td></tr>");
 	}
-
 }

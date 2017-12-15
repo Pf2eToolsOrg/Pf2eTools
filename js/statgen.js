@@ -5,16 +5,16 @@ let amount, count;
 
 let raceData;
 
-function loadRaceJson() {
+function loadRaceJson () {
 	loadJSON(RACE_JSON_URL, onJsonLoad)
 }
 
-window.onload = function load() {
+window.onload = function load () {
 	loadRaceJson();
 	prevent();
 };
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	raceData = data.race;
 
 	$("#rollbutton").click(rollstats);
@@ -25,70 +25,64 @@ function onJsonLoad(data) {
 	const options = names.map(name => `<option>${name}</option>`).join();
 	$("#race").append(options).change(changeRace).change();
 
-	if (window.location.hash)
-		window.onhashchange();
-	else
-		window.location.hash = "#rolled";
+	if (window.location.hash) window.onhashchange();
+	else window.location.hash = "#rolled";
 }
 
-function prevent() {
+const STATS_MIN = 8;
+const STATS_MAX = 15;
+function prevent () {
 	for (let i = 1; i < 7; ++i) {
 		const input = $(`#inputBox${i}`);
-		input.on("change", function(e) {
-			let num = parseInt(this.value),
-				min = 8,
-				max = 15;
-			if (num < min) {
+		input.on("change", function (e) {
+			let num = parseInt(this.value);
+
+			if (num < STATS_MIN) {
 				this.value = "8"
-			};
-			if (num > max) {
+			}
+			if (num > STATS_MAX) {
 				this.value = "15"
-			};
+			}
 			if (isNaN(num)) {
 				this.value = "8"
-			};
+			}
 			changeTotal();
 		})
-	};
+	}
 }
 
-window.onhashchange = function hashchange() {
+window.onhashchange = function hashchange () {
 	const hash = window.location.hash.slice(1);
 	$(".statmethod").hide();
 	$("#" + hash).show();
 };
 
-function getCost(n) {
-	if (n < 14)
-		return n - 8;
-	if (n === 14)
-		return 7;
+function getCost (n) {
+	if (n < 14) return n - 8;
+	if (n === 14) return 7;
 	return 9
 }
 
-function choose() {
-	if ($("input.choose:checked").length > count)
-		return this.checked = false;
+function choose () {
+	if ($("input.choose:checked").length > count) return this.checked = false;
 
 	$(".racial", this.parentNode.parentNode)
 		.val(this.checked ? amount : 0);
 	changeTotal()
 }
 
-function changeRace() {
+function changeRace () {
 	const race = this.value;
 	const stats = raceData
 		.find(({name}) => name === race).ability;
 
 	$(".racial").val(0);
-	for (const key in stats)
-		$(`#${key} .racial`).val(stats[key])
+	for (const key in stats) $(`#${key} .racial`).val(stats[key])
 
 	changeTotal();
 	$(".choose").hide().prop("checked", false);
 
-	if (!stats.choose)
-		return;
+	if (!stats.choose) return;
 
 	const {from} = stats.choose[0];
 	amount = stats.choose[0].amount || 1;
@@ -98,7 +92,7 @@ function changeRace() {
 	from.forEach(key => $(`#${key} .choose`).show())
 }
 
-function changeTotal() {
+function changeTotal () {
 	$("#pointbuy tr[id]").each((i, el) => {
 		const [base, racial, total, mod] = $("input", el).get();
 		const raw = total.value = Number(base.value) + Number(racial.value);
@@ -106,15 +100,14 @@ function changeTotal() {
 	})
 }
 
-function changeBase(e) {
+function changeBase (e) {
 	const budget = Number($("#budget").val());
 
 	let cost = 0;
-	$(".base").each((i, el) =>
-		cost += getCost(Number(el.value)));
+	$(".base").each((i, el) => cost += getCost(Number(el.value)));
 
-	if (cost > budget)
-		return this.value = this.dataset.prev;
+	this.value = this.dataset.prev;
+	if (cost > budget) return this.value;
 
 	this.dataset.prev = this.value;
 	$("#remaining").val(budget - cost);
@@ -122,7 +115,7 @@ function changeBase(e) {
 	changeTotal()
 }
 
-function rollstats() {
+function rollstats () {
 	var rolls = [];
 	for (var i = 0; i < 6; i++) {
 		var curroll = droll.roll("4d6").rolls.sort().splice(1);
@@ -130,6 +123,6 @@ function rollstats() {
 		rolls.push(curroll);
 	}
 
-	$("#rolled #rolls").prepend("<p>"+rolls.join(", ")+"</p>");
+	$("#rolled #rolls").prepend("<p>" + rolls.join(", ") + "</p>");
 	$("#rolled #rolls p:eq(10)").remove();
 }

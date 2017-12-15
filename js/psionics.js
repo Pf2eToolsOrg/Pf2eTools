@@ -53,7 +53,7 @@ const LIST_TYPE = "type";
 const LIST_ORDER = "order";
 const LIST_MODE_LIST = "mode-list";
 
-function getHiddenModeList(psionic) {
+function getHiddenModeList (psionic) {
 	const modeList = psionic[JSON_ITEM_MODES];
 	if (modeList === undefined) return STR_EMPTY;
 	const outArray = [];
@@ -69,26 +69,30 @@ function getHiddenModeList(psionic) {
 	return outArray.join(STR_JOIN_MODE_LIST);
 }
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
 let PSIONIC_LIST;
-function onJsonLoad(data) {
+
+function onJsonLoad (data) {
 	PSIONIC_LIST = data.psionic;
 
 	const sourceFilter = getSourceFilter({
-		deselFn: function(val) {
+		deselFn: function (val) {
 			return false;
 		}
 	});
 	const typeFilter = new Filter({header: "Type", items: ["D", "T"], displayFn: parse_psionicTypeToFull});
-	const orderFilter = new Filter({header: "Order", items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", STR_ORDER_NONE]});
+	const orderFilter = new Filter({
+		header: "Order",
+		items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", STR_ORDER_NONE]
+	});
 
 	const filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
 
 	let tempString = "";
-	PSIONIC_LIST.forEach(function(p, i) {
+	PSIONIC_LIST.forEach(function (p, i) {
 		p[JSON_ITEM_ORDER] = parse_psionicOrderToFull(p[JSON_ITEM_ORDER]);
 
 		tempString += `
@@ -117,17 +121,18 @@ function onJsonLoad(data) {
 		sortFunction: listSort
 	});
 
-	function listSort(itemA, itemB, options) {
+	function listSort (itemA, itemB, options) {
 		if (options.valueName === LIST_NAME) return compareBy(LIST_NAME);
 		else return compareByOrDefault(options.valueName, LIST_NAME);
 
-		function compareBy(valueName) {
+		function compareBy (valueName) {
 			const aValue = itemA.values()[valueName].toLowerCase();
 			const bValue = itemB.values()[valueName].toLowerCase();
 			if (aValue === bValue) return 0;
 			return (aValue > bValue) ? 1 : -1;
 		}
-		function compareByOrDefault(valueName, defaultValueName) {
+
+		function compareByOrDefault (valueName, defaultValueName) {
 			const initialCompare = compareBy(valueName);
 			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
 		}
@@ -141,7 +146,7 @@ function onJsonLoad(data) {
 		handleFilterChange
 	);
 
-	function handleFilterChange() {
+	function handleFilterChange () {
 		list.filter(function (item) {
 			const f = filterBox.getValues();
 			const p = PSIONIC_LIST[$(item.elm).attr(FLTR_ID)];
@@ -170,17 +175,18 @@ function loadhash (jsonIndex) {
 	if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_TALENT) loadTalent();
 	else if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_DISCIPLINE) loadDiscipline();
 
-	function loadTalent() {
+	function loadTalent () {
 		STATS_ORDER_AND_TYPE.innerHTML = parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
 		STATS_TEXT.innerHTML = utils_combineText(selectedPsionic[JSON_ITEM_TEXT], ELE_P);
 		STATS_DURATION.innerHTML = STR_EMPTY;
 	}
-	function loadDiscipline() {
+
+	function loadDiscipline () {
 		STATS_ORDER_AND_TYPE.innerHTML = `${selectedPsionic[JSON_ITEM_ORDER]} ${parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE])}`;
 		STATS_TEXT.innerHTML = getTextString();
 		STATS_DURATION.innerHTML = getDurationString();
 
-		function getTextString() {
+		function getTextString () {
 			const modeStringArray = [];
 			for (let i = 0; i < selectedPsionic[JSON_ITEM_MODES].length; ++i) {
 				modeStringArray.push(getModeString(i));
@@ -188,19 +194,22 @@ function loadhash (jsonIndex) {
 
 			return `${getDescriptionString()}${getFocusString()}${modeStringArray.join(STR_EMPTY)}`;
 		}
-		function getDescriptionString() {
+
+		function getDescriptionString () {
 			return `<p>${selectedPsionic[JSON_ITEM_DESCRIPTION]}</p>`;
 		}
-		function getFocusString() {
+
+		function getFocusString () {
 			return `<p><span class='psi-focus-title'>Psycic Focus.</span> ${selectedPsionic[JSON_ITEM_FOCUS]}</p>`;
 		}
-		function getModeString(modeIndex) {
+
+		function getModeString (modeIndex) {
 			const modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(selectedPsionic[JSON_ITEM_MODES][modeIndex]));
 			if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES] === undefined) return modeString;
 			const subModeString = getSubModeString();
 			return `${modeString}${subModeString}`;
 
-			function getSubModeString() {
+			function getSubModeString () {
 				const modeStrings = [];
 				const subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
 				for (let i = 0; i < subModes.length; ++i) {
@@ -209,7 +218,7 @@ function loadhash (jsonIndex) {
 				return modeStrings.join(STR_EMPTY);
 			}
 
-			function getModeTitle(mode, subMode) {
+			function getModeTitle (mode, subMode) {
 				subMode = subMode === undefined || subMode === null ? false : subMode;
 				const modeTitleArray = [];
 				modeTitleArray.push(mode[JSON_ITEM_MODE_TITLE]);
@@ -218,7 +227,7 @@ function loadhash (jsonIndex) {
 				if (subMode) return `<span class='psi-mode-sub-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
 				else return `<span class='psi-mode-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
 
-				function getModeTitleBracketPart() {
+				function getModeTitleBracketPart () {
 					const modeTitleBracketArray = [];
 
 					if (mode[JSON_ITEM_MODE_COST]) modeTitleBracketArray.push(getModeTitleCost());
@@ -227,35 +236,38 @@ function loadhash (jsonIndex) {
 					if (modeTitleBracketArray.length === 0) return null;
 					return `(${modeTitleBracketArray.join(STR_JOIN_MODE_TITLE_BRACKET_PART_LIST)})`;
 
-					function getModeTitleCost() {
+					function getModeTitleCost () {
 						const costMin = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MIN];
 						const costMax = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MAX];
 						const costString = costMin === costMax ? costMin : `${costMin}-${costMax}`;
 						return `${costString} psi`;
 					}
-					function getModeTitleConcentration() {
+
+					function getModeTitleConcentration () {
 						return `conc., ${mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_DURATION]} ${mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_UNIT]}.`
 					}
 				}
 			}
 		}
 	}
-	function getDurationString() {
+
+	function getDurationString () {
 		const duration = selectedPsionic[JSON_ITEM_DURATION];
 		if (duration === undefined) return STR_EMPTY;
 		else return getDurationElement();
 
-		function getDurationElement() {
+		function getDurationElement () {
 
 		}
 	}
 }
 
-function parse_psionicTypeToFull(type) {
+function parse_psionicTypeToFull (type) {
 	if (type === STR_ABV_TYPE_TALENT) return STR_TYPE_TALENT;
 	else if (type === STR_ABV_TYPE_DISCIPLINE) return STR_TYPE_DISCIPLINE;
 	else return type;
 }
-function parse_psionicOrderToFull(order) {
+
+function parse_psionicOrderToFull (order) {
 	return order === undefined ? STR_ORDER_NONE : order;
 }

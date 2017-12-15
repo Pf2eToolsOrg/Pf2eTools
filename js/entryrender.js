@@ -1,6 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
+// ************************************************************************* //
 // Strict mode should not be used, as the roll20 script depends on this file //
-///////////////////////////////////////////////////////////////////////////////
+// ************************************************************************* //
 
 // ENTRY RENDERING =====================================================================================================
 /*
@@ -18,8 +18,7 @@
  * // render the final product by joining together all the collected strings
  * $("#myElement").html(toDisplay.join(""));
  */
-function EntryRenderer() {
-
+function EntryRenderer () {
 	this.wrapperTag = "div";
 	this.baseUrl = "";
 
@@ -36,7 +35,7 @@ function EntryRenderer() {
 	 * Usage: `renderer.setBaseUrl("https://www.cool.site/")` (note the "http" prefix and "/" suffix)
 	 * @param url to use
 	 */
-	this.setBaseUrl = function(url) {
+	this.setBaseUrl = function (url) {
 		this.baseUrl = url;
 	};
 
@@ -52,7 +51,7 @@ function EntryRenderer() {
 	 * @param suffix The (optional) suffix to be added to the textStack after whatever is added by the current call
 	 * @param forcePrefixSuffix force the prefix and suffix to be added (useful for the first call from external code)
 	 */
-	this.recursiveEntryRender = function(entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
+	this.recursiveEntryRender = function (entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
 		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
 		prefix = prefix === undefined || prefix === null ? null : prefix;
 		suffix = suffix === undefined || suffix === null ? null : suffix;
@@ -146,7 +145,7 @@ function EntryRenderer() {
 					break;
 
 				// images
-				case "image":
+				case "image": {
 					renderPrefix();
 					let href;
 					if (entry.href.type === "internal") {
@@ -159,7 +158,7 @@ function EntryRenderer() {
 					`);
 					renderSuffix();
 					break;
-
+				}
 			}
 		} else if (typeof entry === "string") { // block
 			renderPrefix();
@@ -173,18 +172,19 @@ function EntryRenderer() {
 		}
 		if (forcePrefixSuffix) renderSuffix();
 
-		function renderPrefix() {
+		function renderPrefix () {
 			if (prefix !== null) {
 				textStack.push(prefix);
 			}
 		}
-		function renderSuffix() {
+
+		function renderSuffix () {
 			if (suffix !== null) {
 				textStack.push(suffix);
 			}
 		}
 
-		function renderTable(self) {
+		function renderTable (self) {
 			// TODO add handling for rowLabel property
 
 			textStack.push("<table>");
@@ -218,11 +218,11 @@ function EntryRenderer() {
 			textStack.push("</tbody>");
 			textStack.push("</table>");
 
-			function getTableThClassText(i) {
-				return entry.colStyles === undefined || i >= entry.colStyles.length ? "" :  `class="${entry.colStyles[i]}"`;
+			function getTableThClassText (i) {
+				return entry.colStyles === undefined || i >= entry.colStyles.length ? "" : `class="${entry.colStyles[i]}"`;
 			}
 
-			function makeTableTdClassText(i) {
+			function makeTableTdClassText (i) {
 				if (entry.rowStyles !== undefined) {
 					return entry.rowStyles === undefined || i >= entry.rowStyles.length ? "" : `class="${entry.rowStyles[i]}"`;
 				} else {
@@ -231,29 +231,28 @@ function EntryRenderer() {
 			}
 		}
 
-
-		function handleEntries(self) {
+		function handleEntries (self) {
 			handleEntriesOptionsInvocationPatron(self, true);
 		}
 
-		function handleOptions(self) {
+		function handleOptions (self) {
 			if (entry.entries) {
 				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
 				handleEntriesOptionsInvocationPatron(self, false);
 			}
 		}
 
-		function handleInvocation(self) {
+		function handleInvocation (self) {
 			handleEntriesOptionsInvocationPatron(self, true);
 		}
 
-		function handlePatron(self) {
+		function handlePatron (self) {
 			handleEntriesOptionsInvocationPatron(self, false);
 		}
 
-		function handleEntriesOptionsInvocationPatron(self, incDepth) {
+		function handleEntriesOptionsInvocationPatron (self, incDepth) {
 			const inlineTitle = depth >= 2;
-			const nextDepth = incDepth ? depth+1 : depth;
+			const nextDepth = incDepth ? depth + 1 : depth;
 			const styleString = getStyleString();
 			const dataString = getDataString();
 			const preReqText = getPreReqText();
@@ -269,7 +268,7 @@ function EntryRenderer() {
 				textStack.push(`</${self.wrapperTag}>`);
 			}
 
-			function getStyleString() {
+			function getStyleString () {
 				const styleClasses = [];
 				if (isNonstandardSource(entry.source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 				if (inlineTitle && entry.name !== undefined) styleClasses.push(EntryRenderer.HEAD_2);
@@ -278,7 +277,7 @@ function EntryRenderer() {
 				return styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
 			}
 
-			function getDataString() {
+			function getDataString () {
 				let dataString = "";
 				if (entry.type === "invocation" || entry.type === "patron") {
 					const titleString = entry.source ? `title="Source: ${Parser.sourceJsonToFull(entry.source)}"` : "";
@@ -288,13 +287,13 @@ function EntryRenderer() {
 				return dataString;
 			}
 
-			function getPreReqText() {
+			function getPreReqText () {
 				if (entry.prerequisite) return `<span class="prerequisite">Prerequisite: ${entry.prerequisite}</span>`;
 				return "";
 			}
 		}
 
-		function renderLink(self, entry) {
+		function renderLink (self, entry) {
 			let href;
 			if (entry.href.type === "internal") {
 				// baseURL is blank by default
@@ -314,7 +313,7 @@ function EntryRenderer() {
 			textStack.push(`<a href='${href}' target='_blank'>${entry.text}</a>`);
 		}
 
-		function renderString(self) {
+		function renderString (self) {
 			const tagSplit = splitByTags();
 			for (let i = 0; i < tagSplit.length; i++) {
 				const s = tagSplit[i];
@@ -353,7 +352,7 @@ function EntryRenderer() {
 								"type": "internal",
 								"hash": hash
 							},
-							"text": (displayText ? displayText : name)
+							"text": (displayText || name)
 						};
 						switch (tag) {
 							case "@spell":
@@ -366,7 +365,7 @@ function EntryRenderer() {
 								if (!source) fauxEntry.href.hash += "_dmg";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
-							case "@class":
+							case "@class": {
 								const classMatch = EntryRenderer.RE_INLINE_CLASS.exec(text);
 								if (classMatch) {
 									fauxEntry.href.hash = classMatch[1].trim(); // TODO pass this in
@@ -376,6 +375,7 @@ function EntryRenderer() {
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							}
 							case "@creature":
 								fauxEntry.href.path = "bestiary.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_MM;
@@ -388,14 +388,14 @@ function EntryRenderer() {
 				}
 			}
 
-			function splitFirstSpace(string) {
+			function splitFirstSpace (string) {
 				return [
 					string.substr(0, string.indexOf(' ')),
 					string.substr(string.indexOf(' ') + 1)
 				]
 			}
 
-			function splitByTags() {
+			function splitByTags () {
 				let tagDepth = 0;
 				let inTag = false;
 				let char, char2;
@@ -403,7 +403,7 @@ function EntryRenderer() {
 				let curStr = "";
 				for (let i = 0; i < entry.length; ++i) {
 					char = entry.charAt(i);
-					char2 = i < entry.length-1 ? entry.charAt(i+1) : null;
+					char2 = i < entry.length - 1 ? entry.charAt(i + 1) : null;
 
 					switch (char) {
 						case "{":
