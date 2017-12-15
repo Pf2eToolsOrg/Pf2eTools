@@ -216,6 +216,15 @@ function EntryRenderer () {
 			}
 
 			textStack.push("</tbody>");
+			if (entry.footnotes !== undefined) {
+				textStack.push("<tfoot>");
+				for (let i = 0; i < entry.footnotes.length; ++i) {
+					textStack.push(`<tr><td colspan="99">`);
+					self.recursiveEntryRender(entry.footnotes[i], textStack, depth + 1);
+					textStack.push("</td></tr>");
+				}
+				textStack.push("</tfoot>");
+			}
 			textStack.push("</table>");
 
 			function getTableThClassText (i) {
