@@ -31,11 +31,12 @@ function onJsonLoad (data) {
 
 const STATS_MIN = 8;
 const STATS_MAX = 15;
+
 function prevent () {
 	for (let i = 1; i < 7; ++i) {
 		const input = $(`#inputBox${i}`);
-		input.on("change", function(e) {
-			let num = parseInt(this.value)
+		input.on("change", function (e) {
+			let num = parseInt(this.value);
 			if (isNaN(num)) {
 				this.value = 8;
 			} else {
