@@ -5,11 +5,11 @@ const JSON_URL = "data/rewards.json";
 let tableDefault;
 let rewardList;
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	tableDefault = $("#stats").html();
 	rewardList = data.reward;
 
@@ -33,7 +33,7 @@ function onJsonLoad(data) {
 
 		tempString += `
 			<li class='row' ${FLTR_ID}='${i}'>
-				<a id='${i}' href='#${encodeURIComponent(reward.name).toLowerCase().replace(/'/g,"%27")}' title='${reward.name}'>
+				<a id='${i}' href='#${encodeURIComponent(reward.name).toLowerCase().replace(/'/g, "%27")}' title='${reward.name}'>
 					<span class='name col-xs-10'>${displayName}</span>
 					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(reward.source)}' title='${Parser.sourceJsonToFull(reward.source)}'>${Parser.sourceJsonToAbv(reward.source)}</span>
 				</a>
@@ -60,8 +60,8 @@ function onJsonLoad(data) {
 		handleFilterChange
 	);
 
-	function handleFilterChange() {
-		list.filter(function(item) {
+	function handleFilterChange () {
+		list.filter(function (item) {
 			const f = filterBox.getValues();
 			const r = rewardList[$(item.elm).attr(FLTR_ID)];
 
@@ -89,5 +89,5 @@ function loadhash (id) {
 	if (reward.signaturespells !== undefined) texthtml += utils_combineText(reward.signaturespells.text ? reward.signaturespells.text : "None", "p", "<span class='bold'>Signature Spells:</span> ");
 	texthtml += utils_combineText(textlist, "p");
 
-	$("tr#text").after("<tr class='text'><td colspan='6'>"+texthtml+"</td></tr>");
+	$("tr#text").after("<tr class='text'><td colspan='6'>" + texthtml + "</td></tr>");
 }

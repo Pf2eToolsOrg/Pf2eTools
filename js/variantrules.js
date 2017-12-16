@@ -1,7 +1,7 @@
 "use strict";
 const JSON_URL = "data/variantrules.json";
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -10,7 +10,7 @@ let tableDefault;
 
 const entryRenderer = new EntryRenderer();
 
-function getNames(nameStack, entry) {
+function getNames (nameStack, entry) {
 	if (entry.name) nameStack.push(entry.name);
 	if (entry.entries) {
 		for (const eX of entry.entries) {
@@ -24,7 +24,7 @@ function getNames(nameStack, entry) {
 	}
 }
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	rulesList = data;
 	tableDefault = $("#stats").html();
 
@@ -70,8 +70,8 @@ function onJsonLoad(data) {
 		handleFilterChange
 	);
 
-	function handleFilterChange() {
-		list.filter(function(item) {
+	function handleFilterChange () {
+		list.filter(function (item) {
 			const f = filterBox.getValues();
 			const r = rulesList[$(item.elm).attr(FLTR_ID)];
 

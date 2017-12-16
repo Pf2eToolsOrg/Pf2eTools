@@ -1,6 +1,6 @@
 "use strict";
 const DAY_CSS =
-`
+	`
 header {
 	color: white;
 	background-color: rgb(0, 107, 196);
@@ -117,7 +117,7 @@ tr.trait td {
 }
 `;
 const NIGHT_CSS =
-`
+	`
 header {
 	color: white;
 	background-color: transparent;
@@ -332,37 +332,37 @@ table#stats div.statsBlockInset {
 `;
 
 class StyleSwitcher {
-
-	constructor() {
+	constructor () {
 		this.currentStylesheet = this.STYLE_DAY;
 		this.dynamicStyleEle = document.getElementById("dynamicStyle");
 	}
 
-	setActiveStyleSheet(title) {
+	setActiveStyleSheet (title) {
 		if (title !== StyleSwitcher.STYLE_DAY && title !== StyleSwitcher.STYLE_NIGHT) title = StyleSwitcher.STYLE_DAY;
 		this.dynamicStyleEle.innerHTML = title === StyleSwitcher.STYLE_DAY ? DAY_CSS : NIGHT_CSS;
 		this.currentStylesheet = title;
 	}
 
-	getActiveStyleSheet() {
+	getActiveStyleSheet () {
 		return this.currentStylesheet;
 	}
 
-	static createCookie(value) {
-		Cookies.set("style", value, { expires: 365 });
+	static createCookie (value) {
+		Cookies.set("style", value, {expires: 365});
 	}
 
-	static readCookie() {
+	static readCookie () {
 		return Cookies.get("style");
 	}
 
-	toggleActiveStyleSheet() {
+	toggleActiveStyleSheet () {
 		if (this.currentStylesheet === StyleSwitcher.STYLE_DAY) this.setActiveStyleSheet(StyleSwitcher.STYLE_NIGHT);
 		else this.setActiveStyleSheet(StyleSwitcher.STYLE_DAY);
 
 		$(".nightModeToggle").html(this.currentStylesheet === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode");
 	}
 }
+
 StyleSwitcher.STYLE_DAY = "day";
 StyleSwitcher.STYLE_NIGHT = "night";
 
@@ -373,7 +373,7 @@ styleSwitcher.cookie = StyleSwitcher.readCookie();
 styleSwitcher.cookie = styleSwitcher.cookie ? styleSwitcher.cookie : StyleSwitcher.STYLE_DAY;
 styleSwitcher.setActiveStyleSheet(styleSwitcher.cookie);
 
-window.addEventListener("unload", function() {
+window.addEventListener("unload", function () {
 	const title = styleSwitcher.getActiveStyleSheet();
 	StyleSwitcher.createCookie(title);
 });

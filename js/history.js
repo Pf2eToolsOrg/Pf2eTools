@@ -1,6 +1,6 @@
 "use strict";
 
-function hashchange(e) {
+function hashchange (e) {
 	const [link, ...sub] = _getHashParts();
 
 	if (!e || sub.length === 0) {
@@ -13,11 +13,10 @@ function hashchange(e) {
 		}
 	}
 
-	if (typeof loadsub === "function" && sub.length > 0)
-		loadsub(sub)
+	if (typeof loadsub === "function" && sub.length > 0) loadsub(sub)
 }
 
-function initHistory() {
+function initHistory () {
 	window.onhashchange = hashchange;
 	if (window.location.hash.length) {
 		hashchange();
@@ -26,16 +25,16 @@ function initHistory() {
 	}
 }
 
-function getSelectedListElement() {
+function getSelectedListElement () {
 	const [link, ...sub] = _getHashParts();
 	return _getListElem(link);
 }
 
-function _getHashParts() {
+function _getHashParts () {
 	return window.location.hash.slice(1).split(HASH_PART_SEP);
 }
 
-function _getListElem(link) {
+function _getListElem (link) {
 	const toFind = `a[href='#${link.toLowerCase()}']`;
 	const listWrapper = $("#listcontainer");
 	if (listWrapper.data("lists")) {
@@ -51,6 +50,6 @@ function _getListElem(link) {
 	return undefined;
 }
 
-function _freshLoad() {
+function _freshLoad () {
 	location.replace($("#listcontainer").find(".list a").attr('href'));
 }

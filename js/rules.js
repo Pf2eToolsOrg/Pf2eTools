@@ -2,14 +2,14 @@
 
 let contentDefault;
 let rulesList;
-window.onload = function load() {
+window.onload = function load () {
 	contentDefault = $("#rulescontent").html();
 
 	rulesList = rulesdata.compendium.rules;
 
 	for (let i = 0; i < rulesList.length; i++) {
 		const rule = rulesList[i];
-		$("ul.rules."+rule.parentlist).append(
+		$("ul.rules." + rule.parentlist).append(
 			`<li>
 				<a id='${i}' href='#${encodeURI(rule.name).toLowerCase()}' title='${rule.name}'>
 					<span class='name col-xs-12'>${rule.name}</span> 
@@ -34,8 +34,8 @@ window.onload = function load() {
 		)
 	});
 
-	$("ul.list.rules").each(function() {
-		$(this).children("li").sort(function(a, b) {
+	$("ul.list.rules").each(function () {
+		$(this).children("li").sort(function (a, b) {
 			const sorta = $(a).children("span.id").text();
 			const sortb = $(b).children("span.id").text();
 			return (sorta > sortb) ? 1 : -1;
@@ -44,7 +44,7 @@ window.onload = function load() {
 
 	initHistory();
 
-	$("#listcontainer").find("h4").click(function() {
+	$("#listcontainer").find("h4").click(function () {
 		$(this).next().slideToggle();
 	}).css("cursor", "pointer");
 };

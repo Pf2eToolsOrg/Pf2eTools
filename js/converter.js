@@ -1,13 +1,13 @@
 "use strict";
 window.onload = loadparser
 
-function moveon(cur) {
+function moveon (cur) {
 	return (!cur.toUpperCase().indexOf("ACTIONS") || !cur.toUpperCase().indexOf("LEGENDARY ACTIONS") || !cur.toUpperCase().indexOf("REACTIONS"))
 }
 
-function loadparser() {
+function loadparser () {
 	// parse it on click
-	$("button#parsestatblock").click(function() {
+	$("button#parsestatblock").click(function () {
 		var statblock = $("textarea#statblock").val().split("\n");
 		var stats = {};
 
@@ -18,7 +18,9 @@ function loadparser() {
 
 			// name of monster
 			if (i === 0) {
-				stats.name = curline.toLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase() });
+				stats.name = curline.toLowerCase().replace(/\b\w/g, function (l) {
+					return l.toUpperCase()
+				});
 				continue;
 			}
 
@@ -52,7 +54,7 @@ function loadparser() {
 			if (i === 5) continue;
 			// ability scores
 			if (i === 6) {
-				var abilities = curline.split(/ \((\+|\-|\–|\‒)?[0-9]*\) ?/g)
+				var abilities = curline.split(/ \(([+-–‒])?[0-9]*\) ?/g)
 				stats.str = abilities[0];
 				stats.dex = abilities[2];
 				stats.con = abilities[4];
@@ -96,7 +98,7 @@ function loadparser() {
 			if (!curline.indexOf("Senses ")) {
 				stats.senses = curline.split("Senses ")[1].split(" passive Perception ")[0];
 				if (!stats.senses.indexOf("passive Perception")) stats.senses = "";
-				if (stats.senses[stats.senses.length-1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length-1);
+				if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
 				stats.passive = curline.split(" passive Perception ")[1];
 				continue;
 			}
@@ -147,7 +149,7 @@ function loadparser() {
 
 					if (!onlegendarydescription) {
 						// first pargraph
-						curtrait.name = curline.split(/(\.|\!)/g)[0];
+						curtrait.name = curline.split(/([.!])/g)[0];
 						curtrait.text.push(curline.split(".").splice(1).join(".").trim());
 					} else {
 						curtrait.text.push(curline.trim());
@@ -158,7 +160,7 @@ function loadparser() {
 					curline = statblock[i];
 
 					// get paragraphs
-					while (curline && curline.match(/^([A-Zot][a-z\'\’\`]+( \(.*\)| )?)+(\.|\!)+/g) === null && !moveon(curline)) {
+					while (curline && curline.match(/^([A-Zot][a-z'’`]+( \(.*\)| )?)+([.!])+/g) === null && !moveon(curline)) {
 						curtrait.text.push(curline.trim());
 						i++;
 						curline = statblock[i];
@@ -170,13 +172,9 @@ function loadparser() {
 					if (onlegendaries) stats.legendary.push(curtrait);
 					curtrait = {};
 				}
-
-
 			}
-
 		}
 
-
-		$("textarea#jsonoutput").text(JSON.stringify (stats, null, " "));
+		$("textarea#jsonoutput").text(JSON.stringify(stats, null, " "));
 	})
 }

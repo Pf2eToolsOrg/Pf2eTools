@@ -1,6 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
+// ************************************************************************* //
 // Strict mode should not be used, as the roll20 script depends on this file //
-///////////////////////////////////////////////////////////////////////////////
+// ************************************************************************* //
 
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
@@ -13,10 +13,6 @@ STR_APOSTROPHE = "\u2019";
 
 ID_SEARCH_BAR = "filter-search-input-group";
 ID_RESET_BUTTON = "reset";
-
-TYP_STRING = "string";
-TYP_NUMBER = "number";
-TYP_OBJECT = "object";
 
 ELE_SPAN = "span";
 ELE_UL = "ul";
@@ -59,14 +55,14 @@ ATB_DATA_SRC = "data-source";
 STR_CANTRIP = "Cantrip";
 STR_NONE = "None";
 
-RNG_SPECIAL =  "special";
-RNG_POINT =  "point";
-RNG_LINE =  "line";
+RNG_SPECIAL = "special";
+RNG_POINT = "point";
+RNG_LINE = "line";
 RNG_CUBE = "cube";
 RNG_CONE = "cone";
 RNG_RADIUS = "radius";
 RNG_SPHERE = "sphere";
-RNG_HEMISPHERE  = "hemisphere";
+RNG_HEMISPHERE = "hemisphere";
 RNG_SELF = "self";
 RNG_SIGHT = "sight";
 RNG_UNLIMITED = "unlimited";
@@ -87,24 +83,24 @@ ABIL_CH_ANY = "Choose Any";
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
-function () {
-	let str = this.toString();
-	if (arguments.length) {
-		const t = typeof arguments[0];
-		let key;
-		const args = TYP_STRING === t || TYP_NUMBER === t ?
-			Array.prototype.slice.call(arguments)
-			: arguments[0];
+	function () {
+		let str = this.toString();
+		if (arguments.length) {
+			const t = typeof arguments[0];
+			let key;
+			const args = t === "string" || t === "number"
+				? Array.prototype.slice.call(arguments)
+				: arguments[0];
 
-		for (key in args) {
-			str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+			for (key in args) {
+				str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+			}
 		}
-	}
 
-	return str;
-};
+		return str;
+	};
 
-function utils_joinPhraseArray(array, joiner, lastJoiner) {
+function utils_joinPhraseArray (array, joiner, lastJoiner) {
 	if (array.length === 0) return "";
 	if (array.length === 1) return array[0];
 	if (array.length === 2) return array.join(lastJoiner);
@@ -112,35 +108,35 @@ function utils_joinPhraseArray(array, joiner, lastJoiner) {
 		let outStr = "";
 		for (let i = 0; i < array.length; ++i) {
 			outStr += array[i];
-			if (i < array.length-2) outStr += joiner;
-			else if (i === array.length-2) outStr += lastJoiner
+			if (i < array.length - 2) outStr += joiner;
+			else if (i === array.length - 2) outStr += lastJoiner
 		}
 		return outStr;
 	}
 }
 
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
-function () {
-	const str = this.toString();
-	if (str.length === 0) return str;
-	if (str.length === 1) return str.charAt(0).toUpperCase();
-	return str.charAt(0).toUpperCase() + str.slice(1);
-};
+	function () {
+		const str = this.toString();
+		if (str.length === 0) return str;
+		if (str.length === 1) return str.charAt(0).toUpperCase();
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
 
-function uppercaseFirst(string) {
+function uppercaseFirst (string) {
 	return string.uppercaseFirst();
 }
 
 // TEXT COMBINING ======================================================================================================
-function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
+function utils_combineText (textList, tagPerItem, textBlockInlineTitle) {
 	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
 	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
 	let textStack = "";
-	if (typeof textList === TYP_STRING) {
+	if (typeof textList === "string") {
 		return getString(textList, true)
 	}
 	for (let i = 0; i < textList.length; ++i) {
-		if (typeof textList[i] === TYP_OBJECT) {
+		if (typeof textList[i] === "object") {
 			if (textList[i].islist === "YES") {
 				textStack += utils_makeOldList(textList[i]);
 			}
@@ -169,7 +165,7 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	}
 	return textStack;
 
-	function getString(text, addTitle) {
+	function getString (text, addTitle) {
 		const openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
 		const closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
 		const inlineTitle = addTitle ? textBlockInlineTitle : "";
@@ -177,7 +173,7 @@ function utils_combineText(textList, tagPerItem, textBlockInlineTitle) {
 	}
 }
 
-function utils_makeTable(tableObject) {
+function utils_makeTable (tableObject) {
 	let tableStack = "<table>";
 	if (tableObject.caption !== undefined) {
 		tableStack += "<caption>" + tableObject.caption + "</caption>";
@@ -200,13 +196,15 @@ function utils_makeTable(tableObject) {
 	return tableStack;
 }
 
-function utils_makeAttDc(attDcObj) {
+function utils_makeAttDc (attDcObj) {
 	return "<p class='spellabilitysubtext'><span>" + attDcObj.name + " save DC</span> = 8 + your proficiency bonus + your " + utils_makeAttChoose(attDcObj.attributes) + "</p>"
 }
-function utils_makeAttAttackMod(attAtkObj) {
+
+function utils_makeAttAttackMod (attAtkObj) {
 	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + " attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
 }
-function utils_makeLink(linkObj) {
+
+function utils_makeLink (linkObj) {
 	let href;
 	if (linkObj.href.type === "internal") {
 		href = `${linkObj.href.path}#`;
@@ -227,7 +225,8 @@ function utils_makeLink(linkObj) {
 	}
 	return `<a href='${href}' target='_blank'>${linkObj.text}</a>`;
 }
-function utils_makeOldList(listObj) { //to handle islist === "YES"
+
+function utils_makeOldList (listObj) { // to handle islist === "YES"
 	let outStack = "<ul>";
 	for (let i = 0; i < listObj.items.length; ++i) {
 		const cur = listObj.items[i];
@@ -243,15 +242,16 @@ function utils_makeOldList(listObj) { //to handle islist === "YES"
 	}
 	return outStack + "</ul>";
 }
-function utils_makeList(listObj) { //to handle type === "list"
+
+function utils_makeList (listObj) { // to handle type === "list"
 	let listTag = "ul";
 	const subtype = listObj.subtype;
 	let suffix = "";
-	if(subtype === "ordered") {
+	if (subtype === "ordered") {
 		listTag = "ol";
-		if (listObj.ordering) suffix = " type=\""+listObj.ordering+"\"";
-	}//NOTE: "description" lists are more complex - can handle those later if required
-	let outStack = "<"+listTag+suffix+">";
+		if (listObj.ordering) suffix = " type=\"" + listObj.ordering + "\"";
+	} // NOTE: "description" lists are more complex - can handle those later if required
+	let outStack = "<" + listTag + suffix + ">";
 	for (let i = 0; i < listObj.items.length; ++i) {
 		const listItem = listObj.items[i];
 		outStack += "<li>";
@@ -264,16 +264,18 @@ function utils_makeList(listObj) { //to handle type === "list"
 		}
 		outStack += "</li>";
 	}
-	return outStack + "</"+listTag+">";
-
+	return outStack + "</" + listTag + ">";
 }
-function utils_makeSubHeader(text) {
+
+function utils_makeSubHeader (text) {
 	return "<span class='stats-sub-header'>" + text + ".</span> "
 }
-function utils_makeListSubHeader(text) {
+
+function utils_makeListSubHeader (text) {
 	return "<span class='stats-list-sub-header'>" + text + ".</span> "
 }
-function utils_makeAttChoose(attList) {
+
+function utils_makeAttChoose (attList) {
 	if (attList.length === 1) {
 		return Parser.attAbvToFull(attList[0]) + " modifier";
 	} else {
@@ -286,15 +288,16 @@ function utils_makeAttChoose(attList) {
 }
 
 DICE_REGEX = /([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g;
-function utils_makeRoller(text) {
+
+function utils_makeRoller (text) {
 	return text.replace(DICE_REGEX, "<span class='roller' data-roll='$&'>$&</span>").replace(/(-|\+)?\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(-|\+)?\d+(?= bonus to)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(bonus of )(=?-|\+\d+)/g, "$1<span class='roller' data-roll='1d20$2'>$2</span>");
 }
 
-
-function makeTableThClassText(tableObject, i) {
+function makeTableThClassText (tableObject, i) {
 	return tableObject.thstyleclass === undefined || i >= tableObject.thstyleclass.length ? "" : " class=\"" + tableObject.thstyleclass[i] + "\"";
 }
-function makeTableTdClassText(tableObject, i) {
+
+function makeTableTdClassText (tableObject, i) {
 	if (tableObject.tdstyleclass !== undefined) {
 		return tableObject.tdstyleclass === undefined || i >= tableObject.tdstyleclass.length ? "" : " class=\"" + tableObject.tdstyleclass[i] + "\"";
 	} else {
@@ -302,7 +305,7 @@ function makeTableTdClassText(tableObject, i) {
 	}
 }
 
-function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
+function utils_makePrerequisite (prereqList, shorthand, makeAsArray) {
 	shorthand = shorthand === undefined || shorthand === null ? false : shorthand;
 	makeAsArray = makeAsArray === undefined || makeAsArray === null ? false : makeAsArray;
 	const outStack = [];
@@ -333,9 +336,9 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 				for (const att in pre.ability[j]) {
 					if (!pre.ability[j].hasOwnProperty(att)) continue;
 					if (shorthand) {
-						outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length -1 ? " 13+" : ""));
+						outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length - 1 ? " 13+" : ""));
 					} else {
-						outStack.push(Parser.attAbvToFull(att) + (attCount === pre.ability.length -1 ? " 13 or higher" : ""));
+						outStack.push(Parser.attAbvToFull(att) + (attCount === pre.ability.length - 1 ? " 13 or higher" : ""));
 					}
 					attCount++;
 				}
@@ -373,13 +376,14 @@ function utils_makePrerequisite(prereqList, shorthand, makeAsArray) {
 }
 
 class AbilityData {
-	constructor(asText, asTextShort, asCollection) {
+	constructor (asText, asTextShort, asCollection) {
 		this.asText = asText;
 		this.asTextShort = asTextShort;
 		this.asCollection = asCollection;
 	}
 }
-function utils_getAbilityData(abObj) {
+
+function utils_getAbilityData (abObj) {
 	const ABILITIES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
 	const mainAbs = [];
 	const allAbs = [];
@@ -392,13 +396,13 @@ function utils_getAbilityData(abObj) {
 	}
 	return new AbilityData("", "", []);
 
-	function handleAllAbilities(abilityList) {
+	function handleAllAbilities (abilityList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
 			handleAbility(abilityList, ABILITIES[a])
 		}
 	}
 
-	function handleAbility(parent, ab) {
+	function handleAbility (parent, ab) {
 		if (parent[ab.toLowerCase()] !== undefined) {
 			const toAdd = `${ab} ${(parent[ab.toLowerCase()] < 0 ? "" : "+")}${parent[ab.toLowerCase()]}`;
 			abs.push(toAdd);
@@ -408,7 +412,7 @@ function utils_getAbilityData(abObj) {
 		}
 	}
 
-	function handleAbilitiesChoose() {
+	function handleAbilitiesChoose () {
 		if (abObj.choose !== undefined) {
 			for (let i = 0; i < abObj.choose.length; ++i) {
 				const item = abObj.choose[i];
@@ -438,15 +442,15 @@ function utils_getAbilityData(abObj) {
 						for (let j = 0; j < item.from.length; ++j) {
 							let suffix = "";
 							if (item.from.length > 1) {
-								if (j === item.from.length-2) {
+								if (j === item.from.length - 2) {
 									suffix = " or ";
-								} else if (j < item.from.length-2) {
+								} else if (j < item.from.length - 2) {
 									suffix = ", "
 								}
 							}
 							let thsAmount = " " + amount;
 							if (item.from.length > 1) {
-								if (j !== item.from.length-1) {
+								if (j !== item.from.length - 1) {
 									thsAmount = "";
 								}
 							}
@@ -460,7 +464,7 @@ function utils_getAbilityData(abObj) {
 		}
 	}
 
-	function isAllAbilitiesWithParent(chooseAbs) {
+	function isAllAbilitiesWithParent (chooseAbs) {
 		const tempAbilities = [];
 		for (let i = 0; i < mainAbs.length; ++i) {
 			tempAbilities.push(mainAbs[i].toLowerCase());
@@ -472,7 +476,8 @@ function utils_getAbilityData(abObj) {
 		}
 		return tempAbilities.length === 6;
 	}
-	function getNumberString(amount) {
+
+	function getNumberString (amount) {
 		if (amount === 1) return "one";
 		if (amount === 2) return "two";
 		if (amount === 3) return "three";
@@ -488,7 +493,7 @@ Parser._parse_aToB = function (abMap, a) {
 	return a;
 };
 
-Parser._parse_bToA= function (abMap, b) {
+Parser._parse_bToA = function (abMap, b) {
 	b = b.trim();
 	for (const v in abMap) {
 		if (!abMap.hasOwnProperty(v)) continue;
@@ -497,11 +502,11 @@ Parser._parse_bToA= function (abMap, b) {
 	return b;
 };
 
-Parser.attAbvToFull= function (abv) {
+Parser.attAbvToFull = function (abv) {
 	return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
 };
 
-Parser.attFullToAbv= function (full) {
+Parser.attFullToAbv = function (full) {
 	return Parser._parse_bToA(Parser.ATB_ABV_TO_FULL, full);
 };
 
@@ -515,11 +520,11 @@ Parser.getAbilityModNumber = function (abilityScore) {
 
 Parser.getAbilityModifier = function (abilityScore) {
 	let modifier = Parser.getAbilityModNumber(abilityScore);
-	if (modifier >= 0) modifier = "+"+modifier;
+	if (modifier >= 0) modifier = "+" + modifier;
 	return modifier;
 };
 
-Parser._addCommas= function (intNum) {
+Parser._addCommas = function (intNum) {
 	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
 
@@ -529,7 +534,7 @@ Parser.crToXp = function (cr) {
 	if (cr === "1/8") return "25";
 	if (cr === "1/4") return "50";
 	if (cr === "1/2") return "100";
-	return Parser._addCommas (Parser.XP_CHART[parseInt(cr)-1]);
+	return Parser._addCommas(Parser.XP_CHART[parseInt(cr) - 1]);
 };
 
 LEVEL_TO_XP_EASY = [0, 25, 50, 75, 125, 250, 300, 350, 450, 550, 600, 800, 1000, 1100, 1250, 1400, 1600, 2000, 2100, 2400, 2800];
@@ -549,7 +554,7 @@ Parser.crToNumber = function (cr) {
 	else return 0;
 };
 
-Parser.armorFullToAbv= function (armor) {
+Parser.armorFullToAbv = function (armor) {
 	return Parser._parse_bToA(Parser.ARMOR_ABV_TO_FULL, armor);
 };
 
@@ -563,7 +568,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 		.replace(AL_PREFIX, AL_PREFIX_SHORT)
 		.replace(PS_PREFIX, PS_PREFIX_SHORT);
 };
-Parser.sourceJsonToAbv= function (source) {
+Parser.sourceJsonToAbv = function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
 
@@ -591,63 +596,63 @@ Parser.actionToExplanation = function (actionType) {
 	return Parser._parse_aToB(Parser.ACTION_JSON_TO_FULL, actionType);
 };
 
-Parser.numberToString= function (num) {
+Parser.numberToString = function (num) {
 	if (num === 0) return "zero";
 	else return parse_hundreds(num);
 
-	function parse_hundreds(num){
-		if (num > 99){
-			return Parser.NUMBERS_ONES[Math.floor(num/100)]+" hundred "+parse_tens(num%100);
-		}
-		else{
+	function parse_hundreds (num) {
+		if (num > 99) {
+			return Parser.NUMBERS_ONES[Math.floor(num / 100)] + " hundred " + parse_tens(num % 100);
+		} else {
 			return parse_tens(num);
 		}
 	}
-	function parse_tens(num){
-		if (num<10) return Parser.NUMBERS_ONES[num];
-		else if (num>=10 && num<20) return Parser.NUMBERS_TEENS[num-10];
-		else{
-			return Parser.NUMBERS_TENS[Math.floor(num/10)]+" "+Parser.NUMBERS_ONES[num%10];
+
+	function parse_tens (num) {
+		if (num < 10) return Parser.NUMBERS_ONES[num];
+		else if (num >= 10 && num < 20) return Parser.NUMBERS_TEENS[num - 10];
+		else {
+			return Parser.NUMBERS_TENS[Math.floor(num / 10)] + " " + Parser.NUMBERS_ONES[num % 10];
 		}
 	}
 };
 
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
-Parser.spSchoolAbvToFull= function (school) {
+Parser.spSchoolAbvToFull = function (school) {
 	return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
 };
 
-Parser.spSchoolAbvToShort= function (school) {
+Parser.spSchoolAbvToShort = function (school) {
 	return Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_SHORT, school);
 };
 
 Parser.spLevelToFull = function (level) {
 	if (level === 0) return STR_CANTRIP;
-	if (level === 1) return level+"st";
-	if (level === 2) return level+"nd";
-	if (level === 3) return level+"rd";
-	return level+"th";
+	if (level === 1) return level + "st";
+	if (level === 2) return level + "nd";
+	if (level === 3) return level + "rd";
+	return level + "th";
 };
 
-Parser.spLevelSchoolMetaToFull= function (level, school, meta) {
+Parser.spLevelSchoolMetaToFull = function (level, school, meta) {
 	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : Parser.spLevelToFull(level) + "-level";
-	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}`: `${levelPart} ${Parser.spSchoolAbvToFull(school).toLowerCase()}`;
+	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}` : `${levelPart} ${Parser.spSchoolAbvToFull(school).toLowerCase()}`;
 	// these tags are (so far) mutually independent, so we don't need to combine the text
 	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
 	if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
 	return levelSchoolStr;
 };
 
-Parser.spTimeListToFull= function (times) {
-	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}`: ""}`).join(" or ");
+Parser.spTimeListToFull = function (times) {
+	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}` : ""}`).join(" or ");
 };
 
-Parser.getTimeToFull= function (time) {
+Parser.getTimeToFull = function (time) {
 	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
 };
 
-Parser.spRangeToFull= function (range) {
-	switch(range.type) {
+Parser.spRangeToFull = function (range) {
+	switch (range.type) {
 		case RNG_SPECIAL:
 			return "Special";
 		case RNG_POINT:
@@ -661,7 +666,7 @@ Parser.spRangeToFull= function (range) {
 			return renderArea();
 	}
 
-	function renderPoint() {
+	function renderPoint () {
 		const dist = range.distance;
 		switch (dist.type) {
 			case UNT_FEET:
@@ -679,31 +684,32 @@ Parser.spRangeToFull= function (range) {
 				return "Touch";
 		}
 	}
-	function renderArea() {
+
+	function renderArea () {
 		const size = range.distance;
 		return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
 
-		function getAreaStyleStr() {
+		function getAreaStyleStr () {
 			return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
 		}
 	}
 };
 
-Parser.getSingletonUnit= function (unit) {
+Parser.getSingletonUnit = function (unit) {
 	if (unit === UNT_FEET) return "foot";
-	if (unit.charAt(unit.length-1) === "s") return unit.slice(0, -1);
+	if (unit.charAt(unit.length - 1) === "s") return unit.slice(0, -1);
 	return unit;
 };
 
-Parser.spComponentsToFull= function (comp) {
+Parser.spComponentsToFull = function (comp) {
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
-	if (comp.m) out.push("M"+(comp.m.length ?` (${comp.m})` : ""));
+	if (comp.m) out.push("M" + (comp.m.length ? ` (${comp.m})` : ""));
 	return out.join(", ");
 };
 
-Parser.spDurationToFull= function (dur) {
+Parser.spDurationToFull = function (dur) {
 	return dur.map(d => {
 		switch (d.type) {
 			case "special":
@@ -718,12 +724,11 @@ Parser.spDurationToFull= function (dur) {
 				} else {
 					return "Permanent";
 				}
-
 		}
 	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
 };
 
-Parser.spClassesToFull= function (classes) {
+Parser.spClassesToFull = function (classes) {
 	const fromSubclasses = Parser.spSubclassesToFull(classes);
 	return Parser.spMainClassesToFull(classes) + (fromSubclasses ? ", " + fromSubclasses : "");
 };
@@ -740,7 +745,7 @@ Parser.spSubclassesToFull = function (classes) {
 	return classes.fromSubclass
 		.sort((a, b) => {
 			const byName = ascSort(a.class.name, b.class.name);
-			return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
+			return byName || ascSort(a.subclass.name, b.subclass.name);
 		})
 		.map(c => Parser._spSubclassItem(c))
 		.join(", ");
@@ -750,7 +755,7 @@ Parser._spSubclassItem = function (fromSubclass) {
 	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
-Parser.monTypeToFullObj = function(type) {
+Parser.monTypeToFullObj = function (type) {
 	const out = {type: "", tags: [], asText: ""};
 
 	if (typeof type === "string") {
@@ -784,7 +789,7 @@ Parser.monTypeToFullObj = function(type) {
 	return out;
 };
 
-Parser.monTypeToPlural = function(type) {
+Parser.monTypeToPlural = function (type) {
 	return Parser._parse_aToB(Parser.MON_TYPE_TO_PLURAL, type);
 };
 
@@ -803,7 +808,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 	classes.fromSubclass
 		.sort((a, b) => {
 			const byName = ascSort(a.class.name, b.class.name);
-			return byName ? byName : ascSort(a.subclass.name, b.subclass.name);
+			return byName || ascSort(a.subclass.name, b.subclass.name);
 		})
 		.forEach(c => {
 			const nm = c.subclass.name;
@@ -811,8 +816,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 			const toAdd = Parser._spSubclassItem(c);
 			if (hasBeenReprinted(nm, src)) {
 				out[1].push(toAdd);
-			}
-			else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
+			} else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
 				const cleanName = mapClassShortNameToMostRecent(nm.split("(")[0].trim().split(/v\d+/)[0].trim());
 				toCheck.push({"name": cleanName, "ele": toAdd});
 			} else {
@@ -832,7 +836,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 	/**
 	 * Get the most recent iteration of a subclass name
 	 */
-	function mapClassShortNameToMostRecent(shortName) {
+	function mapClassShortNameToMostRecent (shortName) {
 		switch (shortName) {
 			case "Favored Soul":
 				return "Divine Soul";
@@ -933,82 +937,82 @@ Parser.XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200
 Parser.ARMOR_ABV_TO_FULL = {
 	"l.": "light",
 	"m.": "medium",
-	"h.": "heavy",
+	"h.": "heavy"
 };
 
-SRC_CoS 	= "CoS";
-SRC_DMG 	= "DMG";
-SRC_EEPC 	= "EEPC";
-SRC_EET 	= "EET";
-SRC_HotDQ 	= "HotDQ";
-SRC_LMoP 	= "LMoP";
-SRC_MM 		= "MM";
-SRC_OotA 	= "OotA";
-SRC_PHB 	= "PHB";
-SRC_PotA 	= "PotA";
-SRC_RoT 	= "RoT";
-SRC_RoTOS 	= "RoTOS";
-SRC_SCAG 	= "SCAG";
-SRC_SKT 	= "SKT";
-SRC_ToA 	= "ToA";
-SRC_ToD 	= "ToD";
-SRC_TTP 	= "TTP";
-SRC_TYP 	= "TftYP";
-SRC_VGM 	= "VGM";
-SRC_XGE 	= "XGE";
-SRC_OGA 	= "OGA";
+SRC_CoS = "CoS";
+SRC_DMG = "DMG";
+SRC_EEPC = "EEPC";
+SRC_EET = "EET";
+SRC_HotDQ = "HotDQ";
+SRC_LMoP = "LMoP";
+SRC_MM = "MM";
+SRC_OotA = "OotA";
+SRC_PHB = "PHB";
+SRC_PotA = "PotA";
+SRC_RoT = "RoT";
+SRC_RoTOS = "RoTOS";
+SRC_SCAG = "SCAG";
+SRC_SKT = "SKT";
+SRC_ToA = "ToA";
+SRC_ToD = "ToD";
+SRC_TTP = "TTP";
+SRC_TYP = "TftYP";
+SRC_VGM = "VGM";
+SRC_XGE = "XGE";
+SRC_OGA = "OGA";
 
-SRC_ALCoS 	= "ALCurseOfStrahd";
-SRC_ALEE 	= "ALElementalEvil";
-SRC_ALRoD 	= "ALRageOfDemons";
+SRC_ALCoS = "ALCurseOfStrahd";
+SRC_ALEE = "ALElementalEvil";
+SRC_ALRoD = "ALRageOfDemons";
 
 SRC_PS_PREFIX = "PS";
 
-SRC_PSA 	= SRC_PS_PREFIX + "A";
-SRC_PSI 	= SRC_PS_PREFIX + "I";
-SRC_PSK 	= SRC_PS_PREFIX + "K";
-SRC_PSZ 	= SRC_PS_PREFIX + "Z";
-SRC_PSX 	= SRC_PS_PREFIX + "X";
+SRC_PSA = SRC_PS_PREFIX + "A";
+SRC_PSI = SRC_PS_PREFIX + "I";
+SRC_PSK = SRC_PS_PREFIX + "K";
+SRC_PSZ = SRC_PS_PREFIX + "Z";
+SRC_PSX = SRC_PS_PREFIX + "X";
 
 SRC_UA_PREFIX = "UA";
 
-SRC_UAA 		= SRC_UA_PREFIX + "Artificer";
-SRC_UAEAG 		= SRC_UA_PREFIX + "EladrinAndGith";
-SRC_UAEBB 		= SRC_UA_PREFIX + "Eberron";
-SRC_UAFFR 		= SRC_UA_PREFIX + "FeatsForRaces";
-SRC_UAFFS 		= SRC_UA_PREFIX + "FeatsForSkills";
-SRC_UAFO 		= SRC_UA_PREFIX + "FiendishOptions";
-SRC_UAFT 		= SRC_UA_PREFIX + "Feats";
-SRC_UAGH 		= SRC_UA_PREFIX + "GothicHeroes";
-SRC_UAMDM 		= SRC_UA_PREFIX + "ModernMagic";
-SRC_UASSP 		= SRC_UA_PREFIX + "StarterSpells";
-SRC_UATMC 		= SRC_UA_PREFIX + "TheMysticClass";
-SRC_UATOBM 		= SRC_UA_PREFIX + "ThatOldBlackMagic";
-SRC_UATRR 		= SRC_UA_PREFIX + "TheRangerRevised";
-SRC_UAWA 		= SRC_UA_PREFIX + "WaterborneAdventures";
-SRC_UAVR 		= SRC_UA_PREFIX + "VariantRules";
-SRC_UALDR 		= SRC_UA_PREFIX + "LightDarkUnderdark";
-SRC_UARAR 		= SRC_UA_PREFIX + "RangerAndRogue";
-SRC_UAATOSC 	= SRC_UA_PREFIX + "ATrioOfSubclasses";
-SRC_UABPP 		= SRC_UA_PREFIX + "BarbarianPrimalPaths";
-SRC_UARSC 		= SRC_UA_PREFIX + "RevisedSubclasses";
-SRC_UAKOO 		= SRC_UA_PREFIX + "KitsOfOld";
-SRC_UABBC 		= SRC_UA_PREFIX + "BardBardColleges";
-SRC_UACDD 		= SRC_UA_PREFIX + "ClericDivineDomains";
-SRC_UAD 		= SRC_UA_PREFIX + "Druid";
-SRC_UARCO 		= SRC_UA_PREFIX + "RevisedClassOptions";
-SRC_UAF 		= SRC_UA_PREFIX + "Fighter";
-SRC_UAM 		= SRC_UA_PREFIX + "Monk";
-SRC_UAP 		= SRC_UA_PREFIX + "Paladin";
-SRC_UAMC 		= SRC_UA_PREFIX + "ModifyingClasses";
-SRC_UAS 		= SRC_UA_PREFIX + "Sorcerer";
-SRC_UAWAW 		= SRC_UA_PREFIX + "WarlockAndWizard";
-SRC_UATF 		= SRC_UA_PREFIX + "TheFaithful";
-SRC_UAWR 		= SRC_UA_PREFIX + "WizardRevisited";
-SRC_UAESR 		= SRC_UA_PREFIX + "ElfSubraces";
-SRC_UAMAC 		= SRC_UA_PREFIX + "MassCombat";
-SRC_UA3PE 		= SRC_UA_PREFIX + "ThreePillarExperience";
-SRC_UAGHI 		= SRC_UA_PREFIX + "GreyhawkInitiative";
+SRC_UAA = SRC_UA_PREFIX + "Artificer";
+SRC_UAEAG = SRC_UA_PREFIX + "EladrinAndGith";
+SRC_UAEBB = SRC_UA_PREFIX + "Eberron";
+SRC_UAFFR = SRC_UA_PREFIX + "FeatsForRaces";
+SRC_UAFFS = SRC_UA_PREFIX + "FeatsForSkills";
+SRC_UAFO = SRC_UA_PREFIX + "FiendishOptions";
+SRC_UAFT = SRC_UA_PREFIX + "Feats";
+SRC_UAGH = SRC_UA_PREFIX + "GothicHeroes";
+SRC_UAMDM = SRC_UA_PREFIX + "ModernMagic";
+SRC_UASSP = SRC_UA_PREFIX + "StarterSpells";
+SRC_UATMC = SRC_UA_PREFIX + "TheMysticClass";
+SRC_UATOBM = SRC_UA_PREFIX + "ThatOldBlackMagic";
+SRC_UATRR = SRC_UA_PREFIX + "TheRangerRevised";
+SRC_UAWA = SRC_UA_PREFIX + "WaterborneAdventures";
+SRC_UAVR = SRC_UA_PREFIX + "VariantRules";
+SRC_UALDR = SRC_UA_PREFIX + "LightDarkUnderdark";
+SRC_UARAR = SRC_UA_PREFIX + "RangerAndRogue";
+SRC_UAATOSC = SRC_UA_PREFIX + "ATrioOfSubclasses";
+SRC_UABPP = SRC_UA_PREFIX + "BarbarianPrimalPaths";
+SRC_UARSC = SRC_UA_PREFIX + "RevisedSubclasses";
+SRC_UAKOO = SRC_UA_PREFIX + "KitsOfOld";
+SRC_UABBC = SRC_UA_PREFIX + "BardBardColleges";
+SRC_UACDD = SRC_UA_PREFIX + "ClericDivineDomains";
+SRC_UAD = SRC_UA_PREFIX + "Druid";
+SRC_UARCO = SRC_UA_PREFIX + "RevisedClassOptions";
+SRC_UAF = SRC_UA_PREFIX + "Fighter";
+SRC_UAM = SRC_UA_PREFIX + "Monk";
+SRC_UAP = SRC_UA_PREFIX + "Paladin";
+SRC_UAMC = SRC_UA_PREFIX + "ModifyingClasses";
+SRC_UAS = SRC_UA_PREFIX + "Sorcerer";
+SRC_UAWAW = SRC_UA_PREFIX + "WarlockAndWizard";
+SRC_UATF = SRC_UA_PREFIX + "TheFaithful";
+SRC_UAWR = SRC_UA_PREFIX + "WizardRevisited";
+SRC_UAESR = SRC_UA_PREFIX + "ElfSubraces";
+SRC_UAMAC = SRC_UA_PREFIX + "MassCombat";
+SRC_UA3PE = SRC_UA_PREFIX + "ThreePillarExperience";
+SRC_UAGHI = SRC_UA_PREFIX + "GreyhawkInitiative";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
@@ -1023,144 +1027,144 @@ UA_PREFIX_SHORT = "UA: ";
 PP3_SUFFIX = " (3pp)";
 
 Parser.SOURCE_JSON_TO_FULL = {};
-Parser.SOURCE_JSON_TO_FULL[SRC_CoS] 		= "Curse of Strahd";
-Parser.SOURCE_JSON_TO_FULL[SRC_DMG] 		= "Dungeon Master's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_EEPC] 		= "Elemental Evil Player's Companion";
-Parser.SOURCE_JSON_TO_FULL[SRC_EET] 		= "Elemental Evil: Trinkets";
-Parser.SOURCE_JSON_TO_FULL[SRC_HotDQ] 		= "Hoard of the Dragon Queen";
-Parser.SOURCE_JSON_TO_FULL[SRC_LMoP] 		= "Lost Mine of Phandelver";
-Parser.SOURCE_JSON_TO_FULL[SRC_MM] 			= "Monster Manual";
-Parser.SOURCE_JSON_TO_FULL[SRC_OotA] 		= "Out of the Abyss";
-Parser.SOURCE_JSON_TO_FULL[SRC_PHB] 		= "Player's Handbook";
-Parser.SOURCE_JSON_TO_FULL[SRC_PotA] 		= "Princes of the Apocalypse";
-Parser.SOURCE_JSON_TO_FULL[SRC_RoT] 		= "The Rise of Tiamat";
-Parser.SOURCE_JSON_TO_FULL[SRC_RoTOS] 		= "The Rise of Tiamat Online Supplement";
-Parser.SOURCE_JSON_TO_FULL[SRC_SCAG] 		= "Sword Coast Adventurer's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_SKT] 		= "Storm King's Thunder";
-Parser.SOURCE_JSON_TO_FULL[SRC_ToA] 		= "Tomb of Annihilation";
-Parser.SOURCE_JSON_TO_FULL[SRC_ToD] 		= "Tyranny of Dragons";
-Parser.SOURCE_JSON_TO_FULL[SRC_TTP] 		= "The Tortle Package";
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP] 		= "Tales from the Yawning Portal";
-Parser.SOURCE_JSON_TO_FULL[SRC_VGM] 		= "Volo's Guide to Monsters";
-Parser.SOURCE_JSON_TO_FULL[SRC_XGE] 		= "Xanathar's Guide to Everything";
-Parser.SOURCE_JSON_TO_FULL[SRC_OGA] 		= "One Grung Above";
-Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] 		= AL_PREFIX + "Curse of Strahd";
-Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] 		= AL_PREFIX + "Elemental Evil";
-Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] 		= AL_PREFIX + "Rage of Demons";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSA] 		= PS_PREFIX + "Amonkhet";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSI] 		= PS_PREFIX + "Innistrad";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSK] 		= PS_PREFIX + "Kaladesh";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSZ] 		= PS_PREFIX + "Zendikar";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSX] 		= PS_PREFIX + "Ixalan";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAA] 		= UA_PREFIX + "Artificer";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAEAG] 		= UA_PREFIX + "Eladrin and Gith";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAEBB] 		= UA_PREFIX + "Eberron";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFFR] 		= UA_PREFIX + "Feats for Races";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFFS] 		= UA_PREFIX + "Feats for Skills";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFO] 		= UA_PREFIX + "Fiendish Options";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFT] 		= UA_PREFIX + "Feats";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGH] 		= UA_PREFIX + "Gothic Heroes";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMDM] 		= UA_PREFIX + "Modern Magic";
-Parser.SOURCE_JSON_TO_FULL[SRC_UASSP] 		= UA_PREFIX + "Starter Spells";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATMC] 		= UA_PREFIX + "The Mystic Class";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATOBM] 		= UA_PREFIX + "That Old Black Magic";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATRR] 		= UA_PREFIX + "The Ranger, Revised";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWA] 		= UA_PREFIX + "Waterborne Adventures";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAVR] 		= UA_PREFIX + "Variant Rules";
-Parser.SOURCE_JSON_TO_FULL[SRC_UALDR] 		= UA_PREFIX + "Light, Dark, Underdark!";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARAR] 		= UA_PREFIX + "Ranger and Rogue";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAATOSC] 	= UA_PREFIX + "A Trio of Subclasses";
-Parser.SOURCE_JSON_TO_FULL[SRC_UABPP] 		= UA_PREFIX + "Barbarian Primal Paths";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARSC] 		= UA_PREFIX + "Revised Subclasses";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAKOO] 		= UA_PREFIX + "Kits of Old";
-Parser.SOURCE_JSON_TO_FULL[SRC_UABBC] 		= UA_PREFIX + "Bard: Bard Colleges";
-Parser.SOURCE_JSON_TO_FULL[SRC_UACDD] 		= UA_PREFIX + "Cleric: Divine Domains";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAD] 		= UA_PREFIX + "Druid";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARCO] 		= UA_PREFIX + "Revised Class Options";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAF] 		= UA_PREFIX + "Fighter";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAM] 		= UA_PREFIX + "Monk";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAP] 		= UA_PREFIX + "Paladin";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMC] 		= UA_PREFIX + "Modifying Classes";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAS] 		= UA_PREFIX + "Sorcerer";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] 		= UA_PREFIX + "Warlock and Wizard";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATF] 		= UA_PREFIX + "The Faithful";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] 		= UA_PREFIX + "Wizard Revisited";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] 		= UA_PREFIX + "Elf Subraces";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] 		= UA_PREFIX + "Mass Combat";
-Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] 		= UA_PREFIX + "Three-Pillar Experience";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] 		= UA_PREFIX + "Greyhawk Initiative";
-Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] 	= "Book of Lost Spells" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] 	= "Tome of Beasts" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_CoS] = "Curse of Strahd";
+Parser.SOURCE_JSON_TO_FULL[SRC_DMG] = "Dungeon Master's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_EEPC] = "Elemental Evil Player's Companion";
+Parser.SOURCE_JSON_TO_FULL[SRC_EET] = "Elemental Evil: Trinkets";
+Parser.SOURCE_JSON_TO_FULL[SRC_HotDQ] = "Hoard of the Dragon Queen";
+Parser.SOURCE_JSON_TO_FULL[SRC_LMoP] = "Lost Mine of Phandelver";
+Parser.SOURCE_JSON_TO_FULL[SRC_MM] = "Monster Manual";
+Parser.SOURCE_JSON_TO_FULL[SRC_OotA] = "Out of the Abyss";
+Parser.SOURCE_JSON_TO_FULL[SRC_PHB] = "Player's Handbook";
+Parser.SOURCE_JSON_TO_FULL[SRC_PotA] = "Princes of the Apocalypse";
+Parser.SOURCE_JSON_TO_FULL[SRC_RoT] = "The Rise of Tiamat";
+Parser.SOURCE_JSON_TO_FULL[SRC_RoTOS] = "The Rise of Tiamat Online Supplement";
+Parser.SOURCE_JSON_TO_FULL[SRC_SCAG] = "Sword Coast Adventurer's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_SKT] = "Storm King's Thunder";
+Parser.SOURCE_JSON_TO_FULL[SRC_ToA] = "Tomb of Annihilation";
+Parser.SOURCE_JSON_TO_FULL[SRC_ToD] = "Tyranny of Dragons";
+Parser.SOURCE_JSON_TO_FULL[SRC_TTP] = "The Tortle Package";
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP] = "Tales from the Yawning Portal";
+Parser.SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
+Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
+Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
+Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
+Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
+Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] = AL_PREFIX + "Rage of Demons";
+Parser.SOURCE_JSON_TO_FULL[SRC_PSA] = PS_PREFIX + "Amonkhet";
+Parser.SOURCE_JSON_TO_FULL[SRC_PSI] = PS_PREFIX + "Innistrad";
+Parser.SOURCE_JSON_TO_FULL[SRC_PSK] = PS_PREFIX + "Kaladesh";
+Parser.SOURCE_JSON_TO_FULL[SRC_PSZ] = PS_PREFIX + "Zendikar";
+Parser.SOURCE_JSON_TO_FULL[SRC_PSX] = PS_PREFIX + "Ixalan";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAA] = UA_PREFIX + "Artificer";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAEAG] = UA_PREFIX + "Eladrin and Gith";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAEBB] = UA_PREFIX + "Eberron";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFFR] = UA_PREFIX + "Feats for Races";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFFS] = UA_PREFIX + "Feats for Skills";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFO] = UA_PREFIX + "Fiendish Options";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFT] = UA_PREFIX + "Feats";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAGH] = UA_PREFIX + "Gothic Heroes";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAMDM] = UA_PREFIX + "Modern Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_UASSP] = UA_PREFIX + "Starter Spells";
+Parser.SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
+Parser.SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAVR] = UA_PREFIX + "Variant Rules";
+Parser.SOURCE_JSON_TO_FULL[SRC_UALDR] = UA_PREFIX + "Light, Dark, Underdark!";
+Parser.SOURCE_JSON_TO_FULL[SRC_UARAR] = UA_PREFIX + "Ranger and Rogue";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAATOSC] = UA_PREFIX + "A Trio of Subclasses";
+Parser.SOURCE_JSON_TO_FULL[SRC_UABPP] = UA_PREFIX + "Barbarian Primal Paths";
+Parser.SOURCE_JSON_TO_FULL[SRC_UARSC] = UA_PREFIX + "Revised Subclasses";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAKOO] = UA_PREFIX + "Kits of Old";
+Parser.SOURCE_JSON_TO_FULL[SRC_UABBC] = UA_PREFIX + "Bard: Bard Colleges";
+Parser.SOURCE_JSON_TO_FULL[SRC_UACDD] = UA_PREFIX + "Cleric: Divine Domains";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAD] = UA_PREFIX + "Druid";
+Parser.SOURCE_JSON_TO_FULL[SRC_UARCO] = UA_PREFIX + "Revised Class Options";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAF] = UA_PREFIX + "Fighter";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAM] = UA_PREFIX + "Monk";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAP] = UA_PREFIX + "Paladin";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAMC] = UA_PREFIX + "Modifying Classes";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAS] = UA_PREFIX + "Sorcerer";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] = UA_PREFIX + "Warlock and Wizard";
+Parser.SOURCE_JSON_TO_FULL[SRC_UATF] = UA_PREFIX + "The Faithful";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] = UA_PREFIX + "Wizard Revisited";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] = UA_PREFIX + "Elf Subraces";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] = UA_PREFIX + "Mass Combat";
+Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] = UA_PREFIX + "Three-Pillar Experience";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] = UA_PREFIX + "Greyhawk Initiative";
+Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts" + PP3_SUFFIX;
 
 Parser.SOURCE_JSON_TO_ABV = {};
-Parser.SOURCE_JSON_TO_ABV[SRC_CoS] 			= "CoS";
-Parser.SOURCE_JSON_TO_ABV[SRC_DMG] 			= "DMG";
-Parser.SOURCE_JSON_TO_ABV[SRC_EEPC] 		= "EEPC";
-Parser.SOURCE_JSON_TO_ABV[SRC_EET] 			= "EET";
-Parser.SOURCE_JSON_TO_ABV[SRC_HotDQ] 		= "HotDQ";
-Parser.SOURCE_JSON_TO_ABV[SRC_LMoP] 		= "LMoP";
-Parser.SOURCE_JSON_TO_ABV[SRC_MM] 			= "MM";
-Parser.SOURCE_JSON_TO_ABV[SRC_OotA] 		= "OotA";
-Parser.SOURCE_JSON_TO_ABV[SRC_PHB] 			= "PHB";
-Parser.SOURCE_JSON_TO_ABV[SRC_PotA] 		= "PotA";
-Parser.SOURCE_JSON_TO_ABV[SRC_RoT] 			= "RoT";
-Parser.SOURCE_JSON_TO_ABV[SRC_RoTOS] 		= "RoTOS";
-Parser.SOURCE_JSON_TO_ABV[SRC_SCAG] 		= "SCAG";
-Parser.SOURCE_JSON_TO_ABV[SRC_SKT] 			= "SKT";
-Parser.SOURCE_JSON_TO_ABV[SRC_ToA] 			= "ToA";
-Parser.SOURCE_JSON_TO_ABV[SRC_ToD] 			= "ToD";
-Parser.SOURCE_JSON_TO_ABV[SRC_TTP] 			= "TTP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP] 			= "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_VGM] 			= "VGM";
-Parser.SOURCE_JSON_TO_ABV[SRC_XGE] 			= "XGE";
-Parser.SOURCE_JSON_TO_ABV[SRC_OGA] 			= "OGA";
-Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] 		= "ALCoS";
-Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] 		= "ALEE";
-Parser.SOURCE_JSON_TO_ABV[SRC_ALRoD] 		= "ALRoD";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSA] 			= "PSA";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSI] 			= "PSI";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSK] 			= "PSK";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSZ] 			= "PSZ";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSX] 			= "PSX";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAA] 			= "UAA";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAEAG] 		= "UAEaG";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAEBB] 		= "UAEB";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFFR] 		= "UAFFR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFFS] 		= "UAFFS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFO] 		= "UAFO";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFT] 		= "UAFT";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAGH] 		= "UAGH";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAMDM] 		= "UAMM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UASSP] 		= "UASS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATMC] 		= "UAM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATOBM] 		= "UAOBM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATRR] 		= "UATRR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWA] 		= "UAWA";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAVR] 		= "UAVR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UALDR] 		= "UALDU";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARAR] 		= "UARAR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAATOSC] 		= "UAATOSC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UABPP] 		= "UABPP";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARSC] 		= "UARSC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAKOO] 		= "UAKOO";
-Parser.SOURCE_JSON_TO_ABV[SRC_UABBC] 		= "UABBC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UACDD] 		= "UACDD";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAD] 			= "UAD";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARCO] 		= "UARCO";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAF] 			= "UAF";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAM] 			= "UAM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAP] 			= "UAP";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAMC] 		= "UAMC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAS] 			= "UAS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWAW] 		= "UAWAW";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATF] 		= "UATF";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWR] 		= "UAWR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAESR] 		= "UAESR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAMAC] 		= "UAMAC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA3PE] 		= "UA3PE";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAGHI] 		= "UAGHI";
-Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] 	= "BoLS (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] 		= "ToB (3pp)";
+Parser.SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
+Parser.SOURCE_JSON_TO_ABV[SRC_DMG] = "DMG";
+Parser.SOURCE_JSON_TO_ABV[SRC_EEPC] = "EEPC";
+Parser.SOURCE_JSON_TO_ABV[SRC_EET] = "EET";
+Parser.SOURCE_JSON_TO_ABV[SRC_HotDQ] = "HotDQ";
+Parser.SOURCE_JSON_TO_ABV[SRC_LMoP] = "LMoP";
+Parser.SOURCE_JSON_TO_ABV[SRC_MM] = "MM";
+Parser.SOURCE_JSON_TO_ABV[SRC_OotA] = "OotA";
+Parser.SOURCE_JSON_TO_ABV[SRC_PHB] = "PHB";
+Parser.SOURCE_JSON_TO_ABV[SRC_PotA] = "PotA";
+Parser.SOURCE_JSON_TO_ABV[SRC_RoT] = "RoT";
+Parser.SOURCE_JSON_TO_ABV[SRC_RoTOS] = "RoTOS";
+Parser.SOURCE_JSON_TO_ABV[SRC_SCAG] = "SCAG";
+Parser.SOURCE_JSON_TO_ABV[SRC_SKT] = "SKT";
+Parser.SOURCE_JSON_TO_ABV[SRC_ToA] = "ToA";
+Parser.SOURCE_JSON_TO_ABV[SRC_ToD] = "ToD";
+Parser.SOURCE_JSON_TO_ABV[SRC_TTP] = "TTP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_VGM] = "VGM";
+Parser.SOURCE_JSON_TO_ABV[SRC_XGE] = "XGE";
+Parser.SOURCE_JSON_TO_ABV[SRC_OGA] = "OGA";
+Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
+Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
+Parser.SOURCE_JSON_TO_ABV[SRC_ALRoD] = "ALRoD";
+Parser.SOURCE_JSON_TO_ABV[SRC_PSA] = "PSA";
+Parser.SOURCE_JSON_TO_ABV[SRC_PSI] = "PSI";
+Parser.SOURCE_JSON_TO_ABV[SRC_PSK] = "PSK";
+Parser.SOURCE_JSON_TO_ABV[SRC_PSZ] = "PSZ";
+Parser.SOURCE_JSON_TO_ABV[SRC_PSX] = "PSX";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAA] = "UAA";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAEAG] = "UAEaG";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAEBB] = "UAEB";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAFFR] = "UAFFR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAFFS] = "UAFFS";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAFO] = "UAFO";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAMDM] = "UAMM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UASSP] = "UASS";
+Parser.SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAVR] = "UAVR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UALDR] = "UALDU";
+Parser.SOURCE_JSON_TO_ABV[SRC_UARAR] = "UARAR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAATOSC] = "UAATOSC";
+Parser.SOURCE_JSON_TO_ABV[SRC_UABPP] = "UABPP";
+Parser.SOURCE_JSON_TO_ABV[SRC_UARSC] = "UARSC";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAKOO] = "UAKOO";
+Parser.SOURCE_JSON_TO_ABV[SRC_UABBC] = "UABBC";
+Parser.SOURCE_JSON_TO_ABV[SRC_UACDD] = "UACDD";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAD] = "UAD";
+Parser.SOURCE_JSON_TO_ABV[SRC_UARCO] = "UARCO";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAF] = "UAF";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAM] = "UAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAP] = "UAP";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAMC] = "UAMC";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAS] = "UAS";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAWAW] = "UAWAW";
+Parser.SOURCE_JSON_TO_ABV[SRC_UATF] = "UATF";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAWR] = "UAWR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAESR] = "UAESR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAMAC] = "UAMAC";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA3PE] = "UA3PE";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAGHI] = "UAGHI";
+Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BoLS (3pp)";
+Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
@@ -1228,63 +1232,70 @@ Parser.ACTION_JSON_TO_FULL = {
 	"Ready": "Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn, which lets you act using your reaction before the start of your next turn."
 };
 
-Parser.NUMBERS_ONES = ['','one','two','three','four','five','six','seven','eight','nine'];
-Parser.NUMBERS_TENS = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
-Parser.NUMBERS_TEENS = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+Parser.NUMBERS_ONES = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+Parser.NUMBERS_TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+Parser.NUMBERS_TEENS = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
 // SOURCES =============================================================================================================
-function hasBeenReprinted(shortName, source) {
+function hasBeenReprinted (shortName, source) {
 	return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
-		(shortName === "Sun Soul" && source === SRC_SCAG) ||
-		(shortName === "Mastermind" && source === SRC_SCAG) ||
-		(shortName === "Swashbuckler" && source === SRC_SCAG) ||
-		(shortName === "Storm" && source === SRC_SCAG);
+		(
+			(shortName === "Sun Soul" && source === SRC_SCAG) ||
+			(shortName === "Mastermind" && source === SRC_SCAG) ||
+			(shortName === "Swashbuckler" && source === SRC_SCAG) ||
+			(shortName === "Storm" && source === SRC_SCAG)
+		);
 }
 
-function isNonstandardSource(source) {
+function isNonstandardSource (source) {
 	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.endsWith(SRC_3PP_SUFFIX) || source === SRC_OGA);
 }
 
 // CONVENIENCE/ELEMENTS ================================================================================================
 // TODO refactor/remove (switch to jQuery versions)
-function toggleCheckBox(cb) {
+function toggleCheckBox (cb) {
 	if (cb.checked === true) cb.checked = false;
 	else cb.checked = true;
 }
-function stopEvent(event) {
+
+function stopEvent (event) {
 	event.stopPropagation();
 	event.preventDefault();
 }
-function toggleVisible(element) {
+
+function toggleVisible (element) {
 	if (isShowing(element)) hide(element);
 	else show(element);
 }
-function isShowing(element) {
+
+function isShowing (element) {
 	return element.hasAttribute(ATB_STYLE) && element.getAttribute(ATB_STYLE).includes(STL_DISPLAY_INITIAL);
 }
-function show(element) {
+
+function show (element) {
 	element.setAttribute(ATB_STYLE, STL_DISPLAY_INITIAL);
 }
-function hide(element) {
+
+function hide (element) {
 	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
 }
 
-function xor(a, b) {
+function xor (a, b) {
 	return !a !== !b;
 }
 
 /**
  * > implying
  */
-function implies(a, b) {
+function implies (a, b) {
 	return (!a) || b;
 }
 
 // SEARCH AND FILTER ===================================================================================================
-function search(options) {
+function search (options) {
 	const list = new List("listcontainer", options);
 	list.sort("name");
-	$("#reset").click(function() {
+	$("#reset").click(function () {
 		$("#filtertools").find("select").val("All");
 		$("#search").val("");
 		list.search();
@@ -1306,7 +1317,7 @@ function search(options) {
  * @param options overrides for the default filter options
  * @returns {*} a `Filter`
  */
-function getSourceFilter(options) {
+function getSourceFilter (options) {
 	const baseOptions = {
 		header: FilterBox.SOURCE_HEADER,
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
@@ -1315,15 +1326,15 @@ function getSourceFilter(options) {
 	return getFilterWithMergedOptions(baseOptions, options);
 }
 
-function defaultSourceDeselFn(val) {
+function defaultSourceDeselFn (val) {
 	return isNonstandardSource(val);
 }
 
-function defaultSourceSelFn(val) {
+function defaultSourceSelFn (val) {
 	return !defaultSourceDeselFn(val);
 }
 
-function getAsiFilter(options) {
+function getAsiFilter (options) {
 	const baseOptions = {
 		header: "Ability Bonus",
 		items: [
@@ -1338,42 +1349,44 @@ function getAsiFilter(options) {
 	};
 	return getFilterWithMergedOptions(baseOptions, options);
 
-	function filterAsiMatch(valGroup, parsedAsi) {
-		return (valGroup[STR_NONE] && parsedAsi.asText === STR_NONE)
-			|| (valGroup[ABIL_CH_ANY] && parsedAsi.asText.toLowerCase().includes("choose any"))
-			|| parsedAsi.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
+	function filterAsiMatch (valGroup, parsedAsi) {
+		return (valGroup[STR_NONE] && parsedAsi.asText === STR_NONE) ||
+			(valGroup[ABIL_CH_ANY] && parsedAsi.asText.toLowerCase().includes("choose any")) ||
+			parsedAsi.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
 	}
-	function filterAsiMatchInverted(valGroup, parsedAsi) {
-		return ( implies(parsedAsi.asText === STR_NONE, valGroup[STR_NONE]) )
-			&& ( implies(parsedAsi.asText.toLowerCase().includes("choose any"), valGroup[ABIL_CH_ANY]) )
-			&& (parsedAsi.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
+
+	function filterAsiMatchInverted (valGroup, parsedAsi) {
+		return (implies(parsedAsi.asText === STR_NONE, valGroup[STR_NONE])) &&
+			(implies(parsedAsi.asText.toLowerCase().includes("choose any"), valGroup[ABIL_CH_ANY])) &&
+			(parsedAsi.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
 	}
 }
 
-function getFilterWithMergedOptions(baseOptions, addOptions) {
+function getFilterWithMergedOptions (baseOptions, addOptions) {
 	if (addOptions) Object.assign(baseOptions, addOptions); // merge in anything we get passed
 	return new Filter(baseOptions);
 }
 
-function initFilterBox(...filterList) {
+function initFilterBox (...filterList) {
 	return new FilterBox(document.getElementById(ID_SEARCH_BAR), document.getElementById(ID_RESET_BUTTON), filterList);
 }
 
 // ENCODING/DECODING ===================================================================================================
-function encodeForHash(toEncode) {
+function encodeForHash (toEncode) {
 	if (toEncode instanceof Array) {
 		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
 	} else {
 		return encodeForHashHelper(toEncode);
 	}
-	function encodeForHashHelper(part) {
-		return encodeURIComponent(part).toLowerCase().replace(/'/g,"%27")
+
+	function encodeForHashHelper (part) {
+		return encodeURIComponent(part).toLowerCase().replace(/'/g, "%27")
 	}
 }
 
 // SORTING =============================================================================================================
 // TODO refactor into a class
-function ascSort(a, b) {
+function ascSort (a, b) {
 	// to handle `FilterItem`s
 	if (a.hasOwnProperty("item") && b.hasOwnProperty("item")) {
 		return _ascSort(a.item, b.item);
@@ -1381,28 +1394,28 @@ function ascSort(a, b) {
 	return _ascSort(a, b);
 }
 
-function _ascSort(a, b) {
+function _ascSort (a, b) {
 	if (b === a) return 0;
 	return b < a ? 1 : -1;
 }
 
-function compareNames(a, b) {
+function compareNames (a, b) {
 	if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
 	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
 	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
 }
 
 // ARRAYS ==============================================================================================================
-function joinConjunct(arr, joinWith, conjunctWith) {
+function joinConjunct (arr, joinWith, conjunctWith) {
 	return arr.length === 1 ? String(arr[0]) : arr.length === 2 ? arr.join(conjunctWith) : arr.slice(0, -1).join(joinWith) + conjunctWith + arr.slice(-1);
 }
 
 // JSON LOADING ========================================================================================================
-function loadJSON(url, onLoadFunction, ...otherData) {
+function loadJSON (url, onLoadFunction, ...otherData) {
 	const request = new XMLHttpRequest();
 	request.open('GET', url, true);
 	request.overrideMimeType("application/json");
-	request.onload = function() {
+	request.onload = function () {
 		const data = JSON.parse(this.response);
 		onLoadFunction(data, otherData);
 	};
@@ -1417,7 +1430,7 @@ function loadJSON(url, onLoadFunction, ...otherData) {
  * @param onFinalLoadFunction final function to call once all data has been loaded, should accept the `dataStack` array as
  * an argument. `dataStack` is an array of the data pulled from each URL
  */
-function multiLoadJSON(toLoads, onEachLoadFunction, onFinalLoadFunction) {
+function multiLoadJSON (toLoads, onEachLoadFunction, onFinalLoadFunction) {
 	if (!toLoads.length) onFinalLoadFunction([]);
 	const dataStack = [];
 
@@ -1425,7 +1438,7 @@ function multiLoadJSON(toLoads, onEachLoadFunction, onFinalLoadFunction) {
 	toLoads.forEach(tl => {
 		loadJSON(
 			tl.url,
-			function(data) {
+			function (data) {
 				onEachLoadFunction(tl, data);
 				dataStack.push(data);
 
@@ -1439,7 +1452,7 @@ function multiLoadJSON(toLoads, onEachLoadFunction, onFinalLoadFunction) {
 }
 
 // SHOW/HIDE SEARCH ====================================================================================================
-function addListShowHide() {
+function addListShowHide () {
 	const toInjectShow = `
 		<div class="col-xs-12" id="showsearch">
 			<button class="btn btn-block btn-default btn-xs" type="button">Show Search</button>
@@ -1458,12 +1471,12 @@ function addListShowHide() {
 	const showSearchWrpr = $("div#showsearch");
 	const hideSearchBtn = $("button#hidesearch");
 	// collapse/expand search button
-	hideSearchBtn.click(function() {
+	hideSearchBtn.click(function () {
 		listContainer.hide();
 		showSearchWrpr.show();
 		hideSearchBtn.hide();
 	});
-	showSearchWrpr.find("button").click(function() {
+	showSearchWrpr.find("button").click(function () {
 		listContainer.show();
 		showSearchWrpr.hide();
 		hideSearchBtn.show();

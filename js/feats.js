@@ -3,15 +3,15 @@ const JSON_URL = "data/feats.json";
 let tabledefault = "";
 let featlist;
 
-function deselUa(val) {
+function deselUa (val) {
 	return val.startsWith(SRC_UA_PREFIX);
 }
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad);
 };
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	tabledefault = $("#stats").html();
 	featlist = data.feat;
 
@@ -40,7 +40,7 @@ function onJsonLoad(data) {
 
 		tempString += `
 			<li ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${encodeForHash(name)+HASH_LIST_SEP+encodeForHash(curfeat.source)}' title='${name}'>
+				<a id='${i}' href='#${encodeForHash(name) + HASH_LIST_SEP + encodeForHash(curfeat.source)}' title='${name}'>
 					<span class='${CLS_COL_1}'>${name}</span>
 					<span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span>
 					<span class='${CLS_COL_3}'>${ability.asText}</span>
@@ -71,8 +71,8 @@ function onJsonLoad(data) {
 	);
 
 	// filtering function
-	function handleFilterChange() {
-		list.filter(function(item) {
+	function handleFilterChange () {
+		list.filter(function (item) {
 			const f = filterBox.getValues();
 			const ft = featlist[$(item.elm).attr(FLTR_ID)];
 
@@ -84,7 +84,7 @@ function onJsonLoad(data) {
 	handleFilterChange();
 }
 
-function loadhash(id) {
+function loadhash (id) {
 	$("#stats").html(tabledefault);
 	const feat = featlist[id];
 
@@ -96,7 +96,7 @@ function loadhash(id) {
 	addAttributeItem(feat.ability, feat.entries);
 	$("tr#text").after("<tr class='text'><td colspan='6'>" + utils_combineText(feat.entries, "p") + "</td></tr>");
 
-	function addAttributeItem(abilityObj, textArray) {
+	function addAttributeItem (abilityObj, textArray) {
 		if (abilityObj === undefined) return;
 		for (let i = 0; i < textArray.length; ++i) { // insert the new list item at the head of the first list we find list; flag with "hasabilityitem" so we don't do it more than once
 			if (textArray[i].type === "list" && textArray[i].hasabilityitem !== "YES") {
@@ -105,7 +105,7 @@ function loadhash(id) {
 			}
 		}
 
-		function abilityObjToListItem() {
+		function abilityObjToListItem () {
 			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
 			const abbArr = [];
 			if (abilityObj.choose === undefined) {
@@ -114,7 +114,7 @@ function loadhash(id) {
 					abbArr.push("Increase your " + Parser.attAbvToFull(att) + " score by " + abilityObj[att] + TO_MAX_OF_TWENTY);
 				}
 			} else {
-				const choose=abilityObj.choose;
+				const choose = abilityObj.choose;
 				for (let i = 0; i < choose.length; ++i) {
 					if (choose[i].from.length === 6) {
 						if (choose[i].textreference === "YES") { // only used in "Resilient"

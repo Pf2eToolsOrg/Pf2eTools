@@ -13,7 +13,7 @@ const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
 
 const P_LEVEL = "level";
-const P_NORMALISED_TIME= "normalisedTime";
+const P_NORMALISED_TIME = "normalisedTime";
 const P_SCHOOL = "school";
 const P_NORMALISED_RANGE = "normalisedRange";
 
@@ -51,11 +51,11 @@ const F_RNG_SPECIAL = "Special";
 
 let tableDefault;
 
-function getFltrSpellLevelStr(level) {
+function getFltrSpellLevelStr (level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
 }
 
-function getNormalisedTime(time) {
+function getNormalisedTime (time) {
 	const firstTime = time[0];
 	let multiplier = 1;
 	let offset = 0;
@@ -82,12 +82,13 @@ function getNormalisedTime(time) {
 
 const INCHES_PER_FOOT = 12;
 const FEET_PER_MILE = 5280;
-function getNormalisedRange(range) {
+
+function getNormalisedRange (range) {
 	let multiplier = 1;
 	let distance = 0;
 	let offset = 0;
 
-	switch(range.type) {
+	switch (range.type) {
 		case RNG_SPECIAL:
 			return 1000000000;
 		case RNG_POINT:
@@ -122,7 +123,7 @@ function getNormalisedRange(range) {
 	// value in inches, to allow greater granularity
 	return (multiplier * distance) + offset;
 
-	function adjustForDistance() {
+	function adjustForDistance () {
 		const dist = range.distance;
 		switch (dist.type) {
 			case UNT_FEET:
@@ -130,7 +131,7 @@ function getNormalisedRange(range) {
 				distance = dist.amount;
 				break;
 			case UNT_MILES:
-				multiplier = INCHES_PER_FOOT*FEET_PER_MILE;
+				multiplier = INCHES_PER_FOOT * FEET_PER_MILE;
 				distance = dist.amount;
 				break;
 			case RNG_SELF:
@@ -140,7 +141,7 @@ function getNormalisedRange(range) {
 				distance = 1;
 				break;
 			case RNG_SIGHT:
-				multiplier = FEET_PER_MILE*FEET_PER_MILE;
+				multiplier = FEET_PER_MILE * FEET_PER_MILE;
 				distance = 12; // assume sight range of person ~100 ft. above the ground
 				break;
 			case RNG_UNLIMITED_SAME_PLANE: // from BolS, if/when it gets restored
@@ -153,8 +154,8 @@ function getNormalisedRange(range) {
 	}
 }
 
-function getRangeType(range) {
-	switch(range.type) {
+function getRangeType (range) {
+	switch (range.type) {
 		case RNG_SPECIAL:
 			return F_RNG_SPECIAL;
 		case RNG_POINT:
@@ -176,7 +177,7 @@ function getRangeType(range) {
 	}
 }
 
-function getTblTimeStr(time) {
+function getTblTimeStr (time) {
 	// TODO change "bonus action" to "bonus" in the JSON, and update this to match (will require updates to parsing functions also)
 	let temp;
 	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
@@ -184,20 +185,20 @@ function getTblTimeStr(time) {
 	} else {
 		temp = Parser.getTimeToFull(time);
 	}
-	if (temp.toLowerCase().endsWith("bonus action")) temp = temp.substr(0, temp.length-4)+"n.";
+	if (temp.toLowerCase().endsWith("bonus action")) temp = temp.substr(0, temp.length - 4) + "n.";
 	return temp;
 }
 
-function getTimeDisplay(timeUnit) {
+function getTimeDisplay (timeUnit) {
 	return TIME_UNITS_TO_FULL[timeUnit];
 }
 
-function getClassFilterStr(c) {
+function getClassFilterStr (c) {
 	const nm = c.name.split("(")[0].trim();
 	return `${nm}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
 }
 
-function getMetaFilterObj(s) {
+function getMetaFilterObj (s) {
 	const out = [];
 	if (s.meta && s.meta.ritual) out.push(META_RITUAL);
 	if (s.meta && s.meta.technomagic) out.push(META_TECHNOMAGIC);
@@ -208,14 +209,14 @@ function getMetaFilterObj(s) {
 	return out;
 }
 
-function ascSortSpellLevel(a, b) {
+function ascSortSpellLevel (a, b) {
 	if (a === b) return 0;
 	if (a === STR_CANTRIP) return -1;
 	if (b === STR_CANTRIP) return 1;
 	return ascSort(a, b);
 }
 
-window.onload = function load() {
+window.onload = function load () {
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells)
 };
 
@@ -262,7 +263,7 @@ const filterBox = initFilterBox(
 	rangeFilter
 );
 
-function pageInit(loadedSources) {
+function pageInit (loadedSources) {
 	tableDefault = $("#stats").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
@@ -279,17 +280,17 @@ function pageInit(loadedSources) {
 		handleFilterChange
 	);
 
-	$("#filtertools").find("button.sort").on(EVNT_CLICK, function() {
+	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 		const $this = $(this);
 		if ($this.attr("sortby") === "asc") {
 			$this.attr("sortby", "desc");
 		} else $this.attr("sortby", "asc");
-		list.sort($this.data("sort"), { order: $this.attr("sortby"), sortFunction: sortSpells });
+		list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: sortSpells});
 	});
 }
 
-function handleFilterChange() {
-	list.filter(function(item) {
+function handleFilterChange () {
+	list.filter(function (item) {
 		const f = filterBox.getValues();
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
@@ -299,12 +300,13 @@ function handleFilterChange() {
 
 let spellList = [];
 let spI = 0;
-function addSpells(data) {
+
+function addSpells (data) {
 	spellList = spellList.concat(data);
 
 	const spellTable = $("ul.spells");
 	let tempString = "";
-	for ( ; spI < spellList.length; spI++) {
+	for (; spI < spellList.length; spI++) {
 		const spell = spellList[spI];
 
 		let levelText = Parser.spLevelToFull(spell.level);
@@ -398,7 +400,7 @@ function addSpells(data) {
 	filterBox.render();
 }
 
-function sortSpells(a, b, o) {
+function sortSpells (a, b, o) {
 	a = spellList[a.elm.getAttribute(FLTR_ID)];
 	b = spellList[b.elm.getAttribute(FLTR_ID)];
 
@@ -429,23 +431,27 @@ function sortSpells(a, b, o) {
 
 	return 0;
 
-	function byName() {
+	function byName () {
 		return ascSort(a.name, b.name);
 	}
-	function bySource() {
+
+	function bySource () {
 		return ascSort(a.source, b.source);
 	}
-	function fallback() {
+
+	function fallback () {
 		const onName = byName();
 		return onName !== 0 ? onName : bySource();
 	}
-	function orFallback(func, prop) {
+
+	function orFallback (func, prop) {
 		const initial = func(a[prop], b[prop]);
 		return initial !== 0 ? initial : fallback();
 	}
 }
 
 const renderer = new EntryRenderer();
+
 function loadhash (id) {
 	$("#stats").html(tableDefault);
 	const spell = spellList[id];

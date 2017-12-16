@@ -1,7 +1,7 @@
 "use strict";
 
 let tableDefault;
-window.onload = function load() {
+window.onload = function load () {
 	tableDefault = $("#stats").html();
 	const cultList = cultdata;
 
@@ -44,5 +44,5 @@ function loadhash (id) {
 	if (curcult.signaturespells !== undefined) texthtml += utils_combineText(curcult.signaturespells.text, "p", "<span class='bold'>Signature Spells:</span> ");
 	texthtml += utils_combineText(textlist, "p");
 
-	$("tr#text").after("<tr class='text'><td colspan='6'>"+texthtml+"</td></tr>");
+	$("tr#text").after("<tr class='text'><td colspan='6'>" + texthtml + "</td></tr>");
 }

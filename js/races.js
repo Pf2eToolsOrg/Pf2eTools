@@ -2,11 +2,12 @@
 const JSON_URL = "data/races.json";
 let tableDefault = "";
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(JSON_URL, onJsonLoad)
 };
 
 let raceList;
+
 function onJsonLoad (data) {
 	tableDefault = $("#stats").html();
 
@@ -51,10 +52,10 @@ function onJsonLoad (data) {
 	sourceFilter.items.sort(ascSort);
 	sizeFilter.items.sort(ascSortSize);
 
-	function ascSortSize(a, b) {
+	function ascSortSize (a, b) {
 		return ascSort(toNum(a), toNum(b));
 
-		function toNum(size) {
+		function toNum (size) {
 			switch (size) {
 				case "M":
 					return 0;
@@ -79,8 +80,8 @@ function onJsonLoad (data) {
 		handleFilterChange
 	);
 
-	function handleFilterChange() {
-		list.filter(function(item) {
+	function handleFilterChange () {
+		list.filter(function (item) {
 			const f = filterBox.getValues();
 			const r = raceList[$(item.elm).attr(FLTR_ID)];
 
@@ -97,6 +98,7 @@ function onJsonLoad (data) {
 }
 
 const renderer = new EntryRenderer();
+
 function loadhash (id) {
 	$("#stats").html(tableDefault);
 	$("#stats td").show();
@@ -105,7 +107,7 @@ function loadhash (id) {
 
 	$("th#name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
 
-	const size = Parser.sizeAbvToFull (race.size);
+	const size = Parser.sizeAbvToFull(race.size);
 	$("td#size span").html(size);
 	if (size === "") $("td#size").hide();
 
@@ -140,7 +142,6 @@ function loadhash (id) {
 		const faux = {"type": "entries", "entries": race.entries};
 
 		renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
-
 
 		$('table#stats tbody tr:last').before(renderStack.join(""));
 	}
