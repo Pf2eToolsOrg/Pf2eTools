@@ -2,12 +2,11 @@
 
 let adventures;
 
-window.onload = function load() {
+window.onload = function load () {
 	loadJSON(CONTENTS_URL, onJsonLoad);
 };
 
-function onJsonLoad(data) {
-
+function onJsonLoad (data) {
 	adventures = data.adventure;
 
 	const adventuresList = $("ul.adventures");
@@ -31,7 +30,7 @@ function onJsonLoad(data) {
 	});
 
 	list.sort("name");
-	$("#reset").click(function() {
+	$("#reset").click(function () {
 		$("#search").val("");
 		list.search();
 		list.sort("name");

@@ -2,7 +2,7 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
-function makeContentsBlock(adv, addPrefix, addOnclick) {
+function makeContentsBlock (adv, addPrefix, addOnclick) {
 	let out =
 		"<ul>";
 
@@ -17,7 +17,7 @@ function makeContentsBlock(adv, addPrefix, addOnclick) {
 	return out;
 }
 
-function makeHeadersBlock(advId, chapterIndex, chapter, addPrefix, addOnclick) {
+function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) {
 	let out =
 		"<ul>";
 	chapter.headers.forEach(c => {
@@ -31,7 +31,7 @@ function makeHeadersBlock(advId, chapterIndex, chapter, addPrefix, addOnclick) {
 	return out;
 }
 
-function scrollClick(scrollTo) {
+function scrollClick (scrollTo) {
 	const goTo = $(`span.entry-title:contains(${scrollTo})`);
 	if (goTo[0]) {
 		goTo[0].scrollIntoView();

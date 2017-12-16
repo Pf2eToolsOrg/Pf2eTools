@@ -7,7 +7,7 @@ let adventures;
 const TABLE_START = `<tr><th class="border" colspan="6"></th></tr>`;
 const TABLE_END = `<tr><th class="border" colspan="6"></th></tr>`;
 
-window.onload = function load() {
+window.onload = function load () {
 	renderArea = $(`#stats`);
 
 	renderArea.append(TABLE_START);
@@ -17,7 +17,7 @@ window.onload = function load() {
 	loadJSON(CONTENTS_URL, onJsonLoad);
 };
 
-function onJsonLoad(data) {
+function onJsonLoad (data) {
 	adventures = data.adventure;
 
 	const adventuresList = $("ul.contents");
@@ -47,7 +47,7 @@ function onJsonLoad(data) {
 }
 
 // custom loading for this page, so it can serve multiple sources
-function hashChange() {
+function hashChange () {
 	const [advId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
 	const fromIndex = adventures.filter(adv => adv.id === advId);
 	if (fromIndex.length) {
@@ -56,24 +56,24 @@ function hashChange() {
 		$(`.adv-message`).html("Select a chapter on the left, and browse the content on the right");
 		loadAdventure(advId, hashParts);
 	} else {
-		throw "No adventure with ID: " + advId;
+		throw new Error("No adventure with ID: " + advId);
 	}
 }
 
-
-function loadAdventure(advId, hashParts) {
-	loadJSON(`data/adventures/${advId}.json`, function(data) {
+function loadAdventure (advId, hashParts) {
+	loadJSON(`data/adventures/${advId}.json`, function (data) {
 		onAdventureLoad(data, advId, hashParts);
 	});
 }
 
 const renderer = new EntryRenderer();
-function onAdventureLoad(data, advId, hashParts) {
+
+function onAdventureLoad (data, advId, hashParts) {
 	let chapter = 0;
 	let scrollTo;
 	if (hashParts && hashParts.length > 0) chapter = Number(hashParts[0]);
 	if (hashParts && hashParts.length > 1) {
-		scrollTo  = $(`[href="#${advId},${chapter},${hashParts[1]}"]`).data("header");
+		scrollTo = $(`[href="#${advId},${chapter},${hashParts[1]}"]`).data("header");
 	}
 
 	renderArea.html("");

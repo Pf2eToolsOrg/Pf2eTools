@@ -2,7 +2,7 @@
 
 window.addEventListener(
 	'load',
-	function() {
+	function () {
 		navigation();
 		currentPage();
 	}, false
