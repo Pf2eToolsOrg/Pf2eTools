@@ -156,6 +156,7 @@ function EntryRenderer () {
 				// images
 				case "image": {
 					renderPrefix();
+					if (entry.title) textStack.push(`<div class="img-title">${entry.title}</div>`);
 					let href;
 					if (entry.href.type === "internal") {
 						href = `${this.baseUrl}img/${entry.href.path}`
