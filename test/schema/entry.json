@@ -378,6 +378,24 @@
 				}
 			]
 		},
+		"entryInsetReadaloud": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "insetReadaloud"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryItem": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
@@ -450,6 +468,7 @@
 		{"$ref": "#/definitions/entryInvocation"},
 		{"$ref": "#/definitions/entryPatron"},
 		{"$ref": "#/definitions/entryInset"},
+		{"$ref": "#/definitions/entryInsetReadaloud"},
 		{"$ref": "#/definitions/entryItem"},
 		{"$ref": "#/definitions/entryImage"},
 		{"type": "string"},
