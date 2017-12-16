@@ -161,7 +161,7 @@ function EntryRenderer () {
 						href = `${this.baseUrl}img/${entry.href.path}`
 					}
 					textStack.push(`
-						<a href="${href}" target='_blank'>
+						<a href="${href}" target='_blank' ${entry.title ? `title="${entry.title}"` : ""}>
 							<img src="${href}" >
 						</a>
 					`);
