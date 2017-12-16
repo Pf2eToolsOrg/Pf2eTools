@@ -1445,16 +1445,34 @@ table#stats div.statsInlineHead {
 	margin-bottom: 5px;
 }
 
-table#stats div.statsBlockInset {
+table#stats div.statsBlockInset,
+table#stats div.statsBlockInsetReadaloud {
 	margin: 7px 15px;
+	padding: 5px 10px;
+}
+
+table#stats div.statsBlockInset p:last-of-type,
+table#stats div.statsBlockInsetReadaloud p:last-of-type {
+	margin-bottom: 0;
+}
+
+table#stats div.statsBlockInset {
 	background-color: #e9ecda;
-	padding: 2px 10px;
-	border: 1px solid #656565;
 	box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+	border: 1px solid #656565;
 	border-top: 2px solid #656565;
 	border-bottom: 2px solid #656565;
 }
 
+table#stats div.statsBlockInsetReadaloud {
+	background-color: #eef0f3;
+	box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+	border: 1px solid #656565;
+	border-left: 2px solid #656565;
+	border-right: 2px solid #656565;
+}
+
+table#stats div.statsBlockInsetReadaloud > span.entry-title,
 table#stats div.statsBlockInset > span.entry-title {
 	display: block;
 	font-variant: small-caps;
