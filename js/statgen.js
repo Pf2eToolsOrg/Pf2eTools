@@ -24,7 +24,7 @@ function onJsonLoad (data) {
 			$(".base").val(8)
 			$(".choose").prop("checked", false)
 			changeTotal()
-			changeRemaining()
+			changeBase()
 		});
 	});
 
@@ -106,19 +106,12 @@ function changeTotal () {
 	})
 }
 
-function changeRemaining () {
-	const rempoints = Number($("#remaining").val(budget - cost));
-}
-
 function changeBase (e) {
 	const budget = Number($("#budget").val());
-
 	let cost = 0;
 	$(".base").each((i, el) => cost += getCost(Number(el.value)));
-
 	if (cost > budget) return this.value = this.dataset.prev;
-
-	changeRemaining()
+	$("#remaining").val(budget - cost);
 
 	changeTotal()
 }
