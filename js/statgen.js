@@ -45,7 +45,7 @@ const STATS_MAX = 15;
 function prevent () {
 	$(`.base`).each((i, ele) => {
 		const input = $(ele);
-		input.on("change", function(e) {
+		input.on("change", function (e) {
 			let num = parseInt(this.value);
 			if (isNaN(num)) {
 				this.value = 8;
