@@ -1,0 +1,22 @@
+pipeline: 
+  discord: 
+    image: appleboy/drone-discord
+    message: |-
+        {{ #success build.status }}
+            build {{ build.number }} succeeded. Good job.
+        {{ else }}
+            build {{ build.number }} failed. Fix me please.
+        {{ /success }}
+    secrets: 
+      - discord_webhook_id
+      - discord_webhook_token
+  frontend: 
+    commands: 
+      - "npm install"
+      - "npm test"
+    image: "webhippie/nodejs:latest"
+    when: 
+      event: 
+        - push
+        - pull_request
+
