@@ -1,18 +1,18 @@
 pipeline:
     frontend:
         image: webhippie/nodejs:latest
-    commands:
-      - npm install
-      - npm test
-    when:
-        event: [ push, pull_request ]
-  discord:
-    image: appleboy/drone-discord
-    secrets: [ discord_webhook_id, discord_webhook_token ]
-    message: |
-     {{ #success build.status }}
-       build {{ build.number }} succeeded. Good job.
-     {{ else }}
-       build {{ build.number }} failed. Fix me please.
-     {{ /success }}
+        commands:
+            - npm install
+            - npm test
+        when:
+            event: [ push, pull_request ]
+    discord:
+        image: appleboy/drone-discord
+        secrets: [ discord_webhook_id, discord_webhook_token ]
+        message: |
+        {{ #success build.status }}
+          build {{ build.number }} succeeded. Good job.
+        {{ else }}
+          build {{ build.number }} failed. Fix me please.
+        {{ /success }}
 
