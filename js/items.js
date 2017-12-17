@@ -269,6 +269,11 @@ function populateTablesAndFilters () {
 	options.listClass = "magic";
 	const magiclist = search(options);
 
+	const mundaneWrapper = $(`.ele-mundane`);
+	const magicWrapper = $(`.ele-magic`);
+	mundanelist.on("searchComplete", function () { hideListIfEmpty(mundanelist, mundaneWrapper) });
+	magiclist.on("searchComplete", function () { hideListIfEmpty(magiclist, magicWrapper) });
+
 	filterBox.render();
 
 	// filtering function
@@ -293,8 +298,8 @@ function populateTablesAndFilters () {
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);
 
-		hideListIfEmpty(mundanelist, $(`.ele-mundane`));
-		hideListIfEmpty(magiclist, $(`.ele-magic`));
+		hideListIfEmpty(mundanelist, mundaneWrapper);
+		hideListIfEmpty(magiclist, magicWrapper);
 	}
 
 	function hideListIfEmpty (list, $eles) {
