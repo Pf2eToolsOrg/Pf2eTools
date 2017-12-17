@@ -42,7 +42,7 @@ function onJsonLoad (data) {
 const STATS_MIN = 8;
 const STATS_MAX = 15;
 
-function prevent() {
+function prevent () {
 	$(`.base`).each((i, ele) => {
 		const input = $(ele);
 		input.on("change", function(e) {
