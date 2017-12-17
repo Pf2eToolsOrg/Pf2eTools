@@ -18,14 +18,14 @@ function onJsonLoad (data) {
 	raceData = data.race;
 
 	$("#rollbutton").click(rollstats);
-	
-	$(function() {
-		$("#reset").click(function() {
+
+	$(function () {
+		$("#reset").click(function () {
 			$(".base").val(8)
 			$(".choose").prop("checked", false)
 			changeTotal()
 			changeRemaining()
-        });
+		});
 	});
 
 	$(".base").on("input", changeBase);
@@ -49,8 +49,7 @@ function prevent () {
 			let num = parseInt(this.value);
 			if (isNaN(num)) {
 				this.value = 8;
-			}
-			else {
+			} else {
 				this.value = Math.max(Math.min(num, STATS_MAX), STATS_MIN);
 			}
 			changeTotal();
