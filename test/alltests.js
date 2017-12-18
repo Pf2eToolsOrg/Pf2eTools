@@ -9,7 +9,7 @@ const TESTS_FAILED = 1;
 
 const results = [];
 
-// Loop through each non-helper schema and push all validation results
+// Loop through each non-helper schema and push all validation results.
 fs.readdirSync("./test/schema")
 	.filter(file => file.endsWith(".json")) // ignore directories
 	.forEach(file => {
