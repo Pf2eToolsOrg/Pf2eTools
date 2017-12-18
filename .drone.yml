@@ -22,7 +22,6 @@ pipeline:
       message: Build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ build.link }})
       when:
         status: [ success, failure ]
-        branch: development
 
   Deploy-dev:
     image: appleboy/drone-ssh
