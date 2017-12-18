@@ -1,0 +1,24 @@
+workspace:
+  base: /srv/app
+clone:
+  git:
+    image: plugins/git:1
+    depth: 50
+    tags: false
+
+pipeline:
+  frontend:
+      image: webhippie/nodejs:latest
+      pull: true
+      commands:
+          - npm install
+          - npm test
+      when:
+          event: [ push, pull_request ]
+  discord:
+      image: appleboy/drone-discord
+      pull: true
+      secrets: [ discord_webhook_id, discord_webhook_token ]
+      message: Build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ build.link }})
+      when:
+        status: [ success, failure ]
