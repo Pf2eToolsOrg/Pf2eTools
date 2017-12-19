@@ -1,9 +1,15 @@
 "use strict";
+const JSON_URL = "data/cults.json";
+
+window.onload = function load () {
+	loadJSON(JSON_URL, onJsonLoad);
+};
 
 let tableDefault;
-window.onload = function load () {
+let cultList;
+function onJsonLoad(data) {
 	tableDefault = $("#stats").html();
-	const cultList = cultdata;
+	cultList = data.cult;
 
 	let tempString = "";
 	for (let i = 0; i < cultList.length; i++) {
@@ -28,8 +34,7 @@ window.onload = function load () {
 
 function loadhash (id) {
 	$("#stats").html(tableDefault);
-	const cultlist = cultdata;
-	const curcult = cultlist[id];
+	const curcult = cultList[id];
 
 	const name = curcult.name;
 	$("th#name").html(name);
