@@ -396,12 +396,18 @@ function loadhash (id) {
 	const renderStack = [];
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
 
-	if (item.additionalEntries) {
-		// tools and artisan tools
-		if (type === "T" || type === "AT") {
-			renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
+	// tools, artisan tools, instruments, gaming sets
+	if (type === "T" || type === "AT" || type === "INS" || type === "GS") {
+		renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
+		if (type === "INS") {
+			const additionEntriesList = {type: "entries", entries: TOOL_INS_ADDITIONAL_ENTRIES};
+			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
+		} else if (type === "GS") {
+			const additionEntriesList = {type: "entries", entries: TOOL_GS_ADDITIONAL_ENTRIES};
+			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
 		}
-
+	}
+	if (item.additionalEntries) {
 		const additionEntriesList = {type: "entries", entries: item.additionalEntries};
 		renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
 	}
@@ -422,3 +428,90 @@ function loadhash (id) {
 		$("div#output span:eq(5)").remove();
 	})
 }
+
+const TOOL_INS_ADDITIONAL_ENTRIES = [
+	"Proficiency with a musical instrument indicates you are familiar with the techniques used to play it. You also have knowledge of some songs commonly performed with that instrument.",
+	{
+		"type": "entries",
+		"name": "History",
+		"entries": [
+			"Your expertise aids you in recalling lore related to your instrument."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Performance",
+		"entries": [
+			"Your ability to put on a good show is improved when you incorporate an instrument into your act."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Compose a Tune",
+		"entries": [
+			"As part of a long rest, you can compose a new tune and lyrics for your instrument. You might use this ability to impress a noble or spread scandalous rumors with a catchy tune."
+		]
+	},
+	{
+		"type": "table",
+		"caption": "Musical Instrument",
+		"colLabels": [
+			"Activity", "DC"
+		],
+		"colStyles": [
+			"col-xs-10",
+			"col-xs-2 text-align-center"
+		],
+		"rows": [
+			["Identify a tune", "10"],
+			["Improvise a tune", "20"]
+		]
+	}
+];
+
+const TOOL_GS_ADDITIONAL_ENTRIES = [
+	"Proficiency with a gaming set applies to one type of game, such as Three-Dragon Ante or games of chance that use dice.",
+	{
+		"type": "entries",
+		"name": "Components",
+		"entries": [
+			"A gaming set has all the pieces needed to play a specific game or type of game, such as a complete deck of cards or a board and tokens."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "History",
+		"entries": [
+			"Your mastery of a game includes knowledge of its history, as well as of important events it was connected to or prominent historical figures involved with it."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Insight",
+		"entries": [
+			"Playing games with someone is a good way to gain understanding of their personality, granting you a better ability to discern their lies from their truths and read their mood."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Sleight of Hand",
+		"entries": [
+			"Sleight of Hand is a useful skill for cheating at a game, as it allows you to swap pieces, palm cards, or alter a die roll. Alternatively, engrossing a target in a game by manipulating the components with dexterous movements is a great distraction for a pickpocketing attempt."
+		]
+	},
+	{
+		"type": "table",
+		"caption": "Gaming Set",
+		"colLabels": [
+			"Activity", "DC"
+		],
+		"colStyles": [
+			"col-xs-10",
+			"col-xs-2 text-align-center"
+		],
+		"rows": [
+			["Catch a player cheating", "15"],
+			["Gain insight into an opponent's personality", "15"]
+		]
+	}
+];
