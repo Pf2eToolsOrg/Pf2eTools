@@ -7,7 +7,8 @@ window.onload = function load () {
 
 let tableDefault;
 let cultList;
-function onJsonLoad(data) {
+
+function onJsonLoad (data) {
 	tableDefault = $("#stats").html();
 	cultList = data.cult;
 
@@ -30,7 +31,7 @@ function onJsonLoad(data) {
 	});
 
 	initHistory()
-};
+}
 
 function loadhash (id) {
 	$("#stats").html(tableDefault);
