@@ -23,6 +23,25 @@
 					"page": {
 						"type": "string"
 					},
+					"additionalSources": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source",
+								"page"
+							],
+							"additionalProperties": false
+						}
+					},
 					"ac": {
 						"type": "string"
 					},
@@ -51,6 +70,12 @@
 						"type": "string"
 					},
 					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"additionalEntries": {
 						"type": "array",
 						"items": {
 							"$ref": "/Entry"

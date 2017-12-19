@@ -14,6 +14,7 @@ fs.readdirSync("./test/schema")
 	.filter(file => file.endsWith(".json")) // ignore directories
 	.forEach(file => {
 	if (file !== helperFile) {
+		console.log(`Testing data/${file}`.padEnd(50), `against schema/${file}`);
 		const result = validator.validate(require(`../data/${file}`), require(`./schema/${file}`));
 		checkHandleError(result);
 		results.push(result);

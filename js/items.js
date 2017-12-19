@@ -346,7 +346,9 @@ function loadhash (id) {
 	const source = item.source;
 	const sourceFull = Parser.sourceJsonToFull(source);
 	$("th#name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
-	$("td#source span").html(`${sourceFull}, page ${item.page}`);
+
+	const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
+	$("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);
 
 	$("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
 	$("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : "");
@@ -393,7 +395,23 @@ function loadhash (id) {
 	const entryList = {type: "entries", entries: item.entries};
 	const renderStack = [];
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
-	$("tr#text").after(`<tr class='text'><td colspan='6' class='text1'>${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>")}</td></tr>`);
+
+	if (item.additionalEntries) {
+		// tools and artisan tools
+		if (type === "T" || type === "AT") {
+			renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
+		}
+
+		const additionEntriesList = {type: "entries", entries: item.additionalEntries};
+		renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
+	}
+
+	$("tr#text").after(`
+		<tr class='text'>
+			<td colspan='6' class='text1'>
+				${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>").split(item.name.toLowerCase().uppercaseFirst()).join("<i>" + item.name.toLowerCase().uppercaseFirst() + "</i>")}
+			</td>
+		</tr>`);
 
 	$(".items span.roller").contents().unwrap();
 	$("#stats span.roller").click(function () {
