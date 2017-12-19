@@ -347,6 +347,15 @@ function loadhash (id) {
 	const sourceFull = Parser.sourceJsonToFull(source);
 	$("th#name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
 
+	const type = item.type || "";
+	if (type === "INS" || type === "GS" || type === "VEH") item.additionalSources = item.additionalSources || [];
+	if (type === "INS") {
+		item.additionalSources.push({ "source": "XGE", "page": 83 })
+	} else if (type === "GS") {
+		item.additionalSources.push({ "source": "XGE", "page": 81 })
+	} else if (type === "VEH") {
+		item.additionalSources.push({ "source": "XGE", "page": 82 })
+	}
 	const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
 	$("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);
 
@@ -358,7 +367,6 @@ function loadhash (id) {
 
 	$("span#damage").html("");
 	$("span#damagetype").html("");
-	const type = item.type || "";
 	if (item.weaponCategory) {
 		if (item.dmg1) $("span#damage").html(utils_makeRoller(item.dmg1));
 		if (item.dmgType) $("span#damagetype").html(Parser.dmgTypeToFull(item.dmgType));
