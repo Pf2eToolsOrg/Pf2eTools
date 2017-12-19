@@ -30,7 +30,7 @@ function onJsonLoad (data) {
 		const name = curfeat.name;
 		const ability = utils_getAbilityData(curfeat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
-		curfeat._fAbility = ability.asCollection; // used when filtering
+		curfeat._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
 		let prereqText = utils_makePrerequisite(curfeat.prerequisite, true);
 		if (!prereqText) prereqText = STR_NONE;
 		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";

@@ -346,7 +346,9 @@ function loadhash (id) {
 	const source = item.source;
 	const sourceFull = Parser.sourceJsonToFull(source);
 	$("th#name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
-	$("td#source span").html(`${sourceFull}, page ${item.page}`);
+
+	const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
+	$("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);
 
 	$("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
 	$("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : "");
@@ -393,7 +395,32 @@ function loadhash (id) {
 	const entryList = {type: "entries", entries: item.entries};
 	const renderStack = [];
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
-	$("tr#text").after(`<tr class='text'><td colspan='6' class='text1'>${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>")}</td></tr>`);
+
+	// tools, artisan tools, instruments, gaming sets, vehicles
+	if (type === "T" || type === "AT" || type === "INS" || type === "GS" || type === "VEH") {
+		renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
+		if (type === "INS") {
+			const additionEntriesList = {type: "entries", entries: TOOL_INS_ADDITIONAL_ENTRIES};
+			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
+		} else if (type === "GS") {
+			const additionEntriesList = {type: "entries", entries: TOOL_GS_ADDITIONAL_ENTRIES};
+			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
+		} else if (type === "VEH") {
+			const additionEntriesList = {type: "entries", entries: TOOL_VEH_ADDITIONAL_ENTRIES};
+			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
+		}
+	}
+	if (item.additionalEntries) {
+		const additionEntriesList = {type: "entries", entries: item.additionalEntries};
+		renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
+	}
+
+	$("tr#text").after(`
+		<tr class='text'>
+			<td colspan='6' class='text1'>
+				${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>").split(item.name.toLowerCase().uppercaseFirst()).join("<i>" + item.name.toLowerCase().uppercaseFirst() + "</i>")}
+			</td>
+		</tr>`);
 
 	$(".items span.roller").contents().unwrap();
 	$("#stats span.roller").click(function () {
@@ -404,3 +431,132 @@ function loadhash (id) {
 		$("div#output span:eq(5)").remove();
 	})
 }
+
+const TOOL_INS_ADDITIONAL_ENTRIES = [
+	"Proficiency with a musical instrument indicates you are familiar with the techniques used to play it. You also have knowledge of some songs commonly performed with that instrument.",
+	{
+		"type": "entries",
+		"name": "History",
+		"entries": [
+			"Your expertise aids you in recalling lore related to your instrument."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Performance",
+		"entries": [
+			"Your ability to put on a good show is improved when you incorporate an instrument into your act."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Compose a Tune",
+		"entries": [
+			"As part of a long rest, you can compose a new tune and lyrics for your instrument. You might use this ability to impress a noble or spread scandalous rumors with a catchy tune."
+		]
+	},
+	{
+		"type": "table",
+		"caption": "Musical Instrument",
+		"colLabels": [
+			"Activity", "DC"
+		],
+		"colStyles": [
+			"col-xs-10",
+			"col-xs-2 text-align-center"
+		],
+		"rows": [
+			["Identify a tune", "10"],
+			["Improvise a tune", "20"]
+		]
+	}
+];
+
+const TOOL_GS_ADDITIONAL_ENTRIES = [
+	"Proficiency with a gaming set applies to one type of game, such as Three-Dragon Ante or games of chance that use dice.",
+	{
+		"type": "entries",
+		"name": "Components",
+		"entries": [
+			"A gaming set has all the pieces needed to play a specific game or type of game, such as a complete deck of cards or a board and tokens."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "History",
+		"entries": [
+			"Your mastery of a game includes knowledge of its history, as well as of important events it was connected to or prominent historical figures involved with it."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Insight",
+		"entries": [
+			"Playing games with someone is a good way to gain understanding of their personality, granting you a better ability to discern their lies from their truths and read their mood."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Sleight of Hand",
+		"entries": [
+			"Sleight of Hand is a useful skill for cheating at a game, as it allows you to swap pieces, palm cards, or alter a die roll. Alternatively, engrossing a target in a game by manipulating the components with dexterous movements is a great distraction for a pickpocketing attempt."
+		]
+	},
+	{
+		"type": "table",
+		"caption": "Gaming Set",
+		"colLabels": [
+			"Activity", "DC"
+		],
+		"colStyles": [
+			"col-xs-10",
+			"col-xs-2 text-align-center"
+		],
+		"rows": [
+			["Catch a player cheating", "15"],
+			["Gain insight into an opponent's personality", "15"]
+		]
+	}
+];
+
+const TOOL_VEH_ADDITIONAL_ENTRIES = [
+	"Proficiency with land vehicles covers a wide range of options, from chariots and howdahs to wagons and carts. Proficiency with water vehicles covers anything that navigates waterways. Proficiency with vehicles grants the knowledge needed to handle vehicles of that type, along with knowledge of how to repair and maintain them.",
+	"In addition, a character proficient with water vehicles is knowledgeable about anything a professional sailor would be familiar with, such as information about the sea and islands, tying knots, and assessing weather and sea conditions.",
+	{
+		"type": "entries",
+		"name": "Arcana",
+		"entries": [
+			"When you study a magic vehicle, this tool proficiency aids you in uncovering lore or determining how the vehicle operates."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Investigation, Perception",
+		"entries": [
+			"When you inspect a vehicle for clues or hidden information, your proficiency aids you in noticing things that others might miss."
+		]
+	},
+	{
+		"type": "entries",
+		"name": "Vehicle Handling",
+		"entries": [
+			"When piloting a vehicle, you can apply your proficiency bonus to the vehicle's AC and saving throws."
+		]
+	},
+	{
+		"type": "table",
+		"caption": "Vehicles",
+		"colLabels": [
+			"Activity", "DC"
+		],
+		"colStyles": [
+			"col-xs-10",
+			"col-xs-2 text-align-center"
+		],
+		"rows": [
+			["Navigate rough terrain or waters", "10"],
+			["Assess a vehicle's condition", "15"],
+			["Take a tight corner at high speed", "20"]
+		]
+	}
+];
