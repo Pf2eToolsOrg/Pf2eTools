@@ -691,7 +691,7 @@ Parser.spRangeToFull = function (range) {
 
 	function renderArea () {
 		const size = range.distance;
-		return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
+		return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()})`;
 
 		function getAreaStyleStr () {
 			return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
