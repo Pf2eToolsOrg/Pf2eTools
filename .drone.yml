@@ -1,22 +1,48 @@
-pipeline: 
-  discord: 
-    image: appleboy/drone-discord
-    message: |-
-        {{ #success build.status }}
-            build {{ build.number }} succeeded. Good job.
-        {{ else }}
-            build {{ build.number }} failed. Fix me please.
-        {{ /success }}
-    secrets: 
-      - discord_webhook_id
-      - discord_webhook_token
-  frontend: 
-    commands: 
-      - "npm install"
-      - "npm test"
-    image: "webhippie/nodejs:latest"
-    when: 
-      event: 
-        - push
-        - pull_request
+workspace:
+  base: /srv/app
+clone:
+  git:
+    image: plugins/git:1
+    depth: 50
+    tags: false
 
+pipeline:
+  Test:
+      image: webhippie/nodejs:latest
+      pull: true
+      commands:
+          - npm install
+          - npm test
+      when:
+          event: [ push, pull_request ]
+  Notify:
+      image: appleboy/drone-discord
+      pull: true
+      secrets: [ discord_webhook_id, discord_webhook_token ]
+      message: Build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ build.link }})
+      when:
+        status: [ success, failure ]
+
+  Deploy-dev:
+    image: appleboy/drone-ssh
+    host: ianthe.rem.uz
+    port: 22
+    user: root
+    secrets: [ ssh_key ]
+    script:
+      - bash /scripts/dev-deploy.sh
+    when:
+      branch: development
+      event: push
+
+  Deploy-prod:
+    image: appleboy/drone-ssh
+    host: ianthe.rem.uz
+    port: 22
+    user: root
+    secrets: [ ssh_key ]
+    script:
+      - bash /scripts/prod-deploy.sh
+    when:
+      branch: master
+      event: push

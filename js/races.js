@@ -29,7 +29,7 @@ function onJsonLoad (data) {
 		const race = raceList[i];
 
 		const ability = utils_getAbilityData(race.ability);
-		race._fAbility = ability.asCollection; // used for filtering
+		race._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
 
 		tempString +=
 			`<li ${FLTR_ID}='${i}'>

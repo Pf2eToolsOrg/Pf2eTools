@@ -376,10 +376,11 @@ function utils_makePrerequisite (prereqList, shorthand, makeAsArray) {
 }
 
 class AbilityData {
-	constructor (asText, asTextShort, asCollection) {
+	constructor (asText, asTextShort, asCollection, areNegative) {
 		this.asText = asText;
 		this.asTextShort = asTextShort;
 		this.asCollection = asCollection;
+		this.areNegative = areNegative;
 	}
 }
 
@@ -387,14 +388,15 @@ function utils_getAbilityData (abObj) {
 	const ABILITIES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
 	const mainAbs = [];
 	const allAbs = [];
+	const negMods = [];
 	const abs = [];
 	const shortAbs = [];
 	if (abObj !== undefined) {
 		handleAllAbilities(abObj);
 		handleAbilitiesChoose();
-		return new AbilityData(abs.join("; "), shortAbs.join("; "), allAbs);
+		return new AbilityData(abs.join("; "), shortAbs.join("; "), allAbs, negMods);
 	}
-	return new AbilityData("", "", []);
+	return new AbilityData("", "", [], []);
 
 	function handleAllAbilities (abilityList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
@@ -404,11 +406,13 @@ function utils_getAbilityData (abObj) {
 
 	function handleAbility (parent, ab) {
 		if (parent[ab.toLowerCase()] !== undefined) {
-			const toAdd = `${ab} ${(parent[ab.toLowerCase()] < 0 ? "" : "+")}${parent[ab.toLowerCase()]}`;
+			const isNegMod = parent[ab.toLowerCase()] < 0;
+			const toAdd = `${ab} ${(isNegMod ? "" : "+")}${parent[ab.toLowerCase()]}`;
 			abs.push(toAdd);
 			shortAbs.push(toAdd);
 			mainAbs.push(ab);
 			allAbs.push(ab.toLowerCase());
+			if (isNegMod) negMods.push(ab.toLowerCase());
 		}
 	}
 
@@ -687,7 +691,7 @@ Parser.spRangeToFull = function (range) {
 
 	function renderArea () {
 		const size = range.distance;
-		return `${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}`;
+		return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()})`;
 
 		function getAreaStyleStr () {
 			return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
@@ -1348,18 +1352,6 @@ function getAsiFilter (options) {
 		displayFn: Parser.attAbvToFull
 	};
 	return getFilterWithMergedOptions(baseOptions, options);
-
-	function filterAsiMatch (valGroup, parsedAsi) {
-		return (valGroup[STR_NONE] && parsedAsi.asText === STR_NONE) ||
-			(valGroup[ABIL_CH_ANY] && parsedAsi.asText.toLowerCase().includes("choose any")) ||
-			parsedAsi.asCollection.filter(a => valGroup[Parser.attAbvToFull(a)]).length > 0;
-	}
-
-	function filterAsiMatchInverted (valGroup, parsedAsi) {
-		return (implies(parsedAsi.asText === STR_NONE, valGroup[STR_NONE])) &&
-			(implies(parsedAsi.asText.toLowerCase().includes("choose any"), valGroup[ABIL_CH_ANY])) &&
-			(parsedAsi.asCollection.filter(a => !valGroup[Parser.attAbvToFull(a)]).length === 0);
-	}
 }
 
 function getFilterWithMergedOptions (baseOptions, addOptions) {
