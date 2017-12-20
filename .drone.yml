@@ -15,14 +15,6 @@ pipeline:
           - npm test
       when:
           event: [ push, pull_request ]
-  Notify:
-      image: appleboy/drone-discord
-      pull: true
-      secrets: [ discord_webhook_id, discord_webhook_token ]
-      message: Build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ build.link }})
-      when:
-        status: [ success, failure ]
-
   Deploy-dev:
     image: appleboy/drone-ssh
     host: ianthe.rem.uz
@@ -46,3 +38,12 @@ pipeline:
     when:
       branch: master
       event: push
+
+  Notify:
+      image: appleboy/drone-discord
+      pull: true
+      secrets: [ discord_webhook_id, discord_webhook_token ]
+      message: Build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ 
+build.link }})
+      when:
+        status: [ success, failure ]
