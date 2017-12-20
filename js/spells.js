@@ -44,7 +44,7 @@ TIME_UNITS_TO_FULL[TM_MINS] = "Minutes";
 TIME_UNITS_TO_FULL[TM_HRS] = "Hours";
 
 const F_RNG_POINT = "Point";
-const F_RNG_AREA = "Area";
+const F_RNG_SELF_AREA = "Self (Area)";
 const F_RNG_SELF = "Self";
 const F_RNG_TOUCH = "Touch";
 const F_RNG_SPECIAL = "Special";
@@ -173,7 +173,7 @@ function getRangeType (range) {
 		case RNG_HEMISPHERE:
 		case RNG_SPHERE:
 		case RNG_CUBE:
-			return F_RNG_AREA
+			return F_RNG_SELF_AREA
 	}
 }
 
@@ -248,7 +248,7 @@ const rangeFilter = new Filter({
 		F_RNG_SELF,
 		F_RNG_TOUCH,
 		F_RNG_POINT,
-		F_RNG_AREA,
+		F_RNG_SELF_AREA,
 		F_RNG_SPECIAL
 	]
 });
