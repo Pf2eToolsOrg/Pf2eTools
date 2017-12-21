@@ -162,9 +162,11 @@ function EntryRenderer () {
 						href = `${this.baseUrl}img/${entry.href.path}`
 					}
 					textStack.push(`
+						<div class="img-wrapper">
 						<a href="${href}" target='_blank' ${entry.title ? `title="${entry.title}"` : ""}>
-							<img src="${href}" >
+							<img src="${href}" onload="EntryRenderer._onImgLoad()">
 						</a>
+						</div>
 					`);
 					renderSuffix();
 					break;
@@ -477,6 +479,10 @@ EntryRenderer.getEntryDice = function (entry) {
 	} else {
 		return toAdd;
 	}
+};
+
+EntryRenderer._onImgLoad = function () {
+	if (typeof onimgload === "function") onimgload()
 };
 
 EntryRenderer.RE_INLINE_CLASS = /(.*?) \((.*?)\)/;

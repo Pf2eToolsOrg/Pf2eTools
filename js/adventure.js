@@ -54,21 +54,24 @@ function hashChange () {
 		document.title = `${fromIndex[0].name} - 5etools`;
 		$(`.adv-header`).html(fromIndex[0].name);
 		$(`.adv-message`).html("Select a chapter on the left, and browse the content on the right");
-		loadAdventure(advId, hashParts);
+		loadAdventure(fromIndex[0], advId, hashParts);
 	} else {
 		throw new Error("No adventure with ID: " + advId);
 	}
 }
 
-function loadAdventure (advId, hashParts) {
+function loadAdventure (fromIndex, advId, hashParts) {
 	loadJSON(`data/adventures/${advId}.json`, function (data) {
-		onAdventureLoad(data, advId, hashParts);
+		onAdventureLoad(data, fromIndex, advId, hashParts);
 	});
 }
 
 const renderer = new EntryRenderer();
 
-function onAdventureLoad (data, advId, hashParts) {
+const curRender = {
+	chapter: -1
+};
+function onAdventureLoad (data, fromIndex, advId, hashParts) {
 	let chapter = 0;
 	let scrollTo;
 	if (hashParts && hashParts.length > 0) chapter = Number(hashParts[0]);
@@ -76,18 +79,16 @@ function onAdventureLoad (data, advId, hashParts) {
 		scrollTo = $(`[href="#${advId},${chapter},${hashParts[1]}"]`).data("header");
 	}
 
-	renderArea.html("");
+	if (curRender.chapter !== chapter) {
+		curRender.chapter = chapter;
+		renderArea.html("");
 
-	renderArea.append(TABLE_START);
-	const textStack = [];
-	renderer.recursiveEntryRender(data[chapter], textStack);
-	renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
-	renderArea.append(TABLE_END);
+		renderArea.append(TABLE_START);
+		const textStack = [];
+		renderer.recursiveEntryRender(data[chapter], textStack);
+		renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
+		renderArea.append(TABLE_END);
 
-	if (scrollTo) {
-		const goTo = $(`span.entry-title:contains(${scrollTo})`);
-		if (goTo[0]) {
-			goTo[0].scrollIntoView();
-		}
+		setTimeout(() => {scrollClick(scrollTo);}, 75)
 	}
 }

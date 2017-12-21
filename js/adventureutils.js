@@ -23,7 +23,7 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 	chapter.headers.forEach(c => {
 		out +=
 			`<li>
-				<a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${encodeForHash(c)}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="scrollClick('${c}')"` : ""}>${c}</a>
+				<a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${encodeForHash(c)}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="scrollClick('${c.replace("'", "\\'")}')"` : ""}>${c}</a>
 			</li>`
 	});
 	out +=
@@ -32,7 +32,7 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 }
 
 function scrollClick (scrollTo) {
-	const goTo = $(`span.entry-title:contains(${scrollTo})`);
+	const goTo = $(`div.statsBlockHead > span.entry-title:contains("${scrollTo}")`);
 	if (goTo[0]) {
 		goTo[0].scrollIntoView();
 	}
