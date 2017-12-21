@@ -261,7 +261,7 @@ function populateTablesAndFilters () {
 	typeFilter.items.sort(ascSort);
 
 	const options = {
-		valueNames: ["name", "source", "type", "rarity"],
+		valueNames: ["name"],
 		listClass: "mundane"
 	};
 
