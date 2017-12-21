@@ -43,7 +43,6 @@ pipeline:
       image: appleboy/drone-discord
       pull: true
       secrets: [ discord_webhook_id, discord_webhook_token ]
-      message: Build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ 
-build.link }})
+      message: 5eTools build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ build.link }})
       when:
         status: [ success, failure ]
