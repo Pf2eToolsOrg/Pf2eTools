@@ -89,6 +89,8 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 		renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
 		renderArea.append(TABLE_END);
 
-		setTimeout(() => {scrollClick(scrollTo);}, 75)
+		setTimeout(() => {
+			scrollClick(scrollTo);
+		}, 75)
 	}
 }
