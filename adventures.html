@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Adventures - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="lib/js-cookie.js"></script>
+	<style id="dynamicStyle"></style> <!-- populated with JS -->
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		#listcontainer > ul > li {
+			max-height: initial;
+		}
+
+		ul.list li:hover {
+			background: inherit;
+		}
+
+		ul.list li:active {
+			color: inherit;
+		}
+
+		ul.list a:hover {
+			background: lightgrey;
+		}
+
+		ul.adventures > li:last-child,
+		ul.adventures > li > ul > ul > li:last-child {
+			border-bottom: none;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="hidden-xs hidden-sm">
+		<div class="container">
+
+			<h1>Adventures</h1>
+			<p>Browse adventures by name and contents</p>
+		</div>
+	</header>
+	<nav class="container" id="navigation">
+		<ul class="nav nav-pills" id="navbar">
+		</ul>
+	</nav>
+
+		<div class="container view-col-wrapper">
+			<div class="view-col" id="listcontainer">
+				<div class="input-group">
+					<input type="search" id="search" class="search form-control" placeholder="Find adventure...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="reset">Reset</button>
+					</span>
+				</div>
+
+				<ul class="list adventures">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+		</div>
+
+		<footer class="container"></footer>
+
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/adventureutils.js"></script>
+		<script type="text/javascript" src="js/adventures.js"></script>
+		<script type="text/javascript" src="lib/list.js"></script>
+		<script type="text/javascript" src="lib/jquery.js"></script>
+		<script type="text/javascript" src="lib/bootstrap.js"></script>
+
+</body>
+</html>
