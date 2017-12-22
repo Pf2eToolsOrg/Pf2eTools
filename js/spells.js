@@ -294,7 +294,15 @@ function handleFilterChange () {
 		const f = filterBox.getValues();
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
-		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
+		const classAndSubclassData = {};
+		classAndSubclassData[classFilter.header] = Object.assign({}, f[subclassFilter.header], f[classFilter.header]);
+		classAndSubclassData[classFilter.header]._totals = {
+			yes: f[classFilter.header]._totals.yes + f[subclassFilter.header]._totals.yes,
+			no: f[classFilter.header]._totals.no + f[subclassFilter.header]._totals.no,
+			ignored: f[classFilter.header]._totals.ignored + f[subclassFilter.header]._totals.ignored,
+		};
+
+		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(classAndSubclassData, s._fClasses.concat(s._fSubclasses));
 	});
 }
 
