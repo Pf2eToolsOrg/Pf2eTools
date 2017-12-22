@@ -35,12 +35,23 @@ body {
 }
 
 header {
-	margin-bottom: 3px;
-	padding: 0 15px;
+	margin-bottom: 2px;
+	padding: 2px 15px;
 }
 
 header h1 {
-	margin-top: 3px;
+	margin-right: 10px;
+	display: inline;
+}
+
+header h1::after {
+	content: ".";
+}
+
+header p {
+	display: inline;
+	font-style: italic;
+	color: #d0d0d0;
 }
 
 .viewport-wrapper {
