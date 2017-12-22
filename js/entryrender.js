@@ -92,6 +92,15 @@ function EntryRenderer () {
 					}
 					textStack.push(`</${this.wrapperTag}>`);
 					break;
+				case "insetReadaloud":
+					textStack.push(`<${this.wrapperTag} class="statsBlockInsetReadaloud">`);
+					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title">${entry.name}</span>`);
+					for (let i = 0; i < entry.entries.length; i++) {
+						this.recursiveEntryRender(entry.entries[i], textStack, 2, "<p>", "</p>");
+					}
+					textStack.push(`</${this.wrapperTag}>`);
+					break;
+
 				case "invocation":
 					handleInvocation(this);
 					break;
@@ -147,14 +156,17 @@ function EntryRenderer () {
 				// images
 				case "image": {
 					renderPrefix();
+					if (entry.title) textStack.push(`<div class="img-title">${entry.title}</div>`);
 					let href;
 					if (entry.href.type === "internal") {
 						href = `${this.baseUrl}img/${entry.href.path}`
 					}
 					textStack.push(`
-						<a href="${href}" target='_blank'>
-							<img src="${href}" >
+						<div class="img-wrapper">
+						<a href="${href}" target='_blank' ${entry.title ? `title="${entry.title}"` : ""}>
+							<img src="${href}" onload="EntryRenderer._onImgLoad()">
 						</a>
+						</div>
 					`);
 					renderSuffix();
 					break;
@@ -330,8 +342,15 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action") {
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action" || tag === "@link") { // FIXME remove "@link"
 						switch (tag) {
+							// FIXME remove "@link"
+							case "@link":
+								textStack.push(`<u>`);
+								self.recursiveEntryRender(text, textStack, depth);
+								textStack.push(`</u>`);
+								break;
+
 							case "@b":
 							case "@bold":
 								textStack.push(`<b>`);
@@ -460,6 +479,10 @@ EntryRenderer.getEntryDice = function (entry) {
 	} else {
 		return toAdd;
 	}
+};
+
+EntryRenderer._onImgLoad = function () {
+	if (typeof onimgload === "function") onimgload()
 };
 
 EntryRenderer.RE_INLINE_CLASS = /(.*?) \((.*?)\)/;
