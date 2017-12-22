@@ -622,11 +622,25 @@ class FilterItem {
 }
 
 class MultiFilter {
+	/**
+	 * A group of multiple `Filter`s, which are OR'd together
+	 * @param categoryName a prefix to display before the filter headers
+	 * @param filters the list of filters
+	 */
 	constructor (categoryName, ...filters) {
 		this.categoryName = categoryName;
 		this.filters = filters;
 	}
 
+	/**
+	 * For each `toChecks` tc, calls `Filter.toDisplay(valObj, tc)` and OR's the result, returning it. See the
+	 * `Filter.toDisplay` docs.
+	 * @param valObj `FilterBox.getValues()` returned object
+	 * @param toChecks a list of objects to pass to the underlying filters, which must be the same length as the number
+	 * of filters
+	 * @returns {boolean} OR'd results of the underling `Filter.toDisplay` results
+	 * @throws an error if the `toChecks` list did not match the length of `this.filters`
+	 */
 	toDisplay (valObj, ...toChecks) {
 		if (this.filters.length !== toChecks.length) throw new Error("Number of filters and number of toChecks did not match");
 		for (let i = 0; i < this.filters.length; ++i) {
