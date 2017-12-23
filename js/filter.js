@@ -643,10 +643,19 @@ class MultiFilter {
 	 */
 	toDisplay (valObj, ...toChecks) {
 		if (this.filters.length !== toChecks.length) throw new Error("Number of filters and number of toChecks did not match");
+		const results = [];
 		for (let i = 0; i < this.filters.length; ++i) {
-			if (this.filters[i].toDisplay(valObj, toChecks[i])) return true;
+			const f = this.filters[i];
+			const totals = valObj[f.header]._totals;
+
+			if (totals.yes === 0 && totals.no === 0) results.push(null);
+			else {
+				results.push(this.filters[i].toDisplay(valObj, toChecks[i]));
+			}
 		}
-		return false;
+		const resultsFilt = results.filter(r => r !== null);
+		if (!resultsFilt.length) return true;
+		return resultsFilt.find(r => r);
 	}
 }
 
