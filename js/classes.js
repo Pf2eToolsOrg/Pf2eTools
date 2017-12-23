@@ -417,7 +417,7 @@ function loadsub (sub) {
 		);
 
 		if ($toShow.length === 0) {
-			displayAllSubclasses();
+			hideAllSubclasses();
 		} else {
 			const otherSrcSubFeat = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
 			const shownInTable = [];
@@ -557,25 +557,6 @@ function loadsub (sub) {
 		$(`[data-subclass-list]`).each(
 			function () {
 				$(this).hide();
-			}
-		);
-	}
-
-	function displayAllSubclasses () {
-		updateClassTableLinks();
-		$(`.${CLSS_SUBCLASS_PILL}`).addClass(CLSS_ACTIVE);
-		$(`.${CLSS_SUBCLASS_FEATURE}`).show();
-		$(`.${CLSS_SUBCLASS_PREFIX}`).show();
-		$(`div.${CLSS_NON_STANDARD_SOURCE}`).show();
-		// if we're hiding features from some sources, make sure these stay hidden
-		if (hideOtherSources) {
-			$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
-		}
-		// show all table col groups
-		// TODO add handling for non-standard sources if UA non-caster->caster subclass are introduced
-		$(`[data-subclass-list]`).each(
-			function () {
-				$(this).show();
 			}
 		);
 	}
