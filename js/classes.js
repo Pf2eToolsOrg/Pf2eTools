@@ -552,7 +552,7 @@ function loadsub (sub) {
 		if (hideOtherSources) {
 			$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
 		}
-		// show all table col groups
+		// hide all table col groups
 		// TODO add handling for non-standard sources if UA non-caster->caster subclass are introduced
 		$(`[data-subclass-list]`).each(
 			function () {
