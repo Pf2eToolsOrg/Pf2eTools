@@ -61,7 +61,7 @@ function hashChange () {
 }
 
 function loadAdventure (fromIndex, advId, hashParts) {
-	loadJSON(`data/adventures/adventure-${advId}.json`, function (data) {
+	loadJSON(`data/adventure/adventure-${advId}.json`, function (data) {
 		onAdventureLoad(data.data, fromIndex, advId, hashParts);
 	});
 }

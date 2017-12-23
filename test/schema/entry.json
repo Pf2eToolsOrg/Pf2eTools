@@ -24,6 +24,27 @@
 			]
 		},
 
+		"entrySection": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "section"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryEntries": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
@@ -373,7 +394,7 @@
 							}
 						}
 					},
-					"required": ["name", "entries"],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -427,9 +448,6 @@
 										"type": {"const": "internal"},
 										"path": {
 											"type": "string"
-										},
-										"title": {
-											"type": "string"
 										}
 									},
 									"required": ["path"],
@@ -446,6 +464,9 @@
 									"additionalProperties": false
 								}
 							]
+						},
+						"title": {
+							"type": "string"
 						}
 					},
 					"required": ["href"],
@@ -456,6 +477,7 @@
 	},
 
 	"anyOf": [
+		{"$ref": "#/definitions/entrySection"},
 		{"$ref": "#/definitions/entryEntries"},
 		{"$ref": "#/definitions/entryInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
