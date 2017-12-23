@@ -26,7 +26,7 @@ function onJsonLoad (data) {
 		const adv = adventures[i];
 
 		tempString +=
-			`<li>
+			`<li class="adventure-contents-item" data-adventureid="${adv.id}">
 				<a id="${i}" href='#${adv.id},0' title='${adv.name}'>
 					<span class='name'>${adv.name}</span> 
 				</a>
@@ -62,6 +62,9 @@ function hashChange () {
 
 function loadAdventure (fromIndex, advId, hashParts) {
 	loadJSON(`data/adventure/adventure-${advId}.json`, function (data) {
+		const allContents = $(`.adventure-contents-item`);
+		allContents.filter(`[data-adventureid="${advId}"]`).show();
+		allContents.filter(`[data-adventureid!="${advId}"]`).hide();
 		onAdventureLoad(data.data, fromIndex, advId, hashParts);
 	});
 }
