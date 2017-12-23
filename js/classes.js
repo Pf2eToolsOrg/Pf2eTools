@@ -461,13 +461,15 @@ function loadsub (sub) {
 
 	// hide class features as required
 	const cfToggle = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
-	let toToggleCf = $(`.${CLSS_CLASS_FEATURE}`);
+	const allCf = $(`.${CLSS_CLASS_FEATURE}`);
+	const toToggleCf = allCf.not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
 	const isHideClassFeatures = hideClassFeatures !== null && hideClassFeatures;
 	// if showing no subclass and hiding class features, hide the "gain a feature at this level" labels
-	if (isHideClassFeatures && subclasses !== null) toToggleCf = toToggleCf.not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
 	if (isHideClassFeatures && subclasses === null) {
+		allCf.hide();
 		$(`#please-select-message`).addClass("showing");
 	} else {
+		allCf.show();
 		$(`#please-select-message`).removeClass("showing");
 	}
 	if (isHideClassFeatures) {
