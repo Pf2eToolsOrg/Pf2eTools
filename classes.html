@@ -29,6 +29,25 @@
 		table#stats > tbody > tr > td {
 			padding: 0 0.8em;
 		}
+
+		#please-select-message {
+			height: 10px;
+		}
+
+		#please-select-message.showing > td {
+			height: 40px;
+			color: #922610;
+			font-family: 'Andada', serif;
+			font-variant: small-caps;
+			font-weight: 500;
+			line-height: 2.3em;
+			text-align: center;
+			font-size: 1.8em;
+		}
+
+		#please-select-message.showing > td::after {
+			content: "Toggle a button to view class and subclass information";
+		}
 	</style>
 </head>
 
@@ -262,7 +281,7 @@
 
 					<!-- populate with JS -->
 
-					<tr style="height: 10px;"></tr> <!-- high quality layout code-->
+					<tr id="please-select-message"><td colspan="6"></td></tr>
 					<tr><th class="border" colspan="6"></th></tr>
 				</table>
 
