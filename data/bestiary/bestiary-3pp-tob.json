@@ -3308,7 +3308,7 @@
 			]
 		},
 		{
-			"name": "Baba Yaga's Horsemen",
+			"name": "Baba Yaga's Horsemen (Bright Day)",
 			"size": "M",
 			"type": "fey",
 			"source": "ToB 3pp",
@@ -3329,7 +3329,8 @@
 				"history": "+7",
 				"perception": "+8"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"senses": "darkvision 60 ft.",
+			"resist": "cold, fire; bludgeoning, piercing, and slashing from nonmagical weapons",
 			"immune": "lightning, poison",
 			"conditionImmune": "exhaustion, paralyzed, poisoned",
 			"passive": "18",
@@ -3340,7 +3341,9 @@
 					"name": "Innate Spellcasting",
 					"text": [
 						" The horseman is a 12th-level spellcaster. Its spellcasting ability is Charisma (save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+						"At will: sacred flame",
 						"1/day each: dimension door, fire shield, haste, slow",
+						"2/day each: continual flame, scorching ray",
 						"3/day each: ethereal jaunt, phantom steed (appears as a horse colored appropriately to the horseman), plane shift (self and steed only)"
 					]
 				},
@@ -3365,13 +3368,194 @@
 				{
 					"name": "The Three Horsemen",
 					"text": [
-						" Each horseman has unique senses, defenses, and special abilities. Add the appropriate traits to the base horseman traits for each of the horsemen as follows.",
-						"- Bright Day. The horseman gains darkvision 60 ft., resistance to cold and fire, and the following innate spells: At will: sacred flame",
-						"2/day: daylight",
-						"- Red Sun. The horseman gains immunity to being blinded, charmed, and frightened, immunity to fire, and the following innate spells:",
+						"Each horseman has unique senses, defenses, and special abilities."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						" The horseman makes three attacks with its lance or longsword. It can use Temporal Strike with one of these attacks when it is available."
+					]
+				},
+				{
+					"name": "Lance",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 10 ft. (disadvantage within 5 ft.), one target. Hit: 12 (1d12+6) piercing damage."
+					]
+				},
+				{
+					"name": "Longsword",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 10 (1d8+6) slashing damage."
+					]
+				},
+				{
+					"name": "Temporal Strike (recharge 5-6)",
+					"text": [
+						" When the horseman strikes a target with a melee attack, in addition to taking normal damage, the target must succeed on a DC 17 Constitution saving throw or instantly age 3d10 years. A creature that ages this way has disadvantage on attack rolls, ability checks, and saving throws based on Strength, Dexterity, and Constitution until the aging is reversed. A creature that ages beyond its lifespan dies immediately. The aging reverses automatically after 24 hours, or it can be reversed magically by greater restoration or comparable magic. A creature that succeeds on the save is immune to the temporal strike effect for 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Baba Yaga's Horsemen (Red Sun)",
+			"size": "M",
+			"type": "fey",
+			"source": "ToB 3pp",
+			"alignment": "lawful neutral",
+			"ac": "20 (plate and shield)",
+			"hp": "171 (18d8+90)",
+			"speed": "30 ft.",
+			"str": "22",
+			"dex": "11",
+			"con": "21",
+			"int": "16",
+			"wis": "18",
+			"cha": "18",
+			"save": "Dex +4, Wis +8",
+			"skill": {
+				"arcana": "+7",
+				"athletics": "+10",
+				"history": "+7",
+				"perception": "+8"
+			},
+			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"immune": "fire, lightning, poison",
+			"conditionImmune": "blinded, charmed, exhaustion, frightened, paralyzed, poisoned",
+			"passive": "18",
+			"languages": "Celestial, Common, Infernal; telepathy 100 ft.",
+			"cr": "11",
+			"trait": [
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						" The horseman is a 12th-level spellcaster. Its spellcasting ability is Charisma (save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+						"1/day each: dimension door, fire shield, haste, slow",
 						"2/day each: continual flame, scorching ray",
-						"- Black Night. The horseman can see perfectly in normal and magical darkness, gains immunity to cold, and the following innate spells:",
-						"At will: ray of frost 2/day: darkness"
+						"3/day each: ethereal jaunt, phantom steed (appears as a horse colored appropriately to the horseman), plane shift (self and steed only)"
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"text": [
+						" The horseman has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Peerless Rider",
+					"text": [
+						" Any attacks directed at the horseman's mount targets the horseman instead. Its mount gains the benefit of the rider's damage and condition immunities, and if the horseman passes a saving throw against an area effect, the mount takes no damage."
+					]
+				},
+				{
+					"name": "Quick Draw",
+					"text": [
+						" The horseman can switch between wielding its lance and longsword as a bonus action."
+					]
+				},
+				{
+					"name": "The Three Horsemen",
+					"text": [
+						"Each horseman has unique senses, defenses, and special abilities."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						" The horseman makes three attacks with its lance or longsword. It can use Temporal Strike with one of these attacks when it is available."
+					]
+				},
+				{
+					"name": "Lance",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 10 ft. (disadvantage within 5 ft.), one target. Hit: 12 (1d12+6) piercing damage."
+					]
+				},
+				{
+					"name": "Longsword",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 10 (1d8+6) slashing damage."
+					]
+				},
+				{
+					"name": "Temporal Strike (recharge 5-6)",
+					"text": [
+						" When the horseman strikes a target with a melee attack, in addition to taking normal damage, the target must succeed on a DC 17 Constitution saving throw or instantly age 3d10 years. A creature that ages this way has disadvantage on attack rolls, ability checks, and saving throws based on Strength, Dexterity, and Constitution until the aging is reversed. A creature that ages beyond its lifespan dies immediately. The aging reverses automatically after 24 hours, or it can be reversed magically by greater restoration or comparable magic. A creature that succeeds on the save is immune to the temporal strike effect for 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Baba Yaga's Horsemen (Black Night)",
+			"size": "M",
+			"type": "fey",
+			"source": "ToB 3pp",
+			"alignment": "lawful neutral",
+			"ac": "20 (plate and shield)",
+			"hp": "171 (18d8+90)",
+			"speed": "30 ft.",
+			"str": "22",
+			"dex": "11",
+			"con": "21",
+			"int": "16",
+			"wis": "18",
+			"cha": "18",
+			"save": "Dex +4, Wis +8",
+			"skill": {
+				"arcana": "+7",
+				"athletics": "+10",
+				"history": "+7",
+				"perception": "+8"
+			},
+			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"immune": "cold, lightning, poison",
+			"conditionImmune": "exhaustion, paralyzed, poisoned",
+			"passive": "18",
+			"languages": "Celestial, Common, Infernal; telepathy 100 ft.",
+			"cr": "11",
+			"trait": [
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						" The horseman is a 12th-level spellcaster. Its spellcasting ability is Charisma (save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+						"At will: ray of frost",
+						"1/day each: dimension door, fire shield, haste, slow",
+						"2/day: darkness",
+						"3/day each: ethereal jaunt, phantom steed (appears as a horse colored appropriately to the horseman), plane shift (self and steed only)"
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"text": [
+						" The horseman has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Peerless Rider",
+					"text": [
+						" Any attacks directed at the horseman's mount targets the horseman instead. Its mount gains the benefit of the rider's damage and condition immunities, and if the horseman passes a saving throw against an area effect, the mount takes no damage."
+					]
+				},
+				{
+					"name": "Quick Draw",
+					"text": [
+						" The horseman can switch between wielding its lance and longsword as a bonus action."
+					]
+				},
+				{
+					"name": "The Three Horsemen",
+					"text": [
+						"Each horseman has unique senses, defenses, and special abilities."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"text": [
+						"The horseman can see perfectly in normal and magical darkness."
 					]
 				}
 			],
