@@ -57,7 +57,20 @@
 			position: sticky;
 			top: 0;
 			overflow-y: auto;
-			max-height: 80vh;
+			max-height: 100vh;
+		}
+
+		li.adventure-contents-item > ul > li {
+			font-weight: bold;
+		}
+
+		li.adventure-contents-item > ul > li.active,
+		li.adventure-contents-item > ul > ul.active > li > a {
+			background: #f0f0f0;
+		}
+
+		li.adventure-contents-item > ul > ul.active > li > a:hover {
+			background: lightgrey;
 		}
 
 		.initial-message {
@@ -96,7 +109,7 @@
 			<!-- populate with JS -->
 		</ul>
 	</div>
-	<div class="view-col" style="flex: 6">
+	<div class="view-col" style="flex: 5">
 		<table id="stats" class="stats">
 			<!-- populate with JS -->
 		</table>
