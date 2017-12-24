@@ -8,13 +8,18 @@ function makeContentsBlock (adv, addPrefix, addOnclick) {
 
 	adv.contents.forEach((c, i) => {
 		out +=
-			`<li><a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}" ${addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>${(c.part ? `Part ${c.part} \u2014 ` : c.episode ? `Episode ${c.episode}: ` : "")}${c.name}</a></li>`;
+			`<li><a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}" ${addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>${getOrdinalText(c.ordinal)}${c.name}</a></li>`;
 		out += makeHeadersBlock(adv.id, i, c, addPrefix, addOnclick);
 	});
 
 	out +=
 		"</ul>";
 	return out;
+
+	function getOrdinalText (ordinal) {
+		if (ordinal === undefined) return "";
+		return `${ordinal.type === "part" ? `Part ${ordinal.number} \u2014 ` : `Episode ${ordinal.number}: `}`;
+	}
 }
 
 function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) {
