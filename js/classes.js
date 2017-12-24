@@ -258,8 +258,9 @@ function loadhash (id) {
 		subclassPillWrapper.append(pill);
 	}
 
-	// if this is a UA class, toggle the "All Sources" button
+	// if this is a UA class, toggle the "All Sources" button (this will call loadsub)
 	if (isUaClass) allSourcesToggle.click();
+	else (loadsub("")); // otherwise call loadsub with a blank sub-hash
 
 	// helper functions
 	function makeGenericTogglePill (pillText, pillActiveClass, pillId, hashKey, defaultActive) {
@@ -416,7 +417,7 @@ function loadsub (sub) {
 		);
 
 		if ($toShow.length === 0) {
-			displayAllSubclasses();
+			hideAllSubclasses();
 		} else {
 			const otherSrcSubFeat = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
 			const shownInTable = [];
@@ -455,13 +456,23 @@ function loadsub (sub) {
 			$(`.${CLSS_SUBCLASS_PREFIX}`).hide();
 		}
 	} else {
-		displayAllSubclasses();
+		hideAllSubclasses();
 	}
 
 	// hide class features as required
 	const cfToggle = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
-	const toToggleCf = $(`.${CLSS_CLASS_FEATURE}`).not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
-	if (hideClassFeatures !== null && hideClassFeatures) {
+	const allCf = $(`.${CLSS_CLASS_FEATURE}`);
+	const toToggleCf = allCf.not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
+	const isHideClassFeatures = hideClassFeatures !== null && hideClassFeatures;
+	// if showing no subclass and hiding class features, hide the "gain a feature at this level" labels
+	if (isHideClassFeatures && subclasses === null) {
+		allCf.hide();
+		$(`#please-select-message`).addClass("showing");
+	} else {
+		allCf.show();
+		$(`#please-select-message`).removeClass("showing");
+	}
+	if (isHideClassFeatures) {
 		cfToggle.removeClass(CLSS_CLASS_FEATURES_ACTIVE);
 		toToggleCf.hide();
 	} else {
@@ -531,21 +542,21 @@ function loadsub (sub) {
 		)
 	}
 
-	function displayAllSubclasses () {
+	function hideAllSubclasses () {
 		updateClassTableLinks();
-		$(`.${CLSS_SUBCLASS_PILL}`).addClass(CLSS_ACTIVE);
-		$(`.${CLSS_SUBCLASS_FEATURE}`).show();
-		$(`.${CLSS_SUBCLASS_PREFIX}`).show();
-		$(`div.${CLSS_NON_STANDARD_SOURCE}`).show();
+		$(`.${CLSS_SUBCLASS_PILL}`).removeClass(CLSS_ACTIVE);
+		$(`.${CLSS_SUBCLASS_FEATURE}`).hide();
+		$(`.${CLSS_SUBCLASS_PREFIX}`).hide();
+		$(`div.${CLSS_NON_STANDARD_SOURCE}`).hide();
 		// if we're hiding features from some sources, make sure these stay hidden
 		if (hideOtherSources) {
 			$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
 		}
-		// show all table col groups
+		// hide all table col groups
 		// TODO add handling for non-standard sources if UA non-caster->caster subclass are introduced
 		$(`[data-subclass-list]`).each(
 			function () {
-				$(this).show();
+				$(this).hide();
 			}
 		);
 	}

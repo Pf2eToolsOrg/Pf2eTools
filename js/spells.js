@@ -225,6 +225,7 @@ const sourceFilter = getSourceFilter();
 const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
 const classFilter = new Filter({header: "Class"});
 const subclassFilter = new Filter({header: "Subclass"});
+const classAndSubclassFilter = new MultiFilter("Classes", classFilter, subclassFilter);
 const metaFilter = new Filter({
 	header: "Tag",
 	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
@@ -255,8 +256,7 @@ const rangeFilter = new Filter({
 const filterBox = initFilterBox(
 	sourceFilter,
 	levelFilter,
-	classFilter,
-	subclassFilter,
+	classAndSubclassFilter,
 	metaFilter,
 	schoolFilter,
 	timeFilter,
@@ -294,7 +294,7 @@ function handleFilterChange () {
 		const f = filterBox.getValues();
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
-		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classFilter.toDisplay(f, s._fClasses) && subclassFilter.toDisplay(f, s._fSubclasses);
+		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
 	});
 }
 
