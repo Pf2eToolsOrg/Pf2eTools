@@ -4,7 +4,7 @@ const CONTENTS_URL = "data/adventures.json";
 
 function makeContentsBlock (adv, addPrefix, addOnclick) {
 	let out =
-		"<ul>";
+		`<ul class="adv-contents">`;
 
 	adv.contents.forEach((c, i) => {
 		out +=
@@ -24,7 +24,7 @@ function makeContentsBlock (adv, addPrefix, addOnclick) {
 
 function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) {
 	let out =
-		"<ul>";
+		`<ul class="adv-headers">`;
 	chapter.headers.forEach(c => {
 		out +=
 			`<li>

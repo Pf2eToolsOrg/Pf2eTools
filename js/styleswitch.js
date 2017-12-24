@@ -115,6 +115,15 @@ div#subclasses>span {
 tr.trait td {
 	color: black !important;
 }
+
+li.adventure-contents-item > ul > li.active,
+li.adventure-contents-item > ul > ul.active > li > a {
+	background: #f0f0f0;
+}
+
+li.adventure-contents-item > ul > ul.active > li > a:hover {
+	background: lightgrey;
+}
 `;
 const NIGHT_CSS =
 	`
@@ -266,24 +275,39 @@ table#stats td._class_feature table th {
 #rulescontent table tbody tr:nth-child(odd) td,
 ul.list li:nth-child(odd),
 ul.list.encounters > li > ul > li:nth-child(odd),
-#monsterfeatures tr:nth-child(odd) {
+ul.list.names > li > ul > li:nth-child(odd),
+#monsterfeatures tr:nth-child(odd),
+ul.adv-headers li:nth-child(odd) {
 	background: rgba(0, 0, 0, 0.31);
 }
 
-ul.list.encounters > li > span:first-child {
+li.adventure-contents-item > ul > li.active,
+li.adventure-contents-item > ul > ul.active > li > a {
+	background: #303030;
+}
+
+ul.list.encounters > li > span:first-child,
+ul.list.names > li > span:first-child {
 	color: #999;
 }
 
 ul.list.encounters > li > ul > li > a:hover,
+ul.list.names > li > ul > li > a:hover,
+ul.adv-contents > li > a:hover,
+ul.adv-headers > li > a:hover,
+li.adventure-contents-item > ul > ul.active > li > a:hover,
 ul.list li:nth-child(odd):hover {
 	background: black;
 }
 
-ul.list.encounters li:nth-child(odd) {
+ul.list.encounters li:nth-child(odd),
+ul.list.names li:nth-child(odd),
+ul.adv-contents > li:nth-child(odd) {
 	background: none;
 }
 
-ul.list.encounters li:nth-child(odd):hover {
+ul.list.encounters li:nth-child(odd):hover,
+ul.list.names li:nth-child(odd):hover {
 	background: none;
 }
 
