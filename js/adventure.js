@@ -75,7 +75,6 @@ function hashChange () {
 let allContents;
 let thisContents;
 function loadAdventure (fromIndex, advId, hashParts) {
-
 	if (adventureContent[advId] !== undefined) {
 		handle(adventureContent[advId]);
 	} else {
