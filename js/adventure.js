@@ -21,6 +21,14 @@ function onJsonLoad (data) {
 	adventures = data.adventure;
 
 	const adventuresList = $("ul.contents");
+	adventuresList.append($(`
+		<li>
+			<a href='adventures.html'>
+				<span class='name'>\u21FD All Adventures</span> 
+			</a>
+		</li>
+	`));
+
 	let tempString = "";
 	for (let i = 0; i < adventures.length; i++) {
 		const adv = adventures[i];
