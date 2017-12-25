@@ -88,7 +88,7 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 
 	if (curRender.chapter !== chapter || curRender.curAdvId !== advId) {
 		thisContents.children(`ul`).children(`ul, li`).removeClass("active");
-		thisContents.children(`ul`).children(`li:nth-of-type(${chapter+1}), ul:nth-of-type(${chapter+1})`).addClass("active");
+		thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
 
 		curRender.curAdvId = advId;
 		curRender.chapter = chapter;
