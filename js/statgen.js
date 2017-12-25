@@ -58,8 +58,9 @@ function prevent () {
 }
 
 window.onhashchange = function hashchange () {
-	const hash = window.location.hash.slice(1);
+	let hash = window.location.hash.slice(1);
 	$(".statmethod").hide();
+	if (hash === "") hash = "rolled";
 	$("#" + hash).show();
 };
 
