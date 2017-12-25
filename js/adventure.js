@@ -127,6 +127,10 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 				scrollClick(scrollTo);
 			}, 75)
 		}
+	} else {
+		if (hashParts.length <= 1) {
+			$(window).scrollTop(0);
+		}
 	}
 }
 
