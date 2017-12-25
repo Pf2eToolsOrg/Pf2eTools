@@ -3,6 +3,7 @@
 let renderArea;
 
 let adventures;
+const adventureContent = {};
 
 const TABLE_START = `<tr><th class="border" colspan="6"></th></tr>`;
 const TABLE_END = `<tr><th class="border" colspan="6"></th></tr>`;
@@ -74,13 +75,23 @@ function hashChange () {
 let allContents;
 let thisContents;
 function loadAdventure (fromIndex, advId, hashParts) {
-	loadJSON(`data/adventure/adventure-${advId}.json`, function (data) {
+
+	if (adventureContent[advId] !== undefined) {
+		handle(adventureContent[advId]);
+	} else {
+		loadJSON(`data/adventure/adventure-${advId}.json`, function (data) {
+			adventureContent[advId] = data.data;
+			handle(data.data);
+		});
+	}
+
+	function handle (data) {
 		allContents = $(`.adventure-contents-item`);
 		thisContents = allContents.filter(`[data-adventureid="${advId}"]`);
 		thisContents.show();
 		allContents.filter(`[data-adventureid!="${advId}"]`).hide();
-		onAdventureLoad(data.data, fromIndex, advId, hashParts);
-	});
+		onAdventureLoad(data, fromIndex, advId, hashParts);
+	}
 }
 
 const renderer = new EntryRenderer();
@@ -111,9 +122,11 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 		renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
 		renderArea.append(TABLE_END);
 
-		setTimeout(() => {
-			scrollClick(scrollTo);
-		}, 75)
+		if (scrollTo) {
+			setTimeout(() => {
+				scrollClick(scrollTo);
+			}, 75)
+		}
 	}
 }
 
