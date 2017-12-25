@@ -2,13 +2,17 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
-function makeContentsBlock (adv, addPrefix, addOnclick) {
+function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
 	let out =
-		`<ul class="adv-contents">`;
+		`<ul class="adv-contents" ${defaultHidden ? `style="display: none;"` : ""}>`;
 
 	adv.contents.forEach((c, i) => {
 		out +=
-			`<li><a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}" ${addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>${getOrdinalText(c.ordinal)}${c.name}</a></li>`;
+			`<li>
+				<a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}" ${addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>
+					<span class="sect">${getOrdinalText(c.ordinal)}${c.name}</span>
+				</a>
+			</li>`;
 		out += makeHeadersBlock(adv.id, i, c, addPrefix, addOnclick);
 	});
 

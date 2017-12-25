@@ -18,6 +18,10 @@
 	<script type="text/javascript" src="js/navigation.js"></script>
 
 	<style>
+		body {
+			overflow-y: scroll;
+		}
+
 		#listcontainer > ul > li {
 			max-height: initial;
 		}
@@ -30,13 +34,23 @@
 			color: inherit;
 		}
 
-		ul.list a:hover {
-			background: lightgrey;
-		}
-
 		ul.adventures > li:last-child,
 		ul.adventures > li > ul > ul > li:last-child {
 			border-bottom: none;
+		}
+
+		ul.list li:hover span {
+			display: initial;
+		}
+
+		#listcontainer .list a.adv-name {
+			display: flex;
+			justify-content: space-between;
+			padding: 0;
+		}
+
+		span.name {
+			width: 100%;
 		}
 	</style>
 </head>
