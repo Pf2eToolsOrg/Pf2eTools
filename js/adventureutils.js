@@ -2,9 +2,9 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
-function makeContentsBlock (adv, addPrefix, addOnclick) {
+function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
 	let out =
-		`<ul class="adv-contents">`;
+		`<ul class="adv-contents" ${defaultHidden ? `style="display: none;"` : ""}>`;
 
 	adv.contents.forEach((c, i) => {
 		out +=

@@ -16,16 +16,16 @@ function onJsonLoad (data) {
 
 		tempString +=
 			`<li>
-				<a href='adventure.html#${adv.id}' title='${adv.name}'>
-					<span class='name'>${adv.name}</span> 
+				<a href='adventure.html#${adv.id}' title='${adv.name}' class="adv-name">
+					<span class='name'>${adv.name}</span> <span class="showhide" onclick="advToggle(event, this)" data-hidden="true">[+]</span> <span class="source" style="display: none">${adv.id}</span>
 				</a>
-				${makeContentsBlock(adv, true, false)}
+				${makeContentsBlock(adv, true, false, true)}
 			</li>`;
 	}
 	adventuresList.append(tempString);
 
 	const list = new List("listcontainer", {
-		valueNames: ['name'],
+		valueNames: ['name', 'source'],
 		listClass: "adventures"
 	});
 
@@ -36,4 +36,20 @@ function onJsonLoad (data) {
 		list.sort("name");
 		list.filter();
 	});
+}
+
+function advToggle (evt, ele) {
+	evt.stopPropagation();
+	evt.preventDefault();
+	const $ele = $(ele);
+	const $childList = $ele.closest(`li`).find(`ul.adv-contents`);
+	if ($ele.data("hidden")) {
+		$childList.show();
+		$ele.data("hidden", false);
+		$ele.html(`[\u2013]`);
+	} else {
+		$childList.hide();
+		$ele.data("hidden", true);
+		$ele.html(`[+]`);
+	}
 }

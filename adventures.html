@@ -18,6 +18,10 @@
 	<script type="text/javascript" src="js/navigation.js"></script>
 
 	<style>
+		body {
+			overflow-y: scroll;
+		}
+
 		#listcontainer > ul > li {
 			max-height: initial;
 		}
@@ -37,6 +41,21 @@
 		ul.adventures > li:last-child,
 		ul.adventures > li > ul > ul > li:last-child {
 			border-bottom: none;
+		}
+
+		ul.list li:hover span {
+			display: initial;
+		}
+
+		#listcontainer .list a.adv-name {
+			display: flex;
+			padding: 0;
+		}
+
+		span.showhide {
+			font-weight: bold;
+			margin-left: auto;
+			padding: 1px 1px 1px 20px;
 		}
 	</style>
 </head>
