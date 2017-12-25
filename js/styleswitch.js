@@ -124,6 +124,22 @@ li.adventure-contents-item > ul > ul.active > li > a {
 li.adventure-contents-item > ul > ul.active > li > a:hover {
 	background: lightgrey;
 }
+
+ul.list.adventures ul a:hover,
+ul.list.contents > li a:hover,
+ul.list.contents > li > ul.adv-contents > li > a > span:hover,
+ul.list.contents > li > ul.adv-contents > li > a > span:hover {
+	background: lightgrey;
+}
+
+ul.list.contents > li > ul.adv-contents > li a:hover {
+	background: initial;
+}
+
+ul.list.adventures >  li > a > span.showhide:hover,
+ul.list.adventures >  li > a > span.name:hover {
+	background: lightgrey;
+}
 `;
 const NIGHT_CSS =
 	`
@@ -293,20 +309,29 @@ ul.list.names > li > span:first-child {
 
 ul.list.encounters > li > ul > li > a:hover,
 ul.list.names > li > ul > li > a:hover,
-ul.adv-contents > li > a:hover,
 ul.adv-headers > li > a:hover,
 li.adventure-contents-item > ul > ul.active > li > a:hover,
+ul.list.contents > li > ul.adv-contents > li > a > span:hover,
+ul.list.contents > li > ul.adv-contents > li > a > span:hover,
+ul.list.contents > li > ul.adv-headers a:hover,
+ul.list.adventures ul a:hover,
+ul.list.adventures >  li > a > span.showhide:hover,
+ul.list.adventures >  li > a > span.name:hover,
 ul.list li:nth-child(odd):hover {
 	background: black;
 }
 
 ul.list.encounters li:nth-child(odd),
 ul.list.names li:nth-child(odd),
-ul.adv-contents > li:nth-child(odd) {
+ul.list.adventures > li:nth-child(odd),
+ul.adv-contents > li:nth-child(odd),
+ul.list.contents > li:nth-child(odd) {
 	background: none;
 }
 
 ul.list.encounters li:nth-child(odd):hover,
+ul.list.adventures li:nth-child(odd):hover,
+ul.adv-contents li:nth-child(odd):hover,
 ul.list.names li:nth-child(odd):hover {
 	background: none;
 }

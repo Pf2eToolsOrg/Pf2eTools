@@ -24,7 +24,7 @@ function onJsonLoad (data) {
 	adventuresList.append($(`
 		<li>
 			<a href='adventures.html'>
-				<span class='name'>\u21FD All Adventures</span> 
+				<span class='name'>\u21FD All Adventures</span>
 			</a>
 		</li>
 	`));
@@ -44,7 +44,7 @@ function onJsonLoad (data) {
 	adventuresList.append(tempString);
 
 	// add show/hide handles to section names
-	$(`ul.adv-headers`).prev(`li`).find(`a`).css("display", "flex").css("padding", "0").append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="false">[\u2013]</span>`);
+	$(`ul.adv-headers`).prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0").append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="false">[\u2013]</span>`);
 
 	const list = new List("listcontainer", {
 		valueNames: ['name'],

@@ -8,7 +8,11 @@ function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
 
 	adv.contents.forEach((c, i) => {
 		out +=
-			`<li><a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}" ${addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>${getOrdinalText(c.ordinal)}${c.name}</a></li>`;
+			`<li>
+				<a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}" ${addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>
+					<span class="sect">${getOrdinalText(c.ordinal)}${c.name}</span>
+				</a>
+			</li>`;
 		out += makeHeadersBlock(adv.id, i, c, addPrefix, addOnclick);
 	});
 
