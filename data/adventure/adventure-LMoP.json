@@ -184,12 +184,7 @@
 					"type": "insetReadaloud",
 					"entries": [
 						"In the city of Neverwinter, a dwarf named Gundren Rockseeker asked you to bring a wagonload of provisions to the rough-and-tumble settlement of Phandalin, a couple of days' travel southeast of the city. Gundren was clearly excited and more than a little secretive about his reasons for the trip, saying only that he and his brothers had found \"something big,\" and that he'd pay you ten gold pieces each for escorting his supplies safely to Barthen's Provisions, a trading post in Phandalin. He then set out ahead of you on horse, along with a warrior escort named Sildar Hallwinter, claiming he needed to arrive early to \"take care of business.\"",
-						"You've spent the last few days following the High Road south from Neverwinter, and you've just recently veered east along the Triboar Trail."
-					]
-				},
-				{
-					"type": "insetReadaloud",
-					"entries": [
+						"You've spent the last few days following the High Road south from Neverwinter, and you've just recently veered east along the Triboar Trail.",
 						"You've encountered no trouble so far, but this territory can be dangerous. Bandits and outlaws have been known to lurk along the trail."
 					]
 				},
@@ -783,11 +778,7 @@
 							},
 							"title": "Phandalin (Player)"
 						},
-						"The following sections detail specific locations in town.",
-						{
-							"type": "list",
-							"items": []
-						}
+						"The following sections detail specific locations in town."
 					]
 				},
 				{
@@ -813,42 +804,48 @@
 							"type": "inset",
 							"entries": [
 								"\"Sister Garaele, who oversees the Shrine of Luck, recently left town for a few days, then returned wounded and exhausted.\""
-							]
+							],
+							"name": "Narth, an old farmer"
 						},
 						"(See the \"Shrine of Luck\" section for more information.)",
 						{
 							"type": "inset",
 							"entries": [
 								"\"Doran Edermath, the orchard keeper, is a former adventurer.\""
-							]
+							],
+							"name": "Elsa, a gossipy barmaid"
 						},
 						"(See the \"Edermath Orchard\" section for more information.)",
 						{
 							"type": "inset",
 							"entries": [
 								"\"Orc raiders have been seen on the east end of Triboar Trail. The townmaster is looking for someone to run them off.\""
-							]
+							],
+							"name": "Lanar, a miner"
 						},
 						"(See the \"Townmaster's Hall\" section for more information.)",
 						{
 							"type": "inset",
 							"entries": [
 								"\"Thel Dendrar, a local woodcarver, stood up to the Redbrands a tenday ago when they came by his shop and leered at his wife. The ruffians murdered him. Several townsfolk saw it happen. The Redbrands grabbed his body, and now his wife, daughter, and son have gone missing too.\""
-							]
+							],
+							"name": "Trilena, the innkeeper's wife"
 						},
 						"(Unknown to Trilena and the other townsfolk, the Redbrands took Thel's wife and children to their secret hideout.)",
 						{
 							"type": "inset",
 							"entries": [
 								"\"Qelline Alderlears son Carp said he found a secret tunnel in the woods, but Redbrands almost caught him.\""
-							]
+							],
+							"name": "Pip, Toblen's young son"
 						},
 						"(See the \"Alderleaf Farm\" section for more information.)",
 						{
 							"type": "inset",
 							"entries": [
 								"\"The Redbrands hassle every business in town, except for the Phandalin Miner's Exchange. They don't want trouble with Halia Thornton, who runs it.\""
-							]
+							],
+							"name": "Freda, a weaver"
 						},
 						"(See the \"Phandalin Miner's Exchange\" section for more information.)",
 						"These leads should point the characters toward opportunities for adventure in and around Phandalin. In addition, any NPC at the inn can tell the characters that the Redbrands frequent the Sleeping Giant tap house at the east end of town-and that the ruffians are trouble."
@@ -1065,20 +1062,32 @@
 							"name": "Confrontation",
 							"entries": [
 								"If the characters confront the Redbrands at the Sleeping Giant, read:",
-								"The Sleeping Giant is a ramshackle taproom at the east end of town. Four human ruffians linger on the covered porch, perched on empty ale barrels or leaning against the wall. They all wear grimy scarlet cloaks, their sullen stares fixed on you as you approach.",
+								{
+									"type": "inset",
+									"entries": [
+										"The Sleeping Giant is a ramshackle taproom at the east end of town. Four human ruffians linger on the covered porch, perched on empty ale barrels or leaning against the wall. They all wear grimy scarlet cloaks, their sullen stares fixed on you as you approach."
+									]
+								},
 								{
 									"type": "inset",
 									"entries": [
 										"One of the thugs spits on the ground. Well, well,\" he snarls. \"Here's a whole pack of little puppies. What do you want, puppies? Come here to bark at us?\""
-									]
+									],
+									"name": "Redbrand Ruffian"
 								},
 								"If the Redbrands confront the characters in the street, read:",
-								"As you head back into the street, you see four armed ruffians waiting for you. All of them are humans wearing grimy red cloaks, their hands on their weapons as they watch you. One of the ruffians spits on the ground.",
+								{
+									"type": "inset",
+									"entries": [
+										"As you head back into the street, you see four armed ruffians waiting for you. All of them are humans wearing grimy red cloaks, their hands on their weapons as they watch you. One of the ruffians spits on the ground."
+									]
+								},
 								{
 									"type": "inset",
 									"entries": [
 										"\"Time for you to move on, strangers. Give us your stuff, and be on your way.\""
-									]
+									],
+									"name": "Redbrand Ruffian"
 								},
 								"Continue the insults and baiting as long as you like. The Redbrands attack in a round or two if the characters don't. Neither side is surprised, because it's obvious that a fight is brewing.",
 								"The group consists of four Redbrand ruffians. If three of them are defeated, the last one flees toward Tresendar Manor."
@@ -1601,7 +1610,8 @@
 									"type": "inset",
 									"entries": [
 										"Lord Albrek,\n\nMy spies in Neverwinter tell me that strangers are due to arrive in Phandalin. They could be working for the dwarves.\n\nCapture them if you can, kill them if you must, but don't allow them to upset our plans. See that any dwarven maps in their possession are delivered to me with haste.\n\nI'm counting on you, Iarno. Don't disappoint me."
-									]
+									],
+									"name": "Iarno"
 								},
 								"If Iarno is taken into custody, Sildar Hallwinter arranges to have the wizard incarcerated in the townmaster's hall until he can be safely transported back to Neverwinter. Whether Iarno stands trial for his crimes is beyond the scope of this adventure. The Black Spider is too preoccupied to meddle in the wizard's fate."
 							]
@@ -1897,7 +1907,8 @@
 							"type": "inset",
 							"entries": [
 								"\"What is the meaning of this?\""
-							]
+							],
+							"name": "Red-Robed Mage"
 						},
 						"Kost is a stout, red-robed figure with sallow skin, a shaved scalp, and a black tattoo on his forehead. A character who succeeds on a DC 10 Intelligence (Arcana) check recognizes Kost's tattoo as a necromantic symbol. A successful DC 10 Intelligence (History) check verifies the garb as that usual for Thay, a land far to the east where wizards pattern their flesh with tattoos. The tattoo on the head represents a wizard's school of magic. Kost's school is necromancy.",
 						"If any character attempts to talk to Kost, even by calling out a greeting or answering his questions during combat, he temporarily calls off his zombies. The Red Wizard is not particularly aggressive, and he is willing to strike a deal that advances his interests at the same time it helps the characters.",
@@ -3032,12 +3043,7 @@
 						{
 							"type": "insetReadaloud",
 							"entries": [
-								"The entrance tunnel leads into a large cavern supported by a natural pillar of rock and containing three stalagmites. In the western part of the cave, behind the column of rock, are three bedrolls and a heap of ordinary supplies-sacks of flour, bags of salt, casks of salted meat, lanterns, flasks of lamp oil, pickaxes, shovels, and other gear. Amid the supplies, you see the body of a dwarf miner, dead for at least a week."
-							]
-						},
-						{
-							"type": "insetReadaloud",
-							"entries": [
+								"The entrance tunnel leads into a large cavern supported by a natural pillar of rock and containing three stalagmites. In the western part of the cave, behind the column of rock, are three bedrolls and a heap of ordinary supplies-sacks of flour, bags of salt, casks of salted meat, lanterns, flasks of lamp oil, pickaxes, shovels, and other gear. Amid the supplies, you see the body of a dwarf miner, dead for at least a week.",
 								"The northeastern section of the cavern has collapsed, forming a ten-foot-wide, twenty-foot-deep pit. A sturdy hemp rope is tied off around a nearby stalagmite and dangles down the side of the pit, at the bottom of which is a rough-hewn tunnel heading northwest and east."
 							]
 						},
@@ -3197,12 +3203,7 @@
 						{
 							"type": "insetReadaloud",
 							"entries": [
-								"A still pool fills much of this cavern. The water is dark, revealing little of what might lie within. The shore of the pool consists of a thin layer of broken shells from strange, pale mussels, and a fishy odor hangs in the air."
-							]
-						},
-						{
-							"type": "insetReadaloud",
-							"entries": [
+								"A still pool fills much of this cavern. The water is dark, revealing little of what might lie within. The shore of the pool consists of a thin layer of broken shells from strange, pale mussels, and a fishy odor hangs in the air.",
 								"A passage leads south from this area, and a set of steps climbs up to the east. A sluggish stream flows out of the cave to the northeast."
 							]
 						},
@@ -3254,12 +3255,7 @@
 						{
 							"type": "insetReadaloud",
 							"entries": [
-								"A blast furnace and a mechanical bellows powered by a waterwheel dominate this large chamber. The furnace is cold and dark, but heaps of coal are piled nearby, along with carts full of unrefined ore. The waterwheel sits in a ten-foot-wide channel cut into the floor of the room, but the channel is dry. Passages exit to the west, south, and east. The empty channel exits to the north and east."
-							]
-						},
-						{
-							"type": "insetReadaloud",
-							"entries": [
+								"A blast furnace and a mechanical bellows powered by a waterwheel dominate this large chamber. The furnace is cold and dark, but heaps of coal are piled nearby, along with carts full of unrefined ore. The waterwheel sits in a ten-foot-wide channel cut into the floor of the room, but the channel is dry. Passages exit to the west, south, and east. The empty channel exits to the north and east.",
 								"More than a dozen withered corpses are scattered around the room. These slain dwarves and orcs are still wearing the remnants of their armor. Floating above them is a skull engulfed in green flame."
 							]
 						},

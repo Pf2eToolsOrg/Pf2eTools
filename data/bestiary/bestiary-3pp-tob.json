@@ -899,7 +899,7 @@
 			]
 		},
 		{
-			"name": "Akyishigal, Demon Lord Of Cockroaches",
+			"name": "Akyishigal, Demon Lord of Cockroaches",
 			"size": "L",
 			"type": {
 				"type": "fiend",
@@ -1295,7 +1295,7 @@
 			]
 		},
 		{
-			"name": "Alquam, Demon Lord Of Night",
+			"name": "Alquam, Demon Lord of Night",
 			"size": "H",
 			"type": {
 				"type": "fiend",
@@ -2619,7 +2619,7 @@
 			]
 		},
 		{
-			"name": "Arbeyach",
+			"name": "Arch-Devil Arbeyach, Prince of Swarms",
 			"size": "L",
 			"type": {
 				"type": "fiend",
@@ -2804,7 +2804,7 @@
 			]
 		},
 		{
-			"name": "Arcane Spectral Guardian",
+			"name": "Arcane Guardian",
 			"size": "M",
 			"type": "undead",
 			"source": "ToB 3pp",
@@ -3152,7 +3152,7 @@
 			]
 		},
 		{
-			"name": "Avatar Of Boreas",
+			"name": "Avatar of Boreas",
 			"size": "M",
 			"type": "elemental",
 			"source": "ToB 3pp",
@@ -3308,7 +3308,7 @@
 			]
 		},
 		{
-			"name": "Baba Yaga's Horsemen",
+			"name": "Baba Yaga's Horsemen (Bright Day)",
 			"size": "M",
 			"type": "fey",
 			"source": "ToB 3pp",
@@ -3329,7 +3329,8 @@
 				"history": "+7",
 				"perception": "+8"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"senses": "darkvision 60 ft.",
+			"resist": "cold, fire; bludgeoning, piercing, and slashing from nonmagical weapons",
 			"immune": "lightning, poison",
 			"conditionImmune": "exhaustion, paralyzed, poisoned",
 			"passive": "18",
@@ -3340,7 +3341,9 @@
 					"name": "Innate Spellcasting",
 					"text": [
 						" The horseman is a 12th-level spellcaster. Its spellcasting ability is Charisma (save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+						"At will: sacred flame",
 						"1/day each: dimension door, fire shield, haste, slow",
+						"2/day each: continual flame, scorching ray",
 						"3/day each: ethereal jaunt, phantom steed (appears as a horse colored appropriately to the horseman), plane shift (self and steed only)"
 					]
 				},
@@ -3365,13 +3368,194 @@
 				{
 					"name": "The Three Horsemen",
 					"text": [
-						" Each horseman has unique senses, defenses, and special abilities. Add the appropriate traits to the base horseman traits for each of the horsemen as follows.",
-						"- Bright Day. The horseman gains darkvision 60 ft., resistance to cold and fire, and the following innate spells: At will: sacred flame",
-						"2/day: daylight",
-						"- Red Sun. The horseman gains immunity to being blinded, charmed, and frightened, immunity to fire, and the following innate spells:",
+						"Each horseman has unique senses, defenses, and special abilities."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						" The horseman makes three attacks with its lance or longsword. It can use Temporal Strike with one of these attacks when it is available."
+					]
+				},
+				{
+					"name": "Lance",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 10 ft. (disadvantage within 5 ft.), one target. Hit: 12 (1d12+6) piercing damage."
+					]
+				},
+				{
+					"name": "Longsword",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 10 (1d8+6) slashing damage."
+					]
+				},
+				{
+					"name": "Temporal Strike (recharge 5-6)",
+					"text": [
+						" When the horseman strikes a target with a melee attack, in addition to taking normal damage, the target must succeed on a DC 17 Constitution saving throw or instantly age 3d10 years. A creature that ages this way has disadvantage on attack rolls, ability checks, and saving throws based on Strength, Dexterity, and Constitution until the aging is reversed. A creature that ages beyond its lifespan dies immediately. The aging reverses automatically after 24 hours, or it can be reversed magically by greater restoration or comparable magic. A creature that succeeds on the save is immune to the temporal strike effect for 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Baba Yaga's Horsemen (Red Sun)",
+			"size": "M",
+			"type": "fey",
+			"source": "ToB 3pp",
+			"alignment": "lawful neutral",
+			"ac": "20 (plate and shield)",
+			"hp": "171 (18d8+90)",
+			"speed": "30 ft.",
+			"str": "22",
+			"dex": "11",
+			"con": "21",
+			"int": "16",
+			"wis": "18",
+			"cha": "18",
+			"save": "Dex +4, Wis +8",
+			"skill": {
+				"arcana": "+7",
+				"athletics": "+10",
+				"history": "+7",
+				"perception": "+8"
+			},
+			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"immune": "fire, lightning, poison",
+			"conditionImmune": "blinded, charmed, exhaustion, frightened, paralyzed, poisoned",
+			"passive": "18",
+			"languages": "Celestial, Common, Infernal; telepathy 100 ft.",
+			"cr": "11",
+			"trait": [
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						" The horseman is a 12th-level spellcaster. Its spellcasting ability is Charisma (save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+						"1/day each: dimension door, fire shield, haste, slow",
 						"2/day each: continual flame, scorching ray",
-						"- Black Night. The horseman can see perfectly in normal and magical darkness, gains immunity to cold, and the following innate spells:",
-						"At will: ray of frost 2/day: darkness"
+						"3/day each: ethereal jaunt, phantom steed (appears as a horse colored appropriately to the horseman), plane shift (self and steed only)"
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"text": [
+						" The horseman has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Peerless Rider",
+					"text": [
+						" Any attacks directed at the horseman's mount targets the horseman instead. Its mount gains the benefit of the rider's damage and condition immunities, and if the horseman passes a saving throw against an area effect, the mount takes no damage."
+					]
+				},
+				{
+					"name": "Quick Draw",
+					"text": [
+						" The horseman can switch between wielding its lance and longsword as a bonus action."
+					]
+				},
+				{
+					"name": "The Three Horsemen",
+					"text": [
+						"Each horseman has unique senses, defenses, and special abilities."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						" The horseman makes three attacks with its lance or longsword. It can use Temporal Strike with one of these attacks when it is available."
+					]
+				},
+				{
+					"name": "Lance",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 10 ft. (disadvantage within 5 ft.), one target. Hit: 12 (1d12+6) piercing damage."
+					]
+				},
+				{
+					"name": "Longsword",
+					"text": [
+						" Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 10 (1d8+6) slashing damage."
+					]
+				},
+				{
+					"name": "Temporal Strike (recharge 5-6)",
+					"text": [
+						" When the horseman strikes a target with a melee attack, in addition to taking normal damage, the target must succeed on a DC 17 Constitution saving throw or instantly age 3d10 years. A creature that ages this way has disadvantage on attack rolls, ability checks, and saving throws based on Strength, Dexterity, and Constitution until the aging is reversed. A creature that ages beyond its lifespan dies immediately. The aging reverses automatically after 24 hours, or it can be reversed magically by greater restoration or comparable magic. A creature that succeeds on the save is immune to the temporal strike effect for 24 hours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Baba Yaga's Horsemen (Black Night)",
+			"size": "M",
+			"type": "fey",
+			"source": "ToB 3pp",
+			"alignment": "lawful neutral",
+			"ac": "20 (plate and shield)",
+			"hp": "171 (18d8+90)",
+			"speed": "30 ft.",
+			"str": "22",
+			"dex": "11",
+			"con": "21",
+			"int": "16",
+			"wis": "18",
+			"cha": "18",
+			"save": "Dex +4, Wis +8",
+			"skill": {
+				"arcana": "+7",
+				"athletics": "+10",
+				"history": "+7",
+				"perception": "+8"
+			},
+			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"immune": "cold, lightning, poison",
+			"conditionImmune": "exhaustion, paralyzed, poisoned",
+			"passive": "18",
+			"languages": "Celestial, Common, Infernal; telepathy 100 ft.",
+			"cr": "11",
+			"trait": [
+				{
+					"name": "Innate Spellcasting",
+					"text": [
+						" The horseman is a 12th-level spellcaster. Its spellcasting ability is Charisma (save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
+						"At will: ray of frost",
+						"1/day each: dimension door, fire shield, haste, slow",
+						"2/day: darkness",
+						"3/day each: ethereal jaunt, phantom steed (appears as a horse colored appropriately to the horseman), plane shift (self and steed only)"
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"text": [
+						" The horseman has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Peerless Rider",
+					"text": [
+						" Any attacks directed at the horseman's mount targets the horseman instead. Its mount gains the benefit of the rider's damage and condition immunities, and if the horseman passes a saving throw against an area effect, the mount takes no damage."
+					]
+				},
+				{
+					"name": "Quick Draw",
+					"text": [
+						" The horseman can switch between wielding its lance and longsword as a bonus action."
+					]
+				},
+				{
+					"name": "The Three Horsemen",
+					"text": [
+						"Each horseman has unique senses, defenses, and special abilities."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"text": [
+						"The horseman can see perfectly in normal and magical darkness."
 					]
 				}
 			],
@@ -5114,7 +5298,7 @@
 			]
 		},
 		{
-			"name": "Camazotz, Demon Lord Of Bats And Fire",
+			"name": "Camazotz, Demon Lord of Bats and Fire",
 			"size": "L",
 			"type": {
 				"type": "fiend",
@@ -8953,7 +9137,7 @@
 			]
 		},
 		{
-			"name": "Eater Of Dust (Yakat-Shi)",
+			"name": "Eater of Dust (Yakat-Shi)",
 			"size": "M",
 			"type": "aberration",
 			"source": "ToB 3pp",
@@ -9677,7 +9861,7 @@
 			]
 		},
 		{
-			"name": "Emperor Of The Ghouls",
+			"name": "Emperor of the Ghouls",
 			"size": "M",
 			"type": "undead",
 			"source": "ToB 3pp",
@@ -11059,7 +11243,7 @@
 			]
 		},
 		{
-			"name": "Folk Of Leng",
+			"name": "Folk of Leng",
 			"size": "M",
 			"type": "humanoid",
 			"source": "ToB 3pp",
@@ -11648,7 +11832,7 @@
 			]
 		},
 		{
-			"name": "Ghoul, Darakhul",
+			"name": "Darakhul Ghoul",
 			"size": "M",
 			"type": "undead",
 			"source": "ToB 3pp",
@@ -11739,7 +11923,7 @@
 			]
 		},
 		{
-			"name": "Ghoul, Imperial",
+			"name": "Imperial Ghoul",
 			"size": "M",
 			"type": "undead",
 			"source": "ToB 3pp",
@@ -11808,7 +11992,7 @@
 			]
 		},
 		{
-			"name": "Ghoul, Iron",
+			"name": "Iron Ghoul",
 			"size": "M",
 			"type": "undead",
 			"source": "ToB 3pp",
@@ -12817,7 +13001,7 @@
 			]
 		},
 		{
-			"name": "Herald Of Blood",
+			"name": "Herald of Blood",
 			"size": "H",
 			"type": "fiend",
 			"source": "ToB 3pp",
@@ -12905,7 +13089,7 @@
 			]
 		},
 		{
-			"name": "Herald Of Darkness",
+			"name": "Herald of Darkness",
 			"size": "L",
 			"type": "fiend",
 			"source": "ToB 3pp",
@@ -13119,7 +13303,7 @@
 			]
 		},
 		{
-			"name": "Hound Of The Night",
+			"name": "Hound of the Night",
 			"size": "L",
 			"type": "monstrosity",
 			"source": "ToB 3pp",
@@ -13175,7 +13359,7 @@
 			]
 		},
 		{
-			"name": "Hraesvelgr The Corpse Swallower",
+			"name": "Hraesvelgr, The Corpse Swallower",
 			"size": "H",
 			"type": {
 				"type": "giant",
@@ -13440,7 +13624,7 @@
 			]
 		},
 		{
-			"name": "Ia'Affrat",
+			"name": "Arch-Devil Ia'Affrat the Insatiable",
 			"size": "L",
 			"type": {
 				"type": "elemental",
@@ -13705,7 +13889,7 @@
 			]
 		},
 		{
-			"name": "Imy-Ut Ushabti",
+			"name": "Imy-ut Ushabti",
 			"size": "M",
 			"type": "monstrosity",
 			"source": "ToB 3pp",
@@ -13933,7 +14117,7 @@
 			]
 		},
 		{
-			"name": "J'Ba Fofi Spider",
+			"name": "J'ba Fofi Spider",
 			"size": "L",
 			"type": "beast",
 			"source": "ToB 3pp",
@@ -15706,7 +15890,7 @@
 			]
 		},
 		{
-			"name": "Lord Of The Hunt",
+			"name": "Lord of the Hunt",
 			"size": "M",
 			"type": "fey",
 			"source": "ToB 3pp",
@@ -16359,7 +16543,7 @@
 			]
 		},
 		{
-			"name": "Mammon",
+			"name": "Arch-Devil Mammon, Archduke of Greed",
 			"size": "H",
 			"type": {
 				"type": "fiend",
@@ -16868,7 +17052,7 @@
 			]
 		},
 		{
-			"name": "Mechuiti, Demon Lord Of Apes",
+			"name": "Mechuiti, Demon Lord of Apes",
 			"size": "G",
 			"type": {
 				"type": "fiend",
@@ -18795,7 +18979,7 @@
 			]
 		},
 		{
-			"name": "Ogre Chieftain, Corrupted",
+			"name": "Corrupted Ogre Chieftain",
 			"size": "L",
 			"type": "giant",
 			"source": "ToB 3pp",
@@ -19566,7 +19750,7 @@
 			]
 		},
 		{
-			"name": "Qorgeth, Demon Lord Of The Devouring Worm",
+			"name": "Qorgeth, Demon Lord of The Devouring Worm",
 			"size": "G",
 			"type": {
 				"type": "fiend",
@@ -19689,7 +19873,7 @@
 			]
 		},
 		{
-			"name": "Queen Of Night And Magic",
+			"name": "Queen of Night and Magic",
 			"size": "M",
 			"type": "fey",
 			"source": "ToB 3pp",
@@ -19828,7 +20012,7 @@
 			]
 		},
 		{
-			"name": "Queen Of Witches",
+			"name": "Queen of Witches",
 			"size": "L",
 			"type": "fey",
 			"source": "ToB 3pp",
@@ -23932,7 +24116,7 @@
 			]
 		},
 		{
-			"name": "Son Of Fenris",
+			"name": "Son of Fenris",
 			"size": "H",
 			"type": "monstrosity",
 			"source": "ToB 3pp",
@@ -24130,7 +24314,7 @@
 			]
 		},
 		{
-			"name": "Spawn Of Akyishigal",
+			"name": "Spawn of Akyishigal",
 			"size": "M",
 			"type": {
 				"type": "fiend",
@@ -24186,7 +24370,7 @@
 			]
 		},
 		{
-			"name": "Spawn Of Arbeyach",
+			"name": "Spawn of Arbeyach",
 			"size": "M",
 			"type": "aberration",
 			"source": "ToB 3pp",
@@ -24312,7 +24496,7 @@
 			]
 		},
 		{
-			"name": "Spider Of Leng",
+			"name": "Spider of Leng",
 			"size": "L",
 			"type": "aberration",
 			"source": "ToB 3pp",
@@ -24726,7 +24910,7 @@
 			]
 		},
 		{
-			"name": "Star Spawn Of Cthulhu",
+			"name": "Star-Spawn of Cthulhu",
 			"size": "L",
 			"type": "fiend",
 			"source": "ToB 3pp",
@@ -25867,7 +26051,7 @@
 			]
 		},
 		{
-			"name": "Totivillus, Scribe Of Hell",
+			"name": "Arch-Devil Totivillus, Scribe of Hell",
 			"size": "M",
 			"type": {
 				"type": "fiend",
@@ -27619,7 +27803,7 @@
 			]
 		},
 		{
-			"name": "Weaving Spider",
+			"name": "Clockwork Weaving Spider",
 			"size": "T",
 			"type": "construct",
 			"source": "ToB 3pp",
@@ -27643,13 +27827,13 @@
 				{
 					"name": "Immutable Form",
 					"text": [
-						" The weaving spider is immune to any spell or effect that would alter its form."
+						" The clockwork weaving spider is immune to any spell or effect that would alter its form."
 					]
 				},
 				{
 					"name": "Magic Resistance",
 					"text": [
-						" The weaving spider has advantage on saving throws against spells and other magical effects."
+						" The clockwork weaving spider has advantage on saving throws against spells and other magical effects."
 					]
 				}
 			],
@@ -27657,7 +27841,7 @@
 				{
 					"name": "Multiattack",
 					"text": [
-						" The weaving spider makes two trimming blade attacks or two needle shuttle attacks."
+						" The clockwork weaving spider makes two trimming blade attacks or two needle shuttle attacks."
 					]
 				},
 				{
@@ -27675,7 +27859,7 @@
 				{
 					"name": "Unmaking",
 					"text": [
-						" The weaving spider's speed and its slim, sharp blade can slice cloth, leather, and paper into scraps very quickly. Whenever a weaving spider's trimming blade attack roll exceeds the target's armor class by 5 or more, the target must succeed on a DC 13 Dexterity saving throw or one of their possessions, chosen randomly from the list below, becomes unusable or damaged until repaired."
+						" The clockwork weaving spider's speed and its slim, sharp blade can slice cloth, leather, and paper into scraps very quickly. Whenever a clockwork weaving spider's trimming blade attack roll exceeds the target's armor class by 5 or more, the target must succeed on a DC 13 Dexterity saving throw or one of their possessions, chosen randomly from the list below, becomes unusable or damaged until repaired."
 					]
 				}
 			]
@@ -29200,6 +29384,43 @@
 					"name": "Fire Breath (Recharge 6)",
 					"text": [
 						"The zmey headling exhales fire in a 30-foot cone. Each creature in that area takes 16 (3d10) fire damage, or half damage with a successful DC 16 Dexterity saving throw."
+					]
+				}
+			]
+		},
+		{
+			"name": "Garroter Crab",
+			"size": "T",
+			"type": "beast",
+			"source": "ToB 3pp",
+			"alignment": "unaligned",
+			"ac": "13 (natural armor)",
+			"hp": "18 (4d4+8)",
+			"speed": "30 ft., swim 20 ft.",
+			"str": "7",
+			"dex": "14",
+			"con": "14",
+			"int": "1",
+			"wis": "10",
+			"cha": "2",
+			"immune": "psychic",
+			"conditionImmune": "charmed, frightened",
+			"senses": "darkvision 60 ft.",
+			"passive": "10",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"text": [
+						"The crab can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Whip-claw",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage, and the target is grappled (escape DC 8). While grappled, the target cannot speak or cast spells with verbal components."
 					]
 				}
 			]

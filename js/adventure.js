@@ -26,7 +26,7 @@ function onJsonLoad (data) {
 		const adv = adventures[i];
 
 		tempString +=
-			`<li>
+			`<li class="adventure-contents-item" data-adventureid="${adv.id}">
 				<a id="${i}" href='#${adv.id},0' title='${adv.name}'>
 					<span class='name'>${adv.name}</span> 
 				</a>
@@ -60,8 +60,14 @@ function hashChange () {
 	}
 }
 
+let allContents;
+let thisContents;
 function loadAdventure (fromIndex, advId, hashParts) {
 	loadJSON(`data/adventure/adventure-${advId}.json`, function (data) {
+		allContents = $(`.adventure-contents-item`);
+		thisContents = allContents.filter(`[data-adventureid="${advId}"]`);
+		thisContents.show();
+		allContents.filter(`[data-adventureid!="${advId}"]`).hide();
 		onAdventureLoad(data.data, fromIndex, advId, hashParts);
 	});
 }
@@ -69,6 +75,7 @@ function loadAdventure (fromIndex, advId, hashParts) {
 const renderer = new EntryRenderer();
 
 const curRender = {
+	curAdvId: "NONE",
 	chapter: -1
 };
 function onAdventureLoad (data, fromIndex, advId, hashParts) {
@@ -79,7 +86,11 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 		scrollTo = $(`[href="#${advId},${chapter},${hashParts[1]}"]`).data("header");
 	}
 
-	if (curRender.chapter !== chapter) {
+	if (curRender.chapter !== chapter || curRender.curAdvId !== advId) {
+		thisContents.children(`ul`).children(`ul, li`).removeClass("active");
+		thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
+
+		curRender.curAdvId = advId;
 		curRender.chapter = chapter;
 		renderArea.html("");
 
