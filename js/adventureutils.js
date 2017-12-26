@@ -22,7 +22,7 @@ function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
 
 	function getOrdinalText (ordinal) {
 		if (ordinal === undefined) return "";
-		return `${ordinal.type === "part" ? `Part ${ordinal.number} \u2014 ` : `Episode ${ordinal.number}: `}`;
+		return `${ordinal.type === "part" ? `Part ${ordinal.number} \u2014 ` : ordinal.type === "chapter" ? `Ch. ${ordinal.number}: ` : `Ep. ${ordinal.number}: `}`;
 	}
 }
 
