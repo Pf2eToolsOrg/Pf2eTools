@@ -418,7 +418,6 @@ function loadsub (sub) {
 			}
 		);
 
-		debugger
 		if ($toShow.length === 0) {
 			hideAllSubclasses();
 		} else {
