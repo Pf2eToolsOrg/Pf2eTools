@@ -1458,17 +1458,23 @@ table#stats tr.class-feature div.statsBlockHead .spicy-sauce div.statsBlockSubHe
 	border-bottom-color: #1d965d;
 }
 
-table#stats div.statsInlineHead > span.entry-title {
+table#stats div.statsInlineHead > span.entry-title,
+table#stats div.statsInlineHeadSubVariant > span.entry-title {
 	font-style: italic;
+}
+
+table#stats div.statsInlineHead > span.entry-title {
 	font-weight: bold;
 }
 
-table#stats div.statsInlineHead > p {
+table#stats div.statsInlineHead > p,
+table#stats div.statsInlineHeadSubVariant > p {
 	text-indent: 0.7em;
 	margin-bottom: 0;
 }
 
-table#stats div.statsInlineHead > p:first-of-type {
+table#stats div.statsInlineHead > p:first-of-type,
+table#stats div.statsInlineHeadSubVariant > p:first-of-type {
 	display: inline;
 }
 
