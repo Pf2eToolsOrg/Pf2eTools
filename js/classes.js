@@ -56,6 +56,9 @@ function onJsonLoad (data) {
 		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
 	}
 
+	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
+	classes.filter(c => isNonstandardSource(c.source)).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
+
 	tableDefault = $("#stats").html();
 	statsProfDefault = $("#statsprof").html();
 	classTableDefault = $("#classtable").html();
@@ -258,9 +261,8 @@ function loadhash (id) {
 		subclassPillWrapper.append(pill);
 	}
 
-	// if this is a UA class, toggle the "All Sources" button (this will call loadsub)
-	if (isUaClass) allSourcesToggle.click();
-	else (loadsub("")); // otherwise call loadsub with a blank sub-hash
+	// call loadsub with a blank sub-hash, to ensure the right content is displayed
+	loadsub("");
 
 	// helper functions
 	function makeGenericTogglePill (pillText, pillActiveClass, pillId, hashKey, defaultActive) {
