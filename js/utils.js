@@ -562,10 +562,16 @@ Parser.armorFullToAbv = function (armor) {
 	return Parser._parse_bToA(Parser.ARMOR_ABV_TO_FULL, armor);
 };
 
+Parser._getSourceStringFromSource = function (source) {
+	if (source && source.source) return source.source;
+	return source;
+};
 Parser.sourceJsonToFull = function (source) {
+	source = Parser._getSourceStringFromSource(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
+	source = Parser._getSourceStringFromSource(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source)
 		.replace(/'/g, STR_APOSTROPHE)
 		.replace(UA_PREFIX, UA_PREFIX_SHORT)
@@ -573,6 +579,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 		.replace(PS_PREFIX, PS_PREFIX_SHORT);
 };
 Parser.sourceJsonToAbv = function (source) {
+	source = Parser._getSourceStringFromSource(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
 
@@ -1252,38 +1259,19 @@ function hasBeenReprinted (shortName, source) {
 }
 
 function isNonstandardSource (source) {
+	/* can accept sources of the form:
+	{
+		"source": "UAExample",
+		"forceStandard": true
+	}
+	 */
+	if (source && source.forceStandard !== undefined) {
+		return !source.forceStandard;
+	}
 	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.endsWith(SRC_3PP_SUFFIX) || source === SRC_OGA);
 }
 
 // CONVENIENCE/ELEMENTS ================================================================================================
-// TODO refactor/remove (switch to jQuery versions)
-function toggleCheckBox (cb) {
-	if (cb.checked === true) cb.checked = false;
-	else cb.checked = true;
-}
-
-function stopEvent (event) {
-	event.stopPropagation();
-	event.preventDefault();
-}
-
-function toggleVisible (element) {
-	if (isShowing(element)) hide(element);
-	else show(element);
-}
-
-function isShowing (element) {
-	return element.hasAttribute(ATB_STYLE) && element.getAttribute(ATB_STYLE).includes(STL_DISPLAY_INITIAL);
-}
-
-function show (element) {
-	element.setAttribute(ATB_STYLE, STL_DISPLAY_INITIAL);
-}
-
-function hide (element) {
-	element.setAttribute(ATB_STYLE, STL_DISPLAY_NONE);
-}
-
 function xor (a, b) {
 	return !a !== !b;
 }

@@ -444,6 +444,19 @@ function loadhash (id) {
 		}
 	}
 
+	const variants = mon.variant;
+	const variantSect = $(`#variants`);
+	if (!variants) variantSect.hide();
+	else {
+		const rStack = [];
+		variants.forEach(v => renderer.recursiveEntryRender(v, rStack));
+		variantSect.html(`<td colspan=6>${rStack.join("")}</td>`);
+		variantSect.show();
+	}
+
+	const sourceAndPage = $(`#source`);
+	sourceAndPage.append(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(mon.source)}</i>${mon.page !== undefined ? `, page ${mon.page}` : ""}</td>`);
+
 	const legendaries = mon.legendary;
 	$("tr.legendary").remove();
 	$("tr#legendaries").hide();
