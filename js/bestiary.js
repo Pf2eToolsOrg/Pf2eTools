@@ -454,6 +454,9 @@ function loadhash (id) {
 		variantSect.show();
 	}
 
+	const sourceAndPage = $(`#source`);
+	sourceAndPage.append(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(mon.source)}</i>${mon.page !== undefined ? `, page ${mon.page}` : ""}</td>`);
+
 	const legendaries = mon.legendary;
 	$("tr.legendary").remove();
 	$("tr#legendaries").hide();
