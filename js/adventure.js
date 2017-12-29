@@ -44,8 +44,12 @@ function onJsonLoad (data) {
 	}
 	adventuresList.append(tempString);
 
-	// add show/hide handles to section names
-	$(`ul.adv-headers`).prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0").append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="false">[\u2013]</span>`);
+	// Add show/hide handles to section names, and update styles
+	const allAdvHeaders = $(`ul.adv-headers`);
+	// add styles to all
+	allAdvHeaders.prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0");
+	// add expand/collapse to only those with children
+	allAdvHeaders.filter((i, ele) => $(ele).children().length).prev(`li`).find(`a`).append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="false">[\u2013]</span>`);
 
 	const list = new List("listcontainer", {
 		valueNames: ['name'],
