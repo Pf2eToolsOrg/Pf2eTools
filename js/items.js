@@ -351,13 +351,11 @@ function loadhash (id) {
 	$("th#name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
 
 	const type = item.type || "";
-	if (type === "INS" || type === "GS" || type === "VEH") item.additionalSources = item.additionalSources || [];
+	if (type === "INS" || type === "GS") item.additionalSources = item.additionalSources || [];
 	if (type === "INS") {
 		item.additionalSources.push({ "source": "XGE", "page": 83 })
 	} else if (type === "GS") {
 		item.additionalSources.push({ "source": "XGE", "page": 81 })
-	} else if (type === "VEH") {
-		item.additionalSources.push({ "source": "XGE", "page": 82 })
 	}
 	const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
 	$("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);
@@ -407,17 +405,14 @@ function loadhash (id) {
 	const renderStack = [];
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
 
-	// tools, artisan tools, instruments, gaming sets, vehicles
-	if (type === "T" || type === "AT" || type === "INS" || type === "GS" || type === "VEH") {
+	// tools, artisan tools, instruments, gaming sets
+	if (type === "T" || type === "AT" || type === "INS" || type === "GS") {
 		renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
 		if (type === "INS") {
 			const additionEntriesList = {type: "entries", entries: TOOL_INS_ADDITIONAL_ENTRIES};
 			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
 		} else if (type === "GS") {
 			const additionEntriesList = {type: "entries", entries: TOOL_GS_ADDITIONAL_ENTRIES};
-			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
-		} else if (type === "VEH") {
-			const additionEntriesList = {type: "entries", entries: TOOL_VEH_ADDITIONAL_ENTRIES};
 			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
 		}
 	}
@@ -526,48 +521,6 @@ const TOOL_GS_ADDITIONAL_ENTRIES = [
 		"rows": [
 			["Catch a player cheating", "15"],
 			["Gain insight into an opponent's personality", "15"]
-		]
-	}
-];
-
-const TOOL_VEH_ADDITIONAL_ENTRIES = [
-	"Proficiency with land vehicles covers a wide range of options, from chariots and howdahs to wagons and carts. Proficiency with water vehicles covers anything that navigates waterways. Proficiency with vehicles grants the knowledge needed to handle vehicles of that type, along with knowledge of how to repair and maintain them.",
-	"In addition, a character proficient with water vehicles is knowledgeable about anything a professional sailor would be familiar with, such as information about the sea and islands, tying knots, and assessing weather and sea conditions.",
-	{
-		"type": "entries",
-		"name": "Arcana",
-		"entries": [
-			"When you study a magic vehicle, this tool proficiency aids you in uncovering lore or determining how the vehicle operates."
-		]
-	},
-	{
-		"type": "entries",
-		"name": "Investigation, Perception",
-		"entries": [
-			"When you inspect a vehicle for clues or hidden information, your proficiency aids you in noticing things that others might miss."
-		]
-	},
-	{
-		"type": "entries",
-		"name": "Vehicle Handling",
-		"entries": [
-			"When piloting a vehicle, you can apply your proficiency bonus to the vehicle's AC and saving throws."
-		]
-	},
-	{
-		"type": "table",
-		"caption": "Vehicles",
-		"colLabels": [
-			"Activity", "DC"
-		],
-		"colStyles": [
-			"col-xs-10",
-			"col-xs-2 text-align-center"
-		],
-		"rows": [
-			["Navigate rough terrain or waters", "10"],
-			["Assess a vehicle's condition", "15"],
-			["Take a tight corner at high speed", "20"]
 		]
 	}
 ];
