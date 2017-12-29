@@ -153,6 +153,7 @@ function calculatecr () {
 
 	let hp = parseInt($("#crcalc #hp").val());
 
+	if ($("#vulnerabilities").prop("checked")) hp *= 0.5;
 	if ($("#resistances").val() === "res") {
 		if (expectedcr >= 0 && expectedcr <= 4) hp *= 2;
 		if (expectedcr >= 5 && expectedcr <= 10) hp *= 1.5;
