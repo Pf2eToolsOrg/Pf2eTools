@@ -41,8 +41,26 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 }
 
 function scrollClick (scrollTo) {
-	const goTo = $(`div.statsBlockHead > span.entry-title:contains("${scrollTo}")`);
+	// textEquals selector defined below; added on window load
+	const goTo = $(`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`);
 	if (goTo[0]) {
 		goTo[0].scrollIntoView();
 	}
+	const goToSub = $(`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`);
+	if (goToSub[0]) {
+		goToSub[0].scrollIntoView();
+	}
+	const goToInset = $(`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`);
+	if (goToInset[0]) {
+		goToInset[0].scrollIntoView();
+	}
 }
+
+window.addEventListener("load", () => {
+	// Add a selector to match exact text to jQuery's arsenal
+	$.expr[':'].textEquals = (el, i, m) => {
+		const searchText = m[3];
+		const match = $(el).text().trim().match(`^${searchText}$`);
+		return match && match.length > 0;
+	};
+});
