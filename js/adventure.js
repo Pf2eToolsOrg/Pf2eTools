@@ -64,7 +64,9 @@ function hashChange () {
 	const fromIndex = adventures.filter(adv => adv.id === advId);
 	if (fromIndex.length) {
 		document.title = `${fromIndex[0].name} - 5etools`;
-		$(`.adv-header`).html(fromIndex[0].name);
+		// prevent TftYP names from causing the header to wrap
+		const shortName = fromIndex[0].name.includes(Parser.SOURCE_JSON_TO_FULL[SRC_TYP]) ? fromIndex[0].name.replace(Parser.SOURCE_JSON_TO_FULL[SRC_TYP], Parser.sourceJsonToAbv(SRC_TYP)) : fromIndex[0].name;
+		$(`.adv-header`).html(shortName);
 		$(`.adv-message`).html("Select a chapter on the left, and browse the content on the right");
 		loadAdventure(fromIndex[0], advId, hashParts);
 	} else {
