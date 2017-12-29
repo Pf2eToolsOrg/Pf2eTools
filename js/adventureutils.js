@@ -45,10 +45,12 @@ function scrollClick (scrollTo) {
 	const goTo = $(`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`);
 	if (goTo.length) {
 		goTo[goTo.length-1].scrollIntoView();
+		return;
 	}
 	const goToSub = $(`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`);
 	if (goToSub.length) {
 		goToSub[goToSub.length-1].scrollIntoView();
+		return;
 	}
 	const goToInset = $(`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`);
 	if (goToInset.length) {
