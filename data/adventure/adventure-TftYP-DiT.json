@@ -153,7 +153,7 @@
 								"Item"
 							],
 							"colStyles": [
-								"",
+								"col-xs-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -263,7 +263,7 @@
 								"Objective"
 							],
 							"colStyles": [
-								"",
+								"col-xs-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -309,7 +309,7 @@
 								"Secret"
 							],
 							"colStyles": [
-								"",
+								"col-xs-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -405,7 +405,7 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"",
+										"col-xs-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -807,7 +807,7 @@
 							"type": "entries",
 							"name": "Encounter Type",
 							"entries": [
-								"If a random encounter is indicated, roll on the Encounter Type table, ",
+								"If a random encounter is indicated, roll on the Encounter Type table, {@b adding the current alert level to the roll}.",
 								{
 									"type": "table",
 									"caption": "Encounter Type",
@@ -816,7 +816,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"",
+										"col-xs-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -853,7 +853,235 @@
 							"name": "Sector Encounters",
 							"entries": [
 								"If a sector encounter is indicated, roll on the table below that corresponds to the characters' current location. There are no random encounters in the Temples of Extraction.",
-								"Unless the dungeon is on high alert (level 6 or higher), a {@creature Thayan apprentice|TftYP} and 2d4 {@creature thayan warrior|TftYP|Thayan warriors} accompany a monster in any sector or individual encounter entry marked with an asterisk."
+								"Unless the dungeon is on high alert (level 6 or higher), a {@creature Thayan apprentice|TftYP} and 2d4 {@creature thayan warrior|TftYP|Thayan warriors} accompany a monster in any sector or individual encounter entry marked with an asterisk.",
+								{
+									"type": "table",
+									"caption": "Abyssal Prisons*",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"1 reduced-threat hezrou"
+										],
+										[
+											"2",
+											"2d8 manes"
+										],
+										[
+											"3",
+											"1d4 quasits"
+										],
+										[
+											"4",
+											"1 reduced-threat vrock"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Blood Pens",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"2d6 giant centipedes"
+										],
+										[
+											"2",
+											"1d4 giant spiders"
+										],
+										[
+											"3",
+											"Thayan patrol (roll on Thayan Patrol table)"
+										],
+										[
+											"4",
+											"1 shambling mound*"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Masters' Domain",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"1d4 shadows"
+										],
+										[
+											"2-4",
+											"Dread Legion patrol (roll on Dread Legion Patrol table)"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Far Realm Cysts*",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"1 gibbering mouther"
+										],
+										[
+											"2",
+											"1 grell"
+										],
+										[
+											"3",
+											"1d4 gricks"
+										],
+										[
+											"4",
+											"1 otyugh"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Forests of Slaughter*",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"1d2 hook horrors"
+										],
+										[
+											"2",
+											"1d4 cockatrices"
+										],
+										[
+											"3",
+											"1 displacer beast"
+										],
+										[
+											"4",
+											"1 troll"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Ooze Grottos",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"1 black pudding*"
+										],
+										[
+											"2",
+											"1 gelatinous cube*"
+										],
+										[
+											"3-4",
+											"1d4 gray oozes"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Predator Pools",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"2d4 giant crabs*"
+										],
+										[
+											"2",
+											"2d4 kuo-toa"
+										],
+										[
+											"3",
+											"1d2 merrow* (in water globes)"
+										],
+										[
+											"4",
+											"1 troll*"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Golem Laboratories*",
+									"colLabels": [
+										"d4",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"1",
+											"1 reduced-threat flesh golem"
+										],
+										[
+											"2",
+											"1 flesh golem"
+										],
+										[
+											"3",
+											"1 reduced-threat clay golem"
+										],
+										[
+											"4",
+											"1 clay golem"
+										]
+									]
+								}
 							]
 						},
 						{
@@ -883,6 +1111,35 @@
 									]
 								},
 								{
+									"type": "table",
+									"colLabels": [
+										"2d4",
+										"Potion"
+									],
+									"colStyles": [
+										"col-xs-1 text-align-center",
+										""
+									],
+									"rows": [
+										[
+											"2",
+											"Flying"
+										],
+										[
+											"3-4",
+											"Climbing"
+										],
+										[
+											"5-7",
+											"Healing (1-3), greater healing (4-5), superior healing (6)"
+										],
+										[
+											"8",
+											"Invisibility"
+										]
+									]
+								},
+								{
 									"type": "entries",
 									"name": "Red Wizards",
 									"entries": [
@@ -904,7 +1161,7 @@
 										"Result"
 									],
 									"colStyles": [
-										"",
+										"col-xs-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -1472,7 +1729,7 @@
 								"Dmage"
 							],
 							"colStyles": [
-								"",
+								"col-xs-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -3226,7 +3483,7 @@
 								"Effect"
 							],
 							"colStyles": [
-								"",
+								"col-xs-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -4112,7 +4369,7 @@
 								"Check"
 							],
 							"colStyles": [
-								"",
+								"col-xs-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -4134,7 +4391,7 @@
 								"Escaping Ooze"
 							],
 							"colStyles": [
-								"",
+								"col-xs-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -5076,14 +5333,7 @@
 								"The baron wears {@i +1 leather armor} (shark skin and chitin) and a crown-like helm of ivory, coral, leather, and gold (worth 500 gp)."
 							]
 						},
-						"At the bottom of the pool is a stone coffer that contains a stash of 100 pp and eight large pearls (100 gp) . {@i }It also has a crystal phial that contains ",
-						{
-							"type": "entries",
-							"name": "a",
-							"entries": [
-								"{@item potion of diminution|DMG}."
-							]
-						},
+						"At the bottom of the pool is a stone coffer that contains a stash of 100 pp and eight large pearls (100 gp). It also has a crystal phial that contains a {@item potion of diminution|DMG}.",
 						{
 							"type": "entries",
 							"name": "Glyph Key",
