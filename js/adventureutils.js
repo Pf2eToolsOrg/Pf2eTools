@@ -58,7 +58,7 @@ function scrollClick (scrollTo) {
 
 window.addEventListener("load", () => {
 	// Add a selector to match exact text to jQuery's arsenal
-	$.expr[':'].textEquals = function(el, i, m) {
+	$.expr[':'].textEquals = (el, i, m) => {
 		const searchText = m[3];
 		const match = $(el).text().trim().match(`^${searchText}$`);
 		return match && match.length > 0;
