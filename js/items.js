@@ -216,6 +216,7 @@ function populateTablesAndFilters () {
 		if (curitem.age) type.push(curitem.age);
 		if (curitem.weaponCategory) type.push(curitem.weaponCategory + " Weapon");
 		if (curitem.type) type.push(Parser.itemTypeToAbv(curitem.type));
+		if (curitem.poison) type.push("Poison");
 		curitem.typeText = type.join(", "); // for loadhash to use
 		const tierTags = [];
 		tierTags.push(curitem.tier ? curitem.tier : "None");

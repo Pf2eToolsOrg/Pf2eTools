@@ -1396,7 +1396,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must make a DC 10 Constitution saving throw. On a failed save, it takes 6 (1d12) poison damage and is poisoned for 24 hours. On a successful save, the creature takes half damage and isn't poisoned."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Axe of the Dwarvish Lords",
@@ -1860,7 +1861,8 @@
 			"page": "153",
 			"entries": [
 				"You can use the poison in this vial to coat one slashing or piercing weapon or up to three pieces of ammunition. Applying the poison takes an action. A creature hit by the poisoned weapon or ammunition must make a DC 10 Constitution saving throw or take 1d4 poison damage. Once applied, the poison retains potency for 1 minute before drying."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Basket",
@@ -2600,7 +2602,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or take 10 (3d6) poison damage, and must repeat the saving throw at the start of each of its turns. On each successive failed save, the character takes 3 (1d6) poison damage. After three successful saves, the poison ends."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Calligrapher's Supplies",
@@ -2955,7 +2958,8 @@
 			"page": "258",
 			"entries": [
 				"This poison must be harvested from a dead or incapacitated {@creature carrion crawler|mm}. A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or be poisoned for 1 minute. The poisoned creature is paralyzed. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Cartographer's Tools",
@@ -4324,7 +4328,8 @@
 			"page": "258",
 			"entries": [
 				"This poison is typically made only by the {@creature drow|mm}, and only in a place far removed from sunlight. A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or be poisoned for 1 hour. If the saving throw fails by 5 or more, the creature is also unconscious while poisoned in this way. The creature wakes up if it takes damage or if another creature takes an action to shake it awake."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Drown",
@@ -4655,7 +4660,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become poisoned for 8 hours. The poisoned creature is unconscious. The creature wakes up if it takes damage or if another creature takes an action to shake it awake."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Eversmoking Bottle",
@@ -6876,7 +6882,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become poisoned for 1 hour. The poisoned creature is blinded."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Manacles",
@@ -7128,7 +7135,8 @@
 			"page": "258",
 			"entries": [
 				"A creature that ingests this poison suffers no effect until the stroke of midnight. If the poison has not been neutralized before then, the creature must succeed on a DC 17 Constitution saving throw, taking 31 (9d6) poison damage on a failed save, or half as much damage on a successful one."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Mind Lash",
@@ -7547,7 +7555,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or become poisoned for 24 hours. The poisoned creature is unconscious. The creature wakes up if it takes damage."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Opal of the Ild Rune",
@@ -7719,7 +7728,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 16 Constitution saving throw or take 3 (1d6) poison damage and become poisoned. The poisoned creature must repeat the saving throw every 24 hours, taking 3 (1d6) poison damage on a failed save. Until this poison ends, the damage the poison deals can't be healed by any means. After seven successful saving throws, the effect ends and the creature can heal normally."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Pan Flute",
@@ -8613,7 +8623,8 @@
 			"page": "258",
 			"entries": [
 				"This poison must be harvested from a dead or incapacitated {@creature purple worm|mm}. A creature subjected to this poison must make a DC 19 Constitution saving throw, taking 42 (12d6) poison damage on a failed save, or half as much damage on a successful one."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Quaal's Feather Token, Anchor",
@@ -9925,7 +9936,8 @@
 			"page": "258",
 			"entries": [
 				"This poison must be harvested from a dead or incapacitated {@creature giant poisonous snake|mm}. A creature subjected to this poison must succeed on a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Shard of the Ise Rune",
@@ -10974,6 +10986,21 @@
 			]
 		},
 		{
+			"name": "Survival Mantle",
+			"type": "MA",
+			"armor": true,
+			"rarity": "Unknown",
+			"weight": "40",
+			"ac": "15",
+			"stealth": true,
+			"source": "VGM",
+			"page": "81",
+			"entries": [
+				"This carapace-like augmentation encases portions of the wearer's shoulders, neck, and chest. A survival mantle is equivalent to a suit of nonmagical half plate armor and takes just as long to don or doff. It can't be worn with other kinds of armor.",
+				"A creature wearing a survival mantle can breathe normally in any environment (including a vacuum) and has advantage on saving throws against harmful gases (such as those created by a {@spell cloudkill} spell, a {@spell stinking cloud} spell, inhaled poisons, and the breath weapons of some dragons)."
+			]
+		},
+		{
 			"name": "Sword of Kas",
 			"type": "M",
 			"weaponCategory": "Martial",
@@ -11343,7 +11370,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become poisoned for 4d6 hours. The poisoned creature is incapacitated."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Totem",
@@ -12463,7 +12491,8 @@
 			"page": "258",
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 11 Constitution saving throw or become poisoned for 1 hour. The poisoned creature can't knowingly speak a lie, as if under the effect of a {@spell zone of truth|phb} spell."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Two-Person Tent",
@@ -13311,7 +13340,8 @@
 			"page": "258",
 			"entries": [
 				"This poison must be harvested from a dead or incapacitated {@creature wyvern|mm}. A creature subjected to this poison must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one."
-			]
+			],
+			"poison": true
 		},
 		{
 			"name": "Yew Wand",
