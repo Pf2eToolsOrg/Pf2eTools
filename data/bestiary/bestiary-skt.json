@@ -1,6 +1,77 @@
 {
 	"monster": [
 		{
+			"name": "Aarakocra Simulacra",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"aarakocra"
+				]
+			},
+			"source": "SKT",
+			"alignment": "neutral good",
+			"ac": "12",
+			"hp": "6 (3d4)",
+			"speed": "20 ft., fly 50 ft.",
+			"str": "10",
+			"dex": "14",
+			"con": "10",
+			"int": "11",
+			"wis": "12",
+			"cha": "11",
+			"skill": {
+				"perception": "+5"
+			},
+			"passive": "15",
+			"languages": "Auran, Aarakocra",
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Dive Attack",
+					"text": [
+						"If the aarakocra is flying and dives at least 30 ft. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 (1d6) damage to the target."
+					],
+					"attack": [
+						"Dive Attack||1d6"
+					]
+				},
+				{
+					"name": "Simulacra",
+					"text": [
+						"When a simulacrum drops to O hit points or is sub­jected to a successful dispel magic spell (DC 17), it reverts to ice and snow and is destroyed."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Talon",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) slashing damage."
+					],
+					"attack": [
+						"Talon|4|1d4+2"
+					]
+				},
+				{
+					"name": "Javelin",
+					"text": [
+						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					],
+					"attack": [
+						"Javelin|4|1d6+2"
+					]
+				},
+				{
+					"name": "Summon Air Elemental",
+					"text": [
+						"Five aarakocra within 30 feet of each other can magically summon an air elemental. Each of the five must use its action and movement on three consecutive turns to perform an aerial dance and must maintain concentration while doing so (as if concentrating on a spell). When all five have finished their third turn of the dance, the elemental appears in an unoccupied space within 60 feet of them. It is friendly toward them and obeys their spoken commands. It remains for 1 hour, until it or all its summoners die, or until any of its summoners dismisses it as a bonus action. A summoner can't perform the dance again until it finishes a short rest. When the elemental returns to the Elemental Plane of Air, any aarakocra within 5 feet of it can return with it."
+					]
+				}
+			],
+			"page": 188
+		},
+		{
 			"name": "Augrek Brighthelm",
 			"size": "M",
 			"type": {
@@ -419,6 +490,81 @@
 				}
 			],
 			"page": 248
+		},
+		{
+			"name": "Ghelryn Foehammer",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					{
+						"tag": "dwarf",
+						"prefix": "shield"
+					}
+				]
+			},
+			"source": "SKT",
+			"alignment": "lawful good",
+			"ac": "14 (breastplate, shield)",
+			"hp": "30 (4d8+12)",
+			"speed": "25 ft.",
+			"str": "18",
+			"dex": "7",
+			"con": "17",
+			"int": "10",
+			"wis": "11",
+			"cha": "11",
+			"skill": {
+				"athletics": "+6",
+				"intimidation": "+2",
+				"perception": "+2"
+			},
+			"resist": "poison",
+			"senses": "darkvision 60 ft.",
+			"passive": "12",
+			"languages": "Common, Dwarvish",
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"text": [
+						"Ghelryn has advantage on saving throws against poison."
+					]
+				},
+				{
+					"name": "Giant Slayer",
+					"text": [
+						"Any weapon attack that Ghelryn makes against a giant deals an extra 7 (2d6) damage on a hit."
+					]
+				},
+				{
+					"name": "Roleplaying Information",
+					"text": [
+						"The blacksmith Ghelryn has a good heart, but he hates orcs and giants\u2014hates them with a fiery passion. He considers it the solemn duty of all dwarves to cave in their skulls!",
+						"Ideal: \"It is incumbent upon every dwarf to forge a legacy.\"",
+						"Bond: \"I stand for Clan Foehammer and all dwarvenkind.\"",
+						"Flaw: \"I never run from a fight, especially if it involves killing orcs or giants.\""
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"Ghelryn makes two battleaxe attacks."
+					]
+				},
+				{
+					"name": "Battleaxe",
+					"text": [
+						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage, or 9 (1d10+4) slashing damage if used with two hands."
+					],
+					"attack": [
+						"|4|1d8"
+					]
+				}
+			],
+			"page": 255
 		},
 		{
 			"name": "Hulking Crab",
@@ -1105,6 +1251,78 @@
 			"page": 252
 		},
 		{
+			"name": "Othovir",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					{
+						"tag": "human",
+						"prefix": "Illuskan"
+					}
+				]
+			},
+			"source": "SKT",
+			"alignment": "lawful neutral",
+			"ac": "10 (13 with mage armor)",
+			"hp": "16 (3d8+3)",
+			"speed": "30 ft.",
+			"str": "11",
+			"dex": "10",
+			"con": "13",
+			"int": "12",
+			"wis": "14",
+			"cha": "16",
+			"skill": {
+				"deception": "+5",
+				"insight": "+4",
+				"persuasion": "+5"
+			},
+			"passive": "12",
+			"languages": "Common, Elvish",
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Spellcasting",
+					"text": [
+						"Othovir is a 2nd-level spellcaster. His spellcasting ability is Charisma (spell save DC 13; +5 to hit with spell attacks). He has the following sorcerer spells prepared:",
+						"Cantrips (at will): blade ward, fire bolt, mending, prestidigitation",
+						"1st level (3 slots): mage armor, thunderwave, witch bolt"
+					]
+				},
+				{
+					"name": "Roleplaying Information",
+					"text": [
+						"Othovir is a gifted harness-maker who doesn't talk about his family or where he came from. He cares about his business, his clients, and his good name.",
+						"Ideal: \"Find what you do well, and do it to the best of your ability.\"",
+						"Bond: \"I won't allow my name to be tarnished.\"",
+						"Flaw: \"I get angry when others pry into my private life.\""
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Rapier",
+					"text": [
+						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d8) piercing damage."
+					],
+					"attack": [
+						"||1d8"
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"text": [
+						"Othovir adds 2 to its AC against one melee attack that would hit him. To do so, Othovir must see the attacker and be wielding a melee weapon."
+					]
+				}
+			],
+			"spells": "blade ward, fire bolt, mending, prestidigitation, mage armor, thunderwave, witch bolt",
+			"page": 255
+		},
+		{
 			"name": "Purple Wormling",
 			"size": "L",
 			"type": "monstrosity",
@@ -1425,6 +1643,81 @@
 				}
 			],
 			"page": 242
+		},
+		{
+			"name": "Urgala Meltimer",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					{
+						"tag": "human",
+						"prefix": "Turami"
+					}
+				]
+			},
+			"source": "SKT",
+			"alignment": "lawful good",
+			"ac": "12 (leather)",
+			"hp": "58 (9d8+18)",
+			"speed": "30 ft.",
+			"str": "16",
+			"dex": "13",
+			"con": "14",
+			"int": "12",
+			"wis": "14",
+			"cha": "13",
+			"skill": {
+				"athletics": "+5",
+				"intimidation": "+3"
+			},
+			"passive": "12",
+			"languages": "Common, Giant",
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Giant Slayer",
+					"text": [
+						"Any weapon attack that Urgala makes against a giant deals an extra 7 (2d6) damage on a hit."
+					]
+				},
+				{
+					"name": "Roleplaying Information",
+					"text": [
+						"A retired adventurer, Urgala owns a respectable inn, the North­ shield House, and she doesn't want to see it or her neighbors' homes destroyed. She has no tolerance for monsters or bullies.",
+						"Ideal: \"We live in a violent world, and sometimes violence is necessary for survival.\"",
+						"Bond: \"My home is my life. Threaten it, and I'll hurt you.\"",
+						"Flaw: \"I know how treacherous and greedy adventurers can be. I don't trust them\u2014any of them.\""
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"Urgala makes two attacks with her morningstar or her shortbow."
+					]
+				},
+				{
+					"name": "Morningstar",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+					],
+					"attack": [
+						"|3|1d8"
+					]
+				},
+				{
+					"name": "Shortbow",
+					"text": [
+						"Ranged Weapon Attack: +3 to hit, range 80/320 ft., one target. Hit: 5 (1d6+1) piercing damage. Urgala carries a quiver of twenty arrows."
+					],
+					"attack": [
+						"|4|1d6+1"
+					]
+				}
+			],
+			"page": 254
 		},
 		{
 			"name": "Uthgardt Shaman",
