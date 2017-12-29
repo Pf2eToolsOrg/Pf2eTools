@@ -1,6 +1,55 @@
 {
 	"monster": [
 		{
+			"name": "Ash Zombie",
+			"size": "M",
+			"type": "undead",
+			"source": "LMoP",
+			"alignment": "neutral evil",
+			"ac": "8",
+			"hp": "22 (3d8+9)",
+			"speed": "20 ft.",
+			"str": "13",
+			"dex": "6",
+			"con": "16",
+			"int": "3",
+			"wis": "6",
+			"cha": "5",
+			"save": "Wis +0",
+			"immune": "poison",
+			"conditionImmune": "poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": "8",
+			"languages": "understands all languages it spoke in life but can't speak",
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Undead Fortitude",
+					"text": [
+						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
+					]
+				},
+				{
+					"name": "Ash Puff",
+					"text": [
+						" The first time the zombie takes damage, any living creature within 5 feet of the zombie must succeed on a DC 10 Constitution saving throw or gain disadvantage on attack rolls, saving throws, and ability checks for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on it early with a successful save."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Slam",
+					"text": [
+						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) bludgeoning damage."
+					],
+					"attack": [
+						"Slam|3|1d6+1"
+					]
+				}
+			],
+			"page": 31
+		},
+		{
 			"name": "Evil Mage",
 			"size": "M",
 			"type": {
