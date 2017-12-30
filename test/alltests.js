@@ -9,6 +9,7 @@ var results = [];
 const expected = [];
 const existing = [];
 
+console.log(`##### Validating the JSON schemata #####`);
 // Loop through each non-helper schema and push all validation results.
 fs.readdirSync("./test/schema")
 	.filter(file => file.endsWith(".json")) // ignore directories
@@ -36,7 +37,9 @@ fs.readdirSync(`./test/schema`)
 		})
 	});
 
-console.log("All schema tests passed.");
+console.log(`All schema tests passed.
+
+##### Reconciling the PNG tokens against the bestiary JSON #####`);
 
 // Loop through each bestiary JSON file push the list of expected PNG files.
 fs.readdirSync("./data/bestiary")
