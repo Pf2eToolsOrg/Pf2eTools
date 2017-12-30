@@ -342,8 +342,7 @@ function loadhash (id) {
 		$("td span#senses").html("");
 	}
 
-	var passive = mon.passive || (10 + perception).toString;
-	$("td span#pp").html(passive)
+	$("td span#pp").html(mon.passive)
 
 	var languages = mon.languages;
 	if (languages) {

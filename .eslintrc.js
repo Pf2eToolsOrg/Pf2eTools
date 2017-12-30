@@ -53,6 +53,7 @@ module.exports = {
 		"no-duplicate-case": "error",
 		"no-empty-character-class": "error",
 		"no-empty-pattern": "error",
+		"no-eval": "error",
 		"no-ex-assign": "error",
 		"no-extra-bind": "error",
 		"no-extra-boolean-cast": "error",

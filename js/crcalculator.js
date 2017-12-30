@@ -219,7 +219,7 @@ function calculatecr () {
 		}
 	}
 
-	let cr = ((eval(offensiveCR) + eval(defensiveCR)) / 2).toString();
+	let cr = ((fractionStrToDecimal(offensiveCR) + fractionStrToDecimal(defensiveCR)) / 2).toString();
 
 	if (cr === "0.5625") cr = "1/2"
 	if (cr === "0.5") cr = "1/2"
@@ -285,4 +285,8 @@ function calculatehp () {
 	const avghp = $("#hdval").html().split("d")[1] / 2 + 0.5;
 	const conmod = Math.floor(($("#con").val() - 10) / 2);
 	return Math.round((avghp + conmod) * $("#hd").val());
+}
+
+function fractionStrToDecimal (str) {
+	return str === "0" ? 0 : str.split('/').reduce((numerator, denominator) => numerator / denominator, 1);
 }
