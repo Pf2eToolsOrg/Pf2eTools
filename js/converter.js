@@ -1,20 +1,58 @@
 "use strict";
-window.onload = loadparser
+window.onload = loadparser;
 
 function moveon (cur) {
 	return (!cur.toUpperCase().indexOf("ACTIONS") || !cur.toUpperCase().indexOf("LEGENDARY ACTIONS") || !cur.toUpperCase().indexOf("REACTIONS"))
 }
 
+function tryConvertNumber (strNumber) {
+	try {
+		return Number(strNumber)
+	} catch (e) {
+		return strNumber;
+	}
+}
+
+function tryParseType (strType) {
+	try {
+		const m = /^(.*?) (\(.*?\))\s*$/.exec(strType);
+		if (m) {
+			return {type: m[1], tags: m[2].split(",").map(s => s.replace(/\(/g, "").replace(/\)/g, "").trim())}
+		}
+		return strType;
+	} catch (e) {
+		return strType;
+	}
+}
+
+function tryGetStat (strLine) {
+	try {
+		return tryConvertNumber(/(\d+) \(.*?\)/.exec(strLine)[1]);
+	} catch (e) {
+		return 0;
+	}
+}
+
+const SKILL_SPACE_MAP = {
+	"sleightofhand": "sleight of hand",
+	"animalhandling": "animal handling"
+};
+
 function loadparser () {
 	// parse it on click
 	$("button#parsestatblock").click(function () {
-		var statblock = $("textarea#statblock").val().split("\n");
-		var stats = {};
+		const statblock = $("textarea#statblock").val().split("\n");
+		const stats = {};
 
-		for (var i = 0; i < statblock.length; i++) {
-			var curline = statblock[i];
+		stats.source = $("input#source").val();
 
-			stats.source = $("input#source").val();
+		let prevLine = null;
+		let curline = null;
+		for (let i = 0; i < statblock.length; i++) {
+			prevLine = curline;
+			curline = statblock[i].trim();
+
+			if (curline === "") continue;
 
 			// name of monster
 			if (i === 0) {
@@ -28,6 +66,7 @@ function loadparser () {
 			if (i === 1) {
 				stats.size = curline[0];
 				stats.type = curline.split(",")[0].split(" ").splice(1).join(" "); // + ", " + $("input#source").val();
+				stats.type = tryParseType(stats.type);
 
 				stats.alignment = curline.split(", ")[1];
 				continue;
@@ -54,14 +93,36 @@ function loadparser () {
 			if (i === 5) continue;
 			// ability scores
 			if (i === 6) {
-				var abilities = curline.split(/ \(([+-–‒])?[0-9]*\) ?/g)
-				stats.str = abilities[0];
-				stats.dex = abilities[2];
-				stats.con = abilities[4];
-				stats.int = abilities[6];
-				stats.wis = abilities[8];
-				stats.cha = abilities[10];
+				const abilities = curline.split(/ \(([+-–‒])?[0-9]*\) ?/g);
+				stats.str = tryConvertNumber(abilities[0]);
+				stats.dex = tryConvertNumber(abilities[2]);
+				stats.con = tryConvertNumber(abilities[4]);
+				stats.int = tryConvertNumber(abilities[6]);
+				stats.wis = tryConvertNumber(abilities[8]);
+				stats.cha = tryConvertNumber(abilities[10]);
 				continue;
+			}
+
+			// alternate ability scores
+			switch (prevLine.toLowerCase()) {
+				case "str":
+					stats.str = tryGetStat(curline);
+					break;
+				case "dex":
+					stats.dex = tryGetStat(curline);
+					break;
+				case "con":
+					stats.con = tryGetStat(curline);
+					break;
+				case "int":
+					stats.int = tryGetStat(curline);
+					break;
+				case "wis":
+					stats.wis = tryGetStat(curline);
+					break;
+				case "cha":
+					stats.cha = tryGetStat(curline);
+					break;
 			}
 
 			// saves (optional)
@@ -73,6 +134,22 @@ function loadparser () {
 			// skills (optional)
 			if (!curline.indexOf("Skills ")) {
 				stats.skill = [curline.split("Skills ")[1]];
+				if (stats.skill.length === 1) stats.skill = stats.skill[0];
+				const split = stats.skill.split(",");
+				const newSkills = {};
+				try {
+					split.forEach(s => {
+						const splSpace = s.split(" ");
+						const val = splSpace.pop().trim();
+						let name = splSpace.join(" ").toLowerCase().trim().replace(/ /g, "");
+						name = SKILL_SPACE_MAP[name] || name;
+						newSkills[name] = val;
+					});
+					stats.skill = newSkills;
+				} catch (ignored) {
+					// because the linter doesn't like empty blocks...
+					continue;
+				}
 				continue;
 			}
 
@@ -99,7 +176,7 @@ function loadparser () {
 				stats.senses = curline.split("Senses ")[1].split(" passive Perception ")[0];
 				if (!stats.senses.indexOf("passive Perception")) stats.senses = "";
 				if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
-				stats.passive = curline.split(" passive Perception ")[1];
+				stats.passive = tryConvertNumber(curline.split(" passive Perception ")[1]);
 				continue;
 			}
 
@@ -122,21 +199,21 @@ function loadparser () {
 				stats.reaction = [];
 				stats.legendary = [];
 
-				var curtrait = {};
+				let curtrait = {};
 
-				var ontraits = true;
-				var onactions = false;
-				var onreactions = false;
-				var onlegendaries = false;
-				var onlegendarydescription = false;
+				let ontraits = true;
+				let onactions = false;
+				let onreactions = false;
+				let onlegendaries = false;
+				let onlegendarydescription = false;
 
 				// keep going through traits til we hit actions
 				while (i < statblock.length) {
 					if (moveon(curline)) {
 						ontraits = false;
-						onactions = !curline.toUpperCase().indexOf("ACTIONS")
-						onreactions = !curline.toUpperCase().indexOf("REACTIONS")
-						onlegendaries = !curline.toUpperCase().indexOf("LEGENDARY ACTIONS")
+						onactions = !curline.toUpperCase().indexOf("ACTIONS");
+						onreactions = !curline.toUpperCase().indexOf("REACTIONS");
+						onlegendaries = !curline.toUpperCase().indexOf("LEGENDARY ACTIONS");
 						onlegendarydescription = onlegendaries;
 
 						i++;
@@ -145,7 +222,7 @@ function loadparser () {
 
 					// get the name
 					curtrait.name = "";
-					curtrait.text = []
+					curtrait.text = [];
 
 					if (!onlegendarydescription) {
 						// first pargraph
@@ -174,7 +251,11 @@ function loadparser () {
 				}
 			}
 		}
+		// for the user to fill out
+		stats.page = 0;
 
-		$("textarea#jsonoutput").text(JSON.stringify(stats, null, " "));
+		let out = JSON.stringify(stats, null, " ");
+		out = out.replace(/([1-9]\d*)?d([1-9]\d*)(\s?)([+-])(\s?)(\d+)?/g, "$1d$2$4$6");
+		$("textarea#jsonoutput").text(out);
 	})
 }
