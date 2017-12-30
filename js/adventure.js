@@ -44,8 +44,12 @@ function onJsonLoad (data) {
 	}
 	adventuresList.append(tempString);
 
-	// add show/hide handles to section names
-	$(`ul.adv-headers`).prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0").append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="false">[\u2013]</span>`);
+	// Add show/hide handles to section names, and update styles
+	const allAdvHeaders = $(`ul.adv-headers`);
+	// add styles to all
+	allAdvHeaders.prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0");
+	// add expand/collapse to only those with children
+	allAdvHeaders.filter((i, ele) => $(ele).children().length).prev(`li`).find(`a`).append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="false">[\u2013]</span>`);
 
 	const list = new List("listcontainer", {
 		valueNames: ['name'],
@@ -64,7 +68,9 @@ function hashChange () {
 	const fromIndex = adventures.filter(adv => adv.id === advId);
 	if (fromIndex.length) {
 		document.title = `${fromIndex[0].name} - 5etools`;
-		$(`.adv-header`).html(fromIndex[0].name);
+		// prevent TftYP names from causing the header to wrap
+		const shortName = fromIndex[0].name.includes(Parser.SOURCE_JSON_TO_FULL[SRC_TYP]) ? fromIndex[0].name.replace(Parser.SOURCE_JSON_TO_FULL[SRC_TYP], Parser.sourceJsonToAbv(SRC_TYP)) : fromIndex[0].name;
+		$(`.adv-header`).html(shortName);
 		$(`.adv-message`).html("Select a chapter on the left, and browse the content on the right");
 		loadAdventure(fromIndex[0], advId, hashParts);
 	} else {

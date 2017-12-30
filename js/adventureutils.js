@@ -29,7 +29,7 @@ function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
 function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) {
 	let out =
 		`<ul class="adv-headers">`;
-	chapter.headers.forEach(c => {
+	chapter.headers && chapter.headers.forEach(c => {
 		out +=
 			`<li>
 				<a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${encodeForHash(c)}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="scrollClick('${c.replace("'", "\\'")}')"` : ""}>${c}</a>
@@ -43,16 +43,18 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 function scrollClick (scrollTo) {
 	// textEquals selector defined below; added on window load
 	const goTo = $(`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`);
-	if (goTo[0]) {
-		goTo[0].scrollIntoView();
+	if (goTo.length) {
+		goTo[goTo.length - 1].scrollIntoView();
+		return;
 	}
 	const goToSub = $(`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`);
-	if (goToSub[0]) {
-		goToSub[0].scrollIntoView();
+	if (goToSub.length) {
+		goToSub[goToSub.length - 1].scrollIntoView();
+		return;
 	}
 	const goToInset = $(`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`);
-	if (goToInset[0]) {
-		goToInset[0].scrollIntoView();
+	if (goToInset.length) {
+		goToInset[goToInset.length - 1].scrollIntoView();
 	}
 }
 
