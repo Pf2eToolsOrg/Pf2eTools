@@ -31,16 +31,17 @@
 									"type": "object",
 									"properties": {
 										"type": {
-											"type": "string"
+											"type": "string",
+											"enum": ["chapter", "appendix", "part", "episode"]
 										},
-										"number": {
-											"type": "integer"
+										"identifier": {
+											"type": ["integer", "string"]
 										}
 									},
 									"additionalProperties": false,
 									"required": [
 										"type",
-										"number"
+										"identifier"
 									]
 								}
 							},
