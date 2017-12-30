@@ -21,6 +21,7 @@ pipeline:
     port: 22
     user: root
     secrets: [ ssh_key ]
+    command_timeout: 120
     script:
       - bash /scripts/dev-deploy.sh
     when:
@@ -33,6 +34,7 @@ pipeline:
     port: 22
     user: root
     secrets: [ ssh_key ]
+    command_timeout: 120
     script:
       - bash /scripts/prod-deploy.sh
     when:
