@@ -434,6 +434,10 @@ function EntryRenderer () {
 								fauxEntry.href.path = "conditions.html";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							case "@background":
+								fauxEntry.href.path = "backgrounds.html";
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
 						}
 					}
 				} else {

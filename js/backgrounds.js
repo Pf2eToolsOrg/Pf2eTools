@@ -23,7 +23,7 @@ function onJsonLoad (data) {
 		// populate table
 		tempString +=
 			`<li ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${encodeURI(bg.name).toLowerCase()}' title='${bg.name}'>
+				<a id='${i}' href='#${encodeForHash([bg.name, Parser.sourceJsonToAbv(bg.source)])}' title='${bg.name}'>
 					<span class='name col-xs-9'>${bg.name.replace("Variant ", "")}</span> 
 					<span class='source col-xs-3 source${bg.source}' title='${Parser.sourceJsonToFull(bg.source)}'>${Parser.sourceJsonToAbv(bg.source)}</span>
 				</a>
