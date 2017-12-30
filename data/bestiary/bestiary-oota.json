@@ -1271,6 +1271,73 @@
 			"page": 226
 		},
 		{
+			"source": "OotA",
+			"name": "Emerald Enclave Scout",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": "lawful neutral",
+			"ac": "16 (breastplate)",
+			"hp": "19 (3d8+6)",
+			"speed": "25 ft.",
+			"str": 11,
+			"dex": 14,
+			"con": 14,
+			"int": 11,
+			"wis": 13,
+			"cha": 11,
+			"skill": {
+				"nature": "+4",
+				"perception": "+5",
+				"stealth": "+6",
+				"survival": "+5"
+			},
+			"resist": "poison",
+			"senses": "darkvision 60 ft.",
+			"passive": 15,
+			"languages": "Common, Dwarvish",
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"text": [
+						"The scout has advantage on saving throws against poison."
+					]
+				},
+				{
+					"name": "Keen Hearing and Sight",
+					"text": [
+						"The scout has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The scout makes two melee attacks."
+					]
+				},
+				{
+					"name": "War Pick",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+					]
+				}
+			],
+			"page": 130
+		},
+		{
 			"name": "Female Steeder",
 			"size": "L",
 			"type": "beast",
@@ -1442,6 +1509,42 @@
 			],
 			"spells": "alter self, detect magic, dispel magic, phantasmal force, confusion, dream, mislead, programmed illusion, seeming, mirage arcane, modify memory, project image",
 			"page": 238
+		},
+		{
+			"source": "OotA",
+			"name": "Giant Riding Lizard",
+			"size": "L",
+			"type": "beast",
+			"alignment": "unaligned",
+			"ac": "12 (natural armor)",
+			"hp": "19 (3d10+3)",
+			"speed": "30 ft., climb 30ft.",
+			"str": 15,
+			"dex": 12,
+			"con": 13,
+			"int": 2,
+			"wis": 10,
+			"cha": 5,
+			"senses": "darkvision 30 ft.",
+			"passive": 10,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Spider Climb",
+					"text": [
+						"The lizard can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+					]
+				}
+			],
+			"page": 131
 		},
 		{
 			"name": "Graz'zt",
@@ -1898,6 +2001,119 @@
 			],
 			"spells": "acid splash, detect magic, blight, contagion, gaseous form",
 			"page": 243
+		},
+		{
+			"source": "OotA",
+			"name": "Lords' Alliance Guard",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": "chaotic good",
+			"ac": "16 (chain shirt, shield)",
+			"hp": "11 (2d8+2)",
+			"speed": "30ft.",
+			"str": 14,
+			"dex": 12,
+			"con": 12,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"skill": {
+				"perception": "+2"
+			},
+			"senses": "darkvision 60ft.",
+			"passive": 12,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"text": [
+						"The guard has advantage on saving throws against poison."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Halberd",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 10ft., one target. Hit: 7 (1d10+2) slashing damage."
+					]
+				}
+			],
+			"page": 131
+		},
+		{
+			"source": "OotA",
+			"name": "Lords' Alliance Spy",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": "neutral",
+			"ac": "13 (leather armor)",
+			"hp": "27 (6d8)",
+			"speed": "30ft.",
+			"str": 10,
+			"dex": 15,
+			"con": 10,
+			"int": 12,
+			"wis": 14,
+			"cha": 16,
+			"skill": {
+				"deception": "+5",
+				"insight": "+4",
+				"investigation": "+5",
+				"perception": "+6",
+				"persuasion": "+5",
+				"sleight of hand": "+4",
+				"stealth": "+4"
+			},
+			"senses": "",
+			"passive": 16,
+			"languages": "Common, Dwarvish",
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Cunning Action",
+					"text": [
+						"On each of its turns, the spy can use a bonus action to take the Dash, Disengage, or Hide action."
+					]
+				},
+				{
+					"name": "Sneak Attack (1/Turn)",
+					"text": [
+						"The spy deals an extra 7 (2d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the spy that isn't incapacitated and the spy doesn't have disadvantage on the attack roll."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The spy makes two melee attacks."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					]
+				},
+				{
+					"name": "Hand Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage."
+					]
+				}
+			],
+			"page": 131
 		},
 		{
 			"name": "Male Steeder",
@@ -2461,6 +2677,61 @@
 			"page": 226
 		},
 		{
+			"source": "OotA",
+			"name": "Veteran Of The Gauntlet",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": "lawful good",
+			"ac": "17 (splint)",
+			"hp": "58 (9d8+18)",
+			"speed": "30ft.",
+			"str": 16,
+			"dex": 13,
+			"con": 14,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"skill": {
+				"athletics": "+5",
+				"perception": "+2"
+			},
+			"passive": 12,
+			"languages": "Common, Dwarvish",
+			"cr": "3",
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The veteran makes two longsword attacks. If it has a shorts word drawn, it can also make a shortsword attack."
+					]
+				},
+				{
+					"name": "Longsword",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage, or 8 (1d10+3) slashing dam age if used with two hands."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"text": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage."
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+					]
+				}
+			],
+			"page": 130
+		},
+		{
 			"name": "Yeenoghu",
 			"size": "H",
 			"type": {
@@ -2654,6 +2925,61 @@
 				}
 			],
 			"page": 233
+		},
+		{
+			"source": "OotA",
+			"name": "Zhentarim Thug",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": "neutral",
+			"ac": "11 (leather armor)",
+			"hp": "32 (5d8+10)",
+			"speed": "30ft.",
+			"str": 15,
+			"dex": 11,
+			"con": 14,
+			"int": 10,
+			"wis": 10,
+			"cha": 11,
+			"skill": {
+				"intimidation": "+2"
+			},
+			"passive": 10,
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Pack Tactics",
+					"text": [
+						"The thug has advantage on an attack roll against a creature if at least one of the thug's allies is within 5 feet of the creature and the ally isn't incapacitated."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"text": [
+						"The thug makes two melee attacks"
+					]
+				},
+				{
+					"name": "Mace",
+					"text": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"text": [
+						"Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+					]
+				}
+			],
+			"page": 131
 		},
 		{
 			"name": "Zuggtmoy",
