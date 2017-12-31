@@ -13,7 +13,7 @@ function makeContentsBlock (i, loc) {
 		const tableName = getTableName(loc, t);
 		out +=
 			`<li>
-				<a id="${i},${j}" href="#${encodeForHash([loc.race, loc.source, t.option])}" title="${tableName}">${tableName}</a>
+				<a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.race, loc.source, t.option])}" title="${tableName}">${tableName}</a>
 			</li>`;
 	});
 

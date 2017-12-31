@@ -10,20 +10,6 @@ let tableDefault;
 
 const entryRenderer = new EntryRenderer();
 
-function getNames (nameStack, entry) {
-	if (entry.name) nameStack.push(entry.name);
-	if (entry.entries) {
-		for (const eX of entry.entries) {
-			getNames(nameStack, eX);
-		}
-	}
-	if (entry.items) {
-		for (const eX of entry.items) {
-			getNames(nameStack, eX);
-		}
-	}
-}
-
 function onJsonLoad (data) {
 	rulesList = data.variantrule;
 	tableDefault = $("#stats").html();
@@ -37,13 +23,13 @@ function onJsonLoad (data) {
 
 		const searchStack = [];
 		for (const e1 of curRule.entries) {
-			getNames(searchStack, e1);
+			EntryRenderer.getNames(searchStack, e1);
 		}
 
 		// populate table
 		tempString += `
 			<li ${FLTR_ID}='${i}'>
-				<a id='${i}' href='#${encodeForHash([curRule.name, curRule.source])}' title='${curRule.name}'>
+				<a id='${i}' href='#${UrlUtil.autoEncodeHash(curRule)}' title='${curRule.name}'>
 					<span class='name col-xs-10'>${curRule.name}</span>
 					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(curRule.source)}' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>

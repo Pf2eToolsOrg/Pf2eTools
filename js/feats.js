@@ -40,7 +40,7 @@ function onJsonLoad (data) {
 
 		tempString += `
 			<li ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${encodeForHash([name, curfeat.source])}' title='${name}'>
+				<a id='${i}' href='#${UrlUtil.autoEncodeHash(curfeat)}' title='${name}'>
 					<span class='${CLS_COL_1}'>${name}</span>
 					<span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span>
 					<span class='${CLS_COL_3}'>${ability.asText}</span>

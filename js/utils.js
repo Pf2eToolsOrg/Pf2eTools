@@ -492,13 +492,15 @@ function utils_getAbilityData (abObj) {
 // PARSING =============================================================================================================
 Parser = {};
 Parser._parse_aToB = function (abMap, a) {
-	a = a.trim();
+	if (a === undefined || a === null) throw new Error("undefined or null object passed to parser");
+	if (typeof a === "string") a = a.trim();
 	if (abMap[a] !== undefined) return abMap[a];
 	return a;
 };
 
 Parser._parse_bToA = function (abMap, b) {
-	b = b.trim();
+	if (b === undefined || b === null) throw new Error("undefined or null object passed to parser");
+	if (typeof b === "string") b = b.trim();
 	for (const v in abMap) {
 		if (!abMap.hasOwnProperty(v)) continue;
 		if (abMap[v] === b) return v
@@ -804,6 +806,39 @@ Parser.monTypeToPlural = function (type) {
 	return Parser._parse_aToB(Parser.MON_TYPE_TO_PLURAL, type);
 };
 
+Parser.CAT_ID_CREATURE = 1;
+Parser.CAT_ID_SPELL = 2;
+Parser.CAT_ID_BACKGROUND = 3;
+Parser.CAT_ID_ITEM = 4;
+Parser.CAT_ID_CLASS = 5;
+Parser.CAT_ID_CONDITION = 6;
+Parser.CAT_ID_FEAT = 7;
+Parser.CAT_ID_ELDRITCH_INVOCATION = 8;
+Parser.CAT_ID_PSIONIC = 9;
+Parser.CAT_ID_RACE = 10;
+Parser.CAT_ID_OTHER_REWARD = 11;
+Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
+Parser.CAT_ID_ADVENTURE = 13;
+
+Parser.CAT_ID_TO_FULL = {};
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] = "Background";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELDRITCH_INVOCATION] = "Eldritch Invocation";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] = "Psionic";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RACE] = "Race";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] = "Other Reward";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
+
+Parser.pageCategoryToFull = function (catId) {
+	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
+};
+
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
  *
@@ -985,6 +1020,13 @@ SRC_ToA = "ToA";
 SRC_ToD = "ToD";
 SRC_TTP = "TTP";
 SRC_TYP = "TftYP";
+SRC_TYP_AtG = "TftYP-AtG";
+SRC_TYP_DiT = "TftYP-DiT";
+SRC_TYP_TFoF = "TftYP-TFoF";
+SRC_TYP_THSoT = "TftYP-THSoT";
+SRC_TYP_TSC = "TftYP-TSC";
+SRC_TYP_ToH = "TftYP-ToH";
+SRC_TYP_WPM = "TftYP-WPM";
 SRC_VGM = "VGM";
 SRC_XGE = "XGE";
 SRC_OGA = "OGA";
@@ -1052,6 +1094,7 @@ PS_PREFIX_SHORT = "PS: ";
 UA_PREFIX = "Unearthed Arcana: ";
 UA_PREFIX_SHORT = "UA: ";
 PP3_SUFFIX = " (3pp)";
+TftYP_NAME = "Tales from the Yawning Portal";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CoS] = "Curse of Strahd";
@@ -1071,7 +1114,14 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SKT] = "Storm King's Thunder";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToA] = "Tomb of Annihilation";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToD] = "Tyranny of Dragons";
 Parser.SOURCE_JSON_TO_FULL[SRC_TTP] = "The Tortle Package";
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP] = "Tales from the Yawning Portal";
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_AtG] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_DiT] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TFoF] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_THSoT] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TSC] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_ToH] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_WPM] = TftYP_NAME;
 Parser.SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
 Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
 Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
@@ -1142,6 +1192,13 @@ Parser.SOURCE_JSON_TO_ABV[SRC_ToA] = "ToA";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToD] = "ToD";
 Parser.SOURCE_JSON_TO_ABV[SRC_TTP] = "TTP";
 Parser.SOURCE_JSON_TO_ABV[SRC_TYP] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_AtG] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_DiT] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_TFoF] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_THSoT] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_TSC] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_ToH] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_WPM] = "TftYP";
 Parser.SOURCE_JSON_TO_ABV[SRC_VGM] = "VGM";
 Parser.SOURCE_JSON_TO_ABV[SRC_XGE] = "XGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_OGA] = "OGA";
@@ -1368,7 +1425,9 @@ function initFilterBox (...filterList) {
 }
 
 // ENCODING/DECODING ===================================================================================================
-function encodeForHash (toEncode) {
+UrlUtil = function () {
+};
+UrlUtil.encodeForHash = function (toEncode) {
 	if (toEncode instanceof Array) {
 		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
 	} else {
@@ -1376,9 +1435,50 @@ function encodeForHash (toEncode) {
 	}
 
 	function encodeForHashHelper (part) {
-		return encodeURIComponent(part).toLowerCase().replace(/'/g, "%27")
+		return encodeURIComponent(part).toLowerCase().replace(/'/g, "%27");
 	}
-}
+};
+
+UrlUtil.autoEncodeHash = function (obj) {
+	const curPage = UrlUtil.getCurrentPage();
+	const encoder = UrlUtil.URL_TO_HASH_BUILDER[curPage];
+	if (!encoder) throw new Error(`No encoder found for page ${curPage}`);
+	return encoder(obj);
+};
+
+UrlUtil.getCurrentPage = function () {
+	const pSplit = window.location.pathname.split("/");
+	return pSplit[pSplit.length - 1];
+};
+
+UrlUtil.PG_BESTIARY = "bestiary.html";
+UrlUtil.PG_SPELLS = "spells.html";
+UrlUtil.PG_BACKGROUNDS = "backgrounds.html";
+UrlUtil.PG_ITEMS = "items.html";
+UrlUtil.PG_CLASSES = "classes.html";
+UrlUtil.PG_CONDITIONS = "conditions.html";
+UrlUtil.PG_FEATS = "feats.html";
+UrlUtil.PG_INVOCATIONS = "invocations.html";
+UrlUtil.PG_PSIONICS = "psionics.html";
+UrlUtil.PG_RACES = "races.html";
+UrlUtil.PG_REWARDS = "rewards.html";
+UrlUtil.PG_VARIATNRULES = "variantrules.html";
+UrlUtil.PG_ADVENTURE = "adventure.html";
+
+UrlUtil.URL_TO_HASH_BUILDER = {};
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = (it) => UrlUtil.encodeForHash([it.name, Parser.sourceJsonToAbv(it.source)]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = (it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_INVOCATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
 
 // SORTING =============================================================================================================
 // TODO refactor into a class
@@ -1477,9 +1577,4 @@ function addListShowHide () {
 		showSearchWrpr.hide();
 		hideSearchBtn.show();
 	});
-}
-
-// NODE ================================================================================================================
-if (typeof module !== "undefined") {
-	module.exports.encodeForHash = encodeForHash
 }

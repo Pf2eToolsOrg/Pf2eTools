@@ -379,7 +379,7 @@ function addSpells (data) {
 		// populate table
 		tempString += `
 			<li class='row' ${FLTR_ID}="${spI}">
-				<a id='${spI}' href='#${encodeForHash([spell.name, spell.source])}' title="${spell.name}">
+				<a id='${spI}' href='#${UrlUtil.autoEncodeHash(spell)}' title="${spell.name}">
 					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
 					<span class='source col-xs-1 col-xs-1-7 source${Parser.stringToCasedSlug(spell.source)}' title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
 					<span class='level col-xs-1 col-xs-1-5'>${levelText}</span>
@@ -515,6 +515,10 @@ function loadhash (id) {
 			`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`
 			, renderStack, 2);
 		renderStack.push(`</section></td></tr>`);
+	}
+
+	if (spell.page) {
+		renderStack.push(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(spell.source)}</i>, page ${spell.page}</td>`);
 	}
 
 	const topBorder = $("#topBorder");

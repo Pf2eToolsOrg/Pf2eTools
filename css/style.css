@@ -5,6 +5,13 @@
 	src: local('Convergence-Regular'), url('font/Convergence-Regular.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 400;
+	src: local('glyphicons-halflings-regular'), url('font/glyphicons-halflings-regular.ttf') format('truetype');
+}
+
 .unselectable {
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
@@ -88,6 +95,80 @@ header p {
 		max-height: 40em;
 	}
 }
+
+/* omnisearch */
+.omnisearch-output-wrapper {
+	width: 100%;
+	justify-content: flex-end;
+	display: none;
+}
+
+.omnisearch-output {
+	padding: 0.2em 0.7em;
+	border-radius: 0.2em;
+	z-index: 100;
+	position: absolute;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.omnisearch-output p {
+	margin: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+div.omnisearch-pagination-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+div.omnisearch-pagination-wrapper > span {
+	display: inline-block;
+	user-select: none;
+	padding: 2px;
+	font-size: 1.1em;
+	min-width: 20px;
+}
+
+div.omnisearch-pagination-wrapper > .pg-control {
+	cursor: pointer;
+}
+
+div.omnisearch-pagination-wrapper > .pg-left {
+	margin-right: auto;
+}
+
+div.omnisearch-pagination-wrapper > .pg-count {
+	margin: 0 auto;
+}
+
+div.omnisearch-pagination-wrapper > .pg-right {
+	margin-left: auto;
+}
+
+@media only screen and (min-width: 320px) {
+	.omnisearch-output {
+		max-width: 300px;
+		min-width: 270px;
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.omnisearch-output {
+		max-width: 460px;
+		min-width: 430px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.omnisearch-output {
+		max-width: 740px;
+		min-width: 500px;
+	}
+}
+
+/* *** */
 
 .view-col {
 	margin: 7px 7px 12px;

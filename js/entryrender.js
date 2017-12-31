@@ -341,11 +341,11 @@ function EntryRenderer () {
 				// baseURL is blank by default
 				href = `${self.baseUrl}${entry.href.path}#`;
 				if (entry.href.hash !== undefined) {
-					href += encodeForHash(entry.href.hash);
+					href += UrlUtil.encodeForHash(entry.href.hash);
 					if (entry.href.subhashes !== undefined) {
 						for (let i = 0; i < entry.href.subhashes.length; i++) {
 							const subHash = entry.href.subhashes[i];
-							href += `,${encodeForHash(subHash.key)}:${encodeForHash(subHash.value)}`
+							href += `,${UrlUtil.encodeForHash(subHash.key)}:${UrlUtil.encodeForHash(subHash.value)}`
 						}
 					}
 				}
@@ -510,6 +510,24 @@ EntryRenderer.getEntryDice = function (entry) {
 	}
 };
 
+/**
+ * Recursively find all the names of entries, useful for indexing
+ * @param nameStack an array to append the names to
+ * @param entry the base entry
+ */
+EntryRenderer.getNames = function (nameStack, entry) {
+	if (entry.name) nameStack.push(entry.name);
+	if (entry.entries) {
+		for (const eX of entry.entries) {
+			EntryRenderer.getNames(nameStack, eX);
+		}
+	} else if (entry.items) {
+		for (const eX of entry.items) {
+			EntryRenderer.getNames(nameStack, eX);
+		}
+	}
+};
+
 EntryRenderer._onImgLoad = function () {
 	if (typeof onimgload === "function") onimgload()
 };
@@ -521,3 +539,7 @@ EntryRenderer.HEAD_1 = "statsBlockSubHead";
 EntryRenderer.HEAD_2 = "statsInlineHead";
 EntryRenderer.HEAD_2_SUB_VARIANT = "statsInlineHeadSubVariant";
 EntryRenderer.DATA_NONE = "data-none";
+
+if (typeof module !== "undefined") {
+	module.exports.EntryRenderer = EntryRenderer;
+}

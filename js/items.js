@@ -243,7 +243,7 @@ function populateTablesAndFilters () {
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
 			<li ${FLTR_ID}=${i}>
-				<a id='${i}' href="#${encodeForHash([name, source])}" title="${name}">
+				<a id='${i}' href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
 					<span class='name col-xs-4'>${name}</span>
 					<span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span>
 					<span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span>
@@ -407,7 +407,7 @@ function loadhash (id) {
 
 	// tools, artisan tools, instruments, gaming sets
 	if (type === "T" || type === "AT" || type === "INS" || type === "GS") {
-		renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
+		renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${UrlUtil.encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
 		if (type === "INS") {
 			const additionEntriesList = {type: "entries", entries: TOOL_INS_ADDITIONAL_ENTRIES};
 			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
