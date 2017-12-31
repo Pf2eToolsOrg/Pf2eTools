@@ -860,27 +860,43 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 	}
 };
 
-Parser.SP_SCHOOL_ABV_TO_FULL = {
-	"A": "Abjuration",
-	"V": "Evocation",
-	"E": "Enchantment",
-	"I": "Illusion",
-	"D": "Divination",
-	"N": "Necromancy",
-	"T": "Transmutation",
-	"C": "Conjuration"
-};
+SKL_ABV_ABJ = "A";
+SKL_ABV_EVO = "V";
+SKL_ABV_ENC = "E";
+SKL_ABV_ILL = "I";
+SKL_ABV_DIV = "D";
+SKL_ABV_NEC = "N";
+SKL_ABV_TRA = "T";
+SKL_ABV_CON = "C";
 
-Parser.SP_SCHOOL_ABV_TO_SHORT = {
-	"A": "Abj.",
-	"V": "Evoc.",
-	"E": "Ench.",
-	"I": "Illu.",
-	"D": "Divin.",
-	"N": "Necro.",
-	"T": "Trans.",
-	"C": "Conj."
-};
+SKL_ABJ = "Abjuration";
+SKL_EVO = "Evocation";
+SKL_ENC = "Enchantment";
+SKL_ILL = "Illusion";
+SKL_DIV = "Divination";
+SKL_NEC = "Necromancy";
+SKL_TRA = "Transmutation";
+SKL_CON = "Conjuration";
+
+Parser.SP_SCHOOL_ABV_TO_FULL = {};
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ABJ] = SKL_ABJ;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_EVO] = SKL_EVO;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ENC] = SKL_ENC;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ILL] = SKL_ILL;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_DIV] = SKL_DIV;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_NEC] = SKL_NEC;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_TRA] = SKL_TRA;
+Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_CON] = SKL_CON;
+
+Parser.SP_SCHOOL_ABV_TO_SHORT = {};
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ABJ] = "Abj.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_EVO] = "Evoc.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ENC] = "Ench.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ILL] = "Illu.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_DIV] = "Divin.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_NEC] = "Necro.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_TRA] = "Trans.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_CON] = "Conj.";
 
 Parser.ATB_ABV_TO_FULL = {
 	"str": "Strength",
