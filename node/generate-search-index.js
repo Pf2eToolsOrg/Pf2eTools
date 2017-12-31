@@ -1,5 +1,6 @@
 const fs = require('fs');
 const ut = require('../js/utils.js');
+const er = require('../js/entryrender.js');
 
 const INDEX = [];
 
@@ -113,7 +114,14 @@ const TO_INDEX = [
 		"primary": "name",
 		"source": "source",
 		"listProp": "variantrule",
-		"baseUrl": "variantrules.html"
+		"baseUrl": "variantrules.html",
+		"deepIndex": (it) => {
+			const names = [];
+			it.entries.forEach(e => {
+				er.EntryRenderer.getNames(names, e);
+			});
+			return names;
+		}
 	},
 	{
 		"category": 13,
@@ -127,16 +135,31 @@ const TO_INDEX = [
 
 let id = 0;
 function handleContents (arbiter, j) {
-	j[arbiter.listProp].forEach(it => {
+	function getToAdd(it, s) {
 		const toAdd = {
 			c: arbiter.category,
-			url: `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`,
-			s: it[arbiter.primary],
+			s: s,
 			src: it[arbiter.source],
 			id: id++
 		};
+		if (arbiter.hashBuilder) toAdd.url = `${arbiter.baseUrl}#${arbiter.hashBuilder(it)}`;
+		else toAdd.url = `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`;
 		if (arbiter.page) toAdd.pg = it[arbiter.page];
+		return toAdd;
+	}
+
+	j[arbiter.listProp].forEach(it => {
+		const primaryS = it[arbiter.primary];
+		const toAdd = getToAdd(it, primaryS);
 		INDEX.push(toAdd);
+
+		if (arbiter.deepIndex) {
+			const additionalS = arbiter.deepIndex(it);
+			additionalS.forEach(s => {
+				const toAdd = getToAdd(it, `${primaryS}: ${s}`);
+				INDEX.push(toAdd);
+			})
+		}
 	})
 }
 
