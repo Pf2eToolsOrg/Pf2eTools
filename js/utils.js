@@ -821,19 +821,19 @@ Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 
 Parser.CAT_ID_TO_FULL = {};
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] =  				"Bestiary";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] =  					"Spell";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] =  				"Background";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] =  					"Item";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] =  					"Class";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] =  				"Condition";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] =  					"Feat";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELDRITCH_INVOCATION] =  	"Eldritch Invocation";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] =  				"Psionic";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RACE] =  					"Race";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] =  			"Other Reward";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] =  	"Variant/Optional Rule";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] =  				"Adventure";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] = "Background";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELDRITCH_INVOCATION] = "Eldritch Invocation";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] = "Psionic";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RACE] = "Race";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] = "Other Reward";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1425,7 +1425,8 @@ function initFilterBox (...filterList) {
 }
 
 // ENCODING/DECODING ===================================================================================================
-UrlUtil = function () {};
+UrlUtil = function () {
+};
 UrlUtil.encodeForHash = function (toEncode) {
 	if (toEncode instanceof Array) {
 		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
@@ -1465,19 +1466,19 @@ UrlUtil.PG_VARIATNRULES = "variantrules.html";
 UrlUtil.PG_ADVENTURE = "adventure.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = 		(it) => UrlUtil.encodeForHash([it.name, Parser.sourceJsonToAbv(it.source)]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = 		(it) => UrlUtil.encodeForHash(it.name);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_INVOCATIONS] = 		(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = 			(it) => UrlUtil.encodeForHash(it.name);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = 		(it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = 		(it) => UrlUtil.encodeForHash(it.id);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = (it) => UrlUtil.encodeForHash([it.name, Parser.sourceJsonToAbv(it.source)]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = (it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_INVOCATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
 
 // SORTING =============================================================================================================
 // TODO refactor into a class
