@@ -1478,3 +1478,8 @@ function addListShowHide () {
 		hideSearchBtn.show();
 	});
 }
+
+// NODE ================================================================================================================
+if (typeof module !== "undefined") {
+	module.exports.encodeForHash = encodeForHash
+}

@@ -52,6 +52,7 @@ tr.legendary td {
 	color: black !important;
 }
 
+.search-output,
 #output {
 	background: lightgrey;
 }
@@ -235,6 +236,7 @@ tr.legendary td {
 	color: grey !important;
 }
 
+.search-output,
 #output {
 	background: rgba(0, 0, 0, 0.31);;
 }
