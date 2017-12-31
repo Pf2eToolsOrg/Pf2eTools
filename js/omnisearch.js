@@ -7,7 +7,7 @@ function init () {
 	const $nav = $(`#navbar`);
 	$nav.append(`
 		<div class="input-group" style="padding: 3px 0;">
-			<input id="omnisearch-input" class="form-control" placeholder="Search">
+			<input id="omnisearch-input" class="form-control" placeholder="Search everywhere..." title="Disclaimer: unlikely to search everywhere. Use with caution.">
 			<div class="input-group-btn">
 				<button class="btn btn-default" id="omnisearch-submit" ><span class="glyphicon glyphicon-search"></span></button>
 			</div>
@@ -41,10 +41,16 @@ function init () {
 	let typeTimer;
 	$searchIn.on("keyup", () => {
 		clearTimeout(typeTimer);
-		typeTimer = setTimeout(() => {$searchSubmit.click()}, TYPE_TIMEOUT_MS);
+		typeTimer = setTimeout(() => {
+			$searchSubmit.click()
+		}, TYPE_TIMEOUT_MS);
 	});
 	$searchIn.on("keydown", () => {
 		clearTimeout(typeTimer);
+	});
+	$searchIn.on("click", (e) => {
+		if ($searchIn.val() && $searchIn.val().trim().length) $searchSubmit.click();
+		e.stopPropagation();
 	});
 
 	const MAX_RESULTS = 15;
@@ -74,7 +80,7 @@ function init () {
 		function renderLinks () {
 			$searchOut.html("");
 			const base = page * MAX_RESULTS;
-			for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS+base), base); ++i) {
+			for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 				const r = results[i].doc;
 				$searchOut.append(`
 				<p>
@@ -94,7 +100,7 @@ function init () {
 					});
 					$pgControls.append($prv);
 				} else ($pgControls.append(`<span class="pg-left">`));
-				$pgControls.append(`<span class="pg-count">Page ${page+1}/${Math.ceil(results.length/MAX_RESULTS)} (${results.length} results)</span>`);
+				$pgControls.append(`<span class="pg-count">Page ${page + 1}/${Math.ceil(results.length / MAX_RESULTS)} (${results.length} results)</span>`);
 				if (results.length - (page * MAX_RESULTS) > MAX_RESULTS) {
 					const $nxt = $(`<span class="pg-right pg-control"><span class="glyphicon glyphicon-chevron-right"></span></span>`).on("click", () => {
 						page++;
