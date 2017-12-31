@@ -1,4 +1,5 @@
 const fs = require('fs');
+const ut = require('../js/utils.js');
 
 const INDEX = [];
 
@@ -113,6 +114,14 @@ const TO_INDEX = [
 		"source": "source",
 		"listProp": "variantrule",
 		"baseUrl": "variantrules.html"
+	},
+	{
+		"category": 13,
+		"file": "adventures.json",
+		"primary": "name",
+		"source": "id",
+		"listProp": "adventure",
+		"baseUrl": "adventure.html"
 	}
 ];
 

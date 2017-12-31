@@ -56,7 +56,7 @@ function init () {
 				s: {boost: 10},
 				src: {boost: 1}
 			},
-			bool: "OR",
+			bool: "AND",
 			expand: true
 		});
 

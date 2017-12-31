@@ -35,7 +35,7 @@ function onJsonLoad (data) {
 		const adv = adventures[i];
 
 		tempString +=
-			`<li class="adventure-contents-item" data-adventureid="${adv.id}">
+			`<li class="adventure-contents-item" data-adventureid="${UrlUtil.encodeForHash(adv.id)}">
 				<a id="${i}" href='#${adv.id},0' title='${adv.name}'>
 					<span class='name'>${adv.name}</span>
 				</a>
@@ -65,7 +65,7 @@ function onJsonLoad (data) {
 // custom loading for this page, so it can serve multiple sources
 function hashChange () {
 	const [advId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
-	const fromIndex = adventures.filter(adv => adv.id === advId);
+	const fromIndex = adventures.filter(adv => UrlUtil.encodeForHash(adv.id) === UrlUtil.encodeForHash(advId));
 	if (fromIndex.length) {
 		document.title = `${fromIndex[0].name} - 5etools`;
 		// prevent TftYP names from causing the header to wrap
@@ -92,9 +92,9 @@ function loadAdventure (fromIndex, advId, hashParts) {
 
 	function handle (data) {
 		allContents = $(`.adventure-contents-item`);
-		thisContents = allContents.filter(`[data-adventureid="${advId}"]`);
+		thisContents = allContents.filter(`[data-adventureid="${UrlUtil.encodeForHash(advId)}"]`);
 		thisContents.show();
-		allContents.filter(`[data-adventureid!="${advId}"]`).hide();
+		allContents.filter(`[data-adventureid!="${UrlUtil.encodeForHash(advId)}"]`).hide();
 		onAdventureLoad(data, fromIndex, advId, hashParts);
 	}
 }

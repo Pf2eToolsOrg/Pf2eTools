@@ -818,6 +818,7 @@ Parser.CAT_ID_PSIONIC = 9;
 Parser.CAT_ID_RACE = 10;
 Parser.CAT_ID_OTHER_REWARD = 11;
 Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
+Parser.CAT_ID_ADVENTURE = 13;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] =  				"Creature";
@@ -832,6 +833,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] =  				"Psionic";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RACE] =  					"Race";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] =  			"Other Reward";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] =  	"Variant/Optional Rule";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] =  				"Adventure";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1018,6 +1020,13 @@ SRC_ToA = "ToA";
 SRC_ToD = "ToD";
 SRC_TTP = "TTP";
 SRC_TYP = "TftYP";
+SRC_TYP_AtG = "TftYP-AtG";
+SRC_TYP_DiT = "TftYP-DiT";
+SRC_TYP_TFoF = "TftYP-TFoF";
+SRC_TYP_THSoT = "TftYP-THSoT";
+SRC_TYP_TSC = "TftYP-TSC";
+SRC_TYP_ToH = "TftYP-ToH";
+SRC_TYP_WPM = "TftYP-WPM";
 SRC_VGM = "VGM";
 SRC_XGE = "XGE";
 SRC_OGA = "OGA";
@@ -1085,6 +1094,7 @@ PS_PREFIX_SHORT = "PS: ";
 UA_PREFIX = "Unearthed Arcana: ";
 UA_PREFIX_SHORT = "UA: ";
 PP3_SUFFIX = " (3pp)";
+TftYP_NAME = "Tales from the Yawning Portal";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CoS] = "Curse of Strahd";
@@ -1104,7 +1114,14 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SKT] = "Storm King's Thunder";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToA] = "Tomb of Annihilation";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToD] = "Tyranny of Dragons";
 Parser.SOURCE_JSON_TO_FULL[SRC_TTP] = "The Tortle Package";
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP] = "Tales from the Yawning Portal";
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_AtG] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_DiT] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TFoF] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_THSoT] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TSC] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_ToH] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_WPM] = TftYP_NAME;
 Parser.SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
 Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
 Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
@@ -1175,6 +1192,13 @@ Parser.SOURCE_JSON_TO_ABV[SRC_ToA] = "ToA";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToD] = "ToD";
 Parser.SOURCE_JSON_TO_ABV[SRC_TTP] = "TTP";
 Parser.SOURCE_JSON_TO_ABV[SRC_TYP] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_AtG] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_DiT] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_TFoF] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_THSoT] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_TSC] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_ToH] = "TftYP";
+Parser.SOURCE_JSON_TO_ABV[SRC_TYP_WPM] = "TftYP";
 Parser.SOURCE_JSON_TO_ABV[SRC_VGM] = "VGM";
 Parser.SOURCE_JSON_TO_ABV[SRC_XGE] = "XGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_OGA] = "OGA";
@@ -1438,6 +1462,7 @@ UrlUtil.PG_PSIONICS = "psionics.html";
 UrlUtil.PG_RACES = "races.html";
 UrlUtil.PG_REWARDS = "rewards.html";
 UrlUtil.PG_VARIATNRULES = "variantrules.html";
+UrlUtil.PG_ADVENTURE = "adventure.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1452,6 +1477,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = 			(it) => UrlUtil.encodeForH
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = 			(it) => UrlUtil.encodeForHash(it.name);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = 		(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = 		(it) => UrlUtil.encodeForHash(it.id);
 
 // SORTING =============================================================================================================
 // TODO refactor into a class
