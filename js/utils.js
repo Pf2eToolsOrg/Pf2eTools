@@ -492,13 +492,15 @@ function utils_getAbilityData (abObj) {
 // PARSING =============================================================================================================
 Parser = {};
 Parser._parse_aToB = function (abMap, a) {
-	a = a.trim();
+	if (a === undefined || a === null) throw new Error("undefined or null object passed to parser");
+	if (typeof a === "string") a = a.trim();
 	if (abMap[a] !== undefined) return abMap[a];
 	return a;
 };
 
 Parser._parse_bToA = function (abMap, b) {
-	b = b.trim();
+	if (b === undefined || b === null) throw new Error("undefined or null object passed to parser");
+	if (typeof b === "string") b = b.trim();
 	for (const v in abMap) {
 		if (!abMap.hasOwnProperty(v)) continue;
 		if (abMap[v] === b) return v
@@ -802,6 +804,37 @@ Parser.monTypeToFullObj = function (type) {
 
 Parser.monTypeToPlural = function (type) {
 	return Parser._parse_aToB(Parser.MON_TYPE_TO_PLURAL, type);
+};
+
+Parser.CAT_ID_CREATURE = 1;
+Parser.CAT_ID_SPELL = 2;
+Parser.CAT_ID_BACKGROUND = 3;
+Parser.CAT_ID_ITEM = 4;
+Parser.CAT_ID_CLASS = 5;
+Parser.CAT_ID_CONDITION = 6;
+Parser.CAT_ID_FEAT = 7;
+Parser.CAT_ID_ELDRITCH_INVOCATION = 8;
+Parser.CAT_ID_PSIONIC = 9;
+Parser.CAT_ID_RACE = 10;
+Parser.CAT_ID_OTHER_REWARD = 11;
+Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
+
+Parser.CAT_ID_TO_FULL = {};
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] =  				"Creature";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] =  					"Spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] =  				"Background";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] =  					"Item";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] =  					"Class";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] =  				"Condition";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] =  					"Feat";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELDRITCH_INVOCATION] =  	"Eldritch Invocation";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] =  				"Psionic";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RACE] =  					"Race";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] =  			"Other Reward";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] =  	"Variant/Optional Rule";
+
+Parser.pageCategoryToFull = function (catId) {
+	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
 };
 
 /**
@@ -1368,7 +1401,8 @@ function initFilterBox (...filterList) {
 }
 
 // ENCODING/DECODING ===================================================================================================
-function encodeForHash (toEncode) {
+UrlUtil = function () {};
+UrlUtil.encodeForHash = function (toEncode) {
 	if (toEncode instanceof Array) {
 		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
 	} else {
@@ -1376,9 +1410,48 @@ function encodeForHash (toEncode) {
 	}
 
 	function encodeForHashHelper (part) {
-		return encodeURIComponent(part).toLowerCase().replace(/'/g, "%27")
+		return encodeURIComponent(part).toLowerCase().replace(/'/g, "%27");
 	}
-}
+};
+
+UrlUtil.autoEncodeHash = function (obj) {
+	const curPage = UrlUtil.getCurrentPage();
+	const encoder = UrlUtil.URL_TO_HASH_BUILDER[curPage];
+	if (!encoder) throw new Error(`No encoder found for page ${curPage}`);
+	return encoder(obj);
+};
+
+UrlUtil.getCurrentPage = function () {
+	const pSplit = window.location.pathname.split("/");
+	return pSplit[pSplit.length - 1];
+};
+
+UrlUtil.PG_BESTIARY = "bestiary.html";
+UrlUtil.PG_SPELLS = "spells.html";
+UrlUtil.PG_BACKGROUNDS = "backgrounds.html";
+UrlUtil.PG_ITEMS = "items.html";
+UrlUtil.PG_CLASSES = "classes.html";
+UrlUtil.PG_CONDITIONS = "conditions.html";
+UrlUtil.PG_FEATS = "feats.html";
+UrlUtil.PG_INVOCATIONS = "invocations.html";
+UrlUtil.PG_PSIONICS = "psionics.html";
+UrlUtil.PG_RACES = "races.html";
+UrlUtil.PG_REWARDS = "rewards.html";
+UrlUtil.PG_VARIATNRULES = "variantrules.html";
+
+UrlUtil.URL_TO_HASH_BUILDER = {};
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = 		(it) => UrlUtil.encodeForHash([it.name, Parser.sourceJsonToAbv(it.source)]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = 		(it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_INVOCATIONS] = 		(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = 			(it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = 			(it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = 		(it) => UrlUtil.encodeForHash([it.name, it.source]);
 
 // SORTING =============================================================================================================
 // TODO refactor into a class
@@ -1477,9 +1550,4 @@ function addListShowHide () {
 		showSearchWrpr.hide();
 		hideSearchBtn.show();
 	});
-}
-
-// NODE ================================================================================================================
-if (typeof module !== "undefined") {
-	module.exports.encodeForHash = encodeForHash
 }

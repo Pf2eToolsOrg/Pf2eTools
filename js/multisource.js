@@ -48,7 +48,7 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 		const [link, ...sub] = _getHashParts();
 		const src = link.split(HASH_LIST_SEP)[1];
 		const hashSrcs = {};
-		sources.forEach(src => hashSrcs[encodeForHash(src)] = src);
+		sources.forEach(src => hashSrcs[UrlUtil.encodeForHash(src)] = src);
 		const mapped = hashSrcs[src];
 		if (mapped && $.inArray(mapped, allSources) === -1) {
 			allSources.push(mapped);

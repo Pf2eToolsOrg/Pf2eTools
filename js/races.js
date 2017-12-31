@@ -33,7 +33,7 @@ function onJsonLoad (data) {
 
 		tempString +=
 			`<li ${FLTR_ID}='${i}'>
-				<a id='${i}' href='#${encodeForHash([race.name, race.source])}' title='${race.name}'>
+				<a id='${i}' href='#${UrlUtil.autoEncodeHash(race)}' title='${race.name}'>
 					<span class='name col-xs-4'>${race.name}</span>
 					<span class='ability col-xs-4'>${ability.asTextShort}</span>
 					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>

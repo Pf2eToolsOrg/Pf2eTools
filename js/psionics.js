@@ -97,7 +97,7 @@ function onJsonLoad (data) {
 
 		tempString += `
 			<li class='row' ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${encodeForHash([p[JSON_ITEM_NAME], p[JSON_ITEM_SOURCE]])}' title="${p[JSON_ITEM_NAME]}">
+				<a id='${i}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
 					<span class='${LIST_SOURCE} ${CLS_COL2}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class='${LIST_TYPE} ${CLS_COL3}'>${parse_psionicTypeToFull(p[JSON_ITEM_TYPE])}</span>

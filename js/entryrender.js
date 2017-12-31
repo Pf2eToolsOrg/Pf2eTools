@@ -341,11 +341,11 @@ function EntryRenderer () {
 				// baseURL is blank by default
 				href = `${self.baseUrl}${entry.href.path}#`;
 				if (entry.href.hash !== undefined) {
-					href += encodeForHash(entry.href.hash);
+					href += UrlUtil.encodeForHash(entry.href.hash);
 					if (entry.href.subhashes !== undefined) {
 						for (let i = 0; i < entry.href.subhashes.length; i++) {
 							const subHash = entry.href.subhashes[i];
-							href += `,${encodeForHash(subHash.key)}:${encodeForHash(subHash.value)}`
+							href += `,${UrlUtil.encodeForHash(subHash.key)}:${UrlUtil.encodeForHash(subHash.value)}`
 						}
 					}
 				}

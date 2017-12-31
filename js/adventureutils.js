@@ -32,7 +32,7 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 	chapter.headers && chapter.headers.forEach(c => {
 		out +=
 			`<li>
-				<a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${encodeForHash(c)}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="scrollClick('${c.replace("'", "\\'")}')"` : ""}>${c}</a>
+				<a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${UrlUtil.encodeForHash(c)}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="scrollClick('${c.replace("'", "\\'")}')"` : ""}>${c}</a>
 			</li>`
 	});
 	out +=

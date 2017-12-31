@@ -13,6 +13,7 @@ pipeline:
       commands:
           - npm install
           - npm test
+          - npm run gen-index
       when:
           event: [ push, pull_request ]
   Deploy-dev:

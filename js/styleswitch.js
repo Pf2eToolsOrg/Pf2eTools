@@ -52,9 +52,13 @@ tr.legendary td {
 	color: black !important;
 }
 
-.search-output,
+.omnisearch-output,
 #output {
 	background: lightgrey;
+}
+
+.omnisearch-output p:nth-child(odd) {
+	background: #e3e3e3;
 }
 
 #crcalc label span.explanation {
@@ -199,6 +203,10 @@ input.search {
 	background-color: transparent !important;
 }
 
+input#omnisearch-input {
+	background-color: transparent !important;
+}
+
 ul.list li:hover {
 	background: black;
 }
@@ -236,9 +244,16 @@ tr.legendary td {
 	color: grey !important;
 }
 
-.search-output,
 #output {
 	background: rgba(0, 0, 0, 0.31);;
+}
+
+.omnisearch-output {
+	background: #303030;
+}
+
+.omnisearch-output p:nth-child(odd) {
+	background: #202020;
 }
 
 #crcalc label span.explanation {
