@@ -53,8 +53,9 @@ function init () {
 
 		const results = searchIndex.search(srch, {
 			fields: {
-				s: {boost: 10},
-				src: {boost: 1}
+				s: {boost: 100},
+				src: {boost: 10},
+				c: {boost: 1}
 			},
 			bool: "AND",
 			expand: true
@@ -66,7 +67,7 @@ function init () {
 				const r = results[i].doc;
 				$searchOut.append(`
 				<p>
-					<a href="${r.url}" target="_blank">${Parser.pageCategoryToFull(r.c)}: ${r.s}</a>
+					<a href="${r.url}" target="_blank">${r.c}: ${r.s}</a>
 					<i title="${Parser.sourceJsonToFull(r.src)}">${Parser.sourceJsonToAbv(r.src)}${r.pg ? ` p${r.pg}` : ""}</i>
 				</p>`);
 			}
@@ -81,8 +82,12 @@ function init () {
 function onSearchLoad (data) {
 	searchIndex = elasticlunr(function () {
 		this.addField("s");
+		this.addField("c");
 		this.addField("src");
 		this.setRef("id")
 	});
-	data.forEach(d => searchIndex.addDoc(d));
+	data.forEach(d => {
+		d.c = Parser.pageCategoryToFull(d.c);
+		searchIndex.addDoc(d);
+	});
 }

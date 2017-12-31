@@ -821,7 +821,7 @@ Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 
 Parser.CAT_ID_TO_FULL = {};
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] =  				"Creature";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] =  				"Bestiary";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] =  					"Spell";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] =  				"Background";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] =  					"Item";
