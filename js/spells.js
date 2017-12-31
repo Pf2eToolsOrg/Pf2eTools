@@ -222,7 +222,13 @@ window.onload = function load () {
 
 let list;
 const sourceFilter = getSourceFilter();
-const levelFilter = new Filter({header: "Level", displayFn: getFltrSpellLevelStr});
+const levelFilter = new Filter({
+	header: "Level",
+	items: [
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+	],
+	displayFn: getFltrSpellLevelStr
+});
 const classFilter = new Filter({header: "Class"});
 const subclassFilter = new Filter({header: "Subclass"});
 const classAndSubclassFilter = new MultiFilter("Classes", classFilter, subclassFilter);
@@ -230,7 +236,20 @@ const metaFilter = new Filter({
 	header: "Tag",
 	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
 });
-const schoolFilter = new Filter({header: "School", displayFn: Parser.spSchoolAbvToFull});
+const schoolFilter = new Filter({
+	header: "School",
+	items: [
+		SKL_ABV_ABJ,
+		SKL_ABV_CON,
+		SKL_ABV_DIV,
+		SKL_ABV_ENC,
+		SKL_ABV_EVO,
+		SKL_ABV_ILL,
+		SKL_ABV_NEC,
+		SKL_ABV_TRA
+	],
+	displayFn: Parser.spSchoolAbvToFull}
+);
 const timeFilter = new Filter({
 	header: "Cast Time",
 	items: [
@@ -373,8 +392,6 @@ function addSpells (data) {
 			</li>`;
 
 		// populate filters
-		levelFilter.addIfAbsent(spell.level);
-		schoolFilter.addIfAbsent(spell.school);
 		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
 		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
 	}
@@ -388,8 +405,6 @@ function addSpells (data) {
 	spellTable.append(tempString);
 
 	// sort filters
-	levelFilter.items.sort(ascSortSpellLevel);
-	schoolFilter.items.sort(ascSort);
 	classFilter.items.sort(ascSort);
 	subclassFilter.items.sort(ascSort);
 

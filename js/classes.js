@@ -37,7 +37,7 @@ window.onload = function load () {
 };
 
 function getClassHash (aClass) {
-	return `#${encodeForHash(aClass.name)}${HASH_LIST_SEP}${encodeForHash(aClass.source)}`;
+	return `#${encodeForHash([aClass.name, aClass.source])}`;
 }
 
 function getEncodedSubclass (name, source) {

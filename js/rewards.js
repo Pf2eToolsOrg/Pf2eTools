@@ -33,7 +33,7 @@ function onJsonLoad (data) {
 
 		tempString += `
 			<li class='row' ${FLTR_ID}='${i}'>
-				<a id='${i}' href='#${encodeURIComponent(reward.name).toLowerCase().replace(/'/g, "%27")}' title='${reward.name}'>
+				<a id='${i}' href='#${encodeForHash(reward.name)}' title='${reward.name}'>
 					<span class='name col-xs-10'>${displayName}</span>
 					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(reward.source)}' title='${Parser.sourceJsonToFull(reward.source)}'>${Parser.sourceJsonToAbv(reward.source)}</span>
 				</a>

@@ -18,7 +18,7 @@ function onJsonLoad (data) {
 		const name = conditionList[i].name;
 		tempString += `
 			<li>
-				<a id='${i}' href='#${encodeURI(name).toLowerCase()}' title='${name}'>
+				<a id='${i}' href='#${encodeForHash(name)}' title='${name}'>
 					<span class='name' title='${name}'>${name}</span>
 				</a>
 			</li>`;

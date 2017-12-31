@@ -243,7 +243,7 @@ function populateTablesAndFilters () {
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
 			<li ${FLTR_ID}=${i}>
-				<a id='${i}' href="#${encodeForHash(name)}_${encodeForHash(source)}" title="${name}">
+				<a id='${i}' href="#${encodeForHash([name, source])}" title="${name}">
 					<span class='name col-xs-4'>${name}</span>
 					<span class='type col-xs-4 col-xs-4-3'>${type.join(", ")}</span>
 					<span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span>
