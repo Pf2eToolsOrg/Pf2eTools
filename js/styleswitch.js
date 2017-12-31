@@ -52,13 +52,20 @@ tr.legendary td {
 	color: black !important;
 }
 
-.omnisearch-output,
+.omnisearch-output {
+	background: #fff;
+}
+
 #output {
 	background: lightgrey;
 }
 
 .omnisearch-output p:nth-child(odd) {
-	background: #e3e3e3;
+	background: #f4f4f4;
+}
+
+div.omnisearch-pagination-wrapper > .pg-control:hover {
+	color: #337ab7;
 }
 
 #crcalc label span.explanation {
@@ -254,6 +261,10 @@ tr.legendary td {
 
 .omnisearch-output p:nth-child(odd) {
 	background: #202020;
+}
+
+div.omnisearch-pagination-wrapper > .pg-control:hover {
+	color: #999;
 }
 
 #crcalc label span.explanation {

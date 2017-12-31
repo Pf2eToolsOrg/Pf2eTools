@@ -1,3 +1,4 @@
+let catIndex;
 let searchIndex;
 
 window.addEventListener("load", init);
@@ -8,7 +9,7 @@ function init () {
 		<div class="input-group" style="padding: 3px 0;">
 			<input id="omnisearch-input" class="form-control" placeholder="Search">
 			<div class="input-group-btn">
-				<button class="btn btn-default" id="omnisearch-submit" >&#x1F50E;</button>
+				<button class="btn btn-default" id="omnisearch-submit" ><span class="glyphicon glyphicon-search"></span></button>
 			</div>
 		</div>
 	`);
@@ -46,10 +47,12 @@ function init () {
 		clearTimeout(typeTimer);
 	});
 
-	const MAX_RESULTS = 25;
+	const MAX_RESULTS = 15;
 	$searchSubmit.on("click", (e) => {
 		e.stopPropagation();
 		const srch = $searchIn.val();
+
+		let page = 0;
 
 		const results = searchIndex.search(srch, {
 			fields: {
@@ -61,9 +64,17 @@ function init () {
 			expand: true
 		});
 
-		$searchOut.html("");
 		if (results.length) {
-			for (let i = 0; i < Math.max(Math.min(results.length, MAX_RESULTS), 0); ++i) {
+			renderLinks();
+		} else {
+			$searchOut.html("");
+			$searchOutWrapper.hide();
+		}
+
+		function renderLinks () {
+			$searchOut.html("");
+			const base = page * MAX_RESULTS;
+			for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS+base), base); ++i) {
 				const r = results[i].doc;
 				$searchOut.append(`
 				<p>
@@ -71,10 +82,28 @@ function init () {
 					<i title="${Parser.sourceJsonToFull(r.src)}">${Parser.sourceJsonToAbv(r.src)}${r.pg ? ` p${r.pg}` : ""}</i>
 				</p>`);
 			}
-			if (results.length > MAX_RESULTS) $searchOut.append(`<p><i>${results.length - MAX_RESULTS} more results not shown. Try narrowing your search.</i></p>`);
 			$searchOutWrapper.css("display", "flex");
-		} else {
-			$searchOutWrapper.hide();
+
+			// add pagination if there are many results
+			if (results.length > MAX_RESULTS) {
+				const $pgControls = $(`<div class="omnisearch-pagination-wrapper">`);
+				if (page > 0) {
+					const $prv = $(`<span class="pg-left pg-control"><span class="glyphicon glyphicon-chevron-left"></span></span>`).on("click", () => {
+						page--;
+						renderLinks();
+					});
+					$pgControls.append($prv);
+				} else ($pgControls.append(`<span class="pg-left">`));
+				$pgControls.append(`<span class="pg-count">Page ${page+1}/${Math.ceil(results.length/MAX_RESULTS)} (${results.length} results)</span>`);
+				if (results.length - (page * MAX_RESULTS) > MAX_RESULTS) {
+					const $nxt = $(`<span class="pg-right pg-control"><span class="glyphicon glyphicon-chevron-right"></span></span>`).on("click", () => {
+						page++;
+						renderLinks();
+					});
+					$pgControls.append($nxt)
+				} else ($pgControls.append(`<span class="pg-right pg-control">`));
+				$searchOut.append($pgControls);
+			}
 		}
 	});
 }
