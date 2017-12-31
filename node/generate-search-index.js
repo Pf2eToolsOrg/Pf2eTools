@@ -130,8 +130,25 @@ const TO_INDEX = [
 		"source": "id",
 		"listProp": "adventure",
 		"baseUrl": "adventure.html"
+	},
+
+	{
+		"category": 4,
+		"file": "magicvariants.json",
+		"primary": "name",
+		"source": "inherits.source",
+		"page": "inherits.page",
+		"listProp": "variant",
+		"baseUrl": "items.html",
+		"hashBuilder": (it) => {
+			return UrlUtil.encodeForHash([it.name, it.inherits.source]);
+		}
 	}
 ];
+
+function getProperty (obj, withDots) {
+	return withDots.split(".").reduce((o, i) => o[i], obj);
+}
 
 let id = 0;
 function handleContents (arbiter, j) {
@@ -139,26 +156,28 @@ function handleContents (arbiter, j) {
 		const toAdd = {
 			c: arbiter.category,
 			s: s,
-			src: it[arbiter.source],
+			src: getProperty(it, arbiter.source),
 			id: id++
 		};
 		if (arbiter.hashBuilder) toAdd.url = `${arbiter.baseUrl}#${arbiter.hashBuilder(it)}`;
 		else toAdd.url = `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`;
-		if (arbiter.page) toAdd.pg = it[arbiter.page];
+		if (arbiter.page) toAdd.pg = getProperty(it, arbiter.page);
 		return toAdd;
 	}
 
 	j[arbiter.listProp].forEach(it => {
 		const primaryS = it[arbiter.primary];
-		const toAdd = getToAdd(it, primaryS);
-		INDEX.push(toAdd);
+		if (!it.noDisplay) {
+			const toAdd = getToAdd(it, primaryS);
+			INDEX.push(toAdd);
 
-		if (arbiter.deepIndex) {
-			const additionalS = arbiter.deepIndex(it);
-			additionalS.forEach(s => {
-				const toAdd = getToAdd(it, `${primaryS}: ${s}`);
-				INDEX.push(toAdd);
-			})
+			if (arbiter.deepIndex) {
+				const additionalS = arbiter.deepIndex(it);
+				additionalS.forEach(s => {
+					const toAdd = getToAdd(it, `${primaryS}: ${s}`);
+					INDEX.push(toAdd);
+				})
+			}
 		}
 	})
 }
