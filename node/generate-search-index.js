@@ -4,6 +4,10 @@ const er = require('../js/entryrender.js');
 
 const INDEX = [];
 
+/**
+ * See docs for `TO_INDEX` below.
+ * Instead of `file` these have `dir` and will read an `index.json` from that directory to find all files to be indexed
+ */
 const TO_INDEX__FROM_INDEX_JSON = [
 	{
 		"category": 1,
@@ -25,12 +29,28 @@ const TO_INDEX__FROM_INDEX_JSON = [
 	}
 ];
 
+/**
+ * category: a category from utils.js (see `Parser.pageCategoryToFull`)
+ * file: source JSON file
+ * primary: JSON property to index, per item. Can be a chain of properties e.g. `outer.inner.name`
+ * source: JSON property containing the item's source, per item. Can be a chan of properties, e.g. `outer.inner.source`
+ * page: (OPTIONAL) JSON property containing the item's page in the relevant book, per item.
+ * 		Can be a chain of properties, e.g. `outer.inner.page`
+ * listProp: the JSON always has a root property containing the list of items. Provide the name of this property here.
+ * baseUrl: the base URL (which page) to use when forming index URLs
+ * deepIndex: (OPTIONAL) a function which returns a list of strings to be indexed, in addition to the primary index.
+ * 		Once indexed, these will share the item's source, URL (and page).
+ * hashBuilder: (OPTIONAL) a function which takes a data item and returns a hash for it.
+ * 		Generally not needed, as UrlUtils has a defined list of hash-building functions for each page.
+ *
+ */
 const TO_INDEX = [
 	{
 		"category": 3,
 		"file": "backgrounds.json",
 		"primary": "name",
 		"source": "source",
+		"page": "page",
 		"listProp": "background",
 		"baseUrl": "backgrounds.html"
 	},
@@ -166,7 +186,7 @@ function handleContents (arbiter, j) {
 	}
 
 	j[arbiter.listProp].forEach(it => {
-		const primaryS = it[arbiter.primary];
+		const primaryS = getProperty(it, arbiter.primary);
 		if (!it.noDisplay) {
 			const toAdd = getToAdd(it, primaryS);
 			INDEX.push(toAdd);
