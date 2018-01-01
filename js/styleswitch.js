@@ -52,6 +52,7 @@ tr.legendary td {
 	color: black !important;
 }
 
+.f-all-out,
 .omnisearch-output {
 	background: #fff;
 }
@@ -60,6 +61,7 @@ tr.legendary td {
 	background: lightgrey;
 }
 
+.f-all-out > p:nth-child(odd),
 .omnisearch-output p:nth-child(odd) {
 	background: #f4f4f4;
 }
@@ -255,10 +257,13 @@ tr.legendary td {
 	background: rgba(0, 0, 0, 0.31);;
 }
 
+.f-all-wrapper > input,
+.f-all-out,
 .omnisearch-output {
 	background: #303030;
 }
 
+.f-all-out > p:nth-child(odd),
 .omnisearch-output p:nth-child(odd) {
 	background: #202020;
 }

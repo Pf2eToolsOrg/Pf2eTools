@@ -62,7 +62,7 @@ window.addEventListener("load", () => {
 	// Add a selector to match exact text to jQuery's arsenal
 	$.expr[':'].textEquals = (el, i, m) => {
 		const searchText = m[3];
-		const match = $(el).text().trim().match(`^${searchText}$`);
+		const match = $(el).text().toLowerCase().trim().match(`^${searchText.toLowerCase()}$`);
 		return match && match.length > 0;
 	};
 });
