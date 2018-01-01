@@ -47,7 +47,7 @@ function mergeBasicItems (variantData) {
 		variantList[i].source = variantList[i].inherits.source;
 		variantList[i].page = variantList[i].inherits.page;
 		if (!variantList[i].entries && variantList[i].inherits.entries) variantList[i].entries = JSON.parse(JSON.stringify(variantList[i].inherits.entries));
-		if (variantList[i].requires.armor) variantList[i].armor = variantList[i].requires.armor
+		if (variantList[i].requires.armor) variantList[i].armor = variantList[i].requires.armor;
 		if (variantList[i].inherits.resist) variantList[i].resist = variantList[i].inherits.resist;
 		if (variantList[i].inherits.reqAttune) variantList[i].reqAttune = variantList[i].inherits.reqAttune;
 	}
@@ -62,6 +62,7 @@ function mergeBasicItems (variantData) {
 			const curRequires = curVariant.requires;
 			let hasRequired = curBasicItemName.indexOf(" (") === -1;
 			for (const requiredProperty in curRequires) if (curRequires.hasOwnProperty(requiredProperty) && curBasicItem[requiredProperty] !== curRequires[requiredProperty]) hasRequired = false;
+			// hasRequired = hasRequired && Object.keys(curRequires).every(req => curBasicItem[req] === curRequires.requires[req]);
 			if (curVariant.excludes) {
 				const curExcludes = curVariant.excludes;
 				for (const excludedProperty in curExcludes) if (curExcludes.hasOwnProperty(excludedProperty) && curBasicItem[excludedProperty] === curExcludes[excludedProperty]) hasRequired = false;

@@ -415,10 +415,8 @@ function EntryRenderer () {
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@class": {
-								const classMatch = EntryRenderer.RE_INLINE_CLASS.exec(text);
-								if (classMatch) {
-									fauxEntry.href.hash = classMatch[1].trim(); // TODO pass this in
-									fauxEntry.href.subhashes = [{"key": "sub", "value": classMatch[2].trim() + "~phb"}] // TODO pass this in
+								if (others.length) {
+									fauxEntry.href.subhashes = [{"key": "sub", "value": others[0].trim() + "~phb"}] // TODO pass this in
 								}
 								fauxEntry.href.path = "classes.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
@@ -532,7 +530,6 @@ EntryRenderer._onImgLoad = function () {
 	if (typeof onimgload === "function") onimgload()
 };
 
-EntryRenderer.RE_INLINE_CLASS = /(.*?) \((.*?)\)/;
 EntryRenderer.HEAD_NEG_1 = "statsBlockSectionHead";
 EntryRenderer.HEAD_0 = "statsBlockHead";
 EntryRenderer.HEAD_1 = "statsBlockSubHead";
