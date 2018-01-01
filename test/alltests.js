@@ -37,9 +37,11 @@ fs.readdirSync(`./test/schema`)
 		})
 	});
 
-console.log(`All schema tests passed.
+console.log(`All schema tests passed.`);
 
-##### Reconciling the PNG tokens against the bestiary JSON #####`);
+require("./check-links");
+
+console.log(`##### Reconciling the PNG tokens against the bestiary JSON #####`);
 
 // Loop through each bestiary JSON file push the list of expected PNG files.
 fs.readdirSync("./data/bestiary")
