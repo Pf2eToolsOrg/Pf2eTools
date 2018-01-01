@@ -69,6 +69,12 @@
 					"name": {
 						"type": "string"
 					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
 					"type": {
 						"type": "string"
 					},
@@ -82,6 +88,8 @@
 				},
 				"required": [
 					"name",
+					"source",
+					"page",
 					"type",
 					"table"
 				],
@@ -99,6 +107,12 @@
 				"properties": {
 					"name": {
 						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
 					},
 					"mincr": {
 						"$ref": "#/definitions/cr"
@@ -133,6 +147,8 @@
 				},
 				"required": [
 					"name",
+					"source",
+					"page",
 					"mincr",
 					"maxcr",
 					"table"
@@ -148,6 +164,12 @@
 				"properties": {
 					"name": {
 						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
 					},
 					"mincr": {
 						"$ref": "#/definitions/cr"
@@ -190,6 +212,8 @@
 				},
 				"required": [
 					"name",
+					"source",
+					"page",
 					"mincr",
 					"maxcr",
 					"coins",
@@ -212,6 +236,12 @@
 				"properties": {
 					"name": {
 						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
 					},
 					"type": {
 						"type": "string"
@@ -237,6 +267,8 @@
 				},
 				"required": [
 					"name",
+					"source",
+					"page",
 					"type",
 					"table"
 				],
