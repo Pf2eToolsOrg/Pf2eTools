@@ -191,7 +191,7 @@ function addSearch (indexData, advId) {
 			if ($findAll) $findAll.remove();
 			const winWidth = window.innerWidth;
 			const winHeight = window.innerHeight;
-			const flipX = cX > (winWidth - 500);
+			const flipX = cX > (winWidth - 700);
 			const flipY = cY > (winHeight - 500);
 			$findAll = $(`<div class="f-all-wrapper"/>`).on("click", (e) => {
 				e.stopPropagation();
@@ -216,7 +216,7 @@ function addSearch (indexData, advId) {
 							$results.append(`
 							<p>
 								<a href="#${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${f.ch}${f.h ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(f.h)}` : ""}">
-									${indexData.contents[f.ch].name}: ${f.h}
+									<i>${indexData.contents[f.ch].name}: ${f.h}</i> | ${f.p}
 								</a>
 							</p>`);
 						})
@@ -241,6 +241,7 @@ function addSearch (indexData, advId) {
 		return !e.ctrlKey && !e.altKey && !e.metaKey;
 	}
 
+	const EXTRA_WORDS = 2;
 	function searchEntriesFor (chapterIndex, prevLastName, appendTo, term, obj) {
 		if (term === undefined || term === null) return;
 		const cleanTerm = term.toLowerCase().trim();
@@ -256,19 +257,60 @@ function addSearch (indexData, advId) {
 				r.forEach(c => searchEntriesFor(chapterIndex, lastName, appendTo, term, c));
 			})
 		} else if (typeof obj === "string") {
-			if (obj.toLowerCase().includes(cleanTerm)) {
+			const renderStack = [];
+			renderer.recursiveEntryRender(obj, renderStack);
+			const rendered = $(`<p>${renderStack.join("")}</p>`).text();
+
+			const toCheck = rendered.toLowerCase();
+			if (toCheck.includes(cleanTerm)) {
 				if (!appendTo.length || appendTo[appendTo.length - 1].h !== lastName) {
-					let preview;
-					// TODO add preview of text
-					// - get first index of text; snag the previous ~10 chars
-					// - get last index of text; snag the next ~10 chars
-					// - if first and last index the same, return ...ashdjgashjdg mytext askjdnakjsd...
-					// if first and last index differ, return ...asdasd mytext asdasd ... asdasd mytext asdjhasgd
-					appendTo.push({ch: chapterIndex, h: lastName, p: ""});
+					const first = toCheck.indexOf(cleanTerm);
+					const last = toCheck.lastIndexOf(cleanTerm);
+
+					const slice = first === last
+						? getSubstring(rendered, first, first)
+						: `${getSubstring(rendered, first, first + cleanTerm.length)} ... ${getSubstring(rendered, last, last + cleanTerm.length)}`;
+					appendTo.push({ch: chapterIndex, h: lastName, p: slice});
 				}
 			}
 		} else if (!(obj.type === "image" || obj.type === "link")) {
 			throw new Error("Unhandled entity type")
+		}
+
+		function getSubstring (rendered, first, last) {
+			let spaceCount = 0;
+			let braceCount = 0;
+			let pre = "";
+			let i = first - 1;
+			for (; i >= 0; --i) {
+				pre = rendered.charAt(i) + pre;
+				if (rendered.charAt(i) === " " && braceCount === 0) {
+					spaceCount++;
+				}
+				if (spaceCount > EXTRA_WORDS) {
+					break;
+				}
+			}
+			pre = pre.trimLeft();
+			const preDots = i > 0;
+
+			spaceCount = 0;
+			let post = "";
+			const start = first === last ? last + cleanTerm.length : last;
+			i = Math.min(start, rendered.length);
+			for (; i < rendered.length; ++i) {
+				post += rendered.charAt(i);
+				if (rendered.charAt(i) === " " && braceCount === 0) {
+					spaceCount++;
+				}
+				if (spaceCount > EXTRA_WORDS) {
+					break;
+				}
+			}
+			post = post.trimRight();
+			const postDots = i < rendered.length;
+
+			return `${preDots ? "..." : ""}${pre}<span class="highlight">${term}</span>${post}${postDots ? "..." : ""}`
 		}
 	}
 }
