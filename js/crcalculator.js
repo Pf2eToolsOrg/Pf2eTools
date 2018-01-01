@@ -288,5 +288,5 @@ function calculatehp () {
 }
 
 function fractionStrToDecimal (str) {
-	return str === "0" ? 0 : str.split('/').reduce((numerator, denominator) => numerator / denominator, 1);
+	return str === "0" ? 0 : parseFloat(str.split('/').reduce((numerator, denominator) => numerator / denominator));
 }
