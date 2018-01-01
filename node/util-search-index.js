@@ -42,6 +42,9 @@ UtilSearchIndex._test_getBasicVariantItems = function () {
 };
 
 UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
+	if (doLogging === undefined || doLogging === null) doLogging = true;
+	if (test_doExtraIndex === undefined || test_doExtraIndex === null) test_doExtraIndex = false;
+
 	const index = [];
 
 	/**
