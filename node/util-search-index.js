@@ -109,7 +109,14 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			"category": 5,
 			"file": "classes.json",
 			"listProp": "class",
-			"baseUrl": "classes.html"
+			"baseUrl": "classes.html",
+			"deepIndex": (primary, it) => {
+				return it.subclasses.map(sc => ({
+					s: `${primary}; ${sc.name}`,
+					src: sc.source,
+					url: `classes.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
+				}))
+			}
 		},
 		{
 			"category": 6,
@@ -159,12 +166,12 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			"file": "variantrules.json",
 			"listProp": "variantrule",
 			"baseUrl": "variantrules.html",
-			"deepIndex": (it) => {
+			"deepIndex": (primary, it) => {
 				const names = [];
 				it.entries.forEach(e => {
 					er.EntryRenderer.getNames(names, e);
 				});
-				return names;
+				return names.map(n => ({s: `${primary}; ${n}`}));
 			}
 		},
 		{
@@ -174,7 +181,6 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			"listProp": "adventure",
 			"baseUrl": "adventure.html"
 		},
-
 		{
 			"category": 4,
 			"file": "magicvariants.json",
@@ -199,10 +205,9 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 
 	let id = 0;
 	function handleContents (arbiter, j) {
-		function getToAdd(it, s) {
-			return {
+		function getToAdd(it, toMerge) {
+			const toAdd = {
 				c: arbiter.category,
-				s: s,
 				src: getProperty(it, arbiter.source || "source"),
 				id: id++,
 				url: arbiter.hashBuilder
@@ -210,18 +215,20 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 					: `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`,
 				pg: getProperty(it, arbiter.page || "page")
 			};
+			Object.assign(toAdd, toMerge);
+			return toAdd;
 		}
 
 		j[arbiter.listProp].forEach(it => {
 			const primaryS = getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
-				const toAdd = getToAdd(it, primaryS);
+				const toAdd = getToAdd(it, {s: primaryS});
 				index.push(toAdd);
 
 				if (arbiter.deepIndex) {
-					const additionalS = arbiter.deepIndex(it);
-					additionalS.forEach(s => {
-						const toAdd = getToAdd(it, `${primaryS}: ${s}`);
+					const deepItems = arbiter.deepIndex(primaryS, it);
+					deepItems.forEach(item => {
+						const toAdd = getToAdd(it, item);
 						index.push(toAdd);
 					})
 				}
