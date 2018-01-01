@@ -32,9 +32,11 @@ const TO_INDEX__FROM_INDEX_JSON = [
 /**
  * category: a category from utils.js (see `Parser.pageCategoryToFull`)
  * file: source JSON file
- * primary: JSON property to index, per item. Can be a chain of properties e.g. `outer.inner.name`
- * source: JSON property containing the item's source, per item. Can be a chan of properties, e.g. `outer.inner.source`
- * page: (OPTIONAL) JSON property containing the item's page in the relevant book, per item.
+ * primary: (OPTIONAL; default "name") JSON property to index, per item.
+ * 		Can be a chain of properties e.g. `outer.inner.name`
+ * source: (OPTIONAL; default "source") JSON property containing the item's source, per item.
+ * 		Can be a chan of properties, e.g. `outer.inner.source`
+ * page: (OPTIONAL; default "page") JSON property containing the item's page in the relevant book, per item.
  * 		Can be a chain of properties, e.g. `outer.inner.page`
  * listProp: the JSON always has a root property containing the list of items. Provide the name of this property here.
  * baseUrl: the base URL (which page) to use when forming index URLs
@@ -48,58 +50,42 @@ const TO_INDEX = [
 	{
 		"category": 3,
 		"file": "backgrounds.json",
-		"primary": "name",
-		"source": "source",
-		"page": "page",
 		"listProp": "background",
 		"baseUrl": "backgrounds.html"
 	},
 	{
 		"category": 4,
 		"file": "basicitems.json",
-		"primary": "name",
-		"source": "source",
-		"page": "page",
 		"listProp": "basicitem",
 		"baseUrl": "items.html"
 	},
 	{
 		"category": 5,
 		"file": "classes.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "class",
 		"baseUrl": "classes.html"
 	},
 	{
 		"category": 6,
 		"file": "conditions.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "condition",
 		"baseUrl": "conditions.html"
 	},
 	{
 		"category": 7,
 		"file": "feats.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "feat",
 		"baseUrl": "feats.html"
 	},
 	{
 		"category": 8,
 		"file": "invocations.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "invocation",
 		"baseUrl": "invocations.html"
 	},
 	{
 		"category": 4,
 		"file": "items.json",
-		"primary": "name",
-		"source": "source",
 		"page": "page",
 		"listProp": "item",
 		"baseUrl": "items.html"
@@ -107,32 +93,24 @@ const TO_INDEX = [
 	{
 		"category": 9,
 		"file": "psionics.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "psionic",
 		"baseUrl": "psionics.html"
 	},
 	{
 		"category": 10,
 		"file": "races.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "race",
 		"baseUrl": "races.html"
 	},
 	{
 		"category": 11,
 		"file": "rewards.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "reward",
 		"baseUrl": "rewards.html"
 	},
 	{
 		"category": 12,
 		"file": "variantrules.json",
-		"primary": "name",
-		"source": "source",
 		"listProp": "variantrule",
 		"baseUrl": "variantrules.html",
 		"deepIndex": (it) => {
@@ -146,7 +124,6 @@ const TO_INDEX = [
 	{
 		"category": 13,
 		"file": "adventures.json",
-		"primary": "name",
 		"source": "id",
 		"listProp": "adventure",
 		"baseUrl": "adventure.html"
@@ -155,7 +132,6 @@ const TO_INDEX = [
 	{
 		"category": 4,
 		"file": "magicvariants.json",
-		"primary": "name",
 		"source": "inherits.source",
 		"page": "inherits.page",
 		"listProp": "variant",
@@ -173,20 +149,20 @@ function getProperty (obj, withDots) {
 let id = 0;
 function handleContents (arbiter, j) {
 	function getToAdd(it, s) {
-		const toAdd = {
+		return {
 			c: arbiter.category,
 			s: s,
-			src: getProperty(it, arbiter.source),
-			id: id++
+			src: getProperty(it, arbiter.source || "source"),
+			id: id++,
+			url: arbiter.hashBuilder
+				? `${arbiter.baseUrl}#${arbiter.hashBuilder(it)}`
+				: `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`,
+			pg: getProperty(it, arbiter.page || "page")
 		};
-		if (arbiter.hashBuilder) toAdd.url = `${arbiter.baseUrl}#${arbiter.hashBuilder(it)}`;
-		else toAdd.url = `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`;
-		if (arbiter.page) toAdd.pg = getProperty(it, arbiter.page);
-		return toAdd;
 	}
 
 	j[arbiter.listProp].forEach(it => {
-		const primaryS = getProperty(it, arbiter.primary);
+		const primaryS = getProperty(it, arbiter.primary || "name");
 		if (!it.noDisplay) {
 			const toAdd = getToAdd(it, primaryS);
 			INDEX.push(toAdd);
