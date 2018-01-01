@@ -49,3 +49,4 @@ pipeline:
       message: 5eTools build {{ build.number }} to {{ build.branch }} by {{ build.author }} finished with {{ build.status }}. ({{ build.link }})
       when:
         status: [ success, failure ]
+        event: push
