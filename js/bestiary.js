@@ -238,9 +238,9 @@ function loadhash (id) {
 	let entryList = {};
 	var mon = monsters[id];
 	var name = mon.name;
-	var source = mon.source;
+	let source = Parser.sourceJsonToAbv(mon.source);
+	let sourceFull = Parser.sourceJsonToFull(source)
 	var type = mon._pTypes.asText;
-	source = Parser.sourceJsonToAbv(source);
 
 	imgError = function (x) {
 		$(x).closest("th").css("padding-right", "0.2em");
@@ -249,7 +249,7 @@ function loadhash (id) {
 
 	$("th#name").html(
 		`<span class="stats-name">${name}</span>
-		<span class="stats-source source${source}" title="${Parser.sourceJsonToFull(source)}">${Parser.sourceJsonToAbv(source)}</span>
+		<span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>
 		<a href="img/${source}/${name.replace(/"/g, "")}.png" target='_blank'>
 			<img src="img/${source}/${name.replace(/"/g, "")}.png" class='token' onerror='imgError(this)'>
 		</a>`
@@ -453,8 +453,7 @@ function loadhash (id) {
 		variantSect.show();
 	}
 
-	const sourceAndPage = $(`#source`);
-	sourceAndPage.append(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(mon.source)}</i>${mon.page !== undefined ? `, page ${mon.page}` : ""}</td>`);
+	$(`#source`).append(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${mon.page}</td>`);
 
 	const legendaries = mon.legendary;
 	$("tr.legendary").remove();

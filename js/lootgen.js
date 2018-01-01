@@ -25,7 +25,7 @@ function displayTable (arrayEntry) {
 		const range = ItemsTable.table[i].min === ItemsTable.table[i].max ? ItemsTable.table[i].min : `${ItemsTable.table[i].min}-${ItemsTable.table[i].max}`
 		htmlText += `<tr><td class="text-align-center">${range}</td><td>${parseLink(ItemsTable.table[i].item)}</td></tr>`;
 	}
-	htmlText += "</table>";
+	htmlText += `</table><small><b>Source: </b> <i>${Parser.sourceJsonToFull(ItemsTable.source)}</i>, page ${ItemsTable.page}</small>`;
 	$("div#classtable").html(htmlText).show();
 }
 
