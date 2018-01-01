@@ -1,9 +1,7 @@
 "use strict";
-const HASH_SUBCLASS = "sub:";
 const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";
 const HASH_ALL_SOURCES = "allsrc:";
-const HASH_SUB_LIST_SEP = "~";
 
 const CLSS_FEATURE_LINK = "feature-link";
 const CLSS_ACTIVE = "active";

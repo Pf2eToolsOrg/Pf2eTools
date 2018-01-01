@@ -4,7 +4,9 @@
 
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
+HASH_SUB_LIST_SEP = "~";
 HASH_START = "#";
+HASH_SUBCLASS = "sub:";
 
 STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";
