@@ -1,4 +1,3 @@
-let catIndex;
 let searchIndex;
 
 window.addEventListener("load", init);
@@ -34,6 +33,7 @@ function init () {
 		if (e.which === 13) {
 			$searchSubmit.click();
 		}
+		e.stopPropagation();
 	});
 
 	// auto-search after 100ms
