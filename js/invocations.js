@@ -185,7 +185,7 @@ function loadhash (jsonIndex) {
 			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? null : parseSpell(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL])
 		].filter(f => f);
 		STATS_PREREQUISITES.innerHTML = prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
-
 		STATS_TEXT.innerHTML = utils_combineText(selectedInvocation[JSON_ITEM_TEXT], ELE_P);
+		$(`#source`).html(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(selectedInvocation.source)}</i>, page ${selectedInvocation.page}</td>`);
 	}
 }
