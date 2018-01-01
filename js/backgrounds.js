@@ -96,5 +96,6 @@ function loadhash (id) {
 		}
 
 		$("tr#traits").after("<tr class='trait'><td colspan='6'>" + texthtml + "</td></tr>");
+		$(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${curbg.page}</td>`);
 	}
 }
