@@ -226,7 +226,8 @@ function addSearch (indexData, advId) {
 
 								$ptPreviews.on("click", () => {
 									setTimeout(() => {
-										$(`#stats`).find(`p:containsInsensitive(${f.term})`).each((i, ele) => {
+										$(`#stats`).find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}")`
+										).each((i, ele) => {
 											$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
 										});
 									}, 15)
