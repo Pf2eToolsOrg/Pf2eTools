@@ -19,11 +19,11 @@ function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
 	out +=
 		"</ul>";
 	return out;
+}
 
-	function getOrdinalText (ordinal) {
-		if (ordinal === undefined) return "";
-		return `${ordinal.type === "part" ? `Part ${ordinal.identifier} \u2014 ` : ordinal.type === "chapter" ? `Ch. ${ordinal.identifier}: ` : ordinal.type === "episode" ? `Ep. ${ordinal.identifier}: ` : `App. ${ordinal.identifier}: `}`;
-	}
+function getOrdinalText (ordinal) {
+	if (ordinal === undefined) return "";
+	return `${ordinal.type === "part" ? `Part ${ordinal.identifier} \u2014 ` : ordinal.type === "chapter" ? `Ch. ${ordinal.identifier}: ` : ordinal.type === "episode" ? `Ep. ${ordinal.identifier}: ` : `App. ${ordinal.identifier}: `}`;
 }
 
 function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) {
@@ -59,10 +59,17 @@ function scrollClick (scrollTo) {
 }
 
 window.addEventListener("load", () => {
-	// Add a selector to match exact text to jQuery's arsenal
+	// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 	$.expr[':'].textEquals = (el, i, m) => {
 		const searchText = m[3];
 		const match = $(el).text().toLowerCase().trim().match(`^${searchText.toLowerCase()}$`);
+		return match && match.length > 0;
+	};
+
+	// Add a selector to match contained text (case insensitive)
+	$.expr[':'].containsInsensitive = (el, i, m) => {
+		const searchText = m[3];
+		const match = $(el).text().toLowerCase().trim().match(`${searchText.toLowerCase()}`);
 		return match && match.length > 0;
 	};
 });
