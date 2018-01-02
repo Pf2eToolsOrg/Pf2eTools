@@ -60,16 +60,11 @@ function init () {
 
 		const tokens = elasticlunr.tokenizer(srch);
 		const tokensIsCat = tokens.map(t => {
-			const catResults = searchIndex.search(t, {
-				fields: {
-					c: {}
-				},
-				expand: false
-			});
+			const category = Object.keys(CATEGORY_COUNTS).map(k => k.toLowerCase()).find(k => k === t.toLowerCase().trim());
 			return {
 				t: t,
-				isCat: catResults.length && CATEGORY_COUNTS[catResults[0].doc.c] === catResults.length,
-				c: catResults.length ? catResults[0].doc.c : undefined
+				isCat: !!category,
+				c: category
 			};
 		});
 
@@ -81,8 +76,8 @@ function init () {
 			const noCatTokens = tokensIsCat.filter(tc => !tc.isCat).map(tc => tc.t);
 			results = searchIndex.search(noCatTokens.join(" "), {
 				fields: {
-					s: {boost: 20},
-					src: {boost: 5}
+					s: {boost: 5, expand: true},
+					src: {expand: true}
 				},
 				bool: "AND",
 				expand: true
@@ -90,9 +85,8 @@ function init () {
 		} else {
 			results = searchIndex.search(srch, {
 				fields: {
-					s: {boost: 20},
-					src: {boost: 5},
-					c: {boost: 1}
+					s: {boost: 5, expand: true},
+					src: {expand: true}
 				},
 				bool: "AND",
 				expand: true
