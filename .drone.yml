@@ -14,7 +14,6 @@ pipeline:
           - npm install
           - npm test
           - npm run gen-index
-          - npm run version-bump
       when:
           event: [ push, pull_request ]
   Deploy-dev:
