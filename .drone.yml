@@ -23,7 +23,7 @@ pipeline:
     user: root
     secrets: [ ssh_key ]
     script:
-      - python /scripts/chk-version.py
+      - cd /scripts/ && python /scripts/chk-version.py
     when:
       branch: master
       event: push
