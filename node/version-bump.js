@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+/* // FIXME this should update the version number in the 5etools.html footer
 const VERSION_FILE = "version.txt";
 
 if (!fs.existsSync(VERSION_FILE)) {
@@ -16,3 +17,4 @@ if (!fs.existsSync(VERSION_FILE)) {
 		throw new Error(`Could not read version number from ${VERSION_FILE}`);
 	}
 }
+*/
