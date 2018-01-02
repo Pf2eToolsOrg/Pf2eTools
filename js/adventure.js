@@ -115,6 +115,7 @@ const curRender = {
 function onAdventureLoad (data, fromIndex, advId, hashParts) {
 	let chapter = 0;
 	let scrollTo;
+	let scrollIndex;
 	let forceScroll = false;
 	if (hashParts && hashParts.length > 0) chapter = Number(hashParts[0]);
 	if (hashParts && hashParts.length > 1) {
@@ -123,6 +124,7 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 		// fallback to scanning the document
 		if (!scrollTo) {
 			scrollTo = decodeURIComponent(hashParts[1]);
+			if (hashParts[2]) scrollIndex = Number(hashParts[2]);
 			forceScroll = true;
 		}
 	}
@@ -143,14 +145,14 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 
 		if (scrollTo) {
 			setTimeout(() => {
-				scrollClick(scrollTo);
+				scrollClick(scrollTo, scrollIndex);
 			}, 75)
 		}
 	} else {
 		if (hashParts.length <= 1) {
 			$(window).scrollTop(0);
 		} else if (forceScroll) {
-			scrollClick(scrollTo);
+			scrollClick(scrollTo, scrollIndex);
 		}
 	}
 }
@@ -173,10 +175,10 @@ function sectToggle (evt, ele) {
 
 let $body;
 let $findAll;
-
+let headerCounts;
 function addSearch (indexData, advId) {
 	function getHash (found) {
-		return `${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${found.ch}${found.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(found.header)}` : ""}`
+		return `${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${found.ch}${found.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(found.header)}${HASH_PART_SEP}${found.headerIndex}` : ""}`
 	}
 
 	$body = $body || $(`body`);
@@ -201,7 +203,10 @@ function addSearch (indexData, advId) {
 					$results.html("");
 					const found = [];
 					const toSearch = adventureContent[advId];
-					toSearch.forEach((s, i) => searchEntriesFor(i, "", found, $srch.val(), s));
+					toSearch.forEach((section, i) => {
+						headerCounts = {};
+						searchEntriesFor(i, "", found, $srch.val(), section)
+					});
 					if (found.length) {
 						$results.show();
 						found.forEach(f => {
@@ -209,29 +214,32 @@ function addSearch (indexData, advId) {
 							const $ptLink = $(`<span/>`);
 							const $link = $(
 								`<a href="#${getHash(f)}">
-									<i>${getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name} \u2013 ${f.header}</i>
+									<i>${getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name} \u2013 ${f.headerMatches ? `<span class="highlight">` : ""}${f.header}${f.headerMatches ? `</span>` : ""}</i>
 								</a>`
 							);
 							$ptLink.append($link);
+							$row.append($ptLink);
 
-							const $ptPreviews = $(`<a href="#${getHash(f)}"/>`);
-							const re = new RegExp(RegExp.escape(f.term), "gi");
+							if (f.previews) {
+								const $ptPreviews = $(`<a href="#${getHash(f)}"/>`);
+								const re = new RegExp(RegExp.escape(f.term), "gi");
 
-							$ptPreviews.on("click", () => {
-								setTimeout(() => {
-									$(`#stats`).find(`p:containsInsensitive(${f.term})`).each((i, ele) => {
-										$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
-									});
-								}, 15)
-							});
+								$ptPreviews.on("click", () => {
+									setTimeout(() => {
+										$(`#stats`).find(`p:containsInsensitive(${f.term})`).each((i, ele) => {
+											$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
+										});
+									}, 15)
+								});
 
-							$ptPreviews.append(`<span>${f.previews[0]}</span>`);
-							if (f.previews[1]) {
-								$ptPreviews.append(" ... ");
-								$ptPreviews.append(`<span>${f.previews[1]}</span>`);
+								$ptPreviews.append(`<span>${f.previews[0]}</span>`);
+								if (f.previews[1]) {
+									$ptPreviews.append(" ... ");
+									$ptPreviews.append(`<span>${f.previews[1]}</span>`);
+								}
+								$row.append($ptPreviews);
 							}
 
-							$row.append($ptLink).append($ptPreviews);
 							$results.append($row);
 						});
 					} else {
@@ -261,7 +269,25 @@ function addSearch (indexData, advId) {
 		const cleanTerm = term.toLowerCase().trim();
 		if (!cleanTerm) return;
 
-		const lastName = obj.name ? obj.name : prevLastName;
+		if (obj.name) {
+			if (headerCounts[obj.name] === undefined) headerCounts[obj.name] = 0;
+			else headerCounts[obj.name]++;
+		}
+		let lastName;
+		if (obj.name) {
+			lastName = obj.name;
+			if (lastName.toLowerCase().includes(cleanTerm)) {
+				appendTo.push({
+					ch: chapterIndex,
+					header: lastName,
+					headerIndex: headerCounts[lastName],
+					term: term.trim(),
+					headerMatches: true
+				});
+			}
+		} else {
+			lastName = prevLastName;
+		}
 		if (obj.entries) {
 			obj.entries.forEach(e => searchEntriesFor(chapterIndex, lastName, appendTo, term, e))
 		} else if (obj.items) {
@@ -277,7 +303,7 @@ function addSearch (indexData, advId) {
 
 			const toCheck = rendered.toLowerCase();
 			if (toCheck.includes(cleanTerm)) {
-				if (!appendTo.length || appendTo[appendTo.length - 1].h !== lastName) {
+				if (!appendTo.length || (!(appendTo[appendTo.length - 1].header === lastName && appendTo[appendTo.length - 1].headerIndex === headerCounts[lastName] && appendTo[appendTo.length - 1].previews))) {
 					const first = toCheck.indexOf(cleanTerm);
 					const last = toCheck.lastIndexOf(cleanTerm);
 
@@ -291,10 +317,18 @@ function addSearch (indexData, advId) {
 					appendTo.push({
 						ch: chapterIndex,
 						header: lastName,
+						headerIndex: headerCounts[lastName],
 						previews: slices.map(s => s.preview),
 						term: term.trim(),
-						matches: slices.map(s => s.match)
+						matches: slices.map(s => s.match),
+						headerMatches: lastName.toLowerCase().includes(cleanTerm)
 					});
+				} else {
+					const last = toCheck.lastIndexOf(cleanTerm);
+					const slice = getSubstring(rendered, last, last + cleanTerm.length);
+					const lastItem = appendTo[appendTo.length - 1];
+					lastItem.previews[1] = slice.preview;
+					lastItem.matches[1] = slice.match;
 				}
 			}
 		} else if (!(obj.type === "image" || obj.type === "link")) {
