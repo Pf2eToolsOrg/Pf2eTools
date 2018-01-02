@@ -72,4 +72,5 @@ pipeline:
     script:
       - python /scripts/shame.py
     when:
-        status: [ failure ]
+        status: failure
+        event: push
