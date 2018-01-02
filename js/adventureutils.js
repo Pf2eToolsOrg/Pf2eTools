@@ -40,21 +40,35 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 	return out;
 }
 
-function scrollClick (scrollTo) {
-	// textEquals selector defined below; added on window load
-	const goTo = $(`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`);
-	if (goTo.length) {
-		goTo[goTo.length - 1].scrollIntoView();
-		return;
-	}
-	const goToSub = $(`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`);
-	if (goToSub.length) {
-		goToSub[goToSub.length - 1].scrollIntoView();
-		return;
-	}
-	const goToInset = $(`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`);
-	if (goToInset.length) {
-		goToInset[goToInset.length - 1].scrollIntoView();
+function scrollClick (scrollTo, scrollIndex) {
+	const selectors = [
+		`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`,
+		`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`,
+		`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`
+	];
+
+	if (scrollIndex === undefined) {
+		// textEquals selector defined below; added on window load
+		const goTo = $(selectors[0]);
+		if (goTo.length) {
+			goTo[goTo.length - 1].scrollIntoView();
+			return;
+		}
+		const goToSub = $(selectors[1]);
+		if (goToSub.length) {
+			goToSub[goToSub.length - 1].scrollIntoView();
+			return;
+		}
+		const goToInset = $(selectors[2]);
+		if (goToInset.length) {
+			goToInset[goToInset.length - 1].scrollIntoView();
+		}
+	} else {
+		const goTo = $(`${selectors[0]}, ${selectors[1]}, ${selectors[2]}`);
+		if (goTo.length) {
+			if (goTo[scrollIndex]) goTo[scrollIndex].scrollIntoView();
+			else goTo[goTo.length - 1].scrollIntoView();
+		}
 	}
 }
 
