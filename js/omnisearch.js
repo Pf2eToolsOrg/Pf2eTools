@@ -60,7 +60,7 @@ function init () {
 
 		const tokens = elasticlunr.tokenizer(srch);
 		const tokensIsCat = tokens.map(t => {
-			const category = Object.keys(CATEGORY_COUNTS).map(k => k.toLowerCase()).find(k => k === t.toLowerCase().trim());
+			const category = Object.keys(CATEGORY_COUNTS).map(k => k.toLowerCase()).find(k => (k === t.toLowerCase().trim() || `${k}s` === t.toLowerCase().trim()));
 			return {
 				t: t,
 				isCat: !!category,
