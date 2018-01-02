@@ -89,7 +89,7 @@ function loadAdventure (fromIndex, advId, hashParts) {
 	if (adventureContent[advId] !== undefined) {
 		handle(adventureContent[advId]);
 	} else {
-		loadJSON(`data/adventure/adventure-${advId}.json`, function (data) {
+		loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
 			adventureContent[advId] = data.data;
 			handle(data.data);
 		});
