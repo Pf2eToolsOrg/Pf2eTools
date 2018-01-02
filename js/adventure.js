@@ -175,6 +175,10 @@ let $body;
 let $findAll;
 
 function addSearch (indexData, advId) {
+	function getHash (found) {
+		return `${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${found.ch}${found.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(found.header)}` : ""}`
+	}
+
 	$body = $body || $(`body`);
 
 	$body.on("click", () => {
@@ -204,35 +208,27 @@ function addSearch (indexData, advId) {
 							const $row = $(`<p class="f-result"/>`);
 							const $ptLink = $(`<span/>`);
 							const $link = $(
-								`<a href="#${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${f.ch}${f.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(f.header)}` : ""}">
+								`<a href="#${getHash(f)}">
 									<i>${getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name} \u2013 ${f.header}</i>
 								</a>`
 							);
 							$ptLink.append($link);
 
-							const $ptPreviews = $(`<span/>`);
+							const $ptPreviews = $(`<a href="#${getHash(f)}"/>`);
 							const re = new RegExp(RegExp.escape(f.term), "gi");
 
-							const $ptPreview1 = $(`<span>${f.previews[0]}</span>`);
-							$ptPreview1.data("link", $link[0]);
-							$ptPreview1.on("click", () => {
-								$ptPreview1.data("link").click();
+							$ptPreviews.on("click", () => {
 								setTimeout(() => {
 									$(`#stats`).find(`p:containsInsensitive(${f.term})`).each((i, ele) => {
 										$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
 									});
 								}, 15)
 							});
-							$ptPreviews.append($ptPreview1);
 
-							// TODO
+							$ptPreviews.append(`<span>${f.previews[0]}</span>`);
 							if (f.previews[1]) {
-								const $ptPreview2 = $(`<span>${f.previews[1]}</span>`);
-								$ptPreview2.on("click", () => {
-									$ptPreview1.click();
-								});
 								$ptPreviews.append(" ... ");
-								$ptPreviews.append($ptPreview2);
+								$ptPreviews.append(`<span>${f.previews[1]}</span>`);
 							}
 
 							$row.append($ptLink).append($ptPreviews);
