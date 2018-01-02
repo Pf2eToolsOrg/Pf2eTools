@@ -3,7 +3,7 @@ workspace:
 clone:
   git:
     image: plugins/git:1
-    depth: 50
+    depth: 1
     tags: false
 
 pipeline:
@@ -16,6 +16,18 @@ pipeline:
           - npm run gen-index
       when:
           event: [ push, pull_request ]
+  Version:
+    image: appleboy/drone-ssh
+    host: ianthe.rem.uz
+    port: 22
+    user: root
+    secrets: [ ssh_key ]
+    script:
+      - python /scripts/chk-version.py
+    when:
+      branch: master
+      event: push
+
   Deploy-dev:
     image: appleboy/drone-ssh
     host: ianthe.rem.uz
@@ -50,3 +62,14 @@ pipeline:
       when:
         status: [ success, failure ]
         event: push
+
+  Shame:
+    image: appleboy/drone-ssh
+    host: ianthe.rem.uz
+    port: 22
+    user: root
+    secrets: [ ssh_key ]
+    script:
+      - python /scripts/shame.py
+    when:
+        status: [ failure ]
