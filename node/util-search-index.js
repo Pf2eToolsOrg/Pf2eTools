@@ -147,7 +147,11 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			"category": 9,
 			"file": "psionics.json",
 			"listProp": "psionic",
-			"baseUrl": "psionics.html"
+			"baseUrl": "psionics.html",
+			"deepIndex": (primary, it) => {
+				if (!it.modes) return [];
+				return it.modes.map(m => ({s: `${primary}; ${m.title}`}))
+			}
 		},
 		{
 			"category": 10,

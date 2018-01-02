@@ -58,17 +58,40 @@ function init () {
 		e.stopPropagation();
 		const srch = $searchIn.val();
 
+		const tokens = elasticlunr.tokenizer(srch);
+		const tokensIsCat = tokens.map(t => {
+			const category = Object.keys(CATEGORY_COUNTS).map(k => k.toLowerCase()).find(k => (k === t.toLowerCase().trim() || `${k}s` === t.toLowerCase().trim()));
+			return {
+				t: t,
+				isCat: !!category,
+				c: category
+			};
+		});
+
 		let page = 0;
 
-		const results = searchIndex.search(srch, {
-			fields: {
-				s: {boost: 100},
-				src: {boost: 10},
-				c: {boost: 1}
-			},
-			bool: "AND",
-			expand: true
-		});
+		const catTokens = tokensIsCat.filter(tc => tc.isCat);
+		let results;
+		if (catTokens.length === 1) {
+			const noCatTokens = tokensIsCat.filter(tc => !tc.isCat).map(tc => tc.t);
+			results = searchIndex.search(noCatTokens.join(" "), {
+				fields: {
+					s: {boost: 5, expand: true},
+					src: {expand: true}
+				},
+				bool: "AND",
+				expand: true
+			}).filter(r => r.doc.c === catTokens[0].c);
+		} else {
+			results = searchIndex.search(srch, {
+				fields: {
+					s: {boost: 5, expand: true},
+					src: {expand: true}
+				},
+				bool: "AND",
+				expand: true
+			});
+		}
 
 		if (results.length) {
 			renderLinks();
@@ -114,6 +137,7 @@ function init () {
 	});
 }
 
+const CATEGORY_COUNTS = {};
 function onSearchLoad (data) {
 	searchIndex = elasticlunr(function () {
 		this.addField("s");
@@ -123,6 +147,8 @@ function onSearchLoad (data) {
 	});
 	data.forEach(d => {
 		d.c = Parser.pageCategoryToFull(d.c);
+		if (!CATEGORY_COUNTS[d.c]) CATEGORY_COUNTS[d.c] = 1;
+		else CATEGORY_COUNTS[d.c]++;
 		searchIndex.addDoc(d);
 	});
 }
