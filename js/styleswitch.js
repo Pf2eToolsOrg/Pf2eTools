@@ -319,6 +319,7 @@ table#stats td._class_feature table th {
 	border-color: #ababab;
 }
 
+ul.list.adventures > li:nth-child(odd) > a,
 #stats table tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
 #rulescontent table tbody tr:nth-child(odd) td,
