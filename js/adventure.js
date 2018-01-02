@@ -245,8 +245,6 @@ function addSearch (indexData, advId) {
 			});
 			$findAll.append($srch).append($results);
 
-			// const fullPreview = slices.length === 1 ? slices[0].preview : `${slices[0].preview} ... ${slices[1].preview}`;
-
 			$body.append($findAll);
 
 			$srch.focus();
