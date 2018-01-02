@@ -8,15 +8,11 @@ const adventureContent = {};
 const TABLE_START = `<tr><th class="border" colspan="6"></th></tr>`;
 const TABLE_END = `<tr><th class="border" colspan="6"></th></tr>`;
 
-// track mouse position
-let cX;
-let cY;
-document.onmousemove = function (e) {
-	cX = e.clientX;
-	cY = e.clientY;
-};
-
 window.onload = function load () {
+	RegExp.escape = function (string) {
+		return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+	};
+
 	renderArea = $(`#stats`);
 
 	renderArea.append(TABLE_START);
@@ -188,19 +184,11 @@ function addSearch (indexData, advId) {
 	$body.off("keypress");
 	$body.on("keypress", (e) => {
 		if ((e.key === "f" && noModifierKeys(e))) {
+			$(`span.temp`).contents().unwrap();
 			if ($findAll) $findAll.remove();
-			const winWidth = window.innerWidth;
-			const winHeight = window.innerHeight;
-			const flipX = cX > (winWidth - 700);
-			const flipY = cY > (winHeight - 500);
 			$findAll = $(`<div class="f-all-wrapper"/>`).on("click", (e) => {
 				e.stopPropagation();
 			});
-
-			if (flipX) $findAll.css("right", 10);
-			else $findAll.css("left", cX);
-			if (flipY) $findAll.css("bottom", 10);
-			else $findAll.css("top", cY);
 
 			const $results = $(`<div class="f-all-out">`);
 			const $srch = $(`<input class="form-control" placeholder="Find text...">`).on("keypress", (e) => {
@@ -213,13 +201,43 @@ function addSearch (indexData, advId) {
 					if (found.length) {
 						$results.show();
 						found.forEach(f => {
-							$results.append(`
-							<p>
-								<a href="#${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${f.ch}${f.h ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(f.h)}` : ""}">
-									<i>${indexData.contents[f.ch].name}: ${f.h}</i> | ${f.p}
-								</a>
-							</p>`);
-						})
+							const $row = $(`<p class="f-result"/>`);
+							const $ptLink = $(`<span/>`);
+							const $link = $(
+								`<a href="#${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${f.ch}${f.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(f.header)}` : ""}">
+									<i>${getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name} \u2013 ${f.header}</i>
+								</a>`
+							);
+							$ptLink.append($link);
+
+							const $ptPreviews = $(`<span/>`);
+							const re = new RegExp(RegExp.escape(f.term), "gi");
+
+							const $ptPreview1 = $(`<span>${f.previews[0]}</span>`);
+							$ptPreview1.data("link", $link[0]);
+							$ptPreview1.on("click", () => {
+								$ptPreview1.data("link").click();
+								setTimeout(() => {
+									$(`#stats`).find(`p:containsInsensitive(${f.term})`).each((i, ele) => {
+										$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
+									});
+								}, 15)
+							});
+							$ptPreviews.append($ptPreview1);
+
+							// TODO
+							if (f.previews[1]) {
+								const $ptPreview2 = $(`<span>${f.previews[1]}</span>`);
+								$ptPreview2.on("click", () => {
+									$ptPreview1.click();
+								});
+								$ptPreviews.append(" ... ");
+								$ptPreviews.append($ptPreview2);
+							}
+
+							$row.append($ptLink).append($ptPreviews);
+							$results.append($row);
+						});
 					} else {
 						$results.hide();
 					}
@@ -267,10 +285,20 @@ function addSearch (indexData, advId) {
 					const first = toCheck.indexOf(cleanTerm);
 					const last = toCheck.lastIndexOf(cleanTerm);
 
-					const slice = first === last
-						? getSubstring(rendered, first, first)
-						: `${getSubstring(rendered, first, first + cleanTerm.length)} ... ${getSubstring(rendered, last, last + cleanTerm.length)}`;
-					appendTo.push({ch: chapterIndex, h: lastName, p: slice});
+					const slices = [];
+					if (first === last) {
+						slices.push(getSubstring(rendered, first, first));
+					} else {
+						slices.push(getSubstring(rendered, first, first + cleanTerm.length));
+						slices.push(getSubstring(rendered, last, last + cleanTerm.length));
+					}
+					appendTo.push({
+						ch: chapterIndex,
+						header: lastName,
+						previews: slices.map(s => s.preview),
+						term: term.trim(),
+						matches: slices.map(s => s.match)
+					});
 				}
 			}
 		} else if (!(obj.type === "image" || obj.type === "link")) {
@@ -310,7 +338,12 @@ function addSearch (indexData, advId) {
 			post = post.trimRight();
 			const postDots = i < rendered.length;
 
-			return `${preDots ? "..." : ""}${pre}<span class="highlight">${term}</span>${post}${postDots ? "..." : ""}`
+			const originalTerm = rendered.substr(first, term.length);
+
+			return {
+				preview: `${preDots ? "..." : ""}${pre}<span class="highlight">${originalTerm}</span>${post}${postDots ? "..." : ""}`,
+				match: `${pre}${term}${post}`
+			};
 		}
 	}
 }
