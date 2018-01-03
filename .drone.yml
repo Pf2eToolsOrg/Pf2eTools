@@ -47,7 +47,7 @@ pipeline:
     host: ianthe.rem.uz
     port: 22
     user: root
-    secrets: ssh_key
+    secrets: [ ssh_key ]
     script:
       - python /scripts/shame.py
     when:
@@ -76,7 +76,7 @@ pipeline:
     host: ianthe.rem.uz
     port: 22
     user: root
-    secrets: ssh_key
+    secrets: [ ssh_key ]
     command_timeout: 120
     script:
       - bash /scripts/prod-deploy.sh
