@@ -5,19 +5,19 @@ const MONTH_NAMES = [
 	"July", "August", "September", "October", "November", "December"
 ];
 
-let adventures;
+let adventuresIndex;
 
 window.onload = function load () {
 	loadJSON(CONTENTS_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {
-	adventures = data.adventure;
+	adventuresIndex = data.adventure;
 
 	const adventuresList = $("ul.adventures");
 	let tempString = "";
-	for (let i = 0; i < adventures.length; i++) {
-		const adv = adventures[i];
+	for (let i = 0; i < adventuresIndex.length; i++) {
+		const adv = adventuresIndex[i];
 		// used for sorting
 		adv._startLevel = adv.level.start || 20;
 		adv._pubDate = new Date(adv.published);
@@ -96,8 +96,8 @@ function advToggle (evt, ele) {
 }
 
 function sortAdventures (a, b, o) {
-	a = adventures[a.elm.getAttribute(FLTR_ID)];
-	b = adventures[b.elm.getAttribute(FLTR_ID)];
+	a = adventuresIndex[a.elm.getAttribute(FLTR_ID)];
+	b = adventuresIndex[b.elm.getAttribute(FLTR_ID)];
 
 	if (o.valueName === "name") {
 		return byName();
