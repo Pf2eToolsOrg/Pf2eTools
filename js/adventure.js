@@ -52,8 +52,13 @@ function onJsonLoad (data) {
 	const allAdvHeaders = $(`ul.adv-headers`);
 	// add styles to all
 	allAdvHeaders.prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0");
-	// add expand/collapse to only those with children
-	allAdvHeaders.filter((i, ele) => $(ele).children().length).prev(`li`).find(`a`).append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="false">[\u2013]</span>`);
+	allAdvHeaders.filter((i, ele) => $(ele).children().length).each((i, ele) => {
+		const $ele = $(ele);
+		// add expand/collapse to only those with children
+		$ele.prev(`li`).find(`a`).append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="true">[+]</span>`);
+		// collapse children
+		$ele.prev(`li`).find(`a`).closest(`li`).next(`ul.adv-headers`).hide();
+	});
 
 	const list = new List("listcontainer", {
 		valueNames: ['name'],
@@ -75,7 +80,7 @@ function hashChange () {
 		// prevent TftYP names from causing the header to wrap
 		const shortName = fromIndex[0].name.includes(Parser.SOURCE_JSON_TO_FULL[SRC_TYP]) ? fromIndex[0].name.replace(Parser.SOURCE_JSON_TO_FULL[SRC_TYP], Parser.sourceJsonToAbv(SRC_TYP)) : fromIndex[0].name;
 		$(`.adv-header`).html(shortName);
-		$(`.adv-message`).html("Select a chapter on the left, and browse the content on the right");
+		$(`.adv-message`).html("Browse adventure content. Press F to find.");
 		loadAdventure(fromIndex[0], advId, hashParts);
 	} else {
 		throw new Error("No adventure with ID: " + advId);
@@ -132,6 +137,8 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 	if (curRender.chapter !== chapter || curRender.curAdvId !== advId) {
 		thisContents.children(`ul`).children(`ul, li`).removeClass("active");
 		thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
+		const $showHideBtn = thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1})`).find(`.showhide`);
+		if ($showHideBtn.data("hidden")) $showHideBtn.click();
 
 		curRender.curAdvId = advId;
 		curRender.chapter = chapter;
@@ -239,6 +246,8 @@ function addSearch (indexData, advId) {
 									$ptPreviews.append(`<span>${f.previews[1]}</span>`);
 								}
 								$row.append($ptPreviews);
+
+								$link.on("click", () => $ptPreviews.click());
 							}
 
 							$results.append($row);
