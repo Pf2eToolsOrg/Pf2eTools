@@ -2,6 +2,10 @@
 // Strict mode should not be used, as the roll20 script depends on this file //
 // ************************************************************************* //
 
+// in deployment, `_IS_DEPLOYED = true;` should be prepended to this file
+IS_DEPLOYED = typeof _IS_DEPLOYED !== "undefined" && _IS_DEPLOYED;
+DEPLOYED_STATIC_ROOT = "https://static.5etools.com/";
+
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_SUB_LIST_SEP = "~";
@@ -1453,6 +1457,17 @@ UrlUtil.getCurrentPage = function () {
 	return pSplit[pSplit.length - 1];
 };
 
+
+/**
+ * All internal URL construction should pass through here, to ensure `static.5etools.com` is used when required.
+ *
+ * @param href the link
+ */
+UrlUtil.link = function (href) {
+	if (IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}`;
+	return href;
+};
+
 UrlUtil.PG_BESTIARY = "bestiary.html";
 UrlUtil.PG_SPELLS = "spells.html";
 UrlUtil.PG_BACKGROUNDS = "backgrounds.html";
@@ -1510,14 +1525,26 @@ function joinConjunct (arr, joinWith, conjunctWith) {
 
 // JSON LOADING ========================================================================================================
 function loadJSON (url, onLoadFunction, ...otherData) {
-	const request = new XMLHttpRequest();
-	request.open('GET', url, true);
-	request.overrideMimeType("application/json");
-	request.onload = function () {
-		const data = JSON.parse(this.response);
-		onLoadFunction(data, otherData);
-	};
+	const procUrl = UrlUtil.link(url);
+	const request = getRequest(procUrl);
+	if (procUrl !== url) {
+		request.onerror = function () {
+			const fallbackRequest = getRequest(url);
+			fallbackRequest.send();
+		};
+	}
 	request.send();
+
+	function getRequest (toUrl) {
+		const request = new XMLHttpRequest();
+		request.open("GET", toUrl, true);
+		request.overrideMimeType("application/json");
+		request.onload = function () {
+			const data = JSON.parse(this.response);
+			onLoadFunction(data, otherData);
+		};
+		return request;
+	}
 }
 
 /**
