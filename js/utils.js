@@ -1457,7 +1457,6 @@ UrlUtil.getCurrentPage = function () {
 	return pSplit[pSplit.length - 1];
 };
 
-
 /**
  * All internal URL construction should pass through here, to ensure `static.5etools.com` is used when required.
  *
