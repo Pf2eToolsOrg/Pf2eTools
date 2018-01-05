@@ -1,5 +1,8 @@
 "use strict";
-window.onload = loadparser;
+
+const JSON_URL = "data/bestiary/index.json";
+
+window.onload = loadSources;
 
 function moveon (cur) {
 	return (!cur.toUpperCase().indexOf("ACTIONS") || !cur.toUpperCase().indexOf("LEGENDARY ACTIONS") || !cur.toUpperCase().indexOf("REACTIONS"))
@@ -38,18 +41,71 @@ const SKILL_SPACE_MAP = {
 	"animalhandling": "animal handling"
 };
 
-function loadparser () {
+function loadSources () {
+	loadJSON(JSON_URL, loadparser)
+}
+
+function sortOptions ($select) {
+	$select.append($select.find("option").remove().sort((a, b) => {
+		const at = $(a).text();
+		const bt = $(b).text();
+		return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+	}));
+}
+
+function appendSource ($select, src) {
+	$select.append(`<option value="${src}">${src}</option>`);
+}
+
+const COOKIE_NAME = "converterSources";
+function loadparser (data) {
+	// custom sources
+	const $srcSel = $(`#source`);
+	Object.keys(data).forEach(src => appendSource($srcSel, src));
+	const rawCookie = Cookies.get(COOKIE_NAME);
+	const cookie = rawCookie ? JSON.parse(rawCookie) : {sources: [], selected: SRC_MM};
+	cookie.sources.forEach(src => appendSource($srcSel, src));
+	sortOptions($srcSel);
+	$srcSel.val(cookie.selected);
+
+	$srcSel.on("change", () => cookie.selected = $srcSel.val());
+
+	window.addEventListener("unload", function () {
+		Cookies.set(COOKIE_NAME, cookie, {expires: 365, path: window.location.pathname})
+	});
+
+	const $inptCustomSource = $(`#customsourcein`);
+	$(`#addsource`).on("click", () => {
+		const toAdd = $inptCustomSource.val().trim();
+		if (!cookie.sources.find(src => toAdd.toLowerCase() === src.toLowerCase())) {
+			cookie.selected = toAdd;
+			cookie.sources.push(toAdd);
+			appendSource($srcSel, toAdd);
+			sortOptions($srcSel);
+			$srcSel.val(toAdd);
+			$inptCustomSource.val("");
+		}
+	});
+
+	// init editor
 	const editor = ace.edit("statblock");
 	editor.setOptions({
 		wrap: true
 	});
 
-	// parse it on click
-	$("button#parsestatblock").click(function () {
+	$(`button#parsestatblockadd`).on("click", () => {
+		doParse(true);
+	});
+
+	$("button#parsestatblock").on("click", () => {
+		doParse(false);
+	});
+
+	function doParse (append) {
 		const statblock = editor.getValue().split("\n");
 		const stats = {};
 
-		stats.source = $("input#source").val();
+		stats.source = $srcSel.val();
 
 		let prevLine = null;
 		let curline = null;
@@ -261,8 +317,15 @@ function loadparser () {
 		// for the user to fill out
 		stats.page = 0;
 
-		let out = JSON.stringify(stats, null, " ");
+		let out = JSON.stringify(stats, null, "\t");
 		out = out.replace(/([1-9]\d*)?d([1-9]\d*)(\s?)([+-])(\s?)(\d+)?/g, "$1d$2$4$6");
-		$("textarea#jsonoutput").text(out);
-	})
+
+		const $outArea = $("textarea#jsonoutput");
+		if (append) {
+			const oldVal = $outArea.text();
+			$outArea.text(`${oldVal}\n${out}`);
+		} else {
+			$outArea.text(out);
+		}
+	}
 }

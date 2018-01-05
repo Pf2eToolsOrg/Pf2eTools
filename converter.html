@@ -56,7 +56,7 @@
 	<main class="bodyContent view-col-wrapper">
 
 		<div class="view-col">
-			<h3>Statblock <button id="parsestatblock" class="btn">Parse</button></h3>
+			<h3>Statblock <button id="parsestatblock" class="btn">Parse</button> <button id="parsestatblockadd" class="btn">Parse and Add</button></h3>
 			<pre id="statblock" class="inputArea">
 Mammon
 Huge fiend (devil), lawful evil
@@ -91,9 +91,9 @@ Attack. Mammon makes one purse or molten coins attack.
 Make It Rain! Mammon casts gold and jewels into a 5-foot radius within 60 feet. One creature within 60 feet of the treasure that can see it must make a DC 24 Wisdom saving throw. On a failure, the creature must use its reaction to move its speed toward the trinkets, which vanish at the end of the turn.
 Deep Pockets (3 actions). Mammon recharges his Your Weight In Gold ability.
 			</pre>
-			<!-- TODO list all existing sources; allow user to add + store in cookie -->
 			<select id="source"></select>
-			<input type="text" placeholder="Custom source"><br>
+			<input type="text" id="customsourcein" placeholder="Custom source">
+			<button id="addsource" class="btn btn-sm">Save</button><br>
 			<small>This parser is very particular about its input. Use at your own risk.</small>
 		</div>
 
