@@ -468,26 +468,32 @@
 						"White Plume Mountain has always been a subject of superstitious awe to the neighboring villagers. People still travel many miles to gaze upon this natural wonder, though few will approach it closely, as it is reputed to be the haunt of various demons and devils. The occasional disappearance of those who stray too close to the Plume reinforces this belief.",
 						"Thirteen hundred years ago, the wizard Keraptis was searching for a suitable haven where he could indulge his eccentricities without fear of interference. He visited White Plume Mountain, going closer than most dared to, and discovered the system of old lava-tubes that riddle the cone and the underlying strata. With a little alteration, he thought, these would be perfect for his purposes. The area already had a bad reputation, and he could think of a few ways to make it worse. So he disappeared below White Plume Mountain and vanished from the knowledge of the surface world.",
 						"Today, the once-feared name of Keraptis is not widely known even among learned scholars. Or it was not widely known, that is, until several weeks ago, when three highly valued magic weapons named {@item Wave|DMG}, {@item Whelm|DMG}, and {@i Blackrazo} r disappeared from the vaults of their owners. Rewards were posted, servants hanged, even the sanctuary of the thieves' guild was violated in the frantic search for the priceless arms, but not even a single clue was turned up until the weapons' former owners each received a copy of the following note:",
-						"{@i Search ye far or search ye near",
-						"You'll find no trace of the three",
-						"Unless you follow instructions clear",
-						"For the weapons abide with me.}",
-						"{@i North past forest, farm and furrow",
-						"You must go to the feathered mound",
-						"Then down away from the sun you'll burrow",
-						"Forget life, forget light, forget sound.}",
-						"{@i To rescue Wave, you must do battle",
-						"With the Beast in the Boiling Bubble",
-						"Crost cavern vast, where chain-links rattle",
-						"Lies Whelm, past water-spouts double.}",
-						"{@i Blackrazor yet remains to be won",
-						"Underneath inverted ziggurat.",
-						"That garnered, think not that you're done",
-						"For now you'll find you are caught}",
-						"{@i I care not, former owners brave",
-						"What heroes you seek to hire.",
-						"Though mighty, I'll make each one my slave",
-						"Or send him to the fire}",
+						{
+							"type": "inset",
+							"entries": [
+								"Search ye far or search ye near",
+								"You'll find no trace of the three",
+								"Unless you follow instructions clear",
+								"For the weapons abide with me.",
+								"North past forest, farm and furrow",
+								"You must go to the feathered mound",
+								"Then down away from the sun you'll burrow",
+								"Forget life, forget light, forget sound.",
+								"To rescue Wave, you must do battle",
+								"With the Beast in the Boiling Bubble",
+								"Crost cavern vast, where chain-links rattle",
+								"Lies Whelm, past water-spouts double.",
+								"Blackrazor yet remains to be won",
+								"Underneath inverted ziggurat.",
+								"That garnered, think not that you're done",
+								"For now you'll find you are caught",
+								"I care not, former owners brave",
+								"What heroes you seek to hire.",
+								"Though mighty, I'll make each one my slave",
+								"Or send him to the fire"
+							],
+							"name": "Keraptis"
+						},
 						"All the notes were signed with the symbol of Keraptis.",
 						"White Plume Mountain has tentatively been identified as the \"feathered mound\" of the poem. The former owners of {@item Wave|DMG}, {@item Whelm|DMG}, and {@item Blackrazor|DMG} are outfitting a group of intrepid heroes to take up the challenge. If the adventurers can rescue the weapons from this false Keraptis (for who can believe it is really the magician of legend, after thirteen hundred years?), the wealthy collectors have promised to grant them whatever they desire, if it is within their power to do so."
 					]
@@ -570,7 +576,6 @@
 								"Check once every 10 minutes for random encounters by rolling a d12; an encounter occurs on a roll of 1. If an encounter is indicated, roll a d6 and refer to the table below.",
 								{
 									"type": "table",
-									"caption": "Random Encounters",
 									"colLabels": [
 										"d6",
 										"Encounter"
@@ -582,27 +587,27 @@
 									"rows": [
 										[
 											"1",
-											"Random Encounter - Pudding"
+											"1 black pudding"
 										],
 										[
 											"2",
-											"Random Encounter - Bugbears"
+											"1d4+1 bugbears"
 										],
 										[
 											"3",
-											"Random Encounter - Gargoyles"
+											"2 gargoyles"
 										],
 										[
 											"4",
-											"Random Encounter - Stalker"
+											"1 invisible stalker"
 										],
 										[
 											"5",
-											"Random Encounter - Ogres"
+											"1d3 ogres"
 										],
 										[
 											"6",
-											"Random Encounter - Wights"
+											"1d2 wights"
 										]
 									]
 								},
@@ -648,16 +653,45 @@
 		},
 		{
 			"type": "section",
-			"name": "1. Spiral Staircase",
+			"name": "Locations in the Dungeon",
 			"entries": [
+				"The following locations are identified on the maps below.",
 				{
-					"type": "inset",
+					"type": "entries",
+					"name": "Maps",
 					"entries": [
-						"The staircase is badly rusted but appears to be sturdy. The air inside the passageway is warm, humid, and rather foul. You reach the bottom of the stairs with a splash- the floor is submerged beneath a foot of water!"
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/TftYP/WPMDungeon-DM.jpg"
+							},
+							"title": "Dungeon DM"
+						},
+						{
+							"type": "image",
+							"href": {
+								"type": "internal",
+								"path": "adventure/TftYP/WPMDungeon-One-Players.jpg"
+							},
+							"title": "Dungeon One Players"
+						}
 					]
 				},
-				"The spiral staircase descends about 100 feet before ending in area 1. Sensitive characters will feel it thrumming to a continuous low vibration (this vibration from the Plume geyser will be noticeable everywhere in the dungeon). In the humidity, lamps and torches will burn fitfully and give off a lot of smoke.",
-				"Floating on the water are splotches of green and white subterranean algae. This algae or algae-like fungus also clings in patches to walls and ceilings. It is harmless, and can be found almost everywhere in the dungeon where there is water.",
+				{
+					"type": "entries",
+					"name": "1. Spiral Staircase",
+					"entries": [
+						{
+							"type": "inset",
+							"entries": [
+								"The staircase is badly rusted but appears to be sturdy. The air inside the passageway is warm, humid, and rather foul. You reach the bottom of the stairs with a splash- the floor is submerged beneath a foot of water!"
+							]
+						},
+						"The spiral staircase descends about 100 feet before ending in area 1. Sensitive characters will feel it thrumming to a continuous low vibration (this vibration from the Plume geyser will be noticeable everywhere in the dungeon). In the humidity, lamps and torches will burn fitfully and give off a lot of smoke.",
+						"Floating on the water are splotches of green and white subterranean algae. This algae or algae-like fungus also clings in patches to walls and ceilings. It is harmless, and can be found almost everywhere in the dungeon where there is water."
+					]
+				},
 				{
 					"type": "entries",
 					"name": "2. Riddling Guardian",
@@ -1016,7 +1050,7 @@
 								"type": "internal",
 								"path": "adventure/TftYP/WPMDugeon-Players-Two.jpg"
 							},
-							"title": "Dugeon Players Two"
+							"title": "Dungeon Players Two"
 						}
 					]
 				},
