@@ -39,9 +39,14 @@ const SKILL_SPACE_MAP = {
 };
 
 function loadparser () {
+	const editor = ace.edit("statblock");
+	editor.setOptions({
+		wrap: true
+	});
+
 	// parse it on click
 	$("button#parsestatblock").click(function () {
-		const statblock = $("textarea#statblock").val().split("\n");
+		const statblock = editor.getValue().split("\n");
 		const stats = {};
 
 		stats.source = $("input#source").val();
@@ -243,10 +248,12 @@ function loadparser () {
 						curline = statblock[i];
 					}
 
-					if (ontraits) stats.trait.push(curtrait);
-					if (onactions) stats.action.push(curtrait);
-					if (onreactions) stats.reaction.push(curtrait);
-					if (onlegendaries) stats.legendary.push(curtrait);
+					if (curtrait.name || curtrait.text) {
+						if (ontraits) stats.trait.push(curtrait);
+						if (onactions) stats.action.push(curtrait);
+						if (onreactions) stats.reaction.push(curtrait);
+						if (onlegendaries) stats.legendary.push(curtrait);
+					}
 					curtrait = {};
 				}
 			}
