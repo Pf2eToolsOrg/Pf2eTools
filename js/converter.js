@@ -323,7 +323,7 @@ function loadparser (data) {
 		const $outArea = $("textarea#jsonoutput");
 		if (append) {
 			const oldVal = $outArea.text();
-			$outArea.text(`${oldVal}\n${out}`);
+			$outArea.text(`${out},\n${oldVal}`);
 		} else {
 			$outArea.text(out);
 		}
