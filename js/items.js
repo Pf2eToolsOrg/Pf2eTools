@@ -184,7 +184,7 @@ function deselectFilter (deselectProperty, deselectValue) {
 }
 
 function populateTablesAndFilters () {
-	tabledefault = $("#stats").html();
+	tabledefault = $("#pagecontent").html();
 
 	const sourceFilter = getSourceFilter();
 	const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
@@ -429,7 +429,7 @@ function loadhash (id) {
 		</tr>`);
 
 	$(".items span.roller").contents().unwrap();
-	$("#stats span.roller").click(function () {
+	$("#pagecontent span.roller").click(function () {
 		const roll = $(this).attr("data-roll").replace(/\s+/g, "");
 		const rollresult = droll.roll(roll);
 		const name = $(".stats-name").text();

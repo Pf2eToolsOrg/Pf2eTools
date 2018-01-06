@@ -12,7 +12,7 @@ window.onload = function load () {
 };
 
 function onJsonLoad (data) {
-	tabledefault = $("#stats").html();
+	tabledefault = $("#pagecontent").html();
 	featlist = data.feat;
 
 	// TODO prerequisite filter?
@@ -86,7 +86,7 @@ function onJsonLoad (data) {
 
 const renderer = new EntryRenderer();
 function loadhash (id) {
-	$("#stats").html(tabledefault);
+	$("#pagecontent").html(tabledefault);
 	const feat = featlist[id];
 
 	$("th#name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${feat.source}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>`);

@@ -88,7 +88,7 @@ const filterBox = initFilterBox(
 );
 
 function pageInit (loadedSources) {
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
 	sourceFilter.items.sort(ascSort);
@@ -117,14 +117,14 @@ function pageInit (loadedSources) {
 	profBonusDiceBtn.click(function () {
 		if (this.useDice) {
 			this.innerHTML = "Use Proficiency Dice";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
+			$("#pagecontent").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_BONUS);
 				$this.html($this.attr(ATB_PROF_BONUS_STR));
 			})
 		} else {
 			this.innerHTML = "Use Proficiency Bonus";
-			$("#stats").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
+			$("#pagecontent").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
 				const $this = $(this);
 				$this.attr(ATB_PROF_MODE, PROF_MODE_DICE);
 				$this.html($this.attr(ATB_PROF_DICE_STR));
@@ -233,7 +233,7 @@ const renderer = new EntryRenderer();
 
 // load selected monster stat block
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 	let renderStack = [];
 	let entryList = {};
 	var mon = monsters[id];
@@ -503,7 +503,7 @@ function loadhash (id) {
 	}
 
 	// add click links for rollables
-	$("#stats #abilityscores td").each(function () {
+	$("#pagecontent #abilityscores td").each(function () {
 		$(this).wrapInner("<span class='roller' data-roll='1d20" + $(this).children(".mod").html() + "'></span>");
 	});
 
@@ -580,7 +580,7 @@ function loadhash (id) {
 	}
 
 	// inline rollers
-	$("#stats p").each(function () {
+	$("#pagecontent p").each(function () {
 		addNonD20Rollers(this);
 
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -620,7 +620,7 @@ function loadhash (id) {
 			}
 		}));
 	});
-	$("#stats span#hp").each(function () {
+	$("#pagecontent span#hp").each(function () {
 		addNonD20Rollers(this);
 	});
 
@@ -643,7 +643,7 @@ function loadhash (id) {
 	}
 
 	$(".spells span.roller").contents().unwrap();
-	$("#stats").find("span.roller").click(function () {
+	$("#pagecontent").find("span.roller").click(function () {
 		const $this = $(this);
 		let roll;
 		let rollResult;
@@ -663,7 +663,7 @@ function loadhash (id) {
 		outputRollResult($this, roll, rollResult);
 	});
 
-	$("#stats").find("span.dc-roller").click(function () {
+	$("#pagecontent").find("span.dc-roller").click(function () {
 		const $this = $(this);
 		let roll;
 		let rollResult;

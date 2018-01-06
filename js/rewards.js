@@ -10,7 +10,7 @@ window.onload = function load () {
 };
 
 function onJsonLoad (data) {
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 	rewardList = data.reward;
 
 	const sourceFilter = getSourceFilter();
@@ -74,7 +74,7 @@ function onJsonLoad (data) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 	const reward = rewardList[id];
 
 	const name = reward.type === "Demonic Boon" ? "Demonic Boon: " + reward.name : reward.name;

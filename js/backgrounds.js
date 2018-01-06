@@ -10,7 +10,7 @@ window.onload = function load () {
 function onJsonLoad (data) {
 	bgList = data.background;
 
-	tabledefault = $("#stats").html();
+	tabledefault = $("#pagecontent").html();
 
 	const sourceFilter = getSourceFilter();
 	const filterBox = initFilterBox(sourceFilter);
@@ -63,7 +63,7 @@ function onJsonLoad (data) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
+	$("#pagecontent").html(tabledefault);
 	const curbg = bgList[id];
 	const name = curbg.name;
 	const source = curbg.source;

@@ -88,7 +88,7 @@ function loadhash (id) {
 				</table>
 			</td>
 		</tr>`;
-	$("#stats").html(htmlText);
+	$("#pagecontent").html(htmlText);
 }
 
 function pad (number) {

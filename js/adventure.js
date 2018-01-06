@@ -13,7 +13,7 @@ window.onload = function load () {
 		return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
 	};
 
-	renderArea = $(`#stats`);
+	renderArea = $(`#pagecontent`);
 
 	renderArea.append(TABLE_START);
 	renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
@@ -233,7 +233,7 @@ function addSearch (indexData, advId) {
 
 								$ptPreviews.on("click", () => {
 									setTimeout(() => {
-										$(`#stats`).find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}")`
+										$(`#pagecontent`).find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}")`
 										).each((i, ele) => {
 											$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
 										});

@@ -283,7 +283,7 @@ const filterBox = initFilterBox(
 );
 
 function pageInit (loadedSources) {
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
 	sourceFilter.items.sort(ascSort);
@@ -468,7 +468,7 @@ function sortSpells (a, b, o) {
 const renderer = new EntryRenderer();
 
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 	const spell = spellList[id];
 
 	const renderStack = [];

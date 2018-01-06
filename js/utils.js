@@ -1535,7 +1535,7 @@ function addListShowHide () {
 	`;
 
 	$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
-	$(`#statscontainer`).prepend(toInjectShow);
+	$(`#contentwrapper`).prepend(toInjectShow);
 
 	const listContainer = $(`#listcontainer`);
 	const showSearchWrpr = $("div#showsearch");

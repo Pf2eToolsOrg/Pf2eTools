@@ -9,7 +9,7 @@ let tableDefault;
 let cultList;
 
 function onJsonLoad (data) {
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 	cultList = data.cult;
 
 	let tempString = "";
@@ -34,7 +34,7 @@ function onJsonLoad (data) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 	const curcult = cultList[id];
 
 	const name = curcult.name;

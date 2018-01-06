@@ -12,7 +12,7 @@ const entryRenderer = new EntryRenderer();
 
 function onJsonLoad (data) {
 	rulesList = data.variantrule;
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 
 	const sourceFilter = getSourceFilter();
 	const filterBox = initFilterBox(sourceFilter);
@@ -72,7 +72,7 @@ function onJsonLoad (data) {
 
 function loadhash (id) {
 	// reset details pane to initial HTML
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 
 	const curRule = rulesList[id];
 

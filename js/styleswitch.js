@@ -14,12 +14,12 @@ ul.list li:hover {
 	background: lightgrey;
 }
 
-table#stats,
+table.stats,
 table#statsprof {
 	background: #fdf1dc;
 }
 
-table#stats table tbody tr:nth-child(odd) {
+table.stats table tbody tr:nth-child(odd) {
 	background: #e4d8c3;
 }
 
@@ -33,7 +33,7 @@ tr.text td {
 	color: black !important;
 }
 
-table#stats td#typerarityattunement {
+table.stats td#typerarityattunement {
 	color: black;
 }
 
@@ -41,7 +41,7 @@ tr.text td {
 	color: black !important;
 }
 
-table#stats td#sizetypealignment {
+table.stats td#sizetypealignment {
 	color: black;
 }
 
@@ -99,7 +99,7 @@ td._class_feature.subfeature.sub2 span.inline-header {
 	font-style: italic;
 }
 
-table#stats td._class_feature table th {
+table.stats td._class_feature table th {
 	color: black;
 }
 
@@ -220,7 +220,7 @@ ul.list li:hover {
 	background: black;
 }
 
-table#stats,
+table.stats,
 table#statsprof {
 	background: #272727;
 }
@@ -234,7 +234,7 @@ tr.text td {
 	color: grey !important;
 }
 
-table#stats td#typerarityattunement {
+table.stats td#typerarityattunement {
 	color: grey;
 }
 
@@ -242,7 +242,7 @@ tr.text td {
 	color: grey !important;
 }
 
-table#stats td#sizetypealignment {
+table.stats td#sizetypealignment {
 	color: grey;
 }
 
@@ -301,7 +301,7 @@ td._class_feature.subfeature.sub2 span.inline-header {
 	font-style: italic;
 }
 
-table#stats td._class_feature table th {
+table.stats td._class_feature table th {
 	color: grey;
 }
 
@@ -320,7 +320,7 @@ table#stats td._class_feature table th {
 }
 
 ul.list.adventures > li:nth-child(odd) > a,
-#stats table tbody tr:nth-child(odd),
+.stats table tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
 #rulescontent table tbody tr:nth-child(odd) td,
 ul.list li:nth-child(odd),
@@ -408,7 +408,7 @@ tr.trait td {
 	background: rgba(34, 34, 34, 0.65);
 }
 
-table#stats div.statsBlockInset {
+table.stats div.statsBlockInset {
 	background-color: #323431;
 }
 

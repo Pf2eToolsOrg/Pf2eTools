@@ -57,7 +57,7 @@ function onJsonLoad (data) {
 	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
 	classes.filter(c => isNonstandardSource(c.source)).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
 
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 	statsProfDefault = $("#statsprof").html();
 	classTableDefault = $("#classtable").html();
 
@@ -84,7 +84,7 @@ function onJsonLoad (data) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 	$("#statsprof").html(statsProfDefault);
 	$("#classtable").html(classTableDefault);
 	const curClass = classes[id];

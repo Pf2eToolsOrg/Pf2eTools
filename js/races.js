@@ -9,7 +9,7 @@ window.onload = function load () {
 let raceList;
 
 function onJsonLoad (data) {
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 
 	raceList = data.race;
 
@@ -100,8 +100,8 @@ function onJsonLoad (data) {
 const renderer = new EntryRenderer();
 
 function loadhash (id) {
-	$("#stats").html(tableDefault);
-	$("#stats td").show();
+	$("#pagecontent").html(tableDefault);
+	$("#pagecontent td").show();
 
 	const race = raceList[id];
 
@@ -136,13 +136,13 @@ function loadhash (id) {
 			statsText += utils_combineText(traitlist[n].text, "p", header)
 		}
 		statsText += "</td></tr>";
-		$('table#stats tbody tr:last').before(statsText);
+		$('table#pagecontent tbody tr:last').before(statsText);
 	} else if (race.entries) {
 		const renderStack = [];
 		const faux = {"type": "entries", "entries": race.entries};
 
 		renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
 
-		$('table#stats tbody tr:last').before(renderStack.join(""));
+		$('table#pagecontent tbody tr:last').before(renderStack.join(""));
 	}
 }
