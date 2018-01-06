@@ -392,6 +392,52 @@ function EntryRenderer () {
 								textStack.push(`<span title="${Parser.skillToExplanation(text)}" class="explanation">${text}</span>`);
 								break;
 						}
+					} else if (tag === "@dice" || tag === "@hit") {
+						const fauxEntry = {
+							type: "dice",
+							rollable: true
+						};
+
+						switch (tag) {
+							case "@dice": {
+								// format: {@dice 1d2+3+4d5-6} // TODO do we need to handle e.g. 4d6+1-1d4+2 (negative dice exp)?
+								const spl = text.toLowerCase().replace(/\s/g, "").split(/[+-]/g).map(s => s.trim());
+								// recombine modifiers
+								const toRoll = [];
+								for (let i = 0; i < spl.length; ++i) {
+									const it = spl[i];
+									if (it.includes("d")) {
+										const m = /^(\d+)d(\d+)$/.exec(it);
+										toRoll.push({
+											number: Number(m[1]),
+											faces: Number(m[2]),
+											modifier: 0,
+											hideModifier: true
+										});
+									} else {
+										toRoll[toRoll.length - 1].modifier += Number(it);
+										toRoll[toRoll.length - 1].hideModifier = false;
+									}
+								}
+
+								fauxEntry.toRoll = toRoll;
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
+							case "@hit": {
+								// format: {@hit +1} or {@hit -2}
+								fauxEntry.toRoll = [
+									{
+										number: 1,
+										faces: 20,
+										modifier: Number(text),
+										hideDice: true
+									}
+								];
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
+						}
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -495,17 +541,37 @@ function EntryRenderer () {
 	};
 }
 
+EntryRenderer._rollerClick = function (ele, toRoll) {
+	const $ele = $(ele);
+	const total = toRoll.map(d => droll.roll(EntryRenderer._getDiceString(d, true)).total).reduce((a, b) => a + b);
+	if ($ele.data("rolled")) {
+		$ele.html(`${$ele.html().split("=")[0].trim()} = ${total}`);
+	} else {
+		$ele.data("rolled", true);
+		$ele.html(`${$ele.html()} = ${total}`);
+	}
+};
+
+EntryRenderer._getDiceString = function (diceItem, isDroll) {
+	return `${!diceItem.hideDice || isDroll ? `${diceItem.number}d${diceItem.faces}` : ""}${!diceItem.hideModifier ? `${diceItem.modifier >= 0 ? "+" : ""}${diceItem.modifier}` : ""}`;
+};
+
 EntryRenderer.getEntryDice = function (entry) {
+	function getDiceAsStr () {
+		const stack = [];
+		entry.toRoll.forEach(d => stack.push(EntryRenderer._getDiceString(d)));
+		return stack.join("+");
+	}
+
 	// TODO make droll integration optional
-	const toAdd = String(entry.number) + "d" + entry.faces;
 	if (typeof droll !== "undefined" && entry.rollable === true) {
 		// TODO output this somewhere nice
 		// TODO make this less revolting
 
 		// TODO output to small tooltip-stype bubble? Close on mouseout
-		return `<span class='roller unselectable' onclick="if (this.rolled) { this.innerHTML = this.innerHTML.split('=')[0].trim()+' = '+droll.roll('${toAdd}').total; } else { this.rolled = true; this.innerHTML += ' = '+droll.roll('${toAdd}').total; }">${toAdd}</span>`;
+		return `<span class='roller unselectable' onclick='EntryRenderer._rollerClick(this, ${JSON.stringify(entry.toRoll)})'>${getDiceAsStr()}</span>`;
 	} else {
-		return toAdd;
+		return getDiceAsStr();
 	}
 };
 
