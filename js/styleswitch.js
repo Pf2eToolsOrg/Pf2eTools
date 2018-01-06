@@ -424,6 +424,7 @@ class StyleSwitcher {
 		if (title !== StyleSwitcher.STYLE_DAY && title !== StyleSwitcher.STYLE_NIGHT) title = StyleSwitcher.STYLE_DAY;
 		this.dynamicStyleEle.innerHTML = title === StyleSwitcher.STYLE_DAY ? DAY_CSS : NIGHT_CSS;
 		this.currentStylesheet = title;
+		StyleSwitcher.createCookie(this.currentStylesheet);
 	}
 
 	getActiveStyleSheet () {
