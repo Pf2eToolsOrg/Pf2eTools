@@ -209,17 +209,31 @@
 				{
 					"properties": {
 						"type": {"const": "dice"},
-						"number": {
-							"type": "integer"
-						},
-						"faces": {
-							"type": "integer"
+						"toRoll": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"number": {
+										"type": "integer"
+									},
+									"faces": {
+										"type": "integer"
+									},
+									"modifier": {
+										"type": "integer"
+									},
+									"hideModifier": {
+										"type": "boolean"
+									}
+								},
+								"required": ["number", "faces"]
+							}
 						},
                         "rollable": {
                             "type": "boolean"
                         }
 					},
-					"required": ["number", "faces"],
 					"additionalProperties": false
 				}
 			]
