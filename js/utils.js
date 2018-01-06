@@ -1462,7 +1462,6 @@ function joinConjunct (arr, joinWith, conjunctWith) {
 DataUtil = {
 	_loaded: {},
 
-
 	loadJSON: function (url, onLoadFunction, ...otherData) {
 		function handleAlreadyLoaded (url) {
 			onLoadFunction(DataUtil._loaded[url], otherData);
