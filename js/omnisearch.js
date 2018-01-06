@@ -21,6 +21,8 @@ function init () {
 	const $searchIn = $(`#omnisearch-input`);
 	const $searchSubmit = $(`#omnisearch-submit`);
 
+	let clickFirst = false;
+
 	$(`body`).on("click", () => {
 		$searchOutWrapper.hide();
 	});
@@ -31,6 +33,7 @@ function init () {
 
 	$searchIn.on("keypress", (e) => {
 		if (e.which === 13) {
+			clickFirst = true;
 			$searchSubmit.click();
 		}
 		e.stopPropagation();
@@ -107,7 +110,7 @@ function init () {
 				const r = results[i].doc;
 				$searchOut.append(`
 				<p>
-					<a href="${r.url}" target="_blank">${r.c}: ${r.s}</a>
+					<a href="${r.url}">${r.c}: ${r.s}</a>
 					<i title="${Parser.sourceJsonToFull(r.src)}">${Parser.sourceJsonToAbv(r.src)}${r.pg ? ` p${r.pg}` : ""}</i>
 				</p>`);
 			}
@@ -132,6 +135,10 @@ function init () {
 					$pgControls.append($nxt)
 				} else ($pgControls.append(`<span class="pg-right pg-control">`));
 				$searchOut.append($pgControls);
+			}
+
+			if (clickFirst) {
+				$searchOut.find(`a`).first()[0].click();
 			}
 		}
 	});
