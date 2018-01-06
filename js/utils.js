@@ -106,7 +106,8 @@ String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
 		return str;
 	};
 
-function utils_joinPhraseArray (array, joiner, lastJoiner) {
+StrUtil = {};
+StrUtil.joinPhraseArray = function (array, joiner, lastJoiner) {
 	if (array.length === 0) return "";
 	if (array.length === 1) return array[0];
 	if (array.length === 2) return array.join(lastJoiner);
@@ -119,7 +120,10 @@ function utils_joinPhraseArray (array, joiner, lastJoiner) {
 		}
 		return outStr;
 	}
-}
+};
+StrUtil.uppercaseFirst = function (string) {
+	return string.uppercaseFirst();
+};
 
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 	function () {
@@ -128,10 +132,6 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		if (str.length === 1) return str.charAt(0).toUpperCase();
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
-
-function uppercaseFirst (string) {
-	return string.uppercaseFirst();
-}
 
 // TEXT COMBINING ======================================================================================================
 function utils_combineText (textList, tagPerItem, textBlockInlineTitle) {
@@ -308,76 +308,6 @@ function makeTableTdClassText (tableObject, i) {
 		return tableObject.tdstyleclass === undefined || i >= tableObject.tdstyleclass.length ? "" : " class=\"" + tableObject.tdstyleclass[i] + "\"";
 	} else {
 		return makeTableThClassText(tableObject, i);
-	}
-}
-
-function utils_makePrerequisite (prereqList, shorthand, makeAsArray) {
-	shorthand = shorthand === undefined || shorthand === null ? false : shorthand;
-	makeAsArray = makeAsArray === undefined || makeAsArray === null ? false : makeAsArray;
-	const outStack = [];
-	if (prereqList === undefined || prereqList === null) return "";
-	for (let i = 0; i < prereqList.length; ++i) {
-		const pre = prereqList[i];
-		if (pre.race !== undefined) {
-			for (let j = 0; j < pre.race.length; ++j) {
-				if (shorthand) {
-					const DASH = "-";
-					const raceNameParts = pre.race[j].name.split(DASH);
-					let raceName = [];
-					for (let k = 0; k < raceNameParts.length; ++k) {
-						raceName.push(raceNameParts[k].uppercaseFirst());
-					}
-					raceName = raceName.join(DASH);
-					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
-				} else {
-					const raceName = j === 0 ? pre.race[j].name.uppercaseFirst() : pre.race[j].name;
-					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
-				}
-			}
-		}
-		if (pre.ability !== undefined) {
-			// this assumes all ability requirements are the same (13), correct as of 2017-10-06
-			let attCount = 0;
-			for (let j = 0; j < pre.ability.length; ++j) {
-				for (const att in pre.ability[j]) {
-					if (!pre.ability[j].hasOwnProperty(att)) continue;
-					if (shorthand) {
-						outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length - 1 ? " 13+" : ""));
-					} else {
-						outStack.push(Parser.attAbvToFull(att) + (attCount === pre.ability.length - 1 ? " 13 or higher" : ""));
-					}
-					attCount++;
-				}
-			}
-		}
-		if (pre.proficiency !== undefined) {
-			// only handles armor proficiency requirements,
-			for (let j = 0; j < pre.proficiency.length; ++j) {
-				for (const type in pre.proficiency[j]) { // type is armor/weapon/etc.
-					if (!pre.proficiency[j].hasOwnProperty(type)) continue;
-					if (type === "armor") {
-						if (shorthand) {
-							outStack.push("prof " + Parser.armorFullToAbv(pre.proficiency[j][type]) + " armor");
-						} else {
-							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
-						}
-					}
-				}
-			}
-		}
-		if (pre.spellcasting === "YES") {
-			if (shorthand) {
-				outStack.push("Spellcasting");
-			} else {
-				outStack.push("The ability to cast at least one spell");
-			}
-		}
-	}
-	if (makeAsArray) {
-		return outStack;
-	} else {
-		if (shorthand) return outStack.join("/");
-		else return utils_joinPhraseArray(outStack, ", ", " or ");
 	}
 }
 

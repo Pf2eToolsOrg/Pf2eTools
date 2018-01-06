@@ -73,10 +73,10 @@ const typeFilter = new Filter({
 		"plant",
 		"undead"
 	],
-	displayFn: uppercaseFirst
+	displayFn: StrUtil.uppercaseFirst
 });
-const tagFilter = new Filter({header: "Tag", displayFn: uppercaseFirst});
-const miscFilter = new Filter({header: "Miscellaneous", items: ["Legendary"], displayFn: uppercaseFirst});
+const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
+const miscFilter = new Filter({header: "Miscellaneous", items: ["Legendary"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
 	sourceFilter,
