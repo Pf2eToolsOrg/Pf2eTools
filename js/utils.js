@@ -106,7 +106,6 @@ String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
 		return str;
 	};
 
-
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 	function () {
 		const str = this.toString();
