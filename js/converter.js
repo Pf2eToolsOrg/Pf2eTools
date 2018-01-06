@@ -59,6 +59,8 @@ function appendSource ($select, src) {
 
 const COOKIE_NAME = "converterSources";
 function loadparser (data) {
+	let hasAppended = false;
+
 	// custom sources
 	const $srcSel = $(`#source`);
 	Object.keys(data).forEach(src => appendSource($srcSel, src));
@@ -98,7 +100,7 @@ function loadparser (data) {
 	});
 
 	$("button#parsestatblock").on("click", () => {
-		doParse(false);
+		if (!hasAppended || confirm("You're about to overwrite multiple entries. Are you sure?")) doParse(false);
 	});
 
 	function doParse (append) {
@@ -324,8 +326,10 @@ function loadparser (data) {
 		if (append) {
 			const oldVal = $outArea.text();
 			$outArea.text(`${out},\n${oldVal}`);
+			hasAppended = true;
 		} else {
 			$outArea.text(out);
+			hasAppended = false;
 		}
 	}
 }
