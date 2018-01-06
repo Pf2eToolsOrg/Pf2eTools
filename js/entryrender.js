@@ -553,7 +553,7 @@ EntryRenderer._rollerClick = function (ele, toRoll) {
 };
 
 EntryRenderer._getDiceString = function (diceItem, isDroll) {
-	return `${!diceItem.hideDice || isDroll ? `${diceItem.number}d${diceItem.faces}` : ""}${!diceItem.hideModifier ? `${diceItem.modifier >= 0 ? "+" : ""}${diceItem.modifier}` : ""}`;
+	return `${!diceItem.hideDice || isDroll ? `${diceItem.number}d${diceItem.faces}` : ""}${!diceItem.hideModifier && diceItem.modifier ? `${diceItem.modifier >= 0 ? "+" : ""}${diceItem.modifier}` : ""}`;
 };
 
 EntryRenderer.getEntryDice = function (entry) {
