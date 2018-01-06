@@ -11,7 +11,7 @@ const JSON_SRC_INDEX = "index.json";
  */
 function multisourceLoad (jsonDir, jsonListName, pageInitFn, dataFn) {
 	// load the index
-	loadJSON(jsonDir + JSON_SRC_INDEX, function (index) {
+	DataUtil.loadJSON(jsonDir + JSON_SRC_INDEX, function (index) {
 		_onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn)
 	});
 }
@@ -61,7 +61,7 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 	pageInitFn(loadedSources);
 
 	if (toLoads.length > 0) {
-		multiLoadJSON(
+		DataUtil.multiLoadJSON(
 			toLoads,
 			function (toLoad) {
 				loadedSources[toLoad.src].loaded = true;
@@ -83,7 +83,7 @@ function loadSource (jsonListName, dataFn) {
 	return function (src, val) {
 		const toLoad = loadedSources[src];
 		if (!toLoad.loaded && val === "yes") {
-			loadJSON(toLoad.url, function (data) {
+			DataUtil.loadJSON(toLoad.url, function (data) {
 				dataFn(data[jsonListName]);
 				toLoad.loaded = true;
 			});

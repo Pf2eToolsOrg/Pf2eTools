@@ -6,7 +6,7 @@ let tableDefault;
 let rewardList;
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {

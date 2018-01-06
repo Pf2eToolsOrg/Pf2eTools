@@ -31,7 +31,7 @@ const jsonURL = "data/classes.json";
 const renderer = new EntryRenderer();
 
 window.onload = function load () {
-	loadJSON(jsonURL, onJsonLoad);
+	DataUtil.loadJSON(jsonURL, onJsonLoad);
 };
 
 function getClassHash (aClass) {

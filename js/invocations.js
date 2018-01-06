@@ -37,7 +37,7 @@ const LIST_LEVEL = "level";
 const LIST_SPELL = "spell";
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 function parselevel (level) {

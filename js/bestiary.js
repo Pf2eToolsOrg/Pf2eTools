@@ -16,7 +16,7 @@ function ascSortCr (a, b) {
 const meta = {};
 
 function loadMeta (nextFunction) {
-	loadJSON(JSON_DIR + META_URL, function (data) {
+	DataUtil.loadJSON(JSON_DIR + META_URL, function (data) {
 		// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
 		for (let i = 0; i < data.legendaryGroup.length; i++) {
 			meta[data.legendaryGroup[i].name] = {

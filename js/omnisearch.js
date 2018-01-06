@@ -14,7 +14,7 @@ function init () {
 	`);
 	$nav.after(`<div class="omnisearch-output-wrapper"><div id="omnisearch-output" class="omnisearch-output"></div></div>`);
 
-	loadJSON("search/index.json", onSearchLoad);
+	DataUtil.loadJSON("search/index.json", onSearchLoad);
 
 	const $searchOutWrapper = $(`.omnisearch-output-wrapper`);
 	const $searchOut = $(`#omnisearch-output`);

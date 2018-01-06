@@ -2,7 +2,7 @@
 const JSON_URL = "data/cults.json";
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 let tableDefault;

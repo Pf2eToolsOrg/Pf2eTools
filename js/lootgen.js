@@ -4,7 +4,7 @@ const renderer = new EntryRenderer();
 let lootList;
 
 window.onload = function load () {
-	loadJSON(LOOT_JSON_URL, loadloot);
+	DataUtil.loadJSON(LOOT_JSON_URL, loadloot);
 };
 
 function loadloot (lootData) {

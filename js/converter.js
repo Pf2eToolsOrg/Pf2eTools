@@ -42,7 +42,7 @@ const SKILL_SPACE_MAP = {
 };
 
 function loadSources () {
-	loadJSON(JSON_URL, loadparser)
+	DataUtil.loadJSON(JSON_URL, loadparser)
 }
 
 function sortOptions ($select) {

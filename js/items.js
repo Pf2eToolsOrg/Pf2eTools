@@ -10,12 +10,12 @@ const typeList = {};
 let variantList;
 
 window.onload = function load () {
-	loadJSON(ITEMS_JSON_URL, addBasicItems);
+	DataUtil.loadJSON(ITEMS_JSON_URL, addBasicItems);
 };
 
 function addBasicItems (itemData) {
 	itemList = itemData.item;
-	loadJSON(BASIC_ITEMS_JSON_URL, addVariants);
+	DataUtil.loadJSON(BASIC_ITEMS_JSON_URL, addVariants);
 }
 
 function addVariants (basicItemData) {
@@ -35,7 +35,7 @@ function addVariants (basicItemData) {
 			"entries": itemTypeList[i].entries
 		};
 	}
-	loadJSON(MAGIC_VARIANTS_JSON_URL, mergeBasicItems);
+	DataUtil.loadJSON(MAGIC_VARIANTS_JSON_URL, mergeBasicItems);
 }
 
 function mergeBasicItems (variantData) {

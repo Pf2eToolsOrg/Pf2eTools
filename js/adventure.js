@@ -19,7 +19,7 @@ window.onload = function load () {
 	renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
 	renderArea.append(TABLE_END);
 
-	loadJSON(CONTENTS_URL, onJsonLoad);
+	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {
@@ -94,7 +94,7 @@ function loadAdventure (fromIndex, advId, hashParts) {
 	if (adventureContent[advId] !== undefined) {
 		handle(adventureContent[advId]);
 	} else {
-		loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
+		DataUtil.loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
 			adventureContent[advId] = data.data;
 			handle(data.data);
 		});
