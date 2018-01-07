@@ -1117,6 +1117,7 @@ EntryRenderer.hover = {
 			}
 		}
 
+		$(ele).css("cursor", "");
 		EntryRenderer.hover._showInProgress = false;
 	},
 
@@ -1129,6 +1130,7 @@ EntryRenderer.hover = {
 		// don't show on mobile
 		if (winW <= 768 || EntryRenderer.hover._showInProgress) return;
 		EntryRenderer.hover._showInProgress = true;
+		$(ele).css("cursor", "wait");
 
 		// clean up any old event listeners
 		$(ele).unbind("mouseleave");
