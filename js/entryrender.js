@@ -858,7 +858,7 @@ EntryRenderer.item = {
 		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${item.typeText}${`${item.tier ? `, ${item.tier}` : ""}${item.rarity ? `, ${item.rarity}` : ""}`} ${item.reqAttune || ""}</td>`);
 
 		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
-		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : ""}</td><td class="damageproperties" colspan="4">${damage}${damageType}${propertiesTxt}</tr>`);
+		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : ""}</td><td class="damageproperties" colspan="4">${damage} ${damageType} ${propertiesTxt}</tr>`);
 
 		renderStack.push(`<tr><td class="divider" colspan="6"><div></div></td></tr>`);
 
@@ -1097,7 +1097,7 @@ EntryRenderer.hover = {
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
 		if (fromRight) $hov.css("right", winW - vpOffsetL);
-		else $hov.css("left", vpOffsetL);
+		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
 
 		$(ele).bind("mouseleave", () => {
 			$hov.remove();
