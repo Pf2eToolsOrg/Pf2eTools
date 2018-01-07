@@ -575,110 +575,172 @@ EntryRenderer.getEntryDice = function (entry) {
 	}
 };
 
-EntryRenderer.feat = {};
-EntryRenderer.feat.getPrerequisiteText = function (prereqList, isShorthand, doMakeAsArray) {
-	isShorthand = isShorthand === undefined || isShorthand === null ? false : isShorthand;
-	doMakeAsArray = doMakeAsArray === undefined || doMakeAsArray === null ? false : doMakeAsArray;
-	const outStack = [];
-	if (prereqList === undefined || prereqList === null) return "";
-	for (let i = 0; i < prereqList.length; ++i) {
-		const pre = prereqList[i];
-		if (pre.race !== undefined) {
-			for (let j = 0; j < pre.race.length; ++j) {
-				if (isShorthand) {
-					const DASH = "-";
-					const raceNameParts = pre.race[j].name.split(DASH);
-					let raceName = [];
-					for (let k = 0; k < raceNameParts.length; ++k) {
-						raceName.push(raceNameParts[k].uppercaseFirst());
-					}
-					raceName = raceName.join(DASH);
-					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
-				} else {
-					const raceName = j === 0 ? pre.race[j].name.uppercaseFirst() : pre.race[j].name;
-					outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
-				}
-			}
-		}
-		if (pre.ability !== undefined) {
-			// this assumes all ability requirements are the same (13), correct as of 2017-10-06
-			let attCount = 0;
-			for (let j = 0; j < pre.ability.length; ++j) {
-				for (const att in pre.ability[j]) {
-					if (!pre.ability[j].hasOwnProperty(att)) continue;
+EntryRenderer.feat = {
+	getPrerequisiteText: function (prereqList, isShorthand, doMakeAsArray) {
+		isShorthand = isShorthand === undefined || isShorthand === null ? false : isShorthand;
+		doMakeAsArray = doMakeAsArray === undefined || doMakeAsArray === null ? false : doMakeAsArray;
+		const outStack = [];
+		if (prereqList === undefined || prereqList === null) return "";
+		for (let i = 0; i < prereqList.length; ++i) {
+			const pre = prereqList[i];
+			if (pre.race !== undefined) {
+				for (let j = 0; j < pre.race.length; ++j) {
 					if (isShorthand) {
-						outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length - 1 ? " 13+" : ""));
+						const DASH = "-";
+						const raceNameParts = pre.race[j].name.split(DASH);
+						let raceName = [];
+						for (let k = 0; k < raceNameParts.length; ++k) {
+							raceName.push(raceNameParts[k].uppercaseFirst());
+						}
+						raceName = raceName.join(DASH);
+						outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
 					} else {
-						outStack.push(Parser.attAbvToFull(att) + (attCount === pre.ability.length - 1 ? " 13 or higher" : ""));
+						const raceName = j === 0 ? pre.race[j].name.uppercaseFirst() : pre.race[j].name;
+						outStack.push(raceName + (pre.race[j].subrace !== undefined ? " (" + pre.race[j].subrace + ")" : ""))
 					}
-					attCount++;
 				}
 			}
-		}
-		if (pre.proficiency !== undefined) {
-			// only handles armor proficiency requirements,
-			for (let j = 0; j < pre.proficiency.length; ++j) {
-				for (const type in pre.proficiency[j]) { // type is armor/weapon/etc.
-					if (!pre.proficiency[j].hasOwnProperty(type)) continue;
-					if (type === "armor") {
+			if (pre.ability !== undefined) {
+				// this assumes all ability requirements are the same (13), correct as of 2017-10-06
+				let attCount = 0;
+				for (let j = 0; j < pre.ability.length; ++j) {
+					for (const att in pre.ability[j]) {
+						if (!pre.ability[j].hasOwnProperty(att)) continue;
 						if (isShorthand) {
-							outStack.push("prof " + Parser.armorFullToAbv(pre.proficiency[j][type]) + " armor");
+							outStack.push(att.uppercaseFirst() + (attCount === pre.ability.length - 1 ? " 13+" : ""));
 						} else {
-							outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
+							outStack.push(Parser.attAbvToFull(att) + (attCount === pre.ability.length - 1 ? " 13 or higher" : ""));
+						}
+						attCount++;
+					}
+				}
+			}
+			if (pre.proficiency !== undefined) {
+				// only handles armor proficiency requirements,
+				for (let j = 0; j < pre.proficiency.length; ++j) {
+					for (const type in pre.proficiency[j]) { // type is armor/weapon/etc.
+						if (!pre.proficiency[j].hasOwnProperty(type)) continue;
+						if (type === "armor") {
+							if (isShorthand) {
+								outStack.push("prof " + Parser.armorFullToAbv(pre.proficiency[j][type]) + " armor");
+							} else {
+								outStack.push("Proficiency with " + pre.proficiency[j][type] + " armor");
+							}
 						}
 					}
 				}
 			}
-		}
-		if (pre.spellcasting) {
-			if (isShorthand) {
-				outStack.push("Spellcasting");
-			} else {
-				outStack.push("The ability to cast at least one spell");
-			}
-		}
-	}
-	if (doMakeAsArray) {
-		return outStack;
-	} else {
-		if (isShorthand) return outStack.join("/");
-		else return StrUtil.joinPhraseArray(outStack, ", ", " or ");
-	}
-};
-EntryRenderer.feat.mergeAbilityIncrease = function (feat) {
-	const entries = feat.entries;
-	const abilityObj = feat.ability;
-	if (!abilityObj || feat._hasMergedAbility) return;
-	feat._hasMergedAbility = true;
-	entries.find(e => e.type === "list").items.unshift(abilityObjToListItem());
-
-	function abilityObjToListItem () {
-		const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
-		const abbArr = [];
-		if (!abilityObj.choose) {
-			Object.keys(abilityObj).forEach(ab => abbArr.push(`Increase your ${Parser.attAbvToFull(ab)} score by ${abilityObj[ab]}${TO_MAX_OF_TWENTY}`));
-		} else {
-			const choose = abilityObj.choose;
-			for (let i = 0; i < choose.length; ++i) {
-				if (choose[i].from.length === 6) {
-					if (choose[i].textreference) { // only used in "Resilient"
-						abbArr.push(`Increase the chosen ability score by ${choose[i].amount}${TO_MAX_OF_TWENTY}`);
-					} else {
-						abbArr.push(`Increase one ability score of your choice by ${choose[i].amount}${TO_MAX_OF_TWENTY}`);
-					}
+			if (pre.spellcasting) {
+				if (isShorthand) {
+					outStack.push("Spellcasting");
 				} else {
-					const from = choose[i].from;
-					const amount = choose[i].amount;
-					const abbChoices = [];
-					for (let j = 0; j < from.length; ++j) {
-						abbChoices.push(Parser.attAbvToFull(from[j]));
-					}
-					const abbChoicesText = StrUtil.joinPhraseArray(abbChoices, ", ", " or ");
-					abbArr.push(`Increase your ${abbChoicesText} by ${amount}${TO_MAX_OF_TWENTY}`);
+					outStack.push("The ability to cast at least one spell");
 				}
 			}
 		}
-		return abbArr.join(" ");
+		if (doMakeAsArray) {
+			return outStack;
+		} else {
+			if (isShorthand) return outStack.join("/");
+			else return StrUtil.joinPhraseArray(outStack, ", ", " or ");
+		}
+	},
+
+	mergeAbilityIncrease: function (feat) {
+		const entries = feat.entries;
+		const abilityObj = feat.ability;
+		if (!abilityObj || feat._hasMergedAbility) return;
+		feat._hasMergedAbility = true;
+		entries.find(e => e.type === "list").items.unshift(abilityObjToListItem());
+
+		function abilityObjToListItem () {
+			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
+			const abbArr = [];
+			if (!abilityObj.choose) {
+				Object.keys(abilityObj).forEach(ab => abbArr.push(`Increase your ${Parser.attAbvToFull(ab)} score by ${abilityObj[ab]}${TO_MAX_OF_TWENTY}`));
+			} else {
+				const choose = abilityObj.choose;
+				for (let i = 0; i < choose.length; ++i) {
+					if (choose[i].from.length === 6) {
+						if (choose[i].textreference) { // only used in "Resilient"
+							abbArr.push(`Increase the chosen ability score by ${choose[i].amount}${TO_MAX_OF_TWENTY}`);
+						} else {
+							abbArr.push(`Increase one ability score of your choice by ${choose[i].amount}${TO_MAX_OF_TWENTY}`);
+						}
+					} else {
+						const from = choose[i].from;
+						const amount = choose[i].amount;
+						const abbChoices = [];
+						for (let j = 0; j < from.length; ++j) {
+							abbChoices.push(Parser.attAbvToFull(from[j]));
+						}
+						const abbChoicesText = StrUtil.joinPhraseArray(abbChoices, ", ", " or ");
+						abbArr.push(`Increase your ${abbChoicesText} by ${amount}${TO_MAX_OF_TWENTY}`);
+					}
+				}
+			}
+			return abbArr.join(" ");
+		}
+	}
+};
+
+EntryRenderer.spell = {
+	getRenderedString: function (spell) {
+		const renderStack = [];
+
+		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
+
+		renderStack.push(`<tr><th class="name" colspan="6"><span class="stats-name">${spell.name}</span><span class="stats-source source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
+
+		renderStack.push(`<tr><td class="levelschoolritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta)}</span></td></tr>`);
+
+		renderStack.push(`<tr><td class="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>`);
+
+		renderStack.push(`<tr><td class="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>`);
+
+		renderStack.push(`<tr><td class="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>`);
+
+		renderStack.push(`<tr><td class="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>`);
+
+		renderStack.push(`<tr><td class="divider" colspan="6"><div></div></td></tr>`);
+
+		const entryList = {type: "entries", entries: spell.entries};
+
+		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+		renderer.recursiveEntryRender(entryList, renderStack, 1);
+
+		if (spell.entriesHigherLevel) {
+			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
+			renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
+		}
+
+		renderStack.push(`</td></tr>`);
+
+		renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
+
+		if (spell.classes.fromSubclass) {
+			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes);
+			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${currentAndLegacy[0]}</td></tr>`);
+			if (currentAndLegacy[1]) {
+				renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${currentAndLegacy[1]}</section></td></tr>`);
+			}
+		}
+
+		if (spell.scrollNote) {
+			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
+			renderer.recursiveEntryRender(
+				`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`
+				, renderStack, 2);
+			renderStack.push(`</section></td></tr>`);
+		}
+
+		if (spell.page) {
+			renderStack.push(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(spell.source)}</i>, page ${spell.page}</td>`);
+		}
+
+		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
+
+		return renderStack.join(" ");
 	}
 };
 
