@@ -2,14 +2,14 @@
 const JSON_URL = "data/cults.json";
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 let tableDefault;
 let cultList;
 
 function onJsonLoad (data) {
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 	cultList = data.cult;
 
 	let tempString = "";
@@ -34,11 +34,11 @@ function onJsonLoad (data) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 	const curcult = cultList[id];
 
 	const name = curcult.name;
-	$("th#name").html(name);
+	$("th.name").html(name);
 
 	$("tr.text").remove();
 

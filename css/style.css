@@ -174,6 +174,32 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 /* *** */
 
+/* hoverbox */
+.hoverbox {
+	position: fixed;
+	max-width: 600px;
+	z-index: 200;
+	box-shadow: 0 0 12px 0 rgba(0, 0, 0, 1);
+}
+
+.hoverbox > table.stats {
+	border-radius: 0;
+}
+
+.hoverbox th.name {
+	font-size: 1.6em;
+}
+
+.hoverbox p {
+	margin-bottom: 5px;
+}
+
+.hoverbox .hoverborder {
+	height: 3px;
+}
+
+/* *** */
+
 .view-col {
 	margin: 7px 7px 12px;
 	flex: 1;
@@ -185,7 +211,7 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	flex-flow: column nowrap;
 }
 
-#statscontainer.view-col {
+#contentwrapper.view-col {
 	overflow-y: auto;
 }
 
@@ -288,15 +314,15 @@ ul.list li:hover span {
 	display: block;
 }
 
-th#name span.stats-name {
+th.name span.stats-name {
 	float: left;
 }
 
-th#name span.stats-source {
+th.name span.stats-source {
 	float: right;
 }
 
-.monster th#name span.source {
+.monster th.name span.source {
 	position: relative;
 	margin-right: 0.2em;
 }
@@ -365,7 +391,7 @@ span.sourceBoLS-3pp {
 	color: #513680;
 }
 
-table#stats,
+table.stats,
 table#statsprof {
 	font-family: 'Convergence', sans-serif;
 	border-radius: 10px;
@@ -374,36 +400,36 @@ table#statsprof {
 	table-layout: fixed;
 }
 
-table#stats td,
-table#stats th {
+table.stats td,
+table.stats th {
 	padding: 1px 0.3em;
 }
 
-table#stats th {
+table.stats th {
 	color: #922610;
 }
 
-table#stats span {
+table.stats span {
 	vertical-align: top !important;
 }
 
-table#stats tr.text ul {
+table.stats tr.text ul {
 	margin: 0 0 10px;
 	padding: 0 20px;
 }
 
-table#stats tr.text li {
+table.stats tr.text li {
 	margin: 0 0 5px;
 }
 
 /* sub-tables */
 
-table#stats table {
+table.stats table {
 	width: 100%;
 	margin-bottom: 5px;
 }
 
-table#stats table caption {
+table.stats table caption {
 	font-weight: bold;
 	font-size: 1.1em;
 	padding: 0;
@@ -420,7 +446,7 @@ td.divider div {
 	margin: 6px 0;
 }
 
-table#stats span.name {
+table.stats span.name {
 	font-weight: bold;
 }
 
@@ -428,15 +454,20 @@ tr.text td {
 	padding-bottom: 0.7em !important;
 }
 
-td#levelschoolritual {
+td.typerarityattunement,
+td.levelschoolritual {
 	font-style: italic;
 }
 
-table#stats td#typerarityattunement {
+td.damageproperties {
+	text-align: right;
+}
+
+table.stats td#typerarityattunement {
 	color: black;
 }
 
-table#stats span.name {
+table.stats span.name {
 	font-weight: bold;
 }
 
@@ -446,7 +477,7 @@ tr.text td {
 
 th#nameTable,
 th#nameSummary,
-th#name {
+th.name {
 	font-size: 1.8em;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
@@ -454,11 +485,11 @@ th#name {
 	padding-left: 0.2em !important;
 }
 
-.monster th#name {
+.monster th.name {
 	padding-right: 5em;
 }
 
-table#stats td#sizetypealignment {
+table.stats td#sizetypealignment {
 	font-style: italic;
 	padding-right: 10em;
 }
@@ -489,16 +520,16 @@ tr.trait td table {
 	margin: 10px 0;
 }
 
-table#stats tr.trait td.suboptionheader {
+table.stats tr.trait td.suboptionheader {
 	font-weight: bold;
 }
 
-table#stats tr.trait td.suboption {
+table.stats tr.trait td.suboption {
 	font-size: 0.9em;
 	padding: 1px 1em;
 }
 
-table#stats tr.trait td.subsuboption {
+table.stats tr.trait td.subsuboption {
 	font-size: 0.9em;
 	padding: 1px 1.5em;
 }
@@ -511,7 +542,8 @@ tr#regionaleffects td {
 	font-size: 1.6em;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
-	border-bottom: 1px solid #000;
+	border-bottom: 2px solid #922610;
+	color: #922610;
 	vertical-align: bottom !important;
 	padding-left: 0.2em;
 }
@@ -783,7 +815,7 @@ td._class_feature.optionalsubfeature.sub2 span.inline-header {
 	font-style: italic;
 }
 
-table#stats td._class_feature table {
+table.stats td._class_feature table {
 	margin: 0 0.9em 10px;
 	width: calc(100% - 1.8em);
 }
@@ -793,16 +825,16 @@ td span.prerequisite {
 	display: block;
 }
 
-table#stats td._class_feature.feature table {
+table.stats td._class_feature.feature table {
 	margin: 0 1.2em;
 	width: calc(100% - 2.4em);
 }
 
-table#stats td._class_feature p.spellabilitysubtext {
+table.stats td._class_feature p.spellabilitysubtext {
 	text-align: center;
 }
 
-table#stats td._class_feature p.spellabilitysubtext span {
+table.stats td._class_feature p.spellabilitysubtext span {
 	font-weight: bold;
 }
 
@@ -957,7 +989,7 @@ img.token:hover {
 	right: 0;
 }
 
-.classes table#stats {
+.classes table.stats {
 	font-family: inherit;
 }
 
@@ -969,15 +1001,15 @@ tr.trait td {
 	padding-bottom: 0.7em !important;
 }
 
-table#stats #ability,
-table#stats #size,
-table#stats #speed {
+table.stats #ability,
+table.stats #size,
+table.stats #speed {
 	font-weight: bold;
 }
 
-table#stats #ability span,
-table#stats #size span,
-table#stats #speed span {
+table.stats #ability span,
+table.stats #size span,
+table.stats #speed span {
 	font-weight: normal !important;
 }
 
@@ -986,15 +1018,15 @@ table#stats #speed span {
 	font-size: 0.67em;
 }
 
-table#stats.monster span#speed {
+table.stats.monster span#speed {
 	font-weight: normal !important;
 }
 
-table#stats tr.trait td p:first-of-type {
+table.stats tr.trait td p:first-of-type {
 	display: inline;
 }
 
-table#stats p.subtrait {
+table.stats p.subtrait {
 	padding: 0 1em;
 	font-size: 0.9em;
 }
@@ -1515,9 +1547,9 @@ span.showhide {
 }
 
 /* ENTRY RENDERING CSS */
-table#stats div.statsBlockSectionHead > span.entry-title,
-table#stats div.statsBlockHead > span.entry-title,
-table#stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+table.stats div.statsBlockSectionHead > span.entry-title,
+table.stats div.statsBlockHead > span.entry-title,
+table.stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
 	color: #922610;
 	display: block;
 	font-family: 'Andada', serif;
@@ -1525,130 +1557,128 @@ table#stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
 	font-weight: 500;
 }
 
-table#stats div.statsBlockSectionHead > span.entry-title {
+table.stats div.statsBlockSectionHead > span.entry-title {
 	font-size: 1.8em;
 }
 
-table#stats div.statsBlockHead > span.entry-title {
+table.stats div.statsBlockHead > span.entry-title {
 	font-size: 1.5em;
 	border-bottom: 1px solid #922610;
 	margin: 0.2em;
 }
 
-table#stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+table.stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
 	font-size: 1.4em;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
 }
 
-table#stats tr.subclass-feature div.statsBlockHead > span.entry-title,
-table#stats tr.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+table.stats tr.subclass-feature div.statsBlockHead > span.entry-title,
+table.stats tr.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title {
 	color: #337ab7;
 	border-bottom-color: #337ab7;
 }
 
-table#stats tr.spicy-sauce.subclass-feature div.statsBlockHead > span.entry-title,
-table#stats tr.spicy-sauce.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
-table#stats tr.class-feature div.statsBlockHead .spicy-sauce > span.entry-title,
-table#stats tr.class-feature div.statsBlockHead .spicy-sauce div.statsBlockSubHead > span.entry-title {
+table.stats tr.spicy-sauce.subclass-feature div.statsBlockHead > span.entry-title,
+table.stats tr.spicy-sauce.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
+table.stats tr.class-feature div.statsBlockHead .spicy-sauce > span.entry-title,
+table.stats tr.class-feature div.statsBlockHead .spicy-sauce div.statsBlockSubHead > span.entry-title {
 	color: #1d965d;
 	border-bottom-color: #1d965d;
 }
 
-table#stats div.statsInlineHead > span.entry-title,
-table#stats div.statsInlineHeadSubVariant > span.entry-title {
+table.stats div.statsInlineHead > span.entry-title,
+table.stats div.statsInlineHeadSubVariant > span.entry-title {
 	font-style: italic;
 }
 
-table#stats div.statsInlineHead > span.entry-title {
+table.stats div.statsInlineHead > span.entry-title {
 	font-weight: bold;
 }
 
-table#stats div.statsInlineHead > p,
-table#stats div.statsInlineHeadSubVariant > p {
+table.stats div.statsInlineHead > p,
+table.stats div.statsInlineHeadSubVariant > p {
 	text-indent: 0.7em;
 	margin-bottom: 0;
 }
 
-table#stats div.statsInlineHead > p:first-of-type,
-table#stats div.statsInlineHeadSubVariant > p:first-of-type {
+table.stats div.statsInlineHead > p:first-of-type,
+table.stats div.statsInlineHeadSubVariant > p:first-of-type {
 	display: inline;
 }
 
-table#stats div.statsInlineHead {
+table.stats div.statsInlineHead {
 	margin-bottom: 5px;
 }
 
-table#stats div.statsBlockInset,
-table#stats div.statsBlockInsetReadaloud {
+table.stats div.statsBlockInset,
+table.stats div.statsBlockInsetReadaloud {
 	margin: 7px 15px;
 	padding: 5px 10px;
 }
 
-table#stats div.statsBlockInset p:last-of-type,
-table#stats div.statsBlockInsetReadaloud p:last-of-type {
+table.stats div.statsBlockInset p:last-of-type,
+table.stats div.statsBlockInsetReadaloud p:last-of-type {
 	margin-bottom: 0;
 }
 
-table#stats div.statsBlockInset {
-	background-color: #e9ecda;
+table.stats div.statsBlockInset {
 	box-shadow: 0 0 4px 0 rgb(152, 142, 124);
 	border: 1px solid #656565;
 	border-top: 2px solid #656565;
 	border-bottom: 2px solid #656565;
 }
 
-table#stats div.statsBlockInsetReadaloud {
-	background-color: #eef0f3;
+table.stats div.statsBlockInsetReadaloud {
 	box-shadow: 0 0 4px 0 rgb(152, 142, 124);
 	border: 1px solid #656565;
 	border-left: 2px solid #656565;
 	border-right: 2px solid #656565;
 }
 
-table#stats div.statsBlockInsetReadaloud > span.entry-title,
-table#stats div.statsBlockInset > span.entry-title {
+table.stats div.statsBlockInsetReadaloud > span.entry-title,
+table.stats div.statsBlockInset > span.entry-title {
 	display: block;
 	font-variant: small-caps;
 	font-weight: bolder;
 	font-size: 1.1em;
 }
 
-table#stats span.ability-block {
+table.stats span.ability-block {
 	display: block;
 	text-align: center;
 }
 
-table#stats span.ability-block span {
+table.stats span.ability-block span {
 	font-weight: bold;
 }
 
-table#stats tr.text p.list-name {
+table.stats tr.text p.list-name {
 	margin: 0;
 	font-weight: bold;
 }
 
-table#stats tr.text ul.list-hang {
+table.stats tr.text ul.list-hang {
 	list-style: none;
 	padding: 0;
 }
 
-table#stats tr.text ul.list-hang p {
+table.stats tr.text ul.list-hang p {
 	text-indent: -1.1em;
 	margin-left: 1.1em;
 }
 
-table#stats tr.text div.img-title {
+table.stats tr.text div.img-title {
 	width: 100%;
 	text-align: center;
 	font-style: italic;
 }
 
-table#stats tr.text div.img-wrapper {
+table.stats tr.text div.img-wrapper {
 	margin: 5px auto 0;
 	text-align: center;
 }
 
-table#stats tr.text img {
+table.stats tr.text img {
 	max-width: 100%;
 }

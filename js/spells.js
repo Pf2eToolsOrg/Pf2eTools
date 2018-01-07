@@ -283,7 +283,7 @@ const filterBox = initFilterBox(
 );
 
 function pageInit (loadedSources) {
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
 	sourceFilter.items.sort(ascSort);
@@ -466,61 +466,8 @@ function sortSpells (a, b, o) {
 }
 
 const renderer = new EntryRenderer();
-
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	const $pageContent = $("#pagecontent");
 	const spell = spellList[id];
-
-	const renderStack = [];
-
-	renderStack.push(`<tr><th id="name" colspan="6"><span class="stats-name">${spell.name}</span><span class="stats-source source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
-
-	renderStack.push(`<tr><td id="levelschoolritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta)}</span></td></tr>`);
-
-	renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>`);
-
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>`);
-
-	renderStack.push(`<tr><td id="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>`);
-
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>`);
-
-	renderStack.push(`<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>`);
-
-	const entryList = {type: "entries", entries: spell.entries};
-
-	renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
-	renderer.recursiveEntryRender(entryList, renderStack, 1);
-
-	if (spell.entriesHigherLevel) {
-		const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
-		renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
-	}
-
-	renderStack.push(`</td></tr>`);
-
-	renderStack.push(`<tr class="text"><td id="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
-
-	if (spell.classes.fromSubclass) {
-		const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes);
-		renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${currentAndLegacy[0]}</td></tr>`);
-		if (currentAndLegacy[1]) {
-			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${currentAndLegacy[1]}</section></td></tr>`);
-		}
-	}
-
-	if (spell.scrollNote) {
-		renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
-		renderer.recursiveEntryRender(
-			`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`
-			, renderStack, 2);
-		renderStack.push(`</section></td></tr>`);
-	}
-
-	if (spell.page) {
-		renderStack.push(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(spell.source)}</i>, page ${spell.page}</td>`);
-	}
-
-	const topBorder = $("#topBorder");
-	topBorder.after(renderStack.join(""));
+	$pageContent.html(EntryRenderer.spell.getRenderedString(spell, renderer));
 }
