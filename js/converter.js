@@ -216,6 +216,12 @@ function loadparser (data) {
 				continue;
 			}
 
+			// damage vulnerabilities (optional)
+			if (!curline.indexOf("Damage Vulnerabilities ")) {
+				stats.vulnerable = curline.split("Vulnerabilities ")[1];
+				continue;
+			}
+
 			// damage resistances (optional)
 			if (!curline.indexOf("Damage Resistances ")) {
 				stats.resist = curline.split("Resistances ")[1];
