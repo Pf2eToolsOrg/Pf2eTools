@@ -339,7 +339,7 @@ function EntryRenderer () {
 		function renderLink (self, entry) {
 			function getHoverString () {
 				if (!entry.href.hover) return "";
-				return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${entry.href.hash}')"`
+				return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash)}')"`
 			}
 
 			let href;
@@ -1123,8 +1123,6 @@ EntryRenderer.hover = {
 
 	_showInProgress: false,
 	show: function (ele, page, source, hash) {
-		hash = UrlUtil.encodeForHash(hash);
-
 		const winW = $(window).width();
 		const winH = $(window).height();
 		// don't show on mobile
