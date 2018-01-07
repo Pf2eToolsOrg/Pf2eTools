@@ -3,7 +3,6 @@
 let renderArea;
 
 let adventures;
-const adventureContent = {};
 
 const TABLE_START = `<tr><th class="border" colspan="6"></th></tr>`;
 const TABLE_END = `<tr><th class="border" colspan="6"></th></tr>`;
@@ -91,30 +90,22 @@ let allContents;
 let thisContents;
 
 function loadAdventure (fromIndex, advId, hashParts) {
-	if (adventureContent[advId] !== undefined) {
-		handle(adventureContent[advId]);
-	} else {
-		DataUtil.loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
-			adventureContent[advId] = data.data;
-			handle(data.data);
-		});
-	}
-
-	function handle (data) {
+	DataUtil.loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
 		allContents = $(`.adventure-contents-item`);
 		thisContents = allContents.filter(`[data-adventureid="${UrlUtil.encodeForHash(advId)}"]`);
 		thisContents.show();
 		allContents.filter(`[data-adventureid!="${UrlUtil.encodeForHash(advId)}"]`).hide();
-		onAdventureLoad(data, fromIndex, advId, hashParts);
+		onAdventureLoad(data.data, fromIndex, advId, hashParts);
 		addSearch(fromIndex, advId);
-	}
+	});
 }
 
 const renderer = new EntryRenderer();
 
 const curRender = {
 	curAdvId: "NONE",
-	chapter: -1
+	chapter: -1,
+	data: {}
 };
 
 function onAdventureLoad (data, fromIndex, advId, hashParts) {
@@ -134,6 +125,7 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 		}
 	}
 
+	curRender.data = data;
 	if (curRender.chapter !== chapter || curRender.curAdvId !== advId) {
 		thisContents.children(`ul`).children(`ul, li`).removeClass("active");
 		thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
@@ -209,7 +201,7 @@ function addSearch (indexData, advId) {
 				if (e.key === "Enter" && noModifierKeys(e)) {
 					$results.html("");
 					const found = [];
-					const toSearch = adventureContent[advId];
+					const toSearch = curRender.data;
 					toSearch.forEach((section, i) => {
 						headerCounts = {};
 						searchEntriesFor(i, "", found, $srch.val(), section)
