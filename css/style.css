@@ -179,14 +179,10 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	position: fixed;
 	max-width: 600px;
 	z-index: 200;
+	box-shadow: 0 0 12px 0 rgba(0, 0, 0, 1);
 }
 
-.hoverbox > * {
-
-}
-
-.hoverbox.stats {
-	box-shadow: 0 0 12px 0 rgba(0, 0, 0, 1.0);
+.hoverbox > table.stats {
 	border-radius: 0;
 }
 
@@ -198,9 +194,10 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	margin-bottom: 5px;
 }
 
-.hoverbox th.border {
-	height: 1px;
+.hoverbox .hoverborder {
+	height: 3px;
 }
+
 /* *** */
 
 .view-col {
@@ -457,8 +454,13 @@ tr.text td {
 	padding-bottom: 0.7em !important;
 }
 
+td.typerarityattunement,
 td.levelschoolritual {
 	font-style: italic;
+}
+
+td.damageproperties {
+	text-align: right;
 }
 
 table.stats td#typerarityattunement {
@@ -540,7 +542,8 @@ tr#regionaleffects td {
 	font-size: 1.6em;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
-	border-bottom: 1px solid #000;
+	border-bottom: 2px solid #922610;
+	color: #922610;
 	vertical-align: bottom !important;
 	padding-left: 0.2em;
 }
@@ -1620,7 +1623,6 @@ table.stats div.statsBlockInsetReadaloud p:last-of-type {
 }
 
 table.stats div.statsBlockInset {
-	background-color: #e9ecda;
 	box-shadow: 0 0 4px 0 rgb(152, 142, 124);
 	border: 1px solid #656565;
 	border-top: 2px solid #656565;
@@ -1628,7 +1630,6 @@ table.stats div.statsBlockInset {
 }
 
 table.stats div.statsBlockInsetReadaloud {
-	background-color: #eef0f3;
 	box-shadow: 0 0 4px 0 rgb(152, 142, 124);
 	border: 1px solid #656565;
 	border-left: 2px solid #656565;

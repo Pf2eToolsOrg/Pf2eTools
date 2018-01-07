@@ -24,8 +24,8 @@ table.stats table:not(.summary) tbody tr:nth-child(odd) {
 	background: #e4d8c3;
 }
 
+.hoverbox .hoverborder,
 th.border {
-	border: 1px solid black;
 	background: #e69a28;
 }
 
@@ -156,6 +156,14 @@ ul.list.adventures >  li > a > span.name:hover {
 	background: lightgrey;
 }
 
+table.stats div.statsBlockInset {
+	background-color: #e9ecda;
+}
+
+table.stats div.statsBlockInsetReadaloud {
+	background-color: #eef0f3;
+}
+
 .hoverbox table.summary th {
 	color: black;
 }
@@ -230,8 +238,8 @@ table#statsprof {
 	background: #272727;
 }
 
+.hoverbox .hoverborder,
 th.border {
-	border: 1px solid #6f6f6f;
 	background: #565656;
 }
 
@@ -416,6 +424,10 @@ tr.trait td {
 
 table.stats div.statsBlockInset {
 	background-color: #323431;
+}
+
+table.stats div.statsBlockInsetReadaloud {
+	background-color: #28303a;
 }
 
 .hoverbox table.summary th {

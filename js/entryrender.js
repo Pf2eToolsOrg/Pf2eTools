@@ -467,7 +467,11 @@ function EntryRenderer () {
 								break;
 							case "@item":
 								fauxEntry.href.path = "items.html";
-								if (!source) fauxEntry.href.hash += "_dmg";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_DMG;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_ITEMS,
+									source: source || SRC_DMG
+								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@class": {
@@ -698,11 +702,9 @@ EntryRenderer.spell = {
 		if (!this.renderer) {
 			this.renderer = new EntryRenderer();
 		}
-		renderer = this.renderer;
+		let renderer = this.renderer;
 
 		const renderStack = [];
-
-		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
 
 		renderStack.push(`<tr><th class="name" colspan="6"><span class="stats-name">${spell.name}</span><span class="stats-source source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}${spell.page ? ` p${spell.page}` : ""}</span></th></tr>`);
 
@@ -710,24 +712,24 @@ EntryRenderer.spell = {
 			<tr><td colspan="6">
 				<table class="summary">
 					<tr>
-						<th colspan="2">Level</th>
+						<th colspan="1">Level</th>
 						<th colspan="2">Casting Time</th>
 						<th colspan="2">Range</th>
+						<th colspan="1">School</th>
 					</tr>	
 					<tr>
-						<td colspan="2">${Parser.spLevelToFull(spell.level)}${Parser.spMetaToFull(spell.meta)}</td>
+						<td colspan="1">${Parser.spLevelToFull(spell.level)}${Parser.spMetaToFull(spell.meta)}</td>
 						<td colspan="2">${Parser.spTimeListToFull(spell.time)}</td>
 						<td colspan="2">${Parser.spRangeToFull(spell.range)}</td>
+						<td colspan="1">${Parser.spSchoolAbvToFull(spell.school)}</td>
 					</tr>
 					<tr>
-						<th colspan="2">Components</th>
+						<th colspan="4">Components</th>
 						<th colspan="2">Duration</th>
-						<th colspan="2">School</th>
 					</tr>	
 					<tr>
-						<td colspan="2">${Parser.spComponentsToFull(spell.components)}</td>
+						<td colspan="4">${Parser.spComponentsToFull(spell.components)}</td>
 						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
-						<td colspan="2">${Parser.spSchoolAbvToFull(spell.school)}</td>
 					</tr>
 				</table>
 			</td></tr>
@@ -742,7 +744,6 @@ EntryRenderer.spell = {
 		}
 		renderStack.push(`</td></tr>`);
 
-		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
 		return renderStack.join(" ");
 	},
 
@@ -805,6 +806,247 @@ EntryRenderer.spell = {
 	}
 };
 
+EntryRenderer.item = {
+	getDamageAndPropertiesText: function (item) {
+		const type = item.type || "";
+		let damage = "";
+		let damageType = "";
+		if (item.weaponCategory) {
+			if (item.dmg1) damage = utils_makeRoller(item.dmg1);
+			if (item.dmgType) damageType = Parser.dmgTypeToFull(item.dmgType);
+		} else if (type === "LA" || type === "MA" || type === "HA") {
+			damage = "AC " + item.ac + (type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : "");
+		} else if (type === "S") {
+			damage = "AC +" + item.ac;
+		} else if (type === "MNT" || type === "VEH") {
+			const speed = item.speed;
+			const capacity = item.carryingcapacity;
+			if (speed) damage += "Speed=" + speed;
+			if (speed && capacity) damage += type === "MNT" ? ", " : "<br>";
+			if (capacity) {
+				damage += "Carrying Capacity=" + capacity;
+				if (capacity.indexOf("ton") === -1 && capacity.indexOf("passenger") === -1) damage += Number(capacity) === 1 ? " lb." : " lbs.";
+			}
+		}
+
+		let propertiesTxt = "";
+		if (item.property) {
+			const properties = item.property.split(",");
+			for (let i = 0; i < properties.length; i++) {
+				const prop = properties[i];
+				let a = item._propertyList[prop].name;
+				if (prop === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
+				if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range}ft.)`;
+				if (prop === "RLD") a = `${a} (${item.reload} shots)`;
+				a = (i > 0 ? ", " : item.dmg1 ? "- " : "") + a;
+				propertiesTxt += a;
+			}
+		}
+		return [damage, damageType, propertiesTxt];
+	},
+
+	getCompactRenderedString: function (item) {
+		if (!this.renderer) {
+			this.renderer = new EntryRenderer();
+		}
+		let renderer = this.renderer;
+
+		const renderStack = [];
+
+		renderStack.push(`<tr><th class="name" colspan="6"><span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}${item.page ? ` p${item.page}` : ""}</span></th></tr>`);
+
+		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${item.typeText}${`${item.tier ? `, ${item.tier}` : ""}${item.rarity ? `, ${item.rarity}` : ""}`} ${item.reqAttune || ""}</td>`);
+
+		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
+		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : ""}</td><td class="damageproperties" colspan="4">${damage}${damageType}${propertiesTxt}</tr>`);
+
+		renderStack.push(`<tr><td class="divider" colspan="6"><div></div></td></tr>`);
+
+		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+
+		// TODO rendering
+		const entryList = {type: "entries", entries: item.entries};
+		renderer.recursiveEntryRender(entryList, renderStack, 1);
+
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join(" ");
+	},
+
+	/**
+	 * Runs callback with itemList as argument
+	 * @param callback
+	 */
+	buildList: function (callback) {
+		let itemList;
+		let basicItemList;
+		let variantList;
+		const propertyList = {};
+		const typeList = {};
+
+		DataUtil.loadJSON("data/items.json", addBasicItems);
+
+		function addBasicItems (itemData) {
+			itemList = itemData.item;
+			DataUtil.loadJSON("data/basicitems.json", addVariants);
+		}
+
+		function addVariants (basicItemData) {
+			basicItemList = basicItemData.basicitem;
+			const itemPropertyList = basicItemData.itemProperty;
+			const itemTypeList = basicItemData.itemType;
+			// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
+			for (let i = 0; i < itemPropertyList.length; i++) {
+				propertyList[itemPropertyList[i].abbreviation] = itemPropertyList[i].name ? JSON.parse(JSON.stringify(itemPropertyList[i])) : {
+					"name": itemPropertyList[i].entries[0].name.toLowerCase(),
+					"entries": itemPropertyList[i].entries
+				};
+			}
+			for (let i = 0; i < itemTypeList.length; i++) {
+				typeList[itemTypeList[i].abbreviation] = itemTypeList[i].name ? JSON.parse(JSON.stringify(itemTypeList[i])) : {
+					"name": itemTypeList[i].entries[0].name.toLowerCase(),
+					"entries": itemTypeList[i].entries
+				};
+			}
+			DataUtil.loadJSON("data/magicvariants.json", mergeBasicItems);
+		}
+
+		function mergeBasicItems (variantData) {
+			variantList = variantData.variant;
+			itemList = itemList.concat(basicItemList);
+			for (let i = 0; i < variantList.length; i++) {
+				variantList[i].tier = variantList[i].inherits.tier;
+				variantList[i].rarity = variantList[i].inherits.rarity;
+				variantList[i].source = variantList[i].inherits.source;
+				variantList[i].page = variantList[i].inherits.page;
+				if (!variantList[i].entries && variantList[i].inherits.entries) variantList[i].entries = JSON.parse(JSON.stringify(variantList[i].inherits.entries));
+				if (variantList[i].requires.armor) variantList[i].armor = variantList[i].requires.armor;
+				if (variantList[i].inherits.resist) variantList[i].resist = variantList[i].inherits.resist;
+				if (variantList[i].inherits.reqAttune) variantList[i].reqAttune = variantList[i].inherits.reqAttune;
+			}
+			itemList = itemList.concat(variantList);
+			for (let i = 0; i < basicItemList.length; i++) {
+				const curBasicItem = basicItemList[i];
+				basicItemList[i].category = "Basic";
+				if (curBasicItem.entries === undefined) curBasicItem.entries = [];
+				const curBasicItemName = curBasicItem.name.toLowerCase();
+				for (let j = 0; j < variantList.length; j++) {
+					const curVariant = variantList[j];
+					const curRequires = curVariant.requires;
+					let hasRequired = curBasicItemName.indexOf(" (") === -1;
+					for (const requiredProperty in curRequires) if (curRequires.hasOwnProperty(requiredProperty) && curBasicItem[requiredProperty] !== curRequires[requiredProperty]) hasRequired = false;
+					// hasRequired = hasRequired && Object.keys(curRequires).every(req => curBasicItem[req] === curRequires.requires[req]);
+					if (curVariant.excludes) {
+						const curExcludes = curVariant.excludes;
+						for (const excludedProperty in curExcludes) if (curExcludes.hasOwnProperty(excludedProperty) && curBasicItem[excludedProperty] === curExcludes[excludedProperty]) hasRequired = false;
+					}
+					if (hasRequired) {
+						const curInherits = curVariant.inherits;
+						const tmpBasicItem = JSON.parse(JSON.stringify(curBasicItem));
+						delete tmpBasicItem.value; // Magic items do not inherit the value of the non-magical item
+						tmpBasicItem.category = "Specific Variant";
+						for (const inheritedProperty in curInherits) {
+							if (curInherits.hasOwnProperty(inheritedProperty)) {
+								if (inheritedProperty === "namePrefix") {
+									tmpBasicItem.name = curInherits.namePrefix + tmpBasicItem.name;
+								} else if (inheritedProperty === "nameSuffix") {
+									tmpBasicItem.name += curInherits.nameSuffix;
+								} else if (inheritedProperty === "entries") {
+									for (let k = curInherits.entries.length - 1; k > -1; k--) {
+										let tmpText = curInherits.entries[k];
+										if (typeof tmpText === "string") {
+											if (tmpBasicItem.dmgType) tmpText = tmpText.replace(/{@dmgType}/g, Parser.dmgTypeToFull(tmpBasicItem.dmgType));
+											if (curInherits.genericBonus) tmpText = tmpText.replace(/{@genericBonus}/g, curInherits.genericBonus);
+											if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(curBasicItemName);
+										}
+										tmpBasicItem.entries.unshift(tmpText);
+									}
+								} else tmpBasicItem[inheritedProperty] = curInherits[inheritedProperty];
+							}
+						}
+						itemList.push(tmpBasicItem);
+					}
+				}
+			}
+			enhanceItems();
+		}
+
+		function enhanceItems () {
+			for (let i = 0; i < itemList.length; i++) {
+				const item = itemList[i];
+				if (item.noDisplay) continue;
+				if (itemList[i].type === "GV") itemList[i].category = "Generic Variant";
+				if (itemList[i].category === undefined) itemList[i].category = "Other";
+				if (item.entries === undefined) itemList[i].entries = [];
+				if (item.type && typeList[item.type]) for (let j = 0; j < typeList[item.type].entries.length; j++) itemList[i].entries = pushObject(itemList[i].entries, typeList[item.type].entries[j]);
+				if (item.property) {
+					const properties = item.property.split(",");
+					for (let j = 0; j < properties.length; j++) if (propertyList[properties[j]].entries) for (let k = 0; k < propertyList[properties[j]].entries.length; k++) itemList[i].entries = pushObject(itemList[i].entries, propertyList[properties[j]].entries[k]);
+				}
+				// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
+				if (item.armor) {
+					if (item.resist) itemList[i].entries = pushObject(itemList[i].entries, "You have resistance to " + item.resist + " damage while you wear this armor.");
+					if (item.armor && item.stealth) itemList[i].entries = pushObject(itemList[i].entries, "The wearer has disadvantage on Stealth (Dexterity) checks.");
+					if (item.type === "HA" && item.strength) itemList[i].entries = pushObject(itemList[i].entries, "If the wearer has a Strength score lower than " + item.strength + ", their speed is reduced by 10 feet.");
+				} else if (item.resist) {
+					if (item.type === "P") itemList[i].entries = pushObject(itemList[i].entries, "When you drink this potion, you gain resistance to " + item.resist + " damage for 1 hour.");
+					if (item.type === "RG") itemList[i].entries = pushObject(itemList[i].entries, "You have resistance to " + item.resist + " damage while wearing this ring.");
+				}
+				if (item.type === "SCF") {
+					if (item.scfType === "arcane") itemList[i].entries = pushObject(itemList[i].entries, "An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus, using it in place of any material component which does not list a cost.");
+					if (item.scfType === "druid") itemList[i].entries = pushObject(itemList[i].entries, "A druid can use such a druidic focus as a spellcasting focus, using it in place of any material component that does not have a cost.");
+					if (item.scfType === "holy") {
+						itemList[i].entries = pushObject(itemList[i].entries, "A holy symbol is a representation of a god or pantheon.");
+						itemList[i].entries = pushObject(itemList[i].entries, "A cleric or paladin can use a holy symbol as a spellcasting focus, using it in place of any material components which do not list a cost. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+					}
+				}
+
+				// bind pointer to propertyList
+				if (item.property) {
+					item._propertyList = propertyList;
+				}
+
+				// bake in types
+				const type = [];
+				if (item.wondrous) type.push("Wondrous Item");
+				if (item.technology) type.push(item.technology);
+				if (item.age) type.push(item.age);
+				if (item.weaponCategory) type.push(item.weaponCategory + " Weapon");
+				if (item.type) type.push(Parser.itemTypeToAbv(item.type));
+				if (item.poison) type.push("Poison");
+				item.type = type;
+				item.typeText = type.join(", ");
+
+				// bake in attunement
+				let attunement = "No";
+				if (item.reqAttune !== undefined) {
+					if (item.reqAttune === "YES") {
+						attunement = "Yes";
+						item.reqAttune = "(Requires Attunement)"
+					} else if (item.reqAttune === "OPTIONAL") {
+						attunement = "Optional";
+						item.reqAttune = "(Attunement Optional)"
+					} else if (item.reqAttune.toLowerCase().startsWith("by")) {
+						attunement = "By...";
+						item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
+					} else {
+						attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
+						item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
+					}
+				}
+				item.attunementCategory = attunement;
+			}
+			callback(itemList);
+		}
+
+		function pushObject (targetObject, objectToBePushed) {
+			const copiedObject = JSON.parse(JSON.stringify(targetObject));
+			copiedObject.push(objectToBePushed);
+			return copiedObject;
+		}
+	}
+};
+
 EntryRenderer.hover = {
 	linkCache: {},
 
@@ -836,53 +1078,91 @@ EntryRenderer.hover = {
 		return this.linkCache[page] && this.linkCache[page][source] && this.linkCache[page][source][hash];
 	},
 
+	_makeWindow: function (winW, winH, ele, content) {
+		const offset = $(ele).offset();
+		const vpOffsetT = offset.top - $(document).scrollTop();
+		const vpOffsetL = offset.left - $(document).scrollLeft();
+
+		const fromBottom = vpOffsetT > winH / 2;
+		const fromRight = vpOffsetL > winW / 2;
+
+		const $hov = $(`<div class="hoverbox"/>`);
+		const $stats = $(`<table class="stats"></table>`);
+		$stats.append(content);
+		$hov.append(`<div class="hoverborder"></div>`)
+			.append($stats)
+			.append(`<div class="hoverborder"></div>`);
+
+		if (fromBottom) $hov.css("bottom", winH - vpOffsetT);
+		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
+
+		if (fromRight) $hov.css("right", winW - vpOffsetL);
+		else $hov.css("left", vpOffsetL);
+
+		$(ele).bind("mouseleave", () => {
+			$hov.remove();
+		});
+
+		$(`body`).append($hov);
+
+		// readjust position if clipping off screen
+		const hvOffset = $hov.offset();
+		if (hvOffset.top < 0) {
+			$hov.css("top", 0).css("bottom", "");
+		} else {
+			const calcHeight = $hov.height();
+			if (hvOffset.top + calcHeight > winH) {
+				$hov.css("top", 0).css("bottom", "");
+			}
+		}
+	},
+
 	show: function (ele, page, source, hash) {
-		const winH = $(window).height();
+		hash = UrlUtil.encodeForHash(hash);
+
 		const winW = $(window).width();
+		const winH = $(window).height();
 		// don't show on mobile
 		if (winW <= 768) return;
+
+		// clean up any old event listeners
+		$(ele).unbind("mouseleave");
+
+		function doRender (renderFunction, toRender) {
+			EntryRenderer.hover._makeWindow(winW, winH, ele, renderFunction(toRender));
+		}
 
 		switch (page) {
 			case UrlUtil.PG_SPELLS: {
 				const BASE_URL = `data/spells/`;
-				function doRender (spell) {
-					const offset = $(ele).offset();
-					const vpOffsetT = offset.top - $(document).scrollTop();
-					const vpOffsetL = offset.left - $(document).scrollLeft();
-
-					const fromBottom = vpOffsetT > winH / 2;
-					const fromRight = vpOffsetL > winW / 2;
-
-					const $win = $(`<table class="stats hoverbox"/>`);
-					$win.append(EntryRenderer.spell.getCompactRenderedString(spell));
-
-					if (fromBottom) $win.css("bottom", winH - vpOffsetT);
-					else $win.css("top", vpOffsetT);
-
-					if (fromRight) $win.css("right", winW - vpOffsetL);
-					else $win.css("left", vpOffsetL);
-
-					$(ele).bind("mouseleave", () => {
-						$win.remove();
-					});
-
-					$(`body`).append($win);
-				}
-
-				$(ele).unbind("mouseleave");
 
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
 					DataUtil.loadJSON(`${BASE_URL}index.json`, (data) => {
 						DataUtil.loadJSON(`${BASE_URL}${data[source]}`, (data) => {
 							data.spell.forEach(spell => {
 								const spellHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
-								EntryRenderer.hover._addToCache(page, source, spellHash, spell)
+								EntryRenderer.hover._addToCache(page, spell.source, spellHash, spell)
 							});
-							doRender(EntryRenderer.hover._getFromCache(page, source, hash));
+							doRender(EntryRenderer.spell.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
 						});
 					});
 				} else {
-					doRender(EntryRenderer.hover._getFromCache(page, source, hash));
+					doRender(EntryRenderer.spell.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
+				}
+				break;
+			}
+
+			case UrlUtil.PG_ITEMS: {
+				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					EntryRenderer.item.buildList((allItems) => {
+						allItems.forEach(item => {
+							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
+							EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
+						});
+						doRender(EntryRenderer.item.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
+					});
+				} else {
+					doRender(EntryRenderer.item.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
 				}
 				break;
 			}
