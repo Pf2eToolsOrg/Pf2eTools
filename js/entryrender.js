@@ -1105,7 +1105,7 @@ EntryRenderer.hover = {
 
 		$(`body`).append($hov);
 
-		// readjust position if clipping off screen
+		// readjust position if vertically clipping off screen
 		const hvOffset = $hov.offset();
 		if (hvOffset.top < 0) {
 			$hov.css("top", 0).css("bottom", "");
