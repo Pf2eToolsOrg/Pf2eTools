@@ -78,7 +78,7 @@ function loadhash (id) {
 	const reward = rewardList[id];
 
 	const name = reward.type === "Demonic Boon" ? "Demonic Boon: " + reward.name : reward.name;
-	$("th#name").html(`<span class="stats-name">${name}</span><span class="stats-source source${reward.source}" title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>`);
+	$("th.name").html(`<span class="stats-name">${name}</span><span class="stats-source source${reward.source}" title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>`);
 
 	$("tr.text").remove();
 

@@ -89,7 +89,7 @@ function loadhash (id) {
 	$("#pagecontent").html(tabledefault);
 	const feat = featlist[id];
 
-	$("th#name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${feat.source}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>`);
+	$("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${feat.source}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>`);
 
 	const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
 	$("td#prerequisite").html(prerequisite ? `Prerequisite: ${prerequisite}` : "");

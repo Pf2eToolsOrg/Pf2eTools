@@ -8,7 +8,6 @@ const STR_LEVEL_NONE = "Any";
 const STR_SPELL_NONE = "None";
 
 const ID_INVOCATION_LIST = "invocationsList";
-const ID_STATS_NAME = "name";
 const ID_STATS_PREREQUISITES = "prerequisites";
 const ID_TEXT = "text";
 
@@ -167,13 +166,13 @@ function onJsonLoad (data) {
 }
 
 function loadhash (jsonIndex) {
-	const STATS_NAME = document.getElementById(ID_STATS_NAME);
+	const $name = $(`th.name`);
 	const STATS_PREREQUISITES = document.getElementById(ID_STATS_PREREQUISITES);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
 	const selectedInvocation = INVOCATION_LIST[jsonIndex];
 
-	STATS_NAME.innerHTML = selectedInvocation[JSON_ITEM_NAME];
+	$name.html(selectedInvocation[JSON_ITEM_NAME]);
 
 	loadInvocation();
 

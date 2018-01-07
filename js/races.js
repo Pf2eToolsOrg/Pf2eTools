@@ -105,7 +105,7 @@ function loadhash (id) {
 
 	const race = raceList[id];
 
-	$("th#name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
+	$("th.name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
 
 	const size = Parser.sizeAbvToFull(race.size);
 	$("td#size span").html(size);

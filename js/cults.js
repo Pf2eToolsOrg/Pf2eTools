@@ -38,7 +38,7 @@ function loadhash (id) {
 	const curcult = cultList[id];
 
 	const name = curcult.name;
-	$("th#name").html(name);
+	$("th.name").html(name);
 
 	$("tr.text").remove();
 

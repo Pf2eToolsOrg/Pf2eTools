@@ -248,7 +248,7 @@ function loadhash (id) {
 	};
 
 	const imgLink = UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
-	$("th#name").html(
+	$("th.name").html(
 		`<span class="stats-name">${name}</span>
 		<span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>
 		<a href="${imgLink}" target='_blank'>
@@ -675,7 +675,7 @@ function loadhash (id) {
 	});
 
 	function outputRollResult ($ele, roll, rollResult) {
-		const name = $("#name .stats-name").text();
+		const name = $(".name .stats-name").text();
 		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : ""}for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
 		$("div#output span:eq(5)").remove();
 	}

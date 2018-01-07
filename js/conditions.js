@@ -36,7 +36,7 @@ function onJsonLoad (data) {
 function loadhash (id) {
 	$("#pagecontent").html(tableDefault);
 	const curcondition = conditionList[id];
-	$("th#name").html(curcondition.name);
+	$("th.name").html(curcondition.name);
 	$("tr.text").remove();
 	const entryList = {type: "entries", entries: curcondition.entries};
 	const textStack = [];
