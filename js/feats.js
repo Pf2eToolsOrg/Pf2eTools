@@ -88,8 +88,10 @@ const renderer = new EntryRenderer();
 function loadhash (id) {
 	$("#pagecontent").html(tabledefault);
 	const feat = featlist[id];
+	const source = feat.source;
+	const sourceFull = Parser.sourceJsonToFull(source)
 
-	$("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${feat.source}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>`);
+	$("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>`);
 
 	const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
 	$("td#prerequisite").html(prerequisite ? `Prerequisite: ${prerequisite}` : "");
@@ -100,4 +102,5 @@ function loadhash (id) {
 	renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
 
 	$("tr#text").after(`<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`);
+	$(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${feat.page}</td>`);
 }
