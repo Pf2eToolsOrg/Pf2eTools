@@ -8,7 +8,7 @@ const MONTH_NAMES = [
 let adventuresIndex;
 
 window.onload = function load () {
-	loadJSON(CONTENTS_URL, onJsonLoad);
+	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {

@@ -5,12 +5,12 @@ let msbcr;
 let monsterfeatures;
 
 window.onload = function load () {
-	loadJSON(MSBCR_JSON_URL, addMSBCR);
+	DataUtil.loadJSON(MSBCR_JSON_URL, addMSBCR);
 };
 
 function addMSBCR (crData) {
 	msbcr = crData;
-	loadJSON(MONSTERFEATURES_JSON_URL, addMonsterFeatures);
+	DataUtil.loadJSON(MONSTERFEATURES_JSON_URL, addMonsterFeatures);
 }
 
 function addMonsterFeatures (mfData) {

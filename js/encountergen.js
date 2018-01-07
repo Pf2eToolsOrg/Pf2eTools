@@ -27,7 +27,7 @@ function getTableName (loc, table) {
 }
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {
@@ -88,7 +88,7 @@ function loadhash (id) {
 				</table>
 			</td>
 		</tr>`;
-	$("#stats").html(htmlText);
+	$("#pagecontent").html(htmlText);
 }
 
 function pad (number) {

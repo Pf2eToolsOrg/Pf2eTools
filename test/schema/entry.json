@@ -342,6 +342,19 @@
 												"required": ["key", "value"],
 												"additionalProperties": false
 											}
+										},
+										"hover": {
+											"type": "object",
+											"properties": {
+												"page": {
+													"type": "string"
+												},
+												"source": {
+													"type": "string"
+												}
+											},
+											"additionalProperties": false,
+											"required": ["page", "source"]
 										}
 									},
 									"required": ["path"],

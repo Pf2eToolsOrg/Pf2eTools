@@ -14,7 +14,6 @@ const STR_ORDER_NONE = "None";
 const TMP_HIDDEN_MODE = `"{0}"`;
 
 const ID_PSIONICS_LIST = "psionicsList";
-const ID_STATS_NAME = "name";
 const ID_STATS_ORDER_AND_TYPE = "orderAndType";
 const ID_STATS_DURATION = "duration";
 const ID_TEXT = "text";
@@ -39,7 +38,6 @@ const JSON_ITEM_MODE_CONCENTRATION_DURATION = "duration";
 const JSON_ITEM_MODE_CONCENTRATION_UNIT = "unit";
 
 const CLS_PSIONICS = "psionics";
-const CLS_ROW = "row";
 const CLS_COL1 = "col-xs-5";
 const CLS_COL2 = "col-xs-2";
 const CLS_COL3 = "col-xs-2";
@@ -70,7 +68,7 @@ function getHiddenModeList (psionic) {
 }
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 let PSIONIC_LIST;
@@ -164,14 +162,14 @@ function onJsonLoad (data) {
 }
 
 function loadhash (jsonIndex) {
-	const STATS_NAME = document.getElementById(ID_STATS_NAME);
+	const $name = $(`th.name`);
 	const STATS_ORDER_AND_TYPE = document.getElementById(ID_STATS_ORDER_AND_TYPE);
 	const STATS_DURATION = document.getElementById(ID_STATS_DURATION);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
 	const selectedPsionic = PSIONIC_LIST[jsonIndex];
 
-	STATS_NAME.innerHTML = selectedPsionic[JSON_ITEM_NAME];
+	$name.html(selectedPsionic[JSON_ITEM_NAME]);
 	if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_TALENT) loadTalent();
 	else if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_DISCIPLINE) loadDiscipline();
 
@@ -200,7 +198,7 @@ function loadhash (jsonIndex) {
 		}
 
 		function getFocusString () {
-			return `<p><span class='psi-focus-title'>Psycic Focus.</span> ${selectedPsionic[JSON_ITEM_FOCUS]}</p>`;
+			return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${selectedPsionic[JSON_ITEM_FOCUS]}</p>`;
 		}
 
 		function getModeString (modeIndex) {

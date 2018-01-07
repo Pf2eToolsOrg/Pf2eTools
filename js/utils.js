@@ -106,25 +106,6 @@ String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
 		return str;
 	};
 
-StrUtil = {};
-StrUtil.joinPhraseArray = function (array, joiner, lastJoiner) {
-	if (array.length === 0) return "";
-	if (array.length === 1) return array[0];
-	if (array.length === 2) return array.join(lastJoiner);
-	else {
-		let outStr = "";
-		for (let i = 0; i < array.length; ++i) {
-			outStr += array[i];
-			if (i < array.length - 2) outStr += joiner;
-			else if (i === array.length - 2) outStr += lastJoiner
-		}
-		return outStr;
-	}
-};
-StrUtil.uppercaseFirst = function (string) {
-	return string.uppercaseFirst();
-};
-
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 	function () {
 		const str = this.toString();
@@ -132,6 +113,27 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		if (str.length === 1) return str.charAt(0).toUpperCase();
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
+
+StrUtil = {
+	joinPhraseArray: function (array, joiner, lastJoiner) {
+		if (array.length === 0) return "";
+		if (array.length === 1) return array[0];
+		if (array.length === 2) return array.join(lastJoiner);
+		else {
+			let outStr = "";
+			for (let i = 0; i < array.length; ++i) {
+				outStr += array[i];
+				if (i < array.length - 2) outStr += joiner;
+				else if (i === array.length - 2) outStr += lastJoiner
+			}
+			return outStr;
+		}
+	},
+
+	uppercaseFirst: function (string) {
+		return string.uppercaseFirst();
+	}
+};
 
 // TEXT COMBINING ======================================================================================================
 function utils_combineText (textList, tagPerItem, textBlockInlineTitle) {
@@ -583,13 +585,17 @@ Parser.spLevelToFull = function (level) {
 	return level + "th";
 };
 
+Parser.spMetaToFull = function (meta) {
+	// these tags are (so far) mutually independent, so we don't need to combine the text
+	if (meta && meta.ritual) return " (ritual)";
+	if (meta && meta.technomagic) return " (technomagic)";
+	return "";
+};
+
 Parser.spLevelSchoolMetaToFull = function (level, school, meta) {
 	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : Parser.spLevelToFull(level) + "-level";
 	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}` : `${levelPart} ${Parser.spSchoolAbvToFull(school).toLowerCase()}`;
-	// these tags are (so far) mutually independent, so we don't need to combine the text
-	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
-	if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
-	return levelSchoolStr;
+	return levelSchoolStr + Parser.spMetaToFull(meta);
 };
 
 Parser.spTimeListToFull = function (times) {
@@ -733,8 +739,9 @@ Parser.monTypeToFullObj = function (type) {
 		out.tags.push("swarm");
 		out.asText = `swarm of ${Parser.sizeAbvToFull(type.swarmSize).toLowerCase()} ${Parser.monTypeToPlural(type.type)}`;
 	} else {
-		out.asText = `${type.type} (${tempTags.join(", ")})`;
+		out.asText = `${type.type}`;
 	}
+	if (tempTags.length) out.asText += ` (${tempTags.join(", ")})`
 	return out;
 };
 
@@ -1021,8 +1028,10 @@ SRC_UAGHI = SRC_UA_PREFIX + "GreyhawkInitiative";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
-SRC_ToB_3PP = "ToB" + SRC_3PP_SUFFIX;
+SRC_CC_3PP = "CC" + SRC_3PP_SUFFIX;
 SRC_FEF_3PP = "FEF" + SRC_3PP_SUFFIX;
+SRC_GDoF_3PP = "GDoF" + SRC_3PP_SUFFIX;
+SRC_ToB_3PP = "ToB" + SRC_3PP_SUFFIX;
 
 AL_PREFIX = "Adventurers League: ";
 AL_PREFIX_SHORT = "AL: ";
@@ -1108,8 +1117,10 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] = UA_PREFIX + "Mass Combat";
 Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] = UA_PREFIX + "Three-Pillar Experience";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] = UA_PREFIX + "Greyhawk Initiative";
 Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_CC_3PP] = "Critter Compendium" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_FEF_3PP] = "Fifth Edition Foes" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_GDoF_3PP] = "Gem Dragons of Faerûn" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts" + PP3_SUFFIX;
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
@@ -1186,8 +1197,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAMAC] = "UAMAC";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA3PE] = "UA3PE";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAGHI] = "UAGHI";
 Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BoLS (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
+Parser.SOURCE_JSON_TO_ABV[SRC_CC_3PP] = "CC (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_FEF_3PP] = "FEF (3pp)";
+Parser.SOURCE_JSON_TO_ABV[SRC_GDoF_3PP] = "GDoF (3pp)";
+Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
@@ -1227,12 +1240,12 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 
 Parser.SKILL_JSON_TO_FULL = {
 	"Acrobatics": "Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck.",
-	"Animal Handling": "When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal’s intentions, the GM might call for a Wisdom (Animal Handling) check.",
+	"Animal Handling": "When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the GM might call for a Wisdom (Animal Handling) check.",
 	"Arcana": "Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.",
 	"Athletics": "Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming.",
 	"Deception": "Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions.",
 	"History": "Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations.",
-	"Insight": "Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone’s next move.",
+	"Insight": "Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move.",
 	"Intimidation": "When you attempt to influence someone through overt threats, hostile actions, and physical violence, the GM might ask you to make a Charisma (Intimidation) check.",
 	"Investigation": "When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check.",
 	"Medicine": "A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.",
@@ -1248,7 +1261,7 @@ Parser.SKILL_JSON_TO_FULL = {
 
 Parser.ACTION_JSON_TO_FULL = {
 	"Dash": "When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
-	"Disengage": "If you take the Disengage action, your movement doesn’t provoke opportunity attacks for the rest of the turn.",
+	"Disengage": "If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn.",
 	"Dodge": "When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage.",
 	"Help": "You can lend your aid to another creature in the completion of a task. The creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.",
 	"Hide": "When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules for hiding.",
@@ -1456,57 +1469,68 @@ function joinConjunct (arr, joinWith, conjunctWith) {
 }
 
 // JSON LOADING ========================================================================================================
-function loadJSON (url, onLoadFunction, ...otherData) {
-	const procUrl = UrlUtil.link(url);
-	const request = getRequest(procUrl);
-	if (procUrl !== url) {
-		request.onerror = function () {
-			const fallbackRequest = getRequest(url);
-			fallbackRequest.send();
-		};
-	}
-	request.send();
+DataUtil = {
+	_loaded: {},
 
-	function getRequest (toUrl) {
-		const request = new XMLHttpRequest();
-		request.open("GET", toUrl, true);
-		request.overrideMimeType("application/json");
-		request.onload = function () {
-			const data = JSON.parse(this.response);
-			onLoadFunction(data, otherData);
-		};
-		return request;
-	}
-}
+	loadJSON: function (url, onLoadFunction, ...otherData) {
+		function handleAlreadyLoaded (url) {
+			onLoadFunction(DataUtil._loaded[url], otherData);
+		}
 
-/**
- * Loads a sequence of URLs, then calls a final function once all the data is ready
- * @param toLoads array of objects, which should have a `url` property
- * @param onEachLoadFunction function to call after each load completes. Should accept a `toLoad` and the data returned
- * from the load
- * @param onFinalLoadFunction final function to call once all data has been loaded, should accept the `dataStack` array as
- * an argument. `dataStack` is an array of the data pulled from each URL
- */
-function multiLoadJSON (toLoads, onEachLoadFunction, onFinalLoadFunction) {
-	if (!toLoads.length) onFinalLoadFunction([]);
-	const dataStack = [];
+		if (this._loaded[url]) {
+			handleAlreadyLoaded(url);
+			return;
+		}
 
-	let loadedCount = 0;
-	toLoads.forEach(tl => {
-		loadJSON(
-			tl.url,
-			function (data) {
-				onEachLoadFunction(tl, data);
-				dataStack.push(data);
+		const procUrl = UrlUtil.link(url);
+		if (this._loaded[procUrl]) {
+			handleAlreadyLoaded(url);
+			return;
+		}
 
-				loadedCount++;
-				if (loadedCount >= toLoads.length) {
-					onFinalLoadFunction(dataStack);
+		const request = getRequest(procUrl);
+		if (procUrl !== url) {
+			request.onerror = function () {
+				const fallbackRequest = getRequest(url);
+				fallbackRequest.send();
+			};
+		}
+		request.send();
+
+		function getRequest (toUrl) {
+			const request = new XMLHttpRequest();
+			request.open("GET", toUrl, true);
+			request.overrideMimeType("application/json");
+			request.onload = function () {
+				const data = JSON.parse(this.response);
+				DataUtil._loaded[toUrl] = data;
+				onLoadFunction(data, otherData);
+			};
+			return request;
+		}
+	},
+
+	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction) {
+		if (!toLoads.length) onFinalLoadFunction([]);
+		const dataStack = [];
+
+		let loadedCount = 0;
+		toLoads.forEach(tl => {
+			this.loadJSON(
+				tl.url,
+				function (data) {
+					onEachLoadFunction(tl, data);
+					dataStack.push(data);
+
+					loadedCount++;
+					if (loadedCount >= toLoads.length) {
+						onFinalLoadFunction(dataStack);
+					}
 				}
-			}
-		)
-	});
-}
+			)
+		});
+	}
+};
 
 // SHOW/HIDE SEARCH ====================================================================================================
 function addListShowHide () {
@@ -1522,7 +1546,7 @@ function addListShowHide () {
 	`;
 
 	$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
-	$(`#statscontainer`).prepend(toInjectShow);
+	$(`#contentwrapper`).prepend(toInjectShow);
 
 	const listContainer = $(`#listcontainer`);
 	const showSearchWrpr = $("div#showsearch");
