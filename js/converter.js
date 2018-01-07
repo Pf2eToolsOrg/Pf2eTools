@@ -20,9 +20,9 @@ function tryParseType (strType) {
 	try {
 		const m = /^(.*?) (\(.*?\))\s*$/.exec(strType);
 		if (m) {
-			return {type: m[1], tags: m[2].split(",").map(s => s.replace(/\(/g, "").replace(/\)/g, "").trim())}
+			return {type: m[1].toLowerCase(), tags: m[2].split(",").map(s => s.replace(/\(/g, "").replace(/\)/g, "").trim())}
 		}
-		return strType;
+		return strType.toLowerCase();
 	} catch (e) {
 		return strType;
 	}
