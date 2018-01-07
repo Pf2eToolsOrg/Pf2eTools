@@ -239,7 +239,7 @@ function loadhash (id) {
 	var mon = monsters[id];
 	var name = mon.name;
 	let source = Parser.sourceJsonToAbv(mon.source);
-	let sourceFull = Parser.sourceJsonToFull(source)
+	let sourceFull = Parser.sourceJsonToFull(mon.source)
 	var type = mon._pTypes.asText;
 
 	imgError = function (x) {

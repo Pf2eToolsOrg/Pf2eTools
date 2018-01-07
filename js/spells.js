@@ -470,26 +470,20 @@ const renderer = new EntryRenderer();
 function loadhash (id) {
 	$("#stats").html(tableDefault);
 	const spell = spellList[id];
-
+	const source = spell.source;
+	const sourceFull = Parser.sourceJsonToFull(spell.source);
 	const renderStack = [];
-
-	renderStack.push(`<tr><th id="name" colspan="6"><span class="stats-name">${spell.name}</span><span class="stats-source source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span></th></tr>`);
-
-	renderStack.push(`<tr><td id="levelschoolritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta)}</span></td></tr>`);
-
-	renderStack.push(`<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>`);
-
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>`);
-
-	renderStack.push(`<tr><td id="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>`);
-
-	renderStack.push(`<tr><td id="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>`);
-
-	renderStack.push(`<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>`);
-
 	const entryList = {type: "entries", entries: spell.entries};
 
-	renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+	renderStack.push(`
+		<tr><th id="name" colspan="6"><span class="stats-name">${spell.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span></th></tr>
+		<tr><td id="levelschoolritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta)}</span></td></tr>
+		<tr><td id="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>
+		<tr><td id="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>
+		<tr><td id="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>
+		<tr><td id="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>
+		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+		<tr class='text'><td colspan='6' class='text'>`);
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
 
 	if (spell.entriesHigherLevel) {
@@ -517,9 +511,7 @@ function loadhash (id) {
 		renderStack.push(`</section></td></tr>`);
 	}
 
-	if (spell.page) {
-		renderStack.push(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(spell.source)}</i>, page ${spell.page}</td>`);
-	}
+	renderStack.push(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${spell.page}</td>`);
 
 	const topBorder = $("#topBorder");
 	topBorder.after(renderStack.join(""));
