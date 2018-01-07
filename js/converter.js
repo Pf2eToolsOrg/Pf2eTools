@@ -131,7 +131,7 @@ function loadparser (data) {
 				stats.type = curline.split(",")[0].split(" ").splice(1).join(" "); // + ", " + $("input#source").val();
 				stats.type = tryParseType(stats.type);
 
-				stats.alignment = curline.split(", ")[1];
+				stats.alignment = curline.split(", ")[1].toLowerCase();
 				continue;
 			}
 
