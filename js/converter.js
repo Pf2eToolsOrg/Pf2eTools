@@ -196,7 +196,7 @@ function loadparser (data) {
 
 			// skills (optional)
 			if (!curline.indexOf("Skills ")) {
-				stats.skill = [curline.split("Skills ")[1]];
+				stats.skill = [curline.split("Skills ")[1].toLowerCase()];
 				if (stats.skill.length === 1) stats.skill = stats.skill[0];
 				const split = stats.skill.split(",");
 				const newSkills = {};
@@ -294,7 +294,7 @@ function loadparser (data) {
 					curtrait.text = [];
 
 					if (!onlegendarydescription) {
-						// first pargraph
+						// first paragraph
 						curtrait.name = curline.split(/([.!])/g)[0];
 						curtrait.text.push(curline.split(".").splice(1).join(".").trim());
 					} else {
