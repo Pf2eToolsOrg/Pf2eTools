@@ -106,25 +106,6 @@ String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
 		return str;
 	};
 
-StrUtil = {};
-StrUtil.joinPhraseArray = function (array, joiner, lastJoiner) {
-	if (array.length === 0) return "";
-	if (array.length === 1) return array[0];
-	if (array.length === 2) return array.join(lastJoiner);
-	else {
-		let outStr = "";
-		for (let i = 0; i < array.length; ++i) {
-			outStr += array[i];
-			if (i < array.length - 2) outStr += joiner;
-			else if (i === array.length - 2) outStr += lastJoiner
-		}
-		return outStr;
-	}
-};
-StrUtil.uppercaseFirst = function (string) {
-	return string.uppercaseFirst();
-};
-
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 	function () {
 		const str = this.toString();
@@ -132,6 +113,27 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		if (str.length === 1) return str.charAt(0).toUpperCase();
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
+
+StrUtil = {
+	joinPhraseArray: function (array, joiner, lastJoiner) {
+		if (array.length === 0) return "";
+		if (array.length === 1) return array[0];
+		if (array.length === 2) return array.join(lastJoiner);
+		else {
+			let outStr = "";
+			for (let i = 0; i < array.length; ++i) {
+				outStr += array[i];
+				if (i < array.length - 2) outStr += joiner;
+				else if (i === array.length - 2) outStr += lastJoiner
+			}
+			return outStr;
+		}
+	},
+
+	uppercaseFirst: function (string) {
+		return string.uppercaseFirst();
+	}
+};
 
 // TEXT COMBINING ======================================================================================================
 function utils_combineText (textList, tagPerItem, textBlockInlineTitle) {
@@ -583,13 +585,17 @@ Parser.spLevelToFull = function (level) {
 	return level + "th";
 };
 
+Parser.spMetaToFull = function (meta) {
+	// these tags are (so far) mutually independent, so we don't need to combine the text
+	if (meta && meta.ritual) return " (ritual)";
+	if (meta && meta.technomagic) return " (technomagic)";
+	return "";
+};
+
 Parser.spLevelSchoolMetaToFull = function (level, school, meta) {
 	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : Parser.spLevelToFull(level) + "-level";
 	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}` : `${levelPart} ${Parser.spSchoolAbvToFull(school).toLowerCase()}`;
-	// these tags are (so far) mutually independent, so we don't need to combine the text
-	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
-	if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
-	return levelSchoolStr;
+	return levelSchoolStr + Parser.spMetaToFull(meta);
 };
 
 Parser.spTimeListToFull = function (times) {
@@ -1463,57 +1469,68 @@ function joinConjunct (arr, joinWith, conjunctWith) {
 }
 
 // JSON LOADING ========================================================================================================
-function loadJSON (url, onLoadFunction, ...otherData) {
-	const procUrl = UrlUtil.link(url);
-	const request = getRequest(procUrl);
-	if (procUrl !== url) {
-		request.onerror = function () {
-			const fallbackRequest = getRequest(url);
-			fallbackRequest.send();
-		};
-	}
-	request.send();
+DataUtil = {
+	_loaded: {},
 
-	function getRequest (toUrl) {
-		const request = new XMLHttpRequest();
-		request.open("GET", toUrl, true);
-		request.overrideMimeType("application/json");
-		request.onload = function () {
-			const data = JSON.parse(this.response);
-			onLoadFunction(data, otherData);
-		};
-		return request;
-	}
-}
+	loadJSON: function (url, onLoadFunction, ...otherData) {
+		function handleAlreadyLoaded (url) {
+			onLoadFunction(DataUtil._loaded[url], otherData);
+		}
 
-/**
- * Loads a sequence of URLs, then calls a final function once all the data is ready
- * @param toLoads array of objects, which should have a `url` property
- * @param onEachLoadFunction function to call after each load completes. Should accept a `toLoad` and the data returned
- * from the load
- * @param onFinalLoadFunction final function to call once all data has been loaded, should accept the `dataStack` array as
- * an argument. `dataStack` is an array of the data pulled from each URL
- */
-function multiLoadJSON (toLoads, onEachLoadFunction, onFinalLoadFunction) {
-	if (!toLoads.length) onFinalLoadFunction([]);
-	const dataStack = [];
+		if (this._loaded[url]) {
+			handleAlreadyLoaded(url);
+			return;
+		}
 
-	let loadedCount = 0;
-	toLoads.forEach(tl => {
-		loadJSON(
-			tl.url,
-			function (data) {
-				onEachLoadFunction(tl, data);
-				dataStack.push(data);
+		const procUrl = UrlUtil.link(url);
+		if (this._loaded[procUrl]) {
+			handleAlreadyLoaded(url);
+			return;
+		}
 
-				loadedCount++;
-				if (loadedCount >= toLoads.length) {
-					onFinalLoadFunction(dataStack);
+		const request = getRequest(procUrl);
+		if (procUrl !== url) {
+			request.onerror = function () {
+				const fallbackRequest = getRequest(url);
+				fallbackRequest.send();
+			};
+		}
+		request.send();
+
+		function getRequest (toUrl) {
+			const request = new XMLHttpRequest();
+			request.open("GET", toUrl, true);
+			request.overrideMimeType("application/json");
+			request.onload = function () {
+				const data = JSON.parse(this.response);
+				DataUtil._loaded[toUrl] = data;
+				onLoadFunction(data, otherData);
+			};
+			return request;
+		}
+	},
+
+	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction) {
+		if (!toLoads.length) onFinalLoadFunction([]);
+		const dataStack = [];
+
+		let loadedCount = 0;
+		toLoads.forEach(tl => {
+			this.loadJSON(
+				tl.url,
+				function (data) {
+					onEachLoadFunction(tl, data);
+					dataStack.push(data);
+
+					loadedCount++;
+					if (loadedCount >= toLoads.length) {
+						onFinalLoadFunction(dataStack);
+					}
 				}
-			}
-		)
-	});
-}
+			)
+		});
+	}
+};
 
 // SHOW/HIDE SEARCH ====================================================================================================
 function addListShowHide () {
@@ -1529,7 +1546,7 @@ function addListShowHide () {
 	`;
 
 	$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
-	$(`#statscontainer`).prepend(toInjectShow);
+	$(`#contentwrapper`).prepend(toInjectShow);
 
 	const listContainer = $(`#listcontainer`);
 	const showSearchWrpr = $("div#showsearch");

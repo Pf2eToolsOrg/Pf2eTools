@@ -4,13 +4,13 @@ let tabledefault = "";
 let bgList;
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {
 	bgList = data.background;
 
-	tabledefault = $("#stats").html();
+	tabledefault = $("#pagecontent").html();
 
 	const sourceFilter = getSourceFilter();
 	const filterBox = initFilterBox(sourceFilter);
@@ -63,13 +63,13 @@ function onJsonLoad (data) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tabledefault);
+	$("#pagecontent").html(tabledefault);
 	const curbg = bgList[id];
 	const name = curbg.name;
 	const source = curbg.source;
 	const sourceAbv = Parser.sourceJsonToAbv(source);
 	const sourceFull = Parser.sourceJsonToFull(source);
-	$("th#name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
+	$("th.name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
 	const traitlist = curbg.trait;
 	$("tr.trait").remove();
 

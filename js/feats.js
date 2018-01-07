@@ -8,11 +8,11 @@ function deselUa (val) {
 }
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {
-	tabledefault = $("#stats").html();
+	tabledefault = $("#pagecontent").html();
 	featlist = data.feat;
 
 	// TODO prerequisite filter?
@@ -86,12 +86,12 @@ function onJsonLoad (data) {
 
 const renderer = new EntryRenderer();
 function loadhash (id) {
-	$("#stats").html(tabledefault);
+	$("#pagecontent").html(tabledefault);
 	const feat = featlist[id];
 	const source = feat.source;
 	const sourceFull = Parser.sourceJsonToFull(source)
 
-	$("th#name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>`);
+	$("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>`);
 
 	const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
 	$("td#prerequisite").html(prerequisite ? `Prerequisite: ${prerequisite}` : "");

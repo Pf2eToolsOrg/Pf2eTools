@@ -3,7 +3,6 @@
 let renderArea;
 
 let adventures;
-const adventureContent = {};
 
 const TABLE_START = `<tr><th class="border" colspan="6"></th></tr>`;
 const TABLE_END = `<tr><th class="border" colspan="6"></th></tr>`;
@@ -13,13 +12,13 @@ window.onload = function load () {
 		return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
 	};
 
-	renderArea = $(`#stats`);
+	renderArea = $(`#pagecontent`);
 
 	renderArea.append(TABLE_START);
 	renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
 	renderArea.append(TABLE_END);
 
-	loadJSON(CONTENTS_URL, onJsonLoad);
+	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {
@@ -91,30 +90,22 @@ let allContents;
 let thisContents;
 
 function loadAdventure (fromIndex, advId, hashParts) {
-	if (adventureContent[advId] !== undefined) {
-		handle(adventureContent[advId]);
-	} else {
-		loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
-			adventureContent[advId] = data.data;
-			handle(data.data);
-		});
-	}
-
-	function handle (data) {
+	DataUtil.loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
 		allContents = $(`.adventure-contents-item`);
 		thisContents = allContents.filter(`[data-adventureid="${UrlUtil.encodeForHash(advId)}"]`);
 		thisContents.show();
 		allContents.filter(`[data-adventureid!="${UrlUtil.encodeForHash(advId)}"]`).hide();
-		onAdventureLoad(data, fromIndex, advId, hashParts);
+		onAdventureLoad(data.data, fromIndex, advId, hashParts);
 		addSearch(fromIndex, advId);
-	}
+	});
 }
 
 const renderer = new EntryRenderer();
 
 const curRender = {
 	curAdvId: "NONE",
-	chapter: -1
+	chapter: -1,
+	data: {}
 };
 
 function onAdventureLoad (data, fromIndex, advId, hashParts) {
@@ -134,6 +125,7 @@ function onAdventureLoad (data, fromIndex, advId, hashParts) {
 		}
 	}
 
+	curRender.data = data;
 	if (curRender.chapter !== chapter || curRender.curAdvId !== advId) {
 		thisContents.children(`ul`).children(`ul, li`).removeClass("active");
 		thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
@@ -183,6 +175,7 @@ function sectToggle (evt, ele) {
 let $body;
 let $findAll;
 let headerCounts;
+let lastHighlight = null;
 function addSearch (indexData, advId) {
 	function getHash (found) {
 		return `${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${found.ch}${found.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(found.header)}${HASH_PART_SEP}${found.headerIndex}` : ""}`
@@ -198,6 +191,7 @@ function addSearch (indexData, advId) {
 	$body.on("keypress", (e) => {
 		if ((e.key === "f" && noModifierKeys(e))) {
 			$(`span.temp`).contents().unwrap();
+			lastHighlight = null;
 			if ($findAll) $findAll.remove();
 			$findAll = $(`<div class="f-all-wrapper"/>`).on("click", (e) => {
 				e.stopPropagation();
@@ -209,7 +203,7 @@ function addSearch (indexData, advId) {
 				if (e.key === "Enter" && noModifierKeys(e)) {
 					$results.html("");
 					const found = [];
-					const toSearch = adventureContent[advId];
+					const toSearch = curRender.data;
 					toSearch.forEach((section, i) => {
 						headerCounts = {};
 						searchEntriesFor(i, "", found, $srch.val(), section)
@@ -233,10 +227,14 @@ function addSearch (indexData, advId) {
 
 								$ptPreviews.on("click", () => {
 									setTimeout(() => {
-										$(`#stats`).find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}")`
-										).each((i, ele) => {
-											$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
-										});
+										if (lastHighlight === null || lastHighlight !== f.term.toLowerCase()) {
+											lastHighlight = f.term;
+											$(`#pagecontent`)
+												.find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}"), a:containsInsensitive("${f.term}")`)
+												.each((i, ele) => {
+													$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
+												});
+										}
 									}, 15)
 								});
 

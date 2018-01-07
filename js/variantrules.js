@@ -2,7 +2,7 @@
 const JSON_URL = "data/variantrules.json";
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 let rulesList;
@@ -12,7 +12,7 @@ const entryRenderer = new EntryRenderer();
 
 function onJsonLoad (data) {
 	rulesList = data.variantrule;
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 
 	const sourceFilter = getSourceFilter();
 	const filterBox = initFilterBox(sourceFilter);
@@ -72,11 +72,11 @@ function onJsonLoad (data) {
 
 function loadhash (id) {
 	// reset details pane to initial HTML
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 
 	const curRule = rulesList[id];
 
-	$("th#name").html(curRule.name);
+	$("th.name").html(curRule.name);
 
 	// build text list and display
 	$("tr.text").remove();

@@ -20,9 +20,9 @@ function tryParseType (strType) {
 	try {
 		const m = /^(.*?) (\(.*?\))\s*$/.exec(strType);
 		if (m) {
-			return {type: m[1], tags: m[2].split(",").map(s => s.replace(/\(/g, "").replace(/\)/g, "").trim())}
+			return {type: m[1].toLowerCase(), tags: m[2].split(",").map(s => s.replace(/\(/g, "").replace(/\)/g, "").trim().toLowerCase())}
 		}
-		return strType;
+		return strType.toLowerCase();
 	} catch (e) {
 		return strType;
 	}
@@ -42,7 +42,7 @@ const SKILL_SPACE_MAP = {
 };
 
 function loadSources () {
-	loadJSON(JSON_URL, loadparser)
+	DataUtil.loadJSON(JSON_URL, loadparser)
 }
 
 function sortOptions ($select) {
@@ -59,6 +59,8 @@ function appendSource ($select, src) {
 
 const COOKIE_NAME = "converterSources";
 function loadparser (data) {
+	let hasAppended = false;
+
 	// custom sources
 	const $srcSel = $(`#source`);
 	Object.keys(data).forEach(src => appendSource($srcSel, src));
@@ -98,7 +100,7 @@ function loadparser (data) {
 	});
 
 	$("button#parsestatblock").on("click", () => {
-		doParse(false);
+		if (!hasAppended || confirm("You're about to overwrite multiple entries. Are you sure?")) doParse(false);
 	});
 
 	function doParse (append) {
@@ -129,7 +131,7 @@ function loadparser (data) {
 				stats.type = curline.split(",")[0].split(" ").splice(1).join(" "); // + ", " + $("input#source").val();
 				stats.type = tryParseType(stats.type);
 
-				stats.alignment = curline.split(", ")[1];
+				stats.alignment = curline.split(", ")[1].toLowerCase();
 				continue;
 			}
 
@@ -194,7 +196,7 @@ function loadparser (data) {
 
 			// skills (optional)
 			if (!curline.indexOf("Skills ")) {
-				stats.skill = [curline.split("Skills ")[1]];
+				stats.skill = [curline.split("Skills ")[1].toLowerCase()];
 				if (stats.skill.length === 1) stats.skill = stats.skill[0];
 				const split = stats.skill.split(",");
 				const newSkills = {};
@@ -211,6 +213,12 @@ function loadparser (data) {
 					// because the linter doesn't like empty blocks...
 					continue;
 				}
+				continue;
+			}
+
+			// damage vulnerabilities (optional)
+			if (!curline.indexOf("Damage Vulnerabilities ")) {
+				stats.vulnerable = curline.split("Vulnerabilities ")[1];
 				continue;
 			}
 
@@ -286,7 +294,7 @@ function loadparser (data) {
 					curtrait.text = [];
 
 					if (!onlegendarydescription) {
-						// first pargraph
+						// first paragraph
 						curtrait.name = curline.split(/([.!])/g)[0];
 						curtrait.text.push(curline.split(".").splice(1).join(".").trim());
 					} else {
@@ -324,8 +332,10 @@ function loadparser (data) {
 		if (append) {
 			const oldVal = $outArea.text();
 			$outArea.text(`${out},\n${oldVal}`);
+			hasAppended = true;
 		} else {
 			$outArea.text(out);
+			hasAppended = false;
 		}
 	}
 }

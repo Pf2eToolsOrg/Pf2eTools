@@ -83,7 +83,11 @@ window.addEventListener("load", () => {
 	// Add a selector to match contained text (case insensitive)
 	$.expr[':'].containsInsensitive = (el, i, m) => {
 		const searchText = m[3];
-		const match = $(el).text().toLowerCase().trim().match(`${searchText.toLowerCase()}`);
+		const textNode = $(el).contents().filter(() => {
+			return this.nodeType === 3;
+		})[0];
+		if (!textNode) return false;
+		const match = textNode.nodeValue.toLowerCase().trim().match(`${searchText.toLowerCase()}`);
 		return match && match.length > 0;
 	};
 });

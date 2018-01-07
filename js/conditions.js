@@ -5,13 +5,13 @@ let tableDefault;
 let conditionList;
 
 window.onload = function load () {
-	loadJSON(JSON_URL, onJsonLoad);
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
 function onJsonLoad (data) {
 	conditionList = data.condition;
 
-	tableDefault = $("#stats").html();
+	tableDefault = $("#pagecontent").html();
 
 	let tempString = "";
 	for (let i = 0; i < conditionList.length; i++) {
@@ -34,9 +34,9 @@ function onJsonLoad (data) {
 }
 
 function loadhash (id) {
-	$("#stats").html(tableDefault);
+	$("#pagecontent").html(tableDefault);
 	const curcondition = conditionList[id];
-	$("th#name").html(curcondition.name);
+	$("th.name").html(curcondition.name);
 	$("tr.text").remove();
 	const entryList = {type: "entries", entries: curcondition.entries};
 	const textStack = [];
