@@ -1103,27 +1103,36 @@ EntryRenderer.hover = {
 			$hov.remove();
 		});
 
+		// backup deletion, just in case
+		$hov.on("click", () => {
+			$hov.remove()
+		});
+
 		$(`body`).append($hov);
 
 		// readjust position if vertically clipping off screen
-		const hvOffset = $hov.offset();
-		if (hvOffset.top < 0) {
+		const hvVertOffset = $hov.offset().top - $(document).scrollTop();
+		if (hvVertOffset < 0) {
 			$hov.css("top", 0).css("bottom", "");
 		} else {
 			const calcHeight = $hov.height();
-			if (hvOffset.top + calcHeight > winH) {
+			if (hvVertOffset + calcHeight > winH) {
 				$hov.css("top", 0).css("bottom", "");
 			}
 		}
+
+		EntryRenderer.hover._showInProgress = false;
 	},
 
+	_showInProgress: false,
 	show: function (ele, page, source, hash) {
 		hash = UrlUtil.encodeForHash(hash);
 
 		const winW = $(window).width();
 		const winH = $(window).height();
 		// don't show on mobile
-		if (winW <= 768) return;
+		if (winW <= 768 || EntryRenderer.hover._showInProgress) return;
+		EntryRenderer.hover._showInProgress = true;
 
 		// clean up any old event listeners
 		$(ele).unbind("mouseleave");

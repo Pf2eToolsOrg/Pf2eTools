@@ -175,6 +175,7 @@ function sectToggle (evt, ele) {
 let $body;
 let $findAll;
 let headerCounts;
+let lastHighlight = null;
 function addSearch (indexData, advId) {
 	function getHash (found) {
 		return `${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${found.ch}${found.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(found.header)}${HASH_PART_SEP}${found.headerIndex}` : ""}`
@@ -190,6 +191,7 @@ function addSearch (indexData, advId) {
 	$body.on("keypress", (e) => {
 		if ((e.key === "f" && noModifierKeys(e))) {
 			$(`span.temp`).contents().unwrap();
+			lastHighlight = null;
 			if ($findAll) $findAll.remove();
 			$findAll = $(`<div class="f-all-wrapper"/>`).on("click", (e) => {
 				e.stopPropagation();
@@ -225,10 +227,14 @@ function addSearch (indexData, advId) {
 
 								$ptPreviews.on("click", () => {
 									setTimeout(() => {
-										$(`#pagecontent`).find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}")`
-										).each((i, ele) => {
-											$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
-										});
+										if (lastHighlight === null || lastHighlight !== f.term.toLowerCase()) {
+											lastHighlight = f.term;
+											$(`#pagecontent`)
+												.find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}"), a:containsInsensitive("${f.term}")`)
+												.each((i, ele) => {
+													$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
+												});
+										}
 									}, 15)
 								});
 

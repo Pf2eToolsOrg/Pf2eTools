@@ -9,35 +9,38 @@ var results = [];
 const expected = [];
 const existing = [];
 
-console.log(`##### Validating the JSON schemata #####`);
+// TODO modular argument system?
+if (process.argv[2] !== "noschema") {
+	console.log(`##### Validating the JSON schemata #####`);
 // Loop through each non-helper schema and push all validation results.
-fs.readdirSync("./test/schema")
-	.filter(file => file.endsWith(".json")) // ignore directories
-	.forEach(file => {
-		if (file !== helperFile) {
-			console.log(`Testing data/${file}`.padEnd(50), `against schema/${file}`);
-			const result = validator.validate(require(`../data/${file}`), require(`./schema/${file}`));
-			checkHandleError(result);
-			results.push(result);
-		}
-	});
-
-fs.readdirSync(`./test/schema`)
-	.filter(category => !category.endsWith(".json")) // only directories
-	.forEach(category => {
-		console.log(`Testing category ${category}`);
-		const schemas = fs.readdirSync(`./test/schema/${category}`);
-		fs.readdirSync(`./data/${category}`).forEach(dataFile => {
-			schemas.filter(schema => dataFile.startsWith(schema.split(".")[0])).forEach(schema => {
-				console.log(`Testing data/${category}/${dataFile}`.padEnd(50), `against schema/${category}/${schema}`);
-				const result = validator.validate(require(`../data/${category}/${dataFile}`), require(`./schema/${category}/${schema}`));
+	fs.readdirSync("./test/schema")
+		.filter(file => file.endsWith(".json")) // ignore directories
+		.forEach(file => {
+			if (file !== helperFile) {
+				console.log(`Testing data/${file}`.padEnd(50), `against schema/${file}`);
+				const result = validator.validate(require(`../data/${file}`), require(`./schema/${file}`));
 				checkHandleError(result);
 				results.push(result);
-			})
-		})
-	});
+			}
+		});
 
-console.log(`All schema tests passed.`);
+	fs.readdirSync(`./test/schema`)
+		.filter(category => !category.endsWith(".json")) // only directories
+		.forEach(category => {
+			console.log(`Testing category ${category}`);
+			const schemas = fs.readdirSync(`./test/schema/${category}`);
+			fs.readdirSync(`./data/${category}`).forEach(dataFile => {
+				schemas.filter(schema => dataFile.startsWith(schema.split(".")[0])).forEach(schema => {
+					console.log(`Testing data/${category}/${dataFile}`.padEnd(50), `against schema/${category}/${schema}`);
+					const result = validator.validate(require(`../data/${category}/${dataFile}`), require(`./schema/${category}/${schema}`));
+					checkHandleError(result);
+					results.push(result);
+				})
+			})
+		});
+
+	console.log(`All schema tests passed.`);
+}
 
 require("./check-links");
 
