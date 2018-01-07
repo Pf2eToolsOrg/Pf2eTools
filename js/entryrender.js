@@ -337,6 +337,11 @@ function EntryRenderer () {
 		}
 
 		function renderLink (self, entry) {
+			function getHoverString () {
+				if (!entry.href.hover) return "";
+				return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${entry.href.hash}')"`
+			}
+
 			let href;
 			if (entry.href.type === "internal") {
 				// baseURL is blank by default
@@ -353,7 +358,7 @@ function EntryRenderer () {
 			} else if (entry.href.type === "external") {
 				href = entry.href.url;
 			}
-			textStack.push(`<a href='${href}' target='_blank'>${entry.text}</a>`);
+			textStack.push(`<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`);
 		}
 
 		function renderString (self) {
@@ -443,17 +448,21 @@ function EntryRenderer () {
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
 
 						const fauxEntry = {
-							"type": "link",
-							"href": {
-								"type": "internal",
-								"hash": hash
+							type: "link",
+							href: {
+								type: "internal",
+								hash: hash
 							},
-							"text": (displayText || name)
+							text: (displayText || name)
 						};
 						switch (tag) {
 							case "@spell":
 								fauxEntry.href.path = "spells.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_SPELLS,
+									source: source || SRC_PHB
+								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@item":
@@ -685,7 +694,59 @@ EntryRenderer.feat = {
 };
 
 EntryRenderer.spell = {
-	getRenderedString: function (spell) {
+	getCompactRenderedString: function (spell) {
+		if (!this.renderer) {
+			this.renderer = new EntryRenderer();
+		}
+		renderer = this.renderer;
+
+		const renderStack = [];
+
+		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
+
+		renderStack.push(`<tr><th class="name" colspan="6"><span class="stats-name">${spell.name}</span><span class="stats-source source${spell.source}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}${spell.page ? ` p${spell.page}` : ""}</span></th></tr>`);
+
+		renderStack.push(`
+			<tr><td colspan="6">
+				<table class="summary">
+					<tr>
+						<th colspan="2">Level</th>
+						<th colspan="2">Casting Time</th>
+						<th colspan="2">Range</th>
+					</tr>	
+					<tr>
+						<td colspan="2">${Parser.spLevelToFull(spell.level)}${Parser.spMetaToFull(spell.meta)}</td>
+						<td colspan="2">${Parser.spTimeListToFull(spell.time)}</td>
+						<td colspan="2">${Parser.spRangeToFull(spell.range)}</td>
+					</tr>
+					<tr>
+						<th colspan="2">Components</th>
+						<th colspan="2">Duration</th>
+						<th colspan="2">School</th>
+					</tr>	
+					<tr>
+						<td colspan="2">${Parser.spComponentsToFull(spell.components)}</td>
+						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
+						<td colspan="2">${Parser.spSchoolAbvToFull(spell.school)}</td>
+					</tr>
+				</table>
+			</td></tr>
+		`);
+
+		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+		const entryList = {type: "entries", entries: spell.entries};
+		renderer.recursiveEntryRender(entryList, renderStack, 1);
+		if (spell.entriesHigherLevel) {
+			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
+			renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
+		}
+		renderStack.push(`</td></tr>`);
+
+		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
+		return renderStack.join(" ");
+	},
+
+	getRenderedString: function (spell, renderer) {
 		const renderStack = [];
 
 		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
@@ -741,6 +802,91 @@ EntryRenderer.spell = {
 		renderStack.push(`<tr><th class="border" colspan="6"></th></tr>`);
 
 		return renderStack.join(" ");
+	}
+};
+
+EntryRenderer.hover = {
+	linkCache: {},
+
+	_addToCache: function (page, source, hash, item) {
+		page = page.toLowerCase();
+		source = source.toLowerCase();
+		hash = hash.toLowerCase();
+
+		if (!this.linkCache[page]) this.linkCache[page] = [];
+		const pageLvl = this.linkCache[page];
+		if (!pageLvl[source]) pageLvl[source] = [];
+		const srcLvl = pageLvl[source];
+		srcLvl[hash] = item;
+	},
+
+	_getFromCache: function (page, source, hash) {
+		page = page.toLowerCase();
+		source = source.toLowerCase();
+		hash = hash.toLowerCase();
+
+		return this.linkCache[page][source][hash];
+	},
+
+	_isCached: function (page, source, hash) {
+		page = page.toLowerCase();
+		source = source.toLowerCase();
+		hash = hash.toLowerCase();
+
+		return this.linkCache[page] && this.linkCache[page][source] && this.linkCache[page][source][hash];
+	},
+
+	show: function (ele, page, source, hash) {
+		const winH = $(window).height();
+		const winW = $(window).width();
+		// don't show on mobile
+		if (winW <= 768) return;
+
+		switch (page) {
+			case UrlUtil.PG_SPELLS: {
+				const BASE_URL = `data/spells/`;
+				function doRender (spell) {
+					const offset = $(ele).offset();
+					const vpOffsetT = offset.top - $(document).scrollTop();
+					const vpOffsetL = offset.left - $(document).scrollLeft();
+
+					const fromBottom = vpOffsetT > winH / 2;
+					const fromRight = vpOffsetL > winW / 2;
+
+					const $win = $(`<table class="stats hoverbox"/>`);
+					$win.append(EntryRenderer.spell.getCompactRenderedString(spell));
+
+					if (fromBottom) $win.css("bottom", winH - vpOffsetT);
+					else $win.css("top", vpOffsetT);
+
+					if (fromRight) $win.css("right", winW - vpOffsetL);
+					else $win.css("left", vpOffsetL);
+
+					$(ele).bind("mouseleave", () => {
+						$win.remove();
+					});
+
+					$(`body`).append($win);
+				}
+
+				$(ele).unbind("mouseleave");
+
+				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					DataUtil.loadJSON(`${BASE_URL}index.json`, (data) => {
+						DataUtil.loadJSON(`${BASE_URL}${data[source]}`, (data) => {
+							data.spell.forEach(spell => {
+								const spellHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
+								EntryRenderer.hover._addToCache(page, source, spellHash, spell)
+							});
+							doRender(EntryRenderer.hover._getFromCache(page, source, hash));
+						});
+					});
+				} else {
+					doRender(EntryRenderer.hover._getFromCache(page, source, hash));
+				}
+				break;
+			}
+		}
 	}
 };
 

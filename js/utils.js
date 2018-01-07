@@ -585,13 +585,17 @@ Parser.spLevelToFull = function (level) {
 	return level + "th";
 };
 
+Parser.spMetaToFull = function (meta) {
+	// these tags are (so far) mutually independent, so we don't need to combine the text
+	if (meta && meta.ritual) return " (ritual)";
+	if (meta && meta.technomagic) return " (technomagic)";
+	return "";
+};
+
 Parser.spLevelSchoolMetaToFull = function (level, school, meta) {
 	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : Parser.spLevelToFull(level) + "-level";
 	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}` : `${levelPart} ${Parser.spSchoolAbvToFull(school).toLowerCase()}`;
-	// these tags are (so far) mutually independent, so we don't need to combine the text
-	if (meta && meta.ritual) levelSchoolStr += " (ritual)";
-	if (meta && meta.technomagic) levelSchoolStr += " (technomagic)";
-	return levelSchoolStr;
+	return levelSchoolStr + Parser.spMetaToFull(meta);
 };
 
 Parser.spTimeListToFull = function (times) {

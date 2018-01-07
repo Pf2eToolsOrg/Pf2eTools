@@ -466,9 +466,8 @@ function sortSpells (a, b, o) {
 }
 
 const renderer = new EntryRenderer();
-
 function loadhash (id) {
 	const $pageContent = $("#pagecontent");
 	const spell = spellList[id];
-	$pageContent.html(EntryRenderer.spell.getRenderedString(spell));
+	$pageContent.html(EntryRenderer.spell.getRenderedString(spell, renderer));
 }

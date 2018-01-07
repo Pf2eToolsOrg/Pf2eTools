@@ -19,7 +19,8 @@ table#statsprof {
 	background: #fdf1dc;
 }
 
-table.stats table tbody tr:nth-child(odd) {
+table.stats table.summary tbody tr:nth-child(even),
+table.stats table:not(.summary) tbody tr:nth-child(odd) {
 	background: #e4d8c3;
 }
 
@@ -153,6 +154,10 @@ ul.list.contents > li > ul.adv-contents > li a:hover {
 ul.list.adventures >  li > a > span.showhide:hover,
 ul.list.adventures >  li > a > span.name:hover {
 	background: lightgrey;
+}
+
+.hoverbox table.summary th {
+	color: black;
 }
 `;
 const NIGHT_CSS =
@@ -320,7 +325,8 @@ table.stats td._class_feature table th {
 }
 
 ul.list.adventures > li:nth-child(odd) > a,
-.stats table tbody tr:nth-child(odd),
+.stats table.summary tbody tr:nth-child(even),
+.stats table:not(.summary) tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
 #rulescontent table tbody tr:nth-child(odd) td,
 ul.list li:nth-child(odd),
@@ -412,6 +418,9 @@ table.stats div.statsBlockInset {
 	background-color: #323431;
 }
 
+.hoverbox table.summary th {
+	color: grey;
+}
 `;
 
 class StyleSwitcher {
