@@ -103,7 +103,7 @@ function populateTablesAndFilters () {
 
 		// populate filters
 		sourceFilter.addIfAbsent(source);
-		curitem.type.forEach(t => typeFilter.addIfAbsent(t));
+		curitem.procType.forEach(t => typeFilter.addIfAbsent(t));
 		tierTags.forEach(tt => tierFilter.addIfAbsent(tt));
 	}
 	// populate table
@@ -141,7 +141,7 @@ function populateTablesAndFilters () {
 			const i = itemList[$(item.elm).attr(FLTR_ID)];
 
 			return sourceFilter.toDisplay(f, i.source) &&
-				typeFilter.toDisplay(f, i.type) &&
+				typeFilter.toDisplay(f, i.procType) &&
 				tierFilter.toDisplay(f, i._fTier) &&
 				rarityFilter.toDisplay(f, i.rarity) &&
 				attunementFilter.toDisplay(f, i.attunementCategory) &&
