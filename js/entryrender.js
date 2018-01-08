@@ -1074,7 +1074,15 @@ EntryRenderer.hover = {
 		return this.linkCache[page] && this.linkCache[page][source] && this.linkCache[page][source][hash];
 	},
 
-	_makeWindow: function (winW, winH, ele, content) {
+	_makeWindow: function () {
+		const winW = EntryRenderer.hover._curHovering.winW;
+		const winH = EntryRenderer.hover._curHovering.winH;
+		const ele = EntryRenderer.hover._curHovering.ele;
+		const page = EntryRenderer.hover._curHovering.cPage;
+		const source = EntryRenderer.hover._curHovering.cSource;
+		const hash = EntryRenderer.hover._curHovering.cHash;
+		const content = EntryRenderer.hover._curHovering.renderFunction(EntryRenderer.hover._getFromCache(page, source, hash));
+
 		const offset = $(ele).offset();
 		const vpOffsetT = offset.top - $(document).scrollTop();
 		const vpOffsetL = offset.left - $(document).scrollLeft();
@@ -1119,23 +1127,64 @@ EntryRenderer.hover = {
 
 		$(ele).css("cursor", "");
 		EntryRenderer.hover._showInProgress = false;
+		EntryRenderer.hover._curHovering = null;
 	},
 
 	_showInProgress: false,
+	_hoverId: 1,
+	_curHovering: null,
 	show: function (ele, page, source, hash) {
 		const winW = $(window).width();
 		const winH = $(window).height();
+
 		// don't show on mobile
-		if (winW <= 768 || EntryRenderer.hover._showInProgress) return;
+		if (winW <= 768) return;
+
+		let hoverId;
+		const curHoverId = $(ele).data("hover-id");
+		if (curHoverId) {
+			hoverId = curHoverId;
+		} else {
+			hoverId = EntryRenderer.hover._hoverId++;
+			$(ele).data("hover-id", hoverId);
+		}
+		let renderFunction;
+		switch (page) {
+			case UrlUtil.PG_SPELLS:
+				renderFunction = EntryRenderer.spell.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_ITEMS:
+				renderFunction = EntryRenderer.item.getCompactRenderedString;
+				break;
+			default:
+				throw new Error(`No hover render function specified for page ${page}`)
+		}
+		EntryRenderer.hover._curHovering = {
+			hoverId: hoverId,
+			winW: winW,
+			winH: winH,
+			ele: ele,
+			renderFunction: renderFunction,
+			cPage: page,
+			cSource: source,
+			cHash: hash
+		};
+
+		// return if another event chain is handling the event
+		if (EntryRenderer.hover._showInProgress) {
+			return;
+		}
+
 		EntryRenderer.hover._showInProgress = true;
 		$(ele).css("cursor", "wait");
 
 		// clean up any old event listeners
 		$(ele).unbind("mouseleave");
 
-		function doRender (renderFunction, toRender) {
-			EntryRenderer.hover._makeWindow(winW, winH, ele, renderFunction(toRender));
-		}
+		// cancel hover if the mouse leaves
+		$(ele).bind("mouseleave", () => {
+			EntryRenderer.hover._curHovering = null;
+		});
 
 		switch (page) {
 			case UrlUtil.PG_SPELLS: {
@@ -1148,11 +1197,11 @@ EntryRenderer.hover = {
 								const spellHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
 								EntryRenderer.hover._addToCache(page, spell.source, spellHash, spell)
 							});
-							doRender(EntryRenderer.spell.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
+							EntryRenderer.hover._makeWindow();
 						});
 					});
 				} else {
-					doRender(EntryRenderer.spell.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
+					EntryRenderer.hover._makeWindow();
 				}
 				break;
 			}
@@ -1164,10 +1213,10 @@ EntryRenderer.hover = {
 							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
 							EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
 						});
-						doRender(EntryRenderer.item.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
+						EntryRenderer.hover._makeWindow();
 					});
 				} else {
-					doRender(EntryRenderer.item.getCompactRenderedString, EntryRenderer.hover._getFromCache(page, source, hash));
+					EntryRenderer.hover._makeWindow();
 				}
 				break;
 			}
