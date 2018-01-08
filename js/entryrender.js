@@ -1192,7 +1192,9 @@ EntryRenderer.hover = {
 
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
 					DataUtil.loadJSON(`${BASE_URL}index.json`, (data) => {
-						DataUtil.loadJSON(`${BASE_URL}${data[source]}`, (data) => {
+						const procData = {};
+						Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
+						DataUtil.loadJSON(`${BASE_URL}${procData[source.toLowerCase()]}`, (data) => {
 							data.spell.forEach(spell => {
 								const spellHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
 								EntryRenderer.hover._addToCache(page, spell.source, spellHash, spell)
