@@ -1010,7 +1010,7 @@ EntryRenderer.item = {
 				if (item.weaponCategory) type.push(item.weaponCategory + " Weapon");
 				if (item.type) type.push(Parser.itemTypeToAbv(item.type));
 				if (item.poison) type.push("Poison");
-				item.type = type;
+				item.procType = type;
 				item.typeText = type.join(", ");
 
 				// bake in attunement
