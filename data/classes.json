@@ -7402,6 +7402,99 @@
 					],
 					"source": "XGE",
 					"shortName": "Shepherd"
+				},
+				{
+					"name": "Circle of Spores",
+					"subclassFeatures": [
+						[
+							{
+							"name": "Circle of Spores",
+							"entries": [
+								"Druids of the Circle of Spores find beauty in decay. They see within mold and other fungi the ability to transform lifeless material into abundant, albeit somewhat strange, life. These druids believe that life and death are portions of a grand cycle, with one leading to the other and then back again. Death is not the end of life, but instead a change of state that sees life shift into a new form. Druids of this circle have a complex relationship with the undead. Unlike most other druids, they see nothing inherently wrong with undeath, which they consider to be a companion to life and death. However, these druids believe that the natural cycle is healthiest when each segment of it is vibrant and changing. Undead that seek to replace all life with undeath, or avoid passing to a final rest, violate the cycle and must be thwarted.",
+								{
+									"type": "entries",
+									"name": "Circle Spells",
+									"entries": [
+										"Your symbiotic link to fungus and your ability to tap into the cycle of life and death grants you access to certain spells. At 1st level, you learn the chill touch cantrip. At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that level in the Circle of Spores Spells table.",
+										"Once you gain access to one of these spells, you always have it prepared, and it doesn’t count against the number of spells you can prepare each day. If you gain access to a spell that doesn’t appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+										{
+											"type": "table",
+											"caption": "Circle of Spores Spells",
+											"colLabels": [
+												"Druid Level",
+												"Circle Spells"
+											],
+											"colStyles": [
+												"col-xs-3 text-align-center",
+												"col-xs-9"
+											],
+											"rows": [
+												[
+													"3rd",
+													"{@spell gentle repose}, {@spell ray of enfeeblement}"
+												],
+												[
+													"5th",
+													"{@spell animate dead}, {@spell gaseous form}"
+												],
+												[
+													"7th",
+													"{@spell blight}, {@spell confusion}"
+												],
+												[
+													"9th",
+													"{@spell cloudkill}, {@spell contagion}"
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Halo of Spores",
+									"entries": [
+										"Starting at 2nd level, you can launch toxic spores at other creatures. To do so, you use your reaction on your turn to deal 3 poison damage to one creature you can see within 10 feet of you. This damage increases to 6 at 6th level, 9 at 10th level, and 12 at 14th."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Symbiotic Entity",
+									"entries": [
+										"At 2nd level, you gain the ability to channel magic into the spores that infuse you.",
+										"When you use your Wild Shape feature, you can awaken those spores, rather than transforming. When you do so, you gain 3 temporary hit points per level you have in this class, the damage of your Halo of Spores feature doubles, and your melee weapon attacks deal an extra 1d6 poison damage to any target they hit. These benefits last for 10 minutes or until you use your Wild Shape again."
+									]
+								}
+							]
+						}
+						],
+						[
+							{
+							"name": "Fungal Infestation",
+							"entries": [
+								"At 6th level, your spores gain the ability to infest a humanoid corpse and animate it.",
+								"If you slay a humanoid with your Halo of Spores damage, the creature rises as a zombie at the end of your turn. It has 1 hit point. In combat, its turn is immediately after yours. It obeys your mental commands, and the only action it can take is the Attack action, making one melee attack. It remains animate for 1 hour, after which time it collapses and dies."
+							]
+						}
+						],
+						[
+							{
+							"name": "Spreading Spores",
+							"entries": [
+								"At 10th level, you gain the ability to seed an area with deadly spores. As a bonus action, you hurl fungal spores up to 30 feet away, where they swirl around in a 10-foot cube for 1 minute. While the cube of spores persists, you can’t use your Halo of Spores feature, but any creature that starts its turn in the cube takes your Halo of Spores damage. The cube of spores vanishes early if you use this feature again."
+							]
+						}
+						],
+						[
+							{
+							"name": "Fungal Body",
+							"entries": [
+								"At 14th level, the fungal spores in your body alter you: you can’t be blinded, deafened, frightened, or poisoned, and if an attack is a critical hit against you, it doesn’t deal its extra damage to you."
+							]
+						}
+						]
+					],
+					"source": "UAThreeSubclasses",
+					"shortName": "Spores"
 				}
 			]
 		},
@@ -10290,6 +10383,86 @@
 					],
 					"source": "XGE",
 					"shortName": "Samurai"
+				},
+				{
+					"name": "Brute",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Brute",
+								"entries": [
+									"Brutes are simple warriors who rely on mighty attacks and their own durability to overcome their enemies. Some brutes combine this physical might with tactical cunning. Others just hit things until those things stop hitting back.",
+									{
+										"type": "entries",
+										"name": "Brute Force",
+										"entries": [
+											"Starting at 3rd level, you’re able to strike with your weapons with especially brutal force. Whenever you hit with a weapon that you’re proficient with and deal damage, the weapon’s damage increases by an amount based on your level in this class, as shown on the Brute Bonus Damage table.",
+											{
+												"type": "table",
+												"caption": "Brute Bonus Damage",
+												"colLabels": [
+													"Fighter Level", "Damage Increase"
+												],
+												"colStyles": [
+													"col-xs-6 text-align-center",
+													"col-xs-6 text-align-center"
+												],
+												"rows": [
+													[
+														"3rd", "1d4"
+													],
+													[
+														"10th", "1d6"
+													],
+													[
+														"16th", "1d8"
+													],
+													[
+														"20th", "1d10"
+													]
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"name": "Brutish Durability",
+								"entries": [
+									"Beginning at 7th level, your toughness allows you to shrug off assaults that would devastate others.",
+									"Whenever you make a saving throw, roll 1d6 and add the die to your saving throw total. If applying this bonus to a death saving throw increases the total to 20 or higher, you gain the benefits of rolling a 20 on the d20."
+								]
+							}
+						],
+						[
+							{
+								"name": "Additional Fighting Style",
+								"entries": [
+									"Additional Fighting Style"
+								]
+							}
+						],
+						[
+							{
+								"name": "Devastating Critical",
+								"entries": [
+									"Starting at 15th level, when you score a critical hit with a weapon attack, you gain a bonus to that weapon’s damage roll equal to your level in this class."
+								]
+							}
+						],
+						[
+							{
+								"name": "Survivor",
+								"entries": [
+									"At 18th level, you attain the pinnacle of resilience in battle. At the start of each of your turns in combat, you regain hit points equal to 5 + your Constitution modifier (minimum of 1 hit point). You don’t gain this benefit if you have 0 hit points or if you have more than half of your hit points left."
+								]
+							}
+						]
+					],
+					"source": "UAThreeSubclasses",
+					"shortName": "Brute"
 				}
 			]
 		},
@@ -27925,6 +28098,212 @@
 					],
 					"source": "XGE",
 					"shortName": "War Magic"
+				},
+				{
+					"name": "School of Invention",
+					"subclassFeatures": [
+						[
+							{
+								"name": "School of Invention",
+								"entries": [
+									"The School of Invention claims credit for inventing the other schools of magic—a claim other wizards find absurd. Wizards of this school push magic to its limits. They stretch the known laws of arcane power and strive to reveal important truths about the nature of the multiverse.",
+									"Adherents of this school believe that innovation is best served through experimentation. They have a reputation for acting first, thinking second. Most wizards are scholars who have mastered their craft through careful study, rigorous practice, and endless hours of repetition. These wizards would rather throw spells together and see what happens.",
+									"Many wizards of this tradition are gnomes, alchemists, or both, and they take pride in the magic-infused armor they don. The armor not only provides protection, but it is also designed to help the wizard channel magic in unpredictable ways.",
+									"Wizards of this tradition are regarded as savants to their faces, but wizards of other traditions often think of them as lunatics."
+								]
+							},
+							{
+								"name": "Tools of the Inventor",
+								"entries": [
+									"At 2nd level, you gain proficiency with two tools of your choice."
+								]
+							},
+							{
+								"name": "Arcanomechanical Armor",
+								"entries": [
+									"Innovation is a dangerous practice, at least as far as members of this school practice it. As a shield against this risk, you have developed a suit of arcane armor.",
+									"Starting at 2nd level, you gain proficiency with light armor and gain a suit of arcanomechanical armor—a magic item that only you can attune to. While you are attuned to it and wearing it, it grants you resistance to force damage.",
+									"The armor is light armor and provides an AC of 12 + your Dexterity modifier. It weighs 8 pounds.",
+									"You can create a new suit of it at the end of a long rest by touching a nonmagical suit of studded leather armor, which magically transforms it. Doing so removes the magic from your previous arcanomechanical armor, turning it in to nonmagical studded leather."
+								]
+							},
+							{
+								"name": "Reckless Casting",
+								"entries": [
+									"Starting at 2nd level, you can attempt to cast a spell you don’t have prepared. When you use this ability, you use your action and choose one of the following options:",
+									{
+										"type": "list",
+										"items": [
+											"Roll on the Reckless Casting table for cantrips and cast the resulting spell as part of this action.",
+											"Expend a spell slot and roll twice on the Reckless Casting table for its level, or the 5th-level table if the slot is 6th level or higher. Pick which of the two results you want to use and cast the resulting spell as part of this action."
+										]
+									},
+									"If the spell you cast isn’t a wizard spell, it is nonetheless a wizard spell for you when you cast it with this feature.",
+									{
+										"type": "table",
+										"caption": "Reckless Casting",
+										"colLabels": [
+											"d10", "Cantrip"
+										],
+										"colStyles": [
+											"col-xs-2",
+											"col-xs-10"
+										],
+										"rows": [
+											["1", "acid splash"],
+											["2", "chill touch"],
+											["3", "fire bolt"],
+											["4", "light"],
+											["5", "poison spray"],
+											["6", "ray of frost"],
+											["7", "shocking grasp"],
+											["8", "sacred flame"],
+											["9", "thorn whip"],
+											["10", "Roll twice and cast each cantrip, but if you roll another 10 on either die, you cast nothing, wasting your action."]
+										]
+									},
+									{
+										"type": "table",
+										"colLabels": [
+											"d10", "1st-Level Spell"
+										],
+										"colStyles": [
+											"col-xs-2",
+											"col-xs-10"
+										],
+										"rows": [
+											["1", "burning hands"],
+											["2", "chromatic orb"],
+											["3", "color spray"],
+											["4", "faerie fire"],
+											["5", "false life"],
+											["6", "fog cloud"],
+											["7", "jump"],
+											["8", "magic missile"],
+											["9", "thunderwave"],
+											["10", "Roll twice and cast each spell, but if you roll another 10 on either die, you cast nothing, wasting your action but not the spell slot."]
+										]
+									},
+									{
+										"type": "table",
+										"colLabels": [
+											"d10", "2nd-Level Spell"
+										],
+										"colStyles": [
+											"col-xs-2",
+											"col-xs-10"
+										],
+										"rows": [
+											["1",  "blur"],
+											["2",  "darkness"],
+											["3",  "enlarge/reduce"],
+											["4",  "gust of wind"],
+											["5",  "invisibility"],
+											["6",  "levitate"],
+											["7",  "Melf’s acid arrow"],
+											["8",  "scorching ray"],
+											["9",  "shatter"],
+											["10", "Roll twice and cast each spell, but if you roll another 10 on either die, you cast nothing, wasting your action but not the spell slot."]
+										]
+									},
+									{
+										"type": "table",
+										"colLabels": [
+											"d10", "3rd-Level Spell"
+										],
+										"colStyles": [
+											"col-xs-2",
+											"col-xs-10"
+										],
+										"rows": [
+											["1", "blink"],
+											["2", "fear"],
+											["3", "feign death"],
+											["4", "fireball"],
+											["5", "fly"],
+											["6", "gaseous form"],
+											["7", "lightning bolt"],
+											["8", "sleet storm"],
+											["9", "stinking cloud"],
+											["10", "Roll twice and cast each spell, but if you roll another 10 on either die, you cast nothing, wasting your action but not the spell slot."]
+										]
+									},
+									{
+										"type": "table",
+										"colLabels": [
+											"d10", "4th-Level Spell"
+										],
+										"colStyles": [
+											"col-xs-2",
+											"col-xs-10"
+										],
+										"rows": [
+											["1", "blight"],
+											["2", "confusion"],
+											["3", "Evard’s black tentacles"],
+											["4", "fire shield"],
+											["5", "greater invisibility"],
+											["6", "ice storm"],
+											["7", "phantasmal killer"],
+											["8", "stoneskin"],
+											["9", "wall of fire"],
+											["10", "Roll twice and cast each spell, but if you roll another 10 on either die, you cast nothing, wasting your action but not the spell slot."]
+										]
+									},
+									{
+										"type": "table",
+										"colLabels": [
+											"d10", "5th-Level Spell"
+										],
+										"colStyles": [
+											"col-xs-2",
+											"col-xs-10"
+										],
+										"rows": [
+											["1", "cloudkill"],
+											["2", "cone of cold"],
+											["3", "destructive wave"],
+											["4", "flame strike"],
+											["5", "hold monster"],
+											["6", "insect plague"],
+											["7", "mass cure wounds"],
+											["8", "wall of force"],
+											["9", "wall of stone"],
+											["10", "Roll twice and cast each spell, but if you roll another 10 on either die, you cast nothing, wasting your action but not the spell slot."]
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"name": "Alchemical Casting",
+								"entries": [
+									"At 6th level, you learn to channel magic through your arcanomechanical armor to augment spells in a variety of ways. When you cast a spell while wearing that armor and attuned to it, you can expend one additional spell slot of 1st or 2nd level to alter the spell. The effect depends on the spell slot you expend.",
+									"A 1st-level slot allows you to manipulate the spell’s energy. When you cast a spell that deals acid, cold, fire, lightning, or thunder damage, you can substitute that damage type for another one from that list.",
+									"A 2nd-level slot increases the spell’s raw force. If you roll damage for the spell when you cast it, increase that damage by 2d10 force damage against one of the spell’s targets (your choice) this turn."
+								]
+							}
+						],
+						[
+							{
+								"name": "Prodigious Inspiration",
+								"entries": [
+									"At 10th level, you have attained a greater mastery of spell preparation. As a bonus action, you can replace one spell you have prepared with another spell from your spellbook. You can’t use this ability again until you finish a short or long rest."
+								]
+							}
+						],
+						[
+							{
+								"name": "Controlled Chaos",
+								"entries": [
+									"At 14th level, your ability to improvise magic grows stronger. Whenever you roll on a Reckless Casting table for a spell other than a cantrip, you can roll on the table that is one level higher than the expended spell slot."
+								]
+							}
+						]
+					],
+					"source": "UAThreeSubclasses",
+					"shortName": "Invention"
 				}
 			]
 		},

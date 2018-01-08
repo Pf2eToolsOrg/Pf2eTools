@@ -82,6 +82,11 @@
 				<ul class="list classes">
 
 				</ul>
+				<p class="text-align-center">
+					<label class="btn btn-default btn-sm btn-file">
+						Load Brew <input type="file" accept=".json" style="display: none;" onchange="addBrew(event, this)">
+					</label>
+				</p>
 			</div>
 			<div class="col-sm-9" id="classtable">
 				<table>
@@ -214,6 +219,9 @@
 					</tr>
 					<tr>
 						<th id="nameSummary" colspan="6">Name</th>
+					</tr>
+					<tr>
+						<th id="author" colspan="6">Author</th>
 					</tr>
 					<tr>
 						<td class="divider" colspan="6">

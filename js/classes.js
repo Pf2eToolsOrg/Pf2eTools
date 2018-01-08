@@ -20,17 +20,25 @@ const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
 const ATB_DATA_SC_LIST = "data-subclass-list";
 
+const HOMEBREW_STORAGE = "HOMEBREW_CHARACTER";
+
 let tableDefault;
 let statsProfDefault;
 let classTableDefault;
 
 let classes;
+let list;
 
 const jsonURL = "data/classes.json";
 
 const renderer = new EntryRenderer();
+const storage = window.localStorage;
 
 window.onload = function load () {
+	tableDefault = $("#pagecontent").html();
+	statsProfDefault = $("#statsprof").html();
+	classTableDefault = $("#classtable").html();
+
 	DataUtil.loadJSON(jsonURL, onJsonLoad);
 };
 
@@ -47,23 +55,44 @@ function getTableDataScData (scName, scSource) {
 }
 
 function onJsonLoad (data) {
-	classes = data.class;
+	list = search({
+		valueNames: ['name', 'source'],
+		listClass: "classes"
+	});
+	addData(data);
 
+	const brewData = storage.getItem(HOMEBREW_STORAGE);
+	if (brewData) {
+		try {
+			addData(JSON.parse(brewData));
+		} catch (e) {
+			storage.removeItem(HOMEBREW_STORAGE);
+		}
+	}
+
+	initHistory();
+}
+
+function addData (data) {
 	// alphabetically sort subclasses
-	for (const c of classes) {
+	for (const c of data.class) {
 		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
 	}
 
 	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
-	classes.filter(c => isNonstandardSource(c.source)).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
+	data.class.filter(c => isNonstandardSource(c.source)).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
 
-	tableDefault = $("#pagecontent").html();
-	statsProfDefault = $("#statsprof").html();
-	classTableDefault = $("#classtable").html();
+	let i = 0;
+	if (!classes) {
+		classes = data.class;
+	} else {
+		i = classes.length - 1;
+		classes = classes.concat(data.class);
+	}
 
 	const classTable = $("ul.classes");
 	let tempString = "";
-	for (let i = 0; i < classes.length; i++) {
+	for (; i < classes.length; i++) {
 		const curClass = classes[i];
 		tempString +=
 			`<li>
@@ -74,13 +103,7 @@ function onJsonLoad (data) {
 			</li>`;
 	}
 	classTable.append(tempString);
-
-	const list = search({
-		valueNames: ['name', 'source'],
-		listClass: "classes"
-	});
-
-	initHistory()
+	list.reIndex();
 }
 
 function loadhash (id) {
@@ -89,11 +112,14 @@ function loadhash (id) {
 	$("#classtable").html(classTableDefault);
 	const curClass = classes[id];
 
-	const isUaClass = isNonstandardSource(curClass.source);
-
 	// name
 	$("th#nameTable").html(curClass.name);
 	$("th#nameSummary").html(curClass.name);
+	if (curClass.authors) {
+		$("th#author").html(`By ${curClass.authors.join(", ")}`).show();
+	} else {
+		$("th#author").html("").hide();
+	}
 
 	// SUMMARY SIDEBAR =================================================================================================
 	// hit dice and HP
@@ -564,4 +590,25 @@ function loadsub (sub) {
 			}
 		);
 	}
+}
+
+function addBrew (event, ele) {
+	const input = event.target;
+
+	const reader = new FileReader();
+	reader.onload = () => {
+		const text = reader.result;
+		const json = JSON.parse(text);
+
+		const brew = storage.getItem(HOMEBREW_STORAGE);
+		if (brew) {
+			const toSave = JSON.parse(brew);
+			storage.setItem(HOMEBREW_STORAGE, {class: toSave.class.concat(json.class)});
+		} else {
+			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(json));
+		}
+
+		addData(json);
+	};
+	reader.readAsText(input.files[0]);
 }
