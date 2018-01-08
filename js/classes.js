@@ -66,7 +66,6 @@ function onJsonLoad (data) {
 		try {
 			addData(JSON.parse(brewData));
 		} catch (e) {
-			console.log("error lol");
 			storage.removeItem(HOMEBREW_STORAGE);
 		}
 	}
@@ -93,7 +92,7 @@ function addData (data) {
 
 	const classTable = $("ul.classes");
 	let tempString = "";
-	for ( ; i < classes.length; i++) {
+	for (; i < classes.length; i++) {
 		const curClass = classes[i];
 		tempString +=
 			`<li>
@@ -604,7 +603,6 @@ function addBrew (event, ele) {
 		const brew = storage.getItem(HOMEBREW_STORAGE);
 		if (brew) {
 			const toSave = JSON.parse(brew);
-			debugger
 			storage.setItem(HOMEBREW_STORAGE, {class: toSave.class.concat(json.class)});
 		} else {
 			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(json));
