@@ -3,40 +3,19 @@
 const JSON_URL = "data/psionics.json";
 
 const STR_JOIN_MODE_LIST = ",";
-const STR_JOIN_MODE_TITLE_BRACKET_PART_LIST = "; ";
-const STR_JOIN_MODE_TITLE = " ";
-const STR_ABV_TYPE_TALENT = "T";
-const STR_ABV_TYPE_DISCIPLINE = "D";
-const STR_TYPE_TALENT = "Talent";
-const STR_TYPE_DISCIPLINE = "Discipline";
-const STR_ORDER_NONE = "None";
-
 const TMP_HIDDEN_MODE = `"{0}"`;
 
 const ID_PSIONICS_LIST = "psionicsList";
 const ID_STATS_ORDER_AND_TYPE = "orderAndType";
-const ID_STATS_DURATION = "duration";
 const ID_TEXT = "text";
 
 const JSON_ITEM_NAME = "name";
 const JSON_ITEM_SOURCE = "source";
 const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_ORDER = "order";
-const JSON_ITEM_TEXT = "text";
-const JSON_ITEM_DURATION = "duration";
-const JSON_ITEM_DESCRIPTION = "description";
-const JSON_ITEM_FOCUS = "focus";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
 const JSON_ITEM_MODE_TITLE = "title";
-const JSON_ITEM_MODE_TEXT = "text";
-const JSON_ITEM_MODE_COST = "cost";
-const JSON_ITEM_MODE_COST_MIN = "min";
-const JSON_ITEM_MODE_COST_MAX = "max";
-const JSON_ITEM_MODE_CONCENTRATION = "concentration";
-const JSON_ITEM_MODE_CONCENTRATION_DURATION = "duration";
-const JSON_ITEM_MODE_CONCENTRATION_UNIT = "unit";
-
 const CLS_PSIONICS = "psionics";
 const CLS_COL1 = "col-xs-5";
 const CLS_COL2 = "col-xs-2";
@@ -81,24 +60,24 @@ function onJsonLoad (data) {
 			return false;
 		}
 	});
-	const typeFilter = new Filter({header: "Type", items: ["D", "T"], displayFn: parse_psionicTypeToFull});
+	const typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull});
 	const orderFilter = new Filter({
 		header: "Order",
-		items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", STR_ORDER_NONE]
+		items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE]
 	});
 
 	const filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
 
 	let tempString = "";
 	PSIONIC_LIST.forEach(function (p, i) {
-		p[JSON_ITEM_ORDER] = parse_psionicOrderToFull(p[JSON_ITEM_ORDER]);
+		p[JSON_ITEM_ORDER] = Parser.psiOrderToFull(p[JSON_ITEM_ORDER]);
 
 		tempString += `
 			<li class='row' ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
 					<span class='${LIST_SOURCE} ${CLS_COL2}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
-					<span class='${LIST_TYPE} ${CLS_COL3}'>${parse_psionicTypeToFull(p[JSON_ITEM_TYPE])}</span>
+					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
 					<span class='${LIST_ORDER} ${CLS_COL4} ${p[JSON_ITEM_ORDER] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p[JSON_ITEM_ORDER]}</span>
 					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
 				</a>
@@ -161,111 +140,29 @@ function onJsonLoad (data) {
 	handleFilterChange();
 }
 
+let renderer;
 function loadhash (jsonIndex) {
+	if (!renderer) renderer = new EntryRenderer();
+
 	const $name = $(`th.name`);
 	const STATS_ORDER_AND_TYPE = document.getElementById(ID_STATS_ORDER_AND_TYPE);
-	const STATS_DURATION = document.getElementById(ID_STATS_DURATION);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
 	const selectedPsionic = PSIONIC_LIST[jsonIndex];
 
 	$name.html(selectedPsionic[JSON_ITEM_NAME]);
-	if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_TALENT) loadTalent();
-	else if (selectedPsionic[JSON_ITEM_TYPE] === STR_ABV_TYPE_DISCIPLINE) loadDiscipline();
+	if (selectedPsionic[JSON_ITEM_TYPE] === Parser.PSI_ABV_TYPE_TALENT) loadTalent();
+	else if (selectedPsionic[JSON_ITEM_TYPE] === Parser.PSI_ABV_TYPE_DISCIPLINE) loadDiscipline();
 
 	function loadTalent () {
-		STATS_ORDER_AND_TYPE.innerHTML = parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
-		STATS_TEXT.innerHTML = utils_combineText(selectedPsionic[JSON_ITEM_TEXT], ELE_P);
-		STATS_DURATION.innerHTML = STR_EMPTY;
+		STATS_ORDER_AND_TYPE.innerHTML = Parser.psiTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
+		const renderStack = [];
+		renderer.recursiveEntryRender(({entries: selectedPsionic.entries, type: "entries"}), renderStack);
+		STATS_TEXT.innerHTML = renderStack.join("");
 	}
 
 	function loadDiscipline () {
-		STATS_ORDER_AND_TYPE.innerHTML = `${selectedPsionic[JSON_ITEM_ORDER]} ${parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE])}`;
-		STATS_TEXT.innerHTML = getTextString();
-		STATS_DURATION.innerHTML = getDurationString();
-
-		function getTextString () {
-			const modeStringArray = [];
-			for (let i = 0; i < selectedPsionic[JSON_ITEM_MODES].length; ++i) {
-				modeStringArray.push(getModeString(i));
-			}
-
-			return `${getDescriptionString()}${getFocusString()}${modeStringArray.join(STR_EMPTY)}`;
-		}
-
-		function getDescriptionString () {
-			return `<p>${selectedPsionic[JSON_ITEM_DESCRIPTION]}</p>`;
-		}
-
-		function getFocusString () {
-			return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${selectedPsionic[JSON_ITEM_FOCUS]}</p>`;
-		}
-
-		function getModeString (modeIndex) {
-			const modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(selectedPsionic[JSON_ITEM_MODES][modeIndex]));
-			if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES] === undefined) return modeString;
-			const subModeString = getSubModeString();
-			return `${modeString}${subModeString}`;
-
-			function getSubModeString () {
-				const modeStrings = [];
-				const subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
-				for (let i = 0; i < subModes.length; ++i) {
-					modeStrings.push(utils_combineText(subModes[i][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(subModes[i], true)));
-				}
-				return modeStrings.join(STR_EMPTY);
-			}
-
-			function getModeTitle (mode, subMode) {
-				subMode = subMode === undefined || subMode === null ? false : subMode;
-				const modeTitleArray = [];
-				modeTitleArray.push(mode[JSON_ITEM_MODE_TITLE]);
-				const bracketPart = getModeTitleBracketPart();
-				if (bracketPart !== null) modeTitleArray.push(bracketPart);
-				if (subMode) return `<span class='psi-mode-sub-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
-				else return `<span class='psi-mode-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
-
-				function getModeTitleBracketPart () {
-					const modeTitleBracketArray = [];
-
-					if (mode[JSON_ITEM_MODE_COST]) modeTitleBracketArray.push(getModeTitleCost());
-					if (mode[JSON_ITEM_MODE_CONCENTRATION]) modeTitleBracketArray.push(getModeTitleConcentration());
-
-					if (modeTitleBracketArray.length === 0) return null;
-					return `(${modeTitleBracketArray.join(STR_JOIN_MODE_TITLE_BRACKET_PART_LIST)})`;
-
-					function getModeTitleCost () {
-						const costMin = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MIN];
-						const costMax = mode[JSON_ITEM_MODE_COST][JSON_ITEM_MODE_COST_MAX];
-						const costString = costMin === costMax ? costMin : `${costMin}-${costMax}`;
-						return `${costString} psi`;
-					}
-
-					function getModeTitleConcentration () {
-						return `conc., ${mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_DURATION]} ${mode[JSON_ITEM_MODE_CONCENTRATION][JSON_ITEM_MODE_CONCENTRATION_UNIT]}.`
-					}
-				}
-			}
-		}
+		STATS_ORDER_AND_TYPE.innerHTML = `${selectedPsionic[JSON_ITEM_ORDER]} ${Parser.psiTypeToFull(selectedPsionic[JSON_ITEM_TYPE])}`;
+		STATS_TEXT.innerHTML = EntryRenderer.psionic.getDisciplineText(selectedPsionic, renderer);
 	}
-
-	function getDurationString () {
-		const duration = selectedPsionic[JSON_ITEM_DURATION];
-		if (duration === undefined) return STR_EMPTY;
-		else return getDurationElement();
-
-		function getDurationElement () {
-
-		}
-	}
-}
-
-function parse_psionicTypeToFull (type) {
-	if (type === STR_ABV_TYPE_TALENT) return STR_TYPE_TALENT;
-	else if (type === STR_ABV_TYPE_DISCIPLINE) return STR_TYPE_DISCIPLINE;
-	else return type;
-}
-
-function parse_psionicOrderToFull (order) {
-	return order === undefined ? STR_ORDER_NONE : order;
 }

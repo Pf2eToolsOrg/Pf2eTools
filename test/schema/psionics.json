@@ -64,45 +64,13 @@
 									],
 									"additionalProperties": false
 								},
-								"title": {
+								"name": {
 									"type": "string"
 								},
-								"text": {
+								"entries": {
 									"type": "array",
-									"uniqueItems": true,
 									"items": {
-										"anyOf": [
-											{
-												"type": "object",
-												"properties": {
-													"istable": {
-														"type": "string"
-													},
-													"thead": {
-														"type": "array",
-														"uniqueItems": true
-													},
-													"thstyleclass": {
-														"type": "array"
-													},
-													"tbody": {
-														"type": "array",
-														"uniqueItems": true,
-														"items": {
-															"type": "array"
-														}
-													}
-												},
-												"required": [
-													"istable",
-													"thead",
-													"thstyleclass",
-													"tbody"
-												],
-												"additionalProperties": false
-											},
-											{"type": "string"}
-										]
+										"$ref": "/Entry"
 									}
 								},
 								"submodes": {
@@ -127,38 +95,38 @@
 												],
 												"additionalProperties": false
 											},
-											"title": {
+											"name": {
 												"type": "string"
 											},
-											"text": {
+											"entries": {
 												"type": "array",
 												"uniqueItems": true,
 												"items": {
-													"type": "string"
+													"$ref": "/Entry"
 												}
 											}
 										},
 										"required": [
 											"cost",
-											"title",
-											"text"
+											"name",
+											"entries"
 										],
 										"additionalProperties": false
 									}
 								}
 							},
 							"required": [
-								"title",
-								"text"
+								"name",
+								"entries"
 							],
 							"additionalProperties": false
 						}
 					},
-					"text": {
+					"entries": {
 						"type": "array",
 						"uniqueItems": true,
 						"items": {
-							"type": "string"
+							"$ref": "/Entry"
 						}
 					}
 				},

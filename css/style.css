@@ -200,6 +200,37 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 /* *** */
 
+/* homebrew manager */
+
+.homebrew-overlay {
+	position: fixed;
+	z-index: 1000;
+	background-color: rgba(69, 69, 69, 0.51);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.homebrew-window {
+	position: relative;
+	margin: 60px auto;
+	padding: 5px 10px;
+	max-height: 600px;
+	max-width: 600px;
+	overflow-y: scroll;
+	z-index: 10001;
+	float: none;
+	top: initial;
+	left: initial;
+}
+
+.homebrew-window hr {
+	margin: 5px 0;
+}
+
+/* *** */
+
 .view-col {
 	margin: 7px 7px 12px;
 	flex: 1;
@@ -1490,15 +1521,6 @@ div#showsearch {
 
 .psi-focus-title {
 	font-style: italic;
-	font-weight: bold;
-}
-
-.psi-mode-title {
-	font-style: italic;
-	font-weight: bold;
-}
-
-.psi-mode-sub-title {
 	font-weight: bold;
 }
 

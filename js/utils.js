@@ -717,6 +717,7 @@ Parser._spSubclassItem = function (fromSubclass) {
 	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
+// mon-prefix functions are for parsing monster data, and shared with the roll20 script
 Parser.monTypeToFullObj = function (type) {
 	const out = {type: "", tags: [], asText: ""};
 
@@ -754,6 +755,20 @@ Parser.monTypeToFullObj = function (type) {
 
 Parser.monTypeToPlural = function (type) {
 	return Parser._parse_aToB(Parser.MON_TYPE_TO_PLURAL, type);
+};
+
+// psi-prefix functions are for parsing psionic data, and shared with the roll20 script
+Parser.PSI_ABV_TYPE_TALENT = "T";
+Parser.PSI_ABV_TYPE_DISCIPLINE = "D";
+Parser.PSI_ORDER_NONE = "None";
+Parser.psiTypeToFull = (type) => {
+	if (type === Parser.PSI_ABV_TYPE_TALENT) return "Talent";
+	else if (type === Parser.PSI_ABV_TYPE_DISCIPLINE) return "Discipline";
+	else return type;
+};
+
+Parser.psiOrderToFull = (order) => {
+	return order === undefined ? Parser.PSI_ORDER_NONE : order;
 };
 
 Parser.CAT_ID_CREATURE = 1;
