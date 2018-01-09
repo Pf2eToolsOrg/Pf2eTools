@@ -698,7 +698,7 @@ EntryRenderer.feat = {
 };
 
 EntryRenderer.spell = {
-	getCompactRenderedString: function (spell) {
+	getCompactRenderedString: (spell) => {
 		if (!this.renderer) {
 			this.renderer = new EntryRenderer();
 		}
@@ -751,7 +751,7 @@ EntryRenderer.spell = {
 		return renderStack.join("");
 	},
 
-	getRenderedString: function (spell, renderer) {
+	getRenderedString: (spell, renderer) => {
 		const renderStack = [];
 		const sourceFull = Parser.sourceJsonToFull(spell.source);
 
@@ -1043,10 +1043,106 @@ EntryRenderer.item = {
 	}
 };
 
+EntryRenderer.psionic = {
+	enhanceMode: (mode) => {
+		if (!mode.enhanced) {
+			mode.name = `${mode.name} ${getModeSuffix(mode, false)}`;
+
+			if (mode.submodes) {
+				mode.submodes.forEach(sm => {
+					sm.name = `${sm.name} ${getModeSuffix(sm, true)}`;
+				});
+			}
+
+			mode.enhanced = true;
+		}
+
+		function getModeSuffix (mode, subMode) {
+			subMode = subMode === undefined || subMode === null ? false : subMode;
+			const modeTitleArray = [];
+			const bracketPart = getModeTitleBracketPart();
+			if (bracketPart !== null) modeTitleArray.push(bracketPart);
+			if (subMode) return `${modeTitleArray.join(" ")}`;
+			else return `${modeTitleArray.join(" ")}</span>`;
+
+			function getModeTitleBracketPart () {
+				const modeTitleBracketArray = [];
+
+				if (mode.cost) modeTitleBracketArray.push(getModeTitleCost());
+				if (mode.concentration) modeTitleBracketArray.push(getModeTitleConcentration());
+
+				if (modeTitleBracketArray.length === 0) return null;
+				return `(${modeTitleBracketArray.join("; ")})`;
+
+				function getModeTitleCost () {
+					const costMin = mode.cost.min;
+					const costMax = mode.cost.max;
+					const costString = costMin === costMax ? costMin : `${costMin}-${costMax}`;
+					return `${costString} psi`;
+				}
+
+				function getModeTitleConcentration () {
+					return `conc., ${mode.concentration.duration} ${mode.concentration.unit}.`
+				}
+			}
+		}
+	},
+
+	getDisciplineText: (psionic, renderer) => {
+		const modeStringArray = [];
+		for (let i = 0; i < psionic.modes.length; ++i) {
+			modeStringArray.push(EntryRenderer.psionic.getModeString(psionic, renderer, i));
+		}
+
+		return `${EntryRenderer.psionic.getDescriptionString(psionic)}${EntryRenderer.psionic.getFocusString(psionic)}${modeStringArray.join(STR_EMPTY)}`;
+	},
+
+	getDescriptionString: (psionic) => {
+		return `<p>${psionic.description}</p>`;
+	},
+
+	getFocusString: (psionic) => {
+		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${psionic.focus}</p>`;
+	},
+
+	getModeString: (psionic, renderer, modeIndex) => {
+		const mode = psionic.modes[modeIndex];
+		EntryRenderer.psionic.enhanceMode(mode, false);
+
+		const renderStack = [];
+		renderer.recursiveEntryRender(mode, renderStack, 3);
+		const modeString = renderStack.join("");
+		if (psionic.modes[modeIndex].submodes === undefined) return modeString;
+		const subModeString = getSubModeString();
+		return `${modeString}${subModeString}`;
+
+		function getSubModeString () {
+			const subModes = psionic.modes[modeIndex].submodes;
+
+			const fauxEntry = {
+				type: "list",
+				style: "list-hang",
+				items: []
+			};
+
+			for (let i = 0; i < subModes.length; ++i) {
+				fauxEntry.items.push({
+					type: "item",
+					name: subModes[i].name,
+					entry: subModes[i].entries.join("<br>")
+				});
+			}
+			const renderStack = [];
+			renderer.recursiveEntryRender(fauxEntry, renderStack, 4);
+			return renderStack.join("");
+		}
+	}
+};
+
 EntryRenderer.hover = {
 	linkCache: {},
 
-	_addToCache: function (page, source, hash, item) {
+	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
@@ -1058,7 +1154,7 @@ EntryRenderer.hover = {
 		srcLvl[hash] = item;
 	},
 
-	_getFromCache: function (page, source, hash) {
+	_getFromCache: (page, source, hash) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
@@ -1066,7 +1162,7 @@ EntryRenderer.hover = {
 		return this.linkCache[page][source][hash];
 	},
 
-	_isCached: function (page, source, hash) {
+	_isCached: (page, source, hash) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
@@ -1074,7 +1170,7 @@ EntryRenderer.hover = {
 		return this.linkCache[page] && this.linkCache[page][source] && this.linkCache[page][source][hash];
 	},
 
-	_makeWindow: function () {
+	_makeWindow: () => {
 		const winW = EntryRenderer.hover._curHovering.winW;
 		const winH = EntryRenderer.hover._curHovering.winH;
 		const ele = EntryRenderer.hover._curHovering.ele;
@@ -1133,7 +1229,7 @@ EntryRenderer.hover = {
 	_showInProgress: false,
 	_hoverId: 1,
 	_curHovering: null,
-	show: function (ele, page, source, hash) {
+	show: (ele, page, source, hash) => {
 		const winW = $(window).width();
 		const winH = $(window).height();
 
