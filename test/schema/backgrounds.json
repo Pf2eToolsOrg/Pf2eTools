@@ -20,42 +20,10 @@
 					"skillProficiencies": {
 						"type": "string"
 					},
-					"trait": {
+					"entries": {
 						"type": "array",
 						"items": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"text": {
-									"type": "array"
-								},
-								"subtrait": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"text": {
-												"type": "array"
-											}
-										},
-										"required": [
-											"name",
-											"text"
-										],
-										"additionalProperties": false
-									}
-								}
-							},
-							"required": [
-								"name",
-								"text"
-							],
-							"additionalProperties": false
+							"$ref": "/Entry"
 						}
 					}
 				},
@@ -64,7 +32,7 @@
 					"source",
 					"page",
 					"skillProficiencies",
-					"trait"
+					"entries"
 				],
 				"additionalProperties": false
 			}

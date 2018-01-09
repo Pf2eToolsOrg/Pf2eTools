@@ -1,5 +1,6 @@
 "use strict";
 const JSON_URL = "data/backgrounds.json";
+const renderer = new EntryRenderer();
 let tabledefault = "";
 let bgList;
 
@@ -24,8 +25,8 @@ function onJsonLoad (data) {
 		tempString +=
 			`<li ${FLTR_ID}="${i}">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(bg)}' title='${bg.name}'>
-					<span class='name col-xs-9'>${bg.name.replace("Variant ", "")}</span>
-					<span class='source col-xs-3 source${bg.source}' title='${Parser.sourceJsonToFull(bg.source)}'>${Parser.sourceJsonToAbv(bg.source)}</span>
+					<span class='name col-xs-10'>${bg.name.replace("Variant ", "")}</span>
+					<span class='source col-xs-2 source${bg.source}' title='${Parser.sourceJsonToFull(bg.source)}'>${Parser.sourceJsonToAbv(bg.source)}</span>
 				</a>
 			</li>`;
 
@@ -53,7 +54,6 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const bg = bgList[$(item.elm).attr(FLTR_ID)];
-
 			return sourceFilter.toDisplay(f, bg.source);
 		});
 	}
@@ -69,33 +69,9 @@ function loadhash (id) {
 	const source = curbg.source;
 	const sourceAbv = Parser.sourceJsonToAbv(source);
 	const sourceFull = Parser.sourceJsonToFull(source);
+	const renderStack = [];
+	renderer.recursiveEntryRender(curbg, renderStack, 1);
 	$("th.name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
-	const traitlist = curbg.trait;
-	$("tr.trait").remove();
-
-	for (let n = traitlist.length - 1; n >= 0; n--) {
-		let texthtml = "";
-		texthtml += utils_combineText(traitlist[n].text, "p", "<span class='name'>" + traitlist[n].name + ".</span> ");
-
-		const subtraitlist = traitlist[n].subtrait;
-		if (subtraitlist !== undefined) {
-			for (let j = 0; j < subtraitlist.length; j++) {
-				texthtml = texthtml + "<p class='subtrait'>";
-				const subtrait = subtraitlist[j];
-				texthtml = texthtml + "<span class='name'>" + subtrait.name + ".</span> ";
-				for (let k = 0; k < subtrait.text.length; k++) {
-					if (!subtrait.text[k]) continue;
-					if (k === 0) {
-						texthtml = texthtml + "<span>" + subtrait.text[k] + "</span>";
-					} else {
-						texthtml = texthtml + "<p class='subtrait'>" + subtrait.text[k] + "</p>";
-					}
-				}
-				texthtml = texthtml + "</p>";
-			}
-		}
-
-		$("tr#traits").after("<tr class='trait'><td colspan='6'>" + texthtml + "</td></tr>");
-		$(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${curbg.page}</td>`);
-	}
+	$("tr#traits").after(`<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>`);
+	$("#source").html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${curbg.page}</td>`);
 }
