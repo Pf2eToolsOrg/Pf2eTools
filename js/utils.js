@@ -645,7 +645,14 @@ Parser.spRangeToFull = function (range) {
 		return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()})`;
 
 		function getAreaStyleStr () {
-			return range.type === RNG_SPHERE || range.type === RNG_HEMISPHERE ? "-radius" : " " + range.type;
+			switch (range.type) {
+				case RNG_SPHERE:
+					return "-radius";
+				case RNG_HEMISPHERE:
+					return `-radius ${range.type}`;
+				default:
+					return ` ${range.type}`
+			}
 		}
 	}
 };
