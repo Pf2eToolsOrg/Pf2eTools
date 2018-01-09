@@ -680,7 +680,6 @@ function manageBrew () {
 	}
 
 	function deleteBrew (uniqueId) {
-		// TODO remove it from the list of classes; reindex list
 		const index = homebrew.brew.findIndex(it => it.uniqueId === uniqueId);
 		if (index >= 0) {
 			homebrew.brew.splice(index, 1);
