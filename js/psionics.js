@@ -22,14 +22,12 @@ const JSON_ITEM_NAME = "name";
 const JSON_ITEM_SOURCE = "source";
 const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_ORDER = "order";
-const JSON_ITEM_TEXT = "text";
 const JSON_ITEM_DURATION = "duration";
 const JSON_ITEM_DESCRIPTION = "description";
 const JSON_ITEM_FOCUS = "focus";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
 const JSON_ITEM_MODE_TITLE = "title";
-const JSON_ITEM_MODE_TEXT = "text";
 const JSON_ITEM_MODE_COST = "cost";
 const JSON_ITEM_MODE_COST_MIN = "min";
 const JSON_ITEM_MODE_COST_MAX = "max";
@@ -92,6 +90,14 @@ function onJsonLoad (data) {
 	let tempString = "";
 	PSIONIC_LIST.forEach(function (p, i) {
 		p[JSON_ITEM_ORDER] = parse_psionicOrderToFull(p[JSON_ITEM_ORDER]);
+		// p.modes.forEach(m => {
+		// 	if (m.submodes) {
+		// 		m.submodes.forEach(sm => {
+		// 			sm._fTitle = m.title;
+		// 		});
+		// 	}
+		// 	m._fTitle = m.title;
+		// });
 
 		tempString += `
 			<li class='row' ${FLTR_ID}="${i}">
@@ -161,7 +167,10 @@ function onJsonLoad (data) {
 	handleFilterChange();
 }
 
+let renderer;
 function loadhash (jsonIndex) {
+	if (!renderer) renderer = new EntryRenderer();
+
 	const $name = $(`th.name`);
 	const STATS_ORDER_AND_TYPE = document.getElementById(ID_STATS_ORDER_AND_TYPE);
 	const STATS_DURATION = document.getElementById(ID_STATS_DURATION);
@@ -175,7 +184,9 @@ function loadhash (jsonIndex) {
 
 	function loadTalent () {
 		STATS_ORDER_AND_TYPE.innerHTML = parse_psionicTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
-		STATS_TEXT.innerHTML = utils_combineText(selectedPsionic[JSON_ITEM_TEXT], ELE_P);
+		const renderStack = [];
+		renderer.recursiveEntryRender(selectedPsionic, renderStack);
+		STATS_TEXT.innerHTML = renderStack.join("");
 		STATS_DURATION.innerHTML = STR_EMPTY;
 	}
 
@@ -202,28 +213,53 @@ function loadhash (jsonIndex) {
 		}
 
 		function getModeString (modeIndex) {
-			const modeString = utils_combineText(selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(selectedPsionic[JSON_ITEM_MODES][modeIndex]));
+			function enhanceMode (mode, isSubMode) {
+				if (!mode.enhanced) {
+					mode.name = `${mode.name} ${getModeSuffix(mode, isSubMode)}`;
+					mode.enhanced = true;
+				}
+			}
+
+			const mode = selectedPsionic[JSON_ITEM_MODES][modeIndex];
+			enhanceMode(mode, false);
+
+			const renderStack = [];
+			renderer.recursiveEntryRender(mode, renderStack, 3);
+			const modeString = renderStack.join("");
 			if (selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES] === undefined) return modeString;
 			const subModeString = getSubModeString();
 			return `${modeString}${subModeString}`;
 
 			function getSubModeString () {
-				const modeStrings = [];
 				const subModes = selectedPsionic[JSON_ITEM_MODES][modeIndex][JSON_ITEM_SUBMODES];
+
+				const fauxEntry = {
+					type: "list",
+					style: "list-hang",
+					items: []
+				};
+
 				for (let i = 0; i < subModes.length; ++i) {
-					modeStrings.push(utils_combineText(subModes[i][JSON_ITEM_MODE_TEXT], ELE_P, getModeTitle(subModes[i], true)));
+					enhanceMode(subModes[i], true);
+
+					fauxEntry.items.push({
+						type: "item",
+						name: subModes[i].name,
+						entry: subModes[i].entries.join("<br>")
+					});
 				}
-				return modeStrings.join(STR_EMPTY);
+				const renderStack = [];
+				renderer.recursiveEntryRender(fauxEntry, renderStack, 4);
+				return renderStack.join("");
 			}
 
-			function getModeTitle (mode, subMode) {
+			function getModeSuffix (mode, subMode) {
 				subMode = subMode === undefined || subMode === null ? false : subMode;
 				const modeTitleArray = [];
-				modeTitleArray.push(mode[JSON_ITEM_MODE_TITLE]);
 				const bracketPart = getModeTitleBracketPart();
 				if (bracketPart !== null) modeTitleArray.push(bracketPart);
-				if (subMode) return `<span class='psi-mode-sub-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
-				else return `<span class='psi-mode-title'>${modeTitleArray.join(STR_JOIN_MODE_TITLE)}.</span> `;
+				if (subMode) return `${modeTitleArray.join(STR_JOIN_MODE_TITLE)}`;
+				else return `${modeTitleArray.join(STR_JOIN_MODE_TITLE)}</span>`;
 
 				function getModeTitleBracketPart () {
 					const modeTitleBracketArray = [];
