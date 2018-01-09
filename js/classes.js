@@ -28,6 +28,7 @@ let classTableDefault;
 
 let classes;
 let list;
+let homebrew;
 
 const jsonURL = "data/classes.json";
 
@@ -56,17 +57,23 @@ function getTableDataScData (scName, scSource) {
 
 function onJsonLoad (data) {
 	list = search({
-		valueNames: ['name', 'source'],
+		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
 	});
 	addData(data);
 
-	const brewData = storage.getItem(HOMEBREW_STORAGE);
-	if (brewData) {
+	const rawBrew = storage.getItem(HOMEBREW_STORAGE);
+	if (rawBrew) {
 		try {
-			addData(JSON.parse(brewData));
+			homebrew = JSON.parse(rawBrew);
+			homebrew.brew.forEach(brew => {
+				addData(brew);
+			});
 		} catch (e) {
+			// on error, purge all brew and reset hash
 			storage.removeItem(HOMEBREW_STORAGE);
+			homebrew = null;
+			window.location.hash = "";
 		}
 	}
 
@@ -86,7 +93,7 @@ function addData (data) {
 	if (!classes) {
 		classes = data.class;
 	} else {
-		i = classes.length - 1;
+		i = classes.length;
 		classes = classes.concat(data.class);
 	}
 
@@ -95,15 +102,17 @@ function addData (data) {
 	for (; i < classes.length; i++) {
 		const curClass = classes[i];
 		tempString +=
-			`<li>
+			`<li ${curClass.uniqueId ? `data-unique-id="${curClass.uniqueId}"` : ""}>
 				<a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'>
 					<span class='name col-xs-8'>${curClass.name}</span>
 					<span class='source col-xs-4 text-align-center source${Parser.sourceJsonToAbv(curClass.source)}' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span>
+					<span class="uniqueid hidden">${curClass.uniqueId ? curClass.uniqueId : i}</span>
 				</a>
 			</li>`;
 	}
 	classTable.append(tempString);
 	list.reIndex();
+	list.sort("name");
 }
 
 function loadhash (id) {
@@ -592,23 +601,93 @@ function loadsub (sub) {
 	}
 }
 
-function addBrew (event, ele) {
-	const input = event.target;
+function manageBrew () {
+	const $body = $(`body`);
+	$body.css("overflow", "hidden");
+	const $overlay = $(`<div class="homebrew-overlay"/>`);
+	$overlay.on("click", () => {
+		$body.css("overflow", "");
+		$overlay.remove();
+	});
+	const $window = $(`
+		<div class="homebrew-window dropdown-menu" style="display: block;">
+			<h4>Manage Homebrew</h4>
+			<hr>
+		</div>`
+	);
+	$window.on("click", (evt) => {
+		evt.stopPropagation();
+	});
+	const $brewList = $(`<div></div>`);
+	$window.append($brewList);
 
-	const reader = new FileReader();
-	reader.onload = () => {
-		const text = reader.result;
-		const json = JSON.parse(text);
+	refreshBrewList();
 
-		const brew = storage.getItem(HOMEBREW_STORAGE);
-		if (brew) {
-			const toSave = JSON.parse(brew);
-			storage.setItem(HOMEBREW_STORAGE, {class: toSave.class.concat(json.class)});
-		} else {
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(json));
+	const $iptAdd = $(`<input type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
+		addBrew(evt);
+	});
+	$window.append($(`<div class="text-align-center"/>`).append($(`<label class="btn btn-default btn-sm btn-file">Load Brew</label>`).append($iptAdd)));
+
+	$overlay.append($window);
+	$body.append($overlay);
+
+	function refreshBrewList () {
+		$brewList.html("");
+		if (homebrew) {
+			homebrew.brew.forEach(j => {
+				const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
+					deleteBrew(j.uniqueId);
+				});
+				$brewList.append($(`<p>`).append($btnDel).append(`&nbsp;<b>${j.class.map(c => c.name).join(", ")} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}`));
+			});
 		}
+	}
 
-		addData(json);
-	};
-	reader.readAsText(input.files[0]);
+	function addBrew (event) {
+		const input = event.target;
+
+		const reader = new FileReader();
+		reader.onload = () => {
+			const text = reader.result;
+			const json = JSON.parse(text);
+			// ms timestamp ought to be unique enough
+			json.uniqueId = Date.now();
+
+			json.class.forEach(c => {
+				if (json.authors) {
+					if (!c.authors) {
+						c.authors = json.authors;
+					}
+				}
+				c.uniqueId = json.uniqueId;
+			});
+
+			if (!homebrew) {
+				homebrew = { brew: [json] };
+			} else {
+				homebrew.brew = homebrew.brew.concat(json);
+			}
+			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
+
+			// reset the input
+			$(event.target).val("");
+
+			addData(json);
+
+			refreshBrewList();
+		};
+		reader.readAsText(input.files[0]);
+	}
+
+	function deleteBrew (uniqueId) {
+		// TODO remove it from the list of classes; reindex list
+		const index = homebrew.brew.findIndex(it => it.uniqueId === uniqueId);
+		if (index >= 0) {
+			homebrew.brew.splice(index, 1);
+			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
+			refreshBrewList();
+			list.remove("uniqueid", uniqueId);
+			_freshLoad();
+		}
+	}
 }
