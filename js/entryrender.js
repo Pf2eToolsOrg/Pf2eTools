@@ -313,7 +313,7 @@ function EntryRenderer () {
 			function getStyleString () {
 				const styleClasses = [];
 				styleClasses.push(_getStyleClass(entry.source));
-				if (inlineTitle && entry.name !== undefined) {
+				if (inlineTitle) {
 					if (self._subVariant) styleClasses.push(EntryRenderer.HEAD_2_SUB_VARIANT);
 					else styleClasses.push(EntryRenderer.HEAD_2);
 				} else styleClasses.push(depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1);
@@ -838,7 +838,7 @@ EntryRenderer.item = {
 			const properties = item.property.split(",");
 			for (let i = 0; i < properties.length; i++) {
 				const prop = properties[i];
-				let a = item._propertyList[prop].name;
+				let a = item._allPropertiesPtr[prop].name;
 				if (prop === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
 				if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range}ft.)`;
 				if (prop === "RLD") a = `${a} (${item.reload} shots)`;
@@ -1007,7 +1007,7 @@ EntryRenderer.item = {
 
 				// bind pointer to propertyList
 				if (item.property) {
-					item._propertyList = propertyList;
+					item._allPropertiesPtr = propertyList;
 				}
 
 				// bake in types
@@ -1096,6 +1096,12 @@ EntryRenderer.psionic = {
 		}
 	},
 
+	getTalentText: (psionic, renderer) => {
+		const renderStack = [];
+		renderer.recursiveEntryRender(({entries: psionic.entries, type: "entries"}), renderStack);
+		return renderStack.join("");
+	},
+
 	getDisciplineText: (psionic, renderer) => {
 		const modeStringArray = [];
 		for (let i = 0; i < psionic.modes.length; ++i) {
@@ -1179,6 +1185,10 @@ EntryRenderer.hover = {
 	},
 
 	_makeWindow: () => {
+		if (!EntryRenderer.hover._curHovering) {
+			reset();
+			return;
+		}
 		const winW = EntryRenderer.hover._curHovering.winW;
 		const winH = EntryRenderer.hover._curHovering.winH;
 		const ele = EntryRenderer.hover._curHovering.ele;
@@ -1230,8 +1240,12 @@ EntryRenderer.hover = {
 		}
 
 		$(ele).css("cursor", "");
-		EntryRenderer.hover._showInProgress = false;
-		EntryRenderer.hover._curHovering = null;
+		reset();
+
+		function reset () {
+			EntryRenderer.hover._showInProgress = false;
+			EntryRenderer.hover._curHovering = null;
+		}
 	},
 
 	_showInProgress: false,

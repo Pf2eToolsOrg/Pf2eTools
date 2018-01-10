@@ -6,8 +6,13 @@ function hashchange (e) {
 	if (!e || sub.length === 0) {
 		const $el = _getListElem(link);
 		if ($el === undefined) {
-			_freshLoad();
-			return;
+			if (typeof handleUnknownHash === "function" && window.location.hash.length) {
+				handleUnknownHash(link, sub);
+				return;
+			} else {
+				_freshLoad();
+				return;
+			}
 		}
 		const toLoad = $el.attr("id");
 		if (toLoad === undefined) _freshLoad();

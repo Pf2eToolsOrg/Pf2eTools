@@ -66,6 +66,7 @@ function populateTablesAndFilters () {
 		header: "Rarity",
 		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown"]
 	});
+	const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"]});
 	const categoryFilter = new Filter({
 		header: "Category",
@@ -73,7 +74,7 @@ function populateTablesAndFilters () {
 		deselFn: deselectFilter("category", "Specific Variant")
 	});
 
-	const filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, attunementFilter, categoryFilter);
+	const filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter);
 	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
 
 	for (let i = 0; i < itemList.length; i++) {
@@ -90,6 +91,7 @@ function populateTablesAndFilters () {
 
 		// for filter to use
 		curitem._fTier = tierTags;
+		curitem._fProperties = curitem.property ? curitem.property.split(",").map(p => curitem._allPropertiesPtr[p].name).filter(n => n) : [];
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
 			<li ${FLTR_ID}=${i}>
@@ -105,6 +107,7 @@ function populateTablesAndFilters () {
 		sourceFilter.addIfAbsent(source);
 		curitem.procType.forEach(t => typeFilter.addIfAbsent(t));
 		tierTags.forEach(tt => tierFilter.addIfAbsent(tt));
+		curitem._fProperties.forEach(p => propertyFilter.addIfAbsent(p));
 	}
 	// populate table
 	$("ul.list.mundane").append(liList.mundane);
@@ -144,6 +147,7 @@ function populateTablesAndFilters () {
 				typeFilter.toDisplay(f, i.procType) &&
 				tierFilter.toDisplay(f, i._fTier) &&
 				rarityFilter.toDisplay(f, i.rarity) &&
+				propertyFilter.toDisplay(f, i._fProperties) &&
 				attunementFilter.toDisplay(f, i.attunementCategory) &&
 				categoryFilter.toDisplay(f, i.category);
 		}

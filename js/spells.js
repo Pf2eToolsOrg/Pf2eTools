@@ -471,3 +471,13 @@ function loadhash (id) {
 	const spell = spellList[id];
 	$pageContent.html(EntryRenderer.spell.getRenderedString(spell, renderer));
 }
+
+function handleUnknownHash (link, sub) {
+	const src = Object.keys(loadedSources).find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
+	if (src) {
+		loadSource(JSON_LIST_NAME, (spells) => {
+			addSpells(spells);
+			hashchange();
+		})(src, "yes");
+	}
+}
