@@ -1147,8 +1147,8 @@ EntryRenderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		if (!this.linkCache[page]) this.linkCache[page] = [];
-		const pageLvl = this.linkCache[page];
+		if (!EntryRenderer.hover.linkCache[page]) EntryRenderer.hover.linkCache[page] = [];
+		const pageLvl = EntryRenderer.hover.linkCache[page];
 		if (!pageLvl[source]) pageLvl[source] = [];
 		const srcLvl = pageLvl[source];
 		srcLvl[hash] = item;
@@ -1159,7 +1159,7 @@ EntryRenderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		return this.linkCache[page][source][hash];
+		return EntryRenderer.hover.linkCache[page][source][hash];
 	},
 
 	_isCached: (page, source, hash) => {
@@ -1167,7 +1167,7 @@ EntryRenderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		return this.linkCache[page] && this.linkCache[page][source] && this.linkCache[page][source][hash];
+		return EntryRenderer.hover.linkCache[page] && EntryRenderer.hover.linkCache[page][source] && EntryRenderer.hover.linkCache[page][source][hash];
 	},
 
 	_makeWindow: () => {
