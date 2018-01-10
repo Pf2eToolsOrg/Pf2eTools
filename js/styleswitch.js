@@ -167,6 +167,10 @@ table.stats div.statsBlockInsetReadaloud {
 .hoverbox table.summary th {
 	color: black;
 }
+
+.header-tools {
+	color: #e0e0e0;
+}
 `;
 const NIGHT_CSS =
 	`
@@ -432,6 +436,10 @@ table.stats div.statsBlockInsetReadaloud {
 
 .hoverbox table.summary th {
 	color: grey;
+}
+
+.header-tools {
+	color: #696969; /* lol */
 }
 `;
 
