@@ -313,7 +313,7 @@ function EntryRenderer () {
 			function getStyleString () {
 				const styleClasses = [];
 				styleClasses.push(_getStyleClass(entry.source));
-				if (inlineTitle && entry.name !== undefined) {
+				if (inlineTitle) {
 					if (self._subVariant) styleClasses.push(EntryRenderer.HEAD_2_SUB_VARIANT);
 					else styleClasses.push(EntryRenderer.HEAD_2);
 				} else styleClasses.push(depth === -1 ? EntryRenderer.HEAD_NEG_1 : depth === 0 ? EntryRenderer.HEAD_0 : EntryRenderer.HEAD_1);
@@ -1179,6 +1179,10 @@ EntryRenderer.hover = {
 	},
 
 	_makeWindow: () => {
+		if (!EntryRenderer.hover._curHovering) {
+			reset();
+			return;
+		}
 		const winW = EntryRenderer.hover._curHovering.winW;
 		const winH = EntryRenderer.hover._curHovering.winH;
 		const ele = EntryRenderer.hover._curHovering.ele;
@@ -1230,8 +1234,12 @@ EntryRenderer.hover = {
 		}
 
 		$(ele).css("cursor", "");
-		EntryRenderer.hover._showInProgress = false;
-		EntryRenderer.hover._curHovering = null;
+		reset();
+
+		function reset () {
+			EntryRenderer.hover._showInProgress = false;
+			EntryRenderer.hover._curHovering = null;
+		}
 	},
 
 	_showInProgress: false,
