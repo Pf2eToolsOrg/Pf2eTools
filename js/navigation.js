@@ -30,7 +30,7 @@ function currentPage () {
 }
 
 function navigation () {
-	LI('navbar', '5etools.html', '5eTools');
+	LI('navbar', '5etools.html', '5etools');
 	LI('navbar', 'rules.html', 'Rules');
 
 	LIDropdown('navbar', 'players', 'dropdown');
