@@ -1439,7 +1439,18 @@ UrlUtil.getCurrentPage = function () {
  * @param href the link
  */
 UrlUtil.link = function (href) {
-	if (IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}`;
+	function getVersion () {
+		// TODO temporary hack -- ideally copy version number into "_IS_DEPLOYED" during deploy and use that
+		try {
+			const scripts = document.getElementsByTagName("script");
+			const withVer = Array.from(scripts).map(s => s.src).find(src => src.includes("?v="));
+			return withVer.split("=")[1];
+		} catch (e) {
+			return "-1";
+		}
+	}
+
+	if (IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}?ver=${getVersion()}`;
 	return href;
 };
 
