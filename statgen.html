@@ -7,14 +7,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--
-	XML data was compiled by a reddit community for use with the "Fight Club 5" app.
-	Google "5e xml files" for more info.
-
-	Feel free to use, edit, and redistribute this as you wish.
-	I don't own any of the XML data anyway.
--->
-
 	<title>Statgen - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -29,113 +21,119 @@
 </head>
 
 <body>
-	<header class="hidden-xs hidden-sm">
-		<div class="container">
-			<h1>Statgen</h1>
-			<p>Change method on the left, refer to method that appears on the right.</p>
-		</div>
-	</header>
+<header class="hidden-xs hidden-sm">
+	<div class="container">
+		<h1>Statgen</h1>
+		<p>Change method on the left, refer to method that appears on the right.</p>
+	</div>
+</header>
 <nav class="container" id="navigation">
-    <ul class="nav nav-pills" id="navbar">
-    </ul>
+	<ul class="nav nav-pills" id="navbar">
+	</ul>
 </nav>
-	<main class="container bodyContent">
+<main class="container bodyContent">
 
-		<div class="row">
-			<div class="col-sm-3">
-				<nav>
-					<ul class="nav" id="rolltabs">
-						<li role="presentation"><a href="#rolled">Rolling</a></li>
-						<li role="presentation"><a href="#array">Array</a></li>
-						<li role="presentation"><a href="#pointbuy">Point Buy</a></li>
-					</ul>
-				</nav>
-			</div>
-			<div class="col-sm-9 statmethod" id="rolled" style="display: none">
-				<h3>Rolled Stats</h3>
-				<button type="button" id="rollbutton" class="btn btn-default">Roll Stats</button>
-				<h3 id="rolls">
-				</h3>
-				<p>Click the button to roll for your stats. 4d6 are rolled with the lowest of the set discarded. This is done for each ability score. Assign these numbers to your abilities as desired. As this is based on your browser's JavaScript random number generator,
-					it cannot be considered at all "truly" random, but for most purposes can be considered "random enough."</p>
-			</div>
-			<div class="col-sm-9 statmethod" id="array" style="display: none">
-				<h3>Standard Array</h3>
-				<h4>15, 14, 13, 12, 10, 8</h4>
-				<p>Assign these numbers to your abilities as desired.</p>
-			</div>
-			<div class="col-sm-9 statmethod" id="pointbuy" style="display: none">
-				<h3>Point Buy</h3>
-				<label>Budget: <input id="budget" type="number" min="10" value="27"></label>
-				<label>Remaining: <input id="remaining" type="number" min="10" value="27" readonly></label>
-				<button type="button" id="reset" class="btn btn-default">Reset</button>
-				<table>
-					<tr><td></td><td>Base</td><td>Racial</td><td>Total</td><td>Mod</td><td class="choose"></td></tr>
-					<tr id="str">
-						<td>STR</td>
-						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-						<td><input type="number" class="racial" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="checkbox" class="choose"></td>
-					</tr>
-					<tr id="dex">
-						<td>DEX</td>
-						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-						<td><input type="number" class="racial" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="checkbox" class="choose"></td>
-					</tr>
-					<tr id="con">
-						<td>CON</td>
-						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-						<td><input type="number" class="racial" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="checkbox" class="choose"></td>
-					</tr>
-					<tr id="int">
-						<td>INT</td>
-						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-						<td><input type="number" class="racial" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="checkbox" class="choose"></td>
-					</tr>
-					<tr id="wis">
-						<td>WIS</td>
-						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-						<td><input type="number" class="racial" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="checkbox" class="choose"></td>
-					</tr>
-					<tr id="cha">
-						<td>CHA</td>
-						<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-						<td><input type="number" class="racial" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="number" readonly></td>
-						<td><input type="checkbox" class="choose"></td>
-					</tr>
-				</table>
-				<select id="race"></select>
-				<p id="choose"></p>
-			</div>
+	<div class="row">
+		<div class="col-sm-3">
+			<nav>
+				<ul class="nav" id="rolltabs">
+					<li role="presentation"><a href="#rolled">Rolling</a></li>
+					<li role="presentation"><a href="#array">Array</a></li>
+					<li role="presentation"><a href="#pointbuy">Point Buy</a></li>
+				</ul>
+			</nav>
 		</div>
-	</main>	<!--5ETOOLS_SCRIPT_ANCHOR-->
-	<!--
-	All the embedded crap.
-	Would load it in but I want this for offline use too
-    -->
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/omnisearch.js"></script>
-	<script type="text/javascript" src="js/statgen.js"></script>
-	<script type="text/javascript" src="lib/droll.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
-	<script type="text/javascript" src="lib/elasticlunr.js"></script>
+		<div class="col-sm-9 statmethod" id="rolled" style="display: none">
+			<h3>Rolled Stats</h3>
+			<button type="button" id="rollbutton" class="btn btn-default">Roll Stats</button>
+			<h3 id="rolls">
+			</h3>
+			<p>Click the button to roll for your stats. 4d6 are rolled with the lowest of the set discarded. This is
+				done for each ability score. Assign these numbers to your abilities as desired. As this is based on your
+				browser's JavaScript random number generator,
+				it cannot be considered at all "truly" random, but for most purposes can be considered "random
+				enough."</p>
+		</div>
+		<div class="col-sm-9 statmethod" id="array" style="display: none">
+			<h3>Standard Array</h3>
+			<h4>15, 14, 13, 12, 10, 8</h4>
+			<p>Assign these numbers to your abilities as desired.</p>
+		</div>
+		<div class="col-sm-9 statmethod" id="pointbuy" style="display: none">
+			<h3>Point Buy</h3>
+			<label>Budget: <input id="budget" type="number" min="10" value="27"></label>
+			<label>Remaining: <input id="remaining" type="number" min="10" value="27" readonly></label>
+			<button type="button" id="reset" class="btn btn-default">Reset</button>
+			<table>
+				<tr>
+					<td></td>
+					<td>Base</td>
+					<td>Racial</td>
+					<td>Total</td>
+					<td>Mod</td>
+					<td class="choose"></td>
+				</tr>
+				<tr id="str">
+					<td>STR</td>
+					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+					<td><input type="number" class="racial" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="checkbox" class="choose"></td>
+				</tr>
+				<tr id="dex">
+					<td>DEX</td>
+					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+					<td><input type="number" class="racial" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="checkbox" class="choose"></td>
+				</tr>
+				<tr id="con">
+					<td>CON</td>
+					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+					<td><input type="number" class="racial" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="checkbox" class="choose"></td>
+				</tr>
+				<tr id="int">
+					<td>INT</td>
+					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+					<td><input type="number" class="racial" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="checkbox" class="choose"></td>
+				</tr>
+				<tr id="wis">
+					<td>WIS</td>
+					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+					<td><input type="number" class="racial" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="checkbox" class="choose"></td>
+				</tr>
+				<tr id="cha">
+					<td>CHA</td>
+					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+					<td><input type="number" class="racial" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="number" readonly></td>
+					<td><input type="checkbox" class="choose"></td>
+				</tr>
+			</table>
+			<select id="race"></select>
+			<p id="choose"></p>
+		</div>
+	</div>
+</main>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/statgen.js"></script>
+<script type="text/javascript" src="lib/droll.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 
 </html>

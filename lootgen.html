@@ -21,54 +21,58 @@
 </head>
 
 <body>
-	<header class="hidden-xs hidden-sm">
-		<div class="container">
-			<h1>Loot Gen</h1>
-			<p>Choose Challenge Rating, if it's a hoard or not, then Roll Loot!</p>
-		</div>
-	</header>
+<header class="hidden-xs hidden-sm">
+	<div class="container">
+		<h1>Loot Gen</h1>
+		<p>Choose Challenge Rating, if it's a hoard or not, then Roll Loot!</p>
+	</div>
+</header>
 <nav class="container" id="navigation">
-    <ul class="nav nav-pills" id="navbar">
-    </ul>
+	<ul class="nav nav-pills" id="navbar">
+	</ul>
 </nav>
-	<main class="container bodyContent">
-		<div class="row">
-			<div class="col-sm-5">
-				<form id="controls">
-					<div class="input-group">
-						<span class="input-group-addon">Challenge Rating</span>
-						<select class="form-control" id="cr">
-							<option value="0" selected>0-4</option>
-							<option value="5">5-10</option>
-							<option value="11">11-16</option>
-							<option value="17">17+</option>
-						</select>
-						<span class="input-group-addon" style="vertical-align: bottom;"><label for="hoard">Hoard? <input type="checkbox" id="hoard" value="0" style="vertical-align: bottom;"></label></span>
-					</div><br>
-					<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
-					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
-					<p><small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small></p>
-				</form>
-				<div id="classtable"></div>
-			</div>
-			<div class="col-sm-7">
-				<h4>Loot</h4>
-				<div id="lootoutput"></div>
-			</div>
+<main class="container bodyContent">
+	<div class="row">
+		<div class="col-sm-5">
+			<form id="controls">
+				<div class="input-group">
+					<span class="input-group-addon">Challenge Rating</span>
+					<select class="form-control" id="cr">
+						<option value="0" selected>0-4</option>
+						<option value="5">5-10</option>
+						<option value="11">11-16</option>
+						<option value="17">17+</option>
+					</select>
+					<span class="input-group-addon" style="vertical-align: bottom;"><label for="hoard">Hoard? <input
+							type="checkbox" id="hoard" value="0" style="vertical-align: bottom;"></label></span>
+				</div>
+				<br>
+				<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
+				<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right" id="clear">Clear</button>
+				<p>
+					<small>Based on the tables and rules in the <em>Dungeon Master's Guide</em>, pages 133-149.</small>
+				</p>
+			</form>
+			<div id="classtable"></div>
 		</div>
-	</main>
-	<footer class="container">
+		<div class="col-sm-7">
+			<h4>Loot</h4>
+			<div id="lootoutput"></div>
+		</div>
+	</div>
+</main>
+<footer class="container">
 
-	</footer>	<!--5ETOOLS_SCRIPT_ANCHOR-->
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/omnisearch.js"></script>
-	<script type="text/javascript" src="js/entryrender.js"></script>
-	<script type="text/javascript" src="js/lootgen.js"></script>
-	<script type="text/javascript" src="lib/droll.js"></script>
-	<script type="text/javascript" src="lib/list.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
-	<script type="text/javascript" src="lib/elasticlunr.js"></script>
+</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/lootgen.js"></script>
+<script type="text/javascript" src="lib/droll.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 
 </html>

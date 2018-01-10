@@ -18,74 +18,90 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
-	<style> .col-xs-4 {  padding-right: 12px;}</style>
+	<style>
+		.col-xs-4 {
+			padding-right: 12px;
+		}
+	</style>
 </head>
 
 <body>
-	<div class="viewport-wrapper">
-		<header class="hidden-xs hidden-sm">
-			<div class="container">
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm">
+		<div class="container">
 
-				<h1>Eldritch Invocations List</h1>
-				<p>Search by name on the left, click invocation name to display on the right.</p>
-			</div>
-		</header>
-<nav class="container" id="navigation">
-    <ul class="nav nav-pills" id="navbar">
-    </ul>
-</nav>
-
-		<div class="container view-col-wrapper">
-			<div class="view-col" id="listcontainer">
-				<div class="input-group" id="filter-search-input-group">
-					<input type="search" id="search" class="search form-control" placeholder="Find invocation...">
-					<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
-				</div>
-				<div id="filtertools" class="sortlabel btn-group">
-					<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-					<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
-					<button class="col-xs-1 col-xs-1-2 sort btn btn-default btn-xs" type="button" data-sort="pact">Pact</button>
-					<button class="col-xs-2 col-xs-2-4 sort btn btn-default btn-xs" type="button" data-sort="patron">Patron</button>
-					<button class="col-xs-2 col-xs-2-7 sort btn btn-default btn-xs" type="button" data-sort="spell">Spell</button>
-				</div>
-
-				<ul id="invocationsList" class="list invocations">
-					<!-- populated by javascript -->
-				</ul>
-			</div>
-
-			<div id="contentwrapper" class="view-col">
-				<table id="pagecontent" class="stats">
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-					<tr>
-						<th class="name" colspan="6">Name</th>
-					</tr>
-					<tr>
-						<td id="prerequisites" colspan="6" class="psi-order-and-talent">Prerequisites: <span id="order"></span> <span id="type"></span></td>
-					</tr>
-					<tr><td class="divider" colspan="6"><div></div></td></tr>
-					<tr>
-						<td colspan="6" id="text"></td>
-					</tr>
-					<tr id="source"></tr>
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-				</table>
-			</div>
+			<h1>Eldritch Invocations List</h1>
+			<p>Search by name on the left, click invocation name to display on the right.</p>
 		</div>
-	</div>	<!--5ETOOLS_SCRIPT_ANCHOR-->
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/omnisearch.js"></script>
-	<script type="text/javascript" src="js/filter.js"></script>
-	<script type="text/javascript" src="js/history.js"></script>
-	<script type="text/javascript" src="js/invocations.js"></script>
-	<script type="text/javascript" src="lib/list.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
-	<script type="text/javascript" src="lib/elasticlunr.js"></script>
+	</header>
+	<nav class="container" id="navigation">
+		<ul class="nav nav-pills" id="navbar">
+		</ul>
+	</nav>
+
+	<div class="container view-col-wrapper">
+		<div class="view-col" id="listcontainer">
+			<div class="input-group" id="filter-search-input-group">
+				<input type="search" id="search" class="search form-control" placeholder="Find invocation...">
+				<span class="input-group-btn"><button class="btn btn-default" type="button"
+													  id="reset">Reset</button></span>
+			</div>
+			<div id="filtertools" class="sortlabel btn-group">
+				<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">
+					Source
+				</button>
+				<button class="col-xs-1 col-xs-1-2 sort btn btn-default btn-xs" type="button" data-sort="pact">Pact
+				</button>
+				<button class="col-xs-2 col-xs-2-4 sort btn btn-default btn-xs" type="button" data-sort="patron">
+					Patron
+				</button>
+				<button class="col-xs-2 col-xs-2-7 sort btn btn-default btn-xs" type="button" data-sort="spell">Spell
+				</button>
+			</div>
+
+			<ul id="invocationsList" class="list invocations">
+				<!-- populated by javascript -->
+			</ul>
+		</div>
+
+		<div id="contentwrapper" class="view-col">
+			<table id="pagecontent" class="stats">
+				<tr>
+					<th class="border" colspan="6"></th>
+				</tr>
+				<tr>
+					<th class="name" colspan="6">Name</th>
+				</tr>
+				<tr>
+					<td id="prerequisites" colspan="6" class="psi-order-and-talent">Prerequisites: <span
+							id="order"></span> <span id="type"></span></td>
+				</tr>
+				<tr>
+					<td class="divider" colspan="6">
+						<div></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6" id="text"></td>
+				</tr>
+				<tr id="source"></tr>
+				<tr>
+					<th class="border" colspan="6"></th>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/invocations.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
 
 </body>
 

@@ -7,14 +7,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--
-	XML data was compiled by a reddit community for use with the "Fight Club 5" app.
-	Google "5e xml files" for more info.
-
-	Feel free to use, edit, and redistribute this as you wish.
-	I don't own any of the XML data anyway.
--->
-
 	<title>Stat Block Converter - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -49,14 +41,17 @@
 			<p>Input stat block on left, hit parse, copy JSON from right.</p>
 		</div>
 	</header>
-<nav class="container" id="navigation">
-    <ul class="nav nav-pills" id="navbar">
-    </ul>
-</nav>
+	<nav class="container" id="navigation">
+		<ul class="nav nav-pills" id="navbar">
+		</ul>
+	</nav>
 	<main class="bodyContent view-col-wrapper">
 
 		<div class="view-col">
-			<h3>Statblock <button id="parsestatblock" class="btn">Parse</button> <button id="parsestatblockadd" class="btn">Parse and Add</button></h3>
+			<h3>Statblock
+				<button id="parsestatblock" class="btn">Parse</button>
+				<button id="parsestatblockadd" class="btn">Parse and Add</button>
+			</h3>
 			<pre id="statblock" class="inputArea">
 Mammon
 Huge fiend (devil), lawful evil
@@ -93,7 +88,8 @@ Deep Pockets (3 actions). Mammon recharges his Your Weight In Gold ability.
 			</pre>
 			<select id="source"></select>
 			<input type="text" id="customsourcein" placeholder="Custom source">
-			<button id="addsource" class="btn btn-sm">Save</button><br>
+			<button id="addsource" class="btn btn-sm">Save</button>
+			<br>
 			<small>This parser is very particular about its input. Use at your own risk.</small>
 		</div>
 
@@ -114,5 +110,4 @@ Deep Pockets (3 actions). Mammon recharges his Your Weight In Gold ability.
 	<script type="text/javascript" src="lib/ace.js"></script>
 </div>
 </body>
-
 </html>
