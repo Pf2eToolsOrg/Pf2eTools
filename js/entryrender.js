@@ -337,7 +337,7 @@ function EntryRenderer () {
 			}
 		}
 
-		function _getStyleClass(source) {
+		function _getStyleClass (source) {
 			const outList = [];
 			if (isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
 			if (source === SRC_HOMEBREW) outList.push(CLSS_HOMEBREW_SOURCE);
