@@ -70,7 +70,8 @@ function loadhash (id) {
 	const sourceAbv = Parser.sourceJsonToAbv(source);
 	const sourceFull = Parser.sourceJsonToFull(source);
 	const renderStack = [];
-	renderer.recursiveEntryRender(curbg, renderStack, 1);
+	const entryList = {type: "entries", entries: curbg.entries};
+	renderer.recursiveEntryRender(entryList, renderStack, 1);
 	$("th.name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
 	$("tr#traits").after(`<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>`);
 	$("#source").html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${curbg.page}</td>`);
