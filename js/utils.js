@@ -1509,7 +1509,7 @@ DataUtil = {
 
 		const procUrl = UrlUtil.link(url);
 		if (this._loaded[procUrl]) {
-			handleAlreadyLoaded(url);
+			handleAlreadyLoaded(procUrl);
 			return;
 		}
 
