@@ -156,9 +156,7 @@ function loadhash (jsonIndex) {
 
 	function loadTalent () {
 		STATS_ORDER_AND_TYPE.innerHTML = Parser.psiTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
-		const renderStack = [];
-		renderer.recursiveEntryRender(({entries: selectedPsionic.entries, type: "entries"}), renderStack);
-		STATS_TEXT.innerHTML = renderStack.join("");
+		STATS_TEXT.innerHTML = EntryRenderer.psionic.getTalentText(selectedPsionic, renderer);
 	}
 
 	function loadDiscipline () {

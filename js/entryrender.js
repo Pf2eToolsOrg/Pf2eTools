@@ -1096,6 +1096,12 @@ EntryRenderer.psionic = {
 		}
 	},
 
+	getTalentText: (psionic, renderer) => {
+		const renderStack = [];
+		renderer.recursiveEntryRender(({entries: psionic.entries, type: "entries"}), renderStack);
+		return renderStack.join("");
+	},
+
 	getDisciplineText: (psionic, renderer) => {
 		const modeStringArray = [];
 		for (let i = 0; i < psionic.modes.length; ++i) {
