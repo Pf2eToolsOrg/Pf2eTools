@@ -34,7 +34,7 @@ pipeline:
       pull: true
       secrets: [ discord_webhook_id, discord_webhook_token ]
       message: >
-       5eTools test of {{ build.number }} to {{ build.branch }} by
+       5etools test of {{ build.number }} to {{ build.branch }} by
        {{ build.author }} finished with {{ build.status }}.
        ({{ build.link }})
       when:
@@ -109,7 +109,7 @@ pipeline:
       pull: true
       secrets: [ discord_webhook_id, discord_webhook_token ]
       message: >
-       5eTools deployment of {{ build.number }} from {{ build.branch }} by
+       5etools deployment of {{ build.number }} from {{ build.branch }} by
        {{ build.author }} finished with {{ build.status }}.
        ({{ build.link }})
       when:

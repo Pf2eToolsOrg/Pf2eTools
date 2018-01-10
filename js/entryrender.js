@@ -78,7 +78,8 @@ function EntryRenderer () {
 						if (entry.name) textStack.push(`<p class="list-name">${entry.name}</p>`);
 						textStack.push(`<ul ${entry.style ? `class="${entry.style}"` : ""}>`);
 						for (let i = 0; i < entry.items.length; i++) {
-							this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${isNonstandardSource(entry.items[i].source) ? `class="${CLSS_NON_STANDARD_SOURCE}"` : ""}>`, "</li>");
+							const style = _getStyleClass(entry.items[i].source);
+							this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${style ? `class="${style}"` : ""}>`, "</li>");
 						}
 						textStack.push("</ul>");
 					}
@@ -311,7 +312,7 @@ function EntryRenderer () {
 
 			function getStyleString () {
 				const styleClasses = [];
-				if (isNonstandardSource(entry.source)) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+				styleClasses.push(_getStyleClass(entry.source));
 				if (inlineTitle && entry.name !== undefined) {
 					if (self._subVariant) styleClasses.push(EntryRenderer.HEAD_2_SUB_VARIANT);
 					else styleClasses.push(EntryRenderer.HEAD_2);
@@ -334,6 +335,13 @@ function EntryRenderer () {
 				if (entry.prerequisite) return `<span class="prerequisite">Prerequisite: ${entry.prerequisite}</span>`;
 				return "";
 			}
+		}
+
+		function _getStyleClass (source) {
+			const outList = [];
+			if (isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
+			if (source === SRC_HOMEBREW) outList.push(CLSS_HOMEBREW_SOURCE);
+			return outList.join(" ");
 		}
 
 		function renderLink (self, entry) {
@@ -1147,8 +1155,8 @@ EntryRenderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		if (!this.linkCache[page]) this.linkCache[page] = [];
-		const pageLvl = this.linkCache[page];
+		if (!EntryRenderer.hover.linkCache[page]) EntryRenderer.hover.linkCache[page] = [];
+		const pageLvl = EntryRenderer.hover.linkCache[page];
 		if (!pageLvl[source]) pageLvl[source] = [];
 		const srcLvl = pageLvl[source];
 		srcLvl[hash] = item;
@@ -1159,7 +1167,7 @@ EntryRenderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		return this.linkCache[page][source][hash];
+		return EntryRenderer.hover.linkCache[page][source][hash];
 	},
 
 	_isCached: (page, source, hash) => {
@@ -1167,7 +1175,7 @@ EntryRenderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		return this.linkCache[page] && this.linkCache[page][source] && this.linkCache[page][source][hash];
+		return EntryRenderer.hover.linkCache[page] && EntryRenderer.hover.linkCache[page][source] && EntryRenderer.hover.linkCache[page][source][hash];
 	},
 
 	_makeWindow: () => {

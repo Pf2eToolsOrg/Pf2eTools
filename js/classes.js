@@ -60,20 +60,31 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
 	});
+	// cache this, since it gets wiped by brew loading
+	const loadHash = window.location.hash;
 	addData(data);
 
 	const rawBrew = storage.getItem(HOMEBREW_STORAGE);
 	if (rawBrew) {
 		try {
 			homebrew = JSON.parse(rawBrew);
+			if (!homebrew.class && !homebrew.subclass) {
+				// if there's nothing usable in the stored brew, purge it
+				purgeBrew();
+			}
 			addData(homebrew);
 			addSubclassData(homebrew);
+			window.location.hash = loadHash;
 		} catch (e) {
 			// on error, purge all brew and reset hash
-			storage.removeItem(HOMEBREW_STORAGE);
-			homebrew = null;
-			window.location.hash = "";
+			purgeBrew();
 		}
+	}
+
+	function purgeBrew () {
+		storage.removeItem(HOMEBREW_STORAGE);
+		homebrew = null;
+		window.location.hash = "";
 	}
 
 	initHistory();
@@ -88,7 +99,7 @@ function addData (data) {
 	}
 
 	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
-	data.class.filter(c => isNonstandardSource(c.source)).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
+	data.class.filter(c => isNonstandardSource(c.source) || c.source === SRC_HOMEBREW).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
 
 	let i = 0;
 	if (!classes) {
@@ -124,7 +135,6 @@ function addSubclassData (data) {
 		// get the class
 		const c = classes.find(c => c.name.toLowerCase() === subClass.class.toLowerCase());
 		if (!c) {
-			// TODO this is a little clunky
 			alert(`Could not add subclass; could not find class with name: ${subClass.class}`);
 			return;
 		}
@@ -134,6 +144,7 @@ function addSubclassData (data) {
 		// sort subclasses
 		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
 	});
+	_freshLoad();
 }
 
 function loadhash (id) {
@@ -201,7 +212,7 @@ function loadhash (id) {
 			colHeaders.append(`<th class="centred-col" ${subclassData}>${lbl}</th>`)
 		}
 
-		for (let j = 0; j < 20; j++) {
+		for (let j = 0; j < tGroup.rows.length; j++) {
 			const tr = $(`#level${j + 1}`);
 			levelTrs[j] = tr;
 			for (let k = 0; k < tGroup.rows[j].length; k++) {
@@ -218,7 +229,7 @@ function loadhash (id) {
 	const renderStack = [];
 	const topBorder = $("#ftTopBorder");
 	let subclassIndex = 0; // the subclass array is not 20 elements
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < levelTrs.length; i++) {
 		// track class table feature names
 		const tblLvlFeatures = levelTrs[i].find(".features");
 		const featureNames = [];
@@ -262,6 +273,7 @@ function loadhash (id) {
 						const styleClasses = [CLSS_SUBCLASS_FEATURE];
 						const hideSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
 						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+						if (subClass.source === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`, true);
 					}
 				}
@@ -307,6 +319,7 @@ function loadhash (id) {
 		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+		if (subClasses[i].source === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 		const pillText = hasBeenReprinted(subClasses[i].shortName, subClasses[i].source) ? `${subClasses[i].shortName} (${Parser.sourceJsonToAbv(subClasses[i].source)})` : subClasses[i].shortName;
 		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
 		pill.click(function () {
@@ -757,7 +770,7 @@ function manageBrew () {
 				c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
 			}
 			refreshBrewList();
-			hashchange();
+			window.location.hash = "";
 		}
 	}
 }
