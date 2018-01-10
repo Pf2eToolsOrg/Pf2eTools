@@ -51,6 +51,7 @@ STL_DISPLAY_NONE = "display: none";
 FLTR_ID = "filterId";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
+CLSS_HOMEBREW_SOURCE = "refreshing-brew";
 CLSS_SUBCLASS_FEATURE = "subclass-feature";
 
 ATB_DATA_LIST_SEP = "||";
@@ -1056,6 +1057,8 @@ SRC_FEF_3PP = "FEF" + SRC_3PP_SUFFIX;
 SRC_GDoF_3PP = "GDoF" + SRC_3PP_SUFFIX;
 SRC_ToB_3PP = "ToB" + SRC_3PP_SUFFIX;
 
+SRC_HOMEBREW = "Homebrew";
+
 AL_PREFIX = "Adventurers League: ";
 AL_PREFIX_SHORT = "AL: ";
 PS_PREFIX = "Plane Shift: ";
@@ -1145,6 +1148,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_CC_3PP] = "Critter Compendium" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_FEF_3PP] = "Fifth Edition Foes" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_GDoF_3PP] = "Gem Dragons of Faerûn" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts" + PP3_SUFFIX;
+Parser.SOURCE_JSON_TO_FULL[SRC_HOMEBREW] = "Homebrew";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
@@ -1226,6 +1230,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_CC_3PP] = "CC (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_FEF_3PP] = "FEF (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_GDoF_3PP] = "GDoF (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
+Parser.SOURCE_JSON_TO_ABV[SRC_HOMEBREW] = "Brew";
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
