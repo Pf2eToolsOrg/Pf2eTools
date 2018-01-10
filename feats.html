@@ -7,14 +7,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--
-	XML data was compiled by a reddit community for use with the "Fight Club 5" app.
-	Google "5e xml files" for more info.
-
-	Feel free to use, edit, and redistribute this as you wish.
-	I don't own any of the XML data anyway.
--->
-
 	<title>Feats - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -29,71 +21,78 @@
 </head>
 
 <body>
-	<div class="viewport-wrapper">
-		<header class="hidden-xs hidden-sm">
-			<div class="container">
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm">
+		<div class="container">
 
-				<h1>Feats List</h1>
-				<p>Search by name on the left, click feat name to display on the right.</p>
-			</div>
-		</header>
-<nav class="container" id="navigation">
-    <ul class="nav nav-pills" id="navbar">
-    </ul>
-</nav>
+			<h1>Feats List</h1>
+			<p>Search by name on the left, click feat name to display on the right.</p>
+		</div>
+	</header>
+	<nav class="container" id="navigation">
+		<ul class="nav nav-pills" id="navbar">
+		</ul>
+	</nav>
 
-		<div class="container view-col-wrapper">
-			<div class="view-col" id="listcontainer">
-				<div class="input-group" id="filter-search-input-group">
-					<input type="search" id="search" class="search form-control" placeholder="Find feat...">
-					<span class="input-group-btn">
+	<div class="container view-col-wrapper">
+		<div class="view-col" id="listcontainer">
+			<div class="input-group" id="filter-search-input-group">
+				<input type="search" id="search" class="search form-control" placeholder="Find feat...">
+				<span class="input-group-btn">
 						<button class="btn btn-default" type="button" id="reset">Reset</button>
 					</span>
-				</div>
-				<div id="filtertools" class="sortlabel btn-group">
-					<button class="col-xs-3 col-xs-3-8 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-					<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
-					<button class="col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="ability">Ability</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="prerequisite">Prerequisite</button>
-				</div>
+			</div>
+			<div id="filtertools" class="sortlabel btn-group">
+				<button class="col-xs-3 col-xs-3-8 sort btn btn-default btn-xs" type="button" data-sort="name">Name
+				</button>
+				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source">
+					Source
+				</button>
+				<button class="col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="ability">
+					Ability
+				</button>
+				<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="prerequisite">
+					Prerequisite
+				</button>
+			</div>
 
-				<ul class="list feats"></ul>
-			</div>
-			<div id="contentwrapper" class="view-col">
-				<table id="pagecontent" class="stats">
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-					<tr>
-						<th class="name" colspan="6">Name</th>
-					</tr>
-					<tr>
-						<td id="prerequisite" colspan="6">Prerequisite</td>
-					</tr>
-					<tr id="text">
-						<td class="divider" colspan="6">
-							<div></div>
-						</td>
-					</tr>
-					<tr id="source"></tr>
-					<tr>
-						<th class="border" colspan="6"></th>
-					</tr>
-				</table>
-			</div>
+			<ul class="list feats"></ul>
 		</div>
-	</div>	<!--5ETOOLS_SCRIPT_ANCHOR-->
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/omnisearch.js"></script>
-	<script type="text/javascript" src="js/filter.js"></script>
-	<script type="text/javascript" src="js/entryrender.js"></script>
-	<script type="text/javascript" src="js/history.js"></script>
-	<script type="text/javascript" src="js/feats.js"></script>
-	<script type="text/javascript" src="lib/droll.js"></script>
-	<script type="text/javascript" src="lib/list.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
-	<script type="text/javascript" src="lib/elasticlunr.js"></script>
+		<div id="contentwrapper" class="view-col">
+			<table id="pagecontent" class="stats">
+				<tr>
+					<th class="border" colspan="6"></th>
+				</tr>
+				<tr>
+					<th class="name" colspan="6">Name</th>
+				</tr>
+				<tr>
+					<td id="prerequisite" colspan="6">Prerequisite</td>
+				</tr>
+				<tr id="text">
+					<td class="divider" colspan="6">
+						<div></div>
+					</td>
+				</tr>
+				<tr id="source"></tr>
+				<tr>
+					<th class="border" colspan="6"></th>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/feats.js"></script>
+<script type="text/javascript" src="lib/droll.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 
 </html>

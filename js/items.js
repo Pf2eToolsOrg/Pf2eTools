@@ -163,9 +163,9 @@ function populateTablesAndFilters () {
 	}
 
 	$("#filtertools").find("button.sort").on("click", function () {
-		$(this).attr("sortby", $(this).attr("sortby") === "asc" ? "desc" : "asc");
-		magiclist.sort($(this).attr("sort"), {order: $(this).attr("sortby"), sortFunction: sortItems});
-		mundanelist.sort($(this).attr("sort"), {order: $(this).attr("sortby"), sortFunction: sortItems});
+		$(this).data("sortby", $(this).data("sortby") === "asc" ? "desc" : "asc");
+		magiclist.sort($(this).data("sort"), {order: $(this).data("sortby"), sortFunction: sortItems});
+		mundanelist.sort($(this).data("sort"), {order: $(this).data("sortby"), sortFunction: sortItems});
 	});
 
 	$("#itemcontainer").find("h3").not(":has(input)").click(function () {
