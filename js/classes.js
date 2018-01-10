@@ -66,9 +66,8 @@ function onJsonLoad (data) {
 	if (rawBrew) {
 		try {
 			homebrew = JSON.parse(rawBrew);
-			homebrew.brew.forEach(brew => {
-				addData(brew);
-			});
+			addData(homebrew);
+			addSubclassData(homebrew);
 		} catch (e) {
 			// on error, purge all brew and reset hash
 			storage.removeItem(HOMEBREW_STORAGE);
@@ -81,6 +80,8 @@ function onJsonLoad (data) {
 }
 
 function addData (data) {
+	if (!data.class || !data.class.length) return;
+
 	// alphabetically sort subclasses
 	for (const c of data.class) {
 		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
@@ -113,6 +114,26 @@ function addData (data) {
 	classTable.append(tempString);
 	list.reIndex();
 	list.sort("name");
+}
+
+function addSubclassData (data) {
+	if (!data.subclass || !data.subclass.length) return;
+
+	const scData = data.subclass;
+	scData.forEach(subClass => {
+		// get the class
+		const c = classes.find(c => c.name.toLowerCase() === subClass.class.toLowerCase());
+		if (!c) {
+			// TODO this is a little clunky
+			alert(`Could not add subclass; could not find class with name: ${subClass.class}`);
+			return;
+		}
+
+		c.subclasses = c.subclasses.concat(subClass);
+
+		// sort subclasses
+		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+	});
 }
 
 function loadhash (id) {
@@ -632,14 +653,19 @@ function manageBrew () {
 	$body.append($overlay);
 
 	function refreshBrewList () {
+		function render (type, prop, deleteFn) {
+			homebrew[prop].forEach(j => {
+				const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
+					deleteFn(j.uniqueId);
+				});
+				$brewList.append($(`<p>`).append($btnDel).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}`));
+			});
+		}
+
 		$brewList.html("");
 		if (homebrew) {
-			homebrew.brew.forEach(j => {
-				const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
-					deleteBrew(j.uniqueId);
-				});
-				$brewList.append($(`<p>`).append($btnDel).append(`&nbsp;<b>${j.class.map(c => c.name).join(", ")} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}`));
-			});
+			render("Class", "class", deleteClassBrew);
+			render("Subclass", "subclass", deleteSubclassBrew);
 		}
 	}
 
@@ -650,43 +676,88 @@ function manageBrew () {
 		reader.onload = () => {
 			const text = reader.result;
 			const json = JSON.parse(text);
-			// ms timestamp ought to be unique enough
-			json.uniqueId = Date.now();
 
-			json.class.forEach(c => {
-				if (json.authors) {
-					if (!c.authors) {
-						c.authors = json.authors;
+			// prepare for storage
+			if (json.class) {
+				json.class.forEach(c => {
+					c.uniqueId = CryptUtil.md5(JSON.stringify(c));
+				});
+			} else json.class = [];
+			if (json.subclass) {
+				json.subclass.forEach(sc => {
+					sc.uniqueId = CryptUtil.md5(JSON.stringify(sc));
+				});
+			} else json.subclass = [];
+
+			// store
+			function checkAndAdd (prop) {
+				const areNew = [];
+				const existingIds = homebrew[prop].map(it => it.uniqueId);
+				json[prop].forEach(it => {
+					if (!existingIds.find(id => it.uniqueId === id)) {
+						homebrew[prop].push(it);
+						areNew.push(it);
 					}
-				}
-				c.uniqueId = json.uniqueId;
-			});
+				});
+				return areNew;
+			}
 
+			let classesToAdd = json.class;
+			let subclassesToAdd = json.subclass;
 			if (!homebrew) {
-				homebrew = { brew: [json] };
+				homebrew = json;
 			} else {
-				homebrew.brew = homebrew.brew.concat(json);
+				// only add if unique ID not already present
+				classesToAdd = checkAndAdd("class");
+				subclassesToAdd = checkAndAdd("subclass");
 			}
 			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
 
 			// reset the input
 			$(event.target).val("");
 
-			addData(json);
+			addData({class: classesToAdd});
+			addSubclassData({subclass: subclassesToAdd});
 
 			refreshBrewList();
 		};
 		reader.readAsText(input.files[0]);
 	}
 
-	function deleteBrew (uniqueId) {
-		const index = homebrew.brew.findIndex(it => it.uniqueId === uniqueId);
+	function deleteClassBrew (uniqueId) {
+		const index = homebrew.class.findIndex(it => it.uniqueId === uniqueId);
 		if (index >= 0) {
-			homebrew.brew.splice(index, 1);
+			homebrew.class.splice(index, 1);
 			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
 			refreshBrewList();
 			list.remove("uniqueid", uniqueId);
 			_freshLoad();
+		}
+	}
+
+	function deleteSubclassBrew (uniqueId) {
+		let subClass;
+		let index = 0;
+		for (; index < homebrew.subclass.length; ++index) {
+			if (homebrew.subclass[index].uniqueId === uniqueId) {
+				subClass = homebrew.subclass[index];
+				break;
+			}
+		}
+		if (subClass) {
+			const forClass = subClass.class;
+			homebrew.subclass.splice(index, 1);
+			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
+			refreshBrewList();
+			const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
+
+			const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
+			if (indexInClass) {
+				c.subclasses.splice(indexInClass, 1);
+				c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+			}
+			refreshBrewList();
+			hashchange();
 		}
 	}
 }
