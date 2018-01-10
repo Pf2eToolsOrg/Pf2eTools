@@ -838,7 +838,7 @@ EntryRenderer.item = {
 			const properties = item.property.split(",");
 			for (let i = 0; i < properties.length; i++) {
 				const prop = properties[i];
-				let a = item._propertyList[prop].name;
+				let a = item._allPropertiesPtr[prop].name;
 				if (prop === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
 				if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range}ft.)`;
 				if (prop === "RLD") a = `${a} (${item.reload} shots)`;
@@ -1007,7 +1007,7 @@ EntryRenderer.item = {
 
 				// bind pointer to propertyList
 				if (item.property) {
-					item._propertyList = propertyList;
+					item._allPropertiesPtr = propertyList;
 				}
 
 				// bake in types
