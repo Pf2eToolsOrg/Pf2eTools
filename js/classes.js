@@ -66,14 +66,22 @@ function onJsonLoad (data) {
 	if (rawBrew) {
 		try {
 			homebrew = JSON.parse(rawBrew);
+			if (!homebrew.class && !homebrew.subclass) {
+				// if there's nothing usable in the stored brew, purge it
+				purgeBrew();
+			}
 			addData(homebrew);
 			addSubclassData(homebrew);
 		} catch (e) {
 			// on error, purge all brew and reset hash
-			storage.removeItem(HOMEBREW_STORAGE);
-			homebrew = null;
-			window.location.hash = "";
+			purgeBrew();
 		}
+	}
+
+	function purgeBrew () {
+		storage.removeItem(HOMEBREW_STORAGE);
+		homebrew = null;
+		window.location.hash = "";
 	}
 
 	initHistory();
@@ -124,7 +132,6 @@ function addSubclassData (data) {
 		// get the class
 		const c = classes.find(c => c.name.toLowerCase() === subClass.class.toLowerCase());
 		if (!c) {
-			// TODO this is a little clunky
 			alert(`Could not add subclass; could not find class with name: ${subClass.class}`);
 			return;
 		}
