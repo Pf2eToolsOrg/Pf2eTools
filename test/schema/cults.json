@@ -17,73 +17,50 @@
 					"goal": {
 						"type": "object",
 						"properties": {
-							"text": {
+							"entry": {
 								"type": "string"
 							}
 						},
 						"required": [
-							"text"
+							"entry"
 						],
 						"additionalProperties": false
 					},
 					"cultists": {
 						"type": "object",
 						"properties": {
-							"text": {
+							"entry": {
 								"type": "string"
 							}
 						},
 						"required": [
-							"text"
+							"entry"
 						],
 						"additionalProperties": false
 					},
 					"signaturespells": {
 						"type": "object",
 						"properties": {
-							"text": {
+							"entry": {
 								"type": "string"
 							}
 						},
 						"required": [
-							"text"
+							"entry"
 						],
 						"additionalProperties": false
 					},
-					"text": {
+					"entries": {
 						"type": "array",
-						"uniqueItems": true,
 						"items": {
-							"anyOf": [
-								{
-									"type": "object",
-									"properties": {
-										"hassubtitle": {
-											"type": "string"
-										},
-										"title": {
-											"type": "string"
-										},
-										"text": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"hassubtitle",
-										"title",
-										"text"
-									],
-									"additionalProperties": false
-								},
-								{"type": "string"}
-							]
+							"$ref": "/Entry"
 						}
 					}
 				},
 				"required": [
 					"name",
 					"source",
-					"text"
+					"entries"
 				],
 				"additionalProperties": false
 			}
