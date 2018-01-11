@@ -2,7 +2,7 @@
 // Strict mode should not be used, as the roll20 script depends on this file //
 // ************************************************************************* //
 
-// in deployment, `_IS_DEPLOYED = true;` should be prepended to this file
+// in deployment, `_IS_DEPLOYED = "<version number>";` should be prepended here
 IS_DEPLOYED = typeof _IS_DEPLOYED !== "undefined" && _IS_DEPLOYED;
 VERSION_NUMBER = IS_DEPLOYED ? _IS_DEPLOYED : "-1";
 DEPLOYED_STATIC_ROOT = "https://static.5etools.com/";
