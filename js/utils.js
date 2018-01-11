@@ -4,6 +4,7 @@
 
 // in deployment, `_IS_DEPLOYED = true;` should be prepended to this file
 IS_DEPLOYED = typeof _IS_DEPLOYED !== "undefined" && _IS_DEPLOYED;
+VERSION_NUMBER = IS_DEPLOYED ? _IS_DEPLOYED : "-1";
 DEPLOYED_STATIC_ROOT = "https://static.5etools.com/";
 
 HASH_PART_SEP = ",";
@@ -1439,18 +1440,7 @@ UrlUtil.getCurrentPage = function () {
  * @param href the link
  */
 UrlUtil.link = function (href) {
-	function getVersion () {
-		// TODO temporary hack -- ideally copy version number into "_IS_DEPLOYED" during deploy and use that
-		try {
-			const scripts = document.getElementsByTagName("script");
-			const withVer = Array.from(scripts).map(s => s.src).find(src => src.includes("?v="));
-			return withVer.split("=")[1];
-		} catch (e) {
-			return "-1";
-		}
-	}
-
-	if (IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}?ver=${getVersion()}`;
+	if (IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}?ver=${VERSION_NUMBER}`;
 	return href;
 };
 
