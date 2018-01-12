@@ -1448,12 +1448,16 @@ UrlUtil.link = function (href) {
 	return href;
 };
 
-UrlUtil.unpackSubHash = function (subHash) {
+UrlUtil.unpackSubHash = function (subHash, unencode) {
 	// format is "key:value~list~sep~with~tilde"
 	if (subHash.includes(HASH_SUB_KV_SEP)) {
 		const keyValArr = subHash.split(HASH_SUB_KV_SEP).map(s => s.trim());
 		const out = {};
-		out[keyValArr[0]] = keyValArr[1].split(HASH_SUB_LIST_SEP).map(s => s.trim());
+		let k = keyValArr[0].toLowerCase();
+		if (unencode) k = decodeURIComponent(k);
+		let v = keyValArr[1].toLowerCase();
+		if (unencode) v = decodeURIComponent(v);
+		out[k] = v.split(HASH_SUB_LIST_SEP).map(s => s.trim());
 		return out;
 	} else {
 		throw new Error(`Baldy formatted subhash ${subHash}`)

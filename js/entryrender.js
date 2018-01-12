@@ -479,6 +479,32 @@ function EntryRenderer () {
 								fauxEntry.href.path = "backgrounds.html";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+
+							case "@clSpellHead": {
+								// special tag used for class table spell level headers
+								// format: {@clSpellHead <sp class name>|<sp class source>|<display text>|<sp level>}
+								const fauxEntry = {
+									type: "link",
+									text: displayText,
+									href: {
+										type: "internal",
+										path: "spells.html",
+										hash: "acid splash_phb",
+										subhashes: [
+											{
+												key: "filterlevel",
+												value: Number(others[0])
+											},
+											{
+												key: "filterclass",
+												value: `${name}${source.toLowerCase() === SRC_PHB.toLowerCase() ? "" : ` (${Parser.sourceJsonToAbv(source)})`}`
+											}
+										]
+									}
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
 						}
 					}
 				} else {
@@ -567,6 +593,20 @@ function EntryRenderer () {
 		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
 	}
 }
+
+/**
+ * Helper function to render an entity using the given renderer
+ * @param renderer
+ * @param entry
+ * @param depth
+ * @returns {string}
+ */
+EntryRenderer.renderEntry = function (renderer, entry, depth) {
+	depth = depth === undefined || depth === null ? 0 : depth;
+	const tempStack = [];
+	renderer.recursiveEntryRender(entry, tempStack, depth);
+	return tempStack.join("");
+};
 
 EntryRenderer._rollerClick = function (ele, toRoll) {
 	const $ele = $(ele);

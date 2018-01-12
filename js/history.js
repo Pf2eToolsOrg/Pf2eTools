@@ -1,6 +1,11 @@
 "use strict";
 
 function hashchange (e) {
+	if (isHistorySuppressed) {
+		setSuppressHistory(false);
+		return;
+	}
+
 	const [link, ...sub] = _getHashParts();
 
 	if (!e || sub.length === 0) {
@@ -32,6 +37,15 @@ function initHistory () {
 	} else {
 		_freshLoad();
 	}
+}
+
+let isHistorySuppressed = false;
+/**
+ * Allows the hash to be modified without triggering a hashchange
+ * @param val
+ */
+function setSuppressHistory (val) {
+	isHistorySuppressed = val;
 }
 
 function getSelectedListElement () {

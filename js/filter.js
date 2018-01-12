@@ -372,6 +372,19 @@ class FilterBox {
 				);
 
 				$grid.data(
+					"setValues",
+					function (toVal) {
+						$pills.forEach((p) => {
+							if (toVal.includes(p.val().toLowerCase())) {
+								$(p).data("setter")("yes")
+							} else {
+								$(p).data("setter")("ignored")
+							}
+						});
+					}
+				);
+
+				$grid.data(
 					"getCounts",
 					function () {
 						const out = {"yes": 0, "no": 0};
@@ -483,23 +496,39 @@ class FilterBox {
 
 
 	setFromSubHashes (subHashes) {
-		const unpacked = subHashes.map(s => UrlUtil.unpackSubHash(s));
+		const unpacked = {};
+		subHashes.forEach(s => Object.assign(unpacked, UrlUtil.unpackSubHash(s, true)));
 		const toMatch = {};
 		Object.keys(this.headers).forEach(hk => {
 			toMatch[hk.toLowerCase()] = this.headers[hk];
 		});
+		const toRemove = [];
 		Object.keys(unpacked)
-			.map(k => k.toLowerCase())
 			.filter(k => k.startsWith("filter"))
-			.map(k => k.substring(6))
-			.forEach(k => {
-				if (toMatch[k]) {
-					// TODO set filter state
+			.forEach(rawSubhash => {
+				const header = rawSubhash.substring(6);
+
+				if (toMatch[header]) {
+					toRemove.push(rawSubhash);
+					toMatch[header].ele.data("setValues")(unpacked[rawSubhash])
 				} else {
-					// FIXME remove
-					debugger
+					throw new Error(`Could not find filter with header ${header} for subhash ${rawSubhash}`)
 				}
 			});
+
+		if (toRemove.length) {
+			const [link, ...sub] = _getHashParts();
+
+			const outSub = [];
+			Object.keys(unpacked)
+				.filter(k => !toRemove.includes(k))
+				.forEach(k => {
+					outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
+				});
+
+			setSuppressHistory(true);
+			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
+		}
 	}
 
 	/**
