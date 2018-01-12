@@ -25,8 +25,10 @@ function parseAlignmentToFull (alignment) {
 
 function alignSort (a, b) {
 	const first = ["L", "C"];
+	const last = ["G", "E"];
 	if (a === b) return 0;
 	if (first.includes(a)) return -1;
+	if (last.includes(b)) return 1;
 	return 1;
 }
 
