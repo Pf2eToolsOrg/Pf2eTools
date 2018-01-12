@@ -46,16 +46,22 @@ function onJsonLoad (data) {
 		header: "Pantheon",
 		items: ["Celtic", "Dragonlance", "Eberron", "Egyptian", "Forgotten Realms", "Greek", "Greyhawk", "Nonhuman", "Norse"]
 	});
+	const categoryFilter = new Filter({
+		header: "Category",
+		items: [STR_NONE]
+	});
 	const domainFilter = new Filter({
 		header: "Domain",
-		items: ["Death", "Knowledge", "Life", "Light", "Nature", "Tempest", "Trickery", "War"]
+		items: ["Death", "Knowledge", "Life", "Light", "Nature", STR_NONE, "Tempest", "Trickery", "War"]
 	});
 
-	const filterBox = initFilterBox(alignmentFilter, pantheonFilter, domainFilter);
+	const filterBox = initFilterBox(alignmentFilter, pantheonFilter, categoryFilter, domainFilter);
 
 	let tempString = "";
 	godsList.forEach((g, i) => {
 		g.alignment.sort(alignSort);
+		if (!g.category) g.category = STR_NONE;
+		if (!g.domains) g.domains = [STR_NONE];
 		g.domains.sort(ascSort);
 
 		tempString += `
@@ -64,12 +70,16 @@ function onJsonLoad (data) {
 					<span class="name col-xs-4">${g.name}</span>
 					<span class="pantheon col-xs-2 text-align-center">${g.pantheon}</span>
 					<span class="alignment col-xs-2 text-align-center">${g.alignment.join("")}</span>
-					<span class="domains col-xs-4">${g.domains.join(", ")}</span>
+					<span class="domains col-xs-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
 				</a>
 			</li>
 		`;
+
+		categoryFilter.addIfAbsent(g.category);
 	});
 	$(`#godsList`).append(tempString);
+	// sort filters
+	categoryFilter.items.sort();
 
 	const list = search({
 		valueNames: ["name", "pantheon", "alignment", "domains", "symbol"],
@@ -109,8 +119,9 @@ function onJsonLoad (data) {
 
 			const rightAlignment = alignmentFilter.toDisplay(f, g.alignment);
 			const rightPantheon = pantheonFilter.toDisplay(f, g.pantheon);
+			const rightCategory = categoryFilter.toDisplay(f, g.category);
 			const rightDomain = domainFilter.toDisplay(f, g.domains);
-			return rightAlignment && rightPantheon && rightDomain;
+			return rightAlignment && rightPantheon && rightCategory && rightDomain;
 		});
 	}
 
@@ -127,6 +138,7 @@ function loadhash (jsonIndex) {
 		<tr><th class="border" colspan="6"></th></tr>
 		<tr><th class="name" colspan="6"><span class="stats-name">${god.name}</span><span class="stats-source source${god.source}" title="${sourceFull}">${Parser.sourceJsonToAbv(god.source)}</span></th></tr>
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${god.pantheon}</td></tr>
+		${god.category? `<tr><td colspan="6"><span class="bold">Category: </span>${god.category}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Alignment: </span>${god.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${god.domains.join(", ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${god.symbol}</td></tr>
