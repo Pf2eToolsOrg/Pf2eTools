@@ -138,7 +138,7 @@ function loadhash (jsonIndex) {
 		<tr><th class="border" colspan="6"></th></tr>
 		<tr><th class="name" colspan="6"><span class="stats-name">${deity.name}</span><span class="stats-source source${deity.source}" title="${sourceFull}">${Parser.sourceJsonToAbv(deity.source)}</span></th></tr>
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
-		${deity.category? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
+		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>

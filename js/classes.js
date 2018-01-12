@@ -55,7 +55,7 @@ function getTableDataScData (scName, scSource) {
 	return scName + ATB_DATA_PART_SEP + scSource;
 }
 
-function cleanScSource(source) {
+function cleanScSource (source) {
 	return Parser._getSourceStringFromSource(source);
 }
 
@@ -582,7 +582,6 @@ function loadsub (sub) {
 		$(`[data-subclass-list]`).each(
 			function () {
 				const $this = $(this);
-				debugger
 				const scs = $this.attr(ATB_DATA_SC_LIST).split(ATB_DATA_LIST_SEP);
 
 				// if another class has shown this item, don't hide it
