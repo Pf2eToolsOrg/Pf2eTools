@@ -1223,7 +1223,7 @@ EntryRenderer.hover = {
 		if (fromRight) $hov.css("right", winW - vpOffsetL);
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
 
-		$(ele).bind("mouseleave", () => {
+		$(ele).on("mouseleave", () => {
 			$hov.remove();
 		});
 
@@ -1303,10 +1303,10 @@ EntryRenderer.hover = {
 		$(ele).css("cursor", "wait");
 
 		// clean up any old event listeners
-		$(ele).unbind("mouseleave");
+		$(ele).off("mouseleave");
 
 		// cancel hover if the mouse leaves
-		$(ele).bind("mouseleave", () => {
+		$(ele).on("mouseleave", () => {
 			EntryRenderer.hover._curHovering = null;
 		});
 
