@@ -1325,6 +1325,7 @@ function isNonstandardSource (source) {
 	if (source && source.forceStandard !== undefined) {
 		return !source.forceStandard;
 	}
+	if (source && source.source) source = source.source;
 	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.endsWith(SRC_3PP_SUFFIX) || source === SRC_OGA);
 }
 

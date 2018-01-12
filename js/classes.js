@@ -55,6 +55,10 @@ function getTableDataScData (scName, scSource) {
 	return scName + ATB_DATA_PART_SEP + scSource;
 }
 
+function cleanScSource(source) {
+	return Parser._getSourceStringFromSource(source);
+}
+
 function onJsonLoad (data) {
 	list = search({
 		valueNames: ['name', 'source', 'uniqueid'],
@@ -203,7 +207,7 @@ function loadhash (id) {
 		const hasTitle = tGroup.title !== undefined;
 		let subclassData = "";
 		if (tGroup.subclasses !== undefined) {
-			subclassData = `${ATB_DATA_SC_LIST}="${tGroup.subclasses.map(s => getTableDataScData(s.name, s.source)).join(ATB_DATA_LIST_SEP)}"`;
+			subclassData = `${ATB_DATA_SC_LIST}="${tGroup.subclasses.map(s => getTableDataScData(s.name, cleanScSource(s.source))).join(ATB_DATA_LIST_SEP)}"`;
 		}
 		groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}" ${subclassData}>${hasTitle ? tGroup.title : ""}</th>`);
 
@@ -276,8 +280,8 @@ function loadhash (id) {
 						const styleClasses = [CLSS_SUBCLASS_FEATURE];
 						const hideSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
 						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-						if (subClass.source === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
-						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${subClass.source}"><td colspan="6">`, `</td></tr>`, true);
+						if (cleanScSource(subClass.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}"><td colspan="6">`, `</td></tr>`, true);
 					}
 				}
 				subclassIndex++;
@@ -314,7 +318,7 @@ function loadhash (id) {
 
 	// subclass pills
 	const subClasses = curClass.subclasses
-		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
+		.map(sc => ({"name": sc.name, "source": cleanScSource(sc.source), "shortName": sc.shortName}))
 		.sort(function (a, b) {
 			return ascSort(a.shortName, b.shortName)
 		});
@@ -322,11 +326,11 @@ function loadhash (id) {
 		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-		if (subClasses[i].source === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+		if (cleanScSource(subClasses[i].source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 		const pillText = hasBeenReprinted(subClasses[i].shortName, subClasses[i].source) ? `${subClasses[i].shortName} (${Parser.sourceJsonToAbv(subClasses[i].source)})` : subClasses[i].shortName;
-		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${subClasses[i].source}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
+		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${cleanScSource(subClasses[i].source)}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
 		pill.click(function () {
-			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, subClasses[i].source);
+			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, cleanScSource(subClasses[i].source));
 		});
 		if (nonStandardSource) pill.hide();
 		subclassPillWrapper.append(pill);
@@ -578,6 +582,7 @@ function loadsub (sub) {
 		$(`[data-subclass-list]`).each(
 			function () {
 				const $this = $(this);
+				debugger
 				const scs = $this.attr(ATB_DATA_SC_LIST).split(ATB_DATA_LIST_SEP);
 
 				// if another class has shown this item, don't hide it
