@@ -32,10 +32,10 @@ function alignSort (a, b) {
 	return 1;
 }
 
-let godsList;
+let deitiesList;
 
 function onJsonLoad (data) {
-	godsList = data.god;
+	deitiesList = data.deity;
 
 	const alignmentFilter = new Filter({
 		header: "Alignment",
@@ -58,7 +58,7 @@ function onJsonLoad (data) {
 	const filterBox = initFilterBox(alignmentFilter, pantheonFilter, categoryFilter, domainFilter);
 
 	let tempString = "";
-	godsList.forEach((g, i) => {
+	deitiesList.forEach((g, i) => {
 		g.alignment.sort(alignSort);
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
@@ -77,13 +77,13 @@ function onJsonLoad (data) {
 
 		categoryFilter.addIfAbsent(g.category);
 	});
-	$(`#godsList`).append(tempString);
+	$(`#deitiesList`).append(tempString);
 	// sort filters
 	categoryFilter.items.sort();
 
 	const list = search({
 		valueNames: ["name", "pantheon", "alignment", "domains", "symbol"],
-		listClass: "gods",
+		listClass: "deities",
 		sortFunction: listSort
 	});
 
@@ -115,7 +115,7 @@ function onJsonLoad (data) {
 	function handleFilterChange () {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
-			const g = godsList[$(item.elm).attr(FLTR_ID)];
+			const g = deitiesList[$(item.elm).attr(FLTR_ID)];
 
 			const rightAlignment = alignmentFilter.toDisplay(f, g.alignment);
 			const rightPantheon = pantheonFilter.toDisplay(f, g.pantheon);
@@ -130,19 +130,19 @@ function onJsonLoad (data) {
 }
 
 function loadhash (jsonIndex) {
-	const god = godsList[jsonIndex];
-	const sourceFull = Parser.sourceJsonToFull(god.source);
+	const deity = deitiesList[jsonIndex];
+	const sourceFull = Parser.sourceJsonToFull(deity.source);
 
 	const $content = $(`#pagecontent`);
 	$content.html(`
 		<tr><th class="border" colspan="6"></th></tr>
-		<tr><th class="name" colspan="6"><span class="stats-name">${god.name}</span><span class="stats-source source${god.source}" title="${sourceFull}">${Parser.sourceJsonToAbv(god.source)}</span></th></tr>
-		<tr><td colspan="6"><span class="bold">Pantheon: </span>${god.pantheon}</td></tr>
-		${god.category? `<tr><td colspan="6"><span class="bold">Category: </span>${god.category}</td></tr>` : ""}
-		<tr><td colspan="6"><span class="bold">Alignment: </span>${god.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
-		<tr><td colspan="6"><span class="bold">Domains: </span>${god.domains.join(", ")}</td></tr>
-		<tr><td colspan="6"><span class="bold">Symbol: </span>${god.symbol}</td></tr>
-		${god.page ? `<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${god.page}</td>` : ""}
+		<tr><th class="name" colspan="6"><span class="stats-name">${deity.name}</span><span class="stats-source source${deity.source}" title="${sourceFull}">${Parser.sourceJsonToAbv(deity.source)}</span></th></tr>
+		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
+		${deity.category? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
+		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
+		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
+		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
+		${deity.page ? `<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${deity.page}</td>` : ""}
 		<tr><th class="border" colspan="6"></th></tr>
 	`);
 }
