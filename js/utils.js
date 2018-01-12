@@ -1457,7 +1457,7 @@ UrlUtil.PG_RACES = "races.html";
 UrlUtil.PG_REWARDS = "rewards.html";
 UrlUtil.PG_VARIATNRULES = "variantrules.html";
 UrlUtil.PG_ADVENTURE = "adventure.html";
-UrlUtil.PG_GODS = "gods.html";
+UrlUtil.PG_DEITIES = "deities.html";
 UrlUtil.PG_CULTS = "cults.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
@@ -1474,7 +1474,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([i
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash(it.name);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_GODS] = (it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(it.name);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS] = (it) => UrlUtil.encodeForHash(it.name);
 
 // SORTING =============================================================================================================

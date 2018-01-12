@@ -1,6 +1,6 @@
 "use strict";
 
-const JSON_URL = "data/gods.json";
+const JSON_URL = "data/deities.json";
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);

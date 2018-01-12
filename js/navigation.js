@@ -57,7 +57,7 @@ function navigation () {
 	LI('ul_references', 'bestiary.html', 'Bestiary');
 	LI('ul_references', 'conditions.html', 'Conditions');
 	LI('ul_references', 'cults.html', 'Cults');
-	LI('ul_references', 'gods.html', 'Gods');
+	LI('ul_references', 'deities.html', 'Deities');
 	LI('ul_references', 'items.html', 'Items');
 	LI('ul_references', 'rewards.html', 'Other Rewards');
 	LI('ul_references', 'psionics.html', 'Psionics');
