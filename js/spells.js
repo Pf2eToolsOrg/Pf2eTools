@@ -481,3 +481,7 @@ function handleUnknownHash (link, sub) {
 		})(src, "yes");
 	}
 }
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
+}

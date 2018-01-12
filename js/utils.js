@@ -10,6 +10,7 @@ DEPLOYED_STATIC_ROOT = "https://static.5etools.com/";
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_SUB_LIST_SEP = "~";
+HASH_SUB_KV_SEP = ":";
 HASH_START = "#";
 HASH_SUBCLASS = "sub:";
 
@@ -1442,6 +1443,18 @@ UrlUtil.getCurrentPage = function () {
 UrlUtil.link = function (href) {
 	if (IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}?ver=${VERSION_NUMBER}`;
 	return href;
+};
+
+UrlUtil.unpackSubHash = function (subHash) {
+	// format is "key:value~list~sep~with~tilde"
+	if (subHash.includes(HASH_SUB_KV_SEP)) {
+		const keyValArr = subHash.split(HASH_SUB_KV_SEP).map(s => s.trim());
+		const out = {};
+		out[keyValArr[0]] = keyValArr[1].split(HASH_SUB_LIST_SEP).map(s => s.trim());
+		return out;
+	} else {
+		throw new Error(`Baldy formatted subhash ${subHash}`)
+	}
 };
 
 UrlUtil.PG_BESTIARY = "bestiary.html";

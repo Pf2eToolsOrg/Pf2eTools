@@ -163,7 +163,7 @@ function EntryRenderer () {
 					textStack.push(EntryRenderer.getEntryDice(entry));
 					break;
 				case "link":
-					renderLink(this, entry);
+					textStack.push(this.renderLink(entry));
 					break;
 
 				// list items
@@ -342,31 +342,6 @@ function EntryRenderer () {
 			if (isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
 			if (source === SRC_HOMEBREW) outList.push(CLSS_HOMEBREW_SOURCE);
 			return outList.join(" ");
-		}
-
-		function renderLink (self, entry) {
-			function getHoverString () {
-				if (!entry.href.hover) return "";
-				return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash)}')"`
-			}
-
-			let href;
-			if (entry.href.type === "internal") {
-				// baseURL is blank by default
-				href = `${self.baseUrl}${entry.href.path}#`;
-				if (entry.href.hash !== undefined) {
-					href += UrlUtil.encodeForHash(entry.href.hash);
-					if (entry.href.subhashes !== undefined) {
-						for (let i = 0; i < entry.href.subhashes.length; i++) {
-							const subHash = entry.href.subhashes[i];
-							href += `,${UrlUtil.encodeForHash(subHash.key)}:${UrlUtil.encodeForHash(subHash.value)}`
-						}
-					}
-				}
-			} else if (entry.href.type === "external") {
-				href = entry.href.url;
-			}
-			textStack.push(`<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`);
 		}
 
 		function renderString (self) {
@@ -560,6 +535,37 @@ function EntryRenderer () {
 			}
 		}
 	};
+
+	this.renderLink = function (entry) {
+		function getHoverString () {
+			if (!entry.href.hover) return "";
+			return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash)}')"`
+		}
+
+		let href;
+		if (entry.href.type === "internal") {
+			// baseURL is blank by default
+			href = `${this.baseUrl}${entry.href.path}#`;
+			if (entry.href.hash !== undefined) {
+				href += UrlUtil.encodeForHash(entry.href.hash);
+			}
+			if (entry.href.subhashes !== undefined) {
+				for (let i = 0; i < entry.href.subhashes.length; i++) {
+					const subHash = entry.href.subhashes[i];
+					href += `${HASH_PART_SEP}${UrlUtil.encodeForHash(subHash.key)}${HASH_SUB_KV_SEP}`;
+					if (subHash.value !== undefined) {
+						href += UrlUtil.encodeForHash(subHash.value);
+					} else {
+						// TODO allow list of values
+						href += subHash.values.map(v => UrlUtil.encodeForHash(v)).join(HASH_SUB_LIST_SEP);
+					}
+				}
+			}
+		} else if (entry.href.type === "external") {
+			href = entry.href.url;
+		}
+		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
+	}
 }
 
 EntryRenderer._rollerClick = function (ele, toRoll) {

@@ -481,6 +481,27 @@ class FilterBox {
 		this._fireValChangeEvent();
 	}
 
+
+	setFromSubHashes (subHashes) {
+		const unpacked = subHashes.map(s => UrlUtil.unpackSubHash(s));
+		const toMatch = {};
+		Object.keys(this.headers).forEach(hk => {
+			toMatch[hk.toLowerCase()] = this.headers[hk];
+		});
+		Object.keys(unpacked)
+			.map(k => k.toLowerCase())
+			.filter(k => k.startsWith("filter"))
+			.map(k => k.substring(6))
+			.forEach(k => {
+				if (toMatch[k]) {
+					// TODO set filter state
+				} else {
+					// FIXME remove
+					debugger
+				}
+			});
+	}
+
 	/**
 	 * Helper which resets an section of the filter
 	 * @param header the name of the section to reset

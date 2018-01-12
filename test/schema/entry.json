@@ -335,11 +335,31 @@
 													"key": {
 														"type": "string"
 													},
-													"value": {
-														"type": "string"
-													}
+													"oneOf": [
+														{
+															"properties": {
+																"value": {
+																	"type": "string"
+																}
+															},
+															"required": ["value"],
+															"additionalProperties": false
+														},
+														{
+															"properties": {
+																"values": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	}
+																}
+															},
+															"required": ["values"],
+															"additionalProperties": false
+														}
+													]
 												},
-												"required": ["key", "value"],
+												"required": ["key"],
 												"additionalProperties": false
 											}
 										},
