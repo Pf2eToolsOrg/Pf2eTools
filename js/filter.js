@@ -494,7 +494,6 @@ class FilterBox {
 		this._fireValChangeEvent();
 	}
 
-
 	setFromSubHashes (subHashes) {
 		const unpacked = {};
 		subHashes.forEach(s => Object.assign(unpacked, UrlUtil.unpackSubHash(s, true)));
