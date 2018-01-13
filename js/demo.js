@@ -9,7 +9,7 @@ function loadJson () {
 }
 
 function initDemo (data) {
-	const defaultJson = data;
+	const defaultJson = data.data[0];
 
 	const renderer = new EntryRenderer();
 	const $msg = $(`#message`);
