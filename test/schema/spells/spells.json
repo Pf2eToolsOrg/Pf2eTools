@@ -176,6 +176,19 @@
 				},
 				"page": {
 					"type": "integer"
+				},
+				"damageInflict": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+
+				"damageResist": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				}
 			},
 			"required": [
@@ -192,20 +205,6 @@
 				"page"
 			],
 			"additionalProperties": false
-		},
-
-		"damageInflict": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
-		},
-
-		"damageResist": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
 		},
 
 		"time": {
