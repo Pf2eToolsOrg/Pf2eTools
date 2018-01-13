@@ -661,7 +661,7 @@ function manageBrew () {
 
 	refreshBrewList();
 
-	const $iptAdd = $(`<input type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
+	const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
 		addBrew(evt);
 	});
 	$window.append($(`<div class="text-align-center"/>`).append($(`<label class="btn btn-default btn-sm btn-file">Load Brew</label>`).append($iptAdd)));
@@ -689,6 +689,7 @@ function manageBrew () {
 	function addBrew (event) {
 		const input = event.target;
 
+		let readIndex = 0;
 		const reader = new FileReader();
 		reader.onload = () => {
 			const text = reader.result;
@@ -730,15 +731,18 @@ function manageBrew () {
 			}
 			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
 
-			// reset the input
-			$(event.target).val("");
-
 			addData({class: classesToAdd});
 			addSubclassData({subclass: subclassesToAdd});
 
 			refreshBrewList();
+			if (input.files[readIndex]) {
+				reader.readAsText(input.files[readIndex++]);
+			} else {
+				// reset the input
+				$(event.target).val("");
+			}
 		};
-		reader.readAsText(input.files[0]);
+		reader.readAsText(input.files[readIndex++]);
 	}
 
 	function deleteClassBrew (uniqueId) {
