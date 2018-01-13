@@ -176,6 +176,19 @@
 				},
 				"page": {
 					"type": "integer"
+				},
+				"damageInflict": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+
+				"damageResist": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				}
 			},
 			"required": [
@@ -193,8 +206,6 @@
 			],
 			"additionalProperties": false
 		},
-
-
 
 		"time": {
 			"properties": {

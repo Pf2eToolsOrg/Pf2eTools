@@ -250,6 +250,13 @@ const schoolFilter = new Filter({
 	],
 	displayFn: Parser.spSchoolAbvToFull}
 );
+const damageFilter = new Filter({
+	header: "Damage Type",
+	items: [
+		"acid", "cold", "fire", "force", "lightning", "necrotic", "poison", "psychic", "radiant", "thunder"
+	],
+	displayFn: StrUtil.uppercaseFirst
+});
 const timeFilter = new Filter({
 	header: "Cast Time",
 	items: [
@@ -278,6 +285,7 @@ const filterBox = initFilterBox(
 	classAndSubclassFilter,
 	metaFilter,
 	schoolFilter,
+	damageFilter,
 	timeFilter,
 	rangeFilter
 );
@@ -313,7 +321,7 @@ function handleFilterChange () {
 	list.filter(function (item) {
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
-		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
+		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && damageFilter.toDisplay(f, s.damageInflict) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
 	});
 }
 
@@ -370,6 +378,7 @@ function addSpells (data) {
 		spell[P_NORMALISED_RANGE] = getNormalisedRange(spell.range);
 
 		// used for filtering
+		if (!spell.damageInflict) spell.damageInflict = [];
 		spell._fMeta = getMetaFilterObj(spell);
 		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
 		spell._fSubclasses = spell.classes.fromSubclass ? spell.classes.fromSubclass.map(c => getClassFilterStr(c.subclass)) : [];
@@ -480,4 +489,8 @@ function handleUnknownHash (link, sub) {
 			hashchange();
 		})(src, "yes");
 	}
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

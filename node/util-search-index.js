@@ -150,7 +150,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			"baseUrl": "psionics.html",
 			"deepIndex": (primary, it) => {
 				if (!it.modes) return [];
-				return it.modes.map(m => ({s: `${primary}; ${m.title}`}))
+				return it.modes.map(m => ({s: `${primary}; ${m.name}`}))
 			}
 		},
 		{
@@ -200,7 +200,13 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 
 				return specVars.map(sv => ({url: `items.html#${UrlUtil.encodeForHash([sv.name, sv.source])}`}));
 			}
-		}
+		},
+		{
+			"category": 14,
+			"file": "deities.json",
+			"listProp": "deity",
+			"baseUrl": "deities.html"
+		},
 	];
 
 	function getProperty (obj, withDots) {

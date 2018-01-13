@@ -18,7 +18,7 @@ function onJsonLoad (data) {
 
 		tempString += `
 			<li>
-				<a id='${i}' href='#${encodeURI(cult.name).toLowerCase()}' title='${cult.name}'>
+				<a id='${i}' href='#${UrlUtil.autoEncodeHash(cult)}' title='${cult.name}'>
 					<span class='name' title='${cult.name}'>${cult.name}</span>
 				</a>
 			</li>`;
@@ -30,25 +30,53 @@ function onJsonLoad (data) {
 		listClass: "cults"
 	});
 
-	initHistory()
+	initHistory();
 }
 
 function loadhash (id) {
-	$("#pagecontent").html(tableDefault);
 	const curcult = cultList[id];
 
-	const name = curcult.name;
-	$("th.name").html(name);
+	const renderer = new EntryRenderer();
+	const renderStack = [];
+	const sourceFull = Parser.sourceJsonToFull(curcult.source);
 
-	$("tr.text").remove();
+	if (curcult.goal || curcult.cultists || curcult.signaturespells) {
+		const fauxList = {
+			type: "list",
+			style: "list-hang",
+			items: []
+		};
+		if (curcult.goal) {
+			fauxList.items.push({
+				type: "item",
+				name: "Goals:",
+				entry: curcult.goal.entry
+			});
+		}
 
-	const textlist = curcult.text;
-	let texthtml = "";
+		if (curcult.cultists) {
+			fauxList.items.push({
+				type: "item",
+				name: "Typical Cultists:",
+				entry: curcult.cultists.entry
+			});
+		}
+		if (curcult.signaturespells) {
+			fauxList.items.push({
+				type: "item",
+				name: "Signature Spells:",
+				entry: curcult.signaturespells.entry
+			});
+		}
+		renderer.recursiveEntryRender(fauxList, renderStack, 2);
+	}
+	renderer.recursiveEntryRender({entries: curcult.entries}, renderStack, 2);
 
-	if (curcult.goal !== undefined) texthtml += utils_combineText(curcult.goal.text, "p", "<span class='bold'>Goals:</span> ");
-	if (curcult.cultists !== undefined) texthtml += utils_combineText(curcult.cultists.text, "p", "<span class='bold'>Typical Cultist:</span> ");
-	if (curcult.signaturespells !== undefined) texthtml += utils_combineText(curcult.signaturespells.text, "p", "<span class='bold'>Signature Spells:</span> ");
-	texthtml += utils_combineText(textlist, "p");
-
-	$("tr#text").after("<tr class='text'><td colspan='6'>" + texthtml + "</td></tr>");
+	$("#pagecontent").html(`
+		<tr><th class="border" colspan="6"></th></tr>
+		<tr><th class="name" colspan="6"><span class="stats-name">${curcult.name}</span><span class="stats-source source${curcult.source}" title="${sourceFull}">${Parser.sourceJsonToAbv(curcult.source)}</span></th></tr>
+		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+		<tr class='text'><td colspan='6' class='text'>${renderStack.join("")}</td></tr>
+		<tr><th class="border" colspan="6"></th></tr>
+	`);
 }

@@ -1495,9 +1495,18 @@ button#reset {
 	margin-right: 1px;
 }
 
+button#feelinglucky,
 button#hidesearch {
 	border-radius: 0;
 	border-left: 0;
+}
+
+button#feelinglucky + button#hidesearch {
+	border-left: 1px solid #ccc;
+}
+
+button#feelinglucky {
+	border-right: 1px solid #ccc;
 }
 
 div#showsearch {

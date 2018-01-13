@@ -163,7 +163,7 @@ function EntryRenderer () {
 					textStack.push(EntryRenderer.getEntryDice(entry));
 					break;
 				case "link":
-					renderLink(this, entry);
+					textStack.push(this.renderLink(entry));
 					break;
 
 				// list items
@@ -344,31 +344,6 @@ function EntryRenderer () {
 			return outList.join(" ");
 		}
 
-		function renderLink (self, entry) {
-			function getHoverString () {
-				if (!entry.href.hover) return "";
-				return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash)}')"`
-			}
-
-			let href;
-			if (entry.href.type === "internal") {
-				// baseURL is blank by default
-				href = `${self.baseUrl}${entry.href.path}#`;
-				if (entry.href.hash !== undefined) {
-					href += UrlUtil.encodeForHash(entry.href.hash);
-					if (entry.href.subhashes !== undefined) {
-						for (let i = 0; i < entry.href.subhashes.length; i++) {
-							const subHash = entry.href.subhashes[i];
-							href += `,${UrlUtil.encodeForHash(subHash.key)}:${UrlUtil.encodeForHash(subHash.value)}`
-						}
-					}
-				}
-			} else if (entry.href.type === "external") {
-				href = entry.href.url;
-			}
-			textStack.push(`<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`);
-		}
-
 		function renderString (self) {
 			const tagSplit = splitByTags();
 			for (let i = 0; i < tagSplit.length; i++) {
@@ -504,6 +479,32 @@ function EntryRenderer () {
 								fauxEntry.href.path = "backgrounds.html";
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+
+							case "@clSpellHead": {
+								// special tag used for class table spell level headers
+								// format: {@clSpellHead <sp class name>|<sp class source>|<display text>|<sp level>}
+								const fauxEntry = {
+									type: "link",
+									text: displayText,
+									href: {
+										type: "internal",
+										path: "spells.html",
+										hash: "acid splash_phb",
+										subhashes: [
+											{
+												key: "filterlevel",
+												value: Number(others[0])
+											},
+											{
+												key: "filterclass",
+												value: `${name}${source.toLowerCase() === SRC_PHB.toLowerCase() ? "" : ` (${Parser.sourceJsonToAbv(source)})`}`
+											}
+										]
+									}
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
 						}
 					}
 				} else {
@@ -560,7 +561,52 @@ function EntryRenderer () {
 			}
 		}
 	};
+
+	this.renderLink = function (entry) {
+		function getHoverString () {
+			if (!entry.href.hover) return "";
+			return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash)}')"`
+		}
+
+		let href;
+		if (entry.href.type === "internal") {
+			// baseURL is blank by default
+			href = `${this.baseUrl}${entry.href.path}#`;
+			if (entry.href.hash !== undefined) {
+				href += UrlUtil.encodeForHash(entry.href.hash);
+			}
+			if (entry.href.subhashes !== undefined) {
+				for (let i = 0; i < entry.href.subhashes.length; i++) {
+					const subHash = entry.href.subhashes[i];
+					href += `${HASH_PART_SEP}${UrlUtil.encodeForHash(subHash.key)}${HASH_SUB_KV_SEP}`;
+					if (subHash.value !== undefined) {
+						href += UrlUtil.encodeForHash(subHash.value);
+					} else {
+						// TODO allow list of values
+						href += subHash.values.map(v => UrlUtil.encodeForHash(v)).join(HASH_SUB_LIST_SEP);
+					}
+				}
+			}
+		} else if (entry.href.type === "external") {
+			href = entry.href.url;
+		}
+		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
+	}
 }
+
+/**
+ * Helper function to render an entity using the given renderer
+ * @param renderer
+ * @param entry
+ * @param depth
+ * @returns {string}
+ */
+EntryRenderer.renderEntry = function (renderer, entry, depth) {
+	depth = depth === undefined || depth === null ? 0 : depth;
+	const tempStack = [];
+	renderer.recursiveEntryRender(entry, tempStack, depth);
+	return tempStack.join("");
+};
 
 EntryRenderer._rollerClick = function (ele, toRoll) {
 	const $ele = $(ele);
@@ -1217,7 +1263,7 @@ EntryRenderer.hover = {
 		if (fromRight) $hov.css("right", winW - vpOffsetL);
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
 
-		$(ele).bind("mouseleave", () => {
+		$(ele).on("mouseleave", () => {
 			$hov.remove();
 		});
 
@@ -1297,10 +1343,10 @@ EntryRenderer.hover = {
 		$(ele).css("cursor", "wait");
 
 		// clean up any old event listeners
-		$(ele).unbind("mouseleave");
+		$(ele).off("mouseleave");
 
 		// cancel hover if the mouse leaves
-		$(ele).bind("mouseleave", () => {
+		$(ele).on("mouseleave", () => {
 			EntryRenderer.hover._curHovering = null;
 		});
 
