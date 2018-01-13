@@ -1619,6 +1619,36 @@ function addListShowHide () {
 	});
 }
 
+// ROLLING =============================================================================================================
+RollerUtil = {
+	/**
+	 * Result in range: 0 to (max-1); inclusive
+	 * e.g. roll(20) gives results ranging from 0 to 19
+	 * @param max range max (exclusive)
+	 * @returns {number} rolled
+	 */
+	roll: (max) => {
+		return Math.floor(Math.random() * max);
+	},
+
+	addListRollButton: () => {
+		const listWrapper = $("#listcontainer");
+
+		const $btnRoll = $(`<button class="btn btn-default" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
+		$btnRoll.on("click", () => {
+			if (listWrapper.data("lists")) {
+				const allLists = listWrapper.data("lists");
+				const rollX = RollerUtil.roll(allLists.length);
+				const list = listWrapper.data("lists")[rollX];
+				const rollY = RollerUtil.roll(list.items.length);
+				window.location.hash = $(list.items[rollY].elm).find(`a`).prop("hash");
+			}
+		});
+
+		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
+	}
+};
+
 // ID GENERATION =======================================================================================================
 CryptUtil = {
 	// stolen from http://www.myersdaily.org/joseph/javascript/md5.js

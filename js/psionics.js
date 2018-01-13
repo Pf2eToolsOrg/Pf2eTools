@@ -138,6 +138,7 @@ function onJsonLoad (data) {
 
 	initHistory();
 	handleFilterChange();
+	RollerUtil.addListRollButton();
 }
 
 let renderer;

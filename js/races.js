@@ -95,6 +95,7 @@ function onJsonLoad (data) {
 
 	initHistory();
 	handleFilterChange();
+	RollerUtil.addListRollButton();
 }
 
 const renderer = new EntryRenderer();

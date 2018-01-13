@@ -189,6 +189,7 @@ function populateTablesAndFilters () {
 		})
 	});
 
+	RollerUtil.addListRollButton();
 	addListShowHide();
 	initHistory();
 	handleFilterChange();

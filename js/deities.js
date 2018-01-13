@@ -127,6 +127,7 @@ function onJsonLoad (data) {
 
 	initHistory();
 	handleFilterChange();
+	RollerUtil.addListRollButton();
 }
 
 function loadhash (jsonIndex) {

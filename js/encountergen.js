@@ -52,6 +52,7 @@ function onJsonLoad (data) {
 	});
 
 	initHistory();
+	RollerUtil.addListRollButton();
 }
 
 function showHideList (ele) {
