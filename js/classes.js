@@ -315,7 +315,7 @@ function loadhash (id) {
 
 	// subclass pills
 	const subClasses = curClass.subclasses
-		.map(sc => ({"name": sc.name, "source": cleanScSource(sc.source), "shortName": sc.shortName}))
+		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
 		.sort(function (a, b) {
 			return ascSort(a.shortName, b.shortName)
 		});
