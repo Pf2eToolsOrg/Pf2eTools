@@ -2,6 +2,10 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
+RegExp.escape = function (string) {
+	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+};
+
 function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
 	let out =
 		`<ul class="adv-contents" ${defaultHidden ? `style="display: none;"` : ""}>`;
@@ -32,7 +36,7 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 	chapter.headers && chapter.headers.forEach(c => {
 		out +=
 			`<li>
-				<a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${UrlUtil.encodeForHash(c)}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="scrollClick('${c.replace(/'/g, "\\'")}')"` : ""}>${c}</a>
+				<a href="${addPrefix ? "adventure.html" : ""}#${advId},${chapterIndex},${UrlUtil.encodeForHash(c)}" data-adventure="${advId}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="scrollClick('${c.replace(/'/g, "\\'")}')"` : ""}>${c}</a>
 			</li>`
 	});
 	out +=
@@ -42,6 +46,7 @@ function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) 
 
 function scrollClick (scrollTo, scrollIndex) {
 	const selectors = [
+		`div.statsBlockSectionHead > span.entry-title:textEquals("${scrollTo}")`,
 		`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`,
 		`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`,
 		`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`
@@ -49,22 +54,27 @@ function scrollClick (scrollTo, scrollIndex) {
 
 	if (scrollIndex === undefined) {
 		// textEquals selector defined below; added on window load
-		const goTo = $(selectors[0]);
+		const goToSect = $(selectors[0]);
+		if (goToSect.length) {
+			goToSect[goToSect.length - 1].scrollIntoView();
+			return;
+		}
+		const goTo = $(selectors[1]);
 		if (goTo.length) {
 			goTo[goTo.length - 1].scrollIntoView();
 			return;
 		}
-		const goToSub = $(selectors[1]);
+		const goToSub = $(selectors[2]);
 		if (goToSub.length) {
 			goToSub[goToSub.length - 1].scrollIntoView();
 			return;
 		}
-		const goToInset = $(selectors[2]);
+		const goToInset = $(selectors[3]);
 		if (goToInset.length) {
 			goToInset[goToInset.length - 1].scrollIntoView();
 		}
 	} else {
-		const goTo = $(`${selectors[0]}, ${selectors[1]}, ${selectors[2]}`);
+		const goTo = $(`${selectors[0]}, ${selectors[1]}, ${selectors[2]}, ${selectors[3]}`);
 		if (goTo.length) {
 			if (goTo[scrollIndex]) goTo[scrollIndex].scrollIntoView();
 			else goTo[goTo.length - 1].scrollIntoView();
@@ -76,7 +86,7 @@ window.addEventListener("load", () => {
 	// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 	$.expr[':'].textEquals = (el, i, m) => {
 		const searchText = m[3];
-		const match = $(el).text().toLowerCase().trim().match(`^${searchText.toLowerCase()}$`);
+		const match = $(el).text().toLowerCase().trim().match(`^${RegExp.escape(searchText.toLowerCase())}$`);
 		return match && match.length > 0;
 	};
 
@@ -87,7 +97,7 @@ window.addEventListener("load", () => {
 			return this.nodeType === 3;
 		})[0];
 		if (!textNode) return false;
-		const match = textNode.nodeValue.toLowerCase().trim().match(`${searchText.toLowerCase()}`);
+		const match = textNode.nodeValue.toLowerCase().trim().match(`${RegExp.escape(searchText.toLowerCase())}`);
 		return match && match.length > 0;
 	};
 });
