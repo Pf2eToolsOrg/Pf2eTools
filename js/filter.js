@@ -376,9 +376,9 @@ class FilterBox {
 					function (toVal) {
 						$pills.forEach((p) => {
 							if (toVal.includes(p.val().toLowerCase())) {
-								$(p).data("setter")("yes")
+								$(p).data("setter")(FilterBox._PILL_STATES[1])
 							} else {
-								$(p).data("setter")("ignored")
+								$(p).data("setter")(FilterBox._PILL_STATES[0])
 							}
 						});
 					}
