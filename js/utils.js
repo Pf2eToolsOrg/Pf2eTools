@@ -1422,7 +1422,7 @@ UrlUtil.encodeForHash = function (toEncode) {
 	}
 
 	function encodeForHashHelper (part) {
-		return encodeURIComponent(part).toLowerCase().replace(/'/g, "%27");
+		return encodeURIComponent(part).toLowerCase();
 	}
 };
 

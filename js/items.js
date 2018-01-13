@@ -95,11 +95,11 @@ function populateTablesAndFilters () {
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
 			<li ${FLTR_ID}=${i}>
-				<a id='${i}' href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
-					<span class='name col-xs-4'>${name}</span>
-					<span class='type col-xs-4 col-xs-4-3'>${curitem.typeText}</span>
-					<span class='source col-xs-1 col-xs-1-7 source${sourceAbv}' title="${sourceFull}">${sourceAbv}</span>
-					<span class='rarity col-xs-2'>${rarity}</span>
+				<a id="${i}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
+					<span class="name col-xs-4">${name}</span>
+					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
+					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="rarity col-xs-2">${rarity}</span>
 				</a>
 			</li>`;
 
@@ -247,8 +247,8 @@ function loadhash (id) {
 	}
 
 	$("tr#text").after(`
-		<tr class='text'>
-			<td colspan='6' class='text1'>
+		<tr class="text">
+			<td colspan="6" class="text1">
 				${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>").split(item.name.toLowerCase().uppercaseFirst()).join("<i>" + item.name.toLowerCase().uppercaseFirst() + "</i>")}
 			</td>
 		</tr>`);
