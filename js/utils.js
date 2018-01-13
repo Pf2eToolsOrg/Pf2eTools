@@ -1640,8 +1640,8 @@ RollerUtil = {
 				const allLists = listWrapper.data("lists");
 				const rollX = RollerUtil.roll(allLists.length);
 				const list = listWrapper.data("lists")[rollX];
-				const rollY = RollerUtil.roll(list.items.length);
-				window.location.hash = $(list.items[rollY].elm).find(`a`).prop("hash");
+				const rollY = RollerUtil.roll(list.visibleItems.length);
+				window.location.hash = $(list.visibleItems[rollY].elm).find(`a`).prop("hash");
 			}
 		});
 
