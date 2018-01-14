@@ -113,9 +113,12 @@ function onJsonLoad (data) {
 	RollerUtil.addListRollButton();
 }
 
+const renderer = new EntryRenderer();
 function loadhash (jsonIndex) {
 	const deity = deitiesList[jsonIndex];
-	const sourceFull = Parser.sourceJsonToFull(deity.source);
+
+	const renderStack = [];
+	if (deity.entries) renderer.recursiveEntryRender({entries: deity.entries}, renderStack);
 
 	const $content = $(`#pagecontent`);
 	$content.html(`
@@ -126,7 +129,8 @@ function loadhash (jsonIndex) {
 		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
-		<tr><td colspan="6"><span class="bold">Description: </span>${deity.text}</td></tr>
+		<tr><td colspan="6"><span class="bold">Title: </span>${deity.title}</td></tr>
+		${renderStack.length ? `<tr><td class="text" colspan="6">${renderStack.join("")}</td></tr>`: ""}
 		${EntryRenderer.utils.getPageTr(deity)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
