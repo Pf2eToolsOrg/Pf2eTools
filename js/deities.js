@@ -44,11 +44,37 @@ function onJsonLoad (data) {
 	});
 	const pantheonFilter = new Filter({
 		header: "Pantheon",
-		items: ["Celtic", "Dawn War", "Dragonlance", "Eberron", "Egyptian", "Forgotten Realms", "Greek", "Greyhawk", "Nonhuman", "Norse"]
+		items: [
+			"Celtic",
+			"Dawn War",
+			"Dragonlance",
+			"Drow",
+			"Dwarven",
+			"Eberron",
+			"Egyptian",
+			"Elven",
+			"Faerûnian",
+			"Forgotten Realms",
+			"Gnomish",
+			"Greek",
+			"Greyhawk",
+			"Halfling",
+			"Nonhuman",
+			"Norse",
+			"Orc"
+		]
 	});
 	const categoryFilter = new Filter({
 		header: "Category",
-		items: [STR_NONE]
+		items: [
+			STR_NONE,
+			"Other Faiths of Eberron",
+			"The Dark Six",
+			"The Gods of Evil",
+			"The Gods of Good",
+			"The Gods of Neutrality",
+			"The Sovereign Host"
+		]
 	});
 	const domainFilter = new Filter({
 		header: "Domain",
@@ -59,6 +85,8 @@ function onJsonLoad (data) {
 
 	let tempString = "";
 	deitiesList.forEach((g, i) => {
+		const abvSource = Parser.sourceJsonToAbv(g.source);
+
 		g.alignment.sort(alignSort);
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
@@ -67,10 +95,11 @@ function onJsonLoad (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${i}">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(g)}" title="${g.name}">
-					<span class="name col-xs-4">${g.name}</span>
+					<span class="name col-xs-3">${g.name}</span>
 					<span class="pantheon col-xs-2 text-align-center">${g.pantheon}</span>
 					<span class="alignment col-xs-2 text-align-center">${g.alignment.join("")}</span>
-					<span class="domains col-xs-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
+					<span class="domains col-xs-3 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
+					<span class="source col-xs-2 source${abvSource}" title="${Parser.sourceJsonToFull(g.source)}">${abvSource}</span>
 				</a>
 			</li>
 		`;
@@ -124,13 +153,13 @@ function loadhash (jsonIndex) {
 	$content.html(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(deity)}
+		<tr><td colspan="6"><span class="bold">Title: </span>${deity.title}</td></tr>
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
 		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
-		<tr><td colspan="6"><span class="bold">Title: </span>${deity.title}</td></tr>
-		${renderStack.length ? `<tr><td class="text" colspan="6">${renderStack.join("")}</td></tr>`: ""}
+		${renderStack.length ? `<tr><td class="text" colspan="6">${renderStack.join("")}</td></tr>` : ""}
 		${EntryRenderer.utils.getPageTr(deity)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
