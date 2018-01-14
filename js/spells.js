@@ -387,16 +387,16 @@ function addSpells (data) {
 
 		// populate table
 		tempString += `
-			<li class='row' ${FLTR_ID}="${spI}">
-				<a id='${spI}' href='#${UrlUtil.autoEncodeHash(spell)}' title="${spell.name}">
-					<span class='name col-xs-3 col-xs-3-5'>${spell.name}</span>
-					<span class='source col-xs-1 col-xs-1-7 source${Parser.stringToCasedSlug(spell.source)}' title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
-					<span class='level col-xs-1 col-xs-1-5'>${levelText}</span>
-					<span class='time col-xs-1 col-xs-1-7' title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
-					<span class='school col-xs-1 col-xs-1-2 school_${spell.school}' title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
-					<span class='range col-xs-2 col-xs-2-4'>${Parser.spRangeToFull(spell.range)}</span>
+			<li class="row" ${FLTR_ID}="${spI}">
+				<a id="${spI}" href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
+					<span class="name col-xs-3 col-xs-3-5">${spell.name}</span>
+					<span class="source col-xs-1 col-xs-1-7 source${Parser.stringToCasedSlug(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
+					<span class="level col-xs-1 col-xs-1-5">${levelText}</span>
+					<span class="time col-xs-1 col-xs-1-7" title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
+					<span class="school col-xs-1 col-xs-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
+					<span class="range col-xs-2 col-xs-2-4">${Parser.spRangeToFull(spell.range)}</span>
 
-					<span class='classes' style='display: none'>${Parser.spClassesToFull(spell.classes)}</span>
+					<span class="classes" style="display: none">${Parser.spClassesToFull(spell.classes)}</span>
 				</a>
 			</li>`;
 
