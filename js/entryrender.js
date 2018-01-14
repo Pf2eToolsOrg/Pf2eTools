@@ -332,7 +332,6 @@ function EntryRenderer () {
 			}
 
 			function getPreReqText (self) {
-				// TODO refactor string rendering to make this easier
 				if (entry.prerequisite) {
 					const tempStack = [];
 					self.recursiveEntryRender({type: "inline", entries: [entry.prerequisite]}, tempStack);

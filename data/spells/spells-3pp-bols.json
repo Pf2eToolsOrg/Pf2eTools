@@ -85,6 +85,9 @@
 			"entries": [
 				"You cause a small object of up to a pound in weight to sink harmlessly into the flesh of the target. Magical rings, amulets, or other items melded in this way still give their benefits to the wearer as if they were being worn. A slight warping of the flesh and a magical aura are the only clues to the item's existence. Items carried in this way are considered attuned to the recipient and count toward the limit of how many items can be attuned. If the creature is already at the limit, the spell fails to take effect.",
 				"If absorb object is dispelled or otherwise ends early, the object tears itself free of its recipient, doing 2d8 piercing damage in the process. The original spell-caster can end the spell as an action, causing the item to be expelled harmlessly."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -441,6 +444,16 @@
 						"For each spell slot used higher than 6th level, you can affect one additional skeleton."
 					]
 				}
+			],
+			"damageImmune": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -1172,7 +1185,10 @@
 				"radiant"
 			],
 			"damageResist": [
-				"radiant"
+				"bludgeoning",
+				"piercing",
+				"radiant",
+				"slashing"
 			]
 		},
 		{
@@ -1753,6 +1769,9 @@
 				"When you cast this spell, rocks, boulders, and other large stones are summoned from the Elemental Plane of Earth and rain down on the area of effect, which can be up to 1,200 square feet (twelve 10-by-10-foot squares). The area can be laid out as you wish, but it must be contiguous, at least 10 feet across at every point, entirely within the spell's range, and entirely within your line of sight.",
 				"Each creature in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 8d8 bludgeoning damage, falls prone, and is restrained beneath boulders until they escape or the stones disappear. A successful save means the creature takes half damage and isn't knocked prone or restrained. A restrained creature can escape from under the boulders by using an action and making a successful Strength (Athletics) check against your spell saving throw DC.",
 				"The stones remain on the ground for 1 minute after they fall, making the area difficult terrain and providing plenty of places to find cover."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -2045,6 +2064,9 @@
 				"As an action, you can make a melee spell attack against one creature within your reach; a hit does 10d6 acid damage and ends this spell."
 			],
 			"damageInflict": [
+				"acid"
+			],
+			"damageResist": [
 				"acid"
 			]
 		},
@@ -2356,6 +2378,11 @@
 			"entries": [
 				"One willing creature you can see rages like a barbarian. The creature has tactical advantage on Strength checks and Strength saving throws, gains a +2 bonus to damage dealt with Strength-based melee weapons, and has resistance to bludgeoning, piercing, and slashing damage. The creature is unable to cast spells or concentrate on spells when raging.",
 				"The spell ends if the creature ends its turn without either attacking a hostile creature or being attacked since its previous turn."
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -2776,6 +2803,9 @@
 						"For each spell slot used higher than 2nd level, you propel an additional 1d6 beads and can target one additional creature."
 					]
 				}
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -2882,6 +2912,11 @@
 			},
 			"entries": [
 				"You imbue a small iron bead with a protective aura. For the duration of the spell, while you wear the bead, you have resistance to bludgeoning, piercing, and slashing damage from nonadamantine weapons, and your AC increases by 2. Keep track of how much damage is prevented by this spell's resistance; the spell ends once it has prevented 100 points of damage."
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -3269,6 +3304,18 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"damageImmune": [
+				"fire",
+				"necrotic",
+				"poison",
+				"psychic",
+				"radiant"
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -3368,6 +3415,9 @@
 			},
 			"entries": [
 				"One weapon you can see that deals slashing damage becomes incredibly sharp. For the duration of the spell, its damage dice become one category larger: d4 becomes d6, d6 becomes d8, and so on; d12 becomes 2d8."
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -3718,6 +3768,9 @@
 			},
 			"entries": [
 				"One willing creature you touch sprouts long, sharp spurs of bone all over its body. The creature does 2d6 piercing damage to its target when it successfully initiates a grapple. It does another 2d6 damage at the start of its turn to any creature it has grappled."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -3764,6 +3817,9 @@
 			"entries": [
 				"You cause all leaves, petals, and blades of grass within 30 feet of a point you can see to become unnaturally hard and sharp. Each creature that starts its turn in or enters the affected area has its speed reduced by 10 feet until the end of its turn unless it makes a successful Dexterity saving throw. In addition, any creature that moves in the affected area suffers 1d6 slashing damage for every 5 feet moved.",
 				"If blades of jade is cast in an area with especially thick underbrush (as determined by the GM), the spell becomes more dangerous: damage increases to 2d6 per 5 feet in lightly obscuring foliage, and to 4d6 per 5 feet in heavily obscuring foliage."
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -4518,6 +4574,9 @@
 				"Each tentacle has AC 15, 10 hit points, reach 5 ft., and your saving throw modifiers. At the beginning of your turn, each tentacle attacks one creature within 10 feet of it using your spell attack bonus. You choose the targets if you can see the tentacles; otherwise they attack the closest creature, friend or foe. A successful hit does 1d8+4 bludgeoning damage and the target creature is grappled. A tentacle doesn't attack any other target while it's grappling a creature.",
 				"A grappled creature can't breathe, and is suffocating. A creature can escape from a tentacle by using an action and making a successful Strength (Athletics) check against your spell save DC. Tentacles disappear when they are reduced to 0 hit points.",
 				"If no enemies are in reach, the tentacles retreat inside their hosts and remain dormant until a creature approaches. The tentacles never attack you."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -4700,6 +4759,9 @@
 			},
 			"entries": [
 				"You strengthen the bones of a willing creature you touch. The creature gains resistance against bludgeoning damage for the duration of the spell."
+			],
+			"damageResist": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -4747,6 +4809,10 @@
 				"You inflict a powerful curse on a creature you can see, unless that creature makes a successful Constitution saving throw.",
 				"Creatures cursed with bone blight have dangerously brittle bones. They gain vulnerability to bludgeoning and slashing damage, and if they take 20 or more damage from any attack, they must make a successful Constitution saving throw or suffer a broken bone. A broken bone reduces movement to half speed and imposes disadvantage on Dexterity checks. The penalties for a broken bone are removed when the character receives magical healing or finishes a long rest with all of their hit points and hit dice restored.",
 				"At the end of each long rest, a character suffering bone blight must make a Constitution saving throw. The curse ends after two successful saves, which need not be consecutive. The curse can also be ended by magic that removes curses."
+			],
+			"damageVulnerable": [
+				"bludgeoning",
+				"slashing"
 			]
 		},
 		{
@@ -4947,6 +5013,9 @@
 			},
 			"entries": [
 				"A multitude of thorny vines burst from your fingers and enwrap a willing, nonarmored creature you touch to form a suit of fibrous armor around the target. This armor is treated as medium armor with a base AC of 15 + Dexterity modifier (max 2). Normal penalties apply if the armored creature doesn't have proficiency with medium armor. Any foe that strikes a creature encased in bramble armor with a melee attack takes 1d4 piercing damage."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -4992,6 +5061,9 @@
 			},
 			"entries": [
 				"You imbue one tree you can see with the ability to strike creatures with its branches. The tree remains immobile otherwise. When you cast the spell, and as an action on your turn, you direct the tree to attack one target that it can reach. Make a melee spell attack against the target; a successful hit does 2d10+5 bludgeoning damage."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -5041,6 +5113,11 @@
 			},
 			"entries": [
 				"You attempt to nullify the resistances of one creature you can see. The creature loses all of its resistance to bludgeoning, piercing, and slashing damage for the duration of the spell unless it makes a successful Constitution saving throw. The spell doesn't affect the creature's immunities."
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -5102,6 +5179,9 @@
 				}
 			],
 			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
 				"lightning"
 			]
 		},
@@ -5149,6 +5229,9 @@
 			},
 			"entries": [
 				"One object you can see becomes brittle and vulnerable to bludgeoning damage. If the object is held by a creature or is magically animated, a successful Constitution saving throw negates the effect."
+			],
+			"damageVulnerable": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -5555,6 +5638,11 @@
 			},
 			"entries": [
 				"You cause one item weighing up to 10 lbs. to become stronger and less likely to break. It gains resistance against bludgeoning, piercing, and slashing damage and gains temporary hit points equal to its current hit points. The temporary hit points disappear when the spell ends."
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -6499,6 +6587,12 @@
 			],
 			"damageResist": [
 				"fire"
+			],
+			"damageImmune": [
+				"bludgeoning",
+				"fire",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -6597,6 +6691,9 @@
 			},
 			"entries": [
 				"You exude a sickening, carrion stench. Every living creature that begins its turn within 10 feet of you or that enters the area of effect must make a Constitution saving throw. If the saving throw fails, the creature is poisoned for as long as it stays in the area of effect and for an additional 1d4 rounds after it leaves the area. A creature that makes a successful save is immune to the effect of this casting of charnel stench."
+			],
+			"damageInflict": [
+				"poison"
 			]
 		},
 		{
@@ -7126,6 +7223,9 @@
 				"You transform one willing creature's hands into thick, wide claws that enable it to burrow through earth and stone. The creature can burrow through earth at a rate equal to its land speed, and through rock or stone at one-quarter of that rate.",
 				"A creature that burrows through stone leaves a tunnel behind it. If it burrows through soft earth, the tunnel fills in behind it (with earth excavated from ahead of the creature) unless the creature slows down to half speed.",
 				"In addition, the creature's unarmed attacks do 2d6 slashing damage. The claws are considered adamantine."
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -7170,6 +7270,9 @@
 			},
 			"entries": [
 				"Your hands transform into wicked claws, so that your unarmed strikes do 2d6 slashing damage. You are proficient with your unarmed strikes."
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -7657,6 +7760,9 @@
 				"You create an aura of silence in a 20-foot-radius sphere around yourself that moves with you. Within the aura, only you can make noise; all other noises are silenced. In addition, no creature inside the affected area can take thunder damage or be affected by sound-related spells unless the spell was cast by you."
 			],
 			"damageInflict": [
+				"thunder"
+			],
+			"damageImmune": [
 				"thunder"
 			]
 		},
@@ -8323,6 +8429,9 @@
 				"You unleash cataclysmic forces of nature over a vast area. The area affected is an entire geographic region within sight of the caster, such as a valley, the caverns beneath a mountain, or a lake from shore to shore. If the geographical area is especially large (a great plain, an ocean, etc.), then even this spell can't affect it entirely. Assume a maximum 1-mile-radius area of effect centered on a point chosen by the caster. To properly channel the massive energy this spell requires, the caster must be within the area of effect, if only at its periphery.",
 				"The entire chosen region becomes a nightmare of natural disasters. Scalding geysers erupt. Caverns collapse. Crevasses split wide open. All structures and living creatures in the area of effect sustain 5d6 points of bludgeoning damage, or half damage with a successful Dexterity saving throw. You are knocked prone and stunned for 2d6 rounds immediately after casting creation's fury, and you can't cast any spells except cantrips for 30 days afterward.",
 				"The exact effect of the destruction wrought by this spell must be determined by the GM."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -8917,6 +9026,9 @@
 				"You conjure a cloud of daggers into existence and select one creature you can see for them to attack. The targeted creature takes 6d4+30 piercing damage at the start of each of its turns, or half damage with a successful Dexterity saving throw. The daggers follow the creature as it moves. If the creature teleports or moves to another plane, the daggers stay where they are and don't follow. They attack only the creature they're targeted against; others can walk through them without harm.",
 				"As an action, you can redirect the daggers to attack another creature you can see within 100 feet of their current position.",
 				"The daggers disappear when the spell ends."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -9023,6 +9135,9 @@
 			"entries": [
 				"You summon a fiend to inhabit your body and grant you its strength. For the duration of the spell, your Strength score becomes 21, you gain 40 temporary hit points, and you gain a +2 bonus to AC. You also grow wicked claws on your hands, so your unarmed attacks do 2d8 slashing damage; the claws are magical, so you get a +1 bonus to hit and to damage with them.",
 				"At the start of each of your turns, you must make a DC 10 Charisma saving throw. If the saving throw fails, the fiend takes control of your actions for the remaining duration of the spell. It has full access to your abilities. Most demons will wreak as much havoc as possible during this time, attacking your allies if possible."
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -9204,6 +9319,9 @@
 			},
 			"entries": [
 				"You transform your hands into filthy, dirt-caked claws so that while the spell lasts, you are proficient with unarmed strikes and your unarmed strikes do 1d6 slashing damage. If you do 5 or more damage with an unarmed strike, your opponent must make a Constitution saving throw. If it fails, the target creature is poisoned until the end of your next turn."
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -9249,6 +9367,9 @@
 			},
 			"entries": [
 				"Using an ancient evil spell, you stab yourself in the chest and magically spread the pain over a wide area, potentially bringing death to sleeping creatures as far as a mile away. You take 5d8 piercing damage (which can't be reduced) and are stunned for 5 rounds. Sleeping creatures with fewer than 25 hit points within 1 mile of you die instantly unless they make successful Constitution saving throws. Survivors, as well as creatures with more than 25 hit points, awaken suddenly from a nightmare that included the figure of Death looming over them and trying to slay them."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -9808,6 +9929,9 @@
 			},
 			"entries": [
 				"You protect the ship you are on from ramming attacks. Your ship gains resistance to bludgeoning damage for the duration of the spell."
+			],
+			"damageResist": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -9965,6 +10089,15 @@
 				}
 			],
 			"damageInflict": [
+				"fire"
+			],
+			"damageImmune": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
+			"damageResist": [
+				"cold",
 				"fire"
 			]
 		},
@@ -10157,6 +10290,9 @@
 			"entries": [
 				"You curse one creature you can see within range to be vulnerable to a specific doom. You can select a specific person, a type of weapon or creature, or a location. When the person, weapon, or creature attacks the target, or the target is in the location, they suffer a -4 penalty to their AC and take an additional 5 damage from each attack.",
 				"Destined doom lasts until broken by magic that can remove a curse."
+			],
+			"damageVulnerable": [
+				"weapon"
 			]
 		},
 		{
@@ -11064,6 +11200,15 @@
 						" You can choose the effects of one other alignment when you first cast this spell; you must always then use that choice."
 					]
 				}
+			],
+			"damageInflict": [
+				"fire",
+				"necrotic"
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -11812,7 +11957,12 @@
 				"Your hand transforms into a dragon's claw. For the duration of the spell, you can use your action to make a melee spell attack against a creature within reach; a hit does 2d6 slashing damage. When you hit, you can spend a sorcery point to do 1d6 additional acid, cold, fire, lightning, or poison damage."
 			],
 			"damageInflict": [
-				"poison"
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				"slashing"
 			]
 		},
 		{
@@ -12185,6 +12335,9 @@
 						"For each spell slot used higher than 4th level, the spelldoes an additional 1d6 damage."
 					]
 				}
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -12238,6 +12391,9 @@
 						"For each spell slot used higher than 1st level, the damage increases by 1d6."
 					]
 				}
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -12347,8 +12503,17 @@
 				"The trap is surrounded by earthen walls that are not impervious to attacks; they have AC 14, 100 hit points, and are immune to all but bludgeoning, piercing, slashing, force, and thunder damage. When the spell ends or the creature destroys the walls, the trapped creature takes 4d6 force damage and returns to the space it originally occupied or the nearest unoccupied space, where it falls prone."
 			],
 			"damageInflict": [
-				"force",
-				"thunder"
+				"force"
+			],
+			"damageImmune": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"necrotic",
+				"poison",
+				"psychic",
+				"radiant"
 			]
 		},
 		{
@@ -12693,6 +12858,14 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"damageResist": [
+				"cold",
+				"fire"
+			],
+			"damageVulnerable": [
+				"cold",
+				"fire"
 			]
 		},
 		{
@@ -12749,6 +12922,17 @@
 			"damageInflict": [
 				"fire",
 				"poison"
+			],
+			"damageImmune": [
+				"acid",
+				"cold",
+				"fire",
+				"poison"
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -12828,6 +13012,10 @@
 						" As an action, you can slash the air with the scimitar to create a spray of acid in a 15-foot cone. Each creature in the cone takes 6d6 acid damage, or half damage with a successful Dexterity saving throw."
 					]
 				}
+			],
+			"damageInflict": [
+				"acid",
+				"fire"
 			]
 		},
 		{
@@ -13673,7 +13861,6 @@
 				"Wisps of dark flame surround you. You gain resistance to necrotic damage and your maximum hit points can't be reduced for the spell's duration. If a creature within 5 feet of you strikes you with a melee attack while you're protected by ethereal shield, the attacker takes 3d10 radiant damage."
 			],
 			"damageInflict": [
-				"necrotic",
 				"radiant"
 			],
 			"damageResist": [
@@ -14234,6 +14421,9 @@
 						"For each spell slot used higher than 6th level, the slashing damage increases by 1d6 and the bleeding increases by 1 point."
 					]
 				}
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -14888,6 +15078,9 @@
 						"For each spell slot used higher than 3rd level, the spell affects one additional skeleton."
 					]
 				}
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -15148,6 +15341,9 @@
 			},
 			"entries": [
 				"Your hands become as hard as stone. For the duration of the spell, you are proficient with unarmed strikes and your unarmed strikes do 1d12 bludgeoning damage."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -15672,6 +15868,14 @@
 				"You transform yourself and all items you are carrying into thick liquid. The amount of liquid has the same mass and volume as your normal body, but it is amorphous, allowing you to can squeeze through gaps that are at least an inch wide. In this form, you are immune to poison, paralysis, and stun. Your speed becomes 20 feet. You can flow up gently slanted surfaces, but can't climb stairs.",
 				"You can't speak, attack, or cast spells in fluid form. You gain resistance to bludgeoning, slashing, and piercing damage done by nonmagical weapons.",
 				"You can end this spell as an action. If the spell ends when you are in a container that's too tight for your full form, the container shatters if it can; if it can't, then you remain in fluid form until you are released from the container."
+			],
+			"damageImmune": [
+				"poison"
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -16021,6 +16225,9 @@
 				"You create an earthen shelter under the roots of a tree. A door appears at the base of the tree, or in the ground if the tree is not wide enough for a door. When opened, the door reveals steps that lead down into a 15-foot-square room. You can select up to nine individuals who can open the door and enter the underground space. You also designate the shelter's ambient temperature.",
 				"The shelter keeps occupants safe from storms, forest fires, and other natural hazards. The door is visible to anyone passing nearby with only a DC 10 Wisdom (Perception) check. It can be forced open with a Strength (Athletics) check, or it can be destroyed like any normal, 2-inch-thick wooden door.",
 				"Characters or creatures inside the shelter when the spell ends are expelled violently as the earth closes around them, and they take 3d6 points of bludgeoning damage in the process."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -16331,7 +16538,8 @@
 				}
 			],
 			"damageInflict": [
-				"cold"
+				"cold",
+				"piercing"
 			]
 		},
 		{
@@ -16891,7 +17099,15 @@
 				"You create a 10-foot-square hollow cube of glass in an area you can see. If a creature is in the area where the cube is created, it escapes with a successful Dexterity save and moves automatically to a space adjacent to the cube. Creatures that fail the saving throw are trapped inside the cube and cannot leave it except by teleportation or similar means. The cube has AC 12 and 100 hit points. It is immune to acid, necrotic, poison, and psychic damage, but is vulnerable to force and thunder damage. Creatures inside the cube when it is destroyed take 5d6 slashing damage from shards of glass."
 			],
 			"damageInflict": [
-				"psychic",
+				"psychic"
+			],
+			"damageImmune": [
+				"acid",
+				"necrotic",
+				"poison"
+			],
+			"damageVulnerable": [
+				"force",
 				"thunder"
 			]
 		},
@@ -17511,6 +17727,9 @@
 			"entries": [
 				"One creature you can see must make a Constitution saving throw. If the saving throw fails, sprouts and roots grow inside the creature's stomach, doing 8d10 piercing damage.",
 				"If the creature dies while under the effect of gutsprout, the roots force their way out of the creature's mouth and skin within a few rounds."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -17723,6 +17942,9 @@
 						"For each spell slot used higher than 3rd level, the attack does an additional 1d10 damage."
 					]
 				}
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -18294,6 +18516,10 @@
 			"entries": [
 				"One living creature you can see must make a Constitution saving throw. If the saving throw fails, its blood loses the ability to clot, so that it takes an additional 1d6 damage from any attack that does piercing or slashing damage to it for the duration of the spell. An affected creature can repeat the saving throw at the end of each of its turns; a successful save ends the spell.",
 				"Creatures without blood are immune to this spell."
+			],
+			"damageInflict": [
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -19664,7 +19890,12 @@
 				"Your body transforms into an icelike substance. Your possessions remain unchanged. You gain immunity to cold damage but vulnerability to fire damage. Your melee weapon attacks do an additional 2d6 cold damage when they hit, and you have tactical advantage on ability checks made to escape from a grapple."
 			],
 			"damageInflict": [
-				"cold",
+				"cold"
+			],
+			"damageImmune": [
+				"cold"
+			],
+			"damageVulnerable": [
 				"fire"
 			]
 		},
@@ -19713,6 +19944,7 @@
 				"You conjure a hammer made of ice into your hand. As an action, you can make a melee spell attack with the hammer against one creature within reach. You can also throw the hammer as an action at a target within 30 feet, using a ranged spell attack to determine whether it hits. On a hit, the hammer does 1d6 bludgeoning plus 2d6 cold damage. After an attack, or if you drop the hammer for any reason, it disappears, but while the spell lasts, you can conjure it again with a bonus action."
 			],
 			"damageInflict": [
+				"bludgeoning",
 				"cold"
 			]
 		},
@@ -19969,6 +20201,13 @@
 			},
 			"entries": [
 				"You grant a willing creature you touch immunity to one of the following damage types (your choice) for the duration of the spell: acid, cold, fire, lightning, or thunder."
+			],
+			"damageImmune": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"thunder"
 			]
 		},
 		{
@@ -20852,6 +21091,11 @@
 						"For each spell slot used higher than 4th level, you can affect one additional skeleton."
 					]
 				}
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -20997,7 +21241,10 @@
 				"fire"
 			],
 			"damageResist": [
-				"fire"
+				"bludgeoning",
+				"fire",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -21043,6 +21290,9 @@
 			},
 			"entries": [
 				"You conjure five 2-inch-diameter iron balls into the air next to you. On each of your turns, you can launch one iron ball at a creature within 60 feet and line of sight. Make a ranged spell attack against that creature. If it hits, a ball does 2d6 bludgeoning damage and the target is knocked prone. Unused iron balls move with you as you move. Balls disappear after they attack or when the spell ends."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -21583,6 +21833,9 @@
 			},
 			"entries": [
 				"One pile of leaves within range rises in a wave and engulfs a creature you can see. The creature takes 5d6 bludgeoning damage, or half damage with a successful Dexterity saving throw."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -22513,6 +22766,7 @@
 				"The geyser ends at the end of the spell. The remaining lava melts away into the ground 1d3 rounds later, leaving behind scorched earth."
 			],
 			"damageInflict": [
+				"bludgeoning",
 				"fire"
 			]
 		},
@@ -22810,11 +23064,13 @@
 				"One undead creature you can see becomes imbued with the essence of fire. A flaming sigil appears above the creature's head, and the creature's eye sockets smoke and burn with orange flame. The creature gains resistance to fire damage and vulnerability to cold damage, and its melee attacks do an additional 2d6 fire damage when they hit."
 			],
 			"damageInflict": [
-				"cold",
 				"fire"
 			],
 			"damageResist": [
 				"fire"
+			],
+			"damageVulnerable": [
+				"cold"
 			]
 		},
 		{
@@ -22857,11 +23113,13 @@
 				"One undead creature you can see is imbued with the essence of ice. An icy sigil appears above the creature's head, and the creature's eye sockets glow with frigid blue energy. The creature gains resistance to cold damage and vulnerability to fire damage, and its melee attacks do an additional 2d6 cold damage when they hit."
 			],
 			"damageInflict": [
-				"cold",
-				"fire"
+				"cold"
 			],
 			"damageResist": [
 				"cold"
+			],
+			"damageVulnerable": [
+				"fire"
 			]
 		},
 		{
@@ -22904,7 +23162,12 @@
 				"One undead creature you can see is imbued with the essence of acid. A green sigil appears above the creature's head, and acid trickles from its eye sockets. The creature gains resistance to acid damage and vulnerability to lightning damage, and its melee attacks do an additional 2d6 acid damage when they hit."
 			],
 			"damageInflict": [
-				"acid",
+				"acid"
+			],
+			"damageResist": [
+				"acid"
+			],
+			"damageVulnerable": [
 				"lightning"
 			]
 		},
@@ -23427,6 +23690,7 @@
 				}
 			],
 			"damageInflict": [
+				"bludgeoning",
 				"fire"
 			]
 		},
@@ -24900,6 +25164,9 @@
 						" Each creature adds 1d6 to its saving throws."
 					]
 				}
+			],
+			"damageInflict": [
+				"radiant"
 			]
 		},
 		{
@@ -25376,6 +25643,10 @@
 						" your skin becomes like bark and your hair like leaves. Until the spell ends, your base AC becomes 17, you gain resistance to psychic and poison damage, you are immune to stunning, and you have tactical advantage on saving throws against poison."
 					]
 				}
+			],
+			"damageResist": [
+				"poison",
+				"psychic"
 			]
 		},
 		{
@@ -25793,6 +26064,9 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"damageResist": [
+				"acid"
 			]
 		},
 		{
@@ -25888,6 +26162,9 @@
 			},
 			"entries": [
 				"For the duration of the spell, one creature is immune to all the effects of high pressure caused by being deep underwater, in a pressure chamber, buried under an avalanche or cave-in, and similar situations. The creature also has resistance against bludgeoning damage caused by its surroundings, but not by hostile creatures. The spell doesn't protect against piercing or slashing damage from rocks, trees, or other sharp objects."
+			],
+			"damageResist": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -25936,6 +26213,9 @@
 						"For each spell slot used higher than 1st level, the spell does an additional 1d6 damage."
 					]
 				}
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -26339,6 +26619,9 @@
 			},
 			"entries": [
 				"Your skin grows quills, which provide you with a +1 AC bonus. An adjacent creature that hits you with a melee attack takes 1d4 piercing damage from quills."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -26442,6 +26725,14 @@
 						"For each two spell slots used higher than 4th level, you gain one additional spear. If you spend 2 sorcery points when you cast this spell, you can choose the effect of each spear instead of rolling."
 					]
 				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				"thunder"
 			]
 		},
 		{
@@ -26549,6 +26840,14 @@
 						"If you spend 1 sorcery point when you hit with this staff, you can choose the effect of the strike instead of rolling."
 					]
 				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				"thunder"
 			]
 		},
 		{
@@ -26688,6 +26987,7 @@
 				"Flammable objects burn in the cloud, and stone and metal structures warp and deform. The soil becomes ashen and unable to bear life for the next 1d4 years unless special measures are used to restore it."
 			],
 			"damageInflict": [
+				"bludgeoning",
 				"fire"
 			]
 		},
@@ -27199,6 +27499,9 @@
 						"For each spell slot used higher than 1st level, the spell does an additional 1d6 damage."
 					]
 				}
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -27247,6 +27550,20 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"damageImmune": [
+				"acid",
+				"bludgeoning",
+				"cold",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"thunder",
+				"weapon"
 			]
 		},
 		{
@@ -27520,6 +27837,10 @@
 			},
 			"entries": [
 				"You transform your body into sand. For the duration of the spell, you gain resistance to slashing and piercing damage and you have tactical advantage on Dexterity (Stealth) checks made in sandy environments."
+			],
+			"damageResist": [
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -27777,6 +28098,13 @@
 						]
 					]
 				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison"
 			]
 		},
 		{
@@ -28291,6 +28619,11 @@
 				"You transform yourself into shadow-stuff. For the duration of the spell, you can fit through openings of 1 square inch or larger, you have a +10 bonus on Dexterity (Stealth) checks, and you have resistance to bludgeoning, piercing, and slashing damage from nonmagical weapons.",
 				"However, while in shadow form, you can't speak or interact with anything in a physical manner.",
 				"If you occupy a space that's too tight for you when the spell ends, you are displaced to the nearest space where you'll fit; you take 1d6 bludgeoning damage for each 5 feet you were displaced to reach that spot."
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -28769,6 +29102,11 @@
 						"For each spell slot used higher than 3rd level, you can affect one additional skeleton."
 					]
 				}
+			],
+			"damageResist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
 			]
 		},
 		{
@@ -28871,6 +29209,9 @@
 						"For each spell slot used higher than 2nd level, the spear does an additional 1d10 damage."
 					]
 				}
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -30763,6 +31104,9 @@
 						"For each spell slot used higher than 4th level, the damage increases by 5 points."
 					]
 				}
+			],
+			"damageInflict": [
+				"slashing"
 			]
 		},
 		{
@@ -31313,6 +31657,9 @@
 			},
 			"entries": [
 				"You create a metal dagger in your hand that is treated as a magical dagger +1. Upon striking a creature, the blade breaks off and remains stuck in the creature. The affected creature must make a Constitution saving throw at the start of each of its turns. If the saving throw fails, the creature takes 2d6 piercing damage and is incapacitated until the end of its turn. If the saving throw succeeds, the blade drops out of the wound and disappears, ending the spell."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -31413,6 +31760,9 @@
 			},
 			"entries": [
 				"You cause a dense thicket to grow instantly. The thicket is 3 feet tall, covers 100 square feet of ground, and must be at least 5 feet wide at every point. (A simple way to think of this is four squares, each 5-by-5 feet horizontally and 3 feet high.) The thicket must be continuous; no portion of it can be separate from the rest. The thicket is difficult terrain to move through. The first time a creature moves in the thicket each turn, it must make a successful Dexterity saving throw or take 1d6 piercing damage from thorns."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -31457,6 +31807,9 @@
 			},
 			"entries": [
 				"You conjure a 60-foot cone of water from your hands. Each creature in the area must make a Dexterity saving throw. If the saving throw fails, the creature takes 7d6+15 bludgeoning damage and is pushed 30 feet away from you. On a successful save, the creature takes half damage and is not pushed."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -31792,6 +32145,9 @@
 			},
 			"entries": [
 				"You transform one pebble you touch into a boulder up to 1,000 cubic feet in volume (a cube 10 feet on a side, or a sphere 12 feet in diameter). If you throw the pebble as part of the spell, it transforms in flight, and you can make a ranged spell attack against one creature within 30 feet. On a hit, the boulder does 6d10 bludgeoning damage."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -32937,6 +33293,9 @@
 				"From a point you can see, you raise a cylinder of magical energy with a 40-foot radius and 20 feet in height. All plants and animals inside the affected area become infuriated, so that they bite and sting and lash out against all nearby creatures.",
 				"Every creature that begins its turn inside the affected area takes 3d6+10 piercing damage from bites, stings, and lacerations. Creatures in the affected area also make concentration checks with tactical disadvantage.",
 				"Animals and swarms of insects are drawn to the area affected by vengeful environs, so killing a few of them doesn't lessen the spell's effect. An area-effect attack that hits AC 5 and does at least 20 points of damage, however, clears a 5-by-5-by-5-foot cube of infuriated creatures inside the spell's area; once cleared this way, that zone doesn't refill."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -33145,6 +33504,19 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"damageImmune": [
+				"bludgeoning",
+				"cold",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"thunder",
+				"weapon"
 			]
 		},
 		{
@@ -33390,6 +33762,9 @@
 						"For each spell slot used higher than 3rd level, the damage increases by 1d6."
 					]
 				}
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -33752,6 +34127,9 @@
 				"When a creature casts a reflection on the liquid, an exact double rises from the liquid in the same round. The double is as large as the amount of water allows, up to the same size as the original creature. For example, if the enchanted liquid is contained in a goblet, then the double can be only about 6 inches tall.",
 				"Once it appears, the double remains for 10 rounds. The water double's speed is twice that of the original creature. It can't use any of the creature's equipment, spells, attacks, or special abilities. Being amorphous, it can flow through cracks and openings as small as one-half-inch square. It can't be damaged or physically destroyed, but it can be dispelled.",
 				"The water double tries to touch the creature it resembles, moving toward it by the shortest available route. It must make a successful melee spell attack to touch its original, using your melee spell attack bonus. If it misses, the double collapses into a puddle and the spell ends. If it hits, the double spreads across the target's body, engulfing it in a film of crushing water; the target takes 2d6 bludgeoning damage at the start of each of its turns. After taking the damage, the target can make a Constitution saving throw; a successful save ends the spell."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -34295,6 +34673,9 @@
 					]
 				},
 				"The geyser can be maintained with concentration for up to 3 rounds."
+			],
+			"damageInflict": [
+				"bludgeoning"
 			]
 		},
 		{
@@ -34887,6 +35268,9 @@
 				"When a creature moves into or starts its turn in the reach of the wyvern, the wyvern guard attacks it. Make a melee spell attack against the target. If it hits, the target takes 1d8 piercing damage and is paralyzed. A paralyzed creature makes a Constitution saving throw at the end of each of its turns; the paralysis ends on a successful save.",
 				"The wyvern guard disappears and the spell ends when the wyvern makes a successful attack.",
 				"In areas of bright light, the wyvern is clearly visible. In dim light, a DC 15 Perception check is needed to notice the wyvern at distances of 30 feet or more. In darkness, the wyvern is effectively invisible."
+			],
+			"damageInflict": [
+				"piercing"
 			]
 		},
 		{
@@ -35085,6 +35469,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"damageImmune": [
+				"poison"
 			]
 		},
 		{
