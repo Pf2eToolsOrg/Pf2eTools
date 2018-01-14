@@ -98,13 +98,13 @@ function onJsonLoad (data) {
 		if (!p.prerequisites.level) p.prerequisites.level = STR_LEVEL_NONE;
 
 		tempString += `
-			<li class='row' ${FLTR_ID}="${i}">
-				<a id='${i}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
-					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
-					<span class='${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
-					<span class='${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]}</span>
-					<span class='${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? CLS_LI_NONE : STR_EMPTY}'>${parsePatronToShort(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
-					<span class='${LIST_SPELL} ${CLS_COL5} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]}</span>
+			<li class="row" ${FLTR_ID}="${i}">
+				<a id="${i}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p[JSON_ITEM_NAME]}">
+					<span class="${LIST_NAME} ${CLS_COL1}">${p[JSON_ITEM_NAME]}</span>
+					<span class="${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}" title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
+					<span class="${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]}</span>
+					<span class="${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? CLS_LI_NONE : STR_EMPTY}">${parsePatronToShort(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
+					<span class="${LIST_SPELL} ${CLS_COL5} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]}</span>
 				</a>
 			</li>
 		`;

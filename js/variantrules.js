@@ -28,10 +28,10 @@ function onJsonLoad (data) {
 
 		// populate table
 		tempString += `
-			<li ${FLTR_ID}='${i}'>
-				<a id='${i}' href='#${UrlUtil.autoEncodeHash(curRule)}' title='${curRule.name}'>
-					<span class='name col-xs-10'>${curRule.name}</span>
-					<span class='source col-xs-2 source${Parser.sourceJsonToAbv(curRule.source)}' title='${Parser.sourceJsonToFull(curRule.source)}'>${Parser.sourceJsonToAbv(curRule.source)}</span>
+			<li ${FLTR_ID}="${i}">
+				<a id="${i}" href="#${UrlUtil.autoEncodeHash(curRule)}" title="${curRule.name}">
+					<span class="name col-xs-10">${curRule.name}</span>
+					<span class="source col-xs-2 source${Parser.sourceJsonToAbv(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>
 				</a>
 			</li>`;
