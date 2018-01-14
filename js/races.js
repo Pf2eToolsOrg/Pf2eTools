@@ -101,8 +101,9 @@ function onJsonLoad (data) {
 const renderer = new EntryRenderer();
 
 function loadhash (id) {
-	$("#pagecontent").html(tableDefault);
-	$("#pagecontent td").show();
+	const $pgContent = $("#pagecontent");
+	$pgContent.html(tableDefault);
+	$pgContent.find("td").show();
 
 	const race = raceList[id];
 
@@ -116,34 +117,18 @@ function loadhash (id) {
 	$("td#ability span").html(ability.asText);
 
 	let speed;
-	if (typeof race.speed === "string") {
-		speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
-	} else {
+	if (race.speed.walk) {
 		speed = race.speed.walk + "ft.";
 		if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
+	} else {
+		speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
 	}
 	$("td#speed span").html(speed);
-	if (speed === "") $("td#speed").hide();
 
-	const traitlist = race.trait;
-	if (traitlist) {
-		$("tr.trait").remove();
+	const renderStack = [];
+	const faux = {"type": "entries", "entries": race.entries};
 
-		let statsText = "<tr class='text'><td colspan='6'>";
-		for (let n = 0; n < traitlist.length; ++n) {
-			const trait = traitlist[n];
+	renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
 
-			const header = `<span class='name'>${trait.name}.</span> `;
-			statsText += utils_combineText(traitlist[n].text, "p", header)
-		}
-		statsText += "</td></tr>";
-		$('table#pagecontent tbody tr:last').before(statsText);
-	} else if (race.entries) {
-		const renderStack = [];
-		const faux = {"type": "entries", "entries": race.entries};
-
-		renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
-
-		$('table#pagecontent tbody tr:last').before(renderStack.join(""));
-	}
+	$('table#pagecontent tbody tr:last').before(renderStack.join(""));
 }

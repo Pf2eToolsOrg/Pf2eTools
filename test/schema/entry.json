@@ -403,13 +403,15 @@
 				{"$ref" : "#/definitions/entry"},
 				{
 					"properties": {
+						"name": {
+							"type": "string"
+						},
 						"type": {"const": "invocation"},
 						"prerequisite": {
 							"type": "string"
 						}
 					},
-					"required": ["name"],
-					"additionalProperties": false
+					"required": ["name"]
 				}
 			]
 		},
@@ -418,10 +420,12 @@
 				{"$ref" : "#/definitions/entry"},
 				{
 					"properties": {
+						"name": {
+							"type": "string"
+						},
 						"type": {"const": "patron"}
 					},
-					"required": ["name"],
-					"additionalProperties": false
+					"required": ["name"]
 				}
 			]
 		},
@@ -459,8 +463,7 @@
 							}
 						}
 					},
-					"required": ["entries"],
-					"additionalProperties": false
+					"required": ["entries"]
 				}
 			]
 		},
@@ -480,8 +483,7 @@
 							}
 						}
 					},
-					"required": ["name", "entries"],
-					"additionalProperties": false
+					"required": ["name", "entries"]
 				}
 			]
 		},

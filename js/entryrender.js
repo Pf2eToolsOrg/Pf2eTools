@@ -473,10 +473,12 @@ function EntryRenderer () {
 								break;
 							case "@condition":
 								fauxEntry.href.path = "conditions.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@background":
 								fauxEntry.href.path = "backgrounds.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 

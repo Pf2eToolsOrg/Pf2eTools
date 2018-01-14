@@ -165,12 +165,12 @@ function addMonsters (data) {
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
 		textStack +=
-			`<li ${FLTR_ID}='${mI}'>
-				<a id=${mI} href='#${UrlUtil.autoEncodeHash(mon)}' title="${mon.name}">
-					<span class='name col-xs-4 col-xs-4-2'>${mon.name}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}" class='col-xs-1 col-xs-1-8 source source${abvSource}'>${abvSource}</span>
-					<span class='type col-xs-4 col-xs-4-3'>${mon._pTypes.asText.uppercaseFirst()}</span>
-					<span class='col-xs-1 col-xs-1-7 text-align-center cr'>${mon.cr}</span>
+			`<li ${FLTR_ID}="${mI}">
+				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
+					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-1 col-xs-1-8 source source${abvSource}">${abvSource}</span>
+					<span class="type col-xs-4 col-xs-4-3">${mon._pTypes.asText.uppercaseFirst()}</span>
+					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr}</span>
 				</a>
 			</li>`;
 
@@ -225,8 +225,8 @@ function sortMonsters (a, b, o) {
 
 function objToTitleCaseStringWithCommas (obj) {
 	return Object.keys(obj).map(function (k) {
-		return k.uppercaseFirst() + ' ' + obj[k]
-	}).join(', ');
+		return k.uppercaseFirst() + " " + obj[k]
+	}).join(", ");
 }
 
 const renderer = new EntryRenderer();
@@ -251,8 +251,8 @@ function loadhash (id) {
 	$("th.name").html(
 		`<span class="stats-name">${name}</span>
 		<span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>
-		<a href="${imgLink}" target='_blank'>
-			<img src="${imgLink}" class='token' onerror='imgError(this)'>
+		<a href="${imgLink}" target="_blank">
+			<img src="${imgLink}" class="token" onerror="imgError(this)">
 		</a>`
 	);
 
@@ -377,10 +377,10 @@ function loadhash (id) {
 				if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 				if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 
-				traittexthtml = traittexthtml + "<p class='" + firstsecond + spells + "'>" + traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "") + "</p>";
+				traittexthtml = traittexthtml + `<p class="${firstsecond}${spells}">${traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "")}</p>`;
 			}
 
-			$("tr#traits").after("<tr class='trait'><td colspan='6' class='trait" + i + "'><span class='name'>" + traitname + ".</span> " + traittexthtml + "</td></tr>");
+			$("tr#traits").after(`<tr class="trait"><td colspan="6" class="trait${i}"><span class="name">${traitname}.</span> ${traittexthtml}</td></tr>"`);
 
 			// parse spells, make hyperlinks
 			$("tr.trait").children("td").children("p.spells").each(function () {
@@ -388,7 +388,7 @@ function loadhash (id) {
 				if (spellslist[0] === "*") return;
 				spellslist = spellslist.split(": ")[1].split(/, (?!\+|\dd|appears|inside gems)/g);
 				for (let i = 0; i < spellslist.length; i++) {
-					spellslist[i] = "<a href='spells.html#" + encodeURIComponent((spellslist[i].replace(/(\*)| \(([^)]+)\)/g, ""))).toLowerCase().replace("'", "%27") + "_" + "phb' target='_blank'>" + spellslist[i] + "</a>";
+					spellslist[i] = `<a href="spells.html#${encodeURIComponent((spellslist[i].replace(/(\*)| \(([^)]+)\)/g, ""))).toLowerCase()}_phb" target="_blank">${spellslist[i]}</a>`;
 					if (i !== spellslist.length - 1) spellslist[i] = spellslist[i] + ", ";
 				}
 
@@ -414,10 +414,10 @@ function loadhash (id) {
 				if (renderedcount === 1) firstsecond = "first ";
 				if (renderedcount === 2) firstsecond = "second ";
 
-				actiontexthtml = actiontexthtml + "<p class='" + firstsecond + "'>" + actiontext[n] + "</p>";
+				actiontexthtml = actiontexthtml + `<p class="${firstsecond}">${actiontext[n]}</p>`;
 			}
 
-			$("tr#actions").after("<tr class='action'><td colspan='6' class='action" + i + "'><span class='name'>" + actionname + ".</span> " + actiontexthtml + "</td></tr>");
+			$("tr#actions").after(`<tr class="action"><td colspan="6" class="action${i}"><span class="name">${actionname}.</span> ${actiontexthtml}</td></tr>`);
 		}
 	}
 
@@ -439,7 +439,7 @@ function loadhash (id) {
 					reactiontexthtml = reactiontexthtml + "<p>" + reactiontext[n] + "</p>";
 				}
 
-				$("tr#reactions").after("<tr class='reaction'><td colspan='6' class='reaction" + i + "'><span class='name'>" + reactionname + ".</span> " + reactiontexthtml + "</td></tr>");
+				$("tr#reactions").after(`<tr class="reaction"><td colspan="6" class="reaction${i}"><span class="name">${reactionname}.</span> ${reactiontexthtml}</td></tr>`);
 			}
 		}
 	}

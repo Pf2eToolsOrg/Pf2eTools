@@ -8,10 +8,6 @@ const TABLE_START = `<tr><th class="border" colspan="6"></th></tr>`;
 const TABLE_END = `<tr><th class="border" colspan="6"></th></tr>`;
 
 window.onload = function load () {
-	RegExp.escape = function (string) {
-		return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
-	};
-
 	renderArea = $(`#pagecontent`);
 
 	renderArea.append(TABLE_START);

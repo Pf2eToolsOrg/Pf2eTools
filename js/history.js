@@ -58,7 +58,7 @@ function _getHashParts () {
 }
 
 function _getListElem (link) {
-	const toFind = `a[href='#${link.toLowerCase()}']`;
+	const toFind = `a[href="#${link.toLowerCase()}"]`;
 	const listWrapper = $("#listcontainer");
 	if (listWrapper.data("lists")) {
 		for (const list of listWrapper.data("lists")) {

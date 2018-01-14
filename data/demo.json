@@ -1,0 +1,316 @@
+{
+	"data": [
+		{
+			"type": "section",
+			"name": "Renderer Demo",
+			"entries": [
+				"(This is a section heading. This is mainly used in Adventures, for the header of entire chapters. The root entry does {@b not} need have the 'section' type, 'entries' is generally used instead. The 'section' produces a {@bold level -1} header; the 'basement' level, if you will.)",
+				"This is a demo of the JSON format, and how it (usually) gets rendered. You can edit this text, and it will reset on refresh.",
+				"{@b If a JSON property is described as 'optional,' the property may be excluded, unless otherwise noted.}",
+				"The goal of this system is to emulate the look and feel of the books, while maintaining a convenient and consistent data structure that can be re-used.",
+				"The general format is to nest multiple levels of 'entries'-typed objects, with other specific types (described in detail below) used as needed.",
+				"String entries can contain tags, and these work when nested in most other structures. These will eventually all work with the hover-to-view feature. They are case-insensitive, unless otherwise noted. These are:",
+				{
+					"type": "list",
+					"items": [
+						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand})",
+						"Dice roller tags; (improvements to the output placement pending) {@dice 1d2-2+2d3+5} for regular dice rolls, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}. Currently, 'droll.js' must be included in the page for these to work, but this might change in the future.",
+						"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
+						"Content tags:",
+						{
+							"type": "list",
+							"items": [
+								"Spells: {@spell acid splash} assumes PHB by default, {@spell tiny servant|xge} can have sources added with a pipe, {@spell tiny servant|xge|and optional link text added with another pipe}.",
+								"Items: {@item alchemy jug} assumed DMG by default, {@item longsword|phb} can have sources added with a pipe, {@item longsword|phb|and optional link text added with another pipe}.",
+								"Creatures: {@creature goblin} assumes MM by default, {@creature cow|vgm} can have sources added with a pipe, {@creature cow|vgm|and optional link text added with another pipe}.",
+								"Backgrounds: {@background Charlatan} assumes PHB by default, {@background Anthropologist|toa} can have sources added with a pipe, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
+								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|and subclasses added with another pipe.|Eldritch Knight}",
+								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|phb} can have sources added with a pipe (not that it's ever useful), {@condition stunned|phb|and optional link text added with another pipe}."
+							]
+						}
+					]
+				},
+				"These tags may be {@b {@i {@spell fireball|phb|nested}}}, although there are often better ways to get the combination of bold and italic that you're probably going to use this for; consider using one of the properly typed objects below (such as level 2 headers).",
+				{
+					"type": "entries",
+					"name": "A Subclass Name, For Example",
+					"entries": [
+						"The above is a 'level 0' header.",
+						"The 'name' property is optional",
+						{
+							"type": "entries",
+							"name": "A Subclass Feature Name",
+							"entries": [
+								"The above is a 'level 1' header.",
+								{
+									"type": "entries",
+									"name": "A Subclass Feature Inline Header",
+									"entries": [
+										"This bold-italic inline header is a 'level 2' header, please use this as opposed to nesting tags. You can make a chain of empty entry objects with no names to get to this header level, if required.",
+										"Note that the period in the inline name is added automagically."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "This is an example of a level 2 header with no real parents",
+									"entries": [
+										"This technique can be useful, sometimes."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "inline",
+					"entries": [
+						"Entries can be inlined, useful for e.g. links outwith the tags listed above, ",
+						{
+							"type": "link",
+							"href": {
+								"type": "internal",
+								"path": "5etools.html"
+							},
+							"text": "such as a link to the homepage"
+						},
+						" but you can see why the tags are preferable."
+					]
+				},
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Option B",
+							"entries": [
+								"Sometimes useful, e.g. for Fighting Styles on a class. (Note that this option is rendered second, when it's listed first in the data.)"
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Option A",
+							"entries": [
+								"The 'options' type is very similar to a list of entries, but it alphabetically sorts the list of options by name, before displaying them."
+							]
+						}
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Optional Caption",
+					"colLabels": [
+						"Col 1",
+						"Column the Second"
+					],
+					"colStyles": [
+						"col-xs-6 text-align-center",
+						"col-xs-5",
+						"col-xs-1 text-align-right bold"
+					],
+					"rows": [
+						[
+							"This is a table row",
+							"The number of entries should match the number of columns, naturally"
+						],
+						[
+							"The 'colStyles' list is literally used as CSS classes",
+							"And since we use bootstrap, that means col-xs-whatever. See the bootstrap docs for more info; we use bootstrap 3."
+						],
+						[
+							{
+								"type": "list",
+								"items": [
+									"Nested entries (generally) work, too.",
+									"Although why you would put a list in a table is beyond me."
+								]
+							},
+							"{@spell bless|phb|Spells, on the other hand, make sense.}"
+						]
+					]
+				},
+				{
+					"type": "list",
+					"items": [
+						"A basic list of items",
+						"As usual, nested entries work",
+						{
+							"type": "list",
+							"items": [
+								"Such as a nested list"
+							]
+						}
+					]
+				},
+				{
+					"type": "list",
+					"style": "list-hang",
+					"name": "Hanging List",
+					"items": [
+						"A hanging items list",
+						"Which has a 'name'/title, and will hang below that title"
+					]
+				},
+				{
+					"type": "list",
+					"style": "list-hang",
+					"name": "Hanging List",
+					"items": [
+						{
+							"type": "item",
+							"name": "An extension of the hanging list.",
+							"entry": "Which has bold inline titles -- note that this only allows {@i one} entry per item (it's 'entry' and not 'entries')"
+						},
+						"Can be mixed with regular strings"
+					]
+				},
+				"The 'bonus' type just sticks a + in front of things",
+				{
+					"type": "bonus",
+					"value": 3
+				},
+				"We don't use that one much. It's useful because it allows us to store the data as a number, and render it with a plus sign as required, but it's mostly just forgotten about.",
+				"Similar story with 'bonusSpeed' type (these 'bonus' flavours are mainly used in the class tables)",
+				{
+					"type": "bonusSpeed",
+					"value": 100
+				},
+				"The 'dice' type is rarely used, since the shorthand tag exists, but it looks like this:",
+				{
+					"type": "dice",
+					"toRoll": [
+						{
+							"number": 1,
+							"faces": 4
+						},
+						{
+							"number": 2,
+							"faces": 7,
+							"modifier": 0
+						},
+						{
+							"number": 3,
+							"faces": 10,
+							"modifier": 0,
+							"hideModifier": true
+						}
+					],
+					"rollable": true
+				},
+				"The 'abilityDc' type is more helpful:",
+				{
+					"type": "abilityDc",
+					"name": "Buggy Code",
+					"attributes": [
+						"wis",
+						"int"
+					]
+				},
+				"As is the 'abilityAttackMod' type:",
+				{
+					"type": "abilityAttackMod",
+					"name": "Killing Things",
+					"attributes": [
+						"str"
+					]
+				},
+				"There's also a generic version that allows more text customisation; 'abilityGeneric':",
+				{
+					"type": "abilityGeneric",
+					"name": "Initiative",
+					"text": "10 - your power level + somebody else's",
+					"attributes": [
+						"dex",
+						"str"
+					]
+				},
+				"External links using 'link':",
+				{
+					"type": "link",
+					"href": {
+						"type": "external",
+						"url": "https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/test/schema/entry.json"
+					},
+					"text": "The full 'entry' schema."
+				},
+				"Internal links are also possible, but generally covered by @tags. Check out the schema linked above for the full usage; it's massive and horrible so I'm not going to go into detail here.",
+				"Invocations:",
+				{
+					"type": "invocation",
+					"name": "Invocation Name",
+					"prerequisite": "Optional stuff",
+					"entries": [
+						"Edgy invocation text."
+					]
+				},
+				"Patrons:",
+				{
+					"type": "patron",
+					"name": "Pact of the Blade",
+					"entries": [
+						"Edgy patron text.",
+						"These can have sources and subclasses, in case they ever make the horrible decision to include subclass-only patrons again."
+					],
+					"source": "PHB",
+					"subclass": {
+						"name": "The Great Old One",
+						"source": "PHB"
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Inset Title (Optional)",
+					"entries": [
+						"This is a text inset/insert/sidebar/etc."
+					]
+				},
+				{
+					"type": "insetReadaloud",
+					"name": "Same As Above",
+					"entries": [
+						"But a different colour."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Better Monster",
+					"entries": [
+						"Some variant monster text",
+						{
+							"type": "entries",
+							"name": "Inline Header",
+							"entries": [
+								"Text text text",
+								{
+									"type": "variantSub",
+									"name": "These can have child items",
+									"entries": [
+										"And the header style for them is unique, so this exists to cope with that."
+									]
+								}
+							]
+						}
+					]
+				},
+				"And finally, images (similar to the structure of the 'link' type):",
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "blank.png"
+					},
+					"title": "Optional Title"
+				}
+			]
+		}
+	]
+}
