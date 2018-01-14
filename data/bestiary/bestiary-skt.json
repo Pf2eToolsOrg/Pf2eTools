@@ -645,18 +645,22 @@
 			"passive": 27,
 			"languages": "Common, Draconic, Giant, Terran",
 			"cr": "23",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Iymrith's innate spellcasting ability is Charisma (spell save DC 20). Iymrith's stone shape can create a living gargoyle instead of altering the stone as described in the spell description. She can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": ["{@spell counterspell}", "{@spell detect magic}", "{@spell ice storm}", "{@spell stone shape}", "{@spell teleport}"]
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If the dragon fails a saving throw, it can choose to succeed instead."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Iymrith's innate spellcasting ability is Charisma (spell save DC 20). Iymrith's stone shape can create a living gargoyle instead of altering the stone as described in the spell description. She can innately cast the following spells, requiring no material components:",
-						"1/day: counterspell, detect magic, ice storm, stone shape, teleport"
 					]
 				}
 			],
@@ -737,7 +741,6 @@
 					]
 				}
 			],
-			"spells": "counterspell, detect magic, ice storm, stone shape, teleport",
 			"page": 241
 		},
 		{
@@ -819,6 +822,15 @@
 			"passive": 10,
 			"languages": "Ignan",
 			"cr": "23",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Maegera's spell casting ability is Charisma. Maegera's can innately cast the following spell (spell save DC 19), requiring no material components:"
+					],
+					"will": ["{@spell fireball}"]
+				}
+			],
 			"trait": [
 				{
 					"name": "Empowered Attacks",
@@ -845,12 +857,6 @@
 					"name": "Illumination",
 					"text": [
 						"Maegera sheds bright light in a 120-foot radius and dim light in an additional 120 ft.."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Maegera's can innately cast fireball (spell save DC 19) at will, requiring no material components. Maegera's spell casting ability is Charisma."
 					]
 				},
 				{
@@ -1144,17 +1150,32 @@
 			"passive": 11,
 			"languages": "Common, Draconic, Dwarvish, Elvish",
 			"cr": "0",
-			"trait": [
+			"spellcasting": [
 				{
 					"name": "Spellcasting",
-					"text": [
-						"Naxene is a 6th level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13; +5 to hit with spell attacks). She has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, light, mage hand, prestidigitation",
-						"1st level (4 slots): mage armor, magic missile, shield",
-						"2nd level (3 slots): misty step, suggestion",
-						"3rd level (3 slots): fly, lightning bolt"
-					]
-				},
+					"headerEntries": [
+						"Naxene is a 6th level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13; +5 to hit with spell attacks). She has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": ["{@spell fire bolt}", "{@spell light}", "{@spell mage hand}", "{@spell prestidigitation}"]
+						},
+						"1": {
+							"slots": 4,
+							"spells": ["{@spell mage armor}", "{@spell magic missile}", "{@spell shield}"]
+						},
+						"2": {
+							"slots": 3,
+							"spells": ["{@spell misty step}", "{@spell suggestion}"]
+						},
+						"3": {
+							"slots": 3,
+							"spells": ["{@spell fly}", "{@spell lightning bolt}"]
+						}
+					}
+				}
+			],
+			"trait": [
 				{
 					"name": "Roleplaying Information",
 					"text": [
@@ -1176,7 +1197,6 @@
 					]
 				}
 			],
-			"spells": "fire bolt, light, mage hand, prestidigitation, mage armor, magic missile, shield, misty step, suggestion, fly, lightning bolt",
 			"page": 252
 		},
 		{
@@ -1281,15 +1301,24 @@
 			"passive": 12,
 			"languages": "Common, Elvish",
 			"cr": "0",
-			"trait": [
+			"spellcasting": [
 				{
 					"name": "Spellcasting",
-					"text": [
-						"Othovir is a 2nd-level spellcaster. His spellcasting ability is Charisma (spell save DC 13; +5 to hit with spell attacks). He has the following sorcerer spells prepared:",
-						"Cantrips (at will): blade ward, fire bolt, mending, prestidigitation",
-						"1st level (3 slots): mage armor, thunderwave, witch bolt"
-					]
-				},
+					"headerEntries": [
+						"Othovir is a 2nd-level spellcaster. His spellcasting ability is Charisma (spell save DC 13; +5 to hit with spell attacks). He has the following sorcerer spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": ["{@spell blade ward}", "{@spell fire bolt}", "{@spell mending}", "{@spell prestidigitation}"]
+						},
+						"1": {
+							"slots": 3,
+							"spells": ["{@spell mage armor}", "{@spell thunderwave}", "{@spell witch bolt}"]
+						}
+					}
+				}
+			],
+			"trait": [
 				{
 					"name": "Roleplaying Information",
 					"text": [
@@ -1319,7 +1348,6 @@
 					]
 				}
 			],
-			"spells": "blade ward, fire bolt, mending, prestidigitation, mage armor, thunderwave, witch bolt",
 			"page": 255
 		},
 		{
@@ -1748,14 +1776,16 @@
 			"passive": 14,
 			"languages": "Bothii, Common",
 			"cr": "2",
-			"trait": [
+			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
-					"text": [
-						"The shaman can innately cast the following spells. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks).",
-						"At Will: dancing lights, message, mage hand, thaumaturgy",
-						"1/day: augury, bestow curse, cordon of arrows, detect magic, hex, prayer of healing, speak with dead, spirit guardians"
-					]
+					"headerEntries": [
+						"The shaman can innately cast the following spells. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks)."
+					],
+					"will": ["{@spell dancing lights}", "{@spell message}", "{@spell mage hand}", "{@spell thaumaturgy}"],
+					"daily": {
+						"1": ["{@spell augury}", "{@spell bestow curse}", "{@spell cordon of arrows}", "{@spell detect magic}", "{@spell hex}", "{@spell prayer of healing}", "{@spell speak with dead}", "{@spell spirit guardians}"]
+					}
 				}
 			],
 			"action": [
@@ -1778,7 +1808,6 @@
 					]
 				}
 			],
-			"spells": "dancing lights, message, mage hand, thaumaturgy, augury, bestow curse, cordon of arrows, detect magic, hex, prayer of healing, speak with dead, spirit guardians",
 			"page": 243
 		},
 		{
@@ -1804,23 +1833,41 @@
 			"passive": 14,
 			"languages": "Common, Yikaria",
 			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The yakfolk is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The priest has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": ["{@spell light}", "{@spell mending}", "{@spell sacred flame}", "{@spell thaumaturgy}"]
+						},
+						"1": {
+							"slots": 4,
+							"spells": ["{@spell bane}", "{@spell command}", "{@spell cure wounds}", "{@spell sanctuary}"]
+						},
+						"2": {
+							"slots": 3,
+							"spells": ["{@spell augury}", "{@spell hold person}", "{@spell spiritual weapon}"]
+						},
+						"3": {
+							"slots": 3,
+							"spells": ["{@spell bestow curse}", "{@spell protection from energy}", "{@spell sending}"]
+						},
+						"4": {
+							"slots": 1,
+							"spells": ["{@spell banishment}"]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
-					"name": "Possession (Recharges after a rest",
+					"name": "Possession (Recharges after a rest)",
 					"text": [
 						"The yakfolk attempts to magically possess a humanoid or giant. The yakfolk must touch the target throughout a short rest or the attempt fails. At the end of the rest, the target must succeed a DC 12 Con saving throw or be possessed by the yakfolk, which disappears with everything its carrying and wearing. Until the possession ends, the target is incapacitated, loses control of its body, and it unaware of its surroundings. The yakfolk now controls the body and cannot be targeted by any attack, spell, or other effect, and it retains its alignment, its Intelligence, Wisdom, and Charisma scores; and its proficiencies. It otherwise uses the target's statistics, except the target's knowledge, class features, feats, and proficiencies.",
 						"The possession lats until either the body drops to 0 hit points, the yakfolk ends the possession as an action, or the yakfolk is forced out of the body by an effect such as dispel evil and good spell. When the possession ends, the yakfolk appears in an unoccupied space within 5 feet of the body and is stunned until the end of its next turn. If the host body dies while it is possessed by the yakfolk, the yakfolk dies as well and its body does not reappear."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The yakfolk is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The priest has the following cleric spells prepared:",
-						"Cantrips (at will): light, mending, sacred flame, thaumaturgy",
-						"1st level (4 slots): bane, command, cure wounds, sanctuary",
-						"2nd level (3 slots): augury, hold person, spiritual weapon",
-						"3rd level (3 slots): bestow curse, protection from energy, sending",
-						"4th level (1 slots): banishment"
 					]
 				}
 			],
@@ -1847,7 +1894,6 @@
 					]
 				}
 			],
-			"spells": "light, mending, sacred flame, thaumaturgy, bane, command, cure wounds, sanctuary, augury, hold person, spiritual weapon, bestow curse, protection from energy, sending, banishment",
 			"page": 245
 		},
 		{
