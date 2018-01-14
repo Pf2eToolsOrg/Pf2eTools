@@ -44,7 +44,7 @@ function onJsonLoad (data) {
 	});
 	const pantheonFilter = new Filter({
 		header: "Pantheon",
-		items: ["Celtic", "Dragonlance", "Eberron", "Egyptian", "Forgotten Realms", "Greek", "Greyhawk", "Nonhuman", "Norse"]
+		items: ["Celtic", "Dawn War", "Dragonlance", "Eberron", "Egyptian", "Forgotten Realms", "Greek", "Greyhawk", "Nonhuman", "Norse"]
 	});
 	const categoryFilter = new Filter({
 		header: "Category",
@@ -87,23 +87,6 @@ function onJsonLoad (data) {
 		sortFunction: listSort
 	});
 
-	function listSort (itemA, itemB, options) {
-		if (options.valueName === "name") return compareBy("name");
-		else return compareByOrDefault(options.valueName, "name");
-
-		function compareBy (valueName) {
-			const aValue = itemA.values()[valueName].toLowerCase();
-			const bValue = itemB.values()[valueName].toLowerCase();
-			if (aValue === bValue) return 0;
-			return (aValue > bValue) ? 1 : -1;
-		}
-
-		function compareByOrDefault (valueName, defaultValueName) {
-			const initialCompare = compareBy(valueName);
-			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
-		}
-	}
-
 	filterBox.render();
 
 	// filtering function
@@ -136,14 +119,15 @@ function loadhash (jsonIndex) {
 
 	const $content = $(`#pagecontent`);
 	$content.html(`
-		<tr><th class="border" colspan="6"></th></tr>
-		<tr><th class="name" colspan="6"><span class="stats-name">${deity.name}</span><span class="stats-source source${deity.source}" title="${sourceFull}">${Parser.sourceJsonToAbv(deity.source)}</span></th></tr>
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(deity)}
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
 		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
-		${deity.page ? `<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${deity.page}</td>` : ""}
-		<tr><th class="border" colspan="6"></th></tr>
+		<tr><td colspan="6"><span class="bold">Description: </span>${deity.text}</td></tr>
+		${EntryRenderer.utils.getPageTr(deity)}
+		${EntryRenderer.utils.getBorderTr()}
 	`);
 }
