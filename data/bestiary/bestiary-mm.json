@@ -13966,18 +13966,55 @@
 			"passive": 14,
 			"languages": "Common, Draconic, Sylvan",
 			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The hag's innate spellcasting ability is Charisma (spell save DC 12). She can innately cast the following spells, requiring no material components:"
+					],
+					"will": ["{@spell dancing lights}", "{@spell minor illusion}", "{@spell vicious mockery}"]
+				},
+				{
+					"name": "Shared Spellcasting (Coven Only)",
+					"headerEntries": [
+						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": ["{@spell identify}", "{@spell ray of sickness}"]
+						},
+						"2": {
+							"slots": 3,
+							"spells": ["{@spell hold person}", "{@spell locate object}"]
+						},
+						"3": {
+							"slots": 3,
+							"spells": ["{@spell bestow curse}", "{@spell counterspell}", "{@spell lightning bolt}"]
+						},
+						"4": {
+							"slots": 3,
+							"spells": ["{@spell phantasmal killer}", "{@spell polymorph}"]
+						},
+						"5": {
+							"slots": 2,
+							"spells": ["{@spell contact other plane}", "{@spell scrying}"]
+						},
+						"6": {
+							"slots": 1,
+							"spells": ["{@spell eyebite}"]
+						}
+					},
+					"footerEntries": [
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+					]
+				}
+			],
 			"trait": [
 				{
 					"name": "Amphibious",
 					"text": [
 						"The hag can breathe air and water."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The hag's innate spellcasting ability is Charisma (spell save DC 12). She can innately cast the following spells, requiring no material components:",
-						"At will: dancing lights, minor illusion, vicious mockery"
 					]
 				},
 				{
@@ -13991,19 +14028,6 @@
 					"text": [
 						"When hags must work together, they form covens, in spite of their selfish natures. A coven is made up of hags of any type, all of whom are equals within the group. However, each of the hags continues to desire more personal power.",
 						"A coven consists of three hags so that any arguments between two hags can be settled by the third. If more than three hags ever come together, as might happen if two covens come into conflict, the result is usually chaos."
-					]
-				},
-				{
-					"name": "Shared Spellcasting (Coven Only)",
-					"text": [
-						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:",
-						"1st level (4 slots): identify, ray of sickness",
-						"2nd level (3 slots): hold person, locate object",
-						"3rd level (3 slots): bestow curse, counterspell, lightning bolt",
-						"4th level (3 slots): phantasmal killer, polymorph",
-						"5th level (2 slots): contact other plane, scrying",
-						"6th level (1 slot): eye bite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
 					]
 				},
 				{

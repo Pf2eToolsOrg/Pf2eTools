@@ -605,24 +605,48 @@
 			"passive": 12,
 			"languages": "Common, Draconic, Infernal, Primordial, Thayan",
 			"cr": "6",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Rath is an 11th-level spellcaster who uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Rath has the following spells prepared from the wizard spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": ["{@spell fire bolt}", "{@spell minor illusion}", "{@spell prestidigitation}", "{@spell shocking grasp}"]
+						},
+						"1": {
+							"slots": 4,
+							"spells": ["{@spell chromatic orb}", "{@spell color spray}", "{@spell mage armor}", "{@spell magic missile}"]
+						},
+						"2": {
+							"slots": 3,
+							"spells": ["{@spell detect thoughts}", "{@spell mirror image}", "{@spell phantasmal force}"]
+						},
+						"3": {
+							"slots": 3,
+							"spells": ["{@spell counterspell}", "{@spell fireball}", "{@spell major image}"]
+						},
+						"4": {
+							"slots": 3,
+							"spells": ["{@spell confusion}", "{@spell greater invisibility}"]
+						},
+						"5": {
+							"slots": 2,
+							"spells": ["{@spell mislead}", "{@spell seeming}"]
+						},
+						"6": {
+							"slots": 1,
+							"spells": ["{@spell globe of invulnerability}"]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
 					"text": [
 						"Rath has a staff of fire, and scrolls of dimension door, feather fall, and fireball."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Rath is an 11th-level spellcaster who uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Rath has the following spells prepared from the wizard spell list:",
-						"Cantrips (at will): fire bolt, minor illusion, prestidigitation, shocking grasp",
-						"1st level (4 slots): chromatic orb, color spray, mage armor, magic missile",
-						"2nd level (3 slots): detect thoughts, mirror image, phantasmal force",
-						"3rd level (3 slots): counterspell, fireball, major image",
-						"4th level (3 slots): confusion, greater invisibility",
-						"5th level (2 slots): mislead, seeming",
-						"6th level (1 slot): globe of invulnerability"
 					]
 				}
 			],
@@ -646,7 +670,6 @@
 					]
 				}
 			],
-			"spells": "fire bolt, minor illusion, prestidigitation, shocking grasp, chromatic orb, color spray, mage armor, magic missile, detect thoughts, mirror image, phantasmal force, counterspell, fireball, major image, confusion, greater invisibility, mislead, seeming, globe of invulnerability",
 			"page": 91
 		},
 		{
@@ -800,17 +823,22 @@
 			"passive": 36,
 			"languages": "Common, Draconic, Infernal",
 			"cr": "30",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Tiamat can innately cast the following spell, her spellcasting ability is Charisma (spell save DC 26):"
+					],
+					"daily": {
+						"3": ["{@spell divine word}"]
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Discorporation",
 					"text": [
 						"When Tiamat drops to 0 hit points or dies, her body is destroyed but her essence travels back to her domain in the Nine Hells, and she is unable to take physical form for a time."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (3/Day)",
-					"text": [
-						"Tiamat can innately cast divine word (spell save DC 26). Her spellcasting ability is Charisma."
 					]
 				},
 				{
@@ -939,7 +967,6 @@
 					]
 				}
 			],
-			"spells": "divine word",
 			"page": 92
 		}
 	]

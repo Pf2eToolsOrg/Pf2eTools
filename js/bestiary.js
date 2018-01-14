@@ -3,6 +3,7 @@
 const JSON_DIR = "data/bestiary/";
 const META_URL = "meta.json";
 const JSON_LIST_NAME = "monster";
+const renderer = new EntryRenderer();
 
 let tableDefault = "";
 
@@ -203,23 +204,10 @@ function addMonsters (data) {
 function sortMonsters (a, b, o) {
 	a = monsters[a.elm.getAttribute(FLTR_ID)];
 	b = monsters[b.elm.getAttribute(FLTR_ID)];
-
-	if (o.valueName === "name") {
-		return ascSort(a.name, b.name);
-	}
-
-	if (o.valueName === "type") {
-		return ascSort(a._pTypes.asText, b._pTypes.asText);
-	}
-
-	if (o.valueName === "source") {
-		return ascSort(a.source, b.source);
-	}
-
-	if (o.valueName === "cr") {
-		return ascSortCr(a.cr, b.cr)
-	}
-
+	if (o.valueName === "name") return ascSort(a.name, b.name);
+	if (o.valueName === "type") return ascSort(a._pTypes.asText, b._pTypes.asText);
+	if (o.valueName === "source") return ascSort(a.source, b.source);
+	if (o.valueName === "cr") return ascSortCr(a.cr, b.cr);
 	return 0;
 }
 
@@ -228,8 +216,6 @@ function objToTitleCaseStringWithCommas (obj) {
 		return k.uppercaseFirst() + " " + obj[k]
 	}).join(", ");
 }
-
-const renderer = new EntryRenderer();
 
 // load selected monster stat block
 function loadhash (id) {
@@ -359,6 +345,7 @@ function loadhash (id) {
 	var traits = mon.trait;
 	$("tr.trait").remove();
 
+	let spellcasting = mon.spellcasting;
 	if (traits) {
 		for (var i = traits.length - 1; i >= 0; i--) {
 			var traitname = traits[i].name;
@@ -376,13 +363,11 @@ function loadhash (id) {
 				var spells = "";
 				if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
 				if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
-
 				traittexthtml = traittexthtml + `<p class="${firstsecond}${spells}">${traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "")}</p>`;
 			}
-
-			$("tr#traits").after(`<tr class="trait"><td colspan="6" class="trait${i}"><span class="name">${traitname}.</span> ${traittexthtml}</td></tr>"`);
-
-			// parse spells, make hyperlinks
+			// Because entryRenderer spells appear with non-entryRenderer traits use a non-standard class, psi-focus-title, so this section looks consistent
+			$("tr#traits").after(`<tr class="trait"><td colspan="6" class="trait${i}"><span class="psi-focus-title">${traitname}.</span> ${traittexthtml}</td></tr>"`);
+			// Parse spells to make hyperlinks for creatures not yet using "spellcasting"
 			$("tr.trait").children("td").children("p.spells").each(function () {
 				let spellslist = $(this).html();
 				if (spellslist[0] === "*") return;
@@ -391,10 +376,38 @@ function loadhash (id) {
 					spellslist[i] = `<a href="spells.html#${encodeURIComponent((spellslist[i].replace(/(\*)| \(([^)]+)\)/g, ""))).toLowerCase()}_phb" target="_blank">${spellslist[i]}</a>`;
 					if (i !== spellslist.length - 1) spellslist[i] = spellslist[i] + ", ";
 				}
-
 				$(this).html($(this).html().split(": ")[0] + ": " + spellslist.join(""))
 			});
 		}
+	}
+
+	if (spellcasting) {
+		renderStack = [];
+		for (let i = 0; i < spellcasting.length; i++) {
+			let spellList = spellcasting[i]
+			renderer.recursiveEntryRender({type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}, renderStack, 2);
+			if (spellList.will || spellList.daily) {
+				let spellArray = [];
+				if (spellList.will) spellArray.push(`At will: ${spellList.will.join(", ")}`);
+				if (spellList.daily) {
+					for (let j = 9; j > 0; j--) {
+						let daily = spellList.daily;
+						if (daily[j]) spellArray.push(`${j}/day: ${daily[j].join(", ")}`);
+						const jEach = `${j}e`;
+						if (daily[jEach]) spellArray.push(`${j}/day each: ${daily[jEach].join(", ")}`);
+					}
+				}
+				renderer.recursiveEntryRender({type: "entries", entries: spellArray}, renderStack, 1);
+			}
+			if (spellList.spells) {
+				for (let j = 0; j < 10; j++) {
+					let spells = spellList.spells[j];
+					if (spells) renderer.recursiveEntryRender({type: "entries", entries: [Parser.spLevelToFull(j) + (j === 0 ? `s (at will)` : ` level (${spells.slots} slot${spells.slots > 1 ? "s" : ""})`) + `: ${spells.spells.join(", ")}`]}, renderStack, 1);
+				}
+				if (spellList.footerEntries) renderer.recursiveEntryRender({type: "entries", entries: spellList.footerEntries}, renderStack, 1);
+			}
+		}
+		$(`tr#traits`).after(`<tr class='trait'><td colspan='6'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
 	}
 
 	const actions = mon.action;
