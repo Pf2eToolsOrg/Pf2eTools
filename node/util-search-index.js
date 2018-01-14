@@ -213,6 +213,18 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			"listProp": "object",
 			"baseUrl": "objects.html"
 		},
+		{
+			"category": 16,
+			"file": "trapshazards.json",
+			"listProp": "trap",
+			"baseUrl": "trapshazards.html"
+		},
+		{
+			"category": 17,
+			"file": "trapshazards.json",
+			"listProp": "hazard",
+			"baseUrl": "trapshazards.html"
+		},
 	];
 
 	function getProperty (obj, withDots) {

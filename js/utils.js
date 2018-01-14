@@ -789,6 +789,8 @@ Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 Parser.CAT_ID_DEITY = 14;
 Parser.CAT_ID_OBJECT = 15;
+Parser.CAT_ID_TRAP = 16;
+Parser.CAT_ID_HAZARD = 17;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -806,6 +808,8 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional R
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OBJECT] = "Object";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAP] = "Trap";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -870,6 +874,15 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 Parser.attackTypeToFull = function (attackType) {
 	return Parser._parse_aToB(Parser.ATK_TYPE_TO_FULL, attackType);
 };
+
+Parser.trapTypeToFull = function (type) {
+	return Parser._parse_aToB(Parser.TRAP_TYPE_TO_FULL, type);
+};
+
+Parser.TRAP_TYPE_TO_FULL = {};
+Parser.TRAP_TYPE_TO_FULL["MECH"] = "Mechanical trap";
+Parser.TRAP_TYPE_TO_FULL["MAG"] = "Magical trap";
+Parser.TRAP_TYPE_TO_FULL["HAZ"] = "Hazard";
 
 Parser.ATK_TYPE_TO_FULL = {};
 Parser.ATK_TYPE_TO_FULL["MW"] = "Melee Weapon Attack";
@@ -1490,6 +1503,7 @@ UrlUtil.PG_ADVENTURE = "adventure.html";
 UrlUtil.PG_DEITIES = "deities.html";
 UrlUtil.PG_CULTS = "cults.html";
 UrlUtil.PG_OBJECTS = "objects.html";
+UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1508,6 +1522,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHas
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(it.name);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS] = (it) => UrlUtil.encodeForHash(it.name);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 
 // SORTING =============================================================================================================
 // TODO refactor into a class

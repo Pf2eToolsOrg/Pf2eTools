@@ -58,12 +58,13 @@ function navigation () {
 	LI('ul_references', 'conditions.html', 'Conditions');
 	LI('ul_references', 'cults.html', 'Cults');
 	LI('ul_references', 'deities.html', 'Deities');
+	LI('ul_references', 'invocations.html', 'Invocations');
 	LI('ul_references', 'items.html', 'Items');
 	LI('ul_references', 'objects.html', 'Objects');
 	LI('ul_references', 'rewards.html', 'Other Rewards');
 	LI('ul_references', 'psionics.html', 'Psionics');
 	LI('ul_references', 'spells.html', 'Spells');
-	LI('ul_references', 'invocations.html', 'Invocations');
+	LI('ul_references', 'trapshazards.html', 'Traps & Hazards');
 	LI('ul_references', 'variantrules.html', 'Variant Rules');
 
 	LI('navbar', 'statgen.html', 'Statgen');
