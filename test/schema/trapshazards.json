@@ -1,0 +1,73 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"trap": {
+			"type": "array",
+			"items": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"trapType": {
+						"type": "string",
+						"enum": [
+							"MECH",
+							"MAG"
+						]
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"trapType",
+					"source",
+					"page",
+					"entries"
+				]
+			}
+		},
+		"hazard": {
+			"type": "array",
+			"items": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"source",
+					"page",
+					"entries"
+				]
+			}
+		}
+	},
+	"additionalProperties": false
+}

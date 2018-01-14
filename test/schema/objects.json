@@ -1,0 +1,64 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"object": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"size": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string",
+						"enum": ["siege weapon"]
+					},
+					"ac": {
+						"type": "string"
+					},
+					"hp": {
+						"type": "string"
+					},
+					"immune": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"actionEntries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"source",
+					"page",
+					"size",
+					"type",
+					"ac",
+					"hp",
+					"immune",
+					"entries"
+				]
+			}
+		}
+	},
+	"additionalProperties": false
+}
