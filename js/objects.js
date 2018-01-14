@@ -48,7 +48,7 @@ function loadhash (jsonIndex) {
 	$content.html(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(obj)}
-		<tr><td colspan="6" class="text">${renderStack.join("")}</td></tr>
+		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
 		${EntryRenderer.utils.getPageTr(obj)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);

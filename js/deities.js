@@ -111,7 +111,7 @@ function onJsonLoad (data) {
 	categoryFilter.items.sort();
 
 	const list = search({
-		valueNames: ["name", "pantheon", "alignment", "domains", "symbol"],
+		valueNames: ["name", "pantheon", "alignment", "domains", "symbol", "source"],
 		listClass: "deities",
 		sortFunction: listSort
 	});
@@ -140,6 +140,7 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+	addListShowHide();
 }
 
 const renderer = new EntryRenderer();
@@ -159,7 +160,7 @@ function loadhash (jsonIndex) {
 		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
-		${renderStack.length ? `<tr><td class="text" colspan="6">${renderStack.join("")}</td></tr>` : ""}
+		${renderStack.length ? `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>` : ""}
 		${EntryRenderer.utils.getPageTr(deity)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
