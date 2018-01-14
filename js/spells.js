@@ -253,7 +253,7 @@ const schoolFilter = new Filter({
 const damageFilter = new Filter({
 	header: "Damage Type",
 	items: [
-		"acid", "cold", "fire", "force", "lightning", "necrotic", "poison", "psychic", "radiant", "thunder"
+		"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
 	],
 	displayFn: StrUtil.uppercaseFirst
 });

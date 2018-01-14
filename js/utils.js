@@ -788,6 +788,9 @@ Parser.CAT_ID_OTHER_REWARD = 11;
 Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 Parser.CAT_ID_DEITY = 14;
+Parser.CAT_ID_OBJECT = 15;
+Parser.CAT_ID_TRAP = 16;
+Parser.CAT_ID_HAZARD = 17;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -804,6 +807,9 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] = "Other Reward";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OBJECT] = "Object";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAP] = "Trap";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -864,6 +870,23 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 		return shortName;
 	}
 };
+
+Parser.attackTypeToFull = function (attackType) {
+	return Parser._parse_aToB(Parser.ATK_TYPE_TO_FULL, attackType);
+};
+
+Parser.trapTypeToFull = function (type) {
+	return Parser._parse_aToB(Parser.TRAP_TYPE_TO_FULL, type);
+};
+
+Parser.TRAP_TYPE_TO_FULL = {};
+Parser.TRAP_TYPE_TO_FULL["MECH"] = "Mechanical trap";
+Parser.TRAP_TYPE_TO_FULL["MAG"] = "Magical trap";
+Parser.TRAP_TYPE_TO_FULL["HAZ"] = "Hazard";
+
+Parser.ATK_TYPE_TO_FULL = {};
+Parser.ATK_TYPE_TO_FULL["MW"] = "Melee Weapon Attack";
+Parser.ATK_TYPE_TO_FULL["RW"] = "Ranged Weapon Attack";
 
 SKL_ABV_ABJ = "A";
 SKL_ABV_EVO = "V";
@@ -1479,6 +1502,8 @@ UrlUtil.PG_VARIATNRULES = "variantrules.html";
 UrlUtil.PG_ADVENTURE = "adventure.html";
 UrlUtil.PG_DEITIES = "deities.html";
 UrlUtil.PG_CULTS = "cults.html";
+UrlUtil.PG_OBJECTS = "objects.html";
+UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1494,8 +1519,10 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([i
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash(it.name);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS] = (it) => UrlUtil.encodeForHash(it.name);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 
 // SORTING =============================================================================================================
 // TODO refactor into a class
@@ -1518,6 +1545,22 @@ function compareNames (a, b) {
 	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
 }
 
+function listSort (itemA, itemB, options) {
+	if (options.valueName === "name") return compareBy("name");
+	else return compareByOrDefault(options.valueName, "name");
+
+	function compareBy (valueName) {
+		const aValue = itemA.values()[valueName].toLowerCase();
+		const bValue = itemB.values()[valueName].toLowerCase();
+		if (aValue === bValue) return 0;
+		return (aValue > bValue) ? 1 : -1;
+	}
+
+	function compareByOrDefault (valueName, defaultValueName) {
+		const initialCompare = compareBy(valueName);
+		return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
+	}
+}
 // ARRAYS ==============================================================================================================
 function joinConjunct (arr, joinWith, conjunctWith) {
 	return arr.length === 1 ? String(arr[0]) : arr.length === 2 ? arr.join(conjunctWith) : arr.slice(0, -1).join(joinWith) + conjunctWith + arr.slice(-1);

@@ -1,0 +1,82 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"properties": {
+		"deity": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"alignment": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": ["C", "N", "G", "L", "E"]
+						}
+					},
+					"title": {
+						"type": "string"
+					},
+					"pantheon": {
+						"type": "string",
+						"enum": [
+							"Celtic",
+							"Dawn War",
+							"Dragonlance",
+							"Drow",
+							"Dwarven",
+							"Eberron",
+							"Egyptian",
+							"Elven",
+							"Faerûnian",
+							"Forgotten Realms",
+							"Gnomish",
+							"Greek",
+							"Greyhawk",
+							"Halfling",
+							"Nonhuman",
+							"Norse",
+							"Orc"
+						]
+					},
+					"category": {
+						"type": "string"
+					},
+					"domains": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"Arcana", "Death", "Knowledge", "Life", "Light", "Nature", "Tempest", "Trickery", "War"
+							]
+						}
+					},
+					"symbol": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"alignment",
+					"title",
+					"pantheon",
+					"symbol",
+					"source"
+				]
+			}
+		}
+	}
+}

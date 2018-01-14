@@ -564,6 +564,59 @@
 					"additionalProperties": false
 				}
 			]
+		},
+		"entryActions": {
+			"allOf" : [
+				{
+					"properties": {
+						"type": {"const": "actions"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["type", "name", "entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryAttack": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "attack"},
+						"attackType": {
+							"type": "string",
+							"enum": ["MW", "RW"]
+						},
+						"attackEntries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"hitEntries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": [
+						"type",
+						"attackType",
+						"attackEntries",
+						"hitEntries"
+					],
+					"additionalProperties": false
+				}
+			]
 		}
 	},
 
@@ -589,6 +642,8 @@
 		{"$ref": "#/definitions/entryVariantSub"},
 		{"$ref": "#/definitions/entryItem"},
 		{"$ref": "#/definitions/entryImage"},
+		{"$ref": "#/definitions/entryActions"},
+		{"$ref": "#/definitions/entryAttack"},
 		{"type": "string"},
 		{"type": "integer"}
 	]

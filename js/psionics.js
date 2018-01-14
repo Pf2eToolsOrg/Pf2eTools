@@ -98,23 +98,6 @@ function onJsonLoad (data) {
 		sortFunction: listSort
 	});
 
-	function listSort (itemA, itemB, options) {
-		if (options.valueName === LIST_NAME) return compareBy(LIST_NAME);
-		else return compareByOrDefault(options.valueName, LIST_NAME);
-
-		function compareBy (valueName) {
-			const aValue = itemA.values()[valueName].toLowerCase();
-			const bValue = itemB.values()[valueName].toLowerCase();
-			if (aValue === bValue) return 0;
-			return (aValue > bValue) ? 1 : -1;
-		}
-
-		function compareByOrDefault (valueName, defaultValueName) {
-			const initialCompare = compareBy(valueName);
-			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
-		}
-	}
-
 	filterBox.render();
 
 	// filtering function

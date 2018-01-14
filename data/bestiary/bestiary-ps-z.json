@@ -27,6 +27,18 @@
 			"passive": 19,
 			"languages": "all, telepathy 120 ft.",
 			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The archon's innate spellcasting ability is Charisma (spell save DC 17). The archon can innately cast the following spells, requiring only verbal components:"
+					],
+					"will": ["{@spell detect evil and good}"],
+					"daily": {
+						"1e": ["{@spell destructive wave}", "{@spell geas}"]
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Angelic Weapons",
@@ -38,12 +50,6 @@
 					"name": "Axiomatic Mind",
 					"text": [
 						"The archon can't be compelled to act in a manner contrary to its nature or its understanding of justice."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The archon's innate spellcasting ability is Charisma (spell save DC 17). The archon can innately cast the following spells, requiring only verbal components: At will: detect evil and good 1/day each: destructive wave, geas"
 					]
 				},
 				{
@@ -102,19 +108,23 @@
 			"passive": 13,
 			"languages": "Celestial, telepathy 60 ft.",
 			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The felidar's innate spellcasting ability is Charisma (spell save DC 14). The felidar can innately cast the following spells, requiring no components:"
+					],
+					"will": ["{@spell detect evil and good}", "{@spell light}", "{@spell thaumaturgy}"],
+					"daily": {
+						"1e": ["{@spell calm emotions}", "{@spell daylight}", "{@spell dispel evil and good}"]
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Pounce",
 					"text": [
 						"If the felidar moves at least 20 feet straight toward a creature and then hits it with a claws attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the felidar can make one bite attack against it as a bonus action."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The felidar's innate spellcasting ability is Charisma (spell save DC 14). The felidar can innately cast the following spells, requiring no components:",
-						"At will: detect evil and good, light, thaumaturgy",
-						"1/day each: calm emotions, daylight, dispel evil and good"
 					]
 				},
 				{
@@ -209,24 +219,22 @@
 			"passive": 19,
 			"languages": "Common",
 			"cr": "13",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The kraken's innate spellcasting ability is Charisma (spell save DC 17). The kraken can innately cast the following spells, requiring no components:"
+					],
+					"daily": {
+						"3e": ["{@spell control weather}", "{@spell water breathing}"]
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Amphibious",
 					"text": [
 						"The kraken can breathe air and water."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The kraken's innate spellcasting ability is"
-					]
-				},
-				{
-					"name": "Charisma (spell save DC 17)",
-					"text": [
-						"The kraken can innately cast the following spells, requiring no components:",
-						"3/day each: control weather, water breathing"
 					]
 				}
 			],

@@ -1,0 +1,200 @@
+{
+	"object": [
+		{
+			"name": "Ballista",
+			"source": "DMG",
+			"page": 255,
+			"size": "L",
+			"type": "siege weapon",
+			"ac": "15",
+			"hp": "50",
+			"immune": "poison, psychic",
+			"entries": [
+				"A ballista is a massive crossbow that fires heavy bolts. Before it can be fired, it must be loaded and aimed. It takes one action to load the weapon, one action to aim it, and one action to fire it."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Bolt",
+					"entries": [
+						{
+						    "type": "attack",
+						    "attackType": "RW",
+						    "attackEntries": [
+						        "{@hit +6} to hit, range 120/480 ft., one target."
+						    ],
+							"hitEntries": [
+								"16 ({@dice 3d10}) piercing damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cannon",
+			"size": "L",
+			"type": "siege weapon",
+			"source": "DMG",
+			"ac": "19",
+			"hp": "75",
+			"immune": "poison, psychic",
+			"entries": [
+				"A cannon uses gunpowder to propel heavy balls of cast iron through the air at destructive speeds. In a campaign without gunpowder, a cannon might be an arcane device built by clever gnomes or wizardly engineers.",
+				"A cannon is usually supported in a wooden frame with wheels. Before it can be fired, the cannon must be loaded and aimed. It takes one action to load the weapon, one action to aim it, and one action to fire it."
+			],
+			"page": 255,
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Cannon Ball",
+					"entries": [
+						{
+						    "type": "attack",
+						    "attackType": "RW",
+						    "attackEntries": [
+								"{@hit +6} to hit, range 600/2,400 ft., one target."
+						    ],
+							"hitEntries": [
+								"44 ({@dice 8d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cauldron, suspended",
+			"size": "L",
+			"type": "siege weapon",
+			"source": "DMG",
+			"ac": "19",
+			"hp": "20",
+			"immune": "poison, psychic",
+			"entries": [
+				"A cauldron is an iron pot suspended so that it can be tipped easily, spilling its contents. Once emptied, a cauldron must be refilled-and its contents must usually be reheated-before it can be used again. It takes three actions to fill a cauldron and one action to tip it.",
+				"Cauldrons can be filled with other liquids, such as acid or green slime, with different effects."
+			],
+			"page": 255,
+			"actionEntries": [
+				{
+					"type": "entries",
+					"name": "Boiling Oil",
+					"entries": [
+						"The cauldron pours boiling oil onto a 10-foot-square area directly below it. Any creature in the area must make a DC 15 Dexterity saving throw, taking 10 ({@dice 3d6}) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mangonel",
+			"size": "L",
+			"type": "siege weapon",
+			"source": "DMG",
+			"ac": "15",
+			"hp": "100",
+			"immune": "poison, psychic",
+			"entries": [
+				"A mangonel is a type of catapult that hurls heavy projectiles in a high arc. This payload can hit targets behind cover. Before the mangonel can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
+				"A mangonel typically hurls a heavy stone, although it can hurl other kinds of projectiles, with different effects."
+			],
+			"page": 255,
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Mangonel Stone",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 200/800 ft. (can't hit targets within 60 feet of it), one target."
+							],
+							"hitEntries": [
+								"27 ({@dice 5d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ram",
+			"size": "L",
+			"type": "siege weapon",
+			"source": "DMG",
+			"ac": "15",
+			"hp": "100",
+			"immune": "poison, psychic",
+			"entries": [
+				"A ram consists of a movable gallery equipped with a heavy log suspended from two roof beams by chains.</p><p>The log is shod in iron and used to batter through doors and barricades.",
+				"It takes a minimum of four Medium creatures to operate a ram. Because of the gallery roof, these operators have total cover against attacks from above."
+			],
+			"page": 255,
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Ram",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "MW",
+							"attackEntries": [
+								"{@hit +8} to hit, reach 5 ft., one object."
+							],
+							"hitEntries": [
+								"16 ({@dice 3d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Siege Tower",
+			"size": "G",
+			"type": "siege weapon",
+			"source": "DMG",
+			"ac": "15",
+			"hp": "200",
+			"immune": "poison, psychic",
+			"entries": [
+				"A siege tower is a mobile wooden structure with a beam frame and slats in its walls. Large wooden wheels or rollers allow the tower to be pushed or pulled by soldiers or beasts of burden. Medium or smaller creatures can use the siege tower to reach the top of walls up to 40 feet high. A creature in the tower has total cover from attacks outside the tower."
+			],
+			"page": 256
+		},
+		{
+			"name": "Trebuchet",
+			"size": "H",
+			"type": "siege weapon",
+			"source": "DMG",
+			"ac": "15",
+			"hp": "150",
+			"immune": "poison, psychic",
+			"page": 256,
+			"entries": [
+				"A trebuchet is a powerful catapult that throws its payload in a high arc, so it can hit targets behind cover.",
+				"Before the trebuchet can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
+				"A trebuchet typically hurls a heavy stone. However, it can launch other kinds of projectiles, such as barrels of oil or sewage, with different effects."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Trebuchet Stone",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 300/1,200 ft. (can't hit targets within 60 feet of it), one target."
+							],
+							"hitEntries": [
+								"44 ({@dice 8d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
