@@ -251,20 +251,32 @@
 			"languages": "Aquan, Common",
 			"passive": 12,
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The tortle is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": ["{@spell druidcraft}", "{@spell guidance}", "{@spell produce flame}"]
+						},
+						"1": {
+							"slots": 4,
+							"spells": ["{@spell animal friendship}", "{@spell cure wounds}", "{@spell speak with animals}", "{@spell thunderwave}"]
+						},
+						"2": {
+							"slots": 3,
+							"spells": ["{@spell darkvision}", "{@spell hold person}"]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Hold Breath",
 					"text": [
 						"The tortle can hold its breath for 1 hour."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The tortle is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:",
-						"Cantrips (at will): druidcraft, guidance, produce flame",
-						"1st level (4 slots): animal friendship, cure wounds, speak with animals, thunderwave",
-						"2nd level (3 slots): darkvision, hold person"
 					]
 				}
 			],
