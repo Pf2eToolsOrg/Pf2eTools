@@ -690,7 +690,8 @@ EntryRenderer.utils = {
 	},
 
 	getPageTr: (it) => {
-		return `${it.page ? `<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}</td>` : ""}`;
+		const addSourceText = it.additionalSources ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
+		return `${it.page ? `<td colspan=6><b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}</td>` : ""}`;
 	}
 };
 
