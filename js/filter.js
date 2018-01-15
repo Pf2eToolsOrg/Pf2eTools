@@ -652,7 +652,7 @@ class Filter {
 			if (totals.yes > 0) {
 				return map[toCheck] === 1;
 			} else {
-				return map[toCheck] >= 0;
+				return map[toCheck] >= 0 || map[toCheck] === undefined;
 			}
 		}
 	}
