@@ -37,6 +37,10 @@ function sortItems (a, b, o) {
 	} else return 1;
 }
 
+function sortProperties (a, b) {
+
+}
+
 function deselectFilter (deselectProperty, deselectValue) {
 	return function (val) {
 		if (window.location.hash.length) {
@@ -92,7 +96,7 @@ function populateTablesAndFilters () {
 
 		// for filter to use
 		curitem._fTier = tierTags;
-		curitem._fProperties = curitem.property ? curitem.property.split(",").map(p => curitem._allPropertiesPtr[p].name).filter(n => n) : [];
+		curitem._fProperties = curitem.property ? curitem.property.map(p => curitem._allPropertiesPtr[p].name).filter(n => n) : [];
 		curitem._fMisc = curitem.sentient ? ["Sentient"] : [];
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
