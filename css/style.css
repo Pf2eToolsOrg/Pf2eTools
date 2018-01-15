@@ -1306,6 +1306,24 @@ table.stats p.subtrait {
 	width: 10%;
 }
 
+.dropdown-menu > li > a.dropdown-ext-link {
+	display: flex;
+	justify-content: space-between;
+}
+
+.dropdown-menu > li > a.dropdown-ext-link:hover {
+	padding-right: 10px;
+}
+
+.dropdown-ext-link > .glyphicon {
+	top: 3px;
+	display: none;
+}
+
+.dropdown-ext-link:hover > .glyphicon {
+	display: inline-block;
+}
+
 /**** Search and filter bar ****/
 .list-disabled-overlay::after {
 	content: "";
