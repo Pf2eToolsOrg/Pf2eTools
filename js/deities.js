@@ -1,6 +1,7 @@
 "use strict";
 
 const JSON_URL = "data/deities.json";
+const STR_REPRINTED = "reprinted";
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
@@ -80,8 +81,14 @@ function onJsonLoad (data) {
 		header: "Domain",
 		items: ["Arcana", "Death", "Knowledge", "Life", "Light", "Nature", STR_NONE, "Tempest", "Trickery", "War"]
 	});
+	const miscFilter = new Filter({
+		header: "Miscellaneous",
+		items: [STR_REPRINTED],
+		displayFn: StrUtil.uppercaseFirst,
+		deselFn: (it) => { return it === STR_REPRINTED }
+	});
 
-	const filterBox = initFilterBox(alignmentFilter, pantheonFilter, categoryFilter, domainFilter);
+	const filterBox = initFilterBox(alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
 
 	let tempString = "";
 	deitiesList.forEach((g, i) => {
@@ -91,6 +98,8 @@ function onJsonLoad (data) {
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
 		g.domains.sort(ascSort);
+
+		g._fReprinted = g.reprinted ? STR_REPRINTED : "";
 
 		tempString += `
 			<li class="row" ${FLTR_ID}="${i}">
@@ -133,7 +142,8 @@ function onJsonLoad (data) {
 			const rightPantheon = pantheonFilter.toDisplay(f, g.pantheon);
 			const rightCategory = categoryFilter.toDisplay(f, g.category);
 			const rightDomain = domainFilter.toDisplay(f, g.domains);
-			return rightAlignment && rightPantheon && rightCategory && rightDomain;
+			const rightMisc = miscFilter.toDisplay(f, g._fReprinted);
+			return rightAlignment && rightPantheon && rightCategory && rightDomain && rightMisc;
 		});
 	}
 

@@ -48,6 +48,12 @@ function loadhash (jsonIndex) {
 	$content.html(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(obj)}
+		<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(obj.size)} object</i><br></td></tr>
+		<tr class="text"><td colspan="6">
+			<b>Armor Class:</b> ${obj.ac}<br>
+			<b>Hit Points:</b> ${obj.hp}<br>
+			<b>Damage Immunities:</b> ${obj.immune}<br>
+		</td></tr>
 		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
 		${EntryRenderer.utils.getPageTr(obj)}
 		${EntryRenderer.utils.getBorderTr()}
