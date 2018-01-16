@@ -1367,23 +1367,23 @@ EntryRenderer.hover = {
 		$stats.append(content);
 		let drag = {};
 		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""}></div>`)
-			// TODO allow the window to be dragged around
-			//
-			/*.on("mousedown", (evt) => {
-				drag.on = true;
-				drag.x = evt.clientX;
-				drag.y = evt.clientY;
-				drag.baseTop = $hov.offset().top;
-				drag.baseLeft = $hov.offset().left;
-			})
-			.on("mouseup", () => {
-				drag.on = false;
-			})
-			.on("mousemove", (evt) => {
-				if (drag.on) {
+		// TODO allow the window to be dragged around
+		//
+		/* .on("mousedown", (evt) => {
+			drag.on = true;
+			drag.x = evt.clientX;
+			drag.y = evt.clientY;
+			drag.baseTop = $hov.offset().top;
+			drag.baseLeft = $hov.offset().left;
+		})
+		.on("mouseup", () => {
+			drag.on = false;
+		})
+		.on("mousemove", (evt) => {
+			if (drag.on) {
 
-				}
-			});*/
+			}
+		}); */
 		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
 			.on("click", () => {
 				teardown();
@@ -1503,7 +1503,7 @@ EntryRenderer.hover = {
 			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) EntryRenderer.hover._curHovering = null;
 		});
 
-		function loadMultiSource(page, baseUrl, listProp) {
+		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
 				DataUtil.loadJSON(`${baseUrl}index.json`, (data) => {
 					const procData = {};
@@ -1512,7 +1512,7 @@ EntryRenderer.hover = {
 						data[listProp].forEach(it => {
 							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-						});
+						});1
 						EntryRenderer.hover._makeWindow();
 					});
 				});

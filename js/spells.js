@@ -257,6 +257,11 @@ const damageFilter = new Filter({
 	],
 	displayFn: StrUtil.uppercaseFirst
 });
+const saveFilter = new Filter({
+	header: "Saving Throw",
+	items: ["strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"],
+	displayFn: StrUtil.uppercaseFirst
+});
 const timeFilter = new Filter({
 	header: "Cast Time",
 	items: [
@@ -286,6 +291,7 @@ const filterBox = initFilterBox(
 	metaFilter,
 	schoolFilter,
 	damageFilter,
+	saveFilter,
 	timeFilter,
 	rangeFilter
 );
@@ -321,7 +327,7 @@ function handleFilterChange () {
 	list.filter(function (item) {
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
-		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && damageFilter.toDisplay(f, s.damageInflict) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
+		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && damageFilter.toDisplay(f, s.damageInflict) && saveFilter.toDisplay(f, s.savingThrows) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
 	});
 }
 
