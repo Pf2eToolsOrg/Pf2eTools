@@ -1512,7 +1512,7 @@ EntryRenderer.hover = {
 						data[listProp].forEach(it => {
 							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-						});1
+						});
 						EntryRenderer.hover._makeWindow();
 					});
 				});

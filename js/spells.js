@@ -216,6 +216,14 @@ function ascSortSpellLevel (a, b) {
 	return ascSort(a, b);
 }
 
+function getFilterAbilitySave (ability) {
+	return `${ability.uppercaseFirst().substring(0, 3)}. Save`;
+}
+
+function getFilterAbilityCheck (ability) {
+	return `${ability.uppercaseFirst().substring(0, 3)}. Check`;
+}
+
 window.onload = function load () {
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells)
 };
@@ -260,7 +268,12 @@ const damageFilter = new Filter({
 const saveFilter = new Filter({
 	header: "Saving Throw",
 	items: ["strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"],
-	displayFn: StrUtil.uppercaseFirst
+	displayFn: getFilterAbilitySave
+});
+const checkFilter = new Filter({
+	header: "Opposed Check",
+	items: ["strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"],
+	displayFn: getFilterAbilityCheck
 });
 const timeFilter = new Filter({
 	header: "Cast Time",
@@ -292,6 +305,7 @@ const filterBox = initFilterBox(
 	schoolFilter,
 	damageFilter,
 	saveFilter,
+	checkFilter,
 	timeFilter,
 	rangeFilter
 );
@@ -327,7 +341,7 @@ function handleFilterChange () {
 	list.filter(function (item) {
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
-		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && damageFilter.toDisplay(f, s.damageInflict) && saveFilter.toDisplay(f, s.savingThrows) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
+		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && damageFilter.toDisplay(f, s.damageInflict) && saveFilter.toDisplay(f, s.savingThrows) && checkFilter.toDisplay(f, s.opposedCheck) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
 	});
 }
 
