@@ -212,7 +212,7 @@ function loadhash (id) {
 		groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}" ${subclassData}>${hasTitle ? tGroup.title : ""}</th>`);
 
 		for (let j = 0; j < tGroup.colLabels.length; j++) {
-			let lbl = EntryRenderer.renderEntry(renderer, tGroup.colLabels[j]);
+			let lbl = renderer.renderEntry(tGroup.colLabels[j]);
 			colHeaders.append(`<th class="centred-col" ${subclassData}>${lbl}</th>`)
 		}
 

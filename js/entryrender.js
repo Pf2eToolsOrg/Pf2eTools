@@ -496,6 +496,10 @@ function EntryRenderer () {
 							case "@creature":
 								fauxEntry.href.path = "bestiary.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_MM;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_BESTIARY,
+									source: source || SRC_MM
+								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@condition":
@@ -594,7 +598,7 @@ function EntryRenderer () {
 	this.renderLink = function (entry) {
 		function getHoverString () {
 			if (!entry.href.hover) return "";
-			return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash).replace(/'/g, "\\'")}')"`
+			return `onmouseover="EntryRenderer.hover.show(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash).replace(/'/g, "\\'")}')"`
 		}
 
 		let href;
@@ -620,22 +624,21 @@ function EntryRenderer () {
 			href = entry.href.url;
 		}
 		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
-	}
-}
+	};
 
-/**
- * Helper function to render an entity using the given renderer
- * @param renderer
- * @param entry
- * @param depth
- * @returns {string}
- */
-EntryRenderer.renderEntry = function (renderer, entry, depth) {
-	depth = depth === undefined || depth === null ? 0 : depth;
-	const tempStack = [];
-	renderer.recursiveEntryRender(entry, tempStack, depth);
-	return tempStack.join("");
-};
+	/**
+	 * Helper function to render an entity using this renderer
+	 * @param entry
+	 * @param depth
+	 * @returns {string}
+	 */
+	this.renderEntry = function (entry, depth) {
+		depth = depth === undefined || depth === null ? 0 : depth;
+		const tempStack = [];
+		renderer.recursiveEntryRender(entry, tempStack, depth);
+		return tempStack.join("");
+	};
+}
 
 EntryRenderer._rollerClick = function (ele, toRoll) {
 	const $ele = $(ele);
@@ -897,6 +900,63 @@ EntryRenderer.spell = {
 		renderStack.push(`
 			${EntryRenderer.utils.getPageTr(spell)}
 			${EntryRenderer.utils.getBorderTr()}
+		`);
+
+		return renderStack.join("");
+	}
+};
+
+EntryRenderer.monster = {
+	getCompactRenderedString: (mon) => {
+		if (!this.renderer) {
+			this.renderer = new EntryRenderer();
+		}
+		let renderer = this.renderer;
+
+		function makeAbilityRoller (ability) {
+			const mod = Parser.getAbilityModifier(mon[ability]);
+			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})`);
+		}
+
+		const renderStack = [];
+
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(mon, true)}
+			<tr><td colspan="6"><i>${Parser.sizeAbvToFull(mon.size)}, ${Parser.monTypeToFullObj(mon.type).asText}, ${mon.alignment}</i></td></tr>
+			<tr><td colspan="6">
+				<table class="summary">
+					<tr>
+						<th>Armor Class</th>
+						<th>Hit Points</th>
+						<th>Speed</th>
+					</tr>
+					<tr>
+						<td>${mon.ac}</td>					
+						<td>${mon.hp}</td>					
+						<td>${mon.speed}</td>					
+					</tr>
+				</table>			
+			</td></tr>
+			<tr><td colspan="6">
+				<table class="summary">
+					<tr>
+						<th class="text-align-center">STR</th>
+						<th class="text-align-center">DEX</th>
+						<th class="text-align-center">CON</th>
+						<th class="text-align-center">INT</th>
+						<th class="text-align-center">WIS</th>
+						<th class="text-align-center">CHA</th>
+					</tr>	
+					<tr>
+						<td class="text-align-center">${makeAbilityRoller("str")}</td>
+						<td class="text-align-center">${makeAbilityRoller("dex")}</td>
+						<td class="text-align-center">${makeAbilityRoller("con")}</td>
+						<td class="text-align-center">${makeAbilityRoller("int")}</td>
+						<td class="text-align-center">${makeAbilityRoller("wis")}</td>
+						<td class="text-align-center">${makeAbilityRoller("cha")}</td>
+					</tr>
+				</table>
+			</td></tr>
 		`);
 
 		return renderStack.join("");
@@ -1291,6 +1351,9 @@ EntryRenderer.hover = {
 		const source = EntryRenderer.hover._curHovering.cSource;
 		const hash = EntryRenderer.hover._curHovering.cHash;
 		const content = EntryRenderer.hover._curHovering.renderFunction(EntryRenderer.hover._getFromCache(page, source, hash));
+		const permanent = EntryRenderer.hover._curHovering.permanent;
+
+		$(ele).data("hover-active", true);
 
 		const offset = $(ele).offset();
 		const vpOffsetT = offset.top - $(document).scrollTop();
@@ -1302,40 +1365,74 @@ EntryRenderer.hover = {
 		const $hov = $(`<div class="hoverbox"/>`);
 		const $stats = $(`<table class="stats"></table>`);
 		$stats.append(content);
-		$hov.append(`<div class="hoverborder"></div>`)
+		let drag = {};
+		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""}></div>`)
+			// TODO allow the window to be dragged around
+			//
+			/*.on("mousedown", (evt) => {
+				drag.on = true;
+				drag.x = evt.clientX;
+				drag.y = evt.clientY;
+				drag.baseTop = $hov.offset().top;
+				drag.baseLeft = $hov.offset().left;
+			})
+			.on("mouseup", () => {
+				drag.on = false;
+			})
+			.on("mousemove", (evt) => {
+				if (drag.on) {
+
+				}
+			});*/
+		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
+			.on("click", () => {
+				teardown();
+			});
+		$brdrTop.append($btnClose);
+		$hov.append($brdrTop)
 			.append($stats)
 			.append(`<div class="hoverborder"></div>`);
 
-		if (fromBottom) $hov.css("bottom", winH - vpOffsetT);
-		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
-
-		if (fromRight) $hov.css("right", winW - vpOffsetL);
-		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
-
-		$(ele).on("mouseleave", () => {
-			$hov.remove();
-		});
-
-		// backup deletion, just in case
-		$hov.on("click", () => {
-			$hov.remove()
-		});
-
 		$(`body`).append($hov);
 
-		// readjust position if vertically clipping off screen
-		const hvVertOffset = $hov.offset().top - $(document).scrollTop();
-		if (hvVertOffset < 0) {
-			$hov.css("top", 0).css("bottom", "");
-		} else {
-			const calcHeight = $hov.height();
-			if (hvVertOffset + calcHeight > winH) {
-				$hov.css("top", 0).css("bottom", "");
+		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
+		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
+
+		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
+		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
+
+		$(ele).on("mouseleave", (evt) => {
+			if (!permanent && !evt.shiftKey) {
+				teardown();
+			} else {
+				$brdrTop.attr("data-perm", true);
 			}
-		}
+		});
+
+		adjustPosition();
+
+		$hov.css("max-height", "100vh").css("overflow-y", "auto");
 
 		$(ele).css("cursor", "");
 		reset();
+
+		function adjustPosition () {
+			// readjust position if vertically clipping off screen
+			const hvVertOffset = $hov.offset().top - $(document).scrollTop();
+			if (hvVertOffset < 0) {
+				$hov.css("top", 0);
+			} else {
+				const calcHeight = $hov.height();
+				if (hvVertOffset + calcHeight > winH) {
+					$hov.css("top", 0);
+				}
+			}
+		}
+
+		function teardown () {
+			$(ele).data("hover-active", false);
+			$hov.remove();
+		}
 
 		function reset () {
 			EntryRenderer.hover._showInProgress = false;
@@ -1346,12 +1443,15 @@ EntryRenderer.hover = {
 	_showInProgress: false,
 	_hoverId: 1,
 	_curHovering: null,
-	show: (ele, page, source, hash) => {
+	show: (evt, ele, page, source, hash) => {
 		const winW = $(window).width();
 		const winH = $(window).height();
 
 		// don't show on mobile
 		if (winW <= 768) return;
+
+		const alreadyHovering = $(ele).data("hover-active");
+		if (alreadyHovering) return;
 
 		let hoverId;
 		const curHoverId = $(ele).data("hover-id");
@@ -1369,6 +1469,9 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_ITEMS:
 				renderFunction = EntryRenderer.item.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_BESTIARY:
+				renderFunction = EntryRenderer.monster.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
@@ -1380,7 +1483,8 @@ EntryRenderer.hover = {
 			renderFunction: renderFunction,
 			cPage: page,
 			cSource: source,
-			cHash: hash
+			cHash: hash,
+			permanent: evt.shiftKey
 		};
 
 		// return if another event chain is handling the event
@@ -1396,28 +1500,35 @@ EntryRenderer.hover = {
 
 		// cancel hover if the mouse leaves
 		$(ele).on("mouseleave", () => {
-			EntryRenderer.hover._curHovering = null;
+			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) EntryRenderer.hover._curHovering = null;
 		});
+
+		function loadMultiSource(page, baseUrl, listProp) {
+			if (!EntryRenderer.hover._isCached(page, source, hash)) {
+				DataUtil.loadJSON(`${baseUrl}index.json`, (data) => {
+					const procData = {};
+					Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
+					DataUtil.loadJSON(`${baseUrl}${procData[source.toLowerCase()]}`, (data) => {
+						data[listProp].forEach(it => {
+							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+						});
+						EntryRenderer.hover._makeWindow();
+					});
+				});
+			} else {
+				EntryRenderer.hover._makeWindow();
+			}
+		}
 
 		switch (page) {
 			case UrlUtil.PG_SPELLS: {
-				const BASE_URL = `data/spells/`;
+				loadMultiSource(UrlUtil.PG_SPELLS, `data/spells/`, "spell");
+				break;
+			}
 
-				if (!EntryRenderer.hover._isCached(page, source, hash)) {
-					DataUtil.loadJSON(`${BASE_URL}index.json`, (data) => {
-						const procData = {};
-						Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
-						DataUtil.loadJSON(`${BASE_URL}${procData[source.toLowerCase()]}`, (data) => {
-							data.spell.forEach(spell => {
-								const spellHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
-								EntryRenderer.hover._addToCache(page, spell.source, spellHash, spell)
-							});
-							EntryRenderer.hover._makeWindow();
-						});
-					});
-				} else {
-					EntryRenderer.hover._makeWindow();
-				}
+			case UrlUtil.PG_BESTIARY: {
+				loadMultiSource(UrlUtil.PG_BESTIARY, `data/bestiary/`, "monster");
 				break;
 			}
 

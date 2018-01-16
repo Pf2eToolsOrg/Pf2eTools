@@ -1331,12 +1331,20 @@ Parser.NUMBERS_TEENS = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fift
 
 // SOURCES =============================================================================================================
 function hasBeenReprinted (shortName, source) {
+	/* can accept sources of the form:
+	{
+		"source": "UAExample",
+		"forceStandard": true
+	}
+	 */
+	if (source && source.source) source = source.source;
 	return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
 		(
 			(shortName === "Sun Soul" && source === SRC_SCAG) ||
 			(shortName === "Mastermind" && source === SRC_SCAG) ||
 			(shortName === "Swashbuckler" && source === SRC_SCAG) ||
-			(shortName === "Storm" && source === SRC_SCAG)
+			(shortName === "Storm" && source === SRC_SCAG) ||
+			(shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
 		);
 }
 
