@@ -79,7 +79,7 @@ function onJsonLoad (data) {
 	});
 	const domainFilter = new Filter({
 		header: "Domain",
-		items: ["Arcana", "Death", "Knowledge", "Life", "Light", "Nature", STR_NONE, "Tempest", "Trickery", "War"]
+		items: ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", STR_NONE, "Tempest", "Trickery", "War"]
 	});
 	const miscFilter = new Filter({
 		header: "Miscellaneous",

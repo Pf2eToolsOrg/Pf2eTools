@@ -411,6 +411,22 @@
 			"passive": 10,
 			"languages": "Common, plus up to two other languages",
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The portrait's innate spellcasting ability is Intelligence (spell save DC 12). The portrait can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"3e": [
+							"{@spell counterspell}",
+							"{@spell crown of madness}",
+							"{@spell hypnotic pattern}",
+							"{@spell telekinesis}"
+						]
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Constructed Nature",
@@ -426,20 +442,12 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The portrait's innate spellcasting ability is Intelligence (spell save DC 12). The portrait can innately cast the following spells, requiring no material components:",
-						"3/day each: counterspell, crown of madness, hypnotic pattern, telekinesis"
-					]
-				},
-				{
 					"name": "False Appearance",
 					"text": [
 						"While the figure in the portrait remains motionless, it is indistinguishable from a normal painting."
 					]
 				}
 			],
-			"spells": "counterspell, crown of madness, hypnotic pattern, telekinesis",
 			"page": 227
 		},
 		{
@@ -823,6 +831,24 @@
 			"passive": 21,
 			"languages": "Common, Elvish",
 			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Rahadin's innate spellcasting ability is Intelligence. He can innately cast the following spells, requiring no components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell magic weapon}",
+							"{@spell nondetection}"
+						],
+						"3": [
+							"{@spell misty step}",
+							"{@spell phantom steed}"
+						]
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Deathly Choir",
@@ -837,14 +863,6 @@
 					"name": "Fey Ancestry",
 					"text": [
 						"Rahadin has advantage on saving throws against being charmed, and magic can't put him to sleep."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Rahadin's innate spellcasting ability is Intelligence. He can innately cast the following spells, requiring no components:",
-						"3/day: misty step, phantom steed",
-						"1/day: magic weapon, nondetection"
 					]
 				},
 				{
@@ -880,7 +898,6 @@
 					]
 				}
 			],
-			"spells": "misty step, phantom steed, magic weapon, nondetection",
 			"page": 237
 		},
 		{

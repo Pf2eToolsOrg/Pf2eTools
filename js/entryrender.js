@@ -690,7 +690,8 @@ EntryRenderer.utils = {
 	},
 
 	getPageTr: (it) => {
-		return `${it.page ? `<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}</td>` : ""}`;
+		const addSourceText = it.additionalSources ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
+		return `${it.page ? `<td colspan=6><b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}</td>` : ""}`;
 	}
 };
 
@@ -925,9 +926,13 @@ EntryRenderer.item = {
 			}
 		}
 
+		function sortProperties (a, b) {
+			return ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
+		}
+
 		let propertiesTxt = "";
 		if (item.property) {
-			const properties = item.property.split(",");
+			const properties = item.property.sort(sortProperties);
 			for (let i = 0; i < properties.length; i++) {
 				const prop = properties[i];
 				let a = item._allPropertiesPtr[prop].name;
@@ -1031,7 +1036,6 @@ EntryRenderer.item = {
 					const curRequires = curVariant.requires;
 					let hasRequired = curBasicItemName.indexOf(" (") === -1;
 					for (const requiredProperty in curRequires) if (curRequires.hasOwnProperty(requiredProperty) && curBasicItem[requiredProperty] !== curRequires[requiredProperty]) hasRequired = false;
-					// hasRequired = hasRequired && Object.keys(curRequires).every(req => curBasicItem[req] === curRequires.requires[req]);
 					if (curVariant.excludes) {
 						const curExcludes = curVariant.excludes;
 						for (const excludedProperty in curExcludes) if (curExcludes.hasOwnProperty(excludedProperty) && curBasicItem[excludedProperty] === curExcludes[excludedProperty]) hasRequired = false;
@@ -1076,8 +1080,7 @@ EntryRenderer.item = {
 				if (item.entries === undefined) itemList[i].entries = [];
 				if (item.type && typeList[item.type]) for (let j = 0; j < typeList[item.type].entries.length; j++) itemList[i].entries = pushObject(itemList[i].entries, typeList[item.type].entries[j]);
 				if (item.property) {
-					const properties = item.property.split(",");
-					for (let j = 0; j < properties.length; j++) if (propertyList[properties[j]].entries) for (let k = 0; k < propertyList[properties[j]].entries.length; k++) itemList[i].entries = pushObject(itemList[i].entries, propertyList[properties[j]].entries[k]);
+					for (let j = 0; j < item.property.length; j++) if (propertyList[item.property[j]].entries) for (let k = 0; k < propertyList[item.property[j]].entries.length; k++) itemList[i].entries = pushObject(itemList[i].entries, propertyList[item.property[j]].entries[k]);
 				}
 				// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
 				if (item.armor) {
