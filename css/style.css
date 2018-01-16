@@ -195,7 +195,26 @@ div.omnisearch-pagination-wrapper > .pg-right {
 }
 
 .hoverbox .hoverborder {
-	height: 3px;
+	min-height: 3px;
+	max-height: 16px;
+	text-align: right;
+}
+
+.hoverbox .hoverborder.top {
+	cursor: move;
+}
+
+.hoverbox .hoverborder .glyphicon {
+	display: none;
+	top: -1px;
+	right: 2px;
+	color: rgba(255, 255, 255, 0.7);
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.hoverbox .hoverborder[data-perm=true] .glyphicon {
+	display: inline-block;
 }
 
 /* *** */
