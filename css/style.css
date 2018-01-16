@@ -182,6 +182,14 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	box-shadow: 0 0 12px 0 rgba(0, 0, 0, 1);
 }
 
+.hoverbox::-webkit-scrollbar-track {
+	background: #a0a0a0;
+}
+
+.hoverbox::-webkit-scrollbar {
+	width: 4px;
+}
+
 .hoverbox > table.stats {
 	border-radius: 0;
 }
@@ -202,6 +210,7 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 .hoverbox .hoverborder.top {
 	cursor: move;
+	user-select: none;
 }
 
 .hoverbox .hoverborder .glyphicon {

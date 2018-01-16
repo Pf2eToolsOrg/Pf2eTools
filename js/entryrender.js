@@ -1368,6 +1368,7 @@ EntryRenderer.hover = {
 		let drag = {};
 		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""}></div>`)
 			// TODO allow the window to be dragged around
+			//
 			/*.on("mousedown", (evt) => {
 				drag.on = true;
 				drag.x = evt.clientX;
@@ -1392,10 +1393,12 @@ EntryRenderer.hover = {
 			.append($stats)
 			.append(`<div class="hoverborder"></div>`);
 
-		if (fromBottom) $hov.css("bottom", winH - vpOffsetT);
+		$(`body`).append($hov);
+
+		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
-		if (fromRight) $hov.css("right", winW - vpOffsetL);
+		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
 
 		$(ele).on("mouseleave", (evt) => {
@@ -1405,8 +1408,6 @@ EntryRenderer.hover = {
 				$brdrTop.attr("data-perm", true);
 			}
 		});
-
-		$(`body`).append($hov);
 
 		adjustPosition();
 
@@ -1419,11 +1420,11 @@ EntryRenderer.hover = {
 			// readjust position if vertically clipping off screen
 			const hvVertOffset = $hov.offset().top - $(document).scrollTop();
 			if (hvVertOffset < 0) {
-				$hov.css("top", 0).css("bottom", "");
+				$hov.css("top", 0);
 			} else {
 				const calcHeight = $hov.height();
 				if (hvVertOffset + calcHeight > winH) {
-					$hov.css("top", 0).css("bottom", "");
+					$hov.css("top", 0);
 				}
 			}
 		}
