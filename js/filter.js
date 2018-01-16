@@ -124,6 +124,10 @@ class FilterBox {
 					$parent.append($ch);
 				}
 				return $parent;
+			} else if (filter instanceof RangeFilter) {
+				// TODO
+			} else if (filter instanceof AllSourcesFilter) {
+				// TODO
 			} else {
 				const $outI = $("<li/>");
 				$outI.addClass("filter-item");
@@ -668,6 +672,14 @@ class FilterItem {
 		this.item = item;
 		this.changeFn = changeFn;
 	}
+}
+
+class RangeFilter extends Filter {
+	// TODO implement a filter displayed as a range of items on a slider
+}
+
+class AllSourcesFilter extends Filter {
+	// TODO implement a filter with an "All Sources" button (toggled off by default)
 }
 
 class MultiFilter {

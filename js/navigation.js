@@ -35,7 +35,7 @@ function navigation () {
 	LIDropdown('navbar', 'rules', 'dropdown');
 	A('rules', 'ruleOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Rules <span class='caret'></span>");
 	UL('rules', 'ul_rules', 'dropdown-menu');
-	LI('ul_rules', 'rules.html', 'Rules');
+	LI('ul_rules', 'rules.html', 'Core Rules');
 	LI('ul_rules', 'variantrules.html', 'Variant Rules');
 
 	LIDropdown('navbar', 'players', 'dropdown');
