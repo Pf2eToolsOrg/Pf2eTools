@@ -594,7 +594,7 @@ function EntryRenderer () {
 	this.renderLink = function (entry) {
 		function getHoverString () {
 			if (!entry.href.hover) return "";
-			return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash)}')"`
+			return `onmouseover="EntryRenderer.hover.show(this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${UrlUtil.encodeForHash(entry.href.hash).replace(/'/g, "\\'")}')"`
 		}
 
 		let href;
