@@ -75,6 +75,9 @@
 						"When you cast this spell using a spell slot of 3rd level or higher, you can attempt to counteract a spell set to secure the foreign system if the spell's level is equal to or less than the level of the spell slot you used."
 					]
 				}
+			],
+			"opposedCheck": [
+				"intelligence"
 			]
 		},
 		{
@@ -214,7 +217,7 @@
 				"technomagic": true
 			},
 			"entries": [
-				"You touch a single computerized device or computer system to conjure a knowbot\u2014a partially sentient piece of software imprinted with vestiges of your own skills and computer abilities. For the duration of the spell, you can use a bonus action to have the knowbot execute a computer-related task that would normally require an action. The knowbot makes Intelligence ability checks using your ability score and proficiency bonuses (including your proficiency with hacking tools, if applicable).",
+				"You touch a single computerized device or computer system to conjure a knowbot—a partially sentient piece of software imprinted with vestiges of your own skills and computer abilities. For the duration of the spell, you can use a bonus action to have the knowbot execute a computer-related task that would normally require an action. The knowbot makes Intelligence ability checks using your ability score and proficiency bonuses (including your proficiency with hacking tools, if applicable).",
 				"You have a limited telepathic bond with the knowbot, out to a range of 500 feet from the device or system where the knowbot was conjured. If you move beyond this range, the knowbot disappears in 2d4 rounds, as if the duration of the spell had expired. Moving within range again immediately reestablishes the bond.",
 				"The knowbot is bound to the system in which it was created, and it stays there until it is dismissed or the spell's duration expires."
 			],
@@ -480,6 +483,10 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
 			]
 		},
 		{
@@ -549,6 +556,9 @@
 			"entries": [
 				"With this spell, you can target any creature with whom you have spoken previously, as long as the two of you are on the same plane of existence. When you cast the spell, the nearest functioning telephone or similar communications device within 100 feet of the target begins to ring. If there is no suitable device close enough to the target, the spell fails.",
 				"The target must make a successful Charisma saving throw or be compelled to answer your call. Once the connection is established, the call is crystal clear and cannot be dropped until the conversation has ended or the spell's duration ends. You can end the conversation at any time, but a target must succeed on a Charisma saving throw to end the conversation."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -889,6 +899,9 @@
 			},
 			"entries": [
 				"This spell shuts down all electronic devices within range that are not wielded by or under the direct control of a creature. If an electronic device within range is used by a creature, that creature must succeed on a Constitution saving throw to prevent the device from being shut down. While the spell remains active, no electronic device within range can be started or restarted."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{

@@ -130,6 +130,9 @@
 			"entries": [
 				"You cause liquids carried by a creature to dry up. All nonmagical liquid (water, alcohol, lamp oil) evaporates instantly unless the target creature makes a successful Wisdom saving throw. In addition, three potions carried by the target will also be affected by this spell. If the target carries more than three potions, the three that dry up are selected randomly.",
 				"Absorption has no direct effect on living (or unliving) creatures or plants, only on liquids they carry."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -186,6 +189,9 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -293,6 +299,9 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -350,6 +359,9 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -495,6 +507,9 @@
 			"entries": [
 				"You touch a creature, and that creature becomes cursed with age unless it makes a successful Constitution saving throw. The creature becomes wizened and enfeebled and has disadvantage on Strength, Dexterity, and Constitution-based ability checks, attack rolls, skill rolls, and saving throws. It does half damage with weapon attacks.",
 				"This effect can be ended by magic that removes curses."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -688,6 +703,9 @@
 				"This spell enables you to sway a large group of people toward accomplishing a specific goal. You must speak emphatically on the subject for 10 minutes, playing on the crowd's emotions and reason, to inflame their fervor for or against a cause or person. You must be clear about the specific goal you want to achieve. For example, shouting that \"The Academy of Wizards is evil and corrupt!\" might make people dislike the academy, but it won't spur them to action because it doesn't tell them what to do. Adding \"Follow me, and we'll burn it to the ground!\" will send a crowd of torch-bearing arsonists to the academy tower.",
 				"The spell affects all sentient creatures that are able to hear and understand you within 60 feet.",
 				"When you finish casting the spell, all potential targets of the spell who fail a Wisdom saving throw are compelled to follow your instructions for the duration of the spell, as long as those orders are in keeping with the goal stated in the speech and you personally lead them. If these conditions aren't met, the spell ends and the crowd becomes hostile toward you. The spell also ends when the goal has been achieved."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -1285,6 +1303,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -1437,6 +1458,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -1772,6 +1796,12 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -1841,6 +1871,9 @@
 						"For each spell slot used higher than 4th level, the association lasts for an additional day."
 					]
 				}
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -1894,6 +1927,9 @@
 			},
 			"entries": [
 				"You create an aura around yourself that forces all shapeshifted creatures to resort to their normal forms. The spell affects lycanthropes, therianthropes, doppelgangers, mimics, and creatures under the effect of polymorph magic. A shapechanged creature that begins its turn within the aura is forced to resume its natural form unless it makes a successful Constitution saving throw. If the saving throw fails, it reverts to its normal form immediately, and it can't alter its form voluntarily again until it leaves the spell's area of effect."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -1951,6 +1987,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -2178,6 +2217,9 @@
 						"If you cast Babel's curse with a 5th-level or higher spell slot, the creature is also unable to understand spoken language for the duration of the spell. If you use an 8th-level or higher spell slot, the duration becomes permanent and the creature can't make saving throws to end the effect."
 					]
 				}
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -2235,6 +2277,9 @@
 			},
 			"entries": [
 				"Bad luck curses one creature to become incredibly unlucky. The affected creature has tactical disadvantage on saving throws for the duration of the spell unless it makes a successful Wisdom saving throw when bad luck is first cast. The spell also ends if the creature rolls a natural 20 on a saving throw, or by magic that removes a curse."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -2288,6 +2333,9 @@
 			},
 			"entries": [
 				"When you cast bait, choose a creature and an object. Both must be within 60 feet of you. If the creature fails a Wisdom saving throw, it experiences an overwhelming desire to possess the object. On its turn, the affected creature must move directly toward the object, ignoring all danger. Upon reaching the object, it does everything within its power to remain within 5 feet of the object and to prevent anyone else from possessing it, even if that means taking it away from its current owner. The affected creature can repeat the saving throw at the end of each of its turns; a successful save ends the effect."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -2383,6 +2431,9 @@
 				"bludgeoning",
 				"piercing",
 				"slashing"
+			],
+			"savingThrow": [
+				"strength"
 			]
 		},
 		{
@@ -2431,6 +2482,10 @@
 			},
 			"entries": [
 				"You release a hoarse cry that reverberates in a 30-foot cone in front of you. Each creature in the cone must make a Constitution saving throw. If the saving throw fails, the creature drops everything it is holding, is {@condition incapacitated} until the end of its next turn, and is {@condition frightened}. A {@condition frightened} creature can make a Wisdom saving throw at the end of each of its turns; a successful save ends the fright."
+			],
+			"savingThrow": [
+				"constitution",
+				"wisdom"
 			]
 		},
 		{
@@ -2745,6 +2800,9 @@
 			],
 			"damageInflict": [
 				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -2806,6 +2864,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -3018,6 +3079,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -3063,6 +3127,9 @@
 			"entries": [
 				"One creature you can see must make a Wisdom saving throw. If the saving throw fails, the creature becomes confused and loses its train of thought.",
 				"Note that this spell does no real damage, doesn't affect the target's Intelligence, and doesn't negate the target's next action; it simply erases the target's current thought. The thought probably will reoccur to the creature naturally at some time in the future. For example, if a lady sees someone running from her husband's room with a dagger, this spell compels her to forget that image. But if the person with the dagger is still visible a second later, she'll wonder about it all over again. Similarly, an opponent in combat can forget what strike he was planning but still realizes he's in combat and attack on his next action. The spell's effect ends at the start of the target's next action, so you must be quick to make certain that something forgotten isn't instantly remembered."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -3316,6 +3383,12 @@
 				"bludgeoning",
 				"piercing",
 				"slashing"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -3467,6 +3540,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -3563,6 +3639,9 @@
 				"You become capable of absorbing metal weapons that strike you. When you are struck by a metallic melee weapon, its wielder must make a Dexterity saving throw or the weapon is absorbed into your flesh and you take no damage from the attack. If the weapon is magical, its enhancement bonus is added to the creature's saving throw.",
 				"An absorbed weapon is stuck in your flesh and can't be removed. You can have up to five weapons absorbed at one time. Once this limit is reached, you take damage normally from subsequent attacks.",
 				"As a bonus action, you can expel all absorbed weapons. The weapons also are expelled when the spell ends. Expelled weapons fall to the ground around you."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -3716,6 +3795,9 @@
 			"entries": [
 				"You cause a slashing or piercing weapon you are holding to achieve a form of limited sentience that hungers for blood. For every 4 points (rounded up) of damage you inflict with the weapon on a living creature, your next attack with that weapon has a bonus of +1 to hit and to damage.",
 				"Non-Evil creatures damaged by your weapon also suffer a -2 penalty to hit you with their next attack, unless they make a successful Wisdom saving throw."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -3820,6 +3902,9 @@
 			],
 			"damageInflict": [
 				"slashing"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -3865,6 +3950,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4093,6 +4181,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4142,6 +4233,9 @@
 			},
 			"entries": [
 				"By covering the eyes of a previously constructed spirit doll, you force the creature linked to that doll to make a Constitution saving throw. If the saving throw fails, the creature is {@condition blinded} for the duration of the spell. If the save succeeds, the creature's sight is impaired so that it has a -2 penalty on Wisdom (Perception) checks for the spell's duration. Either effect can be removed by any magic that cures blindness, such as lesser restoration."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4244,6 +4338,9 @@
 			},
 			"entries": [
 				"You enchant an arrow or bolt you can see. The projectile erupts in a burst of light when it strikes a solid object or at the height of its arc (your choice). Anyone within 30 feet of this eruption who can see it must make a Constitution saving throw or be {@condition blinded}. A {@condition blinded} creature can repeat the saving throw at the end of each of its turns; a successful save ends the blindness."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4292,6 +4389,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4384,6 +4484,9 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -4425,6 +4528,9 @@
 			},
 			"entries": [
 				"You choose a creature you can see and try to make it violently disgorge blood from its body. The creature must make a Constitution saving throw. If the saving throw fails, it loses 2d4 points of Constitution. A creature reduced to 0 Constitution dies immediately. Creatures without blood are immune to this effect."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4473,6 +4579,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4522,6 +4631,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4577,6 +4689,12 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -4623,6 +4741,9 @@
 			},
 			"entries": [
 				"You cause one weapon within range that does piercing or slashing damage to become blunt. If the weapon's wielder fails a Wisdom saving throw, then for the duration of the spell, the weapon does only half damage and can't score critical hits."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -4714,6 +4835,9 @@
 			},
 			"entries": [
 				"A willing creature you touch gains tactical advantage on Intelligence, Wisdom, and Charisma saving throws for the duration of this spell."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -4813,6 +4937,9 @@
 			"damageVulnerable": [
 				"bludgeoning",
 				"slashing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4863,6 +4990,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -4958,7 +5088,7 @@
 				]
 			},
 			"entries": [
-				"You cause two willing creatures to become linked with a psychic bond. Each becomes perpetually aware of the other's location accurately enough to find the other even when blindfolded. They are aware of each other's physical and emotional condition at all times. This knowledge doesn't give any information about the subject's surroundings\u2014one of the spell's recipients could know that the other is 10 miles away in a castle and distraught, for example, but wouldn't know that the other person is chained to a wall and awaiting trial for witchcraft.",
+				"You cause two willing creatures to become linked with a psychic bond. Each becomes perpetually aware of the other's location accurately enough to find the other even when blindfolded. They are aware of each other's physical and emotional condition at all times. This knowledge doesn't give any information about the subject's surroundings—one of the spell's recipients could know that the other is 10 miles away in a castle and distraught, for example, but wouldn't know that the other person is chained to a wall and awaiting trial for witchcraft.",
 				"A person can be under the effect of only one bound hearts spell at a time, and it's not possible for more than two people to be simultaneously linked by this spell."
 			],
 			"entriesHigherLevel": [
@@ -5118,6 +5248,9 @@
 				"bludgeoning",
 				"piercing",
 				"slashing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -5183,6 +5316,9 @@
 				"cold",
 				"fire",
 				"lightning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -5232,6 +5368,9 @@
 			],
 			"damageVulnerable": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -5287,6 +5426,9 @@
 						"For each spell slot used higher than 4th level, you can create one additional bubble. Each bubble can be targeted against a different creature."
 					]
 				}
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -5344,6 +5486,13 @@
 			},
 			"entries": [
 				"You cause an underwater creature you can see within range to be wrapped in a magical net of air bubbles that rises to the water's surface. The creature must make a Dexterity saving throw. If the saving throw fails, the creature is {@condition restrained} by the net and it rises 120 feet toward the surface at the end of each of its turns. Once the net reaches the surface, it remains there and keeps the creature {@condition restrained}. As an action, a {@condition restrained} creature can make a Strength or Dexterity check against your spell save DC to escape from the net. If the save succeeds, the net disappears and the spell ends."
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"strength",
+				"dexterity"
 			]
 		},
 		{
@@ -5690,6 +5839,9 @@
 			],
 			"damageInflict": [
 				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -5825,6 +5977,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -5921,6 +6076,10 @@
 			},
 			"entries": [
 				"You infuse a handful of berries with the power to lure and intoxicate animals. Choose a type of beast when you cast the spell. Beasts of that type within 60 feet of the berries are drawn to them unerringly. The first beast to reach the berries devours them in one round and becomes {@condition poisoned} unless it makes a successful Constitution saving throw. The poisoning lasts until the end of the beast's next long rest. Beasts with an Intelligence of 6 or higher can resist the lure of the berries with a successful Wisdom saving throw."
+			],
+			"savingThrow": [
+				"constitution",
+				"wisdom"
 			]
 		},
 		{
@@ -5972,6 +6131,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -6024,6 +6186,9 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -6112,6 +6277,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -6206,6 +6374,10 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
 			]
 		},
 		{
@@ -6375,6 +6547,9 @@
 			},
 			"entries": [
 				"One creature that you touch becomes unpleasant and gaffe-prone, provided it fails a Wisdom saving throw. Until the spell ends, the target creature has tactical disadvantage on Charisma checks when interacting with other creatures."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -6422,6 +6597,9 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -6531,6 +6709,9 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -6642,6 +6823,9 @@
 			},
 			"entries": [
 				"For the duration of this spell, you add your Charisma modifier to your AC. In addition, each creature within 50 feet of you that targets you with an attack or a harmful spell must make a Wisdom saving throw. If the saving throw fails, the creature must target another creature or lose the action, and it can't target you again for the duration of the spell. If you attack or cast a harmful spell against that creature, the spell's effect against that creature is broken, and it can target you normally."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -6694,6 +6878,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -6739,6 +6926,9 @@
 			},
 			"entries": [
 				"You can touch up to six willing creatures when you cast this spell. For the duration of the spell, the affected creatures can communicate with each other using the languages of fauna native to the area. Everyone who is not under the effect of a chatterwild spell hears their words as the barking of coyotes, the chattering of squirrels, or the clacking, hooting, or shrieking of birds. If a listener has a reason to question what they're hearing–for example, if the spell is used inside a normally quiet temple–the GM can allow a Wisdom saving throw to negate the effect."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -6785,6 +6975,9 @@
 				"This is a subtle effect calling for adjudication by the GM. The affected creature doesn't go berserk or turn into a serial murderer. Most often, this spell causes the affected creature's normal acts to become twisted perversions of their original intent. For example, a noble knight afflicted by the chill of evil might decide that defeating his opponent honorably on the field of battle isn't enough \"justice\" for the harm that opponent caused. Instead, that foe must be \"purified\" through pain, so the knight imprisons him and tortures him to death over the week of the spell's duration. An artist could turn to portraying only evil or grisly subjects in his paintings, and a merchant might suddenly start hawking poisons on the street. Essentially, the affected creature acts as if its alignment is aggressively Neutral Evil; it greedily seeks its own interests with no regard for how others are hurt. If the creature was Evil to begin with, this might not be much of a change.",
 				"People who know the target well can make a Wisdom (Insight) check to determine why the person is acting so uncharacteristically.",
 				"Chill of evil is most often used by evil clerics against paladins and good clerics. Their victims are likely to fall from grace for the duration of the spell at least, and their reputations might be ruined for far longer. The target of the spell recalls everything after it ends. Since the person doesn't necessarily know they were enchanted, a Good character is likely to feel tremendous remorse over his or her actions."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -6842,6 +7035,9 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -7078,6 +7274,9 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -7126,6 +7325,10 @@
 				"The casting time for the spell depends on whether the circle is being drawn anew or a previously placed, permanent circle is being empowered. Drawing a new circle takes one day. Empowering a previously placed, permanent circle takes 1 minute.",
 				"Drawing a new circle requires material components costing 250 gold pieces. The circle is typically a flat design of a geometric shape with a 5-foot radius.",
 				"A sigil of seeing is created spending one minute drawing the sigil on a flat surface. Each sigil requires special ink that costs 100 gold pieces per sigil. The sigil disappears within moments of being drawn, but it reappears when you are scrying through it. A sigil is typically no more an inch in diameter. While a sigil is in use, it can be noticed by anyone who examines the spot where it's drawn and makes a successful DC 10 Wisdom (Perception) or Intelligence (Investigation) check. While the sigil isn't in use, finding it requires a deliberate search of the correct area and a successful Intelligence (Investigation) check against your spell saving throw DC."
+			],
+			"opposedCheck": [
+				"wisdom",
+				"intelligence"
 			]
 		},
 		{
@@ -7325,6 +7528,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -7376,6 +7582,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -7708,6 +7917,9 @@
 			"entries": [
 				"You create a 60-foot-long cone originating from your hand. All unattended, nonliving, organic matter within the cone crumbles to dust. Each creature in the cone must make a Constitution saving throw. If the saving throw fails, all the creature's nonmagical, organic gear (food, drink, cloth, leather, etc.) is destroyed.",
 				"Undead creatures additionally lose 4 points of Constitution, or 2 points if they made a successful Constitution saving throw."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -7818,6 +8030,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -7870,6 +8085,12 @@
 				"Every intelligent creature within 60 feet of yourself (including you) takes on the appearance of one other creature in the area. The creature that everyone and everything resembles should be selected randomly. Every creature in the area of effect becomes an exact copy of the original, from the items it carries to the sound of its voice.",
 				"A creature that sees the spell's effect can make an Intelligence saving throw. If the saving throw fails, the creature can't distinguish which creature is which by sight or sound. On a successful save, the creature still sees the illusion but can tell which creature is which from subtle clues such as posture or manner of movement.",
 				"As an action, a creature can make an Intelligence (Investigation) check against your spell saving throw DC; if it succeeds, they can correctly identify each creature affected by the illusion, the same as if they'd made a successful saving throw."
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"opposedCheck": [
+				"intelligence"
 			]
 		},
 		{
@@ -7967,6 +8188,9 @@
 				"Each orb can absorb only one spell. Once an orb has absorbed a spell, you can use an action to cause it to explode. All creatures within 20 feet of you take 2d6 damage per level of the spell the orb absorbed, or half damage with a successful Dexterity saving throw. The DC for the saving throw is set by you, not by the spell's original caster.",
 				"As an action, you can instead choose an orb to discharge the absorbed spell with no effect.",
 				"An orb is destroyed after it has discharged a spell or exploded. All orbs disappear with no further effect when the spell ends."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -8108,6 +8332,9 @@
 			"entries": [
 				"You curse one creature you can see. The creature must make a Constitution saving throw against the curse. If the saving throw fails, the target creature bloats into a horrific mockery of itself. Nonmagical belts, buckles, armor, clothes, shoes, and other garments are all destroyed by rapidly expanding rolls of flesh. The now-obese victim quadruples in weight and girth, loses 4 points of Strength and 6 points of Dexterity, and its speed is reduced by 10 feet. Each month, it loses an additional point of Constitution. Ability scores can't be reduced below 1 by this spell.",
 				"The creature returns to its previous size instantly if the curse is lifted by magic."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -8169,6 +8396,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -8297,6 +8527,9 @@
 						]
 					]
 				}
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -8432,6 +8665,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -8572,6 +8808,9 @@
 			],
 			"damageInflict": [
 				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -8617,6 +8856,9 @@
 			"entries": [
 				"You choose a creature you can see and name an object. The creature instantly develops a powerful phobia of that object unless it makes a successful Wisdom saving throw against curses. If the creature can see the object it fears at the start of its turn, it must make a successful Wisdom saving throw or become {@condition frightened} until the start of its next turn.",
 				"The curse can be ended only by magic that lifts a curse."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -8673,6 +8915,9 @@
 			},
 			"entries": [
 				"You curse a creature you can see. The creature loses 4 points of Strength and Dexterity (to a minimum of 1) and must make a Constitution saving throw. If the saving throw fails, the curse is permanent until it's lifted by magic. A successful save means the curse lasts only one minute, unless it's ended magically before then."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -8725,6 +8970,9 @@
 			},
 			"entries": [
 				"You curse one creature you can see. That creature becomes highly sensitive to light unless it makes a successful Constitution saving throw. The cursed creature has tactical disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when it, you, or whatever it is trying to perceive or attack is in bright light."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -8878,6 +9126,9 @@
 			},
 			"entries": [
 				"You select one creature you can see. The creature must make a Wisdom saving throw. If it fails, the creature has tactical disadvantage on morale checks and on saving throws against fear, and a -2 penalty on attack rolls, for the duration of the spell."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -8926,6 +9177,9 @@
 			},
 			"entries": [
 				"By dancing and moving seductively, you attempt to charm humanoids within range. Each creature that can see you must make a Wisdom saving throw, with tactical advantage if you or your companions are fighting it. If the saving throw fails, it is {@condition charmed} by you until the spell ends or until you or your companions do anything harmful to it. {@condition Charmed} creatures regard you as a friendly acquaintance. When the spell ends, affected creatures do not realize they were {@condition charmed} by you."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -9029,6 +9283,9 @@
 			],
 			"damageInflict": [
 				"piercing"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -9082,6 +9339,10 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
 			]
 		},
 		{
@@ -9138,6 +9399,9 @@
 			],
 			"damageInflict": [
 				"slashing"
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -9186,6 +9450,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9232,6 +9499,9 @@
 			"entries": [
 				"You animate up to three trees you can see within 40 feet. The trees are treated as awakened trees (per the awaken spell). The trees won't attack you, but they are not under your control and they do attack all other living creatures in the area without distinction.",
 				"The dark and angry power animating these trees also creates an aura of panic. Every creature that starts its turn within 40 feet of one of these trees becomes {@condition frightened} unless it makes a successful Wisdom saving throw. A {@condition frightened} creature must take the Dash action and move out of the area by the safest path. If it starts its turn more than 40 feet from a darkly awakened tree, a {@condition frightened} creature can repeat the saving throw; a successful save ends the fright and leaves the creature immune to the fright effect from this batch of trees for 24 hours."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -9276,6 +9546,9 @@
 			},
 			"entries": [
 				"Choose a Medium-size or smaller beast you can see. The beast makes a Charisma saving throw. If it fails, it can't take actions or reactions until the start of your next turn."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -9322,6 +9595,9 @@
 			],
 			"damageInflict": [
 				"slashing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9370,6 +9646,9 @@
 			],
 			"damageInflict": [
 				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9424,6 +9703,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9473,6 +9755,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -9521,6 +9806,9 @@
 			},
 			"entries": [
 				"You exhale a foul-smelling gust toward a creature you can see. The creature must make a Constitution saving throw. If the saving throw fails, the target gains one level of {@condition exhaustion} that lasts for the duration of the spell. The affected creature can repeat the saving throw at the end of each of its turns; a successful save ends the spell."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9567,6 +9855,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9622,6 +9913,10 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"charisma",
+				"constitution"
 			]
 		},
 		{
@@ -9680,6 +9975,9 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9730,6 +10028,9 @@
 			},
 			"entries": [
 				"Choose one creature within range you can see. If the creature fails a Constitution saving throw, it feels a shooting pain in its limbs. For the duration of the spell, when it uses a thrown or ranged weapon except for a crossbow or similar mechanical weapon, the range of that weapon is reduced by half and it has tactical disadvantage on its attack. The target creature also suffers a 10-foot reduction in its speed. At the end of its turn, the creature can make anotherConstitution saving throw; the spell ends if the save succeeds."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -9885,6 +10186,9 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -10147,6 +10451,9 @@
 			},
 			"entries": [
 				"You curse a creature you can see within range. That creature must make a Wisdom saving throw with tactical disadvantage. If it fails the saving throw, it is unable to regain hit points by any means until the curse is lifted by magic. Remove curse and similar magic is effective against this curse only if cast using a spell slot of 6th level or higher."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -10290,9 +10597,6 @@
 			"entries": [
 				"You curse one creature you can see within range to be vulnerable to a specific doom. You can select a specific person, a type of weapon or creature, or a location. When the person, weapon, or creature attacks the target, or the target is in the location, they suffer a -4 penalty to their AC and take an additional 5 damage from each attack.",
 				"Destined doom lasts until broken by magic that can remove a curse."
-			],
-			"damageVulnerable": [
-				"weapon"
 			]
 		},
 		{
@@ -10392,6 +10696,9 @@
 			"entries": [
 				"You determine whether a creature, object, or area you can see within 30 feet of you is affected by a curse. With a successful DC 20 Intelligence or Wisdom check, you can also determine the exact type of curse and its effects.",
 				"The spell doesn't function when used on an artifact."
+			],
+			"opposedCheck": [
+				"intelligence"
 			]
 		},
 		{
@@ -10646,6 +10953,9 @@
 			},
 			"entries": [
 				"One instrument you can see becomes detuned. Anyone using the instrument in a performance has tactical disadvantage on their ability checks to play it. If the instrument is held by a creature, that creature makes a Wisdom saving throw when the cantrip is cast; a successful save negates the effect."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -10737,6 +11047,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -10870,6 +11183,9 @@
 			},
 			"entries": [
 				"A creature you touch must make a Constitution saving throw. If the saving throw fails, it is cursed and all of its ability scores are reduced to 3. The curse and the ability reduction can be ended by remove curse or comparable magic."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -10908,6 +11224,9 @@
 			},
 			"entries": [
 				"One constructed object you touch falls to pieces, separating into its component parts. For instance, a sword separates into a blade, handle, guard, and pommel, while a chariot collapses into nails, wood, and metal. If the item is in the possession of a creature, the creature can make a Wisdom saving throw. On a successful save, the item is unaffected."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -10953,6 +11272,9 @@
 			},
 			"entries": [
 				"Choose a creature you can see within range. If that creature fails a Wisdom saving throw, you determine whether or not the creature is a lycanthrope. You can determine what kind of lycanthrope the creature is with a successful DC 20 Intelligence (Nature) check."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -10998,6 +11320,9 @@
 			},
 			"entries": [
 				"You create powerful strains of music that emanate from a point you can see to fill a 60-foot sphere. The music is so loud inside that area that only shouting can be heard over it. No spells with a verbal component can be cast in the area. All creatures have tactical disadvantage on Wisdom saving throws and Wisdom ability checks while in the affected area."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -11042,6 +11367,9 @@
 			},
 			"entries": [
 				"One creature you can see takes a -2 penalty on the next ability check it makes as part of a performance unless it makes a successful Wisdom saving throw."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -11209,6 +11537,12 @@
 				"bludgeoning",
 				"piercing",
 				"slashing"
+			],
+			"savingThrow": [
+				"wisdom",
+				"charisma",
+				"constitution",
+				"dexterity"
 			]
 		},
 		{
@@ -11380,6 +11714,9 @@
 			},
 			"entries": [
 				"This spell places a spiritual burden on creatures that can cast divine spells. Every such creature within 30 feet of you must make a Constitution saving throw. If the saving throw fails, the creature moves at half speed, has tactical disadvantage on attack rolls, and has tactical disadvantage on Strength and Dexterity ability and skill checks. It also gains one level of {@condition exhaustion} if it uses the Dash action."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -11530,6 +11867,9 @@
 			},
 			"entries": [
 				"You sever the connection between one creature you can see and its deity. If the creature fails a Wisdom saving throw, it can't cast divine spells or channel divinity for the duration of the spell. At the end of each of its turns, the creature can repeat the saving throw with tactical disadvantage; a successful save ends the spell's effect."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -11622,6 +11962,9 @@
 			},
 			"entries": [
 				"One creature you can see within range is protected from the magic of other gods. If the creature is unwilling, it can make a Wisdom saving throw to negate the effect. If the creature is affected, it has tactical advantage on saving throws against divine spells granted by deities other than your own. Divine spells that are beneficial (and thus require no saving throw) have a 50% chance of failing when cast on the creature, if they originate from a different deity than yours."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -11667,6 +12010,9 @@
 			},
 			"entries": [
 				"One creature you touch becomes warded against attack. While divine mantle is in effect, any creature that intends to aim an attack or a harmful spell at the warded creature must make a Wisdom saving throw before resolving the attack. If the saving throw fails, the attacker changes its mind at the last moment and either redirects the attack against a different target or doesn't attack at all (its choice). The warded creature can be included in area effects without first making a saving throw."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -11860,6 +12206,9 @@
 			},
 			"entries": [
 				"By touching two creatures simultaneously, you can transfer any number of hit points between them. Neither creature can have its hit points raised above its maximum (no temporary hit points) or lowered below 1. An unwilling creature can make a Constitution saving throw; a successful save negates the spell."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -12009,6 +12358,9 @@
 			"entries": [
 				"You create sound vibrations in a 40-foot cone that produce deep feelings of dread in target creatures. Each creature in the cone must make a Wisdom saving throw. If the saving throw fails, the creature becomes {@condition frightened} of you for the duration of the spell. On a successful save, the creature isn't {@condition frightened} but does suffer a -2 penalty on saving throws against fright for the duration of the spell. Affected creatures can repeat the saving throw at the ends of their turns; a successful save ends the effect on that creature.",
 				"Although this spell is based on sound, it is vibrations that cause the fear effect. Deaf or {@condition deafened} creatures are not immune, but they do get tactical advantage on their Wisdom saving throws."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -12057,6 +12409,9 @@
 			},
 			"entries": [
 				"You touch one sleeping creature, which must make a Charisma saving throw. If the saving throw fails, you are able to whisper questions into its ear and have it answer in its native language. If an answer would divulge information the creature wants especially to keep secret, it can make another Charisma saving throw to avoid answering and end the spell."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -12144,6 +12499,12 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"opposedCheck": [
+				"wisdom"
 			]
 		},
 		{
@@ -12338,6 +12699,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -12394,6 +12758,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -12514,6 +12881,9 @@
 				"poison",
 				"psychic",
 				"radiant"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -12571,6 +12941,9 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -12630,6 +13003,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -12685,6 +13061,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -12738,6 +13117,9 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -12794,6 +13176,9 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -13016,6 +13401,11 @@
 			"damageInflict": [
 				"acid",
 				"fire"
+			],
+			"savingThrow": [
+				"strength",
+				"constitution",
+				"dexterity"
 			]
 		},
 		{
@@ -13060,6 +13450,9 @@
 			},
 			"entries": [
 				"One creature you touch becomes aware of the suffering it causes. Whenever the creature injures another creature, it must make a Wisdom saving throw. If the saving throw fails, then it must subtract 1d4 from every attack roll it makes for the next five rounds. Roll the d4 anew for every attack."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -13147,6 +13540,9 @@
 			},
 			"entries": [
 				"You alter the writing on a scroll or piece of paper, making it unintelligible. A creature that spends a minute or more trying to decipher the text can make an Intelligence check against your spell saving throw DC; success indicates they decipher the text."
+			],
+			"opposedCheck": [
+				"intelligence"
 			]
 		},
 		{
@@ -13197,6 +13593,9 @@
 				"You open a 10-foot square hole in the floor within range. The hole can't appear under an occupied space. The hole is an extra-dimensional space with no bottom. Any creature falling into the pit never hits the bottom. To observers outside the hole, a creature or object that fell in appears to be just 20 feet below the level of the ground or floor, and falling endlessly without ever getting farther away. A creature who looks up after falling into the hole sees the lip of the hole receding farther and farther behind.",
 				"Flying creatures can get out of the pit without difficulty. A 20-foot rope will reach anyone who fell in, but the falling creature must make a successful Dexterity saving throw to catch the rope; if the saving throw fails, they perceive the rope as being too short to reach them.",
 				"When the spell ends, the hole closes. Every creature inside it at that moment is trapped and will plunge forever unless another endless abyss spell is cast on the same location; this reopens the pit and makes it possible to rescue trapped creatures. Other magical rescues might be possible, at the discretion of the GM."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -13501,6 +13900,9 @@
 			},
 			"entries": [
 				"You automatically remove mundane writing from up to two sheets of paper or parchment, from a single scroll, or from a surface no larger than 9 inches by 12 inches. This spell can remove magical writing (including a glyph of warding) if the caster makes a successful Intelligence (Arcana) check against the original caster's spell save DC. The caster of erase must be aware of the writing for the spell to be effective; it has no effect if cast blindly or experimentally."
+			],
+			"opposedCheck": [
+				"intelligence"
 			]
 		},
 		{
@@ -13595,6 +13997,9 @@
 						" If you take damage that would reduce you to 0 hit points, you drop to 1 hit point instead. The spell then ends."
 					]
 				}
+			],
+			"savingThrow": [
+				"strength"
 			]
 		},
 		{
@@ -13696,6 +14101,9 @@
 			"entries": [
 				"One creature you touch must make a successful Wisdom saving throw or fall into an enchanted slumber that lasts until dispelled or until a condition selected by you at the time of casting is fulfilled. The creature doesn't age or decay while slumbering.",
 				"Eternal sleep is notoriously difficult to dispel. Attempts to do so are made with tactical disadvantage on the spellcasting ability check."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -13811,6 +14219,9 @@
 			"damageInflict": [
 				"cold",
 				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -13912,6 +14323,9 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -13968,6 +14382,9 @@
 			},
 			"entries": [
 				"A creature that you touch must make a successful Wisdom saving throw or be overwhelmed by feelings of bliss and euphoria. The creature has tactical disadvantage on attack rolls, ability checks, and skill checks, and it must make a Wisdom saving throw at the beginning of each of its turns. If the saving throw fails, the creature loses 1 point of Wisdom and is {@condition incapacitated} until the start of its next turn. The spell ends when the creature makes two successful saves, which don't need to be consecutive."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -14007,6 +14424,9 @@
 			},
 			"entries": [
 				"One creature you touch must make a Charisma saving throw against curses or become cursed so that the natural world considers them anathema. The creature has tactical disadvantage on Charisma ability and skill checks when interacting with any creature that has a close tie to nature. In addition, while in an area away from civilization, its chance to encounter hostile creatures is doubled and it has tactical disadvantage on ability checks involving any sort of interaction with nature, not just those related to Charisma."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -14049,6 +14469,9 @@
 				"You call upon your deity in an elaborate ceremony to end the possession of a creature or object by any force, whether creature or magic.",
 				"The source of the possession must make a Charisma saving throw. It has tactical disadvantage on the save if holy water is sprinkled on the target during the casting of the spell. If the saving throw fails, the possession ends; the responsible creature (if any) is ejected from the body and appears in the nearest unoccupied space.",
 				"Exorcise can also be cast on a lich's phylactery, a mummy lord's heart, or a vampire's coffin, in which case the soul immediately tries to possess the nearest material body. The two souls switch places unless the current inhabitant of the body makes a successful Charisma saving throw; the DC equals the monster's CR."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -14097,6 +14520,12 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"wisdom"
 			]
 		},
 		{
@@ -14141,6 +14570,9 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -14309,6 +14741,9 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -14367,6 +14802,9 @@
 						"By using a valuable gem, which is expended in the casting of the spell, the gold can be made less vulnerable to iron. A citrine (50 gp) lowers the chance to 30% that iron will dispel the transmutation. A piece of amber (100 gp) makes the chance 25%. Topaz (500 gp) drops it to 10%, and a yellow sapphire (1,000 gp) to 1%."
 					]
 				}
+			],
+			"savingThrow": [
+				"intelligence"
 			]
 		},
 		{
@@ -14424,6 +14862,12 @@
 			],
 			"damageInflict": [
 				"slashing"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"wisdom"
 			]
 		},
 		{
@@ -14532,6 +14976,9 @@
 			},
 			"entries": [
 				"You attempt to blur the near vision of one creature. If the creature fails a Constitution saving throw, it suffers tactical disadvantage on attack rolls against creatures within 30 feet of it. The target creature can repeat the saving throw at the end of each of its turns; a successful save ends the spell."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -14767,6 +15214,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -14877,6 +15327,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -15141,6 +15594,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -15191,6 +15647,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -15400,6 +15859,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -15446,6 +15908,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -15612,6 +16077,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -15659,6 +16127,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -15771,6 +16242,9 @@
 			},
 			"entries": [
 				"A bright light flashes from a point you can see within range. All creatures in a 10-foot radius sphere centered on that point are {@condition blinded} until the end of your next turn unless they make a successful Constitution saving throw."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -15980,6 +16454,9 @@
 			"entries": [
 				"You attempt to wrap one incorporeal creature you can see within a physical shell. The creature makes a Constitution saving throw. If the saving throw fails, the creature becomes corporeal. While under the effect of this spell, it can't make use of incorporeal movement and it loses all resistance and vulnerability to weapon damage and to being {@condition grappled}, {@condition paralyzed}, {@condition petrified}, {@condition prone}, and {@condition restrained}. It also can't enter the Ethereal Plane.",
 				"The creature can repeat the saving throw at the end of each of its turns. The spell ends when the creature makes its second successful save. The two successes don't need to be consecutive."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -16036,6 +16513,9 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -16131,6 +16611,9 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -16420,6 +16903,9 @@
 			},
 			"entries": [
 				"One creature you can see must make a Wisdom saving throw. If it fails, your luck becomes entangled with that of the target. For the duration of the spell, whenever you make an ability check, saving throw, or attack roll that you dislike, make a note of your original result, then roll again and use the second result. The next time the targeted creature would make an ability check, saving throw, or attack roll, it automatically uses your original result instead. Only one roll can be held in reserve at a time; you can't make another reroll until your last one has been reassigned."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -16597,6 +17083,9 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -16657,6 +17146,9 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -16711,6 +17203,9 @@
 			"entries": [
 				"Your touch causes a creature to forget its identity and history. The creature can make a Wisdom saving throw; a successful save negates the spell.",
 				"An affected creature retains all of abilities and spells, but it can't remember any details about its life, its mission, or its companions. If fugue is used in combat, the target creature can't remember why it is fighting and has tactical disadvantage on attack rolls until the combat ends."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -16762,6 +17257,10 @@
 			"entries": [
 				"One creature you can see becomes cursed with clumsiness if it fails a Wisdom saving throw. While cursed, the creature must make a Dexterity saving throw whenever it moves 20 feet or farther during its turn. If the saving throw fails, the creature falls {@condition prone} at the end of the movement. It also must make a Dexterity saving throw at the end of each of its turns in which it attacked with a hand-held weapon. If the saving throw fails, it drops the weapon.",
 				"The spell ends if the creature rolls a natural 20 on any of the saving throws required by the spell."
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
 			]
 		},
 		{
@@ -16806,6 +17305,9 @@
 			},
 			"entries": [
 				"One creature you can see within range must make a successful Constitution saving throw or its joints fuse into near-immobility. The creature's Dexterity is reduced to 1, it is {@condition incapacitated}, and it can't move. The spell doesn't affect creatures without bones. Its effect can be removed only by heal or wish."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -16856,6 +17358,9 @@
 			},
 			"entries": [
 				"One creature you can see must make a Wisdom saving throw. If it fails, it becomes mystically linked to a structure or tree of your choosing on the same plane. If the creature dies during the duration of the spell, its body is instantly teleported to the structure or tree and bound to it by stout ropes."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -16939,6 +17444,9 @@
 			},
 			"entries": [
 				"You evoke the spirits of the dead in a 20-foot-radius sphere centered about a point you can see. These spirits emit an unearthly howl. Each creature in the sphere must make a Wisdom saving throw. If the saving throw fails, it has tactical disadvantage on ability checks and attack rolls until the end of your next turn. On a successful save, it has tactical disadvantage on its next attack roll before the end of your next turn. Undead and creatures that can't hear the ghosts are immune to this effect."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -16998,6 +17506,12 @@
 						"If you use a 5th-level or higher slot to cast ghostly throttle, it can affect a Large creature. An 8th-level or higher slot allows it to affect a Huge creature."
 					]
 				}
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -17109,6 +17623,9 @@
 			"damageVulnerable": [
 				"force",
 				"thunder"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -17302,6 +17819,9 @@
 			},
 			"entries": [
 				"Every creature within 20 feet of you when the spell is cast must make a Wisdom saving throw; if the saving throw fails, the creature has tactical disadvantage on Dexterity (Stealth) checks until the spell ends. Failing the saving throw causes the creatures' bones to glow with such intensity that they can be seen through the creature's skin. You are not affected by the spell, and neither are creatures without internal skeletons."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -17499,6 +18019,9 @@
 			},
 			"entries": [
 				"One weapon you touch is infused with necrotic energy. Each time it hits a creature, the creature must make a Constitution saving throw or lose 1 point of Strength. All lost Strength is restored automatically when the spell ends."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -17543,6 +18066,9 @@
 			"entries": [
 				"You touch a creature; that creature must make a successful Wisdom saving throw or become cursed. The cursed creature has tactical disadvantage on attack rolls, ability checks, and saving throws.",
 				"A remove curse spell or comparable magic ends the curse."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -17631,6 +18157,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -17730,6 +18259,9 @@
 			],
 			"damageInflict": [
 				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -17832,6 +18364,9 @@
 						"For each spell slot used higher than 3rd level, you can affect one additional plant creature."
 					]
 				}
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -18043,6 +18578,9 @@
 			"entries": [
 				"You create a discordant ringing sound that fills a 60-foot-radius sphere centered on you. When you move, the sphere moves with you. Any creature in the area, including you, must make a Constitution saving throw against your spell save DC when they try to cast a spell; if the saving throw fails, the spell also fails (it has no effect) and the spell slot is expended. A creature maintaining a spell that requires concentration must make this saving throw at the beginning of each of its turns or it loses concentration and the spell ends.",
 				"Creatures that can't hear are immune to this effect."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -18087,6 +18625,9 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -18213,6 +18754,9 @@
 			},
 			"entries": [
 				"You send a burst of air against one creature you can see. The creature must make a Strength saving throw. If the saving throw fails, it is pushed 10 feet away from you and knocked {@condition prone}."
+			],
+			"savingThrow": [
+				"strength"
 			]
 		},
 		{
@@ -18363,6 +18907,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -18419,6 +18966,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -18466,6 +19016,9 @@
 			"entries": [
 				"A living creature of your choice that you can see is overcome with grief unless it makes a successful Wisdom saving throw. A grief-stricken creature falls {@condition prone} and can't stand up, and is {@condition incapacitated} for the duration of the spell.",
 				"At the end of each of its turns, and each time it takes damage, the creature can repeat the saving throw. On a successful save, the spell ends."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -18520,6 +19073,9 @@
 			"damageInflict": [
 				"piercing",
 				"slashing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -18613,6 +19169,9 @@
 			"entries": [
 				"A shield that you touch gains a shimmering aura in the shape of a boar that inspires whoever wields it. A creature wielding the shield has tactical advantage on attack rolls, ability checks, and skill checks based on Strength or Constitution. In addition, the creature does 1d6 additional damage with melee weapons. At the beginning of each of the creature's rounds, it gains 10 temporary hit points. The temporary hit points vanish if the shield is relinquished or when the spell ends.",
 				"When a creature wielding the shield drops to 0 hit points, it does not drop {@condition unconscious}, but can keep acting normally. The creature must make death saving throws, however, and it dies if it fails three times. It can't be stabilized while it continues fighting and casting offensive spells at 0 hit points, either by a Wisdom (Medicine) skill check or by a third successful death saving throw. If it relinquishes the shield or the spell ends, the creature drops to 0 hit points and all normal rules for that situation take over."
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -18661,6 +19220,9 @@
 			},
 			"entries": [
 				"A shield that you touch gains a shimmering aura in the shape of a fox that inspires whoever wields it. The creature wielding the shield gains a +1 bonus to AC and has tactical advantage on Dexterity saving throws. In addition, if the creature would take half damage because of a successful Dexterity saving throw, it takes no damage instead."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -18803,6 +19365,9 @@
 			},
 			"entries": [
 				"A shield that you touch gains a shimmering aura in the shape of a leopard that inspires whoever wields it. A creature wielding the shield has tactical advantage on Constitution saving throws and ability checks. At the beginning of each of its turns, the creature gains 10 temporary hit points. Remaining temporary hit points gained from this spell are lost when the spell ends."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -19132,6 +19697,9 @@
 			},
 			"entries": [
 				"A shield that you touch gains a shimmering aura in the shape of a wyrm that inspires whoever wields it. Whenever a creature wielding the shield strikes another creature with a melee attack, the target of the attack must make a successful Wisdom saving throw or become {@condition frightened} for the spell's duration."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -19177,6 +19745,9 @@
 			},
 			"entries": [
 				"All creatures in a 20-foot-radius sphere centered on a point you can see must make Wisdom saving throws. Each creature that fails the saving throw hesitates briefly, reducing its initiative score by 5. If this changes its place in the initiative order, the creature uses the new position for the rest of the combat."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -19228,6 +19799,10 @@
 				"The creature becomes immune to all effects that damage or affect the soul. It can't be affected by the clone spell or be raised unless the animal housing its soul is present. The creature's Wisdom and Charisma saving throws succeed automatically.",
 				"The creature can regain its soul by drinking the blood of its animal host. If the animal is killed, the creature must make a successful DC 20 Constitution saving throw or die instantly; the soul returns unharmed if the saving throw succeeds.",
 				"A true seeing spell can reveal the location of the creature's soul."
+			],
+			"savingThrow": [
+				"charisma",
+				"constitution"
 			]
 		},
 		{
@@ -19291,6 +19866,9 @@
 						"For each spell slot used higher than 1st level, you can target one additional creature."
 					]
 				}
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -19435,6 +20013,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -19740,6 +20321,9 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -20095,6 +20679,9 @@
 			"entries": [
 				"You create a devious illusion that makes real objects seem like illusions. One creature or object that you can see is affected by the spell. Creatures interacting with the object will assume it is an illusion and that any effects it causes, such as heat or damage, are likewise not real. The GM can track the real effects, if necessary. Creatures that carefully examine the target or that are damaged by it can make an Intelligence saving throw. On a successful save, they realize the object's real nature.",
 				"Like any illusion, this spell requires careful adjudication by the GM, especially if it is used against player characters."
+			],
+			"savingThrow": [
+				"intelligence"
 			]
 		},
 		{
@@ -20149,6 +20736,9 @@
 			"entries": [
 				"Select two creatures you can see; each must make a Charisma saving throw. If the saving throw fails, the creature is imbued with a powerful love or hate (your choice) for the other. This emotion overwhelms any previous feelings it held for the other. If only one creature fails the saving throw, it is still affected but the other isn't; the spell doesn't need both creatures to reciprocate the feeling. Both creatures must be affected by the same emotion.",
 				"The exact effect of this must be determined by the GM. In general, creatures in love will embrace and look for a quiet place where they can be alone, and creatures overcome by hate will fight each other viciously."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -20435,6 +21025,9 @@
 			},
 			"entries": [
 				"You create a charnel scent in a 20-foot radius radiating from a point you can see within range. Each creature in the affected area must make a Constitution saving throw. If the saving throw fails, the creature is enfeebled so that it does only half damage with Strength-based weapon attacks. At the end of each of its turns, it can repeat the saving throw; a successful save ends the effect on that creature."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -20502,6 +21095,9 @@
 					]
 				},
 				"The effect of lycanthropy on player characters is discussed fully in the rulebooks. The lycanthropy can be ended by magic that lifts curses."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -20648,6 +21244,9 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -20695,6 +21294,9 @@
 			},
 			"entries": [
 				"You attempt to curse one creature by robbing it of sleep. The creature makes a Wisdom saving throw. If the saving throw fails, it loses the ability to sleep or rest. It can't benefit from long rests, and it gains one level of {@condition exhaustion} every 24 hours, to a maximum of five levels of {@condition exhaustion}. The cursed creature can repeat the saving throw at the end of each long rest; the spell ends on a successful save. The spell can also be ended by magic that removes a curse."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -20849,6 +21451,9 @@
 			},
 			"entries": [
 				"Select one creature within range. That creature must make a Charisma saving throw. If the saving throw fails, it loses all ability to cast arcane spells for the duration of the interdiction. It can repeat the saving throw at the end of each of its turns; a successful save ends the effect."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -20896,6 +21501,9 @@
 			},
 			"entries": [
 				"You compel one creature you touch to answer up to three questions truthfully. The creature must make a Charisma saving throw after each question is asked. If the saving throw fails, it must answer the question truthfully and must offer as much information as it can. If the save is successful, the creature can refuse to answer the question, but it can't lie. The creature must be able to understand your questions."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -20990,6 +21598,9 @@
 			},
 			"entries": [
 				"Choose one creature you can see. It must make a Wisdom saving throw. If the saving throw fails, then whenever the creature moves for the duration of the spell, it moves in a random direction. The player or GM controlling the creature decides how far it will move before the direction is determined."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -21038,6 +21649,9 @@
 			},
 			"entries": [
 				"You touch a willing creature and fill it with invigorating energy. For the duration of the invigorating touch, the creature gains 10 temporary hit points at the beginning of each of its turns, and it makes a Constitution saving throw; on a successful save, it loses one level of {@condition exhaustion}. The creature also has tactical advantage on saves against poison and disease for the duration of the spell. Any remaining temporary hit points are lost at the end of the creature's next long rest."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -21191,6 +21805,9 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -21475,6 +22092,9 @@
 			},
 			"entries": [
 				"You utter a loud, echoing cry. Every beast within 400 feet of you and able to hear the shout becomes hostile toward any humanoids it can see. Large or bigger beasts negate this effect with a successful Wisdom saving throw, but Medium and smaller beasts get no saving throw."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -21569,7 +22189,10 @@
 				]
 			},
 			"entries": [
-				"You conjure a nereid\u2014a creature of living water that resembles a beautiful man or woman. The nereid attempts to kiss one creature you can see within range. The creature being kissed must make a Constitution saving throw. If the saving throw fails, the water of the nereid flows into its lungs and the creature begins suffocating. At the end of each of its turns, it can repeat the saving throw; a successful save allows it to cough up enough water to breathe normally again, and the spell ends."
+				"You conjure a nereid—a creature of living water that resembles a beautiful man or woman. The nereid attempts to kiss one creature you can see within range. The creature being kissed must make a Constitution saving throw. If the saving throw fails, the water of the nereid flows into its lungs and the creature begins suffocating. At the end of each of its turns, it can repeat the saving throw; a successful save allows it to cough up enough water to breathe normally again, and the spell ends."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -21610,6 +22233,9 @@
 			},
 			"entries": [
 				"You choose one creature you can see and attempt to discern its alignment. The creature makes a Wisdom saving throw. If the saving throw fails, you immediately learn its alignment."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -21705,6 +22331,12 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -21836,6 +22468,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -21880,6 +22515,9 @@
 			"entries": [
 				"You curse one creature you touch. The creature must make a Wisdom saving throw. If the saving throw fails, it is cursed so that intentionally speaking a lie causes its tongue to swell grotesquely and protrude from its mouth, making it unable to speak. The tongue returns to normal size in 1d4 minutes.",
 				"The effect can be ended by magic that removes a curse."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -21925,6 +22563,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -22167,6 +22808,9 @@
 			],
 			"damageInflict": [
 				"lightning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -22219,6 +22863,10 @@
 			"damageInflict": [
 				"lightning",
 				"thunder"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
 			]
 		},
 		{
@@ -22316,6 +22964,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -22574,6 +23225,9 @@
 			"entries": [
 				"Select a creature you can see. The creature must make a Wisdom saving throw. If it fails, it is cursed with the inability to find its way for the duration of the spell. The creature can't read maps or remember the route to anywhere. The creature can be led to a destination by another creature, but otherwise, it selects its path randomly. The curse doesn't prevent the creature from making its way to destinations it can see.",
 				"The effect can be ended by magic that lifts a curse."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -22619,6 +23273,9 @@
 			},
 			"entries": [
 				"One creature you can see must make a Constitution saving throw. If the saving throw fails, the creature has tactical disadvantage on saving throws against magic for the duration of this spell."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -22712,6 +23369,9 @@
 			},
 			"entries": [
 				"One creature you can see must make a Charisma saving throw as you gaze upon it. If the saving throw fails, the creature is captivated by you and can take no actions other than shuffling meekly behind you at half-speed for the spell's duration. If the creature is attacked by anyone, the spell immediately ends. The creature can make another saving throw at the end of each of its turns; a successful save ends the spell."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -22768,6 +23428,9 @@
 			"damageInflict": [
 				"bludgeoning",
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -22821,6 +23484,9 @@
 						"If you use a 4th-level or higher spell slot to cast malicious intent, the saving throw penalty increases to -2."
 					]
 				}
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -22872,6 +23538,9 @@
 			"entries": [
 				"You cause a creature's performance to go subtly wrong, whilst shielding it from awareness of the spell. The targeted creature must make a Wisdom saving throw. If the saving throw fails, it subtracts 1d6 from its Charisma (Performance) checks and Charisma checks using musical instruments, and it is unable to benefit from tactical advantage on those checks. It can't use any ability that would allow rerolls on these checks because it is unaware that the performance is going poorly.",
 				"The spell ends if the performer gets inescapable evidence of his or her bad performance, such as most of an audience getting up and leaving in disgust or being pelted with rotten tomatoes."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -22927,6 +23596,12 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -22981,6 +23656,10 @@
 			"entries": [
 				"An aura that inflicts an overwhelming sense of despair radiates from you in a 30-foot-radius; the aura moves with you.",
 				"Each creature that's inside the aura when the spell is cast or that enters the aura must make a Wisdom saving throw. If the saving throw fails, the creature must subtract 1d6 from its attack rolls, saving throws, and ability checks that it makes inside the aura. In addition, a creature other than you inside the aura must also make a Charisma saving throw before attacking or casting a spell; If the saving throw fails, the creature hesitates instead and takes no action."
+			],
+			"savingThrow": [
+				"wisdom",
+				"charisma"
 			]
 		},
 		{
@@ -23255,6 +23934,9 @@
 			"entries": [
 				"You enchant one living creature you can see to believe it is more skilled than it really is. The creature must make a Wisdom saving throw. A successful save negates the spell, but if the saving throw fails, the creature's overconfidence causes it to act rashly and without forethought. For the duration of the spell, the creature can't move away from an opponent, and it provokes an opportunity attack from adjacent creatures whenever it takes an action. It also suffers a -2 penalty to damage rolls and Wisdom saving throws.",
 				"The creature can repeat the Wisdom saving throw at the end of each of its turns; the spell ends after two successful saves, which need not be consecutive."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -23302,6 +23984,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -23586,6 +24271,10 @@
 			},
 			"entries": [
 				"You point your finger at a creature you can see within range and a bolt of negative energy shoots at the target. The creature must make an Intelligence saving throw and a Wisdom saving throw. If it fails the Intelligence saving throw, it loses 1d6 points of Intelligence. If it fails the Wisdom saving throw, it loses 1d6 points of Wisdom. A creature's score can't be reduced to less than 1 in either ability."
+			],
+			"savingThrow": [
+				"intelligence",
+				"wisdom"
 			]
 		},
 		{
@@ -23739,6 +24428,9 @@
 				"You cause a shaft of moonlight to illuminate a 10-foot-radius, 60-foot high cylinder rising from a point you can see. The moonlight provides dim illumination inside the cylinder.",
 				"If a lycanthrope in human form is in the area of moonlight at the start of its turn, it must make a successful Constitution saving throw or be forced to spend its action transforming into its animal or hybrid form (its choice), and it can't revert to human form for the duration of the spell.",
 				"As an action, you can move the moonbeam up to 30 feet, but its center point must stay within the spell's range."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -23786,6 +24478,9 @@
 			],
 			"damageInflict": [
 				"force"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -23832,6 +24527,9 @@
 			},
 			"entries": [
 				"A 10-foot-by-10-foot surface you can see within range becomes covered with sticky sap. Any creature that begins its turn in the affected area or enters the area becomes stuck and can move no farther that turn unless it makes a successful Strength saving throw. A creature needs to make only one saving throw per turn, no matter how far it moves through the mucilage."
+			],
+			"savingThrow": [
+				"strength"
 			]
 		},
 		{
@@ -23966,6 +24664,9 @@
 			"entries": [
 				"You play a song that creates an image in the mind of each creature that can hear you and is within 60 feet of you. The image is so vivid, creatures experience it as if they were there. The image can be frightening, beatific, or whatever else you choose. Creatures experiencing the musical mural have tactical disadvantage on Wisdom (Perception) checks as they lose track of their physical surroundings.",
 				"A creature that tries to resist the illusion can make a Wisdom saving throw when the spell is cast and at the beginning of each of its turns. A successful save ends the effect on that creature. A creature is also freed from the spell's effect if it is attacked."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -24265,6 +24966,9 @@
 			},
 			"entries": [
 				"Select a creature within range that you can see. That creature must make a Constitution saving throw. If it fails, it becomes nearsighted and has tactical disadvantage on attack rolls against targets further than 20 feet from it. The affected creature can repeat the saving throw at the end of each of its turns; a successful save ends the spell."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -24373,6 +25077,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -24475,6 +25182,9 @@
 			},
 			"entries": [
 				"You select a point you can see within range. A 20-foot-radius sphere of necrotic energy briefly flares around that point, then disappears. Each creature in the affected area must make a Constitution saving throw. If the saving throw fails, the creature can't regain hit points or gain temporary hit points for the duration of the spell."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -24531,6 +25241,10 @@
 				"You create a net of seaweed that encloses a 10-foot-radius sphere around a point you can see. The target point must be underwater, but the entire sphere need not be. Each creature in the affected area when the spell is cast is caught inside the net and can't leave the netted area unless it uses an action on its turn to make a Strength saving throw; if the save succeeds, the creature breaks out of the net.",
 				"At the start of your next turn, the net collapses inward. All creatures inside it are {@condition restrained} unless they make a successful Dexterity saving throw.",
 				"All trapped or {@condition restrained} creatures are released at the end of the spell's duration."
+			],
+			"savingThrow": [
+				"strength",
+				"dexterity"
 			]
 		},
 		{
@@ -24572,6 +25286,9 @@
 			"entries": [
 				"You touch a creature and curse it. The creature must make a Wisdom saving throw against curses. If the saving throw fails, the creature is cursed so that it can't regain hit points from magic. It can still benefit from resting and from nonmagical healing.",
 				"The spell can be ended by magic that removes a curse."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -24621,6 +25338,9 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -24665,6 +25385,9 @@
 			},
 			"entries": [
 				"You take on some of the unearthly beauty and presence of a nymph. For the duration of the spell, you can add 1d8 to your Charisma checks, Charisma-based skill checks, and Charisma saving throws."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -24713,6 +25436,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -24759,6 +25485,9 @@
 			"entries": [
 				"One Small or Medium humanoid you touch changes into an ogre-like creature. The targeted creature can choose to make a Wisdom saving throw to avoid the effect. If the saving throw fails or the creature chooses not to make one, it increases in height to 9 feet tall and its ability scores change to Strength 19, Dexterity 8, Constitution 16, Intelligence 5, Wisdom 7, and Charisma 7. Any equipment or armor it possesses grow with it; its weapons do twice their normal number of damage dice.",
 				"The creature and its gear return to normal when the spell ends."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -25167,6 +25896,9 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -25219,6 +25951,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -25359,6 +26094,9 @@
 			"entries": [
 				"To cast this spell, you must be holding at least one weapon in your hand, and you must sheathe, sling, or drop every weapon you hold as the spell is cast. Each creature within the area of effect must make a Wisdom saving throw. If a creature fails its saving throw, it too must put away its weapons, and it can't attack or cast a spell that adversely affects its target for the duration of the peacebinding.",
 				"If a creature under the effect of peacebinding is attacked, it is automatically released from the effect. If you draw a weapon or attack any creature, the spell ends immediately."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -25407,6 +26145,9 @@
 			},
 			"entries": [
 				"One creature you can see sneezes loudly unless it makes a successful Constitution saving throw."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -25592,6 +26333,9 @@
 			},
 			"entries": [
 				"One creature you touch must make a Constitution saving throw. If it fails the save, you lose one level of {@condition exhaustion} and it gains one level of {@condition exhaustion}. It can still gain a level of {@condition exhaustion} even if you don't have one to transfer, but in that case, the targeted creature makes its saving throw with tactical advantage."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -25692,6 +26436,9 @@
 			},
 			"entries": [
 				"One musical instrument you can see begins to play as if you were playing it. Make a Charisma (Performance) check to determine the quality of the playing: 1-9 = mediocre; 10-14 = skillful; 15+ = excellent. The instrument plays the music of your choice until the spell ends. For the duration of the spell, the instrument can be the source of any of your abilities that require performance."
+			],
+			"opposedCheck": [
+				"charisma"
 			]
 		},
 		{
@@ -25787,6 +26534,9 @@
 				"You create a cloud of pollen and airborne seeds in a 20-foot-radius sphere around a point you can see. The cloud spreads around corners, and its area is lightly obscured. The cloud disappears when the spell ends.",
 				"Any creature that is inside the cloud at the start of its turn becomes {@condition poisoned} unless it makes a successful Constitution saving throw against poison. The condition lasts until the spell's duration ends. Creatures that don't need to breathe are immune to this effect.",
 				"A moderate wind disperses the cloud after four rounds. A strong wind disperses it in one round."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -25923,6 +26673,10 @@
 			},
 			"entries": [
 				"You make a creature smell delicious to carnivores. If the creature fails a Constitution saving throw, all lycanthropes and beasts have tactical advantage on ability checks they make to detect the target for the duration of prey's scent. A lycanthrope or beast that is aware of the target must attack it, but it can choose to make a Wisdom saving throw at the start of each of its turns; if the saving throw succeeds, the urge to attack is suppressed until the start of the lycanthrope's or beast's next turn. This saving throw is voluntary."
+			],
+			"savingThrow": [
+				"constitution",
+				"wisdom"
 			]
 		},
 		{
@@ -26216,6 +26970,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -26305,6 +27062,9 @@
 			},
 			"entries": [
 				"You cause the air in a 20-foot-radius sphere around a point you can see to take on a purplish tinge. Each creature that starts its turn in the area becomes confused (per the spell) for as long as it remains in the area unless it makes a successful Wisdom saving throw. If the saving throw succeeds, the creature is not confused but it instead becomes {@condition poisoned} for as long as it remains in the area of the spell."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -26349,6 +27109,9 @@
 			},
 			"entries": [
 				"You send a blast of force at one object or creature within range. A free-standing object that no one is holding onto is pushed 10 feet away from you. If the target is a creature or an object that a creature is holding, the creature must make a Strength saving throw. The target is pushed 10 feet if the saving throw fails. Only creatures and objects that are Large or smaller can be affected."
+			],
+			"savingThrow": [
+				"strength"
 			]
 		},
 		{
@@ -26393,6 +27156,9 @@
 			},
 			"entries": [
 				"All nonmagical food and drink within a 5-foot-radius sphere of the spell's target point becomes {@condition poisoned}. Any creature consuming the food or drink must make a Constitution saving throw or become {@condition poisoned} for 1 hour."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -26487,6 +27253,9 @@
 			"entries": [
 				"You switch your clothing with one other set of clothing that you can see, or you switch any two sets of clothing you can see. If any of that clothing is being worn by a creature that's not willing to be affected by this spell, it can make a Wisdom saving throw. A successful save negates the spell.",
 				"Quick change does not exchange magical items or items that are held. Everything else that's nonmagical–armor, cloaks, rings, backpacks, sheathed weapons–is exchanged. Clothing is not resized for the new wearer. If an item can't physically fit on the recipient, it appears on the ground adjacent to the recipient."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -26575,6 +27344,9 @@
 			"entries": [
 				"You transform a 10-foot-by-10 foot area of ground or normal dirt, sand, or stone floor you can see into a 10-foot-deep pool of quicksand. Creatures on the transformed area when the spell is cast jump to the nearest safe space with a successful Dexterity saving throw. Creatures that fail the saving throw or that enter the quicksand afterward quickly sink into it; their speed is reduced to 5 feet or to their Swim speed, if they have one. Climbing out of the quicksand requires a successful DC 15 Strength (Athletics) check.",
 				"The floor returns to its normal condition at the end of the spell. Any creatures or items in the quicksand when the spell ends are squeezed upward and deposited on top of the surface when it returns to normal."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -26733,6 +27505,9 @@
 				"lightning",
 				"poison",
 				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -26848,6 +27623,9 @@
 				"lightning",
 				"poison",
 				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -26989,6 +27767,10 @@
 			"damageInflict": [
 				"bludgeoning",
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
 			]
 		},
 		{
@@ -27161,6 +27943,9 @@
 			},
 			"entries": [
 				"Your voice creates a reverberating, 30-foot cone of dissonance. Every creature in the cone is {@condition incapacitated} unless it makes a successful Constitution saving throw. An {@condition incapacitated} creature can repeat the saving throw at the end of each of its turns; a successful save ends the effect on that creature."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -27354,6 +28139,9 @@
 			},
 			"entries": [
 				"Choose a creature you can see within range. That creature makes a Charisma saving throw. If it fails, it is overcome by such reverence for you that it can take no action that would hurt or adversely affect you, although it is not constrained against attacking your friends. The spell ends if you attack or otherwise attempt to harm that creature."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -27403,6 +28191,9 @@
 			},
 			"entries": [
 				"You create a shining, silver-white cloak of energy that surrounds and protects you. For the duration of the spell, whenever you or an allied creature within 30 feet of you makes an attack roll or a saving throw, add 1d4 to the roll. In addition, any creature that strikes you with a melee attack is {@condition blinded} until the end of its next turn unless it makes a successful Constitution saving throw."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -27450,6 +28241,12 @@
 				"You fill a 60-foot sphere centered on a point you can see with bitter, freezing cold. Each creature in the affected area must make a Constitution saving throw. If the saving throw fails, the creature takes 8d6+20 damage and is {@condition restrained} until it escapes or the spell ends, as it is encased in ice. On a successful save, the creature takes half damage and is {@condition restrained} until the end of its next turn.",
 				"A {@condition restrained} creature can escape by using an action and making a successful Strength check against your spell saving throw DC.",
 				"A creature reduced to 0 hit points by this spell dies instantly when its body shatters into frozen chunks."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -27502,6 +28299,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"strength"
 			]
 		},
 		{
@@ -27562,8 +28362,10 @@
 				"poison",
 				"psychic",
 				"radiant",
-				"thunder",
-				"weapon"
+				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -27609,6 +28411,9 @@
 			},
 			"entries": [
 				"You summon from the heavens a great spear of white light that touches you and up to three creatures of your choice that you can see. For the duration, each creature touched by the light emits dim light in a 10-foot radius and has tactical advantage on Strength, Dexterity, and Constitution saving throws. In addition, affected creatures add 1d6 to their attack rolls."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -27792,6 +28597,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -27940,6 +28748,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -28003,6 +28814,9 @@
 						"For each spell slot used higher than 2nd level, you can affect one additional creature."
 					]
 				}
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -28105,6 +28919,11 @@
 				"fire",
 				"lightning",
 				"poison"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution",
+				"wisdom"
 			]
 		},
 		{
@@ -28152,6 +28971,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -28199,6 +29021,9 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -28370,6 +29195,9 @@
 			],
 			"damageInflict": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -28423,6 +29251,9 @@
 			},
 			"entries": [
 				"You select a creature you can see and fix it with your gaze. For the duration of the spell, the targeted creature must make a successful Charisma saving throw at the start of each of its turns or its speed becomes 0 until the start of its next turn."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -28466,6 +29297,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -28714,6 +29548,9 @@
 				"You target up to six creatures that you can see. Each creature must be adjacent to (within 5 feet of) at least one other creature targeted by this spell. Each targeted creature must make a Wisdom saving throw. If the saving throw fails, its shadow becomes quasi-real and merges into the shadows of all the other creatures that failed their saving throws.",
 				"For the duration of the spell, creatures with merged shadows must remain within 5 feet of at least one other creature with a merged shadow. For the sake of simplicity, all of the creatures can move together on the turn of whichever creature comes last in the initiative order, at the speed of the slowest creature in the group. There are likely to be gaps of more than 5 feet between creatures, caused by creatures making successful saves. Affected creatures must move to become adjacent to other affected creatures at their first opportunity.",
 				"Each affected creature can repeat the saving throw at the end of its turn; a successful save ends the effect for that creature. The spell ends entirely when only one creature is affected by the spell."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -28810,6 +29647,9 @@
 			"entries": [
 				"You let out a powerful, magically-enhanced shout that affects a 50-foot cone emanating from your space. Each creature in the cone takes 8d8 sonic damage, or half damage with a successful Constitution saving throw. A creature made of glass or crystal has tactical disadvantage on its saving throw.",
 				"The shout shatters mundane, unattended objects made of crystal or glass. Attended items of that sort only shatter if their possessor fails his or her saving throw."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -28998,6 +29838,9 @@
 			},
 			"entries": [
 				"One creature you can see within range casts no shadow. If the target of the spell is a shadow creature, it is {@condition incapacitated} unless it makes a successful Constitution saving throw. It can repeat the saving throw at the end of each of its turns; a successful save ends the spell."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -29263,6 +30106,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -29358,6 +30204,9 @@
 			],
 			"damageInflict": [
 				"cold"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -29415,6 +30264,9 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -29465,6 +30317,9 @@
 			},
 			"entries": [
 				"One weapon you can see sticks in its sheath. Drawing the weapon requires a successful Wisdom saving throw. Only the spell's caster can draw the weapon without making a save. The spell has no effect on a weapon that isn't in a sheath or a scabbard when the spell is cast."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -29519,6 +30374,10 @@
 			"entries": [
 				"You impede the speech of a creature you can see. The creature must make a Constitution saving throw. If the saving throw fails, its speech becomes slurred and imprecise; other creatures must make an Intelligence saving throw against your spell save DC to understand what the affected creature is saying. In addition, the affected creature can cast a spell with a verbal component only if it makes a successful ability check matching its spell-casting ability against your spell save DC; the spell slot is not expended if the ability check fails.",
 				"An affected creature can repeat the Constitution saving throw at the end of each of its turns. A successful save ends the effect."
+			],
+			"savingThrow": [
+				"constitution",
+				"intelligence"
 			]
 		},
 		{
@@ -29617,6 +30476,9 @@
 				"You create a thick, roiling mass of gray clouds in a 10-foot-radius sphere around a point you can see. Creatures inside the cloud can't breathe, and fires inside the cloud are extinguished. The cloud also prevents other air-based phenomena, such as stinking cloud spells or a troglodyte's stench, from affecting those inside it.",
 				"You can choose to anchor this spell on a creature when you cast it. The creature must make a Constitution saving throw. If it fails, the cloud moves with it. If it succeeds, the spell is centered on a spot just behind the target.",
 				"The cloud's area is heavily obscured. It lasts for the duration of the spell or until a wind of moderate or greater force disperses it."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -29667,6 +30529,9 @@
 			"entries": [
 				"You transform up to six snakes you can see into staves. Each snake must make a Constitution saving throw when the spell is cast; a successful save negates the effect on that snake. Small snakes become clubs and large snakes become quarterstaffs, which can be used as weapons.",
 				"This spell only works on snakes classified as beasts. The staves revert to snakes when the spell ends."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -29712,6 +30577,10 @@
 			"damageInflict": [
 				"fire",
 				"radiant"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
 			]
 		},
 		{
@@ -29762,6 +30631,9 @@
 			],
 			"damageResist": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -29818,6 +30690,9 @@
 			],
 			"damageInflict": [
 				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -29871,6 +30746,11 @@
 			],
 			"damageInflict": [
 				"thunder"
+			],
+			"savingThrow": [
+				"dexterity",
+				"wisdom",
+				"constitution"
 			]
 		},
 		{
@@ -29919,6 +30799,9 @@
 			],
 			"damageInflict": [
 				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -30006,6 +30889,9 @@
 			},
 			"entries": [
 				"You send waves of negative energy coursing through the body of one creature you touch as you cast this spell. The target must make a Constitution saving throw. If the saving throw fails, it loses 1d6 points of Charisma and is {@condition incapacitated} for 1 round for every point of Charisma it lost; it recovers at the beginning of your turn after the appropriate number of rounds. (For example, if the creature lost 1 point of Charisma, it is {@condition stunned} until the beginning of your next turn.)"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -30049,6 +30935,9 @@
 			},
 			"entries": [
 				"You siphon some of your life force into a shimmering shield of light around yourself. Sacrifice any number of your hit points (up to your current total -1) when you cast the spell, and you immediately gain twice as many temporary hit points. You must leave yourself at least 1 \"real\" hit point. While any of those temporary hit points remain, you get tactical advantage on Dexterity and Constitution saving throws. Remaining temporary hit points disappear when the spell ends. The spell ends immediately if all the temporary hit points are lost."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -30099,6 +30988,10 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"wisdom",
+				"constitution"
 			]
 		},
 		{
@@ -30143,6 +31036,9 @@
 			},
 			"entries": [
 				"Your shouted words, aimed at a creature within range, reverberate and disrupt the target. The creature becomes unable to maintain concentration on spells for the duration of sound worm unless it makes a successful Wisdom saving throw. Any spell cast by the creature with a duration of concentration ends instantly, and it can't cast spells requiring concentration. The creature can repeat the Wisdom saving throw at the end of each of its turns; a successful save ends the effect."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -30290,6 +31186,9 @@
 						"For each spell slot used higher than 2nd level, you can affect one additional undead creature."
 					]
 				}
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -30546,6 +31445,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -30648,6 +31550,9 @@
 				"You summon a Tiny, corporeal creature from the Plane of Law that accurately maps any area you traverse. Its attributes are identical to a sprite's, except it has Perception +8 and passive Perception 18. In combat, it always takes the Dodge action and never attacks.",
 				"The spirit cartographer hovers above the person who summoned it and can see anything you see (plus a bit more, sometimes). Whenever you pass within 5 feet of a secret door, a concealed panel (including trapdoors on the floor and ceiling), or another feature that can be detected with sharp senses, the GM makes a Wisdom (Perception) check to determine whether the spirit cartographer notices the feature and records it on the map. Because it remains completely silent at all times, characters won't know about these \"extras\" until they take the time to examine the spirit's map.",
 				"The spirit vanishes and the spell ends if the spirit is reduced to 0 hit points. The map the spirit has drawn remains."
+			],
+			"opposedCheck": [
+				"wisdom"
 			]
 		},
 		{
@@ -30805,6 +31710,9 @@
 					]
 				},
 				"Note that a fiend's true name is not easy to come by. Many (particularly in the case of demons) go by more than one name on the various planes of existence, and some don't even know their own true names. No fiend ever voluntarily reveals its true name to anyone, especially a spellcaster from the Material Plane."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -30902,6 +31810,9 @@
 			"entries": [
 				"A small worm grows beneath the skin of a creature you touch if it fails a Constitution saving throw against disease. While the worm is under the target's skin, you can hear any sounds the target hears as though the worm was one of your ears, as long as you and the target are on the same plane of existence.",
 				"A spyworm can be removed by any effect that cures disease. It shrivels into nothingness when the spell ends."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -30947,6 +31858,9 @@
 			},
 			"entries": [
 				"You cause a 10-by-10-foot section of ground to squeak loudly when it's stepped on. Creatures that are trying to move silently can avoid triggering the noise with a successful Dexterity (Stealth) check against your spell save DC. The noise can be heard clearly within 100 feet, regardless of barriers."
+			],
+			"opposedCheck": [
+				"dexterity"
 			]
 		},
 		{
@@ -30998,6 +31912,9 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -31051,6 +31968,10 @@
 			],
 			"damageInflict": [
 				"fire"
+			],
+			"savingThrow": [
+				"constitution",
+				"dexterity"
 			]
 		},
 		{
@@ -31107,6 +32028,9 @@
 			],
 			"damageInflict": [
 				"slashing"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -31207,6 +32131,10 @@
 						"When you cast sticky tongue with a 3rd-level or higher spell slot, you can affect one additional creature for each slot level above 2nd."
 					]
 				}
+			],
+			"opposedCheck": [
+				"strength",
+				"dexterity"
 			]
 		},
 		{
@@ -31259,6 +32187,9 @@
 			"entries": [
 				"You touch stone and ward up to 10,000 cubic feet of it, making it immune to transmutation spells and impassable to creatures that meld or pass through stone. A creature already within the stone is trapped there unless it makes a successful Constitution saving throw, in which case it is expelled to the nearest empty space.",
 				"A simple way to envision the volume of this spell is 10 cubes, each 10 feet on a side (10 x 10 x 10). Bricks, mortared stone, and other constructions that are made of stone but are not solid stone are resistant to the effect; only half the normal volume is affected."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -31306,6 +32237,10 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
 			]
 		},
 		{
@@ -31402,6 +32337,9 @@
 			],
 			"damageInflict": [
 				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
 			]
 		},
 		{
@@ -31609,6 +32547,9 @@
 			},
 			"entries": [
 				"You call out insults and challenges that irritate and enrage nearby creatures, forcing them to direct all their attacks against you. Each enemy humanoid within 30 feet must make a Wisdom saving throw. If the saving throw fails, it can't move away from you and any attack it makes or offensive spell it casts must include you as one of the targets. At the end of each of its turns, an affected humanoid can repeat the saving throw; a successful save ends the effect on that creature."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -31660,6 +32601,9 @@
 			],
 			"damageInflict": [
 				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -31716,6 +32660,13 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -31763,6 +32714,9 @@
 			],
 			"damageInflict": [
 				"piercing"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -31810,6 +32764,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -31855,6 +32812,9 @@
 			],
 			"damageInflict": [
 				"psychic"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -32047,6 +33007,9 @@
 			},
 			"entries": [
 				"You touch a creature and attempt to gain its physical prowess. The creature can make a Constitution saving throw if it chooses to. If the saving throw fails or if the creature didn't make a saving throw, you exchange Strength and Constitution scores with the target for the duration of the spell. Transfer of Vigor ends if either you or the target drops to 0 hit points."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -32420,6 +33383,9 @@
 			"damageInflict": [
 				"fire",
 				"force"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -32474,6 +33440,9 @@
 			"entries": [
 				"Choose a creature you can see. The creature must make a successful Wisdom saving throw or become temporarily cursed. The next time the creature casts a spell, the player chooses the level of spell they wish to cast, but the actual spell cast is selected randomly from all their prepared or available spells of that level. If they have only one spell to choose from at that level, then it has an unusual, reduced, or unexpected effect; the Wild Magic table can be used for inspiration, but the changes should never be beneficial to the caster.",
 				"If twisted magic is cast on a player character, it's recommended the GM make the character's Wisdom saving throw so the player can't be sure whether the character is under the spell's effect. Although the spell that gets cast could be chosen randomly, GMs with a flair for the dramatic can instead choose a specific spell for its absurd or disastrous result in the current situation."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -32523,6 +33492,12 @@
 			},
 			"entries": [
 				"One creature you can see within range begins twitching its fingers uncontrollably. While the spell is in effect, an affected creature must make a successful Wisdom saving throw to cast a spell with a somatic component; if the saving throw fails, the intended spell fails and the spell slot is expended. An affected creature also must make a Wisdom saving throw before making a Dexterity check that requires fine control of the hands, such as using thieves' tools; if the saving throw fails, the Dexterity check fails automatically. A successful Wisdom saving throw ends the spell effect."
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"opposedCheck": [
+				"dexterity"
 			]
 		},
 		{
@@ -32609,6 +33584,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -32652,6 +33630,9 @@
 			},
 			"entries": [
 				"Tendrils of shadow-stuff under your control infiltrate into the aura of a creature you touch. The creature makes a Wisdom saving throw. If the saving throw fails, or if the creature is willing to be affected, you can cast touch spells on the creature as long as you can see it, regardless of whether you can actually touch it."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -32746,6 +33727,9 @@
 				"You transmute one nonmagical object of up to 50 lbs. that you can see into shadow-stuff. If the item is attended, its possessor can make a Wisdom saving throw; on a successful save, the item is unaffected. Otherwise, the item is transformed.",
 				"A shadow item has an indistinct, shadowy hue when in dim light, but it can be used normally in such light. In bright light and darkness, the item becomes barely visible, insubstantial, and useless; it functions only in dim light. A shadow-stuff item is destroyed instantly if it is exposed to true sunlight.",
 				"If you maintain concentration on this spell for the full hour, the transformation becomes permanent."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -32794,6 +33778,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -32881,6 +33868,9 @@
 			},
 			"entries": [
 				"You give one undead creature you touch the appearance of a skeleton or a zombie. A creature that uses its action to investigate the monster can determine its true nature with an Intelligence (Investigation) check against your spell save DC."
+			],
+			"opposedCheck": [
+				"intelligence"
 			]
 		},
 		{
@@ -32926,6 +33916,13 @@
 			},
 			"entries": [
 				"You create a powerful undertow in a 20-foot cube centered on a point you can see. Any creature swimming in the area must make a successful Strength saving throw or be pulled underwater and {@condition restrained}. A creature can use its action to make a Strength (Athletics) or Dexterity (Acrobatics) check against your spell save DC; it breaks free from the restraint if the check succeeds, but it becomes {@condition restrained} again if it's still in the undertow at the end of its turn."
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"opposedCheck": [
+				"strength",
+				"dexterity"
 			]
 		},
 		{
@@ -33023,6 +34020,9 @@
 			},
 			"entries": [
 				"You touch the ground at your feet and cause it to ripple in a 60-foot cone away from you in the direction of your choice. For the duration of the spell, the ground continues rippling and shaking. The area is treated as difficult terrain and every creature in the area must make a successful Dexterity saving throw at the end of its turn or fall {@condition prone}. Objects fall over, but structures and rooted plants are unaffected."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -33067,6 +34067,9 @@
 			},
 			"entries": [
 				"You cause all buckles to become unbuckled and all clasps to become unclasped in a cylindrical area 10 feet high and with a 10-foot radius, around a point you can see. An affected creature can negate the effect on itself with a successful Dexterity saving throw. Armor that's unfastened by this spell remains on the creature wearing it, but the creature's AC is reduced by 2 until it spends an action refastening it. The spell only affects clothing, armor, and other accoutrements such as pouches and backpacks. It does not affect locks or latches."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -33155,6 +34158,9 @@
 			},
 			"entries": [
 				"Your eyes glitter with unholy fury. For the duration of the spell, each non-evil creature within 30 feet of you that can see you must make a successful Constitution saving throw or be {@condition paralyzed} until the start of its next turn. Unless surprised, a creature can avert its gaze to avoid the saving throw, but it suffers the usual penalties for attacking an unseen target if it attacks you before the start of its next turn."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -33357,6 +34363,9 @@
 						"When you cast vermin swarm with a 7th-level or higher spell slot, you summon double the normal number of swarms. If you use a 9th-level spell-slot, you get triple the normal number."
 					]
 				}
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -33515,8 +34524,14 @@
 				"poison",
 				"psychic",
 				"radiant",
-				"thunder",
-				"weapon"
+				"thunder"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"strength",
+				"dexterity"
 			]
 		},
 		{
@@ -33576,6 +34591,9 @@
 			],
 			"damageInflict": [
 				"thunder"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -33622,6 +34640,12 @@
 			"entries": [
 				"One creature you can see becomes enchanted by your voice so that it has a very hard time lying to you. You can ask up to seven questions of the creature. The creature must answer each question truthfully unless it makes a successful Charisma saving throw; the saving throw is repeated for each question. Creatures that can't be {@condition charmed} are immune to the effect of this spell.",
 				"If you ask the creature the same question twice, it doesn't make a new saving throw but uses the same result as the previous time you asked. This quirk of the spell can be overcome by framing the question differently and winning a contest between your Charisma (Deception) check and the creature's Wisdom (Insight) check. For example, asking \"How many ogres are in the giant king's army\" twice won't accomplish much; if the creature was able to lie the first time, it can lie again the second time. If the creature answered \"fifteen\" and you then ask, \"Does the giant king's army include fifteen ogres,\" it triggers a contest. If the creature wins the contest, it uses the earlier saving throw result (if that save succeeded) or makes a new one (if the previous saving throw failed). If the creature loses the contest, those results are reversed."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"opposedCheck": [
+				"charisma"
 			]
 		},
 		{
@@ -33667,6 +34691,9 @@
 				"You weave magic into you voice or music as you attempt to hypnotize one living creature you can see. The creature must make a Wisdom saving throw. If the saving throw fails, its unconscious mind comes under your control. You have a period of three minutes in which you can instill false memories or cause the target to forget painful experiences. New memories are somewhat fragmented, but the target's mind fills them in, actually making the spell more effective over time.",
 				"A new memory that goes against the target's real experiences allows the creature to make another Wisdom saving throw to reject the \"memory\" as nothing but a dream. For example, a paladin who \"remembers\" committing an infamous local murder is likely to question that memory's veracity.",
 				"This spell can be used to set up a \"patsy\" to take the blame for a crime, or it can be used to help erase and ease painful memories so that an individual can move back into normal life after a horrible trauma. The spell reveals no information about memories in the target's mind; the spellcaster is well-advised to become familiar with the creature's background before trying to erase or add memories."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -33765,6 +34792,9 @@
 			],
 			"damageInflict": [
 				"piercing"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -33843,6 +34873,10 @@
 					]
 				},
 				"In addition, a creature that fails its saving throw has tactical disadvantage on attack rolls. It can make a Wisdom saving throw at the of each of its turns; a successful save ends the tactical disadvantage."
+			],
+			"savingThrow": [
+				"constitution",
+				"wisdom"
 			]
 		},
 		{
@@ -33889,6 +34923,9 @@
 			"entries": [
 				"You perform a piece of haunting music that sends those who hear it into states of deep depression. Each humanoid creature within range and capable of hearing the music must make a Wisdom saving throw. If the saving throw fails, the creature suffers crushing sadness; it is {@condition incapacitated}, unable to move, and it has a 50% chance of dropping everything it is holding. While the effect lasts, the creature can do nothing but lament its misfortune.",
 				"The spell ends if an affected creature is attacked. If any action is taken that would normally cause a creature to react violently, it make another Wisdom save to break free of the spell."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -33981,6 +35018,10 @@
 			"entries": [
 				"Blood pours from your hands and forms into a heaving, queasy, crimson wall of blood. The flat, vertical, 12-inch-thick barrier appears where you designate; its entire lower edge must be supported by a solid, reasonably flat surface. The entire wall must be within the spell's range, and it must be 1 foot thick and 20 feet high along its whole length. Within those restrictions, it can bend however the caster chooses.",
 				"Objects and creatures can pass through the liquid wall. It lightly obscures everything behind it. Anything that passes through it becomes coated with thick, slippery fluid. Any creature that passes through the wall must make both a Dexterity saving throw and a Constitution saving throw. If the Dexterity saving throw fails, the creature drops any items it is holding. If the Constitution saving throw fails, the creature is nauseated by the experience; it becomes {@condition incapacitated} until the end of its next turn. Creatures that enjoy the taste of blood or that have no sense of taste and smell are immune to the nauseating effect."
+			],
+			"savingThrow": [
+				"dexterity",
+				"constitution"
 			]
 		},
 		{
@@ -34085,6 +35126,9 @@
 			},
 			"entries": [
 				"One willing creature that you touch gains a +1 bonus on weapon attack rolls and gets tactical advantage on Constitution checks and Constitution saving throws. The creature also gains 20 temporary hit points."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -34130,6 +35174,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -34173,6 +35220,12 @@
 			},
 			"entries": [
 				"One creature you touch must make a successful Constitution saving throw or be cursed; its blood becomes watery and doesn't clot normally. Whenever the creature takes piercing or slashing damage, it begins bleeding profusely. It suffers one-fourth of the original damage (rounded down) at the end of each of its turns until it regains hit points, or until it or an adjacent ally binds the wound by spending an action and making a successful Wisdom (Medicine) check against your spell save DC."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"opposedCheck": [
+				"wisdom"
 			]
 		},
 		{
@@ -34228,6 +35281,9 @@
 				"In the third round, the creature feels a dull pain envelop its body; it suffers a –6 penalty to Wisdom and Charisma saving throws.",
 				"For the next thirty minutes after the spell ends, the creature suffers a –6 penalty to Wisdom and Charisma saving throws against spells you cast.",
 				"If your concentration is broken while maintaining this spell, you are automatically dominated (per dominate person) by the fiend."
+			],
+			"savingThrow": [
+				"charisma"
 			]
 		},
 		{
@@ -34367,6 +35423,12 @@
 				"You project a small, gray glob of fluid from your hand at a creature you can see. The creature is struck by the glob unless it makes a successful Dexterity saving throw.",
 				"When it hits its target, the glob expands into a small net of sticky webbing as strong as fine steel wire. A Large or smaller creature struck by the net is {@condition restrained}. A {@condition restrained} creature can use its action to make a Strength check against your spell save DC; if the Strength check succeeds, the webs burst and the spell ends.",
 				"A thin line of webbing trails from the net to your hand. As an action, you can make an opposed Strength contest against the {@condition restrained} creature. If you win the contest, you pull the creature 10 feet closer to you; otherwise, it remains where it is. In either case, the creature remains {@condition restrained}."
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"opposedCheck": [
+				"strength"
 			]
 		},
 		{
@@ -34416,6 +35478,12 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"opposedCheck": [
+				"wisdom"
 			]
 		},
 		{
@@ -34467,6 +35535,10 @@
 			],
 			"damageInflict": [
 				"acid"
+			],
+			"savingThrow": [
+				"wisdom",
+				"constitution"
 			]
 		},
 		{
@@ -34676,6 +35748,9 @@
 			],
 			"damageInflict": [
 				"bludgeoning"
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -34768,6 +35843,9 @@
 			},
 			"entries": [
 				"For the duration of the spell, one willing creature you touch can add 1d4 to its Wisdom checks and Wisdom saving throws. In addition, the creature has one additional 1st-level spell slot, which it can use to cast divine spells."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -34815,6 +35893,10 @@
 			},
 			"entries": [
 				"A creature you touch gains insight into the actions of its foes. For the duration of the spell, the creature can use its Wisdom modifier in place of its Dexterity modifier for calculating Armor Class, and it can substitute Wisdom saving throws for Dexterity saving throws."
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
 			]
 		},
 		{
@@ -34904,6 +35986,9 @@
 			"entries": [
 				"Choose a limb (either arm or leg) of one creature you can see. The creature must make a Constitution saving throw. If the saving throw fails, the limb withers, drops from the creature's body, and crumbles to dust. A creature with only one leg drops {@condition prone} and its speed is reduced to 5 feet per round.",
 				"The limb can be regrown by use of the regenerate spell or comparable magic."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -35045,6 +36130,9 @@
 			"entries": [
 				"You imbue nonintelligent plants and bushes in a 20-foot radius with the ability to shriek loudly if a Small or larger creature enters the warded area. The creature can go unnoticed if it makes a successful Dexterity saving throw, but it must be a conscious effort at sneaking; a creature can't \"accidentally\" go unnoticed by the plants. The shrieking plants are audible up to a mile away. Once the alarm is triggered, the plants shriek for 30 seconds, then the spell ends.",
 				"Other than the size minimum, the spell is entirely nonspecific. Any creature that meets the size criterion, such as deer, foxes, and children, will set it off."
+			],
+			"savingThrow": [
+				"dexterity"
 			]
 		},
 		{
@@ -35144,6 +36232,9 @@
 			},
 			"entries": [
 				"By touching a willing, wounded creature, you gain a mental image of what inflicted the injury (a specific person, monster, trap, and so on). If the victim didn't see what wounded him or her, you must make a successful DC 10 Wisdom (Medicine) check to gain specific information; if the check fails, you learn only the general type of the attacker (beast, fiend, monstrosity, etc.)."
+			],
+			"opposedCheck": [
+				"wisdom"
 			]
 		},
 		{
@@ -35221,6 +36312,9 @@
 					]
 				},
 				"The curse effect can be ended by remove curse or comparable magic, and greater restoration or comparable magic can repair the ability loss. Otherwise, the effects of this spell are permanent."
+			],
+			"savingThrow": [
+				"intelligence"
 			]
 		},
 		{
@@ -35271,6 +36365,9 @@
 			],
 			"damageInflict": [
 				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -35326,6 +36423,9 @@
 				"You sow chaos by drawing upon the secret fears of any number of creatures you can see to make them instantly aggressive toward anyone not of their own race. Each creature must make a Wisdom saving throw. If the saving throw fails, the creature feels the full effect of this spell; on a successful save, the creature is confused (per the confusion spell) until the start of your next turn.",
 				"Targets that failed their saving throws become homicidal against creatures of different races. They have no allies except creatures of their own race, even if those creatures were their enemies before xenophobic rage was cast. Affected creatures must use all of their powers to the best of their ability to destroy the nearest enemies they can see.",
 				"Each time an affected creature reduces another creature to 0 hit points or kills it, it can repeat the Wisdom saving throw; a successful save ends the spell's effect on that creature."
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -35373,6 +36473,9 @@
 				"You create a 20-foot-radius sphere of yellow gas centered on a point you can see. The cloud spreads around corners and its area is heavily obscured. The gas dissipates when the spell ends.",
 				"Each creature that starts its turn in the cloud must make a Constitution saving throw against poison. If the saving throw succeeds, the creature is unaffected by the gas until the start of its next turn. If the saving throw fails, the creature is {@condition poisoned} for as long as it's in the cloud and for another 1d4 rounds after it leaves the gas. Creatures that don't need to breathe or that are immune to poison are immune to this effect.",
 				"A moderate wind disperses the cloud after four rounds; a strong wind disperses it after one round."
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
@@ -35421,6 +36524,9 @@
 			],
 			"damageInflict": [
 				"necrotic"
+			],
+			"savingThrow": [
+				"wisdom"
 			]
 		},
 		{
@@ -35472,6 +36578,9 @@
 			],
 			"damageImmune": [
 				"poison"
+			],
+			"savingThrow": [
+				"constitution"
 			]
 		},
 		{
