@@ -271,7 +271,7 @@ const saveFilter = new Filter({
 	displayFn: getFilterAbilitySave
 });
 const checkFilter = new Filter({
-	header: "Opposed Check",
+	header: "Opposed Ability Check",
 	items: ["strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"],
 	displayFn: getFilterAbilityCheck
 });
