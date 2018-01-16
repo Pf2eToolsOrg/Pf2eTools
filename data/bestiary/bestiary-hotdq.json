@@ -84,6 +84,49 @@
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal, Primordial, Thayan",
 			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Azbara is a 6th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Azbara has the following spells prepared from the wizard spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell fog cloud}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell misty step}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell dispel magic}",
+								"{@spell fireball}"
+							]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -102,16 +145,6 @@
 					"text": [
 						"When Azbara casts an evocation spell that affects other creatures that he can see, he can choose a number of them equal to 1+the spell's level to succeed on their saving throws against the spell. Those creatures take no damage if they would normally take half damage from the spell."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Azbara is a 6th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Azbara has the following spells prepared from the wizard spell list:",
-						"Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp",
-						"1st level (4 slots): fog cloud, magic missile, shield, thunderwave",
-						"2nd level (3 slots): invisibility, misty step, scorching ray",
-						"3rd level (3 slots): counterspell, dispel magic, fireball"
-					]
 				}
 			],
 			"action": [
@@ -125,7 +158,6 @@
 					]
 				}
 			],
-			"spells": "mage hand, prestidigitation, ray of frost, shocking grasp, fog cloud, magic missile, shield, thunderwave, invisibility, misty step, scorching ray, counterspell, dispel magic, fireball",
 			"page": 88
 		},
 		{
@@ -158,28 +190,64 @@
 			"passive": 16,
 			"languages": "Common, Draconic, Giant",
 			"cr": "9",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Blagothkus can innately cast the following spells (spell save DC 15), requiring no material components:"
+					],
+					"daily": {
+						"3e": [
+							"{@spell fog cloud}",
+							"{@spell levitate}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Blagothkus is a 5th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Blagothkus has the following spells prepared from the wizard spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell gust of wind}",
+								"{@spell misty step}",
+								"{@spell shatter}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Keen Smell",
 					"text": [
 						"Blagothkus has advantage on Wisdom (Perception) checks that rely on smell."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Blagothkus can innately cast the following spells (spell save DC 15), requiring no material components:",
-						"3/day each: fog cloud, levitate"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Blagothkus is a 5th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 15, +7 to hit with spell attacks). Blagothkus has the following spells prepared from the wizard spell list:",
-						"Cantrips (at will): light, mage hand, prestidigitation",
-						"1st level (4 slots): detect magic, identify, magic missile, shield",
-						"2nd level (3 slots): gust of wind, misty step, shatter",
-						"3rd level (2 slots): fly, lightning bolt"
 					]
 				}
 			],
@@ -200,7 +268,6 @@
 					]
 				}
 			],
-			"spells": "fog cloud, levitate, light, mage hand, prestidigitation, detect magic, identify, magic missile, shield, gust of wind, misty step, shatter, fly, lightning bolt",
 			"page": 89
 		},
 		{
@@ -308,20 +375,44 @@
 			"passive": 12,
 			"languages": "Common, Bullywug, Draconic, Elvish, Goblin, Sylvan",
 			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Dralmorrer is a 7th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Dralmorrer has the following spells prepared from the wizard spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell longstrider}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell magic weapon}",
+								"{@spell misty step}"
+							]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
 					"text": [
 						"Dralmorrer has advantage on saving throws against being charmed, and magic can't put him to sleep."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Dralmorrer is a 7th-level spellcaster that uses Intelligence as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Dralmorrer has the following spells prepared from the wizard spell list:",
-						"Cantrips (at will): fire bolt, prestidigitation, shocking grasp",
-						"1st level (4 slots): longstrider, magic missile, shield, thunderwave",
-						"2nd level (2 slots): magic weapon, misty step"
 					]
 				},
 				{
@@ -364,7 +455,6 @@
 					]
 				}
 			],
-			"spells": "fire bolt, prestidigitation, shocking grasp, longstrider, magic missile, shield, thunderwave, magic weapon, misty step",
 			"page": 90
 		},
 		{
@@ -396,16 +486,45 @@
 			"passive": 14,
 			"languages": "Common, Draconic, Infernal",
 			"cr": "2",
-			"trait": [
+			"spellcasting": [
 				{
 					"name": "Spellcasting",
-					"text": [
-						"Frulam is a 5th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Frulam has the following spells prepared from the cleric spell list:",
-						"Cantrips (at will): light, sacred flame, thaumaturgy",
-						"1st level (4 slots): command, cure wounds, healing word, sanctuary",
-						"2nd level (3 slots): calm emotions, hold person, spiritual weapon",
-						"3rd level (2 slots): mass healing word, spirit guardians"
-					]
+					"headerEntries": [
+						"Frulam is a 5th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Frulam has the following spells prepared from the cleric spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell cure wounds}",
+								"{@spell healing word}",
+								"{@spell sanctuary}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell calm emotions}",
+								"{@spell hold person}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell mass healing word}",
+								"{@spell spirit guardians}"
+							]
+						}
+					}
 				}
 			],
 			"action": [
@@ -425,7 +544,6 @@
 					]
 				}
 			],
-			"spells": "light, sacred flame, thaumaturgy, command, cure wounds, healing word, sanctuary, calm emotions, hold person, spiritual weapon, mass healing word, spirit guardians",
 			"page": 90
 		},
 		{
@@ -461,6 +579,33 @@
 			"passive": 14,
 			"languages": "Common, Gnomish, Goblin, Sylvan",
 			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Jamna is a 4th-level spellcaster that uses Intelligence as her spellcasting ability (spell save DC 12, +4 to hit with spell attacks). Jamna has the following spells prepared from the wizard spell list."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell color spray}",
+								"{@spell disguise self}",
+								"{@spell longstrider}"
+							]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Cunning Action",
@@ -472,14 +617,6 @@
 					"name": "Gnome Cunning",
 					"text": [
 						"Jamna has advantage on Intelligence, Wisdom and Charisma saving throws against magic."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Jamna is a 4th-level spellcaster that uses Intelligence as her spellcasting ability (spell save DC 12, +4 to hit with spell attacks). Jamna has the following spells prepared from the wizard spell list.",
-						"Cantrips (at will): mage hand, minor illusion, prestidigitation, ray of frost",
-						"1st level (3 slots): charm person, color spray, disguise self, longstrider"
 					]
 				}
 			],
@@ -501,7 +638,6 @@
 					]
 				}
 			],
-			"spells": "mage hand, minor illusion, prestidigitation, ray of frost, charm person, color spray, disguise self, longstrider",
 			"page": 91
 		},
 		{
@@ -616,6 +752,47 @@
 			"passive": 15,
 			"languages": "Common, Bullywug",
 			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Pharblex is a 6th-level spellcaster that uses Wisdom as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Pharblex has the following spells prepared from the druid spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell guidance}",
+								"{@spell poison spray}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell entangle}",
+								"{@spell healing word}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell barkskin}",
+								"{@spell beast sense}",
+								"{@spell spike growth}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell plant growth}",
+								"{@spell water walk}"
+							]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -630,16 +807,6 @@
 					],
 					"attack": [
 						"Poison Strike||2d8"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Pharblex is a 6th-level spellcaster that uses Wisdom as his spellcasting ability (spell save DC 13, +5 to hit with spell attacks). Pharblex has the following spells prepared from the druid spell list:",
-						"Cantrips (at will): druidcraft, guidance, poison spray",
-						"1st level (4 slots): cure wounds, entangle, healing word, thunderwave",
-						"2nd level (3 slots): barkskin, beast sense, spike growth",
-						"3rd level (3 slots): plant growth, water walk"
 					]
 				},
 				{
@@ -682,7 +849,6 @@
 					]
 				}
 			],
-			"spells": "druidcraft, guidance, poison spray, cure wounds, entangle, healing word, thunderwave, barkskin, beast sense, spike growth, plant growth, water walk",
 			"page": 91
 		},
 		{
@@ -840,6 +1006,61 @@
 			"passive": 16,
 			"languages": "Common, Draconic, Elvish, Infernal",
 			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Talis is a 9th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Talis has the following spells prepared from the cleric spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell resistance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell cure wounds}",
+								"{@spell healing word}",
+								"{@spell inflict wounds}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blindness/deafness}",
+								"{@spell lesser restoration}",
+								"{@spell spiritual weapon} (spear)"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell mass healing word}",
+								"{@spell sending}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell death ward}",
+								"{@spell freedom of movement}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell insect plague}"
+							]
+						}
+					}
+				}
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -851,18 +1072,6 @@
 					"name": "Fey Ancestry",
 					"text": [
 						"Talis has advantage on saving throws against being charmed, and magic can't put her to sleep."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Talis is a 9th-level spellcaster that uses Wisdom as her spellcasting ability (spell save DC 14, +6 to hit with spell attacks). Talis has the following spells prepared from the cleric spell list:",
-						"Cantrips (at will): guidance, resistance, thaumaturgy",
-						"1st level (4 slots): command, cure wounds, healing word, inflict wounds",
-						"2nd level (3 slots): blindness/deafness, lesser restoration, spiritual weapon (spear)",
-						"3rd level (3 slots): dispel magic, mass healing word, sending",
-						"4th level (3 slots): death ward, freedom of movement",
-						"5th level (1 slot): insect plague"
 					]
 				},
 				{
@@ -887,7 +1096,6 @@
 					]
 				}
 			],
-			"spells": "guidance, resistance, thaumaturgy, command, cure wounds, healing word, inflict wounds, blindness/deafness, lesser restoration, spiritual weapon, dispel magic, mass healing word, sending, death ward, freedom of movement, insect plague",
 			"page": 93
 		}
 	]

@@ -9,6 +9,8 @@ var results = [];
 const expected = [];
 const existing = [];
 
+require("./check-links");
+
 // TODO modular argument system?
 if (process.argv[2] !== "noschema") {
 	console.log(`##### Validating the JSON schemata #####`);
@@ -41,8 +43,6 @@ if (process.argv[2] !== "noschema") {
 
 	console.log(`All schema tests passed.`);
 }
-
-require("./check-links");
 
 console.log(`##### Reconciling the PNG tokens against the bestiary JSON #####`);
 
