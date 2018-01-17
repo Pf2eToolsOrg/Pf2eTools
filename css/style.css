@@ -213,19 +213,38 @@ div.omnisearch-pagination-wrapper > .pg-right {
 .hoverbox .hoverborder.top {
 	cursor: move;
 	user-select: none;
+	display: flex;
+	justify-content: space-between;
 }
 
 .hoverbox .hoverborder .glyphicon {
 	display: none;
-	top: -1px;
-	right: 2px;
 	color: rgba(255, 255, 255, 0.7);
 	cursor: pointer;
 	font-size: 12px;
+	padding: 1px 2px;
+	margin-left: auto;
 }
 
 .hoverbox .hoverborder[data-perm=true] .glyphicon {
-	display: inline-block;
+	display: block;
+}
+
+.hoverbox .hoverborder .window-title {
+	font-size: 12px;
+	padding: 1px 0;
+	display: none;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #922610;
+	margin-left: 4px;
+	flex-shrink: 0;
+}
+
+.hoverbox .hoverborder[data-display-title=true] .window-title {
+	display: block;
 }
 
 /* *** */
