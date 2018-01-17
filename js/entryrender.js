@@ -947,29 +947,33 @@ EntryRenderer.monster = {
 		renderStack.push(`
 			${EntryRenderer.utils.getNameTr(mon, true)}
 			<tr><td colspan="6"><i>${Parser.sizeAbvToFull(mon.size)}, ${Parser.monTypeToFullObj(mon.type).asText}, ${mon.alignment}</i></td></tr>
+			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<table class="summary">
+				<table class="summary-noback">
 					<tr>
 						<th>Armor Class</th>
 						<th>Hit Points</th>
 						<th>Speed</th>
+						<th>Challenge Rating</th>
 					</tr>
 					<tr>
 						<td>${mon.ac}</td>					
 						<td>${mon.hp}</td>					
 						<td>${mon.speed}</td>					
+						<td>${mon.cr} (${Parser.crToXp(mon.cr)} XP)</td>					
 					</tr>
 				</table>			
 			</td></tr>
+			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<table class="summary">
 					<tr>
-						<th class="text-align-center">STR</th>
-						<th class="text-align-center">DEX</th>
-						<th class="text-align-center">CON</th>
-						<th class="text-align-center">INT</th>
-						<th class="text-align-center">WIS</th>
-						<th class="text-align-center">CHA</th>
+						<th class="col-xs-2 text-align-center">STR</th>
+						<th class="col-xs-2 text-align-center">DEX</th>
+						<th class="col-xs-2 text-align-center">CON</th>
+						<th class="col-xs-2 text-align-center">INT</th>
+						<th class="col-xs-2 text-align-center">WIS</th>
+						<th class="col-xs-2 text-align-center">CHA</th>
 					</tr>	
 					<tr>
 						<td class="text-align-center">${makeAbilityRoller("str")}</td>
@@ -980,6 +984,19 @@ EntryRenderer.monster = {
 						<td class="text-align-center">${makeAbilityRoller("cha")}</td>
 					</tr>
 				</table>
+			</td></tr>
+			<tr><td colspan="6"><div class="border"></div></td></tr>
+			<tr><td colspan="6">
+				<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; align-content: flex-start">
+					${mon.save ? `<p><b>Saving Throws</b> ${mon.save}</p>` : ""}
+					${mon.skill ? `<p><b>Skills</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
+					<p><b>Senses</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
+					<p><b>Languages</b> ${mon.languages ? mon.languages : `\u2014`}</p>
+					${mon.vulnerable ? `<p><b>Damage Vuln.</b> ${mon.vulnerable}</p>` : ""}
+					${mon.resist ? `<p><b>Damage Res.</b> ${mon.resist}</p>` : ""}
+					${mon.immune ? `<p><b>Damage Imm.</b> ${mon.immune}</p>` : ""}
+					${mon.conditionImmune ? `<p><b>Condition Imm.</b> ${mon.conditionImmune}</p>` : ""}
+				</div>
 			</td></tr>
 		`);
 

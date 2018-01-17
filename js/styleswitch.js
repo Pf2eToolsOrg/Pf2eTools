@@ -20,7 +20,7 @@ table#statsprof {
 }
 
 table.stats table.summary tbody tr:nth-child(even),
-table.stats table:not(.summary) tbody tr:nth-child(odd) {
+table.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
 	background: #e4d8c3;
 }
 
@@ -164,12 +164,17 @@ table.stats div.statsBlockInsetReadaloud {
 	background-color: #eef0f3;
 }
 
+.hoverbox table.summary-noback th,
 .hoverbox table.summary th {
 	color: black;
 }
 
 .header-tools {
 	color: #e0e0e0;
+}
+
+.hoverbox .hoverborder .window-title {
+	color: #922610;
 }
 `;
 const NIGHT_CSS =
@@ -338,7 +343,7 @@ table.stats td._class_feature table th {
 
 ul.list.adventures > li:nth-child(odd) > a,
 .stats table.summary tbody tr:nth-child(even),
-.stats table:not(.summary) tbody tr:nth-child(odd),
+.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
 #rulescontent table tbody tr:nth-child(odd) td,
 ul.list li:nth-child(odd),
@@ -434,12 +439,17 @@ table.stats div.statsBlockInsetReadaloud {
 	background-color: #28303a;
 }
 
+.hoverbox table.summary-noback th,
 .hoverbox table.summary th {
 	color: grey;
 }
 
 .header-tools {
 	color: #696969; /* lol */
+}
+
+.hoverbox .hoverborder .window-title {
+	color: lightgrey;
 }
 `;
 
