@@ -141,7 +141,7 @@ function EntryRenderer () {
 					break;
 				case "abilityGeneric":
 					renderPrefix();
-					textStack.push(`<span class='ability-block'><span>${entry.name}</span> = ${entry.text} ${utils_makeAttChoose(entry.attributes)}</span>`);
+					textStack.push(`<span class='ability-block'><span>${entry.name}</span> = ${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`);
 					renderSuffix();
 					break;
 
