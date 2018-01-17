@@ -1426,6 +1426,7 @@ EntryRenderer.hover = {
 
 		const $hovTitle = $(`<span class="window-title">${toRender.name}</span>`);
 		$brdrTop.on("dblclick", () => {
+			// TODO toggle expand/collapse
 			$brdrTop.attr("data-display-title", true);
 		});
 		$brdrTop.append($hovTitle);
