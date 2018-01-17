@@ -17,7 +17,6 @@
 				}
 			},
 			"required": [
-				"slots",
 				"spells"
 			],
 			"additionalProperties": false
@@ -272,6 +271,9 @@
 									"items": {
 										"$ref": "/Entry"
 									}
+								},
+								"headerWill": {
+									"$ref": "#/definitions/arrayOfString"
 								},
 								"will": {
 									"$ref": "#/definitions/arrayOfString"
