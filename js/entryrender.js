@@ -505,6 +505,10 @@ function EntryRenderer () {
 							case "@condition":
 								fauxEntry.href.path = "conditions.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_CONDITIONS,
+									source: source || SRC_PHB
+								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@background":
@@ -901,6 +905,26 @@ EntryRenderer.spell = {
 			${EntryRenderer.utils.getPageTr(spell)}
 			${EntryRenderer.utils.getBorderTr()}
 		`);
+
+		return renderStack.join("");
+	}
+};
+
+EntryRenderer.condition = {
+	getCompactRenderedString: (cond) => {
+		if (!this.renderer) {
+			this.renderer = new EntryRenderer();
+		}
+		let renderer = this.renderer;
+
+		const renderStack = [];
+
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(cond, true)}
+			<tr class="text"><td colspan="6">
+		`);
+		renderer.recursiveEntryRender({entries: cond.entries}, renderStack);
+		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
 	}
@@ -1366,21 +1390,27 @@ EntryRenderer.hover = {
 		$stats.append(content);
 		let drag = {};
 		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""}></div>`)
-		 .on("mousedown", (evt) => {
-			drag.on = true;
-			drag.startX = evt.clientX;
-			drag.startY = evt.clientY;
-			drag.baseTop = parseFloat($hov.css("top"));
-			drag.baseLeft = parseFloat($hov.css("left"));
-		});
+			.on("mousedown", (evt) => {
+				$hov.css("z-index", 201); // temporarily display it on top
+				drag.on = true;
+				drag.startX = evt.clientX;
+				drag.startY = evt.clientY;
+				drag.baseTop = parseFloat($hov.css("top"));
+				drag.baseLeft = parseFloat($hov.css("left"));
+			}).on("click", () => {
+				$hov.css("z-index", ""); // remove the temporary z-boost...
+				$hov.parent().append($hov); // ...and properly bring it to the front
+			});
 		const mouseUpId = `mouseup.${hoverId}`;
-		const mouseDownId = `mousemove.${hoverId}`;
+		const mouseMoveId = `mousemove.${hoverId}`;
 		$(document)
 			.on(mouseUpId, () => {
-				drag.on = false;
-				adjustPosition();
+				if (drag.on) {
+					drag.on = false;
+					adjustPosition();
+				}
 			})
-			.on(mouseDownId, (evt) => {
+			.on(mouseMoveId, (evt) => {
 				if (drag.on) {
 					const diffX = drag.startX - evt.clientX;
 					const diffY = drag.startY - evt.clientY;
@@ -1452,7 +1482,7 @@ EntryRenderer.hover = {
 			$(ele).data("hover-active", false);
 			$hov.remove();
 			$(document).off(mouseUpId);
-			$(document).off(mouseDownId);
+			$(document).off(mouseMoveId);
 		}
 
 		function reset () {
@@ -1490,6 +1520,9 @@ EntryRenderer.hover = {
 				break;
 			case UrlUtil.PG_BESTIARY:
 				renderFunction = EntryRenderer.monster.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_CONDITIONS:
+				renderFunction = EntryRenderer.condition.getCompactRenderedString;
 				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
@@ -1557,6 +1590,21 @@ EntryRenderer.hover = {
 						allItems.forEach(item => {
 							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
 							EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
+						});
+						EntryRenderer.hover._makeWindow();
+					});
+				} else {
+					EntryRenderer.hover._makeWindow();
+				}
+				break;
+			}
+
+			case UrlUtil.PG_CONDITIONS: {
+				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					DataUtil.loadJSON(`data/conditions.json`, (data) => {
+						data.condition.forEach(it => {
+							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
 						});
 						EntryRenderer.hover._makeWindow();
 					});
