@@ -1425,9 +1425,10 @@ EntryRenderer.hover = {
 			});
 
 		const $hovTitle = $(`<span class="window-title">${toRender.name}</span>`);
+		$brdrTop.attr("data-display-title", false);
 		$brdrTop.on("dblclick", () => {
-			// TODO toggle expand/collapse
-			$brdrTop.attr("data-display-title", true);
+			const curState = $brdrTop.attr("data-display-title");
+			$brdrTop.attr("data-display-title", curState === "false");
 		});
 		$brdrTop.append($hovTitle);
 		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
@@ -1458,12 +1459,12 @@ EntryRenderer.hover = {
 			}
 		});
 
-		adjustPosition();
+		adjustPosition(true);
 
 		$(ele).css("cursor", "");
 		reset();
 
-		function adjustPosition () {
+		function adjustPosition (first) {
 			// readjust position...
 			// ...if vertically clipping off screen
 			const hvTop = parseFloat($hov.css("top"));
@@ -1471,7 +1472,7 @@ EntryRenderer.hover = {
 				$hov.css("top", 0);
 			} else if (hvTop >= $(window).height() - EntryRenderer.hover._BAR_HEIGHT) {
 				$hov.css("top", $(window).height() - EntryRenderer.hover._BAR_HEIGHT);
-			} else if (!$brdrTop.data("perm")) {
+			} else if (first) {
 				const calcHeight = $hov.height();
 				if (hvTop + calcHeight > $(window).height()) {
 					$hov.css("top", 0);

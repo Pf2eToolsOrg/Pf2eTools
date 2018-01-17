@@ -222,8 +222,9 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	color: rgba(255, 255, 255, 0.7);
 	cursor: pointer;
 	font-size: 12px;
-	padding: 1px 2px;
+	padding: 2px;
 	margin-left: auto;
+	top: 0;
 }
 
 .hoverbox .hoverborder[data-perm=true] .glyphicon {
@@ -245,6 +246,11 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 .hoverbox .hoverborder[data-display-title=true] .window-title {
 	display: block;
+}
+
+.hoverborder[data-display-title=true] ~ table.stats,
+.hoverborder[data-display-title=true] ~ .hoverborder {
+	display: none;
 }
 
 /* *** */
