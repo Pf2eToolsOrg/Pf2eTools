@@ -34,11 +34,11 @@ function onJsonLoad (data) {
 		const adv = adventures[i];
 
 		tempString +=
-			`<li class="adventure-contents-item" data-adventureid="${UrlUtil.encodeForHash(adv.id)}">
+			`<li class="adventure-contents-item" data-adventureid="${UrlUtil.encodeForHash(adv.id)}" style="display: none;">
 				<a id="${i}" href='#${adv.id},0' title='${adv.name}'>
 					<span class='name'>${adv.name}</span>
 				</a>
-				${makeContentsBlock(adv, false, true, false)}
+				${makeContentsBlock({adv: adv, addOnclick: true, defaultHeadersHidden: true})}
 			</li>`;
 	}
 	adventuresList.append(tempString);
@@ -51,8 +51,6 @@ function onJsonLoad (data) {
 		const $ele = $(ele);
 		// add expand/collapse to only those with children
 		$ele.prev(`li`).find(`a`).append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="true">[+]</span>`);
-		// collapse children
-		$ele.prev(`li`).find(`a`).closest(`li`).next(`ul.adv-headers`).hide();
 	});
 
 	const list = new List("listcontainer", {
@@ -63,6 +61,8 @@ function onJsonLoad (data) {
 	window.onhashchange = hashChange;
 	if (window.location.hash.length) {
 		hashChange();
+	} else {
+		$(`.adventure-contents-item`).show();
 	}
 }
 

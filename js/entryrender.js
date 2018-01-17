@@ -141,7 +141,7 @@ function EntryRenderer () {
 					break;
 				case "abilityGeneric":
 					renderPrefix();
-					textStack.push(`<span class='ability-block'><span>${entry.name}</span> = ${entry.text} ${utils_makeAttChoose(entry.attributes)}</span>`);
+					textStack.push(`<span class='ability-block'><span>${entry.name}</span> = ${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`);
 					renderSuffix();
 					break;
 
@@ -505,6 +505,10 @@ function EntryRenderer () {
 							case "@condition":
 								fauxEntry.href.path = "conditions.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_CONDITIONS,
+									source: source || SRC_PHB
+								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@background":
@@ -906,6 +910,26 @@ EntryRenderer.spell = {
 	}
 };
 
+EntryRenderer.condition = {
+	getCompactRenderedString: (cond) => {
+		if (!this.renderer) {
+			this.renderer = new EntryRenderer();
+		}
+		let renderer = this.renderer;
+
+		const renderStack = [];
+
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(cond, true)}
+			<tr class="text"><td colspan="6">
+		`);
+		renderer.recursiveEntryRender({entries: cond.entries}, renderStack);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
+	}
+};
+
 EntryRenderer.monster = {
 	getCompactRenderedString: (mon) => {
 		if (!this.renderer) {
@@ -923,29 +947,33 @@ EntryRenderer.monster = {
 		renderStack.push(`
 			${EntryRenderer.utils.getNameTr(mon, true)}
 			<tr><td colspan="6"><i>${Parser.sizeAbvToFull(mon.size)}, ${Parser.monTypeToFullObj(mon.type).asText}, ${mon.alignment}</i></td></tr>
+			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<table class="summary">
+				<table class="summary-noback">
 					<tr>
 						<th>Armor Class</th>
 						<th>Hit Points</th>
 						<th>Speed</th>
+						<th>Challenge Rating</th>
 					</tr>
 					<tr>
 						<td>${mon.ac}</td>					
 						<td>${mon.hp}</td>					
 						<td>${mon.speed}</td>					
+						<td>${mon.cr} (${Parser.crToXp(mon.cr)} XP)</td>					
 					</tr>
 				</table>			
 			</td></tr>
+			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<table class="summary">
 					<tr>
-						<th class="text-align-center">STR</th>
-						<th class="text-align-center">DEX</th>
-						<th class="text-align-center">CON</th>
-						<th class="text-align-center">INT</th>
-						<th class="text-align-center">WIS</th>
-						<th class="text-align-center">CHA</th>
+						<th class="col-xs-2 text-align-center">STR</th>
+						<th class="col-xs-2 text-align-center">DEX</th>
+						<th class="col-xs-2 text-align-center">CON</th>
+						<th class="col-xs-2 text-align-center">INT</th>
+						<th class="col-xs-2 text-align-center">WIS</th>
+						<th class="col-xs-2 text-align-center">CHA</th>
 					</tr>	
 					<tr>
 						<td class="text-align-center">${makeAbilityRoller("str")}</td>
@@ -956,6 +984,19 @@ EntryRenderer.monster = {
 						<td class="text-align-center">${makeAbilityRoller("cha")}</td>
 					</tr>
 				</table>
+			</td></tr>
+			<tr><td colspan="6"><div class="border"></div></td></tr>
+			<tr><td colspan="6">
+				<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; align-content: flex-start">
+					${mon.save ? `<p><b>Saving Throws</b> ${mon.save}</p>` : ""}
+					${mon.skill ? `<p><b>Skills</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
+					<p><b>Senses</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
+					<p><b>Languages</b> ${mon.languages ? mon.languages : `\u2014`}</p>
+					${mon.vulnerable ? `<p><b>Damage Vuln.</b> ${mon.vulnerable}</p>` : ""}
+					${mon.resist ? `<p><b>Damage Res.</b> ${mon.resist}</p>` : ""}
+					${mon.immune ? `<p><b>Damage Imm.</b> ${mon.immune}</p>` : ""}
+					${mon.conditionImmune ? `<p><b>Condition Imm.</b> ${mon.conditionImmune}</p>` : ""}
+				</div>
 			</td></tr>
 		`);
 
@@ -1344,13 +1385,13 @@ EntryRenderer.hover = {
 			reset();
 			return;
 		}
-		const winW = EntryRenderer.hover._curHovering.winW;
-		const winH = EntryRenderer.hover._curHovering.winH;
+		const hoverId = EntryRenderer.hover._curHovering.hoverId;
 		const ele = EntryRenderer.hover._curHovering.ele;
 		const page = EntryRenderer.hover._curHovering.cPage;
 		const source = EntryRenderer.hover._curHovering.cSource;
 		const hash = EntryRenderer.hover._curHovering.cHash;
-		const content = EntryRenderer.hover._curHovering.renderFunction(EntryRenderer.hover._getFromCache(page, source, hash));
+		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
+		const content = EntryRenderer.hover._curHovering.renderFunction(toRender);
 		const permanent = EntryRenderer.hover._curHovering.permanent;
 
 		$(ele).data("hover-active", true);
@@ -1359,33 +1400,57 @@ EntryRenderer.hover = {
 		const vpOffsetT = offset.top - $(document).scrollTop();
 		const vpOffsetL = offset.left - $(document).scrollLeft();
 
-		const fromBottom = vpOffsetT > winH / 2;
-		const fromRight = vpOffsetL > winW / 2;
+		const fromBottom = vpOffsetT > $(window).height() / 2;
+		const fromRight = vpOffsetL > $(window).width() / 2;
 
-		const $hov = $(`<div class="hoverbox"/>`);
+		const $hov = $(`<div class="hoverbox" style="right: -600px"/>`);
 		const $stats = $(`<table class="stats"></table>`);
 		$stats.append(content);
 		let drag = {};
 		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""}></div>`)
-		// TODO allow the window to be dragged around
-		//
-		/* .on("mousedown", (evt) => {
-			drag.on = true;
-			drag.x = evt.clientX;
-			drag.y = evt.clientY;
-			drag.baseTop = $hov.offset().top;
-			drag.baseLeft = $hov.offset().left;
-		})
-		.on("mouseup", () => {
-			drag.on = false;
-		})
-		.on("mousemove", (evt) => {
-			if (drag.on) {
+			.on("mousedown", (evt) => {
+				$hov.css("z-index", 201); // temporarily display it on top
+				drag.on = true;
+				drag.startX = evt.clientX;
+				drag.startY = evt.clientY;
+				drag.baseTop = parseFloat($hov.css("top"));
+				drag.baseLeft = parseFloat($hov.css("left"));
+			}).on("click", () => {
+				$hov.css("z-index", ""); // remove the temporary z-boost...
+				$hov.parent().append($hov); // ...and properly bring it to the front
+			});
+		const mouseUpId = `mouseup.${hoverId}`;
+		const mouseMoveId = `mousemove.${hoverId}`;
+		$(document)
+			.on(mouseUpId, () => {
+				if (drag.on) {
+					drag.on = false;
+					adjustPosition();
+				}
+			})
+			.on(mouseMoveId, (evt) => {
+				if (drag.on) {
+					const diffX = drag.startX - evt.clientX;
+					const diffY = drag.startY - evt.clientY;
+					$hov.css("left", drag.baseLeft - diffX);
+					$hov.css("top", drag.baseTop - diffY);
+					drag.startX = evt.clientX;
+					drag.startY = evt.clientY;
+					drag.baseTop = parseFloat($hov.css("top"));
+					drag.baseLeft = parseFloat($hov.css("left"));
+				}
+			});
 
-			}
-		}); */
+		const $hovTitle = $(`<span class="window-title">${toRender.name}</span>`);
+		$brdrTop.attr("data-display-title", false);
+		$brdrTop.on("dblclick", () => {
+			const curState = $brdrTop.attr("data-display-title");
+			$brdrTop.attr("data-display-title", curState === "false");
+		});
+		$brdrTop.append($hovTitle);
 		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
-			.on("click", () => {
+			.on("click", (evt) => {
+				evt.stopPropagation();
 				teardown();
 			});
 		$brdrTop.append($btnClose);
@@ -1402,36 +1467,48 @@ EntryRenderer.hover = {
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
 
 		$(ele).on("mouseleave", (evt) => {
-			if (!permanent && !evt.shiftKey) {
+			if (!$brdrTop.data("perm") && !evt.shiftKey) {
 				teardown();
 			} else {
+				$(ele).data("hover-active", true);
+				// use attr to let the CSS see it
 				$brdrTop.attr("data-perm", true);
 			}
 		});
 
-		adjustPosition();
-
-		$hov.css("max-height", "100vh").css("overflow-y", "auto");
+		adjustPosition(true);
 
 		$(ele).css("cursor", "");
 		reset();
 
-		function adjustPosition () {
-			// readjust position if vertically clipping off screen
-			const hvVertOffset = $hov.offset().top - $(document).scrollTop();
-			if (hvVertOffset < 0) {
+		function adjustPosition (first) {
+			// readjust position...
+			// ...if vertically clipping off screen
+			const hvTop = parseFloat($hov.css("top"));
+			if (hvTop < 0) {
 				$hov.css("top", 0);
-			} else {
+			} else if (hvTop >= $(window).height() - EntryRenderer.hover._BAR_HEIGHT) {
+				$hov.css("top", $(window).height() - EntryRenderer.hover._BAR_HEIGHT);
+			} else if (first) {
 				const calcHeight = $hov.height();
-				if (hvVertOffset + calcHeight > winH) {
+				if (hvTop + calcHeight > $(window).height()) {
 					$hov.css("top", 0);
 				}
+			}
+			// ...if horizontally clipping off screen
+			const hvLeft = parseFloat($hov.css("left"));
+			if (hvLeft < 0) {
+				$hov.css("left", 0)
+			} else if (hvLeft + $hov.width() > $(window).width()) {
+				$hov.css("left", Math.max($(window).width() - $hov.width(), 0));
 			}
 		}
 
 		function teardown () {
 			$(ele).data("hover-active", false);
 			$hov.remove();
+			$(document).off(mouseUpId);
+			$(document).off(mouseMoveId);
 		}
 
 		function reset () {
@@ -1440,15 +1517,13 @@ EntryRenderer.hover = {
 		}
 	},
 
+	_BAR_HEIGHT: 16,
 	_showInProgress: false,
 	_hoverId: 1,
 	_curHovering: null,
 	show: (evt, ele, page, source, hash) => {
-		const winW = $(window).width();
-		const winH = $(window).height();
-
 		// don't show on mobile
-		if (winW <= 768) return;
+		if ($(window).width() <= 768) return;
 
 		const alreadyHovering = $(ele).data("hover-active");
 		if (alreadyHovering) return;
@@ -1472,13 +1547,14 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_BESTIARY:
 				renderFunction = EntryRenderer.monster.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_CONDITIONS:
+				renderFunction = EntryRenderer.condition.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
 		EntryRenderer.hover._curHovering = {
 			hoverId: hoverId,
-			winW: winW,
-			winH: winH,
 			ele: ele,
 			renderFunction: renderFunction,
 			cPage: page,
@@ -1500,7 +1576,9 @@ EntryRenderer.hover = {
 
 		// cancel hover if the mouse leaves
 		$(ele).on("mouseleave", () => {
-			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) EntryRenderer.hover._curHovering = null;
+			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) {
+				EntryRenderer.hover._curHovering = null;
+			}
 		});
 
 		function loadMultiSource (page, baseUrl, listProp) {
@@ -1538,6 +1616,21 @@ EntryRenderer.hover = {
 						allItems.forEach(item => {
 							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
 							EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
+						});
+						EntryRenderer.hover._makeWindow();
+					});
+				} else {
+					EntryRenderer.hover._makeWindow();
+				}
+				break;
+			}
+
+			case UrlUtil.PG_CONDITIONS: {
+				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					DataUtil.loadJSON(`data/conditions.json`, (data) => {
+						data.condition.forEach(it => {
+							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
 						});
 						EntryRenderer.hover._makeWindow();
 					});

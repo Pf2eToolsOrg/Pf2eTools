@@ -180,6 +180,8 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	max-width: 600px;
 	z-index: 200;
 	box-shadow: 0 0 12px 0 rgba(0, 0, 0, 1);
+	max-height: 100vh;
+	overflow-y: auto;
 }
 
 .hoverbox::-webkit-scrollbar-track {
@@ -211,19 +213,51 @@ div.omnisearch-pagination-wrapper > .pg-right {
 .hoverbox .hoverborder.top {
 	cursor: move;
 	user-select: none;
+	display: flex;
+	justify-content: space-between;
 }
 
 .hoverbox .hoverborder .glyphicon {
 	display: none;
-	top: -1px;
-	right: 2px;
 	color: rgba(255, 255, 255, 0.7);
 	cursor: pointer;
 	font-size: 12px;
+	padding: 2px;
+	margin-left: auto;
+	top: 0;
 }
 
 .hoverbox .hoverborder[data-perm=true] .glyphicon {
-	display: inline-block;
+	display: block;
+}
+
+.hoverbox .hoverborder .window-title {
+	font-size: 12px;
+	padding: 1px 0;
+	display: none;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-left: 4px;
+	flex-shrink: 0;
+}
+
+.hoverbox .hoverborder[data-display-title=true] .window-title {
+	display: block;
+}
+
+.hoverborder[data-display-title=true] ~ table.stats,
+.hoverborder[data-display-title=true] ~ .hoverborder {
+	display: none;
+}
+
+.hoverbox td div.border {
+	height: 2px;
+	background-color: #922610;
+	margin: 0 3px;
+	padding: 0;
+	border-right: 5px transparent;
 }
 
 /* *** */

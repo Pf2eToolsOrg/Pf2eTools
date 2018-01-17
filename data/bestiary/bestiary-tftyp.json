@@ -78,15 +78,37 @@
 			"passive": 14,
 			"languages": "Druidic plus any two languages",
 			"cr": "2",
-			"trait": [
+			"spellcasting": [
 				{
 					"name": "Spellcasting",
-					"text": [
-						"The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:",
-						"Cantrips (at will): druidcraft, poison spray, shillelagh",
-						"1st level (4 slots): cure wounds, entangle, faerie fire, thunderwave",
-						"2nd level (3 slots): barkskin, flaming sphere"
-					]
+					"headerEntries": [
+						"The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell poison spray}",
+								"{@spell shillelagh}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell entangle}",
+								"{@spell faerie fire}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell barkskin}",
+								"{@spell flaming sphere}"
+							]
+						}
+					}
 				}
 			],
 			"action": [
@@ -101,7 +123,6 @@
 					]
 				}
 			],
-			"spells": "druidcraft, produce flame, shillelagh, entangle, longstrider, speak with animals, thunderwave, animal messenger, barkskin",
 			"page": 9
 		},
 		{
@@ -243,15 +264,27 @@
 			"passive": 14,
 			"languages": "the languages it knew in life",
 			"cr": "3",
-			"trait": [
+			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
-					"text": [
-						"The wight's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no verbal or material components:",
-						"At will: detect magic, disguise self, mage armor",
-						"1/day each: fear, hold person, misty step"
-					]
-				},
+					"headerEntries": [
+						"The wight's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no verbal or material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell disguise self}",
+						"{@spell mage armor}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell fear}",
+							"{@spell hold person}",
+							"{@spell misty step}"
+						]
+					}
+				}
+			],
+			"trait": [
 				{
 					"name": "Sunlight Sensitivity",
 					"text": [
@@ -517,14 +550,29 @@
 			"passive": 12,
 			"languages": "Common, Draconic, Gnomish, and Goblin",
 			"cr": "1/4",
-			"trait": [
+			"spellcasting": [
 				{
 					"name": "Spellcasting",
-					"text": [
-						"The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared:",
-						"Cantrips (at will): light, sacred flame, thaumaturgy",
-						"1st level (3 slots): bless, cure wounds, sanctuary"
-					]
+					"headerEntries": [
+						"The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell bless}",
+								"{@spell cure wounds}",
+								"{@spell sanctuary}"
+							]
+						}
+					}
 				}
 			],
 			"action": [
@@ -545,7 +593,6 @@
 					]
 				}
 			],
-			"spells": "light, sacred flame, thaumaturgy, bless, cure wounds, sanctuary",
 			"description": "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities.",
 			"page": 22
 		},
@@ -896,14 +943,6 @@
 					"text": [
 						"The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Grenl is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). She has the following cleric spells prepared:",
-						"Cantrips (at will): poison spray, thaumaturgy",
-						"1st level (2 slots): bane, inflict wounds"
-					]
 				}
 			],
 			"action": [
@@ -920,7 +959,30 @@
 					]
 				}
 			],
-			"page": 25
+			"page": 25,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Grenl is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). She has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell poison spray}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 2,
+							"spells": [
+								"{@spell bane}",
+								"{@spell inflict wounds}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Guthash",
@@ -1038,15 +1100,6 @@
 					"text": [
 						"While in sunlight, the troglodyte has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Kaarghaz is a 4th-level spellcaster. His spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). He knows the following sorcerer spells:",
-						"Cantrips (at will): fire bolt, mage hand, poison spray, prestidigitation, ray of frost",
-						"1st level (6 slots): burning hands, shield, sleep",
-						"2nd level (3 slots): invisibility, scorching ray"
-					]
 				}
 			],
 			"action": [
@@ -1075,7 +1128,41 @@
 					]
 				}
 			],
-			"page": 45
+			"page": 45,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Kaarghaz is a 4th-level spellcaster. His spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). He knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell poison spray}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 6,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell scorching ray}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -1556,18 +1643,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"The Ooze Master is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 15, +7 to hit with spell attacks). It has the following wizard spells prepared:",
-						"Cantrips (at will): acid splash, friends, mage hand, poison spray",
-						"1st level (4 slots): charm person, detect magic, magic missile, ray of sickness",
-						"2nd level (3 slots): detect thoughts, Melf's acid arrow, suggestion",
-						"3rd level (3 slots): fear, slow, stinking cloud",
-						"4th level (3 slots): confusion, Evard's black tentacles",
-						"5th level (1 slot): cloudkill"
-					]
-				},
-				{
 					"name": "Spider Climb",
 					"text": [
 						"The Ooze Master can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
@@ -1590,7 +1665,63 @@
 					]
 				}
 			],
-			"page": 241
+			"page": 241,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Ooze Master is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 15, +7 to hit with spell attacks). It has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell friends}",
+								"{@spell mage hand}",
+								"{@spell poison spray}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell detect magic}",
+								"{@spell magic missile}",
+								"{@spell ray of sickness}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell Melf's acid arrow}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fear}",
+								"{@spell slow}",
+								"{@spell stinking cloud}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell Evard's black tentacles}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell cloudkill}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -1703,14 +1834,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). She has the following wizard spells prepared:",
-						"Cantrips (at will): light, prestidigitation, ray of frost",
-						"1st level (2 slots): color spray, magic missile, shield, sleep"
-					]
-				},
-				{
 					"name": "Tree Thrall",
 					"text": [
 						"If the Gulthias Tree dies, Sharwyn dies 24 hours later."
@@ -1725,7 +1848,33 @@
 					]
 				}
 			],
-			"page": 242
+			"page": 242,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). She has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 2,
+							"spells": [
+								"{@spell color spray}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -1825,13 +1974,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Siren's innate spellcasting ability is Charisma (spell save DC 13). She can innately cast the following spells, requiring no material components:",
-						"1/day each: charm person, fog cloud, greater invisibility, polymorph (self only)"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"Siren has advantage on saving throws against spells and other magical effects."
@@ -1852,7 +1994,23 @@
 					]
 				}
 			],
-			"page": 243
+			"page": 243,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Siren's innate spellcasting ability is Charisma (spell save DC 13). She can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell charm person}",
+							"{@spell fog cloud}",
+							"{@spell greater invisibility}",
+							"{@spell polymorph} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -1894,16 +2052,6 @@
 					"text": [
 						"The werewolf has advantage on Wisdom (Perception) checks that rely on hearing or smell."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Snarla is a 6th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). She has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, light, mage hand, shocking grasp",
-						"1st level (4 slots): magic missile, shield, thunderwave",
-						"2nd level (3 slots): mirror image, web",
-						"3rd level (3 slots): dispel magic, fear, haste, stinking cloud"
-					]
 				}
 			],
 			"action": [
@@ -1932,7 +2080,49 @@
 					]
 				}
 			],
-			"page": 102
+			"page": 102,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Snarla is a 6th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). She has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell mirror image}",
+								"{@spell web}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell fear}",
+								"{@spell haste}",
+								"{@spell stinking cloud}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Snurrevin",
@@ -1971,15 +2161,6 @@
 					"text": [
 						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Snurrevin is a 3rd-level spellcaster. His spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). He has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, mage hand, minor illusion, shocking grasp",
-						"1st level (4 slots): color spray, shield, silent image",
-						"2nd level (2 slots): hold person, shatter"
-					]
 				}
 			],
 			"action": [
@@ -2016,7 +2197,40 @@
 					]
 				}
 			],
-			"page": 53
+			"page": 53,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Snurrevin is a 3rd-level spellcaster. His spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). He has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell color spray}",
+								"{@spell shield}",
+								"{@spell silent image}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell shatter}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -2067,20 +2281,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"Var is a 12th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). He has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation, ray of frost",
-						"1st level (4 slots): detect magic, magic missile, shield, unseen servant*",
-						"2nd level (3 slots): detect thoughts, flaming sphere*, mirror image, scorching ray",
-						"3rd level (3 slots): counterspell, dispel magic, fireball",
-						"4th level (3 slots): dimension door*, Evard's black tentacles*",
-						"5th level (3 slots): cloudkill*, scrying",
-						"6th level (1 slot): circle of death",
-						"*Conjuration spell of 1st level or higher"
-					]
-				},
-				{
 					"name": "Turn Resistance",
 					"text": [
 						"Var has advantage on saving throws against any effect that turns undead."
@@ -2121,7 +2321,73 @@
 					]
 				}
 			],
-			"page": 244
+			"page": 244,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Var is a 12th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). He has the following wizard spells prepared:",
+						"*Conjuration spell of 1st level or higher"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell unseen servant}*"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell flaming sphere}*",
+								"{@spell mirror image}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell dispel magic}",
+								"{@spell fireball}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell dimension door}*",
+								"{@spell Evard's black tentacles}*"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cloudkill}*",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell circle of death}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -2228,15 +2494,6 @@
 					"text": [
 						"Within the Doomvault, the apprentice has advantage on saving throws against being charmed or frightened."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The apprentice is a 4th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). It has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, mage hand, prestidigitation, shocking grasp",
-						"1st level (4 slots): burning hands, detect magic, mage armor, shield",
-						"2nd level (3 slots): blur, scorching ray"
-					]
 				}
 			],
 			"action": [
@@ -2247,7 +2504,41 @@
 					]
 				}
 			],
-			"page": 245
+			"page": 245,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The apprentice is a 4th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). It has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell detect magic}",
+								"{@spell mage armor}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blur}",
+								"{@spell scorching ray}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -2409,12 +2700,6 @@
 						"If the vampire isn't in sun light or running water, it can use its action to Polymorph into a Tiny bat, or back into its true form.",
 						"While in bat form, the vampire can't speak, its walking speed is 5 feet, and it has a flying speed of 30 feet. Its Statistics, other than its size and speed, are unchanged. Anything it is wearing transforms with it, but nothing it is carrying does. It reverts to its true form if it dies."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Tloques can cast hold person (DC 14) at will, requiring no components, but his target must be able to see him."
-					]
 				}
 			],
 			"action": [
@@ -2443,7 +2728,16 @@
 					]
 				}
 			],
-			"page": 68
+			"page": 68,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Tloques can cast {@spell hold person} (DC 14) at will, requiring no components, but his target must be able to see him."
+					],
+					"headerWill": ["{@spell hold person}"]
+				}
+			]
 		},
 		{
 			"source": "TftYP",
@@ -2593,14 +2887,6 @@
 			"cr": "1",
 			"trait": [
 				{
-					"name": "Spellcasting",
-					"text": [
-						"Yusdrayl is a 2nd-level spellcaster. Her spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). She knows the following sorcerer spells:",
-						"Cantrips (at will): mage hand, prestidigitation, ray of frost, shocking grasp",
-						"1st level (4 slots): burning hands, chromatic orb, mage armor"
-					]
-				},
-				{
 					"name": "Sunlight Sensitivity",
 					"text": [
 						"While in sunlight, Yusdrayl has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
@@ -2624,7 +2910,33 @@
 					]
 				}
 			],
-			"page": 248
+			"page": 248,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Yusdrayl is a 2nd-level spellcaster. Her spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). She knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell chromatic orb}",
+								"{@spell mage armor}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "TftYP",

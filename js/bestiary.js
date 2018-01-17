@@ -402,7 +402,7 @@ function loadhash (id) {
 			if (spellList.spells) {
 				for (let j = 0; j < 10; j++) {
 					let spells = spellList.spells[j];
-					if (spells) renderer.recursiveEntryRender({type: "entries", entries: [Parser.spLevelToFull(j) + (j === 0 ? `s (at will)` : ` level (${spells.slots} slot${spells.slots > 1 ? "s" : ""})`) + `: ${spells.spells.join(", ")}`]}, renderStack, 1);
+					if (spells) renderer.recursiveEntryRender({type: "entries", entries: [`${Parser.spLevelToFull(j)}${(j === 0 ? "s" : " level")} (${spells.slots ? `${spells.slots} slot${spells.slots > 1 ? "s" : ""}` : "at will"}): ${spells.spells.join(", ")}`]}, renderStack, 1);
 				}
 				if (spellList.footerEntries) renderer.recursiveEntryRender({type: "entries", entries: spellList.footerEntries}, renderStack, 1);
 			}

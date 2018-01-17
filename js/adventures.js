@@ -34,7 +34,7 @@ function onJsonLoad (data) {
 					<span class="showhide" onclick="advToggle(event, this)" data-hidden="true">[+]</span>
 					<span class="source" style="display: none">${adv.id}</span>
 				</a>
-				${makeContentsBlock(adv, true, false, true)}
+				${makeContentsBlock({adv: adv, addPrefix: true, defaultHidden: true})}
 			</li>`;
 	}
 	adventuresList.append(tempString);

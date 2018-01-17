@@ -6,18 +6,18 @@ RegExp.escape = function (string) {
 	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
 };
 
-function makeContentsBlock (adv, addPrefix, addOnclick, defaultHidden) {
+function makeContentsBlock (options) {
 	let out =
-		`<ul class="adv-contents" ${defaultHidden ? `style="display: none;"` : ""}>`;
+		`<ul class="adv-contents" ${options.defaultHidden ? `style="display: none;"` : ""}>`;
 
-	adv.contents.forEach((c, i) => {
+	options.adv.contents.forEach((c, i) => {
 		out +=
 			`<li>
-				<a href="${addPrefix ? "adventure.html" : ""}#${adv.id},${i}" ${addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>
+				<a href="${options.addPrefix ? "adventure.html" : ""}#${options.adv.id},${i}" ${options.addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>
 					<span class="sect">${getOrdinalText(c.ordinal)}${c.name}</span>
 				</a>
 			</li>`;
-		out += makeHeadersBlock(adv.id, i, c, addPrefix, addOnclick);
+		out += makeHeadersBlock(options.adv.id, i, c, options.addPrefix, options.addOnclick, options.defaultHeadersHidden);
 	});
 
 	out +=
@@ -30,9 +30,9 @@ function getOrdinalText (ordinal) {
 	return `${ordinal.type === "part" ? `Part ${ordinal.identifier} \u2014 ` : ordinal.type === "chapter" ? `Ch. ${ordinal.identifier}: ` : ordinal.type === "episode" ? `Ep. ${ordinal.identifier}: ` : `App. ${ordinal.identifier}: `}`;
 }
 
-function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick) {
+function makeHeadersBlock (advId, chapterIndex, chapter, addPrefix, addOnclick, defaultHeadersHidden) {
 	let out =
-		`<ul class="adv-headers">`;
+		`<ul class="adv-headers" ${defaultHeadersHidden ? `style="display: none;"` : ""}>`;
 	chapter.headers && chapter.headers.forEach(c => {
 		out +=
 			`<li>
