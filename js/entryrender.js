@@ -1421,6 +1421,7 @@ EntryRenderer.hover = {
 			});
 		const mouseUpId = `mouseup.${hoverId}`;
 		const mouseMoveId = `mousemove.${hoverId}`;
+		const resizeId = `resize.${hoverId}`;
 		$(document)
 			.on(mouseUpId, () => {
 				if (drag.on) {
@@ -1440,6 +1441,9 @@ EntryRenderer.hover = {
 					drag.baseLeft = parseFloat($hov.css("left"));
 				}
 			});
+		$(window).on(resizeId, () => {
+			adjustPosition(true);
+		});
 
 		const $hovTitle = $(`<span class="window-title">${toRender.name}</span>`);
 		$brdrTop.attr("data-display-title", false);
@@ -1509,6 +1513,7 @@ EntryRenderer.hover = {
 			$hov.remove();
 			$(document).off(mouseUpId);
 			$(document).off(mouseMoveId);
+			$(window).off(resizeId);
 		}
 
 		function reset () {
