@@ -1344,8 +1344,7 @@ EntryRenderer.hover = {
 			reset();
 			return;
 		}
-		const winW = EntryRenderer.hover._curHovering.winW;
-		const winH = EntryRenderer.hover._curHovering.winH;
+		const hoverId = EntryRenderer.hover._curHovering.hoverId;
 		const ele = EntryRenderer.hover._curHovering.ele;
 		const page = EntryRenderer.hover._curHovering.cPage;
 		const source = EntryRenderer.hover._curHovering.cSource;
@@ -1359,33 +1358,43 @@ EntryRenderer.hover = {
 		const vpOffsetT = offset.top - $(document).scrollTop();
 		const vpOffsetL = offset.left - $(document).scrollLeft();
 
-		const fromBottom = vpOffsetT > winH / 2;
-		const fromRight = vpOffsetL > winW / 2;
+		const fromBottom = vpOffsetT > $(window).height() / 2;
+		const fromRight = vpOffsetL > $(window).width() / 2;
 
-		const $hov = $(`<div class="hoverbox"/>`);
+		const $hov = $(`<div class="hoverbox" style="right: -600px"/>`);
 		const $stats = $(`<table class="stats"></table>`);
 		$stats.append(content);
 		let drag = {};
 		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""}></div>`)
-		// TODO allow the window to be dragged around
-		//
-		/* .on("mousedown", (evt) => {
+		 .on("mousedown", (evt) => {
 			drag.on = true;
-			drag.x = evt.clientX;
-			drag.y = evt.clientY;
-			drag.baseTop = $hov.offset().top;
-			drag.baseLeft = $hov.offset().left;
-		})
-		.on("mouseup", () => {
-			drag.on = false;
-		})
-		.on("mousemove", (evt) => {
-			if (drag.on) {
-
-			}
-		}); */
+			drag.startX = evt.clientX;
+			drag.startY = evt.clientY;
+			drag.baseTop = parseFloat($hov.css("top"));
+			drag.baseLeft = parseFloat($hov.css("left"));
+		});
+		const mouseUpId = `mouseup.${hoverId}`;
+		const mouseDownId = `mousemove.${hoverId}`;
+		$(document)
+			.on(mouseUpId, () => {
+				drag.on = false;
+				adjustPosition();
+			})
+			.on(mouseDownId, (evt) => {
+				if (drag.on) {
+					const diffX = drag.startX - evt.clientX;
+					const diffY = drag.startY - evt.clientY;
+					$hov.css("left", drag.baseLeft - diffX);
+					$hov.css("top", drag.baseTop - diffY);
+					drag.startX = evt.clientX;
+					drag.startY = evt.clientY;
+					drag.baseTop = parseFloat($hov.css("top"));
+					drag.baseLeft = parseFloat($hov.css("left"));
+				}
+			});
 		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
-			.on("click", () => {
+			.on("click", (evt) => {
+				evt.stopPropagation();
 				teardown();
 			});
 		$brdrTop.append($btnClose);
@@ -1402,36 +1411,48 @@ EntryRenderer.hover = {
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
 
 		$(ele).on("mouseleave", (evt) => {
-			if (!permanent && !evt.shiftKey) {
+			if (!$brdrTop.data("perm") && !evt.shiftKey) {
 				teardown();
 			} else {
+				$(ele).data("hover-active", true);
+				// use attr to let the CSS see it
 				$brdrTop.attr("data-perm", true);
 			}
 		});
 
 		adjustPosition();
 
-		$hov.css("max-height", "100vh").css("overflow-y", "auto");
-
 		$(ele).css("cursor", "");
 		reset();
 
 		function adjustPosition () {
-			// readjust position if vertically clipping off screen
-			const hvVertOffset = $hov.offset().top - $(document).scrollTop();
-			if (hvVertOffset < 0) {
+			// readjust position...
+			// ...if vertically clipping off screen
+			const hvTop = parseFloat($hov.css("top"));
+			if (hvTop < 0) {
 				$hov.css("top", 0);
-			} else {
+			} else if (hvTop >= $(window).height() - EntryRenderer.hover._BAR_HEIGHT) {
+				$hov.css("top", $(window).height() - EntryRenderer.hover._BAR_HEIGHT);
+			} else if (!$brdrTop.data("perm")) {
 				const calcHeight = $hov.height();
-				if (hvVertOffset + calcHeight > winH) {
+				if (hvTop + calcHeight > $(window).height()) {
 					$hov.css("top", 0);
 				}
+			}
+			// ...if horizontally clipping off screen
+			const hvLeft = parseFloat($hov.css("left"));
+			if (hvLeft < 0) {
+				$hov.css("left", 0)
+			} else if (hvLeft + $hov.width() > $(window).width()) {
+				$hov.css("left", Math.max($(window).width() - $hov.width(), 0));
 			}
 		}
 
 		function teardown () {
 			$(ele).data("hover-active", false);
 			$hov.remove();
+			$(document).off(mouseUpId);
+			$(document).off(mouseDownId);
 		}
 
 		function reset () {
@@ -1440,15 +1461,13 @@ EntryRenderer.hover = {
 		}
 	},
 
+	_BAR_HEIGHT: 16,
 	_showInProgress: false,
 	_hoverId: 1,
 	_curHovering: null,
 	show: (evt, ele, page, source, hash) => {
-		const winW = $(window).width();
-		const winH = $(window).height();
-
 		// don't show on mobile
-		if (winW <= 768) return;
+		if ($(window).width() <= 768) return;
 
 		const alreadyHovering = $(ele).data("hover-active");
 		if (alreadyHovering) return;
@@ -1477,8 +1496,6 @@ EntryRenderer.hover = {
 		}
 		EntryRenderer.hover._curHovering = {
 			hoverId: hoverId,
-			winW: winW,
-			winH: winH,
 			ele: ele,
 			renderFunction: renderFunction,
 			cPage: page,
@@ -1500,7 +1517,9 @@ EntryRenderer.hover = {
 
 		// cancel hover if the mouse leaves
 		$(ele).on("mouseleave", () => {
-			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) EntryRenderer.hover._curHovering = null;
+			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) {
+				EntryRenderer.hover._curHovering = null;
+			}
 		});
 
 		function loadMultiSource (page, baseUrl, listProp) {
