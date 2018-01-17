@@ -519,7 +519,7 @@ function EntryRenderer () {
 
 							case "@clSpellHead": {
 								// special tag used for class table spell level headers
-								// format: {@clSpellHead <sp class name>|<sp class source>|<display text>|<sp level>}
+								// format: {@clSpellHead <sp class name>|<sp class source>|<display text>|<sp level>(|<sp level 2>|<sp level 3>|...)}
 								const fauxEntry = {
 									type: "link",
 									text: displayText,
@@ -530,7 +530,7 @@ function EntryRenderer () {
 										subhashes: [
 											{
 												key: "filterlevel",
-												value: Number(others[0])
+												value: others.map(o => Number(o)).join(HASH_SUB_LIST_SEP)
 											},
 											{
 												key: "filterclass",
