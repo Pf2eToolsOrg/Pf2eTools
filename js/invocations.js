@@ -21,11 +21,12 @@ const JSON_ITEM_TEXT = "text";
 const JSON_ITEM_PREREQUISITES = "prerequisites";
 
 const CLS_INVOCATION = "invocations";
-const CLS_COL1 = "col-xs-4";
-const CLS_COL2 = "col-xs-1 col-xs-1-7";
+const CLS_COL1 = "col-xs-3 col-xs-3-9";
+const CLS_COL2 = "col-xs-1 col-xs-1-6";
 const CLS_COL3 = "col-xs-1 col-xs-1-2";
-const CLS_COL4 = "col-xs-2 col-xs-2-4";
-const CLS_COL5 = "col-xs-2 col-xs-2-7";
+const CLS_COL4 = "col-xs-2 col-xs-2-1";
+const CLS_COL5 = "col-xs-2";
+const CLS_COL6 = "col-xs-1 col-xs-1-2";
 const CLS_LI_NONE = "list-entry-none";
 
 const LIST_NAME = "name";
@@ -65,6 +66,20 @@ function parsePatronToShort (patron) {
 	return /^The (.*?)$/.exec(patron)[1];
 }
 
+function sortLevelAsc (a, b) {
+	if (a === STR_LEVEL_NONE) a = 0;
+	if (b === STR_LEVEL_NONE) b = 0;
+	return Number(b) - Number(a);
+}
+
+function listSortInvocations (a, b, o) {
+	if (o.valueName === "level") {
+		const comp = sortLevelAsc(a.values()["level"], b.values()["level"]);
+		if (comp !== 0) return comp;
+	}
+	return listSort(a, b, o);
+}
+
 let INVOCATION_LIST;
 
 function onJsonLoad (data) {
@@ -101,10 +116,11 @@ function onJsonLoad (data) {
 			<li class="row" ${FLTR_ID}="${i}">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p[JSON_ITEM_NAME]}">
 					<span class="${LIST_NAME} ${CLS_COL1}">${p[JSON_ITEM_NAME]}</span>
-					<span class="${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}" title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
+					<span class="${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])} text-align-center" title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class="${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]}</span>
 					<span class="${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? CLS_LI_NONE : STR_EMPTY}">${parsePatronToShort(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
 					<span class="${LIST_SPELL} ${CLS_COL5} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]}</span>
+					<span class="${LIST_LEVEL} ${CLS_COL6} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE ? CLS_LI_NONE : STR_EMPTY} text-align-center">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL]}</span>
 				</a>
 			</li>
 		`;
@@ -119,7 +135,7 @@ function onJsonLoad (data) {
 	const list = search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_PACT, LIST_PATRON, LIST_SPELL, LIST_LEVEL],
 		listClass: CLS_INVOCATION,
-		sortFunction: listSort
+		sortFunction: listSortInvocations
 	});
 
 	filterBox.render();
