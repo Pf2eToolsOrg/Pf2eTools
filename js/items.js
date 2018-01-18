@@ -37,10 +37,6 @@ function sortItems (a, b, o) {
 	} else return 1;
 }
 
-function sortProperties (a, b) {
-
-}
-
 function deselectFilter (deselectProperty, deselectValue) {
 	return function (val) {
 		if (window.location.hash.length) {
