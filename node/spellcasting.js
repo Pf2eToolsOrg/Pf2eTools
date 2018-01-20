@@ -42,46 +42,49 @@ function checkFile (file) {
 
 function parseSpellcasting (monsterName, trait, contentsIndex) {
 	let name = trait.name;
-	let spellcasting = [];
-	let spellcastingEntry = {"name": name, "headerEntries": [trait.text[0]]};
-	if (name.includes("Innate Spellcasting")) {
-		if (check) console.log(`${monsterName} has Innate Spellcasting`);
-		for (let i = 1; i < trait.text.length; i++) {
-			let thisLine = trait.text[i];
-			if (thisLine.includes("/day")) {
-				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-				if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
-				spellcastingEntry.daily[property] = value;
-			} else if (thisLine.startsWith("At will: ")) {
-				spellcastingEntry.will = thisLine.substring(9).split(", ").map(i => parseSpell(i));
+	let spellcasting = contents.monster[contentsIndex].spellcasting || [];
+	let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.text[0])]};
+	if (check) console.log(`${monsterName} has ${name}`);
+	let doneHeader = false;
+	for (let i = 1; i < trait.text.length; i++) {
+		let thisLine = trait.text[i];
+		if (thisLine.includes("/day")) {
+			doneHeader = true;
+			let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+			let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+			if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
+			spellcastingEntry.daily[property] = value;
+		} else if (thisLine.startsWith("Constant: ")) {
+			doneHeader = true;
+			spellcastingEntry.constant = thisLine.substring(9).split(", ").map(i => parseSpell(i));
+		} else if (thisLine.startsWith("At will: ")) {
+			doneHeader = true;
+			spellcastingEntry.will = thisLine.substring(9).split(", ").map(i => parseSpell(i));
+		} else if (thisLine.includes("Cantrip")) {
+			doneHeader = true;
+			let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+			if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
+			spellcastingEntry.spells["0"].spells = value;
+		} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
+			doneHeader = true;
+			let property = thisLine.substr(0, 1);
+			let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+			if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
+			let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
+			spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
+		} else {
+			let parsedLine = parseToHit(thisLine);
+			if (doneHeader) {
+				if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];
+				spellcastingEntry.footerEntries.push(parseToHit(thisLine));
 			} else {
-				spellcastingEntry.headerEntries.push(thisLine);
+				spellcastingEntry.headerEntries.push(parseToHit(thisLine));
 			}
 		}
-		spellcasting.push(spellcastingEntry);
-	} else {
-		if (check) console.log(`${monsterName} has Spellcasting`);
-		for (let i = 1; i < trait.text.length; i++) {
-			let thisLine = trait.text[i];
-			if (thisLine.includes("Cantrip")) {
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-				if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
-				spellcastingEntry.spells["0"].spells = value;
-			} else if (thisLine.includes(" level")) {
-				let property = thisLine.substr(0, 1);
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-				if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
-				let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
-				spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
-			} else {
-				spellcastingEntry.headerEntries.push(thisLine);
-			}
-		}
-		spellcasting.push(spellcastingEntry);
 	}
-	if (brief) console.log(JSON.stringify({"spellcasting": [spellcastingEntry]}, null, 2));
+	spellcasting.push(spellcastingEntry);
 	contents.monster[contentsIndex].spellcasting = spellcasting;
+	if (brief) console.log(`"spellcasting": ${JSON.stringify(contents.monster[contentsIndex].spellcasting, null, 2)}`);
 }
 
 function parseSpell (name) {
@@ -93,6 +96,12 @@ function parseSpell (name) {
 		return `{@spell ${name.substr(0, brackets)}}${name.substring(brackets)}`;
 	}
 	return `{@spell ${name}}`;
+}
+
+function parseToHit (line) {
+	return line.replace(/( \+)(\d+)( to hit with spell)/g, (m0, m1, m2, m3) => {
+		return ` {@hit ${m2}}${m3}`;
+	});
 }
 
 recursiveCheck("./data/bestiary");
