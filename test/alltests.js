@@ -14,7 +14,7 @@ require("./check-links");
 // TODO modular argument system?
 if (process.argv[2] !== "noschema") {
 	console.log(`##### Validating the JSON schemata #####`);
-// Loop through each non-helper schema and push all validation results.
+	// Loop through each non-helper schema and push all validation results.
 	fs.readdirSync("./test/schema")
 		.filter(file => file.endsWith(".json")) // ignore directories
 		.forEach(file => {
