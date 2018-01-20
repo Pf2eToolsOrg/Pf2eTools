@@ -6,6 +6,8 @@
 IS_DEPLOYED = typeof _IS_DEPLOYED !== "undefined" && _IS_DEPLOYED;
 VERSION_NUMBER = IS_DEPLOYED ? _IS_DEPLOYED : "-1";
 DEPLOYED_STATIC_ROOT = "https://static.5etools.com/";
+// for the roll20 script to set
+IS_ROLL20 = false;
 
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
@@ -1475,7 +1477,8 @@ UrlUtil.getCurrentPage = function () {
  * @param href the link
  */
 UrlUtil.link = function (href) {
-	if (IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}?ver=${VERSION_NUMBER}`;
+	if (!IS_ROLL20 && IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}?ver=${VERSION_NUMBER}`;
+	else if (IS_DEPLOYED) return `${href}?ver=${VERSION_NUMBER}`;
 	return href;
 };
 
