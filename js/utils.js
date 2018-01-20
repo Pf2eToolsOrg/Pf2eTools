@@ -752,7 +752,7 @@ Parser.monTypeToFullObj = function (type) {
 	} else {
 		out.asText = `${type.type}`;
 	}
-	if (tempTags.length) out.asText += ` (${tempTags.join(", ")})`
+	if (tempTags.length) out.asText += ` (${tempTags.join(", ")})`;
 	return out;
 };
 
