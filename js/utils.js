@@ -1376,6 +1376,10 @@ function implies (a, b) {
 	return (!a) || b;
 }
 
+function noModifierKeys (e) {
+	return !e.ctrlKey && !e.altKey && !e.metaKey;
+}
+
 // SEARCH AND FILTER ===================================================================================================
 function search (options) {
 	const list = new List("listcontainer", options);
@@ -1393,6 +1397,28 @@ function search (options) {
 	} else {
 		listWrapper.data("lists", [list]);
 	}
+	$(window).on("keypress", (e) => {
+		// K up; J down
+		if (noModifierKeys(e)) {
+			if (e.key === "k" || e.key === "j") {
+				const $el = getSelectedListElement();
+
+				if ($el) {
+					if (e.key === "k") {
+						const prevLink = $el.parent().prev().find("a").attr("href");
+						if (prevLink !== undefined) {
+							window.location.hash = prevLink;
+						}
+					} else if (e.key === "j") {
+						const nextLink = $el.parent().next().find("a").attr("href");
+						if (nextLink !== undefined) {
+							window.location.hash = nextLink;
+						}
+					}
+				}
+			}
+		}
+	});
 	return list
 }
 

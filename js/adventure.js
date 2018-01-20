@@ -263,10 +263,6 @@ function addSearch (indexData, advId) {
 		}
 	});
 
-	function noModifierKeys (e) {
-		return !e.ctrlKey && !e.altKey && !e.metaKey;
-	}
-
 	const EXTRA_WORDS = 2;
 	function searchEntriesFor (chapterIndex, prevLastName, appendTo, term, obj) {
 		if (term === undefined || term === null) return;
