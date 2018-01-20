@@ -1078,19 +1078,26 @@ EntryRenderer.item = {
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
+	 * @param urls optional overrides for default URLs
 	 */
-	buildList: function (callback) {
+	buildList: function (callback, urls) {
+		if (!urls) urls = {};
 		let itemList;
 		let basicItemList;
 		let variantList;
 		const propertyList = {};
 		const typeList = {};
 
-		DataUtil.loadJSON("data/items.json", addBasicItems);
+		// allows URLs to be overriden (used by roll20 script)
+		const itemUrl = urls.items || "data/items.json";
+		const basicItemUrl = urls.basicitems || "data/basicitems.json";
+		const magicVariantUrl = urls.magicvariants || "data/magicvariants.json";
+
+		DataUtil.loadJSON(itemUrl, addBasicItems);
 
 		function addBasicItems (itemData) {
 			itemList = itemData.item;
-			DataUtil.loadJSON("data/basicitems.json", addVariants);
+			DataUtil.loadJSON(basicItemUrl, addVariants);
 		}
 
 		function addVariants (basicItemData) {
@@ -1110,7 +1117,7 @@ EntryRenderer.item = {
 					"entries": itemTypeList[i].entries
 				};
 			}
-			DataUtil.loadJSON("data/magicvariants.json", mergeBasicItems);
+			DataUtil.loadJSON(magicVariantUrl, mergeBasicItems);
 		}
 
 		function mergeBasicItems (variantData) {
