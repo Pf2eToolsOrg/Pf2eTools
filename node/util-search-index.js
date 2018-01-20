@@ -224,7 +224,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			"file": "trapshazards.json",
 			"listProp": "hazard",
 			"baseUrl": "trapshazards.html"
-		},
+		}
 	];
 
 	function getProperty (obj, withDots) {
@@ -233,7 +233,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 
 	let id = 0;
 	function handleContents (arbiter, j) {
-		function getToAdd(it, toMerge) {
+		function getToAdd (it, toMerge) {
 			const toAdd = {
 				c: arbiter.category,
 				src: getProperty(it, arbiter.source || "source"),
@@ -268,7 +268,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 		const index = require(`../data/${ti.dir}/index.json`);
 		Object.values(index).forEach(j => {
 			const absF = `../data/${ti.dir}/${j}`;
-			const contents =  require(absF);
+			const contents = require(absF);
 			if (doLogging) console.log(`indexing ${absF}`);
 			handleContents(ti, contents);
 		})

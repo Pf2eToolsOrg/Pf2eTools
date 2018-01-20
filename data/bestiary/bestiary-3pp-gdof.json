@@ -29,15 +29,6 @@
 			"cr": "24",
 			"trait": [
 				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 23). It can innately cast the following spells, requiring no components:",
-						"At will: levitate, unseen servant",
-						"3/day each: slow, telekinesis",
-						"1/day: wall of force"
-					]
-				},
-				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If the dragon fails a saving throw, it can choose to succeed instead."
@@ -127,7 +118,28 @@
 					]
 				}
 			],
-			"page": 5
+			"page": 5,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 23). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell levitate}",
+						"{@spell unseen servant}"
+					],
+					"daily": {
+						"1": [
+							"{@spell wall of force}"
+						],
+						"3e": [
+							"{@spell slow}",
+							"{@spell telekinesis}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -157,14 +169,6 @@
 			"languages": "Common, Draconic, Terran",
 			"cr": "16",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 20). It can innately cast the following spells, requiring no components:",
-						"At will: levitate, unseen servant (order #8832602) 66",
-						"3/day each: slow, telekinesis"
-					]
-				},
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
@@ -255,7 +259,25 @@
 					]
 				}
 			],
-			"page": 5
+			"page": 5,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 20). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell levitate}",
+						"{@spell unseen servant}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell slow}",
+							"{@spell telekinesis}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -285,14 +307,6 @@
 			"languages": "Common, Draconic, Terran",
 			"cr": "9",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no components:",
-						"At will: levitate",
-						"3/day: slow"
-					]
-				},
 				{
 					"name": "Planar Travel",
 					"text": [
@@ -327,7 +341,23 @@
 				}
 			],
 			"legendaryGroup": "Amethyst Dragon",
-			"page": 6
+			"page": 6,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell levitate}"
+					],
+					"daily": {
+						"3": [
+							"{@spell slow}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -354,15 +384,6 @@
 			"passive": 14,
 			"languages": "Draconic, Terran",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Wisdom (spell save DC 12). It can innately cast the following spell, requiring no components:",
-						"At will: levitate"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -378,7 +399,18 @@
 				}
 			],
 			"legendaryGroup": "Amethyst Dragon",
-			"page": 6
+			"page": 6,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Wisdom (spell save DC 12). It can innately cast the following spell, requiring no components:"
+					],
+					"will": [
+						"{@spell levitate}"
+					]
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -408,15 +440,6 @@
 			"languages": "Common, Draconic, Auran",
 			"cr": "20",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 19). It can innately cast the following spells, requiring no components:",
-						"At will: calm emotions, detect thoughts",
-						"3/day each: charm person, color spray",
-						"1/day each: dominate person, control weather (wind only)"
-					]
-				},
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
@@ -507,7 +530,29 @@
 					]
 				}
 			],
-			"page": 8
+			"page": 8,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 19). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell calm emotions}",
+						"{@spell detect thoughts}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell charm person}",
+							"{@spell color spray}"
+						],
+						"1e": [
+							"{@spell dominate person}",
+							"{@spell control weather} (wind only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -537,14 +582,6 @@
 			"languages": "Common, Draconic, Auran",
 			"cr": "13",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no components:",
-						"At will: calm emotions, detect thoughts",
-						"3/day each: charm person, color spray"
-					]
-				},
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
@@ -635,7 +672,25 @@
 					]
 				}
 			],
-			"page": 8
+			"page": 8,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell calm emotions}",
+						"{@spell detect thoughts}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell charm person}",
+							"{@spell color spray}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -664,14 +719,6 @@
 			"languages": "Common, Draconic, Auran",
 			"cr": "6",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 16). It can innately cast the following spells, requiring no components:",
-						"At will: calm emotions, detect thoughts",
-						"1/day each: charm person, color spray"
-					]
-				},
 				{
 					"name": "Planar Travel",
 					"text": [
@@ -706,7 +753,25 @@
 				}
 			],
 			"legendaryGroup": "Crystal Dragon",
-			"page": 9
+			"page": 9,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 16). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell calm emotions}",
+						"{@spell detect thoughts}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell charm person}",
+							"{@spell color spray}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -733,15 +798,6 @@
 			"passive": 14,
 			"languages": "Common, Draconic, Auran",
 			"cr": "1",
-			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spell, requiring no components:",
-						"1/day: calm emotions"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -757,7 +813,20 @@
 				}
 			],
 			"legendaryGroup": "Crystal Dragon",
-			"page": 10
+			"page": 10,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spell, requiring no components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell calm emotions}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -786,14 +855,6 @@
 			"languages": "Auran, Common, Draconic",
 			"cr": "7",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring no components:",
-						"At will: friends",
-						"1/day each: charm person, invisibility"
-					]
-				},
 				{
 					"name": "Planar Travel",
 					"text": [
@@ -828,7 +889,24 @@
 				}
 			],
 			"legendaryGroup": "Emerald Dragon",
-			"page": 12
+			"page": 12,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell friends}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell charm person}",
+							"{@spell invisibility}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -857,14 +935,6 @@
 			"languages": "Auran, Common, Draconic",
 			"cr": "14",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no components:",
-						"At will: friends",
-						"3/day each: charm person, invisibility, nondetection"
-					]
-				},
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
@@ -955,7 +1025,25 @@
 					]
 				}
 			],
-			"page": 12
+			"page": 12,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell friends}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell charm person}",
+							"{@spell invisibility}",
+							"{@spell nondetection}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -984,15 +1072,6 @@
 			"languages": "Auran, Common, Draconic",
 			"cr": "21",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 20). It can innately cast the following spells, requiring no components: ",
-						"At will: charm person ",
-						"3/day each: invisibility, nondetection ",
-						"1/day each: dominate person, legend lore"
-					]
-				},
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
@@ -1083,7 +1162,28 @@
 					]
 				}
 			],
-			"page": 11
+			"page": 11,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 20). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell charm person}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell invisibility}",
+							"{@spell nondetection}"
+						],
+						"1e": [
+							"{@spell dominate person}",
+							"{@spell legend lore}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1111,15 +1211,6 @@
 			"passive": 14,
 			"languages": "Auran, Draconic",
 			"cr": "1",
-			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spell, requiring no components: ",
-						"1/day: friends"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -1135,7 +1226,20 @@
 				}
 			],
 			"legendaryGroup": "Emerald Dragon",
-			"page": 13
+			"page": 13,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spell, requiring no components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell friends}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1163,15 +1267,6 @@
 			"languages": "Common, Draconic, Terran",
 			"cr": "21",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Intelligence (spell save DC 21). It can innately cast the following spells, requiring no components: ",
-						"At will: clairvoyance, spider climb, stone shape ",
-						"3/day each: shield, wall of stone ",
-						"1/day: foresight"
-					]
-				},
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
@@ -1262,7 +1357,29 @@
 					]
 				}
 			],
-			"page": 14
+			"page": 14,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Intelligence (spell save DC 21). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell clairvoyance}",
+						"{@spell spider climb}",
+						"{@spell stone shape}"
+					],
+					"daily": {
+						"1": [
+							"{@spell foresight}"
+						],
+						"3e": [
+							"{@spell shield}",
+							"{@spell wall of stone}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1290,14 +1407,6 @@
 			"languages": "Common, Draconic, Terran",
 			"cr": "14",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Intelligence (spell save DC 19). It can innately cast the following spells, requiring no components: ",
-						"At will: clairvoyance, spider climb, stone shape ",
-						"3/day each: shield, wall of stone"
-					]
-				},
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
@@ -1388,7 +1497,26 @@
 					]
 				}
 			],
-			"page": 15
+			"page": 15,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Intelligence (spell save DC 19). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell clairvoyance}",
+						"{@spell spider climb}",
+						"{@spell stone shape}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell shield}",
+							"{@spell wall of stone}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1416,14 +1544,6 @@
 			"languages": "Common, Draconic, Terran",
 			"cr": "7",
 			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components: ",
-						"At will: clairvoyance, spider climb, stone shape ",
-						"1/day each: shield, wall of stone"
-					]
-				},
 				{
 					"name": "Planar Travel",
 					"text": [
@@ -1458,7 +1578,26 @@
 				}
 			],
 			"legendaryGroup": "Sapphire Dragon",
-			"page": 15
+			"page": 15,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell clairvoyance}",
+						"{@spell spider climb}",
+						"{@spell stone shape}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell shield}",
+							"{@spell wall of stone}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1485,16 +1624,6 @@
 			"passive": 14,
 			"languages": "Common, Draconic, Terran",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Intelligence. It can innately cast the following spells, requiring no components:",
-						"At will: spider climb",
-						"1/day: stone shape"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -1510,7 +1639,23 @@
 				}
 			],
 			"legendaryGroup": "Sapphire Dragon",
-			"page": 16
+			"page": 16,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Intelligence. It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell spider climb}"
+					],
+					"daily": {
+						"1": [
+							"{@spell stone shape}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1543,15 +1688,6 @@
 					"name": "Amphibious",
 					"text": [
 						"The dragon can breathe air and water."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Wisdom (spell save DC 24). It can innately cast the following spells, requiring no components:",
-						"At will: feather fall, shape water (EEPC)",
-						"3/day each: freedom of movement, control water",
-						"1/day: maelstrom (EEPC)"
 					]
 				},
 				{
@@ -1644,7 +1780,28 @@
 					]
 				}
 			],
-			"page": 16
+			"page": 16,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Wisdom (spell save DC 24). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell feather fall}",
+						"{@spell shape water|xge}"
+					],
+					"daily": {
+						"1": [
+							"{@spell maelstrom|xge}"
+						],
+						"3e": [
+							"{@spell freedom of movement}",
+							"{@spell control water}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1677,14 +1834,6 @@
 					"name": "Amphibious",
 					"text": [
 						"The dragon can breathe air and water."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Wisdom (spell save DC 21). It can innately cast the following spells, requiring no components:",
-						"At will: feather fall, shape water",
-						"3/day each: freedom of movement, control water"
 					]
 				},
 				{
@@ -1777,7 +1926,25 @@
 					]
 				}
 			],
-			"page": 18
+			"page": 18,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Wisdom (spell save DC 21). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell feather fall}",
+						"{@spell shape water|xge}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell freedom of movement}",
+							"{@spell control water}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1810,14 +1977,6 @@
 					"name": "Amphibious",
 					"text": [
 						"The dragon can breathe air and water."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Wisdom (spell save DC 17). It can innately cast the following spells, requiring no components:",
-						"At will: shape water",
-						"1/day each: feather fall, control water"
 					]
 				},
 				{
@@ -1854,7 +2013,24 @@
 				}
 			],
 			"legendaryGroup": "Topaz Dragon",
-			"page": 18
+			"page": 18,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Wisdom (spell save DC 17). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell shape water|xge}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell feather fall}",
+							"{@spell control water}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1887,14 +2063,6 @@
 					"text": [
 						"The dragon can breathe air and water."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The dragon's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:",
-						"At will: shape water",
-						"1/day: feather fall"
-					]
 				}
 			],
 			"action": [
@@ -1912,7 +2080,23 @@
 				}
 			],
 			"legendaryGroup": "Topaz Dragon",
-			"page": 19
+			"page": 19,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell shape water|xge}"
+					],
+					"daily": {
+						"1": [
+							"{@spell feather fall}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
@@ -1947,16 +2131,6 @@
 					"name": "Divine Resurrection",
 					"text": [
 						"When Sardior dies, his body vanishes in a shower of ruby scales and his essence merges with that of his oldest thane (Hrodel). This thane retreats to safety and begins the slow transformation into Sardior, retaining her old memories and gaining Sardior's. All remaining thanes instantly sense Sardior's death."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"Sardior's innate spellcasting ability is Intelligence (spell save DC 27). He can innately cast the following spells, requiring no components:",
-						"At will: command, invisibility, plane shift, scrying, nondetection",
-						"3/day each: dominate person, legend lore, eyebite, modify memory",
-						"1/day each: divine word, dominate monster, time stop",
-						"Additionally, Sardior can cast any spell of 6th level or lower on the bard or cleric spell list by making a DC 30 Intelligence (Arcana) check."
 					]
 				},
 				{
@@ -2067,7 +2241,36 @@
 					]
 				}
 			],
-			"page": 21
+			"page": 21,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"Sardior's innate spellcasting ability is Intelligence (spell save DC 27). He can innately cast the following spells, requiring no components:",
+						"Additionally, Sardior can cast any spell of 6th level or lower on the bard or cleric spell list by making a DC 30 Intelligence (Arcana) check."
+					],
+					"will": [
+						"{@spell command}",
+						"{@spell invisibility}",
+						"{@spell plane shift}",
+						"{@spell scrying}",
+						"{@spell nondetection}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell dominate person}",
+							"{@spell legend lore}",
+							"{@spell eyebite}",
+							"{@spell modify memory}"
+						],
+						"1e": [
+							"{@spell divine word}",
+							"{@spell dominate monster}",
+							"{@spell time stop}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "GDoF 3pp",
