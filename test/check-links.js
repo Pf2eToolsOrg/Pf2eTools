@@ -34,6 +34,7 @@ function recursiveCheck (file) {
 function checkFile (file) {
 	const contents = fs.readFileSync(file, 'utf8');
 	let match;
+	// eslint-disable-next-line no-cond-assign
 	while (match = re.exec(contents)) {
 		const tag = match[1];
 		const name = match[2];

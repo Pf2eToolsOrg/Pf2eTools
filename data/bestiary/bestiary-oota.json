@@ -91,15 +91,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Baphomet's spellcasting ability is Charisma (spell save DC 18). He can innately cast the following spells, requiring no material components:",
-						"At will: detect magic",
-						"3/day each: dispel magic, dominate beast, hunter's mark, maze, wall of stone",
-						"1/day each: teleport"
-					]
-				},
-				{
 					"name": "Labyrinthine Recall",
 					"text": [
 						"Baphomet can perfectly recall any path he has traveled, and he is immune to the maze spell."
@@ -193,8 +184,30 @@
 					]
 				}
 			],
-			"spells": "detect magic, dispel magic, dominate beast, hunter's mark, maze, wall of stone, teleport",
-			"page": 235
+			"page": 235,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Baphomet's spellcasting ability is Charisma (spell save DC 18). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell dispel magic}",
+							"{@spell dominate beast}",
+							"{@spell hunter's mark}",
+							"{@spell maze}",
+							"{@spell wall of stone}"
+						],
+						"1e": [
+							"{@spell teleport}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Bridesmaid of Zuggtmoy",
@@ -377,15 +390,6 @@
 			"cr": "26",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Demogorgon's spellcasting ability is Charisma (spell save DC 23). Demogorgon can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, major image",
-						"3/day each: dispel magic, fear, telekinesis",
-						"1/day each: feeblemind, project image"
-					]
-				},
-				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If Demogorgon fails a saving throw, he can choose to succeed instead."
@@ -456,8 +460,30 @@
 					]
 				}
 			],
-			"spells": "detect magic, major image, dispel magic, fear, telekinesis, feeblemind, project image",
-			"page": 236
+			"page": 236,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Demogorgon's spellcasting ability is Charisma (spell save DC 23). Demogorgon can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell major image}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell dispel magic}",
+							"{@spell fear}",
+							"{@spell telekinesis}"
+						],
+						"1e": [
+							"{@spell feeblemind}",
+							"{@spell project image}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Derro",
@@ -573,16 +599,6 @@
 					"text": [
 						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The derro is a 5th-level spellcaster. It's spellcasting ability is Charisma (save DC 12, +4 to hit with spell attacks). The derro knows the following sorcerer spells:",
-						"Cantrips (at will): acid splash, light, mage hand, message, ray of frost",
-						"1st level (4 slots): burning hands, chromatic orb, sleep",
-						"2nd level (3 slots): invisibility, spider climb",
-						"3rd level (2 slots): blink, lightning bolt"
-					]
 				}
 			],
 			"action": [
@@ -605,8 +621,48 @@
 					]
 				}
 			],
-			"spells": "acid splash, light, mage hand, message, ray of frost, burning hands, chromatic orb, sleep, invisibility, spider climb, blink, lightning bolt",
-			"page": 225
+			"page": 225,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The derro is a 5th-level spellcaster. It's spellcasting ability is Charisma (save DC 12, {@hit 4} to hit with spell attacks). The derro knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell message}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell chromatic orb}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell spider climb}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell blink}",
+								"{@spell lightning bolt}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Droki",
@@ -646,14 +702,6 @@
 					"name": "Insanity",
 					"text": [
 						"Droki has advantage on saving throws against being charmed or frightened."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Droki's innate spellcasting ability is Charisma (spell save DC 13). He can innately cast the following spells, requiring no material components:",
-						"At will: minor illusion",
-						"1/day each: darkness, fear, shatter"
 					]
 				},
 				{
@@ -704,8 +752,25 @@
 					]
 				}
 			],
-			"spells": "minor illusion, darkness, fear, shatter",
-			"page": 231
+			"page": 231,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Droki's innate spellcasting ability is Charisma (spell save DC 13). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell minor illusion}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell fear}",
+							"{@spell shatter}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Drow Spore Servant",
@@ -766,14 +831,6 @@
 			"cr": "2",
 			"trait": [
 				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The darkhaft's innate spellcasting ability is Intelligence (spell save DC 10) it can innately cast the following spells, requiring no components:",
-						"At will: friends, mage hand",
-						"1/day each: disguise self, sleep"
-					]
-				},
-				{
 					"name": "Duergar Resilience",
 					"text": [
 						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
@@ -820,8 +877,25 @@
 					]
 				}
 			],
-			"spells": "friends, mage hand, disguise self, sleep",
-			"page": 226
+			"page": 226,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The darkhaft's innate spellcasting ability is Intelligence (spell save DC 10) it can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell friends}",
+						"{@spell mage hand}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell disguise self}",
+							"{@spell sleep}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Duergar Kavalrachni",
@@ -946,23 +1020,6 @@
 			"cr": "2",
 			"trait": [
 				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The Keeper of the Flame's innate spellcasting ability is Wisdom (spell save DC 12.) It can innately cast the following spells, requiring no components:",
-						"At will: friends, message",
-						"1/day: command"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The Keeper of the Flame is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The Keeper of the Flame has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, mending, sacred flame",
-						"1st level (4 slots): bane, inflict wounds, shield of faith",
-						"2nd level (2 slots): enhance ability, spiritual weapon"
-					]
-				},
-				{
 					"name": "Duergar Resilience",
 					"text": [
 						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
@@ -1009,8 +1066,54 @@
 					]
 				}
 			],
-			"spells": "friends, message, command, guidance, mending, sacred flame, bane, inflict wounds, shield of faith, enhance ability, spiritual weapon",
-			"page": 226
+			"page": 226,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The Keeper of the Flame's innate spellcasting ability is Wisdom (spell save DC 12.) It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell friends}",
+						"{@spell message}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell command}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Keeper of the Flame is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The Keeper of the Flame has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell mending}",
+								"{@spell sacred flame}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bane}",
+								"{@spell inflict wounds}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell enhance ability}",
+								"{@spell spiritual weapon}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Duergar Soulblade",
@@ -1049,14 +1152,6 @@
 					"text": [
 						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The duergar's innate spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no components:",
-						"At will: blade ward, true strike",
-						"1/day each: jump, hunter's mark"
-					]
 				}
 			],
 			"action": [
@@ -1089,8 +1184,25 @@
 					]
 				}
 			],
-			"spells": "blade ward, true strike, jump, hunter's mark",
-			"page": 227
+			"page": 227,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The duergar's innate spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell blade ward}",
+						"{@spell true strike}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell jump}",
+							"{@spell hunter's mark}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Duergar Spore Servant",
@@ -1431,15 +1543,6 @@
 			"cr": "23",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Fraz-Urb'luu's spellcasting ability is Charisma (spell save DC 23). Fraz-Urb'luu can innately cast the following spells, requiring no material components:",
-						"At will: alter self (can become Medium-sized when changing his appearance), detect magic, dispel magic, phantasmal force",
-						"3/day each: confusion, dream, mislead, programmed illusion, seeming",
-						"1/day each: mirage arcane, modify memory, project image"
-					]
-				},
-				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If Fraz-Urb'luu fails a saving throw, he can choose to succeed instead."
@@ -1508,8 +1611,35 @@
 					]
 				}
 			],
-			"spells": "alter self, detect magic, dispel magic, phantasmal force, confusion, dream, mislead, programmed illusion, seeming, mirage arcane, modify memory, project image",
-			"page": 238
+			"page": 238,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Fraz-Urb'luu's spellcasting ability is Charisma (spell save DC 23). Fraz-Urb'luu can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell alter self} (can become Medium-sized when changing his appearance)",
+						"{@spell detect magic}",
+						"{@spell dispel magic}",
+						"{@spell phantasmal force}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell confusion}",
+							"{@spell dream}",
+							"{@spell mislead}",
+							"{@spell programmed illusion}",
+							"{@spell seeming}"
+						],
+						"1e": [
+							"{@spell mirage arcane}",
+							"{@spell modify memory}",
+							"{@spell project image}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "OotA",
@@ -1590,15 +1720,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Graz'zt's spellcasting ability is Charisma (spell save DC 23). Graz'zt can innately cast the following spells, requiring no material components:",
-						"At will: charm person, crown of madness, detect magic, dispel magic, dissonant whispers",
-						"3/day each: counterspell, darkness, dominate person, sanctuary, telekinesis, teleport",
-						"1/day each: dominate monster, greater invisibility"
-					]
-				},
-				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If Graz'zt fails a saving throw, he can choose to succeed instead."
@@ -1667,8 +1788,36 @@
 					]
 				}
 			],
-			"spells": "charm person, crown of madness, detect magic, dispel magic, dissonant whispers, counterspell, darkness, dominate person, sanctuary, telekinesis, teleport, dominate monster, greater invisibility",
-			"page": 241
+			"page": 241,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Graz'zt's spellcasting ability is Charisma (spell save DC 23). Graz'zt can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell charm person}",
+						"{@spell crown of madness}",
+						"{@spell detect magic}",
+						"{@spell dispel magic}",
+						"{@spell dissonant whispers}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell counterspell}",
+							"{@spell darkness}",
+							"{@spell dominate person}",
+							"{@spell sanctuary}",
+							"{@spell telekinesis}",
+							"{@spell teleport}"
+						],
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell greater invisibility}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Grisha",
@@ -1701,18 +1850,6 @@
 			"passive": 12,
 			"languages": "Common, Undercommon",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Grisha is a 6th-level-spellcaster. His spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). He has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, light, sacred flame, thaumaturgy",
-						"1st level (4 slots): cure wounds, divine favor, inflict wounds, protection from good, shield of faith",
-						"2nd level (3 slots): continual flame, hold person, magic weapon, spiritual weapon",
-						"3rd level (3 slots): bestow curse, dispel magic, spirit guardian"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -1730,8 +1867,52 @@
 					]
 				}
 			],
-			"spells": "guidance, light, sacred flame, thaumaturgy, cure wounds, divine favor, inflict wounds, protection from evil and good, shield of faith, continual flame, hold person, magic weapon, spiritual weapon, bestow curse, dispel magic, spirit guardian",
-			"page": 232
+			"page": 232,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Grisha is a 6th-level-spellcaster. His spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell divine favor}",
+								"{@spell inflict wounds}",
+								"{@spell protection from evil and good}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell continual flame}",
+								"{@spell hold person}",
+								"{@spell magic weapon}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell dispel magic}",
+								"{@spell spirit guardians}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Hook Horror Spore Servant",
@@ -1835,18 +2016,6 @@
 			"passive": 11,
 			"languages": "Abyssal, Ixitxachitl",
 			"cr": "1/4",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (spell save DC 11, +3 to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, thaumaturgy",
-						"1st level (4 slots): charm person, create or destroy water",
-						"2nd level (3 slots): hold person, silence",
-						"3rd level (2 slots): dispel magic, tongues"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -1870,8 +2039,44 @@
 					]
 				}
 			],
-			"spells": "guidance, thaumaturgy, charm person, create or destroy water, hold person, silence, dispel magic, tongues",
-			"page": 225
+			"page": 225,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (spell save DC 11, {@hit 3} to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell create or destroy water}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell silence}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell tongues}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Juiblex",
@@ -1909,14 +2114,6 @@
 					"name": "Foul",
 					"text": [
 						"Any creature, other than an ooze, that starts its turn within 10 feet of Juiblex must succeed on a DC 21 Constitution saving throw or be poisoned until the start of the creature's next turn."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Juiblex's spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). Juiblex can innately cast the following spells, requiring no material components:",
-						"At will: acid splash (17th level), detect magic",
-						"3/day each: blight, contagion, gaseous form"
 					]
 				},
 				{
@@ -1967,7 +2164,7 @@
 					]
 				},
 				{
-					"name": "Eject Slime (Recharge 5\u20146)",
+					"name": "Eject Slime (Recharge 5-6)",
 					"text": [
 						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a DC 21 Dexterity saving throw. On a failure, the target takes 55 (10d10) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent -1 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent -1 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to -5, the object is destroyed."
 					],
@@ -2000,8 +2197,26 @@
 					]
 				}
 			],
-			"spells": "acid splash, detect magic, blight, contagion, gaseous form",
-			"page": 243
+			"page": 243,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Juiblex's spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). Juiblex can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell acid splash} (17th level)",
+						"{@spell detect magic}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell blight}",
+							"{@spell contagion}",
+							"{@spell gaseous form}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "OotA",
@@ -2205,28 +2420,19 @@
 				{
 					"name": "Insanity",
 					"text": [
-						"Droki has advantage on saving throws against being charmed or frightened."
+						"Narrak has advantage on saving throws against being charmed or frightened."
 					]
 				},
 				{
 					"name": "Magic Resistance",
 					"text": [
-						"The derro has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Narrak is a 5th-level spellcaster. His spellcasting ability is Charisma (Save DC 13, +5 to hit with spell attacks) Narrak has two 2nd-level spell slots, which he regains after finishing a short or long rest, and knows the following Warlock spells:",
-						"Cantrips (at will): eldritch blast, friends, poison spray",
-						"1st level: armor of Agathys, charm person, hex",
-						"2nd level: hold person, ray of enfeeblement, spider climb"
+						"Narrak has advantage on saving throws against spells and other magical effects."
 					]
 				},
 				{
 					"name": "Sunlight Sensitivity",
 					"text": [
-						"While in sunlight, the derro has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+						"While in sunlight, Narrak has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
 					]
 				}
 			],
@@ -2253,8 +2459,40 @@
 					]
 				}
 			],
-			"spells": "eldritch blast, friends, poison spray, armor of agathys, charm person, hex, hold person, ray of enfeeblement, spider climb",
-			"page": 232
+			"page": 232,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Narrak is a 5th-level spellcaster. His spellcasting ability is Charisma (Save DC 13, {@hit 5} to hit with spell attacks) Narrak has two 2nd-level spell slots, which he regains after finishing a short or long rest, and knows the following Warlock spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell eldritch blast}",
+								"{@spell friends}",
+								"{@spell poison spray}"
+							]
+						},
+						"1": {
+							"slots": 0,
+							"spells": [
+								"{@spell armor of Agathys}",
+								"{@spell charm person}",
+								"{@spell hex}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell ray of enfeeblement}",
+								"{@spell spider climb}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Orcus",
@@ -2294,15 +2532,6 @@
 					"text": [
 						"The wand has 7 charges, and any of its properties that require a saving throw have a save DC of 18. While holding it, Orcus can use an action to cast animate dead, blight, or speak with dead. Alternatively, he can expend or 1 or more of the wand's charges to cast one of the following spells from it: circle of death (1 charge), finger of death (1 charge), or power word kill (2 charges). The wand regains 1d4+3 charges daily at dawn.",
 						"While holding the wand, Orcus gains +3 AC and can use an action to conjure undead creatures whose combined average hit points don't exceed 500, These undead magically rise up from the ground or otherwise form in unoccupied spaces within 300 feet of Orcus and obey his commands until they are destroyed or until he dismisses them as an action. Once this property of the wand is used, the property can't be used again until the next dawn."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Orcus's spellcasting ability is Charisma (spell save DC 23, +15 to hit with spell attacks). He can innately cast the following spells, requiring no material components:",
-						"At will: chill touch (17th level), detect magic",
-						"3/day each: create undead, dispel magic",
-						"1/day: time stop"
 					]
 				},
 				{
@@ -2377,8 +2606,28 @@
 					]
 				}
 			],
-			"spells": "chill touch, detect magic, create undead, dispel magic, time stop",
-			"page": 245
+			"page": 245,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Orcus's spellcasting ability is Charisma (spell save DC 23, {@hit 15} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell chill touch} (17th level)",
+						"{@spell detect magic}"
+					],
+					"daily": {
+						"1": [
+							"{@spell time stop}"
+						],
+						"3e": [
+							"{@spell create undead}",
+							"{@spell dispel magic}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "The Pudding King",
@@ -2428,29 +2677,9 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The Pudding King's innate spellcasting ability is Intelligence (spell save DC 12). He can innately cast the following spells, requiring no material components:",
-						"At will: nondetection (self only)",
-						"1/day each: blindness/deafness, blur, disguise self"
-					]
-				},
-				{
 					"name": "Insanity",
 					"text": [
 						"The Pudding King has advantage on saving throws against being charmed or frightened."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The Pudding King is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). The Pudding King knows the following sorcerer spells:",
-						"Cantrips (at will): acid splash, light, mage hand, poison spray, prestidigitation",
-						"1st level (4 slots): false life, mage armor, ray of sickness, shield",
-						"2nd level (3 slots): crown of madness, misty step",
-						"3rd level (3 slots): gaseous form, stinking cloud",
-						"4th level (3 slots): blight, confusion",
-						"5th level (1 slot): cloudkill"
 					]
 				}
 			],
@@ -2477,8 +2706,78 @@
 					]
 				}
 			],
-			"spells": "acid splash, light, mage hand, poison spray, prestidigitation, false life, mage armor, ray of sickness, shield, crown of madness, misty step, gaseous form, stinking cloud, blight, confusion, cloudkill",
-			"page": 233
+			"page": 233,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The Pudding King's innate spellcasting ability is Intelligence (spell save DC 12). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell nondetection} (self only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell blindness/deafness}",
+							"{@spell blur}",
+							"{@spell disguise self}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Pudding King is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). The Pudding King knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell poison spray}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell false life}",
+								"{@spell mage armor}",
+								"{@spell ray of sickness}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell crown of madness}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell gaseous form}",
+								"{@spell stinking cloud}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell confusion}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell cloudkill}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Troglodyte Champion of Laogzed",
@@ -2638,18 +2937,6 @@
 			"passive": 11,
 			"languages": "Abyssal, Ixitxachitl",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (Spell save DC 11, +3 to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, thaumaturgy",
-						"1st level (4 slots): charm person, create or destroy water",
-						"2nd level (3 slots): hold person, silence",
-						"3rd level (2 slots): dispel magic, tongues"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Vampiric Bite",
@@ -2673,8 +2960,44 @@
 					]
 				}
 			],
-			"spells": "guidance, thaumaturgy, charm person, create or destroy water, hold person, silence, dispel magic, tongues",
-			"page": 226
+			"page": 226,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (Spell save DC 11, {@hit 3} to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell create or destroy water}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell silence}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell tongues}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "OotA",
@@ -2765,15 +3088,6 @@
 			"cr": "24",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Yeenoghu's spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks). He can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, spiritual weapon (8th-level spell, 4d8+2 force damage on a hit, appears as a flail)",
-						"3/day each: dispel magic, fear, invisibility",
-						"1/day: teleport"
-					]
-				},
-				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If Yeenoghu fails a saving throw, he can choose to succeed instead."
@@ -2848,8 +3162,29 @@
 					]
 				}
 			],
-			"spells": "detect magic, spiritual weapon, dispel magic, fear, invisibility, teleport",
-			"page": 247
+			"page": 247,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Yeenoghu's spellcasting ability is Charisma (spell save DC 17, {@hit 9} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell spiritual weapon} (8th-level spell, 4d8+2 force damage on a hit, appears as a flail)"
+					],
+					"daily": {
+						"1": [
+							"{@spell teleport}"
+						],
+						"3e": [
+							"{@spell dispel magic}",
+							"{@spell fear}",
+							"{@spell invisibility}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Yestabrod",
@@ -3014,15 +3349,6 @@
 			"cr": "23",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Zuggtmoy's spellcasting ability is Charisma (spell save DC 22). She can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, locate animals or plants, ray of sickness",
-						"3/day each: dispel magic, ensnaring strike, entangle, plant growth",
-						"1/day: etherealness, teleport"
-					]
-				},
-				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If Zuggtmoy fails a saving throw, she can choose to succeed instead."
@@ -3064,7 +3390,7 @@
 					]
 				},
 				{
-					"name": "Mind Control Spores (Recharge 5\u20146)",
+					"name": "Mind Control Spores (Recharge 5-6)",
 					"text": [
 						"Zuggtmoy releases spores that burst out in a cloud that fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Humanoids and beasts in the cloud when it appears, or that enter it later, must make a DC 19 Wisdom saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the influence of Zuggtmoy for 24 hours. While infected, the creature is charmed by her and can't be reinfected by these spores."
 					]
@@ -3085,8 +3411,32 @@
 					]
 				}
 			],
-			"spells": "detect magic, locate animals or plants, ray of sickness, dispel magic, ensnaring strike, entangle, plant growth, etherealness, teleport",
-			"page": 249
+			"page": 249,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Zuggtmoy's spellcasting ability is Charisma (spell save DC 22). She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell locate animals or plants}",
+						"{@spell ray of sickness}"
+					],
+					"daily": {
+						"1": [
+							"{@spell etherealness}",
+							"{@spell teleport}"
+						],
+						"3e": [
+							"{@spell dispel magic}",
+							"{@spell ensnaring strike}",
+							"{@spell entangle}",
+							"{@spell plant growth}"
+						]
+					}
+				}
+			]
 		}
 	]
 }
