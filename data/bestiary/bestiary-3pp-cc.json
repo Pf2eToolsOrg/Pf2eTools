@@ -976,13 +976,6 @@
 			"cr": "5",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The banshrae's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"1/day: bestow curse"
-					]
-				},
-				{
 					"name": "Sylvan Warrior",
 					"text": [
 						"A banshrae's armor class is 10 + its Charisma modifier + its Dexterity modifier."
@@ -1027,7 +1020,20 @@
 					]
 				}
 			],
-			"page": 19
+			"page": 19,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The banshrae's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell bestow curse}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -1708,16 +1714,6 @@
 			"cr": "3",
 			"trait": [
 				{
-					"name": "Spellcasting",
-					"text": [
-						"The bonesinger is a 6th level spellcaster. It's spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). It knows the following bard spells:",
-						"Cantrips (at will): mage hand, true strike, vicious mockery",
-						"1st level (4 slots): disguise self, healing word, sleep, silent image",
-						"2nd level (3 slots): crown of madness, hold person",
-						"3rd level (2 slots): clairvoyance, fear"
-					]
-				},
-				{
 					"name": "Bardic Inspiration (3/Day)",
 					"text": [
 						"As a bonus action, the bonesinger can inspire one creature other than itself. The creature gains a bardic inspiration die, a d8. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll or saving throw it makes. The creature adds this die after the roll is made but before success or failure is determined. A creature can only have one bardic inspiration die at a time."
@@ -1756,7 +1752,47 @@
 					]
 				}
 			],
-			"page": 30
+			"page": 30,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The bonesinger is a 6th level spellcaster. It's spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). It knows the following bard spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell true strike}",
+								"{@spell vicious mockery}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell disguise self}",
+								"{@spell healing word}",
+								"{@spell sleep}",
+								"{@spell silent image}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell crown of madness}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell clairvoyance}",
+								"{@spell fear}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -1781,13 +1817,6 @@
 			"cr": "5",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The briarvex's innate spellcasting ability is Wisdom (spell save DC 12). It can innately cast the following spells, requiring no material components:",
-						"At will: entangle"
-					]
-				},
-				{
 					"name": "Briarstride",
 					"text": [
 						"The briarvex is not slowed by forest terrain, can't be restrained or slowed by entangle spells, and never takes damage from thorns, briars, or other hazardous plants in the terrain."
@@ -1808,7 +1837,18 @@
 					]
 				}
 			],
-			"page": 31
+			"page": 31,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The briarvex's innate spellcasting ability is Wisdom (spell save DC 12). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell entangle}"
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -2286,15 +2326,6 @@
 			"passive": 14,
 			"languages": "any languages it knew in life",
 			"cr": "3",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The crypt thing's innate spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spells, requiring no material components:",
-						"6/day: dimension door"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -2315,7 +2346,20 @@
 					]
 				}
 			],
-			"page": 38
+			"page": 38,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The crypt thing's innate spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"6": [
+							"{@spell dimension door}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -2407,13 +2451,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The deepspawn's innate spellcasting ability is Intelligence (spell save DC 14). It can innately cast the following spells, requiring no material components:",
-						"3/day: hold person"
-					]
-				},
-				{
 					"name": "Prehensile Tentacles",
 					"text": [
 						"The deepspawn can wield weapons in its prehensile tentacles. Each tentacle can wield a Huge one\u2014handed or Large or smaller one\u2014 or two\u2014handed melee weapon. The tentacle attack is then resolved with the weapon's damage die and type as well as its special qualities."
@@ -2440,7 +2477,20 @@
 					]
 				}
 			],
-			"page": 40
+			"page": 40,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The deepspawn's innate spellcasting ability is Intelligence (spell save DC 14). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"3": [
+							"{@spell hold person}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -2814,25 +2864,6 @@
 			"passive": 13,
 			"languages": "Abyssal, telepathy 120 ft.",
 			"cr": "4",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The artaaglith's innate spellcasting ability is Wisdom (spell save DC 13). It can innately cast the following spells, requiring no material components:",
-						"1/day each: animate dead, fear, hallow, stinking cloud"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The artaaglith is a 5th level spell caster. It's spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). It has the following cleric spells prepared:",
-						"Cantrips (at will): chill touch, guidance, thaumaturgy",
-						"1st level (4 slots): command, inflict wounds, detect magic",
-						"2nd level (3 slots): blindness/deafness, hold person",
-						"3rd level (2 slots): bestow curse, animate dead"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Flail",
@@ -2841,7 +2872,60 @@
 					]
 				}
 			],
-			"page": 47
+			"page": 47,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The artaaglith's innate spellcasting ability is Wisdom (spell save DC 13). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell animate dead}",
+							"{@spell fear}",
+							"{@spell hallow}",
+							"{@spell stinking cloud}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The artaaglith is a 5th level spell caster. It's spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). It has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell guidance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell inflict wounds}",
+								"{@spell detect magic}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blindness/deafness}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell animate dead}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -3268,13 +3352,6 @@
 			"cr": "11",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The jarrlak's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"1/day: wall of ice"
-					]
-				},
-				{
 					"name": "Frigid Tomb",
 					"text": [
 						"A creature that fails its Constitution saving throw against a jarrlak's bite or freezing blast ability is slowed by the cold for one minute. The creature takes a \u20142 penalty to AC and Dexterity saving throws. It can only make a single attack when using the attack action, and when it attempts to cast a spell it must roll a d20. On an 11 or highter, the spell doesn't take effect until the creature's next turn and the creature must use its action on that turn to complete the spell. If it can't, the spell is wasted. If a creature that is already slowed by frigid tomb fails its Constitution saving throw against a jarrlak's bite or freezing blast ability, it becomes paralyzed for one minute. If a creature that is already paralyzed by frigid tomb fails its saving throw against a jarrlak's bite or freezing blast ability, it becomes permanently encased in ice. It is paralyzed and the next time it takes damage, the ice casing shatters and the creature is reduced to 0 hit points. A creature that has been encased for an hour or longer dies if the ice is shattered. A creature that is affected by frigid tomb, but not encased in ice by it, can attempt a DC 18 Constitution saving throw at the end of each of its turns, ending the effect on itself on a success. The frigid tomb abilities of different jarrlaks stack with each other. A creature that has been encased in ice can be freed by thawing it for 10 minutes with a torch or produce flame cantrip or similar flame."
@@ -3295,7 +3372,20 @@
 					]
 				}
 			],
-			"page": 52
+			"page": 52,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The jarrlak's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell wall of ice}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -4370,15 +4460,6 @@
 			"cr": "14",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The sorrowsworn demon's innate spellcasting ability is Charisma (spell save DC 18). It can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, invisibility, nondetection, teleport",
-						"3/day: dispel magic, touch of idiocy",
-						"1/day: feeblemind, plane shift"
-					]
-				},
-				{
 					"name": "Aura of Loss",
 					"text": [
 						"Any creature that starts its turn within 30 feet of the sorrowsworn demon must succeed on a DC 18 Charisma saving throw or gain disadvantage on attack rolls, ability checks and saving throws for one minute. At the end of each of its turns a creature may repeat the saving throw, ending the effect on itself on a success. The creature does not take disadvantage on this saving throw from the aura of loss unless it is still within 30 feet of the sorrowsworn demon."
@@ -4411,7 +4492,31 @@
 					]
 				}
 			],
-			"page": 64
+			"page": 64,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The sorrowsworn demon's innate spellcasting ability is Charisma (spell save DC 18). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell invisibility}",
+						"{@spell nondetection}",
+						"{@spell teleport}"
+					],
+					"daily": {
+						"1": [
+							"{@spell feeblemind}",
+							"{@spell plane shift}"
+						],
+						"3": [
+							"{@spell dispel magic}",
+							"{@spell touch of madness|bols 3pp|touch of idiocy}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -6784,15 +6889,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dryad's innate spellcasting ability is Charisma (spell save DC 15). The dryad can innately cast the following spells, requiring no material components:",
-						"At will: thorn whip",
-						"3/day each: entangle, fog cloud",
-						"1/day each: barkskin, spike growth"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The dryad has advantage on saving throws against spells and other magical effects. Speak with Beasts and Plants. The dryad can communicate with beasts and plants as if they shared a language."
@@ -6825,7 +6921,28 @@
 					]
 				}
 			],
-			"page": 91
+			"page": 91,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dryad's innate spellcasting ability is Charisma (spell save DC 15). The dryad can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell thorn whip}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell entangle}",
+							"{@spell fog cloud}"
+						],
+						"1e": [
+							"{@spell barkskin}",
+							"{@spell spike growth}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -7067,15 +7184,6 @@
 			"cr": "4",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The spiderherd's innate spellcasting ability is Wisdom (spell save DC 12). It can innately cast the following spells, requiring no material components:",
-						"At will: speak with animals (spiders only), poison spray",
-						"2/day each: web, dominate beast (spiders only)",
-						"1/day each: blight, giant insect (spiders only)"
-					]
-				},
-				{
 					"name": "Spider Climb",
 					"text": [
 						"The ettercap can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
@@ -7126,7 +7234,29 @@
 					]
 				}
 			],
-			"page": 95
+			"page": 95,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The spiderherd's innate spellcasting ability is Wisdom (spell save DC 12). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell speak with animals} (spiders only)",
+						"{@spell poison spray}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell web}",
+							"{@spell dominate beast} (spiders only)"
+						],
+						"1e": [
+							"{@spell blight}",
+							"{@spell giant insect} (spiders only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -7557,29 +7687,6 @@
 			"cr": "14",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The formian queen's innate spellcasting ability is Charisma (spell save DC 18). She can innately cast the following spells, requiring no material components:",
-						"At will: calm emotions, charm person, clairvoyance, detect good and evil, detect thoughts, hold monster, magic circle."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The formian queen is a 17th level spellcaster. Her spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). She can cast the following sorcerer spells:",
-						"Cantrips (at will): acid splash, light, mage hand, message",
-						"1st level (4 slots): magic missile, shield, thunderwave",
-						"2nd level (3 slots): invisibility, scorching ray",
-						"3rd level (3 slots): dispel magic, slow",
-						"4th level (3 slots): confusion, wall of fire",
-						"5th level (2 slots): cone of cold, dominate person",
-						"6th level (1 slot): mass suggestion",
-						"7th level (1 slot): prismatic spray",
-						"8th level (1 slot): power word stun",
-						"9th level (1 slot): time stop"
-					]
-				},
-				{
 					"name": "Hive Mind",
 					"text": [
 						"Formians within 50 miles of their queen are in constant telepathic communication and share experiences and thoughts constantly, when one formian is aware of something, they all are."
@@ -7618,7 +7725,100 @@
 					]
 				}
 			],
-			"page": 99
+			"page": 99,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The formian queen's innate spellcasting ability is Charisma (spell save DC 18). She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell calm emotions}",
+						"{@spell charm person}",
+						"{@spell clairvoyance}",
+						"{@spell detect evil and good}",
+						"{@spell detect thoughts}",
+						"{@spell hold monster}",
+						"{@spell magic circle}"
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The formian queen is a 17th level spellcaster. Her spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). She can cast the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell message}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell slow}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell cone of cold}",
+								"{@spell dominate person}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell mass suggestion}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell prismatic spray}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell power word stun}"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -7977,14 +8177,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The giant's innate spellcasting ability is Charisma (spell save DC 18). The giant can innately cast the following spells, requiring no material components:",
-						"3/day each: dispel magic, inflict wounds, blight",
-						"1/day: flame strike"
-					]
-				},
-				{
 					"name": "Steal Soul",
 					"text": [
 						"A creature that starts its turn within 30 feet of a death giant must succeed on a DC 18 Constitution saving throw or take 18 (4d8) necrotic damage. If a creature dies within 15 feet of the death giant, the death giant absorbs the creature's soul and it becomes one of the giant's guardian spirits. The creature cannot be brought back from the dead, until the death giant is slain."
@@ -8011,7 +8203,25 @@
 					]
 				}
 			],
-			"page": 104
+			"page": 104,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The giant's innate spellcasting ability is Charisma (spell save DC 18). The giant can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell flame strike}"
+						],
+						"3e": [
+							"{@spell dispel magic}",
+							"{@spell inflict wounds}",
+							"{@spell blight}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -8179,14 +8389,6 @@
 			"cr": "8",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The huntmaster's innate spellcasting ability is Wisdom (spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"At will: faerie fire, hunter's mark",
-						"1/day each: locate creature"
-					]
-				},
-				{
 					"name": "Swift Pursuit",
 					"text": [
 						"The huntmaster and a group of up to five other creatures can travel at a fast pace without taking the usual \u20145 penalty to their passive Wisdom (Perception) to notice hidden threats. Additionally, the huntmaster can track creatures and still contribute its passive Wisdom (Perception) score to the group's chance of noticing hidden threats."
@@ -8231,7 +8433,24 @@
 					]
 				}
 			],
-			"page": 105
+			"page": 105,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The huntmaster's innate spellcasting ability is Wisdom (spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell faerie fire}",
+						"{@spell hunter's mark}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell locate creature}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -8259,14 +8478,6 @@
 			"languages": "Common, Giant, Sylvan",
 			"cr": "7",
 			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The huntmaster's innate spellcasting ability is Wisdom (spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"At will: animal messenger (ravens only)",
-						"1/day each: pass without trace, moonbeam"
-					]
-				},
 				{
 					"name": "Call Murder",
 					"text": [
@@ -8306,7 +8517,24 @@
 					]
 				}
 			],
-			"page": 106
+			"page": 106,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The huntmaster's innate spellcasting ability is Wisdom (spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal messenger} (ravens only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell pass without trace}",
+							"{@spell moonbeam}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -8507,14 +8735,6 @@
 			"cr": "12",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The grisgol's innate spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: ray of frost (17th level)",
-						"1/day each: cloudkill, counterspell, dimension door, disintegrate, finger of death, invisibility, power word stun, shield"
-					]
-				},
-				{
 					"name": "Choking Dust",
 					"text": [
 						"A creature that hits the grisgol with a melee attack that deals damage other than piercing damage while within 5 feet of it must succeed on a DC 15 Constitution saving throw against disease or have its hit point maximum reduced by 13 (3d8). Every 24 hours after contracting the disease, the creature must make another Constitution saving throw, having its hit point maximum reduced by another 13 (3d8). The creature's hit point maximum is not restored to its normal maximum until the disease is cured. If a creature's hit point maximum becomes 0, it dies, its insides having turned to infectious goo."
@@ -8553,7 +8773,30 @@
 					]
 				}
 			],
-			"page": 110
+			"page": 110,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The grisgol's innate spellcasting ability is Charisma (spell save DC 17, {@hit 9} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell ray of frost} (17th level)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell cloudkill}",
+							"{@spell counterspell}",
+							"{@spell dimension door}",
+							"{@spell disintegrate}",
+							"{@spell finger of death}",
+							"{@spell invisibility}",
+							"{@spell power word stun}",
+							"{@spell shield}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -9271,15 +9514,6 @@
 			"passive": 11,
 			"languages": "Aquan, Common",
 			"cr": "1",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The kopru's innate spellcasting ability is Wisdom (spell save DC 11). It can innately cast the following spells, requiring no material components:",
-						"1/day: dominate person"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -9312,7 +9546,20 @@
 					]
 				}
 			],
-			"page": 122
+			"page": 122,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The kopru's innate spellcasting ability is Wisdom (spell save DC 11). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell dominate person}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -9647,22 +9894,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"A larva mage is a 20th level spellcaster. Its spellcasting ability is intelligence (Spell save DC 20, +12 to hit with spell attacks), it has the following wizard spells prepared:",
-						"Cantrips (at will): chill touch, fire bolt, mage hand, true strike",
-						"1st level (4 slots): false life, magic missile, mage armor, ray of sickness",
-						"2nd level (3 slots): crown of madness, mirror image, phantasmal force, scorching ray",
-						"3rd level (3 slots): fear, fireball, fly, slow",
-						"4th level (3 slots): dimension door, Evard's black tentacles, greater invisibility",
-						"5th level (3 slots): cloudkill, hold monster, scrying",
-						"6th level (2 slots): chain lightning, eyebite",
-						"7th level (2 slots): finger of death, prismatic spray",
-						"8th level (1 slot): mind blank, power word stun",
-						"9th level (1 slot): imprisonment"
-					]
-				},
-				{
 					"name": "Swarm",
 					"text": [
 						"The larva mage can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny larva. However it may have to leave some of its gear behind if the opening is too small."
@@ -9704,7 +9935,95 @@
 					]
 				}
 			],
-			"page": 127
+			"page": 127,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A larva mage is a 20th level spellcaster. Its spellcasting ability is intelligence (Spell save DC 20, {@hit 12} to hit with spell attacks), it has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell true strike}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell false life}",
+								"{@spell magic missile}",
+								"{@spell mage armor}",
+								"{@spell ray of sickness}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell crown of madness}",
+								"{@spell mirror image}",
+								"{@spell phantasmal force}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fear}",
+								"{@spell fireball}",
+								"{@spell fly}",
+								"{@spell slow}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell dimension door}",
+								"{@spell Evard's black tentacles}",
+								"{@spell greater invisibility}"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cloudkill}",
+								"{@spell hold monster}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 2,
+							"spells": [
+								"{@spell chain lightning}",
+								"{@spell eyebite}"
+							]
+						},
+						"7": {
+							"slots": 2,
+							"spells": [
+								"{@spell finger of death}",
+								"{@spell prismatic spray}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}",
+								"{@spell power word stun}"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell imprisonment}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -9961,15 +10280,6 @@
 			"cr": "5",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The lunar ravager's innate spellcasting ability is Wisdom (spell save DC 13). It can innately cast the following spells, requiring no material components:",
-						"At will: airwalk, faerie fire",
-						"3/day each: invisibility (self only), pass without trace",
-						"1/day: clairvoyance"
-					]
-				},
-				{
 					"name": "Moonrider",
 					"text": [
 						"The lunar ravager can magically teleport at will by concentrating and not taking any other actions for 1 minute. The lunar ravager can use this only to teleport itself and items it is wearing or carrying. When outside a lunar ravager lodge, the lunar ravager must be in moonlight to use this ability and can only travel to the nearest lodge. When inside a lunar ravager lodge, it can teleport to any point within 10 miles of the lodge."
@@ -9996,7 +10306,28 @@
 					]
 				}
 			],
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The lunar ravager's innate spellcasting ability is Wisdom (spell save DC 13). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"airwalk",
+						"{@spell faerie fire}"
+					],
+					"daily": {
+						"1": [
+							"{@spell clairvoyance}"
+						],
+						"3e": [
+							"{@spell invisibility} (self only)",
+							"{@spell pass without trace}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10339,13 +10670,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The mirror mimic's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells requiring no material components:",
-						"At will: mirror image"
-					]
-				},
-				{
 					"name": "False Appearance (Disguised Form Only)",
 					"text": [
 						"The mimic's apprearance is indistinguishable from the creature it is imitating. It can perfectly imitate the creature's voice and any mannerisms it has observed. However it must succeed on a Charisma (Deception) check if it engages in any behavior it does not know of the creature in front of creatures that know it."
@@ -10360,7 +10684,18 @@
 					]
 				}
 			],
-			"page": 139
+			"page": 139,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The mirror mimic's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells requiring no material components:"
+					],
+					"will": [
+						"{@spell mirror image}"
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10444,26 +10779,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"The banelar is a 10th level spellcaster. It's spellcasting ability for wizard spells is Intelligence (spell save DC 14, +6 to hit with spell attacks). It has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, minor illusion, ray of frost",
-						"1st level (4 slots): charm person, detect magic, sleep",
-						"2nd level (3 slots): detect thoughts, ray of enfeeblement",
-						"3rd level (3 slots): lightning bolt, water breathing",
-						"4th level (3 slots): none prepared",
-						"5th level (2 slots): none prepared",
-						"The banelar's spellcasting ability for cleric spells is Wisdom (spell save DC 14, +6 to hit with spell attacks). It has the following cleric spells prepared:",
-						"Cantrips (at will): mending, sacred flame, thaumaturgy",
-						"1st level: command, cure wounds, shield of faith",
-						"2nd level: calm emotions, hold person",
-						"3rd level: bestow curse, clairvoyance",
-						"4th level: none prepared",
-						"5th level: none prepared",
-						"The banelar's wizard and cleric spells use the same spell slots."
-					]
-				},
-				{
 					"name": "Petrification Resistance",
 					"text": [
 						"The banelar has advantage on saving throws against petrification."
@@ -10490,7 +10805,110 @@
 					]
 				}
 			],
-			"page": 143
+			"page": 143,
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Wizard)",
+					"headerEntries": [
+						"The banelar is a 10th level spellcaster. It's spellcasting ability for wizard spells is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). It has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell detect magic}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell ray of enfeeblement}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell lightning bolt}",
+								"{@spell water breathing}"
+							]
+						},
+						"4": {
+							"slots": 0,
+							"spells": [
+								"none prepared"
+							]
+						},
+						"5": {
+							"slots": 0,
+							"spells": [
+								"none prepared"
+							]
+						}
+					}
+				},
+				{
+					"name": "Spellcasting (Cleric)",
+					"headerEntries": [
+						"The banelar's spellcasting ability for cleric spells is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). It has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mending}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 0,
+							"spells": [
+								"{@spell command}",
+								"{@spell cure wounds}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 0,
+							"spells": [
+								"{@spell calm emotions}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 0,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell clairvoyance}"
+							]
+						},
+						"4": {
+							"slots": 0,
+							"spells": [
+								"none prepared"
+							]
+						},
+						"5": {
+							"slots": 0,
+							"spells": [
+								"none prepared"
+							]
+						}
+					},
+					"footerEntries": [
+						"The banelar's wizard and cleric spells use the same spell slots."
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10513,15 +10931,6 @@
 			"passive": 12,
 			"languages": "Common, Draconic",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The bright naga's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components:",
-						"At will: magic missile (2nd level)"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -10530,7 +10939,18 @@
 					]
 				}
 			],
-			"page": 144
+			"page": 144,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The bright naga's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell magic missile} (2nd level)"
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10568,28 +10988,9 @@
 			"cr": "11",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nagpa's innate spellcasting ability is Charisma (spell save DC 16, +7 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"3/day each: darkness, disintegrate, hold person"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The nagpa has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"A nagpa is a 9th level spellcaster. Its spellcasting ability is Intelligence (Spell save DC 17, +8 to hit with spell attacks), it has the following wizard spells prepared:",
-						"Cantrips (at will): chill touch, poison spray, mage hand",
-						"1st level (4 slots): false life, mage armor, ray of sickness, grease",
-						"2nd level (3 slots): blindness/deafness, phantasmal force, ray of enfeeblement",
-						"3rd level (3 slots): fear, fly, stinking cloud",
-						"4th level (3 slots): blight, phantasmal killer",
-						"5th level (1 slot): cloudkill"
 					]
 				}
 			],
@@ -10613,7 +11014,75 @@
 					]
 				}
 			],
-			"page": 145
+			"page": 145,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nagpa's innate spellcasting ability is Charisma (spell save DC 16, {@hit 7} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"3e": [
+							"{@spell darkness}",
+							"{@spell disintegrate}",
+							"{@spell hold person}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A nagpa is a 9th level spellcaster. Its spellcasting ability is Intelligence (Spell save DC 17, {@hit 8} to hit with spell attacks), it has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell poison spray}",
+								"{@spell mage hand}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell false life}",
+								"{@spell mage armor}",
+								"{@spell ray of sickness}",
+								"{@spell grease}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blindness/deafness}",
+								"{@spell phantasmal force}",
+								"{@spell ray of enfeeblement}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fear}",
+								"{@spell fly}",
+								"{@spell stinking cloud}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell phantasmal killer}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell cloudkill}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10651,13 +11120,6 @@
 			"languages": "Common, Nerra",
 			"cr": "1",
 			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nerra's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"1/day: mirror image"
-					]
-				},
 				{
 					"name": "Magic Resistance",
 					"text": [
@@ -10697,7 +11159,20 @@
 					]
 				}
 			],
-			"page": 146
+			"page": 146,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nerra's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell mirror image}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10737,14 +11212,6 @@
 			"cr": "4",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nerra's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"At will: alter self (change appearance only), mirror image",
-						"3/day: mislead"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The nerra has advantage on saving throws against spells and other magical effects."
@@ -10777,7 +11244,24 @@
 					]
 				}
 			],
-			"page": 147
+			"page": 147,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nerra's innate spellcasting ability is Charisma (spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell alter self} (change appearance only)",
+						"{@spell mirror image}"
+					],
+					"daily": {
+						"3": [
+							"{@spell mislead}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10815,14 +11299,6 @@
 			"cr": "1/2",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nerra's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components:",
-						"3/day: alter self (change appearance only)",
-						"1/day: mirror image"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The nerra has advantage on saving throws against spells and other magical effects."
@@ -10855,7 +11331,23 @@
 					]
 				}
 			],
-			"page": 147
+			"page": 147,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nerra's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell mirror image}"
+						],
+						"3": [
+							"{@spell alter self} (change appearance only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10896,15 +11388,6 @@
 					"name": "Desecrating Aura",
 					"text": [
 						"Other undead creatures have resistance to radiant damage and advantage on attack rolls and saving throws while within 20 feet of the nightshade."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nightcrawler's innate spellcasting ability is Charisma (spell save DC 19). It can innately cast the following spells, requiring no material components:",
-						"At will: blight, darkness, detect magic, dispel magic, haste, invisibility, see invisibility",
-						"3/day each: cone of cold, confusion, hold monster",
-						"1/day each: finger of death, plane shift"
 					]
 				},
 				{
@@ -10952,7 +11435,35 @@
 					]
 				}
 			],
-			"page": 148
+			"page": 148,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nightcrawler's innate spellcasting ability is Charisma (spell save DC 19). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell blight}",
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell dispel magic}",
+						"{@spell haste}",
+						"{@spell invisibility}",
+						"{@spell see invisibility}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell cone of cold}",
+							"{@spell confusion}",
+							"{@spell hold monster}"
+						],
+						"1e": [
+							"{@spell finger of death}",
+							"{@spell plane shift}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -10996,15 +11507,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nightcrawler's innate spellcasting ability is Charisma (spell save DC 16). It can innately cast the following spells, requiring no material components:",
-						"At will: contagion, blight, darkness, haste, see invisibility",
-						"3/day: confusion, hold monster, invisibility",
-						"1/day each: cone of cold, finger of death, plane shift"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The nightshade has advantage on saving throws against spells and other magical effects."
@@ -11037,7 +11539,34 @@
 					]
 				}
 			],
-			"page": 149
+			"page": 149,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nightcrawler's innate spellcasting ability is Charisma (spell save DC 16). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell contagion}",
+						"{@spell blight}",
+						"{@spell darkness}",
+						"{@spell haste}",
+						"{@spell see invisibility}"
+					],
+					"daily": {
+						"3": [
+							"{@spell confusion}",
+							"{@spell hold monster}",
+							"{@spell invisibility}"
+						],
+						"1e": [
+							"{@spell cone of cold}",
+							"{@spell finger of death}",
+							"{@spell plane shift}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -11081,15 +11610,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nightcrawler's innate spellcasting ability is Charisma (spell save DC 16). It can innately cast the following spells, requiring no material components:",
-						"At will: contagion, blight, detect magic, darkness, haste, see invisibility",
-						"3/day each: confusion, dispel magic, hold monster, invisibility",
-						"1/day each: cone of cold, finger of death, plane shift"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The nightshade has advantage on saving throws against spells and other magical effects."
@@ -11116,7 +11636,36 @@
 					]
 				}
 			],
-			"page": 149
+			"page": 149,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nightcrawler's innate spellcasting ability is Charisma (spell save DC 16). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell contagion}",
+						"{@spell blight}",
+						"{@spell detect magic}",
+						"{@spell darkness}",
+						"{@spell haste}",
+						"{@spell see invisibility}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell confusion}",
+							"{@spell dispel magic}",
+							"{@spell hold monster}",
+							"{@spell invisibility}"
+						],
+						"1e": [
+							"{@spell cone of cold}",
+							"{@spell finger of death}",
+							"{@spell plane shift}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -11148,14 +11697,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nixie's innate spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: mage hand",
-						"1/day each: compulsion, counterspell, create and destroy water, detect evil and good, detect thoughts, dispel magic, major image, minor illusion, polymorph, water breathing"
-					]
-				},
-				{
 					"name": "Slow Movement",
 					"text": [
 						"A nixie moves very slowly when on the ground, as it has to use its hands to crawl. It must use an action in addition to its move in order to move its base speed on the ground."
@@ -11170,7 +11711,32 @@
 					]
 				}
 			],
-			"page": 150
+			"page": 150,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nixie's innate spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell mage hand}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell compulsion}",
+							"{@spell counterspell}",
+							"{@spell create or destroy water}",
+							"{@spell detect evil and good}",
+							"{@spell detect thoughts}",
+							"{@spell dispel magic}",
+							"{@spell major image}",
+							"{@spell minor illusion}",
+							"{@spell polymorph}",
+							"{@spell water breathing}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -11250,14 +11816,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The norker's innate spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: meld into stone, stone shape",
-						"1/day each: stoneskin, wall of stone"
-					]
-				},
-				{
 					"name": "Rock Stance",
 					"text": [
 						"The norker has advantage on Strength, Dexterity and Constitution saving throws while standing on a natural stone surface."
@@ -11278,7 +11836,25 @@
 					]
 				}
 			],
-			"page": 151
+			"page": 151,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The norker's innate spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell meld into stone}",
+						"{@spell stone shape}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell stoneskin}",
+							"{@spell wall of stone}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -11313,13 +11889,6 @@
 			"languages": "Abyssal; telepathy 120 ft.",
 			"cr": "14",
 			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The avathu's spellcasting ability is Charisma (spell save DC 15). The avathu can innately cast the following spells, requiring no material components:",
-						"2/day: dimension door"
-					]
-				},
 				{
 					"name": "Magic Resistance",
 					"text": [
@@ -11359,7 +11928,20 @@
 					]
 				}
 			],
-			"page": 153
+			"page": 153,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The avathu's spellcasting ability is Charisma (spell save DC 15). The avathu can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"2": [
+							"{@spell dimension door}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -11463,14 +12045,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The cyoturma's spellcasting ability is Charisma (spell save DC 16). The cyoturma can innately cast the following spells, requiring no material components:",
-						"3/day each: darkness, staggering smite",
-						"1/day: plane shift"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The cyoturma has advantage on saving throws against spells and other magical effects."
@@ -11509,7 +12083,24 @@
 					]
 				}
 			],
-			"page": 154
+			"page": 154,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The cyoturma's spellcasting ability is Charisma (spell save DC 16). The cyoturma can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell plane shift}"
+						],
+						"3e": [
+							"{@spell darkness}",
+							"{@spell staggering smite}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -11743,14 +12334,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The inoqua's spellcasting ability is Wisdom (spell save DC 21). The inoqua can innately cast the following spells, requiring no material components:",
-						"At will: dimension door, dispel magic (9th level), plane shift, magic missile (6th level), word of recall",
-						"2/day each: Evard's black tentacles, eyebite 1/day each: imprisonment, heal"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The inoqua has advantage on saving throws against spells and other magical effects."
@@ -11815,7 +12398,32 @@
 					]
 				}
 			],
-			"page": 157
+			"page": 157,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The inoqua's spellcasting ability is Wisdom (spell save DC 21). The inoqua can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dimension door}",
+						"{@spell dispel magic} (9th level)",
+						"{@spell plane shift}",
+						"{@spell magic missile} (6th level)",
+						"{@spell word of recall}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell Evard's black tentacles}",
+							"{@spell eyebite}"
+						],
+						"1e": [
+							"{@spell imprisonment}",
+							"{@spell heal}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -11992,15 +12600,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The sibiriex's spellcasting ability is Intelligence (spell save DC 18). The sibiriex can innately cast the following spells, requiring no material components:",
-						"At will: dispel magic (level 9), sending",
-						"3/day each: command, creation (level 9), dominate monster",
-						"1/day: feeblemind"
-					]
-				},
-				{
 					"name": "Telekinesis",
 					"text": [
 						"The sibiriex has telekinetic abilities that allow it to manipulate its chains and use them as tentacle\u2014like appendages and otherwise function as the telekinesis spell. The sibiriex does not have to concentrate to maintain the effect, the effect has no time limit, and the sibiriex's spellcasting ability for this spell is Intelligence. The telekinesis can be dispelled or supressed by a dispel magic, antimagic field, or similar effect. If the telekinesis is dispelled, the sibiriex must use an action to reestablish it. While it is dispelled or suppressed, the sibiriex's chains hang lifelessly from its form and it cannot use its chain attack."
@@ -12039,7 +12638,29 @@
 					]
 				}
 			],
-			"page": 159
+			"page": 159,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The sibiriex's spellcasting ability is Intelligence (spell save DC 18). The sibiriex can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dispel magic} (level 9)",
+						"{@spell sending}"
+					],
+					"daily": {
+						"1": [
+							"{@spell feeblemind}"
+						],
+						"3e": [
+							"{@spell command}",
+							"{@spell creation} (level 9)",
+							"{@spell dominate monster}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -12074,15 +12695,6 @@
 			"languages": "Abyssal; telepathy 120 ft.",
 			"cr": "19",
 			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The ysolith's spellcasting ability is Charisma (spell save DC 18). The ysolith can innately cast the following spells, requiring no material components:",
-						"At will: dimension door, dispel magic (9th level), telekinesis",
-						"2/day each: flesh to stone, feeblemind",
-						"1/day each: hold monster, plane shift"
-					]
-				},
 				{
 					"name": "Magic Attacks",
 					"text": [
@@ -12128,7 +12740,30 @@
 					]
 				}
 			],
-			"page": 161
+			"page": 161,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The ysolith's spellcasting ability is Charisma (spell save DC 18). The ysolith can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dimension door}",
+						"{@spell dispel magic} (9th level)",
+						"{@spell telekinesis}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell flesh to stone}",
+							"{@spell feeblemind}"
+						],
+						"1e": [
+							"{@spell hold monster}",
+							"{@spell plane shift}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -12747,16 +13382,6 @@
 			"passive": 14,
 			"languages": "Celestial, Common",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The protectar's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components:",
-						"At will: tongues",
-						"4/day each: cure wounds, healing word"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -12771,7 +13396,24 @@
 					]
 				}
 			],
-			"page": 169
+			"page": 169,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The protectar's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell tongues}"
+					],
+					"daily": {
+						"4e": [
+							"{@spell cure wounds}",
+							"{@spell healing word}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -12800,16 +13442,6 @@
 			"passive": 13,
 			"languages": "Celestial",
 			"cr": "1/2",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The protectar's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:",
-						"At will: tongues",
-						"3/day: cure wounds"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Longsword",
@@ -12818,7 +13450,23 @@
 					]
 				}
 			],
-			"page": 169
+			"page": 169,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The protectar's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell tongues}"
+					],
+					"daily": {
+						"3": [
+							"{@spell cure wounds}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -13699,14 +14347,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"A shardmind's innate spellcasting ability is intelligence (Spell save DC 13, +5 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: detect thoughts, suggestion",
-						"1/day each: dominate monster, scrying"
-					]
-				},
-				{
 					"name": "Shard Swarm (Recharges after a Short or Long Rest)",
 					"text": [
 						"The shardmind's form cascades into a swarm of swirling crystal shards momentarily. While in this form the shardmind gains a fly speed equal to its walking speed. At the end of its turn, the shardmind regains its regular, solid form."
@@ -13721,7 +14361,25 @@
 					]
 				}
 			],
-			"page": 181
+			"page": 181,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"A shardmind's innate spellcasting ability is intelligence (Spell save DC 13, {@hit 5} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect thoughts}",
+						"{@spell suggestion}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell scrying}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -13976,13 +14634,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A skull lord's innate spellcasting ability is Charisma (Spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"1/day each: cure wounds (level 5, undead only), invisibility, meld into stone, wall of fire"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The skull lord has advantage on saving throws against spells and other magical effects."
@@ -14029,7 +14680,23 @@
 					]
 				}
 			],
-			"page": 185
+			"page": 185,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A skull lord's innate spellcasting ability is Charisma (Spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell cure wounds} (level 5, undead only)",
+							"{@spell invisibility}",
+							"{@spell meld into stone}",
+							"{@spell wall of fire}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -14277,26 +14944,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A spell weaver's innate spellcasting ability is Charisma (Spell save DC 15). It can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, invisibility",
-						"1/day: plane shift"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"A spell weaver is a 10th level spellcaster. Its spellcasting ability is Charisma (Spell save DC 15, +7 to hit with spell attacks), it knows the following sorcerer spells:",
-						"Cantrips (at will): chill touch, fire bolt, mage hand, true strike",
-						"1st level (4 slots): burning hands, magic missile, shield",
-						"2nd level (3 slots): levitate, phantasmal force",
-						"3rd level (3 slots): lightning bolt, slow",
-						"4th level (3 slots): blight, dimension door",
-						"5th level (2 slots): hold monster, telekinesis"
-					]
-				},
-				{
 					"name": "Telepathic Seclusion",
 					"text": [
 						"The spell weaver is all but immune"
@@ -14329,7 +14976,76 @@
 					]
 				}
 			],
-			"page": 190
+			"page": 190,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A spell weaver's innate spellcasting ability is Charisma (Spell save DC 15). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1": [
+							"{@spell plane shift}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A spell weaver is a 10th level spellcaster. Its spellcasting ability is Charisma (Spell save DC 15, {@hit 7} to hit with spell attacks), it knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell true strike}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell levitate}",
+								"{@spell phantasmal force}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell lightning bolt}",
+								"{@spell slow}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell dimension door}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell hold monster}",
+								"{@spell telekinesis}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -14355,15 +15071,6 @@
 			"passive": 9,
 			"languages": "Common, Gnome",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A spriggan's innate spellcasting ability is Charisma (Spell save DC 10). It can innately cast the following spells, requiring no material components:",
-						"At will: produce flame, shatter"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Enlarge Form (Recharges after a Short or Long Rest)",
@@ -14384,7 +15091,19 @@
 					]
 				}
 			],
-			"page": 191
+			"page": 191,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A spriggan's innate spellcasting ability is Charisma (Spell save DC 10). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell produce flame}",
+						"{@spell shatter}"
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -15130,20 +15849,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"A tulgar spirit talker is a 14th level spellcaster. Its spellcasting ability is Wisdom (Spell save DC 15, +7 to hit with spell attacks), it has the following druid spells prepared:",
-						"Cantrips (at will): druidcraft, guidance, resistance",
-						"1st level (4 slots): charm person, cure wounds, detect magic, entangle, jump",
-						"2nd level (3 slots): hold person, lesser restoration, pass without trace",
-						"3rd level (3 slots): dispel magic, protection from energy, feign death",
-						"4th level (1 slot): confusion, dominate beast, locate creature",
-						"5th level (1 slot): planar binding,reincarnate",
-						"6th level (1 slot): heal, wind walk",
-						"7th level (1 slot): plane shift"
-					]
-				},
-				{
 					"name": "Unbroken Spirit",
 					"text": [
 						"When the tulgar is reduced to 0 hit points or dies, the nearest ally of the tulgar gains 10 temporary hit points and advantage on attack rolls and saving throws."
@@ -15170,7 +15875,78 @@
 					]
 				}
 			],
-			"page": 202
+			"page": 202,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A tulgar spirit talker is a 14th level spellcaster. Its spellcasting ability is Wisdom (Spell save DC 15, {@hit 7} to hit with spell attacks), it has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell guidance}",
+								"{@spell resistance}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell cure wounds}",
+								"{@spell detect magic}",
+								"{@spell entangle}",
+								"{@spell jump}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell lesser restoration}",
+								"{@spell pass without trace}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell protection from energy}",
+								"{@spell feign death}"
+							]
+						},
+						"4": {
+							"slots": 1,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell dominate beast}",
+								"{@spell locate creature}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell planar binding}",
+								"{@spell reincarnate}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell heal}",
+								"{@spell wind walk}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell plane shift}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
