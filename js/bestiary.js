@@ -169,8 +169,8 @@ function addMonsters (data) {
 			`<li ${FLTR_ID}="${mI}">
 				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-1 col-xs-1-8 source source${abvSource}">${abvSource}</span>
-					<span class="type col-xs-4 col-xs-4-3">${mon._pTypes.asText.uppercaseFirst()}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
+					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr}</span>
 				</a>
 			</li>`;
