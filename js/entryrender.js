@@ -1003,16 +1003,24 @@ EntryRenderer.monster = {
 		return renderStack.join("");
 	},
 
-	getSpellcastingRenderedString: (mon) => {
+	getSpellcastingRenderedString: (mon, renderer) => {
 		const spellcasting = mon.spellcasting;
 		const renderStack = [];
 		for (let i = 0; i < spellcasting.length; i++) {
 			let spellList = spellcasting[i];
 			renderer.recursiveEntryRender({type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}, renderStack, 2);
-			if (spellList.constant || spellList.will || spellList.daily || spellList.weekly) {
+			if (spellList.constant || spellList.will || spellList.rest || spellList.daily || spellList.weekly) {
 				let spellArray = [];
 				if (spellList.constant) spellArray.push(`Constant: ${spellList.constant.join(", ")}`);
 				if (spellList.will) spellArray.push(`At will: ${spellList.will.join(", ")}`);
+				if (spellList.rest) {
+					for (let j = 9; j > 0; j--) {
+						let rest = spellList.rest;
+						if (rest[j]) spellArray.push(`${j}/rest: ${rest[j].join(", ")}`);
+						const jEach = `${j}e`;
+						if (rest[jEach]) spellArray.push(`${j}/rest each: ${rest[jEach].join(", ")}`);
+					}
+				}
 				if (spellList.daily) {
 					for (let j = 9; j > 0; j--) {
 						let daily = spellList.daily;
@@ -1035,10 +1043,15 @@ EntryRenderer.monster = {
 				for (let j = 0; j < 10; j++) {
 					let spells = spellList.spells[j];
 					if (spells) {
+						let lower = spells.lower;
 						let levelCantrip = `${Parser.spLevelToFull(j)}${(j === 0 ? "s" : " level")}`;
 						let slotsAtWill = ` (at will)`;
 						let slots = spells.slots;
 						if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} slot${slots > 1 ? "s" : ""})` : ``;
+						if (lower) {
+							levelCantrip = `${Parser.spLevelToFull(lower)}-${levelCantrip}`;
+							if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} ${Parser.spLevelToFull(j)}-level slot${slots > 1 ? "s" : ""})` : ``;
+						}
 						renderer.recursiveEntryRender({type: "entries", entries: [`${levelCantrip} ${slotsAtWill}: ${spells.spells.join(", ")}`]}, renderStack, 1);
 					}
 				}
