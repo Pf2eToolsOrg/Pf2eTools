@@ -48,12 +48,24 @@ function parseSpellcasting (monsterName, trait, contentsIndex) {
 	let doneHeader = false;
 	for (let i = 1; i < trait.text.length; i++) {
 		let thisLine = trait.text[i];
-		if (thisLine.includes("/day")) {
+		if (thisLine.includes("/rest")) {
+			doneHeader = true;
+			let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+			let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+			if (!spellcastingEntry.rest) spellcastingEntry.rest = {};
+			spellcastingEntry.rest[property] = value;
+		} else if (thisLine.includes("/day")) {
 			doneHeader = true;
 			let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
 			let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
 			if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
 			spellcastingEntry.daily[property] = value;
+		} else if (thisLine.includes("/week")) {
+			doneHeader = true;
+			let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+			let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+			if (!spellcastingEntry.weekly) spellcastingEntry.weekly = {};
+			spellcastingEntry.weekly[property] = value;
 		} else if (thisLine.startsWith("Constant: ")) {
 			doneHeader = true;
 			spellcastingEntry.constant = thisLine.substring(9).split(", ").map(i => parseSpell(i));

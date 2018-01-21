@@ -5,6 +5,9 @@
 		"level1to9": {
 			"type": "object",
 			"properties": {
+				"lower": {
+					"type": "number"
+				},
 				"slots": {
 					"type": "number"
 				},
@@ -340,6 +343,9 @@
 								},
 								"will": {
 									"$ref": "#/definitions/arrayOfString"
+								},
+								"rest": {
+									"$ref": "#/definitions/frequency"
 								},
 								"daily": {
 									"$ref": "#/definitions/frequency"
