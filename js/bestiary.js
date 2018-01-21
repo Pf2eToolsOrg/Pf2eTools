@@ -169,8 +169,8 @@ function addMonsters (data) {
 			`<li ${FLTR_ID}="${mI}">
 				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-1 col-xs-1-8 source source${abvSource}">${abvSource}</span>
-					<span class="type col-xs-4 col-xs-4-3">${mon._pTypes.asText.uppercaseFirst()}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
+					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr}</span>
 				</a>
 			</li>`;
@@ -386,8 +386,9 @@ function loadhash (id) {
 		for (let i = 0; i < spellcasting.length; i++) {
 			let spellList = spellcasting[i]
 			renderer.recursiveEntryRender({type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}, renderStack, 2);
-			if (spellList.will || spellList.daily) {
+			if (spellList.constant || spellList.will || spellList.daily || spellList.weekly) {
 				let spellArray = [];
+				if (spellList.constant) spellArray.push(`Constant: ${spellList.constant.join(", ")}`);
 				if (spellList.will) spellArray.push(`At will: ${spellList.will.join(", ")}`);
 				if (spellList.daily) {
 					for (let j = 9; j > 0; j--) {
@@ -395,6 +396,14 @@ function loadhash (id) {
 						if (daily[j]) spellArray.push(`${j}/day: ${daily[j].join(", ")}`);
 						const jEach = `${j}e`;
 						if (daily[jEach]) spellArray.push(`${j}/day each: ${daily[jEach].join(", ")}`);
+					}
+				}
+				if (spellList.weekly) {
+					for (let j = 9; j > 0; j--) {
+						let weekly = spellList.weekly;
+						if (weekly[j]) spellArray.push(`${j}/week: ${weekly[j].join(", ")}`);
+						const jEach = `${j}e`;
+						if (weekly[jEach]) spellArray.push(`${j}/week each: ${weekly[jEach].join(", ")}`);
 					}
 				}
 				renderer.recursiveEntryRender({type: "entries", entries: spellArray}, renderStack, 1);
@@ -410,8 +419,8 @@ function loadhash (id) {
 						renderer.recursiveEntryRender({type: "entries", entries: [`${levelCantrip} ${slotsAtWill}: ${spells.spells.join(", ")}`]}, renderStack, 1);
 					}
 				}
-				if (spellList.footerEntries) renderer.recursiveEntryRender({type: "entries", entries: spellList.footerEntries}, renderStack, 1);
 			}
+			if (spellList.footerEntries) renderer.recursiveEntryRender({type: "entries", entries: spellList.footerEntries}, renderStack, 1);
 		}
 		$(`tr#traits`).after(`<tr class='trait'><td colspan='6'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
 	}

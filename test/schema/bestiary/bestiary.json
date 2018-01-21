@@ -27,6 +27,66 @@
 			"items": {
 				"type": "string"
 			}
+		},
+		"frequency": {
+			"type": "object",
+			"properties": {
+				"9e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"9": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"8e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"8": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"7e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"7": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"6e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"6": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"5e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"5": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"4e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"4": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"3e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"3": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"2e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"2": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"1e": {
+					"$ref": "#/definitions/arrayOfString"
+				},
+				"1": {
+					"$ref": "#/definitions/arrayOfString"
+				}
+			},
+			"additionalProperties": false
 		}
 	},
 	"properties": {
@@ -272,6 +332,9 @@
 										"$ref": "/Entry"
 									}
 								},
+								"constant": {
+									"$ref": "#/definitions/arrayOfString"
+								},
 								"headerWill": {
 									"$ref": "#/definitions/arrayOfString"
 								},
@@ -279,64 +342,10 @@
 									"$ref": "#/definitions/arrayOfString"
 								},
 								"daily": {
-									"type": "object",
-									"properties": {
-										"9e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"9": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"8e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"8": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"7e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"7": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"6e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"6": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"5e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"5": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"4e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"4": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"3e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"3": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"2e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"2": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"1e": {
-											"$ref": "#/definitions/arrayOfString"
-										},
-										"1": {
-											"$ref": "#/definitions/arrayOfString"
-										}
-									},
-									"additionalProperties": false
+									"$ref": "#/definitions/frequency"
+								},
+								"weekly": {
+									"$ref": "#/definitions/frequency"
 								},
 								"spells": {
 									"type": "object",
