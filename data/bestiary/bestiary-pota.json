@@ -48,19 +48,6 @@
 					"text": [
 						"If Aerisi fails a saving throw, she can choose to succeed instead."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Aerisi is a 12th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). Aerisi has the following wizard spells prepared:",
-						"Cantrips (at will): gust, mage hand, message, prestidigitation, ray of frost, shocking grasp",
-						"1st level (4 slots): charm person, feather fall, mage armor, thunderwave",
-						"2nd level (3 slots): dust devil, gust of wind, invisibility",
-						"3rd level (3 slots): fly, gaseous form, lightning bolt",
-						"4th level (3 slots): ice storm, storm sphere",
-						"5th level (2 slots): cloudkill, seeming (cast each day)",
-						"6th level (1 slot): chain lightning"
-					]
 				}
 			],
 			"action": [
@@ -76,8 +63,72 @@
 				}
 			],
 			"legendaryGroup": "Aerisi Kalinoth",
-			"spells": "gust (ee), mage hand, message, prestidigitation, ray of frost, shocking grasp, charm person, feather fall, mage armor, thunderwave, dust devil (ee), gust of wind, invisibility, fly, gaseous form, lightning bolt, ice storm, storm sphere (ee), cloudkill, seeming, chain lightning",
-			"page": 192
+			"page": 192,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Aerisi is a 12th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). Aerisi has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell gust|xge}",
+								"{@spell mage hand}",
+								"{@spell message}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell feather fall}",
+								"{@spell mage armor}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell dust devil|xge}",
+								"{@spell gust of wind}",
+								"{@spell invisibility}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fly}",
+								"{@spell gaseous form}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell ice storm}",
+								"{@spell storm sphere|xge}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell cloudkill}",
+								"{@spell seeming} (cast each day)"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell chain lightning}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Air Elemental Myrmidon",
@@ -166,28 +217,6 @@
 			"passive": 9,
 			"languages": "Common, Ignan",
 			"cr": "8",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Bastian's innate spellcasting ability is Constitution (spell save DC 13, +5 to hit with spell attacks). He can innately cast the following spells:",
-						"At will: produce flame",
-						"1/day: burning hands"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Bastian is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). Bastian knows the following sorcerer spells:",
-						"Cantrips (at will): fire bolt, mage hand, message, prestidigitation, shocking grasp",
-						"1st level (4 slots): mage armor, magic missile, shield",
-						"2nd level (3 slots): misty step, scorching ray",
-						"3rd level (3 slots): counterspell, fireball",
-						"4th level (3 slots): dimension door, wall of fire",
-						"5th level (1 slot): hold monster"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Dagger",
@@ -199,8 +228,75 @@
 					]
 				}
 			],
-			"spells": "produce flame, burning hands, fire bolt, mage hand, message, prestidigitation, shocking grasp, mage armor, magic missile, shield, misty step, scorching ray, counterspell, fireball, dimension door, wall of fire, hold monster",
-			"page": 201
+			"page": 201,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Bastian's innate spellcasting ability is Constitution (spell save DC 13, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
+					],
+					"will": [
+						"{@spell produce flame}"
+					],
+					"daily": {
+						"1": [
+							"{@spell burning hands}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Bastian is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). Bastian knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell message}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell dimension door}",
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell hold monster}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Black Earth Guard",
@@ -284,18 +380,6 @@
 			"passive": 10,
 			"languages": "Common, Terran",
 			"cr": "3",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): acid splash, blade ward, light, mending, mold earth",
-						"1st level (4 slots): earth tremor, expeditious retreat, shield",
-						"2nd level (3 slots): shatter, spider climb",
-						"3rd level (2 slots): slow"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -321,8 +405,47 @@
 					]
 				}
 			],
-			"spells": "acid splash, blade ward, light, mending, mold earth (ee), earth tremor (ee), expeditious retreat, shield, shatter, spider climb, slow",
-			"page": 195
+			"page": 195,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell blade ward}",
+								"{@spell light}",
+								"{@spell mending}",
+								"{@spell mold earth|xge}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell earth tremor|xge}",
+								"{@spell expeditious retreat}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell shatter}",
+								"{@spell spider climb}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell slow}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Burrowshark",
@@ -417,18 +540,6 @@
 			"passive": 10,
 			"languages": "Aquan, Common",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): chill touch, mage hand, minor illusion, prestidigitation, ray of frost",
-						"1st level (4 slots): expeditious retreat, ice knife, magic missile, shield",
-						"2nd level (3 slots): blur, hold person",
-						"3rd level (2 slots): sleet storm"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Quarterstaff",
@@ -441,8 +552,48 @@
 					]
 				}
 			],
-			"spells": "chill touch, mage hand, minor illusion, prestidigitation, ray of frost, expeditious retreat, ice knife (ee), magic missile, shield, blur, hold person, sleet storm",
-			"page": 205
+			"page": 205,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell expeditious retreat}",
+								"{@spell ice knife|xge}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blur}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell sleet storm}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Crushing Wave Reaver",
@@ -750,17 +901,6 @@
 			"cr": "5",
 			"trait": [
 				{
-					"name": "Spellcasting",
-					"text": [
-						"Elizar is a 7th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 15, +7 to hit with spell attacks). Elizar has the following druid spells prepared:",
-						"Cantrips (at will): druidcraft, guidance, poison spray, produce flame",
-						"1st level (4 slots): animal friendship, faerie fire, healing word, jump, thunderwave",
-						"2nd level (3 slots): flame blade, spike growth",
-						"3rd level (3 slots): dispel magic, stinking cloud",
-						"4th level (2 slots): blight, wall of fire"
-					]
-				},
-				{
 					"name": "Summon Mephits (Recharges after a Long Rest)",
 					"text": [
 						"By puffing on his pipe, Elizar can use an action to cast conjure minor elementals. If he does so, he summons four smoke mephits."
@@ -778,8 +918,56 @@
 					]
 				}
 			],
-			"spells": "druidcraft, guidance, poison spray, produce flame, animal friendship, faerie fire, healing word, jump, thunderwave, flame blade, spike growth, dispel magic, stinking cloud, blight, wall of fire",
-			"page": 202
+			"page": 202,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Elizar is a 7th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 15, {@hit 7} to hit with spell attacks). Elizar has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell guidance}",
+								"{@spell poison spray}",
+								"{@spell produce flame}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell animal friendship}",
+								"{@spell faerie fire}",
+								"{@spell healing word}",
+								"{@spell jump}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell flame blade}",
+								"{@spell spike growth}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell stinking cloud}"
+							]
+						},
+						"4": {
+							"slots": 2,
+							"spells": [
+								"{@spell blight}",
+								"{@spell wall of fire}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Eternal Flame Guardian",
@@ -878,18 +1066,6 @@
 			"passive": 10,
 			"languages": "Common, Ignan",
 			"cr": "3",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): control flames, create bonfire, fire bolt, light, minor illusion",
-						"1st level (4 slots): burning hands, expeditious retreat, mage armor",
-						"2nd level (3 slots): blur, scorching ray",
-						"3rd level (2 slots): fireball"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Dagger",
@@ -901,8 +1077,47 @@
 					]
 				}
 			],
-			"spells": "control flames (ee), create bonfire (ee), fire bolt, light, minor illusion, burning hands, expeditious retreat, mage armor, blur, scorching ray, fireball",
-			"page": 200
+			"page": 200,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell control flames|xge}",
+								"{@spell create bonfire|xge}",
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell minor illusion}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell expeditious retreat}",
+								"{@spell mage armor}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blur}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell fireball}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Fathomer",
@@ -945,16 +1160,6 @@
 					"text": [
 						"The fathomer can cast mage armor at will, without expending material components."
 					]
-				},
-				{
-					"name": "Spellcasting (Human Form Only)",
-					"text": [
-						"The fathomer is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has two 3rd-level spell slots, which it regains after finishing a short or long rest, and knows the following warlock spells:",
-						"Cantrips (at will): chill touch, eldritch blast, mage hand",
-						"1st level: armor of Agathys, expeditious retreat, hex",
-						"2nd level: invisibility",
-						"3rd level: Vampiric touch"
-					]
 				}
 			],
 			"action": [
@@ -977,8 +1182,44 @@
 					]
 				}
 			],
-			"spells": "chill touch, eldritch blast, mage hand, armor of agathys, expeditious retreat, hex, invisibility, vampiric touch",
-			"page": 207
+			"page": 207,
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Human Form Only)",
+					"headerEntries": [
+						"The fathomer is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It has two 3rd-level spell slots, which it regains after finishing a short or long rest, and knows the following warlock spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell eldritch blast}",
+								"{@spell mage hand}"
+							]
+						},
+						"1": {
+							"slots": 0,
+							"spells": [
+								"{@spell armor of Agathys}",
+								"{@spell expeditious retreat}",
+								"{@spell hex}"
+							]
+						},
+						"2": {
+							"slots": 0,
+							"spells": [
+								"{@spell invisibility}"
+							]
+						},
+						"3": {
+							"slots": 0,
+							"spells": [
+								"{@spell Vampiric touch}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Feathergale Knight",
@@ -1007,16 +1248,6 @@
 			"passive": 10,
 			"languages": "Auran, Common",
 			"cr": "1",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The knight is a 1st-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It knows the following sorcerer spell:",
-						"Cantrips (at will): gust, light, message, ray of frost",
-						"1st level (2 slots): expeditious retreat, feather fall"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -1045,8 +1276,32 @@
 					]
 				}
 			],
-			"spells": "gust (ee), light, message, ray of frost, expeditious retreat, feather fall",
-			"page": 189
+			"page": 189,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The knight is a 1st-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It knows the following sorcerer spell:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell gust|xge}",
+								"{@spell light}",
+								"{@spell message}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 2,
+							"spells": [
+								"{@spell expeditious retreat}",
+								"{@spell feather fall}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Fire Elemental Myrmidon",
@@ -1148,17 +1403,6 @@
 			"cr": "6",
 			"trait": [
 				{
-					"name": "Spellcasting",
-					"text": [
-						"The flamewrath is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): control flames, fire bolt, friends, light, minor illusion",
-						"1st level (4 slots): burning hands, color spray, mage armor",
-						"2nd level (3 slots): scorching ray, suggestion",
-						"3rd level (3 slots): fireball, hypnotic pattern",
-						"4th level (1 slot): fire shield (see Wreathed in Flame)"
-					]
-				},
-				{
 					"name": "Wreathed in Flame",
 					"text": [
 						"For the flamewrath, the warm version of the fire shield spell has a duration of \"until dispelled.\" The fire shield burns for 10 minutes after the flamewrath dies, consuming its body."
@@ -1176,8 +1420,54 @@
 					]
 				}
 			],
-			"spells": "control flames (ee), fire bolt, friends, light, minor illusion, burning hands, color spray, mage armor, scorching ray, suggestion, fireball, hypnotic pattern, fire shield",
-			"page": 201
+			"page": 201,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The flamewrath is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell control flames|xge}",
+								"{@spell fire bolt}",
+								"{@spell friends}",
+								"{@spell light}",
+								"{@spell minor illusion}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell color spray}",
+								"{@spell mage armor}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell scorching ray}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fireball}",
+								"{@spell hypnotic pattern}"
+							]
+						},
+						"4": {
+							"slots": 1,
+							"spells": [
+								"{@spell fire shield} (see Wreathed in Flame)"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Gar Shatterkeel",
@@ -1221,18 +1511,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"Gar is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 16, +8 to hit with spell attacks). He has the following druid spells prepared:",
-						"Cantrips (at will): mending, resistance, shape water",
-						"1st level (4 slots): create or destroy water, cure wounds, fog cloud, thunderwave",
-						"2nd level (3 slots): darkvision, hold person, protection from poison",
-						"3rd level (3 slots): call lightning, sleet storm, tidal wave",
-						"4th level (3 slots): control water, ice storm",
-						"5th level (1 slot): scrying"
-					]
-				},
-				{
 					"name": "Water Walk",
 					"text": [
 						"Gar can stand and move on liquid surfaces as if they were solid ground."
@@ -1273,8 +1551,62 @@
 				}
 			],
 			"legendaryGroup": "Gar Shatterkeel",
-			"spells": "mending, resistance, shape water (ee), create or destroy water, cure wounds, fog cloud, thunderwave, darkvision, hold person, protection from poison, call lightning, sleet storm, tidal wave (ee), control water, ice storm, scrying",
-			"page": 208
+			"page": 208,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Gar is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks). He has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mending}",
+								"{@spell resistance}",
+								"{@spell shape water|xge}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell create or destroy water}",
+								"{@spell cure wounds}",
+								"{@spell fog cloud}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell darkvision}",
+								"{@spell hold person}",
+								"{@spell protection from poison}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell call lightning}",
+								"{@spell sleet storm}",
+								"{@spell tidal wave|xge}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell control water}",
+								"{@spell ice storm}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell scrying}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Ghald",
@@ -1545,16 +1877,6 @@
 					"text": [
 						"The priest can hold its breath for 30 minutes."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): blade ward, gust, light, prestidigitation, shocking grasp",
-						"1st level (4 slots): feather fall, shield, witch bolt",
-						"2nd level (3 slots): dust devil, gust of wind",
-						"3rd level (2 slots): gaseous form"
-					]
 				}
 			],
 			"action": [
@@ -1583,8 +1905,47 @@
 					]
 				}
 			],
-			"spells": "blade ward, gust (ee), light, prestidigitation, shocking grasp, feather fall, shield, witch bolt, dust devil (ee), gust of wind, gaseous form",
-			"page": 190
+			"page": 190,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell blade ward}",
+								"{@spell gust|xge}",
+								"{@spell light}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell feather fall}",
+								"{@spell shield}",
+								"{@spell witch bolt}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell dust devil|xge}",
+								"{@spell gust of wind}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell gaseous form}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Hurricane",
@@ -1613,15 +1974,6 @@
 			"languages": "Auran, Common",
 			"cr": "2",
 			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The hurricane is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): blade ward, gust, light, prestidigitation",
-						"1st level (4 slots): feather fall, jump, thunderwave",
-						"2nd level (2 slots): gust of wind"
-					]
-				},
 				{
 					"name": "Unarmored Defense",
 					"text": [
@@ -1660,8 +2012,39 @@
 					]
 				}
 			],
-			"spells": "blade ward, gust (ee), light, prestidigitation, feather fall, jump, thunderwave, gust of wind",
-			"page": 191
+			"page": 191,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The hurricane is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell blade ward}",
+								"{@spell gust|xge}",
+								"{@spell light}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell feather fall}",
+								"{@spell jump}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell gust of wind}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Imix",
@@ -1718,14 +2101,6 @@
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If Imix fails a saving throw, he can choose to succeed instead."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Imix's innate spellcasting ability is Charisma (spell save DC 20, +12 to hit with spell attacks). He can innately cast the following spells, requiring no material components:",
-						"At will: fireball, wall of fire",
-						"3/day each: fire storm, haste, teleport"
 					]
 				},
 				{
@@ -1794,8 +2169,26 @@
 				}
 			],
 			"legendaryGroup": "Imix",
-			"spells": "fireball, wall of fire, fire storm, haste, teleport",
-			"page": 214
+			"page": 214,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Imix's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell fireball}",
+						"{@spell wall of fire}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell fire storm}",
+							"{@spell haste}",
+							"{@spell teleport}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Marlos Urnrayle",
@@ -1912,26 +2305,6 @@
 					"text": [
 						"Moving through difficult terrain made of earth or stone costs Miraj no extra movement."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Miraj's innate spellcasting ability is Constitution (spell save DC 14). He can innately cast the following spell, requiring no material components:",
-						"1/day: pass without trace"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Miraj is an 11th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). He knows the following sorcerer spells:",
-						"Cantrips (at will): acid splash, blade ward, friends, light, message, mold earth",
-						"1st level (4 slots): chromatic orb, mage armor, magic missile",
-						"2nd level (3 slots): Maximilian's earthen grasp, shatter, suggestion",
-						"3rd level (3 slots): counterspell, erupting earth",
-						"4th level (3 slots): polymorph, stoneskin",
-						"5th level (2 slots): wall of stone",
-						"6th level (1 slot): move earth"
-					]
 				}
 			],
 			"action": [
@@ -1946,8 +2319,80 @@
 					]
 				}
 			],
-			"spells": "pass without trace, acid splash, blade ward, friends, light, message, mold earth (ee), chromatic orb, mage armor, magic missile, Maximilian's earthen grasp (ee), shatter, suggestion, counterspell, erupting earth (ee), polymorph, stoneskin, wall of stone, move earth",
-			"page": 198
+			"page": 198,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Miraj's innate spellcasting ability is Constitution (spell save DC 14). He can innately cast the following spell, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell pass without trace}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Miraj is an 11th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). He knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell blade ward}",
+								"{@spell friends}",
+								"{@spell light}",
+								"{@spell message}",
+								"{@spell mold earth|xge}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell chromatic orb}",
+								"{@spell mage armor}",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell Maximilian's earthen grasp|xge}",
+								"{@spell shatter}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell erupting earth|xge}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell polymorph}",
+								"{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell wall of stone}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell move earth}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Ogrémoch",
@@ -1977,13 +2422,6 @@
 					"name": "Empowered Attacks",
 					"text": [
 						"Ogrémoch's slam attacks are treated as magical and adamantine for the purpose of bypassing resistance and immunity to nonmagical attacks."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Ogrémoch's innate spellcasting ability is Charisma (spell save DC 20, +12 to hit with spell attacks). He can innately cast the following spells, requiring no material components:",
-						"At will: meld into stone, move earth, wall of stone"
 					]
 				},
 				{
@@ -2058,8 +2496,20 @@
 				}
 			],
 			"legendaryGroup": "Ogrémoch",
-			"spells": "meld into stone, move earth, wall of stone",
-			"page": 216
+			"page": 216,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Ogrémoch's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell meld into stone}",
+						"{@spell move earth}",
+						"{@spell wall of stone}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Olhydra",
@@ -2089,15 +2539,6 @@
 					"name": "Empowered Attacks",
 					"text": [
 						"Olhydra's slam attacks are treated as magical for the purpose of bypassing resistance and immunity to nonmagical attacks."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Olhydra's innate spellcasting ability is Charisma (spell save DC 20, +12 to hit with spell attacks). She can innately cast the following spells, requiring no material components:",
-						"At will: wall of ice",
-						"3/day: ice storm",
-						"1/day: storm of vengeance"
 					]
 				},
 				{
@@ -2179,8 +2620,26 @@
 				}
 			],
 			"legendaryGroup": "Olhydra",
-			"spells": "wall of ice, ice storm, storm of vengeance",
-			"page": 218
+			"page": 218,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Olhydra's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell wall of ice}"
+					],
+					"daily": {
+						"1": [
+							"{@spell storm of vengeance}"
+						],
+						"3": [
+							"{@spell ice storm}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "One-Eyed Shiver",
@@ -2220,16 +2679,6 @@
 					"attack": [
 						"Chilling Mist||1d10"
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The one-eyed shiver is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): chill touch, mage hand",
-						"1st level (4 slots): fog cloud, mage armor, thunderwave",
-						"2nd level (3 slots): mirror image, misty step",
-						"3rd level (2 slots): fear"
-					]
 				}
 			],
 			"action": [
@@ -2249,8 +2698,44 @@
 					]
 				}
 			],
-			"spells": "chill touch, mage hand, fog cloud, mage armor, thunderwave, mirror image, misty step, fear",
-			"page": 207
+			"page": 207,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The one-eyed shiver is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell mage hand}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell fog cloud}",
+								"{@spell mage armor}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell mirror image}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell fear}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Oreioth",
@@ -2289,16 +2774,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"Oreioth is a 6th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). He has the following wizard spells prepared:",
-						"Cantrips (at will): chill touch, minor illusion, prestidigitation, shocking grasp",
-						"1st level (4 slots): false life, mage armor, magic missile, ray of sickness",
-						"2nd level (3 slots): crown of madness, misty step",
-						"3rd level (3 slots): animate dead, vampiric touch"
-					]
-				},
-				{
 					"name": "Swift Animation (Recharges after a Long Rest)",
 					"text": [
 						"When a living Medium or Small humanoid within 30 feet of Oreioth dies, he can use an action on his next turn to cast animate dead on that humanoid's corpse, instead of using the spell's normal casting time."
@@ -2316,8 +2791,48 @@
 					]
 				}
 			],
-			"spells": "chill touch, minor illusion, prestidigitation, shocking grasp, false life, mage armor, magic missile, ray of sickness, crown of madness, misty step, animate dead, vampiric touch",
-			"page": 212
+			"page": 212,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Oreioth is a 6th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). He has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell false life}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell ray of sickness}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell crown of madness}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell vampiric touch}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Razerblast",
@@ -2490,24 +3005,6 @@
 					"text": [
 						"Shoalar can breathe air and water."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Shoalar's innate spellcasting ability is Constitution (spell save DC 13, +5 to hit with spell attacks). He can innately cast the following spells:",
-						"At will: shape water",
-						"1/day: create or destroy water"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Shoalar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). He knows the following sorcerer spells:",
-						"Cantrips (at will): acid splash, chill touch, friends, prestidigitation, ray of frost",
-						"1st level (4 slots): disguise self, mage armor, magic missile",
-						"2nd level (3 slots): hold person, misty step",
-						"3rd level (2 slots): tidal wave"
-					]
 				}
 			],
 			"action": [
@@ -2521,8 +3018,61 @@
 					]
 				}
 			],
-			"spells": "shape water (ee), create or destroy water, acid splash, chill touch, friends, prestidigitation, ray of frost, disguise self, mage armor, magic missile, hold person, misty step, tidal wave (ee)",
-			"page": 208
+			"page": 208,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Shoalar's innate spellcasting ability is Constitution (spell save DC 13, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
+					],
+					"will": [
+						"{@spell shape water|xge}"
+					],
+					"daily": {
+						"1": [
+							"{@spell create or destroy water}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Shoalar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). He knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell chill touch}",
+								"{@spell friends}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell disguise self}",
+								"{@spell mage armor}",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell tidal wave|xge}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Skyweaver",
@@ -2551,18 +3101,6 @@
 			"passive": 10,
 			"languages": "Auran, Common",
 			"cr": "3",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The Skyweaver is a 6th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): blade ward, light, message, ray of frost, shocking grasp",
-						"1st level (4 slots): feather fall, mage armor, witch bolt",
-						"2nd level (3 slots): gust of wind, invisibility",
-						"3rd level (3 slots): fly, lightning bolt"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Dagger",
@@ -2574,8 +3112,48 @@
 					]
 				}
 			],
-			"spells": "blade ward, light, message, ray of frost, shocking grasp, feather fall, mage armor, witch bolt, gust of wind, invisibility, fly, lightning bolt",
-			"page": 191
+			"page": 191,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Skyweaver is a 6th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell blade ward}",
+								"{@spell light}",
+								"{@spell message}",
+								"{@spell ray of frost}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell feather fall}",
+								"{@spell mage armor}",
+								"{@spell witch bolt}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell gust of wind}",
+								"{@spell invisibility}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Stonemelder",
@@ -2614,17 +3192,6 @@
 					"attack": [
 						"Death Burst||2d10"
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The Stonemelder is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). It knows the following sorcerer spells:",
-						"Cantrips (at will): acid splash, blade ward, light, mending, mold earth",
-						"1st level (4 slots): expeditious retreat, false life, shield",
-						"2nd level (3 slots): Maximilian's earthen grasp, shatter",
-						"3rd level (3 slots): erupting earth, meld into stone",
-						"4th level (1 slot): stoneskin"
-					]
 				}
 			],
 			"action": [
@@ -2638,8 +3205,54 @@
 					]
 				}
 			],
-			"spells": "acid splash, blade ward, light, mending, mold earth (ee), expeditious retreat, false life, shield, Maximilian's earthen grasp (ee), shatter, erupting earth (ee), meld into stone, stoneskin",
-			"page": 197
+			"page": 197,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Stonemelder is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell blade ward}",
+								"{@spell light}",
+								"{@spell mending}",
+								"{@spell mold earth|xge}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell expeditious retreat}",
+								"{@spell false life}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell Maximilian's earthen grasp|xge}",
+								"{@spell shatter}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell erupting earth|xge}",
+								"{@spell meld into stone}"
+							]
+						},
+						"4": {
+							"slots": 1,
+							"spells": [
+								"{@spell stoneskin}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Thurl Merosska",
@@ -2670,18 +3283,6 @@
 			"passive": 10,
 			"languages": "Auran, Common",
 			"cr": "3",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Thurl is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). Thurl knows the following sorcerer spells:",
-						"Cantrips (at will): friends, gust, light, message, ray of frost",
-						"1st level (4 slots): expeditious retreat, feather fall, jump",
-						"2nd level (3 slots): levitate, misty step",
-						"3rd level (2 slots): haste"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -2716,8 +3317,47 @@
 					]
 				}
 			],
-			"spells": "friends, gust (ee), light, message, ray of frost, expeditious retreat, feather fall, jump, levitate, misty step, haste",
-			"page": 192
+			"page": 192,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Thurl is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). Thurl knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell friends}",
+								"{@spell gust|xge}",
+								"{@spell light}",
+								"{@spell message}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell expeditious retreat}",
+								"{@spell feather fall}",
+								"{@spell jump}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell levitate}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell haste}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Vanifer",
@@ -2761,18 +3401,6 @@
 					"text": [
 						"If Vanifer fails a saving throw, she can choose to succeed instead."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Vanifer is a 10th-level spellcaster. Her spellcasting ability is Charisma (spell save DC 16, +8 to hit with spell attacks). Vanifer knows the following sorcerer spells:",
-						"Cantrips (at will): chill touch, fire bolt, friends, mage hand, message, produce flame, thaumaturgy",
-						"1st level (4 slots): burning hands, chromatic orb, hellish rebuke, shield",
-						"2nd level (3 slots): darkness, detect thoughts, misty step, scorching ray",
-						"3rd level (3 slots): counterspell, fireball, hypnotic pattern",
-						"4th level (3 slots): wall of fire",
-						"5th level (2 slots): dominate person"
-					]
 				}
 			],
 			"action": [
@@ -2793,8 +3421,66 @@
 				}
 			],
 			"legendaryGroup": "Vanifer",
-			"spells": "chill touch, fire bolt, friends, mage hand, message, produce flame, thaumaturgy, burning hands, chromatic orb, hellish rebuke, shield, darkness, detect thoughts, misty step, scorching ray, counterspell, fireball, hypnotic pattern, wall of fire, dominate person",
-			"page": 203
+			"page": 203,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Vanifer is a 10th-level spellcaster. Her spellcasting ability is Charisma (spell save DC 16, {@hit 8} to hit with spell attacks). Vanifer knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell fire bolt}",
+								"{@spell friends}",
+								"{@spell mage hand}",
+								"{@spell message}",
+								"{@spell produce flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell chromatic orb}",
+								"{@spell hellish rebuke}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell darkness}",
+								"{@spell detect thoughts}",
+								"{@spell misty step}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell hypnotic pattern}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell dominate person}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Water Elemental Myrmidon",
@@ -2887,15 +3573,6 @@
 					"text": [
 						"Wiggan has advantage on saving throws against being charmed or frightened."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Wiggan is a 4th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). He has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, light, mending, shillelagh, thaumaturgy",
-						"1st level (4 slots): animal friendship, cure wounds, healing word, inflict wounds, speak with animals",
-						"2nd level (3 slots): barkskin, spike growth, spiritual weapon"
-					]
 				}
 			],
 			"action": [
@@ -2916,8 +3593,44 @@
 					]
 				}
 			],
-			"spells": "guidance, light, mending, shillelagh, thaumaturgy, animal friendship, cure wounds, healing word, inflict wounds, speak with animals, barkskin, spike growth, spiritual weapon",
-			"page": 212
+			"page": 212,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Wiggan is a 4th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell light}",
+								"{@spell mending}",
+								"{@spell shillelagh}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell animal friendship}",
+								"{@spell cure wounds}",
+								"{@spell healing word}",
+								"{@spell inflict wounds}",
+								"{@spell speak with animals}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell barkskin}",
+								"{@spell spike growth}",
+								"{@spell spiritual weapon}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Windharrow",
@@ -2956,17 +3669,6 @@
 					"text": [
 						"Windharrow has advantage on saving throws against being charmed, and magic can't put him to sleep."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Windharrow is an 8th-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). Windharrow knows the following bard spells:",
-						"Cantrips (at will): friends, prestidigitation, vicious mockery",
-						"1st level (4 slots): disguise self, dissonant whispers, thunderwave",
-						"2nd level (3 slots): invisibility, shatter, silence",
-						"3rd level (3 slots): nondetection, sending, tongues",
-						"4th level (2 slots): confusion, dimension door"
-					]
 				}
 			],
 			"action": [
@@ -2986,8 +3688,55 @@
 					]
 				}
 			],
-			"spells": "friends, prestidigitation, vicious mockery, disguise self, dissonant whispers, thunderwave, invisibility, shatter, silence, nondetection, sending, tongues, confusion, dimension door",
-			"page": 192
+			"page": 192,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Windharrow is an 8th-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). Windharrow knows the following bard spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell friends}",
+								"{@spell prestidigitation}",
+								"{@spell vicious mockery}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell disguise self}",
+								"{@spell dissonant whispers}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell shatter}",
+								"{@spell silence}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell nondetection}",
+								"{@spell sending}",
+								"{@spell tongues}"
+							]
+						},
+						"4": {
+							"slots": 2,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell dimension door}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Yan-C-Bin",
@@ -3023,14 +3772,6 @@
 					"name": "Empowered Attacks",
 					"text": [
 						"Yan-C-Bin's slam attacks are treated as magical for the purpose of bypassing resistance and immunity to nonmagical attacks."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Yan-C-Bin's innate spellcasting ability is Charisma (spell save DC 20, +12 to hit with spell attacks). He can innately cast the following spells, requiring no material components:",
-						"At will: gust of wind, invisibility, lightning bolt",
-						"2/day each: chain lightning, cloudkill, haste"
 					]
 				},
 				{
@@ -3108,8 +3849,27 @@
 				}
 			],
 			"legendaryGroup": "Yan-C-Bin",
-			"spells": "gust of wind, invisibility, lightning bolt, chain lightning, cloudkill, haste",
-			"page": 221
+			"page": 221,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Yan-C-Bin's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell gust of wind}",
+						"{@spell invisibility}",
+						"{@spell lightning bolt}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell chain lightning}",
+							"{@spell cloudkill}",
+							"{@spell haste}"
+						]
+					}
+				}
+			]
 		}
 	]
 }

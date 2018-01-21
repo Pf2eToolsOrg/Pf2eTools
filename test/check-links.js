@@ -3,6 +3,7 @@ const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
 const re = /{@(spell|item|class|creature|condition|background) (.*?)(\|(.*?))?(\|.*?)?}/g;
+let msg = ``;
 
 const TAG_TO_PAGE = {
 	"spell": UrlUtil.PG_SPELLS,
@@ -47,9 +48,10 @@ function checkFile (file) {
 			Array.from(ALL_URLS).forEach(it => {
 				if (similar && it.startsWith(similar[0])) similarUrls.push(it)
 			});
-			console.log(`Similar URLs were:\n${JSON.stringify(similarUrls, null, 2)}`);
-			const msg = `Missing link: ${match[0]} in file ${file} (evaluates to "${url}")`;
-			throw new Error(msg);
+			msg += `Missing link: ${match[0]} in file ${file} (evaluates to "${url}")
+Similar URLs were:
+${JSON.stringify(similarUrls, null, 2)}
+`;
 		}
 	}
 }
@@ -61,4 +63,5 @@ utS.UtilSearchIndex.getIndex(false, true).forEach(it => {
 
 console.log("##### Checking links in JSON #####");
 recursiveCheck("./data");
+if (msg) throw new Error(msg);
 console.log("##### Link check complete #####");

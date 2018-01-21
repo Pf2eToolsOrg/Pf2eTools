@@ -96,16 +96,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"Blood orchid grand savants are spellcasters who can cast the spells listed below. Blood Orchid Grand Savant's spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks) and don't require material components.",
-						"Cantrips (at will): chill touch, light, mage hand, minor illusion",
-						"1st level (8 slots): burning hands, color spray, cure wounds, mage armor, magic missile, shield",
-						"2nd level (7 slots): crown of madness, mirror image, phantasmal force, scorching ray",
-						"3rd level (5 slots): lightning bolt, vampiric touch"
-					]
-				},
-				{
 					"name": "Telepathic Bond",
 					"text": [
 						"Blood orchids communicate through a nonmagical telepathic bond. They can sense emotions in other blood orchids at distances up to 100 feet, can communicate fully with each other through telepathy at a distance of 20 ft. or less, and can share vast amounts of information almost instantly when touching each other. They can sense emotions in other types of creatures when touching them or within 5 feet."
@@ -132,7 +122,51 @@
 					]
 				}
 			],
-			"spells": "chill touch, light, mage hand, minor illusion, burning hands, color spray, cure wounds, mage armor, magic missile, shield, crown of madness, mirror image, phantasmal force, scorching ray, lightning bolt, vampiric touch"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Blood orchid grand savants are spellcasters who can cast the spells listed below. Blood Orchid Grand Savant's spellcasting ability is Charisma (spell save DC 17, {@hit 9} to hit with spell attacks) and don't require material components."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}"
+							]
+						},
+						"1": {
+							"slots": 8,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell color spray}",
+								"{@spell cure wounds}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 7,
+							"spells": [
+								"{@spell crown of madness}",
+								"{@spell mirror image}",
+								"{@spell phantasmal force}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 5,
+							"spells": [
+								"{@spell lightning bolt}",
+								"{@spell vampiric touch}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Blood Orchid Savant",
@@ -172,15 +206,6 @@
 					"text": [
 						"Blood orchids communicate through a nonmagical telepathic bond. They can sense emotions in other blood orchids at distances up to 100 feet, can communicate fully with each other through telepathy at a distance of 20 ft. or less, and can share vast amounts of information almost instantly when touching each other. They can sense emotions in other types of creatures when touching them or within 5 feet."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Blood orchid savants are spellcasters who can cast the spells listed below. Blood Orchid Savant's spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks) and don't require material components.",
-						"Cantrips (at will): chill touch, light, mage hand, minor illusion",
-						"1st level (2 slots): burning hands, cure wounds, magic missile",
-						"2nd level (1 slot): phantasmal force"
-					]
 				}
 			],
 			"action": [
@@ -203,7 +228,38 @@
 					]
 				}
 			],
-			"spells": "chill touch, light, mage hand, minor illusion, burning hands, cure wounds, magic missile, phantasmal force"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Blood orchid savants are spellcasters who can cast the spells listed below. Blood Orchid Savant's spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks) and don't require material components."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}"
+							]
+						},
+						"1": {
+							"slots": 2,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell cure wounds}",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 1,
+							"spells": [
+								"{@spell phantasmal force}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Bone Cobbler",
@@ -427,13 +483,6 @@
 					"text": [
 						"A decapus can mimic the sounds of any creature it has previously encountered with uncanny accuracy, though it can't mimic humanoid speech patterns for more than two or three words at a stretch. The ruse can be detected with a contest between the decapus's Deception and a listener's Insight."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A decapus's innate spellcasting ability is Charisma (spell save DC 11). The decapus doesn't need material components to use this ability.",
-						"At Will: major image"
-					]
 				}
 			],
 			"action": [
@@ -456,7 +505,17 @@
 					]
 				}
 			],
-			"spells": "major image"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A decapus's innate spellcasting ability is Charisma (spell save DC 11). The decapus doesn't need material components to use this ability."
+					],
+					"will": [
+						"{@spell major image}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Denizen of Leng",
@@ -497,15 +556,6 @@
 					"text": [
 						"Once per turn, a denizen of Leng can do an extra 14 (4d6) damage with a claw or bite attack if the denizen has advantage on the attack or if one of its allies is within 5 feet of the target."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A denizen of Leng's innate spellcasting ability is Charisma (spell save DC 16, +8 to hit with spell attacks). A denizen of Leng doesn't need material components to use these abilities.",
-						"Constant: tongues",
-						"3/day each: detect thoughts, hypnotic pattern, levitate, minor image",
-						"1/day each: locate object, plane shift (self only)"
-					]
 				}
 			],
 			"action": [
@@ -528,7 +578,29 @@
 					]
 				}
 			],
-			"spells": "tongues, detect thoughts, hypnotic pattern, levitate, minor image, locate object, plane shift"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A denizen of Leng's innate spellcasting ability is Charisma (spell save DC 16, {@hit 8} to hit with spell attacks). A denizen of Leng doesn't need material components to use these abilities."
+					],
+					"constant": [
+						"{@spell tongues}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell detect thoughts}",
+							"{@spell hypnotic pattern}",
+							"{@spell levitate}",
+							"{@spell mirror image}"
+						],
+						"1e": [
+							"{@spell locate object}",
+							"{@spell plane shift} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Dust Digger",
@@ -955,15 +1027,6 @@
 					"text": [
 						"A Leng spider's venom causes flesh to blister and rot, reducing the target's Charisma score by 1 point. It also triggers vivid and horrific hallucinations. A poisoned creature suffers the effect of the poisoned condition and must act as if affected by the confusion spell. The confusion effect ends the second time the creature rolls a 9 or 10 at the start of its turn (allowing it to act normally that turn). The poisoned condition persists until after the creature's next long rest, or until the poison is neutralized magically. Lost Charisma can be regained through magic."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A Leng-spider's innate spellcasting ability is Intelligence (spell save DC 16, +8 to hit with spell attacks). The Leng-spider doesn't need material components to use these abilities. It can cast dispel magic as a bonus action.",
-						"At Will: dispel magic",
-						"3/day each: invisibility, phantasmal force",
-						"1/day: dominate monster"
-					]
 				}
 			],
 			"action": [
@@ -986,7 +1049,26 @@
 					]
 				}
 			],
-			"spells": "dispel magic, invisibility, phantasmal force, dominate monster"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A Leng-spider's innate spellcasting ability is Intelligence (spell save DC 16, {@hit 8} to hit with spell attacks). The Leng-spider doesn't need material components to use these abilities. It can cast dispel magic as a bonus action."
+					],
+					"will": [
+						"{@spell dispel magic}"
+					],
+					"daily": {
+						"1": [
+							"{@spell dominate monster}"
+						],
+						"3e": [
+							"{@spell invisibility}",
+							"{@spell phantasmal force}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Temporal Crawler",
@@ -3592,13 +3674,6 @@
 					"text": [
 						"It gains no new abilities or statistics, only the appearance."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"An ice drake's innate spellcasting ability is Charisma (spell save DC 10). The ice drake doesn't need material components to use these abilities.",
-						"2/day each: fear, sleep"
-					]
 				}
 			],
 			"action": [
@@ -3627,7 +3702,20 @@
 					]
 				}
 			],
-			"spells": "fear, sleep"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"An ice drake's innate spellcasting ability is Charisma (spell save DC 10). The ice drake doesn't need material components to use these abilities."
+					],
+					"daily": {
+						"2e": [
+							"{@spell fear}",
+							"{@spell sleep}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Brine Sea Serpent",
@@ -4212,16 +4300,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A fyr's innate spellcasting ability is Charisma (spell save DC 11, +3 to hit with spell attacks). A fyr doesn't need material components to use these abilities.",
-						"At Will: animal friendship, speak with animals",
-						"3/day each: faerie fire, pass without trace",
-						"2/day each: beast sense, conjure animals",
-						"1/day each: dominate beast, invisibility"
-					]
-				},
-				{
 					"name": "Weapon Attunement",
 					"text": [
 						"Fyrs have an ability to attune themselves with any wood-handled weapon, so that they get a +1 attack bonus with such a weapon once they've handled for at least 10 minutes. This bonus is already included in the battleaxe attack line above."
@@ -4242,7 +4320,32 @@
 					]
 				}
 			],
-			"spells": "animal friendship, speak with animals, faerie fire, pass without trace, beast sense, conjure animals, dominate beast, invisibility"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A fyr's innate spellcasting ability is Charisma (spell save DC 11, {@hit 3} to hit with spell attacks). A fyr doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell animal friendship}",
+						"{@spell speak with animals}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell faerie fire}",
+							"{@spell pass without trace}"
+						],
+						"2e": [
+							"{@spell beast sense}",
+							"{@spell conjure animals}"
+						],
+						"1e": [
+							"{@spell dominate beast}",
+							"{@spell invisibility}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Gray Nisp",
@@ -4272,13 +4375,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A gray nisp's inante spellcasting ability is Wisdom (spell save DC 12, +4to hit with spell attacks). The gray nisp doesn't need material components to use these abilities.",
-						"At Will: confusion, detect thoughts, minor illusion (auditory only), hold monster, slow"
-					]
-				},
-				{
 					"name": "Water Dependent",
 					"text": [
 						"A gray nisp can survive out of water for only 10 minutes. After that, it begins suffocating."
@@ -4305,7 +4401,21 @@
 					]
 				}
 			],
-			"spells": "confusion, detect thoughts, minor illusion, hold monster, slow"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A gray nisp's inante spellcasting ability is Wisdom (spell save DC 12, +4to hit with spell attacks). The gray nisp doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell confusion}",
+						"{@spell detect thoughts}",
+						"{@spell minor illusion} (auditory only)",
+						"{@spell hold monster}",
+						"{@spell slow}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Grimm",
@@ -4350,14 +4460,6 @@
 					"text": [
 						"If both of a grimm's claw attacks and its bite attack hit the same target in a single turn, the grimm gains temporary hit points equal to the piercing damage done by its bite. Ethereal Jaunt (recharge 5, 6). A grimm can shift between the Ethereal Plane and the Material Plane as a bonus action when it moves. It can remain on the Ethereal Plane only until ethereal jaunt recharges; it must return to the Material Plane on the first turn it can (but not necessarily as the first thing it does that turn; the grimm could move in the Ethereal Plane before returning to the Material Plane). While in the Ethereal Plane, the grimm can't be seen or harmed by anyone on the Material Plane except by magical effects that cross the planar boundary. It can see and hear what is around it (within 60 feet) on the Material Plane, but it can't harm anything in the Material Plane. While Ethereal, the grimm can move in any direction, even up or down and through solid objects, but it treats all space as difficult terrain."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A grimm's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). The grimm doesn't need material components to use these abilities.",
-						"At Will: blur",
-						"3/day each: call lightning, darkness, detect fey (as detect evil and good but detects fey only)"
-					]
 				}
 			],
 			"action": [
@@ -4386,7 +4488,24 @@
 					]
 				}
 			],
-			"spells": "blur, call lightning, darkness, detect evil and good"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A grimm's innate spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). The grimm doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell blur}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell call lightning}",
+							"{@spell darkness}",
+							"{@spell detect evil and good|phb|detect fey} (as detect evil and good but detects fey only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Korred",
@@ -4428,13 +4547,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Korred's innate spellcasting ability is Charisma (spell save DC 12). A korred doesn't need material components to use these abilities.",
-						"At Will: animate objects (stones only), shatter, speak with stone (functions identically to speak with plants, but with stones instead), stone shape"
-					]
-				},
-				{
 					"name": "Stone Stride",
 					"text": [
 						"A korred can step into a stone and emerge from any other stone within 30 feet as part of normal movement. The stones must be at least as large as the korred. It can't end its turn inside a stone."
@@ -4467,7 +4579,20 @@
 					]
 				}
 			],
-			"spells": "animate objects, shatter, speak with plants, stone shape"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Korred's innate spellcasting ability is Charisma (spell save DC 12). A korred doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell animate objects} (stones only)",
+						"{@spell shatter}",
+						"{@spell speak with plants|phb|speak with stone} (functions identically to speak with plants, but with stones instead)",
+						"{@spell stone shape}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Midnight Peddler",
@@ -4544,14 +4669,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A mite's spellcasting ability is Charisma (spell save DC 10). The mite doesn't need material components to use these abilities.",
-						"At Will: prestidigitation",
-						"1/day: fear"
-					]
-				},
-				{
 					"name": "Vermin Empathy (1/day)",
 					"text": [
 						"As an action, a mite can summon a swarm of bats, a swarm of rats, 1d4 giant centipedes, 1d4 giant wasps, or 1d2 giant wolf spiders. The summoned creatures arrive 1d4 rounds after being summoned and stays near the mite for one hour. The mite has telepathic communication with the creatures and can give them simple commands such as \"attack\" and \"enter that building.\""
@@ -4572,7 +4689,22 @@
 					]
 				}
 			],
-			"spells": "prestidigitation, fear"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A mite's spellcasting ability is Charisma (spell save DC 10). The mite doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell prestidigitation}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fear}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Pestie Mite",
@@ -4617,14 +4749,6 @@
 					"text": [
 						"A pestie's dagger attack does an extra 3 (1d6) piercing damage if the pestie has advantage on the attack or if one of its allies is within 5 feet of the target."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A pestie's innate spellcasting ability is Charisma (spell save DC 10). The pestie doesn't need material components to use these abilities.",
-						"At Will: prestidigitation",
-						"1/day: fear"
-					]
 				}
 			],
 			"action": [
@@ -4641,7 +4765,22 @@
 					]
 				}
 			],
-			"spells": "prestidigitation, fear"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A pestie's innate spellcasting ability is Charisma (spell save DC 10). The pestie doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell prestidigitation}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fear}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Pech",
@@ -4682,15 +4821,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A pech's innate spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). The pech doesn't need material components to use these abilities.",
-						"4/day: stone shape, speak with stone (functions identically to speak with plants, but with stones instead) A pech can also use the following spell-like abilities as part of a group. All members of the group must be within 20 feet of all other members of the group, and all must use an action simultaneously to trigger the spell-like effect. An individual pech can use each ability once per day. Only one pech needs to maintain concentration to keep an effect ongoing.",
-						"4 pechs: wall of stone",
-						"8 pechs: greater restoration (only to remove petrification)"
-					]
-				},
-				{
 					"name": "Stone Knowledge",
 					"text": [
 						"A pech's extensive knowledge of stone gives it tactical advantage on attack rolls against creatures made of stone, earth, or clay."
@@ -4717,7 +4847,25 @@
 					]
 				}
 			],
-			"spells": "stone shape, speak with plants, wall of stone greater restoration"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A pech's innate spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). The pech doesn't need material components to use these abilities."
+					],
+					"daily": {
+						"4": [
+							"{@spell stone shape}",
+							"{@spell speak with plants|phb|speak with stone} (functions identically to speak with plants, but with stones instead)"
+						]
+					},
+					"footerEntries": [
+						"A pech can also use the following spell-like abilities as part of a group. All members of the group must be within 20 feet of all other members of the group, and all must use an action simultaneously to trigger the spell-like effect. An individual pech can use each ability once per day. Only one pech needs to maintain concentration to keep an effect ongoing.",
+						"4 pechs: {@spell wall of stone}",
+						"8 pechs: {@spell greater restoration} (only to remove petrification)"
+					]
+				}
+			]
 		},
 		{
 			"name": "Chaos Knight",
@@ -4752,16 +4900,6 @@
 					"text": [
 						"By using an action, a chaos knight can make itself incorporeal until the start of its next turn. While incorporeal, it can pass through solid objects such as a wall, or other creatures, as if they were difficult terrain. It leaves behind an icy outline where it passes."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The chaos knight's innate spellcasting ability is Charisma (spell save DC 13, +5 to hit with spell attacks). The chaos knight doesn't need material components to use these abilities.",
-						"At-Will: chill touch, ray of frost",
-						"3/day: dimension door, protection from good",
-						"2/day: ice storm",
-						"1/day: telekinesis, wall of ice"
-					]
 				}
 			],
 			"action": [
@@ -4778,7 +4916,31 @@
 					]
 				}
 			],
-			"spells": "chill touch, ray of frost, dimension door, protection from good, ice storm, telekinesis, wall of ice"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The chaos knight's innate spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). The chaos knight doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell chill touch}",
+						"{@spell ray of frost}"
+					],
+					"daily": {
+						"1": [
+							"{@spell telekinesis}",
+							"{@spell wall of ice}"
+						],
+						"2": [
+							"{@spell ice storm}"
+						],
+						"3": [
+							"{@spell dimension door}",
+							"{@spell protection from evil and good|phb|protection from good}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Dagon",
@@ -4821,16 +4983,6 @@
 					"name": "Legendary Resistance (3/day)",
 					"text": [
 						"Dagon can opt to automatically succeed on a saving throw it just failed."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Dagon's innate spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). Dagon doesn't need material components to use these abilities.",
-						"Constant: speak with animals (aquatic animals only)",
-						"At will: cloudkill (works underwater only), dominate monster, darkness, detect evil and good, detect magic, detect thoughts, dispel magic, fear, magic missile (6 missiles), teleport, telekinesis, tongues, water breathing",
-						"3/day each: blur, conjure elemental (water only), enhance ability",
-						"1/day each: confusion, feeblemind, finger of death, hold person, hold monster, lightning bolt, stoneskin, time stop, web, wish"
 					]
 				},
 				{
@@ -4891,7 +5043,51 @@
 					]
 				}
 			],
-			"spells": "cloudkill, dominate monster, darkness, detect evil and good, detect magic, detect thoughts, dispel magic, fear, magic missile, teleport, telekinesis, tongues, water breathing blur, conjure elemental, enhance ability confusion, feeblemind, finger of death, hold person, hold monster, lightning bolt, stoneskin, time stop, web, wish"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Dagon's innate spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). Dagon doesn't need material components to use these abilities."
+					],
+					"constant": [
+						"{@spell speak with animals} (aquatic animals only)"
+					],
+					"will": [
+						"{@spell cloudkill} (works underwater only)",
+						"{@spell dominate monster}",
+						"{@spell darkness}",
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell dispel magic}",
+						"{@spell fear}",
+						"{@spell magic missile} (6 missiles)",
+						"{@spell teleport}",
+						"{@spell telekinesis}",
+						"{@spell tongues}",
+						"{@spell water breathing}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell blur}",
+							"{@spell conjure elemental} (water only)",
+							"{@spell enhance ability}"
+						],
+						"1e": [
+							"{@spell confusion}",
+							"{@spell feeblemind}",
+							"{@spell finger of death}",
+							"{@spell hold person}",
+							"{@spell hold monster}",
+							"{@spell lightning bolt}",
+							"{@spell stoneskin}",
+							"{@spell time stop}",
+							"{@spell web}",
+							"{@spell wish}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Teratashia, Demon Princess of Dimensions",
@@ -4931,14 +5127,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Teratashia's innate spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks). She doesn't need material components to use these abilities.",
-						"At Will: clairvoyance, darkness, detect thoughts, dimension door, dispel magic, fear, suggestion",
-						"3/day each: charm person, insect plague, telekinesis, wall of stone"
-					]
-				},
-				{
 					"name": "Teratashia's Necklace of Skulls",
 					"text": [
 						"Teratashia's necklace is a powerful magic item. It is made from 13 skulls, and each skull has gems set into the eye sockets. Each gem stores one magic spell; the wearer of the necklace can use an action (or reaction for counterspell) to cast one of the spells. Spells are cast at their lowest level, using the caster's attack bonus and saving throw DC. The necklace recovers one expended charge per hour when worn by Teratashia; it doesn't recover charges when worn by anyone else. arcane lock (x2) bestow curse (x2) cloudkill (x2) cone of cold (x4) counterspell (x2) cure wounds (x4) fireball (x2) hypnotic pattern (x2) knock (x2) mirror image (x2) witch bolt (x2)"
@@ -4959,7 +5147,31 @@
 					]
 				}
 			],
-			"spells": "clairvoyance, darkness, detect thoughts, dimension door, dispel magic, fear, suggestion, charm person, insect plague, telekinesis, wall of stone"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Teratashia's innate spellcasting ability is Charisma (spell save DC 17, {@hit 9} to hit with spell attacks). She doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell clairvoyance}",
+						"{@spell darkness}",
+						"{@spell detect thoughts}",
+						"{@spell dimension door}",
+						"{@spell dispel magic}",
+						"{@spell fear}",
+						"{@spell suggestion}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell charm person}",
+							"{@spell insect plague}",
+							"{@spell telekinesis}",
+							"{@spell wall of stone}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Demonic Knight",
@@ -5010,15 +5222,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The demonic knight's innate spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). The demonic knight doesn't need material components to use these abilities.",
-						"At Will: detect magic, see invisibility, wall of ice",
-						"2/day each: dispel magic, symbol",
-						"1/day each: fireball, power word stun"
-					]
-				},
-				{
 					"name": "Summon Demonic Aid (1/day)",
 					"text": [
 						"Once per day as an action, a demonic knight can summon additional demons to his side. He can summon 1d4 shadow demons, 2 glabrezus or hezrous, or 1 vrock or marilith. To complete the summoning, the demonic knight must make a successful DC 18 Cha check (normally a 50% chance). The summoned demons teleport into empty spaces within 60 feet of the demon knight, of his choosing, and remain until they're slain or for one hour."
@@ -5051,7 +5254,29 @@
 					]
 				}
 			],
-			"spells": "detect magic, see invisibility, wall of ice, dispel magic, symbol, fireball, power word stun"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The demonic knight's innate spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). The demonic knight doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell see invisibility}",
+						"{@spell wall of ice}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dispel magic}",
+							"{@spell symbol}"
+						],
+						"1e": [
+							"{@spell fireball}",
+							"{@spell power word stun}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Poisonous Fire Snake",
@@ -5134,14 +5359,6 @@
 					"text": [
 						"When a hawanar genie moves, opportunity attacks against it have tactical disadvantage"
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A hawanar genie's innate spellcasting ability is Charisma (spell save DC 13, +5to hit with spell attacks). The genie doesn't need material components to use these abilities.",
-						"At will: plane shift (willing targets to elemental planes, Astral Plane, or Material Plane only)",
-						"1/day each: burning hands, create wine and water (as create food and water, but creates wine instead of water), fireball, gaseous form, invisibility (self only), major image, scorching ray (3 rays), wall of fire, wind walk"
-					]
 				}
 			],
 			"action": [
@@ -5164,7 +5381,30 @@
 					]
 				}
 			],
-			"spells": "plane shift, burning hands, create food and water, fireball, gaseous form, invisibility, major image, scorching ray, wall of fire, wind walk"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A hawanar genie's innate spellcasting ability is Charisma (spell save DC 13, +5to hit with spell attacks). The genie doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell plane shift} (willing targets to elemental planes, Astral Plane, or Material Plane only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell burning hands}",
+							"{@spell create food and water|phb|create wine and water} (as create food and water, but creates wine instead of water)",
+							"{@spell fireball}",
+							"{@spell gaseous form}",
+							"{@spell invisibility} (self only)",
+							"{@spell major image}",
+							"{@spell scorching ray} (3 rays)",
+							"{@spell wall of fire}",
+							"{@spell wind walk}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Giant Slug of P'nakh",
@@ -5484,14 +5724,6 @@
 			"page": 81,
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Thalasskoptis's innate spellcasting ability is Charisma (spell save DC 16, +8 to hit with spell attacks). Thalasskoptis doesn't need material components to use these abilities.",
-						"At Will: animate dead, charm person, clairvoyance, darkness, detect thoughts, dispel magic, fear, suggestion, teleport",
-						"3/Day: dominate monster"
-					]
-				},
-				{
 					"name": "Toxic Ink (3/day)",
 					"text": [
 						"Thalasskoptis can squirt a cloud of poisonous ink into air or water. The ink creates a sphere 60 feet in radius centered on Thalasskoptis, and it lasts for one minute. The cloud is stationary; it doesn't move with Thalasskoptis. The area inside the cloud is heavily obscured. Creatures other than Thalasskoptis in the ink cloud must make a successful DC 17 Constitution saving throw against poison or be stunned for as long as they remain inside the ink cloud."
@@ -5532,7 +5764,30 @@
 					]
 				}
 			],
-			"spells": "animate dead, charm person, clairvoyance, darkness, detect thoughts, dispel magic, fear, suggestion, teleport, dominate monster"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Thalasskoptis's innate spellcasting ability is Charisma (spell save DC 16, {@hit 8} to hit with spell attacks). Thalasskoptis doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell animate dead}",
+						"{@spell charm person}",
+						"{@spell clairvoyance}",
+						"{@spell darkness}",
+						"{@spell detect thoughts}",
+						"{@spell dispel magic}",
+						"{@spell fear}",
+						"{@spell suggestion}",
+						"{@spell teleport}"
+					],
+					"daily": {
+						"3": [
+							"{@spell dominate monster}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Biclops",
@@ -5835,13 +6090,6 @@
 					"text": [
 						"A dark stalker's shortsword attack does an extra 7 (2d6) piercing damage if the dark stalker has advantage on the attack or if another dark stalker or dark creeper is within 5 feet of the target."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"Dark stalkers' innate spellcasting ability is Charisma (spell save DC 11). Dark stalkers don't need material components to use these abilities.",
-						"At will: darkness, detect magic, fog cloud"
-					]
 				}
 			],
 			"action": [
@@ -5858,7 +6106,19 @@
 					]
 				}
 			],
-			"spells": "darkness, detect magic, fog cloud"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Dark stalkers' innate spellcasting ability is Charisma (spell save DC 11). Dark stalkers don't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell fog cloud}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Grippli",
@@ -5959,15 +6219,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"A Grippli Shaman's spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). It doesn't need material components to cast these spells.",
-						"Cantrips (at will): druidcraft, guidance",
-						"1st level (4 slots): animal friendship, entangle, fog cloud, goodberry",
-						"2nd level (2 slots): lesser restoration, pass without trace"
-					]
-				},
-				{
 					"name": "Grippli Poison",
 					"text": [
 						"A target hit by a poisoned grippli dart must make a successful DC 11 Constitution saving throw or become poisoned for 1d4 rounds. At the end of the last turn of poisoning, the target repeats the saving throw. A successful save means the target recovers, but a failed save means the target becomes paralyzed for 1d6 rounds. A successful saving throw does not make the target immune to later poisonings."
@@ -6000,7 +6251,38 @@
 					]
 				}
 			],
-			"spells": "druidcraft, guidance, animal friendship, entangle, fog cloud, goodberry, lesser restoration, pass without trace"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A Grippli Shaman's spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). It doesn't need material components to cast these spells."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell guidance}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell animal friendship}",
+								"{@spell entangle}",
+								"{@spell fog cloud}",
+								"{@spell goodberry}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell lesser restoration}",
+								"{@spell pass without trace}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Huggermugger",
@@ -6152,15 +6434,6 @@
 					"text": [
 						"Lava children are completely unaffected by metal. They can walk through metal doors or bars as if the metal wasn't there, and metal objects and weapons, including magic weapons, pass right through a lava child's body without affecting it in any way. Because of this, a lava child also has tactical advantage on melee attack rolls against targets wearing armor that is predominantly metal."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"A lava child shaman's spellcasting ability is Charisma (spell save DC 11, +3 to hit with spell attacks). It doesn't need material components to cast these spells. The shaman is CR 1 (200 XP).",
-						"Cantrips (at will): fire bolt, dancing lights",
-						"1st level (4 slots): burning hands, comprehend languages, magic missile",
-						"2nd level (2 slots): continual flame, scorching ray"
-					]
 				}
 			],
 			"action": [
@@ -6183,7 +6456,37 @@
 					]
 				}
 			],
-			"spells": "fire bolt, dancing lights, burning hands, comprehend languages, magic missile, continual flame, scorching ray"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A lava child shaman's spellcasting ability is Charisma (spell save DC 11, {@hit 3} to hit with spell attacks). It doesn't need material components to cast these spells."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell dancing lights}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell comprehend languages}",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell continual flame}",
+								"{@spell scorching ray}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Ryven",
@@ -6294,15 +6597,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"A ryven shaman's spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). It doesnt need material components to cast these spells. The listed spells are suggestions only; others can be chosen instead. Ryven shamans are immune to rage.",
-						"Cantrips (at will): druidcraft, guidance, resistance",
-						"1st level (4 slots): cure wounds, faerie fire, goodberry, speak with animals",
-						"2nd level (2 slots): beast sense, moonbeam"
-					]
-				},
-				{
 					"name": "White and Black Death",
 					"text": [
 						"Some ryven (approximately 1 in 5) coat their weapons and claws with a poison known as the white and black death. A living creature struck by a poisoned weapon or claw must make a successful DC 12 Constitution saving throw or take 3 (1d6) poison damage immediately and be poisoned for 1d6 rounds."
@@ -6341,7 +6635,39 @@
 					]
 				}
 			],
-			"spells": "druidcraft, guidance, resistance, cure wounds, faerie fire, goodberry, speak with animals, beast sense, moonbeam"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A ryven shaman's spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). It doesnt need material components to cast these spells. The listed spells are suggestions only; others can be chosen instead. Ryven shamans are immune to rage."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell guidance}",
+								"{@spell resistance}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell faerie fire}",
+								"{@spell goodberry}",
+								"{@spell speak with animals}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell beast sense}",
+								"{@spell moonbeam}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Skelzi",
@@ -7438,16 +7764,6 @@
 					"text": [
 						"Opportunity attacks against a moving eblis always have tactical disadvantage."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"Each eblis flock has one individual capable of using arcane magic as a 6th-level spellcaster. An eblis's spellcasting ability is Intelligence (spell save DC 11, +3 to hit with spell attacks) and doesn't need material components to cast these spells. The spells it can cast are listed below.",
-						"At Will: minor illusion (sound only)",
-						"1st level (4 slots): disguise self, fog cloud",
-						"2nd level (3 slots): blur, magic mouth",
-						"3rd level (2 slots): fear, hypnotic pattern"
-					]
 				}
 			],
 			"action": [
@@ -7458,7 +7774,40 @@
 					]
 				}
 			],
-			"spells": "minor illusion (sound only), disguise self, fog cloud, blur, magic mouth, fear, hypnotic pattern"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Each eblis flock has one individual capable of using arcane magic as a 6th-level spellcaster. An eblis's spellcasting ability is Intelligence (spell save DC 11, {@hit 3} to hit with spell attacks) and doesn't need material components to cast these spells. The spells it can cast are listed below."
+					],
+					"will": [
+						"{@spell minor illusion} (sound only)"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell disguise self}",
+								"{@spell fog cloud}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blur}",
+								"{@spell magic mouth}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell fear}",
+								"{@spell hypnotic pattern}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Elusa Hound",
@@ -9447,16 +9796,6 @@
 						"5 1-4 aquatic trolls",
 						"6 1 drowned wight (a standard wight with a swim speed of 30 ft.) leading 3-8 aquatic ghouls"
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"A triton shaman's spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It doesnt need material components to cast these spells. The spell selection listed below is only a suggestion; different shamans can have different spell lists. Shaman has Wisdom of 15.",
-						"Cantrips (at will): guidance, mending, resistance, thaumaturgy",
-						"1st level (4 slots): bane, inflict wounds, protection from evil and good, sanctuary",
-						"2nd level (3 slots): blindness/deafness, hold person, protection from poison, spiritual weapon",
-						"3rd level (2 slots): bestow curse, dispel magic, mass healing word"
-					]
 				}
 			],
 			"action": [
@@ -9467,7 +9806,50 @@
 					]
 				}
 			],
-			"spells": "guidance, mending, resistance, thaumaturgy, bane, inflict wounds, protection from evil and good, sanctuary, blindness/deafness, hold person, protection from poison, spiritual weapon, bestow curse, dispel magic, mass healing word"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"A triton shaman's spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). It doesnt need material components to cast these spells. The spell selection listed below is only a suggestion; different shamans can have different spell lists. Shaman has Wisdom of 15."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell mending}",
+								"{@spell resistance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bane}",
+								"{@spell inflict wounds}",
+								"{@spell protection from evil and good}",
+								"{@spell sanctuary}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blindness/deafness}",
+								"{@spell hold person}",
+								"{@spell protection from poison}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell dispel magic}",
+								"{@spell mass healing word}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Corpsespinner",
@@ -10650,16 +11032,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The gnarlwood's innate spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The gnarlwood doesn't need material components to use these abilities.",
-						"At Will: ray of sickness",
-						"3/day each: animate dead, blight, inflict wounds",
-						"1/day each: circle of power, dispel evil and good",
-						"1/week: circle of death"
-					]
-				},
-				{
 					"name": "Unhallowed Aura",
 					"text": [
 						"When an undead creature within 30 feet of a gnarlwood attacks or makes a saving throw, it can roll 1d4 along with its d20 and add the results together."
@@ -10680,7 +11052,33 @@
 					]
 				}
 			],
-			"spells": "ray of sickness, animate dead, blight, inflict wounds, circle of power, dispel evil and good, circle of death"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The gnarlwood's innate spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The gnarlwood doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell ray of sickness}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell animate dead}",
+							"{@spell blight}",
+							"{@spell inflict wounds}"
+						],
+						"1e": [
+							"{@spell circle of power}",
+							"{@spell dispel evil and good}"
+						]
+					},
+					"weekly": {
+						"1": [
+							"{@spell circle of death}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Green Brain",
@@ -11208,15 +11606,6 @@
 					"text": [
 						"A lightning treant regains 5 hit points at the start of each of its turns."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The lightning treant's innate spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). The lightning treant doesnt need material components to use these abilities.",
-						"At Will: enlarge/reduce, faerie fire",
-						"3/day each: call lightning, lightning bolt, protection from energy",
-						"1/day: chain lightning"
-					]
 				}
 			],
 			"action": [
@@ -11233,7 +11622,28 @@
 					]
 				}
 			],
-			"spells": "enlarge/reduce, faerie fire, call lightning, lightning bolt, protection from energy, lightning"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The lightning treant's innate spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). The lightning treant doesnt need material components to use these abilities."
+					],
+					"will": [
+						"{@spell enlarge/reduce}",
+						"{@spell faerie fire}"
+					],
+					"daily": {
+						"1": [
+							"{@spell chain lightning}"
+						],
+						"3e": [
+							"{@spell call lightning}",
+							"{@spell lightning bolt}",
+							"{@spell protection from energy}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Tri-FLower Frond",
@@ -12015,16 +12425,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"The shroom's spellcasteing ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). It doesnt need material components to cast spells. The spells listed below are suggestions; individual shrooms can have different spell selections.",
-						"Cantrips (at will): druidcraft, poison spray, thorn whip",
-						"1st level (4 slots): charm, detect magic, entangle, sleep, thunderwave",
-						"2nd level (3 slots): barkskin, enlarge/reduce, pass without trace, spike growth",
-						"3rd level (2 slots): plant growth, speak with plants, stinking cloud"
-					]
-				},
-				{
 					"name": "Toxic Flesh",
 					"text": [
 						"Any creature that tastes the flesh of a shroom must make a DC 13 Constitution saving throw. If the save succeeds, the creature detects the poison and spits out the morsel before any damage is done. If the save fails, the character is overwhelmed by the deliciousness of the shroom and immediately downs a mouthful, then continues eating in a normal manner until full or until someone stops him or her. An hour after consuming even one bite of shroom flesh, the eater is affected as if by a feeblemind spell. The effect of the toxin can actually turn out to be beneficial in the long run; there is a 5 percent chance that a character who recovers or is restored to sanity after being feebleminded by shroom flesh permanently gains 1 point of Intelligence from the experience. A character can gain this benefit only once."
@@ -12045,7 +12445,50 @@
 					]
 				}
 			],
-			"spells": "druidcraft, poison spray, thorn whip, charm, detect magic, entangle, sleep, thunderwave, barkskin, enlarge/reduce, pass without trace, spike growth, plant growth, speak with plants, stinking cloud"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The shroom's spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). It doesn't need material components to cast spells. The spells listed below are suggestions; individual shrooms can have different spell selections."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell poison spray}",
+								"{@spell thorn whip}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell detect magic}",
+								"{@spell entangle}",
+								"{@spell sleep}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell barkskin}",
+								"{@spell enlarge/reduce}",
+								"{@spell pass without trace}",
+								"{@spell spike growth}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell plant growth}",
+								"{@spell speak with plants}",
+								"{@spell stinking cloud}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Vegepygmy Chief",
@@ -12770,14 +13213,6 @@
 					"text": [
 						"If the fear guard ends its turn in dim light or darkness, it can use a bonus action to make a Dexterity (Stealth) check to become hidden, with tactical advantage on the check. Because it is incorporeal and all of its movement is flight, it makes very little sound when moving and never leaves footprints or disturbs dust on the floor."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A fear guard's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). The fear lord doesn't need material components to use these abilities.",
-						"At Will: darkness, ray of enfeeblement",
-						"2/day each: inflict wounds (as 2nd-level slot)"
-					]
 				}
 			],
 			"action": [
@@ -12788,7 +13223,23 @@
 					]
 				}
 			],
-			"spells": "darkness, ray of enfeeblement, inflict wounds"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A fear guard's innate spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). The fear lord doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell ray of enfeeblement}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell inflict wounds} (as 2nd-level slot)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Fetch",
@@ -13411,14 +13862,6 @@
 					"text": [
 						"If a soul reaper scores a critical hit with its scythe, the target must make a successful DC 18 Constitution saving throw or its soul is torn from its body and into the soul reapers scythe, and the creature dies immediately. A victims soulless body collapses into a desiccated husk and crumbles to dust after 24 hours. To release a captured soul, the reaper must be destroyed and its scythe shattered on consecrated ground. When the scythe is shattered, all trapped souls are released. If a souls body hasnt crumbled into dust, the soul returns to the body and the body returns to life. Souls without a body are left to wander formlessly, but they can be returned to life through powerful magic (wish, true resurrection)."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The soul reaper's innate spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). The soul reaper doesnt need material components to use these abilities.",
-						"At Will: darkness, bane, inflict wounds",
-						"1/Day each: contagion, hold person, insect plague"
-					]
 				}
 			],
 			"action": [
@@ -13435,7 +13878,26 @@
 					]
 				}
 			],
-			"spells": "darkness, bane, inflict wounds, contagion, hold person, insect plague"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The soul reaper's innate spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). The soul reaper doesnt need material components to use these abilities."
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell bane}",
+						"{@spell inflict wounds}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell contagion}",
+							"{@spell hold person}",
+							"{@spell insect plague}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Stygian Skeleton",
@@ -13748,20 +14210,6 @@
 			"languages": "Any",
 			"cr": "5",
 			"page": 15,
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The Artificers of Yothri replicate the effects of magic with their alien science (that only they are capable of understanding). They have the spellcasting capability of 9th level wizards, but their spellcasting requires no components. The Artificers of Yothri's spellcasting ability is Intelligence (spell save DC 16, +8 to hit with spell attacks). Typical spells are listed below, but individual artificers can know different spells.",
-						"Cantrips (at will): mage hand, shocking grasp",
-						"1st level (4 slots): charm person, mage armor, ray of sickness, sleep",
-						"2nd level (3 slots): mirror image, see invisibility",
-						"3rd level (3 slots): counterspell, protection from energy",
-						"4th level (3 slots): dimension door, wall of fire",
-						"5th level (1 slot): telekinesis"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -13776,7 +14224,58 @@
 					]
 				}
 			],
-			"spells": "mage hand, shocking grasp, charm person, mage armor, ray of sickness, sleep, mirror image, see invisibility, counterspell, protection from energy, dimension door, wall of fire, telekinesis"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Artificers of Yothri replicate the effects of magic with their alien science (that only they are capable of understanding). They have the spellcasting capability of 9th level wizards, but their spellcasting requires no components. The Artificers of Yothri's spellcasting ability is Intelligence (spell save DC 16, {@hit 8} to hit with spell attacks). Typical spells are listed below, but individual artificers can know different spells."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell mage armor}",
+								"{@spell ray of sickness}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell mirror image}",
+								"{@spell see invisibility}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell protection from energy}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell dimension door}",
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell telekinesis}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Bonesucker",
@@ -14450,15 +14949,6 @@
 			"page": 39,
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"A burning dervish's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It doesn't need material components to use these abilities.",
-						"At Will: fire bolt, produce flame",
-						"3/day: invisibility (self only)",
-						"1/day: enlarge/reduce, flaming sphere, plane shift (Elemental, Astral, or Material Planes)"
-					]
-				},
-				{
 					"name": "Elemental Endurance",
 					"text": [
 						"Burning dervishes can survive on the Elemental Planes of Air or Earth for up to 48 hours and on the Elemental Plane of Water for up to 12 hours. Failure to return to the Elemental Plane of Fire after that time deals 1 point of damage per hour to a burning dervish until it dies or returns to the Elemental Plane of Fire."
@@ -14491,7 +14981,28 @@
 					]
 				}
 			],
-			"spells": "fire bolt, produce flame, invisibility, enlarge/reduce, flaming sphere, plane shift"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"A burning dervish's spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It doesn't need material components to use these abilities."
+					],
+					"will": [
+						"{@spell fire bolt}",
+						"{@spell produce flame}"
+					],
+					"daily": {
+						"1": [
+							"{@spell enlarge/reduce}",
+							"{@spell flaming sphere}",
+							"{@spell plane shift} (Elemental, Astral, or Material Planes)"
+						],
+						"3": [
+							"{@spell invisibility} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Aaztar-Ghola",
@@ -14533,14 +15044,6 @@
 					"text": [
 						"An Aaztar-Ghola always has mage armor cast on itself."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The Aaztar-Ghola's spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). The Aaztar-Ghola doesn't need material components to cast these spells.",
-						"2/day each: inflict wounds (range 50 ft.), fear",
-						"1/day each: dispel magic, finger of death, fly, see invisibility"
-					]
 				}
 			],
 			"action": [
@@ -14557,7 +15060,26 @@
 					]
 				}
 			],
-			"spells": "inflict wounds, fear, dispel magic, finger of death, fly, see invisibility"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The Aaztar-Ghola's spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). The Aaztar-Ghola doesn't need material components to cast these spells."
+					],
+					"daily": {
+						"2e": [
+							"{@spell inflict wounds} (range 50 ft.)",
+							"{@spell fear}"
+						],
+						"1e": [
+							"{@spell dispel magic}",
+							"{@spell finger of death}",
+							"{@spell fly}",
+							"{@spell see invisibility}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Chupacabra",
@@ -14686,15 +15208,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"All aranea are 3rd-level wizards. The Aranea's spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks) and require no material components for their spells. Typical known spells are listed below, but individual aranea can know different spells.",
-						"Cantrips (at will): dancing lights, poison cloud, shocking grasp",
-						"1st level (4 slots): charm person, sleep",
-						"2nd level (2 slots): invisibility, mirror image"
-					]
-				},
-				{
 					"name": "Spider Climb",
 					"text": [
 						"Aranea can climb any surface without making ability checks."
@@ -14715,7 +15228,37 @@
 					]
 				}
 			],
-			"spells": "dancing lights, poison cloud, shocking grasp, charm person, sleep, invisibility, mirror image"
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"All aranea are 3rd-level wizards. The Aranea's spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks) and require no material components for their spells. Typical known spells are listed below, but individual aranea can know different spells."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell dancing lights}",
+								"{@spell poison spray|phb|poison cloud}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell mirror image}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Astral Moth",
@@ -15124,13 +15667,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The cadaver lord's innate spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). The cadaver lord requires no material components to use these abilities.",
-						"1/day: darkness, fear"
-					]
-				},
-				{
 					"name": "Summon Undead (1/day)",
 					"text": [
 						"Once per day as an action, a cadaver lord can summon five cadavers. They arrive in 1d6 rounds (shambling from nearby chambers, digging up from their shallow graves, etc.), and are under the cadaver lord's control."
@@ -15157,7 +15693,20 @@
 					]
 				}
 			],
-			"spells": "darkness, fear"
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The cadaver lord's innate spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). The cadaver lord requires no material components to use these abilities."
+					],
+					"daily": {
+						"1": [
+							"{@spell darkness}",
+							"{@spell fear}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Feral Undead Cat",
