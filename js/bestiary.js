@@ -386,10 +386,18 @@ function loadhash (id) {
 		for (let i = 0; i < spellcasting.length; i++) {
 			let spellList = spellcasting[i]
 			renderer.recursiveEntryRender({type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}, renderStack, 2);
-			if (spellList.constant || spellList.will || spellList.daily || spellList.weekly) {
+			if (spellList.constant || spellList.will || spellList.rest || spellList.daily || spellList.weekly) {
 				let spellArray = [];
 				if (spellList.constant) spellArray.push(`Constant: ${spellList.constant.join(", ")}`);
 				if (spellList.will) spellArray.push(`At will: ${spellList.will.join(", ")}`);
+				if (spellList.rest) {
+					for (let j = 9; j > 0; j--) {
+						let rest = spellList.rest;
+						if (rest[j]) spellArray.push(`${j}/rest: ${rest[j].join(", ")}`);
+						const jEach = `${j}e`;
+						if (rest[jEach]) spellArray.push(`${j}/rest each: ${rest[jEach].join(", ")}`);
+					}
+				}
 				if (spellList.daily) {
 					for (let j = 9; j > 0; j--) {
 						let daily = spellList.daily;
