@@ -3,6 +3,7 @@
 		{
 			"name": "Aarakocra",
 			"source": "EEPC",
+			"page": 5,
 			"size": "M",
 			"speed": 25,
 			"ability": {
@@ -31,31 +32,119 @@
 			]
 		},
 		{
-			"name": "Genasi (Air)",
+			"name": "Genasi",
 			"source": "EEPC",
+			"page": 9,
 			"size": "M",
 			"speed": 30,
 			"ability": {
-				"con": 2,
-				"dex": 1
+				"con": 2
 			},
 			"entries": [
-				{
-					"name": "Unending Breath",
-					"entries": [
-						"You can hold your breath indefinitely while you're not incapacitated."
-					]
-				},
-				{
-					"name": "Mingle with the Wind",
-					"entries": [
-						"You can cast the {@spell levitate} spell once with this trait, requiring no material components, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for this spell."
-					]
-				},
 				{
 					"name": "Languages",
 					"entries": [
 						"You can speak, read, and write Common and Primordial. Primordial is a guttural language, filled with harsh syllables and hard consonants."
+					]
+				}
+			],
+			"subraces": [
+				{
+					"name": "Air Genasi",
+					"ability": {
+						"dex": 1
+					},
+					"entries": [
+						{
+							"name": "Unending Breath",
+							"entries": [
+								"You can hold your breath indefinitely while you're not incapacitated."
+							]
+						},
+						{
+							"name": "Mingle with the Wind",
+							"entries": [
+								"You can cast the {@spell levitate} spell once with this trait, requiring no material components, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for this spell."
+							]
+						}
+					]
+				},
+				{
+					"name": "Earth Genasi",
+					"ability": {
+						"str": 1
+					},
+					"entries": [
+						{
+							"name": "Earth Walk",
+							"entries": [
+								"You can move across difficult terrain made of earth or stone without expending extra movement."
+							]
+						},
+						{
+							"name": "Merge with Stone",
+							"entries": [
+								"You can cast the {@spell pass without trace} spell once with this trait, requiring no material components, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for this spell."
+							]
+						}
+					]
+				},
+				{
+					"name": "Fire Genasi",
+					"ability": {
+						"int": 1
+					},
+					"entries": [
+						{
+							"name": "Darkvision",
+							"entries": [
+								"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. Your ties to the Elemental Plane of Fire make your darkvision unusual: everything you see in darkness is in a shade of red."
+							]
+						},
+						{
+							"name": "Fire Resistance",
+							"entries": [
+								"You have resistance to fire damage."
+							]
+						},
+						{
+							"name": "Reach to the Blaze",
+							"entries": [
+								"You know the {@spell produce flame} cantrip. Once you reach 3rd level, you can cast the {@spell burning hands} spell once with this trait as a 1st-level spell, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for these spells."
+							]
+						}
+					]
+				},
+				{
+					"name": "Water Genasi",
+					"ability": {
+						"wis": 1
+					},
+					"entries": [
+						{
+							"name": "Acid Resistance",
+							"entries": [
+								"You have resistance to acid damage."
+							]
+						},
+						{
+							"name": "Amphibious",
+							"entries": [
+								"You can breathe air and water."
+							]
+						},
+						{
+							"name": "Swim",
+							"entries": [
+								"You have a swimming speed of 30 feet."
+							]
+						},
+						{
+							"name": "Call to the Wave",
+							"entries": [
+								"You know the {@spell shape water|xge} cantrip. When you reach 3rd level, you can cast the {@spell create or destroy water} spell as a 2nd-level spell once with this trait, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for these spells."
+							]
+						}
 					]
 				}
 			]
@@ -262,36 +351,6 @@
 			]
 		},
 		{
-			"name": "Genasi (Earth)",
-			"source": "EEPC",
-			"size": "M",
-			"speed": 30,
-			"ability": {
-				"con": 2,
-				"str": 1
-			},
-			"entries": [
-				{
-					"name": "Earth Walk",
-					"entries": [
-						"You can move across difficult terrain made of earth or stone without expending extra movement."
-					]
-				},
-				{
-					"name": "Merge with Stone",
-					"entries": [
-						"You can cast the {@spell pass without trace} spell once with this trait, requiring no material components, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for this spell."
-					]
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and Primordial. Primordial is a guttural language, filled with harsh syllables and hard consonants."
-					]
-				}
-			]
-		},
-		{
 			"name": "Elf (Eladrin)",
 			"source": "DMG",
 			"size": "M",
@@ -342,42 +401,6 @@
 					"name": "Fey Step",
 					"entries": [
 						"You can cast the {@spell misty step} spell once using this trait. You regain the ability to do so when you finish a short or long rest."
-					]
-				}
-			]
-		},
-		{
-			"name": "Genasi (Fire)",
-			"source": "EEPC",
-			"size": "M",
-			"speed": 30,
-			"ability": {
-				"con": 2,
-				"int": 1
-			},
-			"entries": [
-				{
-					"name": "Darkvision",
-					"entries": [
-						"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. Your ties to the Elemental Plane of Fire make your darkvision unusual: everything you see in darkness is in a shade of red."
-					]
-				},
-				{
-					"name": "Fire Resistance",
-					"entries": [
-						"You have resistance to fire damage."
-					]
-				},
-				{
-					"name": "Reach to the Blaze",
-					"entries": [
-						"You know the {@spell produce flame} cantrip. Once you reach 3rd level, you can cast the {@spell burning hands} spell once with this trait as a 1st-level spell, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for these spells."
-					]
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and Primordial. Primordial is a guttural language, filled with harsh syllables and hard consonants."
 					]
 				}
 			]
@@ -1099,48 +1122,6 @@
 							],
 							"type": "entries"
 						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Genasi (Water)",
-			"source": "EEPC",
-			"size": "M",
-			"speed": 30,
-			"ability": {
-				"con": 2,
-				"wis": 1
-			},
-			"entries": [
-				{
-					"name": "Acid Resistance",
-					"entries": [
-						"You have resistance to acid damage."
-					]
-				},
-				{
-					"name": "Amphibious",
-					"entries": [
-						"You can breathe air and water."
-					]
-				},
-				{
-					"name": "Swim",
-					"entries": [
-						"You have a swimming speed of 30 feet."
-					]
-				},
-				{
-					"name": "Call to the Wave",
-					"entries": [
-						"You know the {@spell shape water|xge} cantrip. When you reach 3rd level, you can cast the {@spell create or destroy water} spell as a 2nd-level spell once with this trait, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for these spells."
-					]
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and Primordial. Primordial is a guttural language, filled with harsh syllables and hard consonants."
 					]
 				}
 			]

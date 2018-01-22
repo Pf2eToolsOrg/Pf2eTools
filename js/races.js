@@ -14,7 +14,7 @@ function onJsonLoad (data) {
 	raceList = data.race;
 
 	const sourceFilter = getSourceFilter();
-	const asiFilter = getAsiFilter();
+	const asiFilter = getAsiFilter({header: "Ability (Including Subrace)"});
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 
 	const filterBox = initFilterBox(
@@ -27,6 +27,16 @@ function onJsonLoad (data) {
 	let tempString = "";
 	for (let i = 0; i < raceList.length; i++) {
 		const race = raceList[i];
+
+		/*
+		TODO handle subraces
+		Want the list to be base race names...
+		...but the filters to find subraces?
+
+		merge the base race and the subraces?
+			-straight overwrite? additive subrace -> race?
+			-how to display these?
+		 */
 
 		const ability = utils_getAbilityData(race.ability);
 		race._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
