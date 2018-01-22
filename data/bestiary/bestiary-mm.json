@@ -270,16 +270,6 @@
 			"passive": 12,
 			"languages": "any one language (usually Common)",
 			"cr": "1/4",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared:",
-						"Cantrips (at will): light, sacred flame, thaumaturgy",
-						"1st level (3 slots): bless, cure wounds, sanctuary"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Club",
@@ -291,9 +281,33 @@
 					]
 				}
 			],
-			"spells": "light, sacred flame, thaumaturgy, bless, cure wounds, sanctuary",
 			"description": "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities.",
-			"page": 342
+			"page": 342,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The acolyte has following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell bless}",
+								"{@spell cure wounds}",
+								"{@spell sanctuary}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Adult Black Dragon",
@@ -2810,19 +2824,6 @@
 					"text": [
 						"The sphinx's weapon attacks are magical."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The sphinx is a 12th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 18, +10 to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following cleric spells prepared:",
-						"Cantrips (at will): sacred flame, spare the dying, thaumaturgy",
-						"1st level (4 slots): command, detect evil and good, detect magic",
-						"2nd level (3 slots): lesser restoration, zone of truth",
-						"3rd level (3 slots): dispel magic, tongues",
-						"4th level (3 slots): banishment, freedom of movement",
-						"5th level (2 slots): flame strike, greater restoration",
-						"6th level (1 slot): heroes' feast"
-					]
 				}
 			],
 			"action": [
@@ -2872,8 +2873,66 @@
 					]
 				}
 			],
-			"spells": "sacred flame, spare the dying, thaumaturgy, command, detect evil and good, detect magic, lesser restoration, zone of truth, dispel magic, tongues, banishment, freedom of movement, flame strike, greater restoration, heroes' feast",
-			"page": 281
+			"page": 281,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The sphinx is a 12th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 18, {@hit 10} to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell sacred flame}",
+								"{@spell spare the dying}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell detect evil and good}",
+								"{@spell detect magic}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell lesser restoration}",
+								"{@spell zone of truth}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell tongues}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell freedom of movement}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell flame strike}",
+								"{@spell greater restoration}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell heroes' feast}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Animated Armor",
@@ -3083,13 +3142,6 @@
 			"cr": "12",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The arcanaloth's innate spellcasting ability is Charisma (spell save DC 15). The arcanaloth can innately cast the following spells, requiring no material components:",
-						"At will: alter self, darkness, heat metal, invisibility (self only), magic missile"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The arcanaloth has advantage on saving throws against spells and other magical effects."
@@ -3099,21 +3151,6 @@
 					"name": "Magic Weapons",
 					"text": [
 						"The arcanaloth's weapon attacks are magical."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The arcanaloth is a 16th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). The arcanaloth has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, mage hand, minor illusion, prestidigitation",
-						"1st level (4 slots): detect magic, identify, shield, Tenser's floating disk",
-						"2nd level (3 slots): detect thoughts, mirror image, phantasmal force, suggestion",
-						"3rd level (3 slots): counterspell, fear, fireball",
-						"4th level (3 slots): banishment, dimension door",
-						"5th level (2 slots): contact other plane, hold monster",
-						"6th level (1 slot): chain lightning",
-						"7th level (1 slot): finger of death",
-						"8th level (1 slot): mind blank"
 					]
 				}
 			],
@@ -3142,8 +3179,96 @@
 					]
 				}
 			],
-			"spells": "alter self, darkness, heat metal, invisibility, magic missile, fire bolt, mage hand, minor illusion, prestidigitation, detect magic, identify, shield, Tenser's floating disk, detect thoughts, mirror image, phantasmal force, suggestion, counterspell, fear, fireball, banishment, dimension door, contact other plane, hold monster, chain lightning, finger of death, mind blank",
-			"page": 313
+			"page": 313,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The arcanaloth's innate spellcasting ability is Charisma (spell save DC 15). The arcanaloth can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell alter self}",
+						"{@spell darkness}",
+						"{@spell heat metal}",
+						"{@spell invisibility} (self only)",
+						"{@spell magic missile}"
+					]
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The arcanaloth is a 16th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). The arcanaloth has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell shield}",
+								"{@spell Tenser's floating disk}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell mirror image}",
+								"{@spell phantasmal force}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fear}",
+								"{@spell fireball}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell dimension door}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell contact other plane}",
+								"{@spell hold monster}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell chain lightning}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell finger of death}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Archmage",
@@ -3180,23 +3305,6 @@
 					"text": [
 						"The archmage has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The archmage is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). The archmage can cast disguise self and invisibility at will and has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking grasp",
-						"1st level (4 slots): detect magic, identify, mage armor*, magic missile",
-						"2nd level (3 slots): detect thoughts, mirror image, misty step",
-						"3rd level (3 slots): counterspell, fly, lightning bolt",
-						"4th level (3 slots): banishment, fire shield, stoneskin*",
-						"5th level (3 slots): cone of cold, scrying, wall of force",
-						"6th level (1 slot): globe of invulnerability",
-						"7th level (1 slot): teleport",
-						"8th level (1 slot): mind blank*",
-						"9th level (1 slot): time stop",
-						"* The archmage casts these spells on itself before combat."
-					]
 				}
 			],
 			"action": [
@@ -3210,8 +3318,94 @@
 					]
 				}
 			],
-			"spells": "fire bolt, light, mage hand, prestidigitation, shocking grasp, detect magic, identify, mage armor, magic missile, detect thoughts, mirror image, misty step, counterspell, fly, lightning bolt, banishment, fire shield, stoneskin, cone of cold, scrying, wall of force, globe of invulnerability, teleport, mind blank, time stop",
-			"page": 342
+			"page": 342,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The archmage is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). The archmage can cast disguise self and invisibility at will and has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell mage armor}*",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell mirror image}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell fire shield}",
+								"{@spell stoneskin}*"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cone of cold}",
+								"{@spell scrying}",
+								"{@spell wall of force}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell teleport}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}*"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					},
+					"footerEntries": [
+						"* The archmage casts these spells on itself before combat."
+					]
+				}
+			]
 		},
 		{
 			"name": "Assassin",
@@ -3941,14 +4135,6 @@
 			"cr": "5",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The barlgura's spellcasting ability is Wisdom (spell save DC 13). The barlgura can innately cast the following spells, requiring no material components:",
-						"1/day each: entangle, phantasmal force",
-						"2/day each: disguise self, invisibility (self only)"
-					]
-				},
-				{
 					"name": "Reckless",
 					"text": [
 						"At the start of its turn, the barlgura can gain advantage on all melee weapon attack rolls it makes during that turn, but attack rolls against it have advantage until the start of its next turn."
@@ -3995,8 +4181,25 @@
 					]
 				}
 			],
-			"spells": "entangle, phantasmal force, disguise self, invisibility",
-			"page": 56
+			"page": 56,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The barlgura's spellcasting ability is Wisdom (spell save DC 13). The barlgura can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell entangle}",
+							"{@spell phantasmal force}"
+						],
+						"2e": [
+							"{@spell disguise self}",
+							"{@spell invisibility} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Basilisk",
@@ -5017,18 +5220,6 @@
 			"passive": 12,
 			"languages": "Common plus one other language",
 			"cr": "4",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The naga is a 5th-level spellcaster (spell save DC 12, +4 to hit with spell attacks) that needs only verbal components to cast its spells. Its spellcasting ability is Wisdom, and it has the following cleric spells prepared:",
-						"Cantrips (at will): mending, sacred flame, thaumaturgy",
-						"1st level (4 slots): command, shield of faith",
-						"2nd level (3 slots): calm emotions, hold person",
-						"3rd level (2 slots): bestow curse"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -5040,8 +5231,44 @@
 					]
 				}
 			],
-			"spells": "mending, sacred flame, thaumaturgy, command, shield of faith, calm emotions, hold person, bestow curse",
-			"page": 233
+			"page": 233,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The naga is a 5th-level spellcaster (spell save DC 12, {@hit 4} to hit with spell attacks) that needs only verbal components to cast its spells. Its spellcasting ability is Wisdom, and it has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mending}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell calm emotions}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell bestow curse}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Bone Naga (Spirit)",
@@ -5064,18 +5291,6 @@
 			"passive": 12,
 			"languages": "Common plus one other language",
 			"cr": "4",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The naga is a 5th-level spellcaster (spell save DC 12, +4 to hit with spell attacks) that needs only verbal components to cast its spells. Its spellcasting ability is Intelligence, and it has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, minor illusion, ray of frost",
-						"1st level (4 slots): charm person, sleep",
-						"2nd level (3 slots): detect thoughts, hold person",
-						"3rd level (2 slots): lightning bolt"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Bite",
@@ -5087,8 +5302,44 @@
 					]
 				}
 			],
-			"spells": "mage hand, minor illusion, ray of frost, charm person, sleep, detect thoughts, hold person, lightning bolt",
-			"page": 233
+			"page": 233,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The naga is a 5th-level spellcaster (spell save DC 12, {@hit 4} to hit with spell attacks) that needs only verbal components to cast its spells. Its spellcasting ability is Intelligence, and it has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell lightning bolt}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Brass Dragon Wyrmling",
@@ -5564,14 +5815,6 @@
 					"text": [
 						"The AC of the cambion includes its Charisma bonus."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The cambion's spellcasting ability is Charisma (spell save DC 14). The cambion can innately cast the following spells, requiring no material components:",
-						"3/day each: alter self, command, detect magic",
-						"1/day: plane shift (self only)"
-					]
 				}
 			],
 			"action": [
@@ -5607,8 +5850,25 @@
 					]
 				}
 			],
-			"spells": "alter self, command, detect magic, plane shift",
-			"page": 36
+			"page": 36,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The cambion's spellcasting ability is Charisma (spell save DC 14). The cambion can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell plane shift} (self only)"
+						],
+						"3e": [
+							"{@spell alter self}",
+							"{@spell command}",
+							"{@spell detect magic}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Camel",
@@ -6343,15 +6603,6 @@
 					"text": [
 						"The giant has advantage on Wisdom (Perception) checks that rely on smell."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The giant's innate spellcasting ability is Charisma. It can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, fog cloud, light",
-						"3/day each: feather fall, fly, misty step, telekinesis",
-						"1/day each: control weather, gaseous form"
-					]
 				}
 			],
 			"action": [
@@ -6392,8 +6643,32 @@
 					]
 				}
 			],
-			"spells": "detect magic, fog cloud, light, feather fall, fly, misty step, telekinesis, control weather, gaseous form",
-			"page": 154
+			"page": 154,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The giant's innate spellcasting ability is Charisma. It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell fog cloud}",
+						"{@spell light}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell feather fall}",
+							"{@spell fly}",
+							"{@spell misty step}",
+							"{@spell telekinesis}"
+						],
+						"1e": [
+							"{@spell control weather}",
+							"{@spell gaseous form}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Cockatrice",
@@ -6576,15 +6851,6 @@
 			"cr": "4",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The couatl's spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring only verbal components:",
-						"At will: detect evil and good, detect magic, detect thoughts",
-						"3/day each: bless, create food and water, cure wounds, lesser restoration, protection from poison, sanctuary, shield",
-						"1/day each: dream, greater restoration, scrying"
-					]
-				},
-				{
 					"name": "Magic Weapons",
 					"text": [
 						"The couatl's weapon attacks are magical."
@@ -6624,8 +6890,36 @@
 					]
 				}
 			],
-			"spells": "detect evil and good, detect magic, detect thoughts, bless, create food and water, cure wounds, lesser restoration, protection from poison, sanctuary, shield, dream, greater restoration, scrying",
-			"page": 43
+			"page": 43,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The couatl's spellcasting ability is Charisma (spell save DC 14). It can innately cast the following spells, requiring only verbal components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell detect thoughts}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell bless}",
+							"{@spell create food and water}",
+							"{@spell cure wounds}",
+							"{@spell lesser restoration}",
+							"{@spell protection from poison}",
+							"{@spell sanctuary}",
+							"{@spell shield}"
+						],
+						"1e": [
+							"{@spell dream}",
+							"{@spell greater restoration}",
+							"{@spell scrying}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Crab",
@@ -6786,15 +7080,6 @@
 					"text": [
 						"The fanatic has advantage on saving throws against being charmed or frightened."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The fanatic is a 4th-level spellcaster. Its spell casting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). The fanatic has the following cleric spells prepared:",
-						"Cantrips (at will): light, sacred flame, thaumaturgy",
-						"1st level (4 slots): command, inflict wounds, shield of faith",
-						"2nd level (3 slots): hold person, spiritual weapon"
-					]
 				}
 			],
 			"action": [
@@ -6814,8 +7099,39 @@
 					]
 				}
 			],
-			"spells": "light, sacred flame, thaumaturgy, command, inflict wounds, shield of faith, hold person, spiritual weapon",
-			"page": 345
+			"page": 345,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The fanatic is a 4th-level spellcaster. Its spell casting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). The fanatic has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell inflict wounds}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell spiritual weapon}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Cultist",
@@ -6954,15 +7270,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dao's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: detect evil and good, detect magic, stone shape",
-						"3/day each: passwall, move earth, tongues",
-						"1/day each: conjure elemental (earth elemental only), gaseous form, invisibility, phantasmal killer, plane shift, wall of stone"
-					]
-				},
-				{
 					"name": "Sure-Footed",
 					"text": [
 						"The dao has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
@@ -7006,8 +7313,35 @@
 					]
 				}
 			],
-			"spells": "detect evil and good, detect magic, stone shape, passwall, move earth, tongues, conjure elemental, gaseous form, invisibility, phantasmal killer, plane shift, wall of stone",
-			"page": 143
+			"page": 143,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dao's innate spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell stone shape}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell passwall}",
+							"{@spell move earth}",
+							"{@spell tongues}"
+						],
+						"1e": [
+							"{@spell conjure elemental} (earth elemental only)",
+							"{@spell gaseous form}",
+							"{@spell invisibility}",
+							"{@spell phantasmal killer}",
+							"{@spell plane shift}",
+							"{@spell wall of stone}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Darkmantle",
@@ -7154,17 +7488,6 @@
 					"text": [
 						"Unless the death knight is incapacitated, it and undead creatures of its choice within 60 feet of it have advantage on saving throws against features that turn undead."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The death knight is a 19th-level spell caster. Its spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). It has the following paladin spells prepared:",
-						"1st level (4 slots): command, compelled duel, searing smite",
-						"2nd level (3 slots): hold person, magic weapon",
-						"3rd level (3 slots): dispel magic, elemental weapon",
-						"4th level (3 slots): banishment, staggering smite",
-						"5th level (2 slots): destructive wave (necrotic)"
-					]
 				}
 			],
 			"action": [
@@ -7199,8 +7522,52 @@
 					]
 				}
 			],
-			"spells": "command, compelled duel, searing smite, hold person, magic weapon, dispel magic, elemental weapon, banishment, staggering smite, destructive wave",
-			"page": 47
+			"page": 47,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The death knight is a 19th-level spell caster. Its spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). It has the following paladin spells prepared:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell compelled duel}",
+								"{@spell searing smite}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell magic weapon}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell elemental weapon}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell staggering smite}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell destructive wave} (necrotic)"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Death Slaad",
@@ -7236,15 +7603,6 @@
 					"name": "Shapechanger",
 					"text": [
 						"The slaad can use its action to polymorph into a Small or Medium humanoid, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The slaad's innate spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). The slaad can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, detect thoughts, invisibility (self only), mage hand, major image",
-						"2/day each: fear, fireball, fly, tongues",
-						"1/day each: cloudkill, plane shift"
 					]
 				},
 				{
@@ -7310,8 +7668,34 @@
 					]
 				}
 			],
-			"spells": "detect magic, detect thoughts, invisibility, mage hand, major image, fear, fireball, fly, tongues, cloudkill, plane shift",
-			"page": 278
+			"page": 278,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The slaad's innate spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). The slaad can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell invisibility} (self only)",
+						"{@spell mage hand}",
+						"{@spell major image}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell fear}",
+							"{@spell fireball}",
+							"{@spell fly}",
+							"{@spell tongues}"
+						],
+						"1e": [
+							"{@spell cloudkill}",
+							"{@spell plane shift}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Death Tyrant",
@@ -7428,14 +7812,6 @@
 					"text": [
 						"The gnome has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The gnome's innate spellcasting ability is Intelligence (spell save DC 11). It can innately cast the following spells, requiring no material components:",
-						"At will: nondetection (self only)",
-						"1/day each: blindness/deafness, blur, disguise self"
-					]
 				}
 			],
 			"action": [
@@ -7458,8 +7834,25 @@
 					]
 				}
 			],
-			"spells": "nondetection, blindness/deafness, blur, disguise self",
-			"page": 164
+			"page": 164,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The gnome's innate spellcasting ability is Intelligence (spell save DC 11). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell nondetection} (self only)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell blindness/deafness}",
+							"{@spell blur}",
+							"{@spell disguise self}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Deer",
@@ -7610,14 +8003,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The deva's spellcasting ability is Charisma (spell save DC 17). The deva can innately cast the following spells, requiring only verbal components:",
-						"At will: detect evil and good",
-						"1/day each: commune, raise dead"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The deva has advantage on saving throws against spells and other magical effects."
@@ -7654,8 +8039,24 @@
 					]
 				}
 			],
-			"spells": "detect evil and good, commune, raise dead",
-			"page": 16
+			"page": 16,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The deva's spellcasting ability is Charisma (spell save DC 17). The deva can innately cast the following spells, requiring only verbal components:"
+					],
+					"will": [
+						"{@spell detect evil and good}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell commune}",
+							"{@spell raise dead}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Dire Wolf",
@@ -7785,15 +8186,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The djinni's innate spellcasting ability is Charisma (spell save DC 17, +9 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: detect evil and good, detect magic, thunderwave",
-						"3/day each: create food and water (can create wine instead of water), tongues, wind walk",
-						"1/day each: conjure elemental (air elemental only), creation, gaseous form, invisibility, major image, plane shift"
-					]
-				},
-				{
 					"name": "Variant: Genie Powers",
 					"text": [
 						"Genies have a variety of magical capabilities, including spells. A few have even greater powers that allow them to alter their appearance or the nature of reality.",
@@ -7829,8 +8221,35 @@
 					]
 				}
 			],
-			"spells": "detect evil and good, detect magic, thunderwave, create food and water, tongues, wind walk, conjure elemental, creation, gaseous form, invisibility, major image, plane shift",
-			"page": 144
+			"page": 144,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The djinni's innate spellcasting ability is Charisma (spell save DC 17, {@hit 9} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell thunderwave}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell create food and water} (can create wine instead of water)",
+							"{@spell tongues}",
+							"{@spell wind walk}"
+						],
+						"1e": [
+							"{@spell conjure elemental} (air elemental only)",
+							"{@spell creation}",
+							"{@spell gaseous form}",
+							"{@spell invisibility}",
+							"{@spell major image}",
+							"{@spell plane shift}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Doppelganger",
@@ -8106,14 +8525,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The drider's innate spellcasting ability is Wisdom (spell save DC 13). The drider can innately cast the following spells, requiring no material components:",
-						"At will: dancing lights",
-						"1/day each: darkness, faerie fire"
-					]
-				},
-				{
 					"name": "Spider Climb",
 					"text": [
 						"The drider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
@@ -8168,8 +8579,24 @@
 					]
 				}
 			],
-			"spells": "dancing lights, darkness, faerie fire",
-			"page": 120
+			"page": 120,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The drider's innate spellcasting ability is Wisdom (spell save DC 13). The drider can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Drider Spellcaster",
@@ -8202,14 +8629,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The drider's innate spellcasting ability is Wisdom (spell save DC 13). The drider can innately cast the following spells, requiring no material components:",
-						"At will: dancing lights",
-						"1/day each: darkness, faerie fire"
-					]
-				},
-				{
 					"name": "Spider Climb",
 					"text": [
 						"The drider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
@@ -8225,17 +8644,6 @@
 					"name": "Web Walker",
 					"text": [
 						"The drider ignores movement restrictions caused by webbing."
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The drider is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The drider has the following spells prepared from the cleric spell list:",
-						"Cantrips (at will): poison spray, thaumaturgy",
-						"1st level (4 slots): bane, detect magic, sanctuary",
-						"2nd level (3 slots): hold person, silence",
-						"3rd level (3 slots): clairvoyance, dispel magic",
-						"4th level (2 slots): divination, freedom of movement"
 					]
 				}
 			],
@@ -8275,8 +8683,67 @@
 					]
 				}
 			],
-			"spells": "dancing lights, darkness, faerie fire, poison spray, thaumaturgy, bane, detect magic, sanctuary, hold person, silence, clairvoyance, dispel magic, divination, freedom of movement",
-			"page": 120
+			"page": 120,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The drider's innate spellcasting ability is Wisdom (spell save DC 13). The drider can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The drider is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). The drider has the following spells prepared from the cleric spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell poison spray}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bane}",
+								"{@spell detect magic}",
+								"{@spell sanctuary}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell silence}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell clairvoyance}",
+								"{@spell dispel magic}"
+							]
+						},
+						"4": {
+							"slots": 2,
+							"spells": [
+								"{@spell divination}",
+								"{@spell freedom of movement}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Drow",
@@ -8314,14 +8781,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The drow's spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spells, requiring no material components:",
-						"At will: dancing lights",
-						"1/day each: darkness, faerie fire"
-					]
-				},
-				{
 					"name": "Sunlight Sensitivity",
 					"text": [
 						"While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
@@ -8348,7 +8807,6 @@
 					]
 				}
 			],
-			"spells": "dancing lights, darkness, faerie fire",
 			"variant": [
 				{
 					"type": "variant",
@@ -8364,7 +8822,24 @@
 					]
 				}
 			],
-			"page": 128
+			"page": 128,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The drow's spellcasting ability is Charisma (spell save DC 11). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Drow Elite Warrior",
@@ -8400,14 +8875,6 @@
 					"name": "Fey Ancestry",
 					"text": [
 						"The drow has advantage on saving throws against being charmed, and magic can't put the drow to sleep."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The drow's spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:",
-						"At will: dancing lights",
-						"1/day each: darkness, faerie fire, levitate (self only)"
 					]
 				},
 				{
@@ -8451,7 +8918,6 @@
 					]
 				}
 			],
-			"spells": "dancing lights, darkness, faerie fire, levitate",
 			"variant": [
 				{
 					"type": "variant",
@@ -8467,7 +8933,25 @@
 					]
 				}
 			],
-			"page": 128
+			"page": 128,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The drow's spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}",
+							"{@spell levitate} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Drow Mage",
@@ -8507,26 +8991,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The drow's spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:",
-						"At will: dancing lights",
-						"1/day each: darkness, faerie fire, levitate (self only)"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The drow is a 10th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). The drow has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, minor illusion, poison spray, ray of frost",
-						"1st level (4 slots): mage armor, magic missile, shield, witch bolt",
-						"2nd level (3 slots): alter self, misty step, web",
-						"3rd level (3 slots): fly, lightning bolt",
-						"4th level (3 slots): Evard's black tentacles, greater invisibility",
-						"5th level (2 slots): cloudkill"
-					]
-				},
-				{
 					"name": "Sunlight Sensitivity",
 					"text": [
 						"While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
@@ -8551,8 +9015,78 @@
 					]
 				}
 			],
-			"spells": "dancing lights, darkness, faerie fire, levitate, mage hand, minor illusion, poison spray, ray of frost, mage armor, magic missile, shield, witch bolt, alter self, misty step, web, fly, lightning bolt, Evard's black tentacles, greater invisibility, cloudkill",
-			"page": 129
+			"page": 129,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The drow's spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}",
+							"{@spell levitate} (self only)"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The drow is a 10th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The drow has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell poison spray}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell witch bolt}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell alter self}",
+								"{@spell misty step}",
+								"{@spell web}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell Evard's black tentacles}",
+								"{@spell greater invisibility}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell cloudkill}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Drow Priestess of Lolth",
@@ -8593,26 +9127,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The drow's spellcasting ability is Charisma (spell save DC 15. She can innately cast the following spells, requiring no material components:",
-						"At will: dancing lights",
-						"1/day each: darkness, faerie fire, levitate (self only)"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The drow is a 10th-level spellcaster. Her spellcasting ability is Wisdom (save DC 14, +6 to hit with spell attacks). The drow has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, poison spray, resistance, spare the dying, thaumaturgy",
-						"1st level (4 slots): animal friendship, cure wounds, detect poison and disease, ray of sickness",
-						"2nd level (3 slots): lesser restoration, protection from poison, web",
-						"3rd level (3 slots): conjure animals (2 giant spiders), dispel magic",
-						"4th level (3 slots): divination, freedom of movement",
-						"5th level (2 slots): insect plague, mass cure wounds"
-					]
-				},
-				{
 					"name": "Sunlight Sensitivity",
 					"text": [
 						"While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
@@ -8642,7 +9156,6 @@
 					]
 				}
 			],
-			"spells": "dancing lights, darkness, faerie fire, levitate, guidance, poison spray, resistance, spare the dying, thaumaturgy, animal friendship, cure wounds, detect poison and disease, ray of sickness, lesser restoration, protection from poison, web, conjure animals, dispel magic, divination, freedom of movement, insect plague, mass cure wounds",
 			"variant": [
 				{
 					"type": "variant",
@@ -8658,7 +9171,80 @@
 					]
 				}
 			],
-			"page": 129
+			"page": 129,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The drow's spellcasting ability is Charisma (spell save DC 15. She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}",
+							"{@spell levitate} (self only)"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The drow is a 10th-level spellcaster. Her spellcasting ability is Wisdom (save DC 14, {@hit 6} to hit with spell attacks). The drow has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell poison spray}",
+								"{@spell resistance}",
+								"{@spell spare the dying}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell animal friendship}",
+								"{@spell cure wounds}",
+								"{@spell detect poison and disease}",
+								"{@spell ray of sickness}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell lesser restoration}",
+								"{@spell protection from poison}",
+								"{@spell web}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell conjure animals} (2 giant spiders)",
+								"{@spell dispel magic}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell divination}",
+								"{@spell freedom of movement}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell insect plague}",
+								"{@spell mass cure wounds}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Druid",
@@ -8688,17 +9274,6 @@
 			"passive": 14,
 			"languages": "Druidic plus any two languages",
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:",
-						"Cantrips (at will): druidcraft, produce flame, shillelagh",
-						"1st level (4 slots): entangle, longstrider, speak with animals, thunderwave",
-						"2nd level (3 slots): animal messenger, barkskin"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Quarterstaff",
@@ -8711,8 +9286,40 @@
 					]
 				}
 			],
-			"spells": "druidcraft, produce flame, shillelagh, entangle, longstrider, speak with animals, thunderwave, animal messenger, barkskin",
-			"page": 346
+			"page": 346,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). It has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell produce flame}",
+								"{@spell shillelagh}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell entangle}",
+								"{@spell longstrider}",
+								"{@spell speak with animals}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell animal messenger}",
+								"{@spell barkskin}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Dryad",
@@ -8738,15 +9345,6 @@
 			"languages": "Elvish, Sylvan",
 			"cr": "1",
 			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dryad's innate spellcasting ability is Charisma (spell save DC 14). The dryad can innately cast the following spells, requiring no material components:",
-						"At will: druidcraft",
-						"3/day each: entangle, goodberry",
-						"1/day each: barkskin, pass without trace, shillelagh"
-					]
-				},
 				{
 					"name": "Magic Resistance",
 					"text": [
@@ -8785,8 +9383,29 @@
 					]
 				}
 			],
-			"spells": "druidcraft, entangle, goodberry, barkskin, pass without trace, shillelagh",
-			"page": 121
+			"page": 121,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dryad's innate spellcasting ability is Charisma (spell save DC 14). The dryad can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell druidcraft}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell entangle}",
+							"{@spell goodberry}"
+						],
+						"1e": [
+							"{@spell barkskin}",
+							"{@spell pass without trace}",
+							"{@spell shillelagh}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Duergar",
@@ -8956,12 +9575,6 @@
 					"text": [
 						"When the mephit dies, it explodes in a burst of dust. Each creature within 5 ft. of it must then succeed on a DC 10 Constitution saving throw or be blinded for 1 minute. A blinded creature can repeat the saving throw on each of its turns, ending the effect on itself on a success."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (1/Day)",
-					"text": [
-						"The mephit can innately cast sleep, requiring no material components. Its innate spellcasting ability is Charisma."
-					]
 				}
 			],
 			"action": [
@@ -8987,8 +9600,18 @@
 					]
 				}
 			],
-			"spells": "sleep",
-			"page": 215
+			"page": 215,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (1/Day)",
+					"headerEntries": [
+						"The mephit can innately cast {@spell sleep}, requiring no material components. Its innate spellcasting ability is Charisma."
+					],
+					"headerWill": [
+						"{@spell sleep}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Eagle",
@@ -9116,15 +9739,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The efreeti's innate spell casting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: detect magic",
-						"3/day: enlarge/reduce, tongues",
-						"1/day each: conjure elemental (fire elemental only), gaseous form, invisibility, major image, plane shift, wall of fire"
-					]
-				},
-				{
 					"name": "Variant: Genie Powers",
 					"text": [
 						"Genies have a variety of magical capabilities, including spells. A few have even greater powers that allow them to alter their appearance or the nature of reality.",
@@ -9162,8 +9776,32 @@
 					]
 				}
 			],
-			"spells": "detect magic, enlarge/reduce, tongues, conjure elemental, gaseous form, invisibility, major image, plane shift, wall of fire",
-			"page": 145
+			"page": 145,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The efreeti's innate spell casting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}"
+					],
+					"daily": {
+						"3": [
+							"{@spell enlarge/reduce}",
+							"{@spell tongues}"
+						],
+						"1e": [
+							"{@spell conjure elemental} (fire elemental only)",
+							"{@spell gaseous form}",
+							"{@spell invisibility}",
+							"{@spell major image}",
+							"{@spell plane shift}",
+							"{@spell wall of fire}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Elephant",
@@ -9294,14 +9932,6 @@
 			"cr": "23",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The empyrean's innate spellcasting ability is Charisma (spell save DC 23, +15 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: greater restoration, pass without trace, water breathing, water walk",
-						"1/day each: commune, dispel evil and good, earthquake, fire storm, plane shift (self only)"
-					]
-				},
-				{
 					"name": "Legendary Resistance (3/Day)",
 					"text": [
 						"If the empyrean fails a saving throw, it can choose to succeed instead."
@@ -9360,8 +9990,30 @@
 					]
 				}
 			],
-			"spells": "greater restoration, pass without trace, water breathing, water walk, commune, dispel evil and good, earthquake, fire storm, plane shift",
-			"page": 130
+			"page": 130,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The empyrean's innate spellcasting ability is Charisma (spell save DC 23, {@hit 15} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell greater restoration}",
+						"{@spell pass without trace}",
+						"{@spell water breathing}",
+						"{@spell water walk}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell commune}",
+							"{@spell dispel evil and good}",
+							"{@spell earthquake}",
+							"{@spell fire storm}",
+							"{@spell plane shift} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Erinyes",
@@ -9654,13 +10306,6 @@
 					"text": [
 						"The faerie dragon has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.",
-						"1/day each: color spray, dancing lights, mage hand, major image, minor illusion, mirror image, suggestion"
-					]
 				}
 			],
 			"action": [
@@ -9682,8 +10327,26 @@
 					]
 				}
 			],
-			"spells": "color spray, dancing lights, mage hand, major image, minor illusion, mirror image, suggestion",
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell color spray}",
+							"{@spell dancing lights}",
+							"{@spell mage hand}",
+							"{@spell major image}",
+							"{@spell minor illusion}",
+							"{@spell mirror image}",
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Faerie Dragon (Green)",
@@ -9741,13 +10404,6 @@
 					"text": [
 						"The faerie dragon has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.",
-						"1/day each: color spray, dancing lights, mage hand, minor illusion, mirror image, suggestion"
-					]
 				}
 			],
 			"action": [
@@ -9769,8 +10425,25 @@
 					]
 				}
 			],
-			"spells": "color spray, dancing lights, mage hand, minor illusion, mirror image, suggestion",
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell color spray}",
+							"{@spell dancing lights}",
+							"{@spell mage hand}",
+							"{@spell minor illusion}",
+							"{@spell mirror image}",
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Faerie Dragon (Indigo)",
@@ -9828,13 +10501,6 @@
 					"text": [
 						"The faerie dragon has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.",
-						"1/day each: color spray, dancing lights, hallucinatory terrain, mage hand, major image, minor illusion, mirror image, suggestion"
-					]
 				}
 			],
 			"action": [
@@ -9856,8 +10522,27 @@
 					]
 				}
 			],
-			"spells": "color spray, dancing lights, hallucinatory terrain, mage hand, major image, minor illusion, mirror image, suggestion",
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell color spray}",
+							"{@spell dancing lights}",
+							"{@spell hallucinatory terrain}",
+							"{@spell mage hand}",
+							"{@spell major image}",
+							"{@spell minor illusion}",
+							"{@spell mirror image}",
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Faerie Dragon (Orange)",
@@ -9915,13 +10600,6 @@
 					"text": [
 						"The faerie dragon has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.",
-						"1/day each:color spray, dancing lights, mage hand, minor illusion"
-					]
 				}
 			],
 			"action": [
@@ -9943,8 +10621,23 @@
 					]
 				}
 			],
-			"spells": "color spray, dancing lights, mage hand, minor illusion",
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell color spray}",
+							"{@spell dancing lights}",
+							"{@spell mage hand}",
+							"{@spell minor illusion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Faerie Dragon (Red)",
@@ -10002,13 +10695,6 @@
 					"text": [
 						"The faerie dragon has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.",
-						"1/day each: dancing lights, mage hand, minor illusion"
-					]
 				}
 			],
 			"action": [
@@ -10030,8 +10716,22 @@
 					]
 				}
 			],
-			"spells": "dancing lights, mage hand, minor illusion",
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell dancing lights}",
+							"{@spell mage hand}",
+							"{@spell minor illusion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Faerie Dragon (Violet)",
@@ -10089,13 +10789,6 @@
 					"text": [
 						"The faerie dragon has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.",
-						"1/day each: color spray, dancing lights, hallucinatory terrain, mage hand, major image, minor illusion, mirror image, polymorph, suggestion"
-					]
 				}
 			],
 			"action": [
@@ -10117,8 +10810,28 @@
 					]
 				}
 			],
-			"spells": "color spray, dancing lights, hallucinatory terrain, mage hand, major image, minor illusion, mirror image, polymorph, suggestion",
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell color spray}",
+							"{@spell dancing lights}",
+							"{@spell hallucinatory terrain}",
+							"{@spell mage hand}",
+							"{@spell major image}",
+							"{@spell minor illusion}",
+							"{@spell mirror image}",
+							"{@spell polymorph}",
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Faerie Dragon (Yellow)",
@@ -10176,13 +10889,6 @@
 					"text": [
 						"The faerie dragon has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.",
-						"1/day each: color spray, dancing lights, mage hand, minor illusion, mirror image"
-					]
 				}
 			],
 			"action": [
@@ -10204,8 +10910,24 @@
 					]
 				}
 			],
-			"spells": "color spray, dancing lights, mage hand, minor illusion, mirror image",
-			"page": 133
+			"page": 133,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell color spray}",
+							"{@spell dancing lights}",
+							"{@spell mage hand}",
+							"{@spell minor illusion}",
+							"{@spell mirror image}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Fire Elemental",
@@ -10429,16 +11151,6 @@
 					"text": [
 						"If the flameskull is destroyed, it regains all its hit points in 1 hour unless holy water is sprinkled on its remains or a dispel magic or remove curse spell is cast on them."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The flameskull is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). It requires no somatic or material components to cast its spells. The flameskull has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand",
-						"1st level (3 slots): magic missile, shield",
-						"2nd level (2 slots): blur, flaming sphere",
-						"3rd level (1 slot): fireball"
-					]
 				}
 			],
 			"action": [
@@ -10458,8 +11170,42 @@
 					]
 				}
 			],
-			"spells": "mage hand, magic missile, shield, blur, flaming sphere, fireball",
-			"page": 134
+			"page": 134,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The flameskull is a 5th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). It requires no somatic or material components to cast its spells. The flameskull has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell blur}",
+								"{@spell flaming sphere}"
+							]
+						},
+						"3": {
+							"slots": 1,
+							"spells": [
+								"{@spell fireball}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Flesh Golem",
@@ -12695,17 +13441,6 @@
 			"passive": 12,
 			"languages": "Gith",
 			"cr": "8",
-			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The githyanki's innate spellcasting ability is Intelligence (spell save DC 13, +5 to hit with spell attacks). It can innately cast the following spells, requiring no components:",
-						"At will: mage hand (the hand is invisible)",
-						"3/day each: jump, misty step, nondetection (self only), tongues",
-						"1/day each: plane shift, telekinesis"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -12723,8 +13458,30 @@
 					]
 				}
 			],
-			"spells": "mage hand, jump, misty step, nondetection, tongues, plane shift, telekinesis",
-			"page": 160
+			"page": 160,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The githyanki's innate spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell mage hand} (the hand is invisible)"
+					],
+					"daily": {
+						"3e": [
+							"{@spell jump}",
+							"{@spell misty step}",
+							"{@spell nondetection} (self only)",
+							"{@spell tongues}"
+						],
+						"1e": [
+							"{@spell plane shift}",
+							"{@spell telekinesis}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Githyanki Warrior",
@@ -12750,16 +13507,6 @@
 			"passive": 11,
 			"languages": "Gith",
 			"cr": "3",
-			"trait": [
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The githyanki's innate spellcasting ability is Intelligence. It can innately cast the following spells, requiring no components:",
-						"At will: mage hand (the hand is invisible)",
-						"3/day each: jump, misty step, nondetection (self only)"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -12777,8 +13524,25 @@
 					]
 				}
 			],
-			"spells": "mage hand, jump, misty step, nondetection",
-			"page": 160
+			"page": 160,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The githyanki's innate spellcasting ability is Intelligence. It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell mage hand} (the hand is invisible)"
+					],
+					"daily": {
+						"3e": [
+							"{@spell jump}",
+							"{@spell misty step}",
+							"{@spell nondetection} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Githzerai Monk",
@@ -12810,14 +13574,6 @@
 			"cr": "2",
 			"trait": [
 				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The githzerai's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:",
-						"At will: mage hand (the hand is invisible)",
-						"3/day each: feather fall, jump, see invisibility, shield"
-					]
-				},
-				{
 					"name": "Psychic Defense",
 					"text": [
 						"While the githzerai is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
@@ -12841,8 +13597,26 @@
 					]
 				}
 			],
-			"spells": "mage hand, feather fall, jump, see invisibility, shield",
-			"page": 161
+			"page": 161,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The githzerai's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell mage hand} (the hand is invisible)"
+					],
+					"daily": {
+						"3e": [
+							"{@spell feather fall}",
+							"{@spell jump}",
+							"{@spell see invisibility}",
+							"{@spell shield}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Githzerai Zerth",
@@ -12875,14 +13649,6 @@
 			"cr": "6",
 			"trait": [
 				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The githzerai's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:",
-						"At will: mage hand (the hand is invisible)",
-						"3/day each: feather fall, jump, see invisibility, shield"
-					]
-				},
-				{
 					"name": "Psychic Defense",
 					"text": [
 						"While the githzerai is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
@@ -12906,8 +13672,26 @@
 					]
 				}
 			],
-			"spells": "mage hand, feather fall, jump, see invisibility, shield",
-			"page": 161
+			"page": 161,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The githzerai's innate spellcasting ability is Wisdom. It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell mage hand} (the hand is invisible)"
+					],
+					"daily": {
+						"3e": [
+							"{@spell feather fall}",
+							"{@spell jump}",
+							"{@spell see invisibility}",
+							"{@spell shield}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Glabrezu",
@@ -12938,14 +13722,6 @@
 			"languages": "Abyssal, telepathy 120 ft.",
 			"cr": "9",
 			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The glabrezu's spellcasting ability is Intelligence (spell save DC 16). The glabrezu can innately cast the following spells, requiring no material components:",
-						"At will: darkness, detect magic, dispel magic",
-						"1/day each: confusion, fly, power word stun"
-					]
-				},
 				{
 					"name": "Magic Resistance",
 					"text": [
@@ -12987,8 +13763,27 @@
 					]
 				}
 			],
-			"spells": "darkness, detect magic, dispel magic, confusion, fly, power word stun",
-			"page": 58
+			"page": 58,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The glabrezu's spellcasting ability is Intelligence (spell save DC 16). The glabrezu can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell dispel magic}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell confusion}",
+							"{@spell fly}",
+							"{@spell power word stun}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Gladiator",
@@ -13813,15 +14608,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The slaad's innate spellcasting ability is Charisma (spell save DC 14). The slaad can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, detect thoughts, invisibility (self only), mage hand, major image",
-						"2/day each: fear, fly, fireball, tongues",
-						"1/day: plane shift (self only)"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The slaad has advantage on saving throws against spells and other magical effects"
@@ -13884,8 +14670,33 @@
 					]
 				}
 			],
-			"spells": "detect magic, detect thoughts, invisibility, mage hand, major image, fear, fly, fireball, tongues, plane shift",
-			"page": 277
+			"page": 277,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The slaad's innate spellcasting ability is Charisma (spell save DC 14). The slaad can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell invisibility} (self only)",
+						"{@spell mage hand}",
+						"{@spell major image}"
+					],
+					"daily": {
+						"1": [
+							"{@spell plane shift} (self only)"
+						],
+						"2e": [
+							"{@spell fear}",
+							"{@spell fly}",
+							"{@spell fireball}",
+							"{@spell tongues}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Green Dragon Wyrmling",
@@ -13975,7 +14786,11 @@
 					"headerEntries": [
 						"The hag's innate spellcasting ability is Charisma (spell save DC 12). She can innately cast the following spells, requiring no material components:"
 					],
-					"will": ["{@spell dancing lights}", "{@spell minor illusion}", "{@spell vicious mockery}"]
+					"will": [
+						"{@spell dancing lights}",
+						"{@spell minor illusion}",
+						"{@spell vicious mockery}"
+					]
 				},
 				{
 					"name": "Shared Spellcasting (Coven Only)",
@@ -13985,27 +14800,45 @@
 					"spells": {
 						"1": {
 							"slots": 4,
-							"spells": ["{@spell identify}", "{@spell ray of sickness}"]
+							"spells": [
+								"{@spell identify}",
+								"{@spell ray of sickness}"
+							]
 						},
 						"2": {
 							"slots": 3,
-							"spells": ["{@spell hold person}", "{@spell locate object}"]
+							"spells": [
+								"{@spell hold person}",
+								"{@spell locate object}"
+							]
 						},
 						"3": {
 							"slots": 3,
-							"spells": ["{@spell bestow curse}", "{@spell counterspell}", "{@spell lightning bolt}"]
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell counterspell}",
+								"{@spell lightning bolt}"
+							]
 						},
 						"4": {
 							"slots": 3,
-							"spells": ["{@spell phantasmal killer}", "{@spell polymorph}"]
+							"spells": [
+								"{@spell phantasmal killer}",
+								"{@spell polymorph}"
+							]
 						},
 						"5": {
 							"slots": 2,
-							"spells": ["{@spell contact other plane}", "{@spell scrying}"]
+							"spells": [
+								"{@spell contact other plane}",
+								"{@spell scrying}"
+							]
 						},
 						"6": {
 							"slots": 1,
-							"spells": ["{@spell eyebite}"]
+							"spells": [
+								"{@spell eyebite}"
+							]
 						}
 					},
 					"footerEntries": [
@@ -14065,7 +14898,6 @@
 					]
 				}
 			],
-			"spells": "dancing lights, minor illusion, vicious mockery, identify, ray of sickness, hold person, locate object, bestow curse, counterspell, lightning bolt, phantasmal killer, polymorph, contact other plane, scrying, eyebite",
 			"page": 177
 		},
 		{
@@ -14102,15 +14934,6 @@
 					"name": "Shapechanger",
 					"text": [
 						"The slaad can use its action to polymorph into a Small or Medium humanoid, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The slaad's innate spellcasting ability is Charisma (spell save DC 12). The slaad can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, detect thoughts, mage hand",
-						"2/day each: fear, invisibility (self only)",
-						"1/day: fireball"
 					]
 				},
 				{
@@ -14179,8 +15002,29 @@
 					]
 				}
 			],
-			"spells": "detect magic, detect thoughts, mage hand, fear, invisibility, fireball",
-			"page": 277
+			"page": 277,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The slaad's innate spellcasting ability is Charisma (spell save DC 12). The slaad can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell mage hand}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fireball}"
+						],
+						"2e": [
+							"{@spell fear}",
+							"{@spell invisibility} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Grell",
@@ -14543,19 +15387,6 @@
 					"text": [
 						"If it dies, the naga returns to life in 1d6 days and regains all its hit points. Only a wish spell can prevent this trait from functioning."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The naga is an 11th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 16, +8 to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following cleric spells prepared:",
-						"Cantrips (at will): mending, sacred flame, thaumaturgy",
-						"1st level (4 slots): command, cure wounds, shield of faith",
-						"2nd level (3 slots): calm emotions, hold person",
-						"3rd level (3 slots): bestow curse, clairvoyance",
-						"4th level (3 slots): banishment, freedom of movement",
-						"5th level (2 slots): flame strike, geas",
-						"6th level (1 slot): true seeing"
-					]
 				}
 			],
 			"action": [
@@ -14578,8 +15409,66 @@
 					]
 				}
 			],
-			"spells": "mending, sacred flame, thaumaturgy, command, cure wounds, shield of faith, calm emotions, hold person, bestow curse, clairvoyance, banishment, freedom of movement, flame strike, geas, true seeing",
-			"page": 234
+			"page": 234,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The naga is an 11th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mending}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell cure wounds}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell calm emotions}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell clairvoyance}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell freedom of movement}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell flame strike}",
+								"{@spell geas}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell true seeing}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Gynosphinx",
@@ -14621,18 +15510,6 @@
 					"text": [
 						"The sphinx's weapon attacks are magical."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The sphinx is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 16, +8 to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, minor illusion, prestidigitation",
-						"1st level (4 slots): detect magic, identify, shield",
-						"2nd level (3 slots): darkness, locate object, suggestion",
-						"3rd level (3 slots): dispel magic, remove curse, tongues",
-						"4th level (3 slots): banishment, greater invisibility",
-						"5th level (1 slot): legend lore"
-					]
 				}
 			],
 			"action": [
@@ -14673,8 +15550,61 @@
 					]
 				}
 			],
-			"spells": "mage hand, minor illusion, prestidigitation, detect magic, identify, shield, darkness, locate object, suggestion, dispel magic, remove curse, tongues, banishment, greater invisibility, legend lore",
-			"page": 282
+			"page": 282,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The sphinx is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 16, {@hit 8} to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell darkness}",
+								"{@spell locate object}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell remove curse}",
+								"{@spell tongues}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell greater invisibility}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell legend lore}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Half-Ogre (Ogrillon)",
@@ -15969,12 +16899,6 @@
 					"text": [
 						"While the mephit remains motionless, it is indistinguishable from an ordinary shard of ice."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (1/Day)",
-					"text": [
-						"The mephit can innately cast fog cloud, requiring no material components. Its innate spellcasting ability is Charisma."
-					]
 				}
 			],
 			"action": [
@@ -16000,8 +16924,18 @@
 					]
 				}
 			],
-			"spells": "fog cloud",
-			"page": 215
+			"page": 215,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (1/Day)",
+					"headerEntries": [
+						"The mephit can innately cast {@spell fog cloud}, requiring no material components. Its innate spellcasting ability is Charisma."
+					],
+					"headerWill": [
+						"{@spell fog cloud}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Imp",
@@ -16927,18 +17861,6 @@
 					"text": [
 						"While in sunlight, the kuo-toa has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The kuo-toa is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The kuo-toa has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, sacred flame, thaumaturgy",
-						"1st level (4 slots): detect magic, sanctuary, shield of faith",
-						"2nd level (3 slots): hold person, spiritual weapon",
-						"3rd level (3 slots): spirit guardians, tongues",
-						"4th level (3 slots): control water, divination",
-						"5th level (2 slots): mass cure wounds, scrying"
-					]
 				}
 			],
 			"action": [
@@ -16967,8 +17889,60 @@
 					]
 				}
 			],
-			"spells": "guidance, sacred flame, thaumaturgy, detect magic, sanctuary, shield of faith, hold person, spiritual weapon, spirit guardians, tongues, control water, divination, mass cure wounds, scrying",
-			"page": 200
+			"page": 200,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The kuo-toa is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). The kuo-toa has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell sanctuary}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell spirit guardians}",
+								"{@spell tongues}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell control water}",
+								"{@spell divination}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell mass cure wounds}",
+								"{@spell scrying}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Kuo-toa Monitor",
@@ -17110,14 +18084,6 @@
 					"text": [
 						"While in sunlight, the kuo-toa has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The kuo-toa is a 2nd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The kuo-toa has the following cleric spells prepared:",
-						"Cantrips (at will): sacred flame, thaumaturgy",
-						"1st level (3 slots): bane, shield of faith"
-					]
 				}
 			],
 			"action": [
@@ -17146,8 +18112,30 @@
 					]
 				}
 			],
-			"spells": "sacred flame, thaumaturgy, bane, shield of faith",
-			"page": 200
+			"page": 200,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The kuo-toa is a 2nd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The kuo-toa has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell bane}",
+								"{@spell shield of faith}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Lamia",
@@ -17173,17 +18161,6 @@
 			"passive": 12,
 			"languages": "Abyssal, Common",
 			"cr": "4",
-			"trait": [
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The lamia's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components.",
-						"At will: disguise self (any humanoid form), major image",
-						"3/day each: charm person, mirror image, scrying, suggestion",
-						"1/day: geas"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -17216,8 +18193,30 @@
 					]
 				}
 			],
-			"spells": "disguise self, major image, charm person, mirror image, scrying, suggestion, geas",
-			"page": 201
+			"page": 201,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The lamia's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no material components."
+					],
+					"will": [
+						"{@spell disguise self} (any humanoid form)",
+						"{@spell major image}"
+					],
+					"daily": {
+						"1": [
+							"{@spell geas}"
+						],
+						"3e": [
+							"{@spell charm person}",
+							"{@spell mirror image}",
+							"{@spell scrying}",
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Lemure",
@@ -17316,22 +18315,6 @@
 					]
 				},
 				{
-					"name": "Spellcasting",
-					"text": [
-						"The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 20, +12 to hit with spell attacks). The lich has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, prestidigitation, ray of frost",
-						"1st level (4 slots): detect magic, magic missile, shield, thunderwave",
-						"2nd level (3 slots): detect thoughts, invisibility, Melf's acid arrow, mirror image",
-						"3rd level (3 slots): animate dead, counterspell, dispel magic, fireball",
-						"4th level (3 slots): blight, dimension door",
-						"5th level (3 slots): cloudkill, scrying",
-						"6th level (1 slot): disintegrate, globe of invulnerability",
-						"7th level (1 slot): finger of death, plane shift",
-						"8th level (1 slot): dominate monster, power word stun",
-						"9th level (1 slot): power word kill"
-					]
-				},
-				{
 					"name": "Turn Resistance",
 					"text": [
 						"The lich has advantage on saving throws against any effect that turns undead."
@@ -17379,8 +18362,92 @@
 					]
 				}
 			],
-			"spells": "mage hand, prestidigitation, ray of frost, detect magic, magic missile, shield, thunderwave, detect thoughts, invisibility, Melf's acid arrow, mirror image, animate dead, counterspell, dispel magic, fireball, blight, dimension door, cloudkill, scrying, disintegrate, globe of invulnerability, finger of death, plane shift, dominate monster, power word stun, power word kill",
-			"page": 202
+			"page": 202,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 20, {@hit 12} to hit with spell attacks). The lich has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell invisibility}",
+								"{@spell Melf's acid arrow}",
+								"{@spell mirror image}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell counterspell}",
+								"{@spell dispel magic}",
+								"{@spell fireball}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell dimension door}"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cloudkill}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell disintegrate}",
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell finger of death}",
+								"{@spell plane shift}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell dominate monster}",
+								"{@spell power word stun}"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell power word kill}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Lion",
@@ -17764,16 +18831,6 @@
 					"text": [
 						"The lizardfolk can hold its breath for 15 minutes."
 					]
-				},
-				{
-					"name": "Spellcasting (Lizardfolk Form Only)",
-					"text": [
-						"The lizardfolk is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The lizardfolk has the following druid spells prepared:",
-						"Cantrips (at will): druidcraft, produce flame, thorn whip",
-						"1st level (4 slots): entangle, fog cloud",
-						"2nd level (3 slots): heat metal, spike growth",
-						"3rd level (2 slots): conjure animals (reptiles only), plant growth"
-					]
 				}
 			],
 			"action": [
@@ -17809,8 +18866,45 @@
 					]
 				}
 			],
-			"spells": "druidcraft, produce flame, thorn whip, entangle, fog cloud, heat metal, spike growth, conjure animals, plant growth",
-			"page": 205
+			"page": 205,
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Lizardfolk Form Only)",
+					"headerEntries": [
+						"The lizardfolk is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The lizardfolk has the following druid spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell druidcraft}",
+								"{@spell produce flame}",
+								"{@spell thorn whip}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell entangle}",
+								"{@spell fog cloud}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell heat metal}",
+								"{@spell spike growth}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell conjure animals} (reptiles only)",
+								"{@spell plant growth}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Mage",
@@ -17840,20 +18934,6 @@
 			"passive": 11,
 			"languages": "any four languages",
 			"cr": "6",
-			"trait": [
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The mage is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). The mage has the following wizard spells prepared:",
-						"Cantrips (at will): fire bolt, light, mage hand, prestidigitation",
-						"1st level (4 slots): detect magic, mage armor, magic missile, shield",
-						"2nd level (3 slots): misty step, suggestion",
-						"3rd level (3 slots): counterspell, fireball, fly",
-						"4th level (3 slots): greater invisibility, ice storm",
-						"5th level (1 slot): cone of cold"
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Dagger",
@@ -17865,8 +18945,62 @@
 					]
 				}
 			],
-			"spells": "fire bolt, light, mage hand, prestidigitation, detect magic, mage armor, magic missile, shield, misty step, suggestion, counterspell, fireball, fly, greater invisibility, ice storm, cone of cold",
-			"page": 347
+			"page": 347,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The mage is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The mage has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell fly}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell ice storm}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell cone of cold}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Magma Mephit",
@@ -17908,12 +19042,6 @@
 					"text": [
 						"While the mephit remains motionless, it is indistinguishable from an ordinary mound of magma."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (1/Day)",
-					"text": [
-						"The mephit can innately cast heat metal (spell save DC 10), requiring no material components. Its innate spellcasting ability is Charisma."
-					]
 				}
 			],
 			"action": [
@@ -17939,8 +19067,18 @@
 					]
 				}
 			],
-			"spells": "heat metal",
-			"page": 216
+			"page": 216,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (1/Day)",
+					"headerEntries": [
+						"The mephit can innately cast {@spell heat metal} (spell save DC 10), requiring no material components. Its innate spellcasting ability is Charisma."
+					],
+					"headerWill": [
+						"{@spell heat metal}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Magmin",
@@ -18178,15 +19316,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The marid's innate spellcasting ability is Charisma (spell save DC 16, +8 to hit with spell attacks). It can innately cast the following spells, requiring no material components:",
-						"At will: create or destroy water, detect evil and good, detect magic, fog cloud, purify food and drink",
-						"3/day each: tongues, water breathing, water walk",
-						"1/day each: conjure elemental (water elemental only), control water, gaseous form, invisibility, plane shift"
-					]
-				},
-				{
 					"name": "Variant: Genie Powers",
 					"text": [
 						"Genies have a variety of magical capabilities, including spells. A few have even greater powers that allow them to alter their appearance or the nature of reality.",
@@ -18225,8 +19354,36 @@
 					]
 				}
 			],
-			"spells": "create or destroy water, detect evil and good, detect magic, fog cloud, purify food and drink, tongues, water breathing, water walk, conjure elemental, control water, gaseous form, invisibility, plane shift",
-			"page": 146
+			"page": 146,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The marid's innate spellcasting ability is Charisma (spell save DC 16, {@hit 8} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell create or destroy water}",
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell fog cloud}",
+						"{@spell purify food and drink}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell tongues}",
+							"{@spell water breathing}",
+							"{@spell water walk}"
+						],
+						"1e": [
+							"{@spell conjure elemental} (water elemental only)",
+							"{@spell control water}",
+							"{@spell gaseous form}",
+							"{@spell invisibility}",
+							"{@spell plane shift}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Marilith",
@@ -18582,14 +19739,6 @@
 			"cr": "5",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The mezzoloth's innate spellcasting ability is Charisma (spell save DC 11). The mezzoloth can innately cast the following spells, requiring no material components:",
-						"2/day each: darkness, dispel magic",
-						"1/day: cloudkill"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The mezzoloth has advantage on saving throws against spells and other magical effects."
@@ -18643,8 +19792,24 @@
 					]
 				}
 			],
-			"spells": "darkness, dispel magic, cloudkill",
-			"page": 313
+			"page": 313,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The mezzoloth's innate spellcasting ability is Charisma (spell save DC 11). The mezzoloth can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell cloudkill}"
+						],
+						"2e": [
+							"{@spell darkness}",
+							"{@spell dispel magic}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Mimic",
@@ -18756,14 +19921,6 @@
 					"text": [
 						"The mind flayer has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The mind flayer's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:",
-						"At will: detect thoughts, levitate",
-						"1/day each: dominate monster, plane shift (self only)"
-					]
 				}
 			],
 			"action": [
@@ -18795,8 +19952,25 @@
 					]
 				}
 			],
-			"spells": "detect thoughts, levitate, dominate monster, plane shift",
-			"page": 222
+			"page": 222,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The mind flayer's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell detect thoughts}",
+						"{@spell levitate}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell plane shift} (self only)"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Mind Flayer Arcanist",
@@ -18832,26 +20006,6 @@
 					"text": [
 						"The mind flayer has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The mind flayer's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:",
-						"At will: detect thoughts, levitate",
-						"1/day each: dominate monster, plane shift (self only)"
-					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The mind flayer is a 10th-level spellcaster. Its spellcasting ability is Intelligence (save DC 15, +7 to hit with spell attacks). The mind flayer has the following wizard spells prepared:",
-						"Cantrips (at will): blade ward, dancing lights, mage hand, shocking grasp",
-						"1st level (4 slots): detect magic, disguise self, shield, sleep",
-						"2nd level (3 slots): blur, invisibility, ray of enfeeblement",
-						"3rd level (3 slots): clairvoyance, lightning bolt, sending",
-						"4th level (3 slots): confusion, hallucinatory terrain",
-						"5th level (2 slots): telekinesis, wall of force"
-					]
 				}
 			],
 			"action": [
@@ -18883,8 +20037,80 @@
 					]
 				}
 			],
-			"spells": "detect thoughts, levitate, dominate monster, plane shift, blade ward, dancing lights, mage hand, shocking grasp, detect magic, disguise self, shield, sleep, blur, invisibility, ray of enfeeblement, clairvoyance, lightning bolt, sending, confusion, hallucinatory terrain, telekinesis, wall of force",
-			"page": 222
+			"page": 222,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The mind flayer's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell detect thoughts}",
+						"{@spell levitate}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell plane shift} (self only)"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The mind flayer is a 10th-level spellcaster. Its spellcasting ability is Intelligence (save DC 15, {@hit 7} to hit with spell attacks). The mind flayer has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell blade ward}",
+								"{@spell dancing lights}",
+								"{@spell mage hand}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell disguise self}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell blur}",
+								"{@spell invisibility}",
+								"{@spell ray of enfeeblement}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell clairvoyance}",
+								"{@spell lightning bolt}",
+								"{@spell sending}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell hallucinatory terrain}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell telekinesis}",
+								"{@spell wall of force}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Minotaur",
@@ -19257,19 +20483,6 @@
 					"text": [
 						"A destroyed mummy lord gains a new body in 24 hours if its heart is intact, regaining all its hit points and becoming active again. The new body appears within 5 feet of the mummy lord's heart."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The mummy lord is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 17, +9 to hit with spell attacks). The mummy lord has the following cleric spells prepared:",
-						"Cantrips (at will): sacred flame, thaumaturgy",
-						"1st level (4 slots): command, guiding bolt, shield of faith",
-						"2nd level (3 slots): hold person, silence, spiritual weapon",
-						"3rd level (3 slots): animate dead, dispel magic",
-						"4th level (3 slots): divination, guardian of faith",
-						"5th level (2 slots): contagion, insect plague",
-						"6th level (1 slot): harm"
-					]
 				}
 			],
 			"action": [
@@ -19328,8 +20541,66 @@
 					]
 				}
 			],
-			"spells": "sacred flame, thaumaturgy, command, guiding bolt, shield of faith, hold person, silence, spiritual weapon, animate dead, dispel magic, divination, guardian of faith, contagion, insect plague, harm",
-			"page": 229
+			"page": 229,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The mummy lord is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 17, {@hit 9} to hit with spell attacks). The mummy lord has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell guiding bolt}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell silence}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell dispel magic}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell divination}",
+								"{@spell guardian of faith}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell contagion}",
+								"{@spell insect plague}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell harm}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Myconid Adult",
@@ -19669,14 +20940,6 @@
 			"cr": "5",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The hag's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). She can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, magic missile",
-						"2/day each: plane shift (self only), ray of enfeeblement, sleep"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The hag has advantage on saving throws against spells and other magical effects."
@@ -19695,19 +20958,6 @@
 					"text": [
 						"When hags must work together, they form covens, in spite of their selfish natures. A coven is made up of hags of any type, all of whom are equals within the group. However, each of the hags continues to desire more personal power.",
 						"A coven consists of three hags so that any arguments between two hags can be settled by the third. If more than three hags ever come together, as might happen if two covens come into conflict, the result is usually chaos."
-					]
-				},
-				{
-					"name": "Shared Spellcasting (Coven Only)",
-					"text": [
-						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:",
-						"1st level (4 slots): identify, ray of sickness",
-						"2nd level (3 slots): hold person, locate object",
-						"3rd level (3 slots): bestow curse, counterspell, lightning bolt",
-						"4th level (3 slots): phantasmal killer, polymorph",
-						"5th level (2 slots): contact other plane, scrying",
-						"6th level (1 slot): eye bite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
 					]
 				},
 				{
@@ -19747,8 +20997,79 @@
 					]
 				}
 			],
-			"spells": "detect magic, magic missile, plane shift, ray of enfeeblement, sleep, identify, ray of sickness, hold person, locate object, bestow curse, counterspell, lightning bolt, phantasmal killer, polymorph, contact other plane, scrying, eyebite",
-			"page": 178
+			"page": 178,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The hag's innate spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell magic missile}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell plane shift} (self only)",
+							"{@spell ray of enfeeblement}",
+							"{@spell sleep}"
+						]
+					}
+				},
+				{
+					"name": "Shared Spellcasting (Coven Only)",
+					"headerEntries": [
+						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell identify}",
+								"{@spell ray of sickness}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell locate object}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell counterspell}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell phantasmal killer}",
+								"{@spell polymorph}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell contact other plane}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell eyebite}"
+							]
+						}
+					},
+					"footerEntries": [
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+					]
+				}
+			]
 		},
 		{
 			"name": "Nightmare",
@@ -19952,13 +21273,6 @@
 			"cr": "9",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The nycaloth's innate spellcasting ability is Charisma. The nycaloth can innately cast the following spells, requiring no material components:",
-						"At will: darkness, detect magic, dispel magic, invisibility (self only), mirror image"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The nycaloth has advantage on saving throws against spells and other magical effects."
@@ -20011,8 +21325,22 @@
 					]
 				}
 			],
-			"spells": "darkness, detect magic, dispel magic, invisibility, mirror image",
-			"page": 314
+			"page": 314,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The nycaloth's innate spellcasting ability is Charisma. The nycaloth can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell dispel magic}",
+						"{@spell invisibility} (self only)",
+						"{@spell mirror image}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Ochre Jelly",
@@ -20242,14 +21570,6 @@
 			"cr": "7",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The oni's innate spellcasting ability is Charisma (spell save DC 13). The oni can innately cast the following spells, requiring no material components:",
-						"At will: darkness, invisibility",
-						"1/day each: charm person, cone of cold, gaseous form, sleep"
-					]
-				},
-				{
 					"name": "Magic Weapons",
 					"text": [
 						"The oni's weapon attacks are magical."
@@ -20295,8 +21615,27 @@
 					]
 				}
 			],
-			"spells": "darkness, invisibility, charm person, cone of cold, gaseous form, sleep",
-			"page": 239
+			"page": 239,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The oni's innate spellcasting ability is Charisma (spell save DC 13). The oni can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell darkness}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell charm person}",
+							"{@spell cone of cold}",
+							"{@spell gaseous form}",
+							"{@spell sleep}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Orc",
@@ -20395,15 +21734,6 @@
 					"text": [
 						"The orc deals an extra 4 (1d8) damage when it hits with a weapon attack (included in the attacks)."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The orc is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). The orc has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, resistance, thaumaturgy",
-						"1st level (4 slots): bless, command",
-						"2nd level (2 slots): augury, spiritual weapon (spear)"
-					]
 				}
 			],
 			"action": [
@@ -20418,8 +21748,38 @@
 					]
 				}
 			],
-			"spells": "guidance, resistance, thaumaturgy, bless, command, augury, spiritual weapon",
-			"page": 247
+			"page": 247,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The orc is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). The orc has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell resistance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bless}",
+								"{@spell command}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell augury}",
+								"{@spell spiritual weapon} (spear)"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Orc War Chief",
@@ -21102,14 +22462,6 @@
 					"text": [
 						"The pit fiend's weapon attacks are magical."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The pit fiend's spellcasting ability is Charisma (spell save DC 21). The pit fiend can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, fireball",
-						"3/day each: hold monster, wall of fire"
-					]
 				}
 			],
 			"action": [
@@ -21156,8 +22508,25 @@
 					]
 				}
 			],
-			"spells": "detect magic, fireball, hold monster, wall of fire",
-			"page": 77
+			"page": 77,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The pit fiend's spellcasting ability is Charisma (spell save DC 21). The pit fiend can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell fireball}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell hold monster}",
+							"{@spell wall of fire}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Pixie",
@@ -21187,14 +22556,6 @@
 					"text": [
 						"The pixie has advantage on saving throws against spells and other magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The pixie's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring only its pixie dust as a component:",
-						"At will: druidcraft",
-						"1/day each: confusion, dancing lights, detect evil and good, detect thoughts, dispel magic, entangle, fly, phantasmal force, polymorph, sleep"
-					]
 				}
 			],
 			"action": [
@@ -21205,8 +22566,32 @@
 					]
 				}
 			],
-			"spells": "druidcraft, confusion, dancing lights, detect evil and good, detect thoughts, dispel magic, entangle, fly, phantasmal force, polymorph, sleep",
-			"page": 253
+			"page": 253,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The pixie's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring only its pixie dust as a component:"
+					],
+					"will": [
+						"{@spell druidcraft}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell confusion}",
+							"{@spell dancing lights}",
+							"{@spell detect evil and good}",
+							"{@spell detect thoughts}",
+							"{@spell dispel magic}",
+							"{@spell entangle}",
+							"{@spell fly}",
+							"{@spell phantasmal force}",
+							"{@spell polymorph}",
+							"{@spell sleep}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Planetar",
@@ -21247,15 +22632,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The planetar's spellcasting ability is Charisma (spell save DC 20). The planetar can innately cast the following spells, requiring no material components:",
-						"At will: detect evil and good, invisibility (self only)",
-						"3/day each: blade barrier, dispel evil and good, flame strike, raise dead",
-						"1/day each: commune, control weather, insect plague"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The planetar has advantage on saving throws against spells and other magical effects."
@@ -21285,8 +22661,32 @@
 					]
 				}
 			],
-			"spells": "detect evil and good, invisibility, blade barrier, dispel evil and good, flame strike, raise dead, commune, control weather, insect plague",
-			"page": 17
+			"page": 17,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The planetar's spellcasting ability is Charisma (spell save DC 20). The planetar can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell invisibility} (self only)"
+					],
+					"daily": {
+						"3e": [
+							"{@spell blade barrier}",
+							"{@spell dispel evil and good}",
+							"{@spell flame strike}",
+							"{@spell raise dead}"
+						],
+						"1e": [
+							"{@spell commune}",
+							"{@spell control weather}",
+							"{@spell insect plague}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Plesiosaurus",
@@ -21547,16 +22947,6 @@
 					"attack": [
 						"Divine Eminence||3d6"
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). The priest has the following cleric spells prepared:",
-						"Cantrips (at will): light, sacred flame, thaumaturgy",
-						"1st level (4 slots): cure wounds, guiding bolt, sanctuary",
-						"2nd level (3 slots): lesser restoration, spiritual weapon",
-						"3rd level (2 slots): dispel magic, spirit guardians"
-					]
 				}
 			],
 			"action": [
@@ -21570,8 +22960,46 @@
 					]
 				}
 			],
-			"spells": "light, sacred flame, thaumaturgy, cure wounds, guiding bolt, sanctuary, lesser restoration, spiritual weapon, dispel magic, spirit guardians",
-			"page": 348
+			"page": 348,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, {@hit 5} to hit with spell attacks). The priest has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell cure wounds}",
+								"{@spell guiding bolt}",
+								"{@spell sanctuary}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell lesser restoration}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell spirit guardians}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Pseudodragon",
@@ -21947,14 +23375,6 @@
 					"attack": [
 						"Wounded Fury||2d6"
 					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The quaggoth's innate spellcasting ability is Wisdom (spell save DC 11 ). The quaggoth can innately cast the following spells, requiring no components:",
-						"At will: feather fall, mage hand (the hand is invisible)",
-						"1/day each: cure wounds, enlarge/reduce, heat metal, mirror image"
-					]
 				}
 			],
 			"action": [
@@ -21974,8 +23394,27 @@
 					]
 				}
 			],
-			"spells": "feather fall, mage hand, cure wounds, enlarge/reduce, heat metal, mirror image",
-			"page": 256
+			"page": 256,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The quaggoth's innate spellcasting ability is Wisdom (spell save DC 11 ). The quaggoth can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell feather fall}",
+						"{@spell mage hand} (the hand is invisible)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell cure wounds}",
+							"{@spell enlarge/reduce}",
+							"{@spell heat metal}",
+							"{@spell mirror image}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Quasit",
@@ -22134,15 +23573,6 @@
 					"text": [
 						"The rakshasa can't be affected or detected by spells of 6th level or lower unless it wishes to be. It has advantage on saving throws against all other spells and magical effects."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The rakshasa's innate spellcasting ability is Charisma (spell save DC 18, +10 to hit with spell attacks). The rakshasa can innately cast the following spells, requiring no material components:",
-						"At will: detect thoughts, disguise self, mage hand, minor illusion",
-						"3/day each: charm person, detect magic, invisibility, major image, suggestion",
-						"1/day each: dominate person, fly, plane shift, true seeing"
-					]
 				}
 			],
 			"action": [
@@ -22162,8 +23592,36 @@
 					]
 				}
 			],
-			"spells": "detect thoughts, disguise self, mage hand, minor illusion, charm person, detect magic, invisibility, major image, suggestion, dominate person, fly, plane shift, true seeing",
-			"page": 257
+			"page": 257,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The rakshasa's innate spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). The rakshasa can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect thoughts}",
+						"{@spell disguise self}",
+						"{@spell mage hand}",
+						"{@spell minor illusion}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell charm person}",
+							"{@spell detect magic}",
+							"{@spell invisibility}",
+							"{@spell major image}",
+							"{@spell suggestion}"
+						],
+						"1e": [
+							"{@spell dominate person}",
+							"{@spell fly}",
+							"{@spell plane shift}",
+							"{@spell true seeing}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Rat",
@@ -23125,16 +24583,6 @@
 					"text": [
 						"The sahuagin can magically command any shark within 120 feet of it, using a limited telepathy."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The sahuagin is a 6th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). She has the following cleric spells prepared:",
-						"Cantrips (at will): guidance, thaumaturgy",
-						"1st level (4 slots): bless, detect magic, guiding bolt",
-						"2nd level (3 slots): hold person, spiritual weapon (trident)",
-						"3rd level (3 slots): mass healing word, tongues"
-					]
 				}
 			],
 			"action": [
@@ -23163,8 +24611,45 @@
 					]
 				}
 			],
-			"spells": "guidance, thaumaturgy, bless, detect magic, guiding bolt, hold person, spiritual weapon, mass healing word, tongues",
-			"page": 264
+			"page": 264,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The sahuagin is a 6th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). She has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bless}",
+								"{@spell detect magic}",
+								"{@spell guiding bolt}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell spiritual weapon} (trident)"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell mass healing word}",
+								"{@spell tongues}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Salamander",
@@ -23526,19 +25011,6 @@
 					]
 				},
 				{
-					"name": "Shared Spellcasting (Coven Only)",
-					"text": [
-						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:",
-						"1st level (4 slots): identify, ray of sickness",
-						"2nd level (3 slots): hold person, locate object",
-						"3rd level (3 slots): bestow curse, counterspell, lightning bolt",
-						"4th level (3 slots): phantasmal killer, polymorph",
-						"5th level (2 slots): contact other plane, scrying",
-						"6th level (1 slot): eye bite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
-					]
-				},
-				{
 					"name": "Hag Eye (Coven Only)",
 					"text": [
 						"A hag coven can craft a magic item called a hag eye, which is made from a real eye coated in varnish and often fitted to a pendant or other wearable item. The hag eye is usually entrusted to a minion for safekeeping and transport. A hag in the coven can take an action to see what the hag eye sees if the hag eye is on the same plane of existence. A hag eye has AC 10, 1 hit point, and darkvision with a radius of 60 feet. If it is destroyed, each coven member takes 3d10 psychic damage and is blinded for 24 hours.",
@@ -23570,8 +25042,62 @@
 					]
 				}
 			],
-			"spells": "identify, ray of sickness, hold person, locate object, bestow curse, counterspell, lightning bolt, phantasmal killer, polymorph, contact other plane, scrying, eyebite",
-			"page": 179
+			"page": 179,
+			"spellcasting": [
+				{
+					"name": "Shared Spellcasting (Coven Only)",
+					"headerEntries": [
+						"While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell identify}",
+								"{@spell ray of sickness}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell locate object}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell counterspell}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell phantasmal killer}",
+								"{@spell polymorph}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell contact other plane}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell eyebite}"
+							]
+						}
+					},
+					"footerEntries": [
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+					]
+				}
+			]
 		},
 		{
 			"name": "Sea Horse",
@@ -24056,12 +25582,6 @@
 					"text": [
 						"When the mephit dies, it leaves behind a cloud of smoke that fills a 5-foot-radius sphere centered on its space. The sphere is heavily obscured. Wind disperses the cloud, which otherwise lasts for 1 minute."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (1/Day)",
-					"text": [
-						"The mephit can innately cast dancing lights, requiring no material components. Its innate spellcasting ability is Charisma."
-					]
 				}
 			],
 			"action": [
@@ -24087,8 +25607,18 @@
 					]
 				}
 			],
-			"spells": "dancing lights",
-			"page": 217
+			"page": 217,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (1/Day)",
+					"headerEntries": [
+						"The mephit can innately cast {@spell dancing lights}, requiring no material components. Its innate spellcasting ability is Charisma."
+					],
+					"headerWill": [
+						"{@spell dancing lights}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Solar",
@@ -24127,15 +25657,6 @@
 					"name": "Divine Awareness",
 					"text": [
 						"The solar knows if it hears a lie."
-					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The solar's spell casting ability is Charisma (spell save DC 25). It can innately cast the following spells, requiring no material components:",
-						"At will: detect evil and good, invisibility (self only)",
-						"3/day each: blade barrier, dispel evil and good, resurrection",
-						"1/day each: commune, control weather"
 					]
 				},
 				{
@@ -24203,8 +25724,30 @@
 					]
 				}
 			],
-			"spells": "detect evil and good, invisibility, blade barrier, dispel evil and good, resurrection, commune, control weather",
-			"page": 18
+			"page": 18,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The solar's spell casting ability is Charisma (spell save DC 25). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell invisibility} (self only)"
+					],
+					"daily": {
+						"3e": [
+							"{@spell blade barrier}",
+							"{@spell dispel evil and good}",
+							"{@spell resurrection}"
+						],
+						"1e": [
+							"{@spell commune}",
+							"{@spell control weather}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Spectator",
@@ -24487,18 +26030,6 @@
 					"text": [
 						"If it dies, the naga returns to life in 1d6 days and regains all its hit points. Only a wish spell can prevent this trait from functioning."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The naga is a 10th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, minor illusion, ray of frost",
-						"1st level (4 slots): charm person, detect magic, sleep",
-						"2nd level (3 slots): detect thoughts, hold person",
-						"3rd level (3 slots): lightning bolt, water breathing",
-						"4th level (3 slots): blight, dimension door",
-						"5th level (2 slots): dominate person"
-					]
 				}
 			],
 			"action": [
@@ -24512,8 +26043,59 @@
 					]
 				}
 			],
-			"spells": "mage hand, minor illusion, ray of frost, charm person, detect magic, sleep, detect thoughts, hold person, lightning bolt, water breathing, blight, dimension door, dominate person",
-			"page": 234
+			"page": 234,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The naga is a 10th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks), and it needs only verbal components to cast its spells. It has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell detect magic}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell hold person}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell lightning bolt}",
+								"{@spell water breathing}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell dimension door}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell dominate person}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Sprite",
@@ -24678,12 +26260,6 @@
 					"attack": [
 						"Death Burst||1d8"
 					]
-				},
-				{
-					"name": "Innate Spellcasting (1/Day)",
-					"text": [
-						"The mephit can innately cast blur, requiring no material components. Its innate spellcasting ability is Charisma."
-					]
 				}
 			],
 			"action": [
@@ -24709,8 +26285,18 @@
 					]
 				}
 			],
-			"spells": "blur",
-			"page": 217
+			"page": 217,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (1/Day)",
+					"headerEntries": [
+						"The mephit can innately cast {@spell blur}, requiring no material components. Its innate spellcasting ability is Charisma."
+					],
+					"headerWill": [
+						"{@spell blur}"
+					]
+				}
+			]
 		},
 		{
 			"name": "Stirge",
@@ -24926,14 +26512,6 @@
 					"text": [
 						"The giant can breathe air and water."
 					]
-				},
-				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The giant's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no material components:",
-						"At will: detect magic, feather fall, levitate, light",
-						"3/day each: control weather, water breathing"
-					]
 				}
 			],
 			"action": [
@@ -24971,8 +26549,27 @@
 					]
 				}
 			],
-			"spells": "detect magic, feather fall, levitate, light, control weather, water breathing",
-			"page": 156
+			"page": 156,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The giant's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell feather fall}",
+						"{@spell levitate}",
+						"{@spell light}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell control weather}",
+							"{@spell water breathing}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Succubus",
@@ -25901,15 +27498,6 @@
 					"text": [
 						"The thri-kreen's long jump is up to 30 feet and its high jump is up to 15 feet, with or without a running start."
 					]
-				},
-				{
-					"name": "Innate Spellcasting (Psionics)",
-					"text": [
-						"The thri-kreen's innate spellcasting ability is Wisdom. The thri-kreen can innately cast the following spells, requiring no components:",
-						"At will: mage hand (the hand is invisible)",
-						"2/day each: blur, magic weapon",
-						"1/day: invisibility (self only)"
-					]
 				}
 			],
 			"action": [
@@ -25962,8 +27550,27 @@
 					]
 				}
 			],
-			"spells": "mage hand, blur, magic weapon, invisibility",
-			"page": 288
+			"page": 288,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The thri-kreen's innate spellcasting ability is Wisdom. The thri-kreen can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell mage hand} (the hand is invisible)"
+					],
+					"daily": {
+						"1": [
+							"{@spell invisibility} (self only)"
+						],
+						"2e": [
+							"{@spell blur}",
+							"{@spell magic weapon}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Thug",
@@ -26601,15 +28208,6 @@
 			"cr": "13",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The ultroloth's innate spellcasting ability is Charisma (spell save DC 17). The ultroloth can innately cast the following spells, requiring no material components:",
-						"At will: alter self, clairvoyance, darkness, detect magic, detect thoughts, dispel magic, invisibility (self only), suggestion",
-						"3/day each: dimension door, fear, wall of fire",
-						"1/day each: fire storm, mass suggestion"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The ultroloth has advantage on saving throws against spells and other magical effects."
@@ -26660,8 +28258,36 @@
 					]
 				}
 			],
-			"spells": "alter self, clairvoyance, darkness, detect magic, detect thoughts, dispel magic, invisibility, suggestion, dimension door, fear, wall of fire, fire storm, mass suggestion",
-			"page": 314
+			"page": 314,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The ultroloth's innate spellcasting ability is Charisma (spell save DC 17). The ultroloth can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell alter self}",
+						"{@spell clairvoyance}",
+						"{@spell darkness}",
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell dispel magic}",
+						"{@spell invisibility} (self only)",
+						"{@spell suggestion}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell dimension door}",
+							"{@spell fear}",
+							"{@spell wall of fire}"
+						],
+						"1e": [
+							"{@spell fire storm}",
+							"{@spell mass suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Umber Hulk",
@@ -26758,14 +28384,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The unicorn's innate spellcasting ability is Charisma (spell save DC 14). The unicorn can innately cast the following spells, requiring no components:",
-						"At will: detect evil and good, druidcraft, pass without trace",
-						"1/day each: calm emotions, dispel evil and good, entangle"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The unicorn has advantage on saving throws against spells and other magical effects."
@@ -26837,8 +28455,27 @@
 					]
 				}
 			],
-			"spells": "detect evil and good, druidcraft, pass without trace, calm emotions, dispel evil and good, entangle",
-			"page": 294
+			"page": 294,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The unicorn's innate spellcasting ability is Charisma (spell save DC 14). The unicorn can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell druidcraft}",
+						"{@spell pass without trace}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell calm emotions}",
+							"{@spell dispel evil and good}",
+							"{@spell entangle}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Vampire",
@@ -27127,18 +28764,6 @@
 						"Stake to the Heart. If a piercing weapon made of wood is driven into the vampire's heart while the vampire is incapacitated in its resting place, the vampire is paralyzed until the stake is removed.",
 						"Sunlight Hypersensitivity. The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
 					]
-				},
-				{
-					"name": "Spellcasting",
-					"text": [
-						"The vampire is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 16, +8 to hit with spell attacks). The vampire has the following wizard spells prepared:",
-						"Cantrips (at will): mage hand, prestidigitation, ray of frost",
-						"1st level (4 slots): comprehend languages, fog cloud, sleep",
-						"2nd level (3 slots): detect thoughts, gust of wind, mirror image",
-						"3rd level (3 slots): animate dead, bestow curse, nondetection",
-						"4th level (3 slots): blight, greater invisibility",
-						"5th level (1 slot): dominate person"
-					]
 				}
 			],
 			"action": [
@@ -27180,8 +28805,61 @@
 					]
 				}
 			],
-			"spells": "mage hand, prestidigitation, ray of frost, comprehend languages, fog cloud, sleep, detect thoughts, gust of wind, mirror image, animate dead, bestow curse, nondetection, blight, greater invisibility, dominate person",
-			"page": 298
+			"page": 298,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The vampire is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 16, {@hit 8} to hit with spell attacks). The vampire has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell comprehend languages}",
+								"{@spell fog cloud}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell gust of wind}",
+								"{@spell mirror image}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell bestow curse}",
+								"{@spell nondetection}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell greater invisibility}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell dominate person}"
+							]
+						}
+					}
+				}
+			]
 		},
 		{
 			"name": "Vampire Warrior",
@@ -28948,14 +30626,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The yochlol's spellcasting ability is Charisma (spell save DC 14). The yochlol can innately cast the following spells, requiring no material components:",
-						"At will: detect thoughts, web",
-						"1/day: dominate person"
-					]
-				},
-				{
 					"name": "Web Walker",
 					"text": [
 						"The yochlol ignores movement restrictions caused by webbing."
@@ -28995,8 +30665,24 @@
 					]
 				}
 			],
-			"spells": "detect thoughts, web, dominate person",
-			"page": 65
+			"page": 65,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The yochlol's spellcasting ability is Charisma (spell save DC 14). The yochlol can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect thoughts}",
+						"{@spell web}"
+					],
+					"daily": {
+						"1": [
+							"{@spell dominate person}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Young Black Dragon",
@@ -29852,15 +31538,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting (Abomination Form Only)",
-					"text": [
-						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 15). The yuan-ti can innately cast the following spells, requiring no material components:",
-						"At will: animal friendship (snakes only)",
-						"3/day: suggestion",
-						"1/day: fear"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The yuan-ti has advantage on saving throws against spells and other magical effects."
@@ -29911,8 +31588,26 @@
 					]
 				}
 			],
-			"spells": "animal friendship, suggestion, fear",
-			"page": 308
+			"page": 308,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Abomination Form Only)",
+					"headerEntries": [
+						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 15). The yuan-ti can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal friendship} (snakes only)"
+					],
+					"daily": {
+						"1": [
+							"{@spell fear}"
+						],
+						"3": [
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Yuan-ti Malison (Type 1)",
@@ -29950,14 +31645,6 @@
 					"name": "Shapechanger",
 					"text": [
 						"The yuan-ti can use its action to polymorph into a Medium snake, or back into its true form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It doesn't change form if it dies."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (Yuan-ti Form Only)",
-					"text": [
-						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:",
-						"At will: animal friendship (snakes only)",
-						"3/day: suggestion"
 					]
 				},
 				{
@@ -30011,8 +31698,23 @@
 					]
 				}
 			],
-			"spells": "animal friendship, suggestion",
-			"page": 309
+			"page": 309,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Yuan-ti Form Only)",
+					"headerEntries": [
+						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal friendship} (snakes only)"
+					],
+					"daily": {
+						"3": [
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Yuan-ti Malison (Type 2)",
@@ -30053,14 +31755,6 @@
 					]
 				},
 				{
-					"name": "Innate Spellcasting (Yuan-ti Form Only)",
-					"text": [
-						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:",
-						"At will: animal friendship (snakes only)",
-						"3/day: suggestion"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The yuan-ti has advantage on saving throws against spells and other magical effects."
@@ -30093,8 +31787,23 @@
 					]
 				}
 			],
-			"spells": "animal friendship, suggestion",
-			"page": 309
+			"page": 309,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Yuan-ti Form Only)",
+					"headerEntries": [
+						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal friendship} (snakes only)"
+					],
+					"daily": {
+						"3": [
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Yuan-ti Malison (Type 3)",
@@ -30132,14 +31841,6 @@
 					"name": "Shapechanger",
 					"text": [
 						"The yuan-ti can use its action to polymorph into a Medium snake, or back into its true form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It doesn't change form if it dies."
-					]
-				},
-				{
-					"name": "Innate Spellcasting (Yuan-ti Form Only)",
-					"text": [
-						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:",
-						"At will: animal friendship (snakes only)",
-						"3/day: suggestion"
 					]
 				},
 				{
@@ -30202,8 +31903,23 @@
 					]
 				}
 			],
-			"spells": "animal friendship, suggestion",
-			"page": 309
+			"page": 309,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Yuan-ti Form Only)",
+					"headerEntries": [
+						"The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal friendship} (snakes only)"
+					],
+					"daily": {
+						"3": [
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Yuan-ti Pureblood",
@@ -30238,14 +31954,6 @@
 			"cr": "1",
 			"trait": [
 				{
-					"name": "Innate Spellcasting",
-					"text": [
-						"The yuan-ti's spellcasting ability is Charisma (spell save DC 12). The yuan-ti can innately cast the following spells, requiring no material components:",
-						"At will: animal friendship (snakes only)",
-						"3/day each: poison spray, suggestion"
-					]
-				},
-				{
 					"name": "Magic Resistance",
 					"text": [
 						"The yuan-ti has advantage on saving throws against spells and other magical effects."
@@ -30278,8 +31986,24 @@
 					]
 				}
 			],
-			"spells": "animal friendship, poison spray, suggestion",
-			"page": 310
+			"page": 310,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The yuan-ti's spellcasting ability is Charisma (spell save DC 12). The yuan-ti can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal friendship} (snakes only)"
+					],
+					"daily": {
+						"3e": [
+							"{@spell poison spray}",
+							"{@spell suggestion}"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Zombie",
