@@ -370,12 +370,12 @@ function EntryRenderer () {
 		}
 
 		function renderString (self) {
-			const tagSplit = splitByTags();
+			const tagSplit = EntryRenderer.splitByTags(entry);
 			for (let i = 0; i < tagSplit.length; i++) {
 				const s = tagSplit[i];
 				if (s === undefined || s === null || s === "") continue;
 				if (s.charAt(0) === "@") {
-					const [tag, text] = splitFirstSpace(s);
+					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
 					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action" || tag === "@link") { // FIXME remove "@link"
 						switch (tag) {
@@ -548,54 +548,6 @@ function EntryRenderer () {
 					textStack.push(s);
 				}
 			}
-
-			function splitFirstSpace (string) {
-				return [
-					string.substr(0, string.indexOf(' ')),
-					string.substr(string.indexOf(' ') + 1)
-				]
-			}
-
-			function splitByTags () {
-				let tagDepth = 0;
-				let inTag = false;
-				let char, char2;
-				const out = [];
-				let curStr = "";
-				for (let i = 0; i < entry.length; ++i) {
-					char = entry.charAt(i);
-					char2 = i < entry.length - 1 ? entry.charAt(i + 1) : null;
-
-					switch (char) {
-						case "{":
-							if (char2 === "@") {
-								if (tagDepth++ > 0) {
-									curStr += char;
-								} else {
-									out.push(curStr);
-									inTag = false;
-									curStr = "";
-								}
-							} else {
-								curStr += char;
-							}
-							break;
-						case "}":
-							if (--tagDepth === 0) {
-								out.push(curStr);
-								curStr = "";
-							} else {
-								curStr += char;
-							}
-							break;
-						default:
-							curStr += char;
-					}
-				}
-				if (curStr.length > 0) out.push(curStr);
-
-				return out;
-			}
 		}
 	};
 
@@ -643,6 +595,54 @@ function EntryRenderer () {
 		return tempStack.join("");
 	};
 }
+
+EntryRenderer.splitFirstSpace = function (string) {
+	return [
+		string.substr(0, string.indexOf(' ')),
+		string.substr(string.indexOf(' ') + 1)
+	];
+};
+
+EntryRenderer.splitByTags = function (string) {
+	let tagDepth = 0;
+	let inTag = false;
+	let char, char2;
+	const out = [];
+	let curStr = "";
+	for (let i = 0; i < string.length; ++i) {
+		char = string.charAt(i);
+		char2 = i < string.length - 1 ? string.charAt(i + 1) : null;
+
+		switch (char) {
+			case "{":
+				if (char2 === "@") {
+					if (tagDepth++ > 0) {
+						curStr += char;
+					} else {
+						out.push(curStr);
+						inTag = false;
+						curStr = "";
+					}
+				} else {
+					curStr += char;
+				}
+				break;
+			case "}":
+				if (--tagDepth === 0) {
+					out.push(curStr);
+					curStr = "";
+				} else {
+					curStr += char;
+				}
+				break;
+			default:
+				curStr += char;
+		}
+	}
+	if (curStr.length > 0) out.push(curStr);
+
+	return out;
+};
 
 EntryRenderer._rollerClick = function (ele, toRoll) {
 	const $ele = $(ele);
