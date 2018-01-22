@@ -20,7 +20,7 @@ const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
 const ATB_DATA_SC_LIST = "data-subclass-list";
 
-const HOMEBREW_STORAGE = "HOMEBREW_CHARACTER";
+const HOMEBREW_STORAGE = "HOMEBREW_CLASSES";
 
 let tableDefault;
 let statsProfDefault;
