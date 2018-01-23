@@ -85,7 +85,6 @@ function parseSpellcasting (monsterName, trait, contentsIndex) {
 			let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
 			spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
 		} else {
-			let parsedLine = parseToHit(thisLine);
 			if (doneHeader) {
 				if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];
 				spellcastingEntry.footerEntries.push(parseToHit(thisLine));

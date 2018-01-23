@@ -20,7 +20,7 @@ const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
 const ATB_DATA_SC_LIST = "data-subclass-list";
 
-const HOMEBREW_STORAGE = "HOMEBREW_CHARACTER";
+const HOMEBREW_STORAGE = "HOMEBREW_CLASSES";
 
 let tableDefault;
 let statsProfDefault;
@@ -680,7 +680,10 @@ function manageBrew () {
 				const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
 					deleteFn(j.uniqueId);
 				});
-				$brewList.append($(`<p>`).append($btnDel).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}. ${j.url ? `<a href="${j.url}" target="_blank">Source.</a>` : ""}`));
+				const $btnExport = $(`<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span></button>`).on("click", () => {
+					DataUtil.userDownload(j.name, JSON.stringify(j, null, "\t"));
+				});
+				$brewList.append($(`<p>`).append($btnDel).append(" ").append($btnExport).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}. ${j.url ? `<a href="${j.url}" target="_blank">Source.</a>` : ""}`));
 			});
 		}
 
