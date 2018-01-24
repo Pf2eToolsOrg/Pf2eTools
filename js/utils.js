@@ -1672,6 +1672,13 @@ DataUtil = {
 				}
 			)
 		});
+	},
+
+	userDownload: function (filename, data) {
+		const $a = $(`<a href="data:text/json;charset=utf-8,${encodeURIComponent(data)}" download="${filename}.json" style="display: none;" target="_blank">DL</a>`);
+		$(`body`).append($a);
+		$a[0].click();
+		$a.remove();
 	}
 };
 
