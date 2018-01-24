@@ -15,6 +15,7 @@ HASH_SUB_LIST_SEP = "~";
 HASH_SUB_KV_SEP = ":";
 HASH_START = "#";
 HASH_SUBCLASS = "sub:";
+HASH_BLANK = "blankhash";
 
 STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";

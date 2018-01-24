@@ -527,7 +527,7 @@ function EntryRenderer () {
 									href: {
 										type: "internal",
 										path: "spells.html",
-										hash: "acid splash_phb",
+										hash: HASH_BLANK,
 										subhashes: [
 											{
 												key: "filterlevel",
@@ -552,7 +552,7 @@ function EntryRenderer () {
 									href: {
 										type: "internal",
 										path: "spells.html",
-										hash: "acid splash_phb",
+										hash: HASH_BLANK,
 										subhashes: [
 											{
 												key: "filterschool",
@@ -573,7 +573,7 @@ function EntryRenderer () {
 									href: {
 										type: "internal",
 										path: "spells.html",
-										hash: "acid splash_phb",
+										hash: HASH_BLANK,
 										subhashes: [
 											{
 												key: "filterdamage type",
