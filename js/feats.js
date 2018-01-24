@@ -3,14 +3,11 @@ const JSON_URL = "data/feats.json";
 let tabledefault = "";
 let featlist;
 
-function deselUa (val) {
-	return val.startsWith(SRC_UA_PREFIX);
-}
-
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
+let filterBox;
 function onJsonLoad (data) {
 	tabledefault = $("#pagecontent").html();
 	featlist = data.feat;
@@ -18,7 +15,7 @@ function onJsonLoad (data) {
 	// TODO prerequisite filter?
 	const sourceFilter = getSourceFilter();
 	const asiFilter = getAsiFilter();
-	const filterBox = initFilterBox(
+	filterBox = initFilterBox(
 		sourceFilter,
 		asiFilter
 	);
@@ -90,7 +87,7 @@ function loadhash (id) {
 	$("#pagecontent").html(tabledefault);
 	const feat = featlist[id];
 	const source = feat.source;
-	const sourceFull = Parser.sourceJsonToFull(source)
+	const sourceFull = Parser.sourceJsonToFull(source);
 
 	$("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>`);
 

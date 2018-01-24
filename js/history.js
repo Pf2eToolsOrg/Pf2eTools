@@ -8,26 +8,34 @@ function hashchange (e) {
 
 	const [link, ...sub] = _getHashParts();
 
+	let blankFilterLoad = false;
 	if (!e || sub.length === 0) {
-		const $el = _getListElem(link);
-		if ($el === undefined) {
-			if (typeof handleUnknownHash === "function" && window.location.hash.length) {
-				handleUnknownHash(link, sub);
-				return;
-			} else {
-				_freshLoad();
-				return;
+		if (link === HASH_BLANK) {
+			blankFilterLoad = true;
+		} else {
+			const $el = _getListElem(link);
+			if ($el === undefined) {
+				if (typeof handleUnknownHash === "function" && window.location.hash.length) {
+					handleUnknownHash(link, sub);
+					return;
+				} else {
+					_freshLoad();
+					return;
+				}
 			}
-		}
-		const toLoad = $el.attr("id");
-		if (toLoad === undefined) _freshLoad();
-		else {
-			loadhash($el.attr("id"));
-			document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
+			const toLoad = $el.attr("id");
+			if (toLoad === undefined) _freshLoad();
+			else {
+				loadhash($el.attr("id"));
+				document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
+			}
 		}
 	}
 
-	if (typeof loadsub === "function" && sub.length > 0) loadsub(sub)
+	if (typeof loadsub === "function" && sub.length > 0) loadsub(sub);
+	if (blankFilterLoad) {
+		window.location.hash = "";
+	}
 }
 
 function initHistory () {

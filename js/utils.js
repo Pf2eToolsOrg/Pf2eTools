@@ -15,6 +15,7 @@ HASH_SUB_LIST_SEP = "~";
 HASH_SUB_KV_SEP = ":";
 HASH_START = "#";
 HASH_SUBCLASS = "sub:";
+HASH_BLANK = "blankhash";
 
 STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";
@@ -1361,7 +1362,15 @@ function isNonstandardSource (source) {
 		return !source.forceStandard;
 	}
 	if (source && source.source) source = source.source;
-	return (source !== undefined && source !== null) && (source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.endsWith(SRC_3PP_SUFFIX) || source === SRC_OGA);
+	return (source !== undefined && source !== null) && (_isNonStandardSourceWiz(source) || _isNonStandardSource3pp(source));
+}
+
+function _isNonStandardSourceWiz (source) {
+	return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA;
+}
+
+function _isNonStandardSource3pp (source) {
+	return source.endsWith(SRC_3PP_SUFFIX);
 }
 
 // CONVENIENCE/ELEMENTS ================================================================================================

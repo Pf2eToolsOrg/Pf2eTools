@@ -56,9 +56,13 @@ function init () {
 		e.stopPropagation();
 	});
 
-	const MAX_RESULTS = 15;
 	$searchSubmit.on("click", (e) => {
 		e.stopPropagation();
+		doSearch();
+	});
+
+	const MAX_RESULTS = 15;
+	function doSearch () {
 		const srch = $searchIn.val();
 
 		const tokens = elasticlunr.tokenizer(srch);
@@ -96,15 +100,36 @@ function init () {
 			});
 		}
 
+		if (!doShow3pp()) {
+			results = results.filter(r => !_isNonStandardSource3pp(r.doc.src));
+		}
+		if (!doShowUaEtc()) {
+			results = results.filter(r => !_isNonStandardSourceWiz(r.doc.src));
+		}
+
 		if (results.length) {
 			renderLinks();
 		} else {
-			$searchOut.html("");
+			$searchOut.empty();
 			$searchOutWrapper.hide();
 		}
 
 		function renderLinks () {
-			$searchOut.html("");
+			$searchOut.empty();
+			const show3pp = doShow3pp();
+			const $btn3pp = $(`<button class="btn btn-default btn-xs btn-file">${show3pp ? "Exclude" : "Include"} 3pp</button>`)
+				.on("click", () => {
+					setShow3pp(!show3pp);
+					doSearch();
+				});
+			const showUa = doShowUaEtc();
+			const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file">${showUa ? "Exclude" : "Include"} UA, etc</button>`)
+				.on("click", () => {
+					setShowUaEtc(!showUa);
+					doSearch();
+				});
+
+			$searchOut.append($(`<div class="text-align-right"/>`).append($btnUaEtc).append(" ").append($btn3pp));
 			const base = page * MAX_RESULTS;
 			for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 				const r = results[i].doc;
@@ -141,7 +166,34 @@ function init () {
 				$searchOut.find(`a`).first()[0].click();
 			}
 		}
-	});
+	}
+
+	const COOKIE_NAME_3PP = "search-3pp";
+	const COOKIE_NAME_UA_ETC = "search-ua-etc";
+	const CK_SHOW = "SHOW";
+	const CK_HIDE = "HIDE";
+
+	let show3pp;
+	function doShow3pp () {
+		if (!show3pp) show3pp = Cookies.get(COOKIE_NAME_3PP);
+		return show3pp !== CK_HIDE;
+	}
+
+	function setShow3pp (value) {
+		show3pp = value ? CK_SHOW : CK_HIDE;
+		Cookies.set(COOKIE_NAME_3PP, show3pp, {expires: 365});
+	}
+
+	let showUaEtc;
+	function doShowUaEtc () {
+		if (!showUaEtc) showUaEtc = Cookies.get(COOKIE_NAME_UA_ETC);
+		return showUaEtc !== CK_HIDE;
+	}
+
+	function setShowUaEtc (value) {
+		showUaEtc = value ? CK_SHOW : CK_HIDE;
+		Cookies.set(COOKIE_NAME_UA_ETC, showUaEtc, {expires: 365});
+	}
 }
 
 const CATEGORY_COUNTS = {};
