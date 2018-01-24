@@ -517,6 +517,7 @@ function EntryRenderer () {
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 
+							// TODO make a more general method for passing these around; perhaps an @filter tag?
 							case "@clSpellHead": {
 								// special tag used for class table spell level headers
 								// format: {@clSpellHead <sp class name>|<sp class source>|<display text>|<sp level>(|<sp level 2>|<sp level 3>|...)}
@@ -544,10 +545,10 @@ function EntryRenderer () {
 							}
 
 							case "@spellsSchool": {
-								// format: {@spellsSchool <sp school>)}
+								// format: {@spellsSchool <sp school>|<display text>}
 								const fauxEntry = {
 									type: "link",
-									text: Parser.spSchoolAbvToFull(name).toLowerCase(),
+									text: source || name,
 									href: {
 										type: "internal",
 										path: "spells.html",
@@ -562,6 +563,26 @@ function EntryRenderer () {
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							}
+
+							case "@spellsDamageType": {
+								// format: {@spellsDamageType <sp damage type>|<display text>}
+								const fauxEntry = {
+									type: "link",
+									text: source || name,
+									href: {
+										type: "internal",
+										path: "spells.html",
+										hash: "acid splash_phb",
+										subhashes: [
+											{
+												key: "filterdamage type",
+												value: name
+											}
+										]
+									}
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
 							}
 						}
 					}
