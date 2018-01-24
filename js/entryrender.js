@@ -542,6 +542,27 @@ function EntryRenderer () {
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
+
+							case "@spellsSchool": {
+								// format: {@spellsSchool <sp school>)}
+								const fauxEntry = {
+									type: "link",
+									text: Parser.spSchoolAbvToFull(name).toLowerCase(),
+									href: {
+										type: "internal",
+										path: "spells.html",
+										hash: "acid splash_phb",
+										subhashes: [
+											{
+												key: "filterschool",
+												value: name
+											}
+										]
+									}
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
 						}
 					}
 				} else {
