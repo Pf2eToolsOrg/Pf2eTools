@@ -33,7 +33,22 @@ let homebrew;
 const jsonURL = "data/classes.json";
 
 const renderer = new EntryRenderer();
-const storage = window.localStorage;
+const storage = tryGetStorage();
+
+function tryGetStorage () {
+	try {
+		return window.localStorage;
+	} catch (e) {
+		// if the user has disabled cookies, build a fake version
+		return {
+			getItem: () => {
+				return null;
+			},
+			removeItem: () => {},
+			setItem: () => {}
+		}
+	}
+}
 
 window.onload = function load () {
 	tableDefault = $("#pagecontent").html();
