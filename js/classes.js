@@ -33,22 +33,6 @@ let homebrew;
 const jsonURL = "data/classes.json";
 
 const renderer = new EntryRenderer();
-const storage = tryGetStorage();
-
-function tryGetStorage () {
-	try {
-		return window.localStorage;
-	} catch (e) {
-		// if the user has disabled cookies, build a fake version
-		return {
-			getItem: () => {
-				return null;
-			},
-			removeItem: () => {},
-			setItem: () => {}
-		}
-	}
-}
 
 window.onload = function load () {
 	tableDefault = $("#pagecontent").html();
@@ -79,31 +63,13 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
 	});
-	// cache this, since it gets wiped by brew loading
-	const loadHash = window.location.hash;
 	addData(data);
 
-	const rawBrew = storage.getItem(HOMEBREW_STORAGE);
-	if (rawBrew) {
-		try {
-			homebrew = JSON.parse(rawBrew);
-			if (!homebrew.class && !homebrew.subclass) {
-				// if there's nothing usable in the stored brew, purge it
-				purgeBrew();
-			}
-			addData(homebrew);
-			addSubclassData(homebrew);
-			window.location.hash = loadHash;
-		} catch (e) {
-			// on error, purge all brew and reset hash
-			purgeBrew();
-		}
-	}
+	BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
 
-	function purgeBrew () {
-		storage.removeItem(HOMEBREW_STORAGE);
-		homebrew = null;
-		window.location.hash = "";
+	function handleBrew (homebrew) {
+		addData(homebrew);
+		addSubclassData(homebrew);
 	}
 
 	initHistory();
@@ -163,7 +129,7 @@ function addSubclassData (data) {
 		// sort subclasses
 		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
 	});
-	_freshLoad();
+	hashchange();
 }
 
 function loadhash (id) {
@@ -691,7 +657,7 @@ function manageBrew () {
 
 	function refreshBrewList () {
 		function render (type, prop, deleteFn) {
-			homebrew[prop].forEach(j => {
+			BrewUtil.homebrew[prop].forEach(j => {
 				const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
 					deleteFn(j.uniqueId);
 				});
@@ -703,7 +669,7 @@ function manageBrew () {
 		}
 
 		$brewList.html("");
-		if (homebrew) {
+		if (BrewUtil.homebrew) {
 			render("Class", "class", deleteClassBrew);
 			render("Subclass", "subclass", deleteSubclassBrew);
 		}
@@ -733,10 +699,10 @@ function manageBrew () {
 			// store
 			function checkAndAdd (prop) {
 				const areNew = [];
-				const existingIds = homebrew[prop].map(it => it.uniqueId);
+				const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
 				json[prop].forEach(it => {
 					if (!existingIds.find(id => it.uniqueId === id)) {
-						homebrew[prop].push(it);
+						BrewUtil.homebrew[prop].push(it);
 						areNew.push(it);
 					}
 				});
@@ -745,14 +711,14 @@ function manageBrew () {
 
 			let classesToAdd = json.class;
 			let subclassesToAdd = json.subclass;
-			if (!homebrew) {
-				homebrew = json;
+			if (!BrewUtil.homebrew) {
+				BrewUtil.homebrew = json;
 			} else {
 				// only add if unique ID not already present
 				classesToAdd = checkAndAdd("class");
 				subclassesToAdd = checkAndAdd("subclass");
 			}
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
+			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
 			addData({class: classesToAdd});
 			addSubclassData({subclass: subclassesToAdd});
@@ -769,29 +735,29 @@ function manageBrew () {
 	}
 
 	function deleteClassBrew (uniqueId) {
-		const index = homebrew.class.findIndex(it => it.uniqueId === uniqueId);
+		const index = BrewUtil.homebrew.class.findIndex(it => it.uniqueId === uniqueId);
 		if (index >= 0) {
-			homebrew.class.splice(index, 1);
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
+			BrewUtil.homebrew.class.splice(index, 1);
+			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 			refreshBrewList();
 			list.remove("uniqueid", uniqueId);
-			_freshLoad();
+			hashchange();
 		}
 	}
 
 	function deleteSubclassBrew (uniqueId) {
 		let subClass;
 		let index = 0;
-		for (; index < homebrew.subclass.length; ++index) {
-			if (homebrew.subclass[index].uniqueId === uniqueId) {
-				subClass = homebrew.subclass[index];
+		for (; index < BrewUtil.homebrew.subclass.length; ++index) {
+			if (BrewUtil.homebrew.subclass[index].uniqueId === uniqueId) {
+				subClass = BrewUtil.homebrew.subclass[index];
 				break;
 			}
 		}
 		if (subClass) {
 			const forClass = subClass.class;
-			homebrew.subclass.splice(index, 1);
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
+			BrewUtil.homebrew.subclass.splice(index, 1);
+			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 			refreshBrewList();
 			const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
 

@@ -1745,6 +1745,46 @@ RollerUtil = {
 	}
 };
 
+// HOMEBREW ============================================================================================================
+BrewUtil = {
+	homebrew: null,
+
+	tryGetStorage: () => {
+		try {
+			return window.localStorage;
+		} catch (e) {
+			// if the user has disabled cookies, build a fake version
+			return {
+				getItem: () => {
+					return null;
+				},
+				removeItem: () => {},
+				setItem: () => {}
+			}
+		}
+	},
+
+	addBrewData: (brewHandler, brewLocation) => {
+		const rawBrew = BrewUtil.storage.getItem(brewLocation);
+		if (rawBrew) {
+			try {
+				BrewUtil.homebrew = JSON.parse(rawBrew);
+				brewHandler(BrewUtil.homebrew);
+			} catch (e) {
+				// on error, purge all brew and reset hash
+				purgeBrew();
+			}
+		}
+
+		function purgeBrew () {
+			BrewUtil.storage.removeItem(brewLocation);
+			BrewUtil.homebrew = null;
+			window.location.hash = "";
+		}
+	}
+};
+BrewUtil.storage = BrewUtil.tryGetStorage();
+
 // ID GENERATION =======================================================================================================
 CryptUtil = {
 	// stolen from http://www.myersdaily.org/joseph/javascript/md5.js
