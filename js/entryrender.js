@@ -453,6 +453,27 @@ function EntryRenderer () {
 								break;
 							}
 						}
+					} else if (tag === "@filter") {
+						// format: {@filter Warlock Spells|spells|level=1;2|class=Warlock}
+						const [displayText, page, ...filters] = text.split("|");
+
+						const fauxEntry = {
+							type: "link",
+							text: displayText,
+							href: {
+								type: "internal",
+								path: `${page}.html`,
+								hash: HASH_BLANK,
+								subhashes: filters.map(f => {
+									const [fname, fvals] = f.split("=").map(s => s.trim()).filter(s => s);
+									return {
+										key: `filter${fname}`,
+										value: fvals.split(";").map(s => s.trim()).filter(s => s).join(HASH_SUB_LIST_SEP)
+									}
+								})
+							}
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -516,74 +537,6 @@ function EntryRenderer () {
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
-
-							// TODO make a more general method for passing these around; perhaps an @filter tag?
-							case "@clSpellHead": {
-								// special tag used for class table spell level headers
-								// format: {@clSpellHead <sp class name>|<sp class source>|<display text>|<sp level>(|<sp level 2>|<sp level 3>|...)}
-								const fauxEntry = {
-									type: "link",
-									text: displayText,
-									href: {
-										type: "internal",
-										path: "spells.html",
-										hash: HASH_BLANK,
-										subhashes: [
-											{
-												key: "filterlevel",
-												value: others.map(o => Number(o)).join(HASH_SUB_LIST_SEP)
-											},
-											{
-												key: "filterclass",
-												value: `${name}${source.toLowerCase() === SRC_PHB.toLowerCase() ? "" : ` (${Parser.sourceJsonToAbv(source)})`}`
-											}
-										]
-									}
-								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
-								break;
-							}
-
-							case "@spellsSchool": {
-								// format: {@spellsSchool <sp school>|<display text>}
-								const fauxEntry = {
-									type: "link",
-									text: source || name,
-									href: {
-										type: "internal",
-										path: "spells.html",
-										hash: HASH_BLANK,
-										subhashes: [
-											{
-												key: "filterschool",
-												value: name
-											}
-										]
-									}
-								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
-								break;
-							}
-
-							case "@spellsDamageType": {
-								// format: {@spellsDamageType <sp damage type>|<display text>}
-								const fauxEntry = {
-									type: "link",
-									text: source || name,
-									href: {
-										type: "internal",
-										path: "spells.html",
-										hash: HASH_BLANK,
-										subhashes: [
-											{
-												key: "filterdamage type",
-												value: name
-											}
-										]
-									}
-								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
-							}
 						}
 					}
 				} else {
