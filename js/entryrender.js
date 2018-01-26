@@ -1570,6 +1570,7 @@ EntryRenderer.hover = {
 			EntryRenderer.hover._showInProgress = false;
 			// pass a fake "event"
 			EntryRenderer.hover.show({shiftKey: permanent}, ele, page, source, hash);
+			return;
 		}
 
 		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
