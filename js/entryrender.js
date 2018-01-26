@@ -811,6 +811,22 @@ EntryRenderer.feat = {
 			}
 			return abbArr.join(" ");
 		}
+	},
+
+	getCompactRenderedString: (feat) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(feat, true)}
+			<tr class='text'><td colspan='6' class='text'>
+			${prerequisite ? `<p><i>Prerequisite: ${prerequisite}</i></p>` : ""}
+		`);
+		renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
 	}
 };
 
@@ -1649,6 +1665,9 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_BACKGROUNDS:
 				renderFunction = EntryRenderer.background.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_FEATS:
+				renderFunction = EntryRenderer.feat.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
@@ -1745,6 +1764,11 @@ EntryRenderer.hover = {
 
 			case UrlUtil.PG_BACKGROUNDS: {
 				loadSimple(page, "backgrounds.json", "background");
+				break;
+			}
+
+			case UrlUtil.PG_FEATS: {
+				loadSimple(page, "feats.json", "feat");
 				break;
 			}
 		}

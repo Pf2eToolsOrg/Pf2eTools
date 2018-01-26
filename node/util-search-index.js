@@ -134,7 +134,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 7,
 			file: "feats.json",
 			listProp: "feat",
-			baseUrl: "feats.html"
+			baseUrl: "feats.html",
+			hover: true
 		},
 		{
 			category: 8,
