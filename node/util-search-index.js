@@ -92,6 +92,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	 * test_extraIndex: (OPTIONAL) a function which can optionally be called per item if `doExtraIndex` is true.
 	 * 		Used to generate a complete list of links for testing; should not be used for production index.
 	 * 		Should return full index objects.
+	 * hover: (OPTIONAL) a boolean indicating if the generated link should have `EntryRenderer` hover functionality.
 	 *
 	 */
 	const TO_INDEX = [
