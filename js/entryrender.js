@@ -689,10 +689,10 @@ EntryRenderer.utils = {
 		return `<tr><th class="border" colspan="6"></th></tr>`;
 	},
 
-	getNameTr: (it, addPageNum) => {
+	getNameTr: (it, addPageNum, prefix, suffix) => {
 		return `<tr>
 					<th class="name" colspan="6">
-						<span class="stats-name">${it.name}</span>
+						<span class="stats-name">${prefix || ""}${it.name}${suffix || ""}</span>
 						<span class="stats-source source${it.source}" title="${Parser.sourceJsonToAbv(it.source)}">
 							${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 						</span>
@@ -1029,6 +1029,108 @@ EntryRenderer.reward = {
 	}
 };
 
+EntryRenderer.race = {
+	getCompactRenderedString: (race) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const ability = utils_getAbilityData(race.ability);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(race, true)}
+			<tr><td colspan="6">
+				<table class="summary">
+					<tr>
+						<th class="col-xs-4 text-align-center">Ability Sores</th>
+						<th class="col-xs-4 text-align-center">Size</th>
+						<th class="col-xs-4 text-align-center">Speed</th>
+					</tr>
+					<tr>
+						<td class="text-align-center">${ability.asText}</td>
+						<td class="text-align-center">${Parser.sizeAbvToFull(race.size)}</td>
+						<td class="text-align-center">${EntryRenderer.race.getSpeedString(race)}</td>
+					</tr>
+				</table>
+			</td></tr>
+			<tr class='text'><td colspan='6'>
+		`);
+		renderer.recursiveEntryRender({type: "entries", entries: race.entries}, renderStack, 1);
+		renderStack.push("</td></tr>");
+
+		return renderStack.join("");
+	},
+
+	getSpeedString: (race) => {
+		let speed;
+		if (race.speed.walk) {
+			speed = race.speed.walk + "ft.";
+			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
+		} else {
+			speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
+		}
+		return speed;
+	}
+};
+
+EntryRenderer.deity = {
+	getCompactRenderedString: (deity) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		return `
+			${EntryRenderer.utils.getNameTr(deity, true, "", `, ${deity.title.toTitleCase()}`)}
+			<tr><td colspan="6">
+				<div class="summary-flexer">
+					<p><b>Pantheon:</b> ${deity.pantheon}</p>
+					${deity.category ? `<p><b>Category:</b> ${deity.category}</p>` : ""}
+					<p><b>Alignment:</b> ${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</p>
+					<p><b>Domains:</b> ${deity.domains.join(", ")}</p>
+					${deity.altNames ? `<p><b>Alternate Names:</b> ${deity.altNames.join(", ")}</p>` : ""}
+					<p><b>Symbol:</b> ${deity.symbol}</p>
+				</div>
+			</td>
+			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.renderEntry({entries: deity.entries}, 1)}</td></tr>` : ""}
+		`;
+	}
+};
+
+EntryRenderer.object = {
+	getCompactRenderedString: (obj) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		return `
+			${EntryRenderer.utils.getNameTr(obj, true)}
+			<tr><td colspan="6">
+				<table class="summary">
+					<tr>
+						<th class="col-xs-3 text-align-center">Type</th>
+						<th class="col-xs-3 text-align-center">AC</th>
+						<th class="col-xs-3 text-align-center">HP</th>
+						<th class="col-xs-3 text-align-center">Damage Imm.</th>
+					</tr>
+					<tr>
+						<td class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
+						<td class="text-align-center">${obj.ac}</td>					
+						<td class="text-align-center">${obj.hp}</td>					
+						<td class="text-align-center">${obj.immune}</td>					
+					</tr>
+				</table>			
+			</td></tr>
+			<tr class="text"><td colspan="6">
+			${obj.entries ? renderer.renderEntry({entries: obj.entries}, 2) : ""}
+			${obj.actionEntries ? renderer.renderEntry({entries: obj.actionEntries}, 2) : ""}
+			</td></tr>
+		`;
+	}
+};
+
+EntryRenderer.traphazard = {
+	getCompactRenderedString: (it) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		return `
+			${EntryRenderer.utils.getNameTr(it, true)}
+			<tr class="text"><td colspan="6"><i>${Parser.trapTypeToFull(it.trapType || "HAZ")}</i></td>
+			<tr class="text"><td colspan="6">${renderer.renderEntry({entries: it.entries}, 2)}</td></tr>
+		`;
+	}
+};
+
 EntryRenderer.monster = {
 	getCompactRenderedString: (mon) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
@@ -1083,15 +1185,15 @@ EntryRenderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; align-content: flex-start">
-					${mon.save ? `<p><b>Saving Throws</b> ${mon.save}</p>` : ""}
-					${mon.skill ? `<p><b>Skills</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
-					<p><b>Senses</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
-					<p><b>Languages</b> ${mon.languages ? mon.languages : `\u2014`}</p>
-					${mon.vulnerable ? `<p><b>Damage Vuln.</b> ${mon.vulnerable}</p>` : ""}
-					${mon.resist ? `<p><b>Damage Res.</b> ${mon.resist}</p>` : ""}
-					${mon.immune ? `<p><b>Damage Imm.</b> ${mon.immune}</p>` : ""}
-					${mon.conditionImmune ? `<p><b>Condition Imm.</b> ${mon.conditionImmune}</p>` : ""}
+				<div class="summary-flexer">
+					${mon.save ? `<p><b>Saving Throws:</b> ${mon.save}</p>` : ""}
+					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
+					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
+					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
+					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${mon.vulnerable}</p>` : ""}
+					${mon.resist ? `<p><b>Damage Res.:</b> ${mon.resist}</p>` : ""}
+					${mon.immune ? `<p><b>Damage Imm.:</b> ${mon.immune}</p>` : ""}
+					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${mon.conditionImmune}</p>` : ""}
 				</div>
 			</td></tr>
 		`);
@@ -1765,6 +1867,18 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_REWARDS:
 				renderFunction = EntryRenderer.reward.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_RACES:
+				renderFunction = EntryRenderer.race.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_DEITIES:
+				renderFunction = EntryRenderer.deity.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_OBJECTS:
+				renderFunction = EntryRenderer.object.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				renderFunction = EntryRenderer.traphazard.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
@@ -1815,12 +1929,17 @@ EntryRenderer.hover = {
 		}
 
 		function loadSimple (page, jsonFile, listProp) {
+			function populate (data, listProp) {
+				data[listProp].forEach(it => {
+					const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+					EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+				});
+			}
+
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
 				DataUtil.loadJSON(`data/${jsonFile}`, (data) => {
-					data[listProp].forEach(it => {
-						const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-						EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-					});
+					if (listProp instanceof Array) listProp.forEach(p => populate(data, p));
+					else populate(data, listProp);
 					EntryRenderer.hover._makeWindow();
 				});
 			} else {
@@ -1858,29 +1977,40 @@ EntryRenderer.hover = {
 				loadSimple(page, "conditions.json", "condition");
 				break;
 			}
-
 			case UrlUtil.PG_BACKGROUNDS: {
 				loadSimple(page, "backgrounds.json", "background");
 				break;
 			}
-
 			case UrlUtil.PG_FEATS: {
 				loadSimple(page, "feats.json", "feat");
 				break;
 			}
-
 			case UrlUtil.PG_INVOCATIONS: {
 				loadSimple(page, "invocations.json", "invocation");
 				break;
 			}
-
 			case UrlUtil.PG_PSIONICS: {
 				loadSimple(page, "psionics.json", "psionic");
 				break;
 			}
-
 			case UrlUtil.PG_REWARDS: {
 				loadSimple(page, "rewards.json", "reward");
+				break;
+			}
+			case UrlUtil.PG_RACES: {
+				loadSimple(page, "races.json", "race");
+				break;
+			}
+			case UrlUtil.PG_DEITIES: {
+				loadSimple(page, "deities.json", "deity");
+				break;
+			}
+			case UrlUtil.PG_OBJECTS: {
+				loadSimple(page, "objects.json", "object");
+				break;
+			}
+			case UrlUtil.PG_TRAPS_HAZARDS: {
+				loadSimple(page, "trapshazards.json", ["trap", "hazard"]);
 				break;
 			}
 		}

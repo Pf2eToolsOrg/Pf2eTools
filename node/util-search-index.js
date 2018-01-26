@@ -93,6 +93,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	 * 		Used to generate a complete list of links for testing; should not be used for production index.
 	 * 		Should return full index objects.
 	 * hover: (OPTIONAL) a boolean indicating if the generated link should have `EntryRenderer` hover functionality.
+	 * filter: (OPTIONAL) a function which takes a data item and returns true if it should be indexed, false otherwise
 	 *
 	 */
 	const TO_INDEX = [
@@ -167,7 +168,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 10,
 			file: "races.json",
 			listProp: "race",
-			baseUrl: "races.html"
+			baseUrl: "races.html",
+			hover: true
 		},
 		{
 			category: 11,
@@ -217,25 +219,32 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 14,
 			file: "deities.json",
 			listProp: "deity",
-			baseUrl: "deities.html"
+			baseUrl: "deities.html",
+			hover: true,
+			filter: (it) => {
+				return it.reprinted;
+			}
 		},
 		{
 			category: 15,
 			file: "objects.json",
 			listProp: "object",
-			baseUrl: "objects.html"
+			baseUrl: "objects.html",
+			hover: true
 		},
 		{
 			category: 16,
 			file: "trapshazards.json",
 			listProp: "trap",
-			baseUrl: "trapshazards.html"
+			baseUrl: "trapshazards.html",
+			hover: true
 		},
 		{
 			category: 17,
 			file: "trapshazards.json",
 			listProp: "hazard",
-			baseUrl: "trapshazards.html"
+			baseUrl: "trapshazards.html",
+			hover: true
 		}
 	];
 
@@ -268,13 +277,13 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			const primaryS = getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
 				const toAdd = getToAdd(it, {s: primaryS});
-				index.push(toAdd);
+				if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
 
 				if (arbiter.deepIndex) {
 					const deepItems = arbiter.deepIndex(primaryS, it);
 					deepItems.forEach(item => {
 						const toAdd = getToAdd(it, item);
-						index.push(toAdd);
+						if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
 					})
 				}
 			}
