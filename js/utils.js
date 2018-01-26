@@ -121,6 +121,39 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
+String.prototype.toTitleCase = String.prototype.toTitleCase ||
+	function () {
+		let str;
+		str = this.replace(/([^\W_]+[^\s-]*) */g, function (txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+
+		if (!StrUtil._TITLE_LOWER_WORDS_RE) {
+			StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, 'g'));
+		}
+
+		for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
+			str = str.replace(
+				StrUtil._TITLE_LOWER_WORDS_RE[i],
+				(txt) => {
+					return txt.toLowerCase();
+				});
+		}
+
+		if (!StrUtil._TITLE_UPPER_WORDS_RE) {
+			StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, 'g'));
+		}
+
+		for (let i = 0; i < StrUtil.TITLE_UPPER_WORDS.length; i++) {
+			str = str.replace(
+				StrUtil._TITLE_UPPER_WORDS_RE[i],
+				StrUtil.TITLE_UPPER_WORDS[i].toUpperCase()
+			);
+		}
+
+		return str;
+	};
+
 StrUtil = {
 	joinPhraseArray: function (array, joiner, lastJoiner) {
 		if (array.length === 0) return "";
@@ -139,7 +172,11 @@ StrUtil = {
 
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
-	}
+	},
+	// Certain minor words should be left lowercase unless they are the first or last words in the string
+	TITLE_LOWER_WORDS: ["A", "An", "The", "And", "But", "Or", "For", "Nor", "As", "At", "By", "For", "From", "In", "Into", "Near", "Of", "On", "Onto", "To", "With"],
+	// Certain words such as initialisms or acronyms should be left uppercase
+	TITLE_UPPER_WORDS: ["Id", "Tv"]
 };
 
 // TEXT COMBINING ======================================================================================================
@@ -1942,10 +1979,10 @@ CollectionUtil = {
 		// Two objects are considered equal if their string IDs are equal.
 		add (item) {
 			this.map.set(item._toIdString(), item);
-		};
+		}
 
 		values () {
 			return this.map.values();
-		};
+		}
 	}
 };
