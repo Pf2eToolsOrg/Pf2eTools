@@ -841,7 +841,6 @@ EntryRenderer.getDefaultRenderer = () => {
 EntryRenderer.spell = {
 	getCompactRenderedString: (spell) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
-
 		const renderStack = [];
 
 		renderStack.push(`
@@ -937,7 +936,6 @@ EntryRenderer.spell = {
 EntryRenderer.condition = {
 	getCompactRenderedString: (cond) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
-
 		const renderStack = [];
 
 		renderStack.push(`
@@ -954,7 +952,6 @@ EntryRenderer.condition = {
 EntryRenderer.background = {
 	getCompactRenderedString: (bg) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
-
 		const renderStack = [];
 
 		renderStack.push(`
@@ -996,6 +993,39 @@ EntryRenderer.invocation = {
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
+	}
+};
+
+EntryRenderer.reward = {
+	getRenderedString: (reward) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		if (reward.type === "Demonic Boon") {
+			const benefits = {type: "list", style: "list-hang", items: []};
+			benefits.items.push({
+				type: "item",
+				name: "Ability Score Adjustment:",
+				entry: reward.ability ? reward.ability.entry : "None"
+			});
+			benefits.items.push({
+				type: "item",
+				name: "Signature Spells:",
+				entry: reward.signaturespells ? reward.signaturespells.entry : "None"
+			});
+			renderer.recursiveEntryRender(benefits, renderStack, 1);
+		}
+
+		renderer.recursiveEntryRender({entries: reward.entries}, renderStack, 1);
+
+		return `<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
+	},
+
+	getCompactRenderedString: (reward) => {
+		return `
+			${EntryRenderer.utils.getNameTr(reward, true)}
+			${EntryRenderer.reward.getRenderedString(reward)}
+		`;
 	}
 };
 
@@ -1482,7 +1512,6 @@ EntryRenderer.psionic = {
 		const typeOrderStr = psionic.type === "T" ? Parser.psiTypeToFull(psionic.type) : `${psionic.order} ${Parser.psiTypeToFull(psionic.type)}`;
 		const bodyStr = psionic.type === "T" ? EntryRenderer.psionic.getTalentText(psionic, renderer) : EntryRenderer.psionic.getDisciplineText(psionic, renderer);
 
-
 		return `
 			${EntryRenderer.utils.getNameTr(psionic, true)}
 			<tr class="text"><td colspan="6">
@@ -1719,6 +1748,9 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_PSIONICS:
 				renderFunction = EntryRenderer.psionic.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_REWARDS:
+				renderFunction = EntryRenderer.reward.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
@@ -1830,6 +1862,11 @@ EntryRenderer.hover = {
 
 			case UrlUtil.PG_PSIONICS: {
 				loadSimple(page, "psionics.json", "psionic");
+				break;
+			}
+
+			case UrlUtil.PG_REWARDS: {
+				loadSimple(page, "rewards.json", "reward");
 				break;
 			}
 		}
