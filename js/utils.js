@@ -1314,6 +1314,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"TAH": "Tack and Harness",
 	"TG": "Trade Good",
 	"VEH": "Vehicle",
+	"SHP": "Vehicle",
 	"WD": "Wand"
 };
 

@@ -1170,14 +1170,17 @@ EntryRenderer.item = {
 			damage = "AC " + item.ac + (type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : "");
 		} else if (type === "S") {
 			damage = "AC +" + item.ac;
-		} else if (type === "MNT" || type === "VEH") {
+		} else if (type === "MNT" || type === "VEH" || type === "SHP") {
 			const speed = item.speed;
 			const capacity = item.carryingcapacity;
-			if (speed) damage += "Speed=" + speed;
+			if (speed) damage += "Speed: " + speed;
 			if (speed && capacity) damage += type === "MNT" ? ", " : "<br>";
 			if (capacity) {
-				damage += "Carrying Capacity=" + capacity;
+				damage += "Carrying Capacity: " + capacity;
 				if (capacity.indexOf("ton") === -1 && capacity.indexOf("passenger") === -1) damage += Number(capacity) === 1 ? " lb." : " lbs.";
+			}
+			if (type === "SHP") {
+				damage += `<br>Crew ${item.crew}, AC ${item.vehAc}, HP ${item.vehHp}${item.vehDmgThresh ? `, Damage Threshold ${item.vehDmgThresh}` : ""}`;
 			}
 		}
 
@@ -1331,6 +1334,7 @@ EntryRenderer.item = {
 		}
 
 		function enhanceItems () {
+			const priceRe = /^(\d+)(\w+)$/;
 			for (let i = 0; i < itemList.length; i++) {
 				const item = itemList[i];
 				if (item.noDisplay) continue;
@@ -1393,6 +1397,15 @@ EntryRenderer.item = {
 					}
 				}
 				item.attunementCategory = attunement;
+
+				// format price nicely
+				// 5 characters because e.g. XXXgp is fine
+				if (item.value && item.value.length > 5) {
+					const m = priceRe.exec(item.value);
+					if (m) {
+						item.value = `${Number(m[1]).toLocaleString()}${m[2]}`;
+					}
+				}
 			}
 			callback(itemList);
 		}
