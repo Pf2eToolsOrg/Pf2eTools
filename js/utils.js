@@ -66,6 +66,7 @@ ATB_DATA_SRC = "data-source";
 
 STR_CANTRIP = "Cantrip";
 STR_NONE = "None";
+STR_ANY = "Any";
 
 RNG_SPECIAL = "special";
 RNG_POINT = "point";
@@ -775,6 +776,32 @@ Parser.psiTypeToFull = (type) => {
 
 Parser.psiOrderToFull = (order) => {
 	return order === undefined ? Parser.PSI_ORDER_NONE : order;
+};
+
+Parser.levelToFull = function (level) {
+	if (isNaN(level)) return "";
+	if (level === "2") return level + "nd";
+	if (level === "3") return level + "rd";
+	if (level === "1") return level + "st";
+	return level + "th";
+};
+
+Parser.invoSpellToFull = function (spell) {
+	if (spell === "Eldritch Blast") return spell + " cantrip";
+	if (spell === "Hex/Curse") return "Hex spell or a warlock feature that curses";
+	return STR_NONE
+};
+
+Parser.invoPactToFull = function (pact) {
+	if (pact === "Chain") return "Pact of the Chain";
+	if (pact === "Tome") return "Pact of the Tome";
+	if (pact === "Blade") return "Pact of the Blade";
+	return STR_ANY;
+};
+
+Parser.invoPatronToShort = function (patron) {
+	if (patron === STR_ANY) return STR_ANY;
+	return /^The (.*?)$/.exec(patron)[1];
 };
 
 Parser.CAT_ID_CREATURE = 1;

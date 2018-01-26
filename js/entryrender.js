@@ -41,6 +41,10 @@ function EntryRenderer () {
 		this.baseUrl = url;
 	};
 
+	// TODO convert params to options object
+	// TODO provide a Roll20 mode (expose list of found monsters/etc to be imported; add links to these)
+	// TODO general conditional rendering function -- make use of "data" property (see backgrounds JSON + backgrounds hover render)
+	//      - can be used to clean up R20 script Subclass rendering when implemented
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
 	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
@@ -535,6 +539,10 @@ function EntryRenderer () {
 							case "@background":
 								fauxEntry.href.path = "backgrounds.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_BACKGROUNDS,
+									source: source || SRC_PHB
+								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 						}
@@ -577,6 +585,7 @@ function EntryRenderer () {
 		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
 	};
 
+	// TODO convert params to options
 	/**
 	 * Helper function to render an entity using this renderer
 	 * @param entry
@@ -586,7 +595,7 @@ function EntryRenderer () {
 	this.renderEntry = function (entry, depth) {
 		depth = depth === undefined || depth === null ? 0 : depth;
 		const tempStack = [];
-		renderer.recursiveEntryRender(entry, tempStack, depth);
+		this.recursiveEntryRender(entry, tempStack, depth);
 		return tempStack.join("");
 	};
 }
@@ -803,16 +812,35 @@ EntryRenderer.feat = {
 			}
 			return abbArr.join(" ");
 		}
+	},
+
+	getCompactRenderedString: (feat) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(feat, true)}
+			<tr class='text'><td colspan='6' class='text'>
+			${prerequisite ? `<p><i>Prerequisite: ${prerequisite}</i></p>` : ""}
+		`);
+		renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
 	}
+};
+
+EntryRenderer.getDefaultRenderer = () => {
+	if (!EntryRenderer.defaultRenderer) {
+		EntryRenderer.defaultRenderer = new EntryRenderer();
+	}
+	return EntryRenderer.defaultRenderer;
 };
 
 EntryRenderer.spell = {
 	getCompactRenderedString: (spell) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
-
+		const renderer = EntryRenderer.getDefaultRenderer();
 		const renderStack = [];
 
 		renderStack.push(`
@@ -907,11 +935,7 @@ EntryRenderer.spell = {
 
 EntryRenderer.condition = {
 	getCompactRenderedString: (cond) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
-
+		const renderer = EntryRenderer.getDefaultRenderer();
 		const renderStack = [];
 
 		renderStack.push(`
@@ -925,12 +949,89 @@ EntryRenderer.condition = {
 	}
 };
 
+EntryRenderer.background = {
+	getCompactRenderedString: (bg) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(bg, true)}
+			<tr class="text"><td colspan="6">
+		`);
+		if (bg.skillProficiencies) {
+			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [bg.skillProficiencies]}, renderStack, 2);
+		}
+		renderer.recursiveEntryRender({entries: bg.entries.filter(it => it.data && it.data.isFeature)}, renderStack, 1);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
+	}
+};
+
+EntryRenderer.invocation = {
+	getPrerequisiteText: (invo) => {
+		const prereqs = [
+			(!invo.prerequisites.patron || invo.prerequisites.patron === STR_ANY) ? null : `${invo.prerequisites.patron} patron`,
+			(!invo.prerequisites.pact || invo.prerequisites.pact === STR_ANY) ? null : Parser.invoPactToFull(invo.prerequisites.pact),
+			(!invo.prerequisites.level || invo.prerequisites.level === STR_ANY) ? null : `${Parser.levelToFull(invo.prerequisites.level)} level`,
+			(!invo.prerequisites.spell || invo.prerequisites.spell === STR_NONE) ? null : Parser.invoSpellToFull(invo.prerequisites.spell)
+		].filter(f => f);
+		return prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
+	},
+
+	getCompactRenderedString: (invo) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const prereqs = EntryRenderer.invocation.getPrerequisiteText(invo);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(invo, true)}
+			<tr class="text"><td colspan="6">
+			${prereqs ? `<p><i>${prereqs}</i></p>` : ""}
+		`);
+		renderer.recursiveEntryRender({entries: invo.entries}, renderStack, 1);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
+	}
+};
+
+EntryRenderer.reward = {
+	getRenderedString: (reward) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		if (reward.type === "Demonic Boon") {
+			const benefits = {type: "list", style: "list-hang", items: []};
+			benefits.items.push({
+				type: "item",
+				name: "Ability Score Adjustment:",
+				entry: reward.ability ? reward.ability.entry : "None"
+			});
+			benefits.items.push({
+				type: "item",
+				name: "Signature Spells:",
+				entry: reward.signaturespells ? reward.signaturespells.entry : "None"
+			});
+			renderer.recursiveEntryRender(benefits, renderStack, 1);
+		}
+
+		renderer.recursiveEntryRender({entries: reward.entries}, renderStack, 1);
+
+		return `<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
+	},
+
+	getCompactRenderedString: (reward) => {
+		return `
+			${EntryRenderer.utils.getNameTr(reward, true)}
+			${EntryRenderer.reward.getRenderedString(reward)}
+		`;
+	}
+};
+
 EntryRenderer.monster = {
 	getCompactRenderedString: (mon) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
@@ -1101,10 +1202,7 @@ EntryRenderer.item = {
 	},
 
 	getCompactRenderedString: function (item) {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		const renderStack = [];
 
@@ -1406,6 +1504,21 @@ EntryRenderer.psionic = {
 			renderer.recursiveEntryRender(fauxEntry, renderStack, 4);
 			return renderStack.join("");
 		}
+	},
+
+	getCompactRenderedString: (psionic) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+
+		const typeOrderStr = psionic.type === "T" ? Parser.psiTypeToFull(psionic.type) : `${psionic.order} ${Parser.psiTypeToFull(psionic.type)}`;
+		const bodyStr = psionic.type === "T" ? EntryRenderer.psionic.getTalentText(psionic, renderer) : EntryRenderer.psionic.getDisciplineText(psionic, renderer);
+
+		return `
+			${EntryRenderer.utils.getNameTr(psionic, true)}
+			<tr class="text"><td colspan="6">
+			<p><i>${typeOrderStr}</i></p>
+			${bodyStr}
+			</td></tr>
+		`;
 	}
 };
 
@@ -1623,6 +1736,21 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_CONDITIONS:
 				renderFunction = EntryRenderer.condition.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_BACKGROUNDS:
+				renderFunction = EntryRenderer.background.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_FEATS:
+				renderFunction = EntryRenderer.feat.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_INVOCATIONS:
+				renderFunction = EntryRenderer.invocation.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_PSIONICS:
+				renderFunction = EntryRenderer.psionic.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_REWARDS:
+				renderFunction = EntryRenderer.reward.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
@@ -1672,14 +1800,28 @@ EntryRenderer.hover = {
 			}
 		}
 
+		function loadSimple (page, jsonFile, listProp) {
+			if (!EntryRenderer.hover._isCached(page, source, hash)) {
+				DataUtil.loadJSON(`data/${jsonFile}`, (data) => {
+					data[listProp].forEach(it => {
+						const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+						EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+					});
+					EntryRenderer.hover._makeWindow();
+				});
+			} else {
+				EntryRenderer.hover._makeWindow();
+			}
+		}
+
 		switch (page) {
 			case UrlUtil.PG_SPELLS: {
-				loadMultiSource(UrlUtil.PG_SPELLS, `data/spells/`, "spell");
+				loadMultiSource(page, `data/spells/`, "spell");
 				break;
 			}
 
 			case UrlUtil.PG_BESTIARY: {
-				loadMultiSource(UrlUtil.PG_BESTIARY, `data/bestiary/`, "monster");
+				loadMultiSource(page, `data/bestiary/`, "monster");
 				break;
 			}
 
@@ -1699,17 +1841,32 @@ EntryRenderer.hover = {
 			}
 
 			case UrlUtil.PG_CONDITIONS: {
-				if (!EntryRenderer.hover._isCached(page, source, hash)) {
-					DataUtil.loadJSON(`data/conditions.json`, (data) => {
-						data.condition.forEach(it => {
-							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-						});
-						EntryRenderer.hover._makeWindow();
-					});
-				} else {
-					EntryRenderer.hover._makeWindow();
-				}
+				loadSimple(page, "conditions.json", "condition");
+				break;
+			}
+
+			case UrlUtil.PG_BACKGROUNDS: {
+				loadSimple(page, "backgrounds.json", "background");
+				break;
+			}
+
+			case UrlUtil.PG_FEATS: {
+				loadSimple(page, "feats.json", "feat");
+				break;
+			}
+
+			case UrlUtil.PG_INVOCATIONS: {
+				loadSimple(page, "invocations.json", "invocation");
+				break;
+			}
+
+			case UrlUtil.PG_PSIONICS: {
+				loadSimple(page, "psionics.json", "psionic");
+				break;
+			}
+
+			case UrlUtil.PG_REWARDS: {
+				loadSimple(page, "rewards.json", "reward");
 				break;
 			}
 		}
