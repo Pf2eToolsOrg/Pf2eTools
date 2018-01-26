@@ -159,22 +159,14 @@ function loadhash (id) {
 
 	const size = Parser.sizeAbvToFull(race.size);
 	$("td#size span").html(size);
-	if (size === "") $("td#size").hide();
 
 	const ability = utils_getAbilityData(race.ability);
 	$("td#ability span").html(ability.asText);
 
-	let speed;
-	if (race.speed.walk) {
-		speed = race.speed.walk + "ft.";
-		if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
-	} else {
-		speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
-	}
-	$("td#speed span").html(speed);
+	$("td#speed span").html(EntryRenderer.race.getSpeedString(race));
 
 	const renderStack = [];
-	const faux = {"type": "entries", "entries": race.entries};
+	const faux = {type: "entries", entries: race.entries};
 
 	renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
 
