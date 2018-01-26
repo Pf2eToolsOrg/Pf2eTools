@@ -41,6 +41,10 @@ function EntryRenderer () {
 		this.baseUrl = url;
 	};
 
+	// TODO convert params to options object
+	// TODO provide a Roll20 mode (expose list of found monsters/etc to be imported; add links to these)
+	// TODO general conditional rendering function -- make use of "data" property (see backgrounds JSON + backgrounds hover render)
+	//      - can be used to clean up R20 script Subclass rendering when implemented
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
 	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
@@ -535,6 +539,10 @@ function EntryRenderer () {
 							case "@background":
 								fauxEntry.href.path = "backgrounds.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_BACKGROUNDS,
+									source: source || SRC_PHB
+								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 						}
@@ -806,12 +814,16 @@ EntryRenderer.feat = {
 	}
 };
 
+EntryRenderer.getDefaultRenderer = () => {
+	if (!EntryRenderer.defaultRenderer) {
+		EntryRenderer.defaultRenderer = new EntryRenderer();
+	}
+	return EntryRenderer.defaultRenderer;
+};
+
 EntryRenderer.spell = {
 	getCompactRenderedString: (spell) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		const renderStack = [];
 
@@ -907,10 +919,7 @@ EntryRenderer.spell = {
 
 EntryRenderer.condition = {
 	getCompactRenderedString: (cond) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		const renderStack = [];
 
@@ -925,12 +934,29 @@ EntryRenderer.condition = {
 	}
 };
 
+EntryRenderer.background = {
+	getCompactRenderedString: (bg) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+
+		const renderStack = [];
+
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(bg, true)}
+			<tr class="text"><td colspan="6">
+		`);
+		if (bg.skillProficiencies) {
+			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [bg.skillProficiencies]}, renderStack, 2);
+		}
+		renderer.recursiveEntryRender({entries: bg.entries.filter(it => it.data && it.data.isFeature)}, renderStack, 1);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
+	}
+};
+
 EntryRenderer.monster = {
 	getCompactRenderedString: (mon) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
@@ -1101,10 +1127,7 @@ EntryRenderer.item = {
 	},
 
 	getCompactRenderedString: function (item) {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		const renderStack = [];
 
@@ -1623,6 +1646,9 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_CONDITIONS:
 				renderFunction = EntryRenderer.condition.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_BACKGROUNDS:
+				renderFunction = EntryRenderer.background.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
@@ -1672,14 +1698,28 @@ EntryRenderer.hover = {
 			}
 		}
 
+		function loadSimple (page, jsonFile, listProp) {
+			if (!EntryRenderer.hover._isCached(page, source, hash)) {
+				DataUtil.loadJSON(`data/${jsonFile}`, (data) => {
+					data[listProp].forEach(it => {
+						const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+						EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+					});
+					EntryRenderer.hover._makeWindow();
+				});
+			} else {
+				EntryRenderer.hover._makeWindow();
+			}
+		}
+
 		switch (page) {
 			case UrlUtil.PG_SPELLS: {
-				loadMultiSource(UrlUtil.PG_SPELLS, `data/spells/`, "spell");
+				loadMultiSource(page, `data/spells/`, "spell");
 				break;
 			}
 
 			case UrlUtil.PG_BESTIARY: {
-				loadMultiSource(UrlUtil.PG_BESTIARY, `data/bestiary/`, "monster");
+				loadMultiSource(page, `data/bestiary/`, "monster");
 				break;
 			}
 
@@ -1699,17 +1739,12 @@ EntryRenderer.hover = {
 			}
 
 			case UrlUtil.PG_CONDITIONS: {
-				if (!EntryRenderer.hover._isCached(page, source, hash)) {
-					DataUtil.loadJSON(`data/conditions.json`, (data) => {
-						data.condition.forEach(it => {
-							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-						});
-						EntryRenderer.hover._makeWindow();
-					});
-				} else {
-					EntryRenderer.hover._makeWindow();
-				}
+				loadSimple(page, "conditions.json", "condition");
+				break;
+			}
+
+			case UrlUtil.PG_BACKGROUNDS: {
+				loadSimple(page, "backgrounds.json", "background");
 				break;
 			}
 		}

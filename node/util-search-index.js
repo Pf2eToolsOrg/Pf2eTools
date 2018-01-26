@@ -100,7 +100,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 3,
 			file: "backgrounds.json",
 			listProp: "background",
-			baseUrl: "backgrounds.html"
+			baseUrl: "backgrounds.html",
+			hover: true
 		},
 		{
 			category: 4,
