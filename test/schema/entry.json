@@ -17,6 +17,9 @@
 				},
 				"source": {
 					"type": "string"
+				},
+				"data": {
+					"type": "object"
 				}
 			},
 			"required": [
@@ -59,6 +62,9 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["entries"],

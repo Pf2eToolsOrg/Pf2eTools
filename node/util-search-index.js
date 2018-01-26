@@ -100,7 +100,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 3,
 			file: "backgrounds.json",
 			listProp: "background",
-			baseUrl: "backgrounds.html"
+			baseUrl: "backgrounds.html",
+			hover: true
 		},
 		{
 			category: 4,
@@ -133,13 +134,15 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 7,
 			file: "feats.json",
 			listProp: "feat",
-			baseUrl: "feats.html"
+			baseUrl: "feats.html",
+			hover: true
 		},
 		{
 			category: 8,
 			file: "invocations.json",
 			listProp: "invocation",
-			baseUrl: "invocations.html"
+			baseUrl: "invocations.html",
+			hover: true
 		},
 		{
 			category: 4,
@@ -157,7 +160,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			deepIndex: (primary, it) => {
 				if (!it.modes) return [];
 				return it.modes.map(m => ({s: `${primary}; ${m.name}`}))
-			}
+			},
+			hover: true
 		},
 		{
 			category: 10,
@@ -169,7 +173,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 11,
 			file: "rewards.json",
 			listProp: "reward",
-			baseUrl: "rewards.html"
+			baseUrl: "rewards.html",
+			hover: true
 		},
 		{
 			category: 12,

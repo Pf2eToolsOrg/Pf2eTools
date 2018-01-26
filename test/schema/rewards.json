@@ -20,51 +20,32 @@
 					"ability": {
 						"type": "object",
 						"properties": {
-							"text": {
-								"type": "string"
+							"entry": {
+								"$ref": "/Entry"
 							}
 						},
 						"required": [
-							"text"
+							"entry"
 						],
 						"additionalProperties": false
 					},
 					"signaturespells": {
 						"type": "object",
 						"properties": {
-							"text": {
-								"type": "string"
+							"entry": {
+								"$ref": "/Entry"
 							}
 						},
+						"required": [
+							"entry"
+						],
 						"additionalProperties": false
 					},
-					"text": {
+					"entries": {
 						"type": "array",
 						"uniqueItems": true,
 						"items": {
-							"anyOf": [
-								{
-									"type": "object",
-									"properties": {
-										"hassubtitle": {
-											"type": "string"
-										},
-										"title": {
-											"type": "string"
-										},
-										"text": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"hassubtitle",
-										"title",
-										"text"
-									],
-									"additionalProperties": false
-								},
-								{"type": "string"}
-							]
+							"$ref": "/Entry"
 						}
 					}
 				},
@@ -72,7 +53,7 @@
 					"name",
 					"source",
 					"type",
-					"text"
+					"entries"
 				],
 				"additionalProperties": false
 			}
