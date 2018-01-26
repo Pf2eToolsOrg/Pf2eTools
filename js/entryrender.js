@@ -1450,9 +1450,17 @@ EntryRenderer.hover = {
 		const page = EntryRenderer.hover._curHovering.cPage;
 		const source = EntryRenderer.hover._curHovering.cSource;
 		const hash = EntryRenderer.hover._curHovering.cHash;
+		const permanent = EntryRenderer.hover._curHovering.permanent;
+
+		// if we've outrun the loading, restart
+		if (!EntryRenderer.hover._isCached(page, source, hash)) {
+			EntryRenderer.hover._showInProgress = false;
+			// pass a fake "event"
+			EntryRenderer.hover.show({shiftKey: permanent}, ele, page, source, hash);
+		}
+
 		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
 		const content = EntryRenderer.hover._curHovering.renderFunction(toRender);
-		const permanent = EntryRenderer.hover._curHovering.permanent;
 
 		$(ele).data("hover-active", true);
 

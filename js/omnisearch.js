@@ -135,7 +135,7 @@ function init () {
 				const r = results[i].doc;
 				$searchOut.append(`
 				<p>
-					<a href="${r.url}">${r.c}: ${r.s}</a>
+					<a href="${r.url}" ${r.hov || ""}>${r.c}: ${r.s}</a>
 					<i title="${Parser.sourceJsonToFull(r.src)}">${Parser.sourceJsonToAbv(r.src)}${r.pg ? ` p${r.pg}` : ""}</i>
 				</p>`);
 			}

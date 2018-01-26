@@ -53,22 +53,24 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	 */
 	const TO_INDEX__FROM_INDEX_JSON = [
 		{
-			"category": 1,
-			"dir": "bestiary",
-			"primary": "name",
-			"source": "source",
-			"page": "page",
-			"listProp": "monster",
-			"baseUrl": "bestiary.html"
+			category: 1,
+			dir: "bestiary",
+			primary: "name",
+			source: "source",
+			page: "page",
+			listProp: "monster",
+			baseUrl: "bestiary.html",
+			hover: true
 		},
 		{
-			"category": 2,
-			"dir": "spells",
-			"primary": "name",
-			"source": "source",
-			"page": "page",
-			"listProp": "spell",
-			"baseUrl": "spells.html"
+			category: 2,
+			dir: "spells",
+			primary: "name",
+			source: "source",
+			page: "page",
+			listProp: "spell",
+			baseUrl: "spells.html",
+			hover: true
 		}
 	];
 
@@ -94,23 +96,25 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	 */
 	const TO_INDEX = [
 		{
-			"category": 3,
-			"file": "backgrounds.json",
-			"listProp": "background",
-			"baseUrl": "backgrounds.html"
+			category: 3,
+			file: "backgrounds.json",
+			listProp: "background",
+			baseUrl: "backgrounds.html",
+			hover: true
 		},
 		{
-			"category": 4,
-			"file": "basicitems.json",
-			"listProp": "basicitem",
-			"baseUrl": "items.html"
+			category: 4,
+			file: "basicitems.json",
+			listProp: "basicitem",
+			baseUrl: "items.html",
+			hover: true
 		},
 		{
-			"category": 5,
-			"file": "classes.json",
-			"listProp": "class",
-			"baseUrl": "classes.html",
-			"deepIndex": (primary, it) => {
+			category: 5,
+			file: "classes.json",
+			listProp: "class",
+			baseUrl: "classes.html",
+			deepIndex: (primary, it) => {
 				return it.subclasses.map(sc => ({
 					s: `${primary}; ${sc.name}`,
 					src: sc.source,
@@ -119,58 +123,60 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			}
 		},
 		{
-			"category": 6,
-			"file": "conditions.json",
-			"listProp": "condition",
-			"baseUrl": "conditions.html"
+			category: 6,
+			file: "conditions.json",
+			listProp: "condition",
+			baseUrl: "conditions.html",
+			hover: true
 		},
 		{
-			"category": 7,
-			"file": "feats.json",
-			"listProp": "feat",
-			"baseUrl": "feats.html"
+			category: 7,
+			file: "feats.json",
+			listProp: "feat",
+			baseUrl: "feats.html"
 		},
 		{
-			"category": 8,
-			"file": "invocations.json",
-			"listProp": "invocation",
-			"baseUrl": "invocations.html"
+			category: 8,
+			file: "invocations.json",
+			listProp: "invocation",
+			baseUrl: "invocations.html"
 		},
 		{
-			"category": 4,
-			"file": "items.json",
-			"page": "page",
-			"listProp": "item",
-			"baseUrl": "items.html"
+			category: 4,
+			file: "items.json",
+			page: "page",
+			listProp: "item",
+			baseUrl: "items.html",
+			hover: true
 		},
 		{
-			"category": 9,
-			"file": "psionics.json",
-			"listProp": "psionic",
-			"baseUrl": "psionics.html",
-			"deepIndex": (primary, it) => {
+			category: 9,
+			file: "psionics.json",
+			listProp: "psionic",
+			baseUrl: "psionics.html",
+			deepIndex: (primary, it) => {
 				if (!it.modes) return [];
 				return it.modes.map(m => ({s: `${primary}; ${m.name}`}))
 			}
 		},
 		{
-			"category": 10,
-			"file": "races.json",
-			"listProp": "race",
-			"baseUrl": "races.html"
+			category: 10,
+			file: "races.json",
+			listProp: "race",
+			baseUrl: "races.html"
 		},
 		{
-			"category": 11,
-			"file": "rewards.json",
-			"listProp": "reward",
-			"baseUrl": "rewards.html"
+			category: 11,
+			file: "rewards.json",
+			listProp: "reward",
+			baseUrl: "rewards.html"
 		},
 		{
-			"category": 12,
-			"file": "variantrules.json",
-			"listProp": "variantrule",
-			"baseUrl": "variantrules.html",
-			"deepIndex": (primary, it) => {
+			category: 12,
+			file: "variantrules.json",
+			listProp: "variantrule",
+			baseUrl: "variantrules.html",
+			deepIndex: (primary, it) => {
 				const names = [];
 				it.entries.forEach(e => {
 					er.EntryRenderer.getNames(names, e);
@@ -179,51 +185,52 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			}
 		},
 		{
-			"category": 13,
-			"file": "adventures.json",
-			"source": "id",
-			"listProp": "adventure",
-			"baseUrl": "adventure.html"
+			category: 13,
+			file: "adventures.json",
+			source: "id",
+			listProp: "adventure",
+			baseUrl: "adventure.html"
 		},
 		{
-			"category": 4,
-			"file": "magicvariants.json",
-			"source": "inherits.source",
-			"page": "inherits.page",
-			"listProp": "variant",
-			"baseUrl": "items.html",
-			"hashBuilder": (it) => {
+			category: 4,
+			file: "magicvariants.json",
+			source: "inherits.source",
+			page: "inherits.page",
+			listProp: "variant",
+			baseUrl: "items.html",
+			hashBuilder: (it) => {
 				return UrlUtil.encodeForHash([it.name, it.inherits.source]);
 			},
-			"test_extraIndex": () => {
+			test_extraIndex: () => {
 				const specVars = UtilSearchIndex._test_getBasicVariantItems();
 
 				return specVars.map(sv => ({url: `items.html#${UrlUtil.encodeForHash([sv.name, sv.source])}`}));
-			}
+			},
+			hover: true
 		},
 		{
-			"category": 14,
-			"file": "deities.json",
-			"listProp": "deity",
-			"baseUrl": "deities.html"
+			category: 14,
+			file: "deities.json",
+			listProp: "deity",
+			baseUrl: "deities.html"
 		},
 		{
-			"category": 15,
-			"file": "objects.json",
-			"listProp": "object",
-			"baseUrl": "objects.html"
+			category: 15,
+			file: "objects.json",
+			listProp: "object",
+			baseUrl: "objects.html"
 		},
 		{
-			"category": 16,
-			"file": "trapshazards.json",
-			"listProp": "trap",
-			"baseUrl": "trapshazards.html"
+			category: 16,
+			file: "trapshazards.json",
+			listProp: "trap",
+			baseUrl: "trapshazards.html"
 		},
 		{
-			"category": 17,
-			"file": "trapshazards.json",
-			"listProp": "hazard",
-			"baseUrl": "trapshazards.html"
+			category: 17,
+			file: "trapshazards.json",
+			listProp: "hazard",
+			baseUrl: "trapshazards.html"
 		}
 	];
 
@@ -234,15 +241,20 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	let id = 0;
 	function handleContents (arbiter, j) {
 		function getToAdd (it, toMerge) {
+			const src = getProperty(it, arbiter.source || "source");
+			const hash = arbiter.hashBuilder
+				? arbiter.hashBuilder(it)
+				: UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it);
 			const toAdd = {
 				c: arbiter.category,
-				src: getProperty(it, arbiter.source || "source"),
+				src: src,
 				id: id++,
-				url: arbiter.hashBuilder
-					? `${arbiter.baseUrl}#${arbiter.hashBuilder(it)}`
-					: `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`,
+				url: `${arbiter.baseUrl}#${hash}`,
 				pg: getProperty(it, arbiter.page || "page")
 			};
+			if (arbiter.hover) {
+				toAdd.hov = `onmouseover="EntryRenderer.hover.show(event, this, '${arbiter.baseUrl}', '${src}', '${hash.replace(/'/g, "\\'")}')"`
+			}
 			Object.assign(toAdd, toMerge);
 			return toAdd;
 		}
