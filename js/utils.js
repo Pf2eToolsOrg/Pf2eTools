@@ -1930,3 +1930,22 @@ CryptUtil = {
 		return (a + b) & 0xFFFFFFFF;
 	}
 };
+
+// COLLECTIONS =========================================================================================================
+CollectionUtil = {
+	ObjectSet: class ObjectSet {
+		constructor () {
+			this.map = new Map();
+			this[Symbol.iterator] = this.values;
+		}
+		// Each inserted element has to implement _toIdString() method that returns a string ID.
+		// Two objects are considered equal if their string IDs are equal.
+		add (item) {
+			this.map.set(item._toIdString(), item);
+		};
+
+		values () {
+			return this.map.values();
+		};
+	}
+};
