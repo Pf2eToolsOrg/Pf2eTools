@@ -585,6 +585,7 @@ function EntryRenderer () {
 		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
 	};
 
+	// TODO convert params to options
 	/**
 	 * Helper function to render an entity using this renderer
 	 * @param entry
@@ -594,7 +595,7 @@ function EntryRenderer () {
 	this.renderEntry = function (entry, depth) {
 		depth = depth === undefined || depth === null ? 0 : depth;
 		const tempStack = [];
-		renderer.recursiveEntryRender(entry, tempStack, depth);
+		this.recursiveEntryRender(entry, tempStack, depth);
 		return tempStack.join("");
 	};
 }
@@ -964,6 +965,34 @@ EntryRenderer.background = {
 			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [bg.skillProficiencies]}, renderStack, 2);
 		}
 		renderer.recursiveEntryRender({entries: bg.entries.filter(it => it.data && it.data.isFeature)}, renderStack, 1);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
+	}
+};
+
+EntryRenderer.invocation = {
+	getPrerequisiteText: (invo) => {
+		const prereqs = [
+			(!invo.prerequisites.patron || invo.prerequisites.patron === STR_ANY) ? null : `${invo.prerequisites.patron} patron`,
+			(!invo.prerequisites.pact || invo.prerequisites.pact === STR_ANY) ? null : Parser.invoPactToFull(invo.prerequisites.pact),
+			(!invo.prerequisites.level || invo.prerequisites.level === STR_ANY) ? null : `${Parser.levelToFull(invo.prerequisites.level)} level`,
+			(!invo.prerequisites.spell || invo.prerequisites.spell === STR_NONE) ? null : Parser.invoSpellToFull(invo.prerequisites.spell)
+		].filter(f => f);
+		return prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
+	},
+
+	getCompactRenderedString: (invo) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const prereqs = EntryRenderer.invocation.getPrerequisiteText(invo);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(invo, true)}
+			<tr class="text"><td colspan="6">
+			${prereqs ? `<p><i>${prereqs}</i></p>` : ""}
+		`);
+		renderer.recursiveEntryRender({entries: invo.entries}, renderStack, 1);
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
@@ -1445,6 +1474,22 @@ EntryRenderer.psionic = {
 			renderer.recursiveEntryRender(fauxEntry, renderStack, 4);
 			return renderStack.join("");
 		}
+	},
+
+	getCompactRenderedString: (psionic) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+
+		const typeOrderStr = psionic.type === "T" ? Parser.psiTypeToFull(psionic.type) : `${psionic.order} ${Parser.psiTypeToFull(psionic.type)}`;
+		const bodyStr = psionic.type === "T" ? EntryRenderer.psionic.getTalentText(psionic, renderer) : EntryRenderer.psionic.getDisciplineText(psionic, renderer);
+
+
+		return `
+			${EntryRenderer.utils.getNameTr(psionic, true)}
+			<tr class="text"><td colspan="6">
+			<p><i>${typeOrderStr}</i></p>
+			${bodyStr}
+			</td></tr>
+		`;
 	}
 };
 
@@ -1668,6 +1713,12 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_FEATS:
 				renderFunction = EntryRenderer.feat.getCompactRenderedString;
 				break;
+			case UrlUtil.PG_INVOCATIONS:
+				renderFunction = EntryRenderer.invocation.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_PSIONICS:
+				renderFunction = EntryRenderer.psionic.getCompactRenderedString;
+				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
 		}
@@ -1769,6 +1820,16 @@ EntryRenderer.hover = {
 
 			case UrlUtil.PG_FEATS: {
 				loadSimple(page, "feats.json", "feat");
+				break;
+			}
+
+			case UrlUtil.PG_INVOCATIONS: {
+				loadSimple(page, "invocations.json", "invocation");
+				break;
+			}
+
+			case UrlUtil.PG_PSIONICS: {
+				loadSimple(page, "psionics.json", "psionic");
 				break;
 			}
 		}

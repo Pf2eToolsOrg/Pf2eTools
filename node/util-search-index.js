@@ -141,7 +141,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			category: 8,
 			file: "invocations.json",
 			listProp: "invocation",
-			baseUrl: "invocations.html"
+			baseUrl: "invocations.html",
+			hover: true
 		},
 		{
 			category: 4,
@@ -159,7 +160,8 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			deepIndex: (primary, it) => {
 				if (!it.modes) return [];
 				return it.modes.map(m => ({s: `${primary}; ${m.name}`}))
-			}
+			},
+			hover: true
 		},
 		{
 			category: 10,
