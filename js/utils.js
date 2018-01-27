@@ -121,6 +121,39 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
+String.prototype.toTitleCase = String.prototype.toTitleCase ||
+	function () {
+		let str;
+		str = this.replace(/([^\W_]+[^\s-]*) */g, function (txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+
+		if (!StrUtil._TITLE_LOWER_WORDS_RE) {
+			StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, 'g'));
+		}
+
+		for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
+			str = str.replace(
+				StrUtil._TITLE_LOWER_WORDS_RE[i],
+				(txt) => {
+					return txt.toLowerCase();
+				});
+		}
+
+		if (!StrUtil._TITLE_UPPER_WORDS_RE) {
+			StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, 'g'));
+		}
+
+		for (let i = 0; i < StrUtil.TITLE_UPPER_WORDS.length; i++) {
+			str = str.replace(
+				StrUtil._TITLE_UPPER_WORDS_RE[i],
+				StrUtil.TITLE_UPPER_WORDS[i].toUpperCase()
+			);
+		}
+
+		return str;
+	};
+
 StrUtil = {
 	joinPhraseArray: function (array, joiner, lastJoiner) {
 		if (array.length === 0) return "";
@@ -139,7 +172,11 @@ StrUtil = {
 
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
-	}
+	},
+	// Certain minor words should be left lowercase unless they are the first or last words in the string
+	TITLE_LOWER_WORDS: ["A", "An", "The", "And", "But", "Or", "For", "Nor", "As", "At", "By", "For", "From", "In", "Into", "Near", "Of", "On", "Onto", "To", "With"],
+	// Certain words such as initialisms or acronyms should be left uppercase
+	TITLE_UPPER_WORDS: ["Id", "Tv"]
 };
 
 // TEXT COMBINING ======================================================================================================
@@ -1314,6 +1351,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"TAH": "Tack and Harness",
 	"TG": "Trade Good",
 	"VEH": "Vehicle",
+	"SHP": "Vehicle",
 	"WD": "Wand"
 };
 
@@ -1416,47 +1454,79 @@ function noModifierKeys (e) {
 	return !e.ctrlKey && !e.altKey && !e.metaKey;
 }
 
-// SEARCH AND FILTER ===================================================================================================
-function search (options) {
-	const list = new List("listcontainer", options);
-	list.sort("name");
-	$("#reset").click(function () {
-		$("#filtertools").find("select").val("All");
-		$("#search").val("");
-		list.search();
-		list.sort("name");
-		list.filter();
-	});
-	const listWrapper = $("#listcontainer");
-	if (listWrapper.data("lists")) {
-		listWrapper.data("lists").push(list);
-	} else {
-		listWrapper.data("lists", [list]);
-	}
-	$(window).on("keypress", (e) => {
-		// K up; J down
-		if (noModifierKeys(e)) {
-			if (e.key === "k" || e.key === "j") {
-				const $el = getSelectedListElement();
+// LIST AND SEARCH =====================================================================================================
+ListUtil = {
+	_first: true,
 
-				if ($el) {
-					if (e.key === "k") {
-						const prevLink = $el.parent().prev().find("a").attr("href");
-						if (prevLink !== undefined) {
-							window.location.hash = prevLink;
-						}
-					} else if (e.key === "j") {
-						const nextLink = $el.parent().next().find("a").attr("href");
-						if (nextLink !== undefined) {
-							window.location.hash = nextLink;
+	search: (options) => {
+		const list = new List("listcontainer", options);
+		list.sort("name");
+		$("#reset").click(function () {
+			$("#filtertools").find("select").val("All");
+			$("#search").val("");
+			list.search();
+			list.sort("name");
+			list.filter();
+		});
+		const listWrapper = $("#listcontainer");
+		if (listWrapper.data("lists")) {
+			listWrapper.data("lists").push(list);
+		} else {
+			listWrapper.data("lists", [list]);
+		}
+		if (ListUtil._first) {
+			ListUtil._first = false;
+			const $headDesc = $(`header div p`);
+			$headDesc.html(`${$headDesc.html()} Press J/K to navigate rows.`);
+
+			$(window).on("keypress", (e) => {
+				// K up; J down
+				if (noModifierKeys(e)) {
+					if (e.key === "k" || e.key === "j") {
+						const it = getSelectedListElementWithIndex();
+
+						if (it) {
+							if (e.key === "k") {
+								const prevLink = it.$el.parent().prev().find("a").attr("href");
+								if (prevLink !== undefined) {
+									window.location.hash = prevLink;
+								} else {
+									const lists = listWrapper.data("lists");
+									let x = it.x;
+									while (--x >= 0) {
+										const l = lists[x];
+										if (l.visibleItems.length) {
+											const goTo = $(l.visibleItems[l.visibleItems.length - 1].elm).find("a").attr("href");
+											if (goTo) window.location.hash = goTo;
+											break;
+										}
+									}
+								}
+							} else if (e.key === "j") {
+								const nextLink = it.$el.parent().next().find("a").attr("href");
+								if (nextLink !== undefined) {
+									window.location.hash = nextLink;
+								} else {
+									const lists = listWrapper.data("lists");
+									let x = it.x;
+									while (++x < lists.length) {
+										const l = lists[x];
+										if (l.visibleItems.length) {
+											const goTo = $(l.visibleItems[0].elm).find("a").attr("href");
+											if (goTo) window.location.hash = goTo;
+											break;
+										}
+									}
+								}
+							}
 						}
 					}
 				}
-			}
+			});
 		}
-	});
-	return list
-}
+		return list
+	}
+};
 
 /**
  * Generic source filter
@@ -1927,5 +1997,24 @@ CryptUtil = {
 
 	_add32: (a, b) => {
 		return (a + b) & 0xFFFFFFFF;
+	}
+};
+
+// COLLECTIONS =========================================================================================================
+CollectionUtil = {
+	ObjectSet: class ObjectSet {
+		constructor () {
+			this.map = new Map();
+			this[Symbol.iterator] = this.values;
+		}
+		// Each inserted element has to implement _toIdString() method that returns a string ID.
+		// Two objects are considered equal if their string IDs are equal.
+		add (item) {
+			this.map.set(item._toIdString(), item);
+		}
+
+		values () {
+			return this.map.values();
+		}
 	}
 };

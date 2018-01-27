@@ -26,7 +26,7 @@ function onJsonLoad (data) {
 	});
 	$(`#objectsList`).append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ["name", "size", "source"],
 		listClass: "objects",
 		sortFunction: listSort

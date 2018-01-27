@@ -316,7 +316,7 @@ function pageInit (loadedSources) {
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
 	sourceFilter.items.sort(ascSort);
 
-	list = search({
+	list = ListUtil.search({
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
 		listClass: "spells"
 	});

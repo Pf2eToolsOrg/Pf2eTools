@@ -61,18 +61,26 @@ function getSelectedListElement () {
 	return _getListElem(link);
 }
 
+function getSelectedListElementWithIndex () {
+	const [link, ...sub] = _getHashParts();
+	return _getListElem(link, true);
+}
+
 function _getHashParts () {
 	return window.location.hash.slice(1).split(HASH_PART_SEP);
 }
 
-function _getListElem (link) {
+function _getListElem (link, getIndex) {
 	const toFind = `a[href="#${link.toLowerCase()}"]`;
 	const listWrapper = $("#listcontainer");
 	if (listWrapper.data("lists")) {
-		for (const list of listWrapper.data("lists")) {
-			for (const item of list.items) {
+		for (let x = 0; x < listWrapper.data("lists").length; ++x) {
+			const list = listWrapper.data("lists")[x];
+			for (let y = 0; y < list.visibleItems.length; ++y) {
+				const item = list.visibleItems[y];
 				const $elm = $(item.elm).find(toFind);
 				if ($elm[0]) {
+					if (getIndex) return {$el: $elm, x: x, y: y};
 					return $elm
 				}
 			}
