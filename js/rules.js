@@ -27,7 +27,7 @@ window.onload = function load () {
 	const lists = [];
 	listNames.forEach(ln => {
 		lists.push(
-			search({
+			ListUtil.search({
 				valueNames: ['name', 'id'],
 				listClass: ln
 			})
