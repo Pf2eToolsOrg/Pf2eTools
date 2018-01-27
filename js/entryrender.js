@@ -1080,7 +1080,7 @@ EntryRenderer.deity = {
 				<div class="summary-flexer">
 					<p><b>Pantheon:</b> ${deity.pantheon}</p>
 					${deity.category ? `<p><b>Category:</b> ${deity.category}</p>` : ""}
-					<p><b>Alignment:</b> ${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</p>
+					<p><b>Alignment:</b> ${deity.alignment.map(a => Parser.dtAlignmentToFull(a)).join(" ")}</p>
 					<p><b>Domains:</b> ${deity.domains.join(", ")}</p>
 					${deity.altNames ? `<p><b>Alternate Names:</b> ${deity.altNames.join(", ")}</p>` : ""}
 					<p><b>Symbol:</b> ${deity.symbol}</p>

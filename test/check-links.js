@@ -58,7 +58,7 @@ ${JSON.stringify(similarUrls, null, 2)}
 
 const ALL_URLS = new Set();
 utS.UtilSearchIndex.getIndex(false, true).forEach(it => {
-	ALL_URLS.add(it.url.toLowerCase().trim());
+	ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`);
 });
 
 console.log("##### Checking links in JSON #####");

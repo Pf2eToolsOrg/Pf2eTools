@@ -7,23 +7,6 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-function parseAlignmentToFull (alignment) {
-	alignment = alignment.toUpperCase();
-	switch (alignment) {
-		case "L":
-			return "Lawful";
-		case "N":
-			return "Neutral";
-		case "C":
-			return "Chaotic";
-		case "G":
-			return "Good";
-		case "E":
-			return "Evil";
-	}
-	return alignment;
-}
-
 function alignSort (a, b) {
 	const first = ["L", "C"];
 	const last = ["G", "E"];
@@ -42,7 +25,7 @@ function onJsonLoad (data) {
 	const alignmentFilter = new Filter({
 		header: "Alignment",
 		items: ["C", "E", "G", "L", "N"],
-		displayFn: parseAlignmentToFull
+		displayFn: Parser.dtAlignmentToFull
 	});
 	const pantheonFilter = new Filter({
 		header: "Pantheon",
@@ -169,7 +152,7 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getNameTr(deity, false, "", `, ${deity.title.toTitleCase()}`)}
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
 		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
-		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
+		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => Parser.dtAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
 		${deity.altNames ? `<tr><td colspan="6"><span class="bold">Alternate Names: </span>${deity.altNames.join(", ")}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>

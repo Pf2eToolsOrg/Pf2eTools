@@ -45,6 +45,18 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	if (doLogging === undefined || doLogging === null) doLogging = true;
 	if (test_doExtraIndex === undefined || test_doExtraIndex === null) test_doExtraIndex = false;
 
+	/**
+	 * Produces index of the form:
+	 * {
+	 *   n: "Display Name",
+	 *   s: "PHB", // source
+	 *   u: "spell name_phb,
+	 *   p: 110, // page
+	 *   h: 1 // if hover enabled, otherwise undefined
+	 *   c: 10, // category ID
+	 *   id: 123 // index ID
+	 * }
+	 */
 	const index = [];
 
 	/**
@@ -118,9 +130,9 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			baseUrl: "classes.html",
 			deepIndex: (primary, it) => {
 				return it.subclasses.map(sc => ({
-					s: `${primary}; ${sc.name}`,
-					src: sc.source,
-					url: `classes.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
+					n: `${primary}; ${sc.name}`,
+					s: sc.source,
+					u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
 				}))
 			}
 		},
@@ -160,7 +172,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			baseUrl: "psionics.html",
 			deepIndex: (primary, it) => {
 				if (!it.modes) return [];
-				return it.modes.map(m => ({s: `${primary}; ${m.name}`}))
+				return it.modes.map(m => ({n: `${primary}; ${m.name}`}))
 			},
 			hover: true
 		},
@@ -188,7 +200,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 				it.entries.forEach(e => {
 					er.EntryRenderer.getNames(names, e);
 				});
-				return names.map(n => ({s: `${primary}; ${n}`}));
+				return names.map(n => ({n: `${primary}; ${n}`}));
 			}
 		},
 		{
@@ -211,7 +223,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			test_extraIndex: () => {
 				const specVars = UtilSearchIndex._test_getBasicVariantItems();
 
-				return specVars.map(sv => ({url: `items.html#${UrlUtil.encodeForHash([sv.name, sv.source])}`}));
+				return specVars.map(sv => ({c: 4, u: UrlUtil.encodeForHash([sv.name, sv.source])}));
 			},
 			hover: true
 		},
@@ -261,13 +273,13 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 				: UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it);
 			const toAdd = {
 				c: arbiter.category,
-				src: src,
+				s: src,
 				id: id++,
-				url: `${arbiter.baseUrl}#${hash}`,
-				pg: getProperty(it, arbiter.page || "page")
+				u: hash,
+				p: getProperty(it, arbiter.page || "page")
 			};
 			if (arbiter.hover) {
-				toAdd.hov = `onmouseover="EntryRenderer.hover.show(event, this, '${arbiter.baseUrl}', '${src}', '${hash.replace(/'/g, "\\'")}')"`
+				toAdd.h = 1;
 			}
 			Object.assign(toAdd, toMerge);
 			return toAdd;
@@ -276,7 +288,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 		j[arbiter.listProp].forEach(it => {
 			const primaryS = getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
-				const toAdd = getToAdd(it, {s: primaryS});
+				const toAdd = getToAdd(it, {n: primaryS});
 				if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
 
 				if (arbiter.deepIndex) {
