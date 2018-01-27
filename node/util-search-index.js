@@ -223,7 +223,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			test_extraIndex: () => {
 				const specVars = UtilSearchIndex._test_getBasicVariantItems();
 
-				return specVars.map(sv => ({u: UrlUtil.encodeForHash([sv.name, sv.source])}));
+				return specVars.map(sv => ({c: 4, u: UrlUtil.encodeForHash([sv.name, sv.source])}));
 			},
 			hover: true
 		},
