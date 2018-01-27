@@ -83,8 +83,8 @@ function init () {
 			const noCatTokens = tokensIsCat.filter(tc => !tc.isCat).map(tc => tc.t);
 			results = searchIndex.search(noCatTokens.join(" "), {
 				fields: {
-					s: {boost: 5, expand: true},
-					src: {expand: true}
+					n: {boost: 5, expand: true},
+					s: {expand: true}
 				},
 				bool: "AND",
 				expand: true
@@ -92,8 +92,8 @@ function init () {
 		} else {
 			results = searchIndex.search(srch, {
 				fields: {
-					s: {boost: 5, expand: true},
-					src: {expand: true}
+					n: {boost: 5, expand: true},
+					s: {expand: true}
 				},
 				bool: "AND",
 				expand: true
@@ -101,10 +101,10 @@ function init () {
 		}
 
 		if (!doShow3pp()) {
-			results = results.filter(r => !_isNonStandardSource3pp(r.doc.src));
+			results = results.filter(r => !_isNonStandardSource3pp(r.doc.s));
 		}
 		if (!doShowUaEtc()) {
-			results = results.filter(r => !_isNonStandardSourceWiz(r.doc.src));
+			results = results.filter(r => !_isNonStandardSourceWiz(r.doc.s));
 		}
 
 		if (results.length) {
@@ -115,6 +115,11 @@ function init () {
 		}
 
 		function renderLinks () {
+			function getHoverStr (url, src) {
+				const spl = url.split("#");
+				return `onmouseover="EntryRenderer.hover.show(event, this, '${spl[0]}', '${src}', '${spl[1].replace(/'/g, "\\'")}')"`;
+			}
+
 			$searchOut.empty();
 			const show3pp = doShow3pp();
 			const $btn3pp = $(`<button class="btn btn-default btn-xs btn-file">${show3pp ? "Exclude" : "Include"} 3pp</button>`)
@@ -135,8 +140,8 @@ function init () {
 				const r = results[i].doc;
 				$searchOut.append(`
 				<p>
-					<a href="${r.url}" ${r.hov || ""}>${r.c}: ${r.s}</a>
-					<i title="${Parser.sourceJsonToFull(r.src)}">${Parser.sourceJsonToAbv(r.src)}${r.pg ? ` p${r.pg}` : ""}</i>
+					<a href="${r.u}" ${r.h ? getHoverStr(r.u, r.s) : ""}>${r.c}: ${r.n}</a>
+					<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>
 				</p>`);
 			}
 			$searchOutWrapper.css("display", "flex");
@@ -199,9 +204,9 @@ function init () {
 const CATEGORY_COUNTS = {};
 function onSearchLoad (data) {
 	searchIndex = elasticlunr(function () {
-		this.addField("s");
+		this.addField("n");
 		this.addField("c");
-		this.addField("src");
+		this.addField("s");
 		this.setRef("id")
 	});
 	data.forEach(d => {

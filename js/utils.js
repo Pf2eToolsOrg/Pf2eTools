@@ -841,6 +841,23 @@ Parser.invoPatronToShort = function (patron) {
 	return /^The (.*?)$/.exec(patron)[1];
 };
 
+Parser.dtAlignmentToFull = function (alignment) {
+	alignment = alignment.toUpperCase();
+	switch (alignment) {
+		case "L":
+			return "Lawful";
+		case "N":
+			return "Neutral";
+		case "C":
+			return "Chaotic";
+		case "G":
+			return "Good";
+		case "E":
+			return "Evil";
+	}
+	return alignment;
+};
+
 Parser.CAT_ID_CREATURE = 1;
 Parser.CAT_ID_SPELL = 2;
 Parser.CAT_ID_BACKGROUND = 3;
