@@ -50,7 +50,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	 * {
 	 *   n: "Display Name",
 	 *   s: "PHB", // source
-	 *   u: "spells.html#spell name_phb,
+	 *   u: "spell name_phb,
 	 *   p: 110, // page
 	 *   h: 1 // if hover enabled, otherwise undefined
 	 *   c: 10, // category ID
@@ -132,7 +132,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 				return it.subclasses.map(sc => ({
 					n: `${primary}; ${sc.name}`,
 					s: sc.source,
-					u: `classes.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
+					u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
 				}))
 			}
 		},
@@ -223,7 +223,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			test_extraIndex: () => {
 				const specVars = UtilSearchIndex._test_getBasicVariantItems();
 
-				return specVars.map(sv => ({u: `items.html#${UrlUtil.encodeForHash([sv.name, sv.source])}`}));
+				return specVars.map(sv => ({u: UrlUtil.encodeForHash([sv.name, sv.source])}));
 			},
 			hover: true
 		},
@@ -275,7 +275,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 				c: arbiter.category,
 				s: src,
 				id: id++,
-				u: `${arbiter.baseUrl}#${hash}`,
+				u: hash,
 				p: getProperty(it, arbiter.page || "page")
 			};
 			if (arbiter.hover) {
