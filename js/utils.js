@@ -1510,7 +1510,6 @@ ListUtil = {
 									const lists = listWrapper.data("lists");
 									let x = it.x;
 									while (++x < lists.length) {
-										debugger
 										const l = lists[x];
 										if (l.visibleItems.length) {
 											const goTo = $(l.visibleItems[0].elm).find("a").attr("href");
