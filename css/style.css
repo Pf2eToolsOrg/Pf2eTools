@@ -514,12 +514,12 @@ table.stats span {
 	vertical-align: top !important;
 }
 
-table.stats tr.text ul {
+table.stats ul {
 	margin: 0 0 10px;
 	padding: 0 20px;
 }
 
-table.stats tr.text li {
+table.stats li {
 	margin: 0 0 5px;
 }
 
@@ -1802,13 +1802,16 @@ table.stats p.list-name {
 	font-weight: bold;
 }
 
-table.stats tr.text ul.list-hang,
+table.stats ul.list-hang-notitle,
 table.stats ul.list-hang {
 	list-style: none;
+}
+
+table.stats ul.list-hang-notitle {
 	padding: 0;
 }
 
-table.stats tr.text ul.list-hang p,
+table.stats ul.list-hang-notitle,
 table.stats ul.list-hang p {
 	text-indent: -1.1em;
 	margin-left: 1.1em;
@@ -1827,4 +1830,140 @@ table.stats div.img-wrapper {
 
 table.stats tr.text img {
 	max-width: 100%;
+	max-height: 85vh;
 }
+
+/* Book/Adventure Pages */
+#listcontainer.book-contents {
+	position: relative;
+	flex: 1;
+}
+
+#listcontainer.book-contents > ul > li {
+	max-height: initial;
+}
+
+.book-view.view-col {
+	flex: 5;
+}
+
+.book-contents ul.list li:hover {
+	background: inherit;
+}
+
+.book-contents ul.list li:active {
+	color: inherit;
+}
+
+.book-contents ul {
+	margin-left: 0;
+	padding-left: 20px;
+}
+
+.book-contents ul.list li {
+	max-height: none;
+}
+
+.book-contents ul.contents > li:last-child,
+.book-contents ul.contents > li > ul > ul > li:last-child {
+	border-bottom: none;
+}
+
+.book-contents ul.contents {
+	height: initial;
+	position: sticky;
+	top: 0;
+	overflow-y: auto;
+	max-height: 100vh;
+	padding: 0 0 22px;
+}
+
+.book-contents li.contents-item > ul > li {
+	font-weight: bold;
+}
+
+.book-view .initial-message {
+	color: #922610;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
+	line-height: 2.3em;
+	text-align: center;
+	font-size: 1.8em;
+}
+
+.book-contents ul.list li:hover span {
+	display: initial;
+}
+
+.book-contents span.sect {
+	width: 100%;
+}
+
+.f-all-wrapper {
+	position: fixed;
+	z-index: 100;
+	bottom: 10px;
+	padding: 0 20px;
+	left: calc(((100vw - (1170px * (4 / 6))) / 2) + 1.5em);
+	right: calc((50vw - (1170px / 2)) + 1.5em);
+}
+
+@media (max-width: 1200px) {
+	.f-all-wrapper {
+		left: calc(((100vw - (970px * (4 / 6))) / 2) + 1.5em);
+		right: calc((50vw - (970px / 2)) + 1.5em);
+	}
+}
+
+@media (max-width: 991px) {
+	.f-all-wrapper {
+		left: calc(((100vw - 750px) / 2) + 1.5em);
+		right: calc(((100vw - 750px) / 2) + 1.5em);
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.f-all-wrapper {
+		left: calc(((100vw - 750px) / 2) + 1.5em);
+		right: calc(((100vw - 750px) / 2) + 1.5em);
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.f-all-wrapper {
+		left: calc(3.5em);
+		right: calc(3.5em);
+	}
+}
+
+.f-all-wrapper > input {
+	width: 100%;
+}
+
+.f-all-out {
+	overflow-y: auto;
+	max-height: 400px;
+	width: 100%;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	padding: 0.2em 0.7em;
+	border-radius: 0.2em;
+	display: none;
+}
+
+.f-result {
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	padding: 5px 0;
+}
+
+.f-result > span {
+	display: inline-block;
+}
+
+.highlight {
+	background-color: yellow;
+}
+/* *** */

@@ -1,60 +1,69 @@
 "use strict";
 
-let contentDefault;
-let rulesList;
+const JSON_URL = "data/rules.json";
+
+let renderArea;
+let books;
+let bookData;
+
 window.onload = function load () {
-	contentDefault = $("#rulescontent").html();
+	renderArea = $(`#pagecontent`);
 
-	rulesList = rulesdata.compendium.rules;
+	renderArea.append(EntryRenderer.utils.getBorderTr());
+	renderArea.append(`<tr><td colspan="6" class="initial-message">Loading...</td></tr>`);
+	renderArea.append(EntryRenderer.utils.getBorderTr());
 
-	for (let i = 0; i < rulesList.length; i++) {
-		const rule = rulesList[i];
-		$("ul.rules." + rule.parentlist).append(
-			`<li>
-				<a id='${i}' href='#${encodeURI(rule.name).toLowerCase()}' title='${rule.name}'>
-					<span class='name col-xs-12'>${rule.name}</span> 
-					<span class='id' style='display: none;'>${rule.id.toString()}</span>
-				</a>
-			</li>`
-		);
-	}
-
-	const listNames = [];
-	for (let i = 0; i < rulesList.length; i++) {
-		const toAdd = rulesList[i].parentlist;
-		if ($.inArray(toAdd, listNames) === -1) listNames.push(toAdd);
-	}
-	const lists = [];
-	listNames.forEach(ln => {
-		lists.push(
-			ListUtil.search({
-				valueNames: ['name', 'id'],
-				listClass: ln
-			})
-		)
-	});
-
-	$("ul.list.rules").each(function () {
-		$(this).children("li").sort(function (a, b) {
-			const sorta = $(a).children("span.id").text();
-			const sortb = $(b).children("span.id").text();
-			return (sorta > sortb) ? 1 : -1;
-		}).appendTo(this);
-	});
-
-	initHistory();
-
-	$("#listcontainer").find("h4").click(function () {
-		$(this).next().slideToggle();
-	}).css("cursor", "pointer");
+	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-function loadhash (id) {
-	const contentArea = $("#rulescontent");
-	contentArea.html(contentDefault);
+function onJsonLoad (data) {
+	books = data.book;
+	bookData = data.data;
 
-	const currules = rulesList[id];
+	const allContents = $("ul.contents");
 
-	contentArea.html(currules.htmlcontent);
-	contentArea.prepend(`<h1>${currules.name}</h1>`)
+	let tempString = "";
+	for (let i = 0; i < books.length; i++) {
+		const book = books[i];
+
+		tempString +=
+			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(book.id)}">
+				<a id="${i}" href='#${book.id},0' title='${book.name}'>
+					<span class='name'>${book.name}</span>
+				</a>
+				${BookUtil.makeContentsBlock({book: book, addOnclick: true})}
+			</li>`;
+	}
+	allContents.append(tempString);
+
+	BookUtil.addHeaderHandles();
+
+	const list = new List("listcontainer", {
+		valueNames: ['name'],
+		listClass: "contents"
+	});
+
+	window.onhashchange = rulesHashChange;
+	if (window.location.hash.length) {
+		rulesHashChange();
+	} else {
+		$(`.contents-item`).show();
+	}
+
+	// addSearch( ... ) // TODO migrate this across
+}
+
+const renderer = new EntryRenderer();
+function rulesHashChange () {
+	const [bookId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
+	const fromIndex = books.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
+	const fromDataK = Object.keys(bookData).find(k => UrlUtil.encodeForHash(k) === UrlUtil.encodeForHash(bookId));
+	if (fromIndex && fromDataK) {
+		const allContents = $(`.contents-item`);
+		BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(bookId)}"]`);
+
+		BookUtil.showBookContent(bookData[fromDataK], fromIndex, bookId, hashParts, renderer, renderArea);
+	} else {
+		throw new Error("No rules book with ID: " + bookId);
+	}
 }

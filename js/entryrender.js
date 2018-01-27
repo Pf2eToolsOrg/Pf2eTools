@@ -1002,7 +1002,7 @@ EntryRenderer.reward = {
 		const renderStack = [];
 
 		if (reward.type === "Demonic Boon") {
-			const benefits = {type: "list", style: "list-hang", items: []};
+			const benefits = {type: "list", style: "list-hang-notitle", items: []};
 			benefits.items.push({
 				type: "item",
 				name: "Ability Score Adjustment:",
