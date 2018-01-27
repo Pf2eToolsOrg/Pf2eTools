@@ -92,7 +92,7 @@ function onJsonLoad (data) {
 	// sort filters
 	sourceFilter.items.sort(ascSort);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
 		listClass: CLS_PSIONICS,
 		sortFunction: listSort

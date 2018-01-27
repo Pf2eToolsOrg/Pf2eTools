@@ -46,7 +46,7 @@ function onJsonLoad (data) {
 	// sort filters
 	sourceFilter.items.sort(ascSort);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ["name", "source"],
 		listClass: "rewards"
 	});

@@ -115,7 +115,7 @@ function onJsonLoad (data) {
 		}
 	}
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ['name', 'ability', 'size', 'source'],
 		listClass: "races"
 	});

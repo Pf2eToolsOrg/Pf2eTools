@@ -56,6 +56,8 @@ function deselectFilter (deselectProperty, deselectValue) {
 	}
 }
 
+let mundanelist
+let magiclist
 function populateTablesAndFilters () {
 	tabledefault = $("#pagecontent").html();
 
@@ -123,9 +125,9 @@ function populateTablesAndFilters () {
 		listClass: "mundane"
 	};
 
-	const mundanelist = search(options);
+	mundanelist = ListUtil.search(options);
 	options.listClass = "magic";
-	const magiclist = search(options);
+	magiclist = ListUtil.search(options);
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);

@@ -121,7 +121,7 @@ function onJsonLoad (data) {
 	// sort filters
 	categoryFilter.items.sort();
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ["name", "pantheon", "alignment", "domains", "symbol", "source"],
 		listClass: "deities",
 		sortFunction: listSort

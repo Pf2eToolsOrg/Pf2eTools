@@ -94,7 +94,7 @@ function pageInit (loadedSources) {
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
 	sourceFilter.items.sort(ascSort);
 
-	list = search({
+	list = ListUtil.search({
 		valueNames: ["name", "source", "type", "cr"],
 		listClass: "monsters"
 	});

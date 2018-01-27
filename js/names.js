@@ -46,7 +46,7 @@ function onJsonLoad (data) {
 	}
 	namesList.append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ["name"],
 		listClass: "names"
 	});

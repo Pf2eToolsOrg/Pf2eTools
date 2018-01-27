@@ -54,7 +54,7 @@ function onJsonLoad (data) {
 	sourceFilter.items.sort(ascSort);
 
 	// init list
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ['name', 'source', 'ability', 'prerequisite'],
 		listClass: "feats"
 	});
