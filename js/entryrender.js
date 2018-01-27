@@ -58,7 +58,8 @@ function EntryRenderer () {
 	 * @param forcePrefixSuffix force the prefix and suffix to be added (useful for the first call from external code)
 	 */
 	this.recursiveEntryRender = function (entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
-		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
+		depth = depth === undefined || depth === null ? 0 : depth;
+		if (entry.type === "section") depth = -1;
 		prefix = prefix === undefined || prefix === null ? null : prefix;
 		suffix = suffix === undefined || suffix === null ? null : suffix;
 		forcePrefixSuffix = forcePrefixSuffix === undefined || forcePrefixSuffix === null ? false : forcePrefixSuffix;
