@@ -41,7 +41,7 @@ function onJsonLoad (data) {
 	}
 	adventuresList.append(tempString);
 
-	BookUtil.addHeaderHandles();
+	BookUtil.addHeaderHandles(true);
 
 	const list = new List("listcontainer", {
 		valueNames: ['name'],

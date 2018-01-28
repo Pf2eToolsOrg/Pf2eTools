@@ -77,7 +77,7 @@ const BookUtil = {
 		return out;
 	},
 
-	addHeaderHandles: () => {
+	addHeaderHandles: (defHidden) => {
 		// Add show/hide handles to section names, and update styles
 		const allHeaders = $(`ul.bk-headers`);
 		// add styles to all
@@ -85,7 +85,7 @@ const BookUtil = {
 		allHeaders.filter((i, ele) => $(ele).children().length).each((i, ele) => {
 			const $ele = $(ele);
 			// add expand/collapse to only those with children
-			$ele.prev(`li`).find(`a`).append(`<span class="showhide" onclick="BookUtil.sectToggle(event, this)" data-hidden="true">[+]</span>`);
+			$ele.prev(`li`).find(`a`).append(`<span class="showhide" onclick="BookUtil.sectToggle(event, this)" data-hidden="true">${defHidden ? `[+]` : `[\u2013]`}</span>`);
 		});
 	},
 
