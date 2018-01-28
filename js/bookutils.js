@@ -89,7 +89,7 @@ const BookUtil = {
 		});
 	},
 
-	sectToggle:  (evt, ele) => {
+	sectToggle: (evt, ele) => {
 		evt.stopPropagation();
 		evt.preventDefault();
 		const $ele = $(ele);

@@ -1475,25 +1475,27 @@ function noModifierKeys (e) {
 	return !e.ctrlKey && !e.altKey && !e.metaKey;
 }
 
-window.addEventListener("load", () => {
-	// Add a selector to match exact text (case insensitive) to jQuery's arsenal
-	$.expr[':'].textEquals = (el, i, m) => {
-		const searchText = m[3];
-		const match = $(el).text().toLowerCase().trim().match(`^${RegExp.escape(searchText.toLowerCase())}$`);
-		return match && match.length > 0;
-	};
+if (typeof window !== "undefined") {
+	window.addEventListener("load", () => {
+		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
+		$.expr[':'].textEquals = (el, i, m) => {
+			const searchText = m[3];
+			const match = $(el).text().toLowerCase().trim().match(`^${RegExp.escape(searchText.toLowerCase())}$`);
+			return match && match.length > 0;
+		};
 
-	// Add a selector to match contained text (case insensitive)
-	$.expr[':'].containsInsensitive = (el, i, m) => {
-		const searchText = m[3];
-		const textNode = $(el).contents().filter((i, e) => {
-			return e.nodeType === 3;
-		})[0];
-		if (!textNode) return false;
-		const match = textNode.nodeValue.toLowerCase().trim().match(`${RegExp.escape(searchText.toLowerCase())}`);
-		return match && match.length > 0;
-	};
-});
+		// Add a selector to match contained text (case insensitive)
+		$.expr[':'].containsInsensitive = (el, i, m) => {
+			const searchText = m[3];
+			const textNode = $(el).contents().filter((i, e) => {
+				return e.nodeType === 3;
+			})[0];
+			if (!textNode) return false;
+			const match = textNode.nodeValue.toLowerCase().trim().match(`${RegExp.escape(searchText.toLowerCase())}`);
+			return match && match.length > 0;
+		};
+	});
+}
 
 // LIST AND SEARCH =====================================================================================================
 ListUtil = {

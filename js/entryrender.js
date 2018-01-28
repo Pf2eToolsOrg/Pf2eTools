@@ -266,9 +266,12 @@ function EntryRenderer () {
 
 			for (let i = 0; i < entry.rows.length; ++i) {
 				textStack.push("<tr>");
-				for (let j = 0; j < entry.rows[i].length; ++j) {
+				const r = entry.rows[i];
+				const roRender = r.type === "row" ? r.row : r;
+				for (let j = 0; j < roRender.length; ++j) {
 					textStack.push(`<td ${makeTableTdClassText(j)}>`);
-					self.recursiveEntryRender(entry.rows[i][j], textStack, depth + 1);
+					if (r.style === "row-indent-first" && j === 0) textStack.push(`<span class="tbl-tab-intent"/>`);
+					self.recursiveEntryRender(roRender[j], textStack, depth + 1);
 					textStack.push("</td>");
 				}
 				textStack.push("</tr>");

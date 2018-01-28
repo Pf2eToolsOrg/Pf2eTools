@@ -139,7 +139,30 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"$ref": "/Entry"
+									"oneOf": [
+										{
+											"$ref": "/Entry"
+										},
+										{
+											"properties": {
+												"type": {"const": "row"},
+												"style": {
+													"type": "string",
+													"enum": [
+														"row-indent-first"
+													]
+												},
+												"row": {
+													"type": "array",
+													"items": {
+														"$ref": "/Entry"
+													}
+												}
+											},
+											"required": ["row"],
+											"additionalProperties": false
+										}
+									]
 								}
 							}
 						},
