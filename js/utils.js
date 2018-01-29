@@ -1918,6 +1918,165 @@ BrewUtil = {
 			BrewUtil.homebrew = null;
 			window.location.hash = "";
 		}
+	},
+
+	manageBrew: () => {
+		const $body = $(`body`);
+		$body.css("overflow", "hidden");
+		const $overlay = $(`<div class="homebrew-overlay"/>`);
+		$overlay.on("click", () => {
+			$body.css("overflow", "");
+			$overlay.remove();
+		});
+		const $window = $(`
+		<div class="homebrew-window dropdown-menu" style="display: block;">
+			<h4>Manage Homebrew</h4>
+			<hr>
+		</div>`
+		);
+		$window.on("click", (evt) => {
+			evt.stopPropagation();
+		});
+		const $brewList = $(`<div></div>`);
+		$window.append($brewList);
+
+		refreshBrewList();
+
+		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
+			addBrew(evt);
+		});
+		$window.append(
+			$(`<div class="text-align-center"/>`)
+				.append($(`<label class="btn btn-default btn-sm btn-file">Load File</label>`).append($iptAdd))
+				.append(" ")
+				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Brew</button></a>`)
+		);
+
+		$overlay.append($window);
+		$body.append($overlay);
+
+		function refreshBrewList() {
+			function render(type, prop, deleteFn) {
+				BrewUtil.homebrew[prop].forEach(j => {
+					const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
+						deleteFn(j.uniqueId);
+					});
+					const $btnExport = $(`<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span></button>`).on("click", () => {
+						DataUtil.userDownload(j.name, JSON.stringify(j, null, "\t"));
+					});
+					$brewList.append($(`<p>`).append($btnDel).append(" ").append($btnExport).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}. ${j.url ? `<a href="${j.url}" target="_blank">Source.</a>` : ""}`));
+				});
+			}
+
+			$brewList.html("");
+			// TODO filter this/base it on page
+			if (BrewUtil.homebrew) {
+				render("Class", "class", deleteClassBrew);
+				render("Subclass", "subclass", deleteSubclassBrew);
+			}
+		}
+
+		function addBrew(event) {
+			const input = event.target;
+
+			let readIndex = 0;
+			const reader = new FileReader();
+			reader.onload = () => {
+				const text = reader.result;
+				const json = JSON.parse(text);
+
+				// prepare for storage
+				if (json.class) {
+					json.class.forEach(c => {
+						c.uniqueId = CryptUtil.md5(JSON.stringify(c));
+					});
+				} else json.class = [];
+				if (json.subclass) {
+					json.subclass.forEach(sc => {
+						sc.uniqueId = CryptUtil.md5(JSON.stringify(sc));
+					});
+				} else json.subclass = [];
+
+				// store
+				function checkAndAdd(prop) {
+					const areNew = [];
+					const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
+					json[prop].forEach(it => {
+						if (!existingIds.find(id => it.uniqueId === id)) {
+							BrewUtil.homebrew[prop].push(it);
+							areNew.push(it);
+						}
+					});
+					return areNew;
+				}
+
+				let classesToAdd = json.class;
+				let subclassesToAdd = json.subclass;
+				if (!BrewUtil.homebrew) {
+					BrewUtil.homebrew = json;
+				} else {
+					// only add if unique ID not already present
+					classesToAdd = checkAndAdd("class");
+					subclassesToAdd = checkAndAdd("subclass");
+				}
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+
+				addData({class: classesToAdd});
+				addSubclassData({subclass: subclassesToAdd});
+
+				refreshBrewList();
+				if (input.files[readIndex]) {
+					reader.readAsText(input.files[readIndex++]);
+				} else {
+					// reset the input
+					$(event.target).val("");
+				}
+			};
+			reader.readAsText(input.files[readIndex++]);
+		}
+
+		function deleteClassBrew(uniqueId) {
+			const index = BrewUtil.homebrew.class.findIndex(it => it.uniqueId === uniqueId);
+			if (index >= 0) {
+				BrewUtil.homebrew.class.splice(index, 1);
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+				refreshBrewList();
+				list.remove("uniqueid", uniqueId);
+				hashchange();
+			}
+		}
+
+		function deleteSubclassBrew(uniqueId) {
+			let subClass;
+			let index = 0;
+			for (; index < BrewUtil.homebrew.subclass.length; ++index) {
+				if (BrewUtil.homebrew.subclass[index].uniqueId === uniqueId) {
+					subClass = BrewUtil.homebrew.subclass[index];
+					break;
+				}
+			}
+			if (subClass) {
+				const forClass = subClass.class;
+				BrewUtil.homebrew.subclass.splice(index, 1);
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+				refreshBrewList();
+				const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
+
+				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
+				if (indexInClass) {
+					c.subclasses.splice(indexInClass, 1);
+					c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+				}
+				refreshBrewList();
+				window.location.hash = "";
+			}
+		}
+	},
+
+	makeBrewButton: (id) => {
+		$(`#${id}`).on("click", () => {
+			BrewUtil.manageBrew();
+		});
 	}
 };
 BrewUtil.storage = BrewUtil.tryGetStorage();
