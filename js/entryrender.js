@@ -206,7 +206,7 @@ function EntryRenderer () {
 					let href;
 					if (entry.href.type === "internal") {
 						const imgPart = `img/${entry.href.path}`;
-						href = this.baseUrl === "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
+						href = this.baseUrl !== "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
 					}
 					textStack.push(`
 						<div class="img-wrapper">
