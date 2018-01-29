@@ -66,6 +66,7 @@ ATB_DATA_SRC = "data-source";
 
 STR_CANTRIP = "Cantrip";
 STR_NONE = "None";
+STR_ANY = "Any";
 
 RNG_SPECIAL = "special";
 RNG_POINT = "point";
@@ -120,6 +121,39 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
+String.prototype.toTitleCase = String.prototype.toTitleCase ||
+	function () {
+		let str;
+		str = this.replace(/([^\W_]+[^\s-]*) */g, function (txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+
+		if (!StrUtil._TITLE_LOWER_WORDS_RE) {
+			StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, 'g'));
+		}
+
+		for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
+			str = str.replace(
+				StrUtil._TITLE_LOWER_WORDS_RE[i],
+				(txt) => {
+					return txt.toLowerCase();
+				});
+		}
+
+		if (!StrUtil._TITLE_UPPER_WORDS_RE) {
+			StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, 'g'));
+		}
+
+		for (let i = 0; i < StrUtil.TITLE_UPPER_WORDS.length; i++) {
+			str = str.replace(
+				StrUtil._TITLE_UPPER_WORDS_RE[i],
+				StrUtil.TITLE_UPPER_WORDS[i].toUpperCase()
+			);
+		}
+
+		return str;
+	};
+
 StrUtil = {
 	joinPhraseArray: function (array, joiner, lastJoiner) {
 		if (array.length === 0) return "";
@@ -138,7 +172,11 @@ StrUtil = {
 
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
-	}
+	},
+	// Certain minor words should be left lowercase unless they are the first or last words in the string
+	TITLE_LOWER_WORDS: ["A", "An", "The", "And", "But", "Or", "For", "Nor", "As", "At", "By", "For", "From", "In", "Into", "Near", "Of", "On", "Onto", "To", "With"],
+	// Certain words such as initialisms or acronyms should be left uppercase
+	TITLE_UPPER_WORDS: ["Id", "Tv"]
 };
 
 // TEXT COMBINING ======================================================================================================
@@ -777,6 +815,49 @@ Parser.psiOrderToFull = (order) => {
 	return order === undefined ? Parser.PSI_ORDER_NONE : order;
 };
 
+Parser.levelToFull = function (level) {
+	if (isNaN(level)) return "";
+	if (level === "2") return level + "nd";
+	if (level === "3") return level + "rd";
+	if (level === "1") return level + "st";
+	return level + "th";
+};
+
+Parser.invoSpellToFull = function (spell) {
+	if (spell === "Eldritch Blast") return spell + " cantrip";
+	if (spell === "Hex/Curse") return "Hex spell or a warlock feature that curses";
+	return STR_NONE
+};
+
+Parser.invoPactToFull = function (pact) {
+	if (pact === "Chain") return "Pact of the Chain";
+	if (pact === "Tome") return "Pact of the Tome";
+	if (pact === "Blade") return "Pact of the Blade";
+	return STR_ANY;
+};
+
+Parser.invoPatronToShort = function (patron) {
+	if (patron === STR_ANY) return STR_ANY;
+	return /^The (.*?)$/.exec(patron)[1];
+};
+
+Parser.dtAlignmentToFull = function (alignment) {
+	alignment = alignment.toUpperCase();
+	switch (alignment) {
+		case "L":
+			return "Lawful";
+		case "N":
+			return "Neutral";
+		case "C":
+			return "Chaotic";
+		case "G":
+			return "Good";
+		case "E":
+			return "Evil";
+	}
+	return alignment;
+};
+
 Parser.CAT_ID_CREATURE = 1;
 Parser.CAT_ID_SPELL = 2;
 Parser.CAT_ID_BACKGROUND = 3;
@@ -1287,6 +1368,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"TAH": "Tack and Harness",
 	"TG": "Trade Good",
 	"VEH": "Vehicle",
+	"SHP": "Vehicle",
 	"WD": "Wand"
 };
 
@@ -1389,47 +1471,79 @@ function noModifierKeys (e) {
 	return !e.ctrlKey && !e.altKey && !e.metaKey;
 }
 
-// SEARCH AND FILTER ===================================================================================================
-function search (options) {
-	const list = new List("listcontainer", options);
-	list.sort("name");
-	$("#reset").click(function () {
-		$("#filtertools").find("select").val("All");
-		$("#search").val("");
-		list.search();
-		list.sort("name");
-		list.filter();
-	});
-	const listWrapper = $("#listcontainer");
-	if (listWrapper.data("lists")) {
-		listWrapper.data("lists").push(list);
-	} else {
-		listWrapper.data("lists", [list]);
-	}
-	$(window).on("keypress", (e) => {
-		// K up; J down
-		if (noModifierKeys(e)) {
-			if (e.key === "k" || e.key === "j") {
-				const $el = getSelectedListElement();
+// LIST AND SEARCH =====================================================================================================
+ListUtil = {
+	_first: true,
 
-				if ($el) {
-					if (e.key === "k") {
-						const prevLink = $el.parent().prev().find("a").attr("href");
-						if (prevLink !== undefined) {
-							window.location.hash = prevLink;
-						}
-					} else if (e.key === "j") {
-						const nextLink = $el.parent().next().find("a").attr("href");
-						if (nextLink !== undefined) {
-							window.location.hash = nextLink;
+	search: (options) => {
+		const list = new List("listcontainer", options);
+		list.sort("name");
+		$("#reset").click(function () {
+			$("#filtertools").find("select").val("All");
+			$("#search").val("");
+			list.search();
+			list.sort("name");
+			list.filter();
+		});
+		const listWrapper = $("#listcontainer");
+		if (listWrapper.data("lists")) {
+			listWrapper.data("lists").push(list);
+		} else {
+			listWrapper.data("lists", [list]);
+		}
+		if (ListUtil._first) {
+			ListUtil._first = false;
+			const $headDesc = $(`header div p`);
+			$headDesc.html(`${$headDesc.html()} Press J/K to navigate rows.`);
+
+			$(window).on("keypress", (e) => {
+				// K up; J down
+				if (noModifierKeys(e)) {
+					if (e.key === "k" || e.key === "j") {
+						const it = getSelectedListElementWithIndex();
+
+						if (it) {
+							if (e.key === "k") {
+								const prevLink = it.$el.parent().prev().find("a").attr("href");
+								if (prevLink !== undefined) {
+									window.location.hash = prevLink;
+								} else {
+									const lists = listWrapper.data("lists");
+									let x = it.x;
+									while (--x >= 0) {
+										const l = lists[x];
+										if (l.visibleItems.length) {
+											const goTo = $(l.visibleItems[l.visibleItems.length - 1].elm).find("a").attr("href");
+											if (goTo) window.location.hash = goTo;
+											break;
+										}
+									}
+								}
+							} else if (e.key === "j") {
+								const nextLink = it.$el.parent().next().find("a").attr("href");
+								if (nextLink !== undefined) {
+									window.location.hash = nextLink;
+								} else {
+									const lists = listWrapper.data("lists");
+									let x = it.x;
+									while (++x < lists.length) {
+										const l = lists[x];
+										if (l.visibleItems.length) {
+											const goTo = $(l.visibleItems[0].elm).find("a").attr("href");
+											if (goTo) window.location.hash = goTo;
+											break;
+										}
+									}
+								}
+							}
 						}
 					}
 				}
-			}
+			});
 		}
-	});
-	return list
-}
+		return list
+	}
+};
 
 /**
  * Generic source filter
@@ -1533,6 +1647,10 @@ UrlUtil.unpackSubHash = function (subHash, unencode) {
 	}
 };
 
+UrlUtil.categoryToPage = function (category) {
+	return UrlUtil.CAT_TO_PAGE[category];
+};
+
 UrlUtil.PG_BESTIARY = "bestiary.html";
 UrlUtil.PG_SPELLS = "spells.html";
 UrlUtil.PG_BACKGROUNDS = "backgrounds.html";
@@ -1569,6 +1687,25 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS] = (it) => UrlUtil.encodeForHash(it.name);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+
+UrlUtil.CAT_TO_PAGE = {};
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BACKGROUND] = UrlUtil.PG_BACKGROUNDS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS] = UrlUtil.PG_CLASSES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_INVOCATIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PSIONIC] = UrlUtil.PG_PSIONICS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RACE] = UrlUtil.PG_RACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OTHER_REWARD] = UrlUtil.PG_REWARDS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = UrlUtil.PG_VARIATNRULES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OBJECT] = UrlUtil.PG_OBJECTS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAP] = UrlUtil.PG_TRAPS_HAZARDS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
 
 // SORTING =============================================================================================================
 // TODO refactor into a class
@@ -1940,5 +2077,24 @@ CryptUtil = {
 
 	_add32: (a, b) => {
 		return (a + b) & 0xFFFFFFFF;
+	}
+};
+
+// COLLECTIONS =========================================================================================================
+CollectionUtil = {
+	ObjectSet: class ObjectSet {
+		constructor () {
+			this.map = new Map();
+			this[Symbol.iterator] = this.values;
+		}
+		// Each inserted element has to implement _toIdString() method that returns a string ID.
+		// Two objects are considered equal if their string IDs are equal.
+		add (item) {
+			this.map.set(item._toIdString(), item);
+		}
+
+		values () {
+			return this.map.values();
+		}
 	}
 };

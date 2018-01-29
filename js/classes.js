@@ -59,7 +59,7 @@ function cleanScSource (source) {
 }
 
 function onJsonLoad (data) {
-	list = search({
+	list = ListUtil.search({
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
 	});

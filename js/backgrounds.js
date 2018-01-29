@@ -35,7 +35,7 @@ function onJsonLoad (data) {
 	}
 	bgTable.append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ['name', 'source'],
 		listClass: "backgrounds"
 	});

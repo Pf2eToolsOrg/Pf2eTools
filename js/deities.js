@@ -7,23 +7,6 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-function parseAlignmentToFull (alignment) {
-	alignment = alignment.toUpperCase();
-	switch (alignment) {
-		case "L":
-			return "Lawful";
-		case "N":
-			return "Neutral";
-		case "C":
-			return "Chaotic";
-		case "G":
-			return "Good";
-		case "E":
-			return "Evil";
-	}
-	return alignment;
-}
-
 function alignSort (a, b) {
 	const first = ["L", "C"];
 	const last = ["G", "E"];
@@ -38,10 +21,11 @@ let deitiesList;
 function onJsonLoad (data) {
 	deitiesList = data.deity;
 
+	const sourceFilter = getSourceFilter();
 	const alignmentFilter = new Filter({
 		header: "Alignment",
 		items: ["C", "E", "G", "L", "N"],
-		displayFn: parseAlignmentToFull
+		displayFn: Parser.dtAlignmentToFull
 	});
 	const pantheonFilter = new Filter({
 		header: "Pantheon",
@@ -88,7 +72,7 @@ function onJsonLoad (data) {
 		deselFn: (it) => { return it === STR_REPRINTED }
 	});
 
-	const filterBox = initFilterBox(alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
+	const filterBox = initFilterBox(sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
 
 	let tempString = "";
 	deitiesList.forEach((g, i) => {
@@ -113,13 +97,14 @@ function onJsonLoad (data) {
 			</li>
 		`;
 
+		sourceFilter.addIfAbsent(g.source);
 		categoryFilter.addIfAbsent(g.category);
 	});
 	$(`#deitiesList`).append(tempString);
 	// sort filters
 	categoryFilter.items.sort();
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ["name", "pantheon", "alignment", "domains", "symbol", "source"],
 		listClass: "deities",
 		sortFunction: listSort
@@ -138,12 +123,13 @@ function onJsonLoad (data) {
 		list.filter(function (item) {
 			const g = deitiesList[$(item.elm).attr(FLTR_ID)];
 
+			const rightSource = sourceFilter.toDisplay(f, g.source);
 			const rightAlignment = alignmentFilter.toDisplay(f, g.alignment);
 			const rightPantheon = pantheonFilter.toDisplay(f, g.pantheon);
 			const rightCategory = categoryFilter.toDisplay(f, g.category);
 			const rightDomain = domainFilter.toDisplay(f, g.domains);
 			const rightMisc = miscFilter.toDisplay(f, g._fReprinted);
-			return rightAlignment && rightPantheon && rightCategory && rightDomain && rightMisc;
+			return rightSource && rightAlignment && rightPantheon && rightCategory && rightDomain && rightMisc;
 		});
 	}
 
@@ -163,13 +149,14 @@ function loadhash (jsonIndex) {
 	const $content = $(`#pagecontent`);
 	$content.html(`
 		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(deity)}
-		<tr><td colspan="6"><span class="bold">Title: </span>${deity.title}</td></tr>
+		${EntryRenderer.utils.getNameTr(deity, false, "", `, ${deity.title.toTitleCase()}`)}
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
 		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
-		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => parseAlignmentToFull(a)).join(" ")}</td></tr>
+		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => Parser.dtAlignmentToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
+		${deity.altNames ? `<tr><td colspan="6"><span class="bold">Alternate Names: </span>${deity.altNames.join(", ")}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
+		${deity.symbolImg ? `<tr><td colspan="6">${renderer.renderEntry({entries: [deity.symbolImg]})}</td></tr>` : ""}
 		${renderStack.length ? `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>` : ""}
 		${EntryRenderer.utils.getPageTr(deity)}
 		${EntryRenderer.utils.getBorderTr()}

@@ -28,7 +28,7 @@ function onJsonLoad (data) {
 	});
 	$(`#trapsHazardsList`).append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ["name", "trapType", "source"],
 		listClass: "trapshazards",
 		sortFunction: listSort

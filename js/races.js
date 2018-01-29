@@ -8,13 +8,61 @@ window.onload = function load () {
 
 let raceList;
 
+function getAbilityObjs (abils) {
+	function makeAbilObj (asi, amount) {
+		return {
+			asi: asi,
+			amount: amount,
+			_toIdString: () => {
+				return `${asi}${amount}`
+			}
+		}
+	}
+
+	const out = new CollectionUtil.ObjectSet();
+	if (abils.choose) {
+		abils.choose.forEach(ch => {
+			const by = ch.amount || 1;
+			ch.from.forEach(asi => {
+				out.add(makeAbilObj(asi, by));
+			});
+		});
+	}
+	Object.keys(abils).forEach(abil => {
+		if (abil !== "choose") {
+			out.add(makeAbilObj(abil, abils[abil]));
+		}
+	});
+	return Array.from(out.values());
+}
+
+function mapAbilityObjToFull (abilObj) {
+	return `${Parser.attAbvToFull(abilObj.asi)} ${abilObj.amount < 0 ? "" : "+"}${abilObj.amount}`;
+}
+
 function onJsonLoad (data) {
 	tableDefault = $("#pagecontent").html();
 
 	raceList = data.race;
 
 	const sourceFilter = getSourceFilter();
-	const asiFilter = getAsiFilter();
+	const asiFilter = new Filter({
+		header: "Ability Bonus",
+		items: [
+			"Strength +2",
+			"Strength +1",
+			"Dexterity +2",
+			"Dexterity +1",
+			"Constitution +2",
+			"Constitution +1",
+			"Intelligence +2",
+			"Intelligence +1",
+			"Wisdom +2",
+			"Wisdom +1",
+			"Charisma +2",
+			"Charisma +1"
+		]
+	});
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 
 	const filterBox = initFilterBox(
@@ -29,7 +77,7 @@ function onJsonLoad (data) {
 		const race = raceList[i];
 
 		const ability = utils_getAbilityData(race.ability);
-		race._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
+		race._fAbility = getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)); // used for filtering
 
 		tempString +=
 			`<li ${FLTR_ID}='${i}'>
@@ -67,7 +115,7 @@ function onJsonLoad (data) {
 		}
 	}
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ['name', 'ability', 'size', 'source'],
 		listClass: "races"
 	});
@@ -111,22 +159,14 @@ function loadhash (id) {
 
 	const size = Parser.sizeAbvToFull(race.size);
 	$("td#size span").html(size);
-	if (size === "") $("td#size").hide();
 
 	const ability = utils_getAbilityData(race.ability);
 	$("td#ability span").html(ability.asText);
 
-	let speed;
-	if (race.speed.walk) {
-		speed = race.speed.walk + "ft.";
-		if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
-	} else {
-		speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
-	}
-	$("td#speed span").html(speed);
+	$("td#speed span").html(EntryRenderer.race.getSpeedString(race));
 
 	const renderStack = [];
-	const faux = {"type": "entries", "entries": race.entries};
+	const faux = {type: "entries", entries: race.entries};
 
 	renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
 

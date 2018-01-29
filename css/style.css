@@ -260,6 +260,14 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	border-right: 5px transparent;
 }
 
+.summary-flexer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
 /* *** */
 
 /* homebrew manager */
@@ -1794,11 +1802,13 @@ table.stats p.list-name {
 	font-weight: bold;
 }
 
+table.stats tr.text ul.list-hang,
 table.stats ul.list-hang {
 	list-style: none;
 	padding: 0;
 }
 
+table.stats tr.text ul.list-hang p,
 table.stats ul.list-hang p {
 	text-indent: -1.1em;
 	margin-left: 1.1em;

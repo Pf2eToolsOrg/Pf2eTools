@@ -41,7 +41,7 @@ function onJsonLoad (data) {
 	}
 	$("ul.variantRules").append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ['name', 'source', 'search'],
 		listClass: "variantRules"
 	});

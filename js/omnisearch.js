@@ -83,17 +83,17 @@ function init () {
 			const noCatTokens = tokensIsCat.filter(tc => !tc.isCat).map(tc => tc.t);
 			results = searchIndex.search(noCatTokens.join(" "), {
 				fields: {
-					s: {boost: 5, expand: true},
-					src: {expand: true}
+					n: {boost: 5, expand: true},
+					s: {expand: true}
 				},
 				bool: "AND",
 				expand: true
-			}).filter(r => r.doc.c === catTokens[0].c);
+			}).filter(r => catTokens[0].c && r.doc.cf.toLowerCase() === catTokens[0].c.toLowerCase());
 		} else {
 			results = searchIndex.search(srch, {
 				fields: {
-					s: {boost: 5, expand: true},
-					src: {expand: true}
+					n: {boost: 5, expand: true},
+					s: {expand: true}
 				},
 				bool: "AND",
 				expand: true
@@ -101,10 +101,10 @@ function init () {
 		}
 
 		if (!doShow3pp()) {
-			results = results.filter(r => !_isNonStandardSource3pp(r.doc.src));
+			results = results.filter(r => !_isNonStandardSource3pp(r.doc.s));
 		}
 		if (!doShowUaEtc()) {
-			results = results.filter(r => !_isNonStandardSourceWiz(r.doc.src));
+			results = results.filter(r => !_isNonStandardSourceWiz(r.doc.s));
 		}
 
 		if (results.length) {
@@ -115,6 +115,10 @@ function init () {
 		}
 
 		function renderLinks () {
+			function getHoverStr (category, url, src) {
+				return `onmouseover="EntryRenderer.hover.show(event, this, '${UrlUtil.categoryToPage(category)}', '${src}', '${url.replace(/'/g, "\\'")}')"`;
+			}
+
 			$searchOut.empty();
 			const show3pp = doShow3pp();
 			const $btn3pp = $(`<button class="btn btn-default btn-xs btn-file">${show3pp ? "Exclude" : "Include"} 3pp</button>`)
@@ -135,8 +139,8 @@ function init () {
 				const r = results[i].doc;
 				$searchOut.append(`
 				<p>
-					<a href="${r.url}">${r.c}: ${r.s}</a>
-					<i title="${Parser.sourceJsonToFull(r.src)}">${Parser.sourceJsonToAbv(r.src)}${r.pg ? ` p${r.pg}` : ""}</i>
+					<a href="${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>
+					<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>
 				</p>`);
 			}
 			$searchOutWrapper.css("display", "flex");
@@ -199,15 +203,15 @@ function init () {
 const CATEGORY_COUNTS = {};
 function onSearchLoad (data) {
 	searchIndex = elasticlunr(function () {
+		this.addField("n");
+		this.addField("cf");
 		this.addField("s");
-		this.addField("c");
-		this.addField("src");
 		this.setRef("id")
 	});
 	data.forEach(d => {
-		d.c = Parser.pageCategoryToFull(d.c);
-		if (!CATEGORY_COUNTS[d.c]) CATEGORY_COUNTS[d.c] = 1;
-		else CATEGORY_COUNTS[d.c]++;
+		d.cf = Parser.pageCategoryToFull(d.c);
+		if (!CATEGORY_COUNTS[d.cf]) CATEGORY_COUNTS[d.cf] = 1;
+		else CATEGORY_COUNTS[d.cf]++;
 		searchIndex.addDoc(d);
 	});
 }

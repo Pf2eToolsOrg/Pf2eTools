@@ -37,10 +37,10 @@
 					},
 					"additionalProperties": false
 				},
-				"text": {
+				"entries": {
 					"type": "array",
 					"items": {
-						"type": "string"
+						"$ref": "/Entry"
 					}
 				},
 				"source": {
@@ -52,7 +52,7 @@
 			},
 			"required": [
 				"name",
-				"text",
+				"entries",
 				"source",
 				"page"
 			],
