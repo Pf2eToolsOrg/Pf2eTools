@@ -34,9 +34,29 @@ function checkFile (file) {
 	for (let i = 0; i < contents.monster.length; i++) {
 		let monster = contents.monster[i];
 		let name = monster.name;
-		if (monster.trait) for (let j = 0; j < monster.trait.length; j++) if (monster.trait[j].attack) count++;
-		if (monster.action) for (let j = 0; j < monster.action.length; j++) if (monster.action[j].attack) count++;
-		if (monster.reaction) for (let j = 0; j < monster.reaction.length; j++) if (monster.reaction[j].attack) count++;
+		if (monster.trait) {
+			traitJSON = JSON.stringify(monster.trait);
+			if (traitJSON.indexOf("cast") !== -1) console.log(`${file}: ${name} has cast in trait`);
+			if (traitJSON.indexOf("spell") !== -1) console.log(`${file}: ${name} has spell in trait`);
+		}
+		if (monster.action) {
+			traitJSON = JSON.stringify(monster.action);
+			if (traitJSON.indexOf("cast") !== -1) console.log(`${file}: ${name} has cast in action`);
+			if (traitJSON.indexOf("spell") !== -1) console.log(`${file}: ${name} has spell in action`);
+		}
+		if (monster.reaction) {
+			traitJSON = JSON.stringify(monster.reaction);
+			if (traitJSON.indexOf("cast") !== -1) console.log(`${file}: ${name} has cast in reaction`);
+			if (traitJSON.indexOf("spell") !== -1) console.log(`${file}: ${name} has spell in reaction`);
+		}
+		if (monster.legendary) {
+			traitJSON = JSON.stringify(monster.legendary);
+			if (traitJSON.indexOf("cast") !== -1) console.log(`${file}: ${name} has cast in legendary`);
+			if (traitJSON.indexOf("spell") !== -1) console.log(`${file}: ${name} has spell in legendary`);
+		}
+		// if (monster.trait) for (let j = 0; j < monster.trait.length; j++) if (monster.trait[j].attack) count++;
+		// if (monster.action) for (let j = 0; j < monster.action.length; j++) if (monster.action[j].attack) count++;
+		// if (monster.reaction) for (let j = 0; j < monster.reaction.length; j++) if (monster.reaction[j].attack) count++;
 		// if (monster.trait) for (let j = 0; j < monster.trait.length; j++) if (monster.trait[j].text) parseAttack(name, monster.trait[j].text);
 		// if (monster.action) for (let j = 0; j < monster.action.length; j++) if (monster.action[j].text) parseAttack(name, monster.action[j].text);
 		// if (monster.reaction) for (let j = 0; j < monster.reaction.length; j++) if (monster.reaction[j].text) parseAttack(name, monster.reaction[j].text);
