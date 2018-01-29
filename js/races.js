@@ -40,6 +40,7 @@ function mapAbilityObjToFull (abilObj) {
 	return `${Parser.attAbvToFull(abilObj.asi)} ${abilObj.amount < 0 ? "" : "+"}${abilObj.amount}`;
 }
 
+let filterBox;
 function onJsonLoad (data) {
 	tableDefault = $("#pagecontent").html();
 
@@ -65,7 +66,7 @@ function onJsonLoad (data) {
 	});
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 
-	const filterBox = initFilterBox(
+	filterBox = initFilterBox(
 		sourceFilter,
 		asiFilter,
 		sizeFilter
@@ -171,4 +172,8 @@ function loadhash (id) {
 	renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
 
 	$('table#pagecontent tbody tr:last').before(renderStack.join(""));
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

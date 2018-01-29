@@ -155,6 +155,56 @@
 				}
 			]
 		},
+		"entryTableRow": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {
+							"const": "row"
+						},
+						"style": {
+							"type": "string",
+							"enum": [
+								"row-indent-first"
+							]
+						},
+						"row": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": [
+						"row"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryTableCell": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {
+							"const": "cell"
+						},
+						"width": {
+							"type": "integer"
+						},
+						"entry": {
+							"$ref": "/Entry"
+						}
+					},
+					"required": [
+						"entry"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryList": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
@@ -308,7 +358,7 @@
 							}
 						}
 					},
-					"required": ["name", "text"],
+					"required": ["text"],
 					"additionalProperties": false
 				}
 			]
@@ -632,6 +682,8 @@
 		{"$ref": "#/definitions/entryInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
 		{"$ref": "#/definitions/entryTable"},
+		{"$ref": "#/definitions/entryTableRow"},
+		{"$ref": "#/definitions/entryTableCell"},
 		{"$ref": "#/definitions/entryList"},
 		{"$ref": "#/definitions/entryBonus"},
 		{"$ref": "#/definitions/entryBonusSpeed"},

@@ -58,7 +58,8 @@ function EntryRenderer () {
 	 * @param forcePrefixSuffix force the prefix and suffix to be added (useful for the first call from external code)
 	 */
 	this.recursiveEntryRender = function (entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
-		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
+		depth = depth === undefined || depth === null ? 0 : depth;
+		if (entry.type === "section") depth = -1;
 		prefix = prefix === undefined || prefix === null ? null : prefix;
 		suffix = suffix === undefined || suffix === null ? null : suffix;
 		forcePrefixSuffix = forcePrefixSuffix === undefined || forcePrefixSuffix === null ? false : forcePrefixSuffix;
@@ -145,7 +146,7 @@ function EntryRenderer () {
 					break;
 				case "abilityGeneric":
 					renderPrefix();
-					textStack.push(`<span class='ability-block'><span>${entry.name}</span> = ${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`);
+					textStack.push(`<span class='ability-block'>${entry.name ? `<span>${entry.name}</span>  = ` : ""}${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`);
 					renderSuffix();
 					break;
 
@@ -265,9 +266,13 @@ function EntryRenderer () {
 
 			for (let i = 0; i < entry.rows.length; ++i) {
 				textStack.push("<tr>");
-				for (let j = 0; j < entry.rows[i].length; ++j) {
-					textStack.push(`<td ${makeTableTdClassText(j)}>`);
-					self.recursiveEntryRender(entry.rows[i][j], textStack, depth + 1);
+				const r = entry.rows[i];
+				const roRender = r.type === "row" ? r.row : r;
+				for (let j = 0; j < roRender.length; ++j) {
+					const toRenderCell = roRender[j].type === "cell" ? roRender[j].entry : roRender[j];
+					textStack.push(`<td ${makeTableTdClassText(j)} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`);
+					if (r.style === "row-indent-first" && j === 0) textStack.push(`<span class="tbl-tab-intent"/>`);
+					self.recursiveEntryRender(toRenderCell, textStack, depth + 1);
 					textStack.push("</td>");
 				}
 				textStack.push("</tr>");
@@ -1002,7 +1007,7 @@ EntryRenderer.reward = {
 		const renderStack = [];
 
 		if (reward.type === "Demonic Boon") {
-			const benefits = {type: "list", style: "list-hang", items: []};
+			const benefits = {type: "list", style: "list-hang-notitle", items: []};
 			benefits.items.push({
 				type: "item",
 				name: "Ability Score Adjustment:",

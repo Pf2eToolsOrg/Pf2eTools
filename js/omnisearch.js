@@ -1,4 +1,5 @@
-let searchIndex;
+let searchIndex = null;
+let onFirstLoad = null;
 
 window.addEventListener("load", init);
 
@@ -13,8 +14,6 @@ function init () {
 		</div>
 	`);
 	$nav.after(`<div class="omnisearch-output-wrapper"><div id="omnisearch-output" class="omnisearch-output"></div></div>`);
-
-	DataUtil.loadJSON("search/index.json", onSearchLoad);
 
 	const $searchOutWrapper = $(`.omnisearch-output-wrapper`);
 	const $searchOut = $(`#omnisearch-output`);
@@ -63,6 +62,12 @@ function init () {
 
 	const MAX_RESULTS = 15;
 	function doSearch () {
+		if (!searchIndex) {
+			doSearchLoad();
+			onFirstLoad = doSearch;
+			return;
+		}
+
 		const srch = $searchIn.val();
 
 		const tokens = elasticlunr.tokenizer(srch);
@@ -198,6 +203,17 @@ function init () {
 		showUaEtc = value ? CK_SHOW : CK_HIDE;
 		Cookies.set(COOKIE_NAME_UA_ETC, showUaEtc, {expires: 365});
 	}
+}
+
+let loadingSearch = false;
+function doSearchLoad () {
+	if (loadingSearch) return;
+	loadingSearch = true;
+	DataUtil.loadJSON("search/index.json", (data) => {
+		onSearchLoad(data);
+		onFirstLoad();
+		loadingSearch = false;
+	});
 }
 
 const CATEGORY_COUNTS = {};

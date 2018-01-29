@@ -1,18 +1,16 @@
 "use strict";
 
+const CONTENTS_URL = "data/adventures.json";
+
 let renderArea;
-
 let adventures;
-
-const TABLE_START = `<tr><th class="border" colspan="6"></th></tr>`;
-const TABLE_END = `<tr><th class="border" colspan="6"></th></tr>`;
 
 window.onload = function load () {
 	renderArea = $(`#pagecontent`);
 
-	renderArea.append(TABLE_START);
+	renderArea.append(EntryRenderer.utils.getBorderTr());
 	renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
-	renderArea.append(TABLE_END);
+	renderArea.append(EntryRenderer.utils.getBorderTr());
 
 	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
 };
@@ -34,40 +32,32 @@ function onJsonLoad (data) {
 		const adv = adventures[i];
 
 		tempString +=
-			`<li class="adventure-contents-item" data-adventureid="${UrlUtil.encodeForHash(adv.id)}" style="display: none;">
+			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(adv.id)}" style="display: none;">
 				<a id="${i}" href='#${adv.id},0' title='${adv.name}'>
 					<span class='name'>${adv.name}</span>
 				</a>
-				${makeContentsBlock({adv: adv, addOnclick: true, defaultHeadersHidden: true})}
+				${BookUtil.makeContentsBlock({book: adv, addOnclick: true, defaultHeadersHidden: true})}
 			</li>`;
 	}
 	adventuresList.append(tempString);
 
-	// Add show/hide handles to section names, and update styles
-	const allAdvHeaders = $(`ul.adv-headers`);
-	// add styles to all
-	allAdvHeaders.prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0");
-	allAdvHeaders.filter((i, ele) => $(ele).children().length).each((i, ele) => {
-		const $ele = $(ele);
-		// add expand/collapse to only those with children
-		$ele.prev(`li`).find(`a`).append(`<span class="showhide" onclick="sectToggle(event, this)" data-hidden="true">[+]</span>`);
-	});
+	BookUtil.addHeaderHandles(true);
 
 	const list = new List("listcontainer", {
 		valueNames: ['name'],
 		listClass: "contents"
 	});
 
-	window.onhashchange = hashChange;
+	window.onhashchange = advHashChange;
 	if (window.location.hash.length) {
-		hashChange();
+		advHashChange();
 	} else {
-		$(`.adventure-contents-item`).show();
+		$(`.contents-item`).show();
 	}
 }
 
 // custom loading for this page, so it can serve multiple sources
-function hashChange () {
+function advHashChange () {
 	const [advId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
 	const fromIndex = adventures.filter(adv => UrlUtil.encodeForHash(adv.id) === UrlUtil.encodeForHash(advId));
 	if (fromIndex.length) {
@@ -82,90 +72,16 @@ function hashChange () {
 	}
 }
 
-let allContents;
-let thisContents;
-
+const renderer = new EntryRenderer();
 function loadAdventure (fromIndex, advId, hashParts) {
 	DataUtil.loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
-		allContents = $(`.adventure-contents-item`);
-		thisContents = allContents.filter(`[data-adventureid="${UrlUtil.encodeForHash(advId)}"]`);
-		thisContents.show();
-		allContents.filter(`[data-adventureid!="${UrlUtil.encodeForHash(advId)}"]`).hide();
-		onAdventureLoad(data.data, fromIndex, advId, hashParts);
+		const allContents = $(`.contents-item`);
+		BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(advId)}"]`);
+		BookUtil.thisContents.show();
+		allContents.filter(`[data-bookid!="${UrlUtil.encodeForHash(advId)}"]`).hide();
+		BookUtil.showBookContent(data.data, fromIndex, advId, hashParts, renderer, renderArea);
 		addSearch(fromIndex, advId);
 	});
-}
-
-const renderer = new EntryRenderer();
-
-const curRender = {
-	curAdvId: "NONE",
-	chapter: -1,
-	data: {}
-};
-
-function onAdventureLoad (data, fromIndex, advId, hashParts) {
-	let chapter = 0;
-	let scrollTo;
-	let scrollIndex;
-	let forceScroll = false;
-	if (hashParts && hashParts.length > 0) chapter = Number(hashParts[0]);
-	if (hashParts && hashParts.length > 1) {
-		scrollTo = $(`[href="#${advId},${chapter},${hashParts[1]}"]`).data("header");
-
-		// fallback to scanning the document
-		if (!scrollTo) {
-			scrollTo = decodeURIComponent(hashParts[1]);
-			if (hashParts[2]) scrollIndex = Number(hashParts[2]);
-			forceScroll = true;
-		}
-	}
-
-	curRender.data = data;
-	if (curRender.chapter !== chapter || curRender.curAdvId !== advId) {
-		thisContents.children(`ul`).children(`ul, li`).removeClass("active");
-		thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
-		const $showHideBtn = thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1})`).find(`.showhide`);
-		if ($showHideBtn.data("hidden")) $showHideBtn.click();
-
-		curRender.curAdvId = advId;
-		curRender.chapter = chapter;
-		renderArea.html("");
-
-		renderArea.append(TABLE_START);
-		const textStack = [];
-		renderer.recursiveEntryRender(data[chapter], textStack);
-		renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
-		renderArea.append(TABLE_END);
-
-		if (scrollTo) {
-			setTimeout(() => {
-				scrollClick(scrollTo, scrollIndex);
-			}, 75)
-		}
-	} else {
-		if (hashParts.length <= 1) {
-			$(window).scrollTop(0);
-		} else if (forceScroll) {
-			scrollClick(scrollTo, scrollIndex);
-		}
-	}
-}
-
-function sectToggle (evt, ele) {
-	evt.stopPropagation();
-	evt.preventDefault();
-	const $ele = $(ele);
-	const $childList = $ele.closest(`li`).next(`ul.adv-headers`);
-	if ($ele.data("hidden")) {
-		$childList.show();
-		$ele.data("hidden", false);
-		$ele.html(`[\u2013]`);
-	} else {
-		$childList.hide();
-		$ele.data("hidden", true);
-		$ele.html(`[+]`);
-	}
 }
 
 let $body;
@@ -199,7 +115,7 @@ function addSearch (indexData, advId) {
 				if (e.key === "Enter" && noModifierKeys(e)) {
 					$results.html("");
 					const found = [];
-					const toSearch = curRender.data;
+					const toSearch = BookUtil.curRender.data;
 					toSearch.forEach((section, i) => {
 						headerCounts = {};
 						searchEntriesFor(i, "", found, $srch.val(), section)
@@ -211,7 +127,7 @@ function addSearch (indexData, advId) {
 							const $ptLink = $(`<span/>`);
 							const $link = $(
 								`<a href="#${getHash(f)}">
-									<i>${getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name} \u2013 ${f.headerMatches ? `<span class="highlight">` : ""}${f.header}${f.headerMatches ? `</span>` : ""}</i>
+									<i>${BookUtil.getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name} \u2013 ${f.headerMatches ? `<span class="highlight">` : ""}${f.header}${f.headerMatches ? `</span>` : ""}</i>
 								</a>`
 							);
 							$ptLink.append($link);
