@@ -137,10 +137,15 @@
 						"rows": {
 							"type": "array",
 							"items": {
-								"type": "array",
-								"items": {
-									"$ref": "/Entry"
-								}
+								"oneOf" : [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "/Entry"
+										}
+									},
+									"#/definitions/entryTableRow"
+								]
 							}
 						},
 						"footnotes": {
@@ -164,10 +169,7 @@
 							"const": "row"
 						},
 						"style": {
-							"type": "string",
-							"enum": [
-								"row-indent-first"
-							]
+							"type": "string"
 						},
 						"row": {
 							"type": "array",
