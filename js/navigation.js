@@ -9,7 +9,8 @@ window.addEventListener(
 );
 
 const CHILD_PAGES = {
-	"adventure.html": "adventures.html"
+	"adventure.html": "adventures.html",
+	"book.html": "books.html"
 };
 
 function currentPage () {
@@ -35,7 +36,8 @@ function navigation () {
 	LIDropdown('navbar', 'rules', 'dropdown');
 	A('rules', 'ruleOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Rules <span class='caret'></span>");
 	UL('rules', 'ul_rules', 'dropdown-menu');
-	LI('ul_rules', 'rules.html', 'Core Rules');
+	LI('ul_rules', 'books.html', 'Books');
+	LI('ul_rules', 'rules.html', 'Quick Reference');
 	LI('ul_rules', 'variantrules.html', 'Variant Rules');
 
 	LIDropdown('navbar', 'players', 'dropdown');

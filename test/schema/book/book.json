@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+
+	"definitions": {
+		"ruleBook": {
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				}
+			}
+		}
+	},
+
+	"properties": {
+		"data": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/ruleBook"
+			}
+		}
+	},
+	"additionalProperties": false
+}

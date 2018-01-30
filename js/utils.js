@@ -154,6 +154,17 @@ String.prototype.toTitleCase = String.prototype.toTitleCase ||
 		return str;
 	};
 
+// as we're targeting ES6
+String.prototype.ltrim = String.prototype.ltrim ||
+	function () {
+		return this.replace(/^\s+/, "");
+	};
+
+String.prototype.rtrim = String.prototype.rtrim ||
+	function () {
+		return this.replace(/\s+$/, "");
+	};
+
 StrUtil = {
 	joinPhraseArray: function (array, joiner, lastJoiner) {
 		if (array.length === 0) return "";
