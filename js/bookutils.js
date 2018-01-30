@@ -123,6 +123,27 @@ const BookUtil = {
 		data: {}
 	},
 	showBookContent: (data, fromIndex, bookId, hashParts) => {
+		function handleQuickReferenceShowAll () {
+			$(`div.statsBlockSectionHead`).show();
+			$(`hr.section-break`).show();
+		}
+
+		function handleQuickReferenceShow (sectionHeader) {
+			if (sectionHeader) {
+				const $allSects = $(`div.statsBlockSectionHead`);
+				$allSects.hide();
+				$(`hr.section-break`).hide();
+				const $toShow = $allSects.filter((i, e) => {
+					const $e = $(e);
+					const $match = $e.children().filter(`span.entry-title:textEquals("${sectionHeader}")`);
+					return $match.length;
+				});
+				$toShow.show();
+			} else {
+				handleQuickReferenceShowAll();
+			}
+		}
+
 		let chapter = 0;
 		let scrollTo;
 		let scrollIndex;
@@ -130,6 +151,9 @@ const BookUtil = {
 		if (hashParts && hashParts.length > 0) chapter = Number(hashParts[0]);
 		if (hashParts && hashParts.length > 1) {
 			scrollTo = $(`[href="#${bookId},${chapter},${hashParts[1]}"]`).data("header");
+			if (BookUtil.isQuickReference) {
+				handleQuickReferenceShow(scrollTo);
+			}
 
 			// fallback to scanning the document
 			if (!scrollTo) {
@@ -137,6 +161,8 @@ const BookUtil = {
 				if (hashParts[2]) scrollIndex = Number(hashParts[2]);
 				forceScroll = true;
 			}
+		} else if (BookUtil.isQuickReference) {
+			handleQuickReferenceShowAll();
 		}
 
 		BookUtil.curRender.data = data;
@@ -158,6 +184,9 @@ const BookUtil = {
 			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 			if (scrollTo) {
+				if (BookUtil.isQuickReference) {
+					handleQuickReferenceShow(scrollTo)
+				}
 				setTimeout(() => {
 					BookUtil.scrollClick(scrollTo, scrollIndex);
 				}, 75)
@@ -192,6 +221,7 @@ const BookUtil = {
 	baseDataUrl: "",
 	bookIndex: [],
 	renderArea: null,
+	isQuickReference: false,
 	// custom loading to serve multiple sources
 	booksHashChange: () => {
 		function cleanName (name) {
