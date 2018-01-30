@@ -79,6 +79,8 @@ function onJsonLoad (data) {
 
 		const ability = utils_getAbilityData(race.ability);
 		race._fAbility = getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)); // used for filtering
+		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
+		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
 		tempString +=
 			`<li ${FLTR_ID}='${i}'>
@@ -87,6 +89,7 @@ function onJsonLoad (data) {
 					<span class='ability col-xs-4'>${ability.asTextShort}</span>
 					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>
 					<span class='source col-xs-2 source${race.source}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+					${bracketMatch ? `<span class="clean-name hidden">${bracketMatch[2]} ${bracketMatch[1]}</span>` : ""}
 				</a>
 			</li>`;
 
@@ -117,7 +120,7 @@ function onJsonLoad (data) {
 	}
 
 	const list = ListUtil.search({
-		valueNames: ['name', 'ability', 'size', 'source'],
+		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
 		listClass: "races"
 	});
 

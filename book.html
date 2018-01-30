@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Renderer Demo - 5etools</title>
+	<title>Rules - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -18,24 +18,14 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
-	<style>
-		#jsoninput {
-			width: 100%;
-			height: 600px;
-		}
-		#capheight {
-			height: 640px;
-			overflow-y: scroll;
-		}
-	</style>
 </head>
 
 <body>
 <header class="hidden-xs hidden-sm">
 	<div class="container">
 
-		<h1>Renderer Demo</h1>
-		<p>Edit the JSON on the left, and see the results on the right</p>
+		<h1 class="book-head-header">Book Details</h1>
+		<p class="book-head-message">Select a book from the list on the left</p>
 	</div>
 </header>
 <nav class="container" id="navigation">
@@ -43,13 +33,14 @@
 	</ul>
 </nav>
 
-<div class="view-col-wrapper">
-	<div class="view-col">
-		<p><button class="btn" id="demoRender">Render</button> <button class="btn" id="demoReset">Reset</button> <span id="message"></span></p>
-		<pre id="jsoninput" class="inputArea"></pre>
+<div class="container view-col-wrapper">
+	<div class="view-col book-contents" id="listcontainer">
+		<ul class="list contents">
+			<!-- populate with JS -->
+		</ul>
 	</div>
-	<div id="capheight" class="view-col">
-		<table id="pagecontent" class="stats">
+	<div class="view-col book-view">
+		<table id="pagecontent" class="stats stats-book">
 			<!-- populate with JS -->
 		</table>
 	</div>
@@ -59,12 +50,13 @@
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
-<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/bookutils.js"></script>
+<script type="text/javascript" src="js/book.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
-<script type="text/javascript" src="lib/ace.js"></script>
-<script type="text/javascript" src="lib/droll.js"></script>
 </body>
 
 </html>

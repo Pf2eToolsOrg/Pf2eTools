@@ -1,0 +1,4687 @@
+{
+	"reference": [
+		{
+			"name": "Quick Reference",
+			"id": "quickreference",
+			"contents": [
+				{
+					"name": "Character Creation",
+					"headers": [
+						"Beyond 1st Level",
+						"Languages",
+						"Multiclassing",
+						"Step-by-Step Characters"
+					]
+				},
+				{
+					"name": "Equipment",
+					"headers": [
+						"Adventuring Gear",
+						"Armor and Shields",
+						"Expenses",
+						"Mounts and Vehicles",
+						"Starting Equipment",
+						"Tools",
+						"Trade Goods",
+						"Wealth",
+						"Weapons"
+					]
+				}
+			]
+		}
+	],
+	"data": [
+		{
+		    "type": "entries",
+		    "entries": [
+				{
+					"type": "section",
+					"name": "Beyond 1st Level",
+					"entries": [
+						"As your character goes on adventures and overcomes challenges, he or she gains experience, represented by experience points. A character who reaches a specified experience point total advances in capability. This advancement is called {@b gaining a level}.",
+						"When your character gains a level, his or her class often grants additional features, as detailed in the class description. Some of these features allow you to increase your ability scores, either increasing two scores by 1 each or increasing one score by 2. You can't increase an ability score above 20. In addition, every character's proficiency bonus increases at certain levels.",
+						"Each time you gain a level, you gain 1 additional Hit Die. Roll that Hit Die, add your Constitution modifier to the roll, and add the total to your hit point maximum. Alternatively, you can use the fixed value shown in your class entry, which is the average result of the die roll (rounded up).",
+						"When your Constitution modifier increases by 1, your hit point maximum increases by 1 for each level you have attained. For example, when Bruenor reaches 8th level as a fighter, he increases his Constitution score from 17 to 18, thus increasing his Constitution modifier from +3 to +4. His hit point maximum then increases by 8.",
+						"The Character Advancement table summarizes the XP you need to advance in levels from level 1 through level 20, and the proficiency bonus for a character of that level. Consult the information in your character's class description to see what other improvements you gain at each level.",
+						{
+							"type": "entries",
+							"name": "Tiers of Play",
+							"entries": [
+								"The shading in the Character Advancement table shows the four tiers of play. The tiers don't have any rules associated with them; they are a general description of how the play experience changes as characters gain levels.",
+								"{@b In the first tier (levels 1-4),} characters are effectively apprentice adventurers. They are learning the features that define them as members of particular classes, including the major choices that flavor their class features as they advance (such as a wizard's Arcane Tradition or a fighter's Martial Archetype). The threats they face are relatively minor, usually posing a danger to local farmsteads or villages.",
+								"{@b In the second tier (levels 5-10),} characters come into their own. Many spellcasters gain access to 3rd-level spells at the start of this tier, crossing a new threshold of magical power with spells such as fireball  and lightning bolt. At this tier, many weapon-using classes gain the ability to make multiple attacks in one round. These characters have become important, facing dangers that threaten cities and kingdoms.",
+								"{@b In the third tier (levels 11-16),} characters have reached a level of power that sets them high above the ordinary populace and makes them special even among adventurers. At 11th level, many spellcasters gain access to 6th-level spells, some of which create effects previously impossible for player characters to achieve. Other characters gain features that allow them to make more attacks or do more impressive things with those attacks. These mighty adventurers often confront threats to whole regions and continents.",
+								"{@b At the fourth tier (levels 17-20),} characters achieve the pinnacle of their class features, becoming heroic (or villainous) archetypes in their own right. The fate of the world or even the fundamental order of the multiverse might hang in the balance during their adventures."
+							]
+						},
+						{
+							"type": "table",
+							"caption": "",
+							"colLabels": [
+								"Experience Points",
+								"Level",
+								"Proficiency Bonus"
+							],
+							"colStyles": [
+								"col-xs-4 text-align-center",
+								"col-xs-4 text-align-center",
+								"col-xs-4 text-align-center"
+							],
+							"rows": [
+								[
+									"0",
+									"1",
+									"+2"
+								],
+								[
+									"300",
+									"2",
+									"+2"
+								],
+								[
+									"900",
+									"3",
+									"+2"
+								],
+								[
+									"2,700",
+									"4",
+									"+2"
+								],
+								[
+									"6,500",
+									"5",
+									"+3"
+								],
+								[
+									"14,000",
+									"6",
+									"+3"
+								],
+								[
+									"23,000",
+									"7",
+									"+3"
+								],
+								[
+									"34,000",
+									"8",
+									"+3"
+								],
+								[
+									"48,000",
+									"9",
+									"+4"
+								],
+								[
+									"64,000",
+									"10",
+									"+4"
+								],
+								[
+									"85,000",
+									"11",
+									"+4"
+								],
+								[
+									"100,000",
+									"12",
+									"+4"
+								],
+								[
+									"120,000",
+									"13",
+									"+5"
+								],
+								[
+									"140,000",
+									"14",
+									"+5"
+								],
+								[
+									"165,000",
+									"15",
+									"+5"
+								],
+								[
+									"195,000",
+									"16",
+									"+5"
+								],
+								[
+									"225,000",
+									"17",
+									"+6"
+								],
+								[
+									"265,000",
+									"18",
+									"+6"
+								],
+								[
+									"305,000",
+									"19",
+									"+6"
+								],
+								[
+									"355,000",
+									"20",
+									"+6"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Languages",
+					"entries": [
+						"Your race indicates the languages your character can speak by default, and your background might give you access to one or more additional languages of your choice. Note these languages on your character sheet.",
+						"With your DM's permission, you can instead choose a language from the Exotic Languages table or a secret language, such as thieves' cant or the tongue of druids.",
+						"Some of these languages are actually families of languages with many dialects. For example, the Primordial language includes the Auran, Aquan, Ignan, and Terran dialects, one for each of the four elemental planes. Creatures that speak different dialects of the same language can communicate with one another.",
+						{
+							"type": "table",
+							"caption": "Standard Languages",
+							"colLabels": [
+								"Language",
+								"Typical Speakers",
+								"Script"
+							],
+							"colStyles": [
+								"col-xs-4",
+								"col-xs-4",
+								"col-xs-4"
+							],
+							"rows": [
+								[
+									"Common",
+									"Humans",
+									"Common"
+								],
+								[
+									"Dwarvish",
+									"Dwarves",
+									"Dwarvish"
+								],
+								[
+									"Elvish",
+									"Elves",
+									"Elvish"
+								],
+								[
+									"Giant",
+									"Ogres, giants",
+									"Dwarvish"
+								],
+								[
+									"Gnomish",
+									"Gnomes",
+									"Dwarvish"
+								],
+								[
+									"Goblin",
+									"Goblinoids",
+									"Dwarvish"
+								],
+								[
+									"Halfling",
+									"Halflings",
+									"Common"
+								],
+								[
+									"Orc",
+									"Orcs",
+									"Dwarvish"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"caption": "Exotic Languages",
+							"colLabels": [
+								"Language",
+								"Typical Speakers",
+								"Script"
+							],
+							"colStyles": [
+								"col-xs-4",
+								"col-xs-4",
+								"col-xs-4"
+							],
+							"rows": [
+								[
+									"Abyssal",
+									"Demons",
+									"Infernal"
+								],
+								[
+									"Celestial",
+									"Celestials",
+									"Celestial"
+								],
+								[
+									"Draconic",
+									"Dragons, Dragonborn",
+									"Draconic"
+								],
+								[
+									"Deep Speech",
+									"Mind Flayers, Beholders",
+									"-"
+								],
+								[
+									"Infernal",
+									"Devils",
+									"Infernal"
+								],
+								[
+									"Primordial",
+									"Elementals",
+									"Dwarvish"
+								],
+								[
+									"Sylvan",
+									"Fey Creatures",
+									"Elvish"
+								],
+								[
+									"Undercommon",
+									"Underdark traders",
+									"Elvish"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Multiclassing",
+					"entries": [
+						"Multiclassing allows you to gain levels in multiple classes. Doing so lets you mix the abilities of those classes to realize a character concept that might not be reflected in one of the standard class options.",
+						"With this rule, you have the option of gaining a level in a new class whenever you advance in level, instead of gaining a level in your current class. Your levels in all your classes are added together to determine your character level. For example, if you have three levels in wizard and two in fighter, you're a 5th-level character.",
+						"As you advance in levels, you might primarily remain a member of your original class with just a few levels in another class, or you might change course entirely. never looking back at the class you left behind. You might even start progressing in a third or fourth class. Compared to a single-class character of the same level, you'll sacrifice some focus in exchange for versatility.",
+						{
+							"type": "entries",
+							"name": "Prerequisites",
+							"entries": [
+								"To qualify for a new class, you must meet the ability score. prerequisites for both your current class and your new one, as shown in the Multiclassing Prerequisites table. For example, a barbarian who decides to multiclass into the druid class must have both Strength and Wisdom scores of 13 or higher. Without the full training that a beginning character receives, you must be a quick study in your new class. having a natural aptitude that is reflected by higher-than-average ability scores.",
+								{
+									"type": "table",
+									"caption": "Multiclassing Prerequisites",
+									"colLabels": [
+										"Class",
+										"Ability Score Minimum"
+									],
+									"colStyles": [
+										"col-xs-2",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"{@class Barbarian}",
+											"Strength 13"
+										],
+										[
+											"{@class Bard}",
+											"Charisma 13"
+										],
+										[
+											"{@class Cleric}",
+											"Wisdom 13"
+										],
+										[
+											"{@class Druid}",
+											"Wisdom 13"
+										],
+										[
+											"{@class Fighter}",
+											"Strength 13 or Dexterity 13"
+										],
+										[
+											"{@class Monk}",
+											"Dexterity 13 and Wisdom 13"
+										],
+										[
+											"{@class Paladin}",
+											"Strength 13 and Charisma 13"
+										],
+										[
+											"{@class Ranger}",
+											"Dexterity 13 and Wisdom 13"
+										],
+										[
+											"{@class Rogue}",
+											"Dexterity 13"
+										],
+										[
+											"{@class Sorcerer}",
+											"Charisma 13"
+										],
+										[
+											"{@class Warlock}",
+											"Charisma 13"
+										],
+										[
+											"{@class Wizard}",
+											"Intelligence 13"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Experience Points",
+							"entries": [
+								"The experience point cost to gain a level is always based on your total character level, as shown in the Character Advancement table in chapter I, not your level in a particular class. So, if you are a cleric 6/fighter 1, you must gain enough XP to reach 8th level before you can take your second level as a fighter or your seventh level as a cleric."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Hit Points and Hit Dice",
+							"entries": [
+								"You gain the hit points from your new class as described for levels after 1st. You gain the 1st-level hit points for a class only when you are a 1st-level character.",
+								"You add together the Hit Dice granted by all your classes to form your pool of Hit Dice. if the Hit Dice are the same die type, you can simply pool them together. For example, both the fighter and the paladin have a d10. so if you area paladin 5/fighter 5, you have ten d10 Hit Dice. If your classes give you Hit Dice of different types, keep track of them separately. If you area paladin 5/cleric 5, for example, you have five d10 Hit Dice and five d8 Hit Dice."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Proficiency Bonus",
+							"entries": [
+								"Your proficiency bonus is always based on your total character level, as shown in the Character Advancement table in chapter 1, not your level in a particular class. For example, if you are a fighter 3/rogue 2, you have the proficiency bonus of a 5th-level character, which is +3."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Proficiencies",
+							"entries": [
+								"When you gain a level in a class other than your first, you gain only some of that class's starting proficiencies, as shown in the Multiclassing Proficiencies table.",
+								{
+									"type": "table",
+									"caption": "Multiclassing Proficiencies",
+									"colLabels": [
+										"Class",
+										"Proficiencies Gained"
+									],
+									"colStyles": [
+										"col-xs-2",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"{@class Barbarian}",
+											"Shields, simple weapons, martial weapons"
+										],
+										[
+											"{@class Bard}",
+											"Light armor, one skill of your choice, one musical instrument of your choice"
+										],
+										[
+											"{@class Cleric}",
+											"Light armor, medium armor, shields"
+										],
+										[
+											"{@class Druid}",
+											"Light armor, medium armor, shields (druids will not wear armor or use shields made of metal)"
+										],
+										[
+											"{@class Fighter}",
+											"Light armor, medium armor, shields, simple weapons, martial weapons"
+										],
+										[
+											"{@class Monk}",
+											"Simple weapons, shortswords"
+										],
+										[
+											"{@class Paladin}",
+											"Light armor, medium armor, shields, simple weapons, martial weapons"
+										],
+										[
+											"{@class Ranger}",
+											"Light armor, medium armor, shields, simple weapons, martial weapons, one skill from the class's skill list"
+										],
+										[
+											"{@class Rogue}",
+											"Light armor, one skill from the class's skill list, thieves' tools"
+										],
+										[
+											"{@class Sorcerer}",
+											"\u2014"
+										],
+										[
+											"{@class Warlock}",
+											"Light armor, simple weapons"
+										],
+										[
+											"{@class Wizard}",
+											"\u2014"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Class Features",
+							"entries": [
+								"When you gain a new level in a class, you get its features for that level. A few features, however, have additional rules when you're multiclassing: Channel Divinity, Extra Attack, Unarmored Defense, and Spellcasting.",
+								{
+									"type": "entries",
+									"name": "Channel Divinity",
+									"entries": [
+										"If you already have the Channel Divinity feature and gain a level in a class that also grants the feature, you gain the Channel Divinity effects granted by that class, but getting the feature again doesn't give you an additional use of it. You gain additional uses only when you reach a class level that explicitly grants them to you. For example, if you are a cleric 6/paladin 4, you can use Channel Divinity twice between rests because you are high enough level in the cleric class to have more uses. Whenever you use the feature, you can choose any of the Channel Divinity effects available to you from your two classes."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Extra Attack",
+									"entries": [
+										"If you gain the Extra Attack class feature from more than one class, the features don't add together. You can't make more than two attacks with this feature unless it says you do (as the fighter's version of Extra Attack does). Similarly, the warlock's eldritch invocation Thirsting Blade doesn't give you additional attacks if you also have Extra Attack."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Unarmored Defense",
+									"entries": [
+										"If you already have the Unarmored Defense feature, you can't gain it again from another class."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Spellcasting",
+									"entries": [
+										"Your capacity for spellcasting depends partly on your combined levels in all your spellcasting classes and partly on your individual levels in those classes. Once you have the Spellcasting feature from more than one class, use the rules below. If you multiclass but have the Spellcasting feature from only one class, you follow the rules as described in that class.",
+										{
+											"type": "entries",
+											"name": "Spells Known and Prepared",
+											"entries": [
+												"You determine what spells you know and can prepare for each class individually, as if you were a single-classed member of that class. If you are a ranger 4/wizard 3, for example, you know three 1st-level ranger spells based on your levels in the ranger class. As 3rd-level wizard, you know three wizard cantrips, and your spellbook contains ten wizard spells, two of which (the two you gained when you reached 3rd level as a wizard) can be 2nd-level spells. If your intelligence is 16, you can prepare six wizard spells from your spellbook.",
+												"Each spell you know and prepare is associated with one of your classes, and you use the spellcasting ability of that class when you cast the spell. Similarly, a spellcasting focus, such as a holy symbol, can he used only for the spells from the class associated with that focus."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Spell Slots",
+											"entries": [
+												"You determine your available spell slots by adding together all your levels in the hard, cleric, druid, sorcerer, and wizard classes, half your levels (rounded down) in the paladin and ranger classes, and a third of your fighter or rogue levels (rounded down) if you have the Eldritch Knight or the Arcane Trickster feature. Use this total to determine your spell slots by consulting the Multiclass Spellcaster table.",
+												"If you have more than one spellcasting class, this table might give you spell slots of a level that is higher than the spells you know or can prepare. You can use those slots, but only to cast your lower-level spells. If a lower-level spell that you cast, like {@spell burning hands}, has an enhanced effect when cast using a higher-level slot, you can use the enhanced effect, even though you don't have any spells of that higher level.",
+												"For example, if you are the aforementioned ranger 4/wizard 3. you count as a 5th-level character when determining your spell slots: you have four 1st-level slots, three 2nd-level slots, and two 3rd-level slots. However, you don't know any 3rd-level spells, nor do you know any 2nd-level ranger spells. You can use the spell slots of those levels to cast the spells you do know\u2014and potentially enhance their effects."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Pact Magic",
+											"entries": [
+												"If you have both the Spellcasting class feature and the Pact Magic class feature from the warlock class, you can use the spell slots you gain from the Pact Magic feature to cast spells you know or have prepared from classes with the Spellcasting class feature, and you can use the spell slots you gain from the Spellcasting class feature to cast warlock spells you know."
+											]
+										},
+										{
+											"type": "table",
+											"caption": "",
+											"colLabels": [
+												"Lvl.",
+												"1st",
+												"2nd",
+												"3rd",
+												"4th",
+												"5th",
+												"6th",
+												"7th",
+												"8th",
+												"9th"
+											],
+											"colStyles": [
+												"col-xs-1 col-xs-1-2",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center",
+												"col-xs-1 col-xs-1-2 text-align-center"
+											],
+											"rows": [
+												[
+													"1st",
+													2,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"2nd",
+													3,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"3rd",
+													4,
+													2,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"4th",
+													4,
+													3,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"5th",
+													4,
+													3,
+													2,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"6th",
+													4,
+													3,
+													3,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"7th",
+													4,
+													3,
+													3,
+													1,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"8th",
+													4,
+													3,
+													3,
+													2,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"9th",
+													4,
+													3,
+													3,
+													3,
+													1,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"10th",
+													4,
+													3,
+													3,
+													3,
+													2,
+													"\u2014",
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"11th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"12th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													"\u2014",
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"13th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													1,
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"14th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													1,
+													"\u2014",
+													"\u2014"
+												],
+												[
+													"15th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													1,
+													1,
+													"\u2014"
+												],
+												[
+													"16th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													1,
+													1,
+													"\u2014"
+												],
+												[
+													"17th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													1,
+													1,
+													1
+												],
+												[
+													"18th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													1,
+													1,
+													1,
+													1
+												],
+												[
+													"19th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													2,
+													1,
+													1,
+													1
+												],
+												[
+													"20th",
+													4,
+													3,
+													3,
+													3,
+													3,
+													2,
+													2,
+													1,
+													1
+												]
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Step-by-Step Characters",
+					"entries": [
+						"Your first step in playing an adventurer in the Dungeons & Dragons game is to imagine and create a character of your own. Your character is a combination of various statistics, roleplaying hooks, and your imagination. You choose a race (such as human or halfling) and a class (such as fighter or wizard). You also invent the personality, appearance, and backstory of your character. Once completed, your character serves as your representative in the game, your avatar in the Dungeons & Dragons world.",
+						"Before you dive into step 1 below, think about the kind of adventurer you want to play. You might be a courageous fighter, a skulking rogue, a fervent cleric, or a flamboyant wizard. Or you might be more interested in an unconventional character, such as a brave rogue who likes hand-to-hand combat, or a sharpshooter who picks off enemies from afar. Do you like fantasy fiction featuring dwarves or elves? Try building a character of one of those races. Do you want your character to be the toughest adventurer at the table? Consider a class like barbarian or paladin. If you don't know where else to begin, take a look at the illustrations in this book to see what catches your interest.",
+						"Once you have a character in mind, roll on these steps in order, making decisions that reflect the character you want. Your conception of your character might evolve with each choice you make. What's important is that you come to the table with a character you're excited to play.",
+						"Throughout this chapter, we use the term {@b character sheet} to mean whatever you use to track your character, whether its a formal character sheet (like the one at the end of this book), some form of digital record, or a piece of notebook paper. An official D&D character sheet is a fine place to start until you know what information you need and how you use it during the game.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Building Bruenor",
+									"entries": [
+										"Each step of character creation includes an example of that step, with a player named Bob building his dwarf character, Bruenor."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "1. Choose a Race",
+							"entries": [
+								"Every character belongs to a race, one of the many intelligent humanoid species in the D&D world. The most common player character races are dwarves, elves, halflings, and humans. Some races also have {@b subraces}, such as mountain dwarf or wood elf. Chapter 2 provides more information about these races.",
+								"The race you choose contributes to your character's identity in an important way, by establishing a general appearance and the natural talents gained from culture and ancestry. Your character's race grants particular racial traits, such as special senses, proficiency with certain weapons or tools, proficiency in one or more skills, or the ability to use minor spells. These traits sometimes dovetail with the capabilities of certain classes (see step 2). For example, the racial traits of lightfoot halflings make them exceptional rogues, and high elves tend to be powerful wizards. Sometimes playing against type can be fun, too. Halfling paladins and mountain dwarf wizards, for example, can be unusual but memorable characters.",
+								"Your race also increases one or more of your ability scores, which you determine in step 3. Note these increases and remember to apply them later.",
+								"Record the traits granted by your race on your character sheet. Be sure to note your starting languages and your base speed as well."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "2. Choose a Class",
+							"entries": [
+								"Every adventurer is a member of a class. Class broadly describes a character's vocation, what special talents he or she possesses, and the tactics he or she is most likely to employ when exploring a dungeon, fighting monsters, or engaging in a tense negotiation. The character classes are described in chapter 3.",
+								"Your character receives a number of benefits from your choice of class. Many of these benefits are {@b class features}-capabilities (including spellcasting) that set your character apart from members of other classes. You also gain a number of {@b proficiencies:} armor, weapons, skills, saving throws, and sometimes tools. Your proficiencies define many of the things your character can do particularly well, from using certain weapons to telling a convincing lie.",
+								"On your character sheet, record all the features that your class gives you at 1st level.",
+								{
+									"type": "entries",
+									"name": "Level",
+									"entries": [
+										"Typically, a character starts at 1st level and advances in level by adventuring and gaining {@b experience points} (XP). A 1st-level character is inexperienced in the adventuring world, although he or she might have been a soldier or a pirate and done dangerous things before.",
+										"Starting off at 1st level marks your character's entry into the adventuring life. If you're already familiar with the game, or if you are joining an existing D&D campaign, your DM might decide to have you begin at a higher level, on the assumption that your character has already survived a few harrowing adventures.",
+										"Record your level on your character sheet. If you're starting at a higher level, record the additional elements your class gives you for your levels past 1st. Also record your experience points. A 1st-level character has 0 XP. A higher-level character typically begins with the minimum amount of XP required to reach that level (see \"Beyond 1st Level\" later in this chapter)."
+									]
+								},
+								{
+									"type": "inset",
+									"name": "Quick Build",
+									"entries": [
+										"Each class description in chapter 3 includes a section offering suggestions to quickly build a character of that class, including how to assign your highest ability scores, a background suitable to the class, and starting spells."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Hit Points and Hit Dice",
+									"entries": [
+										"Your character's hit points define how tough your character is in combat and other dangerous situations. Your hit points are determined by your Hit Dice (short for Hit Point Dice).",
+										"At 1st level, your character has 1 Hit Die, and the die type is determined by your class. You start with hit points equal to the highest roll of that die, as indicated in your class description. (You also add your Constitution modifier, which you'll determine in step 3.) This is also your {@b hit point maximum}.",
+										"Record your character's hit points on your character sheet. Also record the type of Hit Die your character uses and the number of Hit Dice you have. After you rest, you can spend Hit Dice to regain hit points (see \"Resting\" in chapter 8)."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Proficiency Bonus",
+									"entries": [
+										"The table that appears in your class description shows your proficiency bonus, which is +2 for a 1st-level character. Your proficiency bonus applies to many of the numbers you'll be recording on your character sheet:",
+										{
+											"type": "list",
+											"items": [
+												"Attack rolls using weapons you're proficient with",
+												"Attack rolls with spells you cast",
+												"Ability checks using skills you're proficient in",
+												"Ability checks using tools you're proficient with",
+												"Saving throws you're proficient in",
+												"Saving throw DCs for spells you cast (explained in each spellcasting class)"
+											]
+										},
+										"Your class determines your weapon proficiencies, your saving throw proficiencies, and some of your skill and tool proficiencies. (Skills are described in chapter 7, tools in chapter 5.) Your background gives you additional skill and tool proficiencies, and some races give you more proficiencies. Be sure to note all of these proficiencies, as well as your proficiency bonus, on your character sheet.",
+										"Your proficiency bonus can't be added to a single die roll or other number more than once. Occasionally, your proficiency bonus might be modified (doubled or halved, for example) before you apply it. If a circumstance suggests that your proficiency bonus applies more than once to the same roll or that it should be multiplied more than once, you nevertheless add it only once, multiply it only once, and halve it only once."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Building Bruenor, Step 2",
+									"entries": [
+										"Bob imagines Bruenor charging into battle with an axe, one horn on his helmet broken off. He makes Bruenor a fighter and notes the fighter's proficiencies and 1st-level class features on his character sheet.",
+										"As a 1st-level fighter, Bruenor has 1 Hit Die-a d10 and starts with hit points equal to 10 + his Constitution modifier. Bob notes this, and will record the final number after he determines Bruenor's Constitution score (see step 3). Bob also notes the proficiency bonus for a 1st-level character, which is +2."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "3. Determine Ability Scores",
+							"entries": [
+								"Much of what your character does in the game depends on his or her six abilities: {@b Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.} Each ability has a score, which is a number you record on your character sheet.",
+								"The six abilities and their use in the game are described in chapter 7. The Ability Score Summary table provides a quick reference for what qualities are measured by each ability, what races increases which abilities, and what classes consider each ability particularly important.",
+								"You generate your character's six {@b ability scores} randomly. Roll four 6-sided dice and record the total of the highest three dice on a piece of scratch paper. Do this five more times, so that you have six numbers. If you want to save time or don't like the idea of randomly determining ability scores, you can use the following scores instead: 15, 14, 13, 12, 10, 8.",
+								"Now take your six numbers and write each number beside one of your character's six abilities to assign scores to Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma. Afterward, make any changes to your ability scores as a result of your race choice.",
+								"After assigning your ability scores, determine your {@b ability modifiers} using the Ability Scores and Modifiers table. To determine an ability modifier without consulting the table, subtract 10 from the ability score and then divide the result by 2 (round down). Write the modifier next to each of your scores.",
+								{
+									"type": "table",
+									"caption": "Ability Score Summary",
+									"colStyles": [
+										"col-xs-12"
+									],
+									"rows": [
+										[
+											"{@b Strength}"
+										],
+										[
+											{
+												"type": "entries",
+												"entries": [
+													"{@i Measures:} Natural athleticism, bodily power",
+													"{@i Important for:} Barbarian, fighter, paladin",
+													"{@filter Racial Increases|races|Ability Bonus=Strength +2;Strength +1}"
+												]
+											}
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Ability Score Summary",
+									"colStyles": [
+										"col-xs-12"
+									],
+									"rows": [
+										[
+											"{@b Dexterity}"
+										],
+										[
+											{
+												"type": "entries",
+												"entries": [
+													"{@i Measures:} Physical agility, reflexes, balance, poise",
+													"{@i Important for:} Monk, ranger, rogue",
+													"{@filter Racial Increases|races|Ability Bonus=Dexterity +2;Dexterity +1}"
+												]
+											}
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Ability Score Summary",
+									"colStyles": [
+										"col-xs-12"
+									],
+									"rows": [
+										[
+											"{@b Constitution}"
+										],
+										[
+											{
+												"type": "entries",
+												"entries": [
+													"{@i Measures:} Health, stamina, vital force",
+													"{@i Important for:} Everyone",
+													"{@filter Racial Increases|races|Ability Bonus=Constitution +2;Constitution +1}"
+												]
+											}
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Ability Score Summary",
+									"colStyles": [
+										"col-xs-12"
+									],
+									"rows": [
+										[
+											"{@b Intelligence}"
+										],
+										[
+											{
+												"type": "entries",
+												"entries": [
+													"{@i Measures:} Mental acuity, information recall, analytical skill",
+													"{@i Important for:} Wizard",
+													"{@filter Racial Increases|races|Ability Bonus=Intelligence +2;Intelligence +1}"
+												]
+											}
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Ability Score Summary",
+									"colStyles": [
+										"col-xs-12"
+									],
+									"rows": [
+										[
+											"{@b Wisdom}"
+										],
+										[
+											{
+												"type": "entries",
+												"entries": [
+													"{@i Measures:} Awareness, intuition, insight",
+													"{@i Important for:} Cleric, druid",
+													"{@filter Racial Increases|races|Ability Bonus=Wisdom +2;Wisdom +1}"
+												]
+											}
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Ability Score Summary",
+									"colStyles": [
+										"col-xs-12"
+									],
+									"rows": [
+										[
+											"{@b Charisma}"
+										],
+										[
+											{
+												"type": "entries",
+												"entries": [
+													"{@i Measures:} Confidence, eloquence, leadership",
+													"{@i Important for:} Bard, sorcerer, warlock",
+													"{@filter Racial Increases|races|Ability Bonus=Charisma +2;Charisma +1}"
+												]
+											}
+										]
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Building Bruenor, Step 3",
+									"entries": [
+										"Bob decides to use the standard set of scores (15, 14, 13, 12, 10, 8) for Bruenor's abilities. Since he's a fighter, he puts his highest score, 15, in Strength. His next highest, 14, goes in Constitution. Bruenor might be a brash fighter, but Bob decides he wants the dwarf to be older, wiser, and a good leader, so he puts decent scores in Wisdom and Charisma. After applying his racial benefits (increasing Bruenor's Constitution by 2 and his Strength by 2), Bruenor's ability scores and modifiers look like this: Strength 17 (+3), Dexterity 10 (+0), Constitution 16 (+3), Intelligence 8 (-1), Wisdom 13 (+1), Charisma 12 (+1).",
+										"Bob fills in Bruenor's final hit points: 10 + his Constitution modifier of +3, for a total of 13 hit points."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Variant: Customizing Ability Scores",
+									"entries": [
+										"At your Dungeon Master's option, you can use this variant for determining your ability scores. The method described here allows you to build a character with a set of ability scores you choose individually.",
+										"You have 27 points to spend on your ability scores. The cost of each score is shown on the Ability Score Point Cost table. For example, a score of 14 costs 7 points. Using this method, 15 is the highest ability score you can end up with, before applying racial increases. You can't have a score lower than 8.",
+										"This method of determining ability scores enables you to create a set of three high numbers and three low ones (15, 15, 15, 8, 8, 8), a set of numbers that are above average and nearly equal (13, 13, 13, 12, 12, 12), or any set of numbers between those extremes.",
+										{
+											"type": "table",
+											"caption": "Ability Score Point Cost",
+											"colLabels": [
+												"Score",
+												"Cost",
+												"Score",
+												"Cost"
+											],
+											"colStyles": [
+												"col-xs-3 text-align-center",
+												"col-xs-3 text-align-center",
+												"col-xs-3 text-align-center",
+												"col-xs-3 text-align-center"
+											],
+											"rows": [
+												[
+													"8",
+													"0",
+													"12",
+													"4"
+												],
+												[
+													"9",
+													"1",
+													"13",
+													"5"
+												],
+												[
+													"10",
+													"2",
+													"14",
+													"7"
+												],
+												[
+													"11",
+													"3",
+													"15",
+													"9"
+												]
+											]
+										},
+										{
+											"type": "table",
+											"caption": "Ability Scores and Modifiers",
+											"colLabels": [
+												"Score",
+												"Modifier",
+												"Score",
+												"Modifier"
+											],
+											"colStyles": [
+												"col-xs-3 text-align-center",
+												"col-xs-3 text-align-center",
+												"col-xs-3 text-align-center",
+												"col-xs-3 text-align-center"
+											],
+											"rows": [
+												[
+													"1",
+													"-5",
+													"16-17",
+													"+3"
+												],
+												[
+													"2-3",
+													"-4",
+													"18-19",
+													"+4"
+												],
+												[
+													"4-5",
+													"-3",
+													"20-21",
+													"+5"
+												],
+												[
+													"6-7",
+													"-2",
+													"22-23",
+													"+6"
+												],
+												[
+													"8-9",
+													"-1",
+													"24-25",
+													"+7"
+												],
+												[
+													"10-11",
+													"+0",
+													"26-27",
+													"+8"
+												],
+												[
+													"12-13",
+													"+1",
+													"28-29",
+													"+9"
+												],
+												[
+													"14-15",
+													"+2",
+													"30",
+													"+10"
+												]
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "4. Describe Your Character",
+							"entries": [
+								"Once you know the basic game aspects of your character, it's time to flesh him or her out as a person. Your character needs a name. Spend a few minutes thinking about what he or she looks like and how he or she behaves in general terms.",
+								"Using the information in chapter 4, you can flesh out your character's physical appearance and personality traits. Choose your character's {@b alignment} (the moral compass that guides his or her decisions) and {@b ideals}. Chapter 4 also helps you identify the things your character holds most dear, called {@b bonds}, and the {@b flaws} that could one day undermine him or her.",
+								"Your character's {@b background} describes where he or she came from, his or her original occupation, and the character's place in the D&D world.",
+								"Your DM might offer additional backgrounds beyond the ones included in chapter 4, and might be willing to work with you to craft a background that's a more precise fit for your character concept.",
+								"A background gives your character a background feature (a general benefit) and proficiency in two skills, and it might also give you additional languages or proficiency with certain kinds of tools. Record this information, along with the personality information you develop, on your character sheet.",
+								{
+									"type": "entries",
+									"name": "Your Character's Abilities",
+									"entries": [
+										"Take your character's ability scores and race into account as you flesh out his or her appearance and personality. A very strong character with low Intelligence might think and behave very differently from a very smart character with low Strength.",
+										"For example, high {@b Strength} usually corresponds with a burly or athletic body, while a character with low Strength might be scrawny or plump.",
+										"A character with high {@b Dexterity} is probably lithe and slim, while a character with low Dexterity might be either gangly and awkward or heavy and thick-fingered.",
+										"A character with high {@b Constitution} usually looks healthy, with bright eyes and abundant energy. A character with low Constitution might be sickly or frail.",
+										"A character with high {@b Intelligence} might be highly inquisitive and studious, while a character with low Intelligence might speak simply or easily forget details.",
+										"A character with high {@b Wisdom} has good judgment, empathy, and a general awareness of what's going on. A character with low Wisdom might be absent-minded,foolhardy, or oblivious.",
+										"A character with high {@b Charisma} exudes confidence, which is usually mixed with a graceful or intimidating presence. A character with a low Charisma might come across as abrasive, inarticulate, or timid."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Building Bruenor, Step 4",
+									"entries": [
+										"Bob fills in some of Bruenor's basic details: his name, his sex (male), his height and weight, and his alignment (lawful good). His high Strength and Constitution suggest a healthy, athletic body, and his low Intelligence suggests a degree of forgetfulness.",
+										"Bob decides that Bruenor comes from a noble line, but his clan was expelled from its homeland when Bruenor was very young. He grew up working as a smith in the remote villages of Icewind Dale. But Bruenor has a heroic destiny-to reclaim his homeland-so Bob chooses the folk hero background for his dwarf. He notes the proficiencies and special feature this background gives him.",
+										"Bob has a pretty clear picture of Bruenor's personality in mind, so he skips the personality traits suggested in the folk hero background, noting instead that Bruenor is a caring, sensitive dwarf who genuinely loves his friends and allies, but he hides this soft heart behind a gruff, snarling demeanor. He chooses the ideal of fairness from the list in his background, noting that Bruenor believes that no one is above the law.",
+										"Given his history, Bruenor's bond is obvious: he aspires to someday reclaim Mithral Hall, his homeland, from the shadow dragon that drove the dwarves out.",
+										"His flaw is tied to his caring, sensitive nature-he has a soft spot for orphans and wayward souls, leading him to show mercy even when it might not be warranted."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "5. Choose Equipment",
+							"entries": [
+								"Your class and background determine your character's {@b starting equipment}, including weapons, armor, and other adventuring gear. Record this equipment on your character sheet. All such items are detailed in chapter 5.",
+								"Instead of taking the gear given to you by your class and background, you can purchase your starting equipment. You have a number of {@b gold pieces} (gp) to spend based on your class, as shown in chapter 5. Extensive lists of equipment, with prices, also appear in that chapter.",
+								"If you wish, you can also have one trinket at no cost (see the Trinkets table at the end of chapter 5).",
+								"Your Strength score limits the amount of gear you can carry. Try not to purchase equipment with a total weight (in pounds) exceeding your Strength score times 15. Chapter 7 has more information on carrying capacity.",
+								{
+									"type": "entries",
+									"name": "Armor Class",
+									"entries": [
+										"Your {@b Armor Class} (AC) represents how well your character avoids being wounded in battle. Things that contribute to your AC include the armor you wear, the shield you carry, and your Dexterity modifier. Not all characters wear armor or carry shields, however.",
+										"Without armor or a shield, your character's AC equals 10 + his or her Dexterity modifier. If your character wears armor, carries a shield, or both, calculate your AC using the rules in chapter 5. Record your AC on your character sheet.",
+										"Your character needs to be proficient with armor and shields to wear and use them effectively, and your armor and shield proficiencies are determined by your class.",
+										"There are drawbacks to wearing armor or carrying a shield if you lack the required proficiency, as explained in chapter 5.",
+										"Some spells and class features give you a different way to calculate your AC. If you have multiple features that give you different ways to calculate your AC, you choose which one to use."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Weapons",
+									"entries": [
+										"For each weapon your character wields, calculate the modifier you use when you attack with the weapon and the damage you deal when you hit.",
+										"When you make an attack with a weapon, you roll a d20 and add your proficiency bonus (but only if you are proficient with the weapon) and the appropriate ability modifier.",
+										{
+											"type": "list",
+											"items": [
+												"For attacks with {@b melee weapons,} use your Strength modifier for attack and damage rolls. A weapon that has the finesse property, such as a rapier, can use your Dexterity modifier instead.",
+												"For attacks with {@b ranged weapons,} use your Dexterity modifier for attack and damage rolls. A weapon that has the thrown property, such as a handaxe, can use your Strength modifier instead."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Building Bruenor, Step 5",
+									"entries": [
+										"Bob writes down the starting equipment from the fighter class and the folk hero background. His starting equipment includes chain mail and a shield, which combine to give Bruenor an Armor Class of 18.",
+										"For Bruenor's weapons, Bob chooses a battleaxe and two handaxes. His battleaxe is a melee weapon, so Bruenor uses his Strength modifier for his attacks and damage. His attack bonus is his Strength modifier (+3) plus his proficiency bonus (+2), for a total of +5.",
+										"The battleaxe deals 1d8 slashing damage, and Bruenor adds his Strength modifier to the damage when he hits, for a total of 1d8 + 3 slashing damage. When throwing a handaxe, Bruenor has the same attack bonus (handaxes, as thrown weapons, use Strength for attacks and damage), and the weapon deals 1d6 + 3 slashing damage when it hits."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "6. Come Together",
+							"entries": [
+								"Most D&D characters don't work alone. Each character plays a role within a {@b party,} a group of adventurers working together for a common purpose. Teamwork and cooperation greatly improve your party's chances to survive the many perils in the worlds of Dungeons & Dragons. Talk to your fellow players and your DM to decide whether your characters know one another, how they met, and what sorts of quests the group might undertake."
+							]
+						}
+					]
+				}
+		    ]
+		},
+		{
+		    "type": "entries",
+		    "entries": [
+				{
+					"type": "section",
+					"name": "Adventuring Gear",
+					"entries": [
+						"This section describes items that have special rules or require further explanation.",
+						{
+							"type": "table",
+							"caption": "Adventuring Gear",
+							"colLabels": [
+								"Item",
+								"Cost",
+								"Weight"
+							],
+							"colStyles": [
+								"col-xs-4",
+								"col-xs-4 text-align-right",
+								"col-xs-4 text-align-center"
+							],
+							"rows": [
+								[
+									"Abacus",
+									"2 gp",
+									"2 lb."
+								],
+								[
+									"Acid (vial)",
+									"25 gp",
+									"1 lb."
+								],
+								[
+									"Alchemist's fire (flask)",
+									"50 gp",
+									"1 lb."
+								],
+								[
+									"{@i Ammunition}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Arrows (20)",
+										"1 gp",
+										"1 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Blowgun needles (50)",
+										"1 gp",
+										"1 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Crossbow bolts (20)",
+										"1 gp",
+										"1½ lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Sling bullets (20)",
+										"4 cp",
+										"1½ lb."
+									]
+								},
+								[
+									"Antitoxin (vial)",
+									"50 gp",
+									"\u2014"
+								],
+								[
+									"{@i Arcane focus}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Crystal",
+										"10 gp",
+										"1 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Orb",
+										"20 gp",
+										"3 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Rod",
+										"10 gp",
+										"2 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Staff",
+										"5 gp",
+										"4 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Wand",
+										"10 gp",
+										"1 lb."
+									]
+								},
+								[
+									"Backpack",
+									"2 gp",
+									"5 lb."
+								],
+								[
+									"Ball bearings (bag of 1,000)",
+									"1 gp",
+									"2 lb."
+								],
+								[
+									"Barrel",
+									"2 gp",
+									"70 lb."
+								],
+								[
+									"Basket",
+									"4 sp",
+									"2 lb."
+								],
+								[
+									"Bedroll",
+									"1 gp",
+									"7 lb."
+								],
+								[
+									"Bell",
+									"1 gp",
+									"\u2014"
+								],
+								[
+									"Blanket",
+									"5 sp",
+									"3 lb."
+								],
+								[
+									"Block and tackle",
+									"1 gp",
+									"5 lb."
+								],
+								[
+									"Book",
+									"25 gp",
+									"5 lb."
+								],
+								[
+									"Bottle, glass",
+									"2 gp",
+									"2 lb."
+								],
+								[
+									"Bucket",
+									"5 cp",
+									"2 lb."
+								],
+								[
+									"Caltrops (bag of 20)",
+									"1 gp",
+									"2 lb."
+								],
+								[
+									"Candle",
+									"1 cp",
+									"\u2014"
+								],
+								[
+									"Case, crossbow bolt",
+									"1 gp",
+									"1 lb."
+								],
+								[
+									"Case, map or scroll",
+									"1 gp",
+									"1 lb."
+								],
+								[
+									"Chain (10 feet)",
+									"5 gp",
+									"10 lb."
+								],
+								[
+									"Chalk (1 piece)",
+									"1 cp",
+									"\u2014"
+								],
+								[
+									"Chest",
+									"5 gp",
+									"25 lb."
+								],
+								[
+									"Clothes, common",
+									"5 sp",
+									"3 lb."
+								],
+								[
+									"Clothes, costume",
+									"5 gp",
+									"4 lb."
+								],
+								[
+									"Clothes, fine",
+									"15 gp",
+									"6 lb."
+								],
+								[
+									"Clothes, traveler's",
+									"2 gp",
+									"4 lb."
+								],
+								[
+									"Component pouch",
+									"25 gp",
+									"2 lb."
+								],
+								[
+									"Crowbar",
+									"2 gp",
+									"5 lb."
+								],
+								[
+									"{@i Druidic focus}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Sprig of mistletoe",
+										"1 gp",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Totem",
+										"1 gp",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Wooden staff",
+										"5 gp",
+										"4 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Yew wand",
+										"10 gp",
+										"1 lb."
+									]
+								},
+								[
+									"Fishing tackle",
+									"1 gp",
+									"4 lb."
+								],
+								[
+									"Flask or tankard",
+									"2 cp",
+									"1 lb."
+								],
+								[
+									"Grappling hook",
+									"2 gp",
+									"4 lb."
+								],
+								[
+									"Hammer",
+									"1 gp",
+									"3 lb."
+								],
+								[
+									"Hammer, sledge",
+									"2 gp",
+									"10 lb."
+								],
+								[
+									"Healer's Kit",
+									"5 gp",
+									"3 lb."
+								],
+								[
+									"{@i Holy symbol}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Amulet",
+										"5 gp",
+										"1 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Emblem",
+										"5 gp",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Reliquary",
+										"5 gp",
+										"2 lb."
+									]
+								},
+								[
+									"Holy water (flask)",
+									"25 gp",
+									"1 lb."
+								],
+								[
+									"Hourglass",
+									"25 gp",
+									"1 lb."
+								],
+								[
+									"Hunting trap",
+									"5 gp",
+									"25 lb."
+								],
+								[
+									"Ink (1 ounce bottle)",
+									"10 gp",
+									"\u2014"
+								],
+								[
+									"Ink pen",
+									"2 cp",
+									"\u2014"
+								],
+								[
+									"Jug or pitcher",
+									"2 cp",
+									"4 lb."
+								],
+								[
+									"Kit, climber's",
+									"25 gp",
+									"12 lb."
+								],
+								[
+									"Kit, disguise",
+									"25 gp",
+									"3 lb."
+								],
+								[
+									"Kit, forgery",
+									"15 gp",
+									"5 lb."
+								],
+								[
+									"Kit, herbalism",
+									"5 gp",
+									"3 lb."
+								],
+								[
+									"Kit, healer's",
+									"5 gp",
+									"3 lb."
+								],
+								[
+									"Kit, mess",
+									"2 sp",
+									"1 lb."
+								],
+								[
+									"Kit, poisoner's",
+									"50 gp",
+									"2 lb."
+								],
+								[
+									"Ladder (10-foot)",
+									"1 sp",
+									"25 lb."
+								],
+								[
+									"Lamp",
+									"5 sp",
+									"1 lb."
+								],
+								[
+									"Lantern, bullseye",
+									"10 gp",
+									"2 lb."
+								],
+								[
+									"Lantern, hooded",
+									"5 gp",
+									"2 lb."
+								],
+								[
+									"Lock",
+									"10 gp",
+									"1 lb."
+								],
+								[
+									"Magnifying glass",
+									"100 gp",
+									"\u2014"
+								],
+								[
+									"Manacles",
+									"2 gp",
+									"6 lb."
+								],
+								[
+									"Mirror, steel",
+									"5 gp",
+									"1/2 lb."
+								],
+								[
+									"Oil (flask)",
+									"1 sp",
+									"1 lb."
+								],
+								[
+									"Paper (one sheet)",
+									"2 sp",
+									"\u2014"
+								],
+								[
+									"Parchment (one sheet)",
+									"1 sp",
+									"\u2014"
+								],
+								[
+									"Perfume (vial)",
+									"5 gp",
+									"\u2014"
+								],
+								[
+									"Pick, miner's",
+									"2 gp",
+									"10 lb."
+								],
+								[
+									"Piton",
+									"5 cp",
+									"1/4 lb."
+								],
+								[
+									"Poison, basic (vial)",
+									"100 gp",
+									"\u2014"
+								],
+								[
+									"Pole (10-foot)",
+									"5 cp",
+									"7 lb."
+								],
+								[
+									"Pot, iron",
+									"2 gp",
+									"10 lb."
+								],
+								[
+									"Potion of healing",
+									"50 gp",
+									"1/2 lb."
+								],
+								[
+									"Pouch",
+									"5 sp",
+									"1 lb."
+								],
+								[
+									"Quiver",
+									"1 gp",
+									"1 lb."
+								],
+								[
+									"Ram, portable",
+									"4 gp",
+									"35 lb."
+								],
+								[
+									"Rations (1 day)",
+									"5 sp",
+									"2 lb."
+								],
+								[
+									"Robes",
+									"1 gp",
+									"4 lb."
+								],
+								[
+									"Rope, hempen (50 feet)",
+									"1 gp",
+									"10 lb."
+								],
+								[
+									"Rope, silk (50 feet)",
+									"10 gp",
+									"5 lb."
+								],
+								[
+									"Sack",
+									"1 cp",
+									"1/2 lb."
+								],
+								[
+									"Scale, merchant's",
+									"5 gp",
+									"3 lb."
+								],
+								[
+									"Sealing wax",
+									"5 sp",
+									"\u2014"
+								],
+								[
+									"Shovel",
+									"2 gp",
+									"5 lb."
+								],
+								[
+									"Signal whistle",
+									"5 cp",
+									"\u2014"
+								],
+								[
+									"Signet ring",
+									"5 gp",
+									"\u2014"
+								],
+								[
+									"Soap",
+									"2 cp",
+									"\u2014"
+								],
+								[
+									"Spellbook",
+									"50 gp",
+									"3 lb."
+								],
+								[
+									"Spikes, iron (10)",
+									"1 gp",
+									"5 lb."
+								],
+								[
+									"Spyglass",
+									"1,000 gp",
+									"1 lb."
+								],
+								[
+									"Tent, two-person",
+									"2 gp",
+									"20 lb."
+								],
+								[
+									"Tinderbox",
+									"5 sp",
+									"1 lb."
+								],
+								[
+									"Torch",
+									"1 cp",
+									"1 lb."
+								],
+								[
+									"Vial",
+									"1 gp",
+									"\u2014"
+								],
+								[
+									"Waterskin",
+									"2 sp",
+									"5 lb. (full)"
+								],
+								[
+									"Whetstone",
+									"1 cp",
+									"1 lb."
+								]
+							]
+						},
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Acid",
+											"entries": [
+												"As an action, you can splash the contents of this vial onto a creature within 5 feet of you or throw the vial up to 20 feet, shattering it on impact. In either case, make a ranged attack against a creature or object, treating the acid as an improvised weapon. On a hit, the target takes 2d6 acid damage."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Alchemist's Fire",
+											"entries": [
+												"This sticky, adhesive fluid ignites when exposed to air. As an action, you can throw this flask up to 20 feet, shattering it on impact. Make a ranged attack against a creature or object, treating the alchemist's fire as an improvised weapon. On a hit, the target takes 1d4 fire damage at the start of each of its turns. A creature can end this damage by using its action to make a DC 10 Dexterity check to extinguish the flames."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Antitoxin",
+											"entries": [
+												"A creature that drinks this vial of liquid gains advantage on saving throws against poison for 1 hour. It confers no benefit to undead or constructs."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Arcane Focus",
+											"entries": [
+												"An arcane focus is a special item-an orb, a crystal, a rod, a specially constructed staff, a wand-like length of wood, or some similar item-designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus, as described in chapter 10."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Ball Bearings",
+											"entries": [
+												"As an action, you can spill these tiny metal balls from their pouch to cover a level, square area that is 10 feet on a side. A creature moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall prone. A creature moving through the area at half speed doesn't need to make this save."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Block and Tackle",
+											"entries": [
+												"A set of pulleys with a cable threaded through them and a hook to attach to objects, a block and tackle allows you to hoist up to four times the weight you can normally lift."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Book",
+											"entries": [
+												"A book might contain poetry, historical accounts, information pertaining to a particular field of lore, diagrams and notes on gnomish contraptions, or just about anything else that can be represented using text or pictures. A book of spells is a spellbook (described later in this section)."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Caltrops",
+											"entries": [
+												"As an action, you can spend a bag of caltrops to cover a square area that is 5 feet on a side. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving this turn and take 1 piercing damage. Taking this damage reduces the creature's walking speed by 10 feet until the creature regains at least 1 hit point. A creature moving through the area at half speed doesn't need to make the save."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Candle",
+											"entries": [
+												"For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Case, Crossbow Bolt",
+											"entries": [
+												"This wooden case can hold up to twenty crossbow bolts"
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Case, Map or Scroll",
+											"entries": [
+												"This cylindrical leather case can hold up to ten rolled-up sheets of paper or five rolled-up sheets of parchment."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Chain",
+											"entries": [
+												"A chain has 10 hit points. It can be burst with a successful DC 20 Strength check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Climber's Kit",
+											"entries": [
+												"A climber's kit includes special pitons, boot tips, gloves, and a harness. You can use the climber's kit as an action to anchor yourself; when you do, you can't fall more than 25 feet from the point where you anchored yourself, and you can't climb more than 25 feet away from that point without undoing the anchor."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Component Pouch",
+											"entries": [
+												"A component pouch is a small, watertight leather belt pouch that has compartments to hold all the material components and other special items you need to cast your spells, except for those components that have a specific cost (as indicated in a spell's description)."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Crowbar",
+											"entries": [
+												"Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Druidic Focus",
+											"entries": [
+												"A druidic focus might be a sprig of mistletoe or holly, a wand or scepter made of yew or another special wood, a staff drawn whole out of a living tree, or a totem object incorporating feathers, fur, bones, and teeth from sacred animals. A druid (see chapter 3 of the Player's Handbook) can use such an object as a spellcasting focus, as described in chapter 10."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Fishing Tackle",
+											"entries": [
+												"This kit includes a wooden rod, silken line, corkwood bobbers, steel hooks, lead sinkers, velvet lures, and narrow netting."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Healer's Kit",
+											"entries": [
+												"This kit is a leather pouch containing bandages, salves, and splints. The kit has ten uses. As an action, you can expend one use of the kit to stabilize a creature that has 0 hit points, without needing to make a Wisdom (Medicine) check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Holy Symbol",
+											"entries": [
+												"A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred rite. Appendix B lists the symbols commonly associated with many gods in the multiverse. A cleric or paladin can use a holy symbol as a spell casing focus, as described in Part 3: The Rules of Magic. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Holy Water",
+											"entries": [
+												"As an action, you can splash the contents of this flask onto a creature within 5 feet of you or throw it up to 20 feet, shattering it on impact.",
+												"In either case, make a ranged attack against a target creature, treating the holy water as an improvised weapon. If the target is a fiend or undead, it takes 2d6 radiant damage. A cleric or paladin may create holy water by performing a special ritual. The ritual takes 1 hour to perform, uses 25 gp worth of powdered silver, and requires the caster to expend a 1st-level spell slot."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Hunting Trap",
+											"entries": [
+												"When you use your action to set it, this trap forms a saw-toothed steel ring that snaps shut when a creature steps on a pressure plate in the center. The trap is affixed by a heavy chain to an immobile object, such as a tree or a spike driven into the ground. A creature that steps on the plate must succeed on a DC 13 Dexterity saving throw or take 1d4 piercing damage and stop moving. Thereafter, until the creature breaks free of the trap, its movement is limited by the length of the chain (typically 3 feet long). A creature can use its action to make a DC 13 Strength check, freeing itself or another creature within its reach on a success. Each failed check deals 1 piercing damage to the trapped creature."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lamp",
+											"entries": [
+												"A lamp casts bright light in a 15-foot radius and dim light for an additional 30 feet. Once lit, it burns for 6 hours on a flask (1 pint) of oil."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lantern, Bullseye",
+											"entries": [
+												"A bullseye lantern casts bright light in a 60-foot cone and dim light for an additional 60 feet. Once lit, it burns for 6 hours on a flask (1 pint) of oil."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lantern, Hooded",
+											"entries": [
+												"A hooded lantern casts bright light in a 30-foot radius and dim light for an additional 30 feet. Once lit, it burns for 6 hours on a flask (1 pint) of oil. As an action, you can lower the hood, reducing the light to dim light in a 5-foot radius."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Lock",
+											"entries": [
+												"A key is provided with the lock. Without the key, a creature proficient with thieves' tools can pick this lock with a successful DC 15 Dexterity check. Your DM may decide that better locks are available for higher prices."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Magnifying Glass",
+											"entries": [
+												"This lens allows a closer look at small objects. It is also useful as a substitute for flint and steel when starting fires. Lighting a fire with a magnifying glass requires light as bright as sunlight to focus, tinder to ignite, and about 5 minutes for the fire to ignite. A magnifying glass grants advantage on any ability check made to appraise or inspect an item that is small or highly detailed."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Manacles",
+											"entries": [
+												"These metal restraints can bind a Small or Medium creature. Escaping the manacles requires a successful DC 20 Dexterity check. Breaking them requires a successful DC 20 Strength check. Each set of manacles comes with one key. Without the key, a creature proficient with thieves' tools can pick the manacles' lock with a successful DC 15 Dexterity check. Manacles have 15 hit points."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Mess Kit",
+											"entries": [
+												"This tin box contains a cup and simple cutlery. The box clamps together, and one side can be used as a cooking pan and the other as a plate or shallow bowl."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Oil",
+											"entries": [
+												"Oil usually comes in a clay flask that holds 1 pint. As an action, you can splash the oil in this flask onto a creature within 5 feet of you or throw it up to 20 feet, shattering it on impact. Make a ranged attack against a target creature or object, treating the oil as an improvised weapon. On a hit, the target is covered in oil. If the target takes any fire damage before the oil dries (after 1 minute), the target takes an additional 5 fire damage from the burning oil. You can also pour a flask of oil on the ground to cover a 5-foot-square area, provided that the surface is level. If lit, the oil burns for 2 rounds and deals 5 fire damage to any creature that enters the area or ends its turn in the area. A creature can take this damage only once per turn."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Poison, Basic",
+											"entries": [
+												"You can use the poison in this vial to coat one slashing or piercing weapon or up to three pieces of ammunition. Applying the poison takes an action. A creature hit by the poisoned weapon or ammunition must make a DC 10 Constitution saving throw or take 1d4 poison damage. Once applied, the poison retains potency for 1 minute before drying."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Potion of Healing",
+											"entries": [
+												"A character who drinks the magical red fluid in this vial regains 2d4 + 2 hit points. Drinking or administering a potion takes an action."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Pouch",
+											"entries": [
+												"A cloth or leather pouch can hold up to 20 sling bullets or 50 blowgun needles, among other things. A compartmentalized pouch for holding spell components is called a component pouch (described earlier in this section)."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Quiver",
+											"entries": [
+												"A quiver can hold up to 20 arrows."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Ram, Portable",
+											"entries": [
+												"You can use a portable ram to break down doors. When doing so, you gain a +4 bonus on the Strength check. One other character can help you use the ram, giving you advantage on this check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Rations",
+											"entries": [
+												"Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Rope, hempen (50 feet)",
+											"entries": [
+												"Rope, whether made of hemp, has 2 hit points and can be burst with a DC 17 Strength check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Rope, silk (50 feet)",
+											"entries": [
+												"Rope, whether made of silk, has 2 hit points and can be burst with a DC 17 Strength check."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Scale, Merchant's",
+											"entries": [
+												"A scale includes a small balance, pans, and a suitable assortment of weights up to 2 pounds. With it, you can measure the exact weight of small objects, such as raw precious metals or trade goods, to help determine their worth."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Spellbook",
+											"entries": [
+												"Essential for wizards, a spellbook is a leather-bound tome with 100 blank vellum pages suitable for recording spells."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Spyglass",
+											"entries": [
+												"Objects viewed through a spyglass are magnified to twice their size."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tent",
+											"entries": [
+												"A simple and portable canvas shelter, a tent sleeps two."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Tinderbox",
+											"entries": [
+												"This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch-or anything else with abundant, exposed fuel-takes an action. Lighting any other fire takes 1 minute."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Torch",
+											"entries": [
+												"A torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "table",
+							"caption": "Container Capacity",
+							"colLabels": [
+								"Container",
+								"Capacity"
+							],
+							"colStyles": [
+								"col-xs-6",
+								"col-xs-6"
+							],
+							"rows": [
+								[
+									"Backpack*",
+									"1 cubic foot/30 pounds of gear"
+								],
+								[
+									"Barrel",
+									"40 gallons liquid, 4 cubic feet solid"
+								],
+								[
+									"Basket",
+									"2 cubic feet/40 pounds of gear"
+								],
+								[
+									"Bottle",
+									"1 1/2 pints liquid"
+								],
+								[
+									"Bucket",
+									"3 gallons liquid, 1/2 cubic foot solid"
+								],
+								[
+									"Chest",
+									"12 cubic feet/300 pounds of gear"
+								],
+								[
+									"Flask or tankard",
+									"1 pint liquid"
+								],
+								[
+									"Jug or pitcher",
+									"1 gallon liquid"
+								],
+								[
+									"Pot, iron",
+									"1 gallon liquid"
+								],
+								[
+									"Pouch",
+									"1/5 cubic foot/6 pounds of gear"
+								],
+								[
+									"Sack",
+									"1 cubic foot/30 pounds of gear"
+								],
+								[
+									"Vial",
+									"4 ounces liquid"
+								],
+								[
+									"Waterskin",
+									"4 pints liquid"
+								]
+							],
+							"footnotes": [
+								"* You can also strap items, such as a bedroll or a coil of rope, to the outside of a backpack."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Equipment Packs",
+							"entries": [
+								"The starting equipment you get from your class includes a collection of useful adventuring gear, put together in a pack. The contents of these packs are listed here. If you are buying your starting equipment, you can purchase a pack for the price shown, which might be cheaper than buying the items individually.",
+								{
+									"type": "entries",
+									"name": "Burglar's Pack (16gp)",
+									"entries": [
+										" Includes a backpack, a bag of 1,000 ball bearings, 10 feet of string, a bell, 5 candles, a crowbar, a hammer, 10 pitons, a hooded lantern, 2 flasks of oil, 5 days of rations, a tinderbox, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Diplomat's Pack (39gp)",
+									"entries": [
+										"Includes a chest, 2 cases for maps and scrolls, a set of fine clothes, a bottle of ink, an ink pen, a lamp, 2 flasks of oil, 5 sheets of paper, a vial of perfume, sealing wax, and soap."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Dungeoneer's Pack (12gp)",
+									"entries": [
+										" Includes a backpack, a crowbar, a hammer, 10 pitons, 10 torches, a tinderbox, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Entertainer's Pack (40gp)",
+									"entries": [
+										"Includes a backpack, a bedroll, 2 costumes, 5 candles, 5 days of rations, a waterskin, and a disguise kit."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Explorer's Pack (10gp)",
+									"entries": [
+										"Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Priest's Pack (19gp)",
+									"entries": [
+										"Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Scholar's Pack (40gp)",
+									"entries": [
+										"Includes a backpack, a book of lore, a bottle of ink, an ink pen, 10 sheets of parchment, a little bag of sand, and a small knife."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Armor and Shields",
+					"entries": [
+						"D&D worlds are a vast tapestry made up of many different cultures, each with its own technology level. For this reason, adventurers have access to a variety of armor types, ranging from leather armor to chain mail to costly plate armor, with several other kinds of armor in between. The Armor table collects the most commonly available types of armor found in the game and separates them into three categories: light armor, medium armor, and heavy armor. Many warriors supplement their armor with a shield.",
+						"The Armor table shows the cost, weight, and other properties of the common types of armor worn in the worlds of D&D.",
+						{
+							"type": "table",
+							"caption": "Armor",
+							"colLabels": [
+								"Armor",
+								"Cost",
+								"Armor Class (AC)",
+								"Strength",
+								"Stealth",
+								"Weight"
+							],
+							"colStyles": [
+								"col-xs-3",
+								"col-xs-1 text-align-right",
+								"col-xs-3 text-align-center",
+								"col-xs-1",
+								"col-xs-3",
+								"col-xs-1 text-align-center"
+							],
+							"rows": [
+								[
+									"{@i Light Armor}",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Padded",
+										"5 gp",
+										"11 + Dex modifier",
+										"\u2014",
+										"Disadvantage",
+										"8 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Leather",
+										"10 gp",
+										"11 + Dex modifier",
+										"\u2014",
+										"\u2014",
+										"10 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Studded leather",
+										"45 gp",
+										"12 + Dex modifier",
+										"\u2014",
+										"\u2014",
+										"13 lb."
+									]
+								},
+								[
+									"{@i Medium Armor}",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Hide",
+										"10 gp",
+										"12 + Dex modifier (max 2)",
+										"\u2014",
+										"\u2014",
+										"12 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Chain shirt",
+										"50 gp",
+										"13 + Dex modifier (max 2)",
+										"\u2014",
+										"\u2014",
+										"20 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Scale mail",
+										"50 gp",
+										"14 + Dex modifier (max 2)",
+										"\u2014",
+										"Disadvantage",
+										"45 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Breastplate",
+										"400 gp",
+										"14 + Dex modifier (max 2)",
+										"\u2014",
+										"\u2014",
+										"20 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Half plate",
+										"750 gp",
+										"15 + Dex modifier (max 2)",
+										"\u2014",
+										"Disadvantage",
+										"40 lb."
+									]
+								},
+								[
+									"{@i Heavy Armor}",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Ring mail",
+										"30 gp",
+										"14",
+										"\u2014",
+										"Disadvantage",
+										"40 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Chain mail",
+										"75 gp",
+										"16",
+										"Str 13",
+										"Disadvantage",
+										"55 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Splint",
+										"200 gp",
+										"17",
+										"Str 15",
+										"Disadvantage",
+										"60 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Plate",
+										"1,500 gp",
+										"18",
+										"Str 15",
+										"Disadvantage",
+										"65 lb."
+									]
+								},
+								[
+									"{@i Shield}",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Shield",
+										"10 gp",
+										"+2",
+										"\u2014",
+										"\u2014",
+										"6 lb."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Armor Proficiency",
+											"entries": [
+												"Anyone can put on a suit of armor or strap a shield to an arm. Only those proficient in the armor's use know how to wear it effectively, however.",
+												"Your class gives you proficiency with certain types of armor. If you wear armor that you lack proficiency with, you have disadvantage on any ability check, saving throw, or attack roll that involves Strength or Dexterity, and you can't cast spells."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Armor Class (AC)",
+											"entries": [
+												"Armor protects its wearer from attacks. The armor (and shield) you wear determines your base Armor Class."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Heavy Armor",
+											"entries": [
+												"Heavier armor interferes with the wearer's ability to move quickly, stealthily, and freely.",
+												"If the Armor table shows \"Str 13\" or \"Str 15\" in the Strength column for an armor type, the armor reduces the wearer's speed by 10 feet unless the wearer has a Strength score equal to or higher than the listed score."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Stealth",
+											"entries": [
+												"If the Armor table shows \"Disadvantage\" in the Stealth column, the wearer has disadvantage on Dexterity (Stealth) checks."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Shields",
+											"entries": [
+												"A shield is made from wood or metal and is carried in one hand. Wielding a shield increases your Armor Class by 2. You can benefit from only one shield at a time."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Variant: Equipment Sizes",
+							"entries": [
+								"In most campaigns, you can use or wear any equipment that you find on your adventures, within the bounds of common sense. For example, a burly half-orc won't fit in a halfling's leather armor, and a gnome would be swallowed up in a cloud giant's elegant robe.",
+								"The DM can impose more realism. For example, a suit of plate armor made for one human might not fit another one without significant alterations, and a guard's uniform might be visibly ill-fitting when an adventurer tries to wear it as a disguise.",
+								"Using this variant, when adventurers find armor, clothing, and similar items that are made to be worn, they might need to visit an armorsmith, tailor, leatherworker, or similar expert to make the item wearable. The cost for such work varies from 10 to 40 percent of the market price of the item. The DM can either roll 1d4 × 10 or determine the increase in cost based on the extent of the alterations required."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Light Armor",
+							"entries": [
+								"Made from supple and thin materials, light armor favors agile adventurers since it offers some protection without sacrificing mobility. If you wear light armor, you add your Dexterity modifier to the base number from your armor type to determine your Armor Class.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Padded",
+											"entries": [
+												"Padded armor consists of quilted layers of cloth and batting."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Leather",
+											"entries": [
+												"The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Studded Leather",
+											"entries": [
+												"Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Medium Armor",
+							"entries": [
+								"Medium armor offers more protection than light armor, but it also impairs movement more. If you wear medium armor, you add your Dexterity modifier, to a maximum of +2, to the base number from your armor type to determine your Armor Class.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Hide",
+											"entries": [
+												"This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Chain Shirt",
+											"entries": [
+												"Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Scale Mail",
+											"entries": [
+												"This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Breastplate",
+											"entries": [
+												"This armor consists of a fitted metal chest piece worn with supple leather. Although it leaves the legs and arms relatively unprotected, this armor provides good protection for the wearer's vital organs while leaving the wearer relatively unencumbered."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Half Plate",
+											"entries": [
+												"Half plate consists of shaped metal plates that cover most of the wearer's body. It does not include leg protection beyond simple greaves that are attached with leather straps."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Heavy Armor",
+							"entries": [
+								"Of all the armor categories, heavy armor offers the best protection. These suits of armor cover the entire body and are designed to stop a wide range of attacks. Only proficient warriors can manage their weight and bulk. Heavy armor doesn't let you add your Dexterity modifier to your Armor Class, but it also doesn't penalize you if your Dexterity modifier is negative.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Ring Mail",
+											"entries": [
+												"This armor is leather armor with heavy rings sewn into it. The rings help reinforce the armor against blows from swords and axes. Ring mail is inferior to chain mail, and it's usually worn only by those who can't afford better armor."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Chain Mail",
+											"entries": [
+												"Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. The suit includes gauntlets."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Splint",
+											"entries": [
+												" This armor is made of narrow vertical strips of metal riveted to a backing of leather that is worn over cloth padding. Flexible chain mail protects the joints."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Plate",
+											"entries": [
+												"Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor. Buckles and straps distribute the weight over the body."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Getting Into and Out of Armor",
+							"entries": [
+								"The time it takes to don or doff armor depends on the armor's category.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Don",
+											"entries": [
+												"This is the time it takes to put on armor. You benefit from the armor's AC only if you take the full time to don the suit of armor."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Doff",
+											"entries": [
+												"This is the time it takes to take off armor. If you have help, reduce this time by half."
+											]
+										}
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Donning and Doffing Armor",
+									"colLabels": [
+										"Category",
+										"Don",
+										"Doff"
+									],
+									"colStyles": [
+										"col-xs-4",
+										"col-xs-4",
+										"col-xs-4"
+									],
+									"rows": [
+										[
+											"Light Armor",
+											"1 minute",
+											"1 minute"
+										],
+										[
+											"Medium Armor",
+											"5 minutes",
+											"1 minute"
+										],
+										[
+											"Heavy Armor",
+											"10 minutes",
+											"5 minutes"
+										],
+										[
+											"Shield",
+											"1 action",
+											"1 action"
+										]
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Expenses",
+					"entries": [
+						"When not descending into the depths of the earth, exploring ruins for lost treasures, or waging war against the encroaching darkness, adventurers face more mundane realities. Even in a fantastical world, people require basic necessities such as shelter, sustenance, and clothing. These things cost money, although some lifestyles cost more than others.",
+						{
+							"type": "entries",
+							"name": "Lifestyle Expenses",
+							"entries": [
+								"Lifestyle expenses provide you with a simple way to account for the cost of living in a fantasy world. They cover your accommodations, food and drink, and all your other necessities. Furthermore, expenses cover the cost of maintaining your equipment so you can be ready when adventure next calls.",
+								"At the start of each week or month (your choice), choose a lifestyle from the Expenses table and pay the price to sustain that lifestyle. The prices listed are per day, so if you wish to calculate the cost of your chosen lifestyle over a thirty-day period, multiply the listed price by 30. Your lifestyle might change from one period to the next, based on the funds you have at your disposal, or you might maintain the same lifestyle throughout your character's career.",
+								"Your lifestyle choice can have consequences. Maintaining a wealthy lifestyle might help you make contacts with the rich and powerful, though you run the risk of attracting thieves. Likewise, living frugally might help you avoid criminals, but you are unlikely to make powerful connections.",
+								{
+									"type": "table",
+									"caption": "Lifestyle Expenses",
+									"colLabels": [
+										"Lifestyle",
+										"Price/Day"
+									],
+									"colStyles": [
+										"col-xs-6",
+										"col-xs-6 text-align-right"
+									],
+									"rows": [
+										[
+											"Wretched",
+											"-"
+										],
+										[
+											"Squalid",
+											"1 sp"
+										],
+										[
+											"Poor",
+											"2 sp"
+										],
+										[
+											"Modest",
+											"1 gp"
+										],
+										[
+											"Comfortable",
+											"2 gp"
+										],
+										[
+											"Wealthy",
+											"4 gp"
+										],
+										[
+											"Aristocratic",
+											"10 gp minimum"
+										]
+									]
+								},
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Wretched",
+											"entries": [
+												" You live in inhumane conditions. With no place to call home, you shelter wherever you can, sneaking into barns, huddling in old crates, and relying on the good graces of people better off than you. A wretched lifestyle presents abundant dangers. Violence, disease, and hunger follow you wherever you go. Other wretched people covet your armor, weapons, and adventuring gear, which represent a fortune by their standards. You are beneath the notice of most people."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Squalid",
+											"entries": [
+												" You live in a leaky stable, a mud-floored hut just outside town, or a vermin-infested boarding house in the worst part of town. You have shelter from the elements, but you live in a desperate and often violent environment, in places rife with disease, hunger, and misfortune.",
+												"You are beneath the notice of most people, and you have few legal protections. Most people at this lifestyle level have suffered some terrible setback. They might be disturbed, marked as exiles, or suffer from disease."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Poor",
+											"entries": [
+												" A poor lifestyle means going without the comforts available in a stable community. Simple food and lodgings, threadbare clothing, and unpredictable conditions result in a sufficient, though probably unpleasant, experience. Your accommodations might be a room in a flophouse or in the common room above a tavern. You benefit from some legal protections, but you still have to contend with violence, crime, and disease. People at this lifestyle level tend to be unskilled laborers, costermongers, peddlers, thieves, mercenaries, and other disreputable types."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Modest",
+											"entries": [
+												" A modest lifestyle keeps you out of the slums and ensures that you can maintain your equipment. You live in an older part of town, renting a room in a boarding house, inn, or temple. You don't go hungry or thirsty, and your living conditions are clean, if simple. Ordinary people living modest lifestyles include soldiers with families, laborers, students, priests, hedge wizards, and the like."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Comfortable",
+											"entries": [
+												" Choosing a comfortable lifestyle means that you can afford nicer clothing and can easily maintain your equipment. You live in a small cottage in a middle-class neighborhood or in a private room at a fine inn. You associate with merchants, skilled tradespeople, and military officers."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Wealthy",
+											"entries": [
+												" Choosing a wealthy lifestyle means living a life of luxury, though you might not have achieved the social status associated with the old money of nobility or royalty. You live a lifestyle comparable to that of a highly successful merchant, a favored servant of the royalty, or the owner of a few small businesses. You have respectable lodgings, usually a spacious home in a good part of town or a comfortable suite at a fine inn. You likely have a small staff of servants."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Aristocratic",
+											"entries": [
+												" You live a life of plenty and comfort. You move in circles populated by the most powerful people in the community. You have excellent lodgings, perhaps a townhouse in the nicest part of town or rooms in the finest inn. You dine at the best restaurants, retain the most skilled and fashionable tailor, and have servants attending to your every need. You receive invitations to the social gatherings of the rich and powerful, and spend evenings in the company of politicians, guild leaders, high priests, and nobility. You must also contend with the highest levels of deceit and treachery.",
+												"The wealthier you are, the greater the chance you will be drawn into political intrigue as a pawn or participant."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Food, Drink, and Lodging",
+							"entries": [
+								"The Food, Drink, and Lodging table gives prices for individual food items and a single night's lodging. These prices are included in your total lifestyle expenses.",
+								{
+									"type": "table",
+									"caption": "Food, Drink, and Lodging",
+									"colLabels": [
+										"Item",
+										"Cost"
+									],
+									"colStyles": [
+										"col-xs-6",
+										"col-xs-6 text-align-right"
+									],
+									"rows": [
+										[
+											"{@i Ale}",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Gallon",
+												"2 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Mug",
+												"4 cp"
+											]
+										},
+										[
+											"Banquet (per person)",
+											"10 gp"
+										],
+										[
+											"Bread, loaf",
+											"2 cp"
+										],
+										[
+											"Cheese, hunk",
+											"1 sp"
+										],
+										[
+											"{@i Inn stay (per day)}",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Squalid",
+												"7 cp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Poor",
+												"1 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Modest",
+												"5 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Comfortable",
+												"8 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Wealthy",
+												"2 gp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Aristocratic",
+												"4 gp"
+											]
+										},
+										[
+											"{@i Meals (per day)}",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Squalid",
+												"3 cp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Poor",
+												"6 cp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Modest",
+												"3 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Comfortable",
+												"5 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Wealthy",
+												"8 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Aristocratic",
+												"2 gp"
+											]
+										},
+										[
+											"Meat, chunk",
+											"3 sp"
+										],
+										[
+											"{@i Wine}",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Common (pitcher)",
+												"2 sp"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Fine (bottle)",
+												"10 gp"
+											]
+										}
+									]
+								},
+								{
+									"type": "inset",
+									"name": "Self-Sufficiency",
+									"entries": [
+										"The expenses and lifestyles described in this chapter assume that you are spending your time between adventures in town, availing yourself of whatever services you can afford-paying for food and shelter, paying townspeople to sharpen your sword and repair your armor, and so on. Some characters, though, might prefer to spend their time away from civilization, sustaining themselves in the wild by hunting, foraging, and repairing their own gear.",
+										"Maintaining this kind of lifestyle doesn't require you to spend any coin, but it is time-consuming. If you spend your time between adventures practicing a profession, as described in chapter 8, you can eke out the equivalent of a poor lifestyle. Proficiency in the Survival skill lets you live at the equivalent of a comfortable lifestyle."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Services",
+							"entries": [
+								"Adventurers can pay nonplayer characters to assist them or act on their behalf in a variety of circumstances. Most such hirelings have fairly ordinary skills, while others are masters of a craft or art, and a few are experts with specialized adventuring skills.",
+								"Some of the most basic types of hirelings appear on the Services table. Other common hirelings include any of the wide variety of people who inhabit a typical town or city, when the adventurers pay them to perform a specific task. For example, a wizard might pay a carpenter to construct an elaborate chest (and its miniature replica) for use in the {@spell Leomund's secret chest} spell. A fighter might commission a blacksmith to forge a special sword. A bard might pay a tailor to make exquisite clothing for an upcoming performance in front of the duke.",
+								"Other hirelings provide more expert or dangerous services. Mercenary soldiers paid to help the adventurers take on a hobgoblin army are hirelings, as are sages hired to research ancient or esoteric lore. If a high-level adventurer establishes a stronghold of some kind, he or she might hire a whole staff of servants and agents to run the place, from a castellan or steward to menial laborers to keep the stables clean. These hirelings often enjoy a long-term contract that includes a place to live within the stronghold as part of the offered compensation.",
+								"Skilled hirelings include anyone hired to perform a service that involves a proficiency (including weapon, tool, or skill): a mercenary, artisan, scribe, and so on. The pay shown is a minimum; some expert hirelings require more pay. Untrained hirelings are hired for menial work that requires no particular skill and can include laborers, porters, maids, and similar workers.",
+								{
+									"type": "table",
+									"caption": "Services",
+									"colLabels": [
+										"Service",
+										"Pay"
+									],
+									"colStyles": [
+										"col-xs-6",
+										"col-xs-6"
+									],
+									"rows": [
+										[
+											"{@i Coach cab}",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Between towns",
+												"3 cp per mile"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Coach cab, Within a city",
+												"1 cp"
+											]
+										},
+										[
+											"{@i Hireling}",
+											""
+										],
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Skilled",
+												"2 gp per day"
+											]
+										},
+										{
+											"type": "row",
+											"style": "row-indent-first",
+											"row": [
+												"Untrained",
+												"2 sp per day"
+											]
+										},
+										[
+											"Messenger",
+											"2 cp per mile"
+										],
+										[
+											"Road or gate toll",
+											"1 cp"
+										],
+										[
+											"Ship's passage",
+											"1 sp per mile"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Spellcasting Services",
+							"entries": [
+								"People who are able to cast spells don't fall into the category of ordinary hirelings. It might be possible to find someone willing to cast a spell in exchange for coin or favors, but it is rarely easy and no established pay rates exist. As a rule, the higher the level of the desired spell, the harder it is to find someone who can cast it and the more it costs.",
+								"Hiring someone to cast a relatively common spell of 1st or 2nd level, such as cure wounds or identify, is easy enough in a city or town, and might cost 10 to 50 gold pieces (plus the cost of any expensive material components). Finding someone able and willing to cast a higher-level spell might involve traveling to a large city, perhaps one with a university or prominent temple. Once found, the spellcaster might ask for a service instead of payment-the kind of service that only adventurers can provide, such as retrieving a rare item from a dangerous locale or traversing a monster infested wilderness to deliver something important to a distant settlement."
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Mounts and Vehicles",
+					"entries": [
+						"A good mount can help you move more quickly through the wilderness, but its primary purpose is to carry the gear that would otherwise slow you down. The Mounts and Other Animals table shows each animal's speed and base carrying capacity.",
+						"An animal pulling a carriage, cart, chariot, sled, or wagon can move weight up to five times its base carrying capacity, including the weight of the vehicle. If multiple animals pull the same vehicle, they can add their carrying capacity together.",
+						"Mounts other than those listed here are available in the worlds of D&D, but they are rare and not normally available for purchase. These include flying mounts (pegasi, griffons, hippogriffs, and similar animals) and even aquatic mounts (giant sea horses, for example). Acquiring such a mount often means securing an egg and raising the creature yourself, making a bargain with a powerful entity, or negotiating with the mount itself.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Barding",
+									"entries": [
+										"Barding is armor designed to protect an animal's head, neck, chest, and body. Any type of armor shown on the Armor table in this chapter can be purchased as barding. The cost is four times the equivalent armor made for humanoids, and it weighs twice as much."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Saddles",
+									"entries": [
+										"A military saddle braces the rider, helping you keep your seat on an active mount in battle. It gives you advantage on any check you make to remain mounted. An exotic saddle is required for riding any aquatic or flying mount."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Vehicle Proficiency",
+									"entries": [
+										"If you have proficiency with a certain kind of vehicle (land or water), you can add your proficiency bonus to any check you make to control that kind of vehicle in difficult circumstances."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Rowed Vessels",
+									"entries": [
+										"Keelboats and rowboats are used on lakes and rivers. If going downstream, add the speed of the current (typically 3 miles per hour) to the speed of the vehicle. These vehicles can't be rowed against any significant current, but they can be pulled upstream by draft animals on the shores. A rowboat weighs 100 pounds, in case adventurers carry it over land."
+									]
+								}
+							]
+						},
+						{
+							"type": "table",
+							"caption": "Mounts and Other Animals",
+							"colLabels": [
+								"Item",
+								"Cost",
+								"Speed",
+								"Carrying Capacity"
+							],
+							"colStyles": [
+								"col-xs-6",
+								"col-xs-2 text-align-right",
+								"col-xs-2 text-align-right",
+								"col-xs-2 text-align-right"
+							],
+							"rows": [
+								[
+									"Camel",
+									"50 gp",
+									"50 ft.",
+									"480 lb."
+								],
+								[
+									"Donkey or mule",
+									"8 gp",
+									"40 ft.",
+									"420 lb."
+								],
+								[
+									"Elephant",
+									"200 gp",
+									"40 ft.",
+									"1,320 lb."
+								],
+								[
+									"Horse, draft",
+									"50 gp",
+									"40 ft.",
+									"540 lb."
+								],
+								[
+									"Horse, riding",
+									"75 gp",
+									"60 ft.",
+									"480 lb."
+								],
+								[
+									"Mastiff",
+									"25 gp",
+									"40 ft.",
+									"195 lb."
+								],
+								[
+									"Pony",
+									"30 gp",
+									"40 ft.",
+									"225 lb."
+								],
+								[
+									"Warhorse",
+									"400 gp",
+									"60 ft.",
+									"540 lb."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"caption": "Tack, Harness, and Drawn Vehicles",
+							"colLabels": [
+								"Item",
+								"Cost",
+								"Weight"
+							],
+							"colStyles": [
+								"col-xs-8",
+								"col-xs-2 text-align-right",
+								"col-xs-2 text-align-right"
+							],
+							"rows": [
+								[
+									"Barding",
+									"×4",
+									"×2"
+								],
+								[
+									"Bit and bridle",
+									"2 gp",
+									"1 lb."
+								],
+								[
+									"Carriage",
+									"100 gp",
+									"600 lb."
+								],
+								[
+									"Cart",
+									"15 gp",
+									"200 lb."
+								],
+								[
+									"Chariot",
+									"250 gp",
+									"100 lb."
+								],
+								[
+									"Animal Feed (per day)",
+									"5 cp",
+									"10 lb."
+								],
+								[
+									"{@i Saddle}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Exotic",
+										"60 gp",
+										"40 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Military",
+										"20 gp",
+										"30 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Pack",
+										"5 gp",
+										"15 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Riding",
+										"10 gp",
+										"25 lb."
+									]
+								},
+								[
+									"Saddlebags",
+									"4 gp",
+									"8 lb."
+								],
+								[
+									"Sled",
+									"20 gp",
+									"300 lb."
+								],
+								[
+									"Stabling (per day)",
+									"5 sp",
+									"\u2014"
+								],
+								[
+									"Wagon",
+									"35 gp",
+									"400 lb."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"caption": "Waterborne Vehicles",
+							"colLabels": [
+								"Item",
+								"Cost",
+								"Weight"
+							],
+							"colStyles": [
+								"col-xs-8",
+								"col-xs-2 text-align-right",
+								"col-xs-2 text-align-right"
+							],
+							"rows": [
+								[
+									"Galley",
+									"30,000 gp",
+									"4 mph"
+								],
+								[
+									"Keelboat",
+									"3,000 gp",
+									"1 mph"
+								],
+								[
+									"Longship",
+									"10,000 gp",
+									"3 mph"
+								],
+								[
+									"Rowboat",
+									"50 gp",
+									"1½ mph"
+								],
+								[
+									"Sailing ship",
+									"10,000 gp",
+									"2 mph"
+								],
+								[
+									"Warship",
+									"25,000 gp",
+									"2½ mph"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Starting Equipment",
+					"entries": [
+						"When you create your character, you receive equipment based on a combination of your class and background. Alternatively, you can start with a number of gold pieces based on your class and spend them on items from the lists in this chapter. See the Starting Wealth by Class table to determine how much gold you have to spend.",
+						"You decide how your character came by this starting equipment. It might have been an inheritance, or goods that the character purchased during his or her upbringing. You might have been equipped with a weapon, armor, and a backpack as part of military service. You might even have stolen your gear. A weapon could be a family heirloom, passed down from generation to generation until your character finally took up the mantle and followed in an ancestor's adventurous footsteps.",
+						{
+							"type": "table",
+							"caption": "Starting Wealth by Class",
+							"colLabels": [
+								"Class",
+								"Funds"
+							],
+							"colStyles": [
+								"col-xs-6",
+								"col-xs-6"
+							],
+							"rows": [
+								[
+									"Barbarian",
+									"2d4 × 10 gp"
+								],
+								[
+									"Bard",
+									"5d4 × 10 gp"
+								],
+								[
+									"Cleric",
+									"5d4 × 10 gp"
+								],
+								[
+									"Druid",
+									"2d4 × 10 gp"
+								],
+								[
+									"Fighter",
+									"5d4 × 10 gp"
+								],
+								[
+									"Monk",
+									"5d4 gp"
+								],
+								[
+									"Paladin",
+									"5d4 × 10 gp"
+								],
+								[
+									"Ranger",
+									"5d4 × 10 gp"
+								],
+								[
+									"Rogue",
+									"4d4 × 10 gp"
+								],
+								[
+									"Sorcerer",
+									"3d4 × 10 gp"
+								],
+								[
+									"Warlock",
+									"4d4 × 10 gp"
+								],
+								[
+									"Wizard",
+									"4d4 × 10 gp"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Tools",
+					"entries": [
+						"A tool helps you to do something you couldn't otherwise do, such as craft or repair an item, forge a document, or pick a lock. Your race, class, background, or feats give you proficiency with certain tools. Proficiency with a tool allows you to add your proficiency bonus to any ability check you make using that tool. Tool use is not tied to a single ability, since proficiency with a tool represents broader knowledge of its use. For example, the DM might ask you to make a Dexterity check to carve a fine detail with your woodcarver's tools, or a Strength check to make something out of particularly hard wood.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Artisan's Tools",
+											"entries": [
+												"These special tools include the items needed to pursue a craft or trade. The table shows examples of the most common types of tools, each providing items related to a single craft. Proficiency with a set of artisan's tools lets you add your proficiency bonus to any ability checks you make using the tools in your craft. Each type of artisan's tools requires a separate proficiency."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Disguise Kit",
+											"entries": [
+												"This pouch of cosmetics, hair dye, and small props lets you create disguises that change your physical appearance. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to create a visual disguise."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Forgery Kit",
+											"entries": [
+												"This small box contains a variety of papers and parchments, pens and inks, seals and sealing wax, gold and silver leaf, and other supplies necessary to create convincing forgeries of physical documents. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to create a physical forgery of a document."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Gaming Set",
+											"entries": [
+												"This item encompasses a wide range of game pieces, including dice and decks of cards (for games such as Three-Dragon Ante). A few common examples appear on the Tools table, but other kinds of gaming sets exist. If you are proficient with a gaming set, you can add your proficiency bonus to ability checks you make to play a game with that set. Each type of gaming set requires a separate proficiency."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Herbalism Kit",
+											"entries": [
+												"This kit contains a variety of instruments such as clippers, mortar and pestle, and pouches and vials used by herbalists to create remedies and potions.",
+												"Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to identify or apply herbs. Also, proficiency with this kit is required to create antitoxin and potions of healing."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Musical Instrument",
+											"entries": [
+												"Several of the most common types of musical instruments are shown on the table as examples. If you have proficiency with a given musical instrument, you can add your proficiency bonus to any ability checks you make to play music with the instrument. A bard can use a musical instrument as a spellcasting focus, as described in Part 3: The Rules of Magic, Casting a Spell. Each type of musical instrument requires a separate proficiency."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Navigator's Tools",
+											"entries": [
+												"This set of instruments is used for navigation at sea. Proficiency with navigator's tools lets you chart a ship's course and follow navigation charts. In addition, these tools allow you to add your proficiency bonus to any ability check you make to avoid getting lost at sea."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Poisoner's Kit",
+											"entries": [
+												"A poisoner's kit includes the vials, chemicals, and other equipment necessary for the creation of poisons. Proficiency with this kit lets you add your proficiency bonus to any ability checks you make to craft or use poisons."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Thieves' Tools",
+											"entries": [
+												"This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "table",
+							"caption": "",
+							"colLabels": [
+								"Item",
+								"Cost",
+								"Weight"
+							],
+							"colStyles": [
+								"col-xs-8",
+								"col-xs-2 text-align-right",
+								"col-xs-2 text-align-center"
+							],
+							"rows": [
+								[
+									"{@i Artisan's tools}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Alchemist's supplies",
+										"50 gp",
+										"8 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Brewer's supplies",
+										"20 gp",
+										"9 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Calligrapher's supplies",
+										"10 gp",
+										"5 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Carpenter's tools",
+										"8 gp",
+										"6 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Cartographer's tools",
+										"15 gp.",
+										"6 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Cobbler's tools",
+										"5 gp",
+										"5 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Cook's utensils",
+										"1 gp",
+										"8 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Glassblower's tools",
+										"30 gp",
+										"5 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Jeweler's tools",
+										"25 gp",
+										"2 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Leatherworker's tools",
+										"5 gp",
+										"5 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Mason's tools",
+										"10 gp",
+										"8 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Painter's supplies",
+										"10 gp",
+										"5 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Potter's tools",
+										"10 gp",
+										"3 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Smith's tools",
+										"20 gp",
+										"8 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Tinker's tools",
+										"50 gp",
+										"10 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Weaver's tools",
+										"1 gp",
+										"5 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Woodcarver's tools",
+										"1 gp",
+										"5 lb."
+									]
+								},
+								[
+									"Disguise Kit",
+									"25 gp",
+									"3 lb."
+								],
+								[
+									"Forgery Kit",
+									"15 gp",
+									"5 lb."
+								],
+								[
+									"{@i Gaming sets}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Dice set",
+										"1 sp",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Playing card set",
+										"5 sp",
+										"\u2014"
+									]
+								},
+								[
+									"Herbalism Kit",
+									"5 gp",
+									"3 lb."
+								],
+								[
+									"{@i Musical instruments}",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Bagpipes",
+										"30 gp",
+										"6 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Drum",
+										"6 gp",
+										"3 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Dulcimer",
+										"25 gp",
+										"10 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Flute",
+										"2 gp",
+										"1 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Lute",
+										"35 gp",
+										"2 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Lyre",
+										"30 gp",
+										"2 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Horn",
+										"3 gp",
+										"2 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Pan flute",
+										"12 gp",
+										"2 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Shawm",
+										"2 gp",
+										"1 lb."
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Viol",
+										"30 gp",
+										"1 lb."
+									]
+								},
+								[
+									"Navigator's tools",
+									"25 gp",
+									"2 lb."
+								],
+								[
+									"Poisoner's kit",
+									"50 gp",
+									"2 lb."
+								],
+								[
+									"Thieves' tools",
+									"25 gp",
+									"1 lb."
+								],
+								[
+									"Vehicles (land or water)",
+									"*",
+									"*"
+								]
+							],
+							"footnotes": [
+								"* See the \"Mounts and Vehicles\" section."
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Trade Goods",
+					"entries": [
+						"Most wealth is not in coins. It is measured in livestock, grain, land, rights to collect taxes, or rights to resources (such as a mine or a forest).",
+						"Guilds, nobles, and royalty regulate trade. Chartered companies are granted rights to conduct trade along certain routes, to send merchant ships to various ports, or to buy or sell specific goods. Guilds set prices for the goods or services that they control, and determine who may or may not offer those goods and services. Merchants commonly exchange trade goods without using currency. The Trade Goods table shows the value of commonly exchanged goods.",
+						{
+							"type": "table",
+							"caption": "Trade Goods",
+							"colLabels": [
+								"Cost",
+								"Goods"
+							],
+							"colStyles": [
+								"col-xs-1 text-align-right",
+								"col-xs-11"
+							],
+							"rows": [
+								[
+									"1 cp",
+									"1 lb. of wheat"
+								],
+								[
+									"2 cp",
+									"1 lb. of flour or one chicken"
+								],
+								[
+									"5 cp",
+									"1 lb. of salt"
+								],
+								[
+									"1 sp",
+									"1 lb. of iron or 1 sq. yd. of canvas"
+								],
+								[
+									"5 sp",
+									"1 lb. of copper or 1 sq. yd. of cotton cloth"
+								],
+								[
+									"1 gp",
+									"1 lb. of ginger or one goat"
+								],
+								[
+									"2 gp",
+									"1 lb. of cinnamon or pepper, or one sheep"
+								],
+								[
+									"3 gp",
+									"1 lb. of cloves or one pig"
+								],
+								[
+									"5 gp",
+									"1 lb. of silver or 1 sq. yd. of linen"
+								],
+								[
+									"10 gp",
+									"1 sq. yd. of silk or one cow"
+								],
+								[
+									"15 gp",
+									"1 lb. of saffron or one ox"
+								],
+								[
+									"50 gp",
+									"1 lb. of gold"
+								],
+								[
+									"500 gp",
+									"1 lb. of platinum"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Wealth",
+					"entries": [
+						"Wealth appears in many forms in a D&D world. Coins, gemstones, trade goods, art objects, animals, and property can reflect your character's financial well-being. Members of the peasantry trade in goods, bartering for what they need and paying taxes in grain and cheese. Members of the nobility trade in legal rights, such as the rights to mine, a port, or farmland, or in gold bars, measuring gold by the pound rather than by the coin. Only merchants, adventurers, and those offering professional services for hire deal in coins.",
+						{
+							"type": "entries",
+							"name": "Coinage",
+							"entries": [
+								"Common coins come in several different denominations based on the relative worth of the metal from which they are made. The three most common coins are the gold piece (gp), the silver piece (sp), and the copper piece (cp).",
+								"With one gold piece, a character can buy a quiver, 50 feet of good rope, or a goat. A skilled (but not exceptional) artisan can earn one gold piece a day. The gold piece is the standard unit of measure for wealth, even if the coin itself is not commonly used. When merchants discuss deals that involve goods or services worth hundreds or thousands of gold pieces, the transactions don't usually involve the exchange of individual coins. Rather, the gold piece is a standard measure of value, and the actual exchange is in gold bars, letters of credit, or valuable goods.",
+								"One gold piece is worth ten silver pieces, the most prevalent coin among commoners. A silver piece buys a set of dice, a flask of lamp oil, or a night's rest in a poor inn.",
+								"One silver piece is worth ten copper pieces, which are common among laborers and beggars. A single copper piece buys a candle, a torch, or a piece of chalk.",
+								"In addition, unusual coins made of other precious metals sometimes appear in treasure hoards. The electrum piece (ep) and the platinum piece (pp) originate from fallen empires and lost kingdoms, and they sometimes arouse suspicion and skepticism when used in transactions. An electrum piece is worth five silver pieces, and a platinum piece is worth ten gold pieces.",
+								"A standard coin weighs about a third of an ounce, so fifty coins weigh a pound.",
+								{
+									"type": "table",
+									"caption": "Standard Exchange Rates",
+									"colLabels": [
+										"Coin",
+										"cp",
+										"sp",
+										"ep",
+										"gp",
+										"pp"
+									],
+									"colStyles": [
+										"col-xs-2",
+										"col-xs-2",
+										"col-xs-2",
+										"col-xs-2",
+										"col-xs-2",
+										"col-xs-2"
+									],
+									"rows": [
+										[
+											"Copper (cp)",
+											"1",
+											"1/10",
+											"1/50",
+											"1/100",
+											"1/1,000"
+										],
+										[
+											"Silver (sp)",
+											"10",
+											"1",
+											"1/5",
+											"1/10",
+											"1/100"
+										],
+										[
+											"Electrum (ep)",
+											"50",
+											"5",
+											"1",
+											"1/2",
+											"1/20"
+										],
+										[
+											"Gold (gp)",
+											"100",
+											"10",
+											"2",
+											"1",
+											"1/10"
+										],
+										[
+											"Platinum (pp)",
+											"1,000",
+											"100",
+											"20",
+											"10",
+											"1"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Selling Treasure",
+							"entries": [
+								"Opportunities abound to find treasure, equipment, weapons, armor, and more in the dungeons you explore. Normally, you can sell your treasures and trinkets when you return to a town or other settlement, provided that you can find buyers and merchants interested in your loot.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Arms, Armor, and Other Equipment",
+											"entries": [
+												"As a general rule, undamaged weapons, armor, and other equipment fetch half their cost when sold in a market. Weapons and armor used by monsters are rarely in good enough condition to sell."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Magic Items",
+											"entries": [
+												"Selling magic items is problematic. Finding someone to buy a potion or a scroll isn't too hard, but other items are out of the realm of most but the wealthiest nobles. Likewise, aside from a few common magic items, you won't normally come across magic items or spells to purchase. The value of magic is far beyond simple gold and should always be treated as such."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Gems, Jewelry, and Art Objects",
+											"entries": [
+												"These items retain their full value in the marketplace, and you can either trade them in for coin or use them as currency for other transactions. For exceptionally valuable treasures, the DM might require you to find a buyer in a large town or larger community first."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Weapons",
+					"entries": [
+						"Your class grants proficiency in certain weapons, reflecting both the class's focus and the tools you are most likely to use. Whether you favor a longsword or a longbow, your weapon and your ability to wield it effectively can mean the difference between life and death while adventuring.",
+						"The Weapons table shows the most common weapons used in the worlds of D&D, their price and weight, the damage they deal when they hit, and any special properties they possess. Every weapon is classified as either melee or ranged. A melee weapon is used to attack a target within 5 feet of you, whereas a ranged weapon is used to attack a target at a distance.",
+						{
+							"type": "table",
+							"caption": "Weapons",
+							"colLabels": [
+								"Name",
+								"Cost",
+								"Damage",
+								"Weight",
+								"Properties"
+							],
+							"colStyles": [
+								"col-xs-4",
+								"col-xs-1 text-align-center",
+								"col-xs-2",
+								"col-xs-1 -text-align-right",
+								"col-xs-4"
+							],
+							"rows": [
+								[
+									"{@i Simple Melee Weapons}",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Club",
+										"1 sp",
+										"1d4 bludgeoning",
+										"2 lb.",
+										"Light"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Dagger",
+										"2 gp",
+										"1d4 piercing",
+										"1 lb.",
+										"Finesse, light, thrown (range 20/60)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Greatclub",
+										"2 sp",
+										"1d8 bludgeoning",
+										"10 lb.",
+										"Two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Handaxe",
+										"5 gp",
+										"1d6 slashing",
+										"2 lb.",
+										"Light, thrown (range 20/60)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Javelin",
+										"5 sp",
+										"1d6 piercing",
+										"2 lb.",
+										"Thrown (range 30/120)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Light hammer",
+										"2 gp",
+										"1d4 bludgeoning",
+										"2 lb.",
+										"Light, thrown (range 20/60)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Mace",
+										"5 gp",
+										"1d6 bludgeoning",
+										"4 lb.",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Quarterstaff",
+										"2 sp",
+										"1d6 bludgeoning",
+										"4 lb.",
+										"Versatile (1d8)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Sickle",
+										"1 gp",
+										"1d4 slashing",
+										"2 lb.",
+										"Light"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Spear",
+										"1 gp",
+										"1d6 piercing",
+										"3 lb.",
+										"Thrown (range 20/60), versatile (1d8)"
+									]
+								},
+								[
+									"{@i Simple Ranged Weapons}",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Crossbow, light",
+										"25 gp",
+										"1d8 piercing",
+										"5 lb.",
+										"Ammunition (range 80/320), loading, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Dart",
+										"5 cp",
+										"1d4 piercing",
+										"1/4 lb.",
+										"Finesse, thrown (range 20/60)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Shortbow",
+										"25 gp",
+										"1d6 piercing",
+										"2 lb.",
+										"Ammunition (range 80/320), two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Sling",
+										"1 sp",
+										"1d4 bludgeoning",
+										"\u2014",
+										"Ammunition (range 30/120)"
+									]
+								},
+								[
+									"{@i Martial Melee Weapons}",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Battleaxe",
+										"10 gp",
+										"1d8 slashing",
+										"4 lb.",
+										"Versatile (1d10)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Flail",
+										"10 gp",
+										"1d8 bludgeoning",
+										"2 lb.",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Glaive",
+										"20 gp",
+										"1d10 slashing",
+										"6 lb.",
+										"Heavy, reach, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Greataxe",
+										"30 gp",
+										"1d12 slashing",
+										"7 lb.",
+										"Heavy, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Greatsword",
+										"50 gp",
+										"2d6 slashing",
+										"6 lb.",
+										"Heavy, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Halberd",
+										"20 gp",
+										"1d10 slashing",
+										"6 lb.",
+										"Heavy, reach, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Lance",
+										"10 gp",
+										"1d12 piercing",
+										"6 lb.",
+										"Reach, special"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Longsword",
+										"15 gp",
+										"1d8 slashing",
+										"3 lb.",
+										"Versatile (1d10)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Maul",
+										"10 gp",
+										"2d6 bludgeoning",
+										"10 lb.",
+										"Heavy, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Morningstar",
+										"15 gp",
+										"1d8 piercing",
+										"4 lb.",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Pike",
+										"5 gp",
+										"1d10 piercing",
+										"18 lb.",
+										"Heavy, reach, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Rapier",
+										"25 gp",
+										"1d8 piercing",
+										"2 lb.",
+										"Finesse"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Scimitar",
+										"25 gp",
+										"1d6 slashing",
+										"3 lb.",
+										"Finesse, light"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Shortsword",
+										"10 gp",
+										"1d6 piercing",
+										"2 lb.",
+										"Finesse, light"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Trident",
+										"5 gp",
+										"1d6 piercing",
+										"4 lb.",
+										"Thrown (range 20/60), versatile (1d8)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"War pick",
+										"5 gp",
+										"1d8 piercing",
+										"2 lb.",
+										"\u2014"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Warhammer",
+										"15 gp",
+										"1d8 bludgeoning",
+										"2 lb.",
+										"Versatile (1d10)"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Whip",
+										"2 gp",
+										"1d4 slashing",
+										"3 lb.",
+										"Finesse, reach"
+									]
+								},
+								[
+									"{@i Martial Ranged Weapons}",
+									"",
+									"",
+									"",
+									""
+								],
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Blowgun",
+										"10 gp",
+										"1 piercing",
+										"1 lb.",
+										"Ammunition (range 25/100), loading"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Crossbow, hand",
+										"75 gp",
+										"1d6 piercing",
+										"3 lb.",
+										"Ammunition (range 30/120), light, loading"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Crossbow, heavy",
+										"50 gp",
+										"1d10 piercing",
+										"18 lb.",
+										"Ammunition (range 100/400), heavy, loading, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Longbow",
+										"50 gp",
+										"1d8 piercing",
+										"2 lb.",
+										"Ammunition (range 150/600), heavy, two-handed"
+									]
+								},
+								{
+									"type": "row",
+									"style": "row-indent-first",
+									"row": [
+										"Net",
+										"1 gp",
+										"\u2014",
+										"3 lb.",
+										"Special, thrown (range 5/15)"
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Weapon Proficiency",
+							"entries": [
+								"Your race, class, and feats can grant you proficiency with certain weapons or categories of weapons. The two categories are simple and martial. Most people can use simple weapons with proficiency. These weapons include clubs, maces, and other weapons often found in the hands of commoners. Martial weapons, including swords, axes, and polearms, require more specialized training to use effectively. Most warriors use martial weapons because these weapons put their fighting style and training to best use.",
+								"Proficiency with a weapon allows you to add your proficiency bonus to the attack roll for any attack you make with that weapon. If you make an attack roll using a weapon with which you lack proficiency, you do not add your proficiency bonus to the attack roll."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Weapon Properties",
+							"entries": [
+								"Many weapons have special properties related to their use, as shown in the Weapons table.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Ammunition",
+											"entries": [
+												"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield. [new paragraph] If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \"Improvised Weapons\" late in the section). A sling must be loaded to deal any damage when used in this way.",
+												"Loading a one-handed weapon requires a free hand."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Finesse",
+											"entries": [
+												"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Heavy",
+											"entries": [
+												"Small creatures have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small creature to use effectively."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Light",
+											"entries": [
+												"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons. See the rules for two-weapon fighting in chapter 9."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Loading",
+											"entries": [
+												"Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Range",
+											"entries": [
+												"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's long range.",
+												"When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Reach",
+											"entries": [
+												"This weapon adds 5 feet to your reach when you attack with it. This property also determines your reach for opportunity attacks with a reach weapon."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Special",
+											"entries": [
+												" A weapon with the special property has unusual rules governing its use, explained in the weapon's description (see \"Special Weapons\" later in this section)."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Thrown",
+											"entries": [
+												"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Two-Handed",
+											"entries": [
+												"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Versatile",
+											"entries": [
+												"This weapon can be used with one or two hands. A damage value in parentheses appears with the property-the damage when the weapon is used with two hands to make a melee attack."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Improvised Weapons",
+									"entries": [
+										"Sometimes characters don't have their weapons and have to attack with whatever is close at hand. An improvised weapon includes any object you can wield in one or two hands, such as broken glass, a table leg, a frying pan, a wagon wheel, or a dead goblin.",
+										"In many cases, an improvised weapon is similar to an actual weapon and can be treated as such. For example, a table leg is akin to a club. At the DM's option, a character proficient with a weapon can use a similar object as if it were that weapon and use his or her proficiency bonus.",
+										"An object that bears no resemblance to a weapon deals 1d4 damage (the DM assigns a damage type appropriate to the object). If a character uses a ranged weapon to make a melee attack, or throws a melee weapon that does not have the thrown property, it also deals 1d4 damage. An improvised thrown weapon has a normal range of 20 feet and a long range of 60 feet."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Silvered Weapons",
+									"entries": [
+										"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver weapons, so cautious adventurers invest extra coin to plate their weapons with silver. You can silver a single weapon or ten pieces of ammunition for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the weapon without making it less effective."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Special Weapons",
+									"entries": [
+										"Weapons with special rules are described here.",
+										{
+											"type": "entries",
+											"name": "Lance",
+											"entries": [
+												"You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Net",
+											"entries": [
+												"A Large or smaller creature hit by a net is restrained until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+		    ]
+		}
+	]
+}

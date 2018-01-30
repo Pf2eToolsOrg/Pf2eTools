@@ -154,7 +154,7 @@ li.contents-item > ul > ul.active > li > a:hover {
 	background: lightgrey;
 }
 
-ul.list.adventures ul a:hover,
+ul.list.books ul a:hover,
 ul.list.contents > li a:hover,
 ul.list.contents > li > ul.bk-contents > li > a > span:hover,
 ul.list.contents > li > ul.bk-contents > li > a > span:hover {
@@ -165,8 +165,8 @@ ul.list.contents > li > ul.bk-contents > li a:hover {
 	background: initial;
 }
 
-ul.list.adventures >  li > a > span.showhide:hover,
-ul.list.adventures >  li > a > span.name:hover {
+ul.list.books >  li > a > span.showhide:hover,
+ul.list.books >  li > a > span.name:hover {
 	background: lightgrey;
 }
 
@@ -355,7 +355,7 @@ table.stats td._class_feature table th {
 	border-color: #ababab;
 }
 
-ul.list.adventures > li:nth-child(odd) > a,
+ul.list.books > li:nth-child(odd) > a,
 .stats table.summary tbody tr:nth-child(even),
 .stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
@@ -385,23 +385,23 @@ li.contents-item > ul > ul.active > li > a:hover,
 ul.list.contents > li > ul.bk-contents > li > a > span:hover,
 ul.list.contents > li > ul.bk-contents > li > a > span:hover,
 ul.list.contents > li > ul.bk-headers a:hover,
-ul.list.adventures ul a:hover,
-ul.list.adventures >  li > a > span.showhide:hover,
-ul.list.adventures >  li > a > span.name:hover,
+ul.list.books ul a:hover,
+ul.list.books >  li > a > span.showhide:hover,
+ul.list.books >  li > a > span.name:hover,
 ul.list li:nth-child(odd):hover {
 	background: black;
 }
 
 ul.list.encounters li:nth-child(odd),
 ul.list.names li:nth-child(odd),
-ul.list.adventures > li:nth-child(odd),
+ul.list.books > li:nth-child(odd),
 ul.bk-contents > li:nth-child(odd),
 ul.list.contents > li:nth-child(odd) {
 	background: none;
 }
 
 ul.list.encounters li:nth-child(odd):hover,
-ul.list.adventures li:nth-child(odd):hover,
+ul.list.books li:nth-child(odd):hover,
 ul.bk-contents li:nth-child(odd):hover,
 ul.list.names li:nth-child(odd):hover {
 	background: none;
