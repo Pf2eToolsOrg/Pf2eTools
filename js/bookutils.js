@@ -39,6 +39,10 @@ const BookUtil = {
 		}
 	},
 
+	scrollPageTop: () => {
+		const $pg = $(`#pagecontent`)[0].scrollIntoView();
+	},
+
 	makeContentsBlock: (options) => {
 		let out =
 			`<ul class="bk-contents" ${options.defaultHidden ? `style="display: none;"` : ""}>`;
@@ -46,7 +50,7 @@ const BookUtil = {
 		options.book.contents.forEach((c, i) => {
 			out +=
 				`<li>
-				<a href="${options.addPrefix || ""}#${options.book.id},${i}" ${options.addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>
+				<a href="${options.addPrefix || ""}#${options.book.id},${i}" ${options.addOnclick ? `onclick="BookUtil.scrollPageTop()"` : ""}>
 					<span class="sect">${BookUtil.getOrdinalText(c.ordinal)}${c.name}</span>
 				</a>
 			</li>`;
@@ -153,7 +157,7 @@ const BookUtil = {
 			}
 		} else {
 			if (hashParts.length <= 1) {
-				$(window).scrollTop(0);
+				BookUtil.scrollPageTop();
 			} else if (forceScroll) {
 				BookUtil.scrollClick(scrollTo, scrollIndex);
 			}
