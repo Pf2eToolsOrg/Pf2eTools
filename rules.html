@@ -32,42 +32,27 @@
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
-<main class="container bodyContent">
 
-	<div class="row">
-		<div class="col-sm-12">
-			<aside class="col-sm-3" id="listcontainer">
-
-				<ul class="list rules undefined" style="display: none;"></ul>
-				<h4>Character Creation</h4>
-				<ul class="list rules charactercreation"></ul>
-				<h4>Equipment</h4>
-				<ul class="list rules equipment"></ul>
-				<h4>Playing the Game</h4>
-				<ul class="list rules playingthegame"></ul>
-				<h4>Running the Game</h4>
-				<ul class="list rules runningthegame"></ul>
-				<h4>Setting</h4>
-				<ul class="list rules setting"></ul>
-				<h4>Unearthed Arcana</h4>
-				<ul class="list rules unearthedarcana"></ul>
-			</aside>
-
-			<div id="rulescontent">
-
-			</div>
-		</div>
+<div class="container view-col-wrapper">
+	<div class="view-col book-contents" id="listcontainer">
+		<ul class="list contents">
+			<!-- populate with JS -->
+		</ul>
 	</div>
-</main>
-<footer class="container">
+	<div class="view-col book-view">
+		<table id="pagecontent" class="stats stats-book">
+			<!-- populate with JS -->
+		</table>
+	</div>
+</div>
 
-</footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+<footer class="container"></footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/bookutils.js"></script>
 <script type="text/javascript" src="js/rules.js"></script>
-<script type="text/javascript" src="data/rules.json"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>

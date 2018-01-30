@@ -338,99 +338,31 @@ function loadhash (id) {
 		$("td span#languages").html("\u2014");
 	}
 
-	var cr = mon.cr === undefined ? "Unknown" : mon.cr;
+	var cr = mon.cr;
 	$("td span#cr").html(cr);
 	$("td span#xp").html(Parser.crToXp(cr));
 
-	var traits = mon.trait;
+	var trait = mon.trait;
 	$("tr.trait").remove();
 
-	if (traits) {
-		for (var i = traits.length - 1; i >= 0; i--) {
-			var traitname = traits[i].name;
-			var traittext = traits[i].text;
-			var traittexthtml = "";
-			var renderedcount = 0;
-			for (var n = 0; n < traittext.length; n++) {
-				if (!traittext[n]) continue;
-
-				renderedcount++;
-				var firstsecond = "";
-				if (renderedcount === 1) firstsecond = "first ";
-				if (renderedcount === 2) firstsecond = "second ";
-
-				var spells = "";
-				if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
-				if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
-				traittexthtml = traittexthtml + `<p class="${firstsecond}${spells}">${traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "")}</p>`;
-			}
-			// Because entryRenderer spells appear with non-entryRenderer traits use a non-standard class, psi-focus-title, so this section looks consistent
-			$("tr#traits").after(`<tr class="trait"><td colspan="6" class="trait${i}"><span class="psi-focus-title">${traitname}.</span> ${traittexthtml}</td></tr>"`);
-			// Parse spells to make hyperlinks for creatures not yet using "spellcasting"
-			$("tr.trait").children("td").children("p.spells").each(function () {
-				let spellslist = $(this).html();
-				if (spellslist[0] === "*") return;
-				spellslist = spellslist.split(": ")[1].split(/, (?!\+|\dd|appears|inside gems)/g);
-				for (let i = 0; i < spellslist.length; i++) {
-					spellslist[i] = `<a href="spells.html#${encodeURIComponent((spellslist[i].replace(/(\*)| \(([^)]+)\)/g, ""))).toLowerCase()}_phb" target="_blank">${spellslist[i]}</a>`;
-					if (i !== spellslist.length - 1) spellslist[i] = spellslist[i] + ", ";
-				}
-				$(this).html($(this).html().split(": ")[0] + ": " + spellslist.join(""))
-			});
-		}
-	}
+	if (trait) renderSection("trait", "trait", trait, 1);
 
 	if (mon.spellcasting) {
 		const spellcastingString = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
 		$(`tr#traits`).after(`<tr class='trait'><td colspan='6'>${utils_makeRoller(spellcastingString)}</td></tr>`);
 	}
 
-	const actions = mon.action;
+	const action = mon.action;
+	$("tr#actions").hide();
 	$("tr.action").remove();
 
-	if (actions && actions.length) {
-		for (let i = actions.length - 1; i >= 0; i--) {
-			const actionname = actions[i].name;
-			const actiontext = actions[i].text;
-			let actiontexthtml = "";
-			let renderedcount = 0;
-			for (let n = 0; n < actiontext.length; n++) {
-				if (!actiontext[n]) continue;
+	if (action) renderSection("action", "action", action, 1);
 
-				renderedcount++;
-				let firstsecond = "";
-				if (renderedcount === 1) firstsecond = "first ";
-				if (renderedcount === 2) firstsecond = "second ";
-
-				actiontexthtml = actiontexthtml + `<p class="${firstsecond}">${actiontext[n]}</p>`;
-			}
-
-			$("tr#actions").after(`<tr class="action"><td colspan="6" class="action${i}"><span class="name">${actionname}.</span> ${actiontexthtml}</td></tr>`);
-		}
-	}
-
-	const reactions = mon.reaction;
+	const reaction = mon.reaction;
 	$("tr#reactions").hide();
 	$("tr.reaction").remove();
 
-	if (reactions && (reactions.text || reactions.length)) {
-		$("tr#reactions").show();
-
-		if (reactions.length) {
-			for (let i = reactions.length - 1; i >= 0; i--) {
-				const reactionname = reactions[i].name;
-
-				const reactiontext = reactions[i].text;
-				let reactiontexthtml = "<p>" + reactiontext + "</p>";
-				for (let n = 1; n < reactiontext.length; n++) {
-					if (!reactiontext[n]) continue;
-					reactiontexthtml = reactiontexthtml + "<p>" + reactiontext[n] + "</p>";
-				}
-
-				$("tr#reactions").after(`<tr class="reaction"><td colspan="6" class="reaction${i}"><span class="name">${reactionname}.</span> ${reactiontexthtml}</td></tr>`);
-			}
-		}
-	}
+	if (reaction) renderSection("reaction", "reaction", reaction, 1);
 
 	const variants = mon.variant;
 	const variantSect = $(`#variants`);
@@ -444,31 +376,14 @@ function loadhash (id) {
 
 	$(`#source`).append(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${mon.page}</td>`);
 
-	const legendaries = mon.legendary;
-	$("tr.legendary").remove();
+	const legendary = mon.legendary;
 	$("tr#legendaries").hide();
-	if (legendaries) {
-		$("tr#legendaries").show();
-		for (let i = legendaries.length - 1; i >= 0; i--) {
-			const legendaryname = legendaries[i].name ? legendaries[i].name + "." : "";
-			const legendarytext = legendaries[i].text;
-			let legendarytexthtml = "";
-			let renderedcount = 0;
-			for (let n = 0; n < legendarytext.length; n++) {
-				if (!legendarytext[n]) continue;
-				renderedcount++;
-				let firstsecond = "";
-				if (renderedcount === 1) firstsecond = "first ";
-				if (renderedcount === 2) firstsecond = "second ";
-				legendarytexthtml += `<p class='${firstsecond}'>${legendarytext[n]}</p>`;
-			}
-			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'>${legendaryname}</span> ${legendarytexthtml}</td></tr>`);
-		}
-		if ($("tr.legendary").length && !$("tr.legendary span.name:empty").length && !$("tr.legendary span.name:contains(Legendary Actions)").length) {
-			const legendaryActions = mon.legendaryActions || 3;
-			const legendaryName = name.split(",");
-			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
-		}
+	$("tr.legendary").remove();
+	if (legendary) {
+		renderSection("legendary", "legendary", legendary, 1);
+		const legendaryActions = mon.legendaryActions || 3;
+		const legendaryName = name.split(",");
+		$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
 	}
 
 	const legendaryGroup = mon.legendaryGroup;
@@ -478,16 +393,17 @@ function loadhash (id) {
 	$("tr#regionaleffects").hide();
 	if (legendaryGroup) {
 		const thisGroup = meta[legendaryGroup];
-		if (thisGroup.lairActions) renderSection("lairaction", thisGroup.lairActions);
-		if (thisGroup.regionalEffects) renderSection("regionaleffect", thisGroup.regionalEffects);
+		if (thisGroup.lairActions) renderSection("lairaction", "legendary", thisGroup.lairActions, 0);
+		if (thisGroup.regionalEffects) renderSection("regionaleffect", "legendary", thisGroup.regionalEffects, 0);
 	}
 
-	function renderSection (sectionClass, sectionEntries) {
-		$(`tr#${sectionClass}s`).show();
+	function renderSection (sectionTrClass, sectionTdClass, sectionEntries, sectionLevel) {
+		let pluralSectionTrClass = sectionTrClass === `legendary` ? `legendaries` : `${sectionTrClass}s`;
+		$(`tr#${pluralSectionTrClass}`).show();
 		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
-		renderer.recursiveEntryRender(entryList, renderStack);
-		$(`tr#${sectionClass}s`).after(`<tr class='${sectionClass}'><td colspan='6' class='legendary'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
+		renderer.recursiveEntryRender(entryList, renderStack, sectionLevel);
+		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
 	}
 
 	// add click links for rollables

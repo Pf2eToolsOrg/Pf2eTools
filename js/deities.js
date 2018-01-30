@@ -12,8 +12,10 @@ function alignSort (a, b) {
 	const last = ["G", "E"];
 	if (a === b) return 0;
 	if (first.includes(a)) return -1;
-	if (last.includes(b)) return 1;
-	return 1;
+	if (last.includes(a)) return 1;
+	if (first.includes(b)) return 1;
+	if (last.includes(b)) return -1;
+	return 0;
 }
 
 let deitiesList;
