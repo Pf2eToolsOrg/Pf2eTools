@@ -48,6 +48,7 @@ function onJsonLoad (data) {
 		rulesHashChange();
 	} else {
 		$(`.contents-item`).show();
+		window.location.hash = "PHB,0";
 	}
 
 	// addSearch( ... ) // TODO migrate this across
@@ -57,12 +58,12 @@ const renderer = new EntryRenderer();
 function rulesHashChange () {
 	const [bookId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
 	const fromIndex = books.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
-	const fromDataK = Object.keys(bookData).find(k => UrlUtil.encodeForHash(k) === UrlUtil.encodeForHash(bookId));
+	const fromDataK = bookData.find(it => UrlUtil.encodeForHash(it.id) === UrlUtil.encodeForHash(bookId));
 	if (fromIndex && fromDataK) {
 		const allContents = $(`.contents-item`);
 		BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(bookId)}"]`);
 
-		BookUtil.showBookContent(bookData[fromDataK], fromIndex, bookId, hashParts, renderer, renderArea);
+		BookUtil.showBookContent(fromDataK.entries, fromIndex, bookId, hashParts, renderer, renderArea);
 	} else {
 		throw new Error("No rules book with ID: " + bookId);
 	}
