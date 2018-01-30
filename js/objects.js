@@ -58,4 +58,11 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(obj)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	const imgLink = UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
+	$("th.name").append(`
+		<a href="${imgLink}" target="_blank">
+			<img src="${imgLink}" class="token">
+		</a>`
+	);
 }

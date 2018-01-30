@@ -141,6 +141,7 @@ const BookUtil = {
 
 			renderArea.append(EntryRenderer.utils.getBorderTr());
 			const textStack = [];
+			renderer.setFirstSection(true);
 			renderer.recursiveEntryRender(data[chapter], textStack);
 			renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
 			renderArea.append(EntryRenderer.utils.getBorderTr());

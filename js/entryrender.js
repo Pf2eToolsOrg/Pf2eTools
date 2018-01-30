@@ -23,6 +23,7 @@ function EntryRenderer () {
 	this.baseUrl = "";
 
 	this._subVariant = false;
+	this._firstSection = true;
 
 	/**
 	 * Set the tag used to group rendered elements
@@ -39,6 +40,14 @@ function EntryRenderer () {
 	 */
 	this.setBaseUrl = function (url) {
 		this.baseUrl = url;
+	};
+
+	/**
+	 * Other sections should be prefixed with a vertical divider
+	 * @param bool
+	 */
+	this.setFirstSection = function (bool) {
+		this._firstSection = bool;
 	};
 
 	// TODO convert params to options object
@@ -329,6 +338,13 @@ function EntryRenderer () {
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
 			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
+
+			if (depth === -1) {
+				if (!self._firstSection) {
+					textStack.push(`<hr class="section-break">`);
+				}
+				self._firstSection = false;
+			}
 
 			if (entry.entries || entry.name) {
 				textStack.push(`<${self.wrapperTag} ${dataString} ${styleString}>${headerSpan}${preReqText}`);
