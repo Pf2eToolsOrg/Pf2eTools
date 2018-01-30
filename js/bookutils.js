@@ -13,28 +13,28 @@ const BookUtil = {
 			// textEquals selector defined below; added on window load
 			const goToSect = $(selectors[0]);
 			if (goToSect.length) {
-				goToSect[goToSect.length - 1].scrollIntoView();
+				goToSect[0].scrollIntoView();
 				return;
 			}
 			const goTo = $(selectors[1]);
 			if (goTo.length) {
-				goTo[goTo.length - 1].scrollIntoView();
+				goTo[0].scrollIntoView();
 				return;
 			}
 			const goToSub = $(selectors[2]);
 			if (goToSub.length) {
-				goToSub[goToSub.length - 1].scrollIntoView();
+				goToSub[0].scrollIntoView();
 				return;
 			}
 			const goToInset = $(selectors[3]);
 			if (goToInset.length) {
-				goToInset[goToInset.length - 1].scrollIntoView();
+				goToInset[0].scrollIntoView();
 			}
 		} else {
 			const goTo = $(`${selectors[0]}, ${selectors[1]}, ${selectors[2]}, ${selectors[3]}`);
 			if (goTo.length) {
 				if (goTo[scrollIndex]) goTo[scrollIndex].scrollIntoView();
-				else goTo[goTo.length - 1].scrollIntoView();
+				else goTo[0].scrollIntoView();
 			}
 		}
 	},
