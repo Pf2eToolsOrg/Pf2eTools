@@ -62,7 +62,7 @@ function onJsonLoad (data) {
 		$(`.showhide`).each((i, ele) => {
 			const $ele = $(ele);
 			if (!$ele.data("hidden")) {
-				advToggle(null, ele);
+				BookUtil.indexListToggle(null, ele);
 			}
 		});
 	});

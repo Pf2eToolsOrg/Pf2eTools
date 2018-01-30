@@ -99,8 +99,10 @@ const BookUtil = {
 	},
 
 	sectToggle: (evt, ele) => {
-		evt.stopPropagation();
-		evt.preventDefault();
+		if (evt) {
+			evt.stopPropagation();
+			evt.preventDefault();
+		}
 		const $ele = $(ele);
 		const $childList = $ele.closest(`li`).next(`ul.bk-headers`);
 		if ($ele.data("hidden")) {

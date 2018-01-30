@@ -30,8 +30,30 @@ function onJsonLoad (data) {
 	}
 	booksList.append(tempString);
 
-	const list = ListUtil.search({
+	const list = new List("listcontainer", {
 		valueNames: ['name', 'source'],
 		listClass: "books"
+	});
+
+	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
+		const $this = $(this);
+		if ($this.attr("sortby") === "asc") {
+			$this.attr("sortby", "desc");
+		} else $this.attr("sortby", "asc");
+		list.sort($this.data("sort"), {order: $this.attr("sortby")});
+	});
+
+	list.sort("name");
+	$("#reset").click(function () {
+		$("#search").val("");
+		list.search();
+		list.sort("name");
+		list.filter();
+		$(`.showhide`).each((i, ele) => {
+			const $ele = $(ele);
+			if (!$ele.data("hidden")) {
+				BookUtil.indexListToggle(null, ele);
+			}
+		});
 	});
 }
