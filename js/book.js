@@ -41,7 +41,7 @@ function onJsonLoad (data) {
 	}
 	allContents.append(tempString);
 
-	BookUtil.addHeaderHandles(false);
+	BookUtil.addHeaderHandles(true);
 
 	const list = new List("listcontainer", {
 		valueNames: ['name'],
