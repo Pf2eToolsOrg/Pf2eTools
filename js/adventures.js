@@ -4,6 +4,7 @@ const MONTH_NAMES = [
 	"January", "February", "March", "April", "May", "June",
 	"July", "August", "September", "October", "November", "December"
 ];
+const CONTENTS_URL = "data/adventures.json";
 
 let adventuresIndex;
 
@@ -34,7 +35,7 @@ function onJsonLoad (data) {
 					<span class="showhide" onclick="advToggle(event, this)" data-hidden="true">[+]</span>
 					<span class="source" style="display: none">${adv.id}</span>
 				</a>
-				${makeContentsBlock({adv: adv, addPrefix: true, defaultHidden: true})}
+				${BookUtil.makeContentsBlock({book: adv, addPrefix: "adventure.html", defaultHidden: true})}
 			</li>`;
 	}
 	adventuresList.append(tempString);
@@ -83,7 +84,7 @@ function advToggle (evt, ele) {
 		evt.preventDefault();
 	}
 	const $ele = $(ele);
-	const $childList = $ele.closest(`li`).find(`ul.adv-contents`);
+	const $childList = $ele.closest(`li`).find(`ul.bk-contents`);
 	if ($ele.data("hidden")) {
 		$childList.show();
 		$ele.data("hidden", false);

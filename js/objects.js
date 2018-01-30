@@ -38,6 +38,7 @@ function onJsonLoad (data) {
 const renderer = new EntryRenderer();
 function loadhash (jsonIndex) {
 	const obj = objectsList[jsonIndex];
+	var name = obj.name;
 
 	const renderStack = [];
 
@@ -58,4 +59,12 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(obj)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	const imgLink = UrlUtil.link(`img/objects/${name.replace(/"/g, "")}.png`);
+	$("th.name").html(
+		`<span class="stats-name">${name}</span>
+		<a href="${imgLink}" target="_blank">
+			<img src="${imgLink}" class="token" onerror="imgError(this)">
+		</a>`
+	);
 }

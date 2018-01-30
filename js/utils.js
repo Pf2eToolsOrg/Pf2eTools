@@ -179,6 +179,10 @@ StrUtil = {
 	TITLE_UPPER_WORDS: ["Id", "Tv"]
 };
 
+RegExp.escape = function (string) {
+	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+};
+
 // TEXT COMBINING ======================================================================================================
 function utils_combineText (textList, tagPerItem, textBlockInlineTitle) {
 	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
@@ -1471,6 +1475,28 @@ function noModifierKeys (e) {
 	return !e.ctrlKey && !e.altKey && !e.metaKey;
 }
 
+if (typeof window !== "undefined") {
+	window.addEventListener("load", () => {
+		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
+		$.expr[':'].textEquals = (el, i, m) => {
+			const searchText = m[3];
+			const match = $(el).text().toLowerCase().trim().match(`^${RegExp.escape(searchText.toLowerCase())}$`);
+			return match && match.length > 0;
+		};
+
+		// Add a selector to match contained text (case insensitive)
+		$.expr[':'].containsInsensitive = (el, i, m) => {
+			const searchText = m[3];
+			const textNode = $(el).contents().filter((i, e) => {
+				return e.nodeType === 3;
+			})[0];
+			if (!textNode) return false;
+			const match = textNode.nodeValue.toLowerCase().trim().match(`${RegExp.escape(searchText.toLowerCase())}`);
+			return match && match.length > 0;
+		};
+	});
+}
+
 // LIST AND SEARCH =====================================================================================================
 ListUtil = {
 	_first: true,
@@ -1515,9 +1541,13 @@ ListUtil = {
 										if (l.visibleItems.length) {
 											const goTo = $(l.visibleItems[l.visibleItems.length - 1].elm).find("a").attr("href");
 											if (goTo) window.location.hash = goTo;
-											break;
+											return;
 										}
 									}
+								}
+								const fromPrevSibling = it.$el.closest(`ul`).parent().prev(`li`).find(`ul li`).last().find("a").attr("href");
+								if (fromPrevSibling) {
+									window.location.hash = fromPrevSibling;
 								}
 							} else if (e.key === "j") {
 								const nextLink = it.$el.parent().next().find("a").attr("href");
@@ -1531,9 +1561,13 @@ ListUtil = {
 										if (l.visibleItems.length) {
 											const goTo = $(l.visibleItems[0].elm).find("a").attr("href");
 											if (goTo) window.location.hash = goTo;
-											break;
+											return;
 										}
 									}
+								}
+								const fromNxtSibling = it.$el.closest(`ul`).parent().next(`li`).find(`ul li`).first().find("a").attr("href");
+								if (fromNxtSibling) {
+									window.location.hash = fromNxtSibling;
 								}
 							}
 						}
@@ -1743,10 +1777,6 @@ function listSort (itemA, itemB, options) {
 		const initialCompare = compareBy(valueName);
 		return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
 	}
-}
-// ARRAYS ==============================================================================================================
-function joinConjunct (arr, joinWith, conjunctWith) {
-	return arr.length === 1 ? String(arr[0]) : arr.length === 2 ? arr.join(conjunctWith) : arr.slice(0, -1).join(joinWith) + conjunctWith + arr.slice(-1);
 }
 
 // JSON LOADING ========================================================================================================
@@ -2255,5 +2285,9 @@ CollectionUtil = {
 		values () {
 			return this.map.values();
 		}
+	},
+
+	joinConjunct: (arr, joinWith, conjunctWith) => {
+		return arr.length === 1 ? String(arr[0]) : arr.length === 2 ? arr.join(conjunctWith) : arr.slice(0, -1).join(joinWith) + conjunctWith + arr.slice(-1);
 	}
 };
