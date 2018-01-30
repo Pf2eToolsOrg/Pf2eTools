@@ -551,10 +551,6 @@ table.stats span.name {
 	font-weight: bold;
 }
 
-tr.text td {
-	padding-bottom: 0.7em !important;
-}
-
 td.typerarityattunement,
 td.levelschoolritual {
 	font-style: italic;
@@ -572,7 +568,7 @@ table.stats span.name {
 	font-weight: bold;
 }
 
-tr.text td {
+tr.text > td {
 	padding-bottom: 0.7em !important;
 }
 
@@ -1103,7 +1099,7 @@ img.token {
 }
 
 img.token:hover {
-	max-width: none;
+	max-width: 100%;
 	right: 0;
 }
 
@@ -1841,6 +1837,10 @@ td span.tbl-tab-intent {
 table.stats table tr > th.text-align-right,
 table.stats table tr > td.text-align-right {
 	padding-right: 0.5em;
+}
+
+table.stats tr.text hr.section-break {
+	margin: 45px 0 5px;
 }
 
 /* Book/Adventure Pages */

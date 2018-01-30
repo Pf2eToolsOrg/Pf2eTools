@@ -13,30 +13,34 @@ const BookUtil = {
 			// textEquals selector defined below; added on window load
 			const goToSect = $(selectors[0]);
 			if (goToSect.length) {
-				goToSect[goToSect.length - 1].scrollIntoView();
+				goToSect[0].scrollIntoView();
 				return;
 			}
 			const goTo = $(selectors[1]);
 			if (goTo.length) {
-				goTo[goTo.length - 1].scrollIntoView();
+				goTo[0].scrollIntoView();
 				return;
 			}
 			const goToSub = $(selectors[2]);
 			if (goToSub.length) {
-				goToSub[goToSub.length - 1].scrollIntoView();
+				goToSub[0].scrollIntoView();
 				return;
 			}
 			const goToInset = $(selectors[3]);
 			if (goToInset.length) {
-				goToInset[goToInset.length - 1].scrollIntoView();
+				goToInset[0].scrollIntoView();
 			}
 		} else {
 			const goTo = $(`${selectors[0]}, ${selectors[1]}, ${selectors[2]}, ${selectors[3]}`);
 			if (goTo.length) {
 				if (goTo[scrollIndex]) goTo[scrollIndex].scrollIntoView();
-				else goTo[goTo.length - 1].scrollIntoView();
+				else goTo[0].scrollIntoView();
 			}
 		}
+	},
+
+	scrollPageTop: () => {
+		const $pg = $(`#pagecontent`)[0].scrollIntoView();
 	},
 
 	makeContentsBlock: (options) => {
@@ -46,7 +50,7 @@ const BookUtil = {
 		options.book.contents.forEach((c, i) => {
 			out +=
 				`<li>
-				<a href="${options.addPrefix || ""}#${options.book.id},${i}" ${options.addOnclick ? `onclick="$(window).scrollTop(0);"` : ""}>
+				<a href="${options.addPrefix || ""}#${options.book.id},${i}" ${options.addOnclick ? `onclick="BookUtil.scrollPageTop()"` : ""}>
 					<span class="sect">${BookUtil.getOrdinalText(c.ordinal)}${c.name}</span>
 				</a>
 			</li>`;
@@ -141,6 +145,7 @@ const BookUtil = {
 
 			renderArea.append(EntryRenderer.utils.getBorderTr());
 			const textStack = [];
+			renderer.setFirstSection(true);
 			renderer.recursiveEntryRender(data[chapter], textStack);
 			renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
 			renderArea.append(EntryRenderer.utils.getBorderTr());
@@ -152,7 +157,7 @@ const BookUtil = {
 			}
 		} else {
 			if (hashParts.length <= 1) {
-				$(window).scrollTop(0);
+				BookUtil.scrollPageTop();
 			} else if (forceScroll) {
 				BookUtil.scrollClick(scrollTo, scrollIndex);
 			}

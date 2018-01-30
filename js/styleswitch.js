@@ -29,6 +29,11 @@ table.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
 	background: #e4d8c3;
 }
 
+table.stats.stats-book table.summary tbody tr:nth-child(even),
+table.stats.stats-book table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
+	background: #e0e0e0;
+}
+
 .hoverbox .hoverborder,
 th.border {
 	background: #e69a28;
