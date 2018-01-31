@@ -19,6 +19,13 @@ table#statsprof {
 	background: #fdf1dc;
 }
 
+@media only screen and (min-width: 1600px) {
+	#listcontainer.book-contents {
+		background: white;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	}
+}
+
 table.stats.stats-book {
     background: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -259,6 +266,12 @@ ul.list li:hover {
 table.stats,
 table#statsprof {
 	background: #272727;
+}
+
+@media only screen and (min-width: 1600px) {
+	#listcontainer.book-contents {
+		border-right: 1px solid #404040;
+	}
 }
 
 .hoverbox .hoverborder,

@@ -1907,6 +1907,21 @@ table.stats tr.text hr.section-break {
 	padding: 0 0 22px;
 }
 
+@media only screen and (min-width: 1600px) {
+	#listcontainer.book-contents {
+		position: fixed;
+		left: 0;
+		top: 0;
+		max-width: calc((100vw - 1170px) / 2);
+		margin: 0;
+		min-height: 100vh;
+	}
+
+	.book-contents ul.contents {
+		position: relative;
+	}
+}
+
 .book-contents li.contents-item > ul > li {
 	font-weight: bold;
 }
