@@ -403,7 +403,7 @@ function loadhash (id) {
 		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
 		renderer.recursiveEntryRender(entryList, renderStack, sectionLevel);
-		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
+		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
 	}
 
 	// add click links for rollables
