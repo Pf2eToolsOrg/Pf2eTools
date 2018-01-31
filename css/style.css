@@ -1668,7 +1668,7 @@ input[type=checkbox].readonly {
 	color: inherit;
 	display: block;
 	overflow: hidden;
-	padding: 1px;
+	padding: 2px;
 	text-decoration: none;
 }
 
@@ -1693,16 +1693,28 @@ table.stats div.statsBlockSectionHead > span.entry-title {
 	font-size: 1.8em;
 }
 
+table.stats.stats-book div.statsBlockSectionHead > span.entry-title {
+	font-size: 2.5em;
+}
+
 table.stats div.statsBlockHead > span.entry-title {
 	font-size: 1.5em;
 	border-bottom: 1px solid #922610;
 	margin: 0.2em;
 }
 
+table.stats.stats-book div.statsBlockHead > span.entry-title {
+	font-size: 1.9em;
+}
+
 table.stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
 	font-size: 1.4em;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
+}
+
+table.stats.stats-book div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+	font-size: 1.6em;
 }
 
 table.stats tr.subclass-feature div.statsBlockHead > span.entry-title,
@@ -1839,6 +1851,13 @@ table.stats table tr > td.text-align-right {
 	padding-right: 0.5em;
 }
 
+table.stats.stats-book ul,
+table.stats.stats-book div.statsInlineHead,
+table.stats.stats-book table,
+table.stats.stats-book p {
+	margin: 0 0 15px;
+}
+
 table.stats tr.text hr.section-break {
 	margin: 45px 0 5px;
 }
@@ -1886,6 +1905,21 @@ table.stats tr.text hr.section-break {
 	overflow-y: auto;
 	max-height: 100vh;
 	padding: 0 0 22px;
+}
+
+@media only screen and (min-width: 1600px) {
+	#listcontainer.book-contents {
+		position: fixed;
+		left: 0;
+		top: 0;
+		max-width: calc((100vw - 1170px) / 2);
+		margin: 0;
+		min-height: 100vh;
+	}
+
+	.book-contents ul.contents {
+		position: relative;
+	}
 }
 
 .book-contents li.contents-item > ul > li {
