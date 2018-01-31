@@ -20,7 +20,7 @@ table#statsprof {
 }
 
 table.stats.stats-book {
-    background: #f9f9f9;
+    background: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
