@@ -19,13 +19,6 @@ function onJsonLoad (data) {
 	books = data.book;
 
 	const allContents = $("ul.contents");
-	allContents.append($(`
-		<li>
-			<a href='books.html'>
-				<span class='name'>\u21FD All Books</span>
-			</a>
-		</li>
-	`));
 
 	let tempString = "";
 	for (let i = 0; i < books.length; i++) {
