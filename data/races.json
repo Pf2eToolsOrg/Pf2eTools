@@ -172,19 +172,19 @@
 					"entries": [
 						"You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table.",
 						{
-							"istable": "YES",
+							"type": "table",
 							"caption": "Draconic Ancestry",
-							"thead": [
+							"colLabels": [
 								"Dragon",
 								"Damage Type",
 								"Breath Weapon"
 							],
-							"thstyleclass": [
+							"colStyles": [
 								"col-xs-3 text-align-center",
 								"col-xs-3 text-align-center",
 								"col-xs-6"
 							],
-							"tbody": [
+							"rows": [
 								[
 									"Black",
 									"Acid",
@@ -2580,21 +2580,21 @@
 						"You can cast a spell gained from this trait only once until you complete your next long rest. You can cast a cantrip gained from this trait at will, as normal. For 1st-level spells whose effect changes if cast using a spell slot of 2nd level or higher, you cast the spell as if using a 2nd-level slot. Spells of 2nd level are cast as if using a 2nd-level slot",
 						"At the end of each long rest, you lose the cantrips and spells previously granted by this feature, even if you did not cast them. You replace those cantrips and spells by rolling for new ones on the Abyssal Arcana Spells table. Roll separately for each cantrip and spell. If you roll the same spell or cantrip you gained at the end of your previous long rest, roll again until you get a different result.",
 						{
-							"istable": "YES",
+							"type": "table",
 							"caption": "Abyssal Arcana Spells",
-							"thead": [
+							"colLabels": [
 								"d6",
 								"1st Level",
 								"3rd Level",
 								"5th Level"
 							],
-							"thstyleclass": [
+							"colStyles": [
 								"col-xs-1 text-align-center",
 								"col-xs-3 col-xs-3-67",
 								"col-xs-3 col-xs-3-67",
 								"col-xs-3 col-xs-3-67"
 							],
-							"tbody": [
+							"rows": [
 								[
 									"1",
 									"{@spell Dancing lights}",
@@ -2623,7 +2623,7 @@
 									"5",
 									"{@spell Spare the dying}",
 									"{@spell Tasha's hideous laughter}",
-									"Mirror image"
+									"{@spell Mirror Image}"
 								],
 								[
 									"6",
@@ -3820,17 +3820,17 @@
 						"At the end of each short or long rest, you can align yourself with the magic of one season, regardless of the season that is dominating your personality. Doing so allows you to cast a certain cantrip, as shown in the Shifting Seasons Cantrips table. When you align yourself with a season's magic, you lose the cantrip associated with the previous season and gain the cantrip associated with the new season.",
 						"Your spellcasting ability for these cantrips is Intelligence or Charisma, whichever is higher.",
 						{
-							"istable": "YES",
+							"type": "table",
 							"caption": "Shifting Seasons Cantrips",
-							"thead": [
+							"colLabels": [
 								"Season",
 								"Cantrip"
 							],
-							"thstyleclass": [
+							"colStyles": [
 								"col-xs-6 text-align-center",
 								"col-xs-6 text-align-center"
 							],
-							"tbody": [
+							"rows": [
 								[
 									"Autumn",
 									"{@spell Friends}"
