@@ -651,8 +651,30 @@
 					"name": "Breath Weapons (Recharge 5\u20146)",
 					"entries": [
 						"The dragon uses one of the following breath weapons.",
-						"Fire Breath. The dragon exhales fire in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 45 (13d6) fire damage on a failed save, or half as much damage on a successful one.",
-						"Sleep Breath. The dragon exhales sleep gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
+						{
+						    "type": "list",
+						    "style": "list-hang-notitle",
+						    "items": [
+						        {
+						            "type": "item",
+						            "name": "Fire Breath.",
+						            "entry": "The dragon exhales fire in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 45 (13d6) fire damage on a failed save, or half as much damage on a successful one."
+						        }
+						    ]
+						},
+						{
+						    "type": "list",
+						    "style": "list-hang-notitle",
+						    "items": [
+						        {
+						            "type": "item",
+						            "name": "Sleep Breath.",
+						            "entry": "The dragon exhales sleep gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall unconscious for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
+						        }
+						    ]
+						}
+
+
 					]
 				}
 			],
@@ -754,8 +776,28 @@
 					"name": "Breath Weapons (Recharge 5\u20146)",
 					"entries": [
 						"The dragon uses one of the following breath weapons.",
-						"Lightning Breath. The dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 (12d10) lightning damage on a failed save, or half as much damage on a successful one.",
-						"Repulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 19 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon."
+						{
+						    "type": "list",
+						    "style": "list-hang-notitle",
+						    "items": [
+						        {
+						            "type": "item",
+						            "name": "Lightning Breath.",
+						            "entry": "The dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 (12d10) lightning damage on a failed save, or half as much damage on a successful one."
+						        }
+						    ]
+						},
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Repulsion Breath.",
+									"entry": "The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 19 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon."
+								}
+							]
+						}
 					]
 				}
 			],
