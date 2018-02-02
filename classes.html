@@ -76,11 +76,11 @@
 
 		.book-view div.pnl-menu::-webkit-scrollbar-track,
 		.book-view div.pnl-content::-webkit-scrollbar-track {
-			background: #a0a0a0;
+			background: #e0e0e0;
 		}
 
 		.book-view div.pnl-menu {
-			min-height: 100%;
+			min-height: 100vh;
 			min-width: 100px;
 			flex: 1 0 0;
 			display: flex;
@@ -94,6 +94,10 @@
 			margin-bottom: 1px;
 			cursor: pointer;
 			user-select: none;
+		}
+
+		span.pnl-link-close {
+			margin-top: auto;
 		}
 
 		.book-view table.stats-book {
@@ -116,9 +120,26 @@
 			}
 		}
 
-		@media only screen and (max-width: 480px) {
-			.wrp-btn-readmode {
+		@media (max-width: 768px) {
+			.book-view {
+				flex-direction: column;
+			}
+
+			.book-view div.pnl-content {
+				min-height: 0;
+				overflow-y: initial;
+			}
+
+			.book-view div.pnl-menu {
+				min-height: 200px;
+			}
+
+			.book-view div.pnl-menu-pad {
 				display: none;
+			}
+
+			span.pnl-link-close {
+				margin-top: 0;
 			}
 		}
 	</style>

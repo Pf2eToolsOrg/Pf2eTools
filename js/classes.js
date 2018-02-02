@@ -6,6 +6,7 @@ const HASH_ALL_SOURCES = "allsrc:";
 const CLSS_FEATURE_LINK = "feature-link";
 const CLSS_ACTIVE = "active";
 const CLSS_SUBCLASS_PILL = "sc-pill";
+const CLSS_PANEL_LINK = "pnl-link";
 const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
 const CLSS_OTHER_SOURCES_ACTIVE = "os-active";
 const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
@@ -346,7 +347,7 @@ function loadhash (id) {
 	topBorder.after(renderStack.join(""));
 
 	// hide UA/other sources by default
-	$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
+	$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).not(`.${CLSS_PANEL_LINK}`).hide();
 
 	// CLASS FEATURE/UA/SUBCLASS PILL BUTTONS ==========================================================================
 	const subclassPillWrapper = $("div#subclasses");
@@ -542,7 +543,7 @@ function loadsub (sub) {
 		if ($toShow.length === 0) {
 			hideAllSubclasses();
 		} else {
-			const otherSrcSubFeat = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
+			const otherSrcSubFeat = $(`#pagecontent`).find(`div.${CLSS_NON_STANDARD_SOURCE}`);
 			const shownInTable = [];
 
 			$.each($toShow, function (i, v) {
@@ -586,7 +587,7 @@ function loadsub (sub) {
 
 	// hide class features as required
 	const cfToggle = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
-	const allCf = $(`.${CLSS_CLASS_FEATURE}`);
+	const allCf = $(`#pagecontent`).find(`.${CLSS_CLASS_FEATURE}`);
 	const toToggleCf = allCf.not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
 	const isHideClassFeatures = hideClassFeatures !== null && hideClassFeatures;
 	// if showing no subclass and hiding class features, hide the "gain a feature at this level" labels
@@ -607,7 +608,7 @@ function loadsub (sub) {
 
 	// show UA/etc pills as required
 	const srcToggle = $(`#${ID_OTHER_SOURCES_TOGGLE}`);
-	const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`);
+	const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_PANEL_LINK}`);
 	if (hideOtherSources) {
 		srcToggle.removeClass(CLSS_OTHER_SOURCES_ACTIVE);
 		toToggleSrc.hide();
@@ -669,10 +670,11 @@ function loadsub (sub) {
 
 	function hideAllSubclasses () {
 		updateClassTableLinks();
+		const $pgContent = $(`#pagecontent`);
 		$(`.${CLSS_SUBCLASS_PILL}`).removeClass(CLSS_ACTIVE);
-		$(`.${CLSS_SUBCLASS_FEATURE}`).hide();
+		$pgContent.find(`.${CLSS_SUBCLASS_FEATURE}`).hide();
 		$(`.${CLSS_SUBCLASS_PREFIX}`).hide();
-		const allNonstandard = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
+		const allNonstandard = $pgContent.find(`div.${CLSS_NON_STANDARD_SOURCE}`);
 		allNonstandard.hide();
 		// if we're showing features from other sources, make sure these stay visible
 		if (!hideOtherSources) {
@@ -851,6 +853,12 @@ function initReaderMode () {
 			$bkTbl.find(`.subclass-features-${i}`).toggle();
 			$scToggle.toggleClass("active");
 		}
+		function teardown () {
+			$body.css("overflow", "");
+			$wrpBookUnder.remove();
+			$wrpBook.remove();
+			bookViewActive = false;
+		}
 
 		if (bookViewActive) return;
 		bookViewActive = true;
@@ -867,10 +875,7 @@ function initReaderMode () {
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
-				$body.css("overflow", "");
-				$wrpBookUnder.remove();
-				$wrpBook.remove();
-				bookViewActive = false;
+				teardown();
 			});
 		$brdTop.find(`div`).append($btnClose);
 		$bkTbl.append($brdTop);
@@ -932,8 +937,13 @@ function initReaderMode () {
 			$pnlMenu.append($scToggle);
 		});
 
+		const $menClose = $(`<span class="pnl-link pnl-link-close">\u21FD Close</span>`).on("click", () => {
+			teardown();
+		});
+		$pnlMenu.append($menClose);
+
 		// right (blank) panel
-		const $pnlBlank = $(`<div class="pnl-menu"/>`);
+		const $pnlBlank = $(`<div class="pnl-menu pnl-menu-pad"/>`);
 
 		$wrpBook.append($pnlMenu).append($pnlContent).append($pnlBlank);
 		$body.append($wrpBookUnder).append($wrpBook);
