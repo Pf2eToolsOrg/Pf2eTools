@@ -167,6 +167,15 @@ function EntryRenderer () {
 						}
 					}
 					break;
+				case "inlineBlock":
+					renderPrefix();
+					if (entry.entries) {
+						for (let i = 0; i < entry.entries.length; i++) {
+							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+						}
+					}
+					renderSuffix();
+					break;
 				case "bonus":
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value);
 					break;

@@ -90,6 +90,24 @@
 				}
 			]
 		},
+		"entryEntriesInlineEntries": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "inlineBlock"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryOptions": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
@@ -685,6 +703,7 @@
 		{"$ref": "#/definitions/entrySection"},
 		{"$ref": "#/definitions/entryEntries"},
 		{"$ref": "#/definitions/entryInlineEntries"},
+		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
 		{"$ref": "#/definitions/entryTable"},
 		{"$ref": "#/definitions/entryTableRow"},
