@@ -1607,15 +1607,15 @@ EntryRenderer.psionic = {
 			modeStringArray.push(EntryRenderer.psionic.getModeString(psionic, renderer, i));
 		}
 
-		return `${EntryRenderer.psionic.getDescriptionString(psionic)}${EntryRenderer.psionic.getFocusString(psionic)}${modeStringArray.join(STR_EMPTY)}`;
+		return `${EntryRenderer.psionic.getDescriptionString(psionic, renderer)}${EntryRenderer.psionic.getFocusString(psionic, renderer)}${modeStringArray.join(STR_EMPTY)}`;
 	},
 
-	getDescriptionString: (psionic) => {
-		return `<p>${psionic.description}</p>`;
+	getDescriptionString: (psionic, renderer) => {
+		return `<p>${renderer.renderEntry({type: "inline", entries: [psionic.description]})}</p>`;
 	},
 
-	getFocusString: (psionic) => {
-		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${psionic.focus}</p>`;
+	getFocusString: (psionic, renderer) => {
+		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${renderer.renderEntry({type: "inline", entries: [psionic.focus]})}</p>`;
 	},
 
 	getModeString: (psionic, renderer, modeIndex) => {
