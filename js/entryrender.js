@@ -1779,7 +1779,7 @@ EntryRenderer.hover = {
 			$brdrTop.attr("data-display-title", curState === "false");
 		});
 		$brdrTop.append($hovTitle);
-		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				teardown();
