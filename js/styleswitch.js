@@ -31,6 +31,7 @@ table.stats.stats-book {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
+.book-view-under,
 .book-view div.pnl-menu {
 	background: lightgrey;
 }
@@ -376,6 +377,7 @@ table.stats td._class_feature table th {
 	border-color: #ababab;
 }
 
+.book-view-under,
 .book-view div.pnl-menu {
 	background: #101010;
 }

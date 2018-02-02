@@ -857,6 +857,7 @@ function initReaderMode () {
 
 		const $body = $(`body`);
 		$body.css("overflow", "hidden");
+		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
 		const $wrpBook = $(`<div class="book-view"/>`);
 
 		// main panel
@@ -867,6 +868,7 @@ function initReaderMode () {
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				$body.css("overflow", "");
+				$wrpBookUnder.remove();
 				$wrpBook.remove();
 				bookViewActive = false;
 			});
@@ -934,6 +936,6 @@ function initReaderMode () {
 		const $pnlBlank = $(`<div class="pnl-menu"/>`);
 
 		$wrpBook.append($pnlMenu).append($pnlContent).append($pnlBlank);
-		$body.append($wrpBook);
+		$body.append($wrpBookUnder).append($wrpBook);
 	});
 }
