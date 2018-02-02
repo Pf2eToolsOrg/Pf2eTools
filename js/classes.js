@@ -79,6 +79,33 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
 	});
+
+	const invocFeature = data.class
+		.find(it => it.name === "Warlock" && it.source === SRC_PHB).classFeatures[1]
+		.find(f => f.name === "Eldritch Invocations");
+	if (invocFeature) {
+		const toRemove = invocFeature.entries.findIndex(it => it.type === "options");
+		const toSwitch = invocFeature.entries.findIndex(it => it.includes("Your invocation options are detailed at the end of the class description."));
+		if (toRemove !== -1 && toSwitch !== -1) {
+			invocFeature.entries[toSwitch] = {
+				type: "inlineBlock",
+				entries: [
+					"At 2nd level, you gain two eldritch invocations of your choice. See the ",
+					{
+						"type": "link",
+						"href": {
+							"type": "internal",
+							"path": "invocations.html"
+						},
+						"text": "Invocations page"
+					},
+					" for the list of available options. When you gain certain warlock levels, you gain additional invocations of your choice."
+				]
+			};
+			invocFeature.entries.splice(toRemove, 1);
+		}
+	}
+
 	// cache this, since it gets wiped by brew loading
 	const loadHash = window.location.hash;
 	addData(data);
@@ -269,29 +296,6 @@ function loadhash (id) {
 			const styleClasses = [CLSS_CLASS_FEATURE];
 			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
 
-			// swap the Eldritch Invocations section for a link to the relevant page
-			if (curClass.name === "Warlock" && feature.name === "Eldritch Invocations") {
-				const toRemove = feature.entries.findIndex(it => it.type === "options");
-				const toSwitch = feature.entries.findIndex(it => it.includes("Your invocation options are detailed at the end of the class description."));
-				if (toRemove !== -1 && toSwitch !== -1) {
-					feature.entries[toSwitch] = {
-						type: "inlineBlock",
-						entries: [
-							"At 2nd level, you gain two eldritch invocations of your choice. See the ",
-							{
-								"type": "link",
-								"href": {
-									"type": "internal",
-									"path": "invocations.html"
-								},
-								"text": "Invocations page"
-							},
-							" for the list of available options. When you gain certain warlock levels, you gain additional invocations of your choice."
-						]
-					};
-					feature.entries.splice(toRemove, 1);
-				}
-			}
 			renderer.recursiveEntryRender(feature, renderStack, 0, `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, `</td></tr>`, true);
 
 			// add subclass features to render stack if appropriate
