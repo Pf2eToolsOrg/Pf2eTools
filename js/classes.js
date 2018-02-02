@@ -900,11 +900,14 @@ function initReaderMode () {
 
 		// menu panel
 		const $pnlMenu = $(`<div class="pnl-menu"/>`);
+		const $cfPill = $(`#cf-toggle`);
+
 		const $cfToggle = $(`<span class="pnl-link cf-active">Class Features</span>`).on("click", () => {
 			tglCf($bkTbl, $cfToggle);
+			$cfPill.click();
 		});
 
-		if (!($(`#cf-toggle`).hasClass("cf-active"))) {
+		if (!($cfPill.hasClass("cf-active"))) {
 			tglCf($bkTbl, $cfToggle);
 		}
 
@@ -913,11 +916,14 @@ function initReaderMode () {
 		curClass.subclasses.forEach((sc, i) => {
 			const name = hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 			const styles = getSubclassStyles(sc);
+			const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
+
 			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}">${name}</span>`).on("click", () => {
 				tglSc($bkTbl, $scToggle, i);
+				$pill.click();
 			});
 
-			if (!($(`.sc-pill[data-subclass="${sc.name}"]`).hasClass("active"))) {
+			if (!($pill.hasClass("active"))) {
 				tglSc($bkTbl, $scToggle, i);
 			}
 
