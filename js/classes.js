@@ -79,6 +79,33 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
 	});
+
+	const invocFeature = data.class
+		.find(it => it.name === "Warlock" && it.source === SRC_PHB).classFeatures[1]
+		.find(f => f.name === "Eldritch Invocations");
+	if (invocFeature) {
+		const toRemove = invocFeature.entries.findIndex(it => it.type === "options");
+		const toSwitch = invocFeature.entries.findIndex(it => it.includes("Your invocation options are detailed at the end of the class description."));
+		if (toRemove !== -1 && toSwitch !== -1) {
+			invocFeature.entries[toSwitch] = {
+				type: "inlineBlock",
+				entries: [
+					"At 2nd level, you gain two eldritch invocations of your choice. See the ",
+					{
+						"type": "link",
+						"href": {
+							"type": "internal",
+							"path": "invocations.html"
+						},
+						"text": "Invocations page"
+					},
+					" for the list of available options. When you gain certain warlock levels, you gain additional invocations of your choice."
+				]
+			};
+			invocFeature.entries.splice(toRemove, 1);
+		}
+	}
+
 	// cache this, since it gets wiped by brew loading
 	const loadHash = window.location.hash;
 	addData(data);
@@ -107,6 +134,7 @@ function onJsonLoad (data) {
 	}
 
 	initHistory();
+	initReaderMode();
 }
 
 function addData (data) {
@@ -146,6 +174,14 @@ function addData (data) {
 	list.sort("name");
 }
 
+function getSubclassStyles (sc) {
+	const styleClasses = [CLSS_SUBCLASS_FEATURE];
+	const nonStandard = isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source);
+	if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+	if (cleanScSource(sc.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+	return styleClasses;
+}
+
 function addSubclassData (data) {
 	if (!data.subclass || !data.subclass.length) return;
 
@@ -166,11 +202,12 @@ function addSubclassData (data) {
 	_freshLoad();
 }
 
+let curClass;
 function loadhash (id) {
 	$("#pagecontent").html(tableDefault);
 	$("#statsprof").html(statsProfDefault);
 	$("#classtable").html(classTableDefault);
-	const curClass = classes[id];
+	curClass = classes[id];
 
 	// name
 	$("th#nameTable").html(curClass.name);
@@ -289,10 +326,7 @@ function loadhash (id) {
 							}
 						}
 
-						const styleClasses = [CLSS_SUBCLASS_FEATURE];
-						const hideSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
-						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-						if (cleanScSource(subClass.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+						const styleClasses = getSubclassStyles(subClass);
 						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}"><td colspan="6">`, `</td></tr>`, true);
 					}
 				}
@@ -804,4 +838,102 @@ function manageBrew () {
 			window.location.hash = "";
 		}
 	}
+}
+
+function initReaderMode () {
+	let bookViewActive = false;
+	$(`#btn-readmode`).on("click", () => {
+		function tglCf ($bkTbl, $cfToggle) {
+			$bkTbl.find(`.class-features`).toggle();
+			$cfToggle.toggleClass("cf-active");
+		}
+		function tglSc ($bkTbl, $scToggle, i) {
+			$bkTbl.find(`.subclass-features-${i}`).toggle();
+			$scToggle.toggleClass("active");
+		}
+
+		if (bookViewActive) return;
+		bookViewActive = true;
+
+		const $body = $(`body`);
+		$body.css("overflow", "hidden");
+		const $wrpBook = $(`<div class="book-view"/>`);
+
+		// main panel
+		const $pnlContent = $(`<div class="pnl-content"/>`);
+		const $bkTbl = $(`<table class="stats stats-book"/>`);
+		const $brdTop = $(`<tr><th class="border close-border" colspan="6"><div/></th></tr>`);
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
+			.on("click", (evt) => {
+				evt.stopPropagation();
+				$body.css("overflow", "");
+				$wrpBook.remove();
+				bookViewActive = false;
+			});
+		$brdTop.find(`div`).append($btnClose);
+		$bkTbl.append($brdTop);
+
+		const renderStack = [];
+		renderer.setFirstSection(true);
+		renderer.recursiveEntryRender({type: "section", name: curClass.name}, renderStack, 0, `<tr><td colspan="6">`, `</td></tr>`, true);
+
+		renderStack.push(`<tr class="class-features"><td colspan="6">`);
+		curClass.classFeatures.forEach(lvl => {
+			lvl.forEach(cf => {
+				renderer.recursiveEntryRender(cf, renderStack);
+			});
+		});
+		renderStack.push(`</td></tr>`);
+
+		curClass.subclasses.forEach((sc, i) => {
+			renderStack.push(`<tr class="subclass-features-${i} ${getSubclassStyles(sc).join(" ")}"><td colspan="6">`);
+			sc.subclassFeatures.forEach(lvl => {
+				lvl.forEach(f => {
+					renderer.recursiveEntryRender(f, renderStack);
+				});
+			});
+			renderStack.push(`</td></tr>`);
+		});
+		renderStack.push(EntryRenderer.utils.getBorderTr());
+		$bkTbl.append(renderStack.join(""));
+		$pnlContent.append($bkTbl);
+
+		// menu panel
+		const $pnlMenu = $(`<div class="pnl-menu"/>`);
+		const $cfPill = $(`#cf-toggle`);
+
+		const $cfToggle = $(`<span class="pnl-link cf-active">Class Features</span>`).on("click", () => {
+			tglCf($bkTbl, $cfToggle);
+			$cfPill.click();
+		});
+
+		if (!($cfPill.hasClass("cf-active"))) {
+			tglCf($bkTbl, $cfToggle);
+		}
+
+		$pnlMenu.append($cfToggle);
+
+		curClass.subclasses.forEach((sc, i) => {
+			const name = hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
+			const styles = getSubclassStyles(sc);
+			const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
+
+			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}">${name}</span>`).on("click", () => {
+				tglSc($bkTbl, $scToggle, i);
+				$pill.click();
+			});
+
+			if (!($pill.hasClass("active"))) {
+				tglSc($bkTbl, $scToggle, i);
+			}
+
+			$pnlMenu.append($scToggle);
+		});
+
+		// right (blank) panel
+		const $pnlBlank = $(`<div class="pnl-menu"/>`);
+
+		$wrpBook.append($pnlMenu).append($pnlContent).append($pnlBlank);
+		$body.append($wrpBook);
+	});
 }

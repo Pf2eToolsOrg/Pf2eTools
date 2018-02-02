@@ -41,6 +41,77 @@
 		#please-select-message.showing > td::after {
 			content: "Toggle a button to view class and subclass information";
 		}
+
+		table.stats th.close-border div {
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.book-view {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			overflow-y: auto;
+			z-index: 100;
+			display: flex;
+		}
+
+		.book-view div.pnl-content {
+			min-height: 100vh;
+			flex: 7 0 0;
+			height: 100vh;
+			overflow-y: auto;
+		}
+
+		.book-view div.pnl-menu::-webkit-scrollbar-track,
+		.book-view div.pnl-content::-webkit-scrollbar-track {
+			background: #a0a0a0;
+		}
+
+		.book-view div.pnl-menu {
+			min-height: 100%;
+			min-width: 100px;
+			flex: 1 0 0;
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+		}
+
+		span.pnl-link {
+			font-size: 0.8em;
+			padding: 3px;
+			margin-bottom: 1px;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.book-view table.stats-book {
+			height: 100vh;
+			overflow-y: auto;
+		}
+
+		.book-view table.stats-book td {
+			vertical-align: top;
+		}
+
+		.wrp-btn-readmode {
+			margin-top: 10px;
+			margin-bottom: 5px;
+		}
+
+		@media (max-width: 991px) {
+			.wrp-btn-readmode {
+				margin-top: 0;
+			}
+		}
+
+		@media only screen and (max-width: 480px) {
+			.wrp-btn-readmode {
+				display: none;
+			}
+		}
 	</style>
 </head>
 
@@ -203,6 +274,9 @@
 	<hr>
 	<div class="row">
 		<div class="col-md-3">
+			<div class="text-align-center wrp-btn-readmode">
+				<button class="btn btn-default btn-sm" id="btn-readmode" title="A pop-up reading mode thatkeeps class and subclass information separated, matching the books.">Book View</button>
+			</div>
 			<table id="statsprof" class="stats">
 				<tr>
 					<th class="border" colspan="6"></th>

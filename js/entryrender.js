@@ -167,6 +167,15 @@ function EntryRenderer () {
 						}
 					}
 					break;
+				case "inlineBlock":
+					renderPrefix();
+					if (entry.entries) {
+						for (let i = 0; i < entry.entries.length; i++) {
+							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+						}
+					}
+					renderSuffix();
+					break;
 				case "bonus":
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value);
 					break;
@@ -1770,7 +1779,7 @@ EntryRenderer.hover = {
 			$brdrTop.attr("data-display-title", curState === "false");
 		});
 		$brdrTop.append($hovTitle);
-		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				teardown();
