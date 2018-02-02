@@ -1625,7 +1625,7 @@ EntryRenderer.psionic = {
 
 			const fauxEntry = {
 				type: "list",
-				style: "list-hang",
+				style: "list-hang-notitle",
 				items: []
 			};
 
