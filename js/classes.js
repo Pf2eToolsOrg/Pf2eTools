@@ -135,6 +135,7 @@ function onJsonLoad (data) {
 	}
 
 	initHistory();
+	initCompareMode();
 	initReaderMode();
 }
 
@@ -840,6 +841,75 @@ function manageBrew () {
 			window.location.hash = "";
 		}
 	}
+}
+
+function initCompareMode () {
+	let compareViewActive = false;
+	$(`#btn-comparemode`).on("click", () => {
+		function teardown () {
+			$body.css("overflow", "");
+			$wrpBookUnder.remove();
+			$wrpBook.remove();
+			compareViewActive = false;
+		}
+
+		if (compareViewActive) return;
+		compareViewActive = true;
+
+		const $body = $(`body`);
+		$body.css("overflow", "hidden");
+		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
+		const $wrpBook = $(`<div class="book-view"/>`);
+
+		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
+		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
+			.on("click", (evt) => {
+				evt.stopPropagation();
+				teardown();
+			});
+		$brdTop.find(`div`).append($btnClose);
+		$bkTbl.append($brdTop);
+
+		const $tbl = $(`<table class="stats stats-book" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
+		const renderStack = [];
+		const numScLvls = curClass.subclasses[0].subclassFeatures.length;
+		for (let i = 0; i < numScLvls; ++i) {
+			renderStack.push(`<tr>`);
+			curClass.subclasses.forEach((sc, j) => {
+				renderStack.push(`<td class="subclass-features-${j} ${getSubclassStyles(sc).join(" ")}">`);
+				sc.subclassFeatures[i].forEach(f => {
+					renderer.recursiveEntryRender(f, renderStack);
+				});
+				renderStack.push(`</td>`);
+			});
+			renderStack.push(`</tr>`);
+			renderStack.push(`<tr><th colspan="6"><hr></th></tr>`);
+		}
+		$tbl.append(renderStack.join(""));
+
+		let numShown = 0;
+		curClass.subclasses.forEach((sc, i) => {
+			const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
+			if (!($pill.hasClass("active"))) {
+				$tbl.find(`.subclass-features-${i}`).hide();
+			} else {
+				numShown++;
+			}
+		});
+
+		$tbl.find(`tr > td > div`).css("width", "400px");
+		const $tblRow = $(`<tr/>`);
+		$tblRow.append($(`<div style="overflow: auto; max-height: calc(100vh - 16px); ${numShown ? "" : "display: none;"}"/>`).append($tbl));
+		const $msgRow = $(`<tr ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">Please select some subclasses first</span><br></td></tr>`);
+		$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
+			teardown();
+		}));
+		$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
+
+		$wrpBook.append($bkTbl);
+		$body.append($wrpBookUnder).append($wrpBook);
+	});
 }
 
 function initReaderMode () {

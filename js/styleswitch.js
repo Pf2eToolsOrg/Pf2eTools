@@ -31,7 +31,10 @@ table.stats.stats-book {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
-.book-view-under,
+.book-view-under {
+	background: white;
+}
+
 .book-view div.pnl-menu {
 	background: lightgrey;
 }
