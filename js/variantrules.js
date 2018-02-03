@@ -46,7 +46,7 @@ function onJsonLoad (data) {
 		listClass: "variantRules"
 	});
 
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	filterBox.render();
 

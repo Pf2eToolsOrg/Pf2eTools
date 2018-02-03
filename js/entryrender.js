@@ -327,7 +327,7 @@ function EntryRenderer () {
 
 		function handleOptions (self) {
 			if (entry.entries) {
-				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
+				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
 				handleEntriesOptionsInvocationPatron(self, false);
 			}
 		}
@@ -1317,7 +1317,7 @@ EntryRenderer.item = {
 		}
 
 		function sortProperties (a, b) {
-			return ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
+			return SortUtil.ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
 		}
 
 		let propertiesTxt = "";

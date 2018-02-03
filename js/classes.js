@@ -144,7 +144,7 @@ function addData (data) {
 
 	// alphabetically sort subclasses
 	for (const c of data.class) {
-		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+		c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 	}
 
 	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
@@ -199,7 +199,7 @@ function addSubclassData (data) {
 		c.subclasses = c.subclasses.concat(subClass);
 
 		// sort subclasses
-		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+		c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 	});
 	_freshLoad();
 }
@@ -368,7 +368,7 @@ function loadhash (id) {
 	const subClasses = curClass.subclasses
 		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
 		.sort(function (a, b) {
-			return ascSort(a.shortName, b.shortName)
+			return SortUtil.ascSort(a.shortName, b.shortName)
 		});
 	for (let i = 0; i < subClasses.length; i++) {
 		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
@@ -835,7 +835,7 @@ function manageBrew () {
 			const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
 			if (indexInClass) {
 				c.subclasses.splice(indexInClass, 1);
-				c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+				c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 			}
 			refreshBrewList();
 			window.location.hash = "";

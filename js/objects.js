@@ -29,7 +29,7 @@ function onJsonLoad (data) {
 	const list = ListUtil.search({
 		valueNames: ["name", "size", "source"],
 		listClass: "objects",
-		sortFunction: listSort
+		sortFunction: SortUtil.listSort
 	});
 
 	initHistory();

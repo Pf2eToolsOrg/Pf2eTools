@@ -90,12 +90,12 @@ function onJsonLoad (data) {
 	$(`#${ID_PSIONICS_LIST}`).append(tempString);
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	const list = ListUtil.search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
 		listClass: CLS_PSIONICS,
-		sortFunction: listSort
+		sortFunction: SortUtil.listSort
 	});
 
 	filterBox.render();

@@ -45,7 +45,7 @@ function listSortInvocations (a, b, o) {
 		const comp = sortLevelAsc(a.values()["level"], b.values()["level"]);
 		if (comp !== 0) return comp;
 	}
-	return listSort(a, b, o);
+	return SortUtil.listSort(a, b, o);
 }
 
 let INVOCATION_LIST;
@@ -98,7 +98,7 @@ function onJsonLoad (data) {
 	});
 	$(`#${ID_INVOCATION_LIST}`).append(tempString);
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	const list = ListUtil.search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_PACT, LIST_PATRON, LIST_SPELL, LIST_LEVEL],

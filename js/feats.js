@@ -51,7 +51,7 @@ function onJsonLoad (data) {
 	featTable.append(tempString);
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	// init list
 	const list = ListUtil.search({

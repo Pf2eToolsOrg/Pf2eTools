@@ -756,7 +756,7 @@ Parser.spClassesToFull = function (classes) {
 
 Parser.spMainClassesToFull = function (classes) {
 	return classes.fromClassList
-		.sort((a, b) => ascSort(a.name, b.name))
+		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
 		.map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`)
 		.join(", ");
 };
@@ -765,8 +765,8 @@ Parser.spSubclassesToFull = function (classes) {
 	if (!classes.fromSubclass) return "";
 	return classes.fromSubclass
 		.sort((a, b) => {
-			const byName = ascSort(a.class.name, b.class.name);
-			return byName || ascSort(a.subclass.name, b.subclass.name);
+			const byName = SortUtil.ascSort(a.class.name, b.class.name);
+			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
 		.map(c => Parser._spSubclassItem(c))
 		.join(", ");
@@ -928,8 +928,8 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 	const toCheck = [];
 	classes.fromSubclass
 		.sort((a, b) => {
-			const byName = ascSort(a.class.name, b.class.name);
-			return byName || ascSort(a.subclass.name, b.subclass.name);
+			const byName = SortUtil.ascSort(a.class.name, b.class.name);
+			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
 		.forEach(c => {
 			const nm = c.subclass.name;
@@ -1639,8 +1639,7 @@ function initFilterBox (...filterList) {
 }
 
 // ENCODING/DECODING ===================================================================================================
-UrlUtil = function () {
-};
+UrlUtil = {};
 UrlUtil.encodeForHash = function (toEncode) {
 	if (toEncode instanceof Array) {
 		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
@@ -1752,43 +1751,56 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OBJECT] = UrlUtil.PG_OBJECTS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAP] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
 
+if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
+	// for local testing, hotkey to get a link to the current page on the main site
+	window.addEventListener("keypress", (e) => {
+		if (noModifierKeys(e)) {
+			if (e.key === "l") {
+				const spl = window.location.href.split("/");
+				window.prompt("Copy to clipboard: Ctrl+C, Enter", `https://5e.tools/${spl[spl.length - 1]}`);
+			}
+		}
+	});
+}
+
 // SORTING =============================================================================================================
-// TODO refactor into a class
-function ascSort (a, b) {
-	// to handle `FilterItem`s
-	if (a.hasOwnProperty("item") && b.hasOwnProperty("item")) {
-		return _ascSort(a.item, b.item);
+SortUtil = {
+	ascSort: (a, b) => {
+		// to handle `FilterItem`s
+		if (a.hasOwnProperty("item") && b.hasOwnProperty("item")) {
+			return SortUtil._ascSort(a.item, b.item);
+		}
+		return SortUtil._ascSort(a, b);
+	},
+
+	_ascSort: (a, b) => {
+		if (b === a) return 0;
+		return b < a ? 1 : -1;
+	},
+
+	compareNames: (a, b) => {
+		if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
+		else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
+		else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
+	},
+
+	listSort: (itemA, itemB, options) => {
+		if (options.valueName === "name") return compareBy("name");
+		else return compareByOrDefault(options.valueName, "name");
+
+		function compareBy (valueName) {
+			const aValue = itemA.values()[valueName].toLowerCase();
+			const bValue = itemB.values()[valueName].toLowerCase();
+			if (aValue === bValue) return 0;
+			return (aValue > bValue) ? 1 : -1;
+		}
+
+		function compareByOrDefault (valueName, defaultValueName) {
+			const initialCompare = compareBy(valueName);
+			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
+		}
 	}
-	return _ascSort(a, b);
-}
-
-function _ascSort (a, b) {
-	if (b === a) return 0;
-	return b < a ? 1 : -1;
-}
-
-function compareNames (a, b) {
-	if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
-	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
-	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
-}
-
-function listSort (itemA, itemB, options) {
-	if (options.valueName === "name") return compareBy("name");
-	else return compareByOrDefault(options.valueName, "name");
-
-	function compareBy (valueName) {
-		const aValue = itemA.values()[valueName].toLowerCase();
-		const bValue = itemB.values()[valueName].toLowerCase();
-		if (aValue === bValue) return 0;
-		return (aValue > bValue) ? 1 : -1;
-	}
-
-	function compareByOrDefault (valueName, defaultValueName) {
-		const initialCompare = compareBy(valueName);
-		return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
-	}
-}
+};
 
 // JSON LOADING ========================================================================================================
 DataUtil = {

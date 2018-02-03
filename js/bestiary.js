@@ -11,7 +11,7 @@ function ascSortCr (a, b) {
 	// always put unknown values last
 	if (a === "Unknown" || a === undefined) a = "999";
 	if (b === "Unknown" || b === undefined) b = "999";
-	return ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
+	return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
 const meta = {};
@@ -92,7 +92,7 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "type", "cr"],
@@ -190,8 +190,8 @@ function addMonsters (data) {
 
 	// sort filters
 	crFilter.items.sort(ascSortCr);
-	typeFilter.items.sort(ascSort);
-	tagFilter.items.sort(ascSort);
+	typeFilter.items.sort(SortUtil.ascSort);
+	tagFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -204,9 +204,9 @@ function addMonsters (data) {
 function sortMonsters (a, b, o) {
 	a = monsters[a.elm.getAttribute(FLTR_ID)];
 	b = monsters[b.elm.getAttribute(FLTR_ID)];
-	if (o.valueName === "name") return ascSort(a.name, b.name);
-	if (o.valueName === "type") return ascSort(a._pTypes.asText, b._pTypes.asText);
-	if (o.valueName === "source") return ascSort(a.source, b.source);
+	if (o.valueName === "name") return SortUtil.ascSort(a.name, b.name);
+	if (o.valueName === "type") return SortUtil.ascSort(a._pTypes.asText, b._pTypes.asText);
+	if (o.valueName === "source") return SortUtil.ascSort(a.source, b.source);
 	if (o.valueName === "cr") return ascSortCr(a.cr, b.cr);
 	return 0;
 }
