@@ -409,7 +409,7 @@ function loadhash (id) {
 
 	// add click links for rollables
 	$("#pagecontent #abilityscores td").each(function () {
-		$(this).wrapInner("<span class='roller' data-roll='1d20" + $(this).children(".mod").html() + "'></span>");
+		$(this).wrapInner(`<span class="roller" data-roll="1d20${$(this).children(".mod").html()}" title="${Parser.attAbvToFull($(this).prop("id"))}"></span>`);
 	});
 
 	const isProfDiceMode = $("button#profbonusdice")[0].useDice;
@@ -526,12 +526,12 @@ function loadhash (id) {
 		}));
 	});
 	$("#pagecontent span#hp").each(function () {
-		addNonD20Rollers(this);
+		addNonD20Rollers(this, "Hit Points");
 	});
 
-	function addNonD20Rollers (ele) {
+	function addNonD20Rollers (ele, title) {
 		$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-			const titleMaybe = attemptToGetTitle(ele);
+			const titleMaybe = title || attemptToGetTitle(ele);
 			return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
 		}));
 	}
