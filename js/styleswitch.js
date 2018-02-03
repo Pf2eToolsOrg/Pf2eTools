@@ -31,6 +31,14 @@ table.stats.stats-book {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
+.book-view-under {
+	background: white;
+}
+
+.book-view div.pnl-menu {
+	background: lightgrey;
+}
+
 table.stats table.summary tbody tr:nth-child(even),
 table.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
 	background: #e4d8c3;
@@ -142,6 +150,10 @@ table.stats td._class_feature table th {
 
 #rulescontent caption {
 	color: black;
+}
+
+span.pnl-link {
+	background: #f0f0f0;
 }
 
 div#subclasses>span {
@@ -368,6 +380,11 @@ table.stats td._class_feature table th {
 	border-color: #ababab;
 }
 
+.book-view-under,
+.book-view div.pnl-menu {
+	background: #101010;
+}
+
 ul.list.books > li:nth-child(odd) > a,
 .stats table.summary tbody tr:nth-child(even),
 .stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd),
@@ -428,6 +445,7 @@ ul.list li {
 	color: grey;
 }
 
+span.pnl-link,
 div#subclasses>span {
 	background: black;
 }

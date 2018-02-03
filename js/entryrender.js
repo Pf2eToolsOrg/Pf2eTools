@@ -167,6 +167,15 @@ function EntryRenderer () {
 						}
 					}
 					break;
+				case "inlineBlock":
+					renderPrefix();
+					if (entry.entries) {
+						for (let i = 0; i < entry.entries.length; i++) {
+							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+						}
+					}
+					renderSuffix();
+					break;
 				case "bonus":
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value);
 					break;
@@ -318,7 +327,7 @@ function EntryRenderer () {
 
 		function handleOptions (self) {
 			if (entry.entries) {
-				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
+				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
 				handleEntriesOptionsInvocationPatron(self, false);
 			}
 		}
@@ -337,7 +346,7 @@ function EntryRenderer () {
 			const styleString = getStyleString();
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
-			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
+			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span> ` : "";
 
 			if (depth === -1) {
 				if (!self._firstSection) {
@@ -1308,7 +1317,7 @@ EntryRenderer.item = {
 		}
 
 		function sortProperties (a, b) {
-			return ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
+			return SortUtil.ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
 		}
 
 		let propertiesTxt = "";
@@ -1598,15 +1607,15 @@ EntryRenderer.psionic = {
 			modeStringArray.push(EntryRenderer.psionic.getModeString(psionic, renderer, i));
 		}
 
-		return `${EntryRenderer.psionic.getDescriptionString(psionic)}${EntryRenderer.psionic.getFocusString(psionic)}${modeStringArray.join(STR_EMPTY)}`;
+		return `${EntryRenderer.psionic.getDescriptionString(psionic, renderer)}${EntryRenderer.psionic.getFocusString(psionic, renderer)}${modeStringArray.join(STR_EMPTY)}`;
 	},
 
-	getDescriptionString: (psionic) => {
-		return `<p>${psionic.description}</p>`;
+	getDescriptionString: (psionic, renderer) => {
+		return `<p>${renderer.renderEntry({type: "inline", entries: [psionic.description]})}</p>`;
 	},
 
-	getFocusString: (psionic) => {
-		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${psionic.focus}</p>`;
+	getFocusString: (psionic, renderer) => {
+		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${renderer.renderEntry({type: "inline", entries: [psionic.focus]})}</p>`;
 	},
 
 	getModeString: (psionic, renderer, modeIndex) => {
@@ -1625,7 +1634,7 @@ EntryRenderer.psionic = {
 
 			const fauxEntry = {
 				type: "list",
-				style: "list-hang",
+				style: "list-hang-notitle",
 				items: []
 			};
 
@@ -1770,7 +1779,7 @@ EntryRenderer.hover = {
 			$brdrTop.attr("data-display-title", curState === "false");
 		});
 		$brdrTop.append($hovTitle);
-		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				teardown();

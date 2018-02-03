@@ -213,7 +213,7 @@ function ascSortSpellLevel (a, b) {
 	if (a === b) return 0;
 	if (a === STR_CANTRIP) return -1;
 	if (b === STR_CANTRIP) return 1;
-	return ascSort(a, b);
+	return SortUtil.ascSort(a, b);
 }
 
 function getFilterAbilitySave (ability) {
@@ -314,7 +314,7 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
@@ -434,8 +434,8 @@ function addSpells (data) {
 	spellTable.append(tempString);
 
 	// sort filters
-	classFilter.items.sort(ascSort);
-	subclassFilter.items.sort(ascSort);
+	classFilter.items.sort(SortUtil.ascSort);
+	subclassFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -453,34 +453,34 @@ function sortSpells (a, b, o) {
 	}
 
 	if (o.valueName === "source") {
-		const bySrc = ascSort(a.source, b.source);
-		return bySrc !== 0 ? bySrc : ascSort(a.name, b.name);
+		const bySrc = SortUtil.ascSort(a.source, b.source);
+		return bySrc !== 0 ? bySrc : SortUtil.ascSort(a.name, b.name);
 	}
 
 	if (o.valueName === "level") {
-		return orFallback(ascSort, P_LEVEL);
+		return orFallback(SortUtil.ascSort, P_LEVEL);
 	}
 
 	if (o.valueName === "time") {
-		return orFallback(ascSort, P_NORMALISED_TIME);
+		return orFallback(SortUtil.ascSort, P_NORMALISED_TIME);
 	}
 
 	if (o.valueName === "school") {
-		return orFallback(ascSort, P_SCHOOL);
+		return orFallback(SortUtil.ascSort, P_SCHOOL);
 	}
 
 	if (o.valueName === "range") {
-		return orFallback(ascSort, P_NORMALISED_RANGE);
+		return orFallback(SortUtil.ascSort, P_NORMALISED_RANGE);
 	}
 
 	return 0;
 
 	function byName () {
-		return ascSort(a.name, b.name);
+		return SortUtil.ascSort(a.name, b.name);
 	}
 
 	function bySource () {
-		return ascSort(a.source, b.source);
+		return SortUtil.ascSort(a.source, b.source);
 	}
 
 	function fallback () {

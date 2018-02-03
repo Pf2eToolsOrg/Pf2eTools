@@ -43,7 +43,7 @@ function onJsonLoad (data) {
 	filterBox.render();
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,

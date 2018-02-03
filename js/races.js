@@ -101,11 +101,11 @@ function onJsonLoad (data) {
 	racesTable.append(tempString);
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 	sizeFilter.items.sort(ascSortSize);
 
 	function ascSortSize (a, b) {
-		return ascSort(toNum(a), toNum(b));
+		return SortUtil.ascSort(toNum(a), toNum(b));
 
 		function toNum (size) {
 			switch (size) {

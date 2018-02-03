@@ -222,6 +222,7 @@ const Omnisearch = {
 			this.addField("cf");
 			this.addField("s");
 			this.setRef("id")
+			elasticlunr.clearStopWords();
 		});
 		data.forEach(d => {
 			d.cf = Parser.pageCategoryToFull(d.c);

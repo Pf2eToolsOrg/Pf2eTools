@@ -1,5 +1,6 @@
 "use strict";
 
+// NOTE: This file is generated with the Node script `generate-quick-reference.js`
 const JSON_URL = "data/quickreference.json";
 
 let reference;

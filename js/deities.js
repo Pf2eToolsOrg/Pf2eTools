@@ -83,7 +83,7 @@ function onJsonLoad (data) {
 		g.alignment.sort(alignSort);
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
-		g.domains.sort(ascSort);
+		g.domains.sort(SortUtil.ascSort);
 
 		g._fReprinted = g.reprinted ? STR_REPRINTED : "";
 
@@ -109,7 +109,7 @@ function onJsonLoad (data) {
 	const list = ListUtil.search({
 		valueNames: ["name", "pantheon", "alignment", "domains", "symbol", "source"],
 		listClass: "deities",
-		sortFunction: listSort
+		sortFunction: SortUtil.listSort
 	});
 
 	filterBox.render();

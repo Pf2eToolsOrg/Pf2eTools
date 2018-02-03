@@ -174,6 +174,15 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 /* *** */
 
+.delete-icon.glyphicon {
+	color: rgba(255, 255, 255, 0.7);
+	cursor: pointer;
+	font-size: 12px;
+	padding: 2px;
+	margin-left: auto;
+	top: 0;
+}
+
 /* hoverbox */
 .hoverbox {
 	position: fixed;
@@ -219,12 +228,6 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 .hoverbox .hoverborder .glyphicon {
 	display: none;
-	color: rgba(255, 255, 255, 0.7);
-	cursor: pointer;
-	font-size: 12px;
-	padding: 2px;
-	margin-left: auto;
-	top: 0;
 }
 
 .hoverbox .hoverborder[data-perm=true] .glyphicon {
@@ -539,6 +542,10 @@ table.stats table caption {
 
 th.border {
 	height: 4px;
+}
+
+th.border-thin {
+	height: 1px;
 }
 
 td.divider div {
@@ -1042,21 +1049,23 @@ div#subclasses > span {
 	user-select: none;
 }
 
+span.pnl-link.active,
 div#subclasses span.active {
 	background: #337ab7;
 	color: white;
 }
 
+span.pnl-link.active.spicy-sauce,
 div#subclasses span.active.spicy-sauce {
 	background: #1d965d;
-	color: white;
 }
 
+span.pnl-link.active.refreshing-brew,
 div#subclasses span.active.refreshing-brew {
 	background: #8c3b96;
-	color: white;
 }
 
+span.pnl-link.cf-active,
 div#subclasses span.cf-active {
 	background: #922610;
 	color: white;
@@ -1717,24 +1726,24 @@ table.stats.stats-book div.statsBlockHead div.statsBlockSubHead > span.entry-tit
 	font-size: 1.6em;
 }
 
-table.stats tr.subclass-feature div.statsBlockHead > span.entry-title,
-table.stats tr.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+table.stats .subclass-feature div.statsBlockHead > span.entry-title,
+table.stats .subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title {
 	color: #337ab7;
 	border-bottom-color: #337ab7;
 }
 
-table.stats tr.spicy-sauce.subclass-feature div.statsBlockHead > span.entry-title,
-table.stats tr.spicy-sauce.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
-table.stats tr.class-feature div.statsBlockHead .spicy-sauce > span.entry-title,
-table.stats tr.class-feature div.statsBlockHead .spicy-sauce div.statsBlockSubHead > span.entry-title {
+table.stats .spicy-sauce.subclass-feature div.statsBlockHead > span.entry-title,
+table.stats .spicy-sauce.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
+table.stats .class-feature div.statsBlockHead .spicy-sauce > span.entry-title,
+table.stats .class-feature div.statsBlockHead .spicy-sauce div.statsBlockSubHead > span.entry-title {
 	color: #1d965d;
 	border-bottom-color: #1d965d;
 }
 
-table.stats tr.refreshing-brew.subclass-feature div.statsBlockHead > span.entry-title,
-table.stats tr.refreshing-brew.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
-table.stats tr.class-feature div.statsBlockHead .refreshing-brew > span.entry-title,
-table.stats tr.class-feature div.statsBlockHead .refreshing-brew div.statsBlockSubHead > span.entry-title {
+table.stats .refreshing-brew.subclass-feature div.statsBlockHead > span.entry-title,
+table.stats .refreshing-brew.subclass-feature div.statsBlockHead div.statsBlockSubHead > span.entry-title,
+table.stats .class-feature div.statsBlockHead .refreshing-brew > span.entry-title,
+table.stats .class-feature div.statsBlockHead .refreshing-brew div.statsBlockSubHead > span.entry-title {
 	color: #8c3b96;
 	border-bottom-color: #8c3b96;
 }
@@ -1849,6 +1858,10 @@ td span.tbl-tab-intent {
 table.stats table tr > th.text-align-right,
 table.stats table tr > td.text-align-right {
 	padding-right: 0.5em;
+}
+
+table.stats.stats-book {
+	border-radius: 0;
 }
 
 table.stats.stats-book div.statsInlineHead,

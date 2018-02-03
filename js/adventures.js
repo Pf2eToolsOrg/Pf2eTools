@@ -87,11 +87,11 @@ function sortAdventures (a, b, o) {
 	}
 
 	if (o.valueName === "storyline") {
-		return orFallback(ascSort, "storyline");
+		return orFallback(SortUtil.ascSort, "storyline");
 	}
 
 	if (o.valueName === "level") {
-		return orFallback(ascSort, "_startLevel");
+		return orFallback(SortUtil.ascSort, "_startLevel");
 	}
 
 	if (o.valueName === "published") {
@@ -99,7 +99,7 @@ function sortAdventures (a, b, o) {
 	}
 
 	function byName () {
-		return ascSort(a.name, b.name);
+		return SortUtil.ascSort(a.name, b.name);
 	}
 
 	function ascSortDate (a, b) {

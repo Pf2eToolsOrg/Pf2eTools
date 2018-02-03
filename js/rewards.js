@@ -44,7 +44,7 @@ function onJsonLoad (data) {
 	$("ul.rewards").append(tempString);
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	const list = ListUtil.search({
 		valueNames: ["name", "source"],

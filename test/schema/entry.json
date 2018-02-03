@@ -41,6 +41,9 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["entries"],
@@ -78,6 +81,24 @@
 				{
 					"properties": {
 						"type": {"const": "inline"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryEntriesInlineEntries": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "inlineBlock"},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -685,6 +706,7 @@
 		{"$ref": "#/definitions/entrySection"},
 		{"$ref": "#/definitions/entryEntries"},
 		{"$ref": "#/definitions/entryInlineEntries"},
+		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
 		{"$ref": "#/definitions/entryTable"},
 		{"$ref": "#/definitions/entryTableRow"},
