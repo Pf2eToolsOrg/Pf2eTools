@@ -485,7 +485,7 @@ function loadhash (id) {
 	}
 
 	// inline rollers
-	$("#pagecontent p").each(function () {
+	$("#pagecontent").find("p").each(function () {
 		addNonD20Rollers(this);
 
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -525,7 +525,7 @@ function loadhash (id) {
 			}
 		}));
 	});
-	$("#pagecontent span#hp").each(function () {
+	$("#pagecontent").find("span#hp").each(function () {
 		addNonD20Rollers(this, "Hit Points");
 	});
 
