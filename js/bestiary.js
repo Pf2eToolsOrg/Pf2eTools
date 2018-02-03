@@ -536,7 +536,7 @@ function loadhash (id) {
 	}
 
 	function attemptToGetTitle (ele) {
-		let titleMaybe = $(ele.parentElement).find(".name")[0];
+		let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
 		if (titleMaybe !== undefined) {
 			titleMaybe = titleMaybe.innerHTML;
 			if (titleMaybe) {
