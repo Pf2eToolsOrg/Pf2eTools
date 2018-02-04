@@ -159,5 +159,8 @@ module.exports = {
 		"wrap-iife": ["error", "any", {"functionPrototypeMethods": true}],
 		"yield-star-spacing": ["error", "both"],
 		"yoda": ["error", "never"]
-	}
+	},
+	"plugins": [
+	"json"
+	]
 };
