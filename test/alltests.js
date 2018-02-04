@@ -58,7 +58,7 @@ fs.readdirSync("./data/bestiary")
 fs.readdirSync("./img")
 	.filter(file => !file.endsWith(".png"))
 	.forEach(dir => {
-		if (dir !== "adventure" && dir !== "deities" && dir !== "variantrules" && dir !== "rules") {
+		if (dir !== "adventure" && dir !== "deities" && dir !== "variantrules" && dir !== "rules" && dir !== "objects") {
 			fs.readdirSync(`./img/${dir}`).forEach(file => {
 				existing.push(`${dir.replace("(", "").replace(")", "")}/${file}`);
 			})
