@@ -77,7 +77,7 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
-const miscFilter = new Filter({header: "Miscellaneous", items: ["Legendary"], displayFn: StrUtil.uppercaseFirst});
+const miscFilter = new Filter({header: "Miscellaneous", items: ["Legendary", "Familiar"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
 	sourceFilter,
@@ -179,6 +179,7 @@ function addMonsters (data) {
 		crFilter.addIfAbsent(mon.cr);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
+		if (mon.familiar) mon._fMisc.push("Familiar");
 	}
 	let lastSearch = null;
 	if (list.searched) {
@@ -408,7 +409,7 @@ function loadhash (id) {
 
 	// add click links for rollables
 	$("#pagecontent #abilityscores td").each(function () {
-		$(this).wrapInner("<span class='roller' data-roll='1d20" + $(this).children(".mod").html() + "'></span>");
+		$(this).wrapInner(`<span class="roller" data-roll="1d20${$(this).children(".mod").html()}" title="${Parser.attAbvToFull($(this).prop("id"))}"></span>`);
 	});
 
 	const isProfDiceMode = $("button#profbonusdice")[0].useDice;
@@ -484,7 +485,7 @@ function loadhash (id) {
 	}
 
 	// inline rollers
-	$("#pagecontent p").each(function () {
+	$("#pagecontent").find("p").each(function () {
 		addNonD20Rollers(this);
 
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -524,19 +525,19 @@ function loadhash (id) {
 			}
 		}));
 	});
-	$("#pagecontent span#hp").each(function () {
-		addNonD20Rollers(this);
+	$("#pagecontent").find("span#hp").each(function () {
+		addNonD20Rollers(this, "Hit Points");
 	});
 
-	function addNonD20Rollers (ele) {
+	function addNonD20Rollers (ele, title) {
 		$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-			const titleMaybe = attemptToGetTitle(ele);
+			const titleMaybe = title || attemptToGetTitle(ele);
 			return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
 		}));
 	}
 
 	function attemptToGetTitle (ele) {
-		let titleMaybe = $(ele.parentElement).find(".name")[0];
+		let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
 		if (titleMaybe !== undefined) {
 			titleMaybe = titleMaybe.innerHTML;
 			if (titleMaybe) {
