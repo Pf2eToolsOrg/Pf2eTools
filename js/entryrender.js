@@ -1669,6 +1669,7 @@ EntryRenderer.psionic = {
 
 EntryRenderer.hover = {
 	linkCache: {},
+	_isInit: false,
 
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
@@ -1731,6 +1732,29 @@ EntryRenderer.hover = {
 		const fromRight = vpOffsetL > $(window).width() / 2;
 
 		const $hov = $(`<div class="hoverbox" style="right: -600px"/>`);
+
+		const $body = $(`body`);
+		const $ele = $(ele);
+		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
+		const $fakeHov = $(`<div class="hoverlink" data-hover-id="${$ele.data("hover-id")}"/>`)
+			.width($ele.width())
+			.height($ele.height())
+			.css("top", $ele.offset().top - $(window).scrollTop())
+			.css("left", $ele.offset().left - $(window).scrollLeft());
+		$body.append($fakeHov);
+
+		$fakeHov.on("mouseleave", (evt) => {
+			$fakeHov.remove();
+			EntryRenderer.hover._cleanWindows();
+			if (!$brdrTop.data("perm") && !evt.shiftKey) {
+				teardown();
+			} else {
+				$(ele).data("hover-active", true);
+				// use attr to let the CSS see it
+				$brdrTop.attr("data-perm", true);
+			}
+		});
+
 		const $stats = $(`<table class="stats"></table>`);
 		$stats.append(content);
 		let drag = {};
@@ -1777,6 +1801,7 @@ EntryRenderer.hover = {
 		$brdrTop.on("dblclick", () => {
 			const curState = $brdrTop.attr("data-display-title");
 			$brdrTop.attr("data-display-title", curState === "false");
+			$brdrTop.attr("data-perm", true);
 		});
 		$brdrTop.append($hovTitle);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
@@ -1789,7 +1814,6 @@ EntryRenderer.hover = {
 			.append($stats)
 			.append(`<div class="hoverborder"></div>`);
 
-		const $body = $(`body`);
 		$body.append($hov);
 
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
@@ -1797,26 +1821,6 @@ EntryRenderer.hover = {
 
 		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
-
-		const $ele = $(ele);
-		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
-		const $fakeHov = $(`<div class="hoverlink"/>`)
-			.width($ele.width())
-			.height($ele.height())
-			.css("top", $ele.offset().top - $(window).scrollTop())
-			.css("left", $ele.offset().left - $(window).scrollTop());
-		$body.append($fakeHov);
-
-		$fakeHov.on("mouseleave", (evt) => {
-			$fakeHov.remove();
-			if (!$brdrTop.data("perm") && !evt.shiftKey) {
-				teardown();
-			} else {
-				$(ele).data("hover-active", true);
-				// use attr to let the CSS see it
-				$brdrTop.attr("data-perm", true);
-			}
-		});
 
 		adjustPosition(true);
 
@@ -1865,6 +1869,13 @@ EntryRenderer.hover = {
 	_hoverId: 1,
 	_curHovering: null,
 	show: (evt, ele, page, source, hash) => {
+		if (!EntryRenderer.hover._isInit) {
+			EntryRenderer.hover._isInit = true;
+			$(`body`).on("click", () => {
+				EntryRenderer.hover._cleanWindows();
+			});
+		}
+
 		// don't show on mobile
 		if ($(window).width() <= 768) return;
 
@@ -1950,6 +1961,9 @@ EntryRenderer.hover = {
 				EntryRenderer.hover._curHovering = null;
 			}
 		});
+
+		// clean up any abandoned windows
+		EntryRenderer.hover._cleanWindows();
 
 		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
@@ -2055,6 +2069,10 @@ EntryRenderer.hover = {
 				break;
 			}
 		}
+	},
+
+	_cleanWindows: () => {
+		$(`div.hoverlink`).trigger(`mouseleave`);
 	}
 };
 
