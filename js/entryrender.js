@@ -1736,7 +1736,7 @@ EntryRenderer.hover = {
 		const $body = $(`body`);
 		const $ele = $(ele);
 		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
-		const $fakeHov = $(`<div class="hoverlink" data-hover-id="${$ele.data("hover-id")}"/>`)
+		const $fakeHov = $(`<a class="hoverlink" data-hover-id="${$ele.data("hover-id")}" href="${$ele.prop("href")}"/>`)
 			.width($ele.width())
 			.height($ele.height())
 			.css("top", $ele.offset().top - $(window).scrollTop())
@@ -2072,7 +2072,7 @@ EntryRenderer.hover = {
 	},
 
 	_cleanWindows: () => {
-		$(`div.hoverlink`).trigger(`mouseleave`);
+		$(`a.hoverlink`).trigger(`mouseleave`);
 	}
 };
 
