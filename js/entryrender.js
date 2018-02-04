@@ -1789,7 +1789,8 @@ EntryRenderer.hover = {
 			.append($stats)
 			.append(`<div class="hoverborder"></div>`);
 
-		$(`body`).append($hov);
+		const $body = $(`body`);
+		$body.append($hov);
 
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
@@ -1797,7 +1798,17 @@ EntryRenderer.hover = {
 		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
 
-		$(ele).on("mouseleave", (evt) => {
+		const $ele = $(ele);
+		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
+		const $fakeHov = $(`<div class="hoverlink"/>`)
+			.width($ele.width())
+			.height($ele.height())
+			.css("top", $ele.offset().top - $(window).scrollTop())
+			.css("left", $ele.offset().left - $(window).scrollTop());
+		$body.append($fakeHov);
+
+		$fakeHov.on("mouseleave", (evt) => {
+			$fakeHov.remove();
 			if (!$brdrTop.data("perm") && !evt.shiftKey) {
 				teardown();
 			} else {
