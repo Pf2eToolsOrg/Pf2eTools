@@ -19,6 +19,13 @@ function currentPage () {
 	if (!currentPage) currentPage = "5etools.html";
 	if (CHILD_PAGES[currentPage]) currentPage = CHILD_PAGES[currentPage];
 
+	if (currentPage.toLowerCase() === "book.html") {
+		const hashPart = window.location.hash.split(",")[0];
+		if (hashPart) {
+			currentPage += hashPart.toLowerCase();
+		}
+	}
+
 	const current = $(`li[data-page="${currentPage}"]`);
 	current.addClass("active");
 	current.parent().closest("li").addClass("active");
@@ -33,6 +40,7 @@ function navigation () {
 	LI('ul_rules', 'quickreference.html', 'Quick Reference');
 	LI('ul_rules', 'variantrules.html', 'Variant Rules');
 	LIDivider('ul_rules');
+	LI('ul_rules', 'book.html', "Monster Manual", "MM");
 	LI('ul_rules', 'book.html', "Player's Handbook", "PHB");
 
 	LIDropdown('navbar', 'players', 'dropdown');
@@ -128,10 +136,11 @@ function navigation () {
 	 * @param a_hash - Optional hash to be appended to the base href
 	 */
 	function LI (append_to_id, a_href, a_text, a_hash) {
+		const hashPart = a_hash ? `#${a_hash}`.toLowerCase() : "";
 		$(`#${append_to_id}`)
 			.append(`
-				<li role="presentation" id="${a_text.toLowerCase().replace(/\s+/g, '')}" data-page="${a_href}">
-					<a href="${a_href}${a_hash ? `#${a_hash}` : ""}">${a_text}</a>
+				<li role="presentation" id="${a_text.toLowerCase().replace(/\s+/g, '')}" data-page="${a_href}${hashPart}">
+					<a href="${a_href}${hashPart}">${a_text}</a>
 				</li>
 			`);
 	}
