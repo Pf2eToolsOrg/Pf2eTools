@@ -1093,7 +1093,9 @@ EntryRenderer.race = {
 		let speed;
 		if (race.speed.walk) {
 			speed = race.speed.walk + "ft.";
-			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
+			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`;
+			if (race.speed.fly) speed += `, fly ${race.speed.climb}ft.`;
+			if (race.speed.swim) speed += `, swim ${race.speed.swim}ft.`;
 		} else {
 			speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
 		}
