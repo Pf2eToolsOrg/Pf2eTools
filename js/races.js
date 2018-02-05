@@ -44,7 +44,7 @@ let filterBox;
 function onJsonLoad (data) {
 	tableDefault = $("#pagecontent").html();
 
-	raceList = data.race;
+	raceList = EntryRenderer.race.mergeSubraces(data.race);
 
 	const sourceFilter = getSourceFilter();
 	const asiFilter = new Filter({
