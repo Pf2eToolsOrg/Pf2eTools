@@ -18,147 +18,14 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
-	<style>
-		#listcontainer {
-			position: relative;
-		}
-
-		#listcontainer > ul > li {
-			max-height: initial;
-		}
-
-		ul.list li:hover {
-			background: inherit;
-		}
-
-		ul.list li:active {
-			color: inherit;
-		}
-
-		ul {
-			margin-left: 0;
-			padding-left: 20px;
-		}
-
-		ul.list li {
-			max-height: none;
-		}
-
-		ul.contents > li:last-child,
-		ul.contents > li > ul > ul > li:last-child {
-			border-bottom: none;
-		}
-
-		ul.contents {
-			height: initial;
-			position: sticky;
-			top: 0;
-			overflow-y: auto;
-			max-height: 100vh;
-			padding: 0 0 22px;
-		}
-
-		li.adventure-contents-item > ul > li {
-			font-weight: bold;
-		}
-
-		.initial-message {
-			color: #922610;
-			font-family: 'Andada', serif;
-			font-variant: small-caps;
-			font-weight: 500;
-			line-height: 2.3em;
-			text-align: center;
-			font-size: 1.8em;
-		}
-
-		table#stats tr.text img {
-			max-height: 600px;
-		}
-
-		ul.list li:hover span {
-			display: initial;
-		}
-
-		span.sect {
-			width: 100%;
-		}
-
-		.f-all-wrapper {
-			position: fixed;
-			z-index: 100;
-			bottom: 10px;
-			padding: 0 20px;
-			left: calc(((100vw - (1170px * (4 / 6))) / 2) + 1.5em);
-			right: calc((50vw - (1170px / 2)) + 1.5em);
-		}
-
-		@media (max-width: 1200px) {
-			.f-all-wrapper {
-				left: calc(((100vw - (970px * (4 / 6))) / 2) + 1.5em);
-				right: calc((50vw - (970px / 2)) + 1.5em);
-			}
-		}
-
-		@media (max-width: 991px) {
-			.f-all-wrapper {
-				left: calc(((100vw - 750px) / 2) + 1.5em);
-				right: calc(((100vw - 750px) / 2) + 1.5em);
-			}
-		}
-
-		@media only screen and (max-width: 768px) {
-			.f-all-wrapper {
-				left: calc(((100vw - 750px) / 2) + 1.5em);
-				right: calc(((100vw - 750px) / 2) + 1.5em);
-			}
-		}
-
-		@media only screen and (max-width: 480px) {
-			.f-all-wrapper {
-				left: calc(3.5em);
-				right: calc(3.5em);
-			}
-		}
-
-		.f-all-wrapper > input {
-			width: 100%;
-		}
-
-		.f-all-out {
-			overflow-y: auto;
-			max-height: 400px;
-			width: 100%;
-			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-			border: 1px solid rgba(0, 0, 0, 0.15);
-			padding: 0.2em 0.7em;
-			border-radius: 0.2em;
-			display: none;
-		}
-
-		.f-result {
-			display: flex;
-			justify-content: space-between;
-			margin: 0;
-			padding: 5px 0;
-		}
-
-		.f-result > span {
-			display: inline-block;
-		}
-
-		.highlight {
-			background-color: yellow;
-		}
-	</style>
 </head>
 
 <body>
 <header class="hidden-xs hidden-sm">
 	<div class="container">
 
-		<h1 class="adv-header">Adventure Details</h1>
-		<p class="adv-message">Select an adventure from the list on the left</p>
+		<h1 class="book-head-header">Adventure Details</h1>
+		<p class="book-head-message">Select an adventure from the list on the left</p>
 	</div>
 </header>
 <nav class="container" id="navigation">
@@ -167,13 +34,13 @@
 </nav>
 
 <div class="container view-col-wrapper">
-	<div class="view-col" id="listcontainer" style="flex: 1">
+	<div class="view-col book-contents" id="listcontainer">
 		<ul class="list contents">
 			<!-- populate with JS -->
 		</ul>
 	</div>
-	<div class="view-col" style="flex: 5">
-		<table id="pagecontent" class="stats">
+	<div class="view-col book-view">
+		<table id="pagecontent" class="stats stats-book">
 			<!-- populate with JS -->
 		</table>
 	</div>
@@ -183,7 +50,7 @@
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
-<script type="text/javascript" src="js/adventureutils.js"></script>
+<script type="text/javascript" src="js/bookutils.js"></script>
 <script type="text/javascript" src="js/adventure.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/droll.js"></script>

@@ -2,11 +2,6 @@
 
 const JSON_URL = "data/invocations.json";
 
-const STR_PACT_NONE = "Any";
-const STR_PATRON_NONE = "Any";
-const STR_LEVEL_NONE = "Any";
-const STR_SPELL_NONE = "None";
-
 const ID_INVOCATION_LIST = "invocationsList";
 const ID_STATS_PREREQUISITES = "prerequisites";
 const ID_TEXT = "text";
@@ -17,7 +12,6 @@ const JSON_ITEM_PATRON = "patron";
 const JSON_ITEM_PACT = "pact";
 const JSON_ITEM_LEVEL = "level";
 const JSON_ITEM_SPELL = "spell";
-const JSON_ITEM_TEXT = "text";
 const JSON_ITEM_PREREQUISITES = "prerequisites";
 
 const CLS_INVOCATION = "invocations";
@@ -40,35 +34,9 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-function parselevel (level) {
-	if (isNaN(level)) return "";
-	if (level === "2") return level + "nd";
-	if (level === "3") return level + "rd";
-	if (level === "1") return level + "st";
-	return level + "th";
-}
-
-function parseSpell (spell) {
-	if (spell === "Eldritch Blast") return spell + " cantrip";
-	if (spell === "Hex/Curse") return "Hex spell or a warlock feature that curses";
-	return STR_SPELL_NONE
-}
-
-function parsePact (pact) {
-	if (pact === "Chain") return "Pact of the Chain";
-	if (pact === "Tome") return "Pact of the Tome";
-	if (pact === "Blade") return "Pact of the Blade";
-	return STR_PACT_NONE;
-}
-
-function parsePatronToShort (patron) {
-	if (patron === STR_PATRON_NONE) return STR_PATRON_NONE;
-	return /^The (.*?)$/.exec(patron)[1];
-}
-
 function sortLevelAsc (a, b) {
-	if (a === STR_LEVEL_NONE) a = 0;
-	if (b === STR_LEVEL_NONE) b = 0;
+	if (a === STR_ANY) a = 0;
+	if (b === STR_ANY) b = 0;
 	return Number(b) - Number(a);
 }
 
@@ -77,7 +45,7 @@ function listSortInvocations (a, b, o) {
 		const comp = sortLevelAsc(a.values()["level"], b.values()["level"]);
 		if (comp !== 0) return comp;
 	}
-	return listSort(a, b, o);
+	return SortUtil.listSort(a, b, o);
 }
 
 let INVOCATION_LIST;
@@ -88,39 +56,39 @@ function onJsonLoad (data) {
 	const sourceFilter = getSourceFilter();
 	const patronFilter = new Filter({
 		header: "Patron",
-		items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", STR_PATRON_NONE],
-		displayFn: parsePatronToShort
+		items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", STR_ANY],
+		displayFn: Parser.invoPatronToShort
 	});
 	const pactFilter = new Filter({
 		header: "Pact",
-		items: ["Chain", "Tome", "Blade", STR_PACT_NONE],
-		displayFn: parsePact
+		items: ["Chain", "Tome", "Blade", STR_ANY],
+		displayFn: Parser.invoPactToFull
 	});
 	const spellFilter = new Filter({
 		header: "Spell or Feature",
-		items: ["Eldritch Blast", "Hex/Curse", STR_SPELL_NONE]
+		items: ["Eldritch Blast", "Hex/Curse", STR_NONE]
 	});
-	const levelFilter = new Filter({header: "Warlock Level", items: ["5", "7", "9", "12", "15", "18", STR_LEVEL_NONE]});
+	const levelFilter = new Filter({header: "Warlock Level", items: ["5", "7", "9", "12", "15", "18", STR_ANY]});
 
 	const filterBox = initFilterBox(sourceFilter, pactFilter, patronFilter, spellFilter, levelFilter);
 
 	let tempString = "";
 	INVOCATION_LIST.forEach(function (p, i) {
 		if (!p.prerequisites) p.prerequisites = {};
-		if (!p.prerequisites.pact) p.prerequisites.pact = STR_PACT_NONE;
-		if (!p.prerequisites.patron) p.prerequisites.patron = STR_PATRON_NONE;
-		if (!p.prerequisites.spell) p.prerequisites.spell = STR_SPELL_NONE;
-		if (!p.prerequisites.level) p.prerequisites.level = STR_LEVEL_NONE;
+		if (!p.prerequisites.pact) p.prerequisites.pact = STR_ANY;
+		if (!p.prerequisites.patron) p.prerequisites.patron = STR_ANY;
+		if (!p.prerequisites.spell) p.prerequisites.spell = STR_NONE;
+		if (!p.prerequisites.level) p.prerequisites.level = STR_ANY;
 
 		tempString += `
 			<li class="row" ${FLTR_ID}="${i}">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p[JSON_ITEM_NAME]}">
 					<span class="${LIST_NAME} ${CLS_COL1}">${p[JSON_ITEM_NAME]}</span>
 					<span class="${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])} text-align-center" title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
-					<span class="${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]}</span>
-					<span class="${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? CLS_LI_NONE : STR_EMPTY}">${parsePatronToShort(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
-					<span class="${LIST_SPELL} ${CLS_COL5} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]}</span>
-					<span class="${LIST_LEVEL} ${CLS_COL6} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE ? CLS_LI_NONE : STR_EMPTY} text-align-center">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL]}</span>
+					<span class="${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]}</span>
+					<span class="${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${Parser.invoPatronToShort(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
+					<span class="${LIST_SPELL} ${CLS_COL5} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]}</span>
+					<span class="${LIST_LEVEL} ${CLS_COL6} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_ANY ? CLS_LI_NONE : STR_EMPTY} text-align-center">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL]}</span>
 				</a>
 			</li>
 		`;
@@ -130,9 +98,9 @@ function onJsonLoad (data) {
 	});
 	$(`#${ID_INVOCATION_LIST}`).append(tempString);
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_PACT, LIST_PATRON, LIST_SPELL, LIST_LEVEL],
 		listClass: CLS_INVOCATION,
 		sortFunction: listSortInvocations
@@ -177,14 +145,8 @@ function loadhash (jsonIndex) {
 	loadInvocation();
 
 	function loadInvocation () {
-		const prereqs = [
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_PATRON_NONE ? null : `${selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON]} patron`,
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_PACT_NONE ? null : parsePact(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]),
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_LEVEL_NONE ? null : parselevel(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL]) + ` level`,
-			selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_SPELL_NONE ? null : parseSpell(selectedInvocation[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL])
-		].filter(f => f);
-		STATS_PREREQUISITES.innerHTML = prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
-		STATS_TEXT.innerHTML = utils_combineText(selectedInvocation[JSON_ITEM_TEXT], ELE_P);
+		STATS_PREREQUISITES.innerHTML = EntryRenderer.invocation.getPrerequisiteText(selectedInvocation);
+		STATS_TEXT.innerHTML = EntryRenderer.getDefaultRenderer().renderEntry({entries: selectedInvocation.entries}, 1);
 		$(`#source`).html(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(selectedInvocation.source)}</i>, page ${selectedInvocation.page}</td>`);
 	}
 }

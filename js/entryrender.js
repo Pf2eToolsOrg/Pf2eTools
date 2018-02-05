@@ -23,6 +23,7 @@ function EntryRenderer () {
 	this.baseUrl = "";
 
 	this._subVariant = false;
+	this._firstSection = true;
 
 	/**
 	 * Set the tag used to group rendered elements
@@ -42,6 +43,18 @@ function EntryRenderer () {
 	};
 
 	/**
+	 * Other sections should be prefixed with a vertical divider
+	 * @param bool
+	 */
+	this.setFirstSection = function (bool) {
+		this._firstSection = bool;
+	};
+
+	// TODO convert params to options object
+	// TODO provide a Roll20 mode (expose list of found monsters/etc to be imported; add links to these)
+	// TODO general conditional rendering function -- make use of "data" property (see backgrounds JSON + backgrounds hover render)
+	//      - can be used to clean up R20 script Subclass rendering when implemented
+	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
 	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
 	 * the result.
@@ -54,7 +67,8 @@ function EntryRenderer () {
 	 * @param forcePrefixSuffix force the prefix and suffix to be added (useful for the first call from external code)
 	 */
 	this.recursiveEntryRender = function (entry, textStack, depth, prefix, suffix, forcePrefixSuffix) {
-		depth = depth === undefined || depth === null ? entry.type === "section" ? -1 : 0 : depth;
+		depth = depth === undefined || depth === null ? 0 : depth;
+		if (entry.type === "section") depth = -1;
 		prefix = prefix === undefined || prefix === null ? null : prefix;
 		suffix = suffix === undefined || suffix === null ? null : suffix;
 		forcePrefixSuffix = forcePrefixSuffix === undefined || forcePrefixSuffix === null ? false : forcePrefixSuffix;
@@ -141,7 +155,7 @@ function EntryRenderer () {
 					break;
 				case "abilityGeneric":
 					renderPrefix();
-					textStack.push(`<span class='ability-block'><span>${entry.name}</span> = ${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`);
+					textStack.push(`<span class='ability-block'>${entry.name ? `<span>${entry.name}</span>  = ` : ""}${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`);
 					renderSuffix();
 					break;
 
@@ -152,6 +166,15 @@ function EntryRenderer () {
 							this.recursiveEntryRender(entry.entries[i], textStack, depth);
 						}
 					}
+					break;
+				case "inlineBlock":
+					renderPrefix();
+					if (entry.entries) {
+						for (let i = 0; i < entry.entries.length; i++) {
+							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+						}
+					}
+					renderSuffix();
 					break;
 				case "bonus":
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value);
@@ -201,7 +224,7 @@ function EntryRenderer () {
 					let href;
 					if (entry.href.type === "internal") {
 						const imgPart = `img/${entry.href.path}`;
-						href = this.baseUrl === "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
+						href = this.baseUrl !== "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
 					}
 					textStack.push(`
 						<div class="img-wrapper">
@@ -261,9 +284,13 @@ function EntryRenderer () {
 
 			for (let i = 0; i < entry.rows.length; ++i) {
 				textStack.push("<tr>");
-				for (let j = 0; j < entry.rows[i].length; ++j) {
-					textStack.push(`<td ${makeTableTdClassText(j)}>`);
-					self.recursiveEntryRender(entry.rows[i][j], textStack, depth + 1);
+				const r = entry.rows[i];
+				const roRender = r.type === "row" ? r.row : r;
+				for (let j = 0; j < roRender.length; ++j) {
+					const toRenderCell = roRender[j].type === "cell" ? roRender[j].entry : roRender[j];
+					textStack.push(`<td ${makeTableTdClassText(j)} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`);
+					if (r.style === "row-indent-first" && j === 0) textStack.push(`<span class="tbl-tab-intent"/>`);
+					self.recursiveEntryRender(toRenderCell, textStack, depth + 1);
 					textStack.push("</td>");
 				}
 				textStack.push("</tr>");
@@ -300,7 +327,7 @@ function EntryRenderer () {
 
 		function handleOptions (self) {
 			if (entry.entries) {
-				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
+				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
 				handleEntriesOptionsInvocationPatron(self, false);
 			}
 		}
@@ -319,7 +346,14 @@ function EntryRenderer () {
 			const styleString = getStyleString();
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
-			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
+			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span> ` : "";
+
+			if (depth === -1) {
+				if (!self._firstSection) {
+					textStack.push(`<hr class="section-break">`);
+				}
+				self._firstSection = false;
+			}
 
 			if (entry.entries || entry.name) {
 				textStack.push(`<${self.wrapperTag} ${dataString} ${styleString}>${headerSpan}${preReqText}`);
@@ -453,6 +487,27 @@ function EntryRenderer () {
 								break;
 							}
 						}
+					} else if (tag === "@filter") {
+						// format: {@filter Warlock Spells|spells|level=1;2|class=Warlock}
+						const [displayText, page, ...filters] = text.split("|");
+
+						const fauxEntry = {
+							type: "link",
+							text: displayText,
+							href: {
+								type: "internal",
+								path: `${page}.html`,
+								hash: HASH_BLANK,
+								subhashes: filters.map(f => {
+									const [fname, fvals] = f.split("=").map(s => s.trim()).filter(s => s);
+									return {
+										key: `filter${fname}`,
+										value: fvals.split(";").map(s => s.trim()).filter(s => s).join(HASH_SUB_LIST_SEP)
+									}
+								})
+							}
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -514,34 +569,12 @@ function EntryRenderer () {
 							case "@background":
 								fauxEntry.href.path = "backgrounds.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
-								break;
-
-							case "@clSpellHead": {
-								// special tag used for class table spell level headers
-								// format: {@clSpellHead <sp class name>|<sp class source>|<display text>|<sp level>(|<sp level 2>|<sp level 3>|...)}
-								const fauxEntry = {
-									type: "link",
-									text: displayText,
-									href: {
-										type: "internal",
-										path: "spells.html",
-										hash: "acid splash_phb",
-										subhashes: [
-											{
-												key: "filterlevel",
-												value: others.map(o => Number(o)).join(HASH_SUB_LIST_SEP)
-											},
-											{
-												key: "filterclass",
-												value: `${name}${source.toLowerCase() === SRC_PHB.toLowerCase() ? "" : ` (${Parser.sourceJsonToAbv(source)})`}`
-											}
-										]
-									}
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_BACKGROUNDS,
+									source: source || SRC_PHB
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
-							}
 						}
 					}
 				} else {
@@ -562,7 +595,7 @@ function EntryRenderer () {
 			// baseURL is blank by default
 			href = `${this.baseUrl}${entry.href.path}#`;
 			if (entry.href.hash !== undefined) {
-				href += UrlUtil.encodeForHash(entry.href.hash);
+				href += entry.href.hashPreEncoded ? entry.href.hash : UrlUtil.encodeForHash(entry.href.hash);
 			}
 			if (entry.href.subhashes !== undefined) {
 				for (let i = 0; i < entry.href.subhashes.length; i++) {
@@ -582,6 +615,7 @@ function EntryRenderer () {
 		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
 	};
 
+	// TODO convert params to options
 	/**
 	 * Helper function to render an entity using this renderer
 	 * @param entry
@@ -591,7 +625,7 @@ function EntryRenderer () {
 	this.renderEntry = function (entry, depth) {
 		depth = depth === undefined || depth === null ? 0 : depth;
 		const tempStack = [];
-		renderer.recursiveEntryRender(entry, tempStack, depth);
+		this.recursiveEntryRender(entry, tempStack, depth);
 		return tempStack.join("");
 	};
 }
@@ -685,10 +719,10 @@ EntryRenderer.utils = {
 		return `<tr><th class="border" colspan="6"></th></tr>`;
 	},
 
-	getNameTr: (it, addPageNum) => {
+	getNameTr: (it, addPageNum, prefix, suffix) => {
 		return `<tr>
 					<th class="name" colspan="6">
-						<span class="stats-name">${it.name}</span>
+						<span class="stats-name">${prefix || ""}${it.name}${suffix || ""}</span>
 						<span class="stats-source source${it.source}" title="${Parser.sourceJsonToAbv(it.source)}">
 							${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 						</span>
@@ -808,16 +842,35 @@ EntryRenderer.feat = {
 			}
 			return abbArr.join(" ");
 		}
+	},
+
+	getCompactRenderedString: (feat) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(feat, true)}
+			<tr class='text'><td colspan='6' class='text'>
+			${prerequisite ? `<p><i>Prerequisite: ${prerequisite}</i></p>` : ""}
+		`);
+		renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
 	}
+};
+
+EntryRenderer.getDefaultRenderer = () => {
+	if (!EntryRenderer.defaultRenderer) {
+		EntryRenderer.defaultRenderer = new EntryRenderer();
+	}
+	return EntryRenderer.defaultRenderer;
 };
 
 EntryRenderer.spell = {
 	getCompactRenderedString: (spell) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
-
+		const renderer = EntryRenderer.getDefaultRenderer();
 		const renderStack = [];
 
 		renderStack.push(`
@@ -912,11 +965,7 @@ EntryRenderer.spell = {
 
 EntryRenderer.condition = {
 	getCompactRenderedString: (cond) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
-
+		const renderer = EntryRenderer.getDefaultRenderer();
 		const renderStack = [];
 
 		renderStack.push(`
@@ -930,12 +979,191 @@ EntryRenderer.condition = {
 	}
 };
 
+EntryRenderer.background = {
+	getCompactRenderedString: (bg) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(bg, true)}
+			<tr class="text"><td colspan="6">
+		`);
+		if (bg.skillProficiencies) {
+			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [bg.skillProficiencies]}, renderStack, 2);
+		}
+		renderer.recursiveEntryRender({entries: bg.entries.filter(it => it.data && it.data.isFeature)}, renderStack, 1);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
+	}
+};
+
+EntryRenderer.invocation = {
+	getPrerequisiteText: (invo) => {
+		const prereqs = [
+			(!invo.prerequisites.patron || invo.prerequisites.patron === STR_ANY) ? null : `${invo.prerequisites.patron} patron`,
+			(!invo.prerequisites.pact || invo.prerequisites.pact === STR_ANY) ? null : Parser.invoPactToFull(invo.prerequisites.pact),
+			(!invo.prerequisites.level || invo.prerequisites.level === STR_ANY) ? null : `${Parser.levelToFull(invo.prerequisites.level)} level`,
+			(!invo.prerequisites.spell || invo.prerequisites.spell === STR_NONE) ? null : Parser.invoSpellToFull(invo.prerequisites.spell)
+		].filter(f => f);
+		return prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
+	},
+
+	getCompactRenderedString: (invo) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const prereqs = EntryRenderer.invocation.getPrerequisiteText(invo);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(invo, true)}
+			<tr class="text"><td colspan="6">
+			${prereqs ? `<p><i>${prereqs}</i></p>` : ""}
+		`);
+		renderer.recursiveEntryRender({entries: invo.entries}, renderStack, 1);
+		renderStack.push(`</td></tr>`);
+
+		return renderStack.join("");
+	}
+};
+
+EntryRenderer.reward = {
+	getRenderedString: (reward) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		if (reward.type === "Demonic Boon") {
+			const benefits = {type: "list", style: "list-hang-notitle", items: []};
+			benefits.items.push({
+				type: "item",
+				name: "Ability Score Adjustment:",
+				entry: reward.ability ? reward.ability.entry : "None"
+			});
+			benefits.items.push({
+				type: "item",
+				name: "Signature Spells:",
+				entry: reward.signaturespells ? reward.signaturespells.entry : "None"
+			});
+			renderer.recursiveEntryRender(benefits, renderStack, 1);
+		}
+
+		renderer.recursiveEntryRender({entries: reward.entries}, renderStack, 1);
+
+		return `<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
+	},
+
+	getCompactRenderedString: (reward) => {
+		return `
+			${EntryRenderer.utils.getNameTr(reward, true)}
+			${EntryRenderer.reward.getRenderedString(reward)}
+		`;
+	}
+};
+
+EntryRenderer.race = {
+	getCompactRenderedString: (race) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		const renderStack = [];
+
+		const ability = utils_getAbilityData(race.ability);
+		renderStack.push(`
+			${EntryRenderer.utils.getNameTr(race, true)}
+			<tr><td colspan="6">
+				<table class="summary">
+					<tr>
+						<th class="col-xs-4 text-align-center">Ability Sores</th>
+						<th class="col-xs-4 text-align-center">Size</th>
+						<th class="col-xs-4 text-align-center">Speed</th>
+					</tr>
+					<tr>
+						<td class="text-align-center">${ability.asText}</td>
+						<td class="text-align-center">${Parser.sizeAbvToFull(race.size)}</td>
+						<td class="text-align-center">${EntryRenderer.race.getSpeedString(race)}</td>
+					</tr>
+				</table>
+			</td></tr>
+			<tr class='text'><td colspan='6'>
+		`);
+		renderer.recursiveEntryRender({type: "entries", entries: race.entries}, renderStack, 1);
+		renderStack.push("</td></tr>");
+
+		return renderStack.join("");
+	},
+
+	getSpeedString: (race) => {
+		let speed;
+		if (race.speed.walk) {
+			speed = race.speed.walk + "ft.";
+			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
+		} else {
+			speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
+		}
+		return speed;
+	}
+};
+
+EntryRenderer.deity = {
+	getCompactRenderedString: (deity) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		return `
+			${EntryRenderer.utils.getNameTr(deity, true, "", `, ${deity.title.toTitleCase()}`)}
+			<tr><td colspan="6">
+				<div class="summary-flexer">
+					<p><b>Pantheon:</b> ${deity.pantheon}</p>
+					${deity.category ? `<p><b>Category:</b> ${deity.category}</p>` : ""}
+					<p><b>Alignment:</b> ${deity.alignment.map(a => Parser.dtAlignmentToFull(a)).join(" ")}</p>
+					<p><b>Domains:</b> ${deity.domains.join(", ")}</p>
+					${deity.altNames ? `<p><b>Alternate Names:</b> ${deity.altNames.join(", ")}</p>` : ""}
+					<p><b>Symbol:</b> ${deity.symbol}</p>
+				</div>
+			</td>
+			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.renderEntry({entries: deity.entries}, 1)}</td></tr>` : ""}
+		`;
+	}
+};
+
+EntryRenderer.object = {
+	getCompactRenderedString: (obj) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		return `
+			${EntryRenderer.utils.getNameTr(obj, true)}
+			<tr><td colspan="6">
+				<table class="summary">
+					<tr>
+						<th class="col-xs-3 text-align-center">Type</th>
+						<th class="col-xs-3 text-align-center">AC</th>
+						<th class="col-xs-3 text-align-center">HP</th>
+						<th class="col-xs-3 text-align-center">Damage Imm.</th>
+					</tr>
+					<tr>
+						<td class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
+						<td class="text-align-center">${obj.ac}</td>					
+						<td class="text-align-center">${obj.hp}</td>					
+						<td class="text-align-center">${obj.immune}</td>					
+					</tr>
+				</table>			
+			</td></tr>
+			<tr class="text"><td colspan="6">
+			${obj.entries ? renderer.renderEntry({entries: obj.entries}, 2) : ""}
+			${obj.actionEntries ? renderer.renderEntry({entries: obj.actionEntries}, 2) : ""}
+			</td></tr>
+		`;
+	}
+};
+
+EntryRenderer.traphazard = {
+	getCompactRenderedString: (it) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+		return `
+			${EntryRenderer.utils.getNameTr(it, true)}
+			<tr class="text"><td colspan="6"><i>${Parser.trapTypeToFull(it.trapType || "HAZ")}</i></td>
+			<tr class="text"><td colspan="6">${renderer.renderEntry({entries: it.entries}, 2)}</td></tr>
+		`;
+	}
+};
+
 EntryRenderer.monster = {
 	getCompactRenderedString: (mon) => {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
@@ -987,15 +1215,15 @@ EntryRenderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; align-content: flex-start">
-					${mon.save ? `<p><b>Saving Throws</b> ${mon.save}</p>` : ""}
-					${mon.skill ? `<p><b>Skills</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
-					<p><b>Senses</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
-					<p><b>Languages</b> ${mon.languages ? mon.languages : `\u2014`}</p>
-					${mon.vulnerable ? `<p><b>Damage Vuln.</b> ${mon.vulnerable}</p>` : ""}
-					${mon.resist ? `<p><b>Damage Res.</b> ${mon.resist}</p>` : ""}
-					${mon.immune ? `<p><b>Damage Imm.</b> ${mon.immune}</p>` : ""}
-					${mon.conditionImmune ? `<p><b>Condition Imm.</b> ${mon.conditionImmune}</p>` : ""}
+				<div class="summary-flexer">
+					${mon.save ? `<p><b>Saving Throws:</b> ${mon.save}</p>` : ""}
+					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
+					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
+					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
+					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${mon.vulnerable}</p>` : ""}
+					${mon.resist ? `<p><b>Damage Res.:</b> ${mon.resist}</p>` : ""}
+					${mon.immune ? `<p><b>Damage Imm.:</b> ${mon.immune}</p>` : ""}
+					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${mon.conditionImmune}</p>` : ""}
 				</div>
 			</td></tr>
 		`);
@@ -1074,19 +1302,22 @@ EntryRenderer.item = {
 			damage = "AC " + item.ac + (type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : "");
 		} else if (type === "S") {
 			damage = "AC +" + item.ac;
-		} else if (type === "MNT" || type === "VEH") {
+		} else if (type === "MNT" || type === "VEH" || type === "SHP") {
 			const speed = item.speed;
 			const capacity = item.carryingcapacity;
-			if (speed) damage += "Speed=" + speed;
+			if (speed) damage += "Speed: " + speed;
 			if (speed && capacity) damage += type === "MNT" ? ", " : "<br>";
 			if (capacity) {
-				damage += "Carrying Capacity=" + capacity;
+				damage += "Carrying Capacity: " + capacity;
 				if (capacity.indexOf("ton") === -1 && capacity.indexOf("passenger") === -1) damage += Number(capacity) === 1 ? " lb." : " lbs.";
+			}
+			if (type === "SHP") {
+				damage += `<br>Crew ${item.crew}, AC ${item.vehAc}, HP ${item.vehHp}${item.vehDmgThresh ? `, Damage Threshold ${item.vehDmgThresh}` : ""}`;
 			}
 		}
 
 		function sortProperties (a, b) {
-			return ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
+			return SortUtil.ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
 		}
 
 		let propertiesTxt = "";
@@ -1106,10 +1337,7 @@ EntryRenderer.item = {
 	},
 
 	getCompactRenderedString: function (item) {
-		if (!this.renderer) {
-			this.renderer = new EntryRenderer();
-		}
-		let renderer = this.renderer;
+		const renderer = EntryRenderer.getDefaultRenderer();
 
 		const renderStack = [];
 
@@ -1238,6 +1466,7 @@ EntryRenderer.item = {
 		}
 
 		function enhanceItems () {
+			const priceRe = /^(\d+)(\w+)$/;
 			for (let i = 0; i < itemList.length; i++) {
 				const item = itemList[i];
 				if (item.noDisplay) continue;
@@ -1300,6 +1529,15 @@ EntryRenderer.item = {
 					}
 				}
 				item.attunementCategory = attunement;
+
+				// format price nicely
+				// 5 characters because e.g. XXXgp is fine
+				if (item.value && item.value.length > 5) {
+					const m = priceRe.exec(item.value);
+					if (m) {
+						item.value = `${Number(m[1]).toLocaleString()}${m[2]}`;
+					}
+				}
 			}
 			callback(itemList);
 		}
@@ -1369,15 +1607,15 @@ EntryRenderer.psionic = {
 			modeStringArray.push(EntryRenderer.psionic.getModeString(psionic, renderer, i));
 		}
 
-		return `${EntryRenderer.psionic.getDescriptionString(psionic)}${EntryRenderer.psionic.getFocusString(psionic)}${modeStringArray.join(STR_EMPTY)}`;
+		return `${EntryRenderer.psionic.getDescriptionString(psionic, renderer)}${EntryRenderer.psionic.getFocusString(psionic, renderer)}${modeStringArray.join(STR_EMPTY)}`;
 	},
 
-	getDescriptionString: (psionic) => {
-		return `<p>${psionic.description}</p>`;
+	getDescriptionString: (psionic, renderer) => {
+		return `<p>${renderer.renderEntry({type: "inline", entries: [psionic.description]})}</p>`;
 	},
 
-	getFocusString: (psionic) => {
-		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${psionic.focus}</p>`;
+	getFocusString: (psionic, renderer) => {
+		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${renderer.renderEntry({type: "inline", entries: [psionic.focus]})}</p>`;
 	},
 
 	getModeString: (psionic, renderer, modeIndex) => {
@@ -1396,7 +1634,7 @@ EntryRenderer.psionic = {
 
 			const fauxEntry = {
 				type: "list",
-				style: "list-hang",
+				style: "list-hang-notitle",
 				items: []
 			};
 
@@ -1411,11 +1649,27 @@ EntryRenderer.psionic = {
 			renderer.recursiveEntryRender(fauxEntry, renderStack, 4);
 			return renderStack.join("");
 		}
+	},
+
+	getCompactRenderedString: (psionic) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+
+		const typeOrderStr = psionic.type === "T" ? Parser.psiTypeToFull(psionic.type) : `${psionic.order} ${Parser.psiTypeToFull(psionic.type)}`;
+		const bodyStr = psionic.type === "T" ? EntryRenderer.psionic.getTalentText(psionic, renderer) : EntryRenderer.psionic.getDisciplineText(psionic, renderer);
+
+		return `
+			${EntryRenderer.utils.getNameTr(psionic, true)}
+			<tr class="text"><td colspan="6">
+			<p><i>${typeOrderStr}</i></p>
+			${bodyStr}
+			</td></tr>
+		`;
 	}
 };
 
 EntryRenderer.hover = {
 	linkCache: {},
+	_isInit: false,
 
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
@@ -1455,9 +1709,18 @@ EntryRenderer.hover = {
 		const page = EntryRenderer.hover._curHovering.cPage;
 		const source = EntryRenderer.hover._curHovering.cSource;
 		const hash = EntryRenderer.hover._curHovering.cHash;
+		const permanent = EntryRenderer.hover._curHovering.permanent;
+
+		// if we've outrun the loading, restart
+		if (!EntryRenderer.hover._isCached(page, source, hash)) {
+			EntryRenderer.hover._showInProgress = false;
+			// pass a fake "event"
+			EntryRenderer.hover.show({shiftKey: permanent}, ele, page, source, hash);
+			return;
+		}
+
 		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
 		const content = EntryRenderer.hover._curHovering.renderFunction(toRender);
-		const permanent = EntryRenderer.hover._curHovering.permanent;
 
 		$(ele).data("hover-active", true);
 
@@ -1469,6 +1732,29 @@ EntryRenderer.hover = {
 		const fromRight = vpOffsetL > $(window).width() / 2;
 
 		const $hov = $(`<div class="hoverbox" style="right: -600px"/>`);
+
+		const $body = $(`body`);
+		const $ele = $(ele);
+		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
+		const $fakeHov = $(`<a class="hoverlink" data-hover-id="${$ele.data("hover-id")}" href="${$ele.prop("href")}"/>`)
+			.width($ele.width())
+			.height($ele.height())
+			.css("top", $ele.offset().top - $(window).scrollTop())
+			.css("left", $ele.offset().left - $(window).scrollLeft());
+		$body.append($fakeHov);
+
+		$fakeHov.on("mouseleave", (evt) => {
+			$fakeHov.remove();
+			EntryRenderer.hover._cleanWindows();
+			if (!$brdrTop.data("perm") && !evt.shiftKey) {
+				teardown();
+			} else {
+				$(ele).data("hover-active", true);
+				// use attr to let the CSS see it
+				$brdrTop.attr("data-perm", true);
+			}
+		});
+
 		const $stats = $(`<table class="stats"></table>`);
 		$stats.append(content);
 		let drag = {};
@@ -1515,9 +1801,10 @@ EntryRenderer.hover = {
 		$brdrTop.on("dblclick", () => {
 			const curState = $brdrTop.attr("data-display-title");
 			$brdrTop.attr("data-display-title", curState === "false");
+			$brdrTop.attr("data-perm", true);
 		});
 		$brdrTop.append($hovTitle);
-		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				teardown();
@@ -1527,23 +1814,13 @@ EntryRenderer.hover = {
 			.append($stats)
 			.append(`<div class="hoverborder"></div>`);
 
-		$(`body`).append($hov);
+		$body.append($hov);
 
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
 		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
-
-		$(ele).on("mouseleave", (evt) => {
-			if (!$brdrTop.data("perm") && !evt.shiftKey) {
-				teardown();
-			} else {
-				$(ele).data("hover-active", true);
-				// use attr to let the CSS see it
-				$brdrTop.attr("data-perm", true);
-			}
-		});
 
 		adjustPosition(true);
 
@@ -1592,6 +1869,13 @@ EntryRenderer.hover = {
 	_hoverId: 1,
 	_curHovering: null,
 	show: (evt, ele, page, source, hash) => {
+		if (!EntryRenderer.hover._isInit) {
+			EntryRenderer.hover._isInit = true;
+			$(`body`).on("click", () => {
+				EntryRenderer.hover._cleanWindows();
+			});
+		}
+
 		// don't show on mobile
 		if ($(window).width() <= 768) return;
 
@@ -1619,6 +1903,33 @@ EntryRenderer.hover = {
 				break;
 			case UrlUtil.PG_CONDITIONS:
 				renderFunction = EntryRenderer.condition.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_BACKGROUNDS:
+				renderFunction = EntryRenderer.background.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_FEATS:
+				renderFunction = EntryRenderer.feat.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_INVOCATIONS:
+				renderFunction = EntryRenderer.invocation.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_PSIONICS:
+				renderFunction = EntryRenderer.psionic.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_REWARDS:
+				renderFunction = EntryRenderer.reward.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_RACES:
+				renderFunction = EntryRenderer.race.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_DEITIES:
+				renderFunction = EntryRenderer.deity.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_OBJECTS:
+				renderFunction = EntryRenderer.object.getCompactRenderedString;
+				break;
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				renderFunction = EntryRenderer.traphazard.getCompactRenderedString;
 				break;
 			default:
 				throw new Error(`No hover render function specified for page ${page}`)
@@ -1651,6 +1962,9 @@ EntryRenderer.hover = {
 			}
 		});
 
+		// clean up any abandoned windows
+		EntryRenderer.hover._cleanWindows();
+
 		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
 				DataUtil.loadJSON(`${baseUrl}index.json`, (data) => {
@@ -1669,14 +1983,33 @@ EntryRenderer.hover = {
 			}
 		}
 
+		function loadSimple (page, jsonFile, listProp) {
+			function populate (data, listProp) {
+				data[listProp].forEach(it => {
+					const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+					EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+				});
+			}
+
+			if (!EntryRenderer.hover._isCached(page, source, hash)) {
+				DataUtil.loadJSON(`data/${jsonFile}`, (data) => {
+					if (listProp instanceof Array) listProp.forEach(p => populate(data, p));
+					else populate(data, listProp);
+					EntryRenderer.hover._makeWindow();
+				});
+			} else {
+				EntryRenderer.hover._makeWindow();
+			}
+		}
+
 		switch (page) {
 			case UrlUtil.PG_SPELLS: {
-				loadMultiSource(UrlUtil.PG_SPELLS, `data/spells/`, "spell");
+				loadMultiSource(page, `data/spells/`, "spell");
 				break;
 			}
 
 			case UrlUtil.PG_BESTIARY: {
-				loadMultiSource(UrlUtil.PG_BESTIARY, `data/bestiary/`, "monster");
+				loadMultiSource(page, `data/bestiary/`, "monster");
 				break;
 			}
 
@@ -1696,20 +2029,50 @@ EntryRenderer.hover = {
 			}
 
 			case UrlUtil.PG_CONDITIONS: {
-				if (!EntryRenderer.hover._isCached(page, source, hash)) {
-					DataUtil.loadJSON(`data/conditions.json`, (data) => {
-						data.condition.forEach(it => {
-							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-						});
-						EntryRenderer.hover._makeWindow();
-					});
-				} else {
-					EntryRenderer.hover._makeWindow();
-				}
+				loadSimple(page, "conditions.json", "condition");
+				break;
+			}
+			case UrlUtil.PG_BACKGROUNDS: {
+				loadSimple(page, "backgrounds.json", "background");
+				break;
+			}
+			case UrlUtil.PG_FEATS: {
+				loadSimple(page, "feats.json", "feat");
+				break;
+			}
+			case UrlUtil.PG_INVOCATIONS: {
+				loadSimple(page, "invocations.json", "invocation");
+				break;
+			}
+			case UrlUtil.PG_PSIONICS: {
+				loadSimple(page, "psionics.json", "psionic");
+				break;
+			}
+			case UrlUtil.PG_REWARDS: {
+				loadSimple(page, "rewards.json", "reward");
+				break;
+			}
+			case UrlUtil.PG_RACES: {
+				loadSimple(page, "races.json", "race");
+				break;
+			}
+			case UrlUtil.PG_DEITIES: {
+				loadSimple(page, "deities.json", "deity");
+				break;
+			}
+			case UrlUtil.PG_OBJECTS: {
+				loadSimple(page, "objects.json", "object");
+				break;
+			}
+			case UrlUtil.PG_TRAPS_HAZARDS: {
+				loadSimple(page, "trapshazards.json", ["trap", "hazard"]);
 				break;
 			}
 		}
+	},
+
+	_cleanWindows: () => {
+		$(`a.hoverlink`).trigger(`mouseleave`);
 	}
 };
 

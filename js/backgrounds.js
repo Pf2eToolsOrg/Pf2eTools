@@ -35,7 +35,7 @@ function onJsonLoad (data) {
 	}
 	bgTable.append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ['name', 'source'],
 		listClass: "backgrounds"
 	});
@@ -43,7 +43,7 @@ function onJsonLoad (data) {
 	filterBox.render();
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,

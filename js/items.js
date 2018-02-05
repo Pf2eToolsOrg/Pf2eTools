@@ -26,13 +26,13 @@ function sortItems (a, b, o) {
 	if (o.valueName === "name") {
 		return b._values.name.toLowerCase() > a._values.name.toLowerCase() ? 1 : -1;
 	} else if (o.valueName === "type") {
-		if (b._values.type === a._values.type) return compareNames(a, b);
+		if (b._values.type === a._values.type) return SortUtil.compareNames(a, b);
 		return b._values.type.toLowerCase() > a._values.type.toLowerCase() ? 1 : -1;
 	} else if (o.valueName === "source") {
-		if (b._values.source === a._values.source) return compareNames(a, b);
+		if (b._values.source === a._values.source) return SortUtil.compareNames(a, b);
 		return b._values.source.toLowerCase() > a._values.source.toLowerCase() ? 1 : -1;
 	} else if (o.valueName === "rarity") {
-		if (b._values.rarity === a._values.rarity) return compareNames(a, b);
+		if (b._values.rarity === a._values.rarity) return SortUtil.compareNames(a, b);
 		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
 	} else return 1;
 }
@@ -56,6 +56,8 @@ function deselectFilter (deselectProperty, deselectValue) {
 	}
 }
 
+let mundanelist
+let magiclist
 function populateTablesAndFilters () {
 	tabledefault = $("#pagecontent").html();
 
@@ -115,17 +117,17 @@ function populateTablesAndFilters () {
 	$("ul.list.mundane").append(liList.mundane);
 	$("ul.list.magic").append(liList.magic);
 	// sort filters
-	sourceFilter.items.sort(ascSort);
-	typeFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
+	typeFilter.items.sort(SortUtil.ascSort);
 
 	const options = {
 		valueNames: ["name", "source", "type", "rarity"],
 		listClass: "mundane"
 	};
 
-	const mundanelist = search(options);
+	mundanelist = ListUtil.search(options);
 	options.listClass = "magic";
-	const magiclist = search(options);
+	magiclist = ListUtil.search(options);
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);

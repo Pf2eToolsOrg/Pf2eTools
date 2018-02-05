@@ -17,6 +17,9 @@
 				},
 				"source": {
 					"type": "string"
+				},
+				"data": {
+					"type": "object"
 				}
 			},
 			"required": [
@@ -38,6 +41,9 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["entries"],
@@ -59,6 +65,9 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["entries"],
@@ -72,6 +81,24 @@
 				{
 					"properties": {
 						"type": {"const": "inline"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryEntriesInlineEntries": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "inlineBlock"},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -131,10 +158,15 @@
 						"rows": {
 							"type": "array",
 							"items": {
-								"type": "array",
-								"items": {
-									"$ref": "/Entry"
-								}
+								"oneOf" : [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "/Entry"
+										}
+									},
+									"#/definitions/entryTableRow"
+								]
 							}
 						},
 						"footnotes": {
@@ -145,6 +177,53 @@
 						}
 					},
 					"required": ["rows"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryTableRow": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {
+							"const": "row"
+						},
+						"style": {
+							"type": "string"
+						},
+						"row": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": [
+						"row"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryTableCell": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {
+							"const": "cell"
+						},
+						"width": {
+							"type": "integer"
+						},
+						"entry": {
+							"$ref": "/Entry"
+						}
+					},
+					"required": [
+						"entry"
+					],
 					"additionalProperties": false
 				}
 			]
@@ -302,7 +381,7 @@
 							}
 						}
 					},
-					"required": ["name", "text"],
+					"required": ["text"],
 					"additionalProperties": false
 				}
 			]
@@ -326,6 +405,9 @@
 										},
 										"hash": {
 											"type": "string"
+										},
+										"hashPreEncoded": {
+											"type": "boolean"
 										},
 										"subhashes": {
 											"type": "array",
@@ -624,8 +706,11 @@
 		{"$ref": "#/definitions/entrySection"},
 		{"$ref": "#/definitions/entryEntries"},
 		{"$ref": "#/definitions/entryInlineEntries"},
+		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
 		{"$ref": "#/definitions/entryTable"},
+		{"$ref": "#/definitions/entryTableRow"},
+		{"$ref": "#/definitions/entryTableCell"},
 		{"$ref": "#/definitions/entryList"},
 		{"$ref": "#/definitions/entryBonus"},
 		{"$ref": "#/definitions/entryBonusSpeed"},

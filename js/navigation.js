@@ -19,14 +19,16 @@ function currentPage () {
 	if (!currentPage) currentPage = "5etools.html";
 	if (CHILD_PAGES[currentPage]) currentPage = CHILD_PAGES[currentPage];
 
-	const current = document.querySelectorAll(`a[href="${currentPage}"]`);
-	current[0].parentNode.className = 'active';
-
-	const parent = current[0].parentNode.parentNode.parentNode;
-	if (parent.tagName === 'LI') {
-		const dropdown = document.getElementById(parent.id);
-		dropdown.className = 'dropdown active';
+	if (currentPage.toLowerCase() === "book.html") {
+		const hashPart = window.location.hash.split(",")[0];
+		if (hashPart) {
+			currentPage += hashPart.toLowerCase();
+		}
 	}
+
+	const current = $(`li[data-page="${currentPage}"]`);
+	current.addClass("active");
+	current.parent().closest("li").addClass("active");
 }
 
 function navigation () {
@@ -35,8 +37,11 @@ function navigation () {
 	LIDropdown('navbar', 'rules', 'dropdown');
 	A('rules', 'ruleOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Rules <span class='caret'></span>");
 	UL('rules', 'ul_rules', 'dropdown-menu');
-	LI('ul_rules', 'rules.html', 'Core Rules');
+	LI('ul_rules', 'quickreference.html', 'Quick Reference');
 	LI('ul_rules', 'variantrules.html', 'Variant Rules');
+	LIDivider('ul_rules');
+	LI('ul_rules', 'book.html', "Monster Manual", "MM");
+	LI('ul_rules', 'book.html', "Player's Handbook", "PHB");
 
 	LIDropdown('navbar', 'players', 'dropdown');
 	A('players', 'playerOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Player Options <span class='caret'></span>");
@@ -54,7 +59,7 @@ function navigation () {
 	LI('ul_dms', 'adventures.html', 'Adventures');
 	LI('ul_dms', 'crcalculator.html', 'CR Calculator');
 	LI('ul_dms', 'cults.html', 'Cults');
-	LISpecial('ul_dms', 'http://kobold.club', 'Encounter Builder', '_blank', 'I could literally never build something better than Kobold Fight Club');
+	LISpecial('ul_dms', 'http://kobold.club', 'Encounter Builder', '_blank', 'We could literally never build something better than Kobold Fight Club');
 	LI('ul_dms', 'encountergen.html', 'Encounter Generator');
 	LI('ul_dms', 'lootgen.html', 'Loot Generator');
 	LI('ul_dms', 'objects.html', 'Objects');
@@ -125,22 +130,23 @@ function navigation () {
 
 	/**
 	 * Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
-	 * @param {String} append_to_id - Which ID does this link belong too .
-	 * @param {String} a_href - Where does this link to.
-	 * @param {String} a_text - What text does this link have.
+	 * @param append_to_id - Which ID does this link belong too .
+	 * @param a_href - Where does this link to.
+	 * @param a_text - What text does this link have.
+	 * @param a_hash - Optional hash to be appended to the base href
 	 */
-	function LI (append_to_id, a_href, a_text) {
-		const a = document.createElement('a');
-		a.href = a_href;
-		a.innerHTML = a_text;
+	function LI (append_to_id, a_href, a_text, a_hash) {
+		const hashPart = a_hash ? `#${a_hash}`.toLowerCase() : "";
+		$(`#${append_to_id}`)
+			.append(`
+				<li role="presentation" id="${a_text.toLowerCase().replace(/\s+/g, '')}" data-page="${a_href}${hashPart}">
+					<a href="${a_href}${hashPart}">${a_text}</a>
+				</li>
+			`);
+	}
 
-		const li = document.createElement('li');
-		li.id = a_text.toLowerCase().replace(/\s+/g, '');
-		li.setAttribute('role', 'presentation');
-		li.appendChild(a);
-
-		const appendTo = document.getElementById(append_to_id);
-		appendTo.appendChild(li);
+	function LIDivider (append_to_id) {
+		$(`#${append_to_id}`).append(`<li role="presentation" class="divider"></li>`);
 	}
 
 	/**
@@ -153,7 +159,7 @@ function navigation () {
 	 */
 	function LISpecial (append_to_id, a_href, a_text, a_target, a_title) {
 		const $li = `
-			<li role="presentation" id="${a_text.toLowerCase().replace(/\s+/g, '')}">
+			<li role="presentation">
 				<a href="${a_href}" target="${a_target}" title="${a_title}" class="dropdown-ext-link">
 					<span>${a_text}</span>
 					<span class="glyphicon glyphicon-new-window"></span>

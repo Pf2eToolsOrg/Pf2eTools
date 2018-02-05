@@ -19,14 +19,43 @@ table#statsprof {
 	background: #fdf1dc;
 }
 
+@media only screen and (min-width: 1600px) {
+	#listcontainer.book-contents {
+		background: white;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	}
+}
+
+table.stats.stats-book {
+    background: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.book-view-under {
+	background: white;
+}
+
+.book-view div.pnl-menu {
+	background: lightgrey;
+}
+
 table.stats table.summary tbody tr:nth-child(even),
 table.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
 	background: #e4d8c3;
 }
 
+table.stats.stats-book table.summary tbody tr:nth-child(even),
+table.stats.stats-book table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
+	background: #e0e0e0;
+}
+
 .hoverbox .hoverborder,
 th.border {
 	background: #e69a28;
+}
+
+table.stats.stats-book th.border {
+	background: #c0c0c0;
 }
 
 tr.text td {
@@ -123,6 +152,10 @@ table.stats td._class_feature table th {
 	color: black;
 }
 
+span.pnl-link {
+	background: #f0f0f0;
+}
+
 div#subclasses>span {
 	background: lightgrey;
 }
@@ -131,28 +164,28 @@ tr.trait td {
 	color: black !important;
 }
 
-li.adventure-contents-item > ul > li.active,
-li.adventure-contents-item > ul > ul.active > li > a {
+li.contents-item > ul > li.active,
+li.contents-item > ul > ul.active > li > a {
 	background: #f0f0f0;
 }
 
-li.adventure-contents-item > ul > ul.active > li > a:hover {
+li.contents-item > ul > ul.active > li > a:hover {
 	background: lightgrey;
 }
 
-ul.list.adventures ul a:hover,
+ul.list.books ul a:hover,
 ul.list.contents > li a:hover,
-ul.list.contents > li > ul.adv-contents > li > a > span:hover,
-ul.list.contents > li > ul.adv-contents > li > a > span:hover {
+ul.list.contents > li > ul.bk-contents > li > a > span:hover,
+ul.list.contents > li > ul.bk-contents > li > a > span:hover {
 	background: lightgrey;
 }
 
-ul.list.contents > li > ul.adv-contents > li a:hover {
+ul.list.contents > li > ul.bk-contents > li a:hover {
 	background: initial;
 }
 
-ul.list.adventures >  li > a > span.showhide:hover,
-ul.list.adventures >  li > a > span.name:hover {
+ul.list.books >  li > a > span.showhide:hover,
+ul.list.books >  li > a > span.name:hover {
 	background: lightgrey;
 }
 
@@ -245,6 +278,12 @@ ul.list li:hover {
 table.stats,
 table#statsprof {
 	background: #272727;
+}
+
+@media only screen and (min-width: 1600px) {
+	#listcontainer.book-contents {
+		border-right: 1px solid #404040;
+	}
 }
 
 .hoverbox .hoverborder,
@@ -341,7 +380,12 @@ table.stats td._class_feature table th {
 	border-color: #ababab;
 }
 
-ul.list.adventures > li:nth-child(odd) > a,
+.book-view-under,
+.book-view div.pnl-menu {
+	background: #101010;
+}
+
+ul.list.books > li:nth-child(odd) > a,
 .stats table.summary tbody tr:nth-child(even),
 .stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd),
 #classtable table tr:nth-child(odd) td,
@@ -350,12 +394,12 @@ ul.list li:nth-child(odd),
 ul.list.encounters > li > ul > li:nth-child(odd),
 ul.list.names > li > ul > li:nth-child(odd),
 #monsterfeatures tr:nth-child(odd),
-ul.adv-headers li:nth-child(odd) {
+ul.bk-headers li:nth-child(odd) {
 	background: rgba(0, 0, 0, 0.31);
 }
 
-li.adventure-contents-item > ul > li.active,
-li.adventure-contents-item > ul > ul.active > li > a {
+li.contents-item > ul > li.active,
+li.contents-item > ul > ul.active > li > a {
 	background: #303030;
 }
 
@@ -366,29 +410,29 @@ ul.list.names > li > span:first-child {
 
 ul.list.encounters > li > ul > li > a:hover,
 ul.list.names > li > ul > li > a:hover,
-ul.adv-headers > li > a:hover,
-li.adventure-contents-item > ul > ul.active > li > a:hover,
-ul.list.contents > li > ul.adv-contents > li > a > span:hover,
-ul.list.contents > li > ul.adv-contents > li > a > span:hover,
-ul.list.contents > li > ul.adv-headers a:hover,
-ul.list.adventures ul a:hover,
-ul.list.adventures >  li > a > span.showhide:hover,
-ul.list.adventures >  li > a > span.name:hover,
+ul.bk-headers > li > a:hover,
+li.contents-item > ul > ul.active > li > a:hover,
+ul.list.contents > li > ul.bk-contents > li > a > span:hover,
+ul.list.contents > li > ul.bk-contents > li > a > span:hover,
+ul.list.contents > li > ul.bk-headers a:hover,
+ul.list.books ul a:hover,
+ul.list.books >  li > a > span.showhide:hover,
+ul.list.books >  li > a > span.name:hover,
 ul.list li:nth-child(odd):hover {
 	background: black;
 }
 
 ul.list.encounters li:nth-child(odd),
 ul.list.names li:nth-child(odd),
-ul.list.adventures > li:nth-child(odd),
-ul.adv-contents > li:nth-child(odd),
+ul.list.books > li:nth-child(odd),
+ul.bk-contents > li:nth-child(odd),
 ul.list.contents > li:nth-child(odd) {
 	background: none;
 }
 
 ul.list.encounters li:nth-child(odd):hover,
-ul.list.adventures li:nth-child(odd):hover,
-ul.adv-contents li:nth-child(odd):hover,
+ul.list.books li:nth-child(odd):hover,
+ul.bk-contents li:nth-child(odd):hover,
 ul.list.names li:nth-child(odd):hover {
 	background: none;
 }
@@ -401,6 +445,7 @@ ul.list li {
 	color: grey;
 }
 
+span.pnl-link,
 div#subclasses>span {
 	background: black;
 }

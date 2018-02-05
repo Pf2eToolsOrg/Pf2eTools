@@ -423,24 +423,16 @@
 								"name": {
 									"type": "string"
 								},
-								"text": {
+								"entries": {
 									"type": "array",
-									"uniqueItems": true,
 									"items": {
-										"type": "string"
-									}
-								},
-								"attack": {
-									"type": "array",
-									"uniqueItems": true,
-									"items": {
-										"type": "string"
+										"$ref": "/Entry"
 									}
 								}
 							},
 							"required": [
 								"name",
-								"text"
+								"entries"
 							],
 							"additionalProperties": false
 						}
@@ -453,27 +445,16 @@
 								"name": {
 									"type": "string"
 								},
-								"text": {
+								"entries": {
 									"type": "array",
-									"uniqueItems": true,
 									"items": {
-										"type": "string"
-									}
-								},
-								"attack": {
-									"type": "array",
-									"uniqueItems": true,
-									"items": {
-										"type": [
-											"string",
-											"null"
-										]
+										"$ref": "/Entry"
 									}
 								}
 							},
 							"required": [
 								"name",
-								"text"
+								"entries"
 							],
 							"additionalProperties": false
 						}
@@ -486,27 +467,16 @@
 								"name": {
 									"type": "string"
 								},
-								"text": {
+								"entries": {
 									"type": "array",
-									"uniqueItems": true,
 									"items": {
-										"type": "string"
-									}
-								},
-								"attack": {
-									"type": "array",
-									"uniqueItems": true,
-									"items": {
-										"type": [
-											"string",
-											"null"
-										]
+										"$ref": "/Entry"
 									}
 								}
 							},
 							"required": [
 								"name",
-								"text"
+								"entries"
 							],
 							"additionalProperties": false
 						}
@@ -525,11 +495,10 @@
 								"name": {
 									"type": "string"
 								},
-								"text": {
+								"entries": {
 									"type": "array",
-									"uniqueItems": true,
 									"items": {
-										"type": "string"
+										"$ref": "/Entry"
 									}
 								},
 								"attack": {
@@ -541,8 +510,7 @@
 								}
 							},
 							"required": [
-								"name",
-								"text"
+								"entries"
 							],
 							"additionalProperties": false
 						}
@@ -555,6 +523,9 @@
 					},
 					"page": {
 						"type": "int"
+					},
+					"familiar": {
+						"type": "boolean"
 					}
 				},
 				"required": [

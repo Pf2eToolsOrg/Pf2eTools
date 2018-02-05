@@ -25,7 +25,7 @@ function onJsonLoad (data) {
 	}
 	$("ul.cults").append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ['name'],
 		listClass: "cults"
 	});

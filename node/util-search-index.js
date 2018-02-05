@@ -45,6 +45,18 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	if (doLogging === undefined || doLogging === null) doLogging = true;
 	if (test_doExtraIndex === undefined || test_doExtraIndex === null) test_doExtraIndex = false;
 
+	/**
+	 * Produces index of the form:
+	 * {
+	 *   n: "Display Name",
+	 *   s: "PHB", // source
+	 *   u: "spell name_phb,
+	 *   p: 110, // page
+	 *   h: 1 // if hover enabled, otherwise undefined
+	 *   c: 10, // category ID
+	 *   id: 123 // index ID
+	 * }
+	 */
 	const index = [];
 
 	/**
@@ -53,22 +65,24 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	 */
 	const TO_INDEX__FROM_INDEX_JSON = [
 		{
-			"category": 1,
-			"dir": "bestiary",
-			"primary": "name",
-			"source": "source",
-			"page": "page",
-			"listProp": "monster",
-			"baseUrl": "bestiary.html"
+			category: 1,
+			dir: "bestiary",
+			primary: "name",
+			source: "source",
+			page: "page",
+			listProp: "monster",
+			baseUrl: "bestiary.html",
+			hover: true
 		},
 		{
-			"category": 2,
-			"dir": "spells",
-			"primary": "name",
-			"source": "source",
-			"page": "page",
-			"listProp": "spell",
-			"baseUrl": "spells.html"
+			category: 2,
+			dir: "spells",
+			primary: "name",
+			source: "source",
+			page: "page",
+			listProp: "spell",
+			baseUrl: "spells.html",
+			hover: true
 		}
 	];
 
@@ -90,140 +104,159 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	 * test_extraIndex: (OPTIONAL) a function which can optionally be called per item if `doExtraIndex` is true.
 	 * 		Used to generate a complete list of links for testing; should not be used for production index.
 	 * 		Should return full index objects.
+	 * hover: (OPTIONAL) a boolean indicating if the generated link should have `EntryRenderer` hover functionality.
+	 * filter: (OPTIONAL) a function which takes a data item and returns true if it should be indexed, false otherwise
 	 *
 	 */
 	const TO_INDEX = [
 		{
-			"category": 3,
-			"file": "backgrounds.json",
-			"listProp": "background",
-			"baseUrl": "backgrounds.html"
+			category: 3,
+			file: "backgrounds.json",
+			listProp: "background",
+			baseUrl: "backgrounds.html",
+			hover: true
 		},
 		{
-			"category": 4,
-			"file": "basicitems.json",
-			"listProp": "basicitem",
-			"baseUrl": "items.html"
+			category: 4,
+			file: "basicitems.json",
+			listProp: "basicitem",
+			baseUrl: "items.html",
+			hover: true
 		},
 		{
-			"category": 5,
-			"file": "classes.json",
-			"listProp": "class",
-			"baseUrl": "classes.html",
-			"deepIndex": (primary, it) => {
+			category: 5,
+			file: "classes.json",
+			listProp: "class",
+			baseUrl: "classes.html",
+			deepIndex: (primary, it) => {
 				return it.subclasses.map(sc => ({
-					s: `${primary}; ${sc.name}`,
-					src: sc.source,
-					url: `classes.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
+					n: `${primary}; ${sc.name}`,
+					s: sc.source,
+					u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
 				}))
 			}
 		},
 		{
-			"category": 6,
-			"file": "conditions.json",
-			"listProp": "condition",
-			"baseUrl": "conditions.html"
+			category: 6,
+			file: "conditions.json",
+			listProp: "condition",
+			baseUrl: "conditions.html",
+			hover: true
 		},
 		{
-			"category": 7,
-			"file": "feats.json",
-			"listProp": "feat",
-			"baseUrl": "feats.html"
+			category: 7,
+			file: "feats.json",
+			listProp: "feat",
+			baseUrl: "feats.html",
+			hover: true
 		},
 		{
-			"category": 8,
-			"file": "invocations.json",
-			"listProp": "invocation",
-			"baseUrl": "invocations.html"
+			category: 8,
+			file: "invocations.json",
+			listProp: "invocation",
+			baseUrl: "invocations.html",
+			hover: true
 		},
 		{
-			"category": 4,
-			"file": "items.json",
-			"page": "page",
-			"listProp": "item",
-			"baseUrl": "items.html"
+			category: 4,
+			file: "items.json",
+			page: "page",
+			listProp: "item",
+			baseUrl: "items.html",
+			hover: true
 		},
 		{
-			"category": 9,
-			"file": "psionics.json",
-			"listProp": "psionic",
-			"baseUrl": "psionics.html",
-			"deepIndex": (primary, it) => {
+			category: 9,
+			file: "psionics.json",
+			listProp: "psionic",
+			baseUrl: "psionics.html",
+			deepIndex: (primary, it) => {
 				if (!it.modes) return [];
-				return it.modes.map(m => ({s: `${primary}; ${m.name}`}))
-			}
+				return it.modes.map(m => ({n: `${primary}; ${m.name}`}))
+			},
+			hover: true
 		},
 		{
-			"category": 10,
-			"file": "races.json",
-			"listProp": "race",
-			"baseUrl": "races.html"
+			category: 10,
+			file: "races.json",
+			listProp: "race",
+			baseUrl: "races.html",
+			hover: true
 		},
 		{
-			"category": 11,
-			"file": "rewards.json",
-			"listProp": "reward",
-			"baseUrl": "rewards.html"
+			category: 11,
+			file: "rewards.json",
+			listProp: "reward",
+			baseUrl: "rewards.html",
+			hover: true
 		},
 		{
-			"category": 12,
-			"file": "variantrules.json",
-			"listProp": "variantrule",
-			"baseUrl": "variantrules.html",
-			"deepIndex": (primary, it) => {
+			category: 12,
+			file: "variantrules.json",
+			listProp: "variantrule",
+			baseUrl: "variantrules.html",
+			deepIndex: (primary, it) => {
 				const names = [];
 				it.entries.forEach(e => {
 					er.EntryRenderer.getNames(names, e);
 				});
-				return names.map(n => ({s: `${primary}; ${n}`}));
+				return names.map(n => ({n: `${primary}; ${n}`}));
 			}
 		},
 		{
-			"category": 13,
-			"file": "adventures.json",
-			"source": "id",
-			"listProp": "adventure",
-			"baseUrl": "adventure.html"
+			category: 13,
+			file: "adventures.json",
+			source: "id",
+			listProp: "adventure",
+			baseUrl: "adventure.html"
 		},
 		{
-			"category": 4,
-			"file": "magicvariants.json",
-			"source": "inherits.source",
-			"page": "inherits.page",
-			"listProp": "variant",
-			"baseUrl": "items.html",
-			"hashBuilder": (it) => {
+			category: 4,
+			file: "magicvariants.json",
+			source: "inherits.source",
+			page: "inherits.page",
+			listProp: "variant",
+			baseUrl: "items.html",
+			hashBuilder: (it) => {
 				return UrlUtil.encodeForHash([it.name, it.inherits.source]);
 			},
-			"test_extraIndex": () => {
+			test_extraIndex: () => {
 				const specVars = UtilSearchIndex._test_getBasicVariantItems();
 
-				return specVars.map(sv => ({url: `items.html#${UrlUtil.encodeForHash([sv.name, sv.source])}`}));
+				return specVars.map(sv => ({c: 4, u: UrlUtil.encodeForHash([sv.name, sv.source])}));
+			},
+			hover: true
+		},
+		{
+			category: 14,
+			file: "deities.json",
+			listProp: "deity",
+			baseUrl: "deities.html",
+			hover: true,
+			filter: (it) => {
+				return it.reprinted;
 			}
 		},
 		{
-			"category": 14,
-			"file": "deities.json",
-			"listProp": "deity",
-			"baseUrl": "deities.html"
+			category: 15,
+			file: "objects.json",
+			listProp: "object",
+			baseUrl: "objects.html",
+			hover: true
 		},
 		{
-			"category": 15,
-			"file": "objects.json",
-			"listProp": "object",
-			"baseUrl": "objects.html"
+			category: 16,
+			file: "trapshazards.json",
+			listProp: "trap",
+			baseUrl: "trapshazards.html",
+			hover: true
 		},
 		{
-			"category": 16,
-			"file": "trapshazards.json",
-			"listProp": "trap",
-			"baseUrl": "trapshazards.html"
-		},
-		{
-			"category": 17,
-			"file": "trapshazards.json",
-			"listProp": "hazard",
-			"baseUrl": "trapshazards.html"
+			category: 17,
+			file: "trapshazards.json",
+			listProp: "hazard",
+			baseUrl: "trapshazards.html",
+			hover: true
 		}
 	];
 
@@ -234,15 +267,20 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 	let id = 0;
 	function handleContents (arbiter, j) {
 		function getToAdd (it, toMerge) {
+			const src = getProperty(it, arbiter.source || "source");
+			const hash = arbiter.hashBuilder
+				? arbiter.hashBuilder(it)
+				: UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it);
 			const toAdd = {
 				c: arbiter.category,
-				src: getProperty(it, arbiter.source || "source"),
+				s: src,
 				id: id++,
-				url: arbiter.hashBuilder
-					? `${arbiter.baseUrl}#${arbiter.hashBuilder(it)}`
-					: `${arbiter.baseUrl}#${UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it)}`,
-				pg: getProperty(it, arbiter.page || "page")
+				u: hash,
+				p: getProperty(it, arbiter.page || "page")
 			};
+			if (arbiter.hover) {
+				toAdd.h = 1;
+			}
 			Object.assign(toAdd, toMerge);
 			return toAdd;
 		}
@@ -250,14 +288,14 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 		j[arbiter.listProp].forEach(it => {
 			const primaryS = getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
-				const toAdd = getToAdd(it, {s: primaryS});
-				index.push(toAdd);
+				const toAdd = getToAdd(it, {n: primaryS});
+				if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
 
 				if (arbiter.deepIndex) {
 					const deepItems = arbiter.deepIndex(primaryS, it);
 					deepItems.forEach(item => {
 						const toAdd = getToAdd(it, item);
-						index.push(toAdd);
+						if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
 					})
 				}
 			}

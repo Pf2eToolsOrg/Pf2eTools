@@ -11,7 +11,7 @@ function ascSortCr (a, b) {
 	// always put unknown values last
 	if (a === "Unknown" || a === undefined) a = "999";
 	if (b === "Unknown" || b === undefined) b = "999";
-	return ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
+	return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
 const meta = {};
@@ -77,7 +77,7 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
-const miscFilter = new Filter({header: "Miscellaneous", items: ["Legendary"], displayFn: StrUtil.uppercaseFirst});
+const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
 	sourceFilter,
@@ -92,9 +92,9 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
-	list = search({
+	list = ListUtil.search({
 		valueNames: ["name", "source", "type", "cr"],
 		listClass: "monsters"
 	});
@@ -179,6 +179,7 @@ function addMonsters (data) {
 		crFilter.addIfAbsent(mon.cr);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
+		if (mon.familiar) mon._fMisc.push("Familiar");
 	}
 	let lastSearch = null;
 	if (list.searched) {
@@ -190,8 +191,8 @@ function addMonsters (data) {
 
 	// sort filters
 	crFilter.items.sort(ascSortCr);
-	typeFilter.items.sort(ascSort);
-	tagFilter.items.sort(ascSort);
+	typeFilter.items.sort(SortUtil.ascSort);
+	tagFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -204,9 +205,9 @@ function addMonsters (data) {
 function sortMonsters (a, b, o) {
 	a = monsters[a.elm.getAttribute(FLTR_ID)];
 	b = monsters[b.elm.getAttribute(FLTR_ID)];
-	if (o.valueName === "name") return ascSort(a.name, b.name);
-	if (o.valueName === "type") return ascSort(a._pTypes.asText, b._pTypes.asText);
-	if (o.valueName === "source") return ascSort(a.source, b.source);
+	if (o.valueName === "name") return SortUtil.ascSort(a.name, b.name);
+	if (o.valueName === "type") return SortUtil.ascSort(a._pTypes.asText, b._pTypes.asText);
+	if (o.valueName === "source") return SortUtil.ascSort(a.source, b.source);
 	if (o.valueName === "cr") return ascSortCr(a.cr, b.cr);
 	return 0;
 }
@@ -338,99 +339,31 @@ function loadhash (id) {
 		$("td span#languages").html("\u2014");
 	}
 
-	var cr = mon.cr === undefined ? "Unknown" : mon.cr;
+	var cr = mon.cr;
 	$("td span#cr").html(cr);
 	$("td span#xp").html(Parser.crToXp(cr));
 
-	var traits = mon.trait;
+	var trait = mon.trait;
 	$("tr.trait").remove();
 
-	if (traits) {
-		for (var i = traits.length - 1; i >= 0; i--) {
-			var traitname = traits[i].name;
-			var traittext = traits[i].text;
-			var traittexthtml = "";
-			var renderedcount = 0;
-			for (var n = 0; n < traittext.length; n++) {
-				if (!traittext[n]) continue;
-
-				renderedcount++;
-				var firstsecond = "";
-				if (renderedcount === 1) firstsecond = "first ";
-				if (renderedcount === 2) firstsecond = "second ";
-
-				var spells = "";
-				if (traitname.indexOf("Spellcasting") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
-				if (traitname.indexOf("Variant") !== -1 && traitname.indexOf("Coven") !== -1 && traittext[n].indexOf(": ") !== -1) spells = "spells";
-				traittexthtml = traittexthtml + `<p class="${firstsecond}${spells}">${traittext[n].replace(/\u2022\s?(?=C|\d|At\swill)/g, "")}</p>`;
-			}
-			// Because entryRenderer spells appear with non-entryRenderer traits use a non-standard class, psi-focus-title, so this section looks consistent
-			$("tr#traits").after(`<tr class="trait"><td colspan="6" class="trait${i}"><span class="psi-focus-title">${traitname}.</span> ${traittexthtml}</td></tr>"`);
-			// Parse spells to make hyperlinks for creatures not yet using "spellcasting"
-			$("tr.trait").children("td").children("p.spells").each(function () {
-				let spellslist = $(this).html();
-				if (spellslist[0] === "*") return;
-				spellslist = spellslist.split(": ")[1].split(/, (?!\+|\dd|appears|inside gems)/g);
-				for (let i = 0; i < spellslist.length; i++) {
-					spellslist[i] = `<a href="spells.html#${encodeURIComponent((spellslist[i].replace(/(\*)| \(([^)]+)\)/g, ""))).toLowerCase()}_phb" target="_blank">${spellslist[i]}</a>`;
-					if (i !== spellslist.length - 1) spellslist[i] = spellslist[i] + ", ";
-				}
-				$(this).html($(this).html().split(": ")[0] + ": " + spellslist.join(""))
-			});
-		}
-	}
+	if (trait) renderSection("trait", "trait", trait, 1);
 
 	if (mon.spellcasting) {
 		const spellcastingString = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
 		$(`tr#traits`).after(`<tr class='trait'><td colspan='6'>${utils_makeRoller(spellcastingString)}</td></tr>`);
 	}
 
-	const actions = mon.action;
+	const action = mon.action;
+	$("tr#actions").hide();
 	$("tr.action").remove();
 
-	if (actions && actions.length) {
-		for (let i = actions.length - 1; i >= 0; i--) {
-			const actionname = actions[i].name;
-			const actiontext = actions[i].text;
-			let actiontexthtml = "";
-			let renderedcount = 0;
-			for (let n = 0; n < actiontext.length; n++) {
-				if (!actiontext[n]) continue;
+	if (action) renderSection("action", "action", action, 1);
 
-				renderedcount++;
-				let firstsecond = "";
-				if (renderedcount === 1) firstsecond = "first ";
-				if (renderedcount === 2) firstsecond = "second ";
-
-				actiontexthtml = actiontexthtml + `<p class="${firstsecond}">${actiontext[n]}</p>`;
-			}
-
-			$("tr#actions").after(`<tr class="action"><td colspan="6" class="action${i}"><span class="name">${actionname}.</span> ${actiontexthtml}</td></tr>`);
-		}
-	}
-
-	const reactions = mon.reaction;
+	const reaction = mon.reaction;
 	$("tr#reactions").hide();
 	$("tr.reaction").remove();
 
-	if (reactions && (reactions.text || reactions.length)) {
-		$("tr#reactions").show();
-
-		if (reactions.length) {
-			for (let i = reactions.length - 1; i >= 0; i--) {
-				const reactionname = reactions[i].name;
-
-				const reactiontext = reactions[i].text;
-				let reactiontexthtml = "<p>" + reactiontext + "</p>";
-				for (let n = 1; n < reactiontext.length; n++) {
-					if (!reactiontext[n]) continue;
-					reactiontexthtml = reactiontexthtml + "<p>" + reactiontext[n] + "</p>";
-				}
-
-				$("tr#reactions").after(`<tr class="reaction"><td colspan="6" class="reaction${i}"><span class="name">${reactionname}.</span> ${reactiontexthtml}</td></tr>`);
-			}
-		}
-	}
+	if (reaction) renderSection("reaction", "reaction", reaction, 1);
 
 	const variants = mon.variant;
 	const variantSect = $(`#variants`);
@@ -444,31 +377,14 @@ function loadhash (id) {
 
 	$(`#source`).append(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${mon.page}</td>`);
 
-	const legendaries = mon.legendary;
-	$("tr.legendary").remove();
+	const legendary = mon.legendary;
 	$("tr#legendaries").hide();
-	if (legendaries) {
-		$("tr#legendaries").show();
-		for (let i = legendaries.length - 1; i >= 0; i--) {
-			const legendaryname = legendaries[i].name ? legendaries[i].name + "." : "";
-			const legendarytext = legendaries[i].text;
-			let legendarytexthtml = "";
-			let renderedcount = 0;
-			for (let n = 0; n < legendarytext.length; n++) {
-				if (!legendarytext[n]) continue;
-				renderedcount++;
-				let firstsecond = "";
-				if (renderedcount === 1) firstsecond = "first ";
-				if (renderedcount === 2) firstsecond = "second ";
-				legendarytexthtml += `<p class='${firstsecond}'>${legendarytext[n]}</p>`;
-			}
-			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'>${legendaryname}</span> ${legendarytexthtml}</td></tr>`);
-		}
-		if ($("tr.legendary").length && !$("tr.legendary span.name:empty").length && !$("tr.legendary span.name:contains(Legendary Actions)").length) {
-			const legendaryActions = mon.legendaryActions || 3;
-			const legendaryName = name.split(",");
-			$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
-		}
+	$("tr.legendary").remove();
+	if (legendary) {
+		renderSection("legendary", "legendary", legendary, 1);
+		const legendaryActions = mon.legendaryActions || 3;
+		const legendaryName = name.split(",");
+		$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
 	}
 
 	const legendaryGroup = mon.legendaryGroup;
@@ -478,21 +394,22 @@ function loadhash (id) {
 	$("tr#regionaleffects").hide();
 	if (legendaryGroup) {
 		const thisGroup = meta[legendaryGroup];
-		if (thisGroup.lairActions) renderSection("lairaction", thisGroup.lairActions);
-		if (thisGroup.regionalEffects) renderSection("regionaleffect", thisGroup.regionalEffects);
+		if (thisGroup.lairActions) renderSection("lairaction", "legendary", thisGroup.lairActions, 0);
+		if (thisGroup.regionalEffects) renderSection("regionaleffect", "legendary", thisGroup.regionalEffects, 0);
 	}
 
-	function renderSection (sectionClass, sectionEntries) {
-		$(`tr#${sectionClass}s`).show();
+	function renderSection (sectionTrClass, sectionTdClass, sectionEntries, sectionLevel) {
+		let pluralSectionTrClass = sectionTrClass === `legendary` ? `legendaries` : `${sectionTrClass}s`;
+		$(`tr#${pluralSectionTrClass}`).show();
 		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
-		renderer.recursiveEntryRender(entryList, renderStack);
-		$(`tr#${sectionClass}s`).after(`<tr class='${sectionClass}'><td colspan='6' class='legendary'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
+		renderer.recursiveEntryRender(entryList, renderStack, sectionLevel);
+		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
 	}
 
 	// add click links for rollables
 	$("#pagecontent #abilityscores td").each(function () {
-		$(this).wrapInner("<span class='roller' data-roll='1d20" + $(this).children(".mod").html() + "'></span>");
+		$(this).wrapInner(`<span class="roller" data-roll="1d20${$(this).children(".mod").html()}" title="${Parser.attAbvToFull($(this).prop("id"))}"></span>`);
 	});
 
 	const isProfDiceMode = $("button#profbonusdice")[0].useDice;
@@ -568,7 +485,7 @@ function loadhash (id) {
 	}
 
 	// inline rollers
-	$("#pagecontent p").each(function () {
+	$("#pagecontent").find("p").each(function () {
 		addNonD20Rollers(this);
 
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -608,19 +525,19 @@ function loadhash (id) {
 			}
 		}));
 	});
-	$("#pagecontent span#hp").each(function () {
-		addNonD20Rollers(this);
+	$("#pagecontent").find("span#hp").each(function () {
+		addNonD20Rollers(this, "Hit Points");
 	});
 
-	function addNonD20Rollers (ele) {
+	function addNonD20Rollers (ele, title) {
 		$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-			const titleMaybe = attemptToGetTitle(ele);
+			const titleMaybe = title || attemptToGetTitle(ele);
 			return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
 		}));
 	}
 
 	function attemptToGetTitle (ele) {
-		let titleMaybe = $(ele.parentElement).find(".name")[0];
+		let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
 		if (titleMaybe !== undefined) {
 			titleMaybe = titleMaybe.innerHTML;
 			if (titleMaybe) {

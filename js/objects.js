@@ -26,10 +26,10 @@ function onJsonLoad (data) {
 	});
 	$(`#objectsList`).append(tempString);
 
-	const list = search({
+	const list = ListUtil.search({
 		valueNames: ["name", "size", "source"],
 		listClass: "objects",
-		sortFunction: listSort
+		sortFunction: SortUtil.listSort
 	});
 
 	initHistory();
@@ -58,4 +58,11 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(obj)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	const imgLink = UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
+	$("th.name").append(`
+		<a href="${imgLink}" target="_blank">
+			<img src="${imgLink}" class="token">
+		</a>`
+	);
 }
