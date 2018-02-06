@@ -81,10 +81,10 @@ function onJsonLoad (data) {
 	for (let i = 0; i < raceList.length; i++) {
 		const race = raceList[i];
 
-		const ability = utils_getAbilityData(race.ability);
-		race._fAbility = getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)); // used for filtering
+		const ability = race.ability ? utils_getAbilityData(race.ability) : {asTextShort: "None"};
+		race._fAbility = race.ability ? getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)) : []; // used for filtering
 		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, "Walk"].filter(it => it) : "Walk";
-		race._fMisc = [race.darkvision ? "Darkvision": null].filter(it => it);
+		race._fMisc = [race.darkvision ? "Darkvision" : null].filter(it => it);
 		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
@@ -172,15 +172,23 @@ function loadhash (id) {
 	const size = Parser.sizeAbvToFull(race.size);
 	$("td#size span").html(size);
 
-	const ability = utils_getAbilityData(race.ability);
+	const ability = race.ability ? utils_getAbilityData(race.ability) : {asText: "None"};
 	$("td#ability span").html(ability.asText);
 
 	$("td#speed span").html(EntryRenderer.race.getSpeedString(race));
 
 	const renderStack = [];
-	const faux = {type: "entries", entries: race.entries};
-
-	renderer.recursiveEntryRender(faux, renderStack, 1, "<tr class='text'><td colspan='6'>", "</td></tr>", true);
+	renderStack.push("<tr class='text'><td colspan='6'>");
+	renderer.recursiveEntryRender({type: "entries", entries: race.entries}, renderStack, 1);
+	renderStack.push("</td></tr>");
+	if (race.npc) {
+		renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
+		renderer.recursiveEntryRender(
+			`{@i Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`
+			, renderStack, 2);
+		renderStack.push(`</section></td></tr>`);
+	}
+	renderStack.push(EntryRenderer.utils.getPageTr(race));
 
 	$('table#pagecontent tbody tr:last').before(renderStack.join(""));
 }
