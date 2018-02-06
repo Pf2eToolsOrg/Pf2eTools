@@ -65,11 +65,13 @@ function onJsonLoad (data) {
 		]
 	});
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
+	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk"]});
 
 	filterBox = initFilterBox(
 		sourceFilter,
 		asiFilter,
-		sizeFilter
+		sizeFilter,
+		speedFilter
 	);
 
 	const racesTable = $("ul.races");
@@ -77,18 +79,9 @@ function onJsonLoad (data) {
 	for (let i = 0; i < raceList.length; i++) {
 		const race = raceList[i];
 
-		/*
-		TODO handle subraces
-		Want the list to be base race names...
-		...but the filters to find subraces?
-
-		merge the base race and the subraces?
-			-straight overwrite? additive subrace -> race?
-			-how to display these?
-		 */
-
 		const ability = utils_getAbilityData(race.ability);
 		race._fAbility = getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)); // used for filtering
+		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, "Walk"].filter(it => it) : "Walk";
 		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
@@ -150,8 +143,9 @@ function onJsonLoad (data) {
 			const rightSource = sourceFilter.toDisplay(f, r.source);
 			const rightAsi = asiFilter.toDisplay(f, r._fAbility);
 			const rightSize = sizeFilter.toDisplay(f, r.size);
+			const rightSpeed = speedFilter.toDisplay(f, r._fSpeed);
 
-			return rightSource && rightAsi && rightSize;
+			return rightSource && rightAsi && rightSize && rightSpeed;
 		})
 	}
 
