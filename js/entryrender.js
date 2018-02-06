@@ -1112,9 +1112,10 @@ EntryRenderer.race = {
 
 	_mergeSubrace: (race) => {
 		if (race.subraces) {
+			const srCopy = JSON.parse(JSON.stringify(race.subraces));
 			const out = [];
 
-			race.subraces.forEach(s => {
+			srCopy.forEach(s => {
 				const cpy = JSON.parse(JSON.stringify(race));
 				delete cpy.subraces;
 
@@ -2104,7 +2105,18 @@ EntryRenderer.hover = {
 				break;
 			}
 			case UrlUtil.PG_RACES: {
-				loadSimple(page, "races.json", "race");
+				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					DataUtil.loadJSON(`data/races.json`, (data) => {
+						const merged = EntryRenderer.race.mergeSubraces(data.race);
+						merged.forEach(race => {
+							const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
+							EntryRenderer.hover._addToCache(page, race.source, raceHash, race)
+						});
+						EntryRenderer.hover._makeWindow();
+					});
+				} else {
+					EntryRenderer.hover._makeWindow();
+				}
 				break;
 			}
 			case UrlUtil.PG_DEITIES: {
@@ -2125,6 +2137,10 @@ EntryRenderer.hover = {
 	_cleanWindows: () => {
 		$(`a.hoverlink`).trigger(`mouseleave`);
 	}
+};
+
+EntryRenderer.dice = {
+	// TODO
 };
 
 /**
