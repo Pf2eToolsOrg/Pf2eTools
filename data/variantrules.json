@@ -26,7 +26,7 @@
 					"type": "entries",
 					"entries": [
 						"This option makes it easier for melee combatants to harry each other with opportunity attacks.",
-						"When a creature makes a melee attack, it can also mark its target. Until the end of the attacker's next turn, any opportunity attack it makes against the marked target has advantage. The opportunity attack doesn't expend the attacker's reaction, but the attacker can't make the attack if anything, such as the incapacitated condition or the shocking grasp spell, is preventing it from taking reactions. The attacker is limited to one opportunity attack per turn."
+						"When a creature makes a melee attack, it can also mark its target. Until the end of the attacker's next turn, any opportunity attack it makes against the marked target has advantage. The opportunity attack doesn't expend the attacker's reaction, but the attacker can't make the attack if anything, such as the {@condition incapacitated} condition or the shocking grasp spell, is preventing it from taking reactions. The attacker is limited to one opportunity attack per turn."
 					]
 				},
 				{
@@ -238,7 +238,7 @@
 					"name": "Fear",
 					"type": "entries",
 					"entries": [
-						"When adventurers confront threats they have no hope of overcoming, you can call for them to make a Wisdom saving throw. Set the DC according to the circumstances. A character who fails the save becomes frightened for 1 minute. The character can repeat the saving throw at the end of each of his or her turns, ending the effect on the character on a successful save."
+						"When adventurers confront threats they have no hope of overcoming, you can call for them to make a Wisdom saving throw. Set the DC according to the circumstances. A character who fails the save becomes {@condition frightened} for 1 minute. The character can repeat the saving throw at the end of each of his or her turns, ending the effect on the character on a successful save."
 					]
 				},
 				{
@@ -706,7 +706,7 @@
 					"rows": [
 						[
 							"1",
-							"{@bold Lose an Eye.} You have disadvantage on Wisdom (Perception) checks that rely on sight and on ranged attack rolls. Magic such as the {@spell regenerate} spell can restore the lost eye. If you have no eyes left after sustaining this injury, you're blinded."
+							"{@bold Lose an Eye.} You have disadvantage on Wisdom (Perception) checks that rely on sight and on ranged attack rolls. Magic such as the {@spell regenerate} spell can restore the lost eye. If you have no eyes left after sustaining this injury, you're {@condition blinded}."
 						],
 						[
 							"2",
@@ -714,11 +714,11 @@
 						],
 						[
 							"3",
-							"{@bold Lose a Foot or Leg.} Your speed on foot is halved, and you must use a cane or crutch to move unless you have a peg leg or other prosthesis. You fall prone after using the Dash action. You have disadvantage on Dexterity checks made to balance. Magic such as the {@spell regenerate} spell can restore the lost appendage."
+							"{@bold Lose a Foot or Leg.} Your speed on foot is halved, and you must use a cane or crutch to move unless you have a peg leg or other prosthesis. You fall {@condition prone} after using the Dash action. You have disadvantage on Dexterity checks made to balance. Magic such as the {@spell regenerate} spell can restore the lost appendage."
 						],
 						[
 							"4",
-							"{@bold Limp.} Your speed on foot is reduced by 5 feet. You must make a DC 10 Dexterity saving throw after using the Dash action. If you fail the save, you fall prone. Magical healing removes the limp."
+							"{@bold Limp.} Your speed on foot is reduced by 5 feet. You must make a DC 10 Dexterity saving throw after using the Dash action. If you fail the save, you fall {@condition prone}. Magical healing removes the limp."
 						],
 						[
 							"5-7",
@@ -903,7 +903,7 @@
 					"type": "table",
 					"caption": "System Shock",
 					"colLabels": [
-						"d20",
+						"d10",
 						"Effect"
 					],
 					"colStyles": [
@@ -921,7 +921,7 @@
 						],
 						[
 							"4-5",
-							"The creature is stunned until the end of its next turn."
+							"The creature is {@condition stunned} until the end of its next turn."
 						],
 						[
 							"6-7",
@@ -1032,7 +1032,7 @@
 					"type": "list",
 					"items": [
 						"All the creatures in the group are surprised.",
-						"The group's leader is reduced to 0 hit points, incapacitated, taken prisoner, or removed from battle.",
+						"The group's leader is reduced to 0 hit points, {@condition incapacitated}, taken prisoner, or removed from battle.",
 						"The group is reduced to half its original size with no losses on the opposing side."
 					]
 				},
@@ -1787,7 +1787,7 @@
 					"type": "entries",
 					"name": "Outer Planes: Psychic Dissonance",
 					"entries": [
-						"Each of the Outer Planes emanates a psychic dissonance that affects visitors of an incompatible alignment\u2014good creatures on the Lower Planes, evil ones on the Upper Planes\u2014if they spend too much time on the plane. You can reflect this dissonance with this optional rule. At the end of a long rest spent on an incompatible plane, a visitor must make a DC 10 Constitution saving throw. On a failed save, the creature gains one level of exhaustion. Incompatibility between lawful and chaotic alignments doesn't have the same effect, so Mechanus and Limbo lack this quality"
+						"Each of the Outer Planes emanates a psychic dissonance that affects visitors of an incompatible alignment\u2014good creatures on the Lower Planes, evil ones on the Upper Planes\u2014if they spend too much time on the plane. You can reflect this dissonance with this optional rule. At the end of a long rest spent on an incompatible plane, a visitor must make a DC 10 Constitution saving throw. On a failed save, the creature gains one level of {@condition exhaustion}. Incompatibility between lawful and chaotic alignments doesn't have the same effect, so Mechanus and Limbo lack this quality"
 					]
 				},
 				{
@@ -1852,7 +1852,7 @@
 					"type": "entries",
 					"name": "Pandemonium: Mad Winds",
 					"entries": [
-						"A visitor must make a DC 10 Wisdom saving throw after each hour spent among the howling winds. On a failed save, the creature gains one level of exhaustion. A creature that reaches six levels of exhaustion while on this plane doesn't die. Instead, the creature gains a random form of indefinite madness, as described in chapter 8, \"Running the Game.\" Finishing a long rest doesn't reduce a creature's exhaustion level unless the creature can somehow escape the maddening winds."
+						"A visitor must make a DC 10 Wisdom saving throw after each hour spent among the howling winds. On a failed save, the creature gains one level of {@condition exhaustion}. A creature that reaches six levels of {@condition exhaustion} while on this plane doesn't die. Instead, the creature gains a random form of indefinite madness, as described in chapter 8, \"Running the Game.\" Finishing a long rest doesn't reduce a creature's {@condition exhaustion} level unless the creature can somehow escape the maddening winds."
 					]
 				},
 				{
@@ -1906,7 +1906,7 @@
 					"type": "entries",
 					"name": "Hades: Vile Transformation",
 					"entries": [
-						"At the end of each long rest taken on the plane, a visitor must make a DC 10 Wisdom saving throw. On a failed save, the creature gains one level of exhaustion, which can't be removed while the creature remains in Hades. If the creature reaches six levels of exhaustion, it doesn't die. Instead, the creature permanently transforms into a larva, whereupon all levels of exhaustion afflicting the creature are removed.",
+						"At the end of each long rest taken on the plane, a visitor must make a DC 10 Wisdom saving throw. On a failed save, the creature gains one level of {@condition exhaustion}, which can't be removed while the creature remains in Hades. If the creature reaches six levels of {@condition exhaustion}, it doesn't die. Instead, the creature permanently transforms into a larva, whereupon all levels of {@condition exhaustion} afflicting the creature are removed.",
 						"A larva is a miserable fiend that retains the facial features of its previous form but has the body of a fat worm. A larva has only a few faint memories of its previous life and the statistics in the {@creature larva|dmg} stat block. Hades is crawling with larvae. Night hags, liches, and rakshasas harvest them for use in vile rituals. Other fiends like to feed on them."
 					]
 				},
@@ -1949,7 +1949,7 @@
 					"type": "entries",
 					"name": "Arcadia: Planar Vitality",
 					"entries": [
-						"While on this plane, creatures can't be frightened or poisoned, and they are immune to disease and poisons."
+						"While on this plane, creatures can't be {@condition frightened} or {@condition poisoned}, and they are immune to disease and poisons."
 					]
 				}
 			],
@@ -2011,7 +2011,7 @@
 					"type": "entries",
 					"entries": [
 						"If you regularly use miniatures, flanking gives combatants a simple way to gain advantage on attack rolls against a common enemy.",
-						"A creature can't flank an enemy that it can't see. A creature also can't flank while it is incapacitated. A Large or larger creature is flanking as long as at least one square or hex of its space qualifies for flanking.",
+						"A creature can't flank an enemy that it can't see. A creature also can't flank while it is {@condition incapacitated}. A Large or larger creature is flanking as long as at least one square or hex of its space qualifies for flanking.",
 						{
 							"name": "Flanking on Squares",
 							"type": "entries",
@@ -2572,7 +2572,7 @@
 				"Each character has a pool of vitality in addition to hit points. A character's maximum vitality equals the character's Constitution score. Whenever a character takes 10 or more damage from an attack or effect, the character loses vitality. Divide the damage by 10 and round down. The result is how much vitality a character loses. In other words, a character loses 1 vitality for every 10 points of damage dealt by an attack or effect.",
 				"If a character suffers a critical hit, double the vitality lost, so that the character loses 2 vitality for every 10 points of damage. If a critical hit deals less than 10 damage, it still reduces vitality by 1.",
 				"Losing vitality causes a character's hit point maximum to drop. Calculate the character's current maximum using vitality instead of Constitution. Thus, as vitality drops, a character's Constitution modifier for determining hit points also drops.",
-				"A character reduced to 0 vitality is immediately reduced to 0 hit points. If a character is reduced to 0 hit points but his or her vitality remains above 0, any additional damage is applied instead to the character's vitality. A character is not unconscious until both hit points and vitality reach 0.",
+				"A character reduced to 0 vitality is immediately reduced to 0 hit points. If a character is reduced to 0 hit points but his or her vitality remains above 0, any additional damage is applied instead to the character's vitality. A character is not {@condition unconscious} until both hit points and vitality reach 0.",
 				"Completing a long rest increases a character's vitality by 1 + the character's Constitution modifier, up to the character's maximum vitality. Effects that restore hit points have no effect on vitality. However, a character with maximum hit points who receives healing instead restores 1 vitality for every 10 points of healing."
 			],
 			"source": "UAVariantRules"
@@ -3482,7 +3482,7 @@
 							"type": "entries",
 							"name": "Creatures Unable to Act",
 							"entries": [
-								"Any creature that is unable to take actions (most likely because it is incapacitated) does not roll initiative. Any effects that such creatures must resolve, such as death saving throws, are resolved at the end of the round."
+								"Any creature that is unable to take actions (most likely because it is {@condition incapacitated}) does not roll initiative. Any effects that such creatures must resolve, such as death saving throws, are resolved at the end of the round."
 							]
 						},
 						{
@@ -3553,7 +3553,7 @@
 			"type": "section",
 			"name": "Falling",
 			"entries": [
-				"Falling from a great height is a significant risk for adventurers and their foes. The rule given in the Player's Handbook is simple: at the end of a fall, you take 1d6 bludgeoning damage for every 10 feet you fell, to a maximum of 20d6. You also land prone, unless you somehow avoid taking damage from the fall. Here are two optional rules that expand on that simple rule.",
+				"Falling from a great height is a significant risk for adventurers and their foes. The rule given in the Player's Handbook is simple: at the end of a fall, you take 1d6 bludgeoning damage for every 10 feet you fell, to a maximum of 20d6. You also land {@condition prone}, unless you somehow avoid taking damage from the fall. Here are two optional rules that expand on that simple rule.",
 				{
 					"type": "entries",
 					"name": "Rate of Falling",
@@ -3566,9 +3566,9 @@
 					"type": "entries",
 					"name": "Flying Creatures and Falling",
 					"entries": [
-						"A flying creature in flight falls if it is knocked prone, if its speed is reduced to 0 feet, or if it otherwise loses the ability to move, unless it can hover or it is being held aloft by magic, such as the fly spell.",
-						"If you'd like a flying creature to have a better chance of surviving a fall than a non-flying creature does, use this rule: subtract the creature's current flying speed from the distance it fell before calculating falling damage. This rule is helpful to a flier that is knocked prone but is still conscious and has a current flying speed that is greater than 0 feet. The rule is designed to simulate the creature flapping its wings furiously or taking similar measures to slow the velocity of its fall.",
-						"If you use the rule for rate of falling in the previous section, a flying creature descends 500 feet on the turn when it falls, just as other creatures do. But if that creature starts any of its later turns still falling and is prone, it can halt the fall on its turn by spending half its flying speed to counter the prone condition (as if it were standing up in midair)."
+						"A flying creature in flight falls if it is knocked {@condition prone}, if its speed is reduced to 0 feet, or if it otherwise loses the ability to move, unless it can hover or it is being held aloft by magic, such as the fly spell.",
+						"If you'd like a flying creature to have a better chance of surviving a fall than a non-flying creature does, use this rule: subtract the creature's current flying speed from the distance it fell before calculating falling damage. This rule is helpful to a flier that is knocked {@condition prone} but is still conscious and has a current flying speed that is greater than 0 feet. The rule is designed to simulate the creature flapping its wings furiously or taking similar measures to slow the velocity of its fall.",
+						"If you use the rule for rate of falling in the previous section, a flying creature descends 500 feet on the turn when it falls, just as other creatures do. But if that creature starts any of its later turns still falling and is {@condition prone}, it can halt the fall on its turn by spending half its flying speed to counter the {@condition prone} condition (as if it were standing up in midair)."
 					]
 				}
 			],
@@ -3578,7 +3578,7 @@
 			"type": "section",
 			"name": "Sleep",
 			"entries": [
-				"Just as in the real world, D&D characters spend many hours sleeping, most often as part of a long rest. Most monsters also need to sleep. While a creature sleeps, it is subjected to the unconscious condition. Here are a few rules that expand on that basic fact.",
+				"Just as in the real world, D&D characters spend many hours sleeping, most often as part of a long rest. Most monsters also need to sleep. While a creature sleeps, it is subjected to the {@condition unconscious} condition. Here are a few rules that expand on that basic fact.",
 				{
 					"type": "entries",
 					"name": "Waking Someone",
@@ -3592,7 +3592,7 @@
 					"name": "Sleeping in Armor",
 					"entries": [
 						"Sleeping in light armor has no adverse effect on the wearer, but sleeping in medium or heavy armor makes it difficult to recover fully during a long rest.",
-						"When you finish a long rest during which you slept in medium or heavy armor, you regain only one quarter of your spent Hit Dice (minimum of one die). If you have any levels of exhaustion, the rest doesn't reduce your exhaustion level."
+						"When you finish a long rest during which you slept in medium or heavy armor, you regain only one quarter of your spent Hit Dice (minimum of one die). If you have any levels of {@condition exhaustion}, the rest doesn't reduce your {@condition exhaustion} level."
 					]
 				},
 				{
@@ -3600,8 +3600,8 @@
 					"name": "Going without a Long Rest",
 					"entries": [
 						"A long rest is never mandatory, but going without sleep does have its consequences. If you want to account for the effects of sleep deprivation on characters and creatures, use these rules.",
-						"Whenever you end a 24-hour period without finishing a long rest, you must succeed on a DC 10 Constitution saving throw or suffer one level of exhaustion.",
-						"It becomes harder to fight off exhaustion if you stay awake for multiple days. After the first 24 hours, the DC increases by 5 for each consecutive 24-hour period without a long rest. The DC resets to 10 when you finish a long rest."
+						"Whenever you end a 24-hour period without finishing a long rest, you must succeed on a DC 10 Constitution saving throw or suffer one level of {@condition exhaustion}.",
+						"It becomes harder to fight off {@condition exhaustion} if you stay awake for multiple days. After the first 24 hours, the DC increases by 5 for each consecutive 24-hour period without a long rest. The DC resets to 10 when you finish a long rest."
 					]
 				}
 			],
@@ -4089,7 +4089,7 @@
 									"type": "entries",
 									"name": "Maintain Shoes",
 									"entries": [
-										"As part of a long rest, you can repair your companions' shoes. For the next 24 hours, up to six creatures of your choice who wear shoes you worked on can travel up to 10 hours a day without making saving throws to avoid exhaustion."
+										"As part of a long rest, you can repair your companions' shoes. For the next 24 hours, up to six creatures of your choice who wear shoes you worked on can travel up to 10 hours a day without making saving throws to avoid {@condition exhaustion}."
 									]
 								},
 								{
@@ -4947,7 +4947,7 @@
 									"type": "entries",
 									"name": "Investigation, Perception",
 									"entries": [
-										"Your knowledge of poisons has taught you to handle those substances carefully, giving you an edge when you inspect poisoned objects or try to extract clues from events that involve poison."
+										"Your knowledge of poisons has taught you to handle those substances carefully, giving you an edge when you inspect {@condition poisoned} objects or try to extract clues from events that involve poison."
 									]
 								},
 								{
@@ -4984,7 +4984,7 @@
 									],
 									"rows": [
 										[
-											"Spot a poisoned object",
+											"Spot a {@condition poisoned} object",
 											"10"
 										],
 										[
@@ -7507,16 +7507,16 @@
 								"col-xs-10"
 							],
 							"rows": [
-								["01-20", "The character retreats into his or her mind and becomes paralyzed. The effect ends if the character takes any damage."],
-								["21-31", "The character becomes incapacitated and spends the duration screaming, laughing, or weeping."],
-								["31-40", "The character becomes frightened and must use his or her action and movement each round to flee from the source of the fear."],
+								["01-20", "The character retreats into his or her mind and becomes {@condition paralyzed}. The effect ends if the character takes any damage."],
+								["21-31", "The character becomes {@condition incapacitated} and spends the duration screaming, laughing, or weeping."],
+								["31-40", "The character becomes {@condition frightened} and must use his or her action and movement each round to flee from the source of the fear."],
 								["41-50", "The character begins babbling and is incapable of normal speech or spellcasting."],
 								["51-60", "The character must use his or her action each round to attack the nearest creature."],
 								["61-70", "The character experiences vivid hallucinations and has disadvantage on ability checks."],
 								["71-75", "The character does whatever anyone tells him or her to do that isn't obviously self-destructive."],
 								["76-80", "The character experiences an overpowering urge to eat something strange such as dirt, slime, or offal."],
-								["81-90", "The character is stunned."],
-								["91-100", "The character falls unconscious."]
+								["81-90", "The character is {@condition stunned}."],
+								["91-100", "The character falls {@condition unconscious}."]
 							]
 						},
 						{
@@ -7541,7 +7541,7 @@
 								["76-85", "The character suffers from partial amnesia. The character knows who he or she is and retains racial traits and class features, but doesn't recognize other people or remember anything that happened before the madness took effect."],
 								["86-90", "Whenever the character takes damage, he or she must succeed on a DC 15 Wisdom saving throw or be affected as though he or she failed a saving throw against the {@spell confusion} spell. The confusion effect lasts for 1 minute."],
 								["91-95", "The character loses the ability to speak."],
-								["96-100", "The character falls unconscious. No amount of jostling or damage can wake the character."]
+								["96-100", "The character falls {@condition unconscious}. No amount of jostling or damage can wake the character."]
 							]
 						},
 						{

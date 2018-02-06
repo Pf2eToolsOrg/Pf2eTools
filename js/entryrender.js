@@ -1093,11 +1093,62 @@ EntryRenderer.race = {
 		let speed;
 		if (race.speed.walk) {
 			speed = race.speed.walk + "ft.";
-			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
+			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`;
+			if (race.speed.fly) speed += `, fly ${race.speed.fly}ft.`;
+			if (race.speed.swim) speed += `, swim ${race.speed.swim}ft.`;
 		} else {
 			speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
 		}
 		return speed;
+	},
+
+	mergeSubraces: (races) => {
+		const out = [];
+		races.forEach(r => {
+			Array.prototype.push.apply(out, EntryRenderer.race._mergeSubrace(r));
+		});
+		return out;
+	},
+
+	_mergeSubrace: (race) => {
+		if (race.subraces) {
+			const out = [];
+
+			race.subraces.forEach(s => {
+				const cpy = JSON.parse(JSON.stringify(race));
+				delete cpy.subraces;
+
+				// merge names, abilities, entries
+				if (s.name) {
+					cpy.name = `${cpy.name} (${s.name})`;
+					delete s.name;
+				}
+				if (s.ability) {
+					if (!cpy.ability) cpy.ability = {};
+					cpy.ability = Object.assign(cpy.ability, s.ability);
+					delete s.ability;
+				}
+				if (s.entries) {
+					s.entries.forEach(e => {
+						if (e.data && e.data.overwrite) {
+							const toOverwrite = cpy.entries.findIndex(it => it.name.toLowerCase().trim() === e.data.overwrite.toLowerCase().trim());
+							cpy.entries[toOverwrite] = e;
+						} else {
+							cpy.entries.push(e);
+						}
+					});
+					delete s.entries;
+				}
+
+				// overwrite everything else
+				Object.assign(cpy, s);
+
+				out.push(cpy);
+			});
+			return out;
+		} else {
+			return [race];
+		}
 	}
 };
 

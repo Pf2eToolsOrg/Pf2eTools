@@ -1,0 +1,120 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+
+	"definitions": {
+		"speed": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"walk": {
+							"type": "integer"
+						},
+						"climb": {
+							"type": "integer"
+						},
+						"fly": {
+							"type": "integer"
+						},
+						"swim": {
+							"type": "integer"
+						}
+					},
+					"required": ["walk"],
+					"additionalProperties": false
+				},
+				{
+					"type": "integer"
+				},
+				{
+					"type": {
+						"const": "Varies"
+					}
+				}
+			]
+		}
+	},
+
+	"properties": {
+		"race": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"ability": {
+						"type": "object"
+					},
+					"speed": {
+						"$ref": "#/definitions/speed"
+					},
+					"size": {
+						"type": "string",
+						"enum": ["M", "S", "V"]
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"subraces": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								},
+								"ability": {
+									"type": "object"
+								},
+								"speed": {
+									"$ref": "#/definitions/speed"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "/Entry"
+									}
+								},
+								"darkvision": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"darkvision": {
+						"type": "integer"
+					},
+					"npc": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"page"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"additionalProperties": false
+}

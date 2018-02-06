@@ -1563,10 +1563,10 @@
 					]
 				},
 				{
-				    "name": "Familiar",
-				    "entries": [
+					"name": "Familiar",
+					"entries": [
 						"With the DM's permission, a person who casts the find familiar spell can choose to conjure a tressym in­ stead of a normal cat."
-				    ]
+					]
 				}
 			],
 			"action": [
@@ -2167,6 +2167,709 @@
 							"spells": [
 								"{@spell foresight}",
 								"{@spell power word kill}"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Chief Guh",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "chaotic evil",
+			"ac": "9 (natural armor)",
+			"hp": "160 (10d12+40)",
+			"speed": "40 ft.",
+			"str": 21,
+			"dex": 1,
+			"con": 19,
+			"int": 5,
+			"wis": 9,
+			"cha": 6,
+			"skill": {
+				"perception": "+2"
+			},
+			"passive": 12,
+			"languages": "Common, Giant, Goblin",
+			"cr": "5",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giant makes two greatclub attacks or two unarmed attacks."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 18 (3d8+5) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Unarmed Attack",
+					"entries": [
+						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 12 (3d4+5) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"Ranged Weapon Attack: +8 to hit, range 60/240 ft., one target. Hit: 21 (3d10+5) bludgeoning damage."
+					]
+				}
+			],
+			"page": 140
+		},
+		{
+			"name": "Thane Kayalithica",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "neutral",
+			"ac": "17 (natural armor)",
+			"hp": "170 (11d12+55)",
+			"speed": "40 ft.",
+			"str": 23,
+			"dex": 15,
+			"con": 20,
+			"int": 10,
+			"wis": 12,
+			"cha": 14,
+			"save": "Dex +5, Con +8, Wis +4",
+			"skill": {
+				"athletics": "+12",
+				"perception": "+4"
+			},
+			"senses": "darkvision 60 ft.",
+			"passive": 14,
+			"languages": "Giant",
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Stone Camouflage",
+					"entries": [
+						"The giant has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+					]
+				},
+				{
+					"name": "Olach Morrah",
+					"entries": [
+						"The giant meditates for 1 hour, during which time it can do nothing else. At the end of the hour, provided the giant’s meditation has been uninterrupted, it becomes petrified for 8 hours. At the end of this time, the giant is no longer petrified and gains tremorsense out to a range of 30 feet, as well as a measure of innate spellcasting ability based on Wisdom. For the next 24 hours, it can innately cast the following spells, requiring no material components:",
+						"3/day: meld into stone, stone shape",
+						"1/day: stoneskin, time stop"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Fling",
+					"entries": [
+						"The giant tries to throw a Small or Medium creature within 10 feet of it. The target must succeed on a DC 17 Dexterity saving throw or be hurled up to 60 feet horizontally in a direction of the giant's choice. and land prone, taking 1d6 bludgeoning damage for every 10 feet it was thrown."
+					]
+				},
+				{
+					"name": "Rolling Rock",
+					"entries": [
+						"The giant sends a rock tumbling along the ground in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 17 Dexterity saving throw, taking 22 (3d10+6) bludgeoning damage and falling prone on a failed save"
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giant makes two adamantine greatclub attacks."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"Melee Weapon Attack: +9 to hit, reach 15 ft., one target. Hit: 19 (3d8+6) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"Ranged Weapon Attack: +9 to hit, range 60/240 ft., one target. Hit: 28 (4d10+6) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked prone."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Rock Catching",
+					"entries": [
+						"If a rock or similar object is hurled at the giant, the giant can, with a successful DC 10 Dexterity saving throw, catch the missile and take no bludgeoning damage from it."
+					]
+				}
+			],
+			"page": 153
+		},
+		{
+			"name": "Jarl Storvald",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "neutral evil",
+			"ac": "15 (patchwork armor)",
+			"hp": "189 (12d12+60)",
+			"speed": "40 ft.",
+			"str": 23,
+			"dex": 9,
+			"con": 21,
+			"int": 9,
+			"wis": 16,
+			"cha": 16,
+			"save": "Con +8, Wis +3, Cha +4",
+			"skill": {
+				"athletics": "+9",
+				"perception": "+3"
+			},
+			"immune": "cold",
+			"passive": 13,
+			"languages": "Common, Giant, Giant Owl",
+			"cr": "8",
+			"action": [
+				{
+					"name": "Weighted Net",
+					"entries": [
+						"Ranged Weapon Attack: +5 to hit, ranged 20/60 ft., one Small, Medium, or Large creature. Hit: The target is restrained until it escapes the net. Any creature can use its action to make a DC 17 Strength check to free itself or another creature in the net, ending the effect on a success. Dealing 15 slashing damage to the net (AC 12) destroys the net and frees the target."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giant makes two greataxe attacks."
+					]
+				},
+				{
+					"name": "Greataxe",
+					"entries": [
+						"Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 25 (3d12+6) slashing damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"Ranged Weapon Attack: +9 to hit, range 60/240 ft., one target. Hit: 28 (4d10+6) bludgeoning damage."
+					]
+				}
+			],
+			"page": 165,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Jarl Storvald is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks). He knows the following ranger spells:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell hunter's mark|PHB}",
+								"{@spell jump|PHB}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell locate animals or plants|PHB}",
+								"{@spell locate object|PHB}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell water breathing|PHB}",
+								"{@spell water walk|PHB}"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Duke Zalto",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "lawful evil",
+			"ac": "18 (plate)",
+			"hp": "221 (13d12+78)",
+			"speed": "30 ft.",
+			"str": 25,
+			"dex": 9,
+			"con": 23,
+			"int": 10,
+			"wis": 14,
+			"cha": 13,
+			"save": "Dex +3, Con +10, Cha +5",
+			"skill": {
+				"athletics": "+11",
+				"perception": "+6"
+			},
+			"immune": "fire",
+			"resist": "lightning",
+			"passive": 16,
+			"languages": "Common, Elvish, and Giant",
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"Zalto deals double damage to objects and structures."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Zalto wears a ring of lightning resistance."
+					]
+				},
+				{
+					"name": "Tackle",
+					"entries": [
+						"When Zalto enters any enemy’s space for the first time on a turn, the enemy must succeed on a DC 19 Strength saving throw or be knocked prone."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Zalto makes two maul attacks."
+					]
+				},
+				{
+					"name": "Greatsword",
+					"entries": [
+						"Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 28 (6d6+7) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"Ranged Weapon Attack: +11 to hit, range 60/240 ft., one target. Hit: 29 (4d10+7) bludgeoning damage."
+					]
+				}
+			],
+			"page": 184
+		},
+		{
+			"name": "Countess Sansuri",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "neutral evil",
+			"ac": "14 (natural armor)",
+			"hp": "200 (16d12+96)",
+			"speed": "40 ft.",
+			"str": 27,
+			"dex": 10,
+			"con": 22,
+			"int": 16,
+			"wis": 16,
+			"cha": 16,
+			"save": "Con +10, Wis +7, Cha +7",
+			"skill": {
+				"insight": "+7",
+				"perception": "+7"
+			},
+			"passive": 17,
+			"languages": "Auran, Common, and Giant",
+			"cr": "11",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"Sansuri has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Fling",
+					"entries": [
+						"Sansuri tries to throw a Small or Medium creature within 10 feet of her. The target must succeed on a DC 20 Dexterity saving throw or be hurled up to 60 feet horizontally in a direction of Sansuri's choice and land prone, taking 1d8 bludgeoning damage for every 10 feet it was thrown."
+					]
+				},
+				{
+					"name": "Wind Aura",
+					"entries": [
+						"A magical aura of wind surrounds Sansuri. The aura is a 10-foot-radius sphere that lasts as long as Sansuri maintains concentration on it (as if concentrating on a spell). While the aura is in effect, Sansuri gains a +2 bonus to its AC against ranged weapon attacks, and all open flames within the aura are extinguished unless they are magical."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Sansuri makes two spear attacks."
+					]
+				},
+				{
+					"name": "Morningstar",
+					"entries": [
+						"Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 21 (3d8+8) piercing damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"Ranged Weapon Attack: +12 to hit, range 60/240 ft., one target. Hit: 30 (4d10+8) bludgeoning damage."
+					]
+				}
+			],
+			"page": 192,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Sansuri is a 13th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 15; {@hit 7} to hit with spell attacks). She has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}", "{@spell mending}", "{@spell message}", "{@spell prestidigitation}", "{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell identify}", "{@spell magic missile}", "{@spell shield}", "{@spell unseen servant}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell arcane lock}", "{@spell gust of wind}", "{@spell invisibility}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell haste}", "{@spell hypnotic pattern}", "{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell ice storm}", "{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell Bigby's hand|PHB}", "{@spell wall of force}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell Mordenkainen's sword}"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "King Hekaton",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "chaotic good",
+			"ac": "16 (scale mail)",
+			"hp": "330 (20d12+100)",
+			"speed": "50 ft., swim 50 ft.",
+			"str": 29,
+			"dex": 14,
+			"con": 20,
+			"int": 16,
+			"wis": 18,
+			"cha": 18,
+			"save": "Str +14, Con +10, Wis +9, Cha +9",
+			"skill": {
+				"arcana": "+8",
+				"athletics": "+14",
+				"history": "+8",
+				"perception": "+9"
+			},
+			"resist": "cold",
+			"immune": "lightning, thunder",
+			"passive": 19,
+			"languages": "Common, Giant",
+			"cr": "13",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Hekaton can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Hekaton makes two broken chain attacks."
+					]
+				},
+				{
+					"name": "Broken Chain",
+					"entries": [
+						"Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 18 (3d6+9) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Ballista",
+					"entries": [
+						"Ranged Weapon Attack: +6 to hit, range 120/480 ft., one target. Hit: 18 (3d10+2) piercing damage."
+					]
+				},
+				{
+					"name": "Lightning Strike (Recharge 5\u20146)",
+					"entries": [
+						"Hekaton hurls a magical lightning bolt at a point he can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 (12d8) lightning damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Thunderous Stomp (Recharge 6)",
+					"entries": [
+						"Hekaton stomps the ground, triggering a thunderclap. All other creatures within 15 feet of him must succeed on a DC 17 Constitution saving throw or take 33 (6d10) thunder damage and be deafened until the start of Hekaton’s next turn. On a successful save, a creature takes half as much damage and isn’t deafened. The thunderclap can be heard out to a range of 1,200 feet."
+					]
+				}
+			],
+			"page": 222,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The giant's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell feather fall}",
+						"{@spell levitate}",
+						"{@spell light}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell control weather}",
+							"{@spell water breathing}"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Harshnag",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "chaotic good",
+			"ac": "21 (+3 plate armor)",
+			"hp": "204 (12d12+60)",
+			"speed": "40 ft.",
+			"str": 23,
+			"dex": 9,
+			"con": 21,
+			"int": 9,
+			"wis": 10,
+			"cha": 12,
+			"save": "Con +8, Wis +3, Cha +4",
+			"skill": {
+				"athletics": "+9",
+				"perception": "+3"
+			},
+			"immune": "cold",
+			"passive": 13,
+			"languages": "Common, Giant",
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Legendary Resistance (1/Day)",
+					"entries": [
+						"If Harshnag fails a saving throw, he can choose to succeed instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Weighted Net",
+					"entries": [
+						"Ranged Weapon Attack: +5 to hit, ranged 20/60 ft., one Small, Medium, or Large creature. Hit: The target is restrained until it escapes the net. Any creature can use its action to make a DC 17 Strength check to free itself or another creature in the net, ending the effect on a success. Dealing 15 slashing damage to the net (AC 12) destroys the net and frees the target."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giant makes two greataxe attacks."
+					]
+				},
+				{
+					"name": "Gurt's greataxe",
+					"entries": [
+						"Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 26 (3d12+7) slashing damage, or 39 (5d12+7) slashing damage if the target is human."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"Ranged Weapon Attack: +9 to hit, range 60/240 ft., one target. Hit: 28 (4d10+6) bludgeoning damage."
+					]
+				}
+			],
+			"page": 120
+		},
+		{
+			"name": "Zaltember",
+			"size": "L",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "lawful evil",
+			"ac": "13 (chain shirt)",
+			"hp": "30 (4d10+8)",
+			"speed": "30 ft.",
+			"str": 17,
+			"dex": 10,
+			"con": 14,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"immune": "fire",
+			"passive": 10,
+			"languages": "Common, Giant",
+			"cr": "1",
+			"action": [
+				{
+					"name": "Battleaxe",
+					"entries": [
+						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) slashing damage, or 14 (2d10+3) slashing damage if used with two hands."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 10 (2d6+3) piercing damage."
+					]
+				}
+			],
+			"page": 180
+		},
+		{
+			"name": "Zephyros",
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": "neutral good",
+			"ac": "14 (natural armor)",
+			"hp": "200 (16d12+96)",
+			"speed": "40 ft.",
+			"str": 27,
+			"dex": 10,
+			"con": 22,
+			"int": 18,
+			"wis": 16,
+			"cha": 16,
+			"save": "Con +10, Wis +7, Cha +7",
+			"skill": {
+				"insight": "+7",
+				"perception": "+7"
+			},
+			"passive": 17,
+			"languages": "Common, Giant",
+			"cr": "13",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"Zephyros has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Fling",
+					"entries": [
+						"Zephyros tries to throw a Small or Medium creature within 10 feet of it. The target must succeed on a DC 20 Dexterity saving throw or be hurled up to 60 feet horizontally in a direction of Zephyros's choice and land prone, taking 1d8 bludgeoning damage for every 10 feet it was thrown."
+					]
+				},
+				{
+					"name": "Wind Aura",
+					"entries": [
+						"A magical aura of wind surrounds Zephyros. The aura is a 10-foot-radius sphere that lasts as long as he maintains concentration on it (as if concentrating on a spell). While the aura is in effect, Zephyros gains a +2 bonus to his AC against ranged weapon attacks, and all open flames within the aura are extinguished unless they are magical."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Zephyros makes two staff attacks."
+					]
+				},
+				{
+					"name": "Staff of the Magi",
+					"entries": [
+						"Melee Weapon Attack: +15 to hit, reach 10 ft., one target. Hit: 20 (3d6+10) bludgeoning damage, or 23 (3d8+10) bludgeoning damage if used with two hands. This damage is considered magical.."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"Ranged Weapon Attack: +12 to hit, range 60/240 ft., one target. Hit: 30 (4d10+8) bludgeoning damage."
+					]
+				}
+			],
+			"page": 33,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Zephyros is a 12th-level spellcaster. his spellcasting ability is Intelligence (spell save DC 17; {@hit 11} to hit with spell attacks). He has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mending}", "{@spell message}", "{@spell prestidigitation}", "{@spell ray of frost}", "{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person|PHB}", "{@spell comprehend languages|PHB}", "{@spell magic missile|PHB}", "{@spell shield|PHB}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell crown of madness|PHB}", "{@spell gust of wind|PHB}", "{@spell levitate|PHB}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell nondetection|PHB}", "{@spell protection from energy|PHB}", "{@spell tongues|PHB}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell conjure minor elementals|PHB}", "{@spell greater invisibility|PHB}", "{@spell Otiluke's resilient sphere|PHB}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell cone of cold|PHB}", "{@spell contact other plane|PHB}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell mass suggestion}"
 							]
 						}
 					}
