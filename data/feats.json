@@ -18,7 +18,7 @@
 				{
 					"type": "list",
 					"items": [
-						"As a bonus action, you can cause small barbs to protrude all over your body or cause them to retract. At the start of each of your turns while the barbs are out, you deal 1d6 piercing damage to any creature grappling you or any creature grappled by you.",
+						"As a bonus action, you can cause small barbs to protrude all over your body or cause them to retract. At the start of each of your turns while the barbs are out, you deal 1d6 piercing damage to any creature grappling you or any creature {@condition grappled} by you.",
 						"You gain proficiency in the {@skill Intimidation} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it."
 					]
 				}
@@ -95,7 +95,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Instead of exhaling destructive energy, you can roar and expend a use of your breath weapon to force each creature of your choice within 30 feet of you to make a Wisdom saving throw (DC 8 + your proficiency bonus + your Charisma modifier). A target automatically succeeds if it can't hear or see you. On a failed save, a target becomes frightened for 1 minute. If the frightened target takes any damage, it can repeat the saving throw, ending the effect on itself on a success."
+						"Instead of exhaling destructive energy, you can roar and expend a use of your breath weapon to force each creature of your choice within 30 feet of you to make a Wisdom saving throw (DC 8 + your proficiency bonus + your Charisma modifier). A target automatically succeeds if it can't hear or see you. On a failed save, a target becomes {@condition frightened} for 1 minute. If the {@condition frightened} target takes any damage, it can repeat the saving throw, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -280,7 +280,7 @@
 				{
 					"type": "list",
 					"items": [
-						"When you take damage, you can use a reaction to magically become invisible until the end of your next turn or until you attack, deal damage, or force someone to make a saving throw. Once you use this ability, you can't do so again until you finish a short or long rest."
+						"When you take damage, you can use a reaction to magically become {@condition invisible} until the end of your next turn or until you attack, deal damage, or force someone to make a saving throw. Once you use this ability, you can't do so again until you finish a short or long rest."
 					]
 				}
 			],
@@ -444,7 +444,7 @@
 					"type": "list",
 					"items": [
 						"You have resistance to cold and poison damage.",
-						"You have advantage on saving throws against being poisoned."
+						"You have advantage on saving throws against being {@condition poisoned}."
 					]
 				}
 			],
@@ -792,7 +792,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency in the {@skill Persuasion} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.",
-						"If you spend 1 minute talking to someone who can understand what you say, you can make a Charisma ({@skill Persuasion}) check contested by the creature's Wisdom ({@skill Insight}) check. If you or your companions are fighting the creature, your check automatically fails. If your check succeeds, the target is charmed by you as long as it remains within 60 feet of you and for 1 minute thereafter."
+						"If you spend 1 minute talking to someone who can understand what you say, you can make a Charisma ({@skill Persuasion}) check contested by the creature's Wisdom ({@skill Insight}) check. If you or your companions are fighting the creature, your check automatically fails. If your check succeeds, the target is {@condition charmed} by you as long as it remains within 60 feet of you and for 1 minute thereafter."
 					]
 				}
 			],
@@ -882,7 +882,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency in the {@skill Intimidation} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.",
-						"When you take the Attack action on your turn, you can replace one attack with an attempt to demoralize one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma ({@skill Intimidation}) check contested by the target's Wisdom ({@skill Insight}) check. If your check succeeds, the target is frightened until the end of your next turn. If your check fails, the target can't be frightened by you in this way for 1 hour."
+						"When you take the Attack action on your turn, you can replace one attack with an attempt to demoralize one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma ({@skill Intimidation}) check contested by the target's Wisdom ({@skill Insight}) check. If your check succeeds, the target is {@condition frightened} until the end of your next turn. If your check fails, the target can't be {@condition frightened} by you in this way for 1 hour."
 					]
 				}
 			],
@@ -1060,7 +1060,7 @@
 					"type": "list",
 					"items": [
 						"You gain a +1 bonus to attack rolls you make with the weapon.",
-						"Whenever you have advantage on a melee attack roll you make with the weapon and hit, you can knock the target prone if the lower of the two d20 rolls would also hit the target.",
+						"Whenever you have advantage on a melee attack roll you make with the weapon and hit, you can knock the target {@condition prone} if the lower of the two d20 rolls would also hit the target.",
 						"Whenever you have disadvantage on a melee attack roll you make with the weapon, the target takes bludgeoning damage equal to your Strength modifier (minimum of 0) if the attack misses but the higher of the two d20 rolls would have hit.",
 						"If you use the Help action to aid an ally's melee attack while you're wielding the weapon, you knock the target's shield aside momentarily. In addition to the ally gaining advantage on the attack roll, the ally gains a +2 bonus to the roll if the target is using a shield."
 					]
@@ -1078,7 +1078,7 @@
 					"items": [
 						"You gain a +1 bonus to attack rolls you make with a flail.",
 						"As a bonus action on your turn, you can prepare yourself to extend your flail to sweep over targets' shields. Until the end of this turn, your attack rolls with a flail gain a +2 bonus against any target using a shield.",
-						"When you hit with an opportunity attack using a flail, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked prone."
+						"When you hit with an opportunity attack using a flail, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked {@condition prone}."
 					]
 				}
 			]
@@ -1146,7 +1146,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency with cook's utensils. If you are already proficient with them, you add double your proficiency bonus to checks you make with them.",
-						"As an action, you can inspect a drink or plate of food within 5 feet of you and determine whether it is poisoned, provided that you can see and smell it.",
+						"As an action, you can inspect a drink or plate of food within 5 feet of you and determine whether it is {@condition poisoned}, provided that you can see and smell it.",
 						"During a long rest, you can prepare and serve a meal that helps you and your allies recover from the rigors of adventuring, provided you have suitable food, cook's utensils, and other supplies on hand. The meal serves up to six people, and each person who eats it regains two additional Hit Dice at the end of the long rest. In addition, those who partake of the meal have advantage on Constitution saving throws against disease for the next 24 hours."
 					]
 				}
@@ -1216,7 +1216,7 @@
 				{
 					"type": "list",
 					"items": [
-						"When you are prone, standing up uses only 5 feet of your movement.",
+						"When you are {@condition prone}, standing up uses only 5 feet of your movement.",
 						"Climbing doesn't cost you extra movement.",
 						"You can make a running long jump or a running high jump after moving only 5 feet on foot, rather than 10 feet."
 					]
@@ -1830,7 +1830,7 @@
 					"type": "list",
 					"items": [
 						"You have advantage on attack rolls against a creature you are grappling.",
-						"You can use your action to try to pin a creature grappled by you. To do so, make another grapple check. If you succeed, you and the creature are both restrained until the grapple ends."
+						"You can use your action to try to pin a creature {@condition grappled} by you. To do so, make another grapple check. If you succeed, you and the creature are both {@condition restrained} until the grapple ends."
 					]
 				}
 			]
@@ -2127,7 +2127,7 @@
 			"source": "PHB",
 			"page": 168,
 			"entries": [
-				"You are a dangerous foe to face while mounted. While you are mounted and aren't incapacitated, you gain the following benefits:",
+				"You are a dangerous foe to face while mounted. While you are mounted and aren't {@condition incapacitated}, you gain the following benefits:",
 				{
 					"type": "list",
 					"items": [
@@ -2281,7 +2281,7 @@
 					"type": "list",
 					"items": [
 						"If you take the Attack action on your turn, you can use a bonus action to try to shove a creature within 5 feet of you with your shield.",
-						"If you aren't incapacitated, you can add your shield's AC bonus to any Dexterity saving throw you make against a spell or other harmful effect that targets only you.",
+						"If you aren't {@condition incapacitated}, you can add your shield's AC bonus to any Dexterity saving throw you make against a spell or other harmful effect that targets only you.",
 						"If you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you can use your reaction to take no damage if you succeed on the saving throw, interposing your shield between yourself and the source of the effect."
 					]
 				}
@@ -2540,7 +2540,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Instead of exhaling destructive energy, you can expend a use of your Breath Weapon trait to roar, forcing each creature of your choice within 30 feet of you to make a Wisdom saving throw (DC 8 + your proficiency bonus + your Charisma modifier). A target automatically succeeds on the save if it can't hear or see you. On a failed save, a target becomes frightened of you for 1 minute. If the frightened target takes any damage, it can repeat the saving throw, ending the effect on itself on a success."
+						"Instead of exhaling destructive energy, you can expend a use of your Breath Weapon trait to roar, forcing each creature of your choice within 30 feet of you to make a Wisdom saving throw (DC 8 + your proficiency bonus + your Charisma modifier). A target automatically succeeds on the save if it can't hear or see you. On a failed save, a target becomes {@condition frightened} of you for 1 minute. If the {@condition frightened} target takes any damage, it can repeat the saving throw, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -2800,7 +2800,7 @@
 					"type": "list",
 					"items": [
 						"You have resistance to cold and poison damage.",
-						"You have advantage on saving throws against being poisoned."
+						"You have advantage on saving throws against being {@condition poisoned}."
 					]
 				}
 			],
@@ -2931,7 +2931,7 @@
 					"items": [
 						"Increase your walking speed by 5 feet.",
 						"You gain proficiency in the {@skill Acrobatics} or {@skill Athletics} skill (your choice).",
-						"You have advantage on any Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check you make to escape from being grappled."
+						"You have advantage on any Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check you make to escape from being {@condition grappled}."
 					]
 				}
 			],
