@@ -19,22 +19,6 @@
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<style>
-		@media (max-height: 700px) {
-			.viewport-wrapper {
-				bottom: auto;
-			}
-
-			.view-col-wrapper {
-				flex-direction: column;
-				max-height: none;
-				height: auto;
-			}
-
-			ul.list {
-				max-height: 20em;
-			}
-		}
-
 		ul.list {
 			height: initial;
 			max-height: 100%;
@@ -48,6 +32,22 @@
 
 		h3.ele-mundane {
 			margin-top: 5px;
+		}
+
+		@media (max-device-height: 700px) {
+			.viewport-wrapper {
+				bottom: auto;
+			}
+
+			.view-col-wrapper {
+				flex-direction: column;
+				max-height: none;
+				height: auto;
+			}
+
+			ul.list {
+				max-height: 20em;
+			}
 		}
 	</style>
 </head>
