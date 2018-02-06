@@ -66,7 +66,13 @@ function onJsonLoad (data) {
 	});
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk"]});
-	const miscFilter = new Filter({header: "Miscellaneous", items: ["Darkvision"]});
+	const miscFilter = new Filter({
+		header: "Miscellaneous",
+		items: ["Darkvision", "NPC Race"],
+		deselFn: (it) => {
+			return it === "NPC Race";
+		}
+	});
 
 	filterBox = initFilterBox(
 		sourceFilter,
@@ -84,7 +90,7 @@ function onJsonLoad (data) {
 		const ability = race.ability ? utils_getAbilityData(race.ability) : {asTextShort: "None"};
 		race._fAbility = race.ability ? getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)) : []; // used for filtering
 		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, "Walk"].filter(it => it) : "Walk";
-		race._fMisc = [race.darkvision ? "Darkvision" : null].filter(it => it);
+		race._fMisc = [race.darkvision ? "Darkvision" : null, race.npc ? "NPC Race" : null].filter(it => it);
 		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
