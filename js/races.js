@@ -66,12 +66,14 @@ function onJsonLoad (data) {
 	});
 	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk"]});
+	const miscFilter = new Filter({header: "Miscellaneous", items: ["Darkvision"]});
 
 	filterBox = initFilterBox(
 		sourceFilter,
 		asiFilter,
 		sizeFilter,
-		speedFilter
+		speedFilter,
+		miscFilter
 	);
 
 	const racesTable = $("ul.races");
@@ -82,6 +84,7 @@ function onJsonLoad (data) {
 		const ability = utils_getAbilityData(race.ability);
 		race._fAbility = getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)); // used for filtering
 		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, "Walk"].filter(it => it) : "Walk";
+		race._fMisc = [race.darkvision ? "Darkvision": null].filter(it => it);
 		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
@@ -144,8 +147,9 @@ function onJsonLoad (data) {
 			const rightAsi = asiFilter.toDisplay(f, r._fAbility);
 			const rightSize = sizeFilter.toDisplay(f, r.size);
 			const rightSpeed = speedFilter.toDisplay(f, r._fSpeed);
+			const rightMisc = miscFilter.toDisplay(f, r._fMisc);
 
-			return rightSource && rightAsi && rightSize && rightSpeed;
+			return rightSource && rightAsi && rightSize && rightSpeed && rightMisc;
 		})
 	}
 
