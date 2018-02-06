@@ -185,7 +185,9 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			deepIndex: (primary, it) => {
 				const subs = er.EntryRenderer.race._mergeSubrace(it);
 				return subs.map(r => ({
-					n: r.name
+					n: r.name,
+					s: r.source,
+					u: UrlUtil.URL_TO_HASH_BUILDER["races.html"](r)
 				}));
 			},
 			hover: true
