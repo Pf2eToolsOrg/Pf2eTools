@@ -44,27 +44,6 @@ let filterBox;
 function onJsonLoad (data) {
 	tableDefault = $("#pagecontent").html();
 
-	data.race.forEach(r => {
-		if (r.entries) {
-			r.entries.forEach(e => {
-				if (!e.type) {
-					e.type = "entries"
-				}
-			})
-		}
-		if (r.subraces) {
-			r.subraces.forEach(s => {
-				if (s.entries) {
-					s.entries.forEach(e => {
-						if (!e.type) {
-							e.type = "entries"
-						}
-					})
-				}
-			})
-		}
-	})
-	const out = JSON.stringify(data, null, "\t");
 	raceList = EntryRenderer.race.mergeSubraces(data.race);
 
 	const sourceFilter = getSourceFilter();
