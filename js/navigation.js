@@ -40,6 +40,7 @@ function navigation () {
 	LI('ul_rules', 'quickreference.html', 'Quick Reference');
 	LI('ul_rules', 'variantrules.html', 'Variant Rules');
 	LIDivider('ul_rules');
+	LI('ul_rules', 'book.html', "Dungeon Master's Guide", "DMG");
 	LI('ul_rules', 'book.html', "Monster Manual", "MM");
 	LI('ul_rules', 'book.html', "Player's Handbook", "PHB");
 
