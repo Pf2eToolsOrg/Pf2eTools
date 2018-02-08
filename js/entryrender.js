@@ -1788,7 +1788,7 @@ EntryRenderer.hover = {
 		const $body = $(`body`);
 		const $ele = $(ele);
 		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
-		const $fakeHov = $(`<a class="hoverlink" data-hover-id="${$ele.data("hover-id")}" href="${$ele.prop("href")}"/>`)
+		const $fakeHov = $(`<a class="hoverlink" data-hover-id="${$ele.data("hover-id")}" href="${$ele.prop("href")}">${$ele.text()}</a>`)
 			.width($ele.width())
 			.height($ele.height())
 			.css("top", $ele.offset().top - $(window).scrollTop())
@@ -2141,7 +2141,169 @@ EntryRenderer.hover = {
 
 EntryRenderer.dice = {
 	// TODO
+	// - up-arrow history
+	// - show/hide button
+	// - named individual rolls + "owner"
+	// - formatting
+	_$outRoll: null,
+
+	init: () => {
+		const $wrpRoll = $(`<div class="rollbox"/>`);
+		const $outRoll = $(`<div class="out-roll">`);
+		EntryRenderer.dice._$outRoll = $outRoll;
+		const $iptRoll = $(`<input class="ipt-roll">`)
+			.on("keypress", (e) => {
+				if (e.which === 13) {
+					EntryRenderer.dice.roll($iptRoll.val());
+					$iptRoll.val("");
+				}
+				e.stopPropagation();
+			});
+		$wrpRoll.append($outRoll).append($iptRoll);
+
+		$(`body`).append($wrpRoll);
+	},
+
+	roll: (str) => {
+		const $out = EntryRenderer.dice._$outRoll;
+		const toRoll = EntryRenderer.dice._parse(str);
+		if (toRoll) {
+			let out = "";
+			const vals = [];
+			if (toRoll.dice) {
+				const rls = toRoll.dice.map(d => {
+					let r = EntryRenderer.dice.rollDice(d.num, d.faces);
+					// TODO
+					// vals.push(d.neg ? -r : r);
+					// return `${r >= 0 ? "+" : "-"} <span title="">(${r})</span>`
+				});
+			}
+			$out.prepend(`<div>test roll output</div>`);
+		}  else {
+			$out.prepend(`<div>Invalid roll!</div>`);
+		}
+	},
+
+	rollDice: (count, faces) => {
+		const out = [];
+		for (let i = 0; i < count; ++i) {
+			out.push(1 + Math.floor(Math.random() * faces));
+		}
+		return out;
+	},
+
+	_parse: (str) => {
+		str = str.replace(/\s/g, "").toLowerCase();
+		const mods = [];
+		str = str.replace(/(([+-]+|^)\d+)(?=[^d]|$)/g, (m0, m1) => {
+			mods.push(m1);
+			return "";
+		});
+		const totalMods = mods.map(m => Number(m.replace(/--/g, "+"))).reduce((a, b) => a + b, 0);
+
+		function isNumber (char) {
+			return char >= "0" && char <= "9";
+		}
+
+		function getNew () {
+			return {
+				neg: false,
+				num: 1,
+				faces: 20
+			};
+		}
+
+		const S_INIT = -1;
+		const S_NONE = 0;
+		const S_COUNT = 1;
+		const S_FACES = 2;
+
+		const stack = [];
+
+		let state = str.length ? S_NONE : S_INIT;
+		let cur = getNew();
+		let temp = "";
+		for (let i = 0; i < str.length; ++i) {
+			c = str.charAt(i);
+
+			switch (state) {
+				case S_NONE:
+					if (c === "+") {
+					} else if (c === "-") {
+						cur.neg = !cur.neg;
+					} else if (isNumber(c)) {
+						temp += c;
+						state = S_COUNT;
+					} else if (c === "d") {
+						state = S_FACES;
+					} else {
+						return null;
+					}
+					break;
+				case S_COUNT:
+					if (isNumber(c)) {
+						temp += c;
+					} else if (c === "d") {
+						if (temp) {
+							cur.num = Number(temp);
+							temp = "";
+						}
+						state = S_FACES;
+					} else {
+						return null;
+					}
+					break;
+				case S_FACES:
+					if (isNumber(c)) {
+						temp += c;
+					} else if (c === "+") {
+						if (temp) {
+							cur.faces = Number(temp);
+							stack.push(cur);
+							cur = getNew();
+							temp = "";
+							state = S_NONE;
+						} else {
+							return null;
+						}
+					} else if (c === "-") {
+						if (temp) {
+							cur.faces = Number(temp);
+							stack.push(cur);
+							cur = getNew();
+							cur.neg = true;
+							temp = "";
+							state = S_NONE;
+						} else {
+							return null;
+						}
+					} else {
+						return null;
+					}
+					break;
+			}
+		}
+		switch (state) {
+			case S_NONE:
+				return null;
+			case S_COUNT:
+				return null;
+			case S_FACES:
+				if (temp) {
+					cur.faces = Number(temp);
+				} else {
+					return null;
+				}
+				break;
+		}
+		if (state !== S_INIT) stack.push(cur);
+
+		return {dice: stack, mod: totalMods};
+	}
 };
+if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
+	window.addEventListener("load", EntryRenderer.dice.init);
+}
 
 /**
  * Recursively find all the names of entries, useful for indexing

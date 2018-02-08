@@ -280,6 +280,42 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 /* *** */
 
+/* roller */
+.rollbox {
+	position: fixed;
+	width: 260px;
+	height: 335px;
+	z-index: 300;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	right: 7px;
+	bottom: 0;
+	background: #f0f0f0;
+	display: flex;
+	flex-direction: column;
+}
+
+.rollbox .ipt-roll {
+	overflow-x: auto;
+	height: 30px;
+	width: 100%;
+}
+
+.rollbox .out-roll {
+	overflow-y: auto;
+	height: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.rollbox .out-roll .out-roll-item {
+	flex: 1;
+	width: 100%;
+}
+
+
+/* *** */
+
 /* homebrew manager */
 
 .homebrew-overlay {
