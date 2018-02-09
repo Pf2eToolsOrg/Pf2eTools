@@ -183,7 +183,7 @@ function EntryRenderer () {
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value + "ft.");
 					break;
 				case "dice":
-					textStack.push(EntryRenderer.getEntryDice(entry));
+					textStack.push(EntryRenderer.getEntryDice(entry, entry.name));
 					break;
 				case "link":
 					textStack.push(this.renderLink(entry));
@@ -444,8 +444,9 @@ function EntryRenderer () {
 							type: "dice",
 							rollable: true
 						};
-						const [rollText, displayText] = text.split("|");
+						const [rollText, displayText, name] = text.split("|");
 						if (displayText) fauxEntry.displayText = displayText;
+						if (name) fauxEntry.name = name;
 
 						switch (tag) {
 							case "@dice": {
@@ -689,11 +690,14 @@ EntryRenderer.getEntryDice = function (entry, name) {
 		return stack.join("+");
 	}
 
-	const diceStr = getDiceAsStr();
-	const toDisplay = entry.displayText ? entry.displayText : diceStr;
+	function pack (obj) {
+		return `'${JSON.stringify(obj).replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'`;
+	}
+
+	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
 	if (entry.rollable === true) {
-		return `<span class='roller unselectable' onclick="EntryRenderer.dice.rollerClick(this, '${diceStr}'${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `\\"`)}'` : ""})">${toDisplay}</span>`;
+		return `<span class='roller unselectable' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'` : ""})">${toDisplay}</span>`;
 	} else {
 		return toDisplay;
 	}
@@ -1204,7 +1208,7 @@ EntryRenderer.monster = {
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
-			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})`);
+			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
 		}
 
 		const renderStack = [];
@@ -2125,12 +2129,6 @@ EntryRenderer.hover = {
 };
 
 EntryRenderer.dice = {
-	// TODO
-	// - up-arrow history
-	// - show/hide button
-	// - named individual rolls + "owner"
-	//    - pass in names?
-	// - formatting
 	_$wrpRoll: null,
 	_$minRoll: null,
 	_$iptRoll: null,
@@ -2244,16 +2242,14 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._$outRoll.scrollTop(1e10);
 	},
 
-	rollerClick: (ele, str, name) => {
+	rollerClick: (ele, packed, name) => {
 		const $ele = $(ele);
+		const entry = JSON.parse(packed);
 		// TODO
 		function attemptToGetTitle () {
-			let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
-			if (titleMaybe !== undefined) {
-				titleMaybe = titleMaybe.innerHTML;
-				if (titleMaybe) {
-					titleMaybe = titleMaybe.substring(0, titleMaybe.length - 1).trim();
-				}
+			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).text();
+			if (titleMaybe) {
+				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
 			}
 			return titleMaybe;
 		}
@@ -2266,21 +2262,36 @@ EntryRenderer.dice = {
 			return document.title.replace("- 5etools", "").trim();
 		}
 
-		EntryRenderer.dice.roll(str, {
+		EntryRenderer.dice.rollEntry(entry, {
 			name: attemptToGetName(),
 			label: name || attemptToGetTitle(ele)
 		});
 	},
 
-	roll: (str, rolledBy, msgText) => {
+	roll: (str, rolledBy) => {
 		if (!str.trim()) return;
-		EntryRenderer.dice._showBox();
-
+		const toRoll = EntryRenderer.dice._parse(str);
 		if (rolledBy.user) {
 			EntryRenderer.dice._addHistory(str);
 		}
+		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+	},
+
+	rollEntry: (entry, rolledBy) => {
+		const toRoll = {
+			dice: entry.toRoll.map(it => ({
+				neg: false,
+				num: it.number,
+				faces: it.faces
+			})),
+			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0)
+		};
+		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+	},
+
+	_handleRoll: (toRoll, rolledBy) => {
+		EntryRenderer.dice._showBox();
 		const $out = EntryRenderer.dice._$outRoll;
-		const toRoll = EntryRenderer.dice._parse(str);
 		EntryRenderer.dice._checkHandleName(rolledBy.name);
 
 		if (toRoll) {
@@ -2292,7 +2303,6 @@ EntryRenderer.dice = {
 					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
 					<span class="roll ${v.allMax ? "roll-max": v.allMin ? "roll-min" : ""}">${v.total}</span>
 					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
-					${msgText || ""}
 				</div>`);
 		}  else {
 			$out.prepend(`<div class="out-roll-item">Invalid roll!</div>`);
@@ -2348,8 +2358,8 @@ EntryRenderer.dice = {
 			rolls: rolls,
 			total: rolls.map(it => it.total).reduce((a, b) => a + b, 0) + (parsed.mod || 0),
 			modStr: parsed.mod ? `${parsed.mod < 0 ? "" : "+"}${parsed.mod}` : "",
-			allMax: parsed.dice && rolls.every(it => it.isMax),
-			allMin: parsed.dice && rolls.every(it => it.isMin)
+			allMax: parsed.dice && parsed.dice.length && rolls.every(it => it.isMax),
+			allMin: parsed.dice && parsed.dice.length && rolls.every(it => it.isMin)
 		}
 	},
 

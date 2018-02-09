@@ -226,6 +226,10 @@ table.stats div.statsBlockInsetReadaloud {
 .rollbox .head-roll:hover {
 	background: #e3e3e3;
 }
+
+.rollbox .out-roll .out-roll-item {
+	background: #b0b0b060;
+}
 `;
 const NIGHT_CSS =
 	`
@@ -529,6 +533,10 @@ table.stats div.statsBlockInsetReadaloud {
 .rollbox-min:hover,
 .rollbox .head-roll:hover {
 	background: #161616;
+}
+
+.rollbox .out-roll .out-roll-item {
+	background: #50505060;
 }
 `;
 
