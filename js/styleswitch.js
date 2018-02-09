@@ -217,6 +217,15 @@ table.stats div.statsBlockInsetReadaloud {
 .rollbox .ipt-roll {
 	background: white;
 }
+
+.rollbox-min,
+.rollbox .head-roll {
+	background: #d3d3d3;
+}
+.rollbox-min:hover,
+.rollbox .head-roll:hover {
+	background: #e3e3e3;
+}
 `;
 const NIGHT_CSS =
 	`
@@ -511,6 +520,15 @@ table.stats div.statsBlockInsetReadaloud {
 
 .rollbox .ipt-roll {
 	background: #272727;
+}
+
+.rollbox-min,
+.rollbox .head-roll {
+	background: #101010;
+}
+.rollbox-min:hover,
+.rollbox .head-roll:hover {
+	background: #161616;
 }
 `;
 

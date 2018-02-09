@@ -678,17 +678,6 @@ EntryRenderer.splitByTags = function (string) {
 	return out;
 };
 
-EntryRenderer._rollerClick = function (ele, toRoll) {
-	const $ele = $(ele);
-	const total = toRoll.map(d => droll.roll(EntryRenderer._getDiceString(d, true)).total).reduce((a, b) => a + b);
-	if ($ele.data("rolled")) {
-		$ele.html(`${$ele.html().split("=")[0].trim()} = ${total}`);
-	} else {
-		$ele.data("rolled", true);
-		$ele.html(`${$ele.html()} = ${total}`);
-	}
-};
-
 EntryRenderer._getDiceString = function (diceItem, isDroll) {
 	return `${!diceItem.hideDice || isDroll ? `${diceItem.number}d${diceItem.faces}` : ""}${!diceItem.hideModifier && diceItem.modifier !== undefined ? `${diceItem.modifier >= 0 ? "+" : ""}${diceItem.modifier}` : ""}`;
 };
@@ -2142,16 +2131,61 @@ EntryRenderer.dice = {
 	// - named individual rolls + "owner"
 	//    - pass in names?
 	// - formatting
+	_$wrpRoll: null,
+	_$minRoll: null,
 	_$iptRoll: null,
 	_$outRoll: null,
+	_$head: null,
 	_hist: [],
 	_histIndex: null,
 	_lastRolledBy: null,
 
+	randomise: (max) => {
+		return 1 + Math.floor(Math.random() * max);
+	},
+
+	parseRandomise: (str) => {
+		if (!str.trim()) return "";
+		const toRoll = EntryRenderer.dice._parse(str);
+		if (toRoll) {
+			return EntryRenderer.dice._rollParsed(toRoll);
+		} else {
+			return null;
+		}
+	},
+
+	_showBox: () => {
+		if (EntryRenderer.dice._$wrpRoll.css("display") !== "flex") {
+			EntryRenderer.dice._$minRoll.hide();
+			EntryRenderer.dice._$wrpRoll.css("display", "flex");
+			EntryRenderer.dice._$iptRoll.prop("placeholder", EntryRenderer.dice._randomPlaceholder())
+		}
+	},
+
+	_hideBox: () => {
+		EntryRenderer.dice._$minRoll.show();
+		EntryRenderer.dice._$wrpRoll.css("display", "");
+	},
+
+	_DICE: [4, 6, 8, 10, 12, 20, 100],
+	_randomPlaceholder: () => {
+		const count = EntryRenderer.dice.randomise(10);
+		const faces = EntryRenderer.dice._DICE[EntryRenderer.dice.randomise(EntryRenderer.dice._DICE.length - 1)];
+		const mod = (EntryRenderer.dice.randomise(3) - 2) * EntryRenderer.dice.randomise(10);
+		return `${count}d${faces}${mod < 0 ? mod : mod > 0 ? `+${mod}` : ""}`;
+	},
+
 	init: () => {
 		const $wrpRoll = $(`<div class="rollbox"/>`);
+		const $minRoll = $(`<div class="rollbox-min"><span class="glyphicon glyphicon-chevron-up"></span></div>`).on("click", () => {
+			EntryRenderer.dice._showBox();
+		});
+		const $head = $(`<div class="head-roll"><span class="hdr-roll">Dice Roller</span><span class="delete-icon glyphicon glyphicon-remove"></span></div>`)
+			.on("click", () => {
+				EntryRenderer.dice._hideBox();
+			});
 		const $outRoll = $(`<div class="out-roll">`);
-		const $iptRoll = $(`<input class="ipt-roll form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">`)
+		const $iptRoll = $(`<input class="ipt-roll form-control" autocomplete="off" spellcheck="false">`)
 			.on("keypress", (e) => {
 				if (e.which === 13) { //return
 					EntryRenderer.dice.roll($iptRoll.val(), {
@@ -2169,12 +2203,15 @@ EntryRenderer.dice = {
 					EntryRenderer.dice._nextHistory()
 				}
 			});
-		$wrpRoll.append($outRoll).append($iptRoll);
+		$wrpRoll.append($head).append($outRoll).append($iptRoll);
 
+		EntryRenderer.dice._$wrpRoll = $wrpRoll;
+		EntryRenderer.dice._$minRoll = $minRoll;
+		EntryRenderer.dice._$head = $head;
 		EntryRenderer.dice._$outRoll = $outRoll;
 		EntryRenderer.dice._$iptRoll = $iptRoll;
 
-		$(`body`).append($wrpRoll);
+		$(`body`).append($minRoll).append($wrpRoll);
 	},
 
 	_prevHistory: () => {
@@ -2201,6 +2238,10 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._hist.push(str);
 		// point index at the top of the stack
 		EntryRenderer.dice._histIndex = EntryRenderer.dice._hist.length;
+	},
+
+	_scrollBottom: () => {
+		EntryRenderer.dice._$outRoll.scrollTop(1e10);
 	},
 
 	rollerClick: (ele, str, name) => {
@@ -2231,54 +2272,85 @@ EntryRenderer.dice = {
 		});
 	},
 
-	roll: (str, rolledBy) => {
+	roll: (str, rolledBy, msgText) => {
 		if (!str.trim()) return;
+		EntryRenderer.dice._showBox();
 
 		if (rolledBy.user) {
 			EntryRenderer.dice._addHistory(str);
 		}
 		const $out = EntryRenderer.dice._$outRoll;
 		const toRoll = EntryRenderer.dice._parse(str);
-
-		if (EntryRenderer.dice._lastRolledBy !== rolledBy.name) {
-			EntryRenderer.dice._lastRolledBy = rolledBy.name;
-			$out.prepend(`<div class="text-muted out-roll-id">${rolledBy.name}</div>`);
-		}
+		EntryRenderer.dice._checkHandleName(rolledBy.name);
 
 		if (toRoll) {
-			let rolls = [];
-			if (toRoll.dice) {
-				rolls = toRoll.dice.map(d => {
-					let r = EntryRenderer.dice.rollDice(d.num, d.faces);
-					const total = r.reduce((a, b) => a + b, 0);
-					const max = d.num * d.faces;
-					return {
-						rolls: r,
-						total: (-(d.neg || -1)) * total,
-						isMax: total === max,
-						isMin: total === d.num, // i.e. all 1's
-						neg: d.neg
-					}
-				});
-			}
-			const total = rolls.map(it => it.total).reduce((a, b) => a + b, 0) + (toRoll.mod || 0);
-			const modStr = toRoll.mod ? `${toRoll.mod < 0 ? "" : "+"}${toRoll.mod}` : "";
-			const allMax = toRoll.dice && rolls.every(it => it.isMax);
-			const allMin = toRoll.dice && rolls.every(it => it.isMin);
+			const v = EntryRenderer.dice._rollParsed(toRoll);
+			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
-			$out.prepend(`<div class="out-roll-item" title="${rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${modStr}">${rolledBy.label ? `<span class="roll-label">${rolledBy.label}: </span>` : ""}<span class="roll ${allMax ? "roll-max": allMin ? "roll-min" : ""}">${total}</span></div>`);
+			$out.prepend(`
+				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 `: ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
+					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
+					<span class="roll ${v.allMax ? "roll-max": v.allMin ? "roll-min" : ""}">${v.total}</span>
+					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
+					${msgText || ""}
+				</div>`);
 		}  else {
 			$out.prepend(`<div class="out-roll-item">Invalid roll!</div>`);
 		}
-		$out.scrollTop(1e10);
+		EntryRenderer.dice._scrollBottom();
+	},
+
+	addRoll: (rolledBy, msgText) => {
+		if (!msgText.trim()) return;
+		EntryRenderer.dice._showBox();
+		EntryRenderer.dice._checkHandleName(rolledBy.name);
+		EntryRenderer.dice._$outRoll.prepend(`<div class="out-roll-item" title="${rolledBy.name || ""}">${msgText}</div>`);
+		EntryRenderer.dice._scrollBottom();
+	},
+
+	_checkHandleName: (name) => {
+		if (EntryRenderer.dice._lastRolledBy !== name) {
+			EntryRenderer.dice._lastRolledBy = name;
+			EntryRenderer.dice._$outRoll.prepend(`<div class="text-muted out-roll-id">${name}</div>`);
+		}
 	},
 
 	rollDice: (count, faces) => {
 		const out = [];
 		for (let i = 0; i < count; ++i) {
-			out.push(1 + Math.floor(Math.random() * faces));
+			out.push(EntryRenderer.dice.randomise(faces));
 		}
 		return out;
+	},
+
+	_rollParsed: (parsed) => {
+		if (!parsed) return null;
+
+		let rolls = [];
+		if (parsed.dice) {
+			rolls = parsed.dice.map(d => {
+				let r = EntryRenderer.dice.rollDice(d.num, d.faces);
+				const total = r.reduce((a, b) => a + b, 0);
+				const max = d.num * d.faces;
+				return {
+					rolls: r,
+					total: (-(d.neg || -1)) * total,
+					isMax: total === max,
+					isMin: total === d.num, // i.e. all 1's
+					neg: d.neg,
+					num: d.num,
+					faces: d.faces,
+					mod: d.mod
+				}
+			});
+		}
+		return {
+			rolls: rolls,
+			total: rolls.map(it => it.total).reduce((a, b) => a + b, 0) + (parsed.mod || 0),
+			modStr: parsed.mod ? `${parsed.mod < 0 ? "" : "+"}${parsed.mod}` : "",
+			allMax: parsed.dice && rolls.every(it => it.isMax),
+			allMin: parsed.dice && rolls.every(it => it.isMin)
+		}
 	},
 
 	_parse: (str) => {

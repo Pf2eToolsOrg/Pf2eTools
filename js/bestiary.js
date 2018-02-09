@@ -481,7 +481,7 @@ function loadhash (id) {
 
 	function renderSkillOrSaveRoller (itemName, profBonusString, profDiceString, isSave) {
 		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
-		return `<span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
+		return `<span class='roller unselectable' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
 	}
 
 	// inline rollers
@@ -550,39 +550,23 @@ function loadhash (id) {
 	$(".spells span.roller").contents().unwrap();
 	$("#pagecontent").find("span.roller").click(function () {
 		const $this = $(this);
-		let roll;
-		let rollResult;
-		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
-			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
-			// hacks because droll doesn't support e.g. "1d20+1d4+2" :joy: :ok_hand:
-			const multi = roll.split(";");
-			roll = roll.replace(/;/g, "+");
-			rollResult = droll.roll(multi[0]);
-			const res2 = droll.roll(multi[1]);
-			rollResult.rolls = rollResult.rolls.concat(res2.rolls);
-			rollResult.total += res2.total;
-		} else {
-			roll = $this.attr("data-roll").replace(/\s+/g, "");
-			rollResult = droll.roll(roll);
-		}
-		outputRollResult($this, roll, rollResult);
+		outputRollResult($this, $this.attr("data-roll").replace(/\s+/g, ""));
 	});
 
 	$("#pagecontent").find("span.dc-roller").click(function () {
 		const $this = $(this);
 		let roll;
-		let rollResult;
 		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
 			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
-			rollResult = droll.roll(roll);
-			outputRollResult($this, roll, rollResult);
+			outputRollResult($this, roll);
 		}
 	});
 
-	function outputRollResult ($ele, roll, rollResult) {
-		const name = $(".name .stats-name").text();
-		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : ""}for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
-		$("div#output span:eq(5)").remove();
+	function outputRollResult ($ele, roll) {
+		EntryRenderer.dice.roll(roll, {
+			name: name,
+			label: $ele.attr("title")
+		});
 	}
 }
 
