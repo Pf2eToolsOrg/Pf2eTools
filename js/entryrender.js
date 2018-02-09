@@ -693,22 +693,18 @@ EntryRenderer._getDiceString = function (diceItem, isDroll) {
 	return `${!diceItem.hideDice || isDroll ? `${diceItem.number}d${diceItem.faces}` : ""}${!diceItem.hideModifier && diceItem.modifier !== undefined ? `${diceItem.modifier >= 0 ? "+" : ""}${diceItem.modifier}` : ""}`;
 };
 
-EntryRenderer.getEntryDice = function (entry) {
+EntryRenderer.getEntryDice = function (entry, name) {
 	function getDiceAsStr () {
 		const stack = [];
 		entry.toRoll.forEach(d => stack.push(EntryRenderer._getDiceString(d)));
 		return stack.join("+");
 	}
 
-	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
+	const diceStr = getDiceAsStr();
+	const toDisplay = entry.displayText ? entry.displayText : diceStr;
 
-	// TODO make droll integration optional
-	if (typeof droll !== "undefined" && entry.rollable === true) {
-		// TODO output this somewhere nice
-		// TODO make this less revolting
-
-		// TODO output to small tooltip-stype bubble? Close on mouseout
-		return `<span class='roller unselectable' onclick='EntryRenderer._rollerClick(this, ${JSON.stringify(entry.toRoll)})'>${toDisplay}</span>`;
+	if (entry.rollable === true) {
+		return `<span class='roller unselectable' onclick="EntryRenderer.dice.rollerClick(this, '${diceStr}'${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `\\"`)}'` : ""})">${toDisplay}</span>`;
 	} else {
 		return toDisplay;
 	}
@@ -2144,44 +2140,137 @@ EntryRenderer.dice = {
 	// - up-arrow history
 	// - show/hide button
 	// - named individual rolls + "owner"
+	//    - pass in names?
 	// - formatting
+	_$iptRoll: null,
 	_$outRoll: null,
+	_hist: [],
+	_histIndex: null,
+	_lastRolledBy: null,
 
 	init: () => {
 		const $wrpRoll = $(`<div class="rollbox"/>`);
 		const $outRoll = $(`<div class="out-roll">`);
-		EntryRenderer.dice._$outRoll = $outRoll;
-		const $iptRoll = $(`<input class="ipt-roll">`)
+		const $iptRoll = $(`<input class="ipt-roll form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">`)
 			.on("keypress", (e) => {
-				if (e.which === 13) {
-					EntryRenderer.dice.roll($iptRoll.val());
+				if (e.which === 13) { //return
+					EntryRenderer.dice.roll($iptRoll.val(), {
+						user: true,
+						name: "Anon"
+					});
 					$iptRoll.val("");
 				}
 				e.stopPropagation();
+			}).on("keydown", (e) => {
+				// arrow keys only work on keydown
+				if (e.which === 38) { // up arrow
+					EntryRenderer.dice._prevHistory()
+				} else if (e.which === 40) { // down arrow
+					EntryRenderer.dice._nextHistory()
+				}
 			});
 		$wrpRoll.append($outRoll).append($iptRoll);
+
+		EntryRenderer.dice._$outRoll = $outRoll;
+		EntryRenderer.dice._$iptRoll = $iptRoll;
 
 		$(`body`).append($wrpRoll);
 	},
 
-	roll: (str) => {
+	_prevHistory: () => {
+		EntryRenderer.dice._histIndex--;
+		EntryRenderer.dice._cleanHistoryIndex();
+		EntryRenderer.dice._$iptRoll.val(EntryRenderer.dice._hist[EntryRenderer.dice._histIndex]);
+	},
+
+	_nextHistory: () => {
+		EntryRenderer.dice._histIndex++;
+		EntryRenderer.dice._cleanHistoryIndex();
+		EntryRenderer.dice._$iptRoll.val(EntryRenderer.dice._hist[EntryRenderer.dice._histIndex]);
+	},
+
+	_cleanHistoryIndex: () => {
+		if (!EntryRenderer.dice._hist.length) {
+			EntryRenderer.dice._histIndex = null;
+		} else {
+			EntryRenderer.dice._histIndex = Math.min(EntryRenderer.dice._hist.length, Math.max(EntryRenderer.dice._histIndex, 0))
+		}
+	},
+
+	_addHistory: (str) => {
+		EntryRenderer.dice._hist.push(str);
+		// point index at the top of the stack
+		EntryRenderer.dice._histIndex = EntryRenderer.dice._hist.length;
+	},
+
+	rollerClick: (ele, str, name) => {
+		const $ele = $(ele);
+		// TODO
+		function attemptToGetTitle () {
+			let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
+			if (titleMaybe !== undefined) {
+				titleMaybe = titleMaybe.innerHTML;
+				if (titleMaybe) {
+					titleMaybe = titleMaybe.substring(0, titleMaybe.length - 1).trim();
+				}
+			}
+			return titleMaybe;
+		}
+
+		function attemptToGetName () {
+			const $hov = $ele.closest(`.hoverbox`);
+			if ($hov.length) {
+				return $hov.find(`.stats-name`).first().text();
+			}
+			return document.title.replace("- 5etools", "").trim();
+		}
+
+		EntryRenderer.dice.roll(str, {
+			name: attemptToGetName(),
+			label: name || attemptToGetTitle(ele)
+		});
+	},
+
+	roll: (str, rolledBy) => {
+		if (!str.trim()) return;
+
+		if (rolledBy.user) {
+			EntryRenderer.dice._addHistory(str);
+		}
 		const $out = EntryRenderer.dice._$outRoll;
 		const toRoll = EntryRenderer.dice._parse(str);
+
+		if (EntryRenderer.dice._lastRolledBy !== rolledBy.name) {
+			EntryRenderer.dice._lastRolledBy = rolledBy.name;
+			$out.prepend(`<div class="text-muted out-roll-id">${rolledBy.name}</div>`);
+		}
+
 		if (toRoll) {
-			let out = "";
-			const vals = [];
+			let rolls = [];
 			if (toRoll.dice) {
-				const rls = toRoll.dice.map(d => {
+				rolls = toRoll.dice.map(d => {
 					let r = EntryRenderer.dice.rollDice(d.num, d.faces);
-					// TODO
-					// vals.push(d.neg ? -r : r);
-					// return `${r >= 0 ? "+" : "-"} <span title="">(${r})</span>`
+					const total = r.reduce((a, b) => a + b, 0);
+					const max = d.num * d.faces;
+					return {
+						rolls: r,
+						total: (-(d.neg || -1)) * total,
+						isMax: total === max,
+						isMin: total === d.num, // i.e. all 1's
+						neg: d.neg
+					}
 				});
 			}
-			$out.prepend(`<div>test roll output</div>`);
+			const total = rolls.map(it => it.total).reduce((a, b) => a + b, 0) + (toRoll.mod || 0);
+			const modStr = toRoll.mod ? `${toRoll.mod < 0 ? "" : "+"}${toRoll.mod}` : "";
+			const allMax = toRoll.dice && rolls.every(it => it.isMax);
+			const allMin = toRoll.dice && rolls.every(it => it.isMin);
+
+			$out.prepend(`<div class="out-roll-item" title="${rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${modStr}">${rolledBy.label ? `<span class="roll-label">${rolledBy.label}: </span>` : ""}<span class="roll ${allMax ? "roll-max": allMin ? "roll-min" : ""}">${total}</span></div>`);
 		}  else {
-			$out.prepend(`<div>Invalid roll!</div>`);
+			$out.prepend(`<div class="out-roll-item">Invalid roll!</div>`);
 		}
+		$out.scrollTop(1e10);
 	},
 
 	rollDice: (count, faces) => {

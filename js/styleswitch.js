@@ -209,6 +209,14 @@ table.stats div.statsBlockInsetReadaloud {
 .hoverbox .hoverborder .window-title {
 	color: #922610;
 }
+
+.rollbox {
+	background: white;
+}
+
+.rollbox .ipt-roll {
+	background: white;
+}
 `;
 const NIGHT_CSS =
 	`
@@ -495,6 +503,14 @@ table.stats div.statsBlockInsetReadaloud {
 
 .hoverbox .hoverborder .window-title {
 	color: lightgrey;
+}
+
+.rollbox {
+	background: #272727;
+}
+
+.rollbox .ipt-roll {
+	background: #272727;
 }
 `;
 

@@ -225,9 +225,9 @@ function loadhash (id) {
 	// SUMMARY SIDEBAR =================================================================================================
 	// hit dice and HP
 	const hdEntry = {toRoll: [curClass.hd], rollable: true};
-	$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry));
+	$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry, "Hit die"));
 	$("td#hp div#hp1stlevel span").html(curClass.hd.faces + " + your Constitution modifier");
-	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry)} (or ${(curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
+	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry, "Hit die")} (or ${(curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
 
 	// save proficiency
 	$("td#prof div#saves span").html(curClass.proficiency.map(p => Parser.attAbvToFull(p)).join(", "));

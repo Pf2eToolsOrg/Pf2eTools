@@ -290,7 +290,6 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	right: 7px;
 	bottom: 0;
-	background: #f0f0f0;
 	display: flex;
 	flex-direction: column;
 }
@@ -309,10 +308,34 @@ div.omnisearch-pagination-wrapper > .pg-right {
 }
 
 .rollbox .out-roll .out-roll-item {
-	flex: 1;
-	width: 100%;
+	width: calc(100% - 6px);
+	padding: 1px 3px;
+	background: #b0b0b060;
+	margin: 1px 3px;
+	border-radius: 4px;
 }
 
+.rollbox .out-roll .out-roll-item .roll-label {
+	font-style: italic;
+}
+
+.rollbox .out-roll .out-roll-item .roll {
+	font-weight: bold;
+}
+
+.rollbox .out-roll .out-roll-item .roll-max {
+	color: #00b400;
+}
+
+.rollbox .out-roll .out-roll-item .roll-min {
+	color: #ff3100;
+}
+
+.rollbox .out-roll .out-roll-id {
+	width: 100%;
+	font-size: 70%;
+	padding: 1px 3px;
+}
 
 /* *** */
 
