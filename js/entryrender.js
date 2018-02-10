@@ -2379,8 +2379,8 @@ EntryRenderer.dice = {
 	_parse: (str) => {
 		str = str.replace(/\s/g, "").toLowerCase();
 		const mods = [];
-		str = str.replace(/(([+-]+|^)\d+)(?=[^d]|$)/g, (m0, m1) => {
-			mods.push(m1);
+		str = str.replace(/(([+-]+)\d+)(?=[^d]|$)|(([+-]+|^)\d+$)|(([+-]+|^)\d+(?=[+-]))/g, (m0) => {
+			mods.push(m0);
 			return "";
 		});
 		const totalMods = mods.map(m => Number(m.replace(/--/g, "+"))).reduce((a, b) => a + b, 0);
@@ -2407,6 +2407,7 @@ EntryRenderer.dice = {
 		let state = str.length ? S_NONE : S_INIT;
 		let cur = getNew();
 		let temp = "";
+		let c;
 		for (let i = 0; i < str.length; ++i) {
 			c = str.charAt(i);
 
@@ -2442,6 +2443,7 @@ EntryRenderer.dice = {
 					} else if (c === "+") {
 						if (temp) {
 							cur.faces = Number(temp);
+							if (!cur.num || !cur.faces) return null;
 							stack.push(cur);
 							cur = getNew();
 							temp = "";
@@ -2452,6 +2454,7 @@ EntryRenderer.dice = {
 					} else if (c === "-") {
 						if (temp) {
 							cur.faces = Number(temp);
+							if (!cur.num || !cur.faces) return null;
 							stack.push(cur);
 							cur = getNew();
 							cur.neg = true;
@@ -2479,12 +2482,15 @@ EntryRenderer.dice = {
 				}
 				break;
 		}
-		if (state !== S_INIT) stack.push(cur);
+		if (state !== S_INIT) {
+			if (!cur.num || !cur.faces) return null;
+			stack.push(cur);
+		}
 
 		return {dice: stack, mod: totalMods};
 	}
 };
-if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
+if (!IS_ROLL20 && typeof window !== "undefined") {
 	window.addEventListener("load", EntryRenderer.dice.init);
 }
 
