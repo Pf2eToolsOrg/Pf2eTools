@@ -183,7 +183,7 @@ function EntryRenderer () {
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value + "ft.");
 					break;
 				case "dice":
-					textStack.push(EntryRenderer.getEntryDice(entry));
+					textStack.push(EntryRenderer.getEntryDice(entry, entry.name));
 					break;
 				case "link":
 					textStack.push(this.renderLink(entry));
@@ -444,8 +444,9 @@ function EntryRenderer () {
 							type: "dice",
 							rollable: true
 						};
-						const [rollText, displayText] = text.split("|");
+						const [rollText, displayText, name] = text.split("|");
 						if (displayText) fauxEntry.displayText = displayText;
+						if (name) fauxEntry.name = name;
 
 						switch (tag) {
 							case "@dice": {
@@ -678,37 +679,25 @@ EntryRenderer.splitByTags = function (string) {
 	return out;
 };
 
-EntryRenderer._rollerClick = function (ele, toRoll) {
-	const $ele = $(ele);
-	const total = toRoll.map(d => droll.roll(EntryRenderer._getDiceString(d, true)).total).reduce((a, b) => a + b);
-	if ($ele.data("rolled")) {
-		$ele.html(`${$ele.html().split("=")[0].trim()} = ${total}`);
-	} else {
-		$ele.data("rolled", true);
-		$ele.html(`${$ele.html()} = ${total}`);
-	}
-};
-
 EntryRenderer._getDiceString = function (diceItem, isDroll) {
 	return `${!diceItem.hideDice || isDroll ? `${diceItem.number}d${diceItem.faces}` : ""}${!diceItem.hideModifier && diceItem.modifier !== undefined ? `${diceItem.modifier >= 0 ? "+" : ""}${diceItem.modifier}` : ""}`;
 };
 
-EntryRenderer.getEntryDice = function (entry) {
+EntryRenderer.getEntryDice = function (entry, name) {
 	function getDiceAsStr () {
 		const stack = [];
 		entry.toRoll.forEach(d => stack.push(EntryRenderer._getDiceString(d)));
 		return stack.join("+");
 	}
 
+	function pack (obj) {
+		return `'${JSON.stringify(obj).replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'`;
+	}
+
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
-	// TODO make droll integration optional
-	if (typeof droll !== "undefined" && entry.rollable === true) {
-		// TODO output this somewhere nice
-		// TODO make this less revolting
-
-		// TODO output to small tooltip-stype bubble? Close on mouseout
-		return `<span class='roller unselectable' onclick='EntryRenderer._rollerClick(this, ${JSON.stringify(entry.toRoll)})'>${toDisplay}</span>`;
+	if (entry.rollable === true) {
+		return `<span class='roller unselectable' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'` : ""})">${toDisplay}</span>`;
 	} else {
 		return toDisplay;
 	}
@@ -1219,7 +1208,7 @@ EntryRenderer.monster = {
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
-			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})`);
+			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
 		}
 
 		const renderStack = [];
@@ -1722,6 +1711,7 @@ EntryRenderer.psionic = {
 EntryRenderer.hover = {
 	linkCache: {},
 	_isInit: false,
+	_active: {},
 
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
@@ -1751,6 +1741,18 @@ EntryRenderer.hover = {
 		return EntryRenderer.hover.linkCache[page] && EntryRenderer.hover.linkCache[page][source] && EntryRenderer.hover.linkCache[page][source][hash];
 	},
 
+	_teardownWindow: (hoverId) => {
+		const obj = EntryRenderer.hover._active[hoverId];
+		if (obj) {
+			obj.$ele.attr("data-hover-active", false);
+			obj.$hov.remove();
+			$(document).off(obj.mouseUpId);
+			$(document).off(obj.mouseMoveId);
+			$(window).off(obj.resizeId);
+		}
+		delete EntryRenderer.hover._active[hoverId];
+	},
+
 	_makeWindow: () => {
 		if (!EntryRenderer.hover._curHovering) {
 			reset();
@@ -1774,7 +1776,7 @@ EntryRenderer.hover = {
 		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
 		const content = EntryRenderer.hover._curHovering.renderFunction(toRender);
 
-		$(ele).data("hover-active", true);
+		$(ele).attr("data-hover-active", true);
 
 		const offset = $(ele).offset();
 		const vpOffsetT = offset.top - $(document).scrollTop();
@@ -1787,23 +1789,16 @@ EntryRenderer.hover = {
 
 		const $body = $(`body`);
 		const $ele = $(ele);
-		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
-		const $fakeHov = $(`<a class="hoverlink" data-hover-id="${$ele.data("hover-id")}" href="${$ele.prop("href")}"/>`)
-			.width($ele.width())
-			.height($ele.height())
-			.css("top", $ele.offset().top - $(window).scrollTop())
-			.css("left", $ele.offset().left - $(window).scrollLeft());
-		$body.append($fakeHov);
 
-		$fakeHov.on("mouseleave", (evt) => {
-			$fakeHov.remove();
+		$ele.on("mouseleave", (evt) => {
 			EntryRenderer.hover._cleanWindows();
 			if (!$brdrTop.data("perm") && !evt.shiftKey) {
 				teardown();
 			} else {
-				$(ele).data("hover-active", true);
+				$(ele).attr("data-hover-active", true);
 				// use attr to let the CSS see it
 				$brdrTop.attr("data-perm", true);
+				delete EntryRenderer.hover._active[hoverId];
 			}
 		});
 
@@ -1854,12 +1849,18 @@ EntryRenderer.hover = {
 			const curState = $brdrTop.attr("data-display-title");
 			$brdrTop.attr("data-display-title", curState === "false");
 			$brdrTop.attr("data-perm", true);
+			delete EntryRenderer.hover._active[hoverId];
 		});
 		$brdrTop.append($hovTitle);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
-				teardown();
+				// alternate teardown for 'x' button
+				$ele.attr("data-hover-active", false);
+				$hov.remove();
+				$(document).off(mouseUpId);
+				$(document).off(mouseMoveId);
+				$(window).off(resizeId);
 			});
 		$brdrTop.append($btnClose);
 		$hov.append($brdrTop)
@@ -1867,6 +1868,15 @@ EntryRenderer.hover = {
 			.append(`<div class="hoverborder"></div>`);
 
 		$body.append($hov);
+		if (!permanent) {
+			EntryRenderer.hover._active[hoverId] = {
+				$hov: $hov,
+				$ele: $ele,
+				resizeId: resizeId,
+				mouseUpId: mouseUpId,
+				mouseMoveId: mouseMoveId
+			};
+		}
 
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
@@ -1887,11 +1897,6 @@ EntryRenderer.hover = {
 				$hov.css("top", 0);
 			} else if (hvTop >= $(window).height() - EntryRenderer.hover._BAR_HEIGHT) {
 				$hov.css("top", $(window).height() - EntryRenderer.hover._BAR_HEIGHT);
-			} else if (first) {
-				const calcHeight = $hov.height();
-				if (hvTop + calcHeight > $(window).height()) {
-					$hov.css("top", 0);
-				}
 			}
 			// ...if horizontally clipping off screen
 			const hvLeft = parseFloat($hov.css("left"));
@@ -1903,11 +1908,7 @@ EntryRenderer.hover = {
 		}
 
 		function teardown () {
-			$(ele).data("hover-active", false);
-			$hov.remove();
-			$(document).off(mouseUpId);
-			$(document).off(mouseMoveId);
-			$(window).off(resizeId);
+			EntryRenderer.hover._teardownWindow(hoverId);
 		}
 
 		function reset () {
@@ -1929,7 +1930,7 @@ EntryRenderer.hover = {
 		}
 
 		// don't show on mobile
-		if ($(window).width() <= 768) return;
+		if ($(window).width() <= 1024) return;
 
 		const alreadyHovering = $(ele).data("hover-active");
 		if (alreadyHovering) return;
@@ -2007,15 +2008,15 @@ EntryRenderer.hover = {
 		// clean up any old event listeners
 		$(ele).off("mouseleave");
 
+		// clean up any abandoned windows
+		EntryRenderer.hover._cleanWindows();
+
 		// cancel hover if the mouse leaves
 		$(ele).on("mouseleave", () => {
 			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) {
 				EntryRenderer.hover._curHovering = null;
 			}
 		});
-
-		// clean up any abandoned windows
-		EntryRenderer.hover._cleanWindows();
 
 		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
@@ -2135,13 +2136,357 @@ EntryRenderer.hover = {
 	},
 
 	_cleanWindows: () => {
-		$(`a.hoverlink`).trigger(`mouseleave`);
+		const ks = Object.keys(EntryRenderer.hover._active);
+		ks.forEach(hovId => EntryRenderer.hover._teardownWindow(hovId));
 	}
 };
 
 EntryRenderer.dice = {
-	// TODO
+	_$wrpRoll: null,
+	_$minRoll: null,
+	_$iptRoll: null,
+	_$outRoll: null,
+	_$head: null,
+	_hist: [],
+	_histIndex: null,
+	_lastRolledBy: null,
+
+	randomise: (max) => {
+		return 1 + Math.floor(Math.random() * max);
+	},
+
+	parseRandomise: (str) => {
+		if (!str.trim()) return "";
+		const toRoll = EntryRenderer.dice._parse(str);
+		if (toRoll) {
+			return EntryRenderer.dice._rollParsed(toRoll);
+		} else {
+			return null;
+		}
+	},
+
+	_showBox: () => {
+		if (EntryRenderer.dice._$wrpRoll.css("display") !== "flex") {
+			EntryRenderer.dice._$minRoll.hide();
+			EntryRenderer.dice._$wrpRoll.css("display", "flex");
+			EntryRenderer.dice._$iptRoll.prop("placeholder", EntryRenderer.dice._randomPlaceholder())
+		}
+	},
+
+	_hideBox: () => {
+		EntryRenderer.dice._$minRoll.show();
+		EntryRenderer.dice._$wrpRoll.css("display", "");
+	},
+
+	_DICE: [4, 6, 8, 10, 12, 20, 100],
+	_randomPlaceholder: () => {
+		const count = EntryRenderer.dice.randomise(10);
+		const faces = EntryRenderer.dice._DICE[EntryRenderer.dice.randomise(EntryRenderer.dice._DICE.length - 1)];
+		const mod = (EntryRenderer.dice.randomise(3) - 2) * EntryRenderer.dice.randomise(10);
+		return `${count}d${faces}${mod < 0 ? mod : mod > 0 ? `+${mod}` : ""}`;
+	},
+
+	init: () => {
+		const $wrpRoll = $(`<div class="rollbox"/>`);
+		const $minRoll = $(`<div class="rollbox-min"><span class="glyphicon glyphicon-chevron-up"></span></div>`).on("click", () => {
+			EntryRenderer.dice._showBox();
+		});
+		const $head = $(`<div class="head-roll"><span class="hdr-roll">Dice Roller</span><span class="delete-icon glyphicon glyphicon-remove"></span></div>`)
+			.on("click", () => {
+				EntryRenderer.dice._hideBox();
+			});
+		const $outRoll = $(`<div class="out-roll">`);
+		const $iptRoll = $(`<input class="ipt-roll form-control" autocomplete="off" spellcheck="false">`)
+			.on("keypress", (e) => {
+				if (e.which === 13) { // return
+					EntryRenderer.dice.roll($iptRoll.val(), {
+						user: true,
+						name: "Anon"
+					});
+					$iptRoll.val("");
+				}
+				e.stopPropagation();
+			}).on("keydown", (e) => {
+				// arrow keys only work on keydown
+				if (e.which === 38) { // up arrow
+					EntryRenderer.dice._prevHistory()
+				} else if (e.which === 40) { // down arrow
+					EntryRenderer.dice._nextHistory()
+				}
+			});
+		$wrpRoll.append($head).append($outRoll).append($iptRoll);
+
+		EntryRenderer.dice._$wrpRoll = $wrpRoll;
+		EntryRenderer.dice._$minRoll = $minRoll;
+		EntryRenderer.dice._$head = $head;
+		EntryRenderer.dice._$outRoll = $outRoll;
+		EntryRenderer.dice._$iptRoll = $iptRoll;
+
+		$(`body`).append($minRoll).append($wrpRoll);
+	},
+
+	_prevHistory: () => {
+		EntryRenderer.dice._histIndex--;
+		EntryRenderer.dice._cleanHistoryIndex();
+		EntryRenderer.dice._$iptRoll.val(EntryRenderer.dice._hist[EntryRenderer.dice._histIndex]);
+	},
+
+	_nextHistory: () => {
+		EntryRenderer.dice._histIndex++;
+		EntryRenderer.dice._cleanHistoryIndex();
+		EntryRenderer.dice._$iptRoll.val(EntryRenderer.dice._hist[EntryRenderer.dice._histIndex]);
+	},
+
+	_cleanHistoryIndex: () => {
+		if (!EntryRenderer.dice._hist.length) {
+			EntryRenderer.dice._histIndex = null;
+		} else {
+			EntryRenderer.dice._histIndex = Math.min(EntryRenderer.dice._hist.length, Math.max(EntryRenderer.dice._histIndex, 0))
+		}
+	},
+
+	_addHistory: (str) => {
+		EntryRenderer.dice._hist.push(str);
+		// point index at the top of the stack
+		EntryRenderer.dice._histIndex = EntryRenderer.dice._hist.length;
+	},
+
+	_scrollBottom: () => {
+		EntryRenderer.dice._$outRoll.scrollTop(1e10);
+	},
+
+	rollerClick: (ele, packed, name) => {
+		const $ele = $(ele);
+		const entry = JSON.parse(packed);
+		// TODO
+		function attemptToGetTitle () {
+			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).text();
+			if (titleMaybe) {
+				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
+			}
+			return titleMaybe;
+		}
+
+		function attemptToGetName () {
+			const $hov = $ele.closest(`.hoverbox`);
+			if ($hov.length) {
+				return $hov.find(`.stats-name`).first().text();
+			}
+			return document.title.replace("- 5etools", "").trim();
+		}
+
+		EntryRenderer.dice.rollEntry(entry, {
+			name: attemptToGetName(),
+			label: name || attemptToGetTitle(ele)
+		});
+	},
+
+	roll: (str, rolledBy) => {
+		if (!str.trim()) return;
+		const toRoll = EntryRenderer.dice._parse(str);
+		if (rolledBy.user) {
+			EntryRenderer.dice._addHistory(str);
+		}
+		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+	},
+
+	rollEntry: (entry, rolledBy) => {
+		const toRoll = {
+			dice: entry.toRoll.map(it => ({
+				neg: false,
+				num: it.number,
+				faces: it.faces
+			})),
+			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0)
+		};
+		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+	},
+
+	_handleRoll: (toRoll, rolledBy) => {
+		EntryRenderer.dice._showBox();
+		const $out = EntryRenderer.dice._$outRoll;
+		EntryRenderer.dice._checkHandleName(rolledBy.name);
+
+		if (toRoll) {
+			const v = EntryRenderer.dice._rollParsed(toRoll);
+			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
+
+			$out.prepend(`
+				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
+					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
+					<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>
+					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
+				</div>`);
+		} else {
+			$out.prepend(`<div class="out-roll-item">Invalid roll!</div>`);
+		}
+		EntryRenderer.dice._scrollBottom();
+	},
+
+	addRoll: (rolledBy, msgText) => {
+		if (!msgText.trim()) return;
+		EntryRenderer.dice._showBox();
+		EntryRenderer.dice._checkHandleName(rolledBy.name);
+		EntryRenderer.dice._$outRoll.prepend(`<div class="out-roll-item" title="${rolledBy.name || ""}">${msgText}</div>`);
+		EntryRenderer.dice._scrollBottom();
+	},
+
+	_checkHandleName: (name) => {
+		if (EntryRenderer.dice._lastRolledBy !== name) {
+			EntryRenderer.dice._lastRolledBy = name;
+			EntryRenderer.dice._$outRoll.prepend(`<div class="text-muted out-roll-id">${name}</div>`);
+		}
+	},
+
+	rollDice: (count, faces) => {
+		const out = [];
+		for (let i = 0; i < count; ++i) {
+			out.push(EntryRenderer.dice.randomise(faces));
+		}
+		return out;
+	},
+
+	_rollParsed: (parsed) => {
+		if (!parsed) return null;
+
+		let rolls = [];
+		if (parsed.dice) {
+			rolls = parsed.dice.map(d => {
+				let r = EntryRenderer.dice.rollDice(d.num, d.faces);
+				const total = r.reduce((a, b) => a + b, 0);
+				const max = d.num * d.faces;
+				return {
+					rolls: r,
+					total: (-(d.neg || -1)) * total,
+					isMax: total === max,
+					isMin: total === d.num, // i.e. all 1's
+					neg: d.neg,
+					num: d.num,
+					faces: d.faces,
+					mod: d.mod
+				}
+			});
+		}
+		return {
+			rolls: rolls,
+			total: rolls.map(it => it.total).reduce((a, b) => a + b, 0) + (parsed.mod || 0),
+			modStr: parsed.mod ? `${parsed.mod < 0 ? "" : "+"}${parsed.mod}` : "",
+			allMax: parsed.dice && parsed.dice.length && rolls.every(it => it.isMax),
+			allMin: parsed.dice && parsed.dice.length && rolls.every(it => it.isMin)
+		}
+	},
+
+	_parse: (str) => {
+		str = str.replace(/\s/g, "").toLowerCase();
+		const mods = [];
+		str = str.replace(/(([+-]+|^)\d+)(?=[^d]|$)/g, (m0, m1) => {
+			mods.push(m1);
+			return "";
+		});
+		const totalMods = mods.map(m => Number(m.replace(/--/g, "+"))).reduce((a, b) => a + b, 0);
+
+		function isNumber (char) {
+			return char >= "0" && char <= "9";
+		}
+
+		function getNew () {
+			return {
+				neg: false,
+				num: 1,
+				faces: 20
+			};
+		}
+
+		const S_INIT = -1;
+		const S_NONE = 0;
+		const S_COUNT = 1;
+		const S_FACES = 2;
+
+		const stack = [];
+
+		let state = str.length ? S_NONE : S_INIT;
+		let cur = getNew();
+		let temp = "";
+		for (let i = 0; i < str.length; ++i) {
+			c = str.charAt(i);
+
+			switch (state) {
+				case S_NONE:
+					if (c === "-") {
+						cur.neg = !cur.neg;
+					} else if (isNumber(c)) {
+						temp += c;
+						state = S_COUNT;
+					} else if (c === "d") {
+						state = S_FACES;
+					} else if (c !== "+") {
+						return null;
+					}
+					break;
+				case S_COUNT:
+					if (isNumber(c)) {
+						temp += c;
+					} else if (c === "d") {
+						if (temp) {
+							cur.num = Number(temp);
+							temp = "";
+						}
+						state = S_FACES;
+					} else {
+						return null;
+					}
+					break;
+				case S_FACES:
+					if (isNumber(c)) {
+						temp += c;
+					} else if (c === "+") {
+						if (temp) {
+							cur.faces = Number(temp);
+							stack.push(cur);
+							cur = getNew();
+							temp = "";
+							state = S_NONE;
+						} else {
+							return null;
+						}
+					} else if (c === "-") {
+						if (temp) {
+							cur.faces = Number(temp);
+							stack.push(cur);
+							cur = getNew();
+							cur.neg = true;
+							temp = "";
+							state = S_NONE;
+						} else {
+							return null;
+						}
+					} else {
+						return null;
+					}
+					break;
+			}
+		}
+		switch (state) {
+			case S_NONE:
+				return null;
+			case S_COUNT:
+				return null;
+			case S_FACES:
+				if (temp) {
+					cur.faces = Number(temp);
+				} else {
+					return null;
+				}
+				break;
+		}
+		if (state !== S_INIT) stack.push(cur);
+
+		return {dice: stack, mod: totalMods};
+	}
 };
+if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
+	window.addEventListener("load", EntryRenderer.dice.init);
+}
 
 /**
  * Recursively find all the names of entries, useful for indexing

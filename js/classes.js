@@ -2,6 +2,8 @@
 const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";
 const HASH_ALL_SOURCES = "allsrc:";
+const HASH_COMP_VIEW = "compview:";
+const HASH_BOOK_VIEW = "bookview:";
 
 const CLSS_FEATURE_LINK = "feature-link";
 const CLSS_ACTIVE = "active";
@@ -223,9 +225,9 @@ function loadhash (id) {
 	// SUMMARY SIDEBAR =================================================================================================
 	// hit dice and HP
 	const hdEntry = {toRoll: [curClass.hd], rollable: true};
-	$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry));
+	$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry, "Hit die"));
 	$("td#hp div#hp1stlevel span").html(curClass.hd.faces + " + your Constitution modifier");
-	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry)} (or ${(curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
+	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry, "Hit die")} (or ${(curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
 
 	// save proficiency
 	$("td#prof div#saves span").html(curClass.proficiency.map(p => Parser.attAbvToFull(p)).join(", "));
@@ -474,14 +476,22 @@ function loadsub (sub) {
 	let feature = null;
 	let hideClassFeatures = null;
 	let showAllSources = null;
+	let bookView = null;
+	let comparisonView = null;
+
+	function sliceTrue (hashPart, findString) {
+		return hashPart.slice(findString.length) === "true";
+	}
 
 	for (let i = 0; i < sub.length; i++) {
 		const hashPart = sub[i];
 
 		if (hashPart.startsWith(HASH_SUBCLASS)) subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart;
-		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = hashPart.slice(HASH_HIDE_FEATURES.length) === "true";
-		if (hashPart.startsWith(HASH_ALL_SOURCES)) showAllSources = hashPart.slice(HASH_ALL_SOURCES.length) === "true";
+		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = sliceTrue(hashPart, HASH_HIDE_FEATURES);
+		if (hashPart.startsWith(HASH_ALL_SOURCES)) showAllSources = sliceTrue(hashPart, HASH_ALL_SOURCES);
+		if (hashPart.startsWith(HASH_BOOK_VIEW)) bookView = sliceTrue(hashPart, HASH_BOOK_VIEW);
+		if (hashPart.startsWith(HASH_COMP_VIEW)) comparisonView = sliceTrue(hashPart, HASH_COMP_VIEW);
 	}
 
 	const hideOtherSources = showAllSources === null || showAllSources === false;
@@ -625,6 +635,12 @@ function loadsub (sub) {
 	}
 
 	updateClassTableLinks();
+
+	if (bookView) ClassBookView.open();
+	else ClassBookView.teardown();
+
+	if (comparisonView) SubclassComparisonView.open();
+	else SubclassComparisonView.teardown();
 
 	function handleTableGroups (shownInTable, tableDataTag, show) {
 		$(`[data-subclass-list]`).each(
@@ -844,29 +860,40 @@ function manageBrew () {
 }
 
 function initCompareMode () {
-	let compareViewActive = false;
 	$(`#btn-comparemode`).on("click", () => {
-		function teardown () {
-			$body.css("overflow", "");
-			$wrpBookUnder.remove();
-			$wrpBook.remove();
-			compareViewActive = false;
+		window.location.hash += `${HASH_PART_SEP}${SubclassComparisonView.SUBHASH}`;
+	});
+}
+
+const SubclassComparisonView = {
+	SUBHASH: `${HASH_COMP_VIEW}true`,
+	compareViewActive: false,
+	_$body: null,
+	_$wrpBookUnder: null,
+	_$wrpBook: null,
+
+	open: () => {
+		function hashTeardown () {
+			window.location.hash = window.location.hash.replace(SubclassComparisonView.SUBHASH, "").replace(/,$/, "");
 		}
 
-		if (compareViewActive) return;
-		compareViewActive = true;
+		if (SubclassComparisonView.compareViewActive) return;
+		SubclassComparisonView.compareViewActive = true;
 
 		const $body = $(`body`);
-		$body.css("overflow", "hidden");
 		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
 		const $wrpBook = $(`<div class="book-view"/>`);
+		SubclassComparisonView._$body = $body;
+		SubclassComparisonView._$wrpBookUnder = $wrpBookUnder;
+		SubclassComparisonView._$wrpBook = $wrpBook;
+
+		$body.css("overflow", "hidden");
 
 		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
 		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
-			.on("click", (evt) => {
-				evt.stopPropagation();
-				teardown();
+			.on("click", () => {
+				hashTeardown();
 			});
 		$brdTop.find(`div`).append($btnClose);
 		$bkTbl.append($brdTop);
@@ -903,18 +930,32 @@ function initCompareMode () {
 		$tblRow.append($(`<div style="overflow: auto; max-height: calc(100vh - 16px); ${numShown ? "" : "display: none;"}"/>`).append($tbl));
 		const $msgRow = $(`<tr ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">Please select some subclasses first</span><br></td></tr>`);
 		$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
-			teardown();
+			hashTeardown();
 		}));
 		$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
 
 		$wrpBook.append($bkTbl);
 		$body.append($wrpBookUnder).append($wrpBook);
-	});
-}
+	},
 
-function initReaderMode () {
-	let bookViewActive = false;
-	$(`#btn-readmode`).on("click", () => {
+	teardown: () => {
+		if (SubclassComparisonView.compareViewActive) {
+			SubclassComparisonView._$body.css("overflow", "");
+			SubclassComparisonView._$wrpBookUnder.remove();
+			SubclassComparisonView._$wrpBook.remove();
+			SubclassComparisonView.compareViewActive = false;
+		}
+	}
+};
+
+const ClassBookView = {
+	SUBHASH: `${HASH_BOOK_VIEW}true`,
+	bookViewActive: false,
+	_$body: null,
+	_$wrpBookUnder: null,
+	_$wrpBook: null,
+
+	open: () => {
 		function tglCf ($bkTbl, $cfToggle) {
 			$bkTbl.find(`.class-features`).toggle();
 			$cfToggle.toggleClass("cf-active");
@@ -923,29 +964,30 @@ function initReaderMode () {
 			$bkTbl.find(`.subclass-features-${i}`).toggle();
 			$scToggle.toggleClass("active");
 		}
-		function teardown () {
-			$body.css("overflow", "");
-			$wrpBookUnder.remove();
-			$wrpBook.remove();
-			bookViewActive = false;
+
+		function hashTeardown () {
+			window.location.hash = window.location.hash.replace(ClassBookView.SUBHASH, "").replace(/,$/, "");
 		}
 
-		if (bookViewActive) return;
-		bookViewActive = true;
+		if (ClassBookView.bookViewActive) return;
+		ClassBookView.bookViewActive = true;
 
 		const $body = $(`body`);
-		$body.css("overflow", "hidden");
 		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
 		const $wrpBook = $(`<div class="book-view"/>`);
+		ClassBookView._$body = $body;
+		ClassBookView._$wrpBookUnder = $wrpBookUnder;
+		ClassBookView._$wrpBook = $wrpBook;
+
+		$body.css("overflow", "hidden");
 
 		// main panel
 		const $pnlContent = $(`<div class="pnl-content"/>`);
 		const $bkTbl = $(`<table class="stats stats-book"/>`);
 		const $brdTop = $(`<tr><th class="border close-border" colspan="6"><div/></th></tr>`);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
-			.on("click", (evt) => {
-				evt.stopPropagation();
-				teardown();
+			.on("click", () => {
+				hashTeardown();
 			});
 		$brdTop.find(`div`).append($btnClose);
 		$bkTbl.append($brdTop);
@@ -1008,7 +1050,7 @@ function initReaderMode () {
 		});
 
 		const $menClose = $(`<span class="pnl-link pnl-link-close">\u21FD Close</span>`).on("click", () => {
-			teardown();
+			hashTeardown();
 		});
 		$pnlMenu.append($menClose);
 
@@ -1017,5 +1059,20 @@ function initReaderMode () {
 
 		$wrpBook.append($pnlMenu).append($pnlContent).append($pnlBlank);
 		$body.append($wrpBookUnder).append($wrpBook);
+	},
+
+	teardown: () => {
+		if (ClassBookView.bookViewActive) {
+			ClassBookView._$body.css("overflow", "");
+			ClassBookView._$wrpBookUnder.remove();
+			ClassBookView._$wrpBook.remove();
+			ClassBookView.bookViewActive = false;
+		}
+	}
+};
+
+function initReaderMode () {
+	$(`#btn-readmode`).on("click", () => {
+		window.location.hash += `${HASH_PART_SEP}${ClassBookView.SUBHASH}`;
 	});
 }

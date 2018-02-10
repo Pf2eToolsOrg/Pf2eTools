@@ -209,6 +209,27 @@ table.stats div.statsBlockInsetReadaloud {
 .hoverbox .hoverborder .window-title {
 	color: #922610;
 }
+
+.rollbox {
+	background: white;
+}
+
+.rollbox .ipt-roll {
+	background: white;
+}
+
+.rollbox-min,
+.rollbox .head-roll {
+	background: #d3d3d3;
+}
+.rollbox-min:hover,
+.rollbox .head-roll:hover {
+	background: #e3e3e3;
+}
+
+.rollbox .out-roll .out-roll-item {
+	background: #b0b0b060;
+}
 `;
 const NIGHT_CSS =
 	`
@@ -495,6 +516,27 @@ table.stats div.statsBlockInsetReadaloud {
 
 .hoverbox .hoverborder .window-title {
 	color: lightgrey;
+}
+
+.rollbox {
+	background: #272727;
+}
+
+.rollbox .ipt-roll {
+	background: #272727;
+}
+
+.rollbox-min,
+.rollbox .head-roll {
+	background: #101010;
+}
+.rollbox-min:hover,
+.rollbox .head-roll:hover {
+	background: #161616;
+}
+
+.rollbox .out-roll .out-roll-item {
+	background: #50505060;
 }
 `;
 
