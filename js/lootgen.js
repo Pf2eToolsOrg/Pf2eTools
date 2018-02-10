@@ -61,7 +61,7 @@ function rollLoot () {
 		if (artgems) {
 			let artgemstable = loot.artobjects ? lootList.artobjects : lootList.gemstones;
 			for (let i = 0; i < artgemstable.length; i++) if (artgemstable[i].type === artgems.type) artgemstable = artgemstable[i];
-			const roll = EntryRenderer.dice.randomise(artgems.amount);
+			const roll = EntryRenderer.dice.parseRandomise(artgems.amount).total;
 			const gems = [];
 			for (let i = 0; i < roll; i++) gems.push(artgemstable.table[randomNumber(0, artgemstable.table.length - 1)]);
 			$("#lootoutput ul:eq(0)").append("<li>" + (roll > 1 ? "x" + roll + " " : "") + Parser._addCommas(artgems.type) + " gp " + (loot.artobjects ? "art object" : "gemstone") + (roll > 1 ? "s" : "") + ":<ul>" + sortArrayAndCountDupes(gems) + "</ul></li>");
@@ -86,7 +86,7 @@ function rollLoot () {
 						magicitemstable = magicitemstable[tablearrayentry];
 					}
 				}
-				const roll = EntryRenderer.dice.randomise(curamount);
+				const roll = EntryRenderer.dice.parseRandomise(curamount).total;
 				const magicitems = [];
 				for (let i = 0; i < roll; i++) {
 					let curmagicitem = null;
@@ -139,7 +139,7 @@ function generateCoinsFromLoot (loot) {
 	for (let i = coins.length - 1; i >= 0; i--) {
 		if (!coins[i]) continue;
 		const multiplier = coins[i].split("*")[1];
-		let rolledValue = EntryRenderer.dice.randomise(coins[i].split("*")[0]);
+		let rolledValue = EntryRenderer.dice.parseRandomise(coins[i].split("*")[0]).total;
 		if (multiplier) rolledValue *= parseInt(multiplier);
 		const coin = {"denomination": coinnames[i], "value": rolledValue};
 		retVal.push(coin);
