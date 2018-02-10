@@ -1711,6 +1711,7 @@ EntryRenderer.psionic = {
 EntryRenderer.hover = {
 	linkCache: {},
 	_isInit: false,
+	_active: {},
 
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
@@ -1740,6 +1741,18 @@ EntryRenderer.hover = {
 		return EntryRenderer.hover.linkCache[page] && EntryRenderer.hover.linkCache[page][source] && EntryRenderer.hover.linkCache[page][source][hash];
 	},
 
+	_teardownWindow: (hoverId) => {
+		const obj = EntryRenderer.hover._active[hoverId];
+		if (obj) {
+			obj.$ele.attr("data-hover-active", false);
+			obj.$hov.remove();
+			$(document).off(obj.mouseUpId);
+			$(document).off(obj.mouseMoveId);
+			$(window).off(obj.resizeId);
+		}
+		delete EntryRenderer.hover._active[hoverId];
+	},
+
 	_makeWindow: () => {
 		if (!EntryRenderer.hover._curHovering) {
 			reset();
@@ -1763,7 +1776,7 @@ EntryRenderer.hover = {
 		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
 		const content = EntryRenderer.hover._curHovering.renderFunction(toRender);
 
-		$(ele).data("hover-active", true);
+		$(ele).attr("data-hover-active", true);
 
 		const offset = $(ele).offset();
 		const vpOffsetT = offset.top - $(document).scrollTop();
@@ -1776,23 +1789,16 @@ EntryRenderer.hover = {
 
 		const $body = $(`body`);
 		const $ele = $(ele);
-		// make a fake invisible copy of the link in outer space, which our mouse now hovers over
-		const $fakeHov = $(`<a class="hoverlink" data-hover-id="${$ele.data("hover-id")}" href="${$ele.prop("href")}"/>`)
-			.width($ele.width())
-			.height($ele.height())
-			.css("top", $ele.offset().top - $(window).scrollTop())
-			.css("left", $ele.offset().left - $(window).scrollLeft());
-		$body.append($fakeHov);
 
-		$fakeHov.on("mouseleave", (evt) => {
-			$fakeHov.remove();
+		$ele.on("mouseleave", (evt) => {
 			EntryRenderer.hover._cleanWindows();
 			if (!$brdrTop.data("perm") && !evt.shiftKey) {
 				teardown();
 			} else {
-				$(ele).data("hover-active", true);
+				$(ele).attr("data-hover-active", true);
 				// use attr to let the CSS see it
 				$brdrTop.attr("data-perm", true);
+				delete EntryRenderer.hover._active[hoverId];
 			}
 		});
 
@@ -1843,12 +1849,18 @@ EntryRenderer.hover = {
 			const curState = $brdrTop.attr("data-display-title");
 			$brdrTop.attr("data-display-title", curState === "false");
 			$brdrTop.attr("data-perm", true);
+			delete EntryRenderer.hover._active[hoverId];
 		});
 		$brdrTop.append($hovTitle);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
-				teardown();
+				// alternate teardown for 'x' button
+				$ele.attr("data-hover-active", false);
+				$hov.remove();
+				$(document).off(mouseUpId);
+				$(document).off(mouseMoveId);
+				$(window).off(resizeId);
 			});
 		$brdrTop.append($btnClose);
 		$hov.append($brdrTop)
@@ -1856,6 +1868,15 @@ EntryRenderer.hover = {
 			.append(`<div class="hoverborder"></div>`);
 
 		$body.append($hov);
+		if (!permanent) {
+			EntryRenderer.hover._active[hoverId] = {
+				$hov: $hov,
+				$ele: $ele,
+				resizeId: resizeId,
+				mouseUpId: mouseUpId,
+				mouseMoveId: mouseMoveId,
+			};
+		}
 
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
@@ -1876,11 +1897,6 @@ EntryRenderer.hover = {
 				$hov.css("top", 0);
 			} else if (hvTop >= $(window).height() - EntryRenderer.hover._BAR_HEIGHT) {
 				$hov.css("top", $(window).height() - EntryRenderer.hover._BAR_HEIGHT);
-			} else if (first) {
-				const calcHeight = $hov.height();
-				if (hvTop + calcHeight > $(window).height()) {
-					$hov.css("top", 0);
-				}
 			}
 			// ...if horizontally clipping off screen
 			const hvLeft = parseFloat($hov.css("left"));
@@ -1892,11 +1908,7 @@ EntryRenderer.hover = {
 		}
 
 		function teardown () {
-			$(ele).data("hover-active", false);
-			$hov.remove();
-			$(document).off(mouseUpId);
-			$(document).off(mouseMoveId);
-			$(window).off(resizeId);
+			EntryRenderer.hover._teardownWindow(hoverId);
 		}
 
 		function reset () {
@@ -1918,7 +1930,7 @@ EntryRenderer.hover = {
 		}
 
 		// don't show on mobile
-		if ($(window).width() <= 768) return;
+		if ($(window).width() <= 1024) return;
 
 		const alreadyHovering = $(ele).data("hover-active");
 		if (alreadyHovering) return;
@@ -1996,15 +2008,15 @@ EntryRenderer.hover = {
 		// clean up any old event listeners
 		$(ele).off("mouseleave");
 
+		// clean up any abandoned windows
+		EntryRenderer.hover._cleanWindows();
+
 		// cancel hover if the mouse leaves
 		$(ele).on("mouseleave", () => {
 			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) {
 				EntryRenderer.hover._curHovering = null;
 			}
 		});
-
-		// clean up any abandoned windows
-		EntryRenderer.hover._cleanWindows();
 
 		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
@@ -2124,7 +2136,8 @@ EntryRenderer.hover = {
 	},
 
 	_cleanWindows: () => {
-		$(`a.hoverlink`).trigger(`mouseleave`);
+		const ks = Object.keys(EntryRenderer.hover._active);
+		ks.forEach(hovId => EntryRenderer.hover._teardownWindow(hovId));
 	}
 };
 
