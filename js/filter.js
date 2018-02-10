@@ -59,6 +59,7 @@ class FilterBox {
 		this.cookieValues = cookie ? JSON.parse(cookie) : null;
 		this.$rendered = [];
 		this.dropdownVisible = false;
+		this.modeAndOr = "OR";
 	}
 
 	/**
@@ -77,6 +78,21 @@ class FilterBox {
 		const $inputGroup = $(this.inputGroup);
 
 		const $outer = makeOuterList();
+		if (this.filterList.length > 1) {
+			const self = this;
+			const $hdrAndOr = $(`<li class="filter-item"/>`);
+			const $innHdr = $(`<div class="h-wrap">Combine filters as... </div>`);
+			const $btnAndOr = $(`<button class="btn btn-default btn-xs" style="width: 3em;">AND</button>`)
+				.data("andor", "AND")
+				.on(EVNT_CLICK, () => {
+					const nxt = $btnAndOr.data("andor") === "OR" ? "AND" : "OR";
+					self.modeAndOr = nxt;
+					$btnAndOr.text(nxt);
+					$btnAndOr.data("andor", nxt);
+				});
+			$hdrAndOr.append($innHdr.append(`<div style="display: inline-block; width: 10px;"/>`).append($btnAndOr));
+			$outer.append($hdrAndOr);
+		}
 		for (let i = 0; i < this.filterList.length; ++i) {
 			$outer.append(makeOuterItem(this, this.filterList[i], this.$miniView));
 			if (i < this.filterList.length - 1) $outer.append(makeDivider());
@@ -534,6 +550,13 @@ class FilterBox {
 		}
 	}
 
+	toDisplay (curr, ...vals) {
+		const res = this.filterList.map((f, i) => {
+			return f.isMulti ? f.toDisplay(curr, ...vals[i]) : f.toDisplay(curr, vals[i])
+		});
+		return this.modeAndOr === "AND" ? res.every(it => it) : res.find(it => it);
+	}
+
 	/**
 	 * Helper which resets an section of the filter
 	 * @param header the name of the section to reset
@@ -606,6 +629,7 @@ class Filter {
 		this.displayFn = options.displayFn;
 		this.selFn = options.selFn;
 		this.deselFn = options.deselFn;
+		this.attrName = options.attrName;
 	}
 
 	/**
@@ -691,6 +715,7 @@ class MultiFilter {
 	constructor (categoryName, ...filters) {
 		this.categoryName = categoryName;
 		this.filters = filters;
+		this.isMulti = true;
 	}
 
 	/**
