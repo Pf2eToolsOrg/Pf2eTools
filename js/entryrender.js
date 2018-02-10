@@ -1874,7 +1874,7 @@ EntryRenderer.hover = {
 				$ele: $ele,
 				resizeId: resizeId,
 				mouseUpId: mouseUpId,
-				mouseMoveId: mouseMoveId,
+				mouseMoveId: mouseMoveId
 			};
 		}
 
@@ -2198,7 +2198,7 @@ EntryRenderer.dice = {
 		const $outRoll = $(`<div class="out-roll">`);
 		const $iptRoll = $(`<input class="ipt-roll form-control" autocomplete="off" spellcheck="false">`)
 			.on("keypress", (e) => {
-				if (e.which === 13) { //return
+				if (e.which === 13) { // return
 					EntryRenderer.dice.roll($iptRoll.val(), {
 						user: true,
 						name: "Anon"
@@ -2312,12 +2312,12 @@ EntryRenderer.dice = {
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
 			$out.prepend(`
-				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 `: ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
+				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
 					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
-					<span class="roll ${v.allMax ? "roll-max": v.allMin ? "roll-min" : ""}">${v.total}</span>
+					<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>
 					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
 				</div>`);
-		}  else {
+		} else {
 			$out.prepend(`<div class="out-roll-item">Invalid roll!</div>`);
 		}
 		EntryRenderer.dice._scrollBottom();
@@ -2412,15 +2412,14 @@ EntryRenderer.dice = {
 
 			switch (state) {
 				case S_NONE:
-					if (c === "+") {
-					} else if (c === "-") {
+					if (c === "-") {
 						cur.neg = !cur.neg;
 					} else if (isNumber(c)) {
 						temp += c;
 						state = S_COUNT;
 					} else if (c === "d") {
 						state = S_FACES;
-					} else {
+					} else if (c !== "+") {
 						return null;
 					}
 					break;
