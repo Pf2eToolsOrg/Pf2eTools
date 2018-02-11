@@ -148,14 +148,14 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const r = raceList[$(item.elm).attr(FLTR_ID)];
-
-			const rightSource = sourceFilter.toDisplay(f, r.source);
-			const rightAsi = asiFilter.toDisplay(f, r._fAbility);
-			const rightSize = sizeFilter.toDisplay(f, r.size);
-			const rightSpeed = speedFilter.toDisplay(f, r._fSpeed);
-			const rightMisc = miscFilter.toDisplay(f, r._fMisc);
-
-			return rightSource && rightAsi && rightSize && rightSpeed && rightMisc;
+			return filterBox.toDisplay(
+				f,
+				r.source,
+				r._fAbility,
+				r.size,
+				r._fSpeed,
+				r._fMisc
+			);
 		})
 	}
 

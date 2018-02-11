@@ -15,15 +15,15 @@ window.onload = function load () {
 };
 
 function onJsonLoad (data) {
-	raceData = data.race;
+	raceData = EntryRenderer.race.mergeSubraces(data.race);
 
 	$("#rollbutton").click(rollstats);
 
 	$(function () {
 		$("#reset").click(function () {
-			$(".base").val(8)
-			$(".choose").prop("checked", false)
-			changeTotal()
+			$(".base").val(8);
+			$(".choose").prop("checked", false);
+			changeTotal();
 			changeBase()
 		});
 	});

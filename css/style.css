@@ -342,11 +342,20 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	padding: 6px;
 }
 
+.rollbox .out-roll .out-roll-wrp .out-roll-item:first-child {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+.rollbox .out-roll .out-roll-wrp .out-roll-item:last-child {
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
 .rollbox .out-roll .out-roll-item {
 	width: calc(100% - 6px);
 	padding: 1px 3px;
 	margin: 1px 3px;
-	border-radius: 4px;
 	word-wrap: break-word;
 }
 
@@ -1531,19 +1540,31 @@ table.stats p.subtrait {
 	display: flex;
 }
 
-.h-wrap > .btn-group .btn:first-child {
+.h-wrap > .btn-group.quick-btns .btn:first-child {
 	text-decoration: underline;
 	text-decoration-color: #337ab7;
 }
 
-.h-wrap > .btn-group .btn:nth-child(2) {
+.h-wrap > .btn-group.quick-btns .btn:nth-child(2) {
 	text-decoration: underline;
 	text-decoration-color: #c3c3c3;
 }
 
-.h-wrap > .btn-group .btn:nth-child(3) {
+.h-wrap > .btn-group.quick-btns .btn:nth-child(3) {
 	text-decoration: underline;
 	text-decoration-color: #b52e10;
+}
+
+.h-wrap > .btn-group.andor-btns .btn {
+	font-weight: bold;
+}
+
+.h-wrap > .btn-group.andor-btns .btn:nth-child(1) {
+	color: #337ab7;
+}
+
+.h-wrap > .btn-group.andor-btns .btn:nth-child(2) {
+	color: #b52e10;
 }
 
 .filter-item > div:not(.pill-grid) {

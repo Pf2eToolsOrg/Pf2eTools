@@ -118,13 +118,14 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const p = INVOCATION_LIST[$(item.elm).attr(FLTR_ID)];
-
-			const rightSource = sourceFilter.toDisplay(f, p.source);
-			const rightPact = pactFilter.toDisplay(f, p.prerequisites.pact);
-			const rightPatron = patronFilter.toDisplay(f, p.prerequisites.patron);
-			const rightSpell = spellFilter.toDisplay(f, p.prerequisites.spell);
-			const rightLevel = levelFilter.toDisplay(f, p.prerequisites.level);
-			return rightSource && rightPact && rightPatron && rightSpell && rightLevel;
+			return filterBox.toDisplay(
+				f,
+				p.source,
+				p.prerequisites.pact,
+				p.prerequisites.patron,
+				p.prerequisites.spell,
+				p.prerequisites.level
+			);
 		});
 	}
 

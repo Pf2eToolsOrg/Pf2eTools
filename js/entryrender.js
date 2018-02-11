@@ -2149,7 +2149,7 @@ EntryRenderer.dice = {
 	_$head: null,
 	_hist: [],
 	_histIndex: null,
-	_lastRolledBy: null,
+	_$lastRolledBy: null,
 
 	randomise: (max) => {
 		return 1 + Math.floor(Math.random() * max);
@@ -2304,8 +2304,8 @@ EntryRenderer.dice = {
 
 	_handleRoll: (toRoll, rolledBy) => {
 		EntryRenderer.dice._showBox();
-		const $out = EntryRenderer.dice._$outRoll;
 		EntryRenderer.dice._checkHandleName(rolledBy.name);
+		const $out = EntryRenderer.dice._$lastRolledBy;
 
 		if (toRoll) {
 			const v = EntryRenderer.dice._rollParsed(toRoll);
@@ -2332,9 +2332,10 @@ EntryRenderer.dice = {
 	},
 
 	_checkHandleName: (name) => {
-		if (EntryRenderer.dice._lastRolledBy !== name) {
-			EntryRenderer.dice._lastRolledBy = name;
+		if (!EntryRenderer.dice._$lastRolledBy || EntryRenderer.dice._$lastRolledBy.data("name") !== name) {
 			EntryRenderer.dice._$outRoll.prepend(`<div class="text-muted out-roll-id">${name}</div>`);
+			EntryRenderer.dice._$lastRolledBy = $(`<div class="out-roll-wrp"/>`).data("name", name);
+			EntryRenderer.dice._$outRoll.prepend(EntryRenderer.dice._$lastRolledBy);
 		}
 	},
 

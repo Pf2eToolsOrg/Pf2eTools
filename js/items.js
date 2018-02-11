@@ -146,15 +146,17 @@ function populateTablesAndFilters () {
 		const f = filterBox.getValues();
 		function listFilter (item) {
 			const i = itemList[$(item.elm).attr(FLTR_ID)];
-
-			return sourceFilter.toDisplay(f, i.source) &&
-				typeFilter.toDisplay(f, i.procType) &&
-				tierFilter.toDisplay(f, i._fTier) &&
-				rarityFilter.toDisplay(f, i.rarity) &&
-				propertyFilter.toDisplay(f, i._fProperties) &&
-				attunementFilter.toDisplay(f, i.attunementCategory) &&
-				categoryFilter.toDisplay(f, i.category) &&
-				miscFilter.toDisplay(f, i._fMisc);
+			return filterBox.toDisplay(
+				f,
+				i.source,
+				i.procType,
+				i._fTier,
+				i.rarity,
+				i._fProperties,
+				i.attunementCategory,
+				i.category,
+				i._fMisc
+			);
 		}
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);

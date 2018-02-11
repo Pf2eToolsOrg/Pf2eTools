@@ -93,6 +93,7 @@ function _getListElem (link, getIndex) {
 function _freshLoad () {
 	// defer this, in case the list needs to filter first
 	setTimeout(() => {
-		location.replace($("#listcontainer").find(".list a").attr('href'));
+		const goTo = $("#listcontainer").find(".list a").attr('href');
+		if (goTo) location.replace(goTo);
 	}, 1);
 }

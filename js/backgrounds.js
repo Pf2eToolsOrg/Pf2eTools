@@ -54,7 +54,7 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const bg = bgList[$(item.elm).attr(FLTR_ID)];
-			return sourceFilter.toDisplay(f, bg.source);
+			return filterBox.toDisplay(f, bg.source);
 		});
 	}
 
