@@ -338,7 +338,7 @@ function pageInit (loadedSources) {
 
 function handleFilterChange () {
 	const f = filterBox.getValues();
-	list.filter(function (item) {
+	list.filter((item, i) => {
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 
 		return filterBox.toDisplay(
