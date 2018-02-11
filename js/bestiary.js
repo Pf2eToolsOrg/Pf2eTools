@@ -139,13 +139,15 @@ function handleFilterChange () {
 	const f = filterBox.getValues();
 	list.filter(function (item) {
 		const m = monsters[$(item.elm).attr(FLTR_ID)];
-
-		return sourceFilter.toDisplay(f, m.source) &&
-			crFilter.toDisplay(f, m.cr) &&
-			sizeFilter.toDisplay(f, m.size) &&
-			typeFilter.toDisplay(f, m._pTypes.type) &&
-			tagFilter.toDisplay(f, m._pTypes.tags) &&
-			miscFilter.toDisplay(f, m._fMisc);
+		return filterBox.toDisplay(
+			f,
+			m.source,
+			m.cr,
+			m.size,
+			m._pTypes.type,
+			m._pTypes.tags,
+			m._fMisc
+		);
 	});
 }
 

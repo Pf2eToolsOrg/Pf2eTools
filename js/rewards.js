@@ -63,8 +63,11 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const r = rewardList[$(item.elm).attr(FLTR_ID)];
-
-			return sourceFilter.toDisplay(f, r.source) && typeFilter.toDisplay(f, r.type);
+			return filterBox.toDisplay(
+				f,
+				r.source,
+				r.type
+			);
 		});
 	}
 

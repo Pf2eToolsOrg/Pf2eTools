@@ -745,7 +745,7 @@ class Filter {
 
 			if (map._andOr.red === "OR") {
 				if (totals.no > 0) {
-					hide = map[toCheck] <= 0;
+					hide = map[toCheck] === -1;
 				}
 			} else {
 				hide = totals.no === 1 && map[toCheck] === -1;

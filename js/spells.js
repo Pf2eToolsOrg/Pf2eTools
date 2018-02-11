@@ -340,7 +340,6 @@ function handleFilterChange () {
 	const f = filterBox.getValues();
 	list.filter(item => {
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
-
 		return filterBox.toDisplay(
 			f,
 			s.source,

@@ -110,12 +110,12 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const p = PSIONIC_LIST[$(item.elm).attr(FLTR_ID)];
-
-			const rightSource = sourceFilter.toDisplay(f, p.source);
-			const rightType = typeFilter.toDisplay(f, p.type);
-			const rightOrder = orderFilter.toDisplay(f, p.order);
-
-			return rightSource && rightType && rightOrder;
+			return filterBox.toDisplay(
+				f,
+				p.source,
+				p.type,
+				p.order
+			);
 		});
 	}
 

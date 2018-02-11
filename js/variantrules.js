@@ -60,8 +60,7 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const r = rulesList[$(item.elm).attr(FLTR_ID)];
-
-			return sourceFilter.toDisplay(f, r.source);
+			return filterBox.toDisplay(f, r.source);
 		});
 	}
 
