@@ -154,7 +154,7 @@ function onJsonLoad (data) {
 				r._fAbility,
 				r.size,
 				r._fSpeed,
-				r._fMisc,
+				r._fMisc
 			);
 		})
 	}
