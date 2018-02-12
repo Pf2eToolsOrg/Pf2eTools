@@ -290,7 +290,6 @@ function EntryRenderer () {
 				const roRender = r.type === "row" ? r.row : r;
 				for (let j = 0; j < roRender.length; ++j) {
 					let toRenderCell;
-					const dataStr = getCellDataStr(roRender[j]);
 					if (roRender[j].type === "cell") {
 						if (roRender[j].entry) {
 							toRenderCell = roRender[j].entry;
