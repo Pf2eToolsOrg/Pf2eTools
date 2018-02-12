@@ -298,7 +298,7 @@ function EntryRenderer () {
 							if (roRender[j].roll.entry) {
 								toRenderCell = roRender[j].roll.entry;
 							} else if (roRender[j].roll.exact) {
-								toRenderCell =  roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
+								toRenderCell = roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
 							} else {
 								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`
 							}
@@ -2319,9 +2319,9 @@ EntryRenderer.dice = {
 		}
 
 		const rolledBy = {
-				name: attemptToGetName(),
-				label: name || attemptToGetTitle(ele)
-			};
+			name: attemptToGetName(),
+			label: name || attemptToGetTitle(ele)
+		};
 		if ($ele.parent().is("th")) {
 			EntryRenderer.dice.rollEntry(
 				entry,
