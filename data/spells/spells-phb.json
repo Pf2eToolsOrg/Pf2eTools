@@ -40,8 +40,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage.",
-				"This spells damage increases by 1d6 when you reach 5th Level (2d6), 11th level (3d6) and 17th level (4d6)."
+				"You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take {@dice 1d6} acid damage.",
+				"This spells damage increases by {@dice 1d6} when you reach 5th Level ({@dice 2d6}), 11th level ({@dice 3d6}) and 17th level ({@dice 4d6})."
 			],
 			"page": 211,
 			"damageInflict": [
@@ -282,7 +282,7 @@
 					"type": "entries",
 					"name": "Natural Weapons",
 					"entries": [
-						"You grow claws, fangs, spines, horns, or a different natural weapon of your choice. Your unarmed strikes deal 1d6 bludgeoning, piercing, or slashing damage, as appropriate to the natural weapon you chose, and you are proficient with you unarmed strikes. Finally, the natural weapon is magic and you have a +1 bonus to the attack and damage rolls you make using it."
+						"You grow claws, fangs, spines, horns, or a different natural weapon of your choice. Your unarmed strikes deal {@dice 1d6} bludgeoning, piercing, or slashing damage, as appropriate to the natural weapon you chose, and you are proficient with you unarmed strikes. Finally, the natural weapon is magic and you have a +1 bonus to the attack and damage rolls you make using it."
 					]
 				}
 			],
@@ -659,7 +659,7 @@
 							"Tiny",
 							"20",
 							"18",
-							"+8 to hit, 1d4+4 damage",
+							"+8 to hit, {@dice 1d4+4} damage",
 							"4",
 							"18"
 						],
@@ -667,7 +667,7 @@
 							"Small",
 							"25",
 							"16",
-							"+6 to hit, 1d8+2 damage",
+							"+6 to hit, {@dice 1d8+2} damage",
 							"6",
 							"14"
 						],
@@ -675,7 +675,7 @@
 							"Medium",
 							"40",
 							"13",
-							"+5 to hit. 2d6+1 damage",
+							"+5 to hit. {@dice 2d6+1} damage",
 							"10",
 							"12"
 						],
@@ -683,7 +683,7 @@
 							"Large",
 							"50",
 							"10",
-							"+6 to hit. 2d10+2 damage",
+							"+6 to hit. {@dice 2d10+2} damage",
 							"14",
 							"10"
 						],
@@ -691,7 +691,7 @@
 							"Huge",
 							"80",
 							"10",
-							"+8 to hit. 2d12+4 damage",
+							"+8 to hit. {@dice 2d12+4} damage",
 							"18",
 							"6"
 						]
@@ -1300,14 +1300,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You invoke the power of Hadar, the Dark Hunger. Tendrils of dark energy erupt from you and batter all creatures within 10 feet of you. Each creature in that area must make a Strength saving throw. On a failed save, a target takes 2d6 necrotic damage and can't take reactions until its next turn. On a successful save, the creature takes half damage, but suffers no other effect."
+				"You invoke the power of Hadar, the Dark Hunger. Tendrils of dark energy erupt from you and batter all creatures within 10 feet of you. Each creature in that area must make a Strength saving throw. On a failed save, a target takes {@dice 2d6} necrotic damage and can't take reactions until its next turn. On a successful save, the creature takes half damage, but suffers no other effect."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d6} for each slot level above 1st."
 					]
 				}
 			],
@@ -1623,7 +1623,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Healing energy radiates from you in an aura with a 30-foot radius. Until the spell ends, the aura moves with you, centered on you. You can use a bonus action to cause one creature in the aura (including you) to regain 2d6 hit points."
+				"Healing energy radiates from you in an aura with a 30-foot radius. Until the spell ends, the aura moves with you, centered on you. You can use a bonus action to cause one creature in the aura (including you) to regain {@dice 2d6} hit points."
 			],
 			"page": 216
 		},
@@ -1770,7 +1770,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Up to three creatures of your choice that you can see within range must make Charisma saving throws. Whenever a target that fails this saving throw makes an attack roll or a saving throw before the spell ends, the target must roll a d4 and subtract the number rolled from the attack roll or saving throw."
+				"Up to three creatures of your choice that you can see within range must make Charisma saving throws. Whenever a target that fails this saving throw makes an attack roll or a saving throw before the spell ends, the target must roll a {@dice d4} and subtract the number rolled from the attack roll or saving throw."
 			],
 			"entriesHigherLevel": [
 				{
@@ -1837,7 +1837,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit a creature with a weapon attack before this spell ends, your weapon crackles with force, and the attack deals an extra 5d10 force damage to the target. Additionally, if this attack reduces the target to 50 hit points of fewer, you banish it. If the target is native to a different plane of existence than the one you're on, the target disappears, returning to its home plane. If the target is native to the plane you're on, the creature vanishes into a harmless demiplane. While there, the target is {@condition incapacitated}. It remains there until the spell ends, at which point the target reappears in the space it left or in the nearest unoccupied space if that space is occupied."
+				"The next time you hit a creature with a weapon attack before this spell ends, your weapon crackles with force, and the attack deals an extra {@dice 5d10} force damage to the target. Additionally, if this attack reduces the target to 50 hit points of fewer, you banish it. If the target is native to a different plane of existence than the one you're on, the target disappears, returning to its home plane. If the target is native to the plane you're on, the creature vanishes into a harmless demiplane. While there, the target is {@condition incapacitated}. It remains there until the spell ends, at which point the target reappears in the space it left or in the nearest unoccupied space if that space is occupied."
 			],
 			"page": 216,
 			"damageInflict": [
@@ -2331,7 +2331,7 @@
 						"Choose one ability score. While cursed, the target has disadvantage on ability checks and saving throws made with that ability score.",
 						"While cursed, the target has disadvantage on attack rolls against you.",
 						"While cursed, the target must make a Wisdom saving throw at the start of each of its turns. If it fails, it wastes its action that turn doing nothing.",
-						"While the target is cursed, your attacks and spells deal an extra 1d8 necrotic damage to the target."
+						"While the target is cursed, your attacks and spells deal an extra {@dice 1d8} necrotic damage to the target."
 					]
 				},
 				"A remove curse spell ends this effect. At the DM's option, you may choose an alternative curse effect, but it should be no more powerful than those described above. The DM has final say on such a curse's effect."
@@ -2398,9 +2398,9 @@
 				"You create a Large hand of shimmering, translucent force in an unoccupied space that you can see within range. The hand lasts for the spell's duration, and it moves at your command, mimicking the movements of your own hand.",
 				"The hand is an object that has AC 20 and hit points equal to your hit point maximum. If it drops to 0 hit points, the spell ends. It has a Strength of 26 (+8) and a Dexterity of 10 (+0). The hand doesn't fill its space.",
 				"When you cast the spell and as a bonus action on your subsequent turns, you can move the hand up to 60 feet and then cause one of the following effects with it.",
-				"Clenched Fist. The hand strikes one creature or object within 5 feet of it. Make a melee spell attack for the hand using your game statistics. On a hit, the target takes 4d8 force damage.",
+				"Clenched Fist. The hand strikes one creature or object within 5 feet of it. Make a melee spell attack for the hand using your game statistics. On a hit, the target takes {@dice 4d8} force damage.",
 				"Forceful Hand. The hand attempts to push a creature within 5 feet of it in a direction you choose. Make a check with the hand's Strength contested by the Strength (Athletics) check of the target. If the target is Medium or smaller, you have advantage on the check. If you succeed, the hand pushes the target up to 5 feet plus a number of feet equal to five times your spellcasting ability modifier. The hand moves with the target to remain within 5 feet of it.",
-				"Grasping Hand. The hand attempts to grapple a Huge or smaller creature within 5 feet of it. You use the hand's Strength score to resolve the grapple. If the target is Medium or smaller, you have advantage on the check. While the hand is grappling the target, you can use a bonus action to have the hand crush it. When you do so, the target takes bludgeoning damage equal to 2d6 + your spellcasting ability modifier.",
+				"Grasping Hand. The hand attempts to grapple a Huge or smaller creature within 5 feet of it. You use the hand's Strength score to resolve the grapple. If the target is Medium or smaller, you have advantage on the check. While the hand is grappling the target, you can use a bonus action to have the hand crush it. When you do so, the target takes bludgeoning damage equal to {@dice 2d6} + your spellcasting ability modifier.",
 				"Interposing Hand. The hand interposes itself between you and a creature you choose until you give the hand a different command. The hand moves to stay between you and the target, providing you with half cover against the target. The target can't move through the hand's space if its Strength score is less than or equal to the hand's Strength score. If its Strength score is higher than the hand's Strength score, the target can move toward you through the hand's space, but that space is difficult terrain for the target."
 			],
 			"entriesHigherLevel": [
@@ -2408,7 +2408,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the damage from the clenched fist option increases by 2d8 and the damage from the grasping hand increases by 2d6 for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the damage from the clenched fist option increases by {@dice 2d8} and the damage from the grasping hand increases by {@dice 2d6} for each slot level above 5th."
 					]
 				}
 			],
@@ -2463,7 +2463,7 @@
 			"source": "PHB",
 			"entries": [
 				"You create a vertical wall of whirling, razor-sharp blades made of magical energy. The wall appears within range and lasts for the duration. You can make a straight wall up to 100 feet long, 20 feet high, and 5 feet thick, or a ringed wall up to 60 feet in diameter, 20 feet high, and 5 feet thick. The wall provides three-quarters cover to creatures behind it, and its space is difficult terrain.",
-				"When a creature enters the wall's area for the first time on a turn or starts its turn there, the creature must make a Dexterity saving throw. On a failed save, the creature takes 6d10 slashing damage. On a successful save, the creature takes half as much damage."
+				"When a creature enters the wall's area for the first time on a turn or starts its turn there, the creature must make a Dexterity saving throw. On a failed save, the creature takes {@dice 6d10} slashing damage. On a successful save, the creature takes half as much damage."
 			],
 			"page": 218,
 			"damageInflict": [
@@ -2611,7 +2611,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target can roll a d4 and add the number rolled to the attack roll or saving throw."
+				"You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target can roll a {@dice d4} and add the number rolled to the attack roll or saving throw."
 			],
 			"entriesHigherLevel": [
 				{
@@ -2735,7 +2735,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Necromantic energy washes over a creature of your choice that you can see within range, draining moisture and vitality from it. The target must make a Constitution saving throw. The target takes 8d8 necrotic damage on a failed save, or half as much damage on a successful one. This spell has no effect on undead or constructs.",
+				"Necromantic energy washes over a creature of your choice that you can see within range, draining moisture and vitality from it. The target must make a Constitution saving throw. The target takes {@dice 8d8} necrotic damage on a failed save, or half as much damage on a successful one. This spell has no effect on undead or constructs.",
 				"If you target a plant creature or a magical plant, it makes the saving throw with disadvantage, and the spell deals maximum damage to it.",
 				"If you target a nonmagical plant that isn't a creature, such as a tree or shrub, it doesn't make a saving throw, it simply withers and dies."
 			],
@@ -2744,7 +2744,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8 for each slot level above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@dice 1d8} for each slot level above 4th."
 					]
 				}
 			],
@@ -2807,7 +2807,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit a creature with a melee weapon attack during this spell's duration, you weapon flares with a bright light, and the attack deals an extra 3d8 radiant damage to the target. Additionally, the target must succeed on a Constitution saving throw or be {@condition blinded} until the spell ends.",
+				"The next time you hit a creature with a melee weapon attack during this spell's duration, you weapon flares with a bright light, and the attack deals an extra {@dice 3d8} radiant damage to the target. Additionally, the target must succeed on a Constitution saving throw or be {@condition blinded} until the spell ends.",
 				"A creature {@condition blinded} by this spell makes another Constitution saving throw at the end of each of its turns. On a successful save, it is no longer {@condition blinded}."
 			],
 			"page": 219,
@@ -3006,7 +3006,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Roll a d20 at the end of each of your turns for the duration of the spell. On a roll of 11 or higher, you vanish from your current plane of existence and appear in the Ethereal Plane (the spell fails and the casting is wasted if you were already on that plane). At the start of you next turn, and when the spell ends if you are on the Ethereal Plane, you return to an unoccupied space of your choice that you can see within 10 feet of the space you vanished from. If no unoccupied space is available within that range, you appear in the nearest unoccupied space (chosen at random if more than one space is equally near). You can dismiss this spell as an action.",
+				"Roll a {@dice d20} at the end of each of your turns for the duration of the spell. On a roll of 11 or higher, you vanish from your current plane of existence and appear in the Ethereal Plane (the spell fails and the casting is wasted if you were already on that plane). At the start of you next turn, and when the spell ends if you are on the Ethereal Plane, you return to an unoccupied space of your choice that you can see within 10 feet of the space you vanished from. If no unoccupied space is available within that range, you appear in the nearest unoccupied space (chosen at random if more than one space is equally near). You can dismiss this spell as an action.",
 				"While on the Ethereal Plane, you can see and hear the plane you originated from, which is cast in shades of gray, and you can't see anything more than 60 feet away. You can only affect and be affected by other creatures on the Ethereal Plane. Creature that aren't there can't perceive you or interact with you, unless they have the ability to do so."
 			],
 			"page": 219
@@ -3156,14 +3156,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit a creature with a weapon attack before this spell ends, the weapon gleams with astral radiance as you strike. The attack deals an extra 2d6 radiant damage to the target, which becomes visible if it is {@condition invisible}, and the target sheds dim light in a 5-foot radius and can't become {@condition invisible} until the spell ends."
+				"The next time you hit a creature with a weapon attack before this spell ends, the weapon gleams with astral radiance as you strike. The attack deals an extra {@dice 2d6} radiant damage to the target, which becomes visible if it is {@condition invisible}, and the target sheds dim light in a 5-foot radius and can't become {@condition invisible} until the spell ends."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the extra damage increases by 1d6 for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the extra damage increases by {@dice 1d6} for each slot level above 2nd."
 					]
 				}
 			],
@@ -3254,7 +3254,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"As you hold your hands with thumbs touching and fingers spread, a thin sheet of flames shoots forth from your outstretched fingertips. Each creature in a 15-foot cone must make a Dexterity saving throw. A creature takes 3d6 fire damage on a failed save, or half as much damage on a successful one.",
+				"As you hold your hands with thumbs touching and fingers spread, a thin sheet of flames shoots forth from your outstretched fingertips. Each creature in a 15-foot cone must make a Dexterity saving throw. A creature takes {@dice 3d6} fire damage on a failed save, or half as much damage on a successful one.",
 				"The fire ignites any flammable objects in the area that aren't being worn or carried."
 			],
 			"entriesHigherLevel": [
@@ -3262,7 +3262,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d6} for each slot level above 1st."
 					]
 				}
 			],
@@ -3339,15 +3339,15 @@
 			"source": "PHB",
 			"entries": [
 				"A storm cloud appears in the shape of a cylinder that is 10 feet tall with a 60-foot radius, centered on a point you can see 100 feet directly above you. The spell fails if you can't see a point in the air where the storm cloud could appear (for example, if you are in a room that can't accommodate the cloud).",
-				"When you cast the spell, choose a point you can see within range. A bolt of lightning flashes down from the cloud to that point. Each creature within 5 feet of that point must make a Dexterity saving throw. A creature takes 3d10 lightning damage on a failed save, or half as much damage on a successful one. On each of your turns until the spell ends, you can use your action to call down lightning in this way again, targeting the same point or a different one.",
-				"If you are outdoors in stormy conditions when you cast this spell, the spell gives you control over the existing storm instead of creating a new one. Under such conditions, the spell's damage increases by 1d10."
+				"When you cast the spell, choose a point you can see within range. A bolt of lightning flashes down from the cloud to that point. Each creature within 5 feet of that point must make a Dexterity saving throw. A creature takes {@dice 3d10} lightning damage on a failed save, or half as much damage on a successful one. On each of your turns until the spell ends, you can use your action to call down lightning in this way again, targeting the same point or a different one.",
+				"If you are outdoors in stormy conditions when you cast this spell, the spell gives you control over the existing storm instead of creating a new one. Under such conditions, the spell's damage increases by {@dice 1d10}."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher level, the damage increases by 1d10 for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher level, the damage increases by {@dice 1d10} for each slot level above 3rd."
 					]
 				}
 			],
@@ -3477,7 +3477,7 @@
 			"source": "PHB",
 			"entries": [
 				"You create a bolt of lightning that arcs toward a target of your choice that you can see within range. Three bolts then leap from that target to as many as three other targets, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts.",
-				"A target must make a Dexterity saving throw. The target takes 10d8 lightning damage on a failed save, or half as much on a successful one."
+				"A target must make a Dexterity saving throw. The target takes {@dice 10d8} lightning damage on a failed save, or half as much on a successful one."
 			],
 			"entriesHigherLevel": [
 				{
@@ -3638,9 +3638,9 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can't regain hit points until the start of your next turn. Until then, the hand clings to the target.",
+				"You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell attack against the creature to assail it with the chill of the grave. On a hit, the target takes {@dice 1d8} necrotic damage, and it can't regain hit points until the start of your next turn. Until then, the hand clings to the target.",
 				"If you hit an undead target, it also has disadvantage on attack rolls against you until the end of your next turn.",
-				"This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
+				"This spell's damage increases by {@dice 1d8} when you reach 5th level ({@dice 2d8}), 11th level ({@dice 3d8}), and 17th level ({@dice 4d8})."
 			],
 			"page": 221,
 			"damageInflict": [
@@ -3689,14 +3689,14 @@
 			"source": "PHB",
 			"entries": [
 				"You hurl a 4-inch-diameter sphere of energy at a creature that you can see within range. You choose acid, cold, fire, lightning, poison, or thunder for the type of orb you create, and then make a ranged spell attack against the target.",
-				"If the attack hits, the creature takes 3d8 damage of the type you chose."
+				"If the attack hits, the creature takes {@dice 3d8} damage of the type you chose."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d8} for each slot level above 1st."
 					]
 				}
 			],
@@ -3755,14 +3755,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A sphere of negative energy ripples out in a 60-foot-radius sphere from a point within range. Each creature in that area must make a Constitution saving throw. A target takes 8d6 necrotic damage on a failed save, or half as much damage on a successful one."
+				"A sphere of negative energy ripples out in a 60-foot-radius sphere from a point within range. Each creature in that area must make a Constitution saving throw. A target takes {@dice 8d6} necrotic damage on a failed save, or half as much damage on a successful one."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 7th level or higher, the damage increases by 2d6 for each slot level above 6th."
+						"When you cast this spell using a spell slot of 7th level or higher, the damage increases by {@dice 2d6} for each slot level above 6th."
 					]
 				}
 			],
@@ -4017,14 +4017,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You fill the air with spinning daggers in a cube 5 feet on each side, centered on a point you choose within range. A creature takes 4d4 slashing damage when it enters the spell's area for the first time on a turn or starts its turn there."
+				"You fill the air with spinning daggers in a cube 5 feet on each side, centered on a point you choose within range. A creature takes {@dice 4d4} slashing damage when it enters the spell's area for the first time on a turn or starts its turn there."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"when you cast this spell using a spell slot of 3rd level or higher, the damage increases by 2d4 for each slot level above 2nd."
+						"when you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 2d4} for each slot level above 2nd."
 					]
 				}
 			],
@@ -4122,7 +4122,7 @@
 			"source": "PHB",
 			"entries": [
 				"You create a 20-foot-radius sphere of poisonous, yellow-green fog centered on a point you choose within range. The fog spreads around corners. It lasts for the duration or until strong wind disperses the fog, ending the spell. Its area is heavily obscured.",
-				"When a creature enters the spell's area for the first time on a turn or starts its turn there, that creature must make a Constitution saving throw. The creature takes 5d8 poison damage on a failed save, or half as much damage on a successful one. Creatures are affected even if they hold their breath or don't need to breathe.",
+				"When a creature enters the spell's area for the first time on a turn or starts its turn there, that creature must make a Constitution saving throw. The creature takes {@dice 5d8} poison damage on a failed save, or half as much damage on a successful one. Creatures are affected even if they hold their breath or don't need to breathe.",
 				"The fog moves 10 feet away from you at the start of each of your turns, rolling along the surface of the ground. The vapors, being heavier than air, sink to the lowest level of the land, even pouring down openings."
 			],
 			"entriesHigherLevel": [
@@ -4130,7 +4130,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for each slot level above 5th."
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d8} for each slot level above 5th."
 					]
 				}
 			],
@@ -4187,7 +4187,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A dazzling array of flashing, colored light springs from your hand. Roll 6d10, the total is how many hit points of creatures this spell can effect. Creatures in a 15-foot cone originating from you are affected in ascending order of their current hit points (ignoring {@condition unconscious} creatures and creatures that can't see).",
+				"A dazzling array of flashing, colored light springs from your hand. Roll {@dice 6d10}, the total is how many hit points of creatures this spell can effect. Creatures in a 15-foot cone originating from you are affected in ascending order of their current hit points (ignoring {@condition unconscious} creatures and creatures that can't see).",
 				"Starting with the creature that has the lowest current hit points, each creature affected by this spell is {@condition blinded} until the spell ends. Subtract each creature's hit points from the total before moving on to the creature with the next lowest hit points. A creature's hit points must be equal to or less than the remaining total for the creature to be affected."
 			],
 			"entriesHigherLevel": [
@@ -4195,7 +4195,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, roll an additional 2d10 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, roll an additional {@dice 2d10} for each slot level above 1st."
 					]
 				}
 			],
@@ -4806,7 +4806,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A blast of cold air erupts from your hands. Each creature in a 60-foot cone must make a Constitution saving throw. A creature takes 8d8 cold damage on a failed save, or half as much damage on a successful one.",
+				"A blast of cold air erupts from your hands. Each creature in a 60-foot cone must make a Constitution saving throw. A creature takes {@dice 8d8} cold damage on a failed save, or half as much damage on a successful one.",
 				"A creature killed by this spell becomes a frozen statue until it thaws."
 			],
 			"entriesHigherLevel": [
@@ -4814,7 +4814,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d8 for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by {@dice 1d8} for each slot level above 5th."
 					]
 				}
 			],
@@ -4923,12 +4923,12 @@
 			"source": "PHB",
 			"entries": [
 				"This spell assaults and twists creatures' minds, spawning delusions and provoking uncontrolled actions. Each creature in a 10-foot-radius sphere centered on a point you choose within range must succeed on a Wisdom saving throw when you cast this spell or be affected by it.",
-				"An affected target can't take reactions and must roll a d10 at the start of each of its turns to determine its behavior for that turn.",
+				"An affected target can't take reactions and must roll a {@dice d10} at the start of each of its turns to determine its behavior for that turn.",
 				{
 					"type": "table",
 					"caption": "Confusion Behaviour",
 					"colLabels": [
-						"d10",
+						"{@dice d10}",
 						"Behavior"
 					],
 					"colStyles": [
@@ -4937,19 +4937,42 @@
 					],
 					"rows": [
 						[
-							"1",
-							"The creature uses all its movement to move in a random direction. To determine the direction, roll a d8 and assign a direction to each die face. The creature doesn't take an action this turn."
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"The creature uses all its movement to move in a random direction. To determine the direction, roll a {@dice d8} and assign a direction to each die face. The creature doesn't take an action this turn."
 						],
 						[
-							"2-6",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 2,
+									"max": 6
+								}
+							},
 							"The creature doesn't move or take actions this turn."
 						],
 						[
-							"7-8",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 7,
+									"max": 8
+								}
+							},
 							"The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn."
 						],
 						[
-							"9-10",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 9,
+									"max": 10
+								}
+							},
 							"The creature can act and move normally."
 						]
 					]
@@ -5098,7 +5121,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You throw a nonmagical weapon or fire a piece of nonmagical ammunition into the air to create a cone of identical weapons that shoot forward and then disappear. Each creature in a 60-foot cone must succeed on a Dexterity saving throw. A creature takes 3d8 damage on a failed save, or half as much damage on a successful one. The damage type is the same as that of the weapon or ammunition used as a component."
+				"You throw a nonmagical weapon or fire a piece of nonmagical ammunition into the air to create a cone of identical weapons that shoot forward and then disappear. Each creature in a 60-foot cone must succeed on a Dexterity saving throw. A creature takes {@dice 3d8} damage on a failed save, or half as much damage on a successful one. The damage type is the same as that of the weapon or ammunition used as a component."
 			],
 			"page": 225,
 			"savingThrow": [
@@ -5400,7 +5423,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You fire a piece of nonmagical ammunition from a ranged weapon or throw a nonmagical weapon into the air and choose a point within range. Hundreds of duplicates of the ammunition or weapon fall in a volley from above and then disappear. Each creature in a 40-foot-radius. 20-foot-high cylinder centered on that point must make a Dexterity saving throw. A creature takes 8d8 damage on a failed save, or half as much damage on a successful one. The damage type is the same as that of the ammunition or weapon."
+				"You fire a piece of nonmagical ammunition from a ranged weapon or throw a nonmagical weapon into the air and choose a point within range. Hundreds of duplicates of the ammunition or weapon fall in a volley from above and then disappear. Each creature in a 40-foot-radius. 20-foot-high cylinder centered on that point must make a Dexterity saving throw. A creature takes {@dice 8d8} damage on a failed save, or half as much damage on a successful one. The damage type is the same as that of the ammunition or weapon."
 			],
 			"page": 226,
 			"savingThrow": [
@@ -5521,7 +5544,7 @@
 				"ritual": true
 			},
 			"entries": [
-				"You mentally contact a demigod, the spirit of a long-dead sage, or some other mysterious entity from another plane. Contacting this extraplanar intelligence can strain or even break your mind. When you cast this spell, make a DC 15 Intelligence saving throw. On a failure, you take 6d6 psychic damage and are insane until you finish a long rest. While insane, you can't take actions, can't understand what other creatures say, can't read, and speak only in gibberish. A greater restoration spell cast on you ends this effect.",
+				"You mentally contact a demigod, the spirit of a long-dead sage, or some other mysterious entity from another plane. Contacting this extraplanar intelligence can strain or even break your mind. When you cast this spell, make a DC 15 Intelligence saving throw. On a failure, you take {@dice 6d6} psychic damage and are insane until you finish a long rest. While insane, you can't take actions, can't understand what other creatures say, can't read, and speak only in gibberish. A greater restoration spell cast on you ends this effect.",
 				"On a successful save, you can ask the entity up to five questions. You must ask your questions before the spell ends. The DM answers each question with one word, such as yes, no, maybe, never, irrelevant, unclear (if the entity doesn't know the answer to the question). If a one-word answer would be misleading, the DM might instead offer a short phrase as an answer."
 			],
 			"page": 226,
@@ -5848,7 +5871,7 @@
 					"type": "entries",
 					"name": "Whirlpool",
 					"entries": [
-						"This effect requires a body of water at least 50 feet square and 25 feet deep. You cause a whirlpool to form in the center of the area. The whirlpool forms a vortex that is 5 feet wide at the base, up to 50 feet wide at the top, and 25 feet tall. Any creature or object in the water and within 25 feet of the vortex is pulled 10 feet toward it. A creature can swim away from the vortex by making a Strength (Athletics) check against your spell save DC. When a creature enters the vortex for the first time on a turn or starts its turn there, it must make a Strength saving throw. On a failed save, the creature takes 2d8 bludgeoning damage and is caught in the vortex until the spell ends. On a successful save, the creature takes half damage, and isn't caught in the vortex. A creature caught in the vortex can use its action to try to swim away from the vortex as described above, but has disadvantage on the Strength (Athletics) check to do so. The first time each turn that an object enters the vortex, the object takes 2d8 bludgeoning damage, this damage occurs each round it remains in the vortex."
+						"This effect requires a body of water at least 50 feet square and 25 feet deep. You cause a whirlpool to form in the center of the area. The whirlpool forms a vortex that is 5 feet wide at the base, up to 50 feet wide at the top, and 25 feet tall. Any creature or object in the water and within 25 feet of the vortex is pulled 10 feet toward it. A creature can swim away from the vortex by making a Strength (Athletics) check against your spell save DC. When a creature enters the vortex for the first time on a turn or starts its turn there, it must make a Strength saving throw. On a failed save, the creature takes {@dice 2d8} bludgeoning damage and is caught in the vortex until the spell ends. On a successful save, the creature takes half damage, and isn't caught in the vortex. A creature caught in the vortex can use its action to try to swim away from the vortex as described above, but has disadvantage on the Strength (Athletics) check to do so. The first time each turn that an object enters the vortex, the object takes {@dice 2d8} bludgeoning damage, this damage occurs each round it remains in the vortex."
 					]
 				}
 			],
@@ -5914,7 +5937,7 @@
 			"source": "PHB",
 			"entries": [
 				"You take control of the weather within 5 miles of you for the duration. You must be outdoors to cast this spell. Moving to a place where you don't have a clear path to the sky ends the spell early.",
-				"When you cast the spell, you change the current weather conditions, which are determined by the DM based on the climate and season. You can change precipitation, temperature, and wind. It takes 1d4 x 10 minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal.",
+				"When you cast the spell, you change the current weather conditions, which are determined by the DM based on the climate and season. You can change precipitation, temperature, and wind. It takes {@dice 1d4} x 10 minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal.",
 				"When you change the weather conditions, find a current condition on the following tables and change its stage by one, up or down. When changing the wind, you can change its direction.",
 				{
 					"type": "table",
@@ -6066,7 +6089,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You plant four pieces of nonmagical ammunition\u2014arrows or crossbow bolts\u2014in the ground within range and lay magic upon them to protect an area. Until the spell ends, whenever a creature other than you comes within 30 feet of the ammunition for the first time on a turn or ends its turn there, one piece of ammunition flies up to strike it. The creature must succeed on a Dexterity saving throw or take 1d6 piercing damage. The piece of ammunition is then destroyed. The spell ends when no ammunition remains.",
+				"You plant four pieces of nonmagical ammunition\u2014arrows or crossbow bolts\u2014in the ground within range and lay magic upon them to protect an area. Until the spell ends, whenever a creature other than you comes within 30 feet of the ammunition for the first time on a turn or ends its turn there, one piece of ammunition flies up to strike it. The creature must succeed on a Dexterity saving throw or take {@dice 1d6} piercing damage. The piece of ammunition is then destroyed. The spell ends when no ammunition remains.",
 				"When you cast this spell, you can designate any creatures you choose, and the spell ignores them."
 			],
 			"entriesHigherLevel": [
@@ -6593,7 +6616,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Holy power radiates from you in an aura with a 30-foot radius, awakening boldness in friendly creatures. Until the spell ends, the aura moves with you, centered on you. While in the aura, each non-hostile creature in the aura (including you) deals an extra 1d4 radiant damage when it hits with a weapon attack."
+				"Holy power radiates from you in an aura with a 30-foot radius, awakening boldness in friendly creatures. Until the spell ends, the aura moves with you, centered on you. While in the aura, each non-hostile creature in the aura (including you) deals an extra {@dice 1d4} radiant damage when it hits with a weapon attack."
 			],
 			"page": 230,
 			"damageInflict": [
@@ -6697,14 +6720,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+				"A creature you touch regains a number of hit points equal to {@dice 1d8} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d8 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the healing increases by {@dice 1d8} for each slot level above 1st."
 					]
 				}
 			],
@@ -7178,7 +7201,7 @@
 			"source": "PHB",
 			"entries": [
 				"A beam of yellow light flashes from your pointing finger, then condenses to linger at a chosen point within range as a glowing bead for the duration. When the spell ends, either because your concentration is broken or because you decide to end it, the bead blossoms with a low roar into an explosion of flame that spreads around corners. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A creature takes fire damage equal to the total accumulated damage on a failed save, or half as much damage on a successful one.",
-				"The spell's base damage is 12d6. If at the end of your turn the bead has not yet detonated, the damage increases by 1d6.",
+				"The spell's base damage is {@dice 12d6}. If at the end of your turn the bead has not yet detonated, the damage increases by {@dice 1d6}.",
 				"If the glowing bead is touched before the interval has expired, the creature touching it must make a Dexterity saving throw. On a failed save, the spell ends immediately, causing the bead to erupt in flame. On a successful save, the creature can throw the bead up to 40 feet. When it strikes a creature or a solid object, the spell ends, and the bead explodes.",
 				"The fire damages objects in the area and ignites flammable objects that aren't being worn or carried."
 			],
@@ -7187,7 +7210,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 8th level or higher, the base damage increases by 1d6 for each slot level above 7th."
+						"When you cast this spell using a spell slot of 8th level or higher, the base damage increases by {@dice 1d6} for each slot level above 7th."
 					]
 				}
 			],
@@ -7324,7 +7347,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You strike the ground, creating a burst of divine energy that ripples outward from you. Each creature you choose within 30 feet of you must succeed on a Constitution saving throw or take 5d6 thunder damage, as well as 5d6 radiant or necrotic damage (your choice), and be knocked {@condition prone}. A creature that succeeds on its saving throw takes half as much damage and isn't knocked {@condition prone}."
+				"You strike the ground, creating a burst of divine energy that ripples outward from you. Each creature you choose within 30 feet of you must succeed on a Constitution saving throw or take {@dice 5d6} thunder damage, as well as {@dice 5d6} radiant or necrotic damage (your choice), and be knocked {@condition prone}. A creature that succeeds on its saving throw takes half as much damage and isn't knocked {@condition prone}."
 			],
 			"page": 231,
 			"damageInflict": [
@@ -7685,7 +7708,7 @@
 			"entries": [
 				"You teleport yourself from your current location to any other spot within range. You arrive at exactly the spot desired. It can be a place you can see, one you can visualize, or one you can describe by stating distance and direction, such as 200 feet straight downward or upward to the northwest at a 45-degree angle, 300 feet.",
 				"You can bring along objects as long as their weight doesn't exceed what you can carry. You can also bring one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within 5 feet of you when you cast this spell.",
-				"If you would arrive in a place already occupied by an object or a creature, you and any creature traveling with you each take 4d6 force damage, and the spell fails to teleport you."
+				"If you would arrive in a place already occupied by an object or a creature, you and any creature traveling with you each take {@dice 4d6} force damage, and the spell fails to teleport you."
 			],
 			"page": 233,
 			"damageInflict": [
@@ -7856,7 +7879,7 @@
 			"source": "PHB",
 			"entries": [
 				"A thin green ray springs from your pointing finger to a target that you can see within range. The target can be a creature, an object, or a creation of magical force, such as the wall created by Wall of Force.",
-				"A creature targeted by this spell must make a Dexterity saving throw. On a failed save, the target takes 10d6+40 force damage. If this damage reduces the target to 0 hit points, it is disintegrated.",
+				"A creature targeted by this spell must make a Dexterity saving throw. On a failed save, the target takes {@dice 10d6+40} force damage. If this damage reduces the target to 0 hit points, it is disintegrated.",
 				"A disintegrated creature and everything it is wearing and carrying, except magic items, are reduced to a pile of fine gray dust. The creature can be restored to life only by means of a true resurrection or a wish spell.",
 				"This spell automatically disintegrates a Large or smaller nonmagical object or a creation of magical force. If the target is a Huge or larger object or creation of force, this spell disintegrates a 10-foot-cube portion of it. A magic item is unaffected by this spell."
 			],
@@ -7865,7 +7888,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 7th level or higher, the damage increases by 3d6 for each slot level above 6th."
+						"When you cast this spell using a spell slot of 7th level or higher, the damage increases by {@dice 3d6} for each slot level above 6th."
 					]
 				}
 			],
@@ -8095,14 +8118,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You whisper a discordant melody that only one creature of your choice within range can hear, wracking it with terrible pain. The target must make a Wisdom saving throw. On a failed save, it takes 3d6 psychic damage and must immediately use its reaction, if available, to move as far as its speed allows away from you. The creature doesn't move into obviously dangerous ground, such as a fire or a pit. On a successful save, the target takes half as much damage and doesn't have to move away. A {@condition deafened} creature automatically succeeds on the save."
+				"You whisper a discordant melody that only one creature of your choice within range can hear, wracking it with terrible pain. The target must make a Wisdom saving throw. On a failed save, it takes {@dice 3d6} psychic damage and must immediately use its reaction, if available, to move as far as its speed allows away from you. The creature doesn't move into obviously dangerous ground, such as a fire or a pit. On a successful save, the target takes half as much damage and doesn't have to move away. A {@condition deafened} creature automatically succeeds on the save."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d6} for each slot level above 1st."
 					]
 				}
 			],
@@ -8245,7 +8268,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Your prayer empowers you with divine radiance. Until the spell ends, your weapon attacks deal an extra 1d4 radiant damage on a hit."
+				"Your prayer empowers you with divine radiance. Until the spell ends, your weapon attacks deal an extra {@dice 1d4} radiant damage on a hit."
 			],
 			"page": 234,
 			"damageInflict": [
@@ -8781,7 +8804,7 @@
 			"entries": [
 				"This spell shapes a creature's dreams. Choose a creature known to you as the target of this spell. The target must be on the same plane of existence as you. Creatures that don't sleep, such as elves, can't be contacted by this spell. You, or a willing creature you touch, enters a trance state, acting as a messenger. While in the trance, the messenger is aware of his or her surroundings, but can't take actions or move.",
 				"If the target is asleep, the messenger appears in the target's dreams and can converse with the target as long as it remains asleep, through the duration of the spell. The messenger can also shape the environment of the dream, creating landscapes, objects, and other images. The messenger can emerge from the trance at any time, ending the effect of the spell early. The target recalls the dream perfectly upon waking. If the target is awake when you cast the spell, the messenger knows it, and can either end the trance (and the spell) or wait for the target to fall asleep, at which point the messenger appears in the target's dreams.",
-				"You can make the messenger appear monstrous and terrifying to the target. If you do, the messenger can deliver a message of no more than ten words and then the target must make a Wisdom saving throw. On a failed save, echoes of the phantasmal monstrosity spawn a nightmare that lasts the duration of the target's sleep and prevents the target from gaining any benefit from that rest. In addition, when the target wakes up, it takes 3d6 psychic damage.",
+				"You can make the messenger appear monstrous and terrifying to the target. If you do, the messenger can deliver a message of no more than ten words and then the target must make a Wisdom saving throw. On a failed save, echoes of the phantasmal monstrosity spawn a nightmare that lasts the duration of the target's sleep and prevents the target from gaining any benefit from that rest. In addition, when the target wakes up, it takes {@dice 3d6} psychic damage.",
 				"If you have a body part, lock of hair, clipping from a nail, or similar portion of the target's body, the target makes its saving throw with disadvantage."
 			],
 			"page": 236,
@@ -8895,8 +8918,8 @@
 				"The ground in the area becomes difficult terrain. Each creature on the ground that is concentrating must make a Constitution saving throw. On a failed save, the creature's concentration is broken.",
 				"When you cast this spell and at the end of each turn you spend concentrating on it, each creature on the ground in the area must make a Dexterity saving throw. On a failed save, the creature is knocked {@condition prone}.",
 				"This spell can have additional effects depending on the terrain in the area, as determined by the DM.",
-				"Fissures. Fissures open throughout the spell's area at the start of your next turn after you cast the spell. A total of 1d6 such fissures open in locations chosen by the DM. Each is 1d10 x 10 feet deep, 10 feet wide, and extends from one edge of the spell's area to the opposite side. A creature standing on a spot where a fissure opens must succeed on a Dexterity saving throw or fall in. A creature that successfully saves moves with the fissure's edge as it opens. A fissure that opens beneath a structure causes it to automatically collapse (see below).",
-				"Structures. The tremor deals 50 bludgeoning damage to any structure in contact with the ground in the area when you cast the spell and at the start of each of your turns until the spell ends. If a structure drops to 0 hit points, it collapses and potentially damages nearby creatures. A creature within half the distance of a structure's height must make a Dexterity saving throw. On a failed save, the creature takes 5d6 bludgeoning damage, is knocked {@condition prone}, and is buried in the rubble, requiring a DC 20 Strength (Athletics) check as an action to escape. The DM can adjust the DC higher or lower, depending on the nature of the rubble. On a successful save, the creature takes half as much damage and doesn't fall {@condition prone} or become buried."
+				"Fissures. Fissures open throughout the spell's area at the start of your next turn after you cast the spell. A total of {@dice 1d6} such fissures open in locations chosen by the DM. Each is {@dice 1d10} x 10 feet deep, 10 feet wide, and extends from one edge of the spell's area to the opposite side. A creature standing on a spot where a fissure opens must succeed on a Dexterity saving throw or fall in. A creature that successfully saves moves with the fissure's edge as it opens. A fissure that opens beneath a structure causes it to automatically collapse (see below).",
+				"Structures. The tremor deals 50 bludgeoning damage to any structure in contact with the ground in the area when you cast the spell and at the start of each of your turns until the spell ends. If a structure drops to 0 hit points, it collapses and potentially damages nearby creatures. A creature within half the distance of a structure's height must make a Dexterity saving throw. On a failed save, the creature takes {@dice 5d6} bludgeoning damage, is knocked {@condition prone}, and is buried in the rubble, requiring a DC 20 Strength (Athletics) check as an action to escape. The DM can adjust the DC higher or lower, depending on the nature of the rubble. On a successful save, the creature takes half as much damage and doesn't fall {@condition prone} or become buried."
 			],
 			"page": 236,
 			"damageInflict": [
@@ -8946,7 +8969,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.",
+				"A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes {@dice 1d10} force damage.",
 				"The spell creates more than one beam when you reach higher levels: two beams at 5th level, three beams at 11th level, and four beams at 17th level. you can direct the beams at the same target or at different ones. Make a separate attack roll for each beam."
 			],
 			"page": 237,
@@ -9056,14 +9079,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A nonmagical weapon you touch becomes a magic weapon. Choose one of the following damage types: acid, cold, fire, lightning, or thunder. For the duration, the weapon has a +1 bonus to attack rolls and deals an extra 1d4 damage of the chosen type when it hits."
+				"A nonmagical weapon you touch becomes a magic weapon. Choose one of the following damage types: acid, cold, fire, lightning, or thunder. For the duration, the weapon has a +1 bonus to attack rolls and deals an extra {@dice 1d4} damage of the chosen type when it hits."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th or 6th level, the bonus to attack rolls increases to +2 and the extra damage increases to 2d4. When you use a spell slot of 7th level or higher, the bonus increases to +3 and the extra damage increases to 3d4."
+						"When you cast this spell using a spell slot of 5th or 6th level, the bonus to attack rolls increases to +2 and the extra damage increases to {@dice 2d4}. When you use a spell slot of 7th level or higher, the bonus increases to +3 and the extra damage increases to {@dice 3d4}."
 					]
 				}
 			],
@@ -9170,7 +9193,7 @@
 					"type": "entries",
 					"name": "Bear's Endurance",
 					"entries": [
-						"The target has advantage on Constitution checks. It also gains 2d6 temporary hit points, which are lost when the spell ends."
+						"The target has advantage on Constitution checks. It also gains {@dice 2d6} temporary hit points, which are lost when the spell ends."
 					]
 				},
 				{
@@ -9272,8 +9295,8 @@
 			"entries": [
 				"You cause a creature or an object you can see within range to grow larger or smaller for the duration. Choose either a creature or an object that is neither worn nor carried. If the target is unwilling, it can make a Constitution saving throw. On a success, the spell has no effect.",
 				"If the target is a creature, everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.",
-				"Enlarge. The target's size doubles in all dimensions, and its weight is multiplied by eight. This growth increases its size by one category\u2014from Medium to Large, for example. If there isn't enough room for the target to double its size, the creature or object attains the maximum possible size in the space available. Until the spell ends, the target also has advantage on Strength checks and Strength saving throws. The target's weapons also grow to match its new size. While these weapons are enlarged, the target's attack with them deal 1d4 extra damage.",
-				"Reduce. The target's size is halved in all dimensions, and its weight is reduced to one-eighth of normal. This reduction decreases its size by one category\u2014from Medium to Small, for example. Until the spell ends, the target also has disadvantage on Strength checks and Strength saving throws. The target's weapons also shrink to match its new size. While these weapons are reduced, the target's attacks with them deal 1d4 less damage (this can't reduce the damage below 1)."
+				"Enlarge. The target's size doubles in all dimensions, and its weight is multiplied by eight. This growth increases its size by one category\u2014from Medium to Large, for example. If there isn't enough room for the target to double its size, the creature or object attains the maximum possible size in the space available. Until the spell ends, the target also has advantage on Strength checks and Strength saving throws. The target's weapons also grow to match its new size. While these weapons are enlarged, the target's attack with them deal {@dice 1d4} extra damage.",
+				"Reduce. The target's size is halved in all dimensions, and its weight is reduced to one-eighth of normal. This reduction decreases its size by one category\u2014from Medium to Small, for example. Until the spell ends, the target also has disadvantage on Strength checks and Strength saving throws. The target's weapons also shrink to match its new size. While these weapons are reduced, the target's attacks with them deal {@dice 1d4} less damage (this can't reduce the damage below 1)."
 			],
 			"page": 237,
 			"savingThrow": [
@@ -9333,14 +9356,14 @@
 			"source": "PHB",
 			"entries": [
 				"The next time you hit a creature with a weapon attack before this spell ends, a writhing mass of thorny vines appears at the point of impact, and the target must succeed on a Strength saving throw or be {@condition restrained} by the magical vines until the spell ends. A Large or larger creature has advantage on this saving throw. If the target succeeds on the save, the vines shrivel away.",
-				"While {@condition restrained} by this spell, the target takes 1d6 piercing damage at the start of each of its turns. A creature {@condition restrained} by the vines or one that can touch the creature can use its action to make a Strength check against your spell save DC. On a success, the target is freed."
+				"While {@condition restrained} by this spell, the target takes {@dice 1d6} piercing damage at the start of each of its turns. A creature {@condition restrained} by the vines or one that can touch the creature can use its action to make a Strength check against your spell save DC. On a success, the target is freed."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"If you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st."
+						"If you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d6} for each slot level above 1st."
 					]
 				}
 			],
@@ -9612,7 +9635,7 @@
 			"source": "PHB",
 			"entries": [
 				"Squirming, ebony tentacles fill a 20-foot square on ground that you can see within range. For the duration, these tentacles turn the ground in the area into difficult terrain.",
-				"When a creature enters the affected area for the first time on a turn or starts its turn there, the creature must succeed on a Dexterity saving throw or take 3d6 bludgeoning damage and be {@condition restrained} by the tentacles until the spell ends. A creature that starts its turn in the area and is already {@condition restrained} by the tentacles takes 3d6 bludgeoning damage.",
+				"When a creature enters the affected area for the first time on a turn or starts its turn there, the creature must succeed on a Dexterity saving throw or take {@dice 3d6} bludgeoning damage and be {@condition restrained} by the tentacles until the spell ends. A creature that starts its turn in the area and is already {@condition restrained} by the tentacles takes {@dice 3d6} bludgeoning damage.",
 				"A creature {@condition restrained} by the tentacles can use its action to make a Strength or Dexterity check (its choice) against your spell save DC. On a success, it frees itself."
 			],
 			"page": 238,
@@ -10017,7 +10040,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Bolstering yourself with a necromantic facsimile of life, you gain 1d4+4 temporary hit points for the duration."
+				"Bolstering yourself with a necromantic facsimile of life, you gain {@dice 1d4+4} temporary hit points for the duration."
 			],
 			"entriesHigherLevel": [
 				{
@@ -10257,7 +10280,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You blast the mind of a creature that you can see within range, attempting to shatter its intellect and personality. The target takes 4d6 psychic damage and must make an Intelligence saving throw.",
+				"You blast the mind of a creature that you can see within range, attempting to shatter its intellect and personality. The target takes {@dice 4d6} psychic damage and must make an Intelligence saving throw.",
 				"On a failed save, the creature's Intelligence and Charisma scores become 1. The creature can't cast spells, activate magic items, understand language, or communicate in any intelligible way. The creature can, however, identify its friends, follow them, and even protect them.",
 				"At the end of every 30 days, the creature can repeat its saving throw against this spell. If it succeeds on its saving throw, the spell ends.",
 				"The spell can also be ended by greater restoration, heal or wish."
@@ -10596,7 +10619,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You send negative energy coursing through a creature that you can see within range, causing it searing pain. The target must make a Constitution saving throw. It takes 7d8+30 necrotic damage on a failed save, or half as much damage on a successful one.",
+				"You send negative energy coursing through a creature that you can see within range, causing it searing pain. The target must make a Constitution saving throw. It takes {@dice 7d8+30} necrotic damage on a failed save, or half as much damage on a successful one.",
 				"A humanoid killed by this spell rises at the start of your next turn as a zombie that is permanently under your command, following your verbal orders to the best of its ability."
 			],
 			"page": 241,
@@ -10647,8 +10670,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried.",
-				"This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10)."
+				"You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes {@dice 1d10} fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried.",
+				"This spell's damage increases by {@dice 1d10} when you reach 5th level ({@dice 2d10}), 11th level ({@dice 3d10}), and 17th level ({@dice 4d10})."
 			],
 			"page": 242,
 			"damageInflict": [
@@ -10729,7 +10752,7 @@
 			"entries": [
 				"Thin and wispy flames wreathe your body for the duration, shedding bright light in a 10-foot radius and dim light for an additional 10 feet. You can end the spell early by using an action to dismiss it.",
 				"The flames provide you with a warm shield or a chill shield, as you choose. The warm shield grants you resistance to cold damage, and the chill shield grants you resistance to fire damage.",
-				"In addition, whenever a creature within 5 feet of you hits you with a melee attack, the shield erupts with flame. The attacker takes 2d8 fire damage from a warm shield, or 2d8 cold damage from a cold shield."
+				"In addition, whenever a creature within 5 feet of you hits you with a melee attack, the shield erupts with flame. The attacker takes {@dice 2d8} fire damage from a warm shield, or {@dice 2d8} cold damage from a cold shield."
 			],
 			"page": 242,
 			"damageInflict": [
@@ -10785,7 +10808,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A storm made up of sheets of roaring flame appears in a location you choose within range. The area of the storm consists of up to ten 10-foot cubes, which you can arrange as you wish. Each cube must have at least one face adjacent to the face of another cube. Each creature in the area must make Dexterity saving throw. It takes 7d10 fire damage on a failed save, or half as much damage on a successful one.",
+				"A storm made up of sheets of roaring flame appears in a location you choose within range. The area of the storm consists of up to ten 10-foot cubes, which you can arrange as you wish. Each cube must have at least one face adjacent to the face of another cube. Each creature in the area must make Dexterity saving throw. It takes {@dice 7d10} fire damage on a failed save, or half as much damage on a successful one.",
 				"The fire damages objects in the area and ignites flammable objects that aren't being worn or carried. If you choose, plant life in the area is unaffected by this spell."
 			],
 			"page": 242,
@@ -10869,7 +10892,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A bright streak flashes from your pointing finger to a point you choose within range then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot radius must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one.",
+				"A bright streak flashes from your pointing finger to a point you choose within range then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot radius must make a Dexterity saving throw. A target takes {@dice 8d6} fire damage on a failed save, or half as much damage on a successful one.",
 				"The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried."
 			],
 			"entriesHigherLevel": [
@@ -10877,7 +10900,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@dice 1d6} for each slot level above 3rd."
 					]
 				}
 			],
@@ -10931,7 +10954,7 @@
 			"source": "PHB",
 			"entries": [
 				"You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke the blade again as a bonus action.",
-				"You can use your action to make a melee spell attack with the fiery blade. On a hit, the target takes 3d6 fire damage.",
+				"You can use your action to make a melee spell attack with the fiery blade. On a hit, the target takes {@dice 3d6} fire damage.",
 				"The flaming blade sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
 			],
 			"entriesHigherLevel": [
@@ -10939,7 +10962,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for every two slot levels above 2nd."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@dice 1d6} for every two slot levels above 2nd."
 					]
 				}
 			],
@@ -11067,14 +11090,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A vertical column of divine fire roars down from the heavens in a location you specify. Each creature in a 10-foot radius, 40-foot-high cylinder centered on a point within range must make a Dexterity saving throw. A creature takes 4d6 fire damage and 4d6 radiant damage on a failed save, or half as much damage on a successful one."
+				"A vertical column of divine fire roars down from the heavens in a location you specify. Each creature in a 10-foot radius, 40-foot-high cylinder centered on a point within range must make a Dexterity saving throw. A creature takes {@dice 4d6} fire damage and {@dice 4d6} radiant damage on a failed save, or half as much damage on a successful one."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the fire damage or the radiant damage (your choice) increases by 1d6 for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the fire damage or the radiant damage (your choice) increases by {@dice 1d6} for each slot level above 5th."
 					]
 				}
 			],
@@ -11175,7 +11198,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A 5-foot-diameter sphere of fire appears in an unoccupied space of your choice within range and lasts for the duration. Any creature that ends its turn within 5 feet of the sphere must make a Dexterity saving throw. The creature takes 2d6 fire damage on a failed save, or half as much damage on a successful one.",
+				"A 5-foot-diameter sphere of fire appears in an unoccupied space of your choice within range and lasts for the duration. Any creature that ends its turn within 5 feet of the sphere must make a Dexterity saving throw. The creature takes {@dice 2d6} fire damage on a failed save, or half as much damage on a successful one.",
 				"As a bonus action, you can move the sphere up to 30 feet. If you ram the sphere into a creature, that creature must make the saving throw against the sphere's damage, and the sphere stops moving this turn.",
 				"When you move the sphere, you can direct it over barriers up to 5 feet tall and jump it across pits up to 10 feet wide. The sphere ignites flammable objects not being worn or carried, and it sheds bright light in a 20-foot radius and dim light for an additional 20 feet."
 			],
@@ -11184,7 +11207,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d6 for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d6} for each slot level above 2nd."
 					]
 				}
 			],
@@ -11440,7 +11463,7 @@
 			},
 			"entries": [
 				"You create a ward against magical travel that protects up to 40,000 square feet of floor space to a height of 30 feet above the floor. For the duration, creatures can't teleport into the area or use portals, such as those created by the gate spell, to enter the area. The spell proofs the area against planar travel, and therefore prevents creatures from accessing the area by way of the Astral Plane, Ethereal Plane, Feywild, Shadowfell, or the plane shift spell.",
-				"In addition, the spell damages types of creatures that you choose when you cast it. Choose one or more of the following: celestials, elementals, fey, fiends, and undead. When a chosen creature enters the spell's area for the first time on a turn or starts its turn there, the creature takes 5d10 radiant or necrotic damage (your choice when you cast this spell).",
+				"In addition, the spell damages types of creatures that you choose when you cast it. Choose one or more of the following: celestials, elementals, fey, fiends, and undead. When a chosen creature enters the spell's area for the first time on a turn or starts its turn there, the creature takes {@dice 5d10} radiant or necrotic damage (your choice when you cast this spell).",
 				"When you cast this spell, you can designate a password. A creature that speaks the password as it enters the area takes no damage from the spell.",
 				"The spell's area can't overlap with the area of another forbiddance spell. If you cast forbiddance every day for 30 days in the same location, the spell lasts until it is dispelled, and the material components are consumed on the last casting."
 			],
@@ -11981,7 +12004,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You place a magical command on a creature that you can see within range, forcing it to carry out some service or refrain from some action or course of activity as you decide. If the creature can understand you, it must succeed on a Wisdom saving throw or become {@condition charmed} by you for the duration. While the creature is {@condition charmed} by you, it takes 5d10 psychic damage each time it acts in a manner directly counter to your instructions, but no more than once each day. A creature that can't understand you is unaffected by the spell.",
+				"You place a magical command on a creature that you can see within range, forcing it to carry out some service or refrain from some action or course of activity as you decide. If the creature can understand you, it must succeed on a Wisdom saving throw or become {@condition charmed} by you for the duration. While the creature is {@condition charmed} by you, it takes {@dice 5d10} psychic damage each time it acts in a manner directly counter to your instructions, but no more than once each day. A creature that can't understand you is unaffected by the spell.",
 				"You can issue any command you choose, short of an activity that would result in certain death. Should you issue a suicidal command, the spell ends.",
 				"You can end the spell early by using an action to dismiss it. A remove curse, greater restoration, or wish spell also ends it."
 			],
@@ -12335,7 +12358,7 @@
 					"type": "entries",
 					"name": "Explosive Runes",
 					"entries": [
-						"When triggered, the glyph erupts with magical energy in a 20-foot-radius sphere centered on the glyph. The sphere spreads around corners. Each creature in the aura must make a Dexterity saving throw. A creature takes 5d8 acid, cold, fire, lightning, or thunder damage on a failed saving throw (your choice when you create the glyph), or half as much damage on a successful one."
+						"When triggered, the glyph erupts with magical energy in a 20-foot-radius sphere centered on the glyph. The sphere spreads around corners. Each creature in the aura must make a Dexterity saving throw. A creature takes {@dice 5d8} acid, cold, fire, lightning, or thunder damage on a failed saving throw (your choice when you create the glyph), or half as much damage on a successful one."
 					]
 				},
 				{
@@ -12351,7 +12374,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the damage of an explosive runes glyph increases by 1d8 for each slot level above 3rd. If you create a spell glyph, you can store any spell of up to the same level as the slot you use for the glyph of warding."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage of an explosive runes glyph increases by {@dice 1d8} for each slot level above 3rd. If you create a spell glyph, you can store any spell of up to the same level as the slot you use for the glyph of warding."
 					]
 				}
 			],
@@ -12998,7 +13021,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends."
+				"You touch one willing creature. Once before the spell ends, the target can roll a {@dice d4} and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends."
 			],
 			"page": 248
 		},
@@ -13064,14 +13087,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A flash of light streaks toward a creature of your choice within range. Make a ranged spell attack against the target. On a hit, the target takes 4d6 radiant damage, and the next attack roll made against this target before the end of your next turn has advantage, thanks to the mystical dim light glittering on the target until then."
+				"A flash of light streaks toward a creature of your choice within range. Make a ranged spell attack against the target. On a hit, the target takes {@dice 4d6} radiant damage, and the next attack roll made against this target before the end of your next turn has advantage, thanks to the mystical dim light glittering on the target until then."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d6} for each slot level above 1st."
 					]
 				}
 			],
@@ -13191,14 +13214,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit a creature with a ranged weapon attack before the spell ends, this spell creates a rain of thorns that sprouts from your ranged weapon or ammunition. In addition to the normal effect of the attack, the target of the attack and each creature within 5 feet of it must make a Dexterity saving throw. A creature takes 1d10 piercing damage on a failed save, or half as much damage on a successful one."
+				"The next time you hit a creature with a ranged weapon attack before the spell ends, this spell creates a rain of thorns that sprouts from your ranged weapon or ammunition. In addition to the normal effect of the attack, the target of the attack and each creature within 5 feet of it must make a Dexterity saving throw. A creature takes {@dice 1d10} piercing damage on a failed save, or half as much damage on a successful one."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"If you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d10 for each slot level above 1st (to a maximum of 6d10)."
+						"If you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d10} for each slot level above 1st (to a maximum of {@dice 6d10})."
 					]
 				}
 			],
@@ -13474,7 +13497,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You unleash a virulent disease on a creature that you can see within range. The target must make a Constitution saving throw. On a failed save, it takes 14d6 necrotic damage, or half as much damage on a successful save. The damage can't reduce the target's hit points below 1. If the target fails the saving throw, its hit point maximum is reduced for 1 hour by an amount equal to the necrotic damage it took. Any effect that removes a disease allows a creature's hit point maximum to return to normal before that time passes."
+				"You unleash a virulent disease on a creature that you can see within range. The target must make a Constitution saving throw. On a failed save, it takes {@dice 14d6} necrotic damage, or half as much damage on a successful save. The damage can't reduce the target's hit points below 1. If the target fails the saving throw, its hit point maximum is reduced for 1 hour by an amount equal to the necrotic damage it took. Any effect that removes a disease allows a creature's hit point maximum to return to normal before that time passes."
 			],
 			"page": 249,
 			"damageInflict": [
@@ -13711,14 +13734,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A creature of your choice that you can see within range regains hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+				"A creature of your choice that you can see within range regains hit points equal to {@dice 1d4} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d4 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the healing increases by {@dice 1d4} for each slot level above 1st."
 					]
 				}
 			],
@@ -13802,7 +13825,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Choose a manufactured metal object, such as a metal weapon or a suit of heavy or medium metal armor, that you can see within range. You cause the object to glow red-hot. Any creature in physical contact with the object takes 2d8 fire damage when you cast the spell. Until the spell ends, you can use a bonus action on each of your subsequent turns to cause this damage again.",
+				"Choose a manufactured metal object, such as a metal weapon or a suit of heavy or medium metal armor, that you can see within range. You cause the object to glow red-hot. Any creature in physical contact with the object takes {@dice 2d8} fire damage when you cast the spell. Until the spell ends, you can use a bonus action on each of your subsequent turns to cause this damage again.",
 				"If a creature is holding or wearing the object and takes the damage from it, the creature must succeed on a Constitution saving throw or drop the object if it can. If it doesn't drop the object, it has disadvantage on attack rolls and ability checks until the start of your next turn."
 			],
 			"entriesHigherLevel": [
@@ -13810,7 +13833,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for each slot above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d8} for each slot above 2nd."
 					]
 				}
 			],
@@ -13871,14 +13894,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You point your finger, and the creature that damaged you is momentarily surrounded by hellish flames. The creature must make a Dexterity saving throw. It takes 2d10 fire damage on a failed save, or half as much damage on a successful one."
+				"You point your finger, and the creature that damaged you is momentarily surrounded by hellish flames. The creature must make a Dexterity saving throw. It takes {@dice 2d10} fire damage on a failed save, or half as much damage on a successful one."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d10 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d10} for each slot level above 1st."
 					]
 				}
 			],
@@ -13932,7 +13955,7 @@
 			"source": "PHB",
 			"entries": [
 				"You bring forth a great feast, including magnificent food and drink. The feast takes 1 hour to consume and disappears at the end of that time, and the beneficial effects don't set in until this hour is over. Up to twelve other creatures can partake of the feast.",
-				"A creature that partakes of the feast gains several benefits. The creature is cured of all diseases and poison, becomes immune to poison and being {@condition frightened}, and makes all Wisdom saving throws with advantage. Its hit point maximum also increases by 2d10, and it gains the same number of hit points. These benefits last for 24 hours."
+				"A creature that partakes of the feast gains several benefits. The creature is cured of all diseases and poison, becomes immune to poison and being {@condition frightened}, and makes all Wisdom saving throws with advantage. Its hit point maximum also increases by {@dice 2d10}, and it gains the same number of hit points. These benefits last for 24 hours."
 			],
 			"page": 250,
 			"damageImmune": [
@@ -14041,7 +14064,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You place a curse on a creature that you can see within range. Until the spell ends, you deal an extra 1d6 necrotic damage to the target whenever you hit it with an attack. Also, choose one ability when you cast the spell. The target has disadvantage on ability checks made with the chosen ability.",
+				"You place a curse on a creature that you can see within range. Until the spell ends, you deal an extra {@dice 1d6} necrotic damage to the target whenever you hit it with an attack. Also, choose one ability when you cast the spell. The target has disadvantage on ability checks made with the chosen ability.",
 				"If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to curse a new creature.",
 				"A remove curse cast on the target ends this spell early."
 			],
@@ -14413,7 +14436,7 @@
 			"source": "PHB",
 			"entries": [
 				"You open a gateway to the dark between the stars, a region infested with unknown horrors. A 20-foot-radius sphere of blackness and bitter cold appears, centered on a point within range and lasting for the duration. This void is filled with a cacophony of soft whispers and slurping noises that can be heard up to 30 feet away. No light, magical or otherwise, can illuminate the area, and creatures fully within the area are {@condition blinded}.",
-				"The void creates a warp in the fabric of space, and the area is difficult terrain. Any creature that starts its turn in the area takes 2d6 cold damage. Any creature that ends its turn in the area must succeed on a Dexterity saving throw or take 2d6 acid damage as milky, otherworldly tentacles rub against it."
+				"The void creates a warp in the fabric of space, and the area is difficult terrain. Any creature that starts its turn in the area takes {@dice 2d6} cold damage. Any creature that ends its turn in the area must succeed on a Dexterity saving throw or take {@dice 2d6} acid damage as milky, otherworldly tentacles rub against it."
 			],
 			"page": 251,
 			"damageInflict": [
@@ -14476,7 +14499,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You choose a creature you can see within range and mystically mark it as your quarry. Until the spell ends, you deal an extra 1d6 damage to the target whenever you hit it with a weapon attack, and you have advantage on any Wisdom (Perception) or Wisdom (Survival) check you make to find it. If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature."
+				"You choose a creature you can see within range and mystically mark it as your quarry. Until the spell ends, you deal an extra {@dice 1d6} damage to the target whenever you hit it with a weapon attack, and you have advantage on any Wisdom (Perception) or Wisdom (Survival) check you make to find it. If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature."
 			],
 			"entriesHigherLevel": [
 				{
@@ -14663,7 +14686,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range. Each creature in the cylinder must make a Dexterity saving throw. A creature takes 2d8 bludgeoning damage and 4d6 cold damage on a failed save, or half as much damage on a successful one.",
+				"A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range. Each creature in the cylinder must make a Dexterity saving throw. A creature takes {@dice 2d8} bludgeoning damage and {@dice 4d6} cold damage on a failed save, or half as much damage on a successful one.",
 				"Hailstones turn the storm's area of effect into difficult terrain until the end of your next turn."
 			],
 			"entriesHigherLevel": [
@@ -14671,7 +14694,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the bludgeoning damage increases by 1d8 for each slot level above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the bludgeoning damage increases by {@dice 1d8} for each slot level above 4th."
 					]
 				}
 			],
@@ -14968,7 +14991,7 @@
 			"source": "PHB",
 			"entries": [
 				"A swirling cloud of smoke shot through with white-hot embers appears in a 20-foot-radius sphere centered on a point within range. The cloud spreads around corners and is heavily obscured. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it.",
-				"When the cloud appears, each creature in it must make a Dexterity saving throw. A creature takes 10d8 fire damage on a failed save, or half as much damage on a successful one. A creature must also make this saving throw when it enters the spell's area for the first time on a turn or ends its turn there.",
+				"When the cloud appears, each creature in it must make a Dexterity saving throw. A creature takes {@dice 10d8} fire damage on a failed save, or half as much damage on a successful one. A creature must also make this saving throw when it enters the spell's area for the first time on a turn or ends its turn there.",
 				"The cloud moves 10 feet directly away from you in a direction that you choose at the start of each of your turns."
 			],
 			"page": 253,
@@ -15036,14 +15059,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Make a melee spell attack against a creature you can reach. On a hit, the target takes 3d10 necrotic damage."
+				"Make a melee spell attack against a creature you can reach. On a hit, the target takes {@dice 3d10} necrotic damage."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d10 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d10} for each slot level above 1st."
 					]
 				}
 			],
@@ -15209,14 +15232,14 @@
 			"source": "PHB",
 			"entries": [
 				"Swarming, biting locusts fill a 20-foot-radius sphere centered on a point you choose within range. The sphere spreads around corners. The sphere remains for the duration, and its area is lightly obscured. The sphere's area is difficult terrain.",
-				"When the area appears, each creature in it must make a Constitution saving throw. A creature takes 4d10 piercing damage on a failed save, or half as much damage on a successful one. A creature must also make this saving throw when it enters the spell's area for the first time on a turn or ends its turn there."
+				"When the area appears, each creature in it must make a Constitution saving throw. A creature takes {@dice 4d10} piercing damage on a failed save, or half as much damage on a successful one. A creature must also make this saving throw when it enters the spell's area for the first time on a turn or ends its turn there."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by 1d10 for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the damage increases by {@dice 1d10} for each slot level above 5th."
 					]
 				}
 			],
@@ -15913,8 +15936,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you make a ranged weapon attack during the spell's duration, the weapon's ammunition, or the weapon itself if it's a thrown weapon, transforms into a bolt of lightning. Make the attack roll as normal. The target takes 4d8 lightning damage on a hit, or half as much damage on a miss, instead of the weapon's normal damage.",
-				"Whether you hit or miss, each creature within 10 feet of the target must make a Dexterity saving throw. Each of these creatures takes 2d8 lightning damage on a failed save, or half as much damage on a successful one.",
+				"The next time you make a ranged weapon attack during the spell's duration, the weapon's ammunition, or the weapon itself if it's a thrown weapon, transforms into a bolt of lightning. Make the attack roll as normal. The target takes {@dice 4d8} lightning damage on a hit, or half as much damage on a miss, instead of the weapon's normal damage.",
+				"Whether you hit or miss, each creature within 10 feet of the target must make a Dexterity saving throw. Each of these creatures takes {@dice 2d8} lightning damage on a failed save, or half as much damage on a successful one.",
 				"The piece of ammunition or weapon then returns to its normal form."
 			],
 			"entriesHigherLevel": [
@@ -15922,7 +15945,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the damage for both effects of the spell increases by 1d8 for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage for both effects of the spell increases by {@dice 1d8} for each slot level above 3rd."
 					]
 				}
 			],
@@ -15998,7 +16021,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A stroke of lightning forming a line of 100 feet long and 5 feet wide blasts out from you in a direction you choose. Each creature in the line must make a Dexterity saving throw. A creature takes 8d6 lightning damage on a failed save, or half as much damage on a successful one.",
+				"A stroke of lightning forming a line of 100 feet long and 5 feet wide blasts out from you in a direction you choose. Each creature in the line must make a Dexterity saving throw. A creature takes {@dice 8d6} lightning damage on a failed save, or half as much damage on a successful one.",
 				"The lightning ignites flammable objects in the area that aren't being worn or carried."
 			],
 			"entriesHigherLevel": [
@@ -16006,7 +16029,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@dice 1d6} for each slot above 3rd."
 					]
 				}
 			],
@@ -16668,7 +16691,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4+1 force damage to its target. The darts all strike simultaneously and you can direct them to hit one creature or several."
+				"You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals {@dice 1d4+1} force damage to its target. The darts all strike simultaneously and you can direct them to hit one creature or several."
 			],
 			"entriesHigherLevel": [
 				{
@@ -17011,14 +17034,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to 3d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+				"A wave of healing energy washes out from a point of your choice within range. Choose up to six creatures in a 30-foot-radius sphere centered on that point. Each target regains hit points equal to {@dice 3d8} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 6th level or higher, the healing increases by 1d8 for each slot level above 5th."
+						"When you cast this spell using a spell slot of 6th level or higher, the healing increases by {@dice 1d8} for each slot level above 5th."
 					]
 				}
 			],
@@ -17099,14 +17122,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"As you call out words of restoration, up to six creatures of your choice that you can see within range regain hit points equal to 1d4 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+				"As you call out words of restoration, up to six creatures of your choice that you can see within range regain hit points equal to {@dice 1d4} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the healing increases by 1d4 for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the healing increases by {@dice 1d4} for each slot level above 3rd."
 					]
 				}
 			],
@@ -17291,7 +17314,7 @@
 			"entries": [
 				"You step into a stone object or surface large enough to fully contain your body, melding yourself and all the equipment you carry with the stone for the duration. Using your movement, you step into the stone at a point you can touch. Nothing of your presence remains visible or otherwise detectable by nonmagical senses.",
 				"While merged with the stone, you can't see what occurs outside it, and any Wisdom (Perception) checks you make to hear sounds outside it are made with disadvantage. You remain aware of the passage of time and can cast spells on yourself while merged in the stone. You can use your movement to leave the stone where you entered it, which ends the spell. You otherwise can't move.",
-				"Minor physical damage to the stone doesn't harm you, but its partial destruction or a change in its shape (to the extent that you no longer fit within it) expels you and deals 6d6 bludgeoning damage to you. The stone's complete destruction (or transmutation into a different substance) expels you and deals 50 bludgeoning damage to you. If expelled, you fall {@condition prone} in an unoccupied space closest to where you first entered."
+				"Minor physical damage to the stone doesn't harm you, but its partial destruction or a change in its shape (to the extent that you no longer fit within it) expels you and deals {@dice 6d6} bludgeoning damage to you. The stone's complete destruction (or transmutation into a different substance) expels you and deals 50 bludgeoning damage to you. If expelled, you fall {@condition prone} in an unoccupied space closest to where you first entered."
 			],
 			"page": 259,
 			"damageInflict": [
@@ -17348,14 +17371,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn."
+				"A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes {@dice 4d4} acid damage immediately and {@dice 2d4} acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage (both initial and later) increases by 1d4 for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage (both initial and later) increases by {@dice 1d4} for each slot level above 2nd."
 					]
 				}
 			],
@@ -17515,7 +17538,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Blazing orbs of fire plummet to the ground at four different points you can see within range. Each creature in a 40-foot-radius sphere centered on each point you choose must make a Dexterity saving throw. The sphere spreads around corners. A creature takes 20d6 fire damage and 20d6 bludgeoning damage on a failed save, or half as much damage on a successful one. A creature in the area of more than one fiery burst is affected only once.",
+				"Blazing orbs of fire plummet to the ground at four different points you can see within range. Each creature in a 40-foot-radius sphere centered on each point you choose must make a Dexterity saving throw. The sphere spreads around corners. A creature takes {@dice 20d6} fire damage and {@dice 20d6} bludgeoning damage on a failed save, or half as much damage on a successful one. A creature in the area of more than one fiery burst is affected only once.",
 				"The spell damages objects in the area and ignites flammable objects that aren't being worn or carried."
 			],
 			"page": 259,
@@ -17787,7 +17810,7 @@
 			"source": "PHB",
 			"entries": [
 				"Three illusory duplicates of yourself appear in your space. Until the spell ends, the duplicates move with you and mimic your actions, shifting position so it's impossible to track which image is real. You can use your action to dismiss the illusory duplicates.",
-				"Each time a creature targets you with an attack during the spell's duration, roll a d20 to determine whether the attack instead targets one of your duplicates.",
+				"Each time a creature targets you with an attack during the spell's duration, roll a {@dice d20} to determine whether the attack instead targets one of your duplicates.",
 				"If you have three duplicates, you must roll a 6 or higher to change the attack's target to a duplicate. With two duplicates, you must roll an 8 or higher. With one duplicate, you must roll an 11 or higher.",
 				"A duplicate's AC equals 10 + your Dexterity modifier. If an attack hits a duplicate, the duplicate is destroyed. A duplicate can be destroyed only by an attack that hits it. It ignores all other damage and effects. The spell ends when all three duplicates are destroyed.",
 				"A creature is unaffected by this spell if it can't see, if it relies on senses other than sight, such as blindsight, or if it can perceive illusions as false, as with truesight."
@@ -18083,7 +18106,7 @@
 			"source": "PHB",
 			"entries": [
 				"A silvery beam of pale light shines down in a 5-foot radius, 40-foot-high cylinder centered on a point within range. Until the spell ends, dim light fills the cylinder.",
-				"When a creature enters the spell's area for the first time on a turn or starts its turn there, it is engulfed in ghostly flames that cause searing pain, and it must make a Constitution saving throw. It takes 2d10 radiant damage on a failed save, or half as much damage on a successful one.",
+				"When a creature enters the spell's area for the first time on a turn or starts its turn there, it is engulfed in ghostly flames that cause searing pain, and it must make a Constitution saving throw. It takes {@dice 2d10} radiant damage on a failed save, or half as much damage on a successful one.",
 				"A shapechanger makes its saving throw with disadvantage. If it fails, it also instantly reverts to its original form and can't assume a different form until it leaves the spell's light.",
 				"On each of your turns after you cast this spell, you can use an action to move the beam up to 60 feet in any direction."
 			],
@@ -18092,7 +18115,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d10 for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d10} for each slot level above 2nd."
 					]
 				}
 			],
@@ -18151,7 +18174,7 @@
 			"entries": [
 				"You conjure a phantom watchdog in an unoccupied space that you can see within range, where it remains for the duration, until you dismiss it as an action, or until you move more than 100 feet away from it.",
 				"The hound is {@condition invisible} to all creatures except you and can't be harmed. When a Small or larger creature comes within 30 feet of it without first speaking the password that you specify when you cast this spell, the hound starts barking loudly. The hound sees {@condition invisible} creatures and can see into the Ethereal Plane. It ignores illusions.",
-				"At the start of each of your turns, the hound attempts to bite one creature within 5 feet of it that is hostile to you. The hound's attack bonus is equal to your spellcasting ability modifier + your proficiency bonus. On a hit, it deals 4d8 piercing damage."
+				"At the start of each of your turns, the hound attempts to bite one creature within 5 feet of it that is hostile to you. The hound's attack bonus is equal to your spellcasting ability modifier + your proficiency bonus. On a hit, it deals {@dice 4d8} piercing damage."
 			],
 			"page": 261,
 			"damageInflict": [
@@ -18327,7 +18350,7 @@
 			"source": "PHB",
 			"entries": [
 				"You create a sword-shaped plane of force that hovers within range. It lasts for the duration.",
-				"When the sword appears, you make a melee spell attack against a target of your choice within 5 feet of the sword. On a hit. the target takes 3d10 force damage. Until the spell ends, you can use a bonus action on each of your turns to move the sword up to 20 feet to a spot you can see and repeat this attack against the same target or a different one."
+				"When the sword appears, you make a melee spell attack against a target of your choice within 5 feet of the sword. On a hit. the target takes {@dice 3d10} force damage. Until the spell ends, you can use a bonus action on each of your turns to move the sword up to 20 feet to a spot you can see and repeat this attack against the same target or a different one."
 			],
 			"page": 262,
 			"damageInflict": [
@@ -18596,7 +18619,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A frigid globe of cold energy streaks from your fingertips to a point of your choice within range, where it explodes in a 60-foot-radius sphere. Each creature within the area must make a Constitution saving throw. On a failed save, a creature takes 10d6 cold damage. On successful save, it takes half as much damage.",
+				"A frigid globe of cold energy streaks from your fingertips to a point of your choice within range, where it explodes in a 60-foot-radius sphere. Each creature within the area must make a Constitution saving throw. On a failed save, a creature takes {@dice 10d6} cold damage. On successful save, it takes half as much damage.",
 				"If the globe strikes a body of water or a liquid that is principally water (not including water-based creatures), it freezes the liquid to a depth of 6 inches over an area 30 feet square. This ice lasts for 1 minute. Creatures that were swimming on the surface of frozen water are trapped in the ice. A trapped creature can use an action to make a Strength check against your spell save DC to break free.",
 				"You can refrain from firing the globe after completing the spell, if you wish. A small globe about the size of a sling stone, cool to the touch, appears in your hand. At any time, you or a creature you give the globe to can throw the globe (to a range of 40 feet) or hurl it with a sling (to the sling's normal range). It shatters on impact, with the same effect as the normal casting of the spell. You can also set the globe down without shattering it. After 1 minute, if the globe hasn't already shattered, it explodes."
 			],
@@ -18605,7 +18628,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d6 for each slot level above 6th"
+						"When you cast this spell using a spell slot of 7th level or higher, the damage increases by {@dice 1d6} for each slot level above 6th"
 					]
 				}
 			],
@@ -18983,7 +19006,7 @@
 				"The phantasm includes sound, temperature, and other stimuli, also evident only to the creature.",
 				"The target can use its action to examine the phantasm with an Intelligence (Investigation) check against your spell save DC. If the check succeeds, the target realizes that the phantasm is an illusion, and the spell ends.",
 				"While a target is affected by the spell, the target treats the phantasm as if it were real. The target rationalizes any illogical outcomes from interacting with the phantasm. For example, a target attempting to walk across a phantasmal bridge that spans a chasm falls once it steps onto the bridge. If the target survives the fall, it still believes that the bridge exists and comes up with some other explanation for its fall\u2014it was pushed, it slipped, or a strong wind might have knocked it off.",
-				"An affected target is so convinced of the phantasm's reality that it can even take damage from the illusion. A phantasm created to appear as a creature can attack the target. Similarly, a phantasm created to appear as fire, a pool of acid, or lava can burn the target. Each round on your turn, the phantasm can deal 1d6 psychic damage to the target if it is in the phantasm's area or within 5 feet of the phantasm, provided that the illusion is of a creature or hazard that could logically deal damage, such as by attacking. The target perceives the damage as a type appropriate to the illusion."
+				"An affected target is so convinced of the phantasm's reality that it can even take damage from the illusion. A phantasm created to appear as a creature can attack the target. Similarly, a phantasm created to appear as fire, a pool of acid, or lava can burn the target. Each round on your turn, the phantasm can deal {@dice 1d6} psychic damage to the target if it is in the phantasm's area or within 5 feet of the phantasm, provided that the illusion is of a creature or hazard that could logically deal damage, such as by attacking. The target perceives the damage as a type appropriate to the illusion."
 			],
 			"page": 264,
 			"damageInflict": [
@@ -19059,14 +19082,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You tap into the nightmares of a creature you can see within range and create an illusory manifestation of its deepest fears, visible only to that creature. The target must make a Wisdom saving throw. On a failed save, the target becomes {@condition frightened} for the duration. At the end of each of the target's turns before the spell ends, the target must succeed on a Wisdom saving throw or take 4d10 psychic damage. On a successful save, the spell ends."
+				"You tap into the nightmares of a creature you can see within range and create an illusory manifestation of its deepest fears, visible only to that creature. The target must make a Wisdom saving throw. On a failed save, the target becomes {@condition frightened} for the duration. At the end of each of the target's turns before the spell ends, the target must succeed on a Wisdom saving throw or take {@dice 4d10} psychic damage. On a successful save, the spell ends."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d10 for each slot level above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@dice 1d10} for each slot level above 4th."
 					]
 				}
 			],
@@ -19500,8 +19523,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You extend your hand toward a creature you can see within range and project a puff of noxious gas from your palm. The creature must succeed on a Constitution saving throw or take 1d12 poison damage.",
-				"This spell's damage increases by 1d12 when you reach 5th level (2d12), 11th level (3d12), and 17th level (4d12)."
+				"You extend your hand toward a creature you can see within range and project a puff of noxious gas from your palm. The creature must succeed on a Constitution saving throw or take {@dice 1d12} poison damage.",
+				"This spell's damage increases by {@dice 1d12} when you reach 5th level ({@dice 2d12}), 11th level ({@dice 3d12}), and 17th level ({@dice 4d12})."
 			],
 			"page": 266,
 			"damageInflict": [
@@ -19769,14 +19792,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Up to six creatures of your choice that you can see within range each regain hit points equal to 2d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs."
+				"Up to six creatures of your choice that you can see within range each regain hit points equal to {@dice 2d8} + your spellcasting ability modifier. This spell has no effect on undead or constructs."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the healing increases by 1d8 for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the healing increases by {@dice 1d8} for each slot level above 2nd."
 					]
 				}
 			],
@@ -19891,40 +19914,40 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Eight multicolored rays of light flash from your hand. Each ray is a different color and has a different power and purpose. Each creature in a 60-foot cone must make a Dexterity saving throw. For each target, roll a d8 to determine which color ray affects it.",
+				"Eight multicolored rays of light flash from your hand. Each ray is a different color and has a different power and purpose. Each creature in a 60-foot cone must make a Dexterity saving throw. For each target, roll a {@dice d8} to determine which color ray affects it.",
 				{
 					"type": "entries",
 					"name": "1-Red",
 					"entries": [
-						"The target takes 10d6 fire damage on a failed save, or half as much damage on a successful one."
+						"The target takes {@dice 10d6} fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "2-Orange",
 					"entries": [
-						"The target takes 10d6 acid damage on a failed save, or half as much damage on a successful one."
+						"The target takes {@dice 10d6} acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "3-Yellow",
 					"entries": [
-						"The target takes 10d6 lightning damage on a failed save, or half as much damage on a successful one."
+						"The target takes {@dice 10d6} lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "4-Green",
 					"entries": [
-						"The target takes 10d6 poison damage on a failed save, or half as much damage on a successful one."
+						"The target takes {@dice 10d6} poison damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "5-Blue",
 					"entries": [
-						"The target takes 10d6 cold damage on a failed save, or half as much damage on a successful one."
+						"The target takes {@dice 10d6} cold damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -20011,35 +20034,35 @@
 					"type": "entries",
 					"name": "Red",
 					"entries": [
-						"The creature takes 10d6 fire damage on a failed save, or half as much damage on a successful one. While this layer is in place, nonmagical ranged attacks can't pass through the wall. The layer can be destroyed by dealing at least 25 cold damage to it."
+						"The creature takes {@dice 10d6} fire damage on a failed save, or half as much damage on a successful one. While this layer is in place, nonmagical ranged attacks can't pass through the wall. The layer can be destroyed by dealing at least 25 cold damage to it."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Orange",
 					"entries": [
-						"The creature takes 10d6 acid damage on a failed save, or half as much damage on a successful one. While this layer is in place, magical ranged attacks can't pass through the wall. The layer is destroyed by a strong wind."
+						"The creature takes {@dice 10d6} acid damage on a failed save, or half as much damage on a successful one. While this layer is in place, magical ranged attacks can't pass through the wall. The layer is destroyed by a strong wind."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Yellow",
 					"entries": [
-						"The creature takes 10d6 lightning damage on a failed save, or half as much damage on a successful one. This layer can be destroyed by dealing at least 60 force damage to it."
+						"The creature takes {@dice 10d6} lightning damage on a failed save, or half as much damage on a successful one. This layer can be destroyed by dealing at least 60 force damage to it."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Green",
 					"entries": [
-						"The creature takes 10d6 poison damage on a failed save, or half as much damage on a successful one. A passwall spell, or another spell of equal or greater level that can open a portal on a solid surface, destroys this layer."
+						"The creature takes {@dice 10d6} poison damage on a failed save, or half as much damage on a successful one. A passwall spell, or another spell of equal or greater level that can open a portal on a solid surface, destroys this layer."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Blue",
 					"entries": [
-						"The creature takes 10d6 cold damage on a failed save, or half as much damage on a successful one. This layer can be destroyed by dealing at least 25 fire damage to it."
+						"The creature takes {@dice 10d6} cold damage on a failed save, or half as much damage on a successful one. This layer can be destroyed by dealing at least 25 fire damage to it."
 					]
 				},
 				{
@@ -20112,8 +20135,8 @@
 			"source": "PHB",
 			"entries": [
 				"A flickering flame appears in your hand. The flame remains there for the duration and harms neither you nor your equipment. The flame sheds bright light in a 10-foot radius and dim light for an additional 10 feet. The spell ends if you dismiss it as an action or if you cast it again.",
-				"You can also attack with the flame, although doing so ends the spell. When you cast this spell, or as an action on a later turn, you can hurl the flame at a creature within 30 feet of you. Make a ranged spell attack. On a hit, the target takes 1d8 fire damage.",
-				"This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
+				"You can also attack with the flame, although doing so ends the spell. When you cast this spell, or as an action on a later turn, you can hurl the flame at a creature within 30 feet of you. Make a ranged spell attack. On a hit, the target takes {@dice 1d8} fire damage.",
+				"This spell's damage increases by {@dice 1d8} when you reach 5th level ({@dice 2d8}), 11th level ({@dice 3d8}), and 17th level ({@dice 4d8})."
 			],
 			"page": 269,
 			"damageInflict": [
@@ -20981,8 +21004,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn.",
-				"The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
+				"A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes {@dice 1d8} cold damage, and its speed is reduced by 10 feet until the start of your next turn.",
+				"The spell's damage increases by {@dice 1d8} when you reach 5th level ({@dice 2d8}), 11th level ({@dice 3d8}), and 17th level ({@dice 4d8})."
 			],
 			"page": 271,
 			"damageInflict": [
@@ -21051,14 +21074,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A ray of sickening greenish energy lashes out toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d8 poison damage and must make a Constitution saving throw. On a failed save, it is also {@condition poisoned} until the end of your next turn."
+				"A ray of sickening greenish energy lashes out toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes {@dice 2d8} poison damage and must make a Constitution saving throw. On a failed save, it is also {@condition poisoned} until the end of your next turn."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d8} for each slot level above 1st."
 					]
 				}
 			],
@@ -21118,7 +21141,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You touch a creature and stimulate its natural healing ability. The target regains 4d8+15 hit points. For the duration of the spell, the target regains 1 hit point at the start of each of its turns (10 hit points each minute).",
+				"You touch a creature and stimulate its natural healing ability. The target regains {@dice 4d8+15} hit points. For the duration of the spell, the target regains 1 hit point at the start of each of its turns (10 hit points each minute).",
 				"The target's severed body members (fingers, legs, tails, and so on), if any, are restored after 2 minutes. If you have the severed part and hold it to the stump, the spell instantaneously causes the limb to knit to the stump."
 			],
 			"page": 271
@@ -21160,12 +21183,12 @@
 			"source": "PHB",
 			"entries": [
 				"You touch a dead humanoid or a piece of a dead humanoid. Provided that the creature has been dead no longer than 10 days, the spell forms a new adult body for it and then calls the soul to enter that body. If the target's soul isn't free or willing to do so, the spell fails.",
-				"The magic fashions a new body for the creature to inhabit, which likely causes the creature's race to change. The DM rolls a d100 and consults the following table to determine what form the creature takes when restored to life, or the DM chooses a form.",
+				"The magic fashions a new body for the creature to inhabit, which likely causes the creature's race to change. The DM rolls a {@dice d100} and consults the following table to determine what form the creature takes when restored to life, or the DM chooses a form.",
 				{
 					"type": "table",
 					"caption": "Reincarnate Races",
 					"colLabels": [
-						"d100",
+						"{@dice d100}",
 						"Race"
 					],
 					"colStyles": [
@@ -21174,59 +21197,146 @@
 					],
 					"rows": [
 						[
-							"01-04",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 2,
+									"max": 4,
+									"pad": true
+								}
+							},
 							"Dragonborn"
 						],
 						[
-							"05-13",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 5,
+									"max": 13,
+									"pad": true
+								}
+							},
 							"Dwarf, hill"
 						],
 						[
-							"14-21",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 14,
+									"max": 21
+								}
+							},
 							"Dwarf, mountain"
 						],
 						[
-							"22-25",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 22,
+									"max": 25
+								}
+							},
 							"Elf, dark"
 						],
 						[
-							"26-34",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 26,
+									"max": 34
+								}
+							},
 							"Elf, high"
 						],
 						[
-							"35-42",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 35,
+									"max": 42
+								}
+							},
 							"Elf, wood"
 						],
 						[
-							"43-46",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 43,
+									"max": 46
+								}
+							},
 							"Gnome, forest"
 						],
 						[
-							"47-52",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 47,
+									"max": 52
+								}
+							},
 							"Gnome, rock"
 						],
 						[
-							"53-56",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 53,
+									"max": 56
+								}
+							},
 							"Half-elf"
 						],
 						[
-							"57-60",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 57,
+									"max": 60
+								}
+							},
 							"Half-orc"
 						],
 						[
-							"61-68",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 61,
+									"max": 68
+								}
+							},
 							"Halfling, lightfoot"
 						],
 						[
-							"69-76",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 69,
+									"max": 76
+								}
+							},
 							"Halfling, stout"
 						],
 						[
-							"77-96",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 77,
+									"max": 96
+								}
+							},
 							"Human"
 						],
 						[
-							"97-00",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 97,
+									"max": 0,
+									"pad": true
+								}
+							},
 							"Tiefling"
 						]
 					]
@@ -21331,7 +21441,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one saving throw of its choice. It can roll the die before or after the saving throw. The spell then ends."
+				"You touch one willing creature. Once before the spell ends, the target can roll a {@dice d4} and add the number rolled to one saving throw of its choice. It can roll the die before or after the saving throw. The spell then ends."
 			],
 			"page": 272
 		},
@@ -21671,8 +21781,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 radiant damage. The target gains no benefit from cover for this saving throw.",
-				"The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
+				"Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take {@dice 1d8} radiant damage. The target gains no benefit from cover for this saving throw.",
+				"The spell's damage increases by {@dice 1d8} when you reach 5th level ({@dice 2d8}), 11th level ({@dice 3d8}), and 17th level ({@dice 4d8})."
 			],
 			"page": 272,
 			"damageInflict": [
@@ -21830,7 +21940,7 @@
 			"source": "PHB",
 			"entries": [
 				"You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several.",
-				"Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage."
+				"Make a ranged spell attack for each ray. On a hit, the target takes {@dice 2d6} fire damage."
 			],
 			"entriesHigherLevel": [
 				{
@@ -22110,14 +22220,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit a creature with a melee weapon attack during the spell's duration, your weapon flares with white-hot intensity, and the attack deals an extra 1d6 fire damage to the target and causes the target to ignite in flames. At the start of each of its turns until the spell ends, the target must make a Constitution saving throw. On a failed save, it takes 1d6 fire damage. On a successful save, the spell ends. If the target or a creature within 5 feet of it uses an action to put out the flames, or if some other effect douses the flames (such as the target being submerged in water), the spell ends."
+				"The next time you hit a creature with a melee weapon attack during the spell's duration, your weapon flares with white-hot intensity, and the attack deals an extra {@dice 1d6} fire damage to the target and causes the target to ignite in flames. At the start of each of its turns until the spell ends, the target must make a Constitution saving throw. On a failed save, it takes {@dice 1d6} fire damage. On a successful save, the spell ends. If the target or a creature within 5 feet of it uses an action to put out the flames, or if some other effect douses the flames (such as the target being submerged in water), the spell ends."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the initial extra damage dealt by the attack increases by 1d6 for each slot above the 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the initial extra damage dealt by the attack increases by {@dice 1d6} for each slot above the 1st."
 					]
 				}
 			],
@@ -22535,7 +22645,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere centered on that point must make a Constitution saving throw. A creature takes 3d8 thunder damage on a failed save, or half as much damage on a successful one. A creature made of inorganic material such as stone, crystal, or metal has disadvantage on this saving throw.",
+				"A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere centered on that point must make a Constitution saving throw. A creature takes {@dice 3d8} thunder damage on a failed save, or half as much damage on a successful one. A creature made of inorganic material such as stone, crystal, or metal has disadvantage on this saving throw.",
 				"A nonmagical object that isn't being worn or carried also takes the damage if it's in the spell's area."
 			],
 			"entriesHigherLevel": [
@@ -22543,7 +22653,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for each slot level above 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d8} for each slot level above 2nd."
 					]
 				}
 			],
@@ -22760,7 +22870,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The wood of a club or quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a d8. The weapon also becomes magical, if it isn't already. The spell ends if you cast it again or if you let go of the weapon."
+				"The wood of a club or quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a {@dice d8}. The weapon also becomes magical, if it isn't already. The spell ends if you cast it again or if you let go of the weapon."
 			],
 			"page": 275
 		},
@@ -22803,8 +22913,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Lightning springs from your hand to deliver a shock to a creature you try to touch. Make a melee spell attack against the target. You have advantage on the attack roll if the target is wearing armor made of metal. On a hit, the target takes 1d8 lightning damage, and it can't take reactions until the start of its next turn.",
-				"The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
+				"Lightning springs from your hand to deliver a shock to a creature you try to touch. Make a melee spell attack against the target. You have advantage on the attack roll if the target is wearing armor made of metal. On a hit, the target takes {@dice 1d8} lightning damage, and it can't take reactions until the start of its next turn.",
+				"The spell's damage increases by {@dice 1d8} when you reach 5th level ({@dice 2d8}), 11th level ({@dice 3d8}), and 17th level ({@dice 4d8})."
 			],
 			"page": 275,
 			"damageInflict": [
@@ -23092,7 +23202,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"This spell sends creatures into a magical slumber. Roll 5d8, the total is how many hit points of creatures this spell can affect. Creatures within 20 feet of a point you choose within range are affected in ascending order of their current hit points (ignoring {@condition unconscious} creatures).",
+				"This spell sends creatures into a magical slumber. Roll {@dice 5d8}, the total is how many hit points of creatures this spell can affect. Creatures within 20 feet of a point you choose within range are affected in ascending order of their current hit points (ignoring {@condition unconscious} creatures).",
 				"Starting with the creature that has the lowest current hit points, each creature affected by this spell falls {@condition unconscious} until the spell ends, the sleeper takes damage, or someone uses an action to shake or slap the sleeper awake. Subtract each creature's hit points from the total before moving on to the creature with the next lowest hit points. A creature's hit points must be equal to or less than the remaining total for that creature to be affected.",
 				"Undead and creatures immune to being {@condition charmed} aren't affected by this spell."
 			],
@@ -23101,7 +23211,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, roll an additional 2d8 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, roll an additional {@dice 2d8} for each slot level above 1st."
 					]
 				}
 			],
@@ -23261,7 +23371,7 @@
 			"entries": [
 				"You alter time around up to six creatures of your choice in a 40-foot cube within range. Each target must succeed on a Wisdom saving throw or be affected by this spell for the duration.",
 				"An affected target's speed is halved, it takes a -2 penalty to AC and Dexterity saving throws, and it can't use reactions. On its turn, it can use either an action or a bonus action, not both. Regardless of the creature's abilities or magic items, it can't make more than one melee or ranged attack during its turn.",
-				"If the creature attempts to cast a spell with a casting time of 1 action, roll a d20. On an 11 or higher, the spell doesn't take effect until the creature's next turn, and the creature must use its action on that turn to complete the spell. If it can't, the spell is wasted.",
+				"If the creature attempts to cast a spell with a casting time of 1 action, roll a {@dice d20}. On an 11 or higher, the spell doesn't take effect until the creature's next turn, and the creature must use its action on that turn to complete the spell. If it can't, the spell is wasted.",
 				"A creature affected by this spell makes another Wisdom saving throw at the end of its turn. On a successful save, the effect ends for it."
 			],
 			"page": 277,
@@ -23705,7 +23815,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The ground in a 20-foot radius centered on a point within range twists and sprouts hard spikes and thorns. The area becomes difficult terrain for the duration. When a creature moves into or within the area, it takes 2d4 piercing damage for every 5 feet it travels.",
+				"The ground in a 20-foot radius centered on a point within range twists and sprouts hard spikes and thorns. The area becomes difficult terrain for the duration. When a creature moves into or within the area, it takes {@dice 2d4} piercing damage for every 5 feet it travels.",
 				"The transformation of the ground is camouflaged to look natural. Any creature that can't see the area at the time the spell is case must make a Wisdom (Perception) check against your spell save DC to recognize the terrain as hazardous before entering it."
 			],
 			"page": 277,
@@ -23781,14 +23891,14 @@
 			"source": "PHB",
 			"entries": [
 				"You call forth spirits to protect you. They flit around you to a distance of 15 feet for the duration. If you are good or neutral, their spectral form appears angelic or fey (your choice). If you are evil, they appear fiendish.",
-				"When you cast this spell, you can designate any number of creatures you can see to be unaffected by it. An affected creature's speed is halved in the area, and when the creature enters the area for the first time on a turn or starts its turn there, it must make a Wisdom saving throw. On a failed save, the creature takes 3d8 radiant damage (if you are good or neutral) or 3d8 necrotic damage (if you are evil). On a successful save, the creature takes half as much damage."
+				"When you cast this spell, you can designate any number of creatures you can see to be unaffected by it. An affected creature's speed is halved in the area, and when the creature enters the area for the first time on a turn or starts its turn there, it must make a Wisdom saving throw. On a failed save, the creature takes {@dice 3d8} radiant damage (if you are good or neutral) or {@dice 3d8} necrotic damage (if you are evil). On a successful save, the creature takes half as much damage."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@dice 1d8} for each slot level above 3rd."
 					]
 				}
 			],
@@ -23903,7 +24013,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You create a floating, spectral weapon within range that lasts for the duration or until you cast this spell again. When you cast the spell, you can make a melee spell attack against a creature within 5 feet of the weapon. On a hit, the target takes force damage equal to 1d8 + your spellcasting ability modifier.",
+				"You create a floating, spectral weapon within range that lasts for the duration or until you cast this spell again. When you cast the spell, you can make a melee spell attack against a creature within 5 feet of the weapon. On a hit, the target takes force damage equal to {@dice 1d8} + your spellcasting ability modifier.",
 				"As a bonus action on your turn, you can move the weapon up to 20 feet and repeat the attack against a creature within 5 feet of it.",
 				"The weapon can take whatever form you choose. Clerics of deities who are associated with a particular weapon (as St. Cuthbert is known for his mace and Thor for his hammer) make this spell's effect resemble that weapon."
 			],
@@ -23912,7 +24022,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for every two slot levels above the 2nd."
+						"When you cast this spell using a spell slot of 3rd level or higher, the damage increases by {@dice 1d8} for every two slot levels above the 2nd."
 					]
 				}
 			],
@@ -23992,7 +24102,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit a creature with a melee weapon attack during this spell's duration, your weapon pierces both body and mind, and the attack deals an extra 4d6 psychic damage to the target. The target must make a Wisdom saving throw. On a failed save, it has disadvantage on attack rolls and ability checks, and can't take reactions, until the end of its next turn."
+				"The next time you hit a creature with a melee weapon attack during this spell's duration, your weapon pierces both body and mind, and the attack deals an extra {@dice 4d6} psychic damage to the target. The target must make a Wisdom saving throw. On a failed save, it has disadvantage on attack rolls and ability checks, and can't take reactions, until the end of its next turn."
 			],
 			"page": 278,
 			"damageInflict": [
@@ -24359,34 +24469,34 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A churning storm cloud forms, centered on a point you can see and spreading to a radius of 360 feet. Lightning flashes in the area, thunder booms, and strong winds roar. Each creature under the cloud (no more than 5,000 feet beneath the cloud) when it appears must make a Constitution saving throw. On a failed save, a creature takes 2d6 thunder damage and becomes {@condition deafened} for 5 minutes.",
+				"A churning storm cloud forms, centered on a point you can see and spreading to a radius of 360 feet. Lightning flashes in the area, thunder booms, and strong winds roar. Each creature under the cloud (no more than 5,000 feet beneath the cloud) when it appears must make a Constitution saving throw. On a failed save, a creature takes {@dice 2d6} thunder damage and becomes {@condition deafened} for 5 minutes.",
 				"Each round you maintain concentration on this spell, the storm produces additional effects on your turn.",
 				{
 					"type": "entries",
 					"name": "Round 2",
 					"entries": [
-						"Acidic rain falls from the cloud. Each creature and object under the cloud takes 1d6 acid damage."
+						"Acidic rain falls from the cloud. Each creature and object under the cloud takes {@dice 1d6} acid damage."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Round 3",
 					"entries": [
-						"You call six bolts of lightning from the cloud to strike six creatures or objects of your choice beneath the cloud. A given creature or object can't be struck by more than one bolt. A struck creature must make a Dexterity saving throw. The creature takes 10d6 lightning damage on a failed save, or half as much damage on a successful one."
+						"You call six bolts of lightning from the cloud to strike six creatures or objects of your choice beneath the cloud. A given creature or object can't be struck by more than one bolt. A struck creature must make a Dexterity saving throw. The creature takes {@dice 10d6} lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Round 4",
 					"entries": [
-						"Hailstones rain down from the cloud. Each creature under the cloud takes 2d6 bludgeoning damage."
+						"Hailstones rain down from the cloud. Each creature under the cloud takes {@dice 2d6} bludgeoning damage."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Round 5-10",
 					"entries": [
-						"Gusts and freezing rain assail the area under the cloud. the area becomes difficult terrain and is heavily obscured. Each creature there takes 1d6 cold damage. Ranged weapon attacks in the area are impossible. The wind and rain count as a severe distraction for the purposes of maintaining concentration on spells. Finally, gusts of strong wind (ranging from 20 to 50 miles per hour) automatically disperse fog, mists, and similar phenomena in the area whether mundane or magical."
+						"Gusts and freezing rain assail the area under the cloud. the area becomes difficult terrain and is heavily obscured. Each creature there takes {@dice 1d6} cold damage. Ranged weapon attacks in the area are impossible. The wind and rain count as a severe distraction for the purposes of maintaining concentration on spells. Finally, gusts of strong wind (ranging from 20 to 50 miles per hour) automatically disperse fog, mists, and similar phenomena in the area whether mundane or magical."
 					]
 				}
 			],
@@ -24538,7 +24648,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A beam of brilliant light flashes out from your hand in a 5-foot-wide, 60-foot-line. Each creature in the line must make a Constitution saving throw. On a failed save, a creature takes 6d8 radiant damage and is {@condition blinded} until your next turn. On a successful save, it takes half as much damage and isn't {@condition blinded} by this spell. Undead and oozes have disadvantage on this saving throw.",
+				"A beam of brilliant light flashes out from your hand in a 5-foot-wide, 60-foot-line. Each creature in the line must make a Constitution saving throw. On a failed save, a creature takes {@dice 6d8} radiant damage and is {@condition blinded} until your next turn. On a successful save, it takes half as much damage and isn't {@condition blinded} by this spell. Undead and oozes have disadvantage on this saving throw.",
 				"You can create a new line of radiance as your action on any turn until the spell ends.",
 				"For the duration, a mote of brilliant radiance shines in your hand. It sheds bright light in a 30-foot radius and dim light for an additional 30 feet. The light is sunlight."
 			],
@@ -24595,7 +24705,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Brilliant sunlight flashes in a 60-foot radius centered on a point you choose within range. Each creature in that light must make a Constitution saving throw. On a failed save, a creature takes 12d6 radiant damage and is {@condition blinded} for 1 minute. On a successful save, it takes half as much damage and isn't {@condition blinded} by this spell. Undead and oozes have disadvantage on this saving throw.",
+				"Brilliant sunlight flashes in a 60-foot radius centered on a point you choose within range. Each creature in that light must make a Constitution saving throw. On a failed save, a creature takes {@dice 12d6} radiant damage and is {@condition blinded} for 1 minute. On a successful save, it takes half as much damage and isn't {@condition blinded} by this spell. Undead and oozes have disadvantage on this saving throw.",
 				"A creature {@condition blinded} by this spell makes another Constitution saving throw at the end of each of its turns. On a successful save, it is no longer {@condition blinded}.",
 				"This spell dispels any darkness in its area that was created by a spell."
 			],
@@ -24710,7 +24820,7 @@
 					"type": "entries",
 					"name": "Death",
 					"entries": [
-						"Each target must make a Constitution saving throw, taking 10d10 necrotic damage on a failed save, or half as much damage on a successful save."
+						"Each target must make a Constitution saving throw, taking {@dice 10d10} necrotic damage on a failed save, or half as much damage on a successful save."
 					]
 				},
 				{
@@ -25009,7 +25119,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"This spell instantly transports you and up to eight willing creatures of your choice that you can see within range, or a single object that you can see within range, to a destination you select. If you target an object, it must be able to fit entirely inside a 10-foot cube, and it can't be held or carried by an unwilling creature. The destination you choose must be known to you, and it must be on the same plane of existence as you. Your familiarity with the destination determines whether you arrive there successfully. The DM rolls d100 and consults the table.",
+				"This spell instantly transports you and up to eight willing creatures of your choice that you can see within range, or a single object that you can see within range, to a destination you select. If you target an object, it must be able to fit entirely inside a 10-foot cube, and it can't be held or carried by an unwilling creature. The destination you choose must be known to you, and it must be on the same plane of existence as you. Your familiarity with the destination determines whether you arrive there successfully. The DM rolls {@dice d100} and consults the table.",
 				{
 					"type": "table",
 					"caption": "Teleportation",
@@ -25099,7 +25209,7 @@
 					"type": "entries",
 					"name": "Off Target",
 					"entries": [
-						"You and your group (or the target object) appear a random distance away from the destination in a random direction. Distance off target is 1d10 x 1d10 percent of the distance that was to be travelled. For example, if you tried to travel 120 miles, landed off target, and rolled a 5 and 3 on the two d10s, then you would be off target by 15 percent, or 18 miles. The DM determines the direction off target randomly by rolling a d8 and designating 1 as north, 2 as north-east, 3 as east, and so on around the points of the compass. If you were teleporting to a coastal city and wound up 18 miles out at sea, you could be in trouble."
+						"You and your group (or the target object) appear a random distance away from the destination in a random direction. Distance off target is {@dice 1d10} x {@dice 1d10} percent of the distance that was to be travelled. For example, if you tried to travel 120 miles, landed off target, and rolled a 5 and 3 on the two {@dice d10}s, then you would be off target by 15 percent, or 18 miles. The DM determines the direction off target randomly by rolling a {@dice d8} and designating 1 as north, 2 as north-east, 3 as east, and so on around the points of the compass. If you were teleporting to a coastal city and wound up 18 miles out at sea, you could be in trouble."
 					]
 				},
 				{
@@ -25113,7 +25223,7 @@
 					"type": "entries",
 					"name": "Mishap",
 					"entries": [
-						"The spell's unpredictable magic results in a difficult journey. Each teleporting creature (or the target object) takes 3d10 force damage and the DM rerolls on the table to see where you wind up (multiple mishaps can occur, dealing damage each time)."
+						"The spell's unpredictable magic results in a difficult journey. Each teleporting creature (or the target object) takes {@dice 3d10} force damage and the DM rerolls on the table to see where you wind up (multiple mishaps can occur, dealing damage each time)."
 					]
 				}
 			],
@@ -25368,8 +25478,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You create a long, vine-like whip covered in thorns that lashes out at your command toward a creature in range. Make a melee spell attack against the target. If the attack hits, the creature takes 1d6 piercing damage, and if the creature is Large or smaller, you pull the creature up to 10 feet closer to you.",
-				"This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
+				"You create a long, vine-like whip covered in thorns that lashes out at your command toward a creature in range. Make a melee spell attack against the target. If the attack hits, the creature takes {@dice 1d6} piercing damage, and if the creature is Large or smaller, you pull the creature up to 10 feet closer to you.",
+				"This spell's damage increases by {@dice 1d6} when you reach 5th level ({@dice 2d6}), 11th level ({@dice 3d6}), and 17th level ({@dice 4d6})."
 			],
 			"page": 282,
 			"damageInflict": [
@@ -25437,7 +25547,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The first time you hit with a melee weapon attack during this spell's duration, your weapon rings with thunder that is audible within 300 feet of you, and the attack deals an extra 2d6 thunder damage to the target. Additionally, if the target is a creature, it must succeed on a Strength saving throw or be pushed 10 feet away from you and knocked {@condition prone}."
+				"The first time you hit with a melee weapon attack during this spell's duration, your weapon rings with thunder that is audible within 300 feet of you, and the attack deals an extra {@dice 2d6} thunder damage to the target. Additionally, if the target is a creature, it must succeed on a Strength saving throw or be pushed 10 feet away from you and knocked {@condition prone}."
 			],
 			"page": 282,
 			"damageInflict": [
@@ -25507,7 +25617,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed.",
+				"A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes {@dice 2d8} thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed.",
 				"In addition, unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the spell's effect, and the spell emits a thunderous boom audible out to 300 feet."
 			],
 			"entriesHigherLevel": [
@@ -25515,7 +25625,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by {@dice 1d8} for each slot level above 1st."
 					]
 				}
 			],
@@ -25565,7 +25675,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take 1d4+1 turns in a row, during which you can use actions and move as normal.",
+				"You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take {@dice 1d4+1} turns in a row, during which you can use actions and move as normal.",
 				"This spell ends if one of the actions you use during this period, or any effects that you create during this period, affects a creature other than you or an object being worn or carried by someone other than you. In addition, the spell ends if you move to a place more than 1,000 feet from the location where you cast it."
 			],
 			"page": 283
@@ -26044,8 +26154,8 @@
 			"source": "PHB",
 			"entries": [
 				"A wall of water springs into existence at a point you choose within range. You can make the wall up to 300 feet long, 300 feet high, and 50 feet thick. The wall lasts for the duration.",
-				"When the wall appears, each creature within its area must make a Strength saving throw. On a failed save, a creature takes 6d10 bludgeoning damage, or half as much damage on a successful save.",
-				"At the start of each of your turns after the wall appears, the wall, along with any creatures in it, moves 50 feet away from you. Any Huge or smaller creature inside the wall or whose space the wall enters when it moves must succeed on a Strength saving throw or take 5d10 bludgeoning damage. A creature can take this damage only once per round. At the end of the turn, the wall's height is reduced by 50 feet, and the damage creatures take from the spell on subsequent rounds is reduced by 1d10. When the wall reaches 0 feet in height, the spell ends.",
+				"When the wall appears, each creature within its area must make a Strength saving throw. On a failed save, a creature takes {@dice 6d10} bludgeoning damage, or half as much damage on a successful save.",
+				"At the start of each of your turns after the wall appears, the wall, along with any creatures in it, moves 50 feet away from you. Any Huge or smaller creature inside the wall or whose space the wall enters when it moves must succeed on a Strength saving throw or take {@dice 5d10} bludgeoning damage. A creature can take this damage only once per round. At the end of the turn, the wall's height is reduced by 50 feet, and the damage creatures take from the spell on subsequent rounds is reduced by {@dice 1d10}. When the wall reaches 0 feet in height, the spell ends.",
 				"A creature caught in the wall can move by swimming. Because of the force of the wave, though, the creature must make a successful Strength (Athletics) check against your spell save DC in order to move at all. If it fails the check, it can't move. A creature that moves out of the area falls to the ground."
 			],
 			"page": 284,
@@ -26203,14 +26313,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The touch of your shadow-wreathed hand can siphon force from others to heal your wounds. Make a melee spell attack against a creature within your reach. On a hit, the target takes 3d6 necrotic damage, and you regain hit points equal to half the amount of necrotic damage dealt. Until the spell ends, you can make the attack again on each of your turns as an action."
+				"The touch of your shadow-wreathed hand can siphon force from others to heal your wounds. Make a melee spell attack against a creature within your reach. On a hit, the target takes {@dice 3d6} necrotic damage, and you regain hit points equal to half the amount of necrotic damage dealt. Until the spell ends, you can make the attack again on each of your turns as an action."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd."
+						"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@dice 1d6} for each slot level above 3rd."
 					]
 				}
 			],
@@ -26254,8 +26364,8 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target can hear you (though it need not understand you), it must succeed on a Wisdom saving throw or take 1d4 psychic damage and have disadvantage on the next attack roll it makes before the end of its next turn.",
-				"This spell's damage increases by 1d4 when you reach 5th level (2d4), 11th level (3d4) and 17th level (4d4)."
+				"You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target can hear you (though it need not understand you), it must succeed on a Wisdom saving throw or take {@dice 1d4} psychic damage and have disadvantage on the next attack roll it makes before the end of its next turn.",
+				"This spell's damage increases by {@dice 1d4} when you reach 5th level ({@dice 2d4}), 11th level ({@dice 3d4}) and 17th level ({@dice 4d4})."
 			],
 			"page": 285,
 			"damageInflict": [
@@ -26378,15 +26488,15 @@
 			"source": "PHB",
 			"entries": [
 				"You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.",
-				"When the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes 5d8 fire damage, or half as much damage on a successful save.",
-				"One side of the wall, selected by you when you cast this spell, deals 5d8 fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage."
+				"When the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes {@dice 5d8} fire damage, or half as much damage on a successful save.",
+				"One side of the wall, selected by you when you cast this spell, deals {@dice 5d8} fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8 for each slot level above 4th."
+						"When you cast this spell using a spell slot of 5th level or higher, the damage increases by {@dice 1d8} for each slot level above 4th."
 					]
 				}
 			],
@@ -26523,15 +26633,15 @@
 			"source": "PHB",
 			"entries": [
 				"You create a wall of ice on a solid surface within range. You can form it into a hemispherical dome or a sphere with radium of up to 10 feet, or you can shape a flat surface made up of ten 10-foot-square panels. Each panel must be contiguous with another panel. In any form, the wall is 1 foot thick and lasts for the duration.",
-				"If the wall cuts through a creature's space when it appears, the creature within its area is pushed to one side of the wall and must make a Dexterity saving throw. On a failed save, the creature takes 10d6 cold damage, or half as much damage on a successful save.",
-				"The wall is an object that can be damaged and thus breached. It has AC 12 and 30 hit points per 10-foot section, and it is vulnerable to fire damage. Reducing a 10-foot section of wall to 0 hit points destroys it and leaves behind a sheet of frigid air in the space the wall occupied. A creature moving through the sheet of frigid air for the first time on a turn must make a Constitution saving throw. The creature takes 5d6 cold damage on a failed save, or half as much damage on a successful one."
+				"If the wall cuts through a creature's space when it appears, the creature within its area is pushed to one side of the wall and must make a Dexterity saving throw. On a failed save, the creature takes {@dice 10d6} cold damage, or half as much damage on a successful save.",
+				"The wall is an object that can be damaged and thus breached. It has AC 12 and 30 hit points per 10-foot section, and it is vulnerable to fire damage. Reducing a 10-foot section of wall to 0 hit points destroys it and leaves behind a sheet of frigid air in the space the wall occupied. A creature moving through the sheet of frigid air for the first time on a turn must make a Constitution saving throw. The creature takes {@dice 5d6} cold damage on a failed save, or half as much damage on a successful one."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 7th level or higher, the damage the wall deals when it appears increases by 2d6, and the damage from passing through the sheet of frigid air increases by 1d6 for each slot level above 6th."
+						"When you cast this spell using a spell slot of 7th level or higher, the damage the wall deals when it appears increases by {@dice 2d6}, and the damage from passing through the sheet of frigid air increases by {@dice 1d6} for each slot level above 6th."
 					]
 				}
 			],
@@ -26674,15 +26784,15 @@
 			"source": "PHB",
 			"entries": [
 				"You create a wall of tough, pliable, tangled brush bristling with needle-sharp thorns. The wall appears within range on a solid surface and lasts for the duration. You choose to make the wall up to 60 feet long, 10 feet high, and 5 feet thick or a circle that has a 20-foot diameter and is up to 20 feet high and 5 feet thick. The wall blocks line of sight.",
-				"When the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes 7d8 piercing damage, or half as much damage on a successful save.",
-				"A creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature moves through the wall, it must spend 4 feet of movement. Furthermore, the first time a creature enters the wall on a turn or ends its turn there, the creature must make a Dexterity saving throw. It takes 7d8 slashing damage on a failed save, or half as much on a successful save."
+				"When the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes {@dice 7d8} piercing damage, or half as much damage on a successful save.",
+				"A creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature moves through the wall, it must spend 4 feet of movement. Furthermore, the first time a creature enters the wall on a turn or ends its turn there, the creature must make a Dexterity saving throw. It takes {@dice 7d8} slashing damage on a failed save, or half as much on a successful save."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 7th level or higher, both types of damage increase by 1d8 for each slot level above 6th."
+						"When you cast this spell using a spell slot of 7th level or higher, both types of damage increase by {@dice 1d8} for each slot level above 6th."
 					]
 				}
 			],
@@ -26991,7 +27101,7 @@
 				"If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the conjured web collapses on itself, and the spell ends at the start of your next turn. Webs layered over a flat surface have a depth of 5 feet.",
 				"Each creature that starts its turn in the webs or that enters them during its turn must make a Dexterity saving throw. On a failed save, the creature is {@condition restrained} as long as it remains in the webs or until it breaks free.",
 				"A creature {@condition restrained} by the webs can use its actions to make a Strength check against your spell save DC. If it succeeds, it is no longer {@condition restrained}.",
-				"The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 round, dealing 2d4 fire damage to any creature that starts its turn in the fire."
+				"The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 round, dealing {@dice 2d4} fire damage to any creature that starts its turn in the fire."
 			],
 			"page": 287,
 			"damageInflict": [
@@ -27045,7 +27155,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"Drawing on the deepest fears of a group of creatures, you create illusory creatures in their minds, visible only to them. Each creature in a 30-foot-radius sphere centered on a point of your choice within range must make a Wisdom saving throw. On a failed save, a creature becomes {@condition frightened} for the duration. The illusion calls on the creature's deepest fears, manifesting its worst nightmares as an implacable threat. At the end of each of the {@condition frightened} creature's turns, it must succeed on a Wisdom saving throw or take 4d10 psychic damage. On a successful save, the spell ends for that creature."
+				"Drawing on the deepest fears of a group of creatures, you create illusory creatures in their minds, visible only to them. Each creature in a 30-foot-radius sphere centered on a point of your choice within range must make a Wisdom saving throw. On a failed save, a creature becomes {@condition frightened} for the duration. The illusion calls on the creature's deepest fears, manifesting its worst nightmares as an implacable threat. At the end of each of the {@condition frightened} creature's turns, it must succeed on a Wisdom saving throw or take {@dice 4d10} psychic damage. On a successful save, the spell ends for that creature."
 			],
 			"page": 288,
 			"damageInflict": [
@@ -27160,7 +27270,7 @@
 			"source": "PHB",
 			"entries": [
 				"A wall of strong wind rises from the ground at a point you choose within range. You can make the wall up to 50 feet long, 15 feet high, and 1 foot thick. You can shape the wall in any way you choose so long as it makes one continuous path along the ground. The wall lasts for the duration.",
-				"When the wall appears, each creature within its area must make a Strength saving throw. A creature takes 3d8 bludgeoning damage on a failed save, or half as much damage on a successful one.",
+				"When the wall appears, each creature within its area must make a Strength saving throw. A creature takes {@dice 3d8} bludgeoning damage on a failed save, or half as much damage on a successful one.",
 				"The strong wind keeps fog, smoke, and other gases at bay. Small or smaller flying creatures or objects can't pass through the wall. Loose, lightweight materials brought into the wall fly upward. Arrows, bolts, and other ordinary projectiles launched at targets behind the wall are deflected upward and automatically miss. (Boulders hurled by giants or siege engines, and similar projectiles, are unaffected.) Creatures in gaseous form can't pass through it."
 			],
 			"page": 288,
@@ -27222,7 +27332,7 @@
 					]
 				},
 				"You might be able to achieve something beyond the scope of the above examples. State your wish to the DM as precisely as possible. The DM has great latitude in ruling what occurs in such an instance, the greater the wish, the greater the likelihood that something goes wrong. This spell might simply fail, the effect you desire might only be partly achieved, or you might suffer some unforeseen consequence as a result of how you worded the wish. For example, wishing that a villain were dead might propel you forward in time to a period when that villain is no longer alive, effectively removing you from the game. Similarly, wishing for a legendary magic item or artifact might instantly transport you to the presence of the item's current owner.",
-				"The stress of casting this spell to produce any effect other than duplicating another spell weakens you. After enduring that stress, each time you cast a spell until you finish a long rest, you take 1d10 necrotic damage per level of that spell. This damage can't be reduced or prevented in any way. In addition, your Strength drops to 3, if it isn't 3 or lower already, for 2d4 days. For each of those days that you spend resting and doing nothing more than light activity, your remaining recovery time decreases by 2 days. Finally, there is a 33 percent chance that you are unable to cast Wish ever again if you suffer this stress."
+				"The stress of casting this spell to produce any effect other than duplicating another spell weakens you. After enduring that stress, each time you cast a spell until you finish a long rest, you take {@dice 1d10} necrotic damage per level of that spell. This damage can't be reduced or prevented in any way. In addition, your Strength drops to 3, if it isn't 3 or lower already, for {@dice 2d4} days. For each of those days that you spend resting and doing nothing more than light activity, your remaining recovery time decreases by 2 days. Finally, there is a 33 percent chance that you are unable to cast Wish ever again if you suffer this stress."
 			],
 			"page": 288,
 			"damageInflict": [
@@ -27294,14 +27404,14 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A beam of crackling, blue energy lances out toward a creature within range, forming a sustained arc of lightning between you and the target. Make a ranged spell attack against that creature. On a hit, the target takes 1d12 lightning damage, and on each of your turns for the duration, you can use your action to deal 1d12 lightning damage to the target automatically. The spell ends if you use your action to do anything else. The spell also ends if the target is ever outside the spell's range or if it has total cover from you."
+				"A beam of crackling, blue energy lances out toward a creature within range, forming a sustained arc of lightning between you and the target. Make a ranged spell attack against that creature. On a hit, the target takes {@dice 1d12} lightning damage, and on each of your turns for the duration, you can use your action to deal {@dice 1d12} lightning damage to the target automatically. The spell ends if you use your action to do anything else. The spell also ends if the target is ever outside the spell's range or if it has total cover from you."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the initial damage increases by 1d12 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, the initial damage increases by {@dice 1d12} for each slot level above 1st."
 					]
 				}
 			],
@@ -27421,7 +27531,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The next time you hit with a melee weapon attack during this spell's duration, your attack deals an extra 1d6 psychic damage. Additionally, if the target is a creature, it must make a Wisdom saving throw or be {@condition frightened} of you until the spell ends. As an action, the creature can make a Wisdom check against your spell save DC to steel its resolve and end this spell."
+				"The next time you hit with a melee weapon attack during this spell's duration, your attack deals an extra {@dice 1d6} psychic damage. Additionally, if the target is a creature, it must make a Wisdom saving throw or be {@condition frightened} of you until the spell ends. As an action, the creature can make a Wisdom check against your spell save DC to steel its resolve and end this spell."
 			],
 			"page": 289,
 			"damageInflict": [
