@@ -187,7 +187,11 @@ StrUtil = {
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
 	TITLE_LOWER_WORDS: ["A", "An", "The", "And", "But", "Or", "For", "Nor", "As", "At", "By", "For", "From", "In", "Into", "Near", "Of", "On", "Onto", "To", "With"],
 	// Certain words such as initialisms or acronyms should be left uppercase
-	TITLE_UPPER_WORDS: ["Id", "Tv"]
+	TITLE_UPPER_WORDS: ["Id", "Tv"],
+
+	padNumber: (n, len, padder) => {
+		return String(n).padStart(len, padder);
+	}
 };
 
 RegExp.escape = function (string) {

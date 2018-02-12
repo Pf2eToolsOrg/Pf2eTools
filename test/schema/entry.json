@@ -217,6 +217,32 @@
 						"width": {
 							"type": "integer"
 						},
+						"roll": {
+							"type": "object",
+							"properties": {
+								"oneOf": [
+									{
+										"min": {
+											"type": "integer"
+										},
+										"max": {
+											"type": "integer"
+										}
+									},
+									{
+										"exact": {
+											"type": "integer"
+										}
+									}
+								],
+								"entry": {
+									"$ref": "/Entry"
+								},
+								"pad": {
+									"type": "boolean"
+								}
+							}
+						},
 						"entry": {
 							"$ref": "/Entry"
 						}
