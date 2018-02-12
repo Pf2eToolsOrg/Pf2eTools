@@ -300,7 +300,7 @@ function EntryRenderer () {
 							} else if (roRender[j].roll.exact) {
 								toRenderCell =  roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
 							} else {
-								toRenderCell = `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}`
+								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`
 							}
 						}
 					} else {
@@ -2313,8 +2313,8 @@ EntryRenderer.dice = {
 				const $e = $(e);
 				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
 			});
-			if ($td.length && $td.next().length) {
-				return $td.next().get().map(ele => ele.innerHTML).join(" | ");
+			if ($td.length && $td.nextAll().length) {
+				return $td.nextAll().get().map(ele => ele.innerHTML).join(" | ");
 			}
 		}
 
