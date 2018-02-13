@@ -2365,22 +2365,22 @@
 						"1": {
 							"slots": 4,
 							"spells": [
-								"{@spell hunter's mark|PHB}",
-								"{@spell jump|PHB}"
+								"{@spell hunter's mark}",
+								"{@spell jump}"
 							]
 						},
 						"2": {
 							"slots": 3,
 							"spells": [
-								"{@spell locate animals or plants|PHB}",
-								"{@spell locate object|PHB}"
+								"{@spell locate animals or plants}",
+								"{@spell locate object}"
 							]
 						},
 						"3": {
 							"slots": 2,
 							"spells": [
-								"{@spell water breathing|PHB}",
-								"{@spell water walk|PHB}"
+								"{@spell water breathing}",
+								"{@spell water walk}"
 							]
 						}
 					}
@@ -2557,7 +2557,7 @@
 						"5": {
 							"slots": 2,
 							"spells": [
-								"{@spell Bigby's hand|PHB}", "{@spell wall of force}"
+								"{@spell Bigby's hand}", "{@spell wall of force}"
 							]
 						},
 						"6": {
@@ -2839,37 +2839,231 @@
 						"1": {
 							"slots": 4,
 							"spells": [
-								"{@spell charm person|PHB}", "{@spell comprehend languages|PHB}", "{@spell magic missile|PHB}", "{@spell shield|PHB}"
+								"{@spell charm person}", "{@spell comprehend languages}", "{@spell magic missile}", "{@spell shield}"
 							]
 						},
 						"2": {
 							"slots": 3,
 							"spells": [
-								"{@spell crown of madness|PHB}", "{@spell gust of wind|PHB}", "{@spell levitate|PHB}"
+								"{@spell crown of madness}", "{@spell gust of wind}", "{@spell levitate}"
 							]
 						},
 						"3": {
 							"slots": 3,
 							"spells": [
-								"{@spell nondetection|PHB}", "{@spell protection from energy|PHB}", "{@spell tongues|PHB}"
+								"{@spell nondetection}", "{@spell protection from energy}", "{@spell tongues}"
 							]
 						},
 						"4": {
 							"slots": 3,
 							"spells": [
-								"{@spell conjure minor elementals|PHB}", "{@spell greater invisibility|PHB}", "{@spell Otiluke's resilient sphere|PHB}"
+								"{@spell conjure minor elementals}", "{@spell greater invisibility}", "{@spell Otiluke's resilient sphere}"
 							]
 						},
 						"5": {
 							"slots": 2,
 							"spells": [
-								"{@spell cone of cold|PHB}", "{@spell contact other plane|PHB}"
+								"{@spell cone of cold}", "{@spell contact other plane}"
 							]
 						},
 						"6": {
 							"slots": 1,
 							"spells": [
 								"{@spell mass suggestion}"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Klauth",
+			"size": "G",
+			"type": "dragon",
+			"source": "SKT",
+			"alignment": "chaotic evil",
+			"ac": "22 (natural armor)",
+			"hp": "546 (28d20+252)",
+			"speed": "40 ft., climb 40 ft., fly 80 ft.",
+			"str": 30,
+			"dex": 10,
+			"con": 29,
+			"int": 18,
+			"wis": 15,
+			"cha": 23,
+			"save": "Dex +7, Con +16, Wis +9, Cha +13",
+			"skill": {
+				"perception": "+16",
+				"stealth": "+7"
+			},
+			"immune": "fire",
+			"senses": "blindsight 60 ft., darkvision 120 ft.",
+			"passive": 26,
+			"languages": "Common, Draconic",
+			"cr": "25",
+			"trait": [
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If the dragon fails a saving throw, it can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Dual Wand Wielder",
+					"entries": [
+						"If Klauth is carrying two wands, he can use an action to expend 1 charge from each wand, triggering the effects of both wands simultaneously."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Klauth carries a {@item wand of fireballs} and a {@item wand of lightning bolts}, and he wears a {@item ring of cold resistance}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: +17 to hit, reach 15 ft., one target. Hit: 21 (2d10+10) piercing damage plus 14 (4d6) fire damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 17 (2d6+10) slashing damage."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"Melee Weapon Attack: +17 to hit, reach 20 ft., one target. Hit: 19 (2d8+10) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Frightful Presence",
+					"entries": [
+						"Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours."
+					]
+				},
+				{
+					"name": "Fire Breath (Recharge 5\u20146)",
+					"entries": [
+						"The dragon exhales fire in a 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 91 (26d6) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"legendaryGroup": "Red Dragon",
+			"legendary": [
+				{
+					"name": "Detect",
+					"entries": [
+						"The dragon makes a Wisdom (Perception) check."
+					]
+				},
+				{
+					"name": "Tail Attack",
+					"entries": [
+						"The dragon makes a tail attack."
+					]
+				},
+				{
+					"name": "Wing Attack (Costs 2 Actions)",
+					"entries": [
+						"The dragon beats its wings. Each creature within 15 ft. of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 (2d6+10) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+					]
+				}
+			],
+			"page": 95,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Klauth's spellcasting ability is Charisma (spell save DC 22). He can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell banishment}",
+							"{@spell etherealness}",
+							"{@spell find the path}",
+							"{@spell locate object}",
+							"{@spell prismatic spray}",
+							"{@spell suggestion}"
+						]
+					}
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Klauth is a 14th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 20 {@hit 12} to hit with spell attacks). He has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell mending}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell comprehend languages}", 
+								"{@spell detect magic}", 
+								"{@spell expeditious retreat}", 
+								"{@spell identify}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell darkness}", 
+								"{@spell detect thoughts}", 
+								"{@spell Melf's acid arrow}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell clairvoyance}",
+								"{@spell haste}",
+								"{@spell nondetection}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}", 
+								"{@spell ice storm}", 
+								"{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell Bigby's hand}",
+								"{@spell cloudkill}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell disintegrate}", 
+								"{@spell mass suggestion}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell mirage arcane}"
 							]
 						}
 					}
