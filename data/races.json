@@ -1788,7 +1788,6 @@
 			],
 			"subraces": [
 				{
-					"name": "Infernal",
 					"ability": {
 						"cha": 2,
 						"int": 1
@@ -1804,7 +1803,7 @@
 					]
 				},
 				{
-					"name": "Variant Infernal",
+					"name": "Variant",
 					"source": "SCAG",
 					"page": 118,
 					"ability": {
@@ -3218,7 +3217,7 @@
 			]
 		},
 		{
-			"name": "Vampire",
+			"name": "Vampire (Zendikar)",
 			"source": "PSZ",
 			"page": 14,
 			"size": "M",
@@ -4167,7 +4166,7 @@
 			"npc": true
 		},
 		{
-			"name": "Merfolk",
+			"name": "Merfolk (Zendikar)",
 			"source": "DMG",
 			"page": 282,
 			"size": "M",
@@ -4341,6 +4340,283 @@
 				}
 			],
 			"npc": true
+		},
+		{
+			"name": "Human (Ixalan)",
+			"source": "PSX",
+			"page": 11,
+			"size": "M",
+			"speed": 30,
+			"ability": {
+				"str": 1,
+				"dex": 1,
+				"con": 1,
+				"int": 1,
+				"wis": 1,
+				"cha": 1
+			},
+			"entries": [
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and one extra language of your choice. Or, if your campaign uses the optional rules for languages found in the previous section, your national origin determines your native language: Itzocan for the Sun Empire, Coalition pidgin for the Brazen Coalition, or Vampire for the Legion of Dusk. You still speak one additional language of your choice, and Common if it exists in your campaign."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Vampire (Ixalan)",
+			"source": "PSX",
+			"page": 14,
+			"ability": {
+				"cha": 2,
+				"wis": 1
+			},
+			"size": "M",
+			"speed": 30,
+			"darkvision": 60,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Bloodthirst",
+					"entries": [
+						"You can drain blood and life energy from a willing creature, or one that is {@condition grappled} by you, {@condition incapacitated}, or {@condition restrained}. Make a melee attack against the target. If you hit, you deal 1 piercing damage and 1d6 necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces it's hit point maximum to 0."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feast of Blood",
+					"entries": [
+						"When you drain blood with your Bloodthirst ability, you experience a surge of vitality. Your speed increases by 10 feet, and you gain advantage on Strength and Dexterity checks and saving throws for 1 minute."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Vampiric Resistance",
+					"entries": [
+						"You have resistance to necrotic damage."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common (if it exists in your campaign) and Vampire."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Orc (Ixalan)",
+			"source": "PSX",
+			"page": 15,
+			"ability": {
+				"str": 2,
+				"con": 1
+			},
+			"size": "M",
+			"speed": 30,
+			"darkvision": 60,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Menacing",
+					"entries": [
+						"You gain proficiency in the Intimidation skill."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Relentless Endurance",
+					"entries": [
+						"When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can’t use this feature again until you finish a long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Savage Attacks",
+					"entries": [
+						"When you score a critical hit with a melee weapon attack, you can roll one of the weapon’s damage dice one additional time and add it to the extra damage of the critical hit."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common (if it exists in your campaign) and Orc."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Goblin (Ixalan)",
+			"source": "PSX",
+			"page": 16,
+			"ability": {
+				"dex": 2
+			},
+			"size": "S",
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"darkvision": 60,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Agile Climber",
+					"entries": [
+						"You have a climbing speed of 25 feet. You can’t use your climbing speed while you wear medium or heavy armor. (If your campaign uses the variant rule for encumbrance, you can’t use your climbing speed if you are encumbered.)"
+					]
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common (if it exists in your campaign) and Goblin."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Siren",
+			"source": "PSX",
+			"page": 17,
+			"ability": {
+				"cha": 2
+			},
+			"size": "M",
+			"speed": {
+				"walk": 25,
+				"fly": 30
+			},
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Siren's Song",
+					"entries": [
+						"You know the {@spell friends} cantrip and can cast it without material components."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flight",
+					"entries": [
+						"You have a flying speed of 30 feet. You can’t use your flying speed while you wear medium or heavy armor.  (If  your  campaign  uses  the  variant  rule  for  en-cumbrance, you can’t use your flying speed if you are encumbered.)"
+					]
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common (if it exists in your campaign) and Siren."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Merfolk (Ixalan)",
+			"source": "PSX",
+			"page": 12,
+			"size": "M",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"ability": {
+				"cha": 1
+			},
+			"entries": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"You can breathe air and water."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Swimming",
+					"entries": [
+						"You have a swimming speed of 30 feet."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common (if it exists in your campaign), Merfolk, and one additional language of your choice."
+					],
+					"type": "entries"
+				}
+			],
+			"subraces": [
+				{
+					"name": "Green",
+					"ability": {
+						"wis": 2
+					},
+					"entries": [
+						{
+							"name": "Cantrip",
+							"entries": [
+								"You know one cantrip of your choice from the druid spell list. Wisdom is your spellcasting ability for it."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Mask of the Wild",
+							"entries": [
+								"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+							],
+							"type": "entries"
+						}
+					]
+				},
+				{
+					"name": "Blue",
+					"ability": {
+						"int": 2
+					},
+					"entries": [
+						{
+							"name": "Cantrip",
+							"entries": [
+								"You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Lore of the Waters",
+							"entries": [
+								"You gain proficiency in history and Nature."
+							],
+							"type": "entries"
+						}
+					]
+				}
+			]
 		}
 	]
 }

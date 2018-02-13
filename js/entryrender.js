@@ -274,7 +274,9 @@ function EntryRenderer () {
 
 			if (entry.colLabels) {
 				for (let i = 0; i < entry.colLabels.length; ++i) {
-					textStack.push(`<th ${getTableThClassText(i)}>${entry.colLabels[i]}</th>`);
+					textStack.push(`<th ${getTableThClassText(i)}>`);
+					self.recursiveEntryRender(entry.colLabels[i], textStack, depth);
+					textStack.push(`</th>`);
 				}
 			}
 
@@ -287,8 +289,23 @@ function EntryRenderer () {
 				const r = entry.rows[i];
 				const roRender = r.type === "row" ? r.row : r;
 				for (let j = 0; j < roRender.length; ++j) {
-					const toRenderCell = roRender[j].type === "cell" ? roRender[j].entry : roRender[j];
-					textStack.push(`<td ${makeTableTdClassText(j)} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`);
+					let toRenderCell;
+					if (roRender[j].type === "cell") {
+						if (roRender[j].entry) {
+							toRenderCell = roRender[j].entry;
+						} else if (roRender[j].roll) {
+							if (roRender[j].roll.entry) {
+								toRenderCell = roRender[j].roll.entry;
+							} else if (roRender[j].roll.exact) {
+								toRenderCell = roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
+							} else {
+								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`
+							}
+						}
+					} else {
+						toRenderCell = roRender[j];
+					}
+					textStack.push(`<td ${makeTableTdClassText(j)} ${getCellDataStr(roRender[j])} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`);
 					if (r.style === "row-indent-first" && j === 0) textStack.push(`<span class="tbl-tab-intent"/>`);
 					self.recursiveEntryRender(toRenderCell, textStack, depth + 1);
 					textStack.push("</td>");
@@ -307,6 +324,17 @@ function EntryRenderer () {
 				textStack.push("</tfoot>");
 			}
 			textStack.push("</table>");
+
+			function getCellDataStr (ent) {
+				function convertZeros (num) {
+					if (num === 0) return 100;
+					return num;
+				}
+				if (ent.roll) {
+					return `data-roll-min="${convertZeros(ent.roll.exact || ent.roll.min)}" data-roll-max="${convertZeros(ent.roll.exact || ent.roll.max)}"`
+				}
+				return "";
+			}
 
 			function getTableThClassText (i) {
 				return entry.colStyles === undefined || i >= entry.colStyles.length ? "" : `class="${entry.colStyles[i]}"`;
@@ -457,9 +485,9 @@ function EntryRenderer () {
 								for (let i = 0; i < spl.length; ++i) {
 									const it = spl[i];
 									if (it.includes("d")) {
-										const m = /^(\d+)d(\d+)$/.exec(it);
+										const m = /^(\d+)?d(\d+)$/.exec(it);
 										toRoll.push({
-											number: Number(m[1]),
+											number: Number(m[1]) || 1,
 											faces: Number(m[2]),
 											modifier: 0,
 											hideModifier: true
@@ -2272,13 +2300,39 @@ EntryRenderer.dice = {
 			if ($hov.length) {
 				return $hov.find(`.stats-name`).first().text();
 			}
+			const $roll = $ele.closest(`.out-roll-wrp`);
+			if ($roll.length) {
+				return $roll.data("name");
+			}
 			return document.title.replace("- 5etools", "").trim();
 		}
 
-		EntryRenderer.dice.rollEntry(entry, {
+		function getThRoll (total) {
+			const $td = $ele.closest(`table`).find(`td`).filter((i, e) => {
+				const $e = $(e);
+				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
+			});
+			if ($td.length && $td.nextAll().length) {
+				return $td.nextAll().get().map(ele => ele.innerHTML).join(" | ");
+			}
+		}
+
+		const rolledBy = {
 			name: attemptToGetName(),
 			label: name || attemptToGetTitle(ele)
-		});
+		};
+		if ($ele.parent().is("th")) {
+			EntryRenderer.dice.rollEntry(
+				entry,
+				rolledBy,
+				getThRoll
+			);
+		} else {
+			EntryRenderer.dice.rollEntry(
+				entry,
+				rolledBy
+			);
+		}
 	},
 
 	roll: (str, rolledBy) => {
@@ -2290,7 +2344,7 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
 	},
 
-	rollEntry: (entry, rolledBy) => {
+	rollEntry: (entry, rolledBy, cbMessage) => {
 		const toRoll = {
 			dice: entry.toRoll.map(it => ({
 				neg: false,
@@ -2299,10 +2353,10 @@ EntryRenderer.dice = {
 			})),
 			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0)
 		};
-		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+		EntryRenderer.dice._handleRoll(toRoll, rolledBy, cbMessage);
 	},
 
-	_handleRoll: (toRoll, rolledBy) => {
+	_handleRoll: (toRoll, rolledBy, cbMessage) => {
 		EntryRenderer.dice._showBox();
 		EntryRenderer.dice._checkHandleName(rolledBy.name);
 		const $out = EntryRenderer.dice._$lastRolledBy;
@@ -2311,14 +2365,15 @@ EntryRenderer.dice = {
 			const v = EntryRenderer.dice._rollParsed(toRoll);
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
-			$out.prepend(`
+			$out.append(`
 				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
 					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
 					<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>
 					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
+					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
 				</div>`);
 		} else {
-			$out.prepend(`<div class="out-roll-item">Invalid roll!</div>`);
+			$out.append(`<div class="out-roll-item">Invalid roll!</div>`);
 		}
 		EntryRenderer.dice._scrollBottom();
 	},
