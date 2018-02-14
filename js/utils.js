@@ -2023,8 +2023,8 @@ BrewUtil = {
 		$overlay.append($window);
 		$body.append($overlay);
 
-		function refreshBrewList() {
-			function render(type, prop, deleteFn) {
+		function refreshBrewList () {
+			function render (type, prop, deleteFn) {
 				BrewUtil.homebrew[prop].forEach(j => {
 					const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
 						deleteFn(j.uniqueId);
@@ -2050,7 +2050,7 @@ BrewUtil = {
 			}
 		}
 
-		function addBrew(event) {
+		function addBrew (event) {
 			const input = event.target;
 
 			let readIndex = 0;
@@ -2073,7 +2073,7 @@ BrewUtil = {
 				storePrep("spell");
 
 				// store
-				function checkAndAdd(prop) {
+				function checkAndAdd (prop) {
 					const areNew = [];
 					const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
 					json[prop].forEach(it => {
@@ -2134,11 +2134,11 @@ BrewUtil = {
 			}
 		}
 
-		function deleteClassBrew(uniqueId) {
+		function deleteClassBrew (uniqueId) {
 			doRemove("class", uniqueId);
 		}
 
-		function deleteSubclassBrew(uniqueId) {
+		function deleteSubclassBrew (uniqueId) {
 			let subClass;
 			let index = 0;
 			for (; index < BrewUtil.homebrew.subclass.length; ++index) {
