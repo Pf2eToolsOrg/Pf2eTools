@@ -203,13 +203,6 @@ function getMetaFilterObj (s) {
 	return out;
 }
 
-function ascSortSpellLevel (a, b) {
-	if (a === b) return 0;
-	if (a === STR_CANTRIP) return -1;
-	if (b === STR_CANTRIP) return 1;
-	return SortUtil.ascSort(a, b);
-}
-
 function getFilterAbilitySave (ability) {
 	return `${ability.uppercaseFirst().substring(0, 3)}. Save`;
 }
@@ -219,8 +212,7 @@ function getFilterAbilityCheck (ability) {
 }
 
 function handleBrew (homebrew) {
-	addSpells(homebrew);
-	// TODO manipulate filters
+	addSpells(homebrew.spell);
 }
 
 window.onload = function load () {
@@ -317,6 +309,7 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
+	sourceFilter.items.push(new FilterItem("Homebrew", () => {}));
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
@@ -525,6 +518,8 @@ function handleUnknownHash (link, sub) {
 			addSpells(spells);
 			hashchange();
 		})(src, "yes");
+	} else {
+		_freshLoad();
 	}
 }
 

@@ -2037,7 +2037,6 @@ BrewUtil = {
 			}
 
 			$brewList.html("");
-			// TODO filter this/base it on page
 			if (BrewUtil.homebrew) {
 				switch (page) {
 					case UrlUtil.PG_SPELLS:
@@ -2060,17 +2059,18 @@ BrewUtil = {
 				const text = reader.result;
 				const json = JSON.parse(text);
 
+				function storePrep (arrName) {
+					if (json[arrName]) {
+						json[arrName].forEach(it => {
+							it.uniqueId = CryptUtil.md5(JSON.stringify(it));
+						});
+					} else json[arrName] = [];
+				}
+
 				// prepare for storage
-				if (json.class) {
-					json.class.forEach(c => {
-						c.uniqueId = CryptUtil.md5(JSON.stringify(c));
-					});
-				} else json.class = [];
-				if (json.subclass) {
-					json.subclass.forEach(sc => {
-						sc.uniqueId = CryptUtil.md5(JSON.stringify(sc));
-					});
-				} else json.subclass = [];
+				storePrep("class");
+				storePrep("subclass");
+				storePrep("spell");
 
 				// store
 				function checkAndAdd(prop) {
