@@ -89,13 +89,14 @@ function onJsonLoad (data) {
 			invocFeature.entries.splice(toRemove, 1);
 		}
 	}
-	addData(data);
+	addClassData(data);
 
 	BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
 	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.setList(list);
 
 	function handleBrew (homebrew) {
-		addData(homebrew);
+		addClassData(homebrew);
 		addSubclassData(homebrew);
 	}
 
@@ -104,7 +105,7 @@ function onJsonLoad (data) {
 	initReaderMode();
 }
 
-function addData (data) {
+function addClassData (data) {
 	if (!data.class || !data.class.length) return;
 
 	// alphabetically sort subclasses

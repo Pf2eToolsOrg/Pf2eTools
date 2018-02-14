@@ -224,8 +224,17 @@ function getFilterAbilityCheck (ability) {
 	return `${ability.uppercaseFirst().substring(0, 3)}. Check`;
 }
 
+function handleBrew (homebrew) {
+	addSpells(homebrew);
+	// TODO manipulate filters
+}
+
 window.onload = function load () {
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells)
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, () => {
+		BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
+		BrewUtil.makeBrewButton("manage-brew");
+		BrewUtil.setList(list);
+	});
 };
 
 let list;
@@ -317,7 +326,7 @@ function pageInit (loadedSources) {
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
+		valueNames: ["name", "source", "level", "time", "school", "range", "classes", "uniqueid"],
 		listClass: "spells"
 	});
 
@@ -360,6 +369,8 @@ let spellList = [];
 let spI = 0;
 
 function addSpells (data) {
+	if (!data || !data.length) return;
+
 	spellList = spellList.concat(data);
 
 	const spellTable = $("ul.spells");
@@ -428,6 +439,7 @@ function addSpells (data) {
 					<span class="range col-xs-2 col-xs-2-4">${Parser.spRangeToFull(spell.range)}</span>
 
 					<span class="classes" style="display: none">${Parser.spClassesToFull(spell.classes)}</span>
+					<span class="uniqueid hidden">${spell.uniqueId ? spell.uniqueId : spI}</span>
 				</a>
 			</li>`;
 

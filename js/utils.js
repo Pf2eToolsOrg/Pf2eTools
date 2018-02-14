@@ -1667,7 +1667,9 @@ UrlUtil.autoEncodeHash = function (obj) {
 
 UrlUtil.getCurrentPage = function () {
 	const pSplit = window.location.pathname.split("/");
-	return pSplit[pSplit.length - 1];
+	let out = pSplit[pSplit.length - 1];
+	if (!out.toLowerCase().endsWith(".html")) out += ".html";
+	return out;
 };
 
 /**
@@ -1944,6 +1946,12 @@ RollerUtil = {
 // HOMEBREW ============================================================================================================
 BrewUtil = {
 	homebrew: null,
+	_list: null,
+
+	// provide ref to List.js instance
+	setList: (list) => {
+		BrewUtil._list = list;
+	},
 
 	tryGetStorage: () => {
 		try {
@@ -1980,6 +1988,7 @@ BrewUtil = {
 	},
 
 	manageBrew: () => {
+		const page = UrlUtil.getCurrentPage();
 		const $body = $(`body`);
 		$body.css("overflow", "hidden");
 		const $overlay = $(`<div class="homebrew-overlay"/>`);
@@ -2030,8 +2039,15 @@ BrewUtil = {
 			$brewList.html("");
 			// TODO filter this/base it on page
 			if (BrewUtil.homebrew) {
-				render("Class", "class", deleteClassBrew);
-				render("Subclass", "subclass", deleteSubclassBrew);
+				switch (page) {
+					case UrlUtil.PG_SPELLS:
+						render("Spell", "spell", deleteSpellBrew);
+						break;
+					case UrlUtil.PG_CLASSES:
+						render("Class", "class", deleteClassBrew);
+						render("Subclass", "subclass", deleteSubclassBrew);
+						break;
+				}
 			}
 		}
 
@@ -2071,17 +2087,26 @@ BrewUtil = {
 
 				let classesToAdd = json.class;
 				let subclassesToAdd = json.subclass;
+				let spellsToAdd = json.spell;
 				if (!BrewUtil.homebrew) {
 					BrewUtil.homebrew = json;
 				} else {
 					// only add if unique ID not already present
 					classesToAdd = checkAndAdd("class");
 					subclassesToAdd = checkAndAdd("subclass");
+					spellsToAdd = checkAndAdd("spell");
 				}
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
-				addData({class: classesToAdd});
-				addSubclassData({subclass: subclassesToAdd});
+				switch (page) {
+					case UrlUtil.PG_SPELLS:
+						addSpells(spellsToAdd);
+						break;
+					case UrlUtil.PG_CLASSES:
+						addClassData({class: classesToAdd});
+						addSubclassData({subclass: subclassesToAdd});
+						break;
+				}
 
 				refreshBrewList();
 				if (input.files[readIndex]) {
@@ -2094,15 +2119,23 @@ BrewUtil = {
 			reader.readAsText(input.files[readIndex++]);
 		}
 
-		function deleteClassBrew(uniqueId) {
-			const index = BrewUtil.homebrew.class.findIndex(it => it.uniqueId === uniqueId);
-			if (index >= 0) {
-				BrewUtil.homebrew.class.splice(index, 1);
+		function getIndex (arrName, uniqueId) {
+			return BrewUtil.homebrew[arrName].findIndex(it => it.uniqueId === uniqueId);
+		}
+
+		function doRemove (arrName, uniqueId) {
+			const index = getIndex(arrName, uniqueId);
+			if (~index) {
+				BrewUtil.homebrew[arrName].splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 				refreshBrewList();
-				list.remove("uniqueid", uniqueId);
+				BrewUtil._list.remove("uniqueid", uniqueId);
 				hashchange();
 			}
+		}
+
+		function deleteClassBrew(uniqueId) {
+			doRemove("class", uniqueId);
 		}
 
 		function deleteSubclassBrew(uniqueId) {
@@ -2122,13 +2155,17 @@ BrewUtil = {
 				const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
 
 				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
-				if (indexInClass) {
+				if (~indexInClass) {
 					c.subclasses.splice(indexInClass, 1);
-					c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+					c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 				}
 				refreshBrewList();
 				window.location.hash = "";
 			}
+		}
+
+		function deleteSpellBrew (uniqueId) {
+			doRemove("spell", uniqueId);
 		}
 	},
 
