@@ -93,6 +93,8 @@ ABIL_WIS = "Wisdom";
 ABIL_CHA = "Charisma";
 ABIL_CH_ANY = "Choose Any";
 
+HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
