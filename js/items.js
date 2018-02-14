@@ -26,13 +26,13 @@ function sortItems (a, b, o) {
 	if (o.valueName === "name") {
 		return b._values.name.toLowerCase() > a._values.name.toLowerCase() ? 1 : -1;
 	} else if (o.valueName === "type") {
-		if (b._values.type === a._values.type) return compareNames(a, b);
+		if (b._values.type === a._values.type) return SortUtil.compareNames(a, b);
 		return b._values.type.toLowerCase() > a._values.type.toLowerCase() ? 1 : -1;
 	} else if (o.valueName === "source") {
-		if (b._values.source === a._values.source) return compareNames(a, b);
+		if (b._values.source === a._values.source) return SortUtil.compareNames(a, b);
 		return b._values.source.toLowerCase() > a._values.source.toLowerCase() ? 1 : -1;
 	} else if (o.valueName === "rarity") {
-		if (b._values.rarity === a._values.rarity) return compareNames(a, b);
+		if (b._values.rarity === a._values.rarity) return SortUtil.compareNames(a, b);
 		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
 	} else return 1;
 }
@@ -117,8 +117,8 @@ function populateTablesAndFilters () {
 	$("ul.list.mundane").append(liList.mundane);
 	$("ul.list.magic").append(liList.magic);
 	// sort filters
-	sourceFilter.items.sort(ascSort);
-	typeFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
+	typeFilter.items.sort(SortUtil.ascSort);
 
 	const options = {
 		valueNames: ["name", "source", "type", "rarity"],
@@ -146,15 +146,17 @@ function populateTablesAndFilters () {
 		const f = filterBox.getValues();
 		function listFilter (item) {
 			const i = itemList[$(item.elm).attr(FLTR_ID)];
-
-			return sourceFilter.toDisplay(f, i.source) &&
-				typeFilter.toDisplay(f, i.procType) &&
-				tierFilter.toDisplay(f, i._fTier) &&
-				rarityFilter.toDisplay(f, i.rarity) &&
-				propertyFilter.toDisplay(f, i._fProperties) &&
-				attunementFilter.toDisplay(f, i.attunementCategory) &&
-				categoryFilter.toDisplay(f, i.category) &&
-				miscFilter.toDisplay(f, i._fMisc);
+			return filterBox.toDisplay(
+				f,
+				i.source,
+				i.procType,
+				i._fTier,
+				i.rarity,
+				i._fProperties,
+				i.attunementCategory,
+				i.category,
+				i._fMisc
+			);
 		}
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);
@@ -261,10 +263,10 @@ function loadhash (id) {
 	$(".items span.roller").contents().unwrap();
 	$("#pagecontent span.roller").click(function () {
 		const roll = $(this).attr("data-roll").replace(/\s+/g, "");
-		const rollresult = droll.roll(roll);
-		const name = $(".stats-name").text();
-		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled for <strong>${rollresult.total}</strong> (<em>${rollresult.rolls.join(", ")}</em>)<br></span>`).show();
-		$("div#output span:eq(5)").remove();
+		EntryRenderer.dice.roll(roll, {
+			name: item.name,
+			label: $(".stats-name").text()
+		});
 	})
 }
 

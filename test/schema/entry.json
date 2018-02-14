@@ -41,6 +41,9 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["entries"],
@@ -78,6 +81,24 @@
 				{
 					"properties": {
 						"type": {"const": "inline"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						}
+					},
+					"required": ["entries"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryEntriesInlineEntries": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "inlineBlock"},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -196,13 +217,36 @@
 						"width": {
 							"type": "integer"
 						},
+						"roll": {
+							"type": "object",
+							"properties": {
+								"oneOf": [
+									{
+										"min": {
+											"type": "integer"
+										},
+										"max": {
+											"type": "integer"
+										}
+									},
+									{
+										"exact": {
+											"type": "integer"
+										}
+									}
+								],
+								"entry": {
+									"$ref": "/Entry"
+								},
+								"pad": {
+									"type": "boolean"
+								}
+							}
+						},
 						"entry": {
 							"$ref": "/Entry"
 						}
 					},
-					"required": [
-						"entry"
-					],
 					"additionalProperties": false
 				}
 			]
@@ -385,6 +429,9 @@
 										"hash": {
 											"type": "string"
 										},
+										"hashPreEncoded": {
+											"type": "boolean"
+										},
 										"subhashes": {
 											"type": "array",
 											"items": {
@@ -501,6 +548,9 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"data": {
+							"type": "object"
 						}
 					},
 					"required": ["entries"],
@@ -682,6 +732,7 @@
 		{"$ref": "#/definitions/entrySection"},
 		{"$ref": "#/definitions/entryEntries"},
 		{"$ref": "#/definitions/entryInlineEntries"},
+		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
 		{"$ref": "#/definitions/entryTable"},
 		{"$ref": "#/definitions/entryTableRow"},

@@ -29,7 +29,7 @@ function onJsonLoad (data) {
 	const list = ListUtil.search({
 		valueNames: ["name", "size", "source"],
 		listClass: "objects",
-		sortFunction: listSort
+		sortFunction: SortUtil.listSort
 	});
 
 	initHistory();
@@ -38,7 +38,6 @@ function onJsonLoad (data) {
 const renderer = new EntryRenderer();
 function loadhash (jsonIndex) {
 	const obj = objectsList[jsonIndex];
-	var name = obj.name;
 
 	const renderStack = [];
 
@@ -60,11 +59,10 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 
-	const imgLink = UrlUtil.link(`img/objects/${name.replace(/"/g, "")}.png`);
-	$("th.name").html(
-		`<span class="stats-name">${name}</span>
+	const imgLink = UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
+	$("th.name").append(`
 		<a href="${imgLink}" target="_blank">
-			<img src="${imgLink}" class="token" onerror="imgError(this)">
+			<img src="${imgLink}" class="token">
 		</a>`
 	);
 }

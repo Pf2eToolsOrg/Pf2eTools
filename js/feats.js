@@ -51,7 +51,7 @@ function onJsonLoad (data) {
 	featTable.append(tempString);
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	// init list
 	const list = ListUtil.search({
@@ -72,8 +72,11 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const ft = featlist[$(item.elm).attr(FLTR_ID)];
-
-			return sourceFilter.toDisplay(f, ft.source) && asiFilter.toDisplay(f, ft._fAbility);
+			return filterBox.toDisplay(
+				f,
+				ft.source,
+				ft._fAbility
+			);
 		});
 	}
 

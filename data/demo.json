@@ -87,6 +87,21 @@
 					]
 				},
 				{
+					"type": "inlineBlock",
+					"entries": [
+						"Similar to the above, but keeps the paragraph/etc tags around the inlined children, ",
+						{
+							"type": "link",
+							"href": {
+								"type": "internal",
+								"path": "5etools.html"
+							},
+							"text": "such as a link to the homepage"
+						},
+						" so can easily be mixed with lines of text."
+					]
+				},
+				{
 					"type": "options",
 					"entries": [
 						{
@@ -177,6 +192,18 @@
 							"type": "item",
 							"name": "An extension of the hanging list.",
 							"entry": "Which has bold inline titles -- note that this only allows {@i one} entry per item (it's 'entry' and not 'entries')"
+						},
+						"Can be mixed with regular strings"
+					]
+				},
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "A similar story here",
+							"entry": "The 'item' is an entry as above, but there's no 'name' for the entire list, so this has no left inset. Some long text to show what happens when the lines wrap around, it should continue but be indented after the first line. Some example of this in the source books can be found in Metalic Dragon breath weapons in the Monster Manual."
 						},
 						"Can be mixed with regular strings"
 					]

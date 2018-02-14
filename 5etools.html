@@ -18,6 +18,23 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		table.home-table {
+			padding: 0 10px 10px;
+		}
+
+		table.home-table td {
+			vertical-align: top;
+			padding: 0 5px;
+		}
+
+		span.not-simple {
+			cursor: help;
+			text-decoration: underline;
+			text-decoration-style: dotted;
+		}
+	</style>
 </head>
 <body>
 <header class="hidden-xs hidden-sm">
@@ -34,78 +51,132 @@
 <main class="container bodyContent">
 	<div class="row">
 		<div class="col-sm-12">
-			<p>5etools is a suite of HTML-and-JavaScript tools for players and DMs of D&amp;D 5e. You can find and
-				download the project on <a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>.
-				Simply download the project as a zip, extract it all to a folder,
-				open the .html files in a browser, and it's ready to go! You can also host your own mirror, or
-				contribute to the project via GitHub. With all the Unearthed Arcana material released, data entry is
-				appreciated!</p>
+
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-6">
-			<h4><a href="classes.html">Classes</a></h4>
-			<p>Classes.html allows you to quickly browse each of the official classes in 5e. You can also filter for the
-				class' specific subclasses for easier reference, sharing the produced URL for quick-access.</p>
-			<h4><a href="backgrounds.html">Backgrounds</a></h4>
-			<p>Backgrounds.html lists the official backgrounds in D&amp;D 5e, including those from supplement
-				material.</p>
-			<h4><a href="feats.html">Feats</a></h4>
-			<p>Feats.html provides a quick-use list of the feats in D&amp;D 5e, including those from Unearthed Arcana
-				and supplements.</p>
-			<h4><a href="races.html">Races</a></h4>
-			<p>Races.html lists each of the races in D&amp;D 5e, including subraces and variants.</p>
-			<h4><a href="names.html">Names</a></h4>
-			<p>Names.html lists a name roller for each of the races in D&amp;D 5e.</p>
-			<h4><a href="crcalculator.html">CR Calculator</a></h4>
-			<p>CRcalculator.html provides a verbose, in-depth Challenge Rating calculator, for determining the CR of
-				custom monsters made for D&amp;D 5e.</p>
-			<h4><a href="lootgen.html">Loot Generator</a></h4>
-			<p>Lootgen.html is a random loot generator for both individual and hoard treasure based on CR for D&amp;D
-				5e.</p>
-			<h4><a href="adventures.html">Adventures</a></h4>
-			<p>Adventures.html is a work-in-progress list of officially released adventures for D&amp;D 5e.</p>
-		</div>
-		<div class="col-sm-6">
-			<h4><a href="bestiary.html">Bestiary</a></h4>
-			<p>Bestiary.html provides a searchable, filterable list of the more than 1,000 stat blocks in D&amp;D 5e. You
-				can display them and each attack and damage roll can be done in-line with just a click.</p>
-			<h4><a href="conditions.html">Conditions</a></h4>
-			<p>Conditions.html lists all the conditions in D&amp;D 5e.</p>
-			<h4><a href="cults.html">Cults</a>/<a href="deities.html">Deities</a></h4>
-			<p>Cults.html lists all cults in the UA: Fiendish Options. Deities.html lists all the gods in D&amp;D 5e. </p>
-			<h4><a href="items.html">Items</a></h4>
-			<p>Items.html lists the mundane and magical items currently in D&amp;D 5e, allowing quick access to their
-				properties.</p>
-			<h4><a href="rewards.html">Other Rewards</a></h4>
-			<p>Rewards.html lists the blessings, boons, and charms currently in D&amp;D 5e, allowing quick access to
-				their properties.</p>
-			<h4><a href="spells.html">Spells</a>/<a href="psionics.html">Psionics</a></h4>
-			<p>Spells.html lists all of the official spells in D&amp;D 5e. Psionics.html lists all psionics in the UA:
-				The Mystic Class. Both lists can be easily searched and filtered and the entries can be shared through
-				the generated URL.</p>
-			<h4><a href="variantrules.html">Variant Rules</a></h4>
-			<p>Variantrules.html lists the variant and optional rules in D&amp;D 5e.</p>
-			<h4><a href="invocations.html">Eldritch Invocations</a></h4>
-			<p>Invocations.html lists all of the official Eldritch Invocations for the Warlock Class in D&amp;D 5e, from
-				the PHB, XGE, and various UA. Filterable by prerequisites, and entries can be shared through the
-				generated URL.</p>
-		</div>
+		<table class="home-table">
+			<tr>
+				<td colspan="2">
+					<p>5etools is a suite of HTML-and-JavaScript tools for players and DMs of D&amp;D 5e. You can find and
+						download the project on
+						<a href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>,
+						or on <a href="https://get.5e.tools">get.5e.tools</a>.
+						<span class="not-simple" title="For Firefox, this works. For Chrome/derivatives, you need to use '--allow-file-access-from-files' (Google it.)">Simply</span> download the project as a zip, extract it all to a folder,
+						open the .html files in a browser, and it's ready to go! You can also host your own mirror, or
+						contribute to the project via GitHub. With all the Unearthed Arcana material released, data entry is
+						appreciated!</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="classes.html">Classes</a></h4>
+					<p>Classes.html allows you to quickly browse each of the official classes in 5e. You can also filter for the
+						class' specific subclasses for easier reference, sharing the produced URL for quick-access.</p>
+				</td>
+				<td>
+					<h4><a href="bestiary.html">Bestiary</a></h4>
+					<p>Bestiary.html provides a searchable, filterable list of the more than 1,000 stat blocks in D&amp;D 5e. You
+						can display them and each attack and damage roll can be done in-line with just a click.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="backgrounds.html">Backgrounds</a></h4>
+					<p>Backgrounds.html lists the official backgrounds in D&amp;D 5e, including those from supplement
+						material.</p>
+				</td>
+				<td>
+					<h4><a href="conditions.html">Conditions</a></h4>
+					<p>Conditions.html lists all the conditions in D&amp;D 5e.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="feats.html">Feats</a></h4>
+					<p>Feats.html provides a quick-use list of the feats in D&amp;D 5e, including those from Unearthed Arcana
+						and supplements.</p>
+				</td>
+				<td>
+					<h4><a href="cults.html">Cults</a>/<a href="deities.html">Deities</a></h4>
+					<p>Cults.html lists all cults in the UA: Fiendish Options. Deities.html lists all the gods in D&amp;D 5e. </p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="races.html">Races</a></h4>
+					<p>Races.html lists each of the races in D&amp;D 5e, including subraces and variants.</p>
+				</td>
+				<td>
+					<h4><a href="items.html">Items</a></h4>
+					<p>Items.html lists the mundane and magical items currently in D&amp;D 5e, allowing quick access to their
+						properties.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="names.html">Names</a></h4>
+					<p>Names.html lists a name roller for each of the races in D&amp;D 5e.</p>
+				</td>
+				<td>
+					<h4><a href="rewards.html">Other Rewards</a></h4>
+					<p>Rewards.html lists the blessings, boons, and charms currently in D&amp;D 5e, allowing quick access to
+						their properties.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="crcalculator.html">CR Calculator</a></h4>
+					<p>CRcalculator.html provides a verbose, in-depth Challenge Rating calculator, for determining the CR of
+						custom monsters made for D&amp;D 5e.</p>
+				</td>
+				<td>
+					<h4><a href="spells.html">Spells</a>/<a href="psionics.html">Psionics</a></h4>
+					<p>Spells.html lists all of the official spells in D&amp;D 5e. Psionics.html lists all psionics in the UA:
+						The Mystic Class. Both lists can be easily searched and filtered and the entries can be shared through
+						the generated URL.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="lootgen.html">Loot Generator</a></h4>
+					<p>Lootgen.html is a random loot generator for both individual and hoard treasure based on CR for D&amp;D
+						5e.</p>
+				</td>
+				<td>
+					<h4><a href="variantrules.html">Variant Rules</a></h4>
+					<p>Variantrules.html lists the variant and optional rules in D&amp;D 5e.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4><a href="adventures.html">Adventures</a></h4>
+					<p>Adventures.html is a work-in-progress list of officially released adventures for D&amp;D 5e.</p>
+				</td>
+				<td>
+					<h4><a href="invocations.html">Eldritch Invocations</a></h4>
+					<p>Invocations.html lists all of the official Eldritch Invocations for the Warlock Class in D&amp;D 5e, from
+						the PHB, XGE, and various UA. Filterable by prerequisites, and entries can be shared through the
+						generated URL.</p>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
 			<h3>Use Roll20?</h3>
 			<p>Get Tampermonkey (<a
 					href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Chrome</a>/<a
-					href="https://addons.mozilla.org/firefox/addon/tampermonkey/">Firefox</a>). Install the script using
-				this <a
-						href="https://get.5etools.com/5etoolsR20.user.js">link</a>! This
+					href="https://addons.mozilla.org/firefox/addon/tampermonkey/">Firefox</a>), and install the 5etools companion script using
+				this <a href="https://get.5etools.com/5etoolsR20.user.js">link</a>! This
 				userscript allows you to import much of 5etools' data without paying a dime.</p>
+			<p>As a player, you can import character options, spells, and items to quickly fill out a sheet. As a GM, you can make handout copies
+				of these, as well as import monsters, objects, and adventures.</p>
 			<p>To import monsters, your game must have a default character sheet. We strongly recommend using OGL
-				when importing, then switching to another afterwards if desired. <b>NOTE: It only imports when you're a
-					GM.</b></p>
+				when importing, then switching to another afterwards if desired.</p>
 			<p>If you are using the Shaped
 				sheet, be sure to open up the NPC sheets and let them convert before using it.</p>
+			<p>Beyond importing, the script features a custom initiative tracker; the ability to add custom map/token images by URL; enhanced journal functionality; and more.</p>
 			<h3>Use Discord?</h3>
 			<p>Now you can join our server using this <a href="https://discord.gg/v3AXzcW">link!</a></p>
 			<h3>FAQ / Help</h3>
@@ -151,7 +222,7 @@
 <footer class="container">
 	<p class="text-align-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.11.0<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.16.1<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span>2018 5etools
 	</p>
 </footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->

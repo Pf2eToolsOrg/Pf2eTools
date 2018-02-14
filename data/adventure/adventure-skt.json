@@ -3633,7 +3633,46 @@
 					"entries": [
 						"Characters exploring the North are likely to encounter wandering monsters. Such encounters can occur as often as you like-but keep in mind that too many random encounters can bog down the adventure and cause players to lose interest in the story. You can roll on the Random Wilderness Encounters table or choose an appropriate encounter. Each encounter is described in more detail after the table. For guidelines on how to use random encounters effectively, see \"Random Encounters\" in chapter 3 of the {@i Dungeon Master's Guide}.",
 						"If the characters are crossing terrain not represented in the table, such as a swamp, you can create terrain-appropriate encounters by choosing creatures from the monster lists in appendix B of the {@i Dungeon Master's Guide}. Chapter 5 of that book also contains a Random Urban Encounters table, in case the characters find themselves exploring a town or city.",
-						"Dungeon Masters Guide"
+						{
+							"type": "table",
+							"caption": "Random Wilderness Encounters",
+							"colLabels": [
+								"Encounter", "Forest", "Grassland", "Hills/Moors", "Mountains", "Road/Trail", "Sea", "Tundra"
+							],
+							"colStyles": [
+								"col-xs-4",
+								"col-xs-1 text-align-center",
+								"col-xs-1 text-align-center",
+								"col-xs-1 text-align-center",
+								"col-xs-1 text-align-center",
+								"col-xs-1 text-align-center",
+								"col-xs-1 text-align-center",
+								"col-xs-1 text-align-center",
+								"col-xs-1 text-align-center"
+							],
+							"rows": [
+								["Bandits", "01\u201408", "01\u201407", "01\u201404", "\u2014", "01\u201408", "01\u201420", "\u2014"],
+								["Barbarians", "09\u201418", "08\u201432", "05\u201424", "01\u201410", "\u2014", "21\u201440", "01\u201415"],
+								["Battlefield", "19\u201421", "33\u201437", "25\u201428", "\u2014", "\u2014", "\u2014", "16\u201419"],
+								["Cloud castle", "\u2014", "38\u201439", "29\u201430", "11\u201415", "\u2014", "\u2014", "20\u201422"],
+								["Crag cats", "\u2014", "\u2014", "31\u201435", "16\u201432", "09\u201413", "\u2014", "23\u201435"],
+								["Dig site", "22\u201429", "40\u201446", "36\u201438", "33\u201435", "\u2014", "\u2014", "36\u201441"],
+								["Dragon", "\u2014", "\u2014", "39\u201441", "\u2014", "14\u201420", "\u2014", "\u2014"],
+								["Elk", "30\u201437", "47\u201453", "42\u201450", "36\u201443", "\u2014", "\u2014", "42\u201454"],
+								["Elves", "38\u201453", "\u2014", "\u2014", "\u2014", "\u2014", "41\u201450", "\u2014"],
+								["Fire giant", "54\u201455", "54\u201455", "51\u201453", "44\u201449", "21\u201428", "\u2014", "55\u201456"],
+								["Food hunters", "56\u201462", "56\u201462", "54\u201459", "50\u201452", "29\u201437", "\u2014", "57\u201458"],
+								["Frost giants", "63\u201467", "63\u201466", "60\u201461", "53\u201460", "38\u201441", "51\u201470", "59\u201470"],
+								["Hill giants", "68\u201470", "67\u201468", "62\u201476", "61\u201462", "42\u201446", "\u2014", "71\u201474"],
+								["Horse-drawn wagon", "71\u201475", "69\u201475", "\u2014", "\u2014", "47\u201455", "\u2014", "\u2014"],
+								["Knight", "76\u201480", "76\u201478", "77\u201480", "63\u201464", "56\u201464", "\u2014", "\u2014"],
+								["Ogres", "81\u201482", "79\u201484", "81\u201485", "65\u201466", "65\u201469", "71\u201480", "75\u201476"],
+								["Orcs", "83\u201490", "85\u201491", "86\u201490", "67\u201479", "70\u201473", "\u2014", "77\u201487"],
+								["Ranger", "91\u201495", "92\u201495", "91\u201494", "80\u201483", "74\u201478", "\u2014", "88\u201493"],
+								["Stone giants", "\u2014", "\u2014", "95\u201497", "84\u201495", "79\u201480", "\u2014", "94\u201495"],
+								["Travelers", "96\u201400", "96\u201400", "98\u201400", "96\u201400", "81\u201400", "81\u201400", "96\u201400"]
+							]
+						}
 					]
 				},
 				{
@@ -7963,67 +8002,67 @@
 									"rows": [
 										[
 											"1",
-											"1 male hill giant",
+											"1 male {@creature hill giant}",
 											"On Guh's command, the giant moves the boulder into the doorway and stands guard outside."
 										],
 										[
 											"2",
-											"Chief Guh, 5 male hill giants, 4 ogres, 6 goblins",
+											"{@creature Chief Guh|skt}, 5 male {@creature hill giant|mm|hill giants}, 4 {@creature ogre|mm|ogres}, 6 {@creature goblin|mm|goblins}",
 											"Guh doesn't move. The giants and ogres defend her, while the goblins shoot from their ledge."
 										],
 										[
 											"3",
-											"4 wolves",
+											"4 {@creature wolf|mm|wolves}",
 											"A wooden gate confines the wolves to their pen."
 										],
 										[
 											"4",
-											"5 Iceshield orcs",
+											"5 Iceshield {@creature orc|mm|orcs}",
 											"The orcs join their kin in area 9 by way of area 2."
 										],
 										[
 											"5",
-											"6 goblins",
+											"6 {@creature goblin|mm|goblins}",
 											"The goblins retreat to area 14 by way of area 6."
 										],
 										[
 											"7",
-											"1 hobgoblin",
+											"1 {@creature hobgoblin}",
 											"The hobgoblin investigates loud noises in area 5. Otherwise, it guards the north docks."
 										],
 										[
 											"8",
-											"4 hobgoblins",
+											"4 {@creature hobgoblin|mm|hobgoblins}",
 											"The hobgoblins remain in the tower until intruders reach the den, then head to area 2 by way of area 5."
 										],
 										[
 											"9",
-											"10 Iceshield orcs",
+											"10 Iceshield {@creature orc|mm|orcs}",
 											"The orcs stay here to guard the animals."
 										],
 										[
 											"10",
-											"2 male hill giants",
+											"2 male {@creature hill giant|mm|hill giants}",
 											"One giant moves the boulder outside area 9 to seal off the stockyard, stopping to fight enemies in its path. The other giant bolsters the orcs in area 9."
 										],
 										[
 											"12",
-											"1 ettin, 7 bugbears",
+											"1 {@creature ettin}, 7 {@creature bugbear|mm|bugbears}",
 											"The ettin and the bugbears remain here."
 										],
 										[
 											"13",
-											"2 bugbears",
+											"2 {@creature bugbear|mm|bugbears}",
 											"The bugbears stay here until they hear combat in area 12. They then investigate that area."
 										],
 										[
 											"14",
-											"1 male hill giant, 1 otyugh",
+											"1 male {@creature hill giant}, 1 {@creature otyugh}",
 											"The hill giant and otyugh remain here."
 										],
 										[
 											"16",
-											"1 hobgoblin, 2 goblins",
+											"1 {@creature hobgoblin}, 2 {@creature goblin|mm|goblins}",
 											"The hobgoblin climbs the ladders behind the smithy and heads to area 7. The goblins stay here and attempt to hide."
 										]
 									]
@@ -13953,7 +13992,7 @@
 					"entries": [
 						"Khaspere Drylund's treachery convinces Slarkrethel that enemies are close to finding and freeing King Hekaton. The kraken leaves its lair in the darkest depths of the Trackless Sea and swims toward the {@i Morkoth}. The same magic that Slarkrethel placed on the {@i Morkoth} to conceal it from divination spells allows the kraken to locate the ship unerringly.",
 						"If the characters free Hekaton and leave the {@i Morkoth} within an hour of doing so, Slarkrethel arrives too late to stop them. If the characters are still aboard the {@i Morkoth} an hour after freeing Hekaton, the kraken pays them an unannounced visit. The kraken announces its arrival by wrapping its gigantic tentacles around the hull of the {@i Morkoth}. All creatures aboard the ship are surprised unless they are swimming beneath the vessel and can see the enormous kraken approaching from directly below the craft. Once the kraken strikes, all creatures in this encounter must roll initiative. Slarkrethel wants to terrify and humble the adventurers, not annihilate them, so it mainly uses its tentacles to crush the {@i Morkoth} and pull it into the depths. Under no circumstances does the kraken allow the ship to fall into enemy hands. As an action, the kraken can attack the {@i Morkoth} with all ten of its tentacles and deal 250 bludgeoning damage to the ship on each of its turns, accounting for the Morkoth's damage threshold and the kraken's siege monster feature. Assuming the ship has all its hit points when Slarkrethel attacks, the vessel is destroyed after the kraken's second turn in combat. While crushing the ship, the kraken can't take other actions but can use its legendary actions as normal. Hekaton isn't afraid to face the kraken, and the kraken in turn has no qualms about killing the storm giant king (see \"Development\").",
-						"Slarkrethel is a {@creature kraken|PSZ}, with the following changes:",
+						"{@creature Slarkrethel|SKT} is a {@creature kraken|MM}, with the following changes:",
 						"Slarkrethel has a challenge rating of 25 (75,000 XP).",
 						"It gains the Legendary Resistance and Spellcasting features described below, and it casts foresight on itself before it attacks.",
 						{
@@ -14403,9 +14442,8 @@
 				"The magic items that are introduced in this adventure are detailed here in alphabetical order.",
 				{
 					"type": "entries",
-					"name": "Banner of the Krig Rune",
+					"name": "{@item Banner of the Krig Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, rare (requires attunement)}",
 						"Crafted from a thick, red fabric, this banner measures 5 feet high and 3 feet wide. The krig (war) rune is displayed on the fabric with round, metal plates sewn into it. It can be attached to a 10-foot pole to serve as a standard. Furling or unfurling the banner requires an action. The banner has the following properties.",
 						{
 							"type": "entries",
@@ -14445,18 +14483,16 @@
 				},
 				{
 					"type": "entries",
-					"name": "Blod Stone",
+					"name": "{@item Blod Stone|skt}",
 					"entries": [
-						"{@i Wondrous item, rare (requires attunement)}",
 						"This diamond contains the blood of a creature-blood that appears in the form of the blod (blood) rune. While the item is on your person, you can use your action to divine the location of the creature nearest to you that is related to the blood in the item and that isn't undead. You sense the distance and direction of the creature relative to your location. The creature is either the one whose blood is in the item or a blood relative.",
 						"This item is made from a large diamond worth at least 5,000 gp. When the blood of a creature is poured onto it during the creation process, the blood seeps into the heart of the gem. If the gem is destroyed, the blood evaporates and is gone forever. A vengeful being might use a blod stone to hunt down an entire bloodline. Such stones are sometimes given as gifts to siblings or handed down from parent to child."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Claw of the Wyrm Rune",
+					"name": "{@item Claw of the Wyrm Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, rare (requires attunement)}",
 						"This dragon's claw has been covered with a coat of molten silver, upon which has been inscribed the wyrm (dragon) rune. The claw has the following properties.",
 						{
 							"type": "entries",
@@ -14489,9 +14525,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Conch of Teleportation",
+					"name": "{@item Conch of Teleportation|skt}",
 					"entries": [
-						"{@i Wondrous item, very rare (requires attunement)}",
 						"This item is an ordinary, albeit rather large, conch shell that has been inscribed with the uvar rune. The conch measures 2 1/2 feet long and weighs 20 pounds.",
 						{
 							"type": "image",
@@ -14506,9 +14541,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Gavel of the Venn Rune",
+					"name": "{@item Gavel of the Venn Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, rare (requires attunement)}",
 						"This wooden gavel is small by giant reckoning but nearly the size of a warhammer in human hands. The venn (friend) rune is inscribed in mithral in the base of the haft. Among giants, this item is used as part of rituals to resolve disputes. The gavel has the following properties.",
 						{
 							"type": "entries",
@@ -14541,9 +14575,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Gurt's Greataxe",
+					"name": "{@item Gurt's Greataxe|skt}",
 					"entries": [
-						"{@i Weapon (greataxe), legendary (requires attunement)}",
 						"In the Year of the Icy Axe (123 DR), the frost giant lord Gurt fell to Uthgar Gardolfsson-leader of the folk who would become the Uthgardt barbarians-in a battle that marked the ascendance of humankind over the giants in the Dessarin Valley. Gurt's greataxe was buried in Morgur's Mound until it was unearthed and brought back to Waterdeep. After laying in the city's vaults for decades, the axe was given to Harshnag, a frost giant adventurer, in recognition of his service to Waterdeep. Uthgardt barbarians recognize the weapon on sight and attack any giant that wields it.",
 						"You gain a +1 bonus to attack and damage rolls made with this magic weapon. It is sized for a giant, weighs 325 pounds, and deals 3d12 slashing damage on a hit, plus an extra 2d12 slashing damage if the target is human.",
 						"The axe sheds light as a torch when the temperature around it drops below 0 degrees Fahrenheit. The light can't be shut off in these conditions.",
@@ -14552,9 +14585,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Ingot of the Skold Rune",
+					"name": "{@item Ingot of the Skold Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, very rare (requires attunement)}",
 						"This appears to be a simple ingot of iron ore, about a foot long and a few inches across. Inspection of its surface reveals the faint, silvery outline of the skold (shield) rune. The ingot has the following properties, which work only while it's on your person.",
 						{
 							"type": "entries",
@@ -14588,9 +14620,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Korolnor Scepter",
+					"name": "{@item Korolnor Scepter|skt}",
 					"entries": [
-						"{@i Wondrous item, legendary (requires attunement)}",
 						"The Korolnor Scepter is one of ten Ruling Scepters of Shanatar, forged by the dwarven gods and given to the ruling houses of the ancient dwarven empire. The Korolnor Scepter's location was unknown for the longest time until a storm giant queen, Neri, found it in a barnacle-covered shipwreck at the bottom of the Trackless Sea. The Ruling Scepters are all roughly the same size and shape, but their materials and properties vary.",
 						"The Korolnor Scepter is a tapered mithral rod as thick and long as a dwarf's forearm, with a small platinum knob at the bottom and a rounded disk adorned with a ring of seven tiny blue gems at the top.",
 						"You gain a +3 bonus to attack and damage rolls made with this scepter, which can be wielded as a magic club.",
@@ -14614,9 +14645,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Navigation Orb",
+					"name": "{@item Navigation Orb|skt}",
 					"entries": [
-						"{@i Wondrous item, very rare (requires attunement} )",
 						"A {@item navigation orb|SKT} is a hollow, 7-foot-diameter sphere of thin, polished mithral with a large skye (cloud) rune embossed on its outer surface. The orb levitates 10 feet above the ground and is keyed to a particular cloud castle, allowing you to control that castle's altitude and movement while the orb is inside the castle. If the orb is destroyed or removed from its castle, the castle's altitude and location remain fixed until the orb is returned or replaced.",
 						"As an action, you can cause one of the following effects to occur if you are touching the orb:",
 						{
@@ -14632,9 +14662,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Opal of the Ild Rune",
+					"name": "{@item Opal of the Ild Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, rare (requires attunement)}",
 						"This triangular fire opal measures about three inches on each side and is half an inch thick. The ild (fire) rune shimmers within its core, causing it to be slightly warm to the touch. The opal has the following properties, which work only while it's on your person.",
 						{
 							"type": "entries",
@@ -14675,9 +14704,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Orb of the Stein Rune",
+					"name": "{@item Orb of the Stein Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, rare (requires attunement)}",
 						"This orb of granite is about the size of an adult human's fist. The stein (stone) rune appears on it in the form of crystalline veins that run across the surface. The orb has the following properties, which work only while it's on your person.",
 						{
 							"type": "entries",
@@ -14718,9 +14746,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Pennant of the Vind Rune",
+					"name": "{@item Pennant of the Vind Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, very rare (requires attunement)}",
 						"This blue pennant is crafted from silk and is five feet long and whips about as if buffeted by a wind. The vind (wind) rune appears on its surface, looking almost like a cloud. The pennant has the following properties, which work only while it's on your person.",
 						{
 							"type": "entries",
@@ -14768,9 +14795,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Potion of Giant Size",
+					"name": "{@item Potion of Giant Size|skt}",
 					"entries": [
-						"{@i Potion, legendary}",
 						"When you drink this potion, you become Huge for 24 hours if you are Medium or smaller, otherwise the potion does nothing. For that duration, your Strength becomes 25, if it isn't already higher, and your hit point maximum is doubled (your current hit points are doubled when you drink the potion). In addition, the reach of your melee attacks increases by 5 feet.",
 						"Everything you are carrying and wearing also increases in size for the duration. When rolling damage for weapons enlarged in this manner, roll three times the normal number of dice; for example, an enlarged longsword would deal 3d8 slashing damage (instead of 1d8), or 3d10 slashing damage (instead of 1d10) when used with two hands.",
 						"When the effect ends, any hit points you have above your hit point maximum become temporary hit points.",
@@ -14779,27 +14805,24 @@
 				},
 				{
 					"type": "entries",
-					"name": "Robe of Serpents",
+					"name": "{@item Robe of Serpents|skt}",
 					"entries": [
-						"{@i Wondrous item, uncommon (requires attunement)}",
 						"A robe of serpents is a stylish silk garment that is popular among wealthy nobles and retired assassins. The robe is emblazoned with 1d4+3 stylized serpents, all brightly colored.",
 						"As a bonus action on your turn, you can transform one of the robe's serpents into a {@creature giant poisonous snake|MM}. The snake instantly falls from the robe, slithers into an unoccupied space next to you, and acts on your initiative count. The snake can tell friendly creatures from hostile ones and attacks the latter. The snake disappears in a harmless puff of smoke after 1 hour, when it drops to 0 hit points, or when you dismiss it (no action required). Once detached, a snake can't return to the robe. When all of the robe's snakes have detached, the robe becomes a nonmagical garment."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Rod of the Vonindod",
+					"name": "{@item Rod of the Vonindod|skt}",
 					"entries": [
-						"{@i Rod, rare (requires attunement)}",
 						"The fire giant duke Zalto hired a wizard to craft several of these adamantine rods. Each measures 4 feet long, weighs 100 pounds, and is sized to fit comfortably in a fire giant's hand. The rod has two prongs at one end and a molded handle grip on the opposite end.",
 						"The rod has 10 charges and regains 1d6+4 of its expended charges daily at dawn. As an action, you can grasp it by the handle and expend 1 charge to cast the locate object spell from it. When the rod is used to detect objects made of adamantine, such as fragments of the Vonindod construct, its range increases to 10 miles."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Shard of the Ise Rune",
+					"name": "{@item Shard of the Ise Rune|skt}",
 					"entries": [
-						"{@i Wondrous item, very rare (requires attunement)}",
 						"This shard of ice is long and slender, roughly the size of a dagger. The ise (ice) rune glows within it. The shard has the following properties, which work only while it's on your person.",
 						{
 							"type": "entries",
@@ -14847,9 +14870,8 @@
 				},
 				{
 					"type": "entries",
-					"name": "Wyrmskull Throne",
+					"name": "{@item Wyrmskull Throne|skt}",
 					"entries": [
-						"{@i Wondrous item, artifact}",
 						"Built by dwarven gods and entrusted to the rulers of Shanatar, an ancient dwarven empire, the Wyrmskull Throne was a symbol of dwarven power and pride for ages untold. The throne hovers a foot off the ground and is a massive thing made of polished obsidian with oversized feet-the impaled skulls of four ancient blue dragons. Runes glisten in the carved obsidian, winking to life with blue energy when the throne's powers are activated.",
 						"After the fall of Shanatar, the {@item Wyrmskull Throne|SKT} fell into the clutches of less honorable creatures. A band of adventurers wrested the throne from the aquatic elf tyrant Gantar Kraok and sold it to the storm giant Neri for a considerable fortune. Neri had the throne magically enlarged and gave it to her husband, King Hekaton, as a gift, along with one of the Ruling Scepters of Shanatar, which she had found in a wreck at the bottom of the Trackless Sea. Only a creature attuned to a Ruling Scepter and in possession of it can harness the powers of the {@item Wyrmskull Throne|SKT}, which has become the centerpiece of King Hekaton's throne room in the undersea citadel of Maelstrom. Fear of the throne's power has helped prevent evil giants from challenging or threatening Hekaton's leadership.",
 						"Any creature not attuned to a Ruling Scepter who sits on the throne is paralyzed and encased in a magical force field. While encased, the creature can't be touched or moved from the throne. Touching a Ruling Scepter to the force field dispels the field, though the creature remains paralyzed until it is separated from the throne.",
@@ -14894,10 +14916,18 @@
 			"type": "section",
 			"name": "Appendix C: Creatures",
 			"entries": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "adventure/SKT/Defeated-Giant.jpg"
+					},
+					"title": "Defeated Giant"
+				},
 				"This appendix details the new monsters that appear in this adventure. It also provides optional actions and traits for giants.",
 				{
 					"type": "entries",
-					"name": "Crag Cat",
+					"name": "{@creature Crag Cat|skt}",
 					"entries": [
 						"The creature referred to in Northlander lore as the Hunter of Men is a sure-footed predator that can be found anywhere except deep forest, preferring ledges and cliffs in the mountains. Its cry resembles a human scream of terror. It often elicits such sounds from its victims, for it prefers human flesh to all other prey.",
 						{
@@ -14914,14 +14944,14 @@
 				},
 				{
 					"type": "entries",
-					"name": "Hulking Crab",
+					"name": "{@creature Hulking Crab|skt}",
 					"entries": [
 						"Much bigger than a giant crab, a hulking crab has a body 15 to 20 feet in diameter. Its shell is often covered with coral, anemones, ship wreckage, or some other sort of detritus salvaged from the ocean floor."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Iymrith the Dragon",
+					"name": "{@creature Iymrith, Ancient Blue Dragon|skt|Iymrith the Dragon}",
 					"entries": [
 						"The treacherous Iymrith is an ancient blue dragon, with the following changes:",
 						{
@@ -14952,7 +14982,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Maegera the Dawn Titan",
+					"name": "{@creature Maegera the Dawn Titan|skt}",
 					"entries": [
 						"Maegera is powerful elemental that has been trapped in the forges of Gauntlgrym for millennia. About fifty years ago, Maegera briefly escaped and triggered the eruption of Mount Hotenow. Lava from the volcano flowed toward the coast, laying waste to Neverwinter. The city is still rebuilding in the wake of that catastrophe.",
 						"The fire giant duke Zalto recently sent a team of drow to infiltrate Gauntlgrym and trap Maegera in an iron flask. Zalto needs the primordial to ignite an adamantine forge beneath the Ice Spires. Returning Maegera to Gauntlgrym is one way to thwart the fire giant's plans.",
@@ -14961,14 +14991,14 @@
 				},
 				{
 					"type": "entries",
-					"name": "Purple Wormling",
+					"name": "{@creature Purple Wormling|skt}",
 					"entries": [
 						"A purple wormling is a baby purple worm no more than six weeks old. Its rubbery body is 9 feet long and weighs 1,500 pounds. Its mouth and musculature aren't yet strong enough to allow the wormling to burrow through rock. The poison in its tail stinger and the acid in its gullet are still relatively weak as well. Nevertheless, the wormling is a voracious feeder and attacks just about anything it can wrap its mouth around. A wormling's gullet can hold up to four Small creatures."
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Tressym",
+					"name": "{@creature Tressym|skt}",
 					"entries": [
 						"A tressym is a mischievous winged cat as big as a house cat, with a wingspan of 3 feet.",
 						"Thought to be the results of wizardly experimentation on house cats, tressym are intelligent and have been known to form strong friendships with humanoids, particularly rangers and wizards. Tressym get along well with others of their kind, but they rarely lair or hunt together. They peacefully ignore bats, faerie dragons, and the like, but they hate stirges and evil flying monsters such as manticores. They also enjoy teasing dogs.",
@@ -14988,7 +15018,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Uthgardt Shaman",
+					"name": "{@creature Uthgardt Shaman|skt}",
 					"entries": [
 						"Uthgardt barbarians are suspicious and resentful of most kinds of magic. Seldom do they choose to become shamans. Instead, the role is thrust upon those who are born with a strong connection to the spirit world. To be a shaman is to stand apart from the tribe, with one foot in the land of the living and the other in the land of the dead. Those who walk the shadowed path between two lands do so because the spirits of the dead compel them. Other Uthgardt fear and respect a shaman's power.",
 						{
@@ -15024,7 +15054,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Yakfolk (Yikaria)",
+					"name": "{@creature Yakfolk Warrior|skt|Yakfolk} {@creature Yakfolk Priest|skt|(Yikaria)}",
 					"entries": [
 						"Yakfolk, known among themselves as Yikaria (\"the Lucky Chosen\" in their language), are ogre-sized humanoids. Their heads resemble disgruntled yaks, complete with curved horns and dour expressions. Their hulking bodies are coated with thick fur and hair, and many outsiders can't tell the males and females apart.",
 						{
@@ -15075,16 +15105,8 @@
 							"title": "Giants"
 						},
 						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/SKT/Defeated-Giant.jpg"
-							},
-							"title": "Defeated Giant"
-						},
-						{
 							"type": "entries",
-							"name": "Cloud Giants",
+							"name": "{@creature Cloud Giant|mm|Cloud Giants}",
 							"entries": [
 								"Some adult cloud giants have the magical ability to create barriers of gale-force wind around themselves that can deflect incoming missiles. Others like to fling enemies through the air. These abilities are represented by the following action options.",
 								{
@@ -15105,7 +15127,7 @@
 						},
 						{
 							"type": "entries",
-							"name": "Fire Giants",
+							"name": "{@creature Fire Giant|mm|Fire Giants}",
 							"entries": [
 								"Some adult fire giants are trained to lay siege to strong holds and break through enemy lines. These abilities are represented by the following traits.",
 								{
@@ -15126,7 +15148,7 @@
 						},
 						{
 							"type": "entries",
-							"name": "Frost Giants",
+							"name": "{@creature Frost Giant|mm|Frost Giants}",
 							"entries": [
 								"Some adult frost giants are skilled hunters who construct and hurl nets weighted down with fragments of metal or bone. This ability is represented by the following action option.",
 								{
@@ -15140,7 +15162,7 @@
 						},
 						{
 							"type": "entries",
-							"name": "Hill Giants",
+							"name": "{@creature Hill Giant|mm|Hill Giants}",
 							"entries": [
 								"Some adult hill giants like to hurl themselves bodily at smaller foes and crush them beneath their bulk. This ability is represented by the following action option.",
 								{
@@ -15154,7 +15176,7 @@
 						},
 						{
 							"type": "entries",
-							"name": "Stone Giants",
+							"name": "{@creature Stone Giant|mm|Stone Giants}",
 							"entries": [
 								"Some adult stone giants like to grab enemies and fling them through the air. They can also roll boulders across the ground, striking multiple enemies in a line. These abilities are represented by the following action options.",
 								{
@@ -15175,7 +15197,7 @@
 						},
 						{
 							"type": "entries",
-							"name": "Storm Giants",
+							"name": "{@creature Storm Giant|mm|Storm Giants}",
 							"entries": [
 								"Some adult storm giants can channel thunderous power through their bodies and release it with a deafening stomp. This ability is represented by the following action option.",
 								{
@@ -15187,6 +15209,63 @@
 								}
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"type": "section",
+			"name": "Appendix D: Special NPCs",
+			"entries": [
+				{
+					"type": "inlineBlock",
+					"entries": [
+						"The details of the special NPCs can be found in the ",
+						{
+							"type": "link",
+							"href": {
+								"type": "internal",
+								"path": "bestiary.html"
+							},
+							"text": "bestiary"
+						},
+						". A quick reference can be found below."
+					]
+				},
+				{
+					"type": "list",
+					"name": "Bryn Shander",
+					"items": [
+						"{@creature Augrek Brighthelm|skt}",
+						"{@creature Sirac of Suzail|skt}",
+						"{@creature Duvessa Shane|skt}",
+						"{@creature Markham Southwell|skt}",
+						"{@creature Beldora|skt}",
+						"{@creature Sir Baric Nylef|skt}"
+					]
+				},
+				{
+					"type": "list",
+					"name": "Goldenfields",
+					"items": [
+						"{@creature Shalvus Martholio|skt}",
+						"{@creature Lifferlas|skt}",
+						"{@creature Zi Liang|skt}",
+						"{@creature Miros Xelbrin|skt}",
+						"{@creature Naxene Drathkala|skt}",
+						"{@creature Oren Yogilvy|skt}"
+					]
+				},
+				{
+					"type": "list",
+					"name": "Triboar",
+					"items": [
+						"{@creature Darathra Shendrel|skt}",
+						"{@creature Darz Helgar|skt}",
+						"{@creature Narth Tezrin|skt}",
+						"{@creature Urgala Meltimer|skt}",
+						"{@creature Othovir|skt}",
+						"{@creature Ghelryn Foehammer|skt}"
 					]
 				}
 			]

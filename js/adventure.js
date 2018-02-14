@@ -2,15 +2,15 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
-let renderArea;
 let adventures;
 
 window.onload = function load () {
-	renderArea = $(`#pagecontent`);
+	BookUtil.renderArea = $(`#pagecontent`);
 
-	renderArea.append(EntryRenderer.utils.getBorderTr());
-	renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
-	renderArea.append(EntryRenderer.utils.getBorderTr());
+	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
+	if (window.location.hash.length) BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Loading...</td></tr>`);
+	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
+	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 	DataUtil.loadJSON(CONTENTS_URL, onJsonLoad);
 };
@@ -48,248 +48,13 @@ function onJsonLoad (data) {
 		listClass: "contents"
 	});
 
-	window.onhashchange = advHashChange;
+	BookUtil.baseDataUrl = "data/adventure/adventure-";
+	BookUtil.bookIndex = adventures;
+
+	window.onhashchange = BookUtil.booksHashChange;
 	if (window.location.hash.length) {
-		advHashChange();
+		BookUtil.booksHashChange();
 	} else {
 		$(`.contents-item`).show();
-	}
-}
-
-// custom loading for this page, so it can serve multiple sources
-function advHashChange () {
-	const [advId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
-	const fromIndex = adventures.filter(adv => UrlUtil.encodeForHash(adv.id) === UrlUtil.encodeForHash(advId));
-	if (fromIndex.length) {
-		document.title = `${fromIndex[0].name} - 5etools`;
-		// prevent TftYP names from causing the header to wrap
-		const shortName = fromIndex[0].name.includes(Parser.SOURCE_JSON_TO_FULL[SRC_TYP]) ? fromIndex[0].name.replace(Parser.SOURCE_JSON_TO_FULL[SRC_TYP], Parser.sourceJsonToAbv(SRC_TYP)) : fromIndex[0].name;
-		$(`.adv-header`).html(shortName);
-		$(`.adv-message`).html("Browse adventure content. Press F to find.");
-		loadAdventure(fromIndex[0], advId, hashParts);
-	} else {
-		throw new Error("No adventure with ID: " + advId);
-	}
-}
-
-const renderer = new EntryRenderer();
-function loadAdventure (fromIndex, advId, hashParts) {
-	DataUtil.loadJSON(`data/adventure/adventure-${advId.toLowerCase()}.json`, function (data) {
-		const allContents = $(`.contents-item`);
-		BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(advId)}"]`);
-		BookUtil.thisContents.show();
-		allContents.filter(`[data-bookid!="${UrlUtil.encodeForHash(advId)}"]`).hide();
-		BookUtil.showBookContent(data.data, fromIndex, advId, hashParts, renderer, renderArea);
-		addSearch(fromIndex, advId);
-	});
-}
-
-let $body;
-let $findAll;
-let headerCounts;
-let lastHighlight = null;
-function addSearch (indexData, advId) {
-	function getHash (found) {
-		return `${UrlUtil.encodeForHash(advId)}${HASH_PART_SEP}${found.ch}${found.header ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(found.header)}${HASH_PART_SEP}${found.headerIndex}` : ""}`
-	}
-
-	$body = $body || $(`body`);
-
-	$body.on("click", () => {
-		if ($findAll) $findAll.remove();
-	});
-
-	$body.off("keypress");
-	$body.on("keypress", (e) => {
-		if ((e.key === "f" && noModifierKeys(e))) {
-			$(`span.temp`).contents().unwrap();
-			lastHighlight = null;
-			if ($findAll) $findAll.remove();
-			$findAll = $(`<div class="f-all-wrapper"/>`).on("click", (e) => {
-				e.stopPropagation();
-			});
-
-			const $results = $(`<div class="f-all-out">`);
-			const $srch = $(`<input class="form-control" placeholder="Find text...">`).on("keypress", (e) => {
-				e.stopPropagation();
-				if (e.key === "Enter" && noModifierKeys(e)) {
-					$results.html("");
-					const found = [];
-					const toSearch = BookUtil.curRender.data;
-					toSearch.forEach((section, i) => {
-						headerCounts = {};
-						searchEntriesFor(i, "", found, $srch.val(), section)
-					});
-					if (found.length) {
-						$results.show();
-						found.forEach(f => {
-							const $row = $(`<p class="f-result"/>`);
-							const $ptLink = $(`<span/>`);
-							const $link = $(
-								`<a href="#${getHash(f)}">
-									<i>${BookUtil.getOrdinalText(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name} \u2013 ${f.headerMatches ? `<span class="highlight">` : ""}${f.header}${f.headerMatches ? `</span>` : ""}</i>
-								</a>`
-							);
-							$ptLink.append($link);
-							$row.append($ptLink);
-
-							if (f.previews) {
-								const $ptPreviews = $(`<a href="#${getHash(f)}"/>`);
-								const re = new RegExp(RegExp.escape(f.term), "gi");
-
-								$ptPreviews.on("click", () => {
-									setTimeout(() => {
-										if (lastHighlight === null || lastHighlight !== f.term.toLowerCase()) {
-											lastHighlight = f.term;
-											$(`#pagecontent`)
-												.find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}"), a:containsInsensitive("${f.term}")`)
-												.each((i, ele) => {
-													$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
-												});
-										}
-									}, 15)
-								});
-
-								$ptPreviews.append(`<span>${f.previews[0]}</span>`);
-								if (f.previews[1]) {
-									$ptPreviews.append(" ... ");
-									$ptPreviews.append(`<span>${f.previews[1]}</span>`);
-								}
-								$row.append($ptPreviews);
-
-								$link.on("click", () => $ptPreviews.click());
-							}
-
-							$results.append($row);
-						});
-					} else {
-						$results.hide();
-					}
-				}
-			});
-			$findAll.append($srch).append($results);
-
-			$body.append($findAll);
-
-			$srch.focus();
-			// because somehow creating an input box from an event and then focusing it adds the "f" character? :joy:
-			setTimeout(() => {
-				$srch.val("");
-			}, 5)
-		}
-	});
-
-	const EXTRA_WORDS = 2;
-	function searchEntriesFor (chapterIndex, prevLastName, appendTo, term, obj) {
-		if (term === undefined || term === null) return;
-		const cleanTerm = term.toLowerCase().trim();
-		if (!cleanTerm) return;
-
-		if (obj.name) {
-			if (headerCounts[obj.name] === undefined) headerCounts[obj.name] = 0;
-			else headerCounts[obj.name]++;
-		}
-		let lastName;
-		if (obj.name) {
-			lastName = obj.name;
-			if (lastName.toLowerCase().includes(cleanTerm)) {
-				appendTo.push({
-					ch: chapterIndex,
-					header: lastName,
-					headerIndex: headerCounts[lastName],
-					term: term.trim(),
-					headerMatches: true
-				});
-			}
-		} else {
-			lastName = prevLastName;
-		}
-		if (obj.entries) {
-			obj.entries.forEach(e => searchEntriesFor(chapterIndex, lastName, appendTo, term, e))
-		} else if (obj.items) {
-			obj.items.forEach(e => searchEntriesFor(chapterIndex, lastName, appendTo, term, e))
-		} else if (obj.rows) {
-			obj.rows.forEach(r => {
-				r.forEach(c => searchEntriesFor(chapterIndex, lastName, appendTo, term, c));
-			})
-		} else if (typeof obj === "string") {
-			const renderStack = [];
-			renderer.recursiveEntryRender(obj, renderStack);
-			const rendered = $(`<p>${renderStack.join("")}</p>`).text();
-
-			const toCheck = rendered.toLowerCase();
-			if (toCheck.includes(cleanTerm)) {
-				if (!appendTo.length || (!(appendTo[appendTo.length - 1].header === lastName && appendTo[appendTo.length - 1].headerIndex === headerCounts[lastName] && appendTo[appendTo.length - 1].previews))) {
-					const first = toCheck.indexOf(cleanTerm);
-					const last = toCheck.lastIndexOf(cleanTerm);
-
-					const slices = [];
-					if (first === last) {
-						slices.push(getSubstring(rendered, first, first));
-					} else {
-						slices.push(getSubstring(rendered, first, first + cleanTerm.length));
-						slices.push(getSubstring(rendered, last, last + cleanTerm.length));
-					}
-					appendTo.push({
-						ch: chapterIndex,
-						header: lastName,
-						headerIndex: headerCounts[lastName],
-						previews: slices.map(s => s.preview),
-						term: term.trim(),
-						matches: slices.map(s => s.match),
-						headerMatches: lastName.toLowerCase().includes(cleanTerm)
-					});
-				} else {
-					const last = toCheck.lastIndexOf(cleanTerm);
-					const slice = getSubstring(rendered, last, last + cleanTerm.length);
-					const lastItem = appendTo[appendTo.length - 1];
-					lastItem.previews[1] = slice.preview;
-					lastItem.matches[1] = slice.match;
-				}
-			}
-		} else if (!(obj.type === "image" || obj.type === "link")) {
-			throw new Error("Unhandled entity type")
-		}
-
-		function getSubstring (rendered, first, last) {
-			let spaceCount = 0;
-			let braceCount = 0;
-			let pre = "";
-			let i = first - 1;
-			for (; i >= 0; --i) {
-				pre = rendered.charAt(i) + pre;
-				if (rendered.charAt(i) === " " && braceCount === 0) {
-					spaceCount++;
-				}
-				if (spaceCount > EXTRA_WORDS) {
-					break;
-				}
-			}
-			pre = pre.trimLeft();
-			const preDots = i > 0;
-
-			spaceCount = 0;
-			let post = "";
-			const start = first === last ? last + cleanTerm.length : last;
-			i = Math.min(start, rendered.length);
-			for (; i < rendered.length; ++i) {
-				post += rendered.charAt(i);
-				if (rendered.charAt(i) === " " && braceCount === 0) {
-					spaceCount++;
-				}
-				if (spaceCount > EXTRA_WORDS) {
-					break;
-				}
-			}
-			post = post.trimRight();
-			const postDots = i < rendered.length;
-
-			const originalTerm = rendered.substr(first, term.length);
-
-			return {
-				preview: `${preDots ? "..." : ""}${pre}<span class="highlight">${originalTerm}</span>${post}${postDots ? "..." : ""}`,
-				match: `${pre}${term}${post}`
-			};
-		}
 	}
 }

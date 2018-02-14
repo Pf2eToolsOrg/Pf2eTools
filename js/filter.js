@@ -59,6 +59,7 @@ class FilterBox {
 		this.cookieValues = cookie ? JSON.parse(cookie) : null;
 		this.$rendered = [];
 		this.dropdownVisible = false;
+		this.modeAndOr = "AND";
 	}
 
 	/**
@@ -77,6 +78,21 @@ class FilterBox {
 		const $inputGroup = $(this.inputGroup);
 
 		const $outer = makeOuterList();
+		if (this.filterList.length > 1) {
+			const self = this;
+			const $hdrAndOr = $(`<li class="filter-item"/>`);
+			const $innHdr = $(`<div class="h-wrap">Combine filters as... </div>`);
+			const $btnAndOr = $(`<button class="btn btn-default btn-xs" style="width: 3em;">${this.modeAndOr}</button>`)
+				.data("andor", this.modeAndOr)
+				.on(EVNT_CLICK, () => {
+					const nxt = $btnAndOr.data("andor") === "OR" ? "AND" : "OR";
+					self.modeAndOr = nxt;
+					$btnAndOr.text(nxt);
+					$btnAndOr.data("andor", nxt);
+				});
+			$hdrAndOr.append($innHdr.append(`<div style="display: inline-block; width: 10px;"/>`).append($btnAndOr));
+			$outer.append($hdrAndOr).append(makeDivider());
+		}
 		for (let i = 0; i < this.filterList.length; ++i) {
 			$outer.append(makeOuterItem(this, this.filterList[i], this.$miniView));
 			if (i < this.filterList.length - 1) $outer.append(makeDivider());
@@ -132,23 +148,43 @@ class FilterBox {
 				const $outI = $("<li/>");
 				$outI.addClass("filter-item");
 
-				const $grid = makePillGrid();
+				self.headers[filter.header] = {outer: $outI, filter: filter};
+				const $grid = makePillGrid(filter.header);
+				self.headers[filter.header].ele = $grid;
 				const $innerListHeader = makeHeaderLine($grid);
 
 				$outI.append($innerListHeader);
 				$outI.append($grid);
-
-				self.headers[filter.header] = {ele: $grid, outer: $outI, filter: filter};
 
 				return $outI;
 			}
 
 			function makeHeaderLine ($grid) {
 				const $line = $(`<div class="h-wrap"/>`);
-				const $label = `<div>${namePrefix ? `<span class="text-muted">${namePrefix}: </span>` : ""}${filter.header}</div>`;
+				const $label = $(`<div>${namePrefix ? `<span class="text-muted">${namePrefix}: </span>` : ""}${filter.header}</div>`);
 				$line.append($label);
 
-				const $quickBtns = $(`<span class="btn-group" style="margin-left: auto;"/>`);
+				function makeAndOrBtn (defState, tooltip) {
+					const $btn = $(` <button class="btn btn-default btn-xs" style="width: 3em;" title="${tooltip}">${defState}</button>`)
+						.data("andor", defState);
+					return $btn
+						.on(EVNT_CLICK, () => {
+							const nxt = $btn.data("andor") === "OR" ? "AND" : "OR";
+							$btn.data("andor", nxt);
+							$btn.text(nxt);
+						});
+				}
+
+				const $btnAndOrBlue = makeAndOrBtn("OR", "Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match.");
+				self.headers[filter.header].getAndOrBlue = () => {
+					return $btnAndOrBlue.data("andor");
+				};
+				const $btnAndOrRed = makeAndOrBtn("OR", "Negative match mode for this filter. AND requires all reds to match, OR requires at least one red to match.");
+				self.headers[filter.header].getAndOrRed = () => {
+					return $btnAndOrRed.data("andor");
+				};
+
+				const $quickBtns = $(`<span class="btn-group quick-btns" style="margin-left: auto;"/>`);
 				const $all = $(`<button class="btn btn-default btn-xs">All</button>`);
 				$quickBtns.append($all);
 				const $clear = $(`<button class="btn btn-default btn-xs">Clear</button>`);
@@ -158,6 +194,10 @@ class FilterBox {
 				const $default = $(`<button class="btn btn-default btn-xs">Default</button>`);
 				$quickBtns.append($default);
 				$line.append($quickBtns);
+
+				const $logicBtns = $(`<span class="btn-group andor-btns"></span>`);
+				$logicBtns.append($btnAndOrBlue).append($btnAndOrRed);
+				$line.append(`<div style="display: inline-block; width: 5px;">`).append($logicBtns);
 
 				const $summary = $(`<span class="summary" style="margin-left: auto;"/>`);
 				const $summaryInclude = $(`<span class="include" title="Hiding  includes"/>`);
@@ -371,6 +411,10 @@ class FilterBox {
 							_totals[countName] = _totals[countName] + 1;
 						});
 						out._totals = _totals;
+						out._andOr = {
+							blue: self.headers[filter.header].getAndOrBlue(),
+							red: self.headers[filter.header].getAndOrRed()
+						};
 						return out;
 					}
 				);
@@ -460,8 +504,8 @@ class FilterBox {
 	 * @returns the map described above e.g.
 	 *
 	 * {
-	 *  "Source": { "PHB": 1, "DMG": 0, "_totals": { "yes": 1, "no": 0, "ignored": 1 } },
-	 *  "School": { "A": 0, "EV": -1, "_totals": { "yes": 0, "no": 1, "ignored": 1 } }
+	 *  "Source": { "PHB": 1, "DMG": 0, "_totals": { "yes": 1, "no": 0, "ignored": 1 }, "_andOr": { "blue": "OR", "red": "AND" } },
+	 *  "School": { "A": 0, "EV": -1, "_totals": { "yes": 0, "no": 1, "ignored": 1 }, "_andOr": { "blue": "AND", "red": "OR" } }
      * }
 	 *
 	 */
@@ -532,6 +576,13 @@ class FilterBox {
 			setSuppressHistory(true);
 			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
 		}
+	}
+
+	toDisplay (curr, ...vals) {
+		const res = this.filterList.map((f, i) => {
+			return f.isMulti ? f.toDisplay(curr, ...vals[i]) : f.toDisplay(curr, vals[i])
+		});
+		return this.modeAndOr === "AND" ? res.every(it => it) : res.find(it => it);
 	}
 
 	/**
@@ -606,6 +657,7 @@ class Filter {
 		this.displayFn = options.displayFn;
 		this.selFn = options.selFn;
 		this.deselFn = options.deselFn;
+		this.attrName = options.attrName;
 	}
 
 	/**
@@ -625,39 +677,81 @@ class Filter {
 	 * @returns {*} true if this item should be displayed, false otherwise
 	 */
 	toDisplay (valObj, toCheck) {
+		// TODO handle AND/OR
 		const map = valObj[this.header];
 		const totals = map._totals;
 		if (toCheck instanceof Array) {
-			let display = false;
-			// default to displaying
-			if (totals.yes === 0) {
-				display = true;
-			}
 			let hide = false;
-			for (let i = 0; i < toCheck.length; i++) {
-				const item = toCheck[i];
+			let display = false;
 
-				// if any are 1 (green) include if they match
-				if (map[item] === 1) {
+			if (map._andOr.blue === "OR") {
+				// default to displaying
+				if (totals.yes === 0) {
 					display = true;
 				}
-				// if any are -1 (red) exclude if they match
-				if (map[item] === -1) {
-					hide = true;
-				}
+
+				toCheck.forEach(tc => {
+					if (map[tc] === 1) { // if any are 1 (nlue) include if they match
+						display = true;
+					}
+				});
+			} else {
+				let ttlYes = 0;
+				toCheck.forEach(tc => {
+					if (map[tc] === 1) {
+						ttlYes++;
+					}
+				});
+				display = !totals.yes || totals.yes === ttlYes;
+			}
+
+			if (map._andOr.red === "OR") {
+				toCheck.forEach(tc => {
+					if (map[tc] === -1) { // if any are -1 (red) exclude if they match
+						hide = true;
+					}
+				});
+			} else {
+				let ttlNo = 0;
+				toCheck.forEach(tc => {
+					if (map[tc] === -1) {
+						ttlNo++;
+					}
+				});
+				hide = totals.no && totals.no === ttlNo;
 			}
 
 			return display && !hide;
 		} else {
-			return doCheck(toCheck);
+			return doCheck();
 		}
 
 		function doCheck () {
-			if (totals.yes > 0) {
-				return map[toCheck] === 1;
+			let display = false;
+			let hide = false;
+			if (map._andOr.blue === "OR") {
+				if (totals.yes > 0) {
+					display = map[toCheck] === 1;
+				} else {
+					display = true;
+				}
 			} else {
-				return map[toCheck] >= 0 || map[toCheck] === undefined;
+				if (totals.yes > 0) {
+					display = map[toCheck] === 1 && totals.yes === 1;
+				} else {
+					display = true;
+				}
 			}
+
+			if (map._andOr.red === "OR") {
+				if (totals.no > 0) {
+					hide = map[toCheck] === -1;
+				}
+			} else {
+				hide = totals.no === 1 && map[toCheck] === -1;
+			}
+
+			return display && !hide;
 		}
 	}
 }
@@ -691,6 +785,7 @@ class MultiFilter {
 	constructor (categoryName, ...filters) {
 		this.categoryName = categoryName;
 		this.filters = filters;
+		this.isMulti = true;
 	}
 
 	/**
@@ -707,6 +802,7 @@ class MultiFilter {
 		const results = [];
 		for (let i = 0; i < this.filters.length; ++i) {
 			const f = this.filters[i];
+			// TODO use and/or flag?
 			const totals = valObj[f.header]._totals;
 
 			if (totals.yes === 0 && totals.no === 0) results.push(null);

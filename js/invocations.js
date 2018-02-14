@@ -45,7 +45,7 @@ function listSortInvocations (a, b, o) {
 		const comp = sortLevelAsc(a.values()["level"], b.values()["level"]);
 		if (comp !== 0) return comp;
 	}
-	return listSort(a, b, o);
+	return SortUtil.listSort(a, b, o);
 }
 
 let INVOCATION_LIST;
@@ -98,7 +98,7 @@ function onJsonLoad (data) {
 	});
 	$(`#${ID_INVOCATION_LIST}`).append(tempString);
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	const list = ListUtil.search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_PACT, LIST_PATRON, LIST_SPELL, LIST_LEVEL],
@@ -118,13 +118,14 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const p = INVOCATION_LIST[$(item.elm).attr(FLTR_ID)];
-
-			const rightSource = sourceFilter.toDisplay(f, p.source);
-			const rightPact = pactFilter.toDisplay(f, p.prerequisites.pact);
-			const rightPatron = patronFilter.toDisplay(f, p.prerequisites.patron);
-			const rightSpell = spellFilter.toDisplay(f, p.prerequisites.spell);
-			const rightLevel = levelFilter.toDisplay(f, p.prerequisites.level);
-			return rightSource && rightPact && rightPatron && rightSpell && rightLevel;
+			return filterBox.toDisplay(
+				f,
+				p.source,
+				p.prerequisites.pact,
+				p.prerequisites.patron,
+				p.prerequisites.spell,
+				p.prerequisites.level
+			);
 		});
 	}
 

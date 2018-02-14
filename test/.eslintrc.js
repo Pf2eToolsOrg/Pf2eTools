@@ -160,4 +160,4 @@ module.exports = {
 		"yield-star-spacing": ["error", "both"],
 		"yoda": ["error", "never"]
 	}
-}
+};

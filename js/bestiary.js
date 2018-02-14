@@ -11,7 +11,7 @@ function ascSortCr (a, b) {
 	// always put unknown values last
 	if (a === "Unknown" || a === undefined) a = "999";
 	if (b === "Unknown" || b === undefined) b = "999";
-	return ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
+	return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
 const meta = {};
@@ -77,7 +77,7 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
-const miscFilter = new Filter({header: "Miscellaneous", items: ["Legendary"], displayFn: StrUtil.uppercaseFirst});
+const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
 	sourceFilter,
@@ -92,7 +92,7 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "type", "cr"],
@@ -139,13 +139,15 @@ function handleFilterChange () {
 	const f = filterBox.getValues();
 	list.filter(function (item) {
 		const m = monsters[$(item.elm).attr(FLTR_ID)];
-
-		return sourceFilter.toDisplay(f, m.source) &&
-			crFilter.toDisplay(f, m.cr) &&
-			sizeFilter.toDisplay(f, m.size) &&
-			typeFilter.toDisplay(f, m._pTypes.type) &&
-			tagFilter.toDisplay(f, m._pTypes.tags) &&
-			miscFilter.toDisplay(f, m._fMisc);
+		return filterBox.toDisplay(
+			f,
+			m.source,
+			m.cr,
+			m.size,
+			m._pTypes.type,
+			m._pTypes.tags,
+			m._fMisc
+		);
 	});
 }
 
@@ -179,6 +181,7 @@ function addMonsters (data) {
 		crFilter.addIfAbsent(mon.cr);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
+		if (mon.familiar) mon._fMisc.push("Familiar");
 	}
 	let lastSearch = null;
 	if (list.searched) {
@@ -190,8 +193,8 @@ function addMonsters (data) {
 
 	// sort filters
 	crFilter.items.sort(ascSortCr);
-	typeFilter.items.sort(ascSort);
-	tagFilter.items.sort(ascSort);
+	typeFilter.items.sort(SortUtil.ascSort);
+	tagFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -204,9 +207,9 @@ function addMonsters (data) {
 function sortMonsters (a, b, o) {
 	a = monsters[a.elm.getAttribute(FLTR_ID)];
 	b = monsters[b.elm.getAttribute(FLTR_ID)];
-	if (o.valueName === "name") return ascSort(a.name, b.name);
-	if (o.valueName === "type") return ascSort(a._pTypes.asText, b._pTypes.asText);
-	if (o.valueName === "source") return ascSort(a.source, b.source);
+	if (o.valueName === "name") return SortUtil.ascSort(a.name, b.name);
+	if (o.valueName === "type") return SortUtil.ascSort(a._pTypes.asText, b._pTypes.asText);
+	if (o.valueName === "source") return SortUtil.ascSort(a.source, b.source);
 	if (o.valueName === "cr") return ascSortCr(a.cr, b.cr);
 	return 0;
 }
@@ -403,12 +406,12 @@ function loadhash (id) {
 		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
 		renderer.recursiveEntryRender(entryList, renderStack, sectionLevel);
-		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${utils_makeRoller(renderStack.join(""))}</td></tr>`);
+		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
 	}
 
 	// add click links for rollables
 	$("#pagecontent #abilityscores td").each(function () {
-		$(this).wrapInner("<span class='roller' data-roll='1d20" + $(this).children(".mod").html() + "'></span>");
+		$(this).wrapInner(`<span class="roller" data-roll="1d20${$(this).children(".mod").html()}" title="${Parser.attAbvToFull($(this).prop("id"))}"></span>`);
 	});
 
 	const isProfDiceMode = $("button#profbonusdice")[0].useDice;
@@ -480,11 +483,11 @@ function loadhash (id) {
 
 	function renderSkillOrSaveRoller (itemName, profBonusString, profDiceString, isSave) {
 		const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
-		return `<span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
+		return `<span class='roller unselectable' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
 	}
 
 	// inline rollers
-	$("#pagecontent p").each(function () {
+	$("#pagecontent").find("p").each(function () {
 		addNonD20Rollers(this);
 
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -524,19 +527,19 @@ function loadhash (id) {
 			}
 		}));
 	});
-	$("#pagecontent span#hp").each(function () {
-		addNonD20Rollers(this);
+	$("#pagecontent").find("span#hp").each(function () {
+		addNonD20Rollers(this, "Hit Points");
 	});
 
-	function addNonD20Rollers (ele) {
+	function addNonD20Rollers (ele, title) {
 		$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-			const titleMaybe = attemptToGetTitle(ele);
+			const titleMaybe = title || attemptToGetTitle(ele);
 			return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
 		}));
 	}
 
 	function attemptToGetTitle (ele) {
-		let titleMaybe = $(ele.parentElement).find(".name")[0];
+		let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
 		if (titleMaybe !== undefined) {
 			titleMaybe = titleMaybe.innerHTML;
 			if (titleMaybe) {
@@ -549,39 +552,23 @@ function loadhash (id) {
 	$(".spells span.roller").contents().unwrap();
 	$("#pagecontent").find("span.roller").click(function () {
 		const $this = $(this);
-		let roll;
-		let rollResult;
-		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
-			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
-			// hacks because droll doesn't support e.g. "1d20+1d4+2" :joy: :ok_hand:
-			const multi = roll.split(";");
-			roll = roll.replace(/;/g, "+");
-			rollResult = droll.roll(multi[0]);
-			const res2 = droll.roll(multi[1]);
-			rollResult.rolls = rollResult.rolls.concat(res2.rolls);
-			rollResult.total += res2.total;
-		} else {
-			roll = $this.attr("data-roll").replace(/\s+/g, "");
-			rollResult = droll.roll(roll);
-		}
-		outputRollResult($this, roll, rollResult);
+		outputRollResult($this, $this.attr("data-roll").replace(/\s+/g, ""));
 	});
 
 	$("#pagecontent").find("span.dc-roller").click(function () {
 		const $this = $(this);
 		let roll;
-		let rollResult;
 		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
 			roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
-			rollResult = droll.roll(roll);
-			outputRollResult($this, roll, rollResult);
+			outputRollResult($this, roll);
 		}
 	});
 
-	function outputRollResult ($ele, roll, rollResult) {
-		const name = $(".name .stats-name").text();
-		$("div#output").prepend(`<span>${name}: <em>${roll}</em> rolled ${$ele.attr("title") ? `${$ele.attr("title")} ` : ""}for <strong>${rollResult.total}</strong> (<em>${rollResult.rolls.join(", ")}</em>)<br></span>`).show();
-		$("div#output span:eq(5)").remove();
+	function outputRollResult ($ele, roll) {
+		EntryRenderer.dice.roll(roll, {
+			name: name,
+			label: $ele.attr("title")
+		});
 	}
 }
 

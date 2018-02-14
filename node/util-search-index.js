@@ -181,6 +181,15 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			file: "races.json",
 			listProp: "race",
 			baseUrl: "races.html",
+			onlyDeep: true,
+			deepIndex: (primary, it) => {
+				const subs = er.EntryRenderer.race._mergeSubrace(it);
+				return subs.map(r => ({
+					n: r.name,
+					s: r.source,
+					u: UrlUtil.URL_TO_HASH_BUILDER["races.html"](r)
+				}));
+			},
 			hover: true
 		},
 		{
@@ -289,8 +298,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			const primaryS = getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
 				const toAdd = getToAdd(it, {n: primaryS});
-				if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
-
+				if ((!arbiter.filter || !arbiter.filter(it)) && !arbiter.onlyDeep) index.push(toAdd);
 				if (arbiter.deepIndex) {
 					const deepItems = arbiter.deepIndex(primaryS, it);
 					deepItems.forEach(item => {

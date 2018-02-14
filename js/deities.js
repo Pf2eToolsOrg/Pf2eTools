@@ -83,7 +83,7 @@ function onJsonLoad (data) {
 		g.alignment.sort(alignSort);
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
-		g.domains.sort(ascSort);
+		g.domains.sort(SortUtil.ascSort);
 
 		g._fReprinted = g.reprinted ? STR_REPRINTED : "";
 
@@ -109,7 +109,7 @@ function onJsonLoad (data) {
 	const list = ListUtil.search({
 		valueNames: ["name", "pantheon", "alignment", "domains", "symbol", "source"],
 		listClass: "deities",
-		sortFunction: listSort
+		sortFunction: SortUtil.listSort
 	});
 
 	filterBox.render();
@@ -124,14 +124,15 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const g = deitiesList[$(item.elm).attr(FLTR_ID)];
-
-			const rightSource = sourceFilter.toDisplay(f, g.source);
-			const rightAlignment = alignmentFilter.toDisplay(f, g.alignment);
-			const rightPantheon = pantheonFilter.toDisplay(f, g.pantheon);
-			const rightCategory = categoryFilter.toDisplay(f, g.category);
-			const rightDomain = domainFilter.toDisplay(f, g.domains);
-			const rightMisc = miscFilter.toDisplay(f, g._fReprinted);
-			return rightSource && rightAlignment && rightPantheon && rightCategory && rightDomain && rightMisc;
+			return filterBox.toDisplay(
+				f,
+				g.source,
+				g.alignment,
+				g.pantheon,
+				g.category,
+				g.domains,
+				g._fReprinted
+			);
 		});
 	}
 

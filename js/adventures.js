@@ -15,7 +15,7 @@ window.onload = function load () {
 function onJsonLoad (data) {
 	adventuresIndex = data.adventure;
 
-	const adventuresList = $("ul.adventures");
+	const adventuresList = $("ul.books");
 	let tempString = "";
 	for (let i = 0; i < adventuresIndex.length; i++) {
 		const adv = adventuresIndex[i];
@@ -32,7 +32,7 @@ function onJsonLoad (data) {
 						<span class="col-xs-1 col-xs-1-3 adv-detail">${getLevelsStr(adv)}</span>
 						<span class="col-xs-2 adv-detail">${getDateStr(adv)}</span>
 					</span>
-					<span class="showhide" onclick="advToggle(event, this)" data-hidden="true">[+]</span>
+					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
 					<span class="source" style="display: none">${adv.id}</span>
 				</a>
 				${BookUtil.makeContentsBlock({book: adv, addPrefix: "adventure.html", defaultHidden: true})}
@@ -42,7 +42,7 @@ function onJsonLoad (data) {
 
 	const list = new List("listcontainer", {
 		valueNames: ['name', 'source'],
-		listClass: "adventures"
+		listClass: "books"
 	});
 
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
@@ -62,7 +62,7 @@ function onJsonLoad (data) {
 		$(`.showhide`).each((i, ele) => {
 			const $ele = $(ele);
 			if (!$ele.data("hidden")) {
-				advToggle(null, ele);
+				BookUtil.indexListToggle(null, ele);
 			}
 		});
 	});
@@ -78,24 +78,6 @@ function onJsonLoad (data) {
 	}
 }
 
-function advToggle (evt, ele) {
-	if (evt) {
-		evt.stopPropagation();
-		evt.preventDefault();
-	}
-	const $ele = $(ele);
-	const $childList = $ele.closest(`li`).find(`ul.bk-contents`);
-	if ($ele.data("hidden")) {
-		$childList.show();
-		$ele.data("hidden", false);
-		$ele.html(`[\u2013]`);
-	} else {
-		$childList.hide();
-		$ele.data("hidden", true);
-		$ele.html(`[+]`);
-	}
-}
-
 function sortAdventures (a, b, o) {
 	a = adventuresIndex[a.elm.getAttribute(FLTR_ID)];
 	b = adventuresIndex[b.elm.getAttribute(FLTR_ID)];
@@ -105,11 +87,11 @@ function sortAdventures (a, b, o) {
 	}
 
 	if (o.valueName === "storyline") {
-		return orFallback(ascSort, "storyline");
+		return orFallback(SortUtil.ascSort, "storyline");
 	}
 
 	if (o.valueName === "level") {
-		return orFallback(ascSort, "_startLevel");
+		return orFallback(SortUtil.ascSort, "_startLevel");
 	}
 
 	if (o.valueName === "published") {
@@ -117,7 +99,7 @@ function sortAdventures (a, b, o) {
 	}
 
 	function byName () {
-		return ascSort(a.name, b.name);
+		return SortUtil.ascSort(a.name, b.name);
 	}
 
 	function ascSortDate (a, b) {
