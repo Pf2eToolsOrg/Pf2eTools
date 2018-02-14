@@ -2180,7 +2180,36 @@ EntryRenderer.dice = {
 	_$lastRolledBy: null,
 
 	randomise: (max) => {
-		return 1 + Math.floor(Math.random() * max);
+		if (typeof window !== "undefined" && typeof window.crypto !== "undefined") {
+			return EntryRenderer.dice._randomise(1, max + 1);
+		} else {
+			return 1 + Math.floor(Math.random() * max);
+		}
+	},
+
+	/**
+	 * Cryptographically secure RNG
+	 */
+	_randomise: (min, max) => {
+		const range = max - min;
+		const bytesNeeded = Math.ceil(Math.log2(range) / 8);
+		const randomBytes = new Uint8Array(bytesNeeded);
+		const maximumRange = Math.pow(Math.pow(2, 8), bytesNeeded);
+		const extendedRange = Math.floor(maximumRange / range) * range;
+		let i;
+		let randomInteger;
+		while (true) {
+			window.crypto.getRandomValues(randomBytes);
+			randomInteger = 0;
+			for (i = 0; i < bytesNeeded; i++) {
+				randomInteger <<= 8;
+				randomInteger += randomBytes[i];
+			}
+			if (randomInteger < extendedRange) {
+				randomInteger %= range;
+				return min + randomInteger;
+			}
+		}
 	},
 
 	parseRandomise: (str) => {

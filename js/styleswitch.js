@@ -87,6 +87,7 @@ tr.legendary td {
 	background: #fff;
 }
 
+.output,
 #output {
 	background: lightgrey;
 }
@@ -335,6 +336,7 @@ tr.legendary td {
 	color: grey !important;
 }
 
+.output,
 #output {
 	background: rgba(0, 0, 0, 0.31);;
 }
