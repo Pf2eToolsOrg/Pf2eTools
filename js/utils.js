@@ -668,7 +668,7 @@ Parser.spTimeListToFull = function (times) {
 };
 
 Parser.getTimeToFull = function (time) {
-	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
+	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`
 };
 
 Parser.spRangeToFull = function (range) {

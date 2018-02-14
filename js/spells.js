@@ -29,7 +29,7 @@ const STR_FAV_SOUL_V2 = "Favored Soul v2 (UA)";
 const STR_FAV_SOUL_V3 = "Favored Soul v3 (UA)";
 
 const TM_ACTION = "action";
-const TM_B_ACTION = "bonus action";
+const TM_B_ACTION = "bonus";
 const TM_REACTION = "reaction";
 const TM_ROUND = "round";
 const TM_MINS = "minute";
@@ -178,15 +178,9 @@ function getRangeType (range) {
 }
 
 function getTblTimeStr (time) {
-	// TODO change "bonus action" to "bonus" in the JSON, and update this to match (will require updates to parsing functions also)
-	let temp;
-	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
-		temp = time.unit.uppercaseFirst();
-	} else {
-		temp = Parser.getTimeToFull(time);
-	}
-	if (temp.toLowerCase().endsWith("bonus action")) temp = temp.substr(0, temp.length - 4) + "n.";
-	return temp;
+	return (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit))
+		? `${time.unit.uppercaseFirst()}${time.unit === TM_B_ACTION ? " acn." : ""}`
+		: `${time.number} ${time.unit === TM_B_ACTION ? "Bonus acn." : time.unit}${time.number > 1 ? "s" : ""}`.uppercaseFirst();
 }
 
 function getTimeDisplay (timeUnit) {
