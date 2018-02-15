@@ -23,35 +23,16 @@ const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
 const ATB_DATA_SC_LIST = "data-subclass-list";
 
-const HOMEBREW_STORAGE = "HOMEBREW_CLASSES";
-
 let tableDefault;
 let statsProfDefault;
 let classTableDefault;
 
 let classes;
 let list;
-let homebrew;
 
 const jsonURL = "data/classes.json";
 
 const renderer = new EntryRenderer();
-const storage = tryGetStorage();
-
-function tryGetStorage () {
-	try {
-		return window.localStorage;
-	} catch (e) {
-		// if the user has disabled cookies, build a fake version
-		return {
-			getItem: () => {
-				return null;
-			},
-			removeItem: () => {},
-			setItem: () => {}
-		}
-	}
-}
 
 window.onload = function load () {
 	tableDefault = $("#pagecontent").html();
@@ -108,32 +89,15 @@ function onJsonLoad (data) {
 			invocFeature.entries.splice(toRemove, 1);
 		}
 	}
+	addClassData(data);
 
-	// cache this, since it gets wiped by brew loading
-	const loadHash = window.location.hash;
-	addData(data);
+	BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.setList(list);
 
-	const rawBrew = storage.getItem(HOMEBREW_STORAGE);
-	if (rawBrew) {
-		try {
-			homebrew = JSON.parse(rawBrew);
-			if (!homebrew.class && !homebrew.subclass) {
-				// if there's nothing usable in the stored brew, purge it
-				purgeBrew();
-			}
-			addData(homebrew);
-			addSubclassData(homebrew);
-			window.location.hash = loadHash;
-		} catch (e) {
-			// on error, purge all brew and reset hash
-			purgeBrew();
-		}
-	}
-
-	function purgeBrew () {
-		storage.removeItem(HOMEBREW_STORAGE);
-		homebrew = null;
-		window.location.hash = "";
+	function handleBrew (homebrew) {
+		addClassData(homebrew);
+		addSubclassData(homebrew);
 	}
 
 	initHistory();
@@ -141,7 +105,7 @@ function onJsonLoad (data) {
 	initReaderMode();
 }
 
-function addData (data) {
+function addClassData (data) {
 	if (!data.class || !data.class.length) return;
 
 	// alphabetically sort subclasses
@@ -203,7 +167,7 @@ function addSubclassData (data) {
 		// sort subclasses
 		c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 	});
-	_freshLoad();
+	hashchange();
 }
 
 let curClass;
@@ -704,158 +668,6 @@ function loadsub (sub) {
 				$(this).hide();
 			}
 		);
-	}
-}
-
-function manageBrew () {
-	const $body = $(`body`);
-	$body.css("overflow", "hidden");
-	const $overlay = $(`<div class="homebrew-overlay"/>`);
-	$overlay.on("click", () => {
-		$body.css("overflow", "");
-		$overlay.remove();
-	});
-	const $window = $(`
-		<div class="homebrew-window dropdown-menu" style="display: block;">
-			<h4>Manage Homebrew</h4>
-			<hr>
-		</div>`
-	);
-	$window.on("click", (evt) => {
-		evt.stopPropagation();
-	});
-	const $brewList = $(`<div></div>`);
-	$window.append($brewList);
-
-	refreshBrewList();
-
-	const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
-		addBrew(evt);
-	});
-	$window.append(
-		$(`<div class="text-align-center"/>`)
-			.append($(`<label class="btn btn-default btn-sm btn-file">Load File</label>`).append($iptAdd))
-			.append(" ")
-			.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Brew</button></a>`)
-	);
-
-	$overlay.append($window);
-	$body.append($overlay);
-
-	function refreshBrewList () {
-		function render (type, prop, deleteFn) {
-			homebrew[prop].forEach(j => {
-				const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
-					deleteFn(j.uniqueId);
-				});
-				const $btnExport = $(`<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span></button>`).on("click", () => {
-					DataUtil.userDownload(j.name, JSON.stringify(j, null, "\t"));
-				});
-				$brewList.append($(`<p>`).append($btnDel).append(" ").append($btnExport).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}. ${j.url ? `<a href="${j.url}" target="_blank">Source.</a>` : ""}`));
-			});
-		}
-
-		$brewList.html("");
-		if (homebrew) {
-			render("Class", "class", deleteClassBrew);
-			render("Subclass", "subclass", deleteSubclassBrew);
-		}
-	}
-
-	function addBrew (event) {
-		const input = event.target;
-
-		let readIndex = 0;
-		const reader = new FileReader();
-		reader.onload = () => {
-			const text = reader.result;
-			const json = JSON.parse(text);
-
-			// prepare for storage
-			if (json.class) {
-				json.class.forEach(c => {
-					c.uniqueId = CryptUtil.md5(JSON.stringify(c));
-				});
-			} else json.class = [];
-			if (json.subclass) {
-				json.subclass.forEach(sc => {
-					sc.uniqueId = CryptUtil.md5(JSON.stringify(sc));
-				});
-			} else json.subclass = [];
-
-			// store
-			function checkAndAdd (prop) {
-				const areNew = [];
-				const existingIds = homebrew[prop].map(it => it.uniqueId);
-				json[prop].forEach(it => {
-					if (!existingIds.find(id => it.uniqueId === id)) {
-						homebrew[prop].push(it);
-						areNew.push(it);
-					}
-				});
-				return areNew;
-			}
-
-			let classesToAdd = json.class;
-			let subclassesToAdd = json.subclass;
-			if (!homebrew) {
-				homebrew = json;
-			} else {
-				// only add if unique ID not already present
-				classesToAdd = checkAndAdd("class");
-				subclassesToAdd = checkAndAdd("subclass");
-			}
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
-
-			addData({class: classesToAdd});
-			addSubclassData({subclass: subclassesToAdd});
-
-			refreshBrewList();
-			if (input.files[readIndex]) {
-				reader.readAsText(input.files[readIndex++]);
-			} else {
-				// reset the input
-				$(event.target).val("");
-			}
-		};
-		reader.readAsText(input.files[readIndex++]);
-	}
-
-	function deleteClassBrew (uniqueId) {
-		const index = homebrew.class.findIndex(it => it.uniqueId === uniqueId);
-		if (index >= 0) {
-			homebrew.class.splice(index, 1);
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
-			refreshBrewList();
-			list.remove("uniqueid", uniqueId);
-			_freshLoad();
-		}
-	}
-
-	function deleteSubclassBrew (uniqueId) {
-		let subClass;
-		let index = 0;
-		for (; index < homebrew.subclass.length; ++index) {
-			if (homebrew.subclass[index].uniqueId === uniqueId) {
-				subClass = homebrew.subclass[index];
-				break;
-			}
-		}
-		if (subClass) {
-			const forClass = subClass.class;
-			homebrew.subclass.splice(index, 1);
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
-			refreshBrewList();
-			const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
-
-			const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
-			if (indexInClass) {
-				c.subclasses.splice(indexInClass, 1);
-				c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
-			}
-			refreshBrewList();
-			window.location.hash = "";
-		}
 	}
 }
 

@@ -93,6 +93,8 @@ ABIL_WIS = "Wisdom";
 ABIL_CHA = "Charisma";
 ABIL_CH_ANY = "Choose Any";
 
+HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -666,7 +668,7 @@ Parser.spTimeListToFull = function (times) {
 };
 
 Parser.getTimeToFull = function (time) {
-	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
+	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`
 };
 
 Parser.spRangeToFull = function (range) {
@@ -1665,7 +1667,9 @@ UrlUtil.autoEncodeHash = function (obj) {
 
 UrlUtil.getCurrentPage = function () {
 	const pSplit = window.location.pathname.split("/");
-	return pSplit[pSplit.length - 1];
+	let out = pSplit[pSplit.length - 1];
+	if (!out.toLowerCase().endsWith(".html")) out += ".html";
+	return out;
 };
 
 /**
@@ -1938,6 +1942,240 @@ RollerUtil = {
 		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
 	}
 };
+
+// HOMEBREW ============================================================================================================
+BrewUtil = {
+	homebrew: null,
+	_list: null,
+
+	// provide ref to List.js instance
+	setList: (list) => {
+		BrewUtil._list = list;
+	},
+
+	tryGetStorage: () => {
+		try {
+			return window.localStorage;
+		} catch (e) {
+			// if the user has disabled cookies, build a fake version
+			return {
+				getItem: () => {
+					return null;
+				},
+				removeItem: () => {},
+				setItem: () => {}
+			}
+		}
+	},
+
+	addBrewData: (brewHandler, brewLocation) => {
+		const rawBrew = BrewUtil.storage.getItem(brewLocation);
+		if (rawBrew) {
+			try {
+				BrewUtil.homebrew = JSON.parse(rawBrew);
+				brewHandler(BrewUtil.homebrew);
+			} catch (e) {
+				// on error, purge all brew and reset hash
+				purgeBrew();
+			}
+		}
+
+		function purgeBrew () {
+			BrewUtil.storage.removeItem(brewLocation);
+			BrewUtil.homebrew = null;
+			window.location.hash = "";
+		}
+	},
+
+	manageBrew: () => {
+		const page = UrlUtil.getCurrentPage();
+		const $body = $(`body`);
+		$body.css("overflow", "hidden");
+		const $overlay = $(`<div class="homebrew-overlay"/>`);
+		$overlay.on("click", () => {
+			$body.css("overflow", "");
+			$overlay.remove();
+		});
+		const $window = $(`
+		<div class="homebrew-window dropdown-menu" style="display: block;">
+			<h4>Manage Homebrew</h4>
+			<hr>
+		</div>`
+		);
+		$window.on("click", (evt) => {
+			evt.stopPropagation();
+		});
+		const $brewList = $(`<div></div>`);
+		$window.append($brewList);
+
+		refreshBrewList();
+
+		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
+			addBrew(evt);
+		});
+		$window.append(
+			$(`<div class="text-align-center"/>`)
+				.append($(`<label class="btn btn-default btn-sm btn-file">Load File</label>`).append($iptAdd))
+				.append(" ")
+				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Brew</button></a>`)
+		);
+
+		$overlay.append($window);
+		$body.append($overlay);
+
+		function refreshBrewList () {
+			function render (type, prop, deleteFn) {
+				BrewUtil.homebrew[prop].forEach(j => {
+					const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
+						deleteFn(j.uniqueId);
+					});
+					const $btnExport = $(`<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span></button>`).on("click", () => {
+						DataUtil.userDownload(j.name, JSON.stringify(j, null, "\t"));
+					});
+					$brewList.append($(`<p>`).append($btnDel).append(" ").append($btnExport).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}. ${j.url ? `<a href="${j.url}" target="_blank">Source.</a>` : ""}`));
+				});
+			}
+
+			$brewList.html("");
+			if (BrewUtil.homebrew) {
+				switch (page) {
+					case UrlUtil.PG_SPELLS:
+						render("Spell", "spell", deleteSpellBrew);
+						break;
+					case UrlUtil.PG_CLASSES:
+						render("Class", "class", deleteClassBrew);
+						render("Subclass", "subclass", deleteSubclassBrew);
+						break;
+				}
+			}
+		}
+
+		function addBrew (event) {
+			const input = event.target;
+
+			let readIndex = 0;
+			const reader = new FileReader();
+			reader.onload = () => {
+				const text = reader.result;
+				const json = JSON.parse(text);
+
+				function storePrep (arrName) {
+					if (json[arrName]) {
+						json[arrName].forEach(it => {
+							it.uniqueId = CryptUtil.md5(JSON.stringify(it));
+						});
+					} else json[arrName] = [];
+				}
+
+				// prepare for storage
+				storePrep("class");
+				storePrep("subclass");
+				storePrep("spell");
+
+				// store
+				function checkAndAdd (prop) {
+					const areNew = [];
+					const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
+					json[prop].forEach(it => {
+						if (!existingIds.find(id => it.uniqueId === id)) {
+							BrewUtil.homebrew[prop].push(it);
+							areNew.push(it);
+						}
+					});
+					return areNew;
+				}
+
+				let classesToAdd = json.class;
+				let subclassesToAdd = json.subclass;
+				let spellsToAdd = json.spell;
+				if (!BrewUtil.homebrew) {
+					BrewUtil.homebrew = json;
+				} else {
+					// only add if unique ID not already present
+					classesToAdd = checkAndAdd("class");
+					subclassesToAdd = checkAndAdd("subclass");
+					spellsToAdd = checkAndAdd("spell");
+				}
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+
+				switch (page) {
+					case UrlUtil.PG_SPELLS:
+						addSpells(spellsToAdd);
+						break;
+					case UrlUtil.PG_CLASSES:
+						addClassData({class: classesToAdd});
+						addSubclassData({subclass: subclassesToAdd});
+						break;
+				}
+
+				refreshBrewList();
+				if (input.files[readIndex]) {
+					reader.readAsText(input.files[readIndex++]);
+				} else {
+					// reset the input
+					$(event.target).val("");
+				}
+			};
+			reader.readAsText(input.files[readIndex++]);
+		}
+
+		function getIndex (arrName, uniqueId) {
+			return BrewUtil.homebrew[arrName].findIndex(it => it.uniqueId === uniqueId);
+		}
+
+		function doRemove (arrName, uniqueId) {
+			const index = getIndex(arrName, uniqueId);
+			if (~index) {
+				BrewUtil.homebrew[arrName].splice(index, 1);
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+				refreshBrewList();
+				BrewUtil._list.remove("uniqueid", uniqueId);
+				hashchange();
+			}
+		}
+
+		function deleteClassBrew (uniqueId) {
+			doRemove("class", uniqueId);
+		}
+
+		function deleteSubclassBrew (uniqueId) {
+			let subClass;
+			let index = 0;
+			for (; index < BrewUtil.homebrew.subclass.length; ++index) {
+				if (BrewUtil.homebrew.subclass[index].uniqueId === uniqueId) {
+					subClass = BrewUtil.homebrew.subclass[index];
+					break;
+				}
+			}
+			if (subClass) {
+				const forClass = subClass.class;
+				BrewUtil.homebrew.subclass.splice(index, 1);
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+				refreshBrewList();
+				const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
+
+				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
+				if (~indexInClass) {
+					c.subclasses.splice(indexInClass, 1);
+					c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+				}
+				refreshBrewList();
+				window.location.hash = "";
+			}
+		}
+
+		function deleteSpellBrew (uniqueId) {
+			doRemove("spell", uniqueId);
+		}
+	},
+
+	makeBrewButton: (id) => {
+		$(`#${id}`).on("click", () => {
+			BrewUtil.manageBrew();
+		});
+	}
+};
+BrewUtil.storage = BrewUtil.tryGetStorage();
 
 // ID GENERATION =======================================================================================================
 CryptUtil = {
