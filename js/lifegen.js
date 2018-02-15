@@ -49,7 +49,11 @@ function rollSuppStatus () {
 }
 
 function choose (...lst) {
-	return `<i>(${rollOnArray(lst)})</i>`;
+	return fmtChoice(rollOnArray(lst));
+}
+
+function fmtChoice(str) {
+	return `(<i>${str}</i>)`;
 }
 
 function rollOnArray (lst) {
@@ -59,24 +63,24 @@ function rollOnArray (lst) {
 const RACES = ["Elf", "Dwarf", "Half-Elf", "Half-Orc", "Tiefling"];
 
 const PARENTS_HALF_ELF = [
-	{"min": 1, "max": 5, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was an elf and the other (${p === 1 ? "father" : "mother"}) was a human.` }, "display": "One parent was an elf and the other was a human."},
-	{"min": 6, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was an elf and the other (${p === 1 ? "father" : "mother"}) was a half-elf.` }, "display": "One parent was an elf and the other was a half-elf."},
-	{"min": 7, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was a human and the other (${p === 1 ? "father" : "mother"}) was a half-elf.` }, "display": "One parent was a human and the other was a half-elf."},
+	{"min": 1, "max": 5, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, "display": "One parent was an elf and the other was a human."},
+	{"min": 6, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, "display": "One parent was an elf and the other was a half-elf."},
+	{"min": 7, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, "display": "One parent was a human and the other was a half-elf."},
 	{"min": 8, "result": "Both parents were half-elves."}
 ];
 
 const PARENTS_HALF_ORC = [
-	{"min": 1, "max": 3, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was an orc and the other (${p === 1 ? "father" : "mother"}) was a human.`}, "display": "One parent was an orc and the other was a human."},
-	{"min": 4, "max": 5, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was an orc and the other (${p === 1 ? "father" : "mother"}) was a half-orc.`}, "display": "One parent was an orc and the other was a half-orc."},
-	{"min": 6, "max": 7, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was a human and the other (${p === 1 ? "father" : "mother"}) was a half-orc.`}, "display": "One parent was a human and the other was a half-orc."},
+	{"min": 1, "max": 3, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.`}, "display": "One parent was an orc and the other was a human."},
+	{"min": 4, "max": 5, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.`}, "display": "One parent was an orc and the other was a half-orc."},
+	{"min": 6, "max": 7, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.`}, "display": "One parent was a human and the other was a half-orc."},
 	{"min": 8, "display": "Both parents were half-orcs."}
 ];
 
 const PARENTS_TIEFLING = [
 	{"min": 1, "max": 4, "display": "Both parents were humans, their infernal heritage dormant until you came along."},
-	{"min": 5, "max": 6, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was a tiefling and the other (${p === 1 ? "father": "mother"}) was a human.`}, "display": "One parent was a tiefling and the other was a human."},
-	{"min": 7, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was a tiefling and the other (${p === 1 ? "father": "mother"}) was a devil.`}, "display": "One parent was a tiefling and the other was a devil."},
-	{"min": 8, "result": () => {const p = RNG(2); return `One parent (${p === 1 ? "mother" : "father"}) was a human and the other (${p === 1 ? "father": "mother"}) was a devil.`}, "display": "One parent was a human and the other was a devil."}
+	{"min": 5, "max": 6, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father": "mother")} was a human.`}, "display": "One parent was a tiefling and the other was a human."},
+	{"min": 7, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father": "mother")} was a devil.`}, "display": "One parent was a tiefling and the other was a devil."},
+	{"min": 8, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father": "mother")} was a devil.`}, "display": "One parent was a human and the other was a devil."}
 ];
 
 const BIRTHPLACES = [
@@ -106,7 +110,7 @@ const BIRTHPLACES = [
 ];
 
 function absentParent (parent) {
-	return _getFromTable(ABSENT_PARENT, RNG(4)).result.replace("parent", `$& <i>(${parent})</i>`);
+	return _getFromTable(ABSENT_PARENT, RNG(4)).result.replace("parent", `$& ${fmtChoice(parent)}</i>`);
 }
 
 function absentBothParents () {
@@ -114,10 +118,13 @@ function absentBothParents () {
 	return `${absentParent(p === 1 ? "mother" : "father")} ${absentParent(p === 1 ? "mother" : "father")}`;
 }
 
+function otherParent (parent) {
+	return parent === "mother" ? "father" : "mother";
+}
+
 function singleParentOrStep (parent) {
 	const p = RNG(2);
-	const opp = parent === "mother" ? "father" : "mother";
-	return `Single ${parent} or step${parent} <i>(${p === 1 ? parent : `step${parent}`})</i>. ${p === 1 ? `${absentParent(opp)}` : absentBothParents()}`
+	return `Single ${parent} or step${parent} ${fmtChoice(p === 1 ? parent : `step${parent}`)}. ${p === 1 ? `${absentParent(otherParent(parent))}` : absentBothParents()}`
 }
 
 const FAMILY = [
@@ -481,7 +488,7 @@ function roll () {
 	// LIFE EVENTS
 	const $events = $(`#events`).empty();
 	const age = _getFromTable(LIFE_EVENTS_AGE, RNG(100));
-	$events.append(`<p>Current age: ${age.result} <i>(${age.age} year${age.age > 1 ? "s" : ""} old)</i></p>`);
+	$events.append(`<p>Current age: ${age.result} ${fmtChoice(`${age.age} year${age.age > 1 ? "s" : ""} old`)}</p>`);
 	for (let i = 0; i < age.events; ++i ) {
 
 	}
