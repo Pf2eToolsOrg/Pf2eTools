@@ -58,6 +58,10 @@ function cleanScSource (source) {
 	return Parser._getSourceStringFromSource(source);
 }
 
+function cleanSetHash (toSet) {
+	window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
+}
+
 function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ['name', 'source', 'uniqueid'],
@@ -379,7 +383,7 @@ function loadhash (id) {
 				outStack.push(hashKey + "false")
 			}
 
-			window.location.hash = outStack.join(HASH_PART_SEP).toLowerCase();
+			cleanSetHash(outStack.join(HASH_PART_SEP));
 		}
 	}
 
@@ -427,7 +431,7 @@ function loadhash (id) {
 			if (!hasSubclassHash) outStack.push(subclassLink);
 		}
 
-		window.location.hash = outStack.join(HASH_PART_SEP).toLowerCase();
+		cleanSetHash(outStack.join(HASH_PART_SEP));
 	}
 }
 
@@ -458,7 +462,7 @@ function loadsub (sub) {
 		if (hashPart.startsWith(HASH_COMP_VIEW)) comparisonView = sliceTrue(hashPart, HASH_COMP_VIEW);
 	}
 
-	const hideOtherSources = showAllSources === null || showAllSources === false;
+	const hideOtherSources = !ClassBookView.bookViewActive && (showAllSources === null || showAllSources === false);
 
 	// deselect any pills that would be hidden
 	if (subclasses !== null && hideOtherSources) {
@@ -482,7 +486,7 @@ function loadsub (sub) {
 			const curParts = _getHashParts();
 			if (curParts.length > 1) {
 				const newParts = [curParts[0]].concat(newHashStack);
-				window.location.hash = HASH_START + newParts.join(HASH_PART_SEP);
+				cleanSetHash(HASH_START + newParts.join(HASH_PART_SEP));
 			}
 			return;
 		}
@@ -514,6 +518,8 @@ function loadsub (sub) {
 				}
 			}
 		);
+
+		ClassBookView.updateVisible($toShow, $toHide);
 
 		if ($toShow.length === 0) {
 			hideAllSubclasses();
@@ -558,6 +564,7 @@ function loadsub (sub) {
 		}
 	} else {
 		hideAllSubclasses();
+		ClassBookView.updateVisible([], $(`.${CLSS_SUBCLASS_PILL}`).map((i, e) => $(e)).get());
 	}
 
 	// hide class features as required
@@ -673,7 +680,7 @@ function loadsub (sub) {
 
 function initCompareMode () {
 	$(`#btn-comparemode`).on("click", () => {
-		window.location.hash += `${HASH_PART_SEP}${SubclassComparisonView.SUBHASH}`;
+		cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${SubclassComparisonView.SUBHASH}`);
 	});
 }
 
@@ -686,7 +693,7 @@ const SubclassComparisonView = {
 
 	open: () => {
 		function hashTeardown () {
-			window.location.hash = window.location.hash.replace(SubclassComparisonView.SUBHASH, "").replace(/,$/, "");
+			cleanSetHash(window.location.hash.replace(SubclassComparisonView.SUBHASH, ""));
 		}
 
 		if (SubclassComparisonView.compareViewActive) return;
@@ -766,19 +773,17 @@ const ClassBookView = {
 	_$body: null,
 	_$wrpBookUnder: null,
 	_$wrpBook: null,
+	_$bkTbl: null,
+	_$scToggles: {},
 
 	open: () => {
 		function tglCf ($bkTbl, $cfToggle) {
 			$bkTbl.find(`.class-features`).toggle();
 			$cfToggle.toggleClass("cf-active");
 		}
-		function tglSc ($bkTbl, $scToggle, i) {
-			$bkTbl.find(`.subclass-features-${i}`).toggle();
-			$scToggle.toggleClass("active");
-		}
 
 		function hashTeardown () {
-			window.location.hash = window.location.hash.replace(ClassBookView.SUBHASH, "").replace(/,$/, "");
+			cleanSetHash(window.location.hash.replace(ClassBookView.SUBHASH, ""));
 		}
 
 		if (ClassBookView.bookViewActive) return;
@@ -796,6 +801,7 @@ const ClassBookView = {
 		// main panel
 		const $pnlContent = $(`<div class="pnl-content"/>`);
 		const $bkTbl = $(`<table class="stats stats-book"/>`);
+		ClassBookView._$bkTbl = $bkTbl;
 		const $brdTop = $(`<tr><th class="border close-border" colspan="6"><div/></th></tr>`);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", () => {
@@ -847,17 +853,18 @@ const ClassBookView = {
 		curClass.subclasses.forEach((sc, i) => {
 			const name = hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 			const styles = getSubclassStyles(sc);
-			const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
+			const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
 
-			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}">${name}</span>`).on("click", () => {
-				tglSc($bkTbl, $scToggle, i);
+			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${sc.name}" data-bk-source="${sc.source}">${name}</span>`).on("click", () => {
+				ClassBookView.tglSc($bkTbl, $scToggle, i);
 				$pill.click();
 			});
 
 			if (!($pill.hasClass("active"))) {
-				tglSc($bkTbl, $scToggle, i);
+				ClassBookView.tglSc($bkTbl, $scToggle, i);
 			}
 
+			ClassBookView._$scToggles[String(i)] = $scToggle;
 			$pnlMenu.append($scToggle);
 		});
 
@@ -875,16 +882,47 @@ const ClassBookView = {
 
 	teardown: () => {
 		if (ClassBookView.bookViewActive) {
+			ClassBookView._$bkTbl = null;
+			ClassBookView._$scToggles = {};
+
 			ClassBookView._$body.css("overflow", "");
 			ClassBookView._$wrpBookUnder.remove();
 			ClassBookView._$wrpBook.remove();
 			ClassBookView.bookViewActive = false;
+		}
+	},
+
+	tglSc: ($bkTbl, $scToggle, i) => {
+		$bkTbl.find(`.subclass-features-${i}`).toggle();
+		$scToggle.toggleClass("active");
+	},
+
+	updateVisible: ($toShow, $toHide) => {
+		function doUpdate ($list, show) {
+			$list.map($p => {
+				const $it = ClassBookView._$wrpBook.find(`.pnl-link[data-bk-subclass="${$p.attr(ATB_DATA_SC)}"][data-bk-source="${$p.attr(ATB_DATA_SRC)}"]`);
+				if ($it.length) {
+					const index = $it.data("i");
+					const $real = ClassBookView._$scToggles[index];
+					if (show && !$real.hasClass("active")) {
+						ClassBookView.tglSc(ClassBookView._$bkTbl, $real, Number(index));
+					} if (!show && $real.hasClass("active")) {
+						ClassBookView.tglSc(ClassBookView._$bkTbl, $real, Number(index));
+					}
+				}
+			});
+		}
+
+		if (ClassBookView.bookViewActive) {
+			// $toShow/$toHide are lists of subclass pills
+			doUpdate($toShow, true);
+			doUpdate($toHide, false);
 		}
 	}
 };
 
 function initReaderMode () {
 	$(`#btn-readmode`).on("click", () => {
-		window.location.hash += `${HASH_PART_SEP}${ClassBookView.SUBHASH}`;
+		cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${ClassBookView.SUBHASH}`);
 	});
 }
