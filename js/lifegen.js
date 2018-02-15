@@ -205,6 +205,20 @@ const LIFE_EVENTS = [
 	{"min": 100, "result": "Something truly strange happened to you. Roll on the Weird Stuff table."}
 ];
 
+const LIFE_EVENTS_ADVENTURES = [
+	{"min": 1, "max": 10, "result": "You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes."},
+	{"min": 11, "max": 20, "result": "You suffered a grievous injury. Although the wound healed, it still pains you from time to time."},
+	{"min": 21, "max": 30, "result": "You were wounded, but in time you fully recovered."},
+	{"min": 31, "max": 40, "result": "You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair."},
+	{"min": 41, "max": 50, "result": "You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage."},
+	{"min": 51, "max": 60, "result": "You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions."},
+	{"min": 61, "max": 70, "result": "You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate."},
+	{"min": 71, "max": 80, "result": "You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll."},
+	{"min": 81, "max": 90, "result": "You found some treasure on your adventure. You have 2d6 gp left from your share of it."},
+	{"min": 91, "max": 99, "result": "You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it."},
+	{"min": 100, "result": "You came across a common magic item (of the DM’s choice)."}
+];
+
 const SUPP_ALIGNMENT = [
 	{"min": 1, "max": 3, "result": () => {return RNG(2) === 1 ? ["C", "E"] : ["C", "N"]}, "display": "Chaotic evil (50%) or chaotic neutral (50%)"},
 	{"min": 4, "max": 5, "result": ["L", "E"], "display": "Lawful evil"},
