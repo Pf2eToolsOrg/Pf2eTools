@@ -48,12 +48,58 @@ function rollSuppStatus () {
 	return _getFromTable(SUPP_STATUS, RNG(6) + RNG(6) + RNG(6));
 }
 
+function getPersonDetails (doRace) {
+	const status = rollSuppStatus();
+	const align = rollSuppAlignment().result.map(it => Parser.dtAlignmentToFull(it)).join(" ");
+	const occ = rollSuppOccupation().result;
+	const relate = rollSuppRelationship().result;
+	const out = [
+		`Alignment: ${align}`,
+		`Occupation: ${occ}`,
+		`Relationship: ${relate}`,
+		`Status: ${status.result}`
+	];
+	if (doRace) {
+		const race = rollSuppRace().result;
+		out.splice(index, 0, race);
+	}
+	return out;
+}
+
+function rollEvtAdventure () {
+	return _getFromTable(LIFE_EVENTS_ADVENTURES, RNG(100));
+}
+function rollEvtArcaneMatter () {
+	return _getFromTable(LIFE_EVENTS_ARCANE_MATTERS, RNG(10));
+}
+function rollEvtBoon () {
+	return _getFromTable(LIFE_EVENTS_BOONS, RNG(10));
+}
+function rollEvtCrime () {
+	return _getFromTable(LIFE_EVENTS_CRIME, RNG(8));
+}
+function rollEvtPunishment () {
+	return _getFromTable(LIFE_EVENTS_PUNISHMENT, RNG(12));
+}
+function rollEvtSupernatural () {
+	return _getFromTable(LIFE_EVENTS_SUPERNATURAL, RNG(100));
+}
+function rollEvtTragedy () {
+	return _getFromTable(LIFE_EVENTS_TRAGEDIES, RNG(12));
+}
+function rollEvtWar () {
+	return _getFromTable(LIFE_EVENTS_WAR, RNG(12));
+}
+function rollEvtWeird () {
+	return _getFromTable(LIFE_EVENTS_WEIRD_STUFF, RNG(12));
+}
+
 function choose (...lst) {
 	return fmtChoice(rollOnArray(lst));
 }
 
 function fmtChoice(str) {
-	return `(<i>${str}</i>)`;
+	return `(<span style="font-style: italic;">${str}</span>)`; // span as they might be nested
 }
 
 function rollOnArray (lst) {
@@ -189,24 +235,47 @@ const LIFE_EVENTS_AGE = [
 	{"min": 100, "age": () => RNG(690) + 60, "result": "61 years or older", "events": () => RNG(12)} // max age = 750; max elven age
 ];
 
+function _lifeEvtResult (title, rollResult) {
+	const out = {
+		result: `${title}: ${rollResult.result}`
+	};
+	if (rollResult.nextRoll) out.nextRoll = rollResult.nextRoll;
+	return out;
+}
+
+function _lifeEvtResultArr (title, titles, ...rollResults) {
+	return {
+		title: title,
+		result: titles.map((it, i) => `${it}: ${rollResults[i].result}`)
+	}
+}
+
+let marriageIndex = 0;
+function _lifeEvtPerson (title, personDetails) {
+	return {
+		title: title,
+		result: personDetails
+	}
+}
+
 const LIFE_EVENTS = [
-	{"min": 1, "max": 10, "result": "You suffered a tragedy. Roll on the Tragedies table."},
-	{"min": 11, "max": 20, "result": "You gained a bit of good fortune. Roll on the Boons table."},
-	{"min": 21, "max": 30, "result": "You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest."},
-	{"min": 31, "max": 40, "result": "You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character’s identity and the danger this enemy poses to you."},
-	{"min": 41, "max": 50, "result": "You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began."},
-	{"min": 51, "max": 70, "result": "You spent time working in a job related to your background. Start the game with an extra 2d6 gp."},
-	{"min": 71, "max": 75, "result": "You met someone important. Use the supplemental tables to determine this character’s identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory."},
-	{"min": 76, "max": 80, "result": "You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered."},
-	{"min": 81, "max": 85, "result": "You had a supernatural experience. Roll on the Supernatural Events table to find out what it was."},
-	{"min": 86, "max": 90, "result": "You fought in a battle. Roll on the War table to learn what happened to you. Work with your DM to come up with the reason for the battle and the factions involved. It might have been a small conflict between your community and a band of orcs, or it could have been a major battle in a larger war."},
-	{"min": 91, "max": 95, "result": "You committed a crime or were wrongly accused of doing so. Roll on the Crime table to determine the nature of the offense and on the Punishment table to see what became of you."},
-	{"min": 96, "max": 99, "result": "You encountered something magical. Roll on the Arcane Matters table."},
-	{"min": 100, "result": "Something truly strange happened to you. Roll on the Weird Stuff table."}
+	{"min": 1, "max": 10, "result": "You suffered a tragedy. Roll on the Tragedies table.", "nextRoll": () => _lifeEvtResult("Tragedy", rollEvtTragedy())},
+	{"min": 11, "max": 20, "result": "You gained a bit of good fortune. Roll on the Boons table.", "nextRoll": () => _lifeEvtResult("Boon", rollEvtBoon())},
+	{"min": 21, "max": 30, "result": "You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.", "nextRoll": () => _lifeEvtPerson(marriageIndex++ === 0 ? "Spouse" : "Spouse/Child", getPersonDetails())},
+	{"min": 31, "max": 40, "result": `You made an enemy of an adventurer. Roll a d6 ${fmtChoice(RNG(6))}. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character’s identity and the danger this enemy poses to you.`, "display": "You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character’s identity and the danger this enemy poses to you.", "nextRoll": () => _lifeEvtPerson("Enemy", getPersonDetails())},
+	{"min": 41, "max": 50, "result": "You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.", "nextRoll": () => _lifeEvtPerson("Friend", getPersonDetails())},
+	{"min": 51, "max": 70, "result": `You spent time working in a job related to your background. Start the game with an extra 2d6 ${fmtChoice(RNG(6) + RNG(6))} gp.`, "display": "You spent time working in a job related to your background. Start the game with an extra 2d6 gp."},
+	{"min": 71, "max": 75, "result": "You met someone important. Use the supplemental tables to determine this character’s identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.", "nextRoll": () => _lifeEvtPerson("Meeting", getPersonDetails())},
+	{"min": 76, "max": 80, "result": "You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered.", "nextRoll": () => _lifeEvtResult("Adventure", rollEvtAdventure())},
+	{"min": 81, "max": 85, "result": "You had a supernatural experience. Roll on the Supernatural Events table to find out what it was.", "nextRoll": () => _lifeEvtResult("Supernatural Experience", rollEvtSupernatural())},
+	{"min": 86, "max": 90, "result": "You fought in a battle. Roll on the War table to learn what happened to you. Work with your DM to come up with the reason for the battle and the factions involved. It might have been a small conflict between your community and a band of orcs, or it could have been a major battle in a larger war.", "nextRoll": () => _lifeEvtResult("War", rollEvtWar())},
+	{"min": 91, "max": 95, "result": "You committed a crime or were wrongly accused of doing so. Roll on the Crime table to determine the nature of the offense and on the Punishment table to see what became of you.", "nextRoll": () => _lifeEvtResultArr("Crime and Punishment", ["Crime", "Punishment"], rollEvtCrime(), rollEvtPunishment())},
+	{"min": 96, "max": 99, "result": "You encountered something magical. Roll on the Arcane Matters table.", "nextRoll": () => _lifeEvtResult("Arcane Matter", rollEvtArcaneMatter())},
+	{"min": 100, "result": "Something truly strange happened to you. Roll on the Weird Stuff table.", "nextRoll": () => _lifeEvtResult("Weird Stuff", rollEvtWeird())}
 ];
 
 const LIFE_EVENTS_ADVENTURES = [
-	{"min": 1, "max": 10, "result": "You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes."},
+	{"min": 1, "max": 10, "result": `You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 ${fmtChoice(RNG(3))} fingers, or 1d4 ${fmtChoice(RNG(4))} toes.`, "display": "You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes."},
 	{"min": 11, "max": 20, "result": "You suffered a grievous injury. Although the wound healed, it still pains you from time to time."},
 	{"min": 21, "max": 30, "result": "You were wounded, but in time you fully recovered."},
 	{"min": 31, "max": 40, "result": "You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair."},
@@ -214,9 +283,110 @@ const LIFE_EVENTS_ADVENTURES = [
 	{"min": 51, "max": 60, "result": "You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions."},
 	{"min": 61, "max": 70, "result": "You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate."},
 	{"min": 71, "max": 80, "result": "You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll."},
-	{"min": 81, "max": 90, "result": "You found some treasure on your adventure. You have 2d6 gp left from your share of it."},
-	{"min": 91, "max": 99, "result": "You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it."},
+	{"min": 81, "max": 90, "result": `You found some treasure on your adventure. You have 2d6 ${fmtChoice(RNG(6) + RNG(6))} gp left from your share of it.`, "display": "You found some treasure on your adventure. You have 2d6 gp left from your share of it."},
+	{"min": 91, "max": 99, "result": `You found a considerable amount of treasure on your adventure. You have 1d20 + 50 ${fmtChoice(RNG(20) + 50)} gp left from your share of it.`, "display": "You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it."},
 	{"min": 100, "result": "You came across a common magic item (of the DM’s choice)."}
+];
+
+const LIFE_EVENTS_ARCANE_MATTERS = [
+	{"min": 1, "result": "You were charmed or frightened by a spell."},
+	{"min": 2, "result": "You were injured by the effect of a spell."},
+	{"min": 3, "result": "You witnessed a powerful spell being cast by a cleric, a druid, a sorcerer, a warlock, or a wizard."},
+	{"min": 4, "result": "You drank a potion (of the DM’s choice)."},
+	{"min": 5, "result": "You found a spell scroll (of the DM’s choice) and succeeded in casting the spell it contained."},
+	{"min": 6, "result": "You were affected by teleportation magic."},
+	{"min": 7, "result": "You turned invisible for a time."},
+	{"min": 8, "result": "You identified an illusion for what it was."},
+	{"min": 9, "result": "You saw a creature being conjured by magic."},
+	{"min": 10, "result": () => `Your fortune was read by a diviner. Roll twice on the Life Events table, but don’t apply the results. Instead, the DM picks one event as a portent of your future (which might or might not come true). ${fmtChoice(_getFromTable(LIFE_EVENTS, RNG(100)).display || _getFromTable(LIFE_EVENTS, RNG(100)).result)} ${fmtChoice(_getFromTable(LIFE_EVENTS, RNG(100)).display || _getFromTable(LIFE_EVENTS, RNG(100)).result)}`, "display": "Your fortune was read by a diviner. Roll twice on the Life Events table, but don’t apply the results. Instead, the DM picks one event as a portent of your future (which might or might not come true)."}
+];
+
+const LIFE_EVENTS_BOONS = [
+	{"min": 1, "result": "A friendly wizard gave you a spell scroll containing one cantrip (of the DM’s choice)."},
+	{"min": 2, "result": "You saved the life of a commoner, who now owes you a life debt. This individual accompanies you on your travels and performs mundane tasks for you, but will leave if neglected, abused, or imperiled. Determine details about this character by using the supplemental tables and working with your DM."},
+	{"min": 3, "result": "You found a riding horse."},
+	{"min": 4, "result": () => `You found some money. You have 1d20 ${fmtChoice(RNG(20))} gp in addition to your regular starting funds.`, "display": "You found some money. You have 1d20 gp in addition to your regular starting funds."},
+	{"min": 5, "result": "A relative bequeathed you a simple weapon of your choice."},
+	{"min": 6, "result": () => `You found something interesting. You gain one additional trinket ${fmtChoice(rollTrinket())}.`, "display": "You found something interesting. You gain one additional trinket."},
+	{"min": 7, "result": "You once performed a service for a local temple. The next time you visit the temple, you can receive healing up to your hit point maximum."},
+	{"min": 8, "result": "A friendly alchemist gifted you with a potion of healing or a flask of acid, as you choose."},
+	{"min": 9, "result": "You found a treasure map."},
+	{"min": 10, "result": () => `A distant relative left you a stipend that enables you to live at the comfortable lifestyle for 1d20 ${fmtChoice(RNG(20))} years. If you choose to live at a higher lifestyle, you reduce the price of the lifestyle by 2 gp during that time period.`, "display": "A distant relative left you a stipend that enables you to live at the comfortable lifestyle for 1d20 years. If you choose to live at a higher lifestyle, you reduce the price of the lifestyle by 2 gp during that time period."}
+];
+
+const LIFE_EVENTS_CRIME = [
+	{"min": 1, "result": "Murder"},
+	{"min": 2, "result": "Theft"},
+	{"min": 3, "result": "Burglary"},
+	{"min": 4, "result": "Assault"},
+	{"min": 5, "result": "Smuggling"},
+	{"min": 6, "result": "Kidnapping"},
+	{"min": 7, "result": "Extortion"},
+	{"min": 8, "result": "Counterfeiting"}
+];
+
+const LIFE_EVENTS_PUNISHMENT = [
+	{"min": 1, "max": 3, "result": "You did not commit the crime and were exonerated after being accused."},
+	{"min": 4, "max": 6, "result": "You committed the crime or helped do so, but nonetheless the authorities found you not guilty."},
+	{"min": 7, "max": 8, "result": "You were nearly caught in the act. You had to flee and are wanted in the community where the crime occurred."},
+	{"min": 9, "max": 12, "result": () => `You were caught and convicted. You spent time in jail, chained to an oar, or performing hard labor. You served a sentence of 1d4 years ${fmtChoice(RNG(4))} or succeeded in escaping after that much time.`, "display": "You were caught and convicted. You spent time in jail, chained to an oar, or performing hard labor. You served a sentence of 1d4 years or succeeded in escaping after that much time."},
+];
+
+const LIFE_EVENTS_SUPERNATURAL = [
+	{"min": 1, "max": 5, "result": () => `You were ensorcelled by a fey and enslaved for 1d6 ${fmtChoice(RNG(6))} years before you escaped.`, "display": "You were ensorcelled by a fey and enslaved for 1d6 years before you escaped."},
+	{"min": 6, "max": 10, "result": "You saw a demon and ran away before it could do anything to you."},
+	{"min": 11, "max": 15, "result": () => `A devil tempted you. Make a DC 10 Wisdom saving throw. On a failed save, your alignment shifts one step toward evil (if it’s not evil already), and you start the game with an additional 1d20 + 50 ${fmtChoice(RNG(20) + 50)} gp.`, "display": "A devil tempted you. Make a DC 10 Wisdom saving throw. On a failed save, your alignment shifts one step toward evil (if it’s not evil already), and you start the game with an additional 1d20 + 50 gp."},
+	{"min": 16, "max": 20, "result": "You woke up one morning miles from your home, with no idea how you got there."},
+	{"min": 21, "max": 30, "result": "You visited a holy site and felt the presence of the divine there."},
+	{"min": 31, "max": 40, "result": "You witnessed a falling red star, a face appearing in the frost, or some other bizarre happening. You are certain that it was an omen of some sort."},
+	{"min": 41, "max": 50, "result": "You escaped certain death and believe it was the intervention of a god that saved you."},
+	{"min": 51, "max": 60, "result": "You witnessed a minor miracle."},
+	{"min": 61, "max": 70, "result": "You explored an empty house and found it to be haunted."},
+	{"min": 71, "max": 75, "result": () => {const p = RNG(6); return `You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead ${fmtChoice(`${p}; ${["celestial", "devil", "demon", "fey", "elemental", "undead"][p]}`)}.`}, "display": "You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead."},
+	{"min": 76, "max": 80, "result": "You saw a ghost."},
+	{"min": 81, "max": 85, "result": "You saw a ghoul feeding on a corpse."},
+	{"min": 86, "max": 90, "result": "A celestial or a fiend visited you in your dreams to give a warning of dangers to come."},
+	{"min": 91, "max": 95, "result": () => `You briefly visited the Feywild or the Shadowfell ${choose("Feywild", "Shadowfell")}.`, "results": "You briefly visited the Feywild or the Shadowfell."},
+	{"min": 96, "max": 100, "result": "You saw a portal that you believe leads to another plane of existence."}
+];
+
+const LIFE_EVENTS_TRAGEDIES = [
+	{"min": 1, "max": 2, "result": () => `A family member or a close friend died. Roll on the Cause of Death supplemental table to find out how.`, "display": "A family member or a close friend died. Roll on the Cause of Death supplemental table to find out how.", "nextRoll": () => _lifeEvtResult("Cause of Death", rollSuppDeath())},
+	{"min": 3, "result": "A friendship ended bitterly, and the other person is now hostile to you. The cause might have been a misunderstanding or something you or the former friend did."},
+	{"min": 4, "result": "You lost all your possessions in a disaster, and you had to rebuild your life."},
+	{"min": 5, "result": () => `You were imprisoned for a crime you didn’t commit and spent 1d6 ${fmtChoice(RNG(6))} years at hard labor, in jail, or shackled to an oar in a slave galley.`, "display": "You were imprisoned for a crime you didn’t commit and spent 1d6 years at hard labor, in jail, or shackled to an oar in a slave galley."},
+	{"min": 6, "result": "War ravaged your home community, reducing everything to rubble and ruin. In the aftermath, you either helped your town rebuild or moved somewhere else."},
+	{"min": 7, "result": "A lover disappeared without a trace. You have been looking for that person ever since."},
+	{"min": 8, "result": "A terrible blight in your home community caused crops to fail, and many starved. You lost a sibling or some other family member."},
+	{"min": 9, "result": "You did something that brought terrible shame to you in the eyes of your family. You might have been involved in a scandal, dabbled in dark magic, or offended someone important. The attitude of your family members toward you becomes indifferent at best, though they might eventually forgive you."},
+	{"min": 10, "result": "For a reason you were never told, you were exiled from your community. You then either wandered in the wilderness for a time or promptly found a new place to live."},
+	{"min": 11, "result": () => `A romantic relationship ended. Roll a d6 ${fmtChoice(RNG(6))}. An odd number means it ended with bad feelings, while an even number means it ended amicably.`, "display": "A romantic relationship ended. Roll a d6. An odd number means it ended with bad feelings, while an even number means it ended amicably."},
+	{"min": 12, "result": () => `A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.`, "display": "A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.", "nextRoll": () => {const r = RNG(12); const p = _getFromTable(SUPP_DEATH, r); return `${p.result}${r === 2 && RNG(12) === 1 ? ` ${fmtChoice("you were responsible")}` : ""}`}}
+];
+
+const LIFE_EVENTS_WAR = [
+	{"min": 1, "result": "You were knocked out and left for dead. You woke up hours later with no recollection of the battle."},
+	{"min": 2, "max": 3, "result": "You were badly injured in the fight, and you still bear the awful scars of those wounds."},
+	{"min": 4, "result": "You ran away from the battle to save your life, but you still feel shame for your cowardice."},
+	{"min": 5, "max": 7, "result": "You suffered only minor injuries, and the wounds all healed without leaving scars."},
+	{"min": 8, "max": 9, "result": "You survived the battle, but you suffer from terrible nightmares in which you relive the experience."},
+	{"min": 10, "max": 11, "result": "You escaped the battle unscathed, though many of your friends were injured or lost."},
+	{"min": 12, "result": "You acquitted yourself well in battle and are remembered as a hero. You might have received a medal for your bravery."}
+];
+
+const LIFE_EVENTS_WEIRD_STUFF = [
+	{"min": 1, "result": () => `You were turned into a toad and remained in that form for 1d4 ${fmtChoice(RNG(4))} weeks.`, "display": "You were turned into a toad and remained in that form for 1d4 weeks."},
+	{"min": 2, "result": "You were petrified and remained a stone statue for a time until someone freed you."},
+	{"min": 3, "result": () => `You were enslaved by a hag, a satyr, or some other being and lived in that creature’s thrall for 1d6 ${fmtChoice(RNG(6))} years.`, "display": "You were enslaved by a hag, a satyr, or some other being and lived in that creature’s thrall for 1d6 years."},
+	{"min": 4, "result": () => `A dragon held you as a prisoner for 1d4 ${fmtChoice(RNG(4))} months until adventurers killed it.`, "display": "A dragon held you as a prisoner for 1d4 months until adventurers killed it."},
+	{"min": 5, "result": "You were taken captive by a race of evil humanoids such as drow, kuo-toa, or quaggoths. You lived as a slave in the Underdark until you escaped."},
+	{"min": 6, "result": "You served a powerful adventurer as a hireling. You have only recently left that service. Use the supplemental tables and work with your DM to determine the basic details about your former employer."},
+	{"min": 7, "result": () => `You went insane for 1d6 ${fmtChoice(RNG(6))} years and recently regained your sanity. A tic or some other bit of odd behavior might linger.`, "display": "You went insane for 1d6 years and recently regained your sanity. A tic or some other bit of odd behavior might linger."},
+	{"min": 8, "result": "A lover of yours was secretly a silver dragon."},
+	{"min": 9, "result": "You were captured by a cult and nearly sacrificed on an altar to the foul being the cultists served. You escaped, but you fear they will find you."},
+	{"min": 10, "result": () => `You met a demigod, an archdevil, an archfey, a demon lord, or a titan, ${choose("demigod", "archdevil", "archfey", "demon lord", "titan")} and you lived to tell the tale.`, "display": "You met a demigod, an archdevil, an archfey, a demon lord, or a titan, and you lived to tell the tale."},
+	{"min": 11, "result": "You were swallowed by a giant fish and spent a month in its gullet before you escaped."},
+	{"min": 12, "result": () => `A powerful being granted you a wish, but you squandered it on something frivolous.`, "display": "A powerful being granted you a wish, but you squandered it on something frivolous."}
 ];
 
 const SUPP_ALIGNMENT = [
@@ -317,6 +487,11 @@ let $selCha;
 let $selRace;
 let $selBg;
 let $selClass;
+
+function rollTrinket () {
+	return rollOnArray(trinketList);
+}
+
 function onJsonLoad (data) {
 	bgList = data.lifeBackground.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 	classList = data.lifeClass.sort((a, b) => SortUtil.ascSort(a.name, b.name));
@@ -339,31 +514,34 @@ function onJsonLoad (data) {
 	classList.forEach((c, i) => $selClass.append(`<option value="${i}">${c.name}</option>`));
 }
 
-function roll () {
-	function concatSentences (...lst) {
-		const stack = [];
-		lst.filter(it => it).forEach(it => {
-			if (typeof it === "string" || typeof it === "number") {
-				stack.push(it);
-			} else if (typeof it === "function") {
-				stack.push(it());
-			} else { // array
-				Array.prototype.push.apply(stack, ...it)
-			}
-		});
-		return joinParaList(stack);
-	}
-	function joinParaList (lst) {
-		return `<p>${lst.join(`</p><p>`)}</p>`;
-	}
-	$(`.output`).show();
+function concatSentences (...lst) {
+	const stack = [];
+	lst.filter(it => it).forEach(it => {
+		if (typeof it === "string" || typeof it === "number") {
+			stack.push(it);
+		} else if (typeof it === "function") {
+			stack.push(it());
+		} else { // array
+			Array.prototype.push.apply(stack, ...it)
+		}
+	});
+	return joinParaList(stack);
+}
+function joinParaList (lst) {
+	return `<p>${lst.join(`</p><p>`)}</p>`;
+}
 
+// SECTIONS ============================================================================================================
+// generated in Parents, but used throughout
+let knowParents;
+let race;
+// PARENTS
+function sectParents () {
+	knowParents = RNG(100) > 5;
 	const selRace = $selRace.val();
-	const race = selRace === "Random" ? RNG(100) > 48 ? rollOnArray(RACES) : "Other" : selRace; // 48/100 is the same odds as the spell "Reincarnate"
+	race = selRace === "Random" ? RNG(100) > 48 ? rollOnArray(RACES) : "Other" : selRace; // 48/100 is the same odds as the spell "Reincarnate"
 
-	// PARENTS
 	const $parents = $(`#parents`);
-	const knowParents = RNG(100) > 5;
 	const knowParentsStr = knowParents ? "Parents: You know who your parents are or were." : "Parents: You do not know who your parents were.";
 
 	let parentage = null;
@@ -381,24 +559,6 @@ function roll () {
 		}
 	}
 
-	function getPersonDetails (doRace) {
-		const status = rollSuppStatus();
-		const align = rollSuppAlignment().result.map(it => Parser.dtAlignmentToFull(it)).join(" ");
-		const occ = rollSuppOccupation().result;
-		const relate = rollSuppRelationship().result;
-		const out = [
-			`Alignment: ${align}`,
-			`Occupation: ${occ}`,
-			`Relationship: ${relate}`,
-			`Status: ${status.result}`
-		];
-		if (doRace) {
-			const race = rollSuppRace().result;
-			out.splice(index, 0, race);
-		}
-		return out;
-	}
-
 	$parents.html(concatSentences(`<p>Race: ${race}</p>`, knowParentsStr, parentage));
 	if (knowParents) {
 		const mum = getPersonDetails();
@@ -408,16 +568,20 @@ function roll () {
 		$parents.append(`<p><b>Father:</b></p>`);
 		$parents.append(joinParaList(dad));
 	}
+}
 
-	// BIRTHPLACE
+// BIRTHPLACE
+function sectBirthplace () {
 	const $birthplace = $(`#birthplace`);
 	const rollBirth = RNG(100);
 	const birth = `Birthplace: ${_getFromTable(BIRTHPLACES, rollBirth).result}`;
 
 	const strangeBirth = RNG(100) === 100 ? "A strange event coincided with your birth: the moon briefly turning red, all the milk within a mile spoiling, the water in the area freezing solid in midsummer, all the iron in the home rusting or turning to silver, or some other unusual event of your choice" : "";
 	$birthplace.html(concatSentences(birth, strangeBirth));
+}
 
-	// SIBLINGS
+// SIBLINGS
+function sectSiblings () {
 	const $siblings = $(`#siblings`);
 	function getBirthOrder () {
 		const rollBirthOrder = RNG(6) + RNG(6);
@@ -460,8 +624,10 @@ function roll () {
 	} else {
 		$siblings.html("You are an only child.");
 	}
+}
 
-	// FAMILY
+// FAMILY
+function sectFamily () {
 	const $family = $(`#family`);
 	const $wrpFam = $(`<div><p>Family: ${_getFromTable(FAMILY, RNG(100)).result}</p></div>`);
 	$family.empty();
@@ -484,26 +650,60 @@ function roll () {
 
 	const rollChildMems = Math.min(Math.max(RNG(6) + RNG(6) + RNG(6) + Number($selCha.val()), 3), 18);
 	$family.append(`<p>Childhood memories: ${_getFromTable(CHILDHOOD_MEMORIES, rollChildMems).result}`);
+}
 
-	// PERSONAL DECISIONS
+// PERSONAL DECISIONS
+function sectPersonalDecisions () {
 	const $personal = $(`#personal`).empty();
 	const selBg = Number($selBg.val());
 	const myBg = selBg === -1 ? rollOnArray(bgList) : bgList[selBg];
 	$personal.append(`<p>Background: ${myBg.name}</p>`);
 	$personal.append(`<p>I became a ${myBg.name} because: ${rollOnArray(myBg.reasons)}</p>`);
+}
 
-	// CLASS TRAINING
+// CLASS TRAINING
+function sectClassTraining () {
 	const $clss = $(`#clss`).empty();
 	const selClass = Number($selClass.val());
 	const myClass = selClass === -1 ? rollOnArray(classList) : classList[selClass];
 	$clss.append(`<p>Class: ${myClass.name}</p>`);
 	$clss.append(`<p>I became a ${myClass.name} because: ${rollOnArray(myClass.reasons)}</p>`);
+}
 
-	// LIFE EVENTS
+// LIFE EVENTS
+function sectLifeEvents () {
 	const $events = $(`#events`).empty();
+	marriageIndex = 0;
 	const age = _getFromTable(LIFE_EVENTS_AGE, RNG(100));
 	$events.append(`<p>Current age: ${age.result} ${fmtChoice(`${age.age} year${age.age > 1 ? "s" : ""} old`)}</p>`);
-	for (let i = 0; i < age.events; ++i ) {
-
+	for (let i = 0; i < age.events; ++i) {
+		$events.append(`<p><b>Life Event ${i + 1}</b></p>`);
+		const evt = _getFromTable(LIFE_EVENTS, RNG(100));
+		$events.append(`<p>${evt.result}</p>`);
+		if (evt.nextRoll) {
+			if (evt.nextRoll.title) {
+				const $wrp = $(`<div class="output-wrp-border"/>`);
+				$wrp.append(`<p><b>${evt.nextRoll.title}</b></p>`);
+				$wrp.append(joinParaList(evt.nextRoll.result));
+				$events.append($wrp);
+			} else {
+				$events.append(`<p>${evt.nextRoll.result}</p>`);
+				if (evt.nextRoll.nextRoll) {
+					$events.append(`<p>${evt.nextRoll.nextRoll}</p>`);
+				}
+			}
+		}
 	}
+}
+
+function roll () {
+	$(`.output`).show();
+
+	sectParents();
+	sectBirthplace();
+	sectSiblings();
+	sectFamily();
+	sectPersonalDecisions();
+	sectClassTraining();
+	sectLifeEvents();
 }
