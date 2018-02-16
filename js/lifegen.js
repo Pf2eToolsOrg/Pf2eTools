@@ -17,7 +17,7 @@ function _testRng (rollFn) {
 function _getFromTable (table, roll) {
 	const it = {};
 	Object.assign(it, table.find(it => {
-		return it.min === roll || it.max && roll >= it.min && roll <= it.max;
+		return it.min === roll || (it.max && roll >= it.min && roll <= it.max);
 	}));
 	Object.keys(it).forEach(k => {
 		if (typeof it[k] === "function") {
@@ -98,7 +98,7 @@ function choose (...lst) {
 	return fmtChoice(rollOnArray(lst));
 }
 
-function fmtChoice(str) {
+function fmtChoice (str) {
 	return `(<span style="font-style: italic;">${str}</span>)`; // span as they might be nested
 }
 
@@ -109,30 +109,30 @@ function rollOnArray (lst) {
 const RACES = ["Elf", "Dwarf", "Half-Elf", "Half-Orc", "Tiefling"];
 
 const PARENTS_HALF_ELF = [
-	{"min": 1, "max": 5, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, "display": "One parent was an elf and the other was a human."},
-	{"min": 6, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, "display": "One parent was an elf and the other was a half-elf."},
-	{"min": 7, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, "display": "One parent was a human and the other was a half-elf."},
+	{"min": 1, "max": 5, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, "display": "One parent was an elf and the other was a human."},
+	{"min": 6, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, "display": "One parent was an elf and the other was a half-elf."},
+	{"min": 7, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, "display": "One parent was a human and the other was a half-elf."},
 	{"min": 8, "result": "Both parents were half-elves."}
 ];
 
 const PARENTS_HALF_ORC = [
-	{"min": 1, "max": 3, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.`}, "display": "One parent was an orc and the other was a human."},
-	{"min": 4, "max": 5, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.`}, "display": "One parent was an orc and the other was a half-orc."},
-	{"min": 6, "max": 7, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.`}, "display": "One parent was a human and the other was a half-orc."},
+	{"min": 1, "max": 3, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, "display": "One parent was an orc and the other was a human."},
+	{"min": 4, "max": 5, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.` }, "display": "One parent was an orc and the other was a half-orc."},
+	{"min": 6, "max": 7, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.` }, "display": "One parent was a human and the other was a half-orc."},
 	{"min": 8, "display": "Both parents were half-orcs."}
 ];
 
 const PARENTS_TIEFLING = [
 	{"min": 1, "max": 4, "display": "Both parents were humans, their infernal heritage dormant until you came along."},
-	{"min": 5, "max": 6, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father": "mother")} was a human.`}, "display": "One parent was a tiefling and the other was a human."},
-	{"min": 7, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father": "mother")} was a devil.`}, "display": "One parent was a tiefling and the other was a devil."},
-	{"min": 8, "result": () => {const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father": "mother")} was a devil.`}, "display": "One parent was a human and the other was a devil."}
+	{"min": 5, "max": 6, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, "display": "One parent was a tiefling and the other was a human."},
+	{"min": 7, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a devil.` }, "display": "One parent was a tiefling and the other was a devil."},
+	{"min": 8, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a devil.` }, "display": "One parent was a human and the other was a devil."}
 ];
 
 const BIRTHPLACES = [
 	{"min": 1, "max": 50, "result": "Home"},
 	{"min": 51, "max": 55, "result": "Home of a family friend"},
-	{"min": 56, "max": 63, "result": () => `Home of a healer or midwife ${choose("healer", "midwife")}`,"display": "Home of a healer or midwife"},
+	{"min": 56, "max": 63, "result": () => `Home of a healer or midwife ${choose("healer", "midwife")}`, "display": "Home of a healer or midwife"},
 	{"min": 64, "max": 65, "result": () => `Carriage, cart, or wagon ${choose("carriage", "cart", "wagon")}`, "display": "Carriage, cart, or wagon"},
 	{"min": 66, "max": 68, "result": () => `Barn, shed, or other outbuilding ${choose("barn", "shed", "outbuilding")}`, "display": "Barn, shed, or other outbuilding"},
 	{"min": 69, "max": 70, "result": "Cave"},
@@ -329,7 +329,7 @@ const LIFE_EVENTS_PUNISHMENT = [
 	{"min": 1, "max": 3, "result": "You did not commit the crime and were exonerated after being accused."},
 	{"min": 4, "max": 6, "result": "You committed the crime or helped do so, but nonetheless the authorities found you not guilty."},
 	{"min": 7, "max": 8, "result": "You were nearly caught in the act. You had to flee and are wanted in the community where the crime occurred."},
-	{"min": 9, "max": 12, "result": () => `You were caught and convicted. You spent time in jail, chained to an oar, or performing hard labor. You served a sentence of 1d4 years ${fmtChoice(RNG(4))} or succeeded in escaping after that much time.`, "display": "You were caught and convicted. You spent time in jail, chained to an oar, or performing hard labor. You served a sentence of 1d4 years or succeeded in escaping after that much time."},
+	{"min": 9, "max": 12, "result": () => `You were caught and convicted. You spent time in jail, chained to an oar, or performing hard labor. You served a sentence of 1d4 years ${fmtChoice(RNG(4))} or succeeded in escaping after that much time.`, "display": "You were caught and convicted. You spent time in jail, chained to an oar, or performing hard labor. You served a sentence of 1d4 years or succeeded in escaping after that much time."}
 ];
 
 const LIFE_EVENTS_SUPERNATURAL = [
@@ -342,7 +342,7 @@ const LIFE_EVENTS_SUPERNATURAL = [
 	{"min": 41, "max": 50, "result": "You escaped certain death and believe it was the intervention of a god that saved you."},
 	{"min": 51, "max": 60, "result": "You witnessed a minor miracle."},
 	{"min": 61, "max": 70, "result": "You explored an empty house and found it to be haunted."},
-	{"min": 71, "max": 75, "result": () => {const p = RNG(6); return `You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead ${fmtChoice(`${p}; ${["celestial", "devil", "demon", "fey", "elemental", "undead"][p]}`)}.`}, "display": "You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead."},
+	{"min": 71, "max": 75, "result": () => { const p = RNG(6); return `You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead ${fmtChoice(`${p}; ${["celestial", "devil", "demon", "fey", "elemental", "undead"][p]}`)}.` }, "display": "You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead."},
 	{"min": 76, "max": 80, "result": "You saw a ghost."},
 	{"min": 81, "max": 85, "result": "You saw a ghoul feeding on a corpse."},
 	{"min": 86, "max": 90, "result": "A celestial or a fiend visited you in your dreams to give a warning of dangers to come."},
@@ -361,7 +361,7 @@ const LIFE_EVENTS_TRAGEDIES = [
 	{"min": 9, "result": "You did something that brought terrible shame to you in the eyes of your family. You might have been involved in a scandal, dabbled in dark magic, or offended someone important. The attitude of your family members toward you becomes indifferent at best, though they might eventually forgive you."},
 	{"min": 10, "result": "For a reason you were never told, you were exiled from your community. You then either wandered in the wilderness for a time or promptly found a new place to live."},
 	{"min": 11, "result": () => `A romantic relationship ended. Roll a d6 ${fmtChoice(RNG(6))}. An odd number means it ended with bad feelings, while an even number means it ended amicably.`, "display": "A romantic relationship ended. Roll a d6. An odd number means it ended with bad feelings, while an even number means it ended amicably."},
-	{"min": 12, "result": () => `A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.`, "display": "A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.", "nextRoll": () => {const r = RNG(12); const p = _getFromTable(SUPP_DEATH, r); return `${p.result}${r === 2 && RNG(12) === 1 ? ` ${fmtChoice("you were responsible")}` : ""}`}}
+	{"min": 12, "result": () => `A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.`, "display": "A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.", "nextRoll": () => { const r = RNG(12); const p = _getFromTable(SUPP_DEATH, r); return `${p.result}${r === 2 && RNG(12) === 1 ? ` ${fmtChoice("you were responsible")}` : ""}` }}
 ];
 
 const LIFE_EVENTS_WAR = [
@@ -390,13 +390,13 @@ const LIFE_EVENTS_WEIRD_STUFF = [
 ];
 
 const SUPP_ALIGNMENT = [
-	{"min": 1, "max": 3, "result": () => {return RNG(2) === 1 ? ["C", "E"] : ["C", "N"]}, "display": "Chaotic evil (50%) or chaotic neutral (50%)"},
+	{"min": 1, "max": 3, "result": () => { return RNG(2) === 1 ? ["C", "E"] : ["C", "N"] }, "display": "Chaotic evil (50%) or chaotic neutral (50%)"},
 	{"min": 4, "max": 5, "result": ["L", "E"], "display": "Lawful evil"},
 	{"min": 6, "max": 8, "result": ["N", "E"], "display": "Neutral evil"},
 	{"min": 9, "max": 12, "result": ["N"], "display": "Neutral"},
 	{"min": 13, "max": 15, "result": ["N", "G"], "display": "Neutral good"},
-	{"min": 16, "max": 17, "result": () => {return RNG(2) === 1 ? ["L", "G"] : ["L", "N"]}, "display": "Lawful good (50%) or lawful neutral (50%)"},
-	{"min": 18, "result": () => {return RNG(2) === 1 ? ["C", "G"] : ["C", "N"]}, "display": "Chaotic good (50%) or chaotic neutral (50%)"}
+	{"min": 16, "max": 17, "result": () => { return RNG(2) === 1 ? ["L", "G"] : ["L", "N"] }, "display": "Lawful good (50%) or lawful neutral (50%)"},
+	{"min": 18, "result": () => { return RNG(2) === 1 ? ["C", "G"] : ["C", "N"] }, "display": "Chaotic good (50%) or chaotic neutral (50%)"}
 ];
 
 const SUPP_DEATH = [
@@ -467,7 +467,7 @@ const SUPP_RELATIONSHIP = [
 ];
 
 const SUPP_STATUS = [
-	{"min": 3, "result": () => {return `Dead (${rollSuppDeath().result.lowercaseFirst()})`}, "display": "Dead (roll on the Cause of Death table)", "dead": true},
+	{"min": 3, "result": () => { return `Dead (${rollSuppDeath().result.lowercaseFirst()})` }, "display": "Dead (roll on the Cause of Death table)", "dead": true},
 	{"min": 4, "max": 5, "result": () => `Missing or status unknown ${choose("missing", "status unknown")}`, "display": "Missing or status unknown"},
 	{"min": 6, "max": 8, "result": () => `Alive, but doing poorly due to injury, financial trouble, or relationship difficulties ${choose("injury", "financial trouble", "relationship difficulties")}`, "display": "Alive, but doing poorly due to injury, financial trouble, or relationship difficulties"},
 	{"min": 9, "max": 12, "result": "Alive and well"},
@@ -506,7 +506,7 @@ function onJsonLoad (data) {
 	$selRace.append(`<option value="Other">Other</option>`);
 	RACES.forEach(r => $selRace.append(`<option value="${r}">${r}</option>`));
 	for (let i = -5; i <= 5; ++i) {
-		$selCha.append(`<option value="${i}" ${i === 0 ? "selected" : ""}>${i >= 0 ? "+": ""}${i}</option>`)
+		$selCha.append(`<option value="${i}" ${i === 0 ? "selected" : ""}>${i >= 0 ? "+" : ""}${i}</option>`)
 	}
 	$selBg.append(`<option value="-1" selected>Random</option>`);
 	bgList.forEach((b, i) => $selBg.append(`<option value="${i}">${b.name}</option>`));
