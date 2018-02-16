@@ -689,7 +689,7 @@ function sectLifeEvents () {
 			} else {
 				$events.append(`<p>${evt.nextRoll.result}</p>`);
 				if (evt.nextRoll.nextRoll) {
-					$events.append(`<p>${evt.nextRoll.nextRoll}</p>`);
+					$events.append(`<p>${evt.nextRoll.nextRoll.result}</p>`);
 				}
 			}
 		}
