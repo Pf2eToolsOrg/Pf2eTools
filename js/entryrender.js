@@ -604,6 +604,15 @@ function EntryRenderer () {
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							case "@race":
+								fauxEntry.href.path = "races.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_RACES,
+									source: source || SRC_PHB
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
 						}
 					}
 				} else {
