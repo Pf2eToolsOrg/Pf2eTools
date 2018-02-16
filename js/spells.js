@@ -29,7 +29,7 @@ const STR_FAV_SOUL_V2 = "Favored Soul v2 (UA)";
 const STR_FAV_SOUL_V3 = "Favored Soul v3 (UA)";
 
 const TM_ACTION = "action";
-const TM_B_ACTION = "bonus action";
+const TM_B_ACTION = "bonus";
 const TM_REACTION = "reaction";
 const TM_ROUND = "round";
 const TM_MINS = "minute";
@@ -178,15 +178,9 @@ function getRangeType (range) {
 }
 
 function getTblTimeStr (time) {
-	// TODO change "bonus action" to "bonus" in the JSON, and update this to match (will require updates to parsing functions also)
-	let temp;
-	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
-		temp = time.unit.uppercaseFirst();
-	} else {
-		temp = Parser.getTimeToFull(time);
-	}
-	if (temp.toLowerCase().endsWith("bonus action")) temp = temp.substr(0, temp.length - 4) + "n.";
-	return temp;
+	return (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit))
+		? `${time.unit.uppercaseFirst()}${time.unit === TM_B_ACTION ? " acn." : ""}`
+		: `${time.number} ${time.unit === TM_B_ACTION ? "Bonus acn." : time.unit}${time.number > 1 ? "s" : ""}`.uppercaseFirst();
 }
 
 function getTimeDisplay (timeUnit) {
@@ -209,13 +203,6 @@ function getMetaFilterObj (s) {
 	return out;
 }
 
-function ascSortSpellLevel (a, b) {
-	if (a === b) return 0;
-	if (a === STR_CANTRIP) return -1;
-	if (b === STR_CANTRIP) return 1;
-	return SortUtil.ascSort(a, b);
-}
-
 function getFilterAbilitySave (ability) {
 	return `${ability.uppercaseFirst().substring(0, 3)}. Save`;
 }
@@ -224,8 +211,16 @@ function getFilterAbilityCheck (ability) {
 	return `${ability.uppercaseFirst().substring(0, 3)}. Check`;
 }
 
+function handleBrew (homebrew) {
+	addSpells(homebrew.spell);
+}
+
 window.onload = function load () {
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells)
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, () => {
+		BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
+		BrewUtil.makeBrewButton("manage-brew");
+		BrewUtil.setList(list);
+	});
 };
 
 let list;
@@ -314,10 +309,11 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
+	sourceFilter.items.push(new FilterItem("Homebrew", () => {}));
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
+		valueNames: ["name", "source", "level", "time", "school", "range", "classes", "uniqueid"],
 		listClass: "spells"
 	});
 
@@ -360,6 +356,8 @@ let spellList = [];
 let spI = 0;
 
 function addSpells (data) {
+	if (!data || !data.length) return;
+
 	spellList = spellList.concat(data);
 
 	const spellTable = $("ul.spells");
@@ -428,6 +426,7 @@ function addSpells (data) {
 					<span class="range col-xs-2 col-xs-2-4">${Parser.spRangeToFull(spell.range)}</span>
 
 					<span class="classes" style="display: none">${Parser.spClassesToFull(spell.classes)}</span>
+					<span class="uniqueid hidden">${spell.uniqueId ? spell.uniqueId : spI}</span>
 				</a>
 			</li>`;
 
@@ -519,6 +518,8 @@ function handleUnknownHash (link, sub) {
 			addSpells(spells);
 			hashchange();
 		})(src, "yes");
+	} else {
+		_freshLoad();
 	}
 }
 
