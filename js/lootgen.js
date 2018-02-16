@@ -16,6 +16,14 @@ function loadloot (lootData) {
 	$("button#genloot").click(function () {
 		rollLoot();
 	});
+	const $selTables = $(`#table-sel`);
+	lootData.magicitems.forEach((t, i) => {
+		$selTables.append(`<option value="${i}">${t.name}</option>`);
+	});
+	$selTables.on("change", () => {
+		const v = $selTables.val();
+		if (v !== "") displayTable(v);
+	});
 }
 
 function displayTable (arrayEntry) {

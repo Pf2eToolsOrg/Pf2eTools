@@ -52,6 +52,7 @@ function navigation () {
 	LI('ul_players', 'feats.html', 'Feats');
 	LI('ul_players', 'invocations.html', 'Invocations');
 	LI('ul_players', 'races.html', 'Races');
+	LI('ul_players', 'lifegen.html', 'This Is Your Life');
 	LI('ul_players', 'names.html', 'Names');
 
 	LIDropdown('navbar', 'dms', 'dropdown');

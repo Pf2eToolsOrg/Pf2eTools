@@ -123,6 +123,14 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
+String.prototype.lowercaseFirst = String.prototype.lowercaseFirst ||
+	function () {
+		const str = this.toString();
+		if (str.length === 0) return str;
+		if (str.length === 1) return str.charAt(0).toLowerCase();
+		return str.charAt(0).toLowerCase() + str.slice(1);
+	};
+
 String.prototype.toTitleCase = String.prototype.toTitleCase ||
 	function () {
 		let str;

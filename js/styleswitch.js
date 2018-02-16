@@ -87,6 +87,7 @@ tr.legendary td {
 	background: #fff;
 }
 
+.output,
 #output {
 	background: lightgrey;
 }
@@ -230,6 +231,10 @@ table.stats div.statsBlockInsetReadaloud {
 .rollbox .out-roll .out-roll-item {
 	background: #b0b0b060;
 }
+
+.output-wrp-border {
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
 `;
 const NIGHT_CSS =
 	`
@@ -335,6 +340,7 @@ tr.legendary td {
 	color: grey !important;
 }
 
+.output,
 #output {
 	background: rgba(0, 0, 0, 0.31);;
 }
@@ -537,6 +543,10 @@ table.stats div.statsBlockInsetReadaloud {
 
 .rollbox .out-roll .out-roll-item {
 	background: #50505060;
+}
+
+.output-wrp-border {
+	border: 1px solid rgba(255, 255, 255, 0.15);
 }
 `;
 
