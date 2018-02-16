@@ -106,7 +106,7 @@ function rollOnArray (lst) {
 	return lst[RNG(lst.length) - 1]
 }
 
-const RACES = ["Elf", "Dwarf", "Half-Elf", "Half-Orc", "Tiefling"];
+const RACES_SELECTABLE = ["Dwarf", "Elf", "Half-Elf", "Half-Orc", "Tiefling"];
 
 const PARENTS_HALF_ELF = [
 	{"min": 1, "max": 5, "result": () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, "display": "One parent was an elf and the other was a human."},
@@ -160,8 +160,8 @@ function absentParent (parent) {
 }
 
 function absentBothParents () {
-	const p = RNG(2);
-	return `${absentParent(p === 1 ? "mother" : "father")} ${absentParent(p === 1 ? "mother" : "father")}`;
+	const p = ["mother", "father"][RNG(2)];
+	return `${absentParent(p)} ${absentParent(otherParent(p))}`;
 }
 
 function otherParent (parent) {
@@ -504,7 +504,7 @@ function onJsonLoad (data) {
 
 	$selRace.append(`<option value="Random" selected>Random</option>`);
 	$selRace.append(`<option value="Other">Other</option>`);
-	RACES.forEach(r => $selRace.append(`<option value="${r}">${r}</option>`));
+	RACES_SELECTABLE.forEach(r => $selRace.append(`<option value="${r}">${r}</option>`));
 	for (let i = -5; i <= 5; ++i) {
 		$selCha.append(`<option value="${i}" ${i === 0 ? "selected" : ""}>${i >= 0 ? "+" : ""}${i}</option>`)
 	}
@@ -539,7 +539,7 @@ let race;
 function sectParents () {
 	knowParents = RNG(100) > 5;
 	const selRace = $selRace.val();
-	race = selRace === "Random" ? RNG(100) > 48 ? rollOnArray(RACES) : "Other" : selRace; // 48/100 is the same odds as the spell "Reincarnate"
+	race = selRace === "Random" ? _getFromTable(SUPP_RACE, RNG(100)).result : selRace;
 
 	const $parents = $(`#parents`);
 	const knowParentsStr = knowParents ? "Parents: You know who your parents are or were." : "Parents: You do not know who your parents were.";
@@ -547,10 +547,10 @@ function sectParents () {
 	let parentage = null;
 	if (knowParents) {
 		switch (race) {
-			case "Half-Elf":
+			case "Half-elf":
 				parentage = `${race} parents: ${_getFromTable(PARENTS_HALF_ELF, RNG(8)).result}`;
 				break;
-			case "Half-Orc":
+			case "Half-orc":
 				parentage = `${race} parents: ${_getFromTable(PARENTS_HALF_ORC, RNG(8)).result}`;
 				break;
 			case "Tiefling":
@@ -559,7 +559,7 @@ function sectParents () {
 		}
 	}
 
-	$parents.html(concatSentences(`<p>Race: ${race}</p>`, knowParentsStr, parentage));
+	$parents.html(concatSentences(`<p>Race: ${race}${selRace === "Random" ? ` ${fmtChoice("generated using the Supplemental Race table")}` : ""}</p>`, knowParentsStr, parentage));
 	if (knowParents) {
 		const mum = getPersonDetails();
 		const dad = getPersonDetails();
