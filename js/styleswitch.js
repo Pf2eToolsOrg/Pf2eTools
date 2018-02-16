@@ -231,6 +231,10 @@ table.stats div.statsBlockInsetReadaloud {
 .rollbox .out-roll .out-roll-item {
 	background: #b0b0b060;
 }
+
+.output-wrp-border {
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
 `;
 const NIGHT_CSS =
 	`
@@ -539,6 +543,10 @@ table.stats div.statsBlockInsetReadaloud {
 
 .rollbox .out-roll .out-roll-item {
 	background: #50505060;
+}
+
+.output-wrp-border {
+	border: 1px solid rgba(255, 255, 255, 0.15);
 }
 `;
 
