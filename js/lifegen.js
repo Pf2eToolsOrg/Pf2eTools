@@ -160,7 +160,7 @@ function absentParent (parent) {
 }
 
 function absentBothParents () {
-	const p = ["mother", "father"][RNG(2)];
+	const p = ["mother", "father"][RNG(2) - 1];
 	return `${absentParent(p)} ${absentParent(otherParent(p))}`;
 }
 
