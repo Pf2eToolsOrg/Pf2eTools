@@ -1939,11 +1939,13 @@ RollerUtil = {
 		const $btnRoll = $(`<button class="btn btn-default" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
 		$btnRoll.on("click", () => {
 			if (listWrapper.data("lists")) {
-				const allLists = listWrapper.data("lists");
-				const rollX = RollerUtil.roll(allLists.length);
-				const list = listWrapper.data("lists")[rollX];
-				const rollY = RollerUtil.roll(list.visibleItems.length);
-				window.location.hash = $(list.visibleItems[rollY].elm).find(`a`).prop("hash");
+				const allLists = listWrapper.data("lists").filter(l => l.visibleItems.length);
+				if (allLists.length) {
+					const rollX = RollerUtil.roll(allLists.length);
+					const list = allLists[rollX];
+					const rollY = RollerUtil.roll(list.visibleItems.length);
+					window.location.hash = $(list.visibleItems[rollY].elm).find(`a`).prop("hash");
+				}
 			}
 		});
 
