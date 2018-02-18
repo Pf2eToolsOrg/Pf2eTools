@@ -2,6 +2,7 @@
 
 const JSON_DIR = "data/bestiary/";
 const META_URL = "meta.json";
+const FLUFF_INDEX = "fluff-index.json";
 const JSON_LIST_NAME = "monster";
 const renderer = new EntryRenderer();
 
@@ -30,9 +31,19 @@ function loadMeta (nextFunction) {
 	});
 }
 
+let ixFluff = {};
+function loadFluffIndex (nextFunction) {
+	DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX, function (data) {
+		ixFluff = data;
+		nextFunction();
+	});
+}
+
 window.onload = function load () {
-	loadMeta(function () {
-		multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters);
+	loadMeta(() => {
+		loadFluffIndex(() => {
+			multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters);
+		});
 	});
 };
 
@@ -132,7 +143,15 @@ function pageInit (loadedSources) {
 			})
 		}
 		this.useDice = !this.useDice;
-	})
+	});
+
+	const $btnPop = $(`#btn-popout`);
+	$btnPop.on("click", () => {
+		if (lastLoadedId !== null) {
+			const mon = monsters[lastLoadedId];
+			EntryRenderer.hover.show({shiftKey: true}, $btnPop.get(), UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
+		}
+	});
 }
 
 function handleFilterChange () {
@@ -220,15 +239,109 @@ function objToTitleCaseStringWithCommas (obj) {
 	}).join(", ");
 }
 
+let statTab = null;
+let profBtn = null;
+let infoTab = null;
+let curTab = 0;
+let lastLoadedId = null;
 // load selected monster stat block
 function loadhash (id) {
-	$("#pagecontent").html(tableDefault);
+	lastLoadedId = id;
+	const $content = $("#pagecontent");
+	const $wrpBtnProf = $(`#wrp-profbonusdice`);
+	const $tStatblock = $(`#tab-statblock`);
+	const $tInfo = $(`#tab-info`);
+
+	const mon = monsters[id];
+
+	// reset tabs
+	$content.html(tableDefault);
+	statTab = null;
+	if (profBtn !== null) {
+		$wrpBtnProf.append(profBtn);
+		profBtn = null;
+	}
+	infoTab = null;
+	curTab = 0;
+	$tInfo.removeClass(`stat-tab-sel`);
+	$tStatblock.addClass(`stat-tab-sel`);
+
+	// set up tab buttons
+	$tStatblock.off("click");
+	$tStatblock.on("click", () => {
+		if (curTab === 1) {
+			infoTab = $content.children().detach();
+
+			$tInfo.removeClass(`stat-tab-sel`);
+			$tStatblock.addClass(`stat-tab-sel`);
+
+			$content.append(statTab);
+			$wrpBtnProf.append(profBtn);
+			curTab = 0;
+		}
+	});
+	$tInfo.off("click");
+	$tInfo.on("click", () => {
+		const NO_INFO = "No information available.";
+		if (curTab === 0) {
+			statTab = $content.children().detach();
+			profBtn = $wrpBtnProf.children().detach();
+
+			$tInfo.addClass(`stat-tab-sel`);
+			$tStatblock.removeClass(`stat-tab-sel`);
+
+			if (infoTab === null) {
+				$content.append(EntryRenderer.utils.getBorderTr());
+				const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
+				name.find(`th`).css("padding-right", "0.3em");
+				$content.append(name);
+				const $tr = $(`<tr class='text'/>`);
+				$content.append($tr);
+				const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
+				$content.append(EntryRenderer.utils.getBorderTr());
+
+				if (ixFluff[mon.source]) {
+					DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
+						const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
+
+						if (!fluff) {
+							$td.text(NO_INFO);
+							return;
+						}
+
+						if (fluff._copy) {
+							const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
+							// preserve these
+							const name = fluff.name;
+							const src = fluff.source;
+							Object.assign(fluff, cpy);
+							fluff.name = name;
+							fluff.source = src;
+							delete fluff._copy;
+						}
+
+						if (fluff.images) {
+							fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
+						}
+						if (fluff.entries) {
+							$td.append(renderer.renderEntry(fluff.entries, 2));
+						}
+					});
+				} else {
+					$td.text(NO_INFO);
+				}
+			} else {
+				$content.append(infoTab);
+			}
+			curTab = 1;
+		}
+	});
+
 	let renderStack = [];
 	let entryList = {};
-	var mon = monsters[id];
 	var name = mon.name;
 	let source = Parser.sourceJsonToAbv(mon.source);
-	let sourceFull = Parser.sourceJsonToFull(mon.source)
+	let sourceFull = Parser.sourceJsonToFull(mon.source);
 	var type = mon._pTypes.asText;
 
 	imgError = function (x) {
@@ -410,7 +523,7 @@ function loadhash (id) {
 	}
 
 	// add click links for rollables
-	$("#pagecontent #abilityscores td").each(function () {
+	$content.find("#abilityscores td").each(function () {
 		$(this).wrapInner(`<span class="roller" data-roll="1d20${$(this).children(".mod").html()}" title="${Parser.attAbvToFull($(this).prop("id"))}"></span>`);
 	});
 
@@ -487,7 +600,7 @@ function loadhash (id) {
 	}
 
 	// inline rollers
-	$("#pagecontent").find("p").each(function () {
+	$content.find("p").each(function () {
 		addNonD20Rollers(this);
 
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -527,7 +640,7 @@ function loadhash (id) {
 			}
 		}));
 	});
-	$("#pagecontent").find("span#hp").each(function () {
+	$content.find("span#hp").each(function () {
 		addNonD20Rollers(this, "Hit Points");
 	});
 
@@ -550,12 +663,12 @@ function loadhash (id) {
 	}
 
 	$(".spells span.roller").contents().unwrap();
-	$("#pagecontent").find("span.roller").click(function () {
+	$content.find("span.roller").click(function () {
 		const $this = $(this);
 		outputRollResult($this, $this.attr("data-roll").replace(/\s+/g, ""));
 	});
 
-	$("#pagecontent").find("span.dc-roller").click(function () {
+	$content.find("span.dc-roller").click(function () {
 		const $this = $(this);
 		let roll;
 		if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
