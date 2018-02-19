@@ -286,7 +286,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 					}
 				});
 			}
-		},
+		}
 	];
 
 	function getProperty (obj, withDots) {
