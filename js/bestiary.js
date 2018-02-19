@@ -337,7 +337,8 @@ function loadhash (id) {
 							fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
 						}
 						if (fluff.entries) {
-							$td.append(renderer.renderEntry(fluff.entries, 2));
+							const depth = fluff.entries.type === "section" ? -1 : 2;
+							$td.append(renderer.renderEntry(fluff.entries, depth));
 						}
 					});
 				} else {
