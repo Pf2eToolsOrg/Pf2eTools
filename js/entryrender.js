@@ -1430,13 +1430,12 @@ EntryRenderer.item = {
 
 		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
 
-		// TODO rendering
 		const entryList = {type: "entries", entries: item.entries};
 		renderer.recursiveEntryRender(entryList, renderStack, 1);
 
 		renderStack.push(`</td></tr>`);
 
-		return renderStack.join(" ");
+		return renderStack.join("");
 	},
 
 	/**
