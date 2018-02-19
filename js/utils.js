@@ -853,8 +853,8 @@ Parser.levelToFull = function (level) {
 };
 
 Parser.invoSpellToFull = function (spell) {
-	if (spell === "Eldritch Blast") return spell + " cantrip";
-	if (spell === "Hex/Curse") return "Hex spell or a warlock feature that curses";
+	if (spell === "Eldritch Blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
+	if (spell === "Hex/Curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell Hex} spell or a warlock feature that curses");
 	return STR_NONE
 };
 
