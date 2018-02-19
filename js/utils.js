@@ -1480,7 +1480,7 @@ function isNonstandardSource (source) {
 }
 
 function _isNonStandardSourceWiz (source) {
-	return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA;
+	return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA || source === SRC_Mag;
 }
 
 function _isNonStandardSource3pp (source) {
