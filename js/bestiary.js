@@ -320,6 +320,19 @@ function loadhash (id) {
 							delete fluff._copy;
 						}
 
+						if (fluff._appendCopy) {
+							const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
+							if (cpy.images) {
+								if (!fluff.images) fluff.images = cpy.images;
+								else fluff.images = fluff.images.concat(cpy.images);
+							}
+							if (cpy.entries) {
+								if (!fluff.entries) fluff.entries = cpy.entries;
+								else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
+							}
+							delete fluff._appendCopy;
+						}
+
 						if (fluff.images) {
 							fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
 						}
