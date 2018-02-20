@@ -305,7 +305,8 @@ function loadhash (id) {
 						const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
 
 						if (!fluff) {
-							$td.text(NO_INFO);
+							$td.empty();
+							$td.append(NO_INFO);
 							return;
 						}
 
@@ -344,7 +345,8 @@ function loadhash (id) {
 						}
 					});
 				} else {
-					$td.text(NO_INFO);
+					$td.empty();
+					$td.append(NO_INFO);
 				}
 			} else {
 				$content.append(infoTab);
