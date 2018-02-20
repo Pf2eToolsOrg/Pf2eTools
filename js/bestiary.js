@@ -282,7 +282,7 @@ function loadhash (id) {
 	});
 	$tInfo.off("click");
 	$tInfo.on("click", () => {
-		const NO_INFO = "No information available.";
+		const NO_INFO = "<i>No information available.</i>";
 		if (curTab === 0) {
 			statTab = $content.children().detach();
 			profBtn = $wrpBtnProf.children().detach();
