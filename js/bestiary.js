@@ -314,9 +314,11 @@ function loadhash (id) {
 							// preserve these
 							const name = fluff.name;
 							const src = fluff.source;
+							const images = fluff.images;
 							Object.assign(fluff, cpy);
 							fluff.name = name;
 							fluff.source = src;
+							if (images) fluff.images = images;
 							delete fluff._copy;
 						}
 

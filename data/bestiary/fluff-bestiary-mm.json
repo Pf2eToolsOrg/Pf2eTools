@@ -1498,6 +1498,15 @@
 		{
 			"name": "Beholder Zombie",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Beholder Zombie.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Zombie",
 				"source": "MM"
@@ -5874,6 +5883,15 @@
 		{
 			"name": "Minotaur Skeleton",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Minotaur Skeleton.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Skeleton",
 				"source": "MM"
@@ -6346,6 +6364,15 @@
 		{
 			"name": "Ogre Zombie",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Ogre Zombie.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Zombie",
 				"source": "MM"
@@ -8093,6 +8120,15 @@
 		{
 			"name": "Swarm of Bats",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Swarm of Bats.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Generic Swarm",
 				"source": "MM"
@@ -8369,13 +8405,6 @@
 						"type": "internal",
 						"path": "bestiary/MM/Troll.jpg"
 					}
-				},
-				{
-					"type": "image",
-					"href": {
-						"type": "internal",
-						"path": "bestiary/MM/Troll.jpg"
-					}
 				}
 			],
 			"entries": {
@@ -8603,7 +8632,7 @@
 					"type": "image",
 					"href": {
 						"type": "internal",
-						"path": "bestiary/MM/Vampire Spawn.jpg"
+						"path": "bestiary/MM/Vampire.jpg"
 					}
 				}
 			],
@@ -8672,6 +8701,15 @@
 		{
 			"name": "Vampire Spawn",
 			"source": "MM",
+			"images": [
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "bestiary/MM/Vampire Spawn.jpg"
+					}
+				}
+			],
 			"_copy": {
 				"name": "Vampire",
 				"source": "MM"
@@ -10406,22 +10444,56 @@
 			"entries": {
 				"type": "entries",
 				"entries": [
-					"The Nature of Swarms",
-					"The swarms presented here aren't ordinary or benign assemblies of little creatures. They form as a result of some sinister or unwholesome influence. A vampire can summon swarms of bats and rats from the darkest corners of the night, while the very presence of a mummy lord can cause scarab beetles to boil up from the sand-filled depths of its tomb. A hag might have the power to turn swarms of ravens against her enemies, while a yuan-ti abomination might have swarms of poisonous snakes slithering in its wake. Even druids can't charm these swarms, and their aggressiveness is borderline unnatural.",
-					"Variant: Insect Swarms",
-					"Different kinds of insects can gather in swarms, and each swarm has the special characteristics described below.",
-					"Swarm of Beetles. A swarm of beetles gains a burrowing speed of 5 feet.",
-					"Swarm of Centipedes. A creature reduced to 0 hit points by a swarm of centipedes is stable but poisoned for 1 hour, even after regaining hit points, and paralyzed while poisoned in this way.",
-					"Swarm of Spiders. A swarm of spiders has the following additional traits.",
 					{
-						"type": "list",
-						"items": [
-							"Spider Climb. The swarm can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.",
-							"Web Sense. While in contact with a web, the swarm knows the exact location of any other creature in contact with the same web.",
-							"Web Walker. The swarm ignores movement restrictions caused by webbing."
-						]
+					    "type": "inset",
+					    "name": "The Nature of Swarms",
+					    "entries": [
+							"The swarms presented here aren't ordinary or benign assemblies of little creatures. They form as a result of some sinister or unwholesome influence. A vampire can summon swarms of bats and rats from the darkest corners of the night, while the very presence of a mummy lord can cause scarab beetles to boil up from the sand-filled depths of its tomb. A hag might have the power to turn swarms of ravens against her enemies, while a yuan-ti abomination might have swarms of poisonous snakes slithering in its wake. Even druids can't charm these swarms, and their aggressiveness is borderline unnatural."
+					    ]
 					},
-					"Swarm of Wasps. A swarm of wasps has a walking speed of 5 feet, a flying speed of 30 feet, and no climbing speed."
+					{
+					    "type": "inset",
+					    "name": "Variant: Insect Swarms",
+					    "entries": [
+							"Different kinds of insects can gather in swarms, and each swarm has the special characteristics described below.",
+							{
+							    "type": "entries",
+							    "name": "Swarm of Beetles",
+							    "entries": [
+									"A swarm of beetles gains a burrowing speed of 5 feet."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Swarm of Centipedes",
+							    "entries": [
+									"A creature reduced to 0 hit points by a swarm of centipedes is stable but poisoned for 1 hour, even after regaining hit points, and paralyzed while poisoned in this way."
+							    ]
+							},
+							{
+							    "type": "entries",
+							    "name": "Swarm of Spiders",
+							    "entries": [
+									"A swarm of spiders has the following additional traits."
+							    ]
+							},
+							{
+								"type": "list",
+								"items": [
+									"Spider Climb. The swarm can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.",
+									"Web Sense. While in contact with a web, the swarm knows the exact location of any other creature in contact with the same web.",
+									"Web Walker. The swarm ignores movement restrictions caused by webbing."
+								]
+							},
+							{
+							    "type": "entries",
+							    "name": "Swarm of Wasps",
+							    "entries": [
+									"A swarm of wasps has a walking speed of 5 feet, a flying speed of 30 feet, and no climbing speed."
+							    ]
+							}
+					    ]
+					}
 				]
 			}
 		},
