@@ -130,7 +130,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			baseUrl: "classes.html",
 			deepIndex: (primary, it) => {
 				return it.subclasses.map(sc => ({
-					n: `${primary}; ${sc.name}`,
+					n: `${primary.parentName}; ${sc.name}`,
 					s: sc.source,
 					u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
 				}))
@@ -172,7 +172,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			baseUrl: "psionics.html",
 			deepIndex: (primary, it) => {
 				if (!it.modes) return [];
-				return it.modes.map(m => ({n: `${primary}; ${m.name}`}))
+				return it.modes.map(m => ({n: `${primary.parentName}; ${m.name}`}))
 			},
 			hover: true
 		},
@@ -209,7 +209,7 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 				it.entries.forEach(e => {
 					er.EntryRenderer.getNames(names, e);
 				});
-				return names.map(n => ({n: `${primary}; ${n}`}));
+				return names.map(n => ({n: `${primary.parentName}; ${n}`}));
 			}
 		},
 		{
@@ -266,6 +266,26 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			listProp: "hazard",
 			baseUrl: "trapshazards.html",
 			hover: true
+		},
+		{
+			category: 18,
+			file: "quickreference.json",
+			listProp: "data",
+			baseUrl: "quickreference.html",
+			hashBuilder: (it, i) => {
+				return `quickreference,${i}`;
+			},
+			onlyDeep: true,
+			deepIndex: (primary, it) => {
+				const names = it.entries.map(e => e.name);
+				return names.map(n => {
+					return {
+						n: n,
+						u: `quickreference${HASH_PART_SEP}${primary.i}${HASH_PART_SEP}${UrlUtil.encodeForHash(n.toLowerCase())}`,
+						s: undefined
+					}
+				});
+			}
 		}
 	];
 
@@ -275,10 +295,10 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 
 	let id = 0;
 	function handleContents (arbiter, j) {
-		function getToAdd (it, toMerge) {
+		function getToAdd (it, toMerge, i) {
 			const src = getProperty(it, arbiter.source || "source");
 			const hash = arbiter.hashBuilder
-				? arbiter.hashBuilder(it)
+				? arbiter.hashBuilder(it, i)
 				: UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it);
 			const toAdd = {
 				c: arbiter.category,
@@ -294,13 +314,14 @@ UtilSearchIndex.getIndex = function (doLogging, test_doExtraIndex) {
 			return toAdd;
 		}
 
-		j[arbiter.listProp].forEach(it => {
-			const primaryS = getProperty(it, arbiter.primary || "name");
+		j[arbiter.listProp].forEach((it, i) => {
+			const name = getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
-				const toAdd = getToAdd(it, {n: primaryS});
+				const toAdd = getToAdd(it, {n: name}, i);
 				if ((!arbiter.filter || !arbiter.filter(it)) && !arbiter.onlyDeep) index.push(toAdd);
 				if (arbiter.deepIndex) {
-					const deepItems = arbiter.deepIndex(primaryS, it);
+					const primary = {it: it, i: i, parentName: name};
+					const deepItems = arbiter.deepIndex(primary, it);
 					deepItems.forEach(item => {
 						const toAdd = getToAdd(it, item);
 						if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
