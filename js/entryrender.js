@@ -754,9 +754,8 @@ EntryRenderer._getDiceString = function (diceItem, isDroll) {
 
 EntryRenderer.getEntryDice = function (entry, name) {
 	function getDiceAsStr () {
-		const stack = [];
-		entry.toRoll.forEach(d => stack.push(EntryRenderer._getDiceString(d)));
-		return stack.join("+");
+		if (entry.successThresh) return `${entry.successThresh} percent`;
+		else return entry.toRoll.map(d => EntryRenderer._getDiceString(d)).join("+");
 	}
 
 	function pack (obj) {
