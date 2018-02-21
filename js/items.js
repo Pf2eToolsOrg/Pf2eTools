@@ -1,5 +1,4 @@
 "use strict";
-let tabledefault = "";
 
 let itemList;
 
@@ -56,11 +55,9 @@ function deselectFilter (deselectProperty, deselectValue) {
 	}
 }
 
-let mundanelist
-let magiclist
+let mundanelist;
+let magiclist;
 function populateTablesAndFilters () {
-	tabledefault = $("#pagecontent").html();
-
 	const sourceFilter = getSourceFilter();
 	const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
 	const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
@@ -200,16 +197,18 @@ function populateTablesAndFilters () {
 	addListShowHide();
 	initHistory();
 	handleFilterChange();
+
+	EntryRenderer.hover.bindPopoutButton(itemList);
 }
 
 const renderer = new EntryRenderer();
 
 function loadhash (id) {
-	$("#currentitem").html(tabledefault);
+	const $content = $(`#pagecontent`);
 	const item = itemList[id];
 	const source = item.source;
 	const sourceFull = Parser.sourceJsonToFull(source);
-	$("th.name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
+	$content.find("th.name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
 
 	const type = item.type || "";
 	if (type === "INS" || type === "GS") item.additionalSources = item.additionalSources || [];
@@ -219,20 +218,20 @@ function loadhash (id) {
 		item.additionalSources.push({ "source": "XGE", "page": 81 })
 	}
 	const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
-	$("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);
+	$content.find("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);
 
-	$("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
-	$("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : "");
-	$("td span#rarity").html((item.tier ? ", " + item.tier : "") + (item.rarity ? ", " + item.rarity : ""));
-	$("td span#attunement").html(item.reqAttune ? item.reqAttune : "");
-	$("td span#type").html(item.typeText);
+	$content.find("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
+	$content.find("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : "");
+	$content.find("td span#rarity").html((item.tier ? ", " + item.tier : "") + (item.rarity ? ", " + item.rarity : ""));
+	$content.find("td span#attunement").html(item.reqAttune ? item.reqAttune : "");
+	$content.find("td span#type").html(item.typeText);
 
 	const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
-	$("span#damage").html(damage);
-	$("span#damagetype").html(damageType);
-	$("span#properties").html(propertiesTxt);
+	$content.find("span#damage").html(damage);
+	$content.find("span#damagetype").html(damageType);
+	$content.find("span#properties").html(propertiesTxt);
 
-	$("tr.text").remove();
+	$content.find("tr.text").remove();
 	const entryList = {type: "entries", entries: item.entries};
 	const renderStack = [];
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
@@ -253,19 +252,19 @@ function loadhash (id) {
 		renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
 	}
 
-	$("tr#text").after(`
+	$content.find("tr#text").after(`
 		<tr class="text">
 			<td colspan="6" class="text1">
 				${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>").split(item.name.toLowerCase().uppercaseFirst()).join("<i>" + item.name.toLowerCase().uppercaseFirst() + "</i>")}
 			</td>
 		</tr>`);
 
-	$(".items span.roller").contents().unwrap();
-	$("#pagecontent span.roller").click(function () {
+	$content.find(".items span.roller").contents().unwrap();
+	$content.find("#pagecontent span.roller").click(function () {
 		const roll = $(this).attr("data-roll").replace(/\s+/g, "");
 		EntryRenderer.dice.roll(roll, {
 			name: item.name,
-			label: $(".stats-name").text()
+			label: $content.find(".stats-name").text()
 		});
 	})
 }

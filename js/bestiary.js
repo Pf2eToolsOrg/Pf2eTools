@@ -144,14 +144,6 @@ function pageInit (loadedSources) {
 		}
 		this.useDice = !this.useDice;
 	});
-
-	const $btnPop = $(`#btn-popout`);
-	$btnPop.on("click", () => {
-		if (lastLoadedId !== null) {
-			const mon = monsters[lastLoadedId];
-			EntryRenderer.hover.show({shiftKey: true}, $btnPop.get(), UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
-		}
-	});
 }
 
 function handleFilterChange () {
@@ -220,6 +212,7 @@ function addMonsters (data) {
 	list.sort("name");
 
 	filterBox.render();
+	EntryRenderer.hover.bindPopoutButton(monsters);
 }
 
 // sorting for form filtering
@@ -243,10 +236,8 @@ let statTab = null;
 let profBtn = null;
 let infoTab = null;
 let curTab = 0;
-let lastLoadedId = null;
 // load selected monster stat block
 function loadhash (id) {
-	lastLoadedId = id;
 	const $content = $("#pagecontent");
 	const $wrpBtnProf = $(`#wrp-profbonusdice`);
 	const $tStatblock = $(`#tab-statblock`);
@@ -368,7 +359,7 @@ function loadhash (id) {
 	};
 
 	const imgLink = UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
-	$("th.name").html(
+	$content.find("th.name").html(
 		`<span class="stats-name">${name}</span>
 		<span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>
 		<a href="${imgLink}" target="_blank">
@@ -376,125 +367,125 @@ function loadhash (id) {
 		</a>`
 	);
 
-	$("td span#size").html(Parser.sizeAbvToFull(mon.size));
+	$content.find("td span#size").html(Parser.sizeAbvToFull(mon.size));
 
-	$("td span#type").html(type);
+	$content.find("td span#type").html(type);
 
-	$("td span#alignment").html(mon.alignment);
+	$content.find("td span#alignment").html(mon.alignment);
 
-	$("td span#ac").html(mon.ac);
+	$content.find("td span#ac").html(mon.ac);
 
-	$("td span#hp").html(mon.hp);
+	$content.find("td span#hp").html(mon.hp);
 
-	$("td span#speed").html(mon.speed);
+	$content.find("td span#speed").html(mon.speed);
 
-	$("td#str span.score").html(mon.str);
-	$("td#str span.mod").html(Parser.getAbilityModifier(mon.str));
+	$content.find("td#str span.score").html(mon.str);
+	$content.find("td#str span.mod").html(Parser.getAbilityModifier(mon.str));
 
-	$("td#dex span.score").html(mon.dex);
-	$("td#dex span.mod").html(Parser.getAbilityModifier(mon.dex));
+	$content.find("td#dex span.score").html(mon.dex);
+	$content.find("td#dex span.mod").html(Parser.getAbilityModifier(mon.dex));
 
-	$("td#con span.score").html(mon.con);
-	$("td#con span.mod").html(Parser.getAbilityModifier(mon.con));
+	$content.find("td#con span.score").html(mon.con);
+	$content.find("td#con span.mod").html(Parser.getAbilityModifier(mon.con));
 
-	$("td#int span.score").html(mon.int);
-	$("td#int span.mod").html(Parser.getAbilityModifier(mon.int));
+	$content.find("td#int span.score").html(mon.int);
+	$content.find("td#int span.mod").html(Parser.getAbilityModifier(mon.int));
 
-	$("td#wis span.score").html(mon.wis);
-	$("td#wis span.mod").html(Parser.getAbilityModifier(mon.wis));
+	$content.find("td#wis span.score").html(mon.wis);
+	$content.find("td#wis span.mod").html(Parser.getAbilityModifier(mon.wis));
 
-	$("td#cha span.score").html(mon.cha);
-	$("td#cha span.mod").html(Parser.getAbilityModifier(mon.cha));
+	$content.find("td#cha span.score").html(mon.cha);
+	$content.find("td#cha span.mod").html(Parser.getAbilityModifier(mon.cha));
 
 	var saves = mon.save;
 	if (saves) {
-		$("td span#saves").parent().show();
-		$("td span#saves").html(saves);
+		$content.find("td span#saves").parent().show();
+		$content.find("td span#saves").html(saves);
 	} else {
-		$("td span#saves").parent().hide();
+		$content.find("td span#saves").parent().hide();
 	}
 
 	var skills = mon.skill;
 	let perception = 0;
 	if (skills) {
-		$("td span#skills").parent().show();
-		$("td span#skills").html(objToTitleCaseStringWithCommas(skills));
+		$content.find("td span#skills").parent().show();
+		$content.find("td span#skills").html(objToTitleCaseStringWithCommas(skills));
 		if (skills.perception) perception = parseInt(skills.perception);
 	} else {
-		$("td span#skills").parent().hide();
+		$content.find("td span#skills").parent().hide();
 	}
 
 	var dmgvuln = mon.vulnerable;
 	if (dmgvuln) {
-		$("td span#dmgvuln").parent().show();
-		$("td span#dmgvuln").html(dmgvuln);
+		$content.find("td span#dmgvuln").parent().show();
+		$content.find("td span#dmgvuln").html(dmgvuln);
 	} else {
-		$("td span#dmgvuln").parent().hide();
+		$content.find("td span#dmgvuln").parent().hide();
 	}
 
 	var dmgres = mon.resist;
 	if (dmgres) {
-		$("td span#dmgres").parent().show();
-		$("td span#dmgres").html(dmgres);
+		$content.find("td span#dmgres").parent().show();
+		$content.find("td span#dmgres").html(dmgres);
 	} else {
-		$("td span#dmgres").parent().hide();
+		$content.find("td span#dmgres").parent().hide();
 	}
 
 	var dmgimm = mon.immune;
 	if (dmgimm) {
-		$("td span#dmgimm").parent().show();
-		$("td span#dmgimm").html(dmgimm);
+		$content.find("td span#dmgimm").parent().show();
+		$content.find("td span#dmgimm").html(dmgimm);
 	} else {
-		$("td span#dmgimm").parent().hide();
+		$content.find("td span#dmgimm").parent().hide();
 	}
 
 	var conimm = mon.conditionImmune;
 	if (conimm) {
-		$("td span#conimm").parent().show();
-		$("td span#conimm").html(conimm);
+		$content.find("td span#conimm").parent().show();
+		$content.find("td span#conimm").html(conimm);
 	} else {
-		$("td span#conimm").parent().hide();
+		$content.find("td span#conimm").parent().hide();
 	}
 
 	var senses = mon.senses;
 	if (senses) {
-		$("td span#senses").html(senses + ", ");
+		$content.find("td span#senses").html(senses + ", ");
 	} else {
-		$("td span#senses").html("");
+		$content.find("td span#senses").html("");
 	}
 
-	$("td span#pp").html(mon.passive)
+	$content.find("td span#pp").html(mon.passive)
 
 	var languages = mon.languages;
 	if (languages) {
-		$("td span#languages").html(languages);
+		$content.find("td span#languages").html(languages);
 	} else {
-		$("td span#languages").html("\u2014");
+		$content.find("td span#languages").html("\u2014");
 	}
 
 	var cr = mon.cr;
-	$("td span#cr").html(cr);
-	$("td span#xp").html(Parser.crToXp(cr));
+	$content.find("td span#cr").html(cr);
+	$content.find("td span#xp").html(Parser.crToXp(cr));
 
-	$("tr.trait").remove();
+	$content.find("tr.trait").remove();
 
 	let trait = EntryRenderer.monster.getOrderedTraits(mon, renderer);
 	if (trait) renderSection("trait", "trait", trait, 1);
 
 	const action = mon.action;
-	$("tr#actions").hide();
-	$("tr.action").remove();
+	$content.find("tr#actions").hide();
+	$content.find("tr.action").remove();
 
 	if (action) renderSection("action", "action", action, 1);
 
 	const reaction = mon.reaction;
-	$("tr#reactions").hide();
-	$("tr.reaction").remove();
+	$content.find("tr#reactions").hide();
+	$content.find("tr.reaction").remove();
 
 	if (reaction) renderSection("reaction", "reaction", reaction, 1);
 
 	const variants = mon.variant;
-	const variantSect = $(`#variants`);
+	const variantSect = $content.find(`#variants`);
 	if (!variants) variantSect.hide();
 	else {
 		const rStack = [];
@@ -503,23 +494,23 @@ function loadhash (id) {
 		variantSect.show();
 	}
 
-	$(`#source`).append(EntryRenderer.utils.getPageTr(mon));
+	$content.find(`#source`).append(EntryRenderer.utils.getPageTr(mon));
 
 	const legendary = mon.legendary;
-	$("tr#legendaries").hide();
-	$("tr.legendary").remove();
+	$content.find("tr#legendaries").hide();
+	$content.find("tr.legendary").remove();
 	if (legendary) {
 		renderSection("legendary", "legendary", legendary, 1);
 		const legendaryActions = mon.legendaryActions || 3;
 		const legendaryName = name.split(",");
-		$("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
+		$content.find("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
 	}
 
 	const legendaryGroup = mon.legendaryGroup;
-	$("tr.lairaction").remove();
-	$("tr#lairactions").hide();
-	$("tr.regionaleffect").remove();
-	$("tr#regionaleffects").hide();
+	$content.find("tr.lairaction").remove();
+	$content.find("tr#lairactions").hide();
+	$content.find("tr.regionaleffect").remove();
+	$content.find("tr#regionaleffects").hide();
 	if (legendaryGroup) {
 		const thisGroup = meta[legendaryGroup];
 		if (thisGroup.lairActions) renderSection("lairaction", "legendary", thisGroup.lairActions, 0);
@@ -528,14 +519,14 @@ function loadhash (id) {
 
 	function renderSection (sectionTrClass, sectionTdClass, sectionEntries, sectionLevel) {
 		let pluralSectionTrClass = sectionTrClass === `legendary` ? `legendaries` : `${sectionTrClass}s`;
-		$(`tr#${pluralSectionTrClass}`).show();
+		$content.find(`tr#${pluralSectionTrClass}`).show();
 		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
 		sectionEntries.forEach(e => {
 			if (e.rendered) renderStack.push(e.rendered);
 			else renderer.recursiveEntryRender(e, renderStack, sectionLevel + 1);
 		})
-		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
+		$content.find(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
 	}
 
 	// add click links for rollables
@@ -545,10 +536,10 @@ function loadhash (id) {
 
 	const isProfDiceMode = $("button#profbonusdice")[0].useDice;
 	if (mon.skill) {
-		$("#skills").each(makeSkillRoller);
+		$content.find("#skills").each(makeSkillRoller);
 	}
 	if (mon.save) {
-		$("#saves").each(makeSaveRoller);
+		$content.find("#saves").each(makeSaveRoller);
 	}
 
 	function makeSkillRoller () {
@@ -678,7 +669,7 @@ function loadhash (id) {
 		return titleMaybe;
 	}
 
-	$(".spells span.roller").contents().unwrap();
+	$content.find(".spells span.roller").contents().unwrap();
 	$content.find("span.roller").filter((i, e) => {
 		const $e = $(e);
 		return !$e.prop("onclick");

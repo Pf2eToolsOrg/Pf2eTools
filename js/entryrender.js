@@ -2224,6 +2224,18 @@ EntryRenderer.hover = {
 	_cleanWindows: () => {
 		const ks = Object.keys(EntryRenderer.hover._active);
 		ks.forEach(hovId => EntryRenderer.hover._teardownWindow(hovId));
+	},
+
+	bindPopoutButton: (toList) => {
+		const $btnPop = $(`#btn-popout`);
+		$btnPop.off("click");
+		$btnPop.on("click", () => {
+			if (lastLoadedId !== null) {
+				$btnPop.attr("data-hover-active", false);
+				const it = toList[lastLoadedId];
+				EntryRenderer.hover.show({shiftKey: true}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it));
+			}
+		});
 	}
 };
 

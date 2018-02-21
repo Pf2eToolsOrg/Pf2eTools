@@ -330,14 +330,6 @@ function pageInit (loadedSources) {
 		} else $this.attr("sortby", "asc");
 		list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: sortSpells});
 	});
-
-	const $btnPop = $(`#btn-popout`);
-	$btnPop.on("click", () => {
-		if (lastLoadedId !== null) {
-			const sp = spellList[lastLoadedId];
-			EntryRenderer.hover.show({shiftKey: true}, $btnPop.get(), UrlUtil.PG_SPELLS, sp.source, UrlUtil.autoEncodeHash(sp));
-		}
-	});
 }
 
 function handleFilterChange () {
@@ -460,6 +452,7 @@ function addSpells (data) {
 	list.sort("name");
 
 	filterBox.render();
+	EntryRenderer.hover.bindPopoutButton(spellList);
 }
 
 function sortSpells (a, b, o) {
@@ -513,9 +506,7 @@ function sortSpells (a, b, o) {
 }
 
 const renderer = new EntryRenderer();
-let lastLoadedId = null;
 function loadhash (id) {
-	lastLoadedId = id;
 	const $pageContent = $("#pagecontent");
 	const spell = spellList[id];
 	$pageContent.html(EntryRenderer.spell.getRenderedString(spell, renderer));
