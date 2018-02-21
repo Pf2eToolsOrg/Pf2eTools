@@ -23,6 +23,7 @@ function EntryRenderer () {
 	this.baseUrl = "";
 
 	this._subVariant = false;
+	this._firstSection = true;
 
 	/**
 	 * Set the tag used to group rendered elements
@@ -39,6 +40,14 @@ function EntryRenderer () {
 	 */
 	this.setBaseUrl = function (url) {
 		this.baseUrl = url;
+	};
+
+	/**
+	 * Other sections should be prefixed with a vertical divider
+	 * @param bool
+	 */
+	this.setFirstSection = function (bool) {
+		this._firstSection = bool;
 	};
 
 	// TODO convert params to options object
@@ -158,6 +167,15 @@ function EntryRenderer () {
 						}
 					}
 					break;
+				case "inlineBlock":
+					renderPrefix();
+					if (entry.entries) {
+						for (let i = 0; i < entry.entries.length; i++) {
+							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+						}
+					}
+					renderSuffix();
+					break;
 				case "bonus":
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value);
 					break;
@@ -165,7 +183,7 @@ function EntryRenderer () {
 					textStack.push((entry.value < 0 ? "" : "+") + entry.value + "ft.");
 					break;
 				case "dice":
-					textStack.push(EntryRenderer.getEntryDice(entry));
+					textStack.push(EntryRenderer.getEntryDice(entry, entry.name));
 					break;
 				case "link":
 					textStack.push(this.renderLink(entry));
@@ -256,7 +274,9 @@ function EntryRenderer () {
 
 			if (entry.colLabels) {
 				for (let i = 0; i < entry.colLabels.length; ++i) {
-					textStack.push(`<th ${getTableThClassText(i)}>${entry.colLabels[i]}</th>`);
+					textStack.push(`<th ${getTableThClassText(i)}>`);
+					self.recursiveEntryRender(entry.colLabels[i], textStack, depth);
+					textStack.push(`</th>`);
 				}
 			}
 
@@ -269,8 +289,23 @@ function EntryRenderer () {
 				const r = entry.rows[i];
 				const roRender = r.type === "row" ? r.row : r;
 				for (let j = 0; j < roRender.length; ++j) {
-					const toRenderCell = roRender[j].type === "cell" ? roRender[j].entry : roRender[j];
-					textStack.push(`<td ${makeTableTdClassText(j)} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`);
+					let toRenderCell;
+					if (roRender[j].type === "cell") {
+						if (roRender[j].entry) {
+							toRenderCell = roRender[j].entry;
+						} else if (roRender[j].roll) {
+							if (roRender[j].roll.entry) {
+								toRenderCell = roRender[j].roll.entry;
+							} else if (roRender[j].roll.exact) {
+								toRenderCell = roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
+							} else {
+								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`
+							}
+						}
+					} else {
+						toRenderCell = roRender[j];
+					}
+					textStack.push(`<td ${makeTableTdClassText(j)} ${getCellDataStr(roRender[j])} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`);
 					if (r.style === "row-indent-first" && j === 0) textStack.push(`<span class="tbl-tab-intent"/>`);
 					self.recursiveEntryRender(toRenderCell, textStack, depth + 1);
 					textStack.push("</td>");
@@ -289,6 +324,17 @@ function EntryRenderer () {
 				textStack.push("</tfoot>");
 			}
 			textStack.push("</table>");
+
+			function getCellDataStr (ent) {
+				function convertZeros (num) {
+					if (num === 0) return 100;
+					return num;
+				}
+				if (ent.roll) {
+					return `data-roll-min="${convertZeros(ent.roll.exact || ent.roll.min)}" data-roll-max="${convertZeros(ent.roll.exact || ent.roll.max)}"`
+				}
+				return "";
+			}
 
 			function getTableThClassText (i) {
 				return entry.colStyles === undefined || i >= entry.colStyles.length ? "" : `class="${entry.colStyles[i]}"`;
@@ -309,7 +355,7 @@ function EntryRenderer () {
 
 		function handleOptions (self) {
 			if (entry.entries) {
-				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
+				entry.entries = entry.entries.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
 				handleEntriesOptionsInvocationPatron(self, false);
 			}
 		}
@@ -328,7 +374,14 @@ function EntryRenderer () {
 			const styleString = getStyleString();
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
-			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${entry.name}${inlineTitle ? "." : ""}</span> ` : "";
+			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span> ` : "";
+
+			if (depth === -1) {
+				if (!self._firstSection) {
+					textStack.push(`<hr class="section-break">`);
+				}
+				self._firstSection = false;
+			}
 
 			if (entry.entries || entry.name) {
 				textStack.push(`<${self.wrapperTag} ${dataString} ${styleString}>${headerSpan}${preReqText}`);
@@ -386,7 +439,7 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action" || tag === "@link") { // FIXME remove "@link"
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action") {
 						switch (tag) {
 							// FIXME remove "@link"
 							case "@link":
@@ -419,8 +472,9 @@ function EntryRenderer () {
 							type: "dice",
 							rollable: true
 						};
-						const [rollText, displayText] = text.split("|");
+						const [rollText, displayText, name] = text.split("|");
 						if (displayText) fauxEntry.displayText = displayText;
+						if (name) fauxEntry.name = name;
 
 						switch (tag) {
 							case "@dice": {
@@ -431,9 +485,9 @@ function EntryRenderer () {
 								for (let i = 0; i < spl.length; ++i) {
 									const it = spl[i];
 									if (it.includes("d")) {
-										const m = /^(\d+)d(\d+)$/.exec(it);
+										const m = /^(\d+)?d(\d+)$/.exec(it);
 										toRoll.push({
-											number: Number(m[1]),
+											number: Number(m[1]) || 1,
 											faces: Number(m[2]),
 											modifier: 0,
 											hideModifier: true
@@ -481,6 +535,17 @@ function EntryRenderer () {
 									}
 								})
 							}
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@link") {
+						const [displayText, url] = text.split("|");
+						const fauxEntry = {
+							type: "link",
+							href: {
+								type: "external",
+								url: url
+							},
+							text: displayText
 						};
 						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
@@ -550,6 +615,15 @@ function EntryRenderer () {
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							case "@race":
+								fauxEntry.href.path = "races.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_RACES,
+									source: source || SRC_PHB
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
 						}
 					}
 				} else {
@@ -570,7 +644,7 @@ function EntryRenderer () {
 			// baseURL is blank by default
 			href = `${this.baseUrl}${entry.href.path}#`;
 			if (entry.href.hash !== undefined) {
-				href += UrlUtil.encodeForHash(entry.href.hash);
+				href += entry.href.hashPreEncoded ? entry.href.hash : UrlUtil.encodeForHash(entry.href.hash);
 			}
 			if (entry.href.subhashes !== undefined) {
 				for (let i = 0; i < entry.href.subhashes.length; i++) {
@@ -653,37 +727,25 @@ EntryRenderer.splitByTags = function (string) {
 	return out;
 };
 
-EntryRenderer._rollerClick = function (ele, toRoll) {
-	const $ele = $(ele);
-	const total = toRoll.map(d => droll.roll(EntryRenderer._getDiceString(d, true)).total).reduce((a, b) => a + b);
-	if ($ele.data("rolled")) {
-		$ele.html(`${$ele.html().split("=")[0].trim()} = ${total}`);
-	} else {
-		$ele.data("rolled", true);
-		$ele.html(`${$ele.html()} = ${total}`);
-	}
-};
-
 EntryRenderer._getDiceString = function (diceItem, isDroll) {
 	return `${!diceItem.hideDice || isDroll ? `${diceItem.number}d${diceItem.faces}` : ""}${!diceItem.hideModifier && diceItem.modifier !== undefined ? `${diceItem.modifier >= 0 ? "+" : ""}${diceItem.modifier}` : ""}`;
 };
 
-EntryRenderer.getEntryDice = function (entry) {
+EntryRenderer.getEntryDice = function (entry, name) {
 	function getDiceAsStr () {
 		const stack = [];
 		entry.toRoll.forEach(d => stack.push(EntryRenderer._getDiceString(d)));
 		return stack.join("+");
 	}
 
+	function pack (obj) {
+		return `'${JSON.stringify(obj).replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'`;
+	}
+
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
-	// TODO make droll integration optional
-	if (typeof droll !== "undefined" && entry.rollable === true) {
-		// TODO output this somewhere nice
-		// TODO make this less revolting
-
-		// TODO output to small tooltip-stype bubble? Close on mouseout
-		return `<span class='roller unselectable' onclick='EntryRenderer._rollerClick(this, ${JSON.stringify(entry.toRoll)})'>${toDisplay}</span>`;
+	if (entry.rollable === true) {
+		return `<span class='roller unselectable' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'` : ""})">${toDisplay}</span>`;
 	} else {
 		return toDisplay;
 	}
@@ -1068,11 +1130,63 @@ EntryRenderer.race = {
 		let speed;
 		if (race.speed.walk) {
 			speed = race.speed.walk + "ft.";
-			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`
+			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`;
+			if (race.speed.fly) speed += `, fly ${race.speed.fly}ft.`;
+			if (race.speed.swim) speed += `, swim ${race.speed.swim}ft.`;
 		} else {
 			speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
 		}
 		return speed;
+	},
+
+	mergeSubraces: (races) => {
+		const out = [];
+		races.forEach(r => {
+			Array.prototype.push.apply(out, EntryRenderer.race._mergeSubrace(r));
+		});
+		return out;
+	},
+
+	_mergeSubrace: (race) => {
+		if (race.subraces) {
+			const srCopy = JSON.parse(JSON.stringify(race.subraces));
+			const out = [];
+
+			srCopy.forEach(s => {
+				const cpy = JSON.parse(JSON.stringify(race));
+				delete cpy.subraces;
+
+				// merge names, abilities, entries
+				if (s.name) {
+					cpy.name = `${cpy.name} (${s.name})`;
+					delete s.name;
+				}
+				if (s.ability) {
+					if (!cpy.ability) cpy.ability = {};
+					cpy.ability = Object.assign(cpy.ability, s.ability);
+					delete s.ability;
+				}
+				if (s.entries) {
+					s.entries.forEach(e => {
+						if (e.data && e.data.overwrite) {
+							const toOverwrite = cpy.entries.findIndex(it => it.name.toLowerCase().trim() === e.data.overwrite.toLowerCase().trim());
+							cpy.entries[toOverwrite] = e;
+						} else {
+							cpy.entries.push(e);
+						}
+					});
+					delete s.entries;
+				}
+
+				// overwrite everything else
+				Object.assign(cpy, s);
+
+				out.push(cpy);
+			});
+			return out;
+		} else {
+			return [race];
+		}
 	}
 };
 
@@ -1142,7 +1256,7 @@ EntryRenderer.monster = {
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
-			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})`);
+			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
 		}
 
 		const renderStack = [];
@@ -1292,7 +1406,7 @@ EntryRenderer.item = {
 		}
 
 		function sortProperties (a, b) {
-			return ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
+			return SortUtil.ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
 		}
 
 		let propertiesTxt = "";
@@ -1327,21 +1441,23 @@ EntryRenderer.item = {
 
 		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
 
-		// TODO rendering
 		const entryList = {type: "entries", entries: item.entries};
 		renderer.recursiveEntryRender(entryList, renderStack, 1);
 
 		renderStack.push(`</td></tr>`);
 
-		return renderStack.join(" ");
+		return renderStack.join("");
 	},
 
+	_builtList: null,
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
 	 * @param urls optional overrides for default URLs
 	 */
 	buildList: function (callback, urls) {
+		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
+
 		if (!urls) urls = {};
 		let itemList;
 		let basicItemList;
@@ -1514,6 +1630,7 @@ EntryRenderer.item = {
 					}
 				}
 			}
+			EntryRenderer.item._builtList = itemList;
 			callback(itemList);
 		}
 
@@ -1582,15 +1699,15 @@ EntryRenderer.psionic = {
 			modeStringArray.push(EntryRenderer.psionic.getModeString(psionic, renderer, i));
 		}
 
-		return `${EntryRenderer.psionic.getDescriptionString(psionic)}${EntryRenderer.psionic.getFocusString(psionic)}${modeStringArray.join(STR_EMPTY)}`;
+		return `${EntryRenderer.psionic.getDescriptionString(psionic, renderer)}${EntryRenderer.psionic.getFocusString(psionic, renderer)}${modeStringArray.join(STR_EMPTY)}`;
 	},
 
-	getDescriptionString: (psionic) => {
-		return `<p>${psionic.description}</p>`;
+	getDescriptionString: (psionic, renderer) => {
+		return `<p>${renderer.renderEntry({type: "inline", entries: [psionic.description]})}</p>`;
 	},
 
-	getFocusString: (psionic) => {
-		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${psionic.focus}</p>`;
+	getFocusString: (psionic, renderer) => {
+		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${renderer.renderEntry({type: "inline", entries: [psionic.focus]})}</p>`;
 	},
 
 	getModeString: (psionic, renderer, modeIndex) => {
@@ -1609,7 +1726,7 @@ EntryRenderer.psionic = {
 
 			const fauxEntry = {
 				type: "list",
-				style: "list-hang",
+				style: "list-hang-notitle",
 				items: []
 			};
 
@@ -1644,6 +1761,8 @@ EntryRenderer.psionic = {
 
 EntryRenderer.hover = {
 	linkCache: {},
+	_isInit: false,
+	_active: {},
 
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
@@ -1673,6 +1792,18 @@ EntryRenderer.hover = {
 		return EntryRenderer.hover.linkCache[page] && EntryRenderer.hover.linkCache[page][source] && EntryRenderer.hover.linkCache[page][source][hash];
 	},
 
+	_teardownWindow: (hoverId) => {
+		const obj = EntryRenderer.hover._active[hoverId];
+		if (obj) {
+			obj.$ele.attr("data-hover-active", false);
+			obj.$hov.remove();
+			$(document).off(obj.mouseUpId);
+			$(document).off(obj.mouseMoveId);
+			$(window).off(obj.resizeId);
+		}
+		delete EntryRenderer.hover._active[hoverId];
+	},
+
 	_makeWindow: () => {
 		if (!EntryRenderer.hover._curHovering) {
 			reset();
@@ -1696,7 +1827,7 @@ EntryRenderer.hover = {
 		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
 		const content = EntryRenderer.hover._curHovering.renderFunction(toRender);
 
-		$(ele).data("hover-active", true);
+		$(ele).attr("data-hover-active", true);
 
 		const offset = $(ele).offset();
 		const vpOffsetT = offset.top - $(document).scrollTop();
@@ -1706,6 +1837,22 @@ EntryRenderer.hover = {
 		const fromRight = vpOffsetL > $(window).width() / 2;
 
 		const $hov = $(`<div class="hoverbox" style="right: -600px"/>`);
+
+		const $body = $(`body`);
+		const $ele = $(ele);
+
+		$ele.on("mouseleave", (evt) => {
+			EntryRenderer.hover._cleanWindows();
+			if (!$brdrTop.data("perm") && !evt.shiftKey) {
+				teardown();
+			} else {
+				$(ele).attr("data-hover-active", true);
+				// use attr to let the CSS see it
+				$brdrTop.attr("data-perm", true);
+				delete EntryRenderer.hover._active[hoverId];
+			}
+		});
+
 		const $stats = $(`<table class="stats"></table>`);
 		$stats.append(content);
 		let drag = {};
@@ -1752,35 +1899,41 @@ EntryRenderer.hover = {
 		$brdrTop.on("dblclick", () => {
 			const curState = $brdrTop.attr("data-display-title");
 			$brdrTop.attr("data-display-title", curState === "false");
+			$brdrTop.attr("data-perm", true);
+			delete EntryRenderer.hover._active[hoverId];
 		});
 		$brdrTop.append($hovTitle);
-		const $btnClose = $(`<span class="glyphicon glyphicon-remove"></span>`)
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
-				teardown();
+				// alternate teardown for 'x' button
+				$ele.attr("data-hover-active", false);
+				$hov.remove();
+				$(document).off(mouseUpId);
+				$(document).off(mouseMoveId);
+				$(window).off(resizeId);
 			});
 		$brdrTop.append($btnClose);
 		$hov.append($brdrTop)
 			.append($stats)
 			.append(`<div class="hoverborder"></div>`);
 
-		$(`body`).append($hov);
+		$body.append($hov);
+		if (!permanent) {
+			EntryRenderer.hover._active[hoverId] = {
+				$hov: $hov,
+				$ele: $ele,
+				resizeId: resizeId,
+				mouseUpId: mouseUpId,
+				mouseMoveId: mouseMoveId
+			};
+		}
 
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
 		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
 		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
-
-		$(ele).on("mouseleave", (evt) => {
-			if (!$brdrTop.data("perm") && !evt.shiftKey) {
-				teardown();
-			} else {
-				$(ele).data("hover-active", true);
-				// use attr to let the CSS see it
-				$brdrTop.attr("data-perm", true);
-			}
-		});
 
 		adjustPosition(true);
 
@@ -1795,11 +1948,6 @@ EntryRenderer.hover = {
 				$hov.css("top", 0);
 			} else if (hvTop >= $(window).height() - EntryRenderer.hover._BAR_HEIGHT) {
 				$hov.css("top", $(window).height() - EntryRenderer.hover._BAR_HEIGHT);
-			} else if (first) {
-				const calcHeight = $hov.height();
-				if (hvTop + calcHeight > $(window).height()) {
-					$hov.css("top", 0);
-				}
 			}
 			// ...if horizontally clipping off screen
 			const hvLeft = parseFloat($hov.css("left"));
@@ -1811,11 +1959,7 @@ EntryRenderer.hover = {
 		}
 
 		function teardown () {
-			$(ele).data("hover-active", false);
-			$hov.remove();
-			$(document).off(mouseUpId);
-			$(document).off(mouseMoveId);
-			$(window).off(resizeId);
+			EntryRenderer.hover._teardownWindow(hoverId);
 		}
 
 		function reset () {
@@ -1829,8 +1973,15 @@ EntryRenderer.hover = {
 	_hoverId: 1,
 	_curHovering: null,
 	show: (evt, ele, page, source, hash) => {
+		if (!EntryRenderer.hover._isInit) {
+			EntryRenderer.hover._isInit = true;
+			$(`body`).on("click", () => {
+				EntryRenderer.hover._cleanWindows();
+			});
+		}
+
 		// don't show on mobile
-		if ($(window).width() <= 768) return;
+		if ($(window).width() <= 1024) return;
 
 		const alreadyHovering = $(ele).data("hover-active");
 		if (alreadyHovering) return;
@@ -1907,6 +2058,9 @@ EntryRenderer.hover = {
 
 		// clean up any old event listeners
 		$(ele).off("mouseleave");
+
+		// clean up any abandoned windows
+		EntryRenderer.hover._cleanWindows();
 
 		// cancel hover if the mouse leaves
 		$(ele).on("mouseleave", () => {
@@ -2003,7 +2157,18 @@ EntryRenderer.hover = {
 				break;
 			}
 			case UrlUtil.PG_RACES: {
-				loadSimple(page, "races.json", "race");
+				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					DataUtil.loadJSON(`data/races.json`, (data) => {
+						const merged = EntryRenderer.race.mergeSubraces(data.race);
+						merged.forEach(race => {
+							const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
+							EntryRenderer.hover._addToCache(page, race.source, raceHash, race)
+						});
+						EntryRenderer.hover._makeWindow();
+					});
+				} else {
+					EntryRenderer.hover._makeWindow();
+				}
 				break;
 			}
 			case UrlUtil.PG_DEITIES: {
@@ -2019,8 +2184,423 @@ EntryRenderer.hover = {
 				break;
 			}
 		}
+	},
+
+	_cleanWindows: () => {
+		const ks = Object.keys(EntryRenderer.hover._active);
+		ks.forEach(hovId => EntryRenderer.hover._teardownWindow(hovId));
 	}
 };
+
+EntryRenderer.dice = {
+	_$wrpRoll: null,
+	_$minRoll: null,
+	_$iptRoll: null,
+	_$outRoll: null,
+	_$head: null,
+	_hist: [],
+	_histIndex: null,
+	_$lastRolledBy: null,
+
+	randomise: (max) => {
+		if (typeof window !== "undefined" && typeof window.crypto !== "undefined") {
+			return EntryRenderer.dice._randomise(1, max + 1);
+		} else {
+			return 1 + Math.floor(Math.random() * max);
+		}
+	},
+
+	/**
+	 * Cryptographically secure RNG
+	 */
+	_randomise: (min, max) => {
+		const range = max - min;
+		const bytesNeeded = Math.ceil(Math.log2(range) / 8);
+		const randomBytes = new Uint8Array(bytesNeeded);
+		const maximumRange = Math.pow(Math.pow(2, 8), bytesNeeded);
+		const extendedRange = Math.floor(maximumRange / range) * range;
+		let i;
+		let randomInteger;
+		while (true) {
+			window.crypto.getRandomValues(randomBytes);
+			randomInteger = 0;
+			for (i = 0; i < bytesNeeded; i++) {
+				randomInteger <<= 8;
+				randomInteger += randomBytes[i];
+			}
+			if (randomInteger < extendedRange) {
+				randomInteger %= range;
+				return min + randomInteger;
+			}
+		}
+	},
+
+	parseRandomise: (str) => {
+		if (!str.trim()) return "";
+		const toRoll = EntryRenderer.dice._parse(str);
+		if (toRoll) {
+			return EntryRenderer.dice._rollParsed(toRoll);
+		} else {
+			return null;
+		}
+	},
+
+	_showBox: () => {
+		if (EntryRenderer.dice._$wrpRoll.css("display") !== "flex") {
+			EntryRenderer.dice._$minRoll.hide();
+			EntryRenderer.dice._$wrpRoll.css("display", "flex");
+			EntryRenderer.dice._$iptRoll.prop("placeholder", EntryRenderer.dice._randomPlaceholder())
+		}
+	},
+
+	_hideBox: () => {
+		EntryRenderer.dice._$minRoll.show();
+		EntryRenderer.dice._$wrpRoll.css("display", "");
+	},
+
+	_DICE: [4, 6, 8, 10, 12, 20, 100],
+	_randomPlaceholder: () => {
+		const count = EntryRenderer.dice.randomise(10);
+		const faces = EntryRenderer.dice._DICE[EntryRenderer.dice.randomise(EntryRenderer.dice._DICE.length - 1)];
+		const mod = (EntryRenderer.dice.randomise(3) - 2) * EntryRenderer.dice.randomise(10);
+		return `${count}d${faces}${mod < 0 ? mod : mod > 0 ? `+${mod}` : ""}`;
+	},
+
+	init: () => {
+		const $wrpRoll = $(`<div class="rollbox"/>`);
+		const $minRoll = $(`<div class="rollbox-min"><span class="glyphicon glyphicon-chevron-up"></span></div>`).on("click", () => {
+			EntryRenderer.dice._showBox();
+		});
+		const $head = $(`<div class="head-roll"><span class="hdr-roll">Dice Roller</span><span class="delete-icon glyphicon glyphicon-remove"></span></div>`)
+			.on("click", () => {
+				EntryRenderer.dice._hideBox();
+			});
+		const $outRoll = $(`<div class="out-roll">`);
+		const $iptRoll = $(`<input class="ipt-roll form-control" autocomplete="off" spellcheck="false">`)
+			.on("keypress", (e) => {
+				if (e.which === 13) { // return
+					EntryRenderer.dice.roll($iptRoll.val(), {
+						user: true,
+						name: "Anon"
+					});
+					$iptRoll.val("");
+				}
+				e.stopPropagation();
+			}).on("keydown", (e) => {
+				// arrow keys only work on keydown
+				if (e.which === 38) { // up arrow
+					EntryRenderer.dice._prevHistory()
+				} else if (e.which === 40) { // down arrow
+					EntryRenderer.dice._nextHistory()
+				}
+			});
+		$wrpRoll.append($head).append($outRoll).append($iptRoll);
+
+		EntryRenderer.dice._$wrpRoll = $wrpRoll;
+		EntryRenderer.dice._$minRoll = $minRoll;
+		EntryRenderer.dice._$head = $head;
+		EntryRenderer.dice._$outRoll = $outRoll;
+		EntryRenderer.dice._$iptRoll = $iptRoll;
+
+		$(`body`).append($minRoll).append($wrpRoll);
+	},
+
+	_prevHistory: () => {
+		EntryRenderer.dice._histIndex--;
+		EntryRenderer.dice._cleanHistoryIndex();
+		EntryRenderer.dice._$iptRoll.val(EntryRenderer.dice._hist[EntryRenderer.dice._histIndex]);
+	},
+
+	_nextHistory: () => {
+		EntryRenderer.dice._histIndex++;
+		EntryRenderer.dice._cleanHistoryIndex();
+		EntryRenderer.dice._$iptRoll.val(EntryRenderer.dice._hist[EntryRenderer.dice._histIndex]);
+	},
+
+	_cleanHistoryIndex: () => {
+		if (!EntryRenderer.dice._hist.length) {
+			EntryRenderer.dice._histIndex = null;
+		} else {
+			EntryRenderer.dice._histIndex = Math.min(EntryRenderer.dice._hist.length, Math.max(EntryRenderer.dice._histIndex, 0))
+		}
+	},
+
+	_addHistory: (str) => {
+		EntryRenderer.dice._hist.push(str);
+		// point index at the top of the stack
+		EntryRenderer.dice._histIndex = EntryRenderer.dice._hist.length;
+	},
+
+	_scrollBottom: () => {
+		EntryRenderer.dice._$outRoll.scrollTop(1e10);
+	},
+
+	rollerClick: (ele, packed, name) => {
+		const $ele = $(ele);
+		const entry = JSON.parse(packed);
+		// TODO
+		function attemptToGetTitle () {
+			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).first().text();
+			if (titleMaybe) {
+				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
+			}
+			return titleMaybe;
+		}
+
+		function attemptToGetName () {
+			const $hov = $ele.closest(`.hoverbox`);
+			if ($hov.length) {
+				return $hov.find(`.stats-name`).first().text();
+			}
+			const $roll = $ele.closest(`.out-roll-wrp`);
+			if ($roll.length) {
+				return $roll.data("name");
+			}
+			return document.title.replace("- 5etools", "").trim();
+		}
+
+		function getThRoll (total) {
+			const $td = $ele.closest(`table`).find(`td`).filter((i, e) => {
+				const $e = $(e);
+				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
+			});
+			if ($td.length && $td.nextAll().length) {
+				return $td.nextAll().get().map(ele => ele.innerHTML).join(" | ");
+			}
+		}
+
+		const rolledBy = {
+			name: attemptToGetName(),
+			label: name || attemptToGetTitle(ele)
+		};
+		if ($ele.parent().is("th")) {
+			EntryRenderer.dice.rollEntry(
+				entry,
+				rolledBy,
+				getThRoll
+			);
+		} else {
+			EntryRenderer.dice.rollEntry(
+				entry,
+				rolledBy
+			);
+		}
+	},
+
+	roll: (str, rolledBy) => {
+		if (!str.trim()) return;
+		const toRoll = EntryRenderer.dice._parse(str);
+		if (rolledBy.user) {
+			EntryRenderer.dice._addHistory(str);
+		}
+		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+	},
+
+	rollEntry: (entry, rolledBy, cbMessage) => {
+		const toRoll = {
+			dice: entry.toRoll.map(it => ({
+				neg: false,
+				num: it.number,
+				faces: it.faces
+			})),
+			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0)
+		};
+		EntryRenderer.dice._handleRoll(toRoll, rolledBy, cbMessage);
+	},
+
+	_handleRoll: (toRoll, rolledBy, cbMessage) => {
+		EntryRenderer.dice._showBox();
+		EntryRenderer.dice._checkHandleName(rolledBy.name);
+		const $out = EntryRenderer.dice._$lastRolledBy;
+
+		if (toRoll) {
+			const v = EntryRenderer.dice._rollParsed(toRoll);
+			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
+
+			$out.append(`
+				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
+					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
+					<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>
+					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
+					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
+				</div>`);
+		} else {
+			$out.append(`<div class="out-roll-item">Invalid roll!</div>`);
+		}
+		EntryRenderer.dice._scrollBottom();
+	},
+
+	addRoll: (rolledBy, msgText) => {
+		if (!msgText.trim()) return;
+		EntryRenderer.dice._showBox();
+		EntryRenderer.dice._checkHandleName(rolledBy.name);
+		EntryRenderer.dice._$outRoll.prepend(`<div class="out-roll-item" title="${rolledBy.name || ""}">${msgText}</div>`);
+		EntryRenderer.dice._scrollBottom();
+	},
+
+	_checkHandleName: (name) => {
+		if (!EntryRenderer.dice._$lastRolledBy || EntryRenderer.dice._$lastRolledBy.data("name") !== name) {
+			EntryRenderer.dice._$outRoll.prepend(`<div class="text-muted out-roll-id">${name}</div>`);
+			EntryRenderer.dice._$lastRolledBy = $(`<div class="out-roll-wrp"/>`).data("name", name);
+			EntryRenderer.dice._$outRoll.prepend(EntryRenderer.dice._$lastRolledBy);
+		}
+	},
+
+	rollDice: (count, faces) => {
+		const out = [];
+		for (let i = 0; i < count; ++i) {
+			out.push(EntryRenderer.dice.randomise(faces));
+		}
+		return out;
+	},
+
+	_rollParsed: (parsed) => {
+		if (!parsed) return null;
+
+		let rolls = [];
+		if (parsed.dice) {
+			rolls = parsed.dice.map(d => {
+				let r = EntryRenderer.dice.rollDice(d.num, d.faces);
+				const total = r.reduce((a, b) => a + b, 0);
+				const max = d.num * d.faces;
+				return {
+					rolls: r,
+					total: (-(d.neg || -1)) * total,
+					isMax: total === max,
+					isMin: total === d.num, // i.e. all 1's
+					neg: d.neg,
+					num: d.num,
+					faces: d.faces,
+					mod: d.mod
+				}
+			});
+		}
+		return {
+			rolls: rolls,
+			total: rolls.map(it => it.total).reduce((a, b) => a + b, 0) + (parsed.mod || 0),
+			modStr: parsed.mod ? `${parsed.mod < 0 ? "" : "+"}${parsed.mod}` : "",
+			allMax: parsed.dice && parsed.dice.length && rolls.every(it => it.isMax),
+			allMin: parsed.dice && parsed.dice.length && rolls.every(it => it.isMin)
+		}
+	},
+
+	_parse: (str) => {
+		str = str.replace(/\s/g, "").toLowerCase();
+		const mods = [];
+		str = str.replace(/(([+-]+)\d+)(?=[^d]|$)|(([+-]+|^)\d+$)|(([+-]+|^)\d+(?=[+-]))/g, (m0) => {
+			mods.push(m0);
+			return "";
+		});
+		const totalMods = mods.map(m => Number(m.replace(/--/g, "+"))).reduce((a, b) => a + b, 0);
+
+		function isNumber (char) {
+			return char >= "0" && char <= "9";
+		}
+
+		function getNew () {
+			return {
+				neg: false,
+				num: 1,
+				faces: 20
+			};
+		}
+
+		const S_INIT = -1;
+		const S_NONE = 0;
+		const S_COUNT = 1;
+		const S_FACES = 2;
+
+		const stack = [];
+
+		let state = str.length ? S_NONE : S_INIT;
+		let cur = getNew();
+		let temp = "";
+		let c;
+		for (let i = 0; i < str.length; ++i) {
+			c = str.charAt(i);
+
+			switch (state) {
+				case S_NONE:
+					if (c === "-") {
+						cur.neg = !cur.neg;
+					} else if (isNumber(c)) {
+						temp += c;
+						state = S_COUNT;
+					} else if (c === "d") {
+						state = S_FACES;
+					} else if (c !== "+") {
+						return null;
+					}
+					break;
+				case S_COUNT:
+					if (isNumber(c)) {
+						temp += c;
+					} else if (c === "d") {
+						if (temp) {
+							cur.num = Number(temp);
+							temp = "";
+						}
+						state = S_FACES;
+					} else {
+						return null;
+					}
+					break;
+				case S_FACES:
+					if (isNumber(c)) {
+						temp += c;
+					} else if (c === "+") {
+						if (temp) {
+							cur.faces = Number(temp);
+							if (!cur.num || !cur.faces) return null;
+							stack.push(cur);
+							cur = getNew();
+							temp = "";
+							state = S_NONE;
+						} else {
+							return null;
+						}
+					} else if (c === "-") {
+						if (temp) {
+							cur.faces = Number(temp);
+							if (!cur.num || !cur.faces) return null;
+							stack.push(cur);
+							cur = getNew();
+							cur.neg = true;
+							temp = "";
+							state = S_NONE;
+						} else {
+							return null;
+						}
+					} else {
+						return null;
+					}
+					break;
+			}
+		}
+		switch (state) {
+			case S_NONE:
+				return null;
+			case S_COUNT:
+				return null;
+			case S_FACES:
+				if (temp) {
+					cur.faces = Number(temp);
+				} else {
+					return null;
+				}
+				break;
+		}
+		if (state !== S_INIT) {
+			if (!cur.num || !cur.faces) return null;
+			stack.push(cur);
+		}
+
+		return {dice: stack, mod: totalMods};
+	}
+};
+if (!IS_ROLL20 && typeof window !== "undefined") {
+	window.addEventListener("load", EntryRenderer.dice.init);
+}
 
 /**
  * Recursively find all the names of entries, useful for indexing

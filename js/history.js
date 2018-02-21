@@ -1,5 +1,6 @@
 "use strict";
 
+// TODO refactor into own class
 function hashchange (e) {
 	if (isHistorySuppressed) {
 		setSuppressHistory(false);
@@ -76,8 +77,8 @@ function _getListElem (link, getIndex) {
 	if (listWrapper.data("lists")) {
 		for (let x = 0; x < listWrapper.data("lists").length; ++x) {
 			const list = listWrapper.data("lists")[x];
-			for (let y = 0; y < list.visibleItems.length; ++y) {
-				const item = list.visibleItems[y];
+			for (let y = 0; y < list.items.length; ++y) {
+				const item = list.items[y];
 				const $elm = $(item.elm).find(toFind);
 				if ($elm[0]) {
 					if (getIndex) return {$el: $elm, x: x, y: y};
@@ -90,5 +91,9 @@ function _getListElem (link, getIndex) {
 }
 
 function _freshLoad () {
-	location.replace($("#listcontainer").find(".list a").attr('href'));
+	// defer this, in case the list needs to filter first
+	setTimeout(() => {
+		const goTo = $("#listcontainer").find(".list a").attr('href');
+		if (goTo) location.replace(goTo);
+	}, 1);
 }

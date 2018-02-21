@@ -29,7 +29,7 @@ const STR_FAV_SOUL_V2 = "Favored Soul v2 (UA)";
 const STR_FAV_SOUL_V3 = "Favored Soul v3 (UA)";
 
 const TM_ACTION = "action";
-const TM_B_ACTION = "bonus action";
+const TM_B_ACTION = "bonus";
 const TM_REACTION = "reaction";
 const TM_ROUND = "round";
 const TM_MINS = "minute";
@@ -178,15 +178,9 @@ function getRangeType (range) {
 }
 
 function getTblTimeStr (time) {
-	// TODO change "bonus action" to "bonus" in the JSON, and update this to match (will require updates to parsing functions also)
-	let temp;
-	if (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit)) {
-		temp = time.unit.uppercaseFirst();
-	} else {
-		temp = Parser.getTimeToFull(time);
-	}
-	if (temp.toLowerCase().endsWith("bonus action")) temp = temp.substr(0, temp.length - 4) + "n.";
-	return temp;
+	return (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit))
+		? `${time.unit.uppercaseFirst()}${time.unit === TM_B_ACTION ? " acn." : ""}`
+		: `${time.number} ${time.unit === TM_B_ACTION ? "Bonus acn." : time.unit}${time.number > 1 ? "s" : ""}`.uppercaseFirst();
 }
 
 function getTimeDisplay (timeUnit) {
@@ -209,13 +203,6 @@ function getMetaFilterObj (s) {
 	return out;
 }
 
-function ascSortSpellLevel (a, b) {
-	if (a === b) return 0;
-	if (a === STR_CANTRIP) return -1;
-	if (b === STR_CANTRIP) return 1;
-	return ascSort(a, b);
-}
-
 function getFilterAbilitySave (ability) {
 	return `${ability.uppercaseFirst().substring(0, 3)}. Save`;
 }
@@ -224,8 +211,16 @@ function getFilterAbilityCheck (ability) {
 	return `${ability.uppercaseFirst().substring(0, 3)}. Check`;
 }
 
+function handleBrew (homebrew) {
+	addSpells(homebrew.spell);
+}
+
 window.onload = function load () {
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells)
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, () => {
+		BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
+		BrewUtil.makeBrewButton("manage-brew");
+		BrewUtil.setList(list);
+	});
 };
 
 let list;
@@ -314,10 +309,11 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.push(new FilterItem("Homebrew", () => {}));
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "level", "time", "school", "range", "classes"],
+		valueNames: ["name", "source", "level", "time", "school", "range", "classes", "uniqueid"],
 		listClass: "spells"
 	});
 
@@ -338,10 +334,21 @@ function pageInit (loadedSources) {
 
 function handleFilterChange () {
 	const f = filterBox.getValues();
-	list.filter(function (item) {
+	list.filter(item => {
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
-
-		return sourceFilter.toDisplay(f, s.source) && levelFilter.toDisplay(f, s.level) && metaFilter.toDisplay(f, s._fMeta) && schoolFilter.toDisplay(f, s.school) && damageFilter.toDisplay(f, s.damageInflict) && saveFilter.toDisplay(f, s.savingThrow) && checkFilter.toDisplay(f, s.opposedCheck) && timeFilter.toDisplay(f, s._fTimeType) && rangeFilter.toDisplay(f, s._fRangeType) && classAndSubclassFilter.toDisplay(f, s._fClasses, s._fSubclasses);
+		return filterBox.toDisplay(
+			f,
+			s.source,
+			s.level,
+			[s._fClasses, s._fSubclasses],
+			s._fMeta,
+			s.school,
+			s.damageInflict,
+			s.savingThrow,
+			s.opposedCheck,
+			s._fTimeType,
+			s._fRangeType
+		);
 	});
 }
 
@@ -349,6 +356,8 @@ let spellList = [];
 let spI = 0;
 
 function addSpells (data) {
+	if (!data || !data.length) return;
+
 	spellList = spellList.concat(data);
 
 	const spellTable = $("ul.spells");
@@ -417,6 +426,7 @@ function addSpells (data) {
 					<span class="range col-xs-2 col-xs-2-4">${Parser.spRangeToFull(spell.range)}</span>
 
 					<span class="classes" style="display: none">${Parser.spClassesToFull(spell.classes)}</span>
+					<span class="uniqueid hidden">${spell.uniqueId ? spell.uniqueId : spI}</span>
 				</a>
 			</li>`;
 
@@ -434,8 +444,8 @@ function addSpells (data) {
 	spellTable.append(tempString);
 
 	// sort filters
-	classFilter.items.sort(ascSort);
-	subclassFilter.items.sort(ascSort);
+	classFilter.items.sort(SortUtil.ascSort);
+	subclassFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -453,34 +463,34 @@ function sortSpells (a, b, o) {
 	}
 
 	if (o.valueName === "source") {
-		const bySrc = ascSort(a.source, b.source);
-		return bySrc !== 0 ? bySrc : ascSort(a.name, b.name);
+		const bySrc = SortUtil.ascSort(a.source, b.source);
+		return bySrc !== 0 ? bySrc : SortUtil.ascSort(a.name, b.name);
 	}
 
 	if (o.valueName === "level") {
-		return orFallback(ascSort, P_LEVEL);
+		return orFallback(SortUtil.ascSort, P_LEVEL);
 	}
 
 	if (o.valueName === "time") {
-		return orFallback(ascSort, P_NORMALISED_TIME);
+		return orFallback(SortUtil.ascSort, P_NORMALISED_TIME);
 	}
 
 	if (o.valueName === "school") {
-		return orFallback(ascSort, P_SCHOOL);
+		return orFallback(SortUtil.ascSort, P_SCHOOL);
 	}
 
 	if (o.valueName === "range") {
-		return orFallback(ascSort, P_NORMALISED_RANGE);
+		return orFallback(SortUtil.ascSort, P_NORMALISED_RANGE);
 	}
 
 	return 0;
 
 	function byName () {
-		return ascSort(a.name, b.name);
+		return SortUtil.ascSort(a.name, b.name);
 	}
 
 	function bySource () {
-		return ascSort(a.source, b.source);
+		return SortUtil.ascSort(a.source, b.source);
 	}
 
 	function fallback () {
@@ -508,6 +518,8 @@ function handleUnknownHash (link, sub) {
 			addSpells(spells);
 			hashchange();
 		})(src, "yes");
+	} else {
+		_freshLoad();
 	}
 }
 

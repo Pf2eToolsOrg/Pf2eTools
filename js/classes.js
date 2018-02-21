@@ -2,10 +2,13 @@
 const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";
 const HASH_ALL_SOURCES = "allsrc:";
+const HASH_COMP_VIEW = "compview:";
+const HASH_BOOK_VIEW = "bookview:";
 
 const CLSS_FEATURE_LINK = "feature-link";
 const CLSS_ACTIVE = "active";
 const CLSS_SUBCLASS_PILL = "sc-pill";
+const CLSS_PANEL_LINK = "pnl-link";
 const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
 const CLSS_OTHER_SOURCES_ACTIVE = "os-active";
 const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
@@ -20,35 +23,16 @@ const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
 const ATB_DATA_SC_LIST = "data-subclass-list";
 
-const HOMEBREW_STORAGE = "HOMEBREW_CLASSES";
-
 let tableDefault;
 let statsProfDefault;
 let classTableDefault;
 
 let classes;
 let list;
-let homebrew;
 
 const jsonURL = "data/classes.json";
 
 const renderer = new EntryRenderer();
-const storage = tryGetStorage();
-
-function tryGetStorage () {
-	try {
-		return window.localStorage;
-	} catch (e) {
-		// if the user has disabled cookies, build a fake version
-		return {
-			getItem: () => {
-				return null;
-			},
-			removeItem: () => {},
-			setItem: () => {}
-		}
-	}
-}
 
 window.onload = function load () {
 	tableDefault = $("#pagecontent").html();
@@ -74,47 +58,63 @@ function cleanScSource (source) {
 	return Parser._getSourceStringFromSource(source);
 }
 
+function cleanSetHash (toSet) {
+	window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
+}
+
 function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
 	});
-	// cache this, since it gets wiped by brew loading
-	const loadHash = window.location.hash;
-	addData(data);
 
-	const rawBrew = storage.getItem(HOMEBREW_STORAGE);
-	if (rawBrew) {
-		try {
-			homebrew = JSON.parse(rawBrew);
-			if (!homebrew.class && !homebrew.subclass) {
-				// if there's nothing usable in the stored brew, purge it
-				purgeBrew();
-			}
-			addData(homebrew);
-			addSubclassData(homebrew);
-			window.location.hash = loadHash;
-		} catch (e) {
-			// on error, purge all brew and reset hash
-			purgeBrew();
+	const invocFeature = data.class
+		.find(it => it.name === "Warlock" && it.source === SRC_PHB).classFeatures[1]
+		.find(f => f.name === "Eldritch Invocations");
+	if (invocFeature) {
+		const toRemove = invocFeature.entries.findIndex(it => it.type === "options");
+		const toSwitch = invocFeature.entries.findIndex(it => it.includes("Your invocation options are detailed at the end of the class description."));
+		if (toRemove !== -1 && toSwitch !== -1) {
+			invocFeature.entries[toSwitch] = {
+				type: "inlineBlock",
+				entries: [
+					"At 2nd level, you gain two eldritch invocations of your choice. See the ",
+					{
+						"type": "link",
+						"href": {
+							"type": "internal",
+							"path": "invocations.html"
+						},
+						"text": "Invocations page"
+					},
+					" for the list of available options. When you gain certain warlock levels, you gain additional invocations of your choice."
+				]
+			};
+			invocFeature.entries.splice(toRemove, 1);
 		}
 	}
+	addClassData(data);
 
-	function purgeBrew () {
-		storage.removeItem(HOMEBREW_STORAGE);
-		homebrew = null;
-		window.location.hash = "";
+	BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.setList(list);
+
+	function handleBrew (homebrew) {
+		addClassData(homebrew);
+		addSubclassData(homebrew);
 	}
 
 	initHistory();
+	initCompareMode();
+	initReaderMode();
 }
 
-function addData (data) {
+function addClassData (data) {
 	if (!data.class || !data.class.length) return;
 
 	// alphabetically sort subclasses
 	for (const c of data.class) {
-		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+		c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 	}
 
 	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
@@ -146,6 +146,14 @@ function addData (data) {
 	list.sort("name");
 }
 
+function getSubclassStyles (sc) {
+	const styleClasses = [CLSS_SUBCLASS_FEATURE];
+	const nonStandard = isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source);
+	if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+	if (cleanScSource(sc.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+	return styleClasses;
+}
+
 function addSubclassData (data) {
 	if (!data.subclass || !data.subclass.length) return;
 
@@ -161,16 +169,17 @@ function addSubclassData (data) {
 		c.subclasses = c.subclasses.concat(subClass);
 
 		// sort subclasses
-		c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
+		c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 	});
-	_freshLoad();
+	hashchange();
 }
 
+let curClass;
 function loadhash (id) {
 	$("#pagecontent").html(tableDefault);
 	$("#statsprof").html(statsProfDefault);
 	$("#classtable").html(classTableDefault);
-	const curClass = classes[id];
+	curClass = classes[id];
 
 	// name
 	$("th#nameTable").html(curClass.name);
@@ -184,9 +193,9 @@ function loadhash (id) {
 	// SUMMARY SIDEBAR =================================================================================================
 	// hit dice and HP
 	const hdEntry = {toRoll: [curClass.hd], rollable: true};
-	$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry));
+	$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry, "Hit die"));
 	$("td#hp div#hp1stlevel span").html(curClass.hd.faces + " + your Constitution modifier");
-	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry)} (or ${(curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
+	$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry, "Hit die")} (or ${(curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${curClass.name} level after 1st`);
 
 	// save proficiency
 	$("td#prof div#saves span").html(curClass.proficiency.map(p => Parser.attAbvToFull(p)).join(", "));
@@ -289,10 +298,7 @@ function loadhash (id) {
 							}
 						}
 
-						const styleClasses = [CLSS_SUBCLASS_FEATURE];
-						const hideSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
-						if (hideSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-						if (cleanScSource(subClass.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+						const styleClasses = getSubclassStyles(subClass);
 						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}"><td colspan="6">`, `</td></tr>`, true);
 					}
 				}
@@ -312,7 +318,7 @@ function loadhash (id) {
 	topBorder.after(renderStack.join(""));
 
 	// hide UA/other sources by default
-	$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).hide();
+	$(`.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_SUBCLASS_PILL}`).not(`.${CLSS_PANEL_LINK}`).hide();
 
 	// CLASS FEATURE/UA/SUBCLASS PILL BUTTONS ==========================================================================
 	const subclassPillWrapper = $("div#subclasses");
@@ -332,7 +338,7 @@ function loadhash (id) {
 	const subClasses = curClass.subclasses
 		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
 		.sort(function (a, b) {
-			return ascSort(a.shortName, b.shortName)
+			return SortUtil.ascSort(a.shortName, b.shortName)
 		});
 	for (let i = 0; i < subClasses.length; i++) {
 		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
@@ -377,7 +383,7 @@ function loadhash (id) {
 				outStack.push(hashKey + "false")
 			}
 
-			window.location.hash = outStack.join(HASH_PART_SEP).toLowerCase();
+			cleanSetHash(outStack.join(HASH_PART_SEP));
 		}
 	}
 
@@ -425,7 +431,7 @@ function loadhash (id) {
 			if (!hasSubclassHash) outStack.push(subclassLink);
 		}
 
-		window.location.hash = outStack.join(HASH_PART_SEP).toLowerCase();
+		cleanSetHash(outStack.join(HASH_PART_SEP));
 	}
 }
 
@@ -438,17 +444,25 @@ function loadsub (sub) {
 	let feature = null;
 	let hideClassFeatures = null;
 	let showAllSources = null;
+	let bookView = null;
+	let comparisonView = null;
+
+	function sliceTrue (hashPart, findString) {
+		return hashPart.slice(findString.length) === "true";
+	}
 
 	for (let i = 0; i < sub.length; i++) {
 		const hashPart = sub[i];
 
 		if (hashPart.startsWith(HASH_SUBCLASS)) subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart;
-		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = hashPart.slice(HASH_HIDE_FEATURES.length) === "true";
-		if (hashPart.startsWith(HASH_ALL_SOURCES)) showAllSources = hashPart.slice(HASH_ALL_SOURCES.length) === "true";
+		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = sliceTrue(hashPart, HASH_HIDE_FEATURES);
+		if (hashPart.startsWith(HASH_ALL_SOURCES)) showAllSources = sliceTrue(hashPart, HASH_ALL_SOURCES);
+		if (hashPart.startsWith(HASH_BOOK_VIEW)) bookView = sliceTrue(hashPart, HASH_BOOK_VIEW);
+		if (hashPart.startsWith(HASH_COMP_VIEW)) comparisonView = sliceTrue(hashPart, HASH_COMP_VIEW);
 	}
 
-	const hideOtherSources = showAllSources === null || showAllSources === false;
+	const hideOtherSources = !ClassBookView.bookViewActive && (showAllSources === null || showAllSources === false);
 
 	// deselect any pills that would be hidden
 	if (subclasses !== null && hideOtherSources) {
@@ -472,7 +486,7 @@ function loadsub (sub) {
 			const curParts = _getHashParts();
 			if (curParts.length > 1) {
 				const newParts = [curParts[0]].concat(newHashStack);
-				window.location.hash = HASH_START + newParts.join(HASH_PART_SEP);
+				cleanSetHash(HASH_START + newParts.join(HASH_PART_SEP));
 			}
 			return;
 		}
@@ -505,10 +519,12 @@ function loadsub (sub) {
 			}
 		);
 
+		ClassBookView.updateVisible($toShow, $toHide);
+
 		if ($toShow.length === 0) {
 			hideAllSubclasses();
 		} else {
-			const otherSrcSubFeat = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
+			const otherSrcSubFeat = $(`#pagecontent`).find(`div.${CLSS_NON_STANDARD_SOURCE}`);
 			const shownInTable = [];
 
 			$.each($toShow, function (i, v) {
@@ -548,11 +564,12 @@ function loadsub (sub) {
 		}
 	} else {
 		hideAllSubclasses();
+		ClassBookView.updateVisible([], $(`.${CLSS_SUBCLASS_PILL}`).map((i, e) => $(e)).get());
 	}
 
 	// hide class features as required
 	const cfToggle = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
-	const allCf = $(`.${CLSS_CLASS_FEATURE}`);
+	const allCf = $(`#pagecontent`).find(`.${CLSS_CLASS_FEATURE}`);
 	const toToggleCf = allCf.not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
 	const isHideClassFeatures = hideClassFeatures !== null && hideClassFeatures;
 	// if showing no subclass and hiding class features, hide the "gain a feature at this level" labels
@@ -573,7 +590,7 @@ function loadsub (sub) {
 
 	// show UA/etc pills as required
 	const srcToggle = $(`#${ID_OTHER_SOURCES_TOGGLE}`);
-	const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`);
+	const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_PANEL_LINK}`);
 	if (hideOtherSources) {
 		srcToggle.removeClass(CLSS_OTHER_SOURCES_ACTIVE);
 		toToggleSrc.hide();
@@ -589,6 +606,12 @@ function loadsub (sub) {
 	}
 
 	updateClassTableLinks();
+
+	if (bookView) ClassBookView.open();
+	else ClassBookView.teardown();
+
+	if (comparisonView) SubclassComparisonView.open();
+	else SubclassComparisonView.teardown();
 
 	function handleTableGroups (shownInTable, tableDataTag, show) {
 		$(`[data-subclass-list]`).each(
@@ -635,10 +658,11 @@ function loadsub (sub) {
 
 	function hideAllSubclasses () {
 		updateClassTableLinks();
+		const $pgContent = $(`#pagecontent`);
 		$(`.${CLSS_SUBCLASS_PILL}`).removeClass(CLSS_ACTIVE);
-		$(`.${CLSS_SUBCLASS_FEATURE}`).hide();
+		$pgContent.find(`.${CLSS_SUBCLASS_FEATURE}`).hide();
 		$(`.${CLSS_SUBCLASS_PREFIX}`).hide();
-		const allNonstandard = $(`div.${CLSS_NON_STANDARD_SOURCE}`);
+		const allNonstandard = $pgContent.find(`div.${CLSS_NON_STANDARD_SOURCE}`);
 		allNonstandard.hide();
 		// if we're showing features from other sources, make sure these stay visible
 		if (!hideOtherSources) {
@@ -654,154 +678,251 @@ function loadsub (sub) {
 	}
 }
 
-function manageBrew () {
-	const $body = $(`body`);
-	$body.css("overflow", "hidden");
-	const $overlay = $(`<div class="homebrew-overlay"/>`);
-	$overlay.on("click", () => {
-		$body.css("overflow", "");
-		$overlay.remove();
+function initCompareMode () {
+	$(`#btn-comparemode`).on("click", () => {
+		cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${SubclassComparisonView.SUBHASH}`);
 	});
-	const $window = $(`
-		<div class="homebrew-window dropdown-menu" style="display: block;">
-			<h4>Manage Homebrew</h4>
-			<hr>
-		</div>`
-	);
-	$window.on("click", (evt) => {
-		evt.stopPropagation();
-	});
-	const $brewList = $(`<div></div>`);
-	$window.append($brewList);
+}
 
-	refreshBrewList();
+const SubclassComparisonView = {
+	SUBHASH: `${HASH_COMP_VIEW}true`,
+	compareViewActive: false,
+	_$body: null,
+	_$wrpBookUnder: null,
+	_$wrpBook: null,
 
-	const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
-		addBrew(evt);
-	});
-	$window.append(
-		$(`<div class="text-align-center"/>`)
-			.append($(`<label class="btn btn-default btn-sm btn-file">Load File</label>`).append($iptAdd))
-			.append(" ")
-			.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Brew</button></a>`)
-	);
+	open: () => {
+		function hashTeardown () {
+			cleanSetHash(window.location.hash.replace(SubclassComparisonView.SUBHASH, ""));
+		}
 
-	$overlay.append($window);
-	$body.append($overlay);
+		if (SubclassComparisonView.compareViewActive) return;
+		SubclassComparisonView.compareViewActive = true;
 
-	function refreshBrewList () {
-		function render (type, prop, deleteFn) {
-			homebrew[prop].forEach(j => {
-				const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
-					deleteFn(j.uniqueId);
+		const $body = $(`body`);
+		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
+		const $wrpBook = $(`<div class="book-view"/>`);
+		SubclassComparisonView._$body = $body;
+		SubclassComparisonView._$wrpBookUnder = $wrpBookUnder;
+		SubclassComparisonView._$wrpBook = $wrpBook;
+
+		$body.css("overflow", "hidden");
+
+		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
+		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
+			.on("click", () => {
+				hashTeardown();
+			});
+		$brdTop.find(`div`).append($btnClose);
+		$bkTbl.append($brdTop);
+
+		const $tbl = $(`<table class="stats stats-book" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
+		const renderStack = [];
+		const numScLvls = curClass.subclasses[0].subclassFeatures.length;
+		for (let i = 0; i < numScLvls; ++i) {
+			renderStack.push(`<tr>`);
+			curClass.subclasses.forEach((sc, j) => {
+				renderStack.push(`<td class="subclass-features-${j} ${getSubclassStyles(sc).join(" ")}">`);
+				sc.subclassFeatures[i].forEach(f => {
+					renderer.recursiveEntryRender(f, renderStack);
 				});
-				const $btnExport = $(`<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span></button>`).on("click", () => {
-					DataUtil.userDownload(j.name, JSON.stringify(j, null, "\t"));
+				renderStack.push(`</td>`);
+			});
+			renderStack.push(`</tr>`);
+			renderStack.push(`<tr><th colspan="6"><hr></th></tr>`);
+		}
+		$tbl.append(renderStack.join(""));
+
+		let numShown = 0;
+		curClass.subclasses.forEach((sc, i) => {
+			const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
+			if (!($pill.hasClass("active"))) {
+				$tbl.find(`.subclass-features-${i}`).hide();
+			} else {
+				numShown++;
+			}
+		});
+
+		$tbl.find(`tr > td > div`).css("width", "400px");
+		const $tblRow = $(`<tr/>`);
+		$tblRow.append($(`<div style="overflow: auto; max-height: calc(100vh - 16px); ${numShown ? "" : "display: none;"}"/>`).append($tbl));
+		const $msgRow = $(`<tr ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">Please select some subclasses first</span><br></td></tr>`);
+		$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
+			hashTeardown();
+		}));
+		$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
+
+		$wrpBook.append($bkTbl);
+		$body.append($wrpBookUnder).append($wrpBook);
+	},
+
+	teardown: () => {
+		if (SubclassComparisonView.compareViewActive) {
+			SubclassComparisonView._$body.css("overflow", "");
+			SubclassComparisonView._$wrpBookUnder.remove();
+			SubclassComparisonView._$wrpBook.remove();
+			SubclassComparisonView.compareViewActive = false;
+		}
+	}
+};
+
+const ClassBookView = {
+	SUBHASH: `${HASH_BOOK_VIEW}true`,
+	bookViewActive: false,
+	_$body: null,
+	_$wrpBookUnder: null,
+	_$wrpBook: null,
+	_$bkTbl: null,
+	_$scToggles: {},
+
+	open: () => {
+		function tglCf ($bkTbl, $cfToggle) {
+			$bkTbl.find(`.class-features`).toggle();
+			$cfToggle.toggleClass("cf-active");
+		}
+
+		function hashTeardown () {
+			cleanSetHash(window.location.hash.replace(ClassBookView.SUBHASH, ""));
+		}
+
+		if (ClassBookView.bookViewActive) return;
+		ClassBookView.bookViewActive = true;
+
+		const $body = $(`body`);
+		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
+		const $wrpBook = $(`<div class="book-view"/>`);
+		ClassBookView._$body = $body;
+		ClassBookView._$wrpBookUnder = $wrpBookUnder;
+		ClassBookView._$wrpBook = $wrpBook;
+
+		$body.css("overflow", "hidden");
+
+		// main panel
+		const $pnlContent = $(`<div class="pnl-content"/>`);
+		const $bkTbl = $(`<table class="stats stats-book"/>`);
+		ClassBookView._$bkTbl = $bkTbl;
+		const $brdTop = $(`<tr><th class="border close-border" colspan="6"><div/></th></tr>`);
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
+			.on("click", () => {
+				hashTeardown();
+			});
+		$brdTop.find(`div`).append($btnClose);
+		$bkTbl.append($brdTop);
+
+		const renderStack = [];
+		renderer.setFirstSection(true);
+		renderer.recursiveEntryRender({type: "section", name: curClass.name}, renderStack, 0, `<tr><td colspan="6">`, `</td></tr>`, true);
+
+		renderStack.push(`<tr class="class-features"><td colspan="6">`);
+		curClass.classFeatures.forEach(lvl => {
+			lvl.forEach(cf => {
+				renderer.recursiveEntryRender(cf, renderStack);
+			});
+		});
+		renderStack.push(`</td></tr>`);
+
+		curClass.subclasses.forEach((sc, i) => {
+			renderStack.push(`<tr class="subclass-features-${i} ${getSubclassStyles(sc).join(" ")}"><td colspan="6">`);
+			sc.subclassFeatures.forEach(lvl => {
+				lvl.forEach(f => {
+					renderer.recursiveEntryRender(f, renderStack);
 				});
-				$brewList.append($(`<p>`).append($btnDel).append(" ").append($btnExport).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}. ${j.url ? `<a href="${j.url}" target="_blank">Source.</a>` : ""}`));
+			});
+			renderStack.push(`</td></tr>`);
+		});
+		renderStack.push(EntryRenderer.utils.getBorderTr());
+		$bkTbl.append(renderStack.join(""));
+		$pnlContent.append($bkTbl);
+
+		// menu panel
+		const $pnlMenu = $(`<div class="pnl-menu"/>`);
+		const $cfPill = $(`#cf-toggle`);
+
+		const $cfToggle = $(`<span class="pnl-link cf-active">Class Features</span>`).on("click", () => {
+			tglCf($bkTbl, $cfToggle);
+			$cfPill.click();
+		});
+
+		if (!($cfPill.hasClass("cf-active"))) {
+			tglCf($bkTbl, $cfToggle);
+		}
+
+		$pnlMenu.append($cfToggle);
+
+		curClass.subclasses.forEach((sc, i) => {
+			const name = hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
+			const styles = getSubclassStyles(sc);
+			const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
+
+			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${sc.name}" data-bk-source="${sc.source}">${name}</span>`).on("click", () => {
+				ClassBookView.tglSc($bkTbl, $scToggle, i);
+				$pill.click();
+			});
+
+			if (!($pill.hasClass("active"))) {
+				ClassBookView.tglSc($bkTbl, $scToggle, i);
+			}
+
+			ClassBookView._$scToggles[String(i)] = $scToggle;
+			$pnlMenu.append($scToggle);
+		});
+
+		const $menClose = $(`<span class="pnl-link pnl-link-close">\u21FD Close</span>`).on("click", () => {
+			hashTeardown();
+		});
+		$pnlMenu.append($menClose);
+
+		// right (blank) panel
+		const $pnlBlank = $(`<div class="pnl-menu pnl-menu-pad"/>`);
+
+		$wrpBook.append($pnlMenu).append($pnlContent).append($pnlBlank);
+		$body.append($wrpBookUnder).append($wrpBook);
+	},
+
+	teardown: () => {
+		if (ClassBookView.bookViewActive) {
+			ClassBookView._$bkTbl = null;
+			ClassBookView._$scToggles = {};
+
+			ClassBookView._$body.css("overflow", "");
+			ClassBookView._$wrpBookUnder.remove();
+			ClassBookView._$wrpBook.remove();
+			ClassBookView.bookViewActive = false;
+		}
+	},
+
+	tglSc: ($bkTbl, $scToggle, i) => {
+		$bkTbl.find(`.subclass-features-${i}`).toggle();
+		$scToggle.toggleClass("active");
+	},
+
+	updateVisible: ($toShow, $toHide) => {
+		function doUpdate ($list, show) {
+			$list.map($p => {
+				const $it = ClassBookView._$wrpBook.find(`.pnl-link[data-bk-subclass="${$p.attr(ATB_DATA_SC)}"][data-bk-source="${$p.attr(ATB_DATA_SRC)}"]`);
+				if ($it.length) {
+					const index = $it.data("i");
+					const $real = ClassBookView._$scToggles[index];
+					if (show && !$real.hasClass("active")) {
+						ClassBookView.tglSc(ClassBookView._$bkTbl, $real, Number(index));
+					} if (!show && $real.hasClass("active")) {
+						ClassBookView.tglSc(ClassBookView._$bkTbl, $real, Number(index));
+					}
+				}
 			});
 		}
 
-		$brewList.html("");
-		if (homebrew) {
-			render("Class", "class", deleteClassBrew);
-			render("Subclass", "subclass", deleteSubclassBrew);
+		if (ClassBookView.bookViewActive) {
+			// $toShow/$toHide are lists of subclass pills
+			doUpdate($toShow, true);
+			doUpdate($toHide, false);
 		}
 	}
+};
 
-	function addBrew (event) {
-		const input = event.target;
-
-		let readIndex = 0;
-		const reader = new FileReader();
-		reader.onload = () => {
-			const text = reader.result;
-			const json = JSON.parse(text);
-
-			// prepare for storage
-			if (json.class) {
-				json.class.forEach(c => {
-					c.uniqueId = CryptUtil.md5(JSON.stringify(c));
-				});
-			} else json.class = [];
-			if (json.subclass) {
-				json.subclass.forEach(sc => {
-					sc.uniqueId = CryptUtil.md5(JSON.stringify(sc));
-				});
-			} else json.subclass = [];
-
-			// store
-			function checkAndAdd (prop) {
-				const areNew = [];
-				const existingIds = homebrew[prop].map(it => it.uniqueId);
-				json[prop].forEach(it => {
-					if (!existingIds.find(id => it.uniqueId === id)) {
-						homebrew[prop].push(it);
-						areNew.push(it);
-					}
-				});
-				return areNew;
-			}
-
-			let classesToAdd = json.class;
-			let subclassesToAdd = json.subclass;
-			if (!homebrew) {
-				homebrew = json;
-			} else {
-				// only add if unique ID not already present
-				classesToAdd = checkAndAdd("class");
-				subclassesToAdd = checkAndAdd("subclass");
-			}
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
-
-			addData({class: classesToAdd});
-			addSubclassData({subclass: subclassesToAdd});
-
-			refreshBrewList();
-			if (input.files[readIndex]) {
-				reader.readAsText(input.files[readIndex++]);
-			} else {
-				// reset the input
-				$(event.target).val("");
-			}
-		};
-		reader.readAsText(input.files[readIndex++]);
-	}
-
-	function deleteClassBrew (uniqueId) {
-		const index = homebrew.class.findIndex(it => it.uniqueId === uniqueId);
-		if (index >= 0) {
-			homebrew.class.splice(index, 1);
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
-			refreshBrewList();
-			list.remove("uniqueid", uniqueId);
-			_freshLoad();
-		}
-	}
-
-	function deleteSubclassBrew (uniqueId) {
-		let subClass;
-		let index = 0;
-		for (; index < homebrew.subclass.length; ++index) {
-			if (homebrew.subclass[index].uniqueId === uniqueId) {
-				subClass = homebrew.subclass[index];
-				break;
-			}
-		}
-		if (subClass) {
-			const forClass = subClass.class;
-			homebrew.subclass.splice(index, 1);
-			storage.setItem(HOMEBREW_STORAGE, JSON.stringify(homebrew));
-			refreshBrewList();
-			const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
-
-			const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
-			if (indexInClass) {
-				c.subclasses.splice(indexInClass, 1);
-				c.subclasses = c.subclasses.sort((a, b) => ascSort(a.name, b.name));
-			}
-			refreshBrewList();
-			window.location.hash = "";
-		}
-	}
+function initReaderMode () {
+	$(`#btn-readmode`).on("click", () => {
+		cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${ClassBookView.SUBHASH}`);
+	});
 }

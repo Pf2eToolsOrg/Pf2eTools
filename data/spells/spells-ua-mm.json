@@ -218,7 +218,7 @@
 			},
 			"entries": [
 				"You touch a single computerized device or computer system to conjure a knowbot\u2014a partially sentient piece of software imprinted with vestiges of your own skills and computer abilities. For the duration of the spell, you can use a bonus action to have the knowbot execute a computer-related task that would normally require an action. The knowbot makes Intelligence ability checks using your ability score and proficiency bonuses (including your proficiency with hacking tools, if applicable).",
-				"You have a limited telepathic bond with the knowbot, out to a range of 500 feet from the device or system where the knowbot was conjured. If you move beyond this range, the knowbot disappears in 2d4 rounds, as if the duration of the spell had expired. Moving within range again immediately reestablishes the bond.",
+				"You have a limited telepathic bond with the knowbot, out to a range of 500 feet from the device or system where the knowbot was conjured. If you move beyond this range, the knowbot disappears in {@dice 2d4} rounds, as if the duration of the spell had expired. Moving within range again immediately reestablishes the bond.",
 				"The knowbot is bound to the system in which it was created, and it stays there until it is dismissed or the spell's duration expires."
 			],
 			"entriesHigherLevel": [
@@ -441,11 +441,11 @@
 			},
 			"entries": [
 				"This spell plays havoc with electronic devices, making the use of such devices all but impossible. Each electronic device in a 10-foot-radius sphere centered on a point you choose within range is subject to random behavior while it remains within the area. A device not held by a creature is automatically affected. If an electronic device is held by a creature, that creature must succeed on a Wisdom saving throw or have the device affected by the spell.",
-				"At the start of each of your turns, roll a d6 for each affected device to determine its behavior. Except where otherwise indicated, that behavior lasts until the start of your next turn while this spell is in effect.",
+				"At the start of each of your turns, roll a {@dice d6} for each affected device to determine its behavior. Except where otherwise indicated, that behavior lasts until the start of your next turn while this spell is in effect.",
 				{
 					"type": "table",
 					"colLabels": [
-						"d6",
+						"{@dice d6}",
 						"Effect"
 					],
 					"colStyles": [
@@ -454,19 +454,40 @@
 					],
 					"rows": [
 						[
-							"1",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
 							"The device shuts down and must be restarted. Do not roll again for this device until it is restarted."
 						],
 						[
-							"2-4",
+							{
+								"type": "cell",
+								"roll": {
+									"min": 2,
+									"max": 4
+								}
+							},
 							"The device does not function."
 						],
 						[
-							"5",
-							"The device experiences a power surge, causing an electric shock to the wielder (if any) and one random creature within 5 feet of the device. Each affected creature must make a Dexterity saving throw against your spell save DC, taking 6d6 lightning damage on a failed save, or half as much damage on a successful one."
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"The device experiences a power surge, causing an electric shock to the wielder (if any) and one random creature within 5 feet of the device. Each affected creature must make a Dexterity saving throw against your spell save DC, taking {@dice 6d6} lightning damage on a failed save, or half as much damage on a successful one."
 						],
 						[
-							"6",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
 							"The device is usable as normal."
 						]
 					]

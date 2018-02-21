@@ -15,15 +15,15 @@ window.onload = function load () {
 };
 
 function onJsonLoad (data) {
-	raceData = data.race;
+	raceData = EntryRenderer.race.mergeSubraces(data.race);
 
 	$("#rollbutton").click(rollstats);
 
 	$(function () {
 		$("#reset").click(function () {
-			$(".base").val(8)
-			$(".choose").prop("checked", false)
-			changeTotal()
+			$(".base").val(8);
+			$(".choose").prop("checked", false);
+			changeTotal();
 			changeBase()
 		});
 	});
@@ -121,7 +121,7 @@ function changeBase (e) {
 function rollstats () {
 	var rolls = [];
 	for (var i = 0; i < 6; i++) {
-		var curroll = droll.roll("4d6").rolls.sort().splice(1);
+		var curroll = EntryRenderer.dice.parseRandomise("4d6").rolls[0].rolls.sort().slice(1);
 		curroll = curroll[0] + curroll[1] + curroll[2];
 		rolls.push(curroll);
 	}

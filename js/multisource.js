@@ -7,18 +7,19 @@ const JSON_SRC_INDEX = "index.json";
  * @param jsonListName the name of the root JSON property for the list of data
  * @param pageInitFn function to be run once the index has loaded, should accept an object of src:URL mappings
  * @param dataFn function to be run when all data has been loaded, should accept a list of objects custom to the page
+ * * @param cbOpt optional callback to be run after dataFn, but before page history/etc is init'd
  * (e.g. spell data objects for the spell page) which were found in the `jsonListName` list
  */
-function multisourceLoad (jsonDir, jsonListName, pageInitFn, dataFn) {
+function multisourceLoad (jsonDir, jsonListName, pageInitFn, dataFn, cbOpt) {
 	// load the index
 	DataUtil.loadJSON(jsonDir + JSON_SRC_INDEX, function (index) {
-		_onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn)
+		_onIndexLoad(index, jsonDir, jsonListName, pageInitFn, dataFn, cbOpt)
 	});
 }
 
 let loadedSources;
 
-function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
+function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, cbOpt) {
 	// track loaded sources
 	loadedSources = {};
 	Object.keys(src2UrlMap).forEach(src => loadedSources[src] = {url: jsonDir + src2UrlMap[src], loaded: false});
@@ -70,6 +71,9 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn) {
 				let toAdd = [];
 				dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
 				addFn(toAdd);
+				if (cbOpt) {
+					cbOpt();
+				}
 
 				initHistory();
 				handleFilterChange();

@@ -43,7 +43,7 @@ function onJsonLoad (data) {
 	filterBox.render();
 
 	// sort filters
-	sourceFilter.items.sort(ascSort);
+	sourceFilter.items.sort(SortUtil.ascSort);
 
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
@@ -54,7 +54,7 @@ function onJsonLoad (data) {
 		const f = filterBox.getValues();
 		list.filter(function (item) {
 			const bg = bgList[$(item.elm).attr(FLTR_ID)];
-			return sourceFilter.toDisplay(f, bg.source);
+			return filterBox.toDisplay(f, bg.source);
 		});
 	}
 

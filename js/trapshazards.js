@@ -31,7 +31,7 @@ function onJsonLoad (data) {
 	const list = ListUtil.search({
 		valueNames: ["name", "trapType", "source"],
 		listClass: "trapshazards",
-		sortFunction: listSort
+		sortFunction: SortUtil.listSort
 	});
 
 	initHistory();

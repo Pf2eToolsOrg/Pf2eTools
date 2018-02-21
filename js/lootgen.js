@@ -16,6 +16,14 @@ function loadloot (lootData) {
 	$("button#genloot").click(function () {
 		rollLoot();
 	});
+	const $selTables = $(`#table-sel`);
+	lootData.magicitems.forEach((t, i) => {
+		$selTables.append(`<option value="${i}">${t.name}</option>`);
+	});
+	$selTables.on("change", () => {
+		const v = $selTables.val();
+		if (v !== "") displayTable(v);
+	});
 }
 
 function displayTable (arrayEntry) {
@@ -61,7 +69,7 @@ function rollLoot () {
 		if (artgems) {
 			let artgemstable = loot.artobjects ? lootList.artobjects : lootList.gemstones;
 			for (let i = 0; i < artgemstable.length; i++) if (artgemstable[i].type === artgems.type) artgemstable = artgemstable[i];
-			const roll = droll.roll(artgems.amount).total;
+			const roll = EntryRenderer.dice.parseRandomise(artgems.amount).total;
 			const gems = [];
 			for (let i = 0; i < roll; i++) gems.push(artgemstable.table[randomNumber(0, artgemstable.table.length - 1)]);
 			$("#lootoutput ul:eq(0)").append("<li>" + (roll > 1 ? "x" + roll + " " : "") + Parser._addCommas(artgems.type) + " gp " + (loot.artobjects ? "art object" : "gemstone") + (roll > 1 ? "s" : "") + ":<ul>" + sortArrayAndCountDupes(gems) + "</ul></li>");
@@ -86,7 +94,7 @@ function rollLoot () {
 						magicitemstable = magicitemstable[tablearrayentry];
 					}
 				}
-				const roll = droll.roll(curamount).total;
+				const roll = EntryRenderer.dice.parseRandomise(curamount).total;
 				const magicitems = [];
 				for (let i = 0; i < roll; i++) {
 					let curmagicitem = null;
@@ -139,7 +147,7 @@ function generateCoinsFromLoot (loot) {
 	for (let i = coins.length - 1; i >= 0; i--) {
 		if (!coins[i]) continue;
 		const multiplier = coins[i].split("*")[1];
-		let rolledValue = droll.roll(coins[i].split("*")[0]).total;
+		let rolledValue = EntryRenderer.dice.parseRandomise(coins[i].split("*")[0]).total;
 		if (multiplier) rolledValue *= parseInt(multiplier);
 		const coin = {"denomination": coinnames[i], "value": rolledValue};
 		retVal.push(coin);

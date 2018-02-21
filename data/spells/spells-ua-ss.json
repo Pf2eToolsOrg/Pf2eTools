@@ -116,14 +116,14 @@
 					"type": "entries",
 					"name": "Coming of Age",
 					"entries": [
-						"You touch one humanoid old enough to be a young adult. For the next 24 hours, whenever the target makes an ability check, it can roll a d4 and add the number rolled to the ability check. A creature can benefit from this ceremony just once."
+						"You touch one humanoid old enough to be a young adult. For the next 24 hours, whenever the target makes an ability check, it can roll a {@dice d4} and add the number rolled to the ability check. A creature can benefit from this ceremony just once."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Dedication",
 					"entries": [
-						"You touch one humanoid who would willingly convert to your religion or who wishes to be dedicated to your god's service. For the next 24 hours, whenever the target makes a saving throw, it can roll a d4 and add the number rolled to the save. A creature can benefit from this ceremony just once."
+						"You touch one humanoid who would willingly convert to your religion or who wishes to be dedicated to your god's service. For the next 24 hours, whenever the target makes a saving throw, it can roll a {@dice d4} and add the number rolled to the save. A creature can benefit from this ceremony just once."
 					]
 				},
 				{
@@ -186,12 +186,12 @@
 				]
 			},
 			"entries": [
-				"You hurl an undulating, warbling mass of chaotic energy at one creature in range. Make a ranged spell attack against the target. On a hit, the target takes 2d8 damage. Choose one of the d8s. The number it rolled determines the type of damage, as shown below.",
+				"You hurl an undulating, warbling mass of chaotic energy at one creature in range. Make a ranged spell attack against the target. On a hit, the target takes {@dice 2d8} damage. Choose one of the {@dice d8}s. The number it rolled determines the type of damage, as shown below.",
 				{
 					"type": "table",
 					"caption": "Chaos Bolt",
 					"colLabels": [
-						"d8",
+						"{@dice d8}",
 						"Damage Type"
 					],
 					"colStyles": [
@@ -200,47 +200,87 @@
 					],
 					"rows": [
 						[
-							"1",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
 							"Acid"
 						],
 						[
-							"2",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
 							"Cold"
 						],
 						[
-							"3",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								}
+							},
 							"Fire"
 						],
 						[
-							"4",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								}
+							},
 							"Force"
 						],
 						[
-							"5",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
 							"Lightning"
 						],
 						[
-							"6",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
 							"Poison"
 						],
 						[
-							"7",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 7
+								}
+							},
 							"Psychic"
 						],
 						[
-							"8",
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 8
+								}
+							},
 							"Thunder"
 						]
 					]
 				},
-				"If you roll the same number on both d8s, the chaotic energy leaps from the target to a different creature of your choice within 30 feet of it. Make a new attack roll against the new target, and make a new damage roll, which could cause the chaotic energy to leap again. A creature can be targeted only once by this mass of chaotic energy."
+				"If you roll the same number on both {@dice d8}s, the chaotic energy leaps from the target to a different creature of your choice within 30 feet of it. Make a new attack roll against the new target, and make a new damage roll, which could cause the chaotic energy to leap again. A creature can be targeted only once by this mass of chaotic energy."
 			],
 			"entriesHigherLevel": [
 				{
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, each target takes extra damage of the type rolled. The extra damage equals 1d6 for each slot level above 1st."
+						"When you cast this spell using a spell slot of 2nd level or higher, each target takes extra damage of the type rolled. The extra damage equals {@dice 1d6} for each slot level above 1st."
 					]
 				}
 			],
@@ -314,7 +354,7 @@
 			"entries": [
 				"You create a Tiny incorporeal hand of shimmering light in an unoccupied space you can see within range. The hand exists for the duration, but it disappears if you teleport or you travel to a different plane of existence.",
 				"When the hand appears, you name one major landmark, such as a city, mountain, castle, or battlefield on the same plane of existence as you. Someone in history must have visited the site and mapped it. If the landmark appears on no map in existence, the spell fails. Otherwise, whenever you move toward the hand, it moves away from you at the same speed you moved, and it moves in the direction of the landmark, always remaining 5 feet away from you.",
-				"If you don't move toward the hand, it remains in place until you do and beckons for you to follow once every 1d4 minutes."
+				"If you don't move toward the hand, it remains in place until you do and beckons for you to follow once every {@dice 1d4} minutes."
 			]
 		},
 		{
@@ -354,8 +394,8 @@
 				]
 			},
 			"entries": [
-				"You raise your hand, and burning radiance erupts from it. Each creature of your choice that you can see within 5 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage.",
-				"The spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d8)."
+				"You raise your hand, and burning radiance erupts from it. Each creature of your choice that you can see within 5 feet of you must succeed on a Constitution saving throw or take {@dice 1d6} radiant damage.",
+				"The spell's damage increases by {@dice 1d6} when you reach 5th level ({@dice 2d6}), 11th level ({@dice 3d6}), and 17th level ({@dice 4d8})."
 			],
 			"damageInflict": [
 				"radiant"
@@ -410,7 +450,7 @@
 			},
 			"entries": [
 				"You create a healing elixir in a simple vial that appears in your hand. The elixir retains its potency for the duration or until it's consumed, at which point the vial vanishes.",
-				"As an action, a creature can drink the elixir or administer it to another creature. The drinker regains 2d4+2 hit points."
+				"As an action, a creature can drink the elixir or administer it to another creature. The drinker regains {@dice 2d4+2} hit points."
 			]
 		},
 		{
@@ -463,8 +503,8 @@
 				]
 			},
 			"entries": [
-				"You cause mites, fleas, and other parasites to appear momentarily on one creature you can see within range. The target must succeed on a Constitution saving throw or take 1d6 piercing damage. If the target takes any of that damage, the target moves 5 feet in a random direction. Roll a d8 for the direction: 1, north; 2, northeast; 3, east; 4, southeast; 5, south; 6, southwest; 7, west; or 8, northwest.",
-				"The spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
+				"You cause mites, fleas, and other parasites to appear momentarily on one creature you can see within range. The target must succeed on a Constitution saving throw or take {@dice 1d6} piercing damage. If the target takes any of that damage, the target moves 5 feet in a random direction. Roll a {@dice d8} for the direction: 1, north; 2, northeast; 3, east; 4, southeast; 5, south; 6, southwest; 7, west; or 8, northwest.",
+				"The spell's damage increases by {@dice 1d6} when you reach 5th level ({@dice 2d6}), 11th level ({@dice 3d6}), and 17th level ({@dice 4d6})."
 			],
 			"damageInflict": [
 				"piercing"
@@ -508,8 +548,8 @@
 				]
 			},
 			"entries": [
-				"Your teeth or fingernails lengthen and sharpen. You choose which. Make a melee spell attack against one creature within 5 feet of you. On a hit, the target takes 1d10 piercing or slashing damage (your choice). After you make the attack, your teeth or fingernails return to normal.",
-				"The spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10)."
+				"Your teeth or fingernails lengthen and sharpen. You choose which. Make a melee spell attack against one creature within 5 feet of you. On a hit, the target takes {@dice 1d10} piercing or slashing damage (your choice). After you make the attack, your teeth or fingernails return to normal.",
+				"The spell's damage increases by {@dice 1d10} when you reach 5th level ({@dice 2d10}), 11th level ({@dice 3d10}), and 17th level ({@dice 4d10})."
 			],
 			"damageInflict": [
 				"piercing",
@@ -684,7 +724,7 @@
 			"time": [
 				{
 					"number": 1,
-					"unit": "bonus action"
+					"unit": "bonus"
 				}
 			],
 			"range": {
@@ -767,8 +807,8 @@
 				]
 			},
 			"entries": [
-				"You point at one creature you can see within range, and the sound of a dolorous bell fills the air around it for a moment. The target must succeed on a Wisdom saving throw or take 1d8 necrotic damage. If the target is missing any of its hit points, it instead takes 1d12 necrotic damage.",
-				"The spell's damage increases by one die when you reach 5th level (2d8 or 2d12), 11th level (3d8 or 3d12), and 17th level (4d8 or 4d12)."
+				"You point at one creature you can see within range, and the sound of a dolorous bell fills the air around it for a moment. The target must succeed on a Wisdom saving throw or take {@dice 1d8} necrotic damage. If the target is missing any of its hit points, it instead takes {@dice 1d12} necrotic damage.",
+				"The spell's damage increases by one die when you reach 5th level ({@dice 2d8} or {@dice 2d12}), 11th level ({@dice 3d8} or {@dice 3d12}), and 17th level ({@dice 4d8} or {@dice 4d12})."
 			],
 			"damageInflict": [
 				"necrotic"
@@ -865,7 +905,7 @@
 				]
 			},
 			"entries": [
-				"You touch one creature, imbuing it with vitality. If the target has at least 1 hit point, it gains a number of temporary hit points equal to 1d4 + your spellcasting ability modifier. The temporary hit points are lost when the spell ends."
+				"You touch one creature, imbuing it with vitality. If the target has at least 1 hit point, it gains a number of temporary hit points equal to {@dice 1d4} + your spellcasting ability modifier. The temporary hit points are lost when the spell ends."
 			]
 		},
 		{
@@ -935,7 +975,7 @@
 			"time": [
 				{
 					"number": 1,
-					"unit": "bonus action"
+					"unit": "bonus"
 				}
 			],
 			"range": {

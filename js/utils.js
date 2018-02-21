@@ -93,6 +93,8 @@ ABIL_WIS = "Wisdom";
 ABIL_CHA = "Charisma";
 ABIL_CH_ANY = "Choose Any";
 
+HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -119,6 +121,14 @@ String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 		if (str.length === 0) return str;
 		if (str.length === 1) return str.charAt(0).toUpperCase();
 		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
+
+String.prototype.lowercaseFirst = String.prototype.lowercaseFirst ||
+	function () {
+		const str = this.toString();
+		if (str.length === 0) return str;
+		if (str.length === 1) return str.charAt(0).toLowerCase();
+		return str.charAt(0).toLowerCase() + str.slice(1);
 	};
 
 String.prototype.toTitleCase = String.prototype.toTitleCase ||
@@ -154,6 +164,17 @@ String.prototype.toTitleCase = String.prototype.toTitleCase ||
 		return str;
 	};
 
+// as we're targeting ES6
+String.prototype.ltrim = String.prototype.ltrim ||
+	function () {
+		return this.replace(/^\s+/, "");
+	};
+
+String.prototype.rtrim = String.prototype.rtrim ||
+	function () {
+		return this.replace(/\s+$/, "");
+	};
+
 StrUtil = {
 	joinPhraseArray: function (array, joiner, lastJoiner) {
 		if (array.length === 0) return "";
@@ -176,7 +197,11 @@ StrUtil = {
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
 	TITLE_LOWER_WORDS: ["A", "An", "The", "And", "But", "Or", "For", "Nor", "As", "At", "By", "For", "From", "In", "Into", "Near", "Of", "On", "Onto", "To", "With"],
 	// Certain words such as initialisms or acronyms should be left uppercase
-	TITLE_UPPER_WORDS: ["Id", "Tv"]
+	TITLE_UPPER_WORDS: ["Id", "Tv"],
+
+	padNumber: (n, len, padder) => {
+		return String(n).padStart(len, padder);
+	}
 };
 
 RegExp.escape = function (string) {
@@ -651,7 +676,7 @@ Parser.spTimeListToFull = function (times) {
 };
 
 Parser.getTimeToFull = function (time) {
-	return `${time.number} ${time.unit}${time.number > 1 ? "s" : ""}`
+	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`
 };
 
 Parser.spRangeToFull = function (range) {
@@ -745,7 +770,7 @@ Parser.spClassesToFull = function (classes) {
 
 Parser.spMainClassesToFull = function (classes) {
 	return classes.fromClassList
-		.sort((a, b) => ascSort(a.name, b.name))
+		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
 		.map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`)
 		.join(", ");
 };
@@ -754,8 +779,8 @@ Parser.spSubclassesToFull = function (classes) {
 	if (!classes.fromSubclass) return "";
 	return classes.fromSubclass
 		.sort((a, b) => {
-			const byName = ascSort(a.class.name, b.class.name);
-			return byName || ascSort(a.subclass.name, b.subclass.name);
+			const byName = SortUtil.ascSort(a.class.name, b.class.name);
+			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
 		.map(c => Parser._spSubclassItem(c))
 		.join(", ");
@@ -828,8 +853,8 @@ Parser.levelToFull = function (level) {
 };
 
 Parser.invoSpellToFull = function (spell) {
-	if (spell === "Eldritch Blast") return spell + " cantrip";
-	if (spell === "Hex/Curse") return "Hex spell or a warlock feature that curses";
+	if (spell === "Eldritch Blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
+	if (spell === "Hex/Curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell Hex} spell or a warlock feature that curses");
 	return STR_NONE
 };
 
@@ -879,6 +904,7 @@ Parser.CAT_ID_DEITY = 14;
 Parser.CAT_ID_OBJECT = 15;
 Parser.CAT_ID_TRAP = 16;
 Parser.CAT_ID_HAZARD = 17;
+Parser.CAT_ID_QUICKREF = 18;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -898,6 +924,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OBJECT] = "Object";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAP] = "Trap";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_QUICKREF] = "Quick Reference";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -917,8 +944,8 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 	const toCheck = [];
 	classes.fromSubclass
 		.sort((a, b) => {
-			const byName = ascSort(a.class.name, b.class.name);
-			return byName || ascSort(a.subclass.name, b.subclass.name);
+			const byName = SortUtil.ascSort(a.class.name, b.class.name);
+			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
 		.forEach(c => {
 			const nm = c.subclass.name;
@@ -1089,6 +1116,7 @@ SRC_EEPC = "EEPC";
 SRC_EET = "EET";
 SRC_HotDQ = "HotDQ";
 SRC_LMoP = "LMoP";
+SRC_Mag = "Mag";
 SRC_MM = "MM";
 SRC_OotA = "OotA";
 SRC_PHB = "PHB";
@@ -1190,6 +1218,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_EEPC] = "Elemental Evil Player's Companion";
 Parser.SOURCE_JSON_TO_FULL[SRC_EET] = "Elemental Evil: Trinkets";
 Parser.SOURCE_JSON_TO_FULL[SRC_HotDQ] = "Hoard of the Dragon Queen";
 Parser.SOURCE_JSON_TO_FULL[SRC_LMoP] = "Lost Mine of Phandelver";
+Parser.SOURCE_JSON_TO_FULL[SRC_Mag] = "Dragon Magazine";
 Parser.SOURCE_JSON_TO_FULL[SRC_MM] = "Monster Manual";
 Parser.SOURCE_JSON_TO_FULL[SRC_OotA] = "Out of the Abyss";
 Parser.SOURCE_JSON_TO_FULL[SRC_PHB] = "Player's Handbook";
@@ -1272,6 +1301,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_EEPC] = "EEPC";
 Parser.SOURCE_JSON_TO_ABV[SRC_EET] = "EET";
 Parser.SOURCE_JSON_TO_ABV[SRC_HotDQ] = "HotDQ";
 Parser.SOURCE_JSON_TO_ABV[SRC_LMoP] = "LMoP";
+Parser.SOURCE_JSON_TO_ABV[SRC_Mag] = "Mag";
 Parser.SOURCE_JSON_TO_ABV[SRC_MM] = "MM";
 Parser.SOURCE_JSON_TO_ABV[SRC_OotA] = "OotA";
 Parser.SOURCE_JSON_TO_ABV[SRC_PHB] = "PHB";
@@ -1452,7 +1482,7 @@ function isNonstandardSource (source) {
 }
 
 function _isNonStandardSourceWiz (source) {
-	return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA;
+	return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA || source === SRC_Mag;
 }
 
 function _isNonStandardSource3pp (source) {
@@ -1628,8 +1658,7 @@ function initFilterBox (...filterList) {
 }
 
 // ENCODING/DECODING ===================================================================================================
-UrlUtil = function () {
-};
+UrlUtil = {};
 UrlUtil.encodeForHash = function (toEncode) {
 	if (toEncode instanceof Array) {
 		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
@@ -1651,7 +1680,9 @@ UrlUtil.autoEncodeHash = function (obj) {
 
 UrlUtil.getCurrentPage = function () {
 	const pSplit = window.location.pathname.split("/");
-	return pSplit[pSplit.length - 1];
+	let out = pSplit[pSplit.length - 1];
+	if (!out.toLowerCase().endsWith(".html")) out += ".html";
+	return out;
 };
 
 /**
@@ -1702,6 +1733,7 @@ UrlUtil.PG_DEITIES = "deities.html";
 UrlUtil.PG_CULTS = "cults.html";
 UrlUtil.PG_OBJECTS = "objects.html";
 UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
+UrlUtil.PG_QUICKREF = "quickreference.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1740,44 +1772,58 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OBJECT] = UrlUtil.PG_OBJECTS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAP] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
+
+if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
+	// for local testing, hotkey to get a link to the current page on the main site
+	window.addEventListener("keypress", (e) => {
+		if (noModifierKeys(e)) {
+			if (e.key === "#") {
+				const spl = window.location.href.split("/");
+				window.prompt("Copy to clipboard: Ctrl+C, Enter", `https://5e.tools/${spl[spl.length - 1]}`);
+			}
+		}
+	});
+}
 
 // SORTING =============================================================================================================
-// TODO refactor into a class
-function ascSort (a, b) {
-	// to handle `FilterItem`s
-	if (a.hasOwnProperty("item") && b.hasOwnProperty("item")) {
-		return _ascSort(a.item, b.item);
+SortUtil = {
+	ascSort: (a, b) => {
+		// to handle `FilterItem`s
+		if (a.hasOwnProperty("item") && b.hasOwnProperty("item")) {
+			return SortUtil._ascSort(a.item, b.item);
+		}
+		return SortUtil._ascSort(a, b);
+	},
+
+	_ascSort: (a, b) => {
+		if (b === a) return 0;
+		return b < a ? 1 : -1;
+	},
+
+	compareNames: (a, b) => {
+		if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
+		else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
+		else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
+	},
+
+	listSort: (itemA, itemB, options) => {
+		if (options.valueName === "name") return compareBy("name");
+		else return compareByOrDefault(options.valueName, "name");
+
+		function compareBy (valueName) {
+			const aValue = itemA.values()[valueName].toLowerCase();
+			const bValue = itemB.values()[valueName].toLowerCase();
+			if (aValue === bValue) return 0;
+			return (aValue > bValue) ? 1 : -1;
+		}
+
+		function compareByOrDefault (valueName, defaultValueName) {
+			const initialCompare = compareBy(valueName);
+			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
+		}
 	}
-	return _ascSort(a, b);
-}
-
-function _ascSort (a, b) {
-	if (b === a) return 0;
-	return b < a ? 1 : -1;
-}
-
-function compareNames (a, b) {
-	if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
-	else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
-	else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
-}
-
-function listSort (itemA, itemB, options) {
-	if (options.valueName === "name") return compareBy("name");
-	else return compareByOrDefault(options.valueName, "name");
-
-	function compareBy (valueName) {
-		const aValue = itemA.values()[valueName].toLowerCase();
-		const bValue = itemB.values()[valueName].toLowerCase();
-		if (aValue === bValue) return 0;
-		return (aValue > bValue) ? 1 : -1;
-	}
-
-	function compareByOrDefault (valueName, defaultValueName) {
-		const initialCompare = compareBy(valueName);
-		return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
-	}
-}
+};
 
 // JSON LOADING ========================================================================================================
 DataUtil = {
@@ -1900,17 +1946,253 @@ RollerUtil = {
 		const $btnRoll = $(`<button class="btn btn-default" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
 		$btnRoll.on("click", () => {
 			if (listWrapper.data("lists")) {
-				const allLists = listWrapper.data("lists");
-				const rollX = RollerUtil.roll(allLists.length);
-				const list = listWrapper.data("lists")[rollX];
-				const rollY = RollerUtil.roll(list.visibleItems.length);
-				window.location.hash = $(list.visibleItems[rollY].elm).find(`a`).prop("hash");
+				const allLists = listWrapper.data("lists").filter(l => l.visibleItems.length);
+				if (allLists.length) {
+					const rollX = RollerUtil.roll(allLists.length);
+					const list = allLists[rollX];
+					const rollY = RollerUtil.roll(list.visibleItems.length);
+					window.location.hash = $(list.visibleItems[rollY].elm).find(`a`).prop("hash");
+				}
 			}
 		});
 
 		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
 	}
 };
+
+// HOMEBREW ============================================================================================================
+BrewUtil = {
+	homebrew: null,
+	_list: null,
+
+	// provide ref to List.js instance
+	setList: (list) => {
+		BrewUtil._list = list;
+	},
+
+	tryGetStorage: () => {
+		try {
+			return window.localStorage;
+		} catch (e) {
+			// if the user has disabled cookies, build a fake version
+			return {
+				getItem: () => {
+					return null;
+				},
+				removeItem: () => {},
+				setItem: () => {}
+			}
+		}
+	},
+
+	addBrewData: (brewHandler, brewLocation) => {
+		const rawBrew = BrewUtil.storage.getItem(brewLocation);
+		if (rawBrew) {
+			try {
+				BrewUtil.homebrew = JSON.parse(rawBrew);
+				brewHandler(BrewUtil.homebrew);
+			} catch (e) {
+				// on error, purge all brew and reset hash
+				purgeBrew();
+			}
+		}
+
+		function purgeBrew () {
+			BrewUtil.storage.removeItem(brewLocation);
+			BrewUtil.homebrew = null;
+			window.location.hash = "";
+		}
+	},
+
+	manageBrew: () => {
+		const page = UrlUtil.getCurrentPage();
+		const $body = $(`body`);
+		$body.css("overflow", "hidden");
+		const $overlay = $(`<div class="homebrew-overlay"/>`);
+		$overlay.on("click", () => {
+			$body.css("overflow", "");
+			$overlay.remove();
+		});
+		const $window = $(`
+		<div class="homebrew-window dropdown-menu" style="display: block;">
+			<h4>Manage Homebrew</h4>
+			<hr>
+		</div>`
+		);
+		$window.on("click", (evt) => {
+			evt.stopPropagation();
+		});
+		const $brewList = $(`<div></div>`);
+		$window.append($brewList);
+
+		refreshBrewList();
+
+		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
+			addBrew(evt);
+		});
+		$window.append(
+			$(`<div class="text-align-center"/>`)
+				.append($(`<label class="btn btn-default btn-sm btn-file">Load File</label>`).append($iptAdd))
+				.append(" ")
+				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Brew</button></a>`)
+		);
+
+		$overlay.append($window);
+		$body.append($overlay);
+
+		function refreshBrewList () {
+			function render (type, prop, deleteFn) {
+				BrewUtil.homebrew[prop].forEach(j => {
+					const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
+						deleteFn(j.uniqueId);
+					});
+					const $btnExport = $(`<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span></button>`).on("click", () => {
+						DataUtil.userDownload(j.name, JSON.stringify(j, null, "\t"));
+					});
+					$brewList.append($(`<p>`).append($btnDel).append(" ").append($btnExport).append(`&nbsp; <i>${type}${prop === "subclass" ? ` (${j.class})` : ""}:</i> <b>${j.name} ${j.version ? ` (v${j.version})` : ""}</b> by ${j.authors ? j.authors.join(", ") : "Anonymous"}. ${j.url ? `<a href="${j.url}" target="_blank">Source.</a>` : ""}`));
+				});
+			}
+
+			$brewList.html("");
+			if (BrewUtil.homebrew) {
+				switch (page) {
+					case UrlUtil.PG_SPELLS:
+						render("Spell", "spell", deleteSpellBrew);
+						break;
+					case UrlUtil.PG_CLASSES:
+						render("Class", "class", deleteClassBrew);
+						render("Subclass", "subclass", deleteSubclassBrew);
+						break;
+				}
+			}
+		}
+
+		function addBrew (event) {
+			const input = event.target;
+
+			let readIndex = 0;
+			const reader = new FileReader();
+			reader.onload = () => {
+				const text = reader.result;
+				const json = JSON.parse(text);
+
+				function storePrep (arrName) {
+					if (json[arrName]) {
+						json[arrName].forEach(it => {
+							it.uniqueId = CryptUtil.md5(JSON.stringify(it));
+						});
+					} else json[arrName] = [];
+				}
+
+				// prepare for storage
+				storePrep("class");
+				storePrep("subclass");
+				storePrep("spell");
+
+				// store
+				function checkAndAdd (prop) {
+					const areNew = [];
+					const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
+					json[prop].forEach(it => {
+						if (!existingIds.find(id => it.uniqueId === id)) {
+							BrewUtil.homebrew[prop].push(it);
+							areNew.push(it);
+						}
+					});
+					return areNew;
+				}
+
+				let classesToAdd = json.class;
+				let subclassesToAdd = json.subclass;
+				let spellsToAdd = json.spell;
+				if (!BrewUtil.homebrew) {
+					BrewUtil.homebrew = json;
+				} else {
+					// only add if unique ID not already present
+					classesToAdd = checkAndAdd("class");
+					subclassesToAdd = checkAndAdd("subclass");
+					spellsToAdd = checkAndAdd("spell");
+				}
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+
+				switch (page) {
+					case UrlUtil.PG_SPELLS:
+						addSpells(spellsToAdd);
+						break;
+					case UrlUtil.PG_CLASSES:
+						addClassData({class: classesToAdd});
+						addSubclassData({subclass: subclassesToAdd});
+						break;
+				}
+
+				refreshBrewList();
+				if (input.files[readIndex]) {
+					reader.readAsText(input.files[readIndex++]);
+				} else {
+					// reset the input
+					$(event.target).val("");
+				}
+			};
+			reader.readAsText(input.files[readIndex++]);
+		}
+
+		function getIndex (arrName, uniqueId) {
+			return BrewUtil.homebrew[arrName].findIndex(it => it.uniqueId === uniqueId);
+		}
+
+		function doRemove (arrName, uniqueId) {
+			const index = getIndex(arrName, uniqueId);
+			if (~index) {
+				BrewUtil.homebrew[arrName].splice(index, 1);
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+				refreshBrewList();
+				BrewUtil._list.remove("uniqueid", uniqueId);
+				hashchange();
+			}
+		}
+
+		function deleteClassBrew (uniqueId) {
+			doRemove("class", uniqueId);
+		}
+
+		function deleteSubclassBrew (uniqueId) {
+			let subClass;
+			let index = 0;
+			for (; index < BrewUtil.homebrew.subclass.length; ++index) {
+				if (BrewUtil.homebrew.subclass[index].uniqueId === uniqueId) {
+					subClass = BrewUtil.homebrew.subclass[index];
+					break;
+				}
+			}
+			if (subClass) {
+				const forClass = subClass.class;
+				BrewUtil.homebrew.subclass.splice(index, 1);
+				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+				refreshBrewList();
+				const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
+
+				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
+				if (~indexInClass) {
+					c.subclasses.splice(indexInClass, 1);
+					c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+				}
+				refreshBrewList();
+				window.location.hash = "";
+			}
+		}
+
+		function deleteSpellBrew (uniqueId) {
+			doRemove("spell", uniqueId);
+		}
+	},
+
+	makeBrewButton: (id) => {
+		$(`#${id}`).on("click", () => {
+			BrewUtil.manageBrew();
+		});
+	}
+};
+BrewUtil.storage = BrewUtil.tryGetStorage();
 
 // ID GENERATION =======================================================================================================
 CryptUtil = {
