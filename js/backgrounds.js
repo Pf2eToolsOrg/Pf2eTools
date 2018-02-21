@@ -61,10 +61,12 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+	EntryRenderer.hover.bindPopoutButton(bgList);
 }
 
 function loadhash (id) {
-	$("#pagecontent").html(tabledefault);
+	const $content = $("#pagecontent");
+	$content.html(tabledefault);
 	const curbg = bgList[id];
 	const name = curbg.name;
 	const source = curbg.source;
@@ -73,7 +75,7 @@ function loadhash (id) {
 	const renderStack = [];
 	const entryList = {type: "entries", entries: curbg.entries};
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
-	$("th.name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
-	$("tr#traits").after(`<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>`);
-	$("#source").html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${curbg.page}</td>`);
+	$content.find("th.name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
+	$content.find("tr#traits").after(`<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>`);
+	$content.find("#source").html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${curbg.page}</td>`);
 }

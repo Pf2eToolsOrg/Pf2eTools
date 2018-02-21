@@ -132,10 +132,12 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+	EntryRenderer.hover.bindPopoutButton(INVOCATION_LIST);
 }
 
 function loadhash (jsonIndex) {
-	const $name = $(`th.name`);
+	const $content = $(`#pagecontent`);
+	const $name = $content.find(`th.name`);
 	const STATS_PREREQUISITES = document.getElementById(ID_STATS_PREREQUISITES);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
@@ -148,6 +150,6 @@ function loadhash (jsonIndex) {
 	function loadInvocation () {
 		STATS_PREREQUISITES.innerHTML = EntryRenderer.invocation.getPrerequisiteText(selectedInvocation);
 		STATS_TEXT.innerHTML = EntryRenderer.getDefaultRenderer().renderEntry({entries: selectedInvocation.entries}, 1);
-		$(`#source`).html(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(selectedInvocation.source)}</i>, page ${selectedInvocation.page}</td>`);
+		$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(selectedInvocation.source)}</i>, page ${selectedInvocation.page}</td>`);
 	}
 }

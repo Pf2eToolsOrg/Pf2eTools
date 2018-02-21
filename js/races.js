@@ -162,6 +162,7 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+	EntryRenderer.hover.bindPopoutButton(raceList);
 }
 
 const renderer = new EntryRenderer();
@@ -173,15 +174,15 @@ function loadhash (id) {
 
 	const race = raceList[id];
 
-	$("th.name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
+	$pgContent.find("th.name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
 
 	const size = Parser.sizeAbvToFull(race.size);
-	$("td#size span").html(size);
+	$pgContent.find("td#size span").html(size);
 
 	const ability = race.ability ? utils_getAbilityData(race.ability) : {asText: "None"};
-	$("td#ability span").html(ability.asText);
+	$pgContent.find("td#ability span").html(ability.asText);
 
-	$("td#speed span").html(EntryRenderer.race.getSpeedString(race));
+	$pgContent.find("td#speed span").html(EntryRenderer.race.getSpeedString(race));
 
 	const renderStack = [];
 	renderStack.push("<tr class='text'><td colspan='6'>");
@@ -196,7 +197,7 @@ function loadhash (id) {
 	}
 	renderStack.push(EntryRenderer.utils.getPageTr(race));
 
-	$('table#pagecontent tbody tr:last').before(renderStack.join(""));
+	$pgContent.find('tbody tr:last').before(renderStack.join(""));
 }
 
 function loadsub (sub) {
