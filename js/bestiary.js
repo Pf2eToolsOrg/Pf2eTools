@@ -653,3 +653,7 @@ const SKILL_TO_ATB_ABV = {
 function getAttribute (skill) {
 	return SKILL_TO_ATB_ABV[skill.toLowerCase().trim()];
 }
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
+}
