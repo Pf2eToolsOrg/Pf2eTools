@@ -92,7 +92,7 @@ function EntryRenderer () {
 						if (entry.name) textStack.push(`<p class="list-name">${entry.name}</p>`);
 						textStack.push(`<ul ${entry.style ? `class="${entry.style}"` : ""}>`);
 						for (let i = 0; i < entry.items.length; i++) {
-							const style = _getStyleClass(entry.items[i].source);
+							const style = getLiStyleClass(entry.items[i]);
 							this.recursiveEntryRender(entry.items[i], textStack, depth + 1, `<li ${style ? `class="${style}"` : ""}>`, "</li>");
 						}
 						textStack.push("</ul>");
@@ -214,6 +214,11 @@ function EntryRenderer () {
 				case "item":
 					renderPrefix();
 					this.recursiveEntryRender(entry.entry, textStack, depth, `<p><span class="bold">${entry.name}</span> `, "</p>");
+					renderSuffix();
+					break;
+				case "itemSpell":
+					renderPrefix();
+					this.recursiveEntryRender(entry.entry, textStack, depth, `<p>${entry.name}</span> `, "</p>");
 					renderSuffix();
 					break;
 
@@ -424,6 +429,10 @@ function EntryRenderer () {
 			}
 		}
 
+		function getLiStyleClass (item) {
+			return `${_getStyleClass(item.source)}${item.type === "itemSpell" ? " spell-item" : ""}`;
+		}
+
 		function _getStyleClass (source) {
 			const outList = [];
 			if (isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
@@ -439,7 +448,7 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action" || tag === "@link") { // FIXME remove "@link"
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action") {
 						switch (tag) {
 							// FIXME remove "@link"
 							case "@link":
@@ -467,7 +476,7 @@ function EntryRenderer () {
 								textStack.push(`<span title="${Parser.skillToExplanation(text)}" class="explanation">${text}</span>`);
 								break;
 						}
-					} else if (tag === "@dice" || tag === "@hit") {
+					} else if (tag === "@dice" || tag === "@hit" || tag === "@chance") {
 						const fauxEntry = {
 							type: "dice",
 							rollable: true
@@ -515,6 +524,18 @@ function EntryRenderer () {
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
+							case "@chance": {
+								// format: {@chance 25|25 percent|25% summoning chance}
+								fauxEntry.toRoll = [
+									{
+										number: 1,
+										faces: 100
+									}
+								];
+								fauxEntry.successThresh = Number(rollText);
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
 						}
 					} else if (tag === "@filter") {
 						// format: {@filter Warlock Spells|spells|level=1;2|class=Warlock}
@@ -535,6 +556,17 @@ function EntryRenderer () {
 									}
 								})
 							}
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@link") {
+						const [displayText, url] = text.split("|");
+						const fauxEntry = {
+							type: "link",
+							href: {
+								type: "external",
+								url: url
+							},
+							text: displayText
 						};
 						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
@@ -722,9 +754,8 @@ EntryRenderer._getDiceString = function (diceItem, isDroll) {
 
 EntryRenderer.getEntryDice = function (entry, name) {
 	function getDiceAsStr () {
-		const stack = [];
-		entry.toRoll.forEach(d => stack.push(EntryRenderer._getDiceString(d)));
-		return stack.join("+");
+		if (entry.successThresh) return `${entry.successThresh} percent`;
+		else return entry.toRoll.map(d => EntryRenderer._getDiceString(d)).join("+");
 	}
 
 	function pack (obj) {
@@ -1310,42 +1341,44 @@ EntryRenderer.monster = {
 	},
 
 	getSpellcastingRenderedString: (mon, renderer) => {
+		const out = [];
 		const spellcasting = mon.spellcasting;
-		const renderStack = [];
 		for (let i = 0; i < spellcasting.length; i++) {
+			const renderStack = [];
 			let spellList = spellcasting[i];
-			renderer.recursiveEntryRender({type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}, renderStack, 2);
+			const toRender = [{type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}];
 			if (spellList.constant || spellList.will || spellList.rest || spellList.daily || spellList.weekly) {
-				let spellArray = [];
-				if (spellList.constant) spellArray.push(`Constant: ${spellList.constant.join(", ")}`);
-				if (spellList.will) spellArray.push(`At will: ${spellList.will.join(", ")}`);
+				const tempList = {type: "list", "style": "list-hang-notitle", items: []};
+				if (spellList.constant) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: spellList.constant.join(", ")});
+				if (spellList.will) tempList.items.push({type: "itemSpell", name: `At will:`, entry: spellList.will.join(", ")});
 				if (spellList.rest) {
 					for (let j = 9; j > 0; j--) {
 						let rest = spellList.rest;
-						if (rest[j]) spellArray.push(`${j}/rest: ${rest[j].join(", ")}`);
+						if (rest[j]) tempList.items.push({type: "itemSpell", name: `${j}/rest:`, entry: rest[j].join(", ")});
 						const jEach = `${j}e`;
-						if (rest[jEach]) spellArray.push(`${j}/rest each: ${rest[jEach].join(", ")}`);
+						if (rest[jEach]) tempList.items.push({type: "itemSpell", name: `${j}/rest each:`, entry: rest[jEach].join(", ")});
 					}
 				}
 				if (spellList.daily) {
 					for (let j = 9; j > 0; j--) {
 						let daily = spellList.daily;
-						if (daily[j]) spellArray.push(`${j}/day: ${daily[j].join(", ")}`);
+						if (daily[j]) tempList.items.push({type: "itemSpell", name: `${j}/day:`, entry: daily[j].join(", ")});
 						const jEach = `${j}e`;
-						if (daily[jEach]) spellArray.push(`${j}/day each: ${daily[jEach].join(", ")}`);
+						if (daily[jEach]) tempList.items.push({type: "itemSpell", name: `${j}/day each:`, entry: daily[jEach].join(", ")});
 					}
 				}
 				if (spellList.weekly) {
 					for (let j = 9; j > 0; j--) {
 						let weekly = spellList.weekly;
-						if (weekly[j]) spellArray.push(`${j}/week: ${weekly[j].join(", ")}`);
+						if (weekly[j]) tempList.items.push({type: "itemSpell", name: `${j}/week:`, entry: weekly[j].join(", ")});
 						const jEach = `${j}e`;
-						if (weekly[jEach]) spellArray.push(`${j}/week each: ${weekly[jEach].join(", ")}`);
+						if (weekly[jEach]) tempList.items.push({type: "itemSpell", name: `${j}/week each:`, entry: weekly[jEach].join(", ")});
 					}
 				}
-				renderer.recursiveEntryRender({type: "entries", entries: spellArray}, renderStack, 1);
+				toRender[0].entries.push(tempList);
 			}
 			if (spellList.spells) {
+				const tempList = {type: "list", "style": "list-hang-notitle", items: []};
 				for (let j = 0; j < 10; j++) {
 					let spells = spellList.spells[j];
 					if (spells) {
@@ -1358,13 +1391,26 @@ EntryRenderer.monster = {
 							levelCantrip = `${Parser.spLevelToFull(lower)}-${levelCantrip}`;
 							if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} ${Parser.spLevelToFull(j)}-level slot${slots > 1 ? "s" : ""})` : ``;
 						}
-						renderer.recursiveEntryRender({type: "entries", entries: [`${levelCantrip} ${slotsAtWill}: ${spells.spells.join(", ")}`]}, renderStack, 1);
+						tempList.items.push({type: "itemSpell", name: `${levelCantrip} ${slotsAtWill}:`, entry: spells.spells.join(", ")})
 					}
 				}
+				toRender[0].entries.push(tempList);
 			}
-			if (spellList.footerEntries) renderer.recursiveEntryRender({type: "entries", entries: spellList.footerEntries}, renderStack, 1);
+			if (spellList.footerEntries) toRender.push({type: "entries", entries: spellList.footerEntries});
+			renderer.recursiveEntryRender({type: "entries", entries: toRender}, renderStack, 2);
+			out.push({name: spellList.name, rendered: renderStack.join("")});
 		}
-		return renderStack.join("");
+		return out;
+	},
+
+	getOrderedTraits: (mon, renderer) => {
+		let trait = JSON.parse(JSON.stringify(mon.trait));
+		if (mon.spellcasting) {
+			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
+			// weave spellcasting in with other traits
+			trait = trait ? trait.concat(spellTraits) : spellTraits;
+		}
+		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
 	}
 };
 
@@ -2392,7 +2438,8 @@ EntryRenderer.dice = {
 				num: it.number,
 				faces: it.faces
 			})),
-			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0)
+			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0),
+			successThresh: entry.successThresh
 		};
 		EntryRenderer.dice._handleRoll(toRoll, rolledBy, cbMessage);
 	},
@@ -2406,10 +2453,14 @@ EntryRenderer.dice = {
 			const v = EntryRenderer.dice._rollParsed(toRoll);
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
+			// debugger
+			const totalPart = toRoll.successThresh
+				? `<span class="roll">${v.total > 100 - toRoll.successThresh ? "success" : "failure"}</span>`
+				: `<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>`;
 			$out.append(`
 				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
 					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
-					<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>
+					${totalPart}
 					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
 					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
 				</div>`);
