@@ -439,7 +439,7 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action" || tag === "@link") { // FIXME remove "@link"
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action") {
 						switch (tag) {
 							// FIXME remove "@link"
 							case "@link":
@@ -535,6 +535,17 @@ function EntryRenderer () {
 									}
 								})
 							}
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@link") {
+						const [displayText, url] = text.split("|");
+						const fauxEntry = {
+							type: "link",
+							href: {
+								type: "external",
+								url: url
+							},
+							text: displayText
 						};
 						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
