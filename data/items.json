@@ -1159,7 +1159,7 @@
 			"page": 150,
 			"reqAttune": "YES",
 			"entries": [
-				"While wearing this amulet, you are hidden from {@filter divination|spells|school=D} magic. You can't be targeted by such magic or perceived through magical {@spell scrying} sensors."
+				"While wearing this amulet, you are hidden from {@filter divination|spells|school=D} magic. You can't be targeted by such magic or perceived through magical scrying sensors."
 			]
 		},
 		{
@@ -5309,7 +5309,7 @@
 			"page": 172,
 			"reqAttune": "YES",
 			"entries": [
-				"These gloves seem to almost meld into your hands when you don them. When a ranged weapon attack hits you while you're wearing them, you can use your reaction to reduce the damage by 1d10 + your Dexterity modifier. provided that you have a free hand. If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in that hand."
+				"These gloves seem to almost meld into your hands when you don them. When a ranged weapon attack hits you while you're wearing them, you can use your reaction to reduce the damage by 1d10 + your Dexterity modifier, provided that you have a free hand. If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in that hand."
 			]
 		},
 		{
@@ -6021,7 +6021,7 @@
 				"This appears to be a simple ingot of iron ore, about a foot long and a few inches across. Inspection of its surface reveals the faint, silvery outline of the skold (shield) rune. The ingot has the following properties, which work only while it's on your person.",
 				"Runic Shield. You have a +1 bonus to AC.",
 				"Shield Bond. As a bonus action, choose a creature that you can see within 30 feet of you, other than yourself. Until the end of your next turn, any damage the target takes is reduced to 1, but you take half the damage prevented in this way. The damage you take can't be reduced in any way. Once you use this property, you can't use it again until you finish a short or long rest.",
-				"Shield Ward. You can transfer the ingot's magic to a nonmagical item-a shield or a two-handed melee weapon-by tracing the skold rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the ingot is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:",
+				"Shield Ward. You can transfer the ingot's magic to a nonmagical item\u2014a shield or a two-handed melee weapon-by tracing the skold rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the ingot is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:",
 				"Shield. The shield is now a rare magic item that requires attunement. Its magic gives you a +1 bonus to AC, and the first time after each of your long rests that damage reduces you to O hit points, you are instead reduced to 1 hit point. You must be wielding the shield to gain these benefits.",
 				"Weapon. The weapon is now an uncommon magic weapon. It grants you a +1 bonus to AC while you're holding it."
 			],
@@ -7894,7 +7894,7 @@
 			"page": 184,
 			"reqAttune": "by a Spellcaster",
 			"entries": [
-				"While this pearl is on your person, you can use an action to speak its command word and regain one expended spell slot. If the expended slot of of 4th level or higher, the new slot is 3rd level. Once you have used the pearl, it can't be used again until the next dawn."
+				"While this pearl is on your person, you can use an action to speak its command word and regain one expended spell slot. If the expended slot was of 4th level or higher, the new slot is 3rd level. Once you have used the pearl, it can't be used again until the next dawn."
 			]
 		},
 		{
@@ -11011,9 +11011,21 @@
 			"entries": [
 				"This staff can be wielded as a magic quarterstaff that grants a +2 bonus to attack and damage rolls made with it. While holding it, you have a +2 bonus to spell attack rolls.",
 				"The staff has 10 charges for the following properties. It regains 1d6+4 expended charges daily at dawn. If you expend the last charge, roll a d20. On a 1, the staff loses its properties and becomes a nonmagical quarterstaff.",
-				"Spells. You can use an action to expend 1 or more of the staff's charges to cast one of the following spells from it, using your spell save DC: {@spell animal friendship} (1 charge), {@spell awaken} (5 charges), {@spell barkskin} (2 charges), {@spell locate animals or plants} (2 charges), {@spell speak with animals} (1 charge), {@spell speak with plants} (3 charges), or {@spell wall of thorns} (6 charges).",
-				"You can also use an action to cast the {@spell pass without trace} spell from the staff without using any charges.",
-				"Tree Form. You can use an action to plant one end of the staff in fertile earth and expend 1 charge to transform the staff into a healthy tree. The tree is 60 feet tall and has a 5-foot-diameter trunk, and its branches at the top spread out in a 20-foot radius. The tree appears ordinary but radiates a faint aura of transmutation magic if targeted by {@spell detect magic}. While touching the tree and using another action to speak its command, word, you return the staff to its normal form. Any creature in the tree falls when it reverts to a staff."
+				{
+				    "type": "entries",
+					"name": "Spells",
+					"entries": [
+						"You can use an action to expend 1 or more of the staff's charges to cast one of the following spells from it, using your spell save DC: {@spell animal friendship} (1 charge), {@spell awaken} (5 charges), {@spell barkskin} (2 charges), {@spell locate animals or plants} (2 charges), {@spell speak with animals} (1 charge), {@spell speak with plants} (3 charges), or {@spell wall of thorns} (6 charges).",
+						"You can also use an action to cast the {@spell pass without trace} spell from the staff without using any charges."
+					]
+				},
+				{
+				    "type": "entries",
+					"name": "Tree Form",
+					"entries": [
+						"You can use an action to plant one end of the staff in fertile earth and expend 1 charge to transform the staff into a healthy tree. The tree is 60 feet tall and has a 5-foot-diameter trunk, and its branches at the top spread out in a 20-foot radius. The tree appears ordinary but radiates a faint aura of transmutation magic if targeted by {@spell detect magic}. While touching the tree and using another action to speak its command word, you return the staff to its normal form. Any creature in the tree falls when it reverts to a staff."
+					]
+				}
 			]
 		},
 		{
@@ -11068,7 +11080,7 @@
 			"entries": [
 				"Created by the stone giant librarians of Gravenhollow, this nineteen-inch-long shard of quartz grants you advantage on Intelligence ({@skill Investigation}) checks while it is on your person.",
 				"The crystal has 10 charges. While holding it, you can use an action to expend some of its charges to cast one of the following spells from it: {@spell speak with animals} (2 charges), {@spell speak with dead} (4 charges), or {@spell speak with plants} (3 charges).",
-				"When you cast a {@spell divination} spell, you can use the crystal in place of one material component that would normally be consumed by the spell, at a cost of 1 charge per level of the spell. The crystal is not consumed when used in this way.",
+				"When you cast a {@filter divination|spells|school=D} spell, you can use the crystal in place of one material component that would normally be consumed by the spell, at a cost of 1 charge per level of the spell. The crystal is not consumed when used in this way.",
 				"The crystal regains 1d6+4 expended charges daily at dawn. If you expend the crystal's last charge, roll a d20. On a 1, the crystal vanishes, lost forever."
 			]
 		},
@@ -14643,7 +14655,7 @@
 					"type": "entries",
 					"name": "Nondetection",
 					"entries": [
-						"The Ring of Winter defies attempts to magically locate it. Neither the ring nor its wearer can be targeted by any {@spell divination} magic or perceived through magical {@spell scrying} sensors."
+						"The Ring of Winter defies attempts to magically locate it. Neither the ring nor its wearer can be targeted by any {@spell divination} magic or perceived through magical scrying sensors."
 					]
 				},
 				{

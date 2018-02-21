@@ -1430,21 +1430,23 @@ EntryRenderer.item = {
 
 		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
 
-		// TODO rendering
 		const entryList = {type: "entries", entries: item.entries};
 		renderer.recursiveEntryRender(entryList, renderStack, 1);
 
 		renderStack.push(`</td></tr>`);
 
-		return renderStack.join(" ");
+		return renderStack.join("");
 	},
 
+	_builtList: null,
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
 	 * @param urls optional overrides for default URLs
 	 */
 	buildList: function (callback, urls) {
+		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
+
 		if (!urls) urls = {};
 		let itemList;
 		let basicItemList;
@@ -1617,6 +1619,7 @@ EntryRenderer.item = {
 					}
 				}
 			}
+			EntryRenderer.item._builtList = itemList;
 			callback(itemList);
 		}
 
@@ -2326,7 +2329,7 @@ EntryRenderer.dice = {
 		const entry = JSON.parse(packed);
 		// TODO
 		function attemptToGetTitle () {
-			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).text();
+			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).first().text();
 			if (titleMaybe) {
 				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
 			}

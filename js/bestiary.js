@@ -377,7 +377,7 @@ function loadhash (id) {
 		variantSect.show();
 	}
 
-	$(`#source`).append(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${mon.page}</td>`);
+	$(`#source`).append(EntryRenderer.utils.getPageTr(mon));
 
 	const legendary = mon.legendary;
 	$("tr#legendaries").hide();
@@ -652,4 +652,8 @@ const SKILL_TO_ATB_ABV = {
 
 function getAttribute (skill) {
 	return SKILL_TO_ATB_ABV[skill.toLowerCase().trim()];
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

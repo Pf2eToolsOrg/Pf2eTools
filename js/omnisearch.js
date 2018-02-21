@@ -107,10 +107,10 @@ const Omnisearch = {
 			}
 
 			if (!doShow3pp()) {
-				results = results.filter(r => !_isNonStandardSource3pp(r.doc.s));
+				results = results.filter(r => r.doc.s && !_isNonStandardSource3pp(r.doc.s));
 			}
 			if (!doShowUaEtc()) {
-				results = results.filter(r => !_isNonStandardSourceWiz(r.doc.s));
+				results = results.filter(r => r.doc.s && !_isNonStandardSourceWiz(r.doc.s));
 			}
 
 			if (results.length) {
@@ -146,7 +146,7 @@ const Omnisearch = {
 					$searchOut.append(`
 				<p>
 					<a href="${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>
-					<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>
+					${r.s ? `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>` : ""}
 				</p>`);
 				}
 				$searchOutWrapper.css("display", "flex");
