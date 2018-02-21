@@ -548,7 +548,10 @@ function loadhash (id) {
 	}
 
 	$(".spells span.roller").contents().unwrap();
-	$("#pagecontent").find("span.roller").click(function () {
+	$("#pagecontent").find("span.roller").filter((i, e) => {
+		const $e = $(e);
+		return !$e.prop("onclick");
+	}).click(function () {
 		const $this = $(this);
 		outputRollResult($this, $this.attr("data-roll").replace(/\s+/g, ""));
 	});

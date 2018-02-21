@@ -476,7 +476,7 @@ function EntryRenderer () {
 								textStack.push(`<span title="${Parser.skillToExplanation(text)}" class="explanation">${text}</span>`);
 								break;
 						}
-					} else if (tag === "@dice" || tag === "@hit") {
+					} else if (tag === "@dice" || tag === "@hit" || tag === "@chance") {
 						const fauxEntry = {
 							type: "dice",
 							rollable: true
@@ -521,6 +521,18 @@ function EntryRenderer () {
 										hideDice: true
 									}
 								];
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
+							case "@chance": {
+								// format: {@chance 25|25 percent|25% summoning chance}
+								fauxEntry.toRoll = [
+									{
+										number: 1,
+										faces: 100
+									}
+								];
+								fauxEntry.successThresh = Number(rollText);
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
@@ -2427,7 +2439,8 @@ EntryRenderer.dice = {
 				num: it.number,
 				faces: it.faces
 			})),
-			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0)
+			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0),
+			successThresh: entry.successThresh
 		};
 		EntryRenderer.dice._handleRoll(toRoll, rolledBy, cbMessage);
 	},
@@ -2441,10 +2454,14 @@ EntryRenderer.dice = {
 			const v = EntryRenderer.dice._rollParsed(toRoll);
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
+			// debugger
+			const totalPart = toRoll.successThresh
+				? `<span class="roll">${v.total > 100 - toRoll.successThresh ? "success" : "failure"}</span>`
+				: `<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>`;
 			$out.append(`
 				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
 					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
-					<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>
+					${totalPart}
 					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
 					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
 				</div>`);
