@@ -499,14 +499,11 @@ ul.list {
 ul.list li {
 	padding: 1px;
 	cursor: pointer;
-	display: block;
 	border-bottom: 1px solid #ddd;
-	max-height: 3em;
-	overflow-y: hidden;
 }
 
-ul.list li:hover {
-	max-height: 100%;
+ul.list li.list-multi-selected {
+	box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
 }
 
 ul.list li:active {

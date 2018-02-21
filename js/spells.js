@@ -330,6 +330,10 @@ function pageInit (loadedSources) {
 		} else $this.attr("sortby", "asc");
 		list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: sortSpells});
 	});
+
+	$(`#view-multiple`).on(EVNT_CLICK, () => {
+		const toShow = list.visibleItems.filter(it => it.elm.className.includes("list-multi-selected")).map(it => spellList[Number(it.elm.getAttribute(FLTR_ID))]);
+	});
 }
 
 function handleFilterChange () {
@@ -416,7 +420,7 @@ function addSpells (data) {
 
 		// populate table
 		tempString += `
-			<li class="row" ${FLTR_ID}="${spI}">
+			<li class="row" ${FLTR_ID}="${spI}" onclick="ListUtil.toggleSelected(event, this)">
 				<a id="${spI}" href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
 					<span class="name col-xs-3 col-xs-3-5">${spell.name}</span>
 					<span class="source col-xs-1 col-xs-1-7 source${Parser.stringToCasedSlug(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
