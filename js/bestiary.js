@@ -377,7 +377,7 @@ function loadhash (id) {
 		variantSect.show();
 	}
 
-	$(`#source`).append(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${mon.page}</td>`);
+	$(`#source`).append(EntryRenderer.utils.getPageTr(mon));
 
 	const legendary = mon.legendary;
 	$("tr#legendaries").hide();

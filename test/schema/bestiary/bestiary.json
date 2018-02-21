@@ -526,6 +526,25 @@
 					},
 					"familiar": {
 						"type": "boolean"
+					},
+					"additionalSources": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source",
+								"page"
+							],
+							"additionalProperties": false
+						}
 					}
 				},
 				"required": [
