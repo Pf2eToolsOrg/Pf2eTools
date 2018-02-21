@@ -2329,7 +2329,7 @@ EntryRenderer.dice = {
 		const entry = JSON.parse(packed);
 		// TODO
 		function attemptToGetTitle () {
-			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).text();
+			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).first().text();
 			if (titleMaybe) {
 				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
 			}
