@@ -1438,12 +1438,15 @@ EntryRenderer.item = {
 		return renderStack.join("");
 	},
 
+	_builtList: null,
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
 	 * @param urls optional overrides for default URLs
 	 */
 	buildList: function (callback, urls) {
+		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
+
 		if (!urls) urls = {};
 		let itemList;
 		let basicItemList;
@@ -1616,6 +1619,7 @@ EntryRenderer.item = {
 					}
 				}
 			}
+			EntryRenderer.item._builtList = itemList;
 			callback(itemList);
 		}
 
