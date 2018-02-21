@@ -345,15 +345,10 @@ function loadhash (id) {
 	$("td span#cr").html(cr);
 	$("td span#xp").html(Parser.crToXp(cr));
 
-	var trait = mon.trait;
 	$("tr.trait").remove();
 
+	let trait = EntryRenderer.monster.getOrderedTraits(mon, renderer);
 	if (trait) renderSection("trait", "trait", trait, 1);
-
-	if (mon.spellcasting) {
-		const spellcastingString = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
-		$(`tr#traits`).after(`<tr class='trait'><td colspan='6'>${utils_makeRoller(spellcastingString)}</td></tr>`);
-	}
 
 	const action = mon.action;
 	$("tr#actions").hide();
@@ -405,7 +400,10 @@ function loadhash (id) {
 		$(`tr#${pluralSectionTrClass}`).show();
 		entryList = {type: "entries", entries: sectionEntries};
 		renderStack = [];
-		renderer.recursiveEntryRender(entryList, renderStack, sectionLevel);
+		sectionEntries.forEach(e => {
+			if (e.rendered) renderStack.push(e.rendered);
+			else renderer.recursiveEntryRender(e, renderStack, sectionLevel + 1);
+		})
 		$(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
 	}
 
