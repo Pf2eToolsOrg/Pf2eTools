@@ -1822,6 +1822,18 @@ SortUtil = {
 			const initialCompare = compareBy(valueName);
 			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
 		}
+	},
+
+	/**
+	 * "Special Equipment" first, then alphabetical
+	 */
+	monTraitSort: (a, b) => {
+		if (!a && !b) return 0;
+		if (!a) return -1;
+		if (!b) return 1;
+		if (a.toLowerCase().trim() === "special equipment") return -1;
+		if (b.toLowerCase().trim() === "special equipment") return 1;
+		return SortUtil.ascSort(a, b)
 	}
 };
 
