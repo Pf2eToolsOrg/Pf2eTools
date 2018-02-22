@@ -1404,7 +1404,7 @@ EntryRenderer.monster = {
 	},
 
 	getOrderedTraits: (mon, renderer) => {
-		let trait = JSON.parse(JSON.stringify(mon.trait));
+		let trait = mon.trait ? JSON.parse(JSON.stringify(mon.trait)) : null;
 		if (mon.spellcasting) {
 			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
 			// weave spellcasting in with other traits
