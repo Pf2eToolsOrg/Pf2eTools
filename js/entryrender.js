@@ -1347,7 +1347,7 @@ EntryRenderer.monster = {
 		return renderStack.join("");
 	},
 
-	getSpellcastingRenderedString: (mon, renderer) => {
+	getSpellcastingRenderedTraits: (mon, renderer) => {
 		const out = [];
 		const spellcasting = mon.spellcasting;
 		for (let i = 0; i < spellcasting.length; i++) {
@@ -1413,7 +1413,7 @@ EntryRenderer.monster = {
 	getOrderedTraits: (mon, renderer) => {
 		let trait = mon.trait ? JSON.parse(JSON.stringify(mon.trait)) : null;
 		if (mon.spellcasting) {
-			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
+			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedTraits(mon, renderer);
 			// weave spellcasting in with other traits
 			trait = trait ? trait.concat(spellTraits) : spellTraits;
 		}
