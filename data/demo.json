@@ -14,7 +14,8 @@
 					"type": "list",
 					"items": [
 						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand})",
-						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}. Currently, 'droll.js' must be included in the page for these to work, but this might change in the future.",
+						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}.",
+						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
 						"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
 						"Content tags:",
 						{

@@ -634,6 +634,24 @@
 				}
 			]
 		},
+		"entryItemSpell": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "itemSpell"},
+						"name": {
+							"type": "string"
+						},
+						"entry": {
+							"$ref": "/Entry"
+						}
+					},
+					"required": ["name", "entry"],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryImage": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
