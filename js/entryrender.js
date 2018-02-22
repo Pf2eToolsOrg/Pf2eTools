@@ -123,6 +123,9 @@ function EntryRenderer () {
 					for (let i = 0; i < entry.entries.length; i++) {
 						this.recursiveEntryRender(entry.entries[i], textStack, 2, "<p>", "</p>");
 					}
+					if (entry.variantSource) {
+						textStack.push(EntryRenderer.utils._getPageTrText(entry.variantSource));
+					}
 					textStack.push(`</${this.wrapperTag}>`);
 					break;
 				case "variantSub": {
@@ -788,8 +791,12 @@ EntryRenderer.utils = {
 	},
 
 	getPageTr: (it) => {
-		const addSourceText = it.additionalSources ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
-		return `${it.page ? `<td colspan=6><b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}</td>` : ""}`;
+		return `<td colspan=6>${EntryRenderer.utils._getPageTrText(it)}</td>`;
+	},
+
+	_getPageTrText: (it) => {
+		const addSourceText = it.additionalSources && it.additionalSources.length ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
+		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}` : ""
 	}
 };
 
@@ -1340,7 +1347,7 @@ EntryRenderer.monster = {
 		return renderStack.join("");
 	},
 
-	getSpellcastingRenderedString: (mon, renderer) => {
+	getSpellcastingRenderedTraits: (mon, renderer) => {
 		const out = [];
 		const spellcasting = mon.spellcasting;
 		for (let i = 0; i < spellcasting.length; i++) {
@@ -1406,7 +1413,7 @@ EntryRenderer.monster = {
 	getOrderedTraits: (mon, renderer) => {
 		let trait = mon.trait ? JSON.parse(JSON.stringify(mon.trait)) : null;
 		if (mon.spellcasting) {
-			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
+			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedTraits(mon, renderer);
 			// weave spellcasting in with other traits
 			trait = trait ? trait.concat(spellTraits) : spellTraits;
 		}

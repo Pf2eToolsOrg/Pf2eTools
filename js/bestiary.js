@@ -372,7 +372,23 @@ function loadhash (id) {
 		variantSect.show();
 	}
 
-	$(`#source`).append(EntryRenderer.utils.getPageTr(mon));
+	const srcCpy = {
+		source: mon.source,
+		page: mon.page
+	};
+	const additional = mon.additionalSources ? JSON.parse(JSON.stringify(mon.additionalSources)) : [];
+	if (mon.variant && mon.variant.length > 1) {
+		mon.variant.forEach(v => {
+			if (v.variantSource) {
+				additional.push({
+					source: v.variantSource.source,
+					page: v.variantSource.page
+				})
+			}
+		})
+	}
+	srcCpy.additionalSources = additional;
+	$(`#source`).append(EntryRenderer.utils.getPageTr(srcCpy));
 
 	const legendary = mon.legendary;
 	$("tr#legendaries").hide();
