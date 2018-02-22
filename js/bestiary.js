@@ -377,7 +377,7 @@ function loadhash (id) {
 		page: mon.page
 	};
 	const additional = mon.additionalSources ? JSON.parse(JSON.stringify(mon.additionalSources)) : [];
-	if (mon.variant) {
+	if (mon.variant && mon.variant.length > 1) {
 		mon.variant.forEach(v => {
 			if (v.variantSource) {
 				additional.push({

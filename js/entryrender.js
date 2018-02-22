@@ -795,7 +795,7 @@ EntryRenderer.utils = {
 	},
 
 	_getPageTrText: (it) => {
-		const addSourceText = it.additionalSources ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
+		const addSourceText = it.additionalSources && it.additionalSources.length ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
 		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}` : ""
 	}
 };
