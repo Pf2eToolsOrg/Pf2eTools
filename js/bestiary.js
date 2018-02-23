@@ -232,119 +232,89 @@ function objToTitleCaseStringWithCommas (obj) {
 	}).join(", ");
 }
 
-let statTab = null;
 let profBtn = null;
-let infoTab = null;
-let curTab = 0;
 // load selected monster stat block
 function loadhash (id) {
 	const $content = $("#pagecontent");
 	const $wrpBtnProf = $(`#wrp-profbonusdice`);
-	const $tStatblock = $(`#tab-statblock`);
-	const $tInfo = $(`#tab-info`);
 
 	const mon = monsters[id];
 
 	// reset tabs
 	$content.html(tableDefault);
-	statTab = null;
 	if (profBtn !== null) {
 		$wrpBtnProf.append(profBtn);
 		profBtn = null;
 	}
-	infoTab = null;
-	curTab = 0;
-	$tInfo.removeClass(`stat-tab-sel`);
-	$tStatblock.addClass(`stat-tab-sel`);
 
-	// set up tab buttons
-	$tStatblock.off("click");
-	$tStatblock.on("click", () => {
-		if (curTab === 1) {
-			infoTab = $content.children().detach();
-
-			$tInfo.removeClass(`stat-tab-sel`);
-			$tStatblock.addClass(`stat-tab-sel`);
-
-			$content.append(statTab);
+	EntryRenderer.utils.bindTabButtons(
+		() => {
 			$wrpBtnProf.append(profBtn);
-			curTab = 0;
-		}
-	});
-	$tInfo.off("click");
-	$tInfo.on("click", () => {
-		const NO_INFO = "<i>No information available.</i>";
-		if (curTab === 0) {
-			statTab = $content.children().detach();
+		},
+		() => {
 			profBtn = $wrpBtnProf.children().detach();
+		},
+		() => {
+			$content.append(EntryRenderer.utils.getBorderTr());
+			const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
+			name.find(`th`).css("padding-right", "0.3em");
+			$content.append(name);
+			const $tr = $(`<tr class='text'/>`);
+			$content.append($tr);
+			const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
+			$content.append(EntryRenderer.utils.getBorderTr());
 
-			$tInfo.addClass(`stat-tab-sel`);
-			$tStatblock.removeClass(`stat-tab-sel`);
+			const NO_INFO = "<i>No information available.</i>";
+			if (ixFluff[mon.source]) {
+				DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
+					const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
 
-			if (infoTab === null) {
-				$content.append(EntryRenderer.utils.getBorderTr());
-				const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
-				name.find(`th`).css("padding-right", "0.3em");
-				$content.append(name);
-				const $tr = $(`<tr class='text'/>`);
-				$content.append($tr);
-				const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
-				$content.append(EntryRenderer.utils.getBorderTr());
+					if (!fluff) {
+						$td.empty();
+						$td.append(NO_INFO);
+						return;
+					}
 
-				if (ixFluff[mon.source]) {
-					DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
-						const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
+					if (fluff._copy) {
+						const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
+						// preserve these
+						const name = fluff.name;
+						const src = fluff.source;
+						const images = fluff.images;
+						Object.assign(fluff, cpy);
+						fluff.name = name;
+						fluff.source = src;
+						if (images) fluff.images = images;
+						delete fluff._copy;
+					}
 
-						if (!fluff) {
-							$td.empty();
-							$td.append(NO_INFO);
-							return;
+					if (fluff._appendCopy) {
+						const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
+						if (cpy.images) {
+							if (!fluff.images) fluff.images = cpy.images;
+							else fluff.images = fluff.images.concat(cpy.images);
 						}
+						if (cpy.entries) {
+							if (!fluff.entries) fluff.entries = cpy.entries;
+							else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
+						}
+						delete fluff._appendCopy;
+					}
 
-						if (fluff._copy) {
-							const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
-							// preserve these
-							const name = fluff.name;
-							const src = fluff.source;
-							const images = fluff.images;
-							Object.assign(fluff, cpy);
-							fluff.name = name;
-							fluff.source = src;
-							if (images) fluff.images = images;
-							delete fluff._copy;
-						}
-
-						if (fluff._appendCopy) {
-							const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
-							if (cpy.images) {
-								if (!fluff.images) fluff.images = cpy.images;
-								else fluff.images = fluff.images.concat(cpy.images);
-							}
-							if (cpy.entries) {
-								if (!fluff.entries) fluff.entries = cpy.entries;
-								else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
-							}
-							delete fluff._appendCopy;
-						}
-
-						if (fluff.images) {
-							fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
-						}
-						if (fluff.entries) {
-							const depth = fluff.entries.type === "section" ? -1 : 2;
-							$td.append(renderer.renderEntry(fluff.entries, depth));
-						}
-					});
-				} else {
-					$td.empty();
-					$td.append(NO_INFO);
-				}
+					if (fluff.images) {
+						fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
+					}
+					if (fluff.entries) {
+						const depth = fluff.entries.type === "section" ? -1 : 2;
+						$td.append(renderer.renderEntry(fluff.entries, depth));
+					}
+				});
 			} else {
-				$content.append(infoTab);
+				$td.empty();
+				$td.append(NO_INFO);
 			}
-			curTab = 1;
 		}
-	});
+	);
 
 	let renderStack = [];
 	let entryList = {};

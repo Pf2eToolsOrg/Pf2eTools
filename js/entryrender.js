@@ -797,6 +797,58 @@ EntryRenderer.utils = {
 	_getPageTrText: (it) => {
 		const addSourceText = it.additionalSources && it.additionalSources.length ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
 		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}` : ""
+	},
+
+	_statTab: null,
+	_infoTab: null,
+	_curTab: 0,
+	bindTabButtons: (funcStats, funcInfo, funcPopulateInfo) => {
+		EntryRenderer.utils._statTab = null;
+		EntryRenderer.utils._infoTab = null;
+		EntryRenderer.utils._curTab = 0;
+
+		const $content = $("#pagecontent");
+		const $tStatblock = $(`#tab-statblock`);
+		const $tInfo = $(`#tab-info`);
+
+		$tInfo.removeClass(`stat-tab-sel`);
+		$tStatblock.addClass(`stat-tab-sel`);
+
+		// set up tab buttons
+		$tStatblock.off("click");
+		$tStatblock.on("click", () => {
+			if (EntryRenderer.utils._curTab === 1) {
+				EntryRenderer.utils._infoTab = $content.children().detach();
+
+				$tInfo.removeClass(`stat-tab-sel`);
+				$tStatblock.addClass(`stat-tab-sel`);
+
+				$content.append(EntryRenderer.utils._statTab);
+
+				funcStats();
+				EntryRenderer.utils._curTab = 0;
+			}
+		});
+
+		$tInfo.off("click");
+		$tInfo.on("click", () => {
+			debugger
+			if (EntryRenderer.utils._curTab === 0) {
+				EntryRenderer.utils._statTab = $content.children().detach();
+
+				$tInfo.addClass(`stat-tab-sel`);
+				$tStatblock.removeClass(`stat-tab-sel`);
+
+				if (EntryRenderer.utils._infoTab === null) {
+					funcPopulateInfo();
+				} else {
+					$content.append(EntryRenderer.utils._infoTab);
+				}
+
+				funcInfo();
+				EntryRenderer.utils._curTab = 1;
+			}
+		});
 	}
 };
 
