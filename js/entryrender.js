@@ -1304,7 +1304,7 @@ EntryRenderer.monster = {
 						<td>${mon.ac}</td>					
 						<td>${mon.hp}</td>					
 						<td>${mon.speed}</td>					
-						<td>${Parser.monCrToFull(mon.cr)</td>					
+						<td>${Parser.monCrToFull(mon.cr)}</td>					
 					</tr>
 				</table>			
 			</td></tr>
