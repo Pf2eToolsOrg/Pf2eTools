@@ -153,7 +153,7 @@ function handleFilterChange () {
 		return filterBox.toDisplay(
 			f,
 			m.source,
-			m.cr,
+			m._pCr,
 			m.size,
 			m._pTypes.type,
 			m._pTypes.tags,
@@ -174,7 +174,7 @@ function addMonsters (data) {
 	for (; mI < monsters.length; mI++) {
 		const mon = monsters[mI];
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
-		mon.cr = mon.cr === undefined ? "Unknown" : mon.cr;
+		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
@@ -184,12 +184,12 @@ function addMonsters (data) {
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
 					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
-					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr.cr || mon.cr}</span>
+					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon._pCr}</span>
 				</a>
 			</li>`;
 
 		// populate filters
-		crFilter.addIfAbsent(mon.cr);
+		crFilter.addIfAbsent(mon._pCr);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");
@@ -222,7 +222,7 @@ function sortMonsters (a, b, o) {
 	if (o.valueName === "name") return SortUtil.ascSort(a.name, b.name);
 	if (o.valueName === "type") return SortUtil.ascSort(a._pTypes.asText, b._pTypes.asText);
 	if (o.valueName === "source") return SortUtil.ascSort(a.source, b.source);
-	if (o.valueName === "cr") return ascSortCr(a.cr, b.cr);
+	if (o.valueName === "cr") return ascSortCr(a._pCr, b._pCr);
 	return 0;
 }
 
