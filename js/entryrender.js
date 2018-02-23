@@ -1353,7 +1353,7 @@ EntryRenderer.monster = {
 		for (let i = 0; i < spellcasting.length; i++) {
 			const renderStack = [];
 			let spellList = spellcasting[i];
-			const toRender = [{type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}];
+			const toRender = [{type: "entries", name: spellList.name, entries: spellList.headerEntries ? JSON.parse(JSON.stringify(spellList.headerEntries)) : []}];
 			if (spellList.constant || spellList.will || spellList.rest || spellList.daily || spellList.weekly) {
 				const tempList = {type: "list", "style": "list-hang-notitle", items: []};
 				if (spellList.constant) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: spellList.constant.join(", ")});
