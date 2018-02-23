@@ -184,7 +184,7 @@ function addMonsters (data) {
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
 					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
-					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr}</span>
+					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr.cr || mon.cr}</span>
 				</a>
 			</li>`;
 
@@ -454,7 +454,7 @@ function loadhash (id) {
 		$content.find("td span#senses").html("");
 	}
 
-	$content.find("td span#pp").html(mon.passive)
+	$content.find("td span#pp").html(mon.passive);
 
 	var languages = mon.languages;
 	if (languages) {
@@ -463,9 +463,7 @@ function loadhash (id) {
 		$content.find("td span#languages").html("\u2014");
 	}
 
-	var cr = mon.cr;
-	$content.find("td span#cr").html(cr);
-	$content.find("td span#xp").html(Parser.crToXp(cr));
+	$content.find("td span#cr").html(Parser.monCrToFull(mon.cr));
 
 	$content.find("tr.trait").remove();
 
@@ -494,7 +492,23 @@ function loadhash (id) {
 		variantSect.show();
 	}
 
-	$content.find(`#source`).append(EntryRenderer.utils.getPageTr(mon));
+	const srcCpy = {
+		source: mon.source,
+		page: mon.page
+	};
+	const additional = mon.additionalSources ? JSON.parse(JSON.stringify(mon.additionalSources)) : [];
+	if (mon.variant && mon.variant.length > 1) {
+		mon.variant.forEach(v => {
+			if (v.variantSource) {
+				additional.push({
+					source: v.variantSource.source,
+					page: v.variantSource.page
+				})
+			}
+		})
+	}
+	srcCpy.additionalSources = additional;
+	$content.find(`#source`).append(EntryRenderer.utils.getPageTr(srcCpy));
 
 	const legendary = mon.legendary;
 	$content.find("tr#legendaries").hide();

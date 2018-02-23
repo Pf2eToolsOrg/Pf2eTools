@@ -123,6 +123,9 @@ function EntryRenderer () {
 					for (let i = 0; i < entry.entries.length; i++) {
 						this.recursiveEntryRender(entry.entries[i], textStack, 2, "<p>", "</p>");
 					}
+					if (entry.variantSource) {
+						textStack.push(EntryRenderer.utils._getPageTrText(entry.variantSource));
+					}
 					textStack.push(`</${this.wrapperTag}>`);
 					break;
 				case "variantSub": {
@@ -788,8 +791,12 @@ EntryRenderer.utils = {
 	},
 
 	getPageTr: (it) => {
-		const addSourceText = it.additionalSources ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
-		return `${it.page ? `<td colspan=6><b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}</td>` : ""}`;
+		return `<td colspan=6>${EntryRenderer.utils._getPageTrText(it)}</td>`;
+	},
+
+	_getPageTrText: (it) => {
+		const addSourceText = it.additionalSources && it.additionalSources.length ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
+		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}` : ""
 	}
 };
 
@@ -1297,7 +1304,7 @@ EntryRenderer.monster = {
 						<td>${mon.ac}</td>					
 						<td>${mon.hp}</td>					
 						<td>${mon.speed}</td>					
-						<td>${mon.cr} (${Parser.crToXp(mon.cr)} XP)</td>					
+						<td>${Parser.monCrToFull(mon.cr)}</td>					
 					</tr>
 				</table>			
 			</td></tr>
@@ -1340,13 +1347,13 @@ EntryRenderer.monster = {
 		return renderStack.join("");
 	},
 
-	getSpellcastingRenderedString: (mon, renderer) => {
+	getSpellcastingRenderedTraits: (mon, renderer) => {
 		const out = [];
 		const spellcasting = mon.spellcasting;
 		for (let i = 0; i < spellcasting.length; i++) {
 			const renderStack = [];
 			let spellList = spellcasting[i];
-			const toRender = [{type: "entries", name: spellList.name, entries: spellList.headerEntries ? spellList.headerEntries : []}];
+			const toRender = [{type: "entries", name: spellList.name, entries: spellList.headerEntries ? JSON.parse(JSON.stringify(spellList.headerEntries)) : []}];
 			if (spellList.constant || spellList.will || spellList.rest || spellList.daily || spellList.weekly) {
 				const tempList = {type: "list", "style": "list-hang-notitle", items: []};
 				if (spellList.constant) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: spellList.constant.join(", ")});
@@ -1404,9 +1411,9 @@ EntryRenderer.monster = {
 	},
 
 	getOrderedTraits: (mon, renderer) => {
-		let trait = JSON.parse(JSON.stringify(mon.trait));
+		let trait = mon.trait ? JSON.parse(JSON.stringify(mon.trait)) : null;
 		if (mon.spellcasting) {
-			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedString(mon, renderer);
+			const spellTraits = EntryRenderer.monster.getSpellcastingRenderedTraits(mon, renderer);
 			// weave spellcasting in with other traits
 			trait = trait ? trait.concat(spellTraits) : spellTraits;
 		}
@@ -2253,7 +2260,7 @@ EntryRenderer.dice = {
 		if (typeof window !== "undefined" && typeof window.crypto !== "undefined") {
 			return EntryRenderer.dice._randomise(1, max + 1);
 		} else {
-			return 1 + Math.floor(Math.random() * max);
+			return RollerUtil.roll(max) + 1;
 		}
 	},
 

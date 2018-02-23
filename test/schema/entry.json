@@ -589,6 +589,19 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"variantSource": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": ["source", "page"],
+							"additionalProperties": false
 						}
 					},
 					"required": ["name", "entries"]

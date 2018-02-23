@@ -304,7 +304,27 @@
 						"type": "string"
 					},
 					"cr": {
-						"type": "string"
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"cr": {
+										"type": "string"
+									},
+									"lair": {
+										"type": "string"
+									},
+									"coven": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["cr"]
+							}
+						]
 					},
 					"description": {
 						"type": "string"
