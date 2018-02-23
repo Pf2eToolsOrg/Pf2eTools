@@ -7995,9 +7995,9 @@
 										"Notes"
 									],
 									"colStyles": [
-										"",
-										"",
-										""
+										"col-xs-1 text-align-center",
+										"col-xs-3",
+										"col-xs-8"
 									],
 									"rows": [
 										[
@@ -8079,7 +8079,27 @@
 					"name": "Reinforcements",
 					"entries": [
 						"Adventurers can use hit-and-run tactics to weaken Grudd Haug's defenses. Depending on how much time passes between the adventurers' forays, the hill giant den might gain reinforcements from the nearby hills.",
-						"At the end of each hour, roll percentile dice and consult the Grudd Haug Reinforcements table to determine what creatures, if any, appear. Unless otherwise noted, such creatures enter through the stockyard (area 9) and go to the feasting hall (area 2), to pay homage or deliver food to Chief Guh. There is a 25 percent chance that the creatures have 1d4 prisoners (unarmed {@creature commoner|MM|commoners}) in tow. If Guh commands the reinforcements to stay, they take up defensive positions in and around the stockyard after confining their prisoners in area 13. Otherwise, they leave by the route they came after 20 minutes or so."
+						"At the end of each hour, roll percentile dice and consult the Grudd Haug Reinforcements table to determine what creatures, if any, appear. Unless otherwise noted, such creatures enter through the stockyard (area 9) and go to the feasting hall (area 2), to pay homage or deliver food to Chief Guh. There is a 25 percent chance that the creatures have 1d4 prisoners (unarmed {@creature commoner|MM|commoners}) in tow. If Guh commands the reinforcements to stay, they take up defensive positions in and around the stockyard after confining their prisoners in area 13. Otherwise, they leave by the route they came after 20 minutes or so.",
+						{
+							"type": "table",
+							"caption": "Grudd Haug Reinforcements",
+							"colLabels": [
+								"d100",
+								"Creature(s)"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								["01-50", "None"],
+								["51-60", "1 male {@creature hill giant} carrying a live pig, sheep, goat, cow, pony, or mule"],
+								["61-70", "2d4 {@creature bugbear|mm|bugbears}, each carrying a basket of apples, carrots, or potatoes"],
+								["71-80", "1 {@creature hobgoblin warlord} mounted on a {@creature wyvern}, which lands on the rocky outcropping by area 1"],
+								["81-90", "3d6 Iceshield {@creature orc|mm|orcs} and 1 Iceshield {@creature orc war chief}, who travel downriver on two rafts"],
+								["91-00", "1d4+1 male {@creature hill giant|mm|hill giants}, each carrying a basket of dead fish, a barrel of pickles, or a block of sugar"]
+							]
+						}
 					]
 				},
 				{

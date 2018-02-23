@@ -173,7 +173,7 @@ function addMonsters (data) {
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
 					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
-					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr}</span>
+					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon.cr.cr || mon.cr}</span>
 				</a>
 			</li>`;
 
@@ -332,7 +332,7 @@ function loadhash (id) {
 		$("td span#senses").html("");
 	}
 
-	$("td span#pp").html(mon.passive)
+	$("td span#pp").html(mon.passive);
 
 	var languages = mon.languages;
 	if (languages) {
@@ -341,9 +341,7 @@ function loadhash (id) {
 		$("td span#languages").html("\u2014");
 	}
 
-	var cr = mon.cr;
-	$("td span#cr").html(cr);
-	$("td span#xp").html(Parser.crToXp(cr));
+	$("td span#cr").html(Parser.monCrToFull(mon.cr));
 
 	$("tr.trait").remove();
 

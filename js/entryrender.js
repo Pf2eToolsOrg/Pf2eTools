@@ -2248,7 +2248,7 @@ EntryRenderer.dice = {
 		if (typeof window !== "undefined" && typeof window.crypto !== "undefined") {
 			return EntryRenderer.dice._randomise(1, max + 1);
 		} else {
-			return 1 + Math.floor(Math.random() * max);
+			return RollerUtil.roll(max) + 1;
 		}
 	},
 
