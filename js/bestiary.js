@@ -240,14 +240,16 @@ function loadhash (id) {
 
 	const mon = monsters[id];
 
-	// reset tabs
 	$content.html(tableDefault);
 	if (profBtn !== null) {
 		$wrpBtnProf.append(profBtn);
 		profBtn = null;
 	}
 
+	// reset tabs
 	EntryRenderer.utils.bindTabButtons(
+		"Statblock",
+		"Info",
 		() => {
 			$wrpBtnProf.append(profBtn);
 		},
@@ -263,15 +265,13 @@ function loadhash (id) {
 			$content.append($tr);
 			const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
 			$content.append(EntryRenderer.utils.getBorderTr());
-
-			const NO_INFO = "<i>No information available.</i>";
 			if (ixFluff[mon.source]) {
 				DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
 					const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
 
 					if (!fluff) {
 						$td.empty();
-						$td.append(NO_INFO);
+						$td.append(HTML_NO_INFO);
 						return;
 					}
 
@@ -311,7 +311,7 @@ function loadhash (id) {
 				});
 			} else {
 				$td.empty();
-				$td.append(NO_INFO);
+				$td.append(HTML_NO_INFO);
 			}
 		}
 	);

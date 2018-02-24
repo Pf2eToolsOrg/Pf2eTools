@@ -22,6 +22,8 @@ STR_VOID_LINK = "javascript:void(0)";
 STR_SLUG_DASH = "-";
 STR_APOSTROPHE = "\u2019";
 
+HTML_NO_INFO = "<i>No information available.</i>";
+
 ID_SEARCH_BAR = "filter-search-input-group";
 ID_RESET_BUTTON = "reset";
 

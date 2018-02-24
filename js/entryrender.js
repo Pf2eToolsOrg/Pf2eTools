@@ -779,6 +779,10 @@ EntryRenderer.utils = {
 		return `<tr><th class="border" colspan="6"></th></tr>`;
 	},
 
+	getDividerTr: () => {
+		return `<tr><td class="divider" colspan="6"><div></div></td></tr>`;
+	},
+
 	getNameTr: (it, addPageNum, prefix, suffix) => {
 		return `<tr>
 					<th class="name" colspan="6">
@@ -802,7 +806,7 @@ EntryRenderer.utils = {
 	_statTab: null,
 	_infoTab: null,
 	_curTab: 0,
-	bindTabButtons: (funcStats, funcInfo, funcPopulateInfo) => {
+	bindTabButtons: (primaryLabel, infoLabel, funcStats, funcInfo, funcPopulateInfo) => {
 		EntryRenderer.utils._statTab = null;
 		EntryRenderer.utils._infoTab = null;
 		EntryRenderer.utils._curTab = 0;
@@ -810,6 +814,8 @@ EntryRenderer.utils = {
 		const $content = $("#pagecontent");
 		const $tStatblock = $(`#tab-statblock`);
 		const $tInfo = $(`#tab-info`);
+		$tStatblock.text(primaryLabel);
+		$tInfo.text(infoLabel);
 
 		$tInfo.removeClass(`stat-tab-sel`);
 		$tStatblock.addClass(`stat-tab-sel`);
@@ -832,7 +838,6 @@ EntryRenderer.utils = {
 
 		$tInfo.off("click");
 		$tInfo.on("click", () => {
-			debugger
 			if (EntryRenderer.utils._curTab === 0) {
 				EntryRenderer.utils._statTab = $content.children().detach();
 
@@ -1040,7 +1045,7 @@ EntryRenderer.spell = {
 			<tr><td class="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>
 			<tr><td class="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>
 			<tr><td class="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>
-			<tr><td class="divider" colspan="6"><div></div></td></tr>
+			${EntryRenderer.utils.getDividerTr()}
 		`);
 
 		const entryList = {type: "entries", entries: spell.entries};
@@ -1233,6 +1238,8 @@ EntryRenderer.race = {
 
 			srCopy.forEach(s => {
 				const cpy = JSON.parse(JSON.stringify(race));
+				cpy._baseName = cpy.name;
+				cpy._baseSource = cpy.source;
 				delete cpy.subraces;
 
 				// merge names, abilities, entries
@@ -1531,7 +1538,7 @@ EntryRenderer.item = {
 		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : ""}</td><td class="damageproperties" colspan="4">${damage} ${damageType} ${propertiesTxt}</tr>`);
 
-		renderStack.push(`<tr><td class="divider" colspan="6"><div></div></td></tr>`);
+		renderStack.push(EntryRenderer.utils.getDividerTr());
 
 		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
 
@@ -2524,7 +2531,6 @@ EntryRenderer.dice = {
 			const v = EntryRenderer.dice._rollParsed(toRoll);
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
-			// debugger
 			const totalPart = toRoll.successThresh
 				? `<span class="roll">${v.total > 100 - toRoll.successThresh ? "success" : "failure"}</span>`
 				: `<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>`;
