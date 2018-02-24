@@ -238,8 +238,8 @@ function loadhash (id) {
 			$pgContent.append(EntryRenderer.utils.getBorderTr());
 
 			DataUtil.loadJSON(JSON_FLUFF_URL, (data) => {
-				const subFluff = data.race.find(it => it.name === race.name && it.source === race.source);
-				const baseFluff = data.race.find(it => it.name === race._baseName && it.source === race._baseSource);
+				const subFluff = data.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
+				const baseFluff = data.race.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
 				if (subFluff || baseFluff) {
 					if (subFluff && !baseFluff) {
 						renderer.setFirstSection(true);
