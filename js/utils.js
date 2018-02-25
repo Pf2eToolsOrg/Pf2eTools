@@ -1619,6 +1619,14 @@ ListUtil = {
 			});
 		}
 		return list
+	},
+
+	toggleSelected: (evt, ele) => {
+		if (evt.shiftKey) {
+			evt.preventDefault();
+			const $ele = $(ele);
+			$ele.toggleClass("list-multi-selected")
+		}
 	}
 };
 
