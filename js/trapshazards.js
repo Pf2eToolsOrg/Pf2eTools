@@ -35,6 +35,7 @@ function onJsonLoad (data) {
 	});
 
 	initHistory();
+	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
 }
 
 const renderer = new EntryRenderer();

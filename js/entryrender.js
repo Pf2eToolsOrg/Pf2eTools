@@ -1538,14 +1538,13 @@ EntryRenderer.item = {
 		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : ""}</td><td class="damageproperties" colspan="4">${damage} ${damageType} ${propertiesTxt}</tr>`);
 
-		renderStack.push(EntryRenderer.utils.getDividerTr());
-
-		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
-
-		const entryList = {type: "entries", entries: item.entries};
-		renderer.recursiveEntryRender(entryList, renderStack, 1);
-
-		renderStack.push(`</td></tr>`);
+		if (item.entries && item.entries.length) {
+			renderStack.push(EntryRenderer.utils.getDividerTr());
+			renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+			const entryList = {type: "entries", entries: item.entries};
+			renderer.recursiveEntryRender(entryList, renderStack, 1);
+			renderStack.push(`</td></tr>`);
+		}
 
 		return renderStack.join("");
 	},

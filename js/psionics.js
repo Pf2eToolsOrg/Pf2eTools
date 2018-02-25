@@ -122,6 +122,7 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+	EntryRenderer.hover.bindPopoutButton(PSIONIC_LIST);
 }
 
 let renderer;

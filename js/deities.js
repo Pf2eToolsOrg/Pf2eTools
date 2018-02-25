@@ -140,6 +140,7 @@ function onJsonLoad (data) {
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	addListShowHide();
+	EntryRenderer.hover.bindPopoutButton(deitiesList);
 }
 
 const renderer = new EntryRenderer();

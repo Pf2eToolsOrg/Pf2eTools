@@ -33,6 +33,7 @@ function onJsonLoad (data) {
 	});
 
 	initHistory();
+	EntryRenderer.hover.bindPopoutButton(objectsList);
 }
 
 const renderer = new EntryRenderer();

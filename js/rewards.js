@@ -74,6 +74,7 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+	EntryRenderer.hover.bindPopoutButton(rewardList);
 }
 
 function loadhash (id) {

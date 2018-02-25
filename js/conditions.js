@@ -30,7 +30,8 @@ function onJsonLoad (data) {
 		listClass: "conditions"
 	});
 
-	initHistory()
+	initHistory();
+	EntryRenderer.hover.bindPopoutButton(conditionList);
 }
 
 function loadhash (id) {
