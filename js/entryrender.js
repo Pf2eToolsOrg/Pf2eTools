@@ -1915,6 +1915,7 @@ EntryRenderer.hover = {
 		const source = EntryRenderer.hover._curHovering.cSource;
 		const hash = EntryRenderer.hover._curHovering.cHash;
 		const permanent = EntryRenderer.hover._curHovering.permanent;
+		const clientX = EntryRenderer.hover._curHovering.clientX;
 
 		// if we've outrun the loading, restart
 		if (!EntryRenderer.hover._isCached(page, source, hash)) {
@@ -2032,8 +2033,8 @@ EntryRenderer.hover = {
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
-		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
-		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
+		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - $hov.width());
+		else $hov.css("left", clientX || (vpOffsetL + $(ele).width() + 1));
 
 		adjustPosition(true);
 
@@ -2145,7 +2146,8 @@ EntryRenderer.hover = {
 			cPage: page,
 			cSource: source,
 			cHash: hash,
-			permanent: evt.shiftKey
+			permanent: evt.shiftKey,
+			clientX: evt.clientX
 		};
 
 		// return if another event chain is handling the event
@@ -2294,13 +2296,17 @@ EntryRenderer.hover = {
 	bindPopoutButton: (toList) => {
 		const $btnPop = $(`#btn-popout`);
 		$btnPop.off("click");
-		$btnPop.on("click", () => {
+		$btnPop.on("click", (evt) => {
 			if (lastLoadedId !== null) {
-				$btnPop.attr("data-hover-active", false);
-				const it = toList[lastLoadedId];
-				EntryRenderer.hover.show({shiftKey: true}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it));
+				EntryRenderer.hover.doPopout($btnPop, toList, lastLoadedId, evt.clientX);
 			}
 		});
+	},
+
+	doPopout: ($btnPop, list, index, clientX) => {
+		$btnPop.attr("data-hover-active", false);
+		const it = list[index];
+		EntryRenderer.hover.show({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it));
 	}
 };
 

@@ -1627,6 +1627,121 @@ ListUtil = {
 			const $ele = $(ele);
 			$ele.toggleClass("list-multi-selected")
 		}
+	},
+
+	_ctxInit: {},
+	_ctxClick: {},
+	_handlePreInitContextMenu: (menuId) => {
+		if (ListUtil._ctxInit[menuId]) return;
+		ListUtil._ctxInit[menuId] = true;
+		$("body").click(() => {
+			$(`#${menuId}`).hide();
+		});
+	},
+
+	_getMenuPosition: (menuId, mouse, direction, scrollDir) => {
+		const win = $(window)[direction]();
+		const scroll = $(window)[scrollDir]();
+		const menu = $(`#${menuId}`)[direction]();
+		let position = mouse + scroll;
+		// opening menu would pass the side of the page
+		if (mouse + menu > win && menu < mouse) position -= menu;
+		return position;
+	},
+
+	initContextMenu: (clickFn, ...labels) => {
+		ListUtil._handleInitContextMenu("contextMenu", clickFn, labels);
+	},
+
+	openContextMenu: (evt, ele) => {
+		ListUtil._handleOpenContextMenu(evt, ele, "contextMenu");
+	},
+
+	initSubContextMenu: (clickFn, ...labels) => {
+		ListUtil._handleInitContextMenu("contextSubMenu", clickFn, labels)
+	},
+
+	openSubContextMenu: (evt, ele) => {
+		ListUtil._handleOpenContextMenu(evt, ele, "contextSubMenu");
+	},
+
+	_handleInitContextMenu: (menuId, clickFn, labels) => {
+		ListUtil._ctxClick[menuId] = clickFn;
+		ListUtil._handlePreInitContextMenu(menuId);
+		let tempString = `<ul id="${menuId}" class="dropdown-menu" role="menu">`;
+		labels.forEach((it, i) => {
+			tempString += `<li><a data-ctx-id="${i}" href="${STR_VOID_LINK}">${it}</a></li>`;
+		});
+		tempString += `</ul>`;
+		$("body").append(tempString);
+	},
+
+	_handleOpenContextMenu: (evt, ele, menuId) => {
+		if (evt.ctrlKey) return;
+		evt.preventDefault();
+		const $menu = $(`#${menuId}`)
+			.data("invokedOn", $(evt.target).closest(`li.row`))
+			.show()
+			.css({
+				position: "absolute",
+				left: ListUtil._getMenuPosition(menuId, evt.clientX, "width", "scrollLeft"),
+				top: ListUtil._getMenuPosition(menuId, evt.clientY, "height", "scrollTop")
+			})
+			.off("click")
+			.on("click", "a", function (e) {
+				$menu.hide();
+				const $invokedOn = $menu.data("invokedOn");
+				const $selectedMenu = $(e.target);
+				ListUtil._ctxClick[menuId](evt, ele, $invokedOn, $selectedMenu);
+			});
+	},
+
+	sublist: null,
+	$sublist: null,
+	_pinList: null,
+	_pinned: {},
+	initSublist: (options) => {
+		const sublist = new List("sublistcontainer", options);
+		ListUtil.sublist = sublist;
+		ListUtil.$sublist = $(`ul.${options.listClass}`);
+		return sublist;
+	},
+
+	bindPinButton: (toList, getSubFn) => {
+		ListUtil._pinList = toList;
+		$(`#btn-pin`)
+			.off("click")
+			.on("click", () => {
+				if (!ListUtil.isPinned(lastLoadedId)) ListUtil.doPin(lastLoadedId, getSubFn, true);
+				else ListUtil.doUnpin(lastLoadedId);
+			});
+	},
+
+	doPin: (index, getSubFn, doFinalise) => {
+		ListUtil._pinned[index] = true;
+		ListUtil.$sublist.append(getSubFn(ListUtil._pinList[index], index));
+		if (doFinalise) {
+			ListUtil._finalisePins();
+		}
+	},
+
+	_finalisePins: () => {
+		ListUtil.sublist.reIndex();
+		ListUtil.sublist.sort("name");
+	},
+
+	doUnpin: (index) => {
+		delete ListUtil._pinned[index];
+		ListUtil.sublist.remove("id", index);
+	},
+
+	doUnpinAll: () => {
+		ListUtil._pinned = {};
+		ListUtil.sublist.clear();
+	},
+
+	isPinned: (index) => {
+		return ListUtil._pinned[index];
 	}
 };
 
