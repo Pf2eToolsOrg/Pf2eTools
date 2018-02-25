@@ -181,10 +181,10 @@ function loadhash (id) {
 		() => {},
 		() => {},
 		() => {
-			function get$Tr() {
+			function get$Tr () {
 				return $(`<tr class="text">`);
 			}
-			function get$Td() {
+			function get$Td () {
 				return $(`<td colspan="6" class="text">`);
 			}
 
@@ -228,10 +228,10 @@ function loadhash (id) {
 						renderer.setFirstSection(true);
 						$td.append(renderer.renderEntry({type: "section", entries: baseFluff.entries}));
 					}
-					if (subFluff && subFluff.uncommon || baseFluff && baseFluff.uncommon) {
+					if ((subFluff && subFluff.uncommon) || (baseFluff && baseFluff.uncommon)) {
 						renderMeta("uncommon");
 					}
-					if (subFluff && subFluff.monstrous || baseFluff && baseFluff.monstrous) {
+					if ((subFluff && subFluff.monstrous) || (baseFluff && baseFluff.monstrous)) {
 						renderMeta("monstrous");
 					}
 				} else {
