@@ -1611,7 +1611,7 @@ ListUtil = {
 		if (count > subtractCount) {
 			ListUtil._pinned[index] = count - subtractCount;
 			ListUtil._setCount(index, count - subtractCount);
-			ListUtil._sublistChangeFn();
+			ListUtil._handleCallUpdateFn();
 		} else if (count) ListUtil.doSublistRemove(index);
 	},
 
@@ -1624,7 +1624,7 @@ ListUtil = {
 	_finaliseSublist: () => {
 		ListUtil.sublist.reIndex();
 		ListUtil._updateSublistVisibility();
-		ListUtil._sublistChangeFn();
+		ListUtil._handleCallUpdateFn();
 	},
 
 	_updateSublistVisibility: () => {
@@ -1636,14 +1636,14 @@ ListUtil = {
 		delete ListUtil._pinned[index];
 		ListUtil.sublist.remove("id", index);
 		ListUtil._updateSublistVisibility();
-		ListUtil._sublistChangeFn();
+		ListUtil._handleCallUpdateFn();
 	},
 
 	doSublistRemoveAll: () => {
 		ListUtil._pinned = {};
 		ListUtil.sublist.clear();
 		ListUtil._updateSublistVisibility();
-		ListUtil._sublistChangeFn();
+		ListUtil._handleCallUpdateFn();
 	},
 
 	isSublisted: (index) => {
@@ -1654,8 +1654,22 @@ ListUtil = {
 		list.items.forEach(it => it.elm.className = it.elm.className.replace(/list-multi-selected/g, ""));
 	},
 
+	forEachSelected: (list, forEachFunc) => {
+		list.items
+			.filter(it => it.elm.className.includes("list-multi-selected"))
+			.map(it => {
+				it.elm.className = it.elm.className.replace(/list-multi-selected/g, "");
+				return it.elm.getAttribute(FLTR_ID);
+			})
+			.forEach(it => forEachFunc(it));
+	},
+
 	setUpdateFn: (updateFunc) => {
 		ListUtil._sublistChangeFn = updateFunc;
+	},
+
+	_handleCallUpdateFn: () => {
+		if (ListUtil._sublistChangeFn) ListUtil._sublistChangeFn();
 	}
 };
 

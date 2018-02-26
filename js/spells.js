@@ -369,16 +369,10 @@ function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 			$invokedOn.toggleClass("list-multi-selected");
 			break;
 		case 3:
-			list.items
-				.filter(it => it.elm.className.includes("list-multi-selected"))
-				.map(it => {
-					it.elm.className = it.elm.className.replace(/list-multi-selected/g, "");
-					return it.elm.getAttribute(FLTR_ID);
-				})
-				.forEach(it => {
-					if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it, getSublistItem);
-					else ListUtil.doSublistRemove(it);
-				});
+			ListUtil.forEachSelected(list, (it) => {
+				if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it, getSublistItem);
+				else ListUtil.doSublistRemove(it);
+			});
 			ListUtil._finaliseSublist();
 			break;
 		case 4:

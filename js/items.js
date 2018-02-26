@@ -241,13 +241,7 @@ function getSublistItem (item, pinId, addCount) {
 
 function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 	function massAdd (list) {
-		list.items
-			.filter(it => it.elm.className.includes("list-multi-selected"))
-			.map(it => {
-				it.elm.className = it.elm.className.replace(/list-multi-selected/g, "");
-				return it.elm.getAttribute(FLTR_ID);
-			})
-			.forEach(it => ListUtil.doSublistAdd(it, getSublistItem));
+		ListUtil.forEachSelected(list, (it) => ListUtil.doSublistAdd(it, getSublistItem));
 	}
 
 	const itId = Number($invokedOn.attr(FLTR_ID));
