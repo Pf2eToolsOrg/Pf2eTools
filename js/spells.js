@@ -382,7 +382,7 @@ function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 			ListUtil._finaliseSublist();
 			break;
 		case 4:
-			list.items.forEach(it => it.elm.className = it.elm.className.replace(/list-multi-selected/g, ""));
+			ListUtil.deslectAll(list);
 			break;
 	}
 }

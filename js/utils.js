@@ -211,153 +211,6 @@ RegExp.escape = function (string) {
 };
 
 // TEXT COMBINING ======================================================================================================
-function utils_combineText (textList, tagPerItem, textBlockInlineTitle) {
-	tagPerItem = tagPerItem === undefined ? null : tagPerItem;
-	textBlockInlineTitle = textBlockInlineTitle === undefined ? null : textBlockInlineTitle;
-	let textStack = "";
-	if (typeof textList === "string") {
-		return getString(textList, true)
-	}
-	for (let i = 0; i < textList.length; ++i) {
-		if (typeof textList[i] === "object") {
-			if (textList[i].islist === "YES") {
-				textStack += utils_makeOldList(textList[i]);
-			}
-			if (textList[i].type === "list") {
-				textStack += utils_makeList(textList[i]);
-			}
-			if (textList[i].hassubtitle === "YES") {
-				// if required, add inline header before we go deeper
-				if (textBlockInlineTitle !== null && i === 0) {
-					textStack += textBlockInlineTitle;
-				}
-				textStack += utils_combineText(textList[i].text, tagPerItem, utils_makeSubHeader(textList[i].title));
-			}
-			if (textList[i].istable === "YES") {
-				textStack += utils_makeTable(textList[i]);
-			}
-			if (textList[i].hassavedc === "YES") {
-				textStack += utils_makeAttDc(textList[i]);
-			}
-			if (textList[i].hasattackmod === "YES") {
-				textStack += utils_makeAttAttackMod(textList[i]);
-			}
-		} else {
-			textStack += getString(textList[i], textBlockInlineTitle !== null && i === 0)
-		}
-	}
-	return textStack;
-
-	function getString (text, addTitle) {
-		const openTag = tagPerItem === null ? "" : "<" + tagPerItem + ">";
-		const closeTag = tagPerItem === null ? "" : "</" + tagPerItem + ">";
-		const inlineTitle = addTitle ? textBlockInlineTitle : "";
-		return openTag + inlineTitle + text + closeTag;
-	}
-}
-
-function utils_makeTable (tableObject) {
-	let tableStack = "<table>";
-	if (tableObject.caption !== undefined) {
-		tableStack += "<caption>" + tableObject.caption + "</caption>";
-	}
-	tableStack += "<thead><tr>";
-
-	for (let i = 0; i < tableObject.thead.length; ++i) {
-		tableStack += "<th" + makeTableThClassText(tableObject, i) + ">" + tableObject.thead[i] + "</th>"
-	}
-
-	tableStack += "</tr></thead><tbody>";
-	for (let i = 0; i < tableObject.tbody.length; ++i) {
-		tableStack += "<tr>";
-		for (let j = 0; j < tableObject.tbody[i].length; ++j) {
-			tableStack += "<td" + makeTableTdClassText(tableObject, j) + ">" + tableObject.tbody[i][j] + "</td>";
-		}
-		tableStack += "</tr>";
-	}
-	tableStack += "</tbody></table>";
-	return tableStack;
-}
-
-function utils_makeAttDc (attDcObj) {
-	return "<p class='spellabilitysubtext'><span>" + attDcObj.name + " save DC</span> = 8 + your proficiency bonus + your " + utils_makeAttChoose(attDcObj.attributes) + "</p>"
-}
-
-function utils_makeAttAttackMod (attAtkObj) {
-	return "<p class='spellabilitysubtext'><span>" + attAtkObj.name + " attack modifier</span> = your proficiency bonus + your " + utils_makeAttChoose(attAtkObj.attributes) + "</p>"
-}
-
-function utils_makeLink (linkObj) {
-	let href;
-	if (linkObj.href.type === "internal") {
-		href = `${linkObj.href.path}#`;
-		if (linkObj.href.hash !== undefined) {
-			if (linkObj.href.hash.type === "constant") {
-				href += linkObj.href.hash.value;
-			} else if (linkObj.href.hash.type === "multipart") {
-				const partStack = [];
-				for (let i = 0; i < linkObj.href.hash.parts.length; i++) {
-					const part = linkObj.href.hash.parts[i];
-					partStack.push(`${part.key}:${part.value}`)
-				}
-				href += partStack.join(",");
-			}
-		}
-	} else if (linkObj.href.type === "external") {
-		href = linkObj.href.url;
-	}
-	return `<a href='${href}' target='_blank'>${linkObj.text}</a>`;
-}
-
-function utils_makeOldList (listObj) { // to handle islist === "YES"
-	let outStack = "<ul>";
-	for (let i = 0; i < listObj.items.length; ++i) {
-		const cur = listObj.items[i];
-		outStack += "<li>";
-		for (let j = 0; j < cur.entries.length; ++j) {
-			if (cur.entries[j].hassubtitle === "YES") {
-				outStack += "<br>" + utils_makeListSubHeader(cur.entries[j].title) + cur.entries[j].entries;
-			} else {
-				outStack += cur.entries[j];
-			}
-		}
-		outStack += "</li>";
-	}
-	return outStack + "</ul>";
-}
-
-function utils_makeList (listObj) { // to handle type === "list"
-	let listTag = "ul";
-	const subtype = listObj.subtype;
-	let suffix = "";
-	if (subtype === "ordered") {
-		listTag = "ol";
-		if (listObj.ordering) suffix = " type=\"" + listObj.ordering + "\"";
-	} // NOTE: "description" lists are more complex - can handle those later if required
-	let outStack = "<" + listTag + suffix + ">";
-	for (let i = 0; i < listObj.items.length; ++i) {
-		const listItem = listObj.items[i];
-		outStack += "<li>";
-		for (let j = 0; j < listItem.length; ++j) {
-			if (listItem[j].type === "link") {
-				outStack += utils_makeLink(listItem[j]);
-			} else {
-				outStack += listItem[j];
-			}
-		}
-		outStack += "</li>";
-	}
-	return outStack + "</" + listTag + ">";
-}
-
-function utils_makeSubHeader (text) {
-	return "<span class='stats-sub-header'>" + text + ".</span> "
-}
-
-function utils_makeListSubHeader (text) {
-	return "<span class='stats-list-sub-header'>" + text + ".</span> "
-}
-
 function utils_makeAttChoose (attList) {
 	if (attList.length === 1) {
 		return Parser.attAbvToFull(attList[0]) + " modifier";
@@ -374,18 +227,6 @@ DICE_REGEX = /([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g;
 
 function utils_makeRoller (text) {
 	return text.replace(DICE_REGEX, "<span class='roller' data-roll='$&'>$&</span>").replace(/(-|\+)?\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(-|\+)?\d+(?= bonus to)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(bonus of )(=?-|\+\d+)/g, "$1<span class='roller' data-roll='1d20$2'>$2</span>");
-}
-
-function makeTableThClassText (tableObject, i) {
-	return tableObject.thstyleclass === undefined || i >= tableObject.thstyleclass.length ? "" : " class=\"" + tableObject.thstyleclass[i] + "\"";
-}
-
-function makeTableTdClassText (tableObject, i) {
-	if (tableObject.tdstyleclass !== undefined) {
-		return tableObject.tdstyleclass === undefined || i >= tableObject.tdstyleclass.length ? "" : " class=\"" + tableObject.tdstyleclass[i] + "\"";
-	} else {
-		return makeTableThClassText(tableObject, i);
-	}
 }
 
 class AbilityData {
@@ -609,6 +450,21 @@ Parser.stringToCasedSlug = function (str) {
 
 Parser.itemTypeToAbv = function (type) {
 	return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
+};
+
+Parser._coinValueToNumberMultipliers = {
+	"cp": 0.01,
+	"sp": 0.1,
+	"ep": 0.5,
+	"gp": 1,
+	"pp": 10
+};
+Parser.coinValueToNumber = function (value) {
+	// input e.g. "25gp", "1,000pp"
+	value = value.replace(/[\s,]*/g, "").toLowerCase();
+	const m = /(\d+(\.\d+)?)([csegp]p)/.exec(value);
+	if (!m) throw new Error(`Badly formatted value ${value}`);
+	return Number(m[1]) * Parser._coinValueToNumberMultipliers[m[3]];
 };
 
 Parser.dmgTypeToFull = function (dmgType) {
@@ -1699,7 +1555,8 @@ ListUtil = {
 	$sublistContainer: null,
 	sublist: null,
 	$sublist: null,
-	_pinList: null,
+	_sublistChangeFn: null,
+	_allItems: null,
 	_pinned: {},
 	initSublist: (options) => {
 		ListUtil.$sublistContainer = $("#sublistcontainer");
@@ -1710,7 +1567,7 @@ ListUtil = {
 	},
 
 	bindPinButton: (toList, getSubFn) => {
-		ListUtil._pinList = toList;
+		ListUtil._allItems = toList;
 		$(`#btn-pin`)
 			.off("click")
 			.on("click", () => {
@@ -1719,18 +1576,55 @@ ListUtil = {
 			});
 	},
 
-	doSublistAdd: (index, getSubFn, doFinalise) => {
-		ListUtil._pinned[index] = ListUtil._pinned[index] ? ListUtil._pinned[index] + 1 : 1;
-		ListUtil.$sublist.append(getSubFn(ListUtil._pinList[index], index));
-		if (doFinalise) {
-			ListUtil._finaliseSublist();
-		}
+	bindAddButton: (toList, getSubFn) => {
+		ListUtil._allItems = toList;
+		$(`#btn-sublist-add`)
+			.off("click")
+			.on("click", (evt) => {
+				if (evt.shiftKey) ListUtil.doSublistAdd(lastLoadedId, getSubFn, true, 20);
+				else ListUtil.doSublistAdd(lastLoadedId, getSubFn, true);
+			});
+	},
+
+	bindSubtractButton: (toList) => {
+		ListUtil._allItems = toList;
+		$(`#btn-sublist-subtract`)
+			.off("click")
+			.on("click", (evt) => {
+				if (evt.shiftKey) ListUtil.doSublistSubtract(lastLoadedId, 20);
+				else ListUtil.doSublistSubtract(lastLoadedId);
+			});
+	},
+
+	doSublistAdd: (index, getSubFn, doFinalise, addCount) => {
+		const count = ListUtil._pinned[index] || 0;
+		addCount = addCount || 1;
+		ListUtil._pinned[index] = count + addCount;
+		if (count === 0) ListUtil.$sublist.append(getSubFn(ListUtil._allItems[index], index, addCount));
+		else ListUtil._setCount(index, count + addCount);
+		if (doFinalise) ListUtil._finaliseSublist();
+	},
+
+	doSublistSubtract: (index, subtractCount) => {
+		const count = ListUtil._pinned[index] || 0;
+		subtractCount = subtractCount || 1;
+		if (count > subtractCount) {
+			ListUtil._pinned[index] = count - subtractCount;
+			ListUtil._setCount(index, count - subtractCount);
+			ListUtil._sublistChangeFn();
+		} else if (count) ListUtil.doSublistRemove(index);
+	},
+
+	_setCount: (index, newCount) => {
+		const $cnt = $(ListUtil.sublist.get("id", index)[0].elm).find(".count");
+		if ($cnt.find("input").length) $cnt.find("input").val(newCount);
+		else $cnt.text(newCount);
 	},
 
 	_finaliseSublist: () => {
 		ListUtil.sublist.reIndex();
-		ListUtil.sublist.sort("name");
 		ListUtil._updateSublistVisibility();
+		ListUtil._sublistChangeFn();
 	},
 
 	_updateSublistVisibility: () => {
@@ -1742,16 +1636,26 @@ ListUtil = {
 		delete ListUtil._pinned[index];
 		ListUtil.sublist.remove("id", index);
 		ListUtil._updateSublistVisibility();
+		ListUtil._sublistChangeFn();
 	},
 
 	doSublistRemoveAll: () => {
 		ListUtil._pinned = {};
 		ListUtil.sublist.clear();
 		ListUtil._updateSublistVisibility();
+		ListUtil._sublistChangeFn();
 	},
 
 	isSublisted: (index) => {
 		return ListUtil._pinned[index];
+	},
+
+	deslectAll: (list) => {
+		list.items.forEach(it => it.elm.className = it.elm.className.replace(/list-multi-selected/g, ""));
+	},
+
+	setUpdateFn: (updateFunc) => {
+		ListUtil._sublistChangeFn = updateFunc;
 	}
 };
 

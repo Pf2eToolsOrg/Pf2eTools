@@ -95,7 +95,7 @@ function populateTablesAndFilters () {
 		curitem._fMisc = curitem.sentient ? ["Sentient"] : [];
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
-			<li ${FLTR_ID}=${i}>
+			<li class="row" ${FLTR_ID}=${i} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
 					<span class="name col-xs-4">${name}</span>
 					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
@@ -199,6 +199,93 @@ function populateTablesAndFilters () {
 	handleFilterChange();
 
 	EntryRenderer.hover.bindPopoutButton(itemList);
+	ListUtil.bindAddButton(itemList, getSublistItem);
+	ListUtil.bindSubtractButton(itemList);
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "weight", "price", "id"],
+		listClass: "subitems"
+	});
+	ListUtil.setUpdateFn(onSublistChange);
+	ListUtil.initContextMenu(handleContextMenuClick, "Popout", "Add", "Toggle Selected", "Add All Selected", "Clear Selected");
+	ListUtil.initSubContextMenu(handleSubContextMenuClick, "Popout", "Remove", "Clear List");
+}
+
+function onSublistChange () {
+	const totalWeight = $(`#totalweight`);
+	const totalValue = $(`#totalvalue`);
+	let weight = 0;
+	let value = 0;
+	ListUtil.sublist.items.forEach(it => {
+		const item = itemList[Number(it._values.id)];
+		const count = Number($(it.elm).find(".count").text());
+		if (item.weight) weight += Number(item.weight) * count;
+		if (item.value) value += Parser.coinValueToNumber(item.value) * count;
+	});
+	totalWeight.text(`${weight.toLocaleString()} lb${weight > 1 ? "s" : ""}.`);
+	totalValue.text(`${value.toLocaleString()}gp`)
+}
+
+function getSublistItem (item, pinId, addCount) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(item)}" title="${item.name}">
+				<span class="name col-xs-6">${item.name}</span>
+				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>		
+				<span class="price text-align-center col-xs-2">${item.value || "\u2014"}</span>
+				<span class="count text-align-center col-xs-2">${addCount || 1}</span>		
+				<span class="id hidden">${pinId}</span>
+			</a>
+		</li>
+	`;
+}
+
+function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
+	function massAdd (list) {
+		list.items
+			.filter(it => it.elm.className.includes("list-multi-selected"))
+			.map(it => {
+				it.elm.className = it.elm.className.replace(/list-multi-selected/g, "");
+				return it.elm.getAttribute(FLTR_ID);
+			})
+			.forEach(it => ListUtil.doSublistAdd(it, getSublistItem));
+	}
+
+	const itId = Number($invokedOn.attr(FLTR_ID));
+	switch (Number($selectedMenu.data("ctx-id"))) {
+		case 0:
+			EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
+			break;
+		case 1:
+			ListUtil.doSublistAdd(itId, getSublistItem, true);
+			break;
+		case 2:
+			$invokedOn.toggleClass("list-multi-selected");
+			break;
+		case 3:
+			massAdd(mundanelist);
+			massAdd(magiclist);
+			ListUtil._finaliseSublist();
+			break;
+		case 4:
+			ListUtil.deslectAll(mundanelist);
+			ListUtil.deslectAll(magiclist);
+			break;
+	}
+}
+
+function handleSubContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
+	const itId = Number($invokedOn.attr(FLTR_ID));
+	switch (Number($selectedMenu.data("ctx-id"))) {
+		case 0:
+			EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
+			break;
+		case 1:
+			ListUtil.doSublistRemove(itId);
+			break;
+		case 2:
+			ListUtil.doSublistRemoveAll();
+			break;
+	}
 }
 
 const renderer = new EntryRenderer();
