@@ -342,7 +342,7 @@ const LIFE_EVENTS_SUPERNATURAL = [
 	{"min": 41, "max": 50, "result": "You escaped certain death and believe it was the intervention of a god that saved you."},
 	{"min": 51, "max": 60, "result": "You witnessed a minor miracle."},
 	{"min": 61, "max": 70, "result": "You explored an empty house and found it to be haunted."},
-	{"min": 71, "max": 75, "result": () => { const p = RNG(6); return `You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead ${fmtChoice(`${p}; ${["celestial", "devil", "demon", "fey", "elemental", "undead"][p]}`)}.` }, "display": "You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead."},
+	{"min": 71, "max": 75, "result": () => { const p = RNG(6); return `You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead ${fmtChoice(`${p}; ${["celestial", "devil", "demon", "fey", "elemental", "undead"][p - 1]}`)}.` }, "display": "You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead."},
 	{"min": 76, "max": 80, "result": "You saw a ghost."},
 	{"min": 81, "max": 85, "result": "You saw a ghoul feeding on a corpse."},
 	{"min": 86, "max": 90, "result": "A celestial or a fiend visited you in your dreams to give a warning of dangers to come."},
