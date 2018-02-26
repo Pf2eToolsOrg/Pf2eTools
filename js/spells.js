@@ -333,7 +333,8 @@ function pageInit (loadedSources) {
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "level", "time", "school", "range", "id"],
-		listClass: "subspells"
+		listClass: "subspells",
+		sortFunction: sortSpells
 	});
 	ListUtil.initContextMenu(handleContextMenuClick, "Popout", "Toggle Pinned", "Toggle Selected", "Pin All Selected", "Clear Selected");
 	ListUtil.initSubContextMenu(handleSubContextMenuClick, "Popout", "Unpin", "Unpin All");
@@ -347,7 +348,7 @@ function getSublistItem (spell, pinId) {
 				<span class="level col-xs-1 col-xs-1-5">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="time col-xs-1 col-xs-1-8" title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
 				<span class="school col-xs-1 col-xs-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
-				<span class="range col-xs-4 col-xs-3-6">${Parser.spRangeToFull(spell.range)}</span>		
+				<span class="range col-xs-3 col-xs-3-6">${Parser.spRangeToFull(spell.range)}</span>		
 				<span class="id hidden">${pinId}</span>				
 			</a>
 		</li>
@@ -361,8 +362,8 @@ function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 			EntryRenderer.hover.doPopout($invokedOn, spellList, spId, evt.clientX);
 			break;
 		case 1:
-			if (!ListUtil.isPinned(spId)) ListUtil.doPin(spId, getSublistItem, true);
-			else ListUtil.doUnpin(spId);
+			if (!ListUtil.isSublisted(spId)) ListUtil.doSublistAdd(spId, getSublistItem, true);
+			else ListUtil.doSublistRemove(spId);
 			break;
 		case 2:
 			$invokedOn.toggleClass("list-multi-selected");
@@ -375,10 +376,10 @@ function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 					return it.elm.getAttribute(FLTR_ID);
 				})
 				.forEach(it => {
-					if (!ListUtil.isPinned(it)) ListUtil.doPin(it, getSublistItem);
-					else ListUtil.doUnpin(it);
+					if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it, getSublistItem);
+					else ListUtil.doSublistRemove(it);
 				});
-			ListUtil._finalisePins();
+			ListUtil._finaliseSublist();
 			break;
 		case 4:
 			list.items.forEach(it => it.elm.className = it.elm.className.replace(/list-multi-selected/g, ""));
@@ -393,10 +394,10 @@ function handleSubContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 			EntryRenderer.hover.doPopout($invokedOn, spellList, spId, evt.clientX);
 			break;
 		case 1:
-			ListUtil.doUnpin(spId);
+			ListUtil.doSublistRemove(spId);
 			break;
 		case 2:
-			ListUtil.doUnpinAll();
+			ListUtil.doSublistRemoveAll();
 			break;
 	}
 }

@@ -1696,11 +1696,13 @@ ListUtil = {
 			});
 	},
 
+	$sublistContainer: null,
 	sublist: null,
 	$sublist: null,
 	_pinList: null,
 	_pinned: {},
 	initSublist: (options) => {
+		ListUtil.$sublistContainer = $("#sublistcontainer");
 		const sublist = new List("sublistcontainer", options);
 		ListUtil.sublist = sublist;
 		ListUtil.$sublist = $(`ul.${options.listClass}`);
@@ -1712,35 +1714,43 @@ ListUtil = {
 		$(`#btn-pin`)
 			.off("click")
 			.on("click", () => {
-				if (!ListUtil.isPinned(lastLoadedId)) ListUtil.doPin(lastLoadedId, getSubFn, true);
-				else ListUtil.doUnpin(lastLoadedId);
+				if (!ListUtil.isSublisted(lastLoadedId)) ListUtil.doSublistAdd(lastLoadedId, getSubFn, true);
+				else ListUtil.doSublistRemove(lastLoadedId);
 			});
 	},
 
-	doPin: (index, getSubFn, doFinalise) => {
-		ListUtil._pinned[index] = true;
+	doSublistAdd: (index, getSubFn, doFinalise) => {
+		ListUtil._pinned[index] = ListUtil._pinned[index] ? ListUtil._pinned[index] + 1 : 1;
 		ListUtil.$sublist.append(getSubFn(ListUtil._pinList[index], index));
 		if (doFinalise) {
-			ListUtil._finalisePins();
+			ListUtil._finaliseSublist();
 		}
 	},
 
-	_finalisePins: () => {
+	_finaliseSublist: () => {
 		ListUtil.sublist.reIndex();
 		ListUtil.sublist.sort("name");
+		ListUtil._updateSublistVisibility();
 	},
 
-	doUnpin: (index) => {
+	_updateSublistVisibility: () => {
+		if (ListUtil.sublist.items.length) ListUtil.$sublistContainer.show();
+		else ListUtil.$sublistContainer.hide();
+	},
+
+	doSublistRemove: (index) => {
 		delete ListUtil._pinned[index];
 		ListUtil.sublist.remove("id", index);
+		ListUtil._updateSublistVisibility();
 	},
 
-	doUnpinAll: () => {
+	doSublistRemoveAll: () => {
 		ListUtil._pinned = {};
 		ListUtil.sublist.clear();
+		ListUtil._updateSublistVisibility();
 	},
 
-	isPinned: (index) => {
+	isSublisted: (index) => {
 		return ListUtil._pinned[index];
 	}
 };
