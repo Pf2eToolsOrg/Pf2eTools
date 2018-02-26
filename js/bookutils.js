@@ -90,7 +90,11 @@ const BookUtil = {
 		// Add show/hide handles to section names, and update styles
 		const allHeaders = $(`ul.bk-headers`);
 		// add styles to all
-		allHeaders.prev(`li`).find(`a`).css("display", "flex").css("justify-content", "space-between").css("padding", "0");
+		allHeaders.prev(`li`).find(`a`).css({
+			display: "flex",
+			"justify-content": "space-between",
+			padding: "0"
+		});
 		allHeaders.filter((i, ele) => $(ele).children().length).each((i, ele) => {
 			const $ele = $(ele);
 			// add expand/collapse to only those with children
