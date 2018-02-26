@@ -61,7 +61,7 @@ function navigation () {
 	LI('ul_dms', 'adventures.html', 'Adventures');
 	LI('ul_dms', 'crcalculator.html', 'CR Calculator');
 	LI('ul_dms', 'cults.html', 'Cults');
-	LISpecial('ul_dms', 'http://kobold.club', 'Encounter Builder', '_blank', 'We could literally never build something better than Kobold Fight Club');
+	LISpecial('ul_dms', 'https://kobold.club', 'Encounter Builder', '_blank', 'We could literally never build something better than Kobold Fight Club');
 	LI('ul_dms', 'encountergen.html', 'Encounter Generator');
 	LI('ul_dms', 'lootgen.html', 'Loot Generator');
 	LI('ul_dms', 'objects.html', 'Objects');
