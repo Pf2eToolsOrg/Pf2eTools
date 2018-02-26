@@ -66,8 +66,9 @@ class FilterBox {
 	 * Render the "Filters" button in the inputGroup
 	 */
 	render () {
+		const firstRender = this.$rendered.length === 0;
 		// save the current values to re-apply if we're re-rendering
-		const curValues = this.$rendered.length > 0 ? this.getValues() : null;
+		const curValues = firstRender ? null : this.getValues();
 		// remove any previously rendered elements
 		this._wipeRendered();
 
@@ -105,8 +106,10 @@ class FilterBox {
 		this.$rendered.push(this.$miniView);
 
 		addShowHideHandlers(this);
-		addResetHandler(this);
-		addCookieHandler(this);
+		if (firstRender) {
+			addResetHandler(this);
+			addCookieHandler(this);
+		}
 
 		if (this.dropdownVisible) {
 			$filterButton.find("button").click();
