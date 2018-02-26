@@ -490,7 +490,7 @@ class FilterBox {
 		}
 
 		function addCookieHandler (self) {
-			window.addEventListener("unload", function () {
+			window.addEventListener("beforeunload", function () {
 				const state = self.getValues();
 				Cookies.set(FilterBox._COOKIE_NAME, state, {expires: 365, path: window.location.pathname})
 			});
