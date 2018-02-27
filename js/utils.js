@@ -1983,29 +1983,50 @@ RollerUtil = {
 	}
 };
 
-// HOMEBREW ============================================================================================================
-BrewUtil = {
-	homebrew: null,
-	_list: null,
-
-	// provide ref to List.js instance
-	setList: (list) => {
-		BrewUtil._list = list;
-	},
-
-	tryGetStorage: () => {
+// STORAGE =============================================================================================================
+StorageUtil = {
+	_fakeStorage: {},
+	getStorage: () => {
 		try {
 			return window.localStorage;
 		} catch (e) {
 			// if the user has disabled cookies, build a fake version
 			return {
-				getItem: () => {
-					return null;
+				getItem: (k) => {
+					return StorageUtil._fakeStorage[k];
 				},
-				removeItem: () => {},
-				setItem: () => {}
-			}
+				removeItem: (k) => {
+					delete StorageUtil._fakeStorage[k];
+				},
+				setItem: (k, v) => {
+					StorageUtil._fakeStorage[k] = v;
+				}
+			};
 		}
+	},
+
+	setForPage: (key, value) => {
+		const p = UrlUtil.getCurrentPage();
+		StorageUtil.getStorage().setItem(`${key}_${p}`, JSON.stringify(value));
+	},
+
+	getForPage: (key) => {
+		const p = UrlUtil.getCurrentPage();
+		const rawOut = StorageUtil.getStorage().getItem(`${key}_${p}`);
+		if (rawOut) return JSON.parse(rawOut);
+		return null;
+	}
+};
+
+// HOMEBREW ============================================================================================================
+BrewUtil = {
+	homebrew: null,
+	_list: null,
+	storage: StorageUtil.getStorage(),
+
+	// provide ref to List.js instance
+	setList: (list) => {
+		BrewUtil._list = list;
 	},
 
 	addBrewData: (brewHandler, brewLocation) => {
@@ -2215,7 +2236,6 @@ BrewUtil = {
 		});
 	}
 };
-BrewUtil.storage = BrewUtil.tryGetStorage();
 
 // ID GENERATION =======================================================================================================
 CryptUtil = {
