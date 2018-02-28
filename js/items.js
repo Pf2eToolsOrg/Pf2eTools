@@ -56,8 +56,8 @@ function deselectFilter (deselectProperty, deselectValue) {
 	}
 }
 
-let mundanelist
-let magiclist
+let mundanelist;
+let magiclist;
 function populateTablesAndFilters () {
 	tabledefault = $("#pagecontent").html();
 
@@ -75,7 +75,7 @@ function populateTablesAndFilters () {
 		items: ["Basic", "Generic Variant", "Specific Variant", "Other"],
 		deselFn: deselectFilter("category", "Specific Variant")
 	});
-	const miscFilter = new Filter({header: "Miscellaneous", items: ["Sentient"]});
+	const miscFilter = new Filter({header: "Miscellaneous", items: ["Magic", "Mundane", "Sentient"]});
 
 	const filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, miscFilter);
 	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
@@ -96,6 +96,7 @@ function populateTablesAndFilters () {
 		curitem._fTier = tierTags;
 		curitem._fProperties = curitem.property ? curitem.property.map(p => curitem._allPropertiesPtr[p].name).filter(n => n) : [];
 		curitem._fMisc = curitem.sentient ? ["Sentient"] : [];
+		curitem._fMisc.push(rarity === "None" || rarity === "Unknown" || category === "Basic" ? "Mundane" : "Magic");
 
 		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
 			<li ${FLTR_ID}=${i}>
