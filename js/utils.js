@@ -1559,6 +1559,13 @@ ListUtil = {
 	_allItems: null,
 	_pinned: {},
 	initSublist: (options) => {
+		ListUtil._allItems = options.itemList;
+		ListUtil._getSublistRow = options.getSublistRow;
+		ListUtil._sublistChangeFn = options.onUpdate;
+		delete options.itemList;
+		delete options.getSublistRow;
+		delete options.onUpdate;
+
 		ListUtil.$sublistContainer = $("#sublistcontainer");
 		const sublist = new List("sublistcontainer", options);
 		ListUtil.sublist = sublist;
@@ -1566,28 +1573,31 @@ ListUtil = {
 		return sublist;
 	},
 
-	bindPinButton: (toList, getSubFn) => {
-		ListUtil._allItems = toList;
+	setOptions: (options) => {
+		ListUtil._allItems = options.itemList;
+		ListUtil._getSublistRow = options.getSublistRow;
+		ListUtil._sublistChangeFn = options.onUpdate;
+	},
+
+	bindPinButton: () => {
 		$(`#btn-pin`)
 			.off("click")
 			.on("click", () => {
-				if (!ListUtil.isSublisted(lastLoadedId)) ListUtil.doSublistAdd(lastLoadedId, getSubFn, true);
+				if (!ListUtil.isSublisted(lastLoadedId)) ListUtil.doSublistAdd(lastLoadedId, true);
 				else ListUtil.doSublistRemove(lastLoadedId);
 			});
 	},
 
-	bindAddButton: (toList, getSubFn) => {
-		ListUtil._allItems = toList;
+	bindAddButton: () => {
 		$(`#btn-sublist-add`)
 			.off("click")
 			.on("click", (evt) => {
-				if (evt.shiftKey) ListUtil.doSublistAdd(lastLoadedId, getSubFn, true, 20);
-				else ListUtil.doSublistAdd(lastLoadedId, getSubFn, true);
+				if (evt.shiftKey) ListUtil.doSublistAdd(lastLoadedId, true, 20);
+				else ListUtil.doSublistAdd(lastLoadedId, true);
 			});
 	},
 
-	bindSubtractButton: (toList) => {
-		ListUtil._allItems = toList;
+	bindSubtractButton: () => {
 		$(`#btn-sublist-subtract`)
 			.off("click")
 			.on("click", (evt) => {
@@ -1596,11 +1606,11 @@ ListUtil = {
 			});
 	},
 
-	doSublistAdd: (index, getSubFn, doFinalise, addCount) => {
+	doSublistAdd: (index, doFinalise, addCount) => {
 		const count = ListUtil._pinned[index] || 0;
 		addCount = addCount || 1;
 		ListUtil._pinned[index] = count + addCount;
-		if (count === 0) ListUtil.$sublist.append(getSubFn(ListUtil._allItems[index], index, addCount));
+		if (count === 0) ListUtil.$sublist.append(ListUtil._getSublistRow(ListUtil._allItems[index], index, addCount));
 		else ListUtil._setCount(index, count + addCount);
 		if (doFinalise) ListUtil._finaliseSublist();
 	},
@@ -1621,10 +1631,22 @@ ListUtil = {
 		else $cnt.text(newCount);
 	},
 
-	_finaliseSublist: () => {
+	_finaliseSublist: (noSave) => {
 		ListUtil.sublist.reIndex();
 		ListUtil._updateSublistVisibility();
+		if (!noSave) ListUtil._saveSublist();
 		ListUtil._handleCallUpdateFn();
+	},
+
+	_saveSublist: () => {
+		const sources = new Set();
+		const toSave = ListUtil.sublist.items
+			.map(it => {
+				const $elm = $(it.elm);
+				sources.add(ListUtil._allItems[Number($elm.attr(FLTR_ID))].source);
+				return {h: $elm.find(`a`).prop("hash").slice(1), c: $elm.find(".count").text()};
+			});
+		StorageUtil.setForPage("sublist", {items: toSave, sources: Array.from(sources)});
 	},
 
 	_updateSublistVisibility: () => {
@@ -1636,6 +1658,7 @@ ListUtil = {
 		delete ListUtil._pinned[index];
 		ListUtil.sublist.remove("id", index);
 		ListUtil._updateSublistVisibility();
+		ListUtil._saveSublist();
 		ListUtil._handleCallUpdateFn();
 	},
 
@@ -1643,6 +1666,7 @@ ListUtil = {
 		ListUtil._pinned = {};
 		ListUtil.sublist.clear();
 		ListUtil._updateSublistVisibility();
+		ListUtil._saveSublist();
 		ListUtil._handleCallUpdateFn();
 	},
 
@@ -1664,12 +1688,35 @@ ListUtil = {
 			.forEach(it => forEachFunc(it));
 	},
 
-	setUpdateFn: (updateFunc) => {
-		ListUtil._sublistChangeFn = updateFunc;
-	},
-
 	_handleCallUpdateFn: () => {
 		if (ListUtil._sublistChangeFn) ListUtil._sublistChangeFn();
+	},
+
+	_hasLoadedState: false,
+	loadState: () => {
+		if (ListUtil._hasLoadedState) return;
+		ListUtil._hasLoadedState = true;
+		try {
+			const store = StorageUtil.getForPage("sublist");
+			if (store && store.items) {
+				store.items.forEach(it => {
+					const $ele = _getListElem(it.h);
+					const itId = $ele ? $ele.attr("id") : null;
+					if (itId != null) ListUtil.doSublistAdd(itId, false, it.c);
+				});
+				ListUtil._finaliseSublist(true);
+			}
+		} catch (e) {
+			StorageUtil.removeForPage("sublist");
+			throw e;
+		}
+	},
+
+	getSelectedSources: () => {
+		const store = StorageUtil.getForPage("sublist");
+		if (store && store.sources) {
+			return store.sources;
+		}
 	}
 };
 
@@ -2066,8 +2113,13 @@ StorageUtil = {
 	getForPage: (key) => {
 		const p = UrlUtil.getCurrentPage();
 		const rawOut = StorageUtil.getStorage().getItem(`${key}_${p}`);
-		if (rawOut) return JSON.parse(rawOut);
+		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 		return null;
+	},
+
+	removeForPage: (key) => {
+		const p = UrlUtil.getCurrentPage();
+		StorageUtil.getStorage().removeItem(`${key}_${p}`);
 	}
 };
 

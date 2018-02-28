@@ -200,13 +200,18 @@ function populateTablesAndFilters () {
 	handleFilterChange();
 
 	EntryRenderer.hover.bindPopoutButton(itemList);
-	ListUtil.bindAddButton(itemList, getSublistItem);
+	ListUtil.bindAddButton(itemList);
 	ListUtil.bindSubtractButton(itemList);
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "weight", "price", "id"],
-		listClass: "subitems"
-	});
-	ListUtil.setUpdateFn(onSublistChange);
+	const subList = ListUtil.initSublist(
+		{
+			valueNames: ["name", "weight", "price", "id"],
+			listClass: "subitems",
+			itemList: itemList,
+			getSublistRow: getSublistItem,
+			onUpdate: onSublistChange
+		}
+	);
+	ListUtil.loadState();
 	ListUtil.initContextMenu(handleContextMenuClick, "Popout", "Add", "Toggle Selected", "Add All Selected", "Clear Selected");
 	ListUtil.initSubContextMenu(handleSubContextMenuClick, "Popout", "Remove", "Clear List");
 }
@@ -242,7 +247,7 @@ function getSublistItem (item, pinId, addCount) {
 
 function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 	function massAdd (list) {
-		ListUtil.forEachSelected(list, (it) => ListUtil.doSublistAdd(it, getSublistItem));
+		ListUtil.forEachSelected(list, (it) => ListUtil.doSublistAdd(it));
 	}
 
 	const itId = Number($invokedOn.attr(FLTR_ID));
@@ -251,7 +256,7 @@ function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 			EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
 			break;
 		case 1:
-			ListUtil.doSublistAdd(itId, getSublistItem, true);
+			ListUtil.doSublistAdd(itId, true);
 			break;
 		case 2:
 			$invokedOn.toggleClass("list-multi-selected");

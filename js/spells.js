@@ -362,7 +362,7 @@ function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 			EntryRenderer.hover.doPopout($invokedOn, spellList, spId, evt.clientX);
 			break;
 		case 1:
-			if (!ListUtil.isSublisted(spId)) ListUtil.doSublistAdd(spId, getSublistItem, true);
+			if (!ListUtil.isSublisted(spId)) ListUtil.doSublistAdd(spId, true);
 			else ListUtil.doSublistRemove(spId);
 			break;
 		case 2:
@@ -370,7 +370,7 @@ function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
 			break;
 		case 3:
 			ListUtil.forEachSelected(list, (it) => {
-				if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it, getSublistItem);
+				if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it);
 				else ListUtil.doSublistRemove(it);
 			});
 			ListUtil._finaliseSublist();
@@ -516,8 +516,13 @@ function addSpells (data) {
 	list.sort("name");
 
 	filterBox.render();
-	ListUtil.bindPinButton(spellList, getSublistItem);
 	EntryRenderer.hover.bindPopoutButton(spellList);
+	ListUtil.setOptions({
+		itemList: spellList,
+		getSublistRow: getSublistItem
+	});
+	ListUtil.bindPinButton();
+	ListUtil.loadState();
 }
 
 function sortSpells (a, b, o) {
