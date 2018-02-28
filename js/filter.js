@@ -12,9 +12,8 @@
  */
 class FilterBox {
 	static getSelectedSources () {
-		const cookie = Cookies.get(FilterBox._COOKIE_NAME);
-		if (cookie) {
-			const parsed = JSON.parse(cookie);
+		const parsed = StorageUtil.getForPage(FilterBox._STORAGE_NAME);
+		if (parsed) {
 			const sources = parsed[FilterBox.SOURCE_HEADER];
 			if (sources) {
 				const totals = sources._totals;
@@ -55,8 +54,14 @@ class FilterBox {
 
 		this.headers = {};
 		this.$disabledOverlay = $(`<div class="list-disabled-overlay"/>`);
-		const cookie = Cookies.get(FilterBox._COOKIE_NAME);
-		this.cookieValues = cookie ? JSON.parse(cookie) : null;
+
+		// clean legacy cookies
+		// TODO remove this somewhere down the line
+		Cookies.remove(FilterBox._STORAGE_NAME);
+		Cookies.remove(FilterBox._STORAGE_NAME, {path: window.location.pathname});
+		// end clean legacy cookies
+
+		this.storedValues = StorageUtil.getForPage(FilterBox._STORAGE_NAME);
 		this.$rendered = [];
 		this.dropdownVisible = false;
 		this.modeAndOr = "AND";
@@ -66,8 +71,9 @@ class FilterBox {
 	 * Render the "Filters" button in the inputGroup
 	 */
 	render () {
+		const firstRender = this.$rendered.length === 0;
 		// save the current values to re-apply if we're re-rendering
-		const curValues = this.$rendered.length > 0 ? this.getValues() : null;
+		const curValues = firstRender ? null : this.getValues();
 		// remove any previously rendered elements
 		this._wipeRendered();
 
@@ -105,8 +111,10 @@ class FilterBox {
 		this.$rendered.push(this.$miniView);
 
 		addShowHideHandlers(this);
-		addResetHandler(this);
-		addCookieHandler(this);
+		if (firstRender) {
+			addResetHandler(this);
+			addSaveHandler(this);
+		}
 
 		if (this.dropdownVisible) {
 			$filterButton.find("button").click();
@@ -338,13 +346,13 @@ class FilterBox {
 						}
 					);
 
-					// If re-render, use previous values. Otherwise, if there's a cookie, cookie values. Otherwise, default the pills
+					// If re-render, use previous values. Otherwise, if there's stored values, stored values. Otherwise, default the pills
 					if (curValues) {
 						let valNum = curValues[filter.header][iText];
 						if (valNum < 0) valNum = 2;
 						_setter($pill, $miniPill, FilterBox._PILL_STATES[valNum], iText, iChangeFn, true);
-					} else if (self.cookieValues && self.cookieValues[filter.header] && self.cookieValues[filter.header][iText] !== undefined) {
-						let valNum = self.cookieValues[filter.header][iText];
+					} else if (self.storedValues && self.storedValues[filter.header] && self.storedValues[filter.header][iText] !== undefined) {
+						let valNum = self.storedValues[filter.header][iText];
 						if (valNum < 0) valNum = 2;
 						_setter($pill, $miniPill, FilterBox._PILL_STATES[valNum], iText, iChangeFn, true);
 					} else {
@@ -486,10 +494,10 @@ class FilterBox {
 			}
 		}
 
-		function addCookieHandler (self) {
-			window.addEventListener("unload", function () {
+		function addSaveHandler (self) {
+			window.addEventListener("beforeunload", function () {
 				const state = self.getValues();
-				Cookies.set(FilterBox._COOKIE_NAME, state, {expires: 365, path: window.location.pathname})
+				StorageUtil.setForPage(FilterBox._STORAGE_NAME, state);
 			});
 		}
 	}
@@ -623,7 +631,7 @@ FilterBox.CLS_DROPDOWN_MENU_FILTER = "dropdown-menu-filter";
 FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox.SOURCE_HEADER = "Source";
 FilterBox._PILL_STATES = ["ignore", "yes", "no"];
-FilterBox._COOKIE_NAME = "filterState";
+FilterBox._STORAGE_NAME = "filterState";
 
 class Filter {
 	/**
