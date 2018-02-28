@@ -5,16 +5,19 @@
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
-		"test": "eslint js node test && stylelint css/style.css && node ./test/alltests.js",
+		"test": "eslint js node test && stylelint scss/style.scss && node ./test/alltests.js",
 		"gen-index": "node ./node/generate-search-index.js",
-		"version-bump": "node ./node/version-bump.js"
+		"version-bump": "node ./node/version-bump.js",
+		"build:css": "node-sass --source-map=true --output-style=compressed ./scss/style.scss ./css/style.css",
+		"build": "npm run gen-index && npm run build:css"
 	},
 	"repository": "TheGiddyLimit/TheGiddyLimit.github.io",
 	"devDependencies": {
 		"eslint": "^4.9.0",
+		"eslint-plugin-json": "^1.2.0",
 		"jsonschema": "^1.2.0",
+		"node-sass": "^4.7.2",
 		"stylelint": "^8.2.0",
-		"stylelint-config-standard": "^17.0.0",
-		"eslint-plugin-json": "^1.2.0"
+		"stylelint-config-standard": "^17.0.0"
 	}
 }
