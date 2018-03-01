@@ -250,8 +250,8 @@ function getSublistItem (mon, pinId, addCount) {
 			<a href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 				<span class="name col-xs-4">${mon.name}</span>
 				<span class="type col-xs-3">${mon._pTypes.asText.uppercaseFirst()}</span>
-				<span class="cr col-xs-3">${mon._pCr}</span>		
-				<span class="count col-xs-2">${addCount || 1}</span>		
+				<span class="cr col-xs-3 text-align-center">${mon._pCr}</span>		
+				<span class="count col-xs-2 text-align-center">${addCount || 1}</span>		
 				<span class="id hidden">${pinId}</span>				
 			</a>
 		</li>
