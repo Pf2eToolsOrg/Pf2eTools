@@ -779,6 +779,10 @@ EntryRenderer.utils = {
 		return `<tr><th class="border" colspan="6"></th></tr>`;
 	},
 
+	getDividerTr: () => {
+		return `<tr><td class="divider" colspan="6"><div></div></td></tr>`;
+	},
+
 	getNameTr: (it, addPageNum, prefix, suffix) => {
 		return `<tr>
 					<th class="name" colspan="6">
@@ -797,6 +801,59 @@ EntryRenderer.utils = {
 	_getPageTrText: (it) => {
 		const addSourceText = it.additionalSources && it.additionalSources.length ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
 		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}` : ""
+	},
+
+	_statTab: null,
+	_infoTab: null,
+	_curTab: 0,
+	bindTabButtons: (primaryLabel, infoLabel, funcStats, funcInfo, funcPopulateInfo) => {
+		EntryRenderer.utils._statTab = null;
+		EntryRenderer.utils._infoTab = null;
+		EntryRenderer.utils._curTab = 0;
+
+		const $content = $("#pagecontent");
+		const $tStatblock = $(`#tab-statblock`);
+		const $tInfo = $(`#tab-info`);
+		$tStatblock.text(primaryLabel);
+		$tInfo.text(infoLabel);
+
+		$tInfo.removeClass(`stat-tab-sel`);
+		$tStatblock.addClass(`stat-tab-sel`);
+
+		// set up tab buttons
+		$tStatblock.off("click");
+		$tStatblock.on("click", () => {
+			if (EntryRenderer.utils._curTab === 1) {
+				EntryRenderer.utils._infoTab = $content.children().detach();
+
+				$tInfo.removeClass(`stat-tab-sel`);
+				$tStatblock.addClass(`stat-tab-sel`);
+
+				$content.append(EntryRenderer.utils._statTab);
+
+				funcStats();
+				EntryRenderer.utils._curTab = 0;
+			}
+		});
+
+		$tInfo.off("click");
+		$tInfo.on("click", () => {
+			if (EntryRenderer.utils._curTab === 0) {
+				EntryRenderer.utils._statTab = $content.children().detach();
+
+				$tInfo.addClass(`stat-tab-sel`);
+				$tStatblock.removeClass(`stat-tab-sel`);
+
+				if (EntryRenderer.utils._infoTab === null) {
+					funcPopulateInfo();
+				} else {
+					$content.append(EntryRenderer.utils._infoTab);
+				}
+
+				funcInfo();
+				EntryRenderer.utils._curTab = 1;
+			}
+		});
 	}
 };
 
@@ -988,7 +1045,7 @@ EntryRenderer.spell = {
 			<tr><td class="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>
 			<tr><td class="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>
 			<tr><td class="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>
-			<tr><td class="divider" colspan="6"><div></div></td></tr>
+			${EntryRenderer.utils.getDividerTr()}
 		`);
 
 		const entryList = {type: "entries", entries: spell.entries};
@@ -1181,6 +1238,8 @@ EntryRenderer.race = {
 
 			srCopy.forEach(s => {
 				const cpy = JSON.parse(JSON.stringify(race));
+				cpy._baseName = cpy.name;
+				cpy._baseSource = cpy.source;
 				delete cpy.subraces;
 
 				// merge names, abilities, entries
@@ -1479,14 +1538,13 @@ EntryRenderer.item = {
 		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") : ""}</td><td class="damageproperties" colspan="4">${damage} ${damageType} ${propertiesTxt}</tr>`);
 
-		renderStack.push(`<tr><td class="divider" colspan="6"><div></div></td></tr>`);
-
-		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
-
-		const entryList = {type: "entries", entries: item.entries};
-		renderer.recursiveEntryRender(entryList, renderStack, 1);
-
-		renderStack.push(`</td></tr>`);
+		if (item.entries && item.entries.length) {
+			renderStack.push(EntryRenderer.utils.getDividerTr());
+			renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+			const entryList = {type: "entries", entries: item.entries};
+			renderer.recursiveEntryRender(entryList, renderStack, 1);
+			renderStack.push(`</td></tr>`);
+		}
 
 		return renderStack.join("");
 	},
@@ -1857,6 +1915,7 @@ EntryRenderer.hover = {
 		const source = EntryRenderer.hover._curHovering.cSource;
 		const hash = EntryRenderer.hover._curHovering.cHash;
 		const permanent = EntryRenderer.hover._curHovering.permanent;
+		const clientX = EntryRenderer.hover._curHovering.clientX;
 
 		// if we've outrun the loading, restart
 		if (!EntryRenderer.hover._isCached(page, source, hash)) {
@@ -1974,8 +2033,8 @@ EntryRenderer.hover = {
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
-		if (fromRight) $hov.css("left", vpOffsetL - $hov.width());
-		else $hov.css("left", vpOffsetL + $(ele).width() + 1);
+		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - $hov.width());
+		else $hov.css("left", clientX || (vpOffsetL + $(ele).width() + 1));
 
 		adjustPosition(true);
 
@@ -2087,7 +2146,8 @@ EntryRenderer.hover = {
 			cPage: page,
 			cSource: source,
 			cHash: hash,
-			permanent: evt.shiftKey
+			permanent: evt.shiftKey,
+			clientX: evt.clientX
 		};
 
 		// return if another event chain is handling the event
@@ -2231,6 +2291,22 @@ EntryRenderer.hover = {
 	_cleanWindows: () => {
 		const ks = Object.keys(EntryRenderer.hover._active);
 		ks.forEach(hovId => EntryRenderer.hover._teardownWindow(hovId));
+	},
+
+	bindPopoutButton: (toList) => {
+		const $btnPop = $(`#btn-popout`);
+		$btnPop.off("click");
+		$btnPop.on("click", (evt) => {
+			if (lastLoadedId !== null) {
+				EntryRenderer.hover.doPopout($btnPop, toList, lastLoadedId, evt.clientX);
+			}
+		});
+	},
+
+	doPopout: ($btnPop, list, index, clientX) => {
+		$btnPop.attr("data-hover-active", false);
+		const it = list[index];
+		EntryRenderer.hover.show({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it));
 	}
 };
 
@@ -2460,7 +2536,6 @@ EntryRenderer.dice = {
 			const v = EntryRenderer.dice._rollParsed(toRoll);
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
-			// debugger
 			const totalPart = toRoll.successThresh
 				? `<span class="roll">${v.total > 100 - toRoll.successThresh ? "success" : "failure"}</span>`
 				: `<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>`;

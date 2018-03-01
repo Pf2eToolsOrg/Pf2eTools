@@ -35,8 +35,11 @@ function onJsonLoad (data) {
 		const CLS_COL_3 = "ability " + (ability.asText === STR_NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === STR_NONE ? "list-entry-none " : "") + "col-xs-3";
 
+		curfeat._slAbility = ability.asText;
+		curfeat._slPrereq = prereqText;
+
 		tempString += `
-			<li ${FLTR_ID}="${i}">
+			<li ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(curfeat)}' title='${name}'>
 					<span class='${CLS_COL_1}'>${name}</span>
 					<span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span>
@@ -83,25 +86,51 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+	EntryRenderer.hover.bindPopoutButton(featlist);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "ability", "prerequisite", "id"],
+		listClass: "subfeats",
+		itemList: featlist,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	ListUtil.initGenericPinnable();
+	ListUtil.loadState();
+}
+
+function getSublistItem (feat, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(feat)}" title="${feat.name}">
+				<span class="name col-xs-4">${feat.name}</span>		
+				<span class="ability col-xs-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>		
+				<span class="prerequisite col-xs-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""}">${feat._slPrereq}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 const renderer = new EntryRenderer();
 function loadhash (id) {
-	$("#pagecontent").html(tabledefault);
+	const $content = $("#pagecontent");
+	$content.html(tabledefault);
 	const feat = featlist[id];
 	const source = feat.source;
 	const sourceFull = Parser.sourceJsonToFull(source);
 
-	$("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>`);
+	$content.find("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>`);
 
 	const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
-	$("td#prerequisite").html(prerequisite ? `Prerequisite: ${prerequisite}` : "");
-	$("tr.text").remove();
+	$content.find("td#prerequisite").html(prerequisite ? `Prerequisite: ${prerequisite}` : "");
+	$content.find("tr.text").remove();
 	EntryRenderer.feat.mergeAbilityIncrease(feat);
 
 	const renderStack = [];
 	renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
 
-	$("tr#text").after(`<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`);
-	$(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${feat.page}</td>`);
+	$content.find("tr#text").after(`<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`);
+	$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${feat.page}</td>`);
 }

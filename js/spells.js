@@ -330,6 +330,28 @@ function pageInit (loadedSources) {
 		} else $this.attr("sortby", "asc");
 		list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: sortSpells});
 	});
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "level", "time", "school", "range", "id"],
+		listClass: "subspells",
+		sortFunction: sortSpells
+	});
+	ListUtil.initGenericPinnable();
+}
+
+function getSublistItem (spell, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
+				<span class="name col-xs-3 col-xs-3-9">${spell.name}</span>
+				<span class="level col-xs-1 col-xs-1-5">${Parser.spLevelToFull(spell.level)}</span>
+				<span class="time col-xs-1 col-xs-1-8" title="${Parser.spTimeListToFull(spell.time)}">${getTblTimeStr(spell.time[0])}</span>
+				<span class="school col-xs-1 col-xs-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
+				<span class="range col-xs-3 col-xs-3-6">${Parser.spRangeToFull(spell.range)}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 function handleFilterChange () {
@@ -416,7 +438,7 @@ function addSpells (data) {
 
 		// populate table
 		tempString += `
-			<li class="row" ${FLTR_ID}="${spI}">
+			<li class="row" ${FLTR_ID}="${spI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${spI}" href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
 					<span class="name col-xs-3 col-xs-3-5">${spell.name}</span>
 					<span class="source col-xs-1 col-xs-1-7 source${Parser.stringToCasedSlug(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
@@ -452,6 +474,14 @@ function addSpells (data) {
 	list.sort("name");
 
 	filterBox.render();
+	EntryRenderer.hover.bindPopoutButton(spellList);
+	ListUtil.setOptions({
+		itemList: spellList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	ListUtil.loadState();
 }
 
 function sortSpells (a, b, o) {

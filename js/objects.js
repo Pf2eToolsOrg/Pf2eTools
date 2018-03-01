@@ -15,7 +15,7 @@ function onJsonLoad (data) {
 		const abvSource = Parser.sourceJsonToAbv(obj.source);
 
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}">
+			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
 					<span class="name col-xs-8">${obj.name}</span>
 					<span class="size col-xs-2">${Parser.sizeAbvToFull(obj.size)}</span>
@@ -33,6 +33,30 @@ function onJsonLoad (data) {
 	});
 
 	initHistory();
+	EntryRenderer.hover.bindPopoutButton(objectsList);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "size", "id"],
+		listClass: "subobjects",
+		itemList: objectsList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	ListUtil.initGenericPinnable();
+	ListUtil.loadState();
+}
+
+function getSublistItem (obj, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
+				<span class="name col-xs-9">${obj.name}</span>		
+				<span class="ability col-xs-3">${Parser.sizeAbvToFull(obj.size)}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 const renderer = new EntryRenderer();
