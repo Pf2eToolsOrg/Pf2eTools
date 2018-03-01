@@ -64,10 +64,30 @@
 		</div>
 
 		<div id="contentwrapper" class="view-col">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="type">Type</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="cr">CR</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
+				</div>
+				<ul class="list submonsters">
+					<!-- populate with JS -->
+				</ul>
+				<div class="row">
+					<span class="col-xs-7 text-align-right">Total:</span>
+					<span class="col-xs-5 no-wrap" id="totalcr" style="padding-left: 1px"></span>
+				</div>
+			</div>
+
 			<div class="wrp-stat-tab">
 				<span class="stat-tab stat-tab-sel btn btn-default" id="tab-statblock"></span>
 				<span class="stat-tab btn btn-default" id="tab-info"></span>
-				<span class="stat-tab btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></span>
+				<div id="tabs-right">
+					<span class="stat-tab btn btn-default" id="btn-sublist-add"><span class="glyphicon glyphicon-plus"></span></span>
+					<span class="stat-tab btn btn-default" id="btn-sublist-subtract"><span class="glyphicon glyphicon-minus"></span></span>
+					<span class="stat-tab btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></span>
+				</div>
 			</div>
 
 			<table id="pagecontent" class="stats monster">

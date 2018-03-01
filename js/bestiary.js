@@ -123,6 +123,16 @@ function pageInit (loadedSources) {
 		list.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortMonsters});
 	});
 
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "level", "time", "school", "range", "id"],
+		listClass: "submonsters",
+		sortFunction: sortMonsters,
+		onUpdate: onSublistChange
+	});
+	ListUtil.bindAddButton();
+	ListUtil.bindSubtractButton();
+	ListUtil.initGenericAddable();
+
 	// proficiency bonus/dice toggle
 	const profBonusDiceBtn = $("button#profbonusdice");
 	profBonusDiceBtn.useDice = false;
@@ -144,6 +154,19 @@ function pageInit (loadedSources) {
 		}
 		this.useDice = !this.useDice;
 	});
+}
+
+function onSublistChange () {
+	const $totalCr = $(`#totalcr`);
+	let baseXp = 0;
+	let totalCount = 0;
+	ListUtil.sublist.items.forEach(it => {
+		const mon = monsters[Number(it._values.id)];
+		const count = Number($(it.elm).find(".count").text());
+		totalCount += count;
+		if (mon.cr) baseXp += Parser.crToXpNumber(mon.cr) * count;
+	});
+	$totalCr.html(`${baseXp.toLocaleString()} XP (Enc: ${(Parser.numMonstersToXpMult(totalCount) * baseXp).toLocaleString()} XP)`);
 }
 
 function handleFilterChange () {
@@ -179,7 +202,7 @@ function addMonsters (data) {
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
 		textStack +=
-			`<li ${FLTR_ID}="${mI}">
+			`<li class="row" ${FLTR_ID}="${mI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
@@ -213,6 +236,26 @@ function addMonsters (data) {
 
 	filterBox.render();
 	EntryRenderer.hover.bindPopoutButton(monsters);
+	ListUtil.setOptions({
+		itemList: monsters,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.loadState();
+}
+
+function getSublistItem (mon, pinId, addCount) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
+				<span class="name col-xs-4">${mon.name}</span>
+				<span class="type col-xs-3">${mon._pTypes.asText.uppercaseFirst()}</span>
+				<span class="cr col-xs-3">${mon._pCr}</span>		
+				<span class="count col-xs-2">${addCount || 1}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 // sorting for form filtering

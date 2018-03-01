@@ -23,7 +23,7 @@ function onJsonLoad (data) {
 
 		// populate table
 		tempString +=
-			`<li ${FLTR_ID}="${i}">
+			`<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(bg)}' title='${bg.name}'>
 					<span class='name col-xs-10'>${bg.name.replace("Variant ", "")}</span>
 					<span class='source col-xs-2 source${bg.source}' title='${Parser.sourceJsonToFull(bg.source)}'>${Parser.sourceJsonToAbv(bg.source)}</span>
@@ -62,6 +62,28 @@ function onJsonLoad (data) {
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	EntryRenderer.hover.bindPopoutButton(bgList);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "id"],
+		listClass: "subbackgrounds",
+		itemList: bgList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	ListUtil.initGenericPinnable();
+	ListUtil.loadState();
+}
+
+function getSublistItem (bg, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
+				<span class="name col-xs-12">${bg.name}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 function loadhash (id) {

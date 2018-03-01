@@ -397,6 +397,15 @@ Parser.crToXp = function (cr) {
 	return Parser._addCommas(Parser.XP_CHART[parseInt(cr) - 1]);
 };
 
+Parser.crToXpNumber = function (cr) {
+	if (cr === "Unknown" || cr === undefined) return null;
+	if (cr === "0") return 10;
+	if (cr === "1/8") return 25;
+	if (cr === "1/4") return 50;
+	if (cr === "1/2") return 100;
+	return Parser.XP_CHART[parseInt(cr) - 1];
+};
+
 LEVEL_TO_XP_EASY = [0, 25, 50, 75, 125, 250, 300, 350, 450, 550, 600, 800, 1000, 1100, 1250, 1400, 1600, 2000, 2100, 2400, 2800];
 LEVEL_TO_XP_MEDIUM = [0, 50, 100, 150, 250, 500, 600, 750, 900, 1100, 1200, 1600, 2000, 2200, 2500, 2800, 3200, 3900, 4100, 4900, 5700];
 LEVEL_TO_XP_HARD = [0, 75, 150, 225, 375, 750, 900, 1100, 1400, 1600, 1900, 2400, 3000, 3400, 3800, 4300, 4800, 5900, 6300, 7300, 8500];
@@ -413,6 +422,12 @@ Parser.crToNumber = function (cr) {
 	if (parts.length === 1) return Number(parts[0]);
 	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
 	else return 0;
+};
+
+MONSTER_COUNT_TO_XP_MULTIPLIER = [1, 1.5, 2, 2, 2, 2, 2.5, 2.5, 2.5, 2.5, 3, 3, 3, 3, 4];
+Parser.numMonstersToXpMult = function (num) {
+	if (num >= MONSTER_COUNT_TO_XP_MULTIPLIER.length) return 4;
+	return MONSTER_COUNT_TO_XP_MULTIPLIER[num - 1];
 };
 
 Parser.armorFullToAbv = function (armor) {
@@ -1557,14 +1572,17 @@ ListUtil = {
 	$sublist: null,
 	_sublistChangeFn: null,
 	_allItems: null,
+	_primaryLists: [],
 	_pinned: {},
 	initSublist: (options) => {
 		ListUtil._allItems = options.itemList;
 		ListUtil._getSublistRow = options.getSublistRow;
 		ListUtil._sublistChangeFn = options.onUpdate;
+		ListUtil._primaryLists = options.primaryLists;
 		delete options.itemList;
 		delete options.getSublistRow;
 		delete options.onUpdate;
+		delete options.primaryLists;
 
 		ListUtil.$sublistContainer = $("#sublistcontainer");
 		const sublist = new List("sublistcontainer", options);
@@ -1574,9 +1592,10 @@ ListUtil = {
 	},
 
 	setOptions: (options) => {
-		ListUtil._allItems = options.itemList;
-		ListUtil._getSublistRow = options.getSublistRow;
-		ListUtil._sublistChangeFn = options.onUpdate;
+		if (options.itemList !== undefined) ListUtil._allItems = options.itemList;
+		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow;
+		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate;
+		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists;
 	},
 
 	bindPinButton: () => {
@@ -1702,7 +1721,7 @@ ListUtil = {
 				store.items.forEach(it => {
 					const $ele = _getListElem(it.h);
 					const itId = $ele ? $ele.attr("id") : null;
-					if (itId != null) ListUtil.doSublistAdd(itId, false, it.c);
+					if (itId != null) ListUtil.doSublistAdd(itId, false, Number(it.c));
 				});
 				ListUtil._finaliseSublist(true);
 			}
@@ -1716,6 +1735,102 @@ ListUtil = {
 		const store = StorageUtil.getForPage("sublist");
 		if (store && store.sources) {
 			return store.sources;
+		}
+	},
+
+	initGenericPinnable: () => {
+		ListUtil.initContextMenu(ListUtil.handleGenericContextMenuClick, "Popout", "Toggle Pinned", "Toggle Selected", "Pin All Selected", "Clear Selected");
+		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Unpin All");
+	},
+
+	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
+		const itId = Number($invokedOn.attr(FLTR_ID));
+		switch (Number($selectedMenu.data("ctx-id"))) {
+			case 0:
+				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
+				break;
+			case 1:
+				if (!ListUtil.isSublisted(itId)) ListUtil.doSublistAdd(itId, true);
+				else ListUtil.doSublistRemove(itId);
+				break;
+			case 2:
+				$invokedOn.toggleClass("list-multi-selected");
+				break;
+			case 3:
+				ListUtil._primaryLists.forEach(l => {
+					ListUtil.forEachSelected(l, (it) => {
+						if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it);
+						else ListUtil.doSublistRemove(it);
+					});
+				});
+				ListUtil._finaliseSublist();
+				break;
+			case 4:
+				ListUtil._primaryLists.forEach(l => {
+					ListUtil.deslectAll(l);
+				});
+				break;
+		}
+	},
+
+	handleGenericSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
+		const itId = Number($invokedOn.attr(FLTR_ID));
+		switch (Number($selectedMenu.data("ctx-id"))) {
+			case 0:
+				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
+				break;
+			case 1:
+				ListUtil.doSublistRemove(itId);
+				break;
+			case 2:
+				ListUtil.doSublistRemoveAll();
+				break;
+		}
+	},
+
+	initGenericAddable: () => {
+		ListUtil.initContextMenu(ListUtil.handleGenericMultiContextMMenuClick, "Popout", "Add", "Toggle Selected", "Add All Selected", "Clear Selected");
+		ListUtil.initSubContextMenu(ListUtil.handleGenericMulriSubContextMenuClick, "Popout", "Remove", "Clear List");
+	},
+
+	handleGenericMultiContextMMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
+		const itId = Number($invokedOn.attr(FLTR_ID));
+		switch (Number($selectedMenu.data("ctx-id"))) {
+			case 0:
+				EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
+				break;
+			case 1:
+				ListUtil.doSublistAdd(itId, true);
+				break;
+			case 2:
+				$invokedOn.toggleClass("list-multi-selected");
+				break;
+			case 3:
+				ListUtil._primaryLists.forEach(l => {
+					ListUtil.forEachSelected(l, (it) => ListUtil.doSublistAdd(it));
+				});
+				ListUtil._finaliseSublist();
+				break;
+			case 4:
+				ListUtil._primaryLists.forEach(l => {
+					ListUtil.deslectAll(l);
+				});
+				break;
+		}
+	},
+
+	handleGenericMulriSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
+		const itId = Number($invokedOn.attr(FLTR_ID));
+		switch (Number($selectedMenu.data("ctx-id"))) {
+			case 0:
+				EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
+				break;
+			case 1:
+				ListUtil.doSublistRemove(itId);
+				break;
+			case 2:
+				ListUtil.doSublistRemoveAll();
+				break;
 		}
 	}
 };

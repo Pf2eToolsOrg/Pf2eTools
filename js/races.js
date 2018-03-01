@@ -95,8 +95,10 @@ function onJsonLoad (data) {
 		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
+		race._slAbility = ability.asTextShort;
+
 		tempString +=
-			`<li ${FLTR_ID}='${i}'>
+			`<li class="row" ${FLTR_ID}='${i}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(race)}' title='${race.name}'>
 					<span class='name col-xs-4'>${race.name}</span>
 					<span class='ability col-xs-4'>${ability.asTextShort}</span>
@@ -164,10 +166,33 @@ function onJsonLoad (data) {
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	EntryRenderer.hover.bindPopoutButton(raceList);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "ability", "size", "id"],
+		listClass: "subraces",
+		itemList: raceList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	ListUtil.initGenericPinnable();
+	ListUtil.loadState();
+}
+
+function getSublistItem (race, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
+				<span class="name col-xs-5">${race.name}</span>		
+				<span class="ability col-xs-5">${race._slAbility}</span>		
+				<span class="size col-xs-2">${Parser.sizeAbvToFull(race.size)}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 const renderer = new EntryRenderer();
-
 function loadhash (id) {
 	const $pgContent = $("#pagecontent");
 	$pgContent.html(tableDefault);

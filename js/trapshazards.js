@@ -17,7 +17,7 @@ function onJsonLoad (data) {
 		const abvSource = Parser.sourceJsonToAbv(it.source);
 
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}">
+			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-xs-6">${it.name}</span>
 					<span class="trapType col-xs-4">${Parser.trapTypeToFull(it.trapType)}</span>
@@ -36,6 +36,29 @@ function onJsonLoad (data) {
 
 	initHistory();
 	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "type", "id"],
+		listClass: "subtrapshazards",
+		itemList: trapsAndHazardsList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	ListUtil.initGenericPinnable();
+	ListUtil.loadState();
+}
+
+function getSublistItem (it, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
+				<span class="name col-xs-8">${it.name}</span>		
+				<span class="type col-xs-4">${Parser.trapTypeToFull(it.trapType)}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 const renderer = new EntryRenderer();

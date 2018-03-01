@@ -17,7 +17,7 @@ function onJsonLoad (data) {
 	for (let i = 0; i < conditionList.length; i++) {
 		const name = conditionList[i].name;
 		tempString += `
-			<li>
+			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(conditionList[i])}' title='${name}'>
 					<span class='name' title='${name}'>${name}</span>
 				</a>
@@ -32,6 +32,28 @@ function onJsonLoad (data) {
 
 	initHistory();
 	EntryRenderer.hover.bindPopoutButton(conditionList);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "id"],
+		listClass: "subconditions",
+		itemList: conditionList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	ListUtil.initGenericPinnable();
+	ListUtil.loadState();
+}
+
+function getSublistItem (cond, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(cond)}" title="${cond.name}">
+				<span class="name col-xs-12">${cond.name}</span>		
+				<span class="id hidden">${pinId}</span>				
+			</a>
+		</li>
+	`;
 }
 
 function loadhash (id) {

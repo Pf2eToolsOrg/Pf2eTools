@@ -200,20 +200,20 @@ function populateTablesAndFilters () {
 	handleFilterChange();
 
 	EntryRenderer.hover.bindPopoutButton(itemList);
-	ListUtil.bindAddButton(itemList);
-	ListUtil.bindSubtractButton(itemList);
 	const subList = ListUtil.initSublist(
 		{
 			valueNames: ["name", "weight", "price", "id"],
 			listClass: "subitems",
 			itemList: itemList,
 			getSublistRow: getSublistItem,
-			onUpdate: onSublistChange
+			onUpdate: onSublistChange,
+			primaryLists: [mundanelist, magiclist]
 		}
 	);
+	ListUtil.bindAddButton();
+	ListUtil.bindSubtractButton();
+	ListUtil.initGenericAddable();
 	ListUtil.loadState();
-	ListUtil.initContextMenu(handleContextMenuClick, "Popout", "Add", "Toggle Selected", "Add All Selected", "Clear Selected");
-	ListUtil.initSubContextMenu(handleSubContextMenuClick, "Popout", "Remove", "Clear List");
 }
 
 function onSublistChange () {
@@ -245,51 +245,7 @@ function getSublistItem (item, pinId, addCount) {
 	`;
 }
 
-function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
-	function massAdd (list) {
-		ListUtil.forEachSelected(list, (it) => ListUtil.doSublistAdd(it));
-	}
-
-	const itId = Number($invokedOn.attr(FLTR_ID));
-	switch (Number($selectedMenu.data("ctx-id"))) {
-		case 0:
-			EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
-			break;
-		case 1:
-			ListUtil.doSublistAdd(itId, true);
-			break;
-		case 2:
-			$invokedOn.toggleClass("list-multi-selected");
-			break;
-		case 3:
-			massAdd(mundanelist);
-			massAdd(magiclist);
-			ListUtil._finaliseSublist();
-			break;
-		case 4:
-			ListUtil.deslectAll(mundanelist);
-			ListUtil.deslectAll(magiclist);
-			break;
-	}
-}
-
-function handleSubContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
-	const itId = Number($invokedOn.attr(FLTR_ID));
-	switch (Number($selectedMenu.data("ctx-id"))) {
-		case 0:
-			EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
-			break;
-		case 1:
-			ListUtil.doSublistRemove(itId);
-			break;
-		case 2:
-			ListUtil.doSublistRemoveAll();
-			break;
-	}
-}
-
 const renderer = new EntryRenderer();
-
 function loadhash (id) {
 	const $content = $(`#pagecontent`);
 	const item = itemList[id];

@@ -336,8 +336,7 @@ function pageInit (loadedSources) {
 		listClass: "subspells",
 		sortFunction: sortSpells
 	});
-	ListUtil.initContextMenu(handleContextMenuClick, "Popout", "Toggle Pinned", "Toggle Selected", "Pin All Selected", "Clear Selected");
-	ListUtil.initSubContextMenu(handleSubContextMenuClick, "Popout", "Unpin", "Unpin All");
+	ListUtil.initGenericPinnable();
 }
 
 function getSublistItem (spell, pinId) {
@@ -353,47 +352,6 @@ function getSublistItem (spell, pinId) {
 			</a>
 		</li>
 	`;
-}
-
-function handleContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
-	const spId = Number($invokedOn.attr(FLTR_ID));
-	switch (Number($selectedMenu.data("ctx-id"))) {
-		case 0:
-			EntryRenderer.hover.doPopout($invokedOn, spellList, spId, evt.clientX);
-			break;
-		case 1:
-			if (!ListUtil.isSublisted(spId)) ListUtil.doSublistAdd(spId, true);
-			else ListUtil.doSublistRemove(spId);
-			break;
-		case 2:
-			$invokedOn.toggleClass("list-multi-selected");
-			break;
-		case 3:
-			ListUtil.forEachSelected(list, (it) => {
-				if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it);
-				else ListUtil.doSublistRemove(it);
-			});
-			ListUtil._finaliseSublist();
-			break;
-		case 4:
-			ListUtil.deslectAll(list);
-			break;
-	}
-}
-
-function handleSubContextMenuClick (evt, ele, $invokedOn, $selectedMenu) {
-	const spId = Number($invokedOn.attr(FLTR_ID));
-	switch (Number($selectedMenu.data("ctx-id"))) {
-		case 0:
-			EntryRenderer.hover.doPopout($invokedOn, spellList, spId, evt.clientX);
-			break;
-		case 1:
-			ListUtil.doSublistRemove(spId);
-			break;
-		case 2:
-			ListUtil.doSublistRemoveAll();
-			break;
-	}
 }
 
 function handleFilterChange () {
@@ -519,7 +477,8 @@ function addSpells (data) {
 	EntryRenderer.hover.bindPopoutButton(spellList);
 	ListUtil.setOptions({
 		itemList: spellList,
-		getSublistRow: getSublistItem
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
 	ListUtil.loadState();
