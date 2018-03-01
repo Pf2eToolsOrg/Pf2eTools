@@ -5,10 +5,13 @@
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
-		"test": "eslint js node test && stylelint scss/style.scss && node ./test/alltests.js",
-		"gen-index": "node ./node/generate-search-index.js",
-		"version-bump": "node ./node/version-bump.js",
-		"build:css": "node-sass --source-map=true --output-style=compressed ./scss/style.scss ./css/style.css",
+		"test": "eslint js node test && stylelint scss/style.scss && node test/alltests.js",
+		"gen-index": "node node/generate-search-index.js",
+		"version-bump": "node node/version-bump.js",
+		"uglifyjs": "uglifyjs",
+		"build:css": "node-sass --source-map=true --output-style=compressed scss/style.scss css/style.css",
+		"build:deploy:dev": "bash build/deploy-dev.sh",
+		"build:deploy:prod": "bash build/deploy-prod.sh",
 		"build": "npm run gen-index && npm run build:css"
 	},
 	"repository": "TheGiddyLimit/TheGiddyLimit.github.io",
@@ -18,6 +21,7 @@
 		"jsonschema": "^1.2.0",
 		"node-sass": "^4.7.2",
 		"stylelint": "^8.2.0",
-		"stylelint-config-standard": "^17.0.0"
+		"stylelint-config-standard": "^17.0.0",
+		"uglify-es": "^3.3.9"
 	}
 }
