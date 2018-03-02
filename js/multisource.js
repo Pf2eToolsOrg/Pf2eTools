@@ -27,7 +27,7 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, cbOpt) 
 	// collect a list of sources to load
 	const sources = Object.keys(src2UrlMap);
 	const defaultSel = sources.filter(s => defaultSourceSelFn(s));
-	const userSel = (FilterBox.getSelectedSources() || []).concat((ListUtil.getSelectedSources() || []));
+	const userSel = [...new Set(...(FilterBox.getSelectedSources() || []).concat((ListUtil.getSelectedSources() || [])))];
 
 	const allSources = [];
 
