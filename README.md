@@ -65,10 +65,10 @@ Replace: $1$3
 
 Do `npm run version-bump -- [OPTION]`, where `[OPTION]` is one of the following:
 
-- a version number (like `1.2.3`)
 - `major` to increment the major version (`1.2.3` will become `2.0.0`)
 - `minor` to increment the minor version (`1.2.3` will become `1.3.0`)
 - `patch` to increment the patch version (`1.2.3` will become `1.2.4`)
+- a version number (like `1.2.3`)
 
 It will first run the tests and fail to increase the version if the tests fail.  
 It will then automatically replace the version in the files where it needs to be replaced, create a commit with the message `chore(version): bump` and create a tag (in the form `v1.2.3`) at the commit.  
