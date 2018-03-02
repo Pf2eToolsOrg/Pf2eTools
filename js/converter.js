@@ -291,14 +291,14 @@ function loadparser (data) {
 
 					// get the name
 					curtrait.name = "";
-					curtrait.text = [];
+					curtrait.entries = [];
 
 					if (!onlegendarydescription) {
 						// first paragraph
 						curtrait.name = curline.split(/([.!])/g)[0];
-						curtrait.text.push(curline.split(".").splice(1).join(".").trim());
+						curtrait.entries.push(curline.split(".").splice(1).join(".").trim());
 					} else {
-						curtrait.text.push(curline.trim());
+						curtrait.entries.push(curline.trim());
 						onlegendarydescription = false;
 					}
 
@@ -307,12 +307,12 @@ function loadparser (data) {
 
 					// get paragraphs
 					while (curline && curline.match(/^([A-Zot][a-z'’`]+( \(.*\)| )?)+([.!])+/g) === null && !moveon(curline)) {
-						curtrait.text.push(curline.trim());
+						curtrait.entries.push(curline.trim());
 						i++;
 						curline = statblock[i];
 					}
 
-					if (curtrait.name || curtrait.text) {
+					if (curtrait.name || curtrait.entries) {
 						if (ontraits) stats.trait.push(curtrait);
 						if (onactions) stats.action.push(curtrait);
 						if (onreactions) stats.reaction.push(curtrait);
