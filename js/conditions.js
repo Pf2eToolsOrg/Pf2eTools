@@ -19,7 +19,7 @@ function onJsonLoad (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${i}' href='#${UrlUtil.autoEncodeHash(conditionList[i])}' title='${name}'>
-					<span class='name' title='${name}'>${name}</span>
+					<span class='name col-xs-12' title='${name}'>${name}</span>
 				</a>
 			</li>`;
 	}
