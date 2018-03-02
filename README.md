@@ -61,6 +61,19 @@ Replace: $1$3
 - Nouns: a space and the short name of the unit of measure (including the trailing period) should be used, e.g. blindsight 60 ft., darkvision 120 ft.
 - Time: a slash, /, with no spaces on either side followed by the capitalised unit of time, e.g. 2/Turn, 3/Day
 
+### Version bump
+
+Do `npm run version-bump -- [OPTION]`, where `[OPTION]` is one of the following:
+
+- a version number (like `1.2.3`)
+- `major` to increment the major version (`1.2.3` will become `2.0.0`)
+- `minor` to increment the minor version (`1.2.3` will become `1.3.0`)
+- `patch` to increment the patch version (`1.2.3` will become `1.2.4`)
+
+It will first run the tests and fail to increase the version if the tests fail.  
+It will then automatically replace the version in the files where it needs to be replaced, create a commit with the message `chore(version): bump` and create a tag (in the form `v1.2.3`) at the commit.  
+This feature can be easily disabled by doing `npm config set git-tag-version false`. 
+
 ## License
 
 This project is licensed under the terms of the MIT license.

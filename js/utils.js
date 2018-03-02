@@ -23,6 +23,7 @@ STR_SLUG_DASH = "-";
 STR_APOSTROPHE = "\u2019";
 
 HTML_NO_INFO = "<i>No information available.</i>";
+HTML_NO_IMAGES = "<i>No images available.</i>";
 
 ID_SEARCH_BAR = "filter-search-input-group";
 ID_RESET_BUTTON = "reset";

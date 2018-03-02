@@ -1,18 +1,20 @@
 {
 	"name": "5etools",
 	"author": "TheGiddyLimit",
-	"version": "1.0.0",
+	"version": "1.19.4",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
 		"test": "eslint js node test && stylelint scss/style.scss && node test/alltests.js",
 		"gen-index": "node node/generate-search-index.js",
-		"version-bump": "node node/version-bump.js",
+		"version-bump": "npm install && npm version -m \"chore(version): bump\"",
 		"uglifyjs": "uglifyjs",
 		"build:css": "node-sass --source-map=true --output-style=compressed scss/style.scss css/style.css",
 		"build:deploy:dev": "bash build/deploy-dev.sh",
 		"build:deploy:prod": "bash build/deploy-prod.sh",
-		"build": "npm run gen-index && npm run build:css"
+		"build": "npm run gen-index && npm run build:css",
+		"preversion": "npm test",
+		"version": "node node/version-bump.js"
 	},
 	"repository": "TheGiddyLimit/TheGiddyLimit.github.io",
 	"devDependencies": {
@@ -20,6 +22,7 @@
 		"eslint-plugin-json": "^1.2.0",
 		"jsonschema": "^1.2.0",
 		"node-sass": "^4.7.2",
+		"simple-git": "^1.91.0",
 		"stylelint": "^8.2.0",
 		"stylelint-config-standard": "^17.0.0",
 		"uglify-es": "^3.3.9"

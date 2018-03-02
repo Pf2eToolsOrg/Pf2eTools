@@ -200,10 +200,11 @@ function loadhash (id) {
 
 	const race = raceList[id];
 
-	EntryRenderer.utils.bindTabButtons(
-		"Traits",
+	const traitTab = EntryRenderer.utils.tabButton(
+		"Traits"
+	);
+	const infoTab = EntryRenderer.utils.tabButton(
 		"Info",
-		() => {},
 		() => {},
 		() => {
 			function get$Tr () {
@@ -266,6 +267,7 @@ function loadhash (id) {
 			});
 		}
 	);
+	EntryRenderer.utils.bindTabButtons(traitTab, infoTab);
 
 	$pgContent.find("th.name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
 
