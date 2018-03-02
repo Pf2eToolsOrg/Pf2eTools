@@ -289,7 +289,7 @@ function loadhash (id) {
 		profBtn = null;
 	}
 
-	function buildFluffTab (showText, showImages) {
+	function buildFluffTab (showImages) {
 		$content.append(EntryRenderer.utils.getBorderTr());
 		const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
 		name.find(`th`).css("padding-right", "0.3em");
@@ -334,21 +334,25 @@ function loadhash (id) {
 					delete fluff._appendCopy;
 				}
 
-				let hasContent = false;
-				if (fluff.images && showImages) {
-					fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
-					hasContent = true;
+				if (showImages) {
+					if (fluff.images) {
+						fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
+					} else {
+						$td.append(HTML_NO_IMAGES);
+					}
+				} else {
+					if (fluff.entries) {
+						const depth = fluff.entries.type === "section" ? -1 : 2;
+						$td.append(renderer.renderEntry(fluff.entries, depth));
+					} else {
+						$td.append(HTML_NO_INFO);
+					}
 				}
-				if (fluff.entries && showText) {
-					const depth = fluff.entries.type === "section" ? -1 : 2;
-					$td.append(renderer.renderEntry(fluff.entries, depth));
-					hasContent = true;
-				}
-				if (!hasContent) $td.append(HTML_NO_INFO);
 			});
 		} else {
 			$td.empty();
-			$td.append(HTML_NO_INFO);
+			if (showImages) $td.append(HTML_NO_IMAGES);
+			else $td.append(HTML_NO_INFO);
 		}
 	}
 
@@ -365,7 +369,7 @@ function loadhash (id) {
 			profBtn = profBtn || $wrpBtnProf.children().detach();
 		},
 		() => {
-			buildFluffTab(true);
+			buildFluffTab();
 		}
 	);
 	const picTab = EntryRenderer.utils.tabButton(
@@ -374,7 +378,7 @@ function loadhash (id) {
 			profBtn = profBtn || $wrpBtnProf.children().detach();
 		},
 		() => {
-			buildFluffTab(false, true);
+			buildFluffTab(true);
 		}
 	);
 	EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
