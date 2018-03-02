@@ -124,7 +124,7 @@ function pageInit (loadedSources) {
 	});
 
 	const subList = ListUtil.initSublist({
-		valueNames: ["name", "level", "time", "school", "range", "id"],
+		valueNames: ["name", "source", "type", "cr", "count", "id"],
 		listClass: "submonsters",
 		sortFunction: sortMonsters,
 		onUpdate: onSublistChange
@@ -260,6 +260,7 @@ function getSublistItem (mon, pinId, addCount) {
 
 // sorting for form filtering
 function sortMonsters (a, b, o) {
+	if (o.valueName === "count") return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
 	a = monsters[a.elm.getAttribute(FLTR_ID)];
 	b = monsters[b.elm.getAttribute(FLTR_ID)];
 	if (o.valueName === "name") return SortUtil.ascSort(a.name, b.name);
