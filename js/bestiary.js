@@ -289,75 +289,91 @@ function loadhash (id) {
 		profBtn = null;
 	}
 
+	function buildFluffTab (showText, showImages)  {
+		$content.append(EntryRenderer.utils.getBorderTr());
+		const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
+		name.find(`th`).css("padding-right", "0.3em");
+		$content.append(name);
+		const $tr = $(`<tr class='text'/>`);
+		$content.append($tr);
+		const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
+		$content.append(EntryRenderer.utils.getBorderTr());
+		if (ixFluff[mon.source]) {
+			DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
+				const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
+
+				if (!fluff) {
+					$td.empty();
+					$td.append(HTML_NO_INFO);
+					return;
+				}
+
+				if (fluff._copy) {
+					const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
+					// preserve these
+					const name = fluff.name;
+					const src = fluff.source;
+					const images = fluff.images;
+					Object.assign(fluff, cpy);
+					fluff.name = name;
+					fluff.source = src;
+					if (images) fluff.images = images;
+					delete fluff._copy;
+				}
+
+				if (fluff._appendCopy) {
+					const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
+					if (cpy.images) {
+						if (!fluff.images) fluff.images = cpy.images;
+						else fluff.images = fluff.images.concat(cpy.images);
+					}
+					if (cpy.entries) {
+						if (!fluff.entries) fluff.entries = cpy.entries;
+						else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
+					}
+					delete fluff._appendCopy;
+				}
+
+				if (fluff.images && showImages) {
+					fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
+				}
+				if (fluff.entries && showText) {
+					const depth = fluff.entries.type === "section" ? -1 : 2;
+					$td.append(renderer.renderEntry(fluff.entries, depth));
+				}
+			});
+		} else {
+			$td.empty();
+			$td.append(HTML_NO_INFO);
+		}
+	}
+
 	// reset tabs
-	EntryRenderer.utils.bindTabButtons(
+	const statTab = EntryRenderer.utils.tabButton(
 		"Statblock",
-		"Info",
 		() => {
 			$wrpBtnProf.append(profBtn);
-		},
-		() => {
-			profBtn = $wrpBtnProf.children().detach();
-		},
-		() => {
-			$content.append(EntryRenderer.utils.getBorderTr());
-			const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
-			name.find(`th`).css("padding-right", "0.3em");
-			$content.append(name);
-			const $tr = $(`<tr class='text'/>`);
-			$content.append($tr);
-			const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
-			$content.append(EntryRenderer.utils.getBorderTr());
-			if (ixFluff[mon.source]) {
-				DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
-					const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
-
-					if (!fluff) {
-						$td.empty();
-						$td.append(HTML_NO_INFO);
-						return;
-					}
-
-					if (fluff._copy) {
-						const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
-						// preserve these
-						const name = fluff.name;
-						const src = fluff.source;
-						const images = fluff.images;
-						Object.assign(fluff, cpy);
-						fluff.name = name;
-						fluff.source = src;
-						if (images) fluff.images = images;
-						delete fluff._copy;
-					}
-
-					if (fluff._appendCopy) {
-						const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
-						if (cpy.images) {
-							if (!fluff.images) fluff.images = cpy.images;
-							else fluff.images = fluff.images.concat(cpy.images);
-						}
-						if (cpy.entries) {
-							if (!fluff.entries) fluff.entries = cpy.entries;
-							else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
-						}
-						delete fluff._appendCopy;
-					}
-
-					if (fluff.images) {
-						fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
-					}
-					if (fluff.entries) {
-						const depth = fluff.entries.type === "section" ? -1 : 2;
-						$td.append(renderer.renderEntry(fluff.entries, depth));
-					}
-				});
-			} else {
-				$td.empty();
-				$td.append(HTML_NO_INFO);
-			}
 		}
 	);
+	const infoTab = EntryRenderer.utils.tabButton(
+		"Info",
+		() => {
+			profBtn = profBtn || $wrpBtnProf.children().detach();
+		},
+		() => {
+			buildFluffTab(true);
+		}
+	);
+	const picTab = EntryRenderer.utils.tabButton(
+		"Images",
+		() => {
+			profBtn = profBtn || $wrpBtnProf.children().detach();
+		},
+		() => {
+			buildFluffTab(false, true);
+		}
+	);
+	EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
 
 	let renderStack = [];
 	let entryList = {};

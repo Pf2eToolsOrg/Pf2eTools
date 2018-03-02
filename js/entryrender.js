@@ -803,57 +803,53 @@ EntryRenderer.utils = {
 		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</i>, page ${it.page}${addSourceText}` : ""
 	},
 
-	_statTab: null,
-	_infoTab: null,
-	_curTab: 0,
-	bindTabButtons: (primaryLabel, infoLabel, funcStats, funcInfo, funcPopulateInfo) => {
-		EntryRenderer.utils._statTab = null;
-		EntryRenderer.utils._infoTab = null;
-		EntryRenderer.utils._curTab = 0;
+	tabButton: (label, funcChange, funcPopulate) => {
+		return {
+			label: label,
+			funcChange: funcChange,
+			funcPopulate: funcPopulate
+		};
+	},
+
+	_tabs: {},
+	_curTab: null,
+	bindTabButtons: (...tabButtons) => {
+		EntryRenderer._tabs = {};
+		EntryRenderer._curTab = null;
 
 		const $content = $("#pagecontent");
-		const $tStatblock = $(`#tab-statblock`);
-		const $tInfo = $(`#tab-info`);
-		$tStatblock.text(primaryLabel);
-		$tInfo.text(infoLabel);
+		const $wrpTab = $(`#stat-tabs`);
 
-		$tInfo.removeClass(`stat-tab-sel`);
-		$tStatblock.addClass(`stat-tab-sel`);
+		$wrpTab.find(`.stat-tab-gen`).remove();
+		EntryRenderer.utils._tabs[tabButtons[0].label] = tabButtons[0];
+		EntryRenderer.utils._curTab = tabButtons[0];
 
-		// set up tab buttons
-		$tStatblock.off("click");
-		$tStatblock.on("click", () => {
-			if (EntryRenderer.utils._curTab === 1) {
-				EntryRenderer.utils._infoTab = $content.children().detach();
+		const toAdd = tabButtons.map((tb, i) => {
+			const $t = $(`<span class="stat-tab ${i === 0 ? `stat-tab-sel` : ""} btn btn-default stat-tab-gen">${tb.label}</span>`);
+			tb.$t = $t;
+			$t.click(() => {
+				const curTab = EntryRenderer.utils._curTab;
+				const tabs = EntryRenderer.utils._tabs;
 
-				$tInfo.removeClass(`stat-tab-sel`);
-				$tStatblock.addClass(`stat-tab-sel`);
+				if (curTab.label !== tb.label) {
+					EntryRenderer.utils._curTab.$t.removeClass(`stat-tab-sel`);
+					EntryRenderer.utils._curTab = tb;
+					$t.addClass(`stat-tab-sel`);
+					tabs[curTab.label].content = $content.children().detach();
 
-				$content.append(EntryRenderer.utils._statTab);
-
-				funcStats();
-				EntryRenderer.utils._curTab = 0;
-			}
-		});
-
-		$tInfo.off("click");
-		$tInfo.on("click", () => {
-			if (EntryRenderer.utils._curTab === 0) {
-				EntryRenderer.utils._statTab = $content.children().detach();
-
-				$tInfo.addClass(`stat-tab-sel`);
-				$tStatblock.removeClass(`stat-tab-sel`);
-
-				if (EntryRenderer.utils._infoTab === null) {
-					funcPopulateInfo();
-				} else {
-					$content.append(EntryRenderer.utils._infoTab);
+					tabs[tb.label] = tb;
+					if (!tabs[tb.label].content && tb.funcPopulate) {
+						tb.funcPopulate();
+					} else {
+						$content.append(tabs[tb.label].content);
+					}
+					if (tb.funcChange) tb.funcChange();
 				}
-
-				funcInfo();
-				EntryRenderer.utils._curTab = 1;
-			}
+			});
+			return $t;
 		});
+
+		toAdd.reverse().forEach($t => $wrpTab.prepend($t));
 	}
 };
 
