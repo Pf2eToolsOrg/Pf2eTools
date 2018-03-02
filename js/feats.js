@@ -12,12 +12,16 @@ function onJsonLoad (data) {
 	tabledefault = $("#pagecontent").html();
 	featlist = data.feat;
 
-	// TODO prerequisite filter?
 	const sourceFilter = getSourceFilter();
 	const asiFilter = getAsiFilter();
+	const prereqFilter = new Filter({
+		header: "Prerequisite",
+		items: ["Ability", "Race", "Proficiency", "Spellcasting"]
+	});
 	filterBox = initFilterBox(
 		sourceFilter,
-		asiFilter
+		asiFilter,
+		prereqFilter
 	);
 
 	const featTable = $("ul.feats");
@@ -34,6 +38,10 @@ function onJsonLoad (data) {
 		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 source${curfeat.source}`;
 		const CLS_COL_3 = "ability " + (ability.asText === STR_NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === STR_NONE ? "list-entry-none " : "") + "col-xs-3";
+
+		const preSet = new Set();
+		(curfeat.prerequisite || []).forEach(it => preSet.add(...Object.keys(it)));
+		curfeat._fPrereq = [...preSet].map(it => it.uppercaseFirst());
 
 		curfeat._slAbility = ability.asText;
 		curfeat._slPrereq = prereqText;
@@ -78,7 +86,8 @@ function onJsonLoad (data) {
 			return filterBox.toDisplay(
 				f,
 				ft.source,
-				ft._fAbility
+				ft._fAbility,
+				ft._fPrereq
 			);
 		});
 	}
