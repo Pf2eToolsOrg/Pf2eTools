@@ -289,7 +289,7 @@ function loadhash (id) {
 		profBtn = null;
 	}
 
-	function buildFluffTab (showText, showImages)  {
+	function buildFluffTab (showText, showImages) {
 		$content.append(EntryRenderer.utils.getBorderTr());
 		const name = $(EntryRenderer.utils.getNameTr(monsters[id]));
 		name.find(`th`).css("padding-right", "0.3em");
@@ -334,13 +334,17 @@ function loadhash (id) {
 					delete fluff._appendCopy;
 				}
 
+				let hasContent = false;
 				if (fluff.images && showImages) {
 					fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
+					hasContent = true;
 				}
 				if (fluff.entries && showText) {
 					const depth = fluff.entries.type === "section" ? -1 : 2;
 					$td.append(renderer.renderEntry(fluff.entries, depth));
+					hasContent = true;
 				}
+				if (!hasContent) $td.append(HTML_NO_INFO);
 			});
 		} else {
 			$td.empty();
