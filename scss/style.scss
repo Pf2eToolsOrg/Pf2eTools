@@ -183,6 +183,19 @@ div.omnisearch-pagination-wrapper > .pg-right {
 	top: 0;
 }
 
+#btn-popout {
+	margin-left: auto;
+}
+
+#tabs-right {
+	margin-left: auto;
+	display: flex;
+}
+
+#tabs-right > #btn-popout {
+	margin-left: 0;
+}
+
 /* hoverbox */
 .hoverbox {
 	position: fixed;
@@ -414,6 +427,29 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 /* *** */
 
+/* stats tabs */
+.wrp-stat-tab {
+	width: 100%;
+	display: flex;
+}
+
+.stat-tab {
+	display: inline-block;
+	padding: 2px 4px 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	cursor: pointer;
+	user-select: none;
+	border-bottom: none;
+}
+
+.stat-tab-sel {
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+
+/* *** */
+
 .view-col {
 	margin: 7px 7px 12px;
 	flex: 1;
@@ -427,6 +463,7 @@ div.omnisearch-pagination-wrapper > .pg-right {
 
 #contentwrapper.view-col {
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 main {
@@ -499,14 +536,11 @@ ul.list {
 ul.list li {
 	padding: 1px;
 	cursor: pointer;
-	display: block;
 	border-bottom: 1px solid #ddd;
-	max-height: 3em;
-	overflow-y: hidden;
 }
 
-ul.list li:hover {
-	max-height: 100%;
+ul.list li.list-multi-selected {
+	box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
 }
 
 ul.list li:active {
@@ -1795,16 +1829,28 @@ input[type=checkbox].readonly {
 	pointer-events: none;
 }
 
+#sublistcontainer > ul > li,
 #listcontainer > ul > li {
 	padding: 0;
 }
 
+#sublistcontainer .list a,
 #listcontainer .list a {
 	color: inherit;
 	display: block;
 	overflow: hidden;
 	padding: 2px;
 	text-decoration: none;
+}
+
+#sublistcontainer {
+	display: none;
+	padding: 0 0 2px;
+}
+
+#sublistcontainer list {
+	margin-bottom: 0;
+	padding: 0;
 }
 
 /* Adventures */

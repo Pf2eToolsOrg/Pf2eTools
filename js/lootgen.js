@@ -10,7 +10,6 @@ window.onload = function load () {
 function loadloot (lootData) {
 	lootList = lootData;
 	$("button#clear").click(function () {
-		$("#classtable").html("");
 		$("#lootoutput").html("");
 	});
 	$("button#genloot").click(function () {

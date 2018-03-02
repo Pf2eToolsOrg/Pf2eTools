@@ -1,6 +1,7 @@
 "use strict";
 
 // TODO refactor into own class
+let lastLoadedId = null;
 function hashchange (e) {
 	if (isHistorySuppressed) {
 		setSuppressHistory(false);
@@ -27,7 +28,9 @@ function hashchange (e) {
 			const toLoad = $el.attr("id");
 			if (toLoad === undefined) _freshLoad();
 			else {
-				loadhash($el.attr("id"));
+				const id = $el.attr("id");
+				lastLoadedId = id;
+				loadhash(id);
 				document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
 			}
 		}
