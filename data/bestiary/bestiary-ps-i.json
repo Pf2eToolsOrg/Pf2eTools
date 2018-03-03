@@ -9,7 +9,9 @@
 			"alignment": "lawful evil",
 			"ac": "12",
 			"hp": "21 (6d4+6)",
-			"speed": "40 ft.",
+			"speed": {
+				"walk": 40
+			},
 			"str": 6,
 			"dex": 14,
 			"con": 13,
@@ -71,7 +73,10 @@
 			"alignment": "any alignment",
 			"ac": "11",
 			"hp": "45 (10d8)",
-			"speed": "0 ft., fly 40 ft.",
+			"speed": {
+				"walk": 0,
+				"fly": 40
+			},
 			"str": 7,
 			"dex": 13,
 			"con": 10,
@@ -156,7 +161,9 @@
 			"alignment": "neutral",
 			"ac": "9",
 			"hp": "93 (11d8+44)",
-			"speed": "30 ft.",
+			"speed": {
+				"walk": 30
+			},
 			"str": 19,
 			"dex": 9,
 			"con": 18,
@@ -268,7 +275,9 @@
 			"alignment": "neutral evil",
 			"ac": "15 (natural armor)",
 			"hp": "82 (11d8+33)",
-			"speed": "30 ft.",
+			"speed": {
+				"walk": 30
+			},
 			"str": 16,
 			"dex": 16,
 			"con": 16,
@@ -365,7 +374,12 @@
 			"alignment": "chaotic evil",
 			"ac": "11 in human form, 12 (natural armor) in canid form",
 			"hp": "58 (9d8+18)",
-			"speed": "30 ft. (40 ft. in canid form)",
+			"speed": {
+				"walk": {
+					"number": 30,
+					"condition": " (40 ft. in canid form)"
+				}
+			},
 			"str": 15,
 			"dex": 13,
 			"con": 14,

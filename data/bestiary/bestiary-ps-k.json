@@ -9,7 +9,9 @@
 			"alignment": "unaligned",
 			"ac": "11",
 			"hp": "27 (5d8+5)",
-			"speed": "40 ft.",
+			"speed": {
+				"walk": 40
+			},
 			"str": 12,
 			"dex": 13,
 			"con": 13,
@@ -52,7 +54,9 @@
 			"alignment": "unaligned",
 			"ac": "11 (natural armor)",
 			"hp": "10(3d4+3)",
-			"speed": "20 ft.",
+			"speed": {
+				"walk": 20
+			},
 			"str": 4,
 			"dex": 11,
 			"con": 12,
@@ -81,7 +85,12 @@
 			"alignment": "unaligned",
 			"ac": "14 (natural armor)",
 			"hp": "247 (15d20+90)",
-			"speed": "fly 50 ft. (hover)",
+			"speed": {
+				"fly": {
+					"number": 50,
+					"condition": " (hover)"
+				}
+			},
 			"str": 28,
 			"dex": 7,
 			"con": 22,

@@ -266,9 +266,10 @@ function loadhash (id) {
 		const lvlFeatureList = curClass.classFeatures[i];
 		for (let j = 0; j < lvlFeatureList.length; j++) {
 			const feature = lvlFeatureList[j];
-			const featureId = `${HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}_${i}`;
+			const idLevelPart = UrlUtil.encodeForHash(` ${i + 1}`);
+			const featureId = `${HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
 
-			const featureLinkPart = `${HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${i}`;
+			const featureLinkPart = `${HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
 			const featureLink = $(`<a href="${getClassHash(curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
 			featureLink.click(function () {
 				document.getElementById(featureId).scrollIntoView();

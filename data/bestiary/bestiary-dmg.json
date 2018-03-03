@@ -8,7 +8,13 @@
 			"alignment": "neutral evil",
 			"ac": "20",
 			"hp": "half the hit point maximum of its summoner",
-			"speed": "60 ft., fly 60 ft. (hover)",
+			"speed": {
+				"walk": 60,
+				"fly": {
+					"number": 60,
+					"condition": " (hover)"
+				}
+			},
 			"str": 16,
 			"dex": 16,
 			"con": 16,
@@ -53,7 +59,10 @@
 			"alignment": "unaligned",
 			"ac": "11",
 			"hp": "19 (3d10+3)",
-			"speed": "30 ft., fly 60 ft.",
+			"speed": {
+				"walk": 30,
+				"fly": 60
+			},
 			"str": 14,
 			"dex": 13,
 			"con": 13,
@@ -73,7 +82,9 @@
 			"alignment": "neutral evil",
 			"ac": "9",
 			"hp": "9 (2d8)",
-			"speed": "20ft.",
+			"speed": {
+				"walk": 20
+			},
 			"str": 9,
 			"dex": 9,
 			"con": 10,

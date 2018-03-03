@@ -6322,19 +6322,19 @@
 								],
 								"rows": [
 									[
-										"2nd",
+										"{@filter 2nd|bestiary|cr=0;1/8;1/4|type=beast|speed=!fly;!swim}",
 										"1/4",
 										"No flying or swimming speed",
 										"Wolf"
 									],
 									[
-										"4th",
+										"{@filter 4th|bestiary|cr=0;1/8;1/4;1/2|type=beast|speed=!fly}",
 										"1/2",
 										"No flying speed",
 										"Crocodile"
 									],
 									[
-										"8th",
+										"{@filter 8th|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=null}",
 										"1",
 										"\u2014",
 										"Giant eagle"
@@ -6821,8 +6821,54 @@
 										"type": "entries",
 										"name": "Circle Forms",
 										"entries": [
-											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a beast with a challenge rating as high as 1 (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
-											"Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down."
+											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
+											"Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down.",
+											{
+												"type": "table",
+												"caption": "Circle of the Moon Beast Shapes",
+												"colLabels": [
+													"Level",
+													"Max. CR",
+													"Limitations"
+												],
+												"colStyles": [
+													"col-xs-2 text-align-center",
+													"col-xs-2 text-align-center",
+													"col-xs-8"
+												],
+												"rows": [
+													[
+														"{@filter 2nd|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim}",
+														"1",
+														"No flying or swimming speed"
+													],
+													[
+														"{@filter 6th|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly}",
+														"2",
+														"No flying speed"
+													],
+													[
+														"{@filter 9th|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast}",
+														"3",
+														"\u2014"
+													],
+													[
+														"{@filter 12th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast}",
+														"4",
+														"\u2014"
+													],
+													[
+														"{@filter 15th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast}",
+														"5",
+														"\u2014"
+													],
+													[
+														"{@filter 18th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast}",
+														"6",
+														"\u2014"
+													]
+												]
+											}
 										]
 									}
 								]
@@ -6848,7 +6894,7 @@
 										"type": "entries",
 										"name": "Elemental Wild Shape",
 										"entries": [
-											"At 10th level, you can expend two uses of Wild Shape at the same time to transform into an air elemental, an earth elemental, a fire elemental, or a water elemental."
+											"At 10th level, you can expend two uses of Wild Shape at the same time to transform into an {@creature air elemental}, an {@creature earth elemental}, a {@creature fire elemental}, or a {@creature water elemental}."
 										]
 									}
 								]
@@ -15341,7 +15387,7 @@
 										"type": "entries",
 										"name": "Ranger's Companion",
 										"entries": [
-											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
+											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
 											"The beast obeys your commands as best as it can. It takes its turn on your initiative, though it doesn't take an action unless you command it to. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, Dodge, or Help action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the Attack action.",
 											"If you are {@condition incapacitated} or absent, your beast companion acts on its own, focusing on protecting you and itself. It never requires your command to use its reaction, such as when making an opportunity attack.",
 											"Like any creature, the beast can spend hit dice during a short rest.",
@@ -16754,7 +16800,7 @@
 										"name": "Animal Companion",
 										"entries": [
 											"At 3rd level, you learn to use your magic to create a powerful bond with a creature of the natural world.",
-											"With 8 hours of work and the expenditure of 50 gp worth of rare herbs and fine food, you call forth an animal from the wilderness to serve as your faithful companion. You normally select you companion from among the following animals: an ape, a black bear, a boar, a giant badger, a giant weasel, a mule, a panther, or a wolf. However, your DM might pick one of these animals for you, based on the surrounding terrain and on what types of creatures would logically be present in the area.",
+											"With 8 hours of work and the expenditure of 50 gp worth of rare herbs and fine food, you call forth an animal from the wilderness to serve as your faithful companion. You normally select you companion from among the following animals: an {@creature ape}, a {@creature black bear}, a {@creature boar}, a {@creature giant badger}, a {@creature giant weasel}, a {@creature mule}, a {@creature panther}, or a {@creature wolf}. However, your DM might pick one of these animals for you, based on the surrounding terrain and on what types of creatures would logically be present in the area.",
 											"At the end of the 8 hours, your animal companion appears and gains all the benefits of your Companion's Bond ability. You can have only one animal companion at a time.",
 											"If your animal companion is ever slain, the magical bond you share allows you to return it to life. With 8 hours of work and the expenditure of 25 gp worth of rare herbs and fine food, you call forth your companion's spirit and use your magic to create a new body for it. You can return an animal companion to life in this manner even if you do not possess any part of its body.",
 											"If you use this ability to return a former animal companion to life while you have a current animal companion, your current companion leaves you and is replaced by the restored companion."
@@ -18674,7 +18720,7 @@
 										"type": "entries",
 										"name": "Ranger's Companion",
 										"entries": [
-											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
+											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
 											"The beast obeys your commands as best as it can. It takes its turn on your initiative, though it doesn't take an action unless you command it to. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, Dodge, or Help action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the Attack action.",
 											"If you are {@condition incapacitated} or absent, your beast companion acts on its own, focusing on protecting you and itself. It never requires your command to use its reaction, such as when making an opportunity attack.",
 											"Like any creature, the beast can spend hit dice during a short rest.",
@@ -24611,7 +24657,7 @@
 					{
 						"name": "Mystic Arcanum (6th level)",
 						"entries": [
-							"At 11th level, your patron bestows upon you a magical secret called an arcanum. Choose one 6th-level spell from the warlock spell list as this arcanum.",
+							"At 11th level, your patron bestows upon you a magical secret called an arcanum. Choose one {@filter 6th-level spell from the warlock spell list|spells|level=6|class=Warlock} as this arcanum.",
 							"You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again.",
 							"At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest."
 						]
@@ -24630,7 +24676,7 @@
 					{
 						"name": "Mystic Arcanum (7th level)",
 						"entries": [
-							"At 13th level, your patron bestows upon you a magical secret called an arcanum. Choose one 7th-level spell from the warlock spell list as this arcanum.",
+							"At 13th level, your patron bestows upon you a magical secret called an arcanum. Choose one {@filter 7th-level spell from the warlock spell list|spells|level=7|class=Warlock} as this arcanum.",
 							"You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again."
 						]
 					}
@@ -24648,7 +24694,7 @@
 					{
 						"name": "Mystic Arcanum (8th level)",
 						"entries": [
-							"At 15th level, your patron bestows upon you a magical secret called an arcanum. Choose one 8th-level spell from the warlock spell list as this arcanum.",
+							"At 15th level, your patron bestows upon you a magical secret called an arcanum. Choose one {@filter 8th-level spell from the warlock spell list|spells|level=8|class=Warlock} as this arcanum.",
 							"You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again."
 						]
 					}
@@ -24666,7 +24712,7 @@
 					{
 						"name": "Mystic Arcanum (9th level)",
 						"entries": [
-							"At 17th level, your patron bestows upon you a magical secret called an arcanum. Choose one 9th-level spell from the warlock spell list as this arcanum.",
+							"At 17th level, your patron bestows upon you a magical secret called an arcanum. Choose one {@filter 9th-level spell from the warlock spell list|spells|level=9|class=Warlock} as this arcanum.",
 							"You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again."
 						]
 					}
@@ -26495,7 +26541,8 @@
 												"entries": [
 													"When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it.",
 													"Copying a spell into your spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your spellbook using your own notation.",
-													"For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells."
+													"For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells.",
+													"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When you copy a spell from a spell scroll, you must succeed on an Intelligence (Arcana) check with a DC equal to 10 + the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 												]
 											}
 										]

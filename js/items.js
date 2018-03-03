@@ -22,9 +22,8 @@ function rarityValue (rarity) { // Ordered by most frequently occurring rarities
 }
 
 function sortItems (a, b, o) {
-	if (o.valueName === "name") {
-		return b._values.name.toLowerCase() > a._values.name.toLowerCase() ? 1 : -1;
-	} else if (o.valueName === "type") {
+	if (o.valueName === "name") return b._values.name.toLowerCase() > a._values.name.toLowerCase() ? 1 : -1;
+	else if (o.valueName === "type") {
 		if (b._values.type === a._values.type) return SortUtil.compareNames(a, b);
 		return b._values.type.toLowerCase() > a._values.type.toLowerCase() ? 1 : -1;
 	} else if (o.valueName === "source") {
@@ -33,6 +32,8 @@ function sortItems (a, b, o) {
 	} else if (o.valueName === "rarity") {
 		if (b._values.rarity === a._values.rarity) return SortUtil.compareNames(a, b);
 		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
+	} else if (o.valueName === "count") {
+		if (o.valueName === "count") return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
 	} else return 1;
 }
 
@@ -202,8 +203,9 @@ function populateTablesAndFilters () {
 	EntryRenderer.hover.bindPopoutButton(itemList);
 	const subList = ListUtil.initSublist(
 		{
-			valueNames: ["name", "weight", "price", "id"],
+			valueNames: ["name", "weight", "price", "count", "id"],
 			listClass: "subitems",
+			sortFunction: sortItems,
 			itemList: itemList,
 			getSublistRow: getSublistItem,
 			onUpdate: onSublistChange,

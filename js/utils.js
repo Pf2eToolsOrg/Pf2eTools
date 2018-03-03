@@ -57,6 +57,7 @@ STL_DISPLAY_INITIAL = "display: initial";
 STL_DISPLAY_NONE = "display: none";
 
 FLTR_ID = "filterId";
+FLTR_NONE = "null";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
@@ -383,6 +384,37 @@ Parser.getAbilityModifier = function (abilityScore) {
 	let modifier = Parser.getAbilityModNumber(abilityScore);
 	if (modifier >= 0) modifier = "+" + modifier;
 	return modifier;
+};
+
+Parser.getSpeedString = (it) => {
+	function procSpeed (propName) {
+		if (it.speed[propName]) stack.push(`${propName} ${getVal(it.speed[propName])}ft.${getCond(it.speed[propName])}`);
+	}
+
+	function getVal (speedProp) {
+		return speedProp.number || speedProp;
+	}
+
+	function getCond (speedProp) {
+		return speedProp.condition ? ` ${speedProp.condition}` : "";
+	}
+
+	const stack = [];
+	if (typeof it.speed === "object") {
+		let joiner = ", ";
+		if (it.speed.walk) stack.push(`${getVal(it.speed.walk)}ft.${getCond(it.speed.walk)}`);
+		procSpeed("burrow");
+		procSpeed("climb");
+		procSpeed("fly");
+		procSpeed("swim");
+		if (it.speed.choose) {
+			joiner = "; ";
+			stack.push(`${CollectionUtil.joinConjunct(it.speed.choose.from.sort(), ", ", ", or ")} ${it.speed.choose.amount} ft.${it.speed.choose.note ? ` ${it.speed.choose.note}` : ""}`);
+		}
+		return stack.join(joiner);
+	} else {
+		return it.speed + (it.speed === "Varies" ? "" : "ft. ");
+	}
 };
 
 Parser._addCommas = function (intNum) {
@@ -1798,7 +1830,7 @@ ListUtil = {
 		const itId = Number($invokedOn.attr(FLTR_ID));
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
-				EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
+				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
 				ListUtil.doSublistAdd(itId, true);
@@ -1933,6 +1965,7 @@ UrlUtil.unpackSubHash = function (subHash, unencode) {
 		let v = keyValArr[1].toLowerCase();
 		if (unencode) v = decodeURIComponent(v);
 		out[k] = v.split(HASH_SUB_LIST_SEP).map(s => s.trim());
+		if (out[k].length === 1 && out[k] === FLTR_NONE) out[k] = [];
 		return out;
 	} else {
 		throw new Error(`Baldy formatted subhash ${subHash}`)
