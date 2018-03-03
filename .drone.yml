@@ -27,7 +27,7 @@ clone:
 pipeline:
 ###############################################################################
 # All Branches
-# Push || Pull request -> Test -> Notify || Shame
+# Push || Pull request -> Test -> Notify
   Test:
       <<: *buildstep-node
       commands:
@@ -54,14 +54,6 @@ pipeline:
       when:
         status: success
         event: [ push, pull_request ]
-
-  Shame:
-    <<: *buildstep-ssh
-    script:
-      - python /scripts/shame.py
-    when:
-       status: failure
-       event: [ push, pull_request ]
 
 ###############################################################################
 # Master Branch
@@ -97,7 +89,7 @@ pipeline:
 
 ###############################################################################
 # All Branches
-# ... -> Notify
+# ... -> Notify || Shame
   Notify:
       <<: *buildstep-discord
       message: >
@@ -107,3 +99,11 @@ pipeline:
       when:
         status:  [ failure, success ]
         event: push
+
+  Shame:
+    <<: *buildstep-ssh
+    script:
+      - python /scripts/shame.py
+    when:
+       status: failure
+       event: [ push, pull_request ]
