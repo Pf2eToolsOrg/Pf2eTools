@@ -6322,19 +6322,19 @@
 								],
 								"rows": [
 									[
-										"{@filter 2nd|bestiary|cr=0;1/8;1/4|type=beast|speed=!fly;!swim}",
+										"{@filter 2nd|bestiary|cr=0;1/8;1/4|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
 										"1/4",
 										"No flying or swimming speed",
 										"Wolf"
 									],
 									[
-										"{@filter 4th|bestiary|cr=0;1/8;1/4;1/2|type=beast|speed=!fly}",
+										"{@filter 4th|bestiary|cr=0;1/8;1/4;1/2|type=beast|speed=!fly|miscellaneous=!swarm}",
 										"1/2",
 										"No flying speed",
 										"Crocodile"
 									],
 									[
-										"{@filter 8th|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=null}",
+										"{@filter 8th|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=null|miscellaneous=!swarm}",
 										"1",
 										"\u2014",
 										"Giant eagle"
@@ -6821,7 +6821,7 @@
 										"type": "entries",
 										"name": "Circle Forms",
 										"entries": [
-											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
+											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
 											"Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down.",
 											{
 												"type": "table",
@@ -6838,32 +6838,32 @@
 												],
 												"rows": [
 													[
-														"{@filter 2nd|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim}",
+														"{@filter 2nd|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
 														"1",
 														"No flying or swimming speed"
 													],
 													[
-														"{@filter 6th|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly}",
+														"{@filter 6th|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly|miscellaneous=!swarm}",
 														"2",
 														"No flying speed"
 													],
 													[
-														"{@filter 9th|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast}",
+														"{@filter 9th|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
 														"3",
 														"\u2014"
 													],
 													[
-														"{@filter 12th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast}",
+														"{@filter 12th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast|miscellaneous=!swarm}",
 														"4",
 														"\u2014"
 													],
 													[
-														"{@filter 15th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast}",
+														"{@filter 15th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast|miscellaneous=!swarm}",
 														"5",
 														"\u2014"
 													],
 													[
-														"{@filter 18th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast}",
+														"{@filter 18th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast|miscellaneous=!swarm}",
 														"6",
 														"\u2014"
 													]
@@ -15387,7 +15387,7 @@
 										"type": "entries",
 										"name": "Ranger's Companion",
 										"entries": [
-											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
+											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m|miscellaneous=!swarm}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
 											"The beast obeys your commands as best as it can. It takes its turn on your initiative, though it doesn't take an action unless you command it to. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, Dodge, or Help action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the Attack action.",
 											"If you are {@condition incapacitated} or absent, your beast companion acts on its own, focusing on protecting you and itself. It never requires your command to use its reaction, such as when making an opportunity attack.",
 											"Like any creature, the beast can spend hit dice during a short rest.",
@@ -18720,7 +18720,7 @@
 										"type": "entries",
 										"name": "Ranger's Companion",
 										"entries": [
-											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
+											"You gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a {@filter beast that is no larger than Medium and that has a challenge rating of 1/4 or lower|bestiary|cr=0;1/8;1/4|type=beast|size=f;d;t;s;m|miscellaneous=!swarm}. Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher.",
 											"The beast obeys your commands as best as it can. It takes its turn on your initiative, though it doesn't take an action unless you command it to. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, Dodge, or Help action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the Attack action.",
 											"If you are {@condition incapacitated} or absent, your beast companion acts on its own, focusing on protecting you and itself. It never requires your command to use its reaction, such as when making an opportunity attack.",
 											"Like any creature, the beast can spend hit dice during a short rest.",
@@ -27874,7 +27874,7 @@
 										"type": "entries",
 										"name": "Shapechanger",
 										"entries": [
-											"At 10th level, you add the {@spell polymorph} spell to your spellbook, if it is not there already. You can cast {@spell polymorph} without expending a spell slot. When you do so, you can target only yourself and transform into a {@filter beast whose challenge rating is 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast}.",
+											"At 10th level, you add the {@spell polymorph} spell to your spellbook, if it is not there already. You can cast {@spell polymorph} without expending a spell slot. When you do so, you can target only yourself and transform into a {@filter beast whose challenge rating is 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|miscellaneous=!swarm}.",
 											"Once you cast {@spell polymorph} in this way, you can't do so again until you finish a short or long rest, though you can still cast it normally using an available spell slot."
 										]
 									}
