@@ -605,7 +605,10 @@ function EntryRenderer () {
 								break;
 							case "@class": {
 								if (others.length) {
-									fauxEntry.href.subhashes = [{"key": "sub", "value": others[0].trim() + "~phb"}] // TODO pass this in
+									fauxEntry.href.subhashes = [{"key": "sub", "value": others[0].trim() + "~phb"}]; // TODO pass this in
+									if (others.length === 2) {
+										fauxEntry.href.subhashes.push({key: "f", value: others[1].trim()})
+									}
 								}
 								fauxEntry.href.path = "classes.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
