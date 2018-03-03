@@ -2393,6 +2393,7 @@ BrewUtil = {
 					const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
 					json[prop].forEach(it => {
 						if (!existingIds.find(id => it.uniqueId === id)) {
+							it.source = SRC_HOMEBREW;
 							BrewUtil.homebrew[prop].push(it);
 							areNew.push(it);
 						}
