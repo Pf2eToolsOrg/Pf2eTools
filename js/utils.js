@@ -57,6 +57,7 @@ STL_DISPLAY_INITIAL = "display: initial";
 STL_DISPLAY_NONE = "display: none";
 
 FLTR_ID = "filterId";
+FLTR_NONE = "null";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
@@ -1964,6 +1965,7 @@ UrlUtil.unpackSubHash = function (subHash, unencode) {
 		let v = keyValArr[1].toLowerCase();
 		if (unencode) v = decodeURIComponent(v);
 		out[k] = v.split(HASH_SUB_LIST_SEP).map(s => s.trim());
+		if (out[k].length === 1 && out[k] === FLTR_NONE) out[k] = [];
 		return out;
 	} else {
 		throw new Error(`Baldy formatted subhash ${subHash}`)

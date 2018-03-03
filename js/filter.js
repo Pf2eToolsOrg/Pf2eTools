@@ -430,9 +430,13 @@ class FilterBox {
 				$grid.data(
 					"setValues",
 					function (toVal) {
+						const toNo = toVal.filter(it => it[0] === "!").map(it => it.slice(1));
+						const toYes = toVal.filter(it => it[0] !== "!");
 						$pills.forEach((p) => {
-							if (toVal.includes(p.val().toLowerCase())) {
+							if (toYes.includes(p.val().toLowerCase())) {
 								$(p).data("setter")(FilterBox._PILL_STATES[1])
+							} else if (toNo.includes(p.val().toLowerCase())) {
+								$(p).data("setter")(FilterBox._PILL_STATES[2])
 							} else {
 								$(p).data("setter")(FilterBox._PILL_STATES[0])
 							}
