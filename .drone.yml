@@ -58,10 +58,18 @@ pipeline:
 ###############################################################################
 # Master Branch
 # ... -> Merge -> Version Check -> Deploy
-  Version:
+  Check-version:
     <<: *buildstep-ssh
     script:
       - cd /scripts/ && python /scripts/chk-version.py
+    when:
+      branch: master
+      event: [ push, pull_request ]
+
+  Update-version:
+    <<: *buildstep-ssh
+    script:
+      - cd /scripts/ && python /scripts/upd-version.py
     when:
       branch: master
       event: push
