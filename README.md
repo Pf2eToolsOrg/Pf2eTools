@@ -61,6 +61,12 @@ Replace: $1$3
 - Nouns: a space and the short name of the unit of measure (including the trailing period) should be used, e.g. blindsight 60 ft., darkvision 120 ft.
 - Time: a slash, /, with no spaces on either side followed by the capitalised unit of time, e.g. 2/Turn, 3/Day
 
+### Dev Server
+
+Do `npm run dev-server` to launch a local dev server that serves the project files on [`http://localhost:8080/5etools.html`](http://localhost:8080/5etools.html).
+
+The server automatically refreshes the page for you whenever one of the project files (html, css, js, images) changes.
+
 ### Version bump
 
 Do `npm run version-bump -- [OPTION]`, where `[OPTION]` is one of the following:
