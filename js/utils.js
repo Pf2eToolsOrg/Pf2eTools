@@ -1830,7 +1830,7 @@ ListUtil = {
 		const itId = Number($invokedOn.attr(FLTR_ID));
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
-				EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
+				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
 				ListUtil.doSublistAdd(itId, true);
