@@ -400,12 +400,17 @@ Parser.getSpeedString = (it) => {
 
 	const stack = [];
 	if (typeof it.speed === "object") {
+		let joiner = ", ";
 		if (it.speed.walk) stack.push(`${getVal(it.speed.walk)}ft.${getCond(it.speed.walk)}`);
 		procSpeed("burrow");
 		procSpeed("climb");
 		procSpeed("fly");
 		procSpeed("swim");
-		return stack.join(", ");
+		if (it.speed.choose) {
+			joiner = "; ";
+			stack.push(`${CollectionUtil.joinConjunct(it.speed.choose.from.sort(), ", ", ", or ")} ${it.speed.choose.amount} ft.${it.speed.choose.note ? ` ${it.speed.choose.note}` : ""}`);
+		}
+		return stack.join(joiner);
 	} else {
 		return it.speed + (it.speed === "Varies" ? "" : "ft. ");
 	}

@@ -90,6 +90,26 @@
 				}
 			},
 			"additionalProperties": false
+		},
+		"speedVal": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"number": {
+							"type": "integer"
+						},
+						"condition": {
+							"type": "string"
+						}
+					},
+					"required": ["number", "condition"],
+					"additionalProperties": false
+				},
+				{
+					"type": "integer"
+				}
+			]
 		}
 	},
 	"properties": {
@@ -211,7 +231,51 @@
 						"type": "string"
 					},
 					"speed": {
-						"type": "string"
+						"type": "object",
+						"properties": {
+							"walk": {
+								"$ref": "#/definitions/speedVal"
+							},
+							"burrow": {
+								"$ref": "#/definitions/speedVal"
+							},
+							"climb": {
+								"$ref": "#/definitions/speedVal"
+							},
+							"fly": {
+								"$ref": "#/definitions/speedVal"
+							},
+							"swim": {
+								"$ref": "#/definitions/speedVal"
+							},
+							"choose": {
+								"type": "object",
+								"properties": {
+									"from": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"enum": [
+												"walk",
+												"burrow",
+												"climb",
+												"fly",
+												"swim"
+											]
+										}
+									},
+									"amount": {
+										"type": "integer"
+									},
+									"note": {
+										"type": "string"
+									}
+								},
+								"required": ["amount", "from"],
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false
 					},
 					"str": {
 						"type": "integer"
