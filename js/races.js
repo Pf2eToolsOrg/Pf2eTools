@@ -277,7 +277,7 @@ function loadhash (id) {
 	const ability = race.ability ? utils_getAbilityData(race.ability) : {asText: "None"};
 	$pgContent.find("td#ability span").html(ability.asText);
 
-	$pgContent.find("td#speed span").html(EntryRenderer.race.getSpeedString(race));
+	$pgContent.find("td#speed span").html(Parser.getSpeedString(race));
 
 	const renderStack = [];
 	renderStack.push("<tr class='text'><td colspan='6'>");

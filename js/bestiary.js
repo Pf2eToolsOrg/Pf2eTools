@@ -67,6 +67,7 @@ const sizeFilter = new Filter({
 	],
 	displayFn: Parser.sizeAbvToFull
 });
+const speedFilter = new Filter({header: "Speed", items: ["walk", "burrow", "climb", "fly", "swim"], displayFn: StrUtil.uppercaseFirst});
 const typeFilter = new Filter({
 	header: "Type",
 	items: [
@@ -94,6 +95,7 @@ const filterBox = initFilterBox(
 	sourceFilter,
 	crFilter,
 	sizeFilter,
+	speedFilter,
 	typeFilter,
 	tagFilter,
 	miscFilter
@@ -178,6 +180,7 @@ function handleFilterChange () {
 			m.source,
 			m._pCr,
 			m.size,
+			m._fSpeed,
 			m._pTypes.type,
 			m._pTypes.tags,
 			m._fMisc
@@ -198,6 +201,7 @@ function addMonsters (data) {
 		const mon = monsters[mI];
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
+		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
@@ -415,7 +419,7 @@ function loadhash (id) {
 
 	$content.find("td span#hp").html(mon.hp);
 
-	$content.find("td span#speed").html(mon.speed);
+	$content.find("td span#speed").html(Parser.getSpeedString(mon));
 
 	$content.find("td#str span.score").html(mon.str);
 	$content.find("td#str span.mod").html(Parser.getAbilityModifier(mon.str));

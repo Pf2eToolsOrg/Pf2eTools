@@ -1194,7 +1194,7 @@ EntryRenderer.race = {
 					<tr>
 						<td class="text-align-center">${ability.asText}</td>
 						<td class="text-align-center">${Parser.sizeAbvToFull(race.size)}</td>
-						<td class="text-align-center">${EntryRenderer.race.getSpeedString(race)}</td>
+						<td class="text-align-center">${Parser.getSpeedString(race)}</td>
 					</tr>
 				</table>
 			</td></tr>
@@ -1204,19 +1204,6 @@ EntryRenderer.race = {
 		renderStack.push("</td></tr>");
 
 		return renderStack.join("");
-	},
-
-	getSpeedString: (race) => {
-		let speed;
-		if (race.speed.walk) {
-			speed = race.speed.walk + "ft.";
-			if (race.speed.climb) speed += `, climb ${race.speed.climb}ft.`;
-			if (race.speed.fly) speed += `, fly ${race.speed.fly}ft.`;
-			if (race.speed.swim) speed += `, swim ${race.speed.swim}ft.`;
-		} else {
-			speed = race.speed + (race.speed === "Varies" ? "" : "ft. ");
-		}
-		return speed;
 	},
 
 	mergeSubraces: (races) => {

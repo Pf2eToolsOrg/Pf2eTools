@@ -385,6 +385,32 @@ Parser.getAbilityModifier = function (abilityScore) {
 	return modifier;
 };
 
+Parser.getSpeedString = (it) => {
+	function procSpeed (propName) {
+		if (it.speed[propName]) stack.push(`${propName} ${getVal(it.speed[propName])}ft.${getCond(it.speed[propName])}`);
+	}
+
+	function getVal (speedProp) {
+		return speedProp.number || speedProp;
+	}
+
+	function getCond (speedProp) {
+		return speedProp.condition ? ` ${speedProp.condition}` : "";
+	}
+
+	const stack = [];
+	if (typeof it.speed === "object") {
+		if (it.speed.walk) stack.push(`${getVal(it.speed.walk)}ft.${getCond(it.speed.walk)}`);
+		procSpeed("burrow");
+		procSpeed("climb");
+		procSpeed("fly");
+		procSpeed("swim");
+		return stack.join(", ");
+	} else {
+		return it.speed + (it.speed === "Varies" ? "" : "ft. ");
+	}
+};
+
 Parser._addCommas = function (intNum) {
 	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
