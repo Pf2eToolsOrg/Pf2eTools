@@ -6322,19 +6322,19 @@
 								],
 								"rows": [
 									[
-										"2nd",
+										"{@filter 2nd|bestiary|cr=0;1/8;1/4|type=beast|speed=!fly;!swim}",
 										"1/4",
 										"No flying or swimming speed",
 										"Wolf"
 									],
 									[
-										"4th",
+										"{@filter 4th|bestiary|cr=0;1/8;1/4;1/2|type=beast|speed=!fly}",
 										"1/2",
 										"No flying speed",
 										"Crocodile"
 									],
 									[
-										"8th",
+										"{@filter 8th|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=null}",
 										"1",
 										"\u2014",
 										"Giant eagle"
@@ -6821,8 +6821,54 @@
 										"type": "entries",
 										"name": "Circle Forms",
 										"entries": [
-											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a beast with a challenge rating as high as 1 (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
-											"Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down."
+											"The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a {@filter beast with a challenge rating as high as 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim} (you ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there).",
+											"Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down.",
+											{
+												"type": "table",
+												"caption": "Circle of the Moon Beast Shapes",
+												"colLabels": [
+													"Level",
+													"Max. CR",
+													"Limitations"
+												],
+												"colStyles": [
+													"col-xs-2 text-align-center",
+													"col-xs-2 text-align-center",
+													"col-xs-8"
+												],
+												"rows": [
+													[
+														"{@filter 2nd|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim}",
+														"1",
+														"No flying or swimming speed"
+													],
+													[
+														"{@filter 6th|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly}",
+														"2",
+														"No flying speed"
+													],
+													[
+														"{@filter 9th|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast}",
+														"3",
+														"\u2014"
+													],
+													[
+														"{@filter 12th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast}",
+														"4",
+														"\u2014"
+													],
+													[
+														"{@filter 15th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast}",
+														"5",
+														"\u2014"
+													],
+													[
+														"{@filter 18th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast}",
+														"6",
+														"\u2014"
+													]
+												]
+											}
 										]
 									}
 								]
@@ -6848,7 +6894,7 @@
 										"type": "entries",
 										"name": "Elemental Wild Shape",
 										"entries": [
-											"At 10th level, you can expend two uses of Wild Shape at the same time to transform into an air elemental, an earth elemental, a fire elemental, or a water elemental."
+											"At 10th level, you can expend two uses of Wild Shape at the same time to transform into an {@creature air elemental}, an {@creature earth elemental}, a {@creature fire elemental}, or a {@creature water elemental}."
 										]
 									}
 								]
