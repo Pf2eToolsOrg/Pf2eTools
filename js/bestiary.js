@@ -89,7 +89,7 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
-const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary"], displayFn: StrUtil.uppercaseFirst});
+const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary", "Swarm"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
 	sourceFilter,
@@ -220,6 +220,7 @@ function addMonsters (data) {
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");
+		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 	}
 	let lastSearch = null;
 	if (list.searched) {
