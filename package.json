@@ -5,7 +5,10 @@
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
-		"test": "eslint js node test && stylelint scss/style.scss && node test/alltests.js",
+		"test:js": "eslint js node test",
+		"test:styles": "stylelint scss/style.scss",
+		"test:data": "node test/alltests.js",
+		"test": "npm run test:js && npm run test:styles && npm run test:data",
 		"gen-index": "node node/generate-search-index.js",
 		"version-bump": "npm version -m \"chore(version): bump\"",
 		"uglifyjs": "uglifyjs",
