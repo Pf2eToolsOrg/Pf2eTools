@@ -304,6 +304,7 @@ function loadhash (id) {
 		$content.append($tr);
 		const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
 		$content.append(EntryRenderer.utils.getBorderTr());
+		renderer.setFirstSection(true);
 		if (ixFluff[mon.source]) {
 			DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
 				const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
