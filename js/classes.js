@@ -64,7 +64,6 @@ function cleanSetHash (toSet) {
 const sourceFilter = getSourceFilter();
 const filterBox = initFilterBox(sourceFilter);
 function onJsonLoad (data) {
-
 	list = ListUtil.search({
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
