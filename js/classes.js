@@ -61,8 +61,10 @@ function cleanScSource (source) {
 function cleanSetHash (toSet) {
 	window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
 }
-
+const sourceFilter = getSourceFilter();
+const filterBox = initFilterBox(sourceFilter);
 function onJsonLoad (data) {
+
 	list = ListUtil.search({
 		valueNames: ['name', 'source', 'uniqueid'],
 		listClass: "classes"
@@ -104,9 +106,26 @@ function onJsonLoad (data) {
 		addSubclassData(homebrew);
 	}
 
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
 	initHistory();
 	initCompareMode();
 	initReaderMode();
+}
+
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	list.filter(function (item) {
+		const c = classes[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			c.source
+		);
+	});
 }
 
 function addClassData (data) {
@@ -133,25 +152,39 @@ function addClassData (data) {
 	for (; i < classes.length; i++) {
 		const curClass = classes[i];
 		tempString +=
-			`<li ${curClass.uniqueId ? `data-unique-id="${curClass.uniqueId}"` : ""}>
+			`<li class="row" ${FLTR_ID}="${i}" ${curClass.uniqueId ? `data-unique-id="${curClass.uniqueId}"` : ""}>
 				<a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'>
 					<span class='name col-xs-8'>${curClass.name}</span>
 					<span class='source col-xs-4 text-align-center source${Parser.sourceJsonToAbv(curClass.source)}' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span>
 					<span class="uniqueid hidden">${curClass.uniqueId ? curClass.uniqueId : i}</span>
 				</a>
 			</li>`;
+
+		sourceFilter.addIfAbsent(curClass.source);
 	}
 	classTable.append(tempString);
 	list.reIndex();
 	list.sort("name");
+
+	filterBox.render();
+	handleFilterChange();
 }
 
 function getSubclassStyles (sc) {
 	const styleClasses = [CLSS_SUBCLASS_FEATURE];
-	const nonStandard = isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source);
+	const nonStandard = subclassIsNonstandardSource(sc) || hasBeenReprinted(sc.shortName, sc.source);
 	if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 	if (cleanScSource(sc.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 	return styleClasses;
+}
+
+function subclassIsNonstandardSource (sc) {
+	// only tag reprinted UA
+	if (isNonstandardSource(sc.source)) {
+		const nonUa = curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\(UA\)/, "").trim() === pub.name);
+		if (nonUa) return true;
+	}
+	return false;
 }
 
 function addSubclassData (data) {
@@ -342,7 +375,7 @@ function loadhash (id) {
 			return SortUtil.ascSort(a.shortName, b.shortName)
 		});
 	for (let i = 0; i < subClasses.length; i++) {
-		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
+		const nonStandardSource = subclassIsNonstandardSource(subClasses[i]) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 		if (cleanScSource(subClasses[i].source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
