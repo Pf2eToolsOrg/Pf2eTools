@@ -1444,6 +1444,14 @@ if (typeof window !== "undefined") {
 	});
 }
 
+function copyText (text) {
+	const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
+	$(`body`).append($temp);
+	$temp.select();
+	document.execCommand("Copy");
+	$temp.remove();
+}
+
 // LIST AND SEARCH =====================================================================================================
 ListUtil = {
 	_first: true,
@@ -2046,7 +2054,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
 
 UrlUtil.bindLinkExportButton = (filterBox) => {
-	$(`#btn-link-export`)
+	const $btn = $(`#btn-link-export`);
+	$btn.addClass("btn-copy-effect")
 		.off("click")
 		.on("click", () => {
 			let url = window.location.href;
@@ -2058,10 +2067,20 @@ UrlUtil.bindLinkExportButton = (filterBox) => {
 			});
 			parts.unshift(url);
 
-			// TODO better copying mechanism
-			window.prompt("Copy to clipboard: Ctrl+C, Enter", parts.join(HASH_PART_SEP));
+			copyText(parts.join(HASH_PART_SEP));
+			const $temp = $(`<div class="copied-tip"><span>Copied!</span></div>`);
+			const pos = $btn.offset();
+			$temp.css({
+				top: pos.top - 17,
+				left: pos.left - 36 + ($btn.width() / 2)
+			}).appendTo($(`body`)).animate({
+				top: "-=8",
+				opacity: 0
+			}, 250, () => {
+				$temp.remove();
+			});
 		})
-		.attr("title", "Share Link (Including Filters)");
+		.attr("title", "Get Link (Including Filters)")
 };
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
