@@ -78,8 +78,6 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
-	EntryRenderer.hover.bindPopoutButton(rewardList);
-	UrlUtil.bindLinkExportButton(filterBox);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "id"],
@@ -89,6 +87,8 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(rewardList);
+	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }

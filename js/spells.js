@@ -477,14 +477,14 @@ function addSpells (data) {
 	list.sort("name");
 
 	filterBox.render();
-	EntryRenderer.hover.bindPopoutButton(spellList);
-	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.setOptions({
 		itemList: spellList,
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(spellList);
+	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.loadState();
 }
 

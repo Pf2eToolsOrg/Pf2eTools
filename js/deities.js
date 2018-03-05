@@ -143,8 +143,6 @@ function onJsonLoad (data) {
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	addListShowHide();
-	EntryRenderer.hover.bindPopoutButton(deitiesList);
-	UrlUtil.bindLinkExportButton(filterBox);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "pantheon", "alignment", "domains", "id"],
@@ -154,6 +152,8 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(deitiesList);
+	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }

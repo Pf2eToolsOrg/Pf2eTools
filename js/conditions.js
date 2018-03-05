@@ -31,7 +31,6 @@ function onJsonLoad (data) {
 	});
 
 	initHistory();
-	EntryRenderer.hover.bindPopoutButton(conditionList);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "id"],
@@ -41,6 +40,7 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(conditionList);
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }

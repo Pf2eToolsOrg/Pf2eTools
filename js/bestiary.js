@@ -243,14 +243,14 @@ function addMonsters (data) {
 	list.sort("name");
 
 	filterBox.render();
-	EntryRenderer.hover.bindPopoutButton(monsters);
-	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.setOptions({
 		itemList: monsters,
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
 	});
 	ListUtil.loadState();
+	EntryRenderer.hover.bindPopoutButton(monsters);
+	UrlUtil.bindLinkExportButton(filterBox);
 }
 
 function getSublistItem (mon, pinId, addCount) {

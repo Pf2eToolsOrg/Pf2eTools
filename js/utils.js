@@ -1639,8 +1639,16 @@ ListUtil = {
 		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists;
 	},
 
+	getOrTabRightButton: (id, icon) => {
+		let $btn = $(`#${id}`);
+		if (!$btn.length) {
+			$btn = $(`<span class="stat-tab btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></span>`).appendTo($(`#tabs-right`));
+		}
+		return $btn;
+	},
+
 	bindPinButton: () => {
-		$(`#btn-pin`)
+		ListUtil.getOrTabRightButton(`btn-pin`, `pushpin`)
 			.off("click")
 			.on("click", () => {
 				if (!ListUtil.isSublisted(lastLoadedId)) ListUtil.doSublistAdd(lastLoadedId, true);
@@ -1650,7 +1658,7 @@ ListUtil = {
 	},
 
 	bindAddButton: () => {
-		$(`#btn-sublist-add`)
+		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
 			.on("click", (evt) => {
 				if (evt.shiftKey) ListUtil.doSublistAdd(lastLoadedId, true, 20);
@@ -1660,7 +1668,7 @@ ListUtil = {
 	},
 
 	bindSubtractButton: () => {
-		$(`#btn-sublist-subtract`)
+		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
 			.on("click", (evt) => {
 				if (evt.shiftKey) ListUtil.doSublistSubtract(lastLoadedId, 20);
@@ -2054,7 +2062,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
 
 UrlUtil.bindLinkExportButton = (filterBox) => {
-	const $btn = $(`#btn-link-export`);
+	const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
 	$btn.addClass("btn-copy-effect")
 		.off("click")
 		.on("click", () => {

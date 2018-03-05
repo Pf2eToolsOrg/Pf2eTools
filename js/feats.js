@@ -98,8 +98,6 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
-	EntryRenderer.hover.bindPopoutButton(featlist);
-	UrlUtil.bindLinkExportButton(filterBox);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "ability", "prerequisite", "id"],
@@ -109,6 +107,8 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(featlist);
+	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }

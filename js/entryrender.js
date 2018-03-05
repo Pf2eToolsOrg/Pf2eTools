@@ -2280,7 +2280,7 @@ EntryRenderer.hover = {
 	},
 
 	bindPopoutButton: (toList) => {
-		const $btnPop = $(`#btn-popout`)
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`)
 			.off("click")
 			.attr("title", "Popout Window");
 		$btnPop.on("click", (evt) => {

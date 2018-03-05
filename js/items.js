@@ -204,8 +204,6 @@ function populateTablesAndFilters () {
 	initHistory();
 	handleFilterChange();
 
-	EntryRenderer.hover.bindPopoutButton(itemList);
-	UrlUtil.bindLinkExportButton(filterBox);
 	const subList = ListUtil.initSublist(
 		{
 			valueNames: ["name", "weight", "price", "count", "id"],
@@ -219,6 +217,8 @@ function populateTablesAndFilters () {
 	);
 	ListUtil.bindAddButton();
 	ListUtil.bindSubtractButton();
+	EntryRenderer.hover.bindPopoutButton(itemList);
+	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.initGenericAddable();
 	ListUtil.loadState();
 }
