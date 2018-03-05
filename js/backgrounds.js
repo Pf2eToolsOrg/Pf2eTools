@@ -39,6 +39,9 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source'],
 		listClass: "backgrounds"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 

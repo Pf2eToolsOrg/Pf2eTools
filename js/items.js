@@ -130,8 +130,13 @@ function populateTablesAndFilters () {
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);
-	mundanelist.on("searchComplete", function () { hideListIfEmpty(mundanelist, mundaneWrapper) });
-	magiclist.on("searchComplete", function () { hideListIfEmpty(magiclist, magicWrapper) });
+	mundanelist.on("updated", () => {
+		hideListIfEmpty(mundanelist, mundaneWrapper);
+	});
+	magiclist.on("updated", () => {
+		hideListIfEmpty(magiclist, magicWrapper);
+		filterBox.setCount(mundanelist.visibleItems.length + magiclist.visibleItems.length, mundanelist.items.length + magiclist.items.length);
+	});
 
 	filterBox.render();
 
@@ -159,9 +164,6 @@ function populateTablesAndFilters () {
 		}
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);
-
-		hideListIfEmpty(mundanelist, mundaneWrapper);
-		hideListIfEmpty(magiclist, magicWrapper);
 	}
 
 	function hideListIfEmpty (list, $eles) {

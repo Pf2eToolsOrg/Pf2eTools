@@ -105,6 +105,9 @@ function onJsonLoad (data) {
 		listClass: CLS_INVOCATION,
 		sortFunction: listSortInvocations
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 

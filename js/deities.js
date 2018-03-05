@@ -111,6 +111,9 @@ function onJsonLoad (data) {
 		listClass: "deities",
 		sortFunction: SortUtil.listSort
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 

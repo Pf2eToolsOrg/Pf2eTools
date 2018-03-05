@@ -138,6 +138,9 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
 		listClass: "races"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 

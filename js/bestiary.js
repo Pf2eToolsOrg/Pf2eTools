@@ -111,6 +111,9 @@ function pageInit (loadedSources) {
 		valueNames: ["name", "source", "type", "cr"],
 		listClass: "monsters"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	// filtering function
 	$(filterBox).on(

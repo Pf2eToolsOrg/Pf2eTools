@@ -97,6 +97,9 @@ function onJsonLoad (data) {
 		listClass: CLS_PSIONICS,
 		sortFunction: SortUtil.listSort
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 

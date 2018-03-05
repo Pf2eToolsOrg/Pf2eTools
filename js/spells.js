@@ -316,6 +316,9 @@ function pageInit (loadedSources) {
 		valueNames: ["name", "source", "level", "time", "school", "range", "classes", "uniqueid"],
 		listClass: "spells"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	// filtering function
 	$(filterBox).on(

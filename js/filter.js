@@ -65,6 +65,7 @@ class FilterBox {
 		this.$rendered = [];
 		this.dropdownVisible = false;
 		this.modeAndOr = "AND";
+		this.$txtCount = $(`<span style="margin-left: auto"/>`);
 	}
 
 	/**
@@ -84,10 +85,10 @@ class FilterBox {
 		const $inputGroup = $(this.inputGroup);
 
 		const $outer = makeOuterList();
+		const self = this;
+		const $hdrLine = $(`<li class="filter-item"/>`);
+		const $hdrLineInner = $(`<div class="h-wrap"/>`).appendTo($hdrLine);
 		if (this.filterList.length > 1) {
-			const self = this;
-			const $hdrAndOr = $(`<li class="filter-item"/>`);
-			const $innHdr = $(`<div class="h-wrap">Combine filters as... </div>`);
 			const $btnAndOr = $(`<button class="btn btn-default btn-xs" style="width: 3em;">${this.modeAndOr}</button>`)
 				.data("andor", this.modeAndOr)
 				.on(EVNT_CLICK, () => {
@@ -96,9 +97,10 @@ class FilterBox {
 					$btnAndOr.text(nxt);
 					$btnAndOr.data("andor", nxt);
 				});
-			$hdrAndOr.append($innHdr.append(`<div style="display: inline-block; width: 10px;"/>`).append($btnAndOr));
-			$outer.append($hdrAndOr).append(makeDivider());
+			$hdrLineInner.append(`Combine filters as... `).append(`<div style="display: inline-block; width: 10px;"/>`).append($btnAndOr);
 		}
+		$hdrLineInner.append(this.$txtCount);
+		$outer.append($hdrLine).append(makeDivider());
 		for (let i = 0; i < this.filterList.length; ++i) {
 			$outer.append(makeOuterItem(this, this.filterList[i], this.$miniView));
 			if (i < this.filterList.length - 1) $outer.append(makeDivider());
@@ -595,6 +597,10 @@ class FilterBox {
 			return f.isMulti ? f.toDisplay(curr, ...vals[i]) : f.toDisplay(curr, vals[i])
 		});
 		return this.modeAndOr === "AND" ? res.every(it => it) : res.find(it => it);
+	}
+
+	setCount (count, maxCount) {
+		this.$txtCount.html(`Showing ${count}/${maxCount}`);
 	}
 
 	/**
