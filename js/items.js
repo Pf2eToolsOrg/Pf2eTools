@@ -132,6 +132,7 @@ function populateTablesAndFilters () {
 	const magicWrapper = $(`.ele-magic`);
 	mundanelist.on("updated", () => {
 		hideListIfEmpty(mundanelist, mundaneWrapper);
+		filterBox.setCount(mundanelist.visibleItems.length + magiclist.visibleItems.length, mundanelist.items.length + magiclist.items.length);
 	});
 	magiclist.on("updated", () => {
 		hideListIfEmpty(magiclist, magicWrapper);
