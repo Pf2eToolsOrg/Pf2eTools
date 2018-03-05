@@ -138,6 +138,9 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
 		listClass: "races"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 
@@ -165,7 +168,6 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
-	EntryRenderer.hover.bindPopoutButton(raceList);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "ability", "size", "id"],
@@ -175,6 +177,10 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(raceList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }

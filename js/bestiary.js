@@ -111,6 +111,9 @@ function pageInit (loadedSources) {
 		valueNames: ["name", "source", "type", "cr"],
 		listClass: "monsters"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	// filtering function
 	$(filterBox).on(
@@ -240,11 +243,27 @@ function addMonsters (data) {
 	list.sort("name");
 
 	filterBox.render();
-	EntryRenderer.hover.bindPopoutButton(monsters);
 	ListUtil.setOptions({
 		itemList: monsters,
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
+	});
+	EntryRenderer.hover.bindPopoutButton(monsters);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton((json, funcOnload) => {
+		const loaded = Object.keys(loadedSources).filter(it => loadedSources[it].loaded);
+		const toLoad = json.sources.filter(it => !loaded.includes(it));
+		const loadTotal = toLoad.length;
+		let loadCount = 0;
+		toLoad.forEach(src => {
+			loadSource(JSON_LIST_NAME, (monsters) => {
+				addMonsters(monsters);
+				if (++loadCount === loadTotal) {
+					funcOnload();
+				}
+			})(src, "yes");
+		});
 	});
 	ListUtil.loadState();
 }

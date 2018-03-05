@@ -9,6 +9,7 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
+let filterBox;
 function onJsonLoad (data) {
 	tableDefault = $("#pagecontent").html();
 	rewardList = data.reward;
@@ -50,6 +51,9 @@ function onJsonLoad (data) {
 		valueNames: ["name", "source"],
 		listClass: "rewards"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 
@@ -74,7 +78,6 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
-	EntryRenderer.hover.bindPopoutButton(rewardList);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "id"],
@@ -84,6 +87,10 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(rewardList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }
@@ -107,4 +114,8 @@ function loadhash (id) {
 
 	$("tr.text").remove();
 	$("tr#text").after(EntryRenderer.reward.getRenderedString(reward));
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

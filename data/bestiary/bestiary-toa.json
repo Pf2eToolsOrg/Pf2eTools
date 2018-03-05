@@ -2445,6 +2445,126 @@
 				}
 			],
 			"page": 106
+		},
+		{
+			"name": "Withers",
+			"size": "M",
+			"type": "undead",
+			"source": "ToA",
+			"alignment": "neutral evil",
+			"ac": "14 (studded leather)",
+			"hp": "45 (6d8+18)",
+			"speed": {
+				"walk": 30
+			},
+			"str": 15,
+			"dex": 14,
+			"con": 16,
+			"int": 16,
+			"wis": 13,
+			"cha": 15,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
+			"immune": "poison",
+			"conditionImmune": "exhaustion, poisoned",
+			"senses": "darkvision 60 ft.",
+			"passive": 13,
+			"languages": "the languages he knew in life",
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Withers carries the {@item amulet of the black skull|ToA}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, Withers has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Withers makes two longsword attacks or two longbow attacks. He can use his Life Drain in place of one longsword attack."
+					]
+				},
+				{
+					"name": "Life Drain",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6+2) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.",
+						"A humanoid slain by this attack rises 24 hours later as a zombie under the Withers's control, unless the humanoid is restored to life or its body is destroyed. Withers can have no more than twelve zombies under its control at one time."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage, or 7 (1d10+2) slashing damage if used with two hands."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Withers is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). Withers has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell expeditious retreat}",
+								"{@spell feather fall}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								"{@spell darkness}",
+								"{@spell hold person}",
+								"{@spell thunderwave}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell dispel magic}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell telekinesis}"
+							]
+						}
+					}
+				}
+			],
+			"page": 145
 		}
 	]
 }

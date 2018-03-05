@@ -16,6 +16,7 @@ HASH_SUB_KV_SEP = ":";
 HASH_START = "#";
 HASH_SUBCLASS = "sub:";
 HASH_BLANK = "blankhash";
+HASH_SUB_NONE = "null";
 
 STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";
@@ -57,7 +58,6 @@ STL_DISPLAY_INITIAL = "display: initial";
 STL_DISPLAY_NONE = "display: none";
 
 FLTR_ID = "filterId";
-FLTR_NONE = "null";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
@@ -1444,6 +1444,14 @@ if (typeof window !== "undefined") {
 	});
 }
 
+function copyText (text) {
+	const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
+	$(`body`).append($temp);
+	$temp.select();
+	document.execCommand("Copy");
+	$temp.remove();
+}
+
 // LIST AND SEARCH =====================================================================================================
 ListUtil = {
 	_first: true,
@@ -1631,31 +1639,82 @@ ListUtil = {
 		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists;
 	},
 
+	getOrTabRightButton: (id, icon) => {
+		let $btn = $(`#${id}`);
+		if (!$btn.length) {
+			$btn = $(`<span class="stat-tab btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></span>`).appendTo($(`#tabs-right`));
+		}
+		return $btn;
+	},
+
 	bindPinButton: () => {
-		$(`#btn-pin`)
+		ListUtil.getOrTabRightButton(`btn-pin`, `pushpin`)
 			.off("click")
 			.on("click", () => {
 				if (!ListUtil.isSublisted(lastLoadedId)) ListUtil.doSublistAdd(lastLoadedId, true);
 				else ListUtil.doSublistRemove(lastLoadedId);
-			});
+			})
+			.attr("title", "Pin (Toggle)");
 	},
 
 	bindAddButton: () => {
-		$(`#btn-sublist-add`)
+		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
 			.on("click", (evt) => {
 				if (evt.shiftKey) ListUtil.doSublistAdd(lastLoadedId, true, 20);
 				else ListUtil.doSublistAdd(lastLoadedId, true);
-			});
+			})
+			.attr("title", "Add (Shift for 20)");
 	},
 
 	bindSubtractButton: () => {
-		$(`#btn-sublist-subtract`)
+		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
 			.on("click", (evt) => {
 				if (evt.shiftKey) ListUtil.doSublistSubtract(lastLoadedId, 20);
 				else ListUtil.doSublistSubtract(lastLoadedId);
-			});
+			})
+			.attr("title", "Subtract (Shift for 20)");
+	},
+
+	bindDownloadButton: () => {
+		ListUtil.getOrTabRightButton(`btn-sublist-download`, `download`)
+			.off("click")
+			.on("click", () => {
+				const filename = `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
+				DataUtil.userDownload(filename, JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
+			})
+			.attr("title", "Download List");
+	},
+
+	bindUploadButton: (funcPreload) => {
+		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-upload`, `upload`);
+		$btn.off("click")
+			.on("click", () => {
+				function loadSaved (event) {
+					const input = event.target;
+
+					const reader = new FileReader();
+					reader.onload = () => {
+						const text = reader.result;
+						const json = JSON.parse(text);
+						const funcOnload = () => {
+							ListUtil._loadSavedSublist(json.items);
+							$iptAdd.remove();
+							ListUtil._finaliseSublist();
+						};
+						if (funcPreload) funcPreload(json, funcOnload);
+						else funcOnload();
+					};
+					reader.readAsText(input.files[0]);
+				}
+
+				const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
+					loadSaved(evt);
+				}).appendTo($(`body`));
+				$iptAdd.click();
+			})
+			.attr("title", "Upload List");
 	},
 
 	doSublistAdd: (index, doFinalise, addCount) => {
@@ -1690,7 +1749,7 @@ ListUtil = {
 		ListUtil._handleCallUpdateFn();
 	},
 
-	_saveSublist: () => {
+	_getExportableSublist: () => {
 		const sources = new Set();
 		const toSave = ListUtil.sublist.items
 			.map(it => {
@@ -1698,7 +1757,11 @@ ListUtil = {
 				sources.add(ListUtil._allItems[Number($elm.attr(FLTR_ID))].source);
 				return {h: $elm.find(`a`).prop("hash").slice(1), c: $elm.find(".count").text()};
 			});
-		StorageUtil.setForPage("sublist", {items: toSave, sources: Array.from(sources)});
+		return {items: toSave, sources: Array.from(sources)};
+	},
+
+	_saveSublist: () => {
+		StorageUtil.setForPage("sublist", ListUtil._getExportableSublist());
 	},
 
 	_updateSublistVisibility: () => {
@@ -1751,17 +1814,21 @@ ListUtil = {
 		try {
 			const store = StorageUtil.getForPage("sublist");
 			if (store && store.items) {
-				store.items.forEach(it => {
-					const $ele = _getListElem(it.h);
-					const itId = $ele ? $ele.attr("id") : null;
-					if (itId != null) ListUtil.doSublistAdd(itId, false, Number(it.c));
-				});
-				ListUtil._finaliseSublist(true);
+				ListUtil._loadSavedSublist(store.items);
 			}
 		} catch (e) {
 			StorageUtil.removeForPage("sublist");
 			throw e;
 		}
+	},
+
+	_loadSavedSublist: (items) => {
+		items.forEach(it => {
+			const $ele = _getListElem(it.h);
+			const itId = $ele ? $ele.attr("id") : null;
+			if (itId != null) ListUtil.doSublistAdd(itId, false, Number(it.c));
+		});
+		ListUtil._finaliseSublist(true);
 	},
 
 	getSelectedSources: () => {
@@ -1965,11 +2032,19 @@ UrlUtil.unpackSubHash = function (subHash, unencode) {
 		let v = keyValArr[1].toLowerCase();
 		if (unencode) v = decodeURIComponent(v);
 		out[k] = v.split(HASH_SUB_LIST_SEP).map(s => s.trim());
-		if (out[k].length === 1 && out[k] === FLTR_NONE) out[k] = [];
+		if (out[k].length === 1 && out[k] === HASH_SUB_NONE) out[k] = [];
 		return out;
 	} else {
 		throw new Error(`Baldy formatted subhash ${subHash}`)
 	}
+};
+
+UrlUtil.packSubHash = function (key, values, encode) {
+	if (encode) {
+		key = encodeURIComponent(key.toLowerCase());
+		values = values.map(it => encodeURIComponent(it.toLowerCase()));
+	}
+	return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
 };
 
 UrlUtil.categoryToPage = function (category) {
@@ -2033,6 +2108,36 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OBJECT] = UrlUtil.PG_OBJECTS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAP] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
+
+UrlUtil.bindLinkExportButton = (filterBox) => {
+	const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
+	$btn.addClass("btn-copy-effect")
+		.off("click")
+		.on("click", () => {
+			let url = window.location.href;
+
+			const toHash = filterBox.getAsSubHashes();
+			const parts = Object.keys(toHash).map(hK => {
+				const hV = toHash[hK];
+				return UrlUtil.packSubHash(hK, hV, true);
+			});
+			parts.unshift(url);
+
+			copyText(parts.join(HASH_PART_SEP));
+			const $temp = $(`<div class="copied-tip"><span>Copied!</span></div>`);
+			const pos = $btn.offset();
+			$temp.css({
+				top: pos.top - 17,
+				left: pos.left - 36 + ($btn.width() / 2)
+			}).appendTo($(`body`)).animate({
+				top: "-=8",
+				opacity: 0
+			}, 250, () => {
+				$temp.remove();
+			});
+		})
+		.attr("title", "Get Link (Including Filters)")
+};
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site

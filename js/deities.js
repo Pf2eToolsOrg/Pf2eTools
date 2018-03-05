@@ -19,7 +19,7 @@ function alignSort (a, b) {
 }
 
 let deitiesList;
-
+let filterBox;
 function onJsonLoad (data) {
 	deitiesList = data.deity;
 
@@ -74,7 +74,7 @@ function onJsonLoad (data) {
 		deselFn: (it) => { return it === STR_REPRINTED }
 	});
 
-	const filterBox = initFilterBox(sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
+	filterBox = initFilterBox(sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
 
 	let tempString = "";
 	deitiesList.forEach((g, i) => {
@@ -111,6 +111,9 @@ function onJsonLoad (data) {
 		listClass: "deities",
 		sortFunction: SortUtil.listSort
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 
@@ -140,7 +143,6 @@ function onJsonLoad (data) {
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	addListShowHide();
-	EntryRenderer.hover.bindPopoutButton(deitiesList);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "pantheon", "alignment", "domains", "id"],
@@ -150,6 +152,10 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(deitiesList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }
@@ -190,4 +196,8 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(deity)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

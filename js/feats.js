@@ -69,6 +69,9 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source', 'ability', 'prerequisite'],
 		listClass: "feats"
 	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
 
 	filterBox.render();
 
@@ -95,7 +98,6 @@ function onJsonLoad (data) {
 	initHistory();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
-	EntryRenderer.hover.bindPopoutButton(featlist);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "ability", "prerequisite", "id"],
@@ -105,6 +107,10 @@ function onJsonLoad (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(featlist);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }
@@ -142,4 +148,8 @@ function loadhash (id) {
 
 	$content.find("tr#text").after(`<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`);
 	$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${feat.page}</td>`);
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

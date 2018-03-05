@@ -58,6 +58,7 @@ function deselectFilter (deselectProperty, deselectValue) {
 
 let mundanelist;
 let magiclist;
+let filterBox;
 function populateTablesAndFilters () {
 	const sourceFilter = getSourceFilter();
 	const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
@@ -75,7 +76,7 @@ function populateTablesAndFilters () {
 	});
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Magic", "Mundane", "Sentient"]});
 
-	const filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, miscFilter);
+	filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, miscFilter);
 	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
 
 	for (let i = 0; i < itemList.length; i++) {
@@ -130,8 +131,14 @@ function populateTablesAndFilters () {
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);
-	mundanelist.on("searchComplete", function () { hideListIfEmpty(mundanelist, mundaneWrapper) });
-	magiclist.on("searchComplete", function () { hideListIfEmpty(magiclist, magicWrapper) });
+	mundanelist.on("updated", () => {
+		hideListIfEmpty(mundanelist, mundaneWrapper);
+		filterBox.setCount(mundanelist.visibleItems.length + magiclist.visibleItems.length, mundanelist.items.length + magiclist.items.length);
+	});
+	magiclist.on("updated", () => {
+		hideListIfEmpty(magiclist, magicWrapper);
+		filterBox.setCount(mundanelist.visibleItems.length + magiclist.visibleItems.length, mundanelist.items.length + magiclist.items.length);
+	});
 
 	filterBox.render();
 
@@ -159,9 +166,6 @@ function populateTablesAndFilters () {
 		}
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);
-
-		hideListIfEmpty(mundanelist, mundaneWrapper);
-		hideListIfEmpty(magiclist, magicWrapper);
 	}
 
 	function hideListIfEmpty (list, $eles) {
@@ -200,7 +204,6 @@ function populateTablesAndFilters () {
 	initHistory();
 	handleFilterChange();
 
-	EntryRenderer.hover.bindPopoutButton(itemList);
 	const subList = ListUtil.initSublist(
 		{
 			valueNames: ["name", "weight", "price", "count", "id"],
@@ -214,6 +217,10 @@ function populateTablesAndFilters () {
 	);
 	ListUtil.bindAddButton();
 	ListUtil.bindSubtractButton();
+	EntryRenderer.hover.bindPopoutButton(itemList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericAddable();
 	ListUtil.loadState();
 }
@@ -312,6 +319,10 @@ function loadhash (id) {
 			label: $content.find(".stats-name").text()
 		});
 	})
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }
 
 const TOOL_INS_ADDITIONAL_ENTRIES = [
