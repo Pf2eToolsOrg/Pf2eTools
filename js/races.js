@@ -179,6 +179,8 @@ function onJsonLoad (data) {
 	ListUtil.bindPinButton();
 	EntryRenderer.hover.bindPopoutButton(raceList);
 	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }

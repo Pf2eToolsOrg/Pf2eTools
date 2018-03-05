@@ -219,6 +219,8 @@ function populateTablesAndFilters () {
 	ListUtil.bindSubtractButton();
 	EntryRenderer.hover.bindPopoutButton(itemList);
 	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericAddable();
 	ListUtil.loadState();
 }

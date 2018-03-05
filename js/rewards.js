@@ -89,6 +89,8 @@ function onJsonLoad (data) {
 	ListUtil.bindPinButton();
 	EntryRenderer.hover.bindPopoutButton(rewardList);
 	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
 }

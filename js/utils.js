@@ -1677,6 +1677,46 @@ ListUtil = {
 			.attr("title", "Subtract (Shift for 20)");
 	},
 
+	bindDownloadButton: () => {
+		ListUtil.getOrTabRightButton(`btn-sublist-download`, `download`)
+			.off("click")
+			.on("click", () => {
+				const filename = `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
+				DataUtil.userDownload(filename, JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
+			})
+			.attr("title", "Download List");
+	},
+
+	bindUploadButton: (funcPreload) => {
+		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-upload`, `upload`);
+		$btn.off("click")
+			.on("click", () => {
+				function loadSaved (event) {
+					const input = event.target;
+
+					const reader = new FileReader();
+					reader.onload = () => {
+						const text = reader.result;
+						const json = JSON.parse(text);
+						const funcOnload = () => {
+							ListUtil._loadSavedSublist(json.items);
+							$iptAdd.remove();
+							ListUtil._finaliseSublist();
+						};
+						if (funcPreload) funcPreload(json, funcOnload);
+						else funcOnload();
+					};
+					reader.readAsText(input.files[0]);
+				}
+
+				const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
+					loadSaved(evt);
+				}).appendTo($(`body`));
+				$iptAdd.click();
+			})
+			.attr("title", "Upload List");
+	},
+
 	doSublistAdd: (index, doFinalise, addCount) => {
 		const count = ListUtil._pinned[index] || 0;
 		addCount = addCount || 1;
@@ -1709,7 +1749,7 @@ ListUtil = {
 		ListUtil._handleCallUpdateFn();
 	},
 
-	_saveSublist: () => {
+	_getExportableSublist: () => {
 		const sources = new Set();
 		const toSave = ListUtil.sublist.items
 			.map(it => {
@@ -1717,7 +1757,11 @@ ListUtil = {
 				sources.add(ListUtil._allItems[Number($elm.attr(FLTR_ID))].source);
 				return {h: $elm.find(`a`).prop("hash").slice(1), c: $elm.find(".count").text()};
 			});
-		StorageUtil.setForPage("sublist", {items: toSave, sources: Array.from(sources)});
+		return {items: toSave, sources: Array.from(sources)};
+	},
+
+	_saveSublist: () => {
+		StorageUtil.setForPage("sublist", ListUtil._getExportableSublist());
 	},
 
 	_updateSublistVisibility: () => {
@@ -1770,17 +1814,21 @@ ListUtil = {
 		try {
 			const store = StorageUtil.getForPage("sublist");
 			if (store && store.items) {
-				store.items.forEach(it => {
-					const $ele = _getListElem(it.h);
-					const itId = $ele ? $ele.attr("id") : null;
-					if (itId != null) ListUtil.doSublistAdd(itId, false, Number(it.c));
-				});
-				ListUtil._finaliseSublist(true);
+				ListUtil._loadSavedSublist(store.items);
 			}
 		} catch (e) {
 			StorageUtil.removeForPage("sublist");
 			throw e;
 		}
+	},
+
+	_loadSavedSublist: (items) => {
+		items.forEach(it => {
+			const $ele = _getListElem(it.h);
+			const itId = $ele ? $ele.attr("id") : null;
+			if (itId != null) ListUtil.doSublistAdd(itId, false, Number(it.c));
+		});
+		ListUtil._finaliseSublist(true);
 	},
 
 	getSelectedSources: () => {
