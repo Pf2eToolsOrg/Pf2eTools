@@ -50,6 +50,7 @@ function listSortInvocations (a, b, o) {
 
 let INVOCATION_LIST;
 
+let filterBox;
 function onJsonLoad (data) {
 	INVOCATION_LIST = data.invocation;
 
@@ -70,7 +71,7 @@ function onJsonLoad (data) {
 	});
 	const levelFilter = new Filter({header: "Warlock Level", items: ["5", "7", "9", "12", "15", "18", STR_ANY]});
 
-	const filterBox = initFilterBox(sourceFilter, pactFilter, patronFilter, spellFilter, levelFilter);
+	filterBox = initFilterBox(sourceFilter, pactFilter, patronFilter, spellFilter, levelFilter);
 
 	let tempString = "";
 	INVOCATION_LIST.forEach(function (p, i) {
@@ -182,4 +183,8 @@ function loadhash (jsonIndex) {
 		STATS_TEXT.innerHTML = EntryRenderer.getDefaultRenderer().renderEntry({entries: selectedInvocation.entries}, 1);
 		$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(selectedInvocation.source)}</i>, page ${selectedInvocation.page}</td>`);
 	}
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

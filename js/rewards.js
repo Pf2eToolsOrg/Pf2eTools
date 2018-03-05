@@ -9,6 +9,7 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
+let filterBox;
 function onJsonLoad (data) {
 	tableDefault = $("#pagecontent").html();
 	rewardList = data.reward;
@@ -111,4 +112,8 @@ function loadhash (id) {
 
 	$("tr.text").remove();
 	$("tr#text").after(EntryRenderer.reward.getRenderedString(reward));
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

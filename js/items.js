@@ -58,6 +58,7 @@ function deselectFilter (deselectProperty, deselectValue) {
 
 let mundanelist;
 let magiclist;
+let filterBox;
 function populateTablesAndFilters () {
 	const sourceFilter = getSourceFilter();
 	const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
@@ -75,7 +76,7 @@ function populateTablesAndFilters () {
 	});
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Magic", "Mundane", "Sentient"]});
 
-	const filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, miscFilter);
+	filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, miscFilter);
 	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
 
 	for (let i = 0; i < itemList.length; i++) {
@@ -316,6 +317,10 @@ function loadhash (id) {
 			label: $content.find(".stats-name").text()
 		});
 	})
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }
 
 const TOOL_INS_ADDITIONAL_ENTRIES = [

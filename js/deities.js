@@ -19,7 +19,7 @@ function alignSort (a, b) {
 }
 
 let deitiesList;
-
+let filterBox;
 function onJsonLoad (data) {
 	deitiesList = data.deity;
 
@@ -74,7 +74,7 @@ function onJsonLoad (data) {
 		deselFn: (it) => { return it === STR_REPRINTED }
 	});
 
-	const filterBox = initFilterBox(sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
+	filterBox = initFilterBox(sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
 
 	let tempString = "";
 	deitiesList.forEach((g, i) => {
@@ -194,4 +194,8 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(deity)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }

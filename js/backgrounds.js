@@ -8,13 +8,14 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
+let filterBox;
 function onJsonLoad (data) {
 	bgList = data.background;
 
 	tabledefault = $("#pagecontent").html();
 
 	const sourceFilter = getSourceFilter();
-	const filterBox = initFilterBox(sourceFilter);
+	filterBox = initFilterBox(sourceFilter);
 
 	const bgTable = $("ul.backgrounds");
 	let tempString = "";
@@ -104,4 +105,8 @@ function loadhash (id) {
 	$content.find("th.name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
 	$content.find("tr#traits").after(`<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>`);
 	$content.find("#source").html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${curbg.page}</td>`);
+}
+
+function loadsub (sub) {
+	filterBox.setFromSubHashes(sub);
 }
