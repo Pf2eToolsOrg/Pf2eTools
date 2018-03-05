@@ -2280,8 +2280,9 @@ EntryRenderer.hover = {
 	},
 
 	bindPopoutButton: (toList) => {
-		const $btnPop = $(`#btn-popout`);
-		$btnPop.off("click");
+		const $btnPop = $(`#btn-popout`)
+			.off("click")
+			.attr("title", "Popout Window");
 		$btnPop.on("click", (evt) => {
 			if (lastLoadedId !== null) {
 				EntryRenderer.hover.doPopout($btnPop, toList, lastLoadedId, evt.clientX);
