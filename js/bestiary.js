@@ -244,6 +244,7 @@ function addMonsters (data) {
 
 	filterBox.render();
 	EntryRenderer.hover.bindPopoutButton(monsters);
+	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.setOptions({
 		itemList: monsters,
 		getSublistRow: getSublistItem,

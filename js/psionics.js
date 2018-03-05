@@ -126,6 +126,7 @@ function onJsonLoad (data) {
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	EntryRenderer.hover.bindPopoutButton(PSIONIC_LIST);
+	UrlUtil.bindLinkExportButton(filterBox);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "type", "order", "id"],

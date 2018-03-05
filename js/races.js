@@ -169,6 +169,7 @@ function onJsonLoad (data) {
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	EntryRenderer.hover.bindPopoutButton(raceList);
+	UrlUtil.bindLinkExportButton(filterBox);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "ability", "size", "id"],

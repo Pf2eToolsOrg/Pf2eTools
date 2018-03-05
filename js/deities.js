@@ -144,6 +144,7 @@ function onJsonLoad (data) {
 	RollerUtil.addListRollButton();
 	addListShowHide();
 	EntryRenderer.hover.bindPopoutButton(deitiesList);
+	UrlUtil.bindLinkExportButton(filterBox);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "pantheon", "alignment", "domains", "id"],

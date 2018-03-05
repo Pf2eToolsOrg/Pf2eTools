@@ -204,6 +204,7 @@ function populateTablesAndFilters () {
 	handleFilterChange();
 
 	EntryRenderer.hover.bindPopoutButton(itemList);
+	UrlUtil.bindLinkExportButton(filterBox);
 	const subList = ListUtil.initSublist(
 		{
 			valueNames: ["name", "weight", "price", "count", "id"],
