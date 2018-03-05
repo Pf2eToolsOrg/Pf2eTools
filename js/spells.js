@@ -478,6 +478,7 @@ function addSpells (data) {
 
 	filterBox.render();
 	EntryRenderer.hover.bindPopoutButton(spellList);
+	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.setOptions({
 		itemList: spellList,
 		getSublistRow: getSublistItem,

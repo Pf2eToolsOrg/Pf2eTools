@@ -565,7 +565,7 @@ class FilterBox {
 		});
 		const toRemove = [];
 		Object.keys(unpacked)
-			.filter(k => k.startsWith("filter"))
+			.filter(k => k.startsWith(FilterBox._SUB_HASH_PREFIX))
 			.forEach(rawSubhash => {
 				const header = rawSubhash.substring(6);
 
@@ -590,6 +590,29 @@ class FilterBox {
 			setSuppressHistory(true);
 			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
 		}
+	}
+
+	getAsSubHashes () {
+		const cur = this.getValues();
+		const out = {};
+
+		Object.keys(cur).forEach(name => {
+			const vals = cur[name];
+			const outName = `${FilterBox._SUB_HASH_PREFIX}${name}`;
+
+			if (vals._totals.yes || vals._totals.no) {
+				out[outName] = [];
+				Object.keys(vals).forEach(vK => {
+					if (vK.startsWith("_")) return;
+					const vV = vals[vK];
+					if (!vV) return;
+					out[outName].push(`${vV < 0 ? "!" : ""}${vK}`);
+				});
+			} else {
+				out[outName] = [HASH_SUB_NONE];
+			}
+		});
+		return out;
 	}
 
 	toDisplay (curr, ...vals) {
@@ -642,6 +665,7 @@ FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox.SOURCE_HEADER = "Source";
 FilterBox._PILL_STATES = ["ignore", "yes", "no"];
 FilterBox._STORAGE_NAME = "filterState";
+FilterBox._SUB_HASH_PREFIX= "filter";
 
 class Filter {
 	/**

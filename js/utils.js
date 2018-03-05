@@ -16,6 +16,7 @@ HASH_SUB_KV_SEP = ":";
 HASH_START = "#";
 HASH_SUBCLASS = "sub:";
 HASH_BLANK = "blankhash";
+HASH_SUB_NONE = "null";
 
 STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";
@@ -57,7 +58,6 @@ STL_DISPLAY_INITIAL = "display: initial";
 STL_DISPLAY_NONE = "display: none";
 
 FLTR_ID = "filterId";
-FLTR_NONE = "null";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
@@ -1637,7 +1637,8 @@ ListUtil = {
 			.on("click", () => {
 				if (!ListUtil.isSublisted(lastLoadedId)) ListUtil.doSublistAdd(lastLoadedId, true);
 				else ListUtil.doSublistRemove(lastLoadedId);
-			});
+			})
+			.attr("title", "Pin (Toggle)");
 	},
 
 	bindAddButton: () => {
@@ -1646,7 +1647,8 @@ ListUtil = {
 			.on("click", (evt) => {
 				if (evt.shiftKey) ListUtil.doSublistAdd(lastLoadedId, true, 20);
 				else ListUtil.doSublistAdd(lastLoadedId, true);
-			});
+			})
+			.attr("title", "Add (Shift for 20)");
 	},
 
 	bindSubtractButton: () => {
@@ -1655,7 +1657,8 @@ ListUtil = {
 			.on("click", (evt) => {
 				if (evt.shiftKey) ListUtil.doSublistSubtract(lastLoadedId, 20);
 				else ListUtil.doSublistSubtract(lastLoadedId);
-			});
+			})
+			.attr("title", "Subtract (Shift for 20)");
 	},
 
 	doSublistAdd: (index, doFinalise, addCount) => {
@@ -1965,11 +1968,19 @@ UrlUtil.unpackSubHash = function (subHash, unencode) {
 		let v = keyValArr[1].toLowerCase();
 		if (unencode) v = decodeURIComponent(v);
 		out[k] = v.split(HASH_SUB_LIST_SEP).map(s => s.trim());
-		if (out[k].length === 1 && out[k] === FLTR_NONE) out[k] = [];
+		if (out[k].length === 1 && out[k] === HASH_SUB_NONE) out[k] = [];
 		return out;
 	} else {
 		throw new Error(`Baldy formatted subhash ${subHash}`)
 	}
+};
+
+UrlUtil.packSubHash = function (key, values, encode) {
+	if (encode) {
+		key = encodeURIComponent(key.toLowerCase());
+		values = values.map(it => encodeURIComponent(it.toLowerCase()));
+	}
+	return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
 };
 
 UrlUtil.categoryToPage = function (category) {
@@ -2033,6 +2044,25 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OBJECT] = UrlUtil.PG_OBJECTS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAP] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
+
+UrlUtil.bindLinkExportButton = (filterBox) => {
+	$(`#btn-link-export`)
+		.off("click")
+		.on("click", () => {
+			let url = window.location.href;
+
+			const toHash = filterBox.getAsSubHashes();
+			const parts = Object.keys(toHash).map(hK => {
+				const hV = toHash[hK];
+				return UrlUtil.packSubHash(hK, hV, true);
+			});
+			parts.unshift(url);
+
+			// TODO better copying mechanism
+			window.prompt("Copy to clipboard: Ctrl+C, Enter", parts.join(HASH_PART_SEP));
+		})
+		.attr("title", "Share Link (Including Filters)");
+};
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
