@@ -665,7 +665,7 @@ FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox.SOURCE_HEADER = "Source";
 FilterBox._PILL_STATES = ["ignore", "yes", "no"];
 FilterBox._STORAGE_NAME = "filterState";
-FilterBox._SUB_HASH_PREFIX= "filter";
+FilterBox._SUB_HASH_PREFIX = "filter";
 
 class Filter {
 	/**
