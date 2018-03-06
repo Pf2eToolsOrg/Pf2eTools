@@ -1,7 +1,7 @@
 "use strict";
 const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";
-const HASH_ALL_SOURCES = "allsrc:";
+const HASH_SOURCES = "sources:";
 const HASH_COMP_VIEW = "compview:";
 const HASH_BOOK_VIEW = "bookview:";
 
@@ -10,14 +10,19 @@ const CLSS_ACTIVE = "active";
 const CLSS_SUBCLASS_PILL = "sc-pill";
 const CLSS_PANEL_LINK = "pnl-link";
 const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
-const CLSS_OTHER_SOURCES_ACTIVE = "os-active";
 const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
 const CLSS_CLASS_FEATURE = "class-feature";
 const CLSS_GAIN_SUBCLASS_FEATURE = "gain-subclass-feature";
+const CLSS_FRESH_UA = "fresh-ua";
+
 const ID_CLASS_FEATURES_TOGGLE = "cf-toggle";
 const ID_OTHER_SOURCES_TOGGLE = "os-toggle";
 
 const STR_PROF_NONE = "none";
+const STR_SOURCES_OFFICIAL = "0";
+const STR_SOURCES_MIXED = "1";
+const STR_SOURCES_ALL = "2";
+const STRS_SOURCE_STATES = ["Official", "Most Recent", "All"];
 
 const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
@@ -61,7 +66,20 @@ function cleanScSource (source) {
 function cleanSetHash (toSet) {
 	window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
 }
-const sourceFilter = getSourceFilter();
+
+function setSourceState (toState) {
+	const hash = window.location.hash;
+	if (hash.includes(HASH_SOURCES)) {
+		// handle old hash style
+		cleanSetHash(hash.replace(/sources:(\d|true|false)/, `${HASH_SOURCES}${toState}`));
+	} else {
+		cleanSetHash(`${hash}${HASH_PART_SEP}${HASH_SOURCES}${toState}`)
+	}
+}
+
+const sourceFilter = getSourceFilter({
+	minimalUI: true
+});
 const filterBox = initFilterBox(sourceFilter);
 function onJsonLoad (data) {
 	list = ListUtil.search({
@@ -173,19 +191,27 @@ function addClassData (data) {
 
 function getSubclassStyles (sc) {
 	const styleClasses = [CLSS_SUBCLASS_FEATURE];
-	const nonStandard = subclassIsNonstandardSource(sc) || hasBeenReprinted(sc.shortName, sc.source);
+	const nonStandard = isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source);
 	if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+	if (subclassIsFreshUa(sc)) styleClasses.push(CLSS_FRESH_UA);
 	if (cleanScSource(sc.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 	return styleClasses;
 }
 
-function subclassIsNonstandardSource (sc) {
+function subclassIsFreshUa (sc) {
 	// only tag reprinted UA
-	if (isNonstandardSource(sc.source)) {
-		const nonUa = curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\(UA\)/, "").trim() === pub.name);
-		if (nonUa) return true;
+	if (isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source)) {
+		// special cases
+		if (sc.name === "Knowledge Domain (PSA)" && sc.source === SRC_PSA) return false;
+		if (sc.name === "Deep Stalker (UA)" && sc.source === SRC_UALDR) return false;
+		if (sc.name.includes("Favored Soul")) return false;
+		if (sc.name === "Shadow (UA)" && sc.source === SRC_UALDR) return false;
+		if (sc.name === "The Undying Light (UA)" && sc.source === SRC_UALDR) return false;
+
+		const nonUa = curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG)\)/, "").trim() === pub.name);
+		if (nonUa) return false;
 	}
-	return false;
+	return true;
 }
 
 function addSubclassData (data) {
@@ -364,7 +390,7 @@ function loadhash (id) {
 	makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true);
 
 	// show/hide UA/other sources
-	const allSourcesToggle = makeGenericTogglePill("All Sources", CLSS_OTHER_SOURCES_ACTIVE, ID_OTHER_SOURCES_TOGGLE, HASH_ALL_SOURCES, false);
+	makeSourceCyclePill();
 
 	// spacer before the subclass pills
 	subclassPillWrapper.append($(`<span class="divider">`));
@@ -376,9 +402,10 @@ function loadhash (id) {
 			return SortUtil.ascSort(a.shortName, b.shortName)
 		});
 	for (let i = 0; i < subClasses.length; i++) {
-		const nonStandardSource = subclassIsNonstandardSource(subClasses[i]) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
+		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
+		if (subclassIsFreshUa(subClasses[i])) styleClasses.push(CLSS_FRESH_UA);
 		if (cleanScSource(subClasses[i].source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 		const pillText = hasBeenReprinted(subClasses[i].shortName, subClasses[i].source) ? `${subClasses[i].shortName} (${Parser.sourceJsonToAbv(subClasses[i].source)})` : subClasses[i].shortName;
 		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${cleanScSource(subClasses[i].source)}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
@@ -391,6 +418,18 @@ function loadhash (id) {
 
 	// call loadsub with a blank sub-hash, to ensure the right content is displayed
 	loadsub("");
+
+	function makeSourceCyclePill () {
+		const $pill = $(`<span id="${ID_OTHER_SOURCES_TOGGLE}" data-state="0" style="min-width: 7em;"><span>${STRS_SOURCE_STATES[0]}</span></span>`);
+		subclassPillWrapper.append($pill);
+		$pill.click(() => {
+			let state = Number($pill.attr("data-state"));
+			if (++state > 2) state = 0;
+			$pill.attr("data-state", state);
+			$pill.find(`span`).text(STRS_SOURCE_STATES[state]);
+			setSourceState(state);
+		});
+	}
 
 	// helper functions
 	function makeGenericTogglePill (pillText, pillActiveClass, pillId, hashKey, defaultActive) {
@@ -478,7 +517,7 @@ function loadsub (sub) {
 	let subclasses = null;
 	let feature = null;
 	let hideClassFeatures = null;
-	let showAllSources = null;
+	let sources = null;
 	let bookView = null;
 	let comparisonView = null;
 
@@ -492,17 +531,20 @@ function loadsub (sub) {
 		if (hashPart.startsWith(HASH_SUBCLASS)) subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart;
 		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = sliceTrue(hashPart, HASH_HIDE_FEATURES);
-		if (hashPart.startsWith(HASH_ALL_SOURCES)) showAllSources = sliceTrue(hashPart, HASH_ALL_SOURCES);
+		if (hashPart.startsWith(HASH_SOURCES)) sources = hashPart.slice(HASH_SOURCES.length);
 		if (hashPart.startsWith(HASH_BOOK_VIEW)) bookView = sliceTrue(hashPart, HASH_BOOK_VIEW);
 		if (hashPart.startsWith(HASH_COMP_VIEW)) comparisonView = sliceTrue(hashPart, HASH_COMP_VIEW);
 	}
 
-	const hideOtherSources = !ClassBookView.bookViewActive && (showAllSources === null || showAllSources === false);
+	const hideAllSources = !ClassBookView.bookViewActive && (sources === null || sources === STR_SOURCES_OFFICIAL);
+	const hideSomeSources = !ClassBookView.bookViewActive && sources === STR_SOURCES_MIXED;
 
 	// deselect any pills that would be hidden
-	if (subclasses !== null && hideOtherSources) {
+	if (subclasses !== null && (hideAllSources || hideSomeSources)) {
 		const toDeselect = [];
-		$(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}.${CLSS_ACTIVE}`).each(function () {
+		const $toCheckBase = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}.${CLSS_ACTIVE}`);
+		const $toCheck = hideAllSources ? $toCheckBase : $toCheckBase.not(`.${CLSS_FRESH_UA}`);
+		$toCheck.each(function () {
 			const $this = $(this);
 			const thisSc = getEncodedSubclass($this.attr(ATB_DATA_SC), $this.attr(ATB_DATA_SRC));
 			if ($.inArray(subclasses, thisSc)) {
@@ -565,7 +607,7 @@ function loadsub (sub) {
 			$.each($toShow, function (i, v) {
 				v.addClass(CLSS_ACTIVE);
 				$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
-				if (hideOtherSources) otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
+				if (hideAllSources || hideSomeSources) otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 				else otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
 
 				const asInTable = getTableDataScData(v.attr(ATB_DATA_SC), v.attr(ATB_DATA_SRC));
@@ -582,7 +624,7 @@ function loadsub (sub) {
 				handleTableGroups(shownInTable, asInTable, false);
 			});
 
-			if (hideOtherSources) {
+			if (hideAllSources || hideSomeSources) {
 				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`:not([${ATB_DATA_SC}]):not([${ATB_DATA_SRC}])`).hide();
 				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).hide();
 			} else {
@@ -626,11 +668,17 @@ function loadsub (sub) {
 	// show UA/etc pills as required
 	const srcToggle = $(`#${ID_OTHER_SOURCES_TOGGLE}`);
 	const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_PANEL_LINK}`);
-	if (hideOtherSources) {
-		srcToggle.removeClass(CLSS_OTHER_SOURCES_ACTIVE);
+	if (hideAllSources) {
+		srcToggle.find(`span`).text(STRS_SOURCE_STATES[0]);
+		srcToggle.attr("data-state", STR_SOURCES_OFFICIAL);
 		toToggleSrc.hide();
+	} else if (hideSomeSources) {
+		srcToggle.find(`span`).text(STRS_SOURCE_STATES[1]);
+		srcToggle.attr("data-state", STR_SOURCES_MIXED);
+		toToggleSrc.show().not(`.${CLSS_FRESH_UA}`).hide();
 	} else {
-		srcToggle.addClass(CLSS_OTHER_SOURCES_ACTIVE);
+		srcToggle.find(`span`).text(STRS_SOURCE_STATES[2]);
+		srcToggle.attr("data-state", STR_SOURCES_ALL);
 		toToggleSrc.show();
 	}
 
@@ -700,7 +748,7 @@ function loadsub (sub) {
 		const allNonstandard = $pgContent.find(`div.${CLSS_NON_STANDARD_SOURCE}`);
 		allNonstandard.hide();
 		// if we're showing features from other sources, make sure these stay visible
-		if (!hideOtherSources) {
+		if (!hideAllSources) {
 			allNonstandard.not(`.${CLSS_SUBCLASS_FEATURE}`).not(`.${CLSS_SUBCLASS_PILL}`).show();
 		}
 		// hide all table col groups
@@ -824,6 +872,8 @@ const ClassBookView = {
 		if (ClassBookView.bookViewActive) return;
 		ClassBookView.bookViewActive = true;
 
+		setSourceState(STR_SOURCES_ALL);
+
 		const $body = $(`body`);
 		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
 		const $wrpBook = $(`<div class="book-view"/>`);
@@ -872,7 +922,7 @@ const ClassBookView = {
 
 		// menu panel
 		const $pnlMenu = $(`<div class="pnl-menu"/>`);
-		const $cfPill = $(`#cf-toggle`);
+		const $cfPill = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
 
 		const $cfToggle = $(`<span class="pnl-link cf-active">Class Features</span>`).on("click", () => {
 			tglCf($bkTbl, $cfToggle);
