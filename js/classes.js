@@ -543,7 +543,7 @@ function loadsub (sub) {
 	if (subclasses !== null && (hideAllSources || hideSomeSources)) {
 		const toDeselect = [];
 		const $toCheckBase = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}.${CLSS_ACTIVE}`);
-		const $toCheck = hideAllSources ? $toCheckBase : $toCheckBase.not(CLSS_FRESH_UA);
+		const $toCheck = hideAllSources ? $toCheckBase : $toCheckBase.not(`.${CLSS_FRESH_UA}`);
 		$toCheck.each(function () {
 			const $this = $(this);
 			const thisSc = getEncodedSubclass($this.attr(ATB_DATA_SC), $this.attr(ATB_DATA_SRC));
