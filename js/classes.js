@@ -61,7 +61,9 @@ function cleanScSource (source) {
 function cleanSetHash (toSet) {
 	window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
 }
-const sourceFilter = getSourceFilter();
+const sourceFilter = getSourceFilter({
+	minimalUI: true
+});
 const filterBox = initFilterBox(sourceFilter);
 function onJsonLoad (data) {
 	list = ListUtil.search({
