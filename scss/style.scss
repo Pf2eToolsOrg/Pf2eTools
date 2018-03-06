@@ -1230,8 +1230,19 @@ div#subclasses span.cf-active {
 	color: white;
 }
 
-div#subclasses span.os-active {
+div#subclasses span[data-state='0'] {
 	background: #1d965d;
+	color: white;
+}
+
+div#subclasses span[data-state='1'] {
+	background: repeating-linear-gradient(
+		45deg,
+		#1d965d,
+		#1d965d 15px,
+		lightgrey 15px,
+		lightgrey 30px
+	);
 	color: white;
 }
 
