@@ -170,7 +170,7 @@ class FilterBox {
 			}
 
 			function makeHeaderLine ($grid) {
-				const minimalClass = filter.minimalUI ? "filter-minimal": "";
+				const minimalClass = filter.minimalUI ? "filter-minimal" : "";
 				const $line = $(`<div class="h-wrap ${minimalClass}"/>`);
 				const $label = $(`<div>${namePrefix ? `<span class="text-muted">${namePrefix}: </span>` : ""}${filter.header}</div>`);
 				$line.append($label);
