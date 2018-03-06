@@ -1932,6 +1932,16 @@ ListUtil = {
 				ListUtil.doSublistRemoveAll();
 				break;
 		}
+	},
+
+	getSearchTermAndReset: (list) => {
+		let lastSearch = null;
+		if (list.searched) {
+			lastSearch = $(`#search`).val();
+			list.search();
+		}
+		list.filter();
+		return lastSearch;
 	}
 };
 

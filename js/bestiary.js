@@ -225,12 +225,7 @@ function addMonsters (data) {
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 	}
-	let lastSearch = null;
-	if (list.searched) {
-		lastSearch = $(`#search`).val();
-		list.search("");
-	}
-
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	table.append(textStack);
 
 	// sort filters
@@ -241,8 +236,9 @@ function addMonsters (data) {
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
-
 	filterBox.render();
+	handleFilterChange();
+
 	ListUtil.setOptions({
 		itemList: monsters,
 		getSublistRow: getSublistItem,

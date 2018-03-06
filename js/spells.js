@@ -459,13 +459,7 @@ function addSpells (data) {
 		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
 		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
 	}
-
-	let lastSearch = null;
-	if (list.searched) {
-		lastSearch = $(`#search`).val();
-		list.search("");
-	}
-
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	spellTable.append(tempString);
 
 	// sort filters
@@ -475,8 +469,9 @@ function addSpells (data) {
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
-
 	filterBox.render();
+	handleFilterChange();
+
 	ListUtil.setOptions({
 		itemList: spellList,
 		getSublistRow: getSublistItem,

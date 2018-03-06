@@ -161,8 +161,10 @@ function addClassData (data) {
 
 		sourceFilter.addIfAbsent(curClass.source);
 	}
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	classTable.append(tempString);
 	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
 
 	filterBox.render();
