@@ -10,7 +10,6 @@ const CLSS_ACTIVE = "active";
 const CLSS_SUBCLASS_PILL = "sc-pill";
 const CLSS_PANEL_LINK = "pnl-link";
 const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
-const CLSS_OTHER_SOURCES_ACTIVE = "os-active";
 const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
 const CLSS_CLASS_FEATURE = "class-feature";
 const CLSS_GAIN_SUBCLASS_FEATURE = "gain-subclass-feature";
@@ -67,6 +66,17 @@ function cleanScSource (source) {
 function cleanSetHash (toSet) {
 	window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
 }
+
+function setSourceState (toState) {
+	const hash = window.location.hash;
+	if (hash.includes(HASH_SOURCES)) {
+		// handle old hash style
+		cleanSetHash(hash.replace(/sources:(\d|true|false)/, `${HASH_SOURCES}${toState}`));
+	} else {
+		cleanSetHash(`${hash}${HASH_PART_SEP}${HASH_SOURCES}${toState}`)
+	}
+}
+
 const sourceFilter = getSourceFilter({
 	minimalUI: true
 });
@@ -410,18 +420,8 @@ function loadhash (id) {
 			if (++state > 2) state = 0;
 			$pill.attr("data-state", state);
 			$pill.find(`span`).text(STRS_SOURCE_STATES[state]);
-			setHash(state);
+			setSourceState(state);
 		});
-
-		function setHash (state) {
-			const hash = window.location.hash;
-			if (hash.includes(HASH_SOURCES)) {
-				// handle old hash style
-				cleanSetHash(hash.replace(/sources:(\d|true|false)/, `${HASH_SOURCES}${state}`));
-			} else {
-				cleanSetHash(`${hash}${HASH_PART_SEP}${HASH_SOURCES}${state}`)
-			}
-		}
 	}
 
 	// helper functions
@@ -865,6 +865,8 @@ const ClassBookView = {
 		if (ClassBookView.bookViewActive) return;
 		ClassBookView.bookViewActive = true;
 
+		setSourceState(STR_SOURCES_ALL);
+
 		const $body = $(`body`);
 		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
 		const $wrpBook = $(`<div class="book-view"/>`);
@@ -913,7 +915,7 @@ const ClassBookView = {
 
 		// menu panel
 		const $pnlMenu = $(`<div class="pnl-menu"/>`);
-		const $cfPill = $(`#cf-toggle`);
+		const $cfPill = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
 
 		const $cfToggle = $(`<span class="pnl-link cf-active">Class Features</span>`).on("click", () => {
 			tglCf($bkTbl, $cfToggle);
