@@ -225,12 +225,7 @@ function addMonsters (data) {
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 	}
-	let lastSearch = null;
-	if (list.searched) {
-		lastSearch = $(`#search`).val();
-		list.search("");
-	}
-
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	table.append(textStack);
 
 	// sort filters
@@ -241,8 +236,9 @@ function addMonsters (data) {
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
-
 	filterBox.render();
+	handleFilterChange();
+
 	ListUtil.setOptions({
 		itemList: monsters,
 		getSublistRow: getSublistItem,
@@ -255,15 +251,19 @@ function addMonsters (data) {
 		const loaded = Object.keys(loadedSources).filter(it => loadedSources[it].loaded);
 		const toLoad = json.sources.filter(it => !loaded.includes(it));
 		const loadTotal = toLoad.length;
-		let loadCount = 0;
-		toLoad.forEach(src => {
-			loadSource(JSON_LIST_NAME, (monsters) => {
-				addMonsters(monsters);
-				if (++loadCount === loadTotal) {
-					funcOnload();
-				}
-			})(src, "yes");
-		});
+		if (loadTotal) {
+			let loadCount = 0;
+			toLoad.forEach(src => {
+				loadSource(JSON_LIST_NAME, (monsters) => {
+					addMonsters(monsters);
+					if (++loadCount === loadTotal) {
+						funcOnload();
+					}
+				})(src, "yes");
+			});
+		} else {
+			funcOnload();
+		}
 	});
 	ListUtil.loadState();
 }
