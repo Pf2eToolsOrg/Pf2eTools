@@ -22,7 +22,7 @@ const STR_PROF_NONE = "none";
 const STR_SOURCES_OFFICIAL = "0";
 const STR_SOURCES_MIXED = "1";
 const STR_SOURCES_ALL = "2";
-const STRS_SOURCE_STATES = ["Show Official", "Show Unique", "Show All"];
+const STRS_SOURCE_STATES = ["Official", "Most Recent", "All"];
 
 const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
