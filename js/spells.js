@@ -485,15 +485,19 @@ function addSpells (data) {
 		const loaded = Object.keys(loadedSources).filter(it => loadedSources[it].loaded);
 		const toLoad = json.sources.filter(it => !loaded.includes(it));
 		const loadTotal = toLoad.length;
-		let loadCount = 0;
-		toLoad.forEach(src => {
-			loadSource(JSON_LIST_NAME, (spells) => {
-				addSpells(spells);
-				if (++loadCount === loadTotal) {
-					funcOnload();
-				}
-			})(src, "yes");
-		});
+		if (loadTotal) {
+			let loadCount = 0;
+			toLoad.forEach(src => {
+				loadSource(JSON_LIST_NAME, (spells) => {
+					addSpells(spells);
+					if (++loadCount === loadTotal) {
+						funcOnload();
+					}
+				})(src, "yes");
+			});
+		} else {
+			funcOnload();
+		}
 	});
 	ListUtil.loadState();
 }
