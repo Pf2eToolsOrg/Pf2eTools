@@ -2820,8 +2820,20 @@ table.stats div.statsBlockInsetReadaloud {
 
 	span.pnl-link,
 	div#subclasses > span {
-		&:not(.cf-active):not(.os-active):not(.active) {
+		&:not(.cf-active):not(.active):not(#os-toggle) {
 			background: black;
+		}
+
+		&[data-state='0'] {
+			background: black;
+		}
+
+		&[data-state='1'] {
+			background: repeating-linear-gradient(45deg, #1d965d, #1d965d 15px, black 15px, black 30px);
+		}
+
+		&[data-state='2'] {
+			background: #1d965d;
 		}
 	}
 
