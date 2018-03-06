@@ -200,8 +200,15 @@ function getSubclassStyles (sc) {
 
 function subclassIsFreshUa (sc) {
 	// only tag reprinted UA
-	if (isNonstandardSource(sc.source)) {
-		const nonUa = curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\(UA\)/, "").trim() === pub.name);
+	if (isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source)) {
+		// special cases
+		if (sc.name === "Knowledge Domain (PSA)" && sc.source === SRC_PSA) return false;
+		if (sc.name === "Deep Stalker (UA)" && sc.source === SRC_UALDR) return false;
+		if (sc.name.includes("Favored Soul")) return false;
+		if (sc.name === "Shadow (UA)" && sc.source === SRC_UALDR) return false;
+		if (sc.name === "The Undying Light (UA)" && sc.source === SRC_UALDR) return false;
+
+		const nonUa = curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG)\)/, "").trim() === pub.name);
 		if (nonUa) return false;
 	}
 	return true;
