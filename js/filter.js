@@ -593,6 +593,16 @@ class FilterBox {
 		}
 	}
 
+	setFromValues (values) {
+		Object.keys(this.headers).forEach(hk => {
+			if (values[hk]) {
+				const cur = this.headers[hk];
+				const toSet = values[hk];
+				cur.ele.data("setValues")(toSet)
+			}
+		});
+	}
+
 	getAsSubHashes () {
 		const cur = this.getValues();
 		const out = {};
