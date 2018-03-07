@@ -166,6 +166,7 @@ function populateTablesAndFilters () {
 		}
 		mundanelist.filter(listFilter);
 		magiclist.filter(listFilter);
+		FilterBox.nextIfHidden(itemList);
 	}
 
 	function hideListIfEmpty (list, $eles) {
@@ -196,7 +197,7 @@ function populateTablesAndFilters () {
 		}).siblings("ul.list").animate({
 			maxHeight: "0",
 			display: "none"
-		})
+		});
 	});
 
 	RollerUtil.addListRollButton();

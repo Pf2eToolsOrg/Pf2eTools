@@ -73,6 +73,7 @@ function onJsonLoad (data) {
 				r.type
 			);
 		});
+		FilterBox.nextIfHidden(rewardList);
 	}
 
 	initHistory();

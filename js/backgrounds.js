@@ -60,6 +60,7 @@ function onJsonLoad (data) {
 			const bg = bgList[$(item.elm).attr(FLTR_ID)];
 			return filterBox.toDisplay(f, bg.source);
 		});
+		FilterBox.nextIfHidden(bgList);
 	}
 
 	initHistory();

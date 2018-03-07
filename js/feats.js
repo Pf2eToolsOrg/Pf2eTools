@@ -93,6 +93,7 @@ function onJsonLoad (data) {
 				ft._fPrereq
 			);
 		});
+		FilterBox.nextIfHidden(featlist);
 	}
 
 	initHistory();

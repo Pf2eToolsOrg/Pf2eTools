@@ -131,6 +131,7 @@ function onJsonLoad (data) {
 				p.prerequisites.level
 			);
 		});
+		FilterBox.nextIfHidden(INVOCATION_LIST);
 	}
 
 	initHistory();

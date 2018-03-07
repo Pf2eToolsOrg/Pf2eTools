@@ -375,6 +375,7 @@ function handleFilterChange () {
 			s._fRangeType
 		);
 	});
+	onFilterChangeMulti(spellList);
 }
 
 let spellList = [];

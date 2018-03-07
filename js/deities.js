@@ -137,6 +137,7 @@ function onJsonLoad (data) {
 				g._fReprinted
 			);
 		});
+		FilterBox.nextIfHidden(deitiesList);
 	}
 
 	initHistory();

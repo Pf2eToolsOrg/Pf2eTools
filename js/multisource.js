@@ -18,7 +18,7 @@ function multisourceLoad (jsonDir, jsonListName, pageInitFn, dataFn, cbOpt) {
 }
 
 let loadedSources;
-
+let indexLoadComplete = false;
 function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, cbOpt) {
 	// track loaded sources
 	loadedSources = {};
@@ -79,6 +79,7 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, cbOpt) 
 				handleFilterChange();
 				RollerUtil.addListRollButton();
 				addListShowHide();
+				indexLoadComplete = true;
 			}
 		);
 	}
@@ -94,4 +95,8 @@ function loadSource (jsonListName, dataFn) {
 			});
 		}
 	}
+}
+
+function onFilterChangeMulti (multiList) {
+	FilterBox.nextIfHidden(multiList, !indexLoadComplete);
 }

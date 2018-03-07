@@ -120,6 +120,7 @@ function onJsonLoad (data) {
 				p.order
 			);
 		});
+		FilterBox.nextIfHidden(PSIONIC_LIST);
 	}
 
 	initHistory();

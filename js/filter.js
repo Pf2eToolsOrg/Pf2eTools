@@ -667,6 +667,15 @@ class FilterBox {
 		this.$rendered = [];
 		this.$disabledOverlay.detach();
 	}
+
+	static nextIfHidden (fromList, unless) {
+		if (lastLoadedId && !unless) {
+			const last = fromList[lastLoadedId];
+			const lastHash = UrlUtil.autoEncodeHash(last);
+			const link = $("#listcontainer").find(`.list a[href="#${lastHash.toLowerCase()}"]`);
+			if (!link.length) _freshLoad();
+		}
+	}
 }
 
 FilterBox.CLS_INPUT_GROUP_BUTTON = "input-group-btn";

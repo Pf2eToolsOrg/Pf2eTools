@@ -162,7 +162,8 @@ function onJsonLoad (data) {
 				r._fSpeed,
 				r._fMisc
 			);
-		})
+		});
+		FilterBox.nextIfHidden(raceList);
 	}
 
 	initHistory();

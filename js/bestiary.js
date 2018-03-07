@@ -189,6 +189,7 @@ function handleFilterChange () {
 			m._fMisc
 		);
 	});
+	onFilterChangeMulti(monsters);
 }
 
 let monsters = [];
