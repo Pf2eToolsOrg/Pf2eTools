@@ -11,13 +11,13 @@ class StyleSwitcher {
 		const setMethod = style === StyleSwitcher.STYLE_DAY ? htmlClasses.remove : htmlClasses.add;
 		setMethod.call(htmlClasses, StyleSwitcher.NIGHT_CLASS);
 
-		this.setButtonText(style);
+		StyleSwitcher.setButtonText(style);
 
 		this.currentStylesheet = style;
 		StyleSwitcher.createCookie(this.currentStylesheet);
 	}
 
-	setButtonText (style) {
+	static setButtonText (style) {
 		const $button = StyleSwitcher.getButton();
 		if (!$button || !$button.length) {
 			return;
