@@ -33,7 +33,7 @@ function onJsonLoad (data) {
 
 	const names = raceData.map(x => x.name).sort();
 	const options = names.map(name => `<option>${name}</option>`).join();
-	$("#race").append(options).change(changeRace).change();
+	$("#race").append(`<option>None</option>`).append(options).change(changeRace).change();
 
 	if (window.location.hash) window.onhashchange();
 	else window.location.hash = "#rolled";
@@ -80,8 +80,9 @@ function choose () {
 
 function changeRace () {
 	const race = this.value;
-	const stats = raceData
-		.find(({name}) => name === race).ability;
+	const stats = race === "None"
+		? {}
+		: raceData.find(({name}) => name === race).ability;
 
 	$(".racial").val(0);
 	for (const key in stats) $(`#${key} .racial`).val(stats[key])
