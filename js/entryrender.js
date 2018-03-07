@@ -137,6 +137,16 @@ function EntryRenderer () {
 					this._subVariant = false;
 					break;
 				}
+				case "quote":
+					textStack.push(`<p><i>`);
+					for (let i = 0; i < entry.entries.length; i++) {
+						this.recursiveEntryRender(entry.entries[i], textStack);
+						if (i !== entry.entries.length - 1) textStack.push(`<br>`);
+						else textStack.push(`</i>`);
+					}
+					textStack.push(`<span class="quote-by">\u2014 ${entry.by}</span>`);
+					textStack.push(`</p>`);
+					break;
 
 				case "invocation":
 					handleInvocation(this);

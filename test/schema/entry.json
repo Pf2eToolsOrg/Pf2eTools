@@ -75,6 +75,27 @@
 				}
 			]
 		},
+		"entryQuote": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "quote"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"by": {
+							"type": "string"
+						}
+					},
+					"required": ["entries", "by"],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryInlineEntries": {
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
@@ -762,6 +783,7 @@
 	"anyOf": [
 		{"$ref": "#/definitions/entrySection"},
 		{"$ref": "#/definitions/entryEntries"},
+		{"$ref": "#/definitions/entryQuote"},
 		{"$ref": "#/definitions/entryInlineEntries"},
 		{"$ref": "#/definitions/entryEntriesInlineEntries"},
 		{"$ref": "#/definitions/entryOptions"},
