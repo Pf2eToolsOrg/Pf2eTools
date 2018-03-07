@@ -77,6 +77,7 @@ function setSourceState (toState) {
 	}
 }
 
+let initialLoad = true;
 const sourceFilter = getSourceFilter({
 	minimalUI: true
 });
@@ -115,7 +116,20 @@ function onJsonLoad (data) {
 	addClassData(data);
 
 	BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
-	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.makeBrewButton("manage-brew", () => {
+		const cur = filterBox.getValues();
+		if (cur["Source"]) {
+			cur["Source"][SRC_HOMEBREW] = 1;
+			const sources = [];
+			Object.keys(cur["Source"]).forEach(k => {
+				const val = cur["Source"][k];
+				if (val === 1) sources.push(k.toLowerCase());
+				if (val === -1) sources.push(`!${k.toLowerCase()}`);
+			});
+			filterBox.setFromValues({Source: sources});
+			handleFilterChange()
+		}
+	});
 	BrewUtil.setList(list);
 
 	function handleBrew (homebrew) {
@@ -132,6 +146,10 @@ function onJsonLoad (data) {
 	initHistory();
 	initCompareMode();
 	initReaderMode();
+
+	initialLoad = false;
+	filterBox.render();
+	handleFilterChange()
 }
 
 function handleFilterChange () {
@@ -185,8 +203,10 @@ function addClassData (data) {
 	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
 
-	filterBox.render();
-	handleFilterChange();
+	if (!initialLoad) {
+		filterBox.render();
+		handleFilterChange();
+	}
 }
 
 function getSubclassStyles (sc) {

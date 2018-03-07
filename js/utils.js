@@ -2417,7 +2417,7 @@ BrewUtil = {
 		}
 	},
 
-	manageBrew: () => {
+	manageBrew: (funcAddCallback) => {
 		const page = UrlUtil.getCurrentPage();
 		const $body = $(`body`);
 		$body.css("overflow", "hidden");
@@ -2441,7 +2441,7 @@ BrewUtil = {
 		refreshBrewList();
 
 		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
-			addBrew(evt);
+			addBrew(evt, funcAddCallback);
 		});
 		$window.append(
 			$(`<div class="text-align-center"/>`)
@@ -2480,7 +2480,7 @@ BrewUtil = {
 			}
 		}
 
-		function addBrew (event) {
+		function addBrew (event, funcAddCallback) {
 			const input = event.target;
 
 			let readIndex = 0;
@@ -2545,6 +2545,7 @@ BrewUtil = {
 				} else {
 					// reset the input
 					$(event.target).val("");
+					funcAddCallback();
 				}
 			};
 			reader.readAsText(input.files[readIndex++]);
@@ -2600,9 +2601,9 @@ BrewUtil = {
 		}
 	},
 
-	makeBrewButton: (id) => {
+	makeBrewButton: (id, funcAddCallback) => {
 		$(`#${id}`).on("click", () => {
-			BrewUtil.manageBrew();
+			BrewUtil.manageBrew(funcAddCallback);
 		});
 	}
 };
