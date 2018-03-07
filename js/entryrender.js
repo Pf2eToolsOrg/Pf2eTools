@@ -2571,28 +2571,37 @@ EntryRenderer.dice = {
 		let rolls = [];
 		if (parsed.dice) {
 			rolls = parsed.dice.map(d => {
-				let droppedRolls = [];
 				function dropRolls (r) {
-					if (!d.drops) return r;
+					if (!d.drops) return [r, []];
 					let toSlice;
 					if (d.drops === "h") {
-						toSlice = r.sort().reverse();
+						toSlice = [...r].sort().reverse();
 					} else if (d.drops === "l") {
-						toSlice = r.sort();
+						toSlice = [...r].sort();
 					}
-					droppedRolls = toSlice.slice(0, d.drop);
-					return toSlice.slice(d.drop);
+					const toDrop = toSlice.slice(0, d.drop);
+					const keepStack = [];
+					const dropStack = [];
+					r.forEach(it => {
+						const di = toDrop.indexOf(it);
+						if (~di) {
+							toDrop.splice(di, 1);
+							dropStack.push(it);
+						} else {
+							keepStack.push(it);
+						}
+					});
+					return [keepStack, dropStack];
 				}
 
 				const r = EntryRenderer.dice.rollDice(d.num, d.faces);
-				const cleanR = dropRolls(r);
+				const [keepR, dropR] = dropRolls(r);
 
-				const total = cleanR.reduce((a, b) => a + b, 0);
+				const total = keepR.reduce((a, b) => a + b, 0);
 				const max = (d.num - d.drop) * d.faces;
-				if (!droppedRolls.length) droppedRolls = undefined;
 				return {
-					rolls: cleanR,
-					dropped: droppedRolls,
+					rolls: keepR,
+					dropped: dropR.length ? dropR : null,
 					total: (-(d.neg || -1)) * total,
 					isMax: total === max,
 					isMin: total === (d.num - d.drop), // i.e. all 1's
@@ -2629,6 +2638,7 @@ EntryRenderer.dice = {
 				str = str.replace(/--/g, "+").replace(/\+\++/g, "+").replace(/-\+/g, "-").replace(/\+-/g, "-");
 				nextLen = str.length;
 			} while (len !== nextLen);
+			return str;
 		}
 
 		const totalMods = mods.map(m => Number(cleanOperators(m))).reduce((a, b) => a + b, 0);
