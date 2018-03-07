@@ -1150,24 +1150,7 @@ EntryRenderer.reward = {
 	getRenderedString: (reward) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
 		const renderStack = [];
-
-		if (reward.type === "Demonic Boon") {
-			const benefits = {type: "list", style: "list-hang-notitle", items: []};
-			benefits.items.push({
-				type: "item",
-				name: "Ability Score Adjustment:",
-				entry: reward.ability ? reward.ability.entry : "None"
-			});
-			benefits.items.push({
-				type: "item",
-				name: "Signature Spells:",
-				entry: reward.signaturespells ? reward.signaturespells.entry : "None"
-			});
-			renderer.recursiveEntryRender(benefits, renderStack, 1);
-		}
-
 		renderer.recursiveEntryRender({entries: reward.entries}, renderStack, 1);
-
 		return `<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
 	},
 
