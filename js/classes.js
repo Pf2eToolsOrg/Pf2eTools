@@ -1,6 +1,7 @@
 "use strict";
 const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";
+const HASH_SHOW_FLUFF = "showfluff:";
 const HASH_SOURCES = "sources:";
 const HASH_COMP_VIEW = "compview:";
 const HASH_BOOK_VIEW = "bookview:";
@@ -10,19 +11,22 @@ const CLSS_ACTIVE = "active";
 const CLSS_SUBCLASS_PILL = "sc-pill";
 const CLSS_PANEL_LINK = "pnl-link";
 const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
+const CLSS_FLUFF_ACTIVE = "fluff-active";
 const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
 const CLSS_CLASS_FEATURE = "class-feature";
+const CLSS_CLASS_FLUFF = "class-fluff";
 const CLSS_GAIN_SUBCLASS_FEATURE = "gain-subclass-feature";
 const CLSS_FRESH_UA = "fresh-ua";
 
 const ID_CLASS_FEATURES_TOGGLE = "cf-toggle";
+const ID_FLUFF_TOGGLE = "fluff-toggle";
 const ID_OTHER_SOURCES_TOGGLE = "os-toggle";
 
 const STR_PROF_NONE = "none";
 const STR_SOURCES_OFFICIAL = "0";
 const STR_SOURCES_MIXED = "1";
 const STR_SOURCES_ALL = "2";
-const STRS_SOURCE_STATES = ["Official", "Most Recent", "All"];
+const STRS_SOURCE_STATES = ["Official Sources", "Most Recent", "All Sources"];
 
 const ATB_DATA_FEATURE_LINK = "data-flink";
 const ATB_DATA_FEATURE_ID = "data-flink-id";
@@ -333,9 +337,17 @@ function loadhash (id) {
 		}
 	}
 
-	// FEATURE DESCRIPTIONS ============================================================================================
+	// FEATURE DESCRIPTIONS & FLUFF ====================================================================================
 	const renderStack = [];
+	renderer.setFirstSection(true);
 	const topBorder = $("#ftTopBorder");
+
+	// FLUFF
+	if (curClass.fluff) {
+		renderer.recursiveEntryRender({type: "section", name: curClass.name, entries: curClass.fluff}, renderStack, 0, `<tr class="text ${CLSS_CLASS_FLUFF}"><td colspan="6">`, `</td></tr>`, true);
+	}
+
+	// FEATURE DESCRIPTIONS
 	let subclassIndex = 0; // the subclass array is not 20 elements
 	for (let i = 0; i < levelTrs.length; i++) {
 		// track class table feature names
@@ -407,7 +419,8 @@ function loadhash (id) {
 	subclassPillWrapper.find("span").remove();
 
 	// show/hide class features pill
-	makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true);
+	makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true, "Toggle class features");
+	makeGenericTogglePill("Detail Info", CLSS_FLUFF_ACTIVE, ID_FLUFF_TOGGLE, HASH_SHOW_FLUFF, false, "Toggle class detail information (Source: Xanathar's Guide to Everything)");
 
 	// show/hide UA/other sources
 	makeSourceCyclePill();
@@ -440,7 +453,7 @@ function loadhash (id) {
 	loadsub("");
 
 	function makeSourceCyclePill () {
-		const $pill = $(`<span id="${ID_OTHER_SOURCES_TOGGLE}" data-state="0" style="min-width: 7em;"><span>${STRS_SOURCE_STATES[0]}</span></span>`);
+		const $pill = $(`<span title="Cycle through source types" id="${ID_OTHER_SOURCES_TOGGLE}" data-state="0" style="min-width: 8em;"><span>${STRS_SOURCE_STATES[0]}</span></span>`);
 		subclassPillWrapper.append($pill);
 		$pill.click(() => {
 			let state = Number($pill.attr("data-state"));
@@ -452,8 +465,8 @@ function loadhash (id) {
 	}
 
 	// helper functions
-	function makeGenericTogglePill (pillText, pillActiveClass, pillId, hashKey, defaultActive) {
-		const pill = $(`<span id="${pillId}"><span>${pillText}</span></span>`);
+	function makeGenericTogglePill (pillText, pillActiveClass, pillId, hashKey, defaultActive, title) {
+		const pill = $(`<span title="${title}" id="${pillId}"><span>${pillText}</span></span>`);
 		if (defaultActive) pill.addClass(pillActiveClass);
 		subclassPillWrapper.append(pill);
 		pill.click(function () {
@@ -537,6 +550,7 @@ function loadsub (sub) {
 	let subclasses = null;
 	let feature = null;
 	let hideClassFeatures = null;
+	let showFluff = null;
 	let sources = null;
 	let bookView = null;
 	let comparisonView = null;
@@ -551,6 +565,7 @@ function loadsub (sub) {
 		if (hashPart.startsWith(HASH_SUBCLASS)) subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
 		if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart;
 		if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = sliceTrue(hashPart, HASH_HIDE_FEATURES);
+		if (hashPart.startsWith(HASH_SHOW_FLUFF)) showFluff = sliceTrue(hashPart, HASH_SHOW_FLUFF);
 		if (hashPart.startsWith(HASH_SOURCES)) sources = hashPart.slice(HASH_SOURCES.length);
 		if (hashPart.startsWith(HASH_BOOK_VIEW)) bookView = sliceTrue(hashPart, HASH_BOOK_VIEW);
 		if (hashPart.startsWith(HASH_COMP_VIEW)) comparisonView = sliceTrue(hashPart, HASH_COMP_VIEW);
@@ -672,7 +687,8 @@ function loadsub (sub) {
 	// if showing no subclass and hiding class features, hide the "gain a feature at this level" labels
 	if (isHideClassFeatures && subclasses === null) {
 		allCf.hide();
-		$(`#please-select-message`).addClass("showing");
+		if (!showFluff) $(`#please-select-message`).addClass("showing");
+		else $(`#please-select-message`).removeClass("showing");
 	} else {
 		allCf.show();
 		$(`#please-select-message`).removeClass("showing");
@@ -683,6 +699,17 @@ function loadsub (sub) {
 	} else {
 		cfToggle.addClass(CLSS_CLASS_FEATURES_ACTIVE);
 		toToggleCf.show();
+	}
+
+	// show fluff as required
+	const fluffToggle = $(`#${ID_FLUFF_TOGGLE}`);
+	const fluff = $(`#pagecontent`).find(`.${CLSS_CLASS_FLUFF}`);
+	if (!showFluff) {
+		fluffToggle.removeClass(CLSS_FLUFF_ACTIVE);
+		fluff.hide();
+	} else {
+		fluffToggle.addClass(CLSS_FLUFF_ACTIVE);
+		fluff.show();
 	}
 
 	// show UA/etc pills as required

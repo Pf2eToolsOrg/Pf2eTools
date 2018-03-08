@@ -1225,7 +1225,8 @@ div#subclasses span.active.refreshing-brew {
 }
 
 span.pnl-link.cf-active,
-div#subclasses span.cf-active {
+div#subclasses span.cf-active,
+div#subclasses span.fluff-active {
 	background: #922610;
 	color: white;
 }
@@ -2676,6 +2677,7 @@ table.stats div.statsBlockInsetReadaloud {
 	}
 
 	.pnl-link.cf-active,
+	#subclasses span.fluff-active,
 	#subclasses span.cf-active {
 		background-color: $class-main-color;
 		color: black;
@@ -2826,7 +2828,7 @@ table.stats div.statsBlockInsetReadaloud {
 
 	span.pnl-link,
 	div#subclasses > span {
-		&:not(.cf-active):not(.active):not(#os-toggle) {
+		&:not(.cf-active):not(.fluff-active):not(.active):not(#os-toggle) {
 			background: black;
 		}
 
