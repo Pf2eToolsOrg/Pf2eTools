@@ -3,22 +3,23 @@
 class StyleSwitcher {
 	constructor () {
 		this.currentStylesheet = this.STYLE_DAY;
+		this.loadStyleFromCookie();
 	}
 
 	setActiveStyleSheet (style) {
-		const bodyClasses = document.body.classList;
-		const setMethod = style === StyleSwitcher.STYLE_DAY ? bodyClasses.remove : bodyClasses.add;
-		setMethod.call(bodyClasses, StyleSwitcher.NIGHT_CLASS);
+		const htmlClasses = document.documentElement.classList;
+		const setMethod = style === StyleSwitcher.STYLE_DAY ? htmlClasses.remove : htmlClasses.add;
+		setMethod.call(htmlClasses, StyleSwitcher.NIGHT_CLASS);
 
-		this.setButtonText(style);
+		StyleSwitcher.setButtonText(style);
 
 		this.currentStylesheet = style;
 		StyleSwitcher.createCookie(this.currentStylesheet);
 	}
 
-	setButtonText (style) {
+	static setButtonText (style) {
 		const $button = StyleSwitcher.getButton();
-		if (!$button.length) {
+		if (!$button || !$button.length) {
 			return;
 		}
 		$button.html(`${style === StyleSwitcher.STYLE_DAY ? "Night" : "Day"} Mode`);
@@ -28,7 +29,16 @@ class StyleSwitcher {
 		return this.currentStylesheet;
 	}
 
+	loadStyleFromCookie () {
+		this.cookie = StyleSwitcher.readCookie();
+		this.cookie = this.cookie ? this.cookie : StyleSwitcher.STYLE_DAY;
+		this.setActiveStyleSheet(this.cookie);
+	}
+
 	static getButton () {
+		if (!window.$) {
+			return;
+		}
 		return $(".nightModeToggle");
 	}
 
@@ -52,13 +62,6 @@ StyleSwitcher.NIGHT_CLASS = "night-mode";
 
 // NIGHT MODE ==========================================================================================================
 const styleSwitcher = new StyleSwitcher();
-// load user's preferred CSS
-
-document.addEventListener('DOMContentLoaded', () => {
-	styleSwitcher.cookie = StyleSwitcher.readCookie();
-	styleSwitcher.cookie = styleSwitcher.cookie ? styleSwitcher.cookie : StyleSwitcher.STYLE_DAY;
-	styleSwitcher.setActiveStyleSheet(styleSwitcher.cookie);
-});
 
 window.addEventListener("unload", function () {
 	const title = styleSwitcher.getActiveStyleSheet();

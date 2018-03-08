@@ -2520,10 +2520,12 @@ EntryRenderer.dice = {
 				? `<span class="roll">${v.total > 100 - toRoll.successThresh ? "success" : "failure"}</span>`
 				: `<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>`;
 			$out.append(`
-				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces})`).join("")}${v.modStr}">
+				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces}${r.drops ? `d${r.drops}${r.drop}` : ""})`).join("")}${v.modStr}">
 					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
 					${totalPart}
-					<span class="all-rolls text-muted">${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")})`).join("")}${v.modStr}</span>
+					<span class="all-rolls text-muted">
+						${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")}${r.dropped ? `<span style="text-decoration: red line-through;">+${r.dropped.join("+")}</span>` : ""})`).join("")}${v.modStr}
+					</span>
 					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
 				</div>`);
 		} else {
@@ -2562,18 +2564,46 @@ EntryRenderer.dice = {
 		let rolls = [];
 		if (parsed.dice) {
 			rolls = parsed.dice.map(d => {
-				let r = EntryRenderer.dice.rollDice(d.num, d.faces);
-				const total = r.reduce((a, b) => a + b, 0);
-				const max = d.num * d.faces;
+				function dropRolls (r) {
+					if (!d.drops) return [r, []];
+					let toSlice;
+					if (d.drops === "h") {
+						toSlice = [...r].sort().reverse();
+					} else if (d.drops === "l") {
+						toSlice = [...r].sort();
+					}
+					const toDrop = toSlice.slice(0, d.drop);
+					const keepStack = [];
+					const dropStack = [];
+					r.forEach(it => {
+						const di = toDrop.indexOf(it);
+						if (~di) {
+							toDrop.splice(di, 1);
+							dropStack.push(it);
+						} else {
+							keepStack.push(it);
+						}
+					});
+					return [keepStack, dropStack];
+				}
+
+				const r = EntryRenderer.dice.rollDice(d.num, d.faces);
+				const [keepR, dropR] = dropRolls(r);
+
+				const total = keepR.reduce((a, b) => a + b, 0);
+				const max = (d.num - d.drop) * d.faces;
 				return {
-					rolls: r,
+					rolls: keepR,
+					dropped: dropR.length ? dropR : null,
 					total: (-(d.neg || -1)) * total,
 					isMax: total === max,
-					isMin: total === d.num, // i.e. all 1's
+					isMin: total === (d.num - d.drop), // i.e. all 1's
 					neg: d.neg,
 					num: d.num,
 					faces: d.faces,
-					mod: d.mod
+					mod: d.mod,
+					drop: d.drop,
+					drops: d.drops
 				}
 			});
 		}
@@ -2593,7 +2623,18 @@ EntryRenderer.dice = {
 			mods.push(m0);
 			return "";
 		});
-		const totalMods = mods.map(m => Number(m.replace(/--/g, "+"))).reduce((a, b) => a + b, 0);
+		function cleanOperators (str) {
+			let len;
+			let nextLen;
+			do {
+				len = str.length;
+				str = str.replace(/--/g, "+").replace(/\+\++/g, "+").replace(/-\+/g, "-").replace(/\+-/g, "-");
+				nextLen = str.length;
+			} while (len !== nextLen);
+			return str;
+		}
+
+		const totalMods = mods.map(m => Number(cleanOperators(m))).reduce((a, b) => a + b, 0);
 
 		function isNumber (char) {
 			return char >= "0" && char <= "9";
@@ -2618,6 +2659,7 @@ EntryRenderer.dice = {
 		let cur = getNew();
 		let temp = "";
 		let c;
+		let drop = false;
 		for (let i = 0; i < str.length; ++i) {
 			c = str.charAt(i);
 
@@ -2650,10 +2692,31 @@ EntryRenderer.dice = {
 				case S_FACES:
 					if (isNumber(c)) {
 						temp += c;
+					} else if (c === "d") {
+						if (!drop) {
+							if (temp) {
+								drop = true;
+								cur.faces = Number(temp);
+								if (!cur.num || !cur.faces) return null;
+								temp = "";
+							} else {
+								return null;
+							}
+						} else return null;
+					} else if (c === "l") {
+						if (drop) {
+							cur.drops = "l";
+						} else return null;
+					} else if (c === "h") {
+						if (drop) {
+							cur.drops = "h";
+						} else return null;
 					} else if (c === "+") {
 						if (temp) {
-							cur.faces = Number(temp);
-							if (!cur.num || !cur.faces) return null;
+							if (drop) cur.drop = Number(temp);
+							else cur.faces = Number(temp);
+
+							if (!cur.num || !cur.faces || (cur.drop && (cur.drop >= cur.num))) return null;
 							stack.push(cur);
 							cur = getNew();
 							temp = "";
@@ -2663,8 +2726,10 @@ EntryRenderer.dice = {
 						}
 					} else if (c === "-") {
 						if (temp) {
-							cur.faces = Number(temp);
-							if (!cur.num || !cur.faces) return null;
+							if (drop) cur.drop = Number(temp);
+							else cur.faces = Number(temp);
+
+							if (!cur.num || !cur.faces || (cur.drop && (cur.drop >= cur.num))) return null;
 							stack.push(cur);
 							cur = getNew();
 							cur.neg = true;
@@ -2686,7 +2751,9 @@ EntryRenderer.dice = {
 				return null;
 			case S_FACES:
 				if (temp) {
-					cur.faces = Number(temp);
+					if (drop) cur.drop = Number(temp);
+					else cur.faces = Number(temp);
+					if (cur.drop && (cur.drop >= cur.num)) return null;
 				} else {
 					return null;
 				}
