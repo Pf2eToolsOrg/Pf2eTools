@@ -2300,8 +2300,12 @@ EntryRenderer.dice = {
 	_histIndex: null,
 	_$lastRolledBy: null,
 
+	isCrypto: () => {
+		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
+	},
+
 	randomise: (max) => {
-		if (typeof window !== "undefined" && typeof window.crypto !== "undefined") {
+		if (EntryRenderer.dice.isCrypto()) {
 			return EntryRenderer.dice._randomise(1, max + 1);
 		} else {
 			return RollerUtil.roll(max) + 1;
@@ -2334,7 +2338,7 @@ EntryRenderer.dice = {
 	},
 
 	parseRandomise: (str) => {
-		if (!str.trim()) return "";
+		if (!str.trim()) return null;
 		const toRoll = EntryRenderer.dice._parse(str);
 		if (toRoll) {
 			return EntryRenderer.dice._rollParsed(toRoll);
@@ -2524,7 +2528,7 @@ EntryRenderer.dice = {
 					${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
 					${totalPart}
 					<span class="all-rolls text-muted">
-						${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")}${r.dropped ? `<span style="text-decoration: red line-through;">+${r.dropped.join("+")}</span>` : ""})`).join("")}${v.modStr}
+						${EntryRenderer.dice.getDiceSummary(v)}
 					</span>
 					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
 				</div>`);
@@ -2532,6 +2536,10 @@ EntryRenderer.dice = {
 			$out.append(`<div class="out-roll-item">Invalid roll!</div>`);
 		}
 		EntryRenderer.dice._scrollBottom();
+	},
+
+	getDiceSummary: (v, textOnly) => {
+		return `${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.rolls.join("+")}${r.dropped ? `${textOnly ? "" : `<span style="text-decoration: red line-through;">`}+${r.dropped.join("+")}${textOnly ? "" : `</span>`}` : ""})`).join("")}${v.modStr}`;
 	},
 
 	addRoll: (rolledBy, msgText) => {

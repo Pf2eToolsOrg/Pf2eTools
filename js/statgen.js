@@ -19,6 +19,10 @@ function onJsonLoad (data) {
 
 	$("#rollbutton").click(rollstats);
 
+	const isCrypto = EntryRenderer.dice.isCrypto();
+	const titleStr = isCrypto ? "Numbers will be generated using Crypto.getRandomValues()" : "Numbers will be generated using Math.random()";
+	$(`#roller-mode`).html(`Cryptographically strong random generation: <span title="${titleStr}" class="crypto-${isCrypto}">${isCrypto ? `<span class="glyphicon glyphicon-lock"></span> enabled` : `<span class="glyphicon glyphicon-ban-circle"></span> not available`}</span>`);
+
 	$(function () {
 		$("#reset").click(function () {
 			$(".base").val(8);
@@ -120,13 +124,18 @@ function changeBase (e) {
 }
 
 function rollstats () {
-	var rolls = [];
-	for (var i = 0; i < 6; i++) {
-		var curroll = EntryRenderer.dice.parseRandomise("4d6").rolls[0].rolls.sort().slice(1);
-		curroll = curroll[0] + curroll[1] + curroll[2];
-		rolls.push(curroll);
+	const formula = $(`#stats-formula`).val();
+
+	const rolls = [];
+	for (let i = 0; i < 6; i++) {
+		rolls.push(EntryRenderer.dice.parseRandomise(formula));
 	}
 
-	$("#rolled #rolls").prepend("<p>" + rolls.join(", ") + "</p>");
-	$("#rolled #rolls p:eq(10)").remove();
+	const $rolled = $("#rolled");
+	if (~rolls.findIndex(it => !it)) {
+		$rolled.find("#rolls").prepend(`<p>Invalid dice formula!</p>`)
+	} else {
+		$rolled.find("#rolls").prepend(`<p class="stat-roll-line">${rolls.map(r => `<span class="stat-roll-item" title="${EntryRenderer.dice.getDiceSummary(r, true)}">${r.total}</span>`).join("")}</p>`);
+	}
+	$rolled.find("#rolls p:eq(10)").remove();
 }

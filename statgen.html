@@ -21,6 +21,40 @@
 		button#reset {
 			border-radius: 4px;
 		}
+
+		.old-text {
+			text-decoration: line-through;
+		}
+
+		.crypto-true {
+			color: #00b400;
+		}
+
+		.crypto-false {
+			color: #ff3100;
+		}
+
+		[class^="crypto-"] {
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 2px;
+			margin-bottom: -2px;
+			margin-top: -2px;
+			background-color: white;
+			cursor: help;
+		}
+
+		.stat-roll-line {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.stat-roll-item {
+			width: 100%;
+			text-align: center;
+			cursor: help;
+		}
 	</style>
 </head>
 
@@ -49,14 +83,14 @@
 		</div>
 		<div class="col-sm-9 statmethod" id="rolled" style="display: none">
 			<h3>Rolled Stats</h3>
-			<button type="button" id="rollbutton" class="btn btn-default">Roll Stats</button>
-			<h3 id="rolls">
-			</h3>
-			<p>Click the button to roll for your stats. 4d6 are rolled with the lowest of the set discarded. This is
-				done for each ability score. Assign these numbers to your abilities as desired. As this is based on your
-				browser's JavaScript random number generator,
-				it cannot be considered at all "truly" random, but for most purposes can be considered "random
-				enough."</p>
+			<div class="input-group">
+				<span class="input-group-addon" id="roller-mode"></span>
+				<input class="form-control" placeholder="Enter dice formula" value="4d6dl1" id="stats-formula">
+				<span class="input-group-btn">
+					<button type="button" id="rollbutton" class="btn btn-default">Roll Stats</button>
+				</span>
+			</div>
+			<h3 id="rolls"></h3>
 		</div>
 		<div class="col-sm-9 statmethod" id="array" style="display: none">
 			<h3>Standard Array</h3>
