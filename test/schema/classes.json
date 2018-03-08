@@ -258,6 +258,12 @@
 				},
 				"page": {
 					"type": "integer"
+				},
+				"fluff": {
+					"type": "array",
+					"items": {
+						"items": {"$ref": "/Entry"}
+					}
 				}
 			},
 			"required": [
