@@ -2560,6 +2560,21 @@ table.stats div.statsBlockInsetReadaloud {
 		background-color: transparent !important;
 	}
 
+	#pointbuy {
+		select,
+		input {
+			background-color: transparent !important;
+		}
+
+		input {
+			&[type='number'] {
+				border: 1px solid #ccc !important;
+				outline-offset: 0 !important;
+				outline: none !important;
+			}
+		}
+	}
+
 	ul.list li:hover {
 		background: black;
 	}
