@@ -565,10 +565,10 @@ function handleUnknownHash (link, sub) {
 	if (src) {
 		loadSource(JSON_LIST_NAME, (spells) => {
 			addSpells(spells);
-			hashchange();
+			History.hashChange();
 		})(src, "yes");
 	} else {
-		_freshLoad();
+		History._freshLoad();
 	}
 }
 

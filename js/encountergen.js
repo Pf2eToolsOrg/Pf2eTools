@@ -51,7 +51,7 @@ function onJsonLoad (data) {
 		listClass: "encounters"
 	});
 
-	initHistory();
+	History.init();
 	RollerUtil.addListRollButton();
 }
 

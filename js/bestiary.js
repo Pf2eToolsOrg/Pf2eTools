@@ -778,7 +778,7 @@ function handleUnknownHash (link, sub) {
 	if (src) {
 		loadSource(JSON_LIST_NAME, (monsters) => {
 			addMonsters(monsters);
-			hashchange();
+			History.hashChange();
 		})(src, "yes");
 	}
 }

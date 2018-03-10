@@ -76,7 +76,7 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(rewardList);
 	}
 
-	initHistory();
+	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 

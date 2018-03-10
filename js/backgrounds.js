@@ -63,7 +63,7 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(bgList);
 	}
 
-	initHistory();
+	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 

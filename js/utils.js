@@ -1481,7 +1481,7 @@ ListUtil = {
 				// K up; J down
 				if (noModifierKeys(e)) {
 					if (e.key === "k" || e.key === "j") {
-						const it = getSelectedListElementWithIndex();
+						const it = History.getSelectedListElementWithIndex();
 
 						if (it) {
 							if (e.key === "k") {
@@ -1651,8 +1651,8 @@ ListUtil = {
 		ListUtil.getOrTabRightButton(`btn-pin`, `pushpin`)
 			.off("click")
 			.on("click", () => {
-				if (!ListUtil.isSublisted(lastLoadedId)) ListUtil.doSublistAdd(lastLoadedId, true);
-				else ListUtil.doSublistRemove(lastLoadedId);
+				if (!ListUtil.isSublisted(History.lastLoadedId)) ListUtil.doSublistAdd(History.lastLoadedId, true);
+				else ListUtil.doSublistRemove(History.lastLoadedId);
 			})
 			.attr("title", "Pin (Toggle)");
 	},
@@ -1661,8 +1661,8 @@ ListUtil = {
 		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
 			.on("click", (evt) => {
-				if (evt.shiftKey) ListUtil.doSublistAdd(lastLoadedId, true, 20);
-				else ListUtil.doSublistAdd(lastLoadedId, true);
+				if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, 20);
+				else ListUtil.doSublistAdd(History.lastLoadedId, true);
 			})
 			.attr("title", "Add (Shift for 20)");
 	},
@@ -1671,8 +1671,8 @@ ListUtil = {
 		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
 			.on("click", (evt) => {
-				if (evt.shiftKey) ListUtil.doSublistSubtract(lastLoadedId, 20);
-				else ListUtil.doSublistSubtract(lastLoadedId);
+				if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 20);
+				else ListUtil.doSublistSubtract(History.lastLoadedId);
 			})
 			.attr("title", "Subtract (Shift for 20)");
 	},
@@ -1824,7 +1824,7 @@ ListUtil = {
 
 	_loadSavedSublist: (items) => {
 		items.forEach(it => {
-			const $ele = _getListElem(it.h);
+			const $ele = History._getListElem(it.h);
 			const itId = $ele ? $ele.attr("id") : null;
 			if (itId != null) ListUtil.doSublistAdd(itId, false, Number(it.c));
 		});
@@ -2562,7 +2562,7 @@ BrewUtil = {
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 				refreshBrewList();
 				BrewUtil._list.remove("uniqueid", uniqueId);
-				hashchange();
+				History.hashChange();
 			}
 		}
 

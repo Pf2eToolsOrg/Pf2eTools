@@ -96,7 +96,7 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(featlist);
 	}
 
-	initHistory();
+	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 

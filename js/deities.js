@@ -140,7 +140,7 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(deitiesList);
 	}
 
-	initHistory();
+	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 	addListShowHide();

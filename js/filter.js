@@ -579,7 +579,7 @@ class FilterBox {
 			});
 
 		if (toRemove.length) {
-			const [link, ...sub] = _getHashParts();
+			const [link, ...sub] = History._getHashParts();
 
 			const outSub = [];
 			Object.keys(unpacked)
@@ -588,7 +588,7 @@ class FilterBox {
 					outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
 				});
 
-			setSuppressHistory(true);
+			History.setSuppressHistory(true);
 			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
 		}
 	}
@@ -668,12 +668,12 @@ class FilterBox {
 		this.$disabledOverlay.detach();
 	}
 
-	static nextIfHidden (fromList, unless) {
-		if (lastLoadedId && !unless) {
-			const last = fromList[lastLoadedId];
+	static nextIfHidden (fromList) {
+		if (History.lastLoadedId && !History.initialLoad) {
+			const last = fromList[History.lastLoadedId];
 			const lastHash = UrlUtil.autoEncodeHash(last);
 			const link = $("#listcontainer").find(`.list a[href="#${lastHash.toLowerCase()}"]`);
-			if (!link.length) _freshLoad();
+			if (!link.length) History._freshLoad();
 		}
 	}
 }

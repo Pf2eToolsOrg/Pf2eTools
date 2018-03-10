@@ -30,7 +30,7 @@ function onJsonLoad (data) {
 		listClass: "conditions"
 	});
 
-	initHistory();
+	History.init();
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "id"],

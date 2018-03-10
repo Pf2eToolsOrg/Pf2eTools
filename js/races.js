@@ -166,7 +166,7 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(raceList);
 	}
 
-	initHistory();
+	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 

@@ -51,7 +51,7 @@ function onJsonLoad (data) {
 		listClass: "names"
 	});
 
-	initHistory();
+	History.init();
 }
 
 function showHideList (ele) {

@@ -65,7 +65,7 @@ function onJsonLoad (data) {
 	}
 
 	addListShowHide();
-	initHistory();
+	History.init();
 	handleFilterChange();
 }
 

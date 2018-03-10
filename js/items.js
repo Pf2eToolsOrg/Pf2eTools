@@ -40,7 +40,7 @@ function sortItems (a, b, o) {
 function deselectFilter (deselectProperty, deselectValue) {
 	return function (val) {
 		if (window.location.hash.length) {
-			const itemProperty = itemList[getSelectedListElement().attr("id")][deselectProperty];
+			const itemProperty = itemList[History.getSelectedListElement().attr("id")][deselectProperty];
 			if (itemProperty === deselectValue) {
 				return deselNoHash();
 			} else {
@@ -202,7 +202,7 @@ function populateTablesAndFilters () {
 
 	RollerUtil.addListRollButton();
 	addListShowHide();
-	initHistory();
+	History.init();
 	handleFilterChange();
 
 	const subList = ListUtil.initSublist(

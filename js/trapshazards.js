@@ -34,7 +34,7 @@ function onJsonLoad (data) {
 		sortFunction: SortUtil.listSort
 	});
 
-	initHistory();
+	History.init();
 	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
 
 	const subList = ListUtil.initSublist({

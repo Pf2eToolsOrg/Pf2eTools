@@ -47,7 +47,7 @@ function onJsonLoad (data) {
 		sortFunction: SortUtil.listSort
 	});
 
-	initHistory();
+	History.init();
 	EntryRenderer.hover.bindPopoutButton(objectsList);
 
 	const subList = ListUtil.initSublist({

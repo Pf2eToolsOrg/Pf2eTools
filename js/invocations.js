@@ -134,7 +134,7 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(INVOCATION_LIST);
 	}
 
-	initHistory();
+	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 

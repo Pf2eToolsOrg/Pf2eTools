@@ -123,7 +123,7 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(PSIONIC_LIST);
 	}
 
-	initHistory();
+	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
 

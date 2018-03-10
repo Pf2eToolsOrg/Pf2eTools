@@ -81,7 +81,6 @@ function setSourceState (toState) {
 	}
 }
 
-let initialLoad = true;
 const sourceFilter = getSourceFilter({
 	minimalUI: true
 });
@@ -147,11 +146,11 @@ function onJsonLoad (data) {
 		handleFilterChange
 	);
 
-	initHistory();
+	History.init();
 	initCompareMode();
 	initReaderMode();
 
-	initialLoad = false;
+	History.initialLoad = false;
 	filterBox.render();
 	handleFilterChange()
 }
@@ -207,7 +206,7 @@ function addClassData (data) {
 	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
 
-	if (!initialLoad) {
+	if (!History.initialLoad) {
 		filterBox.render();
 		handleFilterChange();
 	}
@@ -255,7 +254,7 @@ function addSubclassData (data) {
 		// sort subclasses
 		c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 	});
-	hashchange();
+	History.hashChange();
 }
 
 let curClass;
@@ -595,7 +594,7 @@ function loadsub (sub) {
 				if (!hashPart.startsWith(HASH_SUBCLASS)) newHashStack.push(hashPart);
 				else if (toKeep.length > 0) newHashStack.push(HASH_SUBCLASS + toKeep.join(HASH_LIST_SEP))
 			}
-			const curParts = _getHashParts();
+			const curParts = History._getHashParts();
 			if (curParts.length > 1) {
 				const newParts = [curParts[0]].concat(newHashStack);
 				cleanSetHash(HASH_START + newParts.join(HASH_PART_SEP));

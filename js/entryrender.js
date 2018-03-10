@@ -2279,8 +2279,8 @@ EntryRenderer.hover = {
 			.off("click")
 			.attr("title", "Popout Window");
 		$btnPop.on("click", (evt) => {
-			if (lastLoadedId !== null) {
-				EntryRenderer.hover.doPopout($btnPop, toList, lastLoadedId, evt.clientX);
+			if (History.lastLoadedId !== null) {
+				EntryRenderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
 			}
 		});
 	},

@@ -27,7 +27,7 @@ function onJsonLoad (data) {
 		listClass: "cultsboons"
 	});
 
-	initHistory();
+	History.init();
 }
 
 function loadhash (id) {
