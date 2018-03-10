@@ -1566,6 +1566,15 @@ ListUtil = {
 	},
 
 	openContextMenu: (evt, ele) => {
+		const anySel = ListUtil._primaryLists.find(l => ListUtil.isAnySelected(l));
+		const $menu = $(`#contextMenu`);
+		if (anySel) {
+			$menu.find(`[data-ctx-id=3]`).show();
+			$menu.find(`[data-ctx-id=4]`).show();
+		} else {
+			$menu.find(`[data-ctx-id=3]`).hide();
+			$menu.find(`[data-ctx-id=4]`).hide();
+		}
 		ListUtil._handleOpenContextMenu(evt, ele, "contextMenu");
 	},
 
@@ -1801,6 +1810,14 @@ ListUtil = {
 				return it.elm.getAttribute(FLTR_ID);
 			})
 			.forEach(it => forEachFunc(it));
+	},
+
+	getSelectedCount: (list) => {
+		return list.items.filter(it => it.elm.className.includes("list-multi-selected")).length;
+	},
+
+	isAnySelected: (list) => {
+		return !!list.items.find(it => it.elm.className.includes("list-multi-selected"));
 	},
 
 	_handleCallUpdateFn: () => {
