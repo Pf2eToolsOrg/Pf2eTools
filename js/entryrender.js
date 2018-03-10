@@ -1292,9 +1292,9 @@ EntryRenderer.object = {
 					</tr>
 					<tr>
 						<td class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
-						<td class="text-align-center">${obj.ac}</td>					
-						<td class="text-align-center">${obj.hp}</td>					
-						<td class="text-align-center">${obj.immune}</td>					
+						<td class="text-align-center">${obj.ac}</td>
+						<td class="text-align-center">${obj.hp}</td>
+						<td class="text-align-center">${obj.immune}</td>
 					</tr>
 				</table>			
 			</td></tr>

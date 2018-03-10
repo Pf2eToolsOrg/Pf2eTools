@@ -1,6 +1,8 @@
 "use strict";
 
 const JSON_URL = "data/objects.json";
+const NM_GENERIC_OBJECT = "Generic Object";
+const STAT_VARIES = "Varies (see below)";
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
@@ -9,6 +11,19 @@ window.onload = function load () {
 let objectsList;
 function onJsonLoad (data) {
 	objectsList = data.object;
+	if (!objectsList.find(({name}) => name === NM_GENERIC_OBJECT)) {
+		objectsList.push({
+			name: NM_GENERIC_OBJECT,
+			size: "V",
+			type: "generic",
+			source: "DMG",
+			page: 246,
+			ac: STAT_VARIES,
+			hp: STAT_VARIES,
+			immune: STAT_VARIES,
+			entries: data.generic
+		});
+	}
 
 	let tempString = "";
 	objectsList.forEach((obj, i) => {
@@ -72,7 +87,7 @@ function loadhash (jsonIndex) {
 	$content.html(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(obj)}
-		<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(obj.size)} object</i><br></td></tr>
+		<tr class="text"><td colspan="6"><i>${obj.type !== "generic" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
 		<tr class="text"><td colspan="6">
 			<b>Armor Class:</b> ${obj.ac}<br>
 			<b>Hit Points:</b> ${obj.hp}<br>
