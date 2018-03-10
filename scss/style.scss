@@ -48,6 +48,9 @@ header {
 
 		&::after {
 			content: '.';
+		}
+
+		&.header-tools::after {
 			color: #e0e0e0;
 		}
 	}
@@ -2449,7 +2452,7 @@ table.stats div.statsBlockInsetReadaloud {
 	color: black;
 }
 
-.header-tools {
+.header-tools span {
 	color: #e0e0e0;
 }
 
@@ -2502,7 +2505,11 @@ table.stats div.statsBlockInsetReadaloud {
 		color: white;
 		background-color: transparent;
 
-		h1::after {
+		h1.header-tools::after {
+			color: dimgrey;
+		}
+
+		h1.header-tools span {
 			color: dimgrey;
 		}
 	}
@@ -2917,8 +2924,8 @@ table.stats div.statsBlockInsetReadaloud {
 		color: $font-color;
 	}
 
-	.header-tools {
-		color: dimgrey; /* lol */
+	.header-tools span {
+		color: dimgrey;
 	}
 
 	.hoverbox .hoverborder .window-title {
