@@ -1,7 +1,6 @@
 "use strict";
 
 class History {
-
 	static hashChange (evt) {
 		if (History.isHistorySuppressed) {
 			History.setSuppressHistory(false);
