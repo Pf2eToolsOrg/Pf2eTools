@@ -2063,7 +2063,7 @@ EntryRenderer.hover = {
 		}
 
 		// don't show on mobile
-		if ($(window).width() <= 1024) return;
+		if ($(window).width() <= 1024 && !evt.shiftKey) return;
 
 		const alreadyHovering = $(ele).data("hover-active");
 		if (alreadyHovering) return;

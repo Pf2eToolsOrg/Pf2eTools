@@ -211,6 +211,10 @@ header {
 	max-height: 96vh;
 	overflow-y: auto;
 
+	@media (max-width: 1023px) {
+		max-width: 95vw;
+	}
+
 	&::-webkit-scrollbar-track {
 		background: #a0a0a0;
 	}
