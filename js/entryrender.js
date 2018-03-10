@@ -144,7 +144,7 @@ function EntryRenderer () {
 						if (i !== entry.entries.length - 1) textStack.push(`<br>`);
 						else textStack.push(`</i>`);
 					}
-					textStack.push(`<span class="quote-by">\u2014 ${entry.by}</span>`);
+					textStack.push(`<span class="quote-by">\u2014 ${entry.by}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`);
 					textStack.push(`</p>`);
 					break;
 
