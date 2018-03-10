@@ -1699,8 +1699,8 @@ ListUtil = {
 	bindUploadButton: (funcPreload) => {
 		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-upload`, `upload`);
 		$btn.off("click")
-			.on("click", () => {
-				function loadSaved (event) {
+			.on("click", (evt) => {
+				function loadSaved (event, additive) {
 					const input = event.target;
 
 					const reader = new FileReader();
@@ -1708,7 +1708,7 @@ ListUtil = {
 						const text = reader.result;
 						const json = JSON.parse(text);
 						const funcOnload = () => {
-							ListUtil._loadSavedSublist(json.items);
+							ListUtil._loadSavedSublist(json.items, additive);
 							$iptAdd.remove();
 							ListUtil._finaliseSublist();
 						};
@@ -1718,12 +1718,13 @@ ListUtil = {
 					reader.readAsText(input.files[0]);
 				}
 
+				const additive = evt.shiftKey;
 				const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
-					loadSaved(evt);
+					loadSaved(evt, additive);
 				}).appendTo($(`body`));
 				$iptAdd.click();
 			})
-			.attr("title", "Upload List");
+			.attr("title", "Upload List (Shift for Additive)");
 	},
 
 	doSublistAdd: (index, doFinalise, addCount) => {
@@ -1786,11 +1787,11 @@ ListUtil = {
 		ListUtil._handleCallUpdateFn();
 	},
 
-	doSublistRemoveAll: () => {
+	doSublistRemoveAll: (noSave) => {
 		ListUtil._pinned = {};
 		ListUtil.sublist.clear();
 		ListUtil._updateSublistVisibility();
-		ListUtil._saveSublist();
+		if (!noSave) ListUtil._saveSublist();
 		ListUtil._handleCallUpdateFn();
 	},
 
@@ -1839,7 +1840,8 @@ ListUtil = {
 		}
 	},
 
-	_loadSavedSublist: (items) => {
+	_loadSavedSublist: (items, additive) => {
+		if (!additive) ListUtil.doSublistRemoveAll(true);
 		items.forEach(it => {
 			const $ele = History._getListElem(it.h);
 			const itId = $ele ? $ele.attr("id") : null;
