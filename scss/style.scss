@@ -573,12 +573,20 @@ input.search {
 }
 
 th.name {
+	position: relative;
+
 	span.stats-name {
 		float: left;
 	}
 
 	span.stats-source {
 		float: right;
+	}
+
+	div.name-inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
 	}
 }
 
@@ -1265,6 +1273,7 @@ div#subclasses span[data-state='2'] {
 img.token {
 	position: absolute;
 	z-index: 10;
+	top: 0;
 	right: 0.1em;
 	float: right;
 	width: auto;
