@@ -615,9 +615,10 @@ function EntryRenderer () {
 								break;
 							case "@class": {
 								if (others.length) {
-									fauxEntry.href.subhashes = [{"key": "sub", "value": others[0].trim() + "~phb"}]; // TODO pass this in
-									if (others.length === 2) {
-										fauxEntry.href.subhashes.push({key: "f", value: others[1].trim()})
+									const scSource = others.length > 1 ? `~${others[1].trim()}` : "~phb";
+									fauxEntry.href.subhashes = [{"key": "sub", "value": others[0].trim() + scSource}];
+									if (others.length > 2) {
+										fauxEntry.href.subhashes.push({key: "f", value: others[2].trim()})
 									}
 								}
 								fauxEntry.href.path = "classes.html";
