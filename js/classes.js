@@ -231,7 +231,7 @@ function subclassIsFreshUa (sc) {
 		if (sc.name === "Shadow (UA)" && sc.source === SRC_UALDR) return false;
 		if (sc.name === "The Undying Light (UA)" && sc.source === SRC_UALDR) return false;
 
-		const nonUa = curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG)\)/, "").trim() === pub.name);
+		const nonUa = curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === pub.name);
 		if (nonUa) return false;
 	}
 	return true;
