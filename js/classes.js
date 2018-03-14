@@ -81,8 +81,11 @@ function setSourceState (toState) {
 	}
 }
 
-const sourceFilter = getSourceFilter({
-	minimalUI: true
+const sourceFilter = new Filter({
+	header: FilterBox.SOURCE_HEADER,
+	minimalUI: true,
+	items: ["Core", "Others"],
+	selFn: (it) => it === "Core"
 });
 const filterBox = initFilterBox(sourceFilter);
 function onJsonLoad (data) {
@@ -161,7 +164,7 @@ function handleFilterChange () {
 		const c = classes[$(item.elm).attr(FLTR_ID)];
 		return filterBox.toDisplay(
 			f,
-			c.source
+			c._fSource
 		);
 	});
 }
@@ -189,6 +192,7 @@ function addClassData (data) {
 	let tempString = "";
 	for (; i < classes.length; i++) {
 		const curClass = classes[i];
+		curClass._fSource = isNonstandardSource(curClass.source) ? "Others" : "Core";
 		tempString +=
 			`<li class="row" ${FLTR_ID}="${i}" ${curClass.uniqueId ? `data-unique-id="${curClass.uniqueId}"` : ""}>
 				<a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'>
@@ -197,8 +201,6 @@ function addClassData (data) {
 					<span class="uniqueid hidden">${curClass.uniqueId ? curClass.uniqueId : i}</span>
 				</a>
 			</li>`;
-
-		sourceFilter.addIfAbsent(curClass.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	classTable.append(tempString);
