@@ -164,7 +164,7 @@ function navigation () {
 			<li role="presentation">
 				<a href="${a_href}" target="${a_target}" title="${a_title}" class="dropdown-ext-link">
 					<span>${a_text}</span>
-					<span class="glyphicon glyphicon-new-window"></span>
+					<span class="glyphicon glyphicon-log-out"></span>
 				</a>
 			</li>
 		`;
