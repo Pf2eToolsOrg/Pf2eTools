@@ -1754,7 +1754,7 @@ ListUtil = {
 	},
 
 	setFromSubHashes: (subHashes, funcPreload) => {
-		function funcOnload () {
+		function funcOnload (json) {
 			ListUtil._loadSavedSublist(json.items, false);
 			ListUtil._finaliseSublist();
 
@@ -1771,12 +1771,12 @@ ListUtil = {
 
 		const unpacked = {};
 		subHashes.forEach(s => Object.assign(unpacked, UrlUtil.unpackSubHash(s, true)));
-		const setFrom = unpacked[ListUtil.SUB_HASH_PREFIX]
+		const setFrom = unpacked[ListUtil.SUB_HASH_PREFIX];
 		if (setFrom) {
 			const json = JSON.parse(setFrom);
 
-			if (funcPreload) funcPreload(json, funcOnload);
-			else funcOnload();
+			if (funcPreload) funcPreload(json, () => funcOnload(json));
+			else funcOnload(json);
 		}
 	},
 

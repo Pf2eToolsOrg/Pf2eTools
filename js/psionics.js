@@ -123,8 +123,6 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(PSIONIC_LIST);
 	}
 
-	History.init();
-	handleFilterChange();
 	RollerUtil.addListRollButton();
 
 	const subList = ListUtil.initSublist({
@@ -141,6 +139,9 @@ function onJsonLoad (data) {
 	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+
+	History.init();
+	handleFilterChange();
 }
 
 function getSublistItem (p, pinId) {

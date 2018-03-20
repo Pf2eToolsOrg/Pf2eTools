@@ -202,8 +202,6 @@ function populateTablesAndFilters () {
 
 	RollerUtil.addListRollButton();
 	addListShowHide();
-	History.init();
-	handleFilterChange();
 
 	const subList = ListUtil.initSublist(
 		{
@@ -224,6 +222,9 @@ function populateTablesAndFilters () {
 	ListUtil.bindUploadButton();
 	ListUtil.initGenericAddable();
 	ListUtil.loadState();
+
+	History.init();
+	handleFilterChange();
 }
 
 function onSublistChange () {

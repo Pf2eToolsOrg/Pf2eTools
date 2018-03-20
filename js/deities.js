@@ -140,8 +140,6 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(deitiesList);
 	}
 
-	History.init();
-	handleFilterChange();
 	RollerUtil.addListRollButton();
 	addListShowHide();
 
@@ -159,6 +157,9 @@ function onJsonLoad (data) {
 	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+
+	History.init();
+	handleFilterChange();
 }
 
 function getSublistItem (g, pinId) {
