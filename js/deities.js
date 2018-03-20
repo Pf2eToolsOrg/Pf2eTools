@@ -201,4 +201,5 @@ function loadhash (jsonIndex) {
 
 function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 }

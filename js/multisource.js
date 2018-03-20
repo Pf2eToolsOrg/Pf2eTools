@@ -86,7 +86,7 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, cbOpt) 
 
 function loadSource (jsonListName, dataFn) {
 	return function (src, val) {
-		const toLoad = loadedSources[src];
+		const toLoad = loadedSources[src] || loadedSources[Object.keys(loadedSources).find(k => k.toLowerCase() === src)];
 		if (!toLoad.loaded && val === "yes") {
 			DataUtil.loadJSON(toLoad.url, function (data) {
 				dataFn(data[jsonListName]);

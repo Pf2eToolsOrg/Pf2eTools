@@ -1455,8 +1455,24 @@ function copyText (text) {
 	$temp.remove();
 }
 
+function showCopiedEffect($ele) {
+	const $temp = $(`<div class="copied-tip"><span>Copied!</span></div>`);
+	const pos = $ele.offset();
+	$temp.css({
+		top: pos.top - 17,
+		left: pos.left - 36 + ($ele.width() / 2)
+	}).appendTo($(`body`)).animate({
+		top: "-=8",
+		opacity: 0
+	}, 250, () => {
+		$temp.remove();
+	});
+}
+
 // LIST AND SEARCH =====================================================================================================
 ListUtil = {
+	SUB_HASH_PREFIX: "sublistselected",
+
 	_first: true,
 
 	search: (options) => {
@@ -1676,7 +1692,7 @@ ListUtil = {
 				if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, 20);
 				else ListUtil.doSublistAdd(History.lastLoadedId, true);
 			})
-			.attr("title", "Add (Shift for 20)");
+			.attr("title", "Add (SHIFT for 20)");
 	},
 
 	bindSubtractButton: () => {
@@ -1686,17 +1702,24 @@ ListUtil = {
 				if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 20);
 				else ListUtil.doSublistSubtract(History.lastLoadedId);
 			})
-			.attr("title", "Subtract (Shift for 20)");
+			.attr("title", "Subtract (SHIFT for 20)");
 	},
 
 	bindDownloadButton: () => {
-		ListUtil.getOrTabRightButton(`btn-sublist-download`, `download`)
-			.off("click")
-			.on("click", () => {
-				const filename = `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
-				DataUtil.userDownload(filename, JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
+		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-download`, `download`);
+		$btn.off("click")
+			.on("click", (evt) => {
+				if (evt.shiftKey) {
+					const toEncode = JSON.stringify(ListUtil._getExportableSublist());
+					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true))];
+					copyText(parts.join(HASH_PART_SEP));
+					showCopiedEffect($btn);
+				} else {
+					const filename = `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
+					DataUtil.userDownload(filename, JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
+				}
 			})
-			.attr("title", "Download List");
+			.attr("title", "Download List (SHIFT for Link)");
 	},
 
 	bindUploadButton: (funcPreload) => {
@@ -1727,7 +1750,34 @@ ListUtil = {
 				}).appendTo($(`body`));
 				$iptAdd.click();
 			})
-			.attr("title", "Upload List (Shift for Additive)");
+			.attr("title", "Upload List (SHIFT for Add Only)");
+	},
+
+	setFromSubHashes: (subHashes, funcPreload) => {
+		const unpacked = {};
+		subHashes.forEach(s => Object.assign(unpacked, UrlUtil.unpackSubHash(s, true)));
+		let setFrom;
+		if (setFrom = unpacked[ListUtil.SUB_HASH_PREFIX]) {
+			const json = JSON.parse(setFrom);
+
+			function funcOnload() {
+				ListUtil._loadSavedSublist(json.items, false);
+				ListUtil._finaliseSublist();
+
+				const [link, ...sub] = History._getHashParts();
+				const outSub = [];
+				Object.keys(unpacked)
+					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
+					.forEach(k => {
+						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
+					});
+				History.setSuppressHistory(true);
+				window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
+			}
+
+			if (funcPreload) funcPreload(json, funcOnload);
+			else funcOnload();
+		}
 	},
 
 	doSublistAdd: (index, doFinalise, addCount) => {
@@ -2156,17 +2206,7 @@ UrlUtil.bindLinkExportButton = (filterBox) => {
 			parts.unshift(url);
 
 			copyText(parts.join(HASH_PART_SEP));
-			const $temp = $(`<div class="copied-tip"><span>Copied!</span></div>`);
-			const pos = $btn.offset();
-			$temp.css({
-				top: pos.top - 17,
-				left: pos.left - 36 + ($btn.width() / 2)
-			}).appendTo($(`body`)).animate({
-				top: "-=8",
-				opacity: 0
-			}, 250, () => {
-				$temp.remove();
-			});
+			showCopiedEffect($btn);
 		})
 		.attr("title", "Get Link (Including Filters)")
 };

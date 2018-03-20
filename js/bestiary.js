@@ -248,25 +248,28 @@ function addMonsters (data) {
 	EntryRenderer.hover.bindPopoutButton(monsters);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton((json, funcOnload) => {
-		const loaded = Object.keys(loadedSources).filter(it => loadedSources[it].loaded);
-		const toLoad = json.sources.filter(it => !loaded.includes(it));
-		const loadTotal = toLoad.length;
-		if (loadTotal) {
-			let loadCount = 0;
-			toLoad.forEach(src => {
-				loadSource(JSON_LIST_NAME, (monsters) => {
-					addMonsters(monsters);
-					if (++loadCount === loadTotal) {
-						funcOnload();
-					}
-				})(src, "yes");
-			});
-		} else {
-			funcOnload();
-		}
-	});
+	ListUtil.bindUploadButton(sublistFuncPreload);
 	ListUtil.loadState();
+}
+
+function sublistFuncPreload (json, funcOnload) {
+	const loaded = Object.keys(loadedSources).filter(it => loadedSources[it].loaded);
+	const lowerSources = json.sources.map(it => it.toLowerCase());
+	const toLoad = Object.keys(loadedSources).filter(it => !loaded.includes(it)).filter(it => lowerSources.includes(it.toLowerCase()));
+	const loadTotal = toLoad.length;
+	if (loadTotal) {
+		let loadCount = 0;
+		toLoad.forEach(src => {
+			loadSource(JSON_LIST_NAME, (monsters) => {
+				addMonsters(monsters);
+				if (++loadCount === loadTotal) {
+					funcOnload();
+				}
+			})(src, "yes");
+		});
+	} else {
+		funcOnload();
+	}
 }
 
 function getSublistItem (mon, pinId, addCount) {
@@ -857,4 +860,5 @@ function getAttribute (skill) {
 
 function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 }

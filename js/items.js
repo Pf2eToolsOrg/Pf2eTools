@@ -324,6 +324,7 @@ function loadhash (id) {
 
 function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 }
 
 const TOOL_INS_ADDITIONAL_ENTRIES = [
