@@ -314,7 +314,7 @@ function loadhash (id) {
 		</tr>`);
 
 	$content.find(".items span.roller").contents().unwrap();
-	$content.find("#pagecontent span.roller").click(function () {
+	$content.find("span.roller").click(function () {
 		const roll = $(this).attr("data-roll").replace(/\s+/g, "");
 		EntryRenderer.dice.roll(roll, {
 			name: item.name,
