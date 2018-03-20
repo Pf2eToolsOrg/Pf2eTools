@@ -1455,7 +1455,7 @@ function copyText (text) {
 	$temp.remove();
 }
 
-function showCopiedEffect($ele) {
+function showCopiedEffect ($ele) {
 	const $temp = $(`<div class="copied-tip"><span>Copied!</span></div>`);
 	const pos = $ele.offset();
 	$temp.css({
@@ -1754,26 +1754,26 @@ ListUtil = {
 	},
 
 	setFromSubHashes: (subHashes, funcPreload) => {
+		function funcOnload () {
+			ListUtil._loadSavedSublist(json.items, false);
+			ListUtil._finaliseSublist();
+
+			const [link, ...sub] = History._getHashParts();
+			const outSub = [];
+			Object.keys(unpacked)
+				.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
+				.forEach(k => {
+					outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
+				});
+			History.setSuppressHistory(true);
+			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
+		}
+
 		const unpacked = {};
 		subHashes.forEach(s => Object.assign(unpacked, UrlUtil.unpackSubHash(s, true)));
-		let setFrom;
-		if (setFrom = unpacked[ListUtil.SUB_HASH_PREFIX]) {
+		const setFrom = unpacked[ListUtil.SUB_HASH_PREFIX]
+		if (setFrom) {
 			const json = JSON.parse(setFrom);
-
-			function funcOnload() {
-				ListUtil._loadSavedSublist(json.items, false);
-				ListUtil._finaliseSublist();
-
-				const [link, ...sub] = History._getHashParts();
-				const outSub = [];
-				Object.keys(unpacked)
-					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
-					.forEach(k => {
-						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
-					});
-				History.setSuppressHistory(true);
-				window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
-			}
 
 			if (funcPreload) funcPreload(json, funcOnload);
 			else funcOnload();
