@@ -39,7 +39,7 @@ function sortItems (a, b, o) {
 
 function deselectFilter (deselectProperty, deselectValue) {
 	return function (val) {
-		if (window.location.hash.length) {
+		if (window.location.hash.length && !window.location.hash.startsWith(`#${HASH_BLANK}`)) {
 			const itemProperty = itemList[History.getSelectedListElement().attr("id")][deselectProperty];
 			if (itemProperty === deselectValue) {
 				return deselNoHash();
