@@ -134,8 +134,6 @@ function onJsonLoad (data) {
 		FilterBox.nextIfHidden(INVOCATION_LIST);
 	}
 
-	History.init();
-	handleFilterChange();
 	RollerUtil.addListRollButton();
 
 	const subList = ListUtil.initSublist({
@@ -152,6 +150,9 @@ function onJsonLoad (data) {
 	ListUtil.bindUploadButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+
+	History.init();
+	handleFilterChange();
 }
 
 function getSublistItem (inv, pinId) {

@@ -30,8 +30,6 @@ function onJsonLoad (data) {
 		listClass: "conditions"
 	});
 
-	History.init();
-
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "id"],
 		listClass: "subconditions",
@@ -43,6 +41,8 @@ function onJsonLoad (data) {
 	EntryRenderer.hover.bindPopoutButton(conditionList);
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+
+	History.init();
 }
 
 function getSublistItem (cond, pinId) {

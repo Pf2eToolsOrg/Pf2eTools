@@ -34,7 +34,6 @@ function onJsonLoad (data) {
 		sortFunction: SortUtil.listSort
 	});
 
-	History.init();
 	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
 
 	const subList = ListUtil.initSublist({
@@ -47,6 +46,8 @@ function onJsonLoad (data) {
 	ListUtil.bindPinButton();
 	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+
+	History.init();
 }
 
 function getSublistItem (it, pinId) {

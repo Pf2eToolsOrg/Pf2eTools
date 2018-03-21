@@ -202,8 +202,6 @@ function populateTablesAndFilters () {
 
 	RollerUtil.addListRollButton();
 	addListShowHide();
-	History.init();
-	handleFilterChange();
 
 	const subList = ListUtil.initSublist(
 		{
@@ -224,6 +222,9 @@ function populateTablesAndFilters () {
 	ListUtil.bindUploadButton();
 	ListUtil.initGenericAddable();
 	ListUtil.loadState();
+
+	History.init();
+	handleFilterChange();
 }
 
 function onSublistChange () {
@@ -313,7 +314,7 @@ function loadhash (id) {
 		</tr>`);
 
 	$content.find(".items span.roller").contents().unwrap();
-	$content.find("#pagecontent span.roller").click(function () {
+	$content.find("span.roller").click(function () {
 		const roll = $(this).attr("data-roll").replace(/\s+/g, "");
 		EntryRenderer.dice.roll(roll, {
 			name: item.name,
