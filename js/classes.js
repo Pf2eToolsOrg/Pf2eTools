@@ -660,12 +660,14 @@ function loadsub (sub) {
 				handleTableGroups(shownInTable, asInTable, false);
 			});
 
-			if (hideAllSources || hideSomeSources) {
-				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`:not([${ATB_DATA_SC}]):not([${ATB_DATA_SRC}])`).hide();
-				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).hide();
+			const $spicy_NotScFeature_NoSubclassNoSource = otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`:not([${ATB_DATA_SC}]):not([${ATB_DATA_SRC}])`);
+			const $spicy_NotScFeature_NoneSubclassNoneSource = otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`);
+			if (hideAllSources) {
+				$spicy_NotScFeature_NoSubclassNoSource.hide();
+				$spicy_NotScFeature_NoneSubclassNoneSource.hide();
 			} else {
-				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`:not([${ATB_DATA_SC}]):not([${ATB_DATA_SRC}])`).show();
-				otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`).show();
+				$spicy_NotScFeature_NoSubclassNoSource.show();
+				$spicy_NotScFeature_NoneSubclassNoneSource.show();
 			}
 		}
 
