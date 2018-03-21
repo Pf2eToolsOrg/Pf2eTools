@@ -1132,21 +1132,24 @@ EntryRenderer.background = {
 };
 
 EntryRenderer.invocation = {
-	getPrerequisiteText: (invo) => {
+	getPrerequisiteText: (prerequisites, orMode) => {
 		const prereqs = [
-			(!invo.prerequisites.patron || invo.prerequisites.patron === STR_ANY) ? null : `${invo.prerequisites.patron} patron`,
-			(!invo.prerequisites.pact || invo.prerequisites.pact === STR_ANY) ? null : Parser.invoPactToFull(invo.prerequisites.pact),
-			(!invo.prerequisites.level || invo.prerequisites.level === STR_ANY) ? null : `${Parser.levelToFull(invo.prerequisites.level)} level`,
-			(!invo.prerequisites.spell || invo.prerequisites.spell === STR_NONE) ? null : Parser.invoSpellToFull(invo.prerequisites.spell)
+			(!prerequisites.patron || prerequisites.patron === STR_ANY) ? null : `${prerequisites.patron} patron`,
+			(!prerequisites.pact || prerequisites.pact === STR_ANY) ? null : Parser.invoPactToFull(prerequisites.pact),
+			(!prerequisites.level || prerequisites.level === STR_ANY) ? null : `${Parser.levelToFull(prerequisites.level)} level`,
+			(!prerequisites.feature || prerequisites.feature === STR_NONE) ? null : `${prerequisites.feature} feature`,
+			(!prerequisites.spell || prerequisites.spell === STR_NONE) ? null : Parser.invoSpellToFull(prerequisites.spell)
 		].filter(f => f);
-		return prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
+		if (prerequisites.or && !orMode) prerequisites.or.map(p => EntryRenderer.invocation.getPrerequisiteText(p, true)).forEach(s => prereqs.push(s));
+		if (orMode) return prereqs.join(" or ");
+		else return prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
 	},
 
 	getCompactRenderedString: (invo) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
 		const renderStack = [];
 
-		const prereqs = EntryRenderer.invocation.getPrerequisiteText(invo);
+		const prereqs = EntryRenderer.invocation.getPrerequisiteText(invo.prerequisites);
 		renderStack.push(`
 			${EntryRenderer.utils.getNameTr(invo, true)}
 			<tr class="text"><td colspan="6">

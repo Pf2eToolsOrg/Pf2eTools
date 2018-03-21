@@ -57,12 +57,12 @@ function onJsonLoad (data) {
 	const sourceFilter = getSourceFilter();
 	const patronFilter = new Filter({
 		header: "Patron",
-		items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", STR_ANY],
+		items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker", STR_ANY],
 		displayFn: Parser.invoPatronToShort
 	});
 	const pactFilter = new Filter({
 		header: "Pact",
-		items: ["Chain", "Tome", "Blade", STR_ANY],
+		items: ["Appendage", "Blade", "Chain", "Tome", STR_ANY],
 		displayFn: Parser.invoPactToFull
 	});
 	const spellFilter = new Filter({
@@ -76,20 +76,32 @@ function onJsonLoad (data) {
 	let tempString = "";
 	INVOCATION_LIST.forEach(function (p, i) {
 		if (!p.prerequisites) p.prerequisites = {};
-		if (!p.prerequisites.pact) p.prerequisites.pact = STR_ANY;
+		if (!p.prerequisites.pact) p.prerequisites.pact = STR_ANY; // TODO check if the "or"s have this; make it "Other" if so?
 		if (!p.prerequisites.patron) p.prerequisites.patron = STR_ANY;
 		if (!p.prerequisites.spell) p.prerequisites.spell = STR_NONE;
 		if (!p.prerequisites.level) p.prerequisites.level = STR_ANY;
+
+		p._fPrerequisites = JSON.parse(JSON.stringify(p.prerequisites));
+		if (p._fPrerequisites.or) {
+			p._fPrerequisites.or.forEach(pre => {
+				Object.keys(pre).forEach(k => {
+					// TODO action based on `p._fPrerequisites`s value
+					// if None/Any, replace with "or"s prereq
+					// if string, convert to array, and add "or"s prereq
+					// if array, add "or"s prereq
+				})
+			});
+		}
 
 		tempString += `
 			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p[JSON_ITEM_NAME]}">
 					<span class="${LIST_NAME} ${CLS_COL1}">${p[JSON_ITEM_NAME]}</span>
 					<span class="${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])} text-align-center" title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
-					<span class="${LIST_PACT} ${CLS_COL3} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PACT]}</span>
-					<span class="${LIST_PATRON} ${CLS_COL4} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${Parser.invoPatronToShort(p[JSON_ITEM_PREREQUISITES][JSON_ITEM_PATRON])}</span>
-					<span class="${LIST_SPELL} ${CLS_COL5} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_SPELL]}</span>
-					<span class="${LIST_LEVEL} ${CLS_COL6} ${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL] === STR_ANY ? CLS_LI_NONE : STR_EMPTY} text-align-center">${p[JSON_ITEM_PREREQUISITES][JSON_ITEM_LEVEL]}</span>
+					<span class="${LIST_PACT} ${CLS_COL3} ${p.prerequisites[JSON_ITEM_PACT] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${p.prerequisites[JSON_ITEM_PACT]}</span>
+					<span class="${LIST_PATRON} ${CLS_COL4} ${p.prerequisites[JSON_ITEM_PATRON] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${Parser.invoPatronToShort(p.prerequisites[JSON_ITEM_PATRON])}</span>
+					<span class="${LIST_SPELL} ${CLS_COL5} ${p.prerequisites[JSON_ITEM_SPELL] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}">${p.prerequisites[JSON_ITEM_SPELL]}</span>
+					<span class="${LIST_LEVEL} ${CLS_COL6} ${p.prerequisites[JSON_ITEM_LEVEL] === STR_ANY ? CLS_LI_NONE : STR_EMPTY} text-align-center">${p.prerequisites[JSON_ITEM_LEVEL]}</span>
 				</a>
 			</li>
 		`;
@@ -125,10 +137,10 @@ function onJsonLoad (data) {
 			return filterBox.toDisplay(
 				f,
 				p.source,
-				p.prerequisites.pact,
-				p.prerequisites.patron,
-				p.prerequisites.spell,
-				p.prerequisites.level
+				p._fPrerequisites.pact,
+				p._fPrerequisites.patron,
+				p._fPrerequisites.spell,
+				p._fPrerequisites.level
 			);
 		});
 		FilterBox.nextIfHidden(INVOCATION_LIST);
@@ -176,16 +188,16 @@ function loadhash (jsonIndex) {
 	const STATS_PREREQUISITES = document.getElementById(ID_STATS_PREREQUISITES);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
-	const selectedInvocation = INVOCATION_LIST[jsonIndex];
+	const inv = INVOCATION_LIST[jsonIndex];
 
-	$name.html(selectedInvocation[JSON_ITEM_NAME]);
+	$name.html(inv[JSON_ITEM_NAME]);
 
 	loadInvocation();
 
 	function loadInvocation () {
-		STATS_PREREQUISITES.innerHTML = EntryRenderer.invocation.getPrerequisiteText(selectedInvocation);
-		STATS_TEXT.innerHTML = EntryRenderer.getDefaultRenderer().renderEntry({entries: selectedInvocation.entries}, 1);
-		$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(selectedInvocation.source)}</i>, page ${selectedInvocation.page}</td>`);
+		STATS_PREREQUISITES.innerHTML = EntryRenderer.invocation.getPrerequisiteText(inv.prerequisites);
+		STATS_TEXT.innerHTML = EntryRenderer.getDefaultRenderer().renderEntry({entries: inv.entries}, 1);
+		$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${Parser.sourceJsonToFull(inv.source)}</i>${inv.page ? `, page ${inv.page}` : ""}</td>`);
 	}
 }
 

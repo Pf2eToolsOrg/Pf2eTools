@@ -961,6 +961,195 @@
 			],
 			"source": "XGE",
 			"page": 57
+		},
+		{
+			"name": "Otherworldly Awareness",
+			"prerequisites": {
+				"or": [
+					{
+						"pact": "Appendage",
+						"feature": "Grip of the Master"
+					}
+				]
+			},
+			"entries": [
+				"You may attack more than one foe with your pact appendage or tentacle strike. If you choose to do so, divide your d4s of bludgeoning damage amongst two or more foes within reach. If you strike more than one foe in this way, you no longer add your charisma bonus to the damage."
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Fling",
+			"prerequisites": {
+				"level": 5,
+				"or": [
+					{
+						"pact": "Appendage",
+						"feature": "Grip of the Master"
+					}
+				]
+			},
+			"entries": [
+				"As an action, you can throw a medium-size or smaller opponent that you are currently grappling with your pact appendages or tentacles. You can throw them a number of feet up to 10 times your charisma modifier, with a minimum of 10 feet. They must make a dexterity check with a DC equal to your spell save DC or take 1d6 bludgeoning damage for every ten feet they were flung. If you have both the Pact of the Appendage and Grip of the Master, you may instead throw a single Large-sized or smaller opponent, and they travel a distance up to 15 times your charisma modifier."
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Lightning Whip",
+			"prerequisites": {
+				"level": 5,
+				"or": [
+					{
+						"pact": "Appendage",
+						"feature": "Grip of the Master"
+					}
+				]
+			},
+			"entries": [
+				"As a bonus action, you may charge your pact appendages or tentacles with electricity for one minute. Until the effect ends, your pact appendage and/or tentacle strike damage is increased by 1d6 lightning damage, and any creatures grappled by you takes 1d6 lightning damage at the start of each of your turns. Once you use this feature, you may not do so again until you complete a short or long rest."
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Overcharged",
+			"prerequisites": {
+				"level": 7,
+				"patron": "The Kraken"
+			},
+			"entries": [
+				"When you cast a spell or use an ability that deals lightning damage, you may ignore resistance to lightning damage, and deal half damage to foes with immunity to lightning damage."
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Crushing Grip",
+			"prerequisites": {
+				"level": 11,
+				"or": [
+					{
+						"pact": "Appendage",
+						"feature": "Grip of the Master"
+					}
+				]
+			},
+			"entries": [
+				"Whenever a creature being grappled by your pact appendages and/or tentacles fails an attempt to free themselves, you may use your reaction to deal damage to them as though you had hit them with your pact appendage or tentacle strike. Additionally, you may use an action to deal damage to a creature you are grappling as though you had hit them with your pact appendage or tentacle strike."
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Master's Form",
+			"prerequisites": {
+				"level": 15,
+				"patron": "The Kraken"
+			},
+			"entries": [
+				"As an action, you may magically assume the form of a Lesser Kraken once per day. You retain your hit points, charisma, intelligence, wisdom, and traits. You may remain in this form for a number of minutes equal to your Warlock level, or until you end the effect as a bonus action. If you are reduced to zero hit points, you return to your normal form and are knocked {@condition unconscious}.",
+				{
+					"type": "inset",
+					"name": "Lesser Kraken",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "AC:",
+									"entry": "16 (natural armor)"
+								},
+								{
+									"type": "item",
+									"name": "Speed:",
+									"entry": "30ft., swim 60ft."
+								}
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang",
+							"name": "Traits",
+							"items": [
+								{
+									"type": "item",
+									"name": "Amphibious.",
+									"entry": "You can breathe both water and air."
+								},
+								{
+									"type": "item",
+									"name": "Freedom of Movement.",
+									"entry": "You ignore difficult terrain, and magical effects can't reduce your speed or cause you to be restrained. You can spend ten feet of movement to escape from nonmagical restraints or being {@condition grappled}."
+								},
+								{
+									"type": "item",
+									"name": "Siege Monster",
+									"entry": "You deal double damage to objects and structures."
+								}
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang",
+							"name": "Actions",
+							"items": [
+								{
+									"type": "item",
+									"name": "Tentacle.",
+									"entry": "Melee Weapon Attack: +12 to hit, reach 20 ft., one target. Hit: 3d6+8 bludgeoning damage, and the target is {@condition grappled}. Until this grapple ends, the target is {@condition restrained}. You have ten tentacles, each of which may grapple one target."
+								},
+								{
+									"type": "item",
+									"name": "Fling.",
+									"entry": "One Medium or smaller object held or creature grappled by you is thrown up to 50 feet in a random direction and knocked {@condition prone}. If the thrown target strikes a solid surface, it takes 1d6 bludgeoning damage for every 10 feet it was thrown. If the target is thrown at a creature, that creature must make a DC 16 dexterity check or take the same damage."
+								},
+								{
+									"type": "item",
+									"name": "Lightning Storm (Recharge 5\u20146).",
+									"entry": "You magically create three bolts of lightning, each of which can strike a target you can see within 100 feet. A target must make a DC 16 dexterity saving throw or take 4d10 lightning damage. A successful save halves the damage."
+								},
+								{
+									"type": "item",
+									"name": "Multiattack (Recharge 6).",
+									"entry": "You make three tentacle attacks, each of which you may replace with one use of Fling."
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Eldritch Storm",
+			"prerequisites": {
+				"spell": "Eldritch Blast",
+				"patron": "The Kraken"
+			},
+			"entries": [
+				"Whenever you cast your {@spell eldritch blast} cantrip, you may have it deal lightning or thunder damage instead of force damage. If you choose lightning, the blast creates a burst of light that gives creatures within five feet of you disadvantage on melee attacks against you until your next turn. If you choose thunder, the blast creates a burst of sound that wakes any sleeping creatures within 120 feet of the target."
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Lash of the Deep Ones",
+			"prerequisites": {
+				"level": 7,
+				"patron": "The Kraken",
+				"pact": "Blade"
+			},
+			"entries": [
+				"If you select a {@item whip|phb} as your pact weapon, its damage die becomes d8. If you land a critical hit against an opponent that does not have water breathing or amphibious, and they are still alive after damage is dealt, they are considered {@condition grappled} and begin suffocating as the whip is wrapped around their neck or equivalent body part."
+			],
+			"source": "Stream"
+		},
+		{
+			"name": "Friends from the Sea",
+			"prerequisites": {
+				"patron": "The Kraken"
+			},
+			"entries": [
+				"If you selected an {@creature octopus} as your familiar, replace the water breathing and hold breath traits with amphibious, and it gains a flying speed equal to its swimming speed and treats the air as if it were underwater for all its traits and features. When your octopus uses its ink cloud ability, the ink doesn't obscure your vision. If you have the Pact of the Chain feature, you may have a {@creature Giant Octopus} as your familiar, instead, and it gains the above traits."
+			],
+			"source": "Stream"
 		}
 	]
 }

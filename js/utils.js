@@ -776,6 +776,7 @@ Parser.invoSpellToFull = function (spell) {
 };
 
 Parser.invoPactToFull = function (pact) {
+	if (pact === "Appendage") return "Pact of the Appendage";
 	if (pact === "Chain") return "Pact of the Chain";
 	if (pact === "Tome") return "Pact of the Tome";
 	if (pact === "Blade") return "Pact of the Blade";
