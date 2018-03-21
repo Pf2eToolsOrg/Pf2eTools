@@ -71,6 +71,7 @@ ATB_DATA_SRC = "data-source";
 STR_CANTRIP = "Cantrip";
 STR_NONE = "None";
 STR_ANY = "Any";
+STR_SPECIAL = "Special";
 
 RNG_SPECIAL = "special";
 RNG_POINT = "point";

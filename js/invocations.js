@@ -76,19 +76,27 @@ function onJsonLoad (data) {
 	let tempString = "";
 	INVOCATION_LIST.forEach(function (p, i) {
 		if (!p.prerequisites) p.prerequisites = {};
-		if (!p.prerequisites.pact) p.prerequisites.pact = STR_ANY; // TODO check if the "or"s have this; make it "Other" if so?
+		if (!p.prerequisites.pact) p.prerequisites.pact = p.prerequisites.or && p.prerequisites.or.find(it => it.pact) ? STR_SPECIAL : STR_ANY;
 		if (!p.prerequisites.patron) p.prerequisites.patron = STR_ANY;
 		if (!p.prerequisites.spell) p.prerequisites.spell = STR_NONE;
 		if (!p.prerequisites.level) p.prerequisites.level = STR_ANY;
 
 		p._fPrerequisites = JSON.parse(JSON.stringify(p.prerequisites));
 		if (p._fPrerequisites.or) {
-			p._fPrerequisites.or.forEach(pre => {
-				Object.keys(pre).forEach(k => {
-					// TODO action based on `p._fPrerequisites`s value
-					// if None/Any, replace with "or"s prereq
-					// if string, convert to array, and add "or"s prereq
-					// if array, add "or"s prereq
+			p._fPrerequisites.or.forEach(orPres => {
+				Object.keys(orPres).forEach(k => {
+					if (!p._fPrerequisites[k]) {
+						p._fPrerequisites[k] = orPres[k];
+					} else if (typeof p._fPrerequisites[k] === "string") {
+						if (p._fPrerequisites[k] === STR_ANY || p._fPrerequisites[k] === STR_NONE) {
+							p._fPrerequisites[k] = orPres[k];
+						} else {
+							p._fPrerequisites[k] = [p._fPrerequisites[k], orPres[k]];
+						}
+					} else {
+						// it should always be an array
+						p._fPrerequisites[k].push(orPres[k]);
+					}
 				})
 			});
 		}
