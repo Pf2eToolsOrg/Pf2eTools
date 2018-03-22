@@ -2,7 +2,7 @@ const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
-const re = /{@(spell|item|class|creature|condition|background|race) (.*?)(\|(.*?))?(\|.*?)?}/g;
+const re = /{@(spell|item|class|creature|condition|background|race|invocation) (.*?)(\|(.*?))?(\|.*?)?}/g;
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -12,7 +12,8 @@ const TAG_TO_PAGE = {
 	"creature": UrlUtil.PG_BESTIARY,
 	"condition": UrlUtil.PG_CONDITIONS,
 	"background": UrlUtil.PG_BACKGROUNDS,
-	"race": UrlUtil.PG_RACES
+	"race": UrlUtil.PG_RACES,
+	"invocation": UrlUtil.PG_INVOCATIONS
 };
 
 const TAG_TO_DEFAULT_SOURCE = {
@@ -22,7 +23,8 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"creature": "mm",
 	"condition": "phb",
 	"background": "phb",
-	"race": "phb"
+	"race": "phb",
+	"invocation": "phb"
 };
 
 function recursiveCheck (file) {
