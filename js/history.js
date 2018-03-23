@@ -98,6 +98,10 @@ class History {
 			if (goTo) location.replace(goTo);
 		}, 1);
 	}
+
+	static cleanSetHash (toSet) {
+		window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
+	}
 }
 History.lastLoadedId = null;
 History.initialLoad = true;

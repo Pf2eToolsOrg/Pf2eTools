@@ -67,17 +67,13 @@ function cleanScSource (source) {
 	return Parser._getSourceStringFromSource(source);
 }
 
-function cleanSetHash (toSet) {
-	window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
-}
-
 function setSourceState (toState) {
 	const hash = window.location.hash;
 	if (hash.includes(HASH_SOURCES)) {
 		// handle old hash style
-		cleanSetHash(hash.replace(/sources:(\d|true|false)/, `${HASH_SOURCES}${toState}`));
+		History.cleanSetHash(hash.replace(/sources:(\d|true|false)/, `${HASH_SOURCES}${toState}`));
 	} else {
-		cleanSetHash(`${hash}${HASH_PART_SEP}${HASH_SOURCES}${toState}`)
+		History.cleanSetHash(`${hash}${HASH_PART_SEP}${HASH_SOURCES}${toState}`)
 	}
 }
 
@@ -491,7 +487,7 @@ function loadhash (id) {
 				outStack.push(hashKey + "false")
 			}
 
-			cleanSetHash(outStack.join(HASH_PART_SEP));
+			History.cleanSetHash(outStack.join(HASH_PART_SEP));
 		}
 	}
 
@@ -539,7 +535,7 @@ function loadhash (id) {
 			if (!hasSubclassHash) outStack.push(subclassLink);
 		}
 
-		cleanSetHash(outStack.join(HASH_PART_SEP));
+		History.cleanSetHash(outStack.join(HASH_PART_SEP));
 	}
 }
 
@@ -572,8 +568,8 @@ function loadsub (sub) {
 		if (hashPart.startsWith(HASH_COMP_VIEW)) comparisonView = sliceTrue(hashPart, HASH_COMP_VIEW);
 	}
 
-	const hideAllSources = !ClassBookView.bookViewActive && (sources === null || sources === STR_SOURCES_OFFICIAL);
-	const hideSomeSources = !ClassBookView.bookViewActive && sources === STR_SOURCES_MIXED;
+	const hideAllSources = !ClassBookView.active && (sources === null || sources === STR_SOURCES_OFFICIAL);
+	const hideSomeSources = !ClassBookView.active && sources === STR_SOURCES_MIXED;
 
 	// deselect any pills that would be hidden
 	if (subclasses !== null && (hideAllSources || hideSomeSources)) {
@@ -599,7 +595,7 @@ function loadsub (sub) {
 			const curParts = History._getHashParts();
 			if (curParts.length > 1) {
 				const newParts = [curParts[0]].concat(newHashStack);
-				cleanSetHash(HASH_START + newParts.join(HASH_PART_SEP));
+				History.cleanSetHash(HASH_START + newParts.join(HASH_PART_SEP));
 			}
 			return;
 		}
@@ -813,7 +809,7 @@ function loadsub (sub) {
 
 function initCompareMode () {
 	$(`#btn-comparemode`).on("click", () => {
-		cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${SubclassComparisonView.SUBHASH}`);
+		History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${SubclassComparisonView.SUBHASH}`);
 	});
 }
 
@@ -826,7 +822,7 @@ const SubclassComparisonView = {
 
 	open: () => {
 		function hashTeardown () {
-			cleanSetHash(window.location.hash.replace(SubclassComparisonView.SUBHASH, ""));
+			History.cleanSetHash(window.location.hash.replace(SubclassComparisonView.SUBHASH, ""));
 		}
 
 		if (SubclassComparisonView.compareViewActive) return;
@@ -916,11 +912,11 @@ const ClassBookView = {
 		}
 
 		function hashTeardown () {
-			cleanSetHash(window.location.hash.replace(ClassBookView.SUBHASH, ""));
+			History.cleanSetHash(window.location.hash.replace(ClassBookView.SUBHASH, ""));
 		}
 
-		if (ClassBookView.bookViewActive) return;
-		ClassBookView.bookViewActive = true;
+		if (ClassBookView.active) return;
+		ClassBookView.active = true;
 
 		setSourceState(STR_SOURCES_ALL);
 
@@ -1016,14 +1012,14 @@ const ClassBookView = {
 	},
 
 	teardown: () => {
-		if (ClassBookView.bookViewActive) {
+		if (ClassBookView.active) {
 			ClassBookView._$bkTbl = null;
 			ClassBookView._$scToggles = {};
 
 			ClassBookView._$body.css("overflow", "");
 			ClassBookView._$wrpBookUnder.remove();
 			ClassBookView._$wrpBook.remove();
-			ClassBookView.bookViewActive = false;
+			ClassBookView.active = false;
 		}
 	},
 
@@ -1048,7 +1044,7 @@ const ClassBookView = {
 			});
 		}
 
-		if (ClassBookView.bookViewActive) {
+		if (ClassBookView.active) {
 			// $toShow/$toHide are lists of subclass pills
 			doUpdate($toShow, true);
 			doUpdate($toHide, false);
@@ -1058,6 +1054,6 @@ const ClassBookView = {
 
 function initReaderMode () {
 	$(`#btn-readmode`).on("click", () => {
-		cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${ClassBookView.SUBHASH}`);
+		History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${ClassBookView.SUBHASH}`);
 	});
 }
