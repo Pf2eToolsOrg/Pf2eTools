@@ -15,7 +15,6 @@ const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_ORDER = "order";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
-const JSON_ITEM_MODE_TITLE = "title";
 const CLS_PSIONICS = "psionics";
 const CLS_COL1 = "col-xs-5";
 const CLS_COL2 = "col-xs-2";
@@ -35,11 +34,11 @@ function getHiddenModeList (psionic) {
 	if (modeList === undefined) return STR_EMPTY;
 	const outArray = [];
 	for (let i = 0; i < modeList.length; ++i) {
-		outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i][JSON_ITEM_MODE_TITLE]));
+		outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i].name));
 		if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
 			const subModes = modeList[i][JSON_ITEM_SUBMODES];
 			for (let j = 0; j < subModes.length; ++j) {
-				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j][JSON_ITEM_MODE_TITLE]))
+				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j].name))
 			}
 		}
 	}
