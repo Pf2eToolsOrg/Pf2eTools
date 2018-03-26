@@ -817,7 +817,6 @@ const SubclassComparisonView = {
 	SUBHASH: `${HASH_COMP_VIEW}true`,
 	compareViewActive: false,
 	_$body: null,
-	_$wrpBookUnder: null,
 	_$wrpBook: null,
 
 	open: () => {
@@ -829,10 +828,8 @@ const SubclassComparisonView = {
 		SubclassComparisonView.compareViewActive = true;
 
 		const $body = $(`body`);
-		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
-		const $wrpBook = $(`<div class="book-view"/>`);
+		const $wrpBook = $(`<div class="book-mode"/>`);
 		SubclassComparisonView._$body = $body;
-		SubclassComparisonView._$wrpBookUnder = $wrpBookUnder;
 		SubclassComparisonView._$wrpBook = $wrpBook;
 
 		$body.css("overflow", "hidden");
@@ -883,13 +880,12 @@ const SubclassComparisonView = {
 		$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
 
 		$wrpBook.append($bkTbl);
-		$body.append($wrpBookUnder).append($wrpBook);
+		$body.append($wrpBook);
 	},
 
 	teardown: () => {
 		if (SubclassComparisonView.compareViewActive) {
 			SubclassComparisonView._$body.css("overflow", "");
-			SubclassComparisonView._$wrpBookUnder.remove();
 			SubclassComparisonView._$wrpBook.remove();
 			SubclassComparisonView.compareViewActive = false;
 		}
@@ -900,7 +896,6 @@ const ClassBookView = {
 	SUBHASH: `${HASH_BOOK_VIEW}true`,
 	bookViewActive: false,
 	_$body: null,
-	_$wrpBookUnder: null,
 	_$wrpBook: null,
 	_$bkTbl: null,
 	_$scToggles: {},
@@ -921,10 +916,8 @@ const ClassBookView = {
 		setSourceState(STR_SOURCES_ALL);
 
 		const $body = $(`body`);
-		const $wrpBookUnder = $(`<div class="book-view-under"/>`);
-		const $wrpBook = $(`<div class="book-view"/>`);
+		const $wrpBook = $(`<div class="book-mode"/>`);
 		ClassBookView._$body = $body;
-		ClassBookView._$wrpBookUnder = $wrpBookUnder;
 		ClassBookView._$wrpBook = $wrpBook;
 
 		$body.css("overflow", "hidden");
@@ -1008,7 +1001,7 @@ const ClassBookView = {
 		const $pnlBlank = $(`<div class="pnl-menu pnl-menu-pad"/>`);
 
 		$wrpBook.append($pnlMenu).append($pnlContent).append($pnlBlank);
-		$body.append($wrpBookUnder).append($wrpBook);
+		$body.append($wrpBook);
 	},
 
 	teardown: () => {
@@ -1017,7 +1010,6 @@ const ClassBookView = {
 			ClassBookView._$scToggles = {};
 
 			ClassBookView._$body.css("overflow", "");
-			ClassBookView._$wrpBookUnder.remove();
 			ClassBookView._$wrpBook.remove();
 			ClassBookView.active = false;
 		}

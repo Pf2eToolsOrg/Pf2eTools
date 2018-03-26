@@ -8,6 +8,7 @@ const META_ADD_CONC = "Concentration";
 const META_ADD_V = "Verbal";
 const META_ADD_S = "Somatic";
 const META_ADD_M = "Material";
+const META_ADD_M_COST = "Material with Cost";
 // real meta tags
 const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
@@ -200,6 +201,7 @@ function getMetaFilterObj (s) {
 	if (s.components.v) out.push(META_ADD_V);
 	if (s.components.s) out.push(META_ADD_S);
 	if (s.components.m) out.push(META_ADD_M);
+	// if (s.components.m.cost) // TODO create this data, push META_ADD_M_COST
 	return out;
 }
 
@@ -237,7 +239,7 @@ const subclassFilter = new Filter({header: "Subclass"});
 const classAndSubclassFilter = new MultiFilter("Classes", classFilter, subclassFilter);
 const metaFilter = new Filter({
 	header: "Tag",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_RITUAL, META_TECHNOMAGIC]
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_RITUAL, META_TECHNOMAGIC]
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -592,12 +594,18 @@ const SpellBookView = {
 	_$body: null,
 	_$wrpBook: null,
 
+	init: () => {
+		$(`#btn-spellbook`).on("click", () => {
+			History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${SpellBookView.HASH_K}true`);
+		});
+	},
+
 	open: () => {
 		if (SpellBookView.active) return;
 		SpellBookView.active = true;
 
 		const $body = $(`body`);
-		const $wrpBook = $(`<div class="book-view"/>`);
+		const $wrpBook = $(`<div class="book-mode"/>`);
 	},
 
 	teardown: () => {
