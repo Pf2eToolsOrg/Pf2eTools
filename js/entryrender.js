@@ -791,7 +791,7 @@ EntryRenderer.getEntryDice = function (entry, name) {
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
 	if (entry.rollable === true) {
-		return `<span class='roller unselectable' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'` : ""})">${toDisplay}</span>`;
+		return `<span class='roller' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'` : ""})">${toDisplay}</span>`;
 	} else {
 		return toDisplay;
 	}
