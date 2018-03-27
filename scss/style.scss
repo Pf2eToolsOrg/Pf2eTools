@@ -2166,6 +2166,7 @@ table.stats tr.text span.quote-by {
 	font-weight: bold;
 }
 
+.book-mode .initial-message,
 .book-view .initial-message {
 	color: #922610;
 	font-family: 'Andada', serif;
@@ -2174,6 +2175,10 @@ table.stats tr.text span.quote-by {
 	line-height: 2.3em;
 	text-align: center;
 	font-size: 1.8em;
+}
+
+.book-mode .initial-message {
+	font-size: 1.4em;
 }
 
 .book-contents .list li:hover span {
@@ -2284,8 +2289,34 @@ table.stats.stats-book {
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
+
 .book-mode {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 100;
+	display: flex;
 	background: white;
+
+	table.stats th.close-border div {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	table.stats-book {
+		height: 100vh;
+		overflow-y: auto;
+	}
+
+	table.stats-book td {
+		vertical-align: top;
+	}
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
 }
 
 .mode div.pnl-menu {

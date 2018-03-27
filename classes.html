@@ -40,30 +40,6 @@
 			content: "Toggle a button to view class and subclass information";
 		}
 
-		table.stats th.close-border div {
-			display: flex;
-			justify-content: flex-end;
-		}
-
-		.book-mode {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 100;
-			display: flex;
-		}
-
-		.book-mode-under {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 100;
-		}
-
 		.book-mode div.pnl-content {
 			min-height: 100vh;
 			flex: 7 0 0;
@@ -97,15 +73,6 @@
 			margin-top: auto;
 		}
 
-		.book-mode table.stats-book {
-			height: 100vh;
-			overflow-y: auto;
-		}
-
-		.book-mode table.stats-book td {
-			vertical-align: top;
-		}
-
 		.wrp-btn-readmode {
 			margin-top: 10px;
 			margin-bottom: 5px;
@@ -118,10 +85,6 @@
 		}
 
 		@media (max-width: 768px) {
-			.book-mode {
-				flex-direction: column;
-			}
-
 			.book-mode div.pnl-content {
 				min-height: 0;
 				overflow-y: initial;

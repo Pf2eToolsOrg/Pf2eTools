@@ -3,7 +3,6 @@ const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";
 const HASH_SHOW_FLUFF = "showfluff:";
 const HASH_SOURCES = "sources:";
-const HASH_COMP_VIEW = "compview:";
 const HASH_BOOK_VIEW = "bookview:";
 
 const CLSS_FEATURE_LINK = "feature-link";
@@ -38,6 +37,7 @@ let classTableDefault;
 
 let classes;
 let list;
+let subclassComparisonView;
 
 const jsonURL = "data/classes.json";
 
@@ -447,7 +447,7 @@ function loadhash (id) {
 	}
 
 	// call loadsub with a blank sub-hash, to ensure the right content is displayed
-	loadsub("");
+	loadsub([]);
 
 	function makeSourceCyclePill () {
 		const $pill = $(`<span title="Cycle through source types" id="${ID_OTHER_SOURCES_TOGGLE}" data-state="0" style="min-width: 8em;"><span>${STRS_SOURCE_STATES[0]}</span></span>`);
@@ -565,7 +565,7 @@ function loadsub (sub) {
 		if (hashPart.startsWith(HASH_SHOW_FLUFF)) showFluff = sliceTrue(hashPart, HASH_SHOW_FLUFF);
 		if (hashPart.startsWith(HASH_SOURCES)) sources = hashPart.slice(HASH_SOURCES.length);
 		if (hashPart.startsWith(HASH_BOOK_VIEW)) bookView = sliceTrue(hashPart, HASH_BOOK_VIEW);
-		if (hashPart.startsWith(HASH_COMP_VIEW)) comparisonView = sliceTrue(hashPart, HASH_COMP_VIEW);
+		if (hashPart.startsWith(subclassComparisonView.hashKey)) comparisonView = sliceTrue(hashPart, `${subclassComparisonView.hashKey}:`);
 	}
 
 	const hideAllSources = !ClassBookView.active && (sources === null || sources === STR_SOURCES_OFFICIAL);
@@ -739,8 +739,8 @@ function loadsub (sub) {
 	if (bookView) ClassBookView.open();
 	else ClassBookView.teardown();
 
-	if (comparisonView) SubclassComparisonView.open();
-	else SubclassComparisonView.teardown();
+	if (comparisonView) subclassComparisonView.open();
+	else subclassComparisonView.teardown();
 
 	function handleTableGroups (shownInTable, tableDataTag, show) {
 		$(`[data-subclass-list]`).each(
@@ -808,89 +808,41 @@ function loadsub (sub) {
 }
 
 function initCompareMode () {
-	$(`#btn-comparemode`).on("click", () => {
-		History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${SubclassComparisonView.SUBHASH}`);
-	});
-}
-
-const SubclassComparisonView = {
-	SUBHASH: `${HASH_COMP_VIEW}true`,
-	compareViewActive: false,
-	_$body: null,
-	_$wrpBook: null,
-
-	open: () => {
-		function hashTeardown () {
-			History.cleanSetHash(window.location.hash.replace(SubclassComparisonView.SUBHASH, ""));
-		}
-
-		if (SubclassComparisonView.compareViewActive) return;
-		SubclassComparisonView.compareViewActive = true;
-
-		const $body = $(`body`);
-		const $wrpBook = $(`<div class="book-mode"/>`);
-		SubclassComparisonView._$body = $body;
-		SubclassComparisonView._$wrpBook = $wrpBook;
-
-		$body.css("overflow", "hidden");
-
-		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
-		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
-		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
-			.on("click", () => {
-				hashTeardown();
-			});
-		$brdTop.find(`div`).append($btnClose);
-		$bkTbl.append($brdTop);
-
-		const $tbl = $(`<table class="stats stats-book" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
-		const renderStack = [];
-		const numScLvls = curClass.subclasses[0].subclassFeatures.length;
-		for (let i = 0; i < numScLvls; ++i) {
-			renderStack.push(`<tr>`);
-			curClass.subclasses.forEach((sc, j) => {
-				renderStack.push(`<td class="subclass-features-${j} ${getSubclassStyles(sc).join(" ")}">`);
-				sc.subclassFeatures[i].forEach(f => {
-					renderer.recursiveEntryRender(f, renderStack);
+	subclassComparisonView = new BookModeView(
+		"compview", $(`#btn-comparemode`), "Please select some subclasses first",
+		($tbl) => {
+			const renderStack = [];
+			const numScLvls = curClass.subclasses[0].subclassFeatures.length;
+			for (let i = 0; i < numScLvls; ++i) {
+				renderStack.push(`<tr>`);
+				curClass.subclasses.forEach((sc, j) => {
+					renderStack.push(`<td class="subclass-features-${j} ${getSubclassStyles(sc).join(" ")}">`);
+					sc.subclassFeatures[i].forEach(f => {
+						renderer.recursiveEntryRender(f, renderStack);
+					});
+					renderStack.push(`</td>`);
 				});
-				renderStack.push(`</td>`);
-			});
-			renderStack.push(`</tr>`);
-			renderStack.push(`<tr><th colspan="6"><hr></th></tr>`);
-		}
-		$tbl.append(renderStack.join(""));
-
-		let numShown = 0;
-		curClass.subclasses.forEach((sc, i) => {
-			const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
-			if (!($pill.hasClass("active"))) {
-				$tbl.find(`.subclass-features-${i}`).hide();
-			} else {
-				numShown++;
+				renderStack.push(`</tr>`);
+				renderStack.push(`<tr><th colspan="6"><hr></th></tr>`);
 			}
-		});
+			$tbl.append(renderStack.join(""));
 
-		$tbl.find(`tr > td > div`).css("width", "400px");
-		const $tblRow = $(`<tr/>`);
-		$tblRow.append($(`<div style="overflow: auto; max-height: calc(100vh - 16px); ${numShown ? "" : "display: none;"}"/>`).append($tbl));
-		const $msgRow = $(`<tr ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">Please select some subclasses first</span><br></td></tr>`);
-		$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
-			hashTeardown();
-		}));
-		$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
+			let numShown = 0;
+			curClass.subclasses.forEach((sc, i) => {
+				const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
+				if (!($pill.hasClass("active"))) {
+					$tbl.find(`.subclass-features-${i}`).hide();
+				} else {
+					numShown++;
+				}
+			});
 
-		$wrpBook.append($bkTbl);
-		$body.append($wrpBook);
-	},
+			$tbl.find(`tr > td > div`).css("width", "400px");
 
-	teardown: () => {
-		if (SubclassComparisonView.compareViewActive) {
-			SubclassComparisonView._$body.css("overflow", "");
-			SubclassComparisonView._$wrpBook.remove();
-			SubclassComparisonView.compareViewActive = false;
+			return numShown;
 		}
-	}
-};
+	);
+}
 
 const ClassBookView = {
 	SUBHASH: `${HASH_BOOK_VIEW}true`,

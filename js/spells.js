@@ -226,6 +226,7 @@ window.onload = function load () {
 };
 
 let list;
+let spellBookView;
 const sourceFilter = getSourceFilter();
 const levelFilter = new Filter({
 	header: "Level",
@@ -342,6 +343,9 @@ function pageInit (loadedSources) {
 		sortFunction: sortSpells
 	});
 	ListUtil.initGenericPinnable();
+
+	// TODO display spells from sublist
+	spellBookView = new BookModeView("bookview", $(`#btn-spellbook`), "Please pin some spells first", () => 0);
 }
 
 function getSublistItem (spell, pinId) {
@@ -563,6 +567,7 @@ function loadhash (id) {
 	const $pageContent = $("#pagecontent");
 	const spell = spellList[id];
 	$pageContent.html(EntryRenderer.spell.getRenderedString(spell, renderer));
+	loadsub([]);
 }
 
 function handleUnknownHash (link, sub) {
@@ -581,38 +586,7 @@ function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 
-	const bookViewHash = sub.find(it => it.startsWith(SpellBookView.HASH_K));
-	if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[0] === "true") SpellBookView.open();
-	else SpellBookView.teardown();
+	const bookViewHash = sub.find(it => it.startsWith(spellBookView.hashKey));
+	if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[spellBookView.hashKey][0] === "true") spellBookView.open();
+	else spellBookView.teardown();
 }
-
-const SpellBookView = {
-	// TODO this
-	// TODO refactor classes bookview css and use here
-	HASH_K: "bookview:",
-	active: false,
-	_$body: null,
-	_$wrpBook: null,
-
-	init: () => {
-		$(`#btn-spellbook`).on("click", () => {
-			History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${SpellBookView.HASH_K}true`);
-		});
-	},
-
-	open: () => {
-		if (SpellBookView.active) return;
-		SpellBookView.active = true;
-
-		const $body = $(`body`);
-		const $wrpBook = $(`<div class="book-mode"/>`);
-	},
-
-	teardown: () => {
-		if (SpellBookView.active) {
-			SpellBookView._$body.css("overflow", "");
-			SpellBookView._$wrpBook.remove();
-			SpellBookView.active = false;
-		}
-	},
-};

@@ -2852,3 +2852,68 @@ CollectionUtil = {
 		return arr.length === 1 ? String(arr[0]) : arr.length === 2 ? arr.join(conjunctWith) : arr.slice(0, -1).join(joinWith) + conjunctWith + arr.slice(-1);
 	}
 };
+
+// OVERLAY VIEW ========================================================================================================
+function BookModeView(hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
+	this.hashKey = hashKey;
+	this.$openBtn = $openBtn;
+	this.noneVisibleMsg = noneVisibleMsg;
+	this.popTblGetNumShown = popTblGetNumShown;
+
+	this.active = false;
+	this._$body = null;
+	this._$wrpBook = null;
+
+	const self = this;
+
+	self.$openBtn.on("click", () => {
+		History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${self.hashKey}:true`);
+	});
+
+	this.open = () => {
+		function hashTeardown () {
+			History.cleanSetHash(window.location.hash.replace(`${self.hashKey}:true`, ""));
+		}
+
+		if (self.active) return;
+		self.active = true;
+
+		const $body = $(`body`);
+		const $wrpBook = $(`<div class="book-mode"/>`);
+		self._$body = $body;
+		self._$wrpBook = $wrpBook;
+		$body.css("overflow", "hidden");
+
+		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
+		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
+			.on("click", () => {
+				hashTeardown();
+			});
+		$brdTop.find(`div`).append($btnClose);
+		$bkTbl.append($brdTop);
+
+		const $tbl = $(`<table class="stats stats-book" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
+
+		const numShown = self.popTblGetNumShown($tbl);
+
+		const $tblRow = $(`<tr/>`);
+		$tblRow.append($(`<div style="overflow: auto; max-height: calc(100vh - 16px); ${numShown ? "" : "display: none;"}"/>`).append($tbl));
+		const $msgRow = $(`<tr ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">${self.noneVisibleMsg}</span><br></td></tr>`);
+		$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
+			hashTeardown();
+		}));
+		$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
+
+		$wrpBook.append($bkTbl);
+		$body.append($wrpBook);
+	};
+
+	this.teardown = () => {
+		if (self.active) {
+			self._$body.css("overflow", "");
+			self._$wrpBook.remove();
+			self.active = false;
+		}
+	}
+}
