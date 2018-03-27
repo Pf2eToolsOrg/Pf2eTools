@@ -344,8 +344,27 @@ function pageInit (loadedSources) {
 	});
 	ListUtil.initGenericPinnable();
 
-	// TODO display spells from sublist
-	spellBookView = new BookModeView("bookview", $(`#btn-spellbook`), "Please pin some spells first", () => 0);
+	spellBookView = new BookModeView("bookview", $(`#btn-spellbook`), "Please pin some spells first",
+		($tbl) => {
+			const toShow = ListUtil.getSublistedIds().map(id => spellList[id]);
+			// TODO improve display
+			let numShown = 0;
+			const stack = [];
+			for (let i = 0; i < 9; ++i) {
+				const atLvl = toShow.filter(sp => sp.level === i);
+				numShown += atLvl.length;
+				if (atLvl.length) {
+					stack.push(`<tr><td><table>`);
+					atLvl.forEach(sp => {
+						stack.push(EntryRenderer.spell.getCompactRenderedString(sp));
+					});
+					stack.push(`</table></td></tr>`);
+				}
+			}
+			$tbl.append(stack.join(""));
+			return numShown;
+		}
+	);
 }
 
 function getSublistItem (spell, pinId) {

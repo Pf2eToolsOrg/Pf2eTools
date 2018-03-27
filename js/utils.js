@@ -1801,6 +1801,10 @@ ListUtil = {
 		} else if (count) ListUtil.doSublistRemove(index);
 	},
 
+	getSublistedIds: () => {
+		return Object.keys(ListUtil._pinned);
+	},
+
 	_setCount: (index, newCount) => {
 		const $cnt = $(ListUtil.sublist.get("id", index)[0].elm).find(".count");
 		if ($cnt.find("input").length) $cnt.find("input").val(newCount);
