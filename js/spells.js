@@ -350,15 +350,15 @@ function pageInit (loadedSources) {
 			// TODO improve display
 			let numShown = 0;
 			const stack = [];
-			for (let i = 0; i < 9; ++i) {
+			for (let i = 0; i < 10; ++i) {
 				const atLvl = toShow.filter(sp => sp.level === i);
 				numShown += atLvl.length;
 				if (atLvl.length) {
-					stack.push(`<tr><td><table>`);
+					stack.push(`<tr><td><table class="spellbook-entry"><tbody>`);
 					atLvl.forEach(sp => {
 						stack.push(EntryRenderer.spell.getCompactRenderedString(sp));
 					});
-					stack.push(`</table></td></tr>`);
+					stack.push(`</tbody></table></td></tr>`);
 				}
 			}
 			$tbl.append(stack.join(""));

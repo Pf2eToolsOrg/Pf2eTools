@@ -1802,7 +1802,7 @@ ListUtil = {
 	},
 
 	getSublistedIds: () => {
-		return Object.keys(ListUtil._pinned);
+		return Object.keys(ListUtil._pinned).map(it => Number(it));
 	},
 
 	_setCount: (index, newCount) => {

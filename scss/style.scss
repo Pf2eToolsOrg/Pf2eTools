@@ -2306,7 +2306,7 @@ table.stats.stats-book {
 	}
 
 	table.stats-book {
-		height: 100vh;
+		max-height: 100vh;
 		overflow-y: auto;
 	}
 
@@ -2331,6 +2331,10 @@ table.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
 table.stats.stats-book table.summary tbody tr:nth-child(even),
 table.stats.stats-book table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
 	background: #e0e0e0;
+}
+
+table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
+	background: none;
 }
 
 .hoverbox .hoverborder,
