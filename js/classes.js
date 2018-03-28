@@ -739,8 +739,8 @@ function loadsub (sub) {
 	if (bookView) ClassBookView.open();
 	else ClassBookView.teardown();
 
-	if (comparisonView) subclassComparisonView.open();
-	else subclassComparisonView.teardown();
+	if (comparisonView && subclassComparisonView) subclassComparisonView.open();
+	else if (subclassComparisonView) subclassComparisonView.teardown();
 
 	function handleTableGroups (shownInTable, tableDataTag, show) {
 		$(`[data-subclass-list]`).each(
