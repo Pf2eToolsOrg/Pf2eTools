@@ -347,19 +347,23 @@ function pageInit (loadedSources) {
 	spellBookView = new BookModeView("bookview", $(`#btn-spellbook`), "Please pin some spells first",
 		($tbl) => {
 			const toShow = ListUtil.getSublistedIds().map(id => spellList[id]);
-			// TODO improve display
 			let numShown = 0;
 			const stack = [];
 			for (let i = 0; i < 10; ++i) {
 				const atLvl = toShow.filter(sp => sp.level === i);
-				numShown += atLvl.length;
 				if (atLvl.length) {
-					stack.push(`<tr><td><table class="spellbook-entry"><tbody>`);
+					const levelText = i === 0 ? `${Parser.spLevelToFull(i)}s` : `${Parser.spLevelToFull(i)}-level Spells`;
+					stack.push(EntryRenderer.utils.getBorderTr(`<span class="spacer-name">${levelText}</span>`));
+
+					stack.push(`<tr class="spellbook-level"><td>`);
 					atLvl.forEach(sp => {
+						stack.push(`<table class="spellbook-entry"><tbody>`);
 						stack.push(EntryRenderer.spell.getCompactRenderedString(sp));
+						stack.push(`</tbody></table>`);
 					});
-					stack.push(`</tbody></table></td></tr>`);
+					stack.push(`</td></tr>`);
 				}
+				numShown += atLvl.length;
 			}
 			$tbl.append(stack.join(""));
 			return numShown;
