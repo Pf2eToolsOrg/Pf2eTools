@@ -2858,7 +2858,7 @@ CollectionUtil = {
 };
 
 // OVERLAY VIEW ========================================================================================================
-function BookModeView(hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
+function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 	this.hashKey = hashKey;
 	this.$openBtn = $openBtn;
 	this.noneVisibleMsg = noneVisibleMsg;
@@ -2890,16 +2890,17 @@ function BookModeView(hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 
 		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
 		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
+		const $hdTxt = $(`<span class="spacer-name"/>`); // pass this to the content function to allow it to set a main header
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.on("click", () => {
 				hashTeardown();
 			});
-		$brdTop.find(`div`).append($btnClose);
+		$brdTop.find(`div`).append($hdTxt).append($btnClose);
 		$bkTbl.append($brdTop);
 
 		const $tbl = $(`<table class="stats stats-book" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
 
-		const numShown = self.popTblGetNumShown($tbl);
+		const numShown = self.popTblGetNumShown($tbl, $hdTxt);
 
 		const $tblRow = $(`<tr/>`);
 		$tblRow.append($(`<div style="overflow: auto; max-height: calc(100vh - 16px); ${numShown ? "" : "display: none;"}"/>`).append($tbl));

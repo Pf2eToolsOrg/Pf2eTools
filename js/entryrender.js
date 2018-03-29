@@ -798,8 +798,8 @@ EntryRenderer.getEntryDice = function (entry, name) {
 };
 
 EntryRenderer.utils = {
-	getBorderTr: () => {
-		return `<tr><th class="border" colspan="6"></th></tr>`;
+	getBorderTr: (optText) => {
+		return `<tr><th class="border" colspan="6">${optText || ""}</th></tr>`;
 	},
 
 	getDividerTr: () => {

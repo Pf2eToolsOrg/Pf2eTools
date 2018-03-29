@@ -565,7 +565,7 @@ function loadsub (sub) {
 		if (hashPart.startsWith(HASH_SHOW_FLUFF)) showFluff = sliceTrue(hashPart, HASH_SHOW_FLUFF);
 		if (hashPart.startsWith(HASH_SOURCES)) sources = hashPart.slice(HASH_SOURCES.length);
 		if (hashPart.startsWith(HASH_BOOK_VIEW)) bookView = sliceTrue(hashPart, HASH_BOOK_VIEW);
-		if (hashPart.startsWith(subclassComparisonView.hashKey)) comparisonView = sliceTrue(hashPart, `${subclassComparisonView.hashKey}:`);
+		if (subclassComparisonView && hashPart.startsWith(subclassComparisonView.hashKey)) comparisonView = sliceTrue(hashPart, `${subclassComparisonView.hashKey}:`);
 	}
 
 	const hideAllSources = !ClassBookView.active && (sources === null || sources === STR_SOURCES_OFFICIAL);

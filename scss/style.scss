@@ -321,7 +321,7 @@ header {
 	position: fixed;
 	width: 260px;
 	height: 335px;
-	z-index: 100;
+	z-index: 110;
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	right: 1em;
@@ -1380,6 +1380,40 @@ table.stats p.subtrait {
 	color: #bd0044;
 }
 
+/* Spellbook */
+tr.spellbook-level > td {
+	column-count: 6;
+	column-gap: 7px;
+
+	@media (max-width: 2160px) {
+		column-count: 5;
+	}
+
+	@media (max-width: 1800px) {
+		column-count: 4;
+	}
+
+	@media (max-width: 1440px) {
+		column-count: 3;
+	}
+
+	@media (max-width: 1080px) {
+		column-count: 2;
+	}
+
+	@media only screen and (max-width: 720px) {
+		column-count: 1;
+	}
+}
+
+table.stats.stats-book table.spellbook-entry {
+	margin: 0;
+	border-radius: 0.2em;
+	display: inline-block;
+	width: 100%;
+	border: #ccc 1px solid;
+}
+
 /****************************************
  * Print styles
  ***************************************/
@@ -2292,11 +2326,11 @@ table.stats.stats-book {
 
 .book-mode {
 	position: fixed;
+	z-index: 100;
 	top: 0;
-	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 100;
+	left: 0;
 	display: flex;
 	background: white;
 
@@ -2317,6 +2351,14 @@ table.stats.stats-book {
 	@media (max-width: 768px) {
 		flex-direction: column;
 	}
+
+	span.spacer-name {
+		font-family: 'Andada', serif;
+		font-variant: small-caps;
+		text-transform: uppercase;
+		font-weight: bold;
+		padding: 0 5px;
+	}
 }
 
 .mode div.pnl-menu {
@@ -2335,6 +2377,10 @@ table.stats.stats-book table:not(.summary):not(.summary-noback) tbody tr:nth-chi
 
 table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
 	background: none;
+}
+
+table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr tr:nth-child(even) {
+	background: #e0e0e0;
 }
 
 .hoverbox .hoverborder,
@@ -2844,6 +2890,7 @@ table.stats div.statsBlockInsetReadaloud {
 		background: #101010;
 	}
 
+	table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr tr:nth-child(even),
 	ul.list.books > li:nth-child(odd) > a,
 	.stats table.summary tbody tr:nth-child(even),
 	.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd),
