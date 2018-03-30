@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"title": "SpellsArray",
 	"type": "object",
 
@@ -101,7 +101,30 @@
 							"type": "boolean"
 						},
 						"m": {
-							"type": ["boolean", "string"]
+							"oneOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"type": "string"
+										},
+										"cost": {
+											"type": "integer"
+										},
+										"consume": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"text"
+									],
+									"additionalProperties": false
+
+								},
+								{
+									"type": ["boolean", "string"]
+								}
+							]
 						}
 					},
 					"additionalProperties": false

@@ -648,7 +648,7 @@ Parser.spComponentsToFull = function (comp) {
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
-	if (comp.m) out.push("M" + (comp.m.length ? ` (${comp.m})` : ""));
+	if (comp.m) out.push("M" + (comp.m !== true ? ` (${comp.m.text || comp.m})` : ""));
 	return out.join(", ");
 };
 
