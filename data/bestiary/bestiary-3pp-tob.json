@@ -927,7 +927,7 @@
 			"immune": [
 				"lightning"
 			],
-			"conditionImmune": "charmed, exhausted, paralyzed",
+			"conditionImmune": "charmed, exhaustion, paralyzed",
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 24,
 			"languages": "Common, Draconic, Primordial",
@@ -2625,7 +2625,7 @@
 			"immune": [
 				"lightning"
 			],
-			"conditionImmune": "charmed, exhausted, paralyzed",
+			"conditionImmune": "charmed, exhaustion, paralyzed",
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 27,
 			"languages": "Common, Draconic, Dwarvish, Elvish, Primordial",
@@ -6780,7 +6780,7 @@
 			"int": 1,
 			"wis": 13,
 			"cha": 10,
-			"conditionImmune": "paralysis",
+			"conditionImmune": "paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"cr": "4",
@@ -7654,7 +7654,7 @@
 			"immune": [
 				"poison"
 			],
-			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrifed, poisoned",
+			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Common, Infernal",
@@ -11221,7 +11221,9 @@
 			},
 			"resist": [
 				"acid",
-				"cold"
+				"cold",
+				"lightning",
+				"poison"
 			],
 			"immune": [
 				{
@@ -11233,7 +11235,7 @@
 					"note": "from nonmagical weapons"
 				}
 			],
-			"conditionImmune": "blindness, lightning, poison",
+			"conditionImmune": "blinded",
 			"senses": "blindsight 60 ft.",
 			"passive": 16,
 			"languages": "understands Abyssal, Common, Infernal, Void Speech, but cannot speak; telepathy 100 ft.",
@@ -11736,7 +11738,7 @@
 					"note": "from nonmagical weapons"
 				}
 			],
-			"conditionImmune": "all",
+			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, grappled, incapacitated, invisible, paralyzed, petrified, poisoned, prone, restrained, stunned, unconscious",
 			"senses": "darkvision 120 ft., tremorsense 120 ft.",
 			"passive": 16,
 			"languages": "Primordial",
@@ -11930,7 +11932,7 @@
 			"immune": [
 				"poison"
 			],
-			"conditionImmune": "blinded, deafened, exhausted, paralyzed, petrified, poisoned, prone, unconscious",
+			"conditionImmune": "blinded, deafened, exhaustion, paralyzed, petrified, poisoned, prone, unconscious",
 			"senses": "blindsight 60 ft.",
 			"passive": 13,
 			"languages": "Common, Draconic, telepathy 250 ft.",
@@ -12650,7 +12652,7 @@
 					"note": "from nonmagical weapons that aren't adamantine"
 				}
 			],
-			"conditionImmune": "charmed, exhausted, frightened, paralyzed, petrified, poisoned",
+			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
 			"senses": "truesight 120 ft.",
 			"passive": 18,
 			"languages": "understands the language of its creator, but can't speak",
@@ -12820,7 +12822,7 @@
 				"insight": "+6",
 				"religion": "+7"
 			},
-			"conditionImmune": "charmed, sleep",
+			"conditionImmune": "charmed, unconscious",
 			"senses": "truesight 60 ft.",
 			"passive": 13,
 			"languages": "telepathy 100 ft.",
@@ -13808,7 +13810,7 @@
 				"necrotic",
 				"poison"
 			],
-			"conditionImmune": "charmed, paralyzed, exhaustion, poison, stunned, unconscious",
+			"conditionImmune": "charmed, paralyzed, exhaustion, poisoned, stunned, unconscious",
 			"senses": "darkvision 240 ft.",
 			"passive": 15,
 			"cr": "12",
@@ -15598,7 +15600,7 @@
 			"immune": [
 				"poison"
 			],
-			"conditionImmune": "confusion, exhaustion, paralysis, poisoned",
+			"conditionImmune": "exhaustion, paralyzed, poisoned",
 			"senses": "darkvision 240 ft.",
 			"passive": 13,
 			"languages": "Deep Speech, Giant, Undercommon",
@@ -16203,7 +16205,7 @@
 					"note": "from nonmagical weapons that aren't adamantine"
 				}
 			],
-			"conditionImmune": "charmed, exhausted, frightened, paralyzed, petrified, poisoned",
+			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
 			"senses": "darkvision 120 ft.",
 			"passive": 14,
 			"languages": "understands the language of its creator but can't speak",
@@ -19364,7 +19366,7 @@
 					"note": "from nonmagical weapons"
 				}
 			],
-			"conditionImmune": "blinded, charmed, exhaustion (see Lightform special ability), grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
+			"conditionImmune": "blinded, charmed, exhaustion, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
 			"senses": "blindsight 120 ft., truesight 60 ft.",
 			"passive": 17,
 			"languages": "Common, Celestial, Elemental, Elvish, Giant",
@@ -22194,7 +22196,7 @@
 				"fire",
 				"poison"
 			],
-			"conditionImmune": "blind, poisoned",
+			"conditionImmune": "blinded, poisoned",
 			"senses": "blindsight 60 ft.",
 			"passive": 12,
 			"languages": "Giant, Sylvan, Trollkin",
@@ -22568,7 +22570,7 @@
 					"note": "from nonmagical weapons that aren't silvered."
 				}
 			],
-			"conditionImmune": "charm, fear, paralysis, poison, sleep",
+			"conditionImmune": "charmed, frightened, paralyzed, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 17,
 			"languages": "Elvish, Primordial, Sylvan, Void Speech",
@@ -23881,7 +23883,7 @@
 			"int": 10,
 			"wis": 12,
 			"cha": 13,
-			"conditionImmune": "paralysis, unconscious",
+			"conditionImmune": "paralyzed, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"languages": "Common, Draconic, Dwarvish, Elvish",
@@ -27077,7 +27079,7 @@
 				"necrotic",
 				"poison"
 			],
-			"conditionImmune": "charmed, exhaustion, grappled, frightened, paralyzed, petrifed, poisoned, prone, restrained, unconscious",
+			"conditionImmune": "charmed, exhaustion, grappled, frightened, paralyzed, petrified, poisoned, prone, restrained, unconscious",
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 11,
 			"languages": "all languages it knew in life",
@@ -27673,7 +27675,7 @@
 			"wis": 16,
 			"cha": 16,
 			"save": "Str +10, Con +10",
-			"conditionImmune": "sleep",
+			"conditionImmune": "unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Common, Darakhul, Elvish",
@@ -28870,7 +28872,7 @@
 				"perception": "+1",
 				"stealth": "+4"
 			},
-			"conditionImmune": "charm, unconsciousness",
+			"conditionImmune": "charmed, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"languages": "Giant, Sylvan",
@@ -34554,7 +34556,7 @@
 			"immune": [
 				"lightning"
 			],
-			"conditionImmune": "charmed, exhausted, paralyzed",
+			"conditionImmune": "charmed, exhaustion, paralyzed",
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Draconic, Primordial",
@@ -35562,7 +35564,7 @@
 			"immune": [
 				"lightning"
 			],
-			"conditionImmune": "charmed, exhausted, paralyzed",
+			"conditionImmune": "charmed, exhaustion, paralyzed",
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 17,
 			"languages": "Common, Draconic, Primordial",
