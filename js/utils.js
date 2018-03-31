@@ -748,6 +748,20 @@ Parser.monCrToFull = function (cr) {
 	}
 };
 
+Parser.monImmuneToFull = function (imm) {
+	let reqSemis = false;
+	return imm.map(it => {
+		if (typeof it === "object") {
+			if (it.special) {
+				return it.special;
+			} else {
+				if (it.immune.length > 1) reqSemis = true;
+				return `${it.preNote ? `${it.preNote} ` : ""}${it.immune.join(", ")}${it.note ? ` ${it.note}` : ""}`;
+			}
+		} else return it;
+	}).join(reqSemis ? "; " : ",");
+};
+
 // psi-prefix functions are for parsing psionic data, and shared with the roll20 script
 Parser.PSI_ABV_TYPE_TALENT = "T";
 Parser.PSI_ABV_TYPE_DISCIPLINE = "D";

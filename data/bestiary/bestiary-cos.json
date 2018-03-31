@@ -165,7 +165,10 @@
 			"wis": 3,
 			"cha": 3,
 			"save": "Con +9, Wis +0, Cha +0",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, prone",
 			"senses": "blindsight 120 ft. (blind beyond this radius)",
 			"passive": 6,
@@ -312,7 +315,10 @@
 			"int": 1,
 			"wis": 5,
 			"cha": 1,
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned, prone",
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 7,
@@ -513,7 +519,9 @@
 			"int": 14,
 			"wis": 10,
 			"cha": 10,
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -853,7 +861,11 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "cold, necrotic, poison",
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained",
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
@@ -921,7 +933,9 @@
 			"skill": {
 				"performance": "+3"
 			},
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "paralyzed, petrified, poisoned",
 			"passive": 11,
 			"languages": "understands Common but doesn't speak and can't read or write",
@@ -1182,7 +1196,9 @@
 			"wis": 6,
 			"cha": 5,
 			"save": "Wis +0",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 8,
@@ -1438,7 +1454,10 @@
 				"perception": "+3"
 			},
 			"resist": "cold, fire",
-			"immune": "lightning, poison",
+			"immune": [
+				"lightning",
+				"poison"
+			],
 			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned",
 			"senses": "blindsight 60 ft. (blind beyond this radius)",
 			"passive": 13,
@@ -1570,7 +1589,9 @@
 			"cha": 18,
 			"save": "Str +7, Con +7, Wis +6, Cha +7",
 			"resist": "necrotic, psychic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, poisoned, stunned",
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
@@ -1660,7 +1681,16 @@
 				"insight": "+4",
 				"perception": "+6"
 			},
-			"immune": "bludgeoning, piercing, and slashing from nonmagical attacks not made with silvered weapons",
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with silvered weapons"
+				}
+			],
 			"passive": 16,
 			"languages": "Common (can't speak in raven form)",
 			"cr": "2",

@@ -613,7 +613,9 @@
 				"perception": "+17",
 				"stealth": "+7"
 			},
-			"immune": "lightning",
+			"immune": [
+				"lightning"
+			],
 			"senses": "blindsight 60 ft., darkvision 120 ft.",
 			"passive": 27,
 			"languages": "Common, Draconic, Giant, Terran",
@@ -785,7 +787,10 @@
 			"cha": 19,
 			"save": "Con +12, Wis +7, Cha +11",
 			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "fire, poison",
+			"immune": [
+				"fire",
+				"poison"
+			],
 			"conditionImmune": "charmed, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained",
 			"senses": "blindsight 120 ft.",
 			"passive": 10,
@@ -1591,7 +1596,9 @@
 				"perception": "+5",
 				"stealth": "+4"
 			},
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"passive": 15,
 			"languages": "understands Common but can't speak",
@@ -2073,7 +2080,17 @@
 			"wis": 18,
 			"cha": 20,
 			"save": "Str +17, Dex +7, Con +14, Int +13, Wis +11",
-			"immune": "lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": [
+				"lightning",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"conditionImmune": "frightened, paralyzed",
 			"senses": "truesight 120 ft.",
 			"passive": 14,
@@ -2398,7 +2415,9 @@
 				"athletics": "+9",
 				"perception": "+3"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"passive": 13,
 			"languages": "Common, Giant, Giant Owl",
 			"cr": "8",
@@ -2483,7 +2502,9 @@
 				"athletics": "+11",
 				"perception": "+6"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"resist": "lightning",
 			"passive": 16,
 			"languages": "Common, Elvish, and Giant",
@@ -2693,7 +2714,10 @@
 				"perception": "+9"
 			},
 			"resist": "cold",
-			"immune": "lightning, thunder",
+			"immune": [
+				"lightning",
+				"thunder"
+			],
 			"passive": 19,
 			"languages": "Common, Giant",
 			"cr": "13",
@@ -2781,7 +2805,9 @@
 				"athletics": "+9",
 				"perception": "+3"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"passive": 13,
 			"languages": "Common, Giant",
 			"cr": "9",
@@ -2838,7 +2864,9 @@
 			"int": 10,
 			"wis": 10,
 			"cha": 10,
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"passive": 10,
 			"languages": "Common, Giant",
 			"cr": "1",
@@ -3014,7 +3042,9 @@
 				"perception": "+16",
 				"stealth": "+7"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"senses": "blindsight 60 ft., darkvision 120 ft.",
 			"passive": 26,
 			"languages": "Common, Draconic",

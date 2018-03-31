@@ -359,7 +359,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Ice Toad",
@@ -417,7 +419,9 @@
 				"stealth": "+5"
 			},
 			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
@@ -486,7 +490,9 @@
 				"arcana": "+7",
 				"perception": "+5"
 			},
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "charmed, frightened, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
@@ -683,7 +689,14 @@
 				"religion": "+7"
 			},
 			"resist": "While wearing the mask of the Dragon Queen: acid, cold, lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "While wearing the mask of the Dragon Queen: fire",
+			"immune": [
+				{
+					"immune": [
+						"fire"
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
 			"conditionImmune": "While wearing the mask of the Dragon Queen: charmed, frightened, poisoned",
 			"senses": "While wearing the Mask of the Dragon Queen: darkvision 60 ft.",
 			"passive": 11,
@@ -793,7 +806,21 @@
 				"perception": "+26",
 				"religion": "+17"
 			},
-			"immune": "acid, cold, fire, lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"conditionImmune": "blinded, charmed, deafened, frightened, poisoned, stunned",
 			"senses": "darkvision 240 ft., truesight 120 ft.",
 			"passive": 36,

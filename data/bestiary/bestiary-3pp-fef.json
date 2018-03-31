@@ -23,7 +23,9 @@
 				"perception": "+7"
 			},
 			"resist": "acid, cold, fire, lightning",
-			"immune": "thunder",
+			"immune": [
+				"thunder"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 17,
 			"languages": "Common (via telepathy)",
@@ -88,7 +90,9 @@
 				"intimidation": "+9"
 			},
 			"resist": "acid, cold, fire, lightning",
-			"immune": "thunder",
+			"immune": [
+				"thunder"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 21,
 			"languages": "Common (via telepathy)",
@@ -197,7 +201,9 @@
 				"perception": "+9"
 			},
 			"resist": "acid, cold, fire, lightning",
-			"immune": "thunder",
+			"immune": [
+				"thunder"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 19,
 			"languages": "Common (via telepathy)",
@@ -558,7 +564,9 @@
 				"deception": "+9"
 			},
 			"resist": "cold, lightning",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 3,
@@ -807,7 +815,9 @@
 				"stealth": "+4"
 			},
 			"resist": "fire",
-			"immune": "lightning",
+			"immune": [
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"languages": "None",
@@ -885,7 +895,9 @@
 			"cha": 6,
 			"save": "Dex +6, Wis +4",
 			"resist": "bludgeoning, piercing, and slashing from nonsilver weapons",
-			"immune": "acid",
+			"immune": [
+				"acid"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
 			"languages": "Common (understands but can't speak)",
@@ -988,7 +1000,16 @@
 			"int": 8,
 			"wis": 10,
 			"cha": 10,
-			"immune": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "damage from nonmagical weapons"
+				}
+			],
 			"conditionImmune": "paralyzed, poisoned, prone, restrained",
 			"senses": "truesight 60 ft.",
 			"passive": 10,
@@ -1052,7 +1073,9 @@
 				"stealth": "+6"
 			},
 			"resist": "cold",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 2,
@@ -1318,7 +1341,9 @@
 			"skill": {
 				"acrobatics": "+5"
 			},
-			"immune": "lightning",
+			"immune": [
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "None",
@@ -1364,7 +1389,19 @@
 			"int": 10,
 			"wis": 16,
 			"cha": 10,
-			"immune": "acid, necrotic, piercing, poison; bludgeoning and slashing damage from nonmagical or nonsilver weapons",
+			"immune": [
+				"acid",
+				"necrotic",
+				"piercing",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"slashing"
+					],
+					"note": "damage from nonmagical or nonsilver weapons"
+				}
+			],
 			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, poisoned, prone, restrained, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 3,
@@ -1417,7 +1454,12 @@
 			"int": 5,
 			"wis": 12,
 			"cha": 17,
-			"immune": "nonmagical, thunder",
+			"immune": [
+				{
+					"special": "nonmagical"
+				},
+				"thunder"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
 			"languages": "Unknown, but seems to understand a bit of most languages",
@@ -1624,7 +1666,9 @@
 			"int": 1,
 			"wis": 12,
 			"cha": 3,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -1672,7 +1716,9 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 3,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -1869,7 +1915,9 @@
 			"wis": 5,
 			"cha": 1,
 			"resist": "bludgeoning, slashing",
-			"immune": "piercing",
+			"immune": [
+				"piercing"
+			],
 			"conditionImmune": "frightened, paralyzed, prone, restrained, stunned",
 			"senses": "darkvision 10 ft.",
 			"passive": -2,
@@ -1917,7 +1965,9 @@
 			"int": 1,
 			"wis": 12,
 			"cha": 4,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened",
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 1,
@@ -1979,7 +2029,9 @@
 			"skill": {
 				"stealth": "+2"
 			},
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened, stunned",
 			"vulnerable": "fire",
 			"senses": "tremorsense 60 ft.",
@@ -2847,7 +2899,11 @@
 			"wis": 11,
 			"cha": 1,
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
-			"immune": "necrotic, poison, psychic",
+			"immune": [
+				"necrotic",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "exhaustion, frightened, paralyzed, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -2896,7 +2952,11 @@
 			"wis": 8,
 			"cha": 1,
 			"resist": "necrotic; piercing and slashing damage from nonmagical weapons",
-			"immune": "fire, poison, psychic",
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": -1,
@@ -2939,7 +2999,11 @@
 			"wis": 10,
 			"cha": 1,
 			"resist": "piercing, slashing, necrotic",
-			"immune": "acid, poison, psychic",
+			"immune": [
+				"acid",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -2982,7 +3046,11 @@
 			"wis": 10,
 			"cha": 4,
 			"resist": "piercing, slashing, necrotic",
-			"immune": "lightning, poison, psychic",
+			"immune": [
+				"lightning",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -3036,7 +3104,14 @@
 			"wis": 11,
 			"cha": 1,
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons or adamantine",
-			"immune": "force, lightning, poison, psychic, radiant, thunder",
+			"immune": [
+				"force",
+				"lightning",
+				"poison",
+				"psychic",
+				"radiant",
+				"thunder"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed,",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -3108,7 +3183,19 @@
 			"wis": 11,
 			"cha": 1,
 			"resist": "cold",
-			"immune": "fire, poison, psychic; bludgeoning, piercing, and slashing damage from weapons that are neither magical nor adamantine",
+			"immune": [
+				"fire",
+				"poison",
+				"psychic",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "damage from weapons that are neither magical nor adamantine"
+				}
+			],
 			"conditionImmune": "charmed, frightened, paralyzed",
 			"senses": "darkvision",
 			"passive": 10,
@@ -3180,7 +3267,18 @@
 			"wis": 8,
 			"cha": 2,
 			"resist": "cold, fire, lightning",
-			"immune": "poison, psychic; bludgeoning, piercing, and slashing damage from weapons that are neither magical nor adamantine",
+			"immune": [
+				"poison",
+				"psychic",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "damage from weapons that are neither magical nor adamantine"
+				}
+			],
 			"conditionImmune": "charmed, frightened, paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": -1,
@@ -3234,7 +3332,12 @@
 			"wis": 9,
 			"cha": 1,
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons or adamantine",
-			"immune": "cold, poison, psychic, radiant",
+			"immune": [
+				"cold",
+				"poison",
+				"psychic",
+				"radiant"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -3298,7 +3401,12 @@
 				"acrobatics": "+5"
 			},
 			"resist": "bludgeoning damage from nonmagical weapons",
-			"immune": "necrotic, piercing, poison, psychic",
+			"immune": [
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "frightened, poisoned, stunned, unconscious",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -3341,7 +3449,13 @@
 			"wis": 11,
 			"cha": 12,
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons, acid, lightning",
-			"immune": "cold, fire, necrotic, poison, psychic",
+			"immune": [
+				"cold",
+				"fire",
+				"necrotic",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -3392,7 +3506,9 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"immune": "acid",
+			"immune": [
+				"acid"
+			],
 			"conditionImmune": "paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -3507,7 +3623,9 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"immune": "lightning",
+			"immune": [
+				"lightning"
+			],
 			"conditionImmune": "paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -3622,7 +3740,9 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"immune": "acid",
+			"immune": [
+				"acid"
+			],
 			"conditionImmune": "paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -3737,7 +3857,9 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"conditionImmune": "paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -3852,7 +3974,9 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"conditionImmune": "paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -3967,7 +4091,9 @@
 			"skill": {
 				"stealth": "+3"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"conditionImmune": "paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -4027,7 +4153,9 @@
 			"int": 7,
 			"wis": 7,
 			"cha": 10,
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"conditionImmune": "paralyzed, unconscious",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -4498,7 +4626,9 @@
 			"int": 3,
 			"wis": 11,
 			"cha": 7,
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"conditionImmune": "prone",
 			"vulnerable": "thunder",
 			"senses": "darkvision 60 ft.",
@@ -4550,7 +4680,9 @@
 				"athletics": "+5"
 			},
 			"resist": "bludgeoning, and slashing damage from nonmagical weapons",
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"vulnerable": "cold",
 			"senses": "blindsight 60 ft.",
 			"passive": 10,
@@ -4605,7 +4737,9 @@
 			"wis": 11,
 			"cha": 11,
 			"resist": "piercing and slashing damage from nonmagical weapons",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "paralyzed, poisoned, prone, stunned, unconscoius",
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 10,
@@ -4650,7 +4784,10 @@
 				"athletics": "+4"
 			},
 			"resist": "piercing and slashing damage from nonmagical weapons",
-			"immune": "fire, poison",
+			"immune": [
+				"fire",
+				"poison"
+			],
 			"conditionImmune": "paralyzed, poisoned, stunned, unconscious",
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
@@ -5374,7 +5511,10 @@
 				"perception": "+4"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical waepons",
-			"immune": "cold, psychic",
+			"immune": [
+				"cold",
+				"psychic"
+			],
 			"conditionImmune": "frightened, stunned",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -5457,7 +5597,13 @@
 				"perception": "+11"
 			},
 			"resist": "acid, cold, fire; all damage not inflicted by good-aligned attackers or good-aligned weapons",
-			"immune": "lightning, poison; all damage from water-based or water-effecting spells",
+			"immune": [
+				"lightning",
+				"poison",
+				{
+					"special": "all damage from water-based or water-effecting spells"
+				}
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 21,
 			"languages": "Abyssal, Celestial, Common, Draconic, Giant, Infernal, telepathy to 100 ft.",
@@ -5630,7 +5776,18 @@
 			"cha": 18,
 			"save": "Dex +9, Con +9, Int +9, Cha +9",
 			"resist": "acid, cold, psychic",
-			"immune": "lightning, poison; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"immune": [
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"conditionImmune": "charmed, frightened, poisoned",
 			"senses": "truesight 120 ft.",
 			"passive": 2,
@@ -5826,7 +5983,9 @@
 				"acrobatics": "+5",
 				"stealth": "+5"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -5866,7 +6025,10 @@
 				"intimidation": "+5",
 				"perception": "+3"
 			},
-			"immune": "acid, fire",
+			"immune": [
+				"acid",
+				"fire"
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
@@ -5962,7 +6124,9 @@
 				"stealth": "+3"
 			},
 			"resist": "piercing, slashing, acid",
-			"immune": "bludgeoning",
+			"immune": [
+				"bludgeoning"
+			],
 			"conditionImmune": "blinded, deafened, prone",
 			"senses": "tremorsense 60 ft.",
 			"passive": 10,
@@ -6069,7 +6233,11 @@
 			"int": 10,
 			"wis": 11,
 			"cha": 10,
-			"immune": "cold, fire, poison",
+			"immune": [
+				"cold",
+				"fire",
+				"poison"
+			],
 			"conditionImmune": "paralyzed, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -6134,7 +6302,16 @@
 			"int": 7,
 			"wis": 10,
 			"cha": 12,
-			"immune": "bludgeoning, piercing, and slashing damage from nonmagical or nonsilver weapons",
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "damage from nonmagical or nonsilver weapons"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "Abyssal",
@@ -6230,7 +6407,10 @@
 				"stealth": "+6"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"vulnerable": "radiant",
 			"senses": "darkvision 60 ft.",
@@ -6286,7 +6466,11 @@
 			"cha": 18,
 			"save": "Dex +8, Con +9, Wis +7",
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
-			"immune": "cold, psychic, thunder",
+			"immune": [
+				"cold",
+				"psychic",
+				"thunder"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, prone, restrained, unconscious",
 			"senses": "truesight 120 ft.",
 			"passive": 3,
@@ -6945,7 +7129,12 @@
 			"int": 10,
 			"wis": 11,
 			"cha": 11,
-			"immune": "fire; damage from metal weapons",
+			"immune": [
+				"fire",
+				{
+					"special": "damage from metal weapons"
+				}
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -7010,7 +7199,12 @@
 			"int": 10,
 			"wis": 11,
 			"cha": 13,
-			"immune": "fire; damage from metal weapons",
+			"immune": [
+				"fire",
+				{
+					"special": "damage from metal weapons"
+				}
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -7473,7 +7667,9 @@
 				"athletics": "+5",
 				"survival": "+3"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"vulnerable": "fire",
 			"passive": 1,
 			"languages": "Unique",
@@ -7541,7 +7737,16 @@
 			"int": 7,
 			"wis": 10,
 			"cha": 8,
-			"immune": "bludgeoning, piercing, and slashing damage from nonmagical and nonsilver weapons",
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "damage from nonmagical and nonsilver weapons"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "Common, Unique",
@@ -7669,7 +7874,9 @@
 			"wis": 13,
 			"cha": 11,
 			"resist": "fire",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -7987,7 +8194,9 @@
 			"int": 4,
 			"wis": 8,
 			"cha": 4,
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": -1,
@@ -8038,7 +8247,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
@@ -8613,7 +8824,9 @@
 			"int": 1,
 			"wis": 11,
 			"cha": 2,
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -8667,7 +8880,9 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 2,
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -8719,7 +8934,9 @@
 				"perception": "+3"
 			},
 			"resist": "fire",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "blinded, poisoned, prone",
 			"senses": "blindsight 60 ft.",
 			"passive": 13,
@@ -8899,7 +9116,9 @@
 			"wis": 11,
 			"cha": 7,
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons or nt made of adamantine",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, poisoned",
 			"senses": "darkvision 60 ft., tremorsense 60 ft (while motionless)",
 			"passive": 10,
@@ -8963,7 +9182,9 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons or not made of adamantine",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, paralyzed, poisoned",
 			"senses": "darkvision 60 ft., tremorsense 60 ft. (while motionless)",
 			"passive": 10,
@@ -9027,7 +9248,9 @@
 				"stealth": "+5"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons or not made of adamantine",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, paralyzed, poisoned",
 			"senses": "darkvision 60 ft., tremorsense 60 ft. (while motionless)",
 			"passive": 1,
@@ -9405,7 +9628,9 @@
 				"perception": "+3",
 				"stealth": "+5"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
@@ -9910,7 +10135,9 @@
 			"wis": 14,
 			"cha": 15,
 			"save": "Dex +5",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "charmed, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 2,
@@ -9958,7 +10185,9 @@
 			"int": 3,
 			"wis": 13,
 			"cha": 9,
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -10147,7 +10376,9 @@
 			"skill": {
 				"stealth": "+6"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 2,
 			"languages": "Common",
@@ -10260,7 +10491,9 @@
 			"cha": 6,
 			"save": "Dex +8",
 			"resist": "bludgeoning, fire",
-			"immune": "acid",
+			"immune": [
+				"acid"
+			],
 			"conditionImmune": "charmed, prone",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -11148,7 +11381,16 @@
 			"skill": {
 				"stealth": "+2"
 			},
-			"immune": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"conditionImmune": "prone, paralyzed",
 			"vulnerable": "radiant",
 			"senses": "darkvision 60 ft.",
@@ -11209,7 +11451,11 @@
 			"wis": 10,
 			"cha": 10,
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons, cold",
-			"immune": "acid, lightning, poison",
+			"immune": [
+				"acid",
+				"lightning",
+				"poison"
+			],
 			"conditionImmune": "paralyzed, poisoned, restrained, stunned, unconscious, magic missile",
 			"senses": "tremorsense 60 ft.",
 			"passive": 10,
@@ -11282,7 +11528,10 @@
 			"wis": 1,
 			"cha": 1,
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons",
-			"immune": "cold, psychic",
+			"immune": [
+				"cold",
+				"psychic"
+			],
 			"conditionImmune": "blinded, exhaustion, frightened, paralyzed, poisoned, prone, stunned",
 			"senses": "tremorsense 60 ft.",
 			"passive": -4,
@@ -11343,7 +11592,11 @@
 			"wis": 1,
 			"cha": 1,
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons",
-			"immune": "fire, poison, psychic",
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "blinded, exhaustion, frightened, paralyzed, poisoned, prone, stunned",
 			"vulnerable": "cold",
 			"senses": "tremorsense 60 ft.",
@@ -11398,7 +11651,10 @@
 			"wis": 10,
 			"cha": 7,
 			"resist": "fire",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "blinded, exhaustion, frightened, paralyzed, poisoned, prone, stunned",
 			"senses": "blindsight 60 ft.",
 			"passive": 10,
@@ -11467,7 +11723,10 @@
 			"skill": {
 				"stealth": "+6"
 			},
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "blinded, charmed, exhaustion, paralyzed, poisoned, prone, stunned",
 			"senses": "blindsight 60 ft.",
 			"passive": 10,
@@ -11529,7 +11788,9 @@
 				"stealth": "+5"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "blinded, charmed, frightened, paralyzed, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": -4,
@@ -11648,7 +11909,9 @@
 			"wis": 13,
 			"cha": 9,
 			"save": "Con +5",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened, exhaustion, stunned, unconscious",
 			"vulnerable": "necrotic",
 			"senses": "tremorsense 30 ft.",
@@ -11687,7 +11950,9 @@
 				"stealth": "+3"
 			},
 			"resist": "bludgeoning, and piercing damage from nonmagical weapons",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"senses": "tremorsense 60 ft.",
 			"passive": -5,
@@ -11738,7 +12003,9 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, and piercing damage from nonmagical weapons",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "tremorsense 60 ft.",
 			"passive": 1,
@@ -11795,7 +12062,9 @@
 				"perception": "+5"
 			},
 			"resist": "bludgeoning, and piercing damage from nonmagical weapons, fire",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened, prone, stunned, unconscious",
 			"senses": "tremorsense 60 ft.",
 			"passive": 15,
@@ -11854,7 +12123,9 @@
 			"int": 4,
 			"wis": 10,
 			"cha": 1,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -12004,7 +12275,9 @@
 			"int": 7,
 			"wis": 12,
 			"cha": 16,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened, stunned, unconscious",
 			"senses": "truesight 60 ft.",
 			"passive": 1,
@@ -12049,7 +12322,9 @@
 			"wis": 12,
 			"cha": 10,
 			"resist": "bludgeoning, piercing",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscoius",
 			"vulnerable": "lightning",
 			"senses": "darkvision 60 ft.",
@@ -12128,7 +12403,9 @@
 			"wis": 10,
 			"cha": 10,
 			"save": "Con +4",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"vulnerable": "fire",
 			"senses": "tremorsense 60 ft.",
@@ -12282,7 +12559,11 @@
 			"int": 3,
 			"wis": 6,
 			"cha": 4,
-			"immune": "lightning, piercing, psychic",
+			"immune": [
+				"lightning",
+				"piercing",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"vulnerable": "acid, cold, fire",
 			"senses": "darkvision 60 ft.",
@@ -12342,7 +12623,10 @@
 			"cha": 11,
 			"save": "Dex +4, Con +5",
 			"resist": "bludgeoning, piercing",
-			"immune": "lightning, psychic",
+			"immune": [
+				"lightning",
+				"psychic"
+			],
 			"conditionImmune": "charmed, stunned, unconscoius",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -12410,7 +12694,9 @@
 			"cha": 12,
 			"save": "Con +6",
 			"resist": "bludgeoning and piercing damage from nonmagical weapons",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -12454,7 +12740,10 @@
 				"athletics": "+4"
 			},
 			"resist": "bludgeoning, slashing",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, poisoned, prone, restrained, stunned, unconscious",
 			"vulnerable": "fire",
 			"passive": 10,
@@ -12515,7 +12804,10 @@
 			"cha": 10,
 			"save": "Dex +1, Con +7",
 			"resist": "bludgeoning, fire, piercing",
-			"immune": "lightning, psychic",
+			"immune": [
+				"lightning",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 2,
@@ -12590,7 +12882,9 @@
 			"int": 0,
 			"wis": 10,
 			"cha": 2,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"senses": "tremorsense 30 ft.",
 			"passive": 10,
@@ -12653,7 +12947,10 @@
 				"athletics": "+5"
 			},
 			"resist": "bludgeoning damage from nonmagical weapons",
-			"immune": "piercing, psychic",
+			"immune": [
+				"piercing",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"vulnerable": "slashing",
 			"senses": "tremorsense 60 ft.",
@@ -12714,7 +13011,9 @@
 				"stealth": "+3"
 			},
 			"resist": "bludgeoning and piercing damage from nonmagical weapons",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft., plantsense 120 ft.",
 			"passive": 18,
@@ -12833,7 +13132,9 @@
 			"int": 0,
 			"wis": 10,
 			"cha": 8,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -12892,7 +13193,9 @@
 			"int": 2,
 			"wis": 10,
 			"cha": 1,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -12939,7 +13242,9 @@
 			"wis": 12,
 			"cha": 6,
 			"resist": "fire",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"senses": "tremorsense 30 ft.",
 			"passive": 1,
@@ -12998,7 +13303,9 @@
 			"wis": 11,
 			"cha": 6,
 			"resist": "piercing damage from nonmagical weapons, lightning",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 10,
@@ -13043,7 +13350,9 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 1,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened, stunned, unconscious",
 			"senses": "blindsight 60 ft.",
 			"passive": 10,
@@ -13095,7 +13404,9 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, fire",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft., tremorsense 60 ft (while motionless)",
 			"passive": 10,
@@ -13161,7 +13472,9 @@
 			"wis": 10,
 			"cha": 9,
 			"resist": "fire",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 10,
@@ -13208,7 +13521,11 @@
 			"skill": {
 				"stealth": "+5"
 			},
-			"immune": "lightning, piercing, psychic",
+			"immune": [
+				"lightning",
+				"piercing",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"vulnerable": "acid, cold, fire",
 			"senses": "tremorsense 30 ft.",
@@ -13265,7 +13582,9 @@
 			"int": 0,
 			"wis": 11,
 			"cha": 1,
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, prone, stunned, unconscious",
 			"senses": "tremorsense 30 ft.",
 			"passive": 10,
@@ -13311,7 +13630,16 @@
 			"int": 0,
 			"wis": 0,
 			"cha": 0,
-			"immune": "bludgeoning, piercing, slashing, cold, fire, necrotic, poison, psychic",
+			"immune": [
+				"bludgeoning",
+				"piercing",
+				"slashing",
+				"cold",
+				"fire",
+				"necrotic",
+				"poison",
+				"psychic"
+			],
 			"conditionImmune": "blinded, charmed, deafened, frightened, paralyzed, poisoned, prone, restrained, stunned, unconscious",
 			"vulnerable": "acid",
 			"passive": -5,
@@ -13366,7 +13694,9 @@
 				"persuasion": "+4"
 			},
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons",
-			"immune": "psychic",
+			"immune": [
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
@@ -13478,7 +13808,10 @@
 				"stealth": "+4"
 			},
 			"resist": "piercing damage from nonmagical weapons",
-			"immune": "lightning, psychic",
+			"immune": [
+				"lightning",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 2,
@@ -13546,7 +13879,10 @@
 				"stealth": "+4"
 			},
 			"resist": "piercing damage from nonmagical weapons",
-			"immune": "lightning, psychic",
+			"immune": [
+				"lightning",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -13602,7 +13938,10 @@
 				"stealth": "+4"
 			},
 			"resist": "piercing damage from nonmagical weapons",
-			"immune": "lightning, psychic",
+			"immune": [
+				"lightning",
+				"psychic"
+			],
 			"conditionImmune": "charmed, frightened, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -13656,7 +13995,9 @@
 			"wis": 13,
 			"cha": 14,
 			"resist": "fire, necrotic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -13720,7 +14061,12 @@
 				"perception": "+4",
 				"persuasion": "+6"
 			},
-			"immune": "cold, lightning, necrotic, poison",
+			"immune": [
+				"cold",
+				"lightning",
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "frightened, poisoned, exhaustion, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -13796,7 +14142,12 @@
 				"perception": "+4",
 				"persuasion": "+7"
 			},
-			"immune": "cold, lightning, necrotic, poison",
+			"immune": [
+				"cold",
+				"lightning",
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "frightened, poisoned, exhaustion, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -13873,7 +14224,12 @@
 				"perception": "+6",
 				"persuasion": "+8"
 			},
-			"immune": "cold, lightning, necrotic, poison",
+			"immune": [
+				"cold",
+				"lightning",
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "frightened, poisoned, exhaustion, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
@@ -13952,7 +14308,9 @@
 			"cha": 14,
 			"save": "Wis +3",
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons, necrotic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -14012,7 +14370,10 @@
 			"int": 3,
 			"wis": 10,
 			"cha": 6,
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -14064,7 +14425,10 @@
 				"perception": "+6"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
@@ -14112,7 +14476,9 @@
 			"wis": 12,
 			"cha": 14,
 			"resist": "necrotic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -14169,7 +14535,9 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons, necrotic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -14250,7 +14618,10 @@
 				"intimidation": "+4"
 			},
 			"resist": "necrotic",
-			"immune": "cold, poison",
+			"immune": [
+				"cold",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -14294,7 +14665,10 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons or not made of adamantine",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -14406,7 +14780,10 @@
 				"stealth": "+2"
 			},
 			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, poisoned",
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
@@ -14455,7 +14832,10 @@
 			"wis": 14,
 			"cha": 8,
 			"save": "Wis +4",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 2,
@@ -14510,7 +14890,10 @@
 			"wis": 14,
 			"cha": 12,
 			"resist": "piercing damage from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 2,
@@ -14576,7 +14959,9 @@
 			"int": 2,
 			"wis": 12,
 			"cha": 12,
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,
@@ -14636,7 +15021,10 @@
 				"sleight of hand": "+6"
 			},
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 2,
@@ -14705,7 +15093,10 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons, acid, cold, fire, lightning, thunder",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "poisoned, prone, stunned, unconscious",
 			"vulnerable": "radiant",
 			"senses": "darkvision 60 ft.",
@@ -14754,7 +15145,10 @@
 				"perception": "+6"
 			},
 			"resist": "piercing and slashing damage from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "truesight 60 ft.",
 			"passive": 16,
@@ -14850,7 +15244,10 @@
 				"perception": "+9"
 			},
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, restrained, stunned, unconscious",
 			"senses": "truesight 60 ft.",
 			"passive": 19,
@@ -14931,7 +15328,9 @@
 			"cha": 10,
 			"save": "Wis +3",
 			"resist": "piercing and slashing damage from nonmagical weapons, necrotic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -14991,7 +15390,13 @@
 			"int": 7,
 			"wis": 10,
 			"cha": 13,
-			"immune": "necrotic, poison, nonmagical",
+			"immune": [
+				"necrotic",
+				"poison",
+				{
+					"special": "nonmagical"
+				}
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "truesight 60 ft.",
 			"passive": 10,
@@ -15064,7 +15469,9 @@
 			"wis": 6,
 			"cha": 5,
 			"save": "Wis +0",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, poisoned, frightened, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": -2,
@@ -15125,7 +15532,10 @@
 			"cha": 12,
 			"save": "Wis +2",
 			"resist": "bludgeoning, piercing and slashing damage from nonmagical weapons",
-			"immune": "necrotic, poison",
+			"immune": [
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -15381,7 +15791,9 @@
 				"stealth": "+3"
 			},
 			"resist": "all nonmagical damage",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 18,
@@ -15575,7 +15987,9 @@
 			"int": 2,
 			"wis": 12,
 			"cha": 2,
-			"immune": "lightning",
+			"immune": [
+				"lightning"
+			],
 			"senses": "tremorsense 60 ft. (in water)",
 			"passive": 1,
 			"languages": "None",
@@ -15634,7 +16048,10 @@
 			"wis": 11,
 			"cha": 1,
 			"resist": "bludgeoing, piercing, and slashing damage except from adamantine weapons",
-			"immune": "fire, poison",
+			"immune": [
+				"fire",
+				"poison"
+			],
 			"conditionImmune": "paralyzed, poisoned, stunned, unconscious",
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
@@ -15696,7 +16113,15 @@
 			"wis": 10,
 			"cha": 6,
 			"resist": "Magic spells and spell-like effects",
-			"immune": "poison, piercing damage from nonmagical weapons",
+			"immune": [
+				{
+					"immune": [
+						"piercing"
+					],
+					"note": "damage from nonmagical weapons"
+				},
+				"poison"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -15756,7 +16181,15 @@
 			"wis": 10,
 			"cha": 6,
 			"resist": "magic",
-			"immune": "poison, piercing damage from nonmagical weapons",
+			"immune": [
+				{
+					"immune": [
+						"piercing"
+					],
+					"note": "damage from nonmagical weapons"
+				},
+				"poison"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -15810,7 +16243,15 @@
 			"wis": 9,
 			"cha": 6,
 			"resist": "magic",
-			"immune": "poison, piercing damage from nonmagical weapons",
+			"immune": [
+				{
+					"immune": [
+						"piercing"
+					],
+					"note": "damage from nonmagical weapons"
+				},
+				"poison"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, poisoned, stunned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -15876,7 +16317,9 @@
 				"stealth": "+8"
 			},
 			"resist": "bludgeoning, piercing, and slashing damage from nonmagical weapons.",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "paralyzed, poisoned, prone, restrained, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -16000,7 +16443,9 @@
 				"perception": "+6",
 				"stealth": "+7"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"vulnerable": "cold",
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
@@ -16549,7 +16994,10 @@
 				"stealth": "+4"
 			},
 			"resist": "slashing, and piercing damage from nonmagical weapons",
-			"immune": "lightning, fire",
+			"immune": [
+				"lightning",
+				"fire"
+			],
 			"conditionImmune": "prone",
 			"senses": "darkvision 60 ft., tremorsense 120 ft.",
 			"passive": 10,
@@ -16667,7 +17115,9 @@
 			"wis": 10,
 			"cha": 10,
 			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons, necrotic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -16727,7 +17177,11 @@
 			"wis": 12,
 			"cha": 14,
 			"resist": "bludgeoning, piercing, and slashign damage from nonmagical weapons",
-			"immune": "cold, necrotic, poison",
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "exhaustion, frightened, poisoned, unconscious",
 			"passive": 1,
 			"languages": "Any language it spoke when alive; communicates telepathically with all undead within 100 feet",
@@ -16818,7 +17272,9 @@
 			"wis": 12,
 			"cha": 6,
 			"resist": "necrotic",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, poisoned, unconscious",
 			"senses": "darkvision 60 ft.",
 			"passive": 1,

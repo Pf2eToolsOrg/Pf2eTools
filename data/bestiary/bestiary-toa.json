@@ -25,7 +25,18 @@
 				"perception": "+12"
 			},
 			"resist": "cold, lightning",
-			"immune": "necrotic, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": [
+				"necrotic",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned, stunned",
 			"senses": "truesight 120 ft.",
 			"passive": 22,
@@ -382,7 +393,9 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 3,
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 8,
@@ -434,7 +447,14 @@
 				"insight": "+6",
 				"survival": "+9"
 			},
-			"immune": "While wearing the Ring of Winter: cold",
+			"immune": [
+				{
+					"immune": [
+						"cold"
+					],
+					"preNote": "While wearing the Ring of Winter:"
+				}
+			],
 			"passive": 13,
 			"languages": "Common, Draconic, Dwarvish, Goblin",
 			"cr": "7",
@@ -556,7 +576,18 @@
 			"wis": 19,
 			"cha": 24,
 			"save": "Con +11, Wis +9",
-			"immune": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"immune": [
+				"cold",
+				"necrotic",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
 			"senses": "darkvision 120 ft., truesight 120 ft.",
 			"passive": 24,
@@ -885,7 +916,9 @@
 				"perception": "+4"
 			},
 			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks not made with adamantine weapons",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, petrified, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -984,7 +1017,9 @@
 			"int": 3,
 			"wis": 7,
 			"cha": 5,
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 8,
@@ -1425,7 +1460,9 @@
 				"religion": "+7",
 				"stealth": "+6"
 			},
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -1578,7 +1615,17 @@
 			"int": 14,
 			"wis": 14,
 			"cha": 16,
-			"immune": "poison; bludgeoning, piercing, and slashing from nonmagical attacks not made with adamantine weapons",
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with adamantine weapons"
+				}
+			],
 			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned, prone",
 			"senses": "blindsight 120 ft.",
 			"passive": 10,
@@ -1875,7 +1922,9 @@
 			"int": 1,
 			"wis": 3,
 			"cha": 5,
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 6,
@@ -2468,7 +2517,9 @@
 				"stealth": "+4"
 			},
 			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "exhaustion, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
@@ -2605,12 +2656,12 @@
 					]
 				},
 				{
-				    "type": "inset",
-				    "name": "Dance of the Seven Winds",
-				    "entries": [
-				        "Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
+					"type": "inset",
+					"name": "Dance of the Seven Winds",
+					"entries": [
+						"Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
 						"Asharra must grind the orchid to powder, inhale it, and dance in circles around the ritual's beneficiaries uninterrupted while seven other aarakocra chant prayers to the Wind Dukes of Aaqa. When the dance concludes, Asharra's wings disappear and she loses the ability to fly. The ritual's beneficiaries each gain a magical flying speed of 30 feet (allowing them to fly 4 miles per hour). This benefit lasts for 3 days, after which Asharra's wings reappear and she regains the ability to fly."
-				    ]
+					]
 				}
 			],
 			"action": [

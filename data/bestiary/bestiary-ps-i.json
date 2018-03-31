@@ -22,7 +22,9 @@
 				"stealth": "+4"
 			},
 			"resist": "bludgeoning, piercing, and slashing from",
-			"immune": "poison",
+			"immune": [
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, paralyzed",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -84,7 +86,11 @@
 			"wis": 12,
 			"cha": 17,
 			"resist": "acid, fire, lightning, thunder; bludgeoning",
-			"immune": "cold, necrotic, poison",
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, grappled",
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
@@ -170,7 +176,18 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
-			"immune": "lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine",
+			"immune": [
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't adamantine"
+				}
+			],
 			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
@@ -390,7 +407,16 @@
 				"perception": "+4",
 				"stealth": "+3"
 			},
-			"immune": "bludgeoning, piercing, and slashing from nonmagical attacks not made with silvered weapons",
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with silvered weapons"
+				}
+			],
 			"passive": 14,
 			"languages": "Common (can't speak in canid form)",
 			"cr": "3",

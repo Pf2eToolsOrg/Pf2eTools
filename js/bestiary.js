@@ -89,6 +89,25 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
+const immuneFilter = new Filter({
+	header: "Damage Immunity",
+	items: [
+		"acid",
+		"bludgeoning",
+		"cold",
+		"fire",
+		"force",
+		"lightning",
+		"necrotic",
+		"piercing",
+		"poison",
+		"psychic",
+		"radiant",
+		"slashing",
+		"thunder"
+	],
+	displayFn: StrUtil.uppercaseFirst
+});
 const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary", "Swarm"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
@@ -98,6 +117,7 @@ const filterBox = initFilterBox(
 	speedFilter,
 	typeFilter,
 	tagFilter,
+	immuneFilter,
 	miscFilter
 );
 
@@ -186,6 +206,7 @@ function handleFilterChange () {
 			m._fSpeed,
 			m._pTypes.type,
 			m._pTypes.tags,
+			m.immune,
 			m._fMisc
 		);
 	});
@@ -501,7 +522,7 @@ function loadhash (id) {
 	var dmgimm = mon.immune;
 	if (dmgimm) {
 		$content.find("td span#dmgimm").parent().show();
-		$content.find("td span#dmgimm").html(dmgimm);
+		$content.find("td span#dmgimm").html(Parser.monImmuneToFull(dmgimm));
 	} else {
 		$content.find("td span#dmgimm").parent().hide();
 	}
