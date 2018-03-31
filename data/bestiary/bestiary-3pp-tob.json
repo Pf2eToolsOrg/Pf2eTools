@@ -408,7 +408,7 @@
 				"perception": "+10",
 				"persuasion": "+10"
 			},
-			"immune": "acid, charm, thunder",
+			"immune": "acid, thunder",
 			"conditionImmune": "charmed",
 			"senses": "blindsight 60 ft., darkvision 120 ft.",
 			"passive": 20,
@@ -1518,7 +1518,7 @@
 				"stealth": "+11"
 			},
 			"resist": "fire, lightning",
-			"immune": "cold, poison; bludgeoning, piercing, and",
+			"immune": "cold, poison; bludgeoning, piercing, and slashing from nonmagical weapons",
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "all, telepathy 120 ft.",
@@ -1972,7 +1972,7 @@
 				"perception": "+13",
 				"persuasion": "+13"
 			},
-			"immune": "acid, charm, thunder",
+			"immune": "acid, thunder",
 			"conditionImmune": "charmed",
 			"senses": "blindsight 60 ft., darkvision 120 ft.",
 			"passive": 23,
@@ -2523,7 +2523,7 @@
 				"stealth": "+11"
 			},
 			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
-			"immune": "lightning, ranged weapons",
+			"immune": "lightning",
 			"conditionImmune": "charmed, exhausted, paralyzed",
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 27,
@@ -3714,8 +3714,8 @@
 				"stealth": "+12"
 			},
 			"resist": "acid",
-			"immune": "cold, lightning, poison, thunder, petrification",
-			"conditionImmune": "poisoned",
+			"immune": "cold, lightning, poison, thunder",
+			"conditionImmune": "petrified, poisoned",
 			"senses": "darkvision 60 ft., truesight",
 			"passive": 20,
 			"languages": "Common, Dwarvish, Giant, Infernal",
@@ -4475,7 +4475,7 @@
 				"perception": "+7"
 			},
 			"resist": "cold",
-			"immune": "poison; bludgeoning, slashing, and piercing from nonmagical weapons that aren't made of cold iron",
+			"immune": "poison; bludgeoning, piercing, and slashing from nonmagical weapons that aren't made of cold iron",
 			"conditionImmune": "poisoned",
 			"senses": "darkvision 60 ft.",
 			"passive": 17,
@@ -9774,13 +9774,19 @@
 			"int": 3,
 			"wis": 12,
 			"cha": 17,
-			"immune": "A dragonleaf tree enjoys the same immunities as its progenitor. Black, copper, and green trees are immune to acid damage; blue and bronze trees are immune to lightning damage; brass, gold, and red trees are immune to fire damage; and silver and white trees are immune to cold damage.",
+			"immune": "varies (see below)",
 			"conditionImmune": "blinded, deafened",
 			"senses": "blindsight 120 ft.",
 			"passive": 11,
 			"languages": "can understand the language of its creator or designated master",
 			"cr": "8",
 			"trait": [
+				{
+					"name": "Damage Immunities",
+					"entries": [
+						"A dragonleaf tree enjoys the same immunities as its progenitor. Black, copper, and green trees are immune to acid damage; blue and bronze trees are immune to lightning damage; brass, gold, and red trees are immune to fire damage; and silver and white trees are immune to cold damage."
+					]
+				},
 				{
 					"name": "Loyal to Dragon Master",
 					"entries": [
@@ -10591,7 +10597,7 @@
 				"perception": "+6"
 			},
 			"resist": "acid, cold",
-			"immune": "bludgeoning, piercing and slashing from nonmagical weapons",
+			"immune": "bludgeoning, piercing, and slashing from nonmagical weapons",
 			"conditionImmune": "blindness, lightning, poison",
 			"senses": "blindsight 60 ft.",
 			"passive": 16,
@@ -16219,12 +16225,17 @@
 				"athletics": "+14",
 				"perception": "+8"
 			},
-			"immune": "ability damage/drain",
 			"senses": "darkvision 90 ft.",
 			"passive": 18,
 			"languages": "understands Aquan and Elvish, but cannot speak",
 			"cr": "14",
 			"trait": [
+				{
+					"name": "Ability Damage/Drain Immunity",
+					"entries": [
+						"The isonade is immune to any effect that would damage or drain it's ability scores.."
+					]
+				},
 				{
 					"name": "Atmospheric Immunity",
 					"entries": [
@@ -33046,7 +33057,7 @@
 				"perception": "+5",
 				"persuasion": "+5"
 			},
-			"immune": "acid, charm, thunder",
+			"immune": "acid, thunder",
 			"conditionImmune": "charmed",
 			"senses": "blindsight 60 ft., darkvision 120 ft.",
 			"passive": 15,
