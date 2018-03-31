@@ -467,7 +467,10 @@
 			"immune": [
 				"poison"
 			],
-			"conditionImmune": "exhaustion, poisoned",
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
 			"languages": "Common, Draconic",
@@ -538,7 +541,11 @@
 			"immune": [
 				"poison"
 			],
-			"conditionImmune": "charmed, frightened, poisoned",
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"languages": "Common, Draconic, Elvish, Infernal",
@@ -760,7 +767,16 @@
 					"preNote": "While wearing the mask of the Dragon Queen:"
 				}
 			],
-			"conditionImmune": "While wearing the mask of the Dragon Queen: charmed, frightened, poisoned",
+			"conditionImmune": [
+				{
+					"conditionImmune": [
+						"charmed",
+						"frightened",
+						"poisoned"
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
 			"senses": "While wearing the Mask of the Dragon Queen: darkvision 60 ft.",
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal",
@@ -884,7 +900,14 @@
 					"note": "from nonmagical attacks"
 				}
 			],
-			"conditionImmune": "blinded, charmed, deafened, frightened, poisoned, stunned",
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"poisoned",
+				"stunned"
+			],
 			"senses": "darkvision 240 ft., truesight 120 ft.",
 			"passive": 36,
 			"languages": "Common, Draconic, Infernal",

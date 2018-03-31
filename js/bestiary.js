@@ -119,6 +119,25 @@ const DMG_TYPES = [
 	"slashing",
 	"thunder"
 ];
+const CONDS = [
+	"blinded",
+	"charmed",
+	"deafened",
+	"exhaustion",
+	"frightened",
+	"grappled",
+	"incapacitated",
+	"invisible",
+	"paralyzed",
+	"petrified",
+	"poisoned",
+	"prone",
+	"restrained",
+	"stunned",
+	"unconscious",
+	// not really a condition, but whatever
+	"disease"
+];
 function dispResFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Res`;
 }
@@ -135,6 +154,11 @@ const immuneFilter = new Filter({
 	items: DMG_TYPES,
 	displayFn: dispImmFilter
 });
+const conditionImmuneFilter = new Filter({
+	header: "Condition Immunity",
+	items: CONDS,
+	displayFn: StrUtil.uppercaseFirst
+});
 const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary", "Swarm"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
@@ -146,6 +170,7 @@ const filterBox = initFilterBox(
 	tagFilter,
 	resistFilter,
 	immuneFilter,
+	conditionImmuneFilter,
 	miscFilter
 );
 
@@ -236,6 +261,7 @@ function handleFilterChange () {
 			m._pTypes.tags,
 			m._fRes,
 			m._fImm,
+			m._fCondImm,
 			m._fMisc
 		);
 	});
@@ -258,6 +284,7 @@ function addMonsters (data) {
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
 		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
+		mon._fCondImm = mon.conditionImmune ? getAllImmRest(mon.conditionImmune, "conditionImmune") : [];
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
@@ -561,7 +588,7 @@ function loadhash (id) {
 	var conimm = mon.conditionImmune;
 	if (conimm) {
 		$content.find("td span#conimm").parent().show();
-		$content.find("td span#conimm").html(conimm);
+		$content.find("td span#conimm").html(Parser.monCondImmToFull(conimm));
 	} else {
 		$content.find("td span#conimm").parent().hide();
 	}

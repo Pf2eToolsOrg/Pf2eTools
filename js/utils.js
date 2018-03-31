@@ -778,6 +778,14 @@ Parser.monImmResToFull = function (toParse) {
 	return toParse.map(it => toString(it)).join(maxDepth ? "; " : ", ");
 };
 
+Parser.monCondImmToFull = function (condImm) {
+	return condImm.map(it => {
+		if (it.special) return it.special;
+		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.join(", ")}${it.note ? ` ${it.note}` : ""}`;
+		return it;
+	}).join(", ");
+};
+
 // psi-prefix functions are for parsing psionic data, and shared with the roll20 script
 Parser.PSI_ABV_TYPE_TALENT = "T";
 Parser.PSI_ABV_TYPE_DISCIPLINE = "D";

@@ -1392,7 +1392,7 @@ EntryRenderer.monster = {
 					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${mon.vulnerable}</p>` : ""}
 					${mon.resist ? `<p><b>Damage Res.:</b> ${Parser.monImmResToFull(mon.resist)}</p>` : ""}
 					${mon.immune ? `<p><b>Damage Imm.:</b> ${Parser.monImmResToFull(mon.immune)}</p>` : ""}
-					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${mon.conditionImmune}</p>` : ""}
+					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${Parser.monCondImmToFull(mon.conditionImmune)}</p>` : ""}
 				</div>
 			</td></tr>
 		`);

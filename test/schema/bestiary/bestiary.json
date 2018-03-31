@@ -130,6 +130,28 @@
 				"thunder"
 			]
 		},
+		"conditions": {
+			"type": "string",
+			"enum": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"incapacitated",
+				"invisible",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned",
+				"unconscious",
+
+				"disease"
+			]
+		},
 		"damImmune": {
 			"oneOf": [
 				{
@@ -199,6 +221,42 @@
 					},
 					"additionalProperties": false,
 					"required": ["resist"]
+				}
+			]
+		},
+		"condImmune": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/conditions"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"conditionImmune": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/conditions"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["conditionImmune"]
 				}
 			]
 		}
@@ -494,7 +552,10 @@
 						}
 					},
 					"conditionImmune": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/condImmune"
+						}
 					},
 					"immune": {
 						"type": "array",
