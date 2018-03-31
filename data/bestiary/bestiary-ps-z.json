@@ -24,7 +24,17 @@
 				"insight": "+9",
 				"perception": "+9"
 			},
-			"resist": "radiant; bludgeoning, piercing, and slashing from",
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from"
+				}
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 120 ft.",
 			"passive": 19,
@@ -236,7 +246,9 @@
 				"athletics": "+14",
 				"perception": "+9"
 			},
-			"resist": "cold",
+			"resist": [
+				"cold"
+			],
 			"immune": [
 				"lightning",
 				"thunder"

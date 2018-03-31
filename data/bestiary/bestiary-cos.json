@@ -860,7 +860,16 @@
 				"perception": "+2",
 				"stealth": "+4"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"cold",
 				"necrotic",
@@ -1271,7 +1280,17 @@
 				"religion": "+10",
 				"stealth": "+14"
 			},
-			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 22,
 			"languages": "Abyssal, Common, Draconic, Elvish, Giant, Infernal",
@@ -1453,7 +1472,10 @@
 			"skill": {
 				"perception": "+3"
 			},
-			"resist": "cold, fire",
+			"resist": [
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"lightning",
 				"poison"
@@ -1588,7 +1610,10 @@
 			"wis": 16,
 			"cha": 18,
 			"save": "Str +7, Con +7, Wis +6, Cha +7",
-			"resist": "necrotic, psychic",
+			"resist": [
+				"necrotic",
+				"psychic"
+			],
 			"immune": [
 				"poison"
 			],

@@ -1390,8 +1390,8 @@ EntryRenderer.monster = {
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
 					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${mon.vulnerable}</p>` : ""}
-					${mon.resist ? `<p><b>Damage Res.:</b> ${mon.resist}</p>` : ""}
-					${mon.immune ? `<p><b>Damage Imm.:</b> ${Parser.monImmuneToFull(mon.immune)}</p>` : ""}
+					${mon.resist ? `<p><b>Damage Res.:</b> ${Parser.monImmResToFull(mon.resist)}</p>` : ""}
+					${mon.immune ? `<p><b>Damage Imm.:</b> ${Parser.monImmResToFull(mon.immune)}</p>` : ""}
 					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${mon.conditionImmune}</p>` : ""}
 				</div>
 			</td></tr>

@@ -27,7 +27,9 @@
 				"history": "+6",
 				"perception": "+3"
 			},
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Auran, Common, Elvish",
@@ -146,7 +148,18 @@
 			"int": 9,
 			"wis": 10,
 			"cha": 10,
-			"resist": "lightning, thunder; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -211,7 +224,9 @@
 				"arcana": "+3",
 				"deception": "+7"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"languages": "Common, Ignan",
@@ -729,7 +744,10 @@
 				"athletics": "+7",
 				"intimidation": "+4"
 			},
-			"resist": "cold, poison",
+			"resist": [
+				"cold",
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"languages": "Common, Dwarvish",
@@ -805,7 +823,16 @@
 			"int": 8,
 			"wis": 10,
 			"cha": 10,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -966,7 +993,9 @@
 				"intimidation": "+3",
 				"perception": "+2"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"passive": 12,
 			"languages": "Common",
 			"cr": "2",
@@ -1027,7 +1056,9 @@
 				"intimidation": "+5",
 				"religion": "+2"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"passive": 10,
 			"languages": "Common, Ignan",
 			"cr": "3",
@@ -1272,7 +1303,16 @@
 			"int": 9,
 			"wis": 10,
 			"cha": 10,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -1448,7 +1488,9 @@
 				"nature": "+8",
 				"survival": "+8"
 			},
-			"resist": "cold",
+			"resist": [
+				"cold"
+			],
 			"passive": 14,
 			"languages": "Aquan, Common",
 			"cr": "9",
@@ -1999,7 +2041,16 @@
 			"wis": 16,
 			"cha": 23,
 			"save": "Dex +14, Con +13, Cha +13",
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -2143,7 +2194,9 @@
 				"deception": "+6",
 				"perception": "+4"
 			},
-			"resist": "acid",
+			"resist": [
+				"acid"
+			],
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 14,
 			"languages": "Common, Terran",
@@ -2338,7 +2391,16 @@
 			"wis": 15,
 			"cha": 22,
 			"save": "Str +14, Con +15, Wis +8",
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -2454,7 +2516,17 @@
 			"wis": 18,
 			"cha": 23,
 			"save": "Str +11, Con +13, Wis +10",
-			"resist": "lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"acid",
 				"cold",
@@ -2913,7 +2985,9 @@
 				"insight": "+2",
 				"persuasion": "+5"
 			},
-			"resist": "acid",
+			"resist": [
+				"acid"
+			],
 			"passive": 10,
 			"languages": "Aquan, Common",
 			"cr": "4",
@@ -3407,7 +3481,17 @@
 			"int": 8,
 			"wis": 10,
 			"cha": 10,
-			"resist": "acid; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"acid",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3660,7 +3744,18 @@
 			"wis": 21,
 			"cha": 23,
 			"save": "Dex +13, Wis +11, Cha +12",
-			"resist": "cold, fire; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"cold",
+				"fire",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"lightning",
 				"poison",

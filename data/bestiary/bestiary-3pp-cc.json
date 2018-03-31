@@ -82,7 +82,21 @@
 			"int": 11,
 			"wis": 11,
 			"cha": 16,
-			"resist": "acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"necrotic",
 				"poison"
@@ -149,7 +163,17 @@
 				"perception": "+3",
 				"insight": "+5"
 			},
-			"resist": "radiant; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -410,7 +434,11 @@
 			"skill": {
 				"stealth": "+6"
 			},
-			"resist": "acid, cold, fire",
+			"resist": [
+				"acid",
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"lightning"
 			],
@@ -455,7 +483,11 @@
 				"perception": "+3",
 				"stealth": "+6"
 			},
-			"resist": "acid, cold, fire",
+			"resist": [
+				"acid",
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"lightning"
 			],
@@ -507,7 +539,11 @@
 				"perception": "+4",
 				"stealth": "+6"
 			},
-			"resist": "acid, cold, fire",
+			"resist": [
+				"acid",
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"lightning"
 			],
@@ -560,7 +596,16 @@
 				"stealth": "+7",
 				"survival": "+9"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -1007,7 +1052,16 @@
 			"int": 10,
 			"wis": 12,
 			"cha": 15,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -1253,7 +1307,18 @@
 			"int": 17,
 			"wis": 16,
 			"cha": 20,
-			"resist": "cold, lightning, bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				},
+				"cold",
+				"lightning"
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -1316,7 +1381,10 @@
 			"int": 5,
 			"wis": 11,
 			"cha": 4,
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"fire"
 			],
@@ -1383,7 +1451,10 @@
 			"int": 6,
 			"wis": 11,
 			"cha": 4,
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"fire",
 				"necrotic"
@@ -1617,7 +1688,19 @@
 				"perception": "+3",
 				"stealth": "+4"
 			},
-			"resist": "cold, fire, necrotic, bludgeoning, piercing, and slashing damage from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "damage from nonmagical weapons"
+				},
+				"cold",
+				"fire",
+				"necrotic"
+			],
 			"immune": [
 				"lightning",
 				"poison"
@@ -1674,7 +1757,10 @@
 			},
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
-			"resist": "fire, necrotic",
+			"resist": [
+				"fire",
+				"necrotic"
+			],
 			"immune": [
 				"poison"
 			],
@@ -1728,7 +1814,9 @@
 			"int": 13,
 			"wis": 14,
 			"cha": 19,
-			"resist": "necrotic",
+			"resist": [
+				"necrotic"
+			],
 			"immune": [
 				"poison",
 				"cold"
@@ -1785,7 +1873,9 @@
 			"int": 8,
 			"wis": 14,
 			"cha": 15,
-			"resist": "necrotic",
+			"resist": [
+				"necrotic"
+			],
 			"immune": [
 				"poison"
 			],
@@ -1955,7 +2045,10 @@
 			"int": 11,
 			"wis": 12,
 			"cha": 11,
-			"resist": "bludgeoning, piercing",
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
 			"vulnerable": "fire",
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
@@ -2506,7 +2599,9 @@
 				"intimidation": "+3"
 			},
 			"vulnerable": "bludgeoning",
-			"resist": "necrotic",
+			"resist": [
+				"necrotic"
+			],
 			"immune": [
 				"poison",
 				"cold"
@@ -2572,7 +2667,21 @@
 			"skill": {
 				"intimidation": "+4"
 			},
-			"resist": "acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"necrotic",
 				"poison"
@@ -2718,7 +2827,11 @@
 			"skill": {
 				"athletics": "+6"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -2776,7 +2889,10 @@
 			"skill": {
 				"perception": "+3"
 			},
-			"resist": "cold, lightning",
+			"resist": [
+				"cold",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -2838,7 +2954,19 @@
 			"wis": 16,
 			"cha": 17,
 			"save": "Str +11, Con +10, Wis +8",
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -2915,7 +3043,20 @@
 			"skill": {
 				"perception": "+10"
 			},
-			"resist": "acid, cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3008,7 +3149,19 @@
 			"int": 12,
 			"wis": 10,
 			"cha": 15,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3081,7 +3234,19 @@
 			"int": 12,
 			"wis": 17,
 			"cha": 13,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3175,7 +3340,18 @@
 			"int": 12,
 			"wis": 15,
 			"cha": 13,
-			"resist": "acid, cold, fire; bludgeoning and piercing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"lightning",
 				"poison",
@@ -3250,7 +3426,11 @@
 			"int": 5,
 			"wis": 6,
 			"cha": 6,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -3317,7 +3497,19 @@
 			"int": 15,
 			"wis": 12,
 			"cha": 16,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3385,7 +3577,15 @@
 			"int": 8,
 			"wis": 18,
 			"cha": 14,
-			"resist": "lightning; piercing and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				{
+					"resist": [
+						"piercing"
+					],
+					"note": "and slashing from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -3466,7 +3666,11 @@
 			"int": 9,
 			"wis": 12,
 			"cha": 9,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -3515,7 +3719,19 @@
 			"int": 12,
 			"wis": 10,
 			"cha": 14,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3601,7 +3817,17 @@
 			"wis": 18,
 			"cha": 14,
 			"vulnerable": "fire",
-			"resist": "lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -3671,7 +3897,18 @@
 			"int": 8,
 			"wis": 16,
 			"cha": 10,
-			"resist": "fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -3736,7 +3973,11 @@
 			"skill": {
 				"stealth": "+4"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -3785,7 +4026,19 @@
 			"int": 20,
 			"wis": 16,
 			"cha": 14,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3896,7 +4149,19 @@
 			"int": 15,
 			"wis": 18,
 			"cha": 20,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -3970,7 +4235,11 @@
 			"int": 14,
 			"wis": 15,
 			"cha": 17,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4038,7 +4307,19 @@
 			"int": 18,
 			"wis": 19,
 			"cha": 23,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -4123,7 +4404,11 @@
 			"int": 8,
 			"wis": 16,
 			"cha": 20,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -4268,7 +4553,11 @@
 			"int": 7,
 			"wis": 16,
 			"cha": 9,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4373,7 +4662,14 @@
 			"int": 11,
 			"wis": 18,
 			"cha": 15,
-			"resist": "cold, fire, lightning, bludgeoning, piercing, slashing",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4440,7 +4736,11 @@
 			"int": 5,
 			"wis": 16,
 			"cha": 12,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4501,7 +4801,11 @@
 			"int": 9,
 			"wis": 12,
 			"cha": 9,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4556,7 +4860,12 @@
 			"int": 5,
 			"wis": 12,
 			"cha": 9,
-			"resist": "cold, fire, lightning, piercing",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				"piercing"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4611,7 +4920,13 @@
 			"int": 5,
 			"wis": 12,
 			"cha": 9,
-			"resist": "cold, fire, lightning, piercing, bludgeoning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				"piercing",
+				"bludgeoning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4666,7 +4981,19 @@
 			"int": 9,
 			"wis": 10,
 			"cha": 8,
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -4733,7 +5060,18 @@
 			"int": 7,
 			"wis": 13,
 			"cha": 8,
-			"resist": "cold, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -4801,7 +5139,19 @@
 				"persuasion": "+10",
 				"stealth": "+7"
 			},
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -4895,7 +5245,11 @@
 			"skill": {
 				"stealth": "+6"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -4955,7 +5309,11 @@
 			"int": 7,
 			"wis": 20,
 			"cha": 8,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -5021,7 +5379,18 @@
 				"perception": "+8",
 				"stealth": "+7"
 			},
-			"resist": "fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -7316,7 +7685,10 @@
 			"int": 6,
 			"wis": 11,
 			"cha": 3,
-			"resist": "cold, fire",
+			"resist": [
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"poison",
 				"psychic"
@@ -7370,7 +7742,10 @@
 			"skill": {
 				"perception": "+3"
 			},
-			"resist": "cold, fire",
+			"resist": [
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"poison",
 				"psychic"
@@ -8058,7 +8433,11 @@
 			"skill": {
 				"athletics": "+3"
 			},
-			"resist": "fire, lightning, thunder",
+			"resist": [
+				"fire",
+				"lightning",
+				"thunder"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -8115,7 +8494,11 @@
 				"survival": "+3",
 				"stealth": "+4"
 			},
-			"resist": "fire, lightning, thunder",
+			"resist": [
+				"fire",
+				"lightning",
+				"thunder"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -8183,7 +8566,11 @@
 				"intimidation": "+7",
 				"perception": "+6"
 			},
-			"resist": "fire, lightning, thunder",
+			"resist": [
+				"fire",
+				"lightning",
+				"thunder"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -8259,7 +8646,11 @@
 				"stealth": "+5",
 				"survival": "+6"
 			},
-			"resist": "fire, lightning, thunder",
+			"resist": [
+				"fire",
+				"lightning",
+				"thunder"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -8336,7 +8727,11 @@
 				"perception": "+10",
 				"persuasion": "+10"
 			},
-			"resist": "fire, lightning, thunder",
+			"resist": [
+				"fire",
+				"lightning",
+				"thunder"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -8497,7 +8892,16 @@
 				"perception": "+4",
 				"stealth": "+5"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold"
 			],
@@ -8563,7 +8967,16 @@
 			"skill": {
 				"perception": "+5"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"vulnerable": "fire",
 			"immune": [
 				"cold"
@@ -8629,7 +9042,16 @@
 			"skill": {
 				"perception": "+7"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold"
 			],
@@ -8695,7 +9117,16 @@
 			"skill": {
 				"perception": "+9"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold"
 			],
@@ -8931,7 +9362,10 @@
 				"perception": "+5",
 				"survival": "+5"
 			},
-			"resist": "cold, lightning",
+			"resist": [
+				"cold",
+				"lightning"
+			],
 			"passive": 15,
 			"languages": "Common, Giant, Sylvan",
 			"cr": "5",
@@ -8988,7 +9422,10 @@
 				"perception": "+5",
 				"survival": "+5"
 			},
-			"resist": "cold, lightning",
+			"resist": [
+				"cold",
+				"lightning"
+			],
 			"passive": 15,
 			"languages": "Common, Giant, Sylvan",
 			"cr": "7",
@@ -9075,7 +9512,10 @@
 				"perception": "+11",
 				"survival": "+11"
 			},
-			"resist": "cold, lightning",
+			"resist": [
+				"cold",
+				"lightning"
+			],
 			"passive": 21,
 			"languages": "Common, Giant, Sylvan",
 			"cr": "8",
@@ -9167,7 +9607,10 @@
 				"survival": "+6",
 				"stealth": "+8"
 			},
-			"resist": "cold, lightning",
+			"resist": [
+				"cold",
+				"lightning"
+			],
 			"passive": 16,
 			"languages": "Common, Giant, Sylvan",
 			"cr": "7",
@@ -9429,7 +9872,16 @@
 			"int": 6,
 			"wis": 11,
 			"cha": 18,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison",
 				"psychic"
@@ -9526,7 +9978,16 @@
 				"athletics": "+7",
 				"perception": "+4"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons that are not adamantine",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that are not adamantine"
+				}
+			],
 			"immune": [
 				"thunder"
 			],
@@ -9971,7 +10432,19 @@
 			"int": 2,
 			"wis": 14,
 			"cha": 16,
-			"resist": "acid, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"acid",
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"cold",
 				"necrotic",
@@ -10218,7 +10691,16 @@
 			"skill": {
 				"stealth": "+7"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison",
 				"psychic"
@@ -10629,7 +11111,12 @@
 				"perception": "+9",
 				"religion": "+12"
 			},
-			"resist": "bludgeoning, lightning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"lightning",
+				"piercing",
+				"slashing"
+			],
 			"immune": [
 				"poison"
 			],
@@ -10945,7 +11432,9 @@
 				"perception": "+4",
 				"religion": "+2"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Draconic",
@@ -11124,7 +11613,16 @@
 			"int": 7,
 			"wis": 12,
 			"cha": 11,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -11192,7 +11690,16 @@
 				"athletics": "+7",
 				"perception": "+2"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -11510,7 +12017,9 @@
 			"int": 11,
 			"wis": 14,
 			"cha": 11,
-			"resist": "necrotic",
+			"resist": [
+				"necrotic"
+			],
 			"immune": [
 				"poison"
 			],
@@ -11790,7 +12299,9 @@
 				"perception": "+6",
 				"persuasion": "+6"
 			},
-			"resist": "necrotic",
+			"resist": [
+				"necrotic"
+			],
 			"immune": [
 				"poison"
 			],
@@ -11926,7 +12437,11 @@
 				"perception": "+4",
 				"stealth": "+4"
 			},
-			"resist": "cold, lightning, fire",
+			"resist": [
+				"cold",
+				"lightning",
+				"fire"
+			],
 			"immune": [
 				"poison"
 			],
@@ -12021,7 +12536,11 @@
 				"persuasion": "+6",
 				"perception": "+4"
 			},
-			"resist": "cold, lightning, fire",
+			"resist": [
+				"cold",
+				"lightning",
+				"fire"
+			],
 			"immune": [
 				"poison"
 			],
@@ -12198,7 +12717,17 @@
 				"perception": "+12",
 				"stealth": "+7"
 			},
-			"resist": "radiant; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -12320,7 +12849,17 @@
 				"perception": "+10",
 				"stealth": "+7"
 			},
-			"resist": "radiant; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -12429,7 +12968,17 @@
 				"perception": "+10",
 				"stealth": "+9"
 			},
-			"resist": "radiant; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -12741,7 +13290,18 @@
 				"perception": "+10",
 				"stealth": "+5"
 			},
-			"resist": "acid, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -12834,7 +13394,10 @@
 				"perception": "+1",
 				"stealth": "+4"
 			},
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -12896,7 +13459,18 @@
 				"perception": "+11",
 				"stealth": "+7"
 			},
-			"resist": "acid, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -13003,7 +13577,9 @@
 			"skill": {
 				"perception": "+6"
 			},
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"cold",
@@ -13066,7 +13642,10 @@
 				"perception": "+5",
 				"stealth": "+7"
 			},
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -13139,7 +13718,10 @@
 			"skill": {
 				"perception": "+8"
 			},
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -13221,7 +13803,18 @@
 			"skill": {
 				"perception": "+12"
 			},
-			"resist": "acid, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"necrotic",
@@ -13366,7 +13959,17 @@
 			"skill": {
 				"stealth": "+7"
 			},
-			"resist": "lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"acid",
 				"cold",
@@ -13436,7 +14039,10 @@
 			"int": 12,
 			"wis": 19,
 			"cha": 15,
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -13519,7 +14125,18 @@
 				"deception": "+10",
 				"intimidation": "+10"
 			},
-			"resist": "acid, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -13627,7 +14244,17 @@
 				"perception": "+16",
 				"stealth": "+13"
 			},
-			"resist": "lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"acid",
 				"cold",
@@ -13788,7 +14415,18 @@
 				"perception": "+5",
 				"stealth": "+7"
 			},
-			"resist": "cold, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"cold",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -13855,7 +14493,21 @@
 			"skill": {
 				"perception": "+8"
 			},
-			"resist": "acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"necrotic",
 				"poison"
@@ -14024,7 +14676,16 @@
 			"skill": {
 				"perception": "+6"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
 			"cr": "12",
@@ -14089,7 +14750,16 @@
 			"skill": {
 				"perception": "+6"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
 			"cr": "9",
@@ -14161,7 +14831,16 @@
 				"perception": "+4",
 				"stealth": "+7"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"cr": "5",
@@ -14227,7 +14906,16 @@
 				"perception": "+5",
 				"stealth": "+7"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"cr": "10",
@@ -14293,7 +14981,16 @@
 				"perception": "+5",
 				"stealth": "+5"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"cr": "7",
@@ -14351,7 +15048,9 @@
 				"perception": "+4",
 				"religion": "+3"
 			},
-			"resist": "radiant",
+			"resist": [
+				"radiant"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -14414,7 +15113,9 @@
 				"perception": "+3",
 				"religion": "+2"
 			},
-			"resist": "radiant",
+			"resist": [
+				"radiant"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
@@ -14467,7 +15168,16 @@
 				"acrobatics": "+7",
 				"athletics": "+3"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"vulnerable": "cold, thunder",
 			"conditionImmune": "grappled, restrained",
 			"senses": "darkvision 120 ft.",
@@ -14535,7 +15245,9 @@
 				"persuasion": "+5",
 				"religion": "+3"
 			},
-			"resist": "radiant",
+			"resist": [
+				"radiant"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -14596,7 +15308,9 @@
 				"persuasion": "+6",
 				"religion": "+4"
 			},
-			"resist": "radiant",
+			"resist": [
+				"radiant"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
@@ -14977,7 +15691,9 @@
 				"perception": "+4",
 				"persuasion": "+3"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Common, Giant",
@@ -15039,7 +15755,9 @@
 			"skill": {
 				"athletics": "+6"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"languages": "Giant",
@@ -15161,7 +15879,11 @@
 				"athletics": "+8",
 				"stealth": "+6"
 			},
-			"resist": "acid, cold, lightning",
+			"resist": [
+				"acid",
+				"cold",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -15235,7 +15957,19 @@
 				"stealth": "+6",
 				"survival": "+4"
 			},
-			"resist": "acid, cold, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"cold",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -15302,7 +16036,19 @@
 				"perception": "+4",
 				"survival": "+4"
 			},
-			"resist": "acid, cold, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"cold",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -15373,7 +16119,9 @@
 				"arcana": "+5",
 				"history": "+5"
 			},
-			"resist": "psychic",
+			"resist": [
+				"psychic"
+			],
 			"passive": 11,
 			"languages": "Common, Deep Speech, telepathy 25 ft.",
 			"cr": "1",
@@ -15444,7 +16192,9 @@
 			"skill": {
 				"arcana": "+3"
 			},
-			"resist": "psychic",
+			"resist": [
+				"psychic"
+			],
 			"passive": 10,
 			"languages": "Common, Deep Speech, telepathy 25 ft.",
 			"cr": "1/2",
@@ -15548,7 +16298,9 @@
 			"wis": 12,
 			"cha": 6,
 			"save": "Dex +5",
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"senses": "electricity sense 100 ft.",
 			"passive": 11,
 			"cr": "1",
@@ -15772,7 +16524,18 @@
 			"int": 6,
 			"wis": 14,
 			"cha": 13,
-			"resist": "necrotic, poison; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"necrotic",
+				"poison",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"conditionImmune": "poisoned, prone",
 			"senses": "blidnsight 80 ft., darkvision 120 ft.",
 			"passive": 12,
@@ -15927,7 +16690,21 @@
 			"int": 3,
 			"wis": 14,
 			"cha": 10,
-			"resist": "acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons that aren't silvered"
+				}
+			],
 			"immune": [
 				"necrotic",
 				"poison"
@@ -16197,7 +16974,10 @@
 				"perception": "+7",
 				"stealth": "+9"
 			},
-			"resist": "cold, fire",
+			"resist": [
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"lightning",
 				"poison",
@@ -16280,7 +17060,16 @@
 			"int": 5,
 			"wis": 11,
 			"cha": 11,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -16389,7 +17178,9 @@
 				"athletics": "+5",
 				"perception": "+5"
 			},
-			"resist": "psychic",
+			"resist": [
+				"psychic"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"cr": "2",
@@ -16518,7 +17309,11 @@
 			"wis": 11,
 			"cha": 6,
 			"save": "Con +5, Wis +2",
-			"resist": "bludgeoning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, petrified, prone, restrained, stunned",
 			"senses": "blindsight 60 ft. (blind beyond this radius)",
 			"passive": 10,
@@ -16671,7 +17466,10 @@
 				"perception": "+3",
 				"stealth": "+3"
 			},
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -16746,7 +17544,10 @@
 				"perception": "+3",
 				"stealth": "+3"
 			},
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -16821,7 +17622,10 @@
 				"perception": "+4",
 				"stealth": "+4"
 			},
-			"resist": "acid, lightning",
+			"resist": [
+				"acid",
+				"lightning"
+			],
 			"immune": [
 				"cold",
 				"poison"
@@ -17097,7 +17901,26 @@
 			"int": 15,
 			"wis": 18,
 			"cha": 20,
-			"resist": "Spirit Form Only: acid, cold, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"thunder",
+						{
+							"resist": [
+								"bludgeoning",
+								"piercing",
+								"slashing"
+							],
+							"note": "from nonmagical weapons"
+						}
+					],
+					"preNote": "Spirit Form Only:"
+				}
+			],
 			"immune": [
 				{
 					"immune": [
@@ -17188,7 +18011,16 @@
 				"perception": "+7",
 				"religion": "+8"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"acid",
 				"cold",
@@ -17259,7 +18091,18 @@
 			"int": 2,
 			"wis": 12,
 			"cha": 6,
-			"resist": "acid, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -17389,7 +18232,9 @@
 				"perception": "+3",
 				"stealth": "+7"
 			},
-			"resist": "thunder",
+			"resist": [
+				"thunder"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"cr": "5",
@@ -17458,7 +18303,16 @@
 			"int": 13,
 			"wis": 13,
 			"cha": 10,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -17509,7 +18363,16 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 3,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison",
@@ -17754,7 +18617,10 @@
 				"perception": "+5",
 				"survival": "+5"
 			},
-			"resist": "bludgeoning, piercing",
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
 			"vulnerable": "fire",
 			"conditionImmune": "charmed, frightened",
 			"senses": "darkvision 60 ft.",
@@ -17820,7 +18686,9 @@
 			"int": 6,
 			"wis": 11,
 			"cha": 12,
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"immune": [
 				"poison"
 			],
@@ -17957,7 +18825,11 @@
 			"skill": {
 				"athletics": "+4"
 			},
-			"resist": "bludgeoning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"senses": "darkvision 30 ft.",
 			"passive": 8,
 			"languages": "understands simple instructions in Abyssal but can't speak",
@@ -18098,7 +18970,11 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 14,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -18159,7 +19035,11 @@
 			"skill": {
 				"athletics": "+6"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -18229,7 +19109,11 @@
 			"int": 8,
 			"wis": 10,
 			"cha": 14,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -18296,7 +19180,11 @@
 			"skill": {
 				"perception": "+5"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -18369,7 +19257,11 @@
 			"skill": {
 				"perception": "+7"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -18442,7 +19334,12 @@
 			"skill": {
 				"athletics": "+10"
 			},
-			"resist": "cold, fire, lightning; bludgeoning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				"bludgeoning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -19228,7 +20125,15 @@
 			"wis": 10,
 			"cha": 4,
 			"save": "Con +12",
-			"resist": "acid, bludgeoning, fire, necrotic, piercing, poison, slashing",
+			"resist": [
+				"acid",
+				"bludgeoning",
+				"fire",
+				"necrotic",
+				"piercing",
+				"poison",
+				"slashing"
+			],
 			"immune": [
 				"cold",
 				"radiant",
@@ -19533,7 +20438,11 @@
 				"perception": "+5",
 				"stealth": "+5"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -20024,7 +20933,11 @@
 			"skill": {
 				"perception": "+3"
 			},
-			"resist": "bludgeoning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, petrified, prone, restrained, stunned",
 			"passive": 13,
 			"cr": "1/2",
@@ -20076,7 +20989,11 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "bludgeoning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, petrified, prone, restrained, stunned",
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
@@ -20125,7 +21042,11 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 2,
-			"resist": "bludgeoning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, petrified, prone, restrained, stunned",
 			"senses": "tremorsense 60 ft. (blind beyond this radius)",
 			"passive": 10,
@@ -20178,7 +21099,11 @@
 			"skill": {
 				"acrobatics": "+7"
 			},
-			"resist": "bludgeoning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"conditionImmune": "charmed, frightened, paralyzed, petrified, prone, restrained, stunned",
 			"passive": 10,
 			"cr": "1/4",
@@ -22562,7 +23487,18 @@
 			"int": 3,
 			"wis": 10,
 			"cha": 6,
-			"resist": "lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -22619,7 +23555,16 @@
 			"int": 2,
 			"wis": 10,
 			"cha": 5,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"vulnerable": "thunder",
 			"immune": [
 				"poison"
@@ -22670,7 +23615,16 @@
 			"int": 3,
 			"wis": 10,
 			"cha": 7,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -22734,7 +23688,17 @@
 			"int": 3,
 			"wis": 10,
 			"cha": 6,
-			"resist": "acid; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -22800,7 +23764,18 @@
 			"int": 5,
 			"wis": 10,
 			"cha": 6,
-			"resist": "lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -22858,7 +23833,16 @@
 			"wis": 10,
 			"cha": 5,
 			"vulnerable": "thunder",
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -22914,7 +23898,16 @@
 			"int": 5,
 			"wis": 10,
 			"cha": 7,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -22984,7 +23977,17 @@
 			"int": 4,
 			"wis": 10,
 			"cha": 6,
-			"resist": "acid; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -23053,7 +24056,18 @@
 			"skill": {
 				"perception": "+5"
 			},
-			"resist": "lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -23113,7 +24127,16 @@
 			"skill": {
 				"perception": "+5"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"vulnerable": "thunder",
 			"immune": [
 				"poison"
@@ -23173,7 +24196,16 @@
 			"skill": {
 				"perception": "+5"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -23246,7 +24278,17 @@
 			"skill": {
 				"perception": "+5"
 			},
-			"resist": "acid; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -23321,7 +24363,18 @@
 			"skill": {
 				"perception": "+8"
 			},
-			"resist": "lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -23408,7 +24461,16 @@
 				"perception": "+8"
 			},
 			"vulnerable": "thunder",
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -23493,7 +24555,16 @@
 			"skill": {
 				"perception": "+8"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"fire",
 				"poison"
@@ -23586,7 +24657,17 @@
 			"skill": {
 				"perception": "+9"
 			},
-			"resist": "acid; bludgeoning, piercing, and slashing from nonmagical weapons",
+			"resist": [
+				"acid",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -23726,7 +24807,9 @@
 				"intimidation": "+5",
 				"perception": "+6"
 			},
-			"resist": "radiant",
+			"resist": [
+				"radiant"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
@@ -23794,7 +24877,9 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"resist": "radiant",
+			"resist": [
+				"radiant"
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
@@ -23898,7 +24983,10 @@
 			"skill": {
 				"perception": "+3"
 			},
-			"resist": "cold, fire",
+			"resist": [
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"poison"
 			],
@@ -23957,7 +25045,10 @@
 			"skill": {
 				"perception": "+7"
 			},
-			"resist": "cold, fire",
+			"resist": [
+				"cold",
+				"fire"
+			],
 			"immune": [
 				"poison"
 			],
@@ -24218,7 +25309,23 @@
 			"skill": {
 				"stealth": "+8"
 			},
-			"resist": "Object Form Only: bludgeoning, cold, force, lightning, necrotic, piercing, poison, radiant, slashing, thunder",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"cold",
+						"force",
+						"lightning",
+						"necrotic",
+						"piercing",
+						"poison",
+						"radiant",
+						"slashing",
+						"thunder"
+					],
+					"preNote": "Object Form Only:"
+				}
+			],
 			"immune": [
 				"acid",
 				"fire"
@@ -24363,7 +25470,13 @@
 				"perception": "+10",
 				"religion": "+15"
 			},
-			"resist": "bludgeoning, cold, fire, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"cold",
+				"fire",
+				"piercing",
+				"slashing"
+			],
 			"immune": [
 				"lightning",
 				"poison"

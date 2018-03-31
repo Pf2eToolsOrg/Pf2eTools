@@ -5,7 +5,7 @@ const helperFile = "entry.json";
 validator.addSchema(require(`./schema/${helperFile}`), "/Entry");
 const TESTS_PASSED = 0;
 const TESTS_FAILED = 1;
-var results = [];
+let results = [];
 const expected = [];
 const existing = [];
 

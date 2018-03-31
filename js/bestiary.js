@@ -15,6 +15,21 @@ function ascSortCr (a, b) {
 	return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
+function getAllImmRest (toParse, key) {
+	function recurse (it) {
+		if (typeof it === "string") {
+			out.push(it);
+		} else if (it[key]) {
+			it[key].forEach(nxt => recurse(nxt));
+		}
+	}
+	const out = [];
+	toParse.forEach(it => {
+		recurse(it);
+	});
+	return out;
+}
+
 const meta = {};
 
 function loadMeta (nextFunction) {
@@ -89,24 +104,36 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
+const DMG_TYPES = [
+	"acid",
+	"bludgeoning",
+	"cold",
+	"fire",
+	"force",
+	"lightning",
+	"necrotic",
+	"piercing",
+	"poison",
+	"psychic",
+	"radiant",
+	"slashing",
+	"thunder"
+];
+function dispResFilter (item) {
+	return `${StrUtil.uppercaseFirst(item)} Res`;
+}
+const resistFilter = new Filter({
+	header: "Damage Resistance",
+	items: DMG_TYPES,
+	displayFn: dispResFilter
+});
+function dispImmFilter (item) {
+	return `${StrUtil.uppercaseFirst(item)} Imm`;
+}
 const immuneFilter = new Filter({
 	header: "Damage Immunity",
-	items: [
-		"acid",
-		"bludgeoning",
-		"cold",
-		"fire",
-		"force",
-		"lightning",
-		"necrotic",
-		"piercing",
-		"poison",
-		"psychic",
-		"radiant",
-		"slashing",
-		"thunder"
-	],
-	displayFn: StrUtil.uppercaseFirst
+	items: DMG_TYPES,
+	displayFn: dispImmFilter
 });
 const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary", "Swarm"], displayFn: StrUtil.uppercaseFirst});
 
@@ -117,6 +144,7 @@ const filterBox = initFilterBox(
 	speedFilter,
 	typeFilter,
 	tagFilter,
+	resistFilter,
 	immuneFilter,
 	miscFilter
 );
@@ -206,7 +234,8 @@ function handleFilterChange () {
 			m._fSpeed,
 			m._pTypes.type,
 			m._pTypes.tags,
-			m.immune,
+			m._fRes,
+			m._fImm,
 			m._fMisc
 		);
 	});
@@ -227,6 +256,8 @@ function addMonsters (data) {
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
+		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
+		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
@@ -514,7 +545,7 @@ function loadhash (id) {
 	var dmgres = mon.resist;
 	if (dmgres) {
 		$content.find("td span#dmgres").parent().show();
-		$content.find("td span#dmgres").html(dmgres);
+		$content.find("td span#dmgres").html(Parser.monImmResToFull(dmgres));
 	} else {
 		$content.find("td span#dmgres").parent().hide();
 	}
@@ -522,7 +553,7 @@ function loadhash (id) {
 	var dmgimm = mon.immune;
 	if (dmgimm) {
 		$content.find("td span#dmgimm").parent().show();
-		$content.find("td span#dmgimm").html(Parser.monImmuneToFull(dmgimm));
+		$content.find("td span#dmgimm").html(Parser.monImmResToFull(dmgimm));
 	} else {
 		$content.find("td span#dmgimm").parent().hide();
 	}

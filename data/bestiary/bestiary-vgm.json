@@ -148,7 +148,11 @@
 				"perception": "+7",
 				"stealth": "+5"
 			},
-			"resist": "cold, lightning, necrotic",
+			"resist": [
+				"cold",
+				"lightning",
+				"necrotic"
+			],
 			"immune": [
 				"poison",
 				{
@@ -299,7 +303,17 @@
 				"deception": "+5",
 				"perception": "+5"
 			},
-			"resist": "cold; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"cold",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"languages": "Common, Giant, Sylvan",
@@ -889,7 +903,19 @@
 				"perception": "+5",
 				"stealth": "+5"
 			},
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -1136,7 +1162,19 @@
 				"perception": "+5",
 				"stealth": "+4"
 			},
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"acid",
 				"poison"
@@ -1533,7 +1571,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "acid",
+			"resist": [
+				"acid"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
@@ -1680,7 +1720,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
@@ -1728,7 +1770,19 @@
 				"perception": "+4",
 				"stealth": "+6"
 			},
-			"resist": "cold, fire, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"cold",
+				"fire",
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"lightning",
 				"poison"
@@ -1798,7 +1852,9 @@
 				"sleight of hand": "+6",
 				"stealth": "+6"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Sylvan",
@@ -2932,7 +2988,11 @@
 			"int": 13,
 			"wis": 10,
 			"cha": 16,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -3205,7 +3265,11 @@
 				"perception": "+3",
 				"stealth": "+5"
 			},
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -3996,7 +4060,10 @@
 				"perception": "+9",
 				"stealth": "+5"
 			},
-			"resist": "fire, lightning",
+			"resist": [
+				"fire",
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 19,
 			"cr": "10",
@@ -4567,7 +4634,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
@@ -5128,7 +5197,11 @@
 				"insight": "+9",
 				"perception": "+9"
 			},
-			"resist": "cold, lightning, necrotic",
+			"resist": [
+				"cold",
+				"lightning",
+				"necrotic"
+			],
 			"immune": [
 				"poison",
 				{
@@ -5886,7 +5959,16 @@
 				"perception": "+5",
 				"stealth": "+5"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"senses": "darkvision 120 ft., tremorsense 120 ft.",
 			"passive": 15,
 			"languages": "Dwarvish, Gnomish, Sylvan, Terran, Undercommon",
@@ -5979,7 +6061,16 @@
 			"skill": {
 				"perception": "+5"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"passive": 15,
 			"languages": "any two languages",
 			"cr": "5",
@@ -6280,7 +6371,11 @@
 			"int": 5,
 			"wis": 8,
 			"cha": 5,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -6577,7 +6672,16 @@
 				"perception": "+10",
 				"stealth": "+6"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"senses": "blindsight 30 ft., darkvision 120 ft.",
 			"passive": 20,
 			"languages": "telepathy 120 ft.",
@@ -6779,7 +6883,9 @@
 				"arcana": "+7",
 				"history": "+7"
 			},
-			"resist": "necrotic",
+			"resist": [
+				"necrotic"
+			],
 			"passive": 11,
 			"languages": "any four languages",
 			"cr": "9",
@@ -7809,7 +7915,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
@@ -8011,7 +8119,16 @@
 				"perception": "+3",
 				"stealth": "+6"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks while in dim light or darkness",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks while in dim light or darkness"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"cr": "2",
@@ -8074,7 +8191,19 @@
 			"wis": 14,
 			"cha": 9,
 			"save": "Dex +4, Con +6, Wis +5",
-			"resist": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -8135,7 +8264,16 @@
 			"skill": {
 				"stealth": "+8"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"vulnerable": "cold, fire",
 			"conditionImmune": "blinded, deafened, exhaustion, grappled, paralyzed, petrified, prone, restrained, unconscious",
 			"senses": "blindsight 120 ft.",
@@ -8310,7 +8448,11 @@
 			"int": 2,
 			"wis": 10,
 			"cha": 4,
-			"resist": "cold, fire, poison",
+			"resist": [
+				"cold",
+				"fire",
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"cr": "1/4",
@@ -8439,7 +8581,17 @@
 				"history": "+8",
 				"perception": "+10"
 			},
-			"resist": "cold; bludgeoning, piercing, and slashing from nonmagical attacks",
+			"resist": [
+				"cold",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
 			"immune": [
 				"lightning",
 				"thunder"
@@ -8522,7 +8674,11 @@
 			"int": 15,
 			"wis": 11,
 			"cha": 14,
-			"resist": "bludgeoning, piercing, slashing",
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
 			"conditionImmune": "charmed, frightened, grappled, paralyzed, petrified, prone, restrained, stunned",
 			"senses": "darkvision 30 ft.",
 			"passive": 10,
@@ -8598,7 +8754,10 @@
 			"int": 1,
 			"wis": 2,
 			"cha": 1,
-			"resist": "piercing, slashing",
+			"resist": [
+				"piercing",
+				"slashing"
+			],
 			"conditionImmune": "charmed, frightened, grappled, paralyzed, petrified, prone, restrained",
 			"senses": "blindsight 10 ft.",
 			"passive": 6,
@@ -8714,7 +8873,10 @@
 				"intimidation": "+2",
 				"perception": "+2"
 			},
-			"resist": "fire, poison",
+			"resist": [
+				"fire",
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Abyssal, Common, Orc",
@@ -8784,7 +8946,10 @@
 				"perception": "+4",
 				"stealth": "+3"
 			},
-			"resist": "lightning; piercing",
+			"resist": [
+				"lightning",
+				"piercing"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"cr": "1",
@@ -9138,7 +9303,11 @@
 			"int": 4,
 			"wis": 7,
 			"cha": 2,
-			"resist": "cold, fire, lightning",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],
@@ -9190,7 +9359,10 @@
 				"perception": "+2",
 				"stealth": "+4"
 			},
-			"resist": "lightning; piercing",
+			"resist": [
+				"lightning",
+				"piercing"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Vegepygmy",
@@ -9246,7 +9418,10 @@
 				"perception": "+3",
 				"stealth": "+4"
 			},
-			"resist": "lightning; piercing",
+			"resist": [
+				"lightning",
+				"piercing"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Vegepygmy",
@@ -9599,7 +9774,14 @@
 				"persuasion": "+7",
 				"religion": "+4"
 			},
-			"resist": "slashing from nonmagical attacks not made with silvered weapons",
+			"resist": [
+				{
+					"resist": [
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with silvered weapons"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"languages": "any two languages (usually Abyssal or Infernal)",
@@ -9706,7 +9888,9 @@
 				"arcana": "+4",
 				"history": "+4"
 			},
-			"resist": "psychic",
+			"resist": [
+				"psychic"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"languages": "any two languages, telepathy 30 ft.",
@@ -9896,7 +10080,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "cold",
+			"resist": [
+				"cold"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
@@ -9947,7 +10133,10 @@
 				"perception": "+4",
 				"stealth": "+4"
 			},
-			"resist": "bludgeoning, piercing",
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
 			"vulnerable": "fire",
 			"conditionImmune": "charmed, frightened",
 			"senses": "darkvision 60 ft.",
@@ -10245,7 +10434,16 @@
 			"int": 5,
 			"wis": 12,
 			"cha": 7,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks not made with silvered weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with silvered weapons"
+				}
+			],
 			"conditionImmune": "charmed, exhaustion, frightened",
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
@@ -10316,7 +10514,11 @@
 				"perception": "+7",
 				"stealth": "+5"
 			},
-			"resist": "acid, fire, lightning",
+			"resist": [
+				"acid",
+				"fire",
+				"lightning"
+			],
 			"immune": [
 				"poison"
 			],

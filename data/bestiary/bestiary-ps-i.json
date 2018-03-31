@@ -21,7 +21,16 @@
 			"skill": {
 				"stealth": "+4"
 			},
-			"resist": "bludgeoning, piercing, and slashing from",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -85,7 +94,13 @@
 			"int": 10,
 			"wis": 12,
 			"cha": 17,
-			"resist": "acid, fire, lightning, thunder; bludgeoning",
+			"resist": [
+				"acid",
+				"fire",
+				"lightning",
+				"thunder",
+				"bludgeoning"
+			],
 			"immune": [
 				"cold",
 				"necrotic",
@@ -306,7 +321,17 @@
 				"perception": "+3",
 				"stealth": "+6"
 			},
-			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks not made with living wood weapons",
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with living wood weapons"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Common",

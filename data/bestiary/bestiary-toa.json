@@ -24,7 +24,10 @@
 				"insight": "+12",
 				"perception": "+12"
 			},
-			"resist": "cold, lightning",
+			"resist": [
+				"cold",
+				"lightning"
+			],
 			"immune": [
 				"necrotic",
 				"poison",
@@ -230,7 +233,9 @@
 				"stealth": "+3",
 				"survival": "+4"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Common, Dwarvish",
@@ -298,7 +303,9 @@
 				"perception": "+4",
 				"survival": "+4"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Common",
@@ -520,7 +527,10 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 1,
-			"resist": "cold, fire",
+			"resist": [
+				"cold",
+				"fire"
+			],
 			"conditionImmune": "blinded, deafened, exhaustion, prone",
 			"senses": "blindsight 30 ft.",
 			"passive": 10,
@@ -915,7 +925,16 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks not made with adamantine weapons",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with adamantine weapons"
+				}
+			],
 			"immune": [
 				"poison"
 			],
@@ -2264,7 +2283,9 @@
 				"insight": "+5",
 				"investigation": "+9"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Common, Draconic, Dwarvish, Primordial",
@@ -2516,7 +2537,17 @@
 				"perception": "+3",
 				"stealth": "+4"
 			},
-			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
 			"immune": [
 				"poison"
 			],
