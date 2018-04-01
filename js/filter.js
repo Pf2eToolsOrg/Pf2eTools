@@ -785,7 +785,7 @@ class Filter {
 			}
 
 			return display && !hide;
-		} else if (typeof toCheck === "string") {
+		} else {
 			return doCheck();
 		}
 
