@@ -224,6 +224,42 @@
 				}
 			]
 		},
+		"damVuln": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dmgType"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"vulnerable": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/damVuln"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["vulnerable"]
+				}
+			]
+		},
 		"condImmune": {
 			"oneOf": [
 				{
@@ -543,7 +579,10 @@
 						"type": "string"
 					},
 					"vulnerable": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/damVuln"
+						}
 					},
 					"resist": {
 						"type": "array",

@@ -138,6 +138,14 @@ const CONDS = [
 	// not really a condition, but whatever
 	"disease"
 ];
+function dispVulnFilter (item) {
+	return `${StrUtil.uppercaseFirst(item)} Vuln`;
+}
+const vulnerableFilter = new Filter({
+	header: "Damage Vulnerabilities",
+	items: DMG_TYPES,
+	displayFn: dispVulnFilter
+});
 function dispResFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Res`;
 }
@@ -168,6 +176,7 @@ const filterBox = initFilterBox(
 	speedFilter,
 	typeFilter,
 	tagFilter,
+	vulnerableFilter,
 	resistFilter,
 	immuneFilter,
 	conditionImmuneFilter,
@@ -259,6 +268,7 @@ function handleFilterChange () {
 			m._fSpeed,
 			m._pTypes.type,
 			m._pTypes.tags,
+			m._fVuln,
 			m._fRes,
 			m._fImm,
 			m._fCondImm,
@@ -282,6 +292,7 @@ function addMonsters (data) {
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
+		mon._fVuln = mon.vulnerable ? getAllImmRest(mon.vulnerable, "vulnerable") : [];
 		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
 		mon._fCondImm = mon.conditionImmune ? getAllImmRest(mon.conditionImmune, "conditionImmune") : [];
@@ -564,7 +575,7 @@ function loadhash (id) {
 	var dmgvuln = mon.vulnerable;
 	if (dmgvuln) {
 		$content.find("td span#dmgvuln").parent().show();
-		$content.find("td span#dmgvuln").html(dmgvuln);
+		$content.find("td span#dmgvuln").html(Parser.monImmResToFull(dmgvuln));
 	} else {
 		$content.find("td span#dmgvuln").parent().hide();
 	}

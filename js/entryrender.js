@@ -1389,7 +1389,7 @@ EntryRenderer.monster = {
 					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
-					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${mon.vulnerable}</p>` : ""}
+					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${Parser.monImmResToFull(mon.vulnerable)}</p>` : ""}
 					${mon.resist ? `<p><b>Damage Res.:</b> ${Parser.monImmResToFull(mon.resist)}</p>` : ""}
 					${mon.immune ? `<p><b>Damage Imm.:</b> ${Parser.monImmResToFull(mon.immune)}</p>` : ""}
 					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${Parser.monCondImmToFull(mon.conditionImmune)}</p>` : ""}
