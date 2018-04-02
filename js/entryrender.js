@@ -2455,9 +2455,12 @@ EntryRenderer.dice = {
 	rollerClick: (ele, packed, name) => {
 		const $ele = $(ele);
 		const entry = JSON.parse(packed);
-		// TODO
 		function attemptToGetTitle () {
-			let titleMaybe = $(ele).closest(`div`).find(`.entry-title`).first().text();
+			// try use table caption
+			let titleMaybe = $(ele).closest(`table`).find(`caption`).text();
+			if (titleMaybe) return titleMaybe;
+			// otherwise, use the section title, where applicable
+			titleMaybe = $(ele).closest(`div`).find(`.entry-title`).first().text();
 			if (titleMaybe) {
 				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
 			}
