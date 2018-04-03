@@ -672,9 +672,7 @@ function loadhash (id) {
 	$content.find("tr.legendary").remove();
 	if (legendary) {
 		renderSection("legendary", "legendary", legendary, 1);
-		const legendaryActions = mon.legendaryActions || 3;
-		const legendaryName = name.split(",");
-		$content.find("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.</span></td></tr>`);
+		$content.find("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${EntryRenderer.monster.getLegendaryActionIntro(mon)}</span></td></tr>`);
 	}
 
 	const legendaryGroup = mon.legendaryGroup;

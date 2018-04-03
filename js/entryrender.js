@@ -716,8 +716,7 @@ function EntryRenderer () {
 	 * @param depth
 	 * @returns {string}
 	 */
-	this.renderEntry = function (entry, depth) {
-		depth = depth === undefined || depth === null ? 0 : depth;
+	this.renderEntry = function (entry, depth = 0) {
 		const tempStack = [];
 		this.recursiveEntryRender(entry, tempStack, depth);
 		return tempStack.join("");
@@ -1329,6 +1328,12 @@ EntryRenderer.traphazard = {
 };
 
 EntryRenderer.monster = {
+	getLegendaryActionIntro: (mon) => {
+		const legendaryActions = mon.legendaryActions || 3;
+		const legendaryName = mon.name.split(",");
+		return `${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.`
+	},
+
 	getCompactRenderedString: (mon) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
 
@@ -1341,6 +1346,7 @@ EntryRenderer.monster = {
 			return mon[key] ? `
 			<tr class="mon-sect-header"><td colspan="6"><span>${title}</span></td></tr>
 			<tr class="text compact"><td colspan="6">
+			${key === "legendary" && mon.legendary ? `<p>${EntryRenderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
 			${mon[key].map(it => it.rendered || renderer.renderEntry(it, depth)).join("")}
 			</td></tr>
 			` : ""
@@ -1408,7 +1414,13 @@ EntryRenderer.monster = {
 			</td></tr>` : ""}
 			${getSection("Actions", "action", 3)}
 			${getSection("Reactions", "reaction", 3)}
-		`); // TODO legendary, lair, regional, variants
+			${getSection("Legendary Actions", "legendary", 3)}
+			${mon.variant ? `
+			<tr class="text compact"><td colspan="6">
+			${mon.variant.map(it => it.rendered || renderer.renderEntry(it)).join("")}
+			</td></tr>
+			` : ""}
+		`);
 
 		return renderStack.join("");
 	},
