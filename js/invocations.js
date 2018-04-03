@@ -62,7 +62,7 @@ function onJsonLoad (data) {
 	});
 	const pactFilter = new Filter({
 		header: "Pact",
-		items: ["Appendage", "Blade", "Chain", "Tome", STR_ANY],
+		items: ["Blade", "Chain", "Tome", STR_ANY],
 		displayFn: Parser.invoPactToFull
 	});
 	const spellFilter = new Filter({
