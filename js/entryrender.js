@@ -2066,8 +2066,9 @@ EntryRenderer.hover = {
 	_BAR_HEIGHT: 16,
 	_showInProgress: false,
 	_hoverId: 1,
+	_popoutId: -1,
 	_curHovering: null,
-	show: (evt, ele, page, source, hash) => {
+	show: (evt, ele, page, source, hash, isPopout) => {
 		if (!EntryRenderer.hover._isInit) {
 			EntryRenderer.hover._isInit = true;
 			$(`body`).on("click", () => {
@@ -2082,12 +2083,18 @@ EntryRenderer.hover = {
 		if (alreadyHovering === "true") return;
 
 		let hoverId;
-		const curHoverId = $(ele).attr("data-hover-id");
-		if (curHoverId) {
-			hoverId = Number(curHoverId);
-		} else {
-			hoverId = EntryRenderer.hover._hoverId++;
+		if (isPopout) {
+			// always use a new hover ID if popout
+			hoverId = EntryRenderer.hover._popoutId--;
 			$(ele).attr("data-hover-id", hoverId);
+		} else {
+			const curHoverId = $(ele).attr("data-hover-id");
+			if (curHoverId) {
+				hoverId = Number(curHoverId);
+			} else {
+				hoverId = EntryRenderer.hover._hoverId++;
+				$(ele).attr("data-hover-id", hoverId);
+			}
 		}
 		let renderFunction;
 		switch (page) {
@@ -2301,7 +2308,7 @@ EntryRenderer.hover = {
 	doPopout: ($btnPop, list, index, clientX) => {
 		$btnPop.attr("data-hover-active", false);
 		const it = list[index];
-		EntryRenderer.hover.show({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it));
+		EntryRenderer.hover.show({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
 	}
 };
 
