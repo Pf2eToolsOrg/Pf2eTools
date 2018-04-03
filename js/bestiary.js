@@ -15,6 +15,21 @@ function ascSortCr (a, b) {
 	return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
+function getAllImmRest (toParse, key) {
+	function recurse (it) {
+		if (typeof it === "string") {
+			out.push(it);
+		} else if (it[key]) {
+			it[key].forEach(nxt => recurse(nxt));
+		}
+	}
+	const out = [];
+	toParse.forEach(it => {
+		recurse(it);
+	});
+	return out;
+}
+
 const meta = {};
 
 function loadMeta (nextFunction) {
@@ -89,6 +104,69 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
+const DMG_TYPES = [
+	"acid",
+	"bludgeoning",
+	"cold",
+	"fire",
+	"force",
+	"lightning",
+	"necrotic",
+	"piercing",
+	"poison",
+	"psychic",
+	"radiant",
+	"slashing",
+	"thunder"
+];
+const CONDS = [
+	"blinded",
+	"charmed",
+	"deafened",
+	"exhaustion",
+	"frightened",
+	"grappled",
+	"incapacitated",
+	"invisible",
+	"paralyzed",
+	"petrified",
+	"poisoned",
+	"prone",
+	"restrained",
+	"stunned",
+	"unconscious",
+	// not really a condition, but whatever
+	"disease"
+];
+function dispVulnFilter (item) {
+	return `${StrUtil.uppercaseFirst(item)} Vuln`;
+}
+const vulnerableFilter = new Filter({
+	header: "Damage Vulnerabilities",
+	items: DMG_TYPES,
+	displayFn: dispVulnFilter
+});
+function dispResFilter (item) {
+	return `${StrUtil.uppercaseFirst(item)} Res`;
+}
+const resistFilter = new Filter({
+	header: "Damage Resistance",
+	items: DMG_TYPES,
+	displayFn: dispResFilter
+});
+function dispImmFilter (item) {
+	return `${StrUtil.uppercaseFirst(item)} Imm`;
+}
+const immuneFilter = new Filter({
+	header: "Damage Immunity",
+	items: DMG_TYPES,
+	displayFn: dispImmFilter
+});
+const conditionImmuneFilter = new Filter({
+	header: "Condition Immunity",
+	items: CONDS,
+	displayFn: StrUtil.uppercaseFirst
+});
 const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary", "Swarm"], displayFn: StrUtil.uppercaseFirst});
 
 const filterBox = initFilterBox(
@@ -98,6 +176,10 @@ const filterBox = initFilterBox(
 	speedFilter,
 	typeFilter,
 	tagFilter,
+	vulnerableFilter,
+	resistFilter,
+	immuneFilter,
+	conditionImmuneFilter,
 	miscFilter
 );
 
@@ -186,6 +268,10 @@ function handleFilterChange () {
 			m._fSpeed,
 			m._pTypes.type,
 			m._pTypes.tags,
+			m._fVuln,
+			m._fRes,
+			m._fImm,
+			m._fCondImm,
 			m._fMisc
 		);
 	});
@@ -206,6 +292,10 @@ function addMonsters (data) {
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
+		mon._fVuln = mon.vulnerable ? getAllImmRest(mon.vulnerable, "vulnerable") : [];
+		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
+		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
+		mon._fCondImm = mon.conditionImmune ? getAllImmRest(mon.conditionImmune, "conditionImmune") : [];
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
@@ -485,7 +575,7 @@ function loadhash (id) {
 	var dmgvuln = mon.vulnerable;
 	if (dmgvuln) {
 		$content.find("td span#dmgvuln").parent().show();
-		$content.find("td span#dmgvuln").html(dmgvuln);
+		$content.find("td span#dmgvuln").html(Parser.monImmResToFull(dmgvuln));
 	} else {
 		$content.find("td span#dmgvuln").parent().hide();
 	}
@@ -493,7 +583,7 @@ function loadhash (id) {
 	var dmgres = mon.resist;
 	if (dmgres) {
 		$content.find("td span#dmgres").parent().show();
-		$content.find("td span#dmgres").html(dmgres);
+		$content.find("td span#dmgres").html(Parser.monImmResToFull(dmgres));
 	} else {
 		$content.find("td span#dmgres").parent().hide();
 	}
@@ -501,7 +591,7 @@ function loadhash (id) {
 	var dmgimm = mon.immune;
 	if (dmgimm) {
 		$content.find("td span#dmgimm").parent().show();
-		$content.find("td span#dmgimm").html(dmgimm);
+		$content.find("td span#dmgimm").html(Parser.monImmResToFull(dmgimm));
 	} else {
 		$content.find("td span#dmgimm").parent().hide();
 	}
@@ -509,7 +599,7 @@ function loadhash (id) {
 	var conimm = mon.conditionImmune;
 	if (conimm) {
 		$content.find("td span#conimm").parent().show();
-		$content.find("td span#conimm").html(conimm);
+		$content.find("td span#conimm").html(Parser.monCondImmToFull(conimm));
 	} else {
 		$content.find("td span#conimm").parent().hide();
 	}

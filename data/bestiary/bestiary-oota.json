@@ -17,8 +17,13 @@
 			"int": 10,
 			"wis": 10,
 			"cha": 7,
-			"resist": "bludgeoning, piercing",
-			"vulnerable": "fire",
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
+			"vulnerable": [
+				"fire"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "one language known by its creator",
@@ -74,9 +79,28 @@
 				"intimidation": "+17",
 				"perception": "+14"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 24,
 			"languages": "all, telepathy 120 ft.",
@@ -260,7 +284,10 @@
 			"int": 11,
 			"wis": 8,
 			"cha": 12,
-			"resist": "bludgeoning, piercing",
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"languages": "Abyssal, Undercommon",
@@ -325,8 +352,16 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"immune": "poison",
-			"conditionImmune": "blinded, charmed, frightened, paralyzed, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "4",
@@ -374,9 +409,28 @@
 				"insight": "+11",
 				"perception": "+19"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 29,
 			"languages": "all, telepathy 120 ft.",
@@ -769,7 +823,12 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"conditionImmune": "blinded, charmed, frightened, paralyzed",
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "1/8",
@@ -805,7 +864,9 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -892,7 +953,9 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -979,7 +1042,9 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -1095,7 +1160,9 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 12,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -1177,8 +1244,15 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"resist": "poison",
-			"conditionImmune": "blinded, charmed, frightened, paralyzed",
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "1/2",
@@ -1214,7 +1288,9 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -1283,7 +1359,9 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 10,
 			"languages": "Dwarvish, Undercommon",
@@ -1358,7 +1436,9 @@
 				"stealth": "+6",
 				"survival": "+5"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"languages": "Common, Dwarvish",
@@ -1482,9 +1562,28 @@
 				"perception": "+14",
 				"stealth": "+8"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 24,
 			"languages": "all, telepathy 120 ft.",
@@ -1652,9 +1751,28 @@
 				"perception": "+12",
 				"persuasion": "+15"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "all, telepathy 120 ft.",
@@ -1875,8 +1993,15 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
-			"resist": "poison",
-			"conditionImmune": "blinded, charmed, frightened, paralyzed",
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed"
+			],
 			"senses": "blindsight 30 ft. (blind beyond this radius)",
 			"passive": 8,
 			"cr": "3",
@@ -2041,9 +2166,37 @@
 			"skill": {
 				"perception": "+12"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained, stunned, unconscious",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned",
+				"unconscious"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "all, telepathy 120 ft.",
@@ -2454,9 +2607,29 @@
 				"arcana": "+12",
 				"perception": "+12"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "necrotic, poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"necrotic",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "all, telepathy 120 ft.",
@@ -2588,8 +2761,13 @@
 				"stealth": "+6",
 				"survival": "+2"
 			},
-			"resist": "acid, poison",
-			"conditionImmune": "poisoned",
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Abyssal, Gnomish, Terran, Undercommon",
@@ -2995,9 +3173,28 @@
 				"intimidation": "+9",
 				"perception": "+14"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 24,
 			"languages": "all, telepathy 120 ft.",
@@ -3113,8 +3310,12 @@
 			"int": 13,
 			"wis": 15,
 			"cha": 10,
-			"immune": "poison",
-			"conditionImmune": "poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 12,
 			"languages": "Abyssal, telepathy 60 ft.",
@@ -3442,9 +3643,28 @@
 			"skill": {
 				"perception": "+11"
 			},
-			"resist": "cold, fire, lightning",
-			"immune": "poison; bludgeoning, piercing, and slashing that is nonmagical",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "that is nonmagical"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 21,
 			"languages": "all, telepathy 120 ft.",

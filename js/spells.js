@@ -201,7 +201,7 @@ function getMetaFilterObj (s) {
 	if (s.components.v) out.push(META_ADD_V);
 	if (s.components.s) out.push(META_ADD_S);
 	if (s.components.m) out.push(META_ADD_M);
-	// if (s.components.m.cost) // TODO create this data, push META_ADD_M_COST
+	if (s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
 	return out;
 }
 

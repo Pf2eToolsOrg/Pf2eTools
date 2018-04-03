@@ -24,8 +24,22 @@
 				"insight": "+9",
 				"perception": "+9"
 			},
-			"resist": "radiant; bludgeoning, piercing, and slashing from",
-			"conditionImmune": "charmed, exhaustion, frightened",
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 19,
 			"languages": "all, telepathy 120 ft.",
@@ -112,8 +126,14 @@
 			"int": 11,
 			"wis": 17,
 			"cha": 16,
-			"immune": "poison",
-			"conditionImmune": "charmed, paralyzed, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"paralyzed",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Celestial, telepathy 60 ft.",
@@ -234,8 +254,13 @@
 				"athletics": "+14",
 				"perception": "+9"
 			},
-			"resist": "cold",
-			"immune": "lightning, thunder",
+			"resist": [
+				"cold"
+			],
+			"immune": [
+				"lightning",
+				"thunder"
+			],
 			"senses": "darkvision 120 ft.",
 			"passive": 19,
 			"languages": "Common",

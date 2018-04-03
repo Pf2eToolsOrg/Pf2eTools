@@ -267,9 +267,9 @@ function loadhash (id) {
 	const type = item.type || "";
 	if (type === "INS" || type === "GS") item.additionalSources = item.additionalSources || [];
 	if (type === "INS") {
-		item.additionalSources.push({ "source": "XGE", "page": 83 })
+		if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 83)) item.additionalSources.push({ "source": "XGE", "page": 83 })
 	} else if (type === "GS") {
-		item.additionalSources.push({ "source": "XGE", "page": 81 })
+		if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 81)) item.additionalSources.push({ "source": "XGE", "page": 81 })
 	}
 	const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
 	$content.find("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);

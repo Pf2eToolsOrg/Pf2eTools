@@ -93,7 +93,18 @@
 				"deception": "+4",
 				"stealth": "+5"
 			},
-			"resist": "one of the following: acid, cold, fire, lightning or poison",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"poison"
+					],
+					"preNote": "one of the following:"
+				}
+			],
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal",
 			"cr": "5",
@@ -166,7 +177,18 @@
 				"deception": "+6",
 				"stealth": "+7"
 			},
-			"resist": "one of the following: acid, cold, fire, lightning or poison",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"poison"
+					],
+					"preNote": "one of the following:"
+				}
+			],
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal",
 			"cr": "7",
@@ -245,7 +267,18 @@
 				"deception": "+3",
 				"stealth": "+5"
 			},
-			"resist": "one of the following: acid, cold, fire, lightning or poison",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"poison"
+					],
+					"preNote": "one of the following:"
+				}
+			],
 			"passive": 10,
 			"languages": "Common, Draconic",
 			"cr": "2",
@@ -311,7 +344,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
@@ -359,7 +394,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Ice Toad",
@@ -416,9 +453,24 @@
 				"perception": "+6",
 				"stealth": "+5"
 			},
-			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
-			"immune": "poison",
-			"conditionImmune": "exhaustion, poisoned",
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 16,
 			"languages": "Common, Draconic",
@@ -486,8 +538,14 @@
 				"arcana": "+7",
 				"perception": "+5"
 			},
-			"immune": "poison",
-			"conditionImmune": "charmed, frightened, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 15,
 			"languages": "Common, Draconic, Elvish, Infernal",
@@ -682,9 +740,43 @@
 				"arcana": "+7",
 				"religion": "+7"
 			},
-			"resist": "While wearing the mask of the Dragon Queen: acid, cold, lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "While wearing the mask of the Dragon Queen: fire",
-			"conditionImmune": "While wearing the mask of the Dragon Queen: charmed, frightened, poisoned",
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"lightning",
+						"poison",
+						{
+							"resist": [
+								"bludgeoning",
+								"piercing",
+								"slashing"
+							],
+							"note": "from nonmagical attacks"
+						}
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
+			"immune": [
+				{
+					"immune": [
+						"fire"
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
+			"conditionImmune": [
+				{
+					"conditionImmune": [
+						"charmed",
+						"frightened",
+						"poisoned"
+					],
+					"preNote": "While wearing the mask of the Dragon Queen:"
+				}
+			],
 			"senses": "While wearing the Mask of the Dragon Queen: darkvision 60 ft.",
 			"passive": 11,
 			"languages": "Common, Draconic, Infernal",
@@ -793,8 +885,29 @@
 				"perception": "+26",
 				"religion": "+17"
 			},
-			"immune": "acid, cold, fire, lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"conditionImmune": "blinded, charmed, deafened, frightened, poisoned, stunned",
+			"immune": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"poisoned",
+				"stunned"
+			],
 			"senses": "darkvision 240 ft., truesight 120 ft.",
 			"passive": 36,
 			"languages": "Common, Draconic, Infernal",

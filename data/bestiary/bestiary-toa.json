@@ -24,9 +24,33 @@
 				"insight": "+12",
 				"perception": "+12"
 			},
-			"resist": "cold, lightning",
-			"immune": "necrotic, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned, stunned",
+			"resist": [
+				"cold",
+				"lightning"
+			],
+			"immune": [
+				"necrotic",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned"
+			],
 			"senses": "truesight 120 ft.",
 			"passive": 22,
 			"languages": "Abyssal, Common, Draconic, Dwarvish, Elvish, Giant, Infernal, Primordial, Undercommon",
@@ -219,7 +243,9 @@
 				"stealth": "+3",
 				"survival": "+4"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Common, Dwarvish",
@@ -287,7 +313,9 @@
 				"perception": "+4",
 				"survival": "+4"
 			},
-			"resist": "poison",
+			"resist": [
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Common",
@@ -382,8 +410,12 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 3,
-			"immune": "poison",
-			"conditionImmune": "poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 8,
 			"cr": "3",
@@ -434,7 +466,14 @@
 				"insight": "+6",
 				"survival": "+9"
 			},
-			"immune": "cold (while wearing the Ring of Winter)",
+			"immune": [
+				{
+					"immune": [
+						"cold"
+					],
+					"preNote": "While wearing the Ring of Winter:"
+				}
+			],
 			"passive": 13,
 			"languages": "Common, Draconic, Dwarvish, Goblin",
 			"cr": "7",
@@ -500,8 +539,16 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 1,
-			"resist": "cold, fire",
-			"conditionImmune": "blinded, deafened, exhaustion, prone",
+			"resist": [
+				"cold",
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion",
+				"prone"
+			],
 			"senses": "blindsight 30 ft.",
 			"passive": 10,
 			"cr": "3",
@@ -556,8 +603,24 @@
 			"wis": 19,
 			"cha": 24,
 			"save": "Con +11, Wis +9",
-			"immune": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"conditionImmune": "charmed, exhaustion, frightened, poisoned",
+			"immune": [
+				"cold",
+				"necrotic",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"poisoned"
+			],
 			"senses": "darkvision 120 ft., truesight 120 ft.",
 			"passive": 24,
 			"languages": "understands Celestial but utters only obscene nonsense",
@@ -884,9 +947,24 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks not made with adamantine weapons",
-			"immune": "poison",
-			"conditionImmune": "exhaustion, petrified, poisoned",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with adamantine weapons"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"petrified",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Terran",
@@ -984,8 +1062,12 @@
 			"int": 3,
 			"wis": 7,
 			"cha": 5,
-			"immune": "poison",
-			"conditionImmune": "poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 8,
 			"cr": "3",
@@ -1007,7 +1089,7 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The zombie makes five an attacks: one with its bite and four with its claws."
+						"The zombie makes five attacks: one with its bite and four with its claws."
 					]
 				},
 				{
@@ -1241,7 +1323,12 @@
 				"perception": "+4",
 				"stealth": "+7"
 			},
-			"conditionImmune": "blinded, deafened, exhaustion, prone",
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion",
+				"prone"
+			],
 			"senses": "tremorsense 30 ft.",
 			"passive": 10,
 			"cr": "1",
@@ -1425,8 +1512,12 @@
 				"religion": "+7",
 				"stealth": "+6"
 			},
-			"immune": "poison",
-			"conditionImmune": "poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 14,
 			"languages": "Abyssal, Common, Draconic",
@@ -1578,8 +1669,28 @@
 			"int": 14,
 			"wis": 14,
 			"cha": 16,
-			"immune": "poison; bludgeoning, piercing, and slashing from nonmagical attacks not made with adamantine weapons",
-			"conditionImmune": "blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned, prone",
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with adamantine weapons"
+				}
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone"
+			],
 			"senses": "blindsight 120 ft.",
 			"passive": 10,
 			"cr": "12",
@@ -1826,7 +1937,12 @@
 			"int": 9,
 			"wis": 13,
 			"cha": 9,
-			"conditionImmune": "blinded, deafened, exhaustion, prone",
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion",
+				"prone"
+			],
 			"senses": "blindsight 30 ft.",
 			"passive": 10,
 			"cr": "1/2",
@@ -1875,8 +1991,12 @@
 			"int": 1,
 			"wis": 3,
 			"cha": 5,
-			"immune": "poison",
-			"conditionImmune": "poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 6,
 			"cr": "8",
@@ -2113,7 +2233,12 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 3,
-			"conditionImmune": "blinded, deafened, exhaustion, prone",
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion",
+				"prone"
+			],
 			"senses": "blindsight 30 ft.",
 			"passive": 10,
 			"cr": "2",
@@ -2164,7 +2289,10 @@
 			"int": 1,
 			"wis": 6,
 			"cha": 3,
-			"conditionImmune": "charmed, exhaustion",
+			"conditionImmune": [
+				"charmed",
+				"exhaustion"
+			],
 			"senses": "blindsight 30 ft.",
 			"passive": 8,
 			"cr": "1/4",
@@ -2215,7 +2343,9 @@
 				"insight": "+5",
 				"investigation": "+9"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "blindsight 10 ft., darkvision 60 ft.",
 			"passive": 12,
 			"languages": "Common, Draconic, Dwarvish, Primordial",
@@ -2467,9 +2597,24 @@
 				"perception": "+3",
 				"stealth": "+4"
 			},
-			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't silvered",
-			"immune": "poison",
-			"conditionImmune": "exhaustion, poisoned",
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "the languages he knew in life",
@@ -2605,12 +2750,12 @@
 					]
 				},
 				{
-				    "type": "inset",
-				    "name": "Dance of the Seven Winds",
-				    "entries": [
-				        "Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
+					"type": "inset",
+					"name": "Dance of the Seven Winds",
+					"entries": [
+						"Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
 						"Asharra must grind the orchid to powder, inhale it, and dance in circles around the ritual's beneficiaries uninterrupted while seven other aarakocra chant prayers to the Wind Dukes of Aaqa. When the dance concludes, Asharra's wings disappear and she loses the ability to fly. The ritual's beneficiaries each gain a magical flying speed of 30 feet (allowing them to fly 4 miles per hour). This benefit lasts for 3 days, after which Asharra's wings reappear and she regains the ability to fly."
-				    ]
+					]
 				}
 			],
 			"action": [

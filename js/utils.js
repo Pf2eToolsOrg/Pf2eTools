@@ -648,7 +648,7 @@ Parser.spComponentsToFull = function (comp) {
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
-	if (comp.m) out.push("M" + (comp.m.length ? ` (${comp.m})` : ""));
+	if (comp.m) out.push("M" + (comp.m !== true ? ` (${comp.m.text || comp.m})` : ""));
 	return out.join(", ");
 };
 
@@ -746,6 +746,44 @@ Parser.monCrToFull = function (cr) {
 		if (cr.coven) stack.push(`${Parser.monCrToFull(cr.coven)} when part of a coven`);
 		return stack.join(" or ");
 	}
+};
+
+Parser.monImmResToFull = function (toParse) {
+	const outerLen = toParse.length;
+	let maxDepth = 0;
+	if (outerLen === 1 && (toParse[0].immune || toParse[0].resist)) {
+		return toParse.map(it => toString(it, -1)).join(maxDepth ? "; " : ", ");
+	}
+
+	function toString (it, depth = 0) {
+		maxDepth = Math.max(maxDepth, depth);
+		if (typeof it === "string") {
+			return it;
+		} else if (it.special) {
+			return it.special;
+		} else {
+			let stack = it.preNote ? `${it.preNote} ` : "";
+			if (it.immune) {
+				const toJoin = it.immune.map(nxt => toString(nxt, depth + 1));
+				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : CollectionUtil.joinConjunct(toJoin, ", ", " and ");
+			} else if (it.resist) {
+				const toJoin = it.resist.map(nxt => toString(nxt, depth + 1));
+				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : CollectionUtil.joinConjunct(toJoin, ", ", " and ");
+			}
+			if (it.note) stack += ` ${it.note}`;
+			return stack;
+		}
+	}
+
+	return toParse.map(it => toString(it)).join(maxDepth ? "; " : ", ");
+};
+
+Parser.monCondImmToFull = function (condImm) {
+	return condImm.map(it => {
+		if (it.special) return it.special;
+		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.join(", ")}${it.note ? ` ${it.note}` : ""}`;
+		return it;
+	}).join(", ");
 };
 
 // psi-prefix functions are for parsing psionic data, and shared with the roll20 script

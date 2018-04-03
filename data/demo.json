@@ -196,6 +196,68 @@
 						}
 					]
 				},
+				"Rollable tables can be made like so (note the 'pad' to format single digit numbers e.g. '01' for tables with >10 rows):",
+				{
+					"type": "table",
+					"caption": "Rollable Table Caption",
+					"colLabels": [
+						"{@dice d6}",
+						"Item"
+					],
+					"colStyles": [
+						"col-xs-1 text-align-center",
+						"col-xs-11"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1,
+									"pad": true
+								}
+							},
+							"First Item"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Item the Second"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"min": 3,
+									"max": 4
+								}
+							},
+							"Three of Four Items"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Item V: The Item Items Back"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Item for Lucky Winners"
+						]
+					]
+				},
 				{
 					"type": "list",
 					"items": [

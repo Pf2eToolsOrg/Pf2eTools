@@ -27,7 +27,9 @@
 				"history": "+6",
 				"perception": "+3"
 			},
-			"resist": "lightning",
+			"resist": [
+				"lightning"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Auran, Common, Elvish",
@@ -146,9 +148,27 @@
 			"int": 9,
 			"wis": 10,
 			"cha": 10,
-			"resist": "lightning, thunder; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "poison",
-			"conditionImmune": "paralyzed, petrified, poisoned, prone",
+			"resist": [
+				"lightning",
+				"thunder",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "Auran, one language of its creator's choice",
@@ -209,7 +229,9 @@
 				"arcana": "+3",
 				"deception": "+7"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"languages": "Common, Ignan",
@@ -727,7 +749,10 @@
 				"athletics": "+7",
 				"intimidation": "+4"
 			},
-			"resist": "cold, poison",
+			"resist": [
+				"cold",
+				"poison"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"languages": "Common, Dwarvish",
@@ -803,9 +828,25 @@
 			"int": 8,
 			"wis": 10,
 			"cha": 10,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "poison",
-			"conditionImmune": "paralyzed, petrified, poisoned, prone",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "Terran, one language of its creator's choice",
@@ -962,7 +1003,9 @@
 				"intimidation": "+3",
 				"perception": "+2"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"passive": 12,
 			"languages": "Common",
 			"cr": "2",
@@ -1023,7 +1066,9 @@
 				"intimidation": "+5",
 				"religion": "+2"
 			},
-			"resist": "fire",
+			"resist": [
+				"fire"
+			],
 			"passive": 10,
 			"languages": "Common, Ignan",
 			"cr": "3",
@@ -1268,9 +1313,26 @@
 			"int": 9,
 			"wis": 10,
 			"cha": 10,
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "fire, poison",
-			"conditionImmune": "paralyzed, petrified, poisoned, prone",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"fire",
+				"poison"
+			],
+			"conditionImmune": [
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "Ignan, one language of its creator's choice",
@@ -1343,7 +1405,9 @@
 				"arcana": "+3",
 				"religion": "+3"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"passive": 10,
 			"languages": "Common, Ignan",
 			"cr": "6",
@@ -1439,7 +1503,9 @@
 				"nature": "+8",
 				"survival": "+8"
 			},
-			"resist": "cold",
+			"resist": [
+				"cold"
+			],
 			"passive": 14,
 			"languages": "Aquan, Common",
 			"cr": "9",
@@ -1661,8 +1727,13 @@
 				"insight": "+5",
 				"perception": "+5"
 			},
-			"immune": "poison",
-			"conditionImmune": "blinded, poisoned",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"poisoned"
+			],
 			"senses": "blindsight 60 ft. (blind beyond this radius)",
 			"passive": 15,
 			"languages": "Common, Terran",
@@ -1988,9 +2059,29 @@
 			"wis": 16,
 			"cha": 23,
 			"save": "Dex +14, Con +13, Cha +13",
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "fire, poison",
-			"conditionImmune": "charmed, frightened, paralyzed, petrified, poisoned, prone, restrained",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"fire",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained"
+			],
 			"senses": "blindsight 120 ft.",
 			"passive": 13,
 			"languages": "Common, Ignan",
@@ -2129,7 +2220,9 @@
 				"deception": "+6",
 				"perception": "+4"
 			},
-			"resist": "acid",
+			"resist": [
+				"acid"
+			],
 			"senses": "darkvision 60 ft., tremorsense 60 ft.",
 			"passive": 14,
 			"languages": "Common, Terran",
@@ -2324,9 +2417,27 @@
 			"wis": 15,
 			"cha": 22,
 			"save": "Str +14, Con +15, Wis +8",
-			"resist": "bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "poison",
-			"conditionImmune": "charmed, frightened, paralyzed, petrified, poisoned, prone",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone"
+			],
 			"senses": "blindsight 120 ft., tremorsense 120 ft.",
 			"passive": 12,
 			"languages": "Common, Terran",
@@ -2438,9 +2549,31 @@
 			"wis": 18,
 			"cha": 23,
 			"save": "Str +11, Con +13, Wis +10",
-			"resist": "lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "acid, cold, poison",
-			"conditionImmune": "charmed, frightened, paralyzed, petrified, poisoned, prone, restrained",
+			"resist": [
+				"lightning",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"acid",
+				"cold",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained"
+			],
 			"senses": "blindsight 120 ft.",
 			"passive": 14,
 			"languages": "Aquan",
@@ -2570,7 +2703,9 @@
 				"perception": "+3",
 				"intimidation": "+5"
 			},
-			"immune": "cold",
+			"immune": [
+				"cold"
+			],
 			"passive": 13,
 			"languages": "Common",
 			"cr": "3",
@@ -2757,7 +2892,9 @@
 				"intimidation": "+4",
 				"perception": "+3"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"passive": 13,
 			"languages": "Common, Ignan",
 			"cr": "5",
@@ -2889,7 +3026,9 @@
 				"insight": "+2",
 				"persuasion": "+5"
 			},
-			"resist": "acid",
+			"resist": [
+				"acid"
+			],
 			"passive": 10,
 			"languages": "Aquan, Common",
 			"cr": "4",
@@ -3268,7 +3407,9 @@
 				"deception": "+8",
 				"performance": "+8"
 			},
-			"immune": "fire",
+			"immune": [
+				"fire"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"languages": "Common, Ignan, Infernal",
@@ -3381,9 +3522,26 @@
 			"int": 8,
 			"wis": 10,
 			"cha": 10,
-			"resist": "acid; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "poison",
-			"conditionImmune": "paralyzed, petrified, poisoned, prone",
+			"resist": [
+				"acid",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "Aquan, one language of its creator's choice",
@@ -3632,9 +3790,32 @@
 			"wis": 21,
 			"cha": 23,
 			"save": "Dex +13, Wis +11, Cha +12",
-			"resist": "cold, fire; bludgeoning, piercing, and slashing from nonmagical attacks",
-			"immune": "lightning, poison, thunder",
-			"conditionImmune": "charmed, frightened, paralyzed, petrified, poisoned, prone, restrained",
+			"resist": [
+				"cold",
+				"fire",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"lightning",
+				"poison",
+				"thunder"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained"
+			],
 			"senses": "blindsight 120 ft.",
 			"passive": 15,
 			"languages": "Auran",

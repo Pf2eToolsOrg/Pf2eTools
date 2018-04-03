@@ -21,9 +21,25 @@
 			"skill": {
 				"stealth": "+4"
 			},
-			"resist": "bludgeoning, piercing, and slashing from",
-			"immune": "poison",
-			"conditionImmune": "charmed, exhaustion, frightened, paralyzed",
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from"
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "speaks and understands the languages known by its creator",
@@ -83,9 +99,24 @@
 			"int": 10,
 			"wis": 12,
 			"cha": 17,
-			"resist": "acid, fire, lightning, thunder; bludgeoning",
-			"immune": "cold, necrotic, poison",
-			"conditionImmune": "charmed, exhaustion, frightened, grappled",
+			"resist": [
+				"acid",
+				"fire",
+				"lightning",
+				"thunder",
+				"bludgeoning"
+			],
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"grappled"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 11,
 			"languages": "any languages it knew in life",
@@ -170,8 +201,26 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
-			"immune": "lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine",
-			"conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+			"immune": [
+				"lightning",
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't adamantine"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 10,
 			"languages": "understands the languages of its creator but can't speak",
@@ -289,7 +338,17 @@
 				"perception": "+3",
 				"stealth": "+6"
 			},
-			"resist": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks not made with living wood weapons",
+			"resist": [
+				"necrotic",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with living wood weapons"
+				}
+			],
 			"senses": "darkvision 60 ft.",
 			"passive": 13,
 			"languages": "Common",
@@ -390,7 +449,16 @@
 				"perception": "+4",
 				"stealth": "+3"
 			},
-			"immune": "bludgeoning, piercing, and slashing from nonmagical attacks not made with silvered weapons",
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with silvered weapons"
+				}
+			],
 			"passive": 14,
 			"languages": "Common (can't speak in canid form)",
 			"cr": "3",

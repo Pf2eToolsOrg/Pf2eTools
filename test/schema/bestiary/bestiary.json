@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.1.1",
 	"type": "object",
 	"definitions": {
 		"level1to9": {
@@ -109,6 +109,190 @@
 				},
 				{
 					"type": "integer"
+				}
+			]
+		},
+		"dmgType": {
+			"type": "string",
+			"enum": [
+				"acid",
+				"bludgeoning",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"slashing",
+				"thunder"
+			]
+		},
+		"conditions": {
+			"type": "string",
+			"enum": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"incapacitated",
+				"invisible",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned",
+				"unconscious",
+
+				"disease"
+			]
+		},
+		"damImmune": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dmgType"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"immune": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/damImmune"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["immune"]
+				}
+			]
+		},
+		"damResist": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dmgType"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"resist": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/damResist"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["resist"]
+				}
+			]
+		},
+		"damVuln": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dmgType"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"vulnerable": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/damVuln"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["vulnerable"]
+				}
+			]
+		},
+		"condImmune": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/conditions"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"conditionImmune": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/conditions"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["conditionImmune"]
 				}
 			]
 		}
@@ -395,16 +579,28 @@
 						"type": "string"
 					},
 					"vulnerable": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/damVuln"
+						}
 					},
 					"resist": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/damResist"
+						}
 					},
 					"conditionImmune": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/condImmune"
+						}
 					},
 					"immune": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/damImmune"
+						}
 					},
 					"spellcasting": {
 						"type": "array",
