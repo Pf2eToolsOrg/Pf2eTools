@@ -54,10 +54,10 @@ function getPersonDetails (doRace) {
 	const occ = rollSuppOccupation().result;
 	const relate = rollSuppRelationship().result;
 	const out = [
-		`Alignment: ${align}`,
-		`Occupation: ${occ}`,
-		`Relationship: ${relate}`,
-		`Status: ${status.result}`
+		`<b>Alignment:</b> ${align}`,
+		`<b>Occupation:</b> ${occ}`,
+		`<b>Relationship:</b> ${relate}`,
+		`<b>Status:</b> ${status.result}`
 	];
 	if (doRace) {
 		const race = rollSuppRace().result;
@@ -527,8 +527,15 @@ function concatSentences (...lst) {
 	});
 	return joinParaList(stack);
 }
+
 function joinParaList (lst) {
-	return `<p>${lst.join(`</p><p>`)}</p>`;
+	return lst.join(`<br>`);
+}
+
+const _VOWELS = ["a", "e", "i", "o", "u"];
+function addN (name) {
+	const c = name[0].toLowerCase();
+	return _VOWELS.includes(c) ? "n" : "";
 }
 
 // SECTIONS ============================================================================================================
@@ -542,30 +549,30 @@ function sectParents () {
 	race = selRace === "Random" ? _getFromTable(SUPP_RACE, RNG(100)).result : selRace;
 
 	const $parents = $(`#parents`);
-	const knowParentsStr = knowParents ? "Parents: You know who your parents are or were." : "Parents: You do not know who your parents were.";
+	const knowParentsStr = knowParents ? "<b>Parents:</b> You know who your parents are or were." : "<b>Parents:</b> You do not know who your parents were.";
 
 	let parentage = null;
 	if (knowParents) {
 		switch (race) {
 			case "Half-elf":
-				parentage = `${race} parents: ${_getFromTable(PARENTS_HALF_ELF, RNG(8)).result}`;
+				parentage = `<b>${race} parents:</b> ${_getFromTable(PARENTS_HALF_ELF, RNG(8)).result}`;
 				break;
 			case "Half-orc":
-				parentage = `${race} parents: ${_getFromTable(PARENTS_HALF_ORC, RNG(8)).result}`;
+				parentage = `<b>${race} parents:</b> ${_getFromTable(PARENTS_HALF_ORC, RNG(8)).result}`;
 				break;
 			case "Tiefling":
-				parentage = `${race} parents: ${_getFromTable(PARENTS_TIEFLING, RNG(8)).result}`;
+				parentage = `<b>${race} parents:</b> ${_getFromTable(PARENTS_TIEFLING, RNG(8)).result}`;
 				break;
 		}
 	}
 
-	$parents.html(concatSentences(`<p>Race: ${race}${selRace === "Random" ? ` ${fmtChoice("generated using the Supplemental Race table")}` : ""}</p>`, knowParentsStr, parentage));
+	$parents.html(concatSentences(`<b>Race:</b> ${race}${selRace === "Random" ? ` ${fmtChoice("generated using the Supplemental Race table")}` : ""}`, knowParentsStr, parentage));
 	if (knowParents) {
 		const mum = getPersonDetails();
 		const dad = getPersonDetails();
-		$parents.append(`<p><b>Mother:</b></p>`);
+		$parents.append(`<h5>Mother</h5>`);
 		$parents.append(joinParaList(mum));
-		$parents.append(`<p><b>Father:</b></p>`);
+		$parents.append(`<h5>Father</h5>`);
 		$parents.append(joinParaList(dad));
 	}
 }
@@ -574,7 +581,7 @@ function sectParents () {
 function sectBirthplace () {
 	const $birthplace = $(`#birthplace`);
 	const rollBirth = RNG(100);
-	const birth = `Birthplace: ${_getFromTable(BIRTHPLACES, rollBirth).result}`;
+	const birth = `<b>Birthplace:</b> ${_getFromTable(BIRTHPLACES, rollBirth).result}`;
 
 	const strangeBirth = RNG(100) === 100 ? "A strange event coincided with your birth: the moon briefly turning red, all the milk within a mile spoiling, the water in the area freezing solid in midsummer, all the iron in the home rusting or turning to silver, or some other unusual event of your choice" : "";
 	$birthplace.html(concatSentences(birth, strangeBirth));
@@ -618,7 +625,7 @@ function sectSiblings () {
 		$siblings.empty();
 		$siblings.append(`<p>You have ${sibCount} sibling${sibCount > 1 ? "s" : ""}.</p>`);
 		for (let i = 0; i < sibCount; ++i) {
-			$siblings.append(`<p><b>${getBirthOrder()} sibling ${choose("brother", "sister")}:</b></p>`);
+			$siblings.append(`<h5>${getBirthOrder()} sibling ${choose("brother", "sister")}</h5>`);
 			$siblings.append(joinParaList(getPersonDetails()));
 		}
 	} else {
@@ -629,27 +636,28 @@ function sectSiblings () {
 // FAMILY
 function sectFamily () {
 	const $family = $(`#family`);
-	const $wrpFam = $(`<div><p>Family: ${_getFromTable(FAMILY, RNG(100)).result}</p></div>`);
 	$family.empty();
-	$family.append($wrpFam);
+	$family.append(`<b>Family:</b> ${_getFromTable(FAMILY, RNG(100)).result}<br>`);
 	let famIndex = 1;
-	const $btnSuppFam = $(`<button class="btn btn-xs btn-default">Roll Supplemental Tables details</button>`).on("click", () => {
+	const $btnSuppFam = $(`<button class="btn btn-xs btn-default btn-supp-fam"></button>`).on("click", () => {
 		const supDetails = getPersonDetails();
 		const $wrpRes = $(`<div class="output-wrp-border"/>`);
-		$wrpRes.append(`<p><b>Family Member Roll ${famIndex++}</b></p>`);
+		$wrpRes.append(`<h5>Family Member Roll ${famIndex++}</h5>`);
 		$wrpRes.append(joinParaList(supDetails));
-		$wrpFam.append($wrpRes);
+		$btnSuppFam.css("margin-bottom", 5);
+		$btnSuppFam.after($wrpRes);
 	});
-	$wrpFam.append(`<p>You can roll on the Relationship table to determine how your family members or other important figures in your life feel about you. You can also use the Race, Occupation, and Alignment tables to learn more about the family members or guardians who raised you.</p>`).append($(`<p>`).append($btnSuppFam));
+	$family.append(`<span class="note">You can roll on the Relationship table to determine how your family members or other important figures in your life feel about you. You can also use the Race, Occupation, and Alignment tables to learn more about the family members or guardians who raised you.</span>`);
+	$family.append($btnSuppFam);
 
 	const rollFamLifestyle = _getFromTable(FAMILY_LIFESTYLE, RNG(6) + RNG(6) + RNG(6));
-	$family.append(`<p>Family lifestyle: ${rollFamLifestyle.result}`);
+	$family.append(`<b>Family lifestyle:</b> ${rollFamLifestyle.result}<br>`);
 	const rollFamHome = Math.min(Math.max(RNG(100) + rollFamLifestyle.modifier, 0), 111);
 	const rollFamHomeRes = _getFromTable(CHILDHOOD_HOME, rollFamHome).result;
-	$family.append(`<p>Childhood Home: ${rollFamHomeRes}</p>`);
+	$family.append(`<b>Childhood Home:</b> ${rollFamHomeRes}<br>`);
 
 	const rollChildMems = Math.min(Math.max(RNG(6) + RNG(6) + RNG(6) + Number($selCha.val()), 3), 18);
-	$family.append(`<p>Childhood memories: ${_getFromTable(CHILDHOOD_MEMORIES, rollChildMems).result}`);
+	$family.append(`<b>Childhood memories</b>: ${_getFromTable(CHILDHOOD_MEMORIES, rollChildMems).result}`);
 }
 
 // PERSONAL DECISIONS
@@ -657,8 +665,8 @@ function sectPersonalDecisions () {
 	const $personal = $(`#personal`).empty();
 	const selBg = Number($selBg.val());
 	const myBg = selBg === -1 ? rollOnArray(bgList) : bgList[selBg];
-	$personal.append(`<p>Background: ${myBg.name}</p>`);
-	$personal.append(`<p>I became a ${myBg.name} because: ${rollOnArray(myBg.reasons)}</p>`);
+	$personal.append(`<b>Background:</b> ${myBg.name}<br>`);
+	$personal.append(`<b>I became a${addN(myBg.name)} ${myBg.name} because:</b> ${rollOnArray(myBg.reasons)}`);
 }
 
 // CLASS TRAINING
@@ -666,8 +674,8 @@ function sectClassTraining () {
 	const $clss = $(`#clss`).empty();
 	const selClass = Number($selClass.val());
 	const myClass = selClass === -1 ? rollOnArray(classList) : classList[selClass];
-	$clss.append(`<p>Class: ${myClass.name}</p>`);
-	$clss.append(`<p>I became a ${myClass.name} because: ${rollOnArray(myClass.reasons)}</p>`);
+	$clss.append(`<b>Class:</b> ${myClass.name}<br>`);
+	$clss.append(`<b>I became a${addN(myClass.name)} ${myClass.name} because:</b> ${rollOnArray(myClass.reasons)}`);
 }
 
 // LIFE EVENTS
@@ -675,21 +683,21 @@ function sectLifeEvents () {
 	const $events = $(`#events`).empty();
 	marriageIndex = 0;
 	const age = _getFromTable(LIFE_EVENTS_AGE, RNG(100));
-	$events.append(`<p>Current age: ${age.result} ${fmtChoice(`${age.age} year${age.age > 1 ? "s" : ""} old`)}</p>`);
+	$events.append(`<b>Current age:</b> ${age.result} ${fmtChoice(`${age.age} year${age.age > 1 ? "s" : ""} old`)}`);
 	for (let i = 0; i < age.events; ++i) {
-		$events.append(`<p><b>Life Event ${i + 1}</b></p>`);
+		$events.append(`<h5>Life Event ${i + 1}</h5>`);
 		const evt = _getFromTable(LIFE_EVENTS, RNG(100));
-		$events.append(`<p>${evt.result}</p>`);
+		$events.append(`${evt.result}<br>`);
 		if (evt.nextRoll) {
 			if (evt.nextRoll.title) {
 				const $wrp = $(`<div class="output-wrp-border"/>`);
-				$wrp.append(`<p><b>${evt.nextRoll.title}</b></p>`);
+				$wrp.append(`<h5>${evt.nextRoll.title}</h5>`);
 				$wrp.append(joinParaList(evt.nextRoll.result));
 				$events.append($wrp);
 			} else {
-				$events.append(`<p>${evt.nextRoll.result}</p>`);
+				$events.append(`${evt.nextRoll.result}<br>`);
 				if (evt.nextRoll.nextRoll) {
-					$events.append(`<p>${evt.nextRoll.nextRoll.result}</p>`);
+					$events.append(`${evt.nextRoll.nextRoll.result}<br>`);
 				}
 			}
 		}
