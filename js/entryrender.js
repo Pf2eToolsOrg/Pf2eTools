@@ -1938,7 +1938,7 @@ EntryRenderer.hover = {
 
 		$ele.on("mouseleave", (evt) => {
 			EntryRenderer.hover._cleanWindows();
-			if (!$brdrTop.data("perm") && !evt.shiftKey) {
+			if (!($brdrTop.attr("data-perm") === "true") && !evt.shiftKey) {
 				teardown();
 			} else {
 				$(ele).attr("data-hover-active", true);
@@ -2078,16 +2078,16 @@ EntryRenderer.hover = {
 		// don't show on mobile
 		if ($(window).width() <= 1024 && !evt.shiftKey) return;
 
-		const alreadyHovering = $(ele).data("hover-active");
-		if (alreadyHovering) return;
+		const alreadyHovering = $(ele).attr("data-hover-active");
+		if (alreadyHovering === "true") return;
 
 		let hoverId;
-		const curHoverId = $(ele).data("hover-id");
+		const curHoverId = $(ele).attr("data-hover-id");
 		if (curHoverId) {
-			hoverId = curHoverId;
+			hoverId = Number(curHoverId);
 		} else {
 			hoverId = EntryRenderer.hover._hoverId++;
-			$(ele).data("hover-id", hoverId);
+			$(ele).attr("data-hover-id", hoverId);
 		}
 		let renderFunction;
 		switch (page) {
