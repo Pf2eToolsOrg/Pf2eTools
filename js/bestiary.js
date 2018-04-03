@@ -68,7 +68,6 @@ window.onload = function load () {
 };
 
 let list;
-// TODO alignment filter
 const sourceFilter = getSourceFilter();
 const crFilter = new Filter({header: "CR"});
 const sizeFilter = new Filter({
@@ -109,6 +108,11 @@ const typeFilter = new Filter({
 	displayFn: StrUtil.uppercaseFirst
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
+const alignmentFilter = new Filter({
+	header: "Alignment",
+	items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A"],
+	displayFn: Parser.alignmentAbvToFull
+});
 const DMG_TYPES = [
 	"acid",
 	"bludgeoning",
@@ -181,6 +185,7 @@ const filterBox = initFilterBox(
 	speedFilter,
 	typeFilter,
 	tagFilter,
+	alignmentFilter,
 	vulnerableFilter,
 	resistFilter,
 	immuneFilter,
@@ -273,6 +278,7 @@ function handleFilterChange () {
 			m._fSpeed,
 			m._pTypes.type,
 			m._pTypes.tags,
+			m._fAlign,
 			m._fVuln,
 			m._fRes,
 			m._fImm,
@@ -286,6 +292,7 @@ function handleFilterChange () {
 let monsters = [];
 let mI = 0;
 
+const _NEUT_ALIGNS = ["NX", "NY"];
 function addMonsters (data) {
 	monsters = monsters.concat(data);
 
@@ -297,6 +304,13 @@ function addMonsters (data) {
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
+		const tempAlign = typeof mon.alignment[0] === "object"
+			? Array.prototype.concat.apply([], mon.alignment.map(a => a.alignment))
+			: [...mon.alignment];
+		if (tempAlign.includes("N") && !tempAlign.includes("G") && !tempAlign.includes("E")) tempAlign.push("NY");
+		else if (tempAlign.includes("N") && !tempAlign.includes("L") && !tempAlign.includes("C")) tempAlign.push("NX");
+		else if (tempAlign.length === 1 && tempAlign.includes("N")) Array.prototype.push.apply(tempAlign, _NEUT_ALIGNS);
+		mon._fAlign = tempAlign;
 		mon._fVuln = mon.vulnerable ? getAllImmRest(mon.vulnerable, "vulnerable") : [];
 		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
