@@ -15,6 +15,11 @@ function ascSortCr (a, b) {
 	return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b))
 }
 
+function imgError (x) {
+	$(x).closest("th").css("padding-right", "0.2em");
+	$(x).remove();
+}
+
 function getAllImmRest (toParse, key) {
 	function recurse (it) {
 		if (typeof it === "string") {
@@ -509,11 +514,6 @@ function loadhash (id) {
 	let source = Parser.sourceJsonToAbv(mon.source);
 	let sourceFull = Parser.sourceJsonToFull(mon.source);
 	var type = mon._pTypes.asText;
-
-	imgError = function (x) {
-		$(x).closest("th").css("padding-right", "0.2em");
-		$(x).remove();
-	};
 
 	const imgLink = UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
 	$content.find("th.name").html(
