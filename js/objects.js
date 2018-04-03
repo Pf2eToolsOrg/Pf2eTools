@@ -99,7 +99,7 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 
-	const imgLink = UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
+	const imgLink = obj.tokenURL || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
 	$("th.name").append(`
 		<a href="${imgLink}" target="_blank">
 			<img src="${imgLink}" class="token">
