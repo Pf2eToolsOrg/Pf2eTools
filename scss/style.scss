@@ -758,6 +758,14 @@ tr.text > td {
 	padding-bottom: 0.7em !important;
 }
 
+tr.text.compact > td {
+	padding-bottom: 0 !important;
+}
+
+tr.text.compact > td p:last-child {
+	margin-bottom: 0;
+}
+
 th#nameTable,
 th#nameSummary,
 th.name {
@@ -824,6 +832,7 @@ table.stats tr.trait td.subsuboption {
 	padding: 1px 1.5em;
 }
 
+tr.mon-sect-header,
 tr#actions td,
 tr#reactions td,
 tr#legendaries td,
@@ -838,12 +847,14 @@ tr#regionaleffects td {
 	padding-left: 0.2em;
 }
 
+tr.mon-sect-header td span,
 tr#actions td span,
 tr#reactions td span,
 tr#legendaries td span,
 tr#lairactions td span,
 tr#regionaleffects td span {
 	display: block;
+	margin-top: -0.3em;
 	margin-bottom: -0.3em;
 	font-weight: 100;
 }

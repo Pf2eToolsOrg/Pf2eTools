@@ -1339,6 +1339,15 @@ EntryRenderer.monster = {
 			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
 		}
 
+		function getSection (title, key, depth) {
+			return mon[key] ? `
+			<tr class="mon-sect-header"><td colspan="6"><span>${title}</span></td></tr>
+			<tr class="text compact"><td colspan="6">
+			${mon[key].map(it => it.rendered || renderer.renderEntry(it, depth)).join("")}
+			</td></tr>
+			` : ""
+		}
+
 		const renderStack = [];
 
 		renderStack.push(`
@@ -1395,7 +1404,13 @@ EntryRenderer.monster = {
 					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${Parser.monCondImmToFull(mon.conditionImmune)}</p>` : ""}
 				</div>
 			</td></tr>
-		`);
+			${mon.trait ? `<tr><td colspan="6"><div class="border"></div></td></tr>
+			<tr class="text compact"><td colspan="6">
+			${EntryRenderer.monster.getOrderedTraits(mon, renderer).map(it => it.rendered || renderer.renderEntry(it, 3)).join("")}
+			</td></tr>` : ""}
+			${getSection("Actions", "action", 3)}
+			${getSection("Reactions", "reaction", 3)}
+		`); // TODO legendary, lair, regional, variants
 
 		return renderStack.join("");
 	},
@@ -2079,6 +2094,7 @@ EntryRenderer.hover = {
 		// don't show on mobile
 		if ($(window).width() <= 1024 && !evt.shiftKey) return;
 
+		// TODO a more robust mechanism for checking this -- stick the hover ID in the child window and scan the DOM?
 		const alreadyHovering = $(ele).attr("data-hover-active");
 		if (alreadyHovering === "true") return;
 

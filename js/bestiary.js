@@ -696,7 +696,7 @@ function loadhash (id) {
 		sectionEntries.forEach(e => {
 			if (e.rendered) renderStack.push(e.rendered);
 			else renderer.recursiveEntryRender(e, renderStack, sectionLevel + 1);
-		})
+		});
 		$content.find(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
 	}
 
