@@ -515,7 +515,7 @@ function loadhash (id) {
 	let sourceFull = Parser.sourceJsonToFull(mon.source);
 	var type = mon._pTypes.asText;
 
-	const imgLink = UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
+	const imgLink = mon.tokenURL || UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
 	$content.find("th.name").html(
 		`<span class="stats-name">${name}</span>
 		<span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>
