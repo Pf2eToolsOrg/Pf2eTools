@@ -22,14 +22,24 @@
 			max-height: 100%;
 		}
 
-		h3.ele-mundane,
-		h3.ele-magic {
+		span.side-label {
+			position: absolute;
+			transform: rotate(-90deg);
+			transform-origin: 0 0;
 			font-size: 18px;
-			margin: 0;
+			left: -22px;
+			bottom: 0;
 		}
 
-		h3.ele-mundane {
-			margin-top: 5px;
+		h3.ele-mundane,
+		h3.ele-magic {
+			margin: 0;
+			position: relative;
+		}
+
+		h3.ele-mundane span.side-label {
+		}
+		h3.ele-magic span.side-label {
 		}
 
 		@media (max-width: 991px) {
@@ -82,19 +92,27 @@
 						<button class="btn btn-default" type="button" id="reset">Reset</button>
 					</span>
 			</div>
-			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-xs-4 sort btn btn-default btn-xs" type="button" data-sort="name" data-sortby="asc">Name</button>
+			<div id="filtertools-mundane" class="ele-mundane sortlabel btn-group">
+				<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="name" data-sortby="asc">Name</button>
 				<button class="col-xs-4 col-xs-4-3 sort btn btn-default btn-xs" type="button" data-sort="type" data-sortby="asc">Type</button>
+				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="cost" data-sortby="asc">Cost</button>
+				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="weight" data-sortby="asc">Weight</button>
 				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source" data-sortby="asc">Source</button>
-				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="rarity" data-sortby="asc">Rarity</button>
 			</div>
 
-
-			<h3 data-toggle="mundane" class="ele-mundane">Mundane</h3>
 			<ul class="list mundane ele-mundane"></ul>
+			<h3 class="ele-mundane"><span class="side-label">Mundane</span></h3>
 
-			<h3 data-toggle="magic" class="ele-magic">Magic</h3>
+			<div id="filtertools-magic" class="ele-magic sortlabel btn-group">
+				<button class="fullborder col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" type="button" data-sort="name" data-sortby="asc">Name</button>
+				<button class="fullborder col-xs-3 col-xs-3-3 sort btn btn-default btn-xs" type="button" data-sort="type" data-sortby="asc">Type</button>
+				<button class="fullborder col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="weight" data-sortby="asc">Weight</button>
+				<button class="fullborder col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="rarity" data-sortby="asc">Rarity</button>
+				<button class="fullborder col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" type="button" data-sort="source" data-sortby="asc">Source</button>
+			</div>
+
 			<ul class="list magic ele-magic"></ul>
+			<h3 data-toggle="magic" class="ele-magic"><span class="side-label">Magic</span></h3>
 		</div>
 
 		<div id="contentwrapper" class="view-col">

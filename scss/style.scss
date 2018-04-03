@@ -1839,21 +1839,21 @@ div#showsearch {
 }
 
 /* fix sort button spacing and corners */
-#listcontainer .sortlabel.btn-group .btn {
+#listcontainer .sortlabel.btn-group .btn:not(.fullborder) {
 	border-top: 0;
 }
 
-#listcontainer .sortlabel.btn-group .btn + .btn:not(:last-child) {
+#listcontainer .sortlabel.btn-group .btn + .btn:not(:last-child):not(.fullborder) {
 	margin-left: 0;
 	border-left: 0;
 	border-top: 0;
 }
 
-#listcontainer .sortlabel.btn-group .btn:first-child {
+#listcontainer .sortlabel.btn-group .btn:first-child:not(.fullborder) {
 	border-top-left-radius: 0;
 }
 
-#listcontainer .sortlabel.btn-group .btn:last-child {
+#listcontainer .sortlabel.btn-group .btn:last-child:not(.fullborder) {
 	border-top-right-radius: 0;
 }
 

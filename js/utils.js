@@ -501,6 +501,10 @@ Parser.itemTypeToAbv = function (type) {
 	return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
 };
 
+Parser.itemWeightToFull = function (item) {
+	return item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") + (item.weightNote ? ` ${item.weightNote}` : "") : "";
+};
+
 Parser._coinValueToNumberMultipliers = {
 	"cp": 0.01,
 	"sp": 0.1,
@@ -509,11 +513,24 @@ Parser._coinValueToNumberMultipliers = {
 	"pp": 10
 };
 Parser.coinValueToNumber = function (value) {
+	if (!value) return 0;
+	// handle oddities
+	if (value === "x4" || value === "Varies") return 0;
+
 	// input e.g. "25gp", "1,000pp"
 	value = value.replace(/[\s,]*/g, "").toLowerCase();
 	const m = /(\d+(\.\d+)?)([csegp]p)/.exec(value);
 	if (!m) throw new Error(`Badly formatted value ${value}`);
 	return Number(m[1]) * Parser._coinValueToNumberMultipliers[m[3]];
+};
+
+Parser.weightValueToNumber = function (value) {
+	if (!value) return 0;
+	// handle oddities
+	if (value === "x2") return 0;
+
+	if (Number(value)) return Number(value);
+	else throw new Error(`Badly formatted value ${value}`)
 };
 
 Parser.dmgTypeToFull = function (dmgType) {

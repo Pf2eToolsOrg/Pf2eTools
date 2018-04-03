@@ -33,8 +33,12 @@ function sortItems (a, b, o) {
 		if (b._values.rarity === a._values.rarity) return SortUtil.compareNames(a, b);
 		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
 	} else if (o.valueName === "count") {
-		if (o.valueName === "count") return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
-	} else return 1;
+		return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
+	} else if (o.valueName === "weight") {
+		return SortUtil.ascSort(Number(a.values().weight), Number(b.values().weight));
+	} else if (o.valueName === "cost") {
+		return SortUtil.ascSort(Number(a.values().cost), Number(b.values().cost));
+	} else return 0;
 }
 
 function deselectFilter (deselectProperty, deselectValue) {
@@ -95,17 +99,35 @@ function populateTablesAndFilters () {
 		curitem._fTier = tierTags;
 		curitem._fProperties = curitem.property ? curitem.property.map(p => curitem._allPropertiesPtr[p].name).filter(n => n) : [];
 		curitem._fMisc = curitem.sentient ? ["Sentient"] : [];
-		curitem._fMisc.push(rarity === "None" || rarity === "Unknown" || category === "Basic" ? "Mundane" : "Magic");
+		const isMundane = rarity === "None" || rarity === "Unknown" || category === "Basic";
+		curitem._fMisc.push(isMundane ? "Mundane" : "Magic");
 
-		liList[rarity === "None" || rarity === "Unknown" || category === "Basic" ? "mundane" : "magic"] += `
+		if (isMundane) {
+			liList["mundane"] += `
 			<li class="row" ${FLTR_ID}=${i} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
-					<span class="name col-xs-4">${name}</span>
+					<span class="name col-xs-3">${name}</span>
 					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
+					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value || "\u2014"}</span>
+					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
 					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
-					<span class="rarity col-xs-2">${rarity}</span>
+					<span class="cost hidden">${Parser.coinValueToNumber(curitem.value)}</span>
+					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
 				</a>
 			</li>`;
+		} else {
+			liList["magic"] += `
+			<li class="row" ${FLTR_ID}=${i} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${i}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
+					<span class="name col-xs-3 col-xs-3-5">${name}</span>
+					<span class="type col-xs-3 col-xs-3-3">${curitem.typeText}</span>
+					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
+					<span class="rarity col-xs-2">${rarity}</span>
+					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
+				</a>
+			</li>`;
+		}
 
 		// populate filters
 		sourceFilter.addIfAbsent(source);
@@ -120,14 +142,18 @@ function populateTablesAndFilters () {
 	sourceFilter.items.sort(SortUtil.ascSort);
 	typeFilter.items.sort(SortUtil.ascSort);
 
-	const options = {
-		valueNames: ["name", "source", "type", "rarity"],
-		listClass: "mundane"
+	const mundaneOptions = {
+		valueNames: ["name", "type", "cost", "weight", "source"],
+		listClass: "mundane",
+		sortClass: "none"
 	};
-
-	mundanelist = ListUtil.search(options);
-	options.listClass = "magic";
-	magiclist = ListUtil.search(options);
+	mundanelist = ListUtil.search(mundaneOptions);
+	const magicOptions = {
+		valueNames: ["name", "type", "weight", "rarity", "source"],
+		listClass: "magic",
+		sortClass: "none"
+	};
+	magiclist = ListUtil.search(magicOptions);
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);
@@ -177,10 +203,16 @@ function populateTablesAndFilters () {
 		}
 	}
 
-	$("#filtertools").find("button.sort").on("click", function () {
+	$("#filtertools-mundane").find("button.sort").off("click").on("click", function (evt) {
+		evt.stopPropagation();
+		$(this).data("sortby", $(this).data("sortby") === "asc" ? "desc" : "asc");
+		mundanelist.sort($(this).data("sort"), {order: $(this).data("sortby"), sortFunction: sortItems});
+	});
+
+	$("#filtertools-magic").find("button.sort").on("click", function (evt) {
+		evt.stopPropagation();
 		$(this).data("sortby", $(this).data("sortby") === "asc" ? "desc" : "asc");
 		magiclist.sort($(this).data("sort"), {order: $(this).data("sortby"), sortFunction: sortItems});
-		mundanelist.sort($(this).data("sort"), {order: $(this).data("sortby"), sortFunction: sortItems});
 	});
 
 	$("#itemcontainer").find("h3").not(":has(input)").click(function () {
