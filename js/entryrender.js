@@ -78,8 +78,6 @@ function EntryRenderer () {
 			// the root entry (e.g. "Rage" in barbarian "classFeatures") is assumed to be of type "entries"
 			const type = entry.type === undefined || entry.type === "section" ? "entries" : entry.type;
 			switch (type) {
-				// TODO add an "insert box" type
-
 				// recursive
 				case "entries":
 					handleEntries(this);
@@ -1966,7 +1964,7 @@ EntryRenderer.hover = {
 		const $stats = $(`<table class="stats"></table>`);
 		$stats.append(content);
 		let drag = {};
-		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""}></div>`)
+		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"></div>`)
 			.on("mousedown", (evt) => {
 				$hov.css("z-index", 201); // temporarily display it on top
 				drag.on = true;
@@ -2094,10 +2092,6 @@ EntryRenderer.hover = {
 		// don't show on mobile
 		if ($(window).width() <= 1024 && !evt.shiftKey) return;
 
-		// TODO a more robust mechanism for checking this -- stick the hover ID in the child window and scan the DOM?
-		const alreadyHovering = $(ele).attr("data-hover-active");
-		if (alreadyHovering === "true") return;
-
 		let hoverId;
 		if (isPopout) {
 			// always use a new hover ID if popout
@@ -2112,6 +2106,11 @@ EntryRenderer.hover = {
 				$(ele).attr("data-hover-id", hoverId);
 			}
 		}
+
+		const alreadyHovering = $(ele).attr("data-hover-active");
+		const $curWin = $(`.hoverborder[data-hover-id="${hoverId}"]`);
+		if (alreadyHovering === "true" && $curWin.length) return;
+
 		let renderFunction;
 		switch (page) {
 			case UrlUtil.PG_SPELLS:
