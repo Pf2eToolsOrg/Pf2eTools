@@ -92,6 +92,14 @@ header {
 		max-height: none;
 		height: auto;
 	}
+
+	// firefox doesn't fit the content to the parent element
+	// and stylelint doesn't like url-prefix
+	/* stylelint-disable */
+	@-moz-document url-prefix() {
+		max-height: calc(100% - 90px);
+	}
+	/* stylelint-enable */
 }
 
 /* omnisearch */

@@ -138,6 +138,9 @@ function populateTablesAndFilters () {
 	// populate table
 	$("ul.list.mundane").append(liList.mundane);
 	$("ul.list.magic").append(liList.magic);
+	// populate table labels
+	$(`h3.ele-mundane span.side-label`).text("Mundane");
+	$(`h3.ele-magic span.side-label`).text("Magic");
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
 	typeFilter.items.sort(SortUtil.ascSort);
