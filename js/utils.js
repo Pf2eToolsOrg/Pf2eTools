@@ -843,26 +843,63 @@ Parser.invoPatronToShort = function (patron) {
 	return /^The (.*?)$/.exec(patron)[1];
 };
 
-Parser.dtAlignmentToFull = function (alignment) {
-	alignment = alignment.toUpperCase();
-	switch (alignment) {
-		case "L":
-			return "Lawful";
-		case "N":
-			return "Neutral";
-		case "C":
-			return "Chaotic";
-		case "G":
-			return "Good";
-		case "E":
-			return "Evil";
-		// "special" values
-		case "U":
-			return "Unaligned";
-		case "A":
-			return "Any alignment";
+Parser.alignmentAbvToFull = function (alignment) {
+	if (typeof alignment === "object") {
+		// e.g. `{alignment: ["N", "G"], chance: 50}` or `{alignment: ["N", "G"]}`
+		return `${alignment.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}${alignment.chance ? ` (${alignment.chance}%)` : ""}`;
+	} else {
+		alignment = alignment.toUpperCase();
+		switch (alignment) {
+			case "L":
+				return "Lawful";
+			case "N":
+				return "Neutral";
+			case "NX":
+				return "Neutral (Law/Chaos axis)";
+			case "NY":
+				return "Neutral (Good/Evil axis)";
+			case "C":
+				return "Chaotic";
+			case "G":
+				return "Good";
+			case "E":
+				return "Evil";
+			// "special" values
+			case "U":
+				return "Unaligned";
+			case "A":
+				return "Any alignment";
+		}
+		return alignment;
 	}
-	return alignment;
+};
+
+Parser.alignmentListToFull = function (alignList) {
+	// assume all single-length arrays can be simply parsed
+	if (alignList.length === 1) return Parser.alignmentAbvToFull(alignList[0]);
+	// two-length arrays can be:
+	// 1. "[object] or [object]"
+	// 2. a pair of abv's, e.g. "L" "G"
+	if (alignList.length === 2) {
+		if (typeof alignList[0] === "object" && typeof alignList[1] === "object") return `${Parser.alignmentAbvToFull(alignList[0])} or ${Parser.alignmentAbvToFull(alignList[1]).toLowerCase()}`;
+		else if (typeof alignList[0] === "string" && typeof alignList[1] === "string") return alignList.map(a => Parser.alignmentAbvToFull(a)).join(" ");
+		else throw new Error(`Malformed alignment pair: ${JSON.stringify(alignList)}`);
+	}
+	// longer arrays should have a custom mapping
+	// available options are:
+	// "L", "NX", "C" ("NX" = "neutral X" = neutral law/chaos axis)
+	// "G", "NY", "E" ("NY" = "neutral Y" = neutral good/evil axis)
+	if (alignList.length === 5) {
+		if (!alignList.includes("G")) return "any non-good alignment";
+		if (!alignList.includes("L")) return "any non-lawful alignment";
+	}
+	if (alignList.length === 4) {
+		if (!alignList.includes("L") && !alignList.includes("NX")) return "any chaotic alignment";
+		if (!alignList.includes("G") && !alignList.includes("NY")) return "any evil alignment";
+		if (!alignList.includes("C") && !alignList.includes("NX")) return "any lawful alignment";
+		if (!alignList.includes("E") && !alignList.includes("NY")) return "any good alignment";
+	}
+	throw new Error(`Unmapped alignment: ${JSON.stringify(alignList)}`);
 };
 
 Parser.CAT_ID_CREATURE = 1;
@@ -2336,6 +2373,17 @@ SortUtil = {
 		if (a.toLowerCase().trim() === "special equipment") return -1;
 		if (b.toLowerCase().trim() === "special equipment") return 1;
 		return SortUtil.ascSort(a, b)
+	},
+
+	_alignFirst: ["L", "C"],
+	_alignSecond: ["G", "E"],
+	alignmentSort: (a, b) => {
+		if (a === b) return 0;
+		if (SortUtil._alignFirst.includes(a)) return -1;
+		if (SortUtil._alignSecond.includes(a)) return 1;
+		if (SortUtil._alignFirst.includes(b)) return 1;
+		if (SortUtil._alignSecond.includes(b)) return -1;
+		return 0;
 	}
 };
 

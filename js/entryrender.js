@@ -1276,7 +1276,7 @@ EntryRenderer.deity = {
 				<div class="summary-flexer">
 					<p><b>Pantheon:</b> ${deity.pantheon}</p>
 					${deity.category ? `<p><b>Category:</b> ${deity.category}</p>` : ""}
-					<p><b>Alignment:</b> ${deity.alignment.map(a => Parser.dtAlignmentToFull(a)).join(" ")}</p>
+					<p><b>Alignment:</b> ${deity.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}</p>
 					<p><b>Domains:</b> ${deity.domains.join(", ")}</p>
 					${deity.altNames ? `<p><b>Alternate Names:</b> ${deity.altNames.join(", ")}</p>` : ""}
 					<p><b>Symbol:</b> ${deity.symbol}</p>
@@ -1356,7 +1356,7 @@ EntryRenderer.monster = {
 
 		renderStack.push(`
 			${EntryRenderer.utils.getNameTr(mon, true)}
-			<tr><td colspan="6"><i>${Parser.sizeAbvToFull(mon.size)}, ${Parser.monTypeToFullObj(mon.type).asText}, ${mon.alignment}</i></td></tr>
+			<tr><td colspan="6"><i>${Parser.sizeAbvToFull(mon.size)}, ${Parser.monTypeToFullObj(mon.type).asText}, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<table class="summary-noback">

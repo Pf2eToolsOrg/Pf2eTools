@@ -7,17 +7,6 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-function alignSort (a, b) {
-	const first = ["L", "C"];
-	const last = ["G", "E"];
-	if (a === b) return 0;
-	if (first.includes(a)) return -1;
-	if (last.includes(a)) return 1;
-	if (first.includes(b)) return 1;
-	if (last.includes(b)) return -1;
-	return 0;
-}
-
 let deitiesList;
 let filterBox;
 function onJsonLoad (data) {
@@ -27,7 +16,7 @@ function onJsonLoad (data) {
 	const alignmentFilter = new Filter({
 		header: "Alignment",
 		items: ["C", "E", "G", "L", "N"],
-		displayFn: Parser.dtAlignmentToFull
+		displayFn: Parser.alignmentAbvToFull
 	});
 	const pantheonFilter = new Filter({
 		header: "Pantheon",
@@ -80,7 +69,7 @@ function onJsonLoad (data) {
 	deitiesList.forEach((g, i) => {
 		const abvSource = Parser.sourceJsonToAbv(g.source);
 
-		g.alignment.sort(alignSort);
+		g.alignment.sort(SortUtil.alignmentSort);
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
 		g.domains.sort(SortUtil.ascSort);
@@ -189,7 +178,7 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getNameTr(deity, false, "", `, ${deity.title.toTitleCase()}`)}
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
 		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
-		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => Parser.dtAlignmentToFull(a)).join(" ")}</td></tr>
+		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}</td></tr>
 		<tr><td colspan="6"><span class="bold">Domains: </span>${deity.domains.join(", ")}</td></tr>
 		${deity.altNames ? `<tr><td colspan="6"><span class="bold">Alternate Names: </span>${deity.altNames.join(", ")}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>

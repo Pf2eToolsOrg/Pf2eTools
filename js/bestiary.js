@@ -528,7 +528,7 @@ function loadhash (id) {
 
 	$content.find("td span#type").html(type);
 
-	$content.find("td span#alignment").html(mon.alignment);
+	$content.find("td span#alignment").html(Parser.alignmentListToFull(mon.alignment).toLowerCase());
 
 	$content.find("td span#ac").html(mon.ac);
 

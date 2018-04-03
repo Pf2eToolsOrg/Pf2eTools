@@ -50,7 +50,7 @@ function rollSuppStatus () {
 
 function getPersonDetails (doRace) {
 	const status = rollSuppStatus();
-	const align = rollSuppAlignment().result.map(it => Parser.dtAlignmentToFull(it)).join(" ");
+	const align = rollSuppAlignment().result.map(it => Parser.alignmentAbvToFull(it)).join(" ");
 	const occ = rollSuppOccupation().result;
 	const relate = rollSuppRelationship().result;
 	const out = [
