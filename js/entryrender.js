@@ -580,6 +580,21 @@ function EntryRenderer () {
 							text: displayText
 						};
 						self.recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@book") {
+						// format: {@book Display Text|DMG< |chapter< |section > >}
+						const [displayText, book, chapter, section] = text.split("|");
+						const hash = `${book}${chapter ? `${HASH_PART_SEP}${chapter}${section ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(section)}` : ""}` : ""}`;
+						const fauxEntry = {
+							type: "link",
+							href: {
+								type: "internal",
+								path: "book.html",
+								hash,
+								hashPreEncoded: true
+							},
+							text: displayText
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -588,7 +603,7 @@ function EntryRenderer () {
 							type: "link",
 							href: {
 								type: "internal",
-								hash: hash
+								hash
 							},
 							text: (displayText || name)
 						};
