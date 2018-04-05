@@ -688,31 +688,33 @@ Parser.spDurationToFull = function (dur) {
 	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
 };
 
-Parser.spClassesToFull = function (classes) {
-	const fromSubclasses = Parser.spSubclassesToFull(classes);
-	return Parser.spMainClassesToFull(classes) + (fromSubclasses ? ", " + fromSubclasses : "");
+Parser.spClassesToFull = function (classes, textOnly) {
+	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly);
+	return Parser.spMainClassesToFull(classes, textOnly) + (fromSubclasses ? ", " + fromSubclasses : "");
 };
 
-Parser.spMainClassesToFull = function (classes) {
+Parser.spMainClassesToFull = function (classes, textOnly) {
 	return classes.fromClassList
 		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
-		.map(c => `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`)
+		.map(c => textOnly ? c.name : `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`)
 		.join(", ");
 };
 
-Parser.spSubclassesToFull = function (classes) {
+Parser.spSubclassesToFull = function (classes, textOnly) {
 	if (!classes.fromSubclass) return "";
 	return classes.fromSubclass
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.class.name, b.class.name);
 			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
-		.map(c => Parser._spSubclassItem(c))
+		.map(c => Parser._spSubclassItem(c, textOnly))
 		.join(", ");
 };
 
-Parser._spSubclassItem = function (fromSubclass) {
-	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
+Parser._spSubclassItem = function (fromSubclass, textOnly) {
+	const text = `${fromSubclass.subclass.name}${fromSubclass.subclass.subSubclass ? ` (${fromSubclass.subclass.subSubclass})` : ""}`;
+	if (textOnly) return text;
+	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
