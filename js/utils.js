@@ -2622,7 +2622,7 @@ BrewUtil = {
 			$(`<div class="text-align-center"/>`)
 				.append($(`<label class="btn btn-default btn-sm btn-file">Load File</label>`).append($iptAdd))
 				.append(" ")
-				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Brew</button></a>`)
+				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Homebrew</button></a>`)
 		);
 
 		$overlay.append($window);
