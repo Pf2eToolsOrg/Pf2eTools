@@ -221,7 +221,7 @@ const Omnisearch = {
 			this.addField("n");
 			this.addField("cf");
 			this.addField("s");
-			this.setRef("id")
+			this.setRef("id");
 			elasticlunr.clearStopWords();
 		});
 		data.forEach(d => {
