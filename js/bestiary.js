@@ -200,7 +200,7 @@ function pageInit (loadedSources) {
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "type", "cr"],
+		valueNames: ["name", "source", "type", "cr", "group"],
 		listClass: "monsters"
 	});
 	list.on("updated", () => {
@@ -325,6 +325,7 @@ function addMonsters (data) {
 					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
 					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon._pCr}</span>
+					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
 				</a>
 			</li>`;
 
