@@ -1656,7 +1656,12 @@ ListUtil = {
 		if (evt.shiftKey) {
 			evt.preventDefault();
 			const $ele = $(ele);
-			$ele.toggleClass("list-multi-selected")
+			$ele.toggleClass("list-multi-selected");
+		} else {
+			ListUtil._primaryLists.forEach(l => {
+				ListUtil.deslectAll(l);
+			});
+			$(ele).addClass("list-multi-selected")
 		}
 	},
 
