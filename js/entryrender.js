@@ -823,7 +823,7 @@ EntryRenderer.utils = {
 					<th class="name" colspan="6">
 						<div class="name-inner">
 							<span class="stats-name">${prefix || ""}${it.name}${suffix || ""}</span>
-							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToAbv(it.source)}">
+							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}">
 								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 							</span>
 						</div>

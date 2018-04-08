@@ -219,7 +219,7 @@ function handleBrew (homebrew) {
 
 window.onload = function load () {
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, () => {
-		BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
+		BrewUtil.addBrewData(handleBrew);
 		BrewUtil.makeBrewButton("manage-brew");
 		BrewUtil.setList(list);
 	});
@@ -312,7 +312,6 @@ function pageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
-	sourceFilter.items.push(new FilterItem("Homebrew", () => {}));
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
@@ -486,6 +485,7 @@ function addSpells (data) {
 			</li>`;
 
 		// populate filters
+		sourceFilter.addIfAbsent(new FilterItem(spell.source, () => {}));
 		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
 		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
 	}

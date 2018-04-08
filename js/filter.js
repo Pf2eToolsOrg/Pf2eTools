@@ -728,7 +728,7 @@ class Filter {
 	 * @param item the item to add
 	 */
 	addIfAbsent (item) {
-		if ($.inArray(item, this.items) === -1) this.items.push(item);
+		if (!this.items.find(it => it instanceof FilterItem ? it.item === (item instanceof FilterItem ? item.item : item) : it === (item instanceof FilterItem ? item.item : item))) this.items.push(item);
 	}
 
 	/**

@@ -472,20 +472,28 @@ Parser._getSourceStringFromSource = function (source) {
 	if (source && source.source) return source.source;
 	return source;
 };
+Parser.hasSourceFull = function (source) {
+	return !!Parser.SOURCE_JSON_TO_FULL[source];
+};
+Parser.hasSourceAbv = function (source) {
+	return !!Parser.SOURCE_JSON_TO_ABV[source];
+};
 Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
-	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
+	if (Parser.hasSourceFull(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
+	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, STR_APOSTROPHE);
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE)
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
-	source = Parser._getSourceStringFromSource(source);
-	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source)
-		.replace(/'/g, STR_APOSTROPHE)
+	return Parser.sourceJsonToFull(source)
 		.replace(UA_PREFIX, UA_PREFIX_SHORT)
 		.replace(AL_PREFIX, AL_PREFIX_SHORT)
 		.replace(PS_PREFIX, PS_PREFIX_SHORT);
 };
 Parser.sourceJsonToAbv = function (source) {
 	source = Parser._getSourceStringFromSource(source);
+	if (Parser.hasSourceAbv(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
+	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToAbv(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
 
@@ -2574,14 +2582,15 @@ BrewUtil = {
 	homebrew: null,
 	_list: null,
 	storage: StorageUtil.getStorage(),
+	_sourceCache: null,
 
 	// provide ref to List.js instance
 	setList: (list) => {
 		BrewUtil._list = list;
 	},
 
-	addBrewData: (brewHandler, brewLocation) => {
-		const rawBrew = BrewUtil.storage.getItem(brewLocation);
+	addBrewData: (brewHandler) => {
+		const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
 		if (rawBrew) {
 			try {
 				BrewUtil.homebrew = JSON.parse(rawBrew);
@@ -2593,7 +2602,7 @@ BrewUtil = {
 		}
 
 		function purgeBrew () {
-			BrewUtil.storage.removeItem(brewLocation);
+			BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
 			BrewUtil.homebrew = null;
 			window.location.hash = "";
 		}
@@ -2662,7 +2671,7 @@ BrewUtil = {
 						return ["class", "subclass"];
 				}
 			}
-			const urls = getBrewDirs().map(it => ({url: `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${it}`}));
+			const urls = getBrewDirs().map(it => ({url: `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${it}?${(new Date()).getTime()}`}));
 			DataUtil.multiLoadJSON(urls, null, (json) => {
 				let stack = "";
 				const all = [].concat.apply([], json);
@@ -2709,7 +2718,7 @@ BrewUtil = {
 				});
 			}
 
-			$brewList.html("");
+			$brewList.empty();
 			if (BrewUtil.homebrew) {
 				switch (page) {
 					case UrlUtil.PG_SPELLS:
@@ -2740,15 +2749,26 @@ BrewUtil = {
 			// store
 			function checkAndAdd (prop) {
 				const areNew = [];
+				if (!BrewUtil.homebrew[prop]) BrewUtil.homebrew[prop] = [];
 				const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
 				json[prop].forEach(it => {
 					if (!existingIds.find(id => it.uniqueId === id)) {
-						it.source = SRC_HOMEBREW;
 						BrewUtil.homebrew[prop].push(it);
 						areNew.push(it);
 					}
 				});
 				return areNew;
+			}
+
+			function checkAndAddSources () {
+				if (!json._meta || !json._meta.sources) return;
+				if (!BrewUtil.homebrew._meta) BrewUtil.homebrew._meta = {sources: []};
+				const existing = BrewUtil.homebrew._meta.sources.map(src => src.json);
+				json._meta.sources.forEach(src => {
+					if (!existing.find(it => it === src.json)) {
+						BrewUtil.homebrew._meta.sources.push(src);
+					}
+				});
 			}
 
 			let classesToAdd = json.class;
@@ -2757,6 +2777,7 @@ BrewUtil = {
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
+				checkAndAddSources(); // adding source(s) to Filter should happen in per-page addX functions
 				// only add if unique ID not already present
 				classesToAdd = checkAndAdd("class");
 				subclassesToAdd = checkAndAdd("subclass");
@@ -2764,6 +2785,10 @@ BrewUtil = {
 			}
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
+			// wipe old cache
+			BrewUtil._resetSourceCache();
+
+			// display on page
 			switch (page) {
 				case UrlUtil.PG_SPELLS:
 					addSpells(spellsToAdd);
@@ -2781,13 +2806,13 @@ BrewUtil = {
 			const $src = $(ele).find(`span.source`);
 			const cached = $src.text();
 			$src.text("Loading...");
-			DataUtil.loadJSON(jsonUrl, (data) => {
+			DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`, (data) => {
 				doHandleBrewJson(data);
 				$src.text("Done!");
 				setInterval(() => {
 					$src.text(cached);
 				}, 500);
-				funcAddCallback();
+				if (funcAddCallback) funcAddCallback();
 			});
 		};
 
@@ -2807,7 +2832,7 @@ BrewUtil = {
 				} else {
 					// reset the input
 					$(event.target).val("");
-					funcAddCallback();
+					if (funcAddCallback) funcAddCallback();
 				}
 			};
 			reader.readAsText(input.files[readIndex++]);
@@ -2867,6 +2892,42 @@ BrewUtil = {
 		$(`#${id}`).on("click", () => {
 			BrewUtil.manageBrew(funcAddCallback);
 		});
+	},
+
+	_buildSourceCache () {
+		if (!BrewUtil._sourceCache) {
+			BrewUtil._sourceCache = {};
+
+			if (!BrewUtil.homebrew) {
+				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
+				if (rawBrew) {
+					BrewUtil.homebrew = JSON.parse(rawBrew);
+				}
+			}
+
+			if (BrewUtil.homebrew && BrewUtil.homebrew._meta && BrewUtil.homebrew._meta.sources) {
+				BrewUtil.homebrew._meta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({abbreviation: src.abbreviation, full: src.full}));
+			}
+		}
+	},
+
+	_resetSourceCache () {
+		BrewUtil._sourceCache = null;
+	},
+
+	hasSourceJson (source) {
+		BrewUtil._buildSourceCache();
+		return !!BrewUtil._sourceCache[source];
+	},
+
+	sourceJsonToFull (source) {
+		BrewUtil._buildSourceCache();
+		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].full || source : source;
+	},
+
+	sourceJsonToAbv (source) {
+		BrewUtil._buildSourceCache();
+		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
 	}
 };
 

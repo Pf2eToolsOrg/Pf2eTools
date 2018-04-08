@@ -117,7 +117,7 @@ function onJsonLoad (data) {
 	}
 	addClassData(data);
 
-	BrewUtil.addBrewData(handleBrew, HOMEBREW_STORAGE);
+	BrewUtil.addBrewData(handleBrew);
 	BrewUtil.makeBrewButton("manage-brew", () => {
 		const cur = filterBox.getValues();
 		if (cur["Source"]) {
