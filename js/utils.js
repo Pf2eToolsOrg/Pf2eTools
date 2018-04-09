@@ -180,6 +180,11 @@ String.prototype.rtrim = String.prototype.rtrim ||
 		return this.replace(/\s+$/, "");
 	};
 
+String.prototype.escapeQuotes = String.prototype.escapeQuotes ||
+	function () {
+		return this.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)
+	};
+
 StrUtil = {
 	joinPhraseArray: function (array, joiner, lastJoiner) {
 		if (array.length === 0) return "";
@@ -1226,7 +1231,6 @@ SRC_GDoF_3PP = "GDoF" + SRC_3PP_SUFFIX;
 SRC_ToB_3PP = "ToB" + SRC_3PP_SUFFIX;
 
 SRC_STREAM = "Stream";
-SRC_HOMEBREW = "Homebrew";
 
 AL_PREFIX = "Adventurers League: ";
 AL_PREFIX_SHORT = "AL: ";
@@ -1318,7 +1322,6 @@ Parser.SOURCE_JSON_TO_FULL[SRC_CC_3PP] = "Critter Compendium" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_FEF_3PP] = "Fifth Edition Foes" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_GDoF_3PP] = "Gem Dragons of Faerûn" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_HOMEBREW] = "Homebrew";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 
 Parser.SOURCE_JSON_TO_ABV = {};
@@ -1402,7 +1405,6 @@ Parser.SOURCE_JSON_TO_ABV[SRC_CC_3PP] = "CC (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_FEF_3PP] = "FEF (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_GDoF_3PP] = "GDoF (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_HOMEBREW] = "Brew";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
@@ -2131,6 +2133,11 @@ ListUtil = {
 		}
 		list.filter();
 		return lastSearch;
+	},
+
+	toggleCheckbox (evt, ele) {
+		const $ipt = $(ele).find(`input`);
+		$ipt.prop("checked", !$ipt.prop("checked"))
 	}
 };
 
@@ -2583,10 +2590,19 @@ BrewUtil = {
 	_list: null,
 	storage: StorageUtil.getStorage(),
 	_sourceCache: null,
+	_filterBox: null,
+	_sourceFilter: null,
 
 	// provide ref to List.js instance
-	setList: (list) => {
+	// TODO handle multiple lists, for items page
+	bindList: (list) => {
 		BrewUtil._list = list;
+	},
+
+	// provide ref to FilterBox and Filter instance
+	bindFilters (filterBox, sourceFilter) {
+		BrewUtil._filterBox = filterBox;
+		BrewUtil._sourceFilter = sourceFilter;
 	},
 
 	addBrewData: (brewHandler) => {
@@ -2617,16 +2633,29 @@ BrewUtil = {
 			$body.css("overflow", "");
 			$overlay.remove();
 		});
+
+		function makeNextOverlay () {
+			$overlay.css("background", "transparent");
+			const $overlay2 = $(`<div class="homebrew-overlay"/>`);
+			$overlay2.on("click", () => {
+				$overlay2.remove();
+				$overlay.css("background", "");
+			});
+			$body.append($overlay2);
+			return $overlay2;
+		}
+
 		const $window = $(`
 		<div class="homebrew-window dropdown-menu">
-			<h4>Manage Homebrew</h4>
+			<h4 class="title"><span>Manage Homebrew</span><button class="btn btn-xs btn-danger">Delete All (Including Legacy)</button></h4>
 			<hr>
 		</div>`
 		);
 		$window.on("click", (evt) => {
 			evt.stopPropagation();
 		});
-		const $brewList = $(`<div></div>`);
+		const $btnDelAll = $window.find(`button`);
+		const $brewList = $(`<div class="current-brew"/>`);
 		$window.append($brewList);
 
 		refreshBrewList();
@@ -2637,29 +2666,22 @@ BrewUtil = {
 		const $btnGet = $(`<button class="btn btn-default btn-sm">Get Homebrew 2.0</button>`);
 		$btnGet.on("click", () => {
 			const $lst = $(`
-				<div id="brewlistcontainer" class="homebrew-window dropdown-menu">
+				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
 					<input type="search" id="search" class="search form-control" placeholder="Find homebrew..." style="width: 100%">
 					<div class="filtertools sortlabel btn-group">
 						<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="filename">Filename</button>
 						<button class="col-xs-8 sort btn btn-default btn-xs" data-sort="source">Source</button>
 					</div>
 					<ul class="list brew-list">
-						<li><span style="font-style: italic;">Loading...</span></li>
-						<!-- populate with JS -->
+						<li><section><span style="font-style: italic;">Loading...</span></section></li>
 					</ul>
 				</div>
 			`);
-			$overlay.css("background", "transparent");
-			const $overlay2 = $(`<div class="homebrew-overlay"/>`);
-			$overlay2.append($lst);
+			const $nxt = makeNextOverlay();
+			$nxt.append($lst);
 			$lst.on("click", (evt) => {
 				evt.stopPropagation();
 			});
-			$overlay2.on("click", () => {
-				$overlay2.remove();
-				$overlay.css("background", "");
-			});
-			$body.append($overlay2);
 
 			// populate list
 			const $ul = $lst.find(`ul`);
@@ -2677,7 +2699,7 @@ BrewUtil = {
 				const all = [].concat.apply([], json);
 				all.forEach(it => {
 					stack += `<li>
-						<section onclick="BrewUtil.addBrewRemote(this, '${it.download_url}')">
+						<section onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}')">
 							<span class="col-xs-4 filename">${it.name}</span>
 							<span class="col-xs-8 source" title="${it.download_url}">${it.download_url}</span>
 						</section>
@@ -2708,7 +2730,7 @@ BrewUtil = {
 		function refreshBrewList () {
 			function render (type, prop, deleteFn) {
 				BrewUtil.homebrew[prop].forEach(j => {
-					const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash""></span></button>`).on("click", () => {
+					const $btnDel = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`).on("click", () => {
 						deleteFn(j.uniqueId);
 					});
 					const $btnExport = $(`<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span></button>`).on("click", () => {
@@ -2718,19 +2740,111 @@ BrewUtil = {
 				});
 			}
 
+			function showSourceManager (source, $overlay2) {
+				const $wrpBtnDel = $(`<div class="wrp-btn-del-selected"/>`);
+				const $lst = $(`
+					<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
+						<input type="search" id="search" class="search form-control" placeholder="Search entries..." style="width: 100%">
+						<div class="filtertools sortlabel btn-group">
+							<button class="col-xs-7 sort btn btn-default btn-xs" data-sort="name">Name</button>
+							<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="category">Category</button>
+							<span class="col-xs-1 wrp-cb-all"><input type="checkbox"></span>
+						</div>
+						<ul class="list brew-list"></ul>
+					</div>
+				`);
+				$lst.prepend($wrpBtnDel);
+				$overlay2.append($lst);
+				$lst.on("click", (evt) => {
+					evt.stopPropagation();
+				});
+
+				const $cbAll = $lst.find(`.wrp-cb-all input`);
+
+				// populate list
+				const $ul = $lst.find(`ul`);
+				let stack = "";
+				BrewUtil._getBrewCategories().forEach(cat => {
+					BrewUtil.homebrew[cat].filter(it => it.source === source).forEach(it => {
+						stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
+							<span class="col-xs-7 name">${it.name}</span>
+							<span class="col-xs-4 category">${cat.uppercaseFirst()}</span>
+							<span class="col-xs-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
+							<span class="hidden uid">${it.uniqueId}</span>
+						</section></li>`;
+					})
+				});
+				$ul.empty();
+				$ul.append(stack);
+
+				const list = new List("brewlistcontainer", {
+					valueNames: ["name", "category", "uid"],
+					listClass: "brew-list"
+				});
+
+				$cbAll.change(function () {
+					const val = this.checked;
+					list.items.forEach(it => $(it.elm).find(`input`).prop("checked", val));
+				});
+				$(`<button class="btn btn-danger btn-sm">Delete Selected</button>`).on("click", () => {
+					const toDel = list.items.filter(it => $(it.elm).find(`input`).prop("checked")).map(it => it.values());
+
+					if (!toDel.length) return;
+					if (!window.confirm("Are you sure?")) return;
+
+					if (toDel.length === list.items.length) {
+						deleteSource(source, false);
+						$overlay2.click();
+					} else {
+						toDel.forEach(it => {
+							const deleteFn = getDeleteFunction(it.category.toLowerCase());
+							deleteFn(it.uid, false);
+						});
+						refreshBrewList();
+						window.location.hash = "";
+					}
+				}).appendTo($wrpBtnDel);
+			}
+
 			$brewList.empty();
 			if (BrewUtil.homebrew) {
-				switch (page) {
-					case UrlUtil.PG_SPELLS:
-						render("Spell", "spell", deleteSpellBrew);
-						break;
-					case UrlUtil.PG_CLASSES:
-						render("Class", "class", deleteClassBrew);
-						render("Subclass", "subclass", deleteSubclassBrew);
-						break;
-				}
+				$brewList.append(`
+					<div class="row">
+						<span class="col-xs-4">Source</span>
+						<span class="col-xs-3">Author</span>
+					</div>
+				`);
+				BrewUtil.getJsonSources().forEach(src => {
+					const $row = $(`<div class="row">
+						<span class="col-xs-4 col-tall">${src.full}</span>
+						<span class="col-xs-3 col-tall">${(src.authors || []).join(", ")}</span>
+						<${src.url ? "a" : "span"} class="col-xs-3 col-tall" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "Source" : ""}</${src.url ? "a" : "span"}>
+					</div>`);
+					const $btns = $(`<span class="col-xs-2 text-align-right"/>`).appendTo($row);
+					$(`<button class="btn btn-sm btn-default">View/Manage</button>`)
+						.on("click", () => {
+							const $nxt = makeNextOverlay();
+							showSourceManager(src.json, $nxt);
+						})
+						.appendTo($btns);
+					$btns.append(" ");
+					$(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`)
+						.on("click", () => {
+							deleteSource(src.json, true);
+						})
+						.appendTo($btns);
+
+					$brewList.append($row);
+				});
 			}
 		}
+
+		$btnDelAll.on("click", () => {
+			if (!window.confirm("Are you sure?")) return;
+			BrewUtil.storage.setItem(HOMEBREW_STORAGE, "{}");
+			window.location.hash = "";
+			location.reload();
+		});
 
 		function doHandleBrewJson (json) {
 			function storePrep (arrName) {
@@ -2842,22 +2956,60 @@ BrewUtil = {
 			return BrewUtil.homebrew[arrName].findIndex(it => it.uniqueId === uniqueId);
 		}
 
-		function doRemove (arrName, uniqueId) {
+		function deleteSource (source, doConfirm) {
+			if (doConfirm && !window.confirm(`Are you sure you want to remove all homebrew with source "${source}"?`)) return;
+
+			BrewUtil._getBrewCategories().forEach(k => {
+				const cat = BrewUtil.homebrew[k];
+				const deleteFn = getDeleteFunction(k);
+				const toDel = [];
+				cat.forEach(it => {
+					if (it.source === source) {
+						toDel.push(it.uniqueId);
+					}
+				});
+				toDel.forEach(uId => {
+					deleteFn(uId, false);
+				})
+			});
+			BrewUtil.removeJsonSource(source);
+			// remove the source from the filters and re-render the filter box
+			BrewUtil._sourceFilter.removeIfExists(source);
+			BrewUtil._filterBox.render();
+			refreshBrewList();
+			window.location.hash = "";
+			BrewUtil._filterBox._fireValChangeEvent();
+		}
+
+		function doRemove (arrName, uniqueId, doRefresh) {
 			const index = getIndex(arrName, uniqueId);
 			if (~index) {
 				BrewUtil.homebrew[arrName].splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
-				refreshBrewList();
+				if (doRefresh) refreshBrewList();
 				BrewUtil._list.remove("uniqueid", uniqueId);
-				History.hashChange();
+				if (doRefresh) History.hashChange();
 			}
 		}
 
-		function deleteClassBrew (uniqueId) {
-			doRemove("class", uniqueId);
+		function getDeleteFunction (category) {
+			switch (category) {
+				case "spell":
+					return deleteSpellBrew;
+				case "subclass":
+					return deleteSubclassBrew;
+				case "class":
+					return deleteClassBrew;
+				default:
+					throw new Error(`No homebrew delete function defined for category ${category}`)
+			}
 		}
 
-		function deleteSubclassBrew (uniqueId) {
+		function deleteClassBrew (uniqueId, doRefresh) {
+			doRemove("class", uniqueId, doRefresh);
+		}
+
+		function deleteSubclassBrew (uniqueId, doRefresh) {
 			let subClass;
 			let index = 0;
 			for (; index < BrewUtil.homebrew.subclass.length; ++index) {
@@ -2870,7 +3022,7 @@ BrewUtil = {
 				const forClass = subClass.class;
 				BrewUtil.homebrew.subclass.splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
-				refreshBrewList();
+				// refreshBrewList();
 				const c = classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
 
 				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
@@ -2878,13 +3030,15 @@ BrewUtil = {
 					c.subclasses.splice(indexInClass, 1);
 					c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 				}
-				refreshBrewList();
-				window.location.hash = "";
+				if (doRefresh) {
+					refreshBrewList();
+					window.location.hash = "";
+				}
 			}
 		}
 
-		function deleteSpellBrew (uniqueId) {
-			doRemove("spell", uniqueId);
+		function deleteSpellBrew (uniqueId, doRefresh) {
+			doRemove("spell", uniqueId, doRefresh);
 		}
 	},
 
@@ -2892,6 +3046,10 @@ BrewUtil = {
 		$(`#${id}`).on("click", () => {
 			BrewUtil.manageBrew(funcAddCallback);
 		});
+	},
+
+	_getBrewCategories () {
+		return Object.keys(BrewUtil.homebrew).filter(it => !it.startsWith("_"));
 	},
 
 	_buildSourceCache () {
@@ -2913,6 +3071,18 @@ BrewUtil = {
 
 	_resetSourceCache () {
 		BrewUtil._sourceCache = null;
+	},
+
+	removeJsonSource (source) {
+		BrewUtil._resetSourceCache();
+		const ix = BrewUtil.homebrew._meta.sources.findIndex(it => it.json === source);
+		if (~ix) BrewUtil.homebrew._meta.sources.splice(ix, 1);
+		BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+	},
+
+	getJsonSources () {
+		BrewUtil._buildSourceCache();
+		return BrewUtil.homebrew && BrewUtil.homebrew._meta &&  BrewUtil.homebrew._meta.sources ? BrewUtil.homebrew._meta.sources : [];
 	},
 
 	hasSourceJson (source) {

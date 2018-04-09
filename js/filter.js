@@ -668,6 +668,10 @@ class FilterBox {
 		this.$disabledOverlay.detach();
 	}
 
+	/**
+	 * If the currently selected item is hidden, load the first visible item
+	 * @param fromList the page data list
+	 */
 	static nextIfHidden (fromList) {
 		if (History.lastLoadedId && !History.initialLoad) {
 			const last = fromList[History.lastLoadedId];
@@ -728,7 +732,20 @@ class Filter {
 	 * @param item the item to add
 	 */
 	addIfAbsent (item) {
-		if (!this.items.find(it => it instanceof FilterItem ? it.item === (item instanceof FilterItem ? item.item : item) : it === (item instanceof FilterItem ? item.item : item))) this.items.push(item);
+		if (!this.items.find(it => Filter._checkMatches(it, item))) this.items.push(item);
+	}
+
+	static _checkMatches(item1, item2) {
+		return item1 instanceof FilterItem ? item1.item === (item2 instanceof FilterItem ? item2.item : item2) : item1 === (item2 instanceof FilterItem ? item2.item : item2)
+	}
+
+	/**
+	 * Remove an item if it exists in the filter
+	 * @param item the item to remove
+	 */
+	removeIfExists (item) {
+		const ix = this.items.findIndex(it => Filter._checkMatches(it, item));
+		if (~ix) this.items.splice(ix, 1);
 	}
 
 	/**

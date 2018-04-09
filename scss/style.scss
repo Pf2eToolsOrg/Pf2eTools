@@ -453,8 +453,58 @@ header {
 		margin: 5px 0;
 	}
 
+	h4.title {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.brew-list span.source {
 		overflow: hidden;
+	}
+
+	.search {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.wrp-btn-del-selected {
+		text-align: right;
+		padding-bottom: 5px;
+	}
+
+	.filtertools {
+		button {
+			border-top: none;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+
+		span.wrp-cb-all {
+			border-bottom: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			line-height: 14px;
+			border-bottom-right-radius: 3px;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+
+	.current-brew {
+		margin-bottom: 5px;
+
+		.row {
+			margin-left: 0;
+			margin-right: 0;
+			padding: 4px 0;
+		}
+
+		.row:nth-child(even) {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		.col-tall {
+			line-height: 30px;
+		}
 	}
 }
 
@@ -1936,13 +1986,13 @@ input[type=checkbox].readonly {
 	pointer-events: none;
 }
 
-#brewlistcontainer > ul > li,
+.listcontainer > ul > li,
 #sublistcontainer > ul > li,
 #listcontainer > ul > li {
 	padding: 0;
 }
 
-#brewlistcontainer .list section,
+.listcontainer .list section,
 #sublistcontainer .list a,
 #listcontainer .list a {
 	color: inherit;

@@ -447,7 +447,7 @@ function EntryRenderer () {
 		function _getStyleClass (source) {
 			const outList = [];
 			if (isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
-			if (source === SRC_HOMEBREW) outList.push(CLSS_HOMEBREW_SOURCE);
+			if (BrewUtil.hasSourceJson(source)) outList.push(CLSS_HOMEBREW_SOURCE);
 			return outList.join(" ");
 		}
 
@@ -797,16 +797,13 @@ EntryRenderer.getEntryDice = function (entry, name) {
 	}
 
 	function pack (obj) {
-		return `'${JSON.stringify(obj).replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'`;
+		return `'${JSON.stringify(obj).escapeQuotes()}'`;
 	}
 
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
-	if (entry.rollable === true) {
-		return `<span class='roller' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)}'` : ""})">${toDisplay}</span>`;
-	} else {
-		return toDisplay;
-	}
+	if (entry.rollable === true) return `<span class='roller' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.escapeQuotes()}'` : ""})">${toDisplay}</span>`;
+	else return toDisplay;
 };
 
 EntryRenderer.utils = {

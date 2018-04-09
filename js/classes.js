@@ -118,21 +118,9 @@ function onJsonLoad (data) {
 	addClassData(data);
 
 	BrewUtil.addBrewData(handleBrew);
-	BrewUtil.makeBrewButton("manage-brew", () => {
-		const cur = filterBox.getValues();
-		if (cur["Source"]) {
-			cur["Source"][SRC_HOMEBREW] = 1;
-			const sources = [];
-			Object.keys(cur["Source"]).forEach(k => {
-				const val = cur["Source"][k];
-				if (val === 1) sources.push(k.toLowerCase());
-				if (val === -1) sources.push(`!${k.toLowerCase()}`);
-			});
-			filterBox.setFromValues({Source: sources});
-			handleFilterChange()
-		}
-	});
-	BrewUtil.setList(list);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bindList(list);
+	BrewUtil.bindFilters(filterBox, sourceFilter);
 
 	function handleBrew (homebrew) {
 		addClassData(homebrew);
@@ -174,7 +162,7 @@ function addClassData (data) {
 	}
 
 	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
-	data.class.filter(c => isNonstandardSource(c.source) || c.source === SRC_HOMEBREW).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
+	data.class.filter(c => isNonstandardSource(c.source) || BrewUtil.hasSourceJson(c.source)).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
 
 	let i = 0;
 	if (!classes) {
@@ -215,7 +203,7 @@ function getSubclassStyles (sc) {
 	const nonStandard = isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source);
 	if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 	if (subclassIsFreshUa(sc)) styleClasses.push(CLSS_FRESH_UA);
-	if (cleanScSource(sc.source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+	if (BrewUtil.hasSourceJson(cleanScSource(sc.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 	return styleClasses;
 }
 
@@ -436,7 +424,7 @@ function loadhash (id) {
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 		if (subclassIsFreshUa(subClasses[i])) styleClasses.push(CLSS_FRESH_UA);
-		if (cleanScSource(subClasses[i].source) === SRC_HOMEBREW) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+		if (BrewUtil.hasSourceJson(cleanScSource(subClasses[i].source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
 		const pillText = hasBeenReprinted(subClasses[i].shortName, subClasses[i].source) ? `${subClasses[i].shortName} (${Parser.sourceJsonToAbv(subClasses[i].source)})` : subClasses[i].shortName;
 		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${cleanScSource(subClasses[i].source)}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
 		pill.click(function () {
