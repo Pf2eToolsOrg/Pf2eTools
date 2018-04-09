@@ -432,13 +432,29 @@ header {
 	left: initial;
 	margin: 60px auto;
 	padding: 5px 10px;
-	max-height: 600px;
-	max-width: 600px;
+	max-height: calc(100vh - 120px);
 	overflow-y: scroll;
 	float: none;
+	display: block;
+
+	@media (min-width: 768px) {
+		width: 750px;
+	}
+
+	@media (min-width: 992px) {
+		width: 970px;
+	}
+
+	@media (min-width: 1200px) {
+		width: 1170px;
+	}
 
 	hr {
 		margin: 5px 0;
+	}
+
+	.brew-list span.source {
+		overflow: hidden;
 	}
 }
 
@@ -512,6 +528,7 @@ input.search {
 	width: 62%;
 }
 
+.filtertools,
 #filtertools {
 	font-size: 0.8em;
 
@@ -1919,11 +1936,13 @@ input[type=checkbox].readonly {
 	pointer-events: none;
 }
 
+#brewlistcontainer > ul > li,
 #sublistcontainer > ul > li,
 #listcontainer > ul > li {
 	padding: 0;
 }
 
+#brewlistcontainer .list section,
 #sublistcontainer .list a,
 #listcontainer .list a {
 	color: inherit;

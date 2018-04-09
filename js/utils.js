@@ -1656,7 +1656,12 @@ ListUtil = {
 		if (evt.shiftKey) {
 			evt.preventDefault();
 			const $ele = $(ele);
-			$ele.toggleClass("list-multi-selected")
+			$ele.toggleClass("list-multi-selected");
+		} else {
+			ListUtil._primaryLists.forEach(l => {
+				ListUtil.deslectAll(l);
+			});
+			$(ele).addClass("list-multi-selected")
 		}
 	},
 
@@ -2440,7 +2445,7 @@ DataUtil = {
 			this.loadJSON(
 				tl.url,
 				function (data) {
-					onEachLoadFunction(tl, data);
+					if (onEachLoadFunction) onEachLoadFunction(tl, data);
 					dataStack.push(data);
 
 					loadedCount++;
@@ -2604,7 +2609,7 @@ BrewUtil = {
 			$overlay.remove();
 		});
 		const $window = $(`
-		<div class="homebrew-window dropdown-menu" style="display: block;">
+		<div class="homebrew-window dropdown-menu">
 			<h4>Manage Homebrew</h4>
 			<hr>
 		</div>`
@@ -2618,13 +2623,74 @@ BrewUtil = {
 		refreshBrewList();
 
 		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).on("change", (evt) => {
-			addBrew(evt, funcAddCallback);
+			addBrewLocal(evt, funcAddCallback);
+		});
+		const $btnGet = $(`<button class="btn btn-default btn-sm">Get Homebrew 2.0</button>`);
+		$btnGet.on("click", () => {
+			const $lst = $(`
+				<div id="brewlistcontainer" class="homebrew-window dropdown-menu">
+					<input type="search" id="search" class="search form-control" placeholder="Find homebrew..." style="width: 100%">
+					<div class="filtertools sortlabel btn-group">
+						<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="filename">Filename</button>
+						<button class="col-xs-8 sort btn btn-default btn-xs" data-sort="source">Source</button>
+					</div>
+					<ul class="list brew-list">
+						<li><span style="font-style: italic;">Loading...</span></li>
+						<!-- populate with JS -->
+					</ul>
+				</div>
+			`);
+			$overlay.css("background", "transparent");
+			const $overlay2 = $(`<div class="homebrew-overlay"/>`);
+			$overlay2.append($lst);
+			$lst.on("click", (evt) => {
+				evt.stopPropagation();
+			});
+			$overlay2.on("click", () => {
+				$overlay2.remove();
+				$overlay.css("background", "");
+			});
+			$body.append($overlay2);
+
+			// populate list
+			const $ul = $lst.find(`ul`);
+			function getBrewDirs () {
+				switch (page) {
+					case UrlUtil.PG_SPELLS:
+						return ["spell"];
+					case UrlUtil.PG_CLASSES:
+						return ["class", "subclass"];
+				}
+			}
+			const urls = getBrewDirs().map(it => ({url: `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${it}`}));
+			DataUtil.multiLoadJSON(urls, null, (json) => {
+				let stack = "";
+				const all = [].concat.apply([], json);
+				all.forEach(it => {
+					stack += `<li>
+						<section onclick="BrewUtil.addBrewRemote(this, '${it.download_url}')">
+							<span class="col-xs-4 filename">${it.name}</span>
+							<span class="col-xs-8 source" title="${it.download_url}">${it.download_url}</span>
+						</section>
+					</li>`;
+				});
+
+				$ul.empty();
+				$ul.append(stack);
+
+				const list = new List("brewlistcontainer", {
+					valueNames: ["filename"],
+					listClass: "brew-list"
+				});
+			});
 		});
 		$window.append(
 			$(`<div class="text-align-center"/>`)
-				.append($(`<label class="btn btn-default btn-sm btn-file">Load File</label>`).append($iptAdd))
+				.append($(`<label class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
 				.append(" ")
-				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Get Homebrew</button></a>`)
+				.append($btnGet)
+				.append(" ")
+				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Browse Repository</button></a>`)
 		);
 
 		$overlay.append($window);
@@ -2657,7 +2723,75 @@ BrewUtil = {
 			}
 		}
 
-		function addBrew (event, funcAddCallback) {
+		function doHandleBrewJson (json) {
+			function storePrep (arrName) {
+				if (json[arrName]) {
+					json[arrName].forEach(it => {
+						it.uniqueId = CryptUtil.md5(JSON.stringify(it));
+					});
+				} else json[arrName] = [];
+			}
+
+			// prepare for storage
+			storePrep("class");
+			storePrep("subclass");
+			storePrep("spell");
+
+			// store
+			function checkAndAdd (prop) {
+				const areNew = [];
+				const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
+				json[prop].forEach(it => {
+					if (!existingIds.find(id => it.uniqueId === id)) {
+						it.source = SRC_HOMEBREW;
+						BrewUtil.homebrew[prop].push(it);
+						areNew.push(it);
+					}
+				});
+				return areNew;
+			}
+
+			let classesToAdd = json.class;
+			let subclassesToAdd = json.subclass;
+			let spellsToAdd = json.spell;
+			if (!BrewUtil.homebrew) {
+				BrewUtil.homebrew = json;
+			} else {
+				// only add if unique ID not already present
+				classesToAdd = checkAndAdd("class");
+				subclassesToAdd = checkAndAdd("subclass");
+				spellsToAdd = checkAndAdd("spell");
+			}
+			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+
+			switch (page) {
+				case UrlUtil.PG_SPELLS:
+					addSpells(spellsToAdd);
+					break;
+				case UrlUtil.PG_CLASSES:
+					addClassData({class: classesToAdd});
+					addSubclassData({subclass: subclassesToAdd});
+					break;
+			}
+
+			refreshBrewList();
+		}
+
+		BrewUtil.addBrewRemote = (ele, jsonUrl) => {
+			const $src = $(ele).find(`span.source`);
+			const cached = $src.text();
+			$src.text("Loading...");
+			DataUtil.loadJSON(jsonUrl, (data) => {
+				doHandleBrewJson(data);
+				$src.text("Done!");
+				setInterval(() => {
+					$src.text(cached);
+				}, 500);
+				funcAddCallback();
+			});
+		};
+
+		function addBrewLocal (event, funcAddCallback) {
 			const input = event.target;
 
 			let readIndex = 0;
@@ -2666,57 +2800,8 @@ BrewUtil = {
 				const text = reader.result;
 				const json = JSON.parse(text);
 
-				function storePrep (arrName) {
-					if (json[arrName]) {
-						json[arrName].forEach(it => {
-							it.uniqueId = CryptUtil.md5(JSON.stringify(it));
-						});
-					} else json[arrName] = [];
-				}
+				doHandleBrewJson(json);
 
-				// prepare for storage
-				storePrep("class");
-				storePrep("subclass");
-				storePrep("spell");
-
-				// store
-				function checkAndAdd (prop) {
-					const areNew = [];
-					const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
-					json[prop].forEach(it => {
-						if (!existingIds.find(id => it.uniqueId === id)) {
-							it.source = SRC_HOMEBREW;
-							BrewUtil.homebrew[prop].push(it);
-							areNew.push(it);
-						}
-					});
-					return areNew;
-				}
-
-				let classesToAdd = json.class;
-				let subclassesToAdd = json.subclass;
-				let spellsToAdd = json.spell;
-				if (!BrewUtil.homebrew) {
-					BrewUtil.homebrew = json;
-				} else {
-					// only add if unique ID not already present
-					classesToAdd = checkAndAdd("class");
-					subclassesToAdd = checkAndAdd("subclass");
-					spellsToAdd = checkAndAdd("spell");
-				}
-				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
-
-				switch (page) {
-					case UrlUtil.PG_SPELLS:
-						addSpells(spellsToAdd);
-						break;
-					case UrlUtil.PG_CLASSES:
-						addClassData({class: classesToAdd});
-						addSubclassData({subclass: subclassesToAdd});
-						break;
-				}
-
-				refreshBrewList();
 				if (input.files[readIndex]) {
 					reader.readAsText(input.files[readIndex++]);
 				} else {
