@@ -2798,15 +2798,15 @@ BrewUtil = {
 			if (BrewUtil.homebrew) {
 				$brewList.append(`
 					<div class="row">
-						<span class="col-xs-4">Source</span>
-						<span class="col-xs-3">Author</span>
+						<span class="col-xs-5">Source</span>
+						<span class="col-xs-4">Author</span>
 					</div>
 				`);
 				BrewUtil.getJsonSources().forEach(src => {
 					const $row = $(`<div class="row">
-						<span class="col-xs-4 col-tall">${src.full}</span>
-						<span class="col-xs-3 col-tall">${(src.authors || []).join(", ")}</span>
-						<${src.url ? "a" : "span"} class="col-xs-3 col-tall" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "Source" : ""}</${src.url ? "a" : "span"}>
+						<span class="col-xs-5 col-tall">${src.full}</span>
+						<span class="col-xs-4 col-tall">${(src.authors || []).join(", ")}</span>
+						<${src.url ? "a" : "span"} class="col-xs-1 col-tall" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "Source" : ""}</${src.url ? "a" : "span"}>
 					</div>`);
 					const $btns = $(`<span class="col-xs-2 text-align-right"/>`).appendTo($row);
 					$(`<button class="btn btn-sm btn-default">View/Manage</button>`)
