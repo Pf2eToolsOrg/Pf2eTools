@@ -3070,7 +3070,7 @@ BrewUtil = {
 
 	getJsonSources () {
 		BrewUtil._buildSourceCache();
-		return BrewUtil.homebrew && BrewUtil.homebrew._meta &&  BrewUtil.homebrew._meta.sources ? BrewUtil.homebrew._meta.sources : [];
+		return BrewUtil.homebrew && BrewUtil.homebrew._meta && BrewUtil.homebrew._meta.sources ? BrewUtil.homebrew._meta.sources : [];
 	},
 
 	hasSourceJson (source) {

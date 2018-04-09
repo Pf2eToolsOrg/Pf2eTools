@@ -735,7 +735,7 @@ class Filter {
 		if (!this.items.find(it => Filter._checkMatches(it, item))) this.items.push(item);
 	}
 
-	static _checkMatches(item1, item2) {
+	static _checkMatches (item1, item2) {
 		return item1 instanceof FilterItem ? item1.item === (item2 instanceof FilterItem ? item2.item : item2) : item1 === (item2 instanceof FilterItem ? item2.item : item2)
 	}
 
