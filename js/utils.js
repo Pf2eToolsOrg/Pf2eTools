@@ -2687,7 +2687,7 @@ BrewUtil = {
 		$btnGet.on("click", () => {
 			const $lst = $(`
 				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
-					<input type="search" id="search" class="search form-control" placeholder="Find homebrew..." style="width: 100%">
+					<input type="search" class="search form-control" placeholder="Find homebrew..." style="width: 100%">
 					<div class="filtertools sortlabel btn-group">
 						<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="filename">Filename</button>
 						<button class="col-xs-8 sort btn btn-default btn-xs" data-sort="source">Source</button>
@@ -2752,7 +2752,7 @@ BrewUtil = {
 				const $wrpBtnDel = $(`<div class="wrp-btn-del-selected"/>`);
 				const $lst = $(`
 					<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
-						<input type="search" id="search" class="search form-control" placeholder="Search entries..." style="width: 100%">
+						<input type="search" class="search form-control" placeholder="Search entries..." style="width: 100%">
 						<div class="filtertools sortlabel btn-group">
 							<button class="col-xs-7 sort btn btn-default btn-xs" data-sort="name">Name</button>
 							<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="category">Category</button>
@@ -2816,19 +2816,30 @@ BrewUtil = {
 
 			$brewList.empty();
 			if (BrewUtil.homebrew) {
-				// TODO improve layout
-				$brewList.append(`
-					<div class="row">
-						<span class="col-xs-5">Source</span>
-						<span class="col-xs-4">Author</span>
+				const $lst = $(`
+					<div id="outerbrewlistcontainer" class="listcontainer">
+						<input type="search" class="search form-control" placeholder="Search homebrew..." style="width: calc(100% - 3px)">
+						<div class="filtertools sortlabel btn-group">
+							<button class="col-xs-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
+							<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
+							<button class="col-xs-1 btn btn-default btn-xs" disabled>&nbsp;</button>
+							<button class="col-xs-2 btn btn-default btn-xs" disabled>&nbsp;</button>
+						</div>
+						<ul class="list-display-only brew-list"></ul>
 					</div>
 				`);
+				$brewList.append($lst);
+
+				// populate list
+				const $ul = $lst.find(`ul`);
+				$ul.empty();
+
 				BrewUtil.getJsonSources().forEach(src => {
-					const $row = $(`<div class="row">
-						<span class="col-xs-5 col-tall">${src.full}</span>
-						<span class="col-xs-4 col-tall">${(src.authors || []).join(", ")}</span>
+					const $row = $(`<li class="row no-click">
+						<span class="col-xs-5 col-tall source">${src.full}</span>
+						<span class="col-xs-4 col-tall authors">${(src.authors || []).join(", ")}</span>
 						<${src.url ? "a" : "span"} class="col-xs-1 col-tall" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "Source" : ""}</${src.url ? "a" : "span"}>
-					</div>`);
+					</li>`);
 					const $btns = $(`<span class="col-xs-2 text-align-right"/>`).appendTo($row);
 					$(`<button class="btn btn-sm btn-default">View/Manage</button>`)
 						.on("click", () => {
@@ -2843,8 +2854,16 @@ BrewUtil = {
 						})
 						.appendTo($btns);
 
-					$brewList.append($row);
+					$ul.append($row);
 				});
+
+				// hack to delay list indexing, otherwise it seems to fail
+				setTimeout(() => {
+					const list = new List("outerbrewlistcontainer", {
+						valueNames: ["source", "authors"],
+						listClass: "brew-list"
+					});
+				}, 5);
 			}
 		}
 

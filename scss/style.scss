@@ -515,10 +515,6 @@ header {
 			padding: 4px 0;
 		}
 
-		.row:nth-child(even) {
-			background: rgba(0, 0, 0, 0.05);
-		}
-
 		.col-tall {
 			line-height: 30px;
 		}
@@ -622,7 +618,8 @@ input.search {
 	display: block;
 }
 
-.list {
+.list,
+.list-display-only {
 	position: relative;
 	padding-top: 1em;
 	padding-left: 0;
@@ -651,14 +648,6 @@ input.search {
 			box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
 		}
 
-		&:active {
-			color: white;
-		}
-
-		&:hover span {
-			display: block;
-		}
-
 		span.name {
 			font-weight: bold;
 		}
@@ -669,6 +658,16 @@ input.search {
 			display: inline-block;
 			text-transform: capitalize;
 		}
+	}
+}
+
+.list {
+	&:active {
+		color: white;
+	}
+
+	&:hover span {
+		display: block;
 	}
 }
 
@@ -2010,6 +2009,7 @@ input[type=checkbox].readonly {
 }
 
 .listcontainer .list section,
+.listcontainer .list-display-only section,
 #sublistcontainer .list a,
 #listcontainer .list a {
 	color: inherit;
@@ -3006,6 +3006,7 @@ table.stats div.statsBlockInsetReadaloud {
 	.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd),
 	#classtable table tr:nth-child(odd) td,
 	#rulescontent table tbody tr:nth-child(odd) td,
+	ul.list-display-only li:nth-child(odd),
 	ul.list li:nth-child(odd),
 	ul.list.encounters > li > ul > li:nth-child(odd),
 	ul.list.names > li > ul > li:nth-child(odd),
@@ -3053,6 +3054,7 @@ table.stats div.statsBlockInsetReadaloud {
 		background: none;
 	}
 
+	ul.list-display-only li,
 	ul.list li {
 		border-bottom: 0;
 	}
