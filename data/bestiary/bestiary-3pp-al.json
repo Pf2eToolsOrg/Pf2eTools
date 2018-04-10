@@ -60,7 +60,12 @@
 			"page": 0,
 			"name": "Kes'thak the Lizard King",
 			"size": "L",
-			"type": "humanoid (lizardfolk)",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"lizardfolk"
+				]
+			},
 			"alignment": [
 				"C",
 				"E"
@@ -1637,7 +1642,7 @@
 			"wis": 17,
 			"cha": 14,
 			"skill": {
-				"": "perception+5",
+				"perception": "+5",
 				"religion": "+2",
 				"survival": "+5"
 			},
