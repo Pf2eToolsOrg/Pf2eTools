@@ -2799,6 +2799,7 @@ BrewUtil = {
 
 			$brewList.empty();
 			if (BrewUtil.homebrew) {
+				// TODO improve layout
 				$brewList.append(`
 					<div class="row">
 						<span class="col-xs-5">Source</span>
