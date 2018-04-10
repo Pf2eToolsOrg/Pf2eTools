@@ -2905,6 +2905,7 @@ BrewUtil = {
 			}
 
 			refreshBrewList();
+			// TODO ensure source(s) are displayed in filter
 		}
 
 		BrewUtil.addBrewRemote = (ele, jsonUrl) => {
