@@ -322,7 +322,7 @@ function addMonsters (data) {
 			`<li class="row" ${FLTR_ID}="${mI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}${mon.sourceSub ? ` ${mon.sourceSub}` : ""}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
 					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon._pCr}</span>
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
@@ -527,13 +527,14 @@ function loadhash (id) {
 	let entryList = {};
 	var name = mon.name;
 	let source = Parser.sourceJsonToAbv(mon.source);
+	const sourceSub = mon.sourceSub ? ` ${mon.sourceSub}` : "";
 	let sourceFull = Parser.sourceJsonToFull(mon.source);
 	var type = mon._pTypes.asText;
 
 	const imgLink = mon.tokenURL || UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
 	$content.find("th.name").html(
 		`<span class="stats-name">${name}</span>
-		<span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>
+		<span class="stats-source source${source}" title="${sourceFull}${sourceSub}">${source}</span>
 		<a href="${imgLink}" target="_blank">
 			<img src="${imgLink}" class="token" onerror="imgError(this)">
 		</a>`
