@@ -610,7 +610,7 @@ Parser.spLevelSchoolMetaToFull = function (level, school, meta) {
 };
 
 Parser.spTimeListToFull = function (times) {
-	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${t.condition}` : ""}`).join(" or ");
+	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${EntryRenderer.getDefaultRenderer().renderEntry(t.condition)}` : ""}`).join(" or ");
 };
 
 Parser.getTimeToFull = function (time) {
