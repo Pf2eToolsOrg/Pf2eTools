@@ -22,7 +22,6 @@ html {
 
 body {
 	min-height: 100%;
-	background: #f9f9f9 url(../img/background_texture.png) repeat;
 }
 
 /* custom scrollbars */
@@ -1293,7 +1292,8 @@ td.features {
 }
 
 .list.classes {
-	overflow-y: initial;
+	overflow-y: auto;
+	max-height: 355px;
 }
 
 #classtable .centred-col {
@@ -2423,7 +2423,10 @@ table.stats {
 	}
 }
 
-#classtable table,
+.shadow-big {
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
 table.stats.stats-book {
 	background: white;
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -2494,7 +2497,6 @@ th.border {
 	background: #e69a28;
 }
 
-#classtable table th.border,
 table.stats.stats-book th.border {
 	background: silver;
 }
@@ -2575,6 +2577,10 @@ table.stats td._class_feature table th {
 }
 
 /* end section: class features */
+
+#classtable table {
+	background: #fdf1dc;
+}
 
 #classtable table th {
 	color: black;
@@ -2803,7 +2809,6 @@ table.stats div.statsBlockInsetReadaloud {
 	}
 
 	.hoverbox .hoverborder,
-	#classtable table th.border,
 	th.border,
 	table.stats.stats-book th.border {
 		background: #565656;
