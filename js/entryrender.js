@@ -24,6 +24,7 @@ function EntryRenderer () {
 
 	this._subVariant = false;
 	this._firstSection = true;
+	this._headerIndex = 1;
 
 	/**
 	 * Set the tag used to group rendered elements
@@ -48,6 +49,10 @@ function EntryRenderer () {
 	 */
 	this.setFirstSection = function (bool) {
 		this._firstSection = bool;
+	};
+
+	this.resetHeaderIndex = function () {
+		this._headerIndex = 1;
 	};
 
 	// TODO convert params to options object
@@ -101,7 +106,7 @@ function EntryRenderer () {
 					break;
 				case "inset":
 					textStack.push(`<${this.wrapperTag} class="statsBlockInset">`);
-					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title">${entry.name}</span>`);
+					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title" data-title-index="${this._headerIndex++}">${entry.name}</span>`);
 					for (let i = 0; i < entry.entries.length; i++) {
 						this.recursiveEntryRender(entry.entries[i], textStack, 2, "<p>", "</p>");
 					}
@@ -109,7 +114,7 @@ function EntryRenderer () {
 					break;
 				case "insetReadaloud":
 					textStack.push(`<${this.wrapperTag} class="statsBlockInsetReadaloud">`);
-					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title">${entry.name}</span>`);
+					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title" data-title-index="${this._headerIndex++}">${entry.name}</span>`);
 					for (let i = 0; i < entry.entries.length; i++) {
 						this.recursiveEntryRender(entry.entries[i], textStack, 2, "<p>", "</p>");
 					}
@@ -117,7 +122,7 @@ function EntryRenderer () {
 					break;
 				case "variant":
 					textStack.push(`<${this.wrapperTag} class="statsBlockInset">`);
-					textStack.push(`<span class="entry-title">Variant: ${entry.name}</span>`);
+					textStack.push(`<span class="entry-title" data-title-index="${this._headerIndex++}">Variant: ${entry.name}</span>`);
 					for (let i = 0; i < entry.entries.length; i++) {
 						this.recursiveEntryRender(entry.entries[i], textStack, 2, "<p>", "</p>");
 					}
@@ -201,7 +206,7 @@ function EntryRenderer () {
 					break;
 
 				case "actions":
-					textStack.push(`<${this.wrapperTag} class="${EntryRenderer.HEAD_2}"><span class="entry-title">${entry.name}.</span> `);
+					textStack.push(`<${this.wrapperTag} class="${EntryRenderer.HEAD_2}"><span class="entry-title" data-title-index="${this._headerIndex++}">${entry.name}.</span> `);
 					for (let i = 0; i < entry.entries.length; i++) {
 						this.recursiveEntryRender(entry.entries[i], textStack, depth, "<p>", "</p>");
 					}
@@ -399,7 +404,7 @@ function EntryRenderer () {
 			const styleString = getStyleString();
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
-			const headerSpan = entry.name !== undefined ? `<span class="entry-title">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span> ` : "";
+			const headerSpan = entry.name !== undefined ? `<span class="entry-title" data-title-index="${self._headerIndex++}">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span> ` : "";
 
 			if (depth === -1) {
 				if (!self._firstSection) {

@@ -2778,20 +2778,12 @@ table.stats table.statsDataInset {
 		}
 	}
 
-	input.search {
-		background-color: transparent !important;
-	}
-
-	input#omnisearch-input {
+	select,
+	input {
 		background-color: transparent !important;
 	}
 
 	#pointbuy {
-		select,
-		input {
-			background-color: transparent !important;
-		}
-
 		input {
 			&[type='number'] {
 				border: 1px solid #ccc !important;
@@ -3010,7 +3002,7 @@ table.stats table.statsDataInset {
 		background: #101010;
 	}
 
-	table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr tr:nth-child(even),
+	#classtable table tr:nth-child(odd) td,
 	ul.list.books > li:nth-child(odd) > a,
 	ul.list-display-only li:nth-child(odd),
 	ul.list li:nth-child(odd),

@@ -290,6 +290,7 @@ function loadhash (id) {
 	$("#equipment").find("div").html(`${fromBackground}${defList}${goldAlt}`);
 
 	// FEATURE TABLE ===================================================================================================
+	renderer.resetHeaderIndex();
 	const tData = curClass.classTableGroups;
 	const groupHeaders = $("#groupHeaders");
 	const colHeaders = $("#colHeaders");
@@ -337,7 +338,8 @@ function loadhash (id) {
 	for (let i = 0; i < levelTrs.length; i++) {
 		// track class table feature names
 		const tblLvlFeatures = levelTrs[i].find(".features");
-		const featureNames = [];
+		// used to build class table
+		const featureLinks = [];
 
 		// add class features to render stack
 		const lvlFeatureList = curClass.classFeatures[i];
@@ -351,7 +353,7 @@ function loadhash (id) {
 			featureLink.click(function () {
 				document.getElementById(featureId).scrollIntoView();
 			});
-			if (feature.type !== "inset") featureNames.push(featureLink);
+			if (feature.type !== "inset") featureLinks.push(featureLink);
 
 			const styleClasses = [CLSS_CLASS_FEATURE];
 			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
@@ -385,12 +387,12 @@ function loadhash (id) {
 		}
 
 		// render class table feature names
-		if (featureNames.length === 0) tblLvlFeatures.html("\u2014");
+		if (featureLinks.length === 0) tblLvlFeatures.html("\u2014");
 		else {
-			for (let j = 0; j < featureNames.length; j++) {
-				tblLvlFeatures.append(featureNames[j]);
-				if (j < featureNames.length - 1) tblLvlFeatures.append(", ");
-			}
+			featureLinks.forEach(($it, j) => {
+				tblLvlFeatures.append($it);
+				if (j < featureLinks.length - 1) tblLvlFeatures.append(", ");
+			})
 		}
 	}
 	topBorder.after(renderStack.join(""));
@@ -528,7 +530,7 @@ function loadhash (id) {
 }
 
 let prevFeature = null;
-
+let prevSub = null;
 function loadsub (sub) {
 	const curHash = window.location.hash;
 
@@ -591,6 +593,7 @@ function loadsub (sub) {
 
 	if (subclasses !== null) {
 		updateClassTableLinks();
+		updateNavLinks();
 
 		const $toShow = [];
 		const $toHide = [];
@@ -723,6 +726,7 @@ function loadsub (sub) {
 	}
 
 	updateClassTableLinks();
+	updateNavLinks();
 
 	if (bookView) ClassBookView.open();
 	else ClassBookView.teardown();
@@ -773,8 +777,55 @@ function loadsub (sub) {
 		)
 	}
 
+	function updateNavLinks () {
+		function makeScroller ($nav, idClass, displayText, scrollTo) {
+			let navClass;
+			switch (idClass) {
+				case "statsBlockSectionHead":
+					navClass = "n1";
+					break;
+				case "statsBlockHead":
+					navClass = "n2";
+					break;
+				case "statsBlockSubHead":
+					navClass = "n3";
+					break;
+			}
+
+			$(`<div class="nav-item ${navClass}">${displayText}</div>`).on("click", () => {
+				const $it = $(`[data-title-index="${scrollTo}"]`);
+				if ($it.get()[0]) $it.get()[0].scrollIntoView();
+			}).appendTo($nav);
+		}
+
+		if (!CollectionUtil.arrayEq(prevSub, sub)) { // checking array equality is faster than hitting the DOM
+			setTimeout(() => {
+				const $nav = $(`#sticky-nav`);
+				const $navBody = $nav.find(`.nav-body`).empty();
+				$nav.find(`.nav-head`).find(`div`).off("click").on("click", () => {
+					// $navBody.toggle();
+					$nav.remove();
+				});
+				const $titles = $(`.entry-title`);
+				$titles.each((i, e) => {
+					const $e = $(e);
+					const pClass = $e.parent().attr("class").trim();
+					if (pClass === "statsInlineHead") return; // consider enabling these for e.g. maneuvers?
+					if (!$e.is(":visible")) return;
+					const displayText = $e.contents().filter(function () {
+						return this.nodeType === 3;
+					})[0].nodeValue.replace(/[:.]$/g, "");
+					const scrollTo = $e.data("title-index");
+					makeScroller($navBody, pClass, displayText, scrollTo);
+				});
+			}, 5); // delay hack to allow rendering to catch up
+		}
+		prevSub = sub;
+	}
+
 	function hideAllSubclasses () {
 		updateClassTableLinks();
+		updateNavLinks();
 		const $pgContent = $(`#pagecontent`);
 		$(`.${CLSS_SUBCLASS_PILL}`).removeClass(CLSS_ACTIVE);
 		$pgContent.find(`.${CLSS_SUBCLASS_FEATURE}`).hide();
