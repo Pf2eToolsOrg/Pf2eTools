@@ -1943,7 +1943,7 @@ ListUtil = {
 			.map(it => {
 				const $elm = $(it.elm);
 				sources.add(ListUtil._allItems[Number($elm.attr(FLTR_ID))].source);
-				return {h: $elm.find(`a`).prop("hash").slice(1), c: $elm.find(".count").text()};
+				return {h: $elm.find(`a`).prop("hash").slice(1), c: $elm.find(".count").text() || undefined};
 			});
 		return {items: toSave, sources: Array.from(sources)};
 	},
