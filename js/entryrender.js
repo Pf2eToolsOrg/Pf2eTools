@@ -233,6 +233,13 @@ function EntryRenderer () {
 					renderSuffix();
 					break;
 
+				// entire data records
+				case "dataCreature":
+					renderPrefix();
+					EntryRenderer.monster.getRenderedString(entry, this);
+					renderSuffix();
+					break;
+
 				// images
 				case "image": {
 					renderPrefix();
@@ -1345,6 +1352,10 @@ EntryRenderer.traphazard = {
 };
 
 EntryRenderer.monster = {
+	getRenderedString(mon, renderer) {
+
+	},
+
 	getLegendaryActionIntro: (mon) => {
 		const legendaryActions = mon.legendaryActions || 3;
 		const legendaryName = mon.name.split(",");

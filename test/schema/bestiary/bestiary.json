@@ -1,6 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
 	"version": "1.1.4",
+	"title": "Bestiary Schema",
+	"id": "/Bestiary",
 	"type": "object",
 	"definitions": {
 		"level1to9": {
@@ -329,6 +331,588 @@
 					"required": ["alignment"]
 				}
 			]
+		},
+		"creature": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"group": {
+					"type": "string"
+				},
+				"size": {
+					"type": "string"
+				},
+				"type": {
+					"description": "Originally represented monster type, but re-purposed to represent Entity type.",
+					"type": "string",
+					"const": "dataCreature"
+				},
+				"creatureType": {
+					"anyOf": [
+						{
+							"type": "object",
+							"properties": {
+								"type": {
+									"type": "string",
+									"enum": [
+										"aberration",
+										"beast",
+										"celestial",
+										"construct",
+										"dragon",
+										"elemental",
+										"fey",
+										"fiend",
+										"giant",
+										"humanoid",
+										"monstrosity",
+										"ooze",
+										"plant",
+										"undead"
+									]
+								},
+								"swarmSize": {
+									"type": "string",
+									"enum": [
+										"F",
+										"D",
+										"T",
+										"S",
+										"M",
+										"L",
+										"H",
+										"G",
+										"C",
+										"V"
+									]
+								},
+								"tags": {
+									"type": "array",
+									"uniqueItems": true,
+									"items": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "object",
+												"properties": {
+													"tag": {
+														"type": "string"
+													},
+													"prefix": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"tag",
+													"prefix"
+												],
+												"additionalProperties": false
+											}
+										]
+									}
+								}
+							},
+							"required": [
+								"type"
+							],
+							"additionalProperties": false
+						},
+						{
+							"type": "string",
+							"enum": [
+								"aberration",
+								"beast",
+								"celestial",
+								"construct",
+								"dragon",
+								"elemental",
+								"fey",
+								"fiend",
+								"giant",
+								"humanoid",
+								"monstrosity",
+								"ooze",
+								"plant",
+								"undead"
+							]
+						}
+					]
+				},
+				"source": {
+					"type": "string"
+				},
+				"sourceSub": {
+					"type": "string"
+				},
+				"alignment": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/align"
+					}
+				},
+				"ac": {
+					"type": "string"
+				},
+				"hp": {
+					"type": "string"
+				},
+				"speed": {
+					"type": "object",
+					"properties": {
+						"walk": {
+							"$ref": "#/definitions/speedVal"
+						},
+						"burrow": {
+							"$ref": "#/definitions/speedVal"
+						},
+						"climb": {
+							"$ref": "#/definitions/speedVal"
+						},
+						"fly": {
+							"$ref": "#/definitions/speedVal"
+						},
+						"swim": {
+							"$ref": "#/definitions/speedVal"
+						},
+						"choose": {
+							"type": "object",
+							"properties": {
+								"from": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"enum": [
+											"walk",
+											"burrow",
+											"climb",
+											"fly",
+											"swim"
+										]
+									}
+								},
+								"amount": {
+									"type": "integer"
+								},
+								"note": {
+									"type": "string"
+								}
+							},
+							"required": ["amount", "from"],
+							"additionalProperties": false
+						}
+					},
+					"additionalProperties": false
+				},
+				"str": {
+					"type": "integer"
+				},
+				"dex": {
+					"type": "integer"
+				},
+				"con": {
+					"type": "integer"
+				},
+				"int": {
+					"type": "integer"
+				},
+				"wis": {
+					"type": "integer"
+				},
+				"cha": {
+					"type": "integer"
+				},
+				"save": {
+					"type": "string"
+				},
+				"skill": {
+					"type": "object",
+					"properties": {
+						"acrobatics": {
+							"type": "string"
+						},
+						"animal handling": {
+							"type": "string"
+						},
+						"arcana": {
+							"type": "string"
+						},
+						"athletics": {
+							"type": "string"
+						},
+						"deception": {
+							"type": "string"
+						},
+						"history": {
+							"type": "string"
+						},
+						"insight": {
+							"type": "string"
+						},
+						"intimidation": {
+							"type": "string"
+						},
+						"investigation": {
+							"type": "string"
+						},
+						"medicine": {
+							"type": "string"
+						},
+						"nature": {
+							"type": "string"
+						},
+						"perception": {
+							"type": "string"
+						},
+						"performance": {
+							"type": "string"
+						},
+						"persuasion": {
+							"type": "string"
+						},
+						"religion": {
+							"type": "string"
+						},
+						"sleight of hand": {
+							"type": "string"
+						},
+						"stealth": {
+							"type": "string"
+						},
+						"survival": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"senses": {
+					"type": "string"
+				},
+				"passive": {
+					"type": "integer"
+				},
+				"languages": {
+					"type": "string"
+				},
+				"cr": {
+					"oneOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "object",
+							"properties": {
+								"cr": {
+									"type": "string"
+								},
+								"lair": {
+									"type": "string"
+								},
+								"coven": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"required": ["cr"]
+						}
+					]
+				},
+				"description": {
+					"type": "string"
+				},
+				"vulnerable": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/damVuln"
+					}
+				},
+				"resist": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/damResist"
+					}
+				},
+				"conditionImmune": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/condImmune"
+					}
+				},
+				"immune": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/damImmune"
+					}
+				},
+				"spellcasting": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"headerEntries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							},
+							"constant": {
+								"$ref": "#/definitions/arrayOfString"
+							},
+							"headerWill": {
+								"$ref": "#/definitions/arrayOfString"
+							},
+							"will": {
+								"$ref": "#/definitions/arrayOfString"
+							},
+							"rest": {
+								"$ref": "#/definitions/frequency"
+							},
+							"daily": {
+								"$ref": "#/definitions/frequency"
+							},
+							"weekly": {
+								"$ref": "#/definitions/frequency"
+							},
+							"spells": {
+								"type": "object",
+								"properties": {
+									"0": {
+										"type": "object",
+										"properties": {
+											"spells": {
+												"type": "array",
+												"uniqueItems": true,
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"spells"
+										],
+										"additionalProperties": false
+									},
+									"1": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"2": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"3": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"4": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"5": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"6": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"7": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"8": {
+										"$ref": "#/definitions/level1to9"
+									},
+									"9": {
+										"$ref": "#/definitions/level1to9"
+									}
+								},
+								"additionalProperties": false
+							},
+							"footerEntries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": [
+							"name"
+						],
+						"additionalProperties": false
+					}
+				},
+				"trait": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							},
+							"type": {
+								"type": "string",
+								"enum": ["entries", "inset"]
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
+				"action": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
+				"reaction": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
+				"legendaryGroup": {
+					"type": "string"
+				},
+				"legendaryActions": {
+					"type": "number"
+				},
+				"legendary": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							},
+							"attack": {
+								"type": "array",
+								"uniqueItems": true,
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"required": [
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
+				"variant": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"page": {
+					"type": "int"
+				},
+				"familiar": {
+					"type": "boolean"
+				},
+				"additionalSources": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"source": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							}
+						},
+						"required": [
+							"source",
+							"page"
+						],
+						"additionalProperties": false
+					}
+				},
+				"tokenURL": {
+					"type": "string"
+				},
+				"fluff": {
+					"type": "object",
+					"properties": {
+						"entries": {
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"ac",
+				"alignment",
+				"cha",
+				"con",
+				"cr",
+				"dex",
+				"hp",
+				"int",
+				"name",
+				"page",
+				"passive",
+				"size",
+				"source",
+				"speed",
+				"str",
+				"type",
+				"wis"
+			],
+			"additionalProperties": false
 		}
 	},
 	"properties": {
@@ -336,581 +920,7 @@
 			"type": "array",
 			"uniqueItems": true,
 			"items": {
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"group": {
-						"type": "string"
-					},
-					"size": {
-						"type": "string"
-					},
-					"type": {
-						"anyOf": [
-							{
-								"type": "object",
-								"properties": {
-									"type": {
-										"type": "string",
-										"enum": [
-											"aberration",
-											"beast",
-											"celestial",
-											"construct",
-											"dragon",
-											"elemental",
-											"fey",
-											"fiend",
-											"giant",
-											"humanoid",
-											"monstrosity",
-											"ooze",
-											"plant",
-											"undead"
-										]
-									},
-									"swarmSize": {
-										"type": "string",
-										"enum": [
-											"F",
-											"D",
-											"T",
-											"S",
-											"M",
-											"L",
-											"H",
-											"G",
-											"C",
-											"V"
-										]
-									},
-									"tags": {
-										"type": "array",
-										"uniqueItems": true,
-										"items": {
-											"anyOf": [
-												{
-													"type": "string"
-												},
-												{
-													"type": "object",
-													"properties": {
-														"tag": {
-															"type": "string"
-														},
-														"prefix": {
-															"type": "string"
-														}
-													},
-													"required": [
-														"tag",
-														"prefix"
-													],
-													"additionalProperties": false
-												}
-											]
-										}
-									}
-								},
-								"required": [
-									"type"
-								],
-								"additionalProperties": false
-							},
-							{
-								"type": "string",
-								"enum": [
-									"aberration",
-									"beast",
-									"celestial",
-									"construct",
-									"dragon",
-									"elemental",
-									"fey",
-									"fiend",
-									"giant",
-									"humanoid",
-									"monstrosity",
-									"ooze",
-									"plant",
-									"undead"
-								]
-							}
-						]
-					},
-					"source": {
-						"type": "string"
-					},
-					"sourceSub": {
-						"type": "string"
-					},
-					"alignment": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/align"
-						}
-					},
-					"ac": {
-						"type": "string"
-					},
-					"hp": {
-						"type": "string"
-					},
-					"speed": {
-						"type": "object",
-						"properties": {
-							"walk": {
-								"$ref": "#/definitions/speedVal"
-							},
-							"burrow": {
-								"$ref": "#/definitions/speedVal"
-							},
-							"climb": {
-								"$ref": "#/definitions/speedVal"
-							},
-							"fly": {
-								"$ref": "#/definitions/speedVal"
-							},
-							"swim": {
-								"$ref": "#/definitions/speedVal"
-							},
-							"choose": {
-								"type": "object",
-								"properties": {
-									"from": {
-										"type": "array",
-										"items": {
-											"type": "string",
-											"enum": [
-												"walk",
-												"burrow",
-												"climb",
-												"fly",
-												"swim"
-											]
-										}
-									},
-									"amount": {
-										"type": "integer"
-									},
-									"note": {
-										"type": "string"
-									}
-								},
-								"required": ["amount", "from"],
-								"additionalProperties": false
-							}
-						},
-						"additionalProperties": false
-					},
-					"str": {
-						"type": "integer"
-					},
-					"dex": {
-						"type": "integer"
-					},
-					"con": {
-						"type": "integer"
-					},
-					"int": {
-						"type": "integer"
-					},
-					"wis": {
-						"type": "integer"
-					},
-					"cha": {
-						"type": "integer"
-					},
-					"save": {
-						"type": "string"
-					},
-					"skill": {
-						"type": "object",
-						"properties": {
-							"acrobatics": {
-								"type": "string"
-							},
-							"animal handling": {
-								"type": "string"
-							},
-							"arcana": {
-								"type": "string"
-							},
-							"athletics": {
-								"type": "string"
-							},
-							"deception": {
-								"type": "string"
-							},
-							"history": {
-								"type": "string"
-							},
-							"insight": {
-								"type": "string"
-							},
-							"intimidation": {
-								"type": "string"
-							},
-							"investigation": {
-								"type": "string"
-							},
-							"medicine": {
-								"type": "string"
-							},
-							"nature": {
-								"type": "string"
-							},
-							"perception": {
-								"type": "string"
-							},
-							"performance": {
-								"type": "string"
-							},
-							"persuasion": {
-								"type": "string"
-							},
-							"religion": {
-								"type": "string"
-							},
-							"sleight of hand": {
-								"type": "string"
-							},
-							"stealth": {
-								"type": "string"
-							},
-							"survival": {
-								"type": "string"
-							}
-						},
-						"additionalProperties": false
-					},
-					"senses": {
-						"type": "string"
-					},
-					"passive": {
-						"type": "integer"
-					},
-					"languages": {
-						"type": "string"
-					},
-					"cr": {
-						"oneOf": [
-							{
-								"type": "string"
-							},
-							{
-								"type": "object",
-								"properties": {
-									"cr": {
-										"type": "string"
-									},
-									"lair": {
-										"type": "string"
-									},
-									"coven": {
-										"type": "string"
-									}
-								},
-								"additionalProperties": false,
-								"required": ["cr"]
-							}
-						]
-					},
-					"description": {
-						"type": "string"
-					},
-					"vulnerable": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/damVuln"
-						}
-					},
-					"resist": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/damResist"
-						}
-					},
-					"conditionImmune": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/condImmune"
-						}
-					},
-					"immune": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/damImmune"
-						}
-					},
-					"spellcasting": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"headerEntries": {
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								},
-								"constant": {
-									"$ref": "#/definitions/arrayOfString"
-								},
-								"headerWill": {
-									"$ref": "#/definitions/arrayOfString"
-								},
-								"will": {
-									"$ref": "#/definitions/arrayOfString"
-								},
-								"rest": {
-									"$ref": "#/definitions/frequency"
-								},
-								"daily": {
-									"$ref": "#/definitions/frequency"
-								},
-								"weekly": {
-									"$ref": "#/definitions/frequency"
-								},
-								"spells": {
-									"type": "object",
-									"properties": {
-										"0": {
-											"type": "object",
-											"properties": {
-												"spells": {
-													"type": "array",
-													"uniqueItems": true,
-													"items": {
-														"type": "string"
-													}
-												}
-											},
-											"required": [
-												"spells"
-											],
-											"additionalProperties": false
-										},
-										"1": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"2": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"3": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"4": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"5": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"6": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"7": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"8": {
-											"$ref": "#/definitions/level1to9"
-										},
-										"9": {
-											"$ref": "#/definitions/level1to9"
-										}
-									},
-									"additionalProperties": false
-								},
-								"footerEntries": {
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								}
-							},
-							"required": [
-								"name"
-							],
-							"additionalProperties": false
-						}
-					},
-					"trait": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								},
-								"type": {
-									"type": "string",
-									"enum": ["entries", "inset"]
-								}
-							},
-							"required": [
-								"name",
-								"entries"
-							],
-							"additionalProperties": false
-						}
-					},
-					"action": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								}
-							},
-							"required": [
-								"name",
-								"entries"
-							],
-							"additionalProperties": false
-						}
-					},
-					"reaction": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								}
-							},
-							"required": [
-								"name",
-								"entries"
-							],
-							"additionalProperties": false
-						}
-					},
-					"legendaryGroup": {
-						"type": "string"
-					},
-					"legendaryActions": {
-						"type": "number"
-					},
-					"legendary": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								},
-								"attack": {
-									"type": "array",
-									"uniqueItems": true,
-									"items": {
-										"type": "string"
-									}
-								}
-							},
-							"required": [
-								"entries"
-							],
-							"additionalProperties": false
-						}
-					},
-					"variant": {
-						"type": "array",
-						"items": {
-							"$ref": "/Entry"
-						}
-					},
-					"page": {
-						"type": "int"
-					},
-					"familiar": {
-						"type": "boolean"
-					},
-					"additionalSources": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"source": {
-									"type": "string"
-								},
-								"page": {
-									"type": "integer"
-								}
-							},
-							"required": [
-								"source",
-								"page"
-							],
-							"additionalProperties": false
-						}
-					},
-					"tokenURL": {
-						"type": "string"
-					},
-					"fluff": {
-						"type": "object",
-						"properties": {
-							"entries": {
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								}
-							}
-						}
-					}
-				},
-				"required": [
-					"ac",
-					"alignment",
-					"cha",
-					"con",
-					"cr",
-					"dex",
-					"hp",
-					"int",
-					"name",
-					"page",
-					"passive",
-					"size",
-					"source",
-					"speed",
-					"str",
-					"type",
-					"wis"
-				],
-				"additionalProperties": false
+				"$ref": "#/definitions/creature"
 			}
 		}
 	},
