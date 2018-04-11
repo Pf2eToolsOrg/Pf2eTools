@@ -236,7 +236,9 @@ function EntryRenderer () {
 				// entire data records
 				case "dataCreature":
 					renderPrefix();
-					EntryRenderer.monster.getRenderedString(entry, this);
+					textStack.push(`<table class="statsDataInset">`);
+					textStack.push(EntryRenderer.monster.getCompactRenderedString(entry.dataCreature, this));
+					textStack.push(`</table>`);
 					renderSuffix();
 					break;
 
@@ -287,7 +289,7 @@ function EntryRenderer () {
 		function renderTable (self) {
 			// TODO add handling for rowLabel property
 
-			textStack.push("<table>");
+			textStack.push(`<table class="striped-odd">`);
 
 			if (entry.caption !== undefined) {
 				textStack.push(`<caption>${entry.caption}</caption>`);
@@ -1039,7 +1041,7 @@ EntryRenderer.spell = {
 		renderStack.push(`
 			${EntryRenderer.utils.getNameTr(spell, true)}
 			<tr><td colspan="6">
-				<table class="summary">
+				<table class="summary striped-even">
 					<tr>
 						<th colspan="1">Level</th>
 						<th colspan="1">School</th>
@@ -1217,7 +1219,7 @@ EntryRenderer.race = {
 		renderStack.push(`
 			${EntryRenderer.utils.getNameTr(race, true)}
 			<tr><td colspan="6">
-				<table class="summary">
+				<table class="summary striped-even">
 					<tr>
 						<th class="col-xs-4 text-align-center">Ability Sores</th>
 						<th class="col-xs-4 text-align-center">Size</th>
@@ -1317,7 +1319,7 @@ EntryRenderer.object = {
 		return `
 			${EntryRenderer.utils.getNameTr(obj, true)}
 			<tr><td colspan="6">
-				<table class="summary">
+				<table class="summary striped-even">
 					<tr>
 						<th class="col-xs-3 text-align-center">Type</th>
 						<th class="col-xs-3 text-align-center">AC</th>
@@ -1352,18 +1354,14 @@ EntryRenderer.traphazard = {
 };
 
 EntryRenderer.monster = {
-	getRenderedString(mon, renderer) {
-
-	},
-
 	getLegendaryActionIntro: (mon) => {
 		const legendaryActions = mon.legendaryActions || 3;
 		const legendaryName = mon.name.split(",");
 		return `${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.`
 	},
 
-	getCompactRenderedString: (mon) => {
-		const renderer = EntryRenderer.getDefaultRenderer();
+	getCompactRenderedString: (mon, renderer) => {
+		renderer = renderer || EntryRenderer.getDefaultRenderer();
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
@@ -1404,7 +1402,7 @@ EntryRenderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<table class="summary">
+				<table class="summary striped-even">
 					<tr>
 						<th class="col-xs-2 text-align-center">STR</th>
 						<th class="col-xs-2 text-align-center">DEX</th>

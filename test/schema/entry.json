@@ -783,16 +783,15 @@
 			]
 		},
 		"entryDataCreature": {
-			"allOf" : [
-				{"$ref" : "/Bestiary#/definitions/creature"},
-				{
-					"properties": {
-						"type": {"const": "dataCreature"}
-					},
-					"required": [
-						"type"
-					]
+			"properties": {
+				"type": {"const": "dataCreature"},
+				"dataCreature": {
+					"$ref" : "/Bestiary#/definitions/creature"
 				}
+			},
+			"required": [
+				"type",
+				"dataCreature"
 			]
 		}
 	},

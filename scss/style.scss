@@ -802,6 +802,13 @@ table.stats table {
 	margin-bottom: 5px;
 }
 
+table.stats table.statsDataInset {
+	margin: 10px;
+	width: calc(100% - 20px);
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 4px 0 rgb(152, 141, 124);
+}
+
 table.stats table caption {
 	margin-left: 5px;
 	padding: 0;
@@ -2145,6 +2152,11 @@ table.stats div.statsBlockInsetReadaloud {
 	border-right: 2px solid #656565;
 }
 
+table.stats table.statsDataInset {
+	box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+	border: 1px solid #656565;
+}
+
 table.stats div.statsBlockInsetReadaloud > span.entry-title,
 table.stats div.statsBlockInset > span.entry-title {
 	display: block;
@@ -2474,21 +2486,13 @@ table.stats.stats-book {
 	background: lightgrey;
 }
 
-table.stats table.summary tbody tr:nth-child(even),
-table.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
+table.stats table.striped-odd > tbody > tr:nth-child(odd),
+table.stats table.striped-even > tbody > tr:nth-child(even) {
 	background: #e4d8c3;
 }
 
-table.stats.stats-book table.summary tbody tr:nth-child(even),
-table.stats.stats-book table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
-	background: #e0e0e0;
-}
-
-table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr:nth-child(odd) {
-	background: none;
-}
-
-table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr tr:nth-child(even) {
+table.stats.stats-book table.striped-odd > tbody > tr:nth-child(odd),
+table.stats.stats-book table.striped-even > tbody > tr:nth-child(even) {
 	background: #e0e0e0;
 }
 
@@ -2638,6 +2642,10 @@ table.stats div.statsBlockInset {
 
 table.stats div.statsBlockInsetReadaloud {
 	background-color: #eef0f3;
+}
+
+table.stats table.statsDataInset {
+	background-color: rgba(156, 150, 120, 0.1);
 }
 
 .hoverbox table.summary-noback th,
@@ -2973,8 +2981,8 @@ table.stats div.statsBlockInsetReadaloud {
 		}
 	}
 
-	.stats.stats-book .summary tbody tr:nth-child(2n),
-	.stats.stats-book table:not(.summary):not(.summary-noback) tbody tr:nth-child(2n+1) {
+	table.stats table.striped-odd > tbody > tr:nth-child(odd),
+	table.stats table.striped-even > tbody > tr:nth-child(even) {
 		background-color: #383838;
 	}
 
@@ -3004,10 +3012,6 @@ table.stats div.statsBlockInsetReadaloud {
 
 	table.stats.stats-book table.spellbook-entry:not(.summary):not(.summary-noback) tbody tr tr:nth-child(even),
 	ul.list.books > li:nth-child(odd) > a,
-	.stats table.summary tbody tr:nth-child(even),
-	.stats table:not(.summary):not(.summary-noback) tbody tr:nth-child(odd),
-	#classtable table tr:nth-child(odd) td,
-	#rulescontent table tbody tr:nth-child(odd) td,
 	ul.list-display-only li:nth-child(odd),
 	ul.list li:nth-child(odd),
 	ul.list.encounters > li > ul > li:nth-child(odd),
