@@ -2717,6 +2717,22 @@ BrewUtil = {
 						return ["background"];
 					case UrlUtil.PG_FEATS:
 						return ["feat"];
+					case UrlUtil.PG_INVOCATIONS:
+						return ["invocation"];
+					case UrlUtil.PG_RACES:
+						return ["race"];
+					case UrlUtil.PG_OBJECTS:
+						return ["object"];
+					case UrlUtil.PG_TRAPS_HAZARDS:
+						return ["trap", "hazard"];
+					case UrlUtil.PG_DEITIES:
+						return ["deity"];
+					case UrlUtil.PG_ITEMS:
+						return ["item"];
+					case UrlUtil.PG_REWARDS:
+						return ["reward"];
+					case UrlUtil.PG_PSIONICS:
+						return ["psionic"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -2892,7 +2908,7 @@ BrewUtil = {
 			}
 
 			// prepare for storage
-			["class", "subclass", "spell", "monster", "background", "feat"].forEach(storePrep);
+			["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard"].forEach(storePrep);
 
 			// store
 			function checkAndAdd (prop) {
@@ -2925,6 +2941,15 @@ BrewUtil = {
 			let monstersToAdd = json.monster;
 			let backgroundsToAdd = json.background;
 			let featsToAdd = json.feat;
+			let invocationsToAdd = json.invocation;
+			let racesToAdd = json.race;
+			let objectsToAdd = json.object;
+			let trapsToAdd = json.trap;
+			let hazardsToAdd = json.hazard;
+			let deitiesToAdd = json.deity;
+			let itemsToAdd = json.item;
+			let rewardsToAdd = json.reward;
+			let psionicsToAdd = json.psionic;
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
@@ -2936,6 +2961,15 @@ BrewUtil = {
 				monstersToAdd = checkAndAdd("monster");
 				backgroundsToAdd = checkAndAdd("background");
 				featsToAdd = checkAndAdd("feat");
+				invocationsToAdd = checkAndAdd("invocation");
+				racesToAdd = checkAndAdd("race");
+				objectsToAdd = checkAndAdd("object");
+				trapsToAdd = checkAndAdd("trap");
+				hazardsToAdd = checkAndAdd("hazard");
+				deitiesToAdd = checkAndAdd("deity");
+				itemsToAdd = checkAndAdd("item");
+				rewardsToAdd = checkAndAdd("reward");
+				psionicsToAdd = checkAndAdd("psionic");
 			}
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -2955,13 +2989,38 @@ BrewUtil = {
 					addMonsters(monstersToAdd);
 					break;
 				case UrlUtil.PG_BACKGROUNDS:
-					addBackgrounds(backgroundsToAdd);
+					addBackgrounds({background: backgroundsToAdd});
 					break;
 				case UrlUtil.PG_FEATS:
-					addFeats(featsToAdd);
+					addFeats({feat: featsToAdd});
 					break;
-				default:
-					throw new Error(`No homebrew add function defined for category ${page}`);
+				case UrlUtil.PG_INVOCATIONS:
+					addInvocations({invocation: invocationsToAdd});
+					break;
+				// case UrlUtil.PG_RACES:
+				// 	addRaces({race: racesToAdd});
+				// 	break;
+				// case UrlUtil.PG_OBJECTS:
+				// 	addObjects({object: objectsToAdd});
+				// 	break;
+				// case UrlUtil.PG_TRAPS_HAZARDS:
+				// 	addTraps({trap: trapsToAdd});
+				// 	addHazards({hazard: hazardsToAdd});
+				// 	break;
+				// case UrlUtil.PG_DEITIES:
+				// 	addDeities({deity: deitiesToAdd});
+				// 	break;
+				// case UrlUtil.PG_ITEMS:
+				// 	addItems({item: itemsToAdd});
+				// 	break;
+				// case UrlUtil.PG_REWARDS:
+				// 	addRewards({reward: rewardsToAdd});
+				// 	break;
+				// case UrlUtil.PG_PSIONICS:
+				// 	addPsionics({psionic: psionicsToAdd});
+				// 	break;
+				// default:
+				// 	throw new Error(`No homebrew add function defined for category ${page}`);
 			}
 
 			refreshBrewList();
@@ -3050,6 +3109,15 @@ BrewUtil = {
 				case "monster":
 				case "background":
 				case "feat":
+				case "invocation":
+				case "race":
+				case "object":
+				case "trap":
+				case "hazard":
+				case "deity":
+				case "item":
+				case "reward":
+				case "psionic":
 					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
@@ -3093,6 +3161,7 @@ BrewUtil = {
 		}
 
 		function deleteGenericBrew (category) {
+			// FIXME have it be marked as deleted in any data list, to prevent double-rendering
 			return (uniqueId, doRefresh) => {
 				doRemove(category, uniqueId, doRefresh);
 			}

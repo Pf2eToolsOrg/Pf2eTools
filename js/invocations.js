@@ -12,7 +12,6 @@ const JSON_ITEM_PATRON = "patron";
 const JSON_ITEM_PACT = "pact";
 const JSON_ITEM_LEVEL = "level";
 const JSON_ITEM_SPELL = "spell";
-const JSON_ITEM_PREREQUISITES = "prerequisites";
 
 const CLS_INVOCATION = "invocations";
 const CLS_COL1 = "col-xs-3 col-xs-3-9";
@@ -48,13 +47,10 @@ function listSortInvocations (a, b, o) {
 	return SortUtil.listSort(a, b, o);
 }
 
-let INVOCATION_LIST;
-
+let list;
+const sourceFilter = getSourceFilter();
 let filterBox;
 function onJsonLoad (data) {
-	INVOCATION_LIST = data.invocation;
-
-	const sourceFilter = getSourceFilter();
 	const patronFilter = new Filter({
 		header: "Patron",
 		items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker", STR_ANY],
@@ -73,8 +69,52 @@ function onJsonLoad (data) {
 
 	filterBox = initFilterBox(sourceFilter, pactFilter, patronFilter, spellFilter, levelFilter);
 
+	list = ListUtil.search({
+		valueNames: [LIST_NAME, LIST_SOURCE, LIST_PACT, LIST_PATRON, LIST_SPELL, LIST_LEVEL],
+		listClass: CLS_INVOCATION,
+		sortFunction: listSortInvocations
+	});
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	RollerUtil.addListRollButton();
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "ability", "prerequisite", "id"],
+		listClass: "subinvocations",
+		getSublistRow: getSublistItem,
+	});
+	ListUtil.initGenericPinnable();
+
+	addInvocations(data);
+	BrewUtil.addBrewData(addInvocations);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bindList(list);
+	BrewUtil.bindFilters(filterBox, sourceFilter);
+
+	History.init();
+	handleFilterChange();
+	RollerUtil.addListRollButton();
+}
+
+let invoList = [];
+let ivI = 0;
+function addInvocations (data) {
+	if (!data.invocation || !data.invocation.length) return;
+
+	invoList = invoList.concat(data.invocation);
+
 	let tempString = "";
-	INVOCATION_LIST.forEach(function (p, i) {
+	for (; ivI < invoList.length; ivI++) {
+		const p = invoList[ivI];
+
 		if (!p.prerequisites) p.prerequisites = {};
 		if (!p.prerequisites.pact) p.prerequisites.pact = p.prerequisites.or && p.prerequisites.or.find(it => it.pact) ? STR_SPECIAL : STR_ANY;
 		if (!p.prerequisites.patron) p.prerequisites.patron = STR_ANY;
@@ -102,8 +142,8 @@ function onJsonLoad (data) {
 		}
 
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p[JSON_ITEM_NAME]}">
+			<li class="row" ${FLTR_ID}="${ivI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p[JSON_ITEM_NAME]}">
 					<span class="${LIST_NAME} ${CLS_COL1}">${p[JSON_ITEM_NAME]}</span>
 					<span class="${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])} text-align-center" title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class="${LIST_PACT} ${CLS_COL3} ${p.prerequisites[JSON_ITEM_PACT] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${p.prerequisites[JSON_ITEM_PACT]}</span>
@@ -116,63 +156,46 @@ function onJsonLoad (data) {
 
 		// populate filters
 		sourceFilter.addIfAbsent(p[JSON_ITEM_SOURCE]);
-	});
+	}
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#${ID_INVOCATION_LIST}`).append(tempString);
+
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
 
-	const list = ListUtil.search({
-		valueNames: [LIST_NAME, LIST_SOURCE, LIST_PACT, LIST_PATRON, LIST_SPELL, LIST_LEVEL],
-		listClass: CLS_INVOCATION,
-		sortFunction: listSortInvocations
-	});
-	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
-	});
-
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
 	filterBox.render();
+	handleFilterChange();
 
-	// filtering function
-	$(filterBox).on(
-		FilterBox.EVNT_VALCHANGE,
-		handleFilterChange
-	);
-
-	function handleFilterChange () {
-		const f = filterBox.getValues();
-		list.filter(function (item) {
-			const p = INVOCATION_LIST[$(item.elm).attr(FLTR_ID)];
-			return filterBox.toDisplay(
-				f,
-				p.source,
-				p._fPrerequisites.pact,
-				p._fPrerequisites.patron,
-				p._fPrerequisites.spell,
-				p._fPrerequisites.level
-			);
-		});
-		FilterBox.nextIfHidden(INVOCATION_LIST);
-	}
-
-	RollerUtil.addListRollButton();
-
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "ability", "prerequisite", "id"],
-		listClass: "subinvocations",
-		itemList: INVOCATION_LIST,
+	ListUtil.setOptions({
+		itemList: invoList,
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(INVOCATION_LIST);
+	EntryRenderer.hover.bindPopoutButton(invoList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+}
 
-	History.init();
-	handleFilterChange();
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	list.filter(function (item) {
+		const p = invoList[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			p.source,
+			p._fPrerequisites.pact,
+			p._fPrerequisites.patron,
+			p._fPrerequisites.spell,
+			p._fPrerequisites.level
+		);
+	});
+	FilterBox.nextIfHidden(invoList);
 }
 
 function getSublistItem (inv, pinId) {
@@ -196,7 +219,7 @@ function loadhash (jsonIndex) {
 	const STATS_PREREQUISITES = document.getElementById(ID_STATS_PREREQUISITES);
 	const STATS_TEXT = document.getElementById(ID_TEXT);
 
-	const inv = INVOCATION_LIST[jsonIndex];
+	const inv = invoList[jsonIndex];
 
 	$name.html(inv[JSON_ITEM_NAME]);
 
