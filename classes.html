@@ -93,19 +93,31 @@
 			padding-right: 0;
 		}
 
-		#sticky-nav .nav-outline {
-			font-weight: bold;
-			cursor: pointer;
+		#sticky-nav .nav-head[data-state="0"] {
+			color: #00000020;
 		}
 
-		#sticky-nav .nav-outline:hover::after {
-			content: " (Close)";
+		.night-mode #sticky-nav .nav-head[data-state="0"] {
+			color: #bbbbbb40;
+		}
+
+		#sticky-nav .nav-head[data-state="1"] .nav-outline:hover::after {
+			content: " (Hide)";
 			font-weight: initial;
 		}
 
-		#sticky-nav .delete-icon {
-			color: lightgrey;
-			line-height: 16px;
+		#sticky-nav .nav-head[data-state="0"]:hover {
+			color: inherit;
+		}
+
+		#sticky-nav .nav-head[data-state="0"] .nav-outline:hover::after {
+			content: " (Show)";
+			font-weight: initial;
+		}
+
+		#sticky-nav .nav-outline {
+			font-weight: bold;
+			cursor: pointer;
 		}
 
 		#sticky-nav hr {
@@ -117,7 +129,19 @@
 		}
 
 		#sticky-nav div.nav-item:hover {
-			background: #e0e0e080;
+			background: lightgrey;
+		}
+
+		#sticky-nav div.nav-item:active {
+			color: #e0e0e0;
+		}
+
+		.night-mode #sticky-nav div.nav-item:hover {
+			background: black;
+		}
+
+		#sticky-nav div.nav-item:active {
+			color: white;
 		}
 
 		#sticky-nav .n1 {
@@ -399,7 +423,7 @@
 				</tr>
 			</table>
 			<div id="sticky-nav">
-				<div class="nav-head"><div class="nav-outline">Outline</div><hr></div>
+				<div class="nav-head" data-state="1"><div class="nav-outline">Outline</div><hr></div>
 				<div class="nav-body"><!-- populate with JS --></div>
 			</div>
 		</div>

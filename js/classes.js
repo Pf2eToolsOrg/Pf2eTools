@@ -791,7 +791,7 @@ function loadsub (sub) {
 					navClass = "n3";
 					break;
 			}
-			if (typeof navClass != 'undefined') {
+			if (typeof navClass !== "undefined") {
 				$(`<div class="nav-item ${navClass}">${displayText}</div>`).on("click", () => {
 					const $it = $(`[data-title-index="${scrollTo}"]`);
 					if ($it.get()[0]) $it.get()[0].scrollIntoView();
@@ -802,10 +802,14 @@ function loadsub (sub) {
 		if (!CollectionUtil.arrayEq(prevSub, sub)) { // checking array equality is faster than hitting the DOM
 			setTimeout(() => {
 				const $nav = $(`#sticky-nav`);
+				const $hr = $nav.find(`hr`);
 				const $navBody = $nav.find(`.nav-body`).empty();
-				$nav.find(`.nav-head`).find(`div`).off("click").on("click", () => {
-					// $navBody.toggle();
-					$nav.remove();
+				const $navHead = $nav.find(`.nav-head`);
+				$navHead.find(`div`).off("click").on("click", () => {
+					$navBody.toggle();
+					$hr.toggle();
+					const nextState = Number(!Number($navHead.attr("data-state")));
+					$navHead.attr("data-state", nextState);
 				});
 				const $titles = $(`.entry-title`);
 				$titles.each((i, e) => {
