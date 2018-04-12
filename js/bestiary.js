@@ -59,6 +59,10 @@ function loadFluffIndex (nextFunction) {
 	});
 }
 
+function handleBrew (homebrew) {
+	addMonsters(homebrew.monster);
+}
+
 window.onload = function load () {
 	loadMeta(() => {
 		loadFluffIndex(() => {
