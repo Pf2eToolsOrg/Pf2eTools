@@ -1,47 +1,14 @@
 "use strict";
 
 const JSON_URL = "data/objects.json";
-const NM_GENERIC_OBJECT = "Generic Object";
-const STAT_VARIES = "Varies (see below)";
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-let objectsList;
+let list;
 function onJsonLoad (data) {
-	objectsList = data.object;
-	if (!objectsList.find(({name}) => name === NM_GENERIC_OBJECT)) {
-		objectsList.push({
-			name: NM_GENERIC_OBJECT,
-			size: "V",
-			type: "generic",
-			source: "DMG",
-			page: 246,
-			ac: STAT_VARIES,
-			hp: STAT_VARIES,
-			immune: STAT_VARIES,
-			entries: data.generic
-		});
-	}
-
-	let tempString = "";
-	objectsList.forEach((obj, i) => {
-		const abvSource = Parser.sourceJsonToAbv(obj.source);
-
-		tempString += `
-			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-					<span class="name col-xs-8">${obj.name}</span>
-					<span class="size col-xs-2">${Parser.sizeAbvToFull(obj.size)}</span>
-					<span class="source col-xs-2 source${abvSource}" title="${Parser.sourceJsonToFull(obj.source)}">${abvSource}</span>
-				</a>
-			</li>
-		`;
-	});
-	$(`#objectsList`).append(tempString);
-
-	const list = ListUtil.search({
+	list = ListUtil.search({
 		valueNames: ["name", "size", "source"],
 		listClass: "objects",
 		sortFunction: SortUtil.listSort
@@ -56,11 +23,53 @@ function onJsonLoad (data) {
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
 	});
-	ListUtil.bindPinButton();
 	ListUtil.initGenericPinnable();
-	ListUtil.loadState();
+
+	addObjects(data);
+	BrewUtil.addBrewData(addObjects);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bindList(list);
 
 	History.init();
+}
+
+let objectsList = [];
+let obI = 0;
+function addObjects (data) {
+	if (!data.object || !data.object.length) return;
+
+	objectsList = objectsList.concat(data.object);
+
+	let tempString = "";
+	for (; obI < objectsList.length; obI++) {
+		const obj = objectsList[obI];
+		const abvSource = Parser.sourceJsonToAbv(obj.source);
+
+		tempString += `
+			<li class="row" ${FLTR_ID}="${obI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${obI}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
+					<span class="name col-xs-8">${obj.name}</span>
+					<span class="size col-xs-2">${Parser.sizeAbvToFull(obj.size)}</span>
+					<span class="source col-xs-2 source${abvSource}" title="${Parser.sourceJsonToFull(obj.source)}">${abvSource}</span>
+				</a>
+			</li>
+		`;
+	}
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
+	$(`#objectsList`).append(tempString);
+
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
+
+	ListUtil.setOptions({
+		itemList: objectsList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(objectsList);
+	ListUtil.loadState();
 }
 
 function getSublistItem (obj, pinId) {
@@ -102,7 +111,12 @@ function loadhash (jsonIndex) {
 	const imgLink = obj.tokenURL || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
 	$("th.name").append(`
 		<a href="${imgLink}" target="_blank">
-			<img src="${imgLink}" class="token">
+			<img src="${imgLink}" class="token" onerror="imgError(this)">
 		</a>`
 	);
+}
+
+function imgError (x) {
+	$(x).closest("th").find(`span.stats-source`).css("margin-right", "0");
+	$(x).remove();
 }

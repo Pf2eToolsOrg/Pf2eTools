@@ -3000,9 +3000,9 @@ BrewUtil = {
 				case UrlUtil.PG_RACES:
 					addRaces({race: racesToAdd});
 					break;
-				// case UrlUtil.PG_OBJECTS:
-				// 	addObjects({object: objectsToAdd});
-				// 	break;
+				case UrlUtil.PG_OBJECTS:
+					addObjects({object: objectsToAdd});
+					break;
 				// case UrlUtil.PG_TRAPS_HAZARDS:
 				// 	addTraps({trap: trapsToAdd});
 				// 	addHazards({hazard: hazardsToAdd});
@@ -3085,11 +3085,11 @@ BrewUtil = {
 			});
 			BrewUtil.removeJsonSource(source);
 			// remove the source from the filters and re-render the filter box
-			BrewUtil._sourceFilter.removeIfExists(source);
-			BrewUtil._filterBox.render();
+			if (BrewUtil._sourceFilter) BrewUtil._sourceFilter.removeIfExists(source);
+			if (BrewUtil._filterBox) BrewUtil._filterBox.render();
 			refreshBrewList();
 			window.location.hash = "";
-			BrewUtil._filterBox._fireValChangeEvent();
+			if (BrewUtil._filterBox) BrewUtil._filterBox._fireValChangeEvent();
 		}
 
 		function doRemove (arrName, uniqueId, doRefresh) {
