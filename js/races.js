@@ -7,8 +7,6 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad)
 };
 
-let raceList;
-
 function getAbilityObjs (abils) {
 	function makeAbilObj (asi, amount) {
 		return {
@@ -41,13 +39,20 @@ function mapAbilityObjToFull (abilObj) {
 	return `${Parser.attAbvToFull(abilObj.asi)} ${abilObj.amount < 0 ? "" : "+"}${abilObj.amount}`;
 }
 
+let list;
+const sourceFilter = getSourceFilter();
+const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 let filterBox;
 function onJsonLoad (data) {
+	list = ListUtil.search({
+		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
+		listClass: "races"
+	});
+
 	tableDefault = $("#pagecontent").html();
 
-	raceList = EntryRenderer.race.mergeSubraces(data.race);
+	const jsonRaces = EntryRenderer.race.mergeSubraces(data.race);
 
-	const sourceFilter = getSourceFilter();
 	const asiFilter = new Filter({
 		header: "Ability Bonus (Including Subrace)",
 		items: [
@@ -65,7 +70,6 @@ function onJsonLoad (data) {
 			"Charisma +1"
 		]
 	});
-	const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
 	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk"]});
 	const miscFilter = new Filter({
 		header: "Miscellaneous",
@@ -83,10 +87,45 @@ function onJsonLoad (data) {
 		miscFilter
 	);
 
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "ability", "size", "id"],
+		listClass: "subraces",
+		getSublistRow: getSublistItem
+	});
+	ListUtil.initGenericPinnable();
+
+	addRaces({race: jsonRaces});
+	BrewUtil.addBrewData(addRaces);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bindList(list);
+	BrewUtil.bindFilters(filterBox, sourceFilter);
+
+	History.init();
+	handleFilterChange();
+	RollerUtil.addListRollButton();
+}
+
+let raceList = [];
+let rcI = 0;
+function addRaces (data) {
+	if (!data.race || !data.race.length) return;
+
+	raceList = raceList.concat(data.race);
+
 	const racesTable = $("ul.races");
 	let tempString = "";
-	for (let i = 0; i < raceList.length; i++) {
-		const race = raceList[i];
+	for (; rcI < raceList.length; rcI++) {
+		const race = raceList[rcI];
 
 		const ability = race.ability ? utils_getAbilityData(race.ability) : {asTextShort: "None"};
 		race._fAbility = race.ability ? getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)) : []; // used for filtering
@@ -98,8 +137,8 @@ function onJsonLoad (data) {
 		race._slAbility = ability.asTextShort;
 
 		tempString +=
-			`<li class="row" ${FLTR_ID}='${i}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id='${i}' href='#${UrlUtil.autoEncodeHash(race)}' title='${race.name}'>
+			`<li class="row" ${FLTR_ID}='${rcI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id='${rcI}' href='#${UrlUtil.autoEncodeHash(race)}' title='${race.name}'>
 					<span class='name col-xs-4'>${race.name}</span>
 					<span class='ability col-xs-4'>${ability.asTextShort}</span>
 					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>
@@ -112,7 +151,7 @@ function onJsonLoad (data) {
 		sourceFilter.addIfAbsent(race.source);
 		sizeFilter.addIfAbsent(race.size);
 	}
-
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	racesTable.append(tempString);
 
 	// sort filters
@@ -134,42 +173,13 @@ function onJsonLoad (data) {
 		}
 	}
 
-	const list = ListUtil.search({
-		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
-		listClass: "races"
-	});
-	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
-	});
-
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
 	filterBox.render();
+	handleFilterChange();
 
-	// filtering function
-	$(filterBox).on(
-		FilterBox.EVNT_VALCHANGE,
-		handleFilterChange
-	);
-
-	function handleFilterChange () {
-		const f = filterBox.getValues();
-		list.filter(function (item) {
-			const r = raceList[$(item.elm).attr(FLTR_ID)];
-			return filterBox.toDisplay(
-				f,
-				r.source,
-				r._fAbility,
-				r.size,
-				r._fSpeed,
-				r._fMisc
-			);
-		});
-		FilterBox.nextIfHidden(raceList);
-	}
-	RollerUtil.addListRollButton();
-
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "ability", "size", "id"],
-		listClass: "subraces",
+	ListUtil.setOptions({
 		itemList: raceList,
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
@@ -179,11 +189,23 @@ function onJsonLoad (data) {
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+}
 
-	History.init();
-	handleFilterChange();
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	list.filter(function (item) {
+		const r = raceList[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			r.source,
+			r._fAbility,
+			r.size,
+			r._fSpeed,
+			r._fMisc
+		);
+	});
+	FilterBox.nextIfHidden(raceList);
 }
 
 function getSublistItem (race, pinId) {

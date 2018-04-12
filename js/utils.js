@@ -2997,9 +2997,9 @@ BrewUtil = {
 				case UrlUtil.PG_INVOCATIONS:
 					addInvocations({invocation: invocationsToAdd});
 					break;
-				// case UrlUtil.PG_RACES:
-				// 	addRaces({race: racesToAdd});
-				// 	break;
+				case UrlUtil.PG_RACES:
+					addRaces({race: racesToAdd});
+					break;
 				// case UrlUtil.PG_OBJECTS:
 				// 	addObjects({object: objectsToAdd});
 				// 	break;
