@@ -35,7 +35,6 @@ let tableDefault;
 let statsProfDefault;
 let classTableDefault;
 
-let classes;
 let list;
 let subclassComparisonView;
 
@@ -153,6 +152,8 @@ function handleFilterChange () {
 	});
 }
 
+let classes = [];
+let clI = 0;
 function addClassData (data) {
 	if (!data.class || !data.class.length) return;
 
@@ -164,25 +165,19 @@ function addClassData (data) {
 	// for any non-standard source classes, mark subclasses from the same source as "forceStandard"
 	data.class.filter(c => isNonstandardSource(c.source) || BrewUtil.hasSourceJson(c.source)).forEach(c => c.subclasses.filter(sc => sc.source === c.source).forEach(sc => sc.source = {"source": sc.source, "forceStandard": true}));
 
-	let i = 0;
-	if (!classes) {
-		classes = data.class;
-	} else {
-		i = classes.length;
-		classes = classes.concat(data.class);
-	}
+	classes = classes.concat(data.class);
 
 	const classTable = $("ul.classes");
 	let tempString = "";
-	for (; i < classes.length; i++) {
-		const curClass = classes[i];
+	for (; clI < classes.length; clI++) {
+		const curClass = classes[clI];
 		curClass._fSource = isNonstandardSource(curClass.source) ? "Others" : "Core";
 		tempString +=
-			`<li class="row" ${FLTR_ID}="${i}" ${curClass.uniqueId ? `data-unique-id="${curClass.uniqueId}"` : ""}>
-				<a id='${i}' href='${getClassHash(curClass)}' title='${curClass.name}'>
+			`<li class="row" ${FLTR_ID}="${clI}" ${curClass.uniqueId ? `data-unique-id="${curClass.uniqueId}"` : ""}>
+				<a id='${clI}' href='${getClassHash(curClass)}' title='${curClass.name}'>
 					<span class='name col-xs-8'>${curClass.name}</span>
 					<span class='source col-xs-4 text-align-center source${Parser.sourceJsonToAbv(curClass.source)}' title='${Parser.sourceJsonToFull(curClass.source)}'>${Parser.sourceJsonToAbv(curClass.source)}</span>
-					<span class="uniqueid hidden">${curClass.uniqueId ? curClass.uniqueId : i}</span>
+					<span class="uniqueid hidden">${curClass.uniqueId ? curClass.uniqueId : clI}</span>
 				</a>
 			</li>`;
 	}

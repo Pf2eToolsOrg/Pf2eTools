@@ -2713,6 +2713,8 @@ BrewUtil = {
 						return ["class", "subclass"];
 					case UrlUtil.PG_BESTIARY:
 						return ["creature"];
+					case UrlUtil.PG_BACKGROUNDS:
+						return ["background"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -2891,6 +2893,8 @@ BrewUtil = {
 			storePrep("class");
 			storePrep("subclass");
 			storePrep("spell");
+			storePrep("monster");
+			storePrep("background");
 
 			// store
 			function checkAndAdd (prop) {
@@ -2921,6 +2925,7 @@ BrewUtil = {
 			let subclassesToAdd = json.subclass;
 			let spellsToAdd = json.spell;
 			let monstersToAdd = json.monster;
+			let backgroundsToAdd = json.background;
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
@@ -2930,6 +2935,7 @@ BrewUtil = {
 				subclassesToAdd = checkAndAdd("subclass");
 				spellsToAdd = checkAndAdd("spell");
 				monstersToAdd = checkAndAdd("monster");
+				backgroundsToAdd = checkAndAdd("background");
 			}
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -2947,6 +2953,9 @@ BrewUtil = {
 					break;
 				case UrlUtil.PG_BESTIARY:
 					addMonsters(monstersToAdd);
+					break;
+				case UrlUtil.PG_BACKGROUNDS:
+					addBackgrounds(backgroundsToAdd);
 					break;
 				default:
 					throw new Error(`No homebrew add function defined for category ${page}`);
@@ -3035,7 +3044,9 @@ BrewUtil = {
 		function getDeleteFunction (category) {
 			switch (category) {
 				case "spell":
-					return deleteSpellBrew;
+				case "monster":
+				case "background":
+					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
 				case "class":
@@ -3077,8 +3088,10 @@ BrewUtil = {
 			}
 		}
 
-		function deleteSpellBrew (uniqueId, doRefresh) {
-			doRemove("spell", uniqueId, doRefresh);
+		function deleteGenericBrew (category) {
+			return (uniqueId, doRefresh) => {
+				doRemove(category, uniqueId, doRefresh);
+			}
 		}
 	},
 
