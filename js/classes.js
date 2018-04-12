@@ -542,6 +542,8 @@ function loadsub (sub) {
 	let bookView = null;
 	let comparisonView = null;
 
+	let partCache = null;
+
 	function sliceTrue (hashPart, findString) {
 		return hashPart.slice(findString.length) === "true";
 	}
@@ -762,23 +764,29 @@ function loadsub (sub) {
 		);
 	}
 
-	function updateClassTableLinks () {
-		const hashParts = curHash.slice(1).split(HASH_PART_SEP);
-		const outParts = [];
-		for (let i = 0; i < hashParts.length; i++) {
-			const part = hashParts[i];
-			if (!part.startsWith(HASH_FEATURE)) outParts.push(part);
+	function getFeatureLink (featurePart) {
+		if (!partCache) {
+			const hashParts = curHash.slice(1).split(HASH_PART_SEP);
+			partCache = [];
+			for (let i = 0; i < hashParts.length; i++) {
+				const part = hashParts[i];
+				if (!part.startsWith(HASH_FEATURE)) partCache.push(part);
+			}
 		}
+		return HASH_START + partCache.join(HASH_PART_SEP) + HASH_PART_SEP + featurePart;
+	}
+
+	function updateClassTableLinks () {
 		$(`.${CLSS_FEATURE_LINK}`).each(
 			function () {
 				const $this = $(this);
-				this.href = HASH_START + outParts.join(HASH_PART_SEP) + HASH_PART_SEP + $this.attr(ATB_DATA_FEATURE_LINK);
+				this.href = getFeatureLink($this.attr(ATB_DATA_FEATURE_LINK));
 			}
 		)
 	}
 
 	function updateNavLinks () {
-		function makeScroller ($nav, idClass, displayText, scrollTo) {
+		function makeScroller ($nav, idTr, idClass, displayText, scrollTo) {
 			let navClass;
 			switch (idClass) {
 				case "statsBlockSectionHead":
@@ -793,6 +801,10 @@ function loadsub (sub) {
 			}
 			if (typeof navClass !== "undefined") {
 				$(`<div class="nav-item ${navClass}">${displayText}</div>`).on("click", () => {
+					if (idTr.length) {
+						window.location.hash = getFeatureLink(idTr.attr("id"))
+					}
+
 					const $it = $(`[data-title-index="${scrollTo}"]`);
 					if ($it.get()[0]) $it.get()[0].scrollIntoView();
 				}).appendTo($nav);
@@ -817,11 +829,12 @@ function loadsub (sub) {
 					const pClass = $e.parent().attr("class").trim();
 					if (pClass === "statsInlineHead") return; // consider enabling these for e.g. maneuvers?
 					if (!$e.is(":visible")) return;
+					const pTr = $e.closest(`tr[id]`);
 					const displayText = $e.contents().filter(function () {
 						return this.nodeType === 3;
 					})[0].nodeValue.replace(/[:.]$/g, "");
 					const scrollTo = $e.data("title-index");
-					makeScroller($navBody, pClass, displayText, scrollTo);
+					makeScroller($navBody, pTr, pClass, displayText, scrollTo);
 				});
 			}, 5); // delay hack to allow rendering to catch up
 		}
