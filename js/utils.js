@@ -3003,10 +3003,10 @@ BrewUtil = {
 				case UrlUtil.PG_OBJECTS:
 					addObjects({object: objectsToAdd});
 					break;
-				// case UrlUtil.PG_TRAPS_HAZARDS:
-				// 	addTraps({trap: trapsToAdd});
-				// 	addHazards({hazard: hazardsToAdd});
-				// 	break;
+				case UrlUtil.PG_TRAPS_HAZARDS:
+					addTrapsHazards({trap: trapsToAdd});
+					addTrapsHazards({hazard: hazardsToAdd});
+					break;
 				// case UrlUtil.PG_DEITIES:
 				// 	addDeities({deity: deitiesToAdd});
 				// 	break;
