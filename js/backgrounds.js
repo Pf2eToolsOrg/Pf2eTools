@@ -37,7 +37,7 @@ function onJsonLoad (data) {
 	ListUtil.initGenericPinnable();
 
 	addBackgrounds(data);
-	BrewUtil.addBrewData((homebrew) => addBackgrounds(homebrew));
+	BrewUtil.addBrewData(addBackgrounds);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bindList(list);
 	BrewUtil.bindFilters(filterBox, sourceFilter);

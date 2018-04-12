@@ -2715,6 +2715,8 @@ BrewUtil = {
 						return ["creature"];
 					case UrlUtil.PG_BACKGROUNDS:
 						return ["background"];
+					case UrlUtil.PG_FEATS:
+						return ["feat"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -2890,11 +2892,7 @@ BrewUtil = {
 			}
 
 			// prepare for storage
-			storePrep("class");
-			storePrep("subclass");
-			storePrep("spell");
-			storePrep("monster");
-			storePrep("background");
+			["class", "subclass", "spell", "monster", "background", "feat"].forEach(storePrep);
 
 			// store
 			function checkAndAdd (prop) {
@@ -2926,6 +2924,7 @@ BrewUtil = {
 			let spellsToAdd = json.spell;
 			let monstersToAdd = json.monster;
 			let backgroundsToAdd = json.background;
+			let featsToAdd = json.feat;
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
@@ -2936,6 +2935,7 @@ BrewUtil = {
 				spellsToAdd = checkAndAdd("spell");
 				monstersToAdd = checkAndAdd("monster");
 				backgroundsToAdd = checkAndAdd("background");
+				featsToAdd = checkAndAdd("feat");
 			}
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -2956,6 +2956,9 @@ BrewUtil = {
 					break;
 				case UrlUtil.PG_BACKGROUNDS:
 					addBackgrounds(backgroundsToAdd);
+					break;
+				case UrlUtil.PG_FEATS:
+					addFeats(featsToAdd);
 					break;
 				default:
 					throw new Error(`No homebrew add function defined for category ${page}`);
@@ -3046,6 +3049,7 @@ BrewUtil = {
 				case "spell":
 				case "monster":
 				case "background":
+				case "feat":
 					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
