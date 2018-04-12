@@ -352,6 +352,7 @@ function addMonsters (data) {
 	table.append(textStack);
 
 	// sort filters
+	sourceFilter.items.sort(SortUtil.ascSort);
 	crFilter.items.sort(ascSortCr);
 	typeFilter.items.sort(SortUtil.ascSort);
 	tagFilter.items.sort(SortUtil.ascSort);
