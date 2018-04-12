@@ -353,7 +353,7 @@ function loadhash (id) {
 			const styleClasses = [CLSS_CLASS_FEATURE];
 			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
 
-			renderer.recursiveEntryRender(feature, renderStack, 0, `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, `</td></tr>`, true);
+			renderer.recursiveEntryRender(feature, renderStack, 0, `<tr id="${featureId}" class="text ${styleClasses.join(" ")}"><td colspan="6">`, `</td></tr>`, true);
 
 			// add subclass features to render stack if appropriate
 			if (feature.gainSubclassFeature) {
@@ -374,7 +374,7 @@ function loadhash (id) {
 						}
 
 						const styleClasses = getSubclassStyles(subClass);
-						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}"><td colspan="6">`, `</td></tr>`, true);
+						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="text ${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}"><td colspan="6">`, `</td></tr>`, true);
 					}
 				}
 				subclassIndex++;
