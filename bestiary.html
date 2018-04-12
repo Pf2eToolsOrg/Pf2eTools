@@ -16,6 +16,13 @@
 	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+
+	<style>
+		#wrp-profbonusdice {
+			display: inline-block;
+			margin-right: 5px;
+		}
+	</style>
 </head>
 
 <body>
@@ -190,10 +197,13 @@
 				</tr>
 			</table>
 			<br>
-			<div class="col-xs-12" id="wrp-profbonusdice">
-				<button class="btn btn-block btn-default btn-xs" type="button" id="profbonusdice"
-						title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
-				</button>
+			<div class="text-align-center">
+				<div id="wrp-profbonusdice">
+					<button class="btn btn-default btn-sm" type="button" id="profbonusdice"
+							title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
+					</button>
+				</div>
+				<button class="btn btn-default btn-sm btn-file" id="manage-brew">Manage Homebrew</button>
 			</div>
 		</div>
 	</div>
