@@ -2711,6 +2711,10 @@ BrewUtil = {
 						return ["spell"];
 					case UrlUtil.PG_CLASSES:
 						return ["class", "subclass"];
+					case UrlUtil.PG_BESTIARY:
+						return ["creature"];
+					default:
+						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
 			}
 			const urls = getBrewDirs().map(it => ({url: `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${it}?${(new Date()).getTime()}`}));
@@ -2916,6 +2920,7 @@ BrewUtil = {
 			let classesToAdd = json.class;
 			let subclassesToAdd = json.subclass;
 			let spellsToAdd = json.spell;
+			let monstersToAdd = json.monster;
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
@@ -2924,6 +2929,7 @@ BrewUtil = {
 				classesToAdd = checkAndAdd("class");
 				subclassesToAdd = checkAndAdd("subclass");
 				spellsToAdd = checkAndAdd("spell");
+				monstersToAdd = checkAndAdd("monster");
 			}
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -2939,6 +2945,11 @@ BrewUtil = {
 					addClassData({class: classesToAdd});
 					addSubclassData({subclass: subclassesToAdd});
 					break;
+				case UrlUtil.PG_BESTIARY:
+					addMonsters(monstersToAdd);
+					break;
+				default:
+					throw new Error(`No homebrew add function defined for category ${page}`);
 			}
 
 			refreshBrewList();
@@ -3030,7 +3041,7 @@ BrewUtil = {
 				case "class":
 					return deleteClassBrew;
 				default:
-					throw new Error(`No homebrew delete function defined for category ${category}`)
+					throw new Error(`No homebrew delete function defined for category ${category}`);
 			}
 		}
 

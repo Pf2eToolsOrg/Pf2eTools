@@ -66,7 +66,12 @@ function handleBrew (homebrew) {
 window.onload = function load () {
 	loadMeta(() => {
 		loadFluffIndex(() => {
-			multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters);
+			multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters, () => {
+				BrewUtil.addBrewData(handleBrew);
+				BrewUtil.makeBrewButton("manage-brew");
+				BrewUtil.bindList(list);
+				BrewUtil.bindFilters(filterBox, sourceFilter);
+			});
 		});
 	});
 };
@@ -298,6 +303,8 @@ let mI = 0;
 
 const _NEUT_ALIGNS = ["NX", "NY"];
 function addMonsters (data) {
+	if (!data || !data.length) return;
+
 	monsters = monsters.concat(data);
 
 	const table = $("ul.monsters");
@@ -334,6 +341,7 @@ function addMonsters (data) {
 			</li>`;
 
 		// populate filters
+		sourceFilter.addIfAbsent(new FilterItem(mon.source, () => {}));
 		crFilter.addIfAbsent(mon._pCr);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
