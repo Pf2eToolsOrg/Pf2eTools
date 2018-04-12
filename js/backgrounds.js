@@ -9,7 +9,7 @@ window.onload = function load () {
 
 let list;
 const sourceFilter = getSourceFilter();
-let filterBox = initFilterBox(sourceFilter);;
+let filterBox = initFilterBox(sourceFilter);
 function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ['name', 'source'],
