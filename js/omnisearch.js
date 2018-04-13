@@ -130,13 +130,13 @@ const Omnisearch = {
 
 				$searchOut.empty();
 				const show3pp = doShow3pp();
-				const $btn3pp = $(`<button class="btn btn-default btn-xs btn-file">${show3pp ? "Exclude" : "Include"} 3pp</button>`)
+				const $btn3pp = $(`<button class="btn btn-default btn-xs btn-file" title="Filter third-party product results">${show3pp ? "Exclude" : "Include"} 3pp</button>`)
 					.on("click", () => {
 						setShow3pp(!show3pp);
 						doSearch();
 					});
 				const showUa = doShowUaEtc();
-				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file">${showUa ? "Exclude" : "Include"} UA, etc</button>`)
+				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file" title="Filter Unearthed Arcana and other unofficial source results">${showUa ? "Exclude" : "Include"} UA, etc</button>`)
 					.on("click", () => {
 						setShowUaEtc(!showUa);
 						doSearch();
