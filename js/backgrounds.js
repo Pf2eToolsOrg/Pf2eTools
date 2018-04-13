@@ -16,8 +16,6 @@ function onJsonLoad (data) {
 		listClass: "backgrounds"
 	});
 
-	bgList = data.background;
-
 	tabledefault = $("#pagecontent").html();
 
 	list.on("updated", () => {
