@@ -3007,9 +3007,9 @@ BrewUtil = {
 					addTrapsHazards({trap: trapsToAdd});
 					addTrapsHazards({hazard: hazardsToAdd});
 					break;
-				// case UrlUtil.PG_DEITIES:
-				// 	addDeities({deity: deitiesToAdd});
-				// 	break;
+				case UrlUtil.PG_DEITIES:
+					addDeities({deity: deitiesToAdd});
+					break;
 				// case UrlUtil.PG_ITEMS:
 				// 	addItems({item: itemsToAdd});
 				// 	break;
