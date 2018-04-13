@@ -2798,20 +2798,23 @@ BrewUtil = {
 				const $cbAll = $lst.find(`.wrp-cb-all input`);
 
 				// populate list
-				const $ul = $lst.find(`ul`);
-				let stack = "";
-				BrewUtil._getBrewCategories().forEach(cat => {
-					BrewUtil.homebrew[cat].filter(it => it.source === source).forEach(it => {
-						stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
+				function populateList () {
+					const $ul = $lst.find(`ul`);
+					let stack = "";
+					BrewUtil._getBrewCategories().forEach(cat => {
+						BrewUtil.homebrew[cat].filter(it => it.source === source).forEach(it => {
+							stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
 							<span class="col-xs-7 name">${it.name}</span>
 							<span class="col-xs-4 category">${cat.uppercaseFirst()}</span>
 							<span class="col-xs-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
 							<span class="hidden uid">${it.uniqueId}</span>
 						</section></li>`;
-					})
-				});
-				$ul.empty();
-				$ul.append(stack);
+						})
+					});
+					$ul.empty();
+					$ul.append(stack);
+				}
+				populateList();
 
 				const list = new List("brewlistcontainer", {
 					valueNames: ["name", "category", "uid"],
@@ -2836,6 +2839,7 @@ BrewUtil = {
 							const deleteFn = getDeleteFunction(it.category.toLowerCase());
 							deleteFn(it.uid, false);
 						});
+						populateList();
 						refreshBrewList();
 						window.location.hash = "";
 					}
