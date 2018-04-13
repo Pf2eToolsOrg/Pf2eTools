@@ -89,7 +89,7 @@ function onJsonLoad (data) {
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "ability", "prerequisite", "id"],
 		listClass: "subinvocations",
-		getSublistRow: getSublistItem,
+		getSublistRow: getSublistItem
 	});
 	ListUtil.initGenericPinnable();
 

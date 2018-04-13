@@ -29,7 +29,6 @@ function onJsonLoad (data) {
 	History.init();
 }
 
-
 let trapsAndHazardsList = [];
 let thI = 0;
 function addTrapsHazards (data) {

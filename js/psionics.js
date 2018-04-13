@@ -98,7 +98,6 @@ function onJsonLoad (data) {
 	RollerUtil.addListRollButton();
 }
 
-
 let psionicList = [];
 let psI = 0;
 function addPsionics (data) {
