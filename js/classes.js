@@ -866,7 +866,7 @@ function initCompareMode () {
 			const renderStack = [];
 			const numScLvls = curClass.subclasses[0].subclassFeatures.length;
 			for (let i = 0; i < numScLvls; ++i) {
-				renderStack.push(`<tr>`);
+				renderStack.push(`<tr class="text">`);
 				curClass.subclasses.forEach((sc, j) => {
 					renderStack.push(`<td class="subclass-features-${j} ${getSubclassStyles(sc).join(" ")}">`);
 					sc.subclassFeatures[i].forEach(f => {
@@ -940,9 +940,9 @@ const ClassBookView = {
 
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		renderer.recursiveEntryRender({type: "section", name: curClass.name}, renderStack, 0, `<tr><td colspan="6">`, `</td></tr>`, true);
+		renderer.recursiveEntryRender({type: "section", name: curClass.name}, renderStack, 0, `<tr class="text"><td colspan="6">`, `</td></tr>`, true);
 
-		renderStack.push(`<tr class="class-features"><td colspan="6">`);
+		renderStack.push(`<tr class="text class-features"><td colspan="6">`);
 		curClass.classFeatures.forEach(lvl => {
 			lvl.forEach(cf => {
 				renderer.recursiveEntryRender(cf, renderStack);
@@ -951,7 +951,7 @@ const ClassBookView = {
 		renderStack.push(`</td></tr>`);
 
 		curClass.subclasses.forEach((sc, i) => {
-			renderStack.push(`<tr class="subclass-features-${i} ${getSubclassStyles(sc).join(" ")}"><td colspan="6">`);
+			renderStack.push(`<tr class="text subclass-features-${i} ${getSubclassStyles(sc).join(" ")}"><td colspan="6">`);
 			sc.subclassFeatures.forEach(lvl => {
 				lvl.forEach(f => {
 					renderer.recursiveEntryRender(f, renderStack);
