@@ -3020,11 +3020,11 @@ BrewUtil = {
 				case UrlUtil.PG_REWARDS:
 					addRewards({reward: rewardsToAdd});
 					break;
-				// case UrlUtil.PG_PSIONICS:
-				// 	addPsionics({psionic: psionicsToAdd});
-				// 	break;
-				// default:
-				// 	throw new Error(`No homebrew add function defined for category ${page}`);
+				case UrlUtil.PG_PSIONICS:
+					addPsionics({psionic: psionicsToAdd});
+					break;
+				default:
+					throw new Error(`No homebrew add function defined for category ${page}`);
 			}
 
 			refreshBrewList();
