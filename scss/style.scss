@@ -120,19 +120,25 @@ header {
 }
 
 /* omnisearch */
-.omnisearch-output-wrapper {
+#omnisearch-output-wrapper {
 	width: 100%;
 	justify-content: flex-end;
 	display: none;
 }
 
-.omnisearch-output {
+#omnisearch-output {
 	position: absolute;
 	z-index: 100;
 	padding: 0.2em 0.7em;
 	border-radius: 0.2em;
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	border: 1px solid rgba(0, 0, 0, 0.15);
+
+	&.scrolled {
+		position: fixed;
+		top: 50px;
+		right: 10px;
+	}
 
 	p {
 		margin: 0;
@@ -2519,8 +2525,34 @@ tr.legendary td {
 	color: black !important;
 }
 
+#wrp-omnisearch-input {
+	padding: 3px 0;
+
+	&.scrolled {
+		position: fixed;
+		top: 5px;
+		right: 10px;
+		width: 45px;
+	}
+
+	&.scrolled input {
+		padding: 0;
+	}
+
+	&.scrolled:focus,
+	&.scrolled:focus-within,
+	&.scrolled:active,
+	&.scrolled:hover {
+		width: 250px;
+
+		input {
+			padding: 6px 12px;
+		}
+	}
+}
+
 .f-all-out,
-.omnisearch-output {
+#omnisearch-output {
 	background: white;
 }
 
@@ -2530,7 +2562,7 @@ tr.legendary td {
 }
 
 .f-all-out > p:nth-child(odd),
-.omnisearch-output p:nth-child(odd) {
+#omnisearch-output p:nth-child(odd) {
 	background: #f4f4f4;
 }
 
@@ -2835,12 +2867,12 @@ table.stats table.statsDataInset {
 
 	.f-all-wrapper > input,
 	.f-all-out,
-	.omnisearch-output {
+	#omnisearch-output {
 		background: #303030;
 	}
 
 	.f-all-out > p:nth-child(odd),
-	.omnisearch-output p:nth-child(odd) {
+	#omnisearch-output p:nth-child(odd) {
 		background: #202020;
 	}
 
