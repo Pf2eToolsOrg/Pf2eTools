@@ -3017,9 +3017,9 @@ BrewUtil = {
 				case UrlUtil.PG_ITEMS:
 					addItems(itemsToAdd);
 					break;
-				// case UrlUtil.PG_REWARDS:
-				// 	addRewards({reward: rewardsToAdd});
-				// 	break;
+				case UrlUtil.PG_REWARDS:
+					addRewards({reward: rewardsToAdd});
+					break;
 				// case UrlUtil.PG_PSIONICS:
 				// 	addPsionics({psionic: psionicsToAdd});
 				// 	break;
