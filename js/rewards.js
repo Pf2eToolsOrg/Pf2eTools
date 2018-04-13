@@ -19,8 +19,7 @@ function onJsonLoad (data) {
 		items: [
 			"Blessing",
 			"Boon",
-			"Charm",
-			"Demonic Boon"
+			"Charm"
 		]
 	});
 
