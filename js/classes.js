@@ -781,7 +781,7 @@ function loadsub (sub) {
 	}
 
 	function updateNavLinks () {
-		function makeScroller ($nav, idTr, idClass, displayText, scrollTo) {
+		function makeScroller ($nav, idTr, parentTr, idClass, displayText, scrollTo) {
 			let navClass;
 			switch (idClass) {
 				case "statsBlockSectionHead":
@@ -795,7 +795,10 @@ function loadsub (sub) {
 					break;
 			}
 			if (typeof navClass !== "undefined") {
-				$(`<div class="nav-item ${navClass}">${displayText}</div>`).on("click", () => {
+				const subClass = parentTr.length ? parentTr.hasClass("subclass-feature") : false;
+				const ua = parentTr.length ? parentTr.hasClass("spicy-sauce") : false;
+				const brew = parentTr.length ? parentTr.hasClass("refreshing-brew") : false;
+				$(`<div class="nav-item ${navClass} ${brew ? "purple" : ua ? "green" : subClass ? "blue" : ""}">${displayText}</div>`).on("click", () => {
 					if (idTr.length) {
 						window.location.hash = getFeatureLink(idTr.attr("id"))
 					}
@@ -824,12 +827,13 @@ function loadsub (sub) {
 					const pClass = $e.parent().attr("class").trim();
 					if (pClass === "statsInlineHead") return; // consider enabling these for e.g. maneuvers?
 					if (!$e.is(":visible")) return;
-					const pTr = $e.closest(`tr[id]`);
+					const idTr = $e.closest(`tr[id]`);
+					const pTr = $e.closest(`tr`);
 					const displayText = $e.contents().filter(function () {
 						return this.nodeType === 3;
 					})[0].nodeValue.replace(/[:.]$/g, "");
 					const scrollTo = $e.data("title-index");
-					makeScroller($navBody, pTr, pClass, displayText, scrollTo);
+					makeScroller($navBody, idTr, pTr, pClass, displayText, scrollTo);
 				});
 			}, 5); // delay hack to allow rendering to catch up
 		}
