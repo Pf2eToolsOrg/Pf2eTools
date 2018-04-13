@@ -494,6 +494,7 @@ function addSpells (data) {
 	spellTable.append(tempString);
 
 	// sort filters
+	sourceFilter.items.sort(SortUtil.ascSort);
 	classFilter.items.sort(SortUtil.ascSort);
 	subclassFilter.items.sort(SortUtil.ascSort);
 

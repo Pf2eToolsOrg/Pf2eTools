@@ -6,48 +6,71 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-let trapsAndHazardsList;
+let list;
 function onJsonLoad (data) {
-	const hazardsList = data.hazard;
-	hazardsList.forEach(h => h.trapType = "HAZ");
-	trapsAndHazardsList = data.trap.concat(hazardsList);
+	list = ListUtil.search({
+		valueNames: ["name", "trapType", "source"],
+		listClass: "trapshazards",
+		sortFunction: SortUtil.listSort
+	});
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "type", "id"],
+		listClass: "subtrapshazards",
+		getSublistRow: getSublistItem
+	});
+	ListUtil.initGenericPinnable();
+
+	addTrapsHazards(data);
+	BrewUtil.addBrewData(addTrapsHazards);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bindList(list);
+
+	History.init();
+}
+
+
+let trapsAndHazardsList = [];
+let thI = 0;
+function addTrapsHazards (data) {
+	if ((!data.trap || !data.trap.length) && (!data.hazard || !data.hazard.length)) return;
+
+	if (data.trap && data.trap.length) trapsAndHazardsList = trapsAndHazardsList.concat(data.trap);
+	if (data.hazard && data.hazard.length) {
+		data.hazard.forEach(h => h.trapType = "HAZ");
+		trapsAndHazardsList = trapsAndHazardsList.concat(data.hazard);
+	}
 
 	let tempString = "";
-	trapsAndHazardsList.forEach((it, i) => {
+	for (; thI < trapsAndHazardsList.length; thI++) {
+		const it = trapsAndHazardsList[thI];
 		const abvSource = Parser.sourceJsonToAbv(it.source);
 
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
+			<li class="row" ${FLTR_ID}="${thI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${thI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-xs-6">${it.name}</span>
 					<span class="trapType col-xs-4">${Parser.trapTypeToFull(it.trapType)}</span>
 					<span class="source col-xs-2 source${abvSource}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
 				</a>
 			</li>
 		`;
-	});
+	}
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#trapsHazardsList`).append(tempString);
 
-	const list = ListUtil.search({
-		valueNames: ["name", "trapType", "source"],
-		listClass: "trapshazards",
-		sortFunction: SortUtil.listSort
-	});
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
 
-	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
-
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "type", "id"],
-		listClass: "subtrapshazards",
+	ListUtil.setOptions({
 		itemList: trapsAndHazardsList,
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	ListUtil.initGenericPinnable();
+	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
 	ListUtil.loadState();
-
-	History.init();
 }
 
 function getSublistItem (it, pinId) {

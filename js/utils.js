@@ -2711,6 +2711,30 @@ BrewUtil = {
 						return ["spell"];
 					case UrlUtil.PG_CLASSES:
 						return ["class", "subclass"];
+					case UrlUtil.PG_BESTIARY:
+						return ["creature"];
+					case UrlUtil.PG_BACKGROUNDS:
+						return ["background"];
+					case UrlUtil.PG_FEATS:
+						return ["feat"];
+					case UrlUtil.PG_INVOCATIONS:
+						return ["invocation"];
+					case UrlUtil.PG_RACES:
+						return ["race"];
+					case UrlUtil.PG_OBJECTS:
+						return ["object"];
+					case UrlUtil.PG_TRAPS_HAZARDS:
+						return ["trap", "hazard"];
+					case UrlUtil.PG_DEITIES:
+						return ["deity"];
+					case UrlUtil.PG_ITEMS:
+						return ["item"];
+					case UrlUtil.PG_REWARDS:
+						return ["reward"];
+					case UrlUtil.PG_PSIONICS:
+						return ["psionic"];
+					default:
+						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
 			}
 			const urls = getBrewDirs().map(it => ({url: `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${it}?${(new Date()).getTime()}`}));
@@ -2884,9 +2908,7 @@ BrewUtil = {
 			}
 
 			// prepare for storage
-			storePrep("class");
-			storePrep("subclass");
-			storePrep("spell");
+			["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard"].forEach(storePrep);
 
 			// store
 			function checkAndAdd (prop) {
@@ -2916,6 +2938,18 @@ BrewUtil = {
 			let classesToAdd = json.class;
 			let subclassesToAdd = json.subclass;
 			let spellsToAdd = json.spell;
+			let monstersToAdd = json.monster;
+			let backgroundsToAdd = json.background;
+			let featsToAdd = json.feat;
+			let invocationsToAdd = json.invocation;
+			let racesToAdd = json.race;
+			let objectsToAdd = json.object;
+			let trapsToAdd = json.trap;
+			let hazardsToAdd = json.hazard;
+			let deitiesToAdd = json.deity;
+			let itemsToAdd = json.item;
+			let rewardsToAdd = json.reward;
+			let psionicsToAdd = json.psionic;
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
@@ -2924,6 +2958,18 @@ BrewUtil = {
 				classesToAdd = checkAndAdd("class");
 				subclassesToAdd = checkAndAdd("subclass");
 				spellsToAdd = checkAndAdd("spell");
+				monstersToAdd = checkAndAdd("monster");
+				backgroundsToAdd = checkAndAdd("background");
+				featsToAdd = checkAndAdd("feat");
+				invocationsToAdd = checkAndAdd("invocation");
+				racesToAdd = checkAndAdd("race");
+				objectsToAdd = checkAndAdd("object");
+				trapsToAdd = checkAndAdd("trap");
+				hazardsToAdd = checkAndAdd("hazard");
+				deitiesToAdd = checkAndAdd("deity");
+				itemsToAdd = checkAndAdd("item");
+				rewardsToAdd = checkAndAdd("reward");
+				psionicsToAdd = checkAndAdd("psionic");
 			}
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -2939,6 +2985,42 @@ BrewUtil = {
 					addClassData({class: classesToAdd});
 					addSubclassData({subclass: subclassesToAdd});
 					break;
+				case UrlUtil.PG_BESTIARY:
+					addMonsters(monstersToAdd);
+					break;
+				case UrlUtil.PG_BACKGROUNDS:
+					addBackgrounds({background: backgroundsToAdd});
+					break;
+				case UrlUtil.PG_FEATS:
+					addFeats({feat: featsToAdd});
+					break;
+				case UrlUtil.PG_INVOCATIONS:
+					addInvocations({invocation: invocationsToAdd});
+					break;
+				case UrlUtil.PG_RACES:
+					addRaces({race: racesToAdd});
+					break;
+				case UrlUtil.PG_OBJECTS:
+					addObjects({object: objectsToAdd});
+					break;
+				case UrlUtil.PG_TRAPS_HAZARDS:
+					addTrapsHazards({trap: trapsToAdd});
+					addTrapsHazards({hazard: hazardsToAdd});
+					break;
+				// case UrlUtil.PG_DEITIES:
+				// 	addDeities({deity: deitiesToAdd});
+				// 	break;
+				// case UrlUtil.PG_ITEMS:
+				// 	addItems({item: itemsToAdd});
+				// 	break;
+				// case UrlUtil.PG_REWARDS:
+				// 	addRewards({reward: rewardsToAdd});
+				// 	break;
+				// case UrlUtil.PG_PSIONICS:
+				// 	addPsionics({psionic: psionicsToAdd});
+				// 	break;
+				// default:
+				// 	throw new Error(`No homebrew add function defined for category ${page}`);
 			}
 
 			refreshBrewList();
@@ -3003,11 +3085,11 @@ BrewUtil = {
 			});
 			BrewUtil.removeJsonSource(source);
 			// remove the source from the filters and re-render the filter box
-			BrewUtil._sourceFilter.removeIfExists(source);
-			BrewUtil._filterBox.render();
+			if (BrewUtil._sourceFilter) BrewUtil._sourceFilter.removeIfExists(source);
+			if (BrewUtil._filterBox) BrewUtil._filterBox.render();
 			refreshBrewList();
 			window.location.hash = "";
-			BrewUtil._filterBox._fireValChangeEvent();
+			if (BrewUtil._filterBox) BrewUtil._filterBox._fireValChangeEvent();
 		}
 
 		function doRemove (arrName, uniqueId, doRefresh) {
@@ -3024,13 +3106,25 @@ BrewUtil = {
 		function getDeleteFunction (category) {
 			switch (category) {
 				case "spell":
-					return deleteSpellBrew;
+				case "monster":
+				case "background":
+				case "feat":
+				case "invocation":
+				case "race":
+				case "object":
+				case "trap":
+				case "hazard":
+				case "deity":
+				case "item":
+				case "reward":
+				case "psionic":
+					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
 				case "class":
 					return deleteClassBrew;
 				default:
-					throw new Error(`No homebrew delete function defined for category ${category}`)
+					throw new Error(`No homebrew delete function defined for category ${category}`);
 			}
 		}
 
@@ -3066,8 +3160,11 @@ BrewUtil = {
 			}
 		}
 
-		function deleteSpellBrew (uniqueId, doRefresh) {
-			doRemove("spell", uniqueId, doRefresh);
+		function deleteGenericBrew (category) {
+			// FIXME have it be marked as deleted in any data list, to prevent double-rendering
+			return (uniqueId, doRefresh) => {
+				doRemove(category, uniqueId, doRefresh);
+			}
 		}
 	},
 

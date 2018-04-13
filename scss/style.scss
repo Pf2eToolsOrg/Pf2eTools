@@ -620,6 +620,7 @@ input.search {
 
 .list,
 .list-display-only {
+	transform: translateZ(0);
 	position: relative;
 	padding-top: 1em;
 	padding-left: 0;
@@ -658,16 +659,6 @@ input.search {
 			display: inline-block;
 			text-transform: capitalize;
 		}
-	}
-}
-
-.list {
-	&:active {
-		color: white;
-	}
-
-	&:hover span {
-		display: block;
 	}
 }
 

@@ -1,18 +1,22 @@
 "use strict";
 const JSON_URL = "data/feats.json";
+let list;
 let tabledefault = "";
-let featlist;
 
 window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
+const sourceFilter = getSourceFilter();
 let filterBox;
 function onJsonLoad (data) {
-	tabledefault = $("#pagecontent").html();
-	featlist = data.feat;
+	list = ListUtil.search({
+		valueNames: ['name', 'source', 'ability', 'prerequisite'],
+		listClass: "feats"
+	});
 
-	const sourceFilter = getSourceFilter();
+	tabledefault = $("#pagecontent").html();
+
 	const asiFilter = getAsiFilter();
 	const prereqFilter = new Filter({
 		header: "Prerequisite",
@@ -24,10 +28,45 @@ function onJsonLoad (data) {
 		prereqFilter
 	);
 
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	const subList = ListUtil.initSublist({
+		valueNames: ["name", "ability", "prerequisite", "id"],
+		listClass: "subfeats",
+		getSublistRow: getSublistItem
+	});
+	ListUtil.initGenericPinnable();
+
+	addFeats(data);
+	BrewUtil.addBrewData(addFeats);
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bindList(list);
+	BrewUtil.bindFilters(filterBox, sourceFilter);
+
+	History.init();
+	handleFilterChange();
+	RollerUtil.addListRollButton();
+}
+
+let featList = [];
+let ftI = 0;
+function addFeats (data) {
+	if (!data.feat || !data.feat.length) return;
+
+	featList = featList.concat(data.feat);
+
 	const featTable = $("ul.feats");
 	let tempString = "";
-	for (let i = 0; i < featlist.length; i++) {
-		const curfeat = featlist[i];
+	for (; ftI < featList.length; ftI++) {
+		const curfeat = featList[ftI];
 		const name = curfeat.name;
 		const ability = utils_getAbilityData(curfeat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
@@ -47,8 +86,8 @@ function onJsonLoad (data) {
 		curfeat._slPrereq = prereqText;
 
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id='${i}' href='#${UrlUtil.autoEncodeHash(curfeat)}' title='${name}'>
+			<li class="row" ${FLTR_ID}="${ftI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id='${ftI}' href='#${UrlUtil.autoEncodeHash(curfeat)}' title='${name}'>
 					<span class='${CLS_COL_1}'>${name}</span>
 					<span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span>
 					<span class='${CLS_COL_3}'>${ability.asText}</span>
@@ -59,62 +98,44 @@ function onJsonLoad (data) {
 		// populate filters
 		sourceFilter.addIfAbsent(curfeat.source);
 	}
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	featTable.append(tempString);
 
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
 
-	// init list
-	const list = ListUtil.search({
-		valueNames: ['name', 'source', 'ability', 'prerequisite'],
-		listClass: "feats"
-	});
-	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
-	});
-
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
 	filterBox.render();
+	handleFilterChange();
 
-	// filtering function
-	$(filterBox).on(
-		FilterBox.EVNT_VALCHANGE,
-		handleFilterChange
-	);
-
-	// filtering function
-	function handleFilterChange () {
-		const f = filterBox.getValues();
-		list.filter(function (item) {
-			const ft = featlist[$(item.elm).attr(FLTR_ID)];
-			return filterBox.toDisplay(
-				f,
-				ft.source,
-				ft._fAbility,
-				ft._fPrereq
-			);
-		});
-		FilterBox.nextIfHidden(featlist);
-	}
-
-	RollerUtil.addListRollButton();
-
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "ability", "prerequisite", "id"],
-		listClass: "subfeats",
-		itemList: featlist,
+	ListUtil.setOptions({
+		itemList: featList,
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(featlist);
+	EntryRenderer.hover.bindPopoutButton(featList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.initGenericPinnable();
 	ListUtil.loadState();
+}
 
-	History.init();
-	handleFilterChange();
+// filtering function
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	list.filter(function (item) {
+		const ft = featList[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			ft.source,
+			ft._fAbility,
+			ft._fPrereq
+		);
+	});
+	FilterBox.nextIfHidden(featList);
 }
 
 function getSublistItem (feat, pinId) {
@@ -134,7 +155,7 @@ const renderer = new EntryRenderer();
 function loadhash (id) {
 	const $content = $("#pagecontent");
 	$content.html(tabledefault);
-	const feat = featlist[id];
+	const feat = featList[id];
 	const source = feat.source;
 	const sourceFull = Parser.sourceJsonToFull(source);
 
@@ -149,7 +170,7 @@ function loadhash (id) {
 	renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
 
 	$content.find("tr#text").after(`<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`);
-	$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>, page ${feat.page}</td>`);
+	$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>${feat.page ? `, page ${feat.page}` : ""}</td>`);
 }
 
 function loadsub (sub) {
