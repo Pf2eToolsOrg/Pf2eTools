@@ -1571,6 +1571,42 @@ table.stats.stats-book table.spellbook-entry {
 	#classtable table tr:nth-child(odd) td {
 		background: lightgrey !important;
 	}
+
+	.book-mode-active > *:not(.book-mode) {
+		display: none !important;
+	}
+
+	body {
+		overflow: visible !important;
+	}
+
+	.book-mode-active .book-mode {
+		position: relative;
+
+		.stats-book {
+			max-height: initial !important;
+			overflow-y: visible !important;
+
+			.close-border {
+				display: none !important;
+			}
+		}
+
+		.wrp-content {
+			overflow: visible !important;
+			max-height: none !important;
+		}
+	}
+
+	.spellbook-level > td {
+		display: flex !important;
+		flex-wrap: wrap !important;
+	}
+
+	.spellbook-entry {
+		width: 50% !important;
+		flex-shrink: 0 !important;
+	}
 }
 
 /* Bootstrap overrides */
@@ -2328,6 +2364,11 @@ table.stats tr.text span.quote-by {
 
 .book-mode .initial-message {
 	font-size: 1.4em;
+}
+
+.book-mode .wrp-content {
+	overflow: auto;
+	max-height: calc(100vh - 16px);
 }
 
 .book-contents .list li:hover span {

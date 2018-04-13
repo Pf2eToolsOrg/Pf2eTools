@@ -3471,6 +3471,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 		self._$body = $body;
 		self._$wrpBook = $wrpBook;
 		$body.css("overflow", "hidden");
+		$body.addClass("book-mode-active");
 
 		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
 		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
@@ -3487,7 +3488,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 		const numShown = self.popTblGetNumShown($tbl, $hdTxt);
 
 		const $tblRow = $(`<tr/>`);
-		$tblRow.append($(`<div style="overflow: auto; max-height: calc(100vh - 16px); ${numShown ? "" : "display: none;"}"/>`).append($tbl));
+		$tblRow.append($(`<div class="wrp-content" style="${numShown ? "" : "display: none;"}"/>`).append($tbl));
 		const $msgRow = $(`<tr ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">${self.noneVisibleMsg}</span><br></td></tr>`);
 		$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
 			hashTeardown();
@@ -3501,6 +3502,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 	this.teardown = () => {
 		if (self.active) {
 			self._$body.css("overflow", "");
+			self._$body.removeClass("book-mode-active");
 			self._$wrpBook.remove();
 			self.active = false;
 		}
