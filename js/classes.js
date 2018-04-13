@@ -402,7 +402,7 @@ function loadhash (id) {
 
 	// show/hide class features pill
 	makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true, "Toggle class features");
-	makeGenericTogglePill("Detail Info", CLSS_FLUFF_ACTIVE, ID_FLUFF_TOGGLE, HASH_SHOW_FLUFF, false, "Toggle class detail information (Source: Xanathar's Guide to Everything)");
+	if (curClass.fluff) makeGenericTogglePill("Detail Info", CLSS_FLUFF_ACTIVE, ID_FLUFF_TOGGLE, HASH_SHOW_FLUFF, false, `Toggle class detail information (Source: Xanathar's Guide to Everything, page ${curClass.fluffPage})`);
 
 	// show/hide UA/other sources
 	makeSourceCyclePill();
