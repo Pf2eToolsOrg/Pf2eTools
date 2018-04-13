@@ -2529,14 +2529,17 @@ tr.legendary td {
 	padding: 3px 0;
 
 	&.scrolled {
+		z-index: 100;
 		position: fixed;
 		top: 5px;
 		right: 10px;
-		width: 45px;
+		width: 65px;
+		border-left: 20px solid transparent;
 	}
 
 	&.scrolled input {
 		padding: 0;
+		color: transparent;
 	}
 
 	&.scrolled:focus,
@@ -2547,6 +2550,7 @@ tr.legendary td {
 
 		input {
 			padding: 6px 12px;
+			color: inherit;
 		}
 	}
 }
