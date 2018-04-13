@@ -48,7 +48,7 @@ function onJsonLoad (data) {
 	addFeats(data);
 	BrewUtil.addBrewData(addFeats);
 	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bindList(list);
+	BrewUtil.bindLists(list);
 	BrewUtil.bindFilters(filterBox, sourceFilter);
 
 	History.init();

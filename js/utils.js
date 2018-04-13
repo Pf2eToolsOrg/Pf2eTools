@@ -2131,13 +2131,18 @@ ListUtil = {
 		}
 	},
 
-	getSearchTermAndReset: (list) => {
+	/**
+	 * Assumes any other lists have been searched using the same term
+	 */
+	getSearchTermAndReset: (list, ...otherLists) => {
 		let lastSearch = null;
 		if (list.searched) {
 			lastSearch = $(`#search`).val();
 			list.search();
+			otherLists.forEach(l => l.search());
 		}
 		list.filter();
+		otherLists.forEach(l => l.filter());
 		return lastSearch;
 	},
 
@@ -2607,16 +2612,15 @@ StorageUtil = {
 // HOMEBREW ============================================================================================================
 BrewUtil = {
 	homebrew: null,
-	_list: null,
+	_lists: null,
 	storage: StorageUtil.getStorage(),
 	_sourceCache: null,
 	_filterBox: null,
 	_sourceFilter: null,
 
 	// provide ref to List.js instance
-	// TODO handle multiple lists, for items page
-	bindList: (list) => {
-		BrewUtil._list = list;
+	bindLists: (...lists) => {
+		BrewUtil._lists = lists;
 	},
 
 	// provide ref to FilterBox and Filter instance
@@ -3010,9 +3014,9 @@ BrewUtil = {
 				case UrlUtil.PG_DEITIES:
 					addDeities({deity: deitiesToAdd});
 					break;
-				// case UrlUtil.PG_ITEMS:
-				// 	addItems({item: itemsToAdd});
-				// 	break;
+				case UrlUtil.PG_ITEMS:
+					addItems(itemsToAdd);
+					break;
 				// case UrlUtil.PG_REWARDS:
 				// 	addRewards({reward: rewardsToAdd});
 				// 	break;
@@ -3098,7 +3102,7 @@ BrewUtil = {
 				BrewUtil.homebrew[arrName].splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 				if (doRefresh) refreshBrewList();
-				BrewUtil._list.remove("uniqueid", uniqueId);
+				BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
 				if (doRefresh) History.hashChange();
 			}
 		}

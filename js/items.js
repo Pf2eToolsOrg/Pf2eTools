@@ -1,11 +1,8 @@
 "use strict";
 
-let itemList;
-
 window.onload = function load () {
 	EntryRenderer.item.buildList((incItemList) => {
-		itemList = incItemList;
-		populateTablesAndFilters();
+		populateTablesAndFilters(incItemList);
 	});
 };
 
@@ -44,7 +41,10 @@ function sortItems (a, b, o) {
 function deselectFilter (deselectProperty, deselectValue) {
 	return function (val) {
 		if (window.location.hash.length && !window.location.hash.startsWith(`#${HASH_BLANK}`)) {
-			const itemProperty = itemList[History.getSelectedListElement().attr("id")][deselectProperty];
+			const curItem = History.getSelectedListElement();
+			if (!curItem) return deselNoHash();
+
+			const itemProperty = itemList[curItem.attr("id")][deselectProperty];
 			if (itemProperty === deselectValue) {
 				return deselNoHash();
 			} else {
@@ -62,16 +62,16 @@ function deselectFilter (deselectProperty, deselectValue) {
 
 let mundanelist;
 let magiclist;
+const sourceFilter = getSourceFilter();
+const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
+const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
+const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 let filterBox;
-function populateTablesAndFilters () {
-	const sourceFilter = getSourceFilter();
-	const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
-	const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
+function populateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
 		header: "Rarity",
 		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown"]
 	});
-	const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"]});
 	const categoryFilter = new Filter({
 		header: "Category",
@@ -81,69 +81,6 @@ function populateTablesAndFilters () {
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Magic", "Mundane", "Sentient"]});
 
 	filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, miscFilter);
-	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
-
-	for (let i = 0; i < itemList.length; i++) {
-		const curitem = itemList[i];
-		if (curitem.noDisplay) continue;
-		const name = curitem.name;
-		const rarity = curitem.rarity;
-		const category = curitem.category;
-		const source = curitem.source;
-		const sourceAbv = Parser.sourceJsonToAbv(source);
-		const sourceFull = Parser.sourceJsonToFull(source);
-		const tierTags = [];
-		tierTags.push(curitem.tier ? curitem.tier : "None");
-
-		// for filter to use
-		curitem._fTier = tierTags;
-		curitem._fProperties = curitem.property ? curitem.property.map(p => curitem._allPropertiesPtr[p].name).filter(n => n) : [];
-		curitem._fMisc = curitem.sentient ? ["Sentient"] : [];
-		const isMundane = rarity === "None" || rarity === "Unknown" || category === "Basic";
-		curitem._fMisc.push(isMundane ? "Mundane" : "Magic");
-
-		if (isMundane) {
-			liList["mundane"] += `
-			<li class="row" ${FLTR_ID}=${i} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
-					<span class="name col-xs-3">${name}</span>
-					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
-					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value || "\u2014"}</span>
-					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
-					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
-					<span class="cost hidden">${Parser.coinValueToNumber(curitem.value)}</span>
-					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
-				</a>
-			</li>`;
-		} else {
-			liList["magic"] += `
-			<li class="row" ${FLTR_ID}=${i} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
-					<span class="name col-xs-3 col-xs-3-5">${name}</span>
-					<span class="type col-xs-3 col-xs-3-3">${curitem.typeText}</span>
-					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
-					<span class="rarity col-xs-2">${rarity}</span>
-					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
-					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
-				</a>
-			</li>`;
-		}
-
-		// populate filters
-		sourceFilter.addIfAbsent(source);
-		curitem.procType.forEach(t => typeFilter.addIfAbsent(t));
-		tierTags.forEach(tt => tierFilter.addIfAbsent(tt));
-		curitem._fProperties.forEach(p => propertyFilter.addIfAbsent(p));
-	}
-	// populate table
-	$("ul.list.mundane").append(liList.mundane);
-	$("ul.list.magic").append(liList.magic);
-	// populate table labels
-	$(`h3.ele-mundane span.side-label`).text("Mundane");
-	$(`h3.ele-magic span.side-label`).text("Magic");
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	typeFilter.items.sort(SortUtil.ascSort);
 
 	const mundaneOptions = {
 		valueNames: ["name", "type", "cost", "weight", "source"],
@@ -169,34 +106,11 @@ function populateTablesAndFilters () {
 		filterBox.setCount(mundanelist.visibleItems.length + magiclist.visibleItems.length, mundanelist.items.length + magiclist.items.length);
 	});
 
-	filterBox.render();
-
 	// filtering function
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
 		handleFilterChange
 	);
-
-	function handleFilterChange () {
-		const f = filterBox.getValues();
-		function listFilter (item) {
-			const i = itemList[$(item.elm).attr(FLTR_ID)];
-			return filterBox.toDisplay(
-				f,
-				i.source,
-				i.procType,
-				i._fTier,
-				i.rarity,
-				i._fProperties,
-				i.attunementCategory,
-				i.category,
-				i._fMisc
-			);
-		}
-		mundanelist.filter(listFilter);
-		magiclist.filter(listFilter);
-		FilterBox.nextIfHidden(itemList);
-	}
 
 	function hideListIfEmpty (list, $eles) {
 		if (list.visibleItems.length === 0) {
@@ -243,23 +157,139 @@ function populateTablesAndFilters () {
 			valueNames: ["name", "weight", "price", "count", "id"],
 			listClass: "subitems",
 			sortFunction: sortItems,
-			itemList: itemList,
 			getSublistRow: getSublistItem,
-			onUpdate: onSublistChange,
-			primaryLists: [mundanelist, magiclist]
+			onUpdate: onSublistChange
 		}
 	);
+	ListUtil.initGenericAddable();
+
+	addItems(data);
+	BrewUtil.addBrewData((homebrew) => addItems(homebrew.item));
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bindLists(mundanelist, magiclist);
+	BrewUtil.bindFilters(filterBox, sourceFilter);
+
+	History.init();
+}
+
+let itemList = [];
+let itI = 0;
+function addItems (data) {
+	if (!data || !data.length) return;
+
+	itemList = itemList.concat(data);
+
+	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
+
+	for (; itI < itemList.length; itI++) {
+		const curitem = itemList[itI];
+		if (curitem.noDisplay) continue;
+		if (!curitem._allPropertiesPtr) EntryRenderer.item.enhanceItem(curitem);
+
+		const name = curitem.name;
+		const rarity = curitem.rarity;
+		const category = curitem.category;
+		const source = curitem.source;
+		const sourceAbv = Parser.sourceJsonToAbv(source);
+		const sourceFull = Parser.sourceJsonToFull(source);
+		const tierTags = [];
+		tierTags.push(curitem.tier ? curitem.tier : "None");
+
+		// for filter to use
+		curitem._fTier = tierTags;
+		curitem._fProperties = curitem.property ? curitem.property.map(p => curitem._allPropertiesPtr[p].name).filter(n => n) : [];
+		curitem._fMisc = curitem.sentient ? ["Sentient"] : [];
+		const isMundane = rarity === "None" || rarity === "Unknown" || category === "Basic";
+		curitem._fMisc.push(isMundane ? "Mundane" : "Magic");
+
+		if (isMundane) {
+			liList["mundane"] += `
+			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
+					<span class="name col-xs-3">${name}</span>
+					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
+					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value || "\u2014"}</span>
+					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
+					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="cost hidden">${Parser.coinValueToNumber(curitem.value)}</span>
+					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
+				</a>
+			</li>`;
+		} else {
+			liList["magic"] += `
+			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
+					<span class="name col-xs-3 col-xs-3-5">${name}</span>
+					<span class="type col-xs-3 col-xs-3-3">${curitem.typeText}</span>
+					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
+					<span class="rarity col-xs-2">${rarity}</span>
+					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
+				</a>
+			</li>`;
+		}
+
+		// populate filters
+		sourceFilter.addIfAbsent(source);
+		curitem.procType.forEach(t => typeFilter.addIfAbsent(t));
+		tierTags.forEach(tt => tierFilter.addIfAbsent(tt));
+		curitem._fProperties.forEach(p => propertyFilter.addIfAbsent(p));
+	}
+	const lastSearch = ListUtil.getSearchTermAndReset(mundanelist, magiclist);
+	// populate table
+	$("ul.list.mundane").append(liList.mundane);
+	$("ul.list.magic").append(liList.magic);
+	// populate table labels
+	$(`h3.ele-mundane span.side-label`).text("Mundane");
+	$(`h3.ele-magic span.side-label`).text("Magic");
+	// sort filters
+	sourceFilter.items.sort(SortUtil.ascSort);
+	typeFilter.items.sort(SortUtil.ascSort);
+
+	mundanelist.reIndex();
+	magiclist.reIndex();
+	if (lastSearch) {
+		mundanelist.search(lastSearch);
+		magiclist.search(lastSearch);
+	}
+	mundanelist.sort("name");
+	magiclist.sort("name");
+	filterBox.render();
+	handleFilterChange();
+
+	ListUtil.setOptions({
+		itemList: itemList,
+		getSublistRow: getSublistItem,
+		primaryLists: [mundanelist, magiclist]
+	});
 	ListUtil.bindAddButton();
 	ListUtil.bindSubtractButton();
 	EntryRenderer.hover.bindPopoutButton(itemList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.initGenericAddable();
 	ListUtil.loadState();
+}
 
-	History.init();
-	handleFilterChange();
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	function listFilter (item) {
+		const i = itemList[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			i.source,
+			i.procType,
+			i._fTier,
+			i.rarity,
+			i._fProperties,
+			i.attunementCategory,
+			i.category,
+			i._fMisc
+		);
+	}
+	mundanelist.filter(listFilter);
+	magiclist.filter(listFilter);
+	FilterBox.nextIfHidden(itemList);
 }
 
 function onSublistChange () {
@@ -307,7 +337,7 @@ function loadhash (id) {
 		if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 81)) item.additionalSources.push({ "source": "XGE", "page": 81 })
 	}
 	const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
-	$content.find("td#source span").html(`<i>${sourceFull}</i>, page ${item.page}${addSourceText || ""}`);
+	$content.find("td#source span").html(`<i>${sourceFull}</i>${item.page ? `, page ${item.page}${addSourceText || ""}` : ""}`);
 
 	$content.find("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
 	$content.find("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") + (item.weightNote ? ` ${item.weightNote}` : "") : "");

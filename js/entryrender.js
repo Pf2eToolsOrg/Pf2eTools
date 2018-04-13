@@ -1600,6 +1600,8 @@ EntryRenderer.item = {
 	},
 
 	_builtList: null,
+	_propertyList: {},
+	_typeList: {},
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
@@ -1612,8 +1614,6 @@ EntryRenderer.item = {
 		let itemList;
 		let basicItemList;
 		let variantList;
-		const propertyList = {};
-		const typeList = {};
 
 		// allows URLs to be overriden (used by roll20 script)
 		const itemUrl = urls.items || "data/items.json";
@@ -1633,13 +1633,13 @@ EntryRenderer.item = {
 			const itemTypeList = basicItemData.itemType;
 			// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 			for (let i = 0; i < itemPropertyList.length; i++) {
-				propertyList[itemPropertyList[i].abbreviation] = itemPropertyList[i].name ? JSON.parse(JSON.stringify(itemPropertyList[i])) : {
+				EntryRenderer.item._propertyList[itemPropertyList[i].abbreviation] = itemPropertyList[i].name ? JSON.parse(JSON.stringify(itemPropertyList[i])) : {
 					"name": itemPropertyList[i].entries[0].name.toLowerCase(),
 					"entries": itemPropertyList[i].entries
 				};
 			}
 			for (let i = 0; i < itemTypeList.length; i++) {
-				typeList[itemTypeList[i].abbreviation] = itemTypeList[i].name ? JSON.parse(JSON.stringify(itemTypeList[i])) : {
+				EntryRenderer.item._typeList[itemTypeList[i].abbreviation] = itemTypeList[i].name ? JSON.parse(JSON.stringify(itemTypeList[i])) : {
 					"name": itemTypeList[i].entries[0].name.toLowerCase(),
 					"entries": itemTypeList[i].entries
 				};
@@ -1707,87 +1707,85 @@ EntryRenderer.item = {
 		}
 
 		function enhanceItems () {
-			const priceRe = /^(\d+)(\w+)$/;
 			for (let i = 0; i < itemList.length; i++) {
 				const item = itemList[i];
-				if (item.noDisplay) continue;
-				if (itemList[i].type === "GV") itemList[i].category = "Generic Variant";
-				if (itemList[i].category === undefined) itemList[i].category = "Other";
-				if (item.entries === undefined) itemList[i].entries = [];
-				if (item.type && typeList[item.type]) for (let j = 0; j < typeList[item.type].entries.length; j++) itemList[i].entries = pushObject(itemList[i].entries, typeList[item.type].entries[j]);
-				if (item.property) {
-					for (let j = 0; j < item.property.length; j++) if (propertyList[item.property[j]].entries) for (let k = 0; k < propertyList[item.property[j]].entries.length; k++) itemList[i].entries = pushObject(itemList[i].entries, propertyList[item.property[j]].entries[k]);
-				}
-				// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
-				if (item.armor) {
-					if (item.resist) itemList[i].entries = pushObject(itemList[i].entries, "You have resistance to " + item.resist + " damage while you wear this armor.");
-					if (item.armor && item.stealth) itemList[i].entries = pushObject(itemList[i].entries, "The wearer has disadvantage on Stealth (Dexterity) checks.");
-					if (item.type === "HA" && item.strength) itemList[i].entries = pushObject(itemList[i].entries, "If the wearer has a Strength score lower than " + item.strength + ", their speed is reduced by 10 feet.");
-				} else if (item.resist) {
-					if (item.type === "P") itemList[i].entries = pushObject(itemList[i].entries, "When you drink this potion, you gain resistance to " + item.resist + " damage for 1 hour.");
-					if (item.type === "RG") itemList[i].entries = pushObject(itemList[i].entries, "You have resistance to " + item.resist + " damage while wearing this ring.");
-				}
-				if (item.type === "SCF") {
-					if (item.scfType === "arcane") itemList[i].entries = pushObject(itemList[i].entries, "An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus, using it in place of any material component which does not list a cost.");
-					if (item.scfType === "druid") itemList[i].entries = pushObject(itemList[i].entries, "A druid can use such a druidic focus as a spellcasting focus, using it in place of any material component that does not have a cost.");
-					if (item.scfType === "holy") {
-						itemList[i].entries = pushObject(itemList[i].entries, "A holy symbol is a representation of a god or pantheon.");
-						itemList[i].entries = pushObject(itemList[i].entries, "A cleric or paladin can use a holy symbol as a spellcasting focus, using it in place of any material components which do not list a cost. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
-					}
-				}
-
-				// bind pointer to propertyList
-				if (item.property) {
-					item._allPropertiesPtr = propertyList;
-				}
-
-				// bake in types
-				const type = [];
-				if (item.wondrous) type.push("Wondrous Item");
-				if (item.technology) type.push(item.technology);
-				if (item.age) type.push(item.age);
-				if (item.weaponCategory) type.push(item.weaponCategory + " Weapon");
-				if (item.type) type.push(Parser.itemTypeToAbv(item.type));
-				if (item.poison) type.push("Poison");
-				item.procType = type;
-				item.typeText = type.join(", ");
-
-				// bake in attunement
-				let attunement = "No";
-				if (item.reqAttune !== undefined) {
-					if (item.reqAttune === "YES") {
-						attunement = "Yes";
-						item.reqAttune = "(Requires Attunement)"
-					} else if (item.reqAttune === "OPTIONAL") {
-						attunement = "Optional";
-						item.reqAttune = "(Attunement Optional)"
-					} else if (item.reqAttune.toLowerCase().startsWith("by")) {
-						attunement = "By...";
-						item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
-					} else {
-						attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
-						item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
-					}
-				}
-				item.attunementCategory = attunement;
-
-				// format price nicely
-				// 5 characters because e.g. XXXgp is fine
-				if (item.value && item.value.length > 5) {
-					const m = priceRe.exec(item.value);
-					if (m) {
-						item.value = `${Number(m[1]).toLocaleString()}${m[2]}`;
-					}
-				}
+				EntryRenderer.item.enhanceItem(item);
 			}
 			EntryRenderer.item._builtList = itemList;
 			callback(itemList);
 		}
+	},
 
-		function pushObject (targetObject, objectToBePushed) {
-			const copiedObject = JSON.parse(JSON.stringify(targetObject));
-			copiedObject.push(objectToBePushed);
-			return copiedObject;
+	_priceRe: /^(\d+)(\w+)$/,
+	enhanceItem (item) {
+		if (item.noDisplay) return;
+		if (item.type === "GV") item.category = "Generic Variant";
+		if (item.category === undefined) item.category = "Other";
+		if (item.entries === undefined) item.entries = [];
+		if (item.type && EntryRenderer.item._typeList[item.type]) for (let j = 0; j < EntryRenderer.item._typeList[item.type].entries.length; j++) item.entries.push(EntryRenderer.item._typeList[item.type].entries[j]);
+		if (item.property) {
+			for (let j = 0; j < item.property.length; j++) if (EntryRenderer.item._propertyList[item.property[j]].entries) for (let k = 0; k < EntryRenderer.item._propertyList[item.property[j]].entries.length; k++) item.entries.push(EntryRenderer.item._propertyList[item.property[j]].entries[k]);
+		}
+		// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
+		if (item.armor) {
+			if (item.resist) item.entries.push("You have resistance to " + item.resist + " damage while you wear this armor.");
+			if (item.armor && item.stealth) item.entries.push("The wearer has disadvantage on Stealth (Dexterity) checks.");
+			if (item.type === "HA" && item.strength) item.entries.push("If the wearer has a Strength score lower than " + item.strength + ", their speed is reduced by 10 feet.");
+		} else if (item.resist) {
+			if (item.type === "P") item.entries.push("When you drink this potion, you gain resistance to " + item.resist + " damage for 1 hour.");
+			if (item.type === "RG") item.entries.push("You have resistance to " + item.resist + " damage while wearing this ring.");
+		}
+		if (item.type === "SCF") {
+			if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus, using it in place of any material component which does not list a cost.");
+			if (item.scfType === "druid") item.entries.push("A druid can use such a druidic focus as a spellcasting focus, using it in place of any material component that does not have a cost.");
+			if (item.scfType === "holy") {
+				item.entries.push("A holy symbol is a representation of a god or pantheon.");
+				item.entries.push("A cleric or paladin can use a holy symbol as a spellcasting focus, using it in place of any material components which do not list a cost. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+			}
+		}
+
+		// bind pointer to propertyList
+		if (item.property) {
+			item._allPropertiesPtr = EntryRenderer.item._propertyList;
+		}
+
+		// bake in types
+		const type = [];
+		if (item.wondrous) type.push("Wondrous Item");
+		if (item.technology) type.push(item.technology);
+		if (item.age) type.push(item.age);
+		if (item.weaponCategory) type.push(item.weaponCategory + " Weapon");
+		if (item.type) type.push(Parser.itemTypeToAbv(item.type));
+		if (item.poison) type.push("Poison");
+		item.procType = type;
+		item.typeText = type.join(", ");
+
+		// bake in attunement
+		let attunement = "No";
+		if (item.reqAttune !== undefined) {
+			if (item.reqAttune === "YES") {
+				attunement = "Yes";
+				item.reqAttune = "(Requires Attunement)"
+			} else if (item.reqAttune === "OPTIONAL") {
+				attunement = "Optional";
+				item.reqAttune = "(Attunement Optional)"
+			} else if (item.reqAttune.toLowerCase().startsWith("by")) {
+				attunement = "By...";
+				item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
+			} else {
+				attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
+				item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
+			}
+		}
+		item.attunementCategory = attunement;
+
+		// format price nicely
+		// 5 characters because e.g. XXXgp is fine
+		if (item.value && item.value.length > 5) {
+			const m = EntryRenderer.item._priceRe.exec(item.value);
+			if (m) {
+				item.value = `${Number(m[1]).toLocaleString()}${m[2]}`;
+			}
 		}
 	}
 };
