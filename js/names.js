@@ -68,7 +68,7 @@ function loadhash (id) {
 	let htmlText = `
 		<tr>
 			<td colspan="6">
-				<table>
+				<table class="striped-odd">
 					<caption>${tableName}</caption>
 					<thead>
 						<tr>
