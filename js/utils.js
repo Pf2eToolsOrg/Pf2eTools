@@ -2618,15 +2618,13 @@ BrewUtil = {
 	_filterBox: null,
 	_sourceFilter: null,
 
-	// provide ref to List.js instance
-	bindLists: (...lists) => {
-		BrewUtil._lists = lists;
-	},
-
-	// provide ref to FilterBox and Filter instance
-	bindFilters (filterBox, sourceFilter) {
-		BrewUtil._filterBox = filterBox;
-		BrewUtil._sourceFilter = sourceFilter;
+	bind (options) {
+		// provide ref to List.js instance
+		if (options.list) BrewUtil._lists = [options.list];
+		else if (options.lists) BrewUtil._lists = options.lists;
+		// provide ref to FilterBox and Filter instance
+		if (options.filterBox) BrewUtil._filterBox = options.filterBox;
+		if (options.sourceFilter) BrewUtil._sourceFilter = options.sourceFilter;
 	},
 
 	addBrewData: (brewHandler) => {
@@ -3119,7 +3117,7 @@ BrewUtil = {
 				});
 				toDel.forEach(uId => {
 					deleteFn(uId, false);
-				})
+				});
 			});
 			BrewUtil.removeJsonSource(source);
 			// remove the source from the filters and re-render the filter box

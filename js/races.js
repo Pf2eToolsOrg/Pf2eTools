@@ -107,8 +107,7 @@ function onJsonLoad (data) {
 	addRaces({race: jsonRaces});
 	BrewUtil.addBrewData(addRaces);
 	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bindLists(list);
-	BrewUtil.bindFilters(filterBox, sourceFilter);
+	BrewUtil.bind({list, filterBox, sourceFilter});
 
 	History.init();
 	handleFilterChange();

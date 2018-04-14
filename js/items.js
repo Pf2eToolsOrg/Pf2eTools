@@ -166,8 +166,7 @@ function populateTablesAndFilters (data) {
 	addItems(data);
 	BrewUtil.addBrewData((homebrew) => addItems(homebrew.item));
 	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bindLists(mundanelist, magiclist);
-	BrewUtil.bindFilters(filterBox, sourceFilter);
+	BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
 
 	History.init();
 }

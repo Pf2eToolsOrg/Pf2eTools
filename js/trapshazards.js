@@ -24,7 +24,7 @@ function onJsonLoad (data) {
 	addTrapsHazards(data);
 	BrewUtil.addBrewData(addTrapsHazards);
 	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bindLists(list);
+	BrewUtil.bind({list});
 
 	History.init();
 }

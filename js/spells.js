@@ -221,8 +221,7 @@ window.onload = function load () {
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, () => {
 		BrewUtil.addBrewData(handleBrew);
 		BrewUtil.makeBrewButton("manage-brew");
-		BrewUtil.bindLists(list);
-		BrewUtil.bindFilters(filterBox, sourceFilter);
+		BrewUtil.bind({list, filterBox, sourceFilter});
 	});
 };
 

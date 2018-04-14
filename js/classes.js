@@ -118,8 +118,7 @@ function onJsonLoad (data) {
 
 	BrewUtil.addBrewData(handleBrew);
 	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bindLists(list);
-	BrewUtil.bindFilters(filterBox, sourceFilter);
+	BrewUtil.bind({list, filterBox, sourceFilter});
 
 	function handleBrew (homebrew) {
 		addClassData(homebrew);
