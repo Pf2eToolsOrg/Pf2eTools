@@ -1527,15 +1527,7 @@ table.stats.stats-book table.spellbook-entry {
 
 @media print {
 	@page {
-		margin: 10mm 20mm;
-	}
-
-	@page :left {
-		margin: 10mm 25mm 10mm 15mm;
-	}
-
-	@page :right {
-		margin: 10mm 15mm 10mm 25mm;
+		margin: 10mm 15mm;
 	}
 
 	.divider,
@@ -1596,16 +1588,30 @@ table.stats.stats-book table.spellbook-entry {
 			overflow: visible !important;
 			max-height: none !important;
 		}
+
+		th.border {
+			border: 0 !important;
+			padding: 0 !important;
+		}
 	}
 
 	.spellbook-level > td {
-		display: flex !important;
-		flex-wrap: wrap !important;
+		column-count: auto !important;
+		width: 100% !important;
 	}
 
 	.spellbook-entry {
-		width: 50% !important;
-		flex-shrink: 0 !important;
+		width: 100vw !important;
+		max-width: none !important;
+		page-break-before: auto !important;
+		page-break-after: auto !important;
+		page-break-inside: avoid !important;
+		display: block !important;
+		margin-bottom: 5px !important;
+	}
+
+	.spacer-name {
+		display: none !important;
 	}
 }
 
