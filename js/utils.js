@@ -2799,13 +2799,24 @@ BrewUtil = {
 
 				// populate list
 				function populateList () {
+					function getExtraInfo (category, entry) {
+						switch (category) {
+							case "subclass":
+								return ` (${entry.class})`;
+							case "psionic":
+								return ` (${Parser.psiTypeToFull(entry.type)})`;
+							default:
+								return "";
+						}
+					}
+
 					const $ul = $lst.find(`ul`);
 					let stack = "";
 					BrewUtil._getBrewCategories().forEach(cat => {
 						BrewUtil.homebrew[cat].filter(it => it.source === source).forEach(it => {
 							stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
 							<span class="col-xs-7 name">${it.name}</span>
-							<span class="col-xs-4 category">${cat.uppercaseFirst()}</span>
+							<span class="col-xs-4 category">${cat.uppercaseFirst()}${getExtraInfo(cat, it)}</span>
 							<span class="col-xs-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
 							<span class="hidden uid">${it.uniqueId}</span>
 						</section></li>`;
@@ -2933,16 +2944,20 @@ BrewUtil = {
 			}
 
 			function checkAndAddSources () {
-				if (!json._meta || !json._meta.sources) return;
+				if (!json._meta || !json._meta.sources) return [];
+				const areNew = [];
 				if (!BrewUtil.homebrew._meta) BrewUtil.homebrew._meta = {sources: []};
 				const existing = BrewUtil.homebrew._meta.sources.map(src => src.json);
 				json._meta.sources.forEach(src => {
 					if (!existing.find(it => it === src.json)) {
 						BrewUtil.homebrew._meta.sources.push(src);
+						areNew.push(src);
 					}
 				});
+				return areNew;
 			}
 
+			let sourcesToAdd = json._meta ? json._meta.sources : [];
 			let classesToAdd = json.class;
 			let subclassesToAdd = json.subclass;
 			let spellsToAdd = json.spell;
@@ -2961,7 +2976,7 @@ BrewUtil = {
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
-				checkAndAddSources(); // adding source(s) to Filter should happen in per-page addX functions
+				sourcesToAdd = checkAndAddSources(); // adding source(s) to Filter should happen in per-page addX functions
 				// only add if unique ID not already present
 				classesToAdd = checkAndAdd("class");
 				subclassesToAdd = checkAndAdd("subclass");
@@ -3032,7 +3047,22 @@ BrewUtil = {
 			}
 
 			refreshBrewList();
-			// TODO ensure source(s) are displayed in filter
+
+			if (BrewUtil._filterBox && BrewUtil._sourceFilter) {
+				const cur  = BrewUtil._filterBox.getValues();
+				if (cur.Source) {
+					const toSet = JSON.parse(JSON.stringify(cur.Source));
+
+					if (toSet._totals.yes || toSet._totals.no) {
+						if (page === UrlUtil.PG_CLASSES) toSet["Core"] = 1;
+						else sourcesToAdd.forEach(src => toSet[src.json] = 1);
+
+						const toSetValues = Object.keys(toSet).filter(k => !k.startsWith("_")).filter(k => toSet[k]).map(k => `${!~toSet[k] ? "!" : ""}${k}`.toLowerCase());
+						BrewUtil._filterBox.setFromValues({Source: toSetValues});
+					}
+				}
+				BrewUtil._filterBox._fireValChangeEvent();
+			}
 		}
 
 		BrewUtil.addBrewRemote = (ele, jsonUrl) => {
