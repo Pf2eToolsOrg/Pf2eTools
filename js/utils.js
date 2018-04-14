@@ -3047,7 +3047,7 @@ BrewUtil = {
 			refreshBrewList();
 
 			if (BrewUtil._filterBox && BrewUtil._sourceFilter) {
-				const cur  = BrewUtil._filterBox.getValues();
+				const cur = BrewUtil._filterBox.getValues();
 				if (cur.Source) {
 					const toSet = JSON.parse(JSON.stringify(cur.Source));
 
