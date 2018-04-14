@@ -48,7 +48,7 @@ function rollSuppStatus () {
 	return _getFromTable(SUPP_STATUS, RNG(6) + RNG(6) + RNG(6));
 }
 
-function getPersonDetails (doRace) {
+function getPersonDetails (doRace, isParent) {
 	const status = rollSuppStatus();
 	const align = rollSuppAlignment().result.map(it => Parser.alignmentAbvToFull(it)).join(" ");
 	const occ = rollSuppOccupation().result;
@@ -56,9 +56,11 @@ function getPersonDetails (doRace) {
 	const out = [
 		`<b>Alignment:</b> ${align}`,
 		`<b>Occupation:</b> ${occ}`,
-		`<b>Relationship:</b> ${relate}`,
-		`<b>Status:</b> ${status.result}`
+		`<b>Relationship:</b> ${relate}`
 	];
+	if (!isParent) {
+		out.push(`<b>Status:</b> ${status.result}`);
+	}
 	if (doRace) {
 		const race = rollSuppRace().result;
 		out.splice(index, 0, race);
@@ -568,8 +570,8 @@ function sectParents () {
 
 	$parents.html(concatSentences(`<b>Race:</b> ${race}${selRace === "Random" ? ` ${fmtChoice("generated using the Supplemental Race table")}` : ""}`, knowParentsStr, parentage));
 	if (knowParents) {
-		const mum = getPersonDetails();
-		const dad = getPersonDetails();
+		const mum = getPersonDetails(false, true);
+		const dad = getPersonDetails(false, true);
 		$parents.append(`<h5>Mother</h5>`);
 		$parents.append(joinParaList(mum));
 		$parents.append(`<h5>Father</h5>`);
