@@ -1718,6 +1718,7 @@ EntryRenderer.item = {
 
 	_priceRe: /^(\d+)(\w+)$/,
 	enhanceItem (item) {
+		item._isEnhanced = true;
 		if (item.noDisplay) return;
 		if (item.type === "GV") item.category = "Generic Variant";
 		if (item.category === undefined) item.category = "Other";

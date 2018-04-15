@@ -3197,7 +3197,6 @@ BrewUtil = {
 		}
 
 		function deleteGenericBrew (category) {
-			// FIXME have it be marked as deleted in any data list, to prevent double-rendering
 			return (uniqueId, doRefresh) => {
 				doRemove(category, uniqueId, doRefresh);
 			}

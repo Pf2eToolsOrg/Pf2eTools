@@ -183,7 +183,7 @@ function addItems (data) {
 	for (; itI < itemList.length; itI++) {
 		const curitem = itemList[itI];
 		if (curitem.noDisplay) continue;
-		if (!curitem._allPropertiesPtr) EntryRenderer.item.enhanceItem(curitem);
+		if (!curitem._isEnhanced) EntryRenderer.item.enhanceItem(curitem);
 
 		const name = curitem.name;
 		const rarity = curitem.rarity;
