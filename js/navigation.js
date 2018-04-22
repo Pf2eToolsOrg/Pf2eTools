@@ -28,6 +28,7 @@ function currentPage () {
 
 	const current = $(`li[data-page="${currentPage}"]`);
 	current.addClass("active");
+	current.siblings().removeClass("active");
 	current.parent().closest("li").addClass("active");
 }
 
