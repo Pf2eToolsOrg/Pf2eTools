@@ -977,6 +977,13 @@ EntryRenderer.feat = {
 					outStack.push("The ability to cast at least one spell");
 				}
 			}
+			if (pre.special) {
+				if (isShorthand) {
+					outStack.push("Special");
+				} else {
+					outStack.push(pre.special);
+				}
+			}
 		}
 		if (doMakeAsArray) {
 			return outStack;
