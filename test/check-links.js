@@ -15,7 +15,7 @@ const TAG_TO_PAGE = {
 	"race": UrlUtil.PG_RACES,
 	"invocation": UrlUtil.PG_INVOCATIONS,
 	"reward": UrlUtil.PG_REWARDS,
-	"feat": UrlUtil.PG_FEATS,
+	"feat": UrlUtil.PG_FEATS
 };
 
 const TAG_TO_DEFAULT_SOURCE = {
