@@ -2254,16 +2254,24 @@ EntryRenderer.hover = {
 			}
 		});
 
+		function loadPopulate (data, listProp) {
+			data[listProp].forEach(it => {
+				const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+				EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+			});
+		}
+
 		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
+				BrewUtil.addBrewData((data) => {
+					if (!data[listProp]) return;
+					loadPopulate(data, listProp);
+				});
 				DataUtil.loadJSON(`${baseUrl}index.json`, (data) => {
 					const procData = {};
 					Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
 					DataUtil.loadJSON(`${baseUrl}${procData[source.toLowerCase()]}`, (data) => {
-						data[listProp].forEach(it => {
-							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-						});
+						loadPopulate(data, listProp);
 						EntryRenderer.hover._makeWindow();
 					});
 				});
@@ -2273,17 +2281,14 @@ EntryRenderer.hover = {
 		}
 
 		function loadSimple (page, jsonFile, listProp) {
-			function populate (data, listProp) {
-				data[listProp].forEach(it => {
-					const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-					EntryRenderer.hover._addToCache(page, it.source, itHash, it)
-				});
-			}
-
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
+				BrewUtil.addBrewData((data) => {
+					if (!data[listProp]) return;
+					loadPopulate(data, listProp);
+				});
 				DataUtil.loadJSON(`data/${jsonFile}`, (data) => {
-					if (listProp instanceof Array) listProp.forEach(p => populate(data, p));
-					else populate(data, listProp);
+					if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p));
+					else loadPopulate(data, listProp);
 					EntryRenderer.hover._makeWindow();
 				});
 			} else {
@@ -2304,6 +2309,14 @@ EntryRenderer.hover = {
 
 			case UrlUtil.PG_ITEMS: {
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					BrewUtil.addBrewData((data) => {
+						if (!data.item) return;
+						data.item.forEach(it => {
+							if (!it._isEnhanced) EntryRenderer.item.enhanceItem(it);
+							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+							EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+						});
+					});
 					EntryRenderer.item.buildList((allItems) => {
 						allItems.forEach(item => {
 							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
@@ -2343,6 +2356,10 @@ EntryRenderer.hover = {
 			}
 			case UrlUtil.PG_RACES: {
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
+					BrewUtil.addBrewData((data) => {
+						if (!data.race) return;
+						loadPopulate(data, "race");
+					});
 					DataUtil.loadJSON(`data/races.json`, (data) => {
 						const merged = EntryRenderer.race.mergeSubraces(data.race);
 						merged.forEach(race => {
