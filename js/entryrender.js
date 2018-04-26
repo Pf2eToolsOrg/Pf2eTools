@@ -242,8 +242,16 @@ function EntryRenderer () {
 				case "dataCreature":
 					renderPrefix();
 					textStack.push(`<table class="statsDataInset">`);
+					textStack.push(`<thead><tr><th class="dataCreature__header" colspan="6" onclick="((ele) => {
+						$(ele).find('.dataCreature__name').toggle(); 
+						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
+						$(ele).closest('table').find('tbody').toggle()
+					})(this)">
+						<span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span>
+						<span class="dataCreature__showHide">[\u2013]</span>
+					</th></tr></thead><tbody>`);
 					textStack.push(EntryRenderer.monster.getCompactRenderedString(entry.dataCreature, this));
-					textStack.push(`</table>`);
+					textStack.push(`</tbody></table>`);
 					renderSuffix();
 					break;
 
