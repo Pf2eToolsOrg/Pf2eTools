@@ -978,10 +978,10 @@ EntryRenderer.feat = {
 				}
 			}
 			if (pre.special) {
-				if (isShorthand) {
-					outStack.push("Special");
-				} else {
-					outStack.push(pre.special);
+				if (isShorthand) outStack.push("Special");
+				else {
+					const renderer = EntryRenderer.getDefaultRenderer();
+					outStack.push(renderer.renderEntry(pre.special));
 				}
 			}
 		}
