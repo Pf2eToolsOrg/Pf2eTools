@@ -261,7 +261,7 @@ function loadhash (id) {
 					$td = $td2;
 				}
 
-				const subFluff = data.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
+				const subFluff = race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : data.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
 				const baseFluff = data.race.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
 				if (subFluff || baseFluff) {
 					if (subFluff && subFluff.entries && !baseFluff) {
