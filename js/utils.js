@@ -2741,6 +2741,8 @@ BrewUtil = {
 						return ["reward"];
 					case UrlUtil.PG_PSIONICS:
 						return ["psionic"];
+					case UrlUtil.PG_VARIATNRULES:
+						return ["variantrule"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -2931,7 +2933,7 @@ BrewUtil = {
 			}
 
 			// prepare for storage
-			["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard"].forEach(storePrep);
+			["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard", "variantrule"].forEach(storePrep);
 
 			// store
 			function checkAndAdd (prop) {
@@ -2977,6 +2979,7 @@ BrewUtil = {
 			let itemsToAdd = json.item;
 			let rewardsToAdd = json.reward;
 			let psionicsToAdd = json.psionic;
+			let variantRulesToAdd = json.variantrule;
 			if (!BrewUtil.homebrew) {
 				BrewUtil.homebrew = json;
 			} else {
@@ -2997,6 +3000,7 @@ BrewUtil = {
 				itemsToAdd = checkAndAdd("item");
 				rewardsToAdd = checkAndAdd("reward");
 				psionicsToAdd = checkAndAdd("psionic");
+				variantRulesToAdd = checkAndAdd("variantrule");
 			}
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -3045,6 +3049,9 @@ BrewUtil = {
 					break;
 				case UrlUtil.PG_PSIONICS:
 					addPsionics({psionic: psionicsToAdd});
+					break;
+				case UrlUtil.PG_VARIATNRULES:
+					addPsionics({variantrule: variantRulesToAdd});
 					break;
 				default:
 					throw new Error(`No homebrew add function defined for category ${page}`);
