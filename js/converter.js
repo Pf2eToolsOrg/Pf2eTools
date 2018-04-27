@@ -65,80 +65,80 @@ function tryParseSpecialDamage (strDamage, damageType) {
 }
 
 function tryParseSpellcasting (trait) {
-	try {
-		let spellcasting = [];
+	let spellcasting = [];
 
-		function parseSpellcasting (trait) {
-			let name = trait.name;
-			let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
-			let doneHeader = false;
-			for (let i = 1; i < trait.entries.length; i++) {
-				let thisLine = trait.entries[i];
-				if (thisLine.includes("/rest")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-					let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-					if (!spellcastingEntry.rest) spellcastingEntry.rest = {};
-					spellcastingEntry.rest[property] = value;
-				} else if (thisLine.includes("/day")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-					let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-					if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
-					spellcastingEntry.daily[property] = value;
-				} else if (thisLine.includes("/week")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-					let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-					if (!spellcastingEntry.weekly) spellcastingEntry.weekly = {};
-					spellcastingEntry.weekly[property] = value;
-				} else if (thisLine.startsWith("Constant: ")) {
-					doneHeader = true;
-					spellcastingEntry.constant = thisLine.substring(9).split(", ").map(i => parseSpell(i));
-				} else if (thisLine.startsWith("At will: ")) {
-					doneHeader = true;
-					spellcastingEntry.will = thisLine.substring(9).split(", ").map(i => parseSpell(i));
-				} else if (thisLine.includes("Cantrip")) {
-					doneHeader = true;
-					let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-					if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
-					spellcastingEntry.spells["0"].spells = value;
-				} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
-					doneHeader = true;
-					let property = thisLine.substr(0, 1);
-					let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
-					if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
-					let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
-					spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
+	function parseSpellcasting (trait) {
+		let name = trait.name;
+		let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
+		let doneHeader = false;
+		for (let i = 1; i < trait.entries.length; i++) {
+			let thisLine = trait.entries[i];
+			if (thisLine.includes("/rest")) {
+				doneHeader = true;
+				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				if (!spellcastingEntry.rest) spellcastingEntry.rest = {};
+				spellcastingEntry.rest[property] = value;
+			} else if (thisLine.includes("/day")) {
+				doneHeader = true;
+				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
+				spellcastingEntry.daily[property] = value;
+			} else if (thisLine.includes("/week")) {
+				doneHeader = true;
+				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				if (!spellcastingEntry.weekly) spellcastingEntry.weekly = {};
+				spellcastingEntry.weekly[property] = value;
+			} else if (thisLine.startsWith("Constant: ")) {
+				doneHeader = true;
+				spellcastingEntry.constant = thisLine.substring(9).split(", ").map(i => parseSpell(i));
+			} else if (thisLine.startsWith("At will: ")) {
+				doneHeader = true;
+				spellcastingEntry.will = thisLine.substring(9).split(", ").map(i => parseSpell(i));
+			} else if (thisLine.includes("Cantrip")) {
+				doneHeader = true;
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
+				spellcastingEntry.spells["0"].spells = value;
+			} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
+				doneHeader = true;
+				let property = thisLine.substr(0, 1);
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
+				let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
+				spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
+			} else {
+				if (doneHeader) {
+					if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];
+					spellcastingEntry.footerEntries.push(parseToHit(thisLine));
 				} else {
-					if (doneHeader) {
-						if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];
-						spellcastingEntry.footerEntries.push(parseToHit(thisLine));
-					} else {
-						spellcastingEntry.headerEntries.push(parseToHit(thisLine));
-					}
+					spellcastingEntry.headerEntries.push(parseToHit(thisLine));
 				}
 			}
-			spellcasting.push(spellcastingEntry);
 		}
+		spellcasting.push(spellcastingEntry);
+	}
 
-		function parseSpell (name) {
-			let asterix = name.indexOf("*");
-			let brackets = name.indexOf(" (");
-			if (asterix !== -1) {
-				return `{@spell ${name.substr(0, asterix)}}*`;
-			} else if (brackets !== -1) {
-				return `{@spell ${name.substr(0, brackets)}}${name.substring(brackets)}`;
-			}
-			return `{@spell ${name}}`;
+	function parseSpell (name) {
+		let asterix = name.indexOf("*");
+		let brackets = name.indexOf(" (");
+		if (asterix !== -1) {
+			return `{@spell ${name.substr(0, asterix)}}*`;
+		} else if (brackets !== -1) {
+			return `{@spell ${name.substr(0, brackets)}}${name.substring(brackets)}`;
 		}
+		return `{@spell ${name}}`;
+	}
 
-		function parseToHit (line) {
-			return line.replace(/( \+)(\d+)( to hit with spell)/g, (m0, m1, m2, m3) => {
-				return ` {@hit ${m2}}${m3}`;
-			});
-		}
+	function parseToHit (line) {
+		return line.replace(/( \+)(\d+)( to hit with spell)/g, (m0, m1, m2, m3) => {
+			return ` {@hit ${m2}}${m3}`;
+		});
+	}
 
+	try {
 		parseSpellcasting(trait);
 		return spellcasting;
 	} catch (e) {
