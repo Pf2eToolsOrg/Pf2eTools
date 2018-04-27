@@ -2805,6 +2805,11 @@ BrewUtil = {
 
 				// populate list
 				function populateList () {
+					function getDisplayCat (cat) {
+						if (cat === "variantrule") return "Variant Rule";
+						return cat.uppercaseFirst();
+					}
+
 					function getExtraInfo (category, entry) {
 						switch (category) {
 							case "subclass":
@@ -2822,7 +2827,7 @@ BrewUtil = {
 						BrewUtil.homebrew[cat].filter(it => it.source === source).forEach(it => {
 							stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
 							<span class="col-xs-7 name">${it.name}</span>
-							<span class="col-xs-4 category">${cat.uppercaseFirst()}${getExtraInfo(cat, it)}</span>
+							<span class="col-xs-4 category">${getDisplayCat(cat)}${getExtraInfo(cat, it)}</span>
 							<span class="col-xs-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
 							<span class="hidden uid">${it.uniqueId}</span>
 						</section></li>`;
@@ -3051,7 +3056,7 @@ BrewUtil = {
 					addPsionics({psionic: psionicsToAdd});
 					break;
 				case UrlUtil.PG_VARIATNRULES:
-					addPsionics({variantrule: variantRulesToAdd});
+					addVariantRules({variantrule: variantRulesToAdd});
 					break;
 				default:
 					throw new Error(`No homebrew add function defined for category ${page}`);
