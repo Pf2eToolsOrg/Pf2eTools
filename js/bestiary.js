@@ -76,6 +76,7 @@ window.onload = function load () {
 };
 
 let list;
+let printBookView;
 const sourceFilter = getSourceFilter();
 const crFilter = new Filter({header: "CR"});
 const sizeFilter = new Filter({
@@ -237,6 +238,25 @@ function pageInit (loadedSources) {
 	ListUtil.bindAddButton();
 	ListUtil.bindSubtractButton();
 	ListUtil.initGenericAddable();
+
+	// print view
+	printBookView = new BookModeView("bookview", $(`#btn-printbook`), "Please make a list of creatures first",
+		($tbl) => {
+			const toShow = ListUtil.getSublistedIds().map(id => monsters[id]).sort((a, b) => SortUtil.ascSort(a.name, b.name));
+			let numShown = 0;
+			const stack = [];
+			stack.push(`<tr class="printbook-bestiary"><td>`);
+			toShow.forEach(mon => {
+				stack.push(`<table class="printbook-bestiary-entry"><tbody>`);
+				stack.push(EntryRenderer.monster.getCompactRenderedString(mon, renderer));
+				stack.push(`</tbody></table>`);
+			});
+			stack.push(`</td></tr>`);
+			numShown += toShow.length;
+			$tbl.append(stack.join(""));
+			return numShown;
+		}
+	);
 
 	// proficiency bonus/dice toggle
 	const profBonusDiceBtn = $("button#profbonusdice");
@@ -890,6 +910,8 @@ function loadhash (id) {
 			label: $ele.attr("title")
 		});
 	}
+
+	loadsub([]);
 }
 
 function handleUnknownHash (link, sub) {
@@ -977,4 +999,8 @@ function getAttribute (skill) {
 function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
+
+	const bookViewHash = sub.find(it => it.startsWith(printBookView.hashKey));
+	if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[printBookView.hashKey][0] === "true") printBookView.open();
+	else printBookView.teardown();
 }

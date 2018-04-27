@@ -1521,6 +1521,44 @@ table.stats.stats-book table.spellbook-entry {
 	max-width: 440px;
 }
 
+/* *** */
+
+/* Bestiary print view */
+tr.printbook-bestiary > td {
+	column-count: 3;
+	column-gap: 7px;
+
+	@media (max-width: 2160px) {
+		column-count: 3;
+	}
+
+	@media (max-width: 1800px) {
+		column-count: 2;
+	}
+
+	@media (max-width: 1440px) {
+		column-count: 2;
+	}
+
+	@media (max-width: 1080px) {
+		column-count: 1;
+	}
+
+	@media only screen and (max-width: 720px) {
+		column-count: 1;
+	}
+}
+
+table.stats.stats-book table.printbook-bestiary-entry {
+	margin: 0;
+	border-radius: 0.2em;
+	display: inline-block;
+	width: 100%;
+	border: #ccc 1px solid;
+}
+
+/* *** */
+
 /****************************************
  * Print styles
  ***************************************/
@@ -1595,11 +1633,13 @@ table.stats.stats-book table.spellbook-entry {
 		}
 	}
 
+	.printbook-bestiary > td,
 	.spellbook-level > td {
 		column-count: auto !important;
 		width: 100% !important;
 	}
 
+	.printbook-bestiary-entry,
 	.spellbook-entry {
 		width: 100vw !important;
 		max-width: none !important;

@@ -3475,6 +3475,17 @@ CollectionUtil = {
 };
 
 // OVERLAY VIEW ========================================================================================================
+/**
+ * Relies on:
+ * - page implementing HashUtil's `loadsub` with handling to show/hide the book view based on hashKey changes
+ * - page running no-argument `loadsub` when `hashchange` occurs
+ *
+ * @param hashKey to use in the URL so that forward/back can open/close the view
+ * @param $openBtn jQuery-selected button to bind click open/close
+ * @param noneVisibleMsg "error" message to display if user has not selected any viewable content
+ * @param popTblGetNumShown function which should populate the view with HTML content and return the number of items displayed
+ * @constructor
+ */
 function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 	this.hashKey = hashKey;
 	this.$openBtn = $openBtn;
