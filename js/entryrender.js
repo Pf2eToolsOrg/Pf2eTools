@@ -762,6 +762,15 @@ function EntryRenderer () {
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							case "@psionic":
+								fauxEntry.href.path = "psionics.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_UATMC;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_PSIONICS,
+									source: source || SRC_UATMC
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
 						}
 					}
 				} else {

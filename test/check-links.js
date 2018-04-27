@@ -2,7 +2,7 @@ const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
-const re = /{@(spell|item|class|creature|condition|background|race|invocation|feat|reward) (.*?)(\|(.*?))?(\|.*?)?}/g;
+const re = /{@(spell|item|class|creature|condition|background|race|invocation|feat|reward|psionic) (.*?)(\|(.*?))?(\|.*?)?}/g;
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -15,7 +15,8 @@ const TAG_TO_PAGE = {
 	"race": UrlUtil.PG_RACES,
 	"invocation": UrlUtil.PG_INVOCATIONS,
 	"reward": UrlUtil.PG_REWARDS,
-	"feat": UrlUtil.PG_FEATS
+	"feat": UrlUtil.PG_FEATS,
+	"psionic": UrlUtil.PG_PSIONICS
 };
 
 const TAG_TO_DEFAULT_SOURCE = {
@@ -28,7 +29,8 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"race": "phb",
 	"invocation": "phb",
 	"reward": "dmg",
-	"feat": "phb"
+	"feat": "phb",
+	"psionic": "UATheMysticClass"
 };
 
 function recursiveCheck (file) {
