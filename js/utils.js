@@ -2552,6 +2552,11 @@ RollerUtil = {
 		});
 
 		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
+	},
+
+	isRollCol (string) {
+		if (typeof string !== "string") return false;
+		return !!/^(\d+)?d\d+([+-](\d+)?d\d+)*$/.exec(string.trim());
 	}
 };
 

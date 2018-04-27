@@ -310,10 +310,24 @@ function EntryRenderer () {
 			textStack.push("<thead>");
 			textStack.push("<tr>");
 
+			let autoMkRoller = false;
 			if (entry.colLabels) {
+				autoMkRoller = entry.colLabels.length === 2 && RollerUtil.isRollCol(entry.colLabels[0]);
+				if (autoMkRoller) {
+					// scan the first column to ensure all rollable
+					const notRollable = entry.rows.find(it => {
+						try {
+							return !/\d+(-\d+)?/.exec(it[0]);
+						} catch (e) {
+							return true;
+						}
+					});
+					if (notRollable) autoMkRoller = false;
+				}
+
 				for (let i = 0; i < entry.colLabels.length; ++i) {
 					textStack.push(`<th ${getTableThClassText(i)}>`);
-					self.recursiveEntryRender(entry.colLabels[i], textStack, depth);
+					self.recursiveEntryRender(autoMkRoller && i === 0 ? `{@dice ${entry.colLabels[i]}}` : entry.colLabels[i], textStack, depth);
 					textStack.push(`</th>`);
 				}
 			}
@@ -325,8 +339,32 @@ function EntryRenderer () {
 			for (let i = 0; i < entry.rows.length; ++i) {
 				textStack.push("<tr>");
 				const r = entry.rows[i];
-				const roRender = r.type === "row" ? r.row : r;
+				let roRender = r.type === "row" ? r.row : r;
 				for (let j = 0; j < roRender.length; ++j) {
+					// preconvert rollables
+					if (autoMkRoller && j === 0) {
+						roRender = JSON.parse(JSON.stringify(roRender));
+						const m = /(\d+)(-(\d+))?/.exec(roRender[j]); // should always match; validated earlier
+						if (m[1] && !m[2]) {
+							roRender[j] = {
+								type: "cell",
+								roll: {
+									exact: Number(m[1])
+								}
+							};
+							if (m[1][0] === "0") roRender[j].pad = true;
+						} else {
+							roRender[j] = {
+								type: "cell",
+								roll: {
+									min: Number(m[1]),
+									max: Number(m[3])
+								}
+							};
+							if (m[1][0] === "0" || m[3][0] === "0") roRender[j].pad = true;
+						}
+					}
+
 					let toRenderCell;
 					if (roRender[j].type === "cell") {
 						if (roRender[j].entry) {
