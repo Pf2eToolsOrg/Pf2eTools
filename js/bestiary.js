@@ -522,6 +522,7 @@ function loadhash (id) {
 		</a>`
 		);
 
+		// TODO most of this could be rolled into the string template above
 		$content.find("td span#size").html(Parser.sizeAbvToFull(mon.size));
 
 		$content.find("td span#type").html(type);
@@ -561,11 +562,9 @@ function loadhash (id) {
 		}
 
 		var skills = mon.skill;
-		let perception = 0;
 		if (skills) {
 			$content.find("td span#skills").parent().show();
 			$content.find("td span#skills").html(objToTitleCaseStringWithCommas(skills));
-			if (skills.perception) perception = parseInt(skills.perception);
 		} else {
 			$content.find("td span#skills").parent().hide();
 		}

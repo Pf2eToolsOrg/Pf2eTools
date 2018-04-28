@@ -228,8 +228,49 @@ function loadhash (id) {
 
 	const race = raceList[id];
 
+	function buildStatsTab () {
+		$pgContent.append(`
+		<tbody>
+		${EntryRenderer.utils.getBorderTr()}
+		<tr><th class="name" colspan="6">Name</th></tr>
+		<tr><td id="ability" colspan="6">Ability Scores: <span>+1 Dex</span></td></tr>
+		<tr><td id="size" colspan="6">Size: <span>Medium</span></td></tr>
+		<tr><td id="speed" colspan="6">Speed: <span>30 ft.</span></td></tr>
+		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
+		${EntryRenderer.utils.getBorderTr()}
+		</tbody>		
+		`);
+
+		$pgContent.find("th.name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
+
+		const size = Parser.sizeAbvToFull(race.size);
+		$pgContent.find("td#size span").html(size);
+
+		const ability = race.ability ? utils_getAbilityData(race.ability) : {asText: "None"};
+		$pgContent.find("td#ability span").html(ability.asText);
+
+		$pgContent.find("td#speed span").html(Parser.getSpeedString(race));
+
+		const renderStack = [];
+		renderStack.push("<tr class='text'><td colspan='6'>");
+		renderer.recursiveEntryRender({type: "entries", entries: race.entries}, renderStack, 1);
+		renderStack.push("</td></tr>");
+		if (race.npc) {
+			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
+			renderer.recursiveEntryRender(
+				`{@i Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`
+				, renderStack, 2);
+			renderStack.push(`</section></td></tr>`);
+		}
+		renderStack.push(EntryRenderer.utils.getPageTr(race));
+
+		$pgContent.find('tbody tr:last').before(renderStack.join(""));
+	}
+
 	const traitTab = EntryRenderer.utils.tabButton(
-		"Traits"
+		"Traits",
+		() => {},
+		buildStatsTab
 	);
 	const infoTab = EntryRenderer.utils.tabButton(
 		"Info",
@@ -261,7 +302,7 @@ function loadhash (id) {
 					$td = $td2;
 				}
 
-				const subFluff = race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : data.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
+				const subFluff = race._baseName && race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : data.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
 				const baseFluff = data.race.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
 				if (subFluff || baseFluff) {
 					if (subFluff && subFluff.entries && !baseFluff) {
@@ -296,31 +337,6 @@ function loadhash (id) {
 		}
 	);
 	EntryRenderer.utils.bindTabButtons(traitTab, infoTab);
-
-	$pgContent.find("th.name").html(`<span class="stats-name">${race.name}</span><span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>`);
-
-	const size = Parser.sizeAbvToFull(race.size);
-	$pgContent.find("td#size span").html(size);
-
-	const ability = race.ability ? utils_getAbilityData(race.ability) : {asText: "None"};
-	$pgContent.find("td#ability span").html(ability.asText);
-
-	$pgContent.find("td#speed span").html(Parser.getSpeedString(race));
-
-	const renderStack = [];
-	renderStack.push("<tr class='text'><td colspan='6'>");
-	renderer.recursiveEntryRender({type: "entries", entries: race.entries}, renderStack, 1);
-	renderStack.push("</td></tr>");
-	if (race.npc) {
-		renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
-		renderer.recursiveEntryRender(
-			`{@i Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`
-			, renderStack, 2);
-		renderStack.push(`</section></td></tr>`);
-	}
-	renderStack.push(EntryRenderer.utils.getPageTr(race));
-
-	$pgContent.find('tbody tr:last').before(renderStack.join(""));
 }
 
 function loadsub (sub) {
