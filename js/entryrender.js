@@ -1738,9 +1738,9 @@ EntryRenderer.item = {
 		let variantList;
 
 		// allows URLs to be overriden (used by roll20 script)
-		const itemUrl = urls.items || "data/items.json";
-		const basicItemUrl = urls.basicitems || "data/basicitems.json";
-		const magicVariantUrl = urls.magicvariants || "data/magicvariants.json";
+		const itemUrl = urls.items || `${EntryRenderer.getDefaultRenderer().baseUrl}data/items.json`;
+		const basicItemUrl = urls.basicitems || `${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`;
+		const magicVariantUrl = urls.magicvariants || `${EntryRenderer.getDefaultRenderer().baseUrl}data/magicvariants.json`;
 
 		DataUtil.loadJSON(itemUrl, addBasicItems);
 
@@ -2080,7 +2080,7 @@ EntryRenderer.hover = {
 				DataUtil.loadJSON(`${baseUrl}index.json`, (data) => {
 					const procData = {};
 					Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
-					DataUtil.loadJSON(`${baseUrl}${procData[source.toLowerCase()]}`, (data) => {
+					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${procData[source.toLowerCase()]}`, (data) => {
 						loadPopulate(data, listProp);
 						callbackFn();
 					});
@@ -2096,7 +2096,7 @@ EntryRenderer.hover = {
 					if (!data[listProp]) return;
 					loadPopulate(data, listProp);
 				});
-				DataUtil.loadJSON(`data/${jsonFile}`, (data) => {
+				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`, (data) => {
 					if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p));
 					else loadPopulate(data, listProp);
 					callbackFn();
@@ -2170,7 +2170,7 @@ EntryRenderer.hover = {
 						if (!data.race) return;
 						loadPopulate(data, "race");
 					});
-					DataUtil.loadJSON(`data/races.json`, (data) => {
+					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`, (data) => {
 						const merged = EntryRenderer.race.mergeSubraces(data.race);
 						merged.forEach(race => {
 							const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
