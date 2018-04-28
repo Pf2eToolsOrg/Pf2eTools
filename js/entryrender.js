@@ -2077,7 +2077,7 @@ EntryRenderer.hover = {
 					if (!data[listProp]) return;
 					loadPopulate(data, listProp);
 				});
-				DataUtil.loadJSON(`${baseUrl}index.json`, (data) => {
+				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`, (data) => {
 					const procData = {};
 					Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
 					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${procData[source.toLowerCase()]}`, (data) => {
