@@ -311,7 +311,7 @@ function loadhash (id) {
 				let entry = tGroup.rows[j][k];
 				if (entry === 0) entry = "\u2014";
 				const stack = [];
-				renderer.recursiveEntryRender(entry, stack, "", "");
+				renderer.recursiveEntryRender(entry, stack);
 				tr.append(`<td class="centred-col" ${subclassData}>${stack.join("")}</td>`)
 			}
 		}
@@ -324,7 +324,7 @@ function loadhash (id) {
 
 	// FLUFF
 	if (curClass.fluff) {
-		renderer.recursiveEntryRender({type: "section", name: curClass.name, entries: curClass.fluff}, renderStack, 0, `<tr class="text ${CLSS_CLASS_FLUFF}"><td colspan="6">`, `</td></tr>`, true);
+		renderer.recursiveEntryRender({type: "section", name: curClass.name, entries: curClass.fluff}, renderStack, 0, {prefix: `<tr class="text ${CLSS_CLASS_FLUFF}"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
 	}
 
 	// FEATURE DESCRIPTIONS
@@ -352,7 +352,7 @@ function loadhash (id) {
 			const styleClasses = [CLSS_CLASS_FEATURE];
 			if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
 
-			renderer.recursiveEntryRender(feature, renderStack, 0, `<tr id="${featureId}" class="text ${styleClasses.join(" ")}"><td colspan="6">`, `</td></tr>`, true);
+			renderer.recursiveEntryRender(feature, renderStack, 0, {prefix: `<tr id="${featureId}" class="text ${styleClasses.join(" ")}"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
 
 			// add subclass features to render stack if appropriate
 			if (feature.gainSubclassFeature) {
@@ -373,7 +373,7 @@ function loadhash (id) {
 						}
 
 						const styleClasses = getSubclassStyles(subClass);
-						renderer.recursiveEntryRender(subFeature, renderStack, 0, `<tr class="text ${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}"><td colspan="6">`, `</td></tr>`, true);
+						renderer.recursiveEntryRender(subFeature, renderStack, 0, {prefix: `<tr class="text ${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
 					}
 				}
 				subclassIndex++;
@@ -943,7 +943,7 @@ const ClassBookView = {
 
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		renderer.recursiveEntryRender({type: "section", name: curClass.name}, renderStack, 0, `<tr class="text"><td colspan="6">`, `</td></tr>`, true);
+		renderer.recursiveEntryRender({type: "section", name: curClass.name}, renderStack, 0, {prefix: `<tr class="text"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
 
 		renderStack.push(`<tr class="text class-features"><td colspan="6">`);
 		curClass.classFeatures.forEach(lvl => {
