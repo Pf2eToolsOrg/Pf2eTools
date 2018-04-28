@@ -26,6 +26,7 @@ function EntryRenderer () {
 	this._firstSection = true;
 	this._headerIndex = 1;
 	this._tagExportDict = null;
+	this._roll20Ids = null;
 
 	/**
 	 * Set the tag used to group rendered elements
@@ -85,6 +86,14 @@ function EntryRenderer () {
 	this.resetExportTags = function () {
 		this._tagExportDict = null;
 		return this;
+	};
+
+	this.setRoll20Ids = function (roll20Ids) {
+		this._roll20Ids = roll20Ids;
+	};
+
+	this.resetRoll20Ids = function () {
+		this._roll20Ids = null;
 	};
 
 	// TODO provide a Roll20 mode (expose list of found monsters/etc to be imported; add links to these)
@@ -849,6 +858,14 @@ function EntryRenderer () {
 			}
 		} else if (entry.href.type === "external") {
 			href = entry.href.url;
+		}
+		// overwrite href if there's an available Roll20 handout/character
+		if (entry.href.hover && self._roll20Ids) {
+			const procHash = UrlUtil.encodeForHash(entry.href.hash);
+			const id = self._roll20Ids[procHash];
+			if (id) {
+				href = `http://journal.roll20.net/${id.type}/${id.roll20Id}`;
+			}
 		}
 		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
 	};
