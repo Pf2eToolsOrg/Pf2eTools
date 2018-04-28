@@ -242,7 +242,11 @@ const BookUtil = {
 			BookUtil.loadBook(fromIndex[0], bookId, hashParts);
 			currentPage();
 		} else {
-			throw new Error("No book with ID: " + bookId);
+			if (!window.location.hash) {
+				window.history.back();
+			} else {
+				throw new Error("No book with ID: " + bookId);
+			}
 		}
 	},
 
