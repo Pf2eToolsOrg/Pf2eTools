@@ -88,6 +88,6 @@ Object.keys(out).sort().forEach(i => {
 	outJson.data.push(toAdd);
 });
 
-const toWrite = JSON.stringify(outJson, null, "\t");
+const toWrite = JSON.stringify(outJson); // minify the file, so it's clear it was auto-generated
 fs.writeFileSync("data/quickreference.json", toWrite, "utf8");
 console.log("Updated quick-reference.");
