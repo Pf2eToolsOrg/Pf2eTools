@@ -998,29 +998,31 @@ EntryRenderer.utils = {
 
 	_tabs: {},
 	_curTab: null,
+	_prevTab: null,
 	bindTabButtons: (...tabButtons) => {
-		EntryRenderer._tabs = {};
-		EntryRenderer._curTab = null;
+		EntryRenderer.utils._tabs = {};
+		EntryRenderer.utils._prevTab = EntryRenderer.utils._curTab;
+		EntryRenderer.utils._curTab = null;
 
 		const $content = $("#pagecontent");
 		const $wrpTab = $(`#stat-tabs`);
 
 		$wrpTab.find(`.stat-tab-gen`).remove();
-		EntryRenderer.utils._tabs[tabButtons[0].label] = tabButtons[0];
-		EntryRenderer.utils._curTab = tabButtons[0];
 
+		let initialTab = null;
 		const toAdd = tabButtons.map((tb, i) => {
-			const $t = $(`<span class="stat-tab ${i === 0 ? `stat-tab-sel` : ""} btn btn-default stat-tab-gen">${tb.label}</span>`);
+			const toSel = (!EntryRenderer.utils._prevTab && i === 0) || (EntryRenderer.utils._prevTab && EntryRenderer.utils._prevTab.label === tb.label);
+			const $t = $(`<span class="stat-tab ${toSel ? `stat-tab-sel` : ""} btn btn-default stat-tab-gen">${tb.label}</span>`);
 			tb.$t = $t;
 			$t.click(() => {
 				const curTab = EntryRenderer.utils._curTab;
 				const tabs = EntryRenderer.utils._tabs;
 
-				if (curTab.label !== tb.label) {
-					EntryRenderer.utils._curTab.$t.removeClass(`stat-tab-sel`);
+				if (!curTab || curTab.label !== tb.label) {
+					if (curTab) curTab.$t.removeClass(`stat-tab-sel`);
 					EntryRenderer.utils._curTab = tb;
 					$t.addClass(`stat-tab-sel`);
-					tabs[curTab.label].content = $content.children().detach();
+					if (curTab) tabs[curTab.label].content = $content.children().detach();
 
 					tabs[tb.label] = tb;
 					if (!tabs[tb.label].content && tb.funcPopulate) {
@@ -1031,10 +1033,12 @@ EntryRenderer.utils = {
 					if (tb.funcChange) tb.funcChange();
 				}
 			});
+			if (EntryRenderer.utils._prevTab && EntryRenderer.utils._prevTab.label === tb.label) initialTab = $t;
 			return $t;
 		});
 
 		toAdd.reverse().forEach($t => $wrpTab.prepend($t));
+		(initialTab || toAdd[toAdd.length - 1]).click();
 	}
 };
 
