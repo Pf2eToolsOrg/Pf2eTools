@@ -487,8 +487,8 @@ function loadhash (id) {
 		<tr><td colspan="6"><strong>Damage Immunities</strong> <span id="dmgimm">lightning</span></td></tr>
 		<tr><td colspan="6"><strong>Condition Immunities</strong> <span id="conimm">exhaustion</span></td></tr>
 		<tr><td colspan="6"><strong>Senses</strong> <span id="senses">darkvision 30 ft.</span> passive Perception <span id="pp">10</span></td></tr>
-		<tr<td colspan="6"><strong>Languages</strong> <span id="languages">Common</span></td></tr>
-		<tr<td colspan="6"><strong>Challenge</strong> <span id="cr">1 (450 XP)</span></td></tr>
+		<tr><td colspan="6"><strong>Languages</strong> <span id="languages">Common</span></td></tr>
+		<tr><td colspan="6"><strong>Challenge</strong> <span id="cr">1 (450 XP)</span></td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class="trait"><td colspan="6"><span class="name">Trait.</span> <span class="content">Content.</span></td></tr>
 		<tr id="actions"><td colspan="6"><span>Actions</span></td></tr>
