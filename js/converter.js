@@ -467,7 +467,8 @@ function loadparser (data) {
 					if (curtrait.name || curtrait.entries) {
 						if (ontraits) {
 							if (curtrait.name.toLowerCase().includes("spellcasting")) {
-								curtrait = tryParseSpellcasting(curtrait);if (curtrait.success) stats.spellcasting = curtrait.out;
+								curtrait = tryParseSpellcasting(curtrait);
+								if (curtrait.success) stats.spellcasting = curtrait.out;
 								else stats.trait.push(curtrait.out);
 							} else {
 								if (hasEntryContent(curtrait)) stats.trait.push(curtrait);
