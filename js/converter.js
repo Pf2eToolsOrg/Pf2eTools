@@ -140,9 +140,9 @@ function tryParseSpellcasting (trait) {
 
 	try {
 		parseSpellcasting(trait);
-		return spellcasting;
+		return {out: spellcasting, success: true};
 	} catch (e) {
-		return trait;
+		return {out: trait, success: false};
 	}
 }
 
@@ -466,12 +466,16 @@ function loadparser (data) {
 
 					if (curtrait.name || curtrait.entries) {
 						if (ontraits) {
-							if (curtrait.name.toLowerCase().includes("spellcasting")) curtrait = tryParseSpellcasting(curtrait);
-							stats.trait.push(curtrait);
+							if (curtrait.name.toLowerCase().includes("spellcasting")) {
+								curtrait = tryParseSpellcasting(curtrait);if (curtrait.success) stats.spellcasting = curtrait.out;
+								else stats.trait.push(curtrait.out);
+							} else {
+								if (hasEntryContent(curtrait)) stats.trait.push(curtrait);
+							}
 						}
-						if (onactions) stats.action.push(curtrait);
-						if (onreactions) stats.reaction.push(curtrait);
-						if (onlegendaries) stats.legendary.push(curtrait);
+						if (onactions && hasEntryContent(curtrait)) stats.action.push(curtrait);
+						if (onreactions && hasEntryContent(curtrait)) stats.reaction.push(curtrait);
+						if (onlegendaries && hasEntryContent(curtrait)) stats.legendary.push(curtrait);
 					}
 					curtrait = {};
 				}
@@ -487,6 +491,10 @@ function loadparser (data) {
 					delete stats.legendary;
 				}
 			}
+		}
+
+		function hasEntryContent (it) {
+			return it.name || (it.entries.length === 1 && it.entries[0]) || it.entries.length > 1;
 		}
 
 		let out = JSON.stringify(stats, null, "\t");
