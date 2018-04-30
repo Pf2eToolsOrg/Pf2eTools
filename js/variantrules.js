@@ -19,7 +19,6 @@ function onJsonLoad (data) {
 		listClass: "variantRules"
 	});
 
-	rulesList = data.variantrule;
 	tableDefault = $("#pagecontent").html();
 
 	filterBox = initFilterBox(sourceFilter);
