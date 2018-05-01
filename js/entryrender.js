@@ -1508,12 +1508,37 @@ EntryRenderer.monster = {
 		return `${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.`
 	},
 
+	// ultimately these rollers should become part of the JSON
+	legacy: {
+		addNonD20Rollers: (ele, title) => {
+			$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
+				const titleMaybe = title || EntryRenderer.monster.legacy.attemptToGetTitle(ele);
+				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
+			}));
+		},
+
+		attemptToGetTitle: (ele) => {
+			let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
+			if (titleMaybe !== undefined) {
+				titleMaybe = titleMaybe.innerHTML;
+				if (titleMaybe) {
+					titleMaybe = titleMaybe.substring(0, titleMaybe.length - 1).trim();
+				}
+			}
+			return titleMaybe;
+		}
+	},
+
 	getCompactRenderedString: (mon, renderer) => {
 		renderer = renderer || EntryRenderer.getDefaultRenderer();
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
 			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
+		}
+
+		function makeSkillRoller (name, mod) {
+			return renderer.renderEntry(`${name} {@dice 1d20${mod}|${mod}|${name}`);
 		}
 
 		function getSection (title, key, depth) {
@@ -1573,7 +1598,7 @@ EntryRenderer.monster = {
 			<tr><td colspan="6">
 				<div class="summary-flexer">
 					${mon.save ? `<p><b>Saving Throws:</b> ${mon.save}</p>` : ""}
-					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => `${s.uppercaseFirst()} ${mon.skill[s]}`)}</p>` : ""}
+					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => makeSkillRoller(s.uppercaseFirst(), mon.skill[s])).join(", ")}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
 					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${Parser.monImmResToFull(mon.vulnerable)}</p>` : ""}

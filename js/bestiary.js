@@ -775,13 +775,13 @@ function loadhash (id) {
 
 		// inline rollers
 		$content.find("p").each(function () {
-			addNonD20Rollers(this);
+			EntryRenderer.monster.legacy.addNonD20Rollers(this);
 
 			// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
 			// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
 			// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
 			// (Siri integration forthcoming)
-			const titleMaybe = attemptToGetTitle(this);
+			const titleMaybe = EntryRenderer.monster.legacy.attemptToGetTitle(this);
 			const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
 
 			$(this).html($(this).html().replace(/([-+])?\d+(?= to hit)/g, function (match) {
@@ -815,26 +815,8 @@ function loadhash (id) {
 			}));
 		});
 		$content.find("span#hp").each(function () {
-			addNonD20Rollers(this, "Hit Points");
+			EntryRenderer.monster.legacy.addNonD20Rollers(this, "Hit Points");
 		});
-
-		function addNonD20Rollers (ele, title) {
-			$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-				const titleMaybe = title || attemptToGetTitle(ele);
-				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
-			}));
-		}
-
-		function attemptToGetTitle (ele) {
-			let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
-			if (titleMaybe !== undefined) {
-				titleMaybe = titleMaybe.innerHTML;
-				if (titleMaybe) {
-					titleMaybe = titleMaybe.substring(0, titleMaybe.length - 1).trim();
-				}
-			}
-			return titleMaybe;
-		}
 
 		$content.find(".spells span.roller").contents().unwrap();
 		$content.find("span.roller").filter((i, e) => {
