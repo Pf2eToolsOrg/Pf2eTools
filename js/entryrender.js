@@ -1541,6 +1541,10 @@ EntryRenderer.monster = {
 			return renderer.renderEntry(`${name} {@dice 1d20${mod}|${mod}|${name}`);
 		}
 
+		function makeSaveRoller (attr, mod) {
+			return renderer.renderEntry(`${attr.uppercaseFirst()} {@dice 1d20${mod}|${mod}|${Parser.attAbvToFull([attr])} save`);
+		}
+
 		function getSection (title, key, depth) {
 			return mon[key] ? `
 			<tr class="mon-sect-header"><td colspan="6"><span>${title}</span></td></tr>
@@ -1597,7 +1601,7 @@ EntryRenderer.monster = {
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<div class="summary-flexer">
-					${mon.save ? `<p><b>Saving Throws:</b> ${mon.save}</p>` : ""}
+					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => makeSaveRoller(s, mon.save[s])).join(", ")}</p>` : ""}
 					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => makeSkillRoller(s.uppercaseFirst(), mon.skill[s])).join(", ")}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>

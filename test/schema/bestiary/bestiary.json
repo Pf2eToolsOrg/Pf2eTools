@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.4",
+	"version": "1.2.0",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -521,7 +521,16 @@
 					"type": "integer"
 				},
 				"save": {
-					"type": "string"
+					"type": "object",
+					"properties": {
+						"str": {"type": "string"},
+						"dex": {"type": "string"},
+						"con": {"type": "string"},
+						"int": {"type": "string"},
+						"wis": {"type": "string"},
+						"cha": {"type": "string"}
+					},
+					"additionalProperties": false
 				},
 				"skill": {
 					"type": "object",

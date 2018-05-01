@@ -555,8 +555,9 @@ function loadhash (id) {
 
 		var saves = mon.save;
 		if (saves) {
+			const parsedSaves = Object.keys(saves).map(it => `${it.uppercaseFirst()} ${saves[it]}`).join(", ");
 			$content.find("td span#saves").parent().show();
-			$content.find("td span#saves").html(saves);
+			$content.find("td span#saves").html(parsedSaves);
 		} else {
 			$content.find("td span#saves").parent().hide();
 		}
