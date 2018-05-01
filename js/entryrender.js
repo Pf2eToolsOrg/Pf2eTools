@@ -395,7 +395,11 @@ function EntryRenderer () {
 									exact: Number(m[1])
 								}
 							};
-							if (m[1][0] === "0") roRender[j].pad = true;
+							if (m[1][0] === "0") roRender[j].roll.pad = true;
+							if (roRender[j].roll.exact === 0 && i === entry.rows.length - 1) {
+								roRender[j].exact = 100;
+								roRender[j].entry = "00";
+							}
 						} else {
 							roRender[j] = {
 								type: "cell",
@@ -404,7 +408,11 @@ function EntryRenderer () {
 									max: Number(m[3])
 								}
 							};
-							if (m[1][0] === "0" || m[3][0] === "0") roRender[j].pad = true;
+							if (m[1][0] === "0" || m[3][0] === "0") roRender[j].roll.pad = true;
+							if (roRender[j].roll.max === 0 && i === entry.rows.length - 1) {
+								roRender[j].max = 100;
+								roRender[j].entry = "00";
+							}
 						}
 					}
 
@@ -415,7 +423,7 @@ function EntryRenderer () {
 						} else if (roRender[j].roll) {
 							if (roRender[j].roll.entry) {
 								toRenderCell = roRender[j].roll.entry;
-							} else if (roRender[j].roll.exact) {
+							} else if (roRender[j].roll.exact !== undefined) {
 								toRenderCell = roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
 							} else {
 								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`
@@ -450,7 +458,7 @@ function EntryRenderer () {
 					return num;
 				}
 				if (ent.roll) {
-					return `data-roll-min="${convertZeros(ent.roll.exact || ent.roll.min)}" data-roll-max="${convertZeros(ent.roll.exact || ent.roll.max)}"`
+					return `data-roll-min="${convertZeros(ent.roll.exact !== undefined ? ent.roll.exact : ent.roll.min)}" data-roll-max="${convertZeros(ent.roll.exact !== undefined ? ent.roll.exact : ent.roll.max)}"`
 				}
 				return "";
 			}
