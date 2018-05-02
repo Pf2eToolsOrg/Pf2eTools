@@ -2858,7 +2858,7 @@ BrewUtil = {
 						$overlay2.click();
 					} else {
 						toDel.forEach(it => {
-							const deleteFn = getDeleteFunction(it.category.toLowerCase());
+							const deleteFn = getDeleteFunction(it.category.toLowerCase().replace(/ /g, ""));
 							deleteFn(it.uid, false);
 						});
 						populateList();
@@ -3172,6 +3172,7 @@ BrewUtil = {
 				case "item":
 				case "reward":
 				case "psionic":
+				case "variantrule":
 					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
