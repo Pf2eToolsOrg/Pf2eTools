@@ -367,6 +367,7 @@ function loadparser (data) {
 			// damage vulnerabilities (optional)
 			if (!curline.indexOf("Damage Vulnerabilities ")) {
 				stats.vulnerable = curline.split("Vulnerabilities ")[1];
+				stats.vulnerable = tryParseSpecialDamage(stats.vulnerable, "vulnerable");
 				continue;
 			}
 
