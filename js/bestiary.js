@@ -6,6 +6,10 @@ const FLUFF_INDEX = "fluff-index.json";
 const JSON_LIST_NAME = "monster";
 const renderer = new EntryRenderer();
 
+window.PROF_MODE_BONUS = "bonus";
+window.PROF_MODE_DICE = "dice";
+window.PROF_DICE_MODE = PROF_MODE_BONUS;
+
 let tableDefault = "";
 
 function ascSortCr (a, b) {
@@ -260,24 +264,24 @@ function pageInit (loadedSources) {
 
 	// proficiency bonus/dice toggle
 	const profBonusDiceBtn = $("button#profbonusdice");
-	profBonusDiceBtn.useDice = false;
 	profBonusDiceBtn.click(function () {
-		if (this.useDice) {
+		if (window.PROF_DICE_MODE === PROF_MODE_DICE) {
+			window.PROF_DICE_MODE = PROF_MODE_BONUS;
 			this.innerHTML = "Use Proficiency Dice";
-			$("#pagecontent").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
+			$("#pagecontent").find(`span.render-roller, span.dc-roller`).each(function () {
 				const $this = $(this);
-				$this.attr(ATB_PROF_MODE, PROF_MODE_BONUS);
-				$this.html($this.attr(ATB_PROF_BONUS_STR));
-			})
+				$this.attr("mode", "");
+				$this.html($this.attr("data-roll-prof-bonus"));
+			});
 		} else {
+			window.PROF_DICE_MODE = PROF_MODE_DICE;
 			this.innerHTML = "Use Proficiency Bonus";
-			$("#pagecontent").find(`span.roller[${ATB_PROF_MODE}], span.dc-roller[${ATB_PROF_MODE}]`).each(function () {
+			$("#pagecontent").find(`span.render-roller, span.dc-roller`).each(function () {
 				const $this = $(this);
-				$this.attr(ATB_PROF_MODE, PROF_MODE_DICE);
-				$this.html($this.attr(ATB_PROF_DICE_STR));
-			})
+				$this.attr("mode", "dice");
+				$this.html($this.attr("data-roll-prof-dice"));
+			});
 		}
-		this.useDice = !this.useDice;
 	});
 }
 
@@ -472,12 +476,12 @@ function loadhash (id) {
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr id="abilitynames"><th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th></tr>
 		<tr id="abilityscores">
-			<td id="str"><span class="score">10</span> (<span class="mod">0</span>)</td>
-			<td id="dex"><span class="score">10</span> (<span class="mod">0</span>)</td>
-			<td id="con"><span class="score">10</span> (<span class="mod">0</span>)</td>
-			<td id="int"><span class="score">10</span> (<span class="mod">0</span>)</td>
-			<td id="wis"><span class="score">10</span> (<span class="mod">0</span>)</td>
-			<td id="cha"><span class="score">10</span> (<span class="mod">0</span>)</td>
+			<td id="str">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.str)}|${mon.str} (${Parser.getAbilityModifier(mon.str)})|Strength}`)}</td>
+			<td id="dex">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.dex)}|${mon.dex} (${Parser.getAbilityModifier(mon.dex)})|Dexterity}`)}</td>
+			<td id="con">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.con)}|${mon.con} (${Parser.getAbilityModifier(mon.con)})|Constitution}`)}</td>
+			<td id="int">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.int)}|${mon.int} (${Parser.getAbilityModifier(mon.int)})|Intelligence}`)}</td>
+			<td id="wis">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.wis)}|${mon.wis} (${Parser.getAbilityModifier(mon.wis)})|Wisdom}`)}</td>
+			<td id="cha">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.cha)}|${mon.cha} (${Parser.getAbilityModifier(mon.cha)})|Charisma}`)}</td>
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr><td colspan="6"><strong>Saving Throws</strong> <span id="saves">Str +0</span></td></tr>
@@ -531,27 +535,9 @@ function loadhash (id) {
 
 		$content.find("td span#ac").html(mon.ac);
 
-		$content.find("td span#hp").html(mon.hp);
+		$content.find("td span#hp").html(EntryRenderer.monster.getRenderedHp(mon.hp));
 
 		$content.find("td span#speed").html(Parser.getSpeedString(mon));
-
-		$content.find("td#str span.score").html(mon.str);
-		$content.find("td#str span.mod").html(Parser.getAbilityModifier(mon.str));
-
-		$content.find("td#dex span.score").html(mon.dex);
-		$content.find("td#dex span.mod").html(Parser.getAbilityModifier(mon.dex));
-
-		$content.find("td#con span.score").html(mon.con);
-		$content.find("td#con span.mod").html(Parser.getAbilityModifier(mon.con));
-
-		$content.find("td#int span.score").html(mon.int);
-		$content.find("td#int span.mod").html(Parser.getAbilityModifier(mon.int));
-
-		$content.find("td#wis span.score").html(mon.wis);
-		$content.find("td#wis span.mod").html(Parser.getAbilityModifier(mon.wis));
-
-		$content.find("td#cha span.score").html(mon.cha);
-		$content.find("td#cha span.mod").html(Parser.getAbilityModifier(mon.cha));
 
 		var saves = mon.save;
 		if (saves) {
@@ -702,7 +688,7 @@ function loadhash (id) {
 			$(this).wrapInner(`<span class="roller" data-roll="1d20${$(this).children(".mod").html()}" title="${Parser.attAbvToFull($(this).prop("id"))}"></span>`);
 		});
 
-		const isProfDiceMode = $("button#profbonusdice").useDice;
+		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
 		if (mon.skill) {
 			$content.find("#skills").each(makeSkillRoller);
 		}
@@ -729,15 +715,8 @@ function loadhash (id) {
 
 					if (b.match(re)) {
 						const bonus = Number(b);
-						const fromAbility = Parser.getAbilityModNumber(mon[getAttribute(skillName)]);
-						const expectedPB = getProfBonusFromCr(mon.cr);
-						const pB = bonus - fromAbility;
-
-						const expert = (pB === expectedPB * 2) ? 2 : 1;
 						const pBonusStr = `+${bonus}`;
-						const pDiceStr = `${expert}d${pB * (3 - expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
-
-						skillString += renderSkillOrSaveRoller(skillName, pBonusStr, pDiceStr, false);
+						skillString += renderSkillOrSaveRoller(skillName, pBonusStr, false);
 					} else {
 						skillString += b;
 					}
@@ -756,50 +735,76 @@ function loadhash (id) {
 			saves.map(s => {
 				const spl = s.split("+").map(s => s.trim());
 				const bonus = Number(spl[1]);
-				const fromAbility = Parser.getAbilityModNumber(mon[spl[0].toLowerCase()]);
-				const expectedPB = getProfBonusFromCr(mon.cr);
-				const pB = bonus - fromAbility;
-
-				const expert = (pB === expectedPB * 2) ? 2 : 1;
 				const pBonusStr = `+${bonus}`;
-				const pDiceStr = `${expert}d${pB * (3 - expert)}${fromAbility >= 0 ? "+" : ""}${fromAbility}`;
-
-				out.push(spl[0] + ' ' + renderSkillOrSaveRoller(spl[0], pBonusStr, pDiceStr, true));
+				out.push(spl[0] + ' ' + renderSkillOrSaveRoller(spl[0], pBonusStr, true));
 			});
 			$this.html(out.join(", "));
 		}
 
-		function renderSkillOrSaveRoller (itemName, profBonusString, profDiceString, isSave) {
-			const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
-			return `<span class='roller' title="${itemName} ${isSave ? " save" : ""}" data-roll-alt="1d20;${profDiceString}" data-roll='1d20${profBonusString}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${profBonusString}">${isProfDiceMode ? profDiceString : profBonusString}</span>`;
+		function renderSkillOrSaveRoller (itemName, profBonusString, isSave) {
+			return EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${profBonusString}|${profBonusString}|${itemName}${isSave ? " save" : ""}`);
 		}
 
 		// inline rollers
-		$content.find("p").each(function () {
-			EntryRenderer.monster.legacy.addNonD20Rollers(this);
-
-			// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
-			// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
-			// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
-			// (Siri integration forthcoming)
-			const titleMaybe = EntryRenderer.monster.legacy.attemptToGetTitle(this);
-			const mode = isProfDiceMode ? PROF_MODE_DICE : PROF_MODE_BONUS;
-
-			$(this).html($(this).html().replace(/([-+])?\d+(?= to hit)/g, function (match) {
-				const bonus = Number(match);
-
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
+		// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
+		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
+		// (Siri integration forthcoming)
+		$content.find(".render-roller")
+			.filter(function () {
+				return $(this).text().match(/^([-+])?\d+$/);
+			})
+			.each(function () {
+				const bonus = Number($(this).text());
 				const expectedPB = getProfBonusFromCr(mon.cr);
-				const withoutPB = bonus - expectedPB;
 
-				if (expectedPB > 0) {
-					const profDiceString = `1d${expectedPB * 2}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
-
-					return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll-alt='1d20;${profDiceString}' data-roll='1d20${match}' ${ATB_PROF_MODE}='${mode}' ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${match}">${isProfDiceMode ? profDiceString : match}</span>`
-				} else {
-					return `<span class='roller' data-roll='1d20${match}'>${match}</span>`; // if there was no proficiency bonus to work with, fall back on this
+				// skills and saves can have expertise
+				let expert = 1;
+				let pB = expectedPB;
+				if ($(this).parent().prop("id") === "saves") {
+					const title = $(this).attr("title");
+					const fromAbility = Parser.getAbilityModNumber(mon[title.split(" ")[0].trim().toLowerCase()]);
+					pB = bonus - fromAbility;
+					expert = (pB === expectedPB * 2) ? 2 : 1;
+				} else if ($(this).parent().prop("id") === "skills") {
+					const title = $(this).attr("title");
+					const fromAbility = Parser.getAbilityModNumber(mon[getAttribute(title)]);
+					pB = bonus - fromAbility;
+					expert = (pB === expectedPB * 2) ? 2 : 1;
 				}
-			}));
+				const withoutPB = bonus - pB;
 
+				// if we have proficiency bonus, convert the roller
+				if (expectedPB > 0) {
+					const profDiceString = `${expert}d${pB * (3 - expert)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+
+					$(this).attr("data-roll-prof-bonus", $(this).text());
+					$(this).attr("data-roll-prof-dice", profDiceString);
+					const parsed = EntryRenderer.dice._parse(profDiceString);
+					const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
+					entFormat.unshift({number: 1, faces: 20});
+
+					// here be (metallic) dragons
+					const cached = $(this).attr("onclick");
+					const nu = `
+					(function(it) {
+						if (PROF_DICE_MODE === PROF_MODE_DICE) {
+							EntryRenderer.dice.rollerClick(it, '{"type":"dice","rollable":true,"toRoll":${JSON.stringify(entFormat)}}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
+						} else {
+							${cached.replace(/this/g, "it")}
+						}
+					})(this)`;
+
+					$(this).attr("onclick", nu);
+
+					if (isProfDiceMode) {
+						$(this).html(profDiceString);
+					}
+				}
+			});
+
+		$content.find("p").each(function () {
 			$(this).html($(this).html().replace(/DC\s*(\d+)/g, function (match, capture) {
 				const dc = Number(capture);
 
@@ -809,40 +814,12 @@ function loadhash (id) {
 					const withoutPB = dc - expectedPB;
 					const profDiceString = `1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-					return `DC <span class="dc-roller" ${titleMaybe ? `title="${titleMaybe}"` : ""} ${ATB_PROF_MODE}="${mode}" data-roll-alt="${profDiceString}" data-bonus="${capture}" ${ATB_PROF_DICE_STR}="+${profDiceString}" ${ATB_PROF_BONUS_STR}="${capture}">${isProfDiceMode ? profDiceString : capture}</span>`;
+					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onclick="dcRollerClick(this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture }</span>`;
 				} else {
 					return match; // if there was no proficiency bonus to work with, fall back on this
 				}
 			}));
 		});
-		$content.find("span#hp").each(function () {
-			EntryRenderer.monster.legacy.addNonD20Rollers(this, "Hit Points");
-		});
-
-		$content.find(".spells span.roller").contents().unwrap();
-		$content.find("span.roller").filter((i, e) => {
-			const $e = $(e);
-			return !$e.prop("onclick");
-		}).click(function () {
-			const $this = $(this);
-			outputRollResult($this, $this.attr("data-roll").replace(/\s+/g, ""));
-		});
-
-		$content.find("span.dc-roller").click(function () {
-			const $this = $(this);
-			let roll;
-			if ($this.attr(ATB_PROF_MODE) === PROF_MODE_DICE) {
-				roll = $this.attr("data-roll-alt").replace(/\s+/g, "");
-				outputRollResult($this, roll);
-			}
-		});
-
-		function outputRollResult ($ele, roll) {
-			EntryRenderer.dice.roll(roll, {
-				name: name,
-				label: $ele.attr("title")
-			});
-		}
 	}
 
 	function buildFluffTab (showImages) {
@@ -944,15 +921,21 @@ function handleUnknownHash (link, sub) {
 	}
 }
 
-const ATB_PROF_MODE = "mode";
-const ATB_PROF_BONUS_STR = "profBonusStr";
-const ATB_PROF_DICE_STR = "profDiceStr";
-const PROF_MODE_BONUS = "bonus";
-const PROF_MODE_DICE = "dice";
-
 function getProfBonusFromCr (cr) {
 	if (CR_TO_PROF[cr]) return CR_TO_PROF[cr];
 	return 0;
+}
+
+function dcRollerClick (ele, exp) {
+	const parsed = EntryRenderer.dice._parse(exp);
+	const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
+	entFormat[0].modifier = parsed.mod;
+	const it = {
+		type: "dice",
+		rollable: true,
+		toRoll: entFormat
+	};
+	EntryRenderer.dice.rollerClick(ele, JSON.stringify(it));
 }
 
 const CR_TO_PROF = {

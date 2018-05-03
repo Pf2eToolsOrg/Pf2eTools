@@ -9,7 +9,10 @@
 				"U"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "22 (4d6+8)",
+			"hp": {
+				"average": 22,
+				"formula": "4d6+8"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -40,7 +43,7 @@
 				{
 					"name": "Surprise Attack",
 					"entries": [
-						"If the drake surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 (2d6) damage from the attack."
+						"If the drake surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 ({@dice 2d6}) damage from the attack."
 					]
 				}
 			],
@@ -48,7 +51,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
 					]
 				}
 			],
@@ -69,7 +72,10 @@
 				"E"
 			],
 			"ac": "13 (16 with mage armor)",
-			"hp": "39 (6d8+12)",
+			"hp": {
+				"average": 39,
+				"formula": "6d8+12"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -159,7 +165,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
 					]
 				}
 			],
@@ -180,7 +186,10 @@
 				"E"
 			],
 			"ac": "17 (splint)",
-			"hp": "138 (12d12+60)",
+			"hp": {
+				"average": 138,
+				"formula": "12d12+60"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -275,7 +284,7 @@
 				{
 					"name": "Morningstar",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 21 (3d8+8) piercing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage."
 					]
 				}
 			],
@@ -296,7 +305,10 @@
 				"E"
 			],
 			"ac": "19 (splint, shield)",
-			"hp": "93 (11d10+33)",
+			"hp": {
+				"average": 93,
+				"formula": "11d10+33"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -343,13 +355,13 @@
 				{
 					"name": "Flail",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 7 (1d6+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +7} to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
 					]
 				}
 			],
@@ -370,7 +382,10 @@
 				"E"
 			],
 			"ac": "16 (studded leather, shield)",
-			"hp": "52 (7d10+14)",
+			"hp": {
+				"average": 52,
+				"formula": "7d10+14"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -458,13 +473,13 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or ranged 20/60, one target. Hit: 6 (1d4+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +6} to hit, reach 5 ft. or ranged 20/60, one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
 					]
 				}
 			],
@@ -485,7 +500,10 @@
 				"E"
 			],
 			"ac": "16 (chain mail)",
-			"hp": "44 (8d8+8)",
+			"hp": {
+				"average": 44,
+				"formula": "8d8+8"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -558,7 +576,7 @@
 				{
 					"name": "Halberd",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 7 (1d10+2) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 10 ft., one target. Hit: 7 ({@dice 1d10+2}) bludgeoning damage."
 					]
 				}
 			],
@@ -578,7 +596,10 @@
 				"N"
 			],
 			"ac": "15 (leather armor)",
-			"hp": "22 (4d6+8)",
+			"hp": {
+				"average": 22,
+				"formula": "4d6+8"
+			},
 			"speed": {
 				"walk": 25
 			},
@@ -655,7 +676,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage, or 9 (1d6+3) plus (1d6) piercing damage if the target is Medium or larger."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage, or 9 ({@dice 1d6+3}) plus ({@dice 1d6}) piercing damage if the target is Medium or larger."
 					]
 				}
 			],
@@ -676,7 +697,10 @@
 				"E"
 			],
 			"ac": "17 (splint)",
-			"hp": "57 (6d12+18)",
+			"hp": {
+				"average": 57,
+				"formula": "6d12+18"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -726,19 +750,19 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 7 (1d6+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +6} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Lightning Breath (Recharge 5\u20146)",
 					"entries": [
-						"Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 (4d10) lightning damage on a failed save, or half as much damage on a successful one."
+						"Langdedrosa breathes lightning in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 13 Dexterity saving throw, taking 22 ({@dice 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -759,7 +783,10 @@
 				"E"
 			],
 			"ac": "15 (studded leather armor, shield)",
-			"hp": "59 (7d8+28)",
+			"hp": {
+				"average": 59,
+				"formula": "7d8+28"
+			},
 			"speed": {
 				"walk": 20,
 				"swim": 40
@@ -833,7 +860,7 @@
 				{
 					"name": "Poison Strike (3/Day)",
 					"entries": [
-						"Once per turn, when Pharblex hits with a melee attack, he can expend a use of this trait to deal an extra 9 (2d8) poison damage."
+						"Once per turn, when Pharblex hits with a melee attack, he can expend a use of this trait to deal an extra 9 ({@dice 2d8}) poison damage."
 					]
 				},
 				{
@@ -859,13 +886,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) piercing damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit. reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +5} to hit. reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
@@ -886,7 +913,10 @@
 				"E"
 			],
 			"ac": "13 (15 with the Black Dragon Mask)",
-			"hp": "90 (12d8+36)",
+			"hp": {
+				"average": 90,
+				"formula": "12d8+36"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -931,7 +961,7 @@
 				{
 					"name": "Dark Advantage",
 					"entries": [
-						"Once per turn, Rezmir can deal an extra 10 (3d6) damage when she hits with a weapon attack, provided Rezmir has advantage on the attack roll."
+						"Once per turn, Rezmir can deal an extra 10 ({@dice 3d6}) damage when she hits with a weapon attack, provided Rezmir has advantage on the attack roll."
 					]
 				},
 				{
@@ -957,19 +987,19 @@
 				{
 					"name": "Greatsword (Hazirawn)",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) slashing damage plus 7 (2d6) necrotic damage. If the target is a creature, it can't regain hit points for 1 minute. The target can make a DC 15 Constitution saving throw at the end of each of its turns, ending this effect early on a success."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d6+6}) slashing damage plus 7 ({@dice 2d6}) necrotic damage. If the target is a creature, it can't regain hit points for 1 minute. The target can make a DC 15 Constitution saving throw at the end of each of its turns, ending this effect early on a success."
 					]
 				},
 				{
 					"name": "Caustic Bolt",
 					"entries": [
-						"Ranged Spell Attack: +8 to hit, range 90 ft., one target. Hit: 18 (4d8) acid damage."
+						"Ranged Spell Attack: {@hit +8} to hit, range 90 ft., one target. Hit: 18 ({@dice 4d8}) acid damage."
 					]
 				},
 				{
 					"name": "Acid Breath (Recharge 5\u20146)",
 					"entries": [
-						"Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 (5d8) acid damage on a failed save, or half as much damage on a successful one."
+						"Rezmir breathes acid in a 30-foot line that is 5 feet wide. Each creature in the line must make a DC 14 Dexterity saving throw, taking 22 ({@dice 5d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1011,7 +1041,10 @@
 				"E"
 			],
 			"ac": "18 (scale mail +1, shield)",
-			"hp": "58 (9d8+18)",
+			"hp": {
+				"average": 58,
+				"formula": "9d8+18"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1106,7 +1139,7 @@
 				{
 					"name": "Winter Strike (3/Day)",
 					"entries": [
-						"Once per turn, when Talis hits with a melee attack, she can expend a use of this trait to deal an extra 9 (2d8) cold damage."
+						"Once per turn, when Talis hits with a melee attack, she can expend a use of this trait to deal an extra 9 ({@dice 2d8}) cold damage."
 					]
 				}
 			],
@@ -1114,7 +1147,7 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 6 (1d6+2) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or ranged 20 ft./60 ft., one target. Hit: 6 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],

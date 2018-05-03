@@ -11,7 +11,10 @@
 				"E"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "45 (6d8+18)",
+			"hp": {
+				"average": 45,
+				"formula": "6d8+18"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -50,13 +53,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Drain Blood",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one creature that is prone, incapacitated, or restrained. Hit: 5 (1d6+2) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the chupacabra regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one creature that is prone, incapacitated, or restrained. Hit: 5 ({@dice 1d6+2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the chupacabra regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				}
 			],
@@ -79,7 +82,10 @@
 				"U"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "18 (4d6+4)",
+			"hp": {
+				"average": 18,
+				"formula": "4d6+4"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -104,19 +110,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				},
 				{
 					"name": "Spit Poison",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 15/30 ft., one creature. Hit: The target must make a DC 13 Constitution saving throw, taking 18 (4d8) poison damage on a failed save, or half as much damage on a successful one. In addition, a creature that fails its saving throw is blinded until the end of the deathspitter's next turn."
+						"Ranged Weapon Attack: {@hit +4} to hit, range 15/30 ft., one creature. Hit: The target must make a DC 13 Constitution saving throw, taking 18 ({@dice 4d8}) poison damage on a failed save, or half as much damage on a successful one. In addition, a creature that fails its saving throw is blinded until the end of the deathspitter's next turn."
 					]
 				}
 			]
@@ -131,7 +137,10 @@
 				"U"
 			],
 			"ac": "16 (natural armor)",
-			"hp": "203 (14d20+56)",
+			"hp": {
+				"average": 203,
+				"formula": "14d20+56"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -170,26 +179,26 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +11 to hit, reach 15 ft., one target. Hit: 39 (5d12 + 7) piercing damage. If the target is a Large or smaller creature, it must succeed on a DC 19 Dexterity saving throw or it is grappled (escape DC 19). Until this grapple ends, the target is restrained, and Gishath can't bite another target."
+						"Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one target. Hit: 39 ({@dice 5d12 + 7}) piercing damage. If the target is a Large or smaller creature, it must succeed on a DC 19 Dexterity saving throw or it is grappled (escape DC 19). Until this grapple ends, the target is restrained, and Gishath can't bite another target."
 					]
 				},
 				{
 					"name": "Swallow",
 					"entries": [
-						"Gishath makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage and is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside Gishath, and it takes 21 (6d6) acid damage at the start of each of Gishath's turns.",
+						"Gishath makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage and is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside Gishath, and it takes 21 ({@dice 6d6}) acid damage at the start of each of Gishath's turns.",
 						"If Gishath takes 30 damage or more on a single turn from a creature inside it, it must succeed on a DC 18 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If Gishath dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				},
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 29 (5d8 + 7) bludgeoning damage, and the target must succeed on a DC 19 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +11} to hit, reach 10 ft., one target. Hit: 29 ({@dice 5d8 + 7}) bludgeoning damage, and the target must succeed on a DC 19 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +11 to hit, reach 15 ft., one target. Hit: 25 (4d8 + 7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one target. Hit: 25 ({@dice 4d8 + 7}) bludgeoning damage."
 					]
 				}
 			],
@@ -223,7 +232,10 @@
 				"U"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "676 (33d20+330)",
+			"hp": {
+				"average": 676,
+				"formula": "33d20+330"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -295,7 +307,7 @@
 				{
 					"name": "Swallow",
 					"entries": [
-						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 (16d6) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 ({@dice 16d6}) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}
 			],
@@ -335,7 +347,10 @@
 				"U"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "676 (33d20+330)",
+			"hp": {
+				"average": 676,
+				"formula": "33d20+330"
+			},
 			"speed": {
 				"walk": 20,
 				"fly": 60
@@ -405,25 +420,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 36 (4d12 + 10) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 15 ft., one target. Hit: 28 (4d8 + 10) slashing damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
 					]
 				},
 				{
 					"name": "Wing",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 20 ft., one target. Hit: 28 (4d8 + 10) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 28 ({@dice 4d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +11 to hit, reach 15 ft., one target. Hit: 25 (4d8 + 7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one target. Hit: 25 ({@dice 4d8 + 7}) bludgeoning damage."
 					]
 				},
 				{
@@ -435,7 +450,7 @@
 				{
 					"name": "Swallow",
 					"entries": [
-						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 (16d6) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 ({@dice 16d6}) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}
 			],
@@ -475,7 +490,10 @@
 				"U"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "676 (33d20+330)",
+			"hp": {
+				"average": 676,
+				"formula": "33d20+330"
+			},
 			"speed": {
 				"walk": 20,
 				"swim": 60
@@ -548,13 +566,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 36 (4d12 + 10) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Flipper",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 5 ft., one target. Hit: 28 (4d8 + 10) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 5 ft., one target. Hit: 28 ({@dice 4d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
@@ -566,7 +584,7 @@
 				{
 					"name": "Swallow",
 					"entries": [
-						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 (16d6) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 ({@dice 16d6}) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}
 			],
@@ -606,7 +624,10 @@
 				"U"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "676 (33d20+330)",
+			"hp": {
+				"average": 676,
+				"formula": "33d20+330"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -664,7 +685,7 @@
 				{
 					"name": "Lightning Storm",
 					"entries": [
-						"The elder dinosaur is always accompanied by a raging thunderstorm similar to the effect of a {@spell call lightning} spell. A storm cloud in the shape of a cylinder that is 10 feet tall with a 60-foot radius instantly forms 100 feet in the air over the elder dinosaur when it is angered or becomes violent, as long as it is outdoors. On each of its turns, as an action, the elder dinosaur can choose a point it can see within 120 feet of it. A bolt of lightning flashes down from the cloud to that point. Each creature within 10 feet of that point must make a DC 20 Dexterity saving throw, taking 21 (6d6) lightning damage on a failed save, or half as much damage on a successful one."
+						"The elder dinosaur is always accompanied by a raging thunderstorm similar to the effect of a {@spell call lightning} spell. A storm cloud in the shape of a cylinder that is 10 feet tall with a 60-foot radius instantly forms 100 feet in the air over the elder dinosaur when it is angered or becomes violent, as long as it is outdoors. On each of its turns, as an action, the elder dinosaur can choose a point it can see within 120 feet of it. A bolt of lightning flashes down from the cloud to that point. Each creature within 10 feet of that point must make a DC 20 Dexterity saving throw, taking 21 ({@dice 6d6}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -678,13 +699,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 36 (4d12 + 10) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 15 ft., one target. Hit: 28 (4d8 + 10) slashing damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
 					]
 				},
 				{
@@ -696,7 +717,7 @@
 				{
 					"name": "Swallow",
 					"entries": [
-						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 (16d6) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 ({@dice 16d6}) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}
 			],
@@ -736,7 +757,10 @@
 				"U"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "676 (33d20+330)",
+			"hp": {
+				"average": 676,
+				"formula": "33d20+330"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -794,7 +818,7 @@
 				{
 					"name": "Spiny Carapace",
 					"entries": [
-						"The elder dinosaur is covered in an armored carapace bristling with thick, sharp spines. Any creature that hits or misses Tetzimoc with a melee attack takes 7 (2d6) piercing damage."
+						"The elder dinosaur is covered in an armored carapace bristling with thick, sharp spines. Any creature that hits or misses Tetzimoc with a melee attack takes 7 ({@dice 2d6}) piercing damage."
 					]
 				},
 				{
@@ -814,31 +838,31 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 36 (4d12 + 10) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 15 ft., one target. Hit: 28 (4d8 + 10) slashing damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 15 ft., one target. Hit: 28 ({@dice 4d8 + 10}) slashing damage."
 					]
 				},
 				{
 					"name": "Horns",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 32 (4d10 + 10) piercing damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 32 ({@dice 4d10 + 10}) piercing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 20 ft., one target. Hit: 24 (4d6 + 10) piercing damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 24 ({@dice 4d6 + 10}) piercing damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail Spikes",
 					"entries": [
-						"Ranged Weapon Attack: +9 to hit, range 100/300 ft., two targets. Hit: 7 (2d6) piercing damage."
+						"Ranged Weapon Attack: {@hit +9} to hit, range 100/300 ft., two targets. Hit: 7 ({@dice 2d6}) piercing damage."
 					]
 				},
 				{
@@ -850,7 +874,7 @@
 				{
 					"name": "Swallow",
 					"entries": [
-						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 (16d6) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 ({@dice 16d6}) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}
 			],
@@ -890,7 +914,10 @@
 				"U"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "676 (33d20+330)",
+			"hp": {
+				"average": 676,
+				"formula": "33d20+330"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -956,19 +983,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 62 (8d12 + 10) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 62 ({@dice 8d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained, and the elder dinosaur can't bite another target."
 					]
 				},
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 5 ft., one target. Hit: 46 (8d8 + 10) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 5 ft., one target. Hit: 46 ({@dice 8d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 20 ft., one target. Hit: 38 (8d6 + 10) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 38 ({@dice 8d6 + 10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
 					]
 				},
 				{
@@ -980,7 +1007,7 @@
 				{
 					"name": "Swallow",
 					"entries": [
-						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 (16d6) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 ({@dice 16d6}) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}
 			],
@@ -1020,7 +1047,10 @@
 				"U"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "676 (33d20+330)",
+			"hp": {
+				"average": 676,
+				"formula": "33d20+330"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -1086,19 +1116,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 10 ft., one target. Hit: 36 (4d12 + 10) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained. If the elder dinosaur has three targets restrained in this way, it can't bite another target."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 10 ft., one target. Hit: 36 ({@dice 4d12 + 10}) piercing damage. If the target is a creature, it is grappled (escape DC 20). Until this grapple ends, the target is restrained. If the elder dinosaur has three targets restrained in this way, it can't bite another target."
 					]
 				},
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 5 ft., one target. Hit: 46 (8d8 + 10) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 5 ft., one target. Hit: 46 ({@dice 8d8 + 10}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +19 to hit, reach 20 ft., one target. Hit: 38 (8d6 + 10) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +19} to hit, reach 20 ft., one target. Hit: 38 ({@dice 8d6 + 10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 20 Strength saving throw or be knocked prone."
 					]
 				},
 				{
@@ -1110,7 +1140,7 @@
 				{
 					"name": "Swallow",
 					"entries": [
-						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 (16d6) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
+						"The elder dinosaur makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, that creature takes the bite's damage, the target is swallowed, and the grapple ends. While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the elder dinosaur, and it takes 56 ({@dice 16d6}) acid damage at the start of each of the elder dinosaur's turns.If the elder dinosaur takes 60 damage or more on a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of it. If the elder dinosaur dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 20 feet of movement, exiting prone."
 					]
 				}
 			],
@@ -1145,7 +1175,10 @@
 				"U"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "279 (18d20+90)",
+			"hp": {
+				"average": 279,
+				"formula": "18d20+90"
+			},
 			"speed": {
 				"walk": 20,
 				"fly": 120
@@ -1186,13 +1219,13 @@
 				{
 					"name": "Death Throes",
 					"entries": [
-						"When the sunbird dies, it explodes, and each creature within 30 feet of it must make a DC 18 Dexterity saving throw, taking 42 (12d6) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects in that area that aren't being worn or carried. The sunbird's body turns to ash, but an egg is left where the sunbird was."
+						"When the sunbird dies, it explodes, and each creature within 30 feet of it must make a DC 18 Dexterity saving throw, taking 42 ({@dice 12d6}) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects in that area that aren't being worn or carried. The sunbird's body turns to ash, but an egg is left where the sunbird was."
 					]
 				},
 				{
 					"name": "Fire Aura",
 					"entries": [
-						"At the start of each of the sunbird's turns, each creature within 5 feet of it takes 11 (2d10) fire damage, and flammable objects in the area that aren't being worn or carried ignite. A creature that touches the sunbird or hits it with a melee attack while within 5 feet of it takes 11 (2d10) fire damage. The aura also sheds bright light in a 60-foot radius and dim light for an additional 60 feet."
+						"At the start of each of the sunbird's turns, each creature within 5 feet of it takes 11 ({@dice 2d10}) fire damage, and flammable objects in the area that aren't being worn or carried ignite. A creature that touches the sunbird or hits it with a melee attack while within 5 feet of it takes 11 ({@dice 2d10}) fire damage. The aura also sheds bright light in a 60-foot radius and dim light for an additional 60 feet."
 					]
 				},
 				{
@@ -1218,7 +1251,7 @@
 				{
 					"name": "Talon",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 5 ft., one target. Hit: 16 (2d6 + 9) slashing damage plus 14 (4d6) fire damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the sunbird can't attack another target with that talon. A grappled creature takes 11 (2d10) fire damage at the start of each of the sunbird's turns."
+						"Melee Weapon Attack: {@hit +14} to hit, reach 5 ft., one target. Hit: 16 ({@dice 2d6 + 9}) slashing damage plus 14 ({@dice 4d6}) fire damage, and the target is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the sunbird can't attack another target with that talon. A grappled creature takes 11 ({@dice 2d10}) fire damage at the start of each of the sunbird's turns."
 					]
 				}
 			]

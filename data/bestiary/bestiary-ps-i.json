@@ -11,7 +11,10 @@
 				"E"
 			],
 			"ac": "12",
-			"hp": "21 (6d4+6)",
+			"hp": {
+				"average": 21,
+				"formula": "6d4+6"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -65,13 +68,13 @@
 				{
 					"name": "Scissors",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) slashing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) slashing damage."
 					]
 				},
 				{
 					"name": "Psychic Assault",
 					"entries": [
-						"The creepy doll targets one creature it can see within 10 feet of it that has a brain. The target must succeed on a DC 12 Intelligence saving throw or take 11 (2d10) psychic damage. Also on a failure, roll 3d6. If the total equals or exceeds the target's Intelligence score, that score is reduced to 0. The target is stunned until it regains at least one point of Intelligence, as from the {@spell greater restoration} spell or similar magic."
+						"The creepy doll targets one creature it can see within 10 feet of it that has a brain. The target must succeed on a DC 12 Intelligence saving throw or take 11 ({@dice 2d10}) psychic damage. Also on a failure, roll {@dice 3d6}. If the total equals or exceeds the target's Intelligence score, that score is reduced to 0. The target is stunned until it regains at least one point of Intelligence, as from the {@spell greater restoration} spell or similar magic."
 					]
 				},
 				{
@@ -93,7 +96,10 @@
 				"A"
 			],
 			"ac": "11",
-			"hp": "45 (10d8)",
+			"hp": {
+				"average": 45,
+				"formula": "10d8"
+			},
 			"speed": {
 				"walk": 0,
 				"fly": 40
@@ -138,7 +144,7 @@
 					"name": "Incorporeal Movement",
 					"entries": [
 						"The geist can move through other creatures",
-						"and objects as if they were difficult terrain. It takes 5 (1d10) force",
+						"and objects as if they were difficult terrain. It takes 5 ({@dice 1d10}) force",
 						"damage if it ends its turn inside an object."
 					]
 				},
@@ -157,7 +163,7 @@
 				{
 					"name": "Geist Powers: Horrifying Visage",
 					"entries": [
-						"Black-aligned geists can make themselves terrible to behold, even when they are possessing the living. Each non-undead creature within 60 feet of the geist that can see it must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. If the save fails by 5 or more, the target also ages 1d4 × 10 years. A frightened target can repeat the saving throw at the end of each of its turns, ending the frightened condition on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to this geist's Horrifying Visage for the next 24 hours. The aging effect can be reversed with a {@spell greater restoration} spell, but only within 24 hours of it occurring."
+						"Black-aligned geists can make themselves terrible to behold, even when they are possessing the living. Each non-undead creature within 60 feet of the geist that can see it must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. If the save fails by 5 or more, the target also ages {@dice 1d4} × 10 years. A frightened target can repeat the saving throw at the end of each of its turns, ending the frightened condition on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to this geist's Horrifying Visage for the next 24 hours. The aging effect can be reversed with a {@spell greater restoration} spell, but only within 24 hours of it occurring."
 					]
 				}
 			],
@@ -165,13 +171,13 @@
 				{
 					"name": "Withering Touch",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one"
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one"
 					]
 				},
 				{
 					"name": "target",
 					"entries": [
-						"Hit: 17 (4d6+3) necrotic damage."
+						"Hit: 17 ({@dice 4d6+3}) necrotic damage."
 					]
 				},
 				{
@@ -198,7 +204,10 @@
 				"N"
 			],
 			"ac": "9",
-			"hp": "93 (11d8+44)",
+			"hp": {
+				"average": 93,
+				"formula": "11d8+44"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -317,7 +326,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) bludgeoning damage."
 					]
 				}
 			]
@@ -333,7 +342,10 @@
 				"E"
 			],
 			"ac": "15 (natural armor)",
-			"hp": "82 (11d8+33)",
+			"hp": {
+				"average": 82,
+				"formula": "11d8+33"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -408,13 +420,13 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 8 (2d4+3) slashing damage. Instead of dealing damage, the vampire can grapple the target (escape DC 13)."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one creature. Hit: 8 ({@dice 2d4+3}) slashing damage. Instead of dealing damage, the vampire can grapple the target (escape DC 13)."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one willing creature, or a creature that is grappled by the vampire, incapacitated, or restrained. Hit: 6 (1d6+3) piercing damage plus 7 (2d6) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one willing creature, or a creature that is grappled by the vampire, incapacitated, or restrained. Hit: 6 ({@dice 1d6+3}) piercing damage plus 7 ({@dice 2d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				},
 				{
@@ -448,7 +460,10 @@
 				"E"
 			],
 			"ac": "11 in human form, 12 (natural armor) in canid form",
-			"hp": "58 (9d8+18)",
+			"hp": {
+				"average": 58,
+				"formula": "9d8+18"
+			},
 			"speed": {
 				"walk": {
 					"number": 30,
@@ -506,7 +521,7 @@
 				{
 					"name": "Variant: Mondronen",
 					"entries": [
-						"Mondronen Wounded Fury. While it has 10 hit points or fewer, the werewolf has advantage on attack rolls. In addition, it deals an extra 7 (2d6) damage to any target it hits with a melee attack."
+						"Mondronen Wounded Fury. While it has 10 hit points or fewer, the werewolf has advantage on attack rolls. In addition, it deals an extra 7 ({@dice 2d6}) damage to any target it hits with a melee attack."
 					]
 				},
 				{
@@ -526,19 +541,19 @@
 				{
 					"name": "Bite (Canid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws (Canid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) slashing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) slashing damage."
 					]
 				},
 				{
 					"name": "Spear (Human Form Only)",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d6+2) piercing damage, or 6 (1d8+2) piercing damage if used with two hands to make a melee attack."
+						"Melee or Ranged Weapon Attack: {@hit +4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 6 ({@dice 1d8+2}) piercing damage if used with two hands to make a melee attack."
 					]
 				}
 			]

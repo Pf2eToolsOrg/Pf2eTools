@@ -16,7 +16,10 @@
 				"E"
 			],
 			"ac": "15 (natural armor)",
-			"hp": "120 (16d8+48)",
+			"hp": {
+				"average": 120,
+				"formula": "16d8+48"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -140,13 +143,13 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) bludgeoning damage, or 8 (1d8+4) bludgeoning damage if wielded with two hands."
+						"Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) bludgeoning damage, or 8 ({@dice 1d8+4}) bludgeoning damage if wielded with two hands."
 					]
 				},
 				{
 					"name": "Summon Swarms of Insects (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Baba Lysaga summons 1d4 swarms of insects. A summoned swarm appears in an unoccupied space within 60 feet of Baba Lysaga and acts as her ally. It remains until it dies or until Baba Lysaga dismisses it as an action."
+						"Baba Lysaga summons {@dice 1d4} swarms of insects. A summoned swarm appears in an unoccupied space within 60 feet of Baba Lysaga and acts as her ally. It remains until it dies or until Baba Lysaga dismisses it as an action."
 					]
 				}
 			],
@@ -161,7 +164,10 @@
 				"U"
 			],
 			"ac": "16 (natural armor)",
-			"hp": "263 (17d10+85)",
+			"hp": {
+				"average": 263,
+				"formula": "17d10+85"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -224,13 +230,13 @@
 				{
 					"name": "Root",
 					"entries": [
-						"Melee Weapon Attack: +12 to hit, reach 60 ft., one target. Hit: 30 (4d10+8) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +12} to hit, reach 60 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"Ranged Weapon Attack: +12 to hit, range 120 ft., one target. Hit: 21 (3d8+8) bludgeoning damage."
+						"Ranged Weapon Attack: {@hit +12} to hit, range 120 ft., one target. Hit: 21 ({@dice 3d8+8}) bludgeoning damage."
 					]
 				}
 			],
@@ -251,7 +257,10 @@
 				"E"
 			],
 			"ac": "10",
-			"hp": "16 (3d8+3)",
+			"hp": {
+				"average": 16,
+				"formula": "3d8+3"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -305,13 +314,13 @@
 				{
 					"name": "Claws (Requires Alter Self)",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) slashing damage. This attack is magical."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage. This attack is magical."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +2 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 (1d4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +2} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
 					]
 				}
 			],
@@ -326,7 +335,10 @@
 				"U"
 			],
 			"ac": "15 (natural armor)",
-			"hp": "17 (5d6)",
+			"hp": {
+				"average": 17,
+				"formula": "5d6"
+			},
 			"speed": {
 				"walk": 0,
 				"fly": {
@@ -389,7 +401,7 @@
 				{
 					"name": "Broomstick",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4+3) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d4+3}) bludgeoning damage."
 					]
 				}
 			],
@@ -418,7 +430,10 @@
 				"G"
 			],
 			"ac": "17 (studded leather armor +1)",
-			"hp": "82 (11d8+33)",
+			"hp": {
+				"average": 82,
+				"formula": "11d8+33"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -512,25 +527,25 @@
 				{
 					"name": "Rapier +1",
 					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 9 (1d8+5) piercing damage."
+						"Melee Weapon Attack: {@hit +8} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d8+5}) piercing damage."
 					]
 				},
 				{
 					"name": "Handaxe +1",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one creature. Hit: 6 (1d6+3) slashing damage."
+						"Melee or Ranged Weapon Attack: {@hit +6} to hit, reach 5 ft. or range 20/60 ft., one creature. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				},
 				{
 					"name": "Silvered Shortsword",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Curse (Recharges after a Long Rest)",
 					"entries": [
-						"Ezmerelda targets one creature that she can see within 30 feet of her. The target must succeed on a DC 14 Wisdom saving throw or be cursed. While cursed, the target has vulnerability to one type of damage of Ezmerelda's choice. The curse lasts until ended with a {@spell greater restoration} spell, a {@spell remove curse} spell, or similar magic. When the curse ends, Ezmerelda takes 3d6 psychic damage."
+						"Ezmerelda targets one creature that she can see within 30 feet of her. The target must succeed on a DC 14 Wisdom saving throw or be cursed. While cursed, the target has vulnerability to one type of damage of Ezmerelda's choice. The curse lasts until ended with a {@spell greater restoration} spell, a {@spell remove curse} spell, or similar magic. When the curse ends, Ezmerelda takes {@dice 3d6} psychic damage."
 					]
 				},
 				{
@@ -551,7 +566,10 @@
 				"U"
 			],
 			"ac": "5 (natural armor)",
-			"hp": "22 (5d8)",
+			"hp": {
+				"average": 22,
+				"formula": "5d8"
+			},
 			"speed": {
 				"walk": 0
 			},
@@ -633,7 +651,10 @@
 				"E"
 			],
 			"ac": "14 (studded leather armor)",
-			"hp": "112 (15d8+45)",
+			"hp": {
+				"average": 112,
+				"formula": "15d8+45"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -668,13 +689,13 @@
 				{
 					"name": "Battleaxe",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) slashing damage, or 15 (2d10+4) when used with two hands."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) slashing damage, or 15 ({@dice 2d10+4}) when used with two hands."
 					]
 				},
 				{
 					"name": "Hurl Flame",
 					"entries": [
-						"Ranged Spell Attack: +5 to hit, range 60 ft., one target. Hit: 10 (3d6) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
+						"Ranged Spell Attack: {@hit +5} to hit, range 60 ft., one target. Hit: 10 ({@dice 3d6}) fire damage. If the target is a flammable object that isn't being worn or carried, it catches fire."
 					]
 				}
 			],
@@ -695,7 +716,10 @@
 				"N"
 			],
 			"ac": "10",
-			"hp": "88 (16d8+16)",
+			"hp": {
+				"average": 88,
+				"formula": "16d8+16"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -802,13 +826,13 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage."
 					]
 				},
 				{
 					"name": "Curse (Recharges after a Long Rest)",
 					"entries": [
-						"Madam Eva targets one creature that she can see within 30 feet of her. The target must succeed on a DC 17 Wisdom saving throw or be cursed. While cursed, the target is blinded and deafened. The curse lasts until ended with a greater restoration spell, a remove curse spell, or similar magic. When the curse ends, Madam Eva takes 5d6 psychic damage."
+						"Madam Eva targets one creature that she can see within 30 feet of her. The target must succeed on a DC 17 Wisdom saving throw or be cursed. While cursed, the target is blinded and deafened. The curse lasts until ended with a greater restoration spell, a remove curse spell, or similar magic. When the curse ends, Madam Eva takes {@dice 5d6} psychic damage."
 					]
 				},
 				{
@@ -834,7 +858,10 @@
 				"A"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "26 (4d8+8)",
+			"hp": {
+				"average": 26,
+				"formula": "4d8+8"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -883,19 +910,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) piercing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) slashing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 (1d4+1) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				}
 			],
@@ -910,7 +937,10 @@
 				"A"
 			],
 			"ac": "16",
-			"hp": "45 (6d8+18)",
+			"hp": {
+				"average": 45,
+				"formula": "6d8+18"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -964,7 +994,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The phantom warrior can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+						"The phantom warrior can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@dice 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -984,7 +1014,7 @@
 				{
 					"name": "Spectral Longsword",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) force damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) force damage."
 					]
 				},
 				{
@@ -1006,7 +1036,10 @@
 				"E"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "10 (3d6)",
+			"hp": {
+				"average": 10,
+				"formula": "3d6"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1042,13 +1075,13 @@
 				{
 					"name": "Club",
 					"entries": [
-						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +2} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Dart",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage."
+						"Ranged Weapon Attack: {@hit +4} to hit, range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
 				}
 			],
@@ -1069,7 +1102,10 @@
 				"E"
 			],
 			"ac": "18 (studded leather)",
-			"hp": "135 (18d8+54)",
+			"hp": {
+				"average": 135,
+				"formula": "18d8+54"
+			},
 			"speed": {
 				"walk": 35
 			},
@@ -1116,7 +1152,7 @@
 				{
 					"name": "Deathly Choir",
 					"entries": [
-						"Any creature within 10 feet of Rahadin that isn't protected by a {@spell mind blank} spell hears in its mind the screams of the thousands of people Rahadin has killed. As a bonus action, Rahadin can force all creatures that can hear the screams to make a DC 16 Wisdom saving throw. Each creature takes 16 (3d10) psychic damage on a failed save, or half as much damage on a successful one."
+						"Any creature within 10 feet of Rahadin that isn't protected by a {@spell mind blank} spell hears in its mind the screams of the thousands of people Rahadin has killed. As a bonus action, Rahadin can force all creatures that can hear the screams to make a DC 16 Wisdom saving throw. Each creature takes 16 ({@dice 3d10}) psychic damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -1142,13 +1178,13 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 9 (1d6+6) slashing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d6+6}) slashing damage."
 					]
 				},
 				{
 					"name": "Poisoned Dart",
 					"entries": [
-						"Ranged Weapon Attack: +10 to hit, range 20/60 ft., one target. Hit: 8 (1d4+6) piercing damage plus 5 (2d4) poison damage."
+						"Ranged Weapon Attack: {@hit +10} to hit, range 20/60 ft., one target. Hit: 8 ({@dice 1d4+6}) piercing damage plus 5 ({@dice 2d4}) poison damage."
 					]
 				}
 			],
@@ -1169,7 +1205,10 @@
 				"G"
 			],
 			"ac": "12 (leather armor)",
-			"hp": "77 (14d8+14)",
+			"hp": {
+				"average": 77,
+				"formula": "14d8+14"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1260,7 +1299,7 @@
 				{
 					"name": "Undead Slayer",
 					"entries": [
-						"When Rictavio hits an undead with a weapon attack, the undead takes an extra 10 (3d6) damage of the weapon's type."
+						"When Rictavio hits an undead with a weapon attack, the undead takes an extra 10 ({@dice 3d6}) damage of the weapon's type."
 					]
 				}
 			],
@@ -1274,7 +1313,7 @@
 				{
 					"name": "Sword Cane",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage (wooden cane) or piercing damage (silvered sword)."
 					]
 				}
 			],
@@ -1289,7 +1328,10 @@
 				"U"
 			],
 			"ac": "8",
-			"hp": "30 (4d8+12)",
+			"hp": {
+				"average": 30,
+				"formula": "4d8+12"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -1338,13 +1380,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4+1) piercing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) slashing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) slashing damage."
 					]
 				}
 			],
@@ -1365,7 +1407,10 @@
 				"E"
 			],
 			"ac": "16 (natural armor)",
-			"hp": "144 (17d8+68)",
+			"hp": {
+				"average": 144,
+				"formula": "17d8+68"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1512,13 +1557,13 @@
 				{
 					"name": "Unarmed Strike (Vampire Form Only)",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one creature. Hit: 8 (1d8+4) bludgeoning damage, plus 14 (4d6) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one creature. Hit: 8 ({@dice 1d8+4}) bludgeoning damage, plus 14 ({@dice 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
 					]
 				},
 				{
 					"name": "Bite (Bat or Vampire Form Only)",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. Hit: 7 (1d6+4) piercing damage plus 10 (3d6) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by Strahd, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@dice 1d6+4}) piercing damage plus 10 ({@dice 3d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and Strahd regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0. A humanoid slain in this way and then buried in the ground rises the following night as a {@creature vampire spawn} under Strahd's control."
 					]
 				},
 				{
@@ -1531,7 +1576,7 @@
 				{
 					"name": "Children of the Night (1/Day)",
 					"entries": [
-						"Strahd magically calls 2d4 swarms of {@creature swarm of bats|mm|bats} or {@creature swarm of rats|mm|rats}, provided that the sun isn't up. While outdoors, Strahd can call 3d6 {@creature wolf|mm|wolves} instead. The called creatures arrive in 1d4 rounds, acting as allies of Strahd and obeying his spoken commands. The beasts remain for 1 hour, until Strahd dies, or until he dismisses them as a bonus action."
+						"Strahd magically calls {@dice 2d4} swarms of {@creature swarm of bats|mm|bats} or {@creature swarm of rats|mm|rats}, provided that the sun isn't up. While outdoors, Strahd can call {@dice 3d6} {@creature wolf|mm|wolves} instead. The called creatures arrive in {@dice 1d4} rounds, acting as allies of Strahd and obeying his spoken commands. The beasts remain for 1 hour, until Strahd dies, or until he dismisses them as a bonus action."
 					]
 				}
 			],
@@ -1568,7 +1613,10 @@
 				"E"
 			],
 			"ac": "21 (natural armor)",
-			"hp": "112 (15d8+45)",
+			"hp": {
+				"average": 112,
+				"formula": "15d8+45"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1634,13 +1682,13 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) slashing damage plus 3 (1d6) lightning damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) slashing damage plus 3 ({@dice 1d6}) lightning damage."
 					]
 				},
 				{
 					"name": "Shocking Bolt",
 					"entries": [
-						"Ranged Spell Attack: +4 to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. Hit: 10 (3d6) lightning damage."
+						"Ranged Spell Attack: {@hit +4} to hit (with advantage on the attack roll if the target is wearing armor made of metal), range 60 ft., one target. Hit: 10 ({@dice 3d6}) lightning damage."
 					]
 				}
 			],
@@ -1656,7 +1704,10 @@
 				"E"
 			],
 			"ac": "15 (natural armor)",
-			"hp": "149 (13d12+65)",
+			"hp": {
+				"average": 149,
+				"formula": "13d12+65"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1698,19 +1749,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 19 (3d8+6) piercing damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 19 ({@dice 3d8+6}) piercing damage."
 					]
 				},
 				{
 					"name": "Branch",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 15 ft., one target. Hit (3d6+6) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 15 ft., one target. Hit ({@dice 3d6+6}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Grasping Root",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 15 ft., one creature not grappled by the blight. Hit: the target is grappled (escape DC 15). Until the grapple ends, the target takes 9 (1d6+6) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight but ends the grapple."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 15 ft., one creature not grappled by the blight. Hit: the target is grappled (escape DC 15). Until the grapple ends, the target takes 9 ({@dice 1d6+6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight but ends the grapple."
 					]
 				}
 			],
@@ -1726,7 +1777,10 @@
 				"E"
 			],
 			"ac": "17 (half plate)",
-			"hp": "192 (16d8+64)",
+			"hp": {
+				"average": 192,
+				"formula": "16d8+64"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1797,13 +1851,13 @@
 				{
 					"name": "Fist",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) bludgeoning damage. If the target is a creature against which Vladimir has sworn vengeance, the target takes an extra 14 (4d6) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage. If the target is a creature against which Vladimir has sworn vengeance, the target takes an extra 14 ({@dice 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
 					]
 				},
 				{
 					"name": "Greatsword +2",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 20 (4d6+4) slashing damage. Against Strahd, Vladimir deals an extra 14 (4d6) slashing damage with this weapon."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 20 ({@dice 4d6+4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@dice 4d6}) slashing damage with this weapon."
 					]
 				},
 				{
@@ -1832,7 +1886,10 @@
 				"G"
 			],
 			"ac": "12",
-			"hp": "31 (7d8)",
+			"hp": {
+				"average": 31,
+				"formula": "7d8"
+			},
 			"speed": {
 				"walk": {
 					"number": 30,
@@ -1886,19 +1943,19 @@
 				{
 					"name": "Beak (Raven or Hybrid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 (1d4+2) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 1 piercing damage in raven form, or 4 ({@dice 1d4+2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
 					]
 				},
 				{
 					"name": "Shortsword (Humanoid or Hybrid Form Only)",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Hand Crossbow (Humanoid or Hybrid Form Only)",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Ranged Weapon Attack: {@hit +4} to hit, range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],

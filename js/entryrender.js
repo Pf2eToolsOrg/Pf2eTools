@@ -956,7 +956,7 @@ EntryRenderer.getEntryDice = function (entry, name) {
 
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
-	if (entry.rollable === true) return `<span class='roller' onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.escapeQuotes()}'` : ""})">${toDisplay}</span>`;
+	if (entry.rollable === true) return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.escapeQuotes()}'` : ""})">${toDisplay}</span>`;
 	else return toDisplay;
 };
 
@@ -1518,13 +1518,6 @@ EntryRenderer.monster = {
 
 	// ultimately these rollers should become part of the JSON
 	legacy: {
-		addNonD20Rollers: (ele, title) => {
-			$(ele).html($(ele).html().replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-				const titleMaybe = title || EntryRenderer.monster.legacy.attemptToGetTitle(ele);
-				return `<span class='roller' ${titleMaybe ? `title="${titleMaybe}"` : ""} data-roll='${match}'>${match}</span>`
-			}));
-		},
-
 		attemptToGetTitle: (ele) => {
 			let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
 			if (titleMaybe !== undefined) {
@@ -1579,7 +1572,7 @@ EntryRenderer.monster = {
 					</tr>
 					<tr>
 						<td>${mon.ac}</td>					
-						<td>${mon.hp}</td>					
+						<td>${EntryRenderer.monster.getRenderedHp(mon.hp)}</td>					
 						<td>${Parser.getSpeedString(mon)}</td>					
 						<td>${Parser.monCrToFull(mon.cr)}</td>					
 					</tr>
@@ -1634,6 +1627,10 @@ EntryRenderer.monster = {
 		`);
 
 		return renderStack.join("");
+	},
+
+	getRenderedHp: (hp) => {
+		return hp.special ? hp.special : EntryRenderer.getDefaultRenderer().renderEntry(`${hp.average} ({@dice ${hp.formula}|${hp.formula}|Hit Points})`);
 	},
 
 	getSpellcastingRenderedTraits: (mon, renderer) => {

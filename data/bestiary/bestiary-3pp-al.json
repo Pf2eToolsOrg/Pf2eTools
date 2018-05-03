@@ -11,7 +11,10 @@
 				"U"
 			],
 			"ac": "13",
-			"hp": "28 (8d6)",
+			"hp": {
+				"average": 28,
+				"formula": "8d6"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -37,13 +40,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6+3) slashing damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
 					]
 				},
 				{
@@ -71,7 +74,10 @@
 				"E"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "133 (14d10+56)",
+			"hp": {
+				"average": 133,
+				"formula": "14d10+56"
+			},
 			"speed": {
 				"walk": 40,
 				"swim": 40
@@ -126,19 +132,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) piercing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 11 (2d6+4) slashing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Demonic Shout (Recharge 6)",
 					"entries": [
-						"Kes’thak unleashes a terrible shout. Each creature within 10 feet of Kes’thak must make a DC 14 Constitution saving throw, taking 45 (10d8) force damage on a failed saving throw, or half as much damage on a successful one."
+						"Kes’thak unleashes a terrible shout. Each creature within 10 feet of Kes’thak must make a DC 14 Constitution saving throw, taking 45 ({@dice 10d8}) force damage on a failed saving throw, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -162,7 +168,10 @@
 				"N"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "32 (5d8+10)",
+			"hp": {
+				"average": 32,
+				"formula": "5d8+10"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -198,13 +207,13 @@
 				{
 					"name": "Greatclub",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d8+3}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120, one target. Hit: 10 (2d6+3) piercing damage in melee or 6 (1d6+3) piercing damage at range."
+						"Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or range 30/120, one target. Hit: 10 ({@dice 2d6+3}) piercing damage in melee or 6 ({@dice 1d6+3}) piercing damage at range."
 					]
 				}
 			]
@@ -220,7 +229,10 @@
 				"N"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "65 (10d8+20)",
+			"hp": {
+				"average": 65,
+				"formula": "10d8+20"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -268,13 +280,13 @@
 				{
 					"name": "Greatclub",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 30/120, one target. Hit: 11 (2d6+4) piercing damage in melee or 7 (1d6+4) piercing damage at range."
+						"Melee or Ranged Weapon Attack: {@hit +6} to hit, reach 5 ft. or range 30/120, one target. Hit: 11 ({@dice 2d6+4}) piercing damage in melee or 7 ({@dice 1d6+4}) piercing damage at range."
 					]
 				}
 			]
@@ -295,7 +307,10 @@
 				"N"
 			],
 			"ac": "13",
-			"hp": "22 (5d8)",
+			"hp": {
+				"average": 22,
+				"formula": "5d8"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -325,13 +340,13 @@
 				{
 					"name": "Rapier",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or 20/60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or 20/60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
 					]
 				}
 			],
@@ -339,7 +354,7 @@
 				{
 					"name": "Wrathful Needles",
 					"entries": [
-						"When an adjacent enemy hits an ally of the pine wilden warrior with a melee attack, the warrior can use a reaction to deal 3 (1d6) points of piercing damage unless the enemy succeeds on a DC 11 Dexterity saving throw."
+						"When an adjacent enemy hits an ally of the pine wilden warrior with a melee attack, the warrior can use a reaction to deal 3 ({@dice 1d6}) points of piercing damage unless the enemy succeeds on a DC 11 Dexterity saving throw."
 					]
 				}
 			]
@@ -360,7 +375,10 @@
 				"N"
 			],
 			"ac": "14",
-			"hp": "55 (10d8+10)",
+			"hp": {
+				"average": 55,
+				"formula": "10d8+10"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -389,7 +407,7 @@
 				{
 					"name": "Wrathful Mark",
 					"entries": [
-						"As a bonus action, a pine wilden ranger can chose one enemy as its mark. Once per turn, the pine wilden ranger does an extra 3 (1d6) damage to their marked enemy when they hit with a melee or ranged weapon attack."
+						"As a bonus action, a pine wilden ranger can chose one enemy as its mark. Once per turn, the pine wilden ranger does an extra 3 ({@dice 1d6}) damage to their marked enemy when they hit with a melee or ranged weapon attack."
 					]
 				}
 			],
@@ -403,13 +421,13 @@
 				{
 					"name": "Rapier",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or 20/60 ft., one target. Hit: 6 (1d4+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +6} to hit, reach 5 ft. or 20/60 ft., one target. Hit: 6 ({@dice 1d4+4}) piercing damage."
 					]
 				}
 			],
@@ -417,7 +435,7 @@
 				{
 					"name": "Wrathful Needles",
 					"entries": [
-						"When an adjacent enemy hits an ally of the pine wilden ranger with a melee attack, the ranger can use a reaction to deal 5 (2d4) points of piercing damage unless the enemy succeeds on a DC 12 Dexterity saving throw."
+						"When an adjacent enemy hits an ally of the pine wilden ranger with a melee attack, the ranger can use a reaction to deal 5 ({@dice 2d4}) points of piercing damage unless the enemy succeeds on a DC 12 Dexterity saving throw."
 					]
 				}
 			]
@@ -438,7 +456,10 @@
 				"N"
 			],
 			"ac": "12",
-			"hp": "11 (2d8+2)",
+			"hp": {
+				"average": 11,
+				"formula": "2d8+2"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -493,13 +514,13 @@
 				{
 					"name": "Club",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +1} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d6-1}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Shillelagh",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage."
 					]
 				}
 			]
@@ -520,7 +541,10 @@
 				"N"
 			],
 			"ac": "12 (16 with barkskin)",
-			"hp": "66 (12d8+12)",
+			"hp": {
+				"average": 66,
+				"formula": "12d8+12"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -607,13 +631,13 @@
 				{
 					"name": "Club",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +1} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d6-1}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Shillelagh",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				}
 			]
@@ -634,7 +658,10 @@
 				"N"
 			],
 			"ac": "12",
-			"hp": "16 (3d8+3)",
+			"hp": {
+				"average": 16,
+				"formula": "3d8+3"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -672,19 +699,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) slashing damage."
+						"Melee Weapon Attack: {@hit +2} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d6}) slashing damage."
 					]
 				},
 				{
 					"name": "Short Sword",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage. If the chameleon lizardfolk snoop has advantage on the attack roll, the attack deals an extra 3 (1d6) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage. If the chameleon lizardfolk snoop has advantage on the attack roll, the attack deals an extra 3 ({@dice 1d6}) piercing damage."
 					]
 				},
 				{
 					"name": "Sling",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 4 (1d4+2) bludgeoning damage. If the chameleon lizardfolk snoop has advantage on the attack roll, the attack deals an extra 3 (1d6) bludgeoning damage."
+						"Ranged Weapon Attack: {@hit +4} to hit, range 30/120 ft., one target. Hit: 4 ({@dice 1d4+2}) bludgeoning damage. If the chameleon lizardfolk snoop has advantage on the attack roll, the attack deals an extra 3 ({@dice 1d6}) bludgeoning damage."
 					]
 				}
 			],
@@ -713,7 +740,10 @@
 				"N"
 			],
 			"ac": "14",
-			"hp": "33 (6d8+6)",
+			"hp": {
+				"average": 33,
+				"formula": "6d8+6"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -763,19 +793,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) slashing damage."
+						"Melee Weapon Attack: {@hit +2} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d6}) slashing damage."
 					]
 				},
 				{
 					"name": "Short Sword",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) piercing damage. If the chameleon lizardfolk spy has advantage on the attack roll, the attack deals an extra 7 (2d6) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage. If the chameleon lizardfolk spy has advantage on the attack roll, the attack deals an extra 7 ({@dice 2d6}) piercing damage."
 					]
 				},
 				{
 					"name": "Sling",
 					"entries": [
-						"Ranged Weapon Attack: +6 to hit, range 30/120 ft., one target. Hit: 6 (1d4+4) bludgeoning damage. If the chameleon lizardfolk spy has advantage on the attack roll, the attack deals an extra 7 (2d6) bludgeoning damage."
+						"Ranged Weapon Attack: {@hit +6} to hit, range 30/120 ft., one target. Hit: 6 ({@dice 1d4+4}) bludgeoning damage. If the chameleon lizardfolk spy has advantage on the attack roll, the attack deals an extra 7 ({@dice 2d6}) bludgeoning damage."
 					]
 				}
 			],
@@ -804,7 +834,10 @@
 				"N"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "17 (3d8+3)",
+			"hp": {
+				"average": 17,
+				"formula": "3d8+3"
+			},
 			"speed": {
 				"walk": 40,
 				"climb": 40,
@@ -849,13 +882,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) slashing damage."
+						"Melee Weapon Attack: {@hit +1} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d6-1}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Attack: +4 to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 4 (1d4+2) piercing damage."
+						"Melee or Ranged Attack: {@hit +4} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
 				}
 			]
@@ -876,7 +909,10 @@
 				"N"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "27 (5d8+5)",
+			"hp": {
+				"average": 27,
+				"formula": "5d8+5"
+			},
 			"speed": {
 				"walk": 40,
 				"climb": 40,
@@ -928,13 +964,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 2 (1d6-1) slashing damage."
+						"Melee Weapon Attack: {@hit +1} to hit, reach 5 ft., one target. Hit: 2 ({@dice 1d6-1}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Attack: +5 to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+						"Melee or Ranged Attack: {@hit +5} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
 					]
 				}
 			],
@@ -942,7 +978,7 @@
 				{
 					"name": "Lightning Retort",
 					"entries": [
-						"The gecko lizardfolk infiltrator can make a dagger attack against an adjacent enemy who hits it with a melee attack. If this dagger attack hits, it does an additional 3 (1d6) piercing damage."
+						"The gecko lizardfolk infiltrator can make a dagger attack against an adjacent enemy who hits it with a melee attack. If this dagger attack hits, it does an additional 3 ({@dice 1d6}) piercing damage."
 					]
 				}
 			]
@@ -964,7 +1000,10 @@
 				"E"
 			],
 			"ac": "16 (natural armor, shield)",
-			"hp": "27 (5d8+5)",
+			"hp": {
+				"average": 27,
+				"formula": "5d8+5"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -1002,7 +1041,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage, and the target must make a DC 11 Constitution saving throw, taking 7 (2d6) poison damage on a failed save. If the poison reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) slashing damage, and the target must make a DC 11 Constitution saving throw, taking 7 ({@dice 2d6}) poison damage on a failed save. If the poison reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points."
 					]
 				}
 			]
@@ -1024,7 +1063,10 @@
 				"E"
 			],
 			"ac": "16 (natural armor, shield)",
-			"hp": "65 (10d8+20)",
+			"hp": {
+				"average": 65,
+				"formula": "10d8+20"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -1074,13 +1116,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d6+4) slashing damage, and the target must make a DC 12 Constitution saving throw, taking 14 (4d6) poison damage on a failed save. If the poison reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) slashing damage, and the target must make a DC 12 Constitution saving throw, taking 14 ({@dice 4d6}) poison damage on a failed save. If the poison reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				}
 			]
@@ -1101,7 +1143,10 @@
 				"N"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "32 (5d8+10)",
+			"hp": {
+				"average": 32,
+				"formula": "5d8+10"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -1145,13 +1190,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) slashing damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) slashing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+3) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
 					]
 				}
 			]
@@ -1172,7 +1217,10 @@
 				"N"
 			],
 			"ac": "14 (natural armor, shield)",
-			"hp": "65 (10d8+20)",
+			"hp": {
+				"average": 65,
+				"formula": "10d8+20"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -1216,19 +1264,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d8+4) slashing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6+4) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Deliberate Bite",
 					"entries": [
-						"The komodo lizardfolk champion makes one bite attack. This attack is made with advantage, and on a hit the target takes an additional 9 (2d8) bludgeoning damage and is restrained until the start of its next turn."
+						"The komodo lizardfolk champion makes one bite attack. This attack is made with advantage, and on a hit the target takes an additional 9 ({@dice 2d8}) bludgeoning damage and is restrained until the start of its next turn."
 					]
 				}
 			]
@@ -1250,7 +1298,10 @@
 				"E"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "37 (5d10+10)",
+			"hp": {
+				"average": 37,
+				"formula": "5d10+10"
+			},
 			"speed": {
 				"walk": 30,
 				"climb": 30
@@ -1290,7 +1341,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. Hit: 8 (1d10+3) piercing damage, plus 5 (2d4) poison damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 10 ft., one target. Hit: 8 ({@dice 1d10+3}) piercing damage, plus 5 ({@dice 2d4}) poison damage."
 					]
 				}
 			]
@@ -1306,7 +1357,10 @@
 				"U"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "45 (6d10+12)",
+			"hp": {
+				"average": 45,
+				"formula": "6d10+12"
+			},
 			"speed": {
 				"walk": 30,
 				"climb": 30
@@ -1324,13 +1378,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage, plus 5 (2d4) poison damage. If the target is a Large or smaller creature, it is grappled (escape DC 13). Until the grapple ends, the giant spitting lizard can only bite the grappled creature and has advantage on attack rolls to do so."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage, plus 5 ({@dice 2d4}) poison damage. If the target is a Large or smaller creature, it is grappled (escape DC 13). Until the grapple ends, the giant spitting lizard can only bite the grappled creature and has advantage on attack rolls to do so."
 					]
 				},
 				{
 					"name": "Poison Spit",
 					"entries": [
-						"Ranged Weapon Attack: +5 to hit, range 30 ft., two adjacent targets. Hit: 13 (3d6+3) poison damage. The giant spitting lizard cannot make this attack if it has a creature grappled."
+						"Ranged Weapon Attack: {@hit +5} to hit, range 30 ft., two adjacent targets. Hit: 13 ({@dice 3d6+3}) poison damage. The giant spitting lizard cannot make this attack if it has a creature grappled."
 					]
 				}
 			],
@@ -1338,7 +1392,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 10 ft., one target. This attack is triggered when a creature attempts to move adjacent to the giant spitting lizard. Hit: The target is pushed 10 feet and knocked prone, ending that creature’s movement."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 10 ft., one target. This attack is triggered when a creature attempts to move adjacent to the giant spitting lizard. Hit: The target is pushed 10 feet and knocked prone, ending that creature’s movement."
 					]
 				}
 			]
@@ -1355,7 +1409,10 @@
 				"E"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "60 (8d10+16)",
+			"hp": {
+				"average": 60,
+				"formula": "8d10+16"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -1396,7 +1453,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 11 (2d8+2) piercing damage, and the target is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the crocodile can’t bite another target."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one creature. Hit: 11 ({@dice 2d8+2}) piercing damage, and the target is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the crocodile can’t bite another target."
 					]
 				}
 			]
@@ -1413,7 +1470,10 @@
 				"E"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "39 (6d8+12)",
+			"hp": {
+				"average": 39,
+				"formula": "6d8+12"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -1462,7 +1522,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) piercing damage. If the target is a creature, it must succeed on a DC 12 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 9 ({@dice 2d6+2}) piercing damage. If the target is a creature, it must succeed on a DC 12 Strength saving throw or be knocked prone."
 					]
 				}
 			]
@@ -1479,7 +1539,10 @@
 				"E"
 			],
 			"ac": "10",
-			"hp": "37 (5d10+10)",
+			"hp": {
+				"average": 37,
+				"formula": "5d10+10"
+			},
 			"speed": {
 				"walk": 10,
 				"fly": 60
@@ -1536,13 +1599,13 @@
 				{
 					"name": "Beak",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Talons",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) slashing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 9 ({@dice 2d6+2}) slashing damage."
 					]
 				}
 			]
@@ -1564,7 +1627,10 @@
 				"E"
 			],
 			"ac": "16 (chainmail)",
-			"hp": "85 (10d8+40)",
+			"hp": {
+				"average": 85,
+				"formula": "10d8+40"
+			},
 			"speed": {
 				"walk": 25
 			},
@@ -1609,7 +1675,7 @@
 				{
 					"name": "Greatclub",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				},
 				{
@@ -1637,7 +1703,10 @@
 				"E"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "27 (5d8+5)",
+			"hp": {
+				"average": 27,
+				"formula": "5d8+5"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -1708,7 +1777,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
 			],
@@ -1716,7 +1785,7 @@
 				{
 					"name": "Divine Guidance",
 					"entries": [
-						"Qamala can use her reaction each round to guide the weapon attacks of her allies. When an ally is about to attack, Qamala spends a level 1 spell slot to grant that ally an extra 5 (2d4) damage of the type done. If she expends a spell slot of level 2 or higher, the extra damage increases by 1d4 for each level about 1st."
+						"Qamala can use her reaction each round to guide the weapon attacks of her allies. When an ally is about to attack, Qamala spends a level 1 spell slot to grant that ally an extra 5 ({@dice 2d4}) damage of the type done. If she expends a spell slot of level 2 or higher, the extra damage increases by {@dice 1d4} for each level about 1st."
 					]
 				}
 			]
@@ -1732,7 +1801,10 @@
 				"A"
 			],
 			"ac": "13",
-			"hp": "55 (10d8+10)",
+			"hp": {
+				"average": 55,
+				"formula": "10d8+10"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -1755,7 +1827,7 @@
 				{
 					"name": "Poisoned Dagger (3/Day)",
 					"entries": [
-						"As a bonus action, the alchemist can add 1d10 poison damage to its next damage roll with a dagger."
+						"As a bonus action, the alchemist can add {@dice 1d10} poison damage to its next damage roll with a dagger."
 					]
 				}
 			],
@@ -1769,13 +1841,13 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d4+3) piercing damage."
+						"Melee or Ranged Weapon Attack: {@hit +5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Caustic Spray (Recharge 5-6)",
 					"entries": [
-						"The alchemist mixes chemicals to cause a 15-foot cone of acid to shoot forth. Each creature in that area must make a DC 13 Dexterity saving throw, taking 22 (4d10) acid damage on a failed save, or half as much damage on a successful one."
+						"The alchemist mixes chemicals to cause a 15-foot cone of acid to shoot forth. Each creature in that area must make a DC 13 Dexterity saving throw, taking 22 ({@dice 4d10}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			]
@@ -1791,7 +1863,10 @@
 				"N"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "9 (2d6+2)",
+			"hp": {
+				"average": 9,
+				"formula": "2d6+2"
+			},
 			"speed": {
 				"walk": 5,
 				"swim": 30
@@ -1838,7 +1913,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) slashing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) slashing damage."
 					]
 				}
 			]
@@ -1854,7 +1929,10 @@
 				"N"
 			],
 			"ac": "12 inside; 18 shell (natural armor)",
-			"hp": "58 (9d8+18)",
+			"hp": {
+				"average": 58,
+				"formula": "9d8+18"
+			},
 			"speed": {
 				"walk": 5
 			},
@@ -1889,13 +1967,13 @@
 				{
 					"name": "Pseudopod",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage. The target is subjected to its Adhesive trait."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage. The target is subjected to its Adhesive trait."
 					]
 				},
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) bludgeoning damage plus 4 (1d8) acid damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) bludgeoning damage plus 4 ({@dice 1d8}) acid damage."
 					]
 				}
 			]
@@ -1911,7 +1989,10 @@
 				"U"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "126 (11d12+55)",
+			"hp": {
+				"average": 126,
+				"formula": "11d12+55"
+			},
 			"speed": {
 				"walk": 0,
 				"swim": 50
@@ -1946,7 +2027,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 22 (3d10+6) piercing damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 22 ({@dice 3d10+6}) piercing damage."
 					]
 				}
 			]
@@ -1968,7 +2049,10 @@
 				"E"
 			],
 			"ac": "10",
-			"hp": "13 (2d8+4)",
+			"hp": {
+				"average": 13,
+				"formula": "2d8+4"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -2000,13 +2084,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6+1) piercing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4+1) slashing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 6 ({@dice 2d4+1}) slashing damage."
 					]
 				}
 			]
@@ -2025,7 +2109,10 @@
 				"E"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "171 (18d10+72)",
+			"hp": {
+				"average": 171,
+				"formula": "18d10+72"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -2076,7 +2163,7 @@
 				{
 					"name": "Pincer",
 					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 10 ft., one target. Hit: 18 (3d8 + 5) bludgeoning damage. The target is grappled (escape DC 15) if it is a huge or smaller creature and the chuul doesn't have two other creatures grappled."
+						"Melee Weapon Attack: {@hit +8} to hit, reach 10 ft., one target. Hit: 18 ({@dice 3d8 + 5}) bludgeoning damage. The target is grappled (escape DC 15) if it is a huge or smaller creature and the chuul doesn't have two other creatures grappled."
 					]
 				},
 				{
@@ -2098,7 +2185,10 @@
 				"U"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "49 (9d6+18)",
+			"hp": {
+				"average": 49,
+				"formula": "9d6+18"
+			},
 			"speed": {
 				"walk": 25,
 				"climb": 25
@@ -2143,7 +2233,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target, Hit: 12 (2d8+3) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target, Hit: 12 ({@dice 2d8+3}) bludgeoning damage."
 					]
 				}
 			]
@@ -2159,7 +2249,10 @@
 				"U"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "26 (4d8+8)",
+			"hp": {
+				"average": 26,
+				"formula": "4d8+8"
+			},
 			"speed": {
 				"walk": 10,
 				"swim": 40
@@ -2189,7 +2282,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d8+3}) piercing damage."
 					]
 				}
 			]
@@ -2205,7 +2298,10 @@
 				"U"
 			],
 			"ac": "16 (natural armor)",
-			"hp": "145 (10d20+40)",
+			"hp": {
+				"average": 145,
+				"formula": "10d20+40"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -2227,13 +2323,13 @@
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 34 (5d10+7) bludgeoning damage, and the target must succeed on a DC 15 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 20 ft., one target. Hit: 34 ({@dice 5d10+7}) bludgeoning damage, and the target must succeed on a DC 15 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 40 (6d10+7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 20 ft., one target. Hit: 40 ({@dice 6d10+7}) bludgeoning damage."
 					]
 				}
 			]
@@ -2249,7 +2345,10 @@
 				"U"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "26 (4d8+4)",
+			"hp": {
+				"average": 26,
+				"formula": "4d8+4"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -2271,13 +2370,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Venomous Spit",
 					"entries": [
-						"Ranged Weapon Attack: +4 to hit, range 10/20 ft., one target. Hit: The target must succeed on a DC 12 Constitution saving throw or become blinded for 1 minute. A blinded creature must repeat the saving throw at the end of its next turn, becoming paralyzed for as long as it remains blinded on a failure or ending the blinded condition on a success. A blinded and paralyzed creature can repeat the saving throw at the end of its turn, ending both conditions on a success. Creatures immune to the poisoned condition are immune to this effect."
+						"Ranged Weapon Attack: {@hit +4} to hit, range 10/20 ft., one target. Hit: The target must succeed on a DC 12 Constitution saving throw or become blinded for 1 minute. A blinded creature must repeat the saving throw at the end of its next turn, becoming paralyzed for as long as it remains blinded on a failure or ending the blinded condition on a success. A blinded and paralyzed creature can repeat the saving throw at the end of its turn, ending both conditions on a success. Creatures immune to the poisoned condition are immune to this effect."
 					]
 				}
 			]
@@ -2293,7 +2392,10 @@
 				"U"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "217 (14d20+70)",
+			"hp": {
+				"average": 217,
+				"formula": "14d20+70"
+			},
 			"speed": {
 				"walk": 60
 			},
@@ -2321,20 +2423,20 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +12 to hit, reach 15 ft., one target. Hit: 34 (4d12+8) piercing damage. If the target is a Large or smaller creature, it is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the giganotosaurus can't bite another target."
+						"Melee Weapon Attack: {@hit +12} to hit, reach 15 ft., one target. Hit: 34 ({@dice 4d12+8}) piercing damage. If the target is a Large or smaller creature, it is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the giganotosaurus can't bite another target."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +12 to hit, reach 20 ft., one target. Hit: 26 (4d8+8) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +12} to hit, reach 20 ft., one target. Hit: 26 ({@dice 4d8+8}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Swallow",
 					"entries": [
 						"The giganotosaurus makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, the target takes the bite's damage, the target is swallowed, and the grapple ends.",
-						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the giganotosaurus, and it takes 21 (6d6) acid damage at the start of each of the giganotosaurus' turns.",
+						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the giganotosaurus, and it takes 21 ({@dice 6d6}) acid damage at the start of each of the giganotosaurus' turns.",
 						"If the giganotosaurus takes 30 damage or more on a single turn from a creature inside it, the giganotosaurus must succeed on a DC 15 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the giganotosaurus. If the giganotosaurus dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 30 feet of movement, exiting prone."
 					]
 				}
@@ -2365,7 +2467,10 @@
 				"U"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "159 (11d20+44)",
+			"hp": {
+				"average": 159,
+				"formula": "11d20+44"
+			},
 			"speed": {
 				"walk": 0,
 				"swim": 50
@@ -2395,14 +2500,14 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 33 (4d12+7) piercing damage. If the target is a creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the mosasaurus can't bite another target."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 33 ({@dice 4d12+7}) piercing damage. If the target is a creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the mosasaurus can't bite another target."
 					]
 				},
 				{
 					"name": "Swallow",
 					"entries": [
 						"The mosasaurus makes one bite attack against a Medium or smaller creature it is grappling. If the attack hits, the target takes the bite's damage, the target is swallowed, and the grapple ends.",
-						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the mosasaurus, and it takes 17 (5d6) acid damage at the start of each of the mosasaurus' turns.",
+						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the mosasaurus, and it takes 17 ({@dice 5d6}) acid damage at the start of each of the mosasaurus' turns.",
 						"If the mosasaurus takes 25 damage or more on a single turn from a creature inside it, the mosasaurus must succeed on a DC 15 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the mosasaurus. If the mosasaurus dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 30 feet of movement, exiting prone."
 					]
 				}
@@ -2419,7 +2524,10 @@
 				"U"
 			],
 			"ac": "12",
-			"hp": "1 (1d4-1)",
+			"hp": {
+				"average": 1,
+				"formula": "1d4-1"
+			},
 			"speed": {
 				"walk": 5,
 				"fly": 50
@@ -2450,7 +2558,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 1 piercing damage."
 					]
 				}
 			]
@@ -2469,7 +2577,10 @@
 				"U"
 			],
 			"ac": "12",
-			"hp": "24 (7d8-7)",
+			"hp": {
+				"average": 24,
+				"formula": "7d8-7"
+			},
 			"speed": {
 				"walk": 5,
 				"fly": 50
@@ -2521,7 +2632,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d6) piercing damage, or 3 (1d6) piercing damage if the swarm has half of its hit points or fewer."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d6}) piercing damage, or 3 ({@dice 1d6}) piercing damage if the swarm has half of its hit points or fewer."
 					]
 				}
 			]
@@ -2537,7 +2648,10 @@
 				"U"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "68 (8d10+24)",
+			"hp": {
+				"average": 68,
+				"formula": "8d10+24"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -2555,7 +2669,7 @@
 				{
 					"name": "Charge",
 					"entries": [
-						"If the pachycephalosaurus moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 (2d4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
+						"If the pachycephalosaurus moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 ({@dice 2d4}) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
 					]
 				}
 			],
@@ -2563,7 +2677,7 @@
 				{
 					"name": "Ram",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				}
 			]
@@ -2579,7 +2693,10 @@
 				"U"
 			],
 			"ac": "15 (natural armor)",
-			"hp": "137 (10d20+32)",
+			"hp": {
+				"average": 137,
+				"formula": "10d20+32"
+			},
 			"speed": {
 				"walk": 40,
 				"swim": 50
@@ -2617,13 +2734,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 28 (4d10+6) piercing damage. If the target is a creature, it is grappled (escape DC 16). Until this grapple ends, the target is restrained, and the sarcosuchus can't bite another target."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 10 ft., one target. Hit: 28 ({@dice 4d10+6}) piercing damage. If the target is a creature, it is grappled (escape DC 16). Until this grapple ends, the target is restrained, and the sarcosuchus can't bite another target."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 15 ft., one target. Hit: 19 (3d8+6) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 15 ft., one target. Hit: 19 ({@dice 3d8+6}) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked prone."
 					]
 				}
 			]
@@ -2639,7 +2756,10 @@
 				"U"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "104 (11d12+33)",
+			"hp": {
+				"average": 104,
+				"formula": "11d12+33"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -2664,7 +2784,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 17 (3d8+4) slashing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 17 ({@dice 3d8+4}) slashing damage."
 					]
 				}
 			]
@@ -2680,7 +2800,10 @@
 				"U"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "201 (13d20+65)",
+			"hp": {
+				"average": 201,
+				"formula": "13d20+65"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -2702,13 +2825,13 @@
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 40 (6d10+7) bludgeoning damage, and the target must succeed on a DC 16 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 20 ft., one target. Hit: 40 ({@dice 6d10+7}) bludgeoning damage, and the target must succeed on a DC 16 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 45 (7d10+7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 20 ft., one target. Hit: 45 ({@dice 7d10+7}) bludgeoning damage."
 					]
 				}
 			],
@@ -2744,7 +2867,10 @@
 				"U"
 			],
 			"ac": "13 (natural armor)",
-			"hp": "22 (4d6+8)",
+			"hp": {
+				"average": 22,
+				"formula": "4d6+8"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -2780,7 +2906,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d10+2}) piercing damage."
 					]
 				}
 			]
@@ -2796,7 +2922,10 @@
 				"U"
 			],
 			"ac": "15 (natural armor)",
-			"hp": "52 (7d10+14)",
+			"hp": {
+				"average": 52,
+				"formula": "7d10+14"
+			},
 			"speed": {
 				"walk": 50
 			},
@@ -2838,13 +2967,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack. +6 to hit, reach 5 ft., one target. Hit: 9 (1d10+4) piercing damage."
+						"Melee Weapon Attack. {@hit +6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack. +6 to hit, reach 5 ft., one target. Hit. 9 (1d10+4) slashing damage."
+						"Melee Weapon Attack. {@hit +6} to hit, reach 5 ft., one target. Hit. 9 ({@dice 1d10+4}) slashing damage."
 					]
 				}
 			]
@@ -2860,7 +2989,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "51 (6d10+18)",
+			"hp": {
+				"average": 51,
+				"formula": "6d10+18"
+			},
 			"speed": {
 				"walk": 50
 			},
@@ -2904,13 +3036,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 15 (2d10+4) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 15 ({@dice 2d10+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) slashing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) slashing damage."
 					]
 				}
 			]
@@ -2926,7 +3058,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "26 (4d8+8)",
+			"hp": {
+				"average": 26,
+				"formula": "4d8+8"
+			},
 			"speed": {
 				"walk": 10,
 				"swim": 20
@@ -2965,7 +3100,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 12 (2d8+3) piercing damage."
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d8+3}) piercing damage."
 					]
 				}
 			]
@@ -2981,7 +3116,10 @@
 				"U"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "145 (10d20+40)",
+			"hp": {
+				"average": 145,
+				"formula": "10d20+40"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -3016,19 +3154,19 @@
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 34 (5d10+7) bludgeoning damage, and the target must succeed on a DC 15 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 20 ft., one target. Hit: 34 ({@dice 5d10+7}) bludgeoning damage, and the target must succeed on a DC 15 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 40 (6d10+7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 20 ft., one target. Hit: 40 ({@dice 6d10+7}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Poison Breath (Recharge 5-6)",
 					"entries": [
-						"The brachiosaurus zombie exhales poison gas in a 30-foot cone. Each creature in that area must make a DC 15 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one."
+						"The brachiosaurus zombie exhales poison gas in a 30-foot cone. Each creature in that area must make a DC 15 Constitution saving throw, taking 45 ({@dice 10d8}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			]
@@ -3044,7 +3182,10 @@
 				"U"
 			],
 			"ac": "14 (natural armor)",
-			"hp": "121 (9d20+27)",
+			"hp": {
+				"average": 121,
+				"formula": "9d20+27"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -3079,13 +3220,13 @@
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +8 to hit, reach 20 ft., one target. Hit: 27 (5d8+5) bludgeoning damage, and the target must succeed on a DC 14 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +8} to hit, reach 20 ft., one target. Hit: 27 ({@dice 5d8+5}) bludgeoning damage, and the target must succeed on a DC 14 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 20 ft., one target. Hit: 32 (6d8+5) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 20 ft., one target. Hit: 32 ({@dice 6d8+5}) bludgeoning damage."
 					]
 				}
 			]
@@ -3101,7 +3242,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "32 (5d8+10)",
+			"hp": {
+				"average": 32,
+				"formula": "5d8+10"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -3151,13 +3295,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d8+2) slashing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) slashing damage."
 					]
 				}
 			]
@@ -3173,7 +3317,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "26 (4d8+4)",
+			"hp": {
+				"average": 26,
+				"formula": "4d8+4"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -3205,13 +3352,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8+1) piercing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d8+1}) piercing damage."
 					]
 				},
 				{
 					"name": "Necrotic Spit",
 					"entries": [
-						"Ranged Weapon Attack: +2 to hit, range 10/20 ft., one target. Hit: 10 (3d6) necrotic damage and the target must succeed on a DC 12 Constitution saving throw or become blinded for 1 minute. A blinded creature can repeat the saving throw at the end of its turn, ending the condition on a success."
+						"Ranged Weapon Attack: {@hit +2} to hit, range 10/20 ft., one target. Hit: 10 ({@dice 3d6}) necrotic damage and the target must succeed on a DC 12 Constitution saving throw or become blinded for 1 minute. A blinded creature can repeat the saving throw at the end of its turn, ending the condition on a success."
 					]
 				}
 			]
@@ -3227,7 +3374,10 @@
 				"U"
 			],
 			"ac": "10 (natural armor)",
-			"hp": "25 (4d8+8)",
+			"hp": {
+				"average": 25,
+				"formula": "4d8+8"
+			},
 			"speed": {
 				"walk": 20,
 				"swim": 20
@@ -3260,7 +3410,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 9 (2d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 9 ({@dice 2d6+2}) piercing damage."
 					]
 				}
 			]
@@ -3276,7 +3426,10 @@
 				"U"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "217 (14d20+70)",
+			"hp": {
+				"average": 217,
+				"formula": "14d20+70"
+			},
 			"speed": {
 				"walk": 50
 			},
@@ -3300,7 +3453,7 @@
 				{
 					"name": "Disgorge Zombie",
 					"entries": [
-						"As a bonus action, the giganotosaurus zombie can disgorge a normal {@creature zombie}, which appears in an unoccupied space within 15 feet of it. The disgorged zombie acts on its own initative count. After a zombie is disgorged, roll a d6. On a roll of 1, the giganotosaurus zombie runs out of zombies to disgorge and loses this trait. On a roll of 6, the next zombie the giganotosaurus zombie disgorges is an {@creature ogre zombie}. If the giganotosaurus zombie still has this trait when it dies, 1d4 normal {@creature zombie}s erupt from its corpse at the start of its next turn. These zombies act on their own initative counts."
+						"As a bonus action, the giganotosaurus zombie can disgorge a normal {@creature zombie}, which appears in an unoccupied space within 15 feet of it. The disgorged zombie acts on its own initative count. After a zombie is disgorged, roll a d6. On a roll of 1, the giganotosaurus zombie runs out of zombies to disgorge and loses this trait. On a roll of 6, the next zombie the giganotosaurus zombie disgorges is an {@creature ogre zombie}. If the giganotosaurus zombie still has this trait when it dies, {@dice 1d4} normal {@creature zombie}s erupt from its corpse at the start of its next turn. These zombies act on their own initative counts."
 					]
 				},
 				{
@@ -3320,20 +3473,20 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +12 to hit, reach 15 ft., one target. Hit: 34 (4d12+8) piercing damage. If the target is a Large or smaller creature, it is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the giganotosaurus zombie can't bite another target."
+						"Melee Weapon Attack: {@hit +12} to hit, reach 15 ft., one target. Hit: 34 ({@dice 4d12+8}) piercing damage. If the target is a Large or smaller creature, it is grappled (escape DC 18). Until this grapple ends, the target is restrained, and the giganotosaurus zombie can't bite another target."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +12 to hit, reach 20 ft., one target. Hit: 26 (4d8+8) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +12} to hit, reach 20 ft., one target. Hit: 26 ({@dice 4d8+8}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Swallow",
 					"entries": [
 						"The giganotosaurus zombie makes one bite attack against a Large or smaller creature it is grappling. If the attack hits, the target takes the bite's damage, the target is swallowed, and the grapple ends.",
-						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the giganotosaurus zombie, and it takes 18 (4d6) poison damage at the start of each of the giganotosaurus zombie's turns. A creature that dies while swallowed becomes a {@creature zombie} the giganotosaurus zombie can disgorge at the start of the giganotosaurus zombie's next turn.",
+						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the giganotosaurus zombie, and it takes 18 ({@dice 4d6}) poison damage at the start of each of the giganotosaurus zombie's turns. A creature that dies while swallowed becomes a {@creature zombie} the giganotosaurus zombie can disgorge at the start of the giganotosaurus zombie's next turn.",
 						"If the giganotosaurus zombie takes 30 damage or more on a single turn from a creature inside it, the giganotosaurus zombie must succeed on a DC 15 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the giganotosaurus zombie. If the giganotosaurus zombie dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 30 feet of movement, exiting prone."
 					]
 				}
@@ -3370,7 +3523,10 @@
 				"U"
 			],
 			"ac": "9 (natural armor)",
-			"hp": "30 (4d10+8)",
+			"hp": {
+				"average": 30,
+				"formula": "4d10+8"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -3402,7 +3558,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d10+2}) bludgeoning damage."
 					]
 				}
 			]
@@ -3418,7 +3574,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "159 (11d20+44)",
+			"hp": {
+				"average": 159,
+				"formula": "11d20+44"
+			},
 			"speed": {
 				"walk": 0,
 				"swim": 40
@@ -3451,20 +3610,20 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 33 (4d12+7) piercing damage. If the target is a creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the mosasaurus zombie can't bite another target."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 33 ({@dice 4d12+7}) piercing damage. If the target is a creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the mosasaurus zombie can't bite another target."
 					]
 				},
 				{
 					"name": "Necrotic Belch (Recharge 6)",
 					"entries": [
-						"The mosasaurus zombie belches necrotic energy in a 30-foot cone. Creatures in the area must make a DC 15 Constitution saving throw, taking 22 (4d10) necrotic damage and becoming blinded for 1 minute on a failure, or taking only half damage on a success."
+						"The mosasaurus zombie belches necrotic energy in a 30-foot cone. Creatures in the area must make a DC 15 Constitution saving throw, taking 22 ({@dice 4d10}) necrotic damage and becoming blinded for 1 minute on a failure, or taking only half damage on a success."
 					]
 				},
 				{
 					"name": "Swallow",
 					"entries": [
 						"The mosasaurus zombie makes one bite attack against a Medium or smaller creature it is grappling. If the attack hits, the target takes the bite's damage, the target is swallowed, and the grapple ends.",
-						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the mosasaurus zombie, and it takes 17 (5d6) necrotic damage at the start of each of the mosasaurus zombie's turns.",
+						"While swallowed, the creature is blinded and restrained, it has total cover against attacks and other effects outside the mosasaurus zombie, and it takes 17 ({@dice 5d6}) necrotic damage at the start of each of the mosasaurus zombie's turns.",
 						"If the mosasaurus zombie takes 25 damage or more on a single turn from a creature inside it, the mosasaurus zombie must succeed on a DC 15 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall prone in a space within 10 feet of the mosasaurus zombie. If the mosasaurus zombie dies, a swallowed creature is no longer restrained by it and can escape from the corpse by using 30 feet of movement, exiting prone."
 					]
 				}
@@ -3481,7 +3640,10 @@
 				"U"
 			],
 			"ac": "10",
-			"hp": "1 (1d4-1)",
+			"hp": {
+				"average": 1,
+				"formula": "1d4-1"
+			},
 			"speed": {
 				"walk": 5,
 				"fly": 40
@@ -3514,7 +3676,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 1 piercing damage."
+						"Melee Weapon Attack: {@hit +2} to hit, reach 5 ft., one target. Hit: 1 piercing damage."
 					]
 				}
 			]
@@ -3533,7 +3695,10 @@
 				"U"
 			],
 			"ac": "10",
-			"hp": "24 (7d8-7)",
+			"hp": {
+				"average": 24,
+				"formula": "7d8-7"
+			},
 			"speed": {
 				"walk": 5,
 				"fly": 40
@@ -3585,13 +3750,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 7 (2d6) piercing damage, or 3 (1d6) piercing damage if the swarm has half of its hit points or fewer."
+						"Melee Weapon Attack: {@hit +2} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d6}) piercing damage, or 3 ({@dice 1d6}) piercing damage if the swarm has half of its hit points or fewer."
 					]
 				},
 				{
 					"name": "Necrotic Droppings (Recharge 6)",
 					"entries": [
-						"One creature the swarm is directly above must succeed on a DC 10 Dexterity saving throw or take 10 (3d6) necrotic damage."
+						"One creature the swarm is directly above must succeed on a DC 10 Dexterity saving throw or take 10 ({@dice 3d6}) necrotic damage."
 					]
 				}
 			]
@@ -3607,7 +3772,10 @@
 				"U"
 			],
 			"ac": "10 (natural armor)",
-			"hp": "68 (8d10+24)",
+			"hp": {
+				"average": 68,
+				"formula": "8d10+24"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -3631,7 +3799,7 @@
 				{
 					"name": "Shattered Skull Charge",
 					"entries": [
-						"If the pachycephalosaurus zombie moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 (2d4) piercing damage. If the target is a creature, it must succeed on a DC 13 Constitution saving throw or it is poisoned until the end of the pachycephalosaurus zombie's next turn."
+						"If the pachycephalosaurus zombie moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 5 ({@dice 2d4}) piercing damage. If the target is a creature, it must succeed on a DC 13 Constitution saving throw or it is poisoned until the end of the pachycephalosaurus zombie's next turn."
 					]
 				},
 				{
@@ -3645,7 +3813,7 @@
 				{
 					"name": "Ram",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8+4) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
 					]
 				}
 			]
@@ -3661,7 +3829,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "26 (8d10+24)",
+			"hp": {
+				"average": 26,
+				"formula": "8d10+24"
+			},
 			"speed": {
 				"walk": 10,
 				"swim": 30
@@ -3700,7 +3871,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 14 (3d6+4) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 10 ft., one target. Hit: 14 ({@dice 3d6+4}) piercing damage."
 					]
 				}
 			]
@@ -3716,7 +3887,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "25 (4d8+8)",
+			"hp": {
+				"average": 25,
+				"formula": "4d8+8"
+			},
 			"speed": {
 				"walk": 10,
 				"fly": 50
@@ -3741,7 +3915,7 @@
 				{
 					"name": "Terrestrial Leap",
 					"entries": [
-						"If the pteranodon zombie moves at least 10 feet toward a target and then hits with a bite attack on the same turn, the attack deals an extra 10 (3d6) damage to the target."
+						"If the pteranodon zombie moves at least 10 feet toward a target and then hits with a bite attack on the same turn, the attack deals an extra 10 ({@dice 3d6}) damage to the target."
 					]
 				},
 				{
@@ -3761,7 +3935,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4+1) piercing damage."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 6 ({@dice 2d4+1}) piercing damage."
 					]
 				}
 			]
@@ -3777,7 +3951,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "42 (5d12+10)",
+			"hp": {
+				"average": 42,
+				"formula": "5d12+10"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -3821,13 +3998,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 12 (3d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 10 ft., one target. Hit: 12 ({@dice 3d6+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Deadly Leap",
 					"entries": [
-						". If the quetzalcoatlus zombie jumps at least 15 feet as part of its movement, it can then use this action to land on its feet in a space that contains one or more other creatures. Each of those creatures must succeed on a DC 12 Strength or Dexterity saving throw (target's choice) or be knocked prone and take 12 (3d6+2) bludgeoning damage plus 12 (3d6+2) slashing damage. On a successful save, the creature takes only half the damage, isn't knocked prone, and is pushed 5 feet out of the quetzalcoatlus zombie's space into an unoccupied space of the creature's choice. If no unoccupied space is within range, the creature instead falls prone in the quetzalcoatlus zombie's space."
+						". If the quetzalcoatlus zombie jumps at least 15 feet as part of its movement, it can then use this action to land on its feet in a space that contains one or more other creatures. Each of those creatures must succeed on a DC 12 Strength or Dexterity saving throw (target's choice) or be knocked prone and take 12 ({@dice 3d6+2}) bludgeoning damage plus 12 ({@dice 3d6+2}) slashing damage. On a successful save, the creature takes only half the damage, isn't knocked prone, and is pushed 5 feet out of the quetzalcoatlus zombie's space into an unoccupied space of the creature's choice. If no unoccupied space is within range, the creature instead falls prone in the quetzalcoatlus zombie's space."
 					]
 				}
 			]
@@ -3843,7 +4020,10 @@
 				"U"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "137 (10d20+32)",
+			"hp": {
+				"average": 137,
+				"formula": "10d20+32"
+			},
 			"speed": {
 				"walk": 30,
 				"swim": 40
@@ -3888,13 +4068,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 28 (4d10+6) piercing damage. If the target is a creature, it is grappled (escape DC 16). Until this grapple ends, the target is restrained, and the sarcosuchus zombie can't bite another target."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 10 ft., one target. Hit: 28 ({@dice 4d10+6}) piercing damage. If the target is a creature, it is grappled (escape DC 16). Until this grapple ends, the target is restrained, and the sarcosuchus zombie can't bite another target."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 15 ft., one target. Hit: 19 (3d8+6) bludgeoning damage.",
+						"Melee Weapon Attack: {@hit +9} to hit, reach 15 ft., one target. Hit: 19 ({@dice 3d8+6}) bludgeoning damage.",
 						"If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked prone."
 					]
 				}
@@ -3911,7 +4091,10 @@
 				"U"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "76 (8d12+24)",
+			"hp": {
+				"average": 76,
+				"formula": "8d12+24"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -3943,7 +4126,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 26 (6d6+5) piercing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 10 ft., one target. Hit: 26 ({@dice 6d6+5}) piercing damage."
 					]
 				}
 			]
@@ -3959,7 +4142,10 @@
 				"U"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "104 (11d12+33)",
+			"hp": {
+				"average": 104,
+				"formula": "11d12+33"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -3997,7 +4183,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 17 (3d8+4) slashing damage. If the target is a creature, it must succeed on a DC 14 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 17 ({@dice 3d8+4}) slashing damage. If the target is a creature, it must succeed on a DC 14 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				}
 			]
@@ -4013,7 +4199,10 @@
 				"U"
 			],
 			"ac": "15 (natural armor)",
-			"hp": "201 (13d20+65)",
+			"hp": {
+				"average": 201,
+				"formula": "13d20+65"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -4048,13 +4237,13 @@
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 40 (6d10+7) bludgeoning damage, and the target must succeed on a DC 16 Strength saving throw or be knocked prone."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 20 ft., one target. Hit: 40 ({@dice 6d10+7}) bludgeoning damage, and the target must succeed on a DC 16 Strength saving throw or be knocked prone."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 45 (7d10+7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 20 ft., one target. Hit: 45 ({@dice 7d10+7}) bludgeoning damage."
 					]
 				}
 			],
@@ -4090,7 +4279,10 @@
 				"U"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "95 (10d12+30)",
+			"hp": {
+				"average": 95,
+				"formula": "10d12+30"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -4128,13 +4320,13 @@
 				{
 					"name": "Gore",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 24 (4d8+6) piercing damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 24 ({@dice 4d8+6}) piercing damage."
 					]
 				},
 				{
 					"name": "Stomp",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one prone creature. Hit: 22 (3d10+6) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one prone creature. Hit: 22 ({@dice 3d10+6}) bludgeoning damage."
 					]
 				}
 			]
@@ -4150,7 +4342,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "26 (4d8+4)",
+			"hp": {
+				"average": 26,
+				"formula": "4d8+4"
+			},
 			"speed": {
 				"walk": 30
 			},
@@ -4194,7 +4389,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (1d10+1) piercing damage and the target must succeed on a DC 11 Constitution saving throw or become poisoned until the end of the troodon zombie's next turn."
+						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d10+1}) piercing damage and the target must succeed on a DC 11 Constitution saving throw or become poisoned until the end of the troodon zombie's next turn."
 					]
 				}
 			]
@@ -4210,7 +4405,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "18 (4d4+8)",
+			"hp": {
+				"average": 18,
+				"formula": "4d4+8"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -4260,13 +4458,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4+2) slashing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) slashing damage."
 					]
 				}
 			]
@@ -4282,7 +4480,10 @@
 				"U"
 			],
 			"ac": "11 (natural armor)",
-			"hp": "52 (7d10+14)",
+			"hp": {
+				"average": 52,
+				"formula": "7d10+14"
+			},
 			"speed": {
 				"walk": 40
 			},
@@ -4326,13 +4527,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack. +5 to hit, reach 5 ft., one target. Hit: 8 (1d10+3) piercing damage."
+						"Melee Weapon Attack. {@hit +5} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d10+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack. +5 to hit, reach 5 ft., one target. Hit. 8 (1d10+3) slashing damage and the creature must succeed on a DC 12 Constitution saving throw or contract sewer plague (see the \"Sewer Plague\" sidebar or \"Diseases\" in chapter 8, \"Running the Game\" of the Dungeon Master's Guide)."
+						"Melee Weapon Attack. {@hit +5} to hit, reach 5 ft., one target. Hit. 8 ({@dice 1d10+3}) slashing damage and the creature must succeed on a DC 12 Constitution saving throw or contract sewer plague (see the \"Sewer Plague\" sidebar or \"Diseases\" in chapter 8, \"Running the Game\" of the Dungeon Master's Guide)."
 					]
 				}
 			]

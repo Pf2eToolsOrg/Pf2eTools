@@ -9,7 +9,10 @@
 				"N"
 			],
 			"ac": "22 (natural armor)",
-			"hp": "507 (26d20+234)",
+			"hp": {
+				"average": 507,
+				"formula": "26d20+234"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 40,
@@ -66,19 +69,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 15 ft., one target. Hit: 21 (2d10+10) piercing damage."
+						"Melee Weapon Attack: {@hit +17} to hit, reach 15 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 17 (2d6+10) slashing damage."
+						"Melee Weapon Attack: {@hit +17} to hit, reach 10 ft., one target. Hit: 17 ({@dice 2d6+10}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 20 ft., one target. Hit: 19 (2d8+10) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +17} to hit, reach 20 ft., one target. Hit: 19 ({@dice 2d8+10}) bludgeoning damage."
 					]
 				},
 				{
@@ -133,7 +136,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 (2d6+10) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 ({@dice 2d6+10}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -169,7 +172,10 @@
 				"N"
 			],
 			"ac": "18 (natural armor)",
-			"hp": "229 (17d12+119)",
+			"hp": {
+				"average": 229,
+				"formula": "17d12+119"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 40,
@@ -226,19 +232,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 19 (2d10+8) piercing damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 10 ft., one target. Hit: 19 ({@dice 2d10+8}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 5 ft., one target. Hit: 15 (2d6+8) slashing damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 5 ft., one target. Hit: 15 ({@dice 2d6+8}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d8+8) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 15 ft., one target. Hit: 17 ({@dice 2d8+8}) bludgeoning damage."
 					]
 				},
 				{
@@ -293,7 +299,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 21 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 21 Dexterity saving throw or take 15 ({@dice 2d6+8}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -326,7 +332,10 @@
 				"N"
 			],
 			"ac": "18 (natural armor)",
-			"hp": "168 (16d10+80)",
+			"hp": {
+				"average": 168,
+				"formula": "16d10+80"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 40,
@@ -377,19 +386,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 17 (2d10+6) piercing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 17 ({@dice 2d10+6}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) slashing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d6+6}) slashing damage."
 					]
 				},
 				{
 					"name": "Explosive Gem (Recharge 5\u20146)",
 					"entries": [
-						"The dragon spits an amethyst sphere up to 30 feet away. The gem explodes into razor\u2014sharp shards in a 20-foot radius. Each creature in that area must make a DC 17 Dexterity saving throw, taking 49 (14d6) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon spits an amethyst sphere up to 30 feet away. The gem explodes into razor\u2014sharp shards in a 20-foot radius. Each creature in that area must make a DC 17 Dexterity saving throw, taking 49 ({@dice 14d6}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -420,7 +429,10 @@
 				"N"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "45 (6d8+18)",
+			"hp": {
+				"average": 45,
+				"formula": "6d8+18"
+			},
 			"speed": {
 				"walk": 30,
 				"burrow": 20,
@@ -453,13 +465,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (1d10+4) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Explosive Gem (Recharge 5\u20146)",
 					"entries": [
-						"The dragon spits an amethyst sphere up to 30 feet away. The gem explodes into razor\u2014sharp shards in a 20-foot radius. Each creature in that area must make a DC 13 Dexterity saving throw, taking 14 (4d6) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon spits an amethyst sphere up to 30 feet away. The gem explodes into razor\u2014sharp shards in a 20-foot radius. Each creature in that area must make a DC 13 Dexterity saving throw, taking 14 ({@dice 4d6}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -486,7 +498,10 @@
 				"N"
 			],
 			"ac": "20 (natural armor)",
-			"hp": "297 (17d20+119)",
+			"hp": {
+				"average": 297,
+				"formula": "17d20+119"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 40,
@@ -542,19 +557,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 18 (2d10+7) piercing damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 15 ft., one target. Hit: 18 ({@dice 2d10+7}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 14 (2d6+7) slashing damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 10 ft., one target. Hit: 14 ({@dice 2d6+7}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 20 ft., one target. Hit: 16 (2d8+7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 20 ft., one target. Hit: 16 ({@dice 2d8+7}) bludgeoning damage."
 					]
 				},
 				{
@@ -609,7 +624,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 21 Dexterity saving throw or take 14 (2d6+7) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 21 Dexterity saving throw or take 14 ({@dice 2d6+7}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -647,7 +662,10 @@
 				"N"
 			],
 			"ac": "18 (natural armor)",
-			"hp": "172 (15d12+75)",
+			"hp": {
+				"average": 172,
+				"formula": "15d12+75"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 40,
@@ -703,19 +721,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 16 (2d10+5) piercing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 16 ({@dice 2d10+5}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) slashing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d6+5}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 15 ft., one target. Hit: 14 (2d8+5) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 15 ft., one target. Hit: 14 ({@dice 2d8+5}) bludgeoning damage."
 					]
 				},
 				{
@@ -761,7 +779,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 17 Dexterity saving throw or take 12 (2d6+5) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 17 Dexterity saving throw or take 12 ({@dice 2d6+5}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -804,7 +822,10 @@
 				"N"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "123 (13d10+52)",
+			"hp": {
+				"average": 123,
+				"formula": "13d10+52"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 20,
@@ -853,19 +874,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 15 (2d10+4) piercing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 10 ft., one target. Hit: 15 ({@dice 2d10+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razorsharp crystalline shards in a 30-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 40 (9d8) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razorsharp crystalline shards in a 30-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 40 ({@dice 9d8}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -899,7 +920,10 @@
 				"N"
 			],
 			"ac": "16 (natural armor)",
-			"hp": "19 (3d8+6)",
+			"hp": {
+				"average": 19,
+				"formula": "3d8+6"
+			},
 			"speed": {
 				"walk": 30,
 				"burrow": 10,
@@ -933,13 +957,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d10+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razorsharp crystalline shards in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 18 (4d8) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razorsharp crystalline shards in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 18 ({@dice 4d8}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -968,7 +992,10 @@
 				"N"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "127 (15d10+45)",
+			"hp": {
+				"average": 127,
+				"formula": "15d10+45"
+			},
 			"speed": {
 				"walk": 40,
 				"climb": 40,
@@ -1016,19 +1043,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 15 (2d10+4) piercing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 10 ft., one target. Hit: 15 ({@dice 2d10+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6+4) slashing damage."
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razor\u2014sharp emerald shards in a 30-foot cone. Each creature in that area must make a DC 14 Dexterity saving throw, taking 42 (12d6) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razor\u2014sharp emerald shards in a 30-foot cone. Each creature in that area must make a DC 14 Dexterity saving throw, taking 42 ({@dice 12d6}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1061,7 +1088,10 @@
 				"N"
 			],
 			"ac": "18 (natural armor)",
-			"hp": "182 (17d12+72)",
+			"hp": {
+				"average": 182,
+				"formula": "17d12+72"
+			},
 			"speed": {
 				"walk": 40,
 				"climb": 40,
@@ -1115,19 +1145,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 16 (2d10+5) piercing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 16 ({@dice 2d10+5}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) slashing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d6+5}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 15 ft., one target. Hit: 14 (2d8+5) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 15 ft., one target. Hit: 14 ({@dice 2d8+5}) bludgeoning damage."
 					]
 				},
 				{
@@ -1182,7 +1212,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 12 (2d6+5) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 19 Dexterity saving throw or take 12 ({@dice 2d6+5}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -1216,7 +1246,10 @@
 				"N"
 			],
 			"ac": "21 (natural armor)",
-			"hp": "350 (20d20+140)",
+			"hp": {
+				"average": 350,
+				"formula": "20d20+140"
+			},
 			"speed": {
 				"walk": 40,
 				"climb": 40,
@@ -1270,19 +1303,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +15 to hit, reach 15 ft., one target. Hit: 19 (2d10+8) piercing damage."
+						"Melee Weapon Attack: {@hit +15} to hit, reach 15 ft., one target. Hit: 19 ({@dice 2d10+8}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +15 to hit, reach 10 ft., one target. Hit: 15 (2d6+8) slashing damage."
+						"Melee Weapon Attack: {@hit +15} to hit, reach 10 ft., one target. Hit: 15 ({@dice 2d6+8}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +15 to hit, reach 20 ft., one target. Hit: 17 (2d8+8) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +15} to hit, reach 20 ft., one target. Hit: 17 ({@dice 2d8+8}) bludgeoning damage."
 					]
 				},
 				{
@@ -1337,7 +1370,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 23 Dexterity saving throw or take 15 (2d6+8) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 23 Dexterity saving throw or take 15 ({@dice 2d6+8}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -1374,7 +1407,10 @@
 				"N"
 			],
 			"ac": "16 (natural armor)",
-			"hp": "22 (5d8)",
+			"hp": {
+				"average": 22,
+				"formula": "5d8"
+			},
 			"speed": {
 				"walk": 30,
 				"fly": 60
@@ -1407,13 +1443,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d10+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razor\u2014sharp emerald shards in a 15-foot cone. Each creature in that area must make a DC 10 Dexterity saving throw, taking 17 (5d6) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razor\u2014sharp emerald shards in a 15-foot cone. Each creature in that area must make a DC 10 Dexterity saving throw, taking 17 ({@dice 5d6}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1442,7 +1478,10 @@
 				"N"
 			],
 			"ac": "22 (natural armor)",
-			"hp": "296 (16d20+128)",
+			"hp": {
+				"average": 296,
+				"formula": "16d20+128"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 40,
@@ -1496,19 +1535,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 15 ft., one target. Hit: 18 (2d10+7) piercing damage."
+						"Melee Weapon Attack: {@hit +14} to hit, reach 15 ft., one target. Hit: 18 ({@dice 2d10+7}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 14 (2d6+7) slashing damage."
+						"Melee Weapon Attack: {@hit +14} to hit, reach 10 ft., one target. Hit: 14 ({@dice 2d6+7}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +14 to hit, reach 20 ft., one target. Hit: 16 (2d8+7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +14} to hit, reach 20 ft., one target. Hit: 16 ({@dice 2d8+7}) bludgeoning damage."
 					]
 				},
 				{
@@ -1563,7 +1602,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 14 (2d6+7) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 14 ({@dice 2d6+7}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -1601,7 +1640,10 @@
 				"N"
 			],
 			"ac": "19 (natural armor)",
-			"hp": "175 (14d12+84)",
+			"hp": {
+				"average": 175,
+				"formula": "14d12+84"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 30,
@@ -1655,19 +1697,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 16 (2d10+5) piercing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 16 ({@dice 2d10+5}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 12 (2d6+5) slashing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d6+5}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 15 ft., one target. Hit: 14 (2d8+5) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 15 ft., one target. Hit: 14 ({@dice 2d8+5}) bludgeoning damage."
 					]
 				},
 				{
@@ -1722,7 +1764,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 18 Dexterity saving throw or take 12 (2d6+5) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 18 Dexterity saving throw or take 12 ({@dice 2d6+5}) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
 					]
 				}
 			],
@@ -1757,7 +1799,10 @@
 				"N"
 			],
 			"ac": "18 (natural armor)",
-			"hp": "124 (13d10+52)",
+			"hp": {
+				"average": 124,
+				"formula": "13d10+52"
+			},
 			"speed": {
 				"walk": 40,
 				"burrow": 20,
@@ -1805,19 +1850,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 14 (2d10+3) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 10 ft., one target. Hit: 14 ({@dice 2d10+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (2d6+3) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) piercing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razorsharp sapphire shards in a 30-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 40 (16d4) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razorsharp sapphire shards in a 30-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 40 ({@dice 16d4}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1852,7 +1897,10 @@
 				"N"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "39 (6d8+12)",
+			"hp": {
+				"average": 39,
+				"formula": "6d8+12"
+			},
 			"speed": {
 				"walk": 30,
 				"burrow": 15,
@@ -1885,13 +1933,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (1d10+2) piercing damage."
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d10+2}) piercing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razorsharp sapphire shards in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 20 (8d4) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razorsharp sapphire shards in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity saving throw, taking 20 ({@dice 8d4}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1923,7 +1971,10 @@
 				"N"
 			],
 			"ac": "22 (natural armor)",
-			"hp": "526 (27d20+243)",
+			"hp": {
+				"average": 526,
+				"formula": "27d20+243"
+			},
 			"speed": {
 				"walk": 40,
 				"fly": 20,
@@ -1983,19 +2034,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 15 ft., one target. Hit: 21 (2d10+10) piercing damage."
+						"Melee Weapon Attack: {@hit +17} to hit, reach 15 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 17 (2d6+10) slashing damage."
+						"Melee Weapon Attack: {@hit +17} to hit, reach 10 ft., one target. Hit: 17 ({@dice 2d6+10}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +17 to hit, reach 20 ft., one target. Hit: 19 (2d8+10) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +17} to hit, reach 20 ft., one target. Hit: 19 ({@dice 2d8+10}) bludgeoning damage."
 					]
 				},
 				{
@@ -2050,7 +2101,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 (2d6+10) bludgeoning damage and be knocked prone. The dragon can then swim up to half its swimming speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 17 ({@dice 2d6+10}) bludgeoning damage and be knocked prone. The dragon can then swim up to half its swimming speed."
 					]
 				}
 			],
@@ -2087,7 +2138,10 @@
 				"N"
 			],
 			"ac": "19 (natural armor)",
-			"hp": "212 (17d12+102)",
+			"hp": {
+				"average": 212,
+				"formula": "17d12+102"
+			},
 			"speed": {
 				"walk": 40,
 				"fly": 20,
@@ -2147,19 +2201,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 18 (2d10+7) piercing damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 10 ft., one target. Hit: 18 ({@dice 2d10+7}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 5 ft., one target. Hit: 15 (2d6+7) slashing damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 5 ft., one target. Hit: 15 ({@dice 2d6+7}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d8+7) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +13} to hit, reach 15 ft., one target. Hit: 17 ({@dice 2d8+7}) bludgeoning damage."
 					]
 				},
 				{
@@ -2214,7 +2268,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 14 (2d6+7) bludgeoning damage and be knocked prone. The dragon can then swim up to half its swimming speed."
+						"The dragon beats its wings. Each creature within 10 feet of the dragon must succeed on a DC 22 Dexterity saving throw or take 14 ({@dice 2d6+7}) bludgeoning damage and be knocked prone. The dragon can then swim up to half its swimming speed."
 					]
 				}
 			],
@@ -2248,7 +2302,10 @@
 				"N"
 			],
 			"ac": "18 (natural armor)",
-			"hp": "168 (16d10+80)",
+			"hp": {
+				"average": 168,
+				"formula": "16d10+80"
+			},
 			"speed": {
 				"walk": 40,
 				"fly": 20,
@@ -2302,19 +2359,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 10 ft., one target. Hit: 17 (2d10+6) piercing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 10 ft., one target. Hit: 17 ({@dice 2d10+6}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) slashing damage."
+						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d6+6}) slashing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razor\u2014sharp topaz shards in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 17 Dexterity saving throw, taking 56 (16d6) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razor\u2014sharp topaz shards in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 17 Dexterity saving throw, taking 56 ({@dice 16d6}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -2347,7 +2404,10 @@
 				"N"
 			],
 			"ac": "17 (natural armor)",
-			"hp": "60 (8d8+24)",
+			"hp": {
+				"average": 60,
+				"formula": "8d8+24"
+			},
 			"speed": {
 				"walk": 30,
 				"fly": 15,
@@ -2388,13 +2448,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 9 (1d10+4) piercing damage."
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) piercing damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The dragon exhales razor\u2014sharp topaz shards in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 13 Dexterity saving throw, taking 21 (6d6) slashing damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales razor\u2014sharp topaz shards in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 13 Dexterity saving throw, taking 21 ({@dice 6d6}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -2425,7 +2485,10 @@
 				"N"
 			],
 			"ac": "25 (natural armor)",
-			"hp": "574 (28d20+280)",
+			"hp": {
+				"average": 574,
+				"formula": "28d20+280"
+			},
 			"speed": {
 				"walk": 60,
 				"climb": 40,
@@ -2516,19 +2579,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +18 to hit, reach 20 ft., one target. Hit: 31 (4d10+9) piercing damage."
+						"Melee Weapon Attack: {@hit +18} to hit, reach 20 ft., one target. Hit: 31 ({@dice 4d10+9}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +18 to hit, reach 15 ft., one target. Hit: 23 (4d6+9) slashing damage."
+						"Melee Weapon Attack: {@hit +18} to hit, reach 15 ft., one target. Hit: 23 ({@dice 4d6+9}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"Melee Weapon Attack: +18 to hit, reach 25 ft., up to three targets. Hit: 27 (4d8+9) bludgeoning damage, and the target must succeed on a DC 26 Strength saving throw or be pushed 15 feet away from Sardior."
+						"Melee Weapon Attack: {@hit +18} to hit, reach 25 ft., up to three targets. Hit: 27 ({@dice 4d8+9}) bludgeoning damage, and the target must succeed on a DC 26 Strength saving throw or be pushed 15 feet away from Sardior."
 					]
 				},
 				{
@@ -2562,7 +2625,7 @@
 				{
 					"name": "Fire Breath",
 					"entries": [
-						"Sardior breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 (26d6) fire damage on a failed save, or half as much damage on a successful one."
+						"Sardior breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 ({@dice 26d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -2583,13 +2646,13 @@
 				{
 					"name": "Wing Attack",
 					"entries": [
-						"Sardior beats his wings. Each creature within 10 feet of him must succeed on a DC 26 Dexterity saving throw or take 16 (2d6+9) bludgeoning damage and be knocked prone. Sardior can then fly up to half his flying speed."
+						"Sardior beats his wings. Each creature within 10 feet of him must succeed on a DC 26 Dexterity saving throw or take 16 ({@dice 2d6+9}) bludgeoning damage and be knocked prone. Sardior can then fly up to half his flying speed."
 					]
 				},
 				{
 					"name": "Psychoregeneration (Costs 2 Actions)",
 					"entries": [
-						"Sardior restores 5d10 hit points."
+						"Sardior restores {@dice 5d10} hit points."
 					]
 				}
 			],
@@ -2633,7 +2696,10 @@
 				"U"
 			],
 			"ac": "12 (natural armor)",
-			"hp": "168 (16d10+80)",
+			"hp": {
+				"average": 168,
+				"formula": "16d10+80"
+			},
 			"speed": {
 				"walk": 30,
 				"fly": 60
@@ -2693,25 +2759,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 17 (2d10+6) piercing damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 17 ({@dice 2d10+6}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 13 (2d6+6) slashing damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 10 ft., one target. Hit: 13 ({@dice 2d6+6}) slashing damage."
 					]
 				},
 				{
 					"name": "Wing",
 					"entries": [
-						"Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 13 (2d6+6) bludgeoning damage."
+						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d6+6}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Razor Breath (Recharge 5\u20146)",
 					"entries": [
-						"The golem exhales razorsharp quartz shards in a 60-foot cone. Each creature in that area must make a DC 16 Dexterity saving throw, taking 55 (10d10) slashing damage on a failed save or half as much damage on a successful one."
+						"The golem exhales razorsharp quartz shards in a 60-foot cone. Each creature in that area must make a DC 16 Dexterity saving throw, taking 55 ({@dice 10d10}) slashing damage on a failed save or half as much damage on a successful one."
 					]
 				}
 			],

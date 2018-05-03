@@ -10,7 +10,9 @@
 				"E"
 			],
 			"ac": "20",
-			"hp": "half the hit point maximum of its summoner",
+			"hp": {
+				"special": "half the hit point maximum of its summoner"
+			},
 			"speed": {
 				"walk": 60,
 				"fly": {
@@ -44,7 +46,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The avatar can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+						"The avatar can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@dice 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -58,7 +60,7 @@
 				{
 					"name": "Reaping Scythe",
 					"entries": [
-						"The avatar sweeps its spectral scythe through a creature within 5 feet of it, dealing 7 (1d8+3) slashing damage plus 4 (1d8) necrotic damage."
+						"The avatar sweeps its spectral scythe through a creature within 5 feet of it, dealing 7 ({@dice 1d8+3}) slashing damage plus 4 ({@dice 1d8}) necrotic damage."
 					]
 				}
 			],
@@ -73,7 +75,10 @@
 				"U"
 			],
 			"ac": "11",
-			"hp": "19 (3d10+3)",
+			"hp": {
+				"average": 19,
+				"formula": "3d10+3"
+			},
 			"speed": {
 				"walk": 30,
 				"fly": 60
@@ -99,7 +104,10 @@
 				"E"
 			],
 			"ac": "9",
-			"hp": "9 (2d8)",
+			"hp": {
+				"average": 9,
+				"formula": "2d8"
+			},
 			"speed": {
 				"walk": 20
 			},
@@ -116,7 +124,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4-1) piercing damage."
+						"Melee Weapon Attack: {@hit +1} to hit, reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) piercing damage."
 					]
 				}
 			],
