@@ -453,7 +453,29 @@
 					"type": "string"
 				},
 				"hp": {
-					"type": "string"
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"average": {
+									"type": "integer"
+								},
+								"formula": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"type": "object",
+							"properties": {
+								"special": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					]
 				},
 				"speed": {
 					"type": "object",

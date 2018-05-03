@@ -746,7 +746,7 @@ function loadhash (id) {
 		}
 
 		// inline rollers
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
 		// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
 		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
@@ -814,7 +814,7 @@ function loadhash (id) {
 					const withoutPB = dc - expectedPB;
 					const profDiceString = `1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onclick="dcRollerClick(this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture }</span>`;
+					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onclick="dcRollerClick(this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
 				} else {
 					return match; // if there was no proficiency bonus to work with, fall back on this
 				}
