@@ -884,7 +884,7 @@ function initCompareMode () {
 
 			let numShown = 0;
 			curClass.subclasses.forEach((sc, i) => {
-				const $pill = $(`.sc-pill[data-subclass="${sc.name}"]`);
+				const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
 				if (!($pill.hasClass("active"))) {
 					$tbl.find(`.subclass-features-${i}`).hide();
 				} else {
