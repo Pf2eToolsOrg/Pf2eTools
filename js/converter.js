@@ -466,6 +466,26 @@ function loadparser (data) {
 					}
 
 					if (curtrait.name || curtrait.entries) {
+						// convert dice tags
+						if (curtrait.entries) {
+							curtrait.entries = curtrait.entries.filter(it => it.trim()).map(e => {
+								if (typeof e !== "string") return e;
+
+								// replace e.g. "+X to hit"
+								e = e.replace(/([-+])?\d+(?= to hit)/g, function (match) {
+									return `{@hit ${match}}`
+								});
+
+								// replace e.g. "2d4+2"
+								e = e.replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
+									return `{@dice ${match}}`;
+								});
+
+								return e;
+							});
+						}
+
+						// convert spellcasting
 						if (ontraits) {
 							if (curtrait.name.toLowerCase().includes("spellcasting")) {
 								curtrait = tryParseSpellcasting(curtrait);
