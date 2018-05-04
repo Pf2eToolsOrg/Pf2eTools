@@ -274,7 +274,14 @@ function loadparser (data) {
 
 			// hit points
 			if (i === 3) {
-				stats.hp = curline.split("Hit Points ")[1];
+				const rawHp = curline.split("Hit Points ")[1];
+				// split HP into average and formula
+				const m = /^(\d+) \((.*?)\)$/.exec(rawHp);
+				if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
+				stats.hp = {
+					average: Number(m[1]),
+					formula: m[2]
+				};
 				continue;
 			}
 
