@@ -346,6 +346,17 @@ function loadparser (data) {
 			// saves (optional)
 			if (!curline.indexOf("Saving Throws ")) {
 				stats.save = curline.split("Saving Throws ")[1];
+				// TODO parse to new format
+				// convert to object format
+				if (stats.save && stats.save.trim()) {
+					const spl = stats.save.split(",").map(it => it.trim().toLowerCase()).filter(it => it);
+					const nu = {};
+					spl.forEach(it => {
+						const sv = it.split(" ");
+						nu[sv[0]] = sv[1];
+					});
+					stats.save = nu;
+				}
 				continue;
 			}
 
@@ -364,6 +375,7 @@ function loadparser (data) {
 						newSkills[name] = val;
 					});
 					stats.skill = newSkills;
+					if (stats.skill[""]) delete stats.skill[""]; // remove empty properties
 				} catch (ignored) {
 					// because the linter doesn't like empty blocks...
 					continue;
