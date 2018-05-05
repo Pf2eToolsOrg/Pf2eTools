@@ -975,7 +975,7 @@ const CR_TO_PROF = {
 	"30": 9
 };
 const SKILL_TO_ATB_ABV = {
-	"athletics": "dex",
+	"athletics": "str",
 	"acrobatics": "dex",
 	"sleight of hand": "dex",
 	"stealth": "dex",
