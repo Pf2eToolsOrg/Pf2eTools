@@ -2234,8 +2234,12 @@ UrlUtil.getCurrentPage = function () {
  * @param href the link
  */
 UrlUtil.link = function (href) {
-	if (!IS_ROLL20 && IS_DEPLOYED) return `${DEPLOYED_STATIC_ROOT}${href}?ver=${VERSION_NUMBER}`;
-	else if (IS_DEPLOYED) return `${href}?ver=${VERSION_NUMBER}`;
+	function addGetParam (curr) {
+		if (href.includes("?")) return `${curr}&ver=${VERSION_NUMBER}`;
+		else return `${curr}?ver=${VERSION_NUMBER}`;
+	}
+	if (!IS_ROLL20 && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
+	else if (IS_DEPLOYED) return addGetParam(href);
 	return href;
 };
 
