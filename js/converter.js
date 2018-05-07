@@ -456,7 +456,6 @@ function loadparser (data) {
 						onreactions = !curline.toUpperCase().indexOf("REACTIONS");
 						onlegendaries = !curline.toUpperCase().indexOf("LEGENDARY ACTIONS");
 						onlegendarydescription = onlegendaries;
-
 						i++;
 						curline = statblock[i];
 					}
@@ -465,13 +464,23 @@ function loadparser (data) {
 					curtrait.name = "";
 					curtrait.entries = [];
 
-					if (!onlegendarydescription) {
-						// first paragraph
-						curtrait.name = curline.split(/([.!])/g)[0];
-						curtrait.entries.push(curline.split(".").splice(1).join(".").trim());
-					} else {
+					const parseAction = line => {
+						curtrait.name = line.split(/([.!])/g)[0];
+						curtrait.entries.push(line.split(".").splice(1).join(".").trim());
+					};
+
+					if (onlegendarydescription) {
+						// usually the first paragraph is a description of how many legendary actions the creature can make
+						// but in the case that it's missing the substring "legendary" and "action" it's probably an action
+						const compressed = curline.replace(/\s*/g, "").toLowerCase();
+						if (!compressed.includes("legendary") && !compressed.includes("action")) onlegendarydescription = false;
+					}
+
+					if (onlegendarydescription) {
 						curtrait.entries.push(curline.trim());
 						onlegendarydescription = false;
+					} else {
+						parseAction(curline);
 					}
 
 					i++;
