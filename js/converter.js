@@ -487,7 +487,10 @@ function loadparser (data) {
 					curline = statblock[i];
 
 					// get paragraphs
-					while (curline && curline.match(/^([A-Zot][a-z'’`]+( \(.*\)| )?)+([.!])+/g) === null && !moveon(curline)) {
+					// connecting words can start with: o ("of", "or"); t ("the"); a ("and", "at"). Accept numbers, e.g. (Costs 2 Actions)
+					// allow numbers
+					// allow "a" and "I" as single-character words
+					while (curline && curline.match(/^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| )?)+([.!])+/g) === null && !moveon(curline)) {
 						curtrait.entries.push(curline.trim());
 						i++;
 						curline = statblock[i];
