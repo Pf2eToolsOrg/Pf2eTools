@@ -239,7 +239,7 @@ const classFilter = new Filter({header: "Class"});
 const subclassFilter = new Filter({header: "Subclass"});
 const classAndSubclassFilter = new MultiFilter("Classes", classFilter, subclassFilter);
 const metaFilter = new Filter({
-	header: "Tag",
+	header: "Components/Miscellaneous",
 	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_RITUAL, META_TECHNOMAGIC]
 });
 const schoolFilter = new Filter({
