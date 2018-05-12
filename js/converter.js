@@ -68,6 +68,8 @@ function tryParseSpellcasting (trait) {
 	let spellcasting = [];
 
 	function parseSpellcasting (trait) {
+		const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
+
 		let name = trait.name;
 		let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
 		let doneHeader = false;
@@ -76,36 +78,36 @@ function tryParseSpellcasting (trait) {
 			if (thisLine.includes("/rest")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
 				if (!spellcastingEntry.rest) spellcastingEntry.rest = {};
 				spellcastingEntry.rest[property] = value;
 			} else if (thisLine.includes("/day")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
 				if (!spellcastingEntry.daily) spellcastingEntry.daily = {};
 				spellcastingEntry.daily[property] = value;
 			} else if (thisLine.includes("/week")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
 				if (!spellcastingEntry.weekly) spellcastingEntry.weekly = {};
 				spellcastingEntry.weekly[property] = value;
 			} else if (thisLine.startsWith("Constant: ")) {
 				doneHeader = true;
-				spellcastingEntry.constant = thisLine.substring(9).split(", ").map(i => parseSpell(i));
+				spellcastingEntry.constant = thisLine.substring(9).split(splitter).map(i => parseSpell(i));
 			} else if (thisLine.startsWith("At will: ")) {
 				doneHeader = true;
-				spellcastingEntry.will = thisLine.substring(9).split(", ").map(i => parseSpell(i));
+				spellcastingEntry.will = thisLine.substring(9).split(splitter).map(i => parseSpell(i));
 			} else if (thisLine.includes("Cantrip")) {
 				doneHeader = true;
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
 				if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
 				spellcastingEntry.spells["0"].spells = value;
 			} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
 				doneHeader = true;
 				let property = thisLine.substr(0, 1);
-				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(", ").map(i => parseSpell(i));
+				let value = thisLine.substring(thisLine.indexOf(": ") + 2).split(splitter).map(i => parseSpell(i));
 				if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
 				let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
 				spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
@@ -122,6 +124,7 @@ function tryParseSpellcasting (trait) {
 	}
 
 	function parseSpell (name) {
+		name = name.trim();
 		let asterix = name.indexOf("*");
 		let brackets = name.indexOf(" (");
 		if (asterix !== -1) {
@@ -520,7 +523,11 @@ function loadparser (data) {
 						if (ontraits) {
 							if (curtrait.name.toLowerCase().includes("spellcasting")) {
 								curtrait = tryParseSpellcasting(curtrait);
-								if (curtrait.success) stats.spellcasting = curtrait.out;
+								if (curtrait.success) {
+									// merge in e.g. innate spellcasting
+									if (stats.spellcasting) stats.spellcasting = stats.spellcasting.concat(curtrait.out);
+									else stats.spellcasting = curtrait.out;
+								}
 								else stats.trait.push(curtrait.out);
 							} else {
 								if (hasEntryContent(curtrait)) stats.trait.push(curtrait);
