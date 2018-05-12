@@ -18,6 +18,15 @@
 	<script type="text/javascript" src="js/navigation.js"></script>
 
 	<style>
+		.intro {
+			padding: 0 2em;
+			margin-top: 2em;
+		}
+
+		.intro p:last-child {
+			margin-bottom: 0;
+		}
+
 		.subtitle {
 			margin-top: -10px;
 			margin-bottom: 10px;
@@ -40,7 +49,7 @@
 	<div class="container">
 
 		<h1>Content Blacklist</h1>
-		<p>Configure content exclusion</p>
+		<p>Exclude content and export configurations</p>
 	</div>
 </header>
 <nav class="container" id="navigation">
@@ -48,6 +57,22 @@
 	</ul>
 </nav>
 <main class="container bodyContent">
+	<div class="row intro">
+		<p>
+			This page allows you to create configurations which &quot;blacklist&quot; site content, hiding it from list pages.
+			This can be used, for example, in conjunction homebrew content, to create a campaign JSON file containing additions to the base game,
+			as well as the removal of extraneous content.
+		</p>
+		<p><i class="text-muted">
+			With great power comes great responsibility. If you're a DM intending to use this system to remove parts of the game you
+			consider broken, inconvenient, or otherwise in need of adjustment; please first consider the needs and expectations of your players,
+			as well as the extensive playtesting and design iterations of which 5th Edition was the result.
+			If something is in the game, it's probably there for a reason.
+		</i></p>
+	</div>
+
+	<hr>
+
 	<div class="row">
 		<div class="form-group col-xs-3">
 			<label for="bl-source">Source</label>
