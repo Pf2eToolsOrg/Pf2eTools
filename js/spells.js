@@ -218,6 +218,7 @@ function handleBrew (homebrew) {
 }
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, () => {
 		BrewUtil.addBrewData(handleBrew);
 		BrewUtil.makeBrewButton("manage-brew");
@@ -418,6 +419,7 @@ function addSpells (data) {
 	let tempString = "";
 	for (; spI < spellList.length; spI++) {
 		const spell = spellList[spI];
+		if (ExcludeUtil.isExcluded(spell.name, "spell", spell.source)) continue;
 
 		let levelText = Parser.spLevelToFull(spell.level);
 		if (spell.meta && spell.meta.ritual) levelText += " (rit.)";

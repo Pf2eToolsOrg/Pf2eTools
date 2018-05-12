@@ -105,6 +105,7 @@ ABIL_CHA = "Charisma";
 ABIL_CH_ANY = "Choose Any";
 
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
+EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -2472,6 +2473,12 @@ DataUtil = {
 		}
 	},
 
+	promiseJSON: function (url) {
+		return new Promise((resolve, reject) => {
+			DataUtil.loadJSON(url, (data) => resolve(data));
+		});
+	},
+
 	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction) {
 		if (!toLoads.length) onFinalLoadFunction([]);
 		const dataStack = [];
@@ -3575,6 +3582,68 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 		}
 	}
 }
+
+// CONTENT EXCLUSION ===================================================================================================
+ExcludeUtil = {
+	_excludes: null,
+	storage: StorageUtil.getStorage(),
+
+	initialise () {
+		const raw = ExcludeUtil.storage.getItem(EXCLUDES_STORAGE);
+		if (raw) {
+			try {
+				ExcludeUtil._excludes = JSON.parse(raw);
+			} catch (e) {
+				window.alert("Error when loading content blacklist! Purging corrupt data...");
+				ExcludeUtil.storage.removeItem(EXCLUDES_STORAGE);
+				ExcludeUtil._excludes = null;
+				window.location.hash = "";
+			}
+		} else {
+			ExcludeUtil._excludes = [];
+		}
+	},
+
+	getList () {
+		return ExcludeUtil._excludes || [];
+	},
+
+	setList (toSet) {
+		ExcludeUtil._excludes = toSet;
+		ExcludeUtil._save();
+	},
+
+	isExcluded (name, category, source) {
+		if (!ExcludeUtil._excludes) return false;
+		return !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
+	},
+
+	addExclude (name, category, source) {
+		if (!ExcludeUtil._excludes.find(row => row.source === source && row.category === category && row.name === name)) {
+			ExcludeUtil._excludes.push({name, category, source});
+			ExcludeUtil._save();
+			return true;
+		}
+		return false;
+	},
+
+	removeExclude (name, category, source) {
+		const ix = ExcludeUtil._excludes.findIndex(row => row.source === source && row.category === category && row.name === name);
+		if (~ix) {
+			ExcludeUtil._excludes.splice(ix, 1);
+			ExcludeUtil._save();
+		}
+	},
+
+	_save () {
+		ExcludeUtil.storage.setItem(EXCLUDES_STORAGE, JSON.stringify(ExcludeUtil._excludes));
+	},
+
+	resetExcludes () {
+		ExcludeUtil._excludes = [];
+		ExcludeUtil._save();
+	}
+};
 
 // LEGAL NOTICE ========================================================================================================
 if (!IS_ROLL20 && typeof window !== "undefined") {

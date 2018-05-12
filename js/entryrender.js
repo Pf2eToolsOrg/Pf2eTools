@@ -1958,6 +1958,12 @@ EntryRenderer.item = {
 				item.value = `${Number(m[1]).toLocaleString()}${m[2]}`;
 			}
 		}
+	},
+
+	promiseData: (urls) => {
+		return new Promise((resolve, reject) => {
+			EntryRenderer.item.buildList((data) => resolve({item: data}), urls);
+		});
 	}
 };
 

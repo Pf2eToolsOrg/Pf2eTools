@@ -84,6 +84,7 @@ function navigation () {
 	LIDropdown('navbar', 'utils', 'dropdown');
 	A('utils', 'utils', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Utilities <span class='caret'></span>");
 	UL('utils', 'ul_utils', 'dropdown-menu');
+	LI('ul_utils', 'blacklist.html', 'Content Blacklist');
 	LI('ul_utils', 'converter.html', 'Stat Block to JSON');
 	LI('ul_utils', 'demo.html', 'Renderer Demo');
 	LI('ul_utils', 'roll20.html', 'Roll20 Script Help');
