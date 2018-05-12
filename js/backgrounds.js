@@ -4,6 +4,7 @@ const renderer = new EntryRenderer();
 let tabledefault = "";
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -55,6 +56,7 @@ function addBackgrounds (data) {
 	let tempString = "";
 	for (; bgI < bgList.length; bgI++) {
 		const bg = bgList[bgI];
+		if (ExcludeUtil.isExcluded(bg.name, "background", bg.source)) continue;
 
 		// populate table
 		tempString +=

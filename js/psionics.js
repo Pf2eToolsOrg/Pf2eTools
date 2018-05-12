@@ -46,6 +46,7 @@ function getHiddenModeList (psionic) {
 }
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -107,6 +108,7 @@ function addPsionics (data) {
 	let tempString = "";
 	for (; psI < psionicList.length; psI++) {
 		const p = psionicList[psI];
+		if (ExcludeUtil.isExcluded(p.name, "psionic", p.source)) continue;
 		p[JSON_ITEM_ORDER] = Parser.psiOrderToFull(p[JSON_ITEM_ORDER]);
 
 		tempString += `

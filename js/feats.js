@@ -4,6 +4,7 @@ let list;
 let tabledefault = "";
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -66,6 +67,7 @@ function addFeats (data) {
 	let tempString = "";
 	for (; ftI < featList.length; ftI++) {
 		const curfeat = featList[ftI];
+		if (ExcludeUtil.isExcluded(curfeat.name, "feat", curfeat.source)) continue;
 		const name = curfeat.name;
 		const ability = utils_getAbilityData(curfeat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;

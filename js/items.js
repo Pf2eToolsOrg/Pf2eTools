@@ -1,6 +1,7 @@
 "use strict";
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	EntryRenderer.item.buildList((incItemList) => {
 		populateTablesAndFilters(incItemList);
 	});
@@ -182,6 +183,7 @@ function addItems (data) {
 
 	for (; itI < itemList.length; itI++) {
 		const curitem = itemList[itI];
+		if (ExcludeUtil.isExcluded(curitem.name, "item", curitem.source)) continue;
 		if (curitem.noDisplay) continue;
 		if (!curitem._isEnhanced) EntryRenderer.item.enhanceItem(curitem);
 

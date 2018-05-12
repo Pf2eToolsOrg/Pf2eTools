@@ -2,6 +2,7 @@
 const JSON_URL = "data/variantrules.json";
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -52,6 +53,7 @@ function addVariantRules (data) {
 	let tempString = "";
 	for (; rlI < rulesList.length; rlI++) {
 		const curRule = rulesList[rlI];
+		if (ExcludeUtil.isExcluded(curRule.name, "variantrule", curRule.source)) continue;
 
 		const searchStack = [];
 		for (const e1 of curRule.entries) {

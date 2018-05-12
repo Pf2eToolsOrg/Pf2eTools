@@ -4,6 +4,7 @@ const JSON_FLUFF_URL = "data/fluff-races.json";
 let tableDefault = "";
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad)
 };
 
@@ -125,6 +126,7 @@ function addRaces (data) {
 	let tempString = "";
 	for (; rcI < raceList.length; rcI++) {
 		const race = raceList[rcI];
+		if (ExcludeUtil.isExcluded(race.name, "race", race.source)) continue;
 
 		const ability = race.ability ? utils_getAbilityData(race.ability) : {asTextShort: "None"};
 		race._fAbility = race.ability ? getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)) : []; // used for filtering

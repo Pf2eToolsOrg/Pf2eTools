@@ -4,6 +4,7 @@ const JSON_URL = "data/deities.json";
 const STR_REPRINTED = "reprinted";
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -109,6 +110,7 @@ function addDeities (data) {
 	let tempString = "";
 	for (; dtI < deitiesList.length; dtI++) {
 		const g = deitiesList[dtI];
+		if (ExcludeUtil.isExcluded(g.name, "deity", g.source)) continue;
 		const abvSource = Parser.sourceJsonToAbv(g.source);
 
 		g.alignment.sort(SortUtil.alignmentSort);

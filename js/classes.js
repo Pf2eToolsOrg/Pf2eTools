@@ -43,6 +43,7 @@ const jsonURL = "data/classes.json";
 const renderer = new EntryRenderer();
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	tableDefault = $("#pagecontent").html();
 	statsProfDefault = $("#statsprof").html();
 	classTableDefault = $("#classtable").html();
@@ -170,6 +171,7 @@ function addClassData (data) {
 	let tempString = "";
 	for (; clI < classes.length; clI++) {
 		const curClass = classes[clI];
+		if (ExcludeUtil.isExcluded(curClass.name, "class", curClass.source)) continue;
 		curClass._fSource = isNonstandardSource(curClass.source) ? "Others" : "Core";
 		tempString +=
 			`<li class="row" ${FLTR_ID}="${clI}" ${curClass.uniqueId ? `data-unique-id="${curClass.uniqueId}"` : ""}>

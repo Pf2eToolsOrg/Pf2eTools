@@ -30,6 +30,7 @@ const LIST_LEVEL = "level";
 const LIST_SPELL = "spell";
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -113,6 +114,7 @@ function addInvocations (data) {
 	let tempString = "";
 	for (; ivI < invoList.length; ivI++) {
 		const p = invoList[ivI];
+		if (ExcludeUtil.isExcluded(p.name, "invocation", p.source)) continue;
 
 		if (!p.prerequisites) p.prerequisites = {};
 		if (!p.prerequisites.pact) p.prerequisites.pact = p.prerequisites.or && p.prerequisites.or.find(it => it.pact) ? STR_SPECIAL : STR_ANY;

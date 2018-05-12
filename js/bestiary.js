@@ -68,6 +68,7 @@ function handleBrew (homebrew) {
 }
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	loadMeta(() => {
 		loadFluffIndex(() => {
 			multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters, () => {
@@ -335,6 +336,7 @@ function addMonsters (data) {
 	// build the table
 	for (; mI < monsters.length; mI++) {
 		const mon = monsters[mI];
+		if (ExcludeUtil.isExcluded(mon.name, "monster", mon.source)) continue;
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);

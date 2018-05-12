@@ -67,6 +67,7 @@ class Blacklist {
 			promises.push(EntryRenderer.item.promiseData());
 			return Promise.all(promises).then(retData => {
 				retData.forEach(d => {
+					if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
 					mergeData(d);
 				});
 				const sourceSet = new Set();
@@ -137,6 +138,8 @@ class Blacklist {
 		const source = $selSource.val();
 		const category = $selCategory.val();
 		const name = $selName.val().split("|")[0];
+
+		if (source === "*" && category === "*" && name === "*" && !window.confirm("This will exclude all content from all list pages. Are you sure?")) return;
 
 		if (ExcludeUtil.addExclude(name, category, source)) {
 			Blacklist._addListItem(name, category, source);

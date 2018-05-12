@@ -5,6 +5,7 @@ const JSON_URL = "data/rewards.json";
 let tableDefault;
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
@@ -65,6 +66,7 @@ function addRewards (data) {
 	let tempString = "";
 	for (; rwI < rewardList.length; rwI++) {
 		const reward = rewardList[rwI];
+		if (ExcludeUtil.isExcluded(reward.name, "reward", reward.source)) continue;
 
 		tempString += `
 			<li class='row' ${FLTR_ID}='${rwI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
