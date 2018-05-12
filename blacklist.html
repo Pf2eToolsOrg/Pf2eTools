@@ -28,6 +28,10 @@
 		.name {
 			line-height: 22px;
 		}
+
+		.btn-offset {
+			margin-left: 1em;
+		}
 	</style>
 </head>
 
@@ -80,7 +84,7 @@
 		<div class="form-group col-xs-12">
 			<button type="button" class="btn btn-default" onclick="Blacklist.export()">Export List</button>
 			<button type="button" class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
-			<button type="button" class="btn btn-default" onclick="Blacklist.reset()">Reset List</button>
+			<button type="button" class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">Reset List</button>
 		</div>
 	</div>
 
