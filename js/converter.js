@@ -527,8 +527,7 @@ function loadparser (data) {
 									// merge in e.g. innate spellcasting
 									if (stats.spellcasting) stats.spellcasting = stats.spellcasting.concat(curtrait.out);
 									else stats.spellcasting = curtrait.out;
-								}
-								else stats.trait.push(curtrait.out);
+								} else stats.trait.push(curtrait.out);
 							} else {
 								if (hasEntryContent(curtrait)) stats.trait.push(curtrait);
 							}
