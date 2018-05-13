@@ -44,8 +44,8 @@ function addTrapsHazards (data) {
 	let tempString = "";
 	for (; thI < trapsAndHazardsList.length; thI++) {
 		const it = trapsAndHazardsList[thI];
-		if (it.trapType === "HAZ") if (ExcludeUtil.isExcluded(it.name, "hazard", it.source)) continue;
-		else if (ExcludeUtil.isExcluded(it.name, "trap", it.source)) continue;
+		if (it.trapType === "HAZ" && ExcludeUtil.isExcluded(it.name, "hazard", it.source)) continue;
+		else if (it.trapType !== "HAZ" && ExcludeUtil.isExcluded(it.name, "trap", it.source)) continue;
 		const abvSource = Parser.sourceJsonToAbv(it.source);
 
 		tempString += `

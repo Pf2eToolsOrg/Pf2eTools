@@ -63,61 +63,61 @@ class Blacklist {
 				});
 				Promise.resolve();
 			}).then(() => {
-			const promises = FILES.map(url => DataUtil.promiseJSON(`data/${url}`));
-			promises.push(EntryRenderer.item.promiseData());
-			return Promise.all(promises).then(retData => {
-				retData.forEach(d => {
-					if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
-					mergeData(d);
-				});
-				const sourceSet = new Set();
-				const catSet = new Set();
-				Object.keys(data).forEach(cat => {
-					catSet.has(cat) || catSet.add(cat);
-					const arr = data[cat];
-					arr.forEach(it => sourceSet.has(it.source) || sourceSet.add(it.source));
-				});
+				const promises = FILES.map(url => DataUtil.promiseJSON(`data/${url}`));
+				promises.push(EntryRenderer.item.promiseData());
+				return Promise.all(promises).then(retData => {
+					retData.forEach(d => {
+						if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
+						mergeData(d);
+					});
+					const sourceSet = new Set();
+					const catSet = new Set();
+					Object.keys(data).forEach(cat => {
+						catSet.has(cat) || catSet.add(cat);
+						const arr = data[cat];
+						arr.forEach(it => sourceSet.has(it.source) || sourceSet.add(it.source));
+					});
 
-				[...sourceSet]
-					.sort((a, b) => SortUtil.ascSort(Parser.sourceJsonToFull(a), Parser.sourceJsonToFull(b)))
-					.forEach(source => $selSource.append(`<option value="${source}">${Parser.sourceJsonToFull(source)}</option>`));
+					[...sourceSet]
+						.sort((a, b) => SortUtil.ascSort(Parser.sourceJsonToFull(a), Parser.sourceJsonToFull(b)))
+						.forEach(source => $selSource.append(`<option value="${source}">${Parser.sourceJsonToFull(source)}</option>`));
 
-				[...catSet]
-					.sort((a, b) => SortUtil.ascSort(Blacklist.getDisplayCategory(a), Blacklist.getDisplayCategory(b)))
-					.forEach(cat => $selCategory.append(`<option value="${cat}">${Blacklist.getDisplayCategory(cat)}</option>`));
+					[...catSet]
+						.sort((a, b) => SortUtil.ascSort(Blacklist.getDisplayCategory(a), Blacklist.getDisplayCategory(b)))
+						.forEach(cat => $selCategory.append(`<option value="${cat}">${Blacklist.getDisplayCategory(cat)}</option>`));
 
-				function onSelChange () {
-					function populateName (arr) {
-						const copy = arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
-						const dupes = new Set();
-						let temp = "";
-						copy.forEach((it, i) => {
-							temp += `<option value="${it.name}|${it.source}">${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
-							dupes.add(it.name);
-						});
-						$selName.append(temp);
+					function onSelChange () {
+						function populateName (arr) {
+							const copy = arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
+							const dupes = new Set();
+							let temp = "";
+							copy.forEach((it, i) => {
+								temp += `<option value="${it.name}|${it.source}">${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
+								dupes.add(it.name);
+							});
+							$selName.append(temp);
+						}
+
+						const cat = $selCategory.val();
+						$selName.empty();
+						$selName.append(`<option value="*">*</option>`);
+						if (cat !== "*") {
+							const source = $selSource.val();
+							if (source === "*") populateName(data[cat]);
+							else populateName(data[cat].filter(it => it.source === source));
+						}
 					}
 
-					const cat = $selCategory.val();
-					$selName.empty();
-					$selName.append(`<option value="*">*</option>`);
-					if (cat !== "*") {
-						const source = $selSource.val();
-						if (source === "*") populateName(data[cat]);
-						else populateName(data[cat].filter(it => it.source === source));
-					}
-				}
+					$selSource.change(onSelChange);
+					$selCategory.change(onSelChange);
 
-				$selSource.change(onSelChange);
-				$selCategory.change(onSelChange);
+					Blacklist._renderList();
 
-				Blacklist._renderList();
-
-				const $page = $(`.bodyContent`);
-				$page.find(`.loading`).prop("disabled", false);
-				$page.find(`.loading-temp`).remove();
-			})
-		});
+					const $page = $(`.bodyContent`);
+					$page.find(`.loading`).prop("disabled", false);
+					$page.find(`.loading-temp`).remove();
+				})
+			});
 	}
 
 	static _addListItem (name, category, source) {
