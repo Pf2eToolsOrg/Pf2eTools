@@ -400,13 +400,19 @@ function loadhash (id) {
 		</tr>`);
 
 	$content.find(".items span.roller").contents().unwrap();
-	$content.find("span.roller").click(function () {
+	$content.find("span.roller").not(`.render-roller`).click(function () {
 		const roll = $(this).attr("data-roll").replace(/\s+/g, "");
 		EntryRenderer.dice.roll(roll, {
 			name: item.name,
 			label: $content.find(".stats-name").text()
 		});
-	})
+	});
+
+	// fix any double-wrapped rollers
+	// TODO convert entire item roller system to rendered, instead of mass-replaced
+	$content.find(`.render-roller`).find(`.roller`).each(function () {
+		$(this).replaceWith(this.childNodes)
+	});
 }
 
 function loadsub (sub) {
