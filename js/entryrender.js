@@ -396,10 +396,6 @@ function EntryRenderer () {
 								}
 							};
 							if (m[1][0] === "0") roRender[j].roll.pad = true;
-							if (roRender[j].roll.exact === 0 && i === entry.rows.length - 1) {
-								roRender[j].exact = 100;
-								roRender[j].entry = "00";
-							}
 						} else {
 							roRender[j] = {
 								type: "cell",
@@ -409,10 +405,6 @@ function EntryRenderer () {
 								}
 							};
 							if (m[1][0] === "0" || m[3][0] === "0") roRender[j].roll.pad = true;
-							if (roRender[j].roll.max === 0 && i === entry.rows.length - 1) {
-								roRender[j].max = 100;
-								roRender[j].entry = "00";
-							}
 						}
 					}
 
