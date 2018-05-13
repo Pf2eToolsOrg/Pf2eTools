@@ -1,7 +1,6 @@
 "use strict";
 const JSON_URL = "data/backgrounds.json";
 const renderer = new EntryRenderer();
-let tabledefault = "";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
@@ -16,8 +15,6 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source'],
 		listClass: "backgrounds"
 	});
-
-	tabledefault = $("#pagecontent").html();
 
 	list.on("updated", () => {
 		filterBox.setCount(list.visibleItems.length, list.items.length);
@@ -116,19 +113,20 @@ function getSublistItem (bg, pinId) {
 }
 
 function loadhash (id) {
-	const $content = $("#pagecontent");
-	$content.html(tabledefault);
+	const $content = $("#pagecontent").empty();
 	const curbg = bgList[id];
-	const name = curbg.name;
-	const source = curbg.source;
-	const sourceAbv = Parser.sourceJsonToAbv(source);
-	const sourceFull = Parser.sourceJsonToFull(source);
 	const renderStack = [];
 	const entryList = {type: "entries", entries: curbg.entries};
 	renderer.recursiveEntryRender(entryList, renderStack, 1);
-	$content.find("th.name").html(`<span class="stats-name">${name}</span> <span title="${sourceFull}" class='stats-source source${sourceAbv}'>${sourceAbv}</span>`);
-	$content.find("tr#traits").after(`<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>`);
-	$content.find("#source").html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>${curbg.page ? `, page ${curbg.page}` : ""}</td>`);
+
+	$content.append(`
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(curbg)}
+		<tr><td class="divider" colspan="6"><div></div></td></tr>
+		<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>
+		${EntryRenderer.utils.getPageTr(curbg)}
+		${EntryRenderer.utils.getBorderTr()}
+	`);
 }
 
 function loadsub (sub) {

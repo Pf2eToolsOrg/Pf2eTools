@@ -95,8 +95,8 @@ function loadhash (jsonIndex) {
 	if (obj.entries) renderer.recursiveEntryRender({entries: obj.entries}, renderStack, 2);
 	if (obj.actionEntries) renderer.recursiveEntryRender({entries: obj.actionEntries}, renderStack, 2);
 
-	const $content = $(`#pagecontent`);
-	$content.html(`
+	const $content = $(`#pagecontent`).empty();
+	$content.append(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(obj)}
 		<tr class="text"><td colspan="6"><i>${obj.type !== "generic" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>

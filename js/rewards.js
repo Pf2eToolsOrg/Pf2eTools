@@ -2,8 +2,6 @@
 
 const JSON_URL = "data/rewards.json";
 
-let tableDefault;
-
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
@@ -13,8 +11,6 @@ let list;
 const sourceFilter = getSourceFilter();
 let filterBox;
 function onJsonLoad (data) {
-	tableDefault = $("#pagecontent").html();
-
 	const typeFilter = new Filter({
 		header: "Type",
 		items: [
@@ -129,13 +125,16 @@ function getSublistItem (reward, pinId) {
 }
 
 function loadhash (id) {
-	$("#pagecontent").html(tableDefault);
+	const $content = $("#pagecontent").empty();
 	const reward = rewardList[id];
 
-	$("th.name").html(`<span class="stats-name">${reward.name}</span><span class="stats-source source${reward.source}" title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>`);
-
-	$("tr.text").remove();
-	$("tr#text").after(EntryRenderer.reward.getRenderedString(reward));
+	$content.append(`
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(reward)}
+		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+		${EntryRenderer.reward.getRenderedString(reward)}
+		${EntryRenderer.utils.getBorderTr()}
+	`);
 }
 
 function loadsub (sub) {

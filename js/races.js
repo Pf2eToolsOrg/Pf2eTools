@@ -1,7 +1,6 @@
 "use strict";
 const JSON_URL = "data/races.json";
 const JSON_FLUFF_URL = "data/fluff-races.json";
-let tableDefault = "";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
@@ -49,8 +48,6 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
 		listClass: "races"
 	});
-
-	tableDefault = $("#pagecontent").html();
 
 	const jsonRaces = EntryRenderer.race.mergeSubraces(data.race);
 
@@ -224,8 +221,7 @@ function getSublistItem (race, pinId) {
 
 const renderer = new EntryRenderer();
 function loadhash (id) {
-	const $pgContent = $("#pagecontent");
-	$pgContent.html(tableDefault);
+	const $pgContent = $("#pagecontent").empty();
 	$pgContent.find("td").show();
 
 	const race = raceList[id];

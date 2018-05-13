@@ -1909,6 +1909,10 @@ ListUtil = {
 	},
 
 	doSublistAdd: (index, doFinalise, addCount) => {
+		if (index == null) {
+			alert("Please first view something from the list");
+			return;
+		}
 		const count = ListUtil._pinned[index] || 0;
 		addCount = addCount || 1;
 		ListUtil._pinned[index] = count + addCount;

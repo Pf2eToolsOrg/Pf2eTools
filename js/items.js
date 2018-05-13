@@ -324,8 +324,28 @@ function getSublistItem (item, pinId, addCount) {
 
 const renderer = new EntryRenderer();
 function loadhash (id) {
-	const $content = $(`#pagecontent`);
+	const $content = $(`#pagecontent`).empty();
 	const item = itemList[id];
+
+	const $toAppend = $(`
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(item)}
+		<tr>
+			<td id="typerarityattunement" class="typerarityattunement" colspan="6">
+				<span id="type">Type</span><span id="rarity">, rarity</span>
+				<span id="attunement">(requires attunement)</span>
+			</td>
+		</tr>
+		<tr>
+			<td id="valueweight" colspan="2"><span id="value">10gp</span> <span id="weight">45 lbs.</span></td>
+			<td id="damageproperties" class="damageproperties" colspan="4"><span id="damage">Damage</span> <span id="damagetype">type</span> <span id="properties">(versatile)</span></td>
+		</tr>
+		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+		${EntryRenderer.utils.getPageTr(item)}
+		${EntryRenderer.utils.getBorderTr()}	
+	`);
+	$content.append($toAppend);
+
 	const source = item.source;
 	const sourceFull = Parser.sourceJsonToFull(source);
 	$content.find("th.name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);

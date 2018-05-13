@@ -181,26 +181,21 @@ function getSublistItem (p, pinId) {
 let renderer;
 function loadhash (jsonIndex) {
 	if (!renderer) renderer = new EntryRenderer();
+	const $content = $(`#pagecontent`).empty();
 
-	const $name = $(`th.name`);
-	const STATS_ORDER_AND_TYPE = document.getElementById(ID_STATS_ORDER_AND_TYPE);
-	const STATS_TEXT = document.getElementById(ID_TEXT);
+	const psi = psionicList[jsonIndex];
 
-	const selectedPsionic = psionicList[jsonIndex];
-
-	$name.html(selectedPsionic[JSON_ITEM_NAME]);
-	if (selectedPsionic[JSON_ITEM_TYPE] === Parser.PSI_ABV_TYPE_TALENT) loadTalent();
-	else if (selectedPsionic[JSON_ITEM_TYPE] === Parser.PSI_ABV_TYPE_DISCIPLINE) loadDiscipline();
-
-	function loadTalent () {
-		STATS_ORDER_AND_TYPE.innerHTML = Parser.psiTypeToFull(selectedPsionic[JSON_ITEM_TYPE]);
-		STATS_TEXT.innerHTML = EntryRenderer.psionic.getTalentText(selectedPsionic, renderer);
-	}
-
-	function loadDiscipline () {
-		STATS_ORDER_AND_TYPE.innerHTML = `${selectedPsionic[JSON_ITEM_ORDER]} ${Parser.psiTypeToFull(selectedPsionic[JSON_ITEM_TYPE])}`;
-		STATS_TEXT.innerHTML = EntryRenderer.psionic.getDisciplineText(selectedPsionic, renderer);
-	}
+	$content.append(`
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(psi)}
+		<tr>
+			<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi[JSON_ITEM_TYPE]) : `${psi[JSON_ITEM_ORDER]} ${Parser.psiTypeToFull(psi[JSON_ITEM_TYPE])}`}</i><span id="order"></span> <span id="type"></span></td>
+		</tr>
+		<tr><td class="divider" colspan="6"><div></div></td></tr>
+		<tr class="text"><td colspan="6" id="text">${psi.type === "T" ? EntryRenderer.psionic.getTalentText(psi, renderer) : EntryRenderer.psionic.getDisciplineText(psi, renderer)}</td></tr>
+		${EntryRenderer.utils.getPageTr(psi)}
+		${EntryRenderer.utils.getBorderTr()}
+	`);
 }
 
 function loadsub (sub) {

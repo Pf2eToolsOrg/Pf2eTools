@@ -10,8 +10,6 @@ window.PROF_MODE_BONUS = "bonus";
 window.PROF_MODE_DICE = "dice";
 window.PROF_DICE_MODE = PROF_MODE_BONUS;
 
-let tableDefault = "";
-
 function ascSortCr (a, b) {
 	// always put unknown values last
 	if (a === "Unknown" || a === undefined) a = "999";
@@ -208,8 +206,6 @@ const filterBox = initFilterBox(
 );
 
 function pageInit (loadedSources) {
-	tableDefault = $("#pagecontent").html();
-
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
 	sourceFilter.items.sort(SortUtil.ascSort);
 
@@ -455,12 +451,11 @@ function objToTitleCaseStringWithCommas (obj) {
 let profBtn = null;
 // load selected monster stat block
 function loadhash (id) {
-	const $content = $("#pagecontent");
+	const $content = $("#pagecontent").empty();
 	const $wrpBtnProf = $(`#wrp-profbonusdice`);
 
 	const mon = monsters[id];
 
-	$content.html(tableDefault);
 	if (profBtn !== null) {
 		$wrpBtnProf.append(profBtn);
 		profBtn = null;

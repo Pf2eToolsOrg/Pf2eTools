@@ -95,8 +95,8 @@ function loadhash (jsonIndex) {
 
 	renderer.recursiveEntryRender({entries: it.entries}, renderStack, 2);
 
-	const $content = $(`#pagecontent`);
-	$content.html(`
+	const $content = $(`#pagecontent`).empty();
+	$content.append(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(it)}
 		<tr class="text"><td colspan="6"><i>${Parser.trapTypeToFull(it.trapType)}</i></td>

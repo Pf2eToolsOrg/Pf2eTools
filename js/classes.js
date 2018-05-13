@@ -244,6 +244,13 @@ function loadhash (id) {
 	$("#pagecontent").html(tableDefault);
 	$("#statsprof").html(statsProfDefault);
 	$("#classtable").html(classTableDefault);
+
+	$(`#msg-no-class-selected`).remove();
+	$(`#classtable`).show();
+	$(`#button-wrapper`).show();
+	$(`#statsprof`).show();
+	$(`#sticky-nav`).show();
+
 	curClass = classes[id];
 
 	// name

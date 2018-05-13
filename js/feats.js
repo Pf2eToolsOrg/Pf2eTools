@@ -1,7 +1,6 @@
 "use strict";
 const JSON_URL = "data/feats.json";
 let list;
-let tabledefault = "";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
@@ -15,8 +14,6 @@ function onJsonLoad (data) {
 		valueNames: ['name', 'source', 'ability', 'prerequisite'],
 		listClass: "feats"
 	});
-
-	tabledefault = $("#pagecontent").html();
 
 	const asiFilter = getAsiFilter();
 	const prereqFilter = new Filter({
@@ -154,24 +151,24 @@ function getSublistItem (feat, pinId) {
 
 const renderer = new EntryRenderer();
 function loadhash (id) {
-	const $content = $("#pagecontent");
-	$content.html(tabledefault);
-	const feat = featList[id];
-	const source = feat.source;
-	const sourceFull = Parser.sourceJsonToFull(source);
+	const $content = $("#pagecontent").empty();
 
-	$content.find("th.name").html(`<span class="stats-name">${feat.name}</span><span class="stats-source source${source}" title="${sourceFull}">${Parser.sourceJsonToAbv(source)}</span>`);
+	const feat = featList[id];
 
 	const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
-	$content.find("td#prerequisite").html(prerequisite ? `Prerequisite: ${prerequisite}` : "");
-	$content.find("tr.text").remove();
 	EntryRenderer.feat.mergeAbilityIncrease(feat);
-
 	const renderStack = [];
 	renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
 
-	$content.find("tr#text").after(`<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`);
-	$content.find(`#source`).html(`<td colspan=6><b>Source: </b> <i>${sourceFull}</i>${feat.page ? `, page ${feat.page}` : ""}</td>`);
+	$content.append(`
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(feat)}
+		${prerequisite ? `<tr><td colspan="6"><span class="prerequisite">Prerequisite: ${prerequisite}</span></td></tr>` : ""}
+		<tr><td class="divider" colspan="6"><div></div></td></tr>
+		<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>
+		${EntryRenderer.utils.getPageTr(feat)}
+		${EntryRenderer.utils.getBorderTr()}
+	`);
 }
 
 function loadsub (sub) {
