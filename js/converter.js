@@ -227,32 +227,35 @@ function loadparser (data) {
 	});
 
 	$(`button#parsestatblockadd`).on("click", () => {
-		doParse(true);
+		doParseText(true);
 	});
 
 	$("button#parsestatblock").on("click", () => {
-		if (!hasAppended || confirm("You're about to overwrite multiple entries. Are you sure?")) doParse(false);
+		if (!hasAppended || confirm("You're about to overwrite multiple entries. Are you sure?")) doParseText(false);
 	});
 
-	function doParse (append) {
+	/**
+	 * Parses statblocks from raw text pastes
+	 * @param append
+	 */
+	function doParseText (append) {
 		const statblock = editor.getValue().split("\n");
 		const stats = {};
-
 		stats.source = $srcSel.val();
 		// for the user to fill out
 		stats.page = 0;
 
 		let prevLine = null;
-		let curline = null;
+		let curLine = null;
 		for (let i = 0; i < statblock.length; i++) {
-			prevLine = curline;
-			curline = statblock[i].trim();
+			prevLine = curLine;
+			curLine = statblock[i].trim();
 
-			if (curline === "") continue;
+			if (curLine === "") continue;
 
 			// name of monster
 			if (i === 0) {
-				stats.name = curline.toLowerCase().replace(/\b\w/g, function (l) {
+				stats.name = curLine.toLowerCase().replace(/\b\w/g, function (l) {
 					return l.toUpperCase()
 				});
 				continue;
@@ -260,24 +263,24 @@ function loadparser (data) {
 
 			// size type alignment
 			if (i === 1) {
-				stats.size = curline[0];
-				stats.type = curline.split(",")[0].split(" ").splice(1).join(" "); // + ", " + $("input#source").val();
+				stats.size = curLine[0];
+				stats.type = curLine.split(",")[0].split(" ").splice(1).join(" "); // + ", " + $("input#source").val();
 				stats.type = tryParseType(stats.type);
 
-				stats.alignment = curline.split(", ")[1].toLowerCase();
+				stats.alignment = curLine.split(", ")[1].toLowerCase();
 				stats.alignment = ALIGNMENT_MAP[stats.alignment] || stats.alignment;
 				continue;
 			}
 
 			// armor class
 			if (i === 2) {
-				stats.ac = curline.split("Armor Class ")[1];
+				stats.ac = curLine.split("Armor Class ")[1];
 				continue;
 			}
 
 			// hit points
 			if (i === 3) {
-				const rawHp = curline.split("Hit Points ")[1];
+				const rawHp = curLine.split("Hit Points ")[1];
 				// split HP into average and formula
 				const m = /^(\d+) \((.*?)\)$/.exec(rawHp);
 				if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
@@ -290,7 +293,7 @@ function loadparser (data) {
 
 			// speed
 			if (i === 4) {
-				stats.speed = curline.toLowerCase();
+				stats.speed = curLine.toLowerCase();
 				const split = stats.speed.split(",");
 				const newSpeeds = {};
 				try {
@@ -314,7 +317,7 @@ function loadparser (data) {
 			if (i === 5) continue;
 			// ability scores
 			if (i === 6) {
-				const abilities = curline.split(/ \(([+-–‒])?[0-9]*\) ?/g);
+				const abilities = curLine.split(/ \(([+-–‒])?[0-9]*\) ?/g);
 				stats.str = tryConvertNumber(abilities[0]);
 				stats.dex = tryConvertNumber(abilities[2]);
 				stats.con = tryConvertNumber(abilities[4]);
@@ -327,28 +330,28 @@ function loadparser (data) {
 			// alternate ability scores
 			switch (prevLine.toLowerCase()) {
 				case "str":
-					stats.str = tryGetStat(curline);
+					stats.str = tryGetStat(curLine);
 					break;
 				case "dex":
-					stats.dex = tryGetStat(curline);
+					stats.dex = tryGetStat(curLine);
 					break;
 				case "con":
-					stats.con = tryGetStat(curline);
+					stats.con = tryGetStat(curLine);
 					break;
 				case "int":
-					stats.int = tryGetStat(curline);
+					stats.int = tryGetStat(curLine);
 					break;
 				case "wis":
-					stats.wis = tryGetStat(curline);
+					stats.wis = tryGetStat(curLine);
 					break;
 				case "cha":
-					stats.cha = tryGetStat(curline);
+					stats.cha = tryGetStat(curLine);
 					break;
 			}
 
 			// saves (optional)
-			if (!curline.indexOf("Saving Throws ")) {
-				stats.save = curline.split("Saving Throws ")[1];
+			if (!curLine.indexOf("Saving Throws ")) {
+				stats.save = curLine.split("Saving Throws ")[1];
 				// TODO parse to new format
 				// convert to object format
 				if (stats.save && stats.save.trim()) {
@@ -364,8 +367,8 @@ function loadparser (data) {
 			}
 
 			// skills (optional)
-			if (!curline.indexOf("Skills ")) {
-				stats.skill = [curline.split("Skills ")[1].toLowerCase()];
+			if (!curLine.indexOf("Skills ")) {
+				stats.skill = [curLine.split("Skills ")[1].toLowerCase()];
 				if (stats.skill.length === 1) stats.skill = stats.skill[0];
 				const split = stats.skill.split(",");
 				const newSkills = {};
@@ -387,57 +390,57 @@ function loadparser (data) {
 			}
 
 			// damage vulnerabilities (optional)
-			if (!curline.indexOf("Damage Vulnerabilities ")) {
-				stats.vulnerable = curline.split("Vulnerabilities ")[1];
+			if (!curLine.indexOf("Damage Vulnerabilities ")) {
+				stats.vulnerable = curLine.split("Vulnerabilities ")[1];
 				stats.vulnerable = tryParseSpecialDamage(stats.vulnerable, "vulnerable");
 				continue;
 			}
 
 			// damage resistances (optional)
-			if (!curline.indexOf("Damage Resistances ")) {
-				stats.resist = curline.split("Resistances ")[1];
+			if (!curLine.indexOf("Damage Resistances ")) {
+				stats.resist = curLine.split("Resistances ")[1];
 				stats.resist = tryParseSpecialDamage(stats.resist, "resist");
 				continue;
 			}
 
 			// damage immunities (optional)
-			if (!curline.indexOf("Damage Immunities ")) {
-				stats.immune = curline.split("Immunities ")[1];
+			if (!curLine.indexOf("Damage Immunities ")) {
+				stats.immune = curLine.split("Immunities ")[1];
 				stats.immune = tryParseSpecialDamage(stats.immune, "immune");
 				continue;
 			}
 
 			// condition immunities (optional)
-			if (!curline.indexOf("Condition Immunities ")) {
-				stats.conditionImmune = curline.split("Immunities ")[1];
+			if (!curLine.indexOf("Condition Immunities ")) {
+				stats.conditionImmune = curLine.split("Immunities ")[1];
 				stats.conditionImmune = tryParseSpecialDamage(
 					stats.conditionImmune, "conditionImmune");
 				continue;
 			}
 
 			// senses
-			if (!curline.indexOf("Senses ")) {
-				stats.senses = curline.split("Senses ")[1].split(" passive Perception ")[0];
+			if (!curLine.indexOf("Senses ")) {
+				stats.senses = curLine.split("Senses ")[1].split(" passive Perception ")[0];
 				if (!stats.senses.indexOf("passive Perception")) stats.senses = "";
 				if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
-				stats.passive = tryConvertNumber(curline.split(" passive Perception ")[1]);
+				stats.passive = tryConvertNumber(curLine.split(" passive Perception ")[1]);
 				continue;
 			}
 
 			// languages
-			if (!curline.indexOf("Languages ")) {
-				stats.languages = curline.split("Languages ")[1];
+			if (!curLine.indexOf("Languages ")) {
+				stats.languages = curLine.split("Languages ")[1];
 				continue;
 			}
 
 			// challenges and traits
 			// goes into actions
-			if (!curline.indexOf("Challenge ")) {
-				stats.cr = curline.split("Challenge ")[1].split(" (")[0];
+			if (!curLine.indexOf("Challenge ")) {
+				stats.cr = curLine.split("Challenge ")[1].split(" (")[0];
 
 				// traits
 				i++;
-				curline = statblock[i];
+				curLine = statblock[i];
 				stats.trait = [];
 				stats.action = [];
 				stats.reaction = [];
@@ -453,14 +456,14 @@ function loadparser (data) {
 
 				// keep going through traits til we hit actions
 				while (i < statblock.length) {
-					if (moveon(curline)) {
+					if (moveon(curLine)) {
 						ontraits = false;
-						onactions = !curline.toUpperCase().indexOf("ACTIONS");
-						onreactions = !curline.toUpperCase().indexOf("REACTIONS");
-						onlegendaries = !curline.toUpperCase().indexOf("LEGENDARY ACTIONS");
+						onactions = !curLine.toUpperCase().indexOf("ACTIONS");
+						onreactions = !curLine.toUpperCase().indexOf("REACTIONS");
+						onlegendaries = !curLine.toUpperCase().indexOf("LEGENDARY ACTIONS");
 						onlegendarydescription = onlegendaries;
 						i++;
-						curline = statblock[i];
+						curLine = statblock[i];
 					}
 
 					// get the name
@@ -475,28 +478,28 @@ function loadparser (data) {
 					if (onlegendarydescription) {
 						// usually the first paragraph is a description of how many legendary actions the creature can make
 						// but in the case that it's missing the substring "legendary" and "action" it's probably an action
-						const compressed = curline.replace(/\s*/g, "").toLowerCase();
+						const compressed = curLine.replace(/\s*/g, "").toLowerCase();
 						if (!compressed.includes("legendary") && !compressed.includes("action")) onlegendarydescription = false;
 					}
 
 					if (onlegendarydescription) {
-						curtrait.entries.push(curline.trim());
+						curtrait.entries.push(curLine.trim());
 						onlegendarydescription = false;
 					} else {
-						parseAction(curline);
+						parseAction(curLine);
 					}
 
 					i++;
-					curline = statblock[i];
+					curLine = statblock[i];
 
 					// get paragraphs
 					// connecting words can start with: o ("of", "or"); t ("the"); a ("and", "at"). Accept numbers, e.g. (Costs 2 Actions)
 					// allow numbers
 					// allow "a" and "I" as single-character words
-					while (curline && curline.match(/^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| )?)+([.!])+/g) === null && !moveon(curline)) {
-						curtrait.entries.push(curline.trim());
+					while (curLine && curLine.match(/^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| )?)+([.!])+/g) === null && !moveon(curLine)) {
+						curtrait.entries.push(curLine.trim());
 						i++;
-						curline = statblock[i];
+						curLine = statblock[i];
 					}
 
 					if (curtrait.name || curtrait.entries) {
