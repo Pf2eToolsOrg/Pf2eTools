@@ -239,7 +239,7 @@ function loadparser (data) {
 	 * @param append
 	 */
 	function doParseText (append) {
-		const statblock = editor.getValue().split("\n");
+		const toConvert = editor.getValue().split("\n");
 		const stats = {};
 		stats.source = $srcSel.val();
 		// for the user to fill out
@@ -247,9 +247,9 @@ function loadparser (data) {
 
 		let prevLine = null;
 		let curLine = null;
-		for (let i = 0; i < statblock.length; i++) {
+		for (let i = 0; i < toConvert.length; i++) {
 			prevLine = curLine;
-			curLine = statblock[i].trim();
+			curLine = toConvert[i].trim();
 
 			if (curLine === "") continue;
 
@@ -440,7 +440,7 @@ function loadparser (data) {
 
 				// traits
 				i++;
-				curLine = statblock[i];
+				curLine = toConvert[i];
 				stats.trait = [];
 				stats.action = [];
 				stats.reaction = [];
@@ -455,7 +455,7 @@ function loadparser (data) {
 				let onlegendarydescription = false;
 
 				// keep going through traits til we hit actions
-				while (i < statblock.length) {
+				while (i < toConvert.length) {
 					if (moveon(curLine)) {
 						ontraits = false;
 						onactions = !curLine.toUpperCase().indexOf("ACTIONS");
@@ -463,7 +463,7 @@ function loadparser (data) {
 						onlegendaries = !curLine.toUpperCase().indexOf("LEGENDARY ACTIONS");
 						onlegendarydescription = onlegendaries;
 						i++;
-						curLine = statblock[i];
+						curLine = toConvert[i];
 					}
 
 					// get the name
@@ -490,7 +490,7 @@ function loadparser (data) {
 					}
 
 					i++;
-					curLine = statblock[i];
+					curLine = toConvert[i];
 
 					// get paragraphs
 					// connecting words can start with: o ("of", "or"); t ("the"); a ("and", "at"). Accept numbers, e.g. (Costs 2 Actions)
@@ -499,7 +499,7 @@ function loadparser (data) {
 					while (curLine && curLine.match(/^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| )?)+([.!])+/g) === null && !moveon(curLine)) {
 						curtrait.entries.push(curLine.trim());
 						i++;
-						curLine = statblock[i];
+						curLine = toConvert[i];
 					}
 
 					if (curtrait.name || curtrait.entries) {
