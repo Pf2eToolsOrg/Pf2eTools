@@ -793,8 +793,7 @@ function loadparser (data) {
 				doOutputStatblock();
 				prevBlank = nextPrevBlank;
 				continue;
-			}
-			else if (curLine === "___") {
+			} else if (curLine === "___") {
 				prevBlank = nextPrevBlank;
 				continue;
 			}
