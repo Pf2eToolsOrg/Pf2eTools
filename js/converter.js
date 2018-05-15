@@ -125,15 +125,22 @@ function tryParseSpellcasting (trait) {
 	}
 
 	function parseSpell (name) {
+		function getSourcePart (spellName) {
+			const source = getSpellSource(spellName);
+			return `${source && source !== SRC_PHB ? `|${source}` : ""}`;
+		}
+
 		name = name.trim();
 		let asterix = name.indexOf("*");
 		let brackets = name.indexOf(" (");
 		if (asterix !== -1) {
-			return `{@spell ${name.substr(0, asterix)}}*`;
+			const trueName = name.substr(0, asterix);
+			return `{@spell ${trueName}${getSourcePart(trueName)}}*`;
 		} else if (brackets !== -1) {
-			return `{@spell ${name.substr(0, brackets)}}${name.substring(brackets)}`;
+			const trueName = name.substr(0, brackets);
+			return `{@spell ${trueName}${getSourcePart(trueName)}}${name.substring(brackets)}`;
 		}
-		return `{@spell ${name}}`;
+		return `{@spell ${name}${getSourcePart(name)}}`;
 	}
 
 	function parseToHit (line) {
@@ -173,8 +180,20 @@ const ALIGNMENT_MAP = {
 	"lawful good": ["L", "G"]
 };
 
+const SPELL_SRC_MAP = {};
+function getSpellSource (spellName) {
+	if (spellName && SPELL_SRC_MAP[spellName.toLowerCase()]) return SPELL_SRC_MAP[spellName.toLowerCase()];
+	return null;
+}
+
 function loadSources () {
-	DataUtil.loadJSON(JSON_URL, loadparser)
+	DataUtil.promiseJSON(`data/spells/index.json`)
+		.then(index => Promise.all(Object.values(index).map(f => DataUtil.promiseJSON(`data/spells/${f}`))))
+		.then(spellData => {
+			// reversed so official sources take precedence over 3pp
+			spellData.reverse().forEach(d => d.spell.forEach(s => SPELL_SRC_MAP[s.name.toLowerCase()] = s.source));
+			DataUtil.loadJSON(JSON_URL, loadparser);
+		});
 }
 
 function sortOptions ($select) {
