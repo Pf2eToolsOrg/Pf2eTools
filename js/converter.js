@@ -67,6 +67,7 @@ function tryParseSpecialDamage (strDamage, damageType) {
 function tryParseSpellcasting (trait) {
 	let spellcasting = [];
 
+	// TODO check spell source
 	function parseSpellcasting (trait) {
 		const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
 
@@ -227,12 +228,155 @@ function loadparser (data) {
 	});
 
 	$(`button#parsestatblockadd`).on("click", () => {
-		doParseText(true);
+		if ($(`#parse_mode`).val() === "txt") doParseText(true);
+		else doParseMarkdown(true);
 	});
 
 	$("button#parsestatblock").on("click", () => {
-		if (!hasAppended || confirm("You're about to overwrite multiple entries. Are you sure?")) doParseText(false);
+		if (!hasAppended || confirm("You're about to overwrite multiple entries. Are you sure?")) {
+			if ($(`#parse_mode`).val() === "txt") doParseText(false);
+			else doParseMarkdown(false);
+		}
 	});
+
+	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
+	function getCleanName (line) {
+		return line.toLowerCase().replace(/\b\w/g, function (l) {
+			return l.toUpperCase()
+		});
+	}
+
+	function setCleanSizeTypeAlignment (stats, line) {
+		stats.size = line[0].toUpperCase();
+		stats.type = line.split(",")[0].split(" ").splice(1).join(" ");
+		stats.type = tryParseType(stats.type);
+
+		stats.alignment = line.split(", ")[1].toLowerCase();
+		stats.alignment = ALIGNMENT_MAP[stats.alignment] || stats.alignment;
+	}
+
+	function setCleanHp (stats, line) {
+		const rawHp = line.split("Hit Points ")[1];
+		// split HP into average and formula
+		const m = /^(\d+) \((.*?)\)$/.exec(rawHp);
+		if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
+		stats.hp = {
+			average: Number(m[1]),
+			formula: m[2]
+		};
+	}
+
+	function setCleanSpeed (stats, line) {
+		stats.speed = line.toLowerCase();
+		const split = stats.speed.split(",");
+		const newSpeeds = {};
+		try {
+			split.forEach(s => {
+				const splSpace = s.trim().split(" ");
+				let name = splSpace.shift().trim();
+				const val = tryConvertNumber(splSpace.shift().trim());
+				if (name === "speed") {
+					name = "walk";
+				}
+				newSpeeds[name] = val;
+			});
+			stats.speed = newSpeeds;
+		} catch (ignored) {
+			return 0;
+		}
+	}
+
+	function setCleanSaves (stats, line) {
+		stats.save = line.split("Saving Throws")[1].trim();
+		// convert to object format
+		if (stats.save && stats.save.trim()) {
+			const spl = stats.save.split(",").map(it => it.trim().toLowerCase()).filter(it => it);
+			const nu = {};
+			spl.forEach(it => {
+				const sv = it.split(" ");
+				nu[sv[0]] = sv[1];
+			});
+			stats.save = nu;
+		}
+	}
+
+	function setCleanSkills (stats, line) {
+		stats.skill = line.split("Skills")[1].trim().toLowerCase();
+		const split = stats.skill.split(",");
+		const newSkills = {};
+		try {
+			split.forEach(s => {
+				const splSpace = s.split(" ");
+				const val = splSpace.pop().trim();
+				let name = splSpace.join(" ").toLowerCase().trim().replace(/ /g, "");
+				name = SKILL_SPACE_MAP[name] || name;
+				newSkills[name] = val;
+			});
+			stats.skill = newSkills;
+			if (stats.skill[""]) delete stats.skill[""]; // remove empty properties
+		} catch (ignored) {
+			return 0;
+		}
+	}
+
+	function setCleanDamageVuln (stats, line) {
+		stats.vulnerable = line.split("Vulnerabilities")[1].trim();
+		stats.vulnerable = tryParseSpecialDamage(stats.vulnerable, "vulnerable");
+	}
+
+	function setCleanDamageRes (stats, line) {
+		stats.resist = line.split("Resistances")[1].trim();
+		stats.resist = tryParseSpecialDamage(stats.resist, "resist");
+	}
+
+	function setCleanDamageImm (stats, line) {
+		stats.immune = line.split("Immunities")[1].trim();
+		stats.immune = tryParseSpecialDamage(stats.immune, "immune");
+	}
+
+	function setCleanConditionImm (stats, line) {
+		stats.conditionImmune = line.split("Immunities")[1];
+		stats.conditionImmune = tryParseSpecialDamage(stats.conditionImmune, "conditionImmune");
+	}
+
+	function setCleanSenses (stats, line) {
+		stats.senses = line.split("Senses")[1].split("passive Perception")[0].trim();
+		if (!stats.senses.indexOf("passive Perception")) stats.senses = "";
+		if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
+		stats.passive = tryConvertNumber(line.split("passive Perception")[1].trim());
+	}
+
+	function setCleanLanguages (stats, line) {
+		stats.languages = line.split("Languages")[1].trim();
+	}
+
+	function setCleanCr (stats, line) {
+		stats.cr = line.split("Challenge")[1].trim().split("(")[0].trim();
+	}
+
+	function hasEntryContent (trait) {
+		return trait && (trait.name || (trait.entries.length === 1 && trait.entries[0]) || trait.entries.length > 1);
+	}
+
+	function doConvertDiceTags (trait) {
+		if (trait.entries) {
+			trait.entries = trait.entries.filter(it => it.trim()).map(e => {
+				if (typeof e !== "string") return e;
+
+				// replace e.g. "+X to hit"
+				e = e.replace(/([-+])?\d+(?= to hit)/g, function (match) {
+					return `{@hit ${match}}`
+				});
+
+				// replace e.g. "2d4+2"
+				e = e.replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
+					return `{@dice ${match}}`;
+				});
+
+				return e;
+			});
+		}
+	}
 
 	/**
 	 * Parses statblocks from raw text pastes
@@ -255,20 +399,13 @@ function loadparser (data) {
 
 			// name of monster
 			if (i === 0) {
-				stats.name = curLine.toLowerCase().replace(/\b\w/g, function (l) {
-					return l.toUpperCase()
-				});
+				stats.name = getCleanName(curLine);
 				continue;
 			}
 
 			// size type alignment
 			if (i === 1) {
-				stats.size = curLine[0];
-				stats.type = curLine.split(",")[0].split(" ").splice(1).join(" "); // + ", " + $("input#source").val();
-				stats.type = tryParseType(stats.type);
-
-				stats.alignment = curLine.split(", ")[1].toLowerCase();
-				stats.alignment = ALIGNMENT_MAP[stats.alignment] || stats.alignment;
+				setCleanSizeTypeAlignment(stats, curLine);
 				continue;
 			}
 
@@ -280,37 +417,13 @@ function loadparser (data) {
 
 			// hit points
 			if (i === 3) {
-				const rawHp = curLine.split("Hit Points ")[1];
-				// split HP into average and formula
-				const m = /^(\d+) \((.*?)\)$/.exec(rawHp);
-				if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
-				stats.hp = {
-					average: Number(m[1]),
-					formula: m[2]
-				};
+				setCleanHp(stats, curLine);
 				continue;
 			}
 
 			// speed
 			if (i === 4) {
-				stats.speed = curLine.toLowerCase();
-				const split = stats.speed.split(",");
-				const newSpeeds = {};
-				try {
-					split.forEach(s => {
-						const splSpace = s.trim().split(" ");
-						let name = splSpace.shift().trim();
-						const val = tryConvertNumber(splSpace.shift().trim());
-						if (name === "speed") {
-							name = "walk";
-						}
-						newSpeeds[name] = val;
-					});
-					stats.speed = newSpeeds;
-				} catch (ignored) {
-					// because the linter doesn't like empty blocks...
-					continue;
-				}
+				setCleanSpeed(stats, curLine);
 				continue;
 			}
 
@@ -351,92 +464,56 @@ function loadparser (data) {
 
 			// saves (optional)
 			if (!curLine.indexOf("Saving Throws ")) {
-				stats.save = curLine.split("Saving Throws ")[1];
-				// TODO parse to new format
-				// convert to object format
-				if (stats.save && stats.save.trim()) {
-					const spl = stats.save.split(",").map(it => it.trim().toLowerCase()).filter(it => it);
-					const nu = {};
-					spl.forEach(it => {
-						const sv = it.split(" ");
-						nu[sv[0]] = sv[1];
-					});
-					stats.save = nu;
-				}
+				setCleanSaves(stats, curLine);
 				continue;
 			}
 
 			// skills (optional)
 			if (!curLine.indexOf("Skills ")) {
-				stats.skill = [curLine.split("Skills ")[1].toLowerCase()];
-				if (stats.skill.length === 1) stats.skill = stats.skill[0];
-				const split = stats.skill.split(",");
-				const newSkills = {};
-				try {
-					split.forEach(s => {
-						const splSpace = s.split(" ");
-						const val = splSpace.pop().trim();
-						let name = splSpace.join(" ").toLowerCase().trim().replace(/ /g, "");
-						name = SKILL_SPACE_MAP[name] || name;
-						newSkills[name] = val;
-					});
-					stats.skill = newSkills;
-					if (stats.skill[""]) delete stats.skill[""]; // remove empty properties
-				} catch (ignored) {
-					// because the linter doesn't like empty blocks...
-					continue;
-				}
+				setCleanSkills(stats, curLine);
 				continue;
 			}
 
 			// damage vulnerabilities (optional)
 			if (!curLine.indexOf("Damage Vulnerabilities ")) {
-				stats.vulnerable = curLine.split("Vulnerabilities ")[1];
-				stats.vulnerable = tryParseSpecialDamage(stats.vulnerable, "vulnerable");
+				setCleanDamageVuln(stats, curLine);
 				continue;
 			}
 
 			// damage resistances (optional)
 			if (!curLine.indexOf("Damage Resistances ")) {
-				stats.resist = curLine.split("Resistances ")[1];
-				stats.resist = tryParseSpecialDamage(stats.resist, "resist");
+				setCleanDamageRes(stats, curLine);
 				continue;
 			}
 
 			// damage immunities (optional)
 			if (!curLine.indexOf("Damage Immunities ")) {
-				stats.immune = curLine.split("Immunities ")[1];
-				stats.immune = tryParseSpecialDamage(stats.immune, "immune");
+				setCleanDamageImm(stats, curLine);
 				continue;
 			}
 
 			// condition immunities (optional)
 			if (!curLine.indexOf("Condition Immunities ")) {
-				stats.conditionImmune = curLine.split("Immunities ")[1];
-				stats.conditionImmune = tryParseSpecialDamage(
-					stats.conditionImmune, "conditionImmune");
+				setCleanConditionImm(stats, curLine);
 				continue;
 			}
 
 			// senses
 			if (!curLine.indexOf("Senses ")) {
-				stats.senses = curLine.split("Senses ")[1].split(" passive Perception ")[0];
-				if (!stats.senses.indexOf("passive Perception")) stats.senses = "";
-				if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
-				stats.passive = tryConvertNumber(curLine.split(" passive Perception ")[1]);
+				setCleanSenses(stats, curLine);
 				continue;
 			}
 
 			// languages
 			if (!curLine.indexOf("Languages ")) {
-				stats.languages = curLine.split("Languages ")[1];
+				setCleanLanguages(stats, curLine);
 				continue;
 			}
 
 			// challenges and traits
 			// goes into actions
 			if (!curLine.indexOf("Challenge ")) {
-				stats.cr = curLine.split("Challenge ")[1].split(" (")[0];
+				setCleanCr(stats, curLine);
 
 				// traits
 				i++;
@@ -504,23 +581,7 @@ function loadparser (data) {
 
 					if (curtrait.name || curtrait.entries) {
 						// convert dice tags
-						if (curtrait.entries) {
-							curtrait.entries = curtrait.entries.filter(it => it.trim()).map(e => {
-								if (typeof e !== "string") return e;
-
-								// replace e.g. "+X to hit"
-								e = e.replace(/([-+])?\d+(?= to hit)/g, function (match) {
-									return `{@hit ${match}}`
-								});
-
-								// replace e.g. "2d4+2"
-								e = e.replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-									return `{@dice ${match}}`;
-								});
-
-								return e;
-							});
-						}
+						doConvertDiceTags(curtrait);
 
 						// convert spellcasting
 						if (ontraits) {
@@ -555,18 +616,19 @@ function loadparser (data) {
 			}
 		}
 
-		function hasEntryContent (it) {
-			return it.name || (it.entries.length === 1 && it.entries[0]) || it.entries.length > 1;
-		}
+		const out = cleanOutput(JSON.stringify(stats, null, "\t"));
+		doOutput(out, append);
+	}
 
-		let out = JSON.stringify(stats, null, "\t");
-		out = out.replace(/([1-9]\d*)?d([1-9]\d*)(\s?)([+-])(\s?)(\d+)?/g, "$1d$2$4$6");
-		out = out
+	function cleanOutput (out) {
+		return out.replace(/([1-9]\d*)?d([1-9]\d*)(\s?)([+-])(\s?)(\d+)?/g, "$1d$2$4$6")
 			.replace(/\u2014/g, "\\u2014")
 			.replace(/\u2013/g, "\\u2013")
 			.replace(/’/g, "'")
 			.replace(/[“”]/g, "\\\"");
+	}
 
+	function doOutput (out, append) {
 		const $outArea = $("textarea#jsonoutput");
 		if (append) {
 			const oldVal = $outArea.text();
@@ -576,5 +638,327 @@ function loadparser (data) {
 			$outArea.text(out);
 			hasAppended = false;
 		}
+	}
+
+	/**
+	 * Parses statblocks from Homebrewery/etc Markdown
+	 * @param append
+	 */
+	function doParseMarkdown (append) {
+		function stripQuote (line) {
+			return line.replace(/^\s*>\s*/, "").trim();
+		}
+
+		function stripDashStarStar (line) {
+			return line.replace(/\**/g, "").replace(/^-/, "").trim();
+		}
+
+		function stripTripleHash (line) {
+			return line.replace(/^###/, "").trim();
+		}
+
+		function stripLeadingSymbols (line) {
+			return line.replace(/^[^A-Za-z0-9]*/, "").trim();
+		}
+
+		const toConvert = editor.getValue().split("\n");
+		let stats = null;
+
+		function getNewStatblock () {
+			return {
+				source: $srcSel.val(),
+				page: 0
+			}
+		}
+
+		let parsed = 0;
+		let hasMultipleBlocks = false;
+		function doOutputStatblock () {
+			if (stats) {
+				doAddFromParsed();
+
+				const out = cleanOutput(JSON.stringify(stats, null, "\t"));
+				doOutput(out, append);
+			}
+			stats = getNewStatblock();
+			if (hasMultipleBlocks) append = true; // append any further blocks we find in this parse
+			parsed = 0;
+		}
+
+		let prevLine = null;
+		let curLine = null;
+		let prevBlank = true;
+		let nextPrevBlank = true;
+		let trait = null;
+
+		function getCleanTraitText (line) {
+			return line.replace(/^\*\*\*/, "").split(/.\s*\*\*\*/).map(it => it.trim());
+		}
+
+		function doAddFromParsed () {
+			if (parsed === 9) { // traits
+				doAddTrait();
+			} else if (parsed === 10) { // actions
+				doAddAction();
+			} else if (parsed === 11) { // reactions
+				doAddReaction();
+			} else if (parsed === 12) { // legendary actions
+				doAddLegendary();
+			}
+		}
+
+		function doAddTrait () {
+			if (hasEntryContent(trait)) {
+				stats.trait = stats.trait || [];
+
+				doConvertDiceTags(trait);
+
+				// convert spellcasting
+				if (trait.name.toLowerCase().includes("spellcasting")) {
+					trait = tryParseSpellcasting(trait);
+					if (trait.success) {
+						// merge in e.g. innate spellcasting
+						if (stats.spellcasting) stats.spellcasting = stats.spellcasting.concat(trait.out);
+						else stats.spellcasting = trait.out;
+					} else stats.trait.push(trait.out);
+				} else {
+					stats.trait.push(trait)
+				}
+			}
+			trait = null;
+		}
+
+		function doAddAction () {
+			if (hasEntryContent(trait)) {
+				stats.action = stats.action || [];
+
+				doConvertDiceTags(trait);
+				stats.action.push(trait);
+			}
+			trait = null;
+		}
+
+		function doAddReaction () {
+			if (hasEntryContent(trait)) {
+				stats.reaction = stats.reaction || [];
+
+				doConvertDiceTags(trait);
+				stats.reaction.push(trait);
+			}
+			trait = null;
+		}
+
+		function doAddLegendary () {
+			if (hasEntryContent(trait)) {
+				stats.legendary = stats.legendary || [];
+
+				doConvertDiceTags(trait);
+				stats.legendary.push(trait);
+			}
+			trait = null;
+		}
+
+		let i = 0;
+		for (; i < toConvert.length; i++) {
+			prevLine = curLine;
+			curLine = toConvert[i].trim();
+
+			if (curLine === "") {
+				prevBlank = true;
+				continue;
+			} else nextPrevBlank = false;
+			curLine = stripQuote(curLine).trim();
+			if (curLine === "") continue;
+			else if (curLine === "___" && prevBlank) {
+				if (stats !== null) hasMultipleBlocks = true;
+				doOutputStatblock();
+				prevBlank = nextPrevBlank;
+				continue;
+			}
+			else if (curLine === "___") {
+				prevBlank = nextPrevBlank;
+				continue;
+			}
+
+			// name of monster
+			if (parsed === 0) {
+				curLine = curLine.replace(/^\s*##/, "").trim();
+				stats.name = getCleanName(curLine);
+				parsed++;
+				continue;
+			}
+
+			// size type alignment
+			if (parsed === 1) {
+				curLine = curLine.replace(/^\**(.*?)\**$/, "$1");
+				setCleanSizeTypeAlignment(stats, curLine);
+				parsed++;
+				continue;
+			}
+
+			// armor class
+			if (parsed === 2) {
+				stats.ac = stripDashStarStar(curLine).replace(/Armor Class/g, "").trim();
+				parsed++;
+				continue;
+			}
+
+			// hit points
+			if (parsed === 3) {
+				setCleanHp(stats, stripDashStarStar(curLine));
+				parsed++;
+				continue;
+			}
+
+			// speed
+			if (parsed === 4) {
+				setCleanSpeed(stats, stripDashStarStar(curLine));
+				parsed++;
+				continue;
+			}
+
+			// ability scores
+			if (parsed === 5 || parsed === 6 || parsed === 7) {
+				// skip the two header rows
+				if (curLine.replace(/\s*/g, "").startsWith("|STR") || curLine.replace(/\s*/g, "").startsWith("|:-")) {
+					parsed++;
+					continue;
+				}
+				const abilities = curLine.split("|").map(it => it.trim()).filter(Boolean);
+				["str", "dex", "con", "int", "wis", "cha"].map((abi, j) => stats[abi] = tryGetStat(abilities[j]));
+				parsed++;
+				continue;
+			}
+
+			if (parsed === 8) {
+				// saves (optional)
+				if (~curLine.indexOf("Saving Throws")) {
+					setCleanSaves(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				// skills (optional)
+				if (~curLine.indexOf("Skills")) {
+					setCleanSkills(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				// damage vulnerabilities (optional)
+				if (~curLine.indexOf("Damage Vulnerabilities")) {
+					setCleanDamageVuln(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				// damage resistances (optional)
+				if (~curLine.indexOf("Damage Resistances")) {
+					setCleanDamageRes(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				// damage immunities (optional)
+				if (~curLine.indexOf("Damage Immunities")) {
+					setCleanDamageImm(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				// condition immunities (optional)
+				if (~curLine.indexOf("Condition Immunities")) {
+					setCleanConditionImm(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				// senses
+				if (~curLine.indexOf("Senses")) {
+					setCleanSenses(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				// languages
+				if (~curLine.indexOf("Languages")) {
+					setCleanLanguages(stats, stripDashStarStar(curLine));
+					continue;
+				}
+
+				if (~curLine.indexOf("Challenge")) {
+					setCleanCr(stats, stripDashStarStar(curLine));
+					parsed++;
+					continue;
+				}
+			}
+
+			const cleanedLine = stripTripleHash(curLine);
+			if (cleanedLine.toLowerCase() === "actions") {
+				doAddFromParsed();
+				parsed = 10;
+				continue;
+			} else if (cleanedLine.toLowerCase() === "reactions") {
+				doAddFromParsed();
+				parsed = 11;
+				continue;
+			} else if (cleanedLine.toLowerCase() === "legendary actions") {
+				doAddFromParsed();
+				parsed = 12;
+				continue;
+			}
+
+			// traits
+			if (parsed === 9) {
+				if (curLine.includes("***")) {
+					doAddTrait();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanTraitText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else {
+					trait.entries.push(stripLeadingSymbols(curLine));
+				}
+			}
+
+			// actions
+			if (parsed === 10) {
+				if (curLine.includes("***")) {
+					doAddAction();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanTraitText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else {
+					trait.entries.push(stripLeadingSymbols(curLine));
+				}
+			}
+
+			// reactions
+			if (parsed === 11) {
+				if (curLine.includes("***")) {
+					doAddReaction();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanTraitText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else {
+					trait.entries.push(stripLeadingSymbols(curLine));
+				}
+			}
+
+			// legendary actions
+			if (parsed === 12) {
+				if (curLine.includes("***")) {
+					doAddLegendary();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanTraitText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else {
+					if (!trait) { // legendary action intro text
+						// ignore generic LA intro; the renderer will insert it
+						if (!curLine.toLowerCase().includes("can take 3 legendary actions")) {
+							trait = {name: "", entries: [stripLeadingSymbols(curLine)]};
+						}
+					} else trait.entries.push(stripLeadingSymbols(curLine));
+				}
+			}
+		}
+
+		doOutputStatblock();
 	}
 }
