@@ -175,8 +175,10 @@ class Blacklist {
 				Blacklist._list.reIndex();
 
 				// update storage
-				if (additive) ExcludeUtil.setList(json.blacklist || []);
+				if (!additive) ExcludeUtil.setList(json.blacklist || []);
 				else ExcludeUtil.setList(ExcludeUtil.getList().concat(json.blacklist || []));
+
+				BrewUtil.doHandleBrewJson(json, "NO_PAGE");
 
 				// render list display
 				Blacklist._renderList();

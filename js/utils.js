@@ -2952,165 +2952,12 @@ BrewUtil = {
 			location.reload();
 		});
 
-		function doHandleBrewJson (json) {
-			function storePrep (arrName) {
-				if (json[arrName]) {
-					json[arrName].forEach(it => {
-						it.uniqueId = CryptUtil.md5(JSON.stringify(it));
-					});
-				} else json[arrName] = [];
-			}
-
-			// prepare for storage
-			["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard", "variantrule"].forEach(storePrep);
-
-			// store
-			function checkAndAdd (prop) {
-				const areNew = [];
-				if (!BrewUtil.homebrew[prop]) BrewUtil.homebrew[prop] = [];
-				const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
-				json[prop].forEach(it => {
-					if (!existingIds.find(id => it.uniqueId === id)) {
-						BrewUtil.homebrew[prop].push(it);
-						areNew.push(it);
-					}
-				});
-				return areNew;
-			}
-
-			function checkAndAddSources () {
-				if (!json._meta || !json._meta.sources) return [];
-				const areNew = [];
-				if (!BrewUtil.homebrew._meta) BrewUtil.homebrew._meta = {sources: []};
-				const existing = BrewUtil.homebrew._meta.sources.map(src => src.json);
-				json._meta.sources.forEach(src => {
-					if (!existing.find(it => it === src.json)) {
-						BrewUtil.homebrew._meta.sources.push(src);
-						areNew.push(src);
-					}
-				});
-				return areNew;
-			}
-
-			let sourcesToAdd = json._meta ? json._meta.sources : [];
-			let classesToAdd = json.class;
-			let subclassesToAdd = json.subclass;
-			let spellsToAdd = json.spell;
-			let monstersToAdd = json.monster;
-			let backgroundsToAdd = json.background;
-			let featsToAdd = json.feat;
-			let invocationsToAdd = json.invocation;
-			let racesToAdd = json.race;
-			let objectsToAdd = json.object;
-			let trapsToAdd = json.trap;
-			let hazardsToAdd = json.hazard;
-			let deitiesToAdd = json.deity;
-			let itemsToAdd = json.item;
-			let rewardsToAdd = json.reward;
-			let psionicsToAdd = json.psionic;
-			let variantRulesToAdd = json.variantrule;
-			if (!BrewUtil.homebrew) {
-				BrewUtil.homebrew = json;
-			} else {
-				sourcesToAdd = checkAndAddSources(); // adding source(s) to Filter should happen in per-page addX functions
-				// only add if unique ID not already present
-				classesToAdd = checkAndAdd("class");
-				subclassesToAdd = checkAndAdd("subclass");
-				spellsToAdd = checkAndAdd("spell");
-				monstersToAdd = checkAndAdd("monster");
-				backgroundsToAdd = checkAndAdd("background");
-				featsToAdd = checkAndAdd("feat");
-				invocationsToAdd = checkAndAdd("invocation");
-				racesToAdd = checkAndAdd("race");
-				objectsToAdd = checkAndAdd("object");
-				trapsToAdd = checkAndAdd("trap");
-				hazardsToAdd = checkAndAdd("hazard");
-				deitiesToAdd = checkAndAdd("deity");
-				itemsToAdd = checkAndAdd("item");
-				rewardsToAdd = checkAndAdd("reward");
-				psionicsToAdd = checkAndAdd("psionic");
-				variantRulesToAdd = checkAndAdd("variantrule");
-			}
-			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
-
-			// wipe old cache
-			BrewUtil._resetSourceCache();
-
-			// display on page
-			switch (page) {
-				case UrlUtil.PG_SPELLS:
-					addSpells(spellsToAdd);
-					break;
-				case UrlUtil.PG_CLASSES:
-					addClassData({class: classesToAdd});
-					addSubclassData({subclass: subclassesToAdd});
-					break;
-				case UrlUtil.PG_BESTIARY:
-					addMonsters(monstersToAdd);
-					break;
-				case UrlUtil.PG_BACKGROUNDS:
-					addBackgrounds({background: backgroundsToAdd});
-					break;
-				case UrlUtil.PG_FEATS:
-					addFeats({feat: featsToAdd});
-					break;
-				case UrlUtil.PG_INVOCATIONS:
-					addInvocations({invocation: invocationsToAdd});
-					break;
-				case UrlUtil.PG_RACES:
-					addRaces({race: racesToAdd});
-					break;
-				case UrlUtil.PG_OBJECTS:
-					addObjects({object: objectsToAdd});
-					break;
-				case UrlUtil.PG_TRAPS_HAZARDS:
-					addTrapsHazards({trap: trapsToAdd});
-					addTrapsHazards({hazard: hazardsToAdd});
-					break;
-				case UrlUtil.PG_DEITIES:
-					addDeities({deity: deitiesToAdd});
-					break;
-				case UrlUtil.PG_ITEMS:
-					addItems(itemsToAdd);
-					break;
-				case UrlUtil.PG_REWARDS:
-					addRewards({reward: rewardsToAdd});
-					break;
-				case UrlUtil.PG_PSIONICS:
-					addPsionics({psionic: psionicsToAdd});
-					break;
-				case UrlUtil.PG_VARIATNRULES:
-					addVariantRules({variantrule: variantRulesToAdd});
-					break;
-				default:
-					throw new Error(`No homebrew add function defined for category ${page}`);
-			}
-
-			refreshBrewList();
-
-			if (BrewUtil._filterBox && BrewUtil._sourceFilter) {
-				const cur = BrewUtil._filterBox.getValues();
-				if (cur.Source) {
-					const toSet = JSON.parse(JSON.stringify(cur.Source));
-
-					if (toSet._totals.yes || toSet._totals.no) {
-						if (page === UrlUtil.PG_CLASSES) toSet["Core"] = 1;
-						else sourcesToAdd.forEach(src => toSet[src.json] = 1);
-
-						const toSetValues = Object.keys(toSet).filter(k => !k.startsWith("_")).filter(k => toSet[k]).map(k => `${!~toSet[k] ? "!" : ""}${k}`.toLowerCase());
-						BrewUtil._filterBox.setFromValues({Source: toSetValues});
-					}
-				}
-				BrewUtil._filterBox._fireValChangeEvent();
-			}
-		}
-
 		BrewUtil.addBrewRemote = (ele, jsonUrl) => {
 			const $src = $(ele).find(`span.source`);
 			const cached = $src.text();
 			$src.text("Loading...");
 			DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`, (data) => {
-				doHandleBrewJson(data);
+				BrewUtil.doHandleBrewJson(data, page, refreshBrewList);
 				$src.text("Done!");
 				setInterval(() => {
 					$src.text(cached);
@@ -3128,7 +2975,8 @@ BrewUtil = {
 				const text = reader.result;
 				const json = JSON.parse(text);
 
-				doHandleBrewJson(json);
+				BrewUtil.doHandleBrewJson(json, page, refreshBrewList);
+				ExcludeUtil.setList(json.blacklist || []);
 
 				if (input.files[readIndex]) {
 					reader.readAsText(input.files[readIndex++]);
@@ -3243,6 +3091,161 @@ BrewUtil = {
 			return (uniqueId, doRefresh) => {
 				doRemove(category, uniqueId, doRefresh);
 			}
+		}
+	},
+
+	doHandleBrewJson: function (json, page, funcRefresh) {
+		function storePrep (arrName) {
+			if (json[arrName]) {
+				json[arrName].forEach(it => {
+					it.uniqueId = CryptUtil.md5(JSON.stringify(it));
+				});
+			} else json[arrName] = [];
+		}
+
+		// prepare for storage
+		["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard", "variantrule"].forEach(storePrep);
+
+		// store
+		function checkAndAdd (prop) {
+			const areNew = [];
+			if (!BrewUtil.homebrew[prop]) BrewUtil.homebrew[prop] = [];
+			const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
+			json[prop].forEach(it => {
+				if (!existingIds.find(id => it.uniqueId === id)) {
+					BrewUtil.homebrew[prop].push(it);
+					areNew.push(it);
+				}
+			});
+			return areNew;
+		}
+
+		function checkAndAddSources () {
+			if (!json._meta || !json._meta.sources) return [];
+			const areNew = [];
+			if (!BrewUtil.homebrew._meta) BrewUtil.homebrew._meta = {sources: []};
+			const existing = BrewUtil.homebrew._meta.sources.map(src => src.json);
+			json._meta.sources.forEach(src => {
+				if (!existing.find(it => it === src.json)) {
+					BrewUtil.homebrew._meta.sources.push(src);
+					areNew.push(src);
+				}
+			});
+			return areNew;
+		}
+
+		let sourcesToAdd = json._meta ? json._meta.sources : [];
+		let classesToAdd = json.class;
+		let subclassesToAdd = json.subclass;
+		let spellsToAdd = json.spell;
+		let monstersToAdd = json.monster;
+		let backgroundsToAdd = json.background;
+		let featsToAdd = json.feat;
+		let invocationsToAdd = json.invocation;
+		let racesToAdd = json.race;
+		let objectsToAdd = json.object;
+		let trapsToAdd = json.trap;
+		let hazardsToAdd = json.hazard;
+		let deitiesToAdd = json.deity;
+		let itemsToAdd = json.item;
+		let rewardsToAdd = json.reward;
+		let psionicsToAdd = json.psionic;
+		let variantRulesToAdd = json.variantrule;
+		if (!BrewUtil.homebrew) {
+			BrewUtil.homebrew = json;
+		} else {
+			sourcesToAdd = checkAndAddSources(); // adding source(s) to Filter should happen in per-page addX functions
+			// only add if unique ID not already present
+			classesToAdd = checkAndAdd("class");
+			subclassesToAdd = checkAndAdd("subclass");
+			spellsToAdd = checkAndAdd("spell");
+			monstersToAdd = checkAndAdd("monster");
+			backgroundsToAdd = checkAndAdd("background");
+			featsToAdd = checkAndAdd("feat");
+			invocationsToAdd = checkAndAdd("invocation");
+			racesToAdd = checkAndAdd("race");
+			objectsToAdd = checkAndAdd("object");
+			trapsToAdd = checkAndAdd("trap");
+			hazardsToAdd = checkAndAdd("hazard");
+			deitiesToAdd = checkAndAdd("deity");
+			itemsToAdd = checkAndAdd("item");
+			rewardsToAdd = checkAndAdd("reward");
+			psionicsToAdd = checkAndAdd("psionic");
+			variantRulesToAdd = checkAndAdd("variantrule");
+		}
+		BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+
+		// wipe old cache
+		BrewUtil._resetSourceCache();
+
+		// display on page
+		switch (page) {
+			case UrlUtil.PG_SPELLS:
+				addSpells(spellsToAdd);
+				break;
+			case UrlUtil.PG_CLASSES:
+				addClassData({class: classesToAdd});
+				addSubclassData({subclass: subclassesToAdd});
+				break;
+			case UrlUtil.PG_BESTIARY:
+				addMonsters(monstersToAdd);
+				break;
+			case UrlUtil.PG_BACKGROUNDS:
+				addBackgrounds({background: backgroundsToAdd});
+				break;
+			case UrlUtil.PG_FEATS:
+				addFeats({feat: featsToAdd});
+				break;
+			case UrlUtil.PG_INVOCATIONS:
+				addInvocations({invocation: invocationsToAdd});
+				break;
+			case UrlUtil.PG_RACES:
+				addRaces({race: racesToAdd});
+				break;
+			case UrlUtil.PG_OBJECTS:
+				addObjects({object: objectsToAdd});
+				break;
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				addTrapsHazards({trap: trapsToAdd});
+				addTrapsHazards({hazard: hazardsToAdd});
+				break;
+			case UrlUtil.PG_DEITIES:
+				addDeities({deity: deitiesToAdd});
+				break;
+			case UrlUtil.PG_ITEMS:
+				addItems(itemsToAdd);
+				break;
+			case UrlUtil.PG_REWARDS:
+				addRewards({reward: rewardsToAdd});
+				break;
+			case UrlUtil.PG_PSIONICS:
+				addPsionics({psionic: psionicsToAdd});
+				break;
+			case UrlUtil.PG_VARIATNRULES:
+				addVariantRules({variantrule: variantRulesToAdd});
+				break;
+			case "NO_PAGE":
+				break;
+			default:
+				throw new Error(`No homebrew add function defined for category ${page}`);
+		}
+
+		if (funcRefresh) funcRefresh();
+
+		if (BrewUtil._filterBox && BrewUtil._sourceFilter) {
+			const cur = BrewUtil._filterBox.getValues();
+			if (cur.Source) {
+				const toSet = JSON.parse(JSON.stringify(cur.Source));
+
+				if (toSet._totals.yes || toSet._totals.no) {
+					if (page === UrlUtil.PG_CLASSES) toSet["Core"] = 1;
+					else sourcesToAdd.forEach(src => toSet[src.json] = 1);
+
+					const toSetValues = Object.keys(toSet).filter(k => !k.startsWith("_")).filter(k => toSet[k]).map(k => `${!~toSet[k] ? "!" : ""}${k}`.toLowerCase());
+					BrewUtil._filterBox.setFromValues({Source: toSetValues});
+				}
+			}
+			BrewUtil._filterBox._fireValChangeEvent();
 		}
 	},
 
