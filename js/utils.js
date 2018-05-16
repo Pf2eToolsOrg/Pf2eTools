@@ -3625,6 +3625,7 @@ ExcludeUtil = {
 
 	isExcluded (name, category, source) {
 		if (!ExcludeUtil._excludes) return false;
+		source = source.source || source;
 		return !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
 	},
 

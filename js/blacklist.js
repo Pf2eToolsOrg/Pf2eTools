@@ -68,6 +68,13 @@ class Blacklist {
 				return Promise.all(promises).then(retData => {
 					retData.forEach(d => {
 						if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
+						if (d.class) {
+							d.class.forEach(c => c.subclasses.forEach(sc => sc.class = c.name));
+							d.subclass = d.subclass || [];
+							d.class.forEach(c => {
+								d.subclass = d.subclass.concat(c.subclasses)
+							});
+						}
 						mergeData(d);
 					});
 					const sourceSet = new Set();
@@ -87,12 +94,14 @@ class Blacklist {
 						.forEach(cat => $selCategory.append(`<option value="${cat}">${Blacklist.getDisplayCategory(cat)}</option>`));
 
 					function onSelChange () {
-						function populateName (arr) {
-							const copy = arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
+						function populateName (arr, cat) {
+							const copy = cat === "subclass"
+								? arr.map(it => ({name: it.name, source: it.source, class: it.class})).sort((a, b) => SortUtil.ascSort(a.class, b.class) || SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source))
+								: arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
 							const dupes = new Set();
 							let temp = "";
 							copy.forEach((it, i) => {
-								temp += `<option value="${it.name}|${it.source}">${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
+								temp += `<option value="${it.name}|${it.source}">${cat === "subclass" ? `${it.class}: ` : ""}${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
 								dupes.add(it.name);
 							});
 							$selName.append(temp);
@@ -103,8 +112,8 @@ class Blacklist {
 						$selName.append(`<option value="*">*</option>`);
 						if (cat !== "*") {
 							const source = $selSource.val();
-							if (source === "*") populateName(data[cat]);
-							else populateName(data[cat].filter(it => it.source === source));
+							if (source === "*") populateName(data[cat], cat);
+							else populateName(data[cat].filter(it => it.source === source), cat);
 						}
 					}
 

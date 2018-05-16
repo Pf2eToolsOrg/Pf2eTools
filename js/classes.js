@@ -367,6 +367,9 @@ function loadhash (id) {
 			if (feature.gainSubclassFeature) {
 				for (let k = 0; k < curClass.subclasses.length; k++) {
 					const subClass = curClass.subclasses[k];
+
+					if (ExcludeUtil.isExcluded(subClass.name, "subclass", subClass.source)) continue;
+
 					for (let l = 0; l < subClass.subclassFeatures[subclassIndex].length; l++) {
 						const subFeature = subClass.subclassFeatures[subclassIndex][l];
 
@@ -420,20 +423,23 @@ function loadhash (id) {
 
 	// subclass pills
 	const subClasses = curClass.subclasses
-		.map(sc => ({"name": sc.name, "source": sc.source, "shortName": sc.shortName}))
+		.map(sc => ({name: sc.name, source: sc.source, shortName: sc.shortName}))
 		.sort(function (a, b) {
 			return SortUtil.ascSort(a.shortName, b.shortName)
 		});
 	for (let i = 0; i < subClasses.length; i++) {
-		const nonStandardSource = isNonstandardSource(subClasses[i].source) || hasBeenReprinted(subClasses[i].shortName, subClasses[i].source);
+		const subClass = subClasses[i];
+		if (ExcludeUtil.isExcluded(subClass.name, "subclass", subClass.source)) continue;
+
+		const nonStandardSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
 		const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 		if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-		if (subclassIsFreshUa(subClasses[i])) styleClasses.push(CLSS_FRESH_UA);
-		if (BrewUtil.hasSourceJson(cleanScSource(subClasses[i].source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
-		const pillText = hasBeenReprinted(subClasses[i].shortName, subClasses[i].source) ? `${subClasses[i].shortName} (${Parser.sourceJsonToAbv(subClasses[i].source)})` : subClasses[i].shortName;
-		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClasses[i].name}" ${ATB_DATA_SRC}="${cleanScSource(subClasses[i].source)}" title="Source: ${Parser.sourceJsonToFull(subClasses[i].source)}"><span>${pillText}</span></span>`);
+		if (subclassIsFreshUa(subClass)) styleClasses.push(CLSS_FRESH_UA);
+		if (BrewUtil.hasSourceJson(cleanScSource(subClass.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+		const pillText = hasBeenReprinted(subClass.shortName, subClass.source) ? `${subClass.shortName} (${Parser.sourceJsonToAbv(subClass.source)})` : subClass.shortName;
+		const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${cleanScSource(subClass.source)}" title="Source: ${Parser.sourceJsonToFull(subClass.source)}"><span>${pillText}</span></span>`);
 		pill.click(function () {
-			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, cleanScSource(subClasses[i].source));
+			handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClass.name, cleanScSource(subClass.source));
 		});
 		if (nonStandardSource) pill.hide();
 		subclassPillWrapper.append(pill);
@@ -879,7 +885,7 @@ function initCompareMode () {
 			const numScLvls = curClass.subclasses[0].subclassFeatures.length;
 			for (let i = 0; i < numScLvls; ++i) {
 				renderStack.push(`<tr class="text">`);
-				curClass.subclasses.forEach((sc, j) => {
+				curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, j) => {
 					renderStack.push(`<td class="subclass-features-${j} ${getSubclassStyles(sc).join(" ")}">`);
 					sc.subclassFeatures[i].forEach(f => {
 						renderer.recursiveEntryRender(f, renderStack);
@@ -892,8 +898,8 @@ function initCompareMode () {
 			$tbl.append(renderStack.join(""));
 
 			let numShown = 0;
-			curClass.subclasses.forEach((sc, i) => {
-				const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
+			curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
+				const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
 				if (!($pill.hasClass("active"))) {
 					$tbl.find(`.subclass-features-${i}`).hide();
 				} else {
@@ -962,7 +968,7 @@ const ClassBookView = {
 		});
 		renderStack.push(`</td></tr>`);
 
-		curClass.subclasses.forEach((sc, i) => {
+		curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
 			renderStack.push(`<tr class="text subclass-features-${i} ${getSubclassStyles(sc).join(" ")}"><td colspan="6">`);
 			sc.subclassFeatures.forEach(lvl => {
 				lvl.forEach(f => {
@@ -990,12 +996,12 @@ const ClassBookView = {
 
 		$pnlMenu.append($cfToggle);
 
-		curClass.subclasses.forEach((sc, i) => {
+		curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
 			const name = hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 			const styles = getSubclassStyles(sc);
-			const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
+			const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
 
-			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${sc.name}" data-bk-source="${sc.source}">${name}</span>`).on("click", () => {
+			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${sc.name}" data-bk-source="${sc.source.source || sc.source}">${name}</span>`).on("click", () => {
 				ClassBookView.tglSc($bkTbl, $scToggle, i);
 				$pill.click();
 			});
