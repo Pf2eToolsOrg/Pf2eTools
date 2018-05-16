@@ -259,6 +259,11 @@ function loadparser (data) {
 	});
 
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
+	function getCleanInput (ipt) {
+		// convert minus signs to hyphens
+		return ipt.replace(/[−–]/g, "-");
+	}
+
 	function getCleanName (line) {
 		return line.toLowerCase().replace(/\b\w/g, function (l) {
 			return l.toUpperCase()
@@ -402,7 +407,7 @@ function loadparser (data) {
 	 * @param append
 	 */
 	function doParseText (append) {
-		const toConvert = editor.getValue().split("\n");
+		const toConvert = getCleanInput(editor.getValue()).split("\n");
 		const stats = {};
 		stats.source = $srcSel.val();
 		// for the user to fill out
@@ -642,7 +647,7 @@ function loadparser (data) {
 	function cleanOutput (out) {
 		return out.replace(/([1-9]\d*)?d([1-9]\d*)(\s?)([+-])(\s?)(\d+)?/g, "$1d$2$4$6")
 			.replace(/\u2014/g, "\\u2014")
-			.replace(/\u2013/g, "\\u2013")
+			.replace(/\u2013/g, "\\u2014")
 			.replace(/’/g, "'")
 			.replace(/[“”]/g, "\\\"");
 	}
@@ -680,7 +685,7 @@ function loadparser (data) {
 			return line.replace(/^[^A-Za-z0-9]*/, "").trim();
 		}
 
-		const toConvert = editor.getValue().split("\n");
+		const toConvert = getCleanInput(editor.getValue()).split("\n");
 		let stats = null;
 
 		function getNewStatblock () {
