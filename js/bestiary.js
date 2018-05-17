@@ -829,57 +829,61 @@ function loadhash (id) {
 		const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
 		$content.append(EntryRenderer.utils.getBorderTr());
 		renderer.setFirstSection(true);
-		if (ixFluff[mon.source]) {
-			DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], (data) => {
-				const fluff = data.monster.find(it => (it.name === mon.name && it.source === mon.source));
 
-				if (!fluff) {
-					$td.empty();
-					$td.append(HTML_NO_INFO);
-					return;
+		function handleFluff (data) {
+			const fluff = mon.fluff || data.monster.find(it => (it.name === mon.name && it.source === mon.source));
+
+			if (!fluff) {
+				$td.empty();
+				$td.append(HTML_NO_INFO);
+				return;
+			}
+
+			if (fluff._copy) {
+				const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
+				// preserve these
+				const name = fluff.name;
+				const src = fluff.source;
+				const images = fluff.images;
+				Object.assign(fluff, cpy);
+				fluff.name = name;
+				fluff.source = src;
+				if (images) fluff.images = images;
+				delete fluff._copy;
+			}
+
+			if (fluff._appendCopy) {
+				const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
+				if (cpy.images) {
+					if (!fluff.images) fluff.images = cpy.images;
+					else fluff.images = fluff.images.concat(cpy.images);
 				}
-
-				if (fluff._copy) {
-					const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
-					// preserve these
-					const name = fluff.name;
-					const src = fluff.source;
-					const images = fluff.images;
-					Object.assign(fluff, cpy);
-					fluff.name = name;
-					fluff.source = src;
-					if (images) fluff.images = images;
-					delete fluff._copy;
+				if (cpy.entries) {
+					if (!fluff.entries) fluff.entries = cpy.entries;
+					else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
 				}
+				delete fluff._appendCopy;
+			}
 
-				if (fluff._appendCopy) {
-					const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
-					if (cpy.images) {
-						if (!fluff.images) fluff.images = cpy.images;
-						else fluff.images = fluff.images.concat(cpy.images);
-					}
-					if (cpy.entries) {
-						if (!fluff.entries) fluff.entries = cpy.entries;
-						else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
-					}
-					delete fluff._appendCopy;
-				}
-
-				if (showImages) {
-					if (fluff.images) {
-						fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
-					} else {
-						$td.append(HTML_NO_IMAGES);
-					}
+			if (showImages) {
+				if (fluff.images) {
+					fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
 				} else {
-					if (fluff.entries) {
-						const depth = fluff.entries.type === "section" ? -1 : 2;
-						$td.append(renderer.renderEntry(fluff.entries, depth));
-					} else {
-						$td.append(HTML_NO_INFO);
-					}
+					$td.append(HTML_NO_IMAGES);
 				}
-			});
+			} else {
+				if (fluff.entries) {
+					const depth = fluff.entries.type === "section" ? -1 : 2;
+					$td.append(renderer.renderEntry(fluff.entries, depth));
+				} else {
+					$td.append(HTML_NO_INFO);
+				}
+			}
+		}
+
+		if (ixFluff[mon.source] || mon.fluff) {
+			if (mon.fluff) handleFluff();
+			else DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source], handleFluff);
 		} else {
 			$td.empty();
 			if (showImages) $td.append(HTML_NO_IMAGES);
