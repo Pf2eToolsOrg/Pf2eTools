@@ -1501,20 +1501,6 @@ EntryRenderer.monster = {
 		return `The ${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryName[0]} regains spent legendary actions at the start of its turn.`
 	},
 
-	// ultimately these rollers should become part of the JSON
-	legacy: {
-		attemptToGetTitle: (ele) => {
-			let titleMaybe = $(ele.parentElement).find(".entry-title")[0];
-			if (titleMaybe !== undefined) {
-				titleMaybe = titleMaybe.innerHTML;
-				if (titleMaybe) {
-					titleMaybe = titleMaybe.substring(0, titleMaybe.length - 1).trim();
-				}
-			}
-			return titleMaybe;
-		}
-	},
-
 	getCompactRenderedString: (mon, renderer) => {
 		renderer = renderer || EntryRenderer.getDefaultRenderer();
 
@@ -1689,6 +1675,23 @@ EntryRenderer.monster = {
 			trait = trait ? trait.concat(spellTraits) : spellTraits;
 		}
 		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
+	},
+
+	getSkillsString (mon) {
+		function doSortMapJoinSkillKeys (obj, keys) {
+			return keys.sort(SortUtil.ascSort).map(s => `${s.uppercaseFirst()} ${obj[s]}`).join(", ")
+		}
+
+		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other"));
+		if (mon.skill.other) {
+			const others = mon.skill.other.map(it => {
+				if (it.oneOf) {
+					return `plus one of the following: ${doSortMapJoinSkillKeys(it.oneOf, Object.keys(it.oneOf))}`
+				}
+				throw new Error(`Unhandled monster "other" skill properties!`)
+			});
+			return `${skills}, ${others.join(", ")}`
+		} else return skills;
 	}
 };
 

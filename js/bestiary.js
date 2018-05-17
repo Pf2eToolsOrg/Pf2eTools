@@ -442,12 +442,6 @@ function sortMonsters (a, b, o) {
 	return 0;
 }
 
-function objToTitleCaseStringWithCommas (obj) {
-	return Object.keys(obj).map(function (k) {
-		return k.uppercaseFirst() + " " + obj[k]
-	}).join(", ");
-}
-
 let profBtn = null;
 // load selected monster stat block
 function loadhash (id) {
@@ -548,7 +542,7 @@ function loadhash (id) {
 		var skills = mon.skill;
 		if (skills) {
 			$content.find("td span#skills").parent().show();
-			$content.find("td span#skills").html(objToTitleCaseStringWithCommas(skills));
+			$content.find("td span#skills").html(EntryRenderer.monster.getSkillsString(mon));
 		} else {
 			$content.find("td span#skills").parent().hide();
 		}
@@ -739,6 +733,7 @@ function loadhash (id) {
 		}
 
 		function renderSkillOrSaveRoller (itemName, profBonusString, isSave) {
+			itemName = itemName.replace(/plus one of the following:/g, "");
 			return EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${profBonusString}|${profBonusString}|${itemName}${isSave ? " save" : ""}`);
 		}
 
