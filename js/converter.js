@@ -291,23 +291,68 @@ function loadparser (data) {
 	}
 
 	function setCleanSpeed (stats, line) {
-		stats.speed = line.toLowerCase();
-		const split = stats.speed.split(",");
-		const newSpeeds = {};
-		try {
-			split.forEach(s => {
-				const splSpace = s.trim().split(" ");
-				let name = splSpace.shift().trim();
-				const val = tryConvertNumber(splSpace.shift().trim());
-				if (name === "speed") {
-					name = "walk";
+		line = line.toLowerCase().trim().replace(/^speed\s*/, "");
+		const ALLOWED = ["walk", "fly", "swim", "climb", "burrow"];
+
+		function splitSpeed (str) {
+			let c;
+			let ret = [];
+			let stack = "";
+			let para = 0;
+			for (let i = 0; i < str.length; ++i) {
+				c = str.charAt(i);
+				switch (c) {
+					case ",":
+						if (para === 0) {
+							ret.push(stack);
+							stack = "";
+						}
+						break;
+					case "(":
+						para++;
+						stack += c;
+						break;
+					case ")":
+						para--;
+						stack += c;
+						break;
+					default:
+						stack += c;
 				}
-				newSpeeds[name] = val;
-			});
-			stats.speed = newSpeeds;
-		} catch (ignored) {
-			return 0;
+			}
+			if (stack) ret.push(stack);
+			return ret.map(it => it.trim()).filter(it => it);
 		}
+
+		const out = {};
+		let byHand = false;
+
+		splitSpeed(line.toLowerCase()).map(it => it.trim()).forEach(s => {
+			const m = /^(\w+?\s+)?(\d+) ft\.( .*)?$/.exec(s);
+			if (!m) {
+				byHand = true;
+				return;
+			}
+
+			if (m[1]) m[1] = m[1].trim();
+			else m[1] = "walk";
+
+			if (ALLOWED.includes(m[1])) {
+				if (m[3]) {
+					out[m[1]] = {
+						number: Number(m[2]),
+						condition: m[3].trim()
+					};
+				} else out[m[1]] = Number(m[2]);
+			} else byHand = true;
+		});
+
+		// flag speed as invalid
+		if (Object.values(out).filter(s => (s.number != null ? s.number : s) % 5 !== 0).length) out.INVALID_SPEED = true;
+
+		// flag speed as needing hand-parsing
+		if (byHand) out.UNPARSED_SPEED = line;
+		stats.speed = out;
 	}
 
 	function setCleanSaves (stats, line) {
