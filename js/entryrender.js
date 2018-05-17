@@ -562,7 +562,7 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@skill" || tag === "@action") {
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@note" || tag === "@skill" || tag === "@action") {
 						switch (tag) {
 							case "@b":
 							case "@bold":
@@ -573,6 +573,11 @@ function EntryRenderer () {
 							case "@i":
 							case "@italic":
 								textStack.push(`<i>`);
+								self.recursiveEntryRender(text, textStack, depth);
+								textStack.push(`</i>`);
+								break;
+							case "@note":
+								textStack.push(`<i class="text-muted">`);
 								self.recursiveEntryRender(text, textStack, depth);
 								textStack.push(`</i>`);
 								break;
