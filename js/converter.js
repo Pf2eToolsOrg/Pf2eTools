@@ -505,7 +505,7 @@ function loadparser (data) {
 			}
 
 			// damage resistances (optional)
-			if (!curLine.indexOf("Damage Resistances ")) {
+			if (!curLine.indexOf("Damage Resistance")) {
 				setCleanDamageRes(stats, curLine);
 				continue;
 			}
@@ -873,7 +873,7 @@ function loadparser (data) {
 				}
 
 				// damage resistances (optional)
-				if (~curLine.indexOf("Damage Resistances")) {
+				if (~curLine.indexOf("Damage Resistance")) {
 					setCleanDamageRes(stats, stripDashStarStar(curLine));
 					continue;
 				}
