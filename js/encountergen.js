@@ -116,7 +116,9 @@ function rollAgainstTable (iLoad, jLoad) {
 	let result;
 	for (let i = 0; i < rollTable.length; i++) {
 		const row = rollTable[i];
-		if (roll >= row.min && (row.max === undefined || roll <= row.max)) {
+		const trueMin = row.max != null && row.max < row.min ? row.max : row.min;
+		const trueMax = row.max != null && row.max > row.min ? row.max : row.min;
+		if (roll >= trueMin && roll <= trueMax) {
 			result = getRenderedText(row.enc);
 			break;
 		}

@@ -2582,11 +2582,11 @@ EntryRenderer.dice = {
 		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
 	},
 
-	randomise: (max) => {
+	randomise: (max, min = 1) => {
 		if (EntryRenderer.dice.isCrypto()) {
-			return EntryRenderer.dice._randomise(1, max + 1);
+			return EntryRenderer.dice._randomise(min, max + min);
 		} else {
-			return RollerUtil.roll(max) + 1;
+			return RollerUtil.roll(max) + min;
 		}
 	},
 
