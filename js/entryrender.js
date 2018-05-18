@@ -1683,15 +1683,16 @@ EntryRenderer.monster = {
 	},
 
 	getSkillsString (mon) {
-		function doSortMapJoinSkillKeys (obj, keys) {
-			return keys.sort(SortUtil.ascSort).map(s => `${s.uppercaseFirst()} ${obj[s]}`).join(", ")
+		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
+			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.uppercaseFirst()} ${obj[s]}`);
+			return joinWithOr ? CollectionUtil.joinConjunct(toJoin, ", ", ", or ") : toJoin.join(", ")
 		}
 
 		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other"));
 		if (mon.skill.other) {
 			const others = mon.skill.other.map(it => {
 				if (it.oneOf) {
-					return `plus one of the following: ${doSortMapJoinSkillKeys(it.oneOf, Object.keys(it.oneOf))}`
+					return `plus one of the following: ${doSortMapJoinSkillKeys(it.oneOf, Object.keys(it.oneOf), true)}`
 				}
 				throw new Error(`Unhandled monster "other" skill properties!`)
 			});

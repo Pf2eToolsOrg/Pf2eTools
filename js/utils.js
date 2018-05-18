@@ -867,8 +867,13 @@ Parser.invoPatronToShort = function (patron) {
 
 Parser.alignmentAbvToFull = function (alignment) {
 	if (typeof alignment === "object") {
-		// e.g. `{alignment: ["N", "G"], chance: 50}` or `{alignment: ["N", "G"]}`
-		return `${alignment.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}${alignment.chance ? ` (${alignment.chance}%)` : ""}`;
+		if (alignment.special) {
+			// use in MTF Sacred Statue
+			return alignment.special;
+		} else {
+			// e.g. `{alignment: ["N", "G"], chance: 50}` or `{alignment: ["N", "G"]}`
+			return `${alignment.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}${alignment.chance ? ` (${alignment.chance}%)` : ""}`;
+		}
 	} else {
 		alignment = alignment.toUpperCase();
 		switch (alignment) {

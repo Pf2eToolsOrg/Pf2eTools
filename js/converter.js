@@ -67,7 +67,6 @@ function tryParseSpecialDamage (strDamage, damageType) {
 function tryParseSpellcasting (trait) {
 	let spellcasting = [];
 
-	// TODO check spell source
 	function parseSpellcasting (trait) {
 		const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
 

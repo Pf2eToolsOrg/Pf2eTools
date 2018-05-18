@@ -733,7 +733,7 @@ function loadhash (id) {
 		}
 
 		function renderSkillOrSaveRoller (itemName, profBonusString, isSave) {
-			itemName = itemName.replace(/plus one of the following:/g, "");
+			itemName = itemName.replace(/plus one of the following:/g, "").replace(/^or\s*/, "");
 			return EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${profBonusString}|${profBonusString}|${itemName}${isSave ? " save" : ""}`);
 		}
 
