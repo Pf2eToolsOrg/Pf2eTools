@@ -1051,10 +1051,15 @@
 					"name": "Hellfire Weapons",
 					"entries": [
 						"The hellfire engine uses one of the following options:",
-						"> Bonemelt Sprayer. The hellfire engine spews acidic flame in a 60-foot cone. Each creature in the cone must make a DC 20 Dexterity saving throw, taking 11 ({@dice 2d10}) fire damage plus 18 ({@dice 4d8}) acid damage on a failed save, or half as much damage on a successful one. Creatures that fail the saving throw are drenched in burning acid and take 5 ({@dice 1d10}) fire damage plus 9 ({@dice 2d8}) acid damage at the end of their turns. An affected creature or another creature within 5 feet of it can take an action to scrape off the burning fuel.",
-						"> Lightning Flail. Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one creature. Hit: 18 ({@dice 3d8+5}) bludgeoning damage plus 22 ({@dice 5d8}) lightning damage. Up to three other creatures of the hellfire engine's choice that it can see within 30 feet of the target must each make a DC 20 Dexterity saving throw, taking 22 ({@dice 5d8}) lightning damage on a failed save, or half as much damage on a successful one.",
-						"> Thunder Cannon. The hellfire engine targets a point within 120 feet of it that it can see. Each creature within 30 feet of that point must make a DC 20 Dexterity saving throw, taking 27 ({@dice 5d10}) bludgeoning damage plus 13 ({@dice 2d12}) thunder damage on a failed save, or half as much damage on a successful one.",
-						"If the chosen option kills a creature, the creature's soul rises from the River Styx as a lemure in Avernus in {@dice 1d4} hours. If the creature isn't revived before then, only a wish spell or killing the lemure and casting true resurrection on the creature's original body can restore it to life. Constructs and devils are immune to this effect."
+						{
+						    "type": "list",
+						    "items": [
+								"Bonemelt Sprayer. The hellfire engine spews acidic flame in a 60-foot cone. Each creature in the cone must make a DC 20 Dexterity saving throw, taking 11 ({@dice 2d10}) fire damage plus 18 ({@dice 4d8}) acid damage on a failed save, or half as much damage on a successful one. Creatures that fail the saving throw are drenched in burning acid and take 5 ({@dice 1d10}) fire damage plus 9 ({@dice 2d8}) acid damage at the end of their turns. An affected creature or another creature within 5 feet of it can take an action to scrape off the burning fuel.",
+								"Lightning Flail. Melee Weapon Attack: {@hit +11} to hit, reach 15 ft., one creature. Hit: 18 ({@dice 3d8+5}) bludgeoning damage plus 22 ({@dice 5d8}) lightning damage. Up to three other creatures of the hellfire engine's choice that it can see within 30 feet of the target must each make a DC 20 Dexterity saving throw, taking 22 ({@dice 5d8}) lightning damage on a failed save, or half as much damage on a successful one.",
+								"Thunder Cannon. The hellfire engine targets a point within 120 feet of it that it can see. Each creature within 30 feet of that point must make a DC 20 Dexterity saving throw, taking 27 ({@dice 5d10}) bludgeoning damage plus 13 ({@dice 2d12}) thunder damage on a failed save, or half as much damage on a successful one.",
+								"If the chosen option kills a creature, the creature's soul rises from the River Styx as a lemure in Avernus in {@dice 1d4} hours. If the creature isn't revived before then, only a wish spell or killing the lemure and casting true resurrection on the creature's original body can restore it to life. Constructs and devils are immune to this effect."
+						    ]
+						}
 					]
 				}
 			]
@@ -9982,9 +9987,14 @@
 					"name": "Fallible Invisibility",
 					"entries": [
 						"The skulk is invisible. This invisibility can be circumvented by three things:",
-						"> The skulk appears as a drab, smooth-skinned humanoid if its reflection can be seen in a mirror or on another surface.",
-						"> The skulk appears as a dim, translucent form in the light of a candle made of fat rendered from a corpse whose identity is unknown.",
-						"> Humanoid children, aged 10 and under, can see through this invisibility."
+						{
+						    "type": "list",
+						    "items": [
+								"The skulk appears as a drab, smooth-skinned humanoid if its reflection can be seen in a mirror or on another surface.",
+								"The skulk appears as a dim, translucent form in the light of a candle made of fat rendered from a corpse whose identity is unknown.",
+								"Humanoid children, aged 10 and under, can see through this invisibility."
+						    ]
+						}
 					]
 				},
 				{
@@ -12885,9 +12895,14 @@
 					"name": "Spiked Chain",
 					"entries": [
 						"Melee Weapon Attack: {@hit +6} to hit, reach 10 ft., one target. Hit: 10 ({@dice 2d6+3}) piercing damage, and the target must succeed on a DC 14 Dexterity saving throw or suffer one additional effect of the shadow dancer's choice:",
-						"> The target is grappled (escape DC 14) if it is a Medium or smaller creature. Until the grapple ends, the target is restrained, and the shadow dancer can't grapple another target.",
-						"> The target is knocked prone.",
-						"> The target takes 22 ({@dice 4d10}) necrotic damage."
+						{
+						    "type": "list",
+						    "items": [
+								"The target is grappled (escape DC 14) if it is a Medium or smaller creature. Until the grapple ends, the target is restrained, and the shadow dancer can't grapple another target.",
+								"The target is knocked prone.",
+								"The target takes 22 ({@dice 4d10}) necrotic damage."
+						    ]
+						}
 					]
 				}
 			]
@@ -15315,8 +15330,13 @@
 					"entries": [
 						"When first encountered, a corpse flower contains the corpses of {@dice 1d6+3 }humanoids. A corpse flower can hold the remains of up to nine dead humanoids. These remains have total cover against attacks and other effects outside the corpse flower. If the corpse flower dies, the corpses within it can be pulled free.",
 						"While it has at least one humanoid corpse in its body, the corpse flower can use a bonus action to do one of the following:",
-						"> The corpse flower digests one humanoid corpse in its body and instantly regains 11 ({@dice 2d10}) hit points. Nothing of the digested body remains. Any equipment on the corpse is expelled from the corpse flower in its space.",
-						"> The corpse flower animates one dead humanoid in its body, turning it into a zombie. The zombie appears in an unoccupied space within 5 feet of the corpse flower and acts immediately after it in the initiative order. The zombie acts as an ally of the corpse flower but isn't under its control, and the flower's stench clings to it (see the Stench of Death trait)."
+						{
+						    "type": "list",
+						    "items": [
+								"The corpse flower digests one humanoid corpse in its body and instantly regains 11 ({@dice 2d10}) hit points. Nothing of the digested body remains. Any equipment on the corpse is expelled from the corpse flower in its space.",
+								"The corpse flower animates one dead humanoid in its body, turning it into a zombie. The zombie appears in an unoccupied space within 5 feet of the corpse flower and acts immediately after it in the initiative order. The zombie acts as an ally of the corpse flower but isn't under its control, and the flower's stench clings to it (see the Stench of Death trait)."
+						    ]
+						}
 					]
 				},
 				{
