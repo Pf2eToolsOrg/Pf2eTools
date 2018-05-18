@@ -415,7 +415,7 @@ Parser.getSpeedString = (it) => {
 	const stack = [];
 	if (typeof it.speed === "object") {
 		let joiner = ", ";
-		if (it.speed.walk) stack.push(`${getVal(it.speed.walk)}ft.${getCond(it.speed.walk)}`);
+		if (it.speed.walk !== undefined) stack.push(`${getVal(it.speed.walk)}ft.${getCond(it.speed.walk)}`);
 		procSpeed("burrow");
 		procSpeed("climb");
 		procSpeed("fly");
