@@ -64,6 +64,7 @@ function loadhash (id) {
 	const race = nameList[iLoad];
 	const table = race.tables[jLoad].table;
 	const tableName = getTableName(race, race.tables[jLoad]);
+	const diceType = race.tables[jLoad].diceType;
 
 	let htmlText = `
 		<tr>
@@ -73,7 +74,7 @@ function loadhash (id) {
 					<thead>
 						<tr>
 							<th class="col-xs-2 text-align-center">
-								<span class="roller" onclick="rollAgainstTable('${iLoad}', '${jLoad}')">d100</span>
+								<span class="roller" onclick="rollAgainstTable('${iLoad}', '${jLoad}')">d${diceType}</span>
 							</th>
 							<th class="col-xs-10">Name</th>
 						</tr>
@@ -109,8 +110,9 @@ function rollAgainstTable (iLoad, jLoad) {
 	const race = nameList[iLoad];
 	const table = race.tables[jLoad];
 	const rollTable = table.table;
+	const diceType = race.tables[jLoad].diceType;
 
-	const roll = EntryRenderer.dice.randomise(100) - 1; // -1 since results are 1-100
+	const roll = EntryRenderer.dice.randomise(diceType) - 1; // -1 since results are 1-XXX
 
 	let result;
 	for (let i = 0; i < rollTable.length; i++) {
