@@ -88,6 +88,25 @@
 					"source": {
 						"type": "string"
 					},
+					"additionalSources": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source",
+								"page"
+							],
+							"additionalProperties": false
+						}
+					},
 					"page": {
 						"type": "integer"
 					},
