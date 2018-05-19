@@ -4642,166 +4642,21 @@
 						]
 					}
 				}
-			]
-		},
-		{
-			"name": "Molydeus (variant)",
-			"size": "H",
-			"type": {
-				"type": "fiend",
-				"tags": [
-					"demon"
-				]
-			},
-			"source": "MTF",
-			"alignment": [
-				"C",
-				"E"
 			],
-			"ac": "19 (natural armor)",
-			"hp": {
-				"average": 216,
-				"formula": "16d12+112"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 28,
-			"dex": 22,
-			"con": 25,
-			"int": 21,
-			"wis": 24,
-			"cha": 24,
-			"save": {
-				"str": "+16",
-				"con": "+14",
-				"wis": "+14",
-				"cha": "+14"
-			},
-			"skill": {
-				"perception": "+21"
-			},
-			"resist": [
-				"cold",
-				"fire",
-				"lightning",
+			"variant": [
 				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"frightened",
-				"poisoned",
-				"stunned"
-			],
-			"senses": "truesight 120 ft.",
-			"passive": 31,
-			"languages": "Abyssal, telepathy 120 ft.",
-			"cr": "21",
-			"page": 0,
-			"trait": [
-				{
-					"name": "Legendary Resistance (3/Day)",
+					"type": "variant",
+					"name": "Demon Summoning",
 					"entries": [
-						"If the molydeus fails a saving throw, it can choose to succeed instead."
+						"You can give a molydeus the ability to summon other demons.",
+						{
+							"name": "Summon Devil (1/Day)",
+							"type": "entries",
+							"entries": [
+								"As an action, the molydeus has a 50 percent chance of summoning its choice of {@dice 1d6} babaus, {@dice 1d4} chasmes, or one marilith. A summoned demon appears in an unoccupied space within 60 feet of the molydeus, acts as an ally of the molydeus, and can't summon other demons. It remains for 1 minute, until it or the molydeus dies, or until the molydeus dismisses it as an action."
+							]
+						}
 					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"The molydeus has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The molydeus's weapon attacks are magical."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The molydeus makes three attacks: one with its weapon, one with its wolf bite, and one with its snakebite."
-					]
-				},
-				{
-					"name": "Demonic Weapon",
-					"entries": [
-						"Melee Weapon Attack: {@hit +16} to hit, reach 15 ft., one target. Hit: 20 ({@dice 2d10+9}) slashing damage. If the target has at least one head and the molydeus rolled a 20 on the attack roll, the target is decapitated and dies if it can't survive without that head. A target is immune to this effect if it takes none of the damage, has legendary actions, or is Huge or larger. Such a creature takes an extra {@dice 6d8} slashing damage from the hit."
-					]
-				},
-				{
-					"name": "Wolf Bite",
-					"entries": [
-						"Melee Weapon Attack: {@hit +16} to hit, reach 10 ft., one target. Hit: 16 ({@dice 2d6+9}) piercing damage."
-					]
-				},
-				{
-					"name": "Snakebite",
-					"entries": [
-						"Melee Weapon Attack: {@hit +16} to hit, reach 15 ft., one creature. Hit: 12 ({@dice 1d6+9}) piercing damage, and the target must succeed on a DC 22 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target transforms into a manes if this reduces its hit point maximum to 0. This transformation can be ended only by a wish spell."
-					]
-				},
-				{
-					"name": "Summon Demon (1/Day)",
-					"entries": [
-						"As an action, the molydeus has a 50 percent chance of summoning its choice of {@dice 1d6} babaus, {@dice 1d4} chasmes, or one marilith. A summoned demon appears in an unoccupied space within 60 feet of the molydeus, acts as an ally of the molydeus, and can't summon other demons. It remains for 1 minute, until it or the molydeus dies, or until the molydeus dismisses it as an action."
-					]
-				}
-			],
-			"legendary": [
-				{
-					"name": "Attack",
-					"entries": [
-						"The molydeus makes one attack, either with its demonic weapon or with its snakebite."
-					]
-				},
-				{
-					"name": "Move",
-					"entries": [
-						"The molydeus moves without provoking opportunity attacks."
-					]
-				},
-				{
-					"name": "Cast a Spell",
-					"entries": [
-						"The molydeus casts one spell from its Innate Spellcasting trait."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The molydeus's innate spellcasting ability is Charisma. It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell dispel magic}",
-						"{@spell polymorph}",
-						"{@spell telekinesis}",
-						"{@spell teleport}"
-					],
-					"daily": {
-						"1": [
-							"{@spell imprisonment}"
-						],
-						"3": [
-							"{@spell lightning bolt}"
-						]
-					}
 				}
 			]
 		},
@@ -5255,7 +5110,7 @@
 				{
 					"name": "Warp Creature",
 					"entries": [
-						"The sibriex targets up to three creatures it can see within 120 feet of it. Each target must make a DC 20 Constitution saving throw. On a successful save, a creature becomes immune to this sibriex's Warp Creature. On a failed save, the target is poisoned, which causes it to also gain 1 level of exhaustion. While poisoned in this way, the target must repeat the saving throw at the start of each of its turns. Three successful saves against the poison end it, and ending the poison removes any levels of exhaustion caused by it. Each failed save causes the target to suffer another level of exhaustion. Once the target reaches 6 levels of exhaustion, it dies and instantly transforms into a living abyssal wretch under the sibriex's control. The transformation of the body can be undone only by a wish spell. (See 'Other' tab for variant)"
+						"The sibriex targets up to three creatures it can see within 120 feet of it. Each target must make a DC 20 Constitution saving throw. On a successful save, a creature becomes immune to this sibriex's Warp Creature. On a failed save, the target is poisoned, which causes it to also gain 1 level of exhaustion. While poisoned in this way, the target must repeat the saving throw at the start of each of its turns. Three successful saves against the poison end it, and ending the poison removes any levels of exhaustion caused by it. Each failed save causes the target to suffer another level of exhaustion. Once the target reaches 6 levels of exhaustion, it dies and instantly transforms into a living abyssal wretch under the sibriex's control. The transformation of the body can be undone only by a wish spell."
 					]
 				}
 			],
@@ -6013,142 +5868,21 @@
 						]
 					}
 				}
-			]
-		},
-		{
-			"name": "Amnizu (variant)",
-			"size": "M",
-			"type": {
-				"type": "fiend",
-				"tags": [
-					"devil"
-				]
-			},
-			"source": "MTF",
-			"alignment": [
-				"L",
-				"E"
 			],
-			"ac": "21 (natural armor)",
-			"hp": {
-				"average": 202,
-				"formula": "27d8+81"
-			},
-			"speed": {
-				"walk": 30,
-				"fly": 40
-			},
-			"str": 11,
-			"dex": 13,
-			"con": 16,
-			"int": 20,
-			"wis": 12,
-			"cha": 18,
-			"save": {
-				"dex": "+7",
-				"con": "+9",
-				"wis": "+7",
-				"cha": "+10"
-			},
-			"skill": {
-				"perception": "+7"
-			},
-			"resist": [
-				"cold",
+			"variant": [
 				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks that aren't silvered"
-				}
-			],
-			"immune": [
-				"fire",
-				"poison"
-			],
-			"conditionImmune": [
-				"charmed",
-				"poisoned"
-			],
-			"senses": "darkvision 120 ft.",
-			"passive": 17,
-			"languages": "Common, Infernal, telepathy 1,000 ft.",
-			"cr": "18",
-			"page": 0,
-			"trait": [
-				{
-					"name": "Devil's Sight",
+					"type": "variant",
+					"name": "Devil Summoning",
 					"entries": [
-						"Magical darkness doesn't impede the amnizu's darkvision."
+						"Some amnizus have an action that allows them to summon other devils.",
+						{
+							"name": "Summon Devil (1/Day)",
+							"type": "entries",
+							"entries": [
+								"The amnizu summons {@dice 2d4} bearded devils or {@dice 1d4} barbed devils. A summoned devil appears in an unoccupied space within 60 feet of the amnizu, acts as an ally of the amnizu, and can't summon other devils. It remains for 1 minute, until the amnizu dies, or until its summoner dismisses it as an action"
+							]
+						}
 					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"The amnizu has advantage on saving throws against spells and other magical effects."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The amnizu uses Poison Mind. It also makes two attacks: one with its whip and one with its Disruptive Touch."
-					]
-				},
-				{
-					"name": "Taskmaster Whip",
-					"entries": [
-						"Melee Weapon Attack: {@hit +11} to hit, reach 10 ft., one target. Hit: 10 ({@dice 2d4+5}) slashing damage plus 33 ({@dice 6d10}) force damage."
-					]
-				},
-				{
-					"name": "Disruptive Touch",
-					"entries": [
-						"Melee Spell Attack: {@hit +11} to hit, reach 5 ft., one target. Hit: 44 ({@dice 8d10}) necrotic damage."
-					]
-				},
-				{
-					"name": "Poison Mind",
-					"entries": [
-						"The amnizu targets one or two creatures that it can see within 60 feet of it. Each target must succeed on a DC 19 Wisdom saving throw or take 26 ({@dice 4d12}) necrotic damage and is blinded until the start of the amnizu's next turn."
-					]
-				},
-				{
-					"name": "Forgetfulness (Recharge 6)",
-					"entries": [
-						"The amnizu targets one creature it can see within 60 feet of it. That creature must make a DC 18 Intelligence saving throw and on a failure the target is stunned for 1 minute. A stunned creature repeats the saving throw at the end of each of its turns, ending the effect on itself on a success. If the target remains stunned for the full minute, it forgets everything it sensed, experienced, and learned during the last 5 hours."
-					]
-				},
-				{
-					"name": "Summon Devil (1/Day)",
-					"entries": [
-						"The amnizu summons {@dice 2d4} bearded devils or {@dice 1d4} barbed devils. A summoned devil appears in an unoccupied space within 60 feet of the amnizu, acts as an ally of the amnizu, and can't summon other devils. It remains for 1 minute, until the amnizu dies, or until its summoner dismisses it as an action"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The amnizu's innate spellcasting ability is Intelligence. The amnizu can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell charm person}",
-						"{@spell command}"
-					],
-					"daily": {
-						"3e": [
-							"{@spell dominate person}",
-							"{@spell fireball}"
-						],
-						"1e": [
-							"{@spell dominate monster}",
-							"{@spell feeblemind}"
-						]
-					}
 				}
 			]
 		},
@@ -6776,174 +6510,21 @@
 					}
 				}
 			],
-			"legendaryGroup": "Geryon"
-		},
-		{
-			"name": "Geryon (variant)",
-			"size": "H",
-			"type": {
-				"type": "fiend",
-				"tags": [
-					"devil"
-				]
-			},
-			"source": "MTF",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": "19 (natural armor)",
-			"hp": {
-				"average": 300,
-				"formula": "24d12+144"
-			},
-			"speed": {
-				"walk": 30,
-				"fly": 50
-			},
-			"str": 29,
-			"dex": 17,
-			"con": 22,
-			"int": 19,
-			"wis": 16,
-			"cha": 23,
-			"save": {
-				"dex": "+10",
-				"con": "+13",
-				"wis": "+10",
-				"cha": "+13"
-			},
-			"skill": {
-				"deception": "+13",
-				"intimidation": "+13",
-				"perception": "+10"
-			},
-			"resist": [
+			"legendaryGroup": "Geryon",
+			"variant": [
 				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks that aren't silvered"
-				}
-			],
-			"immune": [
-				"cold",
-				"fire",
-				"poison"
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"frightened",
-				"poisoned"
-			],
-			"senses": "truesight 120 ft.",
-			"passive": 20,
-			"languages": "all, telepathy 120 ft.",
-			"cr": "22",
-			"page": 0,
-			"trait": [
-				{
-					"name": "Legendary Resistance (3/Day)",
+					"type": "variant",
+					"name": "Sound the Horn",
 					"entries": [
-						"If Geryon fails a saving throw, he can choose to succeed instead."
+						"Geryon can have an action that allows him to summon enslaved minotaurs.",
+						{
+							"name": "Sound the Horn (1/Day)",
+							"type": "entries",
+							"entries": [
+								"Geryon blows his horn, which causes {@dice 5d4} minotaurs to appear in unoccupied spaces of his choice within 600 feet of him. The minotaurs roll initiative when they appear. They remain until they die or Geryon uses an action to dismiss any or all of them."
+							]
+						}
 					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"Geryon has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"Geryon's weapon attacks are magical."
-					]
-				},
-				{
-					"name": "Regeneration",
-					"entries": [
-						"Geryon regains 20 hit points at the start of his turn. If he takes radiant damage, this trait doesn't function at the start of his next turn. Geryon dies only if he starts his turn with 0 hit points and doesn't regenerate."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Geryon makes two attacks: one with his claws and one with his stinger."
-					]
-				},
-				{
-					"name": "Claws",
-					"entries": [
-						"Melee Weapon Attack: {@hit +16} to hit, reach 15 ft., one target. Hit: 23 ({@dice 4d6+9}) slashing damage. If the target is Large or smaller, it is grappled (DC 24) and is restrained until the grapple ends. Geryon can grapple one creature at a time. If the target is already grappled by Geryon, the target takes an extra 27 ({@dice 6d8}) slashing damage."
-					]
-				},
-				{
-					"name": "Stinger",
-					"entries": [
-						"Melee Weapon Attack: {@hit +16} to hit, reach 20 ft., one creature. Hit: 14 ({@dice 2d4+9}) piercing damage, and the target must succeed on a DC 21 Constitution saving throw or take 13 ({@dice 2d12}) poison damage and become poisoned until it finishes a short or long rest. The target's hit point maximum is reduced by an amount equal to half the poison damage it takes. If its hit point maximum drops to 0, it dies. This reduction lasts until the poisoned condition is removed."
-					]
-				},
-				{
-					"name": "Teleport",
-					"entries": [
-						"Geryon magically teleports, along with any equipment he is wearing and carrying, up to 120 feet to an unoccupied space he can see."
-					]
-				},
-				{
-					"name": "Sound the Horn (1/Day)",
-					"entries": [
-						"Geryon blows his horn, which causes {@dice 5d4} minotaurs to appear in unoccupied spaces of his choice within 600 feet of him. The minotaurs roll initiative when they appear. They remain until they die or Geryon uses an action to dismiss any or all of them."
-					]
-				}
-			],
-			"legendary": [
-				{
-					"name": "Infernal Glare",
-					"entries": [
-						"Geryon targets one creature he can see within 60 feet of him. If the target can see Geryon, the target must succeed on a DC 23 Wisdom saving throw or become frightened of Geryon until the end of its next turn."
-					]
-				},
-				{
-					"name": "Swift Sting (Costs 2 Actions)",
-					"entries": [
-						"Geryon attacks with his stinger."
-					]
-				},
-				{
-					"name": "Teleport",
-					"entries": [
-						"Geryon uses his Teleport action."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Geryon's innate spellcasting ability is Charisma. He can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell alter self} (can become Medium when changing his appearance)",
-						"{@spell detect magic}",
-						"{@spell geas}",
-						"{@spell ice storm}",
-						"{@spell invisibility} (self only)",
-						"{@spell locate object}",
-						"{@spell suggestion}",
-						"{@spell wall of ice}"
-					],
-					"daily": {
-						"1e": [
-							"{@spell divine word}",
-							"{@spell symbol} (pain only)"
-						]
-					}
 				}
 			]
 		},
@@ -11925,186 +11506,21 @@
 						}
 					}
 				}
-			]
-		},
-		{
-			"name": "Drow Inquisitor (variant)",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"elf"
-				]
-			},
-			"source": "MTF",
-			"alignment": [
-				"L",
-				"E"
 			],
-			"ac": "16 (breastplate)",
-			"hp": {
-				"average": 143,
-				"formula": "22d8+44"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 11,
-			"dex": 15,
-			"con": 14,
-			"int": 16,
-			"wis": 21,
-			"cha": 20,
-			"save": {
-				"con": "+7",
-				"wis": "+10",
-				"cha": "+10"
-			},
-			"skill": {
-				"insight": "+10",
-				"perception": "+10",
-				"religion": "+8",
-				"stealth": "+7"
-			},
-			"conditionImmune": [
-				"frightened"
-			],
-			"senses": "darkvision 120 ft.",
-			"passive": 20,
-			"languages": "Elvish, Undercommon",
-			"cr": "14",
-			"page": 0,
-			"trait": [
+			"variant": [
 				{
-					"name": "Discern Lie",
+					"type": "variant",
+					"name": "Demon Summoning",
 					"entries": [
-						"The drow knows when she hears a creature speak a lie in a language she knows."
-					]
-				},
-				{
-					"name": "Fey Ancestry",
-					"entries": [
-						"The drow has advantage on saving throws against being charmed, and magic can't put the drow to sleep."
-					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"The drow has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The drow makes three death lance attacks."
-					]
-				},
-				{
-					"name": "Death Lance",
-					"entries": [
-						"Melee Weapon Attack: {@hit +10} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d6+5}) piercing damage plus 18 ({@dice 4d8}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage it takes. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
-					]
-				},
-				{
-					"name": "Summon Demon (1/Day)",
-					"entries": [
-						"The drow attempts to magically summon a yochlol, with a 50 percent chance of success. If the attempt fails, the drow takes 5 ({@dice 1d10}) psychic damage. Otherwise, the summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for 10 minutes, until it or its summoner dies, or until its summoner dismisses it as an action. (see notes for link)"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The drow's innate spellcasting ability is Charisma. She can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell dancing lights}",
-						"{@spell detect magic}"
-					],
-					"daily": {
-						"1e": [
-							"{@spell clairvoyance}",
-							"{@spell darkness}",
-							"{@spell detect thoughts}",
-							"{@spell dispel magic}",
-							"{@spell faerie fire}",
-							"{@spell levitate} (self only)",
-							"{@spell suggestion}"
-						]
-					}
-				},
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The drow is a 12th-level spellcaster. Her spellcasting ability is Wisdom. She has the following cleric spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell guidance}",
-								"{@spell message}",
-								"{@spell poison spray}",
-								"{@spell resistance}",
-								"{@spell thaumaturgy}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell bane}",
-								"{@spell cure wounds}",
-								"{@spell inflict wounds}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell blindness/deafness}",
-								"{@spell silence}",
-								"{@spell spiritual weapon}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell bestow curse}",
-								"{@spell dispel magic}",
-								"{@spell magic circle}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell banishment}",
-								"{@spell divination}",
-								"{@spell freedom of movement}"
-							]
-						},
-						"5": {
-							"slots": 2,
-							"spells": [
-								"{@spell contagion}",
-								"{@spell dispel evil and good}",
-								"{@spell insect plague}"
-							]
-						},
-						"6": {
-							"slots": 1,
-							"spells": [
-								"{@spell harm}",
-								"{@spell true seeing}"
+						"Some drow inquisitors have an action that allows them to summon a demon.",
+						{
+							"name": "Summon Demon (1/Day)",
+							"type": "entries",
+							"entries": [
+								"The drow attempts to magically summon a yochlol, with a 50 percent chance of success. If the attempt fails, the drow takes 5 ({@dice 1d10}) psychic damage. Otherwise, the summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for 10 minutes, until it or its summoner dies, or until its summoner dismisses it as an action. (see notes for link)"
 							]
 						}
-					}
+					]
 				}
 			]
 		},
@@ -12439,112 +11855,21 @@
 						]
 					}
 				}
-			]
-		},
-		{
-			"name": "Drow Shadowblade (variant)",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"elf"
-				]
-			},
-			"source": "MTF",
-			"alignment": [
-				"L",
-				"E"
 			],
-			"ac": "17 (studded leather)",
-			"hp": {
-				"average": 150,
-				"formula": "20d8+60"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 14,
-			"dex": 21,
-			"con": 16,
-			"int": 12,
-			"wis": 14,
-			"cha": 13,
-			"save": {
-				"dex": "+9",
-				"con": "+7",
-				"wis": "+6"
-			},
-			"skill": {
-				"perception": "+6",
-				"stealth": "+9"
-			},
-			"senses": "darkvision 120 ft.",
-			"passive": 16,
-			"languages": "Elvish, Undercommon",
-			"cr": "11",
-			"page": 0,
-			"trait": [
+			"variant": [
 				{
-					"name": "Fey Ancestry",
+					"type": "variant",
+					"name": "Shdow Demon Summoning",
 					"entries": [
-						"The drow has advantage on saving throws against being charmed, and magic can't put the drow to sleep."
+						"Some drow shadowblades have an action that allows them to summon a demon.",
+						{
+							"name": "Summon Shadow Demon (1/Day)",
+							"type": "entries",
+							"entries": [
+								"The drow attempts to magically summon a shadow demon with a 50 percent chance of success. If the attempt fails, the drow takes 5 ({@dice 1d10}) psychic damage. Otherwise, the summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for 10 minutes, until it or its summoner dies, or until its summoner dismisses it as an action."
+							]
+						}
 					]
-				},
-				{
-					"name": "Shadow Step",
-					"entries": [
-						"While in dim light or darkness, the drow can teleport as a bonus action up to 60 feet to an unoccupied space it can see that is also in dim light or darkness. It then has advantage on the first melee attack it makes before the end of the turn."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The drow makes two attacks with its shadow sword. If either attack hits and the target is within 10 feet of a 5-foot cube of darkness created by the shadow sword on a previous turn, the drow can dismiss that darkness and cause the target to take 21 ({@dice 6d6}) necrotic damage. The drow can dismiss darkness in this way no more than once per turn."
-					]
-				},
-				{
-					"name": "Shadow Sword",
-					"entries": [
-						"Melee Weapon Attack: {@hit +9} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d6+5}) piercing damage plus 10 ({@dice 3d6}) necrotic damage and 10 ({@dice 3d6}) poison damage. The drow can then fill an unoccupied 5-foot cube within 5 feet of the target with magical darkness, which remains for 1 minute."
-					]
-				},
-				{
-					"name": "Hand Crossbow",
-					"entries": [
-						"Ranged Weapon Attack: {@hit +9} to hit, range 30/120 ft., one target. Hit: 8 ({@dice 1d6+5}) piercing damage, and the target must succeed on a DC 13 Constitution saving throw or be poisoned for 1 hour. If the saving throw fails by 5 or more, the target is also unconscious while poisoned in this way. The target regains consciousness if it takes damage or if another creature takes an action to shake it."
-					]
-				},
-				{
-					"name": "Summon Shadow Demon (1/Day)",
-					"entries": [
-						"The drow attempts to magically summon a shadow demon with a 50 percent chance of success. If the attempt fails, the drow takes 5 ({@dice 1d10}) psychic damage. Otherwise, the summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for 10 minutes, until it or its summoner dies, or until its summoner dismisses it as an action."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The drow's innate spellcasting ability is Charisma. It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell dancing lights}"
-					],
-					"daily": {
-						"1e": [
-							"{@spell darkness}",
-							"{@spell faerie fire}",
-							"{@spell levitate} (self only)"
-						]
-					}
 				}
 			]
 		},
