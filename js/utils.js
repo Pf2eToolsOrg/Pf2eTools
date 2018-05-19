@@ -3053,6 +3053,7 @@ BrewUtil = {
 				case "reward":
 				case "psionic":
 				case "variantrule":
+				case "legendaryGroup":
 					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
@@ -3112,7 +3113,7 @@ BrewUtil = {
 		}
 
 		// prepare for storage
-		["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard", "variantrule"].forEach(storePrep);
+		["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup"].forEach(storePrep);
 
 		// store
 		function checkAndAdd (prop) {
@@ -3159,6 +3160,7 @@ BrewUtil = {
 		let rewardsToAdd = json.reward;
 		let psionicsToAdd = json.psionic;
 		let variantRulesToAdd = json.variantrule;
+		let legendaryGroupsToAdd = json.legendaryGroup;
 		if (!BrewUtil.homebrew) {
 			BrewUtil.homebrew = json;
 		} else {
@@ -3180,6 +3182,7 @@ BrewUtil = {
 			rewardsToAdd = checkAndAdd("reward");
 			psionicsToAdd = checkAndAdd("psionic");
 			variantRulesToAdd = checkAndAdd("variantrule");
+			legendaryGroupsToAdd = checkAndAdd("legendaryGroup");
 		}
 		BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -3196,6 +3199,7 @@ BrewUtil = {
 				addSubclassData({subclass: subclassesToAdd});
 				break;
 			case UrlUtil.PG_BESTIARY:
+				addLegendaryGroups(legendaryGroupsToAdd);
 				addMonsters(monstersToAdd);
 				break;
 			case UrlUtil.PG_BACKGROUNDS:

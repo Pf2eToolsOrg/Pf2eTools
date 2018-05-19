@@ -53,6 +53,18 @@ function loadMeta (nextFunction) {
 	});
 }
 
+// for use in homebrew only
+function addLegendaryGroups (toAdd) {
+	if (!toAdd || !toAdd.length) return;
+
+	toAdd.forEach(it => {
+		meta[it.name] = {
+			"lairActions": it.lairActions,
+			"regionalEffects": it.regionalEffects
+		}
+	});
+}
+
 let ixFluff = {};
 function loadFluffIndex (nextFunction) {
 	DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX, function (data) {
@@ -62,6 +74,7 @@ function loadFluffIndex (nextFunction) {
 }
 
 function handleBrew (homebrew) {
+	addLegendaryGroups(homebrew.legendaryGroup);
 	addMonsters(homebrew.monster);
 }
 
