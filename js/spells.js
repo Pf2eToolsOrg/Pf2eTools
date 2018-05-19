@@ -77,7 +77,7 @@ function getNormalisedTime (time) {
 			multiplier = 3600;
 			break;
 	}
-	if (time.length > 1) offset += 1;
+	if (time.length > 1) offset += 0.5;
 	return (multiplier * firstTime.number) + offset;
 }
 
