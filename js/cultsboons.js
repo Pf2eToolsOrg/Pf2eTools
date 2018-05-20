@@ -5,33 +5,88 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL, onJsonLoad);
 };
 
-let cultListAndBoon;
+function cultBoonTypeToFull (type) {
+	return type === "c" ? "Cult" : "Demonic Boon";
+}
+
+let cultsAndBoonsList;
+const sourceFilter = getSourceFilter();
+let filterBox;
+let list;
 function onJsonLoad (data) {
-	data.cult.forEach(it => it._type = "c");
-	data.boon.forEach(it => it._type = "b");
-	cultListAndBoon = data.cult.concat(data.boon);
-
-	let tempString = "";
-	cultListAndBoon.forEach((it, i) => {
-		tempString += `
-			<li>
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name" title="${it.name}">${it.name}</span>
-				</a>
-			</li>`;
-	});
-	$("ul.cultsboons").append(tempString);
-
-	const list = ListUtil.search({
+	list = ListUtil.search({
 		valueNames: ['name'],
 		listClass: "cultsboons"
 	});
 
+	const typeFilter = new Filter({
+		header: "Type",
+		items: ["b", "c"],
+		displayFn: cultBoonTypeToFull
+	});
+	filterBox = initFilterBox(
+		sourceFilter,
+		typeFilter
+	);
+
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
+
+	data.cult.forEach(it => it._type = "c");
+	data.boon.forEach(it => it._type = "b");
+	cultsAndBoonsList = data.cult.concat(data.boon);
+
+	let tempString = "";
+	cultsAndBoonsList.forEach((it, i) => {
+		tempString += `
+			<li class="row" ${FLTR_ID}="${i}">
+				<a id="${i}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
+					<span class="name col-xs-8" title="${it.name}">${it.name}</span>
+					<span class="source col-xs-4" title='${Parser.sourceJsonToFull(it.source)}'>${Parser.sourceJsonToAbv(it.source)}</span>
+				</a>
+			</li>`;
+
+		// populate filters
+		sourceFilter.addIfAbsent(it.source);
+	});
+	const lastSearch = ListUtil.getSearchTermAndReset(list);
+	$("ul.cultsboons").append(tempString);
+
+	// sort filters
+	sourceFilter.items.sort(SortUtil.ascSort);
+
+	list.reIndex();
+	if (lastSearch) list.search(lastSearch);
+	list.sort("name");
+
+	filterBox.render();
+	handleFilterChange();
 	History.init();
 }
 
+// filtering function
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	list.filter(function (item) {
+		const cb = cultsAndBoonsList[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			cb.source,
+			cb._type
+		);
+	});
+	FilterBox.nextIfHidden(cultsAndBoonsList);
+}
+
 function loadhash (id) {
-	const it = cultListAndBoon[id];
+	const it = cultsAndBoonsList[id];
 
 	const renderer = new EntryRenderer();
 	const renderStack = [];
@@ -41,7 +96,7 @@ function loadhash (id) {
 		if (it.goal || it.cultists || it.signaturespells) {
 			const fauxList = {
 				type: "list",
-				style: "list-hang",
+				style: "list-hang-notitle",
 				items: []
 			};
 			if (it.goal) {
