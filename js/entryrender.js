@@ -1779,6 +1779,12 @@ EntryRenderer.item = {
 			"entries": p.entries
 		};
 	},
+	_addType (t) {
+		EntryRenderer.item._typeList[t.abbreviation] = t.name ? JSON.parse(JSON.stringify(t)) : {
+			"name": t.entries[0].name.toLowerCase(),
+			"entries": t.entries
+		};
+	},
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
@@ -1806,18 +1812,9 @@ EntryRenderer.item = {
 
 		function addVariants (basicItemData) {
 			basicItemList = basicItemData.basicitem;
-			const itemPropertyList = basicItemData.itemProperty;
-			const itemTypeList = basicItemData.itemType;
 			// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
-			for (let i = 0; i < itemPropertyList.length; i++) {
-				EntryRenderer.item._addProperty(itemPropertyList[i]);
-			}
-			for (let i = 0; i < itemTypeList.length; i++) {
-				EntryRenderer.item._typeList[itemTypeList[i].abbreviation] = itemTypeList[i].name ? JSON.parse(JSON.stringify(itemTypeList[i])) : {
-					"name": itemTypeList[i].entries[0].name.toLowerCase(),
-					"entries": itemTypeList[i].entries
-				};
-			}
+			basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
+			basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
 			DataUtil.loadJSON(magicVariantUrl, mergeBasicItems);
 		}
 
