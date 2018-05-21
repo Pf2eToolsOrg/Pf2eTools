@@ -1773,6 +1773,12 @@ EntryRenderer.item = {
 	_builtList: null,
 	_propertyList: {},
 	_typeList: {},
+	_addProperty (p) {
+		EntryRenderer.item._propertyList[p.abbreviation] = p.name ? JSON.parse(JSON.stringify(p)) : {
+			"name": p.entries[0].name.toLowerCase(),
+			"entries": p.entries
+		};
+	},
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
@@ -1804,10 +1810,7 @@ EntryRenderer.item = {
 			const itemTypeList = basicItemData.itemType;
 			// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 			for (let i = 0; i < itemPropertyList.length; i++) {
-				EntryRenderer.item._propertyList[itemPropertyList[i].abbreviation] = itemPropertyList[i].name ? JSON.parse(JSON.stringify(itemPropertyList[i])) : {
-					"name": itemPropertyList[i].entries[0].name.toLowerCase(),
-					"entries": itemPropertyList[i].entries
-				};
+				EntryRenderer.item._addProperty(itemPropertyList[i]);
 			}
 			for (let i = 0; i < itemTypeList.length; i++) {
 				EntryRenderer.item._typeList[itemTypeList[i].abbreviation] = itemTypeList[i].name ? JSON.parse(JSON.stringify(itemTypeList[i])) : {
