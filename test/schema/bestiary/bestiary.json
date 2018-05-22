@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -996,6 +996,28 @@
 				},
 				"isNamedCreature": {
 					"type": "boolean"
+				},
+				"environment": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"underground",
+							"arctic",
+							"cave",
+							"coast",
+							"desert",
+							"dungeon",
+							"forest",
+							"grassland",
+							"mountain",
+							"planar",
+							"ruins",
+							"swamp",
+							"aquatic",
+							"urban"
+						]
+					}
 				}
 			},
 			"required": [
