@@ -138,6 +138,26 @@ const alignmentFilter = new Filter({
 	items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A"],
 	displayFn: Parser.alignmentAbvToFull
 });
+const environmentFilter = new Filter({
+	header: "Environment",
+	items: [
+		"underground",
+		"arctic",
+		"cave",
+		"coast",
+		"desert",
+		"dungeon",
+		"forest",
+		"grassland",
+		"mountain",
+		"planar",
+		"ruins",
+		"swamp",
+		"aquatic",
+		"urban"
+	],
+	displayFn: StrUtil.uppercaseFirst
+});
 const DMG_TYPES = [
 	"acid",
 	"bludgeoning",
@@ -211,6 +231,7 @@ const filterBox = initFilterBox(
 	typeFilter,
 	tagFilter,
 	alignmentFilter,
+	environmentFilter,
 	vulnerableFilter,
 	resistFilter,
 	immuneFilter,
@@ -321,6 +342,7 @@ function handleFilterChange () {
 			m._pTypes.type,
 			m._pTypes.tags,
 			m._fAlign,
+			m.environment,
 			m._fVuln,
 			m._fRes,
 			m._fImm,
@@ -356,6 +378,7 @@ function addMonsters (data) {
 		else if (tempAlign.includes("N") && !tempAlign.includes("L") && !tempAlign.includes("C")) tempAlign.push("NX");
 		else if (tempAlign.length === 1 && tempAlign.includes("N")) Array.prototype.push.apply(tempAlign, _NEUT_ALIGNS);
 		mon._fAlign = tempAlign;
+		mon.environment = mon.environment || [];
 		mon._fVuln = mon.vulnerable ? getAllImmRest(mon.vulnerable, "vulnerable") : [];
 		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
