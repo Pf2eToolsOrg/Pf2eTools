@@ -5158,16 +5158,6 @@
 					"entries": [
 						"The grung's long jump is up to 25 feet and its high jump is up to 15 feet, with or without a running start."
 					]
-				},
-				{
-					"name": "Variant: Grung Poison",
-					"entries": [
-						"Grung poison loses its potency 1 minute after being removed from a grung. A similar breakdown occurs if the grung dies.",
-						"A creature poisoned by a grung can suffer an additional effect that varies depending on the grung's skin color. This effect lasts until the creature is no longer poisoned by the grung.",
-						"Green. The poisoned creature can't move except to climb or make standing jumps. If the creature is flying, it can't take any actions or reactions unless it lands.",
-						"Blue. The poisoned creature must shout loudly or otherwise make a loud noise at the start and end of its turn.",
-						"Purple. The poisoned creature feels a desperate need to soak itself in liquid or mud. It can't take actions or move except to do so or to reach a body of liquid or mud."
-					]
 				}
 			],
 			"action": [
@@ -5178,7 +5168,20 @@
 					]
 				}
 			],
-			"page": 156
+			"page": 156,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Grung Poison",
+					"entries": [
+						"Grung poison loses its potency 1 minute after being removed from a grung. A similar breakdown occurs if the grung dies.",
+						"A creature poisoned by a grung can suffer an additional effect that varies depending on the grung's skin color. This effect lasts until the creature is no longer poisoned by the grung.",
+						"Green. The poisoned creature can't move except to climb or make standing jumps. If the creature is flying, it can't take any actions or reactions unless it lands.",
+						"Blue. The poisoned creature must shout loudly or otherwise make a loud noise at the start and end of its turn.",
+						"Purple. The poisoned creature feels a desperate need to soak itself in liquid or mud. It can't take actions or move except to do so or to reach a body of liquid or mud."
+					]
+				}
+			]
 		},
 		{
 			"name": "Grung Elite Warrior",
@@ -5245,15 +5248,6 @@
 					"entries": [
 						"The grung's long jump is up to 25 feet and its high jump is up to 15 feet, with or without a running start."
 					]
-				},
-				{
-					"name": "Variant: Grung Poison",
-					"entries": [
-						"Grung poison loses its potency 1 minute after being removed from a grung. A similar breakdown occurs if the grung dies.",
-						"A creature poisoned by a grung can suffer an additional effect that varies depending on the grung's skin color. This effect lasts until the creature is no longer poisoned by the grung.",
-						"Orange. The poisoned creature is frightened of its allies.",
-						"Gold. The poisoned creature is charmed and can speak Grung."
-					]
 				}
 			],
 			"action": [
@@ -5276,7 +5270,19 @@
 					]
 				}
 			],
-			"page": 157
+			"page": 157,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Grung Poison",
+					"entries": [
+						"Grung poison loses its potency 1 minute after being removed from a grung. A similar breakdown occurs if the grung dies.",
+						"A creature poisoned by a grung can suffer an additional effect that varies depending on the grung's skin color. This effect lasts until the creature is no longer poisoned by the grung.",
+						"Orange. The poisoned creature is frightened of its allies.",
+						"Gold. The poisoned creature is charmed and can speak Grung."
+					]
+				}
+			]
 		},
 		{
 			"name": "Grung Wildling",
@@ -5343,14 +5349,6 @@
 					"entries": [
 						"The grung's long jump is up to 25 feet and its high jump is up to 15 feet, with or without a running start."
 					]
-				},
-				{
-					"name": "Variant: Grung Poison",
-					"entries": [
-						"Grung poison loses its potency 1 minute after being removed from a grung. A similar breakdown occurs if the grung dies.",
-						"A creature poisoned by a grung can suffer an additional effect that varies depending on the grung's skin color. This effect lasts until the creature is no longer poisoned by the grung.",
-						"Red. The poisoned creature must use its action to eat if food is within reach."
-					]
 				}
 			],
 			"action": [
@@ -5396,6 +5394,17 @@
 							]
 						}
 					}
+				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Grung Poison",
+					"entries": [
+						"Grung poison loses its potency 1 minute after being removed from a grung. A similar breakdown occurs if the grung dies.",
+						"A creature poisoned by a grung can suffer an additional effect that varies depending on the grung's skin color. This effect lasts until the creature is no longer poisoned by the grung.",
+						"Red. The poisoned creature must use its action to eat if food is within reach."
+					]
 				}
 			]
 		},
@@ -11044,7 +11053,6 @@
 			"passive": 12,
 			"languages": "understands Draconic but can't speak it",
 			"cr": "2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -11555,24 +11563,6 @@
 					"entries": [
 						"The anathema has advantage on Wisdom (Perception) checks and on saving throws against being blinded. charmed, deafened, frightened, stunned, or knocked unconscious."
 					]
-				},
-				{
-					"name": "Variant: Acid Slime",
-					"entries": [
-						"As a bonus action, the yuan-ti can coat its body in a slimy acid that lasts for 1 minute. A creature that touches the yuan-ti, hits it with a melee attack while within 5 feet of it, or is hit by its constrict attack takes 5 ({@dice 1d10}) acid damage."
-					]
-				},
-				{
-					"name": "Variant: Chameleon Skin",
-					"entries": [
-						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
-					]
-				},
-				{
-					"name": "Variant: Shed Skin (1/Day)",
-					"entries": [
-						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
-					]
 				}
 			],
 			"action": [
@@ -11624,6 +11614,29 @@
 							"{@spell polymorph}"
 						]
 					}
+				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Acid Slime",
+					"entries": [
+						"As a bonus action, the yuan-ti can coat its body in a slimy acid that lasts for 1 minute. A creature that touches the yuan-ti, hits it with a melee attack while within 5 feet of it, or is hit by its constrict attack takes 5 ({@dice 1d10}) acid damage."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Chameleon Skin",
+					"entries": [
+						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Shed Skin (1/Day)",
+					"entries": [
+						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
+					]
 				}
 			]
 		},
@@ -11685,18 +11698,6 @@
 					"entries": [
 						"At the start of its turn, the broodguard can gain advantage on all melee weapon attack rolls it makes during that turn, but attack rolls against it have advantage until the start of its next turn."
 					]
-				},
-				{
-					"name": "Variant: Chameleon Skin",
-					"entries": [
-						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
-					]
-				},
-				{
-					"name": "Variant: Shed Skin (1/Day)",
-					"entries": [
-						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
-					]
 				}
 			],
 			"action": [
@@ -11719,7 +11720,23 @@
 					]
 				}
 			],
-			"page": 203
+			"page": 203,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Chameleon Skin",
+					"entries": [
+						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Shed Skin (1/Day)",
+					"entries": [
+						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
+					]
+				}
+			]
 		},
 		{
 			"name": "Yuan-ti Mind Whisperer",
@@ -11792,18 +11809,6 @@
 					"entries": [
 						"When the yuan-ti reduces an enemy to 0 hit points, the yuan-ti gains 9 temporary hit points."
 					]
-				},
-				{
-					"name": "Variant: Chameleon Skin",
-					"entries": [
-						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
-					]
-				},
-				{
-					"name": "Variant: Shed Skin (1/Day)",
-					"entries": [
-						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
-					]
 				}
 			],
 			"action": [
@@ -11873,6 +11878,22 @@
 						}
 					}
 				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Chameleon Skin",
+					"entries": [
+						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Shed Skin (1/Day)",
+					"entries": [
+						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
+					]
+				}
 			]
 		},
 		{
@@ -11939,18 +11960,6 @@
 					"name": "Magic Resistance",
 					"entries": [
 						"The yuan-ti has advantage on saving throws against spells and other magical effects."
-					]
-				},
-				{
-					"name": "Variant: Chameleon Skin",
-					"entries": [
-						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
-					]
-				},
-				{
-					"name": "Variant: Shed Skin (1/Day)",
-					"entries": [
-						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
 					]
 				}
 			],
@@ -12027,6 +12036,22 @@
 						}
 					}
 				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Chameleon Skin",
+					"entries": [
+						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Shed Skin (1/Day)",
+					"entries": [
+						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
+					]
+				}
 			]
 		},
 		{
@@ -12093,18 +12118,6 @@
 					"name": "Poison's Disciple (2/Day)",
 					"entries": [
 						"The first time the yuan-ti hits with a melee attack on its turn, it can deal an extra 16 ({@dice 3d10}) poison damage to the target."
-					]
-				},
-				{
-					"name": "Variant: Chameleon Skin",
-					"entries": [
-						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
-					]
-				},
-				{
-					"name": "Variant: Shed Skin (1/Day)",
-					"entries": [
-						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
 					]
 				}
 			],
@@ -12174,6 +12187,22 @@
 							]
 						}
 					}
+				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Chameleon Skin",
+					"entries": [
+						"The yuan-ti has advantage on Dexterity (Stealth) checks made to hide."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Shed Skin (1/Day)",
+					"entries": [
+						"The yuan-ti can shed its skin as a bonus action to free itself from a grapple, shackles, or other restraints. If the yuan-ti spends 1 minute eating its shed skin, it regains hit points equal to half its hit point maximum."
+					]
 				}
 			]
 		}

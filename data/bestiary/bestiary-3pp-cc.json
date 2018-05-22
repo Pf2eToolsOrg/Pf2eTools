@@ -505,7 +505,6 @@
 			],
 			"passive": 11,
 			"cr": "1",
-			"trait": [],
 			"action": [
 				{
 					"name": "Bite",
@@ -1213,7 +1212,6 @@
 			"passive": 11,
 			"languages": "any languages it knew in life",
 			"cr": "2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -1434,7 +1432,6 @@
 			"passive": 10,
 			"languages": "Common, Infernal",
 			"cr": "1/2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Longsword",
@@ -2859,7 +2856,6 @@
 			"passive": 10,
 			"languages": "understands the languages of its creator but can't speak",
 			"cr": "1/4",
-			"trait": [],
 			"action": [
 				{
 					"name": "Pincers",
@@ -4161,7 +4157,6 @@
 			"passive": 11,
 			"languages": "Abyssal",
 			"cr": "1/4",
-			"trait": [],
 			"action": [
 				{
 					"name": "Bite",
@@ -4502,7 +4497,6 @@
 			"passive": 10,
 			"languages": "Abyssal",
 			"cr": "1/2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -5913,7 +5907,6 @@
 			"passive": 12,
 			"languages": "Abyssal, telepathy 120 ft.",
 			"cr": "5",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -6649,7 +6642,6 @@
 			"passive": 19,
 			"languages": "Common, Draconic",
 			"cr": "2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Bite",
@@ -7102,7 +7094,6 @@
 			"passive": 13,
 			"languages": "Common, Draconic",
 			"cr": "2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Bite",
@@ -8027,7 +8018,6 @@
 			"passive": 14,
 			"languages": "Common, Draconic",
 			"cr": "2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Bite",
@@ -8510,7 +8500,6 @@
 			"passive": 16,
 			"languages": "Common, Draconic",
 			"cr": "3",
-			"trait": [],
 			"action": [
 				{
 					"name": "Bite",
@@ -9033,7 +9022,6 @@
 			"passive": 8,
 			"languages": "any languages of its creator (usually Celestial)",
 			"cr": "7",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -10542,7 +10530,6 @@
 			"passive": 15,
 			"languages": "Common, Giant, Sylvan",
 			"cr": "5",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -12163,7 +12150,6 @@
 			"passive": 11,
 			"languages": "understands Aquan but can't speak",
 			"cr": "3",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -17546,7 +17532,6 @@
 			"passive": 12,
 			"languages": "any languages it knew in life",
 			"cr": "4",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -22045,7 +22030,6 @@
 					]
 				}
 			],
-			"action": [],
 			"page": 223,
 			"familiar": true
 		},
@@ -22891,7 +22875,6 @@
 			"passive": 14,
 			"languages": "understands all languages of its creator but can't speak",
 			"cr": "1/4",
-			"trait": [],
 			"action": [
 				{
 					"name": "Bite",
@@ -23094,7 +23077,6 @@
 					]
 				}
 			],
-			"action": [],
 			"page": 228,
 			"familiar": true
 		},
@@ -24213,34 +24195,37 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "2",
-			"trait": [],
-			"action": [
+			"page": 233,
+			"variant": [
 				{
+					"type": "variant",
 					"name": "Multiattack (Variant A)",
 					"entries": [
 						"The skeleton makes two melee attacks one with its bite and one with its claws."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Bite (Variant A)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d6+5}) piercing damage."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Claws (Variant A)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d4+5}) slashing damage."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Bite (Variant B)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 18 ({@dice 3d8+5}) piercing damage."
 					]
 				}
-			],
-			"page": 233
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -24344,37 +24329,43 @@
 			],
 			"action": [
 				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
+					]
+				}
+			],
+			"page": 234,
+			"variant": [
+				{
+					"type": "variant",
 					"name": "Multiattack (Variant A, B)",
 					"entries": [
 						"The skeleton makes two melee attacks; one with its bite and one with any other melee weapon."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Multiattack (Variant B)",
 					"entries": [
 						"The skeleton makes two melee attacks; one with its claws and one with any other melee weapon, or two with its claws."
 					]
 				},
 				{
-					"name": "Bite",
-					"entries": [
-						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
-					]
-				},
-				{
+					"type": "variant",
 					"name": "Claws (Variant A, C)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) slashing damage."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Shortsword (Variant B)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
 					]
 				}
-			],
-			"page": 234
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -24413,40 +24404,45 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "2",
-			"trait": [],
 			"action": [
 				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) piercing damage."
+					]
+				}
+			],
+			"page": 234,
+			"variant": [
+				{
+					"type": "variant",
 					"name": "Multiattack (Variant A)",
 					"entries": [
 						"The skeleton makes three attacks; one with its bite, and two with its claws."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Multiattack (Variant B)",
 					"entries": [
 						"The skeleton makes two attacks; one with its bite and one with any other melee weapon."
 					]
 				},
 				{
-					"name": "Bite",
-					"entries": [
-						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) piercing damage."
-					]
-				},
-				{
+					"type": "variant",
 					"name": "Claws (Variant A)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Maul (Variant B)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d6+4}) bludgeoning damage."
 					]
 				}
-			],
-			"page": 234
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -24550,18 +24546,6 @@
 					"entries": [
 						"This creature can be created using a create undead spell. For each creature, an appropriate corpse or corpses is required rather than the type suggested in the spell's description."
 					]
-				},
-				{
-					"name": "Charge (Variant A)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 ({@dice 2d6}) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
-					]
-				},
-				{
-					"name": "Trampling Charge (Variant B)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
-					]
 				}
 			],
 			"action": [
@@ -24578,7 +24562,23 @@
 					]
 				}
 			],
-			"page": 235
+			"page": 235,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Charge (Variant A)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 ({@dice 2d6}) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Trampling Charge (Variant B)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -24616,20 +24616,6 @@
 			"senses": "darkvision 60 ft.",
 			"passive": 9,
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Charge (Variant A)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 10 ({@dice 3d6}) damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
-					]
-				},
-				{
-					"name": "Trampling Charge (Variant B)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
-					]
-				}
-			],
 			"action": [
 				{
 					"name": "Gore",
@@ -24644,7 +24630,23 @@
 					]
 				}
 			],
-			"page": 235
+			"page": 235,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Charge (Variant A)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 10 ({@dice 3d6}) damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Trampling Charge (Variant B)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -24697,15 +24699,18 @@
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
-				},
+				}
+			],
+			"page": 236,
+			"variant": [
 				{
+					"type": "variant",
 					"name": "Sting (Variant)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
 					]
 				}
-			],
-			"page": 236
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -24807,7 +24812,6 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "1/2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Necromancer Friendly",
@@ -24869,7 +24873,6 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "4",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -24937,7 +24940,6 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "7",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -25026,20 +25028,7 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "11",
-			"trait": [],
 			"action": [
-				{
-					"name": "Multiattack (Variant A)",
-					"entries": [
-						"The skeleton makes three attacks: one with its bite and two with its claws."
-					]
-				},
-				{
-					"name": "Multiattack (Variant B)",
-					"entries": [
-						"The skeleton makes three attacks: one with its bite and two with its claws. It can make one tail attack in place of its two claw attacks."
-					]
-				},
 				{
 					"name": "Bite",
 					"entries": [
@@ -25050,18 +25039,6 @@
 					"name": "Claws",
 					"entries": [
 						"Melee Weapon Attack: {@hit +12} to hit, reach 10 ft., one target. Hit: 11 ({@dice 2d4+8}) slashing damage."
-					]
-				},
-				{
-					"name": "Tail (Variant A)",
-					"entries": [
-						"Melee Weapon Attack: {@hit +12} to hit, reach 20 ft., one target. Hit: 13 ({@dice 2d6+8}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Tail (Variant B)",
-					"entries": [
-						"Melee Weapon Attack: {@hit +12} to hit, reach 15 ft., one target. Hit: 22 ({@dice 3d10+8}) bludgeoning damage."
 					]
 				}
 			],
@@ -25080,7 +25057,37 @@
 					]
 				}
 			],
-			"page": 237
+			"page": 237,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Multiattack (Variant A)",
+					"entries": [
+						"The skeleton makes three attacks: one with its bite and two with its claws."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Multiattack (Variant B)",
+					"entries": [
+						"The skeleton makes three attacks: one with its bite and two with its claws. It can make one tail attack in place of its two claw attacks."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Tail (Variant A)",
+					"entries": [
+						"Melee Weapon Attack: {@hit +12} to hit, reach 20 ft., one target. Hit: 13 ({@dice 2d6+8}) bludgeoning damage."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Tail (Variant B)",
+					"entries": [
+						"Melee Weapon Attack: {@hit +12} to hit, reach 15 ft., one target. Hit: 22 ({@dice 3d10+8}) bludgeoning damage."
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -25180,7 +25187,6 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "2",
-			"trait": [],
 			"action": [
 				{
 					"name": "Greatclub",
@@ -25234,7 +25240,6 @@
 			"passive": 9,
 			"languages": "understands all languages it knew in life, but can't speak",
 			"cr": "5",
-			"trait": [],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -25488,21 +25493,25 @@
 					"entries": [
 						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 14 ({@dice 2d8+5}) piercing damage."
 					]
-				},
+				}
+			],
+			"page": 239,
+			"variant": [
 				{
+					"type": "variant",
 					"name": "Claws (Variant A)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 12 ({@dice 2d6+5}) slashing damage."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Tentacle (Variant B)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +7} to hit, reach 10 ft., one target. Hit: 10 ({@dice 2d4+5}) bludgeoning damage."
 					]
 				}
-			],
-			"page": 239
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -25614,21 +25623,25 @@
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) piercing damage."
 					]
-				},
+				}
+			],
+			"page": 240,
+			"variant": [
 				{
+					"type": "variant",
 					"name": "Claws (Variant A)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) slashing damage."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Slam (Variant B)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage."
 					]
 				}
-			],
-			"page": 240
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -25673,31 +25686,36 @@
 			],
 			"action": [
 				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) piercing damage."
+					]
+				}
+			],
+			"page": 240,
+			"variant": [
+				{
+					"type": "variant",
 					"name": "Multiattack (Variant A)",
 					"entries": [
 						"The zombie makes two attacks with its claws."
 					]
 				},
 				{
-					"name": "Bite",
-					"entries": [
-						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 13 ({@dice 2d8+4}) piercing damage."
-					]
-				},
-				{
+					"type": "variant",
 					"name": "Claws (Variant A)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) slashing damage."
 					]
 				},
 				{
+					"type": "variant",
 					"name": "Maul (Variant B)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +6} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d6+4}) bludgeoning damage."
 					]
 				}
-			],
-			"page": 240
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -25799,18 +25817,6 @@
 					"entries": [
 						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the spawn drops to 1 hit point instead. 240"
 					]
-				},
-				{
-					"name": "Charge (Variant A)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 ({@dice 2d6}) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
-					]
-				},
-				{
-					"name": "Trampling Charge (Variant B)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
-					]
 				}
 			],
 			"action": [
@@ -25827,7 +25833,23 @@
 					]
 				}
 			],
-			"page": 240
+			"page": 240,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Charge (Variant A)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 7 ({@dice 2d6}) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Trampling Charge (Variant B)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -25867,18 +25889,6 @@
 					"entries": [
 						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the spawn drops to 1 hit point instead."
 					]
-				},
-				{
-					"name": "Charge (Variant A)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 10 ({@dice 3d6}) damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
-					]
-				},
-				{
-					"name": "Trampling Charge (Variant B)",
-					"entries": [
-						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
-					]
 				}
 			],
 			"action": [
@@ -25895,7 +25905,23 @@
 					]
 				}
 			],
-			"page": 240
+			"page": 240,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Charge (Variant A)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 10 ({@dice 3d6}) damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Trampling Charge (Variant B)",
+					"entries": [
+						"If the skeleton moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the skeleton can make one stomp attack against it as a bonus action."
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -25951,15 +25977,18 @@
 					"entries": [
 						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
-				},
+				}
+			],
+			"page": 241,
+			"variant": [
 				{
+					"type": "variant",
 					"name": "Sting (Variant)",
 					"entries": [
 						"Melee Weapon Attack: {@hit +3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
 					]
 				}
-			],
-			"page": 241
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -26320,18 +26349,6 @@
 					]
 				},
 				{
-					"name": "Tail (Variant A)",
-					"entries": [
-						"Melee Weapon Attack: {@hit +14} to hit, reach 20 ft., one target. Hit: 19 ({@dice 2d8+10}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Tail (Variant B)",
-					"entries": [
-						"Melee Weapon Attack: {@hit +14} to hit, reach 15 ft., one target. Hit: 29 ({@dice 3d12+10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Strength saving throw or be pushed up to 10 feet away from the zombie and knocked prone."
-					]
-				},
-				{
 					"name": "Breath of Decay (Recharge 5\u20146)",
 					"entries": [
 						"The zombie exhales what is left of its breath weapon in a 30 foot cone. Creatures in the area must succeed on a DC 17 Constitution saving throw or take 35 ({@dice 10d6}) necrotic damage."
@@ -26347,7 +26364,23 @@
 					]
 				}
 			],
-			"page": 243
+			"page": 243,
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Tail (Variant A)",
+					"entries": [
+						"Melee Weapon Attack: {@hit +14} to hit, reach 20 ft., one target. Hit: 19 ({@dice 2d8+10}) bludgeoning damage."
+					]
+				},
+				{
+					"type": "variant",
+					"name": "Tail (Variant B)",
+					"entries": [
+						"Melee Weapon Attack: {@hit +14} to hit, reach 15 ft., one target. Hit: 29 ({@dice 3d12+10}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Strength saving throw or be pushed up to 10 feet away from the zombie and knocked prone."
+					]
+				}
+			]
 		},
 		{
 			"source": "CC 3pp",
@@ -27996,7 +28029,6 @@
 			"senses": "blindsight 60 ft.",
 			"passive": 9,
 			"cr": "1/4",
-			"trait": [],
 			"action": [
 				{
 					"name": "Claw",
