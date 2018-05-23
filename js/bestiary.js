@@ -140,22 +140,7 @@ const alignmentFilter = new Filter({
 });
 const environmentFilter = new Filter({
 	header: "Environment",
-	items: [
-		"underground",
-		"arctic",
-		"cave",
-		"coast",
-		"desert",
-		"dungeon",
-		"forest",
-		"grassland",
-		"mountain",
-		"planar",
-		"ruins",
-		"swamp",
-		"aquatic",
-		"urban"
-	],
+	items: ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"],
 	displayFn: StrUtil.uppercaseFirst
 });
 const DMG_TYPES = [
