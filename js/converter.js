@@ -833,7 +833,7 @@ function loadparser (data) {
 			prevLine = curLine;
 			curLine = toConvert[i].trim();
 
-			if (curLine === "") {
+			if (curLine === "" || curLine.toLowerCase() === "\\pagebreak") {
 				prevBlank = true;
 				continue;
 			} else nextPrevBlank = false;
