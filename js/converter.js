@@ -283,10 +283,12 @@ function loadparser (data) {
 		// split HP into average and formula
 		const m = /^(\d+) \((.*?)\)$/.exec(rawHp);
 		if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
-		stats.hp = {
-			average: Number(m[1]),
-			formula: m[2]
-		};
+		else {
+			stats.hp = {
+				average: Number(m[1]),
+				formula: m[2]
+			};
+		}
 	}
 
 	function setCleanSpeed (stats, line) {
