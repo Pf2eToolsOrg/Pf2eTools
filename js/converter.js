@@ -329,7 +329,7 @@ function loadparser (data) {
 		let byHand = false;
 
 		splitSpeed(line.toLowerCase()).map(it => it.trim()).forEach(s => {
-			const m = /^(\w+?\s+)?(\d+) ft\.( .*)?$/.exec(s);
+			const m = /^(\w+?\s+)?(\d+)\s*ft\.( .*)?$/.exec(s);
 			if (!m) {
 				byHand = true;
 				return;
@@ -756,6 +756,7 @@ function loadparser (data) {
 		}
 
 		let prevLine = null;
+		let curLineRaw = null;
 		let curLine = null;
 		let prevBlank = true;
 		let nextPrevBlank = true;
@@ -831,6 +832,7 @@ function loadparser (data) {
 		let i = 0;
 		for (; i < toConvert.length; i++) {
 			prevLine = curLine;
+			curLineRaw = toConvert[i].trim();
 			curLine = toConvert[i].trim();
 
 			if (curLine === "" || curLine.toLowerCase() === "\\pagebreak") {
@@ -839,7 +841,10 @@ function loadparser (data) {
 			} else nextPrevBlank = false;
 			curLine = stripQuote(curLine).trim();
 			if (curLine === "") continue;
-			else if (curLine === "___" && prevBlank) {
+			else if (
+				(curLine === "___" && prevBlank) // handle nicely separated blocks
+				|| curLineRaw === "___" // lines multiple stacked blocks
+			) {
 				if (stats !== null) hasMultipleBlocks = true;
 				doOutputStatblock();
 				prevBlank = nextPrevBlank;
