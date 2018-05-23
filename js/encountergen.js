@@ -3,7 +3,7 @@
 const JSON_URL = "data/encounters.json";
 
 let encounterList;
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 
 function makeContentsBlock (i, loc) {
 	let out =
@@ -61,6 +61,8 @@ function showHideList (ele) {
 }
 
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	const [iLoad, jLoad] = id.split(",").map(n => Number(n));
 	const location = encounterList[iLoad];
 	const table = location.tables[jLoad].table;

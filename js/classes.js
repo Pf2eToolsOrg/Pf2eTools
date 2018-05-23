@@ -40,7 +40,7 @@ let subclassComparisonView;
 
 const jsonURL = "data/classes.json";
 
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
@@ -241,6 +241,8 @@ function addSubclassData (data) {
 
 let curClass;
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	$("#pagecontent").html(tableDefault);
 	$("#statsprof").html(statsProfDefault);
 	$("#classtable").html(classTableDefault);

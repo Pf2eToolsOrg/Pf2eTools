@@ -1,6 +1,6 @@
 "use strict";
 const JSON_URL = "data/backgrounds.json";
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
@@ -113,6 +113,8 @@ function getSublistItem (bg, pinId) {
 }
 
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	const $content = $("#pagecontent").empty();
 	const curbg = bgList[id];
 	const renderStack = [];

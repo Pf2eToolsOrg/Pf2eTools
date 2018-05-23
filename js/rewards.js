@@ -125,6 +125,7 @@ function getSublistItem (reward, pinId) {
 }
 
 function loadhash (id) {
+	EntryRenderer.getDefaultRenderer().setFirstSection(true);
 	const $content = $("#pagecontent").empty();
 	const reward = rewardList[id];
 

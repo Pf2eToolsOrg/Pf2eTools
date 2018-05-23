@@ -180,7 +180,8 @@ function getSublistItem (p, pinId) {
 
 let renderer;
 function loadhash (jsonIndex) {
-	if (!renderer) renderer = new EntryRenderer();
+	if (!renderer) renderer = EntryRenderer.getDefaultRenderer();
+	renderer.setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
 
 	const psi = psionicList[jsonIndex];

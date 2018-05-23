@@ -87,10 +87,12 @@ function handleFilterChange () {
 	FilterBox.nextIfHidden(cultsAndBoonsList);
 }
 
+const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	const it = cultsAndBoonsList[id];
 
-	const renderer = new EntryRenderer();
 	const renderStack = [];
 	const sourceFull = Parser.sourceJsonToFull(it.source);
 

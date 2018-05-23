@@ -1,6 +1,6 @@
 "use strict";
 const JSON_URL = "data/conditions.json";
-const entryRenderer = new EntryRenderer();
+const entryRenderer = EntryRenderer.getDefaultRenderer();
 let tableDefault;
 let conditionList;
 
@@ -57,6 +57,7 @@ function getSublistItem (cond, pinId) {
 }
 
 function loadhash (id) {
+	entryRenderer.setFirstSection(true);
 	$("#pagecontent").html(tableDefault);
 	const curcondition = conditionList[id];
 	$("th.name").html(curcondition.name);

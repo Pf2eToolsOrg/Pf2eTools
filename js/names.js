@@ -3,7 +3,7 @@
 const JSON_URL = "data/names.json";
 
 let nameList;
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 
 function makeContentsBlock (i, loc) {
 	let out =
@@ -60,6 +60,8 @@ function showHideList (ele) {
 }
 
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	const [iLoad, jLoad] = id.split(",").map(n => Number(n));
 	const race = nameList[iLoad];
 	const table = race.tables[jLoad].table;

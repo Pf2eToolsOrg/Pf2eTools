@@ -86,8 +86,10 @@ function getSublistItem (obj, pinId) {
 	`;
 }
 
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (jsonIndex) {
+	renderer.setFirstSection(true);
+
 	const obj = objectsList[jsonIndex];
 
 	const renderStack = [];

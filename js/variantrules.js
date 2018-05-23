@@ -8,7 +8,7 @@ window.onload = function load () {
 
 let tableDefault;
 
-const entryRenderer = new EntryRenderer();
+const entryRenderer = EntryRenderer.getDefaultRenderer();
 
 let list;
 const sourceFilter = getSourceFilter();
@@ -95,6 +95,8 @@ function handleFilterChange () {
 }
 
 function loadhash (id) {
+	entryRenderer.setFirstSection(true);
+
 	// reset details pane to initial HTML
 	$("#pagecontent").html(tableDefault);
 

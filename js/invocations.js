@@ -3,8 +3,6 @@
 const JSON_URL = "data/invocations.json";
 
 const ID_INVOCATION_LIST = "invocationsList";
-const ID_STATS_PREREQUISITES = "prerequisites";
-const ID_TEXT = "text";
 
 const JSON_ITEM_NAME = "name";
 const JSON_ITEM_SOURCE = "source";
@@ -215,6 +213,7 @@ function getSublistItem (inv, pinId) {
 }
 
 function loadhash (jsonIndex) {
+	EntryRenderer.getDefaultRenderer().setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
 	const inv = invoList[jsonIndex];
 	$content.append(`

@@ -219,8 +219,9 @@ function getSublistItem (race, pinId) {
 	`;
 }
 
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (id) {
+	renderer.setFirstSection(true);
 	const $pgContent = $("#pagecontent").empty();
 	$pgContent.find("td").show();
 

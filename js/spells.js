@@ -588,8 +588,9 @@ function sortSpells (a, b, o) {
 	}
 }
 
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (id) {
+	renderer.setFirstSection(true);
 	const $pageContent = $("#pagecontent").empty();
 	const spell = spellList[id];
 	$pageContent.append(EntryRenderer.spell.getRenderedString(spell, renderer));

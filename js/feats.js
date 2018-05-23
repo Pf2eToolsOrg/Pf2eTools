@@ -149,8 +149,10 @@ function getSublistItem (feat, pinId) {
 	`;
 }
 
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	const $content = $("#pagecontent").empty();
 
 	const feat = featList[id];

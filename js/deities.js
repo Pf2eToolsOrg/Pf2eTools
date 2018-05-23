@@ -192,8 +192,9 @@ function getSublistItem (g, pinId) {
 	`;
 }
 
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (jsonIndex) {
+	renderer.setFirstSection(true);
 	const deity = deitiesList[jsonIndex];
 
 	const renderStack = [];

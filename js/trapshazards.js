@@ -87,8 +87,9 @@ function getSublistItem (it, pinId) {
 	`;
 }
 
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (jsonIndex) {
+	renderer.setFirstSection(true);
 	const it = trapsAndHazardsList[jsonIndex];
 
 	const renderStack = [];

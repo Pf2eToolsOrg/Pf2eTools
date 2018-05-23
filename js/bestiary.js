@@ -4,7 +4,7 @@ const JSON_DIR = "data/bestiary/";
 const META_URL = "meta.json";
 const FLUFF_INDEX = "fluff-index.json";
 const JSON_LIST_NAME = "monster";
-const renderer = new EntryRenderer();
+const renderer = EntryRenderer.getDefaultRenderer();
 
 window.PROF_MODE_BONUS = "bonus";
 window.PROF_MODE_DICE = "dice";
@@ -481,6 +481,8 @@ function sortMonsters (a, b, o) {
 let profBtn = null;
 // load selected monster stat block
 function loadhash (id) {
+	renderer.setFirstSection(true);
+
 	const $content = $("#pagecontent").empty();
 	const $wrpBtnProf = $(`#wrp-profbonusdice`);
 
