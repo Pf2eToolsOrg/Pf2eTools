@@ -410,10 +410,10 @@ function loadparser (data) {
 	}
 
 	function setCleanSenses (stats, line) {
-		stats.senses = line.split("Senses")[1].split("passive Perception")[0].trim();
-		if (!stats.senses.indexOf("passive Perception")) stats.senses = "";
+		stats.senses = line.toLowerCase().split("senses")[1].split("passive perception")[0].trim();
+		if (!stats.senses.indexOf("passive perception")) stats.senses = "";
 		if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
-		stats.passive = tryConvertNumber(line.split("passive Perception")[1].trim());
+		stats.passive = tryConvertNumber(line.toLowerCase().split("passive perception")[1].trim());
 	}
 
 	function setCleanLanguages (stats, line) {
