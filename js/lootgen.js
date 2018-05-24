@@ -99,7 +99,11 @@ function rollLoot () {
 					let curmagicitem = null;
 					const itemroll = randomNumber(1, 100);
 					for (let n = 0; n < magicitemstable.table.length; n++) if (itemroll >= magicitemstable.table[n].min && itemroll <= magicitemstable.table[n].max) curmagicitem = magicitemstable.table[n];
-					magicitems.push(parseLink(curmagicitem.table ? curmagicitem.table[randomNumber(0, curmagicitem.table.length - 1)] : curmagicitem.item));
+					const nestedRoll = curmagicitem.table ? randomNumber(0, curmagicitem.table.length - 1) : null;
+					magicitems.push({
+						result: parseLink(curmagicitem.table ? curmagicitem.table[nestedRoll] : curmagicitem.item),
+						roll: itemroll
+					});
 				}
 				$("#lootoutput ul:eq(0)").append("<li>" + (magicitems.length > 1 ? "x" + magicitems.length + " " : "") + "Magic Item" + (roll > 1 ? "s" : "") + ` (<a onclick="displayTable(${tablearrayentry});">Table ${curtype}</a>):<ul>${sortArrayAndCountDupes(magicitems)}</ul></li>`);
 			}
@@ -111,18 +115,24 @@ function rollLoot () {
 }
 
 function sortArrayAndCountDupes (arr) {
+	let rolls = [];
+	function getRollPart () {
+		return rolls.length ? ` <span class="text-muted">(Rolled ${rolls.join(", ")})</span>` : "";
+	}
+
 	arr.sort();
 	let current = null;
 	let cnt = 0;
 	let result = "";
-	for (var i = 0; i < arr.length; i++) {
-		if (arr[i] !== current) {
-			if (cnt > 0) result += "<li>" + (cnt > 1 ? "x" + cnt + " " : "") + current + "</li>";
-			current = arr[i];
+	arr.forEach(r => {
+		if ((r.result || r) !== current) {
+			if (cnt > 0) result += `<li>${cnt > 1 ? `x${cnt} ` : ""}${current}${getRollPart()}</li>`;
+			current = (r.result || r);
 			cnt = 1;
+			rolls = r.roll != null ? [r.roll] : [];
 		} else cnt++;
-	}
-	if (cnt > 0) result += "<li>" + (cnt > 1 ? "x" + cnt + " " : "") + current + "</li>";
+	});
+	if (cnt > 0) result += `<li>${cnt > 1 ? `x${cnt} ` : ""}${current}${getRollPart()}</li>`;
 	return result;
 }
 
