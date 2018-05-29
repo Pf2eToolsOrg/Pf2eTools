@@ -179,9 +179,11 @@ function calculatecr () {
 	$("#monsterfeatures input:checked").each(function () {
 		let trait = 0;
 		if ($(this).siblings("input[type=number]").length) trait = $(this).siblings("input[type=number]").val();
+		/* eslint-disable */
 		if ($(this).attr("data-hp") !== "") hp += Number(eval($(this).attr("data-hp")));
 		if ($(this).attr("data-ac") !== "") ac += Number(eval($(this).attr("data-ac")));
 		if ($(this).attr("data-dpr") !== "") dpr += Number(eval($(this).attr("data-dpr")));
+		/* eslint-enable */
 		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += Number($(this).attr("data-attackbonus"));
 	});
 
