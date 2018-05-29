@@ -277,7 +277,7 @@ function EntryRenderer () {
 					break;
 				case "itemSpell":
 					renderPrefix();
-					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p>${entry.name}</span> `, suffix: "</p>"});
+					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p>${entry.name} `, suffix: "</p>"});
 					renderSuffix();
 					break;
 
@@ -1588,7 +1588,7 @@ EntryRenderer.monster = {
 					${mon.conditionImmune ? `<p><b>Condition Imm.:</b> ${Parser.monCondImmToFull(mon.conditionImmune)}</p>` : ""}
 				</div>
 			</td></tr>
-			${mon.trait ? `<tr><td colspan="6"><div class="border"></div></td></tr>
+			${mon.trait || mon.spellcasting ? `<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr class="text compact"><td colspan="6">
 			${EntryRenderer.monster.getOrderedTraits(mon, renderer).map(it => it.rendered || renderer.renderEntry(it, 3)).join("")}
 			</td></tr>` : ""}
