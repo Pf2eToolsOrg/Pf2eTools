@@ -179,9 +179,9 @@ function calculatecr () {
 	$("#monsterfeatures input:checked").each(function () {
 		let trait = 0;
 		if ($(this).siblings("input[type=number]").length) trait = $(this).siblings("input[type=number]").val();
-		if ($(this).attr("data-hp") !== "") hp += Number($(this).attr("data-hp"));
-		if ($(this).attr("data-ac") !== "") ac += Number($(this).attr("data-ac"));
-		if ($(this).attr("data-dpr") !== "") dpr += Number($(this).attr("data-dpr"));
+		if ($(this).attr("data-hp") !== "") hp += Number(eval($(this).attr("data-hp")));
+		if ($(this).attr("data-ac") !== "") ac += Number(eval($(this).attr("data-ac")));
+		if ($(this).attr("data-dpr") !== "") dpr += Number(eval($(this).attr("data-dpr")));
 		if (!usesavedc && $(this).attr("data-attackbonus") !== "") attackbonus += Number($(this).attr("data-attackbonus"));
 	});
 
@@ -219,6 +219,8 @@ function calculatecr () {
 		}
 	}
 
+	if (offensiveCR === -1) offensiveCR = "0";
+	if (defensiveCR === -1) defensiveCR = "0";
 	let cr = ((fractionStrToDecimal(offensiveCR) + fractionStrToDecimal(defensiveCR)) / 2).toString();
 
 	if (cr === "0.5625") cr = "1/2";
