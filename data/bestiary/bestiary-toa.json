@@ -3054,6 +3054,285 @@
 				}
 			],
 			"page": 69
+		},
+		{
+			"name": "Valindra Shadowmantle",
+			"size": "M",
+			"type": "undead",
+			"source": "ToA",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": "17 (natural armor)",
+			"hp": {
+				"average": 135,
+				"formula": "18d8+54"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 16,
+			"con": 16,
+			"int": 20,
+			"wis": 14,
+			"cha": 16,
+			"save": {
+				"con": "+10",
+				"int": "+12",
+				"wis": "+9"
+			},
+			"skill": {
+				"arcana": "+18",
+				"history": "+12",
+				"insight": "+9",
+				"perception": "+9"
+			},
+			"resist": [
+				"cold",
+				"lightning",
+				"necrotic"
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"senses": "truesight 120 ft.",
+			"passive": 19,
+			"languages": "Common, Abyssal, Draconic, Dwarvish, Elvish, Infernal",
+			"cr": "21",
+			"page": 58,
+			"trait": [
+				{
+					"name": "Mask",
+					"entries": [
+						"As a bonus action, Valindra can mask her shriveled flesh and appear to be a living elf. This magical illusion lasts until she ends it as a bonus action or until she uses her Frightening Gaze legendary action. The effect also ends if Valindra drops to 30 hit points or fewer, or if dispel magic is cast on her."
+					]
+				},
+				{
+					"name": "Preparation",
+					"entries": [
+						"When preparing her spells, Valindra can swap out any spell on her list of prepared spells for another wizard spell of the same level."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Valindra fails a saving throw, she can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"entries": [
+						"If destroyed Valindra gains a new body in {@dice 1d10} days, regaining all her hit points and becoming active again. The new body appears within 5 feet of the phylactery."
+					]
+				},
+				{
+					"name": "Turn Resistance",
+					"entries": [
+						"Valindra has advantage on saving throws against any effect that turns undead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Paralyzing Touch",
+					"entries": [
+						"Melee Spell Attack: {@hit +12} to hit, reach 5 ft., one creature. Hit: 10 ({@dice 3d6}) cold damage. The target must succeed on a DC 18 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Cantrip",
+					"entries": [
+						"Valindra casts a cantrip."
+					]
+				},
+				{
+					"name": "Paralyzing Touch (Costs 2 Actions)",
+					"entries": [
+						"Valindra uses her Paralyzing Touch."
+					]
+				},
+				{
+					"name": "Frightening Gaze (Costs 2 Actions)",
+					"entries": [
+						"Valindra fixes her gaze on one creature she can see within 10 feet of her. The target must succeed on a DC 18 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the Valindra's gaze for the next 24 hours."
+					]
+				},
+				{
+					"name": "Disrupt Life (Costs 3 Actions)",
+					"entries": [
+						"Each non-undead creature within 20 feet of Valindra must make a DC 18 Constitution saving throw against this magic, taking 21 ({@dice 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"spellcasting": [
+				[
+					{
+						"name": "Spellcasting",
+						"headerEntries": [
+							"Valindra is an 18th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 20, {@hit +12} to hit with spell attacks). Valindra has the following wizard spells prepared:"
+						],
+						"spells": {
+							"0": {
+								"spells": [
+									"{@spell mage hand}",
+									"{@spell prestidigitation}",
+									"{@spell ray of frost}"
+								]
+							},
+							"1": {
+								"slots": 4,
+								"spells": [
+									"{@spell detect magic}",
+									"{@spell magic missile}",
+									"{@spell shield}",
+									"{@spell thunderwave}"
+								]
+							},
+							"2": {
+								"slots": 3,
+								"spells": [
+									"{@spell detect thoughts}",
+									"{@spell invisibility}",
+									"{@spell Melf 's acid arrow}",
+									"{@spell mirror image}"
+								]
+							},
+							"3": {
+								"slots": 3,
+								"spells": [
+									"{@spell animate dead}",
+									"{@spell counterspell}",
+									"{@spell dispel magic}",
+									"{@spell fireball}"
+								]
+							},
+							"4": {
+								"slots": 3,
+								"spells": [
+									"{@spell blight}",
+									"{@spell dimension door}"
+								]
+							},
+							"5": {
+								"slots": 3,
+								"spells": [
+									"{@spell cloudkill}",
+									"{@spell scrying}"
+								]
+							},
+							"6": {
+								"slots": 1,
+								"spells": [
+									"{@spell disintegrate}",
+									"{@spell globe of invulnerability}"
+								]
+							},
+							"7": {
+								"slots": 1,
+								"spells": [
+									"{@spell finger of death}",
+									"{@spell plane shift}"
+								]
+							},
+							"8": {
+								"slots": 1,
+								"spells": [
+									"{@spell dominate monster}",
+									"{@spell power word stun}"
+								]
+							},
+							"9": {
+								"slots": 1,
+								"spells": [
+									"{@spell power word kill}"
+								]
+							}
+						}
+					}
+				]
+			],
+			"isNamedCreature": true
+		},
+		{
+			"name": "Hew Hackinstone",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"source": "ToA",
+			"alignment": [
+				"C",
+				"N"
+			],
+			"ac": "13 (hide armor)",
+			"hp": {
+				"average": 67,
+				"formula": "9d8+27"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 12,
+			"con": 17,
+			"int": 9,
+			"wis": 11,
+			"cha": 9,
+			"skill": {
+				"survival": "+4"
+			},
+			"resist": [
+				"poison"
+			],
+			"senses": "Darkvision 60 ft.",
+			"passive": 10,
+			"languages": "any one language (usually Common)",
+			"cr": "2",
+			"page": 33,
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"entries": [
+						"Hew has resistance to poison damage and advantage on saving throws against being poisoned."
+					]
+				},
+				{
+					"name": "Reckless",
+					"entries": [
+						"At the start of his turn, Hew can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against him have advantage until the start of his next turn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Battleaxe",
+					"entries": [
+						"Melee Weapon Attack: {@hit +5} to hit, reach 5 ft., one target. Hit: 7 ({@dice{@dice  1d8 }+ 3}) slashing damage."
+					]
+				}
+			]
 		}
 	]
 }
