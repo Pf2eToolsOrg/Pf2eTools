@@ -2491,12 +2491,10 @@ DataUtil = {
 						DataUtil._loaded[toUrl] = data;
 						resolve(data, otherData);
 					} catch (e) {
-						reject();
+						reject(new Error('Could not parse JSON'));
 					}
 				};
-				request.onerror = function() {
-					reject();
-				};
+				request.onerror = () => reject(new Error('Error during JSON request'));
 				return request;
 			}
 		});
@@ -2731,18 +2729,19 @@ BrewUtil = {
 
 		const $btnLoadFromUrl = $(`<button class="btn btn-default btn-sm">Load from URL</button>`);
 		$btnLoadFromUrl.click(() => {
-			const url = window.prompt('Please enter the URL of the homebrew:');
-			if (!url) {
+			const enteredUrl = window.prompt('Please enter the URL of the homebrew:');
+			if (!enteredUrl) {
 				return;
 			}
 
+			let parsedUrl;
 			try {
-				new URL(url);
+				parsedUrl = new URL(enteredUrl);
 			} catch (e) {
 				window.alert('The entered URL does not seem to be valid.');
 				return;
 			}
-			BrewUtil.addBrewRemote(null, url).catch(() => {
+			BrewUtil.addBrewRemote(null, parsedUrl.href).catch(() => {
 				window.alert('Could not load homebrew from the given URL.')
 			});
 		});
