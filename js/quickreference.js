@@ -1,7 +1,7 @@
 "use strict";
 
 // NOTE: This file is generated with the Node script `generate-quick-reference.js`
-const JSON_URL = "data/quickreference.json";
+const JSON_URL = "data/bookref-quick.json";
 
 let reference;
 
@@ -17,7 +17,7 @@ window.onload = function load () {
 };
 
 function onJsonLoad (data) {
-	reference = data.reference;
+	reference = [data.reference["bookref-quick"]];
 
 	const allContents = $("ul.contents");
 	let tempString = "";
@@ -43,12 +43,12 @@ function onJsonLoad (data) {
 
 	BookUtil.baseDataUrl = "data/";
 	BookUtil.bookIndex = reference;
-	BookUtil.isQuickReference = true;
+	BookUtil.referenceId = "bookref-quick";
 
 	window.onhashchange = BookUtil.booksHashChange;
 	if (window.location.hash.length) {
 		BookUtil.booksHashChange();
 	} else {
-		window.location.hash = "#quickreference,0";
+		window.location.hash = "#bookref-quick,0";
 	}
 }

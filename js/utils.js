@@ -15,6 +15,8 @@ IS_ROLL20 = false;
 HOMEBREW_CLIENT_ID = `67e57877469da38a85a7`;
 HOMEBREW_CLIENT_SECRET = `c00dede21ca63a855abcd9a113415e840aca3f92`;
 
+IMGUR_CLIENT_ID = `abdea4de492d3b0`;
+
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_SUB_LIST_SEP = "~";
@@ -106,6 +108,7 @@ ABIL_CH_ANY = "Choose Any";
 
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
 EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
+DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
@@ -1606,6 +1609,25 @@ function showCopiedEffect ($ele) {
 	});
 }
 
+// TODO refactor other misc utils into this
+MiscUtil = {
+	clearSelection () {
+		if (document.getSelection) {
+			document.getSelection().removeAllRanges();
+			document.getSelection().addRange(document.createRange());
+		} else if (window.getSelection) {
+			if (window.getSelection().removeAllRanges) {
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(document.createRange());
+			} else if (window.getSelection().empty) {
+				window.getSelection().empty();
+			}
+		} else if (document.selection) {
+			document.selection.empty();
+		}
+	}
+};
+
 // LIST AND SEARCH =====================================================================================================
 ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
@@ -2522,10 +2544,30 @@ DataUtil = {
 	},
 
 	userDownload: function (filename, data) {
+		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		const $a = $(`<a href="data:text/json;charset=utf-8,${encodeURIComponent(data)}" download="${filename}.json" style="display: none;">DL</a>`);
 		$(`body`).append($a);
 		$a[0].click();
 		$a.remove();
+	},
+
+	userUpload (fnCallback) {
+		function loadSaved (event) {
+			const input = event.target;
+
+			const reader = new FileReader();
+			reader.onload = () => {
+				const text = reader.result;
+				const json = JSON.parse(text);
+				fnCallback(json);
+			};
+			reader.readAsText(input.files[0]);
+		}
+
+		const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
+			loadSaved(evt);
+		}).appendTo($(`body`));
+		$iptAdd.click();
 	}
 };
 
@@ -2733,9 +2775,7 @@ BrewUtil = {
 		const $btnLoadFromUrl = $(`<button class="btn btn-default btn-sm">Load from URL</button>`);
 		$btnLoadFromUrl.click(() => {
 			const enteredUrl = window.prompt('Please enter the URL of the homebrew:');
-			if (!enteredUrl) {
-				return;
-			}
+			if (!enteredUrl) return;
 
 			let parsedUrl;
 			try {
@@ -2829,11 +2869,11 @@ BrewUtil = {
 		});
 		$window.append(
 			$(`<div class="text-align-center"/>`)
+				.append($btnGet)
+				.append(" ")
 				.append($(`<label class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
 				.append(" ")
 				.append($btnLoadFromUrl)
-				.append(" ")
-				.append($btnGet)
 				.append(" ")
 				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Browse Repository</button></a>`)
 		);
@@ -3345,6 +3385,21 @@ BrewUtil = {
 	sourceJsonToAbv (source) {
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
+	},
+
+	/**
+	 * Get data in a format similar to the main search index
+	 */
+	getSearchIndex () {
+		BrewUtil._buildSourceCache();
+		const indexer = new Omnidexer(Omnisearch.highestId + 1);
+
+		if (BrewUtil.homebrew) {
+			Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
+			Omnidexer.TO_INDEX.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
+		}
+
+		return indexer.getIndex();
 	}
 };
 
