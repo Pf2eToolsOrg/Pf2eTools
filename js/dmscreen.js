@@ -1,6 +1,4 @@
 "use strict";
-// TODO have the roller section be placeable in the grid as a special tile
-// TODO have custom tiles for e.g. plaintext notes?
 
 const UP = "UP";
 const RIGHT = "RIGHT";
@@ -575,7 +573,7 @@ class Panel {
 		this.height = height;
 		this.isDirty = true;
 		this.isContentDirty = false;
-		this.isLocked = false;
+		this.isLocked = false; // unused
 		this.type = 0;
 		this.contentMeta = null; // info used during saved state re-load
 		this.isMousedown = false;
@@ -1390,7 +1388,6 @@ class JoystickMenu {
 				if (numPanelsCovered === 0) return;
 				const isGrowth = ~Math.sign(numPanelsCovered);
 				if (isGrowth) {
-					// TODO flare locked
 					switch (dir) {
 						case UP:
 							if (!this.panel.hasSpaceTop()) return;
