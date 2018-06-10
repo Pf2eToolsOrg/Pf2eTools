@@ -2949,15 +2949,15 @@ EntryRenderer.dice = {
 			StorageUtil.set(ROLLER_MACRO_STORAGE, EntryRenderer.dice.storage);
 		}
 
-		if (com === "/help") EntryRenderer.dice._showMessage(`
-			Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
-			Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
-			Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
-			Use <span class="out-roll-item-code">#myName</span> to roll a macro.
-			`,
-			EntryRenderer.dice.SYSTEM_USER
-		);
-		else if (com.startsWith(PREF_MACRO)) {
+		if (com === "/help") {
+			EntryRenderer.dice._showMessage(
+				`Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
+				Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
+				Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
+				Use <span class="out-roll-item-code">#myName</span> to roll a macro.`,
+				EntryRenderer.dice.SYSTEM_USER
+			);
+		} else if (com.startsWith(PREF_MACRO)) {
 			const [_, mode, ...others] = com.split(/\s+/);
 
 			if (!["list", "add", "remove"].includes(mode)) showInvalid();

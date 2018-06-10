@@ -746,7 +746,6 @@ class Panel {
 			header,
 			() => {
 				const rule = RuleLoader.getFromCache(book, chapter, header);
-				debugger // TODO
 				const it = EntryRenderer.rule.getCompactRenderedString(rule);
 				this.set$Content(
 					PANEL_TYP_RULES,
@@ -1070,7 +1069,7 @@ class Panel {
 			const $pnl = $(`<div data-panelId="${this.id}" class="dm-screen-panel" empty="true"/>`);
 			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
-			this.$pnlTitle = $(`<div class="panel-control-bar panel-control-title"/>`).appendTo($pnl);;
+			this.$pnlTitle = $(`<div class="panel-control-bar panel-control-title"/>`).appendTo($pnl);
 
 			const $ctrlMove = $(`<div class="panel-control-icon glyphicon glyphicon-move" title="Move"/>`).appendTo($ctrlBar);
 			$ctrlMove.on("click", () => {
