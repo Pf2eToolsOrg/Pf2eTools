@@ -1326,7 +1326,7 @@ EntryRenderer.invocation = {
 			(!prerequisites.pact || prerequisites.pact === STR_ANY || prerequisites.pact === STR_SPECIAL) ? null : Parser.invoPactToFull(prerequisites.pact),
 			(!prerequisites.level || prerequisites.level === STR_ANY) ? null : `${Parser.levelToFull(prerequisites.level)} level`,
 			(!prerequisites.feature || prerequisites.feature === STR_NONE) ? null : `${prerequisites.feature} feature`,
-			(!prerequisites.spell || prerequisites.spell === STR_NONE) ? null : Parser.invoSpellToFull(prerequisites.spell)
+			(!prerequisites.spell || prerequisites.spell === STR_NONE) ? null : prerequisites.spell instanceof Array ? CollectionUtil.joinConjunct(prerequisites.spell.map(sp => Parser.invoSpellToFull(sp)), ", ", " or ") : Parser.invoSpellToFull(prerequisites.spell)
 		].filter(f => f);
 		if (prerequisites.or && !orMode) prerequisites.or.map(p => EntryRenderer.invocation.getPrerequisiteText(p, true)).forEach(s => prereqs.push(s));
 		if (orMode) return prereqs.join(" or ");

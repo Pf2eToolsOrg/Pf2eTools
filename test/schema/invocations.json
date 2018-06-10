@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"title": "Invocations",
 	"type": "object",
 
@@ -9,9 +9,19 @@
 			"type": "object",
 			"properties": {
 				"spell": {
-					"type": "string",
-					"enum": [
-						"Eldritch Blast", "Hex/Curse"
+					"oneOf": [
+						{
+							"type": "string",
+							"enum": [
+								"Eldritch Blast", "Hex/Curse"
+							]
+						},
+						{
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
 					]
 				},
 				"pact": {

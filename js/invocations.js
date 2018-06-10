@@ -147,7 +147,7 @@ function addInvocations (data) {
 					<span class="${LIST_SOURCE} ${CLS_COL2} source${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])} text-align-center" title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class="${LIST_PACT} ${CLS_COL3} ${p.prerequisites[JSON_ITEM_PACT] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${p.prerequisites[JSON_ITEM_PACT]}</span>
 					<span class="${LIST_PATRON} ${CLS_COL4} ${p.prerequisites[JSON_ITEM_PATRON] === STR_ANY ? CLS_LI_NONE : STR_EMPTY}">${Parser.invoPatronToShort(p.prerequisites[JSON_ITEM_PATRON])}</span>
-					<span class="${LIST_SPELL} ${CLS_COL5} ${p.prerequisites[JSON_ITEM_SPELL] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}">${p.prerequisites[JSON_ITEM_SPELL]}</span>
+					<span class="${LIST_SPELL} ${CLS_COL5} ${p.prerequisites[JSON_ITEM_SPELL] === STR_NONE ? CLS_LI_NONE : STR_EMPTY}">${p.prerequisites[JSON_ITEM_SPELL] instanceof Array ? p.prerequisites[JSON_ITEM_SPELL].join("/") : p.prerequisites[JSON_ITEM_SPELL]}</span>
 					<span class="${LIST_LEVEL} ${CLS_COL6} ${p.prerequisites[JSON_ITEM_LEVEL] === STR_ANY ? CLS_LI_NONE : STR_EMPTY} text-align-center">${p.prerequisites[JSON_ITEM_LEVEL]}</span>
 				</a>
 			</li>
@@ -155,7 +155,10 @@ function addInvocations (data) {
 
 		// populate filters
 		sourceFilter.addIfAbsent(p[JSON_ITEM_SOURCE]);
-		if (p.prerequisites[JSON_ITEM_SPELL]) spellFilter.addIfAbsent(p.prerequisites[JSON_ITEM_SPELL]);
+		if (p.prerequisites[JSON_ITEM_SPELL]) {
+			if (p.prerequisites[JSON_ITEM_SPELL] instanceof Array) p.prerequisites[JSON_ITEM_SPELL].forEach(sp => spellFilter.addIfAbsent(sp));
+			else spellFilter.addIfAbsent(p.prerequisites[JSON_ITEM_SPELL]);
+		}
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#${ID_INVOCATION_LIST}`).append(tempString);
