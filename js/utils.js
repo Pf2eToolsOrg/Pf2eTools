@@ -109,6 +109,7 @@ ABIL_CH_ANY = "Choose Any";
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
 EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
 DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
+ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
 
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)

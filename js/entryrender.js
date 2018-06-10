@@ -2637,6 +2637,10 @@ EntryRenderer.hover = {
 };
 
 EntryRenderer.dice = {
+	SYSTEM_USER: {
+		name: "Avandra" // goddess of luck
+	},
+
 	_$wrpRoll: null,
 	_$minRoll: null,
 	_$iptRoll: null,
@@ -2645,6 +2649,7 @@ EntryRenderer.dice = {
 	_hist: [],
 	_histIndex: null,
 	_$lastRolledBy: null,
+	_storage: null,
 
 	_panel: null,
 	bindDmScreenPanel (panel) {
@@ -2775,6 +2780,8 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._$iptRoll = $iptRoll;
 
 		$(`body`).append($minRoll).append($wrpRoll);
+
+		EntryRenderer.dice.storage = JSON.parse(StorageUtil.getStorage().getItem(ROLLER_MACRO_STORAGE) || "{}");
 	},
 
 	_prevHistory: () => {
@@ -2867,12 +2874,16 @@ EntryRenderer.dice = {
 	},
 
 	roll: (str, rolledBy) => {
-		if (!str.trim()) return;
-		const toRoll = EntryRenderer.dice._parse(str);
-		if (rolledBy.user) {
-			EntryRenderer.dice._addHistory(str);
+		str = str.trim();
+		if (!str) return;
+		if (rolledBy.user) EntryRenderer.dice._addHistory(str);
+
+		if (str.startsWith("/")) EntryRenderer.dice._handleCommand(str, rolledBy);
+		else if (str.startsWith("#")) EntryRenderer.dice._handleSavedRoll(str, rolledBy);
+		else {
+			const toRoll = EntryRenderer.dice._parse(str);
+			EntryRenderer.dice._handleRoll(toRoll, rolledBy);
 		}
-		EntryRenderer.dice._handleRoll(toRoll, rolledBy);
 	},
 
 	rollEntry: (entry, rolledBy, cbMessage) => {
@@ -2910,9 +2921,96 @@ EntryRenderer.dice = {
 					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
 				</div>`);
 		} else {
-			$out.append(`<div class="out-roll-item">Invalid roll!</div>`);
+			$out.append(`<div class="out-roll-item">Invalid input! Try &quot;/help&quot;</div>`);
 		}
 		EntryRenderer.dice._scrollBottom();
+	},
+
+	_showMessage (message, rolledBy) {
+		EntryRenderer.dice._showBox();
+		EntryRenderer.dice._checkHandleName(rolledBy.name);
+		const $out = EntryRenderer.dice._$lastRolledBy;
+		$out.append(`<div class="out-roll-item">${message}</div>`);
+		EntryRenderer.dice._scrollBottom();
+	},
+
+	_handleCommand (com, rolledBy) {
+		EntryRenderer.dice._showMessage(`<span class="out-roll-item-code">${com}</span>`, rolledBy); // parrot the user's command back to them
+		const PREF_MACRO = "/macro";
+		function showInvalid () {
+			EntryRenderer.dice._showMessage("Invalid input! Try &quot;/help&quot;", EntryRenderer.dice.SYSTEM_USER);
+		}
+
+		function checkLength (arr, desired) {
+			return arr.length === desired;
+		}
+
+		function save () {
+			StorageUtil.set(ROLLER_MACRO_STORAGE, EntryRenderer.dice.storage);
+		}
+
+		if (com === "/help") EntryRenderer.dice._showMessage(`
+			Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
+			Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
+			Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
+			Use <span class="out-roll-item-code">#myName</span> to roll a macro.
+			`,
+			EntryRenderer.dice.SYSTEM_USER
+		);
+		else if (com.startsWith(PREF_MACRO)) {
+			const [_, mode, ...others] = com.split(/\s+/);
+
+			if (!["list", "add", "remove"].includes(mode)) showInvalid();
+			else {
+				switch (mode) {
+					case "list":
+						if (checkLength(others, 0)) {
+							Object.keys(EntryRenderer.dice.storage).forEach(name => {
+								EntryRenderer.dice._showMessage(`<span class="out-roll-item-code">#${name}</span> \u2014 ${EntryRenderer.dice.storage[name]}`, EntryRenderer.dice.SYSTEM_USER);
+							})
+						} else {
+							showInvalid();
+						}
+						break;
+					case "add": {
+						if (checkLength(others, 2)) {
+							const [name, macro] = others;
+							if (name.includes(" ") || name.includes("#")) showInvalid();
+							else {
+								EntryRenderer.dice.storage[name] = macro;
+								save();
+								EntryRenderer.dice._showMessage(`Saved macro <span class="out-roll-item-code">#${name}</span>`, EntryRenderer.dice.SYSTEM_USER);
+							}
+						} else {
+							showInvalid();
+						}
+						break;
+					}
+					case "remove":
+						if (checkLength(others, 1)) {
+							if (EntryRenderer.dice.storage[others[0]]) {
+								delete EntryRenderer.dice.storage[others[0]];
+								save();
+								EntryRenderer.dice._showMessage(`Removed macro <span class="out-roll-item-code">#${others[0]}</span>`, EntryRenderer.dice.SYSTEM_USER);
+							} else {
+								EntryRenderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${others[0]}</span> not found`, EntryRenderer.dice.SYSTEM_USER);
+							}
+						} else {
+							showInvalid();
+						}
+						break;
+				}
+			}
+		} else showInvalid();
+	},
+
+	_handleSavedRoll (id, rolledBy) {
+		id = id.replace(/^#/, "");
+		const macro = EntryRenderer.dice.storage[id];
+		if (macro) {
+			const toRoll = EntryRenderer.dice._parse(macro);
+			EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+		} else EntryRenderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${id}</span> not found`, EntryRenderer.dice.SYSTEM_USER);
 	},
 
 	getDiceSummary: (v, textOnly) => {
