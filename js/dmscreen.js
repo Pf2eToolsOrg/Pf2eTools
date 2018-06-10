@@ -365,7 +365,7 @@ class Board {
 				const toLoad = JSON.parse(raw);
 				this.doLoadStateFrom(toLoad);
 			} catch (e) {
-				// on error, purge all brew and reset hash
+				// on error, purge saved data and reset
 				purgeSaved();
 				throw e;
 			}
@@ -556,14 +556,14 @@ class SideMenu {
 								p.type,
 								p.contentMeta,
 								p.$content,
-								true
+								p.title
 							);
 							p.destroy();
 						} else {
 							const herMeta = her.getPanelMeta();
 							const $herContent = her.get$Content();
-							her.set$Content(p.type, p.contentMeta, p.$content, true);
-							p.set$Content(herMeta.type, herMeta.contentMeta, $herContent, true);
+							her.set$Content(p.type, p.contentMeta, p.$content, p.title);
+							p.set$Content(herMeta.type, herMeta.contentMeta, $herContent, herMeta.title);
 							p.exile();
 						}
 						her.doShowJoystick();
@@ -577,13 +577,14 @@ class SideMenu {
 }
 
 class Panel {
-	constructor (board, x, y, width = 1, height = 1) {
+	constructor (board, x, y, width = 1, height = 1, title = "") {
 		this.id = board.getNextId();
 		this.board = board;
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.title = title;
 		this.isDirty = true;
 		this.isContentDirty = false;
 		this.isLocked = false; // unused
@@ -597,6 +598,7 @@ class Panel {
 		this.joyMenu = null;
 		this.$pnl = null;
 		this.$pnlWrpContent = null;
+		this.$pnlTitle = null;
 	}
 
 	static fromSavedState (board, saved) {
@@ -692,15 +694,14 @@ class Panel {
 	}
 
 	doPopulate_Empty () {
-		this.reset$Content(true);
+		this.reset$Content();
 	}
 
 	doPopulate_Loading (message) {
 		this.set$Content(
 			PANEL_TYP_EMPTY,
 			null,
-			Panel._get$eleLoading(message),
-			true
+			Panel._get$eleLoading(message)
 		);
 	}
 
@@ -709,8 +710,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_STATS,
 			meta,
-			Panel._get$eleLoading(),
-			true
+			Panel._get$eleLoading()
 		);
 		EntryRenderer.hover._doFillThenCall(
 			page,
@@ -723,7 +723,7 @@ class Panel {
 					PANEL_TYP_STATS,
 					meta,
 					$(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`),
-					true
+					it.name
 				);
 			}
 		);
@@ -734,8 +734,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_RULES,
 			meta,
-			Panel._get$eleLoading(),
-			true
+			Panel._get$eleLoading()
 		);
 		RuleLoader.doFillThenCall(
 			book,
@@ -743,12 +742,13 @@ class Panel {
 			header,
 			() => {
 				const rule = RuleLoader.getFromCache(book, chapter, header);
+				debugger // TODO
 				const it = EntryRenderer.rule.getCompactRenderedString(rule);
 				this.set$Content(
 					PANEL_TYP_RULES,
 					meta,
 					$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
-					true
+					"TODO"
 				);
 			}
 		);
@@ -758,8 +758,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_ROLLBOX,
 			null,
-			$(`<div class="panel-content-wrapper-inner"/>`).append(EntryRenderer.dice.get$Roller().addClass("rollbox-panel")),
-			true
+			$(`<div class="panel-content-wrapper-inner"/>`).append(EntryRenderer.dice.get$Roller().addClass("rollbox-panel"))
 		);
 	}
 
@@ -767,8 +766,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_TEXTBOX,
 			null,
-			$(`<div class="panel-content-wrapper-inner"><textarea class="panel-content-textarea">${content || ""}</textarea></div>`),
-			true
+			$(`<div class="panel-content-wrapper-inner"><textarea class="panel-content-textarea">${content || ""}</textarea></div>`)
 		);
 	}
 
@@ -777,8 +775,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_TUBE,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen/></div>`),
-			true
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen/></div>`)
 		);
 	}
 
@@ -787,8 +784,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_TWITCH,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no" allowfullscreen/></div>`),
-			true
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no" allowfullscreen/></div>`)
 		);
 	}
 
@@ -797,8 +793,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_TWITCH_CHAT,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`),
-			true
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`)
 		);
 	}
 
@@ -807,8 +802,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_GENERIC_EMBED,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}"/></div>`),
-			true
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}"/></div>`)
 		);
 	}
 
@@ -822,8 +816,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_IMAGE,
 			meta,
-			$wrpPanel,
-			true
+			$wrpPanel
 		);
 		$img.panzoom({
 			$reset: $iptReset,
@@ -998,7 +991,8 @@ class Panel {
 	getPanelMeta () {
 		return {
 			type: this.type,
-			contentMeta: this.contentMeta
+			contentMeta: this.contentMeta,
+			title: this.title
 		}
 	}
 
@@ -1042,8 +1036,14 @@ class Panel {
 		this.$pnl.removeClass(`panel-mode-move`);
 	}
 
+	doRenderTitle () {
+		this.$pnlTitle.text(this.title);
+		if (!this.title) this.$pnlTitle.addClass("hidden");
+		else this.$pnlTitle.removeClass("hidden");
+	}
+
 	render () {
-		function doApplyPosCss ($ele) {
+		const doApplyPosCss = ($ele) => {
 			// indexed from 1 instead of zero...
 			return $ele.css({
 				gridColumnStart: String(this.x + 1),
@@ -1052,12 +1052,14 @@ class Panel {
 				gridRowStart: String(this.y + 1),
 				gridRowEnd: String(this.y + 1 + this.height)
 			});
-		}
+		};
 
 		function doInitialRender () {
 			const $pnl = $(`<div data-panelId="${this.id}" class="dm-screen-panel" empty="true"/>`);
 			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
+			const $ctrlTitle = $(`<div class="panel-control-bar panel-control-title"/>`).appendTo($pnl);
+			this.$pnlTitle = $ctrlTitle;
 
 			const $ctrlMove = $(`<div class="panel-control-icon glyphicon glyphicon-move" title="Move"/>`).appendTo($ctrlBar);
 			$ctrlMove.on("click", () => {
@@ -1093,13 +1095,14 @@ class Panel {
 
 			if (this.$content) $wrpContent.append(this.$content);
 
-			doApplyPosCss.bind(this)($pnl).appendTo(this.board.get$creen());
+			doApplyPosCss($pnl).appendTo(this.board.get$creen());
 		}
 
 		if (this.isDirty) {
 			if (!this.$pnl) doInitialRender.bind(this)();
 			else {
-				doApplyPosCss.bind(this)(this.$pnl);
+				doApplyPosCss(this.$pnl);
+				this.doRenderTitle();
 
 				if (this.isContentDirty) {
 					this.$pnlWrpContent.clear();
@@ -1131,20 +1134,20 @@ class Panel {
 		};
 	}
 
-	reset$Content (doUpdateElements) {
-		this.set$Content(PANEL_TYP_EMPTY, null, null, doUpdateElements);
+	reset$Content () {
+		this.set$Content(PANEL_TYP_EMPTY, null, null);
 	}
 
-	set$Content (type, contentMeta, $content, doUpdateElements) {
+	set$Content (type, contentMeta, $content, title) {
 		this.type = type;
 		this.contentMeta = contentMeta;
+		this.title = title;
 		this.$content = $content;
-		if (doUpdateElements) {
-			this.$pnlWrpContent.children().detach();
-			if ($content === null) this.$pnlWrpContent.append(this.$btnAdd);
-			else this.$pnlWrpContent.append($content);
-			this.$pnl.attr("empty", !$content);
-		}
+		this.$pnlWrpContent.children().detach();
+		if ($content === null) this.$pnlWrpContent.append(this.$btnAdd);
+		else this.$pnlWrpContent.append($content);
+		this.$pnl.attr("empty", !$content);
+		this.doRenderTitle();
 	}
 
 	get$ContentWrapper () {
@@ -1207,7 +1210,7 @@ class Panel {
 			case PANEL_TYP_TEXTBOX:
 				out.c = {
 					x: this.$content ? this.$content.find(`textarea`).val() : ""
-				}
+				};
 				break;
 			case PANEL_TYP_TUBE:
 			case PANEL_TYP_TWITCH:
@@ -1287,14 +1290,14 @@ class JoystickMenu {
 							this.panel.type,
 							this.panel.contentMeta,
 							this.panel.$content,
-							true
+							this.panel.title
 						);
-						this.panel.reset$Content(true);
+						this.panel.reset$Content();
 					} else {
 						const herMeta = her.getPanelMeta();
 						const $herContent = her.get$Content();
-						her.set$Content(this.panel.type, this.panel.contentMeta, this.panel.$content, true);
-						this.panel.set$Content(herMeta.type, herMeta.contentMeta, $herContent, true);
+						her.set$Content(this.panel.type, this.panel.contentMeta, this.panel.$content, this.panel.title);
+						this.panel.set$Content(herMeta.type, herMeta.contentMeta, $herContent, herMeta.title);
 					}
 					this.panel.doHideJoystick();
 					her.doShowJoystick();
