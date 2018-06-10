@@ -814,12 +814,24 @@ class Panel {
 
 	doPopulate_Image (url) {
 		const meta = {u: url};
+		const $wrpPanel = $(`<div class="panel-content-wrapper-inner"/>`);
+		const $wrpImage = $(`<div class="panel-content-wrapper-img"/>`).appendTo($wrpPanel);
+		const $img = $(`<img src="${url}">`).appendTo($wrpImage);
+		const $iptReset = $(`<div class="panel-zoom-reset btn btn-xs btn-default"><span class="glyphicon glyphicon-refresh"/></div>`).appendTo($wrpPanel);
+		const $iptRange = $(`<input type="range" class="panel-zoom-slider">`).appendTo($wrpPanel);
 		this.set$Content(
 			PANEL_TYP_IMAGE,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><div class="panel-content-wrapper-img"><img src="${url}"></div></div>`),
+			$wrpPanel,
 			true
 		);
+		$img.panzoom({
+			$reset: $iptReset,
+			$zoomRange: $iptRange,
+			minScale: 0.1,
+			maxScale: 8,
+			duration: 100
+		});
 	}
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	getTopNeighbours () {

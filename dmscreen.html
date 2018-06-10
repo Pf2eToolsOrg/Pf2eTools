@@ -366,6 +366,35 @@
 			object-fit: contain;
 		}
 
+		.panel-zoom-reset {
+			position: absolute;
+			top: 1px;
+		}
+
+		.panel-zoom-reset .glyphicon {
+			top: 2px;
+			color: #ccc;
+		}
+
+		/* cleaner, but Webkit-only */
+		/*input[type=range].panel-zoom-slider {
+			position: absolute;
+			top: 28px;
+			left: 3px;
+			width: 20px;
+			-webkit-appearance: slider-vertical;
+			height: 80px;
+		}*/
+
+		input[type=range].panel-zoom-slider {
+			position: absolute;
+			left: -28px;
+			width: 80px;
+			top: 57px;
+			height: 20px;
+			transform: rotate(270deg);
+		}
+
 		iframe {
 			width: 100%;
 			height: 100%;
@@ -637,6 +666,7 @@
 
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery.panzoom.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
