@@ -2726,7 +2726,7 @@ EntryRenderer.dice = {
 		if (EntryRenderer.dice._$wrpRoll.css("display") !== "flex") {
 			EntryRenderer.dice._$minRoll.hide();
 			EntryRenderer.dice._$wrpRoll.css("display", "flex");
-			EntryRenderer.dice._$iptRoll.prop("placeholder", EntryRenderer.dice._randomPlaceholder())
+			EntryRenderer.dice._$iptRoll.prop("placeholder", `${EntryRenderer.dice._randomPlaceholder()} or "/help"`);
 		}
 	},
 
