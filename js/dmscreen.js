@@ -1058,8 +1058,7 @@ class Panel {
 			const $pnl = $(`<div data-panelId="${this.id}" class="dm-screen-panel" empty="true"/>`);
 			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
-			const $ctrlTitle = $(`<div class="panel-control-bar panel-control-title"/>`).appendTo($pnl);
-			this.$pnlTitle = $ctrlTitle;
+			this.$pnlTitle = $(`<div class="panel-control-bar panel-control-title"/>`).appendTo($pnl);;
 
 			const $ctrlMove = $(`<div class="panel-control-icon glyphicon glyphicon-move" title="Move"/>`).appendTo($ctrlBar);
 			$ctrlMove.on("click", () => {
