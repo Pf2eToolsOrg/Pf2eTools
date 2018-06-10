@@ -12,6 +12,7 @@ const PANEL_TYP_STATS = 1;
 const PANEL_TYP_ROLLBOX = 2;
 const PANEL_TYP_TEXTBOX = 3;
 const PANEL_TYP_RULES = 4;
+const PANEL_TYP_INITIATIVE_TRACKER = 5;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
@@ -630,6 +631,9 @@ class Panel {
 			case PANEL_TYP_TEXTBOX:
 				p.doPopulate_TextBox(saved.c.x);
 				return p;
+			case PANEL_TYP_INITIATIVE_TRACKER:
+				p.doPopulate_InitiativeTracker(saved.s);
+				return p;
 			case PANEL_TYP_TUBE:
 				p.doPopulate_YouTube(saved.c.u);
 				return p;
@@ -759,6 +763,14 @@ class Panel {
 			PANEL_TYP_ROLLBOX,
 			null,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(EntryRenderer.dice.get$Roller().addClass("rollbox-panel"))
+		);
+	}
+
+	doPopulate_InitiativeTracker (state = {}) {
+		this.set$Content(
+			PANEL_TYP_INITIATIVE_TRACKER,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(state))
 		);
 	}
 
@@ -1211,6 +1223,10 @@ class Panel {
 					x: this.$content ? this.$content.find(`textarea`).val() : ""
 				};
 				break;
+			case PANEL_TYP_INITIATIVE_TRACKER: {
+				out.s = this.$content.find(`.dm-init`).data("getState")();
+				break;
+			}
 			case PANEL_TYP_TUBE:
 			case PANEL_TYP_TWITCH:
 			case PANEL_TYP_TWITCH_CHAT:
@@ -1776,10 +1792,18 @@ class AddMenuSpecialTab extends AddMenuTab {
 		if (!this.$tab) {
 			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
-			const $wrpRoller = $(`<div class="tab-body-row"><span>Dice Roller <i class="text-muted">(moves the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
-			const $btnRoller = $(`<div class="btn btn-primary">Move</div>`).appendTo($wrpRoller);
+			const $wrpRoller = $(`<div class="tab-body-row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
+			const $btnRoller = $(`<div class="btn btn-primary">Pin</div>`).appendTo($wrpRoller);
 			$btnRoller.on("click", () => {
 				EntryRenderer.dice.bindDmScreenPanel(this.menu.pnl);
+				this.menu.doClose();
+			});
+			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+
+			const $wrpTracker = $(`<div class="tab-body-row"><span>Initiative Tracker</span></div>`).appendTo($tab);
+			const $btnTracker = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpTracker);
+			$btnTracker.on("click", () => {
+				this.menu.pnl.doPopulate_InitiativeTracker();
 				this.menu.doClose();
 			});
 			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
@@ -2032,6 +2056,117 @@ class RuleLoader {
 	}
 }
 RuleLoader.cache = {};
+
+class InitiativeTracker {
+	static make$Tracker (state) {
+		const ALPHA = "ALPHA";
+		const NUM = "NUMBER";
+		const ASC = "ASC";
+		const DESC = "DESC";
+
+		let sort = state.s || NUM;
+		let dir = state.d || DESC;
+
+		const $wrpTracker = $(`<div class="dm-init"/>`);
+
+		const $wrpTop = $(`<div style="display: flex; flex-direction: column;"/>`).appendTo($wrpTracker);
+		const $wrpHeader = $(`
+			<div class="dm-init-wrp-header">
+				<div class="dm-init-header">Name</div>
+				<div class="dm-init-row-rhs" style="margin-right: 9px;">
+					<div class="dm-init-header">HP</div>
+					<div class="dm-init-header">#</div>
+					<div style="width: 24px;"/>
+				</div>
+			</div>
+		`).appendTo($wrpTop);
+
+		const $wrpEntries = $(`<div class="dm-init-wrp-entries"/>`).appendTo($wrpTop);
+
+		const $wrpControls = $(`<div class="dm-init-wrp-controls"/>`).appendTo($wrpTracker);
+		const $btnAdd = $(`<div class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></div>`).appendTo($wrpControls);
+		const $wrpSort = $(`<div/>`).appendTo($wrpControls);
+		const $btnSortAlpha = $(`<div title="Sort Alphabetically" class="btn btn-default" style="margin-right: 7px;"><span class="glyphicon glyphicon-sort-by-alphabet"></span></div>`).appendTo($wrpSort);
+		$btnSortAlpha.on("click", () => {
+			if (sort === ALPHA) flipDir();
+			else sort = ALPHA;
+			doSort(ALPHA);
+		});
+		const $btnSortNum = $(`<div title="Sort Numerically" class="btn btn-default"><span class="glyphicon glyphicon-sort-by-order"></span></div>`).appendTo($wrpSort);
+		$btnSortNum.on("click", () => {
+			if (sort === NUM) flipDir();
+			else sort = NUM;
+			doSort(NUM);
+		});
+		const $btnReset = $(`<div title="Reset" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></div>`).appendTo($wrpControls);
+		$btnReset.on("click", () => {
+			$wrpEntries.empty();
+			sort = NUM;
+			dir = DESC;
+		});
+
+		$btnAdd.on("click", () => {
+			makeRow();
+		});
+
+		$wrpTracker.data("getState", () => {
+			const rows = $wrpEntries.find(`.dm-init-row`).map((i, e) => {
+				return {
+					n: $(e).find(`input.name`).val(),
+					h: $(e).find(`input.hp`).val(),
+					i: $(e).find(`input.score`).val()
+				}
+			}).get();
+			return {
+				r: rows,
+				s: sort,
+				d: dir
+			};
+		});
+
+		(state.r || []).forEach(r => {
+			makeRow(r.n, r.h, r.i);
+		});
+
+		function makeRow (name = "", hp = "", init = "") {
+			const $wrpRow = $(`<div class="dm-init-row"/>`).appendTo($wrpEntries);
+			const $iptName = $(`<input class="form-control input-sm name" placeholder="Name" value="${name}">`).appendTo($wrpRow);
+			$iptName.on("change", () => {
+				doSort(ALPHA);
+			});
+			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
+			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${hp}">`).appendTo($wrpRhs);
+			const $iptScore = $(`<input class="form-control input-sm score" type="number" value="${init}">`).appendTo($wrpRhs);
+			$iptScore.on("change", () => {
+				doSort(NUM);
+			});
+			const $btnDel = $(`<div class="btn btn-danger btn-xs" style="line-height: 26px;"><span class="glyphicon glyphicon-trash"/></div>`).appendTo($wrpRhs);
+			$btnDel.on("click", () => $wrpRow.remove())
+		}
+
+		function doSort (mode) {
+			if (sort !== mode) return;
+			const sorted = $wrpEntries.find(`.dm-init-row`).sort((a, b) => {
+				let aVal = $(a).find(`input.${sort === ALPHA ? "name" : "score"}`).val();
+				let bVal = $(b).find(`input.${sort === ALPHA ? "name" : "score"}`).val();
+				if (sort === NUM) {
+					aVal = Number(aVal);
+					bVal = Number(bVal);
+				}
+				return dir === ASC ? SortUtil.ascSort(aVal, bVal) : SortUtil.ascSort(bVal, aVal);
+			});
+			$wrpEntries.append(sorted);
+		}
+
+		function flipDir () {
+			dir = dir === ASC ? DESC : ASC;
+		}
+
+		doSort(sort);
+
+		return $wrpTracker;
+	}
+}
 
 window.addEventListener("load", () => {
 	// expose it for dbg purposes
