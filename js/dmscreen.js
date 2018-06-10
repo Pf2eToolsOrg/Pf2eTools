@@ -28,6 +28,7 @@ class Board {
 		this.sideMenu = new SideMenu(this);
 		this.menu = new AddMenu();
 		this.storage = StorageUtil.getStorage();
+		this.isFullscreen = false;
 
 		this.nextId = 1;
 		this.hoveringPanel = null;
@@ -111,7 +112,9 @@ class Board {
 	}
 
 	_getHeightAdjustment () {
-		return 85 + (this.height - 1) * 7; // 85 magical pixels
+		const panelPart = (this.height - 1) * 7;
+		if (this.isFullscreen) return panelPart;
+		else return 85 + panelPart; // 85 magical pixels
 	}
 
 	getPanelDimensions () {
@@ -429,6 +432,16 @@ class SideMenu {
 			const h = Number($iptHeight.val());
 			if ((w > 10 || h > 10) && !window.confirm("That's a lot of panels. You sure?")) return;
 			this.board.setDimensions(w, h);
+		});
+		renderDivider();
+
+		const $wrpFullscreen = $(`<div class="dm-sidemenu-row-alt"></div>`).appendTo(this.$mnu);
+		const $btnFullscreen = $(`<div class="btn btn-primary">Toggle Fullscreen</div>`).appendTo($wrpFullscreen);
+		$btnFullscreen.on("click", () => {
+			this.board.isFullscreen = !this.board.isFullscreen;
+			if (this.board.isFullscreen) $(`body`).addClass(`dm-screen-fullscreen`);
+			else $(`body`).removeClass(`dm-screen-fullscreen`);
+			this.board.doAdjust$creenCss();
 		});
 		renderDivider();
 
