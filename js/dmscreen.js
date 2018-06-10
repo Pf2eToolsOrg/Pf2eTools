@@ -764,7 +764,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_TUBE,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen/></div>`),
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen/></div>`),
 			true
 		);
 	}
@@ -1131,7 +1131,7 @@ class Panel {
 	}
 
 	exile () {
-		if (this.type === PANEL_TYP_ROLLBOX) this.destroy();
+		if (this.type === PANEL_TYP_ROLLBOX || this.type === PANEL_TYP_TUBE || this.type === PANEL_TYP_TWITCH) this.destroy();
 		else {
 			if (this.$pnl) this.$pnl.detach();
 			this.board.exilePanel(this.id);
