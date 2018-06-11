@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "object",
 	"properties": {
 		"deity": {
@@ -40,7 +40,9 @@
 							"Halfling",
 							"Nonhuman",
 							"Norse",
-							"Orc"
+							"Orc",
+							"Gnome",
+							"Duergar"
 						]
 					},
 					"category": {
@@ -54,6 +56,10 @@
 								"Arcana", "Death", "Knowledge", "Life", "Light", "Nature", "Tempest", "Trickery", "War", "Forge", "Grave"
 							]
 						}
+					},
+					"province": {
+						"description": "The nouveau form of 'title,' first seen in MTF",
+						"type": "string"
 					},
 					"symbol": {
 						"type": "string"
@@ -74,6 +80,7 @@
 						"type": "integer"
 					},
 					"additionalSources": {
+						"description": "Used to add XGE domains (e.g. Forge) to existing deities",
 						"type": "array",
 						"items": {
 							"type": "object",
@@ -106,7 +113,6 @@
 				"required": [
 					"name",
 					"alignment",
-					"title",
 					"pantheon",
 					"symbol",
 					"source"
