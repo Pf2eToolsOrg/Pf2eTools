@@ -14,7 +14,7 @@ const index = utB.UtilBookReference.getIndex(
 	}
 );
 
-fs.writeFileSync("data/bookref-dmscreen.json", JSON.stringify(index), "utf8");
+fs.writeFileSync("data/bookref-dmscreen.json", JSON.stringify(index).replace(/\s+\u2014\s+?/g, "\\u2014"), "utf8");
 
 function flattenReferenceIndex (ref) {
 	const outMeta = {
