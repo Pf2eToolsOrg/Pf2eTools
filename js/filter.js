@@ -210,7 +210,7 @@ class FilterBox {
 				$logicBtns.append($btnAndOrBlue).append($btnAndOrRed);
 				$line.append(`<div style="display: inline-block; width: 5px;">`).append($logicBtns);
 
-				const $summary = $(`<span class="summary" style="margin-left: auto;"/>`);
+				const $summary = $(`<span class="summary"/>`);
 				const $summaryInclude = $(`<span class="include" title="Hiding includes"/>`);
 				const $summarySpacer = $(`<span class="spacer"/>`);
 				const $summaryExclude = $(`<span class="exclude" title="Hidden excludes"/>`);
@@ -220,7 +220,7 @@ class FilterBox {
 				$summary.hide();
 				$line.append($summary);
 
-				const $showHide = $(`<button class="btn btn-default btn-xs show-hide-button ${minimalClass}" style="margin-left: 12px;">Hide</button>`);
+				const $showHide = $(`<button class="btn btn-default btn-xs show-hide-button ${minimalClass}" style="margin-left: 5px;">Hide</button>`);
 				$line.append($showHide);
 
 				$showHide.on(EVNT_CLICK, function () {
@@ -228,12 +228,13 @@ class FilterBox {
 						$showHide.text("Hide");
 						$grid.show();
 						$quickBtns.show();
+						$logicBtns.css("margin-left", "");
 						$summary.hide();
-						$showHide.css("margin-left", "12px");
 					} else {
 						$showHide.text("Show");
 						$grid.hide();
 						$quickBtns.hide();
+						$logicBtns.css("margin-left", "auto");
 						const counts = $grid.data("getCounts")();
 						if (counts.yes > 0 || counts.no > 0) {
 							if (counts.yes > 0) {
@@ -255,10 +256,10 @@ class FilterBox {
 							} else {
 								$summaryExclude.hide();
 							}
-							$showHide.css("margin-left", "12px");
+							$logicBtns.css("margin-left", "auto");
 							$summary.show();
 						} else {
-							$showHide.css("margin-left", "auto");
+							$logicBtns.css("margin-left", "auto");
 						}
 					}
 				});
