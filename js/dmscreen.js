@@ -218,6 +218,7 @@ class Board {
 			BrewUtil.getSearchIndex().forEach(d => {
 				if (hasBadCat(d) || fromDeepIndex(d)) return;
 				d.cf = Parser.pageCategoryToFull(d.c);
+				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
 				this.availContent.ALL.addDoc(d);
 				this.availContent[d.cf].addDoc(d);
 			});
