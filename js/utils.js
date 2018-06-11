@@ -1716,13 +1716,10 @@ ListUtil = {
 	toggleSelected: (evt, ele) => {
 		if (evt.shiftKey) {
 			evt.preventDefault();
-			const $ele = $(ele);
-			$ele.toggleClass("list-multi-selected");
+			$(ele).toggleClass("list-multi-selected");
 		} else {
-			ListUtil._primaryLists.forEach(l => {
-				ListUtil.deslectAll(l);
-			});
-			$(ele).addClass("list-multi-selected")
+			ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
+			$(ele).addClass("list-multi-selected");
 		}
 	},
 
@@ -1751,15 +1748,9 @@ ListUtil = {
 	},
 
 	openContextMenu: (evt, ele) => {
-		const anySel = ListUtil._primaryLists.find(l => ListUtil.isAnySelected(l));
-		const $menu = $(`#contextMenu`);
-		if (anySel) {
-			$menu.find(`[data-ctx-id=3]`).show();
-			$menu.find(`[data-ctx-id=4]`).show();
-		} else {
-			$menu.find(`[data-ctx-id=3]`).hide();
-			$menu.find(`[data-ctx-id=4]`).hide();
-		}
+		const selCount = ListUtil._primaryLists.map(l => ListUtil.getSelectedCount(l)).reduce((a, b) => a + b, 0);
+		if (selCount === 1) ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
+		if (selCount === 0 || selCount === 1) $(ele).addClass("list-multi-selected");
 		ListUtil._handleOpenContextMenu(evt, ele, "contextMenu");
 	},
 
@@ -2085,8 +2076,8 @@ ListUtil = {
 	},
 
 	initGenericPinnable: () => {
-		ListUtil.initContextMenu(ListUtil.handleGenericContextMenuClick, "Popout", "Toggle Pinned", "Toggle Selected", "Pin All Selected", "Clear Selected");
-		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Unpin All");
+		ListUtil.initContextMenu(ListUtil.handleGenericContextMenuClick, "Popout", "Pin");
+		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Clear Pins");
 	},
 
 	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
@@ -2096,25 +2087,12 @@ ListUtil = {
 				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
-				if (!ListUtil.isSublisted(itId)) ListUtil.doSublistAdd(itId, true);
-				else ListUtil.doSublistRemove(itId);
-				break;
-			case 2:
-				$invokedOn.toggleClass("list-multi-selected");
-				break;
-			case 3:
 				ListUtil._primaryLists.forEach(l => {
 					ListUtil.forEachSelected(l, (it) => {
 						if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it);
-						else ListUtil.doSublistRemove(it);
 					});
 				});
 				ListUtil._finaliseSublist();
-				break;
-			case 4:
-				ListUtil._primaryLists.forEach(l => {
-					ListUtil.deslectAll(l);
-				});
 				break;
 		}
 	},
@@ -2135,32 +2113,21 @@ ListUtil = {
 	},
 
 	initGenericAddable: () => {
-		ListUtil.initContextMenu(ListUtil.handleGenericMultiContextMMenuClick, "Popout", "Add", "Toggle Selected", "Add All Selected", "Clear Selected");
+		ListUtil.initContextMenu(ListUtil.handleGenericMultiContextMenuClick, "Popout", "Add");
 		ListUtil.initSubContextMenu(ListUtil.handleGenericMulriSubContextMenuClick, "Popout", "Remove", "Clear List");
 	},
 
-	handleGenericMultiContextMMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
+	handleGenericMultiContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
 		const itId = Number($invokedOn.attr(FLTR_ID));
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
 				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
-				ListUtil.doSublistAdd(itId, true);
-				break;
-			case 2:
-				$invokedOn.toggleClass("list-multi-selected");
-				break;
-			case 3:
 				ListUtil._primaryLists.forEach(l => {
 					ListUtil.forEachSelected(l, (it) => ListUtil.doSublistAdd(it));
 				});
 				ListUtil._finaliseSublist();
-				break;
-			case 4:
-				ListUtil._primaryLists.forEach(l => {
-					ListUtil.deslectAll(l);
-				});
 				break;
 		}
 	},
