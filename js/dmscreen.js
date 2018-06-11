@@ -752,7 +752,7 @@ class Panel {
 					PANEL_TYP_RULES,
 					meta,
 					$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
-					"TODO"
+					null // TODO add rule name
 				);
 			}
 		);
@@ -2084,7 +2084,10 @@ class InitiativeTracker {
 		const $wrpEntries = $(`<div class="dm-init-wrp-entries"/>`).appendTo($wrpTop);
 
 		const $wrpControls = $(`<div class="dm-init-wrp-controls"/>`).appendTo($wrpTracker);
-		const $btnAdd = $(`<div class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></div>`).appendTo($wrpControls);
+		const $wrpAddNext = $(`<div/>`).appendTo($wrpControls);
+		const $btnAdd = $(`<div class="btn btn-primary" style="margin-right: 7px;"><span class="glyphicon glyphicon-plus"></span></div>`).appendTo($wrpAddNext);
+		const $btnNext = $(`<div class="btn btn-primary" title="Next Turn"><span class="glyphicon glyphicon-step-forward"></span></div>`).appendTo($wrpAddNext);
+		$btnNext.on("click", () => setNextActive());
 		const $wrpSort = $(`<div/>`).appendTo($wrpControls);
 		const $btnSortAlpha = $(`<div title="Sort Alphabetically" class="btn btn-default" style="margin-right: 7px;"><span class="glyphicon glyphicon-sort-by-alphabet"></span></div>`).appendTo($wrpSort);
 		$btnSortAlpha.on("click", () => {
@@ -2107,6 +2110,8 @@ class InitiativeTracker {
 
 		$btnAdd.on("click", () => {
 			makeRow();
+			doSort(sort);
+			checkSetActive();
 		});
 
 		$wrpTracker.data("getState", () => {
@@ -2114,7 +2119,8 @@ class InitiativeTracker {
 				return {
 					n: $(e).find(`input.name`).val(),
 					h: $(e).find(`input.hp`).val(),
-					i: $(e).find(`input.score`).val()
+					i: $(e).find(`input.score`).val(),
+					a: 0 + $(e).hasClass(`dm-init-row-active`)
 				}
 			}).get();
 			return {
@@ -2125,11 +2131,24 @@ class InitiativeTracker {
 		});
 
 		(state.r || []).forEach(r => {
-			makeRow(r.n, r.h, r.i);
+			makeRow(r.n, r.h, r.i, r.a);
 		});
+		checkSetActive();
 
-		function makeRow (name = "", hp = "", init = "") {
-			const $wrpRow = $(`<div class="dm-init-row"/>`).appendTo($wrpEntries);
+		function setNextActive () {
+			const $rows = $wrpEntries.find(`.dm-init-row`);
+			const ix = $rows.index($rows.filter(`.dm-init-row-active`).get(0));
+			$($rows.get(ix)).removeClass(`dm-init-row-active`);
+			const nxt = $rows.get(ix + 1);
+			if (nxt) {
+				$(nxt).addClass(`dm-init-row-active`);
+			} else {
+				$($rows.get(0)).addClass(`dm-init-row-active`);
+			}
+		}
+
+		function makeRow (name = "", hp = "", init = "", isActive) {
+			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`).appendTo($wrpEntries);
 			const $iptName = $(`<input class="form-control input-sm name" placeholder="Name" value="${name}">`).appendTo($wrpRow);
 			$iptName.on("change", () => {
 				doSort(ALPHA);
@@ -2141,7 +2160,16 @@ class InitiativeTracker {
 				doSort(NUM);
 			});
 			const $btnDel = $(`<div class="btn btn-danger btn-xs" style="line-height: 26px;"><span class="glyphicon glyphicon-trash"/></div>`).appendTo($wrpRhs);
-			$btnDel.on("click", () => $wrpRow.remove())
+			$btnDel.on("click", () => {
+				if ($wrpRow.hasClass(`dm-init-row-active`) && $wrpEntries.find(`.dm-init-row`).length > 1) {
+					setNextActive();
+				}
+				$wrpRow.remove();
+			});
+		}
+
+		function checkSetActive () {
+			if ($wrpEntries.find(`.dm-init-row`).length && !$wrpEntries.find(`.dm-init-row-active`).length) $($wrpEntries.find(`.dm-init-row`).get(0)).addClass(`dm-init-row-active`);
 		}
 
 		function doSort (mode) {
