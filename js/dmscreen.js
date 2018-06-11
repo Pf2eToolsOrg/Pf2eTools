@@ -2154,7 +2154,23 @@ class InitiativeTracker {
 				doSort(ALPHA);
 			});
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
-			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${hp}">`).appendTo($wrpRhs);
+			let curHp = hp;
+			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${curHp}">`).appendTo($wrpRhs);
+			$iptHp.on("change", () => {
+				const nxt = $iptHp.val().trim();
+				if (nxt && /^[-+0-9]*$/.exec(curHp) && /^[-+0-9]*$/.exec(nxt)) {
+					const m = /^[+-]\d+/.exec(nxt);
+					const parts = nxt.split(/([+-]\d+)/).filter(it => it);
+					let temp = 0;
+					parts.forEach(p => temp += Number(p));
+					if (m) {
+						curHp = Number(curHp) + temp;
+					} else if (/[-+]/.exec(nxt)) {
+						curHp = temp;
+					}
+					$iptHp.val(curHp);
+				}
+			});
 			const $iptScore = $(`<input class="form-control input-sm score" type="number" value="${init}">`).appendTo($wrpRhs);
 			$iptScore.on("change", () => {
 				doSort(NUM);
