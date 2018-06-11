@@ -752,7 +752,7 @@ class Panel {
 					PANEL_TYP_RULES,
 					meta,
 					$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
-					null // TODO add rule name
+					rule.name || ""
 				);
 			}
 		);
