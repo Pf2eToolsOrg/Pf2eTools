@@ -562,7 +562,7 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@note" || tag === "@skill" || tag === "@action") {
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@skill" || tag === "@action") {
 						switch (tag) {
 							case "@b":
 							case "@bold":
@@ -575,6 +575,12 @@ function EntryRenderer () {
 								textStack.push(`<i>`);
 								self.recursiveEntryRender(text, textStack, depth);
 								textStack.push(`</i>`);
+								break;
+							case "@s":
+							case "@strike":
+								textStack.push(`<s>`);
+								self.recursiveEntryRender(text, textStack, depth);
+								textStack.push(`</s>`);
 								break;
 							case "@note":
 								textStack.push(`<i class="text-muted">`);
@@ -810,6 +816,15 @@ function EntryRenderer () {
 								fauxEntry.href.hover = {
 									page: UrlUtil.PG_PSIONICS,
 									source: source || SRC_UATMC
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							case "@object":
+								fauxEntry.href.path = "objects.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_DMG;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_OBJECTS,
+									source: source || SRC_DMG
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;

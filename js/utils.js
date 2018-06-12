@@ -2624,9 +2624,6 @@ StorageUtil = {
 		try {
 			return window.localStorage;
 		} catch (e) {
-			setTimeout(() => {
-				throw e
-			});
 			// if the user has disabled cookies, build a fake version
 			return {
 				isFake: true,

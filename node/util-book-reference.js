@@ -14,7 +14,8 @@ UtilBookReference = {
 				];
 			case "bookref-dmscreen":
 				return [
-					"Running the Game"
+					"Running the Game",
+					"Combat"
 				];
 			default:
 				throw new Error(`No sections defined for book id ${refId}`);
