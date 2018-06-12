@@ -167,7 +167,7 @@ class Board {
 
 	doLoadIndex (fnCallback) {
 		elasticlunr.clearStopWords();
-		DataUtil.loadJSON("data/bookref-dmscreen-index.json").then((data) => {
+		EntryRenderer.item.populatePropertyAndTypeReference().then(() => DataUtil.loadJSON("data/bookref-dmscreen-index.json")).then((data) => {
 			this.availRules.ALL = elasticlunr(function () {
 				this.addField("b");
 				this.addField("s");
@@ -369,7 +369,9 @@ class Board {
 			} catch (e) {
 				// on error, purge saved data and reset
 				purgeSaved();
-				throw e;
+				setTimeout(() => {
+					throw e
+				});
 			}
 		}
 	}
@@ -1745,6 +1747,9 @@ class AddMenuImageTab extends AddMenuTab {
 								alert(`Failed to upload: ${JSON.parse(error.responseText).data.error}`);
 							} catch (e) {
 								alert("Failed to upload: Unknown error");
+								setTimeout(() => {
+									throw e
+								});
 							}
 							this.menu.pnl.doPopulate_Empty();
 						}

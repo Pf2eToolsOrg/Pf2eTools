@@ -33,7 +33,9 @@ function initDemo (data) {
 			json = JSON.parse(editor.getValue());
 		} catch (e) {
 			$msg.html(`Invalid JSON! We recommend using <a href="https://jsonlint.com/" target="_blank">JSONLint</a>.`);
-			return;
+			setTimeout(() => {
+				throw e
+			});
 		}
 
 		renderer.recursiveEntryRender(json, renderStack);

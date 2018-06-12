@@ -1907,7 +1907,14 @@ EntryRenderer.item = {
 		if (item.entries === undefined) item.entries = [];
 		if (item.type && EntryRenderer.item._typeList[item.type]) for (let j = 0; j < EntryRenderer.item._typeList[item.type].entries.length; j++) item.entries.push(EntryRenderer.item._typeList[item.type].entries[j]);
 		if (item.property) {
-			for (let j = 0; j < item.property.length; j++) if (EntryRenderer.item._propertyList[item.property[j]].entries) for (let k = 0; k < EntryRenderer.item._propertyList[item.property[j]].entries.length; k++) item.entries.push(EntryRenderer.item._propertyList[item.property[j]].entries[k]);
+			item.property.forEach(p => {
+				if (!EntryRenderer.item._propertyList[p]) throw new Error(`Item property ${p} not found. You probably meant to load the property/type reference first; see \`EntryRenderer.item.populatePropertyAndTypeReference()\`.`);
+				if (EntryRenderer.item._propertyList[p].entries) {
+					EntryRenderer.item._propertyList[p].entries.forEach(e => {
+						item.entries.push(e);
+					})
+				}
+			});
 		}
 		// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
 		if (item.armor) {
@@ -1975,6 +1982,18 @@ EntryRenderer.item = {
 	promiseData: (urls) => {
 		return new Promise((resolve, reject) => {
 			EntryRenderer.item.buildList((data) => resolve({item: data}), urls);
+		});
+	},
+
+	populatePropertyAndTypeReference: () => {
+		return DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`).then(data => {
+			try {
+				data.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
+				data.itemType.forEach(t => EntryRenderer.item._addType(t));
+				Promise.resolve();
+			} catch (e) {
+				Promise.reject(e);
+			}
 		});
 	}
 };

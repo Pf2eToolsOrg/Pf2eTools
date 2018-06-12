@@ -2060,7 +2060,9 @@ ListUtil = {
 			}
 		} catch (e) {
 			StorageUtil.removeForPage("sublist");
-			throw e;
+			setTimeout(() => {
+				throw e
+			});
 		}
 	},
 
@@ -2622,6 +2624,9 @@ StorageUtil = {
 		try {
 			return window.localStorage;
 		} catch (e) {
+			setTimeout(() => {
+				throw e
+			});
 			// if the user has disabled cookies, build a fake version
 			return {
 				isFake: true,
@@ -2696,6 +2701,9 @@ BrewUtil = {
 			} catch (e) {
 				// on error, purge all brew and reset hash
 				purgeBrew();
+				setTimeout(() => {
+					throw e
+				});
 			}
 		}
 
@@ -3678,6 +3686,9 @@ ExcludeUtil = {
 				ExcludeUtil.storage.removeItem(EXCLUDES_STORAGE);
 				ExcludeUtil._excludes = null;
 				window.location.hash = "";
+				setTimeout(() => {
+					throw e
+				});
 			}
 		} else {
 			ExcludeUtil._excludes = [];
