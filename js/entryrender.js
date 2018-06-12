@@ -272,7 +272,7 @@ function EntryRenderer () {
 				// list items
 				case "item":
 					renderPrefix();
-					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p><span class="bold">${entry.name}</span> `, suffix: "</p>"});
+					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p><span class="bold list-item-title">${entry.name}</span> `, suffix: "</p>"});
 					renderSuffix();
 					break;
 				case "itemSpell":
@@ -2821,6 +2821,9 @@ EntryRenderer.dice = {
 		function attemptToGetTitle () {
 			// try use table caption
 			let titleMaybe = $(ele).closest(`table`).find(`caption`).text();
+			if (titleMaybe) return titleMaybe;
+			// ty use list item title
+			titleMaybe = $(ele).parent().children(`.list-item-title`).text();
 			if (titleMaybe) return titleMaybe;
 			// try use stats table name row
 			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`th.name .stats-name`).text();
