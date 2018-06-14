@@ -13,6 +13,7 @@ const existing = [];
 
 require("./check-links");
 
+// FIXME use something that doesn't attach object prototypes -- https://github.com/tdegrunt/jsonschema/issues/261
 // TODO modular argument system?
 if (process.argv[2] !== "noschema") {
 	console.log(`##### Validating the JSON schemata #####`);
