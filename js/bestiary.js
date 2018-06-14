@@ -542,7 +542,7 @@ function loadhash (id) {
 			return `<span class="btn btn-xs btn-default btn-mon-name-pronounce">
 				<span class="glyphicon glyphicon-volume-up mon-name-pronounce-icon"></span>
 				<audio class="mon-name-pronounce">
-				   <source src="${mon.soundClipName}" type="audio/mpeg">
+				   <source src="${mon.soundClip}" type="audio/mpeg">
 				</audio>
 			</span>`;
 		}
@@ -550,7 +550,7 @@ function loadhash (id) {
 		const imgLink = mon.tokenURL || UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
 		$content.find("th.name").html(
 			`<span class="stats-name">${name}</span>
-			${mon.soundClipName ? getPronunciationButton() : ""}
+			${mon.soundClip ? getPronunciationButton() : ""}
 		<span class="stats-source source${source}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>
 		<a href="${imgLink}" target="_blank">
 			<img src="${imgLink}" class="token" onerror="imgError(this)">
