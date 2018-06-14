@@ -355,7 +355,7 @@ function EntryRenderer () {
 
 			let autoMkRoller = false;
 			if (entry.colLabels) {
-				autoMkRoller = entry.colLabels.length === 2 && RollerUtil.isRollCol(entry.colLabels[0]);
+				autoMkRoller = entry.colLabels.length >= 2 && RollerUtil.isRollCol(entry.colLabels[0]);
 				if (autoMkRoller) {
 					// scan the first column to ensure all rollable
 					const notRollable = entry.rows.find(it => {
