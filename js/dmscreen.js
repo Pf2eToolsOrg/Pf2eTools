@@ -2172,6 +2172,8 @@ class InitiativeTracker {
 						curHp = Number(curHp) + temp;
 					} else if (/[-+]/.exec(nxt)) {
 						curHp = temp;
+					} else {
+						curHp = Number(nxt);
 					}
 					$iptHp.val(curHp);
 				}
