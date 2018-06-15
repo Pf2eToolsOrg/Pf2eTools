@@ -591,6 +591,8 @@ class FilterBox {
 
 			History.setSuppressHistory(true);
 			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
+
+			this._fireValChangeEvent();
 		}
 	}
 

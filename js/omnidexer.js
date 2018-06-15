@@ -179,6 +179,14 @@ Omnidexer.TO_INDEX = [
 		hover: true
 	},
 	{
+		category: 4,
+		file: "items.json",
+		page: "page",
+		listProp: "itemGroup",
+		baseUrl: "items.html",
+		hover: true
+	},
+	{
 		category: 9,
 		file: "psionics.json",
 		listProp: "psionic",

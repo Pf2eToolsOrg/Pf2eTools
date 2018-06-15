@@ -1816,7 +1816,7 @@ EntryRenderer.item = {
 	 * @param callback
 	 * @param urls optional overrides for default URLs
 	 */
-	buildList: function (callback, urls) {
+	buildList: function (callback, urls, addGroups) {
 		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
 
 		if (!urls) urls = {};
@@ -1833,6 +1833,7 @@ EntryRenderer.item = {
 
 		function addBasicItems (itemData) {
 			itemList = itemData.item;
+			if (addGroups) itemList = itemList.concat(itemData.itemGroup || []);
 			DataUtil.loadJSON(basicItemUrl).then(addVariants);
 		}
 
@@ -1994,9 +1995,9 @@ EntryRenderer.item = {
 		}
 	},
 
-	promiseData: (urls) => {
+	promiseData: (urls, addGroups) => {
 		return new Promise((resolve, reject) => {
-			EntryRenderer.item.buildList((data) => resolve({item: data}), urls);
+			EntryRenderer.item.buildList((data) => resolve({item: data}), urls, addGroups);
 		});
 	},
 
@@ -2258,7 +2259,7 @@ EntryRenderer.hover = {
 							EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
 						});
 						callbackFn();
-					});
+					}, {}, true);
 				} else {
 					callbackFn();
 				}

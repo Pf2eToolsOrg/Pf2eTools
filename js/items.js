@@ -4,7 +4,7 @@ window.onload = function load () {
 	ExcludeUtil.initialise();
 	EntryRenderer.item.buildList((incItemList) => {
 		populateTablesAndFilters(incItemList);
-	});
+	}, {}, true);
 };
 
 function rarityValue (rarity) { // Ordered by most frequently occurring rarities in the JSON
