@@ -684,7 +684,8 @@ function sectClassTraining () {
 function sectLifeEvents () {
 	const $events = $(`#events`).empty();
 	marriageIndex = 0;
-	const age = _getFromTable(LIFE_EVENTS_AGE, RNG(100));
+	const $selAge = $(`#age`);
+	const age = _getFromTable(LIFE_EVENTS_AGE, Number($selAge.val()) || RNG(100));
 	$events.append(`<b>Current age:</b> ${age.result} ${fmtChoice(`${age.age} year${age.age > 1 ? "s" : ""} old`)}`);
 	for (let i = 0; i < age.events; ++i) {
 		$events.append(`<h5>Life Event ${i + 1}</h5>`);
@@ -717,3 +718,13 @@ function roll () {
 	sectClassTraining();
 	sectLifeEvents();
 }
+
+window.addEventListener("load", () => {
+	$(`#age`).on("change", function () {
+		if ($(this).val()) {
+			$(this).addClass("italic")
+		} else {
+			$(this).removeClass("italic")
+		}
+	});
+});
