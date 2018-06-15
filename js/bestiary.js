@@ -37,8 +37,8 @@ function getAllImmRest (toParse, key) {
 	return out;
 }
 
-function basename(str, sep) {
-    return str.substr(str.lastIndexOf(sep) + 1);
+function basename (str, sep) {
+	return str.substr(str.lastIndexOf(sep) + 1);
 }
 
 const meta = {};
