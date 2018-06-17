@@ -2708,13 +2708,13 @@ BrewUtil = {
 					});
 				}
 			}
+		}
 
-			function purgeBrew () {
-				window.alert("Error when loading homebrew! Purging corrupt data...");
-				BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
-				BrewUtil.homebrew = null;
-				window.location.hash = "";
-			}
+		function purgeBrew () {
+			window.alert("Error when loading homebrew! Purging corrupt data...");
+			BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
+			BrewUtil.homebrew = null;
+			window.location.hash = "";
 		}
 	},
 
