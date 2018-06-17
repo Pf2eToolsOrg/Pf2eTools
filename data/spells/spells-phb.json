@@ -1548,9 +1548,6 @@
 				"Life-preserving energy radiates from you in an aura with a 30-foot radius. Until the spell ends, the aura moves with you, centered on you. Each non-hostile creature in the aura (including you) has resistance to necrotic damage, and its hit point maximum can't be reduced. In addition, a non-hostile, living creature regains 1 hit point when it starts its turn in the aura with 0 hit points."
 			],
 			"page": 216,
-			"damageInflict": [
-				"necrotic"
-			],
 			"damageResist": [
 				"necrotic"
 			]
@@ -10662,8 +10659,8 @@
 				"For the spell's duration, or until you use an action to touch the target and dismiss the spell, the target appears dead to all outward inspection and to spells used to determine the target's status. The target is {@condition blinded} and {@condition incapacitated}, and its speed drops to 0. The target has resistance to all damage except psychic damage. If the target is diseased or {@condition poisoned} when you cast the spell, or becomes diseased or {@condition poisoned} while under the spell's effect, the disease and poison have no effect until the spell ends."
 			],
 			"page": 240,
-			"damageInflict": [
-				"psychic"
+			"damageResist": [
+				"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "radiant", "slashing", "thunder"
 			]
 		},
 		{
@@ -17469,9 +17466,6 @@
 				}
 			],
 			"page": 258,
-			"damageInflict": [
-				"thunder"
-			],
 			"opposedCheck": [
 				"intelligence"
 			]
@@ -23650,13 +23644,7 @@
 			"entries": [
 				"For the duration, no sound can be created within or pass through a 20-foot-radius sphere centered on a point you choose within range. Any creature or object entirely inside the sphere is immune to thunder damage, and creatures are {@condition deafened} while entirely inside it. Casting a spell that includes a verbal component is impossible there."
 			],
-			"page": 275,
-			"damageInflict": [
-				"thunder"
-			],
-			"damageImmune": [
-				"thunder"
-			]
+			"page": 275
 		},
 		{
 			"name": "Silent Image",
@@ -25094,7 +25082,7 @@
 				"This spell turns the flesh of a willing creature you touch as hard as stone. Until the spell ends, the target has resistance to nonmagical bludgeoning, piercing, and slashing damage."
 			],
 			"page": 278,
-			"damageInflict": [
+			"damageResist": [
 				"bludgeoning",
 				"piercing",
 				"slashing"
@@ -27368,8 +27356,7 @@
 			],
 			"page": 285,
 			"damageInflict": [
-				"cold",
-				"fire"
+				"cold"
 			],
 			"savingThrow": [
 				"dexterity",
