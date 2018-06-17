@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"title": "SpellsArray",
 	"type": "object",
 
@@ -254,6 +254,10 @@
 							"strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"
 						]
 					}
+				},
+				"permanentEffects": {
+					"description": "Used to flag spells that can/will have permanent effects, but are not listed as having permanent duration",
+					"type": "boolean"
 				}
 			},
 			"required": [

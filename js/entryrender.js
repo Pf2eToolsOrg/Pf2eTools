@@ -549,7 +549,7 @@ function EntryRenderer () {
 
 		function _getStyleClass (source) {
 			const outList = [];
-			if (isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
+			if (SourceUtil.isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
 			if (BrewUtil.hasSourceJson(source)) outList.push(CLSS_HOMEBREW_SOURCE);
 			return outList.join(" ");
 		}

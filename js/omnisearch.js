@@ -111,10 +111,10 @@ const Omnisearch = {
 			}
 
 			if (!doShow3pp()) {
-				results = results.filter(r => r.doc.s && !_isNonStandardSource3pp(r.doc.s));
+				results = results.filter(r => r.doc.s && !SourceUtil._isNonstandardSource3pp(r.doc.s));
 			}
 			if (!doShowUaEtc()) {
-				results = results.filter(r => r.doc.s && !_isNonStandardSourceWiz(r.doc.s));
+				results = results.filter(r => r.doc.s && !SourceUtil._isNonstandardSourceWiz(r.doc.s));
 			}
 
 			if (results.length) {

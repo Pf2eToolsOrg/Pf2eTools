@@ -104,7 +104,7 @@ class ClassList {
 			const curClass = newClasses[i];
 			if (ExcludeUtil.isExcluded(curClass.name, "class", curClass.source)) continue;
 
-			curClass._fSource = isNonstandardSource(curClass.source) ? "Others" : "Core";
+			curClass._fSource = SourceUtil.isNonstandardSource(curClass.source) ? "Others" : "Core";
 			const id = i + previousClassAmount;
 			tempString += ClassList._renderClass(curClass, id);
 		}
@@ -134,7 +134,7 @@ class ClassData {
 
 		ClassData.sortSubclasses(newClasses);
 
-		newClasses.filter(c => isNonstandardSource(c.source) || BrewUtil.hasSourceJson(c.source))
+		newClasses.filter(c => SourceUtil.isNonstandardSource(c.source) || BrewUtil.hasSourceJson(c.source))
 			.forEach(ClassData.markSameSourceSubclassesAsForceStandard);
 
 		ClassData.classes = ClassData.classes.concat(newClasses);
@@ -221,7 +221,7 @@ ClassData.classes = [];
 class FeatureDescription {
 	static getSubclassStyles (sc) {
 		const styleClasses = [CLSS_SUBCLASS_FEATURE];
-		const nonStandard = isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source);
+		const nonStandard = SourceUtil.isNonstandardSource(sc.source) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source);
 		if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 		if (FeatureDescription.subclassIsFreshUa(sc)) styleClasses.push(CLSS_FRESH_UA);
 		if (BrewUtil.hasSourceJson(ClassData.cleanScSource(sc.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
@@ -230,7 +230,7 @@ class FeatureDescription {
 
 	static subclassIsFreshUa (sc) {
 		// only tag reprinted UA
-		if (isNonstandardSource(sc.source) || hasBeenReprinted(sc.shortName, sc.source)) {
+		if (SourceUtil.isNonstandardSource(sc.source) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source)) {
 			// special cases
 			if (sc.name === "Knowledge Domain (PSA)" && sc.source === SRC_PSA) return false;
 			if (sc.name === "Deep Stalker (UA)" && sc.source === SRC_UALDR) return false;
@@ -238,7 +238,7 @@ class FeatureDescription {
 			if (sc.name === "Shadow (UA)" && sc.source === SRC_UALDR) return false;
 			if (sc.name === "The Undying Light (UA)" && sc.source === SRC_UALDR) return false;
 
-			const nonUa = ClassDisplay.curClass.subclasses.find(pub => !isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === pub.name);
+			const nonUa = ClassDisplay.curClass.subclasses.find(pub => !SourceUtil.isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === pub.name);
 			if (nonUa) return false;
 		}
 		return true;
@@ -449,12 +449,12 @@ class HashLoad {
 			});
 		for (let i = 0; i < subClasses.length; i++) {
 			const subClass = subClasses[i];
-			const nonStandardSource = isNonstandardSource(subClass.source) || hasBeenReprinted(subClass.shortName, subClass.source);
+			const nonStandardSource = SourceUtil.isNonstandardSource(subClass.source) || SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source);
 			const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
 			if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 			if (FeatureDescription.subclassIsFreshUa(subClass)) styleClasses.push(CLSS_FRESH_UA);
 			if (BrewUtil.hasSourceJson(ClassData.cleanScSource(subClass.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
-			const pillText = hasBeenReprinted(subClass.shortName, subClass.source) ? `${subClass.shortName} (${Parser.sourceJsonToAbv(subClass.source)})`
+			const pillText = SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source) ? `${subClass.shortName} (${Parser.sourceJsonToAbv(subClass.source)})`
 				: subClass.shortName;
 			const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${
 				ClassData.cleanScSource(subClass.source)}" title="Source: ${Parser.sourceJsonToFull(subClass.source)}"><span>${pillText}</span></span>`);
@@ -1077,7 +1077,7 @@ class ClassBookView {
 		$pnlMenu.append($cfToggle);
 
 		ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
-			const name = hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
+			const name = SourceUtil.hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 			const styles = FeatureDescription.getSubclassStyles(sc);
 			const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
 

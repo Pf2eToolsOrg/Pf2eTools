@@ -1001,7 +1001,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes) {
 			const nm = c.subclass.name;
 			const src = c.subclass.source;
 			const toAdd = Parser._spSubclassItem(c);
-			if (hasBeenReprinted(nm, src)) {
+			if (SourceUtil.hasBeenReprinted(nm, src)) {
 				out[1].push(toAdd);
 			} else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
 				const cleanName = mapClassShortNameToMostRecent(nm.split("(")[0].trim().split(/v\d+/)[0].trim());
@@ -1517,45 +1517,47 @@ Parser.NUMBERS_TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 's
 Parser.NUMBERS_TEENS = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
 // SOURCES =============================================================================================================
-function hasBeenReprinted (shortName, source) {
-	/* can accept sources of the form:
-	{
-		"source": "UAExample",
-		"forceStandard": true
-	}
-	 */
-	if (source && source.source) source = source.source;
-	return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
-		(
-			(shortName === "Sun Soul" && source === SRC_SCAG) ||
-			(shortName === "Mastermind" && source === SRC_SCAG) ||
-			(shortName === "Swashbuckler" && source === SRC_SCAG) ||
-			(shortName === "Storm" && source === SRC_SCAG) ||
-			(shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
-		);
-}
+SourceUtil = {
+	hasBeenReprinted (shortName, source) {
+		/* can accept sources of the form:
+		{
+			"source": "UAExample",
+			"forceStandard": true
+		}
+		 */
+		if (source && source.source) source = source.source;
+		return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
+			(
+				(shortName === "Sun Soul" && source === SRC_SCAG) ||
+				(shortName === "Mastermind" && source === SRC_SCAG) ||
+				(shortName === "Swashbuckler" && source === SRC_SCAG) ||
+				(shortName === "Storm" && source === SRC_SCAG) ||
+				(shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
+			);
+	},
 
-function isNonstandardSource (source) {
-	/* can accept sources of the form:
-	{
-		"source": "UAExample",
-		"forceStandard": true
-	}
-	 */
-	if (source && source.forceStandard !== undefined) {
-		return !source.forceStandard;
-	}
-	if (source && source.source) source = source.source;
-	return (source !== undefined && source !== null) && (_isNonStandardSourceWiz(source) || _isNonStandardSource3pp(source));
-}
+	isNonstandardSource (source) {
+		/* can accept sources of the form:
+		{
+			"source": "UAExample",
+			"forceStandard": true
+		}
+		 */
+		if (source && source.forceStandard !== undefined) {
+			return !source.forceStandard;
+		}
+		if (source && source.source) source = source.source;
+		return (source !== undefined && source !== null) && (SourceUtil._isNonstandardSourceWiz(source) || SourceUtil._isNonstandardSource3pp(source));
+	},
 
-function _isNonStandardSourceWiz (source) {
-	return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER;
-}
+	_isNonstandardSourceWiz (source) {
+		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER;
+	},
 
-function _isNonStandardSource3pp (source) {
-	return source.endsWith(SRC_3PP_SUFFIX);
-}
+	_isNonstandardSource3pp (source) {
+		return source.endsWith(SRC_3PP_SUFFIX);
+	}
+};
 
 // CONVENIENCE/ELEMENTS ================================================================================================
 function xor (a, b) {
@@ -2192,7 +2194,7 @@ function getSourceFilter (options) {
 }
 
 function defaultSourceDeselFn (val) {
-	return isNonstandardSource(val);
+	return SourceUtil.isNonstandardSource(val);
 }
 
 function defaultSourceSelFn (val) {

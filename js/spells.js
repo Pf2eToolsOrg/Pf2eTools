@@ -9,6 +9,7 @@ const META_ADD_V = "Verbal";
 const META_ADD_S = "Somatic";
 const META_ADD_M = "Material";
 const META_ADD_M_COST = "Material with Cost";
+const META_ADD_MB_PERMANENT = "Permanent Effects";
 // real meta tags
 const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
@@ -202,6 +203,7 @@ function getMetaFilterObj (s) {
 	if (s.components.s) out.push(META_ADD_S);
 	if (s.components.m) out.push(META_ADD_M);
 	if (s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
+	if (s.permanentEffects) out.push(META_ADD_MB_PERMANENT);
 	return out;
 }
 
@@ -241,7 +243,7 @@ const subclassFilter = new Filter({header: "Subclass"});
 const classAndSubclassFilter = new MultiFilter("Classes", classFilter, subclassFilter);
 const metaFilter = new Filter({
 	header: "Components/Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_RITUAL, META_TECHNOMAGIC]
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_RITUAL, META_TECHNOMAGIC, META_ADD_MB_PERMANENT]
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -286,6 +288,16 @@ const timeFilter = new Filter({
 	],
 	displayFn: getTimeDisplay
 });
+const durationFilter = new Filter({
+	header: "Duration",
+	items: [
+		"instant",
+		"timed",
+		"permanent",
+		"special"
+	],
+	displayFn: StrUtil.uppercaseFirst
+});
 const rangeFilter = new Filter({
 	header: "Range",
 	items: [
@@ -306,6 +318,7 @@ const filterBox = initFilterBox(
 	saveFilter,
 	checkFilter,
 	timeFilter,
+	durationFilter,
 	rangeFilter
 );
 
@@ -401,6 +414,7 @@ function handleFilterChange () {
 			s.savingThrow,
 			s.opposedCheck,
 			s._fTimeType,
+			s._fDurationType,
 			s._fRangeType
 		);
 	});
@@ -468,6 +482,7 @@ function addSpells (data) {
 		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
 		spell._fSubclasses = spell.classes.fromSubclass ? spell.classes.fromSubclass.map(c => getClassFilterStr(c.subclass)) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);
+		spell._fDurationType = spell.duration.map(t => t.type);
 		spell._fRangeType = getRangeType(spell.range);
 
 		// populate table
