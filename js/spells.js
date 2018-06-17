@@ -203,7 +203,7 @@ function getMetaFilterObj (s) {
 	if (s.components.s) out.push(META_ADD_S);
 	if (s.components.m) out.push(META_ADD_M);
 	if (s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
-	if (s.permanentEffects) out.push(META_ADD_MB_PERMANENT);
+	if (s.permanentEffects || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
 	return out;
 }
 
