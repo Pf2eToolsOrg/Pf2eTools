@@ -2690,25 +2690,29 @@ BrewUtil = {
 	},
 
 	addBrewData: (brewHandler) => {
-		const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
-		if (rawBrew) {
-			try {
-				BrewUtil.homebrew = JSON.parse(rawBrew);
-				brewHandler(BrewUtil.homebrew);
-			} catch (e) {
-				// on error, purge all brew and reset hash
-				purgeBrew();
-				setTimeout(() => {
-					throw e
-				});
+		if (BrewUtil.homebrew) {
+			brewHandler(BrewUtil.homebrew);
+		} else {
+			const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
+			if (rawBrew) {
+				try {
+					BrewUtil.homebrew = JSON.parse(rawBrew);
+					brewHandler(BrewUtil.homebrew);
+				} catch (e) {
+					// on error, purge all brew and reset hash
+					purgeBrew();
+					setTimeout(() => {
+						throw e
+					});
+				}
 			}
-		}
 
-		function purgeBrew () {
-			window.alert("Error when loading homebrew! Purging corrupt data...");
-			BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
-			BrewUtil.homebrew = null;
-			window.location.hash = "";
+			function purgeBrew () {
+				window.alert("Error when loading homebrew! Purging corrupt data...");
+				BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
+				BrewUtil.homebrew = null;
+				window.location.hash = "";
+			}
 		}
 	},
 
@@ -3098,6 +3102,7 @@ BrewUtil = {
 				case "hazard":
 				case "deity":
 				case "item":
+				case "itemProperty":
 				case "reward":
 				case "psionic":
 				case "variantrule":
@@ -3161,7 +3166,8 @@ BrewUtil = {
 		}
 
 		// prepare for storage
-		["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup"].forEach(storePrep);
+		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup"];
+		storable.forEach(storePrep);
 
 		// store
 		function checkAndAdd (prop) {
@@ -3192,45 +3198,13 @@ BrewUtil = {
 		}
 
 		let sourcesToAdd = json._meta ? json._meta.sources : [];
-		let classesToAdd = json.class;
-		let subclassesToAdd = json.subclass;
-		let spellsToAdd = json.spell;
-		let monstersToAdd = json.monster;
-		let backgroundsToAdd = json.background;
-		let featsToAdd = json.feat;
-		let invocationsToAdd = json.invocation;
-		let racesToAdd = json.race;
-		let objectsToAdd = json.object;
-		let trapsToAdd = json.trap;
-		let hazardsToAdd = json.hazard;
-		let deitiesToAdd = json.deity;
-		let itemsToAdd = json.item;
-		let rewardsToAdd = json.reward;
-		let psionicsToAdd = json.psionic;
-		let variantRulesToAdd = json.variantrule;
-		let legendaryGroupsToAdd = json.legendaryGroup;
+		const toAdd = {};
+		storable.forEach(k => toAdd[k] = json[k]);
 		if (!BrewUtil.homebrew) {
 			BrewUtil.homebrew = json;
 		} else {
 			sourcesToAdd = checkAndAddSources(); // adding source(s) to Filter should happen in per-page addX functions
-			// only add if unique ID not already present
-			classesToAdd = checkAndAdd("class");
-			subclassesToAdd = checkAndAdd("subclass");
-			spellsToAdd = checkAndAdd("spell");
-			monstersToAdd = checkAndAdd("monster");
-			backgroundsToAdd = checkAndAdd("background");
-			featsToAdd = checkAndAdd("feat");
-			invocationsToAdd = checkAndAdd("invocation");
-			racesToAdd = checkAndAdd("race");
-			objectsToAdd = checkAndAdd("object");
-			trapsToAdd = checkAndAdd("trap");
-			hazardsToAdd = checkAndAdd("hazard");
-			deitiesToAdd = checkAndAdd("deity");
-			itemsToAdd = checkAndAdd("item");
-			rewardsToAdd = checkAndAdd("reward");
-			psionicsToAdd = checkAndAdd("psionic");
-			variantRulesToAdd = checkAndAdd("variantrule");
-			legendaryGroupsToAdd = checkAndAdd("legendaryGroup");
+			storable.forEach(k => toAdd[k] = checkAndAdd(k)); // only add if unique ID not already present
 		}
 		BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 
@@ -3240,49 +3214,51 @@ BrewUtil = {
 		// display on page
 		switch (page) {
 			case UrlUtil.PG_SPELLS:
-				addSpells(spellsToAdd);
+				addSpells(toAdd.spell);
 				break;
 			case UrlUtil.PG_CLASSES:
-				addClassData({class: classesToAdd});
-				addSubclassData({subclass: subclassesToAdd});
+				addClassData({class: toAdd.class});
+				addSubclassData({subclass: toAdd.subclass});
 				break;
 			case UrlUtil.PG_BESTIARY:
-				addLegendaryGroups(legendaryGroupsToAdd);
-				addMonsters(monstersToAdd);
+				addLegendaryGroups(toAdd.legendaryGroup);
+				addMonsters(toAdd.monster);
 				break;
 			case UrlUtil.PG_BACKGROUNDS:
-				addBackgrounds({background: backgroundsToAdd});
+				addBackgrounds({background: toAdd.background});
 				break;
 			case UrlUtil.PG_FEATS:
-				addFeats({feat: featsToAdd});
+				addFeats({feat: toAdd.feat});
 				break;
 			case UrlUtil.PG_INVOCATIONS:
-				addInvocations({invocation: invocationsToAdd});
+				addInvocations({invocation: toAdd.invocation});
 				break;
 			case UrlUtil.PG_RACES:
-				addRaces({race: racesToAdd});
+				addRaces({race: toAdd.race});
 				break;
 			case UrlUtil.PG_OBJECTS:
-				addObjects({object: objectsToAdd});
+				addObjects({object: toAdd.object});
 				break;
 			case UrlUtil.PG_TRAPS_HAZARDS:
-				addTrapsHazards({trap: trapsToAdd});
-				addTrapsHazards({hazard: hazardsToAdd});
+				addTrapsHazards({trap: toAdd.trap});
+				addTrapsHazards({hazard: toAdd.hazard});
 				break;
 			case UrlUtil.PG_DEITIES:
-				addDeities({deity: deitiesToAdd});
+				addDeities({deity: toAdd.deity});
 				break;
 			case UrlUtil.PG_ITEMS:
-				addItems(itemsToAdd);
+				(toAdd.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
+				(toAdd.itemType || []).forEach(t => EntryRenderer.item._addType(t));
+				addItems(toAdd.item);
 				break;
 			case UrlUtil.PG_REWARDS:
-				addRewards({reward: rewardsToAdd});
+				addRewards({reward: toAdd.reward});
 				break;
 			case UrlUtil.PG_PSIONICS:
-				addPsionics({psionic: psionicsToAdd});
+				addPsionics({psionic: toAdd.psionic});
 				break;
 			case UrlUtil.PG_VARIATNRULES:
-				addVariantRules({variantrule: variantRulesToAdd});
+				addVariantRules({variantrule: toAdd.variantrule});
 				break;
 			case "NO_PAGE":
 				break;

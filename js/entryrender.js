@@ -1811,10 +1811,17 @@ EntryRenderer.item = {
 			"entries": t.entries
 		};
 	},
+	_addBrewPropertiesAndTypes () {
+		BrewUtil.addBrewData((brew) => {
+			(brew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
+			(brew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
+		});
+	},
 	/**
 	 * Runs callback with itemList as argument
 	 * @param callback
 	 * @param urls optional overrides for default URLs
+	 * @addGroups whether item groups should be included
 	 */
 	buildList: function (callback, urls, addGroups) {
 		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
@@ -1842,6 +1849,7 @@ EntryRenderer.item = {
 			// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 			basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
 			basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
+			EntryRenderer.item._addBrewPropertiesAndTypes();
 			DataUtil.loadJSON(magicVariantUrl).then(mergeBasicItems);
 		}
 
@@ -2006,6 +2014,7 @@ EntryRenderer.item = {
 			try {
 				data.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
 				data.itemType.forEach(t => EntryRenderer.item._addType(t));
+				EntryRenderer.item._addBrewPropertiesAndTypes();
 				Promise.resolve();
 			} catch (e) {
 				Promise.reject(e);
