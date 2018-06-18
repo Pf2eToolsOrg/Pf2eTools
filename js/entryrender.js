@@ -2441,8 +2441,8 @@ EntryRenderer.hover = {
 							panel.doPopulate_Stats(page, source, hash);
 							altTeardown();
 						}
+						this._dmScreen.resetHoveringButton();
 					}
-					this._dmScreen.resetHoveringButton();
 				}
 			})
 			.on(mouseMoveId, (evt) => {
