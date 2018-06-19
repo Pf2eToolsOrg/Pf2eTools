@@ -51,13 +51,18 @@ function onJsonLoad (data) {
 	ListUtil.initGenericPinnable();
 
 	addTrapsHazards(data);
-	BrewUtil.addBrewData(addTrapsHazards);
+	BrewUtil.addBrewData(handleBrew);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({list, filterBox, sourceFilter});
 
 	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+}
+
+function handleBrew (homebrew) {
+	addTrapsHazards({trap: homebrew.trap});
+	addTrapsHazards({hazard: homebrew.hazard});
 }
 
 let trapsAndHazardsList = [];

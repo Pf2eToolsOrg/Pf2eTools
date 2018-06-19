@@ -184,7 +184,7 @@ class ClassData {
 		const scData = data.subclass;
 		scData.forEach(subClass => {
 			// get the class
-			const c = ClassData.classes.find(c => c.name.toLowerCase() === subClass.class.toLowerCase());
+			const c = ClassData.classes.find(c => c.name.toLowerCase() === subClass.class.toLowerCase() && (c.source.source || c.source).toLowerCase() === (subClass.classSource || SRC_PHB));
 			if (!c) {
 				alert(`Could not add subclass; could not find class with name: ${subClass.class}`);
 				return;
@@ -1199,11 +1199,13 @@ let classTableDefault = $("#classtable").html();
 DataUtil.loadJSON(jsonURL).then((data) => {
 	addClassData(data);
 
-	BrewUtil.addBrewData((homebrew) => {
-		addClassData(homebrew);
-		addSubclassData(homebrew);
-	}, HOMEBREW_STORAGE);
+	BrewUtil.addBrewData(handleBrew);
 
 	History.initialLoad = false;
 	RollerUtil.addListRollButton();
 });
+
+function handleBrew (homebrew) {
+	addClassData(homebrew);
+	addSubclassData(homebrew);
+}

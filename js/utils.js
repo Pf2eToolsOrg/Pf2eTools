@@ -3245,17 +3245,17 @@ BrewUtil = {
 		BrewUtil._resetSourceCache();
 
 		// display on page
+		// FIXME this requires changing the addBrewData in the page JS, as well as here
+		// TODO complete refactoring so this alwayss call `handleBrew` which can be defined per-page
 		switch (page) {
 			case UrlUtil.PG_SPELLS:
-				addSpells(toAdd.spell);
+				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_CLASSES:
-				addClassData({class: toAdd.class});
-				addSubclassData({subclass: toAdd.subclass});
+				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_BESTIARY:
-				addLegendaryGroups(toAdd.legendaryGroup);
-				addMonsters(toAdd.monster);
+				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_BACKGROUNDS:
 				addBackgrounds({background: toAdd.background});
@@ -3273,16 +3273,13 @@ BrewUtil = {
 				addObjects({object: toAdd.object});
 				break;
 			case UrlUtil.PG_TRAPS_HAZARDS:
-				addTrapsHazards({trap: toAdd.trap});
-				addTrapsHazards({hazard: toAdd.hazard});
+				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_DEITIES:
 				addDeities({deity: toAdd.deity});
 				break;
 			case UrlUtil.PG_ITEMS:
-				(toAdd.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
-				(toAdd.itemType || []).forEach(t => EntryRenderer.item._addType(t));
-				addItems(toAdd.item);
+				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_REWARDS:
 				addRewards({reward: toAdd.reward});

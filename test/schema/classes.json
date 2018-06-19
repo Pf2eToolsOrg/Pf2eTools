@@ -107,6 +107,19 @@
 				},
 				"source": {
 					"type": "string"
+				},
+				"subclassSpells": {
+					"description": "Homebrew use only",
+					"type": "array",
+					"items": {"$ref": "#/definitions/spellRef"}
+				},
+				"class": {
+					"description": "Homebrew use only",
+					"type": "string"
+				},
+				"classSource": {
+					"description": "Homebrew use only",
+					"type": "string"
 				}
 			},
 			"required": [
@@ -268,6 +281,11 @@
 				},
 				"fluffPage": {
 					"type": "integer"
+				},
+				"classSpells": {
+					"description": "Homebrew use only",
+					"type": "array",
+					"items": {"$ref": "#/definitions/spellRef"}
 				}
 			},
 			"required": [
@@ -283,6 +301,29 @@
 				"subclasses"
 			],
 			"additionalProperties": false
+		},
+
+		"spellRef": {
+			"description": "A reference to a spell, linked by name and source. Assumes PHB as the source, if none is provided.",
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"name", "source"
+					]
+				},
+				{
+					"type": "string"
+				}
+			]
 		}
 	},
 

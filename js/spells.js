@@ -230,6 +230,7 @@ window.onload = function load () {
 
 let list;
 let spellBookView;
+let brewSpellClasses;
 const sourceFilter = getSourceFilter();
 const levelFilter = new Filter({
 	header: "Level",
@@ -382,6 +383,47 @@ function pageInit (loadedSources) {
 			return numShown;
 		}
 	);
+
+	// load homebrew class spell list addons
+	brewSpellClasses = {PHB: {}};
+	BrewUtil.addBrewData((homebrew) => {
+		function handleSubclass (className, classSource = SRC_PHB, sc) {
+			if (sc.subclassSpells) {
+				sc.subclassSpells.forEach(it => {
+					const name = typeof it === "string" ? it : it.name;
+					const source = typeof it === "string" ? "PHB" : it.source;
+					brewSpellClasses[source] = brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
+					brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
+					brewSpellClasses[source][name].fromSubclass.push({
+						class: {
+							name: className,
+							source: classSource
+						},
+						subclass: {
+							name: sc.shortName,
+							source: sc.source
+						}
+					});
+				});
+			}
+		}
+
+		if (homebrew.class) {
+			homebrew.class.forEach(c => {
+				if (c.classSpells) {
+					c.classSpells.forEach(it => {
+						const name = typeof it === "string" ? it : it.name;
+						const source = typeof it === "string" ? "PHB" : it.source;
+						brewSpellClasses[source] = brewSpellClasses[source] || {};
+						brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
+						brewSpellClasses[source][name].fromClassList.push({name: c.name, source: c.source});
+					});
+				}
+				if (c.subclasses) c.subclasses.forEach(sc => handleSubclass(c.name, c.source, sc));
+			})
+		}
+		if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
+	});
 }
 
 function getSublistItem (spell, pinId) {
@@ -470,6 +512,19 @@ function addSpells (data) {
 				class: {name: STR_SORCERER, source: SRC_PHB},
 				subclass: {name: STR_FAV_SOUL_V3, source: SRC_UARSC}
 			});
+		}
+
+		// add homebrew class/subclass
+		if (brewSpellClasses[spell.source] && brewSpellClasses[spell.source][spell.name]) {
+			spell.classes = spell.classes || {};
+			if (brewSpellClasses[spell.source][spell.name].fromClassList.length) {
+				spell.classes.fromClassList = spell.classes.fromClassList || [];
+				spell.classes.fromClassList = spell.classes.fromClassList.concat(brewSpellClasses[spell.source][spell.name].fromClassList);
+			}
+			if (brewSpellClasses[spell.source][spell.name].fromSubclass.length) {
+				spell.classes.fromSubclass = spell.classes.fromSubclass || [];
+				spell.classes.fromSubclass = spell.classes.fromSubclass.concat(brewSpellClasses[spell.source][spell.name].fromSubclass);
+			}
 		}
 
 		// used for sorting
