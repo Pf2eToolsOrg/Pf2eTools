@@ -1523,11 +1523,87 @@ EntryRenderer.object = {
 };
 
 EntryRenderer.traphazard = {
+	getSubtitle (it) {
+		const type = it.trapType || "HAZ";
+		switch (type) {
+			case "SMPL":
+			case "CMPX":
+				return `${Parser.trapTypeToFull(type)} (${Parser.tierToFullLevel(it.tier)}, ${Parser.threatToFull(it.threat)} threat)`;
+			default:
+				return Parser.trapTypeToFull(type);
+		}
+	},
+
+	getSimplePart (it) {
+		if (it.trapType === "SMPL") {
+			return renderer.renderEntry({
+				entries: [
+					{
+						type: "entries",
+						name: "Trigger",
+						entries: it.trigger
+					},
+					{
+						type: "entries",
+						name: "Effect",
+						entries: it.effect
+					},
+					{
+						type: "entries",
+						name: "Countermeasures",
+						entries: it.countermeasures
+					}
+				]
+			}, 1);
+		}
+		return "";
+	},
+
+	getComplexPart (it) {
+		if (it.trapType === "CMPX") {
+			return renderer.renderEntry({
+				entries: [
+					{
+						type: "entries",
+						name: "Trigger",
+						entries: it.trigger
+					},
+					{
+						type: "entries",
+						name: "Initiative",
+						entries: [`The trap acts on ${Parser.trapInitToFull(it.initiative)}${it.initiativeNote ? ` (${it.initiativeNote})` : ""}.`]
+					},
+					it.eActive ? {
+						type: "entries",
+						name: "Active Elements",
+						entries: it.eActive
+					} : null,
+					it.eDynamic ? {
+						type: "entries",
+						name: "Dynamic Elements",
+						entries: it.eDynamic
+					} : null,
+					it.eConstant ? {
+						type: "entries",
+						name: "Constant Elements",
+						entries: it.eConstant
+					} : null,
+					{
+						type: "entries",
+						name: "Countermeasures",
+						entries: it.countermeasures
+					}
+				].filter(it => it)
+			}, 1);
+		}
+		return "";
+	},
+
 	getCompactRenderedString: (it) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
 		return `
 			${EntryRenderer.utils.getNameTr(it, true)}
-			<tr class="text"><td colspan="6"><i>${Parser.trapTypeToFull(it.trapType || "HAZ")}</i></td>
+			<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i>${EntryRenderer.traphazard.getSimplePart(it)}${EntryRenderer.traphazard.getComplexPart(it)}</td>
 			<tr class="text"><td colspan="6">${renderer.renderEntry({entries: it.entries}, 2)}</td></tr>
 		`;
 	}
