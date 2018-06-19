@@ -1047,7 +1047,28 @@ Parser.trapTypeToFull = function (type) {
 Parser.TRAP_TYPE_TO_FULL = {};
 Parser.TRAP_TYPE_TO_FULL["MECH"] = "Mechanical trap";
 Parser.TRAP_TYPE_TO_FULL["MAG"] = "Magical trap";
+Parser.TRAP_TYPE_TO_FULL["SMPL"] = "Simple trap";
+Parser.TRAP_TYPE_TO_FULL["CMPX"] = "Complex trap";
 Parser.TRAP_TYPE_TO_FULL["HAZ"] = "Hazard";
+
+Parser.tierToFullLevel = function (tier) {
+	return Parser._parse_aToB(Parser.TIER_TO_FULL_LEVEL, tier);
+};
+
+Parser.TIER_TO_FULL_LEVEL = {};
+Parser.TIER_TO_FULL_LEVEL[1] = "level 1\u20144";
+Parser.TIER_TO_FULL_LEVEL[2] = "level 5\u201410";
+Parser.TIER_TO_FULL_LEVEL[3] = "level 11\u201416";
+Parser.TIER_TO_FULL_LEVEL[4] = "level 17\u201420";
+
+Parser.threatToFull = function (threat) {
+	return Parser._parse_aToB(Parser.THREAT_TO_FULL, threat);
+};
+
+Parser.THREAT_TO_FULL = {};
+Parser.THREAT_TO_FULL[1] = "moderate";
+Parser.THREAT_TO_FULL[2] = "dangerous";
+Parser.THREAT_TO_FULL[3] = "deadly";
 
 Parser.ATK_TYPE_TO_FULL = {};
 Parser.ATK_TYPE_TO_FULL["MW"] = "Melee Weapon Attack";

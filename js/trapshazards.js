@@ -89,6 +89,41 @@ function getSublistItem (it, pinId) {
 
 const renderer = EntryRenderer.getDefaultRenderer();
 function loadhash (jsonIndex) {
+	function getSubtitle () {
+		switch (it.trapType) {
+			case "SMPL":
+			case "CMPX":
+				return `${Parser.trapTypeToFull(it.trapType)} (${Parser.tierToFullLevel(it.tier)}, ${Parser.threatToFull(it.threat)} threat)`;
+			default:
+				return Parser.trapTypeToFull(it.trapType);
+		}
+	}
+
+	function getSimplePart () {
+		if (it.trapType === "SMPL") {
+			return renderer.renderEntry({
+				entries: [
+					{
+						type: "entries",
+						name: "Trigger",
+						entries: it.trigger
+					},
+					{
+						type: "entries",
+						name: "Effect",
+						entries: it.effect
+					},
+					{
+						type: "entries",
+						name: "Countermeasures",
+						entries: it.countermeasures
+					}
+				]
+			}, 1);
+		}
+		return "";
+	}
+
 	renderer.setFirstSection(true);
 	const it = trapsAndHazardsList[jsonIndex];
 
@@ -96,12 +131,13 @@ function loadhash (jsonIndex) {
 
 	renderer.recursiveEntryRender({entries: it.entries}, renderStack, 2);
 
+	const simplePart = getSimplePart();
 	const $content = $(`#pagecontent`).empty();
 	$content.append(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(it)}
-		<tr class="text"><td colspan="6"><i>${Parser.trapTypeToFull(it.trapType)}</i></td>
-		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
+		<tr class="text"><td colspan="6"><i>${getSubtitle()}</i></td>
+		<tr class="text"><td colspan="6">${renderStack.join("")}${simplePart || ""}</td></tr>
 		${EntryRenderer.utils.getPageTr(it)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
