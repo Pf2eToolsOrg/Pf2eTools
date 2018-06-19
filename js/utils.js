@@ -3168,6 +3168,7 @@ BrewUtil = {
 		}
 
 		// prepare for storage
+		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
 		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup"];
 		storable.forEach(storePrep);
 
