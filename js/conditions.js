@@ -58,12 +58,13 @@ function getSublistItem (cond, pinId) {
 
 function loadhash (id) {
 	entryRenderer.setFirstSection(true);
-	$("#pagecontent").html(tableDefault);
+	const $content = $("#pagecontent");
+	$content.html(tableDefault);
 	const curcondition = conditionList[id];
-	$("th.name").html(curcondition.name);
-	$("tr.text").remove();
+	$content.find("th.name").html(curcondition.name);
+	$content.find("tr.text").remove();
 	const entryList = {type: "entries", entries: curcondition.entries};
 	const textStack = [];
 	entryRenderer.recursiveEntryRender(entryList, textStack);
-	$("tr#text").after("<tr class='text'><td colspan='6'>" + textStack.join("") + "</td></tr>");
+	$content.find("tr#text").after(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
 }
