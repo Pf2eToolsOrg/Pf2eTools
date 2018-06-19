@@ -272,7 +272,15 @@ function EntryRenderer () {
 				// list items
 				case "item":
 					renderPrefix();
-					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p><span class="bold list-item-title">${entry.name}</span> `, suffix: "</p>"});
+					textStack.push(`<p><span class="bold list-item-title">${entry.name}</span> `);
+					if (entry.entry) this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: "", suffix: ""});
+					else if (entry.entries) entry.entries.forEach((nxt, i) => this.recursiveEntryRender(nxt, textStack, depth, {prefix: i > 0 ? `<span class="para-continue-indented">` : "", suffix: i > 0 ? "</span>" : ""}));
+					textStack.push("</p>");
+					renderSuffix();
+					break;
+				case "itemSub":
+					renderPrefix();
+					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p><span class="italic list-item-title">${entry.name}</span> `, suffix: "</p>"});
 					renderSuffix();
 					break;
 				case "itemSpell":
