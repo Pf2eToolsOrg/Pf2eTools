@@ -7,6 +7,8 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
+const sourceFilter = getSourceFilter();
+let filterBox;
 let list;
 function onJsonLoad (data) {
 	list = ListUtil.search({
@@ -14,6 +16,32 @@ function onJsonLoad (data) {
 		listClass: "trapshazards",
 		sortFunction: SortUtil.listSort
 	});
+
+	const typeFilter = new Filter({
+		header: "Type",
+		items: [
+			"MECH",
+			"MAG",
+			"SMPL",
+			"CMPX",
+			"HAZ"
+		],
+		displayFn: Parser.trapTypeToFull
+	});
+	filterBox = initFilterBox(
+		sourceFilter,
+		typeFilter
+	);
+
+	list.on("updated", () => {
+		filterBox.setCount(list.visibleItems.length, list.items.length);
+	});
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		handleFilterChange
+	);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "type", "id"],
@@ -25,9 +53,11 @@ function onJsonLoad (data) {
 	addTrapsHazards(data);
 	BrewUtil.addBrewData(addTrapsHazards);
 	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({list});
+	BrewUtil.bind({list, filterBox, sourceFilter});
 
 	History.init();
+	handleFilterChange();
+	RollerUtil.addListRollButton();
 }
 
 let trapsAndHazardsList = [];
@@ -57,13 +87,21 @@ function addTrapsHazards (data) {
 				</a>
 			</li>
 		`;
+
+		// populate filters
+		sourceFilter.addIfAbsent(it.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#trapsHazardsList`).append(tempString);
 
+	// sort filters
+	sourceFilter.items.sort(SortUtil.ascSort);
+
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
 	list.sort("name");
+	filterBox.render();
+	handleFilterChange();
 
 	ListUtil.setOptions({
 		itemList: trapsAndHazardsList,
@@ -72,7 +110,24 @@ function addTrapsHazards (data) {
 	});
 	ListUtil.bindPinButton();
 	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 	ListUtil.loadState();
+}
+
+// filtering function
+function handleFilterChange () {
+	const f = filterBox.getValues();
+	list.filter(function (item) {
+		const it = trapsAndHazardsList[$(item.elm).attr(FLTR_ID)];
+		return filterBox.toDisplay(
+			f,
+			it.source,
+			it.trapType
+		);
+	});
+	FilterBox.nextIfHidden(trapsAndHazardsList);
 }
 
 function getSublistItem (it, pinId) {
