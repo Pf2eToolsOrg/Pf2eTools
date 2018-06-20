@@ -2957,7 +2957,7 @@ EntryRenderer.dice = {
 			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`th.name .stats-name`).text();
 			if (titleMaybe) return titleMaybe;
 			// otherwise, use the section title, where applicable
-			titleMaybe = $(ele).closest(`div`).find(`.entry-title`).first().text();
+			titleMaybe = $(ele).closest(`div`).children(`.entry-title`).first().text();
 			if (titleMaybe) {
 				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
 			}
