@@ -395,7 +395,7 @@ function loadparser (data) {
 	}
 
 	function setCleanDamageRes (stats, line) {
-		stats.resist = line.split("Resistances")[1].trim();
+		stats.resist = (line.includes("Resistances") ? line.split("Resistances") : line.split("Resistance"))[1].trim();
 		stats.resist = tryParseSpecialDamage(stats.resist, "resist");
 	}
 
@@ -728,7 +728,14 @@ function loadparser (data) {
 		}
 
 		function stripLeadingSymbols (line) {
-			return line.replace(/^[^A-Za-z0-9]*/, "").trim();
+			const removeFirstInnerStar = line.trim().startsWith("*");
+			const clean = line.replace(/^[^A-Za-z0-9]*/, "").trim();
+			return removeFirstInnerStar ? clean.replace(/\*/, "") : clean;
+		}
+
+		function isInlineHeader (line) {
+			// it should really start with "***" but, homebrew
+			return line.trim().startsWith("**");
 		}
 
 		const toConvert = getCleanInput(editor.getValue()).split("\n");
@@ -763,7 +770,7 @@ function loadparser (data) {
 		let trait = null;
 
 		function getCleanTraitText (line) {
-			return line.replace(/^\*\*\*/, "").split(/.\s*\*\*\*/).map(it => it.trim());
+			return line.replace(/^\*\*\*?/, "").split(/.\s*\*\*\*?/).map(it => it.trim());
 		}
 
 		function doAddFromParsed () {
@@ -835,7 +842,7 @@ function loadparser (data) {
 			curLineRaw = toConvert[i].trim();
 			curLine = toConvert[i].trim();
 
-			if (curLine === "" || curLine.toLowerCase() === "\\pagebreak") {
+			if (curLine === "" || curLine.toLowerCase() === "\\pagebreak" || curLine.toLowerCase() === "\\columnbreak") {
 				prevBlank = true;
 				continue;
 			} else nextPrevBlank = false;
@@ -843,7 +850,7 @@ function loadparser (data) {
 			if (curLine === "") continue;
 			else if (
 				(curLine === "___" && prevBlank) || // handle nicely separated blocks
-				curLineRaw === "___" // lines multiple stacked blocks
+				curLineRaw === "___" // handle multiple stacked blocks
 			) {
 				if (stats !== null) hasMultipleBlocks = true;
 				doOutputStatblock();
@@ -977,7 +984,7 @@ function loadparser (data) {
 
 			// traits
 			if (parsed === 9) {
-				if (curLine.includes("***")) {
+				if (isInlineHeader(curLine)) {
 					doAddTrait();
 					trait = {name: "", entries: []};
 					const [name, text] = getCleanTraitText(curLine);
@@ -990,7 +997,7 @@ function loadparser (data) {
 
 			// actions
 			if (parsed === 10) {
-				if (curLine.includes("***")) {
+				if (isInlineHeader(curLine)) {
 					doAddAction();
 					trait = {name: "", entries: []};
 					const [name, text] = getCleanTraitText(curLine);
@@ -1003,7 +1010,7 @@ function loadparser (data) {
 
 			// reactions
 			if (parsed === 11) {
-				if (curLine.includes("***")) {
+				if (isInlineHeader(curLine)) {
 					doAddReaction();
 					trait = {name: "", entries: []};
 					const [name, text] = getCleanTraitText(curLine);
@@ -1016,7 +1023,7 @@ function loadparser (data) {
 
 			// legendary actions
 			if (parsed === 12) {
-				if (curLine.includes("***")) {
+				if (isInlineHeader(curLine)) {
 					doAddLegendary();
 					trait = {name: "", entries: []};
 					const [name, text] = getCleanTraitText(curLine);
