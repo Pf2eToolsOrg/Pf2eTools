@@ -16,7 +16,7 @@ Be sure to close any running Chrome instances (and kill any remaining Chrome pro
  
 **Advanced:** Host the project locally on a dev webserver, perhaps using [this](https://github.com/cortesi/devd).
 
-## How to import 5etools beasts/spells/items into Roll20
+## How to import 5etools creatures/spells/items into Roll20
 1. Get Greasemonkey (Firefox) or Tampermonkey (Chrome).
 
 2. Click [here](https://github.com/TheGiddyLimit/5etoolsR20/raw/master/5etoolsR20.user.js) and install the script.
