@@ -1282,13 +1282,6 @@ SRC_UACAM = SRC_UA_PREFIX + "CentaursMinotaurs";
 SRC_UAGSS = SRC_UA_PREFIX + "GiantSoulSorcerer";
 
 SRC_3PP_SUFFIX = " 3pp";
-SRC_AL_3PP = "AL" + SRC_3PP_SUFFIX;
-SRC_BOLS_3PP = "BoLS" + SRC_3PP_SUFFIX;
-SRC_CC_3PP = "CC" + SRC_3PP_SUFFIX;
-SRC_FEF_3PP = "FEF" + SRC_3PP_SUFFIX;
-SRC_GDoF_3PP = "GDoF" + SRC_3PP_SUFFIX;
-SRC_ToB_3PP = "ToB" + SRC_3PP_SUFFIX;
-
 SRC_STREAM = "Stream";
 SRC_TWITTER = "Twitter";
 
@@ -1298,7 +1291,6 @@ PS_PREFIX = "Plane Shift: ";
 PS_PREFIX_SHORT = "PS: ";
 UA_PREFIX = "Unearthed Arcana: ";
 UA_PREFIX_SHORT = "UA: ";
-PP3_SUFFIX = " (3pp)";
 TftYP_NAME = "Tales from the Yawning Portal";
 
 Parser.SOURCE_JSON_TO_FULL = {};
@@ -1381,12 +1373,6 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UATSC] = UA_PREFIX + "Three Subclasses";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAOD] = UA_PREFIX + "Order Domain";
 Parser.SOURCE_JSON_TO_FULL[SRC_UACAM] = UA_PREFIX + "Centaurs and Minotaurs";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAGSS] = UA_PREFIX + "Giant Soul Sorcerer";
-Parser.SOURCE_JSON_TO_FULL[SRC_AL_3PP] = "Adventurers League" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_BOLS_3PP] = "Book of Lost Spells" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_CC_3PP] = "Critter Compendium" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_FEF_3PP] = "Fifth Edition Foes" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_GDoF_3PP] = "Gem Dragons of Faerûn" + PP3_SUFFIX;
-Parser.SOURCE_JSON_TO_FULL[SRC_ToB_3PP] = "Tome of Beasts" + PP3_SUFFIX;
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -1470,12 +1456,6 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UATSC] = "UATSC";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAOD] = "UAOD";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACAM] = "UACAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAGSS] = "UAGSS";
-Parser.SOURCE_JSON_TO_ABV[SRC_AL_3PP] = "AL (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_BOLS_3PP] = "BoLS (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_CC_3PP] = "CC (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_FEF_3PP] = "FEF (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_GDoF_3PP] = "GDoF (3pp)";
-Parser.SOURCE_JSON_TO_ABV[SRC_ToB_3PP] = "ToB (3pp)";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
