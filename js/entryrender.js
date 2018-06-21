@@ -836,6 +836,16 @@ function EntryRenderer () {
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							case "@boon":
+							case "@cult":
+								fauxEntry.href.path = "cultsboons.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_MTF;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_CULTS_BOONS,
+									source: source || SRC_MTF
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
 						}
 					}
 				} else {
@@ -1609,6 +1619,74 @@ EntryRenderer.traphazard = {
 	}
 };
 
+EntryRenderer.cultboon = {
+	doRenderCultParts (it, renderer, renderStack) {
+		if (it.goal || it.cultists || it.signaturespells) {
+			const fauxList = {
+				type: "list",
+				style: "list-hang-notitle",
+				items: []
+			};
+			if (it.goal) {
+				fauxList.items.push({
+					type: "item",
+					name: "Goals:",
+					entry: it.goal.entry
+				});
+			}
+
+			if (it.cultists) {
+				fauxList.items.push({
+					type: "item",
+					name: "Typical Cultists:",
+					entry: it.cultists.entry
+				});
+			}
+			if (it.signaturespells) {
+				fauxList.items.push({
+					type: "item",
+					name: "Signature Spells:",
+					entry: it.signaturespells.entry
+				});
+			}
+			renderer.recursiveEntryRender(fauxList, renderStack, 2);
+		}
+	},
+
+	doRenderBoonParts (it, renderer, renderStack) {
+		const benefits = {type: "list", style: "list-hang-notitle", items: []};
+		benefits.items.push({
+			type: "item",
+			name: "Ability Score Adjustment:",
+			entry: it.ability ? it.ability.entry : "None"
+		});
+		benefits.items.push({
+			type: "item",
+			name: "Signature Spells:",
+			entry: it.signaturespells ? it.signaturespells.entry : "None"
+		});
+		renderer.recursiveEntryRender(benefits, renderStack, 1);
+	},
+
+	getCompactRenderedString: (it) => {
+		const renderer = EntryRenderer.getDefaultRenderer();
+
+		const renderStack = [];
+		if (it._type === "c") {
+			EntryRenderer.cultboon.doRenderCultParts(it, renderer, renderStack);
+			renderer.recursiveEntryRender({entries: it.entries}, renderStack, 2);
+			return `${EntryRenderer.utils.getNameTr(it, true)}
+				<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+				<tr class='text'><td colspan='6' class='text'>${renderStack.join("")}</td></tr>`;
+		} else if (it._type === "b") {
+			EntryRenderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
+			renderer.recursiveEntryRender({entries: it.entries}, renderStack, 1);
+			return `${EntryRenderer.utils.getNameTr(it, true)}
+			<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
+		}
+	}
+};
+
 EntryRenderer.monster = {
 	getLegendaryActionIntro: (mon) => {
 		const legendaryActions = mon.legendaryActions || 3;
@@ -2283,9 +2361,15 @@ EntryRenderer.hover = {
 	},
 
 	_doFillThenCall: (page, source, hash, callbackFn) => {
-		function loadPopulate (data, listProp) {
+		/**
+		 * @param data the data
+		 * @param listProp list property in the data
+		 * @param itemModifier optional function to run per item; takes listProp and an item as parameters
+		 */
+		function loadPopulate (data, listProp, itemModifier) {
 			data[listProp].forEach(it => {
 				const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+				if (itemModifier) itemModifier(listProp, it);
 				EntryRenderer.hover._addToCache(page, it.source, itHash, it)
 			});
 		}
@@ -2309,15 +2393,15 @@ EntryRenderer.hover = {
 			}
 		}
 
-		function loadSimple (page, jsonFile, listProp) {
+		function loadSimple (page, jsonFile, listProp, itemModifier) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
 				BrewUtil.addBrewData((data) => {
 					if (!data[listProp]) return;
-					loadPopulate(data, listProp);
+					loadPopulate(data, listProp, itemModifier);
 				});
 				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`).then((data) => {
-					if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p));
-					else loadPopulate(data, listProp);
+					if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p, itemModifier));
+					else loadPopulate(data, listProp, itemModifier);
 					callbackFn();
 				});
 			} else {
@@ -2416,6 +2500,10 @@ EntryRenderer.hover = {
 			}
 			case UrlUtil.PG_VARIATNRULES: {
 				loadSimple(page, "variantrules.json", "variantrule");
+				break;
+			}
+			case UrlUtil.PG_CULTS_BOONS: {
+				loadSimple(page, "cultsboons.json", ["cult", "boon"], (listProp, item) => item._type = listProp === "cult" ? "c" : "b");
 				break;
 			}
 			default:
@@ -2665,6 +2753,8 @@ EntryRenderer.hover = {
 				return EntryRenderer.traphazard.getCompactRenderedString;
 			case UrlUtil.PG_VARIATNRULES:
 				return EntryRenderer.variantrule.getCompactRenderedString;
+			case UrlUtil.PG_CULTS_BOONS:
+				return EntryRenderer.cultboon.getCompactRenderedString;
 			default:
 				return null;
 		}

@@ -43,6 +43,7 @@ function navigation () {
 	LIDivider('ul_rules');
 	LI('ul_rules', 'book.html', "Dungeon Master's Guide", "DMG");
 	LI('ul_rules', 'book.html', "Monster Manual", "MM");
+	LI('ul_rules', 'book.html', "Mordenkainen's Tome of Foes", "MTF");
 	LI('ul_rules', 'book.html', "Player's Handbook", "PHB");
 
 	LIDropdown('navbar', 'players', 'dropdown');
