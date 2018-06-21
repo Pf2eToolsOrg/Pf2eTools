@@ -307,6 +307,20 @@ Omnidexer.TO_INDEX = [
 				}
 			});
 		}
+	},
+	{
+		category: 19,
+		file: "cultsboons.json",
+		listProp: "cult",
+		baseUrl: "cultsboons.html",
+		hover: true
+	},
+	{
+		category: 20,
+		file: "cultsboons.json",
+		listProp: "boon",
+		baseUrl: "cultsboons.html",
+		hover: true
 	}
 ];
 
