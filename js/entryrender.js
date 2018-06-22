@@ -866,7 +866,7 @@ function EntryRenderer () {
 					hash: procHash
 				};
 			}
-			return `onmouseover="EntryRenderer.hover.show(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}')"`
+			return `onmouseover="EntryRenderer.hover.mouseOver(); EntryRenderer.hover.show(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}')"`
 		}
 
 		let href;
@@ -2539,6 +2539,7 @@ EntryRenderer.hover = {
 		// if we've outrun the loading, restart
 		if (!EntryRenderer.hover._isCached(page, source, hash)) {
 			EntryRenderer.hover._showInProgress = false;
+			if ((new Date().getTime() - 5000) > EntryRenderer.hover.startTime) throw new Error(`Hover content for ${page}#${hash} took too long to load! Could this be a typo?`);
 			// pass a fake "event"
 			EntryRenderer.hover.show({shiftKey: permanent}, ele, page, source, hash);
 			return;
@@ -2758,6 +2759,11 @@ EntryRenderer.hover = {
 			default:
 				return null;
 		}
+	},
+
+	startTime: null,
+	mouseOver () {
+		EntryRenderer.hover.startTime = new Date().getTime();
 	},
 
 	_BAR_HEIGHT: 16,
