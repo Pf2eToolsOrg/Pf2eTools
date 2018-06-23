@@ -50,6 +50,7 @@ function onJsonLoad (data) {
 	BrewUtil.addBrewData(addConditions);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({list, filterBox, sourceFilter});
+	ListUtil.loadState();
 
 	History.init();
 	handleFilterChange();
@@ -105,7 +106,6 @@ function addConditions (data) {
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.loadState();
 }
 
 function getSublistItem (cond, pinId) {

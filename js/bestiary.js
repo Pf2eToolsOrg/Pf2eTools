@@ -90,6 +90,7 @@ window.onload = function load () {
 				BrewUtil.addBrewData(handleBrew);
 				BrewUtil.makeBrewButton("manage-brew");
 				BrewUtil.bind({list, filterBox, sourceFilter});
+				ListUtil.loadState();
 			});
 		});
 	});
@@ -419,7 +420,6 @@ function addMonsters (data) {
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(sublistFuncPreload);
-	ListUtil.loadState();
 
 	$(`body`).on("click", ".btn-mon-name-pronounce", function () {
 		const audio = $(this).find(`.mon-name-pronounce`)[0];

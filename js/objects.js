@@ -30,6 +30,7 @@ function onJsonLoad (data) {
 	BrewUtil.addBrewData(addObjects);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({list});
+	ListUtil.loadState();
 
 	History.init();
 }
@@ -71,7 +72,6 @@ function addObjects (data) {
 	});
 	ListUtil.bindPinButton();
 	EntryRenderer.hover.bindPopoutButton(objectsList);
-	ListUtil.loadState();
 }
 
 function getSublistItem (obj, pinId) {

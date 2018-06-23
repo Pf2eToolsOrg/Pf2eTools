@@ -45,6 +45,7 @@ function onJsonLoad (data) {
 	BrewUtil.addBrewData(addRewards);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({list, filterBox, sourceFilter});
+	ListUtil.loadState();
 
 	History.init();
 	handleFilterChange();
@@ -98,7 +99,6 @@ function addRewards (data) {
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.loadState();
 }
 
 function handleFilterChange () {

@@ -168,6 +168,7 @@ function populateTablesAndFilters (data) {
 	BrewUtil.addBrewData(handleBrew);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
+	ListUtil.loadState();
 
 	History.init();
 }
@@ -275,7 +276,6 @@ function addItems (data) {
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.loadState();
 }
 
 function handleFilterChange () {

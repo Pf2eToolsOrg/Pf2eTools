@@ -36,6 +36,7 @@ function onJsonLoad (data) {
 	BrewUtil.addBrewData(addBackgrounds);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({list, filterBox, sourceFilter});
+	ListUtil.loadState();
 
 	History.init();
 	handleFilterChange();
@@ -89,7 +90,6 @@ function addBackgrounds (data) {
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
-	ListUtil.loadState();
 }
 
 function handleFilterChange () {

@@ -225,6 +225,7 @@ window.onload = function load () {
 		BrewUtil.addBrewData(handleBrew);
 		BrewUtil.makeBrewButton("manage-brew");
 		BrewUtil.bind({list, filterBox, sourceFilter});
+		ListUtil.loadState();
 	});
 };
 
@@ -585,7 +586,6 @@ function addSpells (data) {
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(sublistFuncPreload);
-	ListUtil.loadState();
 }
 
 function sublistFuncPreload (json, funcOnload) {
