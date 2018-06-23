@@ -56,7 +56,6 @@ function onJsonLoad (data) {
 	RollerUtil.addListRollButton();
 }
 
-
 let conditionList = [];
 let cdI = 0;
 function addConditions (data) {
@@ -80,7 +79,6 @@ function addConditions (data) {
 					<span class='source col-xs-2 source${it.source}' title='${Parser.sourceJsonToFull(it.source)}'>${Parser.sourceJsonToAbv(it.source)}</span>
 				</a>
 			</li>`;
-
 
 		// populate filters
 		sourceFilter.addIfAbsent(it.source);

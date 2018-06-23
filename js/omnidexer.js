@@ -328,7 +328,7 @@ Omnidexer.TO_INDEX = [
 		listProp: "disease",
 		baseUrl: "conditionsdiseases.html",
 		hover: true
-	},
+	}
 ];
 
 if (typeof module !== "undefined") {

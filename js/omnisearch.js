@@ -50,7 +50,7 @@ const Omnisearch = {
 					e.preventDefault();
 					$(`.pg-right`).click();
 					break;
-				case 40:  // down
+				case 40: // down
 					e.preventDefault();
 					$searchOut.find(`a`).first().focus();
 					break;
@@ -280,7 +280,7 @@ const Omnisearch = {
 					$(`#omnisearch-output`).find(`a`).first().focus();
 				}
 				break;
-			case 40:  // down
+			case 40: // down
 				e.preventDefault();
 				if ($(ele).parent().next().find(`a`).length) {
 					$(ele).parent().next().find(`a`).focus();
