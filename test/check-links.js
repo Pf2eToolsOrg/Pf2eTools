@@ -10,7 +10,7 @@ const TAG_TO_PAGE = {
 	"item": UrlUtil.PG_ITEMS,
 	"class": UrlUtil.PG_CLASSES,
 	"creature": UrlUtil.PG_BESTIARY,
-	"condition": UrlUtil.PG_CONDITIONS,
+	"condition": UrlUtil.PG_CONDITIONS_DISEASES,
 	"background": UrlUtil.PG_BACKGROUNDS,
 	"race": UrlUtil.PG_RACES,
 	"invocation": UrlUtil.PG_INVOCATIONS,

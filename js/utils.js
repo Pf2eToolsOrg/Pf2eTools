@@ -957,6 +957,7 @@ Parser.CAT_ID_HAZARD = 17;
 Parser.CAT_ID_QUICKREF = 18;
 Parser.CAT_ID_CULT = 19;
 Parser.CAT_ID_BOON = 20;
+Parser.CAT_ID_DISEASE = 21;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -979,6 +980,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_QUICKREF] = "Quick Reference";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CULT] = "Cult";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOON] = "Boon";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DISEASE] = "Disease";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -2317,7 +2319,7 @@ UrlUtil.PG_SPELLS = "spells.html";
 UrlUtil.PG_BACKGROUNDS = "backgrounds.html";
 UrlUtil.PG_ITEMS = "items.html";
 UrlUtil.PG_CLASSES = "classes.html";
-UrlUtil.PG_CONDITIONS = "conditions.html";
+UrlUtil.PG_CONDITIONS_DISEASES = "conditionsdiseases.html";
 UrlUtil.PG_FEATS = "feats.html";
 UrlUtil.PG_INVOCATIONS = "invocations.html";
 UrlUtil.PG_PSIONICS = "psionics.html";
@@ -2337,7 +2339,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = (it) => UrlUtil.encodeForHash([it.name, Parser.sourceJsonToAbv(it.source)]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_INVOCATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2356,7 +2358,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BACKGROUND] = UrlUtil.PG_BACKGROUNDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS] = UrlUtil.PG_CLASSES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS_DISEASES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_INVOCATIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PSIONIC] = UrlUtil.PG_PSIONICS;
@@ -2371,6 +2373,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CULT] = UrlUtil.PG_CULTS_BOONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOON] = UrlUtil.PG_CULTS_BOONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_CONDITIONS_DISEASES;
 
 UrlUtil.bindLinkExportButton = (filterBox) => {
 	const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
@@ -3126,6 +3129,8 @@ BrewUtil = {
 				case "psionic":
 				case "variantrule":
 				case "legendaryGroup":
+				case "condition":
+				case "disease":
 					return deleteGenericBrew(category);
 				case "subclass":
 					return deleteSubclassBrew;
@@ -3186,7 +3191,7 @@ BrewUtil = {
 
 		// prepare for storage
 		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
-		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup"];
+		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease"];
 		storable.forEach(storePrep);
 
 		// store

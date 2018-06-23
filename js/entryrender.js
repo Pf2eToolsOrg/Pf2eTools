@@ -765,11 +765,20 @@ function EntryRenderer () {
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@condition":
-								fauxEntry.href.path = "conditions.html";
+								fauxEntry.href.path = "conditionsdiseases.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
 								fauxEntry.href.hover = {
-									page: UrlUtil.PG_CONDITIONS,
+									page: UrlUtil.PG_CONDITIONS_DISEASES,
 									source: source || SRC_PHB
+								};
+								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							case "@disease":
+								fauxEntry.href.path = "conditionsdiseases.html";
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_DMG;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_CONDITIONS_DISEASES,
+									source: source || SRC_DMG
 								};
 								self.recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
@@ -2443,8 +2452,8 @@ EntryRenderer.hover = {
 				break;
 			}
 
-			case UrlUtil.PG_CONDITIONS: {
-				loadSimple(page, "conditions.json", "condition");
+			case UrlUtil.PG_CONDITIONS_DISEASES: {
+				loadSimple(page, "conditionsdiseases.json", ["condition", "disease"]);
 				break;
 			}
 			case UrlUtil.PG_BACKGROUNDS: {
@@ -2732,7 +2741,7 @@ EntryRenderer.hover = {
 				return EntryRenderer.item.getCompactRenderedString;
 			case UrlUtil.PG_BESTIARY:
 				return EntryRenderer.monster.getCompactRenderedString;
-			case UrlUtil.PG_CONDITIONS:
+			case UrlUtil.PG_CONDITIONS_DISEASES:
 				return EntryRenderer.condition.getCompactRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
 				return EntryRenderer.background.getCompactRenderedString;

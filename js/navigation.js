@@ -74,14 +74,14 @@ function navigation () {
 	A('references', 'references', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "References <span class='caret'></span>");
 	UL('references', 'ul_references', 'dropdown-menu');
 	LI('ul_references', 'bestiary.html', 'Bestiary');
-	LI('ul_references', 'conditions.html', 'Conditions');
+	LI('ul_references', 'conditionsdiseases.html', 'Conditions & Diseases');
 	LI('ul_references', 'deities.html', 'Deities');
 	LI('ul_references', 'items.html', 'Items');
 	LI('ul_references', 'rewards.html', 'Other Rewards');
 	LI('ul_references', 'psionics.html', 'Psionics');
 	LI('ul_references', 'spells.html', 'Spells');
 
-	LI('navbar', 'statgen.html', 'Statgen');
+	LI('navbar', 'statgen.html', 'Statgen', "rolled");
 
 	LIDropdown('navbar', 'utils', 'dropdown');
 	A('utils', 'utils', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Utilities <span class='caret'></span>");
