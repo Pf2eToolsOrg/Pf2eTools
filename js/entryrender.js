@@ -2452,10 +2452,6 @@ EntryRenderer.hover = {
 				break;
 			}
 
-			case UrlUtil.PG_CONDITIONS_DISEASES: {
-				loadSimple(page, "conditionsdiseases.json", ["condition", "disease"]);
-				break;
-			}
 			case UrlUtil.PG_BACKGROUNDS: {
 				loadSimple(page, "backgrounds.json", "background");
 				break;
@@ -2513,6 +2509,10 @@ EntryRenderer.hover = {
 			}
 			case UrlUtil.PG_CULTS_BOONS: {
 				loadSimple(page, "cultsboons.json", ["cult", "boon"], (listProp, item) => item._type = listProp === "cult" ? "c" : "b");
+				break;
+			}
+			case UrlUtil.PG_CONDITIONS_DISEASES: {
+				loadSimple(page, "cultsboons.json", ["cult", "disease"], (listProp, item) => item._type = listProp === "conditions" ? "c" : "d");
 				break;
 			}
 			default:

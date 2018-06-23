@@ -2846,6 +2846,8 @@ BrewUtil = {
 						return ["psionic"];
 					case UrlUtil.PG_VARIATNRULES:
 						return ["variantrule"];
+					case UrlUtil.PG_CONDITIONS_DISEASES:
+						return ["condition", "disease"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -3281,6 +3283,9 @@ BrewUtil = {
 				break;
 			case UrlUtil.PG_VARIATNRULES:
 				addVariantRules({variantrule: toAdd.variantrule});
+				break;
+			case UrlUtil.PG_CONDITIONS_DISEASES:
+				handleBrew(toAdd);
 				break;
 			case "NO_PAGE":
 				break;

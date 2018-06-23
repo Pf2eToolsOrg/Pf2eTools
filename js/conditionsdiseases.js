@@ -47,7 +47,7 @@ function onJsonLoad (data) {
 	ListUtil.initGenericPinnable();
 
 	addConditions(data);
-	BrewUtil.addBrewData(addConditions);
+	BrewUtil.addBrewData(handleBrew);
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({list, filterBox, sourceFilter});
 	ListUtil.loadState();
@@ -55,6 +55,10 @@ function onJsonLoad (data) {
 	History.init();
 	handleFilterChange();
 	RollerUtil.addListRollButton();
+}
+
+function handleBrew (homebrew) {
+	addConditions(homebrew);
 }
 
 let conditionList = [];
