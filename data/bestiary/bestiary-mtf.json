@@ -701,7 +701,15 @@
 				"swamp",
 				"urban"
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/698/star-spawn-seer.mp3"
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/698/star-spawn-seer.mp3",
+			"reaction": [
+				{
+					"name": "Bend Space",
+					"entries": [
+						"When the seer would be hit by an attack, it teleports, exchanging positions with another star spawn it can see within 60 feet of it. The other star spawn is hit by the attack instead."
+					]
+				}
+			]
 		},
 		{
 			"name": "Bronze Scout",
@@ -2993,7 +3001,15 @@
 			"environment": [
 				"forest"
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/599/autumn-eladrin.mp3"
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/599/autumn-eladrin.mp3",
+			"reaction": [
+				{
+					"name": "Foster Peace",
+					"entries": [
+						"If a creature charmed by the eladrin hits with an attack roll while within 60 feet of the eladrin, the eladrin magically causes the attack to miss, provided the eladrin can see the attacker."
+					]
+				}
+			]
 		},
 		{
 			"name": "Spring Eladrin",
@@ -3203,7 +3219,15 @@
 				"desert",
 				"forest"
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/702/summer-eladrin.mp3"
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/702/summer-eladrin.mp3",
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"The eladrin adds 3 to its AC against one melee attack that would hit it. To do so, the eladrin must see the attacker and be wielding a melee weapon."
+					]
+				}
+			]
 		},
 		{
 			"name": "Winter Eladrin",
@@ -6049,7 +6073,7 @@
 				{
 					"name": "Instinctive Charm",
 					"entries": [
-						"When a creature within 60 feet of the amnizu makes an attack roll against it, and another creature is within the attack’s range, the attacker must make a DC 19 Wisdom saving throw. On a failed save, the attacker must target the creature that is closest to it, not including the amnizu or itself. If multiple creatures are closest, the attacker chooses which one to target. If the saving throw is successful, the attacker is immune to the amnizu’s Instinctive Charm for 24 hours."
+						"When a creature within 60 feet of the amnizu makes an attack roll against it, and another creature is within the attack's range, the attacker must make a DC 19 Wisdom saving throw. On a failed save, the attacker must target the creature that is closest to it, not including the amnizu or itself. If multiple creatures are closest, the attacker chooses which one to target. If the saving throw is successful, the attacker is immune to the amnizu's Instinctive Charm for 24 hours."
 					]
 				}
 			],
@@ -7032,7 +7056,7 @@
 				{
 					"name": "Fearful Voice (Recharge 5\u20146)",
 					"entries": [
-						"In response to taking damage, Hutijin utters a dreadful word of power. Each creature within 30 feet of him that isn’t a devil must succeed on a DC 22 Wisdom saving throw or become frightened of him for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. A creature that saves against this effect is immune to Hutijin’s Fearful Voice for 24 hours."
+						"In response to taking damage, Hutijin utters a dreadful word of power. Each creature within 30 feet of him that isn't a devil must succeed on a DC 22 Wisdom saving throw or become frightened of him for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. A creature that saves against this effect is immune to Hutijin's Fearful Voice for 24 hours."
 					]
 				}
 			],
@@ -7646,7 +7670,7 @@
 				{
 					"name": "Explosive Retribution",
 					"entries": [
-						"When it is reduced to 15 hit points or fewer, the orthon causes itself to explode. All other creatures within 30 feet of it must each make a DC 17 Dexterity saving throw, taking 9 (2d8) fire damage plus 9 (2d8) thunder damage on a failed save, or half as much damage on a successful one. This explosion destroys the orthon, its infernal dagger, and its brass crossbow."
+						"When it is reduced to 15 hit points or fewer, the orthon causes itself to explode. All other creatures within 30 feet of it must each make a DC 17 Dexterity saving throw, taking 9 ({@dice 2d8}) fire damage plus 9 ({@dice 2d8}) thunder damage on a failed save, or half as much damage on a successful one. This explosion destroys the orthon, its infernal dagger, and its brass crossbow."
 					]
 				}
 			],
@@ -10543,7 +10567,7 @@
 				{
 					"name": "Scouring Instruction",
 					"entries": [
-						"When an ally that the duergar can see makes a d20 roll, the duergar can roll a d6 and the ally can add the number rolled to the d20 roll by taking 3 (1d6) psychic damage. A creature immune to psychic damage can’t be affected by Scouring Instruction."
+						"When an ally that the duergar can see makes a d20 roll, the duergar can roll a {@dice 1d6|d6} and the ally can add the number rolled to the d20 roll by taking 3 ({@dice 1d6}) psychic damage. A creature immune to psychic damage can't be affected by Scouring Instruction."
 					]
 				}
 			],
@@ -11777,8 +11801,7 @@
 				{
 					"name": "Misty Escape (Recharges after a Short or Long Rest)",
 					"entries": [
-						" When the gloom weaver takes damage, it turns invisible and teleports up to 60 feet to an unoccupied space it can see.",
-						"It remains invisible until the start of its next turn or until it attacks or casts a spell."
+						"When the gloom weaver takes damage, it turns invisible and teleports up to 60 feet to an unoccupied space it can see. It remains invisible until the start of its next turn or until it attacks or casts a spell."
 					]
 				}
 			],
@@ -12231,7 +12254,15 @@
 				"mountain",
 				"urban"
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/645/githyanki-kith_rak.mp3"
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/645/githyanki-kith_rak.mp3",
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"The githyanki adds 4 to its AC against one melee attack that would hit it. To do so, the githyanki must see the attacker and be wielding a melee weapon."
+					]
+				}
+			]
 		},
 		{
 			"name": "Githyanki Supreme Commander",
@@ -12339,7 +12370,15 @@
 				"mountain",
 				"urban"
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/646/githyanki-supreme-commander.mp3"
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/646/githyanki-supreme-commander.mp3",
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"The githyanki adds 5 to its AC against one melee attack that would hit it. To do so, the githyanki must see the attacker and be wielding a melee weapon."
+					]
+				}
+			]
 		},
 		{
 			"name": "Githzerai Anarch",
@@ -13172,10 +13211,10 @@
 			],
 			"reaction": [
 				{
-				    "name": "Bloody Rampage",
-				    "entries": [
+					"name": "Bloody Rampage",
+					"entries": [
 						"When the gray render takes damage, it makes one attack with its claws against a random creature within its reach, other than its master."
-				    ]
+					]
 				}
 			],
 			"environment": [
@@ -13631,7 +13670,15 @@
 				"underdark",
 				"urban"
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/708/the-lost.mp3"
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/708/the-lost.mp3",
+			"reaction": [
+				{
+					"name": "Tightening Embrace",
+					"entries": [
+						"If the Lost takes damage while it has a creature grappled, that creature takes 18 ({@dice 4d8}) psychic damage."
+					]
+				}
+			]
 		},
 		{
 			"name": "The Wretched",
