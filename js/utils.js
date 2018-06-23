@@ -669,7 +669,7 @@ Parser.spRangeToFull = function (range) {
 		function getAreaStyleStr () {
 			switch (range.type) {
 				case RNG_SPHERE:
-					return "-radius";
+					return " radius";
 				case RNG_HEMISPHERE:
 					return `-radius ${range.type}`;
 				default:

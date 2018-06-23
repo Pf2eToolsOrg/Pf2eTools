@@ -2867,8 +2867,7 @@ EntryRenderer.hover = {
 	doPopout: ($btnPop, list, index, clientX) => {
 		$btnPop.attr("data-hover-active", false);
 		const it = list[index];
-		EntryRenderer.hover.mouseOver();
-		EntryRenderer.hover.show({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
+		EntryRenderer.hover.mouseOver({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
 	}
 };
 
