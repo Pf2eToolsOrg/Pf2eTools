@@ -1141,7 +1141,7 @@
 										]
 									]
 								},
-								"The characters' need to forage and acquire supplies serves as a motivator to drive them to explore and visit different parts of the Underdark. The more desperate their need becomes-as levels of exhaustion rack up- the more risk players will likely be willing to take."
+								"The characters' need to forage and acquire supplies serves as a motivator to drive them to explore and visit different parts of the Underdark. The more desperate their need becomes-as levels of {@condition exhaustion} rack up- the more risk players will likely be willing to take."
 							]
 						},
 						{
@@ -2807,7 +2807,7 @@
 						"As characters explore the Oozing Temple, keep in mind the following features.",
 						"{@b Light.} Except where specified otherwise, the tunnels and chambers are dark.",
 						"{@b Air.} The air is stale and perceptibly thin. The temple contains enough air for the oozes, plus 160 hours of breathable air for one creature, divided by the number of creatures present. For example, a party of four adventurers has 40 hours of air. Characters who are at rest and not undertaking activities such as moving or fighting consume half as much air.",
-						"Once half of the breathable air is consumed, the characters suffer one level of exhaustion (see appendix A of the Player's Handbook). For each additional 10 percent of the air used up, the characters suffer one additional level of exhaustion. At 90 percent, the characters are unable to move. When the air is used up, they die. Once the first level of exhaustion sets in, the characters become aware that they are running out of air, and know roughly how much they have left.",
+						"Once half of the breathable air is consumed, the characters suffer one level of {@condition exhaustion} (see appendix A of the Player's Handbook). For each additional 10 percent of the air used up, the characters suffer one additional level of {@condition exhaustion}. At 90 percent, the characters are unable to move. When the air is used up, they die. Once the first level of {@condition exhaustion} sets in, the characters become aware that they are running out of air, and know roughly how much they have left.",
 						"A lit torch or its equivalent uses up air as a character does. Briefer but hotter magical effects consume 1 hour of air per die of fire damage per round. For example, a fireball spell that deals 8d6 fire damage consumes 8 hours of air, while a fire bolt that deals 1d10 fire damage consumes 1 hour of air per use.",
 						"{@b Water.} In addition to running low on air, the characters become aware that the tunnels and chambers are filling with water flowing in from area 6. The water rises at a rate of 1 foot per hour, meaning most of the tunnels and chambers will be completely flooded within 10 hours. Areas filled with waist-deep water are difficult terrain for the characters. Once the water is over their heads, they have to swim."
 					]
@@ -3072,8 +3072,8 @@
 								"Characters can also construct makeshift rafts using materials at hand. For example, the cap of a giant zurkhwood mushroom can be hollowed out to make a coracle equivalent to a rowboat, but with half a rowboat's hit points (see the Airborne and Waterborne Vehicles table in chapter 5 of the Dungeon Master's Guide). This is a downtime crafting activity requiring one day's work per raft.",
 								"An even more makeshift craft might involve a character sitting in a floating barrel or other watertight container, either steering with a paddle or flowing with the current. Such a vessel has a speed of 1 mph, requires a crew of 1, allows for no passengers or cargo, and has AC 11, hp 20, and damage threshold 0.",
 								"{@b Swimming}",
-								"Swimming in the Darklake is a poor choice given the number of dangerous creatures inhabiting it. Check for a creature encounter each hour that characters are swimming, rather than every 4 hours of travel. A swimming character must succeed on a DC 10 Constitution saving throw for each hour of swimming or gain one level of exhaustion.",
-								"Characters not actively swimming but simply clinging to something that floats (including the wreckage of a boat or raft) can drift with the current at a speed of 1 mph. Check for creature encounters each hour that characters float in the water, and call for Constitution checks against exhaustion for every 8 hours of travel.",
+								"Swimming in the Darklake is a poor choice given the number of dangerous creatures inhabiting it. Check for a creature encounter each hour that characters are swimming, rather than every 4 hours of travel. A swimming character must succeed on a DC 10 Constitution saving throw for each hour of swimming or gain one level of {@condition exhaustion}.",
+								"Characters not actively swimming but simply clinging to something that floats (including the wreckage of a boat or raft) can drift with the current at a speed of 1 mph. Check for creature encounters each hour that characters float in the water, and call for Constitution checks against {@condition exhaustion} for every 8 hours of travel.",
 								"{@b Other Options}",
 								"Travelers can mix and match modes of travel, and a sizable party might need multiple boats or rafts. A creature with a swimming speed (including a polymorphed character) can travel without risk of fatigue for up to 8 hours, and can even serve as a mount for a creature smaller than it. Water-breathing (or nonbreathing) creatures can swim underwater or even walk across the bottom of shallow sections of the Darklake, but need darkvision or a source of light to see."
 							]
@@ -3807,9 +3807,9 @@
 							"type": "entries",
 							"name": "Grackle-Lung",
 							"entries": [
-								"The constant smog in Gracklstugh causes grackle-lung in living, breathing creatures, resulting in persistent, wracking coughs and the spewing of thick, black phlegm. Whenever a living, breathing creature finishes a long rest in Gracklstugh, it must make a DC 11 Constitution saving throw. On each failed save, the creature gains one level of exhaustion as its airways become increasingly clogged. A creature that reaches level 6 exhaustion dies, as normal.",
-								"A creature with one or more levels of exhaustion brought on by grackle-lung must succeed on a Constitution check to take the Dash action. If the check fails, the action cannot be attempted. If the creature attempts to cast a spell with a verbal component, it must succeed on a Constitution check or be unable to complete the spell, causing the spell to fail with no effect. The DC for each check is 10 + the creature's current exhaustion level.",
-								"If a creature's exhaustion level drops below 1, it no longer suffers the effects of grackle-lung and becomes immune to it for the next week. Duergar and derro are inured to grackle-lung, making Constitution checks against it with advantage. Any spell or effect that cures disease also cures grackle-lung, effectively removing all levels of exhaustion brought on by the affliction."
+								"The constant smog in Gracklstugh causes grackle-lung in living, breathing creatures, resulting in persistent, wracking coughs and the spewing of thick, black phlegm. Whenever a living, breathing creature finishes a long rest in Gracklstugh, it must make a DC 11 Constitution saving throw. On each failed save, the creature gains one level of {@condition exhaustion} as its airways become increasingly clogged. A creature that reaches level 6 {@condition exhaustion} dies, as normal.",
+								"A creature with one or more levels of {@condition exhaustion} brought on by grackle-lung must succeed on a Constitution check to take the Dash action. If the check fails, the action cannot be attempted. If the creature attempts to cast a spell with a verbal component, it must succeed on a Constitution check or be unable to complete the spell, causing the spell to fail with no effect. The DC for each check is 10 + the creature's current {@condition exhaustion} level.",
+								"If a creature's {@condition exhaustion} level drops below 1, it no longer suffers the effects of grackle-lung and becomes immune to it for the next week. Duergar and derro are inured to grackle-lung, making Constitution checks against it with advantage. Any spell or effect that cures disease also cures grackle-lung, effectively removing all levels of {@condition exhaustion} brought on by the affliction."
 							]
 						}
 					]
@@ -8389,7 +8389,7 @@
 								{
 									"type": "list",
 									"items": [
-										"Having pushed themselves to catch up to their prey, the drow all have one level of exhaustion.",
+										"Having pushed themselves to catch up to their prey, the drow all have one level of {@condition exhaustion}.",
 										"Ilvara and Asha have already expended some of their spell slots.",
 										"The characters make it to the surface before being intercepted by the drow, and the dark elves follow them into daylight. Under the light of the sun, the drow have disadvantage on their attack rolls and on Wisdom (Perception) checks relying on sight. The drow can pursue the characters for 1 hour before their armor and weapons are destroyed by the sunlight.",
 										"Asha chooses the confusion of combat as the moment to betray Ilvara, attacking while the elder priestess's back is turned. Ilvara instantly turns her attention to eliminating the traitor, distracting her and weakening the drow side if she succeeds.",
@@ -11627,7 +11627,7 @@
 					"name": "5. Supplies and Captives",
 					"entries": [
 						"This area is held by H'slaat's forces. One troglodyte guards the cave. A character can sneak past the guard with a successful DC 12 Dexterity (Stealth) check.",
-						"The cave floor is strewn with gnawed bones-the remains of dead dwarves and drow. A circular pit, nine feet deep, holds six captives - two {@creature drow|MM} and four shield dwarf {@creature commoner|MM|commoners}. These unfortunates were separated from larger groups (see \"Random Encounters\" earlier in this chapter) and captured by the troglodytes. Every couple of days, one of them is eaten by the tribe. The captives are filthy and weak; each has four levels of exhaustion and 1 hit point remaining. Any of the captives can explain the nature of the conflict between H'slaat and S'slaar. If freed, the drow immediately flee into the Underdark, but the dwarves offer to join the expeditionary force if the adventurers liberate them. The drow are male members of House Melarn and are named Rinil and Xol. The shield dwarves hail from the Silver Marches and are named Dauthorn Brightmantle (male), Traldak Xornbane (male), Zulia Stonewhisper (female), and Hargritt Hammerhome (female).",
+						"The cave floor is strewn with gnawed bones-the remains of dead dwarves and drow. A circular pit, nine feet deep, holds six captives - two {@creature drow|MM} and four shield dwarf {@creature commoner|MM|commoners}. These unfortunates were separated from larger groups (see \"Random Encounters\" earlier in this chapter) and captured by the troglodytes. Every couple of days, one of them is eaten by the tribe. The captives are filthy and weak; each has four levels of {@condition exhaustion} and 1 hit point remaining. Any of the captives can explain the nature of the conflict between H'slaat and S'slaar. If freed, the drow immediately flee into the Underdark, but the dwarves offer to join the expeditionary force if the adventurers liberate them. The drow are male members of House Melarn and are named Rinil and Xol. The shield dwarves hail from the Silver Marches and are named Dauthorn Brightmantle (male), Traldak Xornbane (male), Zulia Stonewhisper (female), and Hargritt Hammerhome (female).",
 						"Rubble is piled up along the south wall of the cavern, concealing a hidden passageway to area 1. Anyone with a passive Wisdom (Perception) score of 15 or higher notices the passage. Anyone actively searching the rubble must succeed on a DC 10 Wisdom (Perception) check to find it.",
 						{
 							"type": "entries",
@@ -12165,7 +12165,7 @@
 										"15 {@creature orog|MM|orogs}"
 									]
 								},
-								"All of the slaves have four levels of exhaustion (see appendix A of the Player's Handbook) and can't do much more than eat and follow simple instructions. They join the party's expeditionary force if urged or ordered to do so, but they aren't effective combatants until they've rested and reduced their exhaustion level.",
+								"All of the slaves have four levels of {@condition exhaustion} (see appendix A of the Player's Handbook) and can't do much more than eat and follow simple instructions. They join the party's expeditionary force if urged or ordered to do so, but they aren't effective combatants until they've rested and reduced their {@condition exhaustion} level.",
 								"The slaves know several intriguing bits of information:",
 								{
 									"type": "list",
@@ -15484,7 +15484,7 @@
 							"type": "entries",
 							"name": "Allied Forces",
 							"entries": [
-								"Vizeran is needed to perform the ritual, placing him far from the battle and leaving him with three levels of exhaustion (see appendix A of the Player's Handbook) once the ritual is completed. He is thus unwilling to aid the characters during the fight. The archmage prefers to keep Grin Ousstyl to assist him, so the drow mage is likewise unable to assist. However, the adventurers have a number of other allies willing to fight alongside them in this last battle.",
+								"Vizeran is needed to perform the ritual, placing him far from the battle and leaving him with three levels of {@condition exhaustion} (see appendix A of the Player's Handbook) once the ritual is completed. He is thus unwilling to aid the characters during the fight. The archmage prefers to keep Grin Ousstyl to assist him, so the drow mage is likewise unable to assist. However, the adventurers have a number of other allies willing to fight alongside them in this last battle.",
 								"Most of the heroes' allies are of limited use against the demon lords-creatures immune to many forms of attack, including nonmagical weapons. Rather than dealing with the ineffectual attacks of allies or a dozen or more additional actions each round, give characters backed up by a group of allies the following benefits.",
 								"{@b Healing Support.} A character regains 2d6 hit points at the end of each of his or her turns, provided the character has at least 1 hit point remaining.",
 								"{@b Tactical Losses.} Once each round, when a player character would be hit by an attack, a supporting ally is hit by the attack instead. The adventurers can use this option ten times before their allies are too weakened or depleted to provide assistance."
