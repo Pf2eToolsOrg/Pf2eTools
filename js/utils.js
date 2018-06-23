@@ -3120,6 +3120,7 @@ BrewUtil = {
 				case "hazard":
 				case "deity":
 				case "item":
+				case "itemType":
 				case "itemProperty":
 				case "reward":
 				case "psionic":
