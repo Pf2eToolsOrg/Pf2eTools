@@ -12,7 +12,7 @@ const Omnisearch = {
 			<div class="input-group" id="wrp-omnisearch-input">
 				<input id="omnisearch-input" class="form-control" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Disclaimer: unlikely to search everywhere. Use with caution.">
 				<div class="input-group-btn">
-					<button class="btn btn-default" id="omnisearch-submit" ><span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-default" id="omnisearch-submit" tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>
 				</div>
 			</div>
 		`);
@@ -33,10 +33,27 @@ const Omnisearch = {
 			e.stopPropagation();
 		});
 
-		$searchIn.on("keypress", (e) => {
-			if (e.which === 13) {
-				clickFirst = true;
-				$searchSubmit.click();
+		$searchIn.on("keydown", (e) => {
+			switch (e.which) {
+				case 13: // enter
+					clickFirst = true;
+					$searchSubmit.click();
+					break;
+				case 37: // left
+					e.preventDefault();
+					$(`.pg-left`).click();
+					break;
+				case 38: // up
+					e.preventDefault();
+					break;
+				case 39: // right
+					e.preventDefault();
+					$(`.pg-right`).click();
+					break;
+				case 40:  // down
+					e.preventDefault();
+					$searchOut.find(`a`).first().focus();
+					break;
 			}
 			e.stopPropagation();
 		});
@@ -44,7 +61,8 @@ const Omnisearch = {
 		// auto-search after 100ms
 		const TYPE_TIMEOUT_MS = 100;
 		let typeTimer;
-		$searchIn.on("keyup", () => {
+		$searchIn.on("keyup", (e) => {
+			if (e.which >= 37 && e.which <= 40) return;
 			clearTimeout(typeTimer);
 			typeTimer = setTimeout(() => {
 				$searchSubmit.click()
@@ -123,12 +141,12 @@ const Omnisearch = {
 
 			function renderLinks () {
 				function getHoverStr (category, url, src) {
-					return `onmouseover="EntryRenderer.hover.show(event, this, '${UrlUtil.categoryToPage(category)}', '${src}', '${url.replace(/'/g, "\\'")}')"`;
+					return `onmouseover="EntryRenderer.hover.mouseOver(event, this, '${UrlUtil.categoryToPage(category)}', '${src}', '${url.replace(/'/g, "\\'")}')"`;
 				}
 
 				$searchOut.empty();
 				const showUa = doShowUaEtc();
-				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file" title="Filter Unearthed Arcana and other unofficial source results">${showUa ? "Exclude" : "Include"} UA, etc</button>`)
+				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file" title="Filter Unearthed Arcana and other unofficial source results" tabindex="-1">${showUa ? "Exclude" : "Include"} UA, etc</button>`)
 					.on("click", () => {
 						setShowUaEtc(!showUa);
 						doSearch();
@@ -140,7 +158,7 @@ const Omnisearch = {
 					const r = results[i].doc;
 					$searchOut.append(`
 				<p>
-					<a href="${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>
+					<a href="${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""} onkeydown="Omnisearch.handleLinkKeyDown(event, this)">${r.cf}: ${r.n}</a>
 					${r.s ? `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>` : ""}
 				</p>`);
 				}
@@ -150,7 +168,7 @@ const Omnisearch = {
 				if (results.length > MAX_RESULTS) {
 					const $pgControls = $(`<div class="omnisearch-pagination-wrapper">`);
 					if (page > 0) {
-						const $prv = $(`<span class="pg-left pg-control"><span class="glyphicon glyphicon-chevron-left"></span></span>`).on("click", () => {
+						const $prv = $(`<span class="pg-left has-results-left pg-control"><span class="glyphicon glyphicon-chevron-left"></span></span>`).on("click", () => {
 							page--;
 							renderLinks();
 						});
@@ -158,7 +176,7 @@ const Omnisearch = {
 					} else ($pgControls.append(`<span class="pg-left">`));
 					$pgControls.append(`<span class="pg-count">Page ${page + 1}/${Math.ceil(results.length / MAX_RESULTS)} (${results.length} results)</span>`);
 					if (results.length - (page * MAX_RESULTS) > MAX_RESULTS) {
-						const $nxt = $(`<span class="pg-right pg-control"><span class="glyphicon glyphicon-chevron-right"></span></span>`).on("click", () => {
+						const $nxt = $(`<span class="pg-right has-results-right pg-control"><span class="glyphicon glyphicon-chevron-right"></span></span>`).on("click", () => {
 							page++;
 							renderLinks();
 						});
@@ -235,6 +253,43 @@ const Omnisearch = {
 		data.forEach(addToIndex);
 		Omnisearch.highestId = data[data.length - 1].id;
 		BrewUtil.getSearchIndex().forEach(addToIndex); // this doesn't update if the 'Brew changes later, but so be it.
+	},
+
+	handleLinkKeyDown (e, ele) {
+		switch (e.which) {
+			case 37: // left
+				e.preventDefault();
+				if ($(`.has-results-left`).length) {
+					$(`.pg-left`).click();
+					$(`#omnisearch-output`).find(`a`).first().focus();
+				}
+				break;
+			case 38: // up
+				e.preventDefault();
+				if ($(ele).parent().prev().find(`a`).length) {
+					$(ele).parent().prev().find(`a`).focus();
+				} else if ($(`.has-results-left`).length) {
+					$(`.pg-left`).click();
+					$(`#omnisearch-output`).find(`a`).last().focus();
+				}
+				break;
+			case 39: // right
+				e.preventDefault();
+				if ($(`.has-results-right`).length) {
+					$(`.pg-right`).click();
+					$(`#omnisearch-output`).find(`a`).first().focus();
+				}
+				break;
+			case 40:  // down
+				e.preventDefault();
+				if ($(ele).parent().next().find(`a`).length) {
+					$(ele).parent().next().find(`a`).focus();
+				} else if ($(`.has-results-right`).length) {
+					$(`.pg-right`).click();
+					$(`#omnisearch-output`).find(`a`).first().focus();
+				}
+				break;
+		}
 	}
 };
 

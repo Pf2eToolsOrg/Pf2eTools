@@ -866,7 +866,7 @@ function EntryRenderer () {
 					hash: procHash
 				};
 			}
-			return `onmouseover="EntryRenderer.hover.mouseOver(); EntryRenderer.hover.show(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}')"`
+			return `onmouseover="EntryRenderer.hover.mouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}')"`
 		}
 
 		let href;
@@ -2762,8 +2762,9 @@ EntryRenderer.hover = {
 	},
 
 	startTime: null,
-	mouseOver () {
+	mouseOver (evt, ele, page, source, hash, isPopout) {
 		EntryRenderer.hover.startTime = new Date().getTime();
+		EntryRenderer.hover.show(evt, ele, page, source, hash, isPopout);
 	},
 
 	_BAR_HEIGHT: 16,
@@ -2857,6 +2858,7 @@ EntryRenderer.hover = {
 	doPopout: ($btnPop, list, index, clientX) => {
 		$btnPop.attr("data-hover-active", false);
 		const it = list[index];
+		EntryRenderer.hover.mouseOver();
 		EntryRenderer.hover.show({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
 	}
 };
