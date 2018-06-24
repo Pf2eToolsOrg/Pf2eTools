@@ -34,17 +34,19 @@ find . -type f -name '*.html' -print0 |
 
 find . -type f -name '*.html' -print0 |
     while IFS= read -r -d $'\0' line; do
-        sed -i -e 's;href="css/;href="https://static.5etools.com/css/;g' $line
-        sed -i -e 's;src="js/;src="https://static.5etools.com/js/;g' $line
+    	# FIXME temporarily disabled
+        # sed -i -e 's;href="css/;href="https://static.5etools.com/css/;g' $line
+        # sed -i -e 's;src="js/;src="https://static.5etools.com/js/;g' $line
     done
 
 find css -type f -name '*.css' -print0 |
     while IFS= read -r -d $'\0' line; do
-        sed -i -e 's;../fonts/Convergence-Regular.ttf;https://static.5etools.com/fonts/Convergence-Regular.ttf;g' $line
-        sed -i -e 's;../fonts/glyphicons-halflings-regular.svg;https://static.5etools.com/fonts/glyphicons-halflings-regular.svg;g' $line
-        sed -i -e 's;../fonts/glyphicons-halflings-regular.eot;https://static.5etools.com/fonts/glyphicons-halflings-regular.eot;g' $line
-        sed -i -e 's;../fonts/glyphicons-halflings-regular.woff;https://static.5etools.com/fonts/glyphicons-halflings-regular.woff;g' $line
-        sed -i -e 's;../fonts/glyphicons-halflings-regular.ttf;https://static.5etools.com/fonts/glyphicons-halflings-regular.ttf;g' $line
+    	# FIXME temporarily disabled
+        # sed -i -e 's;../fonts/Convergence-Regular.ttf;https://static.5etools.com/fonts/Convergence-Regular.ttf;g' $line
+        # sed -i -e 's;../fonts/glyphicons-halflings-regular.svg;https://static.5etools.com/fonts/glyphicons-halflings-regular.svg;g' $line
+        # sed -i -e 's;../fonts/glyphicons-halflings-regular.eot;https://static.5etools.com/fonts/glyphicons-halflings-regular.eot;g' $line
+        # sed -i -e 's;../fonts/glyphicons-halflings-regular.woff;https://static.5etools.com/fonts/glyphicons-halflings-regular.woff;g' $line
+        # sed -i -e 's;../fonts/glyphicons-halflings-regular.ttf;https://static.5etools.com/fonts/glyphicons-halflings-regular.ttf;g' $line
     done
 
 echo "Installing Query Strings."
