@@ -22,7 +22,8 @@ function onJsonLoad (data) {
 	const typeFilter = new Filter({
 		header: "Type",
 		items: ["c", "d"],
-		displayFn: conditionDiseaseTypeToFull
+		displayFn: conditionDiseaseTypeToFull,
+		deselFn: (it) => it === "d"
 	});
 	filterBox = initFilterBox(
 		sourceFilter,
