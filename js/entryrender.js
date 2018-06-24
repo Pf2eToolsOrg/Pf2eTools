@@ -696,6 +696,19 @@ function EntryRenderer () {
 							text: displayText
 						};
 						self.recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@5etools") {
+						const [displayText, page, hash] = text.split("|");
+						const fauxEntry = {
+							type: "link",
+							href: {
+								type: "internal",
+								path: page,
+								hash: hash,
+								hashPreEncoded: true
+							},
+							text: displayText
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else if (tag === "@book") {
 						// format: {@book Display Text|DMG< |chapter< |section > >}
 						const [displayText, book, chapter, section] = text.split("|");
@@ -2512,7 +2525,7 @@ EntryRenderer.hover = {
 				break;
 			}
 			case UrlUtil.PG_CONDITIONS_DISEASES: {
-				loadSimple(page, "cultsboons.json", ["cult", "disease"], (listProp, item) => item._type = listProp === "conditions" ? "c" : "d");
+				loadSimple(page, "conditionsdiseases.json", ["condition", "disease"], (listProp, item) => item._type = listProp === "condition" ? "c" : "d");
 				break;
 			}
 			default:
