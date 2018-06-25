@@ -471,7 +471,7 @@ class FilterBox {
 						$wrpSlide.hide();
 						$quickBtns.hide();
 						const vals = $wrpSlide.data("getValues")();
-						$summaryRange.text(`${vals.min}-${vals.max}`);
+						$summaryRange.text(vals.min === filter.min && vals.max === filter.max ? "" : vals.min === filter.min ? `≤ ${vals.max}` : vals.max === filter.max ? `≥ ${vals.min}` : `${vals.min}-${vals.max}`);
 						$summary.show();
 					}
 				});
@@ -499,10 +499,10 @@ class FilterBox {
 						$miniPillMin.attr("state", FilterBox._PILL_STATES[1]).text(`${filter.header} = ${min}`);
 						$miniPillMax.attr("state", FilterBox._PILL_STATES[0]);
 					} else {
-						if (min > filter.min) $miniPillMin.attr("state", FilterBox._PILL_STATES[1]).text(`${filter.header} >= ${min}`);
+						if (min > filter.min) $miniPillMin.attr("state", FilterBox._PILL_STATES[1]).text(`${filter.header} ≥ ${min}`);
 						else $miniPillMin.attr("state", FilterBox._PILL_STATES[0]);
 
-						if (max < filter.max) $miniPillMax.attr("state", FilterBox._PILL_STATES[1]).text(`${filter.header} <= ${max}`);
+						if (max < filter.max) $miniPillMax.attr("state", FilterBox._PILL_STATES[1]).text(`${filter.header} ≤ ${max}`);
 						else $miniPillMax.attr("state", FilterBox._PILL_STATES[0]);
 					}
 				}
