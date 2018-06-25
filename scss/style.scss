@@ -2122,6 +2122,21 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	border: 1px solid transparent;
 }
 
+.dropdown-menu-filter .slider.slider-horizontal {
+	width: calc(100% - 80px);
+	margin-top: 5px;
+	margin-bottom: 7px;
+}
+
+.dropdown-menu-filter .slider-handle {
+	border-radius: 3px;
+	width: 14px;
+	height: 16px;
+	top: 2px;
+	border: 1px solid #ccc;
+	background: white;
+}
+
 #filter-search-input-group > *:first-child,
 #filter-search-input-group > *:first-child .btn {
 	border-bottom-left-radius: 0;
@@ -3396,6 +3411,18 @@ table.stats table.statsDataInset {
 
 	.dropdown-menu-filter .pill-grid .filter-pill:hover:not([state]) {
 		background: #323232;
+	}
+
+	.dropdown-menu-filter .slider-handle {
+		background: rgba(128, 128, 128, 0.5);
+	}
+
+	.dropdown-menu-filter .slider-track {
+		background: #444;
+	}
+
+	.dropdown-menu-filter .slider-selection {
+		background: #777;
 	}
 
 	.list-disabled-overlay::after {

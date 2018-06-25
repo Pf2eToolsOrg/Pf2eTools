@@ -117,6 +117,13 @@ const sizeFilter = new Filter({
 	displayFn: Parser.sizeAbvToFull
 });
 const speedFilter = new Filter({header: "Speed", items: ["walk", "burrow", "climb", "fly", "swim"], displayFn: StrUtil.uppercaseFirst});
+const strengthFilter = new RangeFilter({header: "Strength"});
+const dexterityFilter = new RangeFilter({header: "Dexterity"});
+const constitutionFilter = new RangeFilter({header: "Constitution"});
+const intelligenceFilter = new RangeFilter({header: "Intelligence"});
+const wisdomFilter = new RangeFilter({header: "Wisdom"});
+const charismaFilter = new RangeFilter({header: "Charisma"});
+const abilityScoreFilter = new MultiFilter("Ability Score", strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter);
 const typeFilter = new Filter({
 	header: "Type",
 	items: [
@@ -218,6 +225,7 @@ const filterBox = initFilterBox(
 	crFilter,
 	sizeFilter,
 	speedFilter,
+	abilityScoreFilter,
 	typeFilter,
 	tagFilter,
 	alignmentFilter,
@@ -329,6 +337,14 @@ function handleFilterChange () {
 			m._pCr,
 			m.size,
 			m._fSpeed,
+			[
+				m.str,
+				m.dex,
+				m.con,
+				m.int,
+				m.wis,
+				m.cha
+			],
 			m._pTypes.type,
 			m._pTypes.tags,
 			m._fAlign,
@@ -390,6 +406,12 @@ function addMonsters (data) {
 		// populate filters
 		sourceFilter.addIfAbsent(new FilterItem(mon.source, () => {}));
 		crFilter.addIfAbsent(mon._pCr);
+		strengthFilter.addIfAbsent(mon.str);
+		dexterityFilter.addIfAbsent(mon.dex);
+		constitutionFilter.addIfAbsent(mon.con);
+		intelligenceFilter.addIfAbsent(mon.int);
+		wisdomFilter.addIfAbsent(mon.wis);
+		charismaFilter.addIfAbsent(mon.cha);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");
