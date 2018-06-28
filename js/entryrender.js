@@ -758,7 +758,10 @@ function EntryRenderer () {
 							case "@class": {
 								if (others.length) {
 									const scSource = others.length > 1 ? `~${others[1].trim()}` : "~phb";
-									fauxEntry.href.subhashes = [{"key": "sub", "value": others[0].trim() + scSource}];
+									fauxEntry.href.subhashes = [
+										{key: "sub", value: others[0].trim() + scSource},
+										{key: "sources", value: 2}
+									];
 									if (others.length > 2) {
 										fauxEntry.href.subhashes.push({key: "f", value: others[2].trim()})
 									}
