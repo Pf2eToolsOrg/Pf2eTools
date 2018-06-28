@@ -3873,7 +3873,13 @@
 								"The gray dwarves, or duergar, live deep in the Underdark. After delving deeper than any other dwarves, they were enslaved by mind flayers for eons. Although they eventually won their freedom, these grim, ashen- skinned dwarves now take slaves of their own and are as tyrannical as their former masters.",
 								"Physically similar to other dwarves in some ways, duergar are wiry and lean, with black eyes and bald heads, with the males growing long, unkempt, gray beards.",
 								"Duergar value toil above all else. Showing emotions other than grim determination or wrath is frowned on in their culture, but they can sometimes seem joyful when at work. They have the typical dwarven appreciation for order, tradition, and impeccable craftsmanship, but their goods are purely utilitarian, disdaining aesthetic or artistic value.",
-								"Few duergar become adventurers, fewer still on the surface world, because they are a hidebound and suspicious race. Those who leave their subterranean cities are usually exiles. Check with your Dungeon Master to see if you can play a gray dwarf character."
+								"Few duergar become adventurers, fewer still on the surface world, because they are a hidebound and suspicious race. Those who leave their subterranean cities are usually exiles. Check with your Dungeon Master to see if you can play a gray dwarf character.",
+								{
+								    "type": "list",
+								    "items": [
+								        "{@race Dwarf (Duergar)|SCAG}"
+								    ]
+								}
 							]
 						},
 						{
@@ -4124,25 +4130,17 @@
 							]
 						},
 						{
-							"type": "entries",
+							"type": "inset",
 							"name": "Ghostwise Halflings",
 							"entries": [
 								"Ghostwise halflings trace their ancestry back to a war among halfling tribes that sent their ancestors into flight from Luiren. Ghostwise halflings are the rarest of the hin, found only in the Chondalwood and a few other isolated forests, clustered in tight-knit clans.",
 								"Many ghostwise clans select a natural landmark as the center of their territory, and members carry a piece of that landmark with them at all times. Clan warriors known as nightgliders bond with and ride giant owls as mounts.",
 								"Because these folk are clannish and mistrustful of outsiders, ghostwise halfling adventurers are rare. Ask your DM if you can play a member of this subrace, which has the halfling traits in the Player's Handbook, plus the subrace traits below.",
 								{
-									"type": "entries",
-									"name": "Ability Score Increase",
-									"entries": [
-										"Your Wisdom score increases by 1."
-									]
-								},
-								{
-									"type": "entries",
-									"name": "Silent Speech",
-									"entries": [
-										"You can speak telepathically to any creature within 30 feet of you. The creature understands you only if the two of you share a language. You can speak telepathically in this way to one creature at a time."
-									]
+								    "type": "list",
+								    "items": [
+										"{@race Halfling (Ghostwise)|SCAG}"
+								    ]
 								}
 							]
 						},
@@ -4550,40 +4548,10 @@
 									"entries": [
 										"The svirfneblin subrace has the gnome traits in the Player's Handbook, plus the subrace traits below. Unlike other gnomes, svirfneblin tend to be neutral, they weigh 80 to 120 pounds, and they reach maturity at 25 and live 200 to 250 years.",
 										{
-											"type": "entries",
-											"name": "Ability Score Increase",
-											"entries": [
-												"Your Dexterity score increases by 1."
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Superior Darkvision",
-											"entries": [
-												"Your darkvision has a radius of 120 feet."
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Stone Camouflage",
-											"entries": [
-												"You have advantage on Dexterity (Stealth) checks to hide in rocky terrain."
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Extra Language",
-											"entries": [
-												"You can speak, read, and write Undercommon."
-											]
-										},
-										{
-											"type": "inset",
-											"name": "Deep Gnome Feat",
-											"entries": [
-												"If your DM allows the use of feats, your deep gnome character has the option of taking the following feat. {@b Svirfneblin Magic} prerequisite: gnome (deep gnome)",
-												"You have inherited the innate spellcasting ability of your ancestors. This ability allows you to cast {@spell nondetection} on yourself at will, without needing a material component. You can also cast each of the following spells once with this ability: {@spell blindness/deafness}, {@spell blur}, and disguise self. You regain the ability to cast these spells when you finish a long rest. Intelligence is your spellcasting ability for these spells."
-											]
+										    "type": "list",
+										    "items": [
+										        "{@race Gnome (Deep/Svirfneblin)|EEPC}"
+										    ]
 										}
 									]
 								}
@@ -4673,10 +4641,10 @@
 										{
 											"type": "list",
 											"items": [
-												"A half-elf of wood elf descent can choose the wood elf's Elf Weapon Training, Fleet of Foot, or Mask of the Wild.",
-												"A half-elf of moon elf or sun elf descent can choose the high elf's Elf Weapon Training or Cantrip.",
-												"A half-elf of drow descent can choose the drow's Drow Magic.",
-												"A half-elf of aquatic heritage can choose a swimming speed of 30 feet."
+												"{@race Half-Elf (Aquatic Elf Descent)|SCAG}",
+												"{@race Half-Elf (Drow Descent)|SCAG}",
+												"{@race Half-Elf (Moon Elf or Sun Elf Descent)|SCAG}",
+												"{@race Half-Elf (Wood Elf Descent)|SCAG}"
 											]
 										}
 									]
@@ -4798,38 +4766,9 @@
 									"entries": [
 										"Since not all tieflings are of the blood of Asmodeus, some have traits that differ from those in the Player's Handbook. The Dungeon Master may permit the following variants for your tiefling character, although Devil's Tongue, Hellfire, and Winged are mutually exclusive.",
 										{
-											"type": "entries",
-											"name": "Appearance",
-											"entries": [
-												"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose 1d4 + 1 of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Feral",
-											"entries": [
-												"Your Intelligence score increases by 1, and your Dexterity score increases by 2. This trait replaces the Ability Score Increase trait."
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Devil's Tongue",
-											"entries": [
-												"You know the vicious mockery cantrip. When you reach 3rd level, you can cast the charm person spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the enthrall spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Hellfire",
-											"entries": [
-												"Once you reach 3rd level, you can cast the burning hands spell once per day as a 2nd-level spell. This trait replaces the hellish rebuke spell of the Infernal Legacy trait."
-											]
-										},
-										{
-											"type": "entries",
-											"name": "Winged",
-											"entries": [
-												"You have bat-like wings sprouting from your shoulder blades. You have a flying speed of 30 feet. This trait replaces the Infernal Legacy trait."
+										    "type": "list",
+										    "items": [
+												"{@race Tiefling (Variant)|SCAG}"
 											]
 										}
 									]
@@ -4840,7 +4779,13 @@
 							"type": "entries",
 							"name": "Aasimar",
 							"entries": [
-								"The celestial opposites of the tieflings, aasimar are descended from humans of celestial heritage. Aasimar aren't as prevalent in the Realms as tieflings, but common enough that some become adventurers. Dungeon Masters who want to allow their players to create aasimar characters can find rules for doing so in the Dungeon Master's Guide."
+								"The celestial opposites of the tieflings, aasimar are descended from humans of celestial heritage. Aasimar aren't as prevalent in the Realms as tieflings, but common enough that some become adventurers. Dungeon Masters who want to allow their players to create aasimar characters can find rules for doing so in the Dungeon Master's Guide.",
+								{
+								    "type": "list",
+								    "items": [
+										"{@race Aasimar (DMG)|DMG}"
+								    ]
+								}
 							]
 						}
 					]
@@ -4871,7 +4816,13 @@
 					"type": "section",
 					"name": "Primal Paths",
 					"entries": [
-						"Barbarians in the Forgotten Realms have the following Primal Path options, in addition to those in the Player's Handbook. Reghed and Northlander barbarians tend to follow the Path of the Berserker, while Uthgardt barbarians are nearly always followers of the Path of the Totem Warrior."
+						"Barbarians in the Forgotten Realms have the following Primal Path options, in addition to those in the Player's Handbook. Reghed and Northlander barbarians tend to follow the Path of the Berserker, while Uthgardt barbarians are nearly always followers of the Path of the Totem Warrior.",
+						{
+						    "type": "list",
+						    "items": [
+						        "{@class barbarian|phb|Path of the Battlerager|Path of the Battlerager|scag}"
+						    ]
+						}
 					]
 				},
 				{
@@ -5019,48 +4970,10 @@
 					"entries": [
 						"Clerics in the Forgotten Realms have the following Divine Domain option, in addition to those in the Player's Handbook.",
 						{
-							"type": "entries",
-							"name": "Arcana Domain",
-							"entries": [
-								"Magic is an energy that suffuses the multiverse and that fuels both destruction and creation. Gods of the Arcana domain know the secrets and potential of magic intimately. For some of these gods, magical knowledge is a great responsibility that comes with a special understanding of the nature of reality. Other gods of Arcana see magic as pure power, to be used as its wielder sees fit.",
-								"The gods of this domain are often associated with knowledge, as learning and arcane power tend to go hand-in-hand. In the Realms, deities of this domain include Azuth and Mystra, as well as Corellon Larethian of the elven pantheon. In other worlds, this domain includes Hecate, Math Mathonwy, and Isis; the triple moon gods of Solinari, Lunitari, and Nuitari of Krynn; and Boccob, Vecna, and Wee Jas of Greyhawk.",
-								{
-									"type": "table",
-									"colLabels": [
-										"Arcana Domain Spells"
-									],
-									"colStyles": [
-										"col-xs-2",
-										"col-xs-10"
-									],
-									"rows": [
-										[
-											"Cleric Level",
-											"Spells"
-										],
-										[
-											"1st",
-											"detect magic, magic missile"
-										],
-										[
-											"3rd",
-											"magic weapon, Nystul's magic aura"
-										],
-										[
-											"5th",
-											"dispel magic, magic circle"
-										],
-										[
-											"7th",
-											"arcane eye, Leomund's secret chest"
-										],
-										[
-											"9th",
-											"planar binding, teleportation circle"
-										]
-									]
-								}
-							]
+						    "type": "list",
+						    "items": [
+								"{@class cleric|phb|Arcana Domain|Arcana Domain|scag}"
+						    ]
 						}
 					]
 				},
@@ -5101,11 +5014,17 @@
 							"type": "entries",
 							"name": "The Moonshea Circles",
 							"entries": [
-								"The Ffolk of the Moonshea Isles venerate the land as the great goddess they call the Earthmother. Their circles gather around sacred pools known as moonwells, their link between the natural world and the goddess, ringed by standing stone circles, raised by their ancient ancestors.",
-								"In the Druid Circle class feature in the Player's Handbook, Moonshea druids most often belong to the Circle of the Land (Coast, Forest, and Mountain). {@b Moonwells}",
-								"The water of a moonwell, drunk directly from cupped hands, restores 1d8 hit points, plus the drinker's Wisdom bonus, if any. If the drinker has threatened the balance of nature since the last full moon, the water instead deals 1d8 poison damage to the drinker. This damage is also dealt by a corrupted moonwell. Either effect occurs once only per day per drinker. On the nights of the full moon, drinking the water of a moonwell can, at the DM's discretion, have additional effects, such as conferring the benefits of a lesser restoration spell.",
-								"Moonwell water placed in a container or taken more than 30 feet away from the well no longer has any of these properties; it is simply water.",
-								"On the three nights of the full moon, three or more druids gathered around a moonwell can cast commune and scrying once each without expending spell slots and without material components, provided that one of the druids is at least 9th level and the rest are at least 4th level. At the DM's option, the druids can use a moonwell on such nights to cast different spells.",
+								"The folk of the Moonshea Isles venerate the land as the great goddess they call the Earthmother. Their circles gather around sacred pools known as moonwells, their link between the natural world and the goddess, ringed by standing stone circles, raised by their ancient ancestors.",
+								"In the Druid Circle class feature in the Player's Handbook, Moonshea druids most often belong to the Circle of the Land (Coast, Forest, and Mountain).",
+								{
+								    "type": "entries",
+								    "name": "Moonwells",
+								    "entries": [
+										"The water of a moonwell, drunk directly from cupped hands, restores 1d8 hit points, plus the drinker's Wisdom bonus, if any. If the drinker has threatened the balance of nature since the last full moon, the water instead deals 1d8 poison damage to the drinker. This damage is also dealt by a corrupted moonwell. Either effect occurs once only per day per drinker. On the nights of the full moon, drinking the water of a moonwell can, at the DM's discretion, have additional effects, such as conferring the benefits of a lesser restoration spell.",
+										"Moonwell water placed in a container or taken more than 30 feet away from the well no longer has any of these properties; it is simply water.",
+										"On the three nights of the full moon, three or more druids gathered around a moonwell can cast commune and scrying once each without expending spell slots and without material components, provided that one of the druids is at least 9th level and the rest are at least 4th level. At the DM's option, the druids can use a moonwell on such nights to cast different spells."
+								    ]
+								},
 								{
 									"type": "inset",
 									"name": "The Harpers and Druids",
@@ -5123,7 +5042,7 @@
 					"name": "Fighters",
 					"entries": [
 						{
-							"type": "QUOTE",
+							"type": "quote",
 							"entries": [
 								"\"Slow to learn, aren't they?\" a white-haired old knight who'd lost his helm in the last fray drawled. \"This is getting to be like a proper romp in the dragonjaws, it is! I'll have to get my minstrel to write a ballad about this...\" \"I hope he sings swiftly, \" a purple dragon armsman growled. \"Here they are!\" The howling spilled over the bodies in another rushing tide of flapping leather, slashing swords, and beady goblin eyes. Men planted themselves\u2014no running and leaping now\u2014to hew steadily, like harvesters with scythes and many fields in front of them, in a rhythm of death."
 							],
@@ -5140,7 +5059,13 @@
 					"type": "section",
 					"name": "Martial Archetype",
 					"entries": [
-						"Fighters in the Forgotten Realms have the following Martial Archetype option, in addition to those in the Player's Handbook."
+						"Fighters in the Forgotten Realms have the following Martial Archetype option, in addition to those in the Player's Handbook.",
+						{
+						    "type": "list",
+						    "items": [
+								"{@class fighter|phb|Purple Dragon Knight (Banneret)|Purple Dragon Knight (Banneret)|scag}"
+						    ]
+						}
 					]
 				},
 				{
@@ -5238,105 +5163,99 @@
 				},
 				{
 					"type": "section",
+					"name": "Monastic Traditions",
+					"entries": [
+						"Monks in the Forgotten Realms have the following Monastic Tradition options, in addition to those in the Player's Handbook.",
+						{
+						    "type": "list",
+						    "items": [
+								"{@class monk|phb|Way of the Long Death|Way of the Long Death|scag}",
+								"{@class monk|phb|Way of the Sun Soul|Way of the Sun Soul|scag}"
+						    ]
+						}
+					]
+				},
+				{
+					"type": "section",
 					"name": "Paladins",
 					"entries": [
 						"Some people are warriors of superior virtue. They exemplify a host of traits that folk consider honorable, just, and good. These warriors aspire to be the best people they can. When such a warrior also has great devotion to a particular deity, that god can reward the faithful with a measure of divine power, making that person a paladin.",
 						"Different paladin orders in the Forgotten Realms emphasize different elements of righteous behavior, but all paladins are expected to hold true to a common set of virtues:",
 						{
-							"type": "entries",
-							"name": "Liberality",
-							"entries": [
-								"Be generous and tolerant."
-							]
+						    "type": "list",
+							"style": "list-hang-notitle",
+						    "items": [
+								{
+									"type": "item",
+									"name": "Liberality",
+									"entry": "Be generous and tolerant."
+								},
+								{
+									"type": "item",
+									"name": "Good faith",
+									"entry": "Be honest and keep promises."
+								},
+								{
+									"type": "item",
+									"name": "Courtesy",
+									"entry": "Treat others with respect despite how they treat you. Give honor to those above your station. Earn the respect of those below your station."
+								},
+								{
+									"type": "item",
+									"name": "Lawfulness",
+									"entry": "Laws exist to bring prosperity to those under them. Unjust laws must be overturned or changed in a reasonable fashion."
+								},
+								{
+									"type": "item",
+									"name": "Bravery",
+									"entry": "Gain glory through battle. Defend any charge unto death."
+								},
+								{
+									"type": "item",
+									"name": "Pride in one's actions",
+									"entry": "Lead by example. Let your deeds speak your intentions."
+								},
+								{
+									"type": "item",
+									"name": "Humility in one's deeds",
+									"entry": "Do not boast or accept rewards undue to you."
+								},
+								{
+									"type": "item",
+									"name": "Unselfishness",
+									"entry": "Share resources, especially with those who have the most need."
+								},
+								{
+									"type": "item",
+									"name": "Good-temperedness",
+									"entry": "Render service cheerfully and without disdain."
+								},
+								{
+									"type": "item",
+									"name": "Wisdom",
+									"entry": "Cause the most good through the least harm."
+								},
+								{
+									"type": "item",
+									"name": "Piety",
+									"entry": "Be faithful to the precepts of your god."
+								},
+								{
+									"type": "item",
+									"name": "Kindness",
+									"entry": "Protect the weak. Grant mercy to those who seek redemption."
+								},
+								{
+									"type": "item",
+									"name": "Honor",
+									"entry": "Hold true to the code. Death before dishonor."
+								}
+						    ]
 						},
-						{
-							"type": "entries",
-							"name": "Good faith",
-							"entries": [
-								"Be honest and keep promises."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Courtesy",
-							"entries": [
-								"Treat others with respect despite how they treat you. Give honor to those above your station. Earn the respect of those below your station."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Lawfulness",
-							"entries": [
-								"Laws exist to bring prosperity to those under them. Unjust laws must be overturned or changed in a reasonable fashion."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Bravery",
-							"entries": [
-								"Gain glory through battle. Defend any charge unto death."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Pride in one's actions",
-							"entries": [
-								"Lead by example. Let your deeds speak your intentions."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Humility in one's deeds",
-							"entries": [
-								"Do not boast or accept rewards undue to you."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Unselfishness",
-							"entries": [
-								"Share resources, especially with those who have the most need."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Good-temperedness",
-							"entries": [
-								"Render service cheerfully and without disdain."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Wisdom",
-							"entries": [
-								"Cause the most good through the least harm."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Piety",
-							"entries": [
-								"Be faithful to the precepts of your god."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Kindness",
-							"entries": [
-								"Protect the weak. Grant mercy to those who seek redemption."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Honor",
-							"entries": [
-								"Hold true to the code. Death before dishonor.",
-								"Every paladin grades and emphasizes these virtues based on his or her own personal ethos and religious background. A paladin of Sune would emphasize aspects of courtly love and courtesy, whereas a paladin of Tyr would be more concerned with justice and fair treatment of foes.",
-								"Most paladins in the Forgotten Realms, like clerics, are devoted to a particular deity. The most common paladin deities are those that embody action, decision, watchfulness, and wisdom. Torm and Tyr are both popular deities for paladins, as is Ilmater, who stresses self-sacrifice and the alleviation of suffering. Although less common, there are paladins of the following deities: Helm, Hoar, Lathander, Sune, Corellon Larethian, the Red Knight, Clangeddin Silverbeard, Arvoreen, and Mystra.",
-								"Their devotion to a higher ideal makes paladins popular folk heroes in the Realms. Many tales are woven about noble knights and oath-sworn champions, although pragmatists note that the tales often end with a tremendous sacrifice on the part of said champions.",
-								"The most common patrons of paladins of the Oath of Devotion and the Oath of the Crown (which is described below) are Helm, Torm, and Tyr\u2014protection, courage, and justice\u2014although Ilmater has his share of devoted champions. Those green knights sworn to the Oath of the Ancients might honor Arvoreen or Corellon, while avengers of the Oath of Vengeance follow patrons like Hoar, although there are also avengers of Helm and Tyr, meting out harsh justice."
-							]
-						}
+						"Every paladin grades and emphasizes these virtues based on his or her own personal ethos and religious background. A paladin of Sune would emphasize aspects of courtly love and courtesy, whereas a paladin of Tyr would be more concerned with justice and fair treatment of foes.",
+						"Most paladins in the Forgotten Realms, like clerics, are devoted to a particular deity. The most common paladin deities are those that embody action, decision, watchfulness, and wisdom. Torm and Tyr are both popular deities for paladins, as is Ilmater, who stresses self-sacrifice and the alleviation of suffering. Although less common, there are paladins of the following deities: Helm, Hoar, Lathander, Sune, Corellon Larethian, the Red Knight, Clangeddin Silverbeard, Arvoreen, and Mystra.",
+						"Their devotion to a higher ideal makes paladins popular folk heroes in the Realms. Many tales are woven about noble knights and oath-sworn champions, although pragmatists note that the tales often end with a tremendous sacrifice on the part of said champions.",
+						"The most common patrons of paladins of the Oath of Devotion and the Oath of the Crown (which is described below) are Helm, Torm, and Tyr\u2014protection, courage, and justice\u2014although Ilmater has his share of devoted champions. Those green knights sworn to the Oath of the Ancients might honor Arvoreen or Corellon, while avengers of the Oath of Vengeance follow patrons like Hoar, although there are also avengers of Helm and Tyr, meting out harsh justice."
 					]
 				},
 				{
@@ -5365,13 +5284,19 @@
 							"entries": [
 								"The Holy Order of Samular, also known as the Knights of Samular, is made up of warriors in the service of Tyr. The order is based at Summit Hall, while also maintaining a chapter house in Waterdeep. Legendary paladin Samular Caradoon founded the order in 952 DR after the Second Troll War and the deaths of his brothers Renwick \"Snowcloak\" and Amphail the Just during the war. When Tyr fell silent and the paladins in his service lost their powers, many turned to other gods such as Torm, but the Kights of Samular stayed true to Tyr. Their patience was recently rewarded when, upon Tyr's return to the world, many of their dwindling number were invested with the powers of a paladin. Known for their support of the law, many paladins of the order follow the Oath of the Crown, which is described below."
 							]
-						},
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Sacred Oath",
+					"entries": [
+						"Paladins in the Forgotten Realms have the following Sacred Oath option, in addition to those in the Player's Handbook:",
 						{
-							"type": "entries",
-							"name": "Sacred Oath",
-							"entries": [
-								"Paladins in the Forgotten Realms have the following Sacred Oath option, in addition to those in the Player's Handbook."
-							]
+						    "type": "list",
+						    "items": [
+								"{@class paladin|phb|Oath of the Crown|Oath of the Crown|scag}"
+						    ]
 						}
 					]
 				},
@@ -5428,13 +5353,20 @@
 						"Most large cities in the Realms have a number of thieves' dens that compete with one another. A few places, such as Baldur's Gate, have an organized group of rogues that controls all such activity. Most thieves' dens are secret gathering spots, often beneath the city, and move after they're discovered.",
 						"The city of Waterdeep had once been home to the most powerful guild of thieves in the North: the Shadow Thieves. The Lords of Waterdeep smashed that guild, forcing its leaders to flee the city (the group still operates out of Amn). There are still thieves and even assassins in Waterdeep, but they are broken into innumerable small groups or operate alone.",
 						"The most common respite for such robbers is what they call the Honest Trade\u2014adventuring, where roguish abilities may be used without censure and are later lionized in song and legend. Many thieves take to this life, adhering to a code that keeps them out of trouble in civilized areas but still keeps them rich; they vow to burglarize ancient tombs and monstrous lairs instead of the homes and businesses of the wealthy in civilized lands.",
-						"Some rogues have learned it is easier to pick someone's pocket when you have a royal writ, which is to say many rogues are diplomats, courtiers, influence-peddlers, and information-brokers, in addition to the better- known thieves and assassins. Such rogues blend more easily into civilized society, more often acting as grease in the wheels than a wrench in the works.",
+						"Some rogues have learned it is easier to pick someone's pocket when you have a royal writ, which is to say many rogues are diplomats, courtiers, influence-peddlers, and information-brokers, in addition to the better- known thieves and assassins. Such rogues blend more easily into civilized society, more often acting as grease in the wheels than a wrench in the works."
+					]
+				},
+				{
+					"type": "section",
+					"name": "Roguish Archetypes",
+					"entries": [
+						"Rogues in the Forgotten Realms have the following Roguish Archetype options, in addition to those in the Player's Handbook:",
 						{
-							"type": "entries",
-							"name": "Roguish Archetypes",
-							"entries": [
-								"Rogues in the Forgotten Realms have the following Roguish Archetype options, in addition to those in the Player's Handbook."
-							]
+						    "type": "list",
+						    "items": [
+								"{@class rogue|phb|Mastermind|Mastermind|scag}",
+								"{@class rogue|phb|Swashbuckler|Swashbuckler|scag}"
+						    ]
 						}
 					]
 				},
@@ -5478,7 +5410,13 @@
 					"type": "section",
 					"name": "Sorcerous Origin",
 					"entries": [
-						"Sorcerers in the Forgotten Realms have the following Sorcerous Origin option, in addition to those in the Player's Handbook."
+						"Sorcerers in the Forgotten Realms have the following Sorcerous Origin option, in addition to those in the Player's Handbook:",
+						{
+							"type": "list",
+							"items": [
+								"{@class sorcerer|phb|Storm Sorcery|Storm Sorcery|scag}"
+							]
+						}
 					]
 				},
 				{
@@ -5521,7 +5459,13 @@
 					"type": "section",
 					"name": "Otherworldly Patron",
 					"entries": [
-						"Warlocks in the Forgotten Realms have the following Otherworldly Patron option, in addition to those in the Player's Handbook."
+						"Warlocks in the Forgotten Realms have the following Otherworldly Patron option, in addition to those in the Player's Handbook:",
+						{
+							"type": "list",
+							"items": [
+								"{@class warlock|phb|The Undying|The Undying|scag}"
+							]
+						}
 					]
 				},
 				{
@@ -5577,6 +5521,12 @@
 					"entries": [
 						"Wizards in the Forgotten Realms have the following Arcane Tradition option, in addition to those in the Player's Handbook.",
 						{
+							"type": "list",
+							"items": [
+								"{@class wizard|phb|Bladesinging|Bladesinging|scag}"
+							]
+						},
+						{
 							"type": "inset",
 							"name": "Bladesinger Styles",
 							"entries": [
@@ -5612,7 +5562,16 @@
 					"name": "Cantrips for Sorcerers, Warlocks, and Wizards",
 					"entries": [
 						"Practitioners of the Art have developed the following cantrips for those who favor casting spells in melee. War Wizards of Cormyr, bladesingers, and warlocks of the Pact of the Blade are especially fond of these spells.",
-						"These cantrips are on the sorcerer, warlock, and wizard spell lists."
+						"These cantrips are on the sorcerer, warlock, and wizard spell lists.",
+						{
+						    "type": "list",
+						    "items": [
+								"{@spell Booming Blade|SCAG}",
+								"{@spell Green-Flame Blade|SCAG}",
+								"{@spell Lightning Lure|SCAG}",
+								"{@spell Sword Burst|SCAG}"
+							]
+						}
 					]
 				}
 			]
@@ -5624,498 +5583,21 @@
 				"The backgrounds described in the Player's Handbook are all found in Faerûn's various societies, in some form or another. This chapter offers additional backgrounds for characters in a Forgotten Realms campaign, many of them specific to Faerûn or to the Sword Coast and the North in particular.",
 				"As in the Player's Handbook, each of the backgrounds presented here provides proficiencies, languages, and equipment, as well as a background feature and sometimes a variant form. For personality traits, ideals, bonds, and flaws, most of the backgrounds in this chapter use a thematically similar background in the Player's Handbook as their foundation.",
 				{
-					"type": "section",
-					"name": "City Watch",
-					"entries": [
-						"You have served the community where you grew up, standing as its first line of defense against crime. You aren't a soldier, directing your gaze outward at possible enemies. Instead, your service to your hometown was to help police its populace, protecting the citizenry from lawbreakers and malefactors of every stripe.",
-						"You might have been part of the City Watch of Waterdeep, the baton-wielding police force of the City of Splendors, protecting the common folk from thieves and rowdy nobility alike. Or you might have been one of the valiant defenders of Silverymoon, a member of the Silverwatch or even one of the magic-wielding Spellguard.",
-						"Perhaps you hail from Neverwinter and have served as one of its Wintershield watchmen, the newly founded branch of guards who vow to keep safe the City of Skilled Hands.",
-						"Even if you're not city-born or city-bred, this background can describe your early years as a member of law enforcement. Most settlements of any size have their own constables and police forces, and even smaller communities have sheriffs and bailiffs who stand ready to protect their community.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Athletics, Insight"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "Two of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "A uniform in the style of your unit and indicative of your rank, a horn with which to summon help, a set of manacles, and a pouch containing 10 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Clan Crafter",
-					"entries": [
-						"The Stout Folk are well known for their artisanship and the worth of their handiworks, and you have been trained in that ancient tradition. For years you labored under a dwarf master of the craft, enduring long hours and dismissive, sour-tempered treatment in order to gain the fine skills you possess today.",
-						"You are most likely a dwarf, but not necessarily\u2014particularly in the North, the shield dwarf clans learned long ago that only proud fools who are more concerned for their egos than their craft turn away promising apprentices, even those of other races. If you aren't a dwarf, however, you have taken a solemn oath never to take on an apprentice in the craft: it is not for nondwarves to pass on the skills of Moradin's favored children. You would have no difficulty, however, finding a dwarf master who was willing to receive potential apprentices who came with your recommendation.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "History, Insight"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "One type of artisan's tools"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "Dwarvish or one other of your choice if you already speak Dwarvish"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "A set of artisan's tools with which you are proficient, a maker's mark chisel used to mark your handiwork with the symbol of the clan of crafters you learned your skill from, a set of traveler's clothes, and a pouch containing 5 gp and a gem worth 10 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Cloistered Scholar",
-					"entries": [
-						"As a child, you were inquisitive when your playmates were possessive or raucous. In your formative years, you found your way to one of Faerûn's great institutes of learning , where you were apprenticed and taught that knowledge is a more valuable treasure than gold or gems. Now you are ready to leave your home\u2014not to abandon it, but to quest for new lore to add to its storehouse of knowledge.",
-						"The most well known of Faerûn's fonts of knowledge is Candlekeep. The great library is always in need of workers and attendants, some of whom rise through the ranks to assume roles of greater responsibility and prominence. You might be one of Candlekeep's own, dedicated to the curatorship of what is likely the most complete body of lore and history in all the world.",
-						"Perhaps instead you were taken in by the scholars of the Vault of the Sages or the Map House in Silverymoon, and now you have struck out to increase your knowledge and to make yourself available to help those in other places who seek your expertise. You might be one of the few who aid Herald's Holdfast, helping to catalogue and maintain records of the information that arrives daily from across Faerûn.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "History, plus your choice of one from among Arcana, Nature, and Religion"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "Two of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "The scholar's robes of your cloister, a writing kit (small pouch with a quill, ink, folded parchment, and a small penknife), a borrowed book on the subject of your current study, and a pouch containing 10 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Courtier",
-					"entries": [
-						"In your earlier days, you were a personage of some significance in a noble court or a bureaucratic organization. You might or might not come from an upper-class family; your talents, rather than the circumstances of your birth, could have secured you this position.",
-						"You might have been one of the many functionaries, attendants, and other hangers-on in the Court of Silverymoon, or perhaps you traveled in Waterdeep's baroque and sometimes cutthroat conglomeration of guilds, nobles, adventurers, and secret societies. You might have been one of the behind-the-scenes law-keepers or functionaries in Baldur's Gate or Neverwinter, or you might have grown up in and around the castle of Daggerford.",
-						"Even if you are no longer a full-fledged member of the group that gave you your start in life, your relationships with your former fellows can be an advantage for you and your adventuring comrades. You might undertake missions with your new companions that further the interest of the organization that gave you your start in life. In any event, the abilities that you honed while serving as a courtier will stand you in good stead as an adventurer.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Insight, Persuasion"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "Two of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "A set of fine clothes and a pouch containing 5 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Faction Agent",
-					"entries": [
-						"Many organizations active in the North and across the face of Faerûn aren't bound by strictures of geography. These factions pursue their agendas without regard for political boundaries, and their members operate anywhere the organization deems necessary. These groups employ listeners, rumormongers, smugglers, sellswords, cache-holders (people who guard caches of wealth or magic for use by the faction's operatives), haven keepers, and message drop minders, to name a few. At the core of every faction are those who don't merely fulfill a small function for that organization, but who serve as its hands, head, and heart.",
-						"As a prelude to your adventuring career (and in preparation for it), you served as an agent of a particular faction in Faerûn. You might have operated openly or secretly, depending on the faction and its goals, as well as how those goals mesh with your own. Becoming an adventurer doesn't necessarily require you to relinquish membership in your faction (though you can choose to do so), and it might enhance your status in the faction.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Insight and one Intelligence, Wisdom, or Charisma skill of your choice, as appropriate to your faction"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "Two of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "Badge or emblem of your faction, a copy of a seminal faction text (or a code-book for a covert faction), a set of common clothes, and a pouch containing 15 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Factions of the Sword Coast",
-					"entries": [
-						"The lack of large, centralized governments in the North and along the Sword Coast is likely directly responsible for the proliferation of secret societies and conspiracies in those lands. If your background is as an agent for one of the main factions of the North and Sword Coast, here are some possibilities.",
-						{
-							"type": "entries",
-							"name": "The Harpers",
-							"entries": [
-								"Founded more than a millennium ago, disbanded and reorganized several times, the Harpers remain a powerful, behind-the-scenes agency, which acts to thwart evil and promote fairness through knowledge, rather than brute force. Harper agents are often proficient in Investigation, enabling them to be adept at snooping and spying. They often seek aid from other Harpers, sympathetic bards and innkeepers, rangers, and the clergy of gods that are aligned with the Harpers' ideals."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "The Order of the Gauntlet",
-							"entries": [
-								"One of the newest power groups in Faerûn, the Order of the Gauntlet has an agenda similar to that of the Harpers. Its methods are vastly different, however: bearers of the gauntlet are holy warriors on a righteous quest to crush evil and promote justice, and they never hide in the shadows. Order agents tend to be proficient in Religion, and frequently seek aid from law enforcement friendly to the order's ideals, and the clergy of the order's patron gods."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "The Emerald Enclave",
-							"entries": [
-								"Maintaining balance in the natural order and combating the forces that threaten that balance is the twofold goal of the Emerald Enclave. Those who serve the faction are masters of survival and living off the land. They are often proficient in Nature, and can seek assistance from woodsmen, hunters, rangers, barbarian tribes, druid circles, and priests who revere the gods of nature."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "The Lords' Alliance",
-							"entries": [
-								"On one level, the agents of the Lords' Alliance are representatives of the cities and other governments that constitute the alliance. But, as a faction with interests and concerns that transcend local politics and geography, the Alliance has its own cadre of individuals who work on behalf of the organizations, wider agenda. Alliance agents are required to be knowledgeable in History, and can always rely on the aid of the governments that are part of the Alliance, plus other leaders and groups who uphold the Alliance's ideals."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "The Zhentarim",
-							"entries": [
-								"In recent years, the Zhentarim have become more visible in the world at large, as the group works to improve its reputation among the common people. The faction draws employees and associates from many walks of life, setting them to tasks that serve the goals of the Black Network but aren't necessarily criminal in nature. Agents of the Black Network must often work in secret, and are frequently proficient in Deception. They seek aid from the wizards, mercenaries, merchants and priesthoods allied with the Zhentarim."
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Far Traveler",
-					"entries": [
-						"Almost all of the common people and other folk that one might encounter along the Sword Coast or in the North have one thing in common: they live out their lives without ever travelling more than a few miles from where they were born.",
-						"You aren't one of those folk.",
-						"You are from a distant place, one so remote that few of the common folk in the North realize that it exists, and chances are good that even if some people you meet have heard of your homeland, they know merely the name and perhaps a few outrageous stories. You have come to this part of Faerûn for your own reasons, which you might or might not choose to share.",
-						"Although you will undoubtedly find some of this land's ways to be strange and discomfiting, you can also be sure that some things its people take for granted will be to you new wonders that you've never laid eyes on before. By the same token, you're a person of interest, for good or ill, to those around you almost anywhere you go.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Insight, Perception"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "Any one musical instrument or gaming set of your choice, likely something native to your homeland"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "Any one of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "One set of traveler's clothes, any one musical instrument or gaming set you are proficient with, poorly wrought maps from your homeland that depict where you are in Faerûn, a small piece of jewelry worth 10 gp in the style of your homeland's craftsmanship, and a pouch containing 5 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Inheritor",
-					"entries": [
-						"You are the heir to something of great value\u2014not mere coin or wealth, but an object that has been entrusted to you and you alone. Your inheritance might have come directly to you from a member of your family, by right of birth, or it could have been left to you by a friend, a mentor, a teacher, or someone else important in your life. The revelation of your inheritance changed your life, and might have set you on the path to adventure, but it could also come with many dangers, including those who covet your gift and want to take it from you\u2014by force, if need be.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Survival, plus one from among Arcana, History, and Religion"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "Your choice of a gaming set or a musical instrument"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "Any one of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "Your inheritance, a set of traveler's clothes, any items with which you are proficient, and a pouch containing 15 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Knight of the Order",
-					"entries": [
-						"You belong to an order of knights who have sworn oaths to achieve a certain goal. The nature of this goal depends on the order you serve, but in your eyes it is without question a vital and honorable endeavor. Faerûn has a wide variety of knightly orders, all of which have a similar outlook concerning their actions and responsibilities.",
-						"Though the term \"knight\" conjures ideas of mounted, heavily armored warriors of noble blood, most knightly orders in Faerûn don't restrict their membership to such individuals. The goals and philosophies of the order are more important than the gear and fighting style of its members, and so most of these orders aren't limited to fighting types, but are open to all sorts of folk who are willing to battle and die for the order's cause.",
-						"The \"Knightly Orders of Faerûn\" sidebar details several of the orders that are active at present and is designed to help inform your decision about which group you owe allegiance to.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Persuasion, plus one from among Arcana, History, Nature, and Religion, as appropriate for your order"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "One type of gaming set or musical instrument"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "One of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "One set of traveler's clothes, a signet, banner or seal representing your place or rank in the order, and a pouch containing 10 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Knightly Orders of Faerûn",
-					"entries": [
-						"Many who rightfully call themselves \"knight\" earn that title as part of an order in service to a deity, such as Kelemvor's Eternal Order or Mystra's Knights of the Mystic Fire. Other knightly orders serve a government, royal family, or are the elite military of a feudal state, such as the brutal Warlock Knights of Vaasa. Other knighthoods are secular and nongovernmental organizations of warriors who follow a particular philosophy, or consider themselves a kind of extended family, similar to an order of monks. Although there are organizations, such as the Knights of the Shield, that use the trappings of knighthood without necessarily being warriors, most folk of Faerûn who hear the word \"knight\" think of a mounted warrior in armor beholden to a code. Below are a few knightly organizations.",
-						{
-							"type": "entries",
-							"name": "Knights of the Unicorn",
-							"entries": [
-								"The Knights of the Unicorn began as a fad of romantically minded sons and daughters of patriar families in Baldur's Gate. On a lark, they took the unicorn goddess Lurue as their mascot and went on various adventures for fun. The reality of the dangers they faced eventually sank in, as did Lurue's tenets. Over time the small group grew and spread, gaining a following in places as far as Cormyr. The Knights of the Unicorn are chivalric adventurers who follow romantic ideals: life is to be relished and lived with laughter, quests should be taken on a dare, impossible dreams should be pursued for the sheer wonder of their completion, and everyone should be praised for their strengths and comforted in their weaknesses."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Knights of Myth Drannor",
-							"entries": [
-								"Long ago, the Knights of Myth Drannor were a famous adventuring band, and Dove Falconhand, one of the famous Seven Sisters, was one of them. The band took its name to honor the great but fallen city, just as the new Knights of Myth Drannor do today. With the city once again in ruins, Dove Falconhand decided to reform the group with the primary goal of building alliances and friendship between the civilized races of the world and goodly people in order to combat evil. The Knights of Myth Drannor once again ride the roads of the Dalelands, and they've begun to spread to the lands beyond. Their members, each accepted by Dove herself, are above all valiant and honest."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Knights of the Silver Chalice",
-							"entries": [
-								"The Knights of the Silver Chalice was formed by edict of the demigod Siamorphe in Waterdeep a century ago. Siamorphe's ethos is the nobility's right and responsibility to rule, and the demigod is incarnated as a different noble mortal in each generation. By the decree of the Siamorphe at that time, the Knights of the Silver Chalice took it upon themselves to put a proper heir on the throne of Tethyr and reestablish order in that kingdom. Since then they have grown to be the most popular knighthood in Tethyr, a nation that has hosted many knighthoods in fealty to the crown."
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Mercenary Veteran",
-					"entries": [
-						"As a sell-sword who fought battles for coin, you're well acquainted with risking life and limb for a chance at a share of treasure. Now, you look forward to fighting foes and reaping even greater rewards as an adventurer. Your experience makes you familiar with the ins and outs of mercenary life, and you likely have harrowing stories of events on the battlefield. You might have served with a large outfit such as the Zhentarim or the soldiers of Mintarn, or a smaller band of sell-swords, maybe even more than one. (See the \"Mercenaries of the North\" sidebar for a collection of possibilities.)",
-						"Now you're looking for something else, perhaps greater reward for the risks you take, or the freedom to choose your own activities. For whatever reason, you're leaving behind the life of a soldier for hire, but your skills are undeniably suited for battle, so now you fight on in a different way.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Athletics, Persuasion"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "One type of gaming set, vehicles (land)"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "A uniform of your company (traveler's clothes in quality), an insignia of your rank, a gaming set of your choice, and a pouch containing the remainder of your last wages (10 gp)"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Mercenaries of the North",
-					"entries": [
-						"Countless mercenary companies operate up and down the Sword Coast and throughout the North. Most are smallscale operations that employ a dozen to a hundred folk who offer security services, hunt monsters and brigands, or go to war in exchange for gold. Some organizations, such as the Zhentarim, Flaming Fist, and the nation of Mintarn have hundreds or thousands of members and can provide private armies to those with enough funds. A few organizations operating in the North are described below.",
-						{
-							"type": "entries",
-							"name": "The Chill",
-							"entries": [
-								"The cold and mysterious Lurkwood serves as the home of numerous groups of goblinoids that have banded together into one tribe called the Chill. Unlike most of their kind, the Chill refrains from raiding the people of the North and maintains relatively good relations so that they can hire themselves out as warriors. Few citystates in the North are willing to field an army alongside the Chill, but several are happy to quietly pay the Chill to battle the Uthgardt, orcs, trolls of the Evermoors, and other threats to civilization."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Silent Rain",
-							"entries": [
-								"Consisting solely of elves, Silent Rain is a legendary mercenary company operating out of Evereska. Caring little for gold or fame, Silent Rain agrees only to jobs that either promote elven causes or involve destroying orcs, gnolls, and the like. Prospective employers must leave written word (in Elvish) near Evereska, and the Silent Rain sends a representative if interested."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "The Bloodaxes",
-							"entries": [
-								"Founded in Sundabar nearly two centuries ago, the Bloodaxes were originally a group of dwarves outcast from their clans for crimes against the teachings of Moradin Soulforger. They began hiring out as mercenaries to whoever in the North would pay them. Since then the mercenary company has broadened its membership to other races, but every member is an exile, criminal, or misfit of some sort looking for a fresh start and a new family among the bold Bloodaxes."
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Urban Bounty Hunter",
-					"entries": [
-						"Before you became an adventurer, your life was already full of conflict and excitement, because you made a living tracking down people for pay. Unlike some people who collect bounties, though, you aren't a savage who follows quarry into or through the wilderness. You're involved in a lucrative trade, in the place where you live, that routinely tests your skills and survival instincts. What's more, you aren't alone, as a bounty hunter in the wild would be: you routinely interact with both the criminal subculture and other bounty hunters, maintaining contacts in both areas to help you succeed.",
-						"You might be a cunning thief-catcher, prowling the rooftops to catch one of the myriad burglars of the city. Perhaps you are someone who has your ear to the street, aware of the doings of thieves' guilds and street gangs. You might be a \"velvet mask\" bounty hunter, one who blends in with high society and noble circles in order to catch the criminals that prey on the rich, whether pickpockets or con artists. The community where you plied your trade might have been one of Faerûn's great metropolises, such as Waterdeep or Baldur's Gate, or a less populous location, perhaps Luskan or Yartar\u2014any place that's large enough to have a steady supply of potential quarries.",
-						"As a member of an adventuring party, you might find it more difficult to pursue a personal agenda that doesn't fit with the group's objectives\u2014but on the other hand, you can take down much more formidable targets with the help of your companions.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Choose two from among Deception, Insight, Persuasion, and Stealth"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "Choose two from among one type of gaming set, one musical instrument, and thieves' tools"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "A set of clothes appropriate to your duties and a pouch containing 20 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Uthgardt Tribe Member",
-					"entries": [
-						"Though you might have only recently arrived in civilized lands, you are no stranger to the values of cooperation and group effort when striving for supremacy. You learned these principles, and much more, as a member of an Uthgardt tribe.",
-						"Your people have always tried to hold to the old ways. Tradition and taboo have kept the Uthgardt strong while the kingdoms of others have collapsed into chaos and ruin. But for the last few generations, some bands among the tribes were tempted to settle, make peace, trade, and even to build towns. Perhaps this is why Uthgar chose to raise up the totems among the people as living embodiments of his power. Perhaps they needed a reminder of who they were and from whence they came. The Chosen of Uthgar led bands back to the old ways, and most of your people abandoned the soft ways of civilization.",
-						"You might have grown up in one of the tribes that had decided to settle down, and now that they have abandoned that path, you find yourself adrift. Or you might come from a segment of the Uthgardt that adheres to tradition, but you seek to bring glory to your tribe by achieving great things as a formidable adventurer.",
-						"See the \"Uthgardt Lands\" section of chapter 2 for details on each tribe's territory and its activities that will help you choose your affiliation.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "Athletics, Survival"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "One type of musical instrument or artisan's tools"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "One of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "A hunting trap, a totemic token or set of tattoos marking your loyalty to Uthgar and your tribal totem, a set of traveler's clothes, and a pouch containing 10 gp"
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "section",
-					"name": "Barbarian Tribes of Faerûn",
-					"entries": [
-						"Though this section details the Uthgardt specifically, either it or the outlander background from the Player's Handbook can be used for a character whose origin lies with one of the other barbarian tribes in Faerûn.",
-						"You might be a fair-haired barbarian of the Reghed, dwelling in the shadow of the Reghed Glacier in the far North near Icewind Dale. You might also be of the nomadic Rashemi, noted for their savage berserkers and their masked witches. Perhaps you hail from one of the wood elf tribes in the Chondalwood, or the magic-hating human tribes of the sweltering jungles of Chult."
-					]
-				},
-				{
-					"type": "section",
-					"name": "Waterdhavian Noble",
-					"entries": [
-						"You are a scion of one of the great noble families of Waterdeep. Human families who jealously guard their privilege and place in the City of Splendors, Waterdhavian nobles have a reputation across Faerûn for being eccentric, spoiled, venal, and, above all else, rich.",
-						"Whether you are a shining example of the reason for this reputation or one who proves the rule by being an exception, people expect things of you when they know your surname and what it means. Your reasons for taking up adventuring likely involve your family in some way: Are you the family rebel, who prefers delving in filthy dungeons to sipping zzar at a ball? Or have you taken up sword or spell on your family's behalf, ensuring that they have someone of renown to see to their legacy?",
-						"Work with your DM to come up with the family you are part of\u2014there are around seventy-five lineages in Waterdeep, each with its own financial interests, specialties, and schemes. You might be part of the main line of your family, possibly in line to become its leader one day. Or you might be one of any number of cousins, with less prestige but also less responsibility.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "History, Persuasion"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "One type of gaming set or one musical instrument"
-								},
-								{
-									"type": "item",
-									"name": "Languages",
-									"entry": "One of your choice"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "A set of fine clothes, a signet ring or brooch, a scroll of pedigree, a skin of fine zzar or wine, and a purse containing 20 gp"
-								}
-							]
-						}
-					]
+				    "type": "list",
+				    "items": [
+						"{@background City Watch|SCAG}",
+						"{@background Clan Crafter|SCAG}",
+						"{@background Cloistered Scholar|SCAG}",
+						"{@background Courtier|SCAG}",
+						"{@background Faction Agent|SCAG}",
+						"{@background Far Traveler|SCAG}",
+						"{@background Inheritor|SCAG}",
+						"{@background Knight of the Order|SCAG}",
+						"{@background Mercenary Veteran|SCAG}",
+						"{@background Urban Bounty Hunter|SCAG}",
+						"{@background Uthgardt Tribe Member|SCAG}",
+						"{@background Waterdhavian Noble|SCAG}"
+				    ]
 				}
 			]
 		}
