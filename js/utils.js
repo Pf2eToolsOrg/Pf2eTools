@@ -1685,6 +1685,8 @@ ListUtil = {
 				// K up; J down
 				if (noModifierKeys(e)) {
 					if (e.key === "k" || e.key === "j") {
+						// don't switch if the user is typing somewhere else
+						if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA") return;
 						const it = History.getSelectedListElementWithIndex();
 
 						if (it) {

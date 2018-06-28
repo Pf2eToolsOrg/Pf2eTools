@@ -58,10 +58,6 @@ const Omnisearch = {
 			e.stopPropagation();
 		});
 
-		$searchIn.on("keypress", (e) => {
-			e.stopPropagation();
-		});
-
 		// auto-search after 100ms
 		const TYPE_TIMEOUT_MS = 100;
 		let typeTimer;
