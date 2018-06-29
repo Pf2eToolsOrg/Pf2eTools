@@ -1569,7 +1569,7 @@ EntryRenderer.traphazard = {
 		}
 	},
 
-	getSimplePart (it) {
+	getSimplePart (renderer, it) {
 		if (it.trapType === "SMPL") {
 			return renderer.renderEntry({
 				entries: [
@@ -1594,7 +1594,7 @@ EntryRenderer.traphazard = {
 		return "";
 	},
 
-	getComplexPart (it) {
+	getComplexPart (renderer, it) {
 		if (it.trapType === "CMPX") {
 			return renderer.renderEntry({
 				entries: [
@@ -1638,7 +1638,7 @@ EntryRenderer.traphazard = {
 		const renderer = EntryRenderer.getDefaultRenderer();
 		return `
 			${EntryRenderer.utils.getNameTr(it, true)}
-			<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i>${EntryRenderer.traphazard.getSimplePart(it)}${EntryRenderer.traphazard.getComplexPart(it)}</td>
+			<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i>${EntryRenderer.traphazard.getSimplePart(renderer, it)}${EntryRenderer.traphazard.getComplexPart(renderer, it)}</td>
 			<tr class="text"><td colspan="6">${renderer.renderEntry({entries: it.entries}, 2)}</td></tr>
 		`;
 	}
