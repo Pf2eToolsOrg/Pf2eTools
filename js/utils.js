@@ -474,6 +474,31 @@ Parser.crToNumber = function (cr) {
 	else return 0;
 };
 
+Parser.acToFull = function (ac) {
+	const renderer = EntryRenderer.getDefaultRenderer();
+	let stack = "";
+	for (let i = 0; i < ac.length; ++i) {
+		const cur = ac[i];
+		const nxt = ac[i + 1];
+
+		if (cur.ac) {
+			stack += cur.ac;
+			if (cur.from) stack += ` (${cur.from.map(it => renderer.renderEntry(it)).join(", ")})`;
+			if (cur.condition) stack += ` ${renderer.renderEntry(cur.condition)}`;
+			if (cur.braces) stack += ")";
+		} else {
+			stack += cur;
+		}
+
+		if (nxt) {
+			if (nxt.braces) stack += " (";
+			else stack += ", ";
+		}
+	}
+
+	return stack.trim();
+};
+
 MONSTER_COUNT_TO_XP_MULTIPLIER = [1, 1.5, 2, 2, 2, 2, 2.5, 2.5, 2.5, 2.5, 3, 3, 3, 3, 4];
 Parser.numMonstersToXpMult = function (num) {
 	if (num >= MONSTER_COUNT_TO_XP_MULTIPLIER.length) return 4;

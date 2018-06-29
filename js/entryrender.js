@@ -1760,7 +1760,7 @@ EntryRenderer.monster = {
 						<th>Challenge Rating</th>
 					</tr>
 					<tr>
-						<td>${mon.ac}</td>					
+						<td>${Parser.acToFull(mon.ac)}</td>					
 						<td>${EntryRenderer.monster.getRenderedHp(mon.hp)}</td>					
 						<td>${Parser.getSpeedString(mon)}</td>					
 						<td>${Parser.monCrToFull(mon.cr)}</td>					

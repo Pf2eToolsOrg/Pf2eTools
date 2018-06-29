@@ -591,7 +591,7 @@ function loadhash (id) {
 
 		$content.find("td span#alignment").html(Parser.alignmentListToFull(mon.alignment).toLowerCase());
 
-		$content.find("td span#ac").html(mon.ac);
+		$content.find("td span#ac").html(Parser.acToFull(mon.ac));
 
 		$content.find("td span#hp").html(EntryRenderer.monster.getRenderedHp(mon.hp));
 
