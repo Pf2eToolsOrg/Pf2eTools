@@ -475,6 +475,8 @@ Parser.crToNumber = function (cr) {
 };
 
 Parser.acToFull = function (ac) {
+	if (typeof ac === "string") return ac; // handle classic format
+
 	const renderer = EntryRenderer.getDefaultRenderer();
 	let stack = "";
 	for (let i = 0; i < ac.length; ++i) {
