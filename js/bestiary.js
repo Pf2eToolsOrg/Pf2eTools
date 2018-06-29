@@ -124,6 +124,9 @@ const intelligenceFilter = new RangeFilter({header: "Intelligence"});
 const wisdomFilter = new RangeFilter({header: "Wisdom"});
 const charismaFilter = new RangeFilter({header: "Charisma"});
 const abilityScoreFilter = new MultiFilter("Ability Score", strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter);
+abilityScoreFilter.setModeAnd();
+const acFilter = new RangeFilter({header: "Armor Class"});
+const averageHpFilter = new RangeFilter({header: "Average Hit Points"});
 const typeFilter = new Filter({
 	header: "Type",
 	items: [
@@ -226,6 +229,8 @@ const filterBox = initFilterBox(
 	sizeFilter,
 	speedFilter,
 	abilityScoreFilter,
+	acFilter,
+	averageHpFilter,
 	typeFilter,
 	tagFilter,
 	alignmentFilter,
@@ -345,6 +350,8 @@ function handleFilterChange () {
 				m.wis,
 				m.cha
 			],
+			m._fAc,
+			m._fHp,
 			m._pTypes.type,
 			m._pTypes.tags,
 			m._fAlign,
@@ -377,6 +384,8 @@ function addMonsters (data) {
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
+		mon._fAc = mon.ac.map(it => it.ac || it);
+		mon._fHp = mon.hp.average;
 		const tempAlign = typeof mon.alignment[0] === "object"
 			? Array.prototype.concat.apply([], mon.alignment.map(a => a.alignment))
 			: [...mon.alignment];
@@ -412,6 +421,8 @@ function addMonsters (data) {
 		intelligenceFilter.addIfAbsent(mon.int);
 		wisdomFilter.addIfAbsent(mon.wis);
 		charismaFilter.addIfAbsent(mon.cha);
+		mon.ac.forEach(it => acFilter.addIfAbsent(it.ac || it));
+		if (mon.hp.average) averageHpFilter.addIfAbsent(mon.hp.average);
 		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");

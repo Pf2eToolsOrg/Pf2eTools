@@ -984,7 +984,8 @@ class RangeFilter extends Filter {
 
 	toDisplay (valObj, toCheck) {
 		const range = valObj[this.header];
-		return range.min <= toCheck && range.max >= toCheck;
+		if (toCheck instanceof Array) return range.min <= Math.min(toCheck) && range.max >= Math.max(toCheck);
+		else return range.min <= toCheck && range.max >= toCheck;
 	}
 }
 
@@ -1002,6 +1003,15 @@ class MultiFilter {
 		this.categoryName = categoryName;
 		this.filters = filters;
 		this.isMulti = true;
+		this.mode = "or";
+	}
+
+	setModeAnd () {
+		this.mode = "and";
+	}
+
+	setModeOr () {
+		this.mode = "or";
 	}
 
 	/**
@@ -1031,8 +1041,10 @@ class MultiFilter {
 			}
 		}
 		const resultsFilt = results.filter(r => r !== null);
-		if (!resultsFilt.length) return true;
-		return resultsFilt.find(r => r);
+		if (this.mode === "or") {
+			if (!resultsFilt.length) return true;
+			return resultsFilt.find(r => r);
+		} else return resultsFilt.filter(it => it).length === resultsFilt.length;
 	}
 }
 
