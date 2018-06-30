@@ -111,6 +111,8 @@ EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
 DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
 ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
 
+JSON_HOMEBREW_INDEX = `homebrew/index.json`;
+
 // STRING ==============================================================================================================
 // Appropriated from StackOverflow (literally, the site uses this code)
 String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
@@ -2743,19 +2745,38 @@ BrewUtil = {
 		if (BrewUtil.homebrew) {
 			brewHandler(BrewUtil.homebrew);
 		} else {
-			const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
-			if (rawBrew) {
-				try {
-					BrewUtil.homebrew = JSON.parse(rawBrew);
-					brewHandler(BrewUtil.homebrew);
-				} catch (e) {
-					// on error, purge all brew and reset hash
-					purgeBrew();
-					setTimeout(() => {
-						throw e
-					});
+			DataUtil.loadJSON(JSON_HOMEBREW_INDEX).then((data) => {
+				// auto-load from `homebrew/`, for custom versions of the site
+				function handleHomebrewFolder () {
+					if (data.toImport.length) {
+						Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`))).then((datas) => {
+							const page = UrlUtil.getCurrentPage();
+							datas.forEach(d => {
+								BrewUtil.doHandleBrewJson(d, page);
+							})
+						});
+					}
 				}
-			}
+
+				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
+				if (rawBrew) {
+					try {
+						BrewUtil.homebrew = JSON.parse(rawBrew);
+						handleHomebrewFolder();
+						brewHandler(BrewUtil.homebrew);
+					} catch (e) {
+						// on error, purge all brew and reset hash
+						purgeBrew();
+						setTimeout(() => {
+							throw e
+						});
+					}
+				} else {
+					BrewUtil.homebrew = {};
+					handleHomebrewFolder();
+					brewHandler(BrewUtil.homebrew);
+				}
+			});
 		}
 
 		function purgeBrew () {
