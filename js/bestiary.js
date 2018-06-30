@@ -454,8 +454,8 @@ function addMonsters (data) {
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(sublistFuncPreload);
 
-	$(`body`).on("click", ".btn-mon-name-pronounce", function () {
-		const audio = $(this).find(`.mon-name-pronounce`)[0];
+	$(`body`).on("click", ".btn-name-pronounce", function () {
+		const audio = $(this).find(`.name-pronounce`)[0];
 		audio.currentTime = 0;
 		audio.play();
 	});
@@ -576,11 +576,11 @@ function loadhash (id) {
 		const type = mon._pTypes.asText;
 
 		function getPronunciationButton () {
-			return `<span class="btn btn-xs btn-default btn-mon-name-pronounce">
-				<span class="glyphicon glyphicon-volume-up mon-name-pronounce-icon"></span>
-				<audio class="mon-name-pronounce">
+			return `<span class="btn btn-xs btn-default btn-name-pronounce">
+				<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
+				<audio class="name-pronounce">
 				   <source src="${mon.soundClip}" type="audio/mpeg">
-				   <source src="audio/${basename(mon.soundClip, '/')}" type="audio/mpeg">
+				   <source src="audio/bestiary/${basename(mon.soundClip, '/')}" type="audio/mpeg">
 				</audio>
 			</span>`;
 		}
