@@ -207,7 +207,7 @@ class LootGen {
 		if (rawText.indexOf("{@item ") !== -1) {
 			const stack = [];
 			renderer.recursiveEntryRender(rawText, stack);
-			if (options.rollSpellScroll && rawText.toLowerCase().includes("spell scroll")) {
+			if (options.rollSpellScroll && rawText.toLowerCase().startsWith("{@item spell scroll")) {
 				const m = /spell scroll \((.*?)\)/.exec(rawText.toLowerCase());
 				const level = m[1] === "cantrip" ? 0 : Number(m[1][0]); // 1st letter is the spell level
 				if (this.hasLoadedSpells()) {
@@ -249,7 +249,7 @@ class LootGen {
 
 	loadRollSpell (ele, level) {
 		const output = () => {
-			$(ele).removeClass("roller").html(`${renderer.renderEntry(this.getRandomSpell(level))}`)
+			$(ele).removeClass("roller").attr("onclick", "").html(`${renderer.renderEntry(this.getRandomSpell(level))}`)
 		};
 
 		if (!this.hasLoadedSpells()) {
