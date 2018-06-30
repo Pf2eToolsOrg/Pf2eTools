@@ -636,6 +636,10 @@ Parser.spLevelToFull = function (level) {
 	return level + "th";
 };
 
+Parser.spLevelToFullLevelText = function (level, dash) {
+	return `${Parser.spLevelToFull(level)}${(level === 0 ? "s" : `${dash ? "-" : " "}level`)}`;
+};
+
 Parser.spMetaToFull = function (meta) {
 	// these tags are (so far) mutually independent, so we don't need to combine the text
 	if (meta && meta.ritual) return " (ritual)";
