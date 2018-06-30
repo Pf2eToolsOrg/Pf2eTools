@@ -2235,13 +2235,16 @@ ListUtil = {
  * @param options overrides for the default filter options
  * @returns {*} a `Filter`
  */
-function getSourceFilter (options) {
+function getSourceFilter (options = {}) {
 	const baseOptions = {
 		header: FilterBox.SOURCE_HEADER,
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
-		selFn: defaultSourceSelFn
+		selFn: defaultSourceSelFn,
+		numGroups: 2,
+		groupFn: SourceUtil.isNonstandardSource
 	};
-	return getFilterWithMergedOptions(baseOptions, options);
+	Object.assign(baseOptions, options);
+	return new GroupedFilter(baseOptions);
 }
 
 function defaultSourceDeselFn (val) {

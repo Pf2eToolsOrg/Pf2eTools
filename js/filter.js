@@ -144,13 +144,12 @@ class FilterBox {
 				$outI.append($wrpSlider);
 
 				return $outI;
-			} else if (filter instanceof AllSourcesFilter) {
-				// TODO
-			} else {
+			} else if (filter instanceof GroupedFilter || filter instanceof Filter) {
+				const isGrouped = filter instanceof GroupedFilter;
 				const $outI = $(`<li class="filter-item"/>`);
 
 				self.headers[filter.header] = {outer: $outI, filter: filter};
-				const $grid = makePillGrid(filter.header);
+				const $grid = makePillGrid(isGrouped);
 				self.headers[filter.header].ele = $grid;
 				const $innerListHeader = makeHeaderLine($grid);
 
@@ -269,9 +268,18 @@ class FilterBox {
 				return $line;
 			}
 
-			function makePillGrid () {
+			function makePillGrid (isGrouped) {
 				const $pills = [];
 				const $grid = $(`<div class="pill-grid"/>`);
+				const $subGrids = [];
+				if (isGrouped) {
+					$grid.addClass(`pill-grid-subs`);
+
+					for (let i = 0; i < filter.numGroups; ++i) {
+						$subGrids[i] = $(`<div class="pill-grid-sub"/>`).appendTo($grid);
+						if (i + 1 < filter.numGroups) $grid.append(`<hr class="pill-grid-subs-divider">`);
+					}
+				}
 
 				function cycleState ($pill, $miniPill, forward) {
 					const curIndex = FilterBox._PILL_STATES.indexOf($pill.attr("state"));
@@ -346,7 +354,10 @@ class FilterBox {
 					// add a class to mark any items that are default deselected (used to add visual difference)
 					tagDefaults($miniPill, iText);
 
-					$grid.append($pill);
+					if (isGrouped) {
+						const group = Number(item instanceof FilterItem && item.group != null ? item.group : filter.groupFn(iText));
+						$subGrids[group].append($pill)
+					} else $grid.append($pill);
 					$miniView.append($miniPill);
 					$pills.push($pill);
 				}
@@ -960,10 +971,12 @@ class FilterItem {
 	 * An alternative to string `Filter.items` with a change-handling function
 	 * @param item string
 	 * @param changeFn called when this item is clicked/etc; calls `changeFn(item)`
+	 * @param group the group this item belongs to, if it's part of a GroupedFilter
 	 */
-	constructor (item, changeFn) {
+	constructor (item, changeFn, group) {
 		this.item = item;
 		this.changeFn = changeFn;
+		this.group = group;
 	}
 }
 
@@ -989,8 +1002,23 @@ class RangeFilter extends Filter {
 	}
 }
 
-class AllSourcesFilter extends Filter {
-	// TODO implement a filter with an "All Sources" button (toggled off by default)
+class GroupedFilter extends Filter {
+	/**
+	 * An extension of the basic filter, which enables visual grouping of elements.
+	 * @param options As with `Filter`, with two extra fields:
+	 *
+	 *   numGroups: the desired number of visual groups
+	 *
+	 *   (OPTIONAL)
+	 *   groupFn: function which takes an item, and returns a number (from 0 to numGroups, inclusive)
+	 *     Either this function or a `group` on a FilterItem must be specified.
+	 *
+	 */
+	constructor (options) {
+		super(options);
+		this.numGroups = options.numGroups;
+		this.groupFn = options.groupFn;
+	}
 }
 
 class MultiFilter {

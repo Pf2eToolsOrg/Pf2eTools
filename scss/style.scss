@@ -2047,11 +2047,22 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	background: #7a564f;
 }
 
-.dropdown-menu-filter .pill-grid {
+.dropdown-menu-filter .pill-grid,
+.dropdown-menu-filter .pill-grid-sub {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	max-width: 100%;
+}
+
+.dropdown-menu-filter .pill-grid.pill-grid-subs {
+	display: block;
+}
+
+.dropdown-menu-filter .pill-grid-subs-divider {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	max-width: 80%;
 }
 
 .dropdown-menu-filter .pill-grid-divider {
