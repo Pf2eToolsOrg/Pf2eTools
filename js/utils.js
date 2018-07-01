@@ -2988,7 +2988,7 @@ BrewUtil = {
 					const $ul = $lst.find(`ul`);
 					let stack = "";
 					BrewUtil._getBrewCategories().forEach(cat => {
-						BrewUtil.homebrew[cat].filter(it => it.source === source).forEach(it => {
+						BrewUtil.homebrew[cat].filter(it => it.source === source).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
 							stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
 							<span class="col-xs-7 name">${it.name}</span>
 							<span class="col-xs-4 category">${getDisplayCat(cat)}${getExtraInfo(cat, it)}</span>
