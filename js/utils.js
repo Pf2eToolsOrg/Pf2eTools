@@ -1605,6 +1605,12 @@ SourceUtil = {
 
 	_isNonstandardSource3pp (source) {
 		return source.endsWith(SRC_3PP_SUFFIX);
+	},
+
+	getFilterGroup (source) {
+		const brew = BrewUtil.getJsonSources().map(it => it.json);
+		if (brew.includes(source)) return 2;
+		return Number(SourceUtil.isNonstandardSource(source))
 	}
 };
 
@@ -2241,7 +2247,7 @@ function getSourceFilter (options = {}) {
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
 		selFn: defaultSourceSelFn,
 		numGroups: 2,
-		groupFn: SourceUtil.isNonstandardSource
+		groupFn: SourceUtil.getFilterGroup
 	};
 	Object.assign(baseOptions, options);
 	return new GroupedFilter(baseOptions);

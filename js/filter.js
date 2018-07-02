@@ -272,13 +272,19 @@ class FilterBox {
 				const $pills = [];
 				const $grid = $(`<div class="pill-grid"/>`);
 				const $subGrids = [];
+				let gridIndex = 0;
+				function addGroup (bump) {
+					if (bump) {
+						filter.numGroups++;
+						$grid.append(`<hr class="pill-grid-subs-divider">`);
+					}
+					$subGrids[gridIndex] = $(`<div class="pill-grid-sub"/>`).appendTo($grid);
+					if (gridIndex + 1 < filter.numGroups) $grid.append(`<hr class="pill-grid-subs-divider">`);
+					if (bump) gridIndex++;
+				}
 				if (isGrouped) {
 					$grid.addClass(`pill-grid-subs`);
-
-					for (let i = 0; i < filter.numGroups; ++i) {
-						$subGrids[i] = $(`<div class="pill-grid-sub"/>`).appendTo($grid);
-						if (i + 1 < filter.numGroups) $grid.append(`<hr class="pill-grid-subs-divider">`);
-					}
+					for (; gridIndex < filter.numGroups; ++gridIndex) addGroup();
 				}
 
 				function cycleState ($pill, $miniPill, forward) {
@@ -356,6 +362,7 @@ class FilterBox {
 
 					if (isGrouped) {
 						const group = Number(item instanceof FilterItem && item.group != null ? item.group : filter.groupFn(iText));
+						if (group > $subGrids.length - 1) addGroup(true);
 						$subGrids[group].append($pill)
 					} else $grid.append($pill);
 					$miniView.append($miniPill);
