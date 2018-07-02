@@ -737,7 +737,12 @@ class FilterBox {
 			const vals = cur[name];
 			const outName = `${FilterBox._SUB_HASH_PREFIX}${name}`;
 
-			if (vals._totals.yes || vals._totals.no) {
+			if (vals.min != null && vals.max != null) {
+				out[outName] = [
+					`min${vals.min}`,
+					`max${vals.max}`
+				];
+			} else if (vals._totals.yes || vals._totals.no) {
 				out[outName] = [];
 				Object.keys(vals).forEach(vK => {
 					if (vK.startsWith("_")) return;
