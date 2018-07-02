@@ -6,15 +6,9 @@ buildstep-ssh: &buildstep-ssh
   user: root
   secrets: [ ssh_key ]
 
-buildstep-discord: &buildstep-discord
-  image: appleboy/drone-discord
-  pull: true
-  secrets: [ discord_webhook_id, discord_webhook_token ]
-
 buildstep-node: &buildstep-node
   image: webhippie/nodejs:latest
   pull: true
-
 
 workspace:
   base: /srv/app
@@ -44,16 +38,6 @@ pipeline:
       when:
           event: push
           branch: development
-
-  Notify:
-      <<: *buildstep-discord
-      message: >
-       5etools test of {{ build.number }} to {{ build.branch }} by
-       {{ build.author }} finished with {{ build.status }}.
-       ({{ build.link }})
-      when:
-        status: success
-        event: [ push, pull_request ]
 
 ###############################################################################
 # Master Branch
@@ -98,15 +82,6 @@ pipeline:
 ###############################################################################
 # All Branches
 # ... -> Notify || Shame
-  Notify:
-      <<: *buildstep-discord
-      message: >
-       5etools deployment of {{ build.number }} from {{ build.branch }} by
-       {{ build.author }} finished with {{ build.status }}.
-       ({{ build.link }})
-      when:
-        status:  [ failure, success ]
-        event: push
 
   Shame:
     <<: *buildstep-ssh
