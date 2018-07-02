@@ -2607,9 +2607,9 @@ DataUtil = {
 	},
 
 	class: {
-		loadJSON: function () {
+		loadJSON: function (baseUrl = "") {
 			return new Promise((resolve, reject) => {
-				DataUtil.loadJSON(`data/class/index.json`).then((index) => {
+				DataUtil.loadJSON(`${baseUrl}data/class/index.json`).then((index) => {
 					Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`data/class/${it}`))).then((all) => {
 						resolve(all.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []}));
 					});
