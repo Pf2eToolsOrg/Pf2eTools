@@ -902,6 +902,12 @@ class Filter {
 		// TODO handle AND/OR
 		const map = valObj[this.header];
 		const totals = map._totals;
+
+		function toCheckVal (tc) {
+			if (tc instanceof FilterItem) return tc.item;
+			return tc;
+		}
+
 		if (toCheck instanceof Array) {
 			let hide = false;
 			let display = false;
@@ -913,14 +919,14 @@ class Filter {
 				}
 
 				toCheck.forEach(tc => {
-					if (map[tc] === 1) { // if any are 1 (nlue) include if they match
+					if (map[toCheckVal(tc)] === 1) { // if any are 1 (blue) include if they match
 						display = true;
 					}
 				});
 			} else {
 				let ttlYes = 0;
 				toCheck.forEach(tc => {
-					if (map[tc] === 1) {
+					if (map[toCheckVal(tc)] === 1) {
 						ttlYes++;
 					}
 				});
@@ -929,14 +935,14 @@ class Filter {
 
 			if (map._andOr.red === "OR") {
 				toCheck.forEach(tc => {
-					if (map[tc] === -1) { // if any are -1 (red) exclude if they match
+					if (map[toCheckVal(tc)] === -1) { // if any are -1 (red) exclude if they match
 						hide = true;
 					}
 				});
 			} else {
 				let ttlNo = 0;
 				toCheck.forEach(tc => {
-					if (map[tc] === -1) {
+					if (map[toCheckVal(tc)] === -1) {
 						ttlNo++;
 					}
 				});
@@ -953,13 +959,13 @@ class Filter {
 			let hide = false;
 			if (map._andOr.blue === "OR") {
 				if (totals.yes > 0) {
-					display = map[toCheck] === 1;
+					display = map[toCheckVal(toCheck)] === 1;
 				} else {
 					display = true;
 				}
 			} else {
 				if (totals.yes > 0) {
-					display = map[toCheck] === 1 && totals.yes === 1;
+					display = map[toCheckVal(toCheck)] === 1 && totals.yes === 1;
 				} else {
 					display = true;
 				}
@@ -967,10 +973,10 @@ class Filter {
 
 			if (map._andOr.red === "OR") {
 				if (totals.no > 0) {
-					hide = map[toCheck] === -1;
+					hide = map[toCheckVal(toCheck)] === -1;
 				}
 			} else {
-				hide = totals.no === 1 && map[toCheck] === -1;
+				hide = totals.no === 1 && map[toCheckVal(toCheck)] === -1;
 			}
 
 			return display && !hide;
