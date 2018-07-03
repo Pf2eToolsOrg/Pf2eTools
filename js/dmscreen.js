@@ -143,21 +143,20 @@ class Board {
 	initialise () {
 		this.doAdjust$creenCss();
 		this.doShowLoading();
-		const fnCallback = this.hasSavedStateUrl()
-			? () => {
-				this.doLoadUrlState();
-				this.initUnloadHandler();
-			}
-			: this.hasSavedState()
-				? () => {
+
+		this.pLoadIndex()
+			.then(() => {
+				if (this.hasSavedStateUrl()) {
+					this.doLoadUrlState();
+					this.initUnloadHandler();
+				} else if (this.hasSavedState()) {
 					this.doLoadState();
 					this.initUnloadHandler();
-				}
-				: () => {
+				} else {
 					this.doCheckFillSpaces();
 					this.initUnloadHandler();
-				};
-		this.doLoadIndex(fnCallback);
+				}
+			});
 	}
 
 	initUnloadHandler () {
@@ -165,80 +164,82 @@ class Board {
 		$(window).on("beforeunload", () => this.doSaveState());
 	}
 
-	doLoadIndex (fnCallback) {
-		elasticlunr.clearStopWords();
-		EntryRenderer.item.populatePropertyAndTypeReference().then(() => DataUtil.loadJSON("data/bookref-dmscreen-index.json")).then((data) => {
-			this.availRules.ALL = elasticlunr(function () {
-				this.addField("b");
-				this.addField("s");
-				this.addField("p");
-				this.addField("n");
-				this.addField("h");
-				this.setRef("id");
-			});
+	pLoadIndex () {
+		return new Promise((resolve, reject) => {
+			elasticlunr.clearStopWords();
+			EntryRenderer.item.populatePropertyAndTypeReference().then(() => DataUtil.loadJSON("data/bookref-dmscreen-index.json")).then((data) => {
+				this.availRules.ALL = elasticlunr(function () {
+					this.addField("b");
+					this.addField("s");
+					this.addField("p");
+					this.addField("n");
+					this.addField("h");
+					this.setRef("id");
+				});
 
-			data.data.forEach(d => {
-				d.n = data._meta.name[d.b];
-				d.b = data._meta.id[d.b];
-				d.s = data._meta.section[d.s];
-				this.availRules.ALL.addDoc(d);
-			});
+				data.data.forEach(d => {
+					d.n = data._meta.name[d.b];
+					d.b = data._meta.id[d.b];
+					d.s = data._meta.section[d.s];
+					this.availRules.ALL.addDoc(d);
+				});
 
-			return DataUtil.loadJSON("search/index.json");
-		}).then((data) => {
-			function hasBadCat (d) {
-				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF;
-			}
-
-			function fromDeepIndex (d) {
-				return d.d; // flag for "deep indexed" content that refers to the same item
-			}
-
-			this.availContent.ALL = elasticlunr(function () {
-				this.addField("n");
-				this.addField("s");
-				this.setRef("id");
-			});
-			// Add main site index
-			data.forEach(d => {
-				if (hasBadCat(d) || fromDeepIndex(d)) return;
-				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-				if (!this.availContent[d.cf]) {
-					this.availContent[d.cf] = elasticlunr(function () {
-						this.addField("n");
-						this.addField("s");
-						this.setRef("id");
-					});
+				return DataUtil.loadJSON("search/index.json");
+			}).then((data) => {
+				function hasBadCat (d) {
+					return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF;
 				}
-				this.availContent.ALL.addDoc(d);
-				this.availContent[d.cf].addDoc(d);
+
+				function fromDeepIndex (d) {
+					return d.d; // flag for "deep indexed" content that refers to the same item
+				}
+
+				this.availContent.ALL = elasticlunr(function () {
+					this.addField("n");
+					this.addField("s");
+					this.setRef("id");
+				});
+				// Add main site index
+				data.forEach(d => {
+					if (hasBadCat(d) || fromDeepIndex(d)) return;
+					d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
+					if (!this.availContent[d.cf]) {
+						this.availContent[d.cf] = elasticlunr(function () {
+							this.addField("n");
+							this.addField("s");
+							this.setRef("id");
+						});
+					}
+					this.availContent.ALL.addDoc(d);
+					this.availContent[d.cf].addDoc(d);
+				});
+
+				// Add homebrew
+				BrewUtil.getSearchIndex().forEach(d => {
+					if (hasBadCat(d) || fromDeepIndex(d)) return;
+					d.cf = Parser.pageCategoryToFull(d.c);
+					d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
+					this.availContent.ALL.addDoc(d);
+					this.availContent[d.cf].addDoc(d);
+				});
+
+				// add tabs
+				const omniTab = new AddMenuSearchTab(this.availContent);
+				omniTab.setSpotlight(true);
+				const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
+				const embedTab = new AddMenuVideoTab();
+				const imageTab = new AddMenuImageTab();
+				const specialTab = new AddMenuSpecialTab();
+
+				this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
+
+				this.menu.render();
+
+				this.sideMenu.render();
+
+				resolve();
+				this.doHideLoading();
 			});
-
-			// Add homebrew
-			BrewUtil.getSearchIndex().forEach(d => {
-				if (hasBadCat(d) || fromDeepIndex(d)) return;
-				d.cf = Parser.pageCategoryToFull(d.c);
-				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-				this.availContent.ALL.addDoc(d);
-				this.availContent[d.cf].addDoc(d);
-			});
-
-			// add tabs
-			const omniTab = new AddMenuSearchTab(this.availContent);
-			omniTab.setSpotlight(true);
-			const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
-			const embedTab = new AddMenuVideoTab();
-			const imageTab = new AddMenuImageTab();
-			const specialTab = new AddMenuSpecialTab();
-
-			this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
-
-			this.menu.render();
-
-			this.sideMenu.render();
-
-			fnCallback.bind(this)();
-			this.doHideLoading();
 		});
 	}
 
@@ -743,21 +744,16 @@ class Panel {
 			meta,
 			Panel._get$eleLoading()
 		);
-		RuleLoader.doFillThenCall(
-			book,
-			chapter,
-			header,
-			() => {
-				const rule = RuleLoader.getFromCache(book, chapter, header);
-				const it = EntryRenderer.rule.getCompactRenderedString(rule);
-				this.set$Content(
-					PANEL_TYP_RULES,
-					meta,
-					$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
-					rule.name || ""
-				);
-			}
-		);
+		RuleLoader.pFill(book).then(() => {
+			const rule = RuleLoader.getFromCache(book, chapter, header);
+			const it = EntryRenderer.rule.getCompactRenderedString(rule);
+			this.set$Content(
+				PANEL_TYP_RULES,
+				meta,
+				$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
+				rule.name || ""
+			);
+		});
 	}
 
 	doPopulate_Rollbox () {
@@ -2019,8 +2015,8 @@ class AddMenuSearchTab extends AddMenuTab {
 }
 
 class RuleLoader {
-	static doFillThenCall (book, chapter, header, fnCallback) {
-		DataUtil.loadJSON(`data/${book}.json`).then((data) => {
+	static pFill (book) {
+		return DataUtil.loadJSON(`data/${book}.json`).then(data => new Promise((resolve) => {
 			const $$$ = RuleLoader.cache;
 
 			Object.keys(data.data).forEach(b => {
@@ -2034,8 +2030,8 @@ class RuleLoader {
 				})
 			});
 
-			fnCallback();
-		});
+			resolve();
+		}));
 	}
 
 	static getFromCache (book, chapter, header) {
