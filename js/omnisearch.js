@@ -95,7 +95,7 @@ const Omnisearch = {
 
 			const tokens = elasticlunr.tokenizer(srch);
 			const tokensIsCat = tokens.map(t => {
-				const category = Object.keys(Omnisearch._CATEGORY_COUNTS).map(k => k.toLowerCase()).find(k => (k === t.toLowerCase().trim() || `${k}s` === t.toLowerCase().trim()));
+				const category = Object.keys(Omnisearch._CATEGORY_COUNTS).map(k => k.toLowerCase()).find(k => (`in:${k}` === t.toLowerCase().trim() || `in:${k}s` === t.toLowerCase().trim()));
 				return {
 					t: t,
 					isCat: !!category,
