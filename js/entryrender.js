@@ -2029,104 +2029,152 @@ EntryRenderer.item = {
 	 * Runs callback with itemList as argument
 	 * @param callback
 	 * @param urls optional overrides for default URLs
-	 * @addGroups whether item groups should be included
+	 * @param addGroups whether item groups should be included
 	 */
 	buildList: function (callback, urls, addGroups) {
 		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
 
 		if (!urls) urls = {};
-		let itemList;
-		let basicItemList;
-		let variantList;
 
 		// allows URLs to be overriden (used by roll20 script)
 		const itemUrl = urls.items || `${EntryRenderer.getDefaultRenderer().baseUrl}data/items.json`;
 		const basicItemUrl = urls.basicitems || `${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`;
 		const magicVariantUrl = urls.magicvariants || `${EntryRenderer.getDefaultRenderer().baseUrl}data/magicvariants.json`;
 
-		DataUtil.loadJSON(itemUrl).then(addBasicItems);
+		loadItems()
+			.then(addBasicItemsAndTypes)
+			.then(addGenericVariants)
+			.then(createSpecificVariants)
+			.then(enhanceItems)
+			.then(callback);
 
-		function addBasicItems (itemData) {
-			itemList = itemData.item;
-			if (addGroups) itemList = itemList.concat(itemData.itemGroup || []);
-			DataUtil.loadJSON(basicItemUrl).then(addVariants);
+		function loadItems () {
+			return new Promise((resolve, reject) => {
+				DataUtil.loadJSON(itemUrl).then((itemData) => {
+					const items = itemData.item;
+					resolve(addGroups ? items.concat(itemData.itemGroup || []) : items);
+				}, reject);
+			});
 		}
 
-		function addVariants (basicItemData) {
-			basicItemList = basicItemData.basicitem;
-			// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
-			basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
-			basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
-			EntryRenderer.item._addBrewPropertiesAndTypes();
-			DataUtil.loadJSON(magicVariantUrl).then(mergeBasicItems);
+		function addBasicItemsAndTypes (itemList) {
+			return new Promise((resolve, reject) => {
+				DataUtil.loadJSON(basicItemUrl).then((basicItemData) => {
+					const basicItems = basicItemData.basicitem;
+					// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
+					basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
+					basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
+					EntryRenderer.item._addBrewPropertiesAndTypes();
+					resolve([itemList, basicItems]);
+				}, reject);
+			});
 		}
 
-		function mergeBasicItems (variantData) {
-			variantList = variantData.variant;
-			itemList = itemList.concat(basicItemList);
-			for (let i = 0; i < variantList.length; i++) {
-				variantList[i].tier = variantList[i].inherits.tier;
-				variantList[i].rarity = variantList[i].inherits.rarity;
-				variantList[i].source = variantList[i].inherits.source;
-				variantList[i].page = variantList[i].inherits.page;
-				if (!variantList[i].entries && variantList[i].inherits.entries) variantList[i].entries = JSON.parse(JSON.stringify(variantList[i].inherits.entries));
-				if (variantList[i].requires.armor) variantList[i].armor = variantList[i].requires.armor;
-				if (variantList[i].inherits.resist) variantList[i].resist = variantList[i].inherits.resist;
-				if (variantList[i].inherits.reqAttune) variantList[i].reqAttune = variantList[i].inherits.reqAttune;
-			}
-			itemList = itemList.concat(variantList);
-			for (let i = 0; i < basicItemList.length; i++) {
-				const curBasicItem = basicItemList[i];
-				basicItemList[i].category = "Basic";
-				if (curBasicItem.entries === undefined) curBasicItem.entries = [];
-				const curBasicItemName = curBasicItem.name.toLowerCase();
-				for (let j = 0; j < variantList.length; j++) {
-					const curVariant = variantList[j];
-					const curRequires = curVariant.requires;
-					let hasRequired = curBasicItemName.indexOf(" (") === -1;
-					for (const requiredProperty in curRequires) if (curRequires.hasOwnProperty(requiredProperty) && curBasicItem[requiredProperty] !== curRequires[requiredProperty]) hasRequired = false;
-					if (curVariant.excludes) {
-						const curExcludes = curVariant.excludes;
-						for (const excludedProperty in curExcludes) if (curExcludes.hasOwnProperty(excludedProperty) && curBasicItem[excludedProperty] === curExcludes[excludedProperty]) hasRequired = false;
-					}
-					if (hasRequired) {
-						const curInherits = curVariant.inherits;
-						const tmpBasicItem = JSON.parse(JSON.stringify(curBasicItem));
-						delete tmpBasicItem.value; // Magic items do not inherit the value of the non-magical item
-						tmpBasicItem.category = "Specific Variant";
-						for (const inheritedProperty in curInherits) {
-							if (curInherits.hasOwnProperty(inheritedProperty)) {
-								if (inheritedProperty === "namePrefix") {
-									tmpBasicItem.name = curInherits.namePrefix + tmpBasicItem.name;
-								} else if (inheritedProperty === "nameSuffix") {
-									tmpBasicItem.name += curInherits.nameSuffix;
-								} else if (inheritedProperty === "entries") {
-									for (let k = curInherits.entries.length - 1; k > -1; k--) {
-										let tmpText = curInherits.entries[k];
-										if (typeof tmpText === "string") {
-											if (tmpBasicItem.dmgType) tmpText = tmpText.replace(/{@dmgType}/g, Parser.dmgTypeToFull(tmpBasicItem.dmgType));
-											if (curInherits.genericBonus) tmpText = tmpText.replace(/{@genericBonus}/g, curInherits.genericBonus);
-											if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(curBasicItemName);
-										}
-										tmpBasicItem.entries.unshift(tmpText);
-									}
-								} else tmpBasicItem[inheritedProperty] = curInherits[inheritedProperty];
-							}
-						}
-						itemList.push(tmpBasicItem);
-					}
+		function addGenericVariants ([items, basicItems]) {
+			function addInheritedPropertiesToSelf (genericVariant) {
+				genericVariant.tier = genericVariant.inherits.tier;
+				genericVariant.rarity = genericVariant.inherits.rarity;
+				genericVariant.source = genericVariant.inherits.source;
+				genericVariant.page = genericVariant.inherits.page;
+				if (!genericVariant.entries && genericVariant.inherits.entries) {
+					genericVariant.entries = JSON.parse(JSON.stringify(genericVariant.inherits.entries));
 				}
+				if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
+				if (genericVariant.inherits.resist) genericVariant.resist = genericVariant.inherits.resist;
+				if (genericVariant.inherits.reqAttune) genericVariant.reqAttune = genericVariant.inherits.reqAttune;
 			}
-			enhanceItems();
+
+			return new Promise((resolve, reject) => {
+				DataUtil.loadJSON(magicVariantUrl).then((variantData) => {
+					const genericVariants = variantData.variant;
+					genericVariants.forEach(addInheritedPropertiesToSelf);
+					resolve([items, basicItems, genericVariants]);
+				}, reject);
+			});
 		}
 
-		function enhanceItems () {
-			for (let i = 0; i < itemList.length; i++) {
-				const item = itemList[i];
-				EntryRenderer.item.enhanceItem(item);
+		function createSpecificVariants ([items, basicItems, genericVariants]) {
+			function isItemWithQuantity (baseItem) {
+				return baseItem.name.toLowerCase().indexOf(" (") !== -1;
 			}
-			EntryRenderer.item._builtList = itemList;
-			callback(itemList);
+
+			function isMissingRequiredProperty (baseItem, genericVariant) {
+				const curRequires = genericVariant.requires;
+				return Object.keys(curRequires).reduce((isMissingRequiredProperty, requiredProperty) => {
+					if (isMissingRequiredProperty) return true;
+					return baseItem[requiredProperty] !== curRequires[requiredProperty];
+				}, false);
+			}
+
+			function hasExcludedProperty (baseItem, genericVariant) {
+				const curExcludes = genericVariant.excludes || [];
+				return Object.keys(curExcludes).reduce((hasExcludedProperty, excludedProperty) => {
+					if (hasExcludedProperty) return true;
+					return baseItem[excludedProperty] === curExcludes[excludedProperty];
+				}, false);
+			}
+
+			function addSpecificVariantForEnhancing (genericVariant, base, specificVariant) {
+				genericVariant.variants = genericVariant.variants || [];
+				genericVariant.variants.push({
+					base,
+					specificVariant
+				});
+			}
+
+			function createSpecificVariant (baseItem, genericVariant) {
+				const inherits = genericVariant.inherits;
+				const specificVariant = JSON.parse(JSON.stringify(baseItem));
+				delete specificVariant.value; // Magic items do not inherit the value of the non-magical item
+				specificVariant.category = "Specific Variant";
+				Object.keys(inherits).forEach((inheritedProperty) => {
+					if (inheritedProperty === "namePrefix") {
+						specificVariant.name = inherits.namePrefix + specificVariant.name;
+					} else if (inheritedProperty === "nameSuffix") {
+						specificVariant.name += inherits.nameSuffix;
+					} else if (inheritedProperty === "entries") {
+						for (let k = inherits.entries.length - 1; k > -1; k--) {
+							let tmpText = inherits.entries[k];
+							if (typeof tmpText === "string") {
+								if (specificVariant.dmgType) tmpText = tmpText.replace(/{@dmgType}/g, Parser.dmgTypeToFull(specificVariant.dmgType));
+								if (inherits.genericBonus) tmpText = tmpText.replace(/{@genericBonus}/g, inherits.genericBonus);
+								if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(baseItem.name);
+							}
+							specificVariant.entries.unshift(tmpText);
+						}
+					} else {
+						specificVariant[inheritedProperty] = inherits[inheritedProperty];
+					}
+				});
+				addSpecificVariantForEnhancing(genericVariant, baseItem, specificVariant);
+				return specificVariant;
+			}
+
+			return new Promise((resolve) => {
+				const allItems = items.concat(basicItems).concat(genericVariants);
+
+				basicItems.forEach((curBaseItem) => {
+					curBaseItem.category = "Basic";
+					if (curBaseItem.entries === undefined) curBaseItem.entries = [];
+
+					if (isItemWithQuantity(curBaseItem)) return;
+
+					genericVariants.forEach((curGenericVariant) => {
+						if (isMissingRequiredProperty(curBaseItem, curGenericVariant)) return;
+						if (hasExcludedProperty(curBaseItem, curGenericVariant)) return;
+
+						allItems.push(createSpecificVariant(curBaseItem, curGenericVariant));
+					});
+				});
+
+				resolve(allItems);
+			});
+		}
+
+		function enhanceItems (allItems) {
+			allItems.forEach((item) => EntryRenderer.item.enhanceItem(item));
+			EntryRenderer.item._builtList = allItems;
+			return Promise.resolve(allItems);
 		}
 	},
 
@@ -2209,6 +2257,33 @@ EntryRenderer.item = {
 				item.value = `${Number(m[1]).toLocaleString()}${m[2]}`;
 			}
 		}
+
+		(function addBaseItemList (item) {
+			// item.variants was added during generic variant creation
+			const variants = item.variants;
+			delete item.variants;
+
+			function createItemLink (item) {
+				return `{@item ${item.name}|${item.source}}`;
+			}
+
+			if (variants && variants.length) {
+				const entries = item.entries;
+				entries.push({
+					type: "entries",
+					name: "Base items",
+					entries: [
+						"This item variant can be applied to the following base items:",
+						{
+							type: "list",
+							items: variants.map(({base, specificVariant}) => {
+								return `${createItemLink(base)} (${createItemLink(specificVariant)})`
+							})
+						}
+					]
+				});
+			}
+		})(item);
 	},
 
 	promiseData: (urls, addGroups) => {
