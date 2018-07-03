@@ -2744,6 +2744,12 @@ table.stats {
 table.stats.stats-book {
 	background: white;
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+
+	::selection {
+		background: #242527;
+		color: #fff;
+		text-shadow: none;
+	}
 }
 
 
@@ -3164,6 +3170,11 @@ table.stats table.statsDataInset {
 	th.border,
 	table.stats.stats-book th.border {
 		background: #565656;
+	}
+
+	table.stats.stats-book ::selection {
+		color: #242527;
+		background: #fff;
 	}
 
 	tr.text td {
