@@ -103,15 +103,12 @@ const crFilter = new Filter({header: "CR"});
 const sizeFilter = new Filter({
 	header: "Size",
 	items: [
-		SZ_FINE,
-		SZ_DIMINUTIVE,
 		SZ_TINY,
 		SZ_SMALL,
 		SZ_MEDIUM,
 		SZ_LARGE,
 		SZ_HUGE,
 		SZ_GARGANTUAN,
-		SZ_COLOSSAL,
 		SZ_VARIES
 	],
 	displayFn: Parser.sizeAbvToFull
