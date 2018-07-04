@@ -953,9 +953,11 @@ class SubClassLoader {
 					if (!$e.is(":visible")) return;
 					const idTr = $e.closest(`tr[id]`);
 					const pTr = $e.closest(`tr`);
-					const displayText = $e.contents().filter(function () {
+					const textNodes = $e.contents().filter(function () {
 						return this.nodeType === 3;
-					})[0].nodeValue.replace(/[:.]$/g, "");
+					});
+					if (!textNodes.length) return;
+					const displayText = textNodes[0].nodeValue.replace(/[:.]$/g, "");
 					const scrollTo = $e.data("title-index");
 					makeScroller($navBody, idTr, pTr, pClass, displayText, scrollTo);
 				});
