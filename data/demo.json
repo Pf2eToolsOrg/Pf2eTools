@@ -25,6 +25,7 @@
 						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
 						"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
+						"The homebrew tag; Can show {@homebrew changes|modifications}, {@homebrew additions} or {@homebrew |removals}.",
 						"Content tags:",
 						{
 							"type": "list",
@@ -620,6 +621,44 @@
 							}
 						]
 					}
+				},
+				{
+					"type": "homebrew",
+					"entries": [
+						{
+							"name": "Homebrews",
+							"entries": [
+								"If you make additions to existing texts, you may want to use the \"homebrew\" entry type, to clearly mark where homebrew starts and the original text ends."
+							]
+						}
+					]
+				},
+				{
+					"type": "homebrew",
+					"entries": [
+						{
+							"name": "Homebrew which changed something",
+							"entries": [
+								"It also supports changes, which show the replaced entries on hover."
+							]
+						}
+					],
+					"oldEntries": [
+						"This was the original content."
+					]
+				},
+				{
+					"type": "homebrew",
+					"oldEntries": [
+						"You can also mark removed content."
+					]
+				},
+				{
+					"type": "homebrew",
+					"movedTo": "a completely different place",
+					"oldEntries": [
+						"And you can also mark moved content."
+					]
 				}
 			]
 		}

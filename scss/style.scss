@@ -3030,6 +3030,29 @@ table.stats table.statsDataInset {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.homebrew-section {
+	background-color: rgba(255, 0, 0, 0.05);
+
+
+	.homebrew-old-content {
+		float: right;
+		color: #a00;
+		margin-left: 5px;
+	}
+
+	.homebrew-notice {
+		&::before {
+			content: "Homebrew";
+		}
+		float: right;
+	}
+}
+
+.homebrew-inline {
+	background-color: rgba(255, 0, 0, 0.05);
+	text-decoration: underline dotted;
+}
+
 /* Day Mode End */
 
 /* Night Mode */
@@ -3598,6 +3621,17 @@ table.stats table.statsDataInset {
 
 	.dm-init-row.dm-init-row-active .init-wrp-creature {
 		background: #0e93f94f;
+	}
+
+	.homebrew-section {
+		background-color: rgba(255, 0, 0, 0.1);
+		.homebrew-old-content {
+			color: #f99;
+		}
+	}
+
+	.homebrew-inline {
+		background-color: rgba(255, 0, 0, 0.1);
 	}
 
 	/* *** */

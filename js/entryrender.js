@@ -325,6 +325,40 @@ function EntryRenderer () {
 					renderSuffix();
 					break;
 				}
+
+				// homebrew changes
+				case "homebrew": {
+					renderPrefix();
+					textStack.push(`<div class="homebrew-section">`);
+					if (entry.oldEntries) {
+						const mouseOver = EntryRenderer.hover.createOnMouseHover(entry.oldEntries);
+						let markerText;
+						if (entry.movedTo) {
+							markerText = "(See moved content)";
+						} else if (entry.entries) {
+							markerText = "(See replaced content)";
+						} else {
+							markerText = "(See removed content)";
+						}
+						textStack.push(`<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>
+								${markerText}
+							</span>`);
+					}
+
+					textStack.push(`<span class="homebrew-notice"></span>`);
+
+					if (entry.entries) {
+						entry.entries.forEach((nxt, i) => this.recursiveEntryRender(nxt, textStack, depth));
+					} else if (entry.movedTo) {
+						textStack.push(`This content has been moved to ${entry.movedTo}.`);
+					} else {
+						textStack.push("This content has been deleted.");
+					}
+
+					textStack.push(`</div>`);
+					renderSuffix();
+					break;
+				}
 			}
 		} else if (typeof entry === "string") { // block
 			renderPrefix();
@@ -726,6 +760,21 @@ function EntryRenderer () {
 							text: displayText
 						};
 						self.recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@homebrew") {
+						const [newText, oldText] = text.split("|");
+						const tooltip = [];
+						if (newText && oldText) {
+							tooltip.push("<strong>This is a homebrew addition, replacing the following:</strong>");
+						} else if (newText) {
+							tooltip.push("<strong>This is a homebrew addition.</strong>")
+						} else if (oldText) {
+							tooltip.push("<strong>The following text has been removed with this homebrew:</strong>")
+						}
+						if (oldText) {
+							tooltip.push(oldText);
+						}
+						const onMouseOver = EntryRenderer.hover.createOnMouseHover(tooltip);
+						textStack.push(`<span class="homebrew-inline" ${onMouseOver}>${newText ? newText : "[...]"}</span>`);
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -2459,6 +2508,11 @@ EntryRenderer.hover = {
 		this._dmScreen = screen;
 	},
 
+	createOnMouseHover (entries) {
+		const source = JSON.stringify({entries: entries}).replace(/"/g, "&quot;").replace(/'/g, "&singlequot;");
+		return `onmouseover="EntryRenderer.hover.mouseOver(event, this, 'hover', '${source}', '${window.location.hash}')"`;
+	},
+
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
@@ -2537,6 +2591,11 @@ EntryRenderer.hover = {
 		}
 
 		switch (page) {
+			case "hover": {
+				callbackFn();
+				break;
+			}
+
 			case UrlUtil.PG_SPELLS: {
 				loadMultiSource(page, `data/spells/`, "spell");
 				break;
@@ -2666,7 +2725,7 @@ EntryRenderer.hover = {
 		const clientX = EntryRenderer.hover._curHovering.clientX;
 
 		// if we've outrun the loading, restart
-		if (!EntryRenderer.hover._isCached(page, source, hash)) {
+		if (!EntryRenderer.hover._isCached(page, source, hash) && page !== "hover") {
 			EntryRenderer.hover._showInProgress = false;
 			if ((new Date().getTime() - 5000) > EntryRenderer.hover.startTime) throw new Error(`Hover content for ${page}#${hash} took too long to load! Could this be a typo?`);
 			// pass a fake "event"
@@ -2674,8 +2733,15 @@ EntryRenderer.hover = {
 			return;
 		}
 
-		const toRender = EntryRenderer.hover._getFromCache(page, source, hash);
-		const content = EntryRenderer.hover._curHovering.renderFunction(toRender);
+		let toRender;
+		let content;
+		if (page === "hover") {
+			toRender = {name: "Hover"};
+			content = EntryRenderer.hover._curHovering.renderFunction(JSON.parse(source.replace(/&quot;/g, "\"").replace(/&singlequot;/g, "'")));
+		} else {
+			toRender = EntryRenderer.hover._getFromCache(page, source, hash);
+			content = EntryRenderer.hover._curHovering.renderFunction(toRender);
+		}
 
 		$(ele).attr("data-hover-active", true);
 
@@ -2855,6 +2921,8 @@ EntryRenderer.hover = {
 
 	_pageToRenderFn (page) {
 		switch (page) {
+			case "hover":
+				return EntryRenderer.getDefaultRenderer().renderEntry.bind(EntryRenderer.getDefaultRenderer());
 			case UrlUtil.PG_SPELLS:
 				return EntryRenderer.spell.getCompactRenderedString;
 			case UrlUtil.PG_ITEMS:
