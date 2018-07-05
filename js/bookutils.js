@@ -224,6 +224,8 @@ const BookUtil = {
 
 	baseDataUrl: "",
 	bookIndex: [],
+	homebrewIndex: null,
+	homebrewData: null,
 	renderArea: null,
 	referenceId: false,
 	// custom loading to serve multiple sources
@@ -233,33 +235,51 @@ const BookUtil = {
 			return name.includes(Parser.SOURCE_JSON_TO_FULL[SRC_TYP]) ? name.replace(Parser.SOURCE_JSON_TO_FULL[SRC_TYP], Parser.sourceJsonToAbv(SRC_TYP)) : name;
 		}
 
-		const [bookId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
-		const fromIndex = BookUtil.bookIndex.filter(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
-		if (fromIndex.length) {
-			document.title = `${fromIndex[0].name} - 5etools`;
-			$(`.book-head-header`).html(cleanName(fromIndex[0].name));
+		function handleFound (fromIndex, homebrewData) {
+			document.title = `${fromIndex.name} - 5etools`;
+			$(`.book-head-header`).html(cleanName(fromIndex.name));
 			$(`.book-head-message`).html("Browse content. Press F to find.");
-			BookUtil.loadBook(fromIndex[0], bookId, hashParts);
+			BookUtil.loadBook(fromIndex, bookId, hashParts, homebrewData);
 			currentPage();
-		} else {
-			if (!window.location.hash) {
-				window.history.back();
-			} else {
-				throw new Error("No book with ID: " + bookId);
+		}
+
+		function handleNotFound () {
+			if (!window.location.hash) window.history.back();
+			else {
+				$(`.initial-message`).text(`Loading failed\u2014could not find a book with id "${bookId}"`);
+				throw new Error(`No book with ID: ${bookId}`);
 			}
 		}
+
+		const [bookId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
+		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
+		if (fromIndex && !fromIndex.uniqueId) handleFound(fromIndex);
+		else if (fromIndex && fromIndex.uniqueId) { // it's homebrew
+			BrewUtil.addBrewData((brew) => {
+				if (!brew[BookUtil.homebrewData]) handleNotFound();
+				const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
+				if (!bookData) handleNotFound();
+				handleFound(fromIndex, bookData);
+			});
+		} else handleNotFound();
 	},
 
 	_renderer: new EntryRenderer(),
-	loadBook: (fromIndex, bookId, hashParts) => {
-		DataUtil.loadJSON(`${BookUtil.baseDataUrl}${bookId.toLowerCase()}.json`).then(function (data) {
+	loadBook: (fromIndex, bookId, hashParts, homebrewData) => {
+		function doPopulate (data) {
 			const allContents = $(`.contents-item`);
 			BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(bookId)}"]`);
 			BookUtil.thisContents.show();
 			allContents.filter(`[data-bookid!="${UrlUtil.encodeForHash(bookId)}"]`).hide();
 			BookUtil.showBookContent(BookUtil.referenceId ? data.data[BookUtil.referenceId] : data.data, fromIndex, bookId, hashParts);
 			BookUtil.addSearch(fromIndex, bookId);
-		});
+		}
+
+		if (homebrewData) {
+			doPopulate(homebrewData);
+		} else {
+			DataUtil.loadJSON(`${BookUtil.baseDataUrl}${bookId.toLowerCase()}.json`).then(doPopulate);
+		}
 	},
 
 	_$body: null,

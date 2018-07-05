@@ -2376,6 +2376,7 @@ UrlUtil.PG_RACES = "races.html";
 UrlUtil.PG_REWARDS = "rewards.html";
 UrlUtil.PG_VARIATNRULES = "variantrules.html";
 UrlUtil.PG_ADVENTURE = "adventure.html";
+UrlUtil.PG_ADVENTURES = "adventures.html";
 UrlUtil.PG_DEITIES = "deities.html";
 UrlUtil.PG_CULTS_BOONS = "cultsboons.html";
 UrlUtil.PG_OBJECTS = "objects.html";
@@ -2928,6 +2929,8 @@ BrewUtil = {
 						return ["variantrule"];
 					case UrlUtil.PG_CONDITIONS_DISEASES:
 						return ["condition", "disease"];
+					case UrlUtil.PG_ADVENTURES:
+						return ["adventure"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -3218,6 +3221,8 @@ BrewUtil = {
 					return deleteSubclassBrew;
 				case "class":
 					return deleteClassBrew;
+				case "adventure":
+					return deleteAdventureBrew;
 				default:
 					throw new Error(`No homebrew delete function defined for category ${category}`);
 			}
@@ -3260,6 +3265,14 @@ BrewUtil = {
 				doRemove(category, uniqueId, doRefresh);
 			}
 		}
+
+		function deleteAdventureBrew () {
+			return (uniqueId, doRefresh) => {
+				doRemove("adventure", uniqueId, false);
+				// TODO lookup the other uniqueID
+				doRemove("adventureData", uniqueId, doRefresh);
+			}
+		}
 	},
 
 	doHandleBrewJson: function (json, page, funcRefresh) {
@@ -3273,7 +3286,7 @@ BrewUtil = {
 
 		// prepare for storage
 		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
-		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease"];
+		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData"];
 		storable.forEach(storePrep);
 
 		// store
@@ -3365,6 +3378,9 @@ BrewUtil = {
 				addVariantRules({variantrule: toAdd.variantrule});
 				break;
 			case UrlUtil.PG_CONDITIONS_DISEASES:
+				handleBrew(toAdd);
+				break;
+			case UrlUtil.PG_ADVENTURES:
 				handleBrew(toAdd);
 				break;
 			case "NO_PAGE":
@@ -3463,6 +3479,10 @@ BrewUtil = {
 		}
 
 		return indexer.getIndex();
+	},
+
+	hasBook () {
+		BrewUtil.addBrewData()
 	}
 };
 
