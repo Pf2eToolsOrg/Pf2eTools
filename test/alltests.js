@@ -79,7 +79,7 @@ expected.forEach(function (i) {
 existing.forEach(function (i) {
 	if (expected.indexOf(i) === -1) results.push(`${i} is extra`);
 });
-Object.keys(expectedDirs).forEach(k => results.push(`Directory ${k} didn't exist!`));
+Object.keys(expectedDirs).forEach(k => results.push(`Directory ${k} doesn't exist!`));
 results.sort(function (a, b) {
 	return a.toLowerCase().localeCompare(b.toLowerCase());
 }).forEach(function (i) {
