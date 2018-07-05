@@ -3033,7 +3033,6 @@ table.stats table.statsDataInset {
 .homebrew-section {
 	background-color: rgba(255, 0, 0, 0.05);
 
-
 	.homebrew-old-content {
 		float: right;
 		color: #a00;
@@ -3051,6 +3050,16 @@ table.stats table.statsDataInset {
 .homebrew-inline {
 	background-color: rgba(255, 0, 0, 0.05);
 	text-decoration: underline dotted;
+}
+
+table.stats tr.homebrew-hover {
+	> td {
+		padding: 5px 0.3em;
+
+		> div >p:last-of-type {
+			margin-bottom: 0;
+		}
+	}
 }
 
 /* Day Mode End */

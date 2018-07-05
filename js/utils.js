@@ -195,7 +195,12 @@ String.prototype.rtrim = String.prototype.rtrim ||
 
 String.prototype.escapeQuotes = String.prototype.escapeQuotes ||
 	function () {
-		return this.replace(/'/g, `\\'`).replace(/"/g, `&quot;`)
+		return this.replace(/'/g, `&singlequot;`).replace(/"/g, `&quot;`);
+	};
+
+String.prototype.unescapeQuotes = String.prototype.unescapeQuotes ||
+	function () {
+		return this.replace(/&singlequot;/g, `'`).replace(/&quot;/g, `"`);
 	};
 
 StrUtil = {

@@ -348,11 +348,11 @@ function EntryRenderer () {
 					textStack.push(`<span class="homebrew-notice"></span>`);
 
 					if (entry.entries) {
-						entry.entries.forEach((nxt, i) => this.recursiveEntryRender(nxt, textStack, depth));
+						entry.entries.forEach(nxt => this.recursiveEntryRender(nxt, textStack, depth));
 					} else if (entry.movedTo) {
-						textStack.push(`This content has been moved to ${entry.movedTo}.`);
+						textStack.push(`<i>This content has been moved to ${entry.movedTo}.</i>`);
 					} else {
-						textStack.push("This content has been deleted.");
+						textStack.push("<i>This content has been deleted.</i>");
 					}
 
 					textStack.push(`</div>`);
@@ -2509,7 +2509,7 @@ EntryRenderer.hover = {
 	},
 
 	createOnMouseHover (entries) {
-		const source = JSON.stringify({entries: entries}).replace(/"/g, "&quot;").replace(/'/g, "&singlequot;");
+		const source = JSON.stringify({entries: entries}).escapeQuotes();
 		return `onmouseover="EntryRenderer.hover.mouseOver(event, this, 'hover', '${source}', '${window.location.hash}')"`;
 	},
 
@@ -2733,15 +2733,10 @@ EntryRenderer.hover = {
 			return;
 		}
 
-		let toRender;
-		let content;
-		if (page === "hover") {
-			toRender = {name: "Hover"};
-			content = EntryRenderer.hover._curHovering.renderFunction(JSON.parse(source.replace(/&quot;/g, "\"").replace(/&singlequot;/g, "'")));
-		} else {
-			toRender = EntryRenderer.hover._getFromCache(page, source, hash);
-			content = EntryRenderer.hover._curHovering.renderFunction(toRender);
-		}
+		const toRender = page === "hover" ? {name: "Homebrew"} : EntryRenderer.hover._getFromCache(page, source, hash);
+		const content = page === "hover" ?
+			EntryRenderer.hover._curHovering.renderFunction(JSON.parse(source.unescapeQuotes())) :
+			EntryRenderer.hover._curHovering.renderFunction(toRender);
 
 		$(ele).attr("data-hover-active", true);
 
@@ -2919,10 +2914,20 @@ EntryRenderer.hover = {
 		}
 	},
 
+	getGenericCompactRenderedString (entry, center) {
+		return `
+			<tr class="text homebrew-hover"><td colspan="6">
+			${EntryRenderer.getDefaultRenderer().setFirstSection(true).renderEntry(entry)}
+			</td></tr>
+		`;
+	},
+
 	_pageToRenderFn (page) {
 		switch (page) {
 			case "hover":
-				return EntryRenderer.getDefaultRenderer().renderEntry.bind(EntryRenderer.getDefaultRenderer());
+				return EntryRenderer.hover.getGenericCompactRenderedString;
+			case "hoverNote":
+				return EntryRenderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return EntryRenderer.spell.getCompactRenderedString;
 			case UrlUtil.PG_ITEMS:
