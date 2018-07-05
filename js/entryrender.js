@@ -2510,7 +2510,7 @@ EntryRenderer.hover = {
 
 	createOnMouseHover (entries) {
 		const source = JSON.stringify({entries: entries}).escapeQuotes();
-		return `onmouseover="EntryRenderer.hover.mouseOver(event, this, 'hover', '${source}', '${window.location.hash}')"`;
+		return `onmouseover="EntryRenderer.hover.mouseOver(event, this, 'hover', '${source}', '')"`;
 	},
 
 	_addToCache: (page, source, hash, item) => {
