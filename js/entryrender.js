@@ -774,7 +774,7 @@ function EntryRenderer () {
 							tooltip.push(oldText);
 						}
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(tooltip);
-						textStack.push(`<span class="homebrew-inline" ${onMouseOver}>${newText ? newText : "[...]"}</span>`);
+						textStack.push(`<span class="homebrew-inline" ${onMouseOver}>${newText || "[...]"}</span>`);
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -2734,9 +2734,9 @@ EntryRenderer.hover = {
 		}
 
 		const toRender = page === "hover" ? {name: "Homebrew"} : EntryRenderer.hover._getFromCache(page, source, hash);
-		const content = page === "hover" ?
-			EntryRenderer.hover._curHovering.renderFunction(JSON.parse(source.unescapeQuotes())) :
-			EntryRenderer.hover._curHovering.renderFunction(toRender);
+		const content = page === "hover"
+			? EntryRenderer.hover._curHovering.renderFunction(JSON.parse(source.unescapeQuotes()))
+			: EntryRenderer.hover._curHovering.renderFunction(toRender);
 
 		$(ele).attr("data-hover-active", true);
 

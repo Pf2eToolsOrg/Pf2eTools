@@ -3040,10 +3040,11 @@ table.stats table.statsDataInset {
 	}
 
 	.homebrew-notice {
-		&::before {
-			content: "Homebrew";
-		}
 		float: right;
+
+		&::before {
+			content: 'Homebrew';
+		}
 	}
 }
 
@@ -3634,6 +3635,7 @@ table.stats tr.homebrew-hover {
 
 	.homebrew-section {
 		background-color: rgba(255, 0, 0, 0.1);
+
 		.homebrew-old-content {
 			color: #f99;
 		}
