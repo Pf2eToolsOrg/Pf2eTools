@@ -3531,12 +3531,6 @@ EntryRenderer.dice = {
 	},
 
 	_parse: (str) => {
-		str = str.replace(/\s/g, "").toLowerCase();
-		const mods = [];
-		str = str.replace(/(([+-]+)\d+)(?=[^d]|$)|(([+-]+|^)\d+$)|(([+-]+|^)\d+(?=[+-]))/g, (m0) => {
-			mods.push(m0);
-			return "";
-		});
 		function cleanOperators (str) {
 			let len;
 			let nextLen;
@@ -3548,7 +3542,20 @@ EntryRenderer.dice = {
 			return str;
 		}
 
-		const totalMods = mods.map(m => Number(cleanOperators(m))).reduce((a, b) => a + b, 0);
+		str = str.replace(/\s/g, "").toLowerCase();
+		const mods = [];
+		str = cleanOperators(str);
+
+		const spl = str.split(/([+-][^+-]+)/).filter(it => it);
+		str = spl.filter(it => {
+			if (it.includes("d")) return true;
+			else {
+				mods.push(it);
+				return false;
+			}
+		}).join("");
+
+		const totalMods = mods.map(m => Number(m)).reduce((a, b) => a + b, 0);
 
 		function isNumber (char) {
 			return char >= "0" && char <= "9";
