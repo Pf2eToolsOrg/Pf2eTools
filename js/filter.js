@@ -506,6 +506,7 @@ class FilterBox {
 					max: filter.max,
 					value: [filter.min, filter.max]
 				});
+				filter.$slider = $sld;
 
 				const $miniPillMin = $(`<div class="mini-pill" state="ignore"/>`);
 				const $miniPillMax = $(`<div class="mini-pill" state="ignore"/>`);
@@ -1008,8 +1009,23 @@ class RangeFilter extends Filter {
 	addIfAbsent (number) {
 		if (this.min === null && this.max === null) this.min = this.max = number;
 		else {
+			const oMin = this.min;
+			const oMax = this.max;
 			this.min = Math.min(this.min, number);
 			this.max = Math.max(this.max, number);
+			if (this.$slider) {
+				const [lower, upper] = this.$slider.slider("getValue");
+
+				const updateMin = lower === oMin && this.min !== oMin;
+				const updateMax = upper === oMax && this.max !== oMax;
+
+				if (updateMin) this.$slider.slider("setAttribute", "min", this.min);
+				if (updateMax) this.$slider.slider("setAttribute", "max", this.max);
+
+				if (updateMin && updateMax) this.$slider.slider("setValue", [this.min, this.max]);
+				else if (updateMin) this.$slider.slider("setValue", [this.min, upper]);
+				else if (updateMax) this.$slider.slider("setValue", [lower, this.max]);
+			}
 		}
 	}
 
