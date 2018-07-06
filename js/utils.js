@@ -412,7 +412,7 @@ Parser.getAbilityModifier = function (abilityScore) {
 
 Parser.getSpeedString = (it) => {
 	function procSpeed (propName) {
-		function addSpeed(s) {
+		function addSpeed (s) {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)}ft.${getCond(s)}`);
 		}
 
@@ -2256,7 +2256,6 @@ function getSourceFilter (options = {}) {
 		header: FilterBox.SOURCE_HEADER,
 		displayFn: Parser.sourceJsonToFullCompactPrefix,
 		selFn: defaultSourceSelFn,
-		numGroups: 2,
 		groupFn: SourceUtil.getFilterGroup
 	};
 	Object.assign(baseOptions, options);
@@ -2625,11 +2624,58 @@ DataUtil = {
 
 	class: {
 		loadJSON: function (baseUrl = "") {
-			return new Promise((resolve, reject) => {
+			return new Promise((resolve) => {
 				DataUtil.loadJSON(`${baseUrl}data/class/index.json`).then((index) => {
 					Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`))).then((all) => {
 						resolve(all.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []}));
 					});
+				})
+			});
+		}
+	},
+
+	deity: {
+		doPostLoad: function (data, callbackFn) {
+			const PRINT_ORDER = [
+				SRC_PHB,
+				SRC_DMG,
+				SRC_SCAG,
+				SRC_MTF
+			];
+
+			const inSource = {};
+			PRINT_ORDER.forEach(src => {
+				inSource[src] = {};
+				data.deity.filter(it => it.source === src).forEach(it => inSource[src][it.reprintAlias || it.name] = it); // TODO need to handle similar names
+			});
+
+			const laterPrinting = [PRINT_ORDER.last()];
+			[...PRINT_ORDER].reverse().slice(1).forEach(src => {
+				laterPrinting.forEach(laterSrc => {
+					Object.keys(inSource[src]).forEach(name => {
+						const newer = inSource[laterSrc][name];
+						if (newer) {
+							const old = inSource[src][name];
+							old.reprinted = true;
+							if (!newer._isEnhanced) {
+								newer.previousVersions = newer.previousVersions || [];
+								newer.previousVersions.push(old);
+							}
+						}
+					});
+				});
+
+				laterPrinting.push(src);
+			});
+			data.deity.forEach(g => g._isEnhanced = true);
+
+			callbackFn(data);
+		},
+
+		loadJSON: function (baseUrl = "") {
+			return new Promise((resolve) => {
+				DataUtil.loadJSON(`${baseUrl}data/deities.json`).then((data) => {
+					DataUtil.deity.doPostLoad(data, resolve);
 				})
 			});
 		}
@@ -3696,6 +3742,11 @@ CollectionUtil = {
 		return true;
 	}
 };
+
+Array.prototype.last = Array.prototype.last ||
+	function () {
+		return this[this.length - 1];
+	};
 
 // OVERLAY VIEW ========================================================================================================
 /**

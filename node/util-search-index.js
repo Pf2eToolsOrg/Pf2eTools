@@ -58,13 +58,19 @@ UtilSearchIndex.getIndex = function (doLogging = true, test_doExtraIndex = false
 	od.Omnidexer.TO_INDEX.forEach(ti => {
 		const f = `../data/${ti.file}`;
 		const j = require(f);
-		if (doLogging) console.log(`indexing ${f}`);
-		indexer.addToIndex(ti, j);
 
-		if (test_doExtraIndex && ti.test_extraIndex) {
-			const extra = ti.test_extraIndex();
-			extra.forEach(add => indexer.index.push(add));
+		function addData (j) {
+			if (doLogging) console.log(`indexing ${f}`);
+			indexer.addToIndex(ti, j);
+
+			if (test_doExtraIndex && ti.test_extraIndex) {
+				const extra = ti.test_extraIndex();
+				extra.forEach(add => indexer.index.push(add));
+			}
 		}
+
+		if (ti.postLoad) ti.postLoad(j, addData);
+		else addData(j);
 	});
 
 	return indexer.getIndex();

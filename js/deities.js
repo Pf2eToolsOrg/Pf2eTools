@@ -1,11 +1,10 @@
 "use strict";
 
-const JSON_URL = "data/deities.json";
 const STR_REPRINTED = "reprinted";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	DataUtil.deity.loadJSON().then(onJsonLoad);
 };
 
 let list;
@@ -44,6 +43,7 @@ const categoryFilter = new Filter({
 		"The Sovereign Host"
 	]
 });
+
 let filterBox;
 function onJsonLoad (data) {
 	list = ListUtil.search({
@@ -78,9 +78,6 @@ function onJsonLoad (data) {
 		FilterBox.EVNT_VALCHANGE,
 		handleFilterChange
 	);
-
-	RollerUtil.addListRollButton();
-	addListShowHide();
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "pantheon", "alignment", "domains", "id"],
@@ -197,13 +194,11 @@ function loadhash (jsonIndex) {
 	renderer.setFirstSection(true);
 	const deity = deitiesList[jsonIndex];
 
-	const renderStack = [];
-	if (deity.entries) renderer.recursiveEntryRender({entries: deity.entries}, renderStack);
-
-	const $content = $(`#pagecontent`).empty();
-	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(deity, false, "", deity.title ? `, ${deity.title.toTitleCase()}` : "")}
+	function getDeityBody (deity, reprintIndex) {
+		const renderStack = [];
+		if (deity.entries) renderer.recursiveEntryRender({entries: deity.entries}, renderStack);
+		return `
+		${reprintIndex ? `<tr><td colspan="6"><i class="text-muted">${reprintIndex === 1 ? `This deity is a reprint.` : ""} The version below was printed in an older publication (${Parser.sourceJsonToFull(deity.source)}${deity.page ? `, page ${deity.page}` : ""}).</i></td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Pantheon: </span>${deity.pantheon}</td></tr>
 		${deity.category ? `<tr><td colspan="6"><span class="bold">Category: </span>${deity.category}</td></tr>` : ""}
 		<tr><td colspan="6"><span class="bold">Alignment: </span>${deity.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}</td></tr>
@@ -213,7 +208,20 @@ function loadhash (jsonIndex) {
 		<tr><td colspan="6"><span class="bold">Symbol: </span>${deity.symbol}</td></tr>
 		${deity.symbolImg ? `<tr><td colspan="6">${renderer.renderEntry({entries: [deity.symbolImg]})}</td></tr>` : ""}
 		${renderStack.length ? `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>` : ""}
+		`;
+	}
+
+	const $content = $(`#pagecontent`).empty();
+	$content.append(`
+		${EntryRenderer.utils.getBorderTr()}
+		${EntryRenderer.utils.getNameTr(deity, false, "", deity.title ? `, ${deity.title.toTitleCase()}` : "")}
+		${getDeityBody(deity)}
+		${deity.reprinted ? `<tr class="text"><td colspan="6"><i class="text-muted">Note: this deity has been reprinted in a newer publication.</i></td></tr>` : ""}
 		${EntryRenderer.utils.getPageTr(deity)}
+		${deity.previousVersions ? `
+		${EntryRenderer.utils.getDividerTr()}
+		${deity.previousVersions.map((d, i) => getDeityBody(d, i + 1)).join(EntryRenderer.utils.getDividerTr())}
+		` : ""}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 }

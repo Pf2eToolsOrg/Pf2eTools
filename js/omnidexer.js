@@ -135,6 +135,8 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
  * 		Should return full index objects.
  * hover: (OPTIONAL) a boolean indicating if the generated link should have `EntryRenderer` hover functionality.
  * filter: (OPTIONAL) a function which takes a data item and returns true if it should be indexed, false otherwise
+ * postLoad: (OPTIONAL) a function which takes the data set, does some post-processing,
+ * 		and runs a callback when done (synchronously)
  *
  */
 Omnidexer.TO_INDEX = [
@@ -263,6 +265,7 @@ Omnidexer.TO_INDEX = [
 	{
 		category: 14,
 		file: "deities.json",
+		postLoad: DataUtil.deity.doPostLoad,
 		listProp: "deity",
 		baseUrl: "deities.html",
 		hover: true,

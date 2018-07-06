@@ -2574,17 +2574,32 @@ EntryRenderer.hover = {
 			}
 		}
 
+		function _loadSingleBrew (listProp, itemModifier) {
+			BrewUtil.addBrewData((data) => {
+				if (!data[listProp]) return;
+				loadPopulate(data, listProp, itemModifier);
+			});
+		}
+
+		function _handleSingleData (data, listProp, itemModifier) {
+			if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p, itemModifier));
+			else loadPopulate(data, listProp, itemModifier);
+			callbackFn();
+		}
+
 		function loadSimple (page, jsonFile, listProp, itemModifier) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				BrewUtil.addBrewData((data) => {
-					if (!data[listProp]) return;
-					loadPopulate(data, listProp, itemModifier);
-				});
-				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`).then((data) => {
-					if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p, itemModifier));
-					else loadPopulate(data, listProp, itemModifier);
-					callbackFn();
-				});
+				_loadSingleBrew(listProp, itemModifier);
+				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`).then((data) => _handleSingleData(data, listProp, itemModifier));
+			} else {
+				callbackFn();
+			}
+		}
+
+		function loadCustom (page, jsonFile, listProp, itemModifier, loader) {
+			if (!EntryRenderer.hover._isCached(page, source, hash)) {
+				_loadSingleBrew(listProp, itemModifier);
+				DataUtil[loader].loadJSON(EntryRenderer.getDefaultRenderer().baseUrl).then((data) => _handleSingleData(data, listProp, itemModifier));
 			} else {
 				callbackFn();
 			}
@@ -2671,7 +2686,7 @@ EntryRenderer.hover = {
 				break;
 			}
 			case UrlUtil.PG_DEITIES: {
-				loadSimple(page, "deities.json", "deity");
+				loadCustom(page, "deities.json", "deity", null, "deity");
 				break;
 			}
 			case UrlUtil.PG_OBJECTS: {

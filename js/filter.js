@@ -1041,8 +1041,6 @@ class GroupedFilter extends Filter {
 	 * An extension of the basic filter, which enables visual grouping of elements.
 	 * @param options As with `Filter`, with two extra fields:
 	 *
-	 *   numGroups: the desired number of visual groups
-	 *
 	 *   (OPTIONAL)
 	 *   groupFn: function which takes an item, and returns a number (from 0 to numGroups, inclusive)
 	 *     Either this function or a `group` on a FilterItem must be specified.
@@ -1050,7 +1048,7 @@ class GroupedFilter extends Filter {
 	 */
 	constructor (options) {
 		super(options);
-		this.numGroups = options.numGroups;
+		this.numGroups = 1;
 		this.groupFn = options.groupFn;
 	}
 }

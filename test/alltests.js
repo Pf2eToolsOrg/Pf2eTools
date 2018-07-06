@@ -14,6 +14,12 @@ const existing = [];
 
 require("./check-links");
 
+function loadJSON (file) {
+	const data = fs.readFileSync(file, "utf8")
+		.replace(/^\uFEFF/, ""); // strip BOM
+	return JSON.parse(data);
+}
+
 // FIXME use something that doesn't attach object prototypes -- https://github.com/tdegrunt/jsonschema/issues/261
 // TODO modular argument system?
 if (process.argv[2] !== "noschema") {
@@ -24,7 +30,7 @@ if (process.argv[2] !== "noschema") {
 		.forEach(file => {
 			if (file !== helperFile) {
 				console.log(`Testing data/${file}`.padEnd(50), `against schema/${file}`);
-				const result = validator.validate(require(`../data/${file}`), require(`./schema/${file}`));
+				const result = validator.validate(loadJSON(`./data/${file}`), require(`./schema/${file}`));
 				checkHandleError(result);
 				results.push(result);
 			}
@@ -38,7 +44,7 @@ if (process.argv[2] !== "noschema") {
 			fs.readdirSync(`./data/${category}`).forEach(dataFile => {
 				schemas.filter(schema => dataFile.startsWith(schema.split(".")[0])).forEach(schema => {
 					console.log(`Testing data/${category}/${dataFile}`.padEnd(50), `against schema/${category}/${schema}`);
-					const result = validator.validate(require(`../data/${category}/${dataFile}`), require(`./schema/${category}/${schema}`));
+					const result = validator.validate(loadJSON(`./data/${category}/${dataFile}`), require(`./schema/${category}/${schema}`));
 					checkHandleError(result);
 					results.push(result);
 				});
