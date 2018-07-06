@@ -113,7 +113,7 @@ const sizeFilter = new Filter({
 	],
 	displayFn: Parser.sizeAbvToFull
 });
-const speedFilter = new Filter({header: "Speed", items: ["walk", "burrow", "climb", "fly", "swim"], displayFn: StrUtil.uppercaseFirst});
+const speedFilter = new Filter({header: "Speed", items: ["walk", "burrow", "climb", "fly", "hover", "swim"], displayFn: StrUtil.uppercaseFirst});
 const strengthFilter = new RangeFilter({header: "Strength"});
 const dexterityFilter = new RangeFilter({header: "Dexterity"});
 const constitutionFilter = new RangeFilter({header: "Constitution"});
@@ -381,6 +381,7 @@ function addMonsters (data) {
 		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
+		if (mon.speed.canHover) mon._fSpeed.push("hover");
 		mon._fAc = mon.ac.map(it => it.ac || it);
 		mon._fHp = mon.hp.average;
 		const tempAlign = typeof mon.alignment[0] === "object"

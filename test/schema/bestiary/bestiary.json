@@ -533,6 +533,9 @@
 						"fly": {
 							"$ref": "#/definitions/speedVal"
 						},
+						"canHover": {
+							"type": "boolean"
+						},
 						"swim": {
 							"$ref": "#/definitions/speedVal"
 						},
@@ -561,6 +564,41 @@
 							},
 							"required": ["amount", "from"],
 							"additionalProperties": false
+						},
+						"alternate": {
+							"type": "object",
+							"properties": {
+								"walk": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/speedVal"
+									}
+								},
+								"burrow": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/speedVal"
+									}
+								},
+								"climb": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/speedVal"
+									}
+								},
+								"fly": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/speedVal"
+									}
+								},
+								"swim": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/speedVal"
+									}
+								}
+							}
 						}
 					},
 					"additionalProperties": false
@@ -984,7 +1022,7 @@
 					}
 				},
 				"page": {
-					"type": "int"
+					"type": "integer"
 				},
 				"familiar": {
 					"type": "boolean"
