@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -1064,6 +1064,10 @@
 					}
 				},
 				"isNamedCreature": {
+					"type": "boolean"
+				},
+				"isNPC": {
+					"description": "Used to flag quest-specific NPCs",
 					"type": "boolean"
 				},
 				"environment": {

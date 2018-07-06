@@ -218,7 +218,12 @@ const conditionImmuneFilter = new Filter({
 	items: CONDS,
 	displayFn: StrUtil.uppercaseFirst
 });
-const miscFilter = new Filter({header: "Miscellaneous", items: ["Familiar", "Legendary", "Spellcaster", "Swarm"], displayFn: StrUtil.uppercaseFirst});
+const miscFilter = new Filter({
+	header: "Miscellaneous",
+	items: ["Familiar", "Legendary", "NPC", "Spellcaster", "Swarm"],
+	displayFn: StrUtil.uppercaseFirst,
+	deselFn: (it) => it === "NPC"
+});
 
 const filterBox = initFilterBox(
 	sourceFilter,
@@ -426,6 +431,7 @@ function addMonsters (data) {
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) mon._fMisc.push("Spellcaster");
+		if (mon.isNPC) mon._fMisc.push("NPC");
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	table.append(textStack);
