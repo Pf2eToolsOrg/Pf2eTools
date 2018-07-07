@@ -2563,11 +2563,16 @@ EntryRenderer.hover = {
 				});
 				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`).then((data) => {
 					const procData = {};
-					Object.keys(data).forEach(k => procData[k.toLowerCase()] = data[k]);
-					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${procData[source.toLowerCase()]}`).then((data) => {
-						loadPopulate(data, listProp);
+					const officialSource = Object.keys(data).find(k => k.toLowerCase() === source.toLowerCase());
+					if (officialSource) {
+						DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${data[officialSource]}`).then((data) => {
+							loadPopulate(data, listProp);
+							callbackFn();
+						});
+					} else {
+						// source to load is 3rd party, which was already handled
 						callbackFn();
-					});
+					}
 				});
 			} else {
 				callbackFn();
