@@ -657,9 +657,23 @@
 			margin-bottom: 3px;
 		}
 
+		.dm-init-row-lhs,
 		.dm-init-row-rhs {
 			display: flex;
 			justify-content: space-between;
+		}
+
+		.dm-init-row-lhs {
+			width: 100%;
+		}
+
+		.dm-init-row-btn {
+			line-height: 26px;
+			padding: 1px 3px;
+		}
+
+		.dm-init-row-btn-flag {
+			margin-right: 3px;
 		}
 
 		.dm-init-row .init-wrp-creature {
@@ -695,6 +709,36 @@
 			border-top: 1px solid #ccc;
 			justify-content: space-evenly;
 			display: flex;
+		}
+
+		.dm-init-modal-wrp-rows {
+			min-width: 400px;
+		}
+
+		.btn-dm-init-cond {
+			min-width: 85px;
+			color: white !important;
+			outline: none !important;
+		}
+
+		.dm-init-wrp-conds {
+			display: flex;
+		}
+
+		.dm-init-cond {
+			width: 7px;
+			margin-right: 3px;
+			display: grid;
+			grid-gap: 3px;
+		}
+
+		.dm-init-cond:hover {
+			box-shadow: 0 0 5px 0 rgba(240, 173, 78, 1);
+		}
+
+		.dm-init-cond-bar {
+			width: 7px;
+			height: 100%;
 		}
 
 		@media (max-width: 767px) {

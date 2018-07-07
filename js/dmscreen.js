@@ -2041,6 +2041,77 @@ class RuleLoader {
 RuleLoader.cache = {};
 
 class InitiativeTracker {
+	static getConditions () {
+		return [
+			{
+				name: "Blinded",
+				colour: "#434343"
+			},
+			{
+				name: "Charmed",
+				colour: "#f01789"
+			},
+			{
+				name: "Deafened",
+				colour: "#c7d0d3"
+			},
+			{
+				name: "Exhausted",
+				colour: "#947a47",
+				condName: "Exhaustion"
+			},
+			{
+				name: "Frightened",
+				colour: "#c9ca18"
+			},
+			{
+				name: "Grappled",
+				colour: "#8784a0"
+			},
+			{
+				name: "Incapacitated",
+				colour: "#3165a0"
+			},
+			{
+				name: "Invisible",
+				colour: "#7ad2d6"
+			},
+			{
+				name: "Paralyzed",
+				colour: "#c00900"
+			},
+			{
+				name: "Petrified",
+				colour: "#a0a0a0"
+			},
+			{
+				name: "Poisoned",
+				colour: "#4dc200"
+			},
+			{
+				name: "Prone",
+				colour: "#5e60a0"
+			},
+			{
+				name: "Restrained",
+				colour: "#d98000"
+			},
+			{
+				name: "Stunned",
+				colour: "#a23bcb"
+			},
+			{
+				name: "Unconscious",
+				colour: "#1c2383"
+			},
+			{
+				name: "Concentrating",
+				colour: "#1c2383",
+				condName: null
+			}
+		];
+	}
+
 	static make$Tracker (board, state) {
 		const ALPHA = "ALPHA";
 		const NUM = "NUMBER";
@@ -2055,7 +2126,7 @@ class InitiativeTracker {
 		const $wrpTop = $(`<div style="display: flex; flex-direction: column;"/>`).appendTo($wrpTracker);
 		const $wrpHeader = $(`
 			<div class="dm-init-wrp-header">
-				<div class="dm-init-header">Name</div>
+				<div class="dm-init-header">Creature/Status</div>
 				<div class="dm-init-row-rhs" style="margin-right: 9px;">
 					<div class="dm-init-header" title="Hit Points">HP</div>
 					<div class="dm-init-header" title="Initiative Score">#</div>
@@ -2148,6 +2219,8 @@ class InitiativeTracker {
 						const name = r.doc.n;
 						const source = r.doc.s;
 						makeRow(name, "", "", false, source);
+						doSort(sort);
+						checkSetActive();
 						doClose();
 					};
 
@@ -2187,19 +2260,18 @@ class InitiativeTracker {
 			});
 
 			doSearch();
-
-			doSort(sort);
-			checkSetActive();
 		});
 
 		$wrpTracker.data("getState", () => {
 			const rows = $wrpEntries.find(`.dm-init-row`).map((i, e) => {
+				const $conds = $(e).find(`.dm-init-cond`);
 				return {
 					n: $(e).find(`input.name`).val(),
 					h: $(e).find(`input.hp`).val(),
 					i: $(e).find(`input.score`).val(),
 					a: 0 + $(e).hasClass(`dm-init-row-active`),
-					s: $(e).find(`input.source`).val()
+					s: $(e).find(`input.source`).val(),
+					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : []
 				}
 			}).get();
 			return {
@@ -2210,14 +2282,20 @@ class InitiativeTracker {
 		});
 
 		(state.r || []).forEach(r => {
-			makeRow(r.n, r.h, r.i, r.a, r.s);
+			makeRow(r.n, r.h, r.i, r.a, r.s, r.c);
 		});
 		checkSetActive();
 
 		function setNextActive () {
 			const $rows = $wrpEntries.find(`.dm-init-row`);
 			const ix = $rows.index($rows.filter(`.dm-init-row-active`).get(0));
-			$($rows.get(ix)).removeClass(`dm-init-row-active`);
+			const $curr = $($rows.get(ix));
+			$curr.removeClass(`dm-init-row-active`);
+
+			// tick down any conditions
+			const $conds = $curr.find(`.dm-init-cond`);
+			if ($conds.length) $conds.each((i, e) => $(e).data("doTickDown")());
+
 			const nxt = $rows.get(ix + 1);
 			if (nxt) {
 				$(nxt).addClass(`dm-init-row-active`);
@@ -2226,16 +2304,123 @@ class InitiativeTracker {
 			}
 		}
 
-		function makeRow (name = "", hp = "", init = "", isActive, source) {
+		function makeRow (name = "", hp = "", init = "", isActive, source, conditions = []) {
 			const isMon = !!source;
 
 			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`).appendTo($wrpEntries);
-			const $iptName = $(`<input class="form-control input-sm name ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpRow);
+
+			const $wrpLhs = $(`<div class="dm-init-row-lhs"/>`).appendTo($wrpRow);
+			const $iptName = $(`<input class="form-control input-sm name ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
 			$iptName.on("change", () => doSort(ALPHA));
 			if (isMon) {
-				$(`<div class="init-wrp-creature">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`)}</div>`).appendTo($wrpRow);
-				$(`<input class="source hidden" value="${source}">`).appendTo($wrpRow);
+				$(`<div class="init-wrp-creature">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`)}</div>`).appendTo($wrpLhs);
+				$(`<input class="source hidden" value="${source}">`).appendTo($wrpLhs);
 			}
+
+			function addCondition (name, colour, turns) {
+				const state = {
+					name: name,
+					colour: colour,
+					turns: turns ? Number(turns) : null
+				};
+
+				const tickDown = (fromClick) => {
+					if (fromClick && state.turns == null) $cond.data("doRemove")(); // remove permanent conditions
+					if (state.turns == null) return;
+					else state.turns--;
+					if (state.turns <= 0) $cond.data("doRemove")();
+					else $cond.data("doRender")(fromClick);
+				};
+
+				const tickUp = (fromClick) => {
+					if (fromClick && state.turns == null) state.turns = 0; // convert permanent condition
+					if (state.turns == null) return;
+					else state.turns++;
+					$cond.data("doRender")(fromClick);
+				};
+
+				const render = (fromClick) => {
+					const turnsText = `${state.turns} turn${state.turns > 1 ? "s" : ""} remaining`;
+					const ttpText = state.name && state.turns ? `${state.name.escapeQuotes()} (${turnsText})` : state.name ? state.name.escapeQuotes() : state.turns ? turnsText : "";
+					const getBar = () => {
+						const style = state.turns == null || state.turns > 3
+							? `background-image: linear-gradient(45deg, ${state.colour} 41.67%, transparent 41.67%, transparent 50%, ${state.colour} 50%, ${state.colour} 91.67%, transparent 91.67%, transparent 100%);
+background-size: 8.49px 8.49px;`
+							: `background: ${state.colour};`;
+						return `<div class="dm-init-cond-bar" style="${style}"/>`
+					};
+					const inner = state.turns
+						? [...new Array(Math.min(state.turns, 3))].map(it => getBar()).join("")
+						: getBar();
+					$cond.attr("title", ttpText);
+
+					$cond.tooltip();
+					if (ttpText) {
+						// update tooltips
+						$cond.tooltip("enable").tooltip("fixTitle");
+						if (fromClick) $cond.tooltip("show");
+					} else $cond.tooltip("disable");
+
+					$cond.html(inner);
+				};
+
+				const $cond = $(`<div class="dm-init-cond" data-toggle="tooltip"/>`)
+					.data("doRender", render)
+					.data("doRemove", () => $cond.tooltip("destroy").remove())
+					.data("doTickDown", tickDown)
+					.data("doTickUp", tickUp)
+					.data("getState", () => JSON.parse(JSON.stringify(state)))
+					.on("contextmenu", (e) => e.preventDefault() || tickUp(true))
+					.click(() => tickDown(true))
+					.appendTo($conds);
+				render();
+			}
+
+			const $wrpConds = $(`<div class="split"/>`).appendTo($wrpLhs);
+			const $conds = $(`<div class="dm-init-wrp-conds"/>`).appendTo($wrpConds);
+			const $btnCond = $(`<div class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition"><span class="glyphicon glyphicon-flag"/></div>`)
+				.appendTo($wrpConds)
+				.on("click", () => {
+					const $modal = $(`<dialog class="dialog-modal"/>`);
+					const $wrpModal = $(`<div class="dialog-wrapper">`).appendTo($(`body`)).click(() => $wrpModal.remove());
+					$modal.appendTo($wrpModal);
+					const $modalInner = $(`<div class="modal-inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
+
+					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
+
+					const conds = InitiativeTracker.getConditions();
+					for (let i = 0; i < conds.length; i += 3) {
+						const $row = $(`<div class="row mb-2"/>`).appendTo($wrpRows);
+						const populateCol = (cond) => {
+							const $col = $(`<div class="col-xs-4 text-align-center"/>`).appendTo($row);
+							if (cond) {
+								const $btnCond = $(`<button class="btn btn-default btn-xs btn-dm-init-cond" style="background-color: ${cond.colour} !important;">${cond.name}</button>`).appendTo($col).click(() => {
+									$iptName.val(cond.name);
+									$iptColour.val(cond.colour);
+								});
+							}
+						};
+						[conds[i], conds[i + 1], conds[i + 2]].forEach(populateCol);
+					}
+
+					$wrpRows.append(`<hr>`);
+
+					const $controls = $(`<div class="row mb-2">`).appendTo($wrpRows);
+					const [$wrpName, $wrpColour, $wrpTurns] = [...new Array(3)].map((it, i) => $(`<div class="col-xs-${i === 1 ? 2 : 5} text-align-center"/>`).appendTo($controls));
+					const $iptName = $(`<input class="form-control" placeholder="Name (optional)">`).appendTo($wrpName);
+					const $iptColour = $(`<input class="form-control" type="color">`).appendTo($wrpColour);
+					const $iptTurns = $(`<input class="form-control" type="number" step="1" min="1" placeholder="Duration (optional)">`).appendTo($wrpTurns);
+					const $wrpAdd = $(`<div class="row">`).appendTo($wrpRows);
+					const $wrpAddInner = $(`<div class="col-xs-12 text-align-center">`).appendTo($wrpAdd);
+					const $btnAdd = $(`<button class="btn btn-primary">Add Condition</button>`)
+						.click(() => {
+							addCondition($iptName.val().trim(), $iptColour.val(), $iptTurns.val());
+							$wrpModal.remove();
+						})
+						.appendTo($wrpAddInner);
+
+					$modal[0].showModal();
+				});
 
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
 			let curHp = hp;
@@ -2257,15 +2442,16 @@ class InitiativeTracker {
 					$iptHp.val(curHp);
 				}
 			});
-			const $iptScore = $(`<input class="form-control input-sm score" type="number" value="${init}">`).appendTo($wrpRhs);
+			const $iptScore = $(`<input class="form-control input-sm score" placeholder="#" type="number" value="${init}">`).appendTo($wrpRhs);
 			$iptScore.on("change", () => doSort(NUM));
-			const $btnDel = $(`<div class="btn btn-danger btn-xs" style="line-height: 26px;"><span class="glyphicon glyphicon-trash"/></div>`).appendTo($wrpRhs);
-			$btnDel.on("click", () => {
-				if ($wrpRow.hasClass(`dm-init-row-active`) && $wrpEntries.find(`.dm-init-row`).length > 1) {
-					setNextActive();
-				}
-				$wrpRow.remove();
-			});
+			const $btnDel = $(`<div class="btn btn-danger btn-xs dm-init-row-btn" title="Delete"><span class="glyphicon glyphicon-trash"/></div>`)
+				.appendTo($wrpRhs)
+				.on("click", () => {
+					if ($wrpRow.hasClass(`dm-init-row-active`) && $wrpEntries.find(`.dm-init-row`).length > 1) setNextActive();
+					$wrpRow.remove();
+				});
+
+			conditions.forEach(c => addCondition(c.name, c.colour, c.turns))
 		}
 
 		function checkSetActive () {
