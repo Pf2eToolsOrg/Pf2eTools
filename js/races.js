@@ -357,6 +357,8 @@ function loadhash (id) {
 		}
 	);
 	EntryRenderer.utils.bindTabButtons(traitTab, infoTab);
+
+	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {

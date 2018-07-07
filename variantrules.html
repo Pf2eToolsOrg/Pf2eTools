@@ -46,9 +46,24 @@
 				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
 			</div>
 
-			<ul class="list variantRules"></ul>
+			<ul class="list variantRules">
+				<!-- populate with JS -->
+			</ul>
 		</div>
 		<div id="contentwrapper" class="view-col">
+			<div id="sublistcontainer">
+				<div id="sublistsort" class="sortlabel btn-group">
+					<button class="col-xs-12 sort btn btn-default btn-xs" data-sort="name">Name</button>
+				</div>
+				<ul class="list subVariantRules">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+
+			<div class="wrp-stat-tab">
+				<div id="tabs-right"></div>
+			</div>
+
 			<table id="pagecontent" class="stats">
 				<tr>
 					<th class="border" colspan="6"></th>

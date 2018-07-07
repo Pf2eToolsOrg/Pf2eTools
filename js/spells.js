@@ -674,6 +674,8 @@ function loadhash (id) {
 	const spell = spellList[id];
 	$pageContent.append(EntryRenderer.spell.getRenderedString(spell, renderer));
 	loadsub([]);
+
+	ListUtil.updateSelected();
 }
 
 function handleUnknownHash (link, sub) {

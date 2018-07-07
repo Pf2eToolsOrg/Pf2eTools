@@ -33,6 +33,12 @@ function onJsonLoad (data) {
 		handleFilterChange
 	);
 
+	const subList = ListUtil.initSublist({
+		valueNames: ["name"],
+		listClass: "subVariantRules"
+	});
+	ListUtil.initGenericPinnable();
+
 	addListShowHide();
 
 	addVariantRules(data);
@@ -62,7 +68,7 @@ function addVariantRules (data) {
 
 		// populate table
 		tempString += `
-			<li ${FLTR_ID}="${rlI}">
+			<li class="row" ${FLTR_ID}="${rlI}" onclick="ListUtil.toggleSelected(event, this)">
 				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(curRule)}" title="${curRule.name}">
 					<span class="name col-xs-10">${curRule.name}</span>
 					<span class="source col-xs-2 source${Parser.sourceJsonToAbv(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
@@ -83,6 +89,25 @@ function addVariantRules (data) {
 	list.sort("name");
 	filterBox.render();
 	handleFilterChange();
+
+	ListUtil.setOptions({
+		itemList: rulesList,
+		getSublistRow: getSublistItem,
+		primaryLists: [list]
+	});
+	ListUtil.bindPinButton();
+	EntryRenderer.hover.bindPopoutButton(rulesList);
+}
+
+function getSublistItem (rule, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
+				<span class="name col-xs-12">${rule.name}</span>
+				<span class="id hidden">${pinId}</span>
+			</a>
+		</li>
+	`;
 }
 
 function handleFilterChange () {
@@ -107,4 +132,6 @@ function loadhash (id) {
 	const textStack = [];
 	entryRenderer.recursiveEntryRender(curRule, textStack);
 	$("tr#text").after("<tr class='text'><td colspan='6'>" + textStack.join("") + "</td></tr>");
+
+	ListUtil.updateSelected();
 }

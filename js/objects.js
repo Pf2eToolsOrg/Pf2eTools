@@ -118,6 +118,8 @@ function loadhash (jsonIndex) {
 			<img src="${imgLink}" class="token" onerror="imgError(this)">
 		</a>`
 	);
+
+	ListUtil.updateSelected();
 }
 
 function imgError (x) {

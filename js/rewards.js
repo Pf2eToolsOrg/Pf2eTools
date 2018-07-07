@@ -137,6 +137,8 @@ function loadhash (id) {
 		${EntryRenderer.reward.getRenderedString(reward)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {

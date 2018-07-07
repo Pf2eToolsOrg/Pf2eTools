@@ -224,6 +224,8 @@ function loadhash (jsonIndex) {
 		` : ""}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {

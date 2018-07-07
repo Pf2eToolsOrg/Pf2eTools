@@ -167,4 +167,6 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(it)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	ListUtil.updateSelected();
 }

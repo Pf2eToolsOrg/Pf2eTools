@@ -171,6 +171,8 @@ function loadhash (id) {
 		${EntryRenderer.utils.getPageTr(feat)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {

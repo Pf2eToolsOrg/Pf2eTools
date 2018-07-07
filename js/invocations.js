@@ -230,6 +230,8 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(inv)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {

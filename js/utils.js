@@ -1798,6 +1798,10 @@ ListUtil = {
 		}
 	},
 
+	updateSelected: () => {
+		ListUtil.toggleSelected({}, History.getSelectedListElement().parent());
+	},
+
 	_ctxInit: {},
 	_ctxClick: {},
 	_handlePreInitContextMenu: (menuId) => {

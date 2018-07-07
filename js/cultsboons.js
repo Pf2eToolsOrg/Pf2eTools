@@ -47,7 +47,7 @@ function onJsonLoad (data) {
 	let tempString = "";
 	cultsAndBoonsList.forEach((it, i) => {
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}">
+			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)">
 				<a id="${i}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="type col-xs-3 text-align-center">${cultBoonTypeToFull(it._type)}</span>
 					<span class="name col-xs-7">${it.name}</span>
@@ -70,6 +70,11 @@ function onJsonLoad (data) {
 
 	filterBox.render();
 	handleFilterChange();
+
+	ListUtil.setOptions({
+		itemList: cultsAndBoonsList,
+		primaryLists: [list]
+	});
 	History.init();
 }
 
@@ -117,4 +122,6 @@ function loadhash (id) {
 			<tr><th class="border" colspan="6"></th></tr>
 		`);
 	}
+
+	ListUtil.updateSelected();
 }

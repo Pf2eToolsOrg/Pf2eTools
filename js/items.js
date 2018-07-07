@@ -421,6 +421,8 @@ function loadhash (id) {
 	$content.find(`.render-roller`).find(`.roller`).each(function () {
 		$(this).replaceWith(this.childNodes)
 	});
+
+	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {

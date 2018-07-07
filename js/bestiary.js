@@ -987,6 +987,7 @@ function loadhash (id) {
 	EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
 
 	loadsub([]);
+	ListUtil.updateSelected();
 }
 
 function handleUnknownHash (link, sub) {

@@ -197,6 +197,8 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getPageTr(psi)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {

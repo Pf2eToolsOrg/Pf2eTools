@@ -153,4 +153,6 @@ function loadhash (id) {
 		${EntryRenderer.utils.getPageTr(it)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
+
+	ListUtil.updateSelected();
 }
