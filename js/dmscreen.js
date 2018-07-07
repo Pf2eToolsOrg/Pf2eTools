@@ -2106,7 +2106,7 @@ class InitiativeTracker {
 			},
 			{
 				name: "Concentrating",
-				colour: "#1c2383",
+				colour: "#009f7a",
 				condName: null
 			}
 		];
@@ -2354,7 +2354,7 @@ background-size: 8.49px 8.49px;`
 						: getBar();
 					$cond.attr("title", ttpText);
 
-					$cond.tooltip();
+					$cond.tooltip({trigger : "hover"});
 					if (ttpText) {
 						// update tooltips
 						$cond.tooltip("enable").tooltip("fixTitle");
@@ -2364,15 +2364,32 @@ background-size: 8.49px 8.49px;`
 					$cond.html(inner);
 				};
 
-				const $cond = $(`<div class="dm-init-cond" data-toggle="tooltip"/>`)
+				const $cond = $(`<div class="dm-init-cond"/>`)
 					.data("doRender", render)
 					.data("doRemove", () => $cond.tooltip("destroy").remove())
 					.data("doTickDown", tickDown)
 					.data("doTickUp", tickUp)
 					.data("getState", () => JSON.parse(JSON.stringify(state)))
-					.on("contextmenu", (e) => e.preventDefault() || tickUp(true))
+					.on("contextmenu", (e) => e.ctrlKey || (e.preventDefault() || tickUp(true)))
 					.click(() => tickDown(true))
 					.appendTo($conds);
+				if (name) {
+					const cond = InitiativeTracker.getConditions().find(it => it.condName !== null && it.name.toLowerCase() === name.toLowerCase().trim());
+					if (cond) {
+						$cond.on("mouseover", (evt) => {
+							if (evt.shiftKey) {
+								evt.shiftKey = false;
+								EntryRenderer.hover.mouseOver(
+									evt,
+									$cond[0],
+									UrlUtil.PG_CONDITIONS_DISEASES,
+									SRC_PHB,
+									UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES]({name: cond.condName || cond.name, source: SRC_PHB})
+								);
+							}
+						})
+					}
+				}
 				render();
 			}
 

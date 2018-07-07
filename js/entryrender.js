@@ -2772,7 +2772,7 @@ EntryRenderer.hover = {
 		const $body = $(`body`);
 		const $ele = $(ele);
 
-		$ele.on("mouseleave", (evt) => {
+		$ele.on("mouseleave.hoverwindow", (evt) => {
 			EntryRenderer.hover._cleanWindows();
 			if (!($brdrTop.attr("data-perm") === "true") && !evt.shiftKey) {
 				teardown();
@@ -3046,13 +3046,13 @@ EntryRenderer.hover = {
 		$(ele).css("cursor", "wait");
 
 		// clean up any old event listeners
-		$(ele).off("mouseleave");
+		$(ele).off("mouseleave.hoverwindow");
 
 		// clean up any abandoned windows
 		EntryRenderer.hover._cleanWindows();
 
 		// cancel hover if the mouse leaves
-		$(ele).on("mouseleave", () => {
+		$(ele).on("mouseleave.hoverwindow", () => {
 			if (!EntryRenderer.hover._curHovering || !EntryRenderer.hover._curHovering.permanent) {
 				EntryRenderer.hover._curHovering = null;
 			}
