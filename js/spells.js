@@ -271,6 +271,11 @@ const damageFilter = new Filter({
 	],
 	displayFn: StrUtil.uppercaseFirst
 });
+const spellAttackFilter = new Filter({
+	header: "Spell Attack",
+	items: ["M", "R", "O"],
+	displayFn: Parser.spAttackTypeToFull
+});
 const saveFilter = new Filter({
 	header: "Saving Throw",
 	items: ["strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma"],
@@ -320,6 +325,7 @@ const filterBox = initFilterBox(
 	metaFilter,
 	schoolFilter,
 	damageFilter,
+	spellAttackFilter,
 	saveFilter,
 	checkFilter,
 	timeFilter,
@@ -457,6 +463,7 @@ function handleFilterChange () {
 			s._fMeta,
 			s.school,
 			s.damageInflict,
+			s.spellAttack,
 			s.savingThrow,
 			s.opposedCheck,
 			s._fTimeType,

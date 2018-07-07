@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"title": "SpellsArray",
 	"type": "object",
 
@@ -258,6 +258,15 @@
 				"permanentEffects": {
 					"description": "Used to flag spells that can/will have permanent effects, but are not listed as having permanent duration",
 					"type": "boolean"
+				},
+				"spellAttack": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"M", "R", "O"
+						]
+					}
 				}
 			},
 			"required": [

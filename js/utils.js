@@ -784,6 +784,15 @@ Parser._spSubclassItem = function (fromSubclass, textOnly) {
 	return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> <span title="Source: ${Parser.sourceJsonToFull(fromSubclass.class.source)}">${fromSubclass.class.name}</span>`;
 };
 
+Parser.SPELL_ATTACK_TYPE_TO_FULL = {};
+Parser.SPELL_ATTACK_TYPE_TO_FULL["M"] = "Melee";
+Parser.SPELL_ATTACK_TYPE_TO_FULL["R"] = "Ranged";
+Parser.SPELL_ATTACK_TYPE_TO_FULL["O"] = "Other/Unknown";
+
+Parser.spAttackTypeToFull = function (type) {
+	return Parser._parse_aToB(Parser.SPELL_ATTACK_TYPE_TO_FULL, type);
+};
+
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
 Parser.monTypeToFullObj = function (type) {
 	const out = {type: "", tags: [], asText: ""};
