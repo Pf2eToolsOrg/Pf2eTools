@@ -50,7 +50,7 @@ function navigation () {
 	LI('ul_rules', 'book.html', "Volo's Guide to Monsters", "VGM");
 	LI('ul_rules', 'book.html', "Xanathar's Guide to Everything", "XGE");
 	LIDivider('ul_rules');
-	LI('ul_rules', 'book.html', "Adventurer's League", "AL");
+	LI('ul_rules', 'book.html', "Adventurers League", "AL");
 
 	LIDropdown('navbar', 'players', 'dropdown');
 	A('players', 'playerOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Player Options <span class='caret'></span>");
