@@ -937,7 +937,7 @@ function loadhash (id) {
 				}
 				if (cpy.entries) {
 					if (!fluff.entries) fluff.entries = cpy.entries;
-					else fluff.entries.entries = fluff.entries.entries.concat(cpy.entries.entries);
+					else fluff.entries = fluff.entries.concat(cpy.entries);
 				}
 				delete fluff._appendCopy;
 			}
@@ -950,8 +950,8 @@ function loadhash (id) {
 				}
 			} else {
 				if (fluff.entries) {
-					const depth = fluff.entries.type === "section" ? -1 : 2;
-					$td.append(renderer.renderEntry(fluff.entries, depth));
+					const depth = fluff.type === "section" ? -1 : 2;
+					$td.append(renderer.renderEntry({type: fluff.type, entries: fluff.entries}, depth));
 				} else {
 					$td.append(HTML_NO_INFO);
 				}
