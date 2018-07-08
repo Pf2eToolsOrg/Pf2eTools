@@ -1244,6 +1244,79 @@
 				}
 			],
 			"page": 93
+		},
+		{
+			"name": "Trepsin",
+			"isNPC": true,
+			"size": "L",
+			"type": "giant",
+			"source": "HotDQ",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "84"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 13,
+			"con": 20,
+			"int": 7,
+			"wis": 9,
+			"cha": 7,
+			"skill": {
+				"perception": "+1"
+			},
+			"senses": "darkvision 60 ft., passive Perception 11",
+			"passive": 11,
+			"languages": "Giant",
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"The troll has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				},
+				{
+					"name": "Regeneration",
+					"entries": [
+						"The troll regains 10 hit points at the start of its turn. If the troll takes acid or fire damage, this trait doesn't function at the start of the troll's next turn. The troll dies only if it starts its turn with 0 hit points and doesn't regenerate."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The troll attacks five times, once with its bite and four times with its claws. If two or more claws hit the same target, the troll rends the target, dealing an extra{@dice  2d6 }slashing damage."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 7 (1d6 + 4) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee Weapon Attack: {@hit +7} to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage."
+					]
+				}
+			],
+			"page": 63
 		}
 	]
 }
