@@ -1031,6 +1031,10 @@ class RangeFilter extends Filter {
 
 	toDisplay (valObj, toCheck) {
 		const range = valObj[this.header];
+
+		// match everything if filter is set to complete range
+		if (toCheck == null) return range.min === this.min && range.max === this.max;
+
 		if (toCheck instanceof Array) return range.min <= Math.min(...toCheck) && range.max >= Math.max(...toCheck);
 		else return range.min <= toCheck && range.max >= toCheck;
 	}
