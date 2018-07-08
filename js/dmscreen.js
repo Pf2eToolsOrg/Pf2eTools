@@ -2354,7 +2354,7 @@ background-size: 8.49px 8.49px;`
 						: getBar();
 					$cond.attr("title", ttpText);
 
-					$cond.tooltip({trigger : "hover"});
+					$cond.tooltip({trigger: "hover"});
 					if (ttpText) {
 						// update tooltips
 						$cond.tooltip("enable").tooltip("fixTitle");
