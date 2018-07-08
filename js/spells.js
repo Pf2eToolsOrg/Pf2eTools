@@ -143,7 +143,7 @@ function getNormalisedRange (range) {
 				distance = 1;
 				break;
 			case RNG_SIGHT:
-				multiplier = FEET_PER_MILE * FEET_PER_MILE;
+				multiplier = INCHES_PER_FOOT * FEET_PER_MILE;
 				distance = 12; // assume sight range of person ~100 ft. above the ground
 				break;
 			case RNG_UNLIMITED_SAME_PLANE: // from BolS, if/when it gets restored
