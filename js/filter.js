@@ -362,7 +362,7 @@ class FilterBox {
 
 					if (isGrouped) {
 						const group = Number(item instanceof FilterItem && item.group != null ? item.group : filter.groupFn(iText));
-						if (group > $subGrids.length - 1) addGroup(true);
+						while (group > $subGrids.length - 1) addGroup(true);
 						$subGrids[group].append($pill)
 					} else $grid.append($pill);
 					$miniView.append($miniPill);

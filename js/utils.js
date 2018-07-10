@@ -2868,6 +2868,7 @@ StorageUtil = {
 // HOMEBREW ============================================================================================================
 BrewUtil = {
 	homebrew: null,
+	_homebrewMeta: null,
 	_lists: null,
 	storage: StorageUtil.getStorage(),
 	_sourceCache: null,
@@ -2887,38 +2888,22 @@ BrewUtil = {
 		if (BrewUtil.homebrew) {
 			brewHandler(BrewUtil.homebrew);
 		} else {
-			DataUtil.loadJSON(JSON_HOMEBREW_INDEX).then((data) => {
-				// auto-load from `homebrew/`, for custom versions of the site
-				function handleHomebrewFolder () {
-					if (data.toImport.length) {
-						Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`))).then((datas) => {
-							const page = UrlUtil.getCurrentPage();
-							datas.forEach(d => {
-								BrewUtil.doHandleBrewJson(d, page);
-							})
-						});
-					}
+			const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
+			if (rawBrew) {
+				try {
+					BrewUtil.homebrew = JSON.parse(rawBrew);
+					BrewUtil._pLoadLocal().then(() => brewHandler(BrewUtil.homebrew));
+				} catch (e) {
+					// on error, purge all brew and reset hash
+					purgeBrew();
+					setTimeout(() => {
+						throw e
+					});
 				}
-
-				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
-				if (rawBrew) {
-					try {
-						BrewUtil.homebrew = JSON.parse(rawBrew);
-						handleHomebrewFolder();
-						brewHandler(BrewUtil.homebrew);
-					} catch (e) {
-						// on error, purge all brew and reset hash
-						purgeBrew();
-						setTimeout(() => {
-							throw e
-						});
-					}
-				} else {
-					BrewUtil.homebrew = {};
-					handleHomebrewFolder();
-					brewHandler(BrewUtil.homebrew);
-				}
-			});
+			} else {
+				BrewUtil.homebrew = {};
+				BrewUtil._pLoadLocal().then(() => brewHandler(BrewUtil.homebrew));
+			}
 		}
 
 		function purgeBrew () {
@@ -2927,6 +2912,19 @@ BrewUtil = {
 			BrewUtil.homebrew = null;
 			window.location.hash = "";
 		}
+	},
+
+	_pLoadLocal (callbackFn = (d, page) => BrewUtil.doHandleBrewJson(d, page, null)) {
+		return DataUtil.loadJSON(JSON_HOMEBREW_INDEX).then((data) => {
+			// auto-load from `homebrew/`, for custom versions of the site
+			if (data.toImport.length) {
+				const page = UrlUtil.getCurrentPage();
+				Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`))).then((datas) => {
+					datas.forEach(d => callbackFn(d, page));
+					Promise.resolve();
+				});
+			} else Promise.resolve();
+		});
 	},
 
 	manageBrew: (funcAddCallback) => {
@@ -3530,18 +3528,38 @@ BrewUtil = {
 	},
 
 	_buildSourceCache () {
+		function doBuild () {
+			if (BrewUtil._homebrewMeta && BrewUtil._homebrewMeta.sources) {
+				BrewUtil._homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({abbreviation: src.abbreviation, full: src.full}));
+			}
+		}
+
 		if (!BrewUtil._sourceCache) {
 			BrewUtil._sourceCache = {};
 
-			if (!BrewUtil.homebrew) {
+			if (!BrewUtil._homebrewMeta) {
 				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
-				if (rawBrew) {
-					BrewUtil.homebrew = JSON.parse(rawBrew);
-				}
-			}
+				const temp = rawBrew ? ((JSON.parse(rawBrew) || {})._meta || {}) : {};
+				temp.sources = temp.sources || [];
 
-			if (BrewUtil.homebrew && BrewUtil.homebrew._meta && BrewUtil.homebrew._meta.sources) {
-				BrewUtil.homebrew._meta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({abbreviation: src.abbreviation, full: src.full}));
+				// FIXME Async code that, to be properly implemented, requires everything to be rewritten.
+				// This *should* complete before anything further is allowed to execute.
+				// The downside of not doing this, is homebrew sources will appear in the "official" section of the source filter.
+				// This didn't seem worth breaking everything to fix.
+				BrewUtil._pLoadLocal(d => {
+					if (d._meta && !d._meta.sources) {
+						const existing = temp.sources.map(src => src.json);
+						d._meta.sources.forEach(src => {
+							if (!existing.find(it => it === src.json)) {
+								temp.sources.push(src);
+							}
+						});
+					}
+				});
+				BrewUtil._homebrewMeta = temp;
+				doBuild();
+			} else {
+				doBuild();
 			}
 		}
 	},
