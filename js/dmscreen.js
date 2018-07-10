@@ -2052,8 +2052,17 @@ class InitiativeTracker {
 				colour: "#f01789"
 			},
 			{
+				name: "Concentrating",
+				colour: "#009f7a",
+				condName: null
+			},
+			{
 				name: "Deafened",
 				colour: "#c7d0d3"
+			},
+			{
+				name: "Drunk",
+				colour: "#ffcc00"
 			},
 			{
 				name: "Exhausted",
@@ -2075,6 +2084,11 @@ class InitiativeTracker {
 			{
 				name: "Invisible",
 				colour: "#7ad2d6"
+			},
+			{
+				name: "!!On Fire!!",
+				colour: "#ff6800",
+				condName: null
 			},
 			{
 				name: "Paralyzed",
@@ -2103,11 +2117,6 @@ class InitiativeTracker {
 			{
 				name: "Unconscious",
 				colour: "#1c2383"
-			},
-			{
-				name: "Concentrating",
-				colour: "#009f7a",
-				condName: null
 			}
 		];
 	}
