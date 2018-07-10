@@ -2,7 +2,7 @@
 
 const JSON_URL = "data/life.json";
 
-const RNG = EntryRenderer.dice.randomise;
+const RNG = RollerUtil.randomise;
 
 function _testRng (rollFn) {
 	const counts = {};

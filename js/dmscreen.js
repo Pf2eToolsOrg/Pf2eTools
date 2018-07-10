@@ -2182,7 +2182,10 @@ class InitiativeTracker {
 			$menuInner.on("click", (e) => e.stopPropagation());
 			$(`body`).append($menu);
 
-			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($menuInner);
+			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($menuInner);
+			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
+			const $wrpCbRoll = $(`<label class="panel-tab-search-checkbox"> Roll HP</label>`).appendTo($controls);
+			const $cbRoll = $(`<input type="checkbox">`).prop("checked", InitiativeTracker._uiRollHp).on("change", () => InitiativeTracker._uiRollHp = $cbRoll.prop("checked")).prependTo($wrpCbRoll);
 			const $results = $(`<div class="panel-tab-results"/>`).appendTo($menuInner);
 
 			this.showMsgIpt = () => {
@@ -2218,7 +2221,7 @@ class InitiativeTracker {
 					const handleClick = (r) => {
 						const name = r.doc.n;
 						const source = r.doc.s;
-						makeRow(name, "", "", false, source);
+						makeRow(name, "", "", false, source, [], $cbRoll.prop("checked"));
 						doSort(sort);
 						checkSetActive();
 						doClose();
@@ -2277,10 +2280,12 @@ class InitiativeTracker {
 			return {
 				r: rows,
 				s: sort,
-				d: dir
+				d: dir,
+				m: InitiativeTracker._uiRollHp
 			};
 		});
 
+		InitiativeTracker._uiRollHp = !!state.m;
 		(state.r || []).forEach(r => {
 			makeRow(r.n, r.h, r.i, r.a, r.s, r.c);
 		});
@@ -2299,12 +2304,17 @@ class InitiativeTracker {
 			const nxt = $rows.get(ix + 1);
 			if (nxt) {
 				$(nxt).addClass(`dm-init-row-active`);
+				// if names and initiatives are the same, skip forwards (groups of monsters)
+				if ($curr.find(`input.name`).val() === $(nxt).find(`input.name`).val() &&
+					$curr.find(`input.score`).val() === $(nxt).find(`input.score`).val()) {
+					setTimeout(() => setNextActive(), 30); // add a small delay for visibility
+				}
 			} else {
 				$($rows.get(0)).addClass(`dm-init-row-active`);
 			}
 		}
 
-		function makeRow (name = "", hp = "", init = "", isActive, source, conditions = []) {
+		function makeRow (name = "", hp = "", init = "", isActive, source, conditions = [], rollHp = false) {
 			const isMon = !!source;
 
 			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`).appendTo($wrpEntries);
@@ -2313,7 +2323,11 @@ class InitiativeTracker {
 			const $iptName = $(`<input class="form-control input-sm name ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
 			$iptName.on("change", () => doSort(ALPHA));
 			if (isMon) {
-				$(`<div class="init-wrp-creature">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`)}</div>`).appendTo($wrpLhs);
+				const $monName = $(`<div class="init-wrp-creature split">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`)}</div>`).appendTo($wrpLhs);
+				const $btnAnother = $(`<div class="btn btn-success btn-xs" title="Add Another (SHIFT for Roll New)"><span class="glyphicon glyphicon-plus"></span></div>`)
+					.click((evt) => {
+						makeRow(name, "", evt.shiftKey ? "" : $iptScore.val(), false, source, [], InitiativeTracker._uiRollHp);
+					}).appendTo($monName);
 				$(`<input class="source hidden" value="${source}">`).appendTo($wrpLhs);
 			}
 
@@ -2422,14 +2436,19 @@ background-size: 8.49px 8.49px;`
 
 					$wrpRows.append(`<hr>`);
 
-					const $controls = $(`<div class="row mb-2">`).appendTo($wrpRows);
+					$(`<div class="row mb-2">
+						<div class="col-xs-5">Name (optional)</div>
+						<div class="col-xs-2 text-align-center">Color</div>
+						<div class="col-xs-5">Duration (optional)</div>
+					</div>`).appendTo($wrpRows);
+					const $controls = $(`<div class="row mb-2"/>`).appendTo($wrpRows);
 					const [$wrpName, $wrpColour, $wrpTurns] = [...new Array(3)].map((it, i) => $(`<div class="col-xs-${i === 1 ? 2 : 5} text-align-center"/>`).appendTo($controls));
-					const $iptName = $(`<input class="form-control" placeholder="Name (optional)">`).appendTo($wrpName);
-					const $iptColour = $(`<input class="form-control" type="color">`).appendTo($wrpColour);
-					const $iptTurns = $(`<input class="form-control" type="number" step="1" min="1" placeholder="Duration (optional)">`).appendTo($wrpTurns);
+					const $iptName = $(`<input class="form-control">`).appendTo($wrpName);
+					const $iptColour = $(`<input class="form-control" type="color" value="${MiscUtil.randomColour()}">`).appendTo($wrpColour);
+					const $iptTurns = $(`<input class="form-control" type="number" step="1" min="1" placeholder="Unlimited">`).appendTo($wrpTurns);
 					const $wrpAdd = $(`<div class="row">`).appendTo($wrpRows);
 					const $wrpAddInner = $(`<div class="col-xs-12 text-align-center">`).appendTo($wrpAdd);
-					const $btnAdd = $(`<button class="btn btn-primary">Add Condition</button>`)
+					const $btnAdd = $(`<button class="btn btn-primary">Set Condition</button>`)
 						.click(() => {
 							addCondition($iptName.val().trim(), $iptColour.val(), $iptTurns.val());
 							$wrpModal.remove();
@@ -2441,7 +2460,49 @@ background-size: 8.49px 8.49px;`
 
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
 			let curHp = hp;
+
 			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${curHp}">`).appendTo($wrpRhs);
+			const $iptScore = $(`<input class="form-control input-sm score" placeholder="#" type="number" value="${init}">`).on("change", () => doSort(NUM)).appendTo($wrpRhs);
+
+			if (isMon && (curHp === "" || init === "")) {
+				const doUpdate = () => {
+					const m = EntryRenderer.hover._getFromCache(UrlUtil.PG_BESTIARY, source, hash);
+					const rollName = `Initiative Tracker \u2014 ${m.name}`;
+
+					// set or roll HP
+					if (!rollHp && m.hp.average) {
+						curHp = m.hp.average;
+						$iptHp.val(curHp);
+					} else if (rollHp && m.hp.formula) {
+						curHp = EntryRenderer.dice.roll(m.hp.formula, {
+							user: false,
+							name: rollName,
+							label: "HP"
+						});
+						$iptHp.val(curHp);
+					}
+
+					// roll initiative
+					if (!init) {
+						const init = EntryRenderer.dice.roll(`1d20${Parser.getAbilityModifier(m.dex)}`, {
+							user: false,
+							name: rollName,
+							label: "Initiative"
+						});
+
+						$iptScore.val(init)
+					}
+				};
+
+				const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY]({name: name, source: source});
+				if (EntryRenderer.hover._isCached(UrlUtil.PG_BESTIARY, source, hash)) doUpdate();
+				else {
+					EntryRenderer.hover._doFillThenCall(UrlUtil.PG_BESTIARY, source, hash, () => {
+						if (!curHp) doUpdate();
+					});
+				}
+			}
+
 			$iptHp.on("change", () => {
 				const nxt = $iptHp.val().trim();
 				if (nxt && /^[-+0-9]*$/.exec(curHp) && /^[-+0-9]*$/.exec(nxt)) {
@@ -2459,8 +2520,7 @@ background-size: 8.49px 8.49px;`
 					$iptHp.val(curHp);
 				}
 			});
-			const $iptScore = $(`<input class="form-control input-sm score" placeholder="#" type="number" value="${init}">`).appendTo($wrpRhs);
-			$iptScore.on("change", () => doSort(NUM));
+
 			const $btnDel = $(`<div class="btn btn-danger btn-xs dm-init-row-btn" title="Delete"><span class="glyphicon glyphicon-trash"/></div>`)
 				.appendTo($wrpRhs)
 				.on("click", () => {
@@ -2498,6 +2558,7 @@ background-size: 8.49px 8.49px;`
 		return $wrpTracker;
 	}
 }
+InitiativeTracker._uiRollHp = false;
 
 class DmScreenUtil {
 	static getSearchNoResults () {

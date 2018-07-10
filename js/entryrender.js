@@ -3123,43 +3123,6 @@ EntryRenderer.dice = {
 		return EntryRenderer.dice._$wrpRoll;
 	},
 
-	isCrypto: () => {
-		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
-	},
-
-	randomise: (max, min = 1) => {
-		if (EntryRenderer.dice.isCrypto()) {
-			return EntryRenderer.dice._randomise(min, max + min);
-		} else {
-			return RollerUtil.roll(max) + min;
-		}
-	},
-
-	/**
-	 * Cryptographically secure RNG
-	 */
-	_randomise: (min, max) => {
-		const range = max - min;
-		const bytesNeeded = Math.ceil(Math.log2(range) / 8);
-		const randomBytes = new Uint8Array(bytesNeeded);
-		const maximumRange = Math.pow(Math.pow(2, 8), bytesNeeded);
-		const extendedRange = Math.floor(maximumRange / range) * range;
-		let i;
-		let randomInteger;
-		while (true) {
-			window.crypto.getRandomValues(randomBytes);
-			randomInteger = 0;
-			for (i = 0; i < bytesNeeded; i++) {
-				randomInteger <<= 8;
-				randomInteger += randomBytes[i];
-			}
-			if (randomInteger < extendedRange) {
-				randomInteger %= range;
-				return min + randomInteger;
-			}
-		}
-	},
-
 	parseRandomise: (str) => {
 		if (!str.trim()) return null;
 		const toRoll = EntryRenderer.dice._parse(str);
@@ -3185,9 +3148,9 @@ EntryRenderer.dice = {
 
 	_DICE: [4, 6, 8, 10, 12, 20, 100],
 	_randomPlaceholder: () => {
-		const count = EntryRenderer.dice.randomise(10);
-		const faces = EntryRenderer.dice._DICE[EntryRenderer.dice.randomise(EntryRenderer.dice._DICE.length - 1)];
-		const mod = (EntryRenderer.dice.randomise(3) - 2) * EntryRenderer.dice.randomise(10);
+		const count = RollerUtil.randomise(10);
+		const faces = EntryRenderer.dice._DICE[RollerUtil.randomise(EntryRenderer.dice._DICE.length - 1)];
+		const mod = (RollerUtil.randomise(3) - 2) * RollerUtil.randomise(10);
 		return `${count}d${faces}${mod < 0 ? mod : mod > 0 ? `+${mod}` : ""}`;
 	},
 
@@ -3324,16 +3287,19 @@ EntryRenderer.dice = {
 		}
 	},
 
+	/**
+	 * Returns the total rolled, if available
+	 */
 	roll: (str, rolledBy) => {
 		str = str.trim();
 		if (!str) return;
 		if (rolledBy.user) EntryRenderer.dice._addHistory(str);
 
 		if (str.startsWith("/")) EntryRenderer.dice._handleCommand(str, rolledBy);
-		else if (str.startsWith("#")) EntryRenderer.dice._handleSavedRoll(str, rolledBy);
+		else if (str.startsWith("#")) return EntryRenderer.dice._handleSavedRoll(str, rolledBy);
 		else {
 			const toRoll = EntryRenderer.dice._parse(str);
-			EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+			return EntryRenderer.dice._handleRoll(toRoll, rolledBy);
 		}
 	},
 
@@ -3371,6 +3337,8 @@ EntryRenderer.dice = {
 					</span>
 					${cbMessage ? `<span class="message">${cbMessage(v.total)}</span>` : ""}
 				</div>`);
+
+			return v.total;
 		} else {
 			$out.append(`<div class="out-roll-item">Invalid input! Try &quot;/help&quot;</div>`);
 		}
@@ -3460,7 +3428,7 @@ EntryRenderer.dice = {
 		const macro = EntryRenderer.dice.storage[id];
 		if (macro) {
 			const toRoll = EntryRenderer.dice._parse(macro);
-			EntryRenderer.dice._handleRoll(toRoll, rolledBy);
+			return EntryRenderer.dice._handleRoll(toRoll, rolledBy);
 		} else EntryRenderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${id}</span> not found`, EntryRenderer.dice.SYSTEM_USER);
 	},
 
@@ -3487,7 +3455,7 @@ EntryRenderer.dice = {
 	rollDice: (count, faces) => {
 		const out = [];
 		for (let i = 0; i < count; ++i) {
-			out.push(EntryRenderer.dice.randomise(faces));
+			out.push(RollerUtil.randomise(faces));
 		}
 		return out;
 	},

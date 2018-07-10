@@ -21,7 +21,7 @@ function onJsonLoad (data) {
 
 		$("#rollbutton").click(rollstats);
 
-		const isCrypto = EntryRenderer.dice.isCrypto();
+		const isCrypto = RollerUtil.isCrypto();
 		const titleStr = isCrypto ? "Numbers will be generated using Crypto.getRandomValues()" : "Numbers will be generated using Math.random()";
 		$(`#roller-mode`).html(`Cryptographically strong random generation: <span title="${titleStr}" class="crypto-${isCrypto}">${isCrypto ? `<span class="glyphicon glyphicon-lock"></span> enabled` : `<span class="glyphicon glyphicon-ban-circle"></span> not available`}</span>`);
 

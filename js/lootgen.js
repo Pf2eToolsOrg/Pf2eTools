@@ -196,7 +196,7 @@ class LootGen {
 	}
 
 	randomNumber (min, max) {
-		return EntryRenderer.dice.randomise(max, min);
+		return RollerUtil.randomise(max, min);
 	}
 
 	_getOrViewSpellsPart (level) {

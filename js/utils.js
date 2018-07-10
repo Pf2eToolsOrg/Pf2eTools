@@ -1709,6 +1709,25 @@ MiscUtil = {
 		} else if (document.selection) {
 			document.selection.empty();
 		}
+	},
+
+	randomColour () {
+		let r;
+		let g;
+		let b;
+		const h = RollerUtil.randomise(30, 0) / 30;
+		const i = ~~(h * 6);
+		const f = h * 6 - i;
+		const q = 1 - f;
+		switch(i % 6){
+			case 0: r = 1; g = f; b = 0; break;
+			case 1: r = q; g = 1; b = 0; break;
+			case 2: r = 0; g = 1; b = f; break;
+			case 3: r = 0; g = q; b = 1; break;
+			case 4: r = f; g = 0; b = 1; break;
+			case 5: r = 1; g = 0; b = q; break;
+		}
+		return `#${("00" + (~~(r * 255)).toString(16)).slice(-2)}${("00" + (~~(g * 255)).toString(16)).slice(-2)}${("00" + (~~(b * 255)).toString(16)).slice(-2)}`;
 	}
 };
 
@@ -2729,6 +2748,43 @@ function addListShowHide () {
 
 // ROLLING =============================================================================================================
 RollerUtil = {
+	isCrypto: () => {
+		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
+	},
+
+	randomise: (max, min = 1) => {
+		if (RollerUtil.isCrypto()) {
+			return RollerUtil._randomise(min, max + min);
+		} else {
+			return RollerUtil.roll(max) + min;
+		}
+	},
+
+	/**
+	 * Cryptographically secure RNG
+	 */
+	_randomise: (min, max) => {
+		const range = max - min;
+		const bytesNeeded = Math.ceil(Math.log2(range) / 8);
+		const randomBytes = new Uint8Array(bytesNeeded);
+		const maximumRange = Math.pow(Math.pow(2, 8), bytesNeeded);
+		const extendedRange = Math.floor(maximumRange / range) * range;
+		let i;
+		let randomInteger;
+		while (true) {
+			window.crypto.getRandomValues(randomBytes);
+			randomInteger = 0;
+			for (i = 0; i < bytesNeeded; i++) {
+				randomInteger <<= 8;
+				randomInteger += randomBytes[i];
+			}
+			if (randomInteger < extendedRange) {
+				randomInteger %= range;
+				return min + randomInteger;
+			}
+		}
+	},
+
 	/**
 	 * Result in range: 0 to (max-1); inclusive
 	 * e.g. roll(20) gives results ranging from 0 to 19

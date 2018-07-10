@@ -113,7 +113,7 @@ function rollAgainstTable (iLoad, jLoad) {
 	const table = location.tables[jLoad];
 	const rollTable = table.table;
 
-	const roll = EntryRenderer.dice.randomise(100) - 1; // -1 since results are 1-100
+	const roll = RollerUtil.randomise(100) - 1; // -1 since results are 1-100
 
 	let result;
 	for (let i = 0; i < rollTable.length; i++) {
