@@ -1615,7 +1615,7 @@ SourceUtil = {
 			return !source.forceStandard;
 		}
 		if (source && source.source) source = source.source;
-		return (source !== undefined && source !== null) && (SourceUtil._isNonstandardSourceWiz(source) || SourceUtil._isNonstandardSource3pp(source));
+		return (source !== undefined && source !== null) && !BrewUtil.hasSourceJson(source) && (SourceUtil._isNonstandardSourceWiz(source) || SourceUtil._isNonstandardSource3pp(source));
 	},
 
 	_isNonstandardSourceWiz (source) {
@@ -1627,8 +1627,7 @@ SourceUtil = {
 	},
 
 	getFilterGroup (source) {
-		const brew = BrewUtil.getJsonSources().map(it => it.json);
-		if (brew.includes(source)) return 2;
+		if (BrewUtil.hasSourceJson(source)) return 2;
 		return Number(SourceUtil.isNonstandardSource(source))
 	}
 };
@@ -3597,10 +3596,6 @@ BrewUtil = {
 		}
 
 		return indexer.getIndex();
-	},
-
-	hasBook () {
-		BrewUtil.addBrewData()
 	}
 };
 
