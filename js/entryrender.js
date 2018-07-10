@@ -412,7 +412,7 @@ function EntryRenderer () {
 
 				for (let i = 0; i < entry.colLabels.length; ++i) {
 					textStack.push(`<th ${getTableThClassText(i)}>`);
-					self.recursiveEntryRender(autoMkRoller && i === 0 ? `{@dice ${entry.colLabels[i]}}` : entry.colLabels[i], textStack, depth);
+					self.recursiveEntryRender(autoMkRoller && i === 0 && !entry.colLabels[i].includes("@dice") ? `{@dice ${entry.colLabels[i]}}` : entry.colLabels[i], textStack, depth);
 					textStack.push(`</th>`);
 				}
 			}
@@ -1990,7 +1990,7 @@ EntryRenderer.item = {
 		let damage = "";
 		let damageType = "";
 		if (item.weaponCategory) {
-			if (item.dmg1) damage = utils_makeRoller(item.dmg1);
+			if (item.dmg1) damage = EntryRenderer.getDefaultRenderer().renderEntry(item.dmg1);
 			if (item.dmgType) damageType = Parser.dmgTypeToFull(item.dmgType);
 		} else if (type === "LA" || type === "MA" || type === "HA") {
 			damage = "AC " + item.ac + (type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : "");
@@ -2020,7 +2020,7 @@ EntryRenderer.item = {
 			for (let i = 0; i < properties.length; i++) {
 				const prop = properties[i];
 				let a = item._allPropertiesPtr[prop].name;
-				if (prop === "V") a = `${a} (${utils_makeRoller(item.dmg2)})`;
+				if (prop === "V") a = `${a} (${EntryRenderer.getDefaultRenderer().renderEntry(item.dmg2)})`;
 				if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range}ft.)`;
 				if (prop === "RLD") a = `${a} (${item.reload} shots)`;
 				a = (i > 0 ? ", " : item.dmg1 ? "- " : "") + a;

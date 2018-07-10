@@ -61,6 +61,10 @@ Replace: `$1$3`
 - Nouns: a space and the short name of the unit of measure (including the trailing period) should be used, e.g. `blindsight 60 ft.`, `darkvision 120 ft.`
 - Time: a slash, `/`, with no spaces on either side followed by the capitalised unit of time, e.g. `2/Turn`, `3/Day`
 
+##### Misc
+
+- A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?`
+
 ### Dev Server
 
 Do `npm run dev-server` to launch a local dev server that serves the project files on [`http://localhost:8080/5etools.html`](http://localhost:8080/5etools.html).

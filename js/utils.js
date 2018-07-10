@@ -249,12 +249,6 @@ function utils_makeAttChoose (attList) {
 	}
 }
 
-DICE_REGEX = /([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g;
-
-function utils_makeRoller (text) {
-	return text.replace(DICE_REGEX, "<span class='roller' data-roll='$&'>$&</span>").replace(/(-|\+)?\d+(?= to hit)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(-|\+)?\d+(?= bonus to)/g, "<span class='roller' data-roll='1d20$&'>$&</span>").replace(/(bonus of )(=?-|\+\d+)/g, "$1<span class='roller' data-roll='1d20$2'>$2</span>");
-}
-
 class AbilityData {
 	constructor (asText, asTextShort, asCollection, areNegative) {
 		this.asText = asText;
@@ -2813,7 +2807,7 @@ RollerUtil = {
 
 	isRollCol (string) {
 		if (typeof string !== "string") return false;
-		return !!/^(\d+)?d\d+([+-](\d+)?d\d+)*$/.exec(string.trim());
+		return !!/^({@dice )?(\d+)?d\d+([+-](\d+)?d\d+)*(})?$/.exec(string.trim());
 	}
 };
 

@@ -403,24 +403,9 @@ function loadhash (id) {
 	$content.find("tr#text").after(`
 		<tr class="text">
 			<td colspan="6" class="text1">
-				${utils_makeRoller(renderStack.join("")).split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>").split(item.name.toLowerCase().uppercaseFirst()).join("<i>" + item.name.toLowerCase().uppercaseFirst() + "</i>")}
+				${renderStack.join("").split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>").split(item.name.toLowerCase().uppercaseFirst()).join("<i>" + item.name.toLowerCase().uppercaseFirst() + "</i>")}
 			</td>
 		</tr>`);
-
-	$content.find(".items span.roller").contents().unwrap();
-	$content.find("span.roller").not(`.render-roller`).click(function () {
-		const roll = $(this).attr("data-roll").replace(/\s+/g, "");
-		EntryRenderer.dice.roll(roll, {
-			name: item.name,
-			label: $content.find(".stats-name").text()
-		});
-	});
-
-	// fix any double-wrapped rollers
-	// TODO convert entire item roller system to rendered, instead of mass-replaced
-	$content.find(`.render-roller`).find(`.roller`).each(function () {
-		$(this).replaceWith(this.childNodes)
-	});
 
 	ListUtil.updateSelected();
 }
