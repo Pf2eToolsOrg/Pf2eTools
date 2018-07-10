@@ -1712,14 +1712,12 @@ MiscUtil = {
 	},
 
 	randomColour () {
-		let r;
-		let g;
-		let b;
+		let r; let g; let b;
 		const h = RollerUtil.randomise(30, 0) / 30;
 		const i = ~~(h * 6);
 		const f = h * 6 - i;
 		const q = 1 - f;
-		switch(i % 6){
+		switch (i % 6) {
 			case 0: r = 1; g = f; b = 0; break;
 			case 1: r = q; g = 1; b = 0; break;
 			case 2: r = 0; g = 1; b = f; break;
