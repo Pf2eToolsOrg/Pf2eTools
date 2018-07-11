@@ -200,6 +200,7 @@ class Board {
 					this.setRef("id");
 				});
 				// Add main site index
+				let ixMax = 0;
 				data.forEach(d => {
 					if (hasBadCat(d) || fromDeepIndex(d)) return;
 					d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
@@ -212,9 +213,11 @@ class Board {
 					}
 					this.availContent.ALL.addDoc(d);
 					this.availContent[d.cf].addDoc(d);
+					ixMax = Math.max(ixMax, d.id);
 				});
 
 				// Add homebrew
+				Omnisearch.highestId = Math.max(ixMax, Omnisearch.highestId);
 				BrewUtil.getSearchIndex().forEach(d => {
 					if (hasBadCat(d) || fromDeepIndex(d)) return;
 					d.cf = Parser.pageCategoryToFull(d.c);
