@@ -73,4 +73,4 @@ function flattenReferenceIndex (ref) {
 }
 
 fs.writeFileSync("data/bookref-dmscreen-index.json", JSON.stringify(flattenReferenceIndex(index.reference)), "utf8");
-console.log("Updated book references.");
+console.log("Updated DM Screen references.");
