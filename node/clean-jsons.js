@@ -1,10 +1,10 @@
 const fs = require("fs");
 
-function isDirectory (path) {
+function isDirectory(path) {
 	return fs.lstatSync(path).isDirectory();
 }
 
-function readJSON (path) {
+function readJSON(path) {
 	try {
 		return JSON.parse(fs.readFileSync(path, "utf8"));
 	} catch (e) {
@@ -13,7 +13,7 @@ function readJSON (path) {
 	}
 }
 
-function listFiles (dir) {
+function listFiles(dir) {
 	const dirContent = fs.readdirSync(dir, "utf8").map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
 		if (isDirectory(file)) {
@@ -35,7 +35,7 @@ const replacements = {
 
 const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');
 
-function cleanFolder (folder) {
+function cleanFolder(folder) {
 	const files = listFiles(folder);
 	files
 		.map(file => ({
