@@ -779,7 +779,7 @@ class Panel {
 		this.set$Content(
 			PANEL_TYP_TEXTBOX,
 			null,
-			$(`<div class="panel-content-wrapper-inner"><textarea class="panel-content-textarea">${content || ""}</textarea></div>`)
+			$(`<div class="panel-content-wrapper-inner"/>`).append(NoteBox.make$Notebox(content))
 		);
 	}
 
@@ -2571,6 +2571,64 @@ background-size: 8.49px 8.49px;`
 	}
 }
 InitiativeTracker._uiRollHp = false;
+
+class NoteBox {
+	static make$Notebox (content) {
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="For clickable rollers, use square brackets: [[1d20+2]]">${content || ""}</textarea>`)
+			.click(() => {
+				function isRollableCharacter (c) {
+					return c === "d" || isNumber(c) || c === "[" || c === "]" || c === "+" || c === "-";
+				}
+
+				function isNumber (char) {
+					return char >= "0" && char <= "9";
+				}
+
+				const txt = $iptText[0];
+				if (txt.selectionStart === txt.selectionEnd) {
+					const stack = [];
+
+					// to the left..
+					let left = 0;
+					for (let i = txt.selectionStart; i >= 0; i--) {
+						left = i;
+						if (i >= txt.value.length) {
+							left = i - 1;
+							break;
+						}
+						const c = txt.value[i].toLowerCase();
+						if (isRollableCharacter(c)) {
+							stack.unshift(c);
+						} else {
+							break;
+						}
+					}
+
+					// to the right..
+					for (let i = txt.selectionEnd + 1; i < txt.value.length; i++) {
+						const c = txt.value[i].toLowerCase();
+						if (isRollableCharacter(c)) {
+							stack.push(c);
+						} else {
+							break;
+						}
+					}
+
+					const str = stack.join("");
+					if (/^\[\[([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?]]$/i.exec(str)) {
+						EntryRenderer.dice.roll(str.replace(`[[`, "").replace(`]]`, ""), {
+							user: false,
+							name: "DM Screen"
+						});
+						const nxtPos = left === 0 ? 0 : left + 1;
+						txt.setSelectionRange(nxtPos, nxtPos)
+					}
+				}
+			});
+
+		return $iptText;
+	}
+}
 
 class DmScreenUtil {
 	static getSearchNoResults () {
