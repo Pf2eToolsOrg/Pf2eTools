@@ -219,9 +219,8 @@ function handleBrew (homebrew) {
 	addSpells(homebrew.spell);
 }
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, new Promise((resolve) => {
+function pPostLoad () {
+	return new Promise(resolve => {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
 			.then(() => {
@@ -230,7 +229,12 @@ window.onload = function load () {
 				ListUtil.loadState();
 				resolve();
 			});
-	}));
+	})
+}
+
+window.onload = function load () {
+	ExcludeUtil.initialise();
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, pPostLoad);
 };
 
 let list;

@@ -43,17 +43,19 @@ function basename (str, sep) {
 
 const meta = {};
 
-function loadMeta (nextFunction) {
-	DataUtil.loadJSON(JSON_DIR + META_URL).then(function (data) {
-		// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
-		for (let i = 0; i < data.legendaryGroup.length; i++) {
-			meta[data.legendaryGroup[i].name] = {
-				"lairActions": data.legendaryGroup[i].lairActions,
-				"regionalEffects": data.legendaryGroup[i].regionalEffects
-			};
-		}
-
-		nextFunction();
+function pLoadMeta () {
+	return new Promise(resolve => {
+		DataUtil.loadJSON(JSON_DIR + META_URL)
+			.then((data) => {
+				// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
+				for (let i = 0; i < data.legendaryGroup.length; i++) {
+					meta[data.legendaryGroup[i].name] = {
+						"lairActions": data.legendaryGroup[i].lairActions,
+						"regionalEffects": data.legendaryGroup[i].regionalEffects
+					};
+				}
+				resolve();
+			});
 	});
 }
 
@@ -70,10 +72,13 @@ function addLegendaryGroups (toAdd) {
 }
 
 let ixFluff = {};
-function loadFluffIndex (nextFunction) {
-	DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX).then(function (data) {
-		ixFluff = data;
-		nextFunction();
+function pLoadFluffIndex () {
+	return new Promise(resolve => {
+		DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX)
+			.then((data) => {
+				ixFluff = data;
+				resolve();
+			});
 	});
 }
 
@@ -82,22 +87,24 @@ function handleBrew (homebrew) {
 	addMonsters(homebrew.monster);
 }
 
+function pPostLoad () {
+	return new Promise(resolve => {
+		BrewUtil.pAddBrewData()
+			.then(handleBrew)
+			.then(() => {
+				BrewUtil.makeBrewButton("manage-brew");
+				BrewUtil.bind({list, filterBox, sourceFilter});
+				ListUtil.loadState();
+				resolve();
+			});
+	})
+}
+
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	loadMeta(() => {
-		loadFluffIndex(() => {
-			multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters, new Promise((resolve) => {
-				BrewUtil.pAddBrewData()
-					.then(handleBrew)
-					.then(() => {
-						BrewUtil.makeBrewButton("manage-brew");
-						BrewUtil.bind({list, filterBox, sourceFilter});
-						ListUtil.loadState();
-						resolve();
-					});
-			}));
-		});
-	});
+	pLoadMeta()
+		.then(pLoadFluffIndex)
+		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters, pPostLoad));
 };
 
 let list;
