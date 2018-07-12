@@ -2070,7 +2070,7 @@ EntryRenderer.item = {
 		};
 	},
 	_addBrewPropertiesAndTypes () {
-		BrewUtil.addBrewData((brew) => {
+		return BrewUtil.pAddBrewData().then((brew) => {
 			(brew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
 			(brew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
 		});
@@ -2114,8 +2114,8 @@ EntryRenderer.item = {
 					// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 					basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
 					basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
-					EntryRenderer.item._addBrewPropertiesAndTypes();
-					resolve([itemList, basicItems]);
+					EntryRenderer.item._addBrewPropertiesAndTypes()
+						.then(() => resolve([itemList, basicItems]));
 				}, reject);
 			});
 		}
@@ -2558,30 +2558,28 @@ EntryRenderer.hover = {
 
 		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				BrewUtil.addBrewData((data) => {
+				BrewUtil.pAddBrewData().then((data) => {
 					if (!data[listProp]) return;
 					loadPopulate(data, listProp);
-				});
-				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`).then((data) => {
-					const procData = {};
-					const officialSource = Object.keys(data).find(k => k.toLowerCase() === source.toLowerCase());
-					if (officialSource) {
-						DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${data[officialSource]}`).then((data) => {
-							loadPopulate(data, listProp);
-							callbackFn();
-						});
-					} else {
-						// source to load is 3rd party, which was already handled
-						callbackFn();
-					}
-				});
+				}).then(DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`))
+					.then((data) => {
+						const officialSource = Object.keys(data).find(k => k.toLowerCase() === source.toLowerCase());
+						if (officialSource) {
+							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${data[officialSource]}`).then((data) => {
+								loadPopulate(data, listProp);
+								callbackFn();
+							});
+						} else {
+							callbackFn(); // source to load is 3rd party, which was already handled
+						}
+					});
 			} else {
 				callbackFn();
 			}
 		}
 
 		function _loadSingleBrew (listProp, itemModifier) {
-			BrewUtil.addBrewData((data) => {
+			return BrewUtil.pAddBrewData().then((data) => {
 				if (!data[listProp]) return;
 				loadPopulate(data, listProp, itemModifier);
 			});
@@ -2595,8 +2593,8 @@ EntryRenderer.hover = {
 
 		function loadSimple (page, jsonFile, listProp, itemModifier) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				_loadSingleBrew(listProp, itemModifier);
-				DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`).then((data) => _handleSingleData(data, listProp, itemModifier));
+				_loadSingleBrew(listProp, itemModifier)
+					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`).then((data) => _handleSingleData(data, listProp, itemModifier)));
 			} else {
 				callbackFn();
 			}
@@ -2604,8 +2602,8 @@ EntryRenderer.hover = {
 
 		function loadCustom (page, jsonFile, listProp, itemModifier, loader) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				_loadSingleBrew(listProp, itemModifier);
-				DataUtil[loader].loadJSON(EntryRenderer.getDefaultRenderer().baseUrl).then((data) => _handleSingleData(data, listProp, itemModifier));
+				_loadSingleBrew(listProp, itemModifier)
+					.then(() => DataUtil[loader].loadJSON(EntryRenderer.getDefaultRenderer().baseUrl).then((data) => _handleSingleData(data, listProp, itemModifier)));
 			} else {
 				callbackFn();
 			}
@@ -2631,20 +2629,21 @@ EntryRenderer.hover = {
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
 					EntryRenderer.item.buildList((allItems) => {
 						// populate brew once the main item properties have been loaded
-						BrewUtil.addBrewData((data) => {
-							if (!data.item) return;
-							data.item.forEach(it => {
-								if (!it._isEnhanced) EntryRenderer.item.enhanceItem(it);
-								const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-								EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+						BrewUtil.pAddBrewData()
+							.then((data) => {
+								if (!data.item) return;
+								data.item.forEach(it => {
+									if (!it._isEnhanced) EntryRenderer.item.enhanceItem(it);
+									const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+									EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+								});
+							}).then(() => {
+								allItems.forEach(item => {
+									const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
+									EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
+								});
+								callbackFn();
 							});
-						});
-
-						allItems.forEach(item => {
-							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
-							EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
-						});
-						callbackFn();
 					}, {}, true);
 				} else {
 					callbackFn();
@@ -2674,17 +2673,18 @@ EntryRenderer.hover = {
 			}
 			case UrlUtil.PG_RACES: {
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
-					BrewUtil.addBrewData((data) => {
+					BrewUtil.pAddBrewData().then((data) => {
 						if (!data.race) return;
 						loadPopulate(data, "race");
-					});
-					DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`).then((data) => {
-						const merged = EntryRenderer.race.mergeSubraces(data.race);
-						merged.forEach(race => {
-							const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
-							EntryRenderer.hover._addToCache(page, race.source, raceHash, race)
+					}).then(() => {
+						DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`).then((data) => {
+							const merged = EntryRenderer.race.mergeSubraces(data.race);
+							merged.forEach(race => {
+								const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
+								EntryRenderer.hover._addToCache(page, race.source, raceHash, race)
+							});
+							callbackFn();
 						});
-						callbackFn();
 					});
 				} else {
 					callbackFn();

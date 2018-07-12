@@ -42,14 +42,17 @@ function onJsonLoad (data) {
 	});
 
 	addRewards(data);
-	BrewUtil.addBrewData(addRewards);
-	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({list, filterBox, sourceFilter});
-	ListUtil.loadState();
+	BrewUtil.pAddBrewData()
+		.then(addRewards)
+		.then(() => {
+			BrewUtil.makeBrewButton("manage-brew");
+			BrewUtil.bind({list, filterBox, sourceFilter});
+			ListUtil.loadState();
 
-	History.init();
-	handleFilterChange();
-	RollerUtil.addListRollButton();
+			History.init();
+			handleFilterChange();
+			RollerUtil.addListRollButton();
+		});
 }
 
 let rewardList = [];

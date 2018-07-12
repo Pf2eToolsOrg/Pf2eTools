@@ -93,14 +93,17 @@ function onJsonLoad (data) {
 	ListUtil.initGenericPinnable();
 
 	addInvocations(data);
-	BrewUtil.addBrewData(addInvocations);
-	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({list, filterBox, sourceFilter});
-	ListUtil.loadState();
+	BrewUtil.pAddBrewData()
+		.then(addInvocations)
+		.then(() => {
+			BrewUtil.makeBrewButton("manage-brew");
+			BrewUtil.bind({list, filterBox, sourceFilter});
+			ListUtil.loadState();
 
-	History.init();
-	handleFilterChange();
-	RollerUtil.addListRollButton();
+			History.init();
+			handleFilterChange();
+			RollerUtil.addListRollButton();
+		});
 }
 
 let invoList = [];

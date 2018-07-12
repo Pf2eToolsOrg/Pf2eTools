@@ -34,14 +34,17 @@ function onJsonLoad (data) {
 	ListUtil.initGenericPinnable();
 
 	addBackgrounds(data);
-	BrewUtil.addBrewData(addBackgrounds);
-	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({list, filterBox, sourceFilter});
-	ListUtil.loadState();
+	BrewUtil.pAddBrewData()
+		.then(addBackgrounds)
+		.then(() => {
+			BrewUtil.makeBrewButton("manage-brew");
+			BrewUtil.bind({list, filterBox, sourceFilter});
+			ListUtil.loadState();
 
-	History.init();
-	handleFilterChange();
-	RollerUtil.addListRollButton();
+			History.init();
+			handleFilterChange();
+			RollerUtil.addListRollButton();
+		});
 }
 
 let bgList = [];

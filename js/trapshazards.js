@@ -51,14 +51,17 @@ function onJsonLoad (data) {
 	ListUtil.initGenericPinnable();
 
 	addTrapsHazards(data);
-	BrewUtil.addBrewData(handleBrew);
-	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({list, filterBox, sourceFilter});
-	ListUtil.loadState();
+	BrewUtil.pAddBrewData()
+		.then(handleBrew)
+		.then(() => {
+			BrewUtil.makeBrewButton("manage-brew");
+			BrewUtil.bind({list, filterBox, sourceFilter});
+			ListUtil.loadState();
 
-	History.init();
-	handleFilterChange();
-	RollerUtil.addListRollButton();
+			History.init();
+			handleFilterChange();
+			RollerUtil.addListRollButton();
+		});
 }
 
 function handleBrew (homebrew) {

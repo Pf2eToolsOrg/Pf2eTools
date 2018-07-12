@@ -58,6 +58,7 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, cbOpt) 
 	// make a list of src : url objects
 	const toLoads = allSources.map(src => ({src: src, url: jsonDir + src2UrlMap[src]}));
 
+	// TODO promise/then this
 	pageInitFn(loadedSources);
 
 	if (toLoads.length > 0) {
@@ -70,15 +71,17 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, cbOpt) 
 				let toAdd = [];
 				dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
 				addFn(toAdd);
-				if (cbOpt) {
-					cbOpt();
+
+				function finalise () {
+					History.init();
+					handleFilterChange();
+					RollerUtil.addListRollButton();
+					addListShowHide();
+					History.initialLoad = false;
 				}
 
-				History.init();
-				handleFilterChange();
-				RollerUtil.addListRollButton();
-				addListShowHide();
-				History.initialLoad = false;
+				if (cbOpt) cbOpt().then(finalise);
+				else finalise();
 			}
 		);
 	}

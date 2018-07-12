@@ -15,35 +15,36 @@ window.onload = function load () {
 };
 
 function onJsonLoad (data) {
-	BrewUtil.addBrewData((brew) => {
-		raceData = EntryRenderer.race.mergeSubraces(data.race);
-		if (brew.race) raceData = raceData.concat(brew.race);
+	BrewUtil.pAddBrewData()
+		.then((brew) => {
+			raceData = EntryRenderer.race.mergeSubraces(data.race);
+			if (brew.race) raceData = raceData.concat(brew.race);
 
-		$("#rollbutton").click(rollstats);
+			$("#rollbutton").click(rollstats);
 
-		const isCrypto = RollerUtil.isCrypto();
-		const titleStr = isCrypto ? "Numbers will be generated using Crypto.getRandomValues()" : "Numbers will be generated using Math.random()";
-		$(`#roller-mode`).html(`Cryptographically strong random generation: <span title="${titleStr}" class="crypto-${isCrypto}">${isCrypto ? `<span class="glyphicon glyphicon-lock"></span> enabled` : `<span class="glyphicon glyphicon-ban-circle"></span> not available`}</span>`);
+			const isCrypto = RollerUtil.isCrypto();
+			const titleStr = isCrypto ? "Numbers will be generated using Crypto.getRandomValues()" : "Numbers will be generated using Math.random()";
+			$(`#roller-mode`).html(`Cryptographically strong random generation: <span title="${titleStr}" class="crypto-${isCrypto}">${isCrypto ? `<span class="glyphicon glyphicon-lock"></span> enabled` : `<span class="glyphicon glyphicon-ban-circle"></span> not available`}</span>`);
 
-		$(function () {
-			$("#reset").click(function () {
-				$(".base").val(8);
-				$(".choose").prop("checked", false);
-				changeTotal();
-				changeBase()
+			$(function () {
+				$("#reset").click(function () {
+					$(".base").val(8);
+					$(".choose").prop("checked", false);
+					changeTotal();
+					changeBase()
+				});
 			});
+
+			$(".base").on("input", changeBase);
+			$("input.choose").on("change", choose);
+
+			const names = raceData.map(x => x.name).sort();
+			const options = names.map(name => `<option>${name}</option>`).join();
+			$("#race").append(`<option>None</option>`).append(`<option value="_CUSTOM">Custom</option>`).append(options).change(changeRace).change();
+
+			if (window.location.hash) window.onhashchange();
+			else window.location.hash = "#rolled";
 		});
-
-		$(".base").on("input", changeBase);
-		$("input.choose").on("change", choose);
-
-		const names = raceData.map(x => x.name).sort();
-		const options = names.map(name => `<option>${name}</option>`).join();
-		$("#race").append(`<option>None</option>`).append(`<option value="_CUSTOM">Custom</option>`).append(options).change(changeRace).change();
-
-		if (window.location.hash) window.onhashchange();
-		else window.location.hash = "#rolled";
-	});
 }
 
 const STATS_MIN = 8;

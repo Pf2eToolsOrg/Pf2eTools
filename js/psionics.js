@@ -89,14 +89,17 @@ function onJsonLoad (data) {
 	ListUtil.initGenericPinnable();
 
 	addPsionics(data);
-	BrewUtil.addBrewData(addPsionics);
-	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({list, filterBox, sourceFilter});
-	ListUtil.loadState();
+	BrewUtil.pAddBrewData()
+		.then(addPsionics)
+		.then(() => {
+			BrewUtil.makeBrewButton("manage-brew");
+			BrewUtil.bind({list, filterBox, sourceFilter});
+			ListUtil.loadState();
 
-	History.init();
-	handleFilterChange();
-	RollerUtil.addListRollButton();
+			History.init();
+			handleFilterChange();
+			RollerUtil.addListRollButton();
+		});
 }
 
 let psionicList = [];

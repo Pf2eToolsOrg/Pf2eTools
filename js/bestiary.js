@@ -86,12 +86,16 @@ window.onload = function load () {
 	ExcludeUtil.initialise();
 	loadMeta(() => {
 		loadFluffIndex(() => {
-			multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters, () => {
-				BrewUtil.addBrewData(handleBrew);
-				BrewUtil.makeBrewButton("manage-brew");
-				BrewUtil.bind({list, filterBox, sourceFilter});
-				ListUtil.loadState();
-			});
+			multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addMonsters, new Promise((resolve) => {
+				BrewUtil.pAddBrewData()
+					.then(handleBrew)
+					.then(() => {
+						BrewUtil.makeBrewButton("manage-brew");
+						BrewUtil.bind({list, filterBox, sourceFilter});
+						ListUtil.loadState();
+						resolve();
+					});
+			}));
 		});
 	});
 };

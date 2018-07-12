@@ -38,7 +38,7 @@ function onJsonLoad (data) {
 	addAdventures(data);
 
 	window.onhashchange = BookUtil.booksHashChange;
-	BrewUtil.addBrewData((homebrew) => {
+	BrewUtil.pAddBrewData().then(homebrew => {
 		addAdventures(homebrew);
 		BookUtil.addHeaderHandles(true);
 

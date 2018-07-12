@@ -1203,10 +1203,12 @@ let classTableDefault = $("#classtable").html();
 DataUtil.class.loadJSON().then((data) => {
 	addClassData(data);
 
-	BrewUtil.addBrewData(handleBrew);
-
-	History.initialLoad = false;
-	RollerUtil.addListRollButton();
+	BrewUtil.pAddBrewData()
+		.then(handleBrew)
+		.then(() => {
+			History.initialLoad = false;
+			RollerUtil.addListRollButton();
+		});
 });
 
 function handleBrew (homebrew) {

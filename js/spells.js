@@ -221,12 +221,16 @@ function handleBrew (homebrew) {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, () => {
-		BrewUtil.addBrewData(handleBrew);
-		BrewUtil.makeBrewButton("manage-brew");
-		BrewUtil.bind({list, filterBox, sourceFilter});
-		ListUtil.loadState();
-	});
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, new Promise((resolve) => {
+		BrewUtil.pAddBrewData()
+			.then(handleBrew)
+			.then(() => {
+				BrewUtil.makeBrewButton("manage-brew");
+				BrewUtil.bind({list, filterBox, sourceFilter});
+				ListUtil.loadState();
+				resolve();
+			});
+	}));
 };
 
 let list;
@@ -396,44 +400,45 @@ function pageInit (loadedSources) {
 
 	// load homebrew class spell list addons
 	brewSpellClasses = {PHB: {}};
-	BrewUtil.addBrewData((homebrew) => {
-		function handleSubclass (className, classSource = SRC_PHB, sc) {
-			if (sc.subclassSpells) {
-				sc.subclassSpells.forEach(it => {
-					const name = typeof it === "string" ? it : it.name;
-					const source = typeof it === "string" ? "PHB" : it.source;
-					brewSpellClasses[source] = brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
-					brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
-					brewSpellClasses[source][name].fromSubclass.push({
-						class: {
-							name: className,
-							source: classSource
-						},
-						subclass: {
-							name: sc.shortName,
-							source: sc.source
-						}
-					});
-				});
-			}
-		}
-
-		if (homebrew.class) {
-			homebrew.class.forEach(c => {
-				if (c.classSpells) {
-					c.classSpells.forEach(it => {
+	BrewUtil.pAddBrewData()
+		.then((homebrew) => {
+			function handleSubclass (className, classSource = SRC_PHB, sc) {
+				if (sc.subclassSpells) {
+					sc.subclassSpells.forEach(it => {
 						const name = typeof it === "string" ? it : it.name;
 						const source = typeof it === "string" ? "PHB" : it.source;
-						brewSpellClasses[source] = brewSpellClasses[source] || {};
+						brewSpellClasses[source] = brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
 						brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
-						brewSpellClasses[source][name].fromClassList.push({name: c.name, source: c.source});
+						brewSpellClasses[source][name].fromSubclass.push({
+							class: {
+								name: className,
+								source: classSource
+							},
+							subclass: {
+								name: sc.shortName,
+								source: sc.source
+							}
+						});
 					});
 				}
-				if (c.subclasses) c.subclasses.forEach(sc => handleSubclass(c.name, c.source, sc));
-			})
-		}
-		if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
-	});
+			}
+
+			if (homebrew.class) {
+				homebrew.class.forEach(c => {
+					if (c.classSpells) {
+						c.classSpells.forEach(it => {
+							const name = typeof it === "string" ? it : it.name;
+							const source = typeof it === "string" ? "PHB" : it.source;
+							brewSpellClasses[source] = brewSpellClasses[source] || {};
+							brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
+							brewSpellClasses[source][name].fromClassList.push({name: c.name, source: c.source});
+						});
+					}
+					if (c.subclasses) c.subclasses.forEach(sc => handleSubclass(c.name, c.source, sc));
+				})
+			}
+			if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
+		});
 }
 
 function getSublistItem (spell, pinId) {

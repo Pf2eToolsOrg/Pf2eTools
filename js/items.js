@@ -165,12 +165,15 @@ function populateTablesAndFilters (data) {
 	ListUtil.initGenericAddable();
 
 	addItems(data);
-	BrewUtil.addBrewData(handleBrew);
-	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
-	ListUtil.loadState();
+	BrewUtil.pAddBrewData()
+		.then(handleBrew)
+		.then(() => {
+			BrewUtil.makeBrewButton("manage-brew");
+			BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
+			ListUtil.loadState();
 
-	History.init();
+			History.init();
+		});
 }
 
 function handleBrew (homebrew) {

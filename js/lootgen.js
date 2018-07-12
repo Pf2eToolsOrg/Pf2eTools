@@ -238,11 +238,12 @@ class LootGen {
 					spellData.forEach(d => {
 						d.spell.filter(it => !SourceUtil.isNonstandardSource(it.source)).forEach(sp => addSpell(sp));
 					});
-					BrewUtil.addBrewData((brew) => {
-						if (brew && brew.spell) brew.spell.forEach(sp => addSpell(sp));
-					});
-					this._loadingSpells = false;
-					then();
+					BrewUtil.pAddBrewData()
+						.then((brew) => {
+							if (brew && brew.spell) brew.spell.forEach(sp => addSpell(sp));
+							this._loadingSpells = false;
+							then();
+						});
 				});
 		}
 	}
