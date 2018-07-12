@@ -99,10 +99,9 @@ function onJsonLoad (data) {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
 			ListUtil.loadState();
-
-			History.init();
-			handleFilterChange();
 			RollerUtil.addListRollButton();
+
+			History.init(true);
 		});
 }
 
