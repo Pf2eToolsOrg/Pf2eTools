@@ -55,7 +55,8 @@ function onJsonLoad (data) {
 			BrewUtil.bind({list, filterBox, sourceFilter});
 			ListUtil.loadState();
 
-			History.init(true);
+			History.init();
+			handleFilterChange();
 			RollerUtil.addListRollButton();
 		});
 }

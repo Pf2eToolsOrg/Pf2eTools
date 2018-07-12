@@ -1191,6 +1191,7 @@ ClassList.classList = ListUtil.search({
 BrewUtil.makeBrewButton("manage-brew");
 BrewUtil.bind({list: ClassList.classList, filterBox, sourceFilter});
 
+History.init();
 initCompareMode();
 ClassBookView.initButton();
 ExcludeUtil.initialise();
@@ -1205,8 +1206,8 @@ DataUtil.class.loadJSON().then((data) => {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(() => {
+			History.initialLoad = false;
 			RollerUtil.addListRollButton();
-			History.init(true);
 		});
 });
 

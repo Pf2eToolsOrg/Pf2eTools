@@ -2885,40 +2885,42 @@ BrewUtil = {
 		if (options.sourceFilter) BrewUtil._sourceFilter = options.sourceFilter;
 	},
 
-	addBrewData: (brewHandler) => {
-		if (BrewUtil.homebrew) {
-			brewHandler(BrewUtil.homebrew);
-		} else {
-			const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
-			const rawBrewMeta = BrewUtil.storage.getItem(HOMEBREW_META_STORAGE);
+	pAddBrewData: () => {
+		return new Promise(resolve => {
+			if (BrewUtil.homebrew) {
+				resolve(BrewUtil.homebrew);
+			} else {
+				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
+				const rawBrewMeta = BrewUtil.storage.getItem(HOMEBREW_META_STORAGE);
 
-			new Promise((resolve) => {
-				if (rawBrewMeta) {
-					BrewUtil.homebrewMeta = JSON.parse(rawBrewMeta);
-					BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || [];
-					resolve();
-				} else {
-					BrewUtil.homebrewMeta = {sources: []};
-					resolve();
-				}
-			}).then(new Promise((resolve) => {
-				if (rawBrew) {
-					BrewUtil.homebrew = JSON.parse(rawBrew);
-					resolve();
-				} else {
-					BrewUtil.homebrew = {};
-					resolve();
-				}
-			}).then(BrewUtil._pLoadLocal()).then(() => {
-				BrewUtil._resetSourceCache();
-			}).then(() => brewHandler(BrewUtil.homebrew))).catch(error => {
-				// on error, purge all brew and reset hash
-				purgeBrew();
-				setTimeout(() => {
-					throw error
+				new Promise((resolve) => {
+					if (rawBrewMeta) {
+						BrewUtil.homebrewMeta = JSON.parse(rawBrewMeta);
+						BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || [];
+						resolve();
+					} else {
+						BrewUtil.homebrewMeta = {sources: []};
+						resolve();
+					}
+				}).then(new Promise((resolve) => {
+					if (rawBrew) {
+						BrewUtil.homebrew = JSON.parse(rawBrew);
+						resolve();
+					} else {
+						BrewUtil.homebrew = {};
+						resolve();
+					}
+				}).then(BrewUtil._pLoadLocal()).then(() => {
+					BrewUtil._resetSourceCache();
+				}).then(() => resolve(BrewUtil.homebrew))).catch(error => {
+					// on error, purge all brew and reset hash
+					purgeBrew();
+					setTimeout(() => {
+						throw error
+					});
 				});
-			});
-		}
+			}
+		});
 
 		function purgeBrew () {
 			window.alert("Error when loading homebrew! Purging corrupt data...");
@@ -3457,8 +3459,8 @@ BrewUtil = {
 		BrewUtil._resetSourceCache();
 
 		// display on page
-		// FIXME this requires changing the addBrewData in the page JS, as well as here
-		// TODO complete refactoring so this alwayss call `handleBrew` which can be defined per-page
+		// FIXME this requires changing the pAddBrewData in the page JS, as well as here
+		// TODO complete refactoring so this always call `handleBrew` which can be defined per-page
 		switch (page) {
 			case UrlUtil.PG_SPELLS:
 				handleBrew(toAdd);
