@@ -3022,9 +3022,7 @@ EntryRenderer.hover = {
 		}
 	},
 
-	startTime: null,
 	mouseOver (evt, ele, page, source, hash, isPopout) {
-		EntryRenderer.hover.startTime = new Date().getTime();
 		EntryRenderer.hover.show(evt, ele, page, source, hash, isPopout);
 	},
 
