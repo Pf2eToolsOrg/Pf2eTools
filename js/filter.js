@@ -66,7 +66,7 @@ class FilterBox {
 	 * Render the "Filters" button in the inputGroup
 	 */
 	render () {
-		const firstRender = this.$rendered.length === 0;
+		const firstRender = this.$rendered.length === 0 || History.initialLoad;
 		// save the current values to re-apply if we're re-rendering
 		const curValues = firstRender ? null : this.getValues();
 		// remove any previously rendered elements

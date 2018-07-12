@@ -75,7 +75,7 @@ function onJsonLoad (data) {
 		itemList: cultsAndBoonsList,
 		primaryLists: [list]
 	});
-	History.init();
+	History.init(true);
 }
 
 // filtering function

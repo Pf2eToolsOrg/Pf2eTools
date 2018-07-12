@@ -41,13 +41,14 @@ class History {
 		}
 	}
 
-	static init () {
+	static init (initialLoadComplete) {
 		window.onhashchange = History.hashChange;
 		if (window.location.hash.length) {
 			History.hashChange();
 		} else {
 			History._freshLoad();
 		}
+		if (initialLoadComplete) History.initialLoad = true;
 	}
 
 	/**
