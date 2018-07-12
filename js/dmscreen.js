@@ -2574,55 +2574,87 @@ InitiativeTracker._uiRollHp = false;
 
 class NoteBox {
 	static make$Notebox (content) {
-		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="For clickable rollers, use square brackets: [[1d20+2]]">${content || ""}</textarea>`)
-			.click(() => {
-				function isRollableCharacter (c) {
-					return c === "d" || isNumber(c) || c === "[" || c === "]" || c === "+" || c === "-";
-				}
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports embedding (CTRL-click the text to activate the embed):\n • Clickable rollers,  [[1d20+2]]\n • Tags (as per the Demo page), {@creature goblin}">${content || ""}</textarea>`)
+			.on("mousedown", (evt) => {
+				if (evt.ctrlKey) {
+					setTimeout(() => {
+						const txt = $iptText[0];
+						if (txt.selectionStart === txt.selectionEnd) {
+							const doDesel = (pos = 0) => {
+								setTimeout(() => txt.setSelectionRange(pos, pos), 1);
+							};
 
-				function isNumber (char) {
-					return char >= "0" && char <= "9";
-				}
+							const pos = txt.selectionStart;
+							const text = txt.value;
+							const l = text.length;
+							let beltStack = [];
+							let braceStack = [];
+							let belts = 0;
+							let braces = 0;
+							let beltsAtPos = null;
+							let bracesAtPos = null;
+							let lastBeltPos = null;
+							let lastBracePos = null;
+							outer:
+							for (let i = 0; i < l; ++i) {
+								const c = text[i];
+								switch (c) {
+									case "[":
+										belts = Math.min(belts + 1, 2);
+										if (belts === 2) beltStack = [];
+										lastBeltPos = i;
+										break;
+									case "]":
+										belts = Math.max(belts - 1, 0);
+										if (belts === 0 && i > pos) break outer;
+										break;
+									case "{":
+										if (text[i + 1] === "@") {
+											braces = 1;
+											braceStack = [];
+											lastBracePos = i;
+										}
+										break;
+									case "}":
+										braces = 0;
+										if (i > pos) break outer;
+										break;
+									default:
+										if (belts === 2) {
+											beltStack.push(c);
+										}
+										if (braces) {
+											braceStack.push(c);
+										}
+								}
+								if (i === pos) {
+									beltsAtPos = belts;
+									bracesAtPos = braces;
+								}
+							}
 
-				const txt = $iptText[0];
-				if (txt.selectionStart === txt.selectionEnd) {
-					const stack = [];
-
-					// to the left..
-					let left = 0;
-					for (let i = txt.selectionStart; i >= 0; i--) {
-						left = i;
-						if (i >= txt.value.length) {
-							left = i - 1;
-							break;
+							if (beltsAtPos === 2 && belts === 0) {
+								const str = beltStack.join("");
+								if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
+									EntryRenderer.dice.roll(str.replace(`[[`, "").replace(`]]`, ""), {
+										user: false,
+										name: "DM Screen"
+									});
+									doDesel(lastBeltPos);
+								}
+							} else if (bracesAtPos === 1 && braces === 0) {
+								const str = braceStack.join("");
+								const tag = str.split(" ")[0].replace(/^@/, "");
+								if (EntryRenderer.HOVER_TAG_TO_PAGE[tag]) {
+									const r = EntryRenderer.getDefaultRenderer().renderEntry(`{${str}`);
+									evt.type = "mouseover";
+									evt.shiftKey = true;
+									$(r).trigger(evt);
+								}
+								doDesel(lastBracePos);
+							}
 						}
-						const c = txt.value[i].toLowerCase();
-						if (isRollableCharacter(c)) {
-							stack.unshift(c);
-						} else {
-							break;
-						}
-					}
-
-					// to the right..
-					for (let i = txt.selectionEnd + 1; i < txt.value.length; i++) {
-						const c = txt.value[i].toLowerCase();
-						if (isRollableCharacter(c)) {
-							stack.push(c);
-						} else {
-							break;
-						}
-					}
-
-					const str = stack.join("");
-					if (/^\[\[([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?]]$/i.exec(str)) {
-						EntryRenderer.dice.roll(str.replace(`[[`, "").replace(`]]`, ""), {
-							user: false,
-							name: "DM Screen"
-						});
-						const nxtPos = left === 0 ? 0 : left + 1;
-						txt.setSelectionRange(nxtPos, nxtPos)
-					}
+					}, 1); // defer slightly to allow text to be selected
 				}
 			});
 
