@@ -75,11 +75,10 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pageInitFn, addFn, pOption
 					addFn(toAdd);
 
 					const finalise = () => new Promise(resolve => {
-						History.init();
-						handleFilterChange();
 						RollerUtil.addListRollButton();
 						addListShowHide();
-						History.initialLoad = false;
+
+						History.init(true);
 						resolve();
 					});
 

@@ -172,7 +172,7 @@ function populateTablesAndFilters (data) {
 			BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
 			ListUtil.loadState();
 
-			History.init();
+			History.init(true);
 		});
 }
 
