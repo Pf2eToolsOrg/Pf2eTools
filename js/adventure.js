@@ -38,16 +38,17 @@ function onJsonLoad (data) {
 	addAdventures(data);
 
 	window.onhashchange = BookUtil.booksHashChange;
-	BrewUtil.pAddBrewData().then(homebrew => {
-		addAdventures(homebrew);
-		BookUtil.addHeaderHandles(true);
+	BrewUtil.pAddBrewData()
+		.then(homebrew => {
+			addAdventures(homebrew);
+			BookUtil.addHeaderHandles(true);
 
-		if (window.location.hash.length) {
-			BookUtil.booksHashChange();
-		} else {
-			$(`.contents-item`).show();
-		}
-	});
+			if (window.location.hash.length) {
+				BookUtil.booksHashChange();
+			} else {
+				$(`.contents-item`).show();
+			}
+		});
 }
 
 function addAdventures (data) {
