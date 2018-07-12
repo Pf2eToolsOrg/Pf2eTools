@@ -614,7 +614,7 @@ function loadhash (id) {
 
 		var saves = mon.save;
 		if (saves) {
-			const parsedSaves = Object.keys(saves).map(it => `${it.uppercaseFirst()} ${saves[it]}`).join(", ");
+			const parsedSaves = Object.keys(saves).map(it => EntryRenderer.monster.getSave(renderer, it, mon.save[it])).join(", ");
 			$content.find("td span#saves").parent().show();
 			$content.find("td span#saves").html(parsedSaves);
 		} else {
@@ -765,9 +765,6 @@ function loadhash (id) {
 		if (mon.skill) {
 			$content.find("#skills").each(makeSkillRoller);
 		}
-		if (mon.save) {
-			$content.find("#saves").each(makeSaveRoller);
-		}
 
 		function makeSkillRoller () {
 			const $this = $(this);
@@ -801,19 +798,6 @@ function loadhash (id) {
 			$this.html(out.join(", "));
 		}
 
-		function makeSaveRoller () {
-			const $this = $(this);
-			const saves = $this.html().split(",").map(s => s.trim());
-			const out = [];
-			saves.map(s => {
-				const spl = s.split("+").map(s => s.trim());
-				const bonus = Number(spl[1]);
-				const pBonusStr = `+${bonus}`;
-				out.push(spl[0] + ' ' + renderSkillOrSaveRoller(spl[0], pBonusStr, true));
-			});
-			$this.html(out.join(", "));
-		}
-
 		function renderSkillOrSaveRoller (itemName, profBonusString, isSave) {
 			itemName = itemName.replace(/plus one of the following:/g, "").replace(/^or\s*/, "");
 			return EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${profBonusString}|${profBonusString}|${itemName}${isSave ? " save" : ""}`);
@@ -838,7 +822,8 @@ function loadhash (id) {
 				let pB = expectedPB;
 				if ($(this).parent().prop("id") === "saves") {
 					const title = $(this).attr("title");
-					const fromAbility = Parser.getAbilityModNumber(mon[title.split(" ")[0].trim().toLowerCase()]);
+					const ability = title.split(" ")[0].trim().toLowerCase().substring(0, 3);
+					const fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
 				} else if ($(this).parent().prop("id") === "skills") {

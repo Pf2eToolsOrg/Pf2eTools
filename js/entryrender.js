@@ -1789,6 +1789,11 @@ EntryRenderer.monster = {
 		return `${mon.isNamedCreature ? "" : "The "}${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${mon.isNamedCreature ? "" : "The "}${legendaryName[0]} regains spent legendary actions at the start of its turn.`
 	},
 
+	getSave (renderer, attr, mod) {
+		if (attr === "special") return renderer.renderEntry(mod);
+		else return renderer.renderEntry(`${attr.uppercaseFirst()} {@dice 1d20${mod}|${mod}|${Parser.attAbvToFull([attr])} save`);
+	},
+
 	getCompactRenderedString: (mon, renderer) => {
 		renderer = renderer || EntryRenderer.getDefaultRenderer();
 
@@ -1799,10 +1804,6 @@ EntryRenderer.monster = {
 
 		function makeSkillRoller (name, mod) {
 			return renderer.renderEntry(`${name} {@dice 1d20${mod}|${mod}|${name}`);
-		}
-
-		function makeSaveRoller (attr, mod) {
-			return renderer.renderEntry(`${attr.uppercaseFirst()} {@dice 1d20${mod}|${mod}|${Parser.attAbvToFull([attr])} save`);
 		}
 
 		function getSection (title, key, depth) {
@@ -1861,7 +1862,7 @@ EntryRenderer.monster = {
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<div class="summary-flexer">
-					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => makeSaveRoller(s, mon.save[s])).join(", ")}</p>` : ""}
+					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => EntryRenderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
 					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => makeSkillRoller(s.uppercaseFirst(), mon.skill[s])).join(", ")}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>

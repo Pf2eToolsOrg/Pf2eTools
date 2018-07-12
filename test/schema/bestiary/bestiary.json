@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.1",
+	"version": "1.4.2",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -629,7 +629,11 @@
 						"con": {"type": "string"},
 						"int": {"type": "string"},
 						"wis": {"type": "string"},
-						"cha": {"type": "string"}
+						"cha": {"type": "string"},
+						"special": {
+							"description": "For use in homebrew.",
+							"$ref": "/Entry"
+						}
 					},
 					"additionalProperties": false
 				},
