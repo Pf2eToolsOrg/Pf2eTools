@@ -2931,7 +2931,7 @@ BrewUtil = {
 	},
 
 	_pLoadLocal (callbackFn = (d, page) => BrewUtil.doHandleBrewJson(d, page, null)) {
-		return DataUtil.loadJSON(JSON_HOMEBREW_INDEX).then((data) => {
+		return DataUtil.loadJSON(`${EntryRenderer().getDefaultRenderer().baseUrl}${JSON_HOMEBREW_INDEX}`).then((data) => {
 			// auto-load from `homebrew/`, for custom versions of the site
 			if (data.toImport.length) {
 				const page = UrlUtil.getCurrentPage();
