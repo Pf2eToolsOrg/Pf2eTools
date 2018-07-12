@@ -34,7 +34,7 @@ function onJsonLoad (data) {
 			BrewUtil.bind({list});
 			ListUtil.loadState();
 
-			History.init(true);
+			History.init();
 		});
 }
 

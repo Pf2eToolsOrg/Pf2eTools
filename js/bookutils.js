@@ -255,13 +255,12 @@ const BookUtil = {
 		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 		if (fromIndex && !fromIndex.uniqueId) handleFound(fromIndex);
 		else if (fromIndex && fromIndex.uniqueId) { // it's homebrew
-			BrewUtil.pAddBrewData()
-				.then((brew) => {
-					if (!brew[BookUtil.homebrewData]) handleNotFound();
-					const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
-					if (!bookData) handleNotFound();
-					handleFound(fromIndex, bookData);
-				});
+			BrewUtil.pAddBrewData().then((brew) => {
+				if (!brew[BookUtil.homebrewData]) handleNotFound();
+				const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
+				if (!bookData) handleNotFound();
+				handleFound(fromIndex, bookData);
+			});
 		} else handleNotFound();
 	},
 
