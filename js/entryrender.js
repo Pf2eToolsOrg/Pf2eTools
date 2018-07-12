@@ -2558,17 +2558,20 @@ EntryRenderer.hover = {
 
 		function loadMultiSource (page, baseUrl, listProp) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				BrewUtil.pAddBrewData().then((data) => {
-					if (!data[listProp]) return;
-					loadPopulate(data, listProp);
-				}).then(DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`))
+				BrewUtil.pAddBrewData()
+					.then((data) => {
+						if (!data[listProp]) return;
+						loadPopulate(data, listProp);
+					})
+					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`))
 					.then((data) => {
 						const officialSource = Object.keys(data).find(k => k.toLowerCase() === source.toLowerCase());
 						if (officialSource) {
-							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${data[officialSource]}`).then((data) => {
-								loadPopulate(data, listProp);
-								callbackFn();
-							});
+							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${data[officialSource]}`)
+								.then((data) => {
+									loadPopulate(data, listProp);
+									callbackFn();
+								});
 						} else {
 							callbackFn(); // source to load is 3rd party, which was already handled
 						}
