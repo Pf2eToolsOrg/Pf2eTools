@@ -541,6 +541,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 		.replace(PS_PREFIX, PS_PREFIX_SHORT);
 };
 Parser.sourceJsonToAbv = function (source) {
+	debugger
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceAbv(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToAbv(source);
@@ -829,7 +830,7 @@ Parser.monTypeToPlural = function (type) {
 };
 
 Parser.monCrToFull = function (cr) {
-	if (typeof cr === "string" || !cr) return `${cr || "Unknown"} (${Parser.crToXp(cr)} XP)`;
+	if (typeof cr === "string") return `${cr} (${Parser.crToXp(cr)} XP)`;
 	else {
 		const stack = [Parser.monCrToFull(cr.cr)];
 		if (cr.lair) stack.push(`${Parser.monCrToFull(cr.lair)} when encountered in lair`);
@@ -2885,42 +2886,27 @@ BrewUtil = {
 		if (options.sourceFilter) BrewUtil._sourceFilter = options.sourceFilter;
 	},
 
-	pAddBrewData: () => {
-		return new Promise(resolve => {
-			if (BrewUtil.homebrew) {
-				resolve(BrewUtil.homebrew);
-			} else {
-				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
-				const rawBrewMeta = BrewUtil.storage.getItem(HOMEBREW_META_STORAGE);
-
-				new Promise((resolve) => {
-					if (rawBrewMeta) {
-						BrewUtil.homebrewMeta = JSON.parse(rawBrewMeta);
-						BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || [];
-						resolve();
-					} else {
-						BrewUtil.homebrewMeta = {sources: []};
-						resolve();
-					}
-				}).then(new Promise((resolve) => {
-					if (rawBrew) {
-						BrewUtil.homebrew = JSON.parse(rawBrew);
-						resolve();
-					} else {
-						BrewUtil.homebrew = {};
-						resolve();
-					}
-				}).then(BrewUtil._pLoadLocal()).then(() => {
-					BrewUtil._resetSourceCache();
-				}).then(() => resolve(BrewUtil.homebrew))).catch(error => {
+	addBrewData: (brewHandler) => {
+		if (BrewUtil.homebrew) {
+			brewHandler(BrewUtil.homebrew);
+		} else {
+			const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
+			if (rawBrew) {
+				try {
+					BrewUtil.homebrew = JSON.parse(rawBrew);
+					BrewUtil._pLoadLocal().then(() => brewHandler(BrewUtil.homebrew));
+				} catch (e) {
 					// on error, purge all brew and reset hash
 					purgeBrew();
 					setTimeout(() => {
-						throw error
+						throw e
 					});
-				});
+				}
+			} else {
+				BrewUtil.homebrew = {};
+				BrewUtil._pLoadLocal().then(() => brewHandler(BrewUtil.homebrew));
 			}
-		});
+		}
 
 		function purgeBrew () {
 			window.alert("Error when loading homebrew! Purging corrupt data...");
@@ -3239,7 +3225,6 @@ BrewUtil = {
 		$btnDelAll.on("click", () => {
 			if (!window.confirm("Are you sure?")) return;
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, "{}");
-			BrewUtil.storage.setItem(HOMEBREW_META_STORAGE, "{}");
 			window.location.hash = "";
 			location.reload();
 		});
@@ -3459,8 +3444,8 @@ BrewUtil = {
 		BrewUtil._resetSourceCache();
 
 		// display on page
-		// FIXME this requires changing the pAddBrewData in the page JS, as well as here
-		// TODO complete refactoring so this always call `handleBrew` which can be defined per-page
+		// FIXME this requires changing the addBrewData in the page JS, as well as here
+		// TODO complete refactoring so this alwayss call `handleBrew` which can be defined per-page
 		switch (page) {
 			case UrlUtil.PG_SPELLS:
 				handleBrew(toAdd);
@@ -3556,7 +3541,7 @@ BrewUtil = {
 			BrewUtil._sourceCache = {};
 
 			if (!BrewUtil.homebrewMeta) {
-				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_META_STORAGE);
+				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
 				const temp = rawBrew ? ((JSON.parse(rawBrew) || {})._meta || {}) : {};
 				temp.sources = temp.sources || [];
 
