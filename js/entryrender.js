@@ -2594,8 +2594,7 @@ EntryRenderer.hover = {
 			return new Promise(resolve => {
 				BrewUtil.pAddBrewData()
 					.then((data) => {
-						if (!data[listProp]) return;
-						populate(data, listProp, itemModifier);
+						if (data[listProp]) populate(data, listProp, itemModifier);
 						resolve();
 					});
 			});
