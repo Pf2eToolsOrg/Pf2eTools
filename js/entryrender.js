@@ -2069,10 +2069,14 @@ EntryRenderer.item = {
 			"entries": t.entries
 		};
 	},
-	_addBrewPropertiesAndTypes () {
-		return BrewUtil.pAddBrewData().then((brew) => {
-			(brew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
-			(brew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
+	_pAddBrewPropertiesAndTypes () {
+		return new Promise(resolve => {
+			BrewUtil.pAddBrewData()
+				.then((brew) => {
+					(brew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
+					(brew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
+					resolve();
+				});
 		});
 	},
 	/**
@@ -2114,7 +2118,7 @@ EntryRenderer.item = {
 					// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 					basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
 					basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
-					EntryRenderer.item._addBrewPropertiesAndTypes()
+					EntryRenderer.item._pAddBrewPropertiesAndTypes()
 						.then(() => resolve([itemList, basicItems]));
 				}, reject);
 			});
@@ -2337,27 +2341,32 @@ EntryRenderer.item = {
 	},
 
 	promiseData: (urls, addGroups) => {
-		return new Promise((resolve, reject) => {
+		return new Promise((resolve) => {
 			EntryRenderer.item.buildList((data) => resolve({item: data}), urls, addGroups);
 		});
 	},
 
 	_isRefPopulated: false,
 	populatePropertyAndTypeReference: () => {
-		return DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`).then(data => {
-			if (EntryRenderer.item._isRefPopulated) {
-				Promise.resolve();
-			} else {
-				try {
-					data.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
-					data.itemType.forEach(t => EntryRenderer.item._addType(t));
-					EntryRenderer.item._addBrewPropertiesAndTypes();
-					EntryRenderer.item._isRefPopulated = true;
-					Promise.resolve();
-				} catch (e) {
-					Promise.reject(e);
-				}
-			}
+		return new Promise((resolve, reject) => {
+			DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`)
+				.then(data => {
+					if (EntryRenderer.item._isRefPopulated) {
+						resolve();
+					} else {
+						try {
+							data.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
+							data.itemType.forEach(t => EntryRenderer.item._addType(t));
+							EntryRenderer.item._pAddBrewPropertiesAndTypes()
+								.then(() => {
+									EntryRenderer.item._isRefPopulated = true;
+									resolve();
+								});
+						} catch (e) {
+							reject(e);
+						}
+					}
+				});
 		});
 	}
 };
@@ -2548,7 +2557,7 @@ EntryRenderer.hover = {
 		 * @param listProp list property in the data
 		 * @param itemModifier optional function to run per item; takes listProp and an item as parameters
 		 */
-		function loadPopulate (data, listProp, itemModifier) {
+		function populate (data, listProp, itemModifier) {
 			data[listProp].forEach(it => {
 				const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 				if (itemModifier) itemModifier(listProp, it);
@@ -2561,7 +2570,7 @@ EntryRenderer.hover = {
 				BrewUtil.pAddBrewData()
 					.then((data) => {
 						if (!data[listProp]) return;
-						loadPopulate(data, listProp);
+						populate(data, listProp);
 					})
 					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`))
 					.then((data) => {
@@ -2569,7 +2578,7 @@ EntryRenderer.hover = {
 						if (officialSource) {
 							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${data[officialSource]}`)
 								.then((data) => {
-									loadPopulate(data, listProp);
+									populate(data, listProp);
 									callbackFn();
 								});
 						} else {
@@ -2581,23 +2590,28 @@ EntryRenderer.hover = {
 			}
 		}
 
-		function _loadSingleBrew (listProp, itemModifier) {
-			return BrewUtil.pAddBrewData().then((data) => {
-				if (!data[listProp]) return;
-				loadPopulate(data, listProp, itemModifier);
+		function _pLoadSingleBrew (listProp, itemModifier) {
+			return new Promise(resolve => {
+				BrewUtil.pAddBrewData()
+					.then((data) => {
+						if (!data[listProp]) return;
+						populate(data, listProp, itemModifier);
+						resolve();
+					});
 			});
 		}
 
 		function _handleSingleData (data, listProp, itemModifier) {
-			if (listProp instanceof Array) listProp.forEach(p => loadPopulate(data, p, itemModifier));
-			else loadPopulate(data, listProp, itemModifier);
+			if (listProp instanceof Array) listProp.forEach(p => populate(data, p, itemModifier));
+			else populate(data, listProp, itemModifier);
 			callbackFn();
 		}
 
 		function loadSimple (page, jsonFile, listProp, itemModifier) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				_loadSingleBrew(listProp, itemModifier)
-					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`).then((data) => _handleSingleData(data, listProp, itemModifier)));
+				_pLoadSingleBrew(listProp, itemModifier)
+					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`))
+					.then((data) => _handleSingleData(data, listProp, itemModifier));
 			} else {
 				callbackFn();
 			}
@@ -2605,8 +2619,9 @@ EntryRenderer.hover = {
 
 		function loadCustom (page, jsonFile, listProp, itemModifier, loader) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				_loadSingleBrew(listProp, itemModifier)
-					.then(() => DataUtil[loader].loadJSON(EntryRenderer.getDefaultRenderer().baseUrl).then((data) => _handleSingleData(data, listProp, itemModifier)));
+				_pLoadSingleBrew(listProp, itemModifier)
+					.then(() => DataUtil[loader].loadJSON(EntryRenderer.getDefaultRenderer().baseUrl))
+					.then((data) => _handleSingleData(data, listProp, itemModifier));
 			} else {
 				callbackFn();
 			}
@@ -2676,19 +2691,21 @@ EntryRenderer.hover = {
 			}
 			case UrlUtil.PG_RACES: {
 				if (!EntryRenderer.hover._isCached(page, source, hash)) {
-					BrewUtil.pAddBrewData().then((data) => {
-						if (!data.race) return;
-						loadPopulate(data, "race");
-					}).then(() => {
-						DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`).then((data) => {
-							const merged = EntryRenderer.race.mergeSubraces(data.race);
-							merged.forEach(race => {
-								const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
-								EntryRenderer.hover._addToCache(page, race.source, raceHash, race)
+					BrewUtil.pAddBrewData()
+						.then((data) => {
+							if (!data.race) return;
+							populate(data, "race");
+						})
+						.then(() => {
+							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`).then((data) => {
+								const merged = EntryRenderer.race.mergeSubraces(data.race);
+								merged.forEach(race => {
+									const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
+									EntryRenderer.hover._addToCache(page, race.source, raceHash, race)
+								});
+								callbackFn();
 							});
-							callbackFn();
 						});
-					});
 				} else {
 					callbackFn();
 				}
