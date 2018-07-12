@@ -2,7 +2,7 @@ const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
-const re = /{@(spell|item|class|creature|condition|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard) (.*?)(\|(.*?))?(\|.*?)?}/g;
+const re = /{@(spell|item|class|creature|condition|disease|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard) (.*?)(\|(.*?))?(\|.*?)?}/g;
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -11,6 +11,7 @@ const TAG_TO_PAGE = {
 	"class": UrlUtil.PG_CLASSES,
 	"creature": UrlUtil.PG_BESTIARY,
 	"condition": UrlUtil.PG_CONDITIONS_DISEASES,
+	"disease": UrlUtil.PG_CONDITIONS_DISEASES,
 	"background": UrlUtil.PG_BACKGROUNDS,
 	"race": UrlUtil.PG_RACES,
 	"invocation": UrlUtil.PG_INVOCATIONS,
@@ -30,6 +31,7 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"class": "phb",
 	"creature": "mm",
 	"condition": "phb",
+	"disease": "dmg",
 	"background": "phb",
 	"race": "phb",
 	"invocation": "phb",

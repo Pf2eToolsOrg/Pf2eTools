@@ -1011,6 +1011,25 @@ function EntryRenderer () {
 	};
 }
 
+EntryRenderer.HOVER_TAG_TO_PAGE = {
+	"spell": UrlUtil.PG_SPELLS,
+	"item": UrlUtil.PG_ITEMS,
+	"creature": UrlUtil.PG_BESTIARY,
+	"condition": UrlUtil.PG_CONDITIONS_DISEASES,
+	"disease": UrlUtil.PG_CONDITIONS_DISEASES,
+	"background": UrlUtil.PG_BACKGROUNDS,
+	"race": UrlUtil.PG_RACES,
+	"invocation": UrlUtil.PG_INVOCATIONS,
+	"feat": UrlUtil.PG_FEATS,
+	"reward": UrlUtil.PG_REWARDS,
+	"psionic": UrlUtil.PG_PSIONICS,
+	"object": UrlUtil.PG_OBJECTS,
+	"cult": UrlUtil.PG_CULTS_BOONS,
+	"boon": UrlUtil.PG_CULTS_BOONS,
+	"trap": UrlUtil.PG_TRAPS_HAZARDS,
+	"hazard": UrlUtil.PG_TRAPS_HAZARDS
+};
+
 EntryRenderer.splitFirstSpace = function (string) {
 	return [
 		string.substr(0, string.indexOf(' ')),
@@ -2764,12 +2783,12 @@ EntryRenderer.hover = {
 		const permanent = EntryRenderer.hover._curHovering.permanent;
 		const clientX = EntryRenderer.hover._curHovering.clientX;
 
-		// if we've outrun the loading, restart
+		// if it doesn't seem to exist, return
 		if (!EntryRenderer.hover._isCached(page, source, hash) && page !== "hover") {
 			EntryRenderer.hover._showInProgress = false;
-			if ((new Date().getTime() - 5000) > EntryRenderer.hover.startTime) throw new Error(`Hover content for ${page}#${hash} took too long to load! Could this be a typo?`);
-			// pass a fake "event"
-			EntryRenderer.hover.show({shiftKey: permanent}, ele, page, source, hash);
+			setTimeout(() => {
+				throw new Error(`Could not load hash ${hash} with source ${source} from page ${page}`);
+			}, 1);
 			return;
 		}
 
