@@ -107,6 +107,7 @@ ABIL_CHA = "Charisma";
 ABIL_CH_ANY = "Choose Any";
 
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
+HOMEBREW_META_STORAGE = "HOMEBREW_META_STORAGE";
 EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
 DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
 ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
@@ -540,6 +541,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 		.replace(PS_PREFIX, PS_PREFIX_SHORT);
 };
 Parser.sourceJsonToAbv = function (source) {
+	debugger
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceAbv(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToAbv(source);
@@ -2868,7 +2870,7 @@ StorageUtil = {
 // HOMEBREW ============================================================================================================
 BrewUtil = {
 	homebrew: null,
-	_homebrewMeta: null,
+	homebrewMeta: null, // TODO
 	_lists: null,
 	storage: StorageUtil.getStorage(),
 	_sourceCache: null,
@@ -3415,11 +3417,11 @@ BrewUtil = {
 		function checkAndAddSources () {
 			if (!json._meta || !json._meta.sources) return [];
 			const areNew = [];
-			if (!BrewUtil.homebrew._meta) BrewUtil.homebrew._meta = {sources: []};
-			const existing = BrewUtil.homebrew._meta.sources.map(src => src.json);
+			if (!BrewUtil.homebrewMeta) BrewUtil.homebrewMeta = {sources: []};
+			const existing = BrewUtil.homebrewMeta.sources.map(src => src.json);
 			json._meta.sources.forEach(src => {
 				if (!existing.find(it => it === src.json)) {
-					BrewUtil.homebrew._meta.sources.push(src);
+					BrewUtil.homebrewMeta.sources.push(src);
 					areNew.push(src);
 				}
 			});
@@ -3436,6 +3438,7 @@ BrewUtil = {
 			storable.forEach(k => toAdd[k] = checkAndAdd(k)); // only add if unique ID not already present
 		}
 		BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+		BrewUtil.storage.setItem(HOMEBREW_META_STORAGE, JSON.stringify(BrewUtil.homebrewMeta));
 
 		// wipe old cache
 		BrewUtil._resetSourceCache();
@@ -3529,15 +3532,15 @@ BrewUtil = {
 
 	_buildSourceCache () {
 		function doBuild () {
-			if (BrewUtil._homebrewMeta && BrewUtil._homebrewMeta.sources) {
-				BrewUtil._homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({abbreviation: src.abbreviation, full: src.full}));
+			if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources) {
+				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({abbreviation: src.abbreviation, full: src.full}));
 			}
 		}
 
 		if (!BrewUtil._sourceCache) {
 			BrewUtil._sourceCache = {};
 
-			if (!BrewUtil._homebrewMeta) {
+			if (!BrewUtil.homebrewMeta) {
 				const rawBrew = BrewUtil.storage.getItem(HOMEBREW_STORAGE);
 				const temp = rawBrew ? ((JSON.parse(rawBrew) || {})._meta || {}) : {};
 				temp.sources = temp.sources || [];
@@ -3556,7 +3559,7 @@ BrewUtil = {
 						});
 					}
 				});
-				BrewUtil._homebrewMeta = temp;
+				BrewUtil.homebrewMeta = temp;
 				doBuild();
 			} else {
 				doBuild();
@@ -3570,14 +3573,14 @@ BrewUtil = {
 
 	removeJsonSource (source) {
 		BrewUtil._resetSourceCache();
-		const ix = BrewUtil.homebrew._meta.sources.findIndex(it => it.json === source);
-		if (~ix) BrewUtil.homebrew._meta.sources.splice(ix, 1);
-		BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
+		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source);
+		if (~ix) BrewUtil.homebrewMeta.sources.splice(ix, 1);
+		BrewUtil.storage.setItem(HOMEBREW_META_STORAGE, JSON.stringify(BrewUtil.homebrewMeta));
 	},
 
 	getJsonSources () {
 		BrewUtil._buildSourceCache();
-		return BrewUtil.homebrew && BrewUtil.homebrew._meta && BrewUtil.homebrew._meta.sources ? BrewUtil.homebrew._meta.sources : [];
+		return BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources ? BrewUtil.homebrewMeta.sources : [];
 	},
 
 	hasSourceJson (source) {
