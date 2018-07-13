@@ -2329,13 +2329,33 @@ class InitiativeTracker {
 		function makeRow (name = "", hp = "", init = "", isActive, source, conditions = [], rollHp = false) {
 			const isMon = !!source;
 
-			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`).appendTo($wrpEntries);
+			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`);
 
 			const $wrpLhs = $(`<div class="dm-init-row-lhs"/>`).appendTo($wrpRow);
 			const $iptName = $(`<input class="form-control input-sm name ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
 			$iptName.on("change", () => doSort(ALPHA));
 			if (isMon) {
-				const $monName = $(`<div class="init-wrp-creature split">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`)}</div>`).appendTo($wrpLhs);
+				const $rows = $wrpEntries.find(`.dm-init-row`);
+				const curr = $rows.find(".init-wrp-creature").filter((i, e) => $(e).parent().find(`input.name`).val() === name && $(e).parent().find(`input.source`).val() === source);
+				let monNum = null;
+				if (curr.length) {
+					if (curr.length === 1) {
+						const r = $(curr.get(0));
+						r.find(`.init-wrp-creature-link`).append(` <span data-number="1">(1)</span>`);
+						monNum = 2;
+					} else {
+						monNum = curr.map((i, e) => $(e).find(`span[data-number]`).data("number")).get().reduce((a, b) => Math.max(Number(a), Number(b)), 0) + 1;
+					}
+				}
+
+				const $monName = $(`
+					<div class="init-wrp-creature split">
+						<span class="init-wrp-creature-link">
+							${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`)}
+							${monNum ? ` <span data-number="${monNum}">(${monNum})</span>` : ""}
+						</span>
+					</div>
+				`).appendTo($wrpLhs);
 				const $btnAnother = $(`<div class="btn btn-success btn-xs" title="Add Another (SHIFT for Roll New)"><span class="glyphicon glyphicon-plus"></span></div>`)
 					.click((evt) => {
 						makeRow(name, "", evt.shiftKey ? "" : $iptScore.val(), false, source, [], InitiativeTracker._uiRollHp);
@@ -2540,7 +2560,8 @@ background-size: 8.49px 8.49px;`
 					$wrpRow.remove();
 				});
 
-			conditions.forEach(c => addCondition(c.name, c.colour, c.turns))
+			conditions.forEach(c => addCondition(c.name, c.colour, c.turns));
+			$wrpRow.appendTo($wrpEntries);
 		}
 
 		function checkSetActive () {
