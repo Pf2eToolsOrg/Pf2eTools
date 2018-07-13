@@ -89,6 +89,7 @@ function onJsonLoad (data) {
 	addDeities(data);
 	BrewUtil.pAddBrewData()
 		.then(addDeities)
+		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});

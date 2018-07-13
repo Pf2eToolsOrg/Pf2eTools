@@ -42,6 +42,7 @@ function onJsonLoad (data) {
 	handleBrew(data);
 	BrewUtil.pAddBrewData()
 		.then(addAdventures)
+		.catch(BrewUtil.purgeBrew)
 		.then(() => BrewUtil.makeBrewButton("manage-brew"));
 }
 

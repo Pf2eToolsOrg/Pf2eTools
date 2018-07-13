@@ -261,6 +261,10 @@ const BookUtil = {
 					const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 					if (!bookData) handleNotFound();
 					handleFound(fromIndex, bookData);
+				})
+				.catch(() => {
+					BrewUtil.purgeBrew();
+					handleNotFound();
 				});
 		} else handleNotFound();
 	},

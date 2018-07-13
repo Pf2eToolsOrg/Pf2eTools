@@ -42,7 +42,9 @@ function onJsonLoad (data) {
 		.then(homebrew => {
 			addAdventures(homebrew);
 			BookUtil.addHeaderHandles(true);
-
+		})
+		.catch(BrewUtil.purgeBrew)
+		.then(() => {
 			if (window.location.hash.length) {
 				BookUtil.booksHashChange();
 			} else {

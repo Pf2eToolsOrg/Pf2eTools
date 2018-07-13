@@ -243,7 +243,8 @@ class LootGen {
 							if (brew && brew.spell) brew.spell.forEach(sp => addSpell(sp));
 							this._loadingSpells = false;
 							then();
-						});
+						})
+						.catch(BrewUtil.purgeBrew);
 				});
 		}
 	}

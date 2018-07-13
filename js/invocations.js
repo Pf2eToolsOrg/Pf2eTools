@@ -95,6 +95,7 @@ function onJsonLoad (data) {
 	addInvocations(data);
 	BrewUtil.pAddBrewData()
 		.then(addInvocations)
+		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});

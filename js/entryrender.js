@@ -2095,7 +2095,8 @@ EntryRenderer.item = {
 					(brew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
 					(brew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
 					resolve();
-				});
+				})
+				.catch(BrewUtil.purgeBrew);
 		});
 	},
 	/**
@@ -2591,6 +2592,7 @@ EntryRenderer.hover = {
 						if (!data[listProp]) return;
 						populate(data, listProp);
 					})
+					.catch(BrewUtil.purgeBrew)
 					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`))
 					.then((data) => {
 						const officialSource = Object.keys(data).find(k => k.toLowerCase() === source.toLowerCase());
@@ -2615,7 +2617,8 @@ EntryRenderer.hover = {
 					.then((data) => {
 						if (data[listProp]) populate(data, listProp, itemModifier);
 						resolve();
-					});
+					})
+					.catch(BrewUtil.purgeBrew);
 			});
 		}
 
@@ -2673,7 +2676,9 @@ EntryRenderer.hover = {
 									const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 									EntryRenderer.hover._addToCache(page, it.source, itHash, it)
 								});
-							}).then(() => {
+							})
+							.catch(BrewUtil.purgeBrew)
+							.then(() => {
 								allItems.forEach(item => {
 									const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
 									EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
@@ -2714,6 +2719,7 @@ EntryRenderer.hover = {
 							if (!data.race) return;
 							populate(data, "race");
 						})
+						.catch(BrewUtil.purgeBrew)
 						.then(() => {
 							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`).then((data) => {
 								const merged = EntryRenderer.race.mergeSubraces(data.race);

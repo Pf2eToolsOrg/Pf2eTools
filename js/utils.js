@@ -2914,19 +2914,24 @@ BrewUtil = {
 					BrewUtil._resetSourceCache();
 				}).then(() => resolve(BrewUtil.homebrew))).catch(error => {
 					// on error, purge all brew and reset hash
-					purgeBrew();
+					BrewUtil.purgeBrew();
 					setTimeout(() => {
 						throw error
 					});
 				});
 			}
 		});
+	},
 
-		function purgeBrew () {
-			window.alert("Error when loading homebrew! Purging corrupt data...");
-			BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
-			BrewUtil.homebrew = null;
-			window.location.hash = "";
+	purgeBrew (error) {
+		window.alert("Error when loading homebrew! Purging corrupt data...");
+		BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
+		BrewUtil.homebrew = null;
+		window.location.hash = "";
+		if (error) {
+			setTimeout(() => {
+				throw error
+			}, 1);
 		}
 	},
 

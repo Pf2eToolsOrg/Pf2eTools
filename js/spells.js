@@ -223,6 +223,7 @@ function pPostLoad () {
 	return new Promise(resolve => {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
+			.catch(BrewUtil.purgeBrew)
 			.then(() => {
 				BrewUtil.makeBrewButton("manage-brew");
 				BrewUtil.bind({list, filterBox, sourceFilter});
@@ -442,7 +443,8 @@ function pageInit (loadedSources) {
 				})
 			}
 			if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
-		});
+		})
+		.catch(BrewUtil.purgeBrew);
 }
 
 function getSublistItem (spell, pinId) {

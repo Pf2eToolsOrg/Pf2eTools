@@ -91,6 +91,7 @@ function pPostLoad () {
 	return new Promise(resolve => {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
+			.catch(BrewUtil.purgeBrew)
 			.then(() => {
 				BrewUtil.makeBrewButton("manage-brew");
 				BrewUtil.bind({list, filterBox, sourceFilter});

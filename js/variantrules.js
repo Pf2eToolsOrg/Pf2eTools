@@ -44,6 +44,7 @@ function onJsonLoad (data) {
 	addVariantRules(data);
 	BrewUtil.pAddBrewData()
 		.then(addVariantRules)
+		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});

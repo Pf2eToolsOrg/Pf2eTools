@@ -1204,6 +1204,7 @@ DataUtil.class.loadJSON().then((data) => {
 
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			RollerUtil.addListRollButton();
 			History.init(true);

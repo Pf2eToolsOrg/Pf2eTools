@@ -44,7 +44,8 @@ function onJsonLoad (data) {
 
 			if (window.location.hash) window.onhashchange();
 			else window.location.hash = "#rolled";
-		});
+		})
+		.catch(BrewUtil.purgeBrew);
 }
 
 const STATS_MIN = 8;
