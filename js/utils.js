@@ -313,7 +313,7 @@ function utils_getAbilityData (abObj) {
 						outStack += "any other ";
 					}
 					if (item.count !== undefined && item.count > 1) {
-						outStack += getNumberString(item.count) + " ";
+						outStack += Parser.numberToText(item.count) + " ";
 					}
 					if (allAbilities || allAbilitiesWithParent) {
 						outStack += amount;
@@ -355,13 +355,6 @@ function utils_getAbilityData (abObj) {
 		}
 		return tempAbilities.length === 6;
 	}
-
-	function getNumberString (amount) {
-		if (amount === 1) return "one";
-		if (amount === 2) return "two";
-		if (amount === 3) return "three";
-		else return amount;
-	}
 }
 
 // PARSING =============================================================================================================
@@ -381,6 +374,49 @@ Parser._parse_bToA = function (abMap, b) {
 		if (abMap[v] === b) return v
 	}
 	return b;
+};
+
+Parser.numberToText = function (number) {
+	if (Math.abs(number) >= 100) return number;
+
+	function getAsText (num) {
+		const abs = Math.abs(num);
+		switch (abs) {
+			case 0: return "zero";
+			case 1: return "one";
+			case 2: return "two";
+			case 3: return "three";
+			case 4: return "four";
+			case 5: return "five";
+			case 6: return "six";
+			case 7: return "seven";
+			case 8: return "eight";
+			case 9: return "nine";
+			case 10: return "ten";
+			case 11: return "eleven";
+			case 12: return "twelve";
+			case 13: return "thirteen";
+			case 14: return "fourteen";
+			case 15: return "fifteen";
+			case 16: return "sixteen";
+			case 17: return "seventeen";
+			case 18: return "eighteen";
+			case 19: return "nineteen";
+			case 20: return "twenty";
+			case 30: return "thirty";
+			case 40: return "forty";
+			case 50: return "fiddy"; // :^)
+			case 60: return "sixty";
+			case 70: return "seventy";
+			case 80: return "eighty";
+			case 90: return "ninety";
+			default: {
+				const str = String(abs);
+				return `${getAsText(Number(`${str[0]}0`))}-${getAsText(Number(str[1]))}`;
+			}
+		}
+	}
+	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
 };
 
 Parser.attAbvToFull = function (abv) {
@@ -479,6 +515,30 @@ Parser.crToNumber = function (cr) {
 	if (parts.length === 1) return Number(parts[0]);
 	else if (parts.length === 2) return Number(parts[0]) / Number(parts[1]);
 	else return 0;
+};
+
+Parser.crToPb = function (cr) {
+	if (cr === "Unknown" || cr == null) return 0;
+	cr = cr.cr || cr;
+	if (Parser.crToNumber(cr) < 5) return 2;
+	return Math.ceil(cr / 4) + 1;
+};
+
+Parser.dragonColorToFull = function (c) {
+	return Parser._parse_bToA(DRAGON_COLOR_TO_FULL, c);
+};
+
+DRAGON_COLOR_TO_FULL = {
+	B: "black",
+	U: "blue",
+	G: "green",
+	R: "red",
+	W: "white",
+	A: "brass",
+	Z: "bronze",
+	C: "copper",
+	O: "gold",
+	S: "silver"
 };
 
 Parser.acToFull = function (ac) {

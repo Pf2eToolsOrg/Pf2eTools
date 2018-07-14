@@ -708,12 +708,14 @@ function loadhash (id) {
 
 		if (reaction) renderSection("reaction", "reaction", reaction, 1);
 
+		const dragonVariant = EntryRenderer.monster.getDragonCasterVariant(renderer, mon);
 		const variants = mon.variant;
 		const variantSect = $content.find(`#variants`);
-		if (!variants) variantSect.hide();
+		if (!variants && !dragonVariant) variantSect.hide();
 		else {
 			const rStack = [];
-			variants.forEach(v => renderer.recursiveEntryRender(v, rStack));
+			(variants || []).forEach(v => renderer.recursiveEntryRender(v, rStack));
+			if (dragonVariant) rStack.push(dragonVariant);
 			variantSect.html(`<td colspan=6>${rStack.join("")}</td>`);
 			variantSect.show();
 		}
@@ -827,7 +829,7 @@ function loadhash (id) {
 			})
 			.each(function () {
 				const bonus = Number($(this).text());
-				const expectedPB = getProfBonusFromCr(mon.cr);
+				const expectedPB = Parser.crToPb(mon.cr);
 
 				// skills and saves can have expertise
 				let expert = 1;
@@ -879,7 +881,7 @@ function loadhash (id) {
 			$(this).html($(this).html().replace(/DC\s*(\d+)/g, function (match, capture) {
 				const dc = Number(capture);
 
-				const expectedPB = getProfBonusFromCr(mon.cr);
+				const expectedPB = Parser.crToPb(mon.cr);
 
 				if (expectedPB > 0) {
 					const withoutPB = dc - expectedPB;
@@ -997,11 +999,6 @@ function handleUnknownHash (link, sub) {
 	}
 }
 
-function getProfBonusFromCr (cr) {
-	if (CR_TO_PROF[cr]) return CR_TO_PROF[cr];
-	return 0;
-}
-
 function dcRollerClick (ele, exp) {
 	const parsed = EntryRenderer.dice._parse(exp);
 	const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
@@ -1014,42 +1011,6 @@ function dcRollerClick (ele, exp) {
 	EntryRenderer.dice.rollerClick(ele, JSON.stringify(it));
 }
 
-const CR_TO_PROF = {
-	"0": 2,
-	"1/8": 2,
-	"1/4": 2,
-	"1/2": 2,
-	"1": 2,
-	"2": 2,
-	"3": 2,
-	"4": 2,
-	"5": 3,
-	"6": 3,
-	"7": 3,
-	"8": 3,
-	"9": 4,
-	"10": 4,
-	"11": 4,
-	"12": 4,
-	"13": 5,
-	"14": 5,
-	"15": 5,
-	"16": 5,
-	"17": 6,
-	"18": 6,
-	"19": 6,
-	"20": 6,
-	"21": 7,
-	"22": 7,
-	"23": 7,
-	"24": 7,
-	"25": 8,
-	"26": 8,
-	"27": 8,
-	"28": 8,
-	"29": 9,
-	"30": 9
-};
 const SKILL_TO_ATB_ABV = {
 	"athletics": "str",
 	"acrobatics": "dex",

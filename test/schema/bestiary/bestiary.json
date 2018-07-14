@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.2",
+	"version": "1.4.3",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -1095,6 +1095,12 @@
 				},
 				"soundClip": {
 					"type": "string"
+				},
+				"dragonCastingColor": {
+					"type": "string",
+					"enum": [
+						"B", "U", "G", "R", "W", "A", "Z", "C", "O", "S"
+					]
 				}
 			},
 			"required": [

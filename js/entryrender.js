@@ -1115,13 +1115,18 @@ EntryRenderer.utils = {
 		return `<tr>
 					<th class="name" colspan="6">
 						<div class="name-inner">
-							<span class="stats-name">${prefix || ""}${it.name}${suffix || ""}</span>
+							<span class="stats-name" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source}')">${prefix || ""}${it.name}${suffix || ""}</span>
 							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${EntryRenderer.utils.getSourceSubText(it)}">
 								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 							</span>
 						</div>
 					</th>
 				</tr>`;
+	},
+
+	_handleNameClick (ele, source) {
+		copyText(`"${$(ele).text().toLowerCase()}${source === SRC_PHB ? "" : `|${source}`}"`);
+		showCopiedEffect($(ele));
 	},
 
 	getPageTr: (it) => {
@@ -1813,6 +1818,25 @@ EntryRenderer.monster = {
 		else return renderer.renderEntry(`${attr.uppercaseFirst()} {@dice 1d20${mod}|${mod}|${Parser.attAbvToFull([attr])} save`);
 	},
 
+	getDragonCasterVariant (renderer, dragon) {
+		// if the dragon already has a spellcasting trait specified, don't add a note about adding a spellcasting trait
+		if (!dragon.dragonCastingColor || dragon.spellcasting) return null;
+
+		const chaMod = Parser.getAbilityModNumber(dragon.cha);
+		const pb = Parser.crToPb(dragon.cr);
+		const maxSpellLevel = Math.floor(Parser.crToNumber(dragon.cr) / 3);
+		const v = {
+			type: "variant",
+			name: "Dragons as Innate Spellcasters",
+			entries: [
+				"Dragons are innately magical creatures that can master a few spells as they age, using this variant.",
+				`A young or older dragon can innately cast a number of spells equal to its Charisma modifier. Each spell can be cast once per day, requiring no material components, and the spell's level can be no higher than one-third the dragon's challenge rating (rounded down). The dragon's bonus to hit with spell attacks is equal to its proficiency bonus + its Charisma bonus. The dragon's spell save DC equals 8 + its proficiency bonus + its Charisma modifier.`,
+				`{@i This dragon can innately cast ${Parser.numberToText(chaMod)} spell${chaMod === 1 ? "" : "s"}, once per day${chaMod === 1 ? "" : " each"}, requiring no material components. ${chaMod === 1 ? "The" : "Each"} spell's level can be no higher than ${Parser.spLevelToFull(maxSpellLevel)}. The dragon's spell save DC is ${pb + chaMod + 8}, and it has {@hit ${pb + chaMod}} to hit with spell attacks. See the {@filter spell page|spells|level=${[...new Array(maxSpellLevel)].map((it, i) => i + 1).join(";")}} for a list of spells the dragon is capable of casting.`
+			]
+		};
+		return renderer.renderEntry(v);
+	},
+
 	getCompactRenderedString: (mon, renderer) => {
 		renderer = renderer || EntryRenderer.getDefaultRenderer();
 
@@ -1898,9 +1922,10 @@ EntryRenderer.monster = {
 			${getSection("Actions", "action", 3)}
 			${getSection("Reactions", "reaction", 3)}
 			${getSection("Legendary Actions", "legendary", 3)}
-			${mon.variant ? `
+			${mon.variant || (mon.dragonCastingColor && !mon.spellcasting) ? `
 			<tr class="text compact"><td colspan="6">
-			${mon.variant.map(it => it.rendered || renderer.renderEntry(it)).join("")}
+			${mon.variant ? mon.variant.map(it => it.rendered || renderer.renderEntry(it)).join("") : ""}
+			${mon.dragonCastingColor ? EntryRenderer.monster.getDragonCasterVariant(renderer, mon) : ""}
 			</td></tr>
 			` : ""}
 		`);
