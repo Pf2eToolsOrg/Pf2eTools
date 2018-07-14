@@ -2603,14 +2603,11 @@ DataUtil = {
 
 	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction) {
 		if (!toLoads.length) onFinalLoadFunction([]);
-		const dataStack = [];
-
 		Promise.all(toLoads.map(tl => this.loadJSON(tl.url))).then(datas => {
 			datas.forEach((data, i) => {
 				if (onEachLoadFunction) onEachLoadFunction(toLoads[i], data);
-				dataStack.push(data);
 			});
-			onFinalLoadFunction(dataStack);
+			onFinalLoadFunction(datas);
 		});
 	},
 
