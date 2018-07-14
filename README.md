@@ -63,7 +63,7 @@ Replace: `$1$3`
 
 ##### Misc
 
-- A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?`
+- A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?([+-])\s?(\d+))?` (and to output as tagged dice in the basic case: `{@dice $1d$2$4$5}`)
 
 ### Dev Server
 
