@@ -2605,17 +2605,12 @@ DataUtil = {
 		if (!toLoads.length) onFinalLoadFunction([]);
 		const dataStack = [];
 
-		let loadedCount = 0;
-		toLoads.forEach(tl => {
-			this.loadJSON(tl.url).then((data) => {
-				if (onEachLoadFunction) onEachLoadFunction(tl, data);
+		Promise.all(toLoads.map(tl => this.loadJSON(tl.url))).then(datas => {
+			datas.forEach((data, i) => {
+				if (onEachLoadFunction) onEachLoadFunction(toLoads[i], data);
 				dataStack.push(data);
-
-				loadedCount++;
-				if (loadedCount >= toLoads.length) {
-					onFinalLoadFunction(dataStack);
-				}
 			});
+			onFinalLoadFunction(dataStack);
 		});
 	},
 

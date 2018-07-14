@@ -48,7 +48,7 @@ class History {
 		} else {
 			History._freshLoad();
 		}
-		if (initialLoadComplete) History.initialLoad = true;
+		if (initialLoadComplete) History.initialLoad = false;
 	}
 
 	/**
