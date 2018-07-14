@@ -686,8 +686,13 @@ function loadparser (data) {
 			}
 		}
 
+		doPostProcessing(stats);
 		const out = cleanOutput(JSON.stringify(stats, null, "\t"));
 		doOutput(out, append);
+	}
+
+	function doPostProcessing (stats) {
+		ConverterUtils.tryPostProcessAc(stats);
 	}
 
 	function cleanOutput (out) {
@@ -752,8 +757,7 @@ function loadparser (data) {
 		let hasMultipleBlocks = false;
 		function doOutputStatblock () {
 			if (stats) {
-				doAddFromParsed();
-
+				doPostProcessing(stats);
 				const out = cleanOutput(JSON.stringify(stats, null, "\t"));
 				doOutput(out, append);
 			}
