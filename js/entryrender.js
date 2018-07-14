@@ -3513,23 +3513,13 @@ EntryRenderer.dice = {
 					if (!d.drops) return [r, []];
 					let toSlice;
 					if (d.drops === "h") {
-						toSlice = [...r].sort().reverse();
+						toSlice = [...r].sort((a, b) => b - a);
 					} else if (d.drops === "l") {
-						toSlice = [...r].sort();
+						toSlice = [...r].sort((a, b) => a - b);
 					}
 					const toDrop = toSlice.slice(0, d.drop);
-					const keepStack = [];
-					const dropStack = [];
-					r.forEach(it => {
-						const di = toDrop.indexOf(it);
-						if (~di) {
-							toDrop.splice(di, 1);
-							dropStack.push(it);
-						} else {
-							keepStack.push(it);
-						}
-					});
-					return [keepStack, dropStack];
+					const toKeep = toSlice.slice(d.drop);
+					return [toKeep, toDrop];
 				}
 
 				const r = EntryRenderer.dice.rollDice(d.num, d.faces);
