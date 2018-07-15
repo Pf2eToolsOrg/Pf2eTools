@@ -1765,7 +1765,7 @@ MiscUtil = {
 		}
 	},
 
-	randomColour () {
+	randomColor () {
 		let r; let g; let b;
 		const h = RollerUtil.randomise(30, 0) / 30;
 		const i = ~~(h * 6);

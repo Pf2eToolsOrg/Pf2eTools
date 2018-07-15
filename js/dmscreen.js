@@ -2261,78 +2261,78 @@ class InitiativeTracker {
 		return [
 			{
 				name: "Blinded",
-				colour: "#434343"
+				color: "#434343"
 			},
 			{
 				name: "Charmed",
-				colour: "#f01789"
+				color: "#f01789"
 			},
 			{
 				name: "Concentrating",
-				colour: "#009f7a",
+				color: "#009f7a",
 				condName: null
 			},
 			{
 				name: "Deafened",
-				colour: "#c7d0d3"
+				color: "#c7d0d3"
 			},
 			{
 				name: "Drunk",
-				colour: "#ffcc00"
+				color: "#ffcc00"
 			},
 			{
 				name: "Exhausted",
-				colour: "#947a47",
+				color: "#947a47",
 				condName: "Exhaustion"
 			},
 			{
 				name: "Frightened",
-				colour: "#c9ca18"
+				color: "#c9ca18"
 			},
 			{
 				name: "Grappled",
-				colour: "#8784a0"
+				color: "#8784a0"
 			},
 			{
 				name: "Incapacitated",
-				colour: "#3165a0"
+				color: "#3165a0"
 			},
 			{
 				name: "Invisible",
-				colour: "#7ad2d6"
+				color: "#7ad2d6"
 			},
 			{
 				name: "!!On Fire!!",
-				colour: "#ff6800",
+				color: "#ff6800",
 				condName: null
 			},
 			{
 				name: "Paralyzed",
-				colour: "#c00900"
+				color: "#c00900"
 			},
 			{
 				name: "Petrified",
-				colour: "#a0a0a0"
+				color: "#a0a0a0"
 			},
 			{
 				name: "Poisoned",
-				colour: "#4dc200"
+				color: "#4dc200"
 			},
 			{
 				name: "Prone",
-				colour: "#5e60a0"
+				color: "#5e60a0"
 			},
 			{
 				name: "Restrained",
-				colour: "#d98000"
+				color: "#d98000"
 			},
 			{
 				name: "Stunned",
-				colour: "#a23bcb"
+				color: "#a23bcb"
 			},
 			{
 				name: "Unconscious",
-				colour: "#1c2383"
+				color: "#1c2383"
 			}
 		];
 	}
@@ -2576,10 +2576,10 @@ class InitiativeTracker {
 				$(`<input class="source hidden" value="${source}">`).appendTo($wrpLhs);
 			}
 
-			function addCondition (name, colour, turns) {
+			function addCondition (name, color, turns) {
 				const state = {
 					name: name,
-					colour: colour,
+					color: color,
 					turns: turns ? Number(turns) : null
 				};
 
@@ -2603,9 +2603,9 @@ class InitiativeTracker {
 					const ttpText = state.name && state.turns ? `${state.name.escapeQuotes()} (${turnsText})` : state.name ? state.name.escapeQuotes() : state.turns ? turnsText : "";
 					const getBar = () => {
 						const style = state.turns == null || state.turns > 3
-							? `background-image: linear-gradient(45deg, ${state.colour} 41.67%, transparent 41.67%, transparent 50%, ${state.colour} 50%, ${state.colour} 91.67%, transparent 91.67%, transparent 100%);
+							? `background-image: linear-gradient(45deg, ${state.color} 41.67%, transparent 41.67%, transparent 50%, ${state.color} 50%, ${state.color} 91.67%, transparent 91.67%, transparent 100%);
 background-size: 8.49px 8.49px;`
-							: `background: ${state.colour};`;
+							: `background: ${state.color};`;
 						return `<div class="dm-init-cond-bar" style="${style}"/>`
 					};
 					const inner = state.turns
@@ -2670,9 +2670,9 @@ background-size: 8.49px 8.49px;`
 						const populateCol = (cond) => {
 							const $col = $(`<div class="col-xs-4 text-align-center"/>`).appendTo($row);
 							if (cond) {
-								const $btnCond = $(`<button class="btn btn-default btn-xs btn-dm-init-cond" style="background-color: ${cond.colour} !important;">${cond.name}</button>`).appendTo($col).click(() => {
+								const $btnCond = $(`<button class="btn btn-default btn-xs btn-dm-init-cond" style="background-color: ${cond.color} !important;">${cond.name}</button>`).appendTo($col).click(() => {
 									$iptName.val(cond.name);
-									$iptColour.val(cond.colour);
+									$iptColor.val(cond.color);
 								});
 							}
 						};
@@ -2687,15 +2687,15 @@ background-size: 8.49px 8.49px;`
 						<div class="col-xs-5">Duration (optional)</div>
 					</div>`).appendTo($wrpRows);
 					const $controls = $(`<div class="row mb-2"/>`).appendTo($wrpRows);
-					const [$wrpName, $wrpColour, $wrpTurns] = [...new Array(3)].map((it, i) => $(`<div class="col-xs-${i === 1 ? 2 : 5} text-align-center"/>`).appendTo($controls));
+					const [$wrpName, $wrpColor, $wrpTurns] = [...new Array(3)].map((it, i) => $(`<div class="col-xs-${i === 1 ? 2 : 5} text-align-center"/>`).appendTo($controls));
 					const $iptName = $(`<input class="form-control">`).appendTo($wrpName);
-					const $iptColour = $(`<input class="form-control" type="color" value="${MiscUtil.randomColour()}">`).appendTo($wrpColour);
+					const $iptColor = $(`<input class="form-control" type="color" value="${MiscUtil.randomColor()}">`).appendTo($wrpColor);
 					const $iptTurns = $(`<input class="form-control" type="number" step="1" min="1" placeholder="Unlimited">`).appendTo($wrpTurns);
 					const $wrpAdd = $(`<div class="row">`).appendTo($wrpRows);
 					const $wrpAddInner = $(`<div class="col-xs-12 text-align-center">`).appendTo($wrpAdd);
 					const $btnAdd = $(`<button class="btn btn-primary">Set Condition</button>`)
 						.click(() => {
-							addCondition($iptName.val().trim(), $iptColour.val(), $iptTurns.val());
+							addCondition($iptName.val().trim(), $iptColor.val(), $iptTurns.val());
 							$wrpModal.remove();
 						})
 						.appendTo($wrpAddInner);
@@ -2773,7 +2773,7 @@ background-size: 8.49px 8.49px;`
 					$wrpRow.remove();
 				});
 
-			conditions.forEach(c => addCondition(c.name, c.colour, c.turns));
+			conditions.forEach(c => addCondition(c.name, c.color, c.turns));
 			$wrpRow.appendTo($wrpEntries);
 		}
 
