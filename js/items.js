@@ -39,24 +39,24 @@ function sortItems (a, b, o) {
 	} else return 0;
 }
 
-function deselectFilter (deselectProperty, deselectValue) {
+function deselectFilter (deselectProperty, ...deselectValues) {
 	return function (val) {
 		if (window.location.hash.length && !window.location.hash.startsWith(`#${HASH_BLANK}`)) {
 			const curItem = History.getSelectedListElement();
 			if (!curItem) return deselNoHash();
 
 			const itemProperty = itemList[curItem.attr("id")][deselectProperty];
-			if (itemProperty === deselectValue) {
+			if (deselectValues.includes(itemProperty)) {
 				return deselNoHash();
 			} else {
-				return val === deselectValue && itemProperty !== val;
+				return deselectValues.includes(val) && itemProperty !== val;
 			}
 		} else {
 			return deselNoHash();
 		}
 
 		function deselNoHash () {
-			return val === deselectValue;
+			return deselectValues.includes(val);
 		}
 	}
 }
@@ -64,7 +64,7 @@ function deselectFilter (deselectProperty, deselectValue) {
 let mundanelist;
 let magiclist;
 const sourceFilter = getSourceFilter();
-const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$")});
+const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$", "Futuristic", "Modern", "Renaissance")});
 const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
 const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 let filterBox;
