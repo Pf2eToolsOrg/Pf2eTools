@@ -1105,6 +1105,14 @@ class Panel {
 		}
 	}
 
+	getReplacementPanel () {
+		const replacement = new Panel(this.board, this.x, this.y, this.width, this.height);
+		this.exile();
+		this.board.addPanel(replacement);
+		this.board.doCheckFillSpaces();
+		return replacement;
+	}
+
 	render () {
 		const doApplyPosCss = ($ele) => {
 			// indexed from 1 instead of zero...
@@ -1144,10 +1152,7 @@ class Panel {
 			});
 			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
 			$ctrlEmpty.on("click", () => {
-				const replacement = new Panel(this.board, this.x, this.y, this.width, this.height);
-				this.exile();
-				this.board.addPanel(replacement);
-				this.board.doCheckFillSpaces();
+				this.getReplacementPanel();
 			});
 
 			const joyMenu = new JoystickMenu(this);
@@ -1276,7 +1281,7 @@ class Panel {
 			const ixPos = Math.abs(ix + 1);
 			const td = this.tabDatas[ixPos];
 			td.isDeleted = true;
-			if (td.$tabButton) td.$tabButton.remove();
+			if (td.$tabButton) td.$tabButton.detach();
 		} else {
 			const $btnOld = (this.tabDatas[ix] || {}).$tabButton; // preserve tab button
 			this.tabDatas[ix] = {
@@ -1511,7 +1516,7 @@ class JoystickMenu {
 					// TODO this should ideally peel off the selected tab and transfer it to the target pane, instead of swapping
 					if (her.getEmpty()) {
 						her.setFromPeer(this.panel.getPanelMeta(), this.panel.$content);
-						this.panel.close$TabContent();
+						this.panel = this.panel.getReplacementPanel();
 					} else {
 						const herMeta = her.getPanelMeta();
 						const $herContent = her.get$Content();
