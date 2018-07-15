@@ -2611,7 +2611,8 @@
 											"type": "entries",
 											"name": "Ammunition",
 											"entries": [
-												"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield. [new paragraph] If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \"Improvised Weapons\" late in the section). A sling must be loaded to deal any damage when used in this way. Loading a one-handed weapon requires a free hand."
+												"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+												"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \"Improvised Weapons\" late in the section). A sling must be loaded to deal any damage when used in this way. Loading a one-handed weapon requires a free hand."
 											]
 										},
 										{
@@ -5573,7 +5574,8 @@
 											"name": "Spells Known and Prepared",
 											"entries": [
 												"You determine what spells you know and can prepare for each class individually, as if you were a single-classed member of that class. If you are a ranger 4/wizard 3, for example, you know three 1st-level ranger spells based on your levels in the ranger class. As 3rd-level wizard, you know three wizard cantrips, and your spellbook contains ten wizard spells, two of which (the two you gained when you reached 3rd level as a wizard) can be 2nd-level spells. If your intelligence is 16, you can prepare six wizard spells from your spellbook.",
-												"Each spell you know and prepare is associated with one of your classes, and you use the spellcasting ability of that class when you cast the spell. Similarly, a spellcasting focus, such as a holy symbol, can he used only for the spells from the class associated with that focus."
+												"Each spell you know and prepare is associated with one of your classes, and you use the spellcasting ability of that class when you cast the spell. Similarly, a spellcasting focus, such as a holy symbol, can he used only for the spells from the class associated with that focus.",
+												"If a cantrip of yours increases in power at higher levels, the increase is based on your character level, not your level in a particular class."
 											]
 										},
 										{
@@ -5863,6 +5865,13 @@
 											]
 										}
 									]
+								},
+								{
+								    "type": "entries",
+								    "name": "Starting Equipment",
+								    "entries": [
+								        "You gain the starting equipment of your first class only."
+								    ]
 								}
 							]
 						}
@@ -6331,17 +6340,17 @@
 									"name": "Hiding",
 									"entries": [
 										"When you try to hide, make a Dexterity (Stealth) check. Until you are discovered or you stop hiding, that check's total is contested by the Wisdom (Perception) check of any creature that actively searches for signs of your presence.",
-										"You can't hide from a creature that can see you, and if you make noise (such as shouting a warning or knocking over a vase), you give away your position. An invisible creature can't be seen, so it can always try to hide. Signs of its passage might still be noticed, however, and it still has to stay quiet.",
+										"You can't hide from a creature that can see you clearly, and if you make noise (such as shouting a warning or knocking over a vase), you give away your position. An invisible creature can't be seen, so it can always try to hide. Signs of its passage might still be noticed, however, and it still has to stay quiet.",
 										"In combat, most creatures stay alert for signs of danger all around, so if you come out of hiding and approach a creature, it usually sees you. However, under certain circumstances, the Dungeon Master might allow you to stay hidden as you approach a creature that is distracted, allowing you to gain advantage on an attack before you are seen.",
-										"The DM decides when circumstances are appropriate for hiding. Also, the question isn't whether a creature can see you when you're hiding. The question is whether it can see you clearly.",
+										"Ultimately, the DM decides when circumstances are appropriate for hiding.",
 										{
 											"type": "entries",
 											"name": "Passive Perception",
 											"entries": [
-												" When you hide, there's a chance someone will notice you even if they aren't searching. To determine whether such a creature notices you, the DM compares your Dexterity (Stealth) check with that creature's passive Wisdom (Perception) score, which equals 10 + the creature's Wisdom modifier, as well as any other bonuses or penalties. If the creature has advantage, add 5. For disadvantage, subtract 5."
+												" When you hide, there's a chance someone will notice you even if they aren't searching. To determine whether such a creature notices you, the DM compares your Dexterity (Stealth) check with that creature's passive Wisdom (Perception) score, which equals 10 + the creature's Wisdom modifier, as well as any other bonuses or penalties. If the creature has advantage, add 5. For disadvantage, subtract 5.",
+												"For example, if a 1st-level character (with a proficiency bonus of +2) has a Wisdom of 15 (a +2 modifier) and a proficiency in Perception, he or she has a passive Wisdom (Perception) of 14."
 											]
 										},
-										"For example, if a 1st-level character (with a proficiency bonus of +2) has a Wisdom of 15 (a +2 modifier) and a proficiency in Perception, he or she has a passive Wisdom (Perception) of 14.",
 										{
 											"type": "entries",
 											"name": "What Can you See?",
@@ -7066,7 +7075,7 @@
 							"name": "Resting",
 							"entries": [
 								"Heroic though they might be, adventurers can't spend every hour of the day in the thick of exploration, social interaction, and combat. They need rest-time to sleep and eat, tend their wounds, refresh their minds and spirits for spellcasting, and brace themselves for further adventure.",
-								"Adventurers, and creatures, can take short rests in the midst of an adventuring day and a long rest to end the day.",
+								"Adventurers can take short rests in the midst of an adventuring day and a long rest to end the day. While the text here refers to adventurers, any creature can take a short or long rest.",
 								{
 									"type": "entries",
 									"name": "Short Rest",
@@ -7079,7 +7088,7 @@
 									"type": "entries",
 									"name": "Long Rest",
 									"entries": [
-										"A long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps or performs light activity: reading, talking, eating, or standing watch for no more than 2 hours. If the rest is interrupted by a period of strenuous activity\u2014at least 1 hour of walking, fighting, casting spells, or similar adventuring activity, the characters must begin the rest again to gain any benefit from it.",
+										"A long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps for at least 6 hours and performs no more than 2 hours of light activity, such as reading, talking, eating, or standing watch. If the rest is interrupted by a period of strenuous activity\u2014at least 1 hour of walking, fighting, casting spells, or similar adventuring activity, the characters must begin the rest again to gain any benefit from it.",
 										"At the end of a long rest, a character regains all lost hit points. The character also regains spent Hit Dice, up to a number of dice equal to half of the character's total number of them. You regain at least 1 Hit Die when you finish a long rest.",
 										"For example, if a character has eight Hit Dice, he or she can regain four spent Hit Dice upon finishing a long rest.",
 										"A character can't benefit from more than one long rest in a 24-hour period, and a character must have at least 1 hit point at the start of the rest to gain its benefits."
@@ -7716,7 +7725,7 @@
 							"entries": [
 								"Used in hand-to-hand combat, a melee attack allows you to attack a foe within your reach. A melee attack typically uses a handheld weapon such as a sword, a warhammer, or an axe. A typical monster makes a melee attack when it strikes with its claws, horns, teeth, tentacles, or other body part. A few spells also involve making a melee attack.",
 								"Most creatures have a 5-foot reach and can thus attack targets within 5 feet of them when making a melee attack. Certain creatures (typically those larger than Medium) have melee attacks with a greater reach than 5 feet, as noted in their descriptions.",
-								"Instead of using a weapon to make a melee weapon attack, you can use an unarmed strike: a punch, kick, head-butt, or similar forceful blow (none of which count as weapons). On a hit, an unarmed strike deals bludgeoning damage equal to 1 + your Strength modifier. You are proficient with your unarmed strikes."
+								"Instead of using a weapon to make a melee weapon attack, you can use an {@b unarmed strike}: a punch, kick, head-butt, or similar forceful blow (none of which count as weapons). On a hit, an unarmed strike deals bludgeoning damage equal to 1 + your Strength modifier. You are proficient with your unarmed strikes."
 							]
 						},
 						{
@@ -8216,7 +8225,7 @@
 									"entries": [
 										"Casting some spells requires particular objects, specified in parentheses in the component entry. A character can use a component pouch or a spellcasting focus (found in chapter 5) in place of the components specified for a spell. But if a cost is indicated for a component, a character must have that specific component before he or she can cast the spell.",
 										"If a spell states that a material component is consumed by the spell, the caster must provide this component for each casting of the spell.",
-										"A spellcaster must have a hand free to access these components, but it can be the same hand that he or she uses to perform somatic components."
+										"A spellcaster must have a hand free to access a spell's material components\u2014or to hold a spellcasting focus\u2014but it can be the same hand that he or she uses to perform somatic components."
 									]
 								}
 							]
