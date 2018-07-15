@@ -88,16 +88,24 @@
 		.panel-control-title {
 			opacity: 0.05;
 			left: 0;
-			border-bottom-left-radius: 0;
 			right: initial;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 5px;
 			padding: 0 4px;
 			font-family: 'Andada', serif;
 			font-variant: small-caps;
 			color: white;
-			border-bottom-right-radius: 5px;
 			cursor: default;
 			user-select: none;
 			background: #808080a0;
+		}
+
+		.panel-control-addtab {
+			left: 0;
+			right: initial;
+			bottom: 0;
+			border-bottom-left-radius: 0;
+			border-top-right-radius: 5px;
 		}
 
 		.panel-control-icon:first-of-type {
@@ -144,6 +152,54 @@
 			padding-right: -9px;
 			box-sizing: content-box;
 			box-shadow: inset 0 0 10px 0 #909090b0;
+		}
+
+		.panel-content-wrapper.panel-content-wrapper-tabs {
+			height: calc(100% - 20px);
+			margin-bottom: 20px;
+		}
+
+		.pnl-content-tab-bar-hidden .panel-content-wrapper.panel-content-wrapper-tabs {
+			height: 100%;
+			margin-bottom: 0;
+		}
+
+		.dm-sidemenu-history-item .panel-content-wrapper.panel-content-wrapper-tabs {
+			height: 100%;
+			margin-bottom: 0;
+		}
+
+		.pnl-content-tab-bar-hidden .content-tab-bar {
+			display: none !important;
+		}
+
+		.content-tab-bar {
+			display: none;
+			position: absolute;
+			bottom: 0;
+			height: 20px;
+			width: 100%;
+			border-top: 1px solid #ccc;
+			background: white;
+		}
+
+		.content-tab-bar-inner {
+			display: flex;
+			overflow: hidden;
+		}
+
+		.content-tab {
+			padding: 1px 3px;
+			margin: 0;
+			font-size: 12px;
+			border-top: 0;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+
+		.content-tab-remove {
+			top: 2px;
+			margin-left: 3px;
 		}
 
 		.panel-mode-move .panel-content-wrapper {

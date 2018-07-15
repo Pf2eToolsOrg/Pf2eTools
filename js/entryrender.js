@@ -3180,7 +3180,7 @@ EntryRenderer.dice = {
 	unbindDmScreenPanel () {
 		if (EntryRenderer.dice._panel) {
 			$(`body`).append(EntryRenderer.dice._$wrpRoll);
-			EntryRenderer.dice._panel.reset$Content();
+			EntryRenderer.dice._panel.close$TabContent();
 			EntryRenderer.dice._panel = null;
 			EntryRenderer.dice._hideBox();
 			EntryRenderer.dice._$wrpRoll.removeClass("rollbox-panel");
