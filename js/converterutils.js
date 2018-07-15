@@ -7,8 +7,8 @@ class ConverterUtils {
 		if (basic) {
 			if (basic[3]) {
 				const brak = basic[3];
-				let cur =  {
-					ac: Number(basic[1]),
+				let cur = {
+					ac: Number(basic[1])
 				};
 
 				let nextPart = null;
