@@ -7,6 +7,8 @@ const DOWN = "DOWN";
 const AX_X = "AXIS_X";
 const AX_Y = "AXIS_Y";
 
+const TITLE_LOADING = "Loading...";
+
 const PANEL_TYP_EMPTY = 0;
 const PANEL_TYP_STATS = 1;
 const PANEL_TYP_ROLLBOX = 2;
@@ -729,7 +731,7 @@ class Panel {
 			PANEL_TYP_EMPTY,
 			null,
 			Panel._get$eleLoading(message),
-			"Loading..."
+			TITLE_LOADING
 		);
 	}
 
@@ -1088,8 +1090,11 @@ class Panel {
 	}
 
 	doRenderTitle () {
-		this.$pnlTitle.text(this.title);
-		if (!this.title) this.$pnlTitle.addClass("hidden");
+		const displayText = this.title !== TITLE_LOADING &&
+			(this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_RULES) ? this.title : "";
+
+		this.$pnlTitle.text(displayText);
+		if (!displayText) this.$pnlTitle.addClass("hidden");
 		else this.$pnlTitle.removeClass("hidden");
 	}
 
@@ -1272,7 +1277,7 @@ class Panel {
 			type,
 			contentMeta,
 			Panel._get$eleLoading(),
-			"Loading..."
+			TITLE_LOADING
 		);
 	}
 
