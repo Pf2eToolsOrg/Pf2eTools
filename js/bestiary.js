@@ -230,6 +230,12 @@ const conditionImmuneFilter = new Filter({
 	items: CONDS,
 	displayFn: StrUtil.uppercaseFirst
 });
+const traitFilter = new Filter({
+	header: "Traits",
+	items: [
+		"Aggressive", "Amphibious", "Antimagic Susceptibility", "Brute", "Charge", "False Appearance", "Fey Ancestry", "Flyby", "Hold Breath", "Illumination", "Incorporeal Movement", "Keen Senses", "Legendary Resistances", "Light Sensitivity", "Magic Resistance", "Magic Weapons", "Pack Tactics", "Pounce", "Rampage", "Reckless", "Regeneration", "Rejuvenation", "Shapechanger", "Siege Monster", "Sneak Attack", "Spider Climb", "Sunlight Sensitivity", "Turn Immunity", "Turn Resistance", "Undead Fortitude", "Water Breathing", "Web Sense", "Web Walker"
+	]
+});
 const miscFilter = new Filter({
 	header: "Miscellaneous",
 	items: ["Familiar", "Legendary", "NPC", "Spellcaster", "Swarm"],
@@ -253,6 +259,7 @@ const filterBox = initFilterBox(
 	resistFilter,
 	immuneFilter,
 	conditionImmuneFilter,
+	traitFilter,
 	miscFilter
 );
 
@@ -374,6 +381,7 @@ function handleFilterChange () {
 			m._fRes,
 			m._fImm,
 			m._fCondImm,
+			m.traitTags,
 			m._fMisc
 		);
 	});
