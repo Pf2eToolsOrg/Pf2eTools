@@ -1827,7 +1827,7 @@ EntryRenderer.monster = {
 				2: {
 					B: ["darkness", "Melf's acid arrow", "fog cloud", "scorching ray"],
 					G: ["ray of sickness", "charm person", "detect thoughts", "invisibility", "suggestion"],
-					W: ["ice knife|XGE", "Snilloc's snowball swarm|XGE", ],
+					W: ["ice knife|XGE", "Snilloc's snowball swarm|XGE"],
 					A: ["see invisibility", "magic mouth", "blindness/deafness", "sleep", "detect thoughts"],
 					Z: ["gust of wind", "misty step", "locate object", "blur", "witch bolt", "thunderwave", "shield"],
 					C: ["knock", "sleep", "detect thoughts", "blindness/deafness", "tasha's hideous laughter"]
