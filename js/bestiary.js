@@ -236,9 +236,15 @@ const traitFilter = new Filter({
 		"Aggressive", "Ambusher", "Amorphous", "Amphibious", "Antimagic Susceptibility", "Brute", "Charge", "Damage Absorption", "Death Burst", "Devil's Sight", "False Appearance", "Fey Ancestry", "Flyby", "Hold Breath", "Illumination", "Immutable Form", "Incorporeal Movement", "Keen Senses", "Legendary Resistances", "Light Sensitivity", "Magic Resistance", "Magic Weapons", "Pack Tactics", "Pounce", "Rampage", "Reckless", "Regeneration", "Rejuvenation", "Shapechanger", "Siege Monster", "Sneak Attack", "Spider Climb", "Sunlight Sensitivity", "Turn Immunity", "Turn Resistance", "Undead Fortitude", "Water Breathing", "Web Sense", "Web Walker"
 	]
 });
+const actionReactionFilter = new Filter({
+	header: "Actions & Reactions",
+	items: [
+		"Frightful Presence", "Multiattack", "Parry", "Swallow", "Teleport", "Tentacles"
+	]
+});
 const miscFilter = new Filter({
 	header: "Miscellaneous",
-	items: ["Familiar", "Legendary", "NPC", "Spellcaster", "Swarm"],
+	items: ["Familiar", "Lair Actions", "Legendary", "NPC", "Spellcaster", "Regional Effects", "Swarm"],
 	displayFn: StrUtil.uppercaseFirst,
 	deselFn: (it) => it === "NPC"
 });
@@ -260,6 +266,7 @@ const filterBox = initFilterBox(
 	immuneFilter,
 	conditionImmuneFilter,
 	traitFilter,
+	actionReactionFilter,
 	miscFilter
 );
 
@@ -382,6 +389,7 @@ function handleFilterChange () {
 			m._fImm,
 			m._fCondImm,
 			m.traitTags,
+			m.actionTags,
 			m._fMisc
 		);
 	});
@@ -452,6 +460,10 @@ function addMonsters (data) {
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) mon._fMisc.push("Spellcaster");
 		if (mon.isNPC) mon._fMisc.push("NPC");
+		if (mon.legendaryGroup) {
+			if (meta[mon.legendaryGroup].lairActions) mon._fMisc.push("Lair Actions");
+			if (meta[mon.legendaryGroup].regionalEffects) mon._fMisc.push("Regional Effects");
+		}
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	table.append(textStack);

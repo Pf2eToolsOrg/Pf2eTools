@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.3",
+	"version": "1.4.4",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -1146,6 +1146,20 @@
 							"Water Breathing",
 							"Web Sense",
 							"Web Walker"
+						]
+					}
+				},
+				"actionTags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"Frightful Presence",
+							"Multiattack",
+							"Parry",
+							"Swallow",
+							"Teleport",
+							"Tentacles"
 						]
 					}
 				}
