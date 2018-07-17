@@ -52,6 +52,25 @@
 					"page": {
 						"type": "integer"
 					},
+					"otherSources": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source",
+								"page"
+							],
+							"additionalProperties": false
+						}
+					},
 					"ability": {
 						"type": "object"
 					},
@@ -84,6 +103,25 @@
 								},
 								"page": {
 									"type": "integer"
+								},
+								"otherSources": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"source": {
+												"type": "string"
+											},
+											"page": {
+												"type": "integer"
+											}
+										},
+										"required": [
+											"source",
+											"page"
+										],
+										"additionalProperties": false
+									}
 								},
 								"ability": {
 									"type": "object"

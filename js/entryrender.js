@@ -1134,9 +1134,15 @@ EntryRenderer.utils = {
 	},
 
 	_getPageTrText: (it) => {
-		const addSourceText = it.additionalSources && it.additionalSources.length ? `. Additional information from ${it.additionalSources.map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}.` : "";
+		function getAltSourceText (prop, introText) {
+			return it[prop] && it[prop].length ? `${introText} ${it[prop].map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}` : "";
+		}
 		const sourceSub = EntryRenderer.utils.getSourceSubText(it);
-		return it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}${addSourceText}` : ""
+		const baseText = it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
+		const addSourceText = getAltSourceText("additionalSources", "Additional information from");
+		const otherSourceText = getAltSourceText("otherSources", "Also printed in");
+
+		return `${[baseText, addSourceText, otherSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText) ? "." : ""}`;
 	},
 
 	tabButton: (label, funcChange, funcPopulate) => {

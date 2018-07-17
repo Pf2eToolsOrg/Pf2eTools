@@ -137,10 +137,12 @@ function addRaces (data) {
 			race.hasSpellcasting ? "Spellcasting" : null,
 			race.npc ? "NPC Race" : null
 		].filter(it => it);
-		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
-		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
+		race._fSources = ListUtil.getCompleteSources(race);
 
 		race._slAbility = ability.asTextShort;
+
+		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
+		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
 		tempString +=
 			`<li class="row" ${FLTR_ID}='${rcI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
@@ -154,7 +156,7 @@ function addRaces (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(race.source);
+		sourceFilter.addIfAbsent(race._fSources);
 		sizeFilter.addIfAbsent(race.size);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
@@ -209,7 +211,7 @@ function handleFilterChange () {
 		const r = raceList[$(item.elm).attr(FLTR_ID)];
 		return filterBox.toDisplay(
 			f,
-			r.source,
+			r._fSources,
 			r._fAbility,
 			r.size,
 			r._fSpeed,

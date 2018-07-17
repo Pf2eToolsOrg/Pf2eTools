@@ -2367,6 +2367,10 @@ ListUtil = {
 	toggleCheckbox (evt, ele) {
 		const $ipt = $(ele).find(`input`);
 		$ipt.prop("checked", !$ipt.prop("checked"))
+	},
+
+	getCompleteSources (it) {
+		return it.otherSources ? [it.source].concat(it.otherSources.map(src => src.source)) : it.source;
 	}
 };
 
