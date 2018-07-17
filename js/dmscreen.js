@@ -2657,8 +2657,8 @@ background-size: 8.49px 8.49px;`
 			const $btnCond = $(`<div class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition"><span class="glyphicon glyphicon-flag"/></div>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
-					const $modal = $(`<dialog class="dialog-modal"/>`);
-					const $wrpModal = $(`<div class="dialog-wrapper">`).appendTo($(`body`)).click(() => $wrpModal.remove());
+					const $modal = $(`<div class="panel-addmenu-inner dropdown-menu" style="height: initial"/>`);
+					const $wrpModal = $(`<div class="panel-addmenu">`).appendTo($(`body`)).click(() => $wrpModal.remove());
 					$modal.appendTo($wrpModal);
 					const $modalInner = $(`<div class="modal-inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
 
@@ -2699,8 +2699,6 @@ background-size: 8.49px 8.49px;`
 							$wrpModal.remove();
 						})
 						.appendTo($wrpAddInner);
-
-					$modal[0].showModal();
 				});
 
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
