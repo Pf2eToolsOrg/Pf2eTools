@@ -88,6 +88,57 @@ dialog.dialog-modal {
 	}
 }
 
+.modal-wrapper {
+	position: fixed;
+	z-index: 1000;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(69, 69, 69, 0.51);
+
+	.modal-outer {
+		position: relative;
+		z-index: 10001;
+		top: initial;
+		left: initial;
+		margin: 60px auto;
+		padding: 5px 10px;
+		min-width: 600px;
+		display: flex;
+		max-height: 95%;
+		max-width: 95%;
+		overflow: auto;
+		transform: translateZ(0);
+
+		.modal-inner {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.flex {
+	display: flex;
+}
+
+.inline-flex {
+	display: inline-flex;
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.flex-2 {
+	flex: 2;
+}
+
+.flex-3 {
+	flex: 3;
+}
+
 .split {
 	display: flex;
 	justify-content: space-between;
@@ -1997,6 +2048,36 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	margin-bottom: $spacer !important;
 }
 
+.my-3 {
+	margin-top: $spacer !important;
+	margin-bottom: $spacer !important;
+}
+
+.ml-1 {
+	margin-left: ($spacer * 0.25) !important;
+}
+
+.ml-2 {
+	margin-left: ($spacer * 0.5) !important;
+}
+
+.mr-1 {
+	margin-right: ($spacer * 0.25) !important;
+}
+
+.mr-2 {
+	margin-right: ($spacer * 0.5) !important;
+}
+
+.mr-3 {
+	margin-right: $spacer !important;
+}
+
+.px-2 {
+	padding-right: ($spacer * 0.5) !important;
+	padding-left: ($spacer * 0.5) !important;
+}
+
 .dropdown-menu > li > a.dropdown-ext-link {
 	display: flex;
 	justify-content: space-between;
@@ -3695,6 +3776,13 @@ table.stats tr.homebrew-hover {
 
 	.homebrew-inline {
 		background-color: rgba(255, 0, 0, 0.1);
+	}
+
+	/* *** */
+
+	/* Bootstrap overrides */
+	.table-striped > tbody > tr:nth-of-type(odd) {
+		background-color: #444;
 	}
 
 	/* *** */

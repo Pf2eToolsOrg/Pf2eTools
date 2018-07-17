@@ -230,6 +230,34 @@ function pPostLoad () {
 				BrewUtil.makeBrewButton("manage-brew");
 				BrewUtil.bind({list, filterBox, sourceFilter});
 				ListUtil.loadState();
+				const getFilterer = () => {
+					const slIds = ListUtil.getSublistedIds();
+					if (slIds.length) {
+						const slIdSet = new Set(slIds);
+						return slIdSet.has.bind(slIdSet);
+					} else {
+						const visibleIds = new Set(ListUtil.getVisibleIds());
+						return visibleIds.has.bind(visibleIds);
+					}
+				};
+				ListUtil.bindShowTableButton(
+					"btn-show-table",
+					"Spells",
+					spellList,
+					{
+						name: {name: "Name", transform: true, flex: 1},
+						source: {name: "Source", transform: (it) => `<span class="source${Parser.stringToCasedSlug(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`, flex: 1},
+						level: {name: "Level", transform: (it) => Parser.spLevelToFull(it), flex: 1},
+						time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0]), flex: 1},
+						school: {name: "School", transform: (it) => `<span class="school_${it}">${Parser.spSchoolAbvToFull(it)}</span>`, flex: 1},
+						range: {name: "Range", transform: (it) => Parser.spRangeToFull(it), flex: 1},
+						components: {name: "Components", transform: (it) => Parser.spComponentsToFull(it), flex: 1},
+						classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it), flex: 1},
+						entries: {name: "Text", transform: (it) => EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: it}, 1), flex: 3},
+						entriesHigherLevel: {name: "At Higher Levels", transform: (it) => EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: (it || [])}, 1), flex: 2}
+					},
+					{generator: getFilterer},
+					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
 				resolve();
 			});
 	})
