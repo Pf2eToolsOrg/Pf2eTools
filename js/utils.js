@@ -2371,6 +2371,67 @@ ListUtil = {
 
 	getCompleteSources (it) {
 		return it.otherSources ? [it.source].concat(it.otherSources.map(src => src.source)) : it.source;
+	},
+
+	bindShowTableButton (id, title, dataList, colTransforms, sorter) {
+		$(`#${id}`).click("click", () => ListUtil.showTable(title, dataList, colTransforms, sorter));
+	},
+
+	getVisibleIds () {
+		return BrewUtil._lists.map(l => l.visibleItems.map(it => Number(it.elm.getAttribute(FLTR_ID)))).reduce((la, lb) => la.concat(lb), []);
+	},
+
+	showTable (title, dataList, colTransforms, filter, sorter) {
+		const $modal = $(`<div class="modal-outer dropdown-menu"/>`);
+		const $wrpModal = $(`<div class="modal-wrapper">`).appendTo($(`body`)).click(() => $wrpModal.remove());
+		$modal.appendTo($wrpModal);
+		const $modalInner = $(`<div class="modal-inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
+
+		const $pnlControl = $(`<div class="split my-3"/>`).appendTo($modalInner);
+		const $pnlCols = $(`<div class="flex" style="align-items: center;"/>`).appendTo($pnlControl);
+		Object.values(colTransforms).forEach((c, i) => {
+			const $wrpCb = $(`<label class="flex-${c.flex} px-2 mr-2 no-wrap inline-flex">${c.name} </label>`).appendTo($pnlCols);
+			const $cbToggle = $(`<input type="checkbox" class="ml-1" data-name="${c.name}" checked>`)
+				.click(() => {
+					const toToggle = $modalInner.find(`.col_${i}`);
+					if ($cbToggle.prop("checked")) {
+						toToggle.show();
+					} else {
+						toToggle.hide();
+					}
+				})
+				.appendTo($wrpCb)
+		});
+		const $pnlBtns = $(`<div/>`).appendTo($pnlControl);
+		function getAsCsv () {
+			const headers = $pnlCols.find(`input:checked`).map((i, e) => $(e).data("name")).get();
+			const rows = $modalInner.find(`.data-row`).map((i, e) => $(e)).get().map($e => {
+				return $e.find(`td:visible`).map((j, d) => $(d).text()).get();
+			});
+			return DataUtil.getCsv(headers, rows);
+		}
+		const $btnCsv = $(`<div class="btn btn-primary mr-3">Download CSV</div>`).click(() => {
+			DataUtil.userDownloadText(`${title}.csv`, getAsCsv());
+		}).appendTo($pnlBtns);
+		const $btnCopy = $(`<div class="btn btn-primary">Copy CSV to Clipboard</div>`).click(() => {
+			copyText(getAsCsv());
+			showCopiedEffect($btnCopy);
+		}).appendTo($pnlBtns);
+		$modalInner.append(`<hr>`);
+
+		if (typeof filter === "object" && filter.generator) filter = filter.generator();
+
+		let temp = `<table class="table-striped" style="width: 100%;"><thead><tr class="flex">${Object.values(colTransforms).map((c, i) => `<th class="col_${i} flex-${c.flex} px-2">${c.name}</th>`).join("")}</tr></thead><tbody>`;
+		(sorter ? JSON.parse(JSON.stringify(dataList)).sort(sorter) : dataList).filter((it, i) => filter ? filter(i) : it).forEach(it => {
+			temp += `<tr class="flex data-row">`;
+			temp += Object.keys(colTransforms).map((k, i) => {
+				const c = colTransforms[k];
+				return `<td class="col_${i} flex-${c.flex} px-2">${c.transform === true ? it[k] : c.transform(it[k])}</td>`;
+			}).join("");
+			temp += `</tr>`;
+		});
+		temp += `</tbody></table>`;
+		$modalInner.append(temp);
 	}
 };
 
@@ -2719,6 +2780,25 @@ DataUtil = {
 	userDownload: function (filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		const $a = $(`<a href="data:text/json;charset=utf-8,${encodeURIComponent(data)}" download="${filename}.json" style="display: none;">DL</a>`);
+		$(`body`).append($a);
+		$a[0].click();
+		$a.remove();
+	},
+
+	getCsv (headers, rows) {
+		function escapeCsv (str) {
+			return `"${str.replace(/"/g, `""`)}"`;
+		}
+
+		function toCsv (row) {
+			return row.map(str => escapeCsv(str)).join(",");
+		}
+
+		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
+	},
+
+	userDownloadText (filename, string) {
+		const $a = $(`<a href="data:text/plain;charset=utf-8,${encodeURIComponent(string)}" download="${filename}" style="display: none;">DL</a>`);
 		$(`body`).append($a);
 		$a[0].click();
 		$a.remove();
