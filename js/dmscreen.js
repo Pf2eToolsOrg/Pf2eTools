@@ -643,7 +643,7 @@ class Panel {
 					EntryRenderer.dice.bindDmScreenPanel(p);
 					return p;
 				case PANEL_TYP_TEXTBOX:
-					p.doPopulate_TextBox(saved.c.x);
+					p.doPopulate_TextBox(saved.s.x);
 					return p;
 				case PANEL_TYP_INITIATIVE_TRACKER:
 					p.doPopulate_InitiativeTracker(saved.s);
