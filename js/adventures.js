@@ -67,7 +67,7 @@ function addAdventures (data) {
 
 		tempString +=
 			`<li ${FLTR_ID}="${adI}">
-				<a href='adventure.html#${adv.id}' title='${adv.name}' class="adv-name">
+				<a href="adventure.html#${adv.id}" title="${adv.name}" class="adv-name">
 					<span class='name'>
 						<span class="col-xs-6 col-xs-6-2">${adv.name}</span>
 						<span class="col-xs-2 col-xs-2-5 adv-detail">${adv.storyline}</span>

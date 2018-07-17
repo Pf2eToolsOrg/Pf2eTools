@@ -89,9 +89,9 @@ function addFeats (data) {
 
 		tempString += `
 			<li class="row" ${FLTR_ID}="${ftI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id='${ftI}' href='#${UrlUtil.autoEncodeHash(curfeat)}' title='${name}'>
+				<a id='${ftI}' href='#${UrlUtil.autoEncodeHash(curfeat)}' title="${name}">
 					<span class='${CLS_COL_1}'>${name}</span>
-					<span class='${CLS_COL_2}' title='${Parser.sourceJsonToFull(curfeat.source)}'>${Parser.sourceJsonToAbv(curfeat.source)}</span>
+					<span class='${CLS_COL_2}' title="${Parser.sourceJsonToFull(curfeat.source)}">${Parser.sourceJsonToAbv(curfeat.source)}</span>
 					<span class='${CLS_COL_3}'>${ability.asText}</span>
 					<span class='${CLS_COL_4}'>${prereqText}</span>
 				</a>

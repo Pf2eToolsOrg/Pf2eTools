@@ -146,7 +146,7 @@ function addRaces (data) {
 
 		tempString +=
 			`<li class="row" ${FLTR_ID}='${rcI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id='${rcI}' href='#${UrlUtil.autoEncodeHash(race)}' title='${race.name}'>
+				<a id='${rcI}' href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
 					<span class='name col-xs-4'>${race.name}</span>
 					<span class='ability col-xs-4'>${ability.asTextShort}</span>
 					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>

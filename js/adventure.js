@@ -66,7 +66,7 @@ function addAdventures (data) {
 
 		tempString +=
 			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(adv.id)}" style="display: none;">
-				<a id="${adI}" href='#${adv.id},0' title='${adv.name}'>
+				<a id="${adI}" href="#${adv.id},0" title="${adv.name}">
 					<span class='name'>${adv.name}</span>
 				</a>
 				${BookUtil.makeContentsBlock({book: adv, addOnclick: true, defaultHeadersHidden: true})}
