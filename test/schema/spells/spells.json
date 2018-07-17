@@ -201,6 +201,25 @@
 				"page": {
 					"type": "integer"
 				},
+				"otherSources": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"source": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							}
+						},
+						"required": [
+							"source",
+							"page"
+						],
+						"additionalProperties": false
+					}
+				},
 				"damageInflict": {
 					"type": "array",
 					"items": {

@@ -470,7 +470,7 @@ function handleFilterChange () {
 		const s = spellList[$(item.elm).attr(FLTR_ID)];
 		return filterBox.toDisplay(
 			f,
-			s.source,
+			s._fSources,
 			s.level,
 			[s._fClasses, s._fSubclasses],
 			s._fMeta,
@@ -557,6 +557,7 @@ function addSpells (data) {
 
 		// used for filtering
 		if (!spell.damageInflict) spell.damageInflict = [];
+		spell._fSources = ListUtil.getCompleteSources(spell);
 		spell._fMeta = getMetaFilterObj(spell);
 		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
 		spell._fSubclasses = spell.classes.fromSubclass
@@ -587,7 +588,7 @@ function addSpells (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(new FilterItem(spell.source, () => {}));
+		sourceFilter.addIfAbsent(spell._fSources);
 		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
 		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
 	}
