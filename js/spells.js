@@ -230,34 +230,6 @@ function pPostLoad () {
 				BrewUtil.makeBrewButton("manage-brew");
 				BrewUtil.bind({list, filterBox, sourceFilter});
 				ListUtil.loadState();
-				const getFilterer = () => {
-					const slIds = ListUtil.getSublistedIds();
-					if (slIds.length) {
-						const slIdSet = new Set(slIds);
-						return slIdSet.has.bind(slIdSet);
-					} else {
-						const visibleIds = new Set(ListUtil.getVisibleIds());
-						return visibleIds.has.bind(visibleIds);
-					}
-				};
-				ListUtil.bindShowTableButton(
-					"btn-show-table",
-					"Spells",
-					spellList,
-					{
-						name: {name: "Name", transform: true, flex: 1},
-						source: {name: "Source", transform: (it) => `<span class="source${Parser.stringToCasedSlug(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`, flex: 1},
-						level: {name: "Level", transform: (it) => Parser.spLevelToFull(it), flex: 1},
-						time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0]), flex: 1},
-						school: {name: "School", transform: (it) => `<span class="school_${it}">${Parser.spSchoolAbvToFull(it)}</span>`, flex: 1},
-						range: {name: "Range", transform: (it) => Parser.spRangeToFull(it), flex: 1},
-						components: {name: "Components", transform: (it) => Parser.spComponentsToFull(it), flex: 1},
-						classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it), flex: 1},
-						entries: {name: "Text", transform: (it) => EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: it}, 1), flex: 3},
-						entriesHigherLevel: {name: "At Higher Levels", transform: (it) => EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: (it || [])}, 1), flex: 2}
-					},
-					{generator: getFilterer},
-					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
 				resolve();
 			});
 	})
@@ -285,7 +257,6 @@ const subclassFilter = new GroupedFilter({
 	numGroups: 2
 });
 const classAndSubclassFilter = new MultiFilter("Classes", classFilter, subclassFilter);
-const raceFilter = new Filter({header: "Race"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
 	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_RITUAL, META_TECHNOMAGIC, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING]
@@ -362,7 +333,6 @@ const filterBox = initFilterBox(
 	sourceFilter,
 	levelFilter,
 	classAndSubclassFilter,
-	raceFilter,
 	metaFilter,
 	schoolFilter,
 	damageFilter,
@@ -503,7 +473,6 @@ function handleFilterChange () {
 			s._fSources,
 			s.level,
 			[s._fClasses, s._fSubclasses],
-			s._fRaces,
 			s._fMeta,
 			s.school,
 			s.damageInflict,
@@ -598,7 +567,6 @@ function addSpells (data) {
 				SourceUtil.hasBeenReprinted(c.subclass.name, c.subclass.source) || Parser.sourceJsonToFull(c.subclass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(c.subclass.source).startsWith(PS_PREFIX)
 			))
 			: [];
-		spell._fRaces = spell.races ? spell.races.map(r => r.baseName || r.name) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);
 		spell._fDurationType = spell.duration.map(t => t.type);
 		spell._fRangeType = getRangeType(spell.range);
@@ -621,7 +589,6 @@ function addSpells (data) {
 
 		// populate filters
 		sourceFilter.addIfAbsent(spell._fSources);
-		raceFilter.addIfAbsent(spell._fRaces);
 		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
 		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
 	}
@@ -632,7 +599,6 @@ function addSpells (data) {
 	sourceFilter.items.sort(SortUtil.ascSort);
 	classFilter.items.sort(SortUtil.ascSort);
 	subclassFilter.items.sort(SortUtil.ascSort);
-	raceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
