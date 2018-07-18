@@ -875,6 +875,7 @@ class Filter {
 	 * @param item the item to add
 	 */
 	addIfAbsent (item) {
+		if (!item) return;
 		if (item instanceof Array) item.forEach(it => this.addIfAbsent(it));
 		else if (!this.items.find(it => Filter._checkMatches(it, item))) this.items.push(item);
 	}
