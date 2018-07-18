@@ -195,6 +195,27 @@
 					],
 					"additionalProperties": false
 				},
+				"races": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
+							},
+							"baseName": {
+								"type": "string"
+							},
+							"baseSource": {
+								"type": "string"
+							}
+						},
+						"required": ["name", "source"]
+					}
+				},
 				"source": {
 					"type": "string"
 				},

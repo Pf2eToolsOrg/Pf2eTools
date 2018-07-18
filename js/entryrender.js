@@ -1424,6 +1424,10 @@ EntryRenderer.spell = {
 			}
 		}
 
+		if (spell.races) {
+			renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Races: </span>${spell.races.map(r => renderer.renderEntry(`{@race ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
+		}
+
 		if (spell.scrollNote) {
 			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
 			renderer.recursiveEntryRender(
