@@ -2874,6 +2874,7 @@ EntryRenderer.hover = {
 			reset();
 			return;
 		}
+
 		const hoverId = EntryRenderer.hover._curHovering.hoverId;
 		const ele = EntryRenderer.hover._curHovering.ele;
 		const page = EntryRenderer.hover._curHovering.cPage;
@@ -2927,7 +2928,10 @@ EntryRenderer.hover = {
 		let drag = {};
 		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"></div>`)
 			.on("mousedown", (evt) => {
-				$hov.css("z-index", 201); // temporarily display it on top
+				$hov.css({
+					"z-index": 201, // temporarily display it on top
+					"animation": "initial"
+				});
 				drag.on = true;
 				drag.startX = evt.clientX;
 				drag.startY = evt.clientY;
@@ -3026,8 +3030,8 @@ EntryRenderer.hover = {
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
-		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - $hov.width());
-		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 5);
+		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() - 6));
+		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 6);
 
 		adjustPosition(true);
 
@@ -3056,8 +3060,8 @@ EntryRenderer.hover = {
 			EntryRenderer.hover._teardownWindow(hoverId);
 		}
 
+		// alternate teardown for 'x' button
 		function altTeardown () {
-			// alternate teardown for 'x' button
 			$ele.attr("data-hover-active", false);
 			$hov.remove();
 			$(document).off(mouseUpId);
@@ -3216,7 +3220,7 @@ EntryRenderer.hover = {
 	doPopout: ($btnPop, list, index, clientX) => {
 		$btnPop.attr("data-hover-active", false);
 		const it = list[index];
-		EntryRenderer.hover.mouseOver({shiftKey: true, clientX: clientX}, $btnPop.get(), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
+		EntryRenderer.hover.mouseOver({shiftKey: true, clientX: clientX}, $btnPop.get(0), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
 	}
 };
 

@@ -328,6 +328,26 @@ dialog.dialog-modal {
 }
 
 /* hoverbox */
+@keyframes kf-fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes kf-pop-in {
+	from {
+		transform: scale(0);
+	}
+
+	to {
+		transform: scale(1);
+	}
+}
+
 .hoverbox {
 	position: fixed;
 	width: 600px;
@@ -336,6 +356,8 @@ dialog.dialog-modal {
 	box-shadow: 0 0 12px 0 black;
 	max-height: 96vh;
 	overflow-y: auto;
+	animation-name: kf-fade-in, kf-pop-in;
+	animation-duration: 150ms, 75ms;
 
 	@media (max-width: 1023px) {
 		max-width: 95vw;
