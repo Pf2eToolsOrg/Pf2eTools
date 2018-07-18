@@ -255,6 +255,17 @@ class Board {
 		});
 	}
 
+	getPanels (x, y, w = 1, h = 1) {
+		const out = [];
+		for (let wOffset = 0; wOffset < w; ++wOffset) {
+			for (let hOffset = 0; hOffset < h; ++hOffset) {
+				// TODO to out array
+				out.push(this.getPanel(x + wOffset, y + hOffset));
+			}
+		}
+		return out.filter(it => it);
+	}
+
 	getPanelPx (xPx, hPx) {
 		const dim = this.getPanelDimensions();
 		return this.getPanel(Math.floor(xPx / dim.pxWidth), Math.floor(hPx / dim.pxHeight));
@@ -346,15 +357,11 @@ class Board {
 				p.exile();
 			}
 		});
-		this.setDimensions(toLoad.w, toLoad.h);
+		this.setDimensions(toLoad.w, toLoad.h); // FIXME is this necessary?
 
 		// reload
 		// fill content first; empties can fill any remaining space
 		toLoad.ps.filter(Boolean).filter(saved => saved.t !== PANEL_TYP_EMPTY).forEach(saved => {
-			const p = Panel.fromSavedState(this, saved);
-			if (p) this.panels[p.id] = p;
-		});
-		toLoad.ps.filter(Boolean).filter(saved => saved.t === PANEL_TYP_EMPTY).forEach(saved => {
 			const p = Panel.fromSavedState(this, saved);
 			if (p) this.panels[p.id] = p;
 		});
@@ -615,9 +622,9 @@ class Panel {
 	}
 
 	static fromSavedState (board, saved) {
-		const existing = board.getPanel(saved.x, saved.y);
-		if (saved.t === PANEL_TYP_EMPTY && existing) return null; // cull empties
-		else if (existing) existing.destroy(); // prefer more recent panels
+		const existing = board.getPanels(saved.x, saved.y, saved.w, saved.h);
+		if (saved.t === PANEL_TYP_EMPTY && existing.length) return null; // cull empties
+		else if (existing.length) existing.forEach(p => p.destroy()); // prefer more recent panels
 		const p = new Panel(board, saved.x, saved.y, saved.w, saved.h);
 		p.render();
 
@@ -1643,7 +1650,7 @@ class JoystickMenu {
 				const canShrink = axis === AX_X ? this.panel.width - 1 : this.panel.height - 1;
 				if (canShrink + numPanelsCovered <= 0) numPanelsCovered = -canShrink;
 				if (numPanelsCovered === 0) return;
-				const isGrowth = ~Math.sign(numPanelsCovered);
+				const isGrowth = !!~Math.sign(numPanelsCovered);
 				if (isGrowth) {
 					switch (dir) {
 						case UP:
@@ -1663,48 +1670,72 @@ class JoystickMenu {
 
 				for (let i = Math.abs(numPanelsCovered); i > 0; --i) {
 					switch (dir) {
-						case UP:
+						case UP: {
 							if (isGrowth) {
-								this.panel.getTopNeighbours().forEach(p => {
-									if (p.canBumpTop()) p.doBumpTop();
-									else if (p.canShrinkBottom()) p.doShrinkBottom();
-									else p.exile();
-								});
+								const tNeighbours = this.panel.getTopNeighbours();
+								if (tNeighbours.filter(it => it.getEmpty()).length === tNeighbours.length) {
+									tNeighbours.forEach(p => p.destroy());
+								} else {
+									tNeighbours.forEach(p => {
+										if (p.canBumpTop()) p.doBumpTop();
+										else if (p.canShrinkBottom()) p.doShrinkBottom();
+										else p.exile();
+									});
+								}
 							}
 							this.panel.height += Math.sign(numPanelsCovered);
 							this.panel.y -= Math.sign(numPanelsCovered);
 							break;
-						case RIGHT:
+						}
+						case RIGHT: {
 							if (isGrowth) {
-								this.panel.getRightNeighbours().forEach(p => {
-									if (p.canBumpRight()) p.doBumpRight();
-									else if (p.canShrinkLeft()) p.doShrinkLeft();
-									else p.exile();
-								});
+								const rNeighbours = this.panel.getRightNeighbours();
+								if (rNeighbours.filter(it => it.getEmpty()).length === rNeighbours.length) {
+									rNeighbours.forEach(p => p.destroy());
+								} else {
+									rNeighbours.forEach(p => {
+										if (p.canBumpRight()) p.doBumpRight();
+										else if (p.canShrinkLeft()) p.doShrinkLeft();
+										else p.exile();
+									});
+								}
 							}
 							this.panel.width += Math.sign(numPanelsCovered);
 							break;
-						case DOWN:
+						}
+						case DOWN: {
 							if (isGrowth) {
-								this.panel.getBottomNeighbours().forEach(p => {
-									if (p.canBumpBottom()) p.doBumpBottom();
-									else if (p.canShrinkTop()) p.doShrinkTop();
-									else p.exile();
-								});
+								const bNeighbours = this.panel.getBottomNeighbours();
+								if (bNeighbours.filter(it => it.getEmpty()).length === bNeighbours.length) {
+									bNeighbours.forEach(p => p.destroy());
+								} else {
+									bNeighbours.forEach(p => {
+										if (p.canBumpBottom()) p.doBumpBottom();
+										else if (p.canShrinkTop()) p.doShrinkTop();
+										else p.exile();
+									});
+								}
 							}
 							this.panel.height += Math.sign(numPanelsCovered);
 							break;
-						case LEFT:
+						}
+						case LEFT: {
 							if (isGrowth) {
-								this.panel.getLeftNeighbours().forEach(p => {
-									if (p.canBumpLeft()) p.doBumpLeft();
-									else if (p.canShrinkRight()) p.doShrinkRight();
-									else p.exile();
-								});
+								const lNeighbours = this.panel.getLeftNeighbours();
+								if (lNeighbours.filter(it => it.getEmpty()).length === lNeighbours.length) {
+									lNeighbours.forEach(p => p.destroy());
+								} else {
+									lNeighbours.forEach(p => {
+										if (p.canBumpLeft()) p.doBumpLeft();
+										else if (p.canShrinkRight()) p.doShrinkRight();
+										else p.exile();
+									});
+								}
 							}
 							this.panel.width += Math.sign(numPanelsCovered);
 							this.panel.x -= Math.sign(numPanelsCovered);
 							break;
+						}
 					}
 				}
 				this.panel.setDirty(true);
