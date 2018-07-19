@@ -332,7 +332,7 @@
 					"hasSpellcasting": true
 				},
 				{
-					"name": "Eladrin; DMG",
+					"name": "Eladrin",
 					"source": "DMG",
 					"page": 286,
 					"ability": {
@@ -5699,7 +5699,7 @@
 			"npc": true
 		},
 		{
-			"name": "Hobgoblin; DMG",
+			"name": "Hobgoblin",
 			"source": "DMG",
 			"page": 282,
 			"darkvision": 60,
@@ -6530,6 +6530,308 @@
 					"type": "entries"
 				}
 			]
+		},
+		{
+			"name": "Aarakocra",
+			"source": "DMG",
+			"page": 282,
+			"ability": {
+				"dex": 2,
+				"wis": 2
+			},
+			"size": "M",
+			"speed": {
+				"walk": 20,
+				"fly": 50
+			},
+			"entries": [
+				{
+					"name": "Dive Attack",
+					"entries": [
+						"If the aarakocra is flying and dives at least 30 ft. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@dice 1d6}) damage to the target."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Talons",
+					"entries": [
+						"You are proficient with your unarmed strikes, which deal 1d4 slashing damage on a hit."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Language",
+					"entries": [
+						"You can speak, read, and write Auran."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
+		},
+		{
+			"name": "Gnome (Deep)",
+			"source": "DMG",
+			"page": 282,
+			"ability": {
+				"str": 1,
+				"dex": 2
+			},
+			"size": "M",
+			"speed": 20,
+			"darkvision": 120,
+			"entries": [
+				{
+					"name": "Innate Spellcasting",
+					"entries": [
+						"You have an innate ability to cast the following spells, requiring no material components:",
+						{
+						    "type": "list",
+							"style": "list-hang-notitle",
+						    "items": [
+								{
+									"type": "itemSpell",
+									"name": "At will:",
+									"entry": "{@spell nondetection} (self only)"
+								},
+								{
+									"type": "itemSpell",
+									"name": "1/day each:",
+									"entry": "{@spell blindness/deafness}, {@spell blur}, {@spell disguise self}"
+								}
+						    ]
+						},
+						"Intelligence is your spellcasting ability for these spells."
+					],
+					"type": "entries"
+				},
+				{
+					"type": "entries",
+					"name": "Innate Spellcasting",
+					"entries": [
+						"You have an innate ability to cast the following spells."
+					]
+				},
+				{
+					"name": "Gnome Cunning",
+					"entries": [
+						"You have advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Superior Darkvision",
+					"entries": [
+						"Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"data": {
+						"overwrite": "Darkvision"
+					},
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Gnomish, Terran, and Undercommon."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
+		},
+		{
+			"name": "Goblin",
+			"source": "DMG",
+			"page": 282,
+			"ability": {
+				"str": -2,
+				"dex": 2
+			},
+			"size": "S",
+			"speed": 30,
+			"darkvision": 60,
+			"entries": [
+				{
+					"name": "Nimble Escape",
+					"entries": [
+						"You can take the Disengage or Hide action as a bonus action on each of your turns."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Goblin."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
+		},
+		{
+			"name": "Kenku",
+			"source": "DMG",
+			"page": 282,
+			"ability": {
+				"dex": 2
+			},
+			"size": "M",
+			"speed": 30,
+			"darkvision": 60,
+			"entries": [
+				{
+					"name": "Ambusher",
+					"entries": [
+						"In the first round of a combat, you have advantage on attack rolls against any creature who is surprised."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Mimicry",
+					"entries": [
+						"You can mimic any sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom (Insight) check."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can read and write Common and Auran, but you can only speak using your Mimicry trait."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
+		},
+		{
+			"name": "Kobold",
+			"source": "DMG",
+			"page": 282,
+			"ability": {
+				"str": -4,
+				"dex": 2
+			},
+			"size": "S",
+			"speed": 30,
+			"darkvision": 60,
+			"entries": [
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Draconic."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
+		},
+		{
+			"name": "Lizardfolk",
+			"source": "DMG",
+			"page": 282,
+			"ability": {
+				"str": 2,
+				"int": -2
+			},
+			"size": "M",
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"entries": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"You can hold your breath for up to 15 minutes at a time."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Natural Armor",
+					"entries": [
+						"Your scales function as natural armor, granting you a +3 bonus to Armor Class."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Draconic."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
+		},
+		{
+			"name": "Merfolk",
+			"source": "DMG",
+			"page": 282,
+			"size": "M",
+			"speed": {
+				"walk": 10,
+				"swim": 40
+			},
+			"entries": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"You can breathe air and water."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Aquan."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
+		},
+		{
+			"name": "Orc",
+			"source": "DMG",
+			"page": 282,
+			"ability": {
+				"str": 2,
+				"int": -2
+			},
+			"size": "M",
+			"speed": 30,
+			"darkvision": 60,
+			"entries": [
+				{
+					"name": "Aggressive",
+					"entries": [
+						"As a bonus action, you can move up to your speed toward a hostile creature that you can see."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Orc."
+					],
+					"type": "entries"
+				}
+			],
+			"npc": true
 		}
 	]
 }
