@@ -39,6 +39,10 @@ function mapAbilityObjToFull (abilObj) {
 	return `${Parser.attAbvToFull(abilObj.asi)} ${abilObj.amount < 0 ? "" : "+"}${abilObj.amount}`;
 }
 
+function getSpeedRating (speed) {
+	return speed > 30 ? "Walk (Fast)" : speed < 30 ? "Walk (Slow)" : "Walk";
+}
+
 let list;
 const sourceFilter = getSourceFilter();
 const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
@@ -68,10 +72,10 @@ function onJsonLoad (data) {
 			"Charisma +1"
 		]
 	});
-	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk"]});
+	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk (Fast)", "Walk", "Walk (Slow)"]});
 	const miscFilter = new Filter({
 		header: "Miscellaneous",
-		items: ["Darkvision", "Spellcasting", "NPC Race"],
+		items: ["Darkvision", "Superior Darkvision", "Spellcasting", "NPC Race"],
 		deselFn: (it) => {
 			return it === "NPC Race";
 		}
@@ -131,9 +135,9 @@ function addRaces (data) {
 
 		const ability = race.ability ? utils_getAbilityData(race.ability) : {asTextShort: "None"};
 		race._fAbility = race.ability ? getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)) : []; // used for filtering
-		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, "Walk"].filter(it => it) : "Walk";
+		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, getSpeedRating(race.speed.walk)].filter(it => it) : getSpeedRating(race.speed);
 		race._fMisc = [
-			race.darkvision ? "Darkvision" : null,
+			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
 			race.hasSpellcasting ? "Spellcasting" : null,
 			race.npc ? "NPC Race" : null
 		].filter(it => it);

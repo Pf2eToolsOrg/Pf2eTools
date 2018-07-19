@@ -1908,61 +1908,14 @@
 				},
 				{
 					"name": "Duergar",
-					"source": "SCAG",
-					"page": 104,
-					"darkvision": 120,
-					"ability": {
-						"str": 1
-					},
-					"entries": [
-						{
-							"name": "Superior Darkvision",
-							"entries": [
-								"Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
-							],
-							"data": {
-								"overwrite": "Darkvision"
-							},
-							"type": "entries"
-						},
-						{
-							"name": "Duergar Resilience",
-							"entries": [
-								"You have advantage on saving throws against poison, and you have resistance against poison damage. You also have advantage on saving throws against illusions and against being {@condition charmed} or {@condition paralyzed}."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Languages",
-							"entries": [
-								"You can speak, read, and write Common, Dwarvish, and Undercommon."
-							],
-							"data": {
-								"overwrite": "Languages"
-							},
-							"type": "entries"
-						},
-						{
-							"name": "Duergar Magic",
-							"entries": [
-								"When you reach 3rd level, you can cast the {@spell Enlarge/Reduce} spell on yourself once with this trait, using only the spell's enlarge option. When reach 5th level, you can cast the {@spell Invisibility} spell on yourself once with this trait. You don't need material components for either spell, and you can't cast them while you're in direct sunlight, although sunlight has no effect on them once cast. You regain the ability to cast these spells with this trait when you finish a long rest. Intelligence is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Sunlight Sensitivity",
-							"entries": [
-								"You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight."
-							],
-							"type": "entries"
-						}
-					],
-					"hasSpellcasting": true
-				},
-				{
-					"name": "Duergar",
 					"source": "MTF",
 					"page": 81,
+					"otherSources": [
+						{
+							"source": "SCAG",
+							"page": 104
+						}
+					],
 					"darkvision": 120,
 					"ability": {
 						"str": 1
@@ -6324,7 +6277,7 @@
 						{
 							"name": "Lore of the Waters",
 							"entries": [
-								"You gain proficiency in history and Nature."
+								"You gain proficiency in the History and Nature skills."
 							],
 							"type": "entries"
 						}
