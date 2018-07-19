@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"type": "object",
 
 	"definitions": {
@@ -33,6 +33,50 @@
 						"const": "Varies"
 					}
 				}
+			]
+		},
+
+		"traitTag": {
+			"type": "string",
+			"enum": [
+				"Amphibious",
+				"Armor Proficiency",
+				"Damage Resistance",
+				"Improved Resting",
+				"Natural Armor",
+				"NPC Race",
+				"Powerful Build",
+				"Skill Proficiency",
+				"Spellcasting",
+				"Tool Proficiency",
+				"Unarmed Strike",
+				"Weapon Proficiency"
+			]
+		},
+
+		"languageTag": {
+			"type": "string",
+			"enum": [
+				"Abyssal",
+				"Aquan",
+				"Auran",
+				"Celestial",
+				"Choose",
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish",
+				"Giant",
+				"Gnomish",
+				"Goblin",
+				"Halfling",
+				"Infernal",
+				"Orc",
+				"Other",
+				"Primordial",
+				"Sylvan",
+				"Terran",
+				"Undercommon"
 			]
 		}
 	},
@@ -138,8 +182,17 @@
 								"darkvision": {
 									"type": "integer"
 								},
-								"hasSpellcasting": {
-									"type": "boolean"
+								"traitTags": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/traitTag"
+									}
+								},
+								"languageTags": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/languageTag"
+									}
 								}
 							},
 							"additionalProperties": false
@@ -148,11 +201,17 @@
 					"darkvision": {
 						"type": "integer"
 					},
-					"npc": {
-						"type": "boolean"
+					"traitTags": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/traitTag"
+						}
 					},
-					"hasSpellcasting": {
-						"type": "boolean"
+					"languageTags": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/languageTag"
+						}
 					}
 				},
 				"required": [

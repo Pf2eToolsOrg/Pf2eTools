@@ -73,12 +73,52 @@ function onJsonLoad (data) {
 		]
 	});
 	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk (Fast)", "Walk", "Walk (Slow)"]});
-	const miscFilter = new Filter({
-		header: "Miscellaneous",
-		items: ["Darkvision", "Superior Darkvision", "Spellcasting", "NPC Race"],
+	const traitFilter = new Filter({
+		header: "Traits",
+		items: [
+			"Amphibious",
+			"Armor Proficiency",
+			"Damage Resistance",
+			"Darkvision", "Superior Darkvision",
+			"Improved Resting",
+			"Natural Armor",
+			"NPC Race",
+			"Powerful Build",
+			"Skill Proficiency",
+			"Spellcasting",
+			"Tool Proficiency",
+			"Unarmed Strike",
+			"Weapon Proficiency"
+		],
 		deselFn: (it) => {
 			return it === "NPC Race";
 		}
+	});
+	const languageFilter = new Filter({
+		header: "Languages",
+		items: [
+			"Abyssal",
+			"Aquan",
+			"Auran",
+			"Celestial",
+			"Choose",
+			"Common",
+			"Draconic",
+			"Dwarvish",
+			"Elvish",
+			"Giant",
+			"Gnomish",
+			"Goblin",
+			"Halfling",
+			"Infernal",
+			"Orc",
+			"Other",
+			"Primordial",
+			"Sylvan",
+			"Terran",
+			"Undercommon"
+		],
+		umbrellaItem: "Choose"
 	});
 
 	filterBox = initFilterBox(
@@ -86,7 +126,8 @@ function onJsonLoad (data) {
 		asiFilter,
 		sizeFilter,
 		speedFilter,
-		miscFilter
+		traitFilter,
+		languageFilter
 	);
 
 	list.on("updated", () => {
@@ -138,9 +179,8 @@ function addRaces (data) {
 		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, getSpeedRating(race.speed.walk)].filter(it => it) : getSpeedRating(race.speed);
 		race._fMisc = [
 			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
-			race.hasSpellcasting ? "Spellcasting" : null,
-			race.npc ? "NPC Race" : null
-		].filter(it => it);
+			race.hasSpellcasting ? "Spellcasting" : null
+		].filter(it => it).concat(race.traitTags || []);
 		race._fSources = ListUtil.getCompleteSources(race);
 
 		race._slAbility = ability.asTextShort;
@@ -219,7 +259,8 @@ function handleFilterChange () {
 			r._fAbility,
 			r.size,
 			r._fSpeed,
-			r._fMisc
+			r._fMisc,
+			r.languageTags
 		);
 	});
 	FilterBox.nextIfHidden(raceList);
@@ -285,7 +326,7 @@ function loadhash (id) {
 		renderStack.push("<tr class='text'><td colspan='6'>");
 		renderer.recursiveEntryRender({type: "entries", entries: race.entries}, renderStack, 1);
 		renderStack.push("</td></tr>");
-		if (race.npc) {
+		if (race.traitTags && race.traitTags.includes("NPC Race")) {
 			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
 			renderer.recursiveEntryRender(
 				`{@i Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`

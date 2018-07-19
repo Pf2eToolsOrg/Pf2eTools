@@ -859,6 +859,10 @@ class Filter {
 	 *   (OPTIONAL)
 	 *   deselFn: a function, defaults items as "do not match this" if `deselFn(item)` is true
 	 *
+	 *   (OPTIONAL)
+	 *   umbrellaItem: e.g. "Choose Any"; an item that should allow anything containing it to always be displayed when
+	 *     checking for other items in the filter
+	 *
 	 */
 	constructor (options) {
 		this.header = options.header;
@@ -868,6 +872,7 @@ class Filter {
 		this.deselFn = options.deselFn;
 		this.attrName = options.attrName;
 		this.minimalUI = options.minimalUI;
+		this.umbrellaItem = options.umbrellaItem;
 	}
 
 	/**
@@ -911,6 +916,13 @@ class Filter {
 			return tc;
 		}
 
+		const isUmbrella = () => {
+			return this.umbrellaItem &&
+				toCheck &&
+				toCheck instanceof Array ? toCheck.includes(this.umbrellaItem) : toCheck === this.umbrellaItem &&
+				(map[toCheckVal(this.umbrellaItem)] === 0 || map[toCheckVal(this.umbrellaItem)] === 1);
+		};
+
 		if (toCheck instanceof Array) {
 			let hide = false;
 			let display = false;
@@ -922,7 +934,7 @@ class Filter {
 				}
 
 				toCheck.forEach(tc => {
-					if (map[toCheckVal(tc)] === 1) { // if any are 1 (blue) include if they match
+					if (map[toCheckVal(tc)] === 1 || isUmbrella()) { // if any are 1 (blue) include if they match
 						display = true;
 					}
 				});
@@ -954,7 +966,7 @@ class Filter {
 
 			return display && !hide;
 		} else {
-			return doCheck();
+			return doCheck.bind(this)();
 		}
 
 		function doCheck () {
@@ -962,13 +974,13 @@ class Filter {
 			let hide = false;
 			if (map._andOr.blue === "OR") {
 				if (totals.yes > 0) {
-					display = map[toCheckVal(toCheck)] === 1;
+					display = map[toCheckVal(toCheck)] === 1 || isUmbrella();
 				} else {
 					display = true;
 				}
 			} else {
 				if (totals.yes > 0) {
-					display = map[toCheckVal(toCheck)] === 1 && totals.yes === 1;
+					display = (map[toCheckVal(toCheck)] === 1 || isUmbrella()) && totals.yes === 1;
 				} else {
 					display = true;
 				}
