@@ -1332,6 +1332,7 @@ class Panel {
 	}
 
 	set$Tab (ix, type, contentMeta, $content, title) {
+		if (ix === null) ix = 0;
 		if (ix < 0) {
 			const ixPos = Math.abs(ix + 1);
 			const td = this.tabDatas[ixPos];
