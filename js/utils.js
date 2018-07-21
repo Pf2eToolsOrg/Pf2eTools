@@ -3248,7 +3248,7 @@ BrewUtil = {
 				const all = [].concat.apply([], json);
 				all.forEach(it => {
 					stack += `<li>
-						<section onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}')">
+						<section onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">
 							<span class="col-xs-4 filename">${it.name.trim().replace(/\.json$/, "")}</span>
 							<span class="col-xs-8 source" title="${it.download_url}">${it.download_url}</span>
 						</section>
@@ -3426,10 +3426,11 @@ BrewUtil = {
 			location.reload();
 		});
 
-		BrewUtil.addBrewRemote = (ele, jsonUrl) => {
+		BrewUtil.addBrewRemote = (ele, jsonUrl, doUnescape) => {
 			const $src = $(ele).find(`span.source`);
 			const cached = $src.text();
 			$src.text("Loading...");
+			if (doUnescape) jsonUrl = jsonUrl.unescapeQuotes();
 			return DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`).then((data) => {
 				BrewUtil.doHandleBrewJson(data, page, refreshBrewList);
 				$src.text("Done!");
