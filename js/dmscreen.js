@@ -259,7 +259,6 @@ class Board {
 		const out = [];
 		for (let wOffset = 0; wOffset < w; ++wOffset) {
 			for (let hOffset = 0; hOffset < h; ++hOffset) {
-				// TODO to out array
 				out.push(this.getPanel(x + wOffset, y + hOffset));
 			}
 		}
@@ -1272,7 +1271,15 @@ class Panel {
 		this.tabDatas = hisMeta.tabDatas;
 
 		this.set$Tab(hisMeta.tabIndex, hisMeta.type, hisMeta.contentMeta, $hisContent, hisMeta.title);
-		hisMeta.tabDatas.filter(it => !it.isDeleted && it.$tabButton).forEach(it => this.$pnlTabs.children().last().before(it.$tabButton));
+		hisMeta.tabDatas
+			.forEach((it, ix) => {
+				if (!it.isDeleted && it.$tabButton) {
+					// regenerate tab buttons to refer to the correct tab
+					it.$tabButton.remove();
+					it.$tabButton = this._get$BtnSelTab(ix, it.title);
+					this.$pnlTabs.children().last().before(it.$tabButton);
+				}
+			});
 	}
 
 	getNextTabIndex () {
@@ -1286,6 +1293,24 @@ class Panel {
 			Panel._get$eleLoading(),
 			TITLE_LOADING
 		);
+	}
+
+	_get$BtnSelTab (ix, title) {
+		title = title || "[Untitled]";
+		const $btnSelTab = $(`<div class="btn btn-default content-tab"><span class="content-tab-title">${title}</span></div>`)
+			.on("mousedown", (evt) => {
+				if (evt.which === 1) {
+					this.setActiveTab(ix);
+				} else if (evt.which === 2) {
+					this.doCloseTab(ix);
+				}
+			});
+		const $btnCloseTab = $(`<span class="glyphicon glyphicon-remove content-tab-remove"/>`)
+			.on("mousedown", (evt) => {
+				evt.stopPropagation();
+				this.doCloseTab(ix);
+			}).appendTo($btnSelTab);
+		return $btnSelTab;
 	}
 
 	set$Tab (ix, type, contentMeta, $content, title) {
@@ -1305,20 +1330,7 @@ class Panel {
 			if ($btnOld) this.tabDatas[ix].$tabButton = $btnOld;
 
 			const doAdd$BtnSelTab = (ix, title) => {
-				title = title || "[Untitled]";
-				const $btnSelTab = $(`<div class="btn btn-default content-tab"><span class="content-tab-title">${title}</span></div>`)
-					.on("mousedown", (evt) => {
-						if (evt.which === 1) {
-							this.setActiveTab(ix);
-						} else if (evt.which === 2) {
-							this.doCloseTab(ix);
-						}
-					});
-				const $btnCloseTab = $(`<span class="glyphicon glyphicon-remove content-tab-remove"/>`)
-					.on("mousedown", (evt) => {
-						evt.stopPropagation();
-						this.doCloseTab(ix);
-					}).appendTo($btnSelTab);
+				const $btnSelTab = this._get$BtnSelTab(ix, title);
 				this.$pnlTabs.children().last().before($btnSelTab);
 				return $btnSelTab;
 			};
@@ -1526,15 +1538,11 @@ class JoystickMenu {
 				} else {
 					const her = this.panel.board.hoveringPanel;
 					// TODO this should ideally peel off the selected tab and transfer it to the target pane, instead of swapping
-					if (her.getEmpty()) {
-						her.setFromPeer(this.panel.getPanelMeta(), this.panel.$content);
-						this.panel = this.panel.getReplacementPanel();
-					} else {
-						const herMeta = her.getPanelMeta();
-						const $herContent = her.get$Content();
-						her.setFromPeer(this.panel.getPanelMeta(), this.panel.get$Content());
-						this.panel.setFromPeer(herMeta, $herContent);
-					}
+					const herMeta = her.getPanelMeta();
+					const $herContent = her.get$Content();
+					her.setFromPeer(this.panel.getPanelMeta(), this.panel.get$Content());
+					this.panel.setFromPeer(herMeta, $herContent);
+
 					this.panel.doHideJoystick();
 					her.doShowJoystick();
 				}
