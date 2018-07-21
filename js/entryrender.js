@@ -3510,7 +3510,9 @@ EntryRenderer.dice = {
 
 		if (com === "/help") {
 			EntryRenderer.dice._showMessage(
-				`Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
+				`Drop highest (<span class="out-roll-item-code">2d4dh1</span>) and lowest (<span class="out-roll-item-code">4d6dl1</span>) are supported.<br>
+				Up and down arrow keys cycle input history.<br>
+Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
 				Use <span class="out-roll-item-code">#myName</span> to roll a macro.`,
