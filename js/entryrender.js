@@ -3030,7 +3030,7 @@ EntryRenderer.hover = {
 		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
 		else $hov.css("top", vpOffsetT + $(ele).height() + 1);
 
-		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() - 6));
+		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() + 6));
 		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 6);
 
 		adjustPosition(true);
