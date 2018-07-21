@@ -728,6 +728,10 @@ class Panel {
 		});
 	}
 
+	static isNonExilableType (type) {
+		return type === PANEL_TYP_ROLLBOX || type === PANEL_TYP_TUBE || type === PANEL_TYP_TWITCH;
+	}
+
 	doPopulate_Empty (ixOpt) {
 		this.close$TabContent(ixOpt);
 	}
@@ -1118,6 +1122,20 @@ class Panel {
 
 	getReplacementPanel () {
 		const replacement = new Panel(this.board, this.x, this.y, this.width, this.height);
+
+		if (this.tabDatas.length > 1 && this.tabDatas.filter(it => !it.isDeleted && (Panel.isNonExilableType(it.type))).length) {
+			const prevTabIx = this.tabDatas.findIndex(it => !it.isDeleted);
+			if (~prevTabIx) {
+				this.setActiveTab(prevTabIx);
+			}
+			// otherwise, it should be the currently displayed panel, and so will be destroyed on exile
+
+			this.tabDatas.filter(it => it.type === PANEL_TYP_ROLLBOX).forEach(it => {
+				it.isDeleted = true;
+				EntryRenderer.dice.unbindDmScreenPanel();
+			});
+		}
+
 		this.exile();
 		this.board.addPanel(replacement);
 		this.board.doCheckFillSpaces();
@@ -1317,8 +1335,10 @@ class Panel {
 		if (ix < 0) {
 			const ixPos = Math.abs(ix + 1);
 			const td = this.tabDatas[ixPos];
-			td.isDeleted = true;
-			if (td.$tabButton) td.$tabButton.detach();
+			if (td) {
+				td.isDeleted = true;
+				if (td.$tabButton) td.$tabButton.detach();
+			}
 		} else {
 			const $btnOld = (this.tabDatas[ix] || {}).$tabButton; // preserve tab button
 			this.tabDatas[ix] = {
@@ -1373,7 +1393,7 @@ class Panel {
 	}
 
 	exile () {
-		if (this.type === PANEL_TYP_ROLLBOX || this.type === PANEL_TYP_TUBE || this.type === PANEL_TYP_TWITCH) this.destroy();
+		if (Panel.isNonExilableType(this.type)) this.destroy();
 		else {
 			if (this.$pnl) this.$pnl.detach();
 			this.board.exilePanel(this.id);
