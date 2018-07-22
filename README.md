@@ -48,9 +48,9 @@ Replace: `$1$3`
 - `’` should be replaced with `'`
 - `“` and `”` should be replaced with `"`
 - `—` (em dash) should be replaced with `\u2014` (Unicode for em dash)
-- `–` and `\u2013` (en dash) should be replaced with `\u2014`
+- `–` should be replaced with `\u2013` (en dash), and should only be used for unary minus signs, in the case of penalties. For example, `"You have a -5 penalty to..."` should become `"You have a \u20135 penalty to..."`. Otherwise, both `–` and `\u2013` should be replaced with `\u2014`
 - `•` should be not be used unless the JSON in question is not yet covered by the entryRenderer, i.e. should be encoded as a list
-- the only Unicode escape sequence allowed is `\u2014`; all other characters (unless noted above) should be stored as-is
+- the only Unicode escape sequences allowed are `\u2014` and `\u2013`; all other characters (unless noted above) should be stored as-is
 
 #### Convention for dashes
 - `-` (hyphen) should **only** be used to hyphenate words, e.g. `60-foot` and `18th-level`
