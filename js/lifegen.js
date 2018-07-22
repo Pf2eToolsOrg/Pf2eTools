@@ -14,38 +14,26 @@ function _testRng (rollFn) {
 	return counts;
 }
 
-function _getFromTable (table, roll) {
-	const it = {};
-	Object.assign(it, table.find(it => {
-		return it.min === roll || (it.max && roll >= it.min && roll <= it.max);
-	}));
-	Object.keys(it).forEach(k => {
-		if (typeof it[k] === "function") {
-			it[k] = it[k]();
-		}
-	});
-	return it;
-}
 function rollSuppAlignment () {
-	return _getFromTable(SUPP_ALIGNMENT, RNG(6) + RNG(6) + RNG(6));
+	return GenUtil.getFromTable(SUPP_ALIGNMENT, RNG(6) + RNG(6) + RNG(6));
 }
 function rollSuppDeath () {
-	return _getFromTable(SUPP_DEATH, RNG(12));
+	return GenUtil.getFromTable(SUPP_DEATH, RNG(12));
 }
 function rollSuppClass () {
-	return _getFromTable(SUPP_CLASS, RNG(100));
+	return GenUtil.getFromTable(SUPP_CLASS, RNG(100));
 }
 function rollSuppOccupation () {
-	return _getFromTable(SUPP_OCCUPATION, RNG(100));
+	return GenUtil.getFromTable(SUPP_OCCUPATION, RNG(100));
 }
 function rollSuppRace () {
-	return _getFromTable(SUPP_RACE, RNG(100));
+	return GenUtil.getFromTable(SUPP_RACE, RNG(100));
 }
 function rollSuppRelationship () {
-	return _getFromTable(SUPP_RELATIONSHIP, RNG(4) + RNG(4) + RNG(4));
+	return GenUtil.getFromTable(SUPP_RELATIONSHIP, RNG(4) + RNG(4) + RNG(4));
 }
 function rollSuppStatus () {
-	return _getFromTable(SUPP_STATUS, RNG(6) + RNG(6) + RNG(6));
+	return GenUtil.getFromTable(SUPP_STATUS, RNG(6) + RNG(6) + RNG(6));
 }
 
 function getPersonDetails (doRace, isParent) {
@@ -69,31 +57,31 @@ function getPersonDetails (doRace, isParent) {
 }
 
 function rollEvtAdventure () {
-	return _getFromTable(LIFE_EVENTS_ADVENTURES, RNG(100));
+	return GenUtil.getFromTable(LIFE_EVENTS_ADVENTURES, RNG(100));
 }
 function rollEvtArcaneMatter () {
-	return _getFromTable(LIFE_EVENTS_ARCANE_MATTERS, RNG(10));
+	return GenUtil.getFromTable(LIFE_EVENTS_ARCANE_MATTERS, RNG(10));
 }
 function rollEvtBoon () {
-	return _getFromTable(LIFE_EVENTS_BOONS, RNG(10));
+	return GenUtil.getFromTable(LIFE_EVENTS_BOONS, RNG(10));
 }
 function rollEvtCrime () {
-	return _getFromTable(LIFE_EVENTS_CRIME, RNG(8));
+	return GenUtil.getFromTable(LIFE_EVENTS_CRIME, RNG(8));
 }
 function rollEvtPunishment () {
-	return _getFromTable(LIFE_EVENTS_PUNISHMENT, RNG(12));
+	return GenUtil.getFromTable(LIFE_EVENTS_PUNISHMENT, RNG(12));
 }
 function rollEvtSupernatural () {
-	return _getFromTable(LIFE_EVENTS_SUPERNATURAL, RNG(100));
+	return GenUtil.getFromTable(LIFE_EVENTS_SUPERNATURAL, RNG(100));
 }
 function rollEvtTragedy () {
-	return _getFromTable(LIFE_EVENTS_TRAGEDIES, RNG(12));
+	return GenUtil.getFromTable(LIFE_EVENTS_TRAGEDIES, RNG(12));
 }
 function rollEvtWar () {
-	return _getFromTable(LIFE_EVENTS_WAR, RNG(12));
+	return GenUtil.getFromTable(LIFE_EVENTS_WAR, RNG(12));
 }
 function rollEvtWeird () {
-	return _getFromTable(LIFE_EVENTS_WEIRD_STUFF, RNG(12));
+	return GenUtil.getFromTable(LIFE_EVENTS_WEIRD_STUFF, RNG(12));
 }
 
 function choose (...lst) {
@@ -158,7 +146,7 @@ const BIRTHPLACES = [
 ];
 
 function absentParent (parent) {
-	return _getFromTable(ABSENT_PARENT, RNG(4)).result.replace("parent", `$& ${fmtChoice(parent)}</i>`);
+	return GenUtil.getFromTable(ABSENT_PARENT, RNG(4)).result.replace("parent", `$& ${fmtChoice(parent)}</i>`);
 }
 
 function absentBothParents () {
@@ -300,7 +288,7 @@ const LIFE_EVENTS_ARCANE_MATTERS = [
 	{"min": 7, "result": "You turned invisible for a time."},
 	{"min": 8, "result": "You identified an illusion for what it was."},
 	{"min": 9, "result": "You saw a creature being conjured by magic."},
-	{"min": 10, "result": () => `Your fortune was read by a diviner. Roll twice on the Life Events table, but don't apply the results. Instead, the DM picks one event as a portent of your future (which might or might not come true). ${fmtChoice(_getFromTable(LIFE_EVENTS, RNG(100)).display || _getFromTable(LIFE_EVENTS, RNG(100)).result)} ${fmtChoice(_getFromTable(LIFE_EVENTS, RNG(100)).display || _getFromTable(LIFE_EVENTS, RNG(100)).result)}`, "display": "Your fortune was read by a diviner. Roll twice on the Life Events table, but don't apply the results. Instead, the DM picks one event as a portent of your future (which might or might not come true)."}
+	{"min": 10, "result": () => `Your fortune was read by a diviner. Roll twice on the Life Events table, but don't apply the results. Instead, the DM picks one event as a portent of your future (which might or might not come true). ${fmtChoice(GenUtil.getFromTable(LIFE_EVENTS, RNG(100)).display || GenUtil.getFromTable(LIFE_EVENTS, RNG(100)).result)} ${fmtChoice(GenUtil.getFromTable(LIFE_EVENTS, RNG(100)).display || GenUtil.getFromTable(LIFE_EVENTS, RNG(100)).result)}`, "display": "Your fortune was read by a diviner. Roll twice on the Life Events table, but don't apply the results. Instead, the DM picks one event as a portent of your future (which might or might not come true)."}
 ];
 
 const LIFE_EVENTS_BOONS = [
@@ -363,7 +351,7 @@ const LIFE_EVENTS_TRAGEDIES = [
 	{"min": 9, "result": "You did something that brought terrible shame to you in the eyes of your family. You might have been involved in a scandal, dabbled in dark magic, or offended someone important. The attitude of your family members toward you becomes indifferent at best, though they might eventually forgive you."},
 	{"min": 10, "result": "For a reason you were never told, you were exiled from your community. You then either wandered in the wilderness for a time or promptly found a new place to live."},
 	{"min": 11, "result": () => `A romantic relationship ended. Roll a d6 ${fmtChoice(RNG(6))}. An odd number means it ended with bad feelings, while an even number means it ended amicably.`, "display": "A romantic relationship ended. Roll a d6. An odd number means it ended with bad feelings, while an even number means it ended amicably."},
-	{"min": 12, "result": () => `A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.`, "display": "A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.", "nextRoll": () => { const r = RNG(12); const p = _getFromTable(SUPP_DEATH, r); return `${p.result}${r === 2 && RNG(12) === 1 ? ` ${fmtChoice("you were responsible")}` : ""}` }}
+	{"min": 12, "result": () => `A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.`, "display": "A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly.", "nextRoll": () => { const r = RNG(12); const p = GenUtil.getFromTable(SUPP_DEATH, r); return `${p.result}${r === 2 && RNG(12) === 1 ? ` ${fmtChoice("you were responsible")}` : ""}` }}
 ];
 
 const LIFE_EVENTS_WAR = [
@@ -548,7 +536,7 @@ let race;
 function sectParents () {
 	knowParents = RNG(100) > 5;
 	const selRace = $selRace.val();
-	race = selRace === "Random" ? _getFromTable(SUPP_RACE, RNG(100)).result : selRace;
+	race = selRace === "Random" ? GenUtil.getFromTable(SUPP_RACE, RNG(100)).result : selRace;
 
 	const $parents = $(`#parents`);
 	const knowParentsStr = knowParents ? "<b>Parents:</b> You know who your parents are or were." : "<b>Parents:</b> You do not know who your parents were.";
@@ -557,13 +545,13 @@ function sectParents () {
 	if (knowParents) {
 		switch (race) {
 			case "Half-elf":
-				parentage = `<b>${race} parents:</b> ${_getFromTable(PARENTS_HALF_ELF, RNG(8)).result}`;
+				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_HALF_ELF, RNG(8)).result}`;
 				break;
 			case "Half-orc":
-				parentage = `<b>${race} parents:</b> ${_getFromTable(PARENTS_HALF_ORC, RNG(8)).result}`;
+				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_HALF_ORC, RNG(8)).result}`;
 				break;
 			case "Tiefling":
-				parentage = `<b>${race} parents:</b> ${_getFromTable(PARENTS_TIEFLING, RNG(8)).result}`;
+				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_TIEFLING, RNG(8)).result}`;
 				break;
 		}
 	}
@@ -583,7 +571,7 @@ function sectParents () {
 function sectBirthplace () {
 	const $birthplace = $(`#birthplace`);
 	const rollBirth = RNG(100);
-	const birth = `<b>Birthplace:</b> ${_getFromTable(BIRTHPLACES, rollBirth).result}`;
+	const birth = `<b>Birthplace:</b> ${GenUtil.getFromTable(BIRTHPLACES, rollBirth).result}`;
 
 	const strangeBirth = RNG(100) === 100 ? "A strange event coincided with your birth: the moon briefly turning red, all the milk within a mile spoiling, the water in the area freezing solid in midsummer, all the iron in the home rusting or turning to silver, or some other unusual event of your choice" : "";
 	$birthplace.html(concatSentences(birth, strangeBirth));
@@ -639,7 +627,7 @@ function sectSiblings () {
 function sectFamily () {
 	const $family = $(`#family`);
 	$family.empty();
-	$family.append(`<b>Family:</b> ${_getFromTable(FAMILY, RNG(100)).result}<br>`);
+	$family.append(`<b>Family:</b> ${GenUtil.getFromTable(FAMILY, RNG(100)).result}<br>`);
 	let famIndex = 1;
 	const $btnSuppFam = $(`<button class="btn btn-xs btn-default btn-supp-fam noprint"></button>`).on("click", () => {
 		const supDetails = getPersonDetails();
@@ -652,14 +640,14 @@ function sectFamily () {
 	$family.append(`<span class="note">You can roll on the Relationship table to determine how your family members or other important figures in your life feel about you. You can also use the Race, Occupation, and Alignment tables to learn more about the family members or guardians who raised you.</span>`);
 	$family.append($btnSuppFam);
 
-	const rollFamLifestyle = _getFromTable(FAMILY_LIFESTYLE, RNG(6) + RNG(6) + RNG(6));
+	const rollFamLifestyle = GenUtil.getFromTable(FAMILY_LIFESTYLE, RNG(6) + RNG(6) + RNG(6));
 	$family.append(`<b>Family lifestyle:</b> ${rollFamLifestyle.result}<br>`);
 	const rollFamHome = Math.min(Math.max(RNG(100) + rollFamLifestyle.modifier, 0), 111);
-	const rollFamHomeRes = _getFromTable(CHILDHOOD_HOME, rollFamHome).result;
+	const rollFamHomeRes = GenUtil.getFromTable(CHILDHOOD_HOME, rollFamHome).result;
 	$family.append(`<b>Childhood Home:</b> ${rollFamHomeRes}<br>`);
 
 	const rollChildMems = Math.min(Math.max(RNG(6) + RNG(6) + RNG(6) + Number($selCha.val()), 3), 18);
-	$family.append(`<b>Childhood memories</b>: ${_getFromTable(CHILDHOOD_MEMORIES, rollChildMems).result}`);
+	$family.append(`<b>Childhood memories</b>: ${GenUtil.getFromTable(CHILDHOOD_MEMORIES, rollChildMems).result}`);
 }
 
 // PERSONAL DECISIONS
@@ -685,11 +673,11 @@ function sectLifeEvents () {
 	const $events = $(`#events`).empty();
 	marriageIndex = 0;
 	const $selAge = $(`#age`);
-	const age = _getFromTable(LIFE_EVENTS_AGE, Number($selAge.val()) || RNG(100));
+	const age = GenUtil.getFromTable(LIFE_EVENTS_AGE, Number($selAge.val()) || RNG(100));
 	$events.append(`<b>Current age:</b> ${age.result} ${fmtChoice(`${age.age} year${age.age > 1 ? "s" : ""} old`)}`);
 	for (let i = 0; i < age.events; ++i) {
 		$events.append(`<h5>Life Event ${i + 1}</h5>`);
-		const evt = _getFromTable(LIFE_EVENTS, RNG(100));
+		const evt = GenUtil.getFromTable(LIFE_EVENTS, RNG(100));
 		$events.append(`${evt.result}<br>`);
 		if (evt.nextRoll) {
 			if (evt.nextRoll.title) {
