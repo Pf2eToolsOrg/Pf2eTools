@@ -2320,19 +2320,15 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	border: 1px solid transparent;
 }
 
-.dropdown-menu-filter .slider.slider-horizontal {
+.dropdown-menu-filter .filter-slider {
 	width: calc(100% - 80px);
 	margin-top: 5px;
-	margin-bottom: 7px;
+	margin-bottom: 35px;
 }
 
-.dropdown-menu-filter .slider-handle {
-	border-radius: 3px;
-	width: 14px;
-	height: 16px;
-	top: 2px;
-	border: 1px solid #ccc;
-	background: white;
+.dropdown-menu-filter .ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
+.dropdown-menu-filter .ui-slider-label {
+	color: #337ab7;
 }
 
 #filter-search-input-group > *:first-child,
@@ -3656,7 +3652,30 @@ table.stats tr.homebrew-hover {
 		background: #323232;
 	}
 
-	.dropdown-menu-filter .slider-handle {
+	.dropdown-menu-filter .filter-slider {
+		background: transparent;
+	}
+
+	.dropdown-menu-filter .ui-slider-tip {
+		background: #333;
+		color: $font-color;
+	}
+
+	.dropdown-menu-filter .ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
+	.dropdown-menu-filter .ui-slider-label {
+		color: $link-color;
+	}
+
+	.dropdown-menu-filter .ui-slider-pips .ui-slider-line {
+		background-color: #444;
+	}
+
+	.dropdown-menu-filter .ui-slider-pips .ui-slider-pip-inrange .ui-slider-line {
+		background-color: #ccc;
+	}
+
+	.dropdown-menu-filter .ui-slider-handle,
+	.dropdown-menu-filter .ui-slider-range {
 		background: rgba(128, 128, 128, 0.5);
 	}
 
