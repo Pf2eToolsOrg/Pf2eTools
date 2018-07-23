@@ -47,8 +47,10 @@ Replace: `$1$3`
 #### Character replacement
 - `’` should be replaced with `'`
 - `“` and `”` should be replaced with `"`
-- `—` (em dash) should be replaced with `\u2014` (Unicode for em dash)
-- `–` should be replaced with `\u2013` (en dash), and should only be used for unary minus signs, in the case of penalties. For example, `"You have a -5 penalty to..."` should become `"You have a \u20135 penalty to..."`. Otherwise, both `–` and `\u2013` should be replaced with `\u2014`
+- `—` (em dash) should be replaced with `\u2014` (Unicode for em dash). This character should be used for parenthetical dash pairs, or for marking empty table rows.
+- `–` should be replaced with `\u2013` (Unicode for en dash). This character should be used for joining numerical ranges, e.g. `1-5` should become `1\u20135`. 
+- `−` should be replaced with `\u2212` (Unicode for minus sign). This character should be used for unary minus signs, in the case of penalties. For example, `"You have a -5 penalty to..."` should become `"You have a \u22125 penalty to..."`.
+	- Note: Regular dash characters should generally only be used for hyphenation.
 - `•` should be not be used unless the JSON in question is not yet covered by the entryRenderer, i.e. should be encoded as a list
 - the only Unicode escape sequences allowed are `\u2014` and `\u2013`; all other characters (unless noted above) should be stored as-is
 
