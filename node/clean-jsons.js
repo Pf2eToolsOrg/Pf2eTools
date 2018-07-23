@@ -27,7 +27,7 @@ function listFiles (dir) {
 
 const replacements = {
 	"—": "\\u2014",
-	"–": "\\u2014",
+	"–": "\\u2013",
 	"’": "'",
 	"“": '\\"',
 	"”": '\\"'
