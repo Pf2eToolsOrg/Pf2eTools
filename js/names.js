@@ -130,7 +130,7 @@ function rollAgainstTable (iLoad, jLoad) {
 	}
 
 	// add dice results
-	result = result.replace(DICE_REGEX, function (match) {
+	result = result.replace(RollerUtil.DICE_REGEX, function (match) {
 		const r = EntryRenderer.dice.parseRandomise(match);
 		return `<span class="roller" onclick="reroll(this)">${match}</span> <span class="result">(${r.total})</span>`
 	});

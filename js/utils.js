@@ -2986,7 +2986,9 @@ RollerUtil = {
 	isRollCol (string) {
 		if (typeof string !== "string") return false;
 		return !!/^({@dice )?(\d+)?d\d+([+-](\d+)?d\d+)*(})?$/.exec(string.trim());
-	}
+	},
+
+	DICE_REGEX: /([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?/g
 };
 
 // STORAGE =============================================================================================================
