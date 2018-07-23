@@ -309,7 +309,7 @@ function loadhash (id) {
 		`);
 
 		$pgContent.find("th.name").html(`
-			<span class="stats-name">${race.name}</span>
+			<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${race.source.escapeQuotes()}')">${race.name}</span>
 			${race.soundClip ? getPronunciationButton() : ""}
 			<span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
 		`);

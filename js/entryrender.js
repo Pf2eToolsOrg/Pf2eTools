@@ -1115,7 +1115,7 @@ EntryRenderer.utils = {
 		return `<tr>
 					<th class="name" colspan="6">
 						<div class="name-inner">
-							<span class="stats-name" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source}')">${prefix || ""}${it.name}${suffix || ""}</span>
+							<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it.name}${suffix || ""}</span>
 							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${EntryRenderer.utils.getSourceSubText(it)}">
 								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 							</span>
@@ -1125,7 +1125,8 @@ EntryRenderer.utils = {
 	},
 
 	_handleNameClick (ele, source) {
-		copyText(`"${$(ele).text().toLowerCase()}${source === SRC_PHB ? "" : `|${source}`}"`);
+		source = source.unescapeQuotes();
+		copyText($(ele).text());
 		showCopiedEffect($(ele));
 	},
 

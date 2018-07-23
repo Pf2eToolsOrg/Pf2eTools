@@ -360,7 +360,6 @@ function loadhash (id) {
 
 	const source = item.source;
 	const sourceFull = Parser.sourceJsonToFull(source);
-	$content.find("th.name").html(`<span class="stats-name">${item.name}</span><span class="stats-source source${item.source}" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>`);
 
 	const type = item.type || "";
 	if (type === "INS" || type === "GS") item.additionalSources = item.additionalSources || [];

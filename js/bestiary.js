@@ -623,7 +623,7 @@ function loadhash (id) {
 
 		const imgLink = mon.tokenURL || UrlUtil.link(`img/${source}/${name.replace(/"/g, "")}.png`);
 		$content.find("th.name").html(
-			`<span class="stats-name">${name}</span>
+			`<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${mon.source.escapeQuotes()}')">${name}</span>
 			${mon.soundClip ? getPronunciationButton() : ""}
 		<span class="stats-source source${source}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>
 		<a href="${imgLink}" target="_blank">
