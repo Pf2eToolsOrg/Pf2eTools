@@ -15,6 +15,7 @@ const PANEL_TYP_ROLLBOX = 2;
 const PANEL_TYP_TEXTBOX = 3;
 const PANEL_TYP_RULES = 4;
 const PANEL_TYP_INITIATIVE_TRACKER = 5;
+const PANEL_TYP_UNIT_CONVERTER = 6;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
@@ -654,6 +655,9 @@ class Panel {
 				case PANEL_TYP_INITIATIVE_TRACKER:
 					p.doPopulate_InitiativeTracker(saved.s);
 					return p;
+				case PANEL_TYP_UNIT_CONVERTER:
+					p.doPopulate_UnitConverter(saved.s);
+					return p;
 				case PANEL_TYP_TUBE:
 					p.doPopulate_YouTube(saved.c.u);
 					return p;
@@ -808,6 +812,15 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(this.board, state)),
 			"Initiative Tracker"
+		);
+	}
+
+	doPopulate_UnitConverter (state = {}) {
+		this.set$ContentTab(
+			PANEL_TYP_UNIT_CONVERTER,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(UnitConverter.make$Converter(this.board, state)),
+			"Unit Converter"
 		);
 	}
 
@@ -1464,6 +1477,12 @@ class Panel {
 						s: $content.find(`.dm-init`).data("getState")()
 					};
 				}
+				case PANEL_TYP_UNIT_CONVERTER: {
+					return {
+						t: type,
+						s: $content.find(`.dm-unitconv`).data("getState")()
+					};
+				}
 				case PANEL_TYP_TUBE:
 				case PANEL_TYP_TWITCH:
 				case PANEL_TYP_TWITCH_CHAT:
@@ -2089,6 +2108,14 @@ class AddMenuSpecialTab extends AddMenuTab {
 			const $btnText = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();
+				this.menu.doClose();
+			});
+			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+
+			const $wrpConverter = $(`<div class="tab-body-row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
+			const $btnConverter = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpConverter);
+			$btnConverter.on("click", () => {
+				this.menu.pnl.doPopulate_UnitConverter();
 				this.menu.doClose();
 			});
 
@@ -2954,6 +2981,118 @@ class NoteBox {
 	}
 }
 
+class UnitConverter {
+	static make$Converter (board, state) {
+		const units = [
+			new UnitConverterUnit("Feet", "0.305", "Metres", "3.28"),
+			new UnitConverterUnit("Miles", "1.61", "Kilometres", "0.620"),
+			new UnitConverterUnit("Pounds", "0.454", "Kilograms", "2.20"),
+			new UnitConverterUnit("Gallons", "3.79", "Litres", "0.264")
+		];
+
+		let ixConv = state.c || 0;
+		let dirConv = state.d || 0;
+
+		const $wrpConverter = $(`<div class="dm-unitconv split-column"/>`);
+
+		const $tblConvert = $(`<table class="table-striped"/>`).appendTo($wrpConverter);
+		const $tbodyConvert = $(`<tbody/>`).appendTo($tblConvert);
+		units.forEach((u, i) => {
+			const $tr = $(`<tr class="row clickable"/>`).appendTo($tbodyConvert);
+			const clickL = () => {
+				ixConv = i;
+				dirConv = 0;
+				updateDisplay();
+			};
+			const clickR = () => {
+				ixConv = i;
+				dirConv = 1;
+				updateDisplay();
+			};
+			$(`<td class="col-xs-3">${u.n1}</td>`).click(clickL).appendTo($tr);
+			$(`<td class="col-xs-3 code">×${u.x1.padStart(5)}</td>`).click(clickL).appendTo($tr);
+			$(`<td class="col-xs-3">${u.n2}</td>`).click(clickR).appendTo($tr);
+			$(`<td class="col-xs-3 code">×${u.x2.padStart(5)}</td>`).click(clickR).appendTo($tr);
+		});
+
+		const $wrpIpt = $(`<div class="split wrp-ipt"/>`).appendTo($wrpConverter);
+
+		const $wrpLeft = $(`<div class="split-column wrp-ipt-inner"/>`).appendTo($wrpIpt);
+		const $lblLeft = $(`<span class="bold"/>`).appendTo($wrpLeft);
+		const $iptLeft = $(`<textarea class="ipt form-control">${state.i || ""}</textarea>`).appendTo($wrpLeft);
+
+		const $btnSwitch = $(`<div class="btn btn-primary btn-switch"><span class="glyphicon glyphicon-refresh"></span></div>`).click(() => {
+			dirConv = Number(!dirConv);
+			updateDisplay();
+		}).appendTo($wrpIpt);
+
+		const $wrpRight = $(`<div class="split-column wrp-ipt-inner"/>`).appendTo($wrpIpt);
+		const $lblRight = $(`<span class="bold"/>`).appendTo($wrpRight);
+		const $iptRight = $(`<textarea class="ipt form-control" disabled/>`).appendTo($wrpRight);
+
+		const updateDisplay = () => {
+			const it = units[ixConv];
+			const [lblL, lblR] = dirConv === 0 ? [it.n1, it.n2] : [it.n2, it.n1];
+			$lblLeft.text(lblL);
+			$lblRight.text(lblR);
+			handleInput();
+		};
+
+		const mMaths = /^([0-9.+\-*/ ()])*$/;
+		const handleInput = () => {
+			const showInvalid = () => {
+				$iptLeft.addClass(`ipt-invalid`);
+				$iptRight.val("");
+			};
+			const showValid = () => {
+				$iptLeft.removeClass(`ipt-invalid`);
+			};
+
+			const val = $iptLeft.val();
+			if (!val && !val.trim()) {
+				showValid();
+				$iptRight.val("");
+			} else if (mMaths.exec(val)) {
+				showValid();
+				const it = units[ixConv];
+				const mL = [Number(it.x1), Number(it.x2)][dirConv];
+				try {
+					/* eslint-disable */
+					const total = eval(val);
+					/* eslint-enable */
+					$iptRight.val(total * mL);
+				} catch (e) {
+					$iptLeft.addClass(`ipt-invalid`);
+					$iptRight.val("")
+				}
+			} else showInvalid();
+		};
+
+		DmScreenUtil.bindTypingEnd($iptLeft, handleInput);
+
+		updateDisplay();
+
+		$wrpConverter.data("getState", () => {
+			return {
+				c: ixConv,
+				d: dirConv,
+				i: $iptLeft.val()
+			};
+		});
+
+		return $wrpConverter;
+	}
+}
+
+class UnitConverterUnit {
+	constructor (n1, x1, n2, x2) {
+		this.n1 = n1;
+		this.x1 = x1;
+		this.n2 = n2;
+		this.x2 = x2;
+	}
+}
+
 class DmScreenUtil {
 	static getSearchNoResults () {
 		return `<div class="panel-tab-message"><i>No results.</i></div>`;
@@ -2977,33 +3116,50 @@ class DmScreenUtil {
 	 *  `showWait` -- function which displays loading dots
 	 */
 	static bindAutoSearch ($srch, opt) {
-		// auto-search after 100ms
-		const TYPE_TIMEOUT_MS = 100;
+		DmScreenUtil.bindTypingEnd(
+			$srch,
+			() => {
+				opt.search();
+			},
+			(e) => {
+				if (e.which === 13) {
+					opt.flags.doClickFirst = true;
+					opt.search();
+				}
+			},
+			() => {
+				if (opt.flags.isWait) {
+					opt.flags.isWait = false;
+					opt.showWait();
+				}
+			},
+			() => {
+				if ($srch.val() && $srch.val().trim().length) opt.search();
+			}
+		);
+	}
+
+	static bindTypingEnd ($ipt, fnKeyup, fnKeypress, fnKeydown, fnClick) {
 		let typeTimer;
-		$srch.on("keyup", () => {
+		$ipt.on("keyup", (e) => {
 			clearTimeout(typeTimer);
 			typeTimer = setTimeout(() => {
-				opt.search();
-			}, TYPE_TIMEOUT_MS);
+				fnKeyup(e);
+			}, DmScreenUtil.TYPE_TIMEOUT_MS);
 		});
-		$srch.on("keydown", () => {
-			if (opt.flags.isWait) {
-				opt.flags.isWait = false;
-				opt.showWait();
-			}
-			clearTimeout(typeTimer)
+		$ipt.on("keypress", (e) => {
+			if (fnKeypress) fnKeypress(e);
 		});
-		$srch.on("click", () => {
-			if ($srch.val() && $srch.val().trim().length) opt.search();
+		$ipt.on("keydown", (e) => {
+			if (fnKeydown) fnKeydown(e);
+			clearTimeout(typeTimer);
 		});
-		$srch.on("keypress", (e) => {
-			if (e.which === 13) {
-				opt.flags.doClickFirst = true;
-				opt.search();
-			}
+		$ipt.on("click", () => {
+			if (fnClick) fnClick();
 		});
 	}
 }
+DmScreenUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
 
 window.addEventListener("load", () => {
 	// expose it for dbg purposes

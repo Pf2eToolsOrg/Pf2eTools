@@ -14,6 +14,18 @@
 
 $spacer: 1rem;
 
+.code {
+	font-family: 'Courier New', monospace;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.copyable {
+	cursor: copy;
+}
+
 .unselectable {
 	user-select: none;
 }
@@ -142,6 +154,12 @@ dialog.dialog-modal {
 .split {
 	display: flex;
 	justify-content: space-between;
+}
+
+.split-column {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 }
 
 #legal-notice {
@@ -3259,8 +3277,20 @@ table.stats tr.homebrew-hover {
 		color: $font-color;
 	}
 
+	input.form-control,
+	textarea.form-control {
+		background-color: transparent;
+		color: $font-color;
+	}
+
+	input.form-control[disabled],
+	textarea.form-control[disabled] {
+		background: #0e0e0e88;
+	}
+
 	#legal-notice {
 		background: #232323;
+		color: #999;
 	}
 
 	a,
