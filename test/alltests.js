@@ -69,6 +69,8 @@ fs.readdirSync("./data/bestiary")
 
 // Loop through each bestiary-related img directory and push the list of files in each.
 fs.readdirSync("./img")
+	.filter(file => !file.endsWith(".git"))
+	.filter(file => !file.endsWith(".gitignore"))
 	.filter(file => !file.endsWith(".png"))
 	.forEach(dir => {
 		if (dir !== "adventure" && dir !== "deities" && dir !== "variantrules" && dir !== "rules" && dir !== "objects" && dir !== "bestiary" && dir !== "roll20" && dir !== "book") {

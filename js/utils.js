@@ -488,7 +488,7 @@ Parser.getSpeedString = (it) => {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)}ft.${getCond(s)}`);
 		}
 
-		if (it.speed[propName]) addSpeed(it.speed[propName]);
+		if (it.speed[propName] || propName === "walk") addSpeed(it.speed[propName] || 0);
 		if (it.speed.alternate && it.speed.alternate[propName]) it.speed.alternate[propName].forEach(addSpeed);
 	}
 
@@ -840,7 +840,7 @@ Parser.spDurationToFull = function (dur) {
 			case "instant":
 				return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
 			case "timed":
-				return `${d.concentration ? "Concentration, " : ""}${d.duration.upTo && d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? d.duration.type : `${d.duration.type}s`}`;
+				return `${d.concentration ? "Concentration, " : ""}${d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.concentration || d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? d.duration.type : `${d.duration.type}s`}`;
 			case "permanent":
 				if (d.ends) {
 					return `Until ${d.ends.map(m => m === "dispel" ? "dispelled" : m === "trigger" ? "triggered" : m === "discharge" ? "discharged" : undefined).join(" or ")}`
@@ -1430,7 +1430,8 @@ SRC_UATSC = SRC_UA_PREFIX + "ThreeSubclasses";
 SRC_UAOD = SRC_UA_PREFIX + "OrderDomain";
 SRC_UACAM = SRC_UA_PREFIX + "CentaursMinotaurs";
 SRC_UAGSS = SRC_UA_PREFIX + "GiantSoulSorcerer";
-SRC_UAWGtE = SRC_UA_PREFIX + "WGtE";
+SRC_UAWGE = SRC_UA_PREFIX + "WGE";
+SRC_UARoE = SRC_UA_PREFIX + "RacesOfEberron";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -1524,7 +1525,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UATSC] = UA_PREFIX + "Three Subclasses";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAOD] = UA_PREFIX + "Order Domain";
 Parser.SOURCE_JSON_TO_FULL[SRC_UACAM] = UA_PREFIX + "Centaurs and Minotaurs";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAGSS] = UA_PREFIX + "Giant Soul Sorcerer";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWGtE] = "Wayfinder's Guide to Eberron";
+Parser.SOURCE_JSON_TO_FULL[SRC_UARoE] = UA_PREFIX + "Races of Eberron";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAWGE] = "Wayfinder's Guide to Eberron";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -1608,7 +1610,8 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UATSC] = "UATSC";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAOD] = "UAOD";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACAM] = "UACAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAGSS] = "UAGSS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWGtE] = "WGE";
+Parser.SOURCE_JSON_TO_ABV[SRC_UARoE] = "UARoE";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAWGE] = "WGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -1834,6 +1837,8 @@ ListUtil = {
 	_first: true,
 
 	search: (options) => {
+		if (!options.sortFunction && options.valueNames && options.valueNames.includes("name")) options.sortFunction = SortUtil.listSort;
+
 		const list = new List("listcontainer", options);
 		list.sort("name");
 		$("#reset").click(function () {
@@ -2772,7 +2777,7 @@ DataUtil = {
 
 	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction) {
 		if (!toLoads.length) onFinalLoadFunction([]);
-		Promise.all(toLoads.map(tl => this.loadJSON(tl.url))).then(datas => {
+		return Promise.all(toLoads.map(tl => this.loadJSON(tl.url))).then(datas => {
 			datas.forEach((data, i) => {
 				if (onEachLoadFunction) onEachLoadFunction(toLoads[i], data);
 			});

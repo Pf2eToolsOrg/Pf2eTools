@@ -3021,7 +3021,7 @@ class UnitConverter {
 		const $lblLeft = $(`<span class="bold"/>`).appendTo($wrpLeft);
 		const $iptLeft = $(`<textarea class="ipt form-control">${state.i || ""}</textarea>`).appendTo($wrpLeft);
 
-		const $btnSwitch = $(`<div class="btn btn-primary btn-switch"><span class="glyphicon glyphicon-refresh"></span></div>`).click(() => {
+		const $btnSwitch = $(`<div class="btn btn-primary btn-switch">⇆</div>`).click(() => {
 			dirConv = Number(!dirConv);
 			updateDisplay();
 		}).appendTo($wrpIpt);

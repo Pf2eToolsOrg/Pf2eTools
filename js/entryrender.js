@@ -1975,7 +1975,7 @@ EntryRenderer.monster = {
 			<tr><td colspan="6">
 				<div class="summary-flexer">
 					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => EntryRenderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
-					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => makeSkillRoller(s.uppercaseFirst(), mon.skill[s])).join(", ")}</p>` : ""}
+					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => makeSkillRoller(s.toTitleCase(), mon.skill[s])).join(", ")}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
 					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${Parser.monImmResToFull(mon.vulnerable)}</p>` : ""}
@@ -2081,7 +2081,7 @@ EntryRenderer.monster = {
 
 	getSkillsString (mon) {
 		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
-			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.uppercaseFirst()} ${obj[s]}`);
+			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.toTitleCase()} ${obj[s]}`);
 			return joinWithOr ? CollectionUtil.joinConjunct(toJoin, ", ", ", or ") : toJoin.join(", ")
 		}
 
@@ -2353,7 +2353,7 @@ EntryRenderer.item = {
 		if (item.type === "GV") item.category = "Generic Variant";
 		if (item.category === undefined) item.category = "Other";
 		if (item.entries === undefined) item.entries = [];
-		if (item.type && EntryRenderer.item._typeList[item.type]) for (let j = 0; j < EntryRenderer.item._typeList[item.type].entries.length; j++) item.entries.push(EntryRenderer.item._typeList[item.type].entries[j]);
+		if (item.type && EntryRenderer.item._typeList[item.type]) EntryRenderer.item._typeList[item.type].entries.forEach(e => !(item.type === "A" && item.ammunition) && item.entries.push(e));
 		if (item.property) {
 			item.property.forEach(p => {
 				if (!EntryRenderer.item._propertyList[p]) throw new Error(`Item property ${p} not found. You probably meant to load the property/type reference first; see \`EntryRenderer.item.populatePropertyAndTypeReference()\`.`);

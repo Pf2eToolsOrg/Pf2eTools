@@ -756,6 +756,7 @@ function loadparser (data) {
 		let parsed = 0;
 		let hasMultipleBlocks = false;
 		function doOutputStatblock () {
+			if (trait != null) doAddFromParsed();
 			if (stats) {
 				doPostProcessing(stats);
 				const out = cleanOutput(JSON.stringify(stats, null, "\t"));
