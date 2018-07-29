@@ -2584,6 +2584,7 @@ UrlUtil.PG_CULTS_BOONS = "cultsboons.html";
 UrlUtil.PG_OBJECTS = "objects.html";
 UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 UrlUtil.PG_QUICKREF = "quickreference.html";
+UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2766,10 +2767,10 @@ DataUtil = {
 						DataUtil._loaded[toUrl] = data;
 						resolve(data, otherData);
 					} catch (e) {
-						reject(new Error('Could not parse JSON'));
+						reject(new Error('Could not parse JSON' + toUrl + e));
 					}
 				};
-				request.onerror = () => reject(new Error('Error during JSON request'));
+				request.onerror = (e) => reject(new Error('Error during JSON request: ' + e));
 				return request;
 			}
 		});
@@ -2781,7 +2782,7 @@ DataUtil = {
 			datas.forEach((data, i) => {
 				if (onEachLoadFunction) onEachLoadFunction(toLoads[i], data);
 			});
-			onFinalLoadFunction(datas);
+			return onFinalLoadFunction(datas);
 		});
 	},
 
@@ -3248,6 +3249,8 @@ BrewUtil = {
 						return ["condition", "disease"];
 					case UrlUtil.PG_ADVENTURES:
 						return ["adventure"];
+					case UrlUtil.PG_MAKE_SHAPED:
+						return ["spell", "creature"];
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -3497,6 +3500,9 @@ BrewUtil = {
 			});
 			BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 			BrewUtil.removeJsonSource(source);
+			if (page === UrlUtil.PG_MAKE_SHAPED) {
+				removeBrewSource(source);
+			}
 			// remove the source from the filters and re-render the filter box
 			if (BrewUtil._sourceFilter) BrewUtil._sourceFilter.removeIfExists(source);
 			if (BrewUtil._filterBox) BrewUtil._filterBox.render();
@@ -3510,8 +3516,10 @@ BrewUtil = {
 			if (~index) {
 				BrewUtil.homebrew[arrName].splice(index, 1);
 				if (doRefresh) refreshBrewList();
-				BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
-				if (doRefresh) History.hashChange();
+				if (BrewUtil._lists) {
+					BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
+					if (doRefresh) History.hashChange();
+				}
 			}
 		}
 
@@ -3543,6 +3551,9 @@ BrewUtil = {
 					return deleteClassBrew;
 				case "adventure":
 					return deleteAdventureBrew;
+				case "adventureData":
+					// Do nothing, handled by deleting the associated adventure
+					return () => {};
 				default:
 					throw new Error(`No homebrew delete function defined for category ${category}`);
 			}
@@ -3702,6 +3713,9 @@ BrewUtil = {
 				handleBrew(toAdd);
 				break;
 			case UrlUtil.PG_ADVENTURES:
+				handleBrew(toAdd);
+				break;
+			case UrlUtil.PG_MAKE_SHAPED:
 				handleBrew(toAdd);
 				break;
 			case "NO_PAGE":
@@ -4196,4 +4210,27 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 		$(`body`).append($wrpBanner);
 		/* eslint-enable */
 	});
+}
+
+function isObject (obj) {
+	const type = typeof obj;
+	return (type === 'function' || type === 'object') && !!obj;
+}
+
+function isString (str) {
+	return typeof str === 'string';
+}
+
+function isNumber (obj) {
+	return toString.call(obj) === '[object Number]';
+}
+
+function isEmpty (obj) {
+	if (obj == null) {
+		return true;
+	}
+	if (Array.isArray(obj) || isString(obj)) {
+		return obj.length === 0;
+	}
+	return Object.keys(obj).length === 0;
 }
