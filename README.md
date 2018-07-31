@@ -1,5 +1,5 @@
 ## 5e Tools
-[Go to 5etools](5etools.html)
+Visit the [main site](5etools.html) or go to the unofficial GitHub [mirror](5etools.html)
 
 [Join the 5etools Discord here!](https://discord.gg/AzyBjtQ)
 
