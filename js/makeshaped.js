@@ -560,6 +560,47 @@ class ShapedConverter {
 		return `${num}`;
 	}
 
+	static processSpellComponents (components, newSpell) {
+		const shapedComponents = {};
+		if (components.v) shapedComponents.verbal = true;
+		if (components.s) shapedComponents.somatic = true;
+		if (components.m) {
+			shapedComponents.material = true;
+
+			if (components.m !== true) {
+				shapedComponents.materialMaterial = components.m.text || components.m;
+			}
+		}
+		newSpell.components = shapedComponents;
+	}
+
+	static processSpellDuration (duration, newSpell) {
+		switch (duration.type) {
+			case "special":
+				newSpell.duration = "Special";
+				break;
+			case "instant":
+				newSpell.duration = "Instantaneous";
+				break;
+			case "timed":
+				newSpell.concentration = duration.concentration;
+				newSpell.duration = `${duration.concentration ? "up to " : ""}${duration.duration.amount} ${duration.duration.type}${duration.duration.amount > 1 ? "s" : ""}`;
+				break;
+			case "permanent":
+				if (duration.ends) {
+					newSpell.duration = `Until ${duration.ends
+						.filter(end => end === "dispel" || end === "trigger")
+						.map(end => end === "dispel" ? "dispelled" : end)
+						.map(end => end === "trigger" ? "triggered" : end)
+						.sort()
+						.join(" or ")}`
+				} else {
+					// shape has no option for "Permanent"
+					newSpell.duration = "Special";
+				}
+		}
+	}
+
 	static processSpellEntries (entries, newSpell) {
 		const cellProc = cell => {
 			if (isString(cell)) {
@@ -577,20 +618,25 @@ class ShapedConverter {
 				rows.push.apply(rows, entry.rows);
 
 				const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
-				const divider = `|${entry.colStyles.map(style => {
+				const styleToColDefinition = style => {
 					if (style.includes('text-align-center')) {
 						return ':----:';
 					} else if (style.includes('text-align-right')) {
 						return '----:';
 					}
 					return ':----';
-				}).join('|')}|`;
+				};
+				const colDefinitions = entry.colStyles ? entry.colStyles.map(styleToColDefinition) : entry.colLabels.map(() => ':----');
+				const divider = `|${colDefinitions.join('|')}|`;
 				formattedRows.splice(1, 0, divider);
 
 				const title = entry.caption ? `##### ${entry.caption}\n` : '';
 				return `${title}${formattedRows.join('\n')}`;
 			} else if (entry.type === 'list') {
 				return entry.items.map(item => `- ${item}`).join('\n');
+			} else if (entry.type === 'homebrew') {
+				if (!entry.entries) return '';
+				return entry.entries.map(entryMapper).join('\n');
 			} else {
 				return `***${entry.name}.*** ${entry.entries.map(entryMapper).join('\n')}`;
 			}
@@ -778,12 +824,12 @@ class ShapedConverter {
 		}
 
 		Object.assign(newSpell, {
-			castingTime: Parser.spTimeListToFull(spell.time),
-			range: Parser.spRangeToFull(spell.range),
-			components: Parser.spComponentsToFull(spell.components),
-			duration: Parser.spDurationToFull(spell.duration)
+			castingTime: Parser.getTimeToFull(spell.time[0]),
+			range: Parser.spRangeToFull(spell.range)
 		});
 
+		this.processSpellComponents(spell.components, newSpell);
+		this.processSpellDuration(spell.duration[0], newSpell);
 		this.processSpellEntries(spell.entries, newSpell);
 		this.processHigherLevel(spell.entriesHigherLevel, newSpell);
 		if (additionalSpellData[spell.name]) {
@@ -992,16 +1038,6 @@ class ShapedConverter {
 }
 
 function rebuildShapedSources () {
-	const checkedSources = {};
-	checkedSources[SRC_PHB] = true;
-
-	$('.shaped-source').each((i, e) => {
-		const $e = $(e);
-		if ($e.prop('checked')) {
-			checkedSources[$e.val()] = true;
-		}
-		$e.parent().parent().remove();
-	});
 	shapedConverter.getInputs().then((inputs) => {
 		return Object.values(inputs).sort((a, b) => {
 			if (a.name === 'Player\'s Handbook') {
@@ -1012,6 +1048,17 @@ function rebuildShapedSources () {
 			return a.name.localeCompare(b.name);
 		});
 	}).then(inputs => {
+		const checkedSources = {};
+		checkedSources[SRC_PHB] = true;
+
+		$('.shaped-source').each((i, e) => {
+			const $e = $(e);
+			if ($e.prop('checked')) {
+				checkedSources[$e.val()] = true;
+			}
+			$e.parent().parent().remove();
+		});
+
 		inputs.forEach(input => {
 			const disabled = input.key === SRC_PHB ? 'disabled="disabled" ' : '';
 			const checked = checkedSources[input.key] ? 'checked="checked" ' : '';

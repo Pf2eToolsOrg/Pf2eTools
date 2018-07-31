@@ -297,7 +297,7 @@ class HashLoad {
 
 		function getSkillProfString (skills) {
 			const numString = Parser.numberToString(skills.choose);
-			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${CollectionUtil.joinConjunct(skills.from, ", ", ", and ")}.`
+			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${skills.from.joinConjunct(", ", " and ")}.`
 		}
 
 		// starting equipment

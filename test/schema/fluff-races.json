@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "object",
 	"properties": {
 		"race": {
@@ -19,6 +19,17 @@
 							"type": "array",
 							"items": {
 								"$ref": "/Entry"
+							}
+						}
+					},
+					"_appendCopy": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
+								"type": "string"
 							}
 						}
 					},

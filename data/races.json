@@ -368,7 +368,7 @@
 						{
 							"name": "Elf Weapon Training",
 							"entries": [
-								"You have proficiency with the longsword, shortsword, shortbow, and longbow."
+								"You have proficiency with the {@item longsword|phb}, {@item shortsword|phb}, {@item shortbow|phb}, and {@item longbow|phb}."
 							],
 							"type": "entries"
 						},
@@ -395,14 +395,14 @@
 						{
 							"name": "Elf Weapon Training",
 							"entries": [
-								"You have proficiency with the longsword, shortsword, shortbow, and longbow."
+								"You have proficiency with the {@item longsword|phb}, {@item shortsword|phb}, {@item shortbow|phb}, and {@item longbow|phb}."
 							],
 							"type": "entries"
 						},
 						{
 							"name": "Cantrip",
 							"entries": [
-								"You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+								"You know one {@filter cantrip of your choice from the wizard spell list|spells|level=0|class=Wizard}. Intelligence is your spellcasting ability for it."
 							],
 							"type": "entries"
 						},
@@ -428,7 +428,7 @@
 						{
 							"name": "Elf Weapon Training",
 							"entries": [
-								"You have proficiency with the longsword, shortsword, shortbow, and longbow."
+								"You have proficiency with the {@item longsword|phb}, {@item shortsword|phb}, {@item shortbow|phb}, and {@item longbow|phb}."
 							],
 							"type": "entries"
 						},
@@ -606,7 +606,7 @@
 						{
 							"name": "Sea Elf Weapon Training",
 							"entries": [
-								"You have proficiency with the spear, trident, light crossbow, and net."
+								"You have proficiency with the {@item spear|phb}, {@item trident|phb}, {@item light crossbow|phb}, and {@item net|phb}."
 							],
 							"type": "entries"
 						},
@@ -795,6 +795,121 @@
 					],
 					"traitTags": [
 						"Damage Resistance"
+					]
+				},
+				{
+					"name": "Aereni",
+					"source": "UAWGE",
+					"page": 73,
+					"speed": 30,
+					"ability": {
+						"int": 1
+					},
+					"entries": [
+						{
+							"name": "Aereni Proficiency",
+							"entries": [
+								"An Aereni elf can choose one skill or tool proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Cantrip",
+							"entries": [
+								"You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Extra Language",
+							"entries": [
+								"You can speak, read, and write one extra language of your choosing."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Skill Proficiency",
+						"Tool Proficiency"
+					]
+				},
+				{
+					"name": "Valenar",
+					"source": "UAWGE",
+					"page": 73,
+					"speed": 35,
+					"ability": {
+						"wis": 1
+					},
+					"entries": [
+						{
+							"name": "Valenar Proficiency",
+							"entries": [
+								"A Valenar elf gains proficiency with the {@item scimitar|phb}, {@item Double-Bladed Scimitar|uawge|double scimitar}, {@item longbow|phb}, and {@item shortbow|phb}."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Fleet of Foot",
+							"entries": [
+								"Your base walking speed increases to 35 feet."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Mask of the Wild",
+							"entries": [
+								"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Weapon Proficiency"
+					]
+				},
+				{
+					"name": "Mark of Shadow",
+					"source": "UAWGE",
+					"page": 105,
+					"ability": {
+						"cha": 1
+					},
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Natural Talent",
+							"entries": [
+								"You gain proficiency with one musical instrument or the Performance skill."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Gift of the Shadows",
+							"entries": [
+								"When you make a Charisma (Performance) or Dexterity (Stealth) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Shape Shadows",
+							"entries": [
+								"You know the {@spell minor illusion} cantrip. Charisma is your spellcasting ability for this trait."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Slip Into Shadow",
+							"entries": [
+								"You can use the Hide action as a bonus action, even if you have no cover or if you're under observation. Regardless of whether you succeed or fail, once you use this ability, you can't use it again until you finish a short or long rest."
+							]
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark",
+						"Skill Proficiency",
+						"Tool Proficiency"
 					]
 				}
 			],
@@ -1381,6 +1496,51 @@
 						"Gnomish",
 						"Undercommon"
 					]
+				},
+				{
+					"name": "Mark of Scribing",
+					"source": "UAWGE",
+					"page": 103,
+					"ability": {
+						"cha": 1
+					},
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Gifted Scribe",
+							"entries": [
+								"You are proficient with {@item calligrapher's supplies|phb} and {@item forgery kit|phb|forgery kits}. When you make an ability check using either one of these tools, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Scribe's Insight",
+							"entries": [
+								"You can cast {@spell comprehend languages} once with this trait, and you regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for it."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Whispering Wind",
+							"entries": [
+								"You know the cantrip {@spell message}. Intelligence is your spellcasting ability when casting it."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Extra Language",
+							"entries": [
+								"You can speak, read, and write one extra language of your choice."
+							]
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
+					],
+					"languageTags": [
+						"Choose"
+					]
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/231/gnome.mp3",
@@ -1874,6 +2034,144 @@
 					"traitTags": [
 						"Skill Proficiency"
 					]
+				},
+				{
+					"name": "Mark of Detection",
+					"speed": 30,
+					"source": "UAWGE",
+					"page": 96,
+					"ability": {
+						"cha": 1,
+						"int": 1,
+						"choose": [
+							{
+								"from": [
+									"str",
+									"dex",
+									"con",
+									"int",
+									"wis",
+									"cha"
+								],
+								"count": 1
+							}
+						]
+					},
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Deductive Intuition",
+							"entries": [
+								"When you make an Intelligence (Investigation) or Wisdom (Insight) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							],
+							"data": {
+								"overwrite": "Skill Versatility"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Sense Threats",
+							"entries": [
+								"You can cast the {@spell detect magic} and {@spell detect poison and disease} spells, but only as rituals. Intelligence is your spellcasting ability for these spells."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and Elvish."
+							],
+							"data": {
+								"overwrite": "Languages"
+							}
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
+					],
+					"languageTags": [
+						"Common",
+						"Elvish"
+					]
+				},
+				{
+					"name": "Mark of Storm",
+					"speed": {
+						"walk": 30,
+						"swim": 30
+					},
+					"source": "UAWGE",
+					"page": 106,
+					"ability": {
+						"cha": 1,
+						"dex": 1,
+						"choose": [
+							{
+								"from": [
+									"str",
+									"dex",
+									"con",
+									"int",
+									"wis",
+									"cha"
+								],
+								"count": 1
+							}
+						]
+					},
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Sea Monkey",
+							"entries": [
+								"Your base walking speed is 30 feet, and you have a swim speed of 30 feet."
+							],
+							"data": {
+								"overwrite": "Skill Versatility"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Windwright's Intuition",
+							"entries": [
+								"When you make a Dexterity (Acrobatics) check or any ability check involving operating or maintaining a water or air vehicle, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Storm's Blessing",
+							"entries": [
+								"You have resistance to lightning damage."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Headwinds",
+							"entries": [
+								"You know the {@spell gust|xge} cantrip. When you reach 3rd level, you can cast the {@spell gust of wind} spell once with this trait and regain the ability to do so when you finish a long rest."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and Elvish."
+							],
+							"data": {
+								"overwrite": "Languages"
+							}
+						}
+					],
+					"traitTags": [
+						"Damage Resistance",
+						"Spellcasting",
+						"Dragonmark"
+					],
+					"languageTags": [
+						"Common",
+						"Elvish"
+					]
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/259/half-elf.mp3",
@@ -1953,6 +2251,82 @@
 						"You can speak, read, and write Common and Orc. Orc is a harsh, grating language with hard consonants. It has no script of its own but is written in the Dwarvish script."
 					],
 					"type": "entries"
+				}
+			],
+			"subraces": [
+				{},
+				{
+					"name": "Mark of Finding",
+					"source": "UAWGE",
+					"page": 98,
+					"ability": {
+						"str": 1,
+						"wis": 1,
+						"choose": [
+							{
+								"from": [
+									"str",
+									"dex",
+									"con",
+									"int",
+									"wis",
+									"cha"
+								],
+								"count": 1
+							}
+						],
+						"overwrite": true
+					},
+					"entries": [
+						{
+							"name": "Hunter's Intuition",
+							"entries": [
+								"Your mark sharpens your senses and helps you find your prey. When you make a Wisdom (Perception) or Wisdom (Survival) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							],
+							"data": {
+								"overwrite": "Menacing"
+							},
+							"type": "entries"
+						},
+						{
+							"name": "Imprint Prey",
+							"entries": [
+								"As a bonus action, choose one creature you can see within 30 feet of you. The target is imprinted in your mind until it dies or you use this trait again. Alternatively, you can imprint a creature as your quarry whenever you succeed on a Wisdom (Survival) check to track it. When tracking your quarry, double the result of your Intuition die. When your quarry is within 60 feet of you, you have a sense of its location: it can't be hidden from you, gains no benefit from invisibility, and your attacks against it ignore half cover. Once you use this trait, you cannot use it again until you finish a short or long rest."
+							],
+							"data": {
+								"overwrite": "Relentless Endurance"
+							},
+							"type": "entries"
+						},
+						{
+							"name": "Nature's Voice",
+							"entries": [
+								"When you reach 3rd level you gain the ability to cast {@spell locate animals or plants}, but only as a ritual."
+							],
+							"data": {
+								"overwrite": "Savage Attacks"
+							},
+							"type": "entries"
+						},
+						{
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and Goblin."
+							],
+							"data": {
+								"overwrite": "Languages"
+							},
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
+					],
+					"languageTags": [
+						"Common",
+						"Goblin"
+					]
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/262/half-orc.mp3",
@@ -2147,6 +2521,39 @@
 						"Dwarvish",
 						"Undercommon"
 					]
+				},
+				{
+					"name": "Mark of Warding",
+					"source": "UAWGE",
+					"page": 108,
+					"ability": {
+						"dex": 1,
+						"int": 1
+					},
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Master of Locks",
+							"entries": [
+								"When you make an Intelligence (History), Intelligence (Investigation), or Thieves' Tools check involving lock and trap mechanisms, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Wards and Seals",
+							"entries": [
+								"You can use your mark to cast the {@spell alarm} spell as a ritual. Starting at 3rd level you can cast {@spell arcane lock} once with this trait and you regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells."
+							]
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
+					],
+					"languageTags": [
+						"Common",
+						"Elvish"
+					]
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/146/dwarf.mp3",
@@ -2243,6 +2650,288 @@
 					],
 					"traitTags": [
 						"Skill Proficiency"
+					]
+				},
+				{
+					"name": "Mark of Finding",
+					"source": "UAWGE",
+					"page": 98,
+					"darkvision": 60,
+					"ability": {
+						"dex": 1,
+						"wis": 1,
+						"choose": [
+							{
+								"from": [
+									"str",
+									"dex",
+									"con",
+									"int",
+									"wis",
+									"cha"
+								],
+								"count": 1
+							}
+						]
+					},
+					"entries": [
+						{
+							"name": "Darkvision",
+							"entries": [
+								"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Hunter's Intuition",
+							"entries": [
+								"Your mark sharpens your senses and helps you find your prey. When you make a Wisdom (Perception) or Wisdom (Survival) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Imprint Prey",
+							"entries": [
+								"As a bonus action, choose one creature you can see within 30 feet of you. The target is imprinted in your mind until it dies or you use this trait again. Alternatively, you can imprint a creature as your quarry whenever you succeed on a Wisdom (Survival) check to track it. When tracking your quarry, double the result of your Intuition die. When your quarry is within 60 feet of you, you have a sense of its location: it can't be hidden from you, gains no benefit from invisibility, and your attacks against it ignore half cover. Once you use this trait, you cannot use it again until you finish a short or long rest."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Nature's Voice",
+							"entries": [
+								"When you reach 3rd level you gain the ability to cast {@spell locate animals or plants}, but only as a ritual."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and Goblin."
+							],
+							"data": {
+								"overwrite": "Languages"
+							},
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
+					],
+					"languageTags": [
+						"Common",
+						"Goblin"
+					]
+				},
+				{
+					"name": "Mark of Handling",
+					"source": "UAWGE",
+					"page": 98,
+					"ability": {
+						"dex": 1,
+						"wis": 1,
+						"choose": [
+							{
+								"from": [
+									"str",
+									"dex",
+									"con",
+									"int",
+									"wis",
+									"cha"
+								],
+								"count": 1
+							}
+						]
+					},
+					"entries": [
+						{
+							"name": "Wild Intuition",
+							"entries": [
+								"When you make a Wisdom (Animal Handling) or Intelligence (Nature) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Expert Handling",
+							"entries": [
+								"You can use the Help action to aid an ally animal companion or mount within 30 feet of you, rather than 5 feet of you."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Primal Connection",
+							"entries": [
+								"You can cast {@spell animal friendship} once with this trait and regain the ability to do so when you finish a short or long rest. Wisdom is your spellcasting ability for this spell."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "The Bigger They Are",
+							"entries": [
+								"When you cast a spell that affects only beasts, it also affects monstrosities with an Intelligence score of 3 or lower."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
+					]
+				},
+				{
+					"name": "Mark of Making",
+					"source": "UAWGE",
+					"page": 101,
+					"ability": {
+						"int": 1,
+						"dex": 1,
+						"choose": [
+							{
+								"from": [
+									"dex",
+									"int"
+								],
+								"count": 1
+							}
+						]
+					},
+					"entries": [
+						{
+							"name": "Artisan's Intuition",
+							"entries": [
+								"When you make an ability check with artisan's tools, roll 1d4 and add it to the result."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Maker's Gift",
+							"entries": [
+								"You know the cantrip {@spell mending} and gain proficiency with one type of artisan's tools."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Magecraft",
+							"entries": [
+								"You can create a temporary magic item out of common materials. Choose a cantrip from the wizard spell list. Describe the item connected to it. As long as you possess the item, you know that cantrip. At the end of a long rest, you can replace it with a new item and select a new cantrip from the wizard spell list. Intelligence is your spellcasting ability for these cantrips."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Spellsmith",
+							"entries": [
+								"You can spend one minute to weave a temporary enchantment into a nonmagical suit of armor or weapon. For the next hour the object becomes a magic item, gaining a +1 bonus to AC if it is armor or a +1 bonus to hit and damage if it is a weapon. Once you use this trait, you can't use it again until you finish a long rest."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
+					]
+				},
+				{
+					"name": "Mark of Passage",
+					"source": "UAWGE",
+					"page": 102,
+					"speed": 40,
+					"ability": {
+						"dex": 2,
+						"choose": [
+							{
+								"from": [
+									"str",
+									"con",
+									"int",
+									"wis",
+									"cha"
+								],
+								"count": 1
+							}
+						]
+					},
+					"entries": [
+						{
+							"name": "Courier's Speed",
+							"entries": [
+								"Your base walking speed increases to 40 ft."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Intuitive Motion",
+							"entries": [
+								"When you make a Strength (Athletics) check or any ability check to operate or maintain a land vehicle, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Determined Stride",
+							"entries": [
+								"When you use the Dash action, difficult terrain doesn't cost you extra movement on that turn."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Shared Passage",
+							"entries": [
+								"As a bonus action you can teleport a distance up to your walking speed, ending in an unoccupied space that you can see. You can bring one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within 5 feet of you when you use this trait. Once you use this trait, you can't use it again until you finish a long rest."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Dragonmark"
+					]
+				},
+				{
+					"name": "Mark of Sentinel",
+					"source": "UAWGE",
+					"page": 104,
+					"ability": {
+						"str": 1,
+						"wis": 1,
+						"choose": [
+							{
+								"from": [
+									"str",
+									"dex",
+									"con",
+									"int",
+									"wis",
+									"cha"
+								],
+								"count": 1
+							}
+						]
+					},
+					"entries": [
+						{
+							"name": "Sentinel's Intuition",
+							"entries": [
+								"When you roll for Initiative or make a Wisdom (Perception) check to notice a threat, you can roll one Intuition die, a d4, and add it to the ability check."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Sentinel's Shield",
+							"entries": [
+								"You know the cantrip {@spell blade ward}. You can cast {@spell shield} once with this trait and regain the ability to do so after you finish a short or long rest."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Vigilant Guardian",
+							"entries": [
+								"As an action, you can designate an ally you can see as your ward. You have advantage on Wisdom (Insight) and Wisdom (Perception) checks made to spot threats to your ward. In addition, when you are within 5 feet of your ward, and that creature is the target of an attack that you can see, you can use your reaction to swap places with your ward. When you do, you become the target of the attack."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Dragonmark",
+						"Spellcasting"
 					]
 				}
 			],
@@ -2361,6 +3050,61 @@
 							],
 							"type": "entries"
 						}
+					]
+				},
+				{
+					"name": "Mark of Healing",
+					"source": "UAWGE",
+					"page": 99,
+					"ability": {
+						"wis": 1
+					},
+					"entries": [
+						{
+							"name": "Medical Intuition",
+							"entries": [
+								"When you make a Wisdom (Medicine) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Healing Touch",
+							"entries": [
+								"As an action, you can draw power from your dragonmark to spend one of your Hit Dice and revitalize yourself or a creature you touch. Roll the die, add your Wisdom modifier, and the creature regains a number of hit points equal to the total. Once you use this trait, you can't use it again until you finish a short or long rest."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Dragonmark"
+					]
+				},
+				{
+					"name": "Mark of Hospitality",
+					"source": "UAWGE",
+					"page": 100,
+					"ability": {
+						"cha": 1
+					},
+					"entries": [
+						{
+							"name": "Innkeeper's Charms",
+							"entries": [
+								"You know the cantrips {@spell friends} and {@spell prestidigitation}. Charisma is your spellcasting ability for them."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Ever Hospitable",
+							"entries": [
+								"When you make a Charisma (Persuasion) check or an ability check involving brewer's supplies or cook's utensils, you can roll one Intuition die (a d4) and add the number rolled to the ability check."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Spellcasting",
+						"Dragonmark"
 					]
 				}
 			],
@@ -5927,7 +6671,7 @@
 				{
 					"name": "Shell Defense",
 					"entries": [
-						"You can withdraw into your shell as an action. until you emerge, you gain a +4 bonus to AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are {@condition prone}, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reaction, and the only action you can take is a bonus action to emerge from your shell."
+						"You can withdraw into your shell as an action. until you emerge, you gain a +4 bonus to AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are {@condition prone}, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell."
 					],
 					"type": "entries"
 				},

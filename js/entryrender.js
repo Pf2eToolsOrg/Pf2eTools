@@ -1124,8 +1124,7 @@ EntryRenderer.utils = {
 				</tr>`;
 	},
 
-	_handleNameClick (ele, source) {
-		source = source.unescapeQuotes();
+	_handleNameClick (ele) {
 		copyText($(ele).text());
 		showCopiedEffect($(ele));
 	},
@@ -1204,10 +1203,18 @@ EntryRenderer.feat = {
 	getPrerequisiteText: function (prereqList, isShorthand, doMakeAsArray) {
 		isShorthand = isShorthand === undefined || isShorthand === null ? false : isShorthand;
 		doMakeAsArray = doMakeAsArray === undefined || doMakeAsArray === null ? false : doMakeAsArray;
-		const outStack = [];
+		const andStack = [];
 		if (prereqList === undefined || prereqList === null) return "";
 		for (let i = 0; i < prereqList.length; ++i) {
+			const outStack = [];
 			const pre = prereqList[i];
+			if (pre.level) {
+				if (isShorthand) {
+					outStack.push(`Lvl ${pre.level}`);
+				} else {
+					outStack.push(`${Parser.spLevelToFull(pre.level)} level`);
+				}
+			}
 			if (pre.race !== undefined) {
 				for (let j = 0; j < pre.race.length; ++j) {
 					if (isShorthand) {
@@ -1269,12 +1276,16 @@ EntryRenderer.feat = {
 					outStack.push(renderer.renderEntry(pre.special));
 				}
 			}
+			andStack.push(outStack);
 		}
 		if (doMakeAsArray) {
-			return outStack;
+			return andStack.reduce((a, b) => a.concat(b), []);
 		} else {
-			if (isShorthand) return outStack.join("/");
-			else return StrUtil.joinPhraseArray(outStack, ", ", " or ");
+			if (isShorthand) return andStack.map(it => it.join("/")).join(";");
+			else {
+				const anyLong = andStack.filter(it => it.length > 1).length && andStack.length > 1;
+				return andStack.map(it => it.joinConjunct(", ", " or ")).joinConjunct(anyLong ? "; " : ", ", anyLong ? " and " : ", ");
+			}
 		}
 	},
 
@@ -1314,7 +1325,7 @@ EntryRenderer.feat = {
 						for (let j = 0; j < from.length; ++j) {
 							abbChoices.push(Parser.attAbvToFull(from[j]));
 						}
-						const abbChoicesText = StrUtil.joinPhraseArray(abbChoices, ", ", " or ");
+						const abbChoicesText = abbChoices.joinConjunct(", ", " or ");
 						abbArr.push(`Increase your ${abbChoicesText} by ${amount}${TO_MAX_OF_TWENTY}`);
 					}
 				}
@@ -1489,7 +1500,7 @@ EntryRenderer.invocation = {
 			(!prerequisites.pact || prerequisites.pact === STR_ANY || prerequisites.pact === STR_SPECIAL) ? null : Parser.invoPactToFull(prerequisites.pact),
 			(!prerequisites.level || prerequisites.level === STR_ANY) ? null : `${Parser.levelToFull(prerequisites.level)} level`,
 			(!prerequisites.feature || prerequisites.feature === STR_NONE) ? null : `${prerequisites.feature} feature`,
-			(!prerequisites.spell || prerequisites.spell === STR_NONE) ? null : prerequisites.spell instanceof Array ? CollectionUtil.joinConjunct(prerequisites.spell.map(sp => Parser.invoSpellToFull(sp)), ", ", " or ") : Parser.invoSpellToFull(prerequisites.spell)
+			(!prerequisites.spell || prerequisites.spell === STR_NONE) ? null : prerequisites.spell instanceof Array ? prerequisites.spell.map(sp => Parser.invoSpellToFull(sp)).joinConjunct(", ", " or ") : Parser.invoSpellToFull(prerequisites.spell)
 		].filter(f => f);
 		if (prerequisites.or && !orMode) prerequisites.or.map(p => EntryRenderer.invocation.getPrerequisiteText(p, true)).forEach(s => prereqs.push(s));
 		if (orMode) return prereqs.join(" or ");
@@ -1584,7 +1595,7 @@ EntryRenderer.race = {
 					delete s.name;
 				}
 				if (s.ability) {
-					if (!cpy.ability) cpy.ability = {};
+					if (s.ability.overwrite || !cpy.ability) cpy.ability = {};
 					cpy.ability = Object.assign(cpy.ability, s.ability);
 					delete s.ability;
 				}
@@ -1592,7 +1603,8 @@ EntryRenderer.race = {
 					s.entries.forEach(e => {
 						if (e.data && e.data.overwrite) {
 							const toOverwrite = cpy.entries.findIndex(it => it.name.toLowerCase().trim() === e.data.overwrite.toLowerCase().trim());
-							cpy.entries[toOverwrite] = e;
+							if (~toOverwrite) cpy.entries[toOverwrite] = e;
+							else cpy.entries.push(e);
 						} else {
 							cpy.entries.push(e);
 						}
@@ -2082,7 +2094,7 @@ EntryRenderer.monster = {
 	getSkillsString (mon) {
 		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
 			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.toTitleCase()} ${obj[s]}`);
-			return joinWithOr ? CollectionUtil.joinConjunct(toJoin, ", ", ", or ") : toJoin.join(", ")
+			return joinWithOr ? toJoin.joinConjunct(", ", ", or ") : toJoin.join(", ")
 		}
 
 		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other"));
@@ -2151,7 +2163,7 @@ EntryRenderer.item = {
 
 		renderStack.push(EntryRenderer.utils.getNameTr(item, true));
 
-		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${item.typeText}${`${item.tier ? `, ${item.tier}` : ""}${item.rarity ? `, ${item.rarity}` : ""}`} ${item.reqAttune || ""}</td>`);
+		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${item.typeText}${`${item.tier ? `, ${item.tier}` : ""}${item.rarity && item.rarity !== "None" ? `, ${item.rarity}` : ""}`} ${item.reqAttune || ""}</td>`);
 
 		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${Parser.itemWeightToFull(item)}</td><td class="damageproperties" colspan="4">${damage} ${damageType} ${propertiesTxt}</tr>`);
@@ -2275,11 +2287,13 @@ EntryRenderer.item = {
 			}
 
 			function hasExcludedProperty (baseItem, genericVariant) {
-				const curExcludes = genericVariant.excludes || [];
-				return Object.keys(curExcludes).reduce((hasExcludedProperty, excludedProperty) => {
-					if (hasExcludedProperty) return true;
-					return baseItem[excludedProperty] === curExcludes[excludedProperty];
-				}, false);
+				const curExcludes = genericVariant.excludes || {};
+				return !!Object.keys(curExcludes).find(key => {
+					if (curExcludes[key] instanceof Array) {
+						return (baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key].includes(it)) : curExcludes[key].includes(baseItem[key]));
+					}
+					return baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key] === it) : curExcludes[key] === baseItem[key];
+				});
 			}
 
 			function addSpecificVariantForEnhancing (genericVariant, base, specificVariant) {
@@ -2401,7 +2415,7 @@ EntryRenderer.item = {
 		// bake in attunement
 		let attunement = "No";
 		if (item.reqAttune !== undefined) {
-			if (item.reqAttune === "YES") {
+			if (item.reqAttune === true) {
 				attunement = "Yes";
 				item.reqAttune = "(Requires Attunement)"
 			} else if (item.reqAttune === "OPTIONAL") {

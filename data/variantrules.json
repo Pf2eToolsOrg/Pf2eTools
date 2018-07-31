@@ -2475,7 +2475,9 @@
 					]
 				}
 			],
-			"source": "DMG"
+			"source": "DMG",
+			"page": 288,
+			"ruleType": "V"
 		},
 		{
 			"name": "Training to Gain Levels",
@@ -7814,6 +7816,246 @@
 				"Feel free to determine that not all creatures have every type of arc. For example, an amorphous ochre jelly could treat all of its arcs as front ones, while a hydra might have three front arcs and one rear one. On squares, you pick one side of a creature's space as the direction it is facing. Draw a diagonal line outward from each corner of this side to determine the squares in its front arc. The opposite side of the space determines its rear arc in the same way. The remaining spaces to either side of the creature form its side arcs.",
 				"On hexes, determining the front, rear, and side arcs requires more judgment. Pick one side of the creature's space and create a wedge shape expanding out from there for the front arc, and another on the opposite side of the creature for the rear arc. The remaining spaces to either side of the creature are its side arcs.",
 				"A square or hex might be in more than one arc, depending on how you draw the lines from a creature's space. If more than half of a square or hex lies in one arc, it is in that arc. If it is split exactly down the middle, use this rule: if half of it lies in the front arc, it's in that arc. If half of it is in a side arc and the rear arc, it's in the side arc."
+			]
+		},
+		{
+			"source": "UAWGE",
+			"page": 8,
+			"ruleType": "O",
+			"name": "Environmental Elements",
+			"entries": [
+				"Combat can feel very mechanical. {@i I move 10 feet. I make an attack roll. I use a reaction.} One way for the DM to encourage more cinematic action is to present a list of Environmental Elements. In a tavern, this list could include Chandelier, Plate Glass Window, Roaring Fireplace, Tray of Drinks, Drunk Patron. If you're fighting in an ancient tomb the list could be Pile of Gold Coins, Scattered Bones, Rotting Tapestry, Moss-Covered Statue. Each turn, a player can work one of these elements into their description of their action. The primary purpose of this is to give players ideas; interesting details to use while describing their actions. But if a player comes up with a particularly clever way to use an element, the DM could grant advantage on a check or attack roll, or some other benefit. The rogue needs to cross a room full of enemies and wants to swing on the chandelier? As the DM, I'd let them make a simple Dexterity (Acrobatics) check to avoid opportunity attacks, essentially getting a free Disengage action.",
+				"Environmental elements are always  optional and largely cosmetic. As a DM, you  don't have to grant a bonus for every use of an   element. But presenting a list can help players  think of the location as more than just squares  on a map and challenge them to add more  cinematic flair to their actions."
+			]
+		},
+		{
+			"source": "UAWGE",
+			"page": 40,
+			"ruleType": "O",
+			"name": "Common Languages",
+			"entries": [
+				"Common is the language of the Five Nations. The Mror dwarves speak Dwarvish and the Aereni elves speak Elvish, but they know Common as the language of trade. In Eberron, there are a number of other languages that serve this role in different regions or cultures. The DM may change the languages assigned to a monster or NPC to reflect this.",
+				"Giant is the common tongue of Xen'drik. It is rarely encountered on Khorvaire. Monsters in Khorvaire usually speak Goblin.",
+				"Goblin is the common tongue of Darguun, Droaam, and the Shadow Marches, along with most \"monstrous\" creatures in Khorvaire. It was the language of the goblin empire that dominated the continent before humanity arrived. Orcish is a dead language; it may be encountered in ancient inscriptions, but modern orcs speak Goblin.",
+				"Infernal is spoken by spirits that embody evil. This incorporates Abyssal; all fiends speak a common language. Infernal is sometimes called \"Khyber's speech,\" while Celestial is \"the tongue of Siberys.\"",
+				"Riedran is the common tongue of the continent of Sarlona. Quori is spoken by the kalashtar, spirits native to Dal Quor, and the Inspired lords of Riedra."
+			]
+		},
+		{
+			"source": "UAWGE",
+			"page": 40,
+			"ruleType": "O",
+			"name": "Swapping Racial Languages",
+			"entries": [
+				"This optional rule allows you to exchange a language granted by your race for a different standard language. Your DM must approve the language you select. This is a way to reflect a character with no ties to the culture of their race. Halfling is the language of the Talenta Plains; if a halfling was raised in the Mror Holds, they might replace Halfling with Dwarvish to reflect this."
+			]
+		},
+		{
+			"source": "UAWGE",
+			"page": 46,
+			"ruleType": "U",
+			"name": "Creating Magic Items",
+			"entries": [
+				"House Cannith has an enclave devoted solely to wand production. This facility is equipped with tools that amplify the Mark of Making and channel planar energies; the artisans also have access to a vast array of exotic woods and materials. You can also create a wand, but you're starting from scratch and creating the tools you need. Essentially, when House Cannith creates magic items, it's using factories; while your artificer is the equivalent of the tinkerer working in the garage. You can create magic items, and you can potentially create items that House Cannith can't make... but it's going to take you more time and gold than it takes for them. Here's an overview of the process.",
+				{
+					"type": "entries",
+					"name": "The Schema",
+					"entries": [
+						"The first step in creating a magic item is to acquire a schema for it. This is the equivalent of a recipe or a blueprint; it explains the process and components required to create the item. If you can obtain a schema\u2014from House Cannith, the mystical library of Arcanix, the collection of an experienced artificer\u2014 you're ready to move on. Otherwise, you can create a schema, but this takes time and skill. An arcane spellcaster uses Arcana to create schema. A divine caster uses Religion, while a druid or ranger relies on Nature. You must have a minimum skill bonus\u2014your proficiency bonus plus your ability score bonus\u2014in order to develop a schema. You must maintain the minimum skill bonus for the duration of your work, so an effect that increases an ability score for a few minutes won't help you.",
+						{
+							"type": "table",
+							"caption": "Schema Creation Requirements",
+							"colLabels": [
+								"Item Rarity",
+								"Work weeks",
+								"Minimum Skill"
+							],
+							"colStyles": [
+								"col-xs-4 text-align-right",
+								"col-xs-4 text-align-right",
+								"col-xs-4 text-align-right"
+							],
+							"rows": [
+								[
+									"Common",
+									"3 days",
+									"+2"
+								],
+								[
+									"Uncommon",
+									1,
+									"+4"
+								],
+								[
+									"Rare",
+									3,
+									"+6"
+								],
+								[
+									"Very Rare",
+									8,
+									"+8"
+								],
+								[
+									"Legendary",
+									16,
+									"+10"
+								]
+							]
+						},
+						"This ability to develop a schema represents remarkable talent. It could take House Cannith years or decades to develop a particular schema; the fact that you can accomplish this in weeks reflects the idea that player characters are innovators. However, it is always up to the DM to decide if you can create a particular schema. The DM can always choose to exclude a particular magic item from a campaign."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Rare Components",
+					"entries": [
+						"Any magic item requires specialized materials\u2014Eberron dragonshards, rare woods or metals, exotic herbs or other substances. While exotic, these things can be purchased or obtained in any major city. But creating a magic item from scratch often requires rarer components that can't simply be purchased. You might need a flower from Thelanis, a feather from a couatl, or the scale of a dragon. More often than not, such this will require an adventure. You may not have to kill something to obtain what you need, but you'll surely have to overcome a challenge. The Magic Item Ingredients table suggests how difficult that challenge could be.",
+						{
+							"type": "table",
+							"caption": "Magic Item Ingredients",
+							"colLabels": [
+								"Item Rarity",
+								"CR Range"
+							],
+							"colStyles": [
+								"col-xs-6 text-align-center",
+								"col-xs-6 text-align-center"
+							],
+							"rows": [
+								[
+									"Common",
+									"1\u20133"
+								],
+								[
+									"Uncommon",
+									"4\u20138"
+								],
+								[
+									"Rare",
+									"9\u201312"
+								],
+								[
+									"Very Rare",
+									"13\u201318"
+								],
+								[
+									"Legendary",
+									"19+"
+								]
+							]
+						},
+						"It's possible to find a rare component even when you're not looking for one. You could discover an exotic Khyber crystal in the ruins of an artificer's workshop. Time and study could yield suggestions as to what items could be made with the component; for example, that Khyber shard could be used to create an {@item iron flask} or {@item dimensional shackles}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Creation",
+					"entries": [
+						"Once you have your schema and any rare components, you're ready to begin. The DM can assign skills or tools that are required for this act of creation, so that it requires both proficiency and access to these tools. You must pay the basic costs of materials and services required to make the item. And you must spend a significant amount of time working on it; creating a legendary item can take a year of effort!",
+						{
+							"type": "table",
+							"caption": "Magic Item Crafting Time and Cost",
+							"colLabels": [
+								"Item Rarity",
+								"Work weeks*",
+								"Cost*"
+							],
+							"colStyles": [
+								"col-xs-4 text-align-center",
+								"col-xs-4 text-align-center",
+								"col-xs-4 text-align-right"
+							],
+							"rows": [
+								[
+									"Common",
+									1,
+									"50 gp"
+								],
+								[
+									"Uncommon",
+									2,
+									"200 gp"
+								],
+								[
+									"Rare",
+									10,
+									"2,000 gp"
+								],
+								[
+									"Very Rare",
+									25,
+									"20,000 gp"
+								],
+								[
+									"Legendary",
+									20,
+									"100,000 gp"
+								]
+							],
+							"footnotes": [
+								"* Halved for a consumable item"
+							]
+						},
+						"The Magic Item Crafting Time and Cost table provides a basic framework, but various factors could reduce time or cost. Eberron dragonshards are a significant amount of the cost of materials. A remarkable dragonshard could reduce the cost of creating an item by 10 percent. A planar convergence could reduce the time or cost required to make an item with an effect tied to that plane. Ultimately, this is a story, and there are exceptions to every rule."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Complications",
+					"entries": [
+						"These rules for magic item creation are derived from the system presented in Xanathar's Guide to Everything. This also offers the idea that the creation of a magic item is a complex procedure and that complications can arise. If you use this rule, there's a 10 percent chance of a complication arising for every five workweeks spent on crafting the item. Xanathar's Guide presents a number of possible complications. Here are few tied to Eberron.",
+						{
+							"type": "table",
+							"caption": "",
+							"colLabels": [
+								"d6",
+								"Complications"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									1,
+									"A Dragonmarked House takes an interest in your work. Do they view you as a threat, or are they impressed by your techniques? Do they want to buy the item, and what will happen if you refuse?"
+								],
+								[
+									2,
+									"A mishap creates a temporary manifest zone."
+								],
+								[
+									3,
+									"You need to acquire an additional rare component."
+								],
+								[
+									4,
+									"The shifting balance of the planes interferes with your work; you must wait for the current planar alignment to change."
+								],
+								[
+									5,
+									"Your efforts draw the attention of one of the conspiracies of Eberron\u2014such as the Chamber, the Aurum, the Emerald Claw, or the Lords of Dust."
+								],
+								[
+									6,
+									"Your item unexpectedly becomes sentient."
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"source": "UAWGE",
+			"page": 114,
+			"ruleType": "O",
+			"name": "Two-Handed Arcane Focuses",
+			"entries": [
+				"In Eberron, an arcane focus is a weapon. As such, it can be interesting to give a focus some of the same trade-offs as mundane weapons: do you sacrifice your free hand for greater power?",
+				"If you use this optional rule, when a caster uses a two-handed arcane focus to cast an offensive cantrip (a cantrip requiring a saving throw or an attack roll), the range of the cantrip is increased by 50 percent.",
+				"By this rule, a staff always requires two hands, while rods can be used with either one or two hands. Using a two-handed arcane focus fulfills the somatic component requirement for a spell."
 			]
 		}
 	]

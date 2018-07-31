@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.0.4",
 	"type": "object",
 	"properties": {
 		"variant": {
@@ -47,6 +47,9 @@
 							},
 							"type": {
 								"type": "string"
+							},
+							"scfType": {
+								"type": "string"
 							}
 						},
 						"additionalProperties": false
@@ -67,7 +70,7 @@
 								"type": "string"
 							},
 							"page": {
-								"type": "string"
+								"type": "integer"
 							},
 							"namePrefix": {
 								"type": "string"
@@ -76,7 +79,14 @@
 								"type": "string"
 							},
 							"reqAttune": {
-								"type": "string"
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "boolean"
+									}
+								]
 							},
 							"curse": {
 								"type": "boolean"
@@ -85,6 +95,9 @@
 								"type": "string"
 							},
 							"stealth": {
+								"type": "boolean"
+							},
+							"wondrous": {
 								"type": "boolean"
 							},
 							"entries": {
@@ -128,9 +141,22 @@
 						"type": "object",
 						"properties": {
 							"name": {
-								"type": "string"
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								]
 							},
 							"page": {
+								"type": "integer"
+							},
+							"property": {
 								"type": "string"
 							}
 						},

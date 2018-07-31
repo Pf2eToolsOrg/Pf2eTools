@@ -2432,6 +2432,7 @@ class InitiativeTracker {
 
 		let sort = state.s || NUM;
 		let dir = state.d || DESC;
+		let isLocked = false;
 
 		const $wrpTracker = $(`<div class="dm-init"/>`);
 
@@ -2450,11 +2451,28 @@ class InitiativeTracker {
 		const $wrpEntries = $(`<div class="dm-init-wrp-entries"/>`).appendTo($wrpTop);
 
 		const $wrpControls = $(`<div class="dm-init-wrp-controls"/>`).appendTo($wrpTracker);
+
+		const $wrpLock = $(`<div/>`).appendTo($wrpControls);
+		const $btnLock = $(`<div class="btn btn-danger" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></div>`).appendTo($wrpLock);
+		$btnLock.on("click", () => {
+			if (isLocked) {
+				$btnLock.removeClass("btn-success").addClass("btn-danger");
+				$(".dm-init-lockable").toggleClass("disabled");
+				$("input.dm-init-lockable").prop('disabled', false);
+			} else {
+				$btnLock.removeClass("btn-danger").addClass("btn-success");
+				$(".dm-init-lockable").toggleClass("disabled");
+				$("input.dm-init-lockable").prop('disabled', true);
+			}
+			isLocked = !isLocked;
+		});
+
 		const $wrpAddNext = $(`<div/>`).appendTo($wrpControls);
-		const $btnAdd = $(`<div class="btn btn-primary" title="Add Player" style="margin-right: 7px;"><span class="glyphicon glyphicon-plus"></span></div>`).appendTo($wrpAddNext);
-		const $btnAddMonster = $(`<div class="btn btn-success" title="Add Monster" style="margin-right: 7px;"><span class="glyphicon glyphicon-print"></span></div>`).appendTo($wrpAddNext);
+		const $btnAdd = $(`<div class="btn btn-primary dm-init-lockable" title="Add Player" style="margin-right: 7px;"><span class="glyphicon glyphicon-plus"></span></div>`).appendTo($wrpAddNext);
+		const $btnAddMonster = $(`<div class="btn btn-success dm-init-lockable" title="Add Monster" style="margin-right: 7px;"><span class="glyphicon glyphicon-print"></span></div>`).appendTo($wrpAddNext);
 		const $btnNext = $(`<div class="btn btn-default" title="Next Turn"><span class="glyphicon glyphicon-step-forward"></span></div>`).appendTo($wrpAddNext);
 		$btnNext.on("click", () => setNextActive());
+
 		const $wrpSort = $(`<div/>`).appendTo($wrpControls);
 		const $btnSortAlpha = $(`<div title="Sort Alphabetically" class="btn btn-default" style="margin-right: 7px;"><span class="glyphicon glyphicon-sort-by-alphabet"></span></div>`).appendTo($wrpSort);
 		$btnSortAlpha.on("click", () => {
@@ -2468,20 +2486,23 @@ class InitiativeTracker {
 			else sort = NUM;
 			doSort(NUM);
 		});
-		const $btnReset = $(`<div title="Reset" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></div>`).appendTo($wrpControls);
+		const $btnReset = $(`<div title="Reset" class="btn btn-danger dm-init-lockable"><span class="glyphicon glyphicon-trash"></span></div>`).appendTo($wrpControls);
 		$btnReset.on("click", () => {
+			if (isLocked) return;
 			$wrpEntries.empty();
 			sort = NUM;
 			dir = DESC;
 		});
 
 		$btnAdd.on("click", () => {
+			if (isLocked) return;
 			makeRow();
 			doSort(sort);
 			checkSetActive();
 		});
 
 		$btnAddMonster.on("click", () => {
+			if (isLocked) return;
 			const flags = {
 				doClickFirst: false,
 				isWait: false
@@ -2632,7 +2653,7 @@ class InitiativeTracker {
 			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`);
 
 			const $wrpLhs = $(`<div class="dm-init-row-lhs"/>`).appendTo($wrpRow);
-			const $iptName = $(`<input class="form-control input-sm name ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
+			const $iptName = $(`<input class="form-control input-sm name dm-init-lockable ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
 			$iptName.on("change", () => doSort(ALPHA));
 			if (isMon) {
 				const $rows = $wrpEntries.find(`.dm-init-row`);
@@ -2656,8 +2677,9 @@ class InitiativeTracker {
 						</span>
 					</div>
 				`).appendTo($wrpLhs);
-				const $btnAnother = $(`<div class="btn btn-success btn-xs" title="Add Another (SHIFT for Roll New)"><span class="glyphicon glyphicon-plus"></span></div>`)
+				const $btnAnother = $(`<div class="btn btn-success btn-xs dm-init-lockable" title="Add Another (SHIFT for Roll New)"><span class="glyphicon glyphicon-plus"></span></div>`)
 					.click((evt) => {
+						if (isLocked) return;
 						makeRow(name, "", evt.shiftKey ? "" : $iptScore.val(), false, source, [], InitiativeTracker._uiRollHp);
 					}).appendTo($monName);
 				$(`<input class="source hidden" value="${source}">`).appendTo($wrpLhs);
@@ -2690,8 +2712,7 @@ class InitiativeTracker {
 					const ttpText = state.name && state.turns ? `${state.name.escapeQuotes()} (${turnsText})` : state.name ? state.name.escapeQuotes() : state.turns ? turnsText : "";
 					const getBar = () => {
 						const style = state.turns == null || state.turns > 3
-							? `background-image: linear-gradient(45deg, ${state.color} 41.67%, transparent 41.67%, transparent 50%, ${state.color} 50%, ${state.color} 91.67%, transparent 91.67%, transparent 100%);
-background-size: 8.49px 8.49px;`
+							? `background-image: linear-gradient(45deg, ${state.color} 41.67%, transparent 41.67%, transparent 50%, ${state.color} 50%, ${state.color} 91.67%, transparent 91.67%, transparent 100%); background-size: 8.49px 8.49px;`
 							: `background: ${state.color};`;
 						return `<div class="dm-init-cond-bar" style="${style}"/>`
 					};
@@ -2792,7 +2813,7 @@ background-size: 8.49px 8.49px;`
 			let curHp = hp;
 
 			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${curHp}">`).appendTo($wrpRhs);
-			const $iptScore = $(`<input class="form-control input-sm score" placeholder="#" type="number" value="${init}">`).on("change", () => doSort(NUM)).appendTo($wrpRhs);
+			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable" placeholder="#" type="number" value="${init}">`).on("change", () => doSort(NUM)).appendTo($wrpRhs);
 
 			if (isMon && (curHp === "" || init === "")) {
 				const doUpdate = () => {
@@ -2851,9 +2872,10 @@ background-size: 8.49px 8.49px;`
 				}
 			});
 
-			const $btnDel = $(`<div class="btn btn-danger btn-xs dm-init-row-btn" title="Delete"><span class="glyphicon glyphicon-trash"/></div>`)
+			const $btnDel = $(`<div class="btn btn-danger btn-xs dm-init-row-btn dm-init-lockable" title="Delete"><span class="glyphicon glyphicon-trash"/></div>`)
 				.appendTo($wrpRhs)
 				.on("click", () => {
+					if (isLocked) return;
 					if ($wrpRow.hasClass(`dm-init-row-active`) && $wrpEntries.find(`.dm-init-row`).length > 1) setNextActive();
 					$wrpRow.remove();
 				});

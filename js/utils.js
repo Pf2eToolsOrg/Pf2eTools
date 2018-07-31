@@ -245,22 +245,23 @@ String.prototype.distance = String.prototype.distance ||
 		return score[m + 1][n + 1];
 	};
 
-StrUtil = {
-	joinPhraseArray: function (array, joiner, lastJoiner) {
-		if (array.length === 0) return "";
-		if (array.length === 1) return array[0];
-		if (array.length === 2) return array.join(lastJoiner);
+Array.prototype.joinConjunct = Array.prototype.joinConjunct ||
+	function (joiner, lastJoiner, nonOxford) {
+		if (this.length === 0) return "";
+		if (this.length === 1) return this[0];
+		if (this.length === 2) return this.join(lastJoiner);
 		else {
 			let outStr = "";
-			for (let i = 0; i < array.length; ++i) {
-				outStr += array[i];
-				if (i < array.length - 2) outStr += joiner;
-				else if (i === array.length - 2) outStr += lastJoiner
+			for (let i = 0; i < this.length; ++i) {
+				outStr += this[i];
+				if (i < this.length - 2) outStr += joiner;
+				else if (i === this.length - 2) outStr += `${(!nonOxford && this.length > 2 ? joiner.trim() : "")}${lastJoiner}`;
 			}
 			return outStr;
 		}
-	},
+	};
 
+StrUtil = {
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
 	},
@@ -510,7 +511,7 @@ Parser.getSpeedString = (it) => {
 		procSpeed("swim");
 		if (it.speed.choose) {
 			joiner = "; ";
-			stack.push(`${CollectionUtil.joinConjunct(it.speed.choose.from.sort(), ", ", ", or ")} ${it.speed.choose.amount} ft.${it.speed.choose.note ? ` ${it.speed.choose.note}` : ""}`);
+			stack.push(`${it.speed.choose.from.sort().joinConjunct(", ", " or ")} ${it.speed.choose.amount} ft.${it.speed.choose.note ? ` ${it.speed.choose.note}` : ""}`);
 		}
 		return stack.join(joiner);
 	} else {
@@ -956,13 +957,13 @@ Parser.monImmResToFull = function (toParse) {
 			let stack = it.preNote ? `${it.preNote} ` : "";
 			if (it.immune) {
 				const toJoin = it.immune.map(nxt => toString(nxt, depth + 1));
-				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : CollectionUtil.joinConjunct(toJoin, ", ", " and ");
+				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : toJoin.joinConjunct(", ", " and ");
 			} else if (it.resist) {
 				const toJoin = it.resist.map(nxt => toString(nxt, depth + 1));
-				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : CollectionUtil.joinConjunct(toJoin, ", ", " and ");
+				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : toJoin.joinConjunct(", ", " and ");
 			} else if (it.vulnerable) {
 				const toJoin = it.vulnerable.map(nxt => toString(nxt, depth + 1));
-				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : CollectionUtil.joinConjunct(toJoin, ", ", " and ");
+				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : toJoin.joinConjunct(", ", " and ");
 			}
 			if (it.note) stack += ` ${it.note}`;
 			return stack;
@@ -1619,6 +1620,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
 	"AF": "Ammunition",
 	"AT": "Artisan Tool",
+	"EM": "Eldritch Machine",
 	"EXP": "Explosive",
 	"G": "Adventuring Gear",
 	"GS": "Gaming Set",
@@ -1748,6 +1750,29 @@ function implies (a, b) {
 
 function noModifierKeys (e) {
 	return !e.ctrlKey && !e.altKey && !e.metaKey;
+}
+
+function isObject (obj) {
+	const type = typeof obj;
+	return (type === 'function' || type === 'object') && !!obj;
+}
+
+function isString (str) {
+	return typeof str === 'string';
+}
+
+function isNumber (obj) {
+	return toString.call(obj) === '[object Number]';
+}
+
+function isEmpty (obj) {
+	if (obj == null) {
+		return true;
+	}
+	if (Array.isArray(obj) || isString(obj)) {
+		return obj.length === 0;
+	}
+	return Object.keys(obj).length === 0;
 }
 
 if (typeof window !== "undefined") {
@@ -2767,10 +2792,10 @@ DataUtil = {
 						DataUtil._loaded[toUrl] = data;
 						resolve(data, otherData);
 					} catch (e) {
-						reject(new Error('Could not parse JSON' + toUrl + e));
+						reject(new Error(`Could not parse JSON from ${toUrl}: ${e}`));
 					}
 				};
-				request.onerror = (e) => reject(new Error('Error during JSON request: ' + e));
+				request.onerror = (e) => reject(new Error(`Error during JSON request: ${e}`));
 				return request;
 			}
 		});
@@ -3124,16 +3149,19 @@ BrewUtil = {
 	},
 
 	_pLoadLocal (callbackFn = (d, page) => BrewUtil.doHandleBrewJson(d, page, null)) {
-		return DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${JSON_HOMEBREW_INDEX}`).then((data) => {
-			// auto-load from `homebrew/`, for custom versions of the site
-			if (data.toImport.length) {
-				const page = UrlUtil.getCurrentPage();
-				Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`))).then((datas) => {
-					datas.forEach(d => callbackFn(d, page));
-					Promise.resolve();
-				});
-			} else Promise.resolve();
-		});
+		if (!IS_ROLL20) {
+			return DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${JSON_HOMEBREW_INDEX}`).then((data) => {
+				// auto-load from `homebrew/`, for custom versions of the site
+				if (data.toImport.length) {
+					const page = UrlUtil.getCurrentPage();
+					Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`))).then((datas) => {
+						datas.forEach(d => callbackFn(d, page));
+						Promise.resolve();
+					});
+				} else Promise.resolve();
+			});
+		}
+		return () => {}; // no-op
 	},
 
 	manageBrew: (funcAddCallback) => {
@@ -3478,8 +3506,8 @@ BrewUtil = {
 			reader.readAsText(input.files[readIndex++]);
 		}
 
-		function getIndex (arrName, uniqueId) {
-			return BrewUtil.homebrew[arrName].findIndex(it => it.uniqueId === uniqueId);
+		function getIndex (arrName, uniqueId, isChild) {
+			return BrewUtil.homebrew[arrName].findIndex(it => isChild ? it.parentUniqueId : it.uniqueId === uniqueId);
 		}
 
 		function deleteSource (source, doConfirm) {
@@ -3511,13 +3539,13 @@ BrewUtil = {
 			if (BrewUtil._filterBox) BrewUtil._filterBox._fireValChangeEvent();
 		}
 
-		function doRemove (arrName, uniqueId, doRefresh) {
-			const index = getIndex(arrName, uniqueId);
+		function doRemove (arrName, uniqueId, doRefresh, isChild) {
+			const index = getIndex(arrName, uniqueId, isChild);
 			if (~index) {
 				BrewUtil.homebrew[arrName].splice(index, 1);
 				if (doRefresh) refreshBrewList();
 				if (BrewUtil._lists) {
-					BrewUtil._lists.forEach(l => l.remove("uniqueid", uniqueId));
+					BrewUtil._lists.forEach(l => l.remove(isChild ? "parentuniqueid" : "uniqueid", uniqueId));
 					if (doRefresh) History.hashChange();
 				}
 			}
@@ -3576,7 +3604,6 @@ BrewUtil = {
 				const forClass = subClass.class;
 				BrewUtil.homebrew.subclass.splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
-				// refreshBrewList();
 				const c = ClassData.classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
 
 				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
@@ -3600,8 +3627,7 @@ BrewUtil = {
 		function deleteAdventureBrew () {
 			return (uniqueId, doRefresh) => {
 				doRemove("adventure", uniqueId, false);
-				// TODO lookup the other uniqueID
-				doRemove("adventureData", uniqueId, doRefresh);
+				doRemove("adventureData", uniqueId, doRefresh, true);
 			}
 		}
 	},
@@ -3619,6 +3645,15 @@ BrewUtil = {
 		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
 		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData"];
 		storable.forEach(storePrep);
+
+		if (json["adventure"] && json["adventureData"]) {
+			json["adventure"].forEach(adv => {
+				const data = json["adventureData"].find(it => it.id === adv.id);
+				if (data) {
+					data.parentUniqueId = adv.uniqueId;
+				}
+			})
+		}
 
 		// store
 		function checkAndAdd (prop) {
@@ -4013,10 +4048,6 @@ CollectionUtil = {
 		}
 	},
 
-	joinConjunct: (arr, joinWith, conjunctWith) => {
-		return arr.length === 1 ? String(arr[0]) : arr.length === 2 ? arr.join(conjunctWith) : arr.slice(0, -1).join(joinWith) + conjunctWith + arr.slice(-1);
-	},
-
 	arrayEq (array1, array2) {
 		if (!array1 && !array2) return true;
 		else if ((!array1 && array2) || (array1 && !array2)) return false;
@@ -4210,27 +4241,4 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 		$(`body`).append($wrpBanner);
 		/* eslint-enable */
 	});
-}
-
-function isObject (obj) {
-	const type = typeof obj;
-	return (type === 'function' || type === 'object') && !!obj;
-}
-
-function isString (str) {
-	return typeof str === 'string';
-}
-
-function isNumber (obj) {
-	return toString.call(obj) === '[object Number]';
-}
-
-function isEmpty (obj) {
-	if (obj == null) {
-		return true;
-	}
-	if (Array.isArray(obj) || isString(obj)) {
-		return obj.length === 0;
-	}
-	return Object.keys(obj).length === 0;
 }

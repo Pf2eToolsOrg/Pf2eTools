@@ -32,6 +32,14 @@
 			display: inline-block;
 			width: initial;
 		}
+
+		#lastWarnings {
+			color: #df00ff;
+		}
+
+		#lastError {
+			color: red;
+		}
 	</style>
 </head>
 
@@ -126,6 +134,8 @@ ___
 		<div class="view-col">
 			<h3>Output</h3>
 			<textarea id="jsonoutput" readonly class="outputArea"></textarea>
+			<div id="lastWarnings" class="code"></div>
+			<div id="lastError" class="code"></div>
 		</div>
 	</main>
 

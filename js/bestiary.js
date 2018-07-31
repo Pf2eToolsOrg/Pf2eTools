@@ -244,9 +244,9 @@ const actionReactionFilter = new Filter({
 });
 const miscFilter = new Filter({
 	header: "Miscellaneous",
-	items: ["Familiar", "Lair Actions", "Legendary", "NPC", "Spellcaster", "Regional Effects", "Swarm"],
+	items: ["Familiar", "Lair Actions", "Legendary", "Named NPC", "Spellcaster", "Regional Effects", "Swarm"],
 	displayFn: StrUtil.uppercaseFirst,
-	deselFn: (it) => it === "NPC"
+	deselFn: (it) => it === "Named NPC"
 });
 
 const filterBox = initFilterBox(

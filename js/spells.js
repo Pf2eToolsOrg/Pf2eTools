@@ -440,24 +440,27 @@ function pageInit (loadedSources) {
 	BrewUtil.pAddBrewData()
 		.then((homebrew) => {
 			function handleSubclass (className, classSource = SRC_PHB, sc) {
-				if (sc.subclassSpells) {
-					sc.subclassSpells.forEach(it => {
-						const name = typeof it === "string" ? it : it.name;
-						const source = typeof it === "string" ? "PHB" : it.source;
-						brewSpellClasses[source] = brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
-						brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
-						brewSpellClasses[source][name].fromSubclass.push({
-							class: {
-								name: className,
-								source: classSource
-							},
-							subclass: {
-								name: sc.shortName,
-								source: sc.source
-							}
-						});
-					});
-				}
+				const genSubclassSpell = (it, subSubclass) => {
+					const name = typeof it === "string" ? it : it.name;
+					const source = typeof it === "string" ? "PHB" : it.source;
+					brewSpellClasses[source] = brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
+					brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
+					const toAdd = {
+						class: {
+							name: className,
+							source: classSource
+						},
+						subclass: {
+							name: sc.shortName,
+							source: sc.source
+						}
+					};
+					if (subSubclass) toAdd.subclass.subSubclass = subSubclass;
+					brewSpellClasses[source][name].fromSubclass.push(toAdd);
+				};
+
+				if (sc.subclassSpells) sc.subclassSpells.forEach(it => genSubclassSpell(it));
+				if (sc.subSubclassSpells) $.each(sc.subSubclassSpells, (ssC, arr) => arr.forEach(it => genSubclassSpell(it, ssC)));
 			}
 
 			if (homebrew.class) {
