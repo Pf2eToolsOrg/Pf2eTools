@@ -2226,7 +2226,7 @@ ListUtil = {
 	},
 
 	_updateSublistVisibility: () => {
-		if (ListUtil.sublist.items.length) ListUtil.$sublistContainer.show();
+		if (ListUtil.sublist.items.length) ListUtil.$sublistContainer.css("display", "flex");
 		else ListUtil.$sublistContainer.hide();
 	},
 

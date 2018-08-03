@@ -711,13 +711,21 @@ dialog.dialog-modal {
 	> *:not(.wrp-stats-table) {
 		flex-shrink: 0;
 	}
+
+	#sublistcontainer {
+		flex-shrink: 3;
+		min-height: 90px;
+	}
 }
 
 .wrp-stats-table {
+	overflow-x: hidden;
 	overflow-y: auto;
 	border-top: 1px solid #e69a28;
 	border-bottom: 1px solid #e69a28;
 	transform: translateZ(0);
+	flex-shrink: 1;
+	min-height: 100px;
 }
 
 main {
@@ -2519,6 +2527,12 @@ input[type=checkbox].readonly {
 #sublistcontainer {
 	display: none;
 	padding: 0 0 2px;
+	flex-direction: column;
+
+	.list {
+		margin-bottom: 3px;
+		padding-top: 3px;
+	}
 }
 
 #sublistcontainer list {

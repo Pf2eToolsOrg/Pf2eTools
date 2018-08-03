@@ -136,7 +136,7 @@ class FilterBox {
 		}
 		$inputGroup.prepend($filterButton);
 		this.$rendered.push($filterButton);
-		$body.append($outer);
+		this.$disabledOverlay.append($outer);
 		this.$rendered.push($outer);
 		$inputGroup.after(this.$miniView);
 		this.$rendered.push(this.$miniView);
