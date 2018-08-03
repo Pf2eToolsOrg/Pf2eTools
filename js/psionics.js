@@ -51,6 +51,7 @@ window.onload = function load () {
 };
 
 let list;
+let psionicsBookView;
 const sourceFilter = getSourceFilter({
 	deselFn: () => false
 });
@@ -88,6 +89,34 @@ function onJsonLoad (data) {
 	});
 	ListUtil.initGenericPinnable();
 
+	psionicsBookView = new BookModeView("bookview", $(`#btn-psibook`), "Please pin some psionics first",
+		($tbl) => {
+			const toShow = ListUtil.getSublistedIds().map(id => psionicList[id]);
+			const stack = [];
+
+			const renderType = (type) => {
+				const toRender = toShow.filter(p => p.type === type);
+				if (toRender.length) {
+					stack.push(EntryRenderer.utils.getBorderTr(`<span class="spacer-name">${Parser.psiTypeToFull(type)}</span>`));
+
+					stack.push(`<tr class="spellbook-level"><td>`);
+					toRender.forEach(sp => {
+						stack.push(`<table class="spellbook-entry"><tbody>`);
+						stack.push(EntryRenderer.psionic.getCompactRenderedString(sp));
+						stack.push(`</tbody></table>`);
+					});
+					stack.push(`</td></tr>`);
+				}
+			};
+
+			renderType("T");
+			renderType("D");
+
+			$tbl.append(stack.join(""));
+			return toShow.length;
+		}
+	);
+
 	addPsionics(data);
 	BrewUtil.pAddBrewData()
 		.then(addPsionics)
@@ -96,8 +125,21 @@ function onJsonLoad (data) {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
 			ListUtil.loadState();
-			RollerUtil.addListRollButton();
 
+			ListUtil.bindShowTableButton(
+				"btn-show-table",
+				"Psionics",
+				psionicList,
+				{
+					name: {name: "Name", transform: true},
+					source: {name: "Source", transform: (it) => `<span class="source${Parser.stringToCasedSlug(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
+					_text: {name: "Text", transform: (it) => it.type === "T" ? EntryRenderer.psionic.getTalentText(it, renderer) : EntryRenderer.psionic.getDisciplineText(it, renderer), flex: 3}
+				},
+				{generator: ListUtil.basicFilterGenerator},
+				(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
+			);
+
+			RollerUtil.addListRollButton();
 			History.init(true);
 		});
 }
@@ -201,10 +243,14 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 
+	loadsub([]);
+
 	ListUtil.updateSelected();
 }
 
 function loadsub (sub) {
 	filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
+
+	psionicsBookView.handleSub(sub);
 }

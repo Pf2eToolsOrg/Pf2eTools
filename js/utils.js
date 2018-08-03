@@ -2406,8 +2406,19 @@ ListUtil = {
 		return it.otherSources ? [it.source].concat(it.otherSources.map(src => src.source)) : it.source;
 	},
 
-	bindShowTableButton (id, title, dataList, colTransforms, sorter) {
-		$(`#${id}`).click("click", () => ListUtil.showTable(title, dataList, colTransforms, sorter));
+	bindShowTableButton (id, title, dataList, colTransforms, filter, sorter) {
+		$(`#${id}`).click("click", () => ListUtil.showTable(title, dataList, colTransforms, filter, sorter));
+	},
+
+	basicFilterGenerator () {
+		const slIds = ListUtil.getSublistedIds();
+		if (slIds.length) {
+			const slIdSet = new Set(slIds);
+			return slIdSet.has.bind(slIdSet);
+		} else {
+			const visibleIds = new Set(ListUtil.getVisibleIds());
+			return visibleIds.has.bind(visibleIds);
+		}
 	},
 
 	getVisibleIds () {
@@ -2423,7 +2434,7 @@ ListUtil = {
 		const $pnlControl = $(`<div class="split my-3"/>`).appendTo($modalInner);
 		const $pnlCols = $(`<div class="flex" style="align-items: center;"/>`).appendTo($pnlControl);
 		Object.values(colTransforms).forEach((c, i) => {
-			const $wrpCb = $(`<label class="flex-${c.flex} px-2 mr-2 no-wrap inline-flex">${c.name} </label>`).appendTo($pnlCols);
+			const $wrpCb = $(`<label class="flex-${c.flex || 1} px-2 mr-2 no-wrap inline-flex">${c.name} </label>`).appendTo($pnlCols);
 			const $cbToggle = $(`<input type="checkbox" class="ml-1" data-name="${c.name}" checked>`)
 				.click(() => {
 					const toToggle = $modalInner.find(`.col_${i}`);
@@ -2454,12 +2465,12 @@ ListUtil = {
 
 		if (typeof filter === "object" && filter.generator) filter = filter.generator();
 
-		let temp = `<table class="table-striped" style="width: 100%;"><thead><tr class="flex">${Object.values(colTransforms).map((c, i) => `<th class="col_${i} flex-${c.flex} px-2">${c.name}</th>`).join("")}</tr></thead><tbody>`;
+		let temp = `<table class="table-striped stats stats-book" style="width: 100%;"><thead><tr class="flex">${Object.values(colTransforms).map((c, i) => `<th class="col_${i} flex-${c.flex || 1} px-2">${c.name}</th>`).join("")}</tr></thead><tbody>`;
 		(sorter ? JSON.parse(JSON.stringify(dataList)).sort(sorter) : dataList).filter((it, i) => filter ? filter(i) : it).forEach(it => {
 			temp += `<tr class="flex data-row">`;
 			temp += Object.keys(colTransforms).map((k, i) => {
 				const c = colTransforms[k];
-				return `<td class="col_${i} flex-${c.flex} px-2">${c.transform === true ? it[k] : c.transform(it[k])}</td>`;
+				return `<td class="col_${i} flex-${c.flex || 1} px-2">${c.transform === true ? it[k] : c.transform(k[0] === "_" ? it : it[k])}</td>`;
 			}).join("");
 			temp += `</tr>`;
 		});
@@ -2698,6 +2709,10 @@ SortUtil = {
 			return SortUtil._ascSort(a.item, b.item);
 		}
 		return SortUtil._ascSort(a, b);
+	},
+
+	ascSortLower: (a, b) => {
+		return SortUtil._ascSort(a.toLowerCase(), b.toLowerCase());
 	},
 
 	_ascSort: (a, b) => {
@@ -3283,27 +3298,46 @@ BrewUtil = {
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
 			}
-			const urls = getBrewDirs().map(it => ({url: `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${it}?client_id=${HOMEBREW_CLIENT_ID}&client_secret=${HOMEBREW_CLIENT_SECRET}&${(new Date()).getTime()}`}));
-			DataUtil.multiLoadJSON(urls, null, (json) => {
-				let stack = "";
-				const all = [].concat.apply([], json);
-				all.forEach(it => {
-					stack += `<li>
-						<section onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">
-							<span class="col-xs-4 filename">${it.name.trim().replace(/\.json$/, "")}</span>
-							<span class="col-xs-8 source" title="${it.download_url}">${it.download_url}</span>
-						</section>
-					</li>`;
-				});
+			DataUtil.loadJSON(`https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/collection/index.json`)
+				.then((data) => {
+					const dirs = new Set(getBrewDirs());
+					return Object.keys(data).filter(k => data[k].find(it => dirs.has(it)));
+				})
+				.then((collectionFiles) => {
+					const getDirUrl = (dir) => `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${dir}?client_id=${HOMEBREW_CLIENT_ID}&client_secret=${HOMEBREW_CLIENT_SECRET}&${(new Date()).getTime()}`;
+					const urls = getBrewDirs().map(it => ({url: getDirUrl(it)}));
+					if (collectionFiles.length) urls.push({url: getDirUrl("collection"), _collection: true});
 
-				$ul.empty();
-				$ul.append(stack);
+					DataUtil.multiLoadJSON(
+						urls,
+						(url, json) => {
+							if (url._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
+						},
+						(json) => {
+							let stack = "";
+							const all = [].concat.apply([], json);
+							all.forEach(it => it._brewName = it.name.trim().replace(/\.json$/, ""));
+							all.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
+							all.filter(it => !it._brewSkip).forEach(it => {
+								stack += `
+									<li>
+										<section onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">
+											<span class="col-xs-4 filename">${it._brewName}</span>
+											<span class="col-xs-8 source" title="${it.download_url}">${it.download_url}</span>
+										</section>
+									</li>`;
+							});
 
-				const list = new List("brewlistcontainer", {
-					valueNames: ["filename"],
-					listClass: "brew-list"
+							$ul.empty();
+							$ul.append(stack);
+
+							const list = new List("brewlistcontainer", {
+								valueNames: ["filename"],
+								listClass: "brew-list"
+							});
+						}
+					);
 				});
-			});
 		});
 		$window.append(
 			$(`<div class="text-align-center"/>`)
@@ -4155,6 +4189,12 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown) {
 			self._$wrpBook.remove();
 			self.active = false;
 		}
+	};
+
+	this.handleSub = (sub) => {
+		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
+		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.open();
+		else this.teardown();
 	}
 }
 

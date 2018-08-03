@@ -691,6 +691,12 @@ dialog.dialog-modal {
 	position: relative;
 	margin: 7px 7px 12px;
 	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.wrp-footer-buttons {
+	margin-top: 3px;
 }
 
 #listcontainer.view-col {
@@ -699,8 +705,19 @@ dialog.dialog-modal {
 }
 
 #contentwrapper.view-col {
-	overflow-y: auto;
 	overflow-x: hidden;
+	margin-bottom: 5px;
+
+	> *:not(.wrp-stats-table) {
+		flex-shrink: 0;
+	}
+}
+
+.wrp-stats-table {
+	overflow-y: auto;
+	border-top: 1px solid #e69a28;
+	border-bottom: 1px solid #e69a28;
+	transform: translateZ(0);
 }
 
 main {
@@ -950,6 +967,10 @@ table.stats table caption {
 
 th.border {
 	height: 4px;
+}
+
+.wrp-stats-table th.border {
+	height: 3px;
 }
 
 th.border-thin {
@@ -2137,24 +2158,8 @@ table.stats.stats-book table.printbook-bestiary-entry {
 }
 
 /**** Search and filter bar ****/
-.list-disabled-overlay::after {
-	position: absolute;
-	z-index: 100;
-	top: 34px;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	content: '';
-	display: block;
-	background: rgba(210, 210, 210, 0.64);
-}
-
-.dropdown-menu-filter {
-	margin-top: -1px;
-	margin-left: -1px;
-	width: calc(100% + 2px);
-	max-height: calc(100vh - 212px);
-	overflow-y: auto;
+.btn-filter {
+	border-right: 0;
 }
 
 @media (max-width: 991px) {
@@ -2256,8 +2261,8 @@ table.stats.stats-book table.printbook-bestiary-entry {
 .dropdown-menu-filter .pill-grid-sub {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
 	max-width: 100%;
+	margin-bottom: 7px;
 }
 
 .dropdown-menu-filter .pill-grid.pill-grid-subs {
@@ -2265,13 +2270,12 @@ table.stats.stats-book table.printbook-bestiary-entry {
 }
 
 .dropdown-menu-filter .pill-grid-subs-divider {
-	margin-top: 6px;
-	margin-bottom: 6px;
+	margin: 6px auto;
 	max-width: 80%;
 }
 
 .dropdown-menu-filter .pill-grid-divider {
-	border-bottom: #ccc 1px solid;
+	border-bottom: #ccc 1px dotted;
 	margin-bottom: 3px;
 	width: 100%;
 }
@@ -2283,7 +2287,7 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	box-sizing: border-box;
 	font-size: 0.8em;
 	line-height: 22px;
-	margin-left: 5px;
+	margin-left: auto;
 }
 
 .dropdown-menu-filter .summary > span {
@@ -2309,9 +2313,18 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	text-shadow: 0 0 1px #8a1a1b;
 }
 
+.dropdown-menu-filter .summary > span.filtering {
+	color: #333;
+	text-shadow: 0 0 1px #333;
+}
+
+.dropdown-menu-filter .show-hide-button {
+	min-width: 43px;
+}
+
 .dropdown-menu-filter .pill-grid .filter-pill {
-	margin: 4px;
-	padding: 4px;
+	margin: 2px 4px;
+	padding: 2px 4px;
 	background: #f0f0f0;
 	white-space: nowrap;
 	text-align: center;
@@ -2339,14 +2352,57 @@ table.stats.stats-book table.printbook-bestiary-entry {
 }
 
 .dropdown-menu-filter .filter-slider {
-	width: calc(100% - 80px);
-	margin-top: 5px;
-	margin-bottom: 35px;
+	width: 100%;
+	margin: 5px 25px 35px;
+	flex: 1;
 }
 
 .dropdown-menu-filter .ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
 .dropdown-menu-filter .ui-slider-label {
 	color: #337ab7;
+}
+
+.dropdown-menu-filter .ui-slider-pips .ui-slider-label {
+	margin-left: -2.5em;
+	width: 5em;
+}
+
+.dropdown-menu-filter {
+	.group-comb-toggle {
+		font-style: italic;
+		cursor: pointer;
+		letter-spacing: -1px;
+		user-select: none;
+	}
+
+	.multi-compact-visible-f,
+	.multi-compact-visible {
+		display: none;
+	}
+
+	.wrp-multi-compact {
+		.multi-compact-visible-f {
+			display: flex;
+			padding: 1px 8px 2px;
+			font-size: 1.1em;
+		}
+
+		.multi-compact-visible {
+			display: initial;
+		}
+
+		.multi-compact-hidden {
+			display: none;
+		}
+
+		.range-inline-label {
+			margin-left: 15px;
+			flex-shrink: 0;
+			min-width: 75px;
+			text-align: right;
+			font-style: italic;
+		}
+	}
 }
 
 #filter-search-input-group > *:first-child,
@@ -2367,7 +2423,6 @@ button#reset {
 button#feelinglucky,
 button#hidesearch {
 	border-radius: 0;
-	border-left: 0;
 }
 
 button#feelinglucky + button#hidesearch {
@@ -3386,6 +3441,11 @@ table.stats tr.homebrew-hover {
 		background: #565656;
 	}
 
+	.wrp-stats-table {
+		border-top: 1px solid #565656;
+		border-bottom: 1px solid #565656;
+	}
+
 	table.stats.stats-book ::selection {
 		color: #242527;
 		background: white;
@@ -3717,8 +3777,9 @@ table.stats tr.homebrew-hover {
 		background: #777;
 	}
 
-	.list-disabled-overlay::after {
-		background: rgba(34, 34, 34, 0.65);
+	.dropdown-menu-filter .summary > span.filtering {
+		color: #ccc;
+		text-shadow: 0 0 1px #ccc;
 	}
 
 	table.stats div.statsBlockInset {

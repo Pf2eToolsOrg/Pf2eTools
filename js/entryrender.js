@@ -1648,22 +1648,33 @@ EntryRenderer.deity = {
 EntryRenderer.object = {
 	getCompactRenderedString: (obj) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
+		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable) || 1);
 		return `
 			${EntryRenderer.utils.getNameTr(obj, true)}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-xs-3 text-align-center">Type</th>
-						<th class="col-xs-3 text-align-center">AC</th>
-						<th class="col-xs-3 text-align-center">HP</th>
-						<th class="col-xs-3 text-align-center">Damage Imm.</th>
+						<th colspan="3" class="text-align-center">Type</th>
+						<th colspan="2" class="text-align-center">AC</th>
+						<th colspan="2" class="text-align-center">HP</th>
+						<th colspan="5" class="text-align-center">Damage Imm.</th>
 					</tr>
 					<tr>
-						<td class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
-						<td class="text-align-center">${obj.ac}</td>
-						<td class="text-align-center">${obj.hp}</td>
-						<td class="text-align-center">${obj.immune}</td>
+						<td colspan="3" class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
+						<td colspan="2" class="text-align-center">${obj.ac}</td>
+						<td colspan="2" class="text-align-center">${obj.hp}</td>
+						<td colspan="5" class="text-align-center">${obj.immune}</td>
 					</tr>
+					${obj.resist || obj.vulnerable ? `
+					<tr>
+						${obj.resist ? `<th colspan="${row2Width}" class="text-align-center">Damage Res.</th>` : ""}
+						${obj.vulnerable ? `<th colspan="${row2Width}" class="text-align-center">Damage Vuln.</th>` : ""}
+					</tr>
+					<tr>
+						${obj.resist ? `<td colspan="${row2Width}" class="text-align-center">${obj.resist}</td>` : ""}
+						${obj.vulnerable ? `<td colspan="${row2Width}" class="text-align-center">${obj.vulnerable}</td>` : ""}
+					</tr>
+					` : ""}
 				</table>			
 			</td></tr>
 			<tr class="text"><td colspan="6">

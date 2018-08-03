@@ -111,7 +111,7 @@ window.onload = function load () {
 let list;
 let printBookView;
 const sourceFilter = getSourceFilter();
-const crFilter = new Filter({header: "CR"});
+const crFilter = new RangeFilter({header: "CR", labels: true});
 const sizeFilter = new Filter({
 	header: "Size",
 	items: [
@@ -126,14 +126,13 @@ const sizeFilter = new Filter({
 	displayFn: Parser.sizeAbvToFull
 });
 const speedFilter = new Filter({header: "Speed", items: ["walk", "burrow", "climb", "fly", "hover", "swim"], displayFn: StrUtil.uppercaseFirst});
-const strengthFilter = new RangeFilter({header: "Strength"});
-const dexterityFilter = new RangeFilter({header: "Dexterity"});
-const constitutionFilter = new RangeFilter({header: "Constitution"});
-const intelligenceFilter = new RangeFilter({header: "Intelligence"});
-const wisdomFilter = new RangeFilter({header: "Wisdom"});
-const charismaFilter = new RangeFilter({header: "Charisma"});
-const abilityScoreFilter = new MultiFilter("Ability Score", strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter);
-abilityScoreFilter.setModeAnd();
+const strengthFilter = new RangeFilter({header: "Strength", min: 1, max: 30});
+const dexterityFilter = new RangeFilter({header: "Dexterity", min: 1, max: 30});
+const constitutionFilter = new RangeFilter({header: "Constitution", min: 1, max: 30});
+const intelligenceFilter = new RangeFilter({header: "Intelligence", min: 1, max: 30});
+const wisdomFilter = new RangeFilter({header: "Wisdom", min: 1, max: 30});
+const charismaFilter = new RangeFilter({header: "Charisma", min: 1, max: 30});
+const abilityScoreFilter = new MultiFilter({name: "Ability Scores", compact: true, mode: "and"}, strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter);
 const acFilter = new RangeFilter({header: "Armor Class"});
 const averageHpFilter = new RangeFilter({header: "Average Hit Points"});
 const typeFilter = new Filter({
@@ -205,7 +204,7 @@ function dispVulnFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Vuln`;
 }
 const vulnerableFilter = new Filter({
-	header: "Damage Vulnerabilities",
+	header: "Vulnerabilities",
 	items: DMG_TYPES,
 	displayFn: dispVulnFilter
 });
@@ -213,7 +212,7 @@ function dispResFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Res`;
 }
 const resistFilter = new Filter({
-	header: "Damage Resistance",
+	header: "Resistance",
 	items: DMG_TYPES,
 	displayFn: dispResFilter
 });
@@ -221,10 +220,11 @@ function dispImmFilter (item) {
 	return `${StrUtil.uppercaseFirst(item)} Imm`;
 }
 const immuneFilter = new Filter({
-	header: "Damage Immunity",
+	header: "Immunity",
 	items: DMG_TYPES,
 	displayFn: dispImmFilter
 });
+const defenceFilter = new MultiFilter({name: "Damage", mode: "and"}, vulnerableFilter, resistFilter, immuneFilter);
 const conditionImmuneFilter = new Filter({
 	header: "Condition Immunity",
 	items: CONDS,
@@ -252,22 +252,20 @@ const miscFilter = new Filter({
 const filterBox = initFilterBox(
 	sourceFilter,
 	crFilter,
-	sizeFilter,
-	speedFilter,
-	abilityScoreFilter,
-	acFilter,
-	averageHpFilter,
 	typeFilter,
 	tagFilter,
-	alignmentFilter,
 	environmentFilter,
-	vulnerableFilter,
-	resistFilter,
-	immuneFilter,
+	defenceFilter,
 	conditionImmuneFilter,
 	traitFilter,
 	actionReactionFilter,
-	miscFilter
+	miscFilter,
+	sizeFilter,
+	speedFilter,
+	alignmentFilter,
+	acFilter,
+	averageHpFilter,
+	abilityScoreFilter
 );
 
 function pageInit (loadedSources) {
@@ -368,8 +366,23 @@ function handleFilterChange () {
 			f,
 			m.source,
 			m._pCr,
+			m._pTypes.type,
+			m._pTypes.tags,
+			m.environment,
+			[
+				m._fVuln,
+				m._fRes,
+				m._fImm
+			],
+			m._fCondImm,
+			m.traitTags,
+			m.actionTags,
+			m._fMisc,
 			m.size,
 			m._fSpeed,
+			m._fAlign,
+			m._fAc,
+			m._fHp,
 			[
 				m.str,
 				m.dex,
@@ -377,20 +390,7 @@ function handleFilterChange () {
 				m.int,
 				m.wis,
 				m.cha
-			],
-			m._fAc,
-			m._fHp,
-			m._pTypes.type,
-			m._pTypes.tags,
-			m._fAlign,
-			m.environment,
-			m._fVuln,
-			m._fRes,
-			m._fImm,
-			m._fCondImm,
-			m.traitTags,
-			m.actionTags,
-			m._fMisc
+			]
 		);
 	});
 	onFilterChangeMulti(monsters);
@@ -459,7 +459,7 @@ function addMonsters (data) {
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) mon._fMisc.push("Spellcaster");
-		if (mon.isNPC) mon._fMisc.push("NPC");
+		if (mon.isNPC) mon._fMisc.push("Named NPC");
 		if (mon.legendaryGroup) {
 			if (meta[mon.legendaryGroup].lairActions) mon._fMisc.push("Lair Actions");
 			if (meta[mon.legendaryGroup].regionalEffects) mon._fMisc.push("Regional Effects");
