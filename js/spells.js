@@ -471,6 +471,8 @@ function pageInit (loadedSources) {
 				})
 			}
 			if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
+
+			filterBox.render();
 		})
 		.catch(BrewUtil.purgeBrew);
 }
