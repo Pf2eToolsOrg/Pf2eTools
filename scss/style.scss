@@ -296,6 +296,7 @@ dialog.dialog-modal {
 .btn-name-pronounce {
 	margin-top: 5px;
 	margin-left: 5px;
+	vertical-align: top;
 }
 
 .name-pronounce-icon {
@@ -749,6 +750,12 @@ footer {
 	font-style: italic;
 }
 
+.help {
+	cursor: help;
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+
 .float-end {
 	float: none;
 }
@@ -851,6 +858,11 @@ th.name {
 	margin-right: 0.2em;
 }
 
+.bestiary__btn-scale-cr {
+	padding: 0 5px;
+	font-size: 10px;
+}
+
 span {
 	&.sourcePHB {
 		color: #4a6898;
@@ -937,10 +949,6 @@ table.stats th {
 
 table.stats th {
 	color: #922610;
-}
-
-table.stats span {
-	vertical-align: top !important;
 }
 
 table.stats ul {
@@ -1150,6 +1158,10 @@ p.second {
 span.roller {
 	color: #337ab7;
 	cursor: pointer;
+}
+
+span.result {
+	font-style: italic;
 }
 
 span.dc-roller[mode=dice] {
@@ -3308,6 +3320,7 @@ table.stats tr.homebrew-hover {
 	$bg-color: #222;
 	$link-color: #7db6e8;
 	$class-main-color: #d29a38;
+	$class-main-color-alt: #d2cabd;
 	$class-sub-color: #609dd2;
 	$class-ua-color: #27ce80;
 
@@ -3581,6 +3594,14 @@ table.stats tr.homebrew-hover {
 
 		.statsBlockHead > .entry-title {
 			border-bottom-color: $class-main-color;
+		}
+
+		.statsInlineHeadSubVariant > .entry-title {
+			color: $class-main-color-alt;
+		}
+
+		.statsInlineHead > .entry-title {
+			color: $class-main-color-alt;
 		}
 	}
 

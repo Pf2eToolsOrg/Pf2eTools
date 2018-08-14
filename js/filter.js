@@ -1042,6 +1042,23 @@ class FilterBox {
 
 		Object.keys(cur).forEach(name => {
 			const vals = cur[name];
+			const filter = this.headers[name].filter;
+			let isDefault = true;
+			if (filter.selFn || filter.deselFn) {
+				const notDefault = Object.keys(vals).filter(it => !it.startsWith("_")).find(vK => {
+					const val = vals[vK];
+					return (filter.selFn && Number(filter.selFn(vK)) !== val) || (filter.deselFn && Number(filter.deselFn(vK)) !== (-val));
+				});
+				if (notDefault) isDefault = false;
+			} else {
+				if (filter instanceof RangeFilter) {
+					isDefault = filter.min === vals.min && filter.max === vals.max;
+				} else {
+					isDefault = vals._totals.yes === 0 && vals._totals.no === 0
+				}
+			}
+			if (isDefault) return;
+
 			const outName = `${FilterBox._SUB_HASH_PREFIX}${name}`;
 
 			if (vals.min != null && vals.max != null) {

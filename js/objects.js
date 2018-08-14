@@ -28,7 +28,8 @@ function onJsonLoad (data) {
 
 	addObjects(data);
 	BrewUtil.pAddBrewData()
-		.then(addObjects)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -37,6 +38,11 @@ function onJsonLoad (data) {
 
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addObjects(homebrew);
+	return Promise.resolve();
 }
 
 let objectsList = [];
@@ -111,6 +117,7 @@ function loadhash (jsonIndex) {
 			<b>Hit Points:</b> ${obj.hp}<br>
 			<b>Damage Immunities:</b> ${obj.immune}<br>
 			${obj.resist ? `<b>Damage Resistances:</b> ${obj.resist}<br>` : ""}
+			${obj.vulnerable ? `<b>Damage Vulnerabilities:</b> ${obj.vulnerable}<br>` : ""}
 		</td></tr>
 		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
 		${EntryRenderer.utils.getPageTr(obj)}

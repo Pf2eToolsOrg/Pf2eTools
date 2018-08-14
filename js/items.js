@@ -167,6 +167,7 @@ function populateTablesAndFilters (data) {
 	addItems(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -181,6 +182,7 @@ function handleBrew (homebrew) {
 	(homebrew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
 	(homebrew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
 	addItems(homebrew.item);
+	return Promise.resolve();
 }
 
 let itemList = [];
@@ -327,6 +329,7 @@ function getSublistItem (item, pinId, addCount) {
 				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>		
 				<span class="price text-align-center col-xs-2">${item.value || "\u2014"}</span>
 				<span class="count text-align-center col-xs-2">${addCount || 1}</span>		
+				<span class="cost hidden">${Parser.coinValueToNumber(item.value)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

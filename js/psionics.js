@@ -119,7 +119,8 @@ function onJsonLoad (data) {
 
 	addPsionics(data);
 	BrewUtil.pAddBrewData()
-		.then(addPsionics)
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
@@ -142,6 +143,11 @@ function onJsonLoad (data) {
 			RollerUtil.addListRollButton();
 			History.init(true);
 		});
+}
+
+function handleBrew (homebrew) {
+	addPsionics(homebrew);
+	return Promise.resolve();
 }
 
 let psionicList = [];

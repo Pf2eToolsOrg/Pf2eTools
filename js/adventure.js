@@ -39,10 +39,8 @@ function onJsonLoad (data) {
 
 	window.onhashchange = BookUtil.booksHashChange;
 	BrewUtil.pAddBrewData()
-		.then(homebrew => {
-			addAdventures(homebrew);
-			BookUtil.addHeaderHandles(true);
-		})
+		.then(handleBrew)
+		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.purgeBrew)
 		.then(() => {
 			if (window.location.hash.length) {
@@ -51,6 +49,12 @@ function onJsonLoad (data) {
 				$(`.contents-item`).show();
 			}
 		});
+}
+
+function handleBrew (homebrew) {
+	addAdventures(homebrew);
+	BookUtil.addHeaderHandles(true);
+	return Promise.resolve();
 }
 
 function addAdventures (data) {

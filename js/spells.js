@@ -153,6 +153,20 @@ function getNormalisedRange (range) {
 			case RNG_UNLIMITED:
 				distance = 900000001;
 				break;
+			default: {
+				// it's homebrew?
+				const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
+				if (fromBrew) {
+					const ftPerUnit = fromBrew.feetPerUnit;
+					if (ftPerUnit != null) {
+						multiplier = INCHES_PER_FOOT * ftPerUnit;
+						distance = dist.amount;
+					} else {
+						distance = 910000000; // default to max distance, to have them displayed at the bottom
+					}
+				}
+				break;
+			}
 		}
 	}
 }
@@ -219,12 +233,14 @@ function getFilterAbilityCheck (ability) {
 
 function handleBrew (homebrew) {
 	addSpells(homebrew.spell);
+	return Promise.resolve();
 }
 
 function pPostLoad () {
 	return new Promise(resolve => {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
+			.then(BrewUtil.pAddLocalBrewData)
 			.catch(BrewUtil.purgeBrew)
 			.then(() => {
 				BrewUtil.makeBrewButton("manage-brew");
@@ -258,7 +274,7 @@ function pPostLoad () {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pageInit, addSpells, pPostLoad);
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad);
 };
 
 let list;
@@ -367,7 +383,7 @@ const filterBox = initFilterBox(
 	rangeFilter
 );
 
-function pageInit (loadedSources) {
+function pPageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
@@ -430,7 +446,7 @@ function pageInit (loadedSources) {
 
 	// load homebrew class spell list addons
 	brewSpellClasses = {PHB: {}};
-	BrewUtil.pAddBrewData()
+	return BrewUtil.pAddBrewData()
 		.then((homebrew) => {
 			function handleSubclass (className, classSource = SRC_PHB, sc) {
 				const genSubclassSpell = (it, subSubclass) => {
@@ -471,8 +487,6 @@ function pageInit (loadedSources) {
 				})
 			}
 			if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
-
-			filterBox.render();
 		})
 		.catch(BrewUtil.purgeBrew);
 }

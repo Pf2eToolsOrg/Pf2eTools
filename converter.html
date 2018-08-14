@@ -40,6 +40,19 @@
 		#lastError {
 			color: red;
 		}
+
+		.conv-ipt {
+			display: inline-block;
+			margin-top: 5px;
+		}
+
+		.conv-ipt__source {
+			width: 130px;
+		}
+
+		.conv-ipt__page {
+			width: 65px;
+		}
 	</style>
 </head>
 
@@ -125,11 +138,13 @@ ___
 >
 			</pre>
 			<div>
-				<select id="source" class="form-control select-inline"></select>
-				<input type="text" id="customsourcein" placeholder="Custom source">
-				<button id="addsource" class="btn btn-sm">Save</button>
-				<br>
-				<small>This parser is <em>very</em> particular about its input. Use at your own risk.</small>
+				Page: <input class="form-control conv-ipt conv-ipt__page" id="page_in" type="number" value="0">
+				Source: <select id="source" class="form-control select-inline"></select>
+				|
+				<input class="form-control conv-ipt conv-ipt__source" type="text" id="customsourcein" placeholder="Custom source">
+				<button id="addsource" class="btn btn-sm">Add</button> <i>Custom sources will persist through page reloads</i>
+				<hr>
+				<small>This parser is <em>very</em> <span class="help" title="Notably poor at handling text split across multiple lines, as Line Return is used to separate blocks of text.">particular</span> about its input. Use at your own risk.</small>
 			</div>
 		</div>
 
@@ -138,6 +153,9 @@ ___
 			<textarea id="jsonoutput" readonly class="outputArea"></textarea>
 			<div id="lastWarnings" class="code"></div>
 			<div id="lastError" class="code"></div>
+			<div style="margin-top: 5px;">
+				<button id="download" class="btn btn-sm">Download JSON</button>
+			</div>
 		</div>
 	</main>
 

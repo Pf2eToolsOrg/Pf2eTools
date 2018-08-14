@@ -38,6 +38,7 @@ class Board {
 		this.hoveringPanel = null;
 		this.availContent = {};
 		this.availRules = {};
+		this.$cbConfirmTabClose = null;
 	}
 
 	getInitialWidth () {
@@ -64,6 +65,10 @@ class Board {
 
 	getHeight () {
 		return this.height;
+	}
+
+	getConfirmTabClose () {
+		return this.$cbConfirmTabClose == null ? false : this.$cbConfirmTabClose.prop("checked");
 	}
 
 	setDimensions (width, height) {
@@ -221,30 +226,32 @@ class Board {
 
 				// Add homebrew
 				Omnisearch.highestId = Math.max(ixMax, Omnisearch.highestId);
-				BrewUtil.getSearchIndex().forEach(d => {
-					if (hasBadCat(d) || fromDeepIndex(d)) return;
-					d.cf = Parser.pageCategoryToFull(d.c);
-					d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-					this.availContent.ALL.addDoc(d);
-					this.availContent[d.cf].addDoc(d);
+				BrewUtil.pGetSearchIndex().then(index => {
+					index.forEach(d => {
+						if (hasBadCat(d) || fromDeepIndex(d)) return;
+						d.cf = Parser.pageCategoryToFull(d.c);
+						d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
+						this.availContent.ALL.addDoc(d);
+						this.availContent[d.cf].addDoc(d);
+					});
+
+					// add tabs
+					const omniTab = new AddMenuSearchTab(this.availContent);
+					omniTab.setSpotlight(true);
+					const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
+					const embedTab = new AddMenuVideoTab();
+					const imageTab = new AddMenuImageTab();
+					const specialTab = new AddMenuSpecialTab();
+
+					this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
+
+					this.menu.render();
+
+					this.sideMenu.render();
+
+					resolve();
+					this.doHideLoading();
 				});
-
-				// add tabs
-				const omniTab = new AddMenuSearchTab(this.availContent);
-				omniTab.setSpotlight(true);
-				const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
-				const embedTab = new AddMenuVideoTab();
-				const imageTab = new AddMenuImageTab();
-				const specialTab = new AddMenuSpecialTab();
-
-				this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
-
-				this.menu.render();
-
-				this.sideMenu.render();
-
-				resolve();
-				this.doHideLoading();
 			});
 		});
 	}
@@ -339,6 +346,7 @@ class Board {
 		return {
 			w: this.width,
 			h: this.height,
+			ctc: this.getConfirmTabClose(),
 			ps: Object.values(this.panels).map(p => p.getSaveableState()),
 			ex: this.exiledPanels.map(p => p.getSaveableState())
 		};
@@ -349,6 +357,8 @@ class Board {
 	}
 
 	doLoadStateFrom (toLoad) {
+		if (this.$cbConfirmTabClose) this.$cbConfirmTabClose.prop("checked", toLoad.ctc);
+
 		// re-exile
 		toLoad.ex.filter(Boolean).reverse().forEach(saved => {
 			const p = Panel.fromSavedState(this, saved);
@@ -483,6 +493,10 @@ class SideMenu {
 			copyText(encoded);
 			showCopiedEffect($btnSaveLink);
 		});
+		renderDivider();
+
+		const $wrpCbConfirm = $(`<div class="dm-sidemenu-row"><label class="dm-sidemenu-row-label dm-sidemenu-row-label--cb-label">Confirm on Tab Close </label></div>`).appendTo(this.$mnu);
+		this.board.$cbConfirmTabClose = $(`<input type="checkbox" class="dm-sidemenu-row-label-cb">`).appendTo($wrpCbConfirm.find(`label`));
 		renderDivider();
 
 		const $btnReset = $(`<div class="btn btn-danger">Reset Screen</div>`).appendTo(this.$mnu);
@@ -1339,7 +1353,7 @@ class Panel {
 		const $btnCloseTab = $(`<span class="glyphicon glyphicon-remove content-tab-remove"/>`)
 			.on("mousedown", (evt) => {
 				evt.stopPropagation();
-				this.doCloseTab(ix);
+				if (!this.board.getConfirmTabClose() || (this.board.getConfirmTabClose() && confirm(`Are you sure you want to close tab "${this.title}"?`))) this.doCloseTab(ix);
 			}).appendTo($btnSelTab);
 		return $btnSelTab;
 	}
@@ -2156,6 +2170,7 @@ class AddMenuListTab extends AddMenuTab {
 					valueNames: ["name"],
 					listClass: "panel-tab-list"
 				});
+				ListUtil.bindEscapeKey(tab.list, this.$srch);
 			}
 		}, 1);
 	}

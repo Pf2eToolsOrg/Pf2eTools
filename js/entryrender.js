@@ -775,6 +775,27 @@ function EntryRenderer () {
 						}
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(tooltip);
 						textStack.push(`<span class="homebrew-inline" ${onMouseOver}>${newText || "[...]"}</span>`);
+					} else if (tag === "@deity") {
+						const [name, pantheon, source, displayText, ...others] = text.split("|");
+						const hash = `${name}${pantheon ? `${HASH_LIST_SEP}${pantheon}` : ""}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
+
+						const fauxEntry = {
+							type: "link",
+							href: {
+								type: "internal",
+								hash
+							},
+							text: (displayText || name)
+						};
+
+						fauxEntry.href.path = "deities.html";
+						if (!pantheon) fauxEntry.href.hash += `${HASH_LIST_SEP}forgotten realms`;
+						if (!source) fauxEntry.href.hash += `${HASH_LIST_SEP}${SRC_PHB}`;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_DEITIES,
+							source: source || SRC_PHB
+						};
+						self.recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -1094,7 +1115,7 @@ EntryRenderer.getEntryDice = function (entry, name) {
 
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
-	if (entry.rollable === true) return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onclick="EntryRenderer.dice.rollerClick(this, ${pack(entry)}${name ? `, '${name.escapeQuotes()}'` : ""})">${toDisplay}</span>`;
+	if (entry.rollable === true) return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onclick="EntryRenderer.dice.rollerClickUseData(this)" data-packed-dice=${pack(entry)}>${toDisplay}</span>`;
 	else return toDisplay;
 };
 
@@ -1115,7 +1136,7 @@ EntryRenderer.utils = {
 		return `<tr>
 					<th class="name" colspan="6">
 						<div class="name-inner">
-							<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it.name}${suffix || ""}</span>
+							<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it._displayName || it.name}${suffix || ""}</span>
 							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${EntryRenderer.utils.getSourceSubText(it)}">
 								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 							</span>
@@ -1507,6 +1528,10 @@ EntryRenderer.invocation = {
 		else return prereqs.length ? `Prerequisites: ${prereqs.join(", ")}` : "";
 	},
 
+	getPreviouslyPrintedText (invo) {
+		return invo.data && invo.data.previousVersion ? `<tr><td colspan="6"><p>${EntryRenderer.getDefaultRenderer().renderEntry(`{@i An earlier version of this invocation is available in }${Parser.sourceJsonToFull(invo.data.previousVersion.source)} {@i as {@invocation ${invo.data.previousVersion.name}|${invo.data.previousVersion.source}}.}`)}</p></td></tr>` : ""
+	},
+
 	getCompactRenderedString: (invo) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
 		const renderStack = [];
@@ -1519,6 +1544,7 @@ EntryRenderer.invocation = {
 		`);
 		renderer.recursiveEntryRender({entries: invo.entries}, renderStack, 1);
 		renderStack.push(`</td></tr>`);
+		renderStack.push(EntryRenderer.invocation.getPreviouslyPrintedText(invo));
 
 		return renderStack.join("");
 	}
@@ -1909,13 +1935,14 @@ EntryRenderer.monster = {
 		const pb = Parser.crToPb(dragon.cr);
 		const maxSpellLevel = Math.floor(Parser.crToNumber(dragon.cr) / 3);
 		const exampleSpells = getExampleSpells(maxSpellLevel, dragon.dragonCastingColor);
+		const levelString = maxSpellLevel === 0 ? `${chaMod === 1 ? "This" : "These"} spells are Cantrips.` : `${chaMod === 1 ? "The" : "Each"} spell's level can be no higher than ${Parser.spLevelToFull(maxSpellLevel)}.`;
 		const v = {
 			type: "variant",
 			name: "Dragons as Innate Spellcasters",
 			entries: [
 				"Dragons are innately magical creatures that can master a few spells as they age, using this variant.",
 				`A young or older dragon can innately cast a number of spells equal to its Charisma modifier. Each spell can be cast once per day, requiring no material components, and the spell's level can be no higher than one-third the dragon's challenge rating (rounded down). The dragon's bonus to hit with spell attacks is equal to its proficiency bonus + its Charisma bonus. The dragon's spell save DC equals 8 + its proficiency bonus + its Charisma modifier.`,
-				`{@i This dragon can innately cast ${Parser.numberToText(chaMod)} spell${chaMod === 1 ? "" : "s"}, once per day${chaMod === 1 ? "" : " each"}, requiring no material components. ${chaMod === 1 ? "The" : "Each"} spell's level can be no higher than ${Parser.spLevelToFull(maxSpellLevel)}. The dragon's spell save DC is ${pb + chaMod + 8}, and it has {@hit ${pb + chaMod}} to hit with spell attacks. See the {@filter spell page|spells|level=${[...new Array(maxSpellLevel)].map((it, i) => i + 1).join(";")}} for a list of spells the dragon is capable of casting.${exampleSpells ? ` A selection of examples are shown below:` : ""}`
+				`{@i This dragon can innately cast ${Parser.numberToText(chaMod)} spell${chaMod === 1 ? "" : "s"}, once per day${chaMod === 1 ? "" : " each"}, requiring no material components. ${levelString} The dragon's spell save DC is ${pb + chaMod + 8}, and it has {@hit ${pb + chaMod}} to hit with spell attacks. See the {@filter spell page|spells|level=${[...new Array(maxSpellLevel + 1)].map((it, i) => i).join(";")}} for a list of spells the dragon is capable of casting.${exampleSpells ? ` A selection of examples are shown below:` : ""}`
 			]
 		};
 		if (exampleSpells) {
@@ -1935,10 +1962,6 @@ EntryRenderer.monster = {
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
 			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
-		}
-
-		function makeSkillRoller (name, mod) {
-			return renderer.renderEntry(`${name} {@dice 1d20${mod}|${mod}|${name}`);
 		}
 
 		function getSection (title, key, depth) {
@@ -1998,7 +2021,7 @@ EntryRenderer.monster = {
 			<tr><td colspan="6">
 				<div class="summary-flexer">
 					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => EntryRenderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
-					${mon.skill ? `<p><b>Skills:</b> ${Object.keys(mon.skill).sort().map(s => makeSkillRoller(s.toTitleCase(), mon.skill[s])).join(", ")}</p>` : ""}
+					${mon.skill ? `<p><b>Skills:</b> ${EntryRenderer.monster.getSkillsString(mon, true)}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
 					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${Parser.monImmResToFull(mon.vulnerable)}</p>` : ""}
@@ -2102,10 +2125,14 @@ EntryRenderer.monster = {
 		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
 	},
 
-	getSkillsString (mon) {
+	getSkillsString (mon, makeRollers) {
+		function makeSkillRoller (name, mod) {
+			return EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${mod}|${mod}|${name}`);
+		}
+
 		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
-			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.toTitleCase()} ${obj[s]}`);
-			return joinWithOr ? toJoin.joinConjunct(", ", ", or ") : toJoin.join(", ")
+			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.toTitleCase()} ${makeRollers ? makeSkillRoller(s.toTitleCase(), obj[s]) : obj[s]}`);
+			return joinWithOr ? toJoin.joinConjunct(", ", " or ") : toJoin.join(", ")
 		}
 
 		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other"));
@@ -3312,12 +3339,29 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._$wrpRoll.css("display", "");
 	},
 
+	getNextDice (faces) {
+		const idx = EntryRenderer.dice._DICE.indexOf(faces);
+		if (~idx) {
+			return EntryRenderer.dice._DICE[idx + 1];
+		} else return null;
+	},
+
+	getPreviousDice (faces) {
+		const idx = EntryRenderer.dice._DICE.indexOf(faces);
+		if (~idx) {
+			return EntryRenderer.dice._DICE[idx - 1];
+		} else return null;
+	},
+
 	_DICE: [4, 6, 8, 10, 12, 20, 100],
 	_randomPlaceholder: () => {
 		const count = RollerUtil.randomise(10);
 		const faces = EntryRenderer.dice._DICE[RollerUtil.randomise(EntryRenderer.dice._DICE.length - 1)];
 		const mod = (RollerUtil.randomise(3) - 2) * RollerUtil.randomise(10);
-		return `${count}d${faces}${mod < 0 ? mod : mod > 0 ? `+${mod}` : ""}`;
+		const drop = (count > 1) && RollerUtil.randomise(5) === 5;
+		const dropDir = drop ? RollerUtil.randomise(2) === 2 ? "h" : "l" : "";
+		const dropAmount = drop ? RollerUtil.randomise(count - 1) : null;
+		return `${count}d${faces}${drop ? `d${dropDir}${dropAmount}` : ""}${mod < 0 ? mod : mod > 0 ? `+${mod}` : ""}`;
 	},
 
 	init: () => {
@@ -3391,6 +3435,25 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._$outRoll.scrollTop(1e10);
 	},
 
+	rollerClickUseData (ele) {
+		const $ele = $(ele);
+		const packed = JSON.stringify($ele.data("packed-dice"));
+		const name = $ele.attr("title");
+		EntryRenderer.dice.rollerClick(ele, packed, name);
+	},
+
+	__rerollNextInlineResult (ele) {
+		const $ele = $(ele);
+		const $result = $ele.next(`.result`);
+		const r = EntryRenderer.dice.__rollPackedData($ele);
+		$result.text(r.total);
+	},
+
+	__rollPackedData ($ele) {
+		const toRollParsed = EntryRenderer.dice._convertEntryRollToParsedRoll($ele.data("packed-dice"));
+		return EntryRenderer.dice._rollParsed(toRollParsed);
+	},
+
 	rollerClick: (ele, packed, name) => {
 		const $ele = $(ele);
 		const entry = JSON.parse(packed);
@@ -3431,8 +3494,17 @@ EntryRenderer.dice = {
 				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
 			});
 			if ($td.length && $td.nextAll().length) {
-				return $td.nextAll().get().map(ele => ele.innerHTML).join(" | ");
+				const tableRow = $td.nextAll().get().map(ele => ele.innerHTML).join(" | ");
+				const $row = $(`<span class="message">${tableRow}</span>`);
+				$row.find(`.render-roller`).each((i, e) => {
+					const $e = $(e);
+					const r = EntryRenderer.dice.__rollPackedData($e);
+					$e.attr("onclick", `EntryRenderer.dice.__rerollNextInlineResult(this)`);
+					$e.after(` (<span class="result">${r.total}</span>)`);
+				});
+				return $row.html();
 			}
+			return `<span class="message">No result found matching roll ${total}?! 🐛</span>`;
 		}
 
 		const rolledBy = {
@@ -3469,8 +3541,8 @@ EntryRenderer.dice = {
 		}
 	},
 
-	rollEntry: (entry, rolledBy, cbMessage) => {
-		const toRoll = {
+	_convertEntryRollToParsedRoll (entry) {
+		return {
 			dice: entry.toRoll.map(it => ({
 				neg: false,
 				num: it.number,
@@ -3479,6 +3551,10 @@ EntryRenderer.dice = {
 			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0),
 			successThresh: entry.successThresh
 		};
+	},
+
+	rollEntry: (entry, rolledBy, cbMessage) => {
+		const toRoll = EntryRenderer.dice._convertEntryRollToParsedRoll(entry);
 		EntryRenderer.dice._handleRoll(toRoll, rolledBy, cbMessage);
 	},
 
@@ -3519,6 +3595,7 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._scrollBottom();
 	},
 
+	_validCommands: new Set(["/clear"]),
 	_handleCommand (com, rolledBy) {
 		EntryRenderer.dice._showMessage(`<span class="out-roll-item-code">${com}</span>`, rolledBy); // parrot the user's command back to them
 		const PREF_MACRO = "/macro";
@@ -3541,13 +3618,14 @@ EntryRenderer.dice = {
 Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
-				Use <span class="out-roll-item-code">#myName</span> to roll a macro.`,
+				Use <span class="out-roll-item-code">#myName</span> to roll a macro.
+				Use <span class="out-roll-item-code">/clear</span> to clear the roller.`,
 				EntryRenderer.dice.SYSTEM_USER
 			);
 		} else if (com.startsWith(PREF_MACRO)) {
 			const [_, mode, ...others] = com.split(/\s+/);
 
-			if (!["list", "add", "remove"].includes(mode)) showInvalid();
+			if (!["list", "add", "remove", "clear"].includes(mode)) showInvalid();
 			else {
 				switch (mode) {
 					case "list":
@@ -3587,6 +3665,14 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 						}
 						break;
 				}
+			}
+		} else if (EntryRenderer.dice._validCommands.has(com)) {
+			switch (com) {
+				case "/clear":
+					EntryRenderer.dice._$outRoll.empty();
+					EntryRenderer.dice._$lastRolledBy.empty();
+					EntryRenderer.dice._$lastRolledBy = null;
+					break;
 			}
 		} else showInvalid();
 	},

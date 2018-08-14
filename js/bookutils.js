@@ -184,7 +184,24 @@ const BookUtil = {
 			const textStack = [];
 			BookUtil._renderer.setFirstSection(true);
 			BookUtil._renderer.recursiveEntryRender(data[chapter], textStack);
-			BookUtil.renderArea.append(`<tr class='text'><td colspan='6'>${textStack.join("")}</td></tr>`);
+			BookUtil.renderArea.append(`<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>`);
+			const $wrpBtmControls = $(`<div class="split"/>`).appendTo($(`<td colspan="6"/>`).appendTo($(`<tr class="text"/>`).appendTo(BookUtil.renderArea)));
+
+			const goToPage = (page) => {
+				page = String(page);
+				const newHashParts = [bookId, ...hashParts];
+				newHashParts[1] = page;
+				window.location.hash = newHashParts.join(HASH_PART_SEP);
+				MiscUtil.scrollPageTop();
+			};
+			if (chapter > 0) {
+				const $btnPrev = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Previous</button>`).click(() => goToPage(chapter - 1)).appendTo($wrpBtmControls);
+			} else $wrpBtmControls.append(`<div/>`); // placeholder/spacer
+			const $btnScrollTop = $(`<button class="btn btn-xs btn-default">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpBtmControls);
+			if (chapter < data.length - 1) {
+				const $btnNxt = $(`<button class="btn btn-xs btn-default">Next<span class="glyphicon glyphicon-chevron-right"></span></button>`).click(() => goToPage(chapter + 1)).appendTo($wrpBtmControls);
+			} else $wrpBtmControls.append(`<div/>`); // placeholder/spacer
+
 			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 			if (scrollTo) {
@@ -255,7 +272,7 @@ const BookUtil = {
 		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 		if (fromIndex && !fromIndex.uniqueId) handleFound(fromIndex);
 		else if (fromIndex && fromIndex.uniqueId) { // it's homebrew
-			BrewUtil.pAddBrewData()
+			BrewUtil.pAddBrewData() // to load existing data
 				.then((brew) => {
 					if (!brew[BookUtil.homebrewData]) handleNotFound();
 					const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
@@ -305,7 +322,7 @@ const BookUtil = {
 		BookUtil._$body.off("keypress");
 		BookUtil._$body.on("keypress", (e) => {
 			if ((e.key === "f" && noModifierKeys(e))) {
-				if (e.target.nodeName === "INPUT" || e.target.nodeName === "TEXTAREA") return;
+				if (MiscUtil.isInInput(e)) return;
 				$(`span.temp`).contents().unwrap();
 				BookUtil._lastHighlight = null;
 				if (BookUtil._$findAll) BookUtil._$findAll.remove();

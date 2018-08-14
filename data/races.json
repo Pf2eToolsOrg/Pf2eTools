@@ -452,7 +452,7 @@
 					]
 				},
 				{
-					"name": "Eladrin; UA",
+					"name": "Eladrin",
 					"source": "UAEladrinAndGith",
 					"page": 1,
 					"ability": {
@@ -586,7 +586,7 @@
 					]
 				},
 				{
-					"name": "Sea; UA",
+					"name": "Sea",
 					"source": "UAElfSubraces",
 					"speed": {
 						"walk": 30,
@@ -634,7 +634,7 @@
 					]
 				},
 				{
-					"name": "Shadar-kai; UA",
+					"name": "Shadar-kai",
 					"source": "UAElfSubraces",
 					"ability": {
 						"cha": 1
@@ -2214,7 +2214,7 @@
 					"type": "entries",
 					"name": "Size",
 					"entries": [
-						"Half-orcs are somewhat larger and bulkier than humans, and they range From 5 to well over 6 feet tall. Your size is Medium."
+						"Half-orcs are somewhat larger and bulkier than humans, and they range from 5 to well over 6 feet tall. Your size is Medium."
 					]
 				},
 				{
@@ -2933,6 +2933,85 @@
 						"Dragonmark",
 						"Spellcasting"
 					]
+				},
+				{
+					"name": "Keldon",
+					"source": "PSD",
+					"page": 19,
+					"ability": {
+						"str": 2,
+						"con": 1
+					},
+					"entries": [
+						{
+							"name": "Age",
+							"type": "entries",
+							"entries": [
+								"Keldons reach adulthood in their late teens and live less than a century."
+							],
+							"data": {
+								"overwrite": "Age"
+							}
+						},
+						{
+							"name": "Alignment",
+							"type": "entries",
+							"entries": [
+								"Keldons tend toward chaotic alignments, and many walk a fine line between good and evil."
+							],
+							"data": {
+								"overwrite": "Alignment"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Size",
+							"entries": [
+								"Keldons are taller and heavier than the human norms of other cultures, standing almost universally above 6 feet tall and reaching heights above 7 feet. Your size is Medium."
+							],
+							"data": {
+								"overwrite": "Size"
+							}
+						},
+						{
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and Keldon."
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Languages"
+							}
+						},
+						{
+							"type": "entries",
+							"name": "Natural Athlete",
+							"entries": [
+								"You have proficiency in the Athletics skill."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Keldon Resilience",
+							"entries": [
+								"You have proficiency in Strength saving throws."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Icehaven Born",
+							"entries": [
+								"You are naturally adapted to cold climates, as described in chapter 5 of the {@i Dungeon Master's Guide}."
+							]
+						}
+					],
+					"traitTags": [
+						"Skill Proficiency"
+					],
+					"languageTags": [
+						"Common",
+						"Other"
+					]
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/279/human.mp3",
@@ -3492,7 +3571,7 @@
 					]
 				},
 				{
-					"name": "Asmodeus; UA",
+					"name": "Asmodeus",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3513,7 +3592,7 @@
 					]
 				},
 				{
-					"name": "Baalzebul; UA",
+					"name": "Baalzebul",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3534,7 +3613,7 @@
 					]
 				},
 				{
-					"name": "Dispater; UA",
+					"name": "Dispater",
 					"source": "UAFiendishOptions",
 					"page": 1,
 					"ability": {
@@ -3555,7 +3634,7 @@
 					]
 				},
 				{
-					"name": "Fierna; UA",
+					"name": "Fierna",
 					"source": "UAFiendishOptions",
 					"page": 1,
 					"ability": {
@@ -3576,7 +3655,7 @@
 					]
 				},
 				{
-					"name": "Glasya; UA",
+					"name": "Glasya",
 					"source": "UAFiendishOptions",
 					"page": 2,
 					"ability": {
@@ -3597,7 +3676,7 @@
 					]
 				},
 				{
-					"name": "Levistus; UA",
+					"name": "Levistus",
 					"source": "UAFiendishOptions",
 					"page": 2,
 					"ability": {
@@ -3618,7 +3697,7 @@
 					]
 				},
 				{
-					"name": "Mammon; UA",
+					"name": "Mammon",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3639,7 +3718,7 @@
 					]
 				},
 				{
-					"name": "Mephistopheles; UA",
+					"name": "Mephistopheles",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -3659,7 +3738,7 @@
 					]
 				},
 				{
-					"name": "Zariel; UA",
+					"name": "Zariel",
 					"source": "UAFiendishOptions",
 					"ability": {
 						"cha": 2,
@@ -6163,6 +6242,35 @@
 					"traitTags": [
 						"Skill Proficiency"
 					]
+				},
+				{
+					"ability": {
+						"wis": 2
+					},
+					"source": "PSD",
+					"page": 6,
+					"entries": [
+						{
+							"name": "Alignment",
+							"type": "entries",
+							"entries": [
+								"Aven are inclined toward the lawful good alignment of the Church of Serra"
+							],
+							"data": {
+								"overwrite": "Alignment"
+							}
+						},
+						{
+							"name": "Hawkeyed",
+							"entries": [
+								"You have proficiency in the Perception skill. In addition, attacking at long range doesn't impose disadvantage on your ranged weapon attack rolls."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Skill Proficiency"
+					]
 				}
 			],
 			"languageTags": [
@@ -6422,7 +6530,7 @@
 			],
 			"subraces": [
 				{
-					"name": "Githyanki; UA",
+					"name": "Githyanki",
 					"ability": {
 						"str": 2
 					},
@@ -6462,7 +6570,7 @@
 					]
 				},
 				{
-					"name": "Githzerai; UA",
+					"name": "Githzerai",
 					"ability": {
 						"wis": 2
 					},

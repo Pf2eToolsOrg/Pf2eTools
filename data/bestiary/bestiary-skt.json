@@ -47,7 +47,7 @@
 				{
 					"name": "Simulacra",
 					"entries": [
-						"When a simulacrum drops to O hit points or is sub­jected to a successful {@spell dispel magic} spell (DC 17), it reverts to ice and snow and is destroyed."
+						"When a simulacrum drops to 0 hit points or is sub­jected to a successful {@spell dispel magic} spell (DC 17), it reverts to ice and snow and is destroyed."
 					]
 				}
 			],
@@ -775,7 +775,8 @@
 							"{@spell stone shape}",
 							"{@spell teleport}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"trait": [
@@ -1009,7 +1010,8 @@
 					],
 					"will": [
 						"{@spell fireball}"
-					]
+					],
+					"ability": "cha"
 				}
 			],
 			"trait": [
@@ -1406,7 +1408,8 @@
 								"{@spell lightning bolt}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"trait": [
@@ -1581,7 +1584,8 @@
 								"{@spell witch bolt}"
 							]
 						}
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"trait": [
@@ -2155,7 +2159,8 @@
 							"{@spell speak with dead}",
 							"{@spell spirit guardians}"
 						]
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"action": [
@@ -2258,7 +2263,8 @@
 								"{@spell banishment}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"trait": [
@@ -2733,7 +2739,8 @@
 								"{@spell power word kill}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"isNamedCreature": true,
@@ -2953,12 +2960,10 @@
 			"cha": 16,
 			"save": {
 				"con": "+8",
-				"wis": "+3",
 				"cha": "+4"
 			},
 			"skill": {
-				"athletics": "+9",
-				"perception": "+3"
+				"athletics": "+9"
 			},
 			"immune": [
 				"cold"
@@ -3021,7 +3026,8 @@
 								"{@spell water walk}"
 							]
 						}
-					}
+					},
+					"ability": "wis"
 				}
 			],
 			"actionTags": [
@@ -3276,7 +3282,8 @@
 								"{@spell Mordenkainen's sword}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"traitTags": [
@@ -3398,7 +3405,8 @@
 							"{@spell control weather}",
 							"{@spell water breathing}"
 						]
-					}
+					},
+					"ability": "cha"
 				}
 			],
 			"traitTags": [
@@ -3655,7 +3663,8 @@
 							"{@spell control weather}",
 							"{@spell gaseous form}"
 						]
-					}
+					},
+					"ability": "cha"
 				},
 				{
 					"name": "Innate Spellcasting",
@@ -3718,7 +3727,8 @@
 								"{@spell mass suggestion}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"traitTags": [
@@ -3874,7 +3884,8 @@
 							"{@spell prismatic spray}",
 							"{@spell suggestion}"
 						]
-					}
+					},
+					"ability": "cha"
 				},
 				{
 					"name": "Spellcasting",
@@ -3944,7 +3955,8 @@
 								"{@spell mirage arcane}"
 							]
 						}
-					}
+					},
+					"ability": "int"
 				}
 			],
 			"traitTags": [
