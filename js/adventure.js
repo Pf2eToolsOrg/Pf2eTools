@@ -34,6 +34,7 @@ function onJsonLoad (data) {
 	BookUtil.baseDataUrl = "data/adventure/adventure-";
 	BookUtil.homebrewIndex = "adventure";
 	BookUtil.homebrewData = "adventureData";
+	BookUtil.initLinkGrabbers();
 
 	addAdventures(data);
 

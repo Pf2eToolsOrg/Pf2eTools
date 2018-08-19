@@ -56,6 +56,11 @@ String.prototype.indexOf_handleColon = String.prototype.indexOf_handleColon ||
 
 // Tries to parse immunities, resistances, and vulnerabilities
 function tryParseSpecialDamage (strDamage, damageType) {
+	// handle the case where a comma is mistakenly used instead of a semicolon
+	if (strDamage.toLowerCase().includes(", bludgeoning, piercing, and slashing from")) {
+		strDamage = strDamage.replace(/, (bludgeoning, piercing, and slashing from)/gi, "; $1")
+	}
+
 	const splSemi = strDamage.toLowerCase().split(";");
 	const newDamage = [];
 	try {
@@ -86,17 +91,28 @@ function tryParseSpellcasting (trait, isMarkdown) {
 	let spellcasting = [];
 
 	function parseSpellcasting (trait) {
+		const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
+
 		function getParsedSpells (thisLine) {
 			let spellPart = thisLine.substring(thisLine.indexOf(": ") + 2).trim();
 			if (isMarkdown) {
+				const cleanPart = (part) => {
+					part = part.trim();
+					while (part.startsWith("*") && part.endsWith("*")) {
+						part = part.replace(/^\*(.*)\*$/, "$1");
+					}
+					return part;
+				};
+
+				const cleanedInner = spellPart.split(splitter).map(it => cleanPart(it)).filter(it => it);
+				spellPart = cleanedInner.join(", ");
+
 				while (spellPart.startsWith("*") && spellPart.endsWith("*")) {
 					spellPart = spellPart.replace(/^\*(.*)\*$/, "$1");
 				}
 			}
 			return spellPart.split(splitter).map(i => parseSpell(i));
 		}
-
-		const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
 
 		let name = trait.name;
 		let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
@@ -292,6 +308,10 @@ function loadparser (data) {
 		}
 	});
 
+	$(`#editable`).click(() => {
+		if (confirm(`Edits will be overwritten as you parse new statblocks. Enable anyway?`)) $(`#jsonoutput`).attr("readonly", false);
+	});
+
 	// init editor
 	const editor = ace.edit("statblock");
 	editor.setOptions({
@@ -341,9 +361,7 @@ function loadparser (data) {
 	}
 
 	function getCleanName (line) {
-		return line.toLowerCase().replace(/\b\w/g, function (l) {
-			return l.toUpperCase()
-		});
+		return $(`#titlecase`).prop("checked") ? line.toLowerCase().toTitleCase() : line;
 	}
 
 	function setCleanSizeTypeAlignment (stats, line) {
@@ -490,10 +508,17 @@ function loadparser (data) {
 	}
 
 	function setCleanSenses (stats, line) {
-		stats.senses = line.toLowerCase().split_handleColon("senses")[1].split("passive perception")[0].trim();
-		if (!stats.senses.indexOf("passive perception")) stats.senses = "";
-		if (stats.senses[stats.senses.length - 1] === ",") stats.senses = stats.senses.substring(0, stats.senses.length - 1);
-		stats.passive = tryConvertNumber(line.toLowerCase().split("passive perception")[1].trim());
+		const senses = line.toLowerCase().split_handleColon("senses")[1].trim();
+		const tempSenses = [];
+		senses.split(",").forEach(s => {
+			s = s.trim();
+			if (s) {
+				if (s.includes("passive perception")) stats.passive = tryConvertNumber(s.split("passive perception")[1].trim());
+				else tempSenses.push(s.trim());
+			}
+		});
+		if (tempSenses.length) stats.senses = tempSenses.join(", ");
+		else delete stats.senses;
 	}
 
 	function setCleanLanguages (stats, line) {
@@ -799,10 +824,10 @@ function loadparser (data) {
 		const $outArea = $("textarea#jsonoutput");
 		if (append) {
 			const oldVal = $outArea.text();
-			$outArea.text(`${out},\n${oldVal}`);
+			$outArea.val(`${out},\n${oldVal}`);
 			hasAppended = true;
 		} else {
-			$outArea.text(out);
+			$outArea.val(out);
 			hasAppended = false;
 		}
 	}

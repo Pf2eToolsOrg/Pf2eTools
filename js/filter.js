@@ -59,6 +59,7 @@ class FilterBox {
 		this.storedValues = StorageUtil.getForPage(FilterBox._STORAGE_NAME);
 		this.storedVisible = StorageUtil.getForPage(FilterBox._STORAGE_NAME_VISIBLE);
 		this.storedGroupState = StorageUtil.getForPage(FilterBox._STORAGE_NAME_GROUP_STATE);
+		this.storedNestState = StorageUtil.getForPage(FilterBox._STORAGE_NAME_NEST_STATE);
 		this.$rendered = [];
 		this.dropdownVisible = false;
 		this.modeAndOr = "AND";
@@ -74,6 +75,7 @@ class FilterBox {
 		const curValues = firstRender ? null : this.getValues();
 		const curVisible = firstRender ? null : this._getVisible();
 		const curGroupState = firstRender ? null : this._getGroupState();
+		const curNestState = firstRender ? null : this._getNestState();
 		// remove any previously rendered elements
 		this._wipeRendered();
 
@@ -159,6 +161,8 @@ class FilterBox {
 				StorageUtil.setForPage(FilterBox._STORAGE_NAME_VISIBLE, display);
 				const groupState = this._getGroupState();
 				StorageUtil.setForPage(FilterBox._STORAGE_NAME_GROUP_STATE, groupState);
+				const nestState = this._getNestState();
+				StorageUtil.setForPage(FilterBox._STORAGE_NAME_NEST_STATE, nestState);
 			});
 		};
 
@@ -357,9 +361,9 @@ class FilterBox {
 				const $default = $(`<button class="btn btn-default btn-xs btn-meta ${minimalClass}">Default</button>`).appendTo($quickBtns);
 
 				const $summary = $(`<span class="summary"/>`).appendTo($line);
-				const $summaryInclude = $(`<span class="include" title="Hidden includes"/>`).appendTo($summary);
-				const $summarySpacer = $(`<span class="spacer"/>`).appendTo($summary);
-				const $summaryExclude = $(`<span class="exclude" title="Hidden excludes"/>`).appendTo($summary);
+				const $summaryInclude = $(`<span class="filter__summary_item filter__summary_item--include" title="Hidden includes"/>`).appendTo($summary);
+				const $summarySpacer = $(`<span class="filter__summary_item_spacer"/>`).appendTo($summary);
+				const $summaryExclude = $(`<span class="filter__summary_item filter__summary_item--exclude" title="Hidden excludes"/>`).appendTo($summary);
 				$summary.hide();
 
 				const $logicBtns = $(`<span class="btn-group andor-btns" style="margin-left: 5px;"/>`).append($btnAndOrBlue).append($btnAndOrRed).appendTo($line);
@@ -423,22 +427,26 @@ class FilterBox {
 					$grid.find(".filter-pill").each(function () {
 						$(this).data("setter")(FilterBox._PILL_STATES[2]);
 					});
+					if ($grid.data("doUpdateNestSummary")) $grid.data("doUpdateNestSummary")();
 				});
 
 				$all.on(EVNT_CLICK, function () {
 					$grid.find(".filter-pill").each(function () {
 						$(this).data("setter")(FilterBox._PILL_STATES[1]);
 					});
+					if ($grid.data("doUpdateNestSummary")) $grid.data("doUpdateNestSummary")();
 				});
 
 				$clear.on(EVNT_CLICK, function () {
 					$grid.find(".filter-pill").each(function () {
 						$(this).data("setter")(FilterBox._PILL_STATES[0]);
 					});
+					if ($grid.data("doUpdateNestSummary")) $grid.data("doUpdateNestSummary")();
 				});
 
 				$default.on(EVNT_CLICK, function () {
 					self._reset(filter.header);
+					if ($grid.data("doUpdateNestSummary")) $grid.data("doUpdateNestSummary")();
 				});
 
 				return $line;
@@ -448,19 +456,22 @@ class FilterBox {
 				const $pills = [];
 				const $grid = $(`<div class="pill-grid"/>`);
 				const $subGrids = [];
+				const $subGridDividers = [];
 				let gridIndex = 0;
+
+				function addDivider () {
+					const $hr = $(`<hr class="pill-grid-subs-divider">`).appendTo($grid);
+					$subGridDividers.push($hr);
+				}
+
 				function addGroup (bump) {
 					if (bump) {
 						filter.numGroups++;
-						$grid.append(`<hr class="pill-grid-subs-divider">`);
+						addDivider();
 					}
 					$subGrids[gridIndex] = $(`<div class="pill-grid-sub"/>`).appendTo($grid);
-					if (gridIndex + 1 < filter.numGroups) $grid.append(`<hr class="pill-grid-subs-divider">`);
+					if (gridIndex + 1 < filter.numGroups) addDivider();
 					if (bump) gridIndex++;
-				}
-				if (isGrouped) {
-					$grid.addClass(`pill-grid-subs`);
-					for (; gridIndex < filter.numGroups; ++gridIndex) addGroup();
 				}
 
 				function cycleState ($pill, $miniPill, forward) {
@@ -473,21 +484,102 @@ class FilterBox {
 					$miniPill.attr("state", FilterBox._PILL_STATES[newIndex]);
 				}
 
+				const nests = {};
+				const nested = filter.items.filter(it => it instanceof FilterItem && it.nest).map(it => ({nest: it.nest, nestHidden: !!it.nestHidden})).sort((a, b) => SortUtil.ascSortLower(a.nest, b.nest));
+				let updateNestStats = null;
+				if (nested.length) {
+					const $subGrid = $(`<div class="pill-grid-sub"/>`).appendTo($grid);
+					nested.forEach(nestObj => {
+						const nest = nestObj.nest
+						if (!nests[nest]) {
+							const $nest = $(`<div class="filter__btn_nest">${nest} [${nestObj.nestHidden ? "\u2212" : "+"}]</div>`).click(() => {
+								$nest.html($nest.html().replace(/\[[\u2212+]]$/, (it) => it === "[+]" ? "[\u2212]" : "[+]"))
+								const self = nests[nest];
+								self.$children.forEach($e => $e.toggle());
+								$subGrids.forEach(($sg, i) => {
+									$subGridDividers[i].toggle(!!$sg.find(`.filter-pill:visible`).length);
+								});
+								updateNestStats();
+							}).appendTo($grid);
+
+							nests[nest] = {
+								_key: nest,
+								$nest,
+								$children: [],
+								nestHidden: nestObj.nestHidden
+							};
+
+							$subGrid.append($nest);
+						}
+					});
+
+					const $nestStats = $(`<div class="filter__summary_nest"/>`).appendTo($subGrid);
+
+					updateNestStats = () => {
+						let hiddenHigh = 0;
+						let hiddenLow = 0;
+						Object.keys(nests).forEach(k => {
+							const nest = nests[k];
+							const nestStats = {high: 0, low: 0, total: 0};
+
+							nest.$children.forEach($c => {
+								const state = $c.attr("state");
+								nestStats.total++;
+
+								if (state === FilterBox._PILL_STATES[1]) {
+									if ($c.is(":hidden")) {
+										hiddenHigh++;
+										nestStats.high++;
+									}
+								} else if (state === FilterBox._PILL_STATES[2]) {
+									if ($c.is(":hidden")) {
+										hiddenLow++;
+										nestStats.low++;
+									}
+								}
+							});
+
+							const allHigh = nestStats.total === nestStats.high;
+							const allLow = nestStats.total === nestStats.low
+							nest.$nest.toggleClass("filter__btn_nest--include-all", allHigh)
+								.toggleClass("filter__btn_nest--exclude-all", allLow)
+								.toggleClass("filter__btn_nest--include", !!(!allHigh && !allLow && nestStats.high && !nestStats.low))
+								.toggleClass("filter__btn_nest--exclude", !!(!allHigh && !allLow && !nestStats.high && nestStats.low))
+								.toggleClass("filter__btn_nest--both", !!(!allHigh && !allLow && nestStats.high && nestStats.low));
+						});
+
+						$nestStats.html(`
+							${hiddenHigh ? `<span class="filter__summary_item filter__summary_item--include" title="${hiddenHigh} hidden 'required' tag${hiddenHigh === 1 ? "" : "s"}">${hiddenHigh}</span>` : ""}
+							${hiddenHigh && hiddenLow ? `<span class="filter__summary_item_spacer"></span>` : ""}
+							${hiddenLow ? `<span class="filter__summary_item filter__summary_item--exclude" title="${hiddenLow} hidden 'excluded' tag${hiddenHigh === 1 ? "" : "s"}">${hiddenLow}</span>` : ""}
+						`);
+					};
+
+					$grid.data("doUpdateNestSummary", updateNestStats);
+
+					addDivider();
+					self.headers[filter.header].getNestVisibility = () => {
+						const outObj = {};
+						Object.values(nests).forEach(nObj => {
+							const hidden = nObj.$nest.text().includes("[+]");
+							outObj[nObj._key] = hidden;
+						});
+						return outObj;
+					};
+				}
+
+				if (isGrouped) {
+					$grid.addClass(`pill-grid-subs`);
+					for (; gridIndex < filter.numGroups; ++gridIndex) addGroup();
+				}
+
 				for (const item of filter.items) {
 					const iText = item instanceof FilterItem ? item.item : item;
 					const iChangeFn = item instanceof FilterItem ? item.changeFn : null;
+					const display = filter.displayFn ? filter.displayFn(item) : iText;
 
-					const $pill = $(`<div class="filter-pill"/>`);
-					const $miniPill = $(`<div class="mini-pill"/>`);
-
-					const display = filter.displayFn ? filter.displayFn(iText) : iText;
-
-					$pill.val(iText);
-					$pill.html(display);
-					$miniPill.html(display);
-
-					$pill.attr("state", FilterBox._PILL_STATES[0]);
-					$miniPill.attr("state", FilterBox._PILL_STATES[0]);
+					const $pill = $(`<div class="filter-pill">${display}</div>`).data("value", iText).attr("state", FilterBox._PILL_STATES[0]);
+					const $miniPill = $(`<div class="mini-pill">${display}</div>`).attr("state", FilterBox._PILL_STATES[0]);
 
 					$miniPill.on(EVNT_CLICK, function () {
 						$pill.attr("state", FilterBox._PILL_STATES[0]);
@@ -537,14 +629,34 @@ class FilterBox {
 					// add a class to mark any items that are default deselected (used to add visual difference)
 					tagDefaults($miniPill, iText);
 
+					const nest = item instanceof FilterItem ? item.nest : null;
+					const handleNest = () => {
+						if (nest) nests[nest].$children.push($pill);
+					};
+
 					if (isGrouped) {
 						const group = Number(item instanceof FilterItem && item.group != null ? item.group : filter.groupFn(iText));
 						while (group > $subGrids.length - 1) addGroup(true);
+						handleNest();
 						$subGrids[group].append($pill)
-					} else $grid.append($pill);
+					} else {
+						handleNest();
+						$grid.append($pill);
+					}
+
 					$miniView.append($miniPill);
 					$pills.push($pill);
 				}
+
+				Object.values(nests).forEach(nest => {
+					if (curNestState) {
+						const isHidden = MiscUtil.getProperty(curNestState, filter.header, nest._key);
+						if (isHidden) nest.$nest.trigger("click");
+					} else if (self.storedNestState) {
+						const isHidden = MiscUtil.getProperty(self.storedNestState, filter.header, nest._key);
+						if (isHidden) nest.$nest.trigger("click");
+					} else if (nest.nestHidden) nest.$nest.trigger("click");
+				});
 
 				function tagDefaults ($miniPill, iText) {
 					if (filter.deselFn && filter.deselFn(iText)) {
@@ -593,7 +705,7 @@ class FilterBox {
 						const _totals = {yes: 0, no: 0, ignored: 0};
 						$pills.forEach(function (p) {
 							const state = p.attr("state");
-							out[p.val()] = state === "yes" ? 1 : state === "no" ? -1 : 0;
+							out[p.data("value")] = state === "yes" ? 1 : state === "no" ? -1 : 0;
 							const countName = state === "yes" ? "yes" : state === "no" ? "no" : "ignored";
 							_totals[countName] = _totals[countName] + 1;
 						});
@@ -638,14 +750,15 @@ class FilterBox {
 						const toNo = toVal.filter(it => it[0] === "!").map(it => it.slice(1));
 						const toYes = toVal.filter(it => it[0] !== "!");
 						$pills.forEach((p) => {
-							if (toYes.includes(p.val().toLowerCase())) {
+							if (toYes.includes(String(p.data("value")).toLowerCase())) {
 								$(p).data("setter")(FilterBox._PILL_STATES[1])
-							} else if (toNo.includes(p.val().toLowerCase())) {
+							} else if (toNo.includes(String(p.data("value")).toLowerCase())) {
 								$(p).data("setter")(FilterBox._PILL_STATES[2])
 							} else {
 								$(p).data("setter")(FilterBox._PILL_STATES[0])
 							}
 						});
+						if ($grid.data("doUpdateNestSummary")) $grid.data("doUpdateNestSummary")();
 					}
 				);
 
@@ -667,6 +780,7 @@ class FilterBox {
 						$pills.forEach(function (p) {
 							p.data("resetter")();
 						});
+						if ($grid.data("doUpdateNestSummary")) $grid.data("doUpdateNestSummary")();
 					}
 				);
 
@@ -685,7 +799,7 @@ class FilterBox {
 					});
 
 				const $summary = $(`<span class="summary" style="margin-left: auto;"/>`).appendTo($line);
-				const $summaryRange = $(`<span class="include multi-compact-hidden" title="Selected range"/>`).appendTo($summary);
+				const $summaryRange = $(`<span class="filter__summary_item filter__summary_item--include multi-compact-hidden" title="Selected range"/>`).appendTo($summary);
 				$summary.hide();
 
 				const $showHide = $(`<button class="btn btn-default btn-xs show-hide-button multi-compact-hidden btn-meta" style="margin-left: 5px;">Hide</button>`).appendTo($line);
@@ -941,6 +1055,14 @@ class FilterBox {
 		return outObj;
 	}
 
+	_getNestState () {
+		const outObj = {};
+		Object.keys(this.headers).forEach(h => {
+			if (this.headers[h].getNestVisibility) outObj[h] = this.headers[h].getNestVisibility();
+		});
+		return outObj;
+	}
+
 	/**
 	 * Convenience function to cleanly add event listeners
 	 *
@@ -1131,6 +1253,8 @@ class FilterBox {
 			const lastHash = UrlUtil.autoEncodeHash(last);
 			const link = $("#listcontainer").find(`.list a[href="#${lastHash.toLowerCase()}"]`);
 			if (!link.length) History._freshLoad();
+		} else if (History.lastLoadedId == null && !History.initialLoad) {
+			History._freshLoad();
 		}
 	}
 }
@@ -1143,6 +1267,7 @@ FilterBox._PILL_STATES = ["ignore", "yes", "no"];
 FilterBox._STORAGE_NAME = "filterState";
 FilterBox._STORAGE_NAME_VISIBLE = "filterStateVisible";
 FilterBox._STORAGE_NAME_GROUP_STATE = "filterStateGroupState";
+FilterBox._STORAGE_NAME_NEST_STATE = "filterStateNestState";
 FilterBox._SUB_HASH_PREFIX = "filter";
 
 class Filter {
@@ -1312,14 +1437,21 @@ class Filter {
 class FilterItem {
 	/**
 	 * An alternative to string `Filter.items` with a change-handling function
-	 * @param item string
-	 * @param changeFn called when this item is clicked/etc; calls `changeFn(item)`
-	 * @param group the group this item belongs to, if it's part of a GroupedFilter
+	 * @param options containing:
+	 *   `item`: the item string
+	 *   `changeFn`: (optional) function to call when filter is changed
+	 *   `group` (optional) group this item belongs to, if it's part of a GroupedFilter
+	 *   `nest` (optional) nest this item belongs to
+	 *   `nestHidden` (optional) if nested, default visibility state
+	 *
+	 *   `customData` (optional) free data storage
 	 */
-	constructor (item, changeFn, group) {
-		this.item = item;
-		this.changeFn = changeFn;
-		this.group = group;
+	constructor (options) {
+		this.item = options.item;
+		this.changeFn = options.changeFn;
+		this.group = options.group;
+		this.nest = options.nest;
+		this.nestHidden = options.nestHidden;
 	}
 }
 

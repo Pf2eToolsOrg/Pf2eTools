@@ -205,7 +205,7 @@
 		"16": [8, 10],
 		"17": [11, 12],
 		"18": [13, 16],
-		"19": [17, 19],
+		"19": [17, 20],
 		"20": [21, 23],
 		"21": [24, 26],
 		"22": [27, 29],
@@ -218,10 +218,10 @@
 
 	_crToCasterLevel (cr) {
 		const CR_CASTER_LVL_RATIO = 1.25; // approximation from CRs with significant caster counts
-		return Math.min(20, cr * CR_CASTER_LVL_RATIO);
+		return Math.max(1, Math.min(20, cr * CR_CASTER_LVL_RATIO));
 	},
 
-	_calcNewAbility: (mon, prop, modifier) => {
+	_calcNewAbility (mon, prop, modifier) {
 		// at least 1
 		return Math.max(1,
 			((modifier + 5) * 2) +
@@ -252,7 +252,7 @@
 		}
 
 		this._adjustHp(mon, crInNumber, toCr);
-		this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbOut);
+		this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
 		this._adjustDpr(mon, crInNumber, toCr);
 		this._adjustSpellcasting(mon, crInNumber, toCr);
 
@@ -1027,7 +1027,7 @@
 	_getModBeingScaled (strMod, dexMod, modFromAbil, name, content) {
 		const guessMod = () => {
 			name = name.toLowerCase();
-			content = content.toLowerCase();
+			content = content.replace(/{@atk ([A-Za-z,]+)}/gi, (_, p1) => EntryRenderer.attackTagToFull(p1)).toLowerCase();
 
 			const isMeleeOrRangedWep = content.includes("melee or ranged weapon attack:");
 			if (isMeleeOrRangedWep) {
@@ -1062,17 +1062,15 @@
 		return strMod === modFromAbil ? "str" : dexMod === modFromAbil ? "dex" : null;
 	},
 
-	_adjustAtkBonusAndSaveDc (mon, crIn, crOut, pbOut) {
-		const idealHitIn = this._crToAtk(crIn);
-		const idealHitOut = this._crToAtk(crOut);
-		const hitTotalIn = Math.mean(...idealHitIn);
-		const hitTotalOut = Math.mean(...idealHitOut);
+	_adjustAtkBonusAndSaveDc (mon, crIn, crOut, pbIn, pbOut) {
+		const idealHitIn = Number(this._crToAtk(crIn));
+		const idealHitOut = Number(this._crToAtk(crOut));
 
 		const strMod = Parser.getAbilityModNumber(mon.str);
 		const dexMod = Parser.getAbilityModNumber(mon.dex);
 
 		const getAdjustedHit = (toHitIn) => {
-			return this._getScaledToRatio(toHitIn, hitTotalIn, hitTotalOut);
+			return this._getScaledToRatio(toHitIn, idealHitIn, idealHitOut);
 		};
 
 		const handleHit = (str, name) => {
@@ -1084,7 +1082,8 @@
 				const modFromAbil = curToHit - (offsetEnchant + pbOut);
 				const modBeingScaled = name != null ? this._getModBeingScaled(strMod, dexMod, modFromAbil, name, str) : null;
 
-				const outToHit = Math.max(3, getAdjustedHit(curToHit));
+				const origToHit = curToHit + pbIn - pbOut;
+				const outToHit = getAdjustedHit(origToHit);
 				if (curToHit === outToHit) return m0;
 
 				if (modBeingScaled != null) {
@@ -1108,14 +1107,15 @@
 		const handleDc = (str, castingAbility) => {
 			return str.replace(/DC (\d+)/g, (m0, m1) => {
 				const curDc = Number(m1);
-				const outDc = Math.max(13, getAdjustedDc(curDc));
+				const origDc = curDc + pbIn - pbOut;
+				const outDc = Math.max(13, getAdjustedDc(origDc));
 				if (curDc === outDc) return m0;
 
 				if (["int", "wis", "cha"].includes(castingAbility)) {
 					const oldKey = `${castingAbility}Old`;
 					if (mon[oldKey] == null) {
 						mon[oldKey] = mon[castingAbility];
-						const dcDiff = outDc - curDc;
+						const dcDiff = outDc - origDc;
 						const curMod = Parser.getAbilityModNumber(mon[castingAbility]);
 						mon[castingAbility] = this._calcNewAbility(mon, castingAbility, curMod + dcDiff);
 					}
@@ -1314,7 +1314,7 @@
 
 									let found = false;
 
-									if (adjustedDpr < avgDpr) {
+									if (adjustedDpr < tempAvgDpr) {
 										while (numDiceTemp > 1 && tempAvgDpr >= targetDprRange[0]) {
 											numDiceTemp -= 1;
 											tempAvgDpr -= (diceFacesTemp + 1) / 2;
@@ -1349,7 +1349,7 @@
 									let tempAvgDpr = getAvgDpr(getDiceExp(undefined, diceFacesTemp));
 									let found = false;
 
-									if (adjustedDpr < avgDpr) {
+									if (adjustedDpr < tempAvgDpr) {
 										while (diceFacesTemp > 4 && tempAvgDpr >= targetDprRange[0]) {
 											diceFacesTemp = EntryRenderer.dice.getPreviousDice(diceFacesTemp);
 											tempAvgDpr = getAvgDpr(getDiceExp(undefined, diceFacesTemp));
@@ -1403,6 +1403,8 @@
 
 							doPostCalc();
 							const diceExpOut = getDiceExp(undefined, undefined, modOut + offsetEnchant);
+							const avgDamOut = Math.floor(getAvgDpr(diceExpOut));
+							if (avgDamOut <= 0) return `1 ${suffix.replace(/^[^\w]+/, " ")}`;
 							return `${Math.floor(getAvgDpr(diceExpOut))}${prefix}${diceExpOut}${suffix}`;
 						});
 
@@ -1425,11 +1427,11 @@
 				return true; // if there was nothing to do, the operation was a success
 			};
 
-			if (!handleDpr("trait")) break;
-			if (!handleDpr("action")) break;
-			if (!handleDpr("reaction")) break;
-			if (!handleDpr("legendary")) break;
-			if (!handleDpr("variant")) break;
+			if (!handleDpr("trait")) continue;
+			if (!handleDpr("action")) continue;
+			if (!handleDpr("reaction")) continue;
+			if (!handleDpr("legendary")) continue;
+			if (!handleDpr("variant")) continue;
 			dprAdjustmentComplete = true;
 		}
 
@@ -1518,14 +1520,14 @@
 					const inStr = JSON.stringify(sc.headerEntries);
 
 					let anyChange = false;
-					const outStr = inStr.replace(/(\d+)[A-Za-z]+-level/i, (...m) => {
-						const level = Number(m[1]);
-						const outLevel = Math.min(20, this._getScaledToRatio(level, idealClvlIn, idealClvlOut));
+					const outStr = inStr.replace(/(an?) (\d+)[A-Za-z]+-level/i, (...m) => {
+						const level = Number(m[2]);
+						const outLevel = Math.max(1, Math.min(20, this._getScaledToRatio(level, idealClvlIn, idealClvlOut)));
 						anyChange = level !== outLevel;
 						if (anyChange) {
 							if (primaryInLevel == null) primaryInLevel = level;
 							if (primaryOutLevel == null) primaryOutLevel = outLevel;
-							return `${Parser.spLevelToFull(outLevel)}-level`;
+							return `${Parser.spellLevelToArticle(outLevel)} ${Parser.spLevelToFull(outLevel)}-level`;
 						} else return m[0];
 					});
 
@@ -1553,13 +1555,15 @@
 							if (adjustedSlotsOut <= 0) {
 								delete spells[i];
 							}
-						} else {
+						} else if (i <= primaryOutLevel) {
 							spells[i] = {
 								slots: Math.max(1, Math.round(idealSlotsOut * lastRatio)),
 								spells: [
 									`{@filter A selection of ${Parser.spLevelToFull(i)}-level ${spellsFromClass ? `${spellsFromClass} ` : ""}spells|spells|level=${i}${spellsFromClass ? `|class=${spellsFromClass}` : ""}}`
 								]
 							};
+						} else {
+							delete spells[i];
 						}
 					}
 				}

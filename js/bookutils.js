@@ -1,14 +1,18 @@
 "use strict";
 
 const BookUtil = {
-	scrollClick: (scrollTo, scrollIndex) => {
-		const selectors = [
-			`div.statsBlockSectionHead > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsBlockHead > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsBlockSubHead > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsBlockInset > span.entry-title:textEquals("${scrollTo}")`,
-			`div.statsInlineHead > span.entry-title:textEquals("${scrollTo}.")`
+	_getSelectors (scrollTo) {
+		return [
+			`.statsBlockSectionHead > .entry-title:textEquals("${scrollTo}")`,
+			`.statsBlockHead > .entry-title:textEquals("${scrollTo}")`,
+			`.statsBlockSubHead > .entry-title:textEquals("${scrollTo}")`,
+			`.statsBlockInset > .entry-title:textEquals("${scrollTo}")`,
+			`.statsInlineHead > .entry-title:textEquals("${scrollTo}.")`
 		];
+	},
+
+	scrollClick: (scrollTo, scrollIndex) => {
+		const selectors = BookUtil._getSelectors(scrollTo);
 
 		if (scrollIndex === undefined) {
 			// textEquals selector defined below; added on window load
@@ -180,13 +184,6 @@ const BookUtil = {
 			BookUtil.curRender.chapter = chapter;
 			BookUtil.renderArea.html("");
 
-			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
-			const textStack = [];
-			BookUtil._renderer.setFirstSection(true);
-			BookUtil._renderer.recursiveEntryRender(data[chapter], textStack);
-			BookUtil.renderArea.append(`<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>`);
-			const $wrpBtmControls = $(`<div class="split"/>`).appendTo($(`<td colspan="6"/>`).appendTo($(`<tr class="text"/>`).appendTo(BookUtil.renderArea)));
-
 			const goToPage = (page) => {
 				page = String(page);
 				const newHashParts = [bookId, ...hashParts];
@@ -194,13 +191,27 @@ const BookUtil = {
 				window.location.hash = newHashParts.join(HASH_PART_SEP);
 				MiscUtil.scrollPageTop();
 			};
-			if (chapter > 0) {
-				const $btnPrev = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Previous</button>`).click(() => goToPage(chapter - 1)).appendTo($wrpBtmControls);
-			} else $wrpBtmControls.append(`<div/>`); // placeholder/spacer
-			const $btnScrollTop = $(`<button class="btn btn-xs btn-default">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpBtmControls);
-			if (chapter < data.length - 1) {
-				const $btnNxt = $(`<button class="btn btn-xs btn-default">Next<span class="glyphicon glyphicon-chevron-right"></span></button>`).click(() => goToPage(chapter + 1)).appendTo($wrpBtmControls);
-			} else $wrpBtmControls.append(`<div/>`); // placeholder/spacer
+
+			const renderNavButtons = (isTop) => {
+				const tdStlye = `padding-${isTop ? "top" : "bottom"}: 6px; padding-left: 9px; padding-right: 9px;`;
+				const $wrpControls = $(`<div class="split"/>`).appendTo($(`<td colspan="6" style="${tdStlye}"/>`).appendTo($(`<tr/>`).appendTo(BookUtil.renderArea)));
+				if (chapter > 0) $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Previous</button>`).click(() => goToPage(chapter - 1)).appendTo($wrpControls);
+				else $wrpControls.append(`<div/>`);
+
+				if (!isTop) $(`<button class="btn btn-xs btn-default">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpControls);
+
+				if (chapter < data.length - 1) $(`<button class="btn btn-xs btn-default">Next<span class="glyphicon glyphicon-chevron-right"></span></button>`).click(() => goToPage(chapter + 1)).appendTo($wrpControls);
+				else $wrpControls.append(`<div/>`);
+			};
+
+			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
+			renderNavButtons(true);
+			const textStack = [];
+			BookUtil._renderer.setFirstSection(true);
+			BookUtil._renderer.resetHeaderIndex();
+			BookUtil._renderer.recursiveEntryRender(data[chapter], textStack);
+			BookUtil.renderArea.append(`<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>`);
+			renderNavButtons();
 
 			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
@@ -237,6 +248,17 @@ const BookUtil = {
 			$ele.data("hidden", true);
 			$ele.html(`[+]`);
 		}
+	},
+
+	initLinkGrabbers () {
+		$(`body`).on(`click`, `.entry-title-inner`, function () {
+			const $this = $(this);
+			const text = $this.text().replace(/\.$/, "");
+
+			const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")];
+			copyText(toCopy.join(HASH_PART_SEP));
+			showCopiedEffect($this);
+		});
 	},
 
 	baseDataUrl: "",
@@ -286,7 +308,7 @@ const BookUtil = {
 		} else handleNotFound();
 	},
 
-	_renderer: new EntryRenderer(),
+	_renderer: new EntryRenderer().setEnumerateTitlesRel(true),
 	loadBook: (fromIndex, bookId, hashParts, homebrewData) => {
 		function doPopulate (data) {
 			const allContents = $(`.contents-item`);

@@ -797,6 +797,10 @@ Parser.spLevelToFull = function (level) {
 	}
 };
 
+Parser.spellLevelToArticle = function (level) {
+	return level === 8 || level === 11 || level === 18 ? "an" : "a";
+};
+
 Parser.spLevelToFullLevelText = function (level, dash) {
 	return `${Parser.spLevelToFull(level)}${(level === 0 ? "s" : `${dash ? "-" : " "}level`)}`;
 };
@@ -1496,8 +1500,9 @@ SRC_UATSC = SRC_UA_PREFIX + "ThreeSubclasses";
 SRC_UAOD = SRC_UA_PREFIX + "OrderDomain";
 SRC_UACAM = SRC_UA_PREFIX + "CentaursMinotaurs";
 SRC_UAGSS = SRC_UA_PREFIX + "GiantSoulSorcerer";
-SRC_UAWGE = SRC_UA_PREFIX + "WGE";
 SRC_UARoE = SRC_UA_PREFIX + "RacesOfEberron";
+SRC_UARoR = SRC_UA_PREFIX + "RacesOfRavnica";
+SRC_UAWGE = SRC_UA_PREFIX + "WGE";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -1593,6 +1598,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAOD] = UA_PREFIX + "Order Domain";
 Parser.SOURCE_JSON_TO_FULL[SRC_UACAM] = UA_PREFIX + "Centaurs and Minotaurs";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAGSS] = UA_PREFIX + "Giant Soul Sorcerer";
 Parser.SOURCE_JSON_TO_FULL[SRC_UARoE] = UA_PREFIX + "Races of Eberron";
+Parser.SOURCE_JSON_TO_FULL[SRC_UARoR] = UA_PREFIX + "Races of Ravnica";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAWGE] = "Wayfinder's Guide to Eberron";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
@@ -1679,6 +1685,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAOD] = "UAOD";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACAM] = "UACAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAGSS] = "UAGSS";
 Parser.SOURCE_JSON_TO_ABV[SRC_UARoE] = "UARoE";
+Parser.SOURCE_JSON_TO_ABV[SRC_UARoR] = "UARoR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAWGE] = "WGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
@@ -1705,6 +1712,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"S": "Shield",
 	"SC": "Scroll",
 	"SCF": "Spellcasting Focus",
+	"OTH": "Other",
 	"T": "Tool",
 	"TAH": "Tack and Harness",
 	"TG": "Trade Good",
@@ -1890,9 +1898,10 @@ function copyText (text) {
 
 function showCopiedEffect ($ele) {
 	const $temp = $(`<div class="copied-tip"><span>Copied!</span></div>`);
+	const top = $(window).scrollTop();
 	const pos = $ele.offset();
 	$temp.css({
-		top: pos.top - 17,
+		top: (pos.top - 17) - top,
 		left: pos.left - 36 + ($ele.width() / 2)
 	}).appendTo($(`body`)).animate({
 		top: "-=8",
@@ -1960,6 +1969,13 @@ MiscUtil = {
 };
 
 // LIST AND SEARCH =====================================================================================================
+SearchUtil = {
+	removeStemmer (elasticSearch) {
+		const stemmer = elasticlunr.Pipeline.getRegisteredFunction("stemmer");
+		elasticSearch.pipeline.remove(stemmer);
+	}
+};
+
 ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
 
@@ -2137,7 +2153,7 @@ ListUtil = {
 	},
 
 	initSubContextMenu: (clickFn, ...labels) => {
-		ListUtil._handleInitContextMenu("contextSubMenu", clickFn, labels)
+		ListUtil._handleInitContextMenu("contextSubMenu", clickFn, labels.filter(it => it))
 	},
 
 	openSubContextMenu: (evt, ele) => {
@@ -2149,7 +2165,8 @@ ListUtil = {
 		ListUtil._handlePreInitContextMenu(menuId);
 		let tempString = `<ul id="${menuId}" class="dropdown-menu" role="menu">`;
 		labels.forEach((it, i) => {
-			tempString += `<li><a data-ctx-id="${i}" href="${STR_VOID_LINK}">${it}</a></li>`;
+			if (it === null) tempString += `<li class="divider"/>`;
+			else tempString += `<li><a data-ctx-id="${i}" href="${STR_VOID_LINK}">${it}</a></li>`;
 		});
 		tempString += `</ul>`;
 		$("body").append(tempString);
@@ -2254,8 +2271,7 @@ ListUtil = {
 					copyText(parts.join(HASH_PART_SEP));
 					showCopiedEffect($btn);
 				} else {
-					const filename = `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
-					DataUtil.userDownload(filename, JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
+					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
 				}
 			})
 			.attr("title", "Download List (SHIFT for Link)");
@@ -2461,7 +2477,7 @@ ListUtil = {
 
 	initGenericPinnable: () => {
 		ListUtil.initContextMenu(ListUtil.handleGenericContextMenuClick, "Popout", "Pin");
-		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Clear Pins");
+		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Clear Pins", null, "Download JSON");
 	},
 
 	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
@@ -2493,12 +2509,15 @@ ListUtil = {
 			case 2:
 				ListUtil.doSublistRemoveAll();
 				break;
+			case 3:
+				ListUtil._handleJsonDownload();
+				break;
 		}
 	},
 
 	initGenericAddable: () => {
 		ListUtil.initContextMenu(ListUtil.handleGenericMultiContextMenuClick, "Popout", "Add");
-		ListUtil.initSubContextMenu(ListUtil.handleGenericMulriSubContextMenuClick, "Popout", "Remove", "Clear List");
+		ListUtil.initSubContextMenu(ListUtil.handleGenericMultiSubContextMenuClick, "Popout", "Remove", "Clear List", null, "Download JSON");
 	},
 
 	handleGenericMultiContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
@@ -2516,7 +2535,7 @@ ListUtil = {
 		}
 	},
 
-	handleGenericMulriSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
+	handleGenericMultiSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
 		const itId = Number($invokedOn.attr(FLTR_ID));
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
@@ -2528,7 +2547,23 @@ ListUtil = {
 			case 2:
 				ListUtil.doSublistRemoveAll();
 				break;
+			case 3:
+				ListUtil._handleJsonDownload();
+				break;
 		}
+	},
+
+	_getDownloadName () {
+		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
+	},
+
+	_handleJsonDownload () {
+		const out = ListUtil.getSublistedIds().map(id => {
+			const cpy = JSON.parse(JSON.stringify(ListUtil._allItems[id]));
+			Object.keys(cpy).filter(k => k.startsWith("_") || !cpy[k] || (cpy[k] instanceof Array && !cpy[k].length)).forEach(k => delete cpy[k]);
+			return cpy;
+		});
+		DataUtil.userDownload(`${ListUtil._getDownloadName()}-data`, out);
 	},
 
 	/**
@@ -2637,7 +2672,7 @@ ListUtil = {
 function getSourceFilter (options = {}) {
 	const baseOptions = {
 		header: FilterBox.SOURCE_HEADER,
-		displayFn: Parser.sourceJsonToFullCompactPrefix,
+		displayFn: (item) => Parser.sourceJsonToFullCompactPrefix(item.item || item),
 		selFn: defaultSourceSelFn,
 		groupFn: SourceUtil.getFilterGroup
 	};

@@ -254,6 +254,9 @@
 					"source": "EEPC",
 					"page": 15
 				}
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -321,6 +324,9 @@
 					"source": "EEPC",
 					"page": 15
 				}
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -446,7 +452,10 @@
 					]
 				}
 			],
-			"page": 151
+			"page": 151,
+			"conditionInflict": [
+				"unconscious"
+			]
 		},
 		{
 			"name": "Cause Fear",
@@ -506,6 +515,9 @@
 			"page": 151,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		},
 		{
@@ -833,6 +845,9 @@
 			"page": 151,
 			"savingThrow": [
 				"wisdom"
+			],
+			"conditionInflict": [
+				"charmed"
 			]
 		},
 		{
@@ -986,6 +1001,9 @@
 					"source": "EEPC",
 					"page": 16
 				}
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -1219,7 +1237,7 @@
 				]
 			},
 			"entries": [
-				"Threads of dark power leap from your fingers to pierce up to five Small or Medium corpses you can see within range. Each corpse immediately stands up and becomes undead. You decide whether it is a zombie or a skeleton (the statistics for zombies and skeletons are in the Monster Manual), and it gains a bonus to its attack and damage rolls equal to your spellcasting ability modifier.",
+				"Threads of dark power leap from your fingers to pierce up to five Small or Medium corpses you can see within range. Each corpse immediately stands up and becomes undead. You decide whether it is a {@creature zombie} or a {@creature skeleton} (the statistics for {@creature zombie|mm|zombies} and {@creature skeleton|mm|skeletons} are in the Monster Manual), and it gains a bonus to its attack and damage rolls equal to your spellcasting ability modifier.",
 				"You can use a bonus action to mentally command the creatures you make with this spell, issuing the same command to all of them. To receive the command, a creature must be within 60 feet of you. You decide what action the creatures will take and where they will move during their next turn, or you can issue a general command, such as to guard a chamber or passageway against your foes. If you issue no commands, the creatures do nothing except defend themselves against hostile creatures. Once given an order, the creatures continue to follow it until their task is complete.",
 				"The creatures are under your control until the spell ends, after which they become inanimate once more."
 			],
@@ -1591,6 +1609,9 @@
 					"source": "EEPC",
 					"page": 17
 				}
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -1876,7 +1897,8 @@
 			],
 			"savingThrow": [
 				"dexterity"
-			]
+			],
+			"isHeal": true
 		},
 		{
 			"name": "Erupting Earth",
@@ -2396,7 +2418,8 @@
 					]
 				}
 			],
-			"page": 157
+			"page": 157,
+			"isHeal": true
 		},
 		{
 			"name": "Holy Weapon",
@@ -2451,6 +2474,9 @@
 			],
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -2586,6 +2612,9 @@
 			],
 			"opposedCheck": [
 				"intelligence"
+			],
+			"conditionInflict": [
+				"frightened"
 			]
 		},
 		{
@@ -3017,6 +3046,10 @@
 					"source": "EEPC",
 					"page": 19
 				}
+			],
+			"conditionInflict": [
+				"prone",
+				"stunned"
 			]
 		},
 		{
@@ -3198,7 +3231,8 @@
 			"page": 160,
 			"damageInflict": [
 				"necrotic"
-			]
+			],
+			"isHeal": true
 		},
 		{
 			"name": "Maddening Darkness",
@@ -3501,6 +3535,9 @@
 					"source": "EEPC",
 					"page": 20
 				}
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -4092,6 +4129,9 @@
 			],
 			"savingThrow": [
 				"intelligence"
+			],
+			"conditionInflict": [
+				"stunned"
 			]
 		},
 		{
@@ -4163,6 +4203,9 @@
 					"source": "EEPC",
 					"page": 21
 				}
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -4471,6 +4514,9 @@
 			],
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"exhaustion"
 			]
 		},
 		{
@@ -4650,6 +4696,9 @@
 			],
 			"opposedCheck": [
 				"intelligence"
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -4796,9 +4845,10 @@
 						"You can use an action to name a place the humanoid saw in life, which creates an invisible sensor somewhere in that place if it is on the plane of existence you're currently on. The sensor remains for as long as you concentrate, up to 10 minutes (as if you were concentrating on a spell). You receive visual and auditory information from the sensor as if you were in its space using your senses."
 					]
 				},
-				"A creature that can see the sensor (such as one using see invisibility or truesight) sees a translucent image of the tormented humanoid whose soul you caged."
+				"A creature that can see the sensor (such as one using {@spell see invisibility} or truesight) sees a translucent image of the tormented humanoid whose soul you caged."
 			],
-			"page": 165
+			"page": 165,
+			"isHeal": true
 		},
 		{
 			"name": "Steel Wind Strike",
@@ -5214,7 +5264,8 @@
 			"savingThrow": [
 				"charisma"
 			],
-			"permanentEffects": true
+			"permanentEffects": true,
+			"isHeal": true
 		},
 		{
 			"name": "Tenser's Transformation",
@@ -5277,6 +5328,9 @@
 			],
 			"savingThrow": [
 				"constitution"
+			],
+			"conditionInflict": [
+				"exhaustion"
 			]
 		},
 		{
@@ -5470,6 +5524,9 @@
 					"source": "EEPC",
 					"page": 22
 				}
+			],
+			"conditionInflict": [
+				"prone"
 			]
 		},
 		{
@@ -5664,6 +5721,9 @@
 					"source": "EEPC",
 					"page": 22
 				}
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -5805,6 +5865,9 @@
 			],
 			"spellAttack": [
 				"R"
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -5857,6 +5920,9 @@
 					"source": "EEPC",
 					"page": 23
 				}
+			],
+			"conditionInflict": [
+				"blinded"
 			]
 		},
 		{
@@ -6067,6 +6133,10 @@
 					"source": "EEPC",
 					"page": 23
 				}
+			],
+			"conditionInflict": [
+				"prone",
+				"restrained"
 			]
 		},
 		{
@@ -6139,6 +6209,9 @@
 					"source": "EEPC",
 					"page": 24
 				}
+			],
+			"conditionInflict": [
+				"restrained"
 			]
 		},
 		{
@@ -6278,6 +6351,10 @@
 			],
 			"spellAttack": [
 				"R"
+			],
+			"conditionInflict": [
+				"prone",
+				"restrained"
 			]
 		},
 		{

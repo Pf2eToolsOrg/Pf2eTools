@@ -11,14 +11,15 @@ const META_ADD_M = "Material";
 const META_ADD_M_COST = "Material with Cost";
 const META_ADD_MB_PERMANENT = "Permanent Effects";
 const META_ADD_MB_SCALING = "Scaling Effects";
+const META_ADD_MB_HEAL = "Healing";
 // real meta tags
 const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
 
 const P_LEVEL = "level";
-const P_NORMALISED_TIME = "normalisedTime";
+const P_NORMALISED_TIME = "_normalisedTime";
 const P_SCHOOL = "school";
-const P_NORMALISED_RANGE = "normalisedRange";
+const P_NORMALISED_RANGE = "_normalisedRange";
 
 const STR_WIZARD = "Wizard";
 const STR_FIGHTER = "Fighter";
@@ -220,6 +221,7 @@ function getMetaFilterObj (s) {
 	if (s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
 	if (s.permanentEffects || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
 	if (s.scalingEffects || s.entriesHigherLevel) out.push(META_ADD_MB_SCALING);
+	if (s.isHeal) out.push(META_ADD_MB_HEAL);
 	return out;
 }
 
@@ -274,7 +276,8 @@ function pPostLoad () {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad);
+	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
+		.then(() => onFilterChangeMulti(spellList));
 };
 
 let list;
@@ -291,13 +294,14 @@ const levelFilter = new Filter({
 const classFilter = new Filter({header: "Class"});
 const subclassFilter = new GroupedFilter({
 	header: "Subclass",
-	numGroups: 2
+	numGroups: 2,
+	displayFn: (item) => `${item.nest}: ${item.item}`
 });
 const classAndSubclassFilter = new MultiFilter({name: "Classes"}, classFilter, subclassFilter);
 const raceFilter = new Filter({header: "Race"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_RITUAL, META_TECHNOMAGIC, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING]
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_MB_HEAL, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_RITUAL, META_TECHNOMAGIC]
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -318,6 +322,11 @@ const damageFilter = new Filter({
 	items: [
 		"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
 	],
+	displayFn: StrUtil.uppercaseFirst
+});
+const conditionFilter = new Filter({
+	header: "Conditions Inflicted",
+	items: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"],
 	displayFn: StrUtil.uppercaseFirst
 });
 const spellAttackFilter = new Filter({
@@ -375,6 +384,7 @@ const filterBox = initFilterBox(
 	metaFilter,
 	schoolFilter,
 	damageFilter,
+	conditionFilter,
 	spellAttackFilter,
 	saveFilter,
 	checkFilter,
@@ -386,7 +396,7 @@ const filterBox = initFilterBox(
 function pPageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
 
-	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addSpells)));
+	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addSpells)}));
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
@@ -418,11 +428,18 @@ function pPageInit (loadedSources) {
 	});
 	ListUtil.initGenericPinnable();
 
-	spellBookView = new BookModeView("bookview", $(`#btn-spellbook`), "Please pin some spells first",
+	spellBookView = new BookModeView("bookview", $(`#btn-spellbook`), "If you wish to view multiple spells, please first make a list",
 		($tbl) => {
 			const toShow = ListUtil.getSublistedIds().map(id => spellList[id]);
 			let numShown = 0;
+
 			const stack = [];
+			const renderSpell = (sp) => {
+				stack.push(`<table class="spellbook-entry"><tbody>`);
+				stack.push(EntryRenderer.spell.getCompactRenderedString(sp));
+				stack.push(`</tbody></table>`);
+			};
+
 			for (let i = 0; i < 10; ++i) {
 				const atLvl = toShow.filter(sp => sp.level === i);
 				if (atLvl.length) {
@@ -430,18 +447,21 @@ function pPageInit (loadedSources) {
 					stack.push(EntryRenderer.utils.getBorderTr(`<span class="spacer-name">${levelText}</span>`));
 
 					stack.push(`<tr class="spellbook-level"><td>`);
-					atLvl.forEach(sp => {
-						stack.push(`<table class="spellbook-entry"><tbody>`);
-						stack.push(EntryRenderer.spell.getCompactRenderedString(sp));
-						stack.push(`</tbody></table>`);
-					});
+					atLvl.forEach(sp => renderSpell(sp));
 					stack.push(`</td></tr>`);
 				}
 				numShown += atLvl.length;
 			}
+
+			if (!toShow.length && History.lastLoadedId != null) {
+				stack.push(`<tr class="spellbook-level"><td>`);
+				renderSpell(spellList[History.lastLoadedId]);
+				stack.push(`</td></tr>`);
+			}
+
 			$tbl.append(stack.join(""));
 			return numShown;
-		}
+		}, true
 	);
 
 	// load homebrew class spell list addons
@@ -519,6 +539,7 @@ function handleFilterChange () {
 			s._fMeta,
 			s.school,
 			s.damageInflict,
+			s.conditionInflict,
 			s.spellAttack,
 			s.savingThrow,
 			s.opposedCheck,
@@ -560,7 +581,7 @@ function addSpells (data) {
 				subclass: {name: STR_ARC_TCKER, source: SRC_PHB}
 			});
 			if (spell.level > 4) {
-				spell.scrollNote = true;
+				spell._scrollNote = true;
 			}
 		}
 
@@ -604,11 +625,12 @@ function addSpells (data) {
 		spell._fMeta = getMetaFilterObj(spell);
 		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
 		spell._fSubclasses = spell.classes.fromSubclass
-			? spell.classes.fromSubclass.map(c => new FilterItem(
-				getClassFilterStr(c.subclass),
-				null,
-				SourceUtil.hasBeenReprinted(c.subclass.name, c.subclass.source) || Parser.sourceJsonToFull(c.subclass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(c.subclass.source).startsWith(PS_PREFIX)
-			))
+			? spell.classes.fromSubclass.map(c => new FilterItem({
+				item: getClassFilterStr(c.subclass),
+				group: SourceUtil.hasBeenReprinted(c.subclass.name, c.subclass.source) || Parser.sourceJsonToFull(c.subclass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(c.subclass.source).startsWith(PS_PREFIX),
+				nest: c.class.name,
+				nestHidden: true
+			}))
 			: [];
 		spell._fRaces = spell.races ? spell.races.map(r => r.baseName || r.name) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);

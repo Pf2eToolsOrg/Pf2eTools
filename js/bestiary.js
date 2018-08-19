@@ -100,7 +100,8 @@ window.onload = function load () {
 	ExcludeUtil.initialise();
 	pLoadMeta()
 		.then(pLoadFluffIndex)
-		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad));
+		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad))
+		.then(() => onFilterChangeMulti(monsters));
 };
 
 let list;
@@ -264,7 +265,7 @@ const filterBox = initFilterBox(
 );
 
 function pPageInit (loadedSources) {
-	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem(src, loadSource(JSON_LIST_NAME, addMonsters)));
+	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addMonsters)}));
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
@@ -303,18 +304,22 @@ function pPageInit (loadedSources) {
 		($tbl) => {
 			const toShow = ListUtil.getSublistedIds().map(id => monsters[id]).sort((a, b) => SortUtil.ascSort(a.name, b.name));
 			let numShown = 0;
+
 			const stack = [];
-			stack.push(`<tr class="printbook-bestiary"><td>`);
+
 			const renderCreature = (mon) => {
 				stack.push(`<table class="printbook-bestiary-entry"><tbody>`);
 				stack.push(EntryRenderer.monster.getCompactRenderedString(mon, renderer));
 				stack.push(`</tbody></table>`);
 			};
+
+			stack.push(`<tr class="printbook-bestiary"><td>`);
 			toShow.forEach(mon => renderCreature(mon));
 			if (!toShow.length && History.lastLoadedId != null) {
 				renderCreature(monsters[History.lastLoadedId]);
 			}
 			stack.push(`</td></tr>`);
+
 			numShown += toShow.length;
 			$tbl.append(stack.join(""));
 			return numShown;
@@ -445,7 +450,7 @@ function addMonsters (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(new FilterItem(mon.source, () => {}));
+		sourceFilter.addIfAbsent(new FilterItem({item: mon.source, changeFn: () => {}}));
 		crFilter.addIfAbsent(mon._pCr);
 		strengthFilter.addIfAbsent(mon.str);
 		dexterityFilter.addIfAbsent(mon.dex);
@@ -824,12 +829,6 @@ function renderStatblock (mon, isScaled) {
 			entryList = {type: "entries", entries: sectionEntries};
 			renderStack = [];
 			sectionEntries.forEach(e => {
-				if (e.name && e.name.includes("Recharge")) {
-					e = $.extend({}, e);
-					e.name = e.name.replace(/\((Recharge )(.*?)\)$/gi, (...m) => {
-						return `(${m[1]}{@dice 1d6|${m[2]}})`;
-					});
-				}
 				if (e.rendered) renderStack.push(e.rendered);
 				else renderer.recursiveEntryRender(e, renderStack, sectionLevel + 1);
 			});
@@ -934,7 +933,7 @@ function renderStatblock (mon, isScaled) {
 						const nu = `
 							(function(it) {
 								if (PROF_DICE_MODE === PROF_MODE_DICE) {
-									EntryRenderer.dice.rollerClick(it, '{"type":"dice","rollable":true,"toRoll":${JSON.stringify(entFormat)}}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
+									EntryRenderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":${JSON.stringify(entFormat)}}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
 								} else {
 									${cached.replace(/this/g, "it")}
 								}
@@ -963,7 +962,7 @@ function renderStatblock (mon, isScaled) {
 					const withoutPB = dc - expectedPB;
 					const profDiceString = `1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
 
-					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onclick="dcRollerClick(this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
+					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onmousedown="event.preventDefault()" onclick="dcRollerClick(event, this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
 				} else {
 					return match; // if there was no proficiency bonus to work with, fall back on this
 				}
@@ -991,30 +990,48 @@ function renderStatblock (mon, isScaled) {
 				return;
 			}
 
-			if (fluff._copy) {
-				const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
-				// preserve these
-				const name = fluff.name;
-				const src = fluff.source;
-				const images = fluff.images;
-				Object.assign(fluff, cpy);
-				fluff.name = name;
-				fluff.source = src;
-				if (images) fluff.images = images;
-				delete fluff._copy;
+			function handleRecursive (fluff) {
+				const cachedAppendCopy = fluff._appendCopy; // prevent _copy from overwriting this
+
+				if (fluff._copy) {
+					const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
+					// preserve these
+					const name = fluff.name;
+					const src = fluff.source;
+					const images = fluff.images;
+
+					// remove this
+					delete fluff._copy;
+
+					Object.assign(fluff, cpy);
+					fluff.name = name;
+					fluff.source = src;
+					if (images) fluff.images = images;
+
+					handleRecursive(fluff);
+				}
+
+				if (cachedAppendCopy) {
+					const cpy = data.monster.find(it => cachedAppendCopy.name === it.name && cachedAppendCopy.source === it.source);
+					if (cpy.images) {
+						if (!fluff.images) fluff.images = cpy.images;
+						else fluff.images = fluff.images.concat(cpy.images);
+					}
+					if (cpy.entries) {
+						if (!fluff.entries) fluff.entries = cpy.entries;
+						else fluff.entries = fluff.entries.concat(cpy.entries);
+					}
+					delete fluff._appendCopy;
+
+					fluff._copy = cpy._copy;
+					fluff._appendCopy = cpy._appendCopy;
+
+					handleRecursive(fluff);
+				}
 			}
 
-			if (fluff._appendCopy) {
-				const cpy = data.monster.find(it => fluff._appendCopy.name === it.name && fluff._appendCopy.source === it.source);
-				if (cpy.images) {
-					if (!fluff.images) fluff.images = cpy.images;
-					else fluff.images = fluff.images.concat(cpy.images);
-				}
-				if (cpy.entries) {
-					if (!fluff.entries) fluff.entries = cpy.entries;
-					else fluff.entries = fluff.entries.concat(cpy.entries);
-				}
-				delete fluff._appendCopy;
+			if (fluff._copy || fluff._appendCopy) {
+				handleRecursive(fluff);
 			}
 
 			if (showImages) {
@@ -1072,7 +1089,7 @@ function handleUnknownHash (link, sub) {
 	}
 }
 
-function dcRollerClick (ele, exp) {
+function dcRollerClick (event, ele, exp) {
 	const parsed = EntryRenderer.dice._parse(exp);
 	const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
 	entFormat[0].modifier = parsed.mod;
@@ -1081,7 +1098,7 @@ function dcRollerClick (ele, exp) {
 		rollable: true,
 		toRoll: entFormat
 	};
-	EntryRenderer.dice.rollerClick(ele, JSON.stringify(it));
+	EntryRenderer.dice.rollerClick(event, ele, JSON.stringify(it));
 }
 
 function loadsub (sub) {

@@ -2,7 +2,7 @@ const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
-const re = /{@(spell|item|class|creature|condition|disease|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard|deity) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
+const re = /{@(spell|item|class|creature|condition|disease|background|race|invocation|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -23,7 +23,8 @@ const TAG_TO_PAGE = {
 	"boon": UrlUtil.PG_CULTS_BOONS,
 	"trap": UrlUtil.PG_TRAPS_HAZARDS,
 	"hazard": UrlUtil.PG_TRAPS_HAZARDS,
-	"deity": UrlUtil.PG_DEITIES
+	"deity": UrlUtil.PG_DEITIES,
+	"variantrule": UrlUtil.PG_VARIATNRULES
 };
 
 const TAG_TO_DEFAULT_SOURCE = {
@@ -44,7 +45,8 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"boon": "mtf",
 	"trap": "dmg",
 	"hazard": "dmg",
-	"deity": "phb"
+	"deity": "phb",
+	"variantrule": "dmg"
 };
 
 function recursiveCheck (file) {

@@ -342,7 +342,7 @@ class HashLoad {
 				});
 				if (feature.type !== "inset") featureLinks.push(featureLink);
 
-				const styleClasses = [CLSS_CLASS_FEATURE];
+				const styleClasses = [CLSS_CLASS_FEATURE, "linked-titles--classes"];
 				if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
 
 				renderer.recursiveEntryRender(feature, renderStack, 0, {prefix: `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
@@ -858,7 +858,7 @@ class SubClassLoader {
 		$(`.${CLSS_FEATURE_LINK}`).each(
 			function () {
 				const $this = $(this);
-				this.href = SubClassLoader.getFeatureLink(ATB_DATA_FEATURE_LINK);
+				this.href = SubClassLoader.getFeatureLink($this.attr(ATB_DATA_FEATURE_LINK));
 			}
 		)
 	}
@@ -934,7 +934,7 @@ class SubClassLoader {
 					if (!$e.is(":visible")) return;
 					const idTr = $e.closest(`tr[id]`);
 					const pTr = $e.closest(`tr`);
-					const textNodes = $e.contents().filter(function () {
+					const textNodes = $e.find(`.entry-title-inner`).contents().filter(function () {
 						return this.nodeType === 3;
 					});
 					if (!textNodes.length) return;
@@ -1148,6 +1148,19 @@ ClassBookView._$wrpBook = null;
 ClassBookView._$bkTbl = null;
 ClassBookView._$scToggles = {};
 
+function initLinkGrabbers () {
+	$(`body`).on(`click`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, function () {
+		const $this = $(this);
+		const fTag = $this.closest(`tr`).attr("id");
+
+		const hash = `${window.location.hash.slice(1).split(HASH_PART_SEP)
+			.filter(it => !it.startsWith(HASH_FEATURE)).join(HASH_PART_SEP)}${HASH_PART_SEP}${fTag}`;
+
+		copyText(`${window.location.href.split("#")[0]}#${hash}`);
+		showCopiedEffect($this);
+	});
+}
+
 const renderer = EntryRenderer.getDefaultRenderer();
 
 const sourceFilter = new Filter({
@@ -1173,6 +1186,7 @@ BrewUtil.makeBrewButton("manage-brew");
 BrewUtil.bind({list: ClassList.classList, filterBox, sourceFilter});
 
 initCompareMode();
+initLinkGrabbers();
 ClassBookView.initButton();
 ExcludeUtil.initialise();
 

@@ -27,6 +27,7 @@ function EntryRenderer () {
 	this._headerIndex = 1;
 	this._tagExportDict = null;
 	this._roll20Ids = null;
+	this._enumerateTitlesRel = {enabled: false, titles: {}};
 
 	/**
 	 * Set the tag used to group rendered elements
@@ -61,6 +62,7 @@ function EntryRenderer () {
 	 */
 	this.resetHeaderIndex = function () {
 		this._headerIndex = 1;
+		this._enumerateTitlesRel.titles = {};
 		return this;
 	};
 
@@ -96,6 +98,23 @@ function EntryRenderer () {
 		this._roll20Ids = null;
 	};
 
+	/**
+	 * If enabled, titles with the same name will be given numerical identifiers.
+	 * This identifier is stored in `data-title-relative-index`
+	 */
+	this.setEnumerateTitlesRel = function (bool) {
+		this._enumerateTitlesRel.enabled = bool;
+		return this;
+	};
+
+	this._getEnumeratedTitleRel = function (name) {
+		if (this._enumerateTitlesRel.enabled && name) {
+			const clean = name.toLowerCase();
+			this._enumerateTitlesRel.titles[clean] = this._enumerateTitlesRel.titles[clean] || 0;
+			return `data-title-relative-index="${this._enumerateTitlesRel.titles[clean]++}"`;
+		} else return "";
+	};
+
 	// TODO provide a Roll20 mode (expose list of found monsters/etc to be imported; add links to these)
 	// TODO general conditional rendering function -- make use of "data" property (see backgrounds JSON + backgrounds hover render)
 	//      - can be used to clean up R20 script Subclass rendering when implemented
@@ -113,6 +132,18 @@ function EntryRenderer () {
 	 *          .forcePrefixSuffix force the prefix and suffix to be added (useful for the first call from external code)
 	 */
 	this.recursiveEntryRender = function (entry, textStack, depth, options) {
+		// respect the API of the original, but set up for using string concatenations
+		if (textStack.length === 0) textStack[0] = "";
+		else textStack.reverse();
+		this._recursiveEntryRender(entry, textStack, depth, options);
+		textStack.reverse();
+	};
+
+	/**
+	 * Inner rendering code. Uses string concatenation instead of an array stack, for ~2x the speed.
+	 * @private
+	 */
+	this._recursiveEntryRender = function (entry, textStack, depth, options) {
 		depth = depth === undefined || depth === null ? 0 : depth;
 		if (entry.type === "section") depth = -1;
 		// process options
@@ -135,63 +166,63 @@ function EntryRenderer () {
 					break;
 				case "list":
 					if (entry.items) {
-						if (entry.name) textStack.push(`<p class="list-name">${entry.name}</p>`);
-						textStack.push(`<ul ${entry.style ? `class="${entry.style}"` : ""}>`);
+						if (entry.name) textStack[0] += `<p class="list-name">${entry.name}</p>`;
+						textStack[0] += `<ul ${entry.style ? `class="${entry.style}"` : ""}>`;
 						for (let i = 0; i < entry.items.length; i++) {
 							const style = getLiStyleClass(entry.items[i]);
-							this.recursiveEntryRender(entry.items[i], textStack, depth + 1, {prefix: `<li ${style ? `class="${style}"` : ""}>`, suffix: "</li>"});
+							this._recursiveEntryRender(entry.items[i], textStack, depth + 1, {prefix: `<li ${style ? `class="${style}"` : ""}>`, suffix: "</li>"});
 						}
-						textStack.push("</ul>");
+						textStack[0] += "</ul>";
 					}
 					break;
 				case "table":
 					renderTable(this);
 					break;
 				case "inset":
-					textStack.push(`<${this.wrapperTag} class="statsBlockInset">`);
-					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title" data-title-index="${this._headerIndex++}">${entry.name}</span>`);
+					textStack[0] += `<${this.wrapperTag} class="statsBlockInset">`;
+					if (typeof entry.name !== 'undefined') textStack[0] += `<span class="entry-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
 					for (let i = 0; i < entry.entries.length; i++) {
-						this.recursiveEntryRender(entry.entries[i], textStack, 2, {prefix: "<p>", suffix: "</p>"});
+						this._recursiveEntryRender(entry.entries[i], textStack, 2, {prefix: "<p>", suffix: "</p>"});
 					}
-					textStack.push(`</${this.wrapperTag}>`);
+					textStack[0] += `</${this.wrapperTag}>`;
 					break;
 				case "insetReadaloud":
-					textStack.push(`<${this.wrapperTag} class="statsBlockInsetReadaloud">`);
-					if (typeof entry.name !== 'undefined') textStack.push(`<span class="entry-title" data-title-index="${this._headerIndex++}">${entry.name}</span>`);
+					textStack[0] += `<${this.wrapperTag} class="statsBlockInsetReadaloud">`;
+					if (typeof entry.name !== 'undefined') textStack[0] += `<span class="entry-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
 					for (let i = 0; i < entry.entries.length; i++) {
-						this.recursiveEntryRender(entry.entries[i], textStack, 2, {prefix: "<p>", suffix: "</p>"});
+						this._recursiveEntryRender(entry.entries[i], textStack, 2, {prefix: "<p>", suffix: "</p>"});
 					}
-					textStack.push(`</${this.wrapperTag}>`);
+					textStack[0] += `</${this.wrapperTag}>`;
 					break;
 				case "variant":
-					textStack.push(`<${this.wrapperTag} class="statsBlockInset">`);
-					textStack.push(`<span class="entry-title" data-title-index="${this._headerIndex++}">Variant: ${entry.name}</span>`);
+					textStack[0] += `<${this.wrapperTag} class="statsBlockInset">`;
+					textStack[0] += `<span class="entry-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">Variant: ${entry.name}</span></span>`;
 					for (let i = 0; i < entry.entries.length; i++) {
-						this.recursiveEntryRender(entry.entries[i], textStack, 2, {prefix: "<p>", suffix: "</p>"});
+						this._recursiveEntryRender(entry.entries[i], textStack, 2, {prefix: "<p>", suffix: "</p>"});
 					}
 					if (entry.variantSource) {
-						textStack.push(EntryRenderer.utils._getPageTrText(entry.variantSource));
+						textStack[0] += EntryRenderer.utils._getPageTrText(entry.variantSource);
 					}
-					textStack.push(`</${this.wrapperTag}>`);
+					textStack[0] += `</${this.wrapperTag}>`;
 					break;
 				case "variantSub": {
 					// pretend this is an inline-header'd entry, but set a flag so we know not to add bold
 					this._subVariant = true;
 					const fauxEntry = entry;
 					fauxEntry.type = "entries";
-					this.recursiveEntryRender(fauxEntry, textStack, 2, {prefix: "<p>", suffix: "</p>"});
+					this._recursiveEntryRender(fauxEntry, textStack, 2, {prefix: "<p>", suffix: "</p>"});
 					this._subVariant = false;
 					break;
 				}
 				case "quote":
-					textStack.push(`<p><i>`);
+					textStack[0] += `<p><i>`;
 					for (let i = 0; i < entry.entries.length; i++) {
-						this.recursiveEntryRender(entry.entries[i], textStack);
-						if (i !== entry.entries.length - 1) textStack.push(`<br>`);
-						else textStack.push(`</i>`);
+						this._recursiveEntryRender(entry.entries[i], textStack);
+						if (i !== entry.entries.length - 1) textStack[0] += `<br>`;
+						else textStack[0] += `</i>`;
 					}
-					textStack.push(`<span class="quote-by">\u2014 ${entry.by}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`);
-					textStack.push(`</p>`);
+					if (entry.by) textStack[0] += `<span class="quote-by">\u2014 ${entry.by}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`;
+					textStack[0] += `</p>`;
 					break;
 
 				case "invocation":
@@ -204,17 +235,17 @@ function EntryRenderer () {
 				// block
 				case "abilityDc":
 					renderPrefix();
-					textStack.push(`<span class='ability-block'><span>${entry.name} save DC</span> = 8 + your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
+					textStack[0] += `<span class='ability-block'><span>${entry.name} save DC</span> = 8 + your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`;
 					renderSuffix();
 					break;
 				case "abilityAttackMod":
 					renderPrefix();
-					textStack.push(`<span class='ability-block'><span>${entry.name} attack modifier</span> = your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`);
+					textStack[0] += `<span class='ability-block'><span>${entry.name} attack modifier</span> = your proficiency bonus + your ${utils_makeAttChoose(entry.attributes)}</span>`;
 					renderSuffix();
 					break;
 				case "abilityGeneric":
 					renderPrefix();
-					textStack.push(`<span class='ability-block'>${entry.name ? `<span>${entry.name}</span>  = ` : ""}${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`);
+					textStack[0] += `<span class='ability-block'>${entry.name ? `<span>${entry.name}</span>  = ` : ""}${entry.text}${entry.attributes ? ` ${utils_makeAttChoose(entry.attributes)}` : ""}</span>`;
 					renderSuffix();
 					break;
 
@@ -222,7 +253,7 @@ function EntryRenderer () {
 				case "inline":
 					if (entry.entries) {
 						for (let i = 0; i < entry.entries.length; i++) {
-							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+							this._recursiveEntryRender(entry.entries[i], textStack, depth);
 						}
 					}
 					break;
@@ -230,41 +261,41 @@ function EntryRenderer () {
 					renderPrefix();
 					if (entry.entries) {
 						for (let i = 0; i < entry.entries.length; i++) {
-							this.recursiveEntryRender(entry.entries[i], textStack, depth);
+							this._recursiveEntryRender(entry.entries[i], textStack, depth);
 						}
 					}
 					renderSuffix();
 					break;
 				case "bonus":
-					textStack.push((entry.value < 0 ? "" : "+") + entry.value);
+					textStack[0] += (entry.value < 0 ? "" : "+") + entry.value;
 					break;
 				case "bonusSpeed":
-					textStack.push((entry.value < 0 ? "" : "+") + entry.value + "ft.");
+					textStack[0] += (entry.value < 0 ? "" : "+") + entry.value + "ft.";
 					break;
 				case "dice":
-					textStack.push(EntryRenderer.getEntryDice(entry, entry.name));
+					textStack[0] += EntryRenderer.getEntryDice(entry, entry.name);
 					break;
 				case "link":
-					textStack.push(this.renderLink(this, entry));
+					textStack[0] += this.renderLink(this, entry);
 					break;
 
 				case "actions":
-					textStack.push(`<${this.wrapperTag} class="${EntryRenderer.HEAD_2}"><span class="entry-title" data-title-index="${this._headerIndex++}">${entry.name}.</span> `);
+					textStack[0] += `<${this.wrapperTag} class="${EntryRenderer.HEAD_2}"><span class="entry-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}.</span></span> `;
 					for (let i = 0; i < entry.entries.length; i++) {
-						this.recursiveEntryRender(entry.entries[i], textStack, depth, {prefix: "<p>", suffix: "</p>"});
+						this._recursiveEntryRender(entry.entries[i], textStack, depth, {prefix: "<p>", suffix: "</p>"});
 					}
-					textStack.push(`</${this.wrapperTag}>`);
+					textStack[0] += `</${this.wrapperTag}>`;
 					break;
 
 				case "attack":
 					renderPrefix();
-					textStack.push(`<i>${Parser.attackTypeToFull(entry.attackType)}:</i> `);
+					textStack[0] += `<i>${Parser.attackTypeToFull(entry.attackType)}:</i> `;
 					for (let i = 0; i < entry.attackEntries.length; i++) {
-						this.recursiveEntryRender(entry.attackEntries[i], textStack, depth);
+						this._recursiveEntryRender(entry.attackEntries[i], textStack, depth);
 					}
-					textStack.push(` <i>Hit:</i> `);
+					textStack[0] += ` <i>Hit:</i> `;
 					for (let i = 0; i < entry.hitEntries.length; i++) {
-						this.recursiveEntryRender(entry.hitEntries[i], textStack, depth);
+						this._recursiveEntryRender(entry.hitEntries[i], textStack, depth);
 					}
 					renderSuffix();
 					break;
@@ -272,56 +303,56 @@ function EntryRenderer () {
 				// list items
 				case "item":
 					renderPrefix();
-					textStack.push(`<p><span class="bold list-item-title">${entry.name}</span> `);
-					if (entry.entry) this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: "", suffix: ""});
-					else if (entry.entries) entry.entries.forEach((nxt, i) => this.recursiveEntryRender(nxt, textStack, depth, {prefix: i > 0 ? `<span class="para-continue-indented">` : "", suffix: i > 0 ? "</span>" : ""}));
-					textStack.push("</p>");
+					textStack[0] += `<p><span class="bold list-item-title">${entry.name}</span> `;
+					if (entry.entry) this._recursiveEntryRender(entry.entry, textStack, depth, {prefix: "", suffix: ""});
+					else if (entry.entries) entry.entries.forEach((nxt, i) => this._recursiveEntryRender(nxt, textStack, depth, {prefix: i > 0 ? `<span class="para-continue-indented">` : "", suffix: i > 0 ? "</span>" : ""}));
+					textStack[0] += "</p>";
 					renderSuffix();
 					break;
 				case "itemSub":
 					renderPrefix();
-					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p><span class="italic list-item-title">${entry.name}</span> `, suffix: "</p>"});
+					this._recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p><span class="italic list-item-title">${entry.name}</span> `, suffix: "</p>"});
 					renderSuffix();
 					break;
 				case "itemSpell":
 					renderPrefix();
-					this.recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p>${entry.name} `, suffix: "</p>"});
+					this._recursiveEntryRender(entry.entry, textStack, depth, {prefix: `<p>${entry.name} `, suffix: "</p>"});
 					renderSuffix();
 					break;
 
 				// entire data records
 				case "dataCreature":
 					renderPrefix();
-					textStack.push(`<table class="statsDataInset">`);
-					textStack.push(`<thead><tr><th class="dataCreature__header" colspan="6" onclick="((ele) => {
+					textStack[0] += `<table class="statsDataInset">`;
+					textStack[0] += `<thead><tr><th class="dataCreature__header" colspan="6" onclick="((ele) => {
 						$(ele).find('.dataCreature__name').toggle(); 
 						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
 						$(ele).closest('table').find('tbody').toggle()
 					})(this)">
 						<span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span>
 						<span class="dataCreature__showHide">[\u2013]</span>
-					</th></tr></thead><tbody>`);
-					textStack.push(EntryRenderer.monster.getCompactRenderedString(entry.dataCreature, this));
-					textStack.push(`</tbody></table>`);
+					</th></tr></thead><tbody>`;
+					textStack[0] += EntryRenderer.monster.getCompactRenderedString(entry.dataCreature, this);
+					textStack[0] += `</tbody></table>`;
 					renderSuffix();
 					break;
 
 				// images
 				case "image": {
 					renderPrefix();
-					if (entry.title) textStack.push(`<div class="img-title">${entry.title}</div>`);
+					if (entry.title) textStack[0] += `<div class="img-title">${entry.title}</div>`;
 					let href;
 					if (entry.href.type === "internal") {
 						const imgPart = `img/${entry.href.path}`;
 						href = this.baseUrl !== "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
 					}
-					textStack.push(`
+					textStack[0] += `
 						<div class="img-wrapper">
 						<a href="${href}" target='_blank' ${entry.title ? `title="${entry.title}"` : ""}>
 							<img src="${href}" onload="EntryRenderer._onImgLoad()">
 						</a>
 						</div>
-					`);
+					`;
 					renderSuffix();
 					break;
 				}
@@ -329,7 +360,7 @@ function EntryRenderer () {
 				// homebrew changes
 				case "homebrew": {
 					renderPrefix();
-					textStack.push(`<div class="homebrew-section">`);
+					textStack[0] += `<div class="homebrew-section">`;
 					if (entry.oldEntries) {
 						const mouseOver = EntryRenderer.hover.createOnMouseHover(entry.oldEntries);
 						let markerText;
@@ -340,22 +371,22 @@ function EntryRenderer () {
 						} else {
 							markerText = "(See removed content)";
 						}
-						textStack.push(`<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>
+						textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>
 								${markerText}
-							</span>`);
+							</span>`;
 					}
 
-					textStack.push(`<span class="homebrew-notice"></span>`);
+					textStack[0] += `<span class="homebrew-notice"></span>`;
 
 					if (entry.entries) {
-						entry.entries.forEach(nxt => this.recursiveEntryRender(nxt, textStack, depth));
+						entry.entries.forEach(nxt => this._recursiveEntryRender(nxt, textStack, depth));
 					} else if (entry.movedTo) {
-						textStack.push(`<i>This content has been moved to ${entry.movedTo}.</i>`);
+						textStack[0] += `<i>This content has been moved to ${entry.movedTo}.</i>`;
 					} else {
-						textStack.push("<i>This content has been deleted.</i>");
+						textStack[0] += "<i>This content has been deleted.</i>";
 					}
 
-					textStack.push(`</div>`);
+					textStack[0] += `</div>`;
 					renderSuffix();
 					break;
 				}
@@ -367,33 +398,33 @@ function EntryRenderer () {
 		} else { // block
 			// for ints or any other types which do not require specific rendering
 			renderPrefix();
-			textStack.push(entry);
+			textStack[0] += entry;
 			renderSuffix();
 		}
 		if (forcePrefixSuffix) renderSuffix();
 
 		function renderPrefix () {
 			if (prefix !== null) {
-				textStack.push(prefix);
+				textStack[0] += prefix;
 			}
 		}
 
 		function renderSuffix () {
 			if (suffix !== null) {
-				textStack.push(suffix);
+				textStack[0] += suffix;
 			}
 		}
 
 		function renderTable (self) {
 			// TODO add handling for rowLabel property
 
-			textStack.push(`<table class="striped-odd">`);
+			textStack[0] += `<table class="striped-odd">`;
 
 			if (entry.caption !== undefined) {
-				textStack.push(`<caption>${entry.caption}</caption>`);
+				textStack[0] += `<caption>${entry.caption}</caption>`;
 			}
-			textStack.push("<thead>");
-			textStack.push("<tr>");
+			textStack[0] += "<thead>";
+			textStack[0] += "<tr>";
 
 			let autoMkRoller = false;
 			if (entry.colLabels) {
@@ -411,18 +442,18 @@ function EntryRenderer () {
 				}
 
 				for (let i = 0; i < entry.colLabels.length; ++i) {
-					textStack.push(`<th ${getTableThClassText(i)}>`);
-					self.recursiveEntryRender(autoMkRoller && i === 0 && !entry.colLabels[i].includes("@dice") ? `{@dice ${entry.colLabels[i]}}` : entry.colLabels[i], textStack, depth);
-					textStack.push(`</th>`);
+					textStack[0] += `<th ${getTableThClassText(i)}>`;
+					self._recursiveEntryRender(autoMkRoller && i === 0 && !entry.colLabels[i].includes("@dice") ? `{@dice ${entry.colLabels[i]}}` : entry.colLabels[i], textStack, depth);
+					textStack[0] += `</th>`;
 				}
 			}
 
-			textStack.push("</tr>");
-			textStack.push("</thead>");
-			textStack.push("<tbody>");
+			textStack[0] += "</tr>";
+			textStack[0] += "</thead>";
+			textStack[0] += "<tbody>";
 
 			for (let i = 0; i < entry.rows.length; ++i) {
-				textStack.push("<tr>");
+				textStack[0] += "<tr>";
 				const r = entry.rows[i];
 				let roRender = r.type === "row" ? r.row : r;
 				for (let j = 0; j < roRender.length; ++j) {
@@ -466,25 +497,25 @@ function EntryRenderer () {
 					} else {
 						toRenderCell = roRender[j];
 					}
-					textStack.push(`<td ${makeTableTdClassText(j)} ${getCellDataStr(roRender[j])} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`);
-					if (r.style === "row-indent-first" && j === 0) textStack.push(`<span class="tbl-tab-intent"/>`);
-					self.recursiveEntryRender(toRenderCell, textStack, depth + 1);
-					textStack.push("</td>");
+					textStack[0] += `<td ${makeTableTdClassText(j)} ${getCellDataStr(roRender[j])} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`;
+					if (r.style === "row-indent-first" && j === 0) textStack[0] += `<span class="tbl-tab-intent"/>`;
+					self._recursiveEntryRender(toRenderCell, textStack, depth + 1);
+					textStack[0] += "</td>";
 				}
-				textStack.push("</tr>");
+				textStack[0] += "</tr>";
 			}
 
-			textStack.push("</tbody>");
+			textStack[0] += "</tbody>";
 			if (entry.footnotes !== undefined) {
-				textStack.push("<tfoot>");
+				textStack[0] += "<tfoot>";
 				for (let i = 0; i < entry.footnotes.length; ++i) {
-					textStack.push(`<tr><td colspan="99">`);
-					self.recursiveEntryRender(entry.footnotes[i], textStack, depth + 1);
-					textStack.push("</td></tr>");
+					textStack[0] += `<tr><td colspan="99">`;
+					self._recursiveEntryRender(entry.footnotes[i], textStack, depth + 1);
+					textStack[0] += "</td></tr>";
 				}
-				textStack.push("</tfoot>");
+				textStack[0] += "</tfoot>";
 			}
-			textStack.push("</table>");
+			textStack[0] += "</table>";
 
 			function getCellDataStr (ent) {
 				function convertZeros (num) {
@@ -535,23 +566,23 @@ function EntryRenderer () {
 			const styleString = getStyleString();
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
-			const headerSpan = entry.name !== undefined ? `<span class="entry-title" data-title-index="${self._headerIndex++}">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span> ` : "";
+			const headerSpan = entry.name !== undefined ? `<span class="entry-title" data-title-index="${self._headerIndex++}" ${self._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span></span> ` : "";
 
 			if (depth === -1) {
 				if (!self._firstSection) {
-					textStack.push(`<hr class="section-break">`);
+					textStack[0] += `<hr class="section-break">`;
 				}
 				self._firstSection = false;
 			}
 
 			if (entry.entries || entry.name) {
-				textStack.push(`<${self.wrapperTag} ${dataString} ${styleString}>${headerSpan}${preReqText}`);
+				textStack[0] += `<${self.wrapperTag} ${dataString} ${styleString}>${headerSpan}${preReqText}`;
 				if (entry.entries) {
 					for (let i = 0; i < entry.entries.length; i++) {
-						self.recursiveEntryRender(entry.entries[i], textStack, nextDepth, {prefix: "<p>", suffix: "</p>"});
+						self._recursiveEntryRender(entry.entries[i], textStack, nextDepth, {prefix: "<p>", suffix: "</p>"});
 					}
 				}
-				textStack.push(`</${self.wrapperTag}>`);
+				textStack[0] += `</${self.wrapperTag}>`;
 			}
 
 			function getStyleString () {
@@ -578,7 +609,7 @@ function EntryRenderer () {
 			function getPreReqText (self) {
 				if (entry.prerequisite) {
 					const tempStack = [];
-					self.recursiveEntryRender({type: "inline", entries: [entry.prerequisite]}, tempStack);
+					self._recursiveEntryRender({type: "inline", entries: [entry.prerequisite]}, tempStack);
 					return `<span class="prerequisite">Prerequisite: ${tempStack.join("")}</span>`;
 				}
 				return "";
@@ -604,39 +635,43 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@skill" || tag === "@action") {
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@skill" || tag === "@action" || tag === "@atk") {
 						switch (tag) {
 							case "@b":
 							case "@bold":
-								textStack.push(`<b>`);
-								self.recursiveEntryRender(text, textStack, depth);
-								textStack.push(`</b>`);
+								textStack[0] += `<b>`;
+								self._recursiveEntryRender(text, textStack, depth);
+								textStack[0] += `</b>`;
 								break;
 							case "@i":
 							case "@italic":
-								textStack.push(`<i>`);
-								self.recursiveEntryRender(text, textStack, depth);
-								textStack.push(`</i>`);
+								textStack[0] += `<i>`;
+								self._recursiveEntryRender(text, textStack, depth);
+								textStack[0] += `</i>`;
 								break;
 							case "@s":
 							case "@strike":
-								textStack.push(`<s>`);
-								self.recursiveEntryRender(text, textStack, depth);
-								textStack.push(`</s>`);
+								textStack[0] += `<s>`;
+								self._recursiveEntryRender(text, textStack, depth);
+								textStack[0] += `</s>`;
 								break;
 							case "@note":
-								textStack.push(`<i class="text-muted">`);
-								self.recursiveEntryRender(text, textStack, depth);
-								textStack.push(`</i>`);
+								textStack[0] += `<i class="text-muted">`;
+								self._recursiveEntryRender(text, textStack, depth);
+								textStack[0] += `</i>`;
 								break;
 							case "@action": // Convert this to a tag once the rules data are more navigable
-								textStack.push(`<span title="${Parser.actionToExplanation(text)}" class="explanation">${text}</span>`);
+								textStack[0] += `<span title="${Parser.actionToExplanation(text)}" class="explanation">${text}</span>`;
 								break;
 							case "@skill": // Convert this to a tag once the rules data are more navigable
-								textStack.push(`<span title="${Parser.skillToExplanation(text)}" class="explanation">${text}</span>`);
+								textStack[0] += `<span title="${Parser.skillToExplanation(text)}" class="explanation">${text}</span>`;
 								break;
+							case "@atk": {
+								textStack[0] += `<i>${EntryRenderer.attackTagToFull(text)}</i>`;
+								break;
+							}
 						}
-					} else if (tag === "@dice" || tag === "@hit" || tag === "@chance") {
+					} else if (tag === "@dice" || tag === "@hit" || tag === "@chance" || tag === "@recharge") {
 						const fauxEntry = {
 							type: "dice",
 							rollable: true
@@ -669,7 +704,7 @@ function EntryRenderer () {
 								}
 
 								fauxEntry.toRoll = toRoll;
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
 							case "@hit": {
@@ -682,11 +717,11 @@ function EntryRenderer () {
 										hideDice: true
 									}
 								];
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
 							case "@chance": {
-								// format: {@chance 25|25 percent|25% summoning chance}
+								// format: {@chance 25|display text|rollbox rollee name}
 								fauxEntry.toRoll = [
 									{
 										number: 1,
@@ -694,7 +729,24 @@ function EntryRenderer () {
 									}
 								];
 								fauxEntry.successThresh = Number(rollText);
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
+							case "@recharge": {
+								// format: {@recharge 4}
+								fauxEntry.toRoll = [
+									{
+										number: 1,
+										faces: 6
+									}
+								];
+								const asNum = Number(rollText || 6);
+								fauxEntry.successThresh = 7 - asNum;
+								fauxEntry.successMax = 6;
+								textStack[0] += `(Recharge `;
+								fauxEntry.displayText = `${asNum}${asNum < 6 ? `\u20136` : ""}`;
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
+								textStack[0] += `)`;
 								break;
 							}
 						}
@@ -718,18 +770,20 @@ function EntryRenderer () {
 								})
 							}
 						};
-						self.recursiveEntryRender(fauxEntry, textStack, depth);
+						self._recursiveEntryRender(fauxEntry, textStack, depth);
 					} else if (tag === "@link") {
 						const [displayText, url] = text.split("|");
+						let outUrl = url == null ? displayText : url;
+						if (!outUrl.startsWith("http")) outUrl = `http://${outUrl}`; // avoid HTTPS, as the D&D homepage doesn't support it
 						const fauxEntry = {
 							type: "link",
 							href: {
 								type: "external",
-								url: url
+								url: outUrl
 							},
 							text: displayText
 						};
-						self.recursiveEntryRender(fauxEntry, textStack, depth);
+						self._recursiveEntryRender(fauxEntry, textStack, depth);
 					} else if (tag === "@5etools") {
 						const [displayText, page, hash] = text.split("|");
 						const fauxEntry = {
@@ -744,22 +798,23 @@ function EntryRenderer () {
 							fauxEntry.hash = hash;
 							fauxEntry.hashPreEncoded = true;
 						}
-						self.recursiveEntryRender(fauxEntry, textStack, depth);
-					} else if (tag === "@book") {
-						// format: {@book Display Text|DMG< |chapter< |section > >}
-						const [displayText, book, chapter, section] = text.split("|");
-						const hash = `${book}${chapter ? `${HASH_PART_SEP}${chapter}${section ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(section)}` : ""}` : ""}`;
+						self._recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@book" || tag === "@adventure") {
+						// format: {@tag Display Text|DMG< |chapter< |section >< |number > >}
+						const page = tag === "@book" ? "book.html" : "adventure.html";
+						const [displayText, book, chapter, section, number] = text.split("|");
+						const hash = `${book}${chapter ? `${HASH_PART_SEP}${chapter}${section ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(section)}${number != null ? `${HASH_PART_SEP}${UrlUtil.encodeForHash(number)}` : ""}` : ""}` : ""}`;
 						const fauxEntry = {
 							type: "link",
 							href: {
 								type: "internal",
-								path: "book.html",
+								path: page,
 								hash,
 								hashPreEncoded: true
 							},
 							text: displayText
 						};
-						self.recursiveEntryRender(fauxEntry, textStack, depth);
+						self._recursiveEntryRender(fauxEntry, textStack, depth);
 					} else if (tag === "@homebrew") {
 						const [newText, oldText] = text.split("|");
 						const tooltip = [];
@@ -774,7 +829,7 @@ function EntryRenderer () {
 							tooltip.push(oldText);
 						}
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(tooltip);
-						textStack.push(`<span class="homebrew-inline" ${onMouseOver}>${newText || "[...]"}</span>`);
+						textStack[0] += `<span class="homebrew-inline" ${onMouseOver}>${newText || "[...]"}</span>`;
 					} else if (tag === "@deity") {
 						const [name, pantheon, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${pantheon ? `${HASH_LIST_SEP}${pantheon}` : ""}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -795,7 +850,7 @@ function EntryRenderer () {
 							page: UrlUtil.PG_DEITIES,
 							source: source || SRC_PHB
 						};
-						self.recursiveEntryRender(fauxEntry, textStack, depth);
+						self._recursiveEntryRender(fauxEntry, textStack, depth);
 					} else {
 						const [name, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -816,7 +871,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_SPELLS,
 									source: source || SRC_PHB
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@item":
 								fauxEntry.href.path = "items.html";
@@ -825,7 +880,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_ITEMS,
 									source: source || SRC_DMG
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@class": {
 								if (others.length) {
@@ -840,7 +895,7 @@ function EntryRenderer () {
 								}
 								fauxEntry.href.path = "classes.html";
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
 							case "@creature":
@@ -850,7 +905,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_BESTIARY,
 									source: source || SRC_MM
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@condition":
 								fauxEntry.href.path = "conditionsdiseases.html";
@@ -859,7 +914,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_CONDITIONS_DISEASES,
 									source: source || SRC_PHB
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@disease":
 								fauxEntry.href.path = "conditionsdiseases.html";
@@ -868,7 +923,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_CONDITIONS_DISEASES,
 									source: source || SRC_DMG
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@background":
 								fauxEntry.href.path = "backgrounds.html";
@@ -877,7 +932,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_BACKGROUNDS,
 									source: source || SRC_PHB
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@race":
 								fauxEntry.href.path = "races.html";
@@ -886,7 +941,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_RACES,
 									source: source || SRC_PHB
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@invocation":
 								fauxEntry.href.path = "invocations.html";
@@ -895,7 +950,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_INVOCATIONS,
 									source: source || SRC_PHB
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@reward":
 								fauxEntry.href.path = "rewards.html";
@@ -904,7 +959,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_REWARDS,
 									source: source || SRC_DMG
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@feat":
 								fauxEntry.href.path = "feats.html";
@@ -913,7 +968,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_FEATS,
 									source: source || SRC_PHB
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@psionic":
 								fauxEntry.href.path = "psionics.html";
@@ -922,7 +977,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_PSIONICS,
 									source: source || SRC_UATMC
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@object":
 								fauxEntry.href.path = "objects.html";
@@ -931,7 +986,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_OBJECTS,
 									source: source || SRC_DMG
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@boon":
 							case "@cult":
@@ -941,7 +996,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_CULTS_BOONS,
 									source: source || SRC_MTF
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@trap":
 							case "@hazard":
@@ -951,7 +1006,7 @@ function EntryRenderer () {
 									page: UrlUtil.PG_TRAPS_HAZARDS,
 									source: source || SRC_DMG
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@variantrule":
 								fauxEntry.href.path = "variantrules.html";
@@ -960,13 +1015,11 @@ function EntryRenderer () {
 									page: UrlUtil.PG_VARIATNRULES,
 									source: source || SRC_DMG
 								};
-								self.recursiveEntryRender(fauxEntry, textStack, depth);
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 						}
 					}
-				} else {
-					textStack.push(s);
-				}
+				} else textStack[0] += s;
 			}
 		}
 	};
@@ -1015,7 +1068,7 @@ function EntryRenderer () {
 				href = `http://journal.roll20.net/${id.type}/${id.roll20Id}`;
 			}
 		}
-		return `<a href="${href}" target="_blank" ${getHoverString()}>${entry.text}</a>`;
+		return `<a href="${href}" target="_blank" ${getHoverString()}>${this.renderEntry(entry.text)}</a>`;
 	};
 
 	// TODO convert params to options
@@ -1031,6 +1084,25 @@ function EntryRenderer () {
 		return tempStack.join("");
 	};
 }
+
+EntryRenderer.attackTagToFull = function (tagStr) {
+	function renderTag (tags) {
+		return `${tags.includes("m") ? "Melee " : tags.includes("r") ? "Ranged " : tags.includes("a") ? "Area " : ""}${tags.includes("w") ? "Weapon " : tags.includes("s") ? "Spell " : ""}`;
+	}
+
+	const tagGroups = tagStr.toLowerCase().split(",").map(it => it.trim()).filter(it => it).map(it => it.split(""));
+	if (tagGroups.length > 1) {
+		const seen = new Set(tagGroups.last());
+		for (let i = tagGroups.length - 2; i >= 0; --i) {
+			tagGroups[i] = tagGroups[i].filter(it => {
+				const out = !seen.has(it);
+				seen.add(it);
+				return out;
+			});
+		}
+	}
+	return `${tagGroups.map(it => renderTag(it)).join(" or ")}Attack:`;
+};
 
 EntryRenderer.HOVER_TAG_TO_PAGE = {
 	"spell": UrlUtil.PG_SPELLS,
@@ -1052,10 +1124,8 @@ EntryRenderer.HOVER_TAG_TO_PAGE = {
 };
 
 EntryRenderer.splitFirstSpace = function (string) {
-	return [
-		string.substr(0, string.indexOf(' ')),
-		string.substr(string.indexOf(' ') + 1)
-	];
+	const firstIndex = string.indexOf(" ");
+	return firstIndex === -1 ? [string, ""] : [string.substr(0, firstIndex), string.substr(firstIndex + 1)];
 };
 
 EntryRenderer.splitByTags = function (string) {
@@ -1115,7 +1185,7 @@ EntryRenderer.getEntryDice = function (entry, name) {
 
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
-	if (entry.rollable === true) return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onclick="EntryRenderer.dice.rollerClickUseData(this)" data-packed-dice=${pack(entry)}>${toDisplay}</span>`;
+	if (entry.rollable === true) return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onmousedown="event.preventDefault()" onclick="EntryRenderer.dice.rollerClickUseData(event, this)" data-packed-dice=${pack(entry)}>${toDisplay}</span>`;
 	else return toDisplay;
 };
 
@@ -1461,7 +1531,7 @@ EntryRenderer.spell = {
 			renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Races: </span>${spell.races.map(r => renderer.renderEntry(`{@race ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
 		}
 
-		if (spell.scrollNote) {
+		if (spell._scrollNote) {
 			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
 			renderer.recursiveEntryRender(
 				`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`
@@ -2201,7 +2271,7 @@ EntryRenderer.item = {
 
 		renderStack.push(EntryRenderer.utils.getNameTr(item, true));
 
-		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${item.typeText}${`${item.tier ? `, ${item.tier}` : ""}${item.rarity && item.rarity !== "None" ? `, ${item.rarity}` : ""}`} ${item.reqAttune || ""}</td>`);
+		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${item.typeText === "Other" ? "" : item.typeText}${`${item.tier ? `, ${item.tier}` : ""}${item.rarity && EntryRenderer.item.doRenderRarity(item.rarity) ? `, ${item.rarity}` : ""}`} ${item.reqAttune || ""}</td>`);
 
 		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${Parser.itemWeightToFull(item)}</td><td class="damageproperties" colspan="4">${damage} ${damageType} ${propertiesTxt}</tr>`);
@@ -2215,6 +2285,11 @@ EntryRenderer.item = {
 		}
 
 		return renderStack.join("");
+	},
+
+	_hiddenRarity: new Set(["None", "Unknown", "Unknown (Magic)"]),
+	doRenderRarity (rarity) {
+		return !EntryRenderer.item._hiddenRarity.has(rarity);
 	},
 
 	_builtList: null,
@@ -3435,11 +3510,11 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._$outRoll.scrollTop(1e10);
 	},
 
-	rollerClickUseData (ele) {
+	rollerClickUseData (evt, ele) {
 		const $ele = $(ele);
 		const packed = JSON.stringify($ele.data("packed-dice"));
 		const name = $ele.attr("title");
-		EntryRenderer.dice.rollerClick(ele, packed, name);
+		EntryRenderer.dice.rollerClick(evt, ele, packed, name);
 	},
 
 	__rerollNextInlineResult (ele) {
@@ -3454,7 +3529,7 @@ EntryRenderer.dice = {
 		return EntryRenderer.dice._rollParsed(toRollParsed);
 	},
 
-	rollerClick: (ele, packed, name) => {
+	rollerClick: (evt, ele, packed, name) => {
 		const $ele = $(ele);
 		const entry = JSON.parse(packed);
 		function attemptToGetTitle () {
@@ -3511,18 +3586,27 @@ EntryRenderer.dice = {
 			name: attemptToGetName(),
 			label: name || attemptToGetTitle(ele)
 		};
-		if ($ele.parent().is("th")) {
-			EntryRenderer.dice.rollEntry(
-				entry,
-				rolledBy,
-				getThRoll
-			);
-		} else {
-			EntryRenderer.dice.rollEntry(
-				entry,
-				rolledBy
-			);
+
+		function doRoll () {
+			if ($ele.parent().is("th")) {
+				EntryRenderer.dice.rollEntry(
+					entry,
+					rolledBy,
+					getThRoll
+				);
+			} else {
+				EntryRenderer.dice.rollEntry(
+					entry,
+					rolledBy
+				);
+			}
 		}
+
+		if (evt.shiftKey) { // roll twice on shift
+			EntryRenderer.dice._showMessage("Rolling twice...", rolledBy);
+			doRoll();
+		}
+		doRoll();
 	},
 
 	/**
@@ -3549,7 +3633,8 @@ EntryRenderer.dice = {
 				faces: it.faces
 			})),
 			mod: entry.toRoll.map(it => it.modifier || 0).reduce((a, b) => a + b, 0),
-			successThresh: entry.successThresh
+			successThresh: entry.successThresh,
+			successMax: entry.successMax
 		};
 	},
 
@@ -3568,7 +3653,7 @@ EntryRenderer.dice = {
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
 			const totalPart = toRoll.successThresh
-				? `<span class="roll">${v.total > 100 - toRoll.successThresh ? "success" : "failure"}</span>`
+				? `<span class="roll">${v.total > (toRoll.successMax || 100) - toRoll.successThresh ? "Success!" : "Failure"}</span>`
 				: `<span class="roll ${v.allMax ? "roll-max" : v.allMin ? "roll-min" : ""}">${v.total}</span>`;
 			$out.append(`
 				<div class="out-roll-item" title="${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${v.rolls.map((r, i) => `${r.neg ? "-" : i === 0 ? "" : "+"}(${r.num}d${r.faces}${r.drops ? `d${r.drops}${r.drop}` : ""})`).join("")}${v.modStr}">
@@ -3595,7 +3680,7 @@ EntryRenderer.dice = {
 		EntryRenderer.dice._scrollBottom();
 	},
 
-	_validCommands: new Set(["/clear"]),
+	_validCommands: new Set(["/c", "/clear"]),
 	_handleCommand (com, rolledBy) {
 		EntryRenderer.dice._showMessage(`<span class="out-roll-item-code">${com}</span>`, rolledBy); // parrot the user's command back to them
 		const PREF_MACRO = "/macro";
@@ -3611,7 +3696,7 @@ EntryRenderer.dice = {
 			StorageUtil.set(ROLLER_MACRO_STORAGE, EntryRenderer.dice.storage);
 		}
 
-		if (com === "/help") {
+		if (com === "/help" || com === "/h") {
 			EntryRenderer.dice._showMessage(
 				`Drop highest (<span class="out-roll-item-code">2d4dh1</span>) and lowest (<span class="out-roll-item-code">4d6dl1</span>) are supported.<br>
 				Up and down arrow keys cycle input history.<br>
@@ -3668,6 +3753,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 			}
 		} else if (EntryRenderer.dice._validCommands.has(com)) {
 			switch (com) {
+				case "/c":
 				case "/clear":
 					EntryRenderer.dice._$outRoll.empty();
 					EntryRenderer.dice._$lastRolledBy.empty();

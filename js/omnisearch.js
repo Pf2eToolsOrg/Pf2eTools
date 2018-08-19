@@ -259,6 +259,7 @@ const Omnisearch = {
 			this.addField("s");
 			this.setRef("id");
 		});
+		SearchUtil.removeStemmer(Omnisearch._searchIndex);
 		const addToIndex = (d) => {
 			d.cf = Parser.pageCategoryToFull(d.c);
 			if (!Omnisearch._CATEGORY_COUNTS[d.cf]) Omnisearch._CATEGORY_COUNTS[d.cf] = 1;
