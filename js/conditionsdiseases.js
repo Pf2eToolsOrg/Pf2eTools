@@ -87,7 +87,7 @@ function addConditions (data) {
 				<a id='${cdI}' href='#${UrlUtil.autoEncodeHash(it)}' title="${it.name}">
 					<span class="type col-xs-3 text-align-center">${conditionDiseaseTypeToFull(it._type)}</span>
 					<span class='name col-xs-7'>${it.name}</span>
-					<span class='source col-xs-2 source${it.source}' title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class='source col-xs-2 ${Parser.sourceJsonToColor(it.source)}' title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
 				</a>
 			</li>`;
 

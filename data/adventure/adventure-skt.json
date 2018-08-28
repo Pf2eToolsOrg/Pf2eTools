@@ -10837,7 +10837,33 @@
 					"type": "entries",
 					"name": "Reinforcements",
 					"entries": [
-						"Check to see if reinforcements arrive once during the day and once at night by rolling d100 and consulting the Ironslag Reinforcements table. If reinforcements are indicated, the fire giant leading them utters a command phrase in the Giant tongue that unlocks and opens the adamantine doors to the Vonindod assembly hall (see area 28). These reinforcements remain in the assembly hall until Duke Zalto commands them to go elsewhere. If Duke Zalto isn't around and there's evidence that the foundry has been attacked, the reinforcements begin searching the complex for intruders and survivors."
+						"Check to see if reinforcements arrive once during the day and once at night by rolling d100 and consulting the Ironslag Reinforcements table. If reinforcements are indicated, the fire giant leading them utters a command phrase in the Giant tongue that unlocks and opens the adamantine doors to the Vonindod assembly hall (see area 28). These reinforcements remain in the assembly hall until Duke Zalto commands them to go elsewhere. If Duke Zalto isn't around and there's evidence that the foundry has been attacked, the reinforcements begin searching the complex for intruders and survivors.",
+						{
+							"type": "table",
+							"caption": "Ironslag Reinforcements",
+							"colLabels": [
+								"d100",
+								"Creature(s)"
+							],
+							"colStyles": [
+								"col-xs-2 text-align-center",
+								"col-xs-10"
+							],
+							"rows": [
+								[
+									"01-60",
+									"None"
+								],
+								[
+									"61-85",
+									"1 {@creature fire giant} carrying a {@item rod of the Vonindod|SKT} and a Small fragment of the Vonindod that weighs 150 pounds"
+								],
+								[
+									"86-00",
+									"1 {@creature fire giant} carrying a {@item rod of the Vonindod|SKT} and accompanied by 1 {@creature hobgoblin captain} amd {@dice 3d6} {@creature hobgoblin|mm|hobgoblins} dragging a Huge fragment of the Vonindod that weighs 2,500 pounds"
+								]
+							]
+						}
 					]
 				},
 				{

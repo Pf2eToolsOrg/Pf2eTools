@@ -71,7 +71,11 @@
 					]
 				}
 			],
-			"page": 188
+			"page": 188,
+			"languageTags": [
+				"AU",
+				"OTH"
+			]
 		},
 		{
 			"name": "Augrek Brighthelm",
@@ -152,7 +156,14 @@
 					]
 				}
 			],
-			"page": 247
+			"page": 247,
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Beldora",
@@ -231,7 +242,253 @@
 					]
 				}
 			],
-			"page": 249
+			"page": 249,
+			"languageTags": [
+				"C",
+				"DR",
+				"D",
+				"H"
+			]
+		},
+		{
+			"name": "Chief Guh",
+			"isNPC": true,
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 9,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 160,
+				"formula": "10d12+40"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 21,
+			"dex": 1,
+			"con": 19,
+			"int": 5,
+			"wis": 9,
+			"cha": 6,
+			"skill": {
+				"perception": "+2"
+			},
+			"passive": 12,
+			"languages": "Common, Giant, Goblin",
+			"cr": "5",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giant makes two greatclub attacks or two unarmed attacks."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 18 ({@dice 3d8+5}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Unarmed Attack",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 12 ({@dice 3d4+5}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 8} to hit, range 60/240 ft., one target. Hit: 21 ({@dice 3d10+5}) bludgeoning damage."
+					]
+				}
+			],
+			"page": 140,
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI",
+				"GO"
+			]
+		},
+		{
+			"name": "Countess Sansuri",
+			"isNPC": true,
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 200,
+				"formula": "16d12+96"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 27,
+			"dex": 10,
+			"con": 22,
+			"int": 16,
+			"wis": 16,
+			"cha": 16,
+			"save": {
+				"con": "+10",
+				"wis": "+7",
+				"cha": "+7"
+			},
+			"skill": {
+				"insight": "+7",
+				"perception": "+7"
+			},
+			"passive": 17,
+			"languages": "Auran, Common, and Giant",
+			"cr": "11",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"Sansuri has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Fling",
+					"entries": [
+						"Sansuri tries to throw a Small or Medium creature within 10 feet of her. The target must succeed on a DC 20 Dexterity saving throw or be hurled up to 60 feet horizontally in a direction of Sansuri's choice and land {@condition prone}, taking {@dice 1d8} bludgeoning damage for every 10 feet it was thrown."
+					]
+				},
+				{
+					"name": "Wind Aura",
+					"entries": [
+						"A magical aura of wind surrounds Sansuri. The aura is a 10-foot-radius sphere that lasts as long as Sansuri maintains concentration on it (as if concentrating on a spell). While the aura is in effect, Sansuri gains a +2 bonus to its AC against ranged weapon attacks, and all open flames within the aura are extinguished unless they are magical."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Sansuri makes two spear attacks."
+					]
+				},
+				{
+					"name": "Morningstar",
+					"entries": [
+						"{@atk mw} {@hit 12} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 12} to hit, range 60/240 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
+					]
+				}
+			],
+			"page": 192,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Sansuri is a 13th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 15; {@hit 7} to hit with spell attacks). She has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell mending}",
+								"{@spell message}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell identify}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell unseen servant}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell arcane lock}",
+								"{@spell gust of wind}",
+								"{@spell invisibility}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell haste}",
+								"{@spell hypnotic pattern}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell ice storm}",
+								"{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell Bigby's hand}",
+								"{@spell wall of force}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell Mordenkainen's sword}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"traitTags": [
+				"Keen Senses"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"AU",
+				"C",
+				"GI"
+			]
 		},
 		{
 			"name": "Crag Cat",
@@ -301,6 +558,9 @@
 			"page": 240,
 			"traitTags": [
 				"Pounce"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -392,6 +652,9 @@
 			"page": 253,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -469,6 +732,111 @@
 			"page": 253,
 			"traitTags": [
 				"Sneak Attack"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Duke Zalto",
+			"isNPC": true,
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 221,
+				"formula": "13d12+78"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 25,
+			"dex": 9,
+			"con": 23,
+			"int": 10,
+			"wis": 14,
+			"cha": 13,
+			"save": {
+				"dex": "+3",
+				"con": "+10",
+				"cha": "+5"
+			},
+			"skill": {
+				"athletics": "+11",
+				"perception": "+6"
+			},
+			"immune": [
+				"fire"
+			],
+			"resist": [
+				"lightning"
+			],
+			"passive": 16,
+			"languages": "Common, Elvish, and Giant",
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"Zalto deals double damage to objects and structures."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Zalto wears a {@item ring of lightning resistance}."
+					]
+				},
+				{
+					"name": "Tackle",
+					"entries": [
+						"When Zalto enters any enemy's space for the first time on a turn, the enemy must succeed on a DC 19 Strength saving throw or be knocked {@condition prone}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Zalto makes two maul attacks."
+					]
+				},
+				{
+					"name": "Maul",
+					"entries": [
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 28 ({@dice 6d6+7}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 11} to hit, range 60/240 ft., one target. Hit: 29 ({@dice 4d10+7}) bludgeoning damage."
+					]
+				}
+			],
+			"page": 184,
+			"traitTags": [
+				"Siege Monster"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"E",
+				"GI"
 			]
 		},
 		{
@@ -517,7 +885,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 2} to hit, reach 5 ft. or range 20/60ft., one target. Hit: 2 ({@dice 1d4}) piercing damage. Duvessa carries only one dagger."
+						"{@atk mw,rw} {@hit 2} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 2 ({@dice 1d4}) piercing damage. Duvessa carries only one dagger."
 					]
 				}
 			],
@@ -543,6 +911,12 @@
 			"page": 248,
 			"actionTags": [
 				"Parry"
+			],
+			"languageTags": [
+				"C",
+				"D",
+				"GI",
+				"O"
 			]
 		},
 		{
@@ -637,6 +1011,105 @@
 			"page": 255,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Harshnag",
+			"isNPC": true,
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": [
+				"C",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 21,
+					"from": [
+						"{@item plate armor +3|dmg|+3 plate armor}"
+					]
+				}
+			],
+			"hp": {
+				"average": 204,
+				"formula": "12d12+60"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 23,
+			"dex": 9,
+			"con": 21,
+			"int": 9,
+			"wis": 10,
+			"cha": 12,
+			"save": {
+				"con": "+8",
+				"wis": "+3",
+				"cha": "+4"
+			},
+			"skill": {
+				"athletics": "+9",
+				"perception": "+3"
+			},
+			"immune": [
+				"cold"
+			],
+			"passive": 13,
+			"languages": "Common, Giant",
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Legendary Resistance (1/Day)",
+					"entries": [
+						"If Harshnag fails a saving throw, he can choose to succeed instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Weighted Net",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, ranged 20/60 ft., one Small, Medium, or Large creature. Hit: The target is {@condition restrained} until it escapes the net. Any creature can use its action to make a DC 17 Strength check to free itself or another creature in the net, ending the effect on a success. Dealing 15 slashing damage to the net (AC 12) destroys the net and frees the target."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giant makes two greataxe attacks."
+					]
+				},
+				{
+					"name": "Gurt's Greataxe",
+					"entries": [
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 26 ({@dice 3d12+7}) slashing damage, or 39 ({@dice 5d12+7}) slashing damage if the target is human."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. Hit: 28 ({@dice 4d10+6}) bludgeoning damage."
+					]
+				}
+			],
+			"page": 120,
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI"
 			]
 		},
 		{
@@ -862,6 +1335,490 @@
 			"actionTags": [
 				"Multiattack",
 				"Frightful Presence"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"GI",
+				"T"
+			],
+			"senseTags": [
+				"SD"
+			]
+		},
+		{
+			"name": "Jarl Storvald",
+			"isNPC": true,
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"barding scraps"
+					]
+				}
+			],
+			"hp": {
+				"average": 189,
+				"formula": "12d12+60"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 23,
+			"dex": 9,
+			"con": 21,
+			"int": 9,
+			"wis": 16,
+			"cha": 16,
+			"save": {
+				"con": "+8",
+				"cha": "+4"
+			},
+			"skill": {
+				"athletics": "+9"
+			},
+			"immune": [
+				"cold"
+			],
+			"passive": 13,
+			"languages": "Common, Giant, Giant Owl",
+			"cr": "8",
+			"action": [
+				{
+					"name": "Weighted Net",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, ranged 20/60 ft., one Small, Medium, or Large creature. Hit: The target is {@condition restrained} until it escapes the net. Any creature can use its action to make a DC 17 Strength check to free itself or another creature in the net, ending the effect on a success. Dealing 15 slashing damage to the net (AC 12) destroys the net and frees the target."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The giant makes two greataxe attacks."
+					]
+				},
+				{
+					"name": "Greataxe",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. Hit: 25 ({@dice 3d12+6}) slashing damage."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. Hit: 28 ({@dice 4d10+6}) bludgeoning damage."
+					]
+				}
+			],
+			"page": 165,
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Jarl Storvald is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks). He knows the following ranger spells:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell hunter's mark}",
+								"{@spell jump}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell locate animals or plants}",
+								"{@spell locate object}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell water breathing}",
+								"{@spell water walk}"
+							]
+						}
+					},
+					"ability": "wis"
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI",
+				"OTH"
+			]
+		},
+		{
+			"name": "King Hekaton",
+			"isNPC": true,
+			"size": "H",
+			"type": "giant",
+			"source": "SKT",
+			"alignment": [
+				"C",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 330,
+				"formula": "20d12+100"
+			},
+			"speed": {
+				"walk": 50,
+				"swim": 50
+			},
+			"str": 29,
+			"dex": 14,
+			"con": 20,
+			"int": 16,
+			"wis": 18,
+			"cha": 18,
+			"save": {
+				"str": "+14",
+				"con": "+10",
+				"wis": "+9",
+				"cha": "+9"
+			},
+			"skill": {
+				"arcana": "+8",
+				"athletics": "+14",
+				"history": "+8",
+				"perception": "+9"
+			},
+			"resist": [
+				"cold"
+			],
+			"immune": [
+				"lightning",
+				"thunder"
+			],
+			"passive": 19,
+			"languages": "Common, Giant",
+			"cr": "13",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Hekaton can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Hekaton makes two broken chain attacks."
+					]
+				},
+				{
+					"name": "Broken Chain",
+					"entries": [
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 18 ({@dice 3d6+9}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Ballista",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. Hit: 18 ({@dice 3d10+2}) piercing damage."
+					]
+				},
+				{
+					"name": "Lightning Strike {@recharge 5}",
+					"entries": [
+						"Hekaton hurls a magical lightning bolt at a point he can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@dice 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Thunderous Stomp {@recharge}",
+					"entries": [
+						"Hekaton stomps the ground, triggering a thunderclap. All other creatures within 15 feet of him must succeed on a DC 17 Constitution saving throw or take 33 ({@dice 6d10}) thunder damage and be {@condition deafened} until the start of Hekaton's next turn. On a successful save, a creature takes half as much damage and isn't {@condition deafened}. The thunderclap can be heard out to a range of 1,200 feet."
+					]
+				}
+			],
+			"page": 222,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The giant's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell feather fall}",
+						"{@spell levitate}",
+						"{@spell light}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell control weather}",
+							"{@spell water breathing}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI"
+			]
+		},
+		{
+			"name": "Klauth",
+			"isNPC": true,
+			"size": "G",
+			"type": "dragon",
+			"source": "SKT",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 546,
+				"formula": "28d20+252"
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 40,
+				"fly": 80
+			},
+			"str": 30,
+			"dex": 10,
+			"con": 29,
+			"int": 18,
+			"wis": 15,
+			"cha": 23,
+			"save": {
+				"dex": "+7",
+				"con": "+16",
+				"wis": "+9",
+				"cha": "+13"
+			},
+			"skill": {
+				"perception": "+16",
+				"stealth": "+7"
+			},
+			"immune": [
+				"fire"
+			],
+			"senses": "blindsight 60 ft., darkvision 120 ft.",
+			"passive": 26,
+			"languages": "Common, Draconic",
+			"cr": "25",
+			"trait": [
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Klauth fails a saving throw, he can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Dual Wand Wielder",
+					"entries": [
+						"If Klauth is carrying two wands, he can use an action to expend 1 charge from each wand, triggering the effects of both wands simultaneously."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Klauth carries a {@item wand of fireballs} and a {@item wand of lightning bolts}, and he wears a {@item ring of cold resistance}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Klauth can use his Frightful Presence. He then makes three attacks: one with his bite and two with his claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage plus 14 ({@dice 4d6}) fire damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 17 ({@dice 2d6+10}) slashing damage."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 17} to hit, reach 20 ft., one target. Hit: 19 ({@dice 2d8+10}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Frightful Presence",
+					"entries": [
+						"Each creature of Klauth's choice that is within 120 feet of Klauth and aware of him must succeed on a DC 21 Wisdom saving throw or become {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Klauth's Frightful Presence for the next 24 hours."
+					]
+				},
+				{
+					"name": "Fire Breath {@recharge 5}",
+					"entries": [
+						"Klauth exhales fire in a 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 91 ({@dice 26d6}) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"legendaryGroup": "Red Dragon",
+			"legendary": [
+				{
+					"name": "Detect",
+					"entries": [
+						"Klauth makes a Wisdom (Perception) check."
+					]
+				},
+				{
+					"name": "Tail Attack",
+					"entries": [
+						"Klauth makes a tail attack."
+					]
+				},
+				{
+					"name": "Wing Attack (Costs 2 Actions)",
+					"entries": [
+						"Klauth beats his wings. Each creature within 15 ft. of Klauth must succeed on a DC 25 Dexterity saving throw or take 17 ({@dice 2d6+10}) bludgeoning damage and be knocked {@condition prone}. Klauth can then fly up to half his flying speed."
+					]
+				}
+			],
+			"page": 95,
+			"isNamedCreature": true,
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Klauth's spellcasting ability is Charisma (spell save DC 22). He can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell banishment}",
+							"{@spell etherealness}",
+							"{@spell find the path}",
+							"{@spell locate object}",
+							"{@spell prismatic spray}",
+							"{@spell suggestion}"
+						]
+					},
+					"ability": "cha"
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Klauth is a 14th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 20 {@hit 12} to hit with spell attacks). He has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell mending}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell comprehend languages}",
+								"{@spell detect magic}",
+								"{@spell expeditious retreat}",
+								"{@spell identify}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell darkness}",
+								"{@spell detect thoughts}",
+								"{@spell Melf's acid arrow}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell clairvoyance}",
+								"{@spell haste}",
+								"{@spell nondetection}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell ice storm}",
+								"{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell Bigby's hand}",
+								"{@spell cloudkill}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell disintegrate}",
+								"{@spell mass suggestion}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell mirage arcane}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Frightful Presence"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -941,6 +1898,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -1091,6 +2051,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"IG"
 			]
 		},
 		{
@@ -1173,6 +2136,9 @@
 			"page": 248,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -1247,7 +2213,10 @@
 					]
 				}
 			],
-			"page": 251
+			"page": 251,
+			"languageTags": [
+				"C"
+			]
 		},
 		{
 			"name": "Narth Tezrin",
@@ -1323,7 +2292,11 @@
 					]
 				}
 			],
-			"page": 254
+			"page": 254,
+			"languageTags": [
+				"C",
+				"D"
+			]
 		},
 		{
 			"name": "Naxene Drathkala",
@@ -1431,7 +2404,13 @@
 					]
 				}
 			],
-			"page": 252
+			"page": 252,
+			"languageTags": [
+				"C",
+				"DR",
+				"D",
+				"E"
+			]
 		},
 		{
 			"name": "Oren Yogilvy",
@@ -1508,11 +2487,15 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage. Duvessa carries only one dagger."
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage. Duvessa carries only one dagger."
 					]
 				}
 			],
-			"page": 252
+			"page": 252,
+			"languageTags": [
+				"C",
+				"H"
+			]
 		},
 		{
 			"name": "Othovir",
@@ -1618,6 +2601,10 @@
 			"page": 255,
 			"actionTags": [
 				"Parry"
+			],
+			"languageTags": [
+				"C",
+				"E"
 			]
 		},
 		{
@@ -1676,6 +2663,9 @@
 			"page": 242,
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"T"
 			]
 		},
 		{
@@ -1761,6 +2751,10 @@
 			"page": 250,
 			"traitTags": [
 				"Sneak Attack"
+			],
+			"languageTags": [
+				"C",
+				"E"
 			]
 		},
 		{
@@ -1842,7 +2836,10 @@
 					]
 				}
 			],
-			"page": 249
+			"page": 249,
+			"languageTags": [
+				"C"
+			]
 		},
 		{
 			"name": "Sirac of Suzail",
@@ -1927,596 +2924,11 @@
 			"page": 247,
 			"actionTags": [
 				"Parry"
-			]
-		},
-		{
-			"name": "Tressym",
-			"size": "T",
-			"type": "beast",
-			"source": "SKT",
-			"alignment": [
+			],
+			"languageTags": [
 				"C",
-				"N"
-			],
-			"ac": [
-				12
-			],
-			"hp": {
-				"average": 5,
-				"formula": "2d4"
-			},
-			"speed": {
-				"walk": 40,
-				"climb": 30,
-				"fly": 40
-			},
-			"str": 3,
-			"dex": 15,
-			"con": 10,
-			"int": 11,
-			"wis": 12,
-			"cha": 12,
-			"skill": {
-				"perception": "+5",
-				"stealth": "+4"
-			},
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"passive": 15,
-			"languages": "understands Common but can't speak",
-			"cr": "0",
-			"trait": [
-				{
-					"name": "Detect Invisibility",
-					"entries": [
-						"Within 50 feet of the tressym, magical invisibility fails to conceal anything from the tressym's sight"
-					]
-				},
-				{
-					"name": "Keen Smell",
-					"entries": [
-						"The tressym has advantage on Wisdom (Perception) checks that rely on smell."
-					]
-				},
-				{
-					"name": "Poison Sense",
-					"entries": [
-						"The tressym can detect whether a substance is poisonous by taste, touch, or smell."
-					]
-				},
-				{
-					"name": "Familiar",
-					"entries": [
-						"With the DM's permission, a person who casts the find familiar spell can choose to conjure a tressym in­ stead of a normal cat."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Claws",
-					"entries": [
-						"{@atk mw} {@hit 0} to hit, reach 5 ft., one target. Hit: 1 slashing damage."
-					]
-				}
-			],
-			"page": 242,
-			"familiar": true,
-			"traitTags": [
-				"Keen Senses"
+				"O"
 			]
-		},
-		{
-			"name": "Urgala Meltimer",
-			"isNPC": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					{
-						"tag": "human",
-						"prefix": "Turami"
-					}
-				]
-			},
-			"source": "SKT",
-			"alignment": [
-				"L",
-				"G"
-			],
-			"ac": [
-				{
-					"ac": 12,
-					"from": [
-						"{@item leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 58,
-				"formula": "9d8+18"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 13,
-			"con": 14,
-			"int": 12,
-			"wis": 14,
-			"cha": 13,
-			"skill": {
-				"athletics": "+5",
-				"intimidation": "+3"
-			},
-			"passive": 12,
-			"languages": "Common, Giant",
-			"cr": "0",
-			"trait": [
-				{
-					"name": "Giant Slayer",
-					"entries": [
-						"Any weapon attack that Urgala makes against a giant deals an extra 7 ({@dice 2d6}) damage on a hit."
-					]
-				},
-				{
-					"name": "Roleplaying Information",
-					"entries": [
-						"A retired adventurer, Urgala owns a respectable inn, the North­ shield House, and she doesn't want to see it or her neighbors' homes destroyed. She has no tolerance for monsters or bullies.",
-						"Ideal: \"We live in a violent world, and sometimes violence is necessary for survival.\"",
-						"Bond: \"My home is my life. Threaten it, and I'll hurt you.\"",
-						"Flaw: \"I know how treacherous and greedy adventurers can be. I don't trust them\u2014any of them.\""
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Urgala makes two attacks with her morningstar or her shortbow."
-					]
-				},
-				{
-					"name": "Morningstar",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
-					]
-				},
-				{
-					"name": "Shortbow",
-					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 80/320 ft., one target. Hit: 5 ({@dice 1d6+1}) piercing damage. Urgala carries a quiver of twenty arrows."
-					]
-				}
-			],
-			"page": 254,
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Uthgardt Shaman",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "SKT",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				13
-			],
-			"hp": {
-				"average": 38,
-				"formula": "7d8+7"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 14,
-			"dex": 12,
-			"con": 13,
-			"int": 10,
-			"wis": 15,
-			"cha": 12,
-			"skill": {
-				"medicine": "+4",
-				"nature": "+4",
-				"perception": "+4",
-				"survival": "+6"
-			},
-			"passive": 14,
-			"languages": "Bothii, Common",
-			"cr": "2",
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The shaman can innately cast the following spells. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks)."
-					],
-					"will": [
-						"{@spell dancing lights}",
-						"{@spell message}",
-						"{@spell mage hand}",
-						"{@spell thaumaturgy}"
-					],
-					"daily": {
-						"1": [
-							"{@spell augury}",
-							"{@spell bestow curse}",
-							"{@spell cordon of arrows}",
-							"{@spell detect magic}",
-							"{@spell hex}",
-							"{@spell prayer of healing}",
-							"{@spell speak with dead}",
-							"{@spell spirit guardians}"
-						]
-					},
-					"ability": "wis"
-				}
-			],
-			"action": [
-				{
-					"name": "Spear",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 6 ({@dice 1d8+2}) piercing damage if wielded with two hands."
-					]
-				},
-				{
-					"name": "Shortbow",
-					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 80/320 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
-					]
-				}
-			],
-			"page": 243
-		},
-		{
-			"name": "Yakfolk Priest",
-			"size": "L",
-			"type": "monstrosity",
-			"source": "SKT",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 12,
-					"from": [
-						"{@item hide armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 52,
-				"formula": "7d10+14"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 11,
-			"con": 15,
-			"int": 14,
-			"wis": 18,
-			"cha": 14,
-			"skill": {
-				"deception": "+4",
-				"medicine": "+6",
-				"survival": "+6"
-			},
-			"passive": 14,
-			"languages": "Common, Yikaria",
-			"cr": "4",
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The yakfolk is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). The priest has the following cleric spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell light}",
-								"{@spell mending}",
-								"{@spell sacred flame}",
-								"{@spell thaumaturgy}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell bane}",
-								"{@spell command}",
-								"{@spell cure wounds}",
-								"{@spell sanctuary}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell augury}",
-								"{@spell hold person}",
-								"{@spell spiritual weapon}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell bestow curse}",
-								"{@spell protection from energy}",
-								"{@spell sending}"
-							]
-						},
-						"4": {
-							"slots": 1,
-							"spells": [
-								"{@spell banishment}"
-							]
-						}
-					},
-					"ability": "wis"
-				}
-			],
-			"trait": [
-				{
-					"name": "Possession (Recharges after a rest)",
-					"entries": [
-						"The yakfolk attempts to magically possess a humanoid or giant. The yakfolk must touch the target throughout a short rest or the attempt fails. At the end of the rest, the target must succeed a DC 12 Con saving throw or be possessed by the yakfolk, which disappears with everything its carrying and wearing. Until the possession ends, the target is {@condition incapacitated}, loses control of its body, and it unaware of its surroundings. The yakfolk now controls the body and cannot be targeted by any attack, spell, or other effect, and it retains its alignment, its Intelligence, Wisdom, and Charisma scores; and its proficiencies. It otherwise uses the target's statistics, except the target's knowledge, class features, feats, and proficiencies.",
-						"The possession lats until either the body drops to 0 hit points, the yakfolk ends the possession as an action, or the yakfolk is forced out of the body by an effect such as {@spell dispel evil and good} spell. When the possession ends, the yakfolk appears in an unoccupied space within 5 feet of the body and is {@condition stunned} until the end of its next turn. If the host body dies while it is possessed by the yakfolk, the yakfolk dies as well and its body does not reappear."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The yakfolk makes two melee attacks."
-					]
-				},
-				{
-					"name": "Quarterstaff",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) bludgeoning damage, or 12 ({@dice 2d8+3}) bludgeoning damage if used with two hands."
-					]
-				},
-				{
-					"name": "Summon Earth Elemental (1/Day)",
-					"entries": [
-						"The yakfolk summons an earth elemental. The elemental appears in an unoccupied space within 60 feet of its summoner and acts as an ally of the summoner. It remains for 10 minutes, until it dies, or until its summoner dismisses it as an action."
-					]
-				}
-			],
-			"page": 245,
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Yakfolk Warrior",
-			"size": "L",
-			"type": "monstrosity",
-			"source": "SKT",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 11,
-					"from": [
-						"{@item leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 60,
-				"formula": "8d10+16"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 18,
-			"dex": 11,
-			"con": 15,
-			"int": 14,
-			"wis": 15,
-			"cha": 14,
-			"skill": {
-				"deception": "+4",
-				"survival": "+4"
-			},
-			"passive": 12,
-			"languages": "Common, Yikaria",
-			"cr": "3",
-			"trait": [
-				{
-					"name": "Possession (Recharges after a rest)",
-					"entries": [
-						"The yakfolk attempts to magically possess a humanoid or giant. The yakfolk must touch the target throughout a short rest or the attempt fails. At the end of the rest, the target must succeed a DC 12 Con saving throw or be possessed by the yakfolk, which disappears with everything its carrying and wearing. Until the possession ends, the target is {@condition incapacitated}, loses control of its body, and it unaware of its surroundings. The yakfolk now controls the body and cannot be targeted by any attack, spell, or other effect, and it retains its alignment, its Intelligence, Wisdom, and Charisma scores; and its proficiencies. It otherwise uses the target's statistics, except the target's knowledge, class features, feats, and proficiencies.",
-						"The possession lats until either the body drops to 0 hit points, the yakfolk ends the possession as an action, or the yakfolk is forced out of the body by an effect such as {@spell dispel evil and good} spell. When the possession ends, the yakfolk appears in an unoccupied space within 5 feet of the body and is {@condition stunned} until the end of its next turn. If the host body dies while it is possessed by the yakfolk, the yakfolk dies as well and its body does not reappear."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The yakfolk makes two attacks, either with its greatsword or its longbow."
-					]
-				},
-				{
-					"name": "Greatsword",
-					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d6+4}) slashing damage."
-					]
-				},
-				{
-					"name": "Longbow",
-					"entries": [
-						"{@atk rw} {@hit 2} to hit, range 150/600 ft., one target. Hit: 9 ({@dice 2d8}) piercing damage."
-					]
-				}
-			],
-			"page": 244,
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Zi Liang",
-			"isNPC": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					{
-						"tag": "human",
-						"prefix": "Shou"
-					}
-				]
-			},
-			"source": "SKT",
-			"alignment": [
-				"C",
-				"G"
-			],
-			"ac": [
-				15
-			],
-			"hp": {
-				"average": 22,
-				"formula": "5d8"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 12,
-			"dex": 15,
-			"con": 11,
-			"int": 14,
-			"wis": 16,
-			"cha": 11,
-			"skill": {
-				"acrobatics": "+4",
-				"athletics": "+3",
-				"perception": "+5",
-				"stealth": "+4"
-			},
-			"passive": 15,
-			"languages": "Common, Elvish, Goblin",
-			"cr": "0",
-			"trait": [
-				{
-					"name": "Unarmored Defense",
-					"entries": [
-						"While Zi is wearing no armor and wielding no shield, her AC includes her Wisdom modifier."
-					]
-				},
-				{
-					"name": "Roleplaying Information",
-					"entries": [
-						"Zi Liang is a devout worshiper of Chauntea, the Earth Mother. She has considerably less faith in Goldenfields' defenders, so she patrols the temple-farm during her off-duty hours.",
-						"Ideal: \"If we faithfully tend to our gardens and our fields, Chauntea will smile upon us.\"",
-						"Bond: \"Goldenfields is the breadbasket of the North. People depend on its safety and prosperity, and I'll do what must be done to protect it.\"",
-						"Flaw: \"I don't trust authority. I do what my heart says is right.\""
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Zi makes two melee attacks."
-					]
-				},
-				{
-					"name": "Quarterstaff",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage, or 5 ({@dice 1d8+1}) bludgeoning damage if used with both hands."
-					]
-				},
-				{
-					"name": "Sling",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. Hit: 4 ({@dice 1d4+2}) bludgeoning damage. Zi carries twenty sling stones."
-					]
-				}
-			],
-			"page": 251,
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Thunderbeast Skeleton",
-			"size": "Huge",
-			"type": "undead",
-			"source": "SKT",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 68,
-				"formula": "8d12+16"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 19,
-			"dex": 11,
-			"con": 15,
-			"int": 2,
-			"wis": 12,
-			"cha": 5,
-			"save": {
-				"str": "+7"
-			},
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned",
-				"exhaustion"
-			],
-			"vulnerable": [
-				"bludgeoning"
-			],
-			"passive": 11,
-			"senses": "darkvision 60 ft.",
-			"cr": "3",
-			"action": [
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5ft., Hit: 18 ({@dice 4d6+4}) piercing damage."
-					]
-				},
-				{
-					"name": "Tail",
-					"entries": [
-						"{@hit 7} to hit, reach 10 ft., one target. Hit: 18 ({@dice 4d6+4}) bludgeoning damage. Succeed on a DC14 Strength saving throw or be knocked {@condition prone}."
-					]
-				}
-			],
-			"page": 99
 		},
 		{
 			"name": "Slarkrethel",
@@ -2752,74 +3164,16 @@
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
-			]
-		},
-		{
-			"name": "Chief Guh",
-			"isNPC": true,
-			"size": "H",
-			"type": "giant",
-			"source": "SKT",
-			"alignment": [
-				"C",
-				"E"
 			],
-			"ac": [
-				{
-					"ac": 9,
-					"from": [
-						"natural armor"
-					]
-				}
+			"languageTags": [
+				"AB",
+				"CE",
+				"I",
+				"P",
+				"TP"
 			],
-			"hp": {
-				"average": 160,
-				"formula": "10d12+40"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 21,
-			"dex": 1,
-			"con": 19,
-			"int": 5,
-			"wis": 9,
-			"cha": 6,
-			"skill": {
-				"perception": "+2"
-			},
-			"passive": 12,
-			"languages": "Common, Giant, Goblin",
-			"cr": "5",
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The giant makes two greatclub attacks or two unarmed attacks."
-					]
-				},
-				{
-					"name": "Greatclub",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 18 ({@dice 3d8+5}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Unarmed Attack",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 12 ({@dice 3d4+5}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Rock",
-					"entries": [
-						"{@atk rw} {@hit 8} to hit, range 60/240 ft., one target. Hit: 21 ({@dice 3d10+5}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 140,
-			"actionTags": [
-				"Multiattack"
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -2925,433 +3279,433 @@
 			"page": 153,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"GI"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
-			"name": "Jarl Storvald",
-			"isNPC": true,
-			"size": "H",
-			"type": "giant",
+			"name": "Thunderbeast Skeleton",
+			"size": "Huge",
+			"type": "undead",
 			"source": "SKT",
 			"alignment": [
-				"L",
-				"E"
+				"U"
 			],
 			"ac": [
 				{
 					"ac": 15,
-					"from": [
-						"barding scraps"
-					]
-				}
-			],
-			"hp": {
-				"average": 189,
-				"formula": "12d12+60"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 23,
-			"dex": 9,
-			"con": 21,
-			"int": 9,
-			"wis": 16,
-			"cha": 16,
-			"save": {
-				"con": "+8",
-				"cha": "+4"
-			},
-			"skill": {
-				"athletics": "+9"
-			},
-			"immune": [
-				"cold"
-			],
-			"passive": 13,
-			"languages": "Common, Giant, Giant Owl",
-			"cr": "8",
-			"action": [
-				{
-					"name": "Weighted Net",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, ranged 20/60 ft., one Small, Medium, or Large creature. Hit: The target is {@condition restrained} until it escapes the net. Any creature can use its action to make a DC 17 Strength check to free itself or another creature in the net, ending the effect on a success. Dealing 15 slashing damage to the net (AC 12) destroys the net and frees the target."
-					]
-				},
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The giant makes two greataxe attacks."
-					]
-				},
-				{
-					"name": "Greataxe",
-					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. Hit: 25 ({@dice 3d12+6}) slashing damage."
-					]
-				},
-				{
-					"name": "Rock",
-					"entries": [
-						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. Hit: 28 ({@dice 4d10+6}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 165,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Jarl Storvald is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks). He knows the following ranger spells:"
-					],
-					"spells": {
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell hunter's mark}",
-								"{@spell jump}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell locate animals or plants}",
-								"{@spell locate object}"
-							]
-						},
-						"3": {
-							"slots": 2,
-							"spells": [
-								"{@spell water breathing}",
-								"{@spell water walk}"
-							]
-						}
-					},
-					"ability": "wis"
-				}
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Duke Zalto",
-			"isNPC": true,
-			"size": "H",
-			"type": "giant",
-			"source": "SKT",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 18,
-					"from": [
-						"{@item plate armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 221,
-				"formula": "13d12+78"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 25,
-			"dex": 9,
-			"con": 23,
-			"int": 10,
-			"wis": 14,
-			"cha": 13,
-			"save": {
-				"dex": "+3",
-				"con": "+10",
-				"cha": "+5"
-			},
-			"skill": {
-				"athletics": "+11",
-				"perception": "+6"
-			},
-			"immune": [
-				"fire"
-			],
-			"resist": [
-				"lightning"
-			],
-			"passive": 16,
-			"languages": "Common, Elvish, and Giant",
-			"cr": "9",
-			"trait": [
-				{
-					"name": "Siege Monster",
-					"entries": [
-						"Zalto deals double damage to objects and structures."
-					]
-				},
-				{
-					"name": "Special Equipment",
-					"entries": [
-						"Zalto wears a {@item ring of lightning resistance}."
-					]
-				},
-				{
-					"name": "Tackle",
-					"entries": [
-						"When Zalto enters any enemy's space for the first time on a turn, the enemy must succeed on a DC 19 Strength saving throw or be knocked {@condition prone}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Zalto makes two maul attacks."
-					]
-				},
-				{
-					"name": "Maul",
-					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 28 ({@dice 6d6+7}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Rock",
-					"entries": [
-						"{@atk rw} {@hit 11} to hit, range 60/240 ft., one target. Hit: 29 ({@dice 4d10+7}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 184,
-			"traitTags": [
-				"Siege Monster"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Countess Sansuri",
-			"isNPC": true,
-			"size": "H",
-			"type": "giant",
-			"source": "SKT",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 14,
 					"from": [
 						"natural armor"
 					]
 				}
 			],
 			"hp": {
-				"average": 200,
-				"formula": "16d12+96"
+				"average": 68,
+				"formula": "8d12+16"
 			},
 			"speed": {
-				"walk": 40
+				"walk": 30
 			},
-			"str": 27,
-			"dex": 10,
-			"con": 22,
-			"int": 16,
-			"wis": 16,
-			"cha": 16,
+			"str": 19,
+			"dex": 11,
+			"con": 15,
+			"int": 2,
+			"wis": 12,
+			"cha": 5,
 			"save": {
-				"con": "+10",
-				"wis": "+7",
-				"cha": "+7"
+				"str": "+7"
 			},
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned",
+				"exhaustion"
+			],
+			"vulnerable": [
+				"bludgeoning"
+			],
+			"passive": 11,
+			"senses": "darkvision 60 ft.",
+			"cr": "3",
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., Hit: 18 ({@dice 4d6+4}) piercing damage."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@hit 7} to hit, reach 10 ft., one target. Hit: 18 ({@dice 4d6+4}) bludgeoning damage. Succeed on a DC14 Strength saving throw or be knocked {@condition prone}."
+					]
+				}
+			],
+			"page": 99,
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Tressym",
+			"size": "T",
+			"type": "beast",
+			"source": "SKT",
+			"alignment": [
+				"C",
+				"N"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 5,
+				"formula": "2d4"
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 30,
+				"fly": 40
+			},
+			"str": 3,
+			"dex": 15,
+			"con": 10,
+			"int": 11,
+			"wis": 12,
+			"cha": 12,
 			"skill": {
-				"insight": "+7",
-				"perception": "+7"
+				"perception": "+5",
+				"stealth": "+4"
 			},
-			"passive": 17,
-			"languages": "Auran, Common, and Giant",
-			"cr": "11",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"passive": 15,
+			"languages": "understands Common but can't speak",
+			"cr": "0",
 			"trait": [
+				{
+					"name": "Detect Invisibility",
+					"entries": [
+						"Within 50 feet of the tressym, magical invisibility fails to conceal anything from the tressym's sight"
+					]
+				},
 				{
 					"name": "Keen Smell",
 					"entries": [
-						"Sansuri has advantage on Wisdom (Perception) checks that rely on smell."
+						"The tressym has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				},
+				{
+					"name": "Poison Sense",
+					"entries": [
+						"The tressym can detect whether a substance is poisonous by taste, touch, or smell."
+					]
+				},
+				{
+					"name": "Familiar",
+					"entries": [
+						"With the DM's permission, a person who casts the find familiar spell can choose to conjure a tressym in­ stead of a normal cat."
 					]
 				}
 			],
 			"action": [
 				{
-					"name": "Fling",
+					"name": "Claws",
 					"entries": [
-						"Sansuri tries to throw a Small or Medium creature within 10 feet of her. The target must succeed on a DC 20 Dexterity saving throw or be hurled up to 60 feet horizontally in a direction of Sansuri's choice and land {@condition prone}, taking {@dice 1d8} bludgeoning damage for every 10 feet it was thrown."
+						"{@atk mw} {@hit 0} to hit, reach 5 ft., one target. Hit: 1 slashing damage."
+					]
+				}
+			],
+			"page": 242,
+			"familiar": true,
+			"traitTags": [
+				"Keen Senses"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Urgala Meltimer",
+			"isNPC": true,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					{
+						"tag": "human",
+						"prefix": "Turami"
+					}
+				]
+			},
+			"source": "SKT",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 58,
+				"formula": "9d8+18"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 13,
+			"con": 14,
+			"int": 12,
+			"wis": 14,
+			"cha": 13,
+			"skill": {
+				"athletics": "+5",
+				"intimidation": "+3"
+			},
+			"passive": 12,
+			"languages": "Common, Giant",
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Giant Slayer",
+					"entries": [
+						"Any weapon attack that Urgala makes against a giant deals an extra 7 ({@dice 2d6}) damage on a hit."
 					]
 				},
 				{
-					"name": "Wind Aura",
+					"name": "Roleplaying Information",
 					"entries": [
-						"A magical aura of wind surrounds Sansuri. The aura is a 10-foot-radius sphere that lasts as long as Sansuri maintains concentration on it (as if concentrating on a spell). While the aura is in effect, Sansuri gains a +2 bonus to its AC against ranged weapon attacks, and all open flames within the aura are extinguished unless they are magical."
+						"A retired adventurer, Urgala owns a respectable inn, the North­ shield House, and she doesn't want to see it or her neighbors' homes destroyed. She has no tolerance for monsters or bullies.",
+						"Ideal: \"We live in a violent world, and sometimes violence is necessary for survival.\"",
+						"Bond: \"My home is my life. Threaten it, and I'll hurt you.\"",
+						"Flaw: \"I know how treacherous and greedy adventurers can be. I don't trust them\u2014any of them.\""
 					]
-				},
+				}
+			],
+			"action": [
 				{
 					"name": "Multiattack",
 					"entries": [
-						"Sansuri makes two spear attacks."
+						"Urgala makes two attacks with her morningstar or her shortbow."
 					]
 				},
 				{
 					"name": "Morningstar",
 					"entries": [
-						"{@atk mw} {@hit 12} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d8+8}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
 					]
 				},
 				{
-					"name": "Rock",
+					"name": "Shortbow",
 					"entries": [
-						"{@atk rw} {@hit 12} to hit, range 60/240 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
+						"{@atk rw} {@hit 3} to hit, range 80/320 ft., one target. Hit: 5 ({@dice 1d6+1}) piercing damage. Urgala carries a quiver of twenty arrows."
 					]
 				}
 			],
-			"page": 192,
+			"page": 254,
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI"
+			]
+		},
+		{
+			"name": "Uthgardt Shaman",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"source": "SKT",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"average": 38,
+				"formula": "7d8+7"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 12,
+			"con": 13,
+			"int": 10,
+			"wis": 15,
+			"cha": 12,
+			"skill": {
+				"medicine": "+4",
+				"nature": "+4",
+				"perception": "+4",
+				"survival": "+6"
+			},
+			"passive": 14,
+			"languages": "Bothii, Common",
+			"cr": "2",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Sansuri is a 13th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 15; {@hit 7} to hit with spell attacks). She has the following wizard spells prepared:"
+						"The shaman can innately cast the following spells. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks)."
+					],
+					"will": [
+						"{@spell dancing lights}",
+						"{@spell message}",
+						"{@spell mage hand}",
+						"{@spell thaumaturgy}"
+					],
+					"daily": {
+						"1": [
+							"{@spell augury}",
+							"{@spell bestow curse}",
+							"{@spell cordon of arrows}",
+							"{@spell detect magic}",
+							"{@spell hex}",
+							"{@spell prayer of healing}",
+							"{@spell speak with dead}",
+							"{@spell spirit guardians}"
+						]
+					},
+					"ability": "wis"
+				}
+			],
+			"action": [
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 6 ({@dice 1d8+2}) piercing damage if wielded with two hands."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 3} to hit, range 80/320 ft., one target. Hit: 4 ({@dice 1d6+1}) piercing damage."
+					]
+				}
+			],
+			"page": 243,
+			"languageTags": [
+				"OTH",
+				"C"
+			]
+		},
+		{
+			"name": "Yakfolk Priest",
+			"size": "L",
+			"type": "monstrosity",
+			"source": "SKT",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "7d10+14"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 15,
+			"int": 14,
+			"wis": 18,
+			"cha": 14,
+			"skill": {
+				"deception": "+4",
+				"medicine": "+6",
+				"survival": "+6"
+			},
+			"passive": 14,
+			"languages": "Common, Yikaria",
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The yakfolk is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). The priest has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
 							"spells": [
-								"{@spell mage hand}",
+								"{@spell light}",
 								"{@spell mending}",
-								"{@spell message}",
-								"{@spell prestidigitation}",
-								"{@spell ray of frost}"
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
 							]
 						},
 						"1": {
 							"slots": 4,
 							"spells": [
-								"{@spell identify}",
-								"{@spell magic missile}",
-								"{@spell shield}",
-								"{@spell unseen servant}"
+								"{@spell bane}",
+								"{@spell command}",
+								"{@spell cure wounds}",
+								"{@spell sanctuary}"
 							]
 						},
 						"2": {
 							"slots": 3,
 							"spells": [
-								"{@spell arcane lock}",
-								"{@spell gust of wind}",
-								"{@spell invisibility}"
+								"{@spell augury}",
+								"{@spell hold person}",
+								"{@spell spiritual weapon}"
 							]
 						},
 						"3": {
 							"slots": 3,
 							"spells": [
-								"{@spell haste}",
-								"{@spell hypnotic pattern}",
-								"{@spell lightning bolt}"
+								"{@spell bestow curse}",
+								"{@spell protection from energy}",
+								"{@spell sending}"
 							]
 						},
 						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell ice storm}",
-								"{@spell stoneskin}"
-							]
-						},
-						"5": {
-							"slots": 2,
-							"spells": [
-								"{@spell Bigby's hand}",
-								"{@spell wall of force}"
-							]
-						},
-						"6": {
 							"slots": 1,
 							"spells": [
-								"{@spell globe of invulnerability}"
-							]
-						},
-						"7": {
-							"slots": 1,
-							"spells": [
-								"{@spell Mordenkainen's sword}"
+								"{@spell banishment}"
 							]
 						}
 					},
-					"ability": "int"
+					"ability": "wis"
 				}
 			],
-			"traitTags": [
-				"Keen Senses"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "King Hekaton",
-			"isNPC": true,
-			"size": "H",
-			"type": "giant",
-			"source": "SKT",
-			"alignment": [
-				"C",
-				"G"
-			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"{@item scale mail|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 330,
-				"formula": "20d12+100"
-			},
-			"speed": {
-				"walk": 50,
-				"swim": 50
-			},
-			"str": 29,
-			"dex": 14,
-			"con": 20,
-			"int": 16,
-			"wis": 18,
-			"cha": 18,
-			"save": {
-				"str": "+14",
-				"con": "+10",
-				"wis": "+9",
-				"cha": "+9"
-			},
-			"skill": {
-				"arcana": "+8",
-				"athletics": "+14",
-				"history": "+8",
-				"perception": "+9"
-			},
-			"resist": [
-				"cold"
-			],
-			"immune": [
-				"lightning",
-				"thunder"
-			],
-			"passive": 19,
-			"languages": "Common, Giant",
-			"cr": "13",
 			"trait": [
 				{
-					"name": "Amphibious",
+					"name": "Possession (Recharges after a rest)",
 					"entries": [
-						"Hekaton can breathe air and water."
+						"The yakfolk attempts to magically possess a humanoid or giant. The yakfolk must touch the target throughout a short rest or the attempt fails. At the end of the rest, the target must succeed a DC 12 Con saving throw or be possessed by the yakfolk, which disappears with everything its carrying and wearing. Until the possession ends, the target is {@condition incapacitated}, loses control of its body, and it unaware of its surroundings. The yakfolk now controls the body and cannot be targeted by any attack, spell, or other effect, and it retains its alignment, its Intelligence, Wisdom, and Charisma scores; and its proficiencies. It otherwise uses the target's statistics, except the target's knowledge, class features, feats, and proficiencies.",
+						"The possession lats until either the body drops to 0 hit points, the yakfolk ends the possession as an action, or the yakfolk is forced out of the body by an effect such as {@spell dispel evil and good} spell. When the possession ends, the yakfolk appears in an unoccupied space within 5 feet of the body and is {@condition stunned} until the end of its next turn. If the host body dies while it is possessed by the yakfolk, the yakfolk dies as well and its body does not reappear."
 					]
 				}
 			],
@@ -3359,149 +3713,104 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"Hekaton makes two broken chain attacks."
+						"The yakfolk makes two melee attacks."
 					]
 				},
 				{
-					"name": "Broken Chain",
+					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 18 ({@dice 3d6+9}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) bludgeoning damage, or 12 ({@dice 2d8+3}) bludgeoning damage if used with two hands."
 					]
 				},
 				{
-					"name": "Ballista",
+					"name": "Summon Earth Elemental (1/Day)",
 					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. Hit: 18 ({@dice 3d10+2}) piercing damage."
-					]
-				},
-				{
-					"name": "Lightning Strike {@recharge 5}",
-					"entries": [
-						"Hekaton hurls a magical lightning bolt at a point he can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@dice 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
-					]
-				},
-				{
-					"name": "Thunderous Stomp {@recharge}",
-					"entries": [
-						"Hekaton stomps the ground, triggering a thunderclap. All other creatures within 15 feet of him must succeed on a DC 17 Constitution saving throw or take 33 ({@dice 6d10}) thunder damage and be {@condition deafened} until the start of Hekaton's next turn. On a successful save, a creature takes half as much damage and isn't {@condition deafened}. The thunderclap can be heard out to a range of 1,200 feet."
+						"The yakfolk summons an earth elemental. The elemental appears in an unoccupied space within 60 feet of its summoner and acts as an ally of the summoner. It remains for 10 minutes, until it dies, or until its summoner dismisses it as an action."
 					]
 				}
 			],
-			"page": 222,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The giant's innate spellcasting ability is Charisma (spell save DC 17). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell detect magic}",
-						"{@spell feather fall}",
-						"{@spell levitate}",
-						"{@spell light}"
-					],
-					"daily": {
-						"3e": [
-							"{@spell control weather}",
-							"{@spell water breathing}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"traitTags": [
-				"Amphibious"
-			],
+			"page": 245,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"OTH"
 			]
 		},
 		{
-			"name": "Harshnag",
-			"isNPC": true,
-			"size": "H",
-			"type": "giant",
+			"name": "Yakfolk Warrior",
+			"size": "L",
+			"type": "monstrosity",
 			"source": "SKT",
 			"alignment": [
-				"C",
-				"G"
+				"L",
+				"E"
 			],
 			"ac": [
 				{
-					"ac": 21,
+					"ac": 11,
 					"from": [
-						"{@item plate armor +3|dmg|+3 plate armor}"
+						"{@item leather armor|phb}"
 					]
 				}
 			],
 			"hp": {
-				"average": 204,
-				"formula": "12d12+60"
+				"average": 60,
+				"formula": "8d10+16"
 			},
 			"speed": {
-				"walk": 40
+				"walk": 30
 			},
-			"str": 23,
-			"dex": 9,
-			"con": 21,
-			"int": 9,
-			"wis": 10,
-			"cha": 12,
-			"save": {
-				"con": "+8",
-				"wis": "+3",
-				"cha": "+4"
-			},
+			"str": 18,
+			"dex": 11,
+			"con": 15,
+			"int": 14,
+			"wis": 15,
+			"cha": 14,
 			"skill": {
-				"athletics": "+9",
-				"perception": "+3"
+				"deception": "+4",
+				"survival": "+4"
 			},
-			"immune": [
-				"cold"
-			],
-			"passive": 13,
-			"languages": "Common, Giant",
-			"cr": "9",
+			"passive": 12,
+			"languages": "Common, Yikaria",
+			"cr": "3",
 			"trait": [
 				{
-					"name": "Legendary Resistance (1/Day)",
+					"name": "Possession (Recharges after a rest)",
 					"entries": [
-						"If Harshnag fails a saving throw, he can choose to succeed instead."
+						"The yakfolk attempts to magically possess a humanoid or giant. The yakfolk must touch the target throughout a short rest or the attempt fails. At the end of the rest, the target must succeed a DC 12 Con saving throw or be possessed by the yakfolk, which disappears with everything its carrying and wearing. Until the possession ends, the target is {@condition incapacitated}, loses control of its body, and it unaware of its surroundings. The yakfolk now controls the body and cannot be targeted by any attack, spell, or other effect, and it retains its alignment, its Intelligence, Wisdom, and Charisma scores; and its proficiencies. It otherwise uses the target's statistics, except the target's knowledge, class features, feats, and proficiencies.",
+						"The possession lats until either the body drops to 0 hit points, the yakfolk ends the possession as an action, or the yakfolk is forced out of the body by an effect such as {@spell dispel evil and good} spell. When the possession ends, the yakfolk appears in an unoccupied space within 5 feet of the body and is {@condition stunned} until the end of its next turn. If the host body dies while it is possessed by the yakfolk, the yakfolk dies as well and its body does not reappear."
 					]
 				}
 			],
 			"action": [
 				{
-					"name": "Weighted Net",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, ranged 20/60 ft., one Small, Medium, or Large creature. Hit: The target is {@condition restrained} until it escapes the net. Any creature can use its action to make a DC 17 Strength check to free itself or another creature in the net, ending the effect on a success. Dealing 15 slashing damage to the net (AC 12) destroys the net and frees the target."
-					]
-				},
-				{
 					"name": "Multiattack",
 					"entries": [
-						"The giant makes two greataxe attacks."
+						"The yakfolk makes two attacks, either with its greatsword or its longbow."
 					]
 				},
 				{
-					"name": "Gurt's Greataxe",
+					"name": "Greatsword",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 26 ({@dice 3d12+7}) slashing damage, or 39 ({@dice 5d12+7}) slashing damage if the target is human."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 18 ({@dice 4d6+4}) slashing damage."
 					]
 				},
 				{
-					"name": "Rock",
+					"name": "Longbow",
 					"entries": [
-						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. Hit: 28 ({@dice 4d10+6}) bludgeoning damage."
+						"{@atk rw} {@hit 2} to hit, range 150/600 ft., one target. Hit: 9 ({@dice 2d8}) piercing damage."
 					]
 				}
 			],
-			"page": 120,
-			"traitTags": [
-				"Legendary Resistances"
-			],
+			"page": 244,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"OTH"
 			]
 		},
 		{
@@ -3555,7 +3864,11 @@
 					]
 				}
 			],
-			"page": 180
+			"page": 180,
+			"languageTags": [
+				"C",
+				"GI"
+			]
 		},
 		{
 			"name": "Zephyros",
@@ -3736,75 +4049,69 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI"
 			]
 		},
 		{
-			"name": "Klauth",
+			"name": "Zi Liang",
 			"isNPC": true,
-			"size": "G",
-			"type": "dragon",
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					{
+						"tag": "human",
+						"prefix": "Shou"
+					}
+				]
+			},
 			"source": "SKT",
 			"alignment": [
 				"C",
-				"E"
+				"G"
 			],
 			"ac": [
-				{
-					"ac": 22,
-					"from": [
-						"natural armor"
-					]
-				}
+				15
 			],
 			"hp": {
-				"average": 546,
-				"formula": "28d20+252"
+				"average": 22,
+				"formula": "5d8"
 			},
 			"speed": {
-				"walk": 40,
-				"climb": 40,
-				"fly": 80
+				"walk": 30
 			},
-			"str": 30,
-			"dex": 10,
-			"con": 29,
-			"int": 18,
-			"wis": 15,
-			"cha": 23,
-			"save": {
-				"dex": "+7",
-				"con": "+16",
-				"wis": "+9",
-				"cha": "+13"
-			},
+			"str": 12,
+			"dex": 15,
+			"con": 11,
+			"int": 14,
+			"wis": 16,
+			"cha": 11,
 			"skill": {
-				"perception": "+16",
-				"stealth": "+7"
+				"acrobatics": "+4",
+				"athletics": "+3",
+				"perception": "+5",
+				"stealth": "+4"
 			},
-			"immune": [
-				"fire"
-			],
-			"senses": "blindsight 60 ft., darkvision 120 ft.",
-			"passive": 26,
-			"languages": "Common, Draconic",
-			"cr": "25",
+			"passive": 15,
+			"languages": "Common, Elvish, Goblin",
+			"cr": "0",
 			"trait": [
 				{
-					"name": "Legendary Resistance (3/Day)",
+					"name": "Unarmored Defense",
 					"entries": [
-						"If Klauth fails a saving throw, he can choose to succeed instead."
+						"While Zi is wearing no armor and wielding no shield, her AC includes her Wisdom modifier."
 					]
 				},
 				{
-					"name": "Dual Wand Wielder",
+					"name": "Roleplaying Information",
 					"entries": [
-						"If Klauth is carrying two wands, he can use an action to expend 1 charge from each wand, triggering the effects of both wands simultaneously."
-					]
-				},
-				{
-					"name": "Special Equipment",
-					"entries": [
-						"Klauth carries a {@item wand of fireballs} and a {@item wand of lightning bolts}, and he wears a {@item ring of cold resistance}."
+						"Zi Liang is a devout worshiper of Chauntea, the Earth Mother. She has considerably less faith in Goldenfields' defenders, so she patrols the temple-farm during her off-duty hours.",
+						"Ideal: \"If we faithfully tend to our gardens and our fields, Chauntea will smile upon us.\"",
+						"Bond: \"Goldenfields is the breadbasket of the North. People depend on its safety and prosperity, and I'll do what must be done to protect it.\"",
+						"Flaw: \"I don't trust authority. I do what my heart says is right.\""
 					]
 				}
 			],
@@ -3812,159 +4119,30 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"Klauth can use his Frightful Presence. He then makes three attacks: one with his bite and two with his claws."
+						"Zi makes two melee attacks."
 					]
 				},
 				{
-					"name": "Bite",
+					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. Hit: 21 ({@dice 2d10+10}) piercing damage plus 14 ({@dice 4d6}) fire damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage, or 5 ({@dice 1d8+1}) bludgeoning damage if used with both hands."
 					]
 				},
 				{
-					"name": "Claw",
+					"name": "Sling",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 17 ({@dice 2d6+10}) slashing damage."
-					]
-				},
-				{
-					"name": "Tail",
-					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 20 ft., one target. Hit: 19 ({@dice 2d8+10}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Frightful Presence",
-					"entries": [
-						"Each creature of Klauth's choice that is within 120 feet of Klauth and aware of him must succeed on a DC 21 Wisdom saving throw or become {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Klauth's Frightful Presence for the next 24 hours."
-					]
-				},
-				{
-					"name": "Fire Breath {@recharge 5}",
-					"entries": [
-						"Klauth exhales fire in a 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 91 ({@dice 26d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. Hit: 4 ({@dice 1d4+2}) bludgeoning damage. Zi carries twenty sling stones."
 					]
 				}
 			],
-			"legendaryGroup": "Red Dragon",
-			"legendary": [
-				{
-					"name": "Detect",
-					"entries": [
-						"Klauth makes a Wisdom (Perception) check."
-					]
-				},
-				{
-					"name": "Tail Attack",
-					"entries": [
-						"Klauth makes a tail attack."
-					]
-				},
-				{
-					"name": "Wing Attack (Costs 2 Actions)",
-					"entries": [
-						"Klauth beats his wings. Each creature within 15 ft. of Klauth must succeed on a DC 25 Dexterity saving throw or take 17 ({@dice 2d6+10}) bludgeoning damage and be knocked {@condition prone}. Klauth can then fly up to half his flying speed."
-					]
-				}
-			],
-			"page": 95,
-			"isNamedCreature": true,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Klauth's spellcasting ability is Charisma (spell save DC 22). He can innately cast the following spells, requiring no material components:"
-					],
-					"daily": {
-						"1": [
-							"{@spell banishment}",
-							"{@spell etherealness}",
-							"{@spell find the path}",
-							"{@spell locate object}",
-							"{@spell prismatic spray}",
-							"{@spell suggestion}"
-						]
-					},
-					"ability": "cha"
-				},
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Klauth is a 14th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 20 {@hit 12} to hit with spell attacks). He has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell mage hand}",
-								"{@spell mending}",
-								"{@spell minor illusion}",
-								"{@spell prestidigitation}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell comprehend languages}",
-								"{@spell detect magic}",
-								"{@spell expeditious retreat}",
-								"{@spell identify}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell darkness}",
-								"{@spell detect thoughts}",
-								"{@spell Melf's acid arrow}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell clairvoyance}",
-								"{@spell haste}",
-								"{@spell nondetection}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell greater invisibility}",
-								"{@spell ice storm}",
-								"{@spell stoneskin}"
-							]
-						},
-						"5": {
-							"slots": 2,
-							"spells": [
-								"{@spell Bigby's hand}",
-								"{@spell cloudkill}",
-								"{@spell scrying}"
-							]
-						},
-						"6": {
-							"slots": 1,
-							"spells": [
-								"{@spell disintegrate}",
-								"{@spell mass suggestion}"
-							]
-						},
-						"7": {
-							"slots": 1,
-							"spells": [
-								"{@spell mirage arcane}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
-			"traitTags": [
-				"Legendary Resistances"
-			],
+			"page": 251,
 			"actionTags": [
-				"Multiattack",
-				"Frightful Presence"
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"E",
+				"GO"
 			]
 		}
 	]

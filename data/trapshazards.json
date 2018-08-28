@@ -2,7 +2,7 @@
 	"trap": [
 		{
 			"name": "Collapsing Roof",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"This trap uses a trip wire to collapse the supports keeping an unstable section of a ceiling in place.",
 				"The trip wire is 3 inches off the ground and stretches between two support beams. The DC to spot the trip wire is 10. A successful DC 15 Dexterity check using thieves' tools disables the trip wire harmlessly. A character without thieves' tools can attempt this check with disadvantage using any edged weapon or edged tool. On a failed check, the trap triggers.",
@@ -15,7 +15,7 @@
 		},
 		{
 			"name": "Falling Net",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"This trap uses a trip wire to release a net suspended from the ceiling.",
 				"The trip wire is 3 inches off the ground and stretches between two columns or trees. The net is hidden by cobwebs or foliage. The DC to spot the trip wire and net is 10. A successful DC 15 Dexterity check using thieves' tools breaks the trip wire harmlessly. A character without thieves' tools can attempt this check with disadvantage using any edged weapon or edged tool. On a failed check, the trap triggers.",
@@ -28,7 +28,7 @@
 		},
 		{
 			"name": "Fire-Breathing Statue",
-			"trapType": "MAG",
+			"trapHazType": "MAG",
 			"entries": [
 				"This trap is activated when an intruder steps on a hidden pressure plate, releasing a magical gout of flame from a nearby statue. The statue can be of anything, including a dragon or a wizard casting a spell.",
 				"The DC is 15 to spot the pressure plate, as well as faint scorch marks on the floor and walls. A spell or other effect that can sense the presence of magic, such as detect magic, reveals an aura of evocation magic around the statue.",
@@ -40,7 +40,7 @@
 		},
 		{
 			"name": "Pits",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				{
 					"type": "entries",
@@ -81,7 +81,7 @@
 		},
 		{
 			"name": "Poison Darts",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"When a creature steps on a hidden pressure plate, poison-tipped darts shoot from spring-loaded or pressurized tubes cleverly embedded in the surrounding walls. An area might include multiple pressure plates, each one rigged to its own set of darts.",
 				"The tiny holes in the walls are obscured by dust and cobwebs, or cleverly hidden amid bas-reliefs, murals, or frescoes that adorn the walls. The DC to spot them is 15. With a successful DC 15 Intelligence (Investigation) check, a character can deduce the presence of the pressure plate from variations in the mortar and stone used to create it, compared to the surrounding floor. Wedging an iron spike or other object under the pressure plate prevents the trap from activating. Stuffing the holes with cloth or wax prevents the darts contained within from launching.",
@@ -92,7 +92,7 @@
 		},
 		{
 			"name": "Poison Needle",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"A poisoned needle is hidden within a treasure chest's lock, or in something else that a creature might open. Opening the chest without the proper key causes the needle to spring out, delivering a dose of poison.",
 				"When the trap is triggered, the needle extends 3 inches straight out from the lock. A creature within range takes 1 piercing damage and 11 ({@dice 2d10}) poison damage, and must succeed on a DC 15 Constitution saving throw or be {@condition poisoned} for 1 hour.",
@@ -104,7 +104,7 @@
 		},
 		{
 			"name": "Rolling Sphere",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"When 20 or more pounds of pressure are placed on this trap's pressure plate, a hidden trapdoor in the ceiling opens, releasing a 10-foot-diameter rolling sphere of solid stone.",
 				"With a successful DC 15 Wisdom (Perception) check, a character can spot the trapdoor and pressure plate.",
@@ -119,7 +119,7 @@
 		},
 		{
 			"name": "Sphere of Annihilation",
-			"trapType": "MECH",
+			"trapHazType": "MECH",
 			"entries": [
 				"Magical, impenetrable darkness fills the gaping mouth of a stone face carved into a wall. The mouth is 2 feet in diameter and roughly circular. No sound issues from it, no light can illuminate the inside of it, and any matter that enters it is instantly obliterated.",
 				"A successful DC 20 Intelligence (Arcana) check reveals that the mouth contains a sphere of annihilation that can't be controlled or moved. It is otherwise identical to a normal {@item sphere of annihilation}, as described in chapter 7, \"Treasure.\" Some versions of the trap include an enchantment placed on the stone face, such that specified creatures feel an overwhelming urge to approach it and crawl inside its mouth. This effect is otherwise like the sympathy aspect of the antipathy/sympathy spell.",
@@ -130,7 +130,7 @@
 		},
 		{
 			"name": "Bear Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -150,7 +150,7 @@
 		},
 		{
 			"name": "Crossbow Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -170,7 +170,7 @@
 		},
 		{
 			"name": "Falling Portcullis",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 1,
 			"entries": [
@@ -190,7 +190,7 @@
 		},
 		{
 			"name": "Fiery Blast Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 2,
 			"threat": 2,
 			"entries": [
@@ -210,7 +210,7 @@
 		},
 		{
 			"name": "Net Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -230,7 +230,7 @@
 		},
 		{
 			"name": "Pit Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 1,
 			"entries": [
@@ -250,7 +250,7 @@
 		},
 		{
 			"name": "Poison Needle Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 1,
 			"threat": 3,
 			"entries": [
@@ -270,7 +270,7 @@
 		},
 		{
 			"name": "Scything Blade Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 2,
 			"threat": 2,
 			"entries": [
@@ -290,7 +290,7 @@
 		},
 		{
 			"name": "Sleep of Ages Trap",
-			"trapType": "SMPL",
+			"trapHazType": "SMPL",
 			"tier": 3,
 			"threat": 3,
 			"entries": [
@@ -310,7 +310,7 @@
 		},
 		{
 			"name": "Path of Blades",
-			"trapType": "CMPX",
+			"trapHazType": "CMPX",
 			"tier": 1,
 			"threat": 2,
 			"entries": [
@@ -426,7 +426,7 @@
 		},
 		{
 			"name": "Sphere of Crushing Doom",
-			"trapType": "CMPX",
+			"trapHazType": "CMPX",
 			"tier": 2,
 			"threat": 3,
 			"entries": [
@@ -493,7 +493,7 @@
 		},
 		{
 			"name": "Poisoned Tempest",
-			"trapType": "CMPX",
+			"trapHazType": "CMPX",
 			"tier": 3,
 			"threat": 3,
 			"entries": [
@@ -613,6 +613,112 @@
 			],
 			"source": "VGM",
 			"page": 196
+		},
+		{
+			"name": "Extreme Cold",
+			"trapHazType": "WTH",
+			"entries": [
+				"Whenever the temperature is at or below 0 degrees Fahrenheit, a creature exposed to the cold must succeed on a DC 10 Constitution saving throw at the end of each hour or gain one level of {@condition exhaustion}. Creatures with resistance or immunity to cold damage automatically succeed on the saving throw, as do creatures wearing cold weather gear (thick coats, gloves, and the like) and creatures naturally adapted to cold climates."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Extreme Heat",
+			"trapHazType": "WTH",
+			"entries": [
+				"When the temperature is at or above 100 degrees Fahrenheit, a creature exposed to the heat and without access to drinkable water must succeed on a Constitution saving throw at the end of each hour or gain one level of {@condition exhaustion}. The DC is 5 for the first hour and increases by 1 for each additional hour.",
+				"Creatures wearing medium or heavy armor, or who are clad in heavy clothing, have disadvantage on the saving throw. Creatures with resistance or immunity to fire damage automatically succeed on the saving throw, as do creatures naturally adapted to hot climates."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Strong Wind",
+			"trapHazType": "WTH",
+			"entries": [
+				"A strong wind imposes disadvantage on ranged weapon attack rolls and Wisdom (Perception) checks that rely on hearing. A strong wind also extinguishes open flames, disperses fog, and makes flying by nonmagical means nearly impossible. A flying creature in a strong wind must land at the end of its turn or fall.",
+				"A strong wind in a desert can create a sandstorm that imposes disadvantage on Wisdom (Perception) checks that rely on sight."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Heavy Precipitation",
+			"trapHazType": "WTH",
+			"entries": [
+				"Everything within an area of heavy rain or heavy snowfall is lightly obscured, and creatures in the area have disadvantage on Wisdom (Perception) checks that rely on sight. Heavy rain also extinguishes open flames and imposes disadvantage on Wisdom (Perception) checks that rely on hearing."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "High Altitude",
+			"trapHazType": "ENV",
+			"entries": [
+				"Traveling at altitudes of 10,000 feet or higher above sea level is taxing for a creature that needs to breathe, because of the reduced amount of oxygen in the air. Each hour such a creature spends traveling at high altitude counts as 2 hours for the purpose of determining how long that creature can travel.",
+				"Breathing creatures can become acclimated to a high altitude by spending 30 days or more at this elevation. Breathing creatures can't become acclimated to elevations above 20,000 feet unless they are native to such environments."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Desecrated Ground",
+			"trapHazType": "WLD",
+			"entries": [
+				"Some cemeteries and catacombs are imbued with the unseen traces of ancient evil. An area of desecrated ground can be any size, and a {@spell detect evil and good} spell cast within range reveals its presence.",
+				"Undead standing on desecrated ground have advantage on all saving throws.",
+				"A vial of {@item holy water (flask)|phb|holy water} purifies a 10-foot-square area of desecrated ground when sprinkled on it, and a {@spell hallow} spell purifies desecrated ground within its area."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Frigid Water",
+			"trapHazType": "WLD",
+			"entries": [
+				"A creature can be immersed in frigid water for a number of minutes equal to its Constitution score before suffering any ill effects. Each additional minute spent in frigid water requires the creature to succeed on a DC 10 Constitution saving throw or gain one level of {@condition exhaustion}. Creatures with resistance or immunity to cold damage automatically succeed on the saving throw, as do creatures that are naturally adapted to living in ice-cold water."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Quicksand",
+			"trapHazType": "WLD",
+			"entries": [
+				"A quicksand pit covers the ground in roughly a 10-foot square area and is usually 10 feet deep. When a creature enters the area, it sinks {@dice 1d4+1} feet into the quicksand and becomes restrained. At the start of each of the creature's turns, it sinks another {@dice 1d4} feet. As long as the creature isn't completely submerged in quicksand, it can escape by using its action and succeeding on a Strength check. The DC is 10 plus the number of feet the creature has sunk into the quicksand. A creature that is completely submerged in quicksand can't breathe (see the {@book suffocation|phb|8|suffocating} rules in the {@i Player's Handbook}).",
+				"A creature can pull another creature within its reach out of a quicksand pit by using its action and succeeding on a Strength check. The DC is 5 plus the number of feet the target creature has sunk into the quicksand."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Razorvine",
+			"trapHazType": "WLD",
+			"entries": [
+				"Razorvine is a plant that grows in wild tangles and hedges. It also clings to the sides of buildings and other surfaces as ivy does. A 10-foot-high, 10-foot-wide, 5-foot-thick wall or hedge of razorvine has AC 11, 25 hit points, and immunity to bludgeoning, piercing, and psychic damage.",
+				"When a creature comes into direct contact with razorvine for the first time on a turn, the creature must succeed on a DC 10 Dexterity saving throw or take 5 ({@dice 1d10}) slashing damage from the razorvine's bladelike thorns."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Slippery Ice",
+			"trapHazType": "WLD",
+			"entries": [
+				"Slippery ice is difficult terrain. When a creature moves onto slippery ice for the first time on a turn, it must succeed on a DC 10 Dexterity (Acrobatics) check or fall {@condition prone}."
+			],
+			"source": "DMG",
+			"page": 110
+		},
+		{
+			"name": "Thin Ice",
+			"trapHazType": "WLD",
+			"entries": [
+				"Thin ice has a weight tolerance of 3d10 × 10 pounds per 10-foot-square area. Whenever the total weight on an area of thin ice exceeds its tolerance, the ice in that area breaks. All creatures on broken ice fall through."
+			],
+			"source": "DMG",
+			"page": 111
 		}
 	]
 }

@@ -42,34 +42,15 @@ function sortItems (a, b, o) {
 	} else return 0;
 }
 
-function deselectFilter (deselectProperty, ...deselectValues) {
-	return function (val) {
-		if (window.location.hash.length && !window.location.hash.startsWith(`#${HASH_BLANK}`)) {
-			const curItem = History.getSelectedListElement();
-			if (!curItem) return deselNoHash();
-
-			const itemProperty = itemList[curItem.attr("id")][deselectProperty];
-			if (deselectValues.includes(itemProperty)) {
-				return deselNoHash();
-			} else {
-				return deselectValues.includes(val) && itemProperty !== val;
-			}
-		} else {
-			return deselNoHash();
-		}
-
-		function deselNoHash () {
-			return deselectValues.includes(val);
-		}
-	}
-}
-
 let mundanelist;
 let magiclist;
 const sourceFilter = getSourceFilter();
-const typeFilter = new Filter({header: "Type", deselFn: deselectFilter("type", "$", "Futuristic", "Modern", "Renaissance")});
+const DEFAULT_HIDDEN_TYPES = new Set(["$", "Futuristic", "Modern", "Renaissance"]);
+const typeFilter = new Filter({header: "Type", deselFn: (it) => DEFAULT_HIDDEN_TYPES.has(it)});
 const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
 const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
+const costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, allowGreater: true, suffix: "gp"});
+const attachedSpellsFilter = new Filter({header: "Attached Spells", displayFn: (it) => it.split("|")[0].toTitleCase()});
 let filterBox;
 function populateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
@@ -80,11 +61,11 @@ function populateTablesAndFilters (data) {
 	const categoryFilter = new Filter({
 		header: "Category",
 		items: ["Basic", "Generic Variant", "Specific Variant", "Other"],
-		deselFn: deselectFilter("category", "Specific Variant")
+		deselFn: (it) => it === "Specific Variant"
 	});
-	const miscFilter = new Filter({header: "Miscellaneous", items: ["Cursed", "Magic", "Mundane", "Sentient"]});
+	const miscFilter = new Filter({header: "Miscellaneous", items: ["Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
 
-	filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, miscFilter);
+	filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, miscFilter, attachedSpellsFilter);
 
 	const mundaneOptions = {
 		valueNames: ["name", "type", "cost", "weight", "source"],
@@ -101,10 +82,12 @@ function populateTablesAndFilters (data) {
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);
+	mundanelist.__listVisible = true;
 	mundanelist.on("updated", () => {
 		hideListIfEmpty(mundanelist, mundaneWrapper);
 		filterBox.setCount(mundanelist.visibleItems.length + magiclist.visibleItems.length, mundanelist.items.length + magiclist.items.length);
 	});
+	magiclist.__listVisible = true;
 	magiclist.on("updated", () => {
 		hideListIfEmpty(magiclist, magicWrapper);
 		filterBox.setCount(mundanelist.visibleItems.length + magiclist.visibleItems.length, mundanelist.items.length + magiclist.items.length);
@@ -117,9 +100,11 @@ function populateTablesAndFilters (data) {
 	);
 
 	function hideListIfEmpty (list, $eles) {
-		if (list.visibleItems.length === 0) {
+		if (list.visibleItems.length === 0 && list.__listVisible) {
+			list.__listVisible = false;
 			$eles.hide();
-		} else {
+		} else if (!list.__listVisible) {
+			list.__listVisible = true;
 			$eles.show();
 		}
 	}
@@ -219,6 +204,8 @@ function addItems (data) {
 		if (curitem.curse) curitem._fMisc.push("Cursed");
 		const isMundane = rarity === "None" || rarity === "Unknown" || category === "Basic";
 		curitem._fMisc.push(isMundane ? "Mundane" : "Magic");
+		if (curitem.charges) curitem._fMisc.push("Charges");
+		curitem._fCost = Parser.coinValueToNumber(curitem.value);
 
 		if (isMundane) {
 			liList["mundane"] += `
@@ -228,8 +215,8 @@ function addItems (data) {
 					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value || "\u2014"}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
-					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
-					<span class="cost hidden">${Parser.coinValueToNumber(curitem.value)}</span>
+					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="cost hidden">${curitem._fCost}</span>
 					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
 				</a>
 			</li>`;
@@ -241,7 +228,7 @@ function addItems (data) {
 					<span class="type col-xs-3 col-xs-3-3">${curitem.typeText}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
 					<span class="rarity col-xs-2">${rarity}</span>
-					<span class="source col-xs-1 col-xs-1-7 source${sourceAbv}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
 					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
 				</a>
 			</li>`;
@@ -252,6 +239,7 @@ function addItems (data) {
 		curitem.procType.forEach(t => typeFilter.addIfAbsent(t));
 		tierTags.forEach(tt => tierFilter.addIfAbsent(tt));
 		curitem._fProperties.forEach(p => propertyFilter.addIfAbsent(p));
+		attachedSpellsFilter.addIfAbsent(curitem.attachedSpells);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(mundanelist, magiclist);
 	// populate table
@@ -263,6 +251,7 @@ function addItems (data) {
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
 	typeFilter.items.sort(SortUtil.ascSort);
+	attachedSpellsFilter.items.sort(SortUtil.ascSortLower);
 
 	mundanelist.reIndex();
 	magiclist.reIndex();
@@ -301,7 +290,9 @@ function handleFilterChange () {
 			i._fProperties,
 			i.attunementCategory,
 			i.category,
-			i._fMisc
+			i._fCost,
+			i._fMisc,
+			i.attachedSpells
 		);
 	}
 	mundanelist.filter(listFilter);
@@ -332,7 +323,7 @@ function getSublistItem (item, pinId, addCount) {
 				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>		
 				<span class="price text-align-center col-xs-2">${item.value || "\u2014"}</span>
 				<span class="count text-align-center col-xs-2">${addCount || 1}</span>		
-				<span class="cost hidden">${Parser.coinValueToNumber(item.value)}</span>
+				<span class="cost hidden">${item._fCost}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

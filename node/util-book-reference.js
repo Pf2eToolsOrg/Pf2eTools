@@ -90,7 +90,9 @@ UtilBookReference = {
 					delete toAdd.data;
 
 					out[sect].sections.push(toAdd)
-				} else if (ent.entries) {
+				}
+
+				if (ent.entries) {
 					ent.entries.forEach(nxt => recursiveAdd(nxt));
 				}
 			}

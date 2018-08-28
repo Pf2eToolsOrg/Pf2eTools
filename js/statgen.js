@@ -148,16 +148,21 @@ function changeBase (e) {
 function rollstats () {
 	const formula = $(`#stats-formula`).val();
 
-	const rolls = [];
-	for (let i = 0; i < 6; i++) {
-		rolls.push(EntryRenderer.dice.parseRandomise(formula));
-	}
+	const tree = EntryRenderer.dice._parse2(formula);
 
 	const $rolled = $("#rolled");
-	if (~rolls.findIndex(it => !it)) {
+	if (!tree) {
 		$rolled.find("#rolls").prepend(`<p>Invalid dice formula!</p>`)
 	} else {
-		$rolled.find("#rolls").prepend(`<p class="stat-roll-line">${rolls.map(r => `<span class="stat-roll-item" title="${EntryRenderer.dice.getDiceSummary(r, true)}">${r.total}</span>`).join("")}</p>`);
+		const rolls = [];
+		for (let i = 0; i < 6; i++) {
+			const meta = {};
+			meta.__total = tree.evl(meta);
+			rolls.push(meta);
+		}
+		rolls.sort((a, b) => SortUtil.ascSort(b.__total, a.__total));
+
+		$rolled.find("#rolls").prepend(`<p class="stat-roll-line">${rolls.map(r => `<span class="stat-roll-item" title="${r.rawText}">${r.__total}</span>`).join("")}</p>`);
 	}
-	$rolled.find("#rolls p:eq(10)").remove();
+	$rolled.find("#rolls p:eq(15)").remove();
 }

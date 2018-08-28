@@ -35,6 +35,7 @@ function basename (str, sep) {
 }
 
 const meta = {};
+const languages = {};
 
 function pLoadMeta () {
 	return new Promise(resolve => {
@@ -47,6 +48,8 @@ function pLoadMeta () {
 						"regionalEffects": data.legendaryGroup[i].regionalEffects
 					};
 				}
+				Object.keys(data.language).forEach(k => languages[k] = data.language[k]);
+				languageFilter.items = Object.keys(languages).sort((a, b) => SortUtil.ascSortLower(languages[a], languages[b]));
 				resolve();
 			});
 	});
@@ -101,7 +104,9 @@ window.onload = function load () {
 	pLoadMeta()
 		.then(pLoadFluffIndex)
 		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad))
-		.then(() => onFilterChangeMulti(monsters));
+		.then(() => {
+			if (History.lastLoadedId == null) History._freshLoad();
+		});
 };
 
 let list;
@@ -156,6 +161,26 @@ const alignmentFilter = new Filter({
 	header: "Alignment",
 	items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A"],
 	displayFn: Parser.alignmentAbvToFull
+});
+const languageFilter = new Filter({
+	header: "Languages",
+	displayFn: (k) => languages[k],
+	umbrellaItem: ["X", "XX"]
+});
+const senseFilter = new Filter({
+	header: "Senses",
+	displayFn: (it) => Parser.monSenseTagToFull(it).toTitleCase(),
+	items: ["B", "D", "SD", "T", "U"]
+});
+const skillFilter = new Filter({
+	header: "Skills",
+	displayFn: (it) => it.toTitleCase(),
+	items: ["acrobatics", "animal handling", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion", "sleight of hand", "stealth", "survival"]
+});
+const saveFilter = new Filter({
+	header: "Saves",
+	displayFn: Parser.attAbvToFull,
+	items: ["str", "dex", "con", "int", "wis", "cha"]
 });
 const environmentFilter = new Filter({
 	header: "Environment",
@@ -259,6 +284,10 @@ const filterBox = initFilterBox(
 	sizeFilter,
 	speedFilter,
 	alignmentFilter,
+	saveFilter,
+	skillFilter,
+	senseFilter,
+	languageFilter,
 	acFilter,
 	averageHpFilter,
 	abilityScoreFilter
@@ -387,6 +416,10 @@ function handleFilterChange () {
 			m.size,
 			m._fSpeed,
 			m._fAlign,
+			m._fSave,
+			m._fSkill,
+			m.senseTags,
+			m.languageTags,
 			m._fAc,
 			m._fHp,
 			[
@@ -404,6 +437,7 @@ function handleFilterChange () {
 
 let monsters = [];
 let mI = 0;
+const lastRendered = {mon: null, isScaled: false};
 
 const _NEUT_ALIGNS = ["NX", "NY"];
 function addMonsters (data) {
@@ -435,6 +469,8 @@ function addMonsters (data) {
 		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
 		mon._fCondImm = mon.conditionImmune ? getAllImmRest(mon.conditionImmune, "conditionImmune") : [];
+		mon._fSave = mon.save ? Object.keys(mon.save) : [];
+		mon._fSkill = mon.skill ? Object.keys(mon.skill) : [];
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
@@ -442,7 +478,7 @@ function addMonsters (data) {
 			`<li class="row" ${FLTR_ID}="${mI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 					<span class="name col-xs-4 col-xs-4-2">${mon.name}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}${EntryRenderer.utils.getSourceSubText(mon)}" class="col-xs-2 source source${abvSource}">${abvSource}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}${EntryRenderer.utils.getSourceSubText(mon)}" class="col-xs-2 source ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
 					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon._pCr}</span>
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
@@ -491,7 +527,15 @@ function addMonsters (data) {
 		getSublistRow: getSublistItem,
 		primaryLists: [list]
 	});
-	EntryRenderer.hover.bindPopoutButton(monsters);
+
+	function popoutHandlerGenerator (toList, $btnPop) {
+		return (evt) => {
+			if (lastRendered.mon != null && lastRendered.isScaled) EntryRenderer.hover.doPopoutPreloaded($btnPop, lastRendered.mon, evt.clientX);
+			else if (History.lastLoadedId !== null) EntryRenderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
+		};
+	}
+
+	EntryRenderer.hover.bindPopoutButton(monsters, popoutHandlerGenerator);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(sublistFuncPreload);
@@ -569,6 +613,8 @@ function loadhash (id) {
 }
 
 function renderStatblock (mon, isScaled) {
+	lastRendered.mon = mon;
+	lastRendered.isScaled = isScaled;
 	renderer.setFirstSection(true);
 
 	const $content = $("#pagecontent").empty();
@@ -607,10 +653,10 @@ function renderStatblock (mon, isScaled) {
 		<tr><td colspan="6"><strong>Condition Immunities</strong> <span id="conimm">exhaustion</span></td></tr>
 		<tr><td colspan="6"><strong>Senses</strong> <span id="senses">darkvision 30 ft.</span> passive Perception <span id="pp">10</span></td></tr>
 		<tr><td colspan="6"><strong>Languages</strong> <span id="languages">Common</span></td></tr>
-		<tr><td colspan="6"><strong>Challenge</strong>
+		<tr><td colspan="6" style="position: relative;"><strong>Challenge</strong>
 			<span id="cr">1 (450 XP)</span>
-			<span id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="bestiary__btn-scale-cr btn btn-xs btn-default">
-				<span class="glyphicon ${isScaled ? "glyphicon-refresh" : "glyphicon-signal"}"></span>
+			<span id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-signal"></span>
 			</span>
 		</td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
@@ -651,7 +697,7 @@ function renderStatblock (mon, isScaled) {
 		$content.find("th.name").html(
 			`<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${mon.source.escapeQuotes()}')">${displayName}</span>
 			${mon.soundClip ? getPronunciationButton() : ""}
-		<span class="stats-source source${source}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>
+		<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>
 		<a href="${imgLink}" target="_blank">
 			<img src="${imgLink}" class="token" onerror="imgError(this)">
 		</a>`
@@ -740,20 +786,17 @@ function renderStatblock (mon, isScaled) {
 		const $btnScaleCr = $content.find("#btn-scale-cr");
 		if (Parser.crToNumber(mon.cr.cr || mon.cr) === 100) $btnScaleCr.hide();
 		else $btnScaleCr.show();
-		$btnScaleCr.off("click").click(() => {
-			const $inner = $btnScaleCr.find(`span`);
-			if ($inner.hasClass("glyphicon-signal")) {
-				const targetCr = prompt("Please enter the desired Challenge Rating");
-				if (!targetCr || !targetCr.trim()) return;
-				if (targetCr && targetCr.trim() && /^\d+(\/\d+)?$/.exec(targetCr) && Parser.crToNumber(targetCr) >= 0 && Parser.crToNumber(targetCr) <= 30) {
-					const scaled = ScaleCreature.scale(monsters[History.lastLoadedId], Parser.crToNumber(targetCr));
+		$btnScaleCr.off("click").click((evt) => {
+			evt.stopPropagation();
+			const mon = monsters[History.lastLoadedId];
+			const lastCr = lastRendered.mon ? lastRendered.mon.cr.cr || lastRendered.mon.cr : mon.cr.cr || mon.cr;
+			EntryRenderer.monster.getCrScaleTarget($btnScaleCr, lastCr, (targetCr) => {
+				if (targetCr === (mon.cr.cr || mon.cr)) renderStatblock(mon);
+				else {
+					const scaled = ScaleCreature.scale(mon, targetCr);
 					renderStatblock(scaled, true);
-				} else {
-					alert(`Please enter a valid Challenge Rating, between 0 and 30 (fractions may be written as e.g. "1/8").`);
 				}
-			} else {
-				renderStatblock(monsters[History.lastLoadedId]);
-			}
+			});
 		});
 
 		$content.find("tr.trait").remove();
@@ -924,16 +967,13 @@ function renderStatblock (mon, isScaled) {
 
 						$(this).attr("data-roll-prof-bonus", $(this).text());
 						$(this).attr("data-roll-prof-dice", profDiceString);
-						const parsed = EntryRenderer.dice._parse(profDiceString);
-						const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
-						entFormat.unshift({number: 1, faces: 20});
 
 						// here be (metallic) dragons
 						const cached = $(this).attr("onclick");
 						const nu = `
 							(function(it) {
 								if (PROF_DICE_MODE === PROF_MODE_DICE) {
-									EntryRenderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":${JSON.stringify(entFormat)}}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
+									EntryRenderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20+${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
 								} else {
 									${cached.replace(/this/g, "it")}
 								}
@@ -1090,13 +1130,10 @@ function handleUnknownHash (link, sub) {
 }
 
 function dcRollerClick (event, ele, exp) {
-	const parsed = EntryRenderer.dice._parse(exp);
-	const entFormat = parsed.dice.map(d => ({number: d.num, faces: d.faces}));
-	entFormat[0].modifier = parsed.mod;
 	const it = {
 		type: "dice",
 		rollable: true,
-		toRoll: entFormat
+		toRoll: exp
 	};
 	EntryRenderer.dice.rollerClick(event, ele, JSON.stringify(it));
 }

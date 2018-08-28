@@ -190,7 +190,7 @@
 					"(a) two {@item handaxe|phb|handaxes} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
 					"An {@item explorer's pack|phb}, and four {@item javelin|phb|javelins}"
 				],
-				"goldAlternative": "2d4 × 10"
+				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
 			},
 			"classFeatures": [
 				[
@@ -513,7 +513,7 @@
 														"type": "entries",
 														"name": "Elk",
 														"entries": [
-															"While you're raging and aren't wearing heaving armor, your walking speed increases by 15 feet. The spirit of the elk makes you extraordinarily swift."
+															"While you're raging and aren't wearing heavy armor, your walking speed increases by 15 feet. The spirit of the elk makes you extraordinarily swift."
 														]
 													}
 												]
@@ -672,7 +672,7 @@
 														"type": "entries",
 														"name": "Elk",
 														"entries": [
-															"While raging, you can use a bonus action during your move to pass through the space of a Large or smaller creature. That creature must succeed on a Strength saving throw (DC 8 + your Strength bonus + your proficiency bonus) or be knocked {@condition prone} and take bludgeoning damage equal to 1d12 + your strength modifier."
+															"While raging, you can use a bonus action during your move to pass through the space of a Large or smaller creature. That creature must succeed on a Strength saving throw (DC 8 + your Strength bonus + your proficiency bonus) or be knocked {@condition prone} and take bludgeoning damage equal to {@dice 1d12} + your strength modifier."
 														]
 													}
 												]
@@ -731,7 +731,7 @@
 										"name": "Battlerager Armor",
 										"entries": [
 											"When you choose this path at 3rd level, you gain the ability to use {@item spiked armor|scag} as a weapon.",
-											"While you are wearing {@item spiked armor|scag} and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal 1d4 piercing damage. You use your Strength modifier for the attack and damage rolls.",
+											"While you are wearing {@item spiked armor|scag} and are raging, you can use a bonus action to make one melee weapon attack with your armor spikes at a target within 5 feet of you. If the attack hits, the spikes deal {@dice 1d4} piercing damage. You use your Strength modifier for the attack and damage rolls.",
 											"Additionally, when you use the Attack action to grapple a creature, the target takes 3 piercing damage if your grapple check succeeds."
 										]
 									}
@@ -834,7 +834,7 @@
 										"type": "entries",
 										"name": "Vengeful Ancestors",
 										"entries": [
-											"At 14th level, your ancestral spirits grow powerful enough to strike your foes. When you or an ally you can see within 30 feet of you is damaged by a melee attack while you're raging, you can use your reaction to cause the attacker to take 2d8 force damage from the spirits."
+											"At 14th level, your ancestral spirits grow powerful enough to strike your foes. When you or an ally you can see within 30 feet of you is damaged by a melee attack while you're raging, you can use your reaction to cause the attacker to take {@dice 2d8} force damage from the spirits."
 										]
 									}
 								]
@@ -871,7 +871,7 @@
 										"type": "entries",
 										"name": "Ancestral Shield",
 										"entries": [
-											"Beginning at 6th level, the guardian spirits that aid you can provide protection for your allies. If you are raging and a creature you can see within 30 feet of you takes damage, you can use your reaction and reduce that damage by 2d8. When you reach certain levels in this class, you can reduce the damage by more: by 3d8 at 10th level and by 4d8 at 14th level."
+											"Beginning at 6th level, the guardian spirits that aid you can provide protection for your allies. If you are raging and a creature you can see within 30 feet of you takes damage, you can use your reaction and reduce that damage by {@dice 2d8}. When you reach certain levels in this class, you can reduce the damage by more: by {@dice 3d8} at 10th level and by {@dice 4d8} at 14th level."
 										]
 									}
 								]
@@ -940,7 +940,7 @@
 														"type": "entries",
 														"name": "Sea",
 														"entries": [
-															"At the end of each of your turns, you can choose a creature in your aura other than yourself. The target must make a Dexterity saving throw against a DC equal to 8 + your proficiency bonus + your Constitution modifier. The target takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. This damage increases to 3d6 at 10th level and to 4d6 at 15th level."
+															"At the end of each of your turns, you can choose a creature in your aura other than yourself. The target must make a Dexterity saving throw against a DC equal to 8 + your proficiency bonus + your Constitution modifier. The target takes {@dice 2d6} lightning damage on a failed save, and half as much damage on a successful one. This damage increases to {@dice 3d6} at 10th level and to {@dice 4d6} at 15th level."
 														]
 													}
 												]
@@ -1090,7 +1090,7 @@
 										"type": "entries",
 										"name": "Divine Fury",
 										"entries": [
-											"Starting when you choose this path at 3rd level, you can channel divine fury when you start to rage. If you do so, you become cloaked in an aura of divine power until the rage ends. At the end of each of your turns for that duration, each creature within 5 feet of you takes damage equal to 1d6 + half your barbarian level. The damage is necrotic or radiant; you choose the type of damage when you gain this feature."
+											"Starting when you choose this path at 3rd level, you can channel divine fury when you start to rage. If you do so, you become cloaked in an aura of divine power until the rage ends. At the end of each of your turns for that duration, each creature within 5 feet of you takes damage equal to {@dice 1d6} + half your barbarian level. The damage is necrotic or radiant; you choose the type of damage when you gain this feature."
 										]
 									},
 									{
@@ -1174,8 +1174,8 @@
 										"type": "entries",
 										"name": "Spirit Shield",
 										"entries": [
-											"Beginning at 6th level, the guardian spirits that aid you can provide supernatural protection to those you defend. If you are raging and another creature you can see within 30 feet of you takes damage, you can use your reaction to reduce that damage by 2d6.",
-											"When you reach certain levels in this class, you can reduce the damage by more: by 3d6 at 10th level and by 4d6 at 14th level."
+											"Beginning at 6th level, the guardian spirits that aid you can provide supernatural protection to those you defend. If you are raging and another creature you can see within 30 feet of you takes damage, you can use your reaction to reduce that damage by {@dice 2d6}.",
+											"When you reach certain levels in this class, you can reduce the damage by more: by {@dice 3d6} at 10th level and by {@dice 4d6} at 14th level."
 										]
 									}
 								]
@@ -1242,7 +1242,7 @@
 														"type": "entries",
 														"name": "Sea",
 														"entries": [
-															"When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw. The target takes 1d6 lightning damage on a failed save, or half as much damage on a successful one. The damage increases when you reach certain levels in this class, increasing to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th level."
+															"When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw. The target takes {@dice 1d6} lightning damage on a failed save, or half as much damage on a successful one. The damage increases when you reach certain levels in this class, increasing to {@dice 2d6} at 10th level, {@dice 3d6} at 15th level, and {@dice 4d6} at 20th level."
 														]
 													},
 													{
@@ -1367,7 +1367,7 @@
 										"type": "entries",
 										"name": "Divine Fury",
 										"entries": [
-											"Starting when you choose this path at 3rd level, you can channel divine fury into your weapon strikes. While you're raging, the first creature you hit on each of your turns with a weapon attack takes extra damage equal to 1d6 + half your barbarian level. The extra damage is necrotic or radiant; you choose the type of damage when you gain this feature."
+											"Starting when you choose this path at 3rd level, you can channel divine fury into your weapon strikes. While you're raging, the first creature you hit on each of your turns with a weapon attack takes extra damage equal to {@dice 1d6} + half your barbarian level. The extra damage is necrotic or radiant; you choose the type of damage when you gain this feature."
 										]
 									},
 									{

@@ -315,7 +315,8 @@ function loadparser (data) {
 	// init editor
 	const editor = ace.edit("statblock");
 	editor.setOptions({
-		wrap: true
+		wrap: true,
+		showPrintMargin: false
 	});
 
 	function catchErrors (toRun) {

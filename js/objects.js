@@ -63,7 +63,7 @@ function addObjects (data) {
 				<a id="${obI}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
 					<span class="name col-xs-8">${obj.name}</span>
 					<span class="size col-xs-2">${Parser.sizeAbvToFull(obj.size)}</span>
-					<span class="source col-xs-2 source${abvSource}" title="${Parser.sourceJsonToFull(obj.source)}">${abvSource}</span>
+					<span class="source col-xs-2 ${Parser.sourceJsonToColor(obj.source)}" title="${Parser.sourceJsonToFull(obj.source)}">${abvSource}</span>
 				</a>
 			</li>
 		`;

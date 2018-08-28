@@ -406,7 +406,7 @@
 										"You had parents, of course, even if they didn't raise you. To determine what you know about these people, use the Parents table. If you want, you can roll separately on the table for your mother and your father. Use the supplemental tables as desired (particularly Class, Occupation, and Alignment) to learn more about your parents.",
 										{
 											"type": "entries",
-											"name": "Nonhuman\tParents",
+											"name": "Nonhuman Parents",
 											"entries": [
 												"If your character is a half-elf, a half-orc, or a tiefling, you can use one of the tables below to determine the race of each of your parents. When you have a result, randomly determine which part of the result refers to your father and which to your mother.",
 												{
@@ -673,7 +673,7 @@
 										},
 										{
 											"type": "entries",
-											"name": "Other\tDetails",
+											"name": "Other Details",
 											"entries": [
 												"You can decide any other details you like about each sibling, including gender, personality, and place in the world.",
 												{
@@ -714,7 +714,7 @@
 													"type": "table",
 													"caption": "Birth Order",
 													"colLabels": [
-														"d12",
+														"2d6",
 														"Birth Order"
 													],
 													"colStyles": [
@@ -749,7 +749,7 @@
 										"Next, refer to the Family Lifestyle table to determine the general circumstances of your upbringing. (Chapter 5 of the player's handbook has more information about lifestyles.) The result on that table includes a number that is applied to your roll on the Childhood Home table, which tells you where you spent your early years. Wrap up this section by using the Childhood Memories table, which tells you how you were treated by other youngsters as you were growing up.",
 										{
 											"type": "entries",
-											"name": "Supplemental\tTables",
+											"name": "Supplemental Tables",
 											"entries": [
 												"You can roll on the Relationship table to determine how your family members or other important figures in your life feel about you. You can also use the Race, Occupation, and Alignment tables to learn more about the family members or guardians who raised you. {@b Developer's Note:} Below you will find a link to a {@b Story Template} which uses the tables in this and the sections below to randomly determine your back story. Instructions on how to use the template are given in the template itself.",
 												{
@@ -844,7 +844,7 @@
 													"type": "table",
 													"caption": "Family Lifestyle",
 													"colLabels": [
-														"d18",
+														"3d6",
 														"Lifestyle*"
 													],
 													"colStyles": [
@@ -889,7 +889,7 @@
 													"type": "table",
 													"caption": "Childhood Home",
 													"colLabels": [
-														"d140",
+														"d100",
 														"Home"
 													],
 													"colStyles": [
@@ -939,7 +939,7 @@
 													"type": "table",
 													"caption": "Childhood Memories",
 													"colLabels": [
-														"d25",
+														"3d6",
 														"Memory"
 													],
 													"colStyles": [
@@ -2562,7 +2562,7 @@
 									"type": "table",
 									"caption": "Alignment",
 									"colLabels": [
-										"d18",
+										"3d6",
 										"Alignment"
 									],
 									"colStyles": [
@@ -2856,7 +2856,7 @@
 									"type": "table",
 									"caption": "Relationship",
 									"colLabels": [
-										"d12",
+										"3d4",
 										"Attitude"
 									],
 									"colStyles": [
@@ -2882,7 +2882,7 @@
 									"type": "table",
 									"caption": "Status",
 									"colLabels": [
-										"d18",
+										"3d6",
 										"Status"
 									],
 									"colStyles": [
@@ -3057,12 +3057,12 @@
 					"type": "section",
 					"name": "Falling",
 					"entries": [
-						"Falling from a great height is a significant risk for adventurers and their foes. The rule given in the player's handbook is simple: at the end of a fall, you take 1d6 bludgeoning damage for every 10 feet you fell, to a maximum of 20d6. You also land prone, unless you somehow avoid taking damage from the fall. Here are two optional rules that expand on that simple rule.",
+						"Falling from a great height is a significant risk for adventurers and their foes. The rule given in the player's handbook is simple: at the end of a fall, you take {@dice 1d6} bludgeoning damage for every 10 feet you fell, to a maximum of {@dice 20d6}. You also land {@condition prone}, unless you somehow avoid taking damage from the fall. Here are two optional rules that expand on that simple rule.",
 						{
 							"type": "entries",
 							"name": "Rate of Falling",
 							"entries": [
-								"The rule for falling assumes that a creature immediately drops the entire distance when it falls. But what if a creature is at a high altitude when it falls, perhaps on the back of a griffon or on board an airship? Realistically, a fall from such a height can take more than a few seconds, extending past the end of the turn when the fall occurred. If you'd like high-altitude falls to be properly time-consuming, use the following optional rule.",
+								"The rule for falling assumes that a creature immediately drops the entire distance when it falls. But what if a creature is at a high altitude when it falls, perhaps on the back of a {@creature griffon} or on board an {@item airship}? Realistically, a fall from such a height can take more than a few seconds, extending past the end of the turn when the fall occurred. If you'd like high-altitude falls to be properly time-consuming, use the following optional rule.",
 								"When you fall from a great height, you instantly descend up to 500 feet. If you're still falling on your next turn, you descend up to 500 feet at the end of that turn. This process continues until the fall ends, either because you hit the ground or the fall is otherwise halted."
 							]
 						},
@@ -3124,7 +3124,7 @@
 					"entries": [
 						"The rules are purposely open-ended concerning mundane tasks like tying knots, but sometimes knowing how well a knot was fashioned is important in a dramatic scene when someone is trying to untie a knot or slip out of one. Here's an optional rule for determining the effectiveness of a knot.",
 						"The creature who ties the knot makes an Intelligence (Sleight of Hand) check when doing so. The total of the check becomes the DC for an attempt to untie the knot with an Intelligence (Sleight of Hand) check or to slip out of it with a Dexterity (Acrobatics) check.",
-						"This rule intentionally links Sleight of Hand with Intelligence, rather than Dexterity. This is an example of how to apply the rule in the \"Variant: Skills with Different Abilities\" section in chapter 7 of the player's handbook."
+						"This rule intentionally links Sleight of Hand with Intelligence, rather than Dexterity. This is an example of how to apply the rule in the {@variantrule Skills with Different Abilities|phb|\"Variant: Skills with Different Abilities\"} section in chapter 7 of the player's handbook."
 					]
 				},
 				{

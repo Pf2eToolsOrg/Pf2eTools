@@ -71,7 +71,7 @@ function addBackgrounds (data) {
 			`<li class="row" ${FLTR_ID}="${bgI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${bgI}' href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
 					<span class='name col-xs-10'>${bg.name.replace("Variant ", "")}</span>
-					<span class='source col-xs-2 source${bg.source}' title="${Parser.sourceJsonToFull(bg.source)}">${Parser.sourceJsonToAbv(bg.source)}</span>
+					<span class='source col-xs-2 ${Parser.sourceJsonToColor(bg.source)}' title="${Parser.sourceJsonToFull(bg.source)}">${Parser.sourceJsonToAbv(bg.source)}</span>
 				</a>
 			</li>`;
 

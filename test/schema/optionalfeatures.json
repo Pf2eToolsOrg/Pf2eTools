@@ -1,0 +1,127 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"version": "1.3.0",
+	"title": "Optional Features",
+	"type": "object",
+
+	"definitions": {
+		"prerequisite": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					{
+						"properties": {
+							"type": {"const": "prereqLevel"},
+							"level": {
+								"type": "integer",
+								"enum": [5, 7, 9, 12, 15, 18]
+							},
+							"class": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									}
+								},
+								"required": ["name"],
+								"additionalProperties": false
+							}
+						},
+						"required": ["level"],
+						"additionalProperties": false
+					},
+					{
+						"properties": {
+							"type": {"const": "prereqPact"},
+							"entry": {
+								"type": "string",
+								"enum": [
+									"Chain", "Tome", "Blade"
+								]
+							}
+						},
+						"required": ["entry"],
+						"additionalProperties": false
+					},
+					{
+						"properties": {
+							"type": {"const": "prereqPatron"},
+							"entry": {
+								"type": "string",
+								"enum": [
+									"The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", "The Kraken"
+								]
+							}
+						},
+						"required": ["entry"],
+						"additionalProperties": false
+					},
+					{
+						"properties": {
+							"type": {"const": "prereqSpell"},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							}
+						},
+						"required": ["entries"],
+						"additionalProperties": false
+					},
+					{
+						"type": "string"
+					}
+				]
+			}
+		},
+
+		"optionalfeature": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"prerequisite": {
+					"$ref": "#/definitions/prerequisite"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
+				"data": {
+					"type": "object"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				},
+				"featureType": {
+					"type": "string",
+					"enum": ["EI", "MM", "MAB", "OTH"]
+				}
+			},
+			"required": [
+				"name",
+				"entries",
+				"source",
+				"featureType"
+			],
+			"additionalProperties": false
+		}
+	},
+
+	"properties": {
+		"optionalfeature": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/optionalfeature"}
+		}
+	},
+	"additionalProperties": false
+}

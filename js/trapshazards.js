@@ -24,9 +24,12 @@ function onJsonLoad (data) {
 			"MAG",
 			"SMPL",
 			"CMPX",
-			"HAZ"
+			"HAZ",
+			"WTH",
+			"ENV",
+			"WLD"
 		],
-		displayFn: Parser.trapTypeToFull
+		displayFn: Parser.trapHazTypeToFull
 	});
 	filterBox = initFilterBox(
 		sourceFilter,
@@ -78,23 +81,23 @@ function addTrapsHazards (data) {
 
 	if (data.trap && data.trap.length) trapsAndHazardsList = trapsAndHazardsList.concat(data.trap);
 	if (data.hazard && data.hazard.length) {
-		data.hazard.forEach(h => h.trapType = "HAZ");
+		data.hazard.forEach(h => h.trapHazType = h.trapHazType || "HAZ");
 		trapsAndHazardsList = trapsAndHazardsList.concat(data.hazard);
 	}
 
 	let tempString = "";
 	for (; thI < trapsAndHazardsList.length; thI++) {
 		const it = trapsAndHazardsList[thI];
-		if (it.trapType === "HAZ" && ExcludeUtil.isExcluded(it.name, "hazard", it.source)) continue;
-		else if (it.trapType !== "HAZ" && ExcludeUtil.isExcluded(it.name, "trap", it.source)) continue;
+		if (!EntryRenderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "hazard", it.source)) continue;
+		else if (EntryRenderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "trap", it.source)) continue;
 		const abvSource = Parser.sourceJsonToAbv(it.source);
 
 		tempString += `
 			<li class="row" ${FLTR_ID}="${thI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${thI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-xs-6">${it.name}</span>
-					<span class="trapType col-xs-4">${Parser.trapTypeToFull(it.trapType)}</span>
-					<span class="source col-xs-2 source${abvSource}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
+					<span class="trapType col-xs-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
+					<span class="source col-xs-2 ${Parser.sourceJsonToColor(abvSource)}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
 				</a>
 			</li>
 		`;
@@ -134,7 +137,7 @@ function handleFilterChange () {
 		return filterBox.toDisplay(
 			f,
 			it.source,
-			it.trapType
+			it.trapHazType
 		);
 	});
 	FilterBox.nextIfHidden(trapsAndHazardsList);
@@ -145,7 +148,7 @@ function getSublistItem (it, pinId) {
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 				<span class="name col-xs-8">${it.name}</span>		
-				<span class="type col-xs-4">${Parser.trapTypeToFull(it.trapType)}</span>		
+				<span class="type col-xs-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>		
 				<span class="id hidden">${pinId}</span>				
 			</a>
 		</li>

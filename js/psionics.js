@@ -2,9 +2,6 @@
 
 const JSON_URL = "data/psionics.json";
 
-const STR_JOIN_MODE_LIST = ",";
-const TMP_HIDDEN_MODE = `"{0}"`;
-
 const ID_PSIONICS_LIST = "psionicsList";
 
 const JSON_ITEM_NAME = "name";
@@ -31,15 +28,15 @@ function getHiddenModeList (psionic) {
 	if (modeList === undefined) return STR_EMPTY;
 	const outArray = [];
 	for (let i = 0; i < modeList.length; ++i) {
-		outArray.push(TMP_HIDDEN_MODE.formatUnicorn(modeList[i].name));
+		outArray.push(`"${modeList[i].name}"`);
 		if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
 			const subModes = modeList[i][JSON_ITEM_SUBMODES];
 			for (let j = 0; j < subModes.length; ++j) {
-				outArray.push(TMP_HIDDEN_MODE.formatUnicorn(subModes[j].name))
+				outArray.push(`"${subModes[j].name}"`)
 			}
 		}
 	}
-	return outArray.join(STR_JOIN_MODE_LIST);
+	return outArray.join(",");
 }
 
 window.onload = function load () {
@@ -138,7 +135,7 @@ function onJsonLoad (data) {
 				psionicList,
 				{
 					name: {name: "Name", transform: true},
-					source: {name: "Source", transform: (it) => `<span class="source${Parser.stringToCasedSlug(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
+					source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
 					_text: {name: "Text", transform: (it) => it.type === "T" ? EntryRenderer.psionic.getTalentText(it, renderer) : EntryRenderer.psionic.getDisciplineText(it, renderer), flex: 3}
 				},
 				{generator: ListUtil.basicFilterGenerator},

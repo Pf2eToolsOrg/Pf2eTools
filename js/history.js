@@ -10,7 +10,8 @@ class History {
 		const [link, ...sub] = History._getHashParts();
 
 		let blankFilterLoad = false;
-		if (!evt || sub.length === 0) {
+		if (link !== History.lastLoadedLink || sub.length === 0) {
+			History.lastLoadedLink = link;
 			if (link === HASH_BLANK) {
 				blankFilterLoad = true;
 			} else {
@@ -103,7 +104,14 @@ class History {
 	static cleanSetHash (toSet) {
 		window.location.hash = toSet.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
 	}
+
+	static getHashSource () {
+		const [link, ...sub] = History._getHashParts();
+		// by convention, the source is the last hash segment
+		return link ? link.split(HASH_LIST_SEP).last() : null;
+	}
 }
+History.lastLoadedLink = null;
 History.lastLoadedId = null;
 History.initialLoad = true;
 History.isHistorySuppressed = false;

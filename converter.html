@@ -11,6 +11,8 @@
 	<title>Stat Block Converter - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
@@ -35,32 +37,6 @@
 
 		.night-mode .outputArea {
 			background: #333;
-		}
-
-		.night-mode .ace-tm {
-			background: #222;
-			color: #bbb;
-		}
-
-		.night-mode .ace-tm .ace_gutter {
-			background: #333;
-			color: #bbb;
-		}
-
-		.night-mode .ace-tm .ace_gutter-active-line {
-			background: #222;
-		}
-
-		.night-mode .ace-tm .ace_marker-layer .ace_selection {
-			background: rgba(181, 213, 255, 0.4);
-		}
-
-		.night-mode .ace-tm .ace_marker-layer .ace_active-line {
-			background: rgba(0, 116, 255, 0.3);
-		}
-
-		.night-mode .ace-tm .ace_cursor {
-			color: #bbb;
 		}
 
 		.select-inline{
@@ -115,7 +91,7 @@
 					<option value="md" selected>Parse as Markdown</option>
 				</select>
 			</h3>
-			<pre id="statblock" class="inputArea">
+			<pre id="statblock" class="inputArea ace_editor">
 ___
 >## Lich
 >*Medium undead, any evil alignment*
@@ -195,19 +171,23 @@ ___
 			</div>
 		</div>
 	</main>
-
-	<!--5ETOOLS_SCRIPT_ANCHOR-->
-	<script type="text/javascript" src="js/utils.js"></script>
-	<script type="text/javascript" src="js/omnidexer.js"></script>
-	<script type="text/javascript" src="js/omnisearch.js"></script>
-	<script type="text/javascript" src="js/entryrender.js"></script>
-	<script type="text/javascript" src="js/converterutils.js"></script>
-	<script type="text/javascript" src="js/converter.js"></script>
-	<script type="text/javascript" src="lib/list.js"></script>
-	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="lib/bootstrap.js"></script>
-	<script type="text/javascript" src="lib/elasticlunr.js"></script>
-	<script type="text/javascript" src="lib/ace.js"></script>
 </div>
+
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_SCRIPT_ANCHOR__ACE-JS-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/converterutils.js"></script>
+<script type="text/javascript" src="js/converter.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/bootstrap.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script type="text/javascript" src="lib/ace.js"></script>
 </body>
 </html>

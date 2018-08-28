@@ -29,7 +29,11 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, pOptiona
 		// collect a list of sources to load
 		const sources = Object.keys(src2UrlMap);
 		const defaultSel = sources.filter(s => defaultSourceSelFn(s));
-		const userSel = [...new Set((FilterBox.getSelectedSources() || []).concat((ListUtil.getSelectedSources() || [])))];
+		const hashSourceRaw = History.getHashSource();
+		const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
+		const userSel = [...new Set(
+			(FilterBox.getSelectedSources() || []).concat(ListUtil.getSelectedSources() || []).concat(hashSource ? [hashSource] : [])
+		)];
 
 		const allSources = [];
 

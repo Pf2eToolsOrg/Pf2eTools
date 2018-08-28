@@ -270,6 +270,8 @@
 		else mon.cr = crOutStr;
 
 		mon._displayName = `${mon.name} (CR ${crOutStr})`;
+		mon._isScaledCr = toCr;
+		mon._originalCr = mon._originalCr || crIn;
 
 		return mon;
 	},

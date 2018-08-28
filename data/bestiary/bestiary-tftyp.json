@@ -166,7 +166,84 @@
 					]
 				}
 			],
-			"page": 9
+			"page": 9,
+			"languageTags": [
+				"DU",
+				"X"
+			]
+		},
+		{
+			"name": "Calcryx",
+			"isNPC": true,
+			"size": "M",
+			"type": "dragon",
+			"source": "TftYP",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 32,
+				"formula": "5d8+10"
+			},
+			"speed": {
+				"walk": 30,
+				"burrow": 15,
+				"fly": 60,
+				"swim": 30
+			},
+			"str": 14,
+			"dex": 10,
+			"con": 14,
+			"int": 5,
+			"wis": 10,
+			"cha": 11,
+			"save": {
+				"dex": "+2",
+				"con": "+4",
+				"wis": "+2",
+				"cha": "+2"
+			},
+			"skill": {
+				"perception": "+4",
+				"stealth": "+2"
+			},
+			"immune": [
+				"cold"
+			],
+			"senses": "blindsight 10 ft., darkvision 60 ft.",
+			"passive": 14,
+			"languages": "Draconic",
+			"cr": "2",
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d10+2}) piercing damage plus 2 ({@dice 1d4}) cold damage."
+					]
+				},
+				{
+					"name": "Cold Breath {@recharge 5}",
+					"entries": [
+						"The dragon exhales an icy blast of hail in a 15-foot cone. Each creature in that area must make a DC 12 Constitution saving throw, taking 22 ({@dice 5d8}) cold damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"page": 23,
+			"languageTags": [
+				"DR"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"source": "TftYP",
@@ -269,6 +346,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"S"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -344,6 +428,12 @@
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -462,6 +552,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -547,6 +640,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -665,6 +764,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -730,7 +836,14 @@
 					]
 				}
 			],
-			"page": 25
+			"page": 25,
+			"languageTags": [
+				"C",
+				"GO"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Erky Timbers",
@@ -812,7 +925,16 @@
 				}
 			],
 			"description": "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities.",
-			"page": 22
+			"page": 22,
+			"languageTags": [
+				"C",
+				"DR",
+				"G",
+				"GO"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Four-Armed Gargoyle",
@@ -901,6 +1023,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"T"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1046,6 +1174,79 @@
 			],
 			"actionTags": [
 				"Swallow"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"source": "TftYP",
+			"name": "Giant Lightning Eel",
+			"size": "L",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"average": 42,
+				"formula": "5d10+15"
+			},
+			"speed": {
+				"walk": 5,
+				"swim": 30
+			},
+			"str": 11,
+			"dex": 17,
+			"con": 16,
+			"int": 2,
+			"wis": 12,
+			"cha": 3,
+			"resist": [
+				"lightning"
+			],
+			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"passive": 11,
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Water Breathing",
+					"entries": [
+						"The eel can breathe only underwater."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The eel makes two bite attacks."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) piercing damage plus 4 ({@dice 1d8}) lightning damage."
+					]
+				},
+				{
+					"name": "Lightning Jolt {@recharge 5}",
+					"entries": [
+						"One creature the eel touches within 5 feet of it outside water, or each creature within 15 feet of it in a body of water, must make a DC 12 Constitution saving throw. On failed save, a target takes 13 ({@dice 3d8}) lightning damage. If the target takes any of this damage, the target is {@condition stunned} until the end of the eel's next turn. On a successful save, a target takes half as much damage and isn't {@condition stunned}."
+					]
+				}
+			],
+			"page": 236,
+			"traitTags": [
+				"Water Breathing"
+			],
+			"actionTags": [
+				"Multiattack"
 			]
 		},
 		{
@@ -1130,6 +1331,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"GI"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1286,6 +1493,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1378,6 +1588,13 @@
 					},
 					"ability": "wis"
 				}
+			],
+			"languageTags": [
+				"C",
+				"GO"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1416,7 +1633,10 @@
 					]
 				}
 			],
-			"page": 21
+			"page": 21,
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"source": "TftYP",
@@ -1610,6 +1830,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"DR",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1693,6 +1920,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
 			]
 		},
 		{
@@ -1793,6 +2023,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"S"
 			]
 		},
 		{
@@ -1908,6 +2142,13 @@
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
+			],
+			"languageTags": [
+				"C",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -1999,6 +2240,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2094,6 +2341,15 @@
 			"page": 240,
 			"traitTags": [
 				"Amphibious"
+			],
+			"languageTags": [
+				"AQ",
+				"C",
+				"E",
+				"S"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2197,6 +2453,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -2366,6 +2629,11 @@
 			],
 			"traitTags": [
 				"Spider Climb"
+			],
+			"languageTags": [
+				"C",
+				"P",
+				"OTH"
 			]
 		},
 		{
@@ -2559,6 +2827,11 @@
 					},
 					"ability": "int"
 				}
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"GO"
 			]
 		},
 		{
@@ -2641,7 +2914,10 @@
 					]
 				}
 			],
-			"page": 243
+			"page": 243,
+			"languageTags": [
+				"C"
+			]
 		},
 		{
 			"source": "TftYP",
@@ -2729,6 +3005,14 @@
 			"traitTags": [
 				"Amphibious",
 				"Magic Resistance"
+			],
+			"languageTags": [
+				"C",
+				"E",
+				"S"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2880,6 +3164,9 @@
 			"traitTags": [
 				"Shapechanger",
 				"Keen Senses"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
@@ -3003,6 +3290,13 @@
 			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -3207,6 +3501,16 @@
 				"Legendary Resistances",
 				"Rejuvenation",
 				"Turn Resistance"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"I",
+				"P",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3313,6 +3617,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
 			]
 		},
 		{
@@ -3410,6 +3717,10 @@
 					},
 					"ability": "int"
 				}
+			],
+			"languageTags": [
+				"C",
+				"OTH"
 			]
 		},
 		{
@@ -3497,6 +3808,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"OTH"
 			]
 		},
 		{
@@ -3689,6 +4004,9 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3793,6 +4111,9 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/713/vampiric-mist.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3881,6 +4202,9 @@
 			"traitTags": [
 				"Amorphous",
 				"False Appearance"
+			],
+			"languageTags": [
+				"TP"
 			]
 		},
 		{
@@ -3981,141 +4305,14 @@
 			"traitTags": [
 				"Sunlight Sensitivity",
 				"Pack Tactics"
-			]
-		},
-		{
-			"source": "TftYP",
-			"name": "Giant Lightning Eel",
-			"size": "L",
-			"type": "beast",
-			"alignment": [
-				"U"
 			],
-			"ac": [
-				13
-			],
-			"hp": {
-				"average": 42,
-				"formula": "5d10+15"
-			},
-			"speed": {
-				"walk": 5,
-				"swim": 30
-			},
-			"str": 11,
-			"dex": 17,
-			"con": 16,
-			"int": 2,
-			"wis": 12,
-			"cha": 3,
-			"resist": [
-				"lightning"
-			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
-			"passive": 11,
-			"cr": "3",
-			"trait": [
-				{
-					"name": "Water Breathing",
-					"entries": [
-						"The eel can breathe only underwater."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The eel makes two bite attacks."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) piercing damage plus 4 ({@dice 1d8}) lightning damage."
-					]
-				},
-				{
-					"name": "Lightning Jolt {@recharge 5}",
-					"entries": [
-						"One creature the eel touches within 5 feet of it outside water, or each creature within 15 feet of it in a body of water, must make a DC 12 Constitution saving throw. On failed save, a target takes 13 ({@dice 3d8}) lightning damage. If the target takes any of this damage, the target is {@condition stunned} until the end of the eel's next turn. On a successful save, a target takes half as much damage and isn't {@condition stunned}."
-					]
-				}
-			],
-			"page": 236,
-			"traitTags": [
-				"Water Breathing"
-			],
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Calcryx",
-			"isNPC": true,
-			"size": "M",
-			"type": "dragon",
-			"source": "TftYP",
-			"alignment": [
+			"languageTags": [
 				"C",
-				"E"
+				"DR"
 			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 32,
-				"formula": "5d8+10"
-			},
-			"speed": {
-				"walk": 30,
-				"burrow": 15,
-				"fly": 60,
-				"swim": 30
-			},
-			"str": 14,
-			"dex": 10,
-			"con": 14,
-			"int": 5,
-			"wis": 10,
-			"cha": 11,
-			"save": {
-				"dex": "+2",
-				"con": "+4",
-				"wis": "+2",
-				"cha": "+2"
-			},
-			"skill": {
-				"perception": "+4",
-				"stealth": "+2"
-			},
-			"immune": [
-				"cold"
-			],
-			"senses": "blindsight 10 ft., darkvision 60 ft.",
-			"passive": 14,
-			"languages": "Draconic",
-			"cr": "2",
-			"action": [
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d10+2}) piercing damage plus 2 ({@dice 1d4}) cold damage."
-					]
-				},
-				{
-					"name": "Cold Breath {@recharge 5}",
-					"entries": [
-						"The dragon exhales an icy blast of hail in a 15-foot cone. Each creature in that area must make a DC 12 Constitution saving throw, taking 22 ({@dice 5d8}) cold damage on a failed save, or half as much damage on a successful one."
-					]
-				}
-			],
-			"page": 23
+			"senseTags": [
+				"D"
+			]
 		}
 	]
 }

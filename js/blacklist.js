@@ -1,6 +1,7 @@
 class Blacklist {
 	static getDisplayCategory (cat) {
 		if (cat === "variantrule") return "Variant Rule";
+		if (cat === "optionalfeature") return "Optional Feature";
 		return cat.uppercaseFirst();
 	}
 
@@ -30,7 +31,7 @@ class Blacklist {
 			"cultsboons.json",
 			"deities.json",
 			"feats.json",
-			"invocations.json",
+			"optionalfeatures.json",
 			"objects.json",
 			"psionics.json",
 			"races.json",
@@ -153,6 +154,17 @@ class Blacklist {
 		if (ExcludeUtil.addExclude(name, category, source)) {
 			Blacklist._addListItem(name, category, source);
 		}
+	}
+
+	static addAllUa () {
+		$(`#bl-source`).find(`option`).each((i, e) => {
+			const val = $(e).val();
+			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
+
+			if (ExcludeUtil.addExclude("*", "*", val)) {
+				Blacklist._addListItem("*", "*", val);
+			}
+		});
 	}
 
 	static remove (name, category, source) {

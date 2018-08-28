@@ -36,7 +36,7 @@
 								"Creatures: {@creature goblin} assumes MM by default, {@creature cow|vgm} can have sources added with a pipe, {@creature cow|vgm|and optional link text added with another pipe}.",
 								"Backgrounds: {@background Charlatan} assumes PHB by default, {@background Anthropologist|toa} can have sources added with a pipe, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
 								"Races: {@race Human} assumes PHB by default, {@race Aarakocra|eepc} can have sources added with a pipe, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
-								"Invocations: {@invocation Agonizing Blast} assumes PHB by default, {@invocation Aspect of the Moon|xge} can have sources added with a pipe, {@invocation Aspect of the Moon|xge|and optional link text added with another pipe}.",
+								"Invocations and Other Optional Features: {@optfeature Agonizing Blast} assumes PHB by default, {@optfeature Aspect of the Moon|xge} can have sources added with a pipe, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
 								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|Martial Archetype 3} with another pipe (number denotes level, since names can be duplicate).",
 								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|phb} can have sources added with a pipe (not that it's ever useful), {@condition stunned|phb|and optional link text added with another pipe}.",
 								"Diseases: {@disease cackle fever} assumes DMG by default, {@disease cackle fever|dmg} can have sources added with a pipe, {@disease cackle fever|dmg|and optional link text added with another pipe}.",
@@ -456,13 +456,13 @@
 					"text": "The full 'entry' schema."
 				},
 				"Internal links are also possible, but generally covered by @tags. Check out the schema linked above for the full usage; it's massive and horrible so I'm not going to go into detail here.",
-				"Invocations:",
+				"Invocations/Other Optional Features:",
 				{
-					"type": "invocation",
-					"name": "Invocation Name",
-					"prerequisite": "Optional stuff",
+					"type": "optfeature",
+					"name": "Optional Feature Name",
+					"prerequisite": "Optional prerequisite, which can include tags {@spell eldritch blast}",
 					"entries": [
-						"Edgy invocation text."
+						"Optional feature text."
 					]
 				},
 				"Patrons:",

@@ -102,7 +102,10 @@ const BookUtil = {
 		allHeaders.filter((i, ele) => $(ele).children().length).each((i, ele) => {
 			const $ele = $(ele);
 			// add expand/collapse to only those with children
-			$ele.prev(`li`).find(`a`).append(`<span class="showhide" onclick="BookUtil.sectToggle(event, this)" data-hidden="true">${defHidden ? `[+]` : `[\u2013]`}</span>`);
+			const $appendTo = $ele.prev(`li`).find(`a`);
+			if (!$appendTo.children(`.showhide`).length) {
+				$appendTo.append(`<span class="showhide" onclick="BookUtil.sectToggle(event, this)" data-hidden="true">${defHidden ? `[+]` : `[\u2013]`}</span>`)
+			}
 		});
 	},
 
@@ -137,18 +140,20 @@ const BookUtil = {
 		}
 
 		function handleQuickReferenceShow (sectionHeader) {
+			handleQuickReferenceShowAll();
 			if (sectionHeader) {
 				const $allSects = $(`div.statsBlockSectionHead`);
-				$allSects.hide();
-				$(`hr.section-break`).hide();
 				const $toShow = $allSects.filter((i, e) => {
 					const $e = $(e);
 					const $match = $e.children().filter(`span.entry-title:textEquals("${sectionHeader}")`);
 					return $match.length;
 				});
-				$toShow.show();
-			} else {
-				handleQuickReferenceShowAll();
+
+				if ($toShow.length) {
+					$allSects.hide();
+					$(`hr.section-break`).hide();
+					$toShow.show();
+				}
 			}
 		}
 
@@ -186,8 +191,7 @@ const BookUtil = {
 
 			const goToPage = (page) => {
 				page = String(page);
-				const newHashParts = [bookId, ...hashParts];
-				newHashParts[1] = page;
+				const newHashParts = [bookId, page];
 				window.location.hash = newHashParts.join(HASH_PART_SEP);
 				MiscUtil.scrollPageTop();
 			};
@@ -221,7 +225,8 @@ const BookUtil = {
 				}
 				setTimeout(() => {
 					BookUtil.scrollClick(scrollTo, scrollIndex);
-				}, 75)
+				}, BookUtil.isHashReload ? 1 : 75);
+				BookUtil.isHashReload = false;
 			}
 		} else {
 			if (hashParts.length <= 1) {
@@ -267,6 +272,7 @@ const BookUtil = {
 	homebrewData: null,
 	renderArea: null,
 	referenceId: false,
+	isHashReload: false,
 	// custom loading to serve multiple sources
 	booksHashChange: () => {
 		function cleanName (name) {
@@ -343,6 +349,15 @@ const BookUtil = {
 
 		BookUtil._$body.off("keypress");
 		BookUtil._$body.on("keypress", (e) => {
+			const handleReNav = (ele) => {
+				const hash = window.location.hash.slice(1).toLowerCase();
+				const linkHash = $(ele).attr("href").slice(1).toLowerCase();
+				if (hash === linkHash) {
+					BookUtil.isHashReload = true;
+					BookUtil.booksHashChange();
+				}
+			};
+
 			if ((e.key === "f" && noModifierKeys(e))) {
 				if (MiscUtil.isInInput(e)) return;
 				$(`span.temp`).contents().unwrap();
@@ -377,7 +392,9 @@ const BookUtil = {
 								$row.append($ptLink);
 
 								if (f.previews) {
-									const $ptPreviews = $(`<a href="#${getHash(f)}"/>`);
+									const $ptPreviews = $(`<a href="#${getHash(f)}"/>`).click(function () {
+										handleReNav(this);
+									});
 									const re = new RegExp(RegExp.escape(f.term), "gi");
 
 									$ptPreviews.on("click", () => {
@@ -401,6 +418,10 @@ const BookUtil = {
 									$row.append($ptPreviews);
 
 									$link.on("click", () => $ptPreviews.click());
+								} else {
+									$link.click(function () {
+										handleReNav(this);
+									});
 								}
 
 								$results.append($row);
@@ -515,7 +536,7 @@ const BookUtil = {
 						break;
 					}
 				}
-				pre = pre.ltrim();
+				pre = pre.trimStart();
 				const preDots = i > 0;
 
 				spaceCount = 0;
@@ -531,7 +552,7 @@ const BookUtil = {
 						break;
 					}
 				}
-				post = post.rtrim();
+				post = post.trimEnd();
 				const postDots = i < rendered.length;
 
 				const originalTerm = rendered.substr(first, term.length);

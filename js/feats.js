@@ -82,7 +82,7 @@ function addFeats (data) {
 		let prereqText = EntryRenderer.feat.getPrerequisiteText(curfeat.prerequisite, true);
 		if (!prereqText) prereqText = STR_NONE;
 		const CLS_COL_1 = "name col-xs-3 col-xs-3-8";
-		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 source${curfeat.source}`;
+		const CLS_COL_2 = `source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curfeat.source)}`;
 		const CLS_COL_3 = "ability " + (ability.asText === STR_NONE ? "list-entry-none " : "") + "col-xs-3 col-xs-3-5";
 		const CLS_COL_4 = "prerequisite " + (prereqText === STR_NONE ? "list-entry-none " : "") + "col-xs-3";
 

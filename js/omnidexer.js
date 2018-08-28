@@ -57,7 +57,7 @@ class Omnidexer {
 			const name = Omnidexer.getProperty(it, arbiter.primary || "name");
 			if (!it.noDisplay) {
 				const toAdd = getToAdd(it, {n: name}, i);
-				if ((isTestMode || !(arbiter.filter && arbiter.filter(it))) && !arbiter.onlyDeep) index.push(toAdd);
+				if ((isTestMode || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.onlyDeep) index.push(toAdd);
 				if (arbiter.deepIndex) {
 					const primary = {it: it, i: i, parentName: name};
 					const deepItems = arbiter.deepIndex(primary, it);
@@ -134,7 +134,8 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
  * 		Used to generate a complete list of links for testing; should not be used for production index.
  * 		Should return full index objects.
  * hover: (OPTIONAL) a boolean indicating if the generated link should have `EntryRenderer` hover functionality.
- * filter: (OPTIONAL) a function which takes a data item and returns true if it should be indexed, false otherwise
+ * filter: (OPTIONAL) a function which takes a data item and returns true if it should not be indexed, false otherwise
+ * include: (OPTIONAL) a function which takes a data item and returns true if it should be indexed, false otherwise
  * postLoad: (OPTIONAL) a function which takes the data set, does some post-processing,
  * 		and runs a callback when done (synchronously)
  *
@@ -170,10 +171,27 @@ Omnidexer.TO_INDEX = [
 	},
 	{
 		category: 8,
-		file: "invocations.json",
-		listProp: "invocation",
-		baseUrl: "invocations.html",
-		hover: true
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => it.featureType === "EI"
+	},
+	{
+		category: 22,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => it.featureType === "MM"
+	},
+	{
+		category: 23,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => it.featureType === "MAB"
 	},
 	{
 		category: 4,
@@ -233,9 +251,19 @@ Omnidexer.TO_INDEX = [
 		deepIndex: (primary, it) => {
 			const names = [];
 			it.entries.forEach(e => {
-				EntryRenderer.getNames(names, e);
+				EntryRenderer.getNames(names, e, 1);
 			});
-			return names.map(n => ({d: 1, n: `${primary.parentName}; ${n}`}));
+			const allNames = EntryRenderer.getNumberedNames(it);
+			const nameKeys = Object.keys(allNames).filter(it => names.includes(it));
+
+			return nameKeys.map(n => {
+				const ix = allNames[n];
+				return {
+					u: `${UrlUtil.encodeForHash([it.name, it.source])}${HASH_PART_SEP}${ix}`,
+					d: 1,
+					n: `${primary.parentName}; ${n}`
+				};
+			});
 		}
 	},
 	{
@@ -269,9 +297,7 @@ Omnidexer.TO_INDEX = [
 		listProp: "deity",
 		baseUrl: "deities.html",
 		hover: true,
-		filter: (it) => {
-			return it.reprinted;
-		}
+		filter: (it) => it.reprinted
 	},
 	{
 		category: 15,

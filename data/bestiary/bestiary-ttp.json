@@ -62,6 +62,9 @@
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -97,7 +100,7 @@
 				"perception": "+4",
 				"stealth": "+2"
 			},
-			"senses": "darkvision 60 ft., tremorsense 30ft.",
+			"senses": "darkvision 60 ft., tremorsense 30 ft.",
 			"passive": 14,
 			"cr": "1/4",
 			"trait": [
@@ -122,7 +125,125 @@
 					]
 				}
 			],
-			"page": 22
+			"page": 22,
+			"senseTags": [
+				"D",
+				"T"
+			]
+		},
+		{
+			"name": "Giant Slug",
+			"isNPC": true,
+			"size": "L",
+			"type": "monstrosity",
+			"source": "TTP",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 66,
+				"formula": "6d10+18"
+			},
+			"speed": {
+				"walk": 10,
+				"climb": 10
+			},
+			"str": 14,
+			"dex": 13,
+			"con": 16,
+			"int": 1,
+			"wis": 12,
+			"cha": 5,
+			"skill": {
+				"perception": "+3"
+			},
+			"senses": "darkvision 60 ft.",
+			"languages": "Abyssal, Aquan, Common",
+			"passive": 13,
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"The slug has advantage on Wisdom (Perception) checks that rely on smell."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"The slug can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The slug makes two attacks: one with its tentacles and one with its bite."
+					]
+				},
+				{
+					"name": "Tentacles",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one creature. Hit: 4 ({@dice 1d4+2}) poison damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 minute. Until this poison ends, the target is {@condition paralyzed}. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Animate Tentacle",
+					"entries": [
+						"When the slug takes damage in this cave (Shrine of Umberlee), it can use its reaction to animate one of the tentacles of the kraken statue and cause it to make a melee weapon attack ({@hit 3} to hit) against one creature within 20 feet of the statue that the slug can see. The tentacle deals 8 ({@dice 1d8+4}) bludgeoning damage on a hit."
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The slug's innate spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell guiding bolt}",
+							"{@spell sanctuary}",
+							"{@spell spiritual weapon}"
+						]
+					},
+					"ability": "wis"
+				}
+			],
+			"page": 18,
+			"traitTags": [
+				"Keen Senses",
+				"Spider Climb"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			],
+			"languageTags": [
+				"AB",
+				"AQ",
+				"C"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"source": "TTP",
@@ -193,6 +314,9 @@
 			"traitTags": [
 				"Turn Resistance",
 				"Undead Fortitude"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -275,6 +399,10 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/712/tortle.mp3",
 			"traitTags": [
 				"Hold Breath"
+			],
+			"languageTags": [
+				"AQ",
+				"C"
 			]
 		},
 		{
@@ -386,112 +514,10 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/711/tortle-druid.mp3",
 			"traitTags": [
 				"Hold Breath"
-			]
-		},
-		{
-			"name": "Giant Slug",
-			"isNPC": true,
-			"size": "L",
-			"type": "monstrosity",
-			"source": "TTP",
-			"alignment": [
-				"U"
 			],
-			"ac": [
-				{
-					"ac": 13,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 66,
-				"formula": "6d10+18"
-			},
-			"speed": {
-				"walk": 10,
-				"climb": 10
-			},
-			"str": 14,
-			"dex": 13,
-			"con": 16,
-			"int": 1,
-			"wis": 12,
-			"cha": 5,
-			"skill": {
-				"perception": "+3"
-			},
-			"senses": "darkvision 60 ft.",
-			"languages": "Abyssal, Aquan, Common",
-			"passive": 13,
-			"cr": "3",
-			"trait": [
-				{
-					"name": "Keen Smell",
-					"entries": [
-						"The slug has advantage on Wisdom (Perception) checks that rely on smell."
-					]
-				},
-				{
-					"name": "Spider Climb",
-					"entries": [
-						"The slug can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The slug makes two attacks: one with its tentacles and one with its bite."
-					]
-				},
-				{
-					"name": "Tentacles",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one creature. Hit: 4 ({@dice 1d4+2}) poison damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 minute. Until this poison ends, the target is {@condition paralyzed}. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@dice 2d4+2}) piercing damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Animate Tentacle",
-					"entries": [
-						"When the slug takes damage in this cave (Shrine of Umberlee), it can use its reaction to animate one of the tentacles of the kraken statue and cause it to make a melee weapon attack ({@hit 3} to hit) against one creature within 20 feet of the statue that the slug can see. The tentacle deals 8 ({@dice 1d8+4}) bludgeoning damage on a hit."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The slug's innate spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
-					],
-					"daily": {
-						"1e": [
-							"{@spell guiding bolt}",
-							"{@spell sanctuary}",
-							"{@spell spiritual weapon}"
-						]
-					},
-					"ability": "wis"
-				}
-			],
-			"page": 18,
-			"traitTags": [
-				"Keen Senses",
-				"Spider Climb"
-			],
-			"actionTags": [
-				"Multiattack",
-				"Tentacles"
+			"languageTags": [
+				"AQ",
+				"C"
 			]
 		}
 	]

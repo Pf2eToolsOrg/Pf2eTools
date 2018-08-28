@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.1.1",
+	"version": "1.2.0",
 
 	"definitions" : {
 		"entry": {
@@ -380,9 +380,11 @@
 										"type": "integer"
 									},
 									"modifier": {
+										"description": "(Warning: unused)",
 										"type": "integer"
 									},
 									"hideModifier": {
+										"description": "(Warning: unused)",
 										"type": "boolean"
 									}
 								},
@@ -560,7 +562,8 @@
 				}
 			]
 		},
-		"entryInvocation": {
+		"entryOptFeature": {
+			"description": "For e.g. Eldritch Invocations which require prerequisite text",
 			"allOf" : [
 				{"$ref" : "#/definitions/entry"},
 				{
@@ -568,7 +571,7 @@
 						"name": {
 							"type": "string"
 						},
-						"type": {"const": "invocation"},
+						"type": {"const": "optfeature"},
 						"prerequisite": {
 							"type": "string"
 						}
@@ -885,7 +888,7 @@
 		{"$ref": "#/definitions/entryAbilityAttackMod"},
 		{"$ref": "#/definitions/abilityGeneric"},
 		{"$ref": "#/definitions/entryLink"},
-		{"$ref": "#/definitions/entryInvocation"},
+		{"$ref": "#/definitions/entryOptFeature"},
 		{"$ref": "#/definitions/entryPatron"},
 		{"$ref": "#/definitions/entryInset"},
 		{"$ref": "#/definitions/entryInsetReadaloud"},

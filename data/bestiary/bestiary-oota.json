@@ -65,6 +65,9 @@
 			"page": 230,
 			"traitTags": [
 				"False Appearance"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -265,6 +268,13 @@
 			"actionTags": [
 				"Multiattack",
 				"Frightful Presence"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -323,7 +333,13 @@
 					]
 				}
 			],
-			"page": 230
+			"page": 230,
+			"languageTags": [
+				"AB"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Chamberlain of Zuggtmoy",
@@ -406,6 +422,13 @@
 			"page": 230,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"AB",
+				"U"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -468,6 +491,156 @@
 			"page": 228,
 			"actionTags": [
 				"Multiattack"
+			]
+		},
+		{
+			"name": "Deepking Horgar Steelshadow V",
+			"isNPC": true,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"source": "OotA",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"{@item dwarven plate|dmg}"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "8d8+16"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 19,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"con": "+4",
+				"wis": "+2"
+			},
+			"passive": 10,
+			"languages": "Draconic, Giant, and Dwarvish",
+			"cr": "3",
+			"trait": [
+				{
+					"name": "(Optional) Indefinite Madness",
+					"entries": [
+						{
+							"type": "inline",
+							"entries": [
+								"Horgar has been affected by the demon lords let loose in the Abyss during the Rage of Demons storyline. Roll on the ",
+								{
+									"type": "link",
+									"href": {
+										"type": "internal",
+										"path": "variantrules.html",
+										"hash": "madness_dmg"
+									},
+									"text": "Indefinite Madness table"
+								},
+								" to determine Horgar's flaw."
+							]
+						}
+					]
+				},
+				{
+					"name": "Duergar Resilience",
+					"entries": [
+						"Horgar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, Horgar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Gauntlets of Ogre Power",
+					"entries": [
+						"Horgar wields {@item Gauntlets of Ogre Power} giving him a Strength score of 19 (+4)."
+					]
+				},
+				{
+					"name": "Brave",
+					"entries": [
+						"Horgar has advantage on saving throws against being {@condition frightened}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"entries": [
+						"For 1 minute, Horgar magically increases in size, along with anything he is wearing or carrying. While enlarged, Horgar is Large, doubles his damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If Horgar lacks the room to become Large, he attains the maximum size possible in the space available."
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"entries": [
+						"Horgar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
+					]
+				},
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Horgar makes two melee attacks."
+					]
+				},
+				{
+					"name": "+2 Warhammer",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 10 ({@dice 1d8+6}) bludgeoning damage, or 11 ({@dice 1d10+6}) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 ({@dice 2d8+6}) or 17 ({@dice 2d10+6}) bludgeoning damage, respectively."
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Leadership (Recharges after a Short or Long Rest)",
+					"entries": [
+						"For 1 minute, Horgar can utter a special command or warning whenever a nonhostile creature that he can see within 30 ft. of Horgar makes an attack roll or a saving throw. The creature can add a {@dice d4} to its roll provided it can hear and understand Horgar. A creature can benefit from only one Leadership die at a time. This effect ends if Horgar is {@condition incapacitated}."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"Horgar adds 2 to its AC against one melee attack that would hit him. To do so, Horgar must see the attacker and be wielding a melee weapon."
+					]
+				}
+			],
+			"page": 82,
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			],
+			"languageTags": [
+				"DR",
+				"GI",
+				"D"
 			]
 		},
 		{
@@ -645,6 +818,13 @@
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -728,6 +908,13 @@
 			"traitTags": [
 				"Magic Resistance",
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -853,6 +1040,13 @@
 			"traitTags": [
 				"Magic Resistance",
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -983,6 +1177,13 @@
 			"actionTags": [
 				"Multiattack",
 				"Parry"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1138,6 +1339,13 @@
 			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1245,6 +1453,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/627/duergar-kavalrachni.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1382,6 +1597,13 @@
 			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1489,6 +1711,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/630/duergar-soulblade.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1630,6 +1859,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/631/duergar-stone-guard.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1718,6 +1954,13 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/633/duergar-xarrorn.mp3",
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -1808,6 +2051,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"D"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -1878,6 +2128,9 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/639/female-steeder.mp3",
 			"traitTags": [
 				"Spider Climb"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -2055,6 +2308,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -2109,6 +2369,9 @@
 			"page": 131,
 			"traitTags": [
 				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2298,6 +2561,13 @@
 			"actionTags": [
 				"Multiattack",
 				"Teleport"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -2414,6 +2684,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"U"
 			]
 		},
 		{
@@ -2529,7 +2803,14 @@
 					]
 				}
 			],
-			"page": 225
+			"page": 225,
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Ixitxachitl Cleric",
@@ -2621,6 +2902,13 @@
 					},
 					"ability": "wis"
 				}
+			],
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -2814,6 +3102,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -2855,7 +3150,7 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"senses": "darkvision 60ft.",
+			"senses": "darkvision 60 ft.",
 			"passive": 12,
 			"cr": "1/4",
 			"trait": [
@@ -2870,11 +3165,14 @@
 				{
 					"name": "Halberd",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 10ft., one target. Hit: 7 ({@dice 1d10+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. Hit: 7 ({@dice 1d10+2}) slashing damage."
 					]
 				}
 			],
-			"page": 131
+			"page": 131,
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"source": "OotA",
@@ -2962,6 +3260,10 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"D"
 			]
 		},
 		{
@@ -3032,6 +3334,9 @@
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/659/male-steeder.mp3",
 			"traitTags": [
 				"Spider Climb"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -3156,6 +3461,13 @@
 			"traitTags": [
 				"Magic Resistance",
 				"Sunlight Sensitivity"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -3335,6 +3647,104 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
+			]
+		},
+		{
+			"name": "Spider King",
+			"size": "L",
+			"type": "beast",
+			"source": "OotA",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "4d10+22"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 14,
+			"dex": 16,
+			"con": 12,
+			"int": 2,
+			"wis": 11,
+			"cha": 4,
+			"save": {
+				"con": "+3",
+				"wis": "+2"
+			},
+			"skill": {
+				"stealth": "+7",
+				"perception": "+4"
+			},
+			"senses": "blindsight 10 ft., darkvision 60 ft.",
+			"passive": 14,
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Two Heads",
+					"entries": [
+						"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Web Sense",
+					"entries": [
+						"While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
+					]
+				},
+				{
+					"name": "Web Walker",
+					"entries": [
+						"The spider ignores movement restrictions caused by webbing."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@dice 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
+					]
+				},
+				{
+					"name": "Web {@recharge 5}",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. Hit: The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+					]
+				}
+			],
+			"page": 74,
+			"traitTags": [
+				"Spider Climb",
+				"Web Sense",
+				"Web Walker"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3508,6 +3918,15 @@
 					},
 					"ability": "cha"
 				}
+			],
+			"languageTags": [
+				"AB",
+				"G",
+				"T",
+				"U"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3612,6 +4031,12 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3666,7 +4091,14 @@
 					]
 				}
 			],
-			"page": 226
+			"page": 226,
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
+			]
 		},
 		{
 			"name": "Vampiric Ixitxachitl Cleric",
@@ -3758,6 +4190,13 @@
 					},
 					"ability": "wis"
 				}
+			],
+			"languageTags": [
+				"AB",
+				"OTH"
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
@@ -3831,6 +4270,10 @@
 			"page": 130,
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"D"
 			]
 		},
 		{
@@ -4006,6 +4449,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		},
 		{
@@ -4101,151 +4551,13 @@
 			"isNamedCreature": true,
 			"traitTags": [
 				"Legendary Resistances"
-			]
-		},
-		{
-			"name": "Deepking Horgar Steelshadow V",
-			"isNPC": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dwarf"
-				]
-			},
-			"source": "OotA",
-			"alignment": [
-				"L",
-				"E"
 			],
-			"ac": [
-				{
-					"ac": 20,
-					"from": [
-						"{@item dwarven plate|dmg}"
-					]
-				}
+			"languageTags": [
+				"AB",
+				"TP"
 			],
-			"hp": {
-				"average": 52,
-				"formula": "8d8+16"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 19,
-			"dex": 11,
-			"con": 14,
-			"int": 11,
-			"wis": 11,
-			"cha": 15,
-			"save": {
-				"con": "+4",
-				"wis": "+2"
-			},
-			"passive": 10,
-			"languages": "Draconic, Giant, and Dwarvish",
-			"cr": "3",
-			"trait": [
-				{
-					"name": "(Optional) Indefinite Madness",
-					"entries": [
-						{
-							"type": "inline",
-							"entries": [
-								"Horgar has been affected by the demon lords let loose in the Abyss during the Rage of Demons storyline. Roll on the ",
-								{
-									"type": "link",
-									"href": {
-										"type": "internal",
-										"path": "variantrules.html",
-										"hash": "madness_dmg"
-									},
-									"text": "Indefinite Madness table"
-								},
-								" to determine Horgar's flaw."
-							]
-						}
-					]
-				},
-				{
-					"name": "Duergar Resilience",
-					"entries": [
-						"Horgar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, Horgar has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
-					]
-				},
-				{
-					"name": "Gauntlets of Ogre Power",
-					"entries": [
-						"Horgar wields {@item Gauntlets of Ogre Power} giving him a Strength score of 19 (+4)."
-					]
-				},
-				{
-					"name": "Brave",
-					"entries": [
-						"Horgar has advantage on saving throws against being {@condition frightened}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Enlarge (Recharges after a Short or Long Rest)",
-					"entries": [
-						"For 1 minute, Horgar magically increases in size, along with anything he is wearing or carrying. While enlarged, Horgar is Large, doubles his damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If Horgar lacks the room to become Large, he attains the maximum size possible in the space available."
-					]
-				},
-				{
-					"name": "Invisibility (Recharges after a Short or Long Rest)",
-					"entries": [
-						"Horgar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
-					]
-				},
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Horgar makes two melee attacks."
-					]
-				},
-				{
-					"name": "+2 Warhammer",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 10 ({@dice 1d8+6}) bludgeoning damage, or 11 ({@dice 1d10+6}) bludgeoning damage if used with two hands. While Horgar is enlarged, the damage increases to 15 ({@dice 2d8+6}) or 17 ({@dice 2d10+6}) bludgeoning damage, respectively."
-					]
-				},
-				{
-					"name": "Heavy Crossbow",
-					"entries": [
-						"{@atk rw} {@hit 2} to hit, range 100/400 ft., one target. Hit: 5 ({@dice 1d10}) piercing damage."
-					]
-				},
-				{
-					"name": "Leadership (Recharges after a Short or Long Rest)",
-					"entries": [
-						"For 1 minute, Horgar can utter a special command or warning whenever a nonhostile creature that he can see within 30 ft. of Horgar makes an attack roll or a saving throw. The creature can add a {@dice d4} to its roll provided it can hear and understand Horgar. A creature can benefit from only one Leadership die at a time. This effect ends if Horgar is {@condition incapacitated}."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Parry",
-					"entries": [
-						"Horgar adds 2 to its AC against one melee attack that would hit him. To do so, Horgar must see the attacker and be wielding a melee weapon."
-					]
-				}
-			],
-			"page": 82,
-			"traitTags": [
-				"Sunlight Sensitivity"
-			],
-			"actionTags": [
-				"Multiattack",
-				"Parry"
+			"senseTags": [
+				"SD"
 			]
 		},
 		{
@@ -4321,94 +4633,6 @@
 			],
 			"actionTags": [
 				"Multiattack"
-			]
-		},
-		{
-			"name": "Spider King",
-			"size": "L",
-			"type": "beast",
-			"source": "OotA",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 44,
-				"formula": "4d10+22"
-			},
-			"speed": {
-				"walk": 30,
-				"climb": 30
-			},
-			"str": 14,
-			"dex": 16,
-			"con": 12,
-			"int": 2,
-			"wis": 11,
-			"cha": 4,
-			"save": {
-				"con": "+3",
-				"wis": "+2"
-			},
-			"skill": {
-				"stealth": "+7",
-				"perception": "+4"
-			},
-			"senses": "blindsight 10 ft., darkvision 60 ft.",
-			"passive": 14,
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Two Heads",
-					"entries": [
-						"Because of its two heads, the Spider King has advantage on Wisdom (Perception) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, and knocked {@condition unconscious}."
-					]
-				},
-				{
-					"name": "Spider Climb",
-					"entries": [
-						"The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-					]
-				},
-				{
-					"name": "Web Sense",
-					"entries": [
-						"While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
-					]
-				},
-				{
-					"name": "Web Walker",
-					"entries": [
-						"The spider ignores movement restrictions caused by webbing."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@dice 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
-					]
-				},
-				{
-					"name": "Web {@recharge 5}",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. Hit: The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
-					]
-				}
-			],
-			"page": 74,
-			"traitTags": [
-				"Spider Climb",
-				"Web Sense",
-				"Web Walker"
 			]
 		},
 		{
@@ -4576,6 +4800,13 @@
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"XX",
+				"TP"
+			],
+			"senseTags": [
+				"U"
 			]
 		}
 	]

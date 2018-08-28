@@ -4,10 +4,11 @@ const HASH_HIDE_FEATURES = "hideclassfs:";
 const HASH_SHOW_FLUFF = "showfluff:";
 const HASH_SOURCES = "sources:";
 const HASH_BOOK_VIEW = "bookview:";
+const HASH_SHOW_PILL_SOURCES = "pillsource:";
 
 const CLSS_FEATURE_LINK = "feature-link";
-const CLSS_ACTIVE = "active";
-const CLSS_SUBCLASS_PILL = "sc-pill";
+const CLSS_ACTIVE = "sc_pill--active";
+const CLSS_SUBCLASS_PILL = "sc_pill__subclass";
 const CLSS_PANEL_LINK = "pnl-link";
 const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
 const CLSS_FLUFF_ACTIVE = "fluff-active";
@@ -117,7 +118,7 @@ class ClassList {
 		return `<li class="row" ${FLTR_ID}="${id}" ${classToRender.uniqueId ? `data-unique-id="${classToRender.uniqueId}"` : ""}>
 				<a id='${id}' href="${HashLoad.getClassHash(classToRender)}" title="${classToRender.name}">
 					<span class='name col-xs-8'>${classToRender.name}</span>
-					<span class='source col-xs-4 text-align-center source${Parser.sourceJsonToAbv(classToRender.source)}' title="${Parser.sourceJsonToFull(classToRender.source)}">
+					<span class='source col-xs-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}' title="${Parser.sourceJsonToFull(classToRender.source)}">
 						${Parser.sourceJsonToAbv(classToRender.source)}
 					</span>
 					<span class="uniqueid hidden">${classToRender.uniqueId ? classToRender.uniqueId : id}</span>
@@ -191,7 +192,7 @@ ClassData.classes = [];
 class FeatureDescription {
 	static getSubclassStyles (sc) {
 		const styleClasses = [CLSS_SUBCLASS_FEATURE];
-		const nonStandard = SourceUtil.isNonstandardSource(sc.source) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source);
+		const nonStandard = SourceUtil.isNonstandardSource(sc.source) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source) || (sc.source.source || sc.source) === SRC_DMG;
 		if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 		if (FeatureDescription.subclassIsFreshUa(sc)) styleClasses.push(CLSS_FRESH_UA);
 		if (BrewUtil.hasSourceJson(ClassData.cleanScSource(sc.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
@@ -242,7 +243,7 @@ class HashLoad {
 
 		// SUMMARY SIDEBAR =================================================================================================
 		// hit dice and HP
-		const hdEntry = {toRoll: [ClassDisplay.curClass.hd], rollable: true};
+		const hdEntry = {toRoll: `${ClassDisplay.curClass.hd.number}d${ClassDisplay.curClass.hd.faces}`, rollable: true};
 		$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry, "Hit die"));
 		$("td#hp div#hp1stlevel span").html(ClassDisplay.curClass.hd.faces + " + your Constitution modifier");
 		$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry, "Hit die")} (or ${
@@ -270,7 +271,7 @@ class HashLoad {
 		const sEquip = ClassDisplay.curClass.startingEquipment;
 		const fromBackground = sEquip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "";
 		const defList = sEquip.default.length === 0 ? "" : `<ul><li>${sEquip.default.map(it => EntryRenderer.getDefaultRenderer().renderEntry(it)).join("</li><li>")}</ul>`;
-		const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${sEquip.goldAlternative} gp to buy your own equipment.</p>`;
+		const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${EntryRenderer.getDefaultRenderer().renderEntry(sEquip.goldAlternative)} gp to buy your own equipment.</p>`;
 		$("#equipment").find("div").html(`${fromBackground}${defList}${goldAlt}`);
 
 		// FEATURE TABLE ===================================================================================================
@@ -403,7 +404,7 @@ class HashLoad {
 
 		// show/hide class features pill
 		HashLoad.makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true, "Toggle class features");
-		if (ClassDisplay.curClass.fluff) HashLoad.makeGenericTogglePill("Detail Info", CLSS_FLUFF_ACTIVE, ID_FLUFF_TOGGLE, HASH_SHOW_FLUFF, false, "Toggle class detail information (Source: Xanathar's Guide to Everything)");
+		if (ClassDisplay.curClass.fluff) HashLoad.makeGenericTogglePill("Info", CLSS_FLUFF_ACTIVE, ID_FLUFF_TOGGLE, HASH_SHOW_FLUFF, false, "Toggle class detail information (Source: Xanathar's Guide to Everything)");
 
 		// show/hide UA/other sources
 		HashLoad.makeSourceCyclePill();
@@ -420,15 +421,16 @@ class HashLoad {
 			});
 		for (let i = 0; i < subClasses.length; i++) {
 			const subClass = subClasses[i];
-			const nonStandardSource = SourceUtil.isNonstandardSource(subClass.source) || SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source);
-			const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL];
+			const nonStandardSource = SourceUtil.isNonstandardSource(subClass.source) || SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source) || (subClass.source.source || subClass.source) === SRC_DMG;
+			const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL, "sc_pill"];
 			if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 			if (FeatureDescription.subclassIsFreshUa(subClass)) styleClasses.push(CLSS_FRESH_UA);
 			if (BrewUtil.hasSourceJson(ClassData.cleanScSource(subClass.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
-			const pillText = SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source) ? `${subClass.shortName} (${Parser.sourceJsonToAbv(subClass.source)})`
-				: subClass.shortName;
+			const reprinted = SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source);
+			const pillText = reprinted ? `${subClass.shortName} (${Parser.sourceJsonToAbv(subClass.source)})` : subClass.shortName;
+			const pillPostText = reprinted || SourceUtil.isNonstandardSource(subClass.source) ? "" : ` (${Parser.sourceJsonToAbv(subClass.source)})`;
 			const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${
-				ClassData.cleanScSource(subClass.source)}" title="Source: ${Parser.sourceJsonToFull(subClass.source)}"><span>${pillText}</span></span>`);
+				ClassData.cleanScSource(subClass.source)}" title="Source: ${Parser.sourceJsonToFull(subClass.source)}"><span>${pillText}<span class="sc_pill__source_suffix">${pillPostText}</span></span></span>`);
 			pill.click(function () {
 				HashLoad.handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, ClassData.cleanScSource(subClasses[i].source));
 			});
@@ -439,13 +441,15 @@ class HashLoad {
 		// spacer before "Feeling Lucky" pill
 		HashLoad.addPillDivider();
 		HashLoad.makeFeelingLuckyPill();
+		HashLoad.makeToggleSourcesPill();
+		HashLoad.makeResetPill();
 
 		// call loadsub with a blank sub-hash, to ensure the right content is displayed
 		loadsub([]);
 	}
 
 	static makeSourceCyclePill () {
-		const $pill = $(`<span title="Cycle through source types" id="${ID_OTHER_SOURCES_TOGGLE}" data-state="0" style="min-width: 8em;"><span>${
+		const $pill = $(`<span title="Cycle through source types" id="${ID_OTHER_SOURCES_TOGGLE}" data-state="0" style="min-width: 8em;" class="sc_pill"><span>${
 			STRS_SOURCE_STATES[0]}</span></span>`);
 		HashLoad.subclassPillWrapper.append($pill);
 		$pill.click(() => {
@@ -459,7 +463,7 @@ class HashLoad {
 
 	// helper functions
 	static makeGenericTogglePill (pillText, pillActiveClass, pillId, hashKey, defaultActive, title) {
-		const pill = $(`<span title="${title}" id="${pillId}"><span>${pillText}</span></span>`);
+		const pill = $(`<span title="${title}" id="${pillId}" class="sc_pill"><span>${pillText}</span></span>`);
 		if (defaultActive) pill.addClass(pillActiveClass);
 		HashLoad.subclassPillWrapper.append(pill);
 		pill.click(function () {
@@ -492,7 +496,7 @@ class HashLoad {
 	}
 
 	static makeFeelingLuckyPill () {
-		const $pill = $(`<span title="Feeling Lucky?" class="sc-pill-feeling-lucky"><span class="glyphicon glyphicon-random"></span></span>`);
+		const $pill = $(`<span title="Feeling Lucky?" class="sc_pill sc-pill-feeling-lucky"><span class="glyphicon glyphicon-random"></span></span>`);
 		HashLoad.subclassPillWrapper.append($pill);
 		$pill.click(() => {
 			const [link, ...sub] = History._getHashParts();
@@ -517,6 +521,28 @@ class HashLoad {
 			}
 			HashLoad.cleanSetHash(outStack.join(HASH_PART_SEP));
 		});
+	}
+
+	static makeToggleSourcesPill () {
+		$(`<span title="Toggle Sources" class="sc_pill sc_pill__source"><span class="glyphicon glyphicon-book"></span></span>`)
+			.appendTo(HashLoad.subclassPillWrapper)
+			.click(function () {
+				const [link, ...sub] = History._getHashParts();
+				const outStack = [link];
+				let curr = false;
+				sub.filter(hashPart => {
+					if (!hashPart.startsWith(HASH_SHOW_PILL_SOURCES)) return true;
+					else curr = hashPart.substr(HASH_SHOW_PILL_SOURCES.length) === "true";
+				}).forEach(hashPart => outStack.push(hashPart));
+				outStack.push(`${HASH_SHOW_PILL_SOURCES}${!curr}`);
+				HashLoad.cleanSetHash(outStack.join(HASH_PART_SEP));
+			});
+	}
+
+	static makeResetPill () {
+		$(`<span title="Reset" class="sc_pill"><span class="glyphicon glyphicon-refresh"></span></span>`)
+			.appendTo(HashLoad.subclassPillWrapper)
+			.click(() => HashLoad.cleanSetHash(window.location.hash.split(HASH_PART_SEP)[0] || ""));
 	}
 
 	static handleSubclassClick (isPillActive, subclassName, subclassSource) {
@@ -601,6 +627,7 @@ class SubClassLoader {
 		let sources = null;
 		let bookView = null;
 		let comparisonView = null;
+		let showPillSources = null;
 
 		SubClassLoader.partCache = null;
 
@@ -617,6 +644,7 @@ class SubClassLoader {
 			if (hashPart.startsWith(HASH_SHOW_FLUFF)) showFluff = sliceTrue(hashPart, HASH_SHOW_FLUFF);
 			if (hashPart.startsWith(HASH_SOURCES)) sources = hashPart.slice(HASH_SOURCES.length);
 			if (hashPart.startsWith(HASH_BOOK_VIEW)) bookView = sliceTrue(hashPart, HASH_BOOK_VIEW);
+			if (hashPart.startsWith(HASH_SHOW_PILL_SOURCES)) showPillSources = sliceTrue(hashPart, HASH_SHOW_PILL_SOURCES);
 			if (subclassComparisonView && hashPart.startsWith(subclassComparisonView.hashKey)) comparisonView = sliceTrue(hashPart, `${subclassComparisonView.hashKey}:`);
 		}
 
@@ -808,6 +836,9 @@ class SubClassLoader {
 		} else if (subclassComparisonView) {
 			subclassComparisonView.teardown();
 		}
+
+		$(`.sc_pill__source_suffix`).toggle(!!showPillSources);
+		$(`.sc_pill__source`).toggleClass(CLSS_ACTIVE, !!showPillSources);
 	}
 
 	static handleTableGroups (shownInTable, tableDataTag, show) {
@@ -973,8 +1004,8 @@ function initCompareMode () {
 
 			let numShown = 0;
 			ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
-				const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
-				if (!($pill.hasClass("active"))) {
+				const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
+				if (!($pill.hasClass(CLSS_ACTIVE))) {
 					$tbl.find(`.subclass-features-${i}`).hide();
 				} else {
 					numShown++;
@@ -1066,7 +1097,7 @@ class ClassBookView {
 		ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
 			const name = SourceUtil.hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 			const styles = FeatureDescription.getSubclassStyles(sc);
-			const $pill = $(`.sc-pill[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
+			const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
 
 			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${
 				sc.name}" data-bk-source="${sc.source.source || sc.source}">${name}</span>`).on("click", () => {
@@ -1074,7 +1105,7 @@ class ClassBookView {
 				$pill.click();
 			});
 
-			if (!($pill.hasClass("active"))) {
+			if (!($pill.hasClass(CLSS_ACTIVE))) {
 				ClassBookView._toggleSubclass($bkTbl, $scToggle, i);
 			}
 

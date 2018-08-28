@@ -11,6 +11,7 @@ const TITLE_LOADING = "Loading...";
 
 const PANEL_TYP_EMPTY = 0;
 const PANEL_TYP_STATS = 1;
+const PANEL_TYP_CREATURE_SCALED_CR = 7;
 const PANEL_TYP_ROLLBOX = 2;
 const PANEL_TYP_TEXTBOX = 3;
 const PANEL_TYP_RULES = 4;
@@ -663,6 +664,14 @@ class Panel {
 					p.doPopulate_Stats(page, source, hash, skipSetTab);
 					return p;
 				}
+				case PANEL_TYP_CREATURE_SCALED_CR: {
+					const page = saved.c.p;
+					const source = saved.c.s;
+					const hash = saved.c.u;
+					const cr = saved.c.cr;
+					p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab);
+					return p;
+				}
 				case PANEL_TYP_RULES: {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
@@ -792,12 +801,78 @@ class Panel {
 			() => {
 				const fn = EntryRenderer.hover._pageToRenderFn(page);
 				const it = EntryRenderer.hover._getFromCache(page, source, hash);
+
+				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
+				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+				$contentStats.append(fn(it));
+
+				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
+
 				this.set$Tab(
 					ix,
 					PANEL_TYP_STATS,
 					meta,
-					$(`<div class="panel-content-wrapper-inner"><table class="stats">${fn(it)}</table></div>`),
+					$contentInner,
 					it.name
+				);
+			}
+		);
+	}
+
+	_stats_bindCrScaleClickHandler (mon, meta, $contentInner, $contentStats) {
+		const self = this;
+		$contentStats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
+			evt.stopPropagation();
+			const $this = $(this);
+			const lastCr = self.contentMeta.cr != null ? Parser.numberToCr(self.contentMeta.cr) : mon.cr.cr || mon.cr;
+
+			EntryRenderer.monster.getCrScaleTarget($this, lastCr, (targetCr) => {
+				const originalCr = Parser.crToNumber(mon.cr.cr || mon.cr) === targetCr;
+				const toRender = originalCr ? mon : ScaleCreature.scale(mon, targetCr);
+				$contentStats.empty().append(EntryRenderer.monster.getCompactRenderedString(toRender, null, {showScaler: true}));
+
+				const nxtMeta = {
+					...meta,
+					cr: targetCr
+				};
+				if (originalCr) delete nxtMeta.cr;
+
+				self.set$Tab(
+					self.tabIndex,
+					originalCr ? PANEL_TYP_STATS : PANEL_TYP_CREATURE_SCALED_CR,
+					nxtMeta,
+					$contentInner,
+					toRender._displayName || toRender.name
+				);
+			}, true);
+		});
+	}
+
+	doPopulate_StatsScaledCr (page, source, hash, targetCr) {
+		const meta = {p: page, s: source, u: hash, cr: targetCr};
+		const ix = this.set$TabLoading(
+			PANEL_TYP_CREATURE_SCALED_CR,
+			meta
+		);
+		EntryRenderer.hover._doFillThenCall(
+			page,
+			source,
+			hash,
+			() => {
+				const it = EntryRenderer.hover._getFromCache(page, source, hash);
+				const initialRender = ScaleCreature.scale(it, targetCr);
+				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
+				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+				$contentStats.append(EntryRenderer.monster.getCompactRenderedString(initialRender, null, {showScaler: true}));
+
+				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
+
+				this.set$Tab(
+					ix,
+					PANEL_TYP_CREATURE_SCALED_CR,
+					meta,
+					$contentInner,
+					initialRender._displayName || initialRender.name
 				);
 			}
 		);
@@ -1152,7 +1227,7 @@ class Panel {
 
 	doRenderTitle () {
 		const displayText = this.title !== TITLE_LOADING &&
-			(this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_RULES) ? this.title : "";
+			(this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_CREATURE_SCALED_CR || this.type === PANEL_TYP_RULES) ? this.title : "";
 
 		this.$pnlTitle.text(displayText);
 		if (!displayText) this.$pnlTitle.addClass("hidden");
@@ -1521,6 +1596,17 @@ class Panel {
 							p: contentMeta.p,
 							s: contentMeta.s,
 							u: contentMeta.u
+						}
+					};
+				case PANEL_TYP_CREATURE_SCALED_CR:
+					return {
+						t: type,
+						r: toSaveTitle,
+						c: {
+							p: contentMeta.p,
+							s: contentMeta.s,
+							u: contentMeta.u,
+							cr: contentMeta.cr
 						}
 					};
 				case PANEL_TYP_RULES:
@@ -2591,7 +2677,28 @@ class InitiativeTracker {
 
 			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($menuInner);
 			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
-			const $wrpCbRoll = $(`<label class="panel-tab-search-checkbox"> Roll HP</label>`).appendTo($controls);
+			const $wrpCount = $(`
+				<div class="panel-tab-search-sub-wrp" style="padding-right: 0;"> 
+					<div style="margin-right: 7px;">Add</div>
+					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="1" checked> 1</label>
+					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="2"> 2</label>
+					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="3"> 3</label>
+					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="5"> 5</label>
+					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="8"> 8</label>
+					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="-1"> <input type="number" class="form-control panel-tab-search-sub-ipt-custom" value="13" min="1"></label>
+				</div>
+			`).appendTo($controls);
+			$wrpCount.find(`.panel-tab-search-sub-ipt-custom`).click(function () {
+				$wrpCount.find(`.panel-tab-search-sub-ipt[value=-1]`).prop("checked", true);
+				$(this).select();
+			});
+			const getCount = () => {
+				const val = $wrpCount.find(`[name="mon-count"]`).filter(":checked").val();
+				if (val === "-1") return Number($wrpCount.find(`.panel-tab-search-sub-ipt-custom`).val());
+				return Number(val);
+			};
+
+			const $wrpCbRoll = $(`<label class="panel-tab-search-sub-wrp"> Roll HP</label>`).appendTo($controls);
 			const $cbRoll = $(`<input type="checkbox">`).prop("checked", InitiativeTracker._uiRollHp).on("change", () => InitiativeTracker._uiRollHp = $cbRoll.prop("checked")).prependTo($wrpCbRoll);
 			const $results = $(`<div class="panel-tab-results"/>`).appendTo($menuInner);
 
@@ -2628,7 +2735,13 @@ class InitiativeTracker {
 					const handleClick = (r) => {
 						const name = r.doc.n;
 						const source = r.doc.s;
-						makeRow(name, "", "", false, source, [], $cbRoll.prop("checked"));
+						const count = getCount();
+						if (isNaN(count) || count < 1) return;
+
+						const $row = makeRow(name, undefined, undefined, false, source, undefined, $cbRoll.prop("checked"));
+						if (count > 1) {
+							for (let i = 1; i < count; ++i) makeRow(name, undefined, undefined, false, source, undefined, $cbRoll.prop("checked"));
+						}
 						doSort(sort);
 						checkSetFirstActive();
 						doClose();
@@ -2669,6 +2782,7 @@ class InitiativeTracker {
 				showWait: showMsgDots
 			});
 
+			$srch.focus();
 			doSearch();
 		});
 
@@ -2740,15 +2854,15 @@ class InitiativeTracker {
 			$iptName.on("change", () => doSort(ALPHA));
 			if (isMon) {
 				const $rows = $wrpEntries.find(`.dm-init-row`);
-				const curr = $rows.find(".init-wrp-creature").filter((i, e) => $(e).parent().find(`input.name`).val() === name && $(e).parent().find(`input.source`).val() === source);
+				const curMon = $rows.find(".init-wrp-creature").filter((i, e) => $(e).parent().find(`input.name`).val() === name && $(e).parent().find(`input.source`).val() === source);
 				let monNum = null;
-				if (curr.length) {
-					if (curr.length === 1) {
-						const r = $(curr.get(0));
+				if (curMon.length) {
+					if (curMon.length === 1) {
+						const r = $(curMon.get(0));
 						r.find(`.init-wrp-creature-link`).append(` <span data-number="1">(1)</span>`);
 						monNum = 2;
 					} else {
-						monNum = curr.map((i, e) => $(e).find(`span[data-number]`).data("number")).get().reduce((a, b) => Math.max(Number(a), Number(b)), 0) + 1;
+						monNum = curMon.map((i, e) => $(e).find(`span[data-number]`).data("number")).get().reduce((a, b) => Math.max(Number(a), Number(b)), 0) + 1;
 					}
 				}
 
@@ -2763,7 +2877,7 @@ class InitiativeTracker {
 				const $btnAnother = $(`<div class="btn btn-success btn-xs dm-init-lockable" title="Add Another (SHIFT for Roll New)"><span class="glyphicon glyphicon-plus"></span></div>`)
 					.click((evt) => {
 						if (isLocked) return;
-						makeRow(name, "", evt.shiftKey ? "" : $iptScore.val(), false, source, [], InitiativeTracker._uiRollHp);
+						makeRow(name, "", evt.shiftKey ? "" : $iptScore.val(), $wrpRow.hasClass("dm-init-row-active"), source, [], InitiativeTracker._uiRollHp);
 					}).appendTo($monName);
 				$(`<input class="source hidden" value="${source}">`).appendTo($wrpLhs);
 			}
@@ -2895,8 +3009,13 @@ class InitiativeTracker {
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
 			let curHp = hp;
 
-			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${curHp}">`).appendTo($wrpRhs);
-			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable" placeholder="#" type="number" value="${init}">`).on("change", () => doSort(NUM)).appendTo($wrpRhs);
+			const $iptHp = $(`<input class="form-control input-sm hp" placeholder="HP" value="${curHp}">`)
+				.click(() => $iptHp.select())
+				.appendTo($wrpRhs);
+			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable" placeholder="#" type="number" value="${init}">`)
+				.on("change", () => doSort(NUM))
+				.click(() => $iptScore.select())
+				.appendTo($wrpRhs);
 
 			if (isMon && (curHp === "" || init === "")) {
 				const doUpdate = () => {
@@ -2908,7 +3027,7 @@ class InitiativeTracker {
 						curHp = m.hp.average;
 						$iptHp.val(curHp);
 					} else if (rollHp && m.hp.formula) {
-						curHp = EntryRenderer.dice.roll(m.hp.formula, {
+						curHp = EntryRenderer.dice.roll2(m.hp.formula, {
 							user: false,
 							name: rollName,
 							label: "HP"
@@ -2918,13 +3037,13 @@ class InitiativeTracker {
 
 					// roll initiative
 					if (!init) {
-						const init = EntryRenderer.dice.roll(`1d20${Parser.getAbilityModifier(m.dex)}`, {
+						const init = EntryRenderer.dice.roll2(`1d20${Parser.getAbilityModifier(m.dex)}`, {
 							user: false,
 							name: rollName,
 							label: "Initiative"
 						});
 
-						$iptScore.val(init)
+						$iptScore.val(init);
 					}
 				};
 
@@ -2965,6 +3084,8 @@ class InitiativeTracker {
 
 			conditions.forEach(c => addCondition(c.name, c.color, c.turns));
 			$wrpRow.appendTo($wrpEntries);
+
+			return $wrpRow;
 		}
 
 		function checkSetFirstActive () {
@@ -2989,11 +3110,25 @@ class InitiativeTracker {
 			const sorted = $wrpEntries.find(`.dm-init-row`).sort((a, b) => {
 				let aVal = $(a).find(`input.${sort === ALPHA ? "name" : "score"}`).val();
 				let bVal = $(b).find(`input.${sort === ALPHA ? "name" : "score"}`).val();
+				let first = 0;
+				let second = 0;
 				if (sort === NUM) {
 					aVal = Number(aVal);
 					bVal = Number(bVal);
+					first = dir === ASC ? SortUtil.ascSort(aVal, bVal) : SortUtil.ascSort(bVal, aVal);
+				} else {
+					let aVal2 = 0;
+					let bVal2 = 0;
+
+					const $aNum = $(a).find(`span[data-number]`);
+					if ($aNum.length) aVal2 = $aNum.data("number");
+					const $bNum = $(b).find(`span[data-number]`);
+					if ($bNum.length) bVal2 = $bNum.data("number");
+
+					first = dir === ASC ? SortUtil.ascSort(aVal, bVal) : SortUtil.ascSort(bVal, aVal);
+					second = dir === ASC ? SortUtil.ascSort(aVal2, bVal2) : SortUtil.ascSort(bVal2, aVal2);
 				}
-				return dir === ASC ? SortUtil.ascSort(aVal, bVal) : SortUtil.ascSort(bVal, aVal);
+				return first || second;
 			});
 			$wrpEntries.append(sorted);
 		}
@@ -3073,7 +3208,7 @@ class NoteBox {
 							if (beltsAtPos === 2 && belts === 0) {
 								const str = beltStack.join("");
 								if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
-									EntryRenderer.dice.roll(str.replace(`[[`, "").replace(`]]`, ""), {
+									EntryRenderer.dice.roll2(str.replace(`[[`, "").replace(`]]`, ""), {
 										user: false,
 										name: "DM Screen"
 									});

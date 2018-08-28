@@ -278,7 +278,7 @@
 										"Magic items can't be given away to another character, but characters can trade permanent magic items received in play with one another on a one-for-one basis. Each party to the trade must spend 15 downtime days to trade the item. If you're trading with another character playing in the same adventure as you, the downtime cost is waived. Consumable magic items (scrolls, potions, and magical ammunition) can't be traded.",
 										"Upon completing the trade, you must create an entry on your log sheet indicating who they traded with (and their DCI number if they have one), the item traded away, and the item received in exchange. Information regarding where the item was located: adventure name, encounter, table number, roll, etc., should be recorded as well.",
 										"Permanent magic items are traded for other items of like rarity (i.e. uncommon for uncommon, rare for rare, etc.) on a one-for-one basis. The DMG or other official, published D&D products, are considered to be the definitive resource in determining the item's rarity. Items without a specified rarity are unique, and can't be traded. Items without any uses remaining also can't be traded unless the item retains some permanent magical ability.",
-										"While a certificate isn't required to facilitate this trade, if the item bears a certificate, it must accompany the trade or destroyed."
+										"While a certificate isn't required to facilitate this trade, if the item bears a certificate, it must accompany the trade or be destroyed."
 									]
 								}
 							]
@@ -465,7 +465,7 @@
 									"type": "entries",
 									"name": "Dungeon Master's Guide (DMG)",
 									"entries": [
-										"This book contains indispensable advice on running games. It's great during preparation, but you don't have to bring it along to the game. The DMG also contains descriptions of magic items that might be awarded during the course of play, Not for resale. Permission granted to print and photocopy this document for personal use only. 3 Adventurers League Dungeon Master's Guide v7.0 so it is suggested that you bring that information with you to the table if it is not provided in the adventure. While the rules contained in the DMG are available for DMs to run their games, only the \"Variant: Playing on a Grid\" and \"Variant: Skills with Different Abilities\" variant rules are allowed for use."
+										"This book contains indispensable advice on running games. It's great during preparation, but you don't have to bring it along to the game. The DMG also contains descriptions of magic items that might be awarded during the course of play, Not for resale. Permission granted to print and photocopy this document for personal use only. 3 Adventurers League Dungeon Master's Guide v7.0 so it is suggested that you bring that information with you to the table if it is not provided in the adventure. While the rules contained in the DMG are available for DMs to run their games, only the {@variantrule Playing on a Grid|phb|\"Variant: Playing on a Grid\"} and {@variantrule Skills with Different Abilities|phb|\"Variant: Skills with Different Abilities\"} variant rules are allowed for use."
 									]
 								},
 								{
@@ -1770,6 +1770,518 @@
 							"data": {
 								"dmref": 3
 							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "section",
+			"name": "Part 1. Campaign Participation",
+			"entries": [
+				"This document is a guide to creating an advancing an Adventurers League character for the EBERRON campaign.",
+				{
+					"type": "entries",
+					"name": "What You Need to Play",
+					"entries": [
+						"To participate you'll need access to at least the following:",
+						{
+							"type": "list",
+							"items": [
+								"{@link D&D Basic Rules|http://dnd.wizards.com/articles/features/basicrules}. This .pdf document is free on the Wizards of the Coast website and contains all the basic rules of the game.",
+								"{@i A Character Sheet and Adventure Logsheet.} You can use any fifth edition character sheet that suits you. You must also maintain a logsheet to record information after each session of play. You can find these here: {@link D&D Adventurers League Resources|http://dnd.wizards.com/articles/events/adventurers-league-resources}."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Character Creation",
+					"entries": [
+						"You'll also need to create a character. All characters begin at 1st level in Adventurers League play.",
+						{
+							"type": "entries",
+							"name": "Steps 1 & 2: Choose a Race and Class",
+							"entries": [
+								"Your 1st-level character is created using any race and class options in the Player's Handbook, Xanathar's Guide to Everything, and the Wayfinder's Guide to Eberron."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Step 3: Determine Ability Scores",
+							"entries": [
+								"Your character's ability scores are generated using one of the following methods:",
+								{
+									"type": "list",
+									"items": [
+										"Standard Array (15, 14, 13, 12, 10, 8)",
+										"Variant: Customizing Ability Scores (PHB)."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Step 4: Describe Your Character",
+							"entries": [
+								"Describe your character and choose a background.",
+								{
+									"type": "entries",
+									"name": "Background",
+									"entries": [
+										"Choose or create a background using the resources listed above."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Alignment",
+									"entries": [
+										"Evil characters aren't allowed in the D&D Adventurers League Eberron campaign."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Deities",
+									"entries": [
+										"You character may worship any deity or faith listed in Wayfinder's Guide to Eberron."
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Step 5: Choose Equipment",
+							"entries": [
+								"Your character's class and background determine equipment and gold; don't roll for starting wealth.",
+								{
+									"type": "entries",
+									"name": "Trinkets",
+									"entries": [
+										"You start with one trinket of your choice from the table in Chapter 5 of the Player's Handbook, or you can roll randomly to determine your trinket."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Equipment",
+									"entries": [
+										"Your character can sell or buy spell components and equipment found in the resources listed above."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Part 2. Campaign Play",
+					"entries": [
+						"To play an adventure, your character must fall within the adventure's level range.",
+						{
+							"type": "entries",
+							"name": "Campaign Exclusivity",
+							"entries": [
+								"Characters built using these rules and played in the Eberron campaign may not be played in the Forgotten Realms campaign and vice versa."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Rewards and Equipment",
+							"entries": [
+								"By completing objectives or spending time pursuing the adventure's goals, characters earns rewards Record your rewards on your adventure logsheet.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Advancement Checkpoints",
+											"entries": [
+												"To advance to their next level, your character must obtain a number of advancement checkpoints based on their current tier. Adventurers League characters don't accumulate experience points (XP). Checkpoints are applied immediately. If you accumulate enough checkpoints to level, you do so upon completing the next long rest, session, or adventure\u2014whichever happens {@b first}.",
+												{
+													"type": "list",
+													"style": "list-hang-notitle",
+													"items": [
+														{
+															"type": "item",
+															"name": "Tier 1",
+															"entry": "4 checkpoints"
+														},
+														{
+															"type": "item",
+															"name": "Tiers 2 through 4",
+															"entry": "8 checkpoints"
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Treasure Checkpoints",
+											"entries": [
+												"You can spend treasure checkpoints on \"evergreen\" items, seasonal unlocks, as well as magic items unlocked by adventures and DM Quests. Treasure checkpoints can be spent or saved for later; they needn't be declared as they're received. However, they may {@b only} be spent on those items available to the tier equal to that of the adventure in which they're earned, or, in the case of hardcover adventures, the tier associated with the group's APL (but no higher than the character's tier). For example, checkpoints earned in a tier 4 adventures can be spent only on items available to tier 4 characters, unless the character is tier 3, in which case only for tier 3 items.",
+												"The item's cost is based on the magic item table in which it's found. The cost and availability of items unique to individual adventures will be provided in the ALCC. Once an item unlocked by adventuring is purchased, that item is no longer unlocked; you must unlock it again if you wish to purchase it again later."
+											]
+										},
+										{
+											"type": "table",
+											"caption": "Magic Items by Tier",
+											"colLabels": [
+												"Magic Item Table",
+												"Available at Tier",
+												"Point Cost"
+											],
+											"colStyles": [
+												"col-xs-4 text-align-center",
+												"col-xs-4 text-align-center",
+												"col-xs-4 text-align-center"
+											],
+											"rows": [
+												[
+													"A",
+													"1-4",
+													"8"
+												],
+												[
+													"B",
+													"1-4",
+													"8"
+												],
+												[
+													"C",
+													"1-4",
+													"8"
+												],
+												[
+													"D",
+													"1-4",
+													"16"
+												],
+												[
+													"E",
+													"1-4",
+													"16"
+												],
+												[
+													"F",
+													"1-4",
+													"16"
+												],
+												[
+													"G",
+													"2-4",
+													"20"
+												],
+												[
+													"H",
+													"3-4",
+													"20"
+												],
+												[
+													"I",
+													"3-4",
+													"24"
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Equipment",
+									"entries": [
+										"Your character may sell or buy equipment using the rules found in the Player's Handbook. Between sessions, your character may purchase equipment found in any resource listed in Step 1 & 2, above. Individual adventures may provide limitations on what equipment is available for purchase during play.",
+										"Rewards and equipment can't be given to another character, except as follows:",
+										{
+											"type": "list",
+											"items": [
+												"You may lend equipment and consumable items to other characters at your table but must return it at the end of the session (unless it's been consumed).",
+												"Permanent magic items may be traded (see below).",
+												"Characters may choose to divide the cost of NPC spellcasting services obtained during an adventure."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Buying Potions and Scrolls",
+									"entries": [
+										"Similarly, your character can purchase potions and scrolls per the tables below. The cost of scrolls below is in addition to any component cost\u2014regardless of whether it's consumed or not.",
+										{
+											"type": "table",
+											"caption": "Potions for Sale",
+											"colLabels": [
+												"Potion of...",
+												"Cost",
+												"Potion of...",
+												"Cost"
+											],
+											"colStyles": [
+												"col-xs-3",
+												"col-xs-3",
+												"col-xs-3",
+												"col-xs-3"
+											],
+											"rows": [
+												[
+													"{@item potion of Healing|dmg|Healing}",
+													"50 gp",
+													"{@item potion of Water breathing|dmg|Water breathing}",
+													"100 gp"
+												],
+												[
+													"{@item potion of Climbing|dmg|Climbing}",
+													"75 gp",
+													"{@item potion of Superior healing|dmg|Superior healing}",
+													"500 gp"
+												],
+												[
+													"{@item potion of Animal friendship|dmg|Animal friendship}",
+													"100 gp",
+													"Supreme healing",
+													"5,000 gp"
+												],
+												[
+													"{@item potion of Greater healing|dmg|Greater healing}",
+													"100 gp",
+													"{@item potion of Invisibility|dmg|Invisibility}",
+													"5,000 gp"
+												]
+											]
+										},
+										{
+											"type": "table",
+											"caption": "Spell Scrolls for Sale",
+											"colLabels": [
+												"Spell Level",
+												"Cost",
+												"Spell Level",
+												"Cost"
+											],
+											"colStyles": [
+												"col-xs-3",
+												"col-xs-3",
+												"col-xs-3",
+												"col-xs-3"
+											],
+											"rows": [
+												[
+													"{@item spell scroll (Cantrip)|dmg|Cantrip}",
+													"25 gp",
+													"{@item spell scroll (3rd level)|dmg|3rd}",
+													"300 gp"
+												],
+												[
+													"{@item spell scroll (1st level)|dmg|1st}",
+													"75 gp",
+													"{@item spell scroll (4th level)|dmg|4th}",
+													"500 gp"
+												],
+												[
+													"{@item spell scroll (2nd level)|dmg|2nd}",
+													"150 gp",
+													"{@item spell scroll (5th level)|dmg|5th}",
+													"1,000 gp"
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "The Adventure Logsheet",
+									"entries": [
+										"You must use an adventure logsheet to track your character's rewards from adventure to adventure.",
+										{
+											"type": "entries",
+											"name": "Session Number",
+											"entries": [
+												"Record the session's number. This will help you keep your adventure logsheets organized as you accumulate more."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Advancement and Treasure Checkpoints",
+											"entries": [
+												"Annotate the number and tier of any checkpoints your character earned at the end of the session."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Downtime",
+											"entries": [
+												"Annotate how many downtime days you earned and spent at the end of each session (including what days, if any, were spent towards a long-term downtime activity\u2014such as training). For example, if you spent 10 days learning Gnomish write {@i \"Training: Gnomish (10)\"} in the adventure logsheet's note section. You don't pay lifestyle when spending downtime."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Item Unlocks",
+											"entries": [
+												"Annotate what magic items or special treasure (if any) you unlocked during the session."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Gold",
+											"entries": [
+												"If your character gains a level (or for 20th level characters, for each 8 advancement checkpoints you earn), add the gp reward they earn as determined by the table below. This gold can be spent or saved\u2014 recording expenditures normally.",
+												{
+													"type": "table",
+													"caption": "Individual Treasure",
+													"colLabels": [
+														"Level Gained",
+														"GP Reward",
+														"Associated Lifestyle"
+													],
+													"colStyles": [
+														"col-xs-4",
+														"col-xs-4",
+														"col-xs-4"
+													],
+													"rows": [
+														[
+															"2-4",
+															"75 gp",
+															"Modest"
+														],
+														[
+															"5-10",
+															"150 gp",
+															"Comfortable"
+														],
+														[
+															"11-16",
+															"550 gp",
+															"Wealthy"
+														],
+														[
+															"17-20",
+															"5,500 gp",
+															"Aristocratic"
+														]
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Adventure Notes",
+											"entries": [
+												"Record other important things that happened during the adventure or information you'll need later, here: deaths, special rewards (story awards, renown, etc.), special events, leveling up, etc."
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Downtime and Lifestyle",
+									"entries": [
+										"Your character can participate in the downtime activities before, during, or after a session. You can use the downtime activities found in the Player's Handbook as well as those that follow; other activities are allowed if outlined in other campaign documents:",
+										{
+											"type": "entries",
+											"name": "Downtime: Spellcasting Services",
+											"entries": [
+												"You can spend 1 downtime day to cast a spell, or to have a spell cast by either another character or an NPC. Spells cast during a session use the normal rules for spellcasting (spell slots, material components, etc.) instead of downtime, while spells cast by NPCs usually require spending downtime as well as gold or treasure checkpoints. You can only receive spellcasting services from characters at the same table as you are."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Downtime: Catching Up",
+											"entries": [
+												"\"Catching Up\" is available at 4th, 10th, and 16th level. By spending downtime as follows, your character advances to the next level:",
+												{
+													"type": "table",
+													"caption": "",
+													"colLabels": [
+														"Current Level",
+														"Downtime Cost"
+													],
+													"colStyles": [
+														"col-xs-6",
+														"col-xs-6"
+													],
+													"rows": [
+														[
+															"4th",
+															"25 days"
+														],
+														[
+															"10th",
+															"75 days"
+														],
+														[
+															"16th",
+															"150 days"
+														]
+													]
+												}
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Downtime: Copying Spells",
+											"entries": [
+												"You must use this downtime activity to copy spells. For each downtime day spent, your character can spend 8 hours copying spells into their spellbook or making their spellbook available for other characters to copy from. Characters playing the same adventure together can \"trade\" spells with each other using this activity. Each wizard has their own \"language\" used for scribing spells and can't benefit from the Help action when scribing\u2014even if assisted by other wizards. You must pursue this downtime activity in the presence of your table's DM."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Downtime: Trading Magic Items",
+											"entries": [
+												"Permanent magic items can be traded on a one-for-one basis for items of the same rarity from the same magic item table in the Dungeon Master's Guide. To receive an item in trade, you must be of an appropriate tier to buy the item using treasure checkpoints. Items without remaining magical properties can't be traded. Each party to the trade must spend 15 downtime days. If the other party is playing in the same adventure as you, the downtime cost is waived. Certificates aren't required but must accompany the trade or be destroyed if one exists.",
+												"In the event of conflict, the Dungeon Master's Guide determines an item's rarity. Items found in individual adventures have a rarity provided by the adventure. If the adventure assigns no rarity, the item is unique. Upon completing the trade, note on your log sheet who you traded with and the items traded"
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Brewing Potions of Healing (XGE)",
+											"entries": [
+												"Brewing potions of healing requires the use of an herbalism kit."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Scribing Scrolls (XGE)",
+											"entries": [
+												"You must know or be able to prepare a spell before you can scribe it to a spell scroll. Its cost is in addition to any component cost\u2014 regardless of whether it's consumed or not."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Character Advancement",
+							"entries": [
+								"As you level, your character evolves and grows. In advancing your character the following rules apply:",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Slowed Progression",
+											"entries": [
+												"You may slow your character's advancement. If you do so, your character earns any checkpoints, downtime and renown at half the normal rate. You may opt in or out of this between sessions."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Character Rebuilding",
+											"entries": [
+												"You may choose to rebuild your character prior to playing their first adventure as a 5th-level character (levels 1\u20134). You can change any of your character's statistics but their name. Other, non-mechanical aspects of your character such as their alignment, sex, gender, or personality traits can be changed between sessions regardless of their level.",
+												"Your character keeps any rewards and equipment earned to that point. If you change your characters class or background, they lose any equipment (along with the proceeds from selling it or benefits derived from it, such as copied spells) associated with the class or background. Similarly, if you change their faction, you also lose any renown from their former faction."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Advancing Your Character",
+											"entries": [
+												"Your character advances using the race and class options (including the multiclass rules, feats, spells) provided in the Player's Handbook, Xanathar's Guide to Everything, or Wayfinder's Guide to Eberron. When you gain a level, use the fixed hit point value in your class entry; don't roll your hit points."
+											]
+										}
+									]
+								}
+							]
 						}
 					]
 				}

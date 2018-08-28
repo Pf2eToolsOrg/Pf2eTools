@@ -131,8 +131,8 @@ function rollAgainstTable (iLoad, jLoad) {
 
 	// add dice results
 	result = result.replace(RollerUtil.DICE_REGEX, function (match) {
-		const r = EntryRenderer.dice.parseRandomise(match);
-		return `<span class="roller" onclick="reroll(this)">${match}</span> (<span class="result">${r.total}</span>)`
+		const r = EntryRenderer.dice.parseRandomise2(match);
+		return `<span class="roller" onclick="reroll(this)">${match}</span> (<span class="result">${r}</span>)`
 	});
 
 	EntryRenderer.dice.addRoll({name: `${race.race} - ${table.option}`}, `<span><strong>${pad(roll)}</strong> ${result}</span>`);
@@ -140,6 +140,6 @@ function rollAgainstTable (iLoad, jLoad) {
 
 function reroll (ele) {
 	const $ele = $(ele);
-	const resultRoll = EntryRenderer.dice.parseRandomise($ele.html());
-	$ele.next(".result").html(resultRoll.total)
+	const resultRoll = EntryRenderer.dice.parseRandomise2($ele.html());
+	$ele.next(".result").html(resultRoll)
 }

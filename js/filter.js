@@ -835,13 +835,20 @@ class FilterBox {
 			}
 
 			function makeSliderWrapper () {
-				const $wrp = $(`<div class="pill-grid"/>`);
+				const $wrp = $(`<div class="pill-grid pill-grid--flex"/>`);
 
 				const $lblInline = $(`<div class="multi-compact-visible range-inline-label">${filter.header}</div>`).appendTo($wrp);
 				const $sld = $(`<div class="filter-slider"/>`).appendTo($wrp);
 				const subSliderOpts = {};
 				if (filter.labels) {
 					subSliderOpts.labels = filter.items
+				} else if (filter.allowGreater) {
+					subSliderOpts.labels = {
+						last: `${filter.max}+`
+					}
+				}
+				if (filter.suffix) {
+					subSliderOpts.suffix = filter.suffix;
 				}
 				$sld.slider({
 					min: filter.min,
@@ -1210,6 +1217,11 @@ class FilterBox {
 		return this.modeAndOr === "AND" ? res.every(it => it) : res.find(it => it);
 	}
 
+	/**
+	 * Update the filter header summary, usually with data collected from the page's list.
+	 * @param count visible items
+	 * @param maxCount total items
+	 */
 	setCount (count, maxCount) {
 		this.$txtCount.html(`Showing ${count}/${maxCount}`);
 	}
@@ -1352,10 +1364,17 @@ class Filter {
 		}
 
 		const isUmbrella = () => {
-			return this.umbrellaItem &&
-				toCheck &&
-				toCheck instanceof Array ? toCheck.includes(this.umbrellaItem) : toCheck === this.umbrellaItem &&
-				(map[toCheckVal(this.umbrellaItem)] === 0 || map[toCheckVal(this.umbrellaItem)] === 1);
+			if (this.umbrellaItem) {
+				if (this.umbrellaItem instanceof Array) {
+					return toCheck &&
+					toCheck instanceof Array ? this.umbrellaItem.find(u => toCheck.includes(u)) : this.umbrellaItem.includes(toCheck) &&
+						(this.umbrellaItem.find(u => map[toCheckVal(u)] === 0) || this.umbrellaItem.find(u => map[toCheckVal(u)] === 1));
+				} else {
+					return toCheck &&
+					toCheck instanceof Array ? toCheck.includes(this.umbrellaItem) : toCheck === this.umbrellaItem &&
+						(map[toCheckVal(this.umbrellaItem)] === 0 || map[toCheckVal(this.umbrellaItem)] === 1);
+				}
+			}
 		};
 
 		if (toCheck instanceof Array) {
@@ -1461,6 +1480,8 @@ class RangeFilter extends Filter {
 		this.min = options.min;
 		this.max = options.max;
 		this.labels = !!options.labels;
+		this.allowGreater = !!options.allowGreater;
+		this.suffix = options.suffix;
 	}
 
 	addIfAbsent (item) {
@@ -1509,10 +1530,16 @@ class RangeFilter extends Filter {
 				return slice.includes(toCheck);
 			}
 		} else {
-			if (toCheck instanceof Array) return range.min <= Math.min(...toCheck) && range.max >= Math.max(...toCheck);
-			else return range.min <= toCheck && range.max >= toCheck;
+			const isGtMin = toCheck instanceof Array ? range.min <= Math.min(...toCheck) : range.min <= toCheck;
+			const isLtMax = toCheck instanceof Array ? range.max >= Math.max(...toCheck) : range.max >= toCheck;
+			if (this.allowGreater) return isGtMin && (isLtMax || range.max === this.max);
+			return isGtMin && isLtMax;
 		}
 	}
+}
+
+class SearchFilter extends Filter {
+
 }
 
 class GroupedFilter extends Filter {

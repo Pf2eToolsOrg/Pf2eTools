@@ -201,7 +201,7 @@ function addRaces (data) {
 					<span class='name col-xs-4'>${race.name}</span>
 					<span class='ability col-xs-4'>${ability.asTextShort}</span>
 					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>
-					<span class='source col-xs-2 source${race.source}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+					<span class='source col-xs-2 ${Parser.sourceJsonToColor(race.source)}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
 					${bracketMatch ? `<span class="clean-name hidden">${bracketMatch[2]} ${bracketMatch[1]}</span>` : ""}
 				</a>
 			</li>`;
@@ -318,7 +318,7 @@ function loadhash (id) {
 		$pgContent.find("th.name").html(`
 			<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${race.source.escapeQuotes()}')">${race.name}</span>
 			${race.soundClip ? getPronunciationButton() : ""}
-			<span class="stats-source source${race.source}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+			<span class="stats-source ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
 		`);
 
 		const size = Parser.sizeAbvToFull(race.size);

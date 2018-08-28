@@ -159,8 +159,8 @@
 								"Item"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
@@ -269,8 +269,8 @@
 								"Objective"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
@@ -315,8 +315,8 @@
 								"Secret"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
-								""
+								"col-xs-2 text-align-center",
+								"col-xs-10"
 							],
 							"rows": [
 								[
@@ -333,7 +333,7 @@
 								],
 								[
 									"4",
-									"Is a devil in disguise"
+									"Is a {@filter devil|bestiary|tag=devil} in disguise"
 								],
 								[
 									"5",
@@ -341,15 +341,15 @@
 								],
 								[
 									"6",
-									"Is the charmed thrall of a mind flayer"
+									"Is the charmed thrall of a {@creature mind flayer}"
 								],
 								[
 									"7",
-									"Is possessed by a ghost"
+									"Is possessed by a {@creature ghost}"
 								],
 								[
 									"8",
-									"Is a solar in disguise"
+									"Is a {@creature solar} in disguise"
 								]
 							]
 						},
@@ -411,8 +411,8 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
@@ -1219,33 +1219,33 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
-										""
+										"col-xs-2 text-align-center",
+										"col-xs-10"
 									],
 									"rows": [
 										[
 											"1",
-											"1d6 kobolds"
+											"{@dice 1d6} {@creature kobold|mm|kobolds}"
 										],
 										[
 											"2",
-											"1d6 giant rats"
+											"{@dice 1d6} {@creature giant rat|mm|giant rats}"
 										],
 										[
 											"3",
-											"1d4 goblins"
+											"{@dice 1d4} {@creature goblin|mm|goblins}"
 										],
 										[
 											"4",
-											"1d2 hobgoblins"
+											"{@dice 1d2} {@creature hobgoblin|mm|hobgoblins}"
 										],
 										[
 											"5",
-											"1d4 skeletons"
+											"{@dice 1d4} {@creature skeleton|mm|skeletons}"
 										],
 										[
 											"6",
-											"1d6 twig blights"
+											"{@dice 1d6} {@creature twig blight|mm|twig blights}"
 										],
 										[
 											"7-20",

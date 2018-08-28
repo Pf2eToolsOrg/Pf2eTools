@@ -58,7 +58,7 @@ function navigation () {
 	LI('ul_players', 'classes.html', 'Classes');
 	LI('ul_players', 'backgrounds.html', 'Backgrounds');
 	LI('ul_players', 'feats.html', 'Feats');
-	LI('ul_players', 'invocations.html', 'Invocations');
+	LI('ul_players', 'optionalfeatures.html', 'Invocations & Optional Features');
 	LI('ul_players', 'races.html', 'Races');
 	LI('ul_players', 'lifegen.html', 'This Is Your Life');
 	LI('ul_players', 'names.html', 'Names');

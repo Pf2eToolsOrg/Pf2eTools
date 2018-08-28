@@ -616,7 +616,7 @@
 							"entries": [
 								"The shading in the Character Advancement table shows the four tiers of play. The tiers don't have any rules associated with them; they are a general description of how the play experience changes as characters gain levels.",
 								"{@b In the first tier (levels 1-4),} characters are effectively apprentice adventurers. They are learning the features that define them as members of particular classes, including the major choices that flavor their class features as they advance (such as a wizard's Arcane Tradition or a fighter's Martial Archetype). The threats they face are relatively minor, usually posing a danger to local farmsteads or villages.",
-								"{@b In the second tier (levels 5-10),} characters come into their own. Many spellcasters gain access to 3rd-level spells at the start of this tier, crossing a new threshold of magical power with spells such as fireball and lightning bolt. At this tier, many weapon-using classes gain the ability to make multiple attacks in one round. These characters have become important, facing dangers that threaten cities and kingdoms.",
+								"{@b In the second tier (levels 5-10),} characters come into their own. Many spellcasters gain access to 3rd-level spells at the start of this tier, crossing a new threshold of magical power with spells such as {@spell fireball} and {@spell lightning bolt}. At this tier, many weapon-using classes gain the ability to make multiple attacks in one round. These characters have become important, facing dangers that threaten cities and kingdoms.",
 								"{@b In the third tier (levels 11-16),} characters have reached a level of power that sets them high above the ordinary populace and makes them special even among adventurers. At 11th level, many spellcasters gain access to 6th-level spells, some of which create effects previously impossible for player characters to achieve. Other characters gain features that allow them to make more attacks or do more impressive things with those attacks. These mighty adventurers often confront threats to whole regions and continents.",
 								"{@b At the fourth tier (levels 17-20),} characters achieve the pinnacle of their class features, becoming heroic (or villainous) archetypes in their own right. The fate of the world or even the fundamental order of the multiverse might hang in the balance during their adventures."
 							]
@@ -1079,90 +1079,90 @@
 										[
 											"Human",
 											"4'8\"",
-											"+2d10",
+											"+{@dice 2d10}",
 											"110 lb.",
-											"× (2d4) lb."
+											"× ({@dice 2d4}) lb."
 										],
 										[
 											"Dwarf, hill",
 											"3'8\"",
-											"+2d4",
+											"+{@dice 2d4}",
 											"115 lb.",
-											"× (2d6) lb."
+											"× ({@dice 2d6}) lb."
 										],
 										[
 											"Dwarf, mountain",
 											"4'",
 											"+2d4",
 											"130 lb.",
-											"× (2d6) lb."
+											"× ({@dice 2d6}) lb."
 										],
 										[
 											"Elf, high",
 											"4'6\"",
-											"+2d10",
+											"+{@dice 2d10}",
 											"90 lb.",
-											"× (1d4) lb."
+											"× ({@dice 1d4}) lb."
 										],
 										[
 											"Elf, wood",
 											"4'6\"",
-											"+2d10",
+											"+{@dice 2d10}",
 											"100 lb.",
-											"× (1d4) lb."
+											"× ({@dice 1d4}) lb."
 										],
 										[
 											"Elf, drow",
 											"4'5\"",
-											"+2d6",
+											"+{@dice 2d6}",
 											"75 lb.",
-											"× (1d6) lb."
+											"× ({@dice 1d6}) lb."
 										],
 										[
 											"Halfling",
 											"2'7\"",
-											"+2d4",
+											"+{@dice 2d4}",
 											"35 lb.",
 											"× 1 lb"
 										],
 										[
 											"Dragonborn",
 											"5'6\"",
-											"+2d8",
+											"+{@dice 2d8}",
 											"175 lb.",
-											"× (2d6) lb."
+											"× ({@dice 2d6}) lb."
 										],
 										[
 											"Gnome",
 											"2' 11\"",
-											"+2d4",
+											"+{@dice 2d4}",
 											"35 lb.",
 											"× 1 lb."
 										],
 										[
 											"Half-elf",
 											"4'9\"",
-											"+2d8",
+											"+{@dice 2d8}",
 											"110 lb.",
-											"× (2d4) lb."
+											"× ({@dice 2d4}) lb."
 										],
 										[
 											"Half-orc",
 											"4'10\"",
-											"+2d10",
+											"+{@dice 2d10}",
 											"140 lb.",
-											"× (2d6) lb."
+											"× ({@dice 2d6}) lb."
 										],
 										[
 											"Tiefling",
 											"4 '9\"",
-											"+2d8",
+											"+{@dice 2d8}",
 											"110 lb.",
-											"× (2d4) lb."
+											"× ({@dice 2d4}) lb."
 										]
 									]
 								},
-								"For example, as a human, Tika has a height of 4 feet 8 inches plus 2d10 inches. Her player rolls 2d10 and gets a total of 12, so Tika stands 5 feet 8 inches tall. Then the player uses that same roll of 12 and multiplies it by 2d4 pounds. Her 2d4 roll is 3, so Tika weighs an extra 36 pounds (12 x 3) on top of her base 110 pounds, for a total of 146 pounds."
+								"For example, as a human, Tika has a height of 4 feet 8 inches plus 2d10 inches. Her player rolls 2d10 and gets a total of 12, so Tika stands 5 feet 8 inches tall. Then the player uses that same roll of 12 and multiplies it by 2d4 pounds. Her 2d4 roll is 3, so Tika weighs an extra 36 pounds (12 × 3) on top of her base 110 pounds, for a total of 146 pounds."
 							]
 						},
 						{
@@ -5459,7 +5459,7 @@
 							"name": "Hit Points and Hit Dice",
 							"entries": [
 								"You gain the hit points from your new class as described for levels after 1st. You gain the 1st-level hit points for a class only when you are a 1st-level character.",
-								"You add together the Hit Dice granted by all your classes to form your pool of Hit Dice. if the Hit Dice are the same die type, you can simply pool them together. For example, both the fighter and the paladin have a d10. so if you are a paladin 5/fighter 5, you have ten d10 Hit Dice. If your classes give you Hit Dice of different types, keep track of them separately. If you area paladin 5/cleric 5, for example, you have five d10 Hit Dice and five d8 Hit Dice."
+								"You add together the Hit Dice granted by all your classes to form your pool of Hit Dice. if the Hit Dice are the same die type, you can simply pool them together. For example, both the fighter and the paladin have a d10. so if you are a paladin 5/fighter 5, you have ten d10 Hit Dice. If your classes give you Hit Dice of different types, keep track of them separately. If you are a paladin 5/cleric 5, for example, you have five d10 Hit Dice and five d8 Hit Dice."
 							]
 						},
 						{
@@ -6337,6 +6337,9 @@
 								},
 								{
 									"type": "inset",
+									"data": {
+										"quickref": 3
+									},
 									"name": "Hiding",
 									"entries": [
 										"When you try to hide, make a Dexterity (Stealth) check. Until you are discovered or you stop hiding, that check's total is contested by the Wisdom (Perception) check of any creature that actively searches for signs of your presence.",
@@ -6904,7 +6907,7 @@
 									"name": "Falling",
 									"entries": [
 										"A fall from a great height is one of the most common hazards facing an adventurer.",
-										"At the end of a fall, a creature takes 1d6 bludgeoning damage for every 10 feet it fell, to a maximum of 20d6. The creature lands prone, unless it avoids taking damage from the fall."
+										"At the end of a fall, a creature takes {@dice 1d6} bludgeoning damage for every 10 feet it fell, to a maximum of {@dice 20d6}. The creature lands {@condition prone}, unless it avoids taking damage from the fall."
 									]
 								},
 								{
@@ -8445,7 +8448,7 @@
 							"type": "link",
 							"href": {
 								"type": "internal",
-								"path": "conditions.html"
+								"path": "conditionsdiseases.html"
 							},
 							"text": "conditions"
 						},

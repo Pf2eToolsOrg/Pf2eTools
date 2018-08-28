@@ -11,6 +11,8 @@
 	<title>Content Blacklist - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
@@ -73,6 +75,12 @@
 	</div>
 
 	<hr>
+
+	<div class="row">
+		<div class="form-group col-xs-12">
+			<button type="button" class="btn btn-default" onclick="Blacklist.addAllUa()">Exclude All UA, etc</button>
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="form-group col-xs-3">
@@ -141,10 +149,13 @@
 
 </footer>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/blacklist.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>

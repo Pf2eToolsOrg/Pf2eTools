@@ -1,5 +1,7 @@
 "use strict";
 const LOOT_JSON_URL = "data/loot.json";
+const MULT_SIGN = "×";
+const MAX_HIST = 9;
 const renderer = new EntryRenderer();
 let lootList;
 
@@ -23,43 +25,68 @@ class LootGen {
 		});
 	}
 
+	static getMaxRoll (table) {
+		const lastItem = table.last();
+		return lastItem.max != null ? lastItem.max : lastItem.min;
+	}
+
 	displayTable (arrayEntry) {
-		const ItemsTable = lootList.magicitems[arrayEntry];
+		const itemsTable = lootList.magicitems[arrayEntry];
 		let htmlText = `
 		<table id="stats">
-			<caption>${ItemsTable.name}</caption>
+			<caption>${itemsTable.name}</caption>
 			<thead>
 				<tr>
 					<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
 					<th class="col-xs-10">Magic Item</th>
 				</tr>
 			</thead>`;
-		ItemsTable.table.forEach(it => {
+		itemsTable.table.forEach(it => {
 			const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
-			htmlText += `<tr><td class="text-align-center">${range}</td><td>${lootGen.parseLink(it.item)}</td></tr>`;
+			htmlText += `<tr><td class="text-align-center">${range}</td><td>${lootGen.parseLink(it.item)}${it.table ? ` (roll <span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td></tr>`;
+			if (it.table) {
+				it.table.forEach(r => {
+					htmlText += `<tr><td></td><td><span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span> ${lootGen.parseLink(r.item)}</td></tr>`;
+				})
+			}
 		});
 		htmlText += `
 		</table>
-		<small><b>Source:</b> <i>${Parser.sourceJsonToFull(ItemsTable.source)}</i>, page ${ItemsTable.page}</small>`;
+		<small><b>Source:</b> <i>${Parser.sourceJsonToFull(itemsTable.source)}</i>, page ${itemsTable.page}</small>`;
 		$("div#classtable").html(htmlText).show();
 	}
 
-	rollAgainstTable (arrayEntry) {
-		const magicitemstable = lootList.magicitems[arrayEntry];
-		let curmagicitem = null;
-		const itemroll = lootGen.randomNumber(1, 100);
-		for (let n = 0; n < magicitemstable.table.length; n++) if (itemroll >= magicitemstable.table[n].min && itemroll <= magicitemstable.table[n].max) curmagicitem = magicitemstable.table[n];
-		const rolled = curmagicitem.table ? curmagicitem.table[lootGen.randomNumber(0, curmagicitem.table.length - 1)] : curmagicitem.item;
-		curmagicitem = lootGen.parseLink(rolled, {rollSpellScroll: true});
-		$("#lootoutput > ul:eq(4), #lootoutput > hr:eq(4)").remove();
-		$("#lootoutput").prepend("<ul></ul><hr>");
-		$("#lootoutput ul:eq(0)").append("<li>" + "Rolled a " + itemroll + " against " + magicitemstable.name + ":<ul><li>" + curmagicitem + "</li></ul></li>");
+	rollAgainstTable (ixTable, parentRoll) {
+		const table = lootList.magicitems[ixTable];
+
+		const rowRoll = parentRoll || lootGen.randomNumber(1, 100);
+		const row = GenUtil.getFromTable(table.table, rowRoll);
+
+		function getMessage () {
+			const item = lootGen.parseLink(row.item, {rollSpellScroll: true});
+
+			return `Rolled a ${rowRoll} against ${table.name}:<ul><li>${item}</li></ul>`;
+		}
+
+		function getMessageSub () {
+			const subTableMax = LootGen.getMaxRoll(row.table);
+			const roll = lootGen.randomNumber(1, subTableMax);
+			const rolled = GenUtil.getFromTable(row.table, roll);
+			const item = lootGen.parseLink(rolled.item, {rollSpellScroll: true});
+
+			return `Rolled a ${rowRoll} (${roll + 1}) against ${table.name}:<ul><li>${item}</li></ul>`;
+		}
+
+		const message = row.table ? getMessageSub() : getMessage();
+
+		$(`#lootoutput > ul:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
+		$("#lootoutput").prepend(`<ul><li>${message}</li></ul><hr>`);
 	}
 
 	rollLoot () {
 		const cr = $("#cr").val();
 		const hoard = $("#hoard").prop("checked");
-		$("#lootoutput > ul:eq(4), #lootoutput > hr:eq(4)").remove();
+		$(`#lootoutput > ul:eq(${MAX_HIST}), #lootoutput > hr:eq(${MAX_HIST})`).remove();
 		$("#lootoutput").prepend("<ul></ul><hr>");
 		const tableset = hoard ? lootList.hoard : lootList.individual;
 		let curtable = null;
@@ -77,10 +104,10 @@ class LootGen {
 			if (artgems) {
 				let artgemstable = loot.artobjects ? lootList.artobjects : lootList.gemstones;
 				for (let i = 0; i < artgemstable.length; i++) if (artgemstable[i].type === artgems.type) artgemstable = artgemstable[i];
-				const roll = EntryRenderer.dice.parseRandomise(artgems.amount).total;
+				const roll = EntryRenderer.dice.parseRandomise2(artgems.amount);
 				const gems = [];
 				for (let i = 0; i < roll; i++) gems.push(artgemstable.table[lootGen.randomNumber(0, artgemstable.table.length - 1)]);
-				$("#lootoutput ul:eq(0)").append("<li>" + (roll > 1 ? "x" + roll + " " : "") + Parser._addCommas(artgems.type) + " gp " + (loot.artobjects ? "art object" : "gemstone") + (roll > 1 ? "s" : "") + ":<ul>" + lootGen.sortArrayAndCountDupes(gems) + "</ul></li>");
+				$("#lootoutput ul:eq(0)").append(`<li>${Parser._addCommas(artgems.type)} gp ${loot.artobjects ? "art object" : "gemstone"}${roll > 1 ? "s" : ""}${roll > 1 ? ` (${MULT_SIGN}${roll})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(gems)}</ul></li>`);
 			}
 			if (loot.magicitems) {
 				const magicitemtabletype = [];
@@ -102,20 +129,20 @@ class LootGen {
 							magicitemstable = magicitemstable[tablearrayentry];
 						}
 					}
-					const roll = EntryRenderer.dice.parseRandomise(curamount).total;
+					const roll = EntryRenderer.dice.parseRandomise2(curamount);
 					const magicitems = [];
 					for (let i = 0; i < roll; i++) {
-						let curmagicitem = null;
-						const itemroll = lootGen.randomNumber(1, 100);
-						for (let n = 0; n < magicitemstable.table.length; n++) if (itemroll >= magicitemstable.table[n].min && itemroll <= magicitemstable.table[n].max) curmagicitem = magicitemstable.table[n];
+						const itemRoll = lootGen.randomNumber(1, 100);
+						const curmagicitem = GenUtil.getFromTable(magicitemstable.table, itemRoll);
+
 						const nestedRoll = curmagicitem.table ? lootGen.randomNumber(0, curmagicitem.table.length - 1) : null;
 						const rolled = curmagicitem.table ? curmagicitem.table[nestedRoll] : curmagicitem.item;
 						magicitems.push({
 							result: lootGen.parseLink(rolled, {rollSpellScroll: true}),
-							roll: itemroll
+							roll: itemRoll
 						});
 					}
-					$("#lootoutput ul:eq(0)").append("<li>" + (magicitems.length > 1 ? "x" + magicitems.length + " " : "") + "Magic Item" + (roll > 1 ? "s" : "") + ` (<a onclick="lootGen.displayTable(${tablearrayentry});">Table ${curtype}</a>):<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul></li>`);
+					$("#lootoutput ul:eq(0)").append(`<li>Magic Item${roll > 1 ? "s" : ""} (<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});">Table ${curtype}</span>)${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul></li>`);
 				}
 			}
 			for (let i = 0; i < treasure.length; i++) $("#lootoutput ul:eq(0)").prepend(`<li>${treasure[i]}</li>`);
@@ -136,13 +163,13 @@ class LootGen {
 		let result = "";
 		arr.forEach(r => {
 			if ((r.result || r) !== current) {
-				if (cnt > 0) result += `<li>${cnt > 1 ? `x${cnt} ` : ""}${current}${getRollPart()}</li>`;
+				if (cnt > 0) result += `<li>${current}${getRollPart()}${cnt > 1 ? `, ${MULT_SIGN}${cnt} ` : ""}</li>`;
 				current = (r.result || r);
 				cnt = 1;
 				rolls = r.roll != null ? [r.roll] : [];
 			} else cnt++;
 		});
-		if (cnt > 0) result += `<li>${cnt > 1 ? `x${cnt} ` : ""}${current}${getRollPart()}</li>`;
+		if (cnt > 0) result += `<li>${current}${getRollPart()}${cnt > 1 ? `, ${MULT_SIGN}${cnt} ` : ""}</li>`;
 		return result;
 	}
 
@@ -166,7 +193,7 @@ class LootGen {
 		for (let i = coins.length - 1; i >= 0; i--) {
 			if (!coins[i]) continue;
 			const multiplier = coins[i].split("*")[1];
-			let rolledValue = EntryRenderer.dice.parseRandomise(coins[i].split("*")[0]).total;
+			let rolledValue = EntryRenderer.dice.parseRandomise2(coins[i].split("*")[0]);
 			if (multiplier) rolledValue *= parseInt(multiplier);
 			const coin = {"denomination": coinnames[i], "value": rolledValue};
 			retVal.push(coin);
@@ -271,4 +298,5 @@ class LootGen {
 const lootGen = new LootGen();
 window.onload = function load () {
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
+	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 };

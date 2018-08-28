@@ -358,7 +358,7 @@
 					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon}",
 					"{@item Leather armor|phb}, an {@item explorer's pack|phb}, and a {@item druidic focus|phb}"
 				],
-				"goldAlternative": "2d4 × 10"
+				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
 			},
 			"classFeatures": [
 				[
@@ -942,7 +942,7 @@
 										"name": "Combat Wild Shape",
 										"entries": [
 											"You gain the ability to use Wild Shape on your turn as a bonus action, rather than as an action.",
-											"Additionally, while you are transformed by Wild Shape, you can use a bonus action to expend one spell slot to regain 1d8 hit points per level of the spell slot expended."
+											"Additionally, while you are transformed by Wild Shape, you can use a bonus action to expend one spell slot to regain {@dice 1d8} hit points per level of the spell slot expended."
 										]
 									},
 									{
@@ -966,33 +966,43 @@
 												],
 												"rows": [
 													[
-														"{@filter 2nd|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
-														"1",
+														"2nd",
+														"{@filter 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
 														"No flying or swimming speed"
 													],
 													[
-														"{@filter 6th|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly|miscellaneous=!swarm}",
-														"2",
+														"4th",
+														"{@filter 1|bestiary|cr=0;1/8;1/4;1/2;1|type=beast|speed=!fly;!swim|miscellaneous=!swarm}",
 														"No flying speed"
 													],
 													[
-														"{@filter 9th|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
-														"3",
+														"6th",
+														"{@filter 2|bestiary|cr=0;1/8;1/4;1/2;1;2|type=beast|speed=!fly|miscellaneous=!swarm}",
+														"No flying speed"
+													],
+													[
+														"8th",
+														"{@filter 2|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
+														"No flying speed"
+													],
+													[
+														"9th",
+														"{@filter 3|bestiary|cr=0;1/8;1/4;1/2;1;2;3|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
-														"{@filter 12th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast|miscellaneous=!swarm}",
-														"4",
+														"12th",
+														"{@filter 4|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
-														"{@filter 15th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast|miscellaneous=!swarm}",
-														"5",
+														"15th",
+														"{@filter 5|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													],
 													[
-														"{@filter 18th|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast|miscellaneous=!swarm}",
-														"6",
+														"18th",
+														"{@filter 6|bestiary|cr=0;1/8;1/4;1/2;1;2;3;4;5;6|type=beast|miscellaneous=!swarm}",
 														"\u2014"
 													]
 												]
@@ -1057,7 +1067,7 @@
 										"type": "entries",
 										"name": "Balm of the Summer Court",
 										"entries": [
-											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that lends relief to weary feet and respite from injuries. You have a pool of fey energy represented by a number of d6s equal to your druid level.",
+											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that lends relief to weary feet and respite from injuries. You have a pool of fey energy represented by a number of {@dice d6}s equal to your druid level.",
 											"As a bonus action, you can choose an ally you can see within 120 feet of you and spend a number of those dice equal to half your druid level or less. Roll the spent dice and add them together. The target regains a number of hit points equal to the total. The target also gains 1 temporary hit point per die spent, and its speed increases by 5 feet per die spent. The speed increase lasts for 1 minute.",
 											"You regain the expended dice when you finish a long rest."
 										]
@@ -1087,7 +1097,7 @@
 										"entries": [
 											"At 10th level, you can use the hidden, unpredictable magical pathways that some fey use to traverse space in a blink of an eye. On your turn, you can teleport up to 30 feet to a spot you can see. Each foot of this teleportation costs 1 foot of your movement.",
 											"You can also use this feature to teleport someone else. As an action, you can teleport a willing ally you touch up to 30 feet to a point you can see.",
-											"Once you use either option\u2014teleporting yourself or an ally\u2014you can't use that option again until 1d4 rounds have passed."
+											"Once you use either option\u2014teleporting yourself or an ally\u2014you can't use that option again until {@dice 1d4} rounds have passed."
 										]
 									}
 								]
@@ -1349,7 +1359,7 @@
 										"type": "entries",
 										"name": "Harvest's Scythe",
 										"entries": [
-											"Starting at 2nd level, you learn to unravel and harvest the life energy of other creatures. You can augment your spells to drain the life force from creatures. You have a pool of energy represented by a number of d10s equal to your druid level.",
+											"Starting at 2nd level, you learn to unravel and harvest the life energy of other creatures. You can augment your spells to drain the life force from creatures. You have a pool of energy represented by a number of {@dice d10}s equal to your druid level.",
 											"When you roll damage for a spell, you can increase that damage by spending dice from the pool. You can spend a number of dice equal to half your druid level or less. Roll the spent dice and add them to the damage as necrotic damage. If you kill one or more hostile creatures with a spell augmented in this way, you or an ally of your choice that you can see within 30 feet of you regains 2 hit points per die spent to increase the spell's damage, or 5 hit points per die if at least one of the slain creatures was undead.",
 											"You regain the expended dice when you finish a long rest."
 										]
@@ -1413,7 +1423,7 @@
 										"type": "entries",
 										"name": "Balm of the Summer Court",
 										"entries": [
-											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that offers respite from injuries. You have a pool of fey energy represented by a number of d6s equal to your druid level.",
+											"At 2nd level, you become imbued with the blessings of the Summer Court. You are a font of energy that offers respite from injuries. You have a pool of fey energy represented by a number of {@dice d6}s equal to your druid level.",
 											"As a bonus action, you can choose one creature you can see within 120 feet of you and spend a number of those dice equal to half your druid level or less. Roll the spent dice and add them together. The target regains a number of hit points equal to the total. The target also gains 1 temporary hit point per die spent.",
 											"You regain all expended dice when you finish a long rest."
 										]
@@ -1635,7 +1645,7 @@
 										"name": "Symbiotic Entity",
 										"entries": [
 											"At 2nd level, you gain the ability to channel magic into the spores that infuse you.",
-											"When you use your Wild Shape feature, you can awaken those spores, rather than transforming. When you do so, you gain 3 temporary hit points per level you have in this class, the damage of your Halo of Spores feature doubles, and your melee weapon attacks deal an extra 1d6 poison damage to any target they hit. These benefits last for 10 minutes or until you use your Wild Shape again."
+											"When you use your Wild Shape feature, you can awaken those spores, rather than transforming. When you do so, you gain 3 temporary hit points per level you have in this class, the damage of your Halo of Spores feature doubles, and your melee weapon attacks deal an extra {@dice 1d6} poison damage to any target they hit. These benefits last for 10 minutes or until you use your Wild Shape again."
 										]
 									}
 								]

@@ -22,7 +22,9 @@ function initDemo (data) {
 	// init editor
 	const editor = ace.edit("jsoninput");
 	editor.setOptions({
-		wrap: true
+		wrap: true,
+		showPrintMargin: false,
+		tabSize: 2
 	});
 
 	function demoRender () {
@@ -38,6 +40,8 @@ function initDemo (data) {
 			});
 		}
 
+		renderer.setFirstSection(true);
+		renderer.resetHeaderIndex();
 		renderer.recursiveEntryRender(json, renderStack);
 		$out.html(`
 			<tr><th class="border" colspan="6"></th></tr>
@@ -50,6 +54,7 @@ function initDemo (data) {
 		editor.setValue(JSON.stringify(defaultJson, null, "\t"));
 		editor.clearSelection();
 		demoRender();
+		editor.selection.moveCursorToPosition({row: 0, column: 0});
 	}
 
 	demoReset();

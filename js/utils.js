@@ -115,25 +115,6 @@ ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
 JSON_HOMEBREW_INDEX = `homebrew/index.json`;
 
 // STRING ==============================================================================================================
-// Appropriated from StackOverflow (literally, the site uses this code)
-String.prototype.formatUnicorn = String.prototype.formatUnicorn ||
-	function () {
-		let str = this.toString();
-		if (arguments.length) {
-			const t = typeof arguments[0];
-			let key;
-			const args = t === "string" || t === "number"
-				? Array.prototype.slice.call(arguments)
-				: arguments[0];
-
-			for (key in args) {
-				str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
-			}
-		}
-
-		return str;
-	};
-
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
 	function () {
 		const str = this.toString();
@@ -183,13 +164,19 @@ String.prototype.toTitleCase = String.prototype.toTitleCase ||
 		return str;
 	};
 
-// as we're targeting ES6
-String.prototype.ltrim = String.prototype.ltrim ||
+String.prototype.toSpellCase = String.prototype.toSpellCase ||
+	function () {
+		return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
+	};
+
+// FIXME remove polyfill at ~the end of October 2018
+String.prototype.trimStart = String.prototype.trimStart ||
 	function () {
 		return this.replace(/^\s+/, "");
 	};
 
-String.prototype.rtrim = String.prototype.rtrim ||
+// FIXME remove polyfill at ~the end of October 2018
+String.prototype.trimEnd = String.prototype.trimEnd ||
 	function () {
 		return this.replace(/\s+$/, "");
 	};
@@ -245,6 +232,11 @@ String.prototype.distance = String.prototype.distance ||
 		return score[m + 1][n + 1];
 	};
 
+String.prototype.isNumeric = String.prototype.isNumeric ||
+	function () {
+		return !isNaN(parseFloat(this)) && isFinite(this);
+	};
+
 Array.prototype.joinConjunct = Array.prototype.joinConjunct ||
 	function (joiner, lastJoiner, nonOxford) {
 		if (this.length === 0) return "";
@@ -259,6 +251,11 @@ Array.prototype.joinConjunct = Array.prototype.joinConjunct ||
 			}
 			return outStr;
 		}
+	};
+
+Array.prototype.peek = Array.prototype.peek ||
+	function () {
+		return this.slice(-1)[0];
 	};
 
 StrUtil = {
@@ -280,18 +277,6 @@ RegExp.escape = function (string) {
 };
 
 // TEXT COMBINING ======================================================================================================
-function utils_makeAttChoose (attList) {
-	if (attList.length === 1) {
-		return Parser.attAbvToFull(attList[0]) + " modifier";
-	} else {
-		const attsTemp = [];
-		for (let i = 0; i < attList.length; ++i) {
-			attsTemp.push(Parser.attAbvToFull(attList[i]));
-		}
-		return attsTemp.join(" or ") + " modifier (your choice)";
-	}
-}
-
 class AbilityData {
 	constructor (asText, asTextShort, asCollection, areNegative) {
 		this.asText = asText;
@@ -416,6 +401,17 @@ Parser._parse_bToA = function (abMap, b) {
 		if (abMap[v] === b) return v
 	}
 	return b;
+};
+
+Parser.attrChooseToFull = function (attList) {
+	if (attList.length === 1) return `${Parser.attAbvToFull(attList[0])} modifier`;
+	else {
+		const attsTemp = [];
+		for (let i = 0; i < attList.length; ++i) {
+			attsTemp.push(Parser.attAbvToFull(attList[i]));
+		}
+		return `${attsTemp.join(" or ")} modifier (your choice)`;
+	}
 };
 
 Parser.numberToText = function (number) {
@@ -546,8 +542,14 @@ LEVEL_TO_XP_MEDIUM = [0, 50, 100, 150, 250, 500, 600, 750, 900, 1100, 1200, 1600
 LEVEL_TO_XP_HARD = [0, 75, 150, 225, 375, 750, 900, 1100, 1400, 1600, 1900, 2400, 3000, 3400, 3800, 4300, 4800, 5900, 6300, 7300, 8500];
 LEVEL_TO_XP_DEADLY = [0, 100, 200, 400, 500, 1100, 1400, 1700, 2100, 2400, 2800, 3600, 4500, 5100, 5700, 6400, 7200, 8800, 9500, 10900, 12700];
 
+Parser.CRS = ["0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
+
 Parser.levelToXpThreshold = function (level) {
 	return [LEVEL_TO_XP_EASY[level], LEVEL_TO_XP_MEDIUM[level], LEVEL_TO_XP_HARD[level], LEVEL_TO_XP_DEADLY[level]];
+};
+
+Parser.isValidCr = function (cr) {
+	return Parser.CRS.includes(cr);
 };
 
 Parser.crToNumber = function (cr) {
@@ -687,6 +689,10 @@ Parser.sourceJsonToAbv = function (source) {
 	if (Parser.hasSourceAbv(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToAbv(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
+};
+
+Parser.sourceJsonToColor = function (source) {
+	return `source${Parser.sourceJsonToAbv(source)}`;
 };
 
 Parser.stringToSlug = function (str) {
@@ -1049,6 +1055,17 @@ Parser.monCondImmToFull = function (condImm) {
 	}).join(", ");
 };
 
+Parser.MON_SENSE_TAG_TO_FULL = {
+	"B": "blindsight",
+	"D": "darkvision",
+	"SD": "superior darkvision",
+	"T": "tremorsense",
+	"U": "truesight"
+};
+Parser.monSenseTagToFull = function (tag) {
+	return Parser._parse_aToB(Parser.MON_SENSE_TAG_TO_FULL, tag);
+};
+
 // psi-prefix functions are for parsing psionic data, and shared with the roll20 script
 Parser.PSI_ABV_TYPE_TALENT = "T";
 Parser.PSI_ABV_TYPE_DISCIPLINE = "D";
@@ -1071,23 +1088,34 @@ Parser.levelToFull = function (level) {
 	return level + "th";
 };
 
-Parser.invoSpellToFull = function (spell) {
+Parser.prereqSpellToFull = function (spell) {
 	if (spell === "Eldritch Blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
 	else if (spell === "Hex/Curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell Hex} spell or a warlock feature that curses");
 	else if (spell) return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}}`);
 	return STR_NONE
 };
 
-Parser.invoPactToFull = function (pact) {
+Parser.prereqPactToFull = function (pact) {
 	if (pact === "Chain") return "Pact of the Chain";
 	if (pact === "Tome") return "Pact of the Tome";
 	if (pact === "Blade") return "Pact of the Blade";
-	return STR_ANY;
+	return pact;
 };
 
-Parser.invoPatronToShort = function (patron) {
+Parser.prereqPatronToShort = function (patron) {
 	if (patron === STR_ANY) return STR_ANY;
 	return /^The (.*?)$/.exec(patron)[1];
+};
+
+Parser.OPT_FEATURE_TYPE_TO_FULL = {
+	EI: "Eldritch Invocation",
+	MM: "Metamagic",
+	MAB: "Maneuver, Battlemaster",
+	OTH: "Other"
+};
+
+Parser.optFeatureTypeToFull = function (type) {
+	return Parser._parse_aToB(Parser.OPT_FEATURE_TYPE_TO_FULL, type);
 };
 
 Parser.alignmentAbvToFull = function (alignment) {
@@ -1175,6 +1203,8 @@ Parser.CAT_ID_QUICKREF = 18;
 Parser.CAT_ID_CULT = 19;
 Parser.CAT_ID_BOON = 20;
 Parser.CAT_ID_DISEASE = 21;
+Parser.CAT_ID_METAMAGIC = 22;
+Parser.CAT_ID_MANEUVER_BATTLEMASTER = 23;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1198,6 +1228,8 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_QUICKREF] = "Quick Reference";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CULT] = "Cult";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOON] = "Boon";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DISEASE] = "Disease";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_METAMAGIC] = "Metamagic";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "Maneuver; Battlemaster";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1263,16 +1295,20 @@ Parser.attackTypeToFull = function (attackType) {
 	return Parser._parse_aToB(Parser.ATK_TYPE_TO_FULL, attackType);
 };
 
-Parser.trapTypeToFull = function (type) {
-	return Parser._parse_aToB(Parser.TRAP_TYPE_TO_FULL, type);
+Parser.trapHazTypeToFull = function (type) {
+	return Parser._parse_aToB(Parser.TRAP_HAZARD_TYPE_TO_FULL, type);
 };
 
-Parser.TRAP_TYPE_TO_FULL = {};
-Parser.TRAP_TYPE_TO_FULL["MECH"] = "Mechanical trap";
-Parser.TRAP_TYPE_TO_FULL["MAG"] = "Magical trap";
-Parser.TRAP_TYPE_TO_FULL["SMPL"] = "Simple trap";
-Parser.TRAP_TYPE_TO_FULL["CMPX"] = "Complex trap";
-Parser.TRAP_TYPE_TO_FULL["HAZ"] = "Hazard";
+Parser.TRAP_HAZARD_TYPE_TO_FULL = {
+	MECH: "Mechanical trap",
+	MAG: "Magical trap",
+	SMPL: "Simple trap",
+	CMPX: "Complex trap",
+	HAZ: "Hazard",
+	WTH: "Weather",
+	ENV: "Environmental Hazard",
+	WLD: "Wilderness Hazard"
+};
 
 Parser.tierToFullLevel = function (tier) {
 	return Parser._parse_aToB(Parser.TIER_TO_FULL_LEVEL, tier);
@@ -1913,6 +1949,10 @@ function showCopiedEffect ($ele) {
 
 // TODO refactor other misc utils into this
 MiscUtil = {
+	copy (obj) {
+		return JSON.parse(JSON.stringify(obj));
+	},
+
 	getProperty (object, ...path) {
 		for (let i = 0; i < path.length; ++i) {
 			object = object[path[i]];
@@ -2649,12 +2689,12 @@ ListUtil = {
 
 		if (typeof filter === "object" && filter.generator) filter = filter.generator();
 
-		let temp = `<table class="table-striped stats stats-book" style="width: 100%;"><thead><tr class="flex">${Object.values(colTransforms).map((c, i) => `<th class="col_${i} flex-${c.flex || 1} px-2">${c.name}</th>`).join("")}</tr></thead><tbody>`;
+		let temp = `<table class="table-striped stats stats-book" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
 		(sorter ? JSON.parse(JSON.stringify(dataList)).sort(sorter) : dataList).filter((it, i) => filter ? filter(i) : it).forEach(it => {
-			temp += `<tr class="flex data-row">`;
+			temp += `<tr class="data-row">`;
 			temp += Object.keys(colTransforms).map((k, i) => {
 				const c = colTransforms[k];
-				return `<td class="col_${i} flex-${c.flex || 1} px-2">${c.transform === true ? it[k] : c.transform(k[0] === "_" ? it : it[k])}</td>`;
+				return `<td class="col_${i} px-2" colspan="${c.flex || 1}">${c.transform === true ? it[k] : c.transform(k[0] === "_" ? it : it[k])}</td>`;
 			}).join("");
 			temp += `</tr>`;
 		});
@@ -2792,7 +2832,7 @@ UrlUtil.PG_ITEMS = "items.html";
 UrlUtil.PG_CLASSES = "classes.html";
 UrlUtil.PG_CONDITIONS_DISEASES = "conditionsdiseases.html";
 UrlUtil.PG_FEATS = "feats.html";
-UrlUtil.PG_INVOCATIONS = "invocations.html";
+UrlUtil.PG_OPT_FEATURES = "optionalfeatures.html";
 UrlUtil.PG_PSIONICS = "psionics.html";
 UrlUtil.PG_RACES = "races.html";
 UrlUtil.PG_REWARDS = "rewards.html";
@@ -2814,7 +2854,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([i
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_INVOCATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPT_FEATURES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2833,7 +2873,9 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS_DISEASES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_INVOCATIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_METAMAGIC] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PSIONIC] = UrlUtil.PG_PSIONICS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RACE] = UrlUtil.PG_RACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OTHER_REWARD] = UrlUtil.PG_REWARDS;
@@ -3448,8 +3490,8 @@ BrewUtil = {
 						return ["background"];
 					case UrlUtil.PG_FEATS:
 						return ["feat"];
-					case UrlUtil.PG_INVOCATIONS:
-						return ["invocation"];
+					case UrlUtil.PG_OPT_FEATURES:
+						return ["optionalfeature"];
 					case UrlUtil.PG_RACES:
 						return ["race"];
 					case UrlUtil.PG_OBJECTS:
@@ -3772,7 +3814,7 @@ BrewUtil = {
 				case "monster":
 				case "background":
 				case "feat":
-				case "invocation":
+				case "optionalfeature":
 				case "race":
 				case "object":
 				case "trap":
@@ -3858,7 +3900,7 @@ BrewUtil = {
 
 		// prepare for storage
 		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
-		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "invocation", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData"];
+		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "optionalfeature", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData"];
 		storable.forEach(storePrep);
 
 		if (json["adventure"] && json["adventureData"]) {
@@ -3936,7 +3978,7 @@ BrewUtil = {
 			case UrlUtil.PG_BESTIARY:
 			case UrlUtil.PG_BACKGROUNDS:
 			case UrlUtil.PG_FEATS:
-			case UrlUtil.PG_INVOCATIONS:
+			case UrlUtil.PG_OPT_FEATURES:
 			case UrlUtil.PG_RACES:
 			case UrlUtil.PG_OBJECTS:
 			case UrlUtil.PG_TRAPS_HAZARDS:
@@ -4255,6 +4297,16 @@ CollectionUtil = {
 			} else return false;
 		}
 		return true;
+	},
+
+	setEq (set1, set2) {
+		if (set1.size !== set2.size) return false;
+		for (const a of set1) if (!set2.has(a)) return false;
+		return true;
+	},
+
+	setDiff (set1, set2) {
+		return new Set([...set1].filter(it => !set2.has(it)));
 	}
 };
 

@@ -1,5 +1,5 @@
 ## 5e.tools
-Visit the [main site](5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
+Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
 
 [Join the 5etools Discord here!](https://discord.gg/AzyBjtQ)
 
@@ -32,9 +32,18 @@ Be sure to close any running Chrome instances (and kill any remaining Chrome pro
 You can convert stat blocks to JSON for importing via [this converter](converter.html).
 
 ## Dev Notes
+### Target JavaScript Version
+Targeting ES6 was the original intent, but more modern features have long since crept into the code. Therefore, if something is available as standard in both Chrome and Firefox (preferably in versions dating back at least a couple of months), and isn't bleeding-edge, one can reasonable justify using it. As with all things, use common sense.
 
 ### Style Guidelines
+#### Code
 - Use tabs over spaces.
+
+#### Data/Text
+- When "tagging" references in data (e.g. `{@creature goblin}`), the following rules apply:
+	- Only tag references which are _intended as references_. For example, the Wizard class in `You gain one cantrip of your choice from the wizard spell list` should be tagged, whereas the Wizard class in `Together, a group of seven powerful wizards sought to contain the demon` should not be tagged. One is a reference to the mechanical class, one is merely the casual usage of the word "wizard." 
+	- In a similar vein, never tag anything within a `quote`-type block. Even if the quote directly refers to a specific creature, we can assume the quote is from a universe/perspective in which (for example) statblocks don't exist, and therefore the tag should be omitted to maintain the flavour of the quote.
+	- Within data from a source, avoid referencing content from a source printed after the publication of that source. For example, MTF content might reference SCAG deities, but SCAG deities should refrain from referencing MTF content.  
 
 ### JSON Cleaning
 #### Trailing commas

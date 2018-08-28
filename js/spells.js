@@ -255,7 +255,7 @@ function pPostLoad () {
 					spellList,
 					{
 						name: {name: "Name", transform: true},
-						source: {name: "Source", transform: (it) => `<span class="source${Parser.stringToCasedSlug(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
+						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
 						level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
 						time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0])},
 						school: {name: "School", transform: (it) => `<span class="school_${it}">${Parser.spSchoolAbvToFull(it)}</span>`},
@@ -277,7 +277,9 @@ function pPostLoad () {
 window.onload = function load () {
 	ExcludeUtil.initialise();
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
-		.then(() => onFilterChangeMulti(spellList));
+		.then(() => {
+			if (History.lastLoadedId == null) History._freshLoad();
+		});
 };
 
 let list;
@@ -602,6 +604,16 @@ function addSpells (data) {
 			});
 		}
 
+		// add high elf
+		if (spell.level === 0 && spell.classes && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
+			(spell.races || (spell.races = [])).push({
+				name: "Elf (High)",
+				source: SRC_PHB,
+				baseName: "Elf",
+				baseSource: SRC_PHB
+			});
+		}
+
 		// add homebrew class/subclass
 		if (brewSpellClasses[spell.source] && brewSpellClasses[spell.source][spell.name]) {
 			spell.classes = spell.classes || {};
@@ -620,7 +632,6 @@ function addSpells (data) {
 		spell[P_NORMALISED_RANGE] = getNormalisedRange(spell.range);
 
 		// used for filtering
-		if (!spell.damageInflict) spell.damageInflict = [];
 		spell._fSources = ListUtil.getCompleteSources(spell);
 		spell._fMeta = getMetaFilterObj(spell);
 		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
@@ -642,7 +653,7 @@ function addSpells (data) {
 			<li class="row" ${FLTR_ID}="${spI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${spI}" href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
 					<span class="name col-xs-3 col-xs-3-5">${spell.name}</span>
-					<span class="source col-xs-1 col-xs-1-7 source${Parser.stringToCasedSlug(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
+					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
 					<span class="level col-xs-1 col-xs-1-5">${levelText}</span>
 					<span class="time col-xs-1 col-xs-1-7">${getTblTimeStr(spell.time[0])}</span>
 					<span class="school col-xs-1 col-xs-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>

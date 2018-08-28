@@ -196,7 +196,7 @@
 					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
 				],
-				"goldAlternative": "5d4 × 10"
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
 			},
 			"classFeatures": [
 				[
@@ -221,7 +221,7 @@
 					{
 						"name": "Divine Smite",
 						"entries": [
-							"Starting at 2nd level, when you hit a creature with a melee weapon attack, you can expend one spell slot to deal radiant damage to the target, in addition to the weapon's damage. The extra damage is 2d8 for a 1st-level spell slot, plus 1d8 for each spell level higher than 1st, to a maximum of 5d8. The damage increases by 1d8 if the target is an undead or a fiend."
+							"Starting at 2nd level, when you hit a creature with a melee weapon attack, you can expend one spell slot to deal radiant damage to the target, in addition to the weapon's damage. The extra damage is {@dice 2d8} for a 1st-level spell slot, plus {@dice 1d8} for each spell level higher than 1st, to a maximum of {@dice 5d8}. The damage increases by {@dice 1d8} if the target is an undead or a fiend."
 						]
 					},
 					{
@@ -430,7 +430,7 @@
 					{
 						"name": "Improved Divine Smite",
 						"entries": [
-							"By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage. If you also use your Divine Smite with an attack, you add this damage to the extra damage of your Divine Smite."
+							"By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra {@dice 1d8} radiant damage. If you also use your Divine Smite with an attack, you add this damage to the extra damage of your Divine Smite."
 						]
 					}
 				],
@@ -1136,8 +1136,8 @@
 										"type": "entries",
 										"name": "Dread Lord",
 										"entries": [
-											"At 20th level, the paladin can, as an action, surround himself or herself with an aura of gloom that lasts for 1 minute. The aura reduces any bright light in a 30-foot radius around the paladin to dim light. Whenever an enemy that is {@condition frightened} by the paladin starts its turn in the aura, it takes 4d10 psychic damage. Additionally, the paladin and creatures he or she chooses in the aura are draped in deeper shadow. Creatures that rely on sight have disadvantage on attack rolls against creatures draped in this shadow.",
-											"While the aura lasts, the paladin can use a bonus action on his or her turn to cause the shadows in the aura to attack one creature. The paladin makes a melee spell attack against the target. If the attack hits, the target takes necrotic damage equal to 3d10 + the paladin's Charisma modifier.",
+											"At 20th level, the paladin can, as an action, surround himself or herself with an aura of gloom that lasts for 1 minute. The aura reduces any bright light in a 30-foot radius around the paladin to dim light. Whenever an enemy that is {@condition frightened} by the paladin starts its turn in the aura, it takes {@dice 4d10} psychic damage. Additionally, the paladin and creatures he or she chooses in the aura are draped in deeper shadow. Creatures that rely on sight have disadvantage on attack rolls against creatures draped in this shadow.",
+											"While the aura lasts, the paladin can use a bonus action on his or her turn to cause the shadows in the aura to attack one creature. The paladin makes a melee spell attack against the target. If the attack hits, the target takes necrotic damage equal to {@dice 3d10} + the paladin's Charisma modifier.",
 											"After activating the aura, the paladin can't do so again until he or she finishes a long rest."
 										]
 									}
@@ -1263,7 +1263,7 @@
 										"type": "entries",
 										"name": "Channel Divinity: Turn the Tide",
 										"entries": [
-											"As a bonus action, you can bolster injured creatures with your Channel Divinity. Each creature of your choice that can hear you within 30 feet of you regains hit points equal to 1d6 + your Charisma modifier (minimum of 1) if it has no more than half of its hit points."
+											"As a bonus action, you can bolster injured creatures with your Channel Divinity. Each creature of your choice that can hear you within 30 feet of you regains hit points equal to {@dice 1d6} + your Charisma modifier (minimum of 1) if it has no more than half of its hit points."
 										]
 									}
 								]
@@ -1633,7 +1633,7 @@
 												"items": [
 													"You have resistance to all damage.",
 													"When you take the Attack action on your turn, you can make one additional attack as part of that action.",
-													"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the d20."
+													"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the {@dice d20}."
 												]
 											},
 											"Once you use this feature, you can't use it again until you finish a long rest."
@@ -1714,7 +1714,7 @@
 										"type": "entries",
 										"name": "Channel Divinity: Poison Strike",
 										"entries": [
-											"You can use your Channel Divinity to make a weapon deadlier. As a bonus action, you touch one weapon or piece of ammunition and conjure a special poison on it. The poison lasts for 1 minute. The next time you hit a target with an attack using that weapon or ammunition, the target takes poison damage immediately after the attack. The poison damage equals 2d10 + your paladin level, or 20 + your paladin level if you had advantage on the attack roll."
+											"You can use your Channel Divinity to make a weapon deadlier. As a bonus action, you touch one weapon or piece of ammunition and conjure a special poison on it. The poison lasts for 1 minute. The next time you hit a target with an attack using that weapon or ammunition, the target takes poison damage immediately after the attack. The poison damage equals {@dice 2d10} + your paladin level, or 20 + your paladin level if you had advantage on the attack roll."
 										]
 									}
 								]
@@ -1953,7 +1953,7 @@
 										"type": "entries",
 										"name": "Protective Spirit",
 										"entries": [
-											"Starting at 15th level, a holy presence mends your wounds in combat. You regain hit points equal to 1d6 + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren't {@condition incapacitated}."
+											"Starting at 15th level, a holy presence mends your wounds in combat. You regain hit points equal to {@dice 1d6} + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren't {@condition incapacitated}."
 										]
 									}
 								]
@@ -2125,7 +2125,7 @@
 												"items": [
 													"You have resistance to all damage.",
 													"When you take the Attack action on your turn, you can make one additional attack as part of that action.",
-													"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the d20."
+													"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the {@dice d20}."
 												]
 											},
 											"Once you use this feature, you can't use it again until you finish a long rest."
@@ -2281,7 +2281,7 @@
 										"type": "entries",
 										"name": "Protective Spirit",
 										"entries": [
-											"Starting at 15th level, a holy presence mends your wounds in battle. You regain hit points equal to 1d6 + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren't {@condition incapacitated}."
+											"Starting at 15th level, a holy presence mends your wounds in battle. You regain hit points equal to {@dice 1d6} + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren't {@condition incapacitated}."
 										]
 									}
 								]
