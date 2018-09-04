@@ -269,6 +269,22 @@ StrUtil = {
 
 	padNumber: (n, len, padder) => {
 		return String(n).padStart(len, padder);
+	},
+
+	elipsisTruncate (str, atLeastPre = 5, atLeastSuff = 0, maxLen = 20) {
+		if (maxLen >= str.length) return str;
+
+		maxLen = Math.max(atLeastPre + atLeastSuff + 3, maxLen);
+		let out = "";
+		let remain = maxLen - (3 + atLeastPre + atLeastSuff);
+		for (let i = 0; i < str.length - atLeastSuff; ++i) {
+			const c = str[i];
+			if (i < atLeastPre) out += c;
+			else if ((remain--) > 0) out += c;
+		}
+		if (remain < 0) out += "..."
+		out += str.substring(str.length - atLeastSuff, str.length);
+		return out;
 	}
 };
 
@@ -386,11 +402,11 @@ function utils_getAbilityData (abObj) {
 
 // PARSING =============================================================================================================
 Parser = {};
-Parser._parse_aToB = function (abMap, a) {
+Parser._parse_aToB = function (abMap, a, fallback) {
 	if (a === undefined || a === null) throw new Error("undefined or null object passed to parser");
 	if (typeof a === "string") a = a.trim();
 	if (abMap[a] !== undefined) return abMap[a];
-	return a;
+	return fallback || a;
 };
 
 Parser._parse_bToA = function (abMap, b) {
@@ -748,11 +764,15 @@ Parser.dmgTypeToFull = function (dmgType) {
 };
 
 Parser.skillToExplanation = function (skillType) {
+	const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "skills", skillType);
+	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
 };
 
 Parser.actionToExplanation = function (actionType) {
-	return Parser._parse_aToB(Parser.ACTION_JSON_TO_FULL, actionType);
+	const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "actions", actionType);
+	if (fromBrew) return fromBrew;
+	return Parser._parse_aToB(Parser.ACTION_JSON_TO_FULL, actionType, ["No explanation available."]);
 };
 
 Parser.numberToString = function (num) {
@@ -778,7 +798,6 @@ Parser.numberToString = function (num) {
 
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
 Parser.spSchoolAbvToFull = function (school) {
-	// if (school === "AH") debugger
 	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
 	if (Parser.SP_SCHOOL_ABV_TO_FULL[school]) return out;
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].full;
@@ -786,7 +805,6 @@ Parser.spSchoolAbvToFull = function (school) {
 };
 
 Parser.spSchoolAbvToShort = function (school) {
-	// if (school === "AH") debugger
 	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_SHORT, school);
 	if (Parser.SP_SCHOOL_ABV_TO_SHORT[school]) return out;
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].short;
@@ -1048,10 +1066,13 @@ Parser.monImmResToFull = function (toParse) {
 };
 
 Parser.monCondImmToFull = function (condImm) {
+	function render (condition) {
+		return EntryRenderer.getDefaultRenderer().renderEntry(`{@condition ${condition}}`)
+	}
 	return condImm.map(it => {
 		if (it.special) return it.special;
-		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.join(", ")}${it.note ? ` ${it.note}` : ""}`;
-		return it;
+		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.map(render).join(", ")}${it.note ? ` ${it.note}` : ""}`;
+		return render(it);
 	}).join(", ");
 };
 
@@ -1110,7 +1131,7 @@ Parser.prereqPatronToShort = function (patron) {
 Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	EI: "Eldritch Invocation",
 	MM: "Metamagic",
-	MAB: "Maneuver, Battlemaster",
+	"MV:B": "Maneuver, Battlemaster",
 	OTH: "Other"
 };
 
@@ -1766,33 +1787,98 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 };
 
 Parser.SKILL_JSON_TO_FULL = {
-	"Acrobatics": "Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck.",
-	"Animal Handling": "When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the GM might call for a Wisdom (Animal Handling) check.",
-	"Arcana": "Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.",
-	"Athletics": "Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming.",
-	"Deception": "Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions.",
-	"History": "Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations.",
-	"Insight": "Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move.",
-	"Intimidation": "When you attempt to influence someone through overt threats, hostile actions, and physical violence, the GM might ask you to make a Charisma (Intimidation) check.",
-	"Investigation": "When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check.",
-	"Medicine": "A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.",
-	"Nature": "Your Intelligence (Nature) check measures your ability to recall lore about terrain, plants and animals, the weather, and natural cycles.",
-	"Perception": "Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something. It measures your general awareness of your surroundings and the keenness of your senses.",
-	"Performance": "Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment.",
-	"Persuasion": "When you attempt to influence someone or a group of people with tact, social graces, or good nature, the GM might ask you to make a Charisma (Persuasion) check.",
-	"Religion": "Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults.",
-	"Sleight of Hand": "Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an object on your person, make a Dexterity (Sleight of Hand) check.",
-	"Stealth": "Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard.",
-	"Survival": "The GM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards."
+	"Acrobatics": [
+		"Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck. The DM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips."
+	],
+	"Animal Handling": [
+		"When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the DM might call for a Wisdom (Animal Handling) check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver."
+	],
+	"Arcana": [
+		"Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes."
+	],
+	"Athletics": [
+		"Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities:",
+		{
+			"type": "list",
+			"items": [
+				"You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.",
+				"You try to jump an unusually long distance or pull off a stunt mid jump.",
+				"You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming."
+			]
+		}
+	],
+	"Deception": [
+		"Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast-talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone's suspicions with false assurances, or maintain a straight face while telling a blatant lie."
+	],
+	"History": [
+		"Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations."
+	],
+	"Insight": [
+		"Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move. Doing so involves gleaning clues from body language, speech habits, and changes in mannerisms."
+	],
+	"Intimidation": [
+		"When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision."
+	],
+	"Investigation": [
+		"When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check. You might deduce the location of a hidden object, discern from the appearance of a wound what kind of weapon dealt it, or determine the weakest point in a tunnel that could cause it to collapse. Poring through ancient scrolls in search of a hidden fragment of knowledge might also call for an Intelligence (Investigation) check."
+	],
+	"Medicine": [
+		"A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness."
+	],
+	"Nature": [
+		"Your Intelligence (Nature) check measures your ability to recall lore about terrain, plants and animals, the weather, and natural cycles."
+	],
+	"Perception": [
+		"Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something. It measures your general awareness of your surroundings and the keenness of your senses.", "For example, you might try to hear a conversation through a closed door, eavesdrop under an open window, or hear monsters moving stealthily in the forest. Or you might try to spot things that are obscured or easy to miss, whether they are orcs lying in ambush on a road, thugs hiding in the shadows of an alley, or candlelight under a closed secret door."
+	],
+	"Performance": [
+		"Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment."
+	],
+	"Persuasion": [
+		"When you attempt to influence someone or a group of people with tact, social graces, or good nature, the DM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk."
+	],
+	"Religion": [
+		"Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults."
+	],
+	"Sleight of Hand": [
+		"Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an object on your person, make a Dexterity (Sleight of Hand) check. The DM might also call for a Dexterity (Sleight of Hand) check to determine whether you can lift a coin purse off another person or slip something out of another person's pocket."
+	],
+	"Stealth": [
+		"Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard."
+	],
+	"Survival": [
+		"The DM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards."
+	]
 };
 
 Parser.ACTION_JSON_TO_FULL = {
-	"Dash": "When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
-	"Disengage": "If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn.",
-	"Dodge": "When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage.",
-	"Help": "You can lend your aid to another creature in the completion of a task. The creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.",
-	"Hide": "When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules for hiding.",
-	"Ready": "Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn, which lets you act using your reaction before the start of your next turn."
+	"Dash": [
+		"When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
+		"Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash."
+	],
+	"Disengage": [
+		"If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn."
+	],
+	"Dodge": [
+		"When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated (as explained in the appendix) or if your speed drops to 0."
+	],
+	"Help": [
+		"You can lend your aid to another creature in the completion of a task. When you take the Help action, the creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.",
+		"Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally's attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage."
+	],
+	"Hide": [
+		"When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules in chapter 7 for hiding. If you succeed, you gain certain benefits, as described in the \"{@book Unseen Attackers and Targets|PHB|9|unseen attackers and targets}\" section in the Player's Handbook."
+	],
+	"Ready": [
+		"Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn so that you can act later in the round using your reaction.",
+		"First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include \"If the cultist steps on the trapdoor, I'll pull the lever that opens it,\" and \"If the goblin steps next to me, I move away.\"",
+		"When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.",
+		"When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in chapter 10). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.",
+		"You have until the start of your next turn to use a readied action."
+	],
+	"Use an Object": [
+		"You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn."
+	]
 };
 
 Parser.NUMBERS_ONES = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
@@ -1862,6 +1948,14 @@ Math.meanAbsoluteDeviation = Math.meanAbsoluteDeviation ||
 	function (...values) {
 		const mean = Math.mean(...values);
 		return Math.mean(...(values.map(num => Math.abs(num - mean))));
+	};
+
+Math.seed = Math.seed ||
+	function (s) {
+		return function () {
+			s = Math.sin(s) * 10000;
+			return s - Math.floor(s);
+		};
 	};
 
 function xor (a, b) {
@@ -2236,6 +2330,7 @@ ListUtil = {
 	sublist: null,
 	$sublist: null,
 	_sublistChangeFn: null,
+	_pUidHandler: null,
 	_allItems: null,
 	_primaryLists: [],
 	_pinned: {},
@@ -2244,10 +2339,13 @@ ListUtil = {
 		ListUtil._getSublistRow = options.getSublistRow;
 		ListUtil._sublistChangeFn = options.onUpdate;
 		ListUtil._primaryLists = options.primaryLists;
+		ListUtil._pUidHandler = options.uidHandler;
+		ListUtil._uidUnpackFn = options.uidUnpacker;
 		delete options.itemList;
 		delete options.getSublistRow;
 		delete options.onUpdate;
 		delete options.primaryLists;
+		delete options.uidHandler;
 
 		ListUtil.$sublistContainer = $("#sublistcontainer");
 		const sublist = new List("sublistcontainer", options);
@@ -2261,6 +2359,8 @@ ListUtil = {
 		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow;
 		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate;
 		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists;
+		if (options.uidHandler !== undefined) ListUtil._pUidHandler = options.uidHandler;
+		if (options.uidUnpacker !== undefined) ListUtil._uidUnpackFn = options.uidUnpacker;
 	},
 
 	getOrTabRightButton: (id, icon) => {
@@ -2281,24 +2381,26 @@ ListUtil = {
 			.attr("title", "Pin (Toggle)");
 	},
 
-	bindAddButton: () => {
+	_genericAddButtonHandler (evt) {
+		if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, 20);
+		else ListUtil.doSublistAdd(History.lastLoadedId, true);
+	},
+	bindAddButton: (handlerGenerator) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
-			.on("click", (evt) => {
-				if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, 20);
-				else ListUtil.doSublistAdd(History.lastLoadedId, true);
-			})
-			.attr("title", "Add (SHIFT for 20)");
+			.attr("title", "Add (SHIFT for 20)")
+			.on("click", handlerGenerator ? handlerGenerator() : ListUtil._genericAddButtonHandler);
 	},
 
-	bindSubtractButton: () => {
+	_genericSubtractButtonHandler (evt) {
+		if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 20);
+		else ListUtil.doSublistSubtract(History.lastLoadedId);
+	},
+	bindSubtractButton: (handlerGenerator) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
-			.on("click", (evt) => {
-				if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 20);
-				else ListUtil.doSublistSubtract(History.lastLoadedId);
-			})
-			.attr("title", "Subtract (SHIFT for 20)");
+			.attr("title", "Subtract (SHIFT for 20)")
+			.on("click", handlerGenerator ? handlerGenerator() : ListUtil._genericSubtractButtonHandler);
 	},
 
 	bindDownloadButton: () => {
@@ -2329,9 +2431,10 @@ ListUtil = {
 						const text = reader.result;
 						const json = JSON.parse(text);
 						const funcOnload = () => {
-							ListUtil._loadSavedSublist(json.items, additive);
-							$iptAdd.remove();
-							ListUtil._finaliseSublist();
+							ListUtil._loadSavedSublist(json.items, additive).then(() => {
+								$iptAdd.remove();
+								ListUtil._finaliseSublist();
+							});
 						};
 						if (funcPreload) funcPreload(json, funcOnload);
 						else funcOnload();
@@ -2350,18 +2453,19 @@ ListUtil = {
 
 	setFromSubHashes: (subHashes, funcPreload) => {
 		function funcOnload (json) {
-			ListUtil._loadSavedSublist(json.items, false);
-			ListUtil._finaliseSublist();
+			ListUtil._loadSavedSublist(json.items, false).then(() => {
+				ListUtil._finaliseSublist();
 
-			const [link, ...sub] = History._getHashParts();
-			const outSub = [];
-			Object.keys(unpacked)
-				.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
-				.forEach(k => {
-					outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
-				});
-			History.setSuppressHistory(true);
-			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
+				const [link, ...sub] = History._getHashParts();
+				const outSub = [];
+				Object.keys(unpacked)
+					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
+					.forEach(k => {
+						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
+					});
+				History.setSuppressHistory(true);
+				window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
+			});
 		}
 
 		const unpacked = {};
@@ -2375,35 +2479,77 @@ ListUtil = {
 		}
 	},
 
-	doSublistAdd: (index, doFinalise, addCount) => {
-		if (index == null) {
-			alert("Please first view something from the list");
-			return;
-		}
-		const count = ListUtil._pinned[index] || 0;
-		addCount = addCount || 1;
-		ListUtil._pinned[index] = count + addCount;
-		if (count === 0) ListUtil.$sublist.append(ListUtil._getSublistRow(ListUtil._allItems[index], index, addCount));
-		else ListUtil._setCount(index, count + addCount);
-		if (doFinalise) ListUtil._finaliseSublist();
+	_getPinnedCount (index, data) {
+		const base = ListUtil._pinned[index];
+		if (!base) return null;
+		if (data) return base[data.uid];
+		return base._;
 	},
 
-	doSublistSubtract: (index, subtractCount) => {
-		const count = ListUtil._pinned[index] || 0;
+	_setPinnedCount (index, count, data) {
+		const base = ListUtil._pinned[index];
+		const key = data ? data.uid : "_";
+		if (base) base[key] = count;
+		else (ListUtil._pinned[index] = {})[key] = count;
+	},
+
+	_deletePinnedCount (index, data) {
+		const base = ListUtil._pinned[index];
+		if (base) {
+			if (data) delete base[data.uid];
+			else delete base._;
+		}
+	},
+
+	doSublistAdd: (index, doFinalise, addCount, data) => {
+		if (index == null) {
+			alert("Please first view something from the list");
+			return Promise.resolve();
+		}
+		const count = ListUtil._getPinnedCount(index, data) || 0;
+		addCount = addCount || 1;
+		ListUtil._setPinnedCount(index, count + addCount, data);
+
+		if (count !== 0) {
+			ListUtil._setViewCount(index, count + addCount, data);
+			if (doFinalise) ListUtil._finaliseSublist();
+			return Promise.resolve();
+		} else {
+			const sl = ListUtil._getSublistRow(ListUtil._allItems[index], index, addCount, data);
+			if (sl instanceof Promise) {
+				return sl.then((r) => {
+					ListUtil.$sublist.append(r);
+					if (doFinalise) ListUtil._finaliseSublist();
+					return Promise.resolve();
+				})
+			} else {
+				ListUtil.$sublist.append(sl);
+				if (doFinalise) ListUtil._finaliseSublist();
+				return Promise.resolve();
+			}
+		}
+	},
+
+	doSublistSubtract: (index, subtractCount, data) => {
+		const count = ListUtil._getPinnedCount(index, data);
 		subtractCount = subtractCount || 1;
 		if (count > subtractCount) {
-			ListUtil._pinned[index] = count - subtractCount;
-			ListUtil._setCount(index, count - subtractCount);
+			ListUtil._setPinnedCount(index, count - subtractCount, data);
+			ListUtil._setViewCount(index, count - subtractCount, data);
 			ListUtil._handleCallUpdateFn();
 		} else if (count) ListUtil.doSublistRemove(index);
 	},
 
-	getSublistedIds: () => {
+	getSublisted () {
+		return MiscUtil.copy(ListUtil._pinned);
+	},
+
+	getSublistedIds () {
 		return Object.keys(ListUtil._pinned).map(it => Number(it));
 	},
 
-	_setCount: (index, newCount) => {
-		const $cnt = $(ListUtil.sublist.get("id", index)[0].elm).find(".count");
+	_setViewCount: (index, newCount, data) => {
+		const $cnt = $(ListUtil.sublist.get(data ? "uid" : "id", data ? data.uid : index)[0].elm).find(".count");
 		if ($cnt.find("input").length) $cnt.find("input").val(newCount);
 		else $cnt.text(newCount);
 	},
@@ -2421,7 +2567,7 @@ ListUtil = {
 			.map(it => {
 				const $elm = $(it.elm);
 				sources.add(ListUtil._allItems[Number($elm.attr(FLTR_ID))].source);
-				return {h: $elm.find(`a`).prop("hash").slice(1), c: $elm.find(".count").text() || undefined};
+				return {h: $elm.find(`a`).prop("hash").slice(1).split(HASH_PART_SEP)[0], c: $elm.find(".count").text() || undefined, uid: $elm.find(`.uid`).text() || undefined};
 			});
 		return {items: toSave, sources: Array.from(sources)};
 	},
@@ -2435,8 +2581,8 @@ ListUtil = {
 		else ListUtil.$sublistContainer.hide();
 	},
 
-	doSublistRemove: (index) => {
-		delete ListUtil._pinned[index];
+	doSublistRemove: (index, data) => {
+		ListUtil._deletePinnedCount(index, data)
 		ListUtil.sublist.remove("id", index);
 		ListUtil._updateSublistVisibility();
 		ListUtil._saveSublist();
@@ -2451,8 +2597,8 @@ ListUtil = {
 		ListUtil._handleCallUpdateFn();
 	},
 
-	isSublisted: (index) => {
-		return ListUtil._pinned[index];
+	isSublisted: (index, data) => {
+		return ListUtil._getPinnedCount(index, data);
 	},
 
 	deslectAll: (list) => {
@@ -2500,12 +2646,22 @@ ListUtil = {
 
 	_loadSavedSublist: (items, additive) => {
 		if (!additive) ListUtil.doSublistRemoveAll(true);
-		items.forEach(it => {
+
+		const toLoad = items.map(it => {
 			const $ele = History._getListElem(it.h);
 			const itId = $ele ? $ele.attr("id") : null;
-			if (itId != null) ListUtil.doSublistAdd(itId, false, Number(it.c));
+			if (itId != null) {
+				const out = {index: itId, addCount: Number(it.c)};
+				if (ListUtil._uidUnpackFn && it.uid) out.data = ListUtil._uidUnpackFn(it.uid);
+				return out;
+			}
+			return null
+		}).filter(it => it);
+
+		const promises = toLoad.map(it => ListUtil.doSublistAdd(it.index, false, it.addCount, it.data));
+		return Promise.all(promises).then(resolved => {
+			ListUtil._finaliseSublist(true);
 		});
-		ListUtil._finaliseSublist(true);
 	},
 
 	getSelectedSources: () => {
@@ -2597,13 +2753,36 @@ ListUtil = {
 		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
 	},
 
+	_genericPinKeyMapper (pMapUid = ListUtil._pUidHandler) {
+		return Object.entries(ListUtil.getSublisted()).map(([id, it]) => {
+			return Object.keys(it).map(k => {
+				const it = ListUtil._allItems[id];
+				return k === "_" ? Promise.resolve(MiscUtil.copy(it)) : pMapUid(it, k)
+			}).reduce((a, b) => a.concat(b), []);
+		}).reduce((a, b) => a.concat(b), []);
+	},
+
 	_handleJsonDownload () {
-		const out = ListUtil.getSublistedIds().map(id => {
-			const cpy = JSON.parse(JSON.stringify(ListUtil._allItems[id]));
+		function clean (cpy) {
+			cpy.name = cpy._displayName || cpy.name;
 			Object.keys(cpy).filter(k => k.startsWith("_") || !cpy[k] || (cpy[k] instanceof Array && !cpy[k].length)).forEach(k => delete cpy[k]);
-			return cpy;
-		});
-		DataUtil.userDownload(`${ListUtil._getDownloadName()}-data`, out);
+		}
+
+		if (ListUtil._pUidHandler) {
+			const promises = ListUtil._genericPinKeyMapper();
+
+			Promise.all(promises).then(data => {
+				data.forEach(cpy => clean(cpy));
+				DataUtil.userDownload(`${ListUtil._getDownloadName()}-data`, data);
+			});
+		} else {
+			const out = ListUtil.getSublistedIds().map(id => {
+				const cpy = JSON.parse(JSON.stringify(ListUtil._allItems[id]));
+				clean(cpy);
+				return cpy;
+			});
+			DataUtil.userDownload(`${ListUtil._getDownloadName()}-data`, out);
+		}
 	},
 
 	/**
@@ -2845,6 +3024,7 @@ UrlUtil.PG_OBJECTS = "objects.html";
 UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 UrlUtil.PG_QUICKREF = "quickreference.html";
 UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
+UrlUtil.PG_MANAGE_BREW = "managebrew.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -3204,6 +3384,7 @@ RollerUtil = {
 	},
 
 	randomise: (max, min = 1) => {
+		if (max === min) return max;
 		if (RollerUtil.isCrypto()) {
 			return RollerUtil._randomise(min, max + min);
 		} else {
@@ -3242,8 +3423,8 @@ RollerUtil = {
 	 * @param max range max (exclusive)
 	 * @returns {number} rolled
 	 */
-	roll: (max) => {
-		return Math.floor(Math.random() * max);
+	roll: (max, fn = Math.random) => {
+		return Math.floor(fn() * max);
 	},
 
 	addListRollButton: () => {
@@ -3373,6 +3554,7 @@ BrewUtil = {
 	purgeBrew (error) {
 		window.alert("Error when loading homebrew! Purging corrupt data...");
 		BrewUtil.storage.removeItem(HOMEBREW_STORAGE);
+		BrewUtil.storage.removeItem(HOMEBREW_META_STORAGE);
 		BrewUtil.homebrew = null;
 		window.location.hash = "";
 		if (error) {
@@ -3399,44 +3581,54 @@ BrewUtil = {
 		return Promise.resolve();
 	},
 
-	manageBrew: (funcAddCallback) => {
+	_dirToCat (dir) {
+		if (!dir) return "";
+		else if (BrewUtil._STORABLE.includes(dir)) return dir;
+		else {
+			switch (dir) {
+				case "creature": return "monster";
+				case "collection": return dir;
+			}
+			throw new Error(`Directory was not mapped to a category: "${dir}"`);
+		}
+	},
+	_getDisplayCat (cat, isManager) {
+		if (cat === "variantrule") return "Variant Rule";
+		if (cat === "legendaryGroup") return "Legendary Group";
+		if (cat === "optionalfeature") return "Optional Feature";
+		if (cat === "adventure") return isManager ? "Adventure Contents/Info" : "Adventure";
+		if (cat === "adventureData") return "Adventure Text";
+		return cat.uppercaseFirst();
+	},
+	_renderBrewScreen ($appendTo, $overlay, $window, isModal, getBrewOnClose) {
 		const page = UrlUtil.getCurrentPage();
-		const $body = $(`body`);
-		$body.css("overflow", "hidden");
-		const $overlay = $(`<div class="homebrew-overlay"/>`);
-		$overlay.on("click", () => {
-			$body.css("overflow", "");
-			$overlay.remove();
-		});
 
-		function makeNextOverlay () {
+		function makeNextOverlay (onClose) {
 			$overlay.css("background", "transparent");
 			const $overlay2 = $(`<div class="homebrew-overlay"/>`);
 			$overlay2.on("click", () => {
 				$overlay2.remove();
 				$overlay.css("background", "");
+				if (onClose) onClose();
 			});
-			$body.append($overlay2);
+			$appendTo.append($overlay2);
 			return $overlay2;
 		}
 
-		const $window = $(`
-		<div class="homebrew-window dropdown-menu">
-			<h4 class="title"><span>Manage Homebrew</span><button class="btn btn-xs btn-danger">Delete All (Including Legacy)</button></h4>
-			<hr>
-		</div>`
-		);
-		$window.on("click", (evt) => {
-			evt.stopPropagation();
-		});
-		const $btnDelAll = $window.find(`button`);
-		const $brewList = $(`<div class="current-brew"/>`);
+		const $topBar = isModal
+			? $(`<h4 class="split"><span>Manage Homebrew</span></h4>`).appendTo($window)
+			: $(`<div class="mb-3 text-align-center"/>`).appendTo($window);
+		$window.append(`<hr class="manbrew__hr">`);
+
+		const $btnDelAll = $(`<button class="btn ${isModal ? "btn-xs" : "btn-sm"} btn-danger">Delete All</button>`).appendTo($topBar);
+
+		const $brewList = $(`<div class="manbrew__current_brew"/>`);
 		$window.append($brewList);
 
 		refreshBrewList();
 
 		const $iptAdd = $(`<input multiple type="file" accept=".json" style="display: none;">`).change((evt) => {
-			addBrewLocal(evt, funcAddCallback);
+			addBrewLocal(evt);
 		});
 
 		const $btnLoadFromUrl = $(`<button class="btn btn-default btn-sm">Load from URL</button>`);
@@ -3456,21 +3648,26 @@ BrewUtil = {
 			});
 		});
 
-		const $btnGet = $(`<button class="btn btn-default btn-sm">Get Homebrew 2.0</button>`);
+		const $btnGet = $(`<button class="btn btn-info btn-sm">Get Homebrew 2.0</button>`);
 		$btnGet.click(() => {
 			const $lst = $(`
 				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
-					<input type="search" class="search form-control" placeholder="Find homebrew..." style="width: 100%">
-					<div class="filtertools sortlabel btn-group">
-						<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="filename">Filename</button>
-						<button class="col-xs-8 sort btn btn-default btn-xs" data-sort="source">Source</button>
+					<h4><span>Get Homebrew 2.0</span></h4>
+					<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br> 
+					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank">README</a>, or stop by our <a href="https://discord.gg/WH6kdUn" target="_blank">Discord</a>.</i></p>
+					<hr class="manbrew__hr">
+					<input type="search" class="search manbrew__search form-control" placeholder="Find homebrew..." style="width: 100%">
+					<div class="filtertools manbrew__filtertools sortlabel btn-group">
+						<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
+						<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" data-sort="category">Category</button>
+						<button class="col-xs-6 col-xs-6-5 sort btn btn-default btn-xs" disabled>Source</button>
 					</div>
 					<ul class="list brew-list">
 						<li><section><span style="font-style: italic;">Loading...</span></section></li>
 					</ul>
 				</div>
 			`);
-			const $nxt = makeNextOverlay();
+			const $nxt = makeNextOverlay(getBrewOnClose);
 			$nxt.append($lst);
 			$lst.on("click", (evt) => {
 				evt.stopPropagation();
@@ -3514,6 +3711,8 @@ BrewUtil = {
 						return ["adventure"];
 					case UrlUtil.PG_MAKE_SHAPED:
 						return ["spell", "creature"];
+					case UrlUtil.PG_MANAGE_BREW:
+						return BrewUtil._DIRS;
 					default:
 						throw new Error(`No homebrew properties defined for category ${page}`);
 				}
@@ -3525,13 +3724,14 @@ BrewUtil = {
 				})
 				.then((collectionFiles) => {
 					const getDirUrl = (dir) => `https://api.github.com/repos/TheGiddyLimit/homebrew/contents/${dir}?client_id=${HOMEBREW_CLIENT_ID}&client_secret=${HOMEBREW_CLIENT_SECRET}&${(new Date()).getTime()}`;
-					const urls = getBrewDirs().map(it => ({url: getDirUrl(it)}));
-					if (collectionFiles.length) urls.push({url: getDirUrl("collection"), _collection: true});
+					const urls = getBrewDirs().map(it => ({url: getDirUrl(it), _cat: BrewUtil._dirToCat(it)}));
+					if (collectionFiles.length) urls.push({url: getDirUrl("collection"), _collection: true, _cat: "collection"});
 
 					DataUtil.multiLoadJSON(
 						urls,
 						(url, json) => {
 							if (url._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
+							json.forEach(it => it._cat = url._cat)
 						},
 						(json) => {
 							let stack = "";
@@ -3541,9 +3741,10 @@ BrewUtil = {
 							all.filter(it => !it._brewSkip).forEach(it => {
 								stack += `
 									<li>
-										<section onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">
-											<span class="col-xs-4 filename">${it._brewName}</span>
-											<span class="col-xs-8 source" title="${it.download_url}">${it.download_url}</span>
+										<section>
+											<span class="col-xs-4 name" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">${it._brewName}</span>
+											<span class="col-xs-1 col-xs-1-5 category">${BrewUtil._getDisplayCat(BrewUtil._dirToCat(it._cat))}</span>
+											<span class="col-xs-6 col-xs-6-5 source manbrew__source"><a href="${it.download_url}" target="_blank">${StrUtil.elipsisTruncate(it.download_url, 34, 55)}</a></span>
 										</section>
 									</li>`;
 							});
@@ -3552,38 +3753,40 @@ BrewUtil = {
 							$ul.append(stack);
 
 							const list = new List("brewlistcontainer", {
-								valueNames: ["filename"],
-								listClass: "brew-list"
+								valueNames: ["name", "category"],
+								listClass: "brew-list",
+								sortFunction: SortUtil.listSort
 							});
 							ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
 						}
 					);
 				});
 		});
-		$window.append(
-			$(`<div class="text-align-center"/>`)
-				.append($btnGet)
-				.append(" ")
-				.append($(`<label class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
-				.append(" ")
-				.append($btnLoadFromUrl)
-				.append(" ")
-				.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Browse Repository</button></a>`)
-		);
+
+		const $btnWrp = isModal ? $(`<div class="text-align-center"/>`).appendTo($window) : $topBar;
+		$btnWrp
+			.append($btnGet)
+			.append(" ")
+			.append($(`<label class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
+			.append(" ")
+			.append($btnLoadFromUrl)
+			.append(" ")
+			.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Browse Source Repository</button></a>`);
+		if (!isModal) $btnWrp.append(" ").append($btnDelAll);
 
 		$overlay.append($window);
-		$body.append($overlay);
+		$appendTo.append($overlay);
 
 		function refreshBrewList () {
 			function showSourceManager (source, $overlay2) {
-				const $wrpBtnDel = $(`<div class="wrp-btn-del-selected"/>`);
+				const $wrpBtnDel = $(`<h4 class="split"><span>View/Manage ${source ? `Source Contents: ${Parser.sourceJsonToFull(source)}` : `Entries with No Source`}</span></h4>`);
 				const $lst = $(`
 					<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
-						<input type="search" class="search form-control" placeholder="Search entries..." style="width: 100%">
-						<div class="filtertools sortlabel btn-group">
-							<button class="col-xs-7 sort btn btn-default btn-xs" data-sort="name">Name</button>
-							<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="category">Category</button>
-							<span class="col-xs-1 wrp-cb-all"><input type="checkbox"></span>
+						<input type="search" class="search manbrew__search form-control" placeholder="Search entries..." style="width: 100%">
+						<div class="filtertools manbrew__filtertools sortlabel btn-group">
+							<button class="col-xs-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
+							<button class="col-xs-5 sort btn btn-default btn-xs" data-sort="category">Category</button>
+							<label class="col-xs-1 wrp-cb-all"><input type="checkbox"></label>
 						</div>
 						<ul class="list brew-list"></ul>
 					</div>
@@ -3598,11 +3801,6 @@ BrewUtil = {
 
 				// populate list
 				function populateList () {
-					function getDisplayCat (cat) {
-						if (cat === "variantrule") return "Variant Rule";
-						return cat.uppercaseFirst();
-					}
-
 					function getExtraInfo (category, entry) {
 						switch (category) {
 							case "subclass":
@@ -3614,26 +3812,35 @@ BrewUtil = {
 						}
 					}
 
+					function getDisplayName (category, it) {
+						return category === "adventureData" ? (((BrewUtil.homebrew["adventure"] || []).find(a => a.id === it.id) || {}).name || it.id) : it.name;
+					}
+
 					const $ul = $lst.find(`ul`);
 					let stack = "";
 					BrewUtil._getBrewCategories().forEach(cat => {
 						BrewUtil.homebrew[cat].filter(it => it.source === source).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
-							stack += `<li><section onclick="ListUtil.toggleCheckbox(event, this)">
-							<span class="col-xs-7 name">${it.name}</span>
-							<span class="col-xs-4 category">${getDisplayCat(cat)}${getExtraInfo(cat, it)}</span>
-							<span class="col-xs-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
-							<span class="hidden uid">${it.uniqueId}</span>
-						</section></li>`;
+							stack += `
+								<li><section onclick="ListUtil.toggleCheckbox(event, this)">
+									<span class="col-xs-6 name">${getDisplayName(cat, it)}</span>
+									<span class="col-xs-5 category text-align-center">${BrewUtil._getDisplayCat(cat, true)}${getExtraInfo(cat, it)}</span>
+									<span class="col-xs-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
+									<span class="hidden uid">${it.uniqueId}</span>
+									<span class="category_raw hidden">${cat}</span>
+								</section></li>
+							`;
 						})
 					});
 					$ul.empty();
-					$ul.append(stack);
+					if (stack) $ul.append(stack);
+					else $ul.append(`<h5 class="text-align-center">No results found.</h5>`);
 				}
 				populateList();
 
 				const list = new List("brewlistcontainer", {
-					valueNames: ["name", "category", "uid"],
-					listClass: "brew-list"
+					valueNames: ["name", "category", "category_raw", "uid"],
+					listClass: "brew-list",
+					sortFunction: SortUtil.listSort
 				});
 				ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
 
@@ -3641,7 +3848,7 @@ BrewUtil = {
 					const val = this.checked;
 					list.items.forEach(it => $(it.elm).find(`input`).prop("checked", val));
 				});
-				$(`<button class="btn btn-danger btn-sm">Delete Selected</button>`).on("click", () => {
+				$(`<button class="btn btn-danger btn-xs">Delete Selected</button>`).on("click", () => {
 					const toDel = list.items.filter(it => $(it.elm).find(`input`).prop("checked")).map(it => it.values());
 
 					if (!toDel.length) return;
@@ -3652,7 +3859,7 @@ BrewUtil = {
 						$overlay2.click();
 					} else {
 						toDel.forEach(it => {
-							const deleteFn = getDeleteFunction(it.category.toLowerCase().replace(/ /g, ""));
+							const deleteFn = getDeleteFunction(it.category_raw);
 							deleteFn(it.uid, false);
 						});
 						BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
@@ -3667,11 +3874,11 @@ BrewUtil = {
 			if (BrewUtil.homebrew) {
 				const $lst = $(`
 					<div id="outerbrewlistcontainer" class="listcontainer">
-						<input type="search" class="search form-control" placeholder="Search homebrew..." style="width: calc(100% - 3px)">
-						<div class="filtertools sortlabel btn-group">
+						<input type="search" class="search manbrew__search form-control" placeholder="Search homebrew..." style="width: calc(100% - 3px)">
+						<div class="filtertools manbrew__filtertools sortlabel btn-group">
 							<button class="col-xs-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
 							<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
-							<button class="col-xs-1 btn btn-default btn-xs" disabled>&nbsp;</button>
+							<button class="col-xs-1 btn btn-default btn-xs" disabled>Source</button>
 							<button class="col-xs-2 btn btn-default btn-xs" disabled>&nbsp;</button>
 						</div>
 						<ul class="list-display-only brew-list"></ul>
@@ -3683,11 +3890,14 @@ BrewUtil = {
 				const $ul = $lst.find(`ul`);
 				$ul.empty();
 
-				BrewUtil.getJsonSources().forEach(src => {
-					const $row = $(`<li class="row no-click">
-						<span class="col-xs-5 col-tall source">${src.full}</span>
-						<span class="col-xs-4 col-tall authors">${(src.authors || []).join(", ")}</span>
-						<${src.url ? "a" : "span"} class="col-xs-1 col-tall" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "Source" : ""}</${src.url ? "a" : "span"}>
+				const allSources = MiscUtil.copy(BrewUtil.getJsonSources());
+				allSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
+				allSources.push({full: "No Source", json: undefined, _unknown: true});
+				allSources.forEach(src => {
+					const $row = $(`<li class="row manbrew__row no-click">
+						<span class="col-xs-5 manbrew__col--tall source manbrew__source">${src._unknown ? "<i>" : ""}${src.full}${src._unknown ? "</i>" : ""}</span>
+						<span class="col-xs-4 manbrew__col--tall authors">${(src.authors || []).join(", ")}</span>
+						<${src.url ? "a" : "span"} class="col-xs-1 manbrew__col--tall text-align-center" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
 					</li>`);
 					const $btns = $(`<span class="col-xs-2 text-align-right"/>`).appendTo($row);
 					$(`<button class="btn btn-sm btn-default">View/Manage</button>`)
@@ -3698,9 +3908,7 @@ BrewUtil = {
 						.appendTo($btns);
 					$btns.append(" ");
 					$(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`)
-						.on("click", () => {
-							deleteSource(src.json, true);
-						})
+						.on("click", () => deleteSource(src.json, true))
 						.appendTo($btns);
 
 					$ul.append($row);
@@ -3726,21 +3934,20 @@ BrewUtil = {
 		});
 
 		BrewUtil.addBrewRemote = (ele, jsonUrl, doUnescape) => {
-			const $src = $(ele).find(`span.source`);
-			const cached = $src.text();
-			$src.text("Loading...");
+			const $ele = $(ele);
+			const cached = $ele.html();
+			$ele.text("Loading...");
 			if (doUnescape) jsonUrl = jsonUrl.unescapeQuotes();
 			return DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`).then((data) => {
 				BrewUtil.doHandleBrewJson(data, page, refreshBrewList);
-				$src.text("Done!");
+				$ele.text("Done!");
 				setInterval(() => {
-					$src.text(cached);
+					$ele.html(cached);
 				}, 500);
-				if (funcAddCallback) funcAddCallback();
 			});
 		};
 
-		function addBrewLocal (event, funcAddCallback) {
+		function addBrewLocal (event) {
 			const input = event.target;
 
 			let readIndex = 0;
@@ -3757,7 +3964,6 @@ BrewUtil = {
 				} else {
 					// reset the input
 					$(event.target).val("");
-					if (funcAddCallback) funcAddCallback();
 				}
 			};
 			reader.readAsText(input.files[readIndex++]);
@@ -3768,7 +3974,7 @@ BrewUtil = {
 		}
 
 		function deleteSource (source, doConfirm) {
-			if (doConfirm && !window.confirm(`Are you sure you want to remove all homebrew with source "${source}"?`)) return;
+			if (doConfirm && !window.confirm(`Are you sure you want to remove all homebrew with${source ? ` source "${Parser.sourceJsonToFull(source)}"` : `out a source`}?`)) return;
 
 			BrewUtil._getBrewCategories().forEach(k => {
 				const cat = BrewUtil.homebrew[k];
@@ -3881,14 +4087,29 @@ BrewUtil = {
 			}
 		}
 
-		function deleteAdventureBrew () {
-			return (uniqueId, doRefresh) => {
-				doRemove("adventure", uniqueId, false);
-				doRemove("adventureData", uniqueId, doRefresh, true);
-			}
+		function deleteAdventureBrew (uniqueId, doRefresh) {
+			doRemove("adventure", uniqueId, false);
+			doRemove("adventureData", uniqueId, doRefresh, true);
 		}
 	},
 
+	manageBrew: () => {
+		const $body = $(`body`);
+		$body.css("overflow", "hidden");
+		const $overlay = $(`<div class="homebrew-overlay"/>`);
+		$overlay.on("click", () => {
+			$body.css("overflow", "");
+			$overlay.remove();
+		});
+
+		const $window = $(`<div class="homebrew-window dropdown-menu"/>`);
+		$window.on("click", (evt) => evt.stopPropagation());
+
+		BrewUtil._renderBrewScreen($body, $overlay, $window, true);
+	},
+
+	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "background", "feat", "optionalfeature", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData"],
 	doHandleBrewJson: function (json, page, funcRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
@@ -3900,8 +4121,7 @@ BrewUtil = {
 
 		// prepare for storage
 		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
-		const storable = ["class", "subclass", "spell", "monster", "background", "feat", "optionalfeature", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData"];
-		storable.forEach(storePrep);
+		BrewUtil._STORABLE.forEach(storePrep);
 
 		if (json["adventure"] && json["adventureData"]) {
 			json["adventure"].forEach(adv => {
@@ -3956,12 +4176,12 @@ BrewUtil = {
 
 		let sourcesToAdd = json._meta ? json._meta.sources : [];
 		const toAdd = {};
-		storable.forEach(k => toAdd[k] = json[k]);
+		BrewUtil._STORABLE.forEach(k => toAdd[k] = json[k]);
 		if (!BrewUtil.homebrew) {
 			BrewUtil.homebrew = json;
 		} else {
 			sourcesToAdd = checkAndAddMetaGetNewSources(); // adding source(s) to Filter should happen in per-page addX functions
-			storable.forEach(k => toAdd[k] = checkAndAdd(k)); // only add if unique ID not already present
+			BrewUtil._STORABLE.forEach(k => toAdd[k] = checkAndAdd(k)); // only add if unique ID not already present
 		}
 		BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
 		BrewUtil.storage.setItem(HOMEBREW_META_STORAGE, JSON.stringify(BrewUtil.homebrewMeta));
@@ -3993,6 +4213,7 @@ BrewUtil = {
 			case UrlUtil.PG_MAKE_SHAPED:
 				handleBrew(toAdd);
 				break;
+			case UrlUtil.PG_MANAGE_BREW:
 			case "NO_PAGE":
 				break;
 			default:
@@ -4018,10 +4239,8 @@ BrewUtil = {
 		}
 	},
 
-	makeBrewButton: (id, funcAddCallback) => {
-		$(`#${id}`).on("click", () => {
-			BrewUtil.manageBrew(funcAddCallback);
-		});
+	makeBrewButton: (id) => {
+		$(`#${id}`).on("click", () => BrewUtil.manageBrew());
 	},
 
 	_getBrewCategories () {
@@ -4253,6 +4472,21 @@ CryptUtil = {
 
 	_add32: (a, b) => {
 		return (a + b) & 0xFFFFFFFF;
+	},
+
+	/**
+	 * Based on Java's implementation.
+	 * @param obj An object to hash.
+	 * @return {*} An integer hashcode for the object.
+	 */
+	hashCode (obj) {
+		if (typeof obj === "string") {
+			if (!obj) return 0;
+			let h = 0;
+			for (let i = 0; i < obj.length; ++i) h = 31 * h + obj.charCodeAt(i);
+			return h;
+		} else if (typeof obj === "number") return obj;
+		else throw new Error(`No hashCode implementation for ${obj}`);
 	}
 };
 
@@ -4341,12 +4575,12 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 	const self = this;
 
 	self.$openBtn.on("click", () => {
-		History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${self.hashKey}:true`);
+		History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${self.hashKey}${HASH_SUB_KV_SEP}true`);
 	});
 
 	this.open = () => {
 		function hashTeardown () {
-			History.cleanSetHash(window.location.hash.replace(`${self.hashKey}:true`, ""));
+			History.cleanSetHash(window.location.hash.replace(`${self.hashKey}${HASH_SUB_KV_SEP}true`, ""));
 		}
 
 		if (self.active) return;
@@ -4371,18 +4605,23 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 
 		const $tbl = $(`<table class="stats stats-book" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
 
-		const numShown = self.popTblGetNumShown($tbl, $hdTxt);
+		const numShownWrp = self.popTblGetNumShown($tbl, $hdTxt);
 
-		const $tblRow = $(`<tr/>`);
-		$tblRow.append($(`<div class="wrp-content" style="${!numShown && !doShowEmpty ? "display: none;" : ""}"/>`).append($tbl));
-		const $msgRow = $(`<tr class="noprint" ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">${self.noneVisibleMsg}</span><br></td></tr>`);
-		$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
-			hashTeardown();
-		}));
-		$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
+		const handleNumShown = (numShown) => {
+			const $tblRow = $(`<tr/>`);
+			$tblRow.append($(`<div class="wrp-content" style="${!numShown && !doShowEmpty ? "display: none;" : ""}"/>`).append($tbl));
+			const $msgRow = $(`<tr class="noprint" ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">${self.noneVisibleMsg}</span><br></td></tr>`);
+			$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
+				hashTeardown();
+			}));
+			$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
 
-		$wrpBook.append($bkTbl);
-		$body.append($wrpBook);
+			$wrpBook.append($bkTbl);
+			$body.append($wrpBook);
+		};
+
+		if (numShownWrp instanceof Promise) numShownWrp.then(numShown => handleNumShown(numShown));
+		else handleNumShown(numShownWrp);
 	};
 
 	this.teardown = () => {

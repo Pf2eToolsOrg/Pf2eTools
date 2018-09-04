@@ -7,6 +7,7 @@
 				"Volo has encountered many monsters in his day, few as odious or as ornery as the ones described herein. This chapter takes several iconic D&D monsters and provides additional information about their origins, their dispositions and behaviors, and their lairs-above and beyond what is written in the {@i Monster Manual.} To give every monster such grand treatment would require too many pages to count, so we winnowed down the list to nine groups of creatures that have a lot going for them and tend to get used often in D&D campaigns:",
 				{
 					"type": "table",
+					"style": "no-stripes",
 					"colStyles": [
 						"col-xs-4",
 						"col-xs-4",
@@ -2657,8 +2658,21 @@
 											"type": "inset",
 											"name": "The Hunter's Chant",
 											"entries": [
-												"This simple declaration of Yeenoghu's power was devised by a small cult to the demon lord discovered deep in the forest. A group of woodcutters, facing starvation, turned to cannibalism to survive and ultimately fell under Yeenoghu's sway. Gnolls sing a similar chant in their language while they seek out prey. {@i The first gift is hunger.\nIt is His blessing.\nIt is our call to bring death.\nThe second gift is death.\nDeath proves our strength.\nDeath purges our fear.\nThe third gift is fear.\nWe fear that we will fail him.\nWe fear the onset of hunger.}",
-												"Ghoul packs emerge from graveyards and dungeons to trail in the wake of a war band, feasting on the remains of its victims and sometimes eventually merging with the group. Although ghouls typically revere Orcus, their endless hunger can prompt them to turn to Yeenoghu."
+												"This simple declaration of Yeenoghu's power was devised by a small cult to the demon lord discovered deep in the forest. A group of woodcutters, facing starvation, turned to cannibalism to survive and ultimately fell under Yeenoghu's sway. Gnolls sing a similar chant in their language while they seek out prey.",
+												{
+													"type": "quote",
+													"entries": [
+														"The first gift is hunger.",
+														"It is His blessing.",
+														"It is our call to bring death.",
+														"The second gift is death.",
+														"Death proves our strength.",
+														"Death purges our fear.",
+														"The third gift is fear.",
+														"We fear that we will fail him.",
+														"We fear the onset of hunger."
+													]
+												}
 											]
 										}
 									]
@@ -3342,7 +3356,33 @@
 									"type": "entries",
 									"name": "Rank, Status, and Title",
 									"entries": [
-										"As in any strict military hierarchy, every hobgoblin in a legion has a rank, from the warlord down through a cadre of officers to the soldiers that make up most of its number. These ranks, using the titles most often applied to them, are as follows: {@i 1st rank: Warlord\n2nd rank: General\n3rd rank: Captain\n4th rank: Fatal Axe}",
+										"As in any strict military hierarchy, every hobgoblin in a legion has a rank, from the warlord down through a cadre of officers to the soldiers that make up most of its number. These ranks, using the titles most often applied to them, are as follows:",
+										{
+											"type": "table",
+											"style": "no-stripes",
+											"colStyles": [
+												"col-xs-6",
+												"col-xs-6"
+											],
+											"rows": [
+												[
+													"1st rank: Warlord",
+													"5th rank: Spear"
+												],
+												[
+													"2nd rank: General",
+													"6th rank: Fist"
+												],
+												[
+													"3rd rank: Captain",
+													"7th rank: Soldier"
+												],
+												[
+													"4th rank: Fatal Axe",
+													""
+												]
+											]
+										},
 										"A legion is organized into units called banners, each one made up of a group of interrelated families.",
 										"Members of a banner live, work, and fight together, and each banner has a separate status within the legion that is reflected in the power of its officers. For instance, the captains of the highest-ranking banners can expect their orders to be followed by the captains of any banners of lower rank.",
 										"Rank and responsibility aren't necessarily commensurate from one legion to another or even between banners in the same legion. A phalanx of foot soldiers led by a captain in one legion might be two hundred strong, while in another such a force numbers just twenty. One banner might have four warriors mounted on worgs led by a fist, while a fist in another banner of the same legion might lead ten mounted warriors. If any rank doesn't serve a purpose in the legion, the warlord eliminates it from the hierarchy to maximize efficiency.",

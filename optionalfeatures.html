@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Objects - 5etools</title>
+	<title>Optional Features - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
@@ -21,14 +21,10 @@
 	<script type="text/javascript" src="js/navigation.js"></script>
 
 	<style>
-		.stats-source {
-			margin-right: 5em;
-		}
-
-		img.token {
-			top: 28px;
-			font-size: 1.6em;
-			right: 0.4em;
+		.opt-feature-type {
+			font-style: italic;
+			display: inline-block;
+			margin-left: 7px;
 		}
 	</style>
 </head>
@@ -38,8 +34,8 @@
 	<header class="hidden-xs hidden-sm">
 		<div class="container">
 
-			<h1>Objects</h1>
-			<p>Search by name on the left, click object name to display on the right.</p>
+			<h1>Optional Features List</h1>
+			<p>Search by name on the left, click an entry name to display on the right.</p>
 		</div>
 	</header>
 	<nav class="container" id="navigation">
@@ -48,46 +44,43 @@
 	</nav>
 
 	<div class="container view-col-wrapper">
-		<div class="view-col" id="listcontainer">
+		<div class="view-col" id="listcontainer" style="flex: 6;">
 			<div class="input-group" id="filter-search-input-group">
-				<input type="search" id="search" class="search form-control" placeholder="Find objects...">
+				<input type="search" id="search" class="search form-control" placeholder="Find optional feature...">
 				<span class="input-group-btn"><button class="btn btn-default" type="button" id="reset">Reset</button></span>
 			</div>
 			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-xs-8 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="size">Size</button>
-				<button class="col-xs-2 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+				<button class="col-xs-3 col-xs-3-2 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
+				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
+				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" type="button" data-sort="type">Type</button>
+				<button class="col-xs-5 col-xs-5-8 sort btn btn-default btn-xs" type="button" data-sort="prerequisite">Prerequisite</button>
 			</div>
 
-			<ul id="objectsList" class="list objects">
+			<ul id="optfeaturesList" class="list optfeatures">
 				<!-- populated by javascript -->
 			</ul>
 		</div>
 
-		<div id="contentwrapper" class="view-col">
+		<div id="contentwrapper" class="view-col" style="flex: 4;">
 			<div id="sublistcontainer">
 				<div id="sublistsort" class="sortlabel btn-group">
-					<button class="col-xs-9 sort btn btn-default btn-xs" data-sort="name">Name</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="size">Size</button>
+					<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="type">Type</button>
+					<button class="col-xs-6 sort btn btn-default btn-xs" data-sort="prerequisite">Prerequisite</button>
 				</div>
-				<ul class="list subobjects">
+				<ul class="list suboptfeatures">
 					<!-- populate with JS -->
 				</ul>
 			</div>
 
-			<div class="wrp-stat-tab">
-				<div id="tabs-right">
-					<span class="stat-tab btn btn-default" id="btn-pin"><span class="glyphicon glyphicon-pushpin"></span></span>
-					<span class="stat-tab btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></span>
-				</div>
+			<div class="wrp-stat-tab" id="stat-tabs">
+				<div id="tabs-right"></div>
 			</div>
-
-			<div id="float-token"></div>
 
 			<div class="wrp-stats-table">
 				<table id="pagecontent" class="stats">
 					<tr><th class="border" colspan="6"></th></tr>
-					<tr><td colspan="6" class="initial-message">Select an object from the list to view it here</td></tr>
+					<tr><td colspan="6" class="initial-message">Select an optional feature from the list to view it here</td></tr>
 					<tr><th class="border" colspan="6"></th></tr>
 				</table>
 			</div>
@@ -104,11 +97,11 @@
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
-<script type="text/javascript" src="js/filter.js"></script>
-<script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
-<script type="text/javascript" src="js/objects.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/optionalfeatures.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>

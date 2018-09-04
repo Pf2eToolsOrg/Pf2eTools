@@ -14,7 +14,7 @@
 			"classTableGroups": [
 				{
 					"colLabels": [
-						"Spells Known"
+						"{@filter Spells Known|spells|class=ranger}"
 					],
 					"rows": [
 						[
@@ -272,7 +272,7 @@
 						"name": "Favored Enemy",
 						"entries": [
 							"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.",
-							"Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.",
+							"Choose a type of favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter beasts|bestiary|type=beast}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fey|bestiary|type=fey}, {@filter fiends|bestiary|type=fiend}, {@filter giants|bestiary|type=giant}, {@filter monstrosities|bestiary|type=monstrosity}, {@filter oozes|bestiary|type=ooze}, {@filter plants|bestiary|type=plant}, or {@filter undead|bestiary|type=undead}. Alternatively, you can select two races of {@filter humanoid|bestiary|type=humanoid} (such as {@creature gnoll|mm|gnolls} and {@creature orc|mm|orcs}) as favored enemies.",
 							"You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 							"When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.",
 							"You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures."
@@ -365,7 +365,7 @@
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See chapter 10 for the general rules of spellcasting and chapter 11 for the ranger spell list.",
+							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter ranger spell list|spells|class=ranger}.",
 							{
 								"type": "entries",
 								"name": "Spell Slots",
@@ -479,7 +479,7 @@
 						"name": "Hide in Plain Sight",
 						"entries": [
 							"Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.",
-							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
+							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity ({@skill Stealth}) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
 						]
 					},
 					{
@@ -1862,7 +1862,7 @@
 			"classTableGroups": [
 				{
 					"colLabels": [
-						"Spells Known"
+						"{@filter Spells Known|spells|class=ranger}"
 					],
 					"rows": [
 						[
@@ -2120,7 +2120,7 @@
 						"name": "Favored Enemy",
 						"entries": [
 							"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy commonly encountered in the wilds.",
-							"Choose a type of favored enemy: beasts, fey, humanoids, monstrosities, or undead. You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. Additionally, you have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
+							"Choose a type of favored enemy: {@filter beasts|bestiary|type=beast}, {@filter fey|bestiary|type=fey}, {@filter humanoids|bestiary|humanoid}, {@filter monstrosities|bestiary|type=monstrosity}, or {@filter undead|bestiary|type=undead}. You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. Additionally, you have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 							"When you gain this feature, you also learn one language of your choice, typically one spoken by your favored enemy or creatures associated with it. However, you are free to pick any language you wish to learn."
 						]
 					},
@@ -2155,7 +2155,7 @@
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See chapter 10 for the general rules of spellcasting and chapter 11 for the ranger spell list.",
+							"By the time you reach 2nd level, you have learned to use the magical essence of nature to cast spells, much as a druid does. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter ranger spell list|spells|class=ranger}.",
 							{
 								"type": "entries",
 								"name": "Spell Slots",
@@ -2301,7 +2301,7 @@
 					{
 						"name": "Greater Favored Enemy",
 						"entries": [
-							"At 6th level, you are ready to hunt even deadlier game. Choose a type of greater favored enemy: aberrations, celestials, constructs, dragons, elementals, fiends, or giants. You gain all the benefits against this chosen enemy that you normally gain against your favored enemy, including an additional language. Your bonus to damage rolls against all your favored enemies increases to +4.",
+							"At 6th level, you are ready to hunt even deadlier game. Choose a type of greater favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fiends|bestiary|type=fiend}, or {@filter giants|bestiary|type=giant}. You gain all the benefits against this chosen enemy that you normally gain against your favored enemy, including an additional language. Your bonus to damage rolls against all your favored enemies increases to +4.",
 							"Additionally, you have advantage on saving throws against the spells and abilities used by a greater favored enemy."
 						]
 					}
@@ -2336,7 +2336,7 @@
 						"name": "Hide in Plain Sight",
 						"entries": [
 							"Starting at 10th level, you can remain perfectly still for long periods of time to set up ambushes.",
-							"When you attempt to hide on your turn, you can opt to not move on that turn. If you avoid moving, creatures that attempt to detect you take a -10 penalty to their Wisdom (Perception) checks until the start of your next turn. You lose this benefit if you move or fall {@condition prone}, either voluntarily or because of some external effect. You are still automatically detected if any effect or action causes you to no longer be hidden.",
+							"When you attempt to hide on your turn, you can opt to not move on that turn. If you avoid moving, creatures that attempt to detect you take a -10 penalty to their Wisdom ({@skill Perception}) checks until the start of your next turn. You lose this benefit if you move or fall {@condition prone}, either voluntarily or because of some external effect. You are still automatically detected if any effect or action causes you to no longer be hidden.",
 							"If you are still hidden on your next turn, you can continue to remain motionless and gain this benefit until you are detected."
 						]
 					}
@@ -4022,7 +4022,7 @@
 						"name": "Favored Enemy",
 						"entries": [
 							"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.",
-							"Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.",
+							"Choose a type of favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter beasts|bestiary|type=beast}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fey|bestiary|type=fey}, {@filter fiends|bestiary|type=fiend}, {@filter giants|bestiary|type=giant}, {@filter monstrosities|bestiary|type=monstrosity}, {@filter oozes|bestiary|type=ooze}, {@filter plants|bestiary|type=plant}, or {@filter undead|bestiary|type=undead}. Alternatively, you can select two races of {@filter humanoid|bestiary|type=humanoid} (such as {@creature gnoll|mm|gnolls} and {@creature orc|mm|orcs}) as favored enemies.",
 							"You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 							"When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.",
 							"You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures."
@@ -4253,7 +4253,7 @@
 						"name": "Hide in Plain Sight",
 						"entries": [
 							"Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.",
-							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
+							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity ({@skill Stealth}) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
 						]
 					},
 					{

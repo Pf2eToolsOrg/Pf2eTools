@@ -135,6 +135,7 @@ function loadhash (id) {
 	$("#pagecontent").html(`
 		${EntryRenderer.utils.getBorderTr()}
 		<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>
+		${EntryRenderer.utils.getPageTr(curRule)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 

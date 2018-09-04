@@ -29,7 +29,7 @@ class Omnidexer {
 		return withDots.split(".").reduce((o, i) => o[i], obj);
 	}
 
-	addToIndex (arbiter, j, idOffset, isTestMode) {
+	addToIndex (arbiter, json, idOffset, isTestMode) {
 		if (idOffset) this.id += idOffset;
 		const index = this.index;
 		let id = this.id;
@@ -53,8 +53,7 @@ class Omnidexer {
 			return toAdd;
 		};
 
-		Omnidexer.getProperty(j, arbiter.listProp).forEach((it, i) => {
-			const name = Omnidexer.getProperty(it, arbiter.primary || "name");
+		function handleItem (it, i, name) {
 			if (!it.noDisplay) {
 				const toAdd = getToAdd(it, {n: name}, i);
 				if ((isTestMode || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.onlyDeep) index.push(toAdd);
@@ -67,6 +66,13 @@ class Omnidexer {
 					})
 				}
 			}
+		}
+
+		Omnidexer.getProperty(json, arbiter.listProp).forEach((it, i) => {
+			const name = Omnidexer.getProperty(it, arbiter.primary || "name");
+			handleItem(it, i, name);
+
+			if (it.alias) it.alias.forEach(a => handleItem(it, i, a));
 		});
 
 		this.id = id;
@@ -330,14 +336,22 @@ Omnidexer.TO_INDEX = [
 		},
 		onlyDeep: true,
 		deepIndex: (primary, it) => {
-			const names = it.entries.map(e => e.name);
-			return names.map(n => {
+			function getDoc (name, alias) {
 				return {
-					n: n,
-					u: `bookref-quick${HASH_PART_SEP}${primary.i}${HASH_PART_SEP}${UrlUtil.encodeForHash(n.toLowerCase())}`,
+					n: alias || name,
+					u: `bookref-quick${HASH_PART_SEP}${primary.i}${HASH_PART_SEP}${UrlUtil.encodeForHash(name.toLowerCase())}`,
 					s: undefined
-				}
-			});
+				};
+			}
+
+			const names = it.entries.map(e => ({
+				name: e.name,
+				alias: e.alias
+			}));
+			return names.map(n => {
+				const base = getDoc(n.name);
+				return n.alias ? [base, ...n.alias.map(a => getDoc(n.name, a))] : [base];
+			}).reduce((a, b) => a.concat(b), []);
 		}
 	},
 	{

@@ -382,7 +382,7 @@ function loadparser (data) {
 		else {
 			stats.hp = {
 				average: Number(m[1]),
-				formula: m[2]
+				formula: m[2].replace(/\s+/g, "").replace(/([^0-9d])/gi, " $1 ")
 			};
 		}
 	}
@@ -538,6 +538,24 @@ function loadparser (data) {
 	}
 
 	function doConvertDiceTags (trait) {
+		function doTagDice (str) {
+			// untag dice
+			str = str.replace(/{@(?:dice|damage) ([^}]*)}/gi, "$1");
+
+			// retag + format dice
+			str = str.replace(/((\s*[-+]\s*)?(([1-9]\d*)?d([1-9]\d*)(\s*?[-+×x]\s*?\d+)?))+/gi, (...m) => {
+				const expanded = m[0].replace(/([^0-9d])/gi, " $1 ");
+				return `{@dice ${expanded}}`;
+			});
+
+			// tag damage
+			str = str.replace(/(\d+)( \({@dice )([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/ig, (...m) => {
+				return m[0].replace(/{@dice /gi, "{@damage ");
+			});
+
+			return str;
+		}
+
 		if (trait.entries) {
 			trait.entries = trait.entries.filter(it => it.trim()).map(e => {
 				if (typeof e !== "string") return e;
@@ -548,12 +566,7 @@ function loadparser (data) {
 					return `{@hit ${cleanMatch}}`
 				});
 
-				// replace e.g. "2d4+2"
-				e = e.replace(/\d+d\d+(\s?([-+])\s?\d+\s?)?/g, function (match) {
-					return `{@dice ${match}}`;
-				});
-
-				return e;
+				return doTagDice(e);
 			});
 		}
 	}
@@ -814,8 +827,7 @@ function loadparser (data) {
 	}
 
 	function cleanOutput (out) {
-		return out.replace(/([1-9]\d*)?d([1-9]\d*)(\s?)([+-])(\s?)(\d+)?/g, "$1d$2$4$6")
-			.replace(/\u2014/g, "\\u2014")
+		return out.replace(/\u2014/g, "\\u2014")
 			.replace(/\u2013/g, "\\u2014")
 			.replace(/’/g, "'")
 			.replace(/[“”]/g, "\\\"");

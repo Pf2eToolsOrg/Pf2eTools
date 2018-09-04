@@ -264,7 +264,7 @@ class HashLoad {
 
 		function getSkillProfString (skills) {
 			const numString = Parser.numberToString(skills.choose);
-			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${skills.from.joinConjunct(", ", " and ")}.`
+			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${skills.from.map(it => EntryRenderer.getDefaultRenderer().renderEntry(`{@skill ${it}}`)).joinConjunct(", ", " and ")}.`
 		}
 
 		// starting equipment
@@ -1180,6 +1180,7 @@ ClassBookView._$bkTbl = null;
 ClassBookView._$scToggles = {};
 
 function initLinkGrabbers () {
+	$(`body`).on(`mousedown`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, (evt) => evt.preventDefault());
 	$(`body`).on(`click`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, function () {
 		const $this = $(this);
 		const fTag = $this.closest(`tr`).attr("id");

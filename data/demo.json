@@ -10,7 +10,8 @@
 					"entries": [
 						"Look, don't quote me on this, but"
 					],
-					"by": "Anon"
+					"by": "Anon",
+					"from": "Archive of Lost Chats"
 				},
 				"This is a demo of the JSON format, and how it (usually) gets rendered. You can edit this text, and it will reset on refresh.",
 				"{@b If a JSON property is described as 'optional,' the property may be excluded, unless otherwise noted.}",
@@ -22,10 +23,10 @@
 					"items": [
 						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand})",
 						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
-						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7}.",
+						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls, with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click, and {@d20 -4} which will roll advantage on shift-click. although @hit tags are preferred where appropriate.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
 						"Recharge tags; output success/failure for ability recharge. {@recharge} in an ability title for '(Recharge 6)', {@recharge 4} for '(Recharge 4-6)'.",
-						"Skill and action tags; {@skill Perception} and {@action Dash} (case-sensitive) which provide tooltips on hover.",
+						"Skill and action tags; {@skill Athletics}/{@skill Perception} and {@action Dash}/{@action Hide} (case-sensitive) which provide tooltips on hover.",
 						"The homebrew tag; Can show {@homebrew changes|modifications}, {@homebrew additions} or {@homebrew |removals}.",
 						"Content tags:",
 						{
@@ -540,7 +541,7 @@
 						],
 						"hp": {
 							"average": 67,
-							"formula": "9d10+18"
+							"formula": "9d10 + 18"
 						},
 						"speed": {
 							"walk": 50
@@ -593,19 +594,19 @@
 							{
 								"name": "Hooves",
 								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage."
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4}) bludgeoning damage."
 								]
 							},
 							{
 								"name": "Horn",
 								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) piercing damage."
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) piercing damage."
 								]
 							},
 							{
 								"name": "Healing Touch (3/Day)",
 								"entries": [
-									"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8+2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
+									"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
 								]
 							},
 							{
@@ -632,7 +633,7 @@
 							{
 								"name": "Heal Self (Costs 3 Actions)",
 								"entries": [
-									"The unicorn magically regains 11 ({@dice 2d8+2}) hit points."
+									"The unicorn magically regains 11 ({@dice 2d8 + 2}) hit points."
 								]
 							}
 						],

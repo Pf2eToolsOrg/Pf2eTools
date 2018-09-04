@@ -58,7 +58,7 @@ function navigation () {
 	LI('ul_players', 'classes.html', 'Classes');
 	LI('ul_players', 'backgrounds.html', 'Backgrounds');
 	LI('ul_players', 'feats.html', 'Feats');
-	LI('ul_players', 'optionalfeatures.html', 'Invocations & Optional Features');
+	LI('ul_players', 'optionalfeatures.html', 'Class Feature Options');
 	LI('ul_players', 'races.html', 'Races');
 	LI('ul_players', 'lifegen.html', 'This Is Your Life');
 	LI('ul_players', 'names.html', 'Names');
@@ -93,6 +93,7 @@ function navigation () {
 	A('utils', 'utils', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Utilities <span class='caret'></span>");
 	UL('utils', 'ul_utils', 'dropdown-menu');
 	LI('ul_utils', 'blacklist.html', 'Content Blacklist');
+	LI('ul_utils', 'managebrew.html', 'Manage All Homebrew');
 	LI('ul_utils', 'converter.html', 'Stat Block to JSON');
 	LI('ul_utils', 'demo.html', 'Renderer Demo');
 	LI('ul_utils', 'roll20.html', 'Roll20 Script Help');

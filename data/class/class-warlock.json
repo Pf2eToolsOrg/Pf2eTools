@@ -15,10 +15,10 @@
 				{
 					"colLabels": [
 						"{@filter Cantrips Known|spells|level=0|class=Warlock}",
-						"Spells Known",
+						"{@filter Spells Known|spells|class=Warlock}",
 						"Spell Slots",
 						"Slot Level",
-						"Invocations Known"
+						"{@filter Invocations Known|optionalfeatures|feature type=ei}"
 					],
 					"rows": [
 						[
@@ -199,7 +199,7 @@
 					{
 						"name": "Pact Magic",
 						"entries": [
-							"Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the warlock spell list.",
+							"Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter warlock spell list|spells|class=warlock}.",
 							{
 								"type": "entries",
 								"name": "Cantrips",
@@ -952,7 +952,7 @@
 										"type": "entries",
 										"name": "Defy Death",
 										"entries": [
-											"Starting at 6th level, you can give yourself vitality when you cheat death or when you help someone else cheat it. You can regain hit points equal to {@dice 1d8} + your Constitution modifier (minimum of 1 hit point) when you succeed on a death saving throw or when you stabilize a creature with spare the dying.",
+											"Starting at 6th level, you can give yourself vitality when you cheat death or when you help someone else cheat it. You can regain hit points equal to {@dice 1d8} + your Constitution modifier (minimum of 1 hit point) when you succeed on a death saving throw or when you stabilize a creature with {@spell spare the dying}.",
 											"Once you use this feature, you can't use it again until you finish a long rest."
 										]
 									}
@@ -1410,7 +1410,7 @@
 										"name": "Sentinel Raven",
 										"entries": [
 											"Starting at 1st level, you gain the service of a spirit sent by the Raven Queen to watch over you. The spirit assumes the form and game statistics of a raven, and it always obeys your commands, which you can give telepathically while it is within 100 feet of you.",
-											"While the raven is perched on your shoulder, you gain darkvision with a range of 30 feet and a bonus to your passive Wisdom (Perception) score and to Wisdom (Perception) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is {@condition incapacitated}.",
+											"While the raven is perched on your shoulder, you gain darkvision with a range of 30 feet and a bonus to your passive Wisdom ({@skill Perception}) score and to Wisdom ({@skill Perception}) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is {@condition incapacitated}.",
 											"You can see through the raven's eyes and hear what it hears while it is within 100 feet of you. In combat, you roll initiative for the raven and control how it acts. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.",
 											"The raven doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The raven vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles.",
 											"At the end of a short or long rest, you can call the raven back to you\u2014no matter where it is or whether it died\u2014and it reappears within 5 feet of you."
@@ -1869,7 +1869,7 @@
 										"type": "entries",
 										"name": "Grasp of the Kraken",
 										"entries": [
-											"Starting at 1st level, you gain the ability to call forth spectral tentacles that grab at your foes. As an action, pick a point that you can see within 60 ft. of you. A horde of grasping tendrils appears at that point. Creatures of your choice within 10 ft. of that point must make a Strength saving throw against your Warlock spell save DC. Creatures that fail their saving throws are {@condition grappled} for 1 minute or until you use this ability again. The spectral tentacle's Strength (Athletics) bonus is 2 + your proficiency bonus and its reach is 10 feet."
+											"Starting at 1st level, you gain the ability to call forth spectral tentacles that grab at your foes. As an action, pick a point that you can see within 60 ft. of you. A horde of grasping tendrils appears at that point. Creatures of your choice within 10 ft. of that point must make a Strength saving throw against your Warlock spell save DC. Creatures that fail their saving throws are {@condition grappled} for 1 minute or until you use this ability again. The spectral tentacle's Strength ({@skill Athletics}) bonus is 2 + your proficiency bonus and its reach is 10 feet."
 										]
 									}
 								]

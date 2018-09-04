@@ -59,6 +59,10 @@ UtilBookReference = {
 			}
 
 			function recursiveAdd (ent) {
+				if (ent.entries) {
+					ent.entries = ent.entries.filter(nxt => recursiveAdd(nxt));
+				}
+
 				if (isDesiredSect(ent)) {
 					const sect = ent.data[refType.tag];
 					if (!out[sect]) {
@@ -70,30 +74,12 @@ UtilBookReference = {
 
 					const toAdd = JSON.parse(JSON.stringify(ent));
 					toAdd.type = "section";
-
-					// remove any children which are themselves tagged sections
-					const removeIndices = [];
-					if (toAdd.entries) {
-						toAdd.entries.forEach((nxt, i) => {
-							if (isDesiredSect(nxt)) {
-								removeIndices.push(i);
-								recursiveAdd(nxt)
-							}
-						})
-					}
-
-					if (removeIndices.length) {
-						toAdd.entries = toAdd.entries.filter((it, i) => {
-							return !removeIndices.includes(i)
-						});
-					}
+					const discard = !!toAdd.data.allowRefDupe;
 					delete toAdd.data;
-
-					out[sect].sections.push(toAdd)
-				}
-
-				if (ent.entries) {
-					ent.entries.forEach(nxt => recursiveAdd(nxt));
+					out[sect].sections.push(toAdd);
+					return discard;
+				} else {
+					return true;
 				}
 			}
 

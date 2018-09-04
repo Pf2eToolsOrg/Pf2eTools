@@ -25,7 +25,7 @@
 			],
 			"hp": {
 				"average": 66,
-				"formula": "12d8+12"
+				"formula": "12d8 + 12"
 			},
 			"speed": {
 				"walk": 30
@@ -72,7 +72,7 @@
 				{
 					"name": "Windvane",
 					"entries": [
-						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 9 ({@dice 1d6+6}) piercing damage, or 10 ({@dice 1d8+6}) piercing damage if used with two hands to make a melee attack, plus 3 ({@dice 1d6}) lightning damage."
+						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 9 ({@damage 1d6 + 6}) piercing damage, or 10 ({@damage 1d8 + 6}) piercing damage if used with two hands to make a melee attack, plus 3 ({@damage 1d6}) lightning damage."
 					]
 				}
 			],
@@ -175,7 +175,7 @@
 			],
 			"hp": {
 				"average": 117,
-				"formula": "18d8+36"
+				"formula": "18d8 + 36"
 			},
 			"speed": {
 				"walk": 30,
@@ -230,13 +230,13 @@
 				{
 					"name": "Flail",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@dice 1d8+4}) bludgeoning damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Lightning Strike {@recharge}",
 					"entries": [
-						"The myrmidon makes one flail attack. If the attack hits, it deals an extra 18 ({@dice 4d8}) lightning damage, and the target must succeed on a DC 14 Constitution saving throw or be {@condition stunned} until the end of the myrmidon's next turn."
+						"The myrmidon makes one flail attack. If the attack hits, it deals an extra 18 ({@damage 4d8}) lightning damage, and the target must succeed on a DC 14 Constitution saving throw or be {@condition stunned} until the end of the myrmidon's next turn."
 					]
 				}
 			],
@@ -280,7 +280,7 @@
 			],
 			"hp": {
 				"average": 78,
-				"formula": "12d8+24"
+				"formula": "12d8 + 24"
 			},
 			"speed": {
 				"walk": 30
@@ -306,7 +306,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
@@ -413,7 +413,7 @@
 			],
 			"hp": {
 				"average": 39,
-				"formula": "6d8+12"
+				"formula": "6d8 + 12"
 			},
 			"speed": {
 				"walk": 30
@@ -441,7 +441,7 @@
 				{
 					"name": "Morningstar",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				}
 			],
@@ -485,7 +485,7 @@
 			],
 			"hp": {
 				"average": 45,
-				"formula": "7d8+14"
+				"formula": "7d8 + 14"
 			},
 			"speed": {
 				"walk": 30
@@ -514,7 +514,7 @@
 				{
 					"name": "Glaive",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. Hit: 7 ({@dice 1d10+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. Hit: 7 ({@damage 1d10 + 2}) slashing damage."
 					]
 				}
 			],
@@ -600,7 +600,7 @@
 			],
 			"hp": {
 				"average": 82,
-				"formula": "11d8+33"
+				"formula": "11d8 + 33"
 			},
 			"speed": {
 				"walk": 30
@@ -638,7 +638,7 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage, or 8 ({@dice 1d8+4}) piercing damage if used with two hands to make a melee attack."
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 ({@damage 1d6 + 4}) piercing damage, or 8 ({@damage 1d8 + 4}) piercing damage if used with two hands to make a melee attack."
 					]
 				}
 			],
@@ -682,7 +682,7 @@
 			],
 			"hp": {
 				"average": 52,
-				"formula": "8d8+16"
+				"formula": "8d8 + 16"
 			},
 			"speed": {
 				"walk": 30
@@ -705,7 +705,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) bludgeoning damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) bludgeoning damage."
 					]
 				}
 			],
@@ -781,7 +781,7 @@
 			],
 			"hp": {
 				"average": 22,
-				"formula": "4d8+4"
+				"formula": "4d8 + 4"
 			},
 			"speed": {
 				"walk": 30
@@ -803,13 +803,13 @@
 				{
 					"name": "Sharktoothed Longsword",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) slashing damage, or 7 ({@dice 1d10+2}) slashing damage if used with two hands. Against a target is wearing no armor, the reaver deals an extra die of damage with this sword."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands. Against a target is wearing no armor, the reaver deals an extra die of damage with this sword."
 					]
 				},
 				{
 					"name": "Javelin",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				}
 			],
@@ -837,7 +837,7 @@
 			],
 			"hp": {
 				"average": 58,
-				"formula": "9d8+18"
+				"formula": "9d8 + 18"
 			},
 			"speed": {
 				"walk": 30
@@ -879,13 +879,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Lance",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. Hit: 9 ({@dice 1d12+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. Hit: 9 ({@damage 1d12 + 3}) piercing damage."
 					]
 				}
 			],
@@ -933,7 +933,7 @@
 			],
 			"hp": {
 				"average": 93,
-				"formula": "11d8+44"
+				"formula": "11d8 + 44"
 			},
 			"speed": {
 				"walk": 25
@@ -984,7 +984,7 @@
 				{
 					"name": "Second Wind (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Drannin can use a bonus action to regain 16 ({@dice 1d10+11}) hit points."
+						"Drannin can use a bonus action to regain 16 ({@dice 1d10 + 11}) hit points."
 					]
 				},
 				{
@@ -1004,7 +1004,7 @@
 				{
 					"name": "Greataxe",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 17 ({@dice 2d12+4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 17 ({@damage 2d12 + 4}) slashing damage."
 					]
 				}
 			],
@@ -1041,7 +1041,7 @@
 			],
 			"hp": {
 				"average": 127,
-				"formula": "17d8+51"
+				"formula": "17d8 + 51"
 			},
 			"speed": {
 				"walk": 30
@@ -1093,13 +1093,13 @@
 				{
 					"name": "Maul",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@dice 2d6+4}) bludgeoning damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Thunderous Strike {@recharge}",
 					"entries": [
-						"The myrmidon makes one maul attack. If the attack hits, it deals an extra 16 ({@dice 3d10}) thunder damage, and the target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}."
+						"The myrmidon makes one maul attack. If the attack hits, it deals an extra 16 ({@damage 3d10}) thunder damage, and the target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			],
@@ -1143,7 +1143,7 @@
 			],
 			"hp": {
 				"average": 71,
-				"formula": "11d8+22"
+				"formula": "11d8 + 22"
 			},
 			"speed": {
 				"walk": 30
@@ -1173,7 +1173,7 @@
 				{
 					"name": "Dagger +1",
 					"entries": [
-						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				}
 			],
@@ -1262,7 +1262,7 @@
 			],
 			"hp": {
 				"average": 45,
-				"formula": "7d8+14"
+				"formula": "7d8 + 14"
 			},
 			"speed": {
 				"walk": 30
@@ -1287,7 +1287,7 @@
 				{
 					"name": "Flaming Weapon (Recharges after a Short or Long Rest)",
 					"entries": [
-						"As a bonus action, the guard can wreath one melee weapon it is wielding in flame. The guard is unharmed by this fire, which lasts until the end of the guard's next turn. While wreathed in flame, the weapon deals an extra 3 ({@dice 1d6}) fire damage on a hit."
+						"As a bonus action, the guard can wreath one melee weapon it is wielding in flame. The guard is unharmed by this fire, which lasts until the end of the guard's next turn. While wreathed in flame, the weapon deals an extra 3 ({@damage 1d6}) fire damage on a hit."
 					]
 				}
 			],
@@ -1301,13 +1301,13 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) slashing damage."
 					]
 				},
 				{
 					"name": "Heavy Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. Hit: 6 ({@dice 1d10+1}) piercing damage."
+						"{@atk rw} {@hit 3} to hit, range 100/400 ft., one target. Hit: 6 ({@damage 1d10 + 1}) piercing damage."
 					]
 				}
 			],
@@ -1343,7 +1343,7 @@
 			],
 			"hp": {
 				"average": 52,
-				"formula": "8d8+16"
+				"formula": "8d8 + 16"
 			},
 			"speed": {
 				"walk": 30
@@ -1369,7 +1369,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
@@ -1444,7 +1444,7 @@
 			],
 			"hp": {
 				"average": 52,
-				"formula": "8d8+16"
+				"formula": "8d8 + 16"
 			},
 			"speed": {
 				"walk": 30
@@ -1482,13 +1482,13 @@
 				{
 					"name": "Constrict (Serpent Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 9 ({@dice 2d6+2}) bludgeoning damage. If the target is Medium or smaller, it is {@condition grappled} (escape DC 12). Until the grapple ends, the target is {@condition restrained}, and the fathomer can't constrict another target."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 9 ({@damage 2d6 + 2}) bludgeoning damage. If the target is Medium or smaller, it is {@condition grappled} (escape DC 12). Until the grapple ends, the target is {@condition restrained}, and the fathomer can't constrict another target."
 					]
 				},
 				{
 					"name": "Dagger (Human Form Only)",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
@@ -1560,7 +1560,7 @@
 			],
 			"hp": {
 				"average": 33,
-				"formula": "6d8+6"
+				"formula": "6d8 + 6"
 			},
 			"speed": {
 				"walk": 30
@@ -1588,13 +1588,13 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d8+2}) slashing damage, or 7 ({@dice 1d10+2}) slashing damage if used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
 					]
 				},
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d6+2}) piercing damage, or 6 ({@dice 1d8+2}) piercing damage if used with two hands to make a melee attack."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
 					]
 				}
 			],
@@ -1651,7 +1651,7 @@
 			],
 			"hp": {
 				"average": 117,
-				"formula": "18d8+36"
+				"formula": "18d8 + 36"
 			},
 			"speed": {
 				"walk": 40
@@ -1702,7 +1702,7 @@
 				{
 					"name": "Water Susceptibility",
 					"entries": [
-						"For every 5 feet the myrmidon moves in water, it takes 2 ({@dice 1d4}) cold damage."
+						"For every 5 feet the myrmidon moves in water, it takes 2 ({@damage 1d4}) cold damage."
 					]
 				}
 			],
@@ -1716,13 +1716,13 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d6 + 4}) slashing damage."
 					]
 				},
 				{
 					"name": "Fiery Strikes {@recharge}",
 					"entries": [
-						"The myrmidon uses Multiattack. Each attack that hits deals an extra 5 ({@dice 1d10}) fire damage."
+						"The myrmidon uses Multiattack. Each attack that hits deals an extra 5 ({@damage 1d10}) fire damage."
 					]
 				}
 			],
@@ -1766,7 +1766,7 @@
 			],
 			"hp": {
 				"average": 105,
-				"formula": "14d8+42"
+				"formula": "14d8 + 42"
 			},
 			"speed": {
 				"walk": 30
@@ -1799,7 +1799,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
@@ -1882,7 +1882,7 @@
 			],
 			"hp": {
 				"average": 97,
-				"formula": "15d8+45"
+				"formula": "15d8 + 45"
 			},
 			"speed": {
 				"walk": 30,
@@ -1940,13 +1940,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@dice 2d6+2}) bludgeoning damage, and the target is {@condition grappled} (escape DC 13). Until the grapple ends, Gar can't attack other creatures with his claw."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@damage 2d6 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape DC 13). Until the grapple ends, Gar can't attack other creatures with his claw."
 					]
 				},
 				{
 					"name": "Drown",
 					"entries": [
-						"{@atk mw,rw} {@hit 7} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage plus 4 ({@dice 1d8}) cold damage."
+						"{@atk mw,rw} {@hit 7} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@damage 1d6 + 3}) piercing damage plus 4 ({@damage 1d8}) cold damage."
 					]
 				}
 			],
@@ -2045,7 +2045,7 @@
 			],
 			"hp": {
 				"average": 102,
-				"formula": "12d10+36"
+				"formula": "12d10 + 36"
 			},
 			"speed": {
 				"walk": 30,
@@ -2107,19 +2107,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. Hit: 9 ({@dice 2d4+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. Hit: 9 ({@damage 2d4 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. Hit: 11 ({@dice 2d6+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. Hit: 11 ({@damage 2d6 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Garrote",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one Medium or Small creature against which Ghald has advantage on the attack roll. Hit: 9 ({@dice 2d4+4}) bludgeoning damage, and the target is {@condition grappled} (escape DC 15). Until the grapple ends, the target can't breathe, and Ghald has advantage on attack rolls against it."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one Medium or Small creature against which Ghald has advantage on the attack roll. Hit: 9 ({@damage 2d4 + 4}) bludgeoning damage, and the target is {@condition grappled} (escape DC 15). Until the grapple ends, the target can't breathe, and Ghald has advantage on attack rolls against it."
 					]
 				}
 			],
@@ -2158,7 +2158,7 @@
 			],
 			"hp": {
 				"average": 78,
-				"formula": "12d8+24"
+				"formula": "12d8 + 24"
 			},
 			"speed": {
 				"walk": 30
@@ -2222,7 +2222,7 @@
 				{
 					"name": "Unarmed Strike",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 9 ({@dice 1d10+4}) bludgeoning damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 9 ({@damage 1d10 + 4}) bludgeoning damage."
 					]
 				}
 			],
@@ -2304,7 +2304,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
@@ -2377,13 +2377,13 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@dice 1d4+3}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				}
 			],
@@ -2459,7 +2459,7 @@
 			],
 			"hp": {
 				"average": 33,
-				"formula": "6d8+6"
+				"formula": "6d8 + 6"
 			},
 			"speed": {
 				"walk": 45
@@ -2500,7 +2500,7 @@
 				{
 					"name": "Unarmed Strike",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) bludgeoning damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3}) bludgeoning damage."
 					]
 				}
 			],
@@ -2508,7 +2508,7 @@
 				{
 					"name": "Deflect Missiles",
 					"entries": [
-						"When the hurricane is hit by a ranged weapon attack, it reduces the damage from the attack by {@dice 1d10+9}. If the damage is reduced to 0, the hurricane can catch the missile if it is small enough to hold in one hand and the hurricane has at least one hand free."
+						"When the hurricane is hit by a ranged weapon attack, it reduces the damage from the attack by {@dice 1d10 + 9}. If the damage is reduced to 0, the hurricane can catch the missile if it is small enough to hold in one hand and the hurricane has at least one hand free."
 					]
 				}
 			],
@@ -2568,7 +2568,7 @@
 			],
 			"hp": {
 				"average": 325,
-				"formula": "26d12+156"
+				"formula": "26d12 + 156"
 			},
 			"speed": {
 				"walk": 50,
@@ -2622,7 +2622,7 @@
 				{
 					"name": "Fire Aura",
 					"entries": [
-						"At the start of each of Imix's turns, each creature within 10 feet of him takes 17 ({@dice 5d6}) fire damage, and flammable objects in the aura that aren't being worn or carried ignite. A creature also takes 17 ({@dice 5d6}) fire damage if it touches Imix or hits him with a melee attack while within 10 feet of him, and a creature takes that damage the first time on a turn that Imix moves into its space. Nonmagical weapons that hit Imix are destroyed by fire immediately after dealing damage to him"
+						"At the start of each of Imix's turns, each creature within 10 feet of him takes 17 ({@damage 5d6}) fire damage, and flammable objects in the aura that aren't being worn or carried ignite. A creature also takes 17 ({@damage 5d6}) fire damage if it touches Imix or hits him with a melee attack while within 10 feet of him, and a creature takes that damage the first time on a turn that Imix moves into its space. Nonmagical weapons that hit Imix are destroyed by fire immediately after dealing damage to him"
 					]
 				},
 				{
@@ -2660,13 +2660,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 12} to hit, reach 10 ft., one target. Hit: 18 ({@dice 2d10+7}) bludgeoning damage plus 18 ({@dice 5d6}) fire damage."
+						"{@atk mw} {@hit 12} to hit, reach 10 ft., one target. Hit: 18 ({@damage 2d10 + 7}) bludgeoning damage plus 18 ({@damage 5d6}) fire damage."
 					]
 				},
 				{
 					"name": "Flame Blast",
 					"entries": [
-						"{@atk rs} {@hit 12} to hit, range 250 ft., one target. Hit: 35 ({@dice 10d6}) fire damage."
+						"{@atk rs} {@hit 12} to hit, range 250 ft., one target. Hit: 35 ({@damage 10d6}) fire damage."
 					]
 				},
 				{
@@ -2680,10 +2680,7 @@
 				{
 					"name": "Heat Wave",
 					"entries": [
-						"Imix creates a blast of heat within 300 feet of himself. Each creature in the area in physical contact with metal objects (for example, carrying metal weapons or wearing metal armor) takes 9 ({@dice 2d8}) fire damage. Each creature in the area that isn't resistant or immune to fire damage must make a DC 21 Constitution saving throw or gain one level of {@condition exhaustion}."
-					],
-					"attack": [
-						"Heat Wave||2d8"
+						"Imix creates a blast of heat within 300 feet of himself. Each creature in the area in physical contact with metal objects (for example, carrying metal weapons or wearing metal armor) takes 9 ({@damage 2d8}) fire damage. Each creature in the area that isn't resistant or immune to fire damage must make a DC 21 Constitution saving throw or gain one level of {@condition exhaustion}."
 					]
 				},
 				{
@@ -2695,10 +2692,7 @@
 				{
 					"name": "Combustion (Costs 3 Actions)",
 					"entries": [
-						"Imix causes one creature he can see within 30 feet of him to burst into flames. The target must make a DC 21 Constitution saving throw. On a failed save, the target takes 70 ({@dice 20d6}) fire damage and catches fire. A target on fire takes 10 ({@dice 3d6}) fire damage when it starts its turn, and remains on fire until it or another creature takes an action to douse the flames. On a successful save, the target takes half as much damage and doesn't catch fire."
-					],
-					"attack": [
-						"Combustion||20d6"
+						"Imix causes one creature he can see within 30 feet of him to burst into flames. The target must make a DC 21 Constitution saving throw. On a failed save, the target takes 70 ({@damage 20d6}) fire damage and catches fire. A target on fire takes 10 ({@damage 3d6}) fire damage when it starts its turn, and remains on fire until it or another creature takes an action to douse the flames. On a successful save, the target takes half as much damage and doesn't catch fire."
 					]
 				}
 			],
@@ -2758,7 +2752,7 @@
 			],
 			"hp": {
 				"average": 136,
-				"formula": "16d8+64"
+				"formula": "16d8 + 64"
 			},
 			"speed": {
 				"walk": 30
@@ -2819,13 +2813,13 @@
 				{
 					"name": "Snake Hair",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage plus 14 ({@dice 4d6}) poison damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage plus 14 ({@damage 4d6}) poison damage."
 					]
 				},
 				{
 					"name": "Ironfang",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d8+3}) piercing damage plus 4 ({@dice 1d8}) thunder damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage plus 4 ({@damage 1d8}) thunder damage."
 					]
 				}
 			],
@@ -2871,7 +2865,7 @@
 			],
 			"hp": {
 				"average": 82,
-				"formula": "11d8+33"
+				"formula": "11d8 + 33"
 			},
 			"speed": {
 				"walk": 30
@@ -2901,7 +2895,7 @@
 				{
 					"name": "Staff",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@dice 1d6+1}) bludgeoning damage, or 5 ({@dice 1d8+1}) bludgeoning damage when used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@damage 1d6 + 1}) bludgeoning damage, or 5 ({@damage 1d8 + 1}) bludgeoning damage when used with two hands."
 					]
 				}
 			],
@@ -3005,7 +2999,7 @@
 			],
 			"hp": {
 				"average": 526,
-				"formula": "27d20+243"
+				"formula": "27d20 + 243"
 			},
 			"speed": {
 				"walk": 50,
@@ -3083,13 +3077,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 15 ft., one target. Hit: 30 ({@dice 4d10+8}) bludgeoning damage."
+						"{@atk mw} {@hit 14} to hit, reach 15 ft., one target. Hit: 30 ({@damage 4d10 + 8}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Boulder",
 					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 500 ft., one target. Hit: 46 ({@dice 7d10+8}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Strength saving throw or be knocked {@condition prone}."
+						"{@atk rw} {@hit 6} to hit, range 500 ft., one target. Hit: 46 ({@damage 7d10 + 8}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Strength saving throw or be knocked {@condition prone}."
 					]
 				},
 				{
@@ -3171,7 +3165,7 @@
 			],
 			"hp": {
 				"average": 324,
-				"formula": "24d12+168"
+				"formula": "24d12 + 168"
 			},
 			"speed": {
 				"walk": 50,
@@ -3253,13 +3247,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 21 ({@dice 3d10+5}) bludgeoning damage, and the target is {@condition grappled} (escape DC 19). Olhydra can grapple up to four targets. When Olhydra moves, all creatures she is grappling move with her."
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 21 ({@damage 3d10 + 5}) bludgeoning damage, and the target is {@condition grappled} (escape DC 19). Olhydra can grapple up to four targets. When Olhydra moves, all creatures she is grappling move with her."
 					]
 				},
 				{
 					"name": "Water Jet",
 					"entries": [
-						"{@atk rw} {@hit 12} to hit, range 120 ft., one target. Hit: 21 ({@dice 6d6}) bludgeoning damage, and the target is knocked {@condition prone} if it fails a DC 19 Strength saving throw."
+						"{@atk rw} {@hit 12} to hit, range 120 ft., one target. Hit: 21 ({@damage 6d6}) bludgeoning damage, and the target is knocked {@condition prone} if it fails a DC 19 Strength saving throw."
 					]
 				},
 				{
@@ -3273,7 +3267,7 @@
 				{
 					"name": "Crush",
 					"entries": [
-						"One creature that Olhydra is grappling is crushed for 21 ({@dice 3d10+5}) bludgeoning damage."
+						"One creature that Olhydra is grappling is crushed for 21 ({@damage 3d10 + 5}) bludgeoning damage."
 					]
 				},
 				{
@@ -3285,11 +3279,7 @@
 				{
 					"name": "Water to Acid (Costs 3 Actions)",
 					"entries": [
-						"Olhydra transforms her watery body into acid. This effect lasts until Olhydra's next turn. Any creature that comes into contact with Olhydra or hits her with a melee attack while standing within 5 feet of her takes 11 ({@dice 2d10}) acid damage. Any creature {@condition grappled} by Olhydra takes 22 ({@dice 4d10}) acid damage at the start of its turn."
-					],
-					"attack": [
-						"Contact||2d10",
-						"Grappled||4d10"
+						"Olhydra transforms her watery body into acid. This effect lasts until Olhydra's next turn. Any creature that comes into contact with Olhydra or hits her with a melee attack while standing within 5 feet of her takes 11 ({@damage 2d10}) acid damage. Any creature {@condition grappled} by Olhydra takes 22 ({@damage 4d10}) acid damage at the start of its turn."
 					]
 				}
 			],
@@ -3351,7 +3341,7 @@
 			],
 			"hp": {
 				"average": 49,
-				"formula": "9d8+9"
+				"formula": "9d8 + 9"
 			},
 			"speed": {
 				"walk": 30
@@ -3377,7 +3367,7 @@
 				{
 					"name": "Chilling Mist",
 					"entries": [
-						"While it is alive, the one-eyed shiver projects an aura of cold mist within 10 feet of itself. If the one-eyed shiver deals damage to a creature in this area, the creature also takes 5 ({@dice 1d10}) cold damage."
+						"While it is alive, the one-eyed shiver projects an aura of cold mist within 10 feet of itself. If the one-eyed shiver deals damage to a creature in this area, the creature also takes 5 ({@damage 1d10}) cold damage."
 					]
 				}
 			],
@@ -3385,7 +3375,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@dice 1d4+2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				},
 				{
@@ -3463,7 +3453,7 @@
 			],
 			"hp": {
 				"average": 39,
-				"formula": "6d8+12"
+				"formula": "6d8 + 12"
 			},
 			"speed": {
 				"walk": 30
@@ -3503,7 +3493,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				}
 			],
@@ -3579,7 +3569,7 @@
 			],
 			"hp": {
 				"average": 112,
-				"formula": "15d8+75"
+				"formula": "15d8 + 75"
 			},
 			"speed": {
 				"walk": 30
@@ -3604,13 +3594,13 @@
 				{
 					"name": "Searing Armor",
 					"entries": [
-						"The razerblast's armor is hot. Any creature grappling the razerblast or {@condition grappled} by it takes 5 ({@dice 1d10}) fire damage at the end of that creature's turn."
+						"The razerblast's armor is hot. Any creature grappling the razerblast or {@condition grappled} by it takes 5 ({@damage 1d10}) fire damage at the end of that creature's turn."
 					]
 				},
 				{
 					"name": "Shrapnel Explosion",
 					"entries": [
-						"When the razerblast drops to 0 hit points, a flaming orb in its chest explodes, destroying the razerblast's body and scattering its armor as shrapnel. Creatures within 10 feet of the razerblast when it explodes must succeed on a DC 12 Dexterity saving throw, taking 21 ({@dice 6d6}) piercing damage on a failed save, or half as much damage on a successful one."
+						"When the razerblast drops to 0 hit points, a flaming orb in its chest explodes, destroying the razerblast's body and scattering its armor as shrapnel. Creatures within 10 feet of the razerblast when it explodes must succeed on a DC 12 Dexterity saving throw, taking 21 ({@damage 6d6}) piercing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -3624,7 +3614,7 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@dice 1d6+3}) piercing damage, or 7 ({@dice 1d8+3}) piercing damage if used with two hands to make a melee attack, plus 3 ({@dice 1d6}) fire damage."
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 ({@damage 1d6 + 3}) piercing damage, or 7 ({@damage 1d8 + 3}) piercing damage if used with two hands to make a melee attack, plus 3 ({@damage 1d6}) fire damage."
 					]
 				}
 			],
@@ -3656,7 +3646,7 @@
 			],
 			"hp": {
 				"average": 22,
-				"formula": "4d8+4"
+				"formula": "4d8 + 4"
 			},
 			"speed": {
 				"walk": 40
@@ -3700,7 +3690,7 @@
 				{
 					"name": "Unarmed Strike",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) bludgeoning damage."
 					]
 				}
 			],
@@ -3749,7 +3739,7 @@
 			],
 			"hp": {
 				"average": 60,
-				"formula": "8d8+24"
+				"formula": "8d8 + 24"
 			},
 			"speed": {
 				"walk": 30,
@@ -3785,7 +3775,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or ranged 20/60 ft., one target. Hit: 3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				}
 			],
@@ -3878,7 +3868,7 @@
 			],
 			"hp": {
 				"average": 44,
-				"formula": "8d8+8"
+				"formula": "8d8 + 8"
 			},
 			"speed": {
 				"walk": 30
@@ -3900,7 +3890,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@dice 1d4+1}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				}
 			],
@@ -3976,7 +3966,7 @@
 			],
 			"hp": {
 				"average": 75,
-				"formula": "10d8+30"
+				"formula": "10d8 + 30"
 			},
 			"speed": {
 				"walk": 30
@@ -3999,7 +3989,7 @@
 				{
 					"name": "Death Burst",
 					"entries": [
-						"When the Stonemelder dies, it turns to stone and explodes in a burst of rock shards, becoming a smoking pile of rubble. Each creature within 10 feet of the exploding Stonemelder must make a DC 14 Dexterity saving throw, taking 11 ({@dice 2d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
+						"When the Stonemelder dies, it turns to stone and explodes in a burst of rock shards, becoming a smoking pile of rubble. Each creature within 10 feet of the exploding Stonemelder must make a DC 14 Dexterity saving throw, taking 11 ({@damage 2d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -4007,7 +3997,7 @@
 				{
 					"name": "Black Earth Rod",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@dice 1d6+2}) bludgeoning damage. The Stonemelder can also expend a spell slot to deal extra damage, dealing {@dice 2d8} bludgeoning damage for a 1st level slot, plus an additional {@dice 1d8} for each level of the slot above 1st."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) bludgeoning damage. The Stonemelder can also expend a spell slot to deal extra damage, dealing {@dice 2d8} bludgeoning damage for a 1st level slot, plus an additional {@dice 1d8} for each level of the slot above 1st."
 					]
 				}
 			],
@@ -4096,7 +4086,7 @@
 			],
 			"hp": {
 				"average": 71,
-				"formula": "11d8+21"
+				"formula": "11d8 + 21"
 			},
 			"speed": {
 				"walk": 30
@@ -4126,13 +4116,13 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@dice 2d6+3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 10 ({@damage 2d6 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Lance",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. Hit: 9 ({@dice 1d12+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. Hit: 9 ({@damage 1d12 + 3}) piercing damage."
 					]
 				}
 			],
@@ -4220,7 +4210,7 @@
 			],
 			"hp": {
 				"average": 112,
-				"formula": "15d8+45"
+				"formula": "15d8 + 45"
 			},
 			"speed": {
 				"walk": 30
@@ -4267,7 +4257,7 @@
 				{
 					"name": "Tinderstrike",
 					"entries": [
-						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 ({@dice 1d4+5}) piercing damage plus 7 ({@dice 2d6}) fire damage."
+						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 7 ({@damage 1d4 + 5}) piercing damage plus 7 ({@damage 2d6}) fire damage."
 					]
 				}
 			],
@@ -4366,7 +4356,7 @@
 			],
 			"hp": {
 				"average": 127,
-				"formula": "17d8+51"
+				"formula": "17d8 + 51"
 			},
 			"speed": {
 				"walk": 40,
@@ -4420,13 +4410,13 @@
 				{
 					"name": "Trident",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@dice 1d6+4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d6 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Freezing Strikes {@recharge}",
 					"entries": [
-						"The myrmidon uses Multiattack. Each attack that hits deals an extra 5 ({@dice 1d10}) cold damage, and the target's speed is reduced by 10 feet until the end of the myrmidon's next turn."
+						"The myrmidon uses Multiattack. Each attack that hits deals an extra 5 ({@damage 1d10}) cold damage, and the target's speed is reduced by 10 feet until the end of the myrmidon's next turn."
 					]
 				}
 			],
@@ -4470,7 +4460,7 @@
 			],
 			"hp": {
 				"average": 36,
-				"formula": "8d6+8"
+				"formula": "8d6 + 8"
 			},
 			"speed": {
 				"walk": 30
@@ -4506,7 +4496,7 @@
 				{
 					"name": "Wooden Cane",
 					"entries": [
-						"{@atk mw} {@hit 0} to hit ({@hit 4} to hit with shillelagh), reach 5 ft., one target. Hit: 1 ({@dice 1d4-1}) bludgeoning damage, or 6 ({@dice 1d8+2}) bludgeoning damage with shillelagh."
+						"{@atk mw} {@hit 0} to hit ({@hit 4} to hit with shillelagh), reach 5 ft., one target. Hit: 1 ({@damage 1d4 - 1}) bludgeoning damage, or 6 ({@damage 1d8 + 2}) bludgeoning damage with shillelagh."
 					]
 				}
 			],
@@ -4582,7 +4572,7 @@
 			],
 			"hp": {
 				"average": 55,
-				"formula": "10d8+10"
+				"formula": "10d8 + 10"
 			},
 			"speed": {
 				"walk": 30
@@ -4622,7 +4612,7 @@
 				{
 					"name": "Rapier",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@dice 1d8+3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				}
 			],
@@ -4710,7 +4700,7 @@
 			],
 			"hp": {
 				"average": 283,
-				"formula": "21d12+147"
+				"formula": "21d12 + 147"
 			},
 			"speed": {
 				"walk": 50,
@@ -4793,13 +4783,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 20 ({@dice 3d8+7}) force damage plus 10 ({@dice 3d6}) lightning damage."
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. Hit: 20 ({@damage 3d8 + 7}) force damage plus 10 ({@damage 3d6}) lightning damage."
 					]
 				},
 				{
 					"name": "Thundercrack (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Yan-C-Bin unleashes a terrible thundercrack in a 100-foot-radius sphere centered on himself. All other creatures in the area must succeed on a DC 24 Constitution saving throw or take 31 ({@dice 9d6}) thunder damage and be {@condition deafened} for 1 minute. On a successful save, a creature takes half as much damage and is {@condition deafened} until the start of Yan-C-Bin's next turn."
+						"Yan-C-Bin unleashes a terrible thundercrack in a 100-foot-radius sphere centered on himself. All other creatures in the area must succeed on a DC 24 Constitution saving throw or take 31 ({@damage 9d6}) thunder damage and be {@condition deafened} for 1 minute. On a successful save, a creature takes half as much damage and is {@condition deafened} until the start of Yan-C-Bin's next turn."
 					]
 				},
 				{
@@ -4819,10 +4809,7 @@
 				{
 					"name": "Peal of Thunder",
 					"entries": [
-						"Yan-C-Bin unleashes a peal of thunder that can be heard out to a range of 300 feet. Each creature within 30 feet of Yan-C-Bin takes 5 ({@dice 1d10}) thunder damage."
-					],
-					"attack": [
-						"Peal of Thunder||1d10"
+						"Yan-C-Bin unleashes a peal of thunder that can be heard out to a range of 300 feet. Each creature within 30 feet of Yan-C-Bin takes 5 ({@damage 1d10}) thunder damage."
 					]
 				},
 				{

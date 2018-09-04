@@ -140,7 +140,7 @@
 				"A creature that steps on the bear trap triggers it."
 			],
 			"effect": [
-				"Melee weapon attack: +8 to hit, triggering creature. Hit: 5 ({@dice 1d10}) piercing damage. This attack can't gain advantage or disadvantage. A creature hit by the trap has its speed reduced to 0. It can't move until it breaks free of the trap, which requires a successful DC 15 Strength check by the creature or another creature adjacent to the trap."
+				"Melee weapon attack: {@hit 8} to hit, triggering creature. Hit: 5 ({@dice 1d10}) piercing damage. This attack can't gain advantage or disadvantage. A creature hit by the trap has its speed reduced to 0. It can't move until it breaks free of the trap, which requires a successful DC 15 Strength check by the creature or another creature adjacent to the trap."
 			],
 			"countermeasures": [
 				"A successful DC 10 Wisdom (Perception) check reveals the trap. A successful DC 10 Dexterity check using thieves' tools disables it."
@@ -637,8 +637,8 @@
 			"name": "Strong Wind",
 			"trapHazType": "WTH",
 			"entries": [
-				"A strong wind imposes disadvantage on ranged weapon attack rolls and Wisdom (Perception) checks that rely on hearing. A strong wind also extinguishes open flames, disperses fog, and makes flying by nonmagical means nearly impossible. A flying creature in a strong wind must land at the end of its turn or fall.",
-				"A strong wind in a desert can create a sandstorm that imposes disadvantage on Wisdom (Perception) checks that rely on sight."
+				"A strong wind imposes disadvantage on ranged weapon attack rolls and Wisdom ({@skill Perception}) checks that rely on hearing. A strong wind also extinguishes open flames, disperses fog, and makes flying by nonmagical means nearly impossible. A flying creature in a strong wind must land at the end of its turn or fall.",
+				"A strong wind in a desert can create a sandstorm that imposes disadvantage on Wisdom ({@skill Perception}) checks that rely on sight."
 			],
 			"source": "DMG",
 			"page": 110
@@ -647,7 +647,7 @@
 			"name": "Heavy Precipitation",
 			"trapHazType": "WTH",
 			"entries": [
-				"Everything within an area of heavy rain or heavy snowfall is lightly obscured, and creatures in the area have disadvantage on Wisdom (Perception) checks that rely on sight. Heavy rain also extinguishes open flames and imposes disadvantage on Wisdom (Perception) checks that rely on hearing."
+				"Everything within an area of heavy rain or heavy snowfall is lightly obscured, and creatures in the area have disadvantage on Wisdom ({@skill Perception}) checks that rely on sight. Heavy rain also extinguishes open flames and imposes disadvantage on Wisdom ({@skill Perception}) checks that rely on hearing."
 			],
 			"source": "DMG",
 			"page": 110

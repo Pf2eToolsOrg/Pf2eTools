@@ -229,51 +229,68 @@
 		);
 	},
 
+	_rng: null,
+	_initRng (mon, toCr) {
+		let h = CryptUtil.hashCode(toCr);
+		h = 31 * h + CryptUtil.hashCode(mon.source);
+		h = 31 * h + CryptUtil.hashCode(mon.name);
+		this._rng = Math.seed(h);
+	},
+
 	/**
+	 * @async
 	 * @param mon Creature data.
 	 * @param toCr target CR, as a number.
+	 * @return {Promise<creature>} the scaled creature.
 	 */
 	scale (mon, toCr) {
-		if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
+		return DataUtil.loadJSON(`data/spells/spells-phb.json`).then((spellData) => {
+			if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
 
-		mon = JSON.parse(JSON.stringify(mon));
+			this._initSpellCache(spellData);
+			this._initRng(mon, toCr);
+			mon = JSON.parse(JSON.stringify(mon));
 
-		const crIn = mon.cr.cr || mon.cr;
-		const crInNumber = Parser.crToNumber(crIn);
-		if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
-		if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
-		if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
+			const crIn = mon.cr.cr || mon.cr;
+			const crInNumber = Parser.crToNumber(crIn);
+			if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
+			if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
+			if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
 
-		const pbIn = Parser.crToPb(crIn);
-		const pbOut = Parser.crToPb(String(toCr));
+			const pbIn = Parser.crToPb(crIn);
+			const pbOut = Parser.crToPb(String(toCr));
 
-		if (pbIn !== pbOut) {
-			this._applyPb(mon, pbIn, pbOut);
-		}
+			if (pbIn !== pbOut) {
+				this._applyPb(mon, pbIn, pbOut);
+			}
 
-		this._adjustHp(mon, crInNumber, toCr);
-		this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
-		this._adjustDpr(mon, crInNumber, toCr);
-		this._adjustSpellcasting(mon, crInNumber, toCr);
+			this._adjustHp(mon, crInNumber, toCr);
+			this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
+			this._adjustDpr(mon, crInNumber, toCr);
+			this._adjustSpellcasting(mon, crInNumber, toCr);
 
-		// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
-		const idealAcIn = this._crToAc(crInNumber);
-		const idealAcOut = this._crToAc(toCr);
-		if (idealAcIn !== idealAcOut) {
-			this._adjustAc(mon, idealAcIn, idealAcOut);
-		}
+			// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
+			const idealAcIn = this._crToAc(crInNumber);
+			const idealAcOut = this._crToAc(toCr);
+			if (idealAcIn !== idealAcOut) {
+				this._adjustAc(mon, idealAcIn, idealAcOut);
+			}
 
-		this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
+			this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
 
-		const crOutStr = Parser.numberToCr(toCr);
-		if (mon.cr.cr) mon.cr.cr = crOutStr;
-		else mon.cr = crOutStr;
+			// cleanup
+			[`str`, `dex`, `con`, `int`, `wis`, `cha`].forEach(a => delete mon[`${a}Old`]);
 
-		mon._displayName = `${mon.name} (CR ${crOutStr})`;
-		mon._isScaledCr = toCr;
-		mon._originalCr = mon._originalCr || crIn;
+			const crOutStr = Parser.numberToCr(toCr);
+			if (mon.cr.cr) mon.cr.cr = crOutStr;
+			else mon.cr = crOutStr;
 
-		return mon;
+			mon._displayName = `${mon.name} (CR ${crOutStr})`;
+			mon._isScaledCr = toCr;
+			mon._originalCr = mon._originalCr || crIn;
+
+			return mon;
+		});
 	},
 
 	_applyPb (mon, pbIn, pbOut) {
@@ -574,7 +591,7 @@
 							case 15:
 								return `chain mail +1|dmg`;
 							case 19:
-								return [`plate armor +1|dmg`, `splint armor +2|dmg`][RollerUtil.randomise(1, 0)];
+								return [`plate armor +1|dmg`, `splint armor +2|dmg`][RollerUtil.roll(1, this._rng)];
 							case 20:
 								return `plate armor +2|dmg`;
 							case PL3_PLATE:
@@ -629,9 +646,9 @@
 						const getByBase = (base) => {
 							switch (base) {
 								case 14:
-									return [`scale mail|phb`, `breastplate|phb`][RollerUtil.randomise(1, 0)];
+									return [`scale mail|phb`, `breastplate|phb`][RollerUtil.roll(1, this._rng)];
 								case 16:
-									return [`half plate armor +1|dmg`, `breastplate +2|dmg`, `scale mail +2|dmg`][RollerUtil.randomise(2, 0)];
+									return [`half plate armor +1|dmg`, `breastplate +2|dmg`, `scale mail +2|dmg`][RollerUtil.roll(2, this._rng)];
 								case 17:
 									return `half plate armor +2|dmg`;
 								case 18:
@@ -732,7 +749,7 @@
 						const getByBase = (base) => {
 							switch (base) {
 								case 11:
-									return [`padded armor|phb`, `leather armor|phb`][RollerUtil.randomise(1, 0)];
+									return [`padded armor|phb`, `leather armor|phb`][RollerUtil.roll(1, this._rng)];
 								default: {
 									const nonEnch = Object.keys(this._acLight).find(it => this._acLight[it] === base);
 									return `${nonEnch}|phb`;
@@ -920,7 +937,7 @@
 		const targetHpDeviation = (hpOutRange[1] - hpOutRange[0]) / 2;
 		const targetHpRange = [Math.floor(targetHpOut - targetHpDeviation), Math.ceil(targetHpOut + targetHpDeviation)];
 
-		const origFormula = mon.hp.formula;
+		const origFormula = mon.hp.formula.replace(/\s*/g, "");
 		mon.hp.average = Math.floor(Math.max(1, targetHpOut));
 
 		const fSplit = origFormula.split(/([-+])/);
@@ -1004,7 +1021,7 @@
 
 		mon.hp.average = Math.floor(getAvg(numHdOut));
 		const outModTotal = numHdOut * hpModOut;
-		mon.hp.formula = `${numHdOut}d${hdFaces}${outModTotal === 0 ? "" : `${outModTotal >= 0 ? "+" : ""}${outModTotal}`}`;
+		mon.hp.formula = `${numHdOut}d${hdFaces}${outModTotal === 0 ? "" : ` ${outModTotal >= 0 ? "+" : ""} ${outModTotal}`}`;
 
 		if (hpModOut !== modPerHd) {
 			const conOut = this._calcNewAbility(mon, "con", hpModOut);
@@ -1173,7 +1190,7 @@
 		checkSetTempMod("dex");
 	},
 
-	_DAMAGE_REGEX_DICE: new RegExp(/(\d+)( \({@dice )([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/, "ig"),
+	_DAMAGE_REGEX_DICE: new RegExp(/(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/, "ig"),
 	_DAMAGE_REGEX_FLAT: new RegExp(/(Hit: )([0-9]*)( [a-z]+( or [a-z]+)? damage)/, "ig"),
 	_adjustDpr (mon, crIn, crOut) {
 		const idealDprRangeIn = this._crDprRanges[crIn];
@@ -1186,6 +1203,7 @@
 		};
 
 		const getAvgDpr = (diceExp) => {
+			diceExp = diceExp.replace(/\s*/g, "");
 			const asAverages = diceExp.replace(/d(\d+)/gi, (...m) => {
 				return ` * ${(Number(m[1]) + 1) / 2}`;
 			});
@@ -1304,7 +1322,7 @@
 								}
 							};
 
-							const getDiceExp = (a = numDiceOut, b = diceFacesOut, c = modOut) => `${a}d${b}${c !== 0 ? `${c > 0 ? "+" : ""}${c}` : ""}`;
+							const getDiceExp = (a = numDiceOut, b = diceFacesOut, c = modOut) => `${a}d${b}${c !== 0 ? ` ${c > 0 ? "+" : ""} ${c}` : ""}`;
 							let loops = 0;
 							while (1) {
 								if (inRange(getAvgDpr(getDiceExp()))) break;
@@ -1489,6 +1507,22 @@
 		});
 	},
 
+	_spells: null,
+	_initSpellCache (data) {
+		if (this._spells) return;
+
+		this._spells = {};
+		data.spell.forEach(s => {
+			s.classes.fromClassList.forEach(c => {
+				let it = (this._spells[c.source] = this._spells[c.source] || {});
+				const lowName = c.name.toLowerCase();
+				it = (it[lowName] = it[lowName] || {});
+				it = (it[s.level] = it[s.level] || {});
+				it[s.name] = 1;
+			})
+		});
+	},
+
 	_adjustSpellcasting (mon, crIn, crOut) {
 		const getSlotsAtLevel = (casterLvl, slotLvl) => {
 			// there's probably a nice equation for this somewhere
@@ -1535,8 +1569,22 @@
 
 					const mClasses = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard) spells/i.exec(outStr);
 					if (mClasses) spellsFromClass = mClasses[1];
+					else {
+						const mClasses2 = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard)'s spell list/i.exec(outStr);
+						if (mClasses2) spellsFromClass = mClasses2[1]
+					}
 
 					if (anyChange) sc.headerEntries = JSON.parse(outStr);
+				}
+
+				// scale caster levels to class levels
+				if (primaryOutLevel) {
+					primaryOutLevel = Math.min(9, Math.ceil(primaryOutLevel / 2));
+
+					// cap half-caster slots at 5
+					if (/paladin|ranger/i.exec(spellsFromClass)) {
+						primaryOutLevel = Math.min(5, primaryOutLevel);
+					}
 				}
 
 				if (sc.spells && primaryOutLevel != null) {
@@ -1549,21 +1597,41 @@
 						const idealSlotsIn = getSlotsAtLevel(primaryInLevel, i);
 						const idealSlotsOut = getSlotsAtLevel(primaryOutLevel, i);
 
-						if (atLevel && atLevel.slots) {
-							const adjustedSlotsOut = this._getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
-							lastRatio = adjustedSlotsOut / idealSlotsOut;
+						if (atLevel) {
+							if (atLevel.slots) { // no "slots" signifies at-wills
+								const adjustedSlotsOut = this._getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
+								lastRatio = adjustedSlotsOut / idealSlotsOut;
 
-							atLevel.slots = adjustedSlotsOut;
-							if (adjustedSlotsOut <= 0) {
-								delete spells[i];
+								atLevel.slots = adjustedSlotsOut;
+								if (adjustedSlotsOut <= 0) {
+									delete spells[i];
+								}
 							}
 						} else if (i <= primaryOutLevel) {
-							spells[i] = {
-								slots: Math.max(1, Math.round(idealSlotsOut * lastRatio)),
-								spells: [
-									`{@filter A selection of ${Parser.spLevelToFull(i)}-level ${spellsFromClass ? `${spellsFromClass} ` : ""}spells|spells|level=${i}${spellsFromClass ? `|class=${spellsFromClass}` : ""}}`
-								]
-							};
+							const slots = Math.max(1, Math.round(idealSlotsOut * lastRatio));
+							if (spellsFromClass && (this._spells[SRC_PHB][spellsFromClass.toLowerCase()] || {})[i]) {
+								const examples = [];
+								const levelSpells = Object.keys(this._spells[SRC_PHB][spellsFromClass.toLowerCase()][i]).map(it => it.toLowerCase());
+								const numExamples = Math.min(5, levelSpells.length);
+								for (let n = 0; n < numExamples; ++n) {
+									const ix = RollerUtil.roll(levelSpells.length, this._rng);
+									examples.push(levelSpells[ix]);
+									levelSpells.splice(ix, 1);
+								}
+								spells[i] = {
+									slots,
+									spells: [
+										`{@filter A selection of ${Parser.spLevelToFull(i)}-level ${spellsFromClass} spells|spells|level=${i}|class=${spellsFromClass}}. Examples include: ${examples.map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`
+									]
+								};
+							} else {
+								spells[i] = {
+									slots,
+									spells: [
+										`{@filter A selection of ${Parser.spLevelToFull(i)}-level spells|spells|level=${i}}`
+									]
+								};
+							}
 						} else {
 							delete spells[i];
 						}

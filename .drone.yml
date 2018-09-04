@@ -62,7 +62,7 @@ pipeline:
 
   Deploy-prod:
     <<: *buildstep-ssh
-    command_timeout: 300
+    command_timeout: 400
     script:
       - bash /scripts/prod-deploy.sh
     when:
@@ -74,7 +74,7 @@ pipeline:
 # ... -> Deploy
   Deploy-dev:
     <<: *buildstep-ssh
-    command_timeout: 300
+    command_timeout: 400
     script:
       - bash /scripts/dev-deploy.sh
     when:

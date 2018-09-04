@@ -125,7 +125,7 @@ function loadhash (jsonIndex) {
 	`);
 
 	const imgLink = obj.tokenURL || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
-	$("th.name").append(`
+	$(`#float-token`).empty().append(`
 		<a href="${imgLink}" target="_blank">
 			<img src="${imgLink}" class="token" onerror="imgError(this)">
 		</a>`
@@ -135,6 +135,6 @@ function loadhash (jsonIndex) {
 }
 
 function imgError (x) {
-	$(x).closest("th").find(`span.stats-source`).css("margin-right", "0");
+	$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
 	$(x).remove();
 }

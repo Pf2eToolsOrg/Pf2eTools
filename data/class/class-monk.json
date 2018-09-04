@@ -780,11 +780,54 @@
 											"You learn magical disciplines that harness the power of the four elements. A discipline requires you to spend ki points each time you use it.",
 											"You know the Elemental Attunement discipline and one other elemental discipline of your choice. You learn one additional elemental discipline of your choice at 6th, 11th, and 17th level.",
 											"Whenever you learn a new elemental discipline, you can also replace one elemental discipline that you already know with a different discipline.",
-											"Casting Elemental Spells. Some elemental disciplines allow you to cast spells. To cast one of these spells, you use its casting time and other rules, but you don't need to provide material components for it.",
-											"Once you reach 5th level in this class, you can spend additional ki points to increase the level of an elemental discipline spell that you cast, provided that the spell has an enhanced effect at a higher level, as {@spell burning hands} does. The spell's level increases by 1 for each additional ki point you spend. For example, if you are a 5th-level monk and use Sweeping Cinder Strike to cast {@spell burning hands}, you can spend 3 ki points to cast it as a 2nd-level spell (the discipline's base cost of 2 ki points plus 1).",
-											"The maximum number of ki points you can spend to cast a spell in this way (including its base ki point cost and any additional ki points you spend to increase its level) is determined by your monk level. At 5th level, you may spend up to 3 ki points; this increases to 4 ki points at 9th level, 5 at 13th level, and 6 at 17th level.",
 											{
 												"type": "entries",
+												"name": "Casting Elemental Spells",
+												"entries": [
+													"Some elemental disciplines allow you to cast spells. See {@book chapter 10|PHB|10} of the Player's Handbook for the general rules of spellcasting. To cast one of these spells, you use its casting time and other rules, but you don't need to provide material components for it.",
+													"Once you reach 5th level in this class, you can spend additional ki points to increase the level of an elemental discipline spell that you cast, provided that the spell has an enhanced effect at a higher level, as {@spell burning hands} does. The spell's level increases by 1 for each additional ki point you spend. For example, if you are a 5th-level monk and use Sweeping Cinder Strike to cast {@spell burning hands}, you can spend 3 ki points to cast it as a 2nd-level spell (the discipline's base cost of 2 ki points plus 1).",
+													"The maximum number of ki points you can spend to cast a spell in this way (including its base ki point cost and any additional ki points you spend to increase its level) is determined by your monk level, as shown in the Spells and Ki Points table. At 5th level, you may spend up to 3 ki points; this increases to 4 ki points at 9th level, 5 at 13th level, and 6 at 17th level.",
+													{
+														"type": "table",
+														"caption": "Spells and Ki Points",
+														"colLabels": [
+															"Monk Levels",
+															"Maximum Ki Points for a Spell"
+														],
+														"colStyles": [
+															"col-xs-5 text-align-center",
+															"col-xs-7 text-align-center"
+														],
+														"rows": [
+															[
+																"5th-8th",
+																3
+															],
+															[
+																"9th-12th",
+																4
+															],
+															[
+																"13th-16th",
+																5
+															],
+															[
+																"17th-20th",
+																6
+															]
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Elemental Disciplines",
+										"entries": [
+											"The elemental disciplines are presented in alphabetical order. If a discipline requires a level, you must be teh level in this class to learn the discipline.",
+											{
+												"type": "options",
 												"entries": [
 													{
 														"type": "entries",
@@ -792,24 +835,14 @@
 														"entries": [
 															"You can spend 6 ki points to cast {@spell cone of cold}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Clench of the North Wind (6th Level Required)",
 														"entries": [
 															"You can spend 3 ki points to cast {@spell hold person}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Elemental Attunement",
@@ -825,168 +858,98 @@
 																]
 															}
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Eternal Mountain Defense (17th Level Required)",
 														"entries": [
 															"You can spend 5 ki points to cast {@spell stoneskin}, targeting yourself."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Fangs of the Fire Snake",
 														"entries": [
 															"When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra {@dice 1d10} fire damage."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Fist of Four Thunders",
 														"entries": [
 															"You can spend 2 ki points to cast {@spell thunderwave}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Unbroken Air",
 														"entries": [
 															"You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes {@dice 3d10} bludgeoning damage, plus an extra {@dice 1d10} bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it {@condition prone}. On a successful save, the creature takes half as much damage, and you don't push it or knock it {@condition prone}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Flames of the Phoenix (11th Level Required)",
 														"entries": [
 															"You can spend 4 ki points to cast {@spell fireball}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Gong of the Summit (6th Level Required)",
 														"entries": [
 															"You can spend 3 ki points to cast {@spell shatter}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Mist Stance (11th Level Required)",
 														"entries": [
 															"You can spend 4 ki points to cast gaseous form, targeting yourself."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Ride the Wind (11th Level Required)",
 														"entries": [
 															"You can spend 4 ki points to cast {@spell fly}, targeting yourself."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "River of Hungry Flame (17th Level Required)",
 														"entries": [
 															"You can spend 5 ki points to cast {@spell wall of fire}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Rush of the Gale Spirits",
 														"entries": [
 															"You can spend 2 ki points to cast {@spell gust of wind}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Shape the Flowing River",
 														"entries": [
 															"As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice's elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can't exceed half the area's largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high. raise or lower the square's elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can't shape the ice to trap or injure a creature in the area."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Sweeping Cinder Strike",
 														"entries": [
 															"You can spend 2 ki points to cast {@spell burning hands}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Water Whip",
 														"entries": [
 															"You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes {@dice 3d10} bludgeoning damage, plus an extra {@dice 1d10} bludgeoning damage for each additional ki point you spend, and you can either knock it {@condition prone} or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don't pull it or knock it {@condition prone}."
 														]
-													}
-												]
-											},
-											{
-												"type": "entries",
-												"entries": [
+													},
 													{
 														"type": "entries",
 														"name": "Wave of Rolling Earth (17th Level Required)",
@@ -1401,8 +1364,8 @@
 										"type": "entries",
 										"name": "Emissary of Peace",
 										"entries": [
-											"At 6th level, you gain the ability to diffuse violent situations. Whenever you make a Charisma check to calm violent emotions or to counsel peace, you have advantage on the roll. You must make this entreaty in good faith; it doesn't apply if proficiency in the Deception or Intimidation skill applies to your check.",
-											"You also gain proficiency in the Performance or Persuasion skill (choose one)."
+											"At 6th level, you gain the ability to diffuse violent situations. Whenever you make a Charisma check to calm violent emotions or to counsel peace, you have advantage on the roll. You must make this entreaty in good faith; it doesn't apply if proficiency in the {@skill Deception} or {@skill Intimidation} skill applies to your check.",
+											"You also gain proficiency in the {@skill Performance} or {@skill Persuasion} skill (choose one)."
 										]
 									}
 								]
@@ -1452,7 +1415,7 @@
 										"type": "entries",
 										"name": "Drunken Technique",
 										"entries": [
-											"When you choose this tradition at 3rd level, you gain proficiency in the Performance skill if you don't already have it; your martial arts technique mixes martial training with the precision of a dancer and the antics of a jester.",
+											"When you choose this tradition at 3rd level, you gain proficiency in the {@skill Performance} skill if you don't already have it; your martial arts technique mixes martial training with the precision of a dancer and the antics of a jester.",
 											"You also learn how to twist and turn quickly as part of your Flurry of Blows. Whenever you use Flurry of Blows, you gain the benefit of the Disengage action, and your walking speed increases by 10 feet until the end of the current turn."
 										]
 									}
@@ -1515,7 +1478,7 @@
 										"type": "entries",
 										"name": "Bonus Proficiencies",
 										"entries": [
-											"When you choose this tradition at 3rd level, you gain proficiency in the Performance skill if you don't already have it. Your martial arts technique mixes combat training with the precision of a dancer and the antics of a jester. You also gain proficiency with brewer's supplies if you don't already have it."
+											"When you choose this tradition at 3rd level, you gain proficiency in the {@skill Performance} skill if you don't already have it. Your martial arts technique mixes combat training with the precision of a dancer and the antics of a jester. You also gain proficiency with brewer's supplies if you don't already have it."
 										]
 									},
 									{

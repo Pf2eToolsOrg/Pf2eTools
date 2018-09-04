@@ -3,6 +3,9 @@ const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
 
 const re = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
+const skillRe = /{@skill (.*?)(\|.*?)?}/g;
+const actionRe = /{@action (.*?)(\|.*?)?}/g;
+
 let msg = ``;
 
 const TAG_TO_PAGE = {
@@ -49,6 +52,37 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"variantrule": "dmg"
 };
 
+const VALID_SKILLS = new Set([
+	"Acrobatics",
+	"Animal Handling",
+	"Arcana",
+	"Athletics",
+	"Deception",
+	"History",
+	"Insight",
+	"Intimidation",
+	"Investigation",
+	"Medicine",
+	"Nature",
+	"Perception",
+	"Performance",
+	"Persuasion",
+	"Religion",
+	"Sleight of Hand",
+	"Stealth",
+	"Survival"
+]);
+
+const VALID_ACTIONS = new Set([
+	"Dash",
+	"Disengage",
+	"Dodge",
+	"Help",
+	"Hide",
+	"Ready",
+	"Use an Object"
+]);
+
 function recursiveCheck (file) {
 	if (file.endsWith(".json")) checkFile(file);
 	else if (fs.lstatSync(file).isDirectory()) {
@@ -86,6 +120,22 @@ function checkFile (file) {
 
 		const url = `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash(toEncode)}`.toLowerCase().trim();
 		if (!ALL_URLS.has(url)) msg += `Missing link: ${match[0]} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+	}
+
+	// eslint-disable-next-line no-cond-assign
+	while (match = skillRe.exec(contents)) {
+		const skill = match[1];
+		if (!VALID_SKILLS.has(skill)) {
+			msg += `Unknown skill: ${match[0]} in file ${file} (evaluates to "${skill}")\n`
+		}
+	}
+
+	// eslint-disable-next-line no-cond-assign
+	while (match = actionRe.exec(contents)) {
+		const action = match[1];
+		if (!VALID_ACTIONS.has(action)) {
+			msg += `Unknown action: ${match[0]} in file ${file} (evaluates to "${action}")\n`
+		}
 	}
 }
 
@@ -134,3 +184,71 @@ AttachedSpellCheck.run();
 
 if (msg) throw new Error(msg);
 console.log("##### Link check complete #####");
+
+class BraceChecker {
+	static recursiveDirCheck (file) {
+		if (file.endsWith(".json")) BraceChecker.checkFile(file);
+		else if (fs.lstatSync(file).isDirectory()) {
+			fs.readdirSync(file).forEach(nxt => {
+				BraceChecker.recursiveDirCheck(`${file}/${nxt}`)
+			})
+		}
+	}
+
+	static checkString (file, str) {
+		let total = 0;
+		for (let i = 0; i < str.length; ++i) {
+			const c = str[i];
+			switch (c) {
+				case "{":
+					++total;
+					break;
+				case "}":
+					--total;
+					break;
+			}
+		}
+		if (total !== 0) {
+			msg += `Mismatched braces in ${file}: "${str}"\n`
+		}
+	}
+
+	static recursiveDataCheck (file, obj) {
+		const to = typeof obj;
+		if (obj == null) return;
+
+		switch (to) {
+			case undefined:
+			case "boolean":
+			case "number":
+				break;
+			case "object": {
+				if (obj instanceof Array) {
+					obj.forEach(it => BraceChecker.recursiveDataCheck(file, it));
+				} else {
+					Object.values(obj).forEach(it => BraceChecker.recursiveDataCheck(file, it));
+				}
+				break;
+			}
+			case "string": BraceChecker.checkString(file, obj);
+				break;
+			default:
+				console.warn("Unhandled type?!", to);
+		}
+	}
+
+	static checkFile (file) {
+		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+
+		BraceChecker.recursiveDataCheck(file, contents);
+	}
+
+	static run () {
+		BraceChecker.recursiveDirCheck("./data");
+		if (msg) throw new Error(msg);
+		console.log(`##### Brace check complete #####`)
+	}
+}
+
+msg = "";
+BraceChecker.run();

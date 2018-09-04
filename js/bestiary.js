@@ -4,6 +4,7 @@ const JSON_DIR = "data/bestiary/";
 const META_URL = "meta.json";
 const FLUFF_INDEX = "fluff-index.json";
 const JSON_LIST_NAME = "monster";
+const SUB_SCALED = "scaled";
 const renderer = EntryRenderer.getDefaultRenderer();
 
 window.PROF_MODE_BONUS = "bonus";
@@ -319,39 +320,68 @@ function pPageInit (loadedSources) {
 	});
 
 	const subList = ListUtil.initSublist({
-		valueNames: ["name", "source", "type", "cr", "count", "id"],
+		valueNames: ["name", "source", "type", "cr", "count", "id", "uid"],
 		listClass: "submonsters",
 		sortFunction: sortMonsters,
-		onUpdate: onSublistChange
+		onUpdate: onSublistChange,
+		uidHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
+		uidUnpacker: (uid) => ({scaled: Number(uid.split("_").last()), uid})
 	});
-	ListUtil.bindAddButton();
-	ListUtil.bindSubtractButton();
+	function getScaledData () {
+		const last = lastRendered.mon;
+		return {scaled: last._isScaledCr, uid: `${last.name}_${last.source}_${last._isScaledCr}`.toLowerCase()};
+	}
+	function addHandlerGenerator () {
+		return (evt) => {
+			if (lastRendered.isScaled) {
+				if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, 20, getScaledData());
+				else ListUtil.doSublistAdd(History.lastLoadedId, true, 1, getScaledData());
+			} else ListUtil._genericAddButtonHandler(evt);
+		};
+	}
+	function subtractHandlerGenerator () {
+		return (evt) => {
+			if (lastRendered.isScaled) {
+				if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 20, getScaledData());
+				else ListUtil.doSublistSubtract(History.lastLoadedId, 1, getScaledData());
+			} else ListUtil._genericAddButtonHandler(evt);
+		};
+	}
+	ListUtil.bindAddButton(addHandlerGenerator);
+	ListUtil.bindSubtractButton(subtractHandlerGenerator);
 	ListUtil.initGenericAddable();
 
 	// print view
 	printBookView = new BookModeView("bookview", $(`#btn-printbook`), "If you wish to view multiple creatures, please first make a list",
 		($tbl) => {
-			const toShow = ListUtil.getSublistedIds().map(id => monsters[id]).sort((a, b) => SortUtil.ascSort(a.name, b.name));
-			let numShown = 0;
+			return new Promise(resolve => {
+				const promises = ListUtil._genericPinKeyMapper();
 
-			const stack = [];
+				Promise.all(promises).then(toShow => {
+					toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
 
-			const renderCreature = (mon) => {
-				stack.push(`<table class="printbook-bestiary-entry"><tbody>`);
-				stack.push(EntryRenderer.monster.getCompactRenderedString(mon, renderer));
-				stack.push(`</tbody></table>`);
-			};
+					let numShown = 0;
 
-			stack.push(`<tr class="printbook-bestiary"><td>`);
-			toShow.forEach(mon => renderCreature(mon));
-			if (!toShow.length && History.lastLoadedId != null) {
-				renderCreature(monsters[History.lastLoadedId]);
-			}
-			stack.push(`</td></tr>`);
+					const stack = [];
 
-			numShown += toShow.length;
-			$tbl.append(stack.join(""));
-			return numShown;
+					const renderCreature = (mon) => {
+						stack.push(`<table class="printbook-bestiary-entry"><tbody>`);
+						stack.push(EntryRenderer.monster.getCompactRenderedString(mon, renderer));
+						stack.push(`</tbody></table>`);
+					};
+
+					stack.push(`<tr class="printbook-bestiary"><td>`);
+					toShow.forEach(mon => renderCreature(mon));
+					if (!toShow.length && History.lastLoadedId != null) {
+						renderCreature(monsters[History.lastLoadedId]);
+					}
+					stack.push(`</td></tr>`);
+
+					numShown += toShow.length;
+					$tbl.append(stack.join(""));
+					resolve(numShown);
+				});
+			});
 		}, true
 	);
 
@@ -388,7 +418,7 @@ function onSublistChange () {
 		const mon = monsters[Number(it._values.id)];
 		const count = Number($(it.elm).find(".count").text());
 		totalCount += count;
-		if (mon.cr) baseXp += Parser.crToXpNumber(mon.cr) * count;
+		if (mon.cr) baseXp += Parser.crToXpNumber($(it.elm).find(".cr").text()) * count;
 	});
 	$totalCr.html(`${baseXp.toLocaleString()} XP (Enc: ${(Parser.numMonstersToXpMult(totalCount) * baseXp).toLocaleString()} XP)`);
 }
@@ -439,6 +469,11 @@ let monsters = [];
 let mI = 0;
 const lastRendered = {mon: null, isScaled: false};
 
+function _initParsed (mon) {
+	mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
+	mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
+}
+
 const _NEUT_ALIGNS = ["NX", "NY"];
 function addMonsters (data) {
 	if (!data || !data.length) return;
@@ -451,8 +486,7 @@ function addMonsters (data) {
 	for (; mI < monsters.length; mI++) {
 		const mon = monsters[mI];
 		if (ExcludeUtil.isExcluded(mon.name, "monster", mon.source)) continue;
-		mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
-		mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
+		_initParsed(mon);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
 		if (mon.speed.canHover) mon._fSpeed.push("hover");
 		mon._fAc = mon.ac.map(it => it.ac || it);
@@ -502,7 +536,7 @@ function addMonsters (data) {
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) mon._fMisc.push("Spellcaster");
 		if (mon.isNPC) mon._fMisc.push("Named NPC");
-		if (mon.legendaryGroup) {
+		if (mon.legendaryGroup && meta[mon.legendaryGroup]) {
 			if (meta[mon.legendaryGroup].lairActions) mon._fMisc.push("Lair Actions");
 			if (meta[mon.legendaryGroup].regionalEffects) mon._fMisc.push("Regional Effects");
 		}
@@ -524,7 +558,7 @@ function addMonsters (data) {
 
 	ListUtil.setOptions({
 		itemList: monsters,
-		getSublistRow: getSublistItem,
+		getSublistRow: pGetSublistItem,
 		primaryLists: [list]
 	});
 
@@ -567,18 +601,28 @@ function sublistFuncPreload (json, funcOnload) {
 	}
 }
 
-function getSublistItem (mon, pinId, addCount) {
-	return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
-				<span class="name col-xs-4">${mon.name}</span>
-				<span class="type col-xs-3">${mon._pTypes.asText.uppercaseFirst()}</span>
-				<span class="cr col-xs-3 text-align-center">${mon._pCr}</span>		
-				<span class="count col-xs-2 text-align-center">${addCount || 1}</span>		
-				<span class="id hidden">${pinId}</span>				
-			</a>
-		</li>
-	`;
+function pGetSublistItem (mon, pinId, addCount, data = {}) {
+	return new Promise(resolve => {
+		const pMon = data.scaled ? ScaleCreature.scale(mon, data.scaled) : Promise.resolve(mon);
+
+		pMon.then(mon => {
+			const subHash = data.scaled ? `${HASH_PART_SEP}${SUB_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
+			_initParsed(mon);
+
+			resolve(`
+				<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+					<a href="#${UrlUtil.autoEncodeHash(mon)}${subHash}" title="${mon._displayName || mon.name}">
+						<span class="name col-xs-4">${mon._displayName || mon.name}</span>
+						<span class="type col-xs-3">${mon._pTypes.asText.uppercaseFirst()}</span>
+						<span class="cr col-xs-3 text-align-center">${mon._pCr}</span>		
+						<span class="count col-xs-2 text-align-center">${addCount || 1}</span>		
+						<span class="id hidden">${pinId}</span>				
+						<span class="uid hidden">${data.uid || ""}</span>				
+					</a>
+				</li>
+			`);
+		});
+	});
 }
 
 // sorting for form filtering
@@ -637,12 +681,12 @@ function renderStatblock (mon, isScaled) {
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr id="abilitynames"><th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th></tr>
 		<tr id="abilityscores">
-			<td id="str">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.str)}|${mon.str} (${Parser.getAbilityModifier(mon.str)})|Strength}`)}</td>
-			<td id="dex">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.dex)}|${mon.dex} (${Parser.getAbilityModifier(mon.dex)})|Dexterity}`)}</td>
-			<td id="con">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.con)}|${mon.con} (${Parser.getAbilityModifier(mon.con)})|Constitution}`)}</td>
-			<td id="int">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.int)}|${mon.int} (${Parser.getAbilityModifier(mon.int)})|Intelligence}`)}</td>
-			<td id="wis">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.wis)}|${mon.wis} (${Parser.getAbilityModifier(mon.wis)})|Wisdom}`)}</td>
-			<td id="cha">${EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${Parser.getAbilityModifier(mon.cha)}|${mon.cha} (${Parser.getAbilityModifier(mon.cha)})|Charisma}`)}</td>
+			<td id="str">${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.str)}|${mon.str} (${Parser.getAbilityModifier(mon.str)})|Strength}`)}</td>
+			<td id="dex">${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.dex)}|${mon.dex} (${Parser.getAbilityModifier(mon.dex)})|Dexterity}`)}</td>
+			<td id="con">${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.con)}|${mon.con} (${Parser.getAbilityModifier(mon.con)})|Constitution}`)}</td>
+			<td id="int">${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.int)}|${mon.int} (${Parser.getAbilityModifier(mon.int)})|Intelligence}`)}</td>
+			<td id="wis">${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.wis)}|${mon.wis} (${Parser.getAbilityModifier(mon.wis)})|Wisdom}`)}</td>
+			<td id="cha">${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.cha)}|${mon.cha} (${Parser.getAbilityModifier(mon.cha)})|Charisma}`)}</td>
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr><td colspan="6"><strong>Saving Throws</strong> <span id="saves">Str +0</span></td></tr>
@@ -658,6 +702,9 @@ function renderStatblock (mon, isScaled) {
 			<span id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-signal"></span>
 			</span>
+			${isScaled ? `<span id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-refresh"></span>
+			</span>` : ""}
 		</td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class="trait"><td colspan="6"><span class="name">Trait.</span> <span class="content">Content.</span></td></tr>
@@ -677,10 +724,9 @@ function renderStatblock (mon, isScaled) {
 		`);
 
 		let renderStack = [];
-		let entryList = {};
 		const displayName = mon._displayName || mon.name;
-		let source = Parser.sourceJsonToAbv(mon.source);
-		let sourceFull = Parser.sourceJsonToFull(mon.source);
+		const source = Parser.sourceJsonToAbv(mon.source);
+		const sourceFull = Parser.sourceJsonToFull(mon.source);
 		const type = mon._pTypes.asText;
 
 		function getPronunciationButton () {
@@ -791,13 +837,13 @@ function renderStatblock (mon, isScaled) {
 			const mon = monsters[History.lastLoadedId];
 			const lastCr = lastRendered.mon ? lastRendered.mon.cr.cr || lastRendered.mon.cr : mon.cr.cr || mon.cr;
 			EntryRenderer.monster.getCrScaleTarget($btnScaleCr, lastCr, (targetCr) => {
-				if (targetCr === (mon.cr.cr || mon.cr)) renderStatblock(mon);
-				else {
-					const scaled = ScaleCreature.scale(mon, targetCr);
-					renderStatblock(scaled, true);
-				}
+				if (targetCr === Parser.crToNumber(mon.cr)) renderStatblock(mon);
+				else History.setSubhash(SUB_SCALED, targetCr);
 			});
 		});
+
+		const $btnResetScaleCr = $content.find("#btn-reset-cr");
+		$btnResetScaleCr.click(() => History.setSubhash(SUB_SCALED, null));
 
 		$content.find("tr.trait").remove();
 
@@ -869,12 +915,23 @@ function renderStatblock (mon, isScaled) {
 		function renderSection (sectionTrClass, sectionTdClass, sectionEntries, sectionLevel) {
 			let pluralSectionTrClass = sectionTrClass === `legendary` ? `legendaries` : `${sectionTrClass}s`;
 			$content.find(`tr#${pluralSectionTrClass}`).show();
-			entryList = {type: "entries", entries: sectionEntries};
 			renderStack = [];
-			sectionEntries.forEach(e => {
-				if (e.rendered) renderStack.push(e.rendered);
-				else renderer.recursiveEntryRender(e, renderStack, sectionLevel + 1);
-			});
+			if (sectionTrClass === "legendary") {
+				const cpy = MiscUtil.copy(sectionEntries).map(it => {
+					if (it.name && it.entries) {
+						it.name = `${it.name}.`;
+						it.type = it.type || "item";
+					}
+					return it;
+				});
+				const toRender = {type: "list", style: "list-hang-notitle", items: cpy};
+				renderer.recursiveEntryRender(toRender, renderStack, sectionLevel);
+			} else {
+				sectionEntries.forEach(e => {
+					if (e.rendered) renderStack.push(e.rendered);
+					else renderer.recursiveEntryRender(e, renderStack, sectionLevel + 1);
+				});
+			}
 			$content.find(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class='${sectionTdClass}'>${renderStack.join("")}</td></tr>`);
 		}
 
@@ -895,7 +952,7 @@ function renderStatblock (mon, isScaled) {
 			const skills = $this.html().split(re).map(s => s.trim());
 			const out = [];
 
-			skills.map(s => {
+			skills.forEach(s => {
 				if (!s || !s.trim()) return;
 
 				const re = /([-+])?\d+|(?:[^-+]|\n(?![-+]))+/g; // Split before and after each bonus
@@ -903,8 +960,8 @@ function renderStatblock (mon, isScaled) {
 
 				const skillName = spl[0].trim();
 
-				var skillString = "";
-				spl.map(b => {
+				let skillString = "";
+				spl.forEach(b => {
 					const re = /([-+])?\d+/;
 
 					if (b.match(re)) {
@@ -924,7 +981,7 @@ function renderStatblock (mon, isScaled) {
 
 		function renderSkillOrSaveRoller (itemName, profBonusString, isSave) {
 			itemName = itemName.replace(/plus one of the following:/g, "").replace(/^or\s*/, "");
-			return EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${profBonusString}|${profBonusString}|${itemName}${isSave ? " save" : ""}`);
+			return EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${profBonusString}|${profBonusString}|${itemName}${isSave ? " save" : ""}`);
 		}
 
 		// inline rollers
@@ -1143,4 +1200,13 @@ function loadsub (sub) {
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 
 	printBookView.handleSub(sub);
+
+	const scaledHash = sub.find(it => it.startsWith(SUB_SCALED));
+	if (scaledHash) {
+		const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[SUB_SCALED][0]);
+		const scaleToStr = Parser.numberToCr(scaleTo);
+		if (Parser.isValidCr(scaleToStr) && scaleTo !== Parser.crToNumber(lastRendered.mon.cr)) {
+			ScaleCreature.scale(lastRendered.mon, scaleTo).then(scaled => renderStatblock(scaled, true));
+		}
+	}
 }

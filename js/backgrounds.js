@@ -130,13 +130,13 @@ function loadhash (id) {
 	function buildStatsTab () {
 		const renderStack = [];
 		const entryList = {type: "entries", entries: bg.entries};
-		renderer.recursiveEntryRender(entryList, renderStack, 1);
+		renderer.recursiveEntryRender(entryList, renderStack);
 
 		$pgContent.append(`
 			${EntryRenderer.utils.getBorderTr()}
 			${EntryRenderer.utils.getNameTr(bg)}
 			<tr><td class="divider" colspan="6"><div></div></td></tr>
-			<tr class='trait'><td colspan='6'>${renderStack.join("")}</td></tr>
+			<tr class="text"><td colspan='6'>${renderStack.join("")}</td></tr>
 			${EntryRenderer.utils.getPageTr(bg)}
 			${EntryRenderer.utils.getBorderTr()}
 		`);

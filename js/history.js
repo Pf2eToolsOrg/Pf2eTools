@@ -71,7 +71,7 @@ class History {
 	}
 
 	static _getHashParts () {
-		return window.location.hash.slice(1).replace(/%27/g, "'").split(HASH_PART_SEP);
+		return window.location.hash.slice(1).toLowerCase().replace(/%27/g, "'").split(HASH_PART_SEP);
 	}
 
 	static _getListElem (link, getIndex) {
@@ -109,6 +109,23 @@ class History {
 		const [link, ...sub] = History._getHashParts();
 		// by convention, the source is the last hash segment
 		return link ? link.split(HASH_LIST_SEP).last() : null;
+	}
+
+	/**
+	 * Sets a subhash with the key specified, overwriting any existing.
+	 * @param key Subhash key.
+	 * @param val Subhash value. Passing a nully object removes the k/v pair.
+	 */
+	static setSubhash (key, val) {
+		const [link, ...sub] = History._getHashParts();
+		if (!link) History.cleanSetHash("");
+
+		const hKey = `${key}${HASH_SUB_KV_SEP}`;
+		const out = [link];
+		if (sub.length) out.push(sub.filter(it => !it.startsWith(hKey)));
+		if (val != null) out.push(`${hKey}${val}`);
+
+		History.cleanSetHash(out.join(HASH_PART_SEP));
 	}
 }
 History.lastLoadedLink = null;

@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.0",
+	"version": "1.2.1",
 
 	"definitions" : {
 		"entry": {
@@ -37,6 +37,12 @@
 						"name": {
 							"type": "string"
 						},
+						"alias": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -60,6 +66,12 @@
 						"type": {"const": "entries"},
 						"name": {
 							"type": "string"
+						},
+						"alias": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						},
 						"entries": {
 							"type": "array",
@@ -196,6 +208,7 @@
 					"properties": {
 						"type": {"const": "table"},
 						"caption": {"type" : "string"},
+						"style": {"type" : "string"},
 						"colLabels": {
 							"type": "array",
 							"items": {"type" : "string"}
@@ -222,7 +235,9 @@
 											"$ref": "/Entry"
 										}
 									},
-									"#/definitions/entryTableRow"
+									{
+										"$ref": "#/definitions/entryTableRow"
+									}
 								]
 							}
 						},

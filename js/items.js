@@ -100,9 +100,11 @@ function populateTablesAndFilters (data) {
 	);
 
 	function hideListIfEmpty (list, $eles) {
-		if (list.visibleItems.length === 0 && list.__listVisible) {
-			list.__listVisible = false;
-			$eles.hide();
+		if (list.visibleItems.length === 0) {
+			if (list.__listVisible) {
+				list.__listVisible = false;
+				$eles.hide();
+			}
 		} else if (!list.__listVisible) {
 			list.__listVisible = true;
 			$eles.show();

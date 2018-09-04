@@ -82,7 +82,7 @@
 				{
 					"colLabels": [
 						"{@filter Cantrips Known|spells|level=0|class=Sorcerer}",
-						"Spells Known"
+						"{@filter Spells Known|spells|class=Sorcerer}"
 					],
 					"rows": [
 						[
@@ -439,7 +439,7 @@
 					{
 						"name": "Spellcasting",
 						"entries": [
-							"An event in your past, or in the life of a parent or ancestor, left an indelible mark on you, infusing you with arcane magic. This font of magic, whatever its origin, fuels your spells. See chapter 10 for the general rules of spellcasting and chapter 11 for the sorcerer spell list.",
+							"An event in your past, or in the life of a parent or ancestor, left an indelible mark on you, infusing you with arcane magic. This font of magic, whatever its origin, fuels your spells. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter sorcerer spell list|spells|class=sorcerer}.",
 							{
 								"type": "entries",
 								"name": "Cantrips",
@@ -898,7 +898,8 @@
 													"Effect"
 												],
 												"colStyles": [
-													"text-align-center"
+													"col-xs-1 text-align-center",
+													"col-xs-11"
 												],
 												"rows": [
 													[

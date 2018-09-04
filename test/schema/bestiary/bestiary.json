@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.6",
+	"version": "1.4.7",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -375,6 +375,12 @@
 			"properties": {
 				"name": {
 					"type": "string"
+				},
+				"alias": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				},
 				"group": {
 					"type": "string"
@@ -1007,13 +1013,6 @@
 								"type": "array",
 								"items": {
 									"$ref": "/Entry"
-								}
-							},
-							"attack": {
-								"type": "array",
-								"uniqueItems": true,
-								"items": {
-									"type": "string"
 								}
 							}
 						},

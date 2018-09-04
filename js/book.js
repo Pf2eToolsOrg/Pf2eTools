@@ -8,8 +8,7 @@ window.onload = function load () {
 	BookUtil.renderArea = $(`#pagecontent`);
 
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
-	if (window.location.hash.length) BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Loading...</td></tr>`);
-	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select a book to begin</td></tr>`);
+	BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message book-loading-message">Loading...</td></tr>`);
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
@@ -44,6 +43,9 @@ function onJsonLoad (data) {
 	BookUtil.baseDataUrl = "data/book/book-";
 	BookUtil.bookIndex = books;
 	BookUtil.initLinkGrabbers();
+
+	$(`.book-head-message`).text(`Select a book from the list on the left`);
+	$(`.book-loading-message`).text(`Select a book to begin`);
 
 	window.onhashchange = BookUtil.booksHashChange;
 	if (window.location.hash.length) {

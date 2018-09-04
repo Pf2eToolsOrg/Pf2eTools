@@ -2329,6 +2329,18 @@
 						"name": "Ranger",
 						"source": "PHB"
 					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Barbarian",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Totem Warrior",
+							"source": "PHB"
+						}
+					}
 				]
 			},
 			"source": "PHB",
@@ -6376,7 +6388,7 @@
 			"source": "PHB",
 			"entries": [
 				"You take control of the weather within 5 miles of you for the duration. You must be outdoors to cast this spell. Moving to a place where you don't have a clear path to the sky ends the spell early.",
-				"When you cast the spell, you change the current weather conditions, which are determined by the DM based on the climate and season. You can change precipitation, temperature, and wind. It takes {@dice 1d4} × 10 minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal.",
+				"When you cast the spell, you change the current weather conditions, which are determined by the DM based on the climate and season. You can change precipitation, temperature, and wind. It takes {@dice 1d4 × 10} minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal.",
 				"When you change the weather conditions, find a current condition on the following tables and change its stage by one, up or down. When changing the wind, you can change its direction.",
 				{
 					"type": "table",
@@ -9675,7 +9687,7 @@
 					"type": "entries",
 					"name": "Fissures",
 					"entries": [
-						"Fissures open throughout the spell's area at the start of your next turn after you cast the spell. A total of {@dice 1d6} such fissures open in locations chosen by the DM. Each is {@dice 1d10} × 10 feet deep, 10 feet wide, and extends from one edge of the spell's area to the opposite side. A creature standing on a spot where a fissure opens must succeed on a Dexterity saving throw or fall in. A creature that successfully saves moves with the fissure's edge as it opens.",
+						"Fissures open throughout the spell's area at the start of your next turn after you cast the spell. A total of {@dice 1d6} such fissures open in locations chosen by the DM. Each is {@dice 1d10 × 10} feet deep, 10 feet wide, and extends from one edge of the spell's area to the opposite side. A creature standing on a spot where a fissure opens must succeed on a Dexterity saving throw or fall in. A creature that successfully saves moves with the fissure's edge as it opens.",
 						"A fissure that opens beneath a structure causes it to automatically collapse (see below)."
 					]
 				},
@@ -20525,7 +20537,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"A veil of shadows and silence radiates from you, masking you and your companions from detection. For the duration, each creature you choose within 30 feet of you (including you) has a +10 bonus to Dexterity (Stealth) checks and can't be tracked except by magical means. A creature that receives this bonus leaves behind no tracks or other traces of its passage."
+				"A veil of shadows and silence radiates from you, masking you and your companions from detection. For the duration, each creature you choose within 30 feet of you (including you) has a +10 bonus to Dexterity ({@skill Stealth}) checks and can't be tracked except by magical means. A creature that receives this bonus leaves behind no tracks or other traces of its passage."
 			],
 			"page": 264,
 			"races": [
@@ -24794,7 +24806,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"The wood of a club or quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a {@dice d8}. The weapon also becomes magical, if it isn't already. The spell ends if you cast it again or if you let go of the weapon."
+				"The wood of a {@item club|phb} or {@item quarterstaff|phb} you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a {@dice d8}. The weapon also becomes magical, if it isn't already. The spell ends if you cast it again or if you let go of the weapon."
 			],
 			"page": 275
 		},
@@ -25453,6 +25465,26 @@
 						},
 						"subclass": {
 							"name": "Ancients",
+							"source": "PHB"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Undying",
+							"source": "SCAG"
+						}
+					},
+					{
+						"class": {
+							"name": "Barbarian",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Totem Warrior",
 							"source": "PHB"
 						}
 					}

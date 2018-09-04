@@ -6,8 +6,7 @@ window.onload = function load () {
 	BookUtil.renderArea = $(`#pagecontent`);
 
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
-	if (window.location.hash.length) BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Loading...</td></tr>`);
-	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select an adventure to begin</td></tr>`);
+	BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message book-loading-message">Loading...</td></tr>`);
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 	DataUtil.loadJSON(CONTENTS_URL).then(onJsonLoad);
@@ -37,6 +36,9 @@ function onJsonLoad (data) {
 	BookUtil.initLinkGrabbers();
 
 	addAdventures(data);
+
+	$(`.book-head-message`).text(`Select an adventure from the list on the left`);
+	$(`.book-loading-message`).text(`Select a book to begin`);
 
 	window.onhashchange = BookUtil.booksHashChange;
 	BrewUtil.pAddBrewData()

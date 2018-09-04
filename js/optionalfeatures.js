@@ -26,7 +26,7 @@ let list;
 const sourceFilter = getSourceFilter();
 const typeFilter = new Filter({
 	header: "Feature Type",
-	items: ["EI", "MM"],
+	items: ["EI", "MM", "MV:B"],
 	displayFn: Parser.optFeatureTypeToFull
 });
 const pactFilter = new Filter({
@@ -54,7 +54,7 @@ function onJsonLoad (data) {
 	filterBox = initFilterBox(sourceFilter, typeFilter, prerequisiteFilter);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "prerequisite", "sortIndex"],
+		valueNames: ["name", "source", "prerequisite", "type", "sortIndex"],
 		listClass: "optfeatures",
 		sortFunction: listSortOptFeatures
 	});
@@ -131,9 +131,10 @@ function addOptionalfeatures (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${ivI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-xs-3 col-xs-3-4">${it.name}</span>
-					<span class="source col-xs-1 col-xs-1-6 ${Parser.sourceJsonToColor(it.source)} text-align-center" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
-					<span class="prerequisite col-xs-5 ${it.prerequisite == null ? CLS_NONE : ""}">${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
+					<span class="name col-xs-3 col-xs-3-2">${it.name}</span>
+					<span class="source col-xs-1 col-xs-1-5 ${Parser.sourceJsonToColor(it.source)} text-align-center" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="source col-xs-1 col-xs-1-5 text-align-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
+					<span class="prerequisite col-xs-5 col-xs-5-8 ${it.prerequisite == null ? CLS_NONE : ""}">${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
 					<span class="hidden sortIndex">${it._fPrereqLevel && it._fPrereqLevel.length ? it._fPrereqLevel[0] : -1}</span>
 				</a>
 			</li>
@@ -150,7 +151,7 @@ function addOptionalfeatures (data) {
 	sourceFilter.items.sort(SortUtil.ascSort);
 	spellFilter.items.sort(SortUtil.ascSort);
 	levelFilter.items.sort(SortUtil.ascSort);
-	typeFilter.items.sort(SortUtil.ascSort);
+	typeFilter.items.sort((a, b) => SortUtil.ascSort(Parser.optFeatureTypeToFull(a), Parser.optFeatureTypeToFull(b)));
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -194,7 +195,8 @@ function getSublistItem (it, pinId) {
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 				<span class="name col-xs-4">${it.name}</span>
-				<span class="prerequisite col-xs-8 ${it.prerequisite == null ? CLS_NONE : ""}">${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
+				<span class="source col-xs-2 text-align-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
+				<span class="prerequisite col-xs-6 ${it.prerequisite == null ? CLS_NONE : ""}">${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
 				<span class="id hidden">${pinId}</span>
 				<span class="hidden">${it._fPrereqLevel ? it._fPrereqLevel[0] : -1}</span>
 			</a>

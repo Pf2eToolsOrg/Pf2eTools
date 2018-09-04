@@ -125,7 +125,7 @@ class Board {
 	_getHeightAdjustment () {
 		const panelPart = (this.height - 1) * 7;
 		if (this.isFullscreen) return panelPart;
-		else return 78 + panelPart; // 78 magical pixels
+		else return 81 + panelPart; // 81 magical pixels
 	}
 
 	getPanelDimensions () {
@@ -828,23 +828,40 @@ class Panel {
 
 			EntryRenderer.monster.getCrScaleTarget($this, lastCr, (targetCr) => {
 				const originalCr = Parser.crToNumber(mon.cr.cr || mon.cr) === targetCr;
-				const toRender = originalCr ? mon : ScaleCreature.scale(mon, targetCr);
-				$contentStats.empty().append(EntryRenderer.monster.getCompactRenderedString(toRender, null, {showScaler: true}));
 
-				const nxtMeta = {
-					...meta,
-					cr: targetCr
-				};
-				if (originalCr) delete nxtMeta.cr;
+				const doRender = (toRender) => {
+					$contentStats.empty().append(EntryRenderer.monster.getCompactRenderedString(toRender, null, {showScaler: true, isScaled: !originalCr}));
 
-				self.set$Tab(
-					self.tabIndex,
-					originalCr ? PANEL_TYP_STATS : PANEL_TYP_CREATURE_SCALED_CR,
-					nxtMeta,
-					$contentInner,
-					toRender._displayName || toRender.name
-				);
+					const nxtMeta = {
+						...meta,
+						cr: targetCr
+					};
+					if (originalCr) delete nxtMeta.cr;
+
+					self.set$Tab(
+						self.tabIndex,
+						originalCr ? PANEL_TYP_STATS : PANEL_TYP_CREATURE_SCALED_CR,
+						nxtMeta,
+						$contentInner,
+						toRender._displayName || toRender.name
+					);
+				}
+
+				if (originalCr) {
+					doRender(mon)
+				} else {
+					ScaleCreature.scale(mon, targetCr).then(toRender => doRender(toRender))
+				}
 			}, true);
+		});
+		$contentStats.off("click", ".mon__btn-reset-cr").on("click", ".mon__btn-reset-cr", function () {
+			self.set$Tab(
+				self.tabIndex,
+				PANEL_TYP_STATS,
+				meta,
+				$contentInner,
+				mon.name
+			);
 		});
 	}
 
@@ -860,20 +877,21 @@ class Panel {
 			hash,
 			() => {
 				const it = EntryRenderer.hover._getFromCache(page, source, hash);
-				const initialRender = ScaleCreature.scale(it, targetCr);
-				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
-				$contentStats.append(EntryRenderer.monster.getCompactRenderedString(initialRender, null, {showScaler: true}));
+				ScaleCreature.scale(it, targetCr).then(initialRender => {
+					const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
+					const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+					$contentStats.append(EntryRenderer.monster.getCompactRenderedString(initialRender, null, {showScaler: true, isScaled: true}));
 
-				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
+					this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
 
-				this.set$Tab(
-					ix,
-					PANEL_TYP_CREATURE_SCALED_CR,
-					meta,
-					$contentInner,
-					initialRender._displayName || initialRender.name
-				);
+					this.set$Tab(
+						ix,
+						PANEL_TYP_CREATURE_SCALED_CR,
+						meta,
+						$contentInner,
+						initialRender._displayName || initialRender.name
+					);
+				});
 			}
 		);
 	}

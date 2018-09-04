@@ -245,7 +245,11 @@ function EntryRenderer () {
 						if (i !== entry.entries.length - 1) textStack[0] += `<br>`;
 						else textStack[0] += `</i>`;
 					}
-					if (entry.by) textStack[0] += `<span class="quote-by">\u2014 ${entry.by}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`;
+					if (entry.by) {
+						const tempStack = [""];
+						this._recursiveEntryRender(entry.by, tempStack);
+						textStack[0] += `<span class="quote-by">\u2014 ${tempStack.join("")}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`;
+					}
 					textStack[0] += `</p>`;
 					break;
 
@@ -443,7 +447,7 @@ function EntryRenderer () {
 		function renderTable (self) {
 			// TODO add handling for rowLabel property
 
-			textStack[0] += `<table class="striped-odd">`;
+			textStack[0] += `<table class="${entry.style || "striped-odd"}">`;
 
 			if (entry.caption !== undefined) {
 				textStack[0] += `<caption>${entry.caption}</caption>`;
@@ -458,7 +462,7 @@ function EntryRenderer () {
 					// scan the first column to ensure all rollable
 					const notRollable = entry.rows.find(it => {
 						try {
-							return !/\d+(-\d+)?/.exec(it[0]);
+							return !/\d+([-\u2013]\d+)?/.exec(it[0]);
 						} catch (e) {
 							return true;
 						}
@@ -485,7 +489,7 @@ function EntryRenderer () {
 					// preconvert rollables
 					if (autoMkRoller && j === 0) {
 						roRender = JSON.parse(JSON.stringify(roRender));
-						const m = /(\d+)(-(\d+))?/.exec(roRender[j]); // should always match; validated earlier
+						const m = /(\d+)([-\u2013](\d+))?/.exec(roRender[j]); // should always match; validated earlier
 						if (m[1] && !m[2]) {
 							roRender[j] = {
 								type: "cell",
@@ -661,7 +665,7 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@skill" || tag === "@action" || tag === "@atk") {
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@atk") {
 						switch (tag) {
 							case "@b":
 							case "@bold":
@@ -686,18 +690,12 @@ function EntryRenderer () {
 								self._recursiveEntryRender(text, textStack, depth);
 								textStack[0] += `</i>`;
 								break;
-							case "@action": // Convert this to a tag once the rules data are more navigable
-								textStack[0] += `<span title="${Parser.actionToExplanation(text)}" class="explanation">${text}</span>`;
-								break;
-							case "@skill": // Convert this to a tag once the rules data are more navigable
-								textStack[0] += `<span title="${Parser.skillToExplanation(text)}" class="explanation">${text}</span>`;
-								break;
 							case "@atk": {
 								textStack[0] += `<i>${EntryRenderer.attackTagToFull(text)}</i>`;
 								break;
 							}
 						}
-					} else if (tag === "@dice" || tag === "@hit" || tag === "@chance" || tag === "@recharge") {
+					} else if (tag === "@dice" || tag === "@damage" || tag === "@hit" || tag === "@d20" || tag === "@chance" || tag === "@recharge") {
 						const fauxEntry = {
 							type: "dice",
 							rollable: true
@@ -708,14 +706,26 @@ function EntryRenderer () {
 
 						switch (tag) {
 							case "@dice": {
-								// format: {@dice 1d2+3+4d5-6} // TODO do we need to handle e.g. 4d6+1-1d4+2 (negative dice exp)?
+								// format: {@dice 1d2 + 3 + 4d5 - 6}
 								fauxEntry.toRoll = rollText;
 								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
+							case "@damage": {
+								fauxEntry.toRoll = rollText;
+								fauxEntry.subType = "damage";
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
+							}
+							case "@d20":
 							case "@hit": {
 								// format: {@hit +1} or {@hit -2}
-								fauxEntry.toRoll = `1d20+${Number(rollText)}`;
+								const n = Number(rollText);
+								const mod = `${n >= 0 ? "+" : ""}${n}`;
+								fauxEntry.displayText = fauxEntry.displayText || mod;
+								fauxEntry.toRoll = `1d20${mod}`;
+								fauxEntry.subType = "d20";
+								fauxEntry.d20mod = mod;
 								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							}
@@ -819,6 +829,11 @@ function EntryRenderer () {
 						}
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(tooltip);
 						textStack[0] += `<span class="homebrew-inline" ${onMouseOver}>${newText || "[...]"}</span>`;
+					} else if (tag === "@skill" || tag === "@action") {
+						const expander = tag === "@skill" ? Parser.skillToExplanation : Parser.actionToExplanation;
+						const [name, displayText] = text.split("|");
+						const onMouseOver = EntryRenderer.hover.createOnMouseHover(expander(name), name);
+						textStack[0] += `<span class="help" ${onMouseOver}>${displayText || name}</span>`;
 					} else if (tag === "@deity") {
 						const [name, pantheon, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${pantheon ? `${HASH_LIST_SEP}${pantheon}` : ""}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -1196,7 +1211,7 @@ EntryRenderer.utils = {
 
 	getNameTr: (it, addPageNum, prefix, suffix) => {
 		return `<tr>
-					<th class="name" colspan="6">
+					<th class="rnd-name name" colspan="6">
 						<div class="name-inner">
 							<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it._displayName || it.name}${suffix || ""}</span>
 							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${EntryRenderer.utils.getSourceSubText(it)}">
@@ -1657,7 +1672,7 @@ EntryRenderer.race = {
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-xs-4 text-align-center">Ability Sores</th>
+						<th class="col-xs-4 text-align-center">Ability Scores</th>
 						<th class="col-xs-4 text-align-center">Size</th>
 						<th class="col-xs-4 text-align-center">Speed</th>
 					</tr>
@@ -1695,7 +1710,7 @@ EntryRenderer.race = {
 				cpy._baseSource = cpy.source;
 				delete cpy.subraces;
 
-				// merge names, abilities, entries
+				// merge names, abilities, entries, tags
 				if (s.name) {
 					cpy.name = `${cpy.name} (${s.name})`;
 					delete s.name;
@@ -1716,6 +1731,15 @@ EntryRenderer.race = {
 						}
 					});
 					delete s.entries;
+				}
+				// TODO needs a mechanism to allow subraces to override unwanted tags
+				if (s.traitTags) {
+					cpy.traitTags = (cpy.traitTags || []).concat(s.traitTags);
+					delete s.traitTags;
+				}
+				if (s.languageTags) {
+					cpy.languageTags = (cpy.languageTags || []).concat(s.languageTags);
+					delete s.languageTags;
 				}
 
 				// overwrite everything else
@@ -1960,7 +1984,7 @@ EntryRenderer.monster = {
 
 	getSave (renderer, attr, mod) {
 		if (attr === "special") return renderer.renderEntry(mod);
-		else return renderer.renderEntry(`${attr.uppercaseFirst()} {@dice 1d20${mod}|${mod}|${Parser.attAbvToFull([attr])} save`);
+		else return renderer.renderEntry(`${attr.uppercaseFirst()} {@d20 ${mod}|${mod}|${Parser.attAbvToFull([attr])} save`);
 	},
 
 	getDragonCasterVariant (renderer, dragon) {
@@ -2078,13 +2102,12 @@ EntryRenderer.monster = {
 		$btnScaleCr.after($wrp);
 	},
 
-	getCompactRenderedString: (mon, renderer, options) => {
+	getCompactRenderedString: (mon, renderer, options = {}) => {
 		renderer = renderer || EntryRenderer.getDefaultRenderer();
-		options = options || {};
 
 		function makeAbilityRoller (ability) {
 			const mod = Parser.getAbilityModifier(mon[ability]);
-			return renderer.renderEntry(`{@dice 1d20${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
+			return renderer.renderEntry(`{@d20 ${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
 		}
 
 		function getSection (title, key, depth) {
@@ -2120,6 +2143,11 @@ EntryRenderer.monster = {
 							${options.showScaler && Parser.isValidCr(mon.cr.cr || mon.cr) ? `
 							<span title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 								<span class="glyphicon glyphicon-signal"></span>
+							</span>
+							` : ""}
+							${options.isScaled ? `
+							<span title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
+								<span class="glyphicon glyphicon-refresh"></span>
 							</span>
 							` : ""}
 						</td>					
@@ -2179,7 +2207,18 @@ EntryRenderer.monster = {
 	},
 
 	getRenderedHp: (hp) => {
-		return hp.special ? hp.special : EntryRenderer.getDefaultRenderer().renderEntry(`${hp.average} ({@dice ${hp.formula}|${hp.formula}|Hit Points})`);
+		function getMaxStr () {
+			const mHp = /^(\d+)d(\d+)([-+]\d+)?$/i.exec(hp.formula);
+			if (mHp) {
+				const num = Number(mHp[1]);
+				const faces = Number(mHp[2]);
+				const mod = mHp[3] ? Number(mHp[3]) : 0;
+				return `Maximum: ${(num * faces) + mod}`;
+			} else return "";
+		}
+		if (hp.special) return hp.special;
+		const maxStr = getMaxStr(hp.formula);
+		return `${maxStr ? `<span title="${maxStr}" class="help--subtle">` : ""}${hp.average}${maxStr ? "</span>" : ""} ${EntryRenderer.getDefaultRenderer().renderEntry(`({@dice ${hp.formula}|${hp.formula}|Hit Points})`)}`;
 	},
 
 	getSpellcastingRenderedTraits: (mon, renderer) => {
@@ -2257,7 +2296,7 @@ EntryRenderer.monster = {
 
 	getSkillsString (mon, makeRollers) {
 		function makeSkillRoller (name, mod) {
-			return EntryRenderer.getDefaultRenderer().renderEntry(`{@dice 1d20${mod}|${mod}|${name}`);
+			return EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${mod}|${mod}|${name}`);
 		}
 
 		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
@@ -2819,9 +2858,12 @@ EntryRenderer.hover = {
 		this._dmScreen = screen;
 	},
 
-	createOnMouseHover (entries) {
-		const source = JSON.stringify({entries: entries}).escapeQuotes();
-		return `onmouseover="EntryRenderer.hover.mouseOver(event, this, 'hover', '${source}', '')"`;
+	_lastMouseHoverId: -1,
+	_mouseHovers: {},
+	createOnMouseHover (entries, title = "Homebrew") {
+		const id = EntryRenderer.hover._lastMouseHoverId++;
+		EntryRenderer.hover._mouseHovers[id] = {data: {hoverTitle: title}, entries: MiscUtil.copy(entries)};
+		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id})"`;
 	},
 
 	_addToCache: (page, source, hash, item) => {
@@ -2829,11 +2871,9 @@ EntryRenderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		if (!EntryRenderer.hover.linkCache[page]) EntryRenderer.hover.linkCache[page] = [];
-		const pageLvl = EntryRenderer.hover.linkCache[page];
-		if (!pageLvl[source]) pageLvl[source] = [];
-		const srcLvl = pageLvl[source];
-		srcLvl[hash] = item;
+		((EntryRenderer.hover.linkCache[page] =
+			EntryRenderer.hover.linkCache[page] || [])[source] =
+			EntryRenderer.hover.linkCache[page][source] || [])[hash] = item;
 	},
 
 	_getFromCache: (page, source, hash) => {
@@ -2862,7 +2902,7 @@ EntryRenderer.hover = {
 			data[listProp].forEach(it => {
 				const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 				if (itemModifier) itemModifier(listProp, it);
-				EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+				EntryRenderer.hover._addToCache(page, it.source, itHash, it);
 			});
 		}
 
@@ -3074,7 +3114,7 @@ EntryRenderer.hover = {
 		const renderFn = EntryRenderer.hover._curHovering.renderFunction;
 
 		// if it doesn't seem to exist, return
-		if (!preLoaded && !EntryRenderer.hover._isCached(page, source, hash) && page !== "hover") {
+		if (!preLoaded && page !== "hover" && !EntryRenderer.hover._isCached(page, source, hash)) {
 			EntryRenderer.hover._showInProgress = false;
 			setTimeout(() => {
 				throw new Error(`Could not load hash ${hash} with source ${source} from page ${page}`);
@@ -3082,8 +3122,8 @@ EntryRenderer.hover = {
 			return;
 		}
 
-		const toRender = page === "hover" ? {name: "Homebrew"} : preLoaded || EntryRenderer.hover._getFromCache(page, source, hash);
-		const content = page === "hover" ? renderFn(JSON.parse(source.unescapeQuotes())) : renderFn(toRender);
+		const toRender = page === "hover" ? {name: source.data.hoverTitle} : preLoaded || EntryRenderer.hover._getFromCache(page, source, hash);
+		const content = page === "hover" ? renderFn(source) : renderFn(toRender);
 
 		$(ele).attr("data-hover-active", true);
 
@@ -3127,12 +3167,19 @@ EntryRenderer.hover = {
 					$stats.empty().append(renderFn(original));
 					$hovTitle.text(original._displayName || original.name);
 				} else {
-					const scaledContent = ScaleCreature.scale(toRender, targetCr);
-					preLoaded = scaledContent;
-					$stats.empty().append(renderFn(scaledContent));
-					$hovTitle.text(scaledContent._displayName || scaledContent.name);
+					ScaleCreature.scale(toRender, targetCr).then(scaledContent => {
+						preLoaded = scaledContent;
+						$stats.empty().append(renderFn(scaledContent));
+						$hovTitle.text(scaledContent._displayName || scaledContent.name);
+					});
 				}
 			}, true);
+		});
+		$stats.off("click", ".mon__btn-reset-cr").on("click", ".mon__btn-reset-cr", function () {
+			const original = EntryRenderer.hover._getFromCache(page, source, hash);
+			preLoaded = original;
+			$stats.empty().append(renderFn(original));
+			$hovTitle.text(original._displayName || original.name);
 		});
 
 		let drag = {};
@@ -3305,7 +3352,7 @@ EntryRenderer.hover = {
 			case UrlUtil.PG_ITEMS:
 				return EntryRenderer.item.getCompactRenderedString;
 			case UrlUtil.PG_BESTIARY:
-				return (it) => EntryRenderer.monster.getCompactRenderedString(it, null, {showScaler: true});
+				return (it) => EntryRenderer.monster.getCompactRenderedString(it, null, {showScaler: true, isScaled: it._originalCr != null});
 			case UrlUtil.PG_CONDITIONS_DISEASES:
 				return EntryRenderer.condition.getCompactRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
@@ -3333,6 +3380,11 @@ EntryRenderer.hover = {
 			default:
 				return null;
 		}
+	},
+
+	mouseOverHoverTooltip (evt, ele, id) {
+		const data = EntryRenderer.hover._mouseHovers[id];
+		EntryRenderer.hover.show({evt, ele, page: "hover", source: data, hash: ""});
 	},
 
 	mouseOver (evt, ele, page, source, hash, isPopout) {
@@ -3678,7 +3730,7 @@ EntryRenderer.dice = {
 				});
 				return $row.html();
 			}
-			return `<span class="message">No result found matching roll ${total}?! 🐛</span>`;
+			return `<span class="message">No result found matching roll ${total}?! <span class="help--subtle" title="Bug!">🐛</span></span>`;
 		}
 
 		const rolledBy = {
@@ -3686,26 +3738,37 @@ EntryRenderer.dice = {
 			label: name || attemptToGetTitle(ele)
 		};
 
-		function doRoll () {
+		function doRoll (toRoll = entry) {
 			if ($ele.parent().is("th")) {
 				EntryRenderer.dice.rollEntry(
-					entry,
+					toRoll,
 					rolledBy,
 					getThRoll
 				);
 			} else {
 				EntryRenderer.dice.rollEntry(
-					entry,
+					toRoll,
 					rolledBy
 				);
 			}
 		}
 
-		if (evt.shiftKey) { // roll twice on shift
-			EntryRenderer.dice._showMessage("Rolling twice...", rolledBy);
-			doRoll();
-		}
-		doRoll();
+		// roll twice on shift, rolling advantage/crits where appropriate
+		if (evt.shiftKey) {
+			if (entry.subType === "damage") {
+				const dice = [];
+				entry.toRoll.replace(/(\d+)?d(\d+)/gi, (m0) => dice.push(m0));
+				entry.toRoll = `${entry.toRoll}${dice.length ? `+${dice.join("+")}` : ""}`;
+				doRoll();
+			} else if (entry.subType === "d20") {
+				entry.toRoll = `2d20dl1${entry.d20mod}`;
+				doRoll();
+			} else {
+				EntryRenderer.dice._showMessage("Rolling twice...", rolledBy);
+				doRoll();
+				doRoll();
+			}
+		} else doRoll();
 	},
 
 	/**
@@ -3989,6 +4052,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 											stack.push(c);
 										} else {
 											handleOutput();
+											stack.push(c);
 										}
 									}
 									handleOutput();
@@ -4117,6 +4181,11 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 					handleAtom(tkn);
 
 					opStack.pop();
+
+					// ensure function names get added
+					if (opStack.last() === "l" || opStack.last() === "h") {
+						handleOpPop();
+					}
 				}
 			}
 
@@ -4206,6 +4275,8 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 
 					const rolls = [...new Array(numN)].map(it => RollerUtil.randomise(facesN));
 
+					const prOpen = rolls.length > 1 ? "(" : "";
+					const prClose = rolls.length > 1 ? ")" : "";
 					if (drop != null) {
 						const dropNum = Math.min(drop.evl({}), numN);
 						rolls.sort(SortUtil.ascSort).reverse();
@@ -4215,15 +4286,15 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 						const outSlice = rolls.slice(rolls.length - dropNum, rolls.length);
 
 						handlePrO(meta, this);
-						meta.text.push(`(${inSlice.length ? `[${inSlice.join("]+[")}]` : ""}${outSlice.length ? `<span style="text-decoration: red line-through;">+[${outSlice.join("]+[")}]</span>` : ""})`);
-						meta.rawText.push(`(${inSlice.length ? `[${inSlice.join("]+[")}]` : ""}${outSlice.length ? `+[${outSlice.join("]+[")}]` : ""})`);
+						meta.text.push(`${prOpen}${inSlice.length ? `[${inSlice.join("]+[")}]` : ""}${outSlice.length ? `<span style="text-decoration: red line-through;">+[${outSlice.join("]+[")}]</span>` : ""}${prClose}`);
+						meta.rawText.push(`${prOpen}${inSlice.length ? `[${inSlice.join("]+[")}]` : ""}${outSlice.length ? `+[${outSlice.join("]+[")}]` : ""}${prClose}`);
 						handlePrC(meta, this);
 
 						this._handleMinMax(meta, inSlice, facesN);
 
 						return Math.sum(...inSlice);
 					} else {
-						const raw = `([${rolls.join("]+[")}])`;
+						const raw = `${prOpen}[${rolls.join("]+[")}]${prClose}`;
 
 						handlePrO(meta, this);
 						meta.text.push(raw);

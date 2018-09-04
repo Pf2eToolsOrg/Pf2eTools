@@ -12,6 +12,7 @@ const expected = [];
 const expectedDirs = {};
 const existing = [];
 
+require("../js/utils");
 require("./check-links");
 
 function loadJSON (file) {
@@ -62,8 +63,9 @@ fs.readdirSync("./data/bestiary")
 	.forEach(file => {
 		const result = JSON.parse(fs.readFileSync(`./data/bestiary/${file}`));
 		result.monster.forEach(m => {
-			if (fs.existsSync(`./img/${m.source}`)) expected.push(`${m.source}/${m.name.replace(/"/g, "")}.png`);
-			else expectedDirs[m.source] = true;
+			const source = Parser.sourceJsonToAbv(m.source);
+			if (fs.existsSync(`./img/${source}`)) expected.push(`${source}/${m.name.replace(/"/g, "")}.png`);
+			else expectedDirs[source] = true;
 		});
 	});
 
@@ -72,6 +74,9 @@ fs.readdirSync("./img")
 	.filter(file => !file.endsWith(".git"))
 	.filter(file => !file.endsWith(".gitignore"))
 	.filter(file => !file.endsWith(".png"))
+	.filter(file => !file.endsWith(".txt"))
+	.filter(file => !file.startsWith("."))
+	.filter(file => !file.startsWith("_"))
 	.forEach(dir => {
 		if (dir !== "adventure" && dir !== "deities" && dir !== "variantrules" && dir !== "rules" && dir !== "objects" && dir !== "bestiary" && dir !== "roll20" && dir !== "book") {
 			fs.readdirSync(`./img/${dir}`).forEach(file => {
@@ -93,6 +98,7 @@ results.sort(function (a, b) {
 }).forEach(function (i) {
 	console.log(i);
 });
+if (!expected.length) console.log("Tokens are as expected.");
 
 process.exit(TESTS_PASSED);
 
