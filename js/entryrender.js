@@ -3295,7 +3295,7 @@ EntryRenderer.hover = {
 		$(ele).css("cursor", "");
 		reset();
 
-		function adjustPosition (first) {
+		function adjustPosition () {
 			// readjust position...
 			// ...if vertically clipping off screen
 			const hvTop = parseFloat($hov.css("top"));

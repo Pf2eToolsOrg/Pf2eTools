@@ -83,12 +83,38 @@ const VALID_ACTIONS = new Set([
 	"Use an Object"
 ]);
 
-function recursiveCheck (file) {
-	if (file.endsWith(".json")) checkFile(file);
-	else if (fs.lstatSync(file).isDirectory()) {
-		fs.readdirSync(file).forEach(nxt => {
-			recursiveCheck(`${file}/${nxt}`)
-		})
+function fileRecurse (file, fileHandler) {
+	if (file.endsWith(".json")) fileHandler(file);
+	else if (fs.lstatSync(file).isDirectory()) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler))
+}
+
+function dataRecurse (file, obj, primitiveHandlers) {
+	const to = typeof obj;
+	if (obj == null) return;
+
+	switch (to) {
+		case undefined:
+			if (primitiveHandlers.undefined) primitiveHandlers.undefined(file, obj);
+			break;
+		case "boolean":
+			if (primitiveHandlers.boolean) primitiveHandlers.boolean(file, obj);
+			break;
+		case "number":
+			if (primitiveHandlers.number) primitiveHandlers.number(file, obj);
+			break;
+		case "string":
+			if (primitiveHandlers.string) primitiveHandlers.string(file, obj);
+			break;
+		case "object": {
+			if (obj instanceof Array) {
+				obj.forEach(it => dataRecurse(file, it, primitiveHandlers));
+			} else {
+				Object.values(obj).forEach(it => dataRecurse(file, it, primitiveHandlers));
+			}
+			break;
+		}
+		default:
+			console.warn("Unhandled type?!", to);
 	}
 }
 
@@ -145,7 +171,7 @@ utS.UtilSearchIndex.getIndex(false, true).forEach(it => {
 });
 
 console.log("##### Checking links in JSON #####");
-recursiveCheck("./data");
+fileRecurse("./data", checkFile);
 
 class AttachedSpellCheck {
 	static run () {
@@ -186,15 +212,6 @@ if (msg) throw new Error(msg);
 console.log("##### Link check complete #####");
 
 class BraceChecker {
-	static recursiveDirCheck (file) {
-		if (file.endsWith(".json")) BraceChecker.checkFile(file);
-		else if (fs.lstatSync(file).isDirectory()) {
-			fs.readdirSync(file).forEach(nxt => {
-				BraceChecker.recursiveDirCheck(`${file}/${nxt}`)
-			})
-		}
-	}
-
 	static checkString (file, str) {
 		let total = 0;
 		for (let i = 0; i < str.length; ++i) {
@@ -213,38 +230,13 @@ class BraceChecker {
 		}
 	}
 
-	static recursiveDataCheck (file, obj) {
-		const to = typeof obj;
-		if (obj == null) return;
-
-		switch (to) {
-			case undefined:
-			case "boolean":
-			case "number":
-				break;
-			case "object": {
-				if (obj instanceof Array) {
-					obj.forEach(it => BraceChecker.recursiveDataCheck(file, it));
-				} else {
-					Object.values(obj).forEach(it => BraceChecker.recursiveDataCheck(file, it));
-				}
-				break;
-			}
-			case "string": BraceChecker.checkString(file, obj);
-				break;
-			default:
-				console.warn("Unhandled type?!", to);
-		}
-	}
-
 	static checkFile (file) {
 		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
-
-		BraceChecker.recursiveDataCheck(file, contents);
+		dataRecurse(file, contents, {string: BraceChecker.checkString});
 	}
 
 	static run () {
-		BraceChecker.recursiveDirCheck("./data");
+		fileRecurse("./data", BraceChecker.checkFile);
 		if (msg) throw new Error(msg);
 		console.log(`##### Brace check complete #####`)
 	}
@@ -252,3 +244,38 @@ class BraceChecker {
 
 msg = "";
 BraceChecker.run();
+
+class FilterChecker {
+	static checkString (file, str) {
+		str.replace(/{@filter ([^}]*)}/g, (m0, m1) => {
+			const spl = m1.split("|");
+			if (spl.length < 3) {
+				msg += `Filter tag "${str}" was too short!\n`;
+			} else {
+				const missingEq = [];
+				for (let i = 2; i < spl.length; ++i) {
+					if (!spl[i].includes("=")) {
+						missingEq.push(spl[i]);
+					}
+				}
+				if (missingEq.length) {
+					msg += `Missing equals in filter tag "${str}" in part${missingEq.length > 1 ? "s" : ""} ${missingEq.join(", ")}\n`
+				}
+			}
+			return m0;
+		});
+	}
+
+	static checkFile (file) {
+		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+		dataRecurse(file, contents, {string: FilterChecker.checkString});
+	}
+
+	static run () {
+		fileRecurse("./data", FilterChecker.checkFile);
+		if (msg) throw new Error(msg);
+		console.log(`##### Filter tag check complete #####`)
+	}
+}
+msg = "";
+FilterChecker.run();
