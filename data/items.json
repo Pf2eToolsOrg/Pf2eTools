@@ -4772,7 +4772,7 @@
 						"a {@item chest|phb}",
 						"2 {@item Map or Scroll Case|phb|cases for maps and scrolls}",
 						"a set of {@item fine clothes|phb}",
-						"a {@item Ink (1 ounce bottle)|phb|bottle of ink}",
+						"a {@item Ink (1-ounce bottle)|phb|bottle of ink}",
 						"an {@item ink pen|phb}",
 						"a {@item lamp|phb}",
 						"2 {@item Oil (flask)|phb|flasks of oil}",
@@ -7513,14 +7513,14 @@
 			"rarity": "Very Rare"
 		},
 		{
-			"name": "Ink (1 ounce bottle)",
+			"name": "Ink (1-ounce bottle)",
 			"value": "10gp",
 			"rarity": "None",
 			"type": "G",
 			"source": "PHB",
 			"page": 150,
 			"entries": [
-				"Ink (1 ounce bottle)"
+				"Ink (1-ounce bottle)"
 			]
 		},
 		{
@@ -13023,7 +13023,7 @@
 					"items": [
 						"a {@item backpack|phb}",
 						"a {@item book|phb} of lore",
-						"a {@item Ink (1 ounce bottle)|phb|bottle of ink}",
+						"a {@item Ink (1-ounce bottle)|phb|bottle of ink}",
 						"an {@item ink pen|phb}",
 						"10 {@item Parchment (one sheet)|phb|sheets of parchment}",
 						"a little bag of sand",
@@ -14421,32 +14421,32 @@
 					"type": "entries",
 					"entries": [
 						"You can use an action to break the staff over your knee or against a solid surface, performing a retributive strike. The staff is destroyed and releases its remaining magic in an explosion that expands to fill a 30-foot-radius sphere centered on it.",
-						"You have a 50 percent chance to instantly travel to a random plane of existence, avoiding the explosion. If you fail to avoid the effect, you take force damage equal to 16 × the number of charges in the staff. Every other creature in the area must make a DC 17 Dexterity saving throw. On a failed save, a creature takes an amount of damage based on how far away it is from the point of origin, as shown in the following table. On a successful save, a creature takes half as much damage."
-					]
-				},
-				{
-					"type": "table",
-					"colLabels": [
-						"Distance from Origin",
-						"Effect"
-					],
-					"colStyles": [
-						"col-xs-3",
-						"col-xs-9"
-					],
-					"rows": [
-						[
-							"10 ft. away or closer",
-							"8 × the number of charges in the staff"
-						],
-						[
-							"11 to 20 ft. away",
-							"6 × the number of charges in the staff"
-						],
-						[
-							"21 to 30 ft. away",
-							"4 × the number of charges in the staff"
-						]
+						"You have a 50 percent chance to instantly travel to a random plane of existence, avoiding the explosion. If you fail to avoid the effect, you take force damage equal to 16 × the number of charges in the staff. Every other creature in the area must make a DC 17 Dexterity saving throw. On a failed save, a creature takes an amount of damage based on how far away it is from the point of origin, as shown in the following table. On a successful save, a creature takes half as much damage.",
+						{
+							"type": "table",
+							"colLabels": [
+								"Distance from Origin",
+								"Effect"
+							],
+							"colStyles": [
+								"col-xs-3",
+								"col-xs-9"
+							],
+							"rows": [
+								[
+									"10 ft. away or closer",
+									"8 × the number of charges in the staff"
+								],
+								[
+									"11 to 20 ft. away",
+									"6 × the number of charges in the staff"
+								],
+								[
+									"21 to 30 ft. away",
+									"4 × the number of charges in the staff"
+								]
+							]
+						}
 					]
 				}
 			],
@@ -15004,12 +15004,12 @@
 					"name": "Personality",
 					"type": "entries",
 					"entries": [
-						"The Sunsword's special purpose is to destroy Strahd, not so much because it wants to free the land of Barovia from evil but because it wants revenge for the loss of its crystal blade. The weapon secretly fears its own destruction.",
-						"{@item Sun blade}. This item appears to be a longsword hilt. While grasping the hilt, you can use a bonus action to cause a blade of pure radiance to spring into existence, or make the blade disappear. While the blade exists, this magic longsword has the finesse property. If you are proficient with {@item shortsword|phb|shortswords} or {@item longsword|phb|longswords}, you are proficient with the {@item sun blade}.",
-						"You gain a +2 bonus to attack and damage rolls made with this weapon, which deals radiant damage instead of slashing damage. When you hit an undead with it, that target takes an extra {@dice 1d8} radiant damage.",
-						"The sword's luminous blade emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. While the blade persists, you can use an action to expand or reduce its radius of bright and dim light by 5 feet each, to a maximum of 30 feet each or a minimum of 10 feet each."
+						"The Sunsword's special purpose is to destroy Strahd, not so much because it wants to free the land of Barovia from evil but because it wants revenge for the loss of its crystal blade. The weapon secretly fears its own destruction."
 					]
-				}
+				},
+				"{@item Sun blade}. This item appears to be a longsword hilt. While grasping the hilt, you can use a bonus action to cause a blade of pure radiance to spring into existence, or make the blade disappear. While the blade exists, this magic longsword has the finesse property. If you are proficient with {@item shortsword|phb|shortswords} or {@item longsword|phb|longswords}, you are proficient with the {@item sun blade}.",
+				"You gain a +2 bonus to attack and damage rolls made with this weapon, which deals radiant damage instead of slashing damage. When you hit an undead with it, that target takes an extra {@dice 1d8} radiant damage.",
+				"The sword's luminous blade emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. While the blade persists, you can use an action to expand or reduce its radius of bright and dim light by 5 feet each, to a maximum of 30 feet each or a minimum of 10 feet each."
 			]
 		},
 		{
@@ -18368,6 +18368,395 @@
 			"entries": [
 				"A complex pump organ that originated with the zulkirs of Thay, who use it in the casting of their spells. It is considered to have a dramatic, but sinister, sound."
 			]
+		},
+		{
+			"name": "Azuredge",
+			"type": "M",
+			"weaponCategory": "Martial",
+			"rarity": "Legendary",
+			"weight": "4",
+			"dmg1": "{@dice 1d8}",
+			"dmg2": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"V"
+			],
+			"source": "WDH",
+			"reqAttune": true,
+			"sentient": true,
+			"entries": [
+				"Forged by the archwizard Ahghairon, this intelligent battleaxe was crafted to defend Waterdeep. Its current wielder is a former member of Force Grey named {@creature Meloon Wardragon|WDH}, but the weapon is searching for a new owner.",
+				"Azuredge has a solid steel handle etched with tiny runes, wrapped in blue dragon hide with a star sapphire set into the pommel. The axe head is forged from silver, electrum, and steel alloys whose edges constantly shimmer with a deep blue luminescence.",
+				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. The {@spell shield} spell provides no defense against the axe, which passes through that spell's barrier of magical force.",
+				"When you hit a fiend or an undead with the axe, cold blue flames erupt from its blade and deal an extra 2d6 radiant damage to the target.",
+				{
+					"type": "entries",
+					"name": "Hurling",
+					"entries": [
+						"The battleaxe has 3 charges. You can expend 1 charge and make a ranged attack with the axe, hurling it as if it had the thrown property with a normal range of 60 feet and a long range of 180 feet. Whether it hits or misses, the axe flies back to you at the end of the current turn, landing in your open hand or at your feet in your space (as you choose). The axe regains all expended charges daily at dawn."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Illumination",
+					"entries": [
+						"While holding the axe, you can use an action to cause the axe to glow blue or to quench the glow. This glow sheds bright light in a 30-foot radius and dim light for an additional 30 feet."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sentience",
+					"entries": [
+						"Azuredge is a sentient lawful neutral weapon with an Intelligence of 12, a Wisdom of 15, and a Charisma of 15. It has hearing and darkvision out to a range of 120 feet.",
+						"The weapon communicates telepathically with its wielder and can speak, read, and understand Common. It has a calm, delicate voice. The weapon can sense the presence of non-lawful creatures within 120 feet of it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Personality",
+					"entries": [
+						"Azuredge is sworn to protect Waterdeep, and it desires to be wielded by a law-abiding person willing to dedicate everything to the city's defense. The weapon is patient and takes its time finding its ideal wielder.",
+						"If someone tries to use Azuredge against its will, the axe can become ten times heavier than normal, and can magically adhere to any Medium or larger object or surface it comes into contact with. Once it does so, the axe can't be wielded. Nothing short of a {@spell wish} spell can separate the axe from the item or surface to which it is adhered without destroying one or the other, though the axe can choose to end the effect at any time."
+					]
+				}
+			],
+			"charges": 3,
+			"attachedSpells": [
+				"shield"
+			]
+		},
+		{
+			"name": "Badge of the Watch",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "WDH",
+			"reqAttune": true,
+			"entries": [
+				"A badge of the Watch is given only to those who have earned the trust of the Open Lord of Waterdeep. The badge, signifying the rank of captain in Waterdeep's City Watch, bears the emblem of Waterdeep and is meant to be worn or carried.",
+				"While wearing the badge, you gain a +2 bonus to AC if you aren't using a {@item shield|phb}.",
+				"If the badge is more than 5 feet away from you for more than 1 minute, it vanishes and harmlessly reappears on a surface within 5 feet of the Open Lord. While holding the badge, the Open Lord knows your location, provided the two of you are on the same plane of existence and your attunement to the badge hasn't ended.",
+				"As an action, the Open Lord can touch the badge and end your attunement to it."
+			]
+		},
+		{
+			"name": "Blackstaff",
+			"technology": "Staff",
+			"weight": "4",
+			"rarity": "Legendary",
+			"source": "WDH",
+			"page": 202,
+			"reqAttune": "by the Blackstaff heir, who must be a wizard",
+			"entries": [
+				"The Blackstaff is a sentient, rune-carved staff set with thin silver veins. It is the symbol of office for the Blackstaff, the highest-ranking wizard in Waterdeep. As the rightful owner of the Blackstaff, Vajra Safahr is the only one who can become attuned to it. The staff can, however, choose a new owner (see \"Personality\" below).",
+				"This staff can be wielded as a magic quarterstaff that grants a +2 bonus to attack and damage rolls made with it. While holding it, you gain a +2 bonus to Armor Class, saving throws, and spell attack rolls.",
+				"The staff has 20 charges for the following properties. The staff regains {@dice 2d8+4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff retains its +2 bonus to attack and damage roll but loses all other properties. On a 20, the staff regain {@dice 1d8+2} charges.",
+				{
+					"name": "Power Strike",
+					"type": "entries",
+					"entries": [
+						"When you hit with a melee attack using the staff, you can expend 1 charge to deal an extra {@dice 1d6} force damage to the target."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells",
+					"entries": [
+						"While holding this staff, you can use an action to expend 1 or more of its charges to cast one of the following spells from it, using your spell save DC and spell attack bonus: {@spell cone of cold} (5 charges), {@spell fireball} (5th-level version, 5 charges), {@spell globe of invulnerability} (6 charges), {@spell hold monster} (5 charges), {@spell levitate} (2 charges). {@spell lightning bolt} (5th-level version, 5 charges), {@spell magic missile} (1 charge), {@spell ray of enfeeblement} (1 charge), or {@spell wall of force} (5 charges)."
+					]
+				},
+				{
+					"name": "Retributive Strike",
+					"type": "entries",
+					"entries": [
+						"You can use an action to break the staff over your knee or against a solid surface, performing a retributive strike. The staff is destroyed and releases its remaining magic in an explosion that expands to fill a 30-foot-radius sphere centered on it.",
+						"You have a 50 percent chance to instantly travel to a random plane of existence, avoiding the explosion. If you fail to avoid the effect, you take force damage equal to 16 × the number of charges in the staff. Every other creature in the area must make a DC 17 Dexterity saving throw. On a failed save, a creature takes an amount of damage based on how far away it is from the point of origin, as shown in the following table. On a successful save, a creature takes half as much damage.",
+						{
+							"type": "table",
+							"colLabels": [
+								"Distance from Origin",
+								"Effect"
+							],
+							"colStyles": [
+								"col-xs-3",
+								"col-xs-9"
+							],
+							"rows": [
+								[
+									"10 ft. away or closer",
+									"8 × the number of charges in the staff"
+								],
+								[
+									"11 to 20 ft. away",
+									"6 × the number of charges in the staff"
+								],
+								[
+									"21 to 30 ft. away",
+									"4 × the number of charges in the staff"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Animate Walking Statues",
+					"entries": [
+						"You can expend 1 or more of the staff's charges as an action to animate or deactivate one or more of the {@creature walking statue of Waterdeep|wdh|walking statues of Waterdeep}. You must be in the city to use this property, and you can animate or deactivate one statue for each charge expended. An animated statue obeys the telepathic commands of Khelben Arunsun's spirit, which is trapped inside the staff (see \"Personality\" below). A walking statue becomes inanimate if deactivated or if the staff is broken."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dispel Magic",
+					"entries": [
+						"You can expend 1 of the staff's charges as a bonus action to cast {@spell dispel magic} on a creature, an object, or a magical effect that you touch with the tip of the staff. If the target is an unwilling creature or an object in the possession of such a creature, you must hit the creature with a melee attack using the Blackstaff before you can expend the charge to cast the spell."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Drain Magic",
+					"entries": [
+						"This property affects only creatures that use spell slots. When you hit such a creature with a melee attack using the Blackstaff, you can expend 1 of the staff's charges as a bonus action, causing the target to expend one spell slot of the highest spell level it can cast without casting a spell. If the target has already expended all its spell slots, nothing happens. Spell slots that are expended in this fashion are regained when the target finishes a long rest, as normal."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Master of Enchantment",
+					"entries": [
+						"When you cast an enchantment spell of 1st level or higher while holding the staff, you can make an Intelligence (Arcana) check with a DC of 10 + the level of the spell. If the check succeeds, you cast the spell without expending a spell slot."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sentience",
+					"entries": [
+						"The Blackstaff is a sentient staff of neutral alignment, with an Intelligence of 22, a Wisdom of 15, and a Charisma of 18. It has hearing and darkvision out to a range of 120 feet, and it can communicate telepathically with any creature that is holding it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Personality",
+					"entries": [
+						"The staff has the spirits of all previous Blackstaffs trapped within it. Its creator, Khelben Arunsun, is the dominant personality among them. Like Khelben, the staff is extremely devious and manipulative. It prefers to counsel its owner without exerting outright control. The staff's primary goal is to protect Waterdeep and its Open Lord, currently Laeral Silverhand. Its secondary goal is to help its wielder become more powerful.",
+						"In the event that the holder of the office of the Blackstaff no longer serves the staff's wishes, the staff ceases to function until it finds a worthy inheritor\u2014someone whose loyalty to Waterdeep is beyond reproach."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spirit Trap",
+					"entries": [
+						"When the Blackstaff dies, the spirit of that individual becomes trapped in the staff along with the spirits of the previous Blackstaffs. (A Blackstaff whose spirit is trapped in the staff can't be raised from the dead.)",
+						"Destroying the staff would release the spirits trapped inside it, but in that event, Khelben's spirit can lodge itself inside any one piece of the staff that remains. The piece containing Khelben's spirit has the staff's Sentience property but none of its other properties. As long as this piece of the staff exists, Khelben's spirit can make the staff whole again whenever he wishes. When the staff is remade, the spirits of the previous Blackstaffs become trapped inside it again."
+					]
+				}
+			],
+			"charges": 20,
+			"attachedSpells": [
+				"cone of cold",
+				"fireball",
+				"globe of invulnerability",
+				"hold monster",
+				"levitate",
+				"lightning bolt",
+				"magic missile",
+				"ray of enfeeblement",
+				"wall of force",
+				"dispel magic"
+			]
+		},
+		{
+			"name": "Bracer of Flying Daggers",
+			"wondrous": true,
+			"reqAttune": true,
+			"rarity": "Rare",
+			"source": "WDH",
+			"entries": [
+				"This armband appears to have thin {@item dagger|phb|daggers} strapped to it. As an action, you can pull up to two magic daggers from the bracer and immediately hurl them, making a ranged attack with each dagger. A dagger vanishes if you don't hurl it right away, and the daggers disappear right after they hit or miss. The bracer never runs out of daggers."
+			]
+		},
+		{
+			"name": "Dragonstaff of Ahghairon",
+			"technology": "Staff",
+			"rarity": "Legendary",
+			"source": "WDH",
+			"reqAttune": true,
+			"entries": [
+				"While holding the dragonstaff of Ahghairon, you have advantage on saving throws against the spells and breath weapons of dragons, as well as the breath weapons of other creatures of the dragon type (such as dragon turtles).",
+				"A creature of the dragon type that you touch with the staff can move through the city of Waterdeep, ignoring Ahghairon's dragonward (see \"Ahghairon's Dragonward,\" in the Introduction). This effect lasts until the creature is touched again by the staff or until a time you proclaim when you confer the benefit.",
+				"The staff has 10 charges. While holding it, you can expend 1 charge as an action to cast the {@spell command} spell. If you target a dragon with this casting, the dragon has disadvantage on its saving throw. The staff regains {@dice 1d10} charges daily at dawn."
+			],
+			"charges": 10,
+			"attachedSpells": [
+				"command"
+			]
+		},
+		{
+			"name": "Feather of Diatryma Summoning",
+			"wondrous": true,
+			"reqAttune": true,
+			"rarity": "Rare",
+			"source": "WDH",
+			"entries": [
+				"This bright plume is made from the feather of a diatryma (pronounced dee-ah-TRY-mah), a Large, colorful, flightless bird native to the Underdark. If you use an action to speak the command word and throw the feather into a Large unoccupied space on the ground within 5 feet of you, the feather becomes a living diatryma for up to 6 hours, after which it reverts to its feather form. It reverts to feather form early if it drops to 0 hit points or if you use an action to speak the command word again while touching the bird.",
+				"When the diatryma reverts to feather form, the magic of the feather can't be used again until 7 days have passed.",
+				"The diatryma uses the statistics of an {@creature axe beak}, except that its beak deals piercing damage instead of slashing damage. The creature is friendly to you and your companions, and it can be used as a mount. It understands your languages and obeys your spoken commands. If you issue no commands, the diatryma defends itself but takes no other actions."
+			]
+		},
+		{
+			"name": "Knave's Eye Patch",
+			"wondrous": true,
+			"reqAttune": true,
+			"rarity": "Rare",
+			"source": "WDH",
+			"entries": [
+				"While wearing this eye patch, you gain these benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You have advantage on Wisdom ({@skill Perception}) checks that rely on sight.",
+						"If you have the Sunlight Sensitivity trait, you are unaffected by the trait.",
+						"You are immune to magic that allows other creatures to read your thoughts or determine whether you are lying. Creatures can communicate telepathically with you only if you allow it."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lord's Ensemble",
+			"wondrous": true,
+			"reqAttune": "by a creature with a humanoid build",
+			"rarity": "Very Rare",
+			"source": "WDH",
+			"entries": [
+				"The Masked Lords of Waterdeep don this ensemble when meeting with one another. This raiment renders each lord indistinguishable from the others. The ensemble consists of three pieces \u2014 a helm, an amulet, and a robe \u2014 that function as a single magic item when worn together, but only within the city of Waterdeep and its sewers. You become attuned to the ensemble as a single item.",
+				{
+					"type": "entries",
+					"name": "Lord's Helm",
+					"entries": [
+						"This bucket helm covers your head and conceals your face. Screens over the eyes help to shroud your identity without blinding you. While you wear the helm, your voice is magically altered to sound genderless, and you are immune to magic that allows other creatures to read your thoughts, to determine whether you are lying, to know your alignment, or to know your creature type. Creatures can communicate telepathically with you only if you allow it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lord's Amulet",
+					"entries": [
+						"This amulet bears the crest of Waterdeep. It functions as an {@item amulet of proof against detection and location}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lord's Robe",
+					"entries": [
+						"This elegant robe functions as a {@item ring of free action}, and it creates the illusion that you have a nondescript, androgynous humanoid build and stand 6 feet tall."
+					]
+				}
+			]
+		},
+		{
+			"name": "Paper Bird",
+			"wondrous": true,
+			"rarity": "Uncommon",
+			"source": "WDH",
+			"entries": [
+				"After you write a message of fifty words or fewer on this magic sheet of parchment and speak a creature's name, the parchment magically folds into a Tiny paper bird and flies to the recipient whose name you uttered. The recipient must be on the same plane of existence as you, otherwise the bird turns into ash as it takes flight.",
+				"The bird is an object that has 1 hit point, an Armor Class of 13, a flying speed of 60 feet, a Dexterity of 16 (+3), and a score of 1 (\u22125) in all other abilities, and it is immune to poison and psychic damage.",
+				"It travels to within 5 feet of its intended recipient by the most direct route, whereupon it turns into a nonmagical and inanimate sheet of parchment that can be unfolded only by the intended recipient. If the bird's hit points or speed is reduced to 0 or if it is otherwise immobilized, it turns into ash.",
+				"Paper birds usually come in small, flat boxes containing {@dice 1d6 + 3} sheets of the parchment."
+			]
+		},
+		{
+			"name": "Ring of Truth Telling",
+			"type": "RG",
+			"reqAttune": true,
+			"rarity": "Uncommon",
+			"source": "WDH",
+			"entries": [
+				"While wearing this ring, you have advantage on Wisdom (Insight) checks to determine whether someone is lying to you."
+			]
+		},
+		{
+			"name": "Teleporter Ring",
+			"type": "RG",
+			"rarity": "Unknown",
+			"source": "WDH",
+			"entries": [
+				"As an action, a creature wearing a teleporter ring can activate the teleportation circle either in area K22 or area E1, teleporting itself and up to six other willing creatures from one circle to the other."
+			]
+		},
+		{
+			"name": "Smokepowder",
+			"wondrous": true,
+			"rarity": "Uncommon",
+			"source": "WDH",
+			"entries": [
+				"Smokepowder is a magical explosive chiefly used to propel a bullet out of the barrel of a firearm. It is stored in airtight wooden kegs or tiny, waterproof leather packets. A packet contains enough smokepowder for five shots, and a keg holds enough smokepowder for five hundred shots.",
+				"If smokepowder is set on fire, dropped, or otherwise handled roughly, it explodes and deals fire damage to each creature or object within 20 feet of it: {@dice 1d6} for a packet, {@dice 9d6} for a keg. A successful DC 12 Dexterity saving throw halves the damage.",
+				"Casting {@spell dispel magic} on smokepowder renders it permanently inert."
+			]
+		},
+		{
+			"name": "Stone of Golorr",
+			"wondrous": true,
+			"reqAttune": true,
+			"rarity": "Artifact",
+			"source": "WDH",
+			"entries": [
+				"The Stone of Golorr is a glossy, greenish-gray stone that fits in the palm of your hand. The stone is actually an {@creature aboleth} named Golorr, transformed by magic into an object.",
+				{
+					"type": "entries",
+					"name": "Random Properties",
+					"entries": [
+						"The Stone of Golorr has the following properties, determined by rolling on the tables in the \"Artifacts\" section in chapter 7 of the Dungeon Master's Guide:",
+						{
+							"type": "list",
+							"items": [
+								"1 minor beneficial property",
+								"1 minor detrimental property"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Legend Lore",
+					"entries": [
+						"The Stone of Golorr has 3 charges and regains {@dice 1d3} expended charges daily at dawn. While holding the stone, you can expend 1 of its charges to cast the {@spell legend lore} spell.",
+						"By using the stone to cast legend lore, you communicate directly with the {@creature aboleth}, and it shares its knowledge with you. The aboleth can't lie to you, but the information it provides is often cryptic or vague.",
+						"The aboleth knows where Lord Neverember's secret vault is located. It also knows that three keys are needed to open the vault and that a gold dragon named Aurinax inhabits the vault and guards its treasures."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Failed Memory",
+					"entries": [
+						"When your attunement to the Stone of Golorr ends, you must make a DC 16 Wisdom saving throw. On a failed save, you lose all memory of the stone being in your possession and all knowledge imparted by it. A {@spell remove curse} spell cast on you has a 20 percent chance of restoring the lost knowledge and memories, and a {@spell greater restoration} spell does so automatically."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sentience",
+					"entries": [
+						"The Stone of Golorr is a sentient lawful evil magic item with an Intelligence of 18, a Wisdom of 15, and a Charisma of 18. It has hearing and darkvision out to a range of 120 feet. It can communicate telepathically with the creature that is attuned to it, as long as that creature understands at least one language. In addition, the {@creature aboleth} learns the greatest desires of any creature that communicates telepathically with the stone.",
+						"The Stone of Golorr hungers for information and prefers not to remain in the clutches of any creature for too long. Whenever the stone desires a new owner, it demands to be given to another intelligent creature as quickly as possible. If its demands are ignored, it tries to take control of its owner (see \"Sentient Magic Items\" in chapter 7 of the Dungeon Master's Guide)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Personality",
+					"entries": [
+						"The Stone of Golorr has an alien intellect that is both domineering and hungry for knowledge. It thinks of itself as an ageless and immortal god."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Destroying the Stone",
+					"entries": [
+						"While in stone form, the {@creature aboleth} isn't a creature and isn't subject to effects that target creatures. The Stone of Golorr is immune to all damage. Casting an {@spell antipathy/sympathy} spell on the stone destroys it if the antipathy effect is selected and the spell is directed to repel aberrations. When the spell is cast in this way, the stone transforms into mucus and is destroyed, and Golorr the aboleth appears in an unoccupied space within 30 feet of the stone's remains. The aboleth is incensed by the stone's destruction, and it attacks all other creatures it can see."
+					]
+				}
+			],
+			"charges": 3,
+			"attachedSpells": [
+				"legend lore"
+			]
 		}
 	],
 	"itemGroup": [
@@ -18424,6 +18813,56 @@
 						"{@item Amulet|phb}",
 						"{@item Emblem|phb}",
 						"{@item Reliquary|phb}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Potion of Resistance",
+			"type": "P",
+			"weight": "0.5",
+			"tier": "Minor",
+			"rarity": "Uncommon",
+			"source": "DMG",
+			"page": 188,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Potion of Acid Resistance}",
+						"{@item Potion of Cold Resistance}",
+						"{@item Potion of Fire Resistance}",
+						"{@item Potion of Force Resistance}",
+						"{@item Potion of Lightning Resistance}",
+						"{@item Potion of Necrotic Resistance}",
+						"{@item Potion of Poison Resistance}",
+						"{@item Potion of Psychic Resistance}",
+						"{@item Potion of Radiant Resistance}",
+						"{@item Potion of Thunder Resistance}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Spell Scroll",
+			"type": "SC",
+			"rarity": "Varies",
+			"source": "DMG",
+			"page": 200,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Spell Scroll (Cantrip)}",
+						"{@item Spell Scroll (1st Level)}",
+						"{@item Spell Scroll (2nd Level)}",
+						"{@item Spell Scroll (3rd Level)}",
+						"{@item Spell Scroll (4th Level)}",
+						"{@item Spell Scroll (5th Level)}",
+						"{@item Spell Scroll (6th Level)}",
+						"{@item Spell Scroll (7th Level)}",
+						"{@item Spell Scroll (8th Level)}",
+						"{@item Spell Scroll (9th Level)}"
 					]
 				}
 			]

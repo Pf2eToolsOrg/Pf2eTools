@@ -3309,7 +3309,7 @@ class UnitConverter {
 			handleInput();
 		};
 
-		const mMaths = /^([0-9.+\-*/ ()])*$/;
+		const mMaths = /^([0-9.+\-*/ ()e])*$/;
 		const handleInput = () => {
 			const showInvalid = () => {
 				$iptLeft.addClass(`ipt-invalid`);

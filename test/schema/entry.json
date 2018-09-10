@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.1",
+	"version": "1.2.2",
 
 	"definitions" : {
 		"entry": {
@@ -810,9 +810,33 @@
 						},
 						"title": {
 							"type": "string"
+						},
+						"imageType": {
+							"type": "string",
+							"enum": [
+								"map"
+							]
 						}
 					},
 					"required": ["href"],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryGallery": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "gallery"},
+						"images": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/entryImage"
+							}
+						}
+					},
+					"required": ["images"],
 					"additionalProperties": false
 				}
 			]
@@ -913,6 +937,7 @@
 		{"$ref": "#/definitions/entryItemSub"},
 		{"$ref": "#/definitions/entryItemSpell"},
 		{"$ref": "#/definitions/entryImage"},
+		{"$ref": "#/definitions/entryGallery"},
 		{"$ref": "#/definitions/entryActions"},
 		{"$ref": "#/definitions/entryAttack"},
 		{"$ref": "#/definitions/entryAttack"},

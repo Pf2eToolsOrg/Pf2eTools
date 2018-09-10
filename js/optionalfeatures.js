@@ -41,7 +41,8 @@ const patronFilter = new Filter({
 });
 const spellFilter = new Filter({
 	header: "Spell or Feature",
-	items: ["Eldritch Blast", "Hex/Curse"]
+	items: ["eldritch blast", "hex/curse"],
+	displayFn: StrUtil.toTitleCase
 });
 const levelFilter = new Filter({
 	header: "Warlock Level",

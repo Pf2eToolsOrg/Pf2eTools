@@ -4,10 +4,12 @@ const JSON_URL = "data/life.json";
 
 const RNG = RollerUtil.randomise;
 
+// usage: _testRng(() => GenUtil.getFromTable(PARENTS_TIEFLING, RNG(8)))
 function _testRng (rollFn) {
 	const counts = {};
-	for (let i = 0; i < 1000000; ++i) {
-		const it = rollFn().result;
+	for (let i = 0; i < 10000; ++i) {
+		const roll = rollFn();
+		const it = roll.display || roll.result;
 		if (!counts[it]) counts[it] = 1;
 		else counts[it]++;
 	}
@@ -544,10 +546,10 @@ function sectParents () {
 	let parentage = null;
 	if (knowParents) {
 		switch (race) {
-			case "Half-elf":
+			case "Half-Elf":
 				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_HALF_ELF, RNG(8)).result}`;
 				break;
-			case "Half-orc":
+			case "Half-Orc":
 				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_HALF_ORC, RNG(8)).result}`;
 				break;
 			case "Tiefling":

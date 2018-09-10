@@ -300,7 +300,11 @@ class ShapedConverter {
 
 	static processSpecialList (action, entries) {
 		action.text = this.fixLinks(entries[0]);
-		return entries.slice(1).reduce((result, entry) => {
+		let slice = entries.slice(1);
+		if (slice.length === 1 && slice[0].type === "list") {
+			slice = slice[0].items.map(it => it.type === "item" ? `${it.name}. ${it.entries ? it.entries.join("\n") : it.entry}` : it);
+		}
+		return slice.reduce((result, entry) => {
 			const match = entry.match(/^(?:\d+\. )?([A-Z][a-z]+(?: [A-Z][a-z]+)*). (.*)$/);
 			if (match) {
 				result.push({
@@ -476,10 +480,9 @@ class ShapedConverter {
 				const baseName = variant.name;
 				if (variant.entries.every(entry => isString(entry) || entry.type !== 'entries')) {
 					const text = variant.entries.map(entry => {
-						if (isString(entry)) {
-							return entry;
-						}
-						return entry.items.map(item => `${item.name} ${item.entry}`).join('\n');
+						if (isString(entry)) return entry;
+						else if (entry.type === "table") return this.processTable(entry);
+						else return entry.items.map(item => `${item.name} ${item.entry}`).join('\n');
 					}).join('\n');
 					addVariant(baseName, text, output);
 				} else if (variant.entries.find(entry => entry.type === 'entries')) {
@@ -605,36 +608,11 @@ class ShapedConverter {
 	}
 
 	static processSpellEntries (entries, newSpell) {
-		const cellProc = cell => {
-			if (isString(cell)) {
-				return cell;
-			} else if (cell.roll) {
-				return cell.roll.exact || `${this.padInteger(cell.roll.min)}\\u2013${this.padInteger(cell.roll.max)}`;
-			}
-		};
-
 		const entryMapper = entry => {
 			if (isString(entry)) {
 				return entry;
 			} else if (entry.type === 'table') {
-				const rows = [entry.colLabels];
-				rows.push.apply(rows, entry.rows);
-
-				const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
-				const styleToColDefinition = style => {
-					if (style.includes('text-align-center')) {
-						return ':----:';
-					} else if (style.includes('text-align-right')) {
-						return '----:';
-					}
-					return ':----';
-				};
-				const colDefinitions = entry.colStyles ? entry.colStyles.map(styleToColDefinition) : entry.colLabels.map(() => ':----');
-				const divider = `|${colDefinitions.join('|')}|`;
-				formattedRows.splice(1, 0, divider);
-
-				const title = entry.caption ? `##### ${entry.caption}\n` : '';
-				return `${title}${formattedRows.join('\n')}`;
+				return this.processTable(entry);
 			} else if (entry.type === 'list') {
 				return entry.items.map(item => `- ${item}`).join('\n');
 			} else if (entry.type === 'homebrew') {
@@ -653,6 +631,35 @@ class ShapedConverter {
 		}
 
 		newSpell.description = this.fixLinks(entriesToProc.map(entryMapper).join('\n'));
+	}
+
+	static processTable (entry) {
+		const cellProc = cell => {
+			if (isString(cell)) {
+				return cell;
+			} else if (cell.roll) {
+				return cell.roll.exact || `${this.padInteger(cell.roll.min)}\\u2013${this.padInteger(cell.roll.max)}`;
+			}
+		};
+
+		const rows = [entry.colLabels];
+		rows.push.apply(rows, entry.rows);
+
+		const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
+		const styleToColDefinition = style => {
+			if (style.includes('text-align-center')) {
+				return ':----:';
+			} else if (style.includes('text-align-right')) {
+				return '----:';
+			}
+			return ':----';
+		};
+		const colDefinitions = entry.colStyles ? entry.colStyles.map(styleToColDefinition) : entry.colLabels.map(() => ':----');
+		const divider = `|${colDefinitions.join('|')}|`;
+		formattedRows.splice(1, 0, divider);
+
+		const title = entry.caption ? `##### ${entry.caption}\n` : '';
+		return `${title}${formattedRows.join('\n')}`;
 	}
 
 	static addExtraSpellData (newSpell, data) {
@@ -1069,6 +1076,9 @@ function rebuildShapedSources () {
 		});
 	}).catch(e => {
 		alert(`${e}\n${e.stack}`);
+		setTimeout(() => {
+			throw e;
+		}, 0);
 	});
 }
 
@@ -1081,6 +1091,9 @@ window.onload = function load () {
 			})
 			.catch(e => {
 				alert(`${e}\n${e.stack}`);
+				setTimeout(() => {
+					throw e;
+				}, 0);
 			});
 	};
 
@@ -1107,7 +1120,12 @@ window.onload = function load () {
 				$('#shapedJS').val(js);
 				$('#copyJS').removeAttr('disabled');
 			})
-			.catch(e => alert(`${e}\n${e.stack}`));
+			.catch(e => {
+				alert(`${e}\n${e.stack}`);
+				setTimeout(() => {
+					throw e;
+				}, 0);
+			});
 	});
 	$('#copyJS').on('click', () => {
 		const shapedJS = $('#shapedJS');

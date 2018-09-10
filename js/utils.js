@@ -134,7 +134,7 @@ String.prototype.lowercaseFirst = String.prototype.lowercaseFirst ||
 String.prototype.toTitleCase = String.prototype.toTitleCase ||
 	function () {
 		let str;
-		str = this.replace(/([^\W_]+[^\s-]*) */g, function (txt) {
+		str = this.replace(/([^\W_]+[^\s-/]*) */g, function (txt) {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 		});
 
@@ -285,6 +285,10 @@ StrUtil = {
 		if (remain < 0) out += "..."
 		out += str.substring(str.length - atLeastSuff, str.length);
 		return out;
+	},
+
+	toTitleCase (str) {
+		return str.toTitleCase();
 	}
 };
 
@@ -1110,8 +1114,8 @@ Parser.levelToFull = function (level) {
 };
 
 Parser.prereqSpellToFull = function (spell) {
-	if (spell === "Eldritch Blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
-	else if (spell === "Hex/Curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell Hex} spell or a warlock feature that curses");
+	if (spell === "eldritch blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
+	else if (spell === "hex/curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell hex} spell or a warlock feature that curses");
 	else if (spell) return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}}`);
 	return STR_NONE
 };
@@ -1500,6 +1504,7 @@ SRC_VGM = "VGM";
 SRC_XGE = "XGE";
 SRC_OGA = "OGA";
 SRC_MTF = "MTF";
+SRC_WDH = "WDH";
 
 SRC_ALCoS = "ALCurseOfStrahd";
 SRC_ALEE = "ALElementalEvil";
@@ -1604,6 +1609,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
 Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
 Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
 Parser.SOURCE_JSON_TO_FULL[SRC_MTF] = "Mordenkainen's Tome of Foes";
+Parser.SOURCE_JSON_TO_FULL[SRC_WDH] = "Waterdeep: Dragon Heist";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] = AL_PREFIX + "Rage of Demons";
@@ -1691,6 +1697,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_VGM] = "VGM";
 Parser.SOURCE_JSON_TO_ABV[SRC_XGE] = "XGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_OGA] = "OGA";
 Parser.SOURCE_JSON_TO_ABV[SRC_MTF] = "MTF";
+Parser.SOURCE_JSON_TO_ABV[SRC_WDH] = "WDH";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALRoD] = "ALRoD";
@@ -2026,8 +2033,8 @@ function copyText (text) {
 	$temp.remove();
 }
 
-function showCopiedEffect ($ele) {
-	const $temp = $(`<div class="copied-tip"><span>Copied!</span></div>`);
+function showCopiedEffect ($ele, text = "Copied!") {
+	const $temp = $(`<div class="copied-tip"><span>${text}</span></div>`);
 	const top = $(window).scrollTop();
 	const pos = $ele.offset();
 	$temp.css({
@@ -2537,7 +2544,7 @@ ListUtil = {
 			ListUtil._setPinnedCount(index, count - subtractCount, data);
 			ListUtil._setViewCount(index, count - subtractCount, data);
 			ListUtil._handleCallUpdateFn();
-		} else if (count) ListUtil.doSublistRemove(index);
+		} else if (count) ListUtil.doSublistRemove(index, data);
 	},
 
 	getSublisted () {
@@ -2582,8 +2589,9 @@ ListUtil = {
 	},
 
 	doSublistRemove: (index, data) => {
-		ListUtil._deletePinnedCount(index, data)
-		ListUtil.sublist.remove("id", index);
+		ListUtil._deletePinnedCount(index, data);
+		if (data && data.uid) ListUtil.sublist.remove("uid", data.uid);
+		else ListUtil.sublist.remove("id", index);
 		ListUtil._updateSublistVisibility();
 		ListUtil._saveSublist();
 		ListUtil._handleCallUpdateFn();
@@ -2733,12 +2741,14 @@ ListUtil = {
 
 	handleGenericMultiSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
 		const itId = Number($invokedOn.attr(FLTR_ID));
+		const uid = $invokedOn.find(`.uid`).text();
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
 				EntryRenderer.hover.doPopout($invokedOn, itemList, itId, evt.clientX);
 				break;
 			case 1:
-				ListUtil.doSublistRemove(itId);
+				if (uid) ListUtil.doSublistRemove(itId, {uid: uid});
+				else ListUtil.doSublistRemove(itId);
 				break;
 			case 2:
 				ListUtil.doSublistRemoveAll();
@@ -3421,6 +3431,7 @@ RollerUtil = {
 	 * Result in range: 0 to (max-1); inclusive
 	 * e.g. roll(20) gives results ranging from 0 to 19
 	 * @param max range max (exclusive)
+	 * @param fn funciton to call to generate random numbers
 	 * @returns {number} rolled
 	 */
 	roll: (max, fn = Math.random) => {
@@ -3448,7 +3459,7 @@ RollerUtil = {
 
 	isRollCol (string) {
 		if (typeof string !== "string") return false;
-		return !!/^({@dice )?(\d+)?d\d+([+-](\d+)?d\d+)*(})?$/.exec(string.trim());
+		return !!/^({@dice )?(\d+)?d\d+([+-](\d+)?d\d+)*([-+]\d+)?(})?$/.exec(string.trim());
 	},
 
 	_DICE_REGEX_STR: "([1-9]\\d*)?d([1-9]\\d*)(\\s?[+-]\\s?\\d+)?"

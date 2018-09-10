@@ -368,21 +368,20 @@ function EntryRenderer () {
 
 				// images
 				case "image": {
-					renderPrefix();
-					if (entry.title) textStack[0] += `<div class="img-title">${entry.title}</div>`;
-					let href;
-					if (entry.href.type === "internal") {
-						const imgPart = `img/${entry.href.path}`;
-						href = this.baseUrl !== "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
-					}
-					textStack[0] += `
-						<div class="img-wrapper">
-						<a href="${href}" target='_blank' ${entry.title ? `title="${entry.title}"` : ""}>
-							<img src="${href}" onload="EntryRenderer._onImgLoad()">
-						</a>
-						</div>
-					`;
-					renderSuffix();
+					if (entry.imageType === "map") textStack[0] += `<div class="img__map">`;
+					renderImage.bind(this)();
+					if (entry.imageType === "map") textStack[0] += `</div>`;
+					break;
+				}
+
+				case "gallery": {
+					textStack[0] += `<div class="img__gallery">`;
+					entry.images.forEach(img => {
+						img = MiscUtil.copy(img);
+						delete img.imageType;
+						this._recursiveEntryRender(img, textStack, depth, {}); // no prefix/suffix
+					});
+					textStack[0] += `</div>`;
 					break;
 				}
 
@@ -442,6 +441,26 @@ function EntryRenderer () {
 			if (suffix !== null) {
 				textStack[0] += suffix;
 			}
+		}
+
+		function renderImage () {
+			renderPrefix();
+			textStack[0] += `<div class="img__wrapper_outer">`;
+			if (entry.title) textStack[0] += `<div class="img-title">${entry.title}</div>`;
+			let href;
+			if (entry.href.type === "internal") {
+				const imgPart = `img/${entry.href.path}`;
+				href = this.baseUrl !== "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
+			}
+			textStack[0] += `
+					<div class="img__wrapper">
+						<a href="${href}" target='_blank' ${entry.title ? `title="${entry.title}"` : ""}>
+							<img src="${href}" onload="EntryRenderer._onImgLoad()">
+						</a>
+					</div>
+				</div>
+			`;
+			renderSuffix();
 		}
 
 		function renderTable (self) {
@@ -1233,7 +1252,7 @@ EntryRenderer.utils = {
 
 	_getPageTrText: (it) => {
 		function getAltSourceText (prop, introText) {
-			return it[prop] && it[prop].length ? `${introText} ${it[prop].map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>, page ${as.page}`).join("; ")}` : "";
+			return it[prop] && it[prop].length ? `${introText} ${it[prop].map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page ? `, page ${as.page}` : ""}`).join("; ")}` : "";
 		}
 		const sourceSub = EntryRenderer.utils.getSourceSubText(it);
 		const baseText = it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
@@ -1615,7 +1634,7 @@ EntryRenderer.optionalfeature = {
 				case "prereqPatron":
 					return listMode ? `${Parser.prereqPatronToShort(it.entry)} patron` : `${it.entry} patron`;
 				case "prereqSpell":
-					return listMode ? it.entries.join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ")
+					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
 				default: // string
 					return it;
 			}
@@ -2386,7 +2405,7 @@ EntryRenderer.item = {
 		return renderStack.join("");
 	},
 
-	_hiddenRarity: new Set(["None", "Unknown", "Unknown (Magic)"]),
+	_hiddenRarity: new Set(["None", "Unknown", "Unknown (Magic)", "Varies"]),
 	doRenderRarity (rarity) {
 		return !EntryRenderer.item._hiddenRarity.has(rarity);
 	},
@@ -2444,7 +2463,10 @@ EntryRenderer.item = {
 			return new Promise((resolve, reject) => {
 				DataUtil.loadJSON(itemUrl).then((itemData) => {
 					const items = itemData.item;
-					resolve(addGroups ? items.concat(itemData.itemGroup || []) : items);
+					if (addGroups) {
+						itemData.itemGroup.forEach(it => it._isItemGroup = true);
+						resolve(items.concat(itemData.itemGroup || []));
+					} else resolve(items);
 				}, reject);
 			});
 		}
@@ -2574,6 +2596,7 @@ EntryRenderer.item = {
 
 	_priceRe: /^(\d+)(\w+)$/,
 	enhanceItem (item) {
+		if (item._isEnhanced) return;
 		item._isEnhanced = true;
 		if (item.noDisplay) return;
 		if (item.type === "GV") item.category = "Generic Variant";
@@ -2642,6 +2665,9 @@ EntryRenderer.item = {
 			}
 		}
 		item.attunementCategory = attunement;
+
+		// add some pre-text for item groups
+		if (item._isItemGroup && item.entries) item.entries.unshift("Multiple variants of this item exist, as listed below:");
 
 		// format price nicely
 		// 5 characters because e.g. XXXgp is fine
@@ -2993,7 +3019,7 @@ EntryRenderer.hover = {
 							.then((data) => {
 								if (!data.item) return;
 								data.item.forEach(it => {
-									if (!it._isEnhanced) EntryRenderer.item.enhanceItem(it);
+									EntryRenderer.item.enhanceItem(it);
 									const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 									EntryRenderer.hover._addToCache(page, it.source, itHash, it)
 								});
@@ -3720,7 +3746,7 @@ EntryRenderer.dice = {
 				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
 			});
 			if ($td.length && $td.nextAll().length) {
-				const tableRow = $td.nextAll().get().map(ele => ele.innerHTML).join(" | ");
+				const tableRow = $td.nextAll().get().map(ele => ele.innerHTML.trim()).filter(it => it).join(" | ");
 				const $row = $(`<span class="message">${tableRow}</span>`);
 				$row.find(`.render-roller`).each((i, e) => {
 					const $e = $(e);

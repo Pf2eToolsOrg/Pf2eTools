@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.7",
+	"version": "1.5.0",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -484,8 +484,23 @@
 				"source": {
 					"type": "string"
 				},
-				"sourceSub": {
-					"type": "string"
+				"otherSources": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"source": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							}
+						},
+						"required": [
+							"source"
+						],
+						"additionalProperties": false
+					}
 				},
 				"alignment": {
 					"type": "array",

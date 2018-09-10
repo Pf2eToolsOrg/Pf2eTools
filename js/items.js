@@ -9,16 +9,18 @@ window.onload = function load () {
 
 function rarityValue (rarity) {
 	switch (rarity) {
-		case "Rare": return 3;
 		case "None": return 0;
+		case "Common": return 1;
 		case "Uncommon": return 2;
+		case "Rare": return 3;
 		case "Very Rare": return 4;
 		case "Legendary": return 5;
 		case "Artifact": return 6;
-		case "Unknown": return 8;
 		case "Other": return 7;
-		case "Common": return 1;
-		default: return 0;
+		case "Varies": return 8;
+		case "Unknown (Magic)": return 9;
+		case "Unknown": return 10;
+		default: return 11;
 	}
 }
 
@@ -188,7 +190,7 @@ function addItems (data) {
 		const curitem = itemList[itI];
 		if (ExcludeUtil.isExcluded(curitem.name, "item", curitem.source)) continue;
 		if (curitem.noDisplay) continue;
-		if (!curitem._isEnhanced) EntryRenderer.item.enhanceItem(curitem);
+		EntryRenderer.item.enhanceItem(curitem);
 
 		const name = curitem.name;
 		const rarity = curitem.rarity;

@@ -24,6 +24,7 @@ class ConverterUtils {
 					switch (pLow) {
 						// unhandled/other
 						case "unarmored defense":
+						case "suave defense":
 						case "armor scraps":
 						case "barding scraps":
 						case "patchwork armor":
@@ -137,11 +138,28 @@ class ConverterUtils {
 
 						// magic items
 						case "dwarven plate":
-							from.push("{@item dwarven plate|dmg}");
+							from.push("{@item dwarven plate}");
 							break;
-
+						case "elven chain":
+							from.push("{@item elven chain}");
+							break;
+						case "glamoured studded leather":
+							from.push("{@item glamoured studded leather}");
+							break;
 						case "bracers of defense":
 							from.push("{@item bracers of defense}");
+							break;
+						case "badge of the watch":
+							from.push("{@item Badge of the Watch|wdh}");
+							break;
+						case "ring of protection":
+							from.push("{@item ring of protection}");
+							break;
+						case "robe of the archmagi":
+							from.push("{@item robe of the archmagi}");
+							break;
+						case "staff of power":
+							from.push("{@item staff of power}");
 							break;
 
 						// TODO general auto-detect for enchanted versions of items
@@ -162,6 +180,12 @@ class ConverterUtils {
 							break;
 						case "studded leather armor +1":
 							from.push("{@item studded leather armor +1|dmg|+1 studded leather armor}");
+							break;
+						case "+2 leather armor":
+							from.push("{@item leather armor +2|dmg|+2 leather armor}");
+							break;
+						case "+3 leather armor":
+							from.push("{@item leather armor +3|dmg|+3 leather armor}");
 							break;
 
 						default: {

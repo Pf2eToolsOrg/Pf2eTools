@@ -155,6 +155,7 @@ function tryParseSpellcasting (trait, isMarkdown) {
 				if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
 				let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
 				spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
+				if (!spellcastingEntry.spells[property]) delete spellcastingEntry.spells[property];
 			} else {
 				if (doneHeader) {
 					if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];

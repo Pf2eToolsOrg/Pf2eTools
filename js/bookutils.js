@@ -201,7 +201,7 @@ const BookUtil = {
 			BookUtil.renderArea.html("");
 
 			const chapterTitle = (fromIndex.contents[chapter] || {}).name;
-			document.title = `${chapterTitle ? `${chapterTitle} - ` : ""} - ${fromIndex.name} - 5etools`;
+			document.title = `${chapterTitle ? `${chapterTitle} - ` : ""}${fromIndex.name} - 5etools`;
 
 			const goToPage = (mod) => {
 				const changeChapter = () => {
@@ -325,13 +325,22 @@ const BookUtil = {
 	},
 
 	initLinkGrabbers () {
-		$(`body`).on(`click`, `.entry-title-inner`, function () {
+		const $body = $(`body`);
+		$body.on(`mousedown`, `.entry-title-inner`, function (evt) {
+			evt.preventDefault();
+		});
+		$body.on(`click`, `.entry-title-inner`, function (evt) {
 			const $this = $(this);
 			const text = $this.text().replace(/\.$/, "");
 
-			const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")];
-			copyText(toCopy.join(HASH_PART_SEP));
-			showCopiedEffect($this);
+			if (evt.shiftKey) {
+				copyText(text);
+				showCopiedEffect($this);
+			} else {
+				const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")];
+				copyText(toCopy.join(HASH_PART_SEP));
+				showCopiedEffect($this, "Copied link!");
+			}
 		});
 	},
 
@@ -587,7 +596,7 @@ const BookUtil = {
 						lastItem.matches[1] = slice.match;
 					}
 				}
-			} else if (!(obj.type === "image" || obj.type === "link" || obj.type === "abilityGeneric")) {
+			} else if (!(obj.type === "image" || obj.type === "gallery" || obj.type === "link" || obj.type === "abilityGeneric")) {
 				throw new Error("Unhandled entity type")
 			}
 

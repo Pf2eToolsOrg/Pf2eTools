@@ -7531,7 +7531,7 @@
 							"type": "table",
 							"caption": "Villain's Scheme",
 							"colLabels": [
-								"d8",
+								"{@dice d8}",
 								"Objective",
 								"Scheme"
 							],
@@ -7542,8 +7542,13 @@
 							],
 							"rows": [
 								[
-									"1",
-									"Immortality (d4)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 1
+										}
+									},
+									"Immortality ({@dice d4|d4|Immortality})",
 									""
 								],
 								[
@@ -7567,8 +7572,13 @@
 									"Steal a planar creature's essence"
 								],
 								[
-									"2",
-									"Influence (d4)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 2
+										}
+									},
+									"Influence ({@dice d4|d4|Influence})",
 									""
 								],
 								[
@@ -7592,8 +7602,13 @@
 									"Place a pawn in a position of power"
 								],
 								[
-									"3",
-									"Magic (d6)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 3
+										}
+									},
+									"Magic ({@dice d6|d6|Magic})",
 									""
 								],
 								[
@@ -7627,8 +7642,13 @@
 									"Open a gate to another world"
 								],
 								[
-									"4",
-									"Mayhem (d6)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 4
+										}
+									},
+									"Mayhem ({@dice d6|d6|Mayhem})",
 									""
 								],
 								[
@@ -7662,8 +7682,13 @@
 									"Utterly destroy a bloodline or clan"
 								],
 								[
-									"5",
-									"Passion (d4)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 5
+										}
+									},
+									"Passion ({@dice d4})",
 									""
 								],
 								[
@@ -7687,8 +7712,13 @@
 									"Destroy rivals for another person's affection"
 								],
 								[
-									"6",
-									"Power (d4)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 6
+										}
+									},
+									"Power ({@dice d4|d4|Power})",
 									""
 								],
 								[
@@ -7712,8 +7742,13 @@
 									"Gain the favor of a ruler"
 								],
 								[
-									"7",
-									"Revenge (d4)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 7
+										}
+									},
+									"Revenge ({@dice d4})",
 									""
 								],
 								[
@@ -7737,8 +7772,13 @@
 									"Retrieve stolen property and punish the thief"
 								],
 								[
-									"8",
-									"Wealth (d4)",
+									{
+										"type": "cell",
+										"roll": {
+											"exact": 8
+										}
+									},
+									"Wealth ({@dice d4|d4|Wealth})",
 									""
 								],
 								[

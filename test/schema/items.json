@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"type": "object",
 	"definitions": {
 		"item": {
@@ -14,7 +14,7 @@
 				},
 				"rarity": {
 					"type": "string",
-					"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items.",
+					"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items. \"Varies\" is for item groups.",
 					"enum": [
 						"Rare",
 						"None",
@@ -24,7 +24,8 @@
 						"Artifact",
 						"Unknown",
 						"Common",
-						"Unknown (Magic)"
+						"Unknown (Magic)",
+						"Varies"
 					]
 				},
 				"source": {

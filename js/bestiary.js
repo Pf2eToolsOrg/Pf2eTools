@@ -344,7 +344,7 @@ function pPageInit (loadedSources) {
 			if (lastRendered.isScaled) {
 				if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 20, getScaledData());
 				else ListUtil.doSublistSubtract(History.lastLoadedId, 1, getScaledData());
-			} else ListUtil._genericAddButtonHandler(evt);
+			} else ListUtil._genericSubtractButtonHandler(evt);
 		};
 	}
 	ListUtil.bindAddButton(addHandlerGenerator);
@@ -429,7 +429,7 @@ function handleFilterChange () {
 		const m = monsters[$(item.elm).attr(FLTR_ID)];
 		return filterBox.toDisplay(
 			f,
-			m.source,
+			m._fSources,
 			m._pCr,
 			m._pTypes.type,
 			m._pTypes.tags,
@@ -505,6 +505,7 @@ function addMonsters (data) {
 		mon._fCondImm = mon.conditionImmune ? getAllImmRest(mon.conditionImmune, "conditionImmune") : [];
 		mon._fSave = mon.save ? Object.keys(mon.save) : [];
 		mon._fSkill = mon.skill ? Object.keys(mon.skill) : [];
+		mon._fSources = ListUtil.getCompleteSources(mon);
 
 		const abvSource = Parser.sourceJsonToAbv(mon.source);
 
@@ -520,7 +521,7 @@ function addMonsters (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(new FilterItem({item: mon.source, changeFn: () => {}}));
+		sourceFilter.addIfAbsent(mon._fSources);
 		crFilter.addIfAbsent(mon._pCr);
 		strengthFilter.addIfAbsent(mon.str);
 		dexterityFilter.addIfAbsent(mon.dex);
@@ -877,7 +878,8 @@ function renderStatblock (mon, isScaled) {
 		const srcCpy = {
 			source: mon.source,
 			sourceSub: mon.sourceSub,
-			page: mon.page
+			page: mon.page,
+			otherSources: mon.otherSources
 		};
 		const additional = mon.additionalSources ? JSON.parse(JSON.stringify(mon.additionalSources)) : [];
 		if (mon.variant && mon.variant.length > 1) {
@@ -1205,8 +1207,9 @@ function loadsub (sub) {
 	if (scaledHash) {
 		const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[SUB_SCALED][0]);
 		const scaleToStr = Parser.numberToCr(scaleTo);
+		const mon = monsters[History.lastLoadedId];
 		if (Parser.isValidCr(scaleToStr) && scaleTo !== Parser.crToNumber(lastRendered.mon.cr)) {
-			ScaleCreature.scale(lastRendered.mon, scaleTo).then(scaled => renderStatblock(scaled, true));
+			ScaleCreature.scale(mon, scaleTo).then(scaled => renderStatblock(scaled, true));
 		}
 	}
 }

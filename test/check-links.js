@@ -144,7 +144,8 @@ function checkFile (file) {
 			toEncode.push(match[4] || TAG_TO_DEFAULT_SOURCE[tag]);
 		}
 
-		const url = `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash(toEncode)}`.toLowerCase().trim();
+		const url = `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash(toEncode)}`.toLowerCase().trim()
+			.replace(/%5c/gi, ""); // replace slashes
 		if (!ALL_URLS.has(url)) msg += `Missing link: ${match[0]} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 	}
 
