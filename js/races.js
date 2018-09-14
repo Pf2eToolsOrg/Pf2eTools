@@ -82,6 +82,7 @@ function onJsonLoad (data) {
 			"Darkvision", "Superior Darkvision",
 			"Dragonmark",
 			"Improved Resting",
+			"Monstrous Race",
 			"Natural Armor",
 			"NPC Race",
 			"Powerful Build",

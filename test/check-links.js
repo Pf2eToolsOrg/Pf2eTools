@@ -83,9 +83,13 @@ const VALID_ACTIONS = new Set([
 	"Use an Object"
 ]);
 
+function isIgnored (directory) {
+	return directory === "./data/roll20-module";
+}
+
 function fileRecurse (file, fileHandler) {
 	if (file.endsWith(".json")) fileHandler(file);
-	else if (fs.lstatSync(file).isDirectory()) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler))
+	else if (fs.lstatSync(file).isDirectory() && !isIgnored(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler))
 }
 
 function dataRecurse (file, obj, primitiveHandlers) {

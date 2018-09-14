@@ -44,6 +44,17 @@ const categoryFilter = new Filter({
 	]
 });
 
+function unpackAlignment (g) {
+	g.alignment.sort(SortUtil.alignmentSort);
+	if (g.alignment.length === 2 && g.alignment.includes("N")) {
+		const out = [...g.alignment];
+		if (out[0] === "N") out[0] = "NX";
+		else out[1] = "NY";
+		return out;
+	}
+	return MiscUtil.copy(g.alignment);
+}
+
 let filterBox;
 function onJsonLoad (data) {
 	list = ListUtil.search({
@@ -54,7 +65,7 @@ function onJsonLoad (data) {
 
 	const alignmentFilter = new Filter({
 		header: "Alignment",
-		items: ["C", "E", "G", "L", "N"],
+		items: ["L", "NX", "C", "G", "NY", "E", "N"],
 		displayFn: Parser.alignmentAbvToFull
 	});
 	const domainFilter = new Filter({
@@ -120,7 +131,7 @@ function addDeities (data) {
 		if (ExcludeUtil.isExcluded(g.name, "deity", g.source)) continue;
 		const abvSource = Parser.sourceJsonToAbv(g.source);
 
-		g.alignment.sort(SortUtil.alignmentSort);
+		g._fAlign = unpackAlignment(g);
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
 		g.domains.sort(SortUtil.ascSort);
@@ -174,7 +185,7 @@ function handleFilterChange () {
 		return filterBox.toDisplay(
 			f,
 			g.source,
-			g.alignment,
+			g._fAlign,
 			g.pantheon,
 			g.category,
 			g.domains,

@@ -581,6 +581,13 @@ dialog.dialog-modal {
 	}
 }
 
+// FIXME this fixes the missing scrollbar on Firefox, but breaks auto-scrolling when rolling
+//@-moz-document url-prefix() {
+//	.out-roll .out-roll-wrp {
+//		max-height: 100%;
+//	}
+//}
+
 /* *** */
 
 /* homebrew manager */
@@ -2745,7 +2752,7 @@ span.showhide {
 /* ENTRY RENDERING CSS */
 table.stats div.statsBlockSectionHead > span.entry-title,
 table.stats div.statsBlockHead > span.entry-title,
-table.stats div.statsBlockHead div.statsBlockSubHead > span.entry-title {
+table.stats div.statsBlockSubHead > span.entry-title {
 	color: $name-red;
 	display: block;
 	font-family: 'Andada', serif;

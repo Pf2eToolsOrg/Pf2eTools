@@ -337,7 +337,8 @@ const BookUtil = {
 				copyText(text);
 				showCopiedEffect($this);
 			} else {
-				const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")];
+				const hashParts = [BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")].map(it => UrlUtil.encodeForHash(it));
+				const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, ...hashParts];
 				copyText(toCopy.join(HASH_PART_SEP));
 				showCopiedEffect($this, "Copied link!");
 			}
@@ -596,8 +597,8 @@ const BookUtil = {
 						lastItem.matches[1] = slice.match;
 					}
 				}
-			} else if (!(obj.type === "image" || obj.type === "gallery" || obj.type === "link" || obj.type === "abilityGeneric")) {
-				throw new Error("Unhandled entity type")
+			} else if (!(obj.type === "image" || obj.type === "gallery" || obj.type === "link" || obj.type === "abilityGeneric" || obj.type === "cell")) {
+				throw new Error("Unhandled entity type");
 			}
 
 			function getSubstring (rendered, first, last) {
