@@ -111,6 +111,14 @@ class History {
 		return link ? link.split(HASH_LIST_SEP).last() : null;
 	}
 
+	static getSubHash (key) {
+		const [link, ...sub] = History._getHashParts();
+		const hKey = `${key}${HASH_SUB_KV_SEP}`;
+		const part = sub.find(it => it.startsWith(hKey));
+		if (part) return part.slice(hKey.length);
+		return null;
+	}
+
 	/**
 	 * Sets a subhash with the key specified, overwriting any existing.
 	 * @param key Subhash key.
@@ -122,7 +130,7 @@ class History {
 
 		const hKey = `${key}${HASH_SUB_KV_SEP}`;
 		const out = [link];
-		if (sub.length) out.push(sub.filter(it => !it.startsWith(hKey)));
+		if (sub.length) sub.filter(it => !it.startsWith(hKey)).forEach(it => out.push(it));
 		if (val != null) out.push(`${hKey}${val}`);
 
 		History.cleanSetHash(out.join(HASH_PART_SEP));

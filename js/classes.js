@@ -339,7 +339,14 @@ class HashLoad {
 				const featureLink = $(`<a href="${HashLoad.getClassHash(
 					ClassDisplay.curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
 				featureLink.click(function () {
-					document.getElementById(featureId).scrollIntoView();
+					const hideClassFsKey = HASH_HIDE_FEATURES.slice(0, -1);
+					const hiddenState = History.getSubHash(hideClassFsKey) === "true";
+					if (hiddenState) {
+						setTimeout(() => {
+							History.setSubhash(hideClassFsKey, null);
+							setTimeout(() => document.getElementById(featureId).scrollIntoView(), 1);
+						}, 1);
+					} else document.getElementById(featureId).scrollIntoView();
 				});
 				if (feature.type !== "inset") featureLinks.push(featureLink);
 
