@@ -7254,131 +7254,31 @@
 					]
 				}
 			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Bone Devil Polearm",
+					"entries": [
+						"Some bone devils have the following action options.",
+						{
+							"name": "Multiattack",
+							"type": "entries",
+							"entries": [
+								"The devil makes two attacks: one with its hooked polearm and one with its sting."
+							]
+						},
+						{
+							"name": "Hooked Polearm",
+							"type": "entries",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 17 ({@dice 2d12 + 4}) piercing damage. If the target is a Huge or smaller creature, it is grappled (escape DC 14). Until this grapple ends, the devil can't use its polearm on another target."
+							]
+						}
+					]
+				}
+			],
 			"page": 71,
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/65/bone-devil.mp3",
-			"traitTags": [
-				"Devil's Sight",
-				"Magic Resistance"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"I",
-				"TP"
-			],
-			"senseTags": [
-				"SD"
-			]
-		},
-		{
-			"name": "Bone Devil Polearm",
-			"size": "L",
-			"type": {
-				"type": "fiend",
-				"tags": [
-					"devil"
-				]
-			},
-			"source": "MM",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 19,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 142,
-				"formula": "15d10 + 60"
-			},
-			"speed": {
-				"walk": 40,
-				"fly": 40
-			},
-			"str": 18,
-			"dex": 16,
-			"con": 18,
-			"int": 13,
-			"wis": 14,
-			"cha": 16,
-			"save": {
-				"int": "+5",
-				"wis": "+6",
-				"cha": "+7"
-			},
-			"skill": {
-				"deception": "+7",
-				"insight": "+6"
-			},
-			"resist": [
-				"cold",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks that aren't silvered"
-				}
-			],
-			"immune": [
-				"fire",
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"senses": "darkvision 120 ft.",
-			"passive": 9,
-			"languages": "Infernal, telepathy 120 ft.",
-			"cr": "9",
-			"trait": [
-				{
-					"name": "Devil's Sight",
-					"entries": [
-						"Magical darkness doesn't impede the devil's darkvision."
-					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"The devil has advantage on saving throws against spells and other magical effects."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The devil makes three attacks: two with its hooked polearm and one with its sting."
-					]
-				},
-				{
-					"name": "Hooked Polearm",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 17 ({@damage 2d12 + 4}) piercing damage. If the target is a huge or smaller creature, it is {@condition grappled} (escape DC 14). Until the grapple ends, the devil can't use its polearm on another target."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 8 ({@damage 1d8 + 4}) slashing damage."
-					]
-				},
-				{
-					"name": "Sting",
-					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 13 ({@damage 2d8 + 4}) piercing damage plus 17 ({@damage 5d6}) poison damage, and the target must succeed on a DC 14 Constitution saving throw or become {@condition poisoned} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-					]
-				}
-			],
-			"page": 71,
 			"traitTags": [
 				"Devil's Sight",
 				"Magic Resistance"
@@ -12187,184 +12087,31 @@
 					"ability": "wis"
 				}
 			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Drider Spellcasting",
+					"entries": [
+						"Driders that were once drow spellcasters might retain their ability to cast spells. Such driders typically have a higher spellcasting ability (15 or 16) than other driders. Further, the drider gains the Spellcasting trait. A drider that was a drow divine spellcaster, therefore, could have a Wisdom of 16 (+3) and a Spellcasting trait as follows.",
+						"Spellcasting. The drider is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). The drider has the following spells prepared from the cleric spell list:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								"Cantrips (at will): {@spell poison spray}, {@spell thaumaturgy}",
+								"1st level (4 slots): {@spell bane}, {@spell detect magic}, {@spell sanctuary}",
+								"2nd level (3 slots): {@spell hold person}, {@spell silence}",
+								"3rd level (3 slots): {@spell clairvoyance}, {@spell dispel magic}",
+								"4th level (2 slots): {@spell divination}, {@spell freedom of movement}"
+							]
+						}
+					]
+				}
+			],
 			"environment": [
 				"underdark"
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/137/drider.mp3",
-			"traitTags": [
-				"Fey Ancestry",
-				"Spider Climb",
-				"Sunlight Sensitivity",
-				"Web Walker"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"E",
-				"U"
-			],
-			"senseTags": [
-				"SD"
-			]
-		},
-		{
-			"name": "Drider Spellcaster",
-			"size": "L",
-			"type": "monstrosity",
-			"source": "MM",
-			"alignment": [
-				"C",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 19,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 123,
-				"formula": "13d10 + 52"
-			},
-			"speed": {
-				"walk": 30,
-				"climb": 30
-			},
-			"str": 16,
-			"dex": 16,
-			"con": 18,
-			"int": 13,
-			"wis": 16,
-			"cha": 12,
-			"skill": {
-				"perception": "+5",
-				"stealth": "+9"
-			},
-			"senses": "darkvision 120 ft.",
-			"passive": 15,
-			"languages": "Elvish, Undercommon",
-			"cr": "6",
-			"trait": [
-				{
-					"name": "Fey Ancestry",
-					"entries": [
-						"The drider has advantage on saving throws against being {@condition charmed}, and magic can't put the drider to sleep."
-					]
-				},
-				{
-					"name": "Spider Climb",
-					"entries": [
-						"The drider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, the drider has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-					]
-				},
-				{
-					"name": "Web Walker",
-					"entries": [
-						"The drider ignores movement restrictions caused by webbing."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The drider makes three attacks, either with its longsword or its longbow. It can replace one of those attacks with a bite attack."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. Hit: 2 ({@damage 1d4}) piercing damage plus 9 ({@damage 2d8}) poison damage."
-					]
-				},
-				{
-					"name": "Longsword",
-					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands."
-					]
-				},
-				{
-					"name": "Longbow",
-					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 150/600 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage plus 4 ({@damage 1d8}) poison damage."
-					]
-				}
-			],
-			"page": 120,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The drider's innate spellcasting ability is Wisdom (spell save DC 13). The drider can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell dancing lights}"
-					],
-					"daily": {
-						"1e": [
-							"{@spell darkness}",
-							"{@spell faerie fire}"
-						]
-					},
-					"ability": "wis"
-				},
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The drider is a 7th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). The drider has the following spells prepared from the cleric spell list:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell poison spray}",
-								"{@spell thaumaturgy}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell bane}",
-								"{@spell detect magic}",
-								"{@spell sanctuary}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell hold person}",
-								"{@spell silence}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell clairvoyance}",
-								"{@spell dispel magic}"
-							]
-						},
-						"4": {
-							"slots": 2,
-							"spells": [
-								"{@spell divination}",
-								"{@spell freedom of movement}"
-							]
-						}
-					},
-					"ability": "wis"
-				}
-			],
-			"environment": [
-				"underdark"
-			],
 			"traitTags": [
 				"Fey Ancestry",
 				"Spider Climb",
@@ -13374,6 +13121,16 @@
 					"name": "Javelin",
 					"entries": [
 						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 ({@damage 1d6 + 1}) piercing damage."
+					]
+				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Rogue Modrons",
+					"entries": [
+						"A modron unit sometimes becomes defective, either through natural decay or exposure to chaotic forces. Rogue modrons don't act in accordance with Primus's wishes and directives, breaking laws, disobeying orders, and even engaging in violence. Other modrons hunt down such rogues.",
+						"A rogue modron loses the Axiomatic Mind trait and can have any alignment other than lawful neutral. Otherwise, it has the same statistics as a regular modron of its rank."
 					]
 				}
 			],
@@ -28378,6 +28135,16 @@
 					]
 				}
 			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Rogue Modrons",
+					"entries": [
+						"A modron unit sometimes becomes defective, either through natural decay or exposure to chaotic forces. Rogue modrons don't act in accordance with Primus's wishes and directives, breaking laws, disobeying orders, and even engaging in violence. Other modrons hunt down such rogues.",
+						"A rogue modron loses the Axiomatic Mind trait and can have any alignment other than lawful neutral. Otherwise, it has the same statistics as a regular modron of its rank."
+					]
+				}
+			],
 			"page": 224,
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/341/monodrone.mp3",
 			"languageTags": [
@@ -31212,6 +30979,16 @@
 					]
 				}
 			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Rogue Modrons",
+					"entries": [
+						"A modron unit sometimes becomes defective, either through natural decay or exposure to chaotic forces. Rogue modrons don't act in accordance with Primus's wishes and directives, breaking laws, disobeying orders, and even engaging in violence. Other modrons hunt down such rogues.",
+						"A rogue modron loses the Axiomatic Mind trait and can have any alignment other than lawful neutral. Otherwise, it has the same statistics as a regular modron of its rank."
+					]
+				}
+			],
 			"page": 226,
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/381/pentadrone.mp3",
 			"actionTags": [
@@ -32626,6 +32403,16 @@
 					]
 				}
 			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Rogue Modrons",
+					"entries": [
+						"A modron unit sometimes becomes defective, either through natural decay or exposure to chaotic forces. Rogue modrons don't act in accordance with Primus's wishes and directives, breaking laws, disobeying orders, and even engaging in violence. Other modrons hunt down such rogues.",
+						"A rogue modron loses the Axiomatic Mind trait and can have any alignment other than lawful neutral. Otherwise, it has the same statistics as a regular modron of its rank."
+					]
+				}
+			],
 			"page": 226,
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/396/quadrone.mp3",
 			"actionTags": [
@@ -33734,6 +33521,15 @@
 					"name": "Vengeful Glare",
 					"entries": [
 						"The revenant targets one creature it can see within 30 feet of it and against which it has sworn vengeance. The target must make a DC 15 Wisdom saving throw. On a failure, the target is {@condition paralyzed} until the revenant deals damage to it, or until the end of the revenant's next turn. When the paralysis ends, the target is {@condition frightened} of the revenant for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, with disadvantage if it can see the revenant, ending the {@condition frightened} condition on itself on a success."
+					]
+				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Revenants with Spells and Weapons",
+					"entries": [
+						"Revenants that were spellcasters before they died might retain some or all of their spellcasting capabilities. Similarly, revenants that wore armor and wielded weapons in life might continue to do so."
 					]
 				}
 			],
@@ -39243,6 +39039,16 @@
 					]
 				}
 			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Rogue Modrons",
+					"entries": [
+						"A modron unit sometimes becomes defective, either through natural decay or exposure to chaotic forces. Rogue modrons don't act in accordance with Primus's wishes and directives, breaking laws, disobeying orders, and even engaging in violence. Other modrons hunt down such rogues.",
+						"A rogue modron loses the Axiomatic Mind trait and can have any alignment other than lawful neutral. Otherwise, it has the same statistics as a regular modron of its rank."
+					]
+				}
+			],
 			"page": 225,
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/495/tridrone.mp3",
 			"actionTags": [
@@ -41195,6 +41001,57 @@
 					"name": "Hooves",
 					"entries": [
 						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4}) bludgeoning damage."
+					]
+				}
+			],
+			"variant": [
+				{
+					"type": "variant",
+					"name": "Warhorse Armor",
+					"entries": [
+						"An armored warhorse has an AC based on the type of barding worn (see the Player's Handbook for more information on barding). The horse's AC includes its Dexterity modifier, where applicable. Barding doesn't alter the horse's challenge rating.",
+						{
+							"type": "table",
+							"caption": "",
+							"colLabels": [
+								"AC",
+								"Barding"
+							],
+							"colStyles": [
+								"col-xs-6",
+								"col-xs-6"
+							],
+							"rows": [
+								[
+									"12",
+									"Leather"
+								],
+								[
+									"13",
+									"Studded leather"
+								],
+								[
+									"14",
+									"Ring mail"
+								],
+								[
+									"15",
+									"Scale mail"
+								],
+								[
+									"16",
+									"Chain mail"
+								],
+								[
+									"17",
+									"Splint"
+								],
+								[
+									"18",
+									"Plate"
+								]
+							]
+						}
 					]
 				}
 			],

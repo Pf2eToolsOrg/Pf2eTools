@@ -7698,14 +7698,14 @@
 					"name": "Weapon Invention",
 					"entries": [
 						"The kobold uses one of the following options (roll a {@dice d8} or choose one); the kobold can use each one no more than once per day:",
-						"1. Acid. The kobold hurls a flask of acid. Ranged Weapon Attack: {@hit 4} to hit, range 5/20 ft., one target. Hit: 7 ({@damage 2d6}) acid damage.",
-						"2. Alchemist's fire. The kobold throws a flask of alchemist's fire. Ranged Weapon Attack: {@hit 4} to hit, range 5/20 ft., one target. Hit: 2 ({@damage 1d4}) fire damage at the start of each of the target's turns. A creature can end this damage by using its action to make a DC 10 Dexterity check to extinguish the flames.",
-						"3. Basket of Centipedes. The kobold throws a small basket into a 5-foot-square space within 20 feet of it. A {@creature swarm of centipedes|mm|swarm of insects (centipedes)} with 11 hit points emerges from the basket and rolls initiative. At the end of each of the swarm's turns, there's a 50 percent chance that the swarm disperses.",
-						"4. Green Slime Pot. The kobold throws a clay pot full of green slime at the target, and it breaks open on impact. Ranged Weapon Attack: {@hit 4} to hit, range 5/20 ft., one target. Hit: The target is covered in a patch of green slime (see chapter 5 of the Dungeon Master's Guide). Miss: A patch of green slime covers a randomly determined 5-foot-square section of wall or floor within 5 feet of the target.",
-						"5. Rot Grub Pot. The kobold throws a clay pot into a 5-foot-square space within 20 feet of it, and it breaks open on impact. A swarm of rot grubs (see appendix A) emerges from the shattered pot and remains a hazard in that square.",
-						"6. Scorpion on a Stick. The kobold makes a melee attack with a scorpion tied to the end of a 5-foot-long pole. Melee Weapon Attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 1 piercing damage, and the target must make a DC 9 Constitution saving throw, taking 4 ({@damage 1d8}) poison damage on a failed save, or half as much damage on a successful one.",
-						"7. Skunk in a Cage. The kobold releases a skunk into an unoccupied space within 5 feet of it. The skunk has a walking speed of 20 feet, AC 10, 1 hit point, and no effective attacks. It rolls initiative and, on its turn, uses its action to spray musk at a random creature within 5 feet of it. The target must make a DC 9 Constitution saving throw. On a failed save, the target retches and can't take actions for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. A creature that doesn't need to breathe or is immune to poison automatically succeeds on the saving throw. Once the skunk has sprayed its musk, it can't do so again until it finishes a short or long rest.",
-						"8. Wasp Nest in a Bag. The kobold throws a small bag into a 5-foot-square space within 20 feet of it. A {@creature swarm of wasps|mm|swarm of insects (wasps)} with 11 hit points emerges from the bag and rolls initiative. At the end of each of the swarm's turns, there's a 50 percent chance that the swarm disperses."
+						"{@i1. Acid}. The kobold hurls a flask of {@item Acid (vial)|phb|acid}. {@atk rw} {@hit 4} to hit, range 5/20 ft., one target. Hit: 7 ({@damage 2d6}) acid damage.",
+						"{@i 2. Alchemist's fire}. The kobold throws a flask of {@item Alchemist's Fire (flask)|phb|alchemist's fire}. {@atk rw} {@hit 4} to hit, range 5/20 ft., one target. Hit: 2 ({@damage 1d4}) fire damage at the start of each of the target's turns. A creature can end this damage by using its action to make a DC 10 Dexterity check to extinguish the flames.",
+						"{@i 3. Basket of Centipedes}. The kobold throws a small basket into a 5-foot-square space within 20 feet of it. A {@creature swarm of centipedes|mm|swarm of insects (centipedes)} with 11 hit points emerges from the basket and rolls initiative. At the end of each of the swarm's turns, there's a {@chance 50} chance that the swarm disperses.",
+						"{@i 4. Green Slime Pot}. The kobold throws a clay pot full of green slime at the target, and it breaks open on impact. {@atk rw} {@hit 4} to hit, range 5/20 ft., one target. Hit: The target is covered in a patch of {@hazard green slime} (see chapter 5 of the Dungeon Master's Guide). Miss: A patch of green slime covers a randomly determined 5-foot-square section of wall or floor within 5 feet of the target.",
+						"{@i 5. Rot Grub Pot}. The kobold throws a clay pot into a 5-foot-square space within 20 feet of it, and it breaks open on impact. A {@creature Swarm of Rot Grubs|vgm|swarm of rot grubs} (see appendix A) emerges from the shattered pot and remains a hazard in that square.",
+						"{@i 6. Scorpion on a Stick}. The kobold makes a melee attack with a scorpion tied to the end of a 5-foot-long pole. {@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 1 piercing damage, and the target must make a DC 9 Constitution saving throw, taking 4 ({@damage 1d8}) poison damage on a failed save, or half as much damage on a successful one.",
+						"{@i 7. Skunk in a Cage}. The kobold releases a skunk into an unoccupied space within 5 feet of it. The skunk has a walking speed of 20 feet, AC 10, 1 hit point, and no effective attacks. It rolls initiative and, on its turn, uses its action to spray musk at a random creature within 5 feet of it. The target must make a DC 9 Constitution saving throw. On a failed save, the target retches and can't take actions for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. A creature that doesn't need to breathe or is immune to poison automatically succeeds on the saving throw. Once the skunk has sprayed its musk, it can't do so again until it finishes a short or long rest.",
+						"{@i 8. Wasp Nest in a Bag}. The kobold throws a small bag into a 5-foot-square space within 20 feet of it. A {@creature swarm of wasps|mm|swarm of insects (wasps)} with 11 hit points emerges from the bag and rolls initiative. At the end of each of the swarm's turns, there's a {@chance 50} chance that the swarm disperses."
 					]
 				}
 			],
@@ -8258,9 +8258,14 @@
 					"name": "Unarmed Strike",
 					"entries": [
 						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) bludgeoning damage. If the target is a creature, the adept can choose one of the following additional effects:",
-						"The target must succeed on a DC 13 Strength saving throw or drop one item it is holding (adept's choice).",
-						"The target must succeed on a DC 13 Dexterity saving throw or be knocked {@condition prone}.",
-						"The target must succeed on a DC 13 Constitution saving throw or be {@condition stunned} until the end of the adept's next turn."
+						{
+							"type": "list",
+							"items": [
+								"The target must succeed on a DC 13 Strength saving throw or drop one item it is holding (adept's choice).",
+								"The target must succeed on a DC 13 Dexterity saving throw or be knocked {@condition prone}.",
+								"The target must succeed on a DC 13 Constitution saving throw or be {@condition stunned} until the end of the adept's next turn."
+							]
+						}
 					]
 				},
 				{

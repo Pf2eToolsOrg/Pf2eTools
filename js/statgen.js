@@ -10,6 +10,7 @@ function loadRaceJson () {
 }
 
 window.onload = function load () {
+	ExcludeUtil.initialise();
 	loadRaceJson();
 	prevent();
 };
@@ -19,6 +20,7 @@ function onJsonLoad (data) {
 		.then((brew) => {
 			raceData = EntryRenderer.race.mergeSubraces(data.race);
 			if (brew.race) raceData = raceData.concat(brew.race);
+			raceData = raceData.filter(it => !ExcludeUtil.isExcluded(it.name, "race", it.source));
 
 			$("#rollbutton").click(rollstats);
 

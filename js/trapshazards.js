@@ -27,10 +27,12 @@ function onJsonLoad (data) {
 			"HAZ",
 			"WTH",
 			"ENV",
-			"WLD"
+			"WLD",
+			"GEN"
 		],
 		displayFn: Parser.trapHazTypeToFull
 	});
+	typeFilter.items.sort((a, b) => SortUtil.ascSortLower(Parser.trapHazTypeToFull(a), Parser.trapHazTypeToFull(b)));
 	filterBox = initFilterBox(
 		sourceFilter,
 		typeFilter
@@ -166,11 +168,12 @@ function loadhash (jsonIndex) {
 
 	const simplePart = EntryRenderer.traphazard.getSimplePart(renderer, it);
 	const complexPart = EntryRenderer.traphazard.getComplexPart(renderer, it);
+	const subtitle = EntryRenderer.traphazard.getSubtitle(it);
 	const $content = $(`#pagecontent`).empty();
 	$content.append(`
 		${EntryRenderer.utils.getBorderTr()}
 		${EntryRenderer.utils.getNameTr(it)}
-		<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i></td>
+		${subtitle ? `<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i></td>` : ""}
 		<tr class="text"><td colspan="6">${renderStack.join("")}${simplePart || ""}${complexPart || ""}</td></tr>
 		${EntryRenderer.utils.getPageTr(it)}
 		${EntryRenderer.utils.getBorderTr()}

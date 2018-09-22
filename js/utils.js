@@ -237,6 +237,11 @@ String.prototype.isNumeric = String.prototype.isNumeric ||
 		return !isNaN(parseFloat(this)) && isFinite(this);
 	};
 
+String.prototype.last = String.prototype.last ||
+	function () {
+		return this[this.length - 1];
+	};
+
 Array.prototype.joinConjunct = Array.prototype.joinConjunct ||
 	function (joiner, lastJoiner, nonOxford) {
 		if (this.length === 0) return "";
@@ -1113,7 +1118,7 @@ Parser.levelToFull = function (level) {
 	return level + "th";
 };
 
-Parser.prereqSpellToFull = function (spell) {
+Parser.prereqSpellOrFeatureToFull = function (spell) {
 	if (spell === "eldritch blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
 	else if (spell === "hex/curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell hex} spell or a warlock feature that curses");
 	else if (spell) return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}}`);
@@ -1140,7 +1145,9 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 };
 
 Parser.optFeatureTypeToFull = function (type) {
-	return Parser._parse_aToB(Parser.OPT_FEATURE_TYPE_TO_FULL, type);
+	if (Parser.OPT_FEATURE_TYPE_TO_FULL[type]) return Parser.OPT_FEATURE_TYPE_TO_FULL[type];
+	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.optionalFeatureTypes && BrewUtil.homebrewMeta.optionalFeatureTypes[type]) return BrewUtil.homebrewMeta.optionalFeatureTypes[type];
+	return type
 };
 
 Parser.alignmentAbvToFull = function (alignment) {
@@ -1332,7 +1339,8 @@ Parser.TRAP_HAZARD_TYPE_TO_FULL = {
 	HAZ: "Hazard",
 	WTH: "Weather",
 	ENV: "Environmental Hazard",
-	WLD: "Wilderness Hazard"
+	WLD: "Wilderness Hazard",
+	GEN: "Generic"
 };
 
 Parser.tierToFullLevel = function (tier) {
@@ -1859,6 +1867,11 @@ Parser.SKILL_JSON_TO_FULL = {
 };
 
 Parser.ACTION_JSON_TO_FULL = {
+	"Attack": [
+		"The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.",
+		"With this action, you make one melee or ranged attack. See the \"{@book Making an Attack|phb|9|making an attack}\" section for the rules that govern attacks.",
+		"Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action."
+	],
 	"Dash": [
 		"When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
 		"Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash."
@@ -1882,6 +1895,9 @@ Parser.ACTION_JSON_TO_FULL = {
 		"When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.",
 		"When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in chapter 10). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.",
 		"You have until the start of your next turn to use a readied action."
+	],
+	"Search": [
+		"When you take the Search action, you devote your attention to finding something. Depending on the nature of your search, the DM might have you make a Wisdom ({@skill Perception}) check or an Intelligence ({@skill Investigation}) check."
 	],
 	"Use an Object": [
 		"You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn."
@@ -2003,8 +2019,8 @@ function isEmpty (obj) {
 	return Object.keys(obj).length === 0;
 }
 
-if (typeof window !== "undefined") {
-	window.addEventListener("load", () => {
+JqueryUtil = {
+	addSelectors () {
 		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 		$.expr[':'].textEquals = (el, i, m) => {
 			const searchText = m[3];
@@ -2022,8 +2038,10 @@ if (typeof window !== "undefined") {
 			const match = textNode.nodeValue.toLowerCase().trim().match(`${RegExp.escape(searchText.toLowerCase())}`);
 			return match && match.length > 0;
 		};
-	});
-}
+	}
+};
+
+if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.addSelectors);
 
 function copyText (text) {
 	const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
@@ -2106,6 +2124,63 @@ MiscUtil = {
 	expEval (str) {
 		// eslint-disable-next-line no-new-func
 		return new Function(`return ${str.replace(/[^-()\d/*+.]/g, "")}`)();
+	}
+};
+
+// CONTEXT MENUS =======================================================================================================
+ContextUtil = {
+	_ctxInit: {},
+	_ctxClick: {},
+	_handlePreInitContextMenu: (menuId) => {
+		if (ContextUtil._ctxInit[menuId]) return;
+		ContextUtil._ctxInit[menuId] = true;
+		$("body").click(() => $(`#${menuId}`).hide());
+	},
+
+	_getMenuPosition: (menuId, mouse, direction, scrollDir) => {
+		const win = $(window)[direction]();
+		const scroll = $(window)[scrollDir]();
+		const menu = $(`#${menuId}`)[direction]();
+		let position = mouse + scroll;
+		// opening menu would pass the side of the page
+		if (mouse + menu > win && menu < mouse) position -= menu;
+		return position;
+	},
+
+	doInitContextMenu: (menuId, clickFn, labels) => {
+		ContextUtil._ctxClick[menuId] = clickFn;
+		ContextUtil._handlePreInitContextMenu(menuId);
+		let tempString = `<ul id="${menuId}" class="dropdown-menu" role="menu">`;
+		let i = 0;
+		labels.forEach(it => {
+			if (it === null) tempString += `<li class="divider"/>`;
+			else {
+				tempString += `<li><a data-ctx-id="${i}" href="${STR_VOID_LINK}">${it}</a></li>`;
+				i++;
+			}
+		});
+		tempString += `</ul>`;
+		$("body").append(tempString);
+	},
+
+	handleOpenContextMenu: (evt, ele, menuId) => {
+		if (evt.ctrlKey) return;
+		evt.preventDefault();
+		const $menu = $(`#${menuId}`)
+			.data("invokedOn", $(evt.target).closest(`li.row`))
+			.show()
+			.css({
+				position: "absolute",
+				left: ContextUtil._getMenuPosition(menuId, evt.clientX, "width", "scrollLeft"),
+				top: ContextUtil._getMenuPosition(menuId, evt.clientY, "height", "scrollTop")
+			})
+			.off("click")
+			.on("click", "a", function (e) {
+				$menu.hide();
+				const $invokedOn = $menu.data("invokedOn");
+				const $selectedMenu = $(e.target);
+				ContextUtil._ctxClick[menuId](evt, ele, $invokedOn, $selectedMenu);
+			});
 	}
 };
 
@@ -2262,75 +2337,23 @@ ListUtil = {
 		ListUtil.toggleSelected({}, History.getSelectedListElement().parent());
 	},
 
-	_ctxInit: {},
-	_ctxClick: {},
-	_handlePreInitContextMenu: (menuId) => {
-		if (ListUtil._ctxInit[menuId]) return;
-		ListUtil._ctxInit[menuId] = true;
-		$("body").click(() => {
-			$(`#${menuId}`).hide();
-		});
-	},
-
-	_getMenuPosition: (menuId, mouse, direction, scrollDir) => {
-		const win = $(window)[direction]();
-		const scroll = $(window)[scrollDir]();
-		const menu = $(`#${menuId}`)[direction]();
-		let position = mouse + scroll;
-		// opening menu would pass the side of the page
-		if (mouse + menu > win && menu < mouse) position -= menu;
-		return position;
-	},
-
 	initContextMenu: (clickFn, ...labels) => {
-		ListUtil._handleInitContextMenu("contextMenu", clickFn, labels);
+		ContextUtil.doInitContextMenu("list", clickFn, labels);
+	},
+
+	initSubContextMenu: (clickFn, ...labels) => {
+		ContextUtil.doInitContextMenu("listSub", clickFn, labels)
 	},
 
 	openContextMenu: (evt, ele) => {
 		const selCount = ListUtil._primaryLists.map(l => ListUtil.getSelectedCount(l)).reduce((a, b) => a + b, 0);
 		if (selCount === 1) ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
 		if (selCount === 0 || selCount === 1) $(ele).addClass("list-multi-selected");
-		ListUtil._handleOpenContextMenu(evt, ele, "contextMenu");
-	},
-
-	initSubContextMenu: (clickFn, ...labels) => {
-		ListUtil._handleInitContextMenu("contextSubMenu", clickFn, labels.filter(it => it))
+		ContextUtil.handleOpenContextMenu(evt, ele, "list");
 	},
 
 	openSubContextMenu: (evt, ele) => {
-		ListUtil._handleOpenContextMenu(evt, ele, "contextSubMenu");
-	},
-
-	_handleInitContextMenu: (menuId, clickFn, labels) => {
-		ListUtil._ctxClick[menuId] = clickFn;
-		ListUtil._handlePreInitContextMenu(menuId);
-		let tempString = `<ul id="${menuId}" class="dropdown-menu" role="menu">`;
-		labels.forEach((it, i) => {
-			if (it === null) tempString += `<li class="divider"/>`;
-			else tempString += `<li><a data-ctx-id="${i}" href="${STR_VOID_LINK}">${it}</a></li>`;
-		});
-		tempString += `</ul>`;
-		$("body").append(tempString);
-	},
-
-	_handleOpenContextMenu: (evt, ele, menuId) => {
-		if (evt.ctrlKey) return;
-		evt.preventDefault();
-		const $menu = $(`#${menuId}`)
-			.data("invokedOn", $(evt.target).closest(`li.row`))
-			.show()
-			.css({
-				position: "absolute",
-				left: ListUtil._getMenuPosition(menuId, evt.clientX, "width", "scrollLeft"),
-				top: ListUtil._getMenuPosition(menuId, evt.clientY, "height", "scrollTop")
-			})
-			.off("click")
-			.on("click", "a", function (e) {
-				$menu.hide();
-				const $invokedOn = $menu.data("invokedOn");
-				const $selectedMenu = $(e.target);
-				ListUtil._ctxClick[menuId](evt, ele, $invokedOn, $selectedMenu);
-			});
+		ContextUtil.handleOpenContextMenu(evt, ele, "listSub");
 	},
 
 	$sublistContainer: null,
@@ -2623,6 +2646,16 @@ ListUtil = {
 			.forEach(it => forEachFunc(it));
 	},
 
+	mapSelected (list, mapFunc) {
+		return list.items
+			.filter(it => it.elm.className.includes("list-multi-selected"))
+			.map(it => {
+				it.elm.className = it.elm.className.replace(/list-multi-selected/g, "");
+				return it.elm.getAttribute(FLTR_ID);
+			})
+			.map(it => mapFunc(it));
+	},
+
 	getSelectedCount: (list) => {
 		return list.items.filter(it => it.elm.className.includes("list-multi-selected")).length;
 	},
@@ -2681,7 +2714,7 @@ ListUtil = {
 
 	initGenericPinnable: () => {
 		ListUtil.initContextMenu(ListUtil.handleGenericContextMenuClick, "Popout", "Pin");
-		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Clear Pins", null, "Download JSON");
+		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Clear Pins", null, "Feeling Lucky?", null, "Download JSON");
 	},
 
 	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
@@ -2691,13 +2724,55 @@ ListUtil = {
 				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
-				ListUtil._primaryLists.forEach(l => {
-					ListUtil.forEachSelected(l, (it) => {
-						if (!ListUtil.isSublisted(it)) ListUtil.doSublistAdd(it);
-					});
-				});
-				ListUtil._finaliseSublist();
+				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.doSublistAdd(it)))))
+					.then(ListUtil._finaliseSublist);
 				break;
+		}
+	},
+
+	_isRolling: false,
+	_rollSubListed () {
+		const timerMult = RollerUtil.randomise(125, 75);
+		const timers = [0, 1, 1, 1, 1, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2.5, 3, 4, -1] // last element is always sliced off
+			.map(it => it * timerMult)
+			.slice(0, -RollerUtil.randomise(4, 1));
+
+		function generateSequence (array, length) {
+			function rollOnArray () {
+				return array[RollerUtil.randomise(array.length) - 1];
+			}
+
+			const out = [rollOnArray()];
+			for (let i = 0; i < length; ++i) {
+				let next = rollOnArray();
+				while (next === out.last()) {
+					next = rollOnArray();
+				}
+				out.push(next);
+			}
+			return out;
+		}
+
+		if (!ListUtil._isRolling) {
+			ListUtil._isRolling = true;
+			const $eles = ListUtil.sublist.items
+				.map(it => $(it.elm).find(`a`));
+
+			if ($eles.length <= 1) {
+				alert("Not enough entries to roll!");
+				return ListUtil._isRolling = false;
+			}
+
+			const $sequence = generateSequence($eles, timers.length);
+
+			let total = 0;
+			timers.map((it, i) => {
+				total += it;
+				setTimeout(() => {
+					$sequence[i][0].click();
+					if (i === timers.length - 1) ListUtil._isRolling = false;
+				}, total);
+			})
 		}
 	},
 
@@ -2714,6 +2789,9 @@ ListUtil = {
 				ListUtil.doSublistRemoveAll();
 				break;
 			case 3:
+				ListUtil._rollSubListed();
+				break;
+			case 4:
 				ListUtil._handleJsonDownload();
 				break;
 		}
@@ -2721,7 +2799,7 @@ ListUtil = {
 
 	initGenericAddable: () => {
 		ListUtil.initContextMenu(ListUtil.handleGenericMultiContextMenuClick, "Popout", "Add");
-		ListUtil.initSubContextMenu(ListUtil.handleGenericMultiSubContextMenuClick, "Popout", "Remove", "Clear List", null, "Download JSON");
+		ListUtil.initSubContextMenu(ListUtil.handleGenericMultiSubContextMenuClick, "Popout", "Remove", "Clear List", null, "Feeling Lucky?", null, "Download JSON");
 	},
 
 	handleGenericMultiContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
@@ -2731,10 +2809,8 @@ ListUtil = {
 				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
-				ListUtil._primaryLists.forEach(l => {
-					ListUtil.forEachSelected(l, (it) => ListUtil.doSublistAdd(it));
-				});
-				ListUtil._finaliseSublist();
+				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.doSublistAdd(it)))))
+					.then(ListUtil._finaliseSublist);
 				break;
 		}
 	},
@@ -2754,6 +2830,9 @@ ListUtil = {
 				ListUtil.doSublistRemoveAll();
 				break;
 			case 3:
+				ListUtil._rollSubListed();
+				break;
+			case 4:
 				ListUtil._handleJsonDownload();
 				break;
 		}
@@ -3028,6 +3107,8 @@ UrlUtil.PG_REWARDS = "rewards.html";
 UrlUtil.PG_VARIATNRULES = "variantrules.html";
 UrlUtil.PG_ADVENTURE = "adventure.html";
 UrlUtil.PG_ADVENTURES = "adventures.html";
+UrlUtil.PG_BOOK = "book.html";
+UrlUtil.PG_BOOKS = "books.html";
 UrlUtil.PG_DEITIES = "deities.html";
 UrlUtil.PG_CULTS_BOONS = "cultsboons.html";
 UrlUtil.PG_OBJECTS = "objects.html";
@@ -3050,6 +3131,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([i
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIATNRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.pantheon, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS_BOONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -3131,6 +3213,20 @@ SortUtil = {
 		return SortUtil._ascSort(a.toLowerCase(), b.toLowerCase());
 	},
 
+	// warning: slow
+	ascSortNumericalSuffix (a, b) {
+		function popEndNumber (str) {
+			const spl = str.split(" ");
+			return spl.last().isNumeric() ? [spl.slice(0, -1).join(" "), Number(spl.last())] : [spl.join(" "), 0];
+		}
+
+		const [aStr, aNum] = popEndNumber(a.item || a);
+		const [bStr, bNum] = popEndNumber(b.item || b);
+		const initialSort = SortUtil.ascSort(aStr, bStr);
+		if (initialSort) return initialSort;
+		return SortUtil.ascSort(aNum, bNum);
+	},
+
 	_ascSort: (a, b) => {
 		if (b === a) return 0;
 		return b < a ? 1 : -1;
@@ -3194,7 +3290,7 @@ SortUtil = {
 DataUtil = {
 	_loaded: {},
 
-	loadJSON: function (url, ...otherData) {
+	loadJSON: function (url, ...otherData) { // FIXME otherData doesn't get returned, as resolve() can only return a single value
 		return new Promise((resolve, reject) => {
 			function handleAlreadyLoaded (url) {
 				resolve(DataUtil._loaded[url], otherData);
@@ -3239,13 +3335,27 @@ DataUtil = {
 		});
 	},
 
-	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction) {
+	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction, getDependencyLoadable) {
 		if (!toLoads.length) onFinalLoadFunction([]);
 		return Promise.all(toLoads.map(tl => this.loadJSON(tl.url))).then(datas => {
+			let dependencies = [];
 			datas.forEach((data, i) => {
+				const deps = MiscUtil.getProperty(data, "_meta", "dependencies");
+				if (deps) deps.forEach(d => dependencies.push(getDependencyLoadable(d)));
 				if (onEachLoadFunction) onEachLoadFunction(toLoads[i], data);
 			});
-			return onFinalLoadFunction(datas);
+			// avoid double-loading dependencies
+			if (dependencies.length) dependencies = dependencies.filter(it => !toLoads.find(({url}) => url === it.url));
+			if (dependencies.length) {
+				// does this need to handle arbitrary dependency nesting? Because it doesn't
+				return Promise.all(dependencies.map(tl => this.loadJSON(tl.url, tl.url))).then(depDatas => {
+					depDatas.forEach((data, i) => {
+						if (onEachLoadFunction) onEachLoadFunction(dependencies[i], data);
+					});
+					datas = datas.concat(depDatas);
+					return Promise.resolve(onFinalLoadFunction(datas));
+				});
+			} else return Promise.resolve(onFinalLoadFunction(datas));
 		});
 	},
 
@@ -3294,6 +3404,8 @@ DataUtil = {
 		}).appendTo($(`body`));
 		$iptAdd.click();
 	},
+
+	dependencyMergers: {},
 
 	class: {
 		loadJSON: function (baseUrl = "") {
@@ -3459,7 +3571,7 @@ RollerUtil = {
 
 	isRollCol (string) {
 		if (typeof string !== "string") return false;
-		return !!/^({@dice )?(\d+)?d\d+([+-](\d+)?d\d+)*([-+]\d+)?(})?$/.exec(string.trim());
+		return !!/^({@dice )?(\d+)?d\d+(\s*[+-]\s*(\d+)?d\d+)*(\s*[-+]\s*\d+)?(})?$/.exec(string.trim());
 	},
 
 	_DICE_REGEX_STR: "([1-9]\\d*)?d([1-9]\\d*)(\\s?[+-]\\s?\\d+)?"
@@ -3609,6 +3721,8 @@ BrewUtil = {
 		if (cat === "optionalfeature") return "Optional Feature";
 		if (cat === "adventure") return isManager ? "Adventure Contents/Info" : "Adventure";
 		if (cat === "adventureData") return "Adventure Text";
+		if (cat === "book") return isManager ? "Book Contents/Info" : "Book";
+		if (cat === "bookData") return "Book Text";
 		return cat.uppercaseFirst();
 	},
 	_renderBrewScreen ($appendTo, $overlay, $window, isModal, getBrewOnClose) {
@@ -3720,6 +3834,8 @@ BrewUtil = {
 						return ["condition", "disease"];
 					case UrlUtil.PG_ADVENTURES:
 						return ["adventure"];
+					case UrlUtil.PG_BOOKS:
+						return ["book"];
 					case UrlUtil.PG_MAKE_SHAPED:
 						return ["spell", "creature"];
 					case UrlUtil.PG_MANAGE_BREW:
@@ -3824,13 +3940,18 @@ BrewUtil = {
 					}
 
 					function getDisplayName (category, it) {
-						return category === "adventureData" ? (((BrewUtil.homebrew["adventure"] || []).find(a => a.id === it.id) || {}).name || it.id) : it.name;
+						const assocData = {
+							"adventureData": "adventure",
+							"bookData": "book"
+						};
+						return assocData[category] ? (((BrewUtil.homebrew[assocData[category]] || []).find(a => a.id === it.id) || {}).name || it.id) : it.name;
 					}
 
 					const $ul = $lst.find(`ul`);
 					let stack = "";
+					const isMatchingSource = (itSrc) => itSrc === source || (source === undefined && !BrewUtil.hasSourceJson(itSrc));
 					BrewUtil._getBrewCategories().forEach(cat => {
-						BrewUtil.homebrew[cat].filter(it => it.source === source).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
+						BrewUtil.homebrew[cat].filter(it => isMatchingSource(it.source)).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
 							stack += `
 								<li><section onclick="ListUtil.toggleCheckbox(event, this)">
 									<span class="col-xs-6 name">${getDisplayName(cat, it)}</span>
@@ -4052,7 +4173,8 @@ BrewUtil = {
 				case "class":
 					return deleteClassBrew;
 				case "adventure":
-					return deleteAdventureBrew;
+				case "book":
+					return deleteGenericBookBrew(category);
 				case "adventureData":
 					// Do nothing, handled by deleting the associated adventure
 					return () => {};
@@ -4098,9 +4220,11 @@ BrewUtil = {
 			}
 		}
 
-		function deleteAdventureBrew (uniqueId, doRefresh) {
-			doRemove("adventure", uniqueId, false);
-			doRemove("adventureData", uniqueId, doRefresh, true);
+		function deleteGenericBookBrew (type) {
+			return (uniqueId, doRefresh) => {
+				doRemove(category, uniqueId, false);
+				doRemove(`${category}Data`, uniqueId, doRefresh, true);
+			};
 		}
 	},
 
@@ -4119,8 +4243,8 @@ BrewUtil = {
 		BrewUtil._renderBrewScreen($body, $overlay, $window, true);
 	},
 
-	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "background", "feat", "optionalfeature", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData"],
+	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure", "book"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "background", "feat", "optionalfeature", "race", "deity", "item", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "legendaryGroup", "condition", "disease", "adventure", "adventureData", "book", "bookData"],
 	doHandleBrewJson: function (json, page, funcRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
@@ -4134,14 +4258,20 @@ BrewUtil = {
 		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
 		BrewUtil._STORABLE.forEach(storePrep);
 
-		if (json["adventure"] && json["adventureData"]) {
-			json["adventure"].forEach(adv => {
-				const data = json["adventureData"].find(it => it.id === adv.id);
-				if (data) {
-					data.parentUniqueId = adv.uniqueId;
-				}
-			})
-		}
+		const bookPairs = [
+			["adventure", "adventureData"],
+			["book", "bookData"]
+		];
+		bookPairs.forEach(bp => {
+			if (json[bp[0]] && json[bp[1]]) {
+				json[bp[0]].forEach(adv => {
+					const data = json[bp[1]].find(it => it.id === adv.id);
+					if (data) {
+						data.parentUniqueId = adv.uniqueId;
+					}
+				})
+			}
+		});
 
 		// store
 		function checkAndAdd (prop) {
@@ -4201,8 +4331,6 @@ BrewUtil = {
 		BrewUtil._resetSourceCache();
 
 		// display on page
-		// FIXME this requires changing the pAddBrewData in the page JS, as well as here
-		// TODO complete refactoring so this always call `handleBrew` which can be defined per-page
 		switch (page) {
 			case UrlUtil.PG_SPELLS:
 			case UrlUtil.PG_CLASSES:
@@ -4219,8 +4347,10 @@ BrewUtil = {
 			case UrlUtil.PG_PSIONICS:
 			case UrlUtil.PG_VARIATNRULES:
 			case UrlUtil.PG_CONDITIONS_DISEASES:
-			case UrlUtil.PG_ADVENTURES:
 			case UrlUtil.PG_ADVENTURE:
+			case UrlUtil.PG_ADVENTURES:
+			case UrlUtil.PG_BOOK:
+			case UrlUtil.PG_BOOKS:
 			case UrlUtil.PG_MAKE_SHAPED:
 				handleBrew(toAdd);
 				break;
@@ -4558,6 +4688,15 @@ CollectionUtil = {
 Array.prototype.last = Array.prototype.last ||
 	function () {
 		return this[this.length - 1];
+	};
+
+Array.prototype.filterIndex = Array.prototype.filterIndex ||
+	function (fnCheck) {
+		const out = [];
+		this.forEach((it, i) => {
+			if (fnCheck(it)) out.push(i);
+		});
+		return out;
 	};
 
 // OVERLAY VIEW ========================================================================================================

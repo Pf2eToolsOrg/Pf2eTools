@@ -40,6 +40,10 @@ $link-blue: #337ab7;
 	user-select: none;
 }
 
+.full-width {
+	width: 100%;
+}
+
 html {
 	height: 100%;
 }
@@ -719,6 +723,12 @@ dialog.dialog-modal {
 #listcontainer.view-col {
 	display: flex;
 	flex-flow: column nowrap;
+}
+
+#listcontainer .list a.book-name {
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
 }
 
 #contentwrapper.view-col {
@@ -2027,6 +2037,10 @@ body.dm-screen-fullscreen .dm-sidemenu-burger {
 	a[href]::after {
 		content: none !important;
 	}
+
+	.help {
+		text-decoration: none;
+	}
 }
 
 /* Bootstrap overrides */
@@ -3269,7 +3283,8 @@ table.stats {
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
-table.stats.stats-book {
+table.stats.stats-book,
+table.stats.stats-book--hover {
 	background: white;
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 
@@ -3328,14 +3343,18 @@ table.stats table.striped-even > tbody > tr:nth-child(even) {
 }
 
 table.stats.stats-book table.striped-odd > tbody > tr:nth-child(odd),
-table.stats.stats-book table.striped-even > tbody > tr:nth-child(even) {
+table.stats.stats-book table.striped-even > tbody > tr:nth-child(even),
+table.stats.stats-book--hover table.striped-odd > tbody > tr:nth-child(odd),
+table.stats.stats-book--hover table.striped-even > tbody > tr:nth-child(even) {
 	background: #e0e0e0;
 }
 
 table.stats table.no-stripes > tbody > tr:nth-child(odd),
 table.stats table.no-stripes > tbody > tr:nth-child(even),
 table.stats.stats-book table.no-stripes > tbody > tr:nth-child(odd),
-table.stats.stats-book table.no-stripes > tbody > tr:nth-child(even) {
+table.stats.stats-book table.no-stripes > tbody > tr:nth-child(even),
+table.stats.stats-book--hover table.no-stripes > tbody > tr:nth-child(odd),
+table.stats.stats-book--hover table.no-stripes > tbody > tr:nth-child(even) {
 	background: initial;
 }
 
@@ -3344,7 +3363,9 @@ th.border {
 	background: #e69a28;
 }
 
-table.stats.stats-book th.border {
+.hoverbox .hoverborder.hoverborder-book,
+table.stats.stats-book th.border,
+table.stats.stats-book--hover th.border {
 	background: silver;
 }
 
@@ -3814,7 +3835,8 @@ table.stats tr.homebrew-hover {
 
 	.hoverbox .hoverborder,
 	th.border,
-	table.stats.stats-book th.border {
+	table.stats.stats-book th.border,
+	table.stats.stats-book--hover th.border {
 		background: #565656;
 	}
 
@@ -3823,7 +3845,8 @@ table.stats tr.homebrew-hover {
 		border-bottom: 1px solid #565656;
 	}
 
-	table.stats.stats-book ::selection {
+	table.stats.stats-book ::selection,
+	table.stats.stats-book--hover ::selection {
 		color: #242527;
 		background: white;
 	}

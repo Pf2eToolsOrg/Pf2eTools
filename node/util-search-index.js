@@ -33,6 +33,9 @@ UtilSearchIndex._test_getBasicVariantItems = function () {
 					if (v.nameSuffix) copy.name += v.nameSuffix;
 					copy.source = v.source;
 					out.push(copy);
+
+					const revName = EntryRenderer.item.modifierPostToPre(copy);
+					if (revName) out.push(revName);
 				}
 			})
 		});

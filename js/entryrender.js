@@ -132,7 +132,6 @@ function EntryRenderer () {
 		}
 	};
 
-	// TODO provide a Roll20 mode (expose list of found monsters/etc to be imported; add links to these)
 	// TODO general conditional rendering function -- make use of "data" property (see backgrounds JSON + backgrounds hover render)
 	//      - can be used to clean up R20 script Subclass rendering when implemented
 	/**
@@ -853,6 +852,13 @@ function EntryRenderer () {
 						const [name, displayText] = text.split("|");
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(expander(name), name);
 						textStack[0] += `<span class="help" ${onMouseOver}>${displayText || name}</span>`;
+					} else if (tag === "@area") {
+						const [areaCode, flags, displayText, ...others] = text.split("|");
+						const area = BookUtil.curRender.headerMap[areaCode] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
+						const onMouseOver = EntryRenderer.hover.createOnMouseHoverEntry(area.entry, true);
+						const splCode = areaCode.split(">"); // use pos [0] for names without ">"s, and pos [1] for names with (as pos [2] is for sequence ID)
+						const renderText = displayText || `${flags && flags.includes("u") ? "A" : "a"}rea ${splCode.length === 1 ? splCode[0] : splCode[1]}`;
+						textStack[0] += `<a href="#${BookUtil.curRender.curAdvId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
 					} else if (tag === "@deity") {
 						const [name, pantheon, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${pantheon ? `${HASH_LIST_SEP}${pantheon}` : ""}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
@@ -1091,10 +1097,9 @@ function EntryRenderer () {
 				href = `http://journal.roll20.net/${id.type}/${id.roll20Id}`;
 			}
 		}
-		return `<a href="${href}" target="_blank" ${getHoverString()}>${this.renderEntry(entry.text)}</a>`;
+		return `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank"`} ${getHoverString()}>${this.renderEntry(entry.text)}</a>`;
 	};
 
-	// TODO convert params to options
 	/**
 	 * Helper function to render an entity using this renderer
 	 * @param entry
@@ -1614,7 +1619,7 @@ EntryRenderer.optionalfeature = {
 		prereqLevel: 0,
 		prereqPact: 1,
 		prereqPatron: 2,
-		prereqSpell: 3,
+		prereqSpellOrFeature: 3,
 		[undefined]: 4
 	},
 	getPrerequisiteText: (prerequisites, listMode) => {
@@ -1633,8 +1638,8 @@ EntryRenderer.optionalfeature = {
 					return Parser.prereqPactToFull(it.entry);
 				case "prereqPatron":
 					return listMode ? `${Parser.prereqPatronToShort(it.entry)} patron` : `${it.entry} patron`;
-				case "prereqSpell":
-					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
+				case "prereqSpellOrFeature":
+					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellOrFeatureToFull(sp)).joinConjunct(", ", " or ");
 				default: // string
 					return it;
 			}
@@ -1838,6 +1843,8 @@ EntryRenderer.traphazard = {
 	getSubtitle (it) {
 		const type = it.trapHazType || "HAZ";
 		switch (type) {
+			case "GEN":
+				return null;
 			case "SMPL":
 			case "CMPX":
 				return `${Parser.trapHazTypeToFull(type)} (${Parser.tierToFullLevel(it.tier)}, ${Parser.threatToFull(it.threat)} threat)`;
@@ -1913,9 +1920,10 @@ EntryRenderer.traphazard = {
 
 	getCompactRenderedString: (it) => {
 		const renderer = EntryRenderer.getDefaultRenderer();
+		const subtitle = EntryRenderer.traphazard.getSubtitle(it);
 		return `
 			${EntryRenderer.utils.getNameTr(it, true)}
-			<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i>${EntryRenderer.traphazard.getSimplePart(renderer, it)}${EntryRenderer.traphazard.getComplexPart(renderer, it)}</td>
+			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i>${EntryRenderer.traphazard.getSimplePart(renderer, it)}${EntryRenderer.traphazard.getComplexPart(renderer, it)}</td>` : ""}
 			<tr class="text"><td colspan="6">${renderer.renderEntry({entries: it.entries}, 2)}</td></tr>
 		`;
 	},
@@ -1995,6 +2003,73 @@ EntryRenderer.cultboon = {
 };
 
 EntryRenderer.monster = {
+	_mergeCache: null,
+	mergeCopy (monList, mon) {
+		function search () {
+			return monList.find(it => {
+				EntryRenderer.monster._mergeCache[UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](it)] = it;
+				return it.name === mon._copy.name && it.source === mon._copy.source;
+			});
+		}
+
+		function applyCopy (copy) {
+			function handleProp (prop, re, replace) {
+				if (mon[prop]) {
+					mon[prop].forEach(it => {
+						if (it.entries) it.entries = JSON.parse(JSON.stringify(it.entries).replace(re, replace.with));
+						if (it.headerEntries) it.headerEntries = JSON.parse(JSON.stringify(it.headerEntries).replace(re, replace.with));
+					})
+				}
+			}
+
+			Object.keys(copy).forEach(k => {
+				if (mon[k] === null) return delete mon[k];
+				if (mon[k] == null) mon[k] = MiscUtil.copy(copy[k]);
+			});
+
+			if (mon._copy.replacers) {
+				mon._copy.replacers.forEach(r => {
+					const re = new RegExp(r.replace, `g${r.flags || ""}`);
+					handleProp("action", re, r);
+					handleProp("reaction", re, r);
+					handleProp("trait", re, r);
+					handleProp("legendary", re, r);
+					handleProp("variant", re, r);
+					handleProp("spellcasting", re, r);
+				});
+			}
+
+			if (mon._copy.arrayModifiers) {
+				Object.entries(mon._copy.arrayModifiers).forEach(([k, v]) => {
+					switch (v.mode) {
+						case "prepend": {
+							mon[k] = v.data.concat(mon[k]);
+							break;
+						}
+						case "append": {
+							mon[k] = mon[k].concat(v.data.concat);
+							break;
+						}
+						default: throw new Error(`Unhandled mode: ${v.mode}`);
+					}
+				});
+			}
+
+			delete mon._copy;
+		}
+
+		if (mon._copy) {
+			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon._copy);
+			if (!EntryRenderer.monster._mergeCache) {
+				EntryRenderer.monster._mergeCache = {};
+				applyCopy(search());
+			} else {
+				if (EntryRenderer.monster._mergeCache[hash]) applyCopy(EntryRenderer.monster._mergeCache[hash]);
+				else applyCopy(search());
+			}
+		}
+	},
+
 	getLegendaryActionIntro: (mon) => {
 		const legendaryActions = mon.legendaryActions || 3;
 		const legendaryName = mon.name.split(",");
@@ -2003,7 +2078,7 @@ EntryRenderer.monster = {
 
 	getSave (renderer, attr, mod) {
 		if (attr === "special") return renderer.renderEntry(mod);
-		else return renderer.renderEntry(`${attr.uppercaseFirst()} {@d20 ${mod}|${mod}|${Parser.attAbvToFull([attr])} save`);
+		else return renderer.renderEntry(`<span data-mon-save="${attr.uppercaseFirst()}|${mod}">${attr.uppercaseFirst()} {@d20 ${mod}|${mod}|${Parser.attAbvToFull([attr])} save}</span>`);
 	},
 
 	getDragonCasterVariant (renderer, dragon) {
@@ -2198,7 +2273,7 @@ EntryRenderer.monster = {
 			<tr><td colspan="6">
 				<div class="summary-flexer">
 					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => EntryRenderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
-					${mon.skill ? `<p><b>Skills:</b> ${EntryRenderer.monster.getSkillsString(mon, true)}</p>` : ""}
+					${mon.skill ? `<p><b>Skills:</b> ${EntryRenderer.monster.getSkillsString(renderer, mon)}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${mon.languages ? mon.languages : `\u2014`}</p>
 					${mon.vulnerable ? `<p><b>Damage Vuln.:</b> ${Parser.monImmResToFull(mon.vulnerable)}</p>` : ""}
@@ -2313,13 +2388,13 @@ EntryRenderer.monster = {
 		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
 	},
 
-	getSkillsString (mon, makeRollers) {
+	getSkillsString (renderer, mon) {
 		function makeSkillRoller (name, mod) {
 			return EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${mod}|${mod}|${name}`);
 		}
 
 		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
-			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.toTitleCase()} ${makeRollers ? makeSkillRoller(s.toTitleCase(), obj[s]) : obj[s]}`);
+			const toJoin = keys.sort(SortUtil.ascSort).map(s => `<span data-mon-skill="${s.toTitleCase()}|${obj[s]}">${renderer.renderEntry(`{@skill ${s.toTitleCase()}}`)} ${makeSkillRoller(s.toTitleCase(), obj[s])}</span>`);
 			return joinWithOr ? toJoin.joinConjunct(", ", " or ") : toJoin.join(", ")
 		}
 
@@ -2335,6 +2410,7 @@ EntryRenderer.monster = {
 		} else return skills;
 	}
 };
+DataUtil.dependencyMergers[UrlUtil.PG_BESTIARY] = EntryRenderer.monster.mergeCopy;
 
 EntryRenderer.item = {
 	getDamageAndPropertiesText: function (item) {
@@ -2706,6 +2782,13 @@ EntryRenderer.item = {
 		})(item);
 	},
 
+	// flip e.g. "longsword +1" to "+1 longsword"
+	modifierPostToPre (item) {
+		const m = /^(.*)(?:,)? (\+\d+)$/.exec(item.name);
+		if (m) return Object.assign(MiscUtil.copy(item), {name: `${m[2]} ${m[1]}`});
+		else return null
+	},
+
 	promiseData: (urls, addGroups) => {
 		return new Promise((resolve) => {
 			EntryRenderer.item.buildList((data) => resolve({item: data}), urls, addGroups);
@@ -2892,6 +2975,15 @@ EntryRenderer.hover = {
 		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id})"`;
 	},
 
+	createOnMouseHoverEntry (entry, isBookContent) {
+		const id = EntryRenderer.hover._lastMouseHoverId++;
+		EntryRenderer.hover._mouseHovers[id] = {
+			...entry,
+			data: {hoverTitle: entry.name}
+		};
+		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id}, ${!!isBookContent})"`;
+	},
+
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
@@ -2942,12 +3034,27 @@ EntryRenderer.hover = {
 					.catch(BrewUtil.purgeBrew)
 					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`))
 					.then((data) => {
-						const officialSource = Object.keys(data).find(k => k.toLowerCase() === source.toLowerCase());
+						const officialSources = {};
+						Object.entries(data).forEach(([k, v]) => officialSources[k.toLowerCase()] = v);
+						const officialSource = officialSources[source.toLowerCase()];
 						if (officialSource) {
-							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${data[officialSource]}`)
+							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${officialSource}`)
 								.then((data) => {
-									populate(data, listProp);
-									callbackFn();
+									const dependencies = MiscUtil.getProperty(data, "_meta", "dependencies");
+									if (dependencies && dependencies.length) {
+										const dependencyUrls = dependencies.map(d => `${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}${officialSources[d.toLowerCase()]}`);
+										Promise.all(dependencyUrls.map(url => DataUtil.loadJSON(url))).then(depDatas => {
+											depDatas.forEach(data => populate(data, listProp)); // might as well populate the hover cache for these...
+											const depList = depDatas.reduce((a, b) => ({[listProp]: a[listProp].concat(b[listProp])}), ({[listProp]: []}))[listProp];
+											const mergeFn = DataUtil.dependencyMergers[page];
+											data[listProp].forEach(it => mergeFn(depList, it));
+											populate(data, listProp);
+											callbackFn();
+										});
+									} else {
+										populate(data, listProp);
+										callbackFn();
+									}
 								});
 						} else {
 							callbackFn(); // source to load is 3rd party, which was already handled
@@ -3021,14 +3128,18 @@ EntryRenderer.hover = {
 								data.item.forEach(it => {
 									EntryRenderer.item.enhanceItem(it);
 									const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-									EntryRenderer.hover._addToCache(page, it.source, itHash, it)
+									EntryRenderer.hover._addToCache(page, it.source, itHash, it);
+									const revName = EntryRenderer.item.modifierPostToPre(it);
+									if (revName) EntryRenderer.hover._addToCache(page, it.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), it);
 								});
 							})
 							.catch(BrewUtil.purgeBrew)
 							.then(() => {
 								allItems.forEach(item => {
 									const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
-									EntryRenderer.hover._addToCache(page, item.source, itemHash, item)
+									EntryRenderer.hover._addToCache(page, item.source, itemHash, item);
+									const revName = EntryRenderer.item.modifierPostToPre(item);
+									if (revName) EntryRenderer.hover._addToCache(page, item.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), item);
 								});
 								callbackFn();
 							});
@@ -3138,6 +3249,7 @@ EntryRenderer.hover = {
 		const permanent = EntryRenderer.hover._curHovering.permanent;
 		const clientX = EntryRenderer.hover._curHovering.clientX;
 		const renderFn = EntryRenderer.hover._curHovering.renderFunction;
+		const isBookContent = EntryRenderer.hover._curHovering.isBookContent;
 
 		// if it doesn't seem to exist, return
 		if (!preLoaded && page !== "hover" && !EntryRenderer.hover._isCached(page, source, hash)) {
@@ -3178,7 +3290,7 @@ EntryRenderer.hover = {
 		});
 
 		const $hovTitle = $(`<span class="window-title">${toRender._displayName || toRender.name}</span>`);
-		const $stats = $(`<table class="stats"/>`);
+		const $stats = $(`<table class="stats ${isBookContent ? "stats-book--hover" : ""}"/>`);
 		$stats.append(content);
 
 		$stats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
@@ -3209,7 +3321,7 @@ EntryRenderer.hover = {
 		});
 
 		let drag = {};
-		const $brdrTop = $(`<div class="hoverborder top" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"></div>`)
+		const $brdrTop = $(`<div class="hoverborder top ${isBookContent ? "hoverborder-book" : ""}" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"></div>`)
 			.on("mousedown", (evt) => {
 				$hov.css({
 					"z-index": 201, // temporarily display it on top
@@ -3223,6 +3335,8 @@ EntryRenderer.hover = {
 			}).on("click", () => {
 				$hov.css("z-index", ""); // remove the temporary z-boost...
 				$hov.parent().append($hov); // ...and properly bring it to the front
+			}).on("contextmenu", (evt) => {
+				if (!evt.ctrlKey) ContextUtil.handleOpenContextMenu(evt, ele, "hoverBorder");
 			});
 		const mouseUpId = `mouseup.${hoverId}`;
 		const mouseMoveId = `mousemove.${hoverId}`;
@@ -3289,7 +3403,7 @@ EntryRenderer.hover = {
 			delete EntryRenderer.hover._active[hoverId];
 		});
 		$brdrTop.append($hovTitle);
-		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove hvr__close"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				altTeardown();
@@ -3297,7 +3411,7 @@ EntryRenderer.hover = {
 		$brdrTop.append($btnClose);
 		$hov.append($brdrTop)
 			.append($stats)
-			.append(`<div class="hoverborder"></div>`);
+			.append(`<div class="hoverborder ${isBookContent ? "hoverborder-book" : ""}"></div>`);
 
 		$body.append($hov);
 		if (!permanent) {
@@ -3359,7 +3473,7 @@ EntryRenderer.hover = {
 		}
 	},
 
-	getGenericCompactRenderedString (entry, center) {
+	getGenericCompactRenderedString (entry) {
 		return `
 			<tr class="text homebrew-hover"><td colspan="6">
 			${EntryRenderer.getDefaultRenderer().setFirstSection(true).renderEntry(entry)}
@@ -3370,8 +3484,6 @@ EntryRenderer.hover = {
 	_pageToRenderFn (page) {
 		switch (page) {
 			case "hover":
-				return EntryRenderer.hover.getGenericCompactRenderedString;
-			case "hoverNote":
 				return EntryRenderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return EntryRenderer.spell.getCompactRenderedString;
@@ -3408,9 +3520,10 @@ EntryRenderer.hover = {
 		}
 	},
 
-	mouseOverHoverTooltip (evt, ele, id) {
+	// used in hover strings
+	mouseOverHoverTooltip (evt, ele, id, isBookContent) {
 		const data = EntryRenderer.hover._mouseHovers[id];
-		EntryRenderer.hover.show({evt, ele, page: "hover", source: data, hash: ""});
+		EntryRenderer.hover.show({evt, ele, page: "hover", source: data, hash: "", isBookContent});
 	},
 
 	mouseOver (evt, ele, page, source, hash, isPopout) {
@@ -3419,6 +3532,29 @@ EntryRenderer.hover = {
 
 	mouseOverPreloaded (evt, ele, preLoaded, page, source, hash, isPopout) {
 		EntryRenderer.hover.show({evt, ele, preLoaded, page, source, hash, isPopout});
+	},
+
+	_doInit () {
+		if (!EntryRenderer.hover._isInit) {
+			EntryRenderer.hover._isInit = true;
+			$(`body`).on("click", () => {
+				EntryRenderer.hover._cleanWindows();
+			});
+			ContextUtil.doInitContextMenu("hoverBorder", (evt, ele, $invokedOn, $selectedMenu) => {
+				const $perms = $(`.hoverborder[data-perm="true"]`);
+				switch (Number($selectedMenu.data("ctx-id"))) {
+					case 0:
+						$perms.attr("data-display-title", "false");
+						break;
+					case 1:
+						$perms.attr("data-display-title", "true");
+						break;
+					case 2:
+						$(`.hvr__close`).click();
+						break;
+				}
+			}, ["Maximize All", "Minimize All", null, "Close All"]);
+		}
 	},
 
 	_BAR_HEIGHT: 16,
@@ -3434,13 +3570,9 @@ EntryRenderer.hover = {
 		const source = options.source;
 		const hash = options.hash;
 		const isPopout = options.isPopout;
+		const isBookContent = options.isBookContent;
 
-		if (!EntryRenderer.hover._isInit) {
-			EntryRenderer.hover._isInit = true;
-			$(`body`).on("click", () => {
-				EntryRenderer.hover._cleanWindows();
-			});
-		}
+		EntryRenderer.hover._doInit();
 
 		// don't show on mobile
 		if ($(window).width() <= 1024 && !evt.shiftKey) return;
@@ -3475,7 +3607,8 @@ EntryRenderer.hover = {
 			cSource: source,
 			cHash: hash,
 			permanent: evt.shiftKey,
-			clientX: evt.clientX
+			clientX: evt.clientX,
+			isBookContent
 		};
 
 		// return if another event chain is handling the event
@@ -4127,9 +4260,10 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 
 		str = str.toLowerCase()
 			.replace(/\s+/g, "") // clean whitespace
-			.replace(/[×x]/g, "*") // convert mult/div signs
+			.replace(/[×x]/g, "*") // convert mult signs
 			.replace(/\*\*/g, "^") // convert ** to ^
-			.replace(/÷/g, "/")
+			.replace(/÷/g, "/") // convert div signs
+			.replace(/,/g, "") // remove commas
 			.replace(/(^|[^\d)])d(\d)/g, (...m) => `${m[1]}1d${m[2]}`) // ensure unary dice have number
 			.replace(/dl/g, "l").replace(/dh/g, "h") // shorthand drop lowest/highest
 			.replace(/\)\(/g, ")*(").replace(/(\d)\(/g, "$1*("); // add multiplication signs

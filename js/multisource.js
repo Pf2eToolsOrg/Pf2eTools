@@ -91,7 +91,8 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, pOptiona
 						const p = pOptional ? pOptional().then(finalise) : finalise;
 						p.then(resolve);
 					});
-				}
+				},
+				(src) => ({src: src, url: jsonDir + src2UrlMap[src]})
 			);
 		} else {
 			initPromise.then(() => {

@@ -51,6 +51,8 @@ function navigation () {
 	LI('ul_rules', 'book.html', "Xanathar's Guide to Everything", "XGE");
 	LIDivider('ul_rules');
 	LI('ul_rules', 'book.html', "Adventurers League", "AL");
+	LIDivider('ul_rules');
+	LI('ul_rules', 'books.html', "View All/Homebrew");
 
 	LIDropdown('navbar', 'players', 'dropdown');
 	A('players', 'playerOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Player Options <span class='caret'></span>");

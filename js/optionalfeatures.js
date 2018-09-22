@@ -22,6 +22,14 @@ function listSortOptFeatures (a, b, o) {
 	return SortUtil.listSort(a, b, o);
 }
 
+function getLevelFilterNestedItem (prereqLevel) {
+	return new FilterItem({
+		item: `${prereqLevel.class.name} Level ${prereqLevel.level}`,
+		nest: prereqLevel.class.name,
+		nestHidden: true
+	})
+}
+
 let list;
 const sourceFilter = getSourceFilter();
 const typeFilter = new Filter({
@@ -39,17 +47,15 @@ const patronFilter = new Filter({
 	items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker"],
 	displayFn: Parser.prereqPatronToShort
 });
-const spellFilter = new Filter({
+const spellOrFeatureFilter = new Filter({
 	header: "Spell or Feature",
 	items: ["eldritch blast", "hex/curse"],
 	displayFn: StrUtil.toTitleCase
 });
 const levelFilter = new Filter({
-	header: "Warlock Level",
-	items: [5, 7, 9, 12, 15, 18],
-	displayFn: (it) => `Level ${it}`
+	header: "Level"
 });
-const prerequisiteFilter = new MultiFilter({name: "Prerequisite"}, pactFilter, patronFilter, spellFilter, levelFilter);
+const prerequisiteFilter = new MultiFilter({name: "Prerequisite"}, pactFilter, patronFilter, spellOrFeatureFilter, levelFilter);
 let filterBox;
 function onJsonLoad (data) {
 	filterBox = initFilterBox(sourceFilter, typeFilter, prerequisiteFilter);
@@ -119,13 +125,14 @@ function addOptionalfeatures (data) {
 				patronFilter.addIfAbsent(it.entry);
 				return it.entry;
 			});
-			it._fPrereqSpell = it.prerequisite.filter(it => it.type === "prereqSpell").map(it => {
-				spellFilter.addIfAbsent(it.entries);
+			it._fprereqSpellOrFeature = it.prerequisite.filter(it => it.type === "prereqSpellOrFeature").map(it => {
+				spellOrFeatureFilter.addIfAbsent(it.entries);
 				return it.entries;
 			});
 			it._fPrereqLevel = it.prerequisite.filter(it => it.type === "prereqLevel").map(it => {
-				levelFilter.addIfAbsent(it.level);
-				return it.level;
+				const item = getLevelFilterNestedItem(it);
+				levelFilter.addIfAbsent(item);
+				return item;
 			});
 		}
 
@@ -150,8 +157,8 @@ function addOptionalfeatures (data) {
 
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
-	spellFilter.items.sort(SortUtil.ascSort);
-	levelFilter.items.sort(SortUtil.ascSort);
+	spellOrFeatureFilter.items.sort(SortUtil.ascSort);
+	levelFilter.items.sort(SortUtil.ascSortNumericalSuffix);
 	typeFilter.items.sort((a, b) => SortUtil.ascSort(Parser.optFeatureTypeToFull(a), Parser.optFeatureTypeToFull(b)));
 
 	list.reIndex();
@@ -183,7 +190,7 @@ function handleFilterChange () {
 			[
 				it._fPrereqPact,
 				it._fPrereqPatron,
-				it._fPrereqSpell,
+				it._fprereqSpellOrFeature,
 				it._fPrereqLevel
 			]
 		);

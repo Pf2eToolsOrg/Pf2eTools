@@ -144,6 +144,7 @@ function loadhash (id) {
 		${EntryRenderer.utils.getNameTr(reward)}
 		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 		${EntryRenderer.reward.getRenderedString(reward)}
+		${EntryRenderer.utils.getPageTr(reward)}
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 

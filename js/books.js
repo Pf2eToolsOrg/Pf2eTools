@@ -1,0 +1,26 @@
+"use strict";
+
+class Books {
+	static sortBooks (a, b) {
+		a = bookList[a.elm.getAttribute(FLTR_ID)];
+		b = bookList[b.elm.getAttribute(FLTR_ID)];
+		return SortUtil.ascSort(a.name, b.name);
+	}
+}
+
+const booksList = new BooksList({
+	contentsUrl: "data/books.json",
+	sortFn: Books.sortBooks,
+	dataProp: "book",
+	rootPage: "book.html",
+	rowBuilderFn: (bk) => {
+		return `<span class="col-xs-12">${bk.name}</span>`;
+	}
+});
+
+window.onload = booksList.onPageLoad.bind(booksList);
+
+function handleBrew (homebrew) {
+	booksList.addData(homebrew);
+	return Promise.resolve();
+}

@@ -16,14 +16,7 @@ let list;
 let adventures = [];
 let adI = 0;
 function onJsonLoad (data) {
-	const adventuresList = $("ul.contents");
-	adventuresList.append($(`
-		<li>
-			<a href='adventures.html'>
-				<span class='name'>\u21FD All Adventures</span>
-			</a>
-		</li>
-	`));
+	$("ul.contents").append($(`<li><a href='adventures.html'><span class='name'>\u21FD All Adventures</span></a></li>`));
 
 	list = new List("listcontainer", {
 		valueNames: ['name'],

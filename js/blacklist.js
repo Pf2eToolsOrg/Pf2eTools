@@ -45,8 +45,12 @@ class Blacklist {
 		const $selName = $(`#bl-name`);
 
 		const data = {};
+		function isFilteredKey (k) {
+			return k === "_meta";
+		}
+
 		function mergeData (fromRec) {
-			Object.keys(fromRec).forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
+			Object.keys(fromRec).filter(it => !isFilteredKey(it)).forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
 		}
 
 		DataUtil.loadJSON(`data/bestiary/index.json`)

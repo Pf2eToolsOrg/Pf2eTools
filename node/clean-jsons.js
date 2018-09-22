@@ -17,7 +17,7 @@ function readJSON (path) {
 
 function listFiles (dir) {
 	const dirContent = fs.readdirSync(dir, "utf8")
-		.filter(file => !file.startsWith("bookref-") && !file.startsWith("roll20-map-"))
+		.filter(file => !file.startsWith("bookref-") && !file.startsWith("roll20-module-"))
 		.map(file => `${dir}/${file}`);
 	return dirContent.reduce((acc, file) => {
 		if (isDirectory(file)) {

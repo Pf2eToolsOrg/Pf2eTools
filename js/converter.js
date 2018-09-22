@@ -267,7 +267,7 @@ function loadparser (data) {
 	let hasAppended = false;
 
 	const $iptPage = $(`#page_in`);
-	const getPage = () => Number($iptPage.val() || 0);
+	const getPage = () => $iptPage.val() ? Number($iptPage.val()) : undefined;
 
 	// custom sources
 	const $srcSel = $(`#source`);

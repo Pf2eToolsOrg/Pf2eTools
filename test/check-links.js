@@ -1,6 +1,7 @@
 const fs = require('fs');
 const ut = require('../js/utils.js');
 const utS = require("../node/util-search-index");
+const bu = require("../js/bookutils");
 
 const re = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
 const skillRe = /{@skill (.*?)(\|.*?)?}/g;
@@ -74,12 +75,14 @@ const VALID_SKILLS = new Set([
 ]);
 
 const VALID_ACTIONS = new Set([
+	"Attack",
 	"Dash",
 	"Disengage",
 	"Dodge",
 	"Help",
 	"Hide",
 	"Ready",
+	"Search",
 	"Use an Object"
 ]);
 
@@ -87,33 +90,38 @@ function isIgnored (directory) {
 	return directory === "./data/roll20-module";
 }
 
-function fileRecurse (file, fileHandler) {
-	if (file.endsWith(".json")) fileHandler(file);
-	else if (fs.lstatSync(file).isDirectory() && !isIgnored(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler))
+function fileRecurse (file, fileHandler, filenameMatcher) {
+	if (file.endsWith(".json") && (filenameMatcher == null || filenameMatcher.test(file.split("/").last()))) {
+		fileHandler(file);
+		if (msg && msg.trim() && msg.slice(-2) !== "\n\n") msg += "\n\n";
+	} else if (fs.lstatSync(file).isDirectory() && !isIgnored(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler, filenameMatcher))
 }
 
-function dataRecurse (file, obj, primitiveHandlers) {
+function dataRecurse (file, obj, primitiveHandlers, lastType, lastKey) {
 	const to = typeof obj;
 	if (obj == null) return;
 
 	switch (to) {
 		case undefined:
-			if (primitiveHandlers.undefined) primitiveHandlers.undefined(file, obj);
+			if (primitiveHandlers.undefined) primitiveHandlers.undefined(file, obj, lastType, lastKey);
 			break;
 		case "boolean":
-			if (primitiveHandlers.boolean) primitiveHandlers.boolean(file, obj);
+			if (primitiveHandlers.boolean) primitiveHandlers.boolean(file, obj, lastType, lastKey);
 			break;
 		case "number":
-			if (primitiveHandlers.number) primitiveHandlers.number(file, obj);
+			if (primitiveHandlers.number) primitiveHandlers.number(file, obj, lastType, lastKey);
 			break;
 		case "string":
-			if (primitiveHandlers.string) primitiveHandlers.string(file, obj);
+			if (primitiveHandlers.string) primitiveHandlers.string(file, obj, lastType, lastKey);
 			break;
 		case "object": {
 			if (obj instanceof Array) {
-				obj.forEach(it => dataRecurse(file, it, primitiveHandlers));
+				obj.forEach(it => dataRecurse(file, it, primitiveHandlers, lastType, lastKey));
 			} else {
-				Object.values(obj).forEach(it => dataRecurse(file, it, primitiveHandlers));
+				Object.keys(obj).forEach(k => {
+					const v = obj[k];
+					obj[k] = dataRecurse(file, v, primitiveHandlers, lastType, k)
+				});
 			}
 			break;
 		}
@@ -284,3 +292,43 @@ class FilterChecker {
 }
 msg = "";
 FilterChecker.run();
+
+class AreaChecker {
+	static _buildMap (file, data) {
+		AreaChecker.headerMap = bu.BookUtil._buildHeaderMap(data, file);
+	}
+
+	static checkString (file, str) {
+		str.replace(/{@area ([^}]*)}/g, (m0, m1) => {
+			const [areaCode, ...otherData] = m1.split("|");
+			if (!AreaChecker.headerMap[areaCode]) {
+				AreaChecker.errorSet.add(m0);
+			}
+			return m0;
+		});
+	}
+
+	static checkFile (file) {
+		AreaChecker.errorSet = new Set();
+		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+		AreaChecker._buildMap(file, contents.data);
+		dataRecurse(file, contents, {string: AreaChecker.checkString});
+		if (AreaChecker.errorSet.size) {
+			msg += `Errors in ${file}! See below:\n`;
+
+			const toPrint = [...AreaChecker.errorSet].sort(SortUtil.ascSortLower);
+			toPrint.forEach(tp => msg += `${tp}\n`);
+		}
+	}
+
+	static run () {
+		fileRecurse("./data", AreaChecker.checkFile, AreaChecker.fileMatcher);
+		if (msg) throw new Error(msg);
+		console.log(`##### Area tag check complete #####`)
+	}
+}
+AreaChecker.errorSet = new Set();
+AreaChecker.fileMatcher = /^(adventure-).*\.json/;
+
+msg = "";
+AreaChecker.run();

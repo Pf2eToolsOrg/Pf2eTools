@@ -30,7 +30,7 @@ find . -type f -name '*.html' -print0 |
         sed -i -e '/<!--5ETOOLS_SCRIPT_ANCHOR-->/a <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/jquery@3.2/dist/jquery.min.js,npm/bootstrap@3.3/dist/js/bootstrap.min.js,npm/list.js@1.5/dist/list.min.js,gh/weixsong/elasticlunr.js@0.9/elasticlunr.min.js"><\/script> <script>window.jQuery || document.write(`<script src="/lib\/jquery.js"><\\\/script>`); window.List || document.write(`<script src="/lib\/list.js"><\\\/script>`);<\/script>' $line
     done
 
-# FIXME temporarily disabled
+# !!!temporarily disabled!!!
 # find . -type f -name '*.html' -print0 |
 #     while IFS= read -r -d $'\0' line; do
 #         sed -i -e 's;href="css/;href="https://static.5etools.com/css/;g' $line
@@ -38,7 +38,7 @@ find . -type f -name '*.html' -print0 |
 #         echo "I must pay more attention in class."
 #     done
 
-# FIXME temporarily disabled
+# !!!temporarily disabled!!!
 #find css -type f -name '*.css' -print0 |
 #    while IFS= read -r -d $'\0' line; do
 #        sed -i -e 's;../fonts/Convergence-Regular.ttf;https://static.5etools.com/fonts/Convergence-Regular.ttf;g' $line

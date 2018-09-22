@@ -485,6 +485,7 @@ function addMonsters (data) {
 	// build the table
 	for (; mI < monsters.length; mI++) {
 		const mon = monsters[mI];
+		EntryRenderer.monster.mergeCopy(monsters, mon);
 		if (ExcludeUtil.isExcluded(mon.name, "monster", mon.source)) continue;
 		_initParsed(mon);
 		mon._fSpeed = Object.keys(mon.speed).filter(k => mon.speed[k]);
@@ -498,7 +499,6 @@ function addMonsters (data) {
 		else if (tempAlign.includes("N") && !tempAlign.includes("L") && !tempAlign.includes("C")) tempAlign.push("NX");
 		else if (tempAlign.length === 1 && tempAlign.includes("N")) Array.prototype.push.apply(tempAlign, _NEUT_ALIGNS);
 		mon._fAlign = tempAlign;
-		mon.environment = mon.environment || [];
 		mon._fVuln = mon.vulnerable ? getAllImmRest(mon.vulnerable, "vulnerable") : [];
 		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
@@ -773,7 +773,7 @@ function renderStatblock (mon, isScaled) {
 		var skills = mon.skill;
 		if (skills) {
 			$content.find("td span#skills").parent().show();
-			$content.find("td span#skills").html(EntryRenderer.monster.getSkillsString(mon));
+			$content.find("td span#skills").html(EntryRenderer.monster.getSkillsString(renderer, mon));
 		} else {
 			$content.find("td span#skills").parent().hide();
 		}
@@ -896,7 +896,7 @@ function renderStatblock (mon, isScaled) {
 		$trSource.append($tdSource);
 		if (mon.environment && mon.environment.length) {
 			$tdSource.attr("colspan", 4);
-			$trSource.append(`<td colspan="2" class="text-align-right mr-2"><i>Environment: ${mon.environment.map(it => it.toTitleCase()).join(",")}</i></td>`)
+			$trSource.append(`<td colspan="2" class="text-align-right mr-2"><i>Environment: ${mon.environment.sort(SortUtil.ascSortLower).map(it => it.toTitleCase()).join(", ")}</i></td>`)
 		}
 
 		const legendary = mon.legendary;
@@ -947,49 +947,6 @@ function renderStatblock (mon, isScaled) {
 		});
 
 		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
-		if (mon.skill) {
-			$content.find("#skills").each(makeSkillRoller);
-		}
-
-		function makeSkillRoller () {
-			const $this = $(this);
-
-			const re = /,\s*(?![^()]*\))/g; // Don't split commas within parentheses
-			const skills = $this.html().split(re).map(s => s.trim());
-			const out = [];
-
-			skills.forEach(s => {
-				if (!s || !s.trim()) return;
-
-				const re = /([-+])?\d+|(?:[^-+]|\n(?![-+]))+/g; // Split before and after each bonus
-				const spl = s.match(re);
-
-				const skillName = spl[0].trim();
-
-				let skillString = "";
-				spl.forEach(b => {
-					const re = /([-+])?\d+/;
-
-					if (b.match(re)) {
-						const bonus = Number(b);
-						const pBonusStr = `${bonus >= 0 ? "+" : ""}${bonus}`;
-						skillString += renderSkillOrSaveRoller(skillName, pBonusStr, false);
-					} else {
-						skillString += b;
-					}
-				});
-
-				out.push(skillString);
-			});
-
-			$this.html(out.join(", "));
-		}
-
-		function renderSkillOrSaveRoller (itemName, profBonusString, isSave) {
-			itemName = itemName.replace(/plus one of the following:/g, "").replace(/^or\s*/, "");
-			return EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${profBonusString}|${profBonusString}|${itemName}${isSave ? " save" : ""}`);
-		}
-
 		// inline rollers
 		// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -1009,13 +966,13 @@ function renderStatblock (mon, isScaled) {
 				let pB = expectedPB;
 				let fromAbility;
 				let ability;
-				if ($(this).parent().prop("id") === "saves") {
+				if ($(this).parent().attr("data-mon-save")) {
 					const title = $(this).attr("title");
 					ability = title.split(" ")[0].trim().toLowerCase().substring(0, 3);
 					fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
-				} else if ($(this).parent().prop("id") === "skills") {
+				} else if ($(this).parent().attr("data-mon-skill")) {
 					const title = $(this).attr("title");
 					ability = Parser.skillToAbilityAbv(title.toLowerCase().trim());
 					fromAbility = Parser.getAbilityModNumber(mon[ability]);
@@ -1031,7 +988,7 @@ function renderStatblock (mon, isScaled) {
 						$(this).attr("data-roll-prof-bonus", $(this).text());
 						$(this).attr("data-roll-prof-dice", profDiceString);
 
-						// here be (metallic) dragons
+						// here be (chromatic) dragons
 						const cached = $(this).attr("onclick");
 						const nu = `
 							(function(it) {

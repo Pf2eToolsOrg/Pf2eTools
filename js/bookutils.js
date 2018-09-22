@@ -127,6 +127,53 @@ const BookUtil = {
 		}
 	},
 
+	_buildHeaderMap (bookData, dbgTag) {
+		const out = {};
+		function recurse (data, ixChap) {
+			if ((data.type === "section" || data.type === "entries") && data.entries && data.name) {
+				const m = /^([A-Z]+\d+(?:[a-z]+)?)\./.exec(data.name.trim());
+				if (m) {
+					const k = m[1];
+					if (out[k]) throw new Error(`Header "${k}" was already defined!`);
+					out[k] = {chapter: ixChap, entry: data};
+				} else {
+					const m = /^(\d+(?:[A-Za-z]+)?)\./.exec(data.name.trim()); // case seems to be important
+					if (m) {
+						let k = `${ixChap}>${m[1]}>0`;
+						while (out[k]) {
+							k = k.split(">");
+							k[k.length - 1] = Number(k.last()) + 1;
+							k = k.join(">");
+						}
+						out[k] = out[k] = {chapter: ixChap, entry: data};
+					} else out[data.name] = {chapter: ixChap, entry: data};
+				}
+				data.entries.forEach(nxt => recurse(nxt, ixChap));
+			}
+		}
+		bookData.forEach((chapter, i) => recurse(chapter, i));
+		// cleaning stage
+		// convert `chapter>headerId>0`'s to `chapter>headerId` if there's no `>1`
+		const keyBuckets = {};
+		const keys = Object.keys(out);
+		keys.forEach(k => {
+			if (k.includes(">")) {
+				const bucket = k.split(">").slice(0, 2).join(">");
+				(keyBuckets[bucket] = keyBuckets[bucket] || []).push(k);
+			}
+		});
+		keys.forEach(k => {
+			if (k.includes(">")) {
+				const bucket = k.split(">").slice(0, 2).join(">");
+				if (keyBuckets[bucket].length === 1) {
+					out[bucket] = out[k];
+					delete out[k];
+				}
+			}
+		});
+		return out;
+	},
+
 	thisContents: null,
 	curRender: {
 		curAdvId: "NONE",
@@ -134,7 +181,8 @@ const BookUtil = {
 		data: {},
 		fromIndex: {},
 		lastRefHeader: null,
-		controls: {}
+		controls: {},
+		headerMap: {}
 	},
 	showBookContent: (data, fromIndex, bookId, hashParts) => {
 		function handleQuickReferenceShowAll () {
@@ -190,6 +238,7 @@ const BookUtil = {
 
 		BookUtil.curRender.data = data;
 		BookUtil.curRender.fromIndex = fromIndex;
+		BookUtil.curRender.headerMap = BookUtil._buildHeaderMap(data);
 		if (BookUtil.curRender.chapter !== chapter || BookUtil.curRender.curAdvId !== bookId) {
 			BookUtil.thisContents.children(`ul`).children(`ul, li`).removeClass("active");
 			BookUtil.thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
@@ -411,6 +460,15 @@ const BookUtil = {
 		}
 	},
 
+	handleReNav (ele) {
+		const hash = window.location.hash.slice(1).toLowerCase();
+		const linkHash = $(ele).attr("href").slice(1).toLowerCase();
+		if (hash === linkHash) {
+			BookUtil.isHashReload = true;
+			BookUtil.booksHashChange();
+		}
+	},
+
 	_$body: null,
 	_$findAll: null,
 	_headerCounts: null,
@@ -428,17 +486,9 @@ const BookUtil = {
 
 		BookUtil._$body.off("keypress");
 		BookUtil._$body.on("keypress", (e) => {
-			const handleReNav = (ele) => {
-				const hash = window.location.hash.slice(1).toLowerCase();
-				const linkHash = $(ele).attr("href").slice(1).toLowerCase();
-				if (hash === linkHash) {
-					BookUtil.isHashReload = true;
-					BookUtil.booksHashChange();
-				}
-			};
-
 			if ((e.key === "f" && noModifierKeys(e))) {
 				if (MiscUtil.isInInput(e)) return;
+				e.preventDefault();
 				$(`span.temp`).contents().unwrap();
 				BookUtil._lastHighlight = null;
 				if (BookUtil._$findAll) BookUtil._$findAll.remove();
@@ -472,7 +522,7 @@ const BookUtil = {
 
 								if (f.previews) {
 									const $ptPreviews = $(`<a href="#${getHash(f)}"/>`).click(function () {
-										handleReNav(this);
+										BookUtil.handleReNav(this);
 									});
 									const re = new RegExp(RegExp.escape(f.term), "gi");
 
@@ -499,7 +549,7 @@ const BookUtil = {
 									$link.on("click", () => $ptPreviews.click());
 								} else {
 									$link.click(function () {
-										handleReNav(this);
+										BookUtil.handleReNav(this);
 									});
 								}
 
@@ -515,10 +565,6 @@ const BookUtil = {
 				BookUtil._$body.append(BookUtil._$findAll);
 
 				$srch.focus();
-				// because somehow creating an input box from an event and then focusing it adds the "f" character? :joy:
-				setTimeout(() => {
-					$srch.val("");
-				}, 5)
 			}
 		});
 
@@ -644,3 +690,7 @@ const BookUtil = {
 		}
 	}
 };
+
+if (typeof module !== "undefined") {
+	module.exports.BookUtil = BookUtil;
+}
