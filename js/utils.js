@@ -4176,6 +4176,7 @@ BrewUtil = {
 				case "book":
 					return deleteGenericBookBrew(category);
 				case "adventureData":
+				case "bookData":
 					// Do nothing, handled by deleting the associated adventure
 					return () => {};
 				default:

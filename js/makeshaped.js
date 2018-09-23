@@ -28,6 +28,8 @@ class ShapedConverter {
 			];
 
 			this._inputPromise = DataUtil.multiLoadJSON(sources, null, data => {
+				ShapedConverter.bestiaryIndex = data[0];
+
 				SOURCE_INFO.bestiary.fileIndex = data[0];
 				SOURCE_INFO.spells.fileIndex = data[1];
 				const inputs = {};
@@ -120,17 +122,29 @@ class ShapedConverter {
 
 			let jsonPromise;
 			if (sources.length) {
-				jsonPromise = DataUtil.multiLoadJSON(sources, null, (data) => {
-					data.forEach((dataItem, index) => {
-						const key = sources[index].key;
-						if (dataItem.spell) {
-							inputs[key].spellInput = dataItem.spell;
-						}
-						if (dataItem.monster) {
-							inputs[key].monsterInput = dataItem.monster;
-						}
-					});
-				});
+				const originalSources = MiscUtil.copy(sources);
+				jsonPromise = DataUtil.multiLoadJSON(
+					originalSources,
+					null,
+					(data) => {
+						data.forEach((dataItem, index) => {
+							const key = sources[index].key;
+							if (dataItem.spell) inputs[key].spellInput = dataItem.spell;
+							if (dataItem.monster) inputs[key].monsterInput = dataItem.monster;
+							if (sources[index].doNotConvert) inputs[key].doNotConvert = true;
+						});
+					},
+					(src) => {
+						// WARNING: this will break if there are dependencies in anything besides bestiary files
+						const out = {
+							key: src,
+							url: `${ShapedConverter.SOURCE_INFO.bestiary.dir}${ShapedConverter.bestiaryIndex[src]}`,
+							doNotConvert: true
+						};
+						sources.push(out);
+						return out;
+					}
+				);
 			} else {
 				jsonPromise = Promise.resolve();
 			}
@@ -888,7 +902,13 @@ class ShapedConverter {
 		const legendaryGroup = inputs._legendaryGroup;
 
 		const toProcess = Object.values(inputs)
-			.filter(input => !input.converted && (isObject(input.monsterInput) || isObject(input.spellInput)));
+			.filter(input => !input.converted && (isObject(input.monsterInput) || isObject(input.spellInput)) && !input.doNotConvert);
+
+		let monsterList = [];
+		Object.values(inputs).forEach(data => {
+			if (data.monsterInput) monsterList = monsterList.concat(data.monsterInput);
+		});
+		monsterList.forEach(m => EntryRenderer.monster.mergeCopy(monsterList, m));
 
 		toProcess.forEach(data => {
 			if (data.monsterInput) {

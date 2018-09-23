@@ -854,11 +854,15 @@ function EntryRenderer () {
 						textStack[0] += `<span class="help" ${onMouseOver}>${displayText || name}</span>`;
 					} else if (tag === "@area") {
 						const [areaCode, flags, displayText, ...others] = text.split("|");
-						const area = BookUtil.curRender.headerMap[areaCode] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
-						const onMouseOver = EntryRenderer.hover.createOnMouseHoverEntry(area.entry, true);
 						const splCode = areaCode.split(">"); // use pos [0] for names without ">"s, and pos [1] for names with (as pos [2] is for sequence ID)
 						const renderText = displayText || `${flags && flags.includes("u") ? "A" : "a"}rea ${splCode.length === 1 ? splCode[0] : splCode[1]}`;
-						textStack[0] += `<a href="#${BookUtil.curRender.curAdvId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
+						if (typeof BookUtil === "undefined") { // for the roll20 script
+							textStack[0] += renderText;
+						} else {
+							const area = BookUtil.curRender.headerMap[areaCode] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
+							const onMouseOver = EntryRenderer.hover.createOnMouseHoverEntry(area.entry, true);
+							textStack[0] += `<a href="#${BookUtil.curRender.curAdvId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
+						}
 					} else if (tag === "@deity") {
 						const [name, pantheon, source, displayText, ...others] = text.split("|");
 						const hash = `${name}${pantheon ? `${HASH_LIST_SEP}${pantheon}` : ""}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
