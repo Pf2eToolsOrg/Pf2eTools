@@ -17,17 +17,25 @@ class BooksList {
 	}
 
 	onJsonLoad (data) {
+		var list;
 		this.list = new List("listcontainer", {
 			valueNames: ["name", "source"],
 			listClass: "books"
 		});
+		list = this.list;
 
-		$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
+		$("#filtertools").find("button.sort").on(EVNT_CLICK, function (evt) {
 			const $this = $(this);
+			$('#filtertools').find('.caret').removeClass('caret-reverse caret');
+
 			if ($this.attr("sortby") === "asc") {
+				$this.find('span').addClass("caret caret-reverse");
 				$this.attr("sortby", "desc");
-			} else $this.attr("sortby", "asc");
-			this.list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: this.sortFn});
+			} else {
+				$this.attr("sortby", "asc");
+				$this.find('span').addClass("caret")
+			}
+			$this.list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: this.sortFn});
 		});
 
 		this.list.sort("name");

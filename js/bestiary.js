@@ -108,6 +108,7 @@ window.onload = function load () {
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
 		});
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;
@@ -315,7 +316,11 @@ function pPageInit (loadedSources) {
 	// sorting headers
 	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 		const $this = $(this);
-		$this.data("sortby", $this.data("sortby") === "asc" ? "desc" : "asc");
+		let direction = $this.data("sortby") === "desc" ? "asc" : "desc"
+
+		$this.data("sortby", direction);
+		ut.call(this, "#filtertools-magic", $this, direction);
+		$this.find('span').addClass($this.data("sortby") === "desc" ? "caret" : "caret caret-reverse");
 		list.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortMonsters});
 	});
 
@@ -615,10 +620,10 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 					<a href="#${UrlUtil.autoEncodeHash(mon)}${subHash}" title="${mon._displayName || mon.name}">
 						<span class="name col-xs-4">${mon._displayName || mon.name}</span>
 						<span class="type col-xs-3">${mon._pTypes.asText.uppercaseFirst()}</span>
-						<span class="cr col-xs-3 text-align-center">${mon._pCr}</span>		
-						<span class="count col-xs-2 text-align-center">${addCount || 1}</span>		
-						<span class="id hidden">${pinId}</span>				
-						<span class="uid hidden">${data.uid || ""}</span>				
+						<span class="cr col-xs-3 text-align-center">${mon._pCr}</span>
+						<span class="count col-xs-2 text-align-center">${addCount || 1}</span>
+						<span class="id hidden">${pinId}</span>
+						<span class="uid hidden">${data.uid || ""}</span>
 					</a>
 				</li>
 			`);
