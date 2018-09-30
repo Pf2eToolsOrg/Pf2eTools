@@ -6,6 +6,7 @@ window.onload = function load () {
 	ExcludeUtil.initialise();
 	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.deity.loadJSON().then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 let list;

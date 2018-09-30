@@ -5,6 +5,7 @@ const entryRenderer = EntryRenderer.getDefaultRenderer();
 window.onload = function load () {
 	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	initializationFunctions.initHandleFilterButtonClicks();
 };
 
 function conditionDiseaseTypeToFull (type) {
