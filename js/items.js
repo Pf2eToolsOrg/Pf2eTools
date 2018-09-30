@@ -223,7 +223,7 @@ function addItems (data) {
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
 					<span class="name col-xs-3">${name}</span>
-					<span class="type col-xs-4 col-xs-4-3">${curitem.typeText}</span>
+					<span class="type col-xs-4 col-xs-4-3">${curitem.typeListText}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value || "\u2014"}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
 					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
@@ -236,7 +236,7 @@ function addItems (data) {
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
 					<span class="name col-xs-3 col-xs-3-5">${name}</span>
-					<span class="type col-xs-3 col-xs-3-3">${curitem.typeText}</span>
+					<span class="type col-xs-3 col-xs-3-3">${curitem.typeListText}</span>
 					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
 					<span class="rarity col-xs-2">${rarity}</span>
 					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>

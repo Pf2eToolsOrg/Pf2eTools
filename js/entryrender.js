@@ -2805,14 +2805,34 @@ EntryRenderer.item = {
 
 		// bake in types
 		const type = [];
-		if (item.wondrous) type.push("Wondrous Item");
-		if (item.technology) type.push(item.technology);
-		if (item.age) type.push(item.age);
-		if (item.weaponCategory) type.push(`${item.weaponCategory} Weapon${item.baseItem ? ` (${EntryRenderer.getDefaultRenderer().renderEntry(`{@item ${item.baseItem}`)})` : ""}`);
-		if (item.type) type.push(Parser.itemTypeToAbv(item.type));
-		if (item.poison) type.push("Poison");
+		const typeListText = [];
+		if (item.wondrous) {
+			type.push("Wondrous Item");
+			typeListText.push("Wondrous Item");
+		}
+		if (item.technology) {
+			type.push(item.technology);
+			typeListText.push(item.technology);
+		}
+		if (item.age) {
+			type.push(item.age);
+			typeListText.push(item.age);
+		}
+		if (item.weaponCategory) {
+			type.push(`${item.weaponCategory} Weapon${item.baseItem ? ` (${EntryRenderer.getDefaultRenderer().renderEntry(`{@item ${item.baseItem}`)})` : ""}`);
+			typeListText.push(`${item.weaponCategory} Weapon`);
+		}
+		if (item.type) {
+			type.push(Parser.itemTypeToAbv(item.type));
+			typeListText.push(Parser.itemTypeToAbv(item.type));
+		}
+		if (item.poison) {
+			type.push("Poison");
+			typeListText.push("Poison");
+		}
 		item.procType = type;
 		item.typeText = type.join(", ");
+		item.typeListText = typeListText.join(", ");
 
 		// bake in attunement
 		let attunement = "No";
