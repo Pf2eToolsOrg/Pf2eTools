@@ -4,6 +4,7 @@ const JSON_URL = "data/objects.json";
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -88,9 +89,9 @@ function getSublistItem (obj, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-				<span class="name col-xs-9">${obj.name}</span>		
-				<span class="ability col-xs-3">${Parser.sizeAbvToFull(obj.size)}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-xs-9">${obj.name}</span>
+				<span class="ability col-xs-3">${Parser.sizeAbvToFull(obj.size)}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

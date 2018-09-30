@@ -4,6 +4,7 @@ let list;
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -149,10 +150,10 @@ function getSublistItem (feat, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(feat)}" title="${feat.name}">
-				<span class="name col-xs-4">${feat.name}</span>		
-				<span class="ability col-xs-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>		
-				<span class="prerequisite col-xs-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""}">${feat._slPrereq}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="name col-xs-4">${feat.name}</span>
+				<span class="ability col-xs-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
+				<span class="prerequisite col-xs-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""}">${feat._slPrereq}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

@@ -276,6 +276,7 @@ function pPostLoad () {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
 		.then(() => {
 			if (History.lastLoadedId == null) History._freshLoad();
@@ -521,8 +522,8 @@ function getSublistItem (spell, pinId) {
 				<span class="level col-xs-1 col-xs-1-5">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="time col-xs-1 col-xs-1-8">${getTblTimeStr(spell.time[0])}</span>
 				<span class="school col-xs-1 col-xs-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
-				<span class="range col-xs-3 col-xs-3-6">${Parser.spRangeToFull(spell.range)}</span>		
-				<span class="id hidden">${pinId}</span>				
+				<span class="range col-xs-3 col-xs-3-6">${Parser.spRangeToFull(spell.range)}</span>
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

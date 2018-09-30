@@ -41,6 +41,7 @@ function getHiddenModeList (psionic) {
 
 window.onload = function load () {
 	ExcludeUtil.initialise();
+	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -225,7 +226,7 @@ function getSublistItem (p, pinId) {
 				<span class="name col-xs-6">${p.name}</span>
 				<span class="type col-xs-3">${Parser.psiTypeToFull(p.type)}</span>
 				<span class="order col-xs-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
-				<span class="id hidden">${pinId}</span>				
+				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
 	`;

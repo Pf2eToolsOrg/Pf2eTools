@@ -161,7 +161,7 @@ class ClassData {
 
 			ClassData.sortSubclasses([c]);
 		});
-		History.hashChange();
+		History.hashChange(true);
 	}
 
 	/**
@@ -1234,6 +1234,7 @@ initCompareMode();
 initLinkGrabbers();
 ClassBookView.initButton();
 ExcludeUtil.initialise();
+SortUtil.initHandleFilterButtonClicks();
 
 let tableDefault = $("#pagecontent").html();
 let statsProfDefault = $("#statsprof").html();

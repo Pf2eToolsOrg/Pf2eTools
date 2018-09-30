@@ -13,29 +13,38 @@ class BooksList {
 	}
 
 	onPageLoad () {
+		SortUtil.initHandleFilterButtonClicks();
 		DataUtil.loadJSON(this.contentsUrl).then(this.onJsonLoad.bind(this));
 	}
 
 	onJsonLoad (data) {
+		const sortFunction = (a, b, o) => self.sortFn(self.dataList, a, b, o);
 		this.list = new List("listcontainer", {
-			valueNames: ["name", "source"],
-			listClass: "books"
+			listClass: "books",
+			sortFunction
 		});
 
+		const self = this;
 		$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
 			const $this = $(this);
+			$('#filtertools').find('.caret').removeClass('caret--reverse caret');
+
 			if ($this.attr("sortby") === "asc") {
+				$this.find("span").addClass("caret caret--reverse");
 				$this.attr("sortby", "desc");
-			} else $this.attr("sortby", "asc");
-			this.list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction: this.sortFn});
+			} else {
+				$this.attr("sortby", "asc");
+				$this.find("span").addClass("caret")
+			}
+			self.list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction});
 		});
 
 		this.list.sort("name");
 		$("#reset").click(function () {
 			$("#search").val("");
-			this.list.search();
-			this.list.sort("name");
-			this.list.filter();
+			self.list.search();
+			self.list.sort("name");
+			self.list.filter();
 			$(`.showhide`).each((i, ele) => {
 				const $ele = $(ele);
 				if (!$ele.data("hidden")) {
@@ -66,7 +75,7 @@ class BooksList {
 			tempString +=
 				`<li ${FLTR_ID}="${this.dataIx}">
 				<a href="${this.rootPage}#${it.id}" title="${it.name}" class="book-name">
-					<span class='name full-width'>
+					<span class="full-width">
 						${this.rowBuilderFn(it)}
 					</span>
 					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
