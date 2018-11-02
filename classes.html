@@ -414,61 +414,43 @@
 				<button class="btn btn-default btn-xs noprint" id="btn-comparemode" title="A pop-up table which can be used to compare subclass features.">Subclass Comparison</button>
 				<button class="btn btn-default btn-xs noprint" id="btn-readmode" title="A pop-up reading mode thatkeeps class and subclass information separated, matching the books.">Book View</button>
 			</div>
+
 			<table id="statsprof" class="stats shadow-big">
-				<tr>
-					<th class="border" colspan="6"></th>
-				</tr>
-				<tr>
-					<th id="nameSummary" colspan="6">Name</th>
-				</tr>
-				<tr>
-					<th id="author" colspan="6">Author</th>
-				</tr>
-				<tr>
-					<td class="divider" colspan="6">
-						<div></div>
-					</td>
-				</tr>
+				<tr><th class="border" colspan="6"></th></tr>
+				<tr><th id="nameSummary" colspan="6">Name</th></tr>
+				<tr><th id="author" colspan="6">Author</th></tr>
+				<tr><td class="divider" colspan="6"><div></div></td></tr>
 				<tr>
 					<td id="hp" colspan="6">
 						<h5>Hit Points</h5>
 						<div id="hitdice">
-							<strong>Hit Dice:</strong>
-							<span> </span>
+							<strong>Hit Dice:</strong> <span></span>
 						</div>
 						<div id="hp1stlevel">
-							<strong>Hit Points at 1st Level:</strong>
-							<span> </span>
+							<strong>Hit Points at 1st Level:</strong> <span></span>
 						</div>
 						<div id="hphigherlevels">
-							<strong>Hit Points at Higher Levels:</strong>
-							<span> </span>
+							<strong>Hit Points at Higher Levels:</strong> <span></span>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td id="prof" colspan="6">
 						<h5>Proficiencies</h5>
-						<span>You are proficient with the following items, in addition to any proficiencies provided by your race or background.</span>
 						<div id="armor">
-							<strong>Armor:</strong>
-							<span> </span>
+							<strong>Armor:</strong> <span></span>
 						</div>
 						<div id="weapons">
-							<strong>Weapons:</strong>
-							<span> </span>
+							<strong>Weapons:</strong> <span></span>
 						</div>
 						<div id="tools">
-							<strong>Tools:</strong>
-							<span> </span>
+							<strong>Tools:</strong> <span></span>
 						</div>
 						<div id="saves">
-							<strong>Saving Throws:</strong>
-							<span> </span>
+							<strong>Saving Throws:</strong> <span></span>
 						</div>
 						<div id="skills">
-							<strong>Skills:</strong>
-							<span> </span>
+							<strong>Skills:</strong> <span></span>
 						</div>
 					</td>
 				</tr>
@@ -478,11 +460,28 @@
 						<div></div>
 					</td>
 				</tr>
-
 				<tr>
-					<th class="border" colspan="6"></th>
+					<td id="multiclassing" colspan="6">
+						<h5>Multiclassing</h5>
+						<div id="multiclassing_prereqs"></div>
+						<div id="multiclassing_profs"></div>
+						<div id="multiclassing_profs_armor">
+							<strong>Armor:</strong> <span></span>
+						</div>
+						<div id="multiclassing_profs_weapons">
+							<strong>Weapons:</strong> <span></span>
+						</div>
+						<div id="multiclassing_profs_tools">
+							<strong>Tools:</strong> <span></span>
+						</div>
+						<div id="multiclassing_profs_skills">
+							<strong>Skills:</strong> <span></span>
+						</div>
+					</td>
 				</tr>
+				<tr><th class="border" colspan="6"></th></tr>
 			</table>
+
 			<div id="sticky-nav">
 				<div class="nav-head" data-state="1"><div class="nav-outline">Outline</div><hr></div>
 				<div class="nav-body"><!-- populate with JS --></div>

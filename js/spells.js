@@ -9,6 +9,7 @@ const META_ADD_V = "Verbal";
 const META_ADD_S = "Somatic";
 const META_ADD_M = "Material";
 const META_ADD_M_COST = "Material with Cost";
+const META_ADD_M_CONSUMED = "Material is Consumed";
 const META_ADD_MB_PERMANENT = "Permanent Effects";
 const META_ADD_MB_SCALING = "Scaling Effects";
 const META_ADD_MB_HEAL = "Healing";
@@ -209,11 +210,15 @@ function getMetaFilterObj (s) {
 	const out = [];
 	if (s.meta && s.meta.ritual) out.push(META_RITUAL);
 	if (s.meta && s.meta.technomagic) out.push(META_TECHNOMAGIC);
-	if (s.duration.filter(d => d.concentration).length) out.push(META_ADD_CONC);
+	if (s.duration.filter(d => d.concentration).length) {
+		out.push(META_ADD_CONC);
+		s._isConc = true;
+	} else s._isConc = false;
 	if (s.components && s.components.v) out.push(META_ADD_V);
 	if (s.components && s.components.s) out.push(META_ADD_S);
 	if (s.components && s.components.m) out.push(META_ADD_M);
 	if (s.components && s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
+	if (s.components && s.components.m && s.components.m.consume) out.push(META_ADD_M_CONSUMED);
 	if (s.permanentEffects || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
 	if (s.scalingEffects || s.entriesHigherLevel) out.push(META_ADD_MB_SCALING);
 	if (s.isHeal) out.push(META_ADD_MB_HEAL);
@@ -300,7 +305,7 @@ const classAndSubclassFilter = new MultiFilter({name: "Classes"}, classFilter, s
 const raceFilter = new Filter({header: "Race"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_MB_HEAL, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_RITUAL, META_TECHNOMAGIC]
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_RITUAL, META_TECHNOMAGIC]
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -399,7 +404,7 @@ function pPageInit (loadedSources) {
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "level", "time", "school", "range", "classes", "uniqueid"],
+		valueNames: ["name", "source", "level", "time", "school", "range", "concentration", "classes", "uniqueid"],
 		listClass: "spells",
 		sortFunction: sortSpells
 	});
@@ -422,7 +427,7 @@ function pPageInit (loadedSources) {
 	});
 
 	const subList = ListUtil.initSublist({
-		valueNames: ["name", "level", "time", "school", "range", "id"],
+		valueNames: ["name", "level", "time", "school", "concentration", "range", "id"],
 		listClass: "subspells",
 		sortFunction: sortSpells
 	});
@@ -515,11 +520,12 @@ function getSublistItem (spell, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
-				<span class="name col-xs-3 col-xs-3-9">${spell.name}</span>
+				<span class="name col-xs-3 col-xs-3-2">${spell.name}</span>
 				<span class="level col-xs-1 col-xs-1-5">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="time col-xs-1 col-xs-1-8">${getTblTimeStr(spell.time[0])}</span>
-				<span class="school col-xs-1 col-xs-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
-				<span class="range col-xs-3 col-xs-3-6">${Parser.spRangeToFull(spell.range)}</span>
+				<span class="school col-xs-1 col-xs-1-6 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
+				<span class="concentration concentration--sublist col-xs-1 col-xs-0-7" title="Concentration">${spell._isConc ? "×" : ""}</span>
+				<span class="range col-xs-3 col-xs-3-2">${Parser.spRangeToFull(spell.range)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -650,11 +656,12 @@ function addSpells (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${spI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${spI}" href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
-					<span class="name col-xs-3 col-xs-3-5">${spell.name}</span>
+					<span class="name col-xs-2 col-xs-2-9">${spell.name}</span>
 					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
 					<span class="level col-xs-1 col-xs-1-5">${levelText}</span>
 					<span class="time col-xs-1 col-xs-1-7">${getTblTimeStr(spell.time[0])}</span>
 					<span class="school col-xs-1 col-xs-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>
+					<span class="concentration col-xs-1 col-xs-0-6" title="Concentration">${spell._isConc ? "×" : ""}</span>
 					<span class="range col-xs-2 col-xs-2-4">${Parser.spRangeToFull(spell.range)}</span>
 
 					<span class="classes" style="display: none">${Parser.spClassesToFull(spell.classes, true)}</span>
@@ -742,6 +749,10 @@ function sortSpells (a, b, o) {
 
 	if (o.valueName === "range") {
 		return orFallback(SortUtil.ascSort, "_normalisedRange");
+	}
+
+	if (o.valueName === "concentration") {
+		return orFallback(SortUtil.ascSort, "_isConc");
 	}
 
 	return 0;

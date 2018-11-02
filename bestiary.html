@@ -63,42 +63,130 @@
 		</div>
 
 		<div id="contentwrapper" class="view-col">
-			<div id="sublistcontainer">
+			<div class="ecgen__visible mb-4">
+				<div class="row">
+					<div class="col-xs-12 text-align-right">
+						<div class="btn-group">
+							<button type="button" class="btn btn-info ecgen_rng" data-mode="medium">Random Medium</button>
+							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li class="ecgen_rng_easy"><a href="#">Random Easy</a></li>
+								<li class="ecgen_rng_medium"><a href="#">Random Medium</a></li>
+								<li class="ecgen_rng_hard"><a href="#">Random Hard</a></li>
+								<li class="ecgen_rng_deadly"><a href="#">Random Deadly</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="sublistcontainer" class="sublist">
 				<div id="sublistsort" class="sortlabel btn-group">
-					<button class="col-xs-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="type">Type</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="cr">CR</button>
+					<button class="col-xs-5 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type</button>
+					<button class="col-xs-3 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
+					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="cr">CR</button>
 					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
 				</div>
 				<ul class="list submonsters">
 					<!-- populate with JS -->
 				</ul>
-				<div class="row">
+				<div class="row ecgen__hidden">
 					<span class="col-xs-7 text-align-right">Total:</span>
 					<span class="col-xs-5 no-wrap" id="totalcr" style="padding-left: 1px"></span>
 				</div>
 			</div>
 
-			<div id="stat-tabs" class="wrp-stat-tab">
+			<div id="stat-tabs" class="wrp-stat-tab ecgen__hidden">
 				<div id="tabs-right"></div>
 			</div>
 
-			<div class="wrp-stats-table">
+			<div id="wrp-pagecontent" class="wrp-stats-table ecgen__hidden">
 				<table id="pagecontent" class="stats monster">
 					<tr><th class="border" colspan="6"></th></tr>
-					<tr><td colspan="6" class="initial-message">Select a creature from the list to view it here</td></tr>
+					<tr><td colspan="6" class="initial-message">Loading...</td></tr>
 					<tr><th class="border" colspan="6"></th></tr>
 				</table>
 			</div>
 
-			<div class="text-align-center wrp-footer-buttons">
-				<div id="wrp-profbonusdice">
+			<div class="text-align-center wrp-footer-buttons ecgen__hidden">
+				<button class="btn btn-success btn-xs" id="btn-encounterbuild">Encounter Builder</button>
+				<div id="wrp-profbonusdice" class=>
 					<button class="btn btn-default btn-xs" type="button" id="profbonusdice"
 							title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
 					</button>
 				</div>
 				<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
 				<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+			</div>
+
+			<div class="ecgen__visible">
+				<h3>Group Info</h3>
+				<div class="row">
+					<!-- LHS -->
+					<div class="col-xs-6">
+						<div class="row">
+							<div class="col-xs-3">Players:</div>
+							<div class="col-xs-3">Level:</div>
+						</div>
+
+
+						<div class="row ecgen__wrp_add_players">
+							<div class="col-xs-12">
+								<button class="btn btn-info btn-xs ecgen__add_players">
+									<span class="glyphicon glyphicon-plus"></span> Add Another Level
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- RHS -->
+					<div class="col-xs-6 text-align-right">
+						<div class="ecgen__easy">Easy: ? XP</div>
+						<div class="ecgen__medium">Medium: ? XP</div>
+						<div class="ecgen__hard">Hard: ? XP</div>
+						<div class="ecgen__deadly">Deadly: ? XP</div>
+						<br>
+						<div class="ecgen__daily_budget">Daily Budget: ? XP</div>
+					</div>
+				</div>
+
+				<hr class="ecgen__req_creatures">
+				<div class="row ecgen__req_creatures">
+					<!-- LHS -->
+					<div class="col-xs-6">
+						<h3 class="ecgen__rating">Difficulty: ?</h3>
+					</div>
+
+					<!-- RHS -->
+					<div class="col-xs-6 text-align-right">
+						<h4 class="ecgen__raw_total">Total XP: ?</h4>
+						<div><i class="ecgen__raw_per_player">(? per player)</i></div>
+						<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4 class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
+						<div><i class="ecgen__adjusted_per_player">(? per player)</i></div>
+					</div>
+				</div>
+
+				<hr>
+				<div class="row">
+					<div class="col-xs-12 flex" style="justify-content: center">
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_url">Save to URL</button>
+						<div style="width: 10px; height: 1px;"></div>
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_file">Save to File</button>
+						<button class="btn btn-primary btn-xs mr-2 ecgen__ld_file">Load from File</button>
+						<div style="width: 10px; height: 1px;"></div>
+						<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
+					</div>
+				</div>
+
+				<hr>
+				<div class="row">
+					<div class="col-xs-12">
+						<button class="btn btn-default btn-xs ecgen__visible" style="margin: 0 auto;" id="btn-encounterstatblock">Back to Statblocks</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

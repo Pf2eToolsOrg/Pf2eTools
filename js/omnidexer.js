@@ -77,6 +77,10 @@ class Omnidexer {
 
 		this.id = id;
 	}
+
+	static arrIncludesOrEquals (checkAgainst, item) {
+		return checkAgainst instanceof Array ? checkAgainst.includes(item) : checkAgainst === item;
+	}
 }
 /**
  * See docs for `TO_INDEX` below.
@@ -88,7 +92,6 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		dir: "bestiary",
 		primary: "name",
 		source: "source",
-		page: "page",
 		listProp: "monster",
 		baseUrl: "bestiary.html",
 		hover: true
@@ -98,7 +101,6 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		dir: "spells",
 		primary: "name",
 		source: "source",
-		page: "page",
 		listProp: "spell",
 		baseUrl: "spells.html",
 		hover: true
@@ -108,7 +110,6 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		dir: "class",
 		primary: "name",
 		source: "source",
-		page: "page",
 		listProp: "class",
 		baseUrl: "classes.html",
 		deepIndex: (primary, it) => {
@@ -117,6 +118,56 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 				s: sc.source,
 				u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
 			}))
+		}
+	},
+	{
+		category: 30,
+		dir: "class",
+		primary: "name",
+		source: "source",
+		listProp: "class",
+		baseUrl: "classes.html",
+		onlyDeep: true,
+		deepIndex: (primary, it) => {
+			const out = [];
+			let scFeatureI = 0;
+			it.classFeatures.forEach((lvlFeatureList, i) => {
+				// class features
+				lvlFeatureList
+					.filter(feature => !feature.gainSubclassFeature && feature.name !== "Ability Score Improvement") // don't add "you gain a subclass feature" or ASI's
+					.forEach(feature => {
+						const name = EntryRenderer.findName(feature);
+						if (!name) throw new Error("No name!");
+						out.push({
+							n: `${primary.parentName} ${i + 1}; ${name}`,
+							s: it.source,
+							u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(it.name)}${HASH_PART_SEP}${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${feature.name} ${i + 1}`)}`
+						})
+					});
+
+				// subclass features
+				const gainSubclassFeatures = lvlFeatureList.filter(feature => feature.gainSubclassFeature);
+				if (gainSubclassFeatures.length === 1) {
+					const gainFeatureHash = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${gainSubclassFeatures[0].name} ${i + 1}`)}`;
+					it.subclasses.forEach(sc => {
+						const features = sc.subclassFeatures[scFeatureI];
+						features.forEach(feature => {
+							const baseSubclassUrl = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`;
+							const name = EntryRenderer.findName(feature);
+							if (!name) throw new Error("No name!");
+							out.push({
+								n: `${sc.shortName} ${primary.parentName} ${i + 1}; ${name}`,
+								s: sc.source,
+								u: `${baseSubclassUrl}${HASH_PART_SEP}${gainFeatureHash}`
+							})
+						});
+					});
+					scFeatureI++;
+				} else if (gainSubclassFeatures.length > 1) {
+					throw new Error(`Multiple subclass features gained at level ${i + 1} for class "${it.name}" from source "${it.source}"!`)
+				}
+			});
+			return out;
 		}
 	}
 ];
@@ -181,7 +232,7 @@ Omnidexer.TO_INDEX = [
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
 		hover: true,
-		include: (it) => it.featureType === "EI"
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "EI")
 	},
 	{
 		category: 22,
@@ -189,7 +240,7 @@ Omnidexer.TO_INDEX = [
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
 		hover: true,
-		include: (it) => it.featureType === "MM"
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MM")
 	},
 	{
 		category: 23,
@@ -197,12 +248,45 @@ Omnidexer.TO_INDEX = [
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
 		hover: true,
-		include: (it) => it.featureType === "MAB"
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MV:B")
+	},
+	{
+		category: 26,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MV:C2-UA")
+	},
+	{
+		category: 27,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => {
+			return Omnidexer.arrIncludesOrEquals(it.featureType, "AS:V1-UA") || Omnidexer.arrIncludesOrEquals(it.featureType, "AS:V2-UA") || Omnidexer.arrIncludesOrEquals(it.featureType, "AS")
+		}
+	},
+	{
+		category: 28,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "OTH")
+	},
+	{
+		category: 29,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "FS:F") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:B") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:R") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:P")
 	},
 	{
 		category: 4,
 		file: "items.json",
-		page: "page",
 		listProp: "item",
 		baseUrl: "items.html",
 		hover: true
@@ -210,7 +294,6 @@ Omnidexer.TO_INDEX = [
 	{
 		category: 4,
 		file: "items.json",
-		page: "page",
 		listProp: "itemGroup",
 		baseUrl: "items.html",
 		hover: true

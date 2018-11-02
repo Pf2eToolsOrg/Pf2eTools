@@ -1369,7 +1369,7 @@
 	},
 
 	_DAMAGE_REGEX_DICE: new RegExp(/(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/, "ig"),
-	_DAMAGE_REGEX_FLAT: new RegExp(/(Hit: )([0-9]*)( [a-z]+( or [a-z]+)? damage)/, "ig"),
+	_DAMAGE_REGEX_FLAT: new RegExp(/(Hit: |{@h})([0-9]*)( [a-z]+( or [a-z]+)? damage)/, "ig"),
 	_adjustDpr (mon, crIn, crOut) {
 		const idealDprRangeIn = this._crDprRanges[crIn];
 		const idealDprRangeOut = this._crDprRanges[crOut];

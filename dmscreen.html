@@ -29,6 +29,10 @@
 			display: none;
 		}
 
+		body.dm-screen-locked .panel-control-bar {
+			display: none !important;
+		}
+
 		.dm-screen {
 			width: 100%;
 			height: 100%;
@@ -98,9 +102,15 @@
 			font-family: 'Andada', serif;
 			font-variant: small-caps;
 			color: white;
-			cursor: default;
 			user-select: none;
 			background: #808080a0;
+			cursor: pointer;
+		}
+
+		.panel-control-title--bumped {
+			top: 20px;
+			border-top-right-radius: 5px;
+			opacity: 1;
 		}
 
 		.panel-control-addtab {
@@ -541,6 +551,8 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			font-weight: initial;
+			min-height: 30px;
 		}
 
 		.tab-body-row:first-of-type {
@@ -619,6 +631,7 @@
 		}
 
 		.dm-sidemenu-row {
+			width: 100%;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -626,10 +639,18 @@
 		}
 
 		.dm-sidemenu-row-alt {
+			width: 100%;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
 			margin-bottom: 5px;
+		}
+
+		.dm-sidemenu-row-vert {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
 		}
 
 		.dm-sidemenu-row-divider {
@@ -644,6 +665,7 @@
 		}
 
 		.dm-sidemenu-row-label--cb-label {
+			font-weight: initial;
 			display: flex;
 			margin-bottom: 0;
 			justify-content: center;
@@ -817,7 +839,7 @@
 
 		.dm-init-wrp-controls {
 			flex: none;
-			height: 40px;
+			height: 38px;
 			padding: 3px;
 			border-top: 1px solid #ccc;
 			justify-content: space-evenly;
@@ -953,6 +975,7 @@
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/dmscreen.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>

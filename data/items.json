@@ -7507,21 +7507,23 @@
 					"name": "Shield Ward",
 					"type": "entries",
 					"entries": [
-						"You can transfer the ingot's magic to a nonmagical item\u2014a shield or a two-handed melee weapon-by tracing the skold rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the ingot is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:"
-					]
-				},
-				{
-					"name": "Shield",
-					"type": "entries",
-					"entries": [
-						"The shield is now a rare magic item that requires attunement. Its magic gives you a +1 bonus to AC, and the first time after each of your long rests that damage reduces you to 0 hit points, you are instead reduced to 1 hit point. You must be wielding the shield to gain these benefits."
-					]
-				},
-				{
-					"name": "Weapon",
-					"type": "entries",
-					"entries": [
-						"The weapon is now an uncommon magic weapon. It grants you a +1 bonus to AC while you're holding it."
+						"You can transfer the ingot's magic to a nonmagical item\u2014a shield or a two-handed melee weapon-by tracing the skold rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the ingot is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Shield.",
+									"entry": "The shield is now a rare magic item that requires attunement. Its magic gives you a +1 bonus to AC, and the first time after each of your long rests that damage reduces you to 0 hit points, you are instead reduced to 1 hit point. You must be wielding the shield to gain these benefits."
+								},
+								{
+									"type": "item",
+									"name": "Weapon.",
+									"entry": "The weapon is now an uncommon magic weapon. It grants you a +1 bonus to AC while you're holding it."
+								}
+							]
+						}
 					]
 				}
 			],
@@ -8708,7 +8710,7 @@
 			"dmgType": "B",
 			"source": "LMoP",
 			"page": 48,
-			"weaponCategory": "Martial",
+			"weaponCategory": "Simple",
 			"baseItem": "mace|phb",
 			"entries": [
 				"This +1 mace was made for a cleric of Lathander, the god of dawn. The head of the mace is shaped like a sunburst and made of solid brass. Named Lightbringer, this weapon glows as bright as a torch when its wielder commands. While glowing, the mace deals an extra {@dice 1d6} radiant damage to undead creatures."
@@ -9913,21 +9915,23 @@
 					"name": "Gift of Flame",
 					"type": "entries",
 					"entries": [
-						"You can transfer the opal's magic to a nonmagical item\u2014a weapon or a suit of armor\u2014by tracing the ild rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the opal is destroyed, and the rune appears in red on the chosen item, which gains a benefit based on its form:"
-					]
-				},
-				{
-					"name": "Weapon",
-					"type": "entries",
-					"entries": [
-						"The weapon is now an uncommon magic weapon. It deals an extra {@dice 1d6} fire damage to any target it hits."
-					]
-				},
-				{
-					"name": "Armor",
-					"type": "entries",
-					"entries": [
-						"The armor is now a rare magic item that requires attunement. You have resistance to cold damage while wearing the armor."
+						"You can transfer the opal's magic to a nonmagical item\u2014a weapon or a suit of armor\u2014by tracing the ild rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the opal is destroyed, and the rune appears in red on the chosen item, which gains a benefit based on its form:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Weapon.",
+									"entry": "The weapon is now an uncommon magic weapon. It deals an extra {@dice 1d6} fire damage to any target it hits."
+								},
+								{
+									"type": "item",
+									"name": "Armor.",
+									"entry": "The armor is now a rare magic item that requires attunement. You have resistance to cold damage while wearing the armor."
+								}
+							]
+						}
 					]
 				}
 			]
@@ -10036,21 +10040,23 @@
 					"type": "entries",
 					"name": "Gift of Stone",
 					"entries": [
-						"You can transfer the orb's magic to a nonmagical item\u2014a shield or a pair of boots\u2014by tracing the stein rune there with your finger. The transfer takes8 hours of work that requires the two items to be within 5 feet of each other. At the end, the orb is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:"
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Shield",
-					"entries": [
-						"The shield is now a rare magic item that requires attunement. While you wield it, you have resistance to all damage dealt by ranged weapon attacks."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Boots",
-					"entries": [
-						"The pair of boots is now an uncommon magic item that requires attunement. While you wear the boots, you have advantage on Strength saving throws, and you can use your reaction to avoid being knocked {@condition prone}."
+						"You can transfer the orb's magic to a nonmagical item\u2014a shield or a pair of boots\u2014by tracing the stein rune there with your finger. The transfer takes8 hours of work that requires the two items to be within 5 feet of each other. At the end, the orb is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Shield.",
+									"entry": "The shield is now a rare magic item that requires attunement. While you wield it, you have resistance to all damage dealt by ranged weapon attacks."
+								},
+								{
+									"type": "item",
+									"name": "Boots.",
+									"entry": "The pair of boots is now an uncommon magic item that requires attunement. While you wear the boots, you have advantage on Strength saving throws, and you can use your reaction to avoid being knocked {@condition prone}."
+								}
+							]
+						}
 					]
 				}
 			],
@@ -10331,21 +10337,23 @@
 					"type": "entries",
 					"name": "Gift of Wind",
 					"entries": [
-						"You can transfer the pennant's magic to a nonmagical item\u2014a suit of armor, a pair of boots, or a cloak\u2014by tracing the vind rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the pennant is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:"
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Armor",
-					"entries": [
-						"The armor is now an uncommon magic item that requires attunement. You gain a bonus to speed of 5 feet while you wear the armor, and if it normally imposes disadvantage on {@skill Stealth} checks, it no longer does so."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Boots/Cloak",
-					"entries": [
-						"The pair of boots or cloak is now a rare magic item that requires attunement. While wearing the item, you can convert up to 20 feet of your movement on each of your turns into flight. If you don't land at the end of this flight, you fall unless you have another means of staying aloft. You can also cast {@spell feather fall} once from the item, and you regain the ability to do so when you finish a short or long rest."
+						"You can transfer the pennant's magic to a nonmagical item\u2014a suit of armor, a pair of boots, or a cloak\u2014by tracing the vind rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the pennant is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Armor.",
+									"entry": "The armor is now an uncommon magic item that requires attunement. You gain a bonus to speed of 5 feet while you wear the armor, and if it normally imposes disadvantage on {@skill Stealth} checks, it no longer does so."
+								},
+								{
+									"type": "item",
+									"name": "Boots/Cloak.",
+									"entry": "The pair of boots or cloak is now a rare magic item that requires attunement. While wearing the item, you can convert up to 20 feet of your movement on each of your turns into flight. If you don't land at the end of this flight, you fall unless you have another means of staying aloft. You can also cast {@spell feather fall} once from the item, and you regain the ability to do so when you finish a short or long rest."
+								}
+							]
+						}
 					]
 				}
 			],
@@ -13328,21 +13336,23 @@
 					"name": "Gift of Frost",
 					"type": "entries",
 					"entries": [
-						"You can transfer the shard's magic to a nonmagical item\u2014a cloak or a pair of boots-by tracing the ise rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the shard is destroyed, and the rune appears in blue on the chosen item, which gains a benefit based on its form:"
-					]
-				},
-				{
-					"name": "Cloak",
-					"type": "entries",
-					"entries": [
-						"The cloak is now a rare magic item that requires attunement. While wearing it, you have resistance to fire damage, and you have advantage on Dexterity ({@skill Stealth}) checks made while in snowy terrain."
-					]
-				},
-				{
-					"name": "Boots",
-					"type": "entries",
-					"entries": [
-						"The pair of boots is now a rare magic item that requires attunement. While wearing it, you ignore difficult terrain while walking, and you can walk on water."
+						"You can transfer the shard's magic to a nonmagical item\u2014a cloak or a pair of boots-by tracing the ise rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the shard is destroyed, and the rune appears in blue on the chosen item, which gains a benefit based on its form:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Cloak.",
+									"entry": "The cloak is now a rare magic item that requires attunement. While wearing it, you have resistance to fire damage, and you have advantage on Dexterity ({@skill Stealth}) checks made while in snowy terrain."
+								},
+								{
+									"type": "item",
+									"name": "Boots.",
+									"entry": "The pair of boots is now a rare magic item that requires attunement. While wearing it, you ignore difficult terrain while walking, and you can walk on water."
+								}
+							]
+						}
 					]
 				}
 			],
@@ -14180,7 +14190,7 @@
 			"page": 115,
 			"entries": [
 				"A spellshard is a polished Eberron dragonshard, sized to fit into the palm of a hand. The shard is imbued with a particular work of literature. By holding the shard and concentrating, you can see its pages in your mind's eye. Thinking of a particular phrase or topic will draw you to the first section that addresses it, and a simple ritual allows you to add content to the shard.",
-				"An arcane caster can use a spellshard instead of a spellbook; the spellshard costs 1 gp per \"page\" in the shard, and otherwise functions as a mundane spellbook. Spellshards can also be used as diaries or journals. More advanced (and uncommon) shards can require a particular mental passphrase to access the contents of the shard."
+				"A wizard can use a spellshard instead of a spellbook; the spellshard costs 1 gp per \"page\" in the shard, and otherwise functions as a mundane spellbook. Spellshards can also be used as diaries or journals. More advanced (and uncommon) shards can require a particular mental passphrase to access the contents of the shard."
 			]
 		},
 		{
@@ -18139,20 +18149,6 @@
 					"entries": [
 						"Windvane makes its wielder mercurial and unreliable. While attuned to the weapon, you gain the following flaw: \"I break my vows and plans. Duty and honor mean nothing to me.\""
 					]
-				},
-				{
-					"name": "Thrown",
-					"type": "entries",
-					"entries": [
-						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
-					]
-				},
-				{
-					"name": "Versatile",
-					"type": "entries",
-					"entries": [
-						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property\u2014the damage when the weapon is used with two hands to make a melee attack."
-					]
 				}
 			],
 			"attachedSpells": [
@@ -18908,6 +18904,365 @@
 			"entries": [
 				"Platinum crescent inset with electrum, about three inches long with a hole large enough for a {@item nib|wdh} to fit in (1 harbor moon = 5,000 {@item nib|wdh|nibs})"
 			]
+		},
+		{
+			"name": "Adamantine Bar",
+			"type": "TG",
+			"rarity": "None",
+			"value": "1000 gp",
+			"weight": "10",
+			"source": "WDH",
+			"page": 90
+		},
+		{
+			"name": "Platinum headdress with topaz sun symbol (Sun Empire)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Feathered mantle with emerald clasp (Sun Empire)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Necklace of jade and pink pearls (River Heralds)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Finely articulated jade glove (River Heralds)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Eye patch with a mock eye set in blue sapphire and moonstone (Brazen Coalition)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Jeweled anklet (Brazen Coalition)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold music box (Brazen Coalition)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold-plated ceremonial helmet and pauldrons (Legion of Dusk)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Fine gold chain with fire opals (Legion of Dusk)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Masterpiece painting in mahogany frame with gold inlay (Legion of Dusk)",
+			"type": "$",
+			"value": "2500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Platinum ring with yellow sapphire (Sun Empire)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Platinum staff topped with amber (Sun Empire)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Jade breastplate (River Heralds)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Jade totem with diamond eyes (River Heralds)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Treasure chest crafted of exotic wood with gold fittings and opals (Brazen Coalition)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Bejeweled ivory drinking horn with gold inlay (Brazen Coalition)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold jewelry box with platinum filigree (Brazen Coalition)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold basin with rubies (Legion of Dusk)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold chalice set with emeralds (Legion of Dusk)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Marble font with gold inlay (Legion of Dusk)",
+			"type": "$",
+			"value": "7500gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Silver headdress with amber and red-coral feathers (Sun Empire)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Silver shoulder piece with amber and garnet (Sun Empire)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Jade sword with amber (River Heralds)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Large jade totem (River Heralds)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold-plated sextant with topaz (Brazen Coalition)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Necklace of electrum medallions with red and blue tournalines (Brazen Coalition)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Lute crafted of exotic wood with mother-of-pearl inlay and zircon gems (Brazen Coalition)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Ceremonial silver dagger with gold pommel and black pearl (Legion of Dusk)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Fine steel rapier with gold filigree hilt (Legion of Dusk)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold chalice (Legion of Dusk)",
+			"type": "$",
+			"value": "750gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Silver necklace with an amber pendant (Sun Empire)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Fine robe with dinosaur feathers and silver embroidery (Sun Empire)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Jade headpiece (River Heralds)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Carved jade statuette (River Heralds)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Jade bowl (River Heralds)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Bronze spyglass (Brazen Coalition)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Pewter mug with green spinels (Brazen Coalition)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold pendant with black onyx (Legion of Dusk)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Large well-made tapestry (Legion of Dusk)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Large gold bracelet (Legion of Dusk)",
+			"type": "$",
+			"value": "250gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Silver medallion (Sun Empire)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Amulet of dinosaur feathers (Sun Empire)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Sun amulet on a beaded chain (Sun Empire)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Tiny jade figurine (River Heralds)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Pair of engraved bone dice (Brazen Coalition)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Copper stein with silver filigree (Brazen Coalition)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Velvet doublet with gold buttons (Legion of Dusk)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold ring with turquoise (Legion of Dusk)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Cloth-of-gold vestments (Legion of Dusk)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
+		},
+		{
+			"name": "Gold locket with a painted portrait inside (Legion of Dusk)",
+			"type": "$",
+			"value": "25gp",
+			"source": "PSX",
+			"rarity": "None"
 		}
 	],
 	"itemGroup": [

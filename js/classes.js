@@ -1,5 +1,4 @@
 "use strict";
-const HASH_FEATURE = "f:";
 const HASH_HIDE_FEATURES = "hideclassfs:";
 const HASH_SHOW_FLUFF = "showfluff:";
 const HASH_SOURCES = "sources:";
@@ -142,7 +141,7 @@ class ClassData {
 
 		ClassList.addClasses(newClasses);
 
-		History.hashChange();
+		if (!History.initialLoad) History.hashChange();
 	}
 
 	static addSubclassData (data) {
@@ -161,7 +160,7 @@ class ClassData {
 
 			ClassData.sortSubclasses([c]);
 		});
-		History.hashChange(true);
+		if (!History.initialLoad) History.hashChange(true);
 	}
 
 	/**
@@ -253,14 +252,17 @@ class HashLoad {
 		$("td#prof div#saves span").html(ClassDisplay.curClass.proficiency.map(p => Parser.attAbvToFull(p)).join(", "));
 
 		// starting proficiencies
+		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a === "light" || a === "medium" || a === "heavy" ? a + " armor" : a).join(", ");
+		const renderWeaponsProfs = (weaponProfs) => weaponProfs.map(w => w === "simple" || w === "martial" ? w + " weapons" : w).join(", ");
+		const renderToolsProfs = (toolProfs) => toolProfs.join(", ");
+		const renderSkillsProfs = (skillProfs) => getSkillProfString(skillProfs);
+
 		const sProfs = ClassDisplay.curClass.startingProficiencies;
 		const profSel = $("td#prof");
-		profSel.find("div#armor span")
-			.html(sProfs.armor === undefined ? STR_PROF_NONE : sProfs.armor.map(a => a === "light" || a === "medium" || a === "heavy" ? a + " armor" : a).join(", "));
-		profSel.find("div#weapons span")
-			.html(sProfs.weapons === undefined ? STR_PROF_NONE : sProfs.weapons.map(w => w === "simple" || w === "martial" ? w + " weapons" : w).join(", "));
-		profSel.find("div#tools span").html(sProfs.tools === undefined ? STR_PROF_NONE : sProfs.tools.join(", "));
-		profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : getSkillProfString(sProfs.skills));
+		profSel.find("div#armor span").html(sProfs.armor === undefined ? STR_PROF_NONE : renderArmorProfs(sProfs.armor));
+		profSel.find("div#weapons span").html(sProfs.weapons === undefined ? STR_PROF_NONE : renderWeaponsProfs(sProfs.weapons));
+		profSel.find("div#tools span").html(sProfs.tools === undefined ? STR_PROF_NONE : renderToolsProfs(sProfs.tools));
+		profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : renderSkillsProfs(sProfs.skills));
 
 		function getSkillProfString (skills) {
 			const numString = Parser.numberToString(skills.choose);
@@ -274,37 +276,96 @@ class HashLoad {
 		const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${EntryRenderer.getDefaultRenderer().renderEntry(sEquip.goldAlternative)} gp to buy your own equipment.</p>`;
 		$("#equipment").find("div").html(`${fromBackground}${defList}${goldAlt}`);
 
+		// multiclassing requirements and proficiencies
+		if (ClassDisplay.curClass.multiclassing) {
+			const mc = ClassDisplay.curClass.multiclassing;
+			const $div = $("#multiclassing").show().find("#multiclassing_prereqs");
+			if (mc.requirements) {
+				const renderPart = (obj, joiner = ", ") => Object.keys(obj).filter(k => k !== "or").sort(SortUtil.ascSortAtts).map(k => `${Parser.attAbvToFull(k)} ${obj[k]}`).join(joiner);
+				const orPart = mc.requirements.or ? mc.requirements.or.map(obj => renderPart(obj, " or ")).join("; ") : "";
+				const basePart = renderPart(mc.requirements);
+				$div
+					.append(`<div>To qualify for a new class, you must meet the ability score prerequisites for both your current class and your new one.</div>`)
+					.append(`<strong>Ability Score Minimum:</strong> <span>${[orPart, basePart].filter(Boolean).join("; ")}</span>`);
+			}
+			if (mc.proficienciesGained) {
+				$(`#multiclassing_profs`).html(`<div ${mc.requirements ? `style="margin-top: 1.7em;"` : ""}>When you gain a level in a class other than your first, you gain only some of that class's starting proficiencies.</div>`)
+				const $mcProfArmor = $(`#multiclassing_profs_armor`).toggle(mc.proficienciesGained.armor != null).find("span").html(mc.proficienciesGained.armor ? renderArmorProfs(mc.proficienciesGained.armor) : "");
+				const $mcProfWeapons = $(`#multiclassing_profs_weapons`).toggle(mc.proficienciesGained.weapons != null).find("span").html(mc.proficienciesGained.weapons ? renderWeaponsProfs(mc.proficienciesGained.weapons) : "");
+				const $mcProfTools = $(`#multiclassing_profs_tools`).toggle(mc.proficienciesGained.tools != null).find("span").html(mc.proficienciesGained.tools ? renderToolsProfs(mc.proficienciesGained.tools) : "");
+				const $mcProfSkills = $(`#multiclassing_profs_skills`).toggle(mc.proficienciesGained.skills != null).find("span").html(mc.proficienciesGained.skills ? renderSkillsProfs(mc.proficienciesGained.skills) : "");
+			} else {
+				$(`#multiclassing_profs`).hide();
+				$(`#multiclassing_profs_armor`).hide();
+				$(`#multiclassing_profs_weapons`).hide();
+				$(`#multiclassing_profs_tools`).hide();
+				$(`#multiclassing_profs_skills`).hide();
+			}
+		} else {
+			$("#multiclassing").hide();
+		}
+
 		// FEATURE TABLE ===================================================================================================
 		renderer.resetHeaderIndex();
-		const tData = ClassDisplay.curClass.classTableGroups;
+		const tData = (ClassDisplay.curClass.classTableGroups || []).filter(tg => tg.subclasses == null);
+
+		const tgSourcesMap = new Map();
+
+		const addToSourceMap = function (tg, source) {
+			const tgString = JSON.stringify(tg);
+			if (!tgSourcesMap.has(tgString)) tgSourcesMap.set(tgString, []);
+			tgSourcesMap.get(tgString).push(source);
+		};
+
+		(ClassDisplay.curClass.classTableGroups || [])
+			.filter(tg => tg.subclasses != null)
+			.map(tg => {
+				const {subclasses, ...tgData} = tg;
+				tg.subclasses.map(s => addToSourceMap(tgData, s));
+			});
+
+		ClassDisplay.curClass.subclasses
+			.filter(s => s.subclassTableGroups != null)
+			.map(s => {
+				const sSource = {"name": s.name, "source": s.source};
+				s.subclassTableGroups.map(tg => addToSourceMap(tg, sSource));
+			});
+
+		tgSourcesMap.forEach((value, key) => {
+			const tgObj = JSON.parse(key);
+			tgObj.subclasses = value;
+			tData.push(tgObj);
+		});
+
 		const groupHeaders = $("#groupHeaders");
 		const colHeaders = $("#colHeaders");
-		const levelTrs = [];
-		for (let i = 0; i < tData.length; i++) {
-			const tGroup = tData[i];
+		const levelTrs = [...new Array(20)].map((_, i) => $(`#level${i + 1}`));
 
-			const hasTitle = tGroup.title !== undefined;
-			let subclassData = "";
-			if (tGroup.subclasses !== undefined) {
-				subclassData =
-					`${ATB_DATA_SC_LIST}="${tGroup.subclasses.map(s => FeatureTable.getTableDataScData(s.name, ClassData.cleanScSource(s.source))).join(ATB_DATA_LIST_SEP)}"`;
-			}
-			groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}" ${subclassData}>${hasTitle ? tGroup.title : ""}</th>`);
+		if (tData) {
+			for (let i = 0; i < tData.length; i++) {
+				const tGroup = tData[i];
 
-			for (let j = 0; j < tGroup.colLabels.length; j++) {
-				let lbl = renderer.renderEntry(tGroup.colLabels[j]);
-				colHeaders.append(`<th class="centred-col" ${subclassData}>${lbl}</th>`)
-			}
+				const hasTitle = tGroup.title !== undefined;
+				let subclassData = "";
+				if (tGroup.subclasses !== undefined) {
+					subclassData =
+						`${ATB_DATA_SC_LIST}="${tGroup.subclasses.map(s => FeatureTable.getTableDataScData(s.name, ClassData.cleanScSource(s.source))).join(ATB_DATA_LIST_SEP)}"`;
+				}
+				groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}" ${subclassData}>${hasTitle ? tGroup.title : ""}</th>`);
 
-			for (let j = 0; j < tGroup.rows.length; j++) {
-				const tr = $(`#level${j + 1}`);
-				levelTrs[j] = tr;
-				for (let k = 0; k < tGroup.rows[j].length; k++) {
-					let entry = tGroup.rows[j][k];
-					if (entry === 0) entry = "\u2014";
-					const stack = [];
-					renderer.recursiveEntryRender(entry, stack);
-					tr.append(`<td class="centred-col" ${subclassData}>${stack.join("")}</td>`)
+				for (let j = 0; j < tGroup.colLabels.length; j++) {
+					let lbl = renderer.renderEntry(tGroup.colLabels[j]);
+					colHeaders.append(`<th class="centred-col" ${subclassData}>${lbl}</th>`)
+				}
+
+				for (let j = 0; j < tGroup.rows.length; j++) {
+					for (let k = 0; k < tGroup.rows[j].length; k++) {
+						let entry = tGroup.rows[j][k];
+						if (entry === 0) entry = "\u2014";
+						const stack = [];
+						renderer.recursiveEntryRender(entry, stack);
+						levelTrs[j].append(`<td class="centred-col" ${subclassData}>${stack.join("")}</td>`)
+					}
 				}
 			}
 		}
@@ -333,9 +394,9 @@ class HashLoad {
 			for (let j = 0; j < lvlFeatureList.length; j++) {
 				const feature = lvlFeatureList[j];
 				const idLevelPart = UrlUtil.encodeForHash(` ${i + 1}`);
-				const featureId = `${HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
+				const featureId = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
 
-				const featureLinkPart = `${HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
+				const featureLinkPart = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
 				const featureLink = $(`<a href="${HashLoad.getClassHash(
 					ClassDisplay.curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
 				featureLink.click(function () {
@@ -646,7 +707,7 @@ class SubClassLoader {
 			const hashPart = sub[i];
 
 			if (hashPart.startsWith(HASH_SUBCLASS)) subclasses = hashPart.slice(HASH_SUBCLASS.length).split(HASH_LIST_SEP);
-			if (hashPart.startsWith(HASH_FEATURE)) feature = hashPart;
+			if (hashPart.startsWith(CLSS_HASH_FEATURE)) feature = hashPart;
 			if (hashPart.startsWith(HASH_HIDE_FEATURES)) hideClassFeatures = sliceTrue(hashPart, HASH_HIDE_FEATURES);
 			if (hashPart.startsWith(HASH_SHOW_FLUFF)) showFluff = sliceTrue(hashPart, HASH_SHOW_FLUFF);
 			if (hashPart.startsWith(HASH_SOURCES)) sources = hashPart.slice(HASH_SOURCES.length);
@@ -886,7 +947,7 @@ class SubClassLoader {
 			SubClassLoader.partCache = [];
 			for (let i = 0; i < hashParts.length; i++) {
 				const part = hashParts[i];
-				if (!part.startsWith(HASH_FEATURE)) SubClassLoader.partCache.push(part);
+				if (!part.startsWith(CLSS_HASH_FEATURE)) SubClassLoader.partCache.push(part);
 			}
 		}
 		return HASH_START + SubClassLoader.partCache.join(HASH_PART_SEP) + HASH_PART_SEP + featurePart;
@@ -1201,7 +1262,7 @@ function initLinkGrabbers () {
 			const fTag = $this.closest(`tr`).attr("id");
 
 			const hash = `${window.location.hash.slice(1).split(HASH_PART_SEP)
-				.filter(it => !it.startsWith(HASH_FEATURE)).join(HASH_PART_SEP)}${HASH_PART_SEP}${fTag}`;
+				.filter(it => !it.startsWith(CLSS_HASH_FEATURE)).join(HASH_PART_SEP)}${HASH_PART_SEP}${fTag}`;
 
 			copyText(`${window.location.href.split("#")[0]}#${hash}`);
 			showCopiedEffect($this, "Copied link!");

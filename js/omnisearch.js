@@ -136,6 +136,14 @@ const Omnisearch = {
 				results = results.filter(r => r.doc.s && !SourceUtil._isNonstandardSourceWiz(r.doc.s));
 			}
 
+			if (!doHideBlacklisted()) {
+				results = results.filter(r => {
+					let bCat = Parser.pageCategoryToProp(r.doc.c);
+					let bName = bCat !== "variantrule" ? r.doc.n : r.doc.n.split(";")[0];
+					return !ExcludeUtil.isExcluded(bName, bCat, r.doc.s);
+				});
+			}
+
 			if (results.length) {
 				renderLinks();
 			} else {
@@ -156,7 +164,14 @@ const Omnisearch = {
 						doSearch();
 					});
 
-				$searchOut.append($(`<div class="text-align-right"/>`).append($btnUaEtc));
+				const hideBlacklisted = doHideBlacklisted();
+				const $btnBlacklist = $(`<button class="btn btn-default btn-xs btn-file" style="margin-left: 6px;" title="Filter blacklisted content results" tabindex="-1">${hideBlacklisted ? "Exclude" : "Include"} Blacklisted</button>`)
+					.on("click", () => {
+						setShowBlacklisted(!hideBlacklisted);
+						doSearch();
+					});
+
+				$searchOut.append($(`<div class="text-align-right"/>`).append([$btnUaEtc, $btnBlacklist]));
 				const base = page * MAX_RESULTS;
 				for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 					const r = results[i].doc;
@@ -195,6 +210,7 @@ const Omnisearch = {
 			}
 		}
 		const COOKIE_NAME_UA_ETC = "search-ua-etc";
+		const COOKIE_NAME_BLACKLIST = "search-blacklist";
 		const CK_SHOW = "SHOW";
 		const CK_HIDE = "HIDE";
 
@@ -207,6 +223,17 @@ const Omnisearch = {
 		function setShowUaEtc (value) {
 			showUaEtc = value ? CK_SHOW : CK_HIDE;
 			Cookies.set(COOKIE_NAME_UA_ETC, showUaEtc, {expires: 365});
+		}
+
+		let hideBlacklisted;
+		function doHideBlacklisted () {
+			if (!hideBlacklisted) hideBlacklisted = Cookies.get(COOKIE_NAME_BLACKLIST);
+			return hideBlacklisted === CK_SHOW;
+		}
+
+		function setShowBlacklisted (value) {
+			hideBlacklisted = value ? CK_SHOW : CK_HIDE;
+			Cookies.set(COOKIE_NAME_BLACKLIST, hideBlacklisted, {expires: 365});
 		}
 
 		function initScrollHandler () {

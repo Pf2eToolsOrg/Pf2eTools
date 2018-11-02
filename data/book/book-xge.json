@@ -1983,32 +1983,39 @@
 									],
 									"colStyles": [
 										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-xs-5",
+										"col-xs-5"
 									],
 									"rows": [
 										[
 											"1-20",
-											"20 years or younger"
+											"20 years or younger",
+											"1"
 										],
 										[
 											"21-59",
-											"21-30 years"
+											"21-30 years",
+											"{@dice 1d4}"
 										],
 										[
 											"60-69",
-											"31-40 years"
+											"31-40 years",
+											"{@dice 1d6}"
 										],
 										[
 											"70-89",
-											"41-50 years"
+											"41-50 years",
+											"{@dice 1d8}"
 										],
 										[
 											"90-99",
-											"51-60 years"
+											"51-60 years",
+											"{@dice 1d10}"
 										],
 										[
 											"100",
-											"61 years or older"
+											"61 years or older",
+											"{@dice 1d12}"
 										]
 									]
 								},
@@ -4458,7 +4465,7 @@
 										"Traps are divided into four level ranges: 1-4, 5-10, 11-16, and 17-20. The level you choose for a trap gives you a starting point for determining its potency.",
 										"To further delineate the trap's strength, decide whether it is a moderate, dangerous, or deadly threat to characters in its level range. A moderate trap is unlikely to kill a character. A dangerous trap typically deals enough damage that a character hit by one is eager for healing. A deadly trap might reduce a creature to 0 hit points in one shot, and leaves most creatures hit by it in need of a short or long rest.",
 										"Consult the following tables when determining a trap's effects. The Trap Save DCs and Attack Bonuses table provides guidelines for a trap's saving throw DC, check DC, and attack bonus. The check DC is the default for any check used to interact with the trap.",
-										"The Damage Severity by Level table lists the typical damage a trap deals at certain character levels. The damage values given assume that the trap damages one creature. Use {@dice d6}s for damage in place of {@dice d10}s for traps that can affect more than one creature at a time.",
+										"The Damage Severity by Level table lists the typical damage a trap deals at certain character levels. The damage values given assume that the trap damages one creature. Use d6s for damage in place of d10s for traps that can affect more than one creature at a time.",
 										"The Spell Equivalent by Level table shows the spell slot level that is appropriate for a given character level and the severity of danger posed by the trap. A spell is a great foundation to use as the design of a trap, whether the trap duplicates the spell (a mirror that casts charm person on whoever looks into it) or uses its effects (an alchemical device that explodes like a fireball).",
 										"The Deadly entry for characters of 17th level or higher suggests combining a 9th-level and a 5th-level spell into one effect. In this case, pick two spells, or combine the effects of a spell cast using a 9th-level and a 5th-level slot. For instance, a fireball spell of this sort would deal {@dice 24d6} fire damage on a failed saving throw.",
 										{
@@ -5505,7 +5512,10 @@
 															"Weaver's tools",
 															"Cloaks, robes"
 														]
-													]
+													],
+													"data": {
+														"tableName": "Crafting an Item; Resources and Resolution"
+													}
 												},
 												"If all the above requirements are met, the result of the process is an item of the desired sort. A character can sell an item crafted in this way at its listed price."
 											]
@@ -5747,7 +5757,10 @@
 															"25",
 															"1,000 gp, robbery of one of the richest figures in town"
 														]
-													]
+													],
+													"data": {
+														"tableNamePrefix": "Crime"
+													}
 												}
 											]
 										},
@@ -6417,7 +6430,10 @@
 													],
 													"footnotes": [
 														"*Halved for a consumable item like a potion or scroll"
-													]
+													],
+													"data": {
+														"tableSection": "Selling a Magic Item"
+													}
 												},
 												{
 													"type": "table",
@@ -6443,7 +6459,10 @@
 															"21+",
 															"150% of base price"
 														]
-													]
+													],
+													"data": {
+														"tableSection": "Selling a Magic Item"
+													}
 												}
 											]
 										},
@@ -6604,7 +6623,10 @@
 															"21+",
 															"Comfortable lifestyle for the week + 25 gp"
 														]
-													]
+													],
+													"data": {
+														"tableSection": "Work"
+													}
 												}
 											]
 										},

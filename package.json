@@ -1,7 +1,7 @@
 {
 	"name": "5etools",
 	"author": "TheGiddyLimit",
-	"version": "1.63.4",
+	"version": "1.63.5",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -16,7 +16,7 @@
 		"test:styles": "stylelint scss/style.scss",
 		"test:data": "node test/alltests.js",
 		"test": "npm run test:js && npm run test:styles && npm run test:data",
-		"build:css": "node-sass --source-map=true --output-style=compressed scss/style.scss css/style.css && postcss  ./css/style.css --use autoprefixer -r",
+		"build:css": "node-sass --source-map=true --output-style=compressed scss/style.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
 		"build:deploy:dev": "bash build/deploy-dev.sh",
 		"build:deploy:prod": "bash build/deploy-prod.sh",
 		"build": "npm run clean-jsons && npm run gen-index && npm run gen-reference && npm run gen-data && npm run build:css",

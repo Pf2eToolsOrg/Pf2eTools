@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.1.1",
 
 	"title": "ClassArray",
 	"type": "object",
@@ -89,6 +89,70 @@
 			"additionalProperties": false
 		},
 
+		"proficiencies": {
+			"type": "object",
+			"properties": {
+				"armor": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"weapons": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tools": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"skills": {
+					"type": "object",
+					"properties": {
+						"choose": {
+							"type": "integer"
+						},
+						"from": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": [
+									"Acrobatics",
+									"Animal Handling",
+									"Arcana",
+									"Athletics",
+									"Deception",
+									"History",
+									"Insight",
+									"Intimidation",
+									"Investigation",
+									"Medicine",
+									"Nature",
+									"Perception",
+									"Performance",
+									"Persuasion",
+									"Religion",
+									"Sleight of Hand",
+									"Stealth",
+									"Survival"
+								]
+							}
+						}
+					},
+					"required": [
+						"choose",
+						"from"
+					],
+					"additionalProperties": false
+				}
+			}
+
+		},
+
 		"subclass": {
 			"properties": {
 				"name": {
@@ -104,6 +168,10 @@
 						"items": {"$ref": "#/definitions/subclassFeature"}
 					},
 					"maxItems": 20
+				},
+				"subclassTableGroups": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/classTableGroup"}
 				},
 				"source": {
 					"type": "string"
@@ -174,66 +242,7 @@
 					"items": { "$ref": "#/definitions/classTableGroup"}
 				},
 				"startingProficiencies": {
-					"type": "object",
-					"properties": {
-						"armor": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"weapons": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"tools": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"skills": {
-							"type": "object",
-							"properties": {
-								"choose": {
-									"type": "integer"
-								},
-								"from": {
-									"type": "array",
-									"items": {
-										"type": "string",
-										"enum": [
-											"Acrobatics",
-											"Animal Handling",
-											"Arcana",
-											"Athletics",
-											"Deception",
-											"History",
-											"Insight",
-											"Intimidation",
-											"Investigation",
-											"Medicine",
-											"Nature",
-											"Perception",
-											"Performance",
-											"Persuasion",
-											"Religion",
-											"Sleight of Hand",
-											"Stealth",
-											"Survival"
-										]
-									}
-								}
-							},
-							"required": [
-								"choose",
-								"from"
-							],
-							"additionalProperties": false
-						}
-					}
+					"$ref": "#/definitions/proficiencies"
 				},
 				"startingEquipment": {
 					"type": "object",
@@ -255,6 +264,62 @@
 						"additionalFromBackground",
 						"default"
 					],
+					"additionalProperties": false
+				},
+				"multiclassing": {
+					"type": "object",
+					"properties": {
+						"requirements": {
+							"str": {
+								"type": "integer"
+							},
+							"dex": {
+								"type": "integer"
+							},
+							"con": {
+								"type": "integer"
+							},
+							"int": {
+								"type": "integer"
+							},
+							"wis": {
+								"type": "integer"
+							},
+							"cha": {
+								"type": "integer"
+							},
+							"or": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"str": {
+											"type": "integer"
+										},
+										"dex": {
+											"type": "integer"
+										},
+										"con": {
+											"type": "integer"
+										},
+										"int": {
+											"type": "integer"
+										},
+										"wis": {
+											"type": "integer"
+										},
+										"cha": {
+											"type": "integer"
+										}
+									},
+									"additionalProperties": false
+								}
+							}
+						},
+						"proficienciesGained": {
+							"$ref": "#/definitions/proficiencies"
+						}
+					},
 					"additionalProperties": false
 				},
 				"classFeatures": {
@@ -298,7 +363,6 @@
 				"source",
 				"hd",
 				"proficiency",
-				"classTableGroups",
 				"startingProficiencies",
 				"startingEquipment",
 				"classFeatures",

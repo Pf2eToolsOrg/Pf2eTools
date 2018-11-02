@@ -371,6 +371,18 @@
 				],
 				"goldAlternative": "{@dice 5d4|5d4|Starting Gold}"
 			},
+			"multiclassing": {
+				"requirements": {
+					"dex": 13,
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"weapons": [
+						"simple",
+						"shortswords"
+					]
+				}
+			},
 			"classFeatures": [
 				[
 					{
@@ -825,7 +837,7 @@
 										"type": "entries",
 										"name": "Elemental Disciplines",
 										"entries": [
-											"The elemental disciplines are presented in alphabetical order. If a discipline requires a level, you must be teh level in this class to learn the discipline.",
+											"The elemental disciplines are presented in alphabetical order. If a discipline requires a level, you must be the level in this class to learn the discipline.",
 											{
 												"type": "options",
 												"entries": [
@@ -905,7 +917,7 @@
 														"type": "entries",
 														"name": "Mist Stance (11th Level Required)",
 														"entries": [
-															"You can spend 4 ki points to cast gaseous form, targeting yourself."
+															"You can spend 4 ki points to cast {@spell gaseous form}, targeting yourself."
 														]
 													},
 													{

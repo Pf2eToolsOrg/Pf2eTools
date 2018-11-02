@@ -19,7 +19,9 @@ find . -type f -name '*.html' -print0 |
 
 echo "Installing CDN."
 
-sed -i 's/IS_DEPLOYED="undefined"/_IS_DEPLOYED='"\"${version}\""',IS_DEPLOYED="undefined"/g' js/utils.js
+# utils.js minification is broken
+# sed -i 's/IS_DEPLOYED="undefined"/_IS_DEPLOYED='"\"${version}\""',IS_DEPLOYED="undefined"/g' js/utils.js
+echo "_IS_DEPLOYED='${version}';" | cat - js/utils.js > temp && mv temp js/utils.js
 
 find . -type f -name '*.html' -print0 |
     while IFS= read -r -d $'\0' line; do

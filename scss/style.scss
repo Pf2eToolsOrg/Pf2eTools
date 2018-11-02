@@ -158,6 +158,10 @@ dialog.dialog-modal {
 	display: inline-flex;
 }
 
+.inline-block {
+	display: inline-block;
+}
+
 .flex-1 {
 	flex: 1;
 }
@@ -397,6 +401,7 @@ dialog.dialog-modal {
 	overflow-y: auto;
 	animation-name: kf-fade-in, kf-pop-in;
 	animation-duration: 150ms, 75ms;
+	transform: translateZ(0);
 
 	&--popout {
 		box-shadow: initial;
@@ -790,10 +795,20 @@ footer {
 	font-style: italic;
 }
 
-.help {
+.help,
+.help--hover {
 	cursor: help;
 	text-decoration: underline;
 	text-decoration-style: dotted;
+}
+
+.help--hover {
+	// This should approx. match the hover cutoff defined in entryrenderer (768px).
+	// Approximate, since jQuery calculates window width differently, offset likely varies with e.g. scrollbar width.
+	@media (max-width: 780px) {
+		cursor: default;
+		text-decoration: none;
+	}
 }
 
 .help--subtle {
@@ -1263,7 +1278,6 @@ span.dc-roller[mode=dice] {
 
 div#lootoutput {
 	height: 100%;
-	padding-top: 1em;
 	clear: both;
 }
 
@@ -1378,21 +1392,24 @@ div#lootoutput {
 
 td#hp,
 td#prof,
-td#equipment {
+td#equipment,
+td#multiclassing {
 	font-size: 0.8em;
-	padding: 0.7em;
+	padding: 0.4em 0.7em;
 }
 
 td#hp h5,
 td#prof h5,
-td#equipment h5 {
+td#equipment h5,
+td#multiclassing h5 {
 	font-family: serif;
 	font-weight: 500;
 	font-size: 1.5em;
 	margin-bottom: 0;
 }
 
-td#equipment ul {
+td#equipment ul,
+td#multiclassing ul {
 	padding: 0 0 0 1.7em;
 }
 
@@ -1944,6 +1961,10 @@ body.dm-screen-fullscreen .dm-sidemenu-burger {
 	background: #cfe5ff78;
 }
 
+.dm-init {
+	background: white;
+}
+
 /* *** */
 
 /****************************************
@@ -2058,7 +2079,8 @@ body.dm-screen-fullscreen .dm-sidemenu-burger {
 		content: none !important;
 	}
 
-	.help {
+	.help,
+	.help--hover {
 		text-decoration: none;
 	}
 }
@@ -2283,6 +2305,14 @@ body.dm-screen-fullscreen .dm-sidemenu-burger {
 
 .mb-3 {
 	margin-bottom: $spacer !important;
+}
+
+.mb-4 {
+	margin-bottom: $spacer * 1.5 !important;
+}
+
+.mb-5 {
+	margin-bottom: $spacer * 3 !important;
 }
 
 .my-3 {
@@ -2765,7 +2795,7 @@ input[type=checkbox].readonly {
 	text-decoration: none;
 }
 
-#sublistcontainer {
+.sublist {
 	display: none;
 	padding: 0 0 2px;
 	flex-direction: column;
@@ -2773,6 +2803,53 @@ input[type=checkbox].readonly {
 	.list {
 		margin-bottom: 3px;
 		padding-top: 3px;
+	}
+
+	&--visible {
+		display: flex;
+	}
+}
+
+.ecgen {
+	&__visible {
+		display: none;
+	}
+
+	&__btn_list {
+		padding: 0 1px;
+		line-height: 12px;
+		font-size: 9px;
+		border-radius: 3px;
+	}
+
+	&__del_players {
+		margin-bottom: 1px;
+		padding: 0 2px;
+		font-size: 10px;
+	}
+
+	&__cr_input {
+		width: 100%;
+	}
+}
+
+.ecgen_active {
+	.ecgen {
+		&__visible {
+			display: block;
+		}
+
+		&__hidden {
+			display: none;
+		}
+
+		&__name {
+			width: 33.33333333%;
+		}
+
+		&__name--sub {
+			width: 29.16666667%;
+		}
 	}
 }
 
@@ -2957,6 +3034,10 @@ table.stats .list-hang-notitle,
 table.stats .list-hang p {
 	text-indent: -1.1em;
 	margin-left: 1.1em;
+}
+
+table.stats .list-hang-notitle > li ul {
+	text-indent: 0;
 }
 
 table.stats ul.list-hang-notitle > li {
@@ -3532,6 +3613,23 @@ table.stats td._class_feature table th {
 
 /* end section: class features */
 
+/* start section: lootgen */
+
+#lootgen hr {
+	border-top: 2px solid #ccc;
+}
+
+#lootgen .btn-selected {
+	background-color: #006bc4;
+	color: white;
+}
+
+#lootgen .btn-selected:hover {
+	color: lightgray;
+}
+
+/* end section: lootgen */
+
 #classtable table {
 	background: $bg-orange;
 }
@@ -3697,6 +3795,11 @@ table.stats tr.homebrew-hover {
 	}
 }
 
+.error-background {
+	background-color: $active-red--light;
+	color: white;
+}
+
 /* Day Mode End */
 
 /* Night Mode */
@@ -3803,6 +3906,11 @@ table.stats tr.homebrew-hover {
 		color: $font-color;
 	}
 
+	.btn-nowrap {
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+
 	dialog.dialog-modal,
 	.dropdown-menu {
 		background: #232323;
@@ -3905,7 +4013,8 @@ table.stats tr.homebrew-hover {
 		background: white;
 	}
 
-	tr.text td {
+	tr.text td,
+	#lootgen.loot-title {
 		color: $font-color !important;
 	}
 
@@ -4397,6 +4506,10 @@ table.stats tr.homebrew-hover {
 		background: #0e93f94f;
 	}
 
+	.dm-init {
+		background: $bg-color;
+	}
+
 	.content-tab-bar {
 		background: $bg-color;
 	}
@@ -4415,6 +4528,23 @@ table.stats tr.homebrew-hover {
 
 	/* *** */
 
+	/* 	start section: lootgen */
+
+	div.statsBlockSectionHead.loot-title {
+		color: $class-main-color;
+	}
+
+	.btn-selected {
+		background-color: #006bc4;
+		color: white;
+	}
+
+	div #lootoutput .loot-title {
+		color: $class-main-color;
+	}
+
+	/* 	end section: lootgen */
+
 	/* Bootstrap overrides */
 	.table-striped > tbody > tr:nth-of-type(odd) {
 		background-color: #444;
@@ -4427,6 +4557,12 @@ table.stats tr.homebrew-hover {
 
 	.don__bar {
 		background: $bg-color;
+	}
+
+	.input-group-addon,
+	.form-control {
+		background: transparent;
+		color: #bbb;
 	}
 
 	/* *** */

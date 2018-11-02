@@ -86,6 +86,14 @@ function populateTablesAndFilters (data) {
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);
+	$(`.side-label--mundane`).click(() => {
+		filterBox.setFromValues({"Miscellaneous": ["mundane"]});
+		handleFilterChange();
+	});
+	$(`.side-label--magic`).click(() => {
+		filterBox.setFromValues({"Miscellaneous": ["magic"]});
+		handleFilterChange();
+	});
 	mundanelist.__listVisible = true;
 	mundanelist.on("updated", () => {
 		hideListIfEmpty(mundanelist, mundaneWrapper);
@@ -394,9 +402,11 @@ function loadhash (id) {
 	$content.find("span#properties").html(propertiesTxt);
 
 	$content.find("tr.text").remove();
-	const entryList = {type: "entries", entries: item.entries};
 	const renderStack = [];
-	renderer.recursiveEntryRender(entryList, renderStack, 1);
+	if (item.entries && item.entries.length) {
+		const entryList = {type: "entries", entries: item.entries};
+		renderer.recursiveEntryRender(entryList, renderStack, 1);
+	}
 
 	// tools, artisan tools, instruments, gaming sets
 	if (type === "T" || type === "AT" || type === "INS" || type === "GS") {
@@ -414,12 +424,16 @@ function loadhash (id) {
 		renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
 	}
 
-	$content.find("tr#text").after(`
-		<tr class="text">
-			<td colspan="6" class="text1">
-				${renderStack.join("").split(item.name.toLowerCase()).join("<i>" + item.name.toLowerCase() + "</i>").split(item.name.toLowerCase().uppercaseFirst()).join("<i>" + item.name.toLowerCase().uppercaseFirst() + "</i>")}
-			</td>
-		</tr>`);
+	const renderedText = renderStack.join("").split(item.name.toLowerCase()).join(`<i>${item.name.toLowerCase()}</i>`).split(item.name.toLowerCase().uppercaseFirst()).join(`<i>${item.name.toLowerCase().uppercaseFirst()}</i>`);
+	if (renderedText && renderedText.trim()) {
+		$content.find("tr#text").show().after(`
+			<tr class="text">
+				<td colspan="6" class="text1">
+					${renderedText}
+				</td>
+			</tr>
+		`);
+	} else $content.find("tr#text").hide();
 
 	ListUtil.updateSelected();
 }

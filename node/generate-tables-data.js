@@ -29,26 +29,33 @@ class GenTables {
 		return val;
 	}
 
-	search (chapterMeta, section, data, outStacks) {
+	search (path, chapterMeta, section, data, outStacks) {
 		if (data.data && data.data.tableIgnore) return;
 		if (data.entries) {
 			const nxtSection = data.name || section;
-			data.entries.forEach(ent => this.search(chapterMeta, nxtSection, ent, outStacks));
+			if (data.name) path.push(data.name);
+			data.entries.forEach(ent => this.search(path, chapterMeta, nxtSection, ent, outStacks));
+			if (data.name) path.pop();
 		} else if (data.items) {
-			data.items.forEach(item => this.search(chapterMeta, section, item, outStacks));
+			if (data.name) path.push(data.name);
+			data.items.forEach(item => this.search(path, chapterMeta, section, item, outStacks));
+			if (data.name) path.pop();
 		} else if (data.type === "table") {
 			const cpy = MiscUtil.copy(data);
-			this._search__setMeta(cpy, chapterMeta, section);
+			const pathCpy = MiscUtil.copy(path);
+			this._search__setMeta(cpy, chapterMeta, pathCpy, section);
 			outStacks.table.push(cpy);
 		} else if (data.type === "tableGroup") {
 			const cpy = MiscUtil.copy(data);
-			this._search__setMeta(cpy, chapterMeta, section);
+			const pathCpy = MiscUtil.copy(path);
+			this._search__setMeta(cpy, chapterMeta, pathCpy, section);
 			outStacks.tableGroup.push(cpy);
 		}
 	}
 
-	_search__setMeta (obj, chapterMeta, section) {
+	_search__setMeta (obj, chapterMeta, path, section) {
 		obj.chapter = chapterMeta;
+		obj.path = path;
 		obj.section = section;
 		obj.sectionIndex = this.getTableSectionIndex(chapterMeta.name, section);
 	}
@@ -57,11 +64,12 @@ class GenTables {
 		return name.replace(/^(?:Step )?[-\d]+[:.]?\s*/, "");
 	}
 
-	static _isSectionInTitle (section, title) {
-		return title.toLowerCase().includes(section.toLowerCase())
+	static _isSectionInTitle (sections, title) {
+		return sections.some(section => title.toLowerCase().includes(section.toLowerCase()));
 	}
 
 	static _cleanData (table) {
+		delete table.path;
 		delete table.section;
 		delete table.sectionIndex;
 
@@ -76,6 +84,7 @@ class GenTables {
 			table.chapter = chapterOut;
 		}
 
+		if (table.type === "table") delete table.type;
 		delete table.data;
 	}
 
@@ -89,23 +98,28 @@ class GenTables {
 			book.bookData.data.forEach((chapter, i) => {
 				const chapterMeta = book.contents[i];
 				chapterMeta.index = i;
-				this.search(chapterMeta, book.name, chapter, stacks);
+				const path = [];
+				this.search(path, chapterMeta, book.name, chapter, stacks);
 			});
 
 			const tablesToAdd = stacks.table.map(it => {
-				const cleanSection = GenTables._cleanSectionName(it.section);
+				const cleanSections = it.path.map(section => GenTables._cleanSectionName(section));
 
-				if (it.caption) {
-					if (GenTables._isSectionInTitle(cleanSection, it.caption)) {
+				if (it.data && it.data.tableNamePrefix && it.caption) {
+					it.name = `${it.data.tableNamePrefix}; ${it.caption}`;
+				} else if (it.data && it.data.tableName) {
+					it.name = it.data.tableName;
+				} else if (it.caption) {
+					if (GenTables._isSectionInTitle(cleanSections, it.caption)) {
 						it.name = it.caption;
 					} else {
-						it.name = `${cleanSection}; ${it.caption}`;
+						it.name = `${cleanSections.last()}; ${it.caption}`;
 					}
 				} else {
 					if (it.sectionIndex === 1 && this.getTableSectionIndex(it.chapter.name, it.section, true) === 2) {
-						it.name = cleanSection;
+						it.name = cleanSections.last();
 					} else {
-						it.name = `${cleanSection}; ${it.sectionIndex}`;
+						it.name = `${cleanSections.last()}; ${it.sectionIndex}`;
 					}
 				}
 
@@ -115,11 +129,11 @@ class GenTables {
 			});
 
 			const tableGroupsToAdd = stacks.tableGroup.map(it => {
-				const cleanSection = GenTables._cleanSectionName(it.section);
+				const cleanSections = it.path.map(section => GenTables._cleanSectionName(section));
 				if (!it.name) throw new Error("Group had no name!");
 
-				if (!GenTables._isSectionInTitle(cleanSection, it.name)) {
-					it.name = `${cleanSection}; ${it.name}`;
+				if (!GenTables._isSectionInTitle(cleanSections, it.name)) {
+					it.name = `${cleanSections.last()}; ${it.name}`;
 				}
 
 				it.source = book.id;

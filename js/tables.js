@@ -1,10 +1,21 @@
 "use strict";
-const JSON_URL = "data/generated/gendata-tables.json";
+const GEN_JSON_URL = "data/generated/gendata-tables.json";
+const JSON_URL = "data/tables.json";
 const renderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
 	SortUtil.initHandleFilterButtonClicks();
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
+	Promise.all([GEN_JSON_URL, JSON_URL].map(url => DataUtil.loadJSON(url))).then((datas) => {
+		const combined = {};
+		datas.forEach(data => {
+			Object.entries(data).forEach(([k, v]) => {
+				if (combined[k] && combined[k] instanceof Array && v instanceof Array) combined[k] = combined[k].concat(v);
+				else if (combined[k] == null) combined[k] = v;
+				else throw new Error(`Could not merge keys for key "${k}"`);
+			});
+		});
+		onJsonLoad(combined);
+	});
 };
 
 const sourceFilter = getSourceFilter();

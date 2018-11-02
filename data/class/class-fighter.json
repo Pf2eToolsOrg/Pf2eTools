@@ -11,354 +11,6 @@
 				"str",
 				"con"
 			],
-			"classTableGroups": [
-				{
-					"subclasses": [
-						{
-							"name": "Eldritch Knight",
-							"source": "PHB"
-						}
-					],
-					"colLabels": [
-						"{@filter Cantrips Known|spells|level=0|subclass=Eldritch Knight}",
-						"{@filter Spells Known|spells|subclass=Eldritch Knight}"
-					],
-					"rows": [
-						[
-							0,
-							0
-						],
-						[
-							0,
-							0
-						],
-						[
-							2,
-							3
-						],
-						[
-							2,
-							4
-						],
-						[
-							2,
-							4
-						],
-						[
-							2,
-							4
-						],
-						[
-							2,
-							5
-						],
-						[
-							2,
-							6
-						],
-						[
-							2,
-							6
-						],
-						[
-							3,
-							7
-						],
-						[
-							3,
-							8
-						],
-						[
-							3,
-							8
-						],
-						[
-							3,
-							9
-						],
-						[
-							3,
-							10
-						],
-						[
-							3,
-							10
-						],
-						[
-							3,
-							11
-						],
-						[
-							3,
-							11
-						],
-						[
-							3,
-							11
-						],
-						[
-							3,
-							12
-						],
-						[
-							3,
-							13
-						]
-					]
-				},
-				{
-					"title": "Spell Slots per Spell Level",
-					"subclasses": [
-						{
-							"name": "Eldritch Knight",
-							"source": "PHB"
-						}
-					],
-					"colLabels": [
-						"{@filter 1st|spells|level=1|subclass=Eldritch Knight}",
-						"{@filter 2nd|spells|level=2|subclass=Eldritch Knight}",
-						"{@filter 3rd|spells|level=3|subclass=Eldritch Knight}",
-						"{@filter 4th|spells|level=4|subclass=Eldritch Knight}"
-					],
-					"rows": [
-						[
-							0,
-							0,
-							0,
-							0
-						],
-						[
-							0,
-							0,
-							0,
-							0
-						],
-						[
-							2,
-							0,
-							0,
-							0
-						],
-						[
-							3,
-							0,
-							0,
-							0
-						],
-						[
-							3,
-							0,
-							0,
-							0
-						],
-						[
-							3,
-							0,
-							0,
-							0
-						],
-						[
-							4,
-							2,
-							0,
-							0
-						],
-						[
-							4,
-							2,
-							0,
-							0
-						],
-						[
-							4,
-							2,
-							0,
-							0
-						],
-						[
-							4,
-							3,
-							0,
-							0
-						],
-						[
-							4,
-							3,
-							0,
-							0
-						],
-						[
-							4,
-							3,
-							0,
-							0
-						],
-						[
-							4,
-							3,
-							2,
-							0
-						],
-						[
-							4,
-							3,
-							2,
-							0
-						],
-						[
-							4,
-							3,
-							2,
-							0
-						],
-						[
-							4,
-							3,
-							3,
-							0
-						],
-						[
-							4,
-							3,
-							3,
-							0
-						],
-						[
-							4,
-							3,
-							3,
-							0
-						],
-						[
-							4,
-							3,
-							3,
-							1
-						],
-						[
-							4,
-							3,
-							3,
-							1
-						]
-					]
-				},
-				{
-					"subclasses": [
-						{
-							"name": "Warlord",
-							"source": "Stream"
-						}
-					],
-					"colLabels": [
-						"Insight Uses",
-						"Insight Max",
-						"Gambits"
-					],
-					"rows": [
-						[
-							0,
-							0,
-							0
-						],
-						[
-							0,
-							0,
-							0
-						],
-						[
-							2,
-							1,
-							0
-						],
-						[
-							3,
-							1,
-							0
-						],
-						[
-							3,
-							1,
-							0
-						],
-						[
-							3,
-							1,
-							0
-						],
-						[
-							7,
-							2,
-							3
-						],
-						[
-							7,
-							2,
-							3
-						],
-						[
-							7,
-							2,
-							3
-						],
-						[
-							9,
-							2,
-							4
-						],
-						[
-							9,
-							2,
-							4
-						],
-						[
-							9,
-							2,
-							4
-						],
-						[
-							14,
-							3,
-							5
-						],
-						[
-							14,
-							3,
-							5
-						],
-						[
-							14,
-							3,
-							5
-						],
-						[
-							16,
-							3,
-							6
-						],
-						[
-							16,
-							3,
-							6
-						],
-						[
-							16,
-							3,
-							6
-						],
-						[
-							20,
-							4,
-							7
-						],
-						[
-							20,
-							4,
-							7
-						]
-					]
-				}
-			],
 			"startingProficiencies": {
 				"armor": [
 					"light",
@@ -393,6 +45,25 @@
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}"
 				],
 				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"or": [
+						{
+							"str": 13,
+							"dex": 13
+						}
+					]
+				},
+				"proficienciesGained": {
+					"armor": [
+						"shields"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
 			},
 			"classFeatures": [
 				[
@@ -1383,6 +1054,239 @@
 				},
 				{
 					"name": "Eldritch Knight",
+					"subclassTableGroups": [
+						{
+							"subclasses": [
+								{
+									"name": "Eldritch Knight",
+									"source": "PHB"
+								}
+							],
+							"colLabels": [
+								"{@filter Cantrips Known|spells|level=0|subclass=Eldritch Knight}",
+								"{@filter Spells Known|spells|subclass=Eldritch Knight}"
+							],
+							"rows": [
+								[
+									0,
+									0
+								],
+								[
+									0,
+									0
+								],
+								[
+									2,
+									3
+								],
+								[
+									2,
+									4
+								],
+								[
+									2,
+									4
+								],
+								[
+									2,
+									4
+								],
+								[
+									2,
+									5
+								],
+								[
+									2,
+									6
+								],
+								[
+									2,
+									6
+								],
+								[
+									3,
+									7
+								],
+								[
+									3,
+									8
+								],
+								[
+									3,
+									8
+								],
+								[
+									3,
+									9
+								],
+								[
+									3,
+									10
+								],
+								[
+									3,
+									10
+								],
+								[
+									3,
+									11
+								],
+								[
+									3,
+									11
+								],
+								[
+									3,
+									11
+								],
+								[
+									3,
+									12
+								],
+								[
+									3,
+									13
+								]
+							]
+						},
+						{
+							"title": "Spell Slots per Spell Level",
+							"subclasses": [
+								{
+									"name": "Eldritch Knight",
+									"source": "PHB"
+								}
+							],
+							"colLabels": [
+								"{@filter 1st|spells|level=1|subclass=Eldritch Knight}",
+								"{@filter 2nd|spells|level=2|subclass=Eldritch Knight}",
+								"{@filter 3rd|spells|level=3|subclass=Eldritch Knight}",
+								"{@filter 4th|spells|level=4|subclass=Eldritch Knight}"
+							],
+							"rows": [
+								[
+									0,
+									0,
+									0,
+									0
+								],
+								[
+									0,
+									0,
+									0,
+									0
+								],
+								[
+									2,
+									0,
+									0,
+									0
+								],
+								[
+									3,
+									0,
+									0,
+									0
+								],
+								[
+									3,
+									0,
+									0,
+									0
+								],
+								[
+									3,
+									0,
+									0,
+									0
+								],
+								[
+									4,
+									2,
+									0,
+									0
+								],
+								[
+									4,
+									2,
+									0,
+									0
+								],
+								[
+									4,
+									2,
+									0,
+									0
+								],
+								[
+									4,
+									3,
+									0,
+									0
+								],
+								[
+									4,
+									3,
+									0,
+									0
+								],
+								[
+									4,
+									3,
+									0,
+									0
+								],
+								[
+									4,
+									3,
+									2,
+									0
+								],
+								[
+									4,
+									3,
+									2,
+									0
+								],
+								[
+									4,
+									3,
+									2,
+									0
+								],
+								[
+									4,
+									3,
+									3,
+									0
+								],
+								[
+									4,
+									3,
+									3,
+									0
+								],
+								[
+									4,
+									3,
+									3,
+									0
+								],
+								[
+									4,
+									3,
+									3,
+									1
+								],
+								[
+									4,
+									3,
+									3,
+									1
+								]
+							]
+						}
+					],
 					"subclassFeatures": [
 						[
 							{
@@ -1394,6 +1298,13 @@
 										"name": "Spellcasting",
 										"entries": [
 											"When you reach 3rd level, you augment your martial prowess with the ability to cast spells. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter wizard spell list|spells|class=wizard}.",
+											{
+												"type": "entries",
+												"name": "Cantrips",
+												"entries": [
+													"You learn two cantrips of your choice from the {@filter wizard spell list|spells|class=wizard}. You learn an additional wizard cantrip of your choice at 10th level."
+												]
+											},
 											{
 												"type": "entries",
 												"entries": [
@@ -2964,6 +2875,123 @@
 				},
 				{
 					"name": "Warlord (Livestream)",
+					"subclassTableGroups": [
+						{
+							"subclasses": [
+								{
+									"name": "Warlord (Livestrem)",
+									"source": "Stream"
+								}
+							],
+							"colLabels": [
+								"Insight Uses",
+								"Insight Max",
+								"Gambits"
+							],
+							"rows": [
+								[
+									0,
+									0,
+									0
+								],
+								[
+									0,
+									0,
+									0
+								],
+								[
+									2,
+									1,
+									0
+								],
+								[
+									3,
+									1,
+									0
+								],
+								[
+									3,
+									1,
+									0
+								],
+								[
+									3,
+									1,
+									0
+								],
+								[
+									7,
+									2,
+									3
+								],
+								[
+									7,
+									2,
+									3
+								],
+								[
+									7,
+									2,
+									3
+								],
+								[
+									9,
+									2,
+									4
+								],
+								[
+									9,
+									2,
+									4
+								],
+								[
+									9,
+									2,
+									4
+								],
+								[
+									14,
+									3,
+									5
+								],
+								[
+									14,
+									3,
+									5
+								],
+								[
+									14,
+									3,
+									5
+								],
+								[
+									16,
+									3,
+									6
+								],
+								[
+									16,
+									3,
+									6
+								],
+								[
+									16,
+									3,
+									6
+								],
+								[
+									20,
+									4,
+									7
+								],
+								[
+									20,
+									4,
+									7
+								]
+							]
+						}
+					],
 					"subclassFeatures": [
 						[
 							{

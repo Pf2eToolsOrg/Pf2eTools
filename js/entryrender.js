@@ -692,7 +692,7 @@ function EntryRenderer () {
 				if (s.charAt(0) === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
-					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@atk") {
+					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@atk" || tag === "@h") {
 						switch (tag) {
 							case "@b":
 							case "@bold":
@@ -717,10 +717,12 @@ function EntryRenderer () {
 								self._recursiveEntryRender(text, textStack, depth);
 								textStack[0] += `</i>`;
 								break;
-							case "@atk": {
+							case "@atk":
 								textStack[0] += `<i>${EntryRenderer.attackTagToFull(text)}</i>`;
 								break;
-							}
+							case "@h":
+								textStack[0] += `<i>Hit:</i> `;
+								break;
 						}
 					} else if (tag === "@dice" || tag === "@damage" || tag === "@hit" || tag === "@d20" || tag === "@chance" || tag === "@recharge") {
 						const fauxEntry = {
@@ -901,7 +903,7 @@ function EntryRenderer () {
 						const expander = tag === "@skill" ? Parser.skillToExplanation : Parser.actionToExplanation;
 						const [name, displayText] = text.split("|");
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(expander(name), name);
-						textStack[0] += `<span class="help" ${onMouseOver}>${displayText || name}</span>`;
+						textStack[0] += `<span class="help--hover" ${onMouseOver}>${displayText || name}</span>`;
 					} else if (tag === "@area") {
 						const [areaCode, flags, displayText, ...others] = text.split("|");
 						const splCode = areaCode.split(">"); // use pos [0] for names without ">"s, and pos [1] for names with (as pos [2] is for sequence ID)
@@ -973,7 +975,7 @@ function EntryRenderer () {
 										{key: "sources", value: 2}
 									];
 									if (others.length > 2) {
-										fauxEntry.href.subhashes.push({key: "f", value: others[2].trim()})
+										fauxEntry.href.subhashes.push({key: CLSS_HASH_FEATURE_KEY, value: others[2].trim()})
 									}
 								}
 								fauxEntry.href.path = "classes.html";
@@ -988,6 +990,15 @@ function EntryRenderer () {
 									page: UrlUtil.PG_BESTIARY,
 									source: source || SRC_MM
 								};
+								// ...|scaledCr}
+								if (others.length) {
+									const targetCrNum = Parser.crToNumber(others[0]);
+									fauxEntry.href.hover.prelodId = `${MON_HASH_SCALED}:${targetCrNum}`;
+									fauxEntry.href.subhashes = [
+										{key: MON_HASH_SCALED, value: targetCrNum}
+									];
+									fauxEntry.text = displayText || `${name} (CR ${others[0]})`;
+								}
 								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
 							case "@condition":
@@ -1127,7 +1138,7 @@ function EntryRenderer () {
 					hash: procHash
 				};
 			}
-			return `onmouseover="EntryRenderer.hover.mouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}')"`
+			return `onmouseover="EntryRenderer.hover.mouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}', false, ${entry.href.hover.prelodId ? `'${entry.href.hover.prelodId}'` : "null"})"`
 		}
 
 		let href;
@@ -2216,9 +2227,15 @@ EntryRenderer.monster = {
 	},
 
 	getLegendaryActionIntro: (mon) => {
+		function getCleanName () {
+			const base = mon.name.split(",")[0];
+			const cleanDragons = base
+				.replace(/(?:adult|ancient|young) \w+ (dragon|dracolich)/gi, "$1");
+			return mon.isNamedCreature ? cleanDragons : cleanDragons.toLowerCase();
+		}
 		const legendaryActions = mon.legendaryActions || 3;
-		const legendaryName = mon.name.split(",");
-		return `${mon.isNamedCreature ? "" : "The "}${legendaryName[0]} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${mon.isNamedCreature ? "" : "The "}${legendaryName[0]} regains spent legendary actions at the start of its turn.`
+		const legendaryName = getCleanName();
+		return `${mon.isNamedCreature ? "" : "The "}${legendaryName} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${mon.isNamedCreature ? "" : "The "}${legendaryName} regains spent legendary actions at the start of its turn.`
 	},
 
 	getSave (renderer, attr, mod) {
@@ -2456,8 +2473,12 @@ EntryRenderer.monster = {
 			} else return "";
 		}
 		if (hp.special) return hp.special;
-		const maxStr = getMaxStr(hp.formula);
-		return `${maxStr ? `<span title="${maxStr}" class="help--subtle">` : ""}${hp.average}${maxStr ? "</span>" : ""} ${EntryRenderer.getDefaultRenderer().renderEntry(`({@dice ${hp.formula}|${hp.formula}|Hit Points})`)}`;
+		if (/^\d+d1$/.exec(hp.formula)) {
+			return hp.average;
+		} else {
+			const maxStr = getMaxStr(hp.formula);
+			return `${maxStr ? `<span title="${maxStr}" class="help--subtle">` : ""}${hp.average}${maxStr ? "</span>" : ""} ${EntryRenderer.getDefaultRenderer().renderEntry(`({@dice ${hp.formula}|${hp.formula}|Hit Points})`)}`;
+		}
 	},
 
 	getSpellcastingRenderedTraits: (mon, renderer) => {
@@ -2553,6 +2574,10 @@ EntryRenderer.monster = {
 			});
 			return `${skills}, ${others.join(", ")}`
 		} else return skills;
+	},
+
+	getTokenUrl (mon) {
+		return mon.tokenURL || UrlUtil.link(`img/${Parser.sourceJsonToAbv(mon.source)}/${mon.name.replace(/"/g, "")}.png`);
 	}
 };
 DataUtil.dependencyMergers[UrlUtil.PG_BESTIARY] = EntryRenderer.monster.mergeCopy;
@@ -2860,6 +2885,7 @@ EntryRenderer.item = {
 		const typeListText = [];
 		if (item.wondrous) {
 			type.push("Wondrous Item");
+			filterType.push("Wondrous Item");
 			typeListText.push("Wondrous Item");
 		}
 		if (item.technology) {
@@ -3156,12 +3182,22 @@ EntryRenderer.hover = {
 	},
 
 	createOnMouseHoverEntry (entry, isBookContent) {
+		const id = EntryRenderer.hover.__initOnMouseHoverEntry(entry);
+		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id}, ${!!isBookContent})"`;
+	},
+
+	__initOnMouseHoverEntry (entry) {
 		const id = EntryRenderer.hover._lastMouseHoverId++;
 		EntryRenderer.hover._mouseHovers[id] = {
 			...entry,
 			data: {hoverTitle: entry.name}
 		};
-		return `onmouseover="EntryRenderer.hover.mouseOverHoverTooltip(event, this, ${id}, ${!!isBookContent})"`;
+		return id;
+	},
+
+	bindOnMouseHoverEntry (entry, isBookContent) {
+		const id = EntryRenderer.hover.__initOnMouseHoverEntry(entry);
+		return (event, ele) => EntryRenderer.hover.mouseOverHoverTooltip(event, ele, id, !!isBookContent);
 	},
 
 	_addToCache: (page, source, hash, item) => {
@@ -3188,6 +3224,15 @@ EntryRenderer.hover = {
 		hash = hash.toLowerCase();
 
 		return EntryRenderer.hover.linkCache[page] && EntryRenderer.hover.linkCache[page][source] && EntryRenderer.hover.linkCache[page][source][hash];
+	},
+
+	pCacheAndGet (page, source, hash) {
+		return new Promise(resolve => {
+			EntryRenderer.hover._doFillThenCall(page, source, hash, () => {
+				const it = EntryRenderer.hover._getFromCache(page, source, hash);
+				resolve(it);
+			});
+		})
 	},
 
 	_doFillThenCall: (page, source, hash, callbackFn) => {
@@ -3245,41 +3290,40 @@ EntryRenderer.hover = {
 			}
 		}
 
-		function _pLoadSingleBrew (listProp, itemModifier) {
+		function _pLoadSingleBrew (listProps, itemModifier) {
 			return new Promise(resolve => {
 				BrewUtil.pAddBrewData()
 					.then((data) => {
-						if (data[listProp]) populate(data, listProp, itemModifier);
+						listProps = listProps instanceof Array ? listProps : [listProps];
+						listProps.forEach(lp => {
+							if (data[lp]) populate(data, lp, itemModifier);
+						});
 						resolve();
 					})
 					.catch(BrewUtil.purgeBrew);
 			});
 		}
 
-		function _handleSingleData (data, listProp, itemModifier) {
-			if (listProp instanceof Array) listProp.forEach(p => populate(data, p, itemModifier));
-			else populate(data, listProp, itemModifier);
+		function _handleSingleData (data, listProps, itemModifier) {
+			if (listProps instanceof Array) listProps.forEach(p => populate(data, p, itemModifier));
+			else populate(data, listProps, itemModifier);
 			callbackFn();
 		}
 
-		function loadSimple (page, jsonFile, listProp, itemModifier) {
+		function loadSimple (page, jsonFile, listProps, itemModifier) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				_pLoadSingleBrew(listProp, itemModifier)
+				_pLoadSingleBrew(listProps, itemModifier)
 					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/${jsonFile}`))
-					.then((data) => _handleSingleData(data, listProp, itemModifier));
-			} else {
-				callbackFn();
-			}
+					.then((data) => _handleSingleData(data, listProps, itemModifier));
+			} else callbackFn();
 		}
 
-		function loadCustom (page, jsonFile, listProp, itemModifier, loader) {
+		function loadCustom (page, jsonFile, listProps, itemModifier, loader) {
 			if (!EntryRenderer.hover._isCached(page, source, hash)) {
-				_pLoadSingleBrew(listProp, itemModifier)
+				_pLoadSingleBrew(listProps, itemModifier)
 					.then(() => DataUtil[loader].loadJSON(EntryRenderer.getDefaultRenderer().baseUrl))
-					.then((data) => _handleSingleData(data, listProp, itemModifier));
-			} else {
-				callbackFn();
-			}
+					.then((data) => _handleSingleData(data, listProps, itemModifier));
+			} else callbackFn();
 		}
 
 		switch (page) {
@@ -3444,7 +3488,7 @@ EntryRenderer.hover = {
 			return;
 		}
 
-		const toRender = page === "hover" ? {name: source.data.hoverTitle} : preLoaded || EntryRenderer.hover._getFromCache(page, source, hash);
+		const toRender = page === "hover" ? {name: source.data.hoverTitle || ""} : preLoaded || EntryRenderer.hover._getFromCache(page, source, hash);
 		const content = page === "hover" ? renderFn(source) : renderFn(toRender);
 
 		$(ele).attr("data-hover-active", true);
@@ -3737,8 +3781,20 @@ EntryRenderer.hover = {
 		EntryRenderer.hover.show({evt, ele, page: "hover", source: data, hash: "", isBookContent});
 	},
 
-	mouseOver (evt, ele, page, source, hash, isPopout) {
-		EntryRenderer.hover.show({evt, ele, page, source, hash, isPopout});
+	mouseOver (evt, ele, page, source, hash, isPopout, preloadId) {
+		if (preloadId != null) {
+			const [type, data] = preloadId.split(":");
+			switch (type) {
+				case MON_HASH_SCALED: {
+					EntryRenderer.hover.pCacheAndGet(page, source, hash).then(mon => {
+						ScaleCreature.scale(mon, Number(data)).then(scaled => {
+							EntryRenderer.hover.mouseOverPreloaded(evt, ele, scaled, page, source, hash, isPopout);
+						});
+					});
+					break;
+				}
+			}
+		} else EntryRenderer.hover.show({evt, ele, page, source, hash, isPopout});
 	},
 
 	mouseOverPreloaded (evt, ele, preLoaded, page, source, hash, isPopout) {
@@ -3785,8 +3841,18 @@ EntryRenderer.hover = {
 
 		EntryRenderer.hover._doInit();
 
-		// don't show on mobile
-		if ($(window).width() <= 1024 && !evt.shiftKey) return;
+		const outerWindow = (() => {
+			let loops = 100;
+			let curr = window.top;
+			while (window.parent !== curr) {
+				curr = window.parent;
+				if (loops-- < 0) return window; // safety precaution
+			}
+			return curr;
+		})();
+
+		// don't show on narrow screens
+		if ($(outerWindow).width() <= 768 && !evt.shiftKey) return;
 
 		let hoverId;
 		if (isPopout) {
@@ -4949,6 +5015,27 @@ EntryRenderer.getNumberedNames = function (entry) {
 		out[v] = Number(k);
 	});
 	return out;
+};
+
+// dig down until we find a name, as feature names can be nested
+EntryRenderer.findName = function (entry) {
+	function search (it) {
+		if (it instanceof Array) {
+			for (const child of it) {
+				const n = search(child);
+				if (n) return n;
+			}
+		} else if (it instanceof Object) {
+			if (it.name) return it.name;
+			else {
+				for (const child of Object.values(it)) {
+					const n = search(child);
+					if (n) return n;
+				}
+			}
+		}
+	}
+	return search(entry);
 };
 
 EntryRenderer.stripTags = function (str) {

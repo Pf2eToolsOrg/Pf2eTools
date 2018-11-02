@@ -1,5 +1,6 @@
 // ************************************************************************* //
 // Strict mode should not be used, as the roll20 script depends on this file //
+// Do not use classes                                                        //
 // ************************************************************************* //
 
 // in deployment, `_IS_DEPLOYED = "<version number>";` should be prepended here
@@ -70,6 +71,10 @@ FLTR_ID = "filterId";
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
 CLSS_SUBCLASS_FEATURE = "subclass-feature";
+CLSS_HASH_FEATURE_KEY = "f";
+CLSS_HASH_FEATURE = `${CLSS_HASH_FEATURE_KEY}:`;
+
+MON_HASH_SCALED = "scaled";
 
 ATB_DATA_LIST_SEP = "||";
 ATB_DATA_PART_SEP = "::";
@@ -111,6 +116,7 @@ HOMEBREW_META_STORAGE = "HOMEBREW_META_STORAGE";
 EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
 DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
 ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
+ENCOUNTER_STORAGE = "ENCOUNTER_STORAGE";
 
 JSON_HOMEBREW_INDEX = `homebrew/index.json`;
 
@@ -287,7 +293,7 @@ StrUtil = {
 			if (i < atLeastPre) out += c;
 			else if ((remain--) > 0) out += c;
 		}
-		if (remain < 0) out += "..."
+		if (remain < 0) out += "...";
 		out += str.substring(str.length - atLeastSuff, str.length);
 		return out;
 	},
@@ -298,7 +304,7 @@ StrUtil = {
 };
 
 RegExp.escape = function (string) {
-	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
 
 // TEXT COMBINING ======================================================================================================
@@ -327,7 +333,7 @@ function utils_getAbilityData (abObj) {
 
 	function handleAllAbilities (abilityList, targetList) {
 		for (let a = 0; a < ABILITIES.length; ++a) {
-			handleAbility(abilityList, ABILITIES[a], targetList)
+			handleAbility(abilityList, ABILITIES[a], targetList);
 		}
 	}
 
@@ -382,7 +388,7 @@ function utils_getAbilityData (abObj) {
 								if (j === item.from.length - 2) {
 									suffix = " or ";
 								} else if (j < item.from.length - 2) {
-									suffix = ", "
+									suffix = ", ";
 								}
 							}
 							let thsAmount = " " + amount;
@@ -429,7 +435,7 @@ Parser._parse_bToA = function (abMap, b) {
 	if (typeof b === "string") b = b.trim();
 	for (const v in abMap) {
 		if (!abMap.hasOwnProperty(v)) continue;
-		if (abMap[v] === b) return v
+		if (abMap[v] === b) return v;
 	}
 	return b;
 };
@@ -561,17 +567,14 @@ Parser.crToXp = function (cr) {
 
 Parser.crToXpNumber = function (cr) {
 	if (cr === "Unknown" || cr === undefined) return null;
-	if (cr === "0") return 10;
-	if (cr === "1/8") return 25;
-	if (cr === "1/4") return 50;
-	if (cr === "1/2") return 100;
-	return Parser.XP_CHART[parseInt(cr) - 1];
+	return Parser.XP_CHART_ALT[cr];
 };
 
 LEVEL_TO_XP_EASY = [0, 25, 50, 75, 125, 250, 300, 350, 450, 550, 600, 800, 1000, 1100, 1250, 1400, 1600, 2000, 2100, 2400, 2800];
 LEVEL_TO_XP_MEDIUM = [0, 50, 100, 150, 250, 500, 600, 750, 900, 1100, 1200, 1600, 2000, 2200, 2500, 2800, 3200, 3900, 4100, 4900, 5700];
 LEVEL_TO_XP_HARD = [0, 75, 150, 225, 375, 750, 900, 1100, 1400, 1600, 1900, 2400, 3000, 3400, 3800, 4300, 4800, 5900, 6300, 7300, 8500];
 LEVEL_TO_XP_DEADLY = [0, 100, 200, 400, 500, 1100, 1400, 1700, 2100, 2400, 2800, 3600, 4500, 5100, 5700, 6400, 7200, 8800, 9500, 10900, 12700];
+LEVEL_TO_XP_DAILY = [0, 300, 600, 1200, 1700, 3500, 4000, 5000, 6000, 7500, 9000, 10500, 11500, 13500, 15000, 18000, 20000, 25000, 27000, 30000, 40000];
 
 Parser.CRS = ["0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
 
@@ -584,7 +587,7 @@ Parser.isValidCr = function (cr) {
 };
 
 Parser.crToNumber = function (cr) {
-	if (cr === "Unknown" || cr === undefined) return 100;
+	if (cr === "Unknown" || cr == null) return 100;
 	if (cr.cr) return Parser.crToNumber(cr.cr);
 	const parts = cr.trim().split("/");
 	if (parts.length === 1) return Number(parts[0]);
@@ -684,9 +687,16 @@ Parser.acToFull = function (ac) {
 };
 
 MONSTER_COUNT_TO_XP_MULTIPLIER = [1, 1.5, 2, 2, 2, 2, 2.5, 2.5, 2.5, 2.5, 3, 3, 3, 3, 4];
-Parser.numMonstersToXpMult = function (num) {
-	if (num >= MONSTER_COUNT_TO_XP_MULTIPLIER.length) return 4;
-	return MONSTER_COUNT_TO_XP_MULTIPLIER[num - 1];
+Parser.numMonstersToXpMult = function (num, playerCount = 3) {
+	const baseVal = (() => {
+		if (num >= MONSTER_COUNT_TO_XP_MULTIPLIER.length) return 4;
+		return MONSTER_COUNT_TO_XP_MULTIPLIER[num - 1];
+	})();
+
+	if (playerCount < 3) return baseVal >= 3 ? baseVal + 1 : baseVal + 0.5;
+	else if (playerCount > 5) {
+		return baseVal === 4 ? 3 : baseVal - 0.5;
+	} else return baseVal;
 };
 
 Parser.armorFullToAbv = function (armor) {
@@ -707,7 +717,7 @@ Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceFull(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, STR_APOSTROPHE);
-	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE)
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
 	return Parser.sourceJsonToFull(source)
@@ -771,7 +781,7 @@ Parser.weightValueToNumber = function (value) {
 	if (/[x×]\s*\d+/i.test(value.trim())) return 0;
 
 	if (Number(value)) return Number(value);
-	else throw new Error(`Badly formatted value ${value}`)
+	else throw new Error(`Badly formatted value ${value}`);
 };
 
 Parser.dmgTypeToFull = function (dmgType) {
@@ -862,7 +872,7 @@ Parser.spTimeListToFull = function (times) {
 };
 
 Parser.getTimeToFull = function (time) {
-	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`
+	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
 
 Parser.spRangeToFull = function (range) {
@@ -911,7 +921,7 @@ Parser.spRangeToFull = function (range) {
 				case RNG_HEMISPHERE:
 					return `-radius ${range.type}`;
 				default:
-					return ` ${range.type}`
+					return ` ${range.type}`;
 			}
 		}
 	}
@@ -952,7 +962,7 @@ Parser.spDurationToFull = function (dur) {
 				return `${d.concentration ? "Concentration, " : ""}${d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.concentration || d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? d.duration.type : `${d.duration.type}s`}`;
 			case "permanent":
 				if (d.ends) {
-					return `Until ${d.ends.map(m => m === "dispel" ? "dispelled" : m === "trigger" ? "triggered" : m === "discharge" ? "discharged" : undefined).join(" or ")}`
+					return `Until ${d.ends.map(m => m === "dispel" ? "dispelled" : m === "trigger" ? "triggered" : m === "discharge" ? "discharged" : undefined).join(" or ")}`;
 				} else {
 					return "Permanent";
 				}
@@ -1063,14 +1073,9 @@ Parser.monImmResToFull = function (toParse) {
 			return it.special;
 		} else {
 			let stack = it.preNote ? `${it.preNote} ` : "";
-			if (it.immune) {
-				const toJoin = it.immune.map(nxt => toString(nxt, depth + 1));
-				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : toJoin.joinConjunct(", ", " and ");
-			} else if (it.resist) {
-				const toJoin = it.resist.map(nxt => toString(nxt, depth + 1));
-				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : toJoin.joinConjunct(", ", " and ");
-			} else if (it.vulnerable) {
-				const toJoin = it.vulnerable.map(nxt => toString(nxt, depth + 1));
+			const prop = it.immune ? "immune" : it.resist ? "resist" : it.vulnerable ? "vulnerable" : null;
+			if (prop) {
+				const toJoin = it[prop].map(nxt => toString(nxt, depth + 1));
 				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : toJoin.joinConjunct(", ", " and ");
 			}
 			if (it.note) stack += ` ${it.note}`;
@@ -1078,12 +1083,26 @@ Parser.monImmResToFull = function (toParse) {
 		}
 	}
 
-	return toParse.map(it => toString(it)).join(maxDepth ? "; " : ", ");
+	function serialJoin (arr) {
+		if (arr.length <= 1) return arr.join("");
+
+		let out = "";
+		for (let i = 0; i < arr.length - 1; ++i) {
+			const it = arr[i];
+			const nxt = arr[i + 1]
+			out += it;
+			out += (it.includes(",") || nxt.includes(",")) ? "; " : ", ";
+		}
+		out += arr.last();
+		return out;
+	}
+
+	return serialJoin(toParse.map(it => toString(it)));
 };
 
 Parser.monCondImmToFull = function (condImm) {
 	function render (condition) {
-		return EntryRenderer.getDefaultRenderer().renderEntry(`{@condition ${condition}}`)
+		return EntryRenderer.getDefaultRenderer().renderEntry(`{@condition ${condition}}`);
 	}
 	return condImm.map(it => {
 		if (it.special) return it.special;
@@ -1129,7 +1148,7 @@ Parser.prereqSpellToFull = function (spell) {
 	if (spell === "eldritch blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
 	else if (spell === "hex/curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell hex} spell or a warlock feature that curses");
 	else if (spell) return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}}`);
-	return STR_NONE
+	return STR_NONE;
 };
 
 Parser.prereqPactToFull = function (pact) {
@@ -1144,6 +1163,7 @@ Parser.prereqPatronToShort = function (patron) {
 	return /^The (.*?)$/.exec(patron)[1];
 };
 
+// NOTE: These need to be reflected in omnidexer.js to be indexed
 Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	EI: "Eldritch Invocation",
 	MM: "Metamagic",
@@ -1162,7 +1182,7 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 Parser.optFeatureTypeToFull = function (type) {
 	if (Parser.OPT_FEATURE_TYPE_TO_FULL[type]) return Parser.OPT_FEATURE_TYPE_TO_FULL[type];
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.optionalFeatureTypes && BrewUtil.homebrewMeta.optionalFeatureTypes[type]) return BrewUtil.homebrewMeta.optionalFeatureTypes[type];
-	return type
+	return type;
 };
 
 Parser.alignmentAbvToFull = function (alignment) {
@@ -1254,6 +1274,11 @@ Parser.CAT_ID_METAMAGIC = 22;
 Parser.CAT_ID_MANEUVER_BATTLEMASTER = 23;
 Parser.CAT_ID_TABLE = 24;
 Parser.CAT_ID_TABLE_GROUP = 25;
+Parser.CAT_ID_MANEUVER_CAVALIER = 26;
+Parser.CAT_ID_ARCANE_SHOT = 27;
+Parser.CAT_ID_OPTIONAL_FEATURE_OTHER = 28;
+Parser.CAT_ID_FIGHTING_STYLE = 29;
+Parser.CAT_ID_CLASS_FEATURE = 30;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1281,9 +1306,48 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_METAMAGIC] = "Metamagic";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "Maneuver; Battlemaster";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE] = "Table";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE_GROUP] = "Table";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_CAVALIER] = "Maneuver; Cavalier";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCANE_SHOT] = "Arcane Shot";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "Optional Feature";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FIGHTING_STYLE] = "Fighting Style";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
+};
+
+Parser.CAT_ID_TO_PROP = {};
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CREATURE] = "monster";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SPELL] = "spell";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BACKGROUND] = "background";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PSIONIC] = "psionic";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RACE] = "race";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OTHER_REWARD] = "reward";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "variantrule";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OBJECT] = "object";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAP] = "trap";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HAZARD] = "hazard";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CULT] = "cult";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOON] = "boon";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DISEASE] = "condition";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE] = "table";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE_GROUP] = "tableGroup";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELDRITCH_INVOCATION] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_CAVALIER] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCANE_SHOT] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FIGHTING_STYLE] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_METAMAGIC] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
+
+Parser.pageCategoryToProp = function (catId) {
+	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
 };
 
 /**
@@ -1509,6 +1573,43 @@ Parser.SIZE_ABV_TO_FULL[SZ_COLOSSAL] = "Colossal";
 Parser.SIZE_ABV_TO_FULL[SZ_VARIES] = "Varies";
 
 Parser.XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000];
+
+Parser.XP_CHART_ALT = {
+	"0": 10,
+	"1/8": 25,
+	"1/4": 50,
+	"1/2": 100,
+	"1": 200,
+	"2": 450,
+	"3": 700,
+	"4": 1100,
+	"5": 1800,
+	"6": 2300,
+	"7": 2900,
+	"8": 3900,
+	"9": 5000,
+	"10": 5900,
+	"11": 7200,
+	"12": 8400,
+	"13": 10000,
+	"14": 11500,
+	"15": 13000,
+	"16": 15000,
+	"17": 18000,
+	"18": 20000,
+	"19": 22000,
+	"20": 25000,
+	"21": 30000,
+	"22": 41000,
+	"23": 50000,
+	"24": 62000,
+	"25": 75000,
+	"26": 90000,
+	"27": 105000,
+	"28": 102000,
+	"29": 135000,
+	"30": 155000
+};
 
 Parser.ARMOR_ABV_TO_FULL = {
 	"l.": "light",
@@ -1992,7 +2093,7 @@ SourceUtil = {
 
 	getFilterGroup (source) {
 		if (BrewUtil.hasSourceJson(source)) return 2;
-		return Number(SourceUtil.isNonstandardSource(source))
+		return Number(SourceUtil.isNonstandardSource(source));
 	}
 };
 
@@ -2105,6 +2206,38 @@ function showCopiedEffect ($ele, text = "Copied!") {
 		$temp.remove();
 	});
 }
+
+ObjUtil = {
+	mergeWith (source, target, fnMerge, options = {depth: 1}) {
+		if (!source || !target || typeof fnMerge !== "function") throw new Error("Must include a source, target and a fnMerge to handle merging");
+
+		const recursive = function (deepSource, deepTarget, depth = 1) {
+			if (depth > options.depth || !deepSource || !deepTarget) return;
+			for (let prop of Object.keys(deepSource)) {
+				deepTarget[prop] = fnMerge(deepSource[prop], deepTarget[prop], source, target);
+				recursive(source[prop], deepTarget[prop], depth + 1);
+			}
+		};
+		recursive(source, target, 1);
+	},
+
+	forEachDeep (source, callback, options = {depth: Infinity, callEachLevel: false}) {
+		const path = [];
+		const diveDeep = function (val, path, depth = 0) {
+			if (options.callEachLevel || typeof val !== 'object' || options.depth === depth) {
+				callback(val, path, depth);
+			}
+			if (options.depth !== depth && typeof val === 'object') {
+				Object.keys(val).forEach(key => {
+					path.push(key);
+					diveDeep(val[key], path, depth + 1);
+				});
+			}
+			path.pop();
+		};
+		diveDeep(source, path);
+	}
+};
 
 // TODO refactor other misc utils into this
 MiscUtil = {
@@ -2228,7 +2361,7 @@ MiscUtil = {
 	],
 	dateToStr (date, short) {
 		const month = MiscUtil.MONTH_NAMES[date.getMonth()];
-		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`
+		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`;
 	},
 
 	findCommonPrefix (strArr) {
@@ -2272,14 +2405,14 @@ ContextUtil = {
 	_handlePreInitContextMenu: (menuId) => {
 		if (ContextUtil._ctxInit[menuId]) return;
 		ContextUtil._ctxInit[menuId] = true;
-		const clickId = `click.${menuId}`
+		const clickId = `click.${menuId}`;
 		$("body").off(clickId).on(clickId, (evt) => {
 			if ($(evt.target).data("ctx-id") != null) return; // ignore clicks on context menus
 
 			Object.entries(ContextUtil._ctxOpenRefs[menuId] || {}).forEach(([k, v]) => {
 				v(false);
 				delete ContextUtil._ctxOpenRefs[menuId][k];
-			})
+			});
 			$(`#${menuId}`).hide();
 		});
 	},
@@ -2475,7 +2608,7 @@ ListUtil = {
 				}
 			});
 		}
-		return list
+		return list;
 	},
 
 	_lastSelected: null,
@@ -2515,17 +2648,17 @@ ListUtil = {
 				const nextItem = getListPos(nextSelected);
 
 				const [min, max] = [lastItem, nextItem].sort((a, b) => {
-					if (a.ixList < b.ixList) return 1;
-					else if (a.ixList > b.ixList) return -1;
-					else if (a.ixItem > b.ixItem) return 1;
+					if (a.ixList < b.ixList) return -1;
+					else if (a.ixList > b.ixList) return 1;
 					else if (a.ixItem < b.ixItem) return -1;
+					else if (a.ixItem > b.ixItem) return 1;
 					else return 0;
 				});
 
 				for (let i = min.ixList; i <= max.ixList; ++i) {
 					const l = ListUtil._primaryLists[i];
-					const rangeStart = i < max.ixList ? 0 : min.ixItem;
-					const rangeEnd = max.ixList > i ? l.visibleItems.length : max.ixItem;
+					const rangeStart = i < max.ixList && i > min.ixList ? 0 : max.ixList === i && min.ixList < max.ixList ? 0 : min.ixItem;
+					const rangeEnd = max.ixList > i ? l.visibleItems.length - 1 : max.ixItem;
 
 					for (let j = rangeStart; j <= rangeEnd; ++j) {
 						$(l.visibleItems[j].elm).addClass("list-multi-selected");
@@ -2547,7 +2680,7 @@ ListUtil = {
 	},
 
 	initSubContextMenu: (clickFn, ...labels) => {
-		ContextUtil.doInitContextMenu("listSub", clickFn, labels)
+		ContextUtil.doInitContextMenu("listSub", clickFn, labels);
 	},
 
 	openContextMenu: (evt, ele) => {
@@ -2616,25 +2749,25 @@ ListUtil = {
 			.attr("title", "Pin (Toggle)");
 	},
 
-	_genericAddButtonHandler (evt) {
-		if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, 20);
+	_genericAddButtonHandler (evt, options = {}) {
+		if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, options.shiftCount || 20);
 		else ListUtil.doSublistAdd(History.lastLoadedId, true);
 	},
-	bindAddButton: (handlerGenerator) => {
+	bindAddButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
-			.attr("title", "Add (SHIFT for 20)")
+			.attr("title", `Add (SHIFT for ${options.shiftCount || 20})`)
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil._genericAddButtonHandler);
 	},
 
-	_genericSubtractButtonHandler (evt) {
-		if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 20);
+	_genericSubtractButtonHandler (evt, options = {}) {
+		if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, options.shiftCount || 20);
 		else ListUtil.doSublistSubtract(History.lastLoadedId);
 	},
-	bindSubtractButton: (handlerGenerator) => {
+	bindSubtractButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
-			.attr("title", "Subtract (SHIFT for 20)")
+			.attr("title", `Subtract (SHIFT for ${options.shiftCount || 20})`)
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil._genericSubtractButtonHandler);
 	},
 
@@ -2654,6 +2787,16 @@ ListUtil = {
 			.attr("title", "Download List (SHIFT for Link)");
 	},
 
+	doJsonLoad (json, additive, funcPreload) {
+		const funcOnload = () => {
+			ListUtil._loadSavedSublist(json.items, additive).then(() => {
+				ListUtil._finaliseSublist();
+			});
+		};
+		if (funcPreload) funcPreload(json, funcOnload);
+		else funcOnload();
+	},
+
 	bindUploadButton: (funcPreload) => {
 		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-upload`, `upload`);
 		$btn.off("click")
@@ -2665,14 +2808,8 @@ ListUtil = {
 					reader.onload = () => {
 						const text = reader.result;
 						const json = JSON.parse(text);
-						const funcOnload = () => {
-							ListUtil._loadSavedSublist(json.items, additive).then(() => {
-								$iptAdd.remove();
-								ListUtil._finaliseSublist();
-							});
-						};
-						if (funcPreload) funcPreload(json, funcOnload);
-						else funcOnload();
+						$iptAdd.remove();
+						ListUtil.doJsonLoad(json, additive, funcPreload);
 					};
 					reader.readAsText(input.files[0]);
 				}
@@ -2696,7 +2833,7 @@ ListUtil = {
 				Object.keys(unpacked)
 					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
 					.forEach(k => {
-						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`)
+						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`);
 					});
 				History.setSuppressHistory(true);
 				window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
@@ -2756,7 +2893,7 @@ ListUtil = {
 					ListUtil.$sublist.append(r);
 					if (doFinalise) ListUtil._finaliseSublist();
 					return Promise.resolve();
-				})
+				});
 			} else {
 				ListUtil.$sublist.append(sl);
 				if (doFinalise) ListUtil._finaliseSublist();
@@ -2812,8 +2949,8 @@ ListUtil = {
 	},
 
 	_updateSublistVisibility: () => {
-		if (ListUtil.sublist.items.length) ListUtil.$sublistContainer.css("display", "flex");
-		else ListUtil.$sublistContainer.hide();
+		if (ListUtil.sublist.items.length) ListUtil.$sublistContainer.addClass("sublist--visible");
+		else ListUtil.$sublistContainer.removeClass("sublist--visible");
 	},
 
 	doSublistRemove: (index, data) => {
@@ -2885,7 +3022,7 @@ ListUtil = {
 		} catch (e) {
 			StorageUtil.removeForPage("sublist");
 			setTimeout(() => {
-				throw e
+				throw e;
 			});
 		}
 	},
@@ -2901,7 +3038,7 @@ ListUtil = {
 				if (ListUtil._uidUnpackFn && it.uid) out.data = ListUtil._uidUnpackFn(it.uid);
 				return out;
 			}
-			return null
+			return null;
 		}).filter(it => it);
 
 		const promises = toLoad.map(it => ListUtil.doSublistAdd(it.index, false, it.addCount, it.data));
@@ -2943,15 +3080,11 @@ ListUtil = {
 			.slice(0, -RollerUtil.randomise(4, 1));
 
 		function generateSequence (array, length) {
-			function rollOnArray () {
-				return array[RollerUtil.randomise(array.length) - 1];
-			}
-
-			const out = [rollOnArray()];
+			const out = [RollerUtil.rollOnArray(array)];
 			for (let i = 0; i < length; ++i) {
-				let next = rollOnArray();
+				let next = RollerUtil.rollOnArray(array);
 				while (next === out.last()) {
-					next = rollOnArray();
+					next = RollerUtil.rollOnArray(array);
 				}
 				out.push(next);
 			}
@@ -2977,7 +3110,7 @@ ListUtil = {
 					$sequence[i][0].click();
 					if (i === timers.length - 1) ListUtil._isRolling = false;
 				}, total);
-			})
+			});
 		}
 	},
 
@@ -3054,7 +3187,7 @@ ListUtil = {
 		return Object.entries(ListUtil.getSublisted()).map(([id, it]) => {
 			return Object.keys(it).map(k => {
 				const it = ListUtil._allItems[id];
-				return k === "_" ? Promise.resolve(MiscUtil.copy(it)) : pMapUid(it, k)
+				return k === "_" ? Promise.resolve(MiscUtil.copy(it)) : pMapUid(it, k);
 			}).reduce((a, b) => a.concat(b), []);
 		}).reduce((a, b) => a.concat(b), []);
 	},
@@ -3099,7 +3232,7 @@ ListUtil = {
 
 	toggleCheckbox (evt, ele) {
 		const $ipt = $(ele).find(`input`);
-		$ipt.prop("checked", !$ipt.prop("checked"))
+		$ipt.prop("checked", !$ipt.prop("checked"));
 	},
 
 	getCompleteSources (it) {
@@ -3144,7 +3277,7 @@ ListUtil = {
 						toToggle.hide();
 					}
 				})
-				.appendTo($wrpCb)
+				.appendTo($wrpCb);
 		});
 		const $pnlBtns = $(`<div/>`).appendTo($pnlControl);
 		function getAsCsv () {
@@ -3232,76 +3365,103 @@ function initFilterBox (...filterList) {
 }
 
 // ENCODING/DECODING ===================================================================================================
-UrlUtil = {};
-UrlUtil.encodeForHash = function (toEncode) {
-	if (toEncode instanceof Array) {
-		return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
-	} else {
-		return encodeForHashHelper(toEncode);
-	}
+UrlUtil = {
+	encodeForHash (toEncode) {
+		if (toEncode instanceof Array) {
+			return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
+		} else {
+			return encodeForHashHelper(toEncode);
+		}
 
-	function encodeForHashHelper (part) {
-		return encodeURIComponent(part).toLowerCase();
-	}
-};
+		function encodeForHashHelper (part) {
+			return encodeURIComponent(part).toLowerCase();
+		}
+	},
 
-UrlUtil.autoEncodeHash = function (obj) {
-	const curPage = UrlUtil.getCurrentPage();
-	const encoder = UrlUtil.URL_TO_HASH_BUILDER[curPage];
-	if (!encoder) throw new Error(`No encoder found for page ${curPage}`);
-	return encoder(obj);
-};
+	autoEncodeHash (obj) {
+		const curPage = UrlUtil.getCurrentPage();
+		const encoder = UrlUtil.URL_TO_HASH_BUILDER[curPage];
+		if (!encoder) throw new Error(`No encoder found for page ${curPage}`);
+		return encoder(obj);
+	},
 
-UrlUtil.getCurrentPage = function () {
-	const pSplit = window.location.pathname.split("/");
-	let out = pSplit[pSplit.length - 1];
-	if (!out.toLowerCase().endsWith(".html")) out += ".html";
-	return out;
-};
-
-/**
- * All internal URL construction should pass through here, to ensure `static.5etools.com` is used when required.
- *
- * @param href the link
- */
-UrlUtil.link = function (href) {
-	function addGetParam (curr) {
-		if (href.includes("?")) return `${curr}&ver=${VERSION_NUMBER}`;
-		else return `${curr}?ver=${VERSION_NUMBER}`;
-	}
-	if (!IS_ROLL20 && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
-	else if (IS_DEPLOYED) return addGetParam(href);
-	return href;
-};
-
-UrlUtil.unpackSubHash = function (subHash, unencode) {
-	// format is "key:value~list~sep~with~tilde"
-	if (subHash.includes(HASH_SUB_KV_SEP)) {
-		const keyValArr = subHash.split(HASH_SUB_KV_SEP).map(s => s.trim());
-		const out = {};
-		let k = keyValArr[0].toLowerCase();
-		if (unencode) k = decodeURIComponent(k);
-		let v = keyValArr[1].toLowerCase();
-		if (unencode) v = decodeURIComponent(v);
-		out[k] = v.split(HASH_SUB_LIST_SEP).map(s => s.trim());
-		if (out[k].length === 1 && out[k] === HASH_SUB_NONE) out[k] = [];
+	getCurrentPage () {
+		const pSplit = window.location.pathname.split("/");
+		let out = pSplit[pSplit.length - 1];
+		if (!out.toLowerCase().endsWith(".html")) out += ".html";
 		return out;
-	} else {
-		throw new Error(`Baldy formatted subhash ${subHash}`)
-	}
-};
+	},
 
-UrlUtil.packSubHash = function (key, values, encode) {
-	if (encode) {
-		key = encodeURIComponent(key.toLowerCase());
-		values = values.map(it => encodeURIComponent(it.toLowerCase()));
-	}
-	return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
-};
+	/**
+	 * All internal URL construction should pass through here, to ensure `static.5etools.com` is used when required.
+	 *
+	 * @param href the link
+	 */
+	link (href) {
+		function addGetParam (curr) {
+			if (href.includes("?")) return `${curr}&ver=${VERSION_NUMBER}`;
+			else return `${curr}?ver=${VERSION_NUMBER}`;
+		}
 
-UrlUtil.categoryToPage = function (category) {
-	return UrlUtil.CAT_TO_PAGE[category];
-};
+		if (!IS_ROLL20 && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
+		else if (IS_DEPLOYED) return addGetParam(href);
+		return href;
+	},
+
+	unpackSubHash (subHash, unencode) {
+		// format is "key:value~list~sep~with~tilde"
+		if (subHash.includes(HASH_SUB_KV_SEP)) {
+			const keyValArr = subHash.split(HASH_SUB_KV_SEP).map(s => s.trim());
+			const out = {};
+			let k = keyValArr[0].toLowerCase();
+			if (unencode) k = decodeURIComponent(k);
+			let v = keyValArr[1].toLowerCase();
+			if (unencode) v = decodeURIComponent(v);
+			out[k] = v.split(HASH_SUB_LIST_SEP).map(s => s.trim());
+			if (out[k].length === 1 && out[k] === HASH_SUB_NONE) out[k] = [];
+			return out;
+		} else {
+			throw new Error(`Baldy formatted subhash ${subHash}`)
+		}
+	},
+
+	packSubHash (key, values, encode) {
+		if (encode) {
+			key = encodeURIComponent(key.toLowerCase());
+			values = values.map(it => encodeURIComponent(it.toLowerCase()));
+		}
+		return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
+	},
+
+	categoryToPage (category) {
+		return UrlUtil.CAT_TO_PAGE[category];
+	},
+
+	bindLinkExportButton (filterBox) {
+		const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
+		$btn.addClass("btn-copy-effect")
+			.off("click")
+			.on("click", (evt) => {
+				let url = window.location.href;
+
+				const toHash = filterBox.getAsSubHashes();
+				parts = Object.keys(toHash).map(hK => {
+					const hV = toHash[hK];
+					return UrlUtil.packSubHash(hK, hV, true);
+				});
+				if (evt.shiftKey) {
+					const toEncode = JSON.stringify(ListUtil._getExportableSublist());
+					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true);
+					parts = parts.concat(part2);
+				}
+				parts.unshift(url);
+
+				copyText(parts.join(HASH_PART_SEP));
+				showCopiedEffect($btn);
+			})
+			.attr("title", "Get Link to Filters (SHIFT adds List)")
+	}
+}
 
 UrlUtil.PG_BESTIARY = "bestiary.html";
 UrlUtil.PG_SPELLS = "spells.html";
@@ -3355,11 +3515,16 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BACKGROUND] = UrlUtil.PG_BACKGROUNDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS] = UrlUtil.PG_CLASSES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS_FEATURE] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS_DISEASES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_METAMAGIC] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER_CAVALIER] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARCANE_SHOT] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FIGHTING_STYLE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PSIONIC] = UrlUtil.PG_PSIONICS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RACE] = UrlUtil.PG_RACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OTHER_REWARD] = UrlUtil.PG_REWARDS;
@@ -3375,31 +3540,6 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOON] = UrlUtil.PG_CULTS_BOONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_CONDITIONS_DISEASES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
-
-UrlUtil.bindLinkExportButton = (filterBox) => {
-	const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
-	$btn.addClass("btn-copy-effect")
-		.off("click")
-		.on("click", (evt) => {
-			let url = window.location.href;
-
-			const toHash = filterBox.getAsSubHashes();
-			parts = Object.keys(toHash).map(hK => {
-				const hV = toHash[hK];
-				return UrlUtil.packSubHash(hK, hV, true);
-			});
-			if (evt.shiftKey) {
-				const toEncode = JSON.stringify(ListUtil._getExportableSublist());
-				const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true);
-				parts = parts.concat(part2);
-			}
-			parts.unshift(url);
-
-			copyText(parts.join(HASH_PART_SEP));
-			showCopiedEffect($btn);
-		})
-		.attr("title", "Get Link to Filters (SHIFT adds List)")
-};
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
@@ -3478,7 +3618,7 @@ SortUtil = {
 		if (!b) return 1;
 		if (a.toLowerCase().trim() === "special equipment") return -1;
 		if (b.toLowerCase().trim() === "special equipment") return 1;
-		return SortUtil.ascSort(a, b)
+		return SortUtil.ascSort(a, b);
 	},
 
 	_alignFirst: ["L", "C"],
@@ -3497,6 +3637,11 @@ SortUtil = {
 		if (a === "Unknown" || a === undefined) a = "999";
 		if (b === "Unknown" || b === undefined) b = "999";
 		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
+	},
+
+	_attrOrder: ["str", "dex", "con", "int", "wis", "cha"],
+	ascSortAtts (a, b) {
+		return SortUtil._attrOrder.indexOf(b) - SortUtil._attrOrder.indexOf(a);
 	},
 
 	initHandleFilterButtonClicks (target = "#filtertools") {
@@ -3643,7 +3788,7 @@ DataUtil = {
 					Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`))).then((all) => {
 						resolve(all.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []}));
 					});
-				})
+				});
 			});
 		}
 	},
@@ -3690,7 +3835,7 @@ DataUtil = {
 			return new Promise((resolve) => {
 				DataUtil.loadJSON(`${baseUrl}data/deities.json`).then((data) => {
 					DataUtil.deity.doPostLoad(data, resolve);
-				})
+				});
 			});
 		}
 	}
@@ -3741,6 +3886,10 @@ RollerUtil = {
 		} else {
 			return RollerUtil.roll(max) + min;
 		}
+	},
+
+	rollOnArray (array) {
+		return array[RollerUtil.randomise(array.length) - 1]
 	},
 
 	/**
@@ -3808,11 +3957,91 @@ RollerUtil = {
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 
 // STORAGE =============================================================================================================
+// TODO overhaul using IndexedDB
 StorageUtil = {
 	_fakeStorage: {},
+
+	/**
+	 * @deprecated
+	 */
 	getStorage: () => {
 		try {
 			return window.localStorage;
+		} catch (e) {
+			// if the user has disabled cookies, build a fake version
+			return {
+				isFake: true,
+				getItem: (k) => {
+					return StorageUtil._fakeStorage[k];
+				},
+				removeItem: (k) => {
+					delete StorageUtil._fakeStorage[k];
+				},
+				setItem: (k, v) => {
+					StorageUtil._fakeStorage[k] = v;
+				}
+			};
+		}
+	},
+
+	/**
+	 * @deprecated
+	 */
+	isFake () {
+		return StorageUtil.getStorage().isFake
+	},
+
+	/**
+	 * @deprecated
+	 */
+	setForPage: (key, value) => {
+		StorageUtil.set(`${key}_${UrlUtil.getCurrentPage()}`, value);
+	},
+
+	/**
+	 * @deprecated
+	 */
+	set (key, value) {
+		StorageUtil.getStorage().setItem(key, JSON.stringify(value));
+	},
+
+	/**
+	 * @deprecated
+	 */
+	getForPage: (key) => {
+		return StorageUtil.get(`${key}_${UrlUtil.getCurrentPage()}`);
+	},
+
+	/**
+	 * @deprecated
+	 */
+	get (key) {
+		const rawOut = StorageUtil.getStorage().getItem(key);
+		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
+		return null;
+	},
+
+	/**
+	 * @deprecated
+	 */
+	removeForPage: (key) => {
+		StorageUtil.remove(`${key}_${UrlUtil.getCurrentPage()}`)
+	},
+
+	/**
+	 * @deprecated
+	 */
+	remove (key) {
+		StorageUtil.getStorage().removeItem(key);
+	}
+};
+
+// TODO transition cookie-like storage items over to this
+SessionStorageUtil = {
+	_fakeStorage: {},
+	getStorage: () => {
+		try {
+			return window.sessionStorage;
 		} catch (e) {
 			// if the user has disabled cookies, build a fake version
 			return {
@@ -3859,7 +4088,7 @@ StorageUtil = {
 	remove (key) {
 		StorageUtil.getStorage().removeItem(key);
 	}
-};
+}
 
 // HOMEBREW ============================================================================================================
 BrewUtil = {
@@ -3911,7 +4140,7 @@ BrewUtil = {
 		window.location.hash = "";
 		if (error) {
 			setTimeout(() => {
-				throw error
+				throw error;
 			}, 1);
 		}
 	},
@@ -3952,6 +4181,7 @@ BrewUtil = {
 		if (cat === "adventureData") return "Adventure Text";
 		if (cat === "book") return isManager ? "Book Contents/Info" : "Book";
 		if (cat === "bookData") return "Book Text";
+		if (cat === "itemProperty") return "Item Property";
 		return cat.uppercaseFirst();
 	},
 	_renderBrewScreen ($appendTo, $overlay, $window, isModal, getBrewOnClose) {
@@ -3998,7 +4228,7 @@ BrewUtil = {
 				return;
 			}
 			BrewUtil.addBrewRemote(null, parsedUrl.href).catch(() => {
-				window.alert('Could not load homebrew from the given URL.')
+				window.alert('Could not load homebrew from the given URL.');
 			});
 		});
 
@@ -4118,7 +4348,7 @@ BrewUtil = {
 						urls,
 						(url, json) => {
 							if (url._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
-							json.forEach(it => it._cat = url._cat)
+							json.forEach(it => it._cat = url._cat);
 						},
 						(json) => {
 							let stack = "";
@@ -4194,40 +4424,51 @@ BrewUtil = {
 
 				// populate list
 				function populateList () {
-					function getExtraInfo (category, entry) {
-						switch (category) {
+					function mapCategoryEntry (cat, bru) {
+						const out = {};
+						out.name = bru.name;
+						out.uniqueId = bru.uniqueId;
+						out.extraInfo = "";
+						switch (cat) {
 							case "subclass":
-								return ` (${entry.class})`;
+								out.extraInfo = ` (${bru.class})`;
+								break;
 							case "psionic":
-								return ` (${Parser.psiTypeToFull(entry.type)})`;
-							default:
-								return "";
+								out.extraInfo = ` (${Parser.psiTypeToFull(bru.type)})`;
+								break;
+							case "itemProperty": {
+								if (bru.entries) out.name = EntryRenderer.findName(bru.entries)
+								if (!out.name) out.name = bru.abbreviation;
+								break;
+							}
+							case "adventureData":
+							case "bookData": {
+								const assocData = {
+									"adventureData": "adventure",
+									"bookData": "book"
+								};
+								out.name = (((BrewUtil.homebrew[assocData[cat]] || []).find(a => a.id === bru.id) || {}).name || bru.id);
+							}
 						}
-					}
-
-					function getDisplayName (category, it) {
-						const assocData = {
-							"adventureData": "adventure",
-							"bookData": "book"
-						};
-						return assocData[category] ? (((BrewUtil.homebrew[assocData[category]] || []).find(a => a.id === it.id) || {}).name || it.id) : it.name;
+						out.name = out.name || `(Unknown)`;
+						return out;
 					}
 
 					const $ul = $lst.find(`ul`);
 					let stack = "";
 					const isMatchingSource = (itSrc) => showAll || (itSrc === source || (source === undefined && !BrewUtil.hasSourceJson(itSrc)));
 					BrewUtil._getBrewCategories().forEach(cat => {
-						BrewUtil.homebrew[cat].filter(it => isMatchingSource(it.source)).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
+						BrewUtil.homebrew[cat].filter(it => isMatchingSource(it.source)).map(it => mapCategoryEntry(cat, it)).sort((a, b) => SortUtil.ascSort(a.name, b.name)).forEach(it => {
 							stack += `
 								<li><section onclick="ListUtil.toggleCheckbox(event, this)">
-									<span class="col-xs-6 name">${getDisplayName(cat, it)}</span>
-									<span class="col-xs-5 category text-align-center">${BrewUtil._getDisplayCat(cat, true)}${getExtraInfo(cat, it)}</span>
+									<span class="col-xs-6 name">${it.name}</span>
+									<span class="col-xs-5 category text-align-center">${BrewUtil._getDisplayCat(cat, true)}${it.extraInfo}</span>
 									<span class="col-xs-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
 									<span class="hidden uid">${it.uniqueId}</span>
 									<span class="category_raw hidden">${cat}</span>
 								</section></li>
 							`;
-						})
+						});
 					});
 					$ul.empty();
 					if (stack) $ul.append(stack);
@@ -4483,13 +4724,17 @@ BrewUtil = {
 				const forClass = subClass.class;
 				BrewUtil.homebrew.subclass.splice(index, 1);
 				BrewUtil.storage.setItem(HOMEBREW_STORAGE, JSON.stringify(BrewUtil.homebrew));
-				const c = ClassData.classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
 
-				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
-				if (~indexInClass) {
-					c.subclasses.splice(indexInClass, 1);
-					c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+				if (typeof ClassData !== "undefined") {
+					const c = ClassData.classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
+
+					const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
+					if (~indexInClass) {
+						c.subclasses.splice(indexInClass, 1);
+						c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+					}
 				}
+
 				if (doRefresh) {
 					refreshBrewList();
 					window.location.hash = "";
@@ -4500,10 +4745,10 @@ BrewUtil = {
 		function deleteGenericBrew (category) {
 			return (uniqueId, doRefresh) => {
 				doRemove(category, uniqueId, doRefresh);
-			}
+			};
 		}
 
-		function deleteGenericBookBrew (type) {
+		function deleteGenericBookBrew (category) {
 			return (uniqueId, doRefresh) => {
 				doRemove(category, uniqueId, false);
 				doRemove(`${category}Data`, uniqueId, doRefresh, true);
@@ -4552,7 +4797,7 @@ BrewUtil = {
 					if (data) {
 						data.parentUniqueId = adv.uniqueId;
 					}
-				})
+				});
 			}
 		});
 
@@ -4593,7 +4838,7 @@ BrewUtil = {
 							break;
 						}
 					}
-				})
+				});
 			}
 			return areNew;
 		}
@@ -5078,7 +5323,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
 		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.open();
 		else this.teardown();
-	}
+	};
 }
 
 // CONTENT EXCLUSION ===================================================================================================
@@ -5097,7 +5342,7 @@ ExcludeUtil = {
 				ExcludeUtil._excludes = null;
 				window.location.hash = "";
 				setTimeout(() => {
-					throw e
+					throw e;
 				});
 			}
 		} else {
@@ -5160,6 +5405,62 @@ ExcludeUtil = {
 	}
 };
 
+// ENCOUNTERS ==========================================================================================================
+EncounterUtil = {
+	pGetSavedState () {
+		return new Promise(resolve => {
+			EncounterUtil._pHasSavedStateLocal().then(hasLocal => {
+				if (EncounterUtil._hasSavedStateUrl()) resolve(EncounterUtil._getSavedStateUrl());
+				else if (hasLocal) EncounterUtil._pGetSavedStateLocal().then(local => resolve(local));
+				else resolve(null);
+			});
+		});
+	},
+
+	_hasSavedStateUrl () {
+		return window.location.hash.length && History.getSubHash(EncounterUtil.SUB_HASH_PREFIX) != null;
+	},
+
+	_getSavedStateUrl () {
+		let out = null;
+		try {
+			out = JSON.parse(decodeURIComponent(History.getSubHash(EncounterUtil.SUB_HASH_PREFIX)));
+		} catch (e) {
+			setTimeout(() => {
+				throw e;
+			});
+		}
+		History.setSubhash(EncounterUtil.SUB_HASH_PREFIX, null);
+		return out;
+	},
+
+	_pHasSavedStateLocal () {
+		return new Promise(resolve => {
+			resolve(!!((StorageUtil.getStorage().getItem(ENCOUNTER_STORAGE) || "").trim()));
+		});
+	},
+
+	_pGetSavedStateLocal () {
+		return new Promise(resolve => {
+			try {
+				resolve(JSON.parse(StorageUtil.getStorage().getItem(ENCOUNTER_STORAGE)));
+			} catch (e) {
+				alert("Error when loading encounters! Purging saved data...");
+				StorageUtil.getStorage().removeItem(ENCOUNTER_STORAGE);
+				setTimeout(() => {
+					throw e
+				});
+				resolve(null);
+			}
+		});
+	},
+
+	pDoSaveState (toSave) {
+		StorageUtil.getStorage().setItem(ENCOUNTER_STORAGE, JSON.stringify(toSave));
+	}
+}
+EncounterUtil.SUB_HASH_PREFIX = "encounter";
+
 // LEGAL NOTICE ========================================================================================================
 if (!IS_ROLL20 && typeof window !== "undefined") {
 	// add an obnoxious banner
@@ -5195,11 +5496,11 @@ _Donate = {
 			}).catch(noDosh => {
 				$(`#don-wrapper`).remove();
 				throw noDosh;
-			})
+			});
 		}
 	},
 
 	notDonating () {
 		return StorageUtil.isFake() || StorageUtil.get("notDonating");
 	}
-}
+};

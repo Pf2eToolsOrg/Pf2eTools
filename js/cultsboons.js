@@ -113,14 +113,15 @@ function loadhash (id) {
 			${EntryRenderer.utils.getBorderTr()}
 		`);
 	} else if (it._type === "b") {
+		it._displayName = it._displayName || `Demonic Boon: ${it.name}`;
 		EntryRenderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
 		renderer.recursiveEntryRender({entries: it.entries}, renderStack, 1);
 		$("#pagecontent").html(`
-			<tr><th class="border" colspan="6"></th></tr>
-			<tr><th class="name" colspan="6"><span class="stats-name">${it._type === "b" ? `Demonic Boon: ` : ""}${it.name}</span><span class="stats-source ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span></th></tr>
+			${EntryRenderer.utils.getBorderTr()}
+			${EntryRenderer.utils.getNameTr(it)}
 			<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>
 			${EntryRenderer.utils.getPageTr(it)}
-			<tr><th class="border" colspan="6"></th></tr>
+			${EntryRenderer.utils.getBorderTr()}
 		`);
 	}
 
