@@ -198,7 +198,7 @@ class Board {
 				return DataUtil.loadJSON("search/index.json");
 			}).then((data) => {
 				function hasBadCat (d) {
-					return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF;
+					return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF || d.c === Parser.CAT_ID_CLASS_FEATURE;
 				}
 
 				function fromDeepIndex (d) {
@@ -458,7 +458,7 @@ class SideMenu {
 		const $wrpResizeH = $(`<div class="dm-sidemenu-row"><div class="dm-sidemenu-row-label">Height</div></div>`).appendTo(this.$mnu);
 		const $iptHeight = $(`<input class="form-control" type="number" value="${this.board.height}">`).appendTo($wrpResizeH);
 		this.$iptHeight = $iptHeight;
-		const $btnSetDim = $(`<div class="btn btn-primary">Set Dimensions</div>`).appendTo(this.$mnu);
+		const $btnSetDim = $(`<button="btn btn-primary">Set Dimensions</div>`).appendTo(this.$mnu);
 		$btnSetDim.on("click", () => {
 			const w = Number($iptWidth.val());
 			const h = Number($iptHeight.val());
@@ -468,14 +468,14 @@ class SideMenu {
 		renderDivider();
 
 		const $wrpFullscreen = $(`<div class="dm-sidemenu-row-alt"></div>`).appendTo(this.$mnu);
-		const $btnFullscreen = $(`<div class="btn btn-primary">Toggle Fullscreen</div>`).appendTo($wrpFullscreen);
+		const $btnFullscreen = $(`<button class="btn btn-primary">Toggle Fullscreen</button>`).appendTo($wrpFullscreen);
 		$btnFullscreen.on("click", () => {
 			this.board.isFullscreen = !this.board.isFullscreen;
 			if (this.board.isFullscreen) $(`body`).addClass(`dm-screen-fullscreen`);
 			else $(`body`).removeClass(`dm-screen-fullscreen`);
 			this.board.doAdjust$creenCss();
 		});
-		const $btnLock = $(`<div class="btn btn-danger" title="Lock Panels"><span class="glyphicon glyphicon-lock"/></div>`).appendTo($wrpFullscreen);
+		const $btnLock = $(`<button class="btn btn-danger" title="Lock Panels"><span class="glyphicon glyphicon-lock"/></button>`).appendTo($wrpFullscreen);
 		$btnLock.on("click", () => {
 			this.board.isLocked = !this.board.isLocked;
 			if (this.board.isLocked) {
@@ -490,11 +490,11 @@ class SideMenu {
 
 		const $wrpSaveLoad = $(`<div class="dm-sidemenu-row-vert"/>`).appendTo(this.$mnu);
 		const $wrpSaveLoadFile = $(`<div class="dm-sidemenu-row-alt"/>`).appendTo($wrpSaveLoad);
-		const $btnSaveFile = $(`<div class="btn btn-primary">Save to File</div>`).appendTo($wrpSaveLoadFile);
+		const $btnSaveFile = $(`<button class="btn btn-primary">Save to File</button>`).appendTo($wrpSaveLoadFile);
 		$btnSaveFile.on("click", () => {
 			DataUtil.userDownload(`dm-screen`, this.board.getSaveableState());
 		});
-		const $btnLoadFile = $(`<div class="btn btn-primary">Load from File</div>`).appendTo($wrpSaveLoadFile);
+		const $btnLoadFile = $(`<button class="btn btn-primary">Load from File</button>`).appendTo($wrpSaveLoadFile);
 		$btnLoadFile.on("click", () => {
 			DataUtil.userUpload((json) => {
 				this.board.doReset();
@@ -502,7 +502,7 @@ class SideMenu {
 			});
 		});
 		const $wrpSaveLoadUrl = $(`<div class="dm-sidemenu-row-alt"/>`).appendTo($wrpSaveLoad);
-		const $btnSaveLink = $(`<div class="btn btn-primary">Save to URL</div>`).appendTo($wrpSaveLoadUrl);
+		const $btnSaveLink = $(`<button class="btn btn-primary">Save to URL</button>`).appendTo($wrpSaveLoadUrl);
 		$btnSaveLink.on("click", () => {
 			const encoded = `${window.location.href.split("#")[0]}#${encodeURIComponent(JSON.stringify(this.board.getSaveableState()))}`;
 			copyText(encoded);
@@ -514,7 +514,7 @@ class SideMenu {
 		this.board.$cbConfirmTabClose = $(`<input type="checkbox" class="dm-sidemenu-row-label-cb">`).appendTo($wrpCbConfirm.find(`label`));
 		renderDivider();
 
-		const $btnReset = $(`<div class="btn btn-danger">Reset Screen</div>`).appendTo(this.$mnu);
+		const $btnReset = $(`<button class="btn btn-danger">Reset Screen</button>`).appendTo(this.$mnu);
 		$btnReset.on("click", () => {
 			if (window.confirm("Are you sure?")) {
 				this.board.doReset();
@@ -536,7 +536,7 @@ class SideMenu {
 		this.$wrpHistory.children().remove();
 		if (this.board.exiledPanels.length) {
 			const $wrpHistHeader = $(`<div class="dm-sidemenu-row"><span style="font-variant: small-caps;">Recently Removed</span></div>`).appendTo(this.$wrpHistory);
-			const $btnHistClear = $(`<div class="btn btn-danger">Clear</div>`).appendTo($wrpHistHeader);
+			const $btnHistClear = $(`<button class="btn btn-danger">Clear</button>`).appendTo($wrpHistHeader);
 			$btnHistClear.on("click", () => {
 				this.board.exiledPanels = [];
 				this.doUpdateHistory();
@@ -1017,7 +1017,7 @@ class Panel {
 		const $wrpPanel = $(`<div class="panel-content-wrapper-inner"/>`);
 		const $wrpImage = $(`<div class="panel-content-wrapper-img"/>`).appendTo($wrpPanel);
 		const $img = $(`<img src="${url}">`).appendTo($wrpImage);
-		const $iptReset = $(`<div class="panel-zoom-reset btn btn-xs btn-default"><span class="glyphicon glyphicon-refresh"/></div>`).appendTo($wrpPanel);
+		const $iptReset = $(`<button class="panel-zoom-reset btn btn-xs btn-default"><span class="glyphicon glyphicon-refresh"/></button>`).appendTo($wrpPanel);
 		const $iptRange = $(`<input type="range" class="panel-zoom-slider">`).appendTo($wrpPanel);
 		this.set$ContentTab(
 			PANEL_TYP_IMAGE,
@@ -1358,7 +1358,7 @@ class Panel {
 				const curr = $wrpTabsInner.scrollLeft();
 				$wrpTabsInner.scrollLeft(Math.max(0, curr + delta));
 			}).appendTo($wrpTabs);
-			const $btnTabAdd = $(`<div class="btn btn-default content-tab"><span class="glyphicon glyphicon-plus"/></div>`)
+			const $btnTabAdd = $(`<button class="btn btn-default content-tab"><span class="glyphicon glyphicon-plus"/></button>`)
 				.click(() => openAddMenu()).appendTo($wrpTabsInner);
 			this.$pnlWrpTabs = $wrpTabs;
 			this.$pnlTabs = $wrpTabsInner;
@@ -1474,7 +1474,7 @@ class Panel {
 
 	_get$BtnSelTab (ix, title, tabCanRename) {
 		title = title || "[Untitled]";
-		const $btnSelTab = $(`<div class="btn btn-default content-tab ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title">${title}</span></div>`)
+		const $btnSelTab = $(`<button class="btn btn-default content-tab ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title">${title}</span></button>`)
 			.on("mousedown", (evt) => {
 				if (evt.which === 1) {
 					this.setActiveTab(ix);
@@ -2052,7 +2052,7 @@ class AddMenu {
 
 			this.tabs.forEach(t => {
 				t.render();
-				const $head = $(`<div class="btn btn-default panel-addmenu-tab-head">${t.label}</div>`).appendTo($tabBar);
+				const $head = $(`<button class="btn btn-default panel-addmenu-tab-head">${t.label}</button>`).appendTo($tabBar);
 				if (t.getSpotlight()) $head.addClass("btn-spotlight");
 				const $body = $(`<div class="panel-addmenu-tab-body"/>`).appendTo($tabBar);
 				$body.append(t.get$Tab);
@@ -2125,7 +2125,7 @@ class AddMenuVideoTab extends AddMenuTab {
 
 			const $wrpYT = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrlYT = $(`<input class="form-control" placeholder="Paste YouTube URL">`).appendTo($wrpYT);
-			const $btnAddYT = $(`<div class="btn btn-primary">Embed</div>`).appendTo($wrpYT);
+			const $btnAddYT = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpYT);
 			$btnAddYT.on("click", () => {
 				let url = $iptUrlYT.val().trim();
 				const m = /https?:\/\/(www\.)?youtube\.com\/watch\?v=(.*?)(&.*$|$)/.exec(url);
@@ -2141,8 +2141,8 @@ class AddMenuVideoTab extends AddMenuTab {
 
 			const $wrpTwitch = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrlTwitch = $(`<input class="form-control" placeholder="Paste Twitch URL">`).appendTo($wrpTwitch);
-			const $btnAddTwitch = $(`<div class="btn btn-primary">Embed</div>`).appendTo($wrpTwitch);
-			const $btnAddTwitchChat = $(`<div class="btn btn-primary">Embed Chat</div>`).appendTo($wrpTwitch);
+			const $btnAddTwitch = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpTwitch);
+			const $btnAddTwitchChat = $(`<button class="btn btn-primary">Embed Chat</button>`).appendTo($wrpTwitch);
 			const getTwitchM = (url) => {
 				return /https?:\/\/(www\.)?twitch\.tv\/(.*?)(\?.*$|$)/.exec(url);
 			};
@@ -2174,7 +2174,7 @@ class AddMenuVideoTab extends AddMenuTab {
 
 			const $wrpGeneric = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrlGeneric = $(`<input class="form-control" placeholder="Paste any URL">`).appendTo($wrpGeneric);
-			const $btnAddGeneric = $(`<div class="btn btn-primary">Embed</div>`).appendTo($wrpGeneric);
+			const $btnAddGeneric = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpGeneric);
 			$btnAddGeneric.on("click", () => {
 				let url = $iptUrlGeneric.val().trim();
 				if (url) {
@@ -2242,7 +2242,7 @@ class AddMenuImageTab extends AddMenuTab {
 				const ix = this.menu.pnl.doPopulate_Loading("Uploading"); // will be null if not in tabbed mode
 				this.menu.doClose();
 			}).appendTo($tab);
-			const $btnAdd = $(`<div class="btn btn-primary">Upload</div>`).appendTo($wrpImgur);
+			const $btnAdd = $(`<button class="btn btn-primary">Upload</button>`).appendTo($wrpImgur);
 			$btnAdd.on("click", () => {
 				$iptFile.click();
 			});
@@ -2250,7 +2250,7 @@ class AddMenuImageTab extends AddMenuTab {
 
 			const $wrpUtl = $(`<div class="tab-body-row"/>`).appendTo($tab);
 			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`).appendTo($wrpUtl);
-			const $btnAddUrl = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpUtl);
+			const $btnAddUrl = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUtl);
 			$btnAddUrl.on("click", () => {
 				let url = $iptUrl.val().trim();
 				if (url) {
@@ -2277,7 +2277,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
 			const $wrpRoller = $(`<div class="tab-body-row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
-			const $btnRoller = $(`<div class="btn btn-primary">Pin</div>`).appendTo($wrpRoller);
+			const $btnRoller = $(`<button class="btn btn-primary">Pin</button>`).appendTo($wrpRoller);
 			$btnRoller.on("click", () => {
 				EntryRenderer.dice.bindDmScreenPanel(this.menu.pnl);
 				this.menu.doClose();
@@ -2285,7 +2285,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
 
 			const $wrpTracker = $(`<div class="tab-body-row"><span>Initiative Tracker</span></div>`).appendTo($tab);
-			const $btnTracker = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpTracker);
+			const $btnTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
 				this.menu.doClose();
@@ -2293,7 +2293,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="tab-body-row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
-			const $btnText = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpText);
+			const $btnText = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();
 				this.menu.doClose();
@@ -2301,7 +2301,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
 
 			const $wrpConverter = $(`<div class="tab-body-row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
-			const $btnConverter = $(`<div class="btn btn-primary">Add</div>`).appendTo($wrpConverter);
+			const $btnConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpConverter);
 			$btnConverter.on("click", () => {
 				this.menu.pnl.doPopulate_UnitConverter();
 				this.menu.doClose();
@@ -2687,7 +2687,7 @@ class InitiativeTracker {
 		const $wrpControls = $(`<div class="dm-init-wrp-controls"/>`).appendTo($wrpTracker);
 
 		const $wrpLock = $(`<div/>`).appendTo($wrpControls);
-		const $btnLock = $(`<div class="btn btn-danger btn-sm" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></div>`).appendTo($wrpLock);
+		const $btnLock = $(`<button class="btn btn-danger btn-sm" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></button>`).appendTo($wrpLock);
 		$btnLock.on("click", () => {
 			if (isLocked) {
 				$btnLock.removeClass("btn-success").addClass("btn-danger");
@@ -2703,19 +2703,19 @@ class InitiativeTracker {
 
 		const $wrpAddNext = $(`<div/>`).appendTo($wrpControls);
 		const $wrpAdd = $(`<div class="btn-group"/>`).appendTo($wrpAddNext);
-		const $btnAdd = $(`<div class="btn btn-primary btn-sm dm-init-lockable" title="Add Player"><span class="glyphicon glyphicon-plus"/></div>`).appendTo($wrpAdd);
-		const $btnAddMonster = $(`<div class="btn btn-success btn-sm dm-init-lockable" title="Add Monster" style="margin-right: 7px;"><span class="glyphicon glyphicon-print"/></div>`).appendTo($wrpAdd);
-		const $btnNext = $(`<div class="btn btn-default btn-sm" title="Next Turn"><span class="glyphicon glyphicon-step-forward"/></div>`).appendTo($wrpAddNext)
+		const $btnAdd = $(`<button class="btn btn-primary btn-sm dm-init-lockable" title="Add Player"><span class="glyphicon glyphicon-plus"/></button>`).appendTo($wrpAdd);
+		const $btnAddMonster = $(`<button class="btn btn-success btn-sm dm-init-lockable" title="Add Monster" style="margin-right: 7px;"><span class="glyphicon glyphicon-print"/></button>`).appendTo($wrpAdd);
+		const $btnNext = $(`<button class="btn btn-default btn-sm" title="Next Turn"><span class="glyphicon glyphicon-step-forward"/></button>`).appendTo($wrpAddNext)
 			.click(() => setNextActive())
 
 		const $wrpSort = $(`<div class="btn-group"/>`).appendTo($wrpControls);
-		const $btnSortAlpha = $(`<div title="Sort Alphabetically" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-sort-by-alphabet"/></div>`).appendTo($wrpSort)
+		const $btnSortAlpha = $(`<button title="Sort Alphabetically" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-sort-by-alphabet"/></button>`).appendTo($wrpSort)
 			.click(() => {
 				if (sort === ALPHA) flipDir();
 				else sort = ALPHA;
 				doSort(ALPHA);
 			});
-		const $btnSortNum = $(`<div title="Sort Numerically" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-sort-by-order"/></div>`).appendTo($wrpSort)
+		const $btnSortNum = $(`<button title="Sort Numerically" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-sort-by-order"/></button>`).appendTo($wrpSort)
 			.click(() => {
 				if (sort === NUM) flipDir();
 				else sort = NUM;
@@ -2723,12 +2723,12 @@ class InitiativeTracker {
 			});
 
 		const $wrpLoadReset = $(`<div class="btn-group"/>`).appendTo($wrpControls);
-		const $btnLoad = $(`<div title="Import an encounter from the Bestiary" class="btn btn-success btn-sm dm-init-lockable"><span class="glyphicon glyphicon-upload"/></div>`).appendTo($wrpLoadReset)
+		const $btnLoad = $(`<button title="Import an encounter from the Bestiary" class="btn btn-success btn-sm dm-init-lockable"><span class="glyphicon glyphicon-upload"/></button>`).appendTo($wrpLoadReset)
 			.click((evt) => {
 				if (isLocked) return;
 				ContextUtil.handleOpenContextMenu(evt, $btnLoad, contextId);
 			});
-		const $btnReset = $(`<div title="Reset" class="btn btn-danger btn-sm dm-init-lockable"><span class="glyphicon glyphicon-trash"/></div>`).appendTo($wrpLoadReset)
+		const $btnReset = $(`<button title="Reset" class="btn btn-danger btn-sm dm-init-lockable"><span class="glyphicon glyphicon-trash"/></button>`).appendTo($wrpLoadReset)
 			.click(() => {
 				if (isLocked) return;
 				confirm("Are you sure?") && doReset();
@@ -2984,7 +2984,7 @@ class InitiativeTracker {
 						</span>
 					</div>
 				`).appendTo($wrpLhs);
-				const $btnAnother = $(`<div class="btn btn-success btn-xs dm-init-lockable" title="Add Another (SHIFT for Roll New)"><span class="glyphicon glyphicon-plus"></span></div>`)
+				const $btnAnother = $(`<button class="btn btn-success btn-xs dm-init-lockable" title="Add Another (SHIFT for Roll New)"><span class="glyphicon glyphicon-plus"></span></button>`)
 					.click((evt) => {
 						if (isLocked) return;
 						makeRow(nameOrMeta, "", evt.shiftKey ? "" : $iptScore.val(), $wrpRow.hasClass("dm-init-row-active"), source, [], InitiativeTracker._uiRollHp);
@@ -3074,7 +3074,7 @@ class InitiativeTracker {
 
 			const $wrpConds = $(`<div class="split"/>`).appendTo($wrpLhs);
 			const $conds = $(`<div class="dm-init-wrp-conds"/>`).appendTo($wrpConds);
-			const $btnCond = $(`<div class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition"><span class="glyphicon glyphicon-flag"/></div>`)
+			const $btnCond = $(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
 					const $modal = $(`<div class="panel-addmenu-inner dropdown-menu" style="height: initial"/>`);
@@ -3182,7 +3182,7 @@ class InitiativeTracker {
 				}
 			});
 
-			const $btnDel = $(`<div class="btn btn-danger btn-xs dm-init-row-btn dm-init-lockable" title="Delete"><span class="glyphicon glyphicon-trash"/></div>`)
+			const $btnDel = $(`<button class="btn btn-danger btn-xs dm-init-row-btn dm-init-lockable" title="Delete"><span class="glyphicon glyphicon-trash"/></button>`)
 				.appendTo($wrpRhs)
 				.on("click", () => {
 					if (isLocked) return;
@@ -3508,7 +3508,7 @@ class UnitConverter {
 		const $lblLeft = $(`<span class="bold"/>`).appendTo($wrpLeft);
 		const $iptLeft = $(`<textarea class="ipt form-control">${state.i || ""}</textarea>`).appendTo($wrpLeft);
 
-		const $btnSwitch = $(`<div class="btn btn-primary btn-switch">⇆</div>`).click(() => {
+		const $btnSwitch = $(`<button class="btn btn-primary btn-switch">⇆</button>`).click(() => {
 			dirConv = Number(!dirConv);
 			updateDisplay();
 		}).appendTo($wrpIpt);

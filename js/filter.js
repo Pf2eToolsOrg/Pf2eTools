@@ -91,10 +91,10 @@ class FilterBox {
 				<span>Filters</span>
 				<div>
 					<div class="btn-group">
-						<div id="fltr-show-all" class="btn btn-xs btn-default">Show All</div>
-						<div id="fltr-hide-all" class="btn btn-xs btn-default">Hide All</div>
+						<button id="fltr-show-all" class="btn btn-xs btn-default">Show All</button>
+						<button id="fltr-hide-all" class="btn btn-xs btn-default">Hide All</button>
 					</div>
-					<div id="fltr-reset" class="btn btn-xs btn-default">Reset</div>
+					<button id="fltr-reset" class="btn btn-xs btn-default">Reset</button>
 				</div>
 			</h4>
 			<hr>

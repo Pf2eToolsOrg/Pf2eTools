@@ -424,7 +424,11 @@ function loadhash (id) {
 		renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
 	}
 
-	const renderedText = renderStack.join("").split(item.name.toLowerCase()).join(`<i>${item.name.toLowerCase()}</i>`).split(item.name.toLowerCase().uppercaseFirst()).join(`<i>${item.name.toLowerCase().uppercaseFirst()}</i>`);
+	const renderedText = renderStack.join("")
+		.split(item.name.toLowerCase())
+		.join(`<i>${item.name.toLowerCase()}</i>`)
+		.split(item.name.toLowerCase().toTitleCase())
+		.join(`<i>${item.name.toLowerCase().toTitleCase()}</i>`);
 	if (renderedText && renderedText.trim()) {
 		$content.find("tr#text").show().after(`
 			<tr class="text">

@@ -136,8 +136,9 @@ const Omnisearch = {
 				results = results.filter(r => r.doc.s && !SourceUtil._isNonstandardSourceWiz(r.doc.s));
 			}
 
-			if (!doHideBlacklisted()) {
+			if (!doHideBlacklisted() && ExcludeUtil.getList().length) {
 				results = results.filter(r => {
+					if (r.doc.c === Parser.CAT_ID_QUICKREF) return true;
 					let bCat = Parser.pageCategoryToProp(r.doc.c);
 					let bName = bCat !== "variantrule" ? r.doc.n : r.doc.n.split(";")[0];
 					return !ExcludeUtil.isExcluded(bName, bCat, r.doc.s);

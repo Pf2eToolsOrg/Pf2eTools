@@ -270,6 +270,8 @@ Array.prototype.peek = Array.prototype.peek ||
 	};
 
 StrUtil = {
+	NAME_REGEX: /^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| )?)+([.!])+/g,
+
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
 	},
@@ -798,6 +800,13 @@ Parser.actionToExplanation = function (actionType) {
 	const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "actions", actionType);
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.ACTION_JSON_TO_FULL, actionType, ["No explanation available."]);
+};
+
+Parser.senseToExplanation = function (senseType) {
+	senseType = senseType.toLowerCase();
+	const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "senses", senseType);
+	if (fromBrew) return fromBrew;
+	return Parser._parse_aToB(Parser.SENSE_JSON_TO_FULL, senseType, ["No explanation available."]);
 };
 
 Parser.numberToString = function (num) {
@@ -1465,6 +1474,7 @@ Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 		case "chapter": return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
 		case "episode": return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
 		case "appendix": return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "level": return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
 		default: throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
 	}
 };
@@ -1572,7 +1582,7 @@ Parser.SIZE_ABV_TO_FULL[SZ_GARGANTUAN] = "Gargantuan";
 Parser.SIZE_ABV_TO_FULL[SZ_COLOSSAL] = "Colossal";
 Parser.SIZE_ABV_TO_FULL[SZ_VARIES] = "Varies";
 
-Parser.XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 102000, 135000, 155000];
+Parser.XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000];
 
 Parser.XP_CHART_ALT = {
 	"0": 10,
@@ -1606,7 +1616,7 @@ Parser.XP_CHART_ALT = {
 	"25": 75000,
 	"26": 90000,
 	"27": 105000,
-	"28": 102000,
+	"28": 120000,
 	"29": 135000,
 	"30": 155000
 };
@@ -1648,6 +1658,8 @@ SRC_XGE = "XGE";
 SRC_OGA = "OGA";
 SRC_MTF = "MTF";
 SRC_WDH = "WDH";
+SRC_WDMM = "WDMM";
+SRC_GGR = "GGR";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1755,6 +1767,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
 Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
 Parser.SOURCE_JSON_TO_FULL[SRC_MTF] = "Mordenkainen's Tome of Foes";
 Parser.SOURCE_JSON_TO_FULL[SRC_WDH] = "Waterdeep: Dragon Heist";
+Parser.SOURCE_JSON_TO_FULL[SRC_WDMM] = "Waterdeep: Dungeon of the Mad Mage";
+Parser.SOURCE_JSON_TO_FULL[SRC_GGR] = "Guildmasters' Guide to Ravnica";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -1845,6 +1859,8 @@ Parser.SOURCE_JSON_TO_ABV[SRC_XGE] = "XGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_OGA] = "OGA";
 Parser.SOURCE_JSON_TO_ABV[SRC_MTF] = "MTF";
 Parser.SOURCE_JSON_TO_ABV[SRC_WDH] = "WDH";
+Parser.SOURCE_JSON_TO_ABV[SRC_WDMM] = "WDMM";
+Parser.SOURCE_JSON_TO_ABV[SRC_GGR] = "GGR";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -2042,6 +2058,21 @@ Parser.ACTION_JSON_TO_FULL = {
 	],
 	"Use an Object": [
 		"You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn."
+	]
+};
+
+Parser.SENSE_JSON_TO_FULL = {
+	"blindsight": [
+		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense."
+	],
+	"darkvision": [
+		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray."
+	],
+	"tremorsense": [
+		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense."
+	],
+	"truesight": [
+		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane."
 	]
 };
 
@@ -2734,7 +2765,7 @@ ListUtil = {
 	getOrTabRightButton: (id, icon) => {
 		let $btn = $(`#${id}`);
 		if (!$btn.length) {
-			$btn = $(`<span class="stat-tab btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></span>`).appendTo($(`#tabs-right`));
+			$btn = $(`<button class="stat-tab btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></button>`).appendTo($(`#tabs-right`));
 		}
 		return $btn;
 	},
@@ -3287,10 +3318,10 @@ ListUtil = {
 			});
 			return DataUtil.getCsv(headers, rows);
 		}
-		const $btnCsv = $(`<div class="btn btn-primary mr-3">Download CSV</div>`).click(() => {
+		const $btnCsv = $(`<button class="btn btn-primary mr-3">Download CSV</button>`).click(() => {
 			DataUtil.userDownloadText(`${title}.csv`, getAsCsv());
 		}).appendTo($pnlBtns);
-		const $btnCopy = $(`<div class="btn btn-primary">Copy CSV to Clipboard</div>`).click(() => {
+		const $btnCopy = $(`<button class="btn btn-primary">Copy CSV to Clipboard</button>`).click(() => {
 			copyText(getAsCsv());
 			showCopiedEffect($btnCopy);
 		}).appendTo($pnlBtns);
@@ -3851,7 +3882,7 @@ function addListShowHide () {
 	`;
 
 	const toInjectHide = `
-		<button class="btn btn-default" type="button" id="hidesearch">Hide</button>
+		<button class="btn btn-default" id="hidesearch">Hide</button>
 	`;
 
 	$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
@@ -4390,7 +4421,7 @@ BrewUtil = {
 		$btnWrp
 			.append($btnGet)
 			.append(" ")
-			.append($(`<label class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
+			.append($(`<label role="button" class="btn btn-default btn-sm btn-file">Upload File</label>`).append($iptAdd))
 			.append(" ")
 			.append($btnLoadFromUrl)
 			.append(" ")

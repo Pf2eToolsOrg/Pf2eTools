@@ -3558,6 +3558,7 @@
 			"type": "TG",
 			"rarity": "None",
 			"value": "5 sp",
+			"weight": "1",
 			"source": "PHB",
 			"page": 157
 		},
@@ -13412,6 +13413,7 @@
 			"name": "Shield of Expression",
 			"ac": 2,
 			"type": "S",
+			"weight": "6",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -19263,6 +19265,229 @@
 			"value": "25gp",
 			"source": "PSX",
 			"rarity": "None"
+		},
+		{
+			"name": "Dagger of Blindsight",
+			"type": "M",
+			"weaponCategory": "Simple",
+			"baseItem": "dagger|phb",
+			"weight": "1",
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"rarity": "Rare",
+			"source": "WDMM",
+			"reqAttune": true,
+			"entries": [
+				"This rare magic item requires attunement. A creature attuned to it gains blindsight out to a range of 30 feet. The dagger has a saw-toothed edge and a black pearl nested in its pommel.",
+				"Proficiency with a dagger allows you to add your proficiency bonus to the attack roll for any attack you make with it."
+			]
+		},
+		{
+			"name": "Horned Ring",
+			"type": "RG",
+			"rarity": "Very Rare",
+			"source": "WDMM",
+			"reqAttune": true,
+			"entries": [
+				"Allows an attuned wearer to ignore Undermountain's magical restrictions (see \"Alterations to Magic\")."
+			]
+		},
+		{
+			"name": "Professor Orb",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "WDMM",
+			"entries": [
+				"Each professor orb takes the form of a smooth, solid, 5-pound sphere of smoky gray quartz about the size of a grapefruit. Close examination reveals two or more pinpricks of silver light deep inside the sphere.",
+				"A Professor Orb is sentient and has the personality of a scholar. Its alignment is determined by rolling on the alignment table in the \"{@book Sentient Magic Items|DMG|7|Sentient Magic Items}\" section in chapter 7 of the {@book Dungeon Master's Guide|dmg}. Regardless of its disposition, the orb has an Intelligence of 18, and Wisdom and Charisma scores determined by rolling 3d6 for each ability. The orb speaks, reads, and understands four languages, and can see and hear normally out to a range of 60 feet. Unlike most sentient items, the orb has no will of its own and can't initiate a conflict with the creature in possession of it.",
+				"A Professor Orb has extensive knowledge of four narrow academic subjects. When making an Intelligence check to recall lore from any of its areas of expertise, the orb has a +9 bonus to its roll (including its Intelligence modifier).",
+				"In addition to the knowledge it possesses, a professor orb can cast the {@spell mage hand} cantrip at will. It uses the spell only to transport itself. Its spellcasting ability is Intelligence."
+			]
+		},
+		{
+			"name": "Horn of the Endless Maze",
+			"wondrous": true,
+			"weight": "2",
+			"rarity": "Rare",
+			"source": "WDMM",
+			"entries": [
+				"You can use an action to blow this horn. In response, {@dice 3d4+3} warrior spirits from the Abyss appear within 60 feet of you. They look like Minotaurs and use the statistics of a {@creature berserker}. They return to the Abyss after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
+				"If you blow the horn without having proficiency with all simple weapons, the summoned {@creature berserker|MM|berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+			]
+		},
+		{
+			"name": "Dodecahedron of Doom",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "WDMM",
+			"entries": [
+				"This twelve-sided metal die is 12 inches across and bears the numbers 1 through 12 engraved on its pentagonal sides. The dodecahedron contains arcane clockwork mechanisms that whir and click whenever the die is cast.",
+				"The dodecahedron can be hurled up to 60 feet as an action. A random magical effect occurs when the die comes to rest after rolling across the ground for at least 10 feet. If an effect requires a target and no eligible target is within range, nothing happens. Spells cast by the dodecahedron require no components. Roll a {@dice d12} and consult the following table to determine the effect:",
+				{
+					"type": "table",
+					"caption": "",
+					"colLabels": [
+						"d12",
+						"effect"
+					],
+					"colStyles": [
+						"col-xs-6",
+						"col-xs-6"
+					],
+					"rows": [
+						[
+							"1\u20132",
+							"The dodecahedron explodes and is destroyed. Each creature within 20 feet of the exploding die must make a DC 13 Dexterity saving throw, taking 40 ({@dice 9d8}) force damage on a failed save, or half as much damage on a successful one."
+						],
+						[
+							"3\u20134",
+							"The dodecahedron casts {@spell light} on itself. The effect lasts until a creature touches the die."
+						],
+						[
+							"5\u20136",
+							"The dodecahedron casts {@spell ray of frost} (+5 to hit), targeting a random creature within 60 feet of it that doesn't have total cover against the attack."
+						],
+						[
+							"7\u20138",
+							"The dodecahedron casts {@spell shocking grasp} (+5 to hit) on the next creature that touches it."
+						],
+						[
+							"9\u201310",
+							"The dodecahedron casts {@spell darkness} on itself. The effect has a duration of 10 minutes."
+						],
+						[
+							"11\u201312",
+							"The next creature to touch the dodecahedron gains {@dice 1d10} temporary hit points that last for 1 hour."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Orb of Gonging",
+			"wondrous": true,
+			"rarity": "Common",
+			"source": "WDMM",
+			"entries": [
+				"This common wondrous item is a hollow, 5-inch-diameter orb that weighs 5 pounds. Its outer shell is composed of notched bronze rings, which can be turned so that the notches line up. Aligning the notches requires an action, and doing so causes the orb to gong loudly until the notches are no longer aligned. The sounds are spaced 6 seconds apart and can be heard out to a range of 600 feet."
+			]
+		},
+		{
+			"name": "Black Crystal Tablet",
+			"wondrous": true,
+			"rarity": "Legendary",
+			"source": "WDMM",
+			"reqAttune": "by a creature that has proficiency in the Arcana skill",
+			"entries": [
+				"Any creature that attunes to the tablet must make a DC 20 Wisdom saving throw at the end of its next long rest. On a failed save, the creature becomes afflicted with a random form of long-term madness (see \"{@book Madness|dmg|8|Madness}\" in chapter 8 of the {@book Dungeon Master's Guide|dmg}).",
+				"As an action, a creature attuned to the Black Crystal Tablet can use it to cast {@spell eyebite} or {@spell gate} (the portal created by this spell links to the Far Realm only). After the tablet is used to cast a spell, it cannot be used again until the next dawn."
+			]
+		},
+		{
+			"name": "Helm of the Scavenger",
+			"wondrous": true,
+			"rarity": "Legendary",
+			"source": "WDMM",
+			"reqAttune": "by a spellcaster",
+			"entries": [
+				"This ornate chair is designed to propel and maneuver a ship through space.",
+				{
+					"type": "entries",
+					"name": "Passive Properties",
+					"entries": [
+						"The following properties of the helm come into play even when no creature is attuned to it:",
+						{
+							"type": "list",
+							"items": [
+								"When placed aboard a vessel weighing between 1 and 100 tons, the helm generates an envelope of fresh air around the ship while it is in the void of space (but not underwater). This envelope extends out from the edges of the hull in all directions for a distance equal in length to the vessel's beam, so that creatures aboard and near the ship can breathe normally in space. The temperature within the air envelope is 70 degrees Fahrenheit.",
+								"When placed aboard a vessel weighing between 1 and 100 tons, the helm generates an artificial gravity field while the ship is in the void of space, so that creatures can walk on the ship's decks as they normally would. Creatures and objects that fall overboard bob in a gravity plane that extends out from the main deck for a distance equal in length to the vessel's beam."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Active Properties",
+					"entries": [
+						"The sensation of being attuned to the helm is akin to being immersed in warm water. While attuned to the helm, you gain the following abilities while you sit in it:",
+						{
+							"type": "list",
+							"items": [
+								"You can use the helm to propel the vessel across or through water and other liquids at a maximum speed in miles per hour equal to your highest-level unexpended spell slot.",
+								"You can use the helm to propel the vessel through air or space at a maximum speed in miles per hour equal to your highest-level unexpended spell slot × 10.",
+								"Provided you have at least one unexpended spell slot, you can steer the vessel, albeit in a somewhat clumsy fashion, in much the same way that oars or a rudder can maneuver a seafaring ship.",
+								"Whenever you like, you can see what's happening on and around the vessel as though you were standing in a location of your choice aboard it."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Drawback",
+					"entries": [
+						"While attuned to the helm, you cannot expend your own spell slots."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shield of the Uven Rune",
+			"ac": 2,
+			"type": "S",
+			"weight": "6",
+			"rarity": "Very Rare",
+			"source": "WDMM",
+			"reqAttune": true,
+			"entries": [
+				"This shield is made from the scale of an ancient white dragon. It has a rune burned into its outward-facing side. A character who examines the rune and succeeds on a DC 20 Intelligence ({@skill History}) check recognizes it as an uven (\"enemy\" in Giant) rune that confers great power.",
+				"While holding the shield, you benefit from the following properties.",
+				{
+					"type": "entries",
+					"name": "Winter's Friend",
+					"entries": [
+						"You are immune to cold damage."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Deadly Rebuke",
+					"entries": [
+						"Immediately after a creature hits you with a melee attack, you can use your reaction to deal {@dice 3d6} necrotic damage to that creature."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Bane",
+					"entries": [
+						"You can cast the {@spell bane} spell from the shield (save DC 17). The spell does not require concentration and lasts for 1 minute. Once you cast the spell from the shield, you can't do so again until you finish a short or long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gift of Vengeance",
+					"entries": [
+						"You can transfer the shield's magic to a nonmagical weapon by tracing the uven rune on the weapon with one finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the shield is destroyed, and the rune is etched or burned into the chosen weapon. This weapon becomes a rare magic item that requires attunement. It has the properties of a +1 weapon. The bonus increases to +3 when the weapon is used against one of the following creature types, chosen by you at the time of the magic weapon's creation: aberrations, celestials, constructs, dragons, elementals, fey, fiends, giants, or undead."
+					]
+				}
+			]
+		},
+		{
+			"name": "Blast Scepter",
+			"type": "RD",
+			"scfType": "arcane",
+			"rarity": "Very Rare",
+			"source": "WDMM",
+			"reqAttune": true,
+			"entries": [
+				"The Blast Scepter can be used as an arcane focus.",
+				"Whoever is attuned to the Blast Scepter gains resistance to fire and lightning damage and can, as an action, use it to cast {@spell thunderwave} as a 4th-level spell (save DC 16) without expending a spell slot."
+			]
 		}
 	],
 	"itemGroup": [
@@ -19630,6 +19855,119 @@
 						"{@item Manual of Flesh Golems}",
 						"{@item Manual of Iron Golems}",
 						"{@item Manual of Stone Golems}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Figurine of Wondrous Power",
+			"wondrous": true,
+			"rarity": "Varies",
+			"source": "DMG",
+			"page": 169,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Figurine of Wondrous Power, Bronze Griffon}",
+						"{@item Figurine of Wondrous Power, Ebony Fly}",
+						"{@item Figurine of Wondrous Power, Golden Lions}",
+						"{@item Figurine of Wondrous Power, Ivory Goats}",
+						"{@item Figurine of Wondrous Power, Marble Elephant}",
+						"{@item Figurine of Wondrous Power, Obsidian Steed}",
+						"{@item Figurine of Wondrous Power, Onyx Dog}",
+						"{@item Figurine of Wondrous Power, Serpentine Owl}",
+						"{@item Figurine of Wondrous Power, Silver Raven}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Horn of Valhalla",
+			"wondrous": true,
+			"rarity": "Varies",
+			"source": "DMG",
+			"page": 175,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Horn of Valhalla, Brass}",
+						"{@item Horn of Valhalla, Bronze}",
+						"{@item Horn of Valhalla, Iron}",
+						"{@item Horn of Valhalla, Silver}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Quaal's Feather Token",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "DMG",
+			"page": 188,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Quaal's Feather Token, Anchor}",
+						"{@item Quaal's Feather Token, Bird}",
+						"{@item Quaal's Feather Token, Fan}",
+						"{@item Quaal's Feather Token, Swan Boat}",
+						"{@item Quaal's Feather Token, Tree}",
+						"{@item Quaal's Feather Token, Whip}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Ioun Stone",
+			"wondrous": true,
+			"rarity": "Varies",
+			"source": "DMG",
+			"page": 176,
+			"reqAttune": true,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Ioun Stone, Absorption}",
+						"{@item Ioun Stone, Agility}",
+						"{@item Ioun Stone, Awareness}",
+						"{@item Ioun Stone, Fortitude}",
+						"{@item Ioun Stone, Greater Absorption}",
+						"{@item Ioun Stone, Insight}",
+						"{@item Ioun Stone, Intellect}",
+						"{@item Ioun Stone, Leadership}",
+						"{@item Ioun Stone, Mastery}",
+						"{@item Ioun Stone, Protection}",
+						"{@item Ioun Stone, Regeneration}",
+						"{@item Ioun Stone, Reserve}",
+						"{@item Ioun Stone, Strength}",
+						"{@item Ioun Stone, Sustenance}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Instrument of the Bards",
+			"type": "INS",
+			"wondrous": true,
+			"rarity": "Varies",
+			"source": "DMG",
+			"page": 176,
+			"reqAttune": "by a Bard",
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Instrument of the Bards, Anstruth Harp}",
+						"{@item Instrument of the Bards, Canaith Mandolin}",
+						"{@item Instrument of the Bards, Cli Lyre}",
+						"{@item Instrument of the Bards, Doss Lute}",
+						"{@item Instrument of the Bards, Fochlucan Bandore}",
+						"{@item Instrument of the Bards, Mac-Fuirmidh Cittern}",
+						"{@item Instrument of the Bards, Ollamh Harp}"
 					]
 				}
 			]

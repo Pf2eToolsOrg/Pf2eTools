@@ -38,7 +38,7 @@
 			<div class="input-group">
 				<span class="input-group-addon btn-default flex-1 clickable" id="btn-lootgen">Find Treasure</span>
 				<span class="input-group-addon btn-default flex-1 clickable" id="btn-loot-table">Loot Tables</span>
-				<span class="input-group-addon btn-default flex-1 clickable" id="btn-random-magic-item">New Character</span>
+				<span class="input-group-addon btn-default flex-1 clickable" id="btn-random-magic-item">Party Loot</span>
 			</div>
 			<div id="container-lootgen">
 				<br/>
@@ -58,8 +58,8 @@
 						</span>
 					</div>
 					<br/>
-					<button type="button" class="col-xs-9 btn btn-default" id="genloot">Roll Loot!</button>
-					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
+					<button class="col-xs-9 btn btn-default" id="genloot" type="button">Roll Loot!</button>
+					<button class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear" type="button">Clear</button>
 					<p>
 						<small>Based on the tables and rules in the
 							<a href="book.html#DMG,7,treasure%20tables,0" target="_blank"><em>Dungeon Master's Guide</em>, pages 133-149.</a>
@@ -88,8 +88,8 @@
 						</span>
 					</div>
 					<br>
-					<button type="button" class="col-xs-9 btn btn-default" id="rollAgaintTable">Roll Loot!</button>
-					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
+					<button class="col-xs-9 btn btn-default" id="rollAgaintTable">Roll Loot!</button>
+					<button class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
 					<small>Based on the tables and rules in the
 						<a href="book.html#DMG,7,random%20treasure" target="_blank"><em>Dungeon Master's Guide</em>, pages 133-149.</a>
 					</small>
@@ -108,8 +108,8 @@
 					</div>
 					<br/>
 					<div style="display: flex; justify-content: space-between">
-						<button type="button" class="col-xs-9 btn btn-default" id="get-random-item-from-table">Pick Random Item</button>
-						<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
+						<button class="col-xs-9 btn btn-default" id="get-random-item-from-table">Pick Random Item</button>
+						<button class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
 					</div>
 					<p>
 						<small>Based on the tables and rules in the
@@ -122,7 +122,7 @@
 			<div id="container-random-magic-item">
 				<br/>
 				<p>
-					Generates a set of magical items for a new character, based on the tables and rules in <a href="book.html#XGE,2,awarding%20magic%20items" target="_blank"><em>Xanathar's Guide to Everything</em>, pages 135</a>.
+					Generates a set of magical items for a party, based on the tables and rules in <a href="book.html#XGE,2,awarding%20magic%20items" target="_blank"><em>Xanathar's Guide to Everything</em>, pages 135</a>.
 				</p>
 				<p><i>
 					If the "Exact Level" option is selected, the output will include a proportional number of items for any partially-completed tier.
@@ -155,8 +155,8 @@
 				</form>
 				<br>
 				<div style="display: flex; justify-content: space-between">
-					<button type="button" class="col-xs-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a Character</button>
-					<button type="button" class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
+					<button class="col-xs-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a Party</button>
+					<button class="col-xs-2 col-xs-2-9 btn btn-default pull-right id-clear">Clear</button>
 				</div>
 			</div>
 			<div id="classtable"></div>

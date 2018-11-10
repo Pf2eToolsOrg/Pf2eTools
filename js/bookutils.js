@@ -1,6 +1,10 @@
 "use strict";
 
 const BookUtil = {
+	getHeaderText (header) {
+		return header.header || header;
+	},
+
 	_getSelectors (scrollTo) {
 		return [
 			`.statsBlockSectionHead > .entry-title:textEquals("${scrollTo}")`,
@@ -74,11 +78,14 @@ const BookUtil = {
 	makeHeadersBlock: (bookId, chapterIndex, chapter, addPrefix, addOnclick, defaultHeadersHidden) => {
 		let out =
 			`<ul class="bk-headers" ${defaultHeadersHidden ? `style="display: none;"` : ""}>`;
-		chapter.headers && chapter.headers.forEach(c => {
-			out +=
-				`<li>
-				<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(c)}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${c}" ${addOnclick ? `onclick="BookUtil.scrollClick('${c.replace(/'/g, "\\'")}')"` : ""}>${c}</a>
-			</li>`
+		chapter.headers && chapter.headers.forEach(h => {
+			const headerText = BookUtil.getHeaderText(h);
+			const displayText = h.header ? `<span class="bk-contents__sub_spacer--1">\u2013</span>${h.header}` : h; // handle entries with depth
+			out += `
+				<li>
+					<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.replace(/'/g, "\\'")}')"` : ""}>${displayText}</a>
+				</li>
+			`;
 		});
 		out +=
 			"</ul>";
@@ -256,10 +263,10 @@ const BookUtil = {
 
 				if (BookUtil.referenceId && BookUtil.curRender.lastRefHeader) {
 					const chap = BookUtil.curRender.fromIndex.contents[chapter];
-					const ix = chap.headers.findIndex(it => it.toLowerCase() === BookUtil.curRender.lastRefHeader);
+					const ix = chap.headers.findIndex(it => BookUtil.getHeaderText(it).toLowerCase() === BookUtil.curRender.lastRefHeader);
 					if (~ix) {
 						if (chap.headers[ix + mod]) {
-							const newHashParts = [bookId, chapter, chap.headers[ix + mod].toLowerCase()];
+							const newHashParts = [bookId, chapter, BookUtil.getHeaderText(chap.headers[ix + mod]).toLowerCase()];
 							window.location.hash = newHashParts.join(HASH_PART_SEP);
 						} else {
 							changeChapter();
@@ -336,7 +343,7 @@ const BookUtil = {
 
 				const chap = BookUtil.curRender.fromIndex.contents[chapter];
 				const getHeaderIx = () => {
-					return chap.headers.findIndex(it => it.toLowerCase() === BookUtil.curRender.lastRefHeader);
+					return chap.headers.findIndex(it => BookUtil.getHeaderText(it).toLowerCase() === BookUtil.curRender.lastRefHeader);
 				};
 
 				const headerIx = getHeaderIx();

@@ -185,6 +185,10 @@ dialog.dialog-modal {
 	flex-direction: column;
 }
 
+.split-column--inline {
+	display: inline-flex;
+}
+
 #legal-notice {
 	position: fixed;
 	z-index: 10000;
@@ -1017,6 +1021,10 @@ span {
 
 	&.sourceWDH {
 		color: #d4af37;
+	}
+
+	&.sourceGGR {
+		color: #bfa76c;
 	}
 
 	&.sourceAL {
@@ -3056,6 +3064,11 @@ table.stats div.img-title {
 	width: 100%;
 	text-align: center;
 	font-style: italic;
+	margin-top: 3px;
+
+	.img-title__inner {
+		border-bottom: 1px solid #ccc;
+	}
 }
 
 .img__wrapper {
@@ -3233,6 +3246,12 @@ table.stats span.para-continue-indented {
 .bk-contents li,
 .book-contents ul.contents li {
 	list-style: none;
+}
+
+.bk-contents__sub_spacer--1 {
+	color: grey;
+	display: inline-block;
+	margin: 0 4px;
 }
 
 .book-contents ul.contents {

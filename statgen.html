@@ -58,6 +58,43 @@
 			text-align: center;
 			cursor: help;
 		}
+
+		#pointbuy input.form-control {
+			width: 7rem;
+		}
+
+		.pbuy__split {
+			display: flex;
+		}
+
+		.pbuy__split_item:not(:last-of-type) {
+			margin-right: 1rem;
+		}
+
+		.pbuy__tbl_cost {
+			min-width: 300px;
+			text-align: center;
+		}
+
+		.night-mode .pbuy__tbl_cost {
+			background: #303030;
+		}
+
+		.pbuy__tbl_cost tbody > tr:nth-child(odd) {
+			background: #f4f4f4;
+		}
+
+		.night-mode .pbuy__tbl_cost tbody > tr:nth-child(odd) {
+			background: #202020;
+		}
+
+		.pbuy__tbl_cost th {
+			text-align: center;
+		}
+
+		.pbuy__adv {
+			display: none;
+		}
 	</style>
 </head>
 
@@ -90,7 +127,7 @@
 				<span class="input-group-addon" id="roller-mode"></span>
 				<input class="form-control" placeholder="Enter dice formula" value="4d6dl1" id="stats-formula">
 				<span class="input-group-btn">
-					<button type="button" id="rollbutton" class="btn btn-default">Roll Stats</button>
+					<button id="rollbutton" class="btn btn-default">Roll Stats</button>
 				</span>
 			</div>
 			<h3 id="rolls"></h3>
@@ -102,77 +139,105 @@
 		</div>
 		<div class="col-sm-9 statmethod" id="pointbuy" style="display: none">
 			<h3>Point Buy</h3>
-			<label>Budget: <input id="budget" type="number" min="10" value="27"></label>
-			<label>Remaining: <input id="remaining" type="number" min="10" value="27" readonly></label>
-			<button type="button" id="reset" class="btn btn-default">Reset</button>
-			<table>
-				<tr>
-					<td></td>
-					<td>Base</td>
-					<td>Racial</td>
-					<td>Total</td>
-					<td>Mod</td>
-					<td class="choose"></td>
-				</tr>
-				<tr id="str">
-					<td><b>STR</b></td>
-					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-					<td><input type="number" class="racial" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="checkbox" class="choose"></td>
-				</tr>
-				<tr id="dex">
-					<td><b>DEX</b></td>
-					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-					<td><input type="number" class="racial" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="checkbox" class="choose"></td>
-				</tr>
-				<tr id="con">
-					<td><b>CON</b></td>
-					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-					<td><input type="number" class="racial" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="checkbox" class="choose"></td>
-				</tr>
-				<tr id="int">
-					<td><b>INT</b></td>
-					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-					<td><input type="number" class="racial" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="checkbox" class="choose"></td>
-				</tr>
-				<tr id="wis">
-					<td><b>WIS</b></td>
-					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-					<td><input type="number" class="racial" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="checkbox" class="choose"></td>
-				</tr>
-				<tr id="cha">
-					<td><b>CHA</b></td>
-					<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
-					<td><input type="number" class="racial" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="number" readonly></td>
-					<td><input type="checkbox" class="choose"></td>
-				</tr>
-			</table>
-			<select id="race"></select>
+			<div class="pbuy__split">
+				<div class="pbuy__split_item">
 
-			<table id="custom" style="display: none;">
-				<tr><td>Custom race <b>STR</b> bonus:</td><td><input name="str" class="custom" type="number" value="0" step="1"></td></tr>
-				<tr><td>Custom race <b>DEX</b> bonus:</td><td><input name="dex" class="custom" type="number" value="0" step="1"></td></tr>
-				<tr><td>Custom race <b>CON</b> bonus:</td><td><input name="con" class="custom" type="number" value="0" step="1"></td></tr>
-				<tr><td>Custom race <b>INT</b> bonus:</td><td><input name="int" class="custom" type="number" value="0" step="1"></td></tr>
-				<tr><td>Custom race <b>WIS</b> bonus:</td><td><input name="wis" class="custom" type="number" value="0" step="1"></td></tr>
-				<tr><td>Custom race <b>CHA</b> bonus:</td><td><input name="cha" class="custom" type="number" value="0" step="1"></td></tr>
-			</table>
+					<div style="display: flex; align-items: flex-end;">
+						<label class="split-column split-column--inline">
+							<span class="text-align-center">Budget</span>
+							<input class="form-control" id="budget" type="number" min="10" value="27">
+						</label>
+						<label class="split-column split-column--inline">
+							<span class="text-align-center">Remaining</span>
+							<input class="form-control" id="remaining" type="number" min="10" value="27" readonly>
+						</label>
+						<button id="reset" class="btn btn-default" style="margin: auto auto 7px 2px;">Reset</button>
+					</div>
+
+					<table>
+						<tr>
+							<td></td>
+							<td>Base</td>
+							<td>Racial</td>
+							<td>Total</td>
+							<td>Mod</td>
+							<td class="choose"></td>
+							<td class="pbuy__adv"></td>
+						</tr>
+						<tr id="str">
+							<td><b>STR</b></td>
+							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="checkbox" class="choose"></td>
+							<td class="pbuy__adv"></td>
+						</tr>
+						<tr id="dex">
+							<td><b>DEX</b></td>
+							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="checkbox" class="choose"></td>
+							<td class="pbuy__adv"></td>
+						</tr>
+						<tr id="con">
+							<td><b>CON</b></td>
+							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="checkbox" class="choose"></td>
+							<td class="pbuy__adv"></td>
+						</tr>
+						<tr id="int">
+							<td><b>INT</b></td>
+							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="checkbox" class="choose"></td>
+							<td class="pbuy__adv"></td>
+						</tr>
+						<tr id="wis">
+							<td><b>WIS</b></td>
+							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="checkbox" class="choose"></td>
+							<td class="pbuy__adv"></td>
+						</tr>
+						<tr id="cha">
+							<td><b>CHA</b></td>
+							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" class="racial" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="number" readonly></td>
+							<td><input type="checkbox" class="choose"></td>
+							<td class="pbuy__adv"></td>
+						</tr>
+					</table>
+
+					<h5>Select Race</h5>
+					<select id="race" class="form-control"></select>
+
+					<table id="custom" style="display: none;">
+						<tr><td>Custom race <b>STR</b> bonus:</td><td><input name="str" class="custom" type="number" value="0" step="1"></td></tr>
+						<tr><td>Custom race <b>DEX</b> bonus:</td><td><input name="dex" class="custom" type="number" value="0" step="1"></td></tr>
+						<tr><td>Custom race <b>CON</b> bonus:</td><td><input name="con" class="custom" type="number" value="0" step="1"></td></tr>
+						<tr><td>Custom race <b>INT</b> bonus:</td><td><input name="int" class="custom" type="number" value="0" step="1"></td></tr>
+						<tr><td>Custom race <b>WIS</b> bonus:</td><td><input name="wis" class="custom" type="number" value="0" step="1"></td></tr>
+						<tr><td>Custom race <b>CHA</b> bonus:</td><td><input name="cha" class="custom" type="number" value="0" step="1"></td></tr>
+					</table>
+				</div>
+
+				<div class="pbuy__split_item">
+					<label class="pbuy__adv"><input id="advanced" type="checkbox">Custom Rules</label> <!-- TODO remove this "advanced" class-->
+					<table id="costs" class="pbuy__tbl_cost"></table>
+				</div>
+			</div>
 		</div>
 	</div>
 </main>    <!--5ETOOLS_SCRIPT_ANCHOR-->

@@ -297,13 +297,13 @@ function loadhash (id) {
 
 	function buildStatsTab () {
 		function getPronunciationButton () {
-			return `<span class="btn btn-xs btn-default btn-name-pronounce">
+			return `<button class="btn btn-xs btn-default btn-name-pronounce">
 				<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 				<audio class="name-pronounce">
 				   <source src="${race.soundClip}" type="audio/mpeg">
 				   <source src="audio/races/${/^(.*?)(\(.*?\))?$/.exec(race._baseName || race.name)[1].trim().toLowerCase()}.mp3" type="audio/mpeg">
 				</audio>
-			</span>`;
+			</button>`;
 		}
 
 		$pgContent.append(`

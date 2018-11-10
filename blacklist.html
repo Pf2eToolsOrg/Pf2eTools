@@ -78,7 +78,7 @@
 
 	<div class="row">
 		<div class="form-group col-xs-12">
-			<button type="button" class="btn btn-default" onclick="Blacklist.addAllUa()">Exclude All UA, etc</button>
+			<button class="btn btn-default" onclick="Blacklist.addAllUa()">Exclude All UA, etc</button>
 		</div>
 	</div>
 
@@ -109,16 +109,16 @@
 
 		<div class="form-group col-xs-3">
 			<div style="padding-top: 25px;">
-				<button type="button" class="loading btn btn-default" onclick="Blacklist.add()" disabled>Add Exclusion</button>
+				<button class="loading btn btn-default" onclick="Blacklist.add()" disabled>Add Exclusion</button>
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="form-group col-xs-12">
-			<button type="button" class="btn btn-default" onclick="Blacklist.export()">Export List</button>
-			<button type="button" class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
-			<button type="button" class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">Reset List</button>
+			<button class="btn btn-default" onclick="Blacklist.export()">Export List</button>
+			<button class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
+			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">Reset List</button>
 		</div>
 	</div>
 
@@ -131,15 +131,15 @@
 		<div class="input-group" id="filter-search-input-group">
 			<input type="search" id="search" class="search form-control" placeholder="Find content...">
 			<span class="input-group-btn">
-				<button class="btn btn-default" type="button" id="reset">Reset Search</button>
+				<button class="btn btn-default" id="reset">Reset Search</button>
 			</span>
 		</div>
 
 		<div id="filtertools" class="sortlabel btn-group">
-			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="source">Source</button>
-			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="category">Category</button>
-			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" data-sort="name">Name</button>
-			<button class="col-xs-3 sort btn btn-default btn-xs" type="button" disabled>&nbsp;</button>
+			<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="source">Source</button>
+			<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="category">Category</button>
+			<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="name">Name</button>
+			<button class="col-xs-3 sort btn btn-default btn-xs" disabled>&nbsp;</button>
 		</div>
 
 		<ul class="list-display-only blacklist"></ul>

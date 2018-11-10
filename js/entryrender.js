@@ -448,7 +448,6 @@ function EntryRenderer () {
 		function renderImage () {
 			renderPrefix();
 			textStack[0] += `<div class="img__wrapper_outer">`;
-			if (entry.title) textStack[0] += `<div class="img-title">${entry.title}</div>`;
 			let href;
 			if (entry.href.type === "internal") {
 				const imgPart = `img/${entry.href.path}`;
@@ -459,11 +458,12 @@ function EntryRenderer () {
 			textStack[0] += `
 					<div class="img__wrapper">
 						<a href="${href}" target='_blank' ${entry.title ? `title="${entry.title}"` : ""}>
-							<img src="${href}" onload="EntryRenderer._onImgLoad()">
+							<img src="${href}" onload="EntryRenderer._onImgLoad()" ${entry.altText ? `alt="${entry.altText}"` : ""}>
 						</a>
 					</div>
-				</div>
 			`;
+			if (entry.title) textStack[0] += `<div class="img-title"><span class="img-title__inner">${entry.title}</span></div>`;
+			textStack[0] += `</div>`;
 			renderSuffix();
 		}
 
@@ -899,8 +899,14 @@ function EntryRenderer () {
 						}
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(tooltip);
 						textStack[0] += `<span class="homebrew-inline" ${onMouseOver}>${newText || "[...]"}</span>`;
-					} else if (tag === "@skill" || tag === "@action") {
-						const expander = tag === "@skill" ? Parser.skillToExplanation : Parser.actionToExplanation;
+					} else if (tag === "@skill" || tag === "@action" || tag === "@sense") {
+						const expander = (() => {
+							switch (tag) {
+								case "@skill": return Parser.skillToExplanation;
+								case "@action": return Parser.actionToExplanation;
+								case "@sense": return Parser.senseToExplanation;
+							}
+						})();
 						const [name, displayText] = text.split("|");
 						const onMouseOver = EntryRenderer.hover.createOnMouseHover(expander(name), name);
 						textStack[0] += `<span class="help--hover" ${onMouseOver}>${displayText || name}</span>`;
@@ -1595,6 +1601,7 @@ EntryRenderer.spell = {
 			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
 			renderer.recursiveEntryRender(higherLevelsEntryList, renderStack, 2);
 		}
+		renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</div>`);
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
@@ -2231,7 +2238,7 @@ EntryRenderer.monster = {
 			const base = mon.name.split(",")[0];
 			const cleanDragons = base
 				.replace(/(?:adult|ancient|young) \w+ (dragon|dracolich)/gi, "$1");
-			return mon.isNamedCreature ? cleanDragons : cleanDragons.toLowerCase();
+			return mon.isNamedCreature ? cleanDragons.split(" ")[0] : cleanDragons.toLowerCase();
 		}
 		const legendaryActions = mon.legendaryActions || 3;
 		const legendaryName = getCleanName();
@@ -2397,14 +2404,14 @@ EntryRenderer.monster = {
 						<td>
 							${Parser.monCrToFull(mon.cr)}
 							${options.showScaler && Parser.isValidCr(mon.cr.cr || mon.cr) ? `
-							<span title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
+							<button title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 								<span class="glyphicon glyphicon-signal"></span>
-							</span>
+							</button>
 							` : ""}
 							${options.isScaled ? `
-							<span title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
+							<button title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
 								<span class="glyphicon glyphicon-refresh"></span>
-							</span>
+							</button>
 							` : ""}
 						</td>					
 					</tr>

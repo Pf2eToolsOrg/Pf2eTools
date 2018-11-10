@@ -188,7 +188,7 @@ class LootGen {
 					$el.append(`
 						<li>
 							Magic Item${roll > 1 ? "s" : ""}
-							(<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});"> Table ${curtype}</span>)
+							(<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});">Table ${curtype}</span>)
 							${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:
 							<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul>
 						</li>
@@ -572,7 +572,7 @@ const randomLootTables = {
 
 			const text = useClosestTier ? `level ${level}` : `level ${$(`#charLevel option[value=${level}]`).text()}`;
 			const itemsNeeded = randomLootTables.getNumberOfItemsNeeded(Number(level), useClosestTier, accumulateTiers);
-			const title = `Magical Items for a <strong>${text}</strong> Character:`;
+			const title = `Magical Items for a <strong>${text}</strong> Party:`;
 			const $el = $(`<div/>`);
 
 			const itemCount = {};

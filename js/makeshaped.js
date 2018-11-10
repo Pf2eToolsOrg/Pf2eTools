@@ -1131,7 +1131,7 @@ window.onload = function load () {
 
 	BrewUtil.makeBrewButton("manage-brew");
 
-	const $btnSaveFile = $(`<div class="btn btn-primary">Prepare JS</div>`);
+	const $btnSaveFile = $(`<button class="btn btn-primary">Prepare JS</button>`);
 	$(`#buttons`).append($btnSaveFile);
 	$btnSaveFile.on('click', () => {
 		const keys = $('.shaped-source:checked').map((i, e) => {

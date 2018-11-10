@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.4",
+	"version": "1.2.5",
 
 	"definitions" : {
 		"entry": {
@@ -837,6 +837,10 @@
 							]
 						},
 						"title": {
+							"type": "string"
+						},
+						"altText": {
+							"description": "For accessibility purposes",
 							"type": "string"
 						},
 						"imageType": {

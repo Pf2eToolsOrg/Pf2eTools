@@ -767,7 +767,7 @@ function loadparser (data) {
 					// connecting words can start with: o ("of", "or"); t ("the"); a ("and", "at"). Accept numbers, e.g. (Costs 2 Actions)
 					// allow numbers
 					// allow "a" and "I" as single-character words
-					while (curLine && curLine.match(/^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| )?)+([.!])+/g) === null && !moveon(curLine)) {
+					while (curLine && curLine.match(StrUtil.NAME_REGEX) === null && !moveon(curLine)) {
 						curtrait.entries.push(curLine.trim());
 						i++;
 						curLine = toConvert[i];

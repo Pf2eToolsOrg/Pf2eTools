@@ -790,12 +790,12 @@ function renderStatblock (mon, isScaled) {
 		<tr><td colspan="6"><strong>Languages</strong> <span id="languages">Common</span></td></tr>
 		<tr><td colspan="6" style="position: relative;"><strong>Challenge</strong>
 			<span id="cr">1 (450 XP)</span>
-			<span id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
+			<button id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-signal"></span>
-			</span>
-			${isScaled ? `<span id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
+			</button>
+			${isScaled ? `<button id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
-			</span>` : ""}
+			</button>` : ""}
 		</td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class="trait"><td colspan="6"><span class="name">Trait.</span> <span class="content">Content.</span></td></tr>
@@ -821,13 +821,13 @@ function renderStatblock (mon, isScaled) {
 		const type = mon._pTypes.asText;
 
 		function getPronunciationButton () {
-			return `<span class="btn btn-xs btn-default btn-name-pronounce">
+			return `<button class="btn btn-xs btn-default btn-name-pronounce">
 				<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 				<audio class="name-pronounce">
 				   <source src="${mon.soundClip}" type="audio/mpeg">
 				   <source src="audio/bestiary/${basename(mon.soundClip, '/')}" type="audio/mpeg">
 				</audio>
-			</span>`;
+			</button>`;
 		}
 
 		const imgLink = EntryRenderer.monster.getTokenUrl(mon);
@@ -1840,16 +1840,16 @@ class EncounterBuilder {
 	static getButtons (monId, isSublist) {
 		return `
 			<span class="ecgen__visible ${isSublist ? "col-xs-1 col-xs-1-5" : "col-xs-1"} no-wrap" onclick="event.preventDefault()">
-				<span title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1)" oncontextmenu="encounterBuilder.handleContext(event)">
+				<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1)" oncontextmenu="encounterBuilder.handleContext(event)">
 					<span class="glyphicon glyphicon-plus"></span>
-				</span>
-				<span title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0)" oncontextmenu="encounterBuilder.handleContext(event)">
+				</button>
+				<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0)" oncontextmenu="encounterBuilder.handleContext(event)">
 					<span class="glyphicon glyphicon-minus"></span>
-				</span>
+				</button>
 				${isSublist ? `
-				<span title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list" onclick="encounterBuilder.handleShuffleClick(event, ${monId}, this)" oncontextmenu="encounterBuilder.handleContext(event)">
+				<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list" onclick="encounterBuilder.handleShuffleClick(event, ${monId}, this)" oncontextmenu="encounterBuilder.handleContext(event)">
 					<span class="glyphicon glyphicon-random" style="right: 1px"></span>
-				</span>
+				</button>
 				` : ""}
 			</span>
 		`;
