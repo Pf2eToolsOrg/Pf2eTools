@@ -46,6 +46,7 @@ function navigation () {
 	LI('ul_rules', 'book.html', "Monster Manual", "MM");
 	LI('ul_rules', 'book.html', "Player's Handbook", "PHB");
 	LIDivider('ul_rules');
+	LI('ul_rules', 'book.html', "Guildmasters' Guide to Ravnica", "GGR");
 	LI('ul_rules', 'book.html', "Mordenkainen's Tome of Foes", "MTF");
 	LI('ul_rules', 'book.html', "Sword Coast Adventurer's Guide", "SCAG");
 	LI('ul_rules', 'book.html', "Volo's Guide to Monsters", "VGM");

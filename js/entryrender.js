@@ -2945,7 +2945,10 @@ EntryRenderer.item = {
 		item.attunementCategory = attunement;
 
 		// add some pre-text for item groups
-		if (item._isItemGroup && item.entries) item.entries.unshift("Multiple variants of this item exist, as listed below:");
+		if (item._isItemGroup && item.entries) {
+			const ixList = item.entries.findIndex(it => it.type === "list");
+			if (~ixList) item.entries.splice(ixList, 0, "Multiple variants of this item exist, as listed below:");
+		}
 
 		// format price nicely
 		// 5 characters because e.g. XXXgp is fine
@@ -5052,6 +5055,12 @@ EntryRenderer.stripTags = function (str) {
 			if (it.startsWith("@")) {
 				const [tag, text] = EntryRenderer.splitFirstSpace(it);
 				switch (tag) {
+					case "@i": {
+						return text.replace(/^{@i (.*?)}$/, "$1");
+					}
+
+					case "@spell":
+					case "@item":
 					case "@creature": {
 						const parts = text.split("|");
 						return parts.length >= 3 ? parts[2] : parts[0];
