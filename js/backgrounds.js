@@ -3,23 +3,25 @@ const JSON_URL = "data/backgrounds.json";
 const JSON_FLUFF_URL = "data/fluff-backgrounds.json";
 const renderer = EntryRenderer.getDefaultRenderer();
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
-	SortUtil.initHandleFilterButtonClicks();
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-};
-
 let list;
 const sourceFilter = getSourceFilter();
 const skillFilter = new Filter({header: "Skill Proficiencies", displayFn: StrUtil.toTitleCase});
 const toolFilter = new Filter({header: "Tool Proficiencies", displayFn: StrUtil.toTitleCase});
 const languageFilter = new Filter({header: "Language Proficiencies", displayFn: StrUtil.toTitleCase});
-let filterBox = initFilterBox(
-	sourceFilter,
-	skillFilter,
-	toolFilter,
-	languageFilter
-);
+let filterBox;
+
+window.onload = async function load () {
+	filterBox = await pInitFilterBox(
+		sourceFilter,
+		skillFilter,
+		toolFilter,
+		languageFilter
+	);
+	await ExcludeUtil.pInitialise();
+	SortUtil.initHandleFilterButtonClicks();
+	onJsonLoad(await DataUtil.loadJSON(JSON_URL));
+};
+
 function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ["name", "source", "skills"],
@@ -46,11 +48,11 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 
 			History.init(true);

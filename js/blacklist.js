@@ -140,11 +140,11 @@ class Blacklist {
 			{id: Blacklist._listId++, name: name, category: display.displayCategory, source: display.displaySource}
 		]);
 		$(`<button class="btn btn-xs btn-danger">Remove</button>`).click(() => {
-			Blacklist.remove(name, category, source);
+			Blacklist.pRemove(name, category, source);
 		}).appendTo($(added[0].elm).find(`.actions`));
 	}
 
-	static add () {
+	static async add () {
 		const $selSource = $(`#bl-source`);
 		const $selCategory = $(`#bl-category`);
 		const $selName = $(`#bl-name`);
@@ -155,24 +155,24 @@ class Blacklist {
 
 		if (source === "*" && category === "*" && name === "*" && !window.confirm("This will exclude all content from all list pages. Are you sure?")) return;
 
-		if (ExcludeUtil.addExclude(name, category, source)) {
+		if (await ExcludeUtil.pAddExclude(name, category, source)) {
 			Blacklist._addListItem(name, category, source);
 		}
 	}
 
 	static addAllUa () {
-		$(`#bl-source`).find(`option`).each((i, e) => {
+		$(`#bl-source`).find(`option`).each(async (i, e) => {
 			const val = $(e).val();
 			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
 
-			if (ExcludeUtil.addExclude("*", "*", val)) {
+			if (await ExcludeUtil.pAddExclude("*", "*", val)) {
 				Blacklist._addListItem("*", "*", val);
 			}
 		});
 	}
 
-	static remove (name, category, source) {
-		ExcludeUtil.removeExclude(name, category, source);
+	static async pRemove (name, category, source) {
+		await ExcludeUtil.pRemoveExclude(name, category, source);
 		const display = Blacklist.getDisplayValues(category, source);
 		// List JS doesn't support matching by multiple fields...
 		Blacklist._list.items
@@ -191,7 +191,7 @@ class Blacklist {
 			const input = event.target;
 
 			const reader = new FileReader();
-			reader.onload = () => {
+			reader.onload = async () => {
 				const text = reader.result;
 				const json = JSON.parse(text);
 
@@ -200,10 +200,10 @@ class Blacklist {
 				Blacklist._list.reIndex();
 
 				// update storage
-				if (!additive) ExcludeUtil.setList(json.blacklist || []);
-				else ExcludeUtil.setList(ExcludeUtil.getList().concat(json.blacklist || []));
+				if (!additive) await ExcludeUtil.pSetList(json.blacklist || []);
+				else await ExcludeUtil.pSetList(ExcludeUtil.getList().concat(json.blacklist || []));
 
-				BrewUtil.doHandleBrewJson(json, "NO_PAGE");
+				await BrewUtil.pDoHandleBrewJson(json, "NO_PAGE");
 
 				// render list display
 				Blacklist._renderList();
@@ -220,14 +220,14 @@ class Blacklist {
 		$iptAdd.click();
 	}
 
-	static reset () {
-		ExcludeUtil.resetExcludes();
+	static async pReset () {
+		await ExcludeUtil.pResetExcludes();
 		$(".blacklist").empty();
 		Blacklist._list.reIndex();
 	}
 }
 
-window.addEventListener("load", () => {
-	ExcludeUtil.initialise();
+window.addEventListener("load", async () => {
+	await ExcludeUtil.pInitialise();
 	Blacklist.initialise();
 });

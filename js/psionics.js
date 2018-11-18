@@ -39,8 +39,8 @@ function getHiddenModeList (psionic) {
 	return outArray.join(",");
 }
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
@@ -51,14 +51,14 @@ const sourceFilter = getSourceFilter({
 	deselFn: () => false
 });
 let filterBox;
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	const typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull});
 	const orderFilter = new Filter({
 		header: "Order",
 		items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE]
 	});
 
-	filterBox = initFilterBox(sourceFilter, typeFilter, orderFilter);
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter, orderFilter);
 
 	list = ListUtil.search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
@@ -124,11 +124,11 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 
 			ListUtil.bindShowTableButton(
 				"btn-show-table",

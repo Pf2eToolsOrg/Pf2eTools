@@ -8269,7 +8269,7 @@
 			"name": "Player Characters as Lycanthropes",
 			"entries": [
 				"A character who becomes a lycanthrope retains his or her statistics except as specified by lycanthrope type. The character gains the lycanthrope's speeds in non-humanoid form, damage immunities, traits, and actions that don't involve equipment. The character is proficient with the lycanthrope's natural attacks, such as its bite or claws, which deal damage as shown in the lycanthrope's statistics. The character can't speak while in animal form.",
-				"A humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
+				"A non-lycanthrope humanoid hit by an attack that carries the curse of lycanthropy must succeed on a Constitution saving throw (DC 8 + the lycanthrope's proficiency bonus + the lycanthrope's Constitution modifier) or be cursed. If the character embraces the curse, his or her alignment becomes the one defined for the lycanthrope. The DM is free to decide that a change in alignment places the character under DM control until the curse of lycanthropy is removed.",
 				"The following information applies to specific lycanthropes.",
 				{
 					"type": "entries",
@@ -8326,6 +8326,599 @@
 					]
 				}
 			]
+		},
+		{
+			"type": "section",
+			"name": "Ship Stat Blocks",
+			"entries": [
+				"A ship's stat block gives game details for use when a ship is involved in combat or other situations where its defensive and offensive capabilities are relevant. The stat block has three main parts: basic statistics, action options, and the ship's components.",
+				"Ships can't take any actions on their own. Without any effort from its crew, a ship might drift on the water, come to a stop, or careen out of control.",
+				{
+					"type": "entries",
+					"name": "Basic Statistics",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Size",
+							"entries": [
+								"Most ships are Large, Huge, or Gargantuan. A ship's size category is determined by its length or width, whichever is longer. For instance, a ship that is 10 feet long and 20 feet wide would use the size category that has a 20-foot width, which means the ship is Gargantuan."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Space",
+							"entries": [
+								"A ship doesn't have a square space unless its stat block specifies otherwise. For example, a ship that is 20 feet long and 10 feet wide occupies a 20-by-10-foot space.",
+								"A ship can't move into a space that is too small to accommodate it. If it tries to do so, it crashes, as described later in the \"{@variantrule Crashing a Ship|uaofshipsandsea|Crashing}\" section."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Capacity",
+							"entries": [
+								"A ship's stat block indicates how many creatures and how much cargo it can carry. Creatures include both the crew required to operate the vessel and any passengers who might ride along. Passengers could include marines who repel boarders and lead the attack on monsters and enemy ships."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Travel Pace",
+							"entries": [
+								"A ship's travel pace determines how far the vessel can move per hour and per day. A ship's movement-related components (described later in the stat block) determine how far the vessel can move each round."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Ability Scores",
+							"entries": [
+								"A ship has the six ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma) and corresponding modifiers. A ship's Strength represents its size and weight. Dexterity represents a ship's ease of handling. A ship's Constitution covers its durability and the quality of its construction. Ships usually have a score of 0 in Intelligence, Wisdom, and Charisma.",
+								"If a ship has a 0 in a score, it automatically fails any ability check or saving throw that uses that score."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Vulnerabilities, Resistances, and Immunities",
+							"entries": [
+								"A ship's vulnerabilities, resistances, and immunities apply to all its components, unless otherwise noted in the stat block."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Typical Ship Immunities",
+							"entries": [
+								"If you're creating your own ship, they're usually immune to poison and psychic damage. Ones crafted from metal or stone are also typically immune to necrotic damage. They are also usually immune to the following conditions: blinded, charmed, deafened, exhaustion frightened, incapacitated, paralyzed, petrified, poisoned, prone, stunned, and unconscious."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Components",
+					"entries": [
+						"A ship is composed of different components:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Hull",
+									"entry": "A ship's hull is its basic frame, on which the other components are mounted."
+								},
+								{
+									"type": "item",
+									"name": "Control",
+									"entry": "A control component is used to steer a ship."
+								},
+								{
+									"type": "item",
+									"name": "Movement",
+									"entry": "A movement component is the element of the ship that enables it to move, such as a set of sails or oars."
+								},
+								{
+									"type": "item",
+									"name": "Weapon",
+									"entry": "A ship capable of being used in combat has one or more weapon components, each of which is operated separately."
+								}
+							]
+						},
+						"A ship's component might have special rules, as described in the stat block.",
+						{
+							"type": "entries",
+							"name": "Armor Class",
+							"entries": [
+								"A component has an Armor Class. Its AC is meant to reflect its size, the materials used to construct it, and any defensive plating or armor used to augment its toughness."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Hit Points",
+							"entries": [
+								"A ship component is destroyed and becomes unusable when it drops to 0 hit points. A ship is wrecked if its hull is destroyed. A ship component does not have Hit Dice."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Damage Threshold",
+							"entries": [
+								"If a ship component has a damage threshold, that threshold appears after its hit points. A component has immunity to all damage unless it takes an amount of damage equal to or greater than its damage threshold, in which case it takes damage as normal. Any damage that fails to meet or exceed the damage threshold is considered superficial and doesn't reduce the component's hit points."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Actions",
+					"entries": [
+						"This part of the stat block specifies what the ship can do on its turn, using its special actions rather than the actions used by creatures. It even relies on its actions to move; it doesn't have a move otherwise."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sample Stat Blocks",
+					"entries": [
+						"Here are examples of ship stat blocks:",
+						{
+							"type": "list",
+							"items": [
+								"{@ship Airship|UAOfShipsAndSea}",
+								"{@ship Galley|UAOfShipsAndSea}",
+								"{@ship Keelboat|UAOfShipsAndSea}",
+								"{@ship Longship|UAOfShipsAndSea}",
+								"{@ship Rowboat|UAOfShipsAndSea}",
+								"{@ship Sailing Ship|UAOfShipsAndSea}",
+								"{@ship Warship|UAOfShipsAndSea}"
+							]
+						}
+					]
+				}
+			],
+			"source": "UAOfShipsAndSea",
+			"page": 1
+		},
+		{
+			"type": "section",
+			"name": "Ship Officers",
+			"entries": [
+				"If you'd like to explore running a ship, it needs officers to oversee its operations\u2014officers who fill six different roles. A person can fill only one role at a time, though multiple people can be assigned to a single role. Some roles aboard a ship reflect the need for trained experts to direct a crew's efforts. Others focus on keeping the crew's health and morale in order.",
+				"Each role is described below, along with the abilities and proficiencies that help a character excel at it (but that aren't required):",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Captain.",
+							"entry": "The captain issues orders. The best captains have high Intelligence and Charisma scores, as well as proficiency with water vehicles and the Intimidation and Persuasion skills."
+						},
+						{
+							"type": "item",
+							"name": "First Mate.",
+							"entry": "This specialist keeps the crew's morale up by providing close supervision, encouragement, and discipline. A first mate benefits from a high Charisma score, as well as proficiency with the Intimidation and Persuasion skills."
+						},
+						{
+							"type": "item",
+							"name": "Bosun.",
+							"entry": "The bosun (or boatswain) provides technical advice to the captain and crew and leads repair and maintenance efforts. A good bonus has a high Strength score, as well as proficiency with carpenter's tools and the Athletics skill."
+						},
+						{
+							"type": "item",
+							"name": "Quartermaster.",
+							"entry": "The quartermaster plots the ship's course, relying on knowledge of nautical charts and a study of weather and sea conditions. A reliable quartermaster tends to have a high Wisdom score, as well as proficiency with navigator's tools and the Nature skill."
+						},
+						{
+							"type": "item",
+							"name": "Surgeon.",
+							"entry": "The ship's surgeon tends to injuries, keeps illnesses from spreading throughout the ship, and oversees sanitation. A capable surgeon benefits from a high Intelligence score, as well as proficiency with herbalism kits and the Medicine skill."
+						},
+						{
+							"type": "item",
+							"name": "Cook.",
+							"entry": "A ship's cook works with the limited ingredients aboard a ship to make meals. A skilled cook keeps the crew's morale in top shape, while a poor one drags down the entire crew's performance. A talented cook has a high Constitution score, as well as proficiency with brewer's supplies and cook's utensils."
+						}
+					]
+				}
+			],
+			"source": "UAOfShipsAndSea",
+			"page": 5
+		},
+		{
+			"type": "section",
+			"name": "Ship Crew",
+			"entries": [
+				"A ship requires a number of able-bodied sailors to crew it, as specified in its stat block. A crew's skill, experience, morale, and health are defined by its quality score. A crew starts with a quality score of +4, and that score varies over time, going as low as -10 and as high as +10. It decreases as a crew takes casualties, suffers hardship, or endures poor health. It increases if the crew enjoys high morale, has good health care, and receives clear, fair leadership.",
+				"A typical crew member uses the commoner stat block in the Monster Manual.",
+				{
+					"type": "inset",
+					"name": "Loyalty and Quality",
+					"entries": [
+						"When dealing with an individual member of the crew, you might find it useful to use the optional loyalty rule from chapter 4 of the Dungeon Master's Guide. To convert a quality score to an individual's loyalty score, add 10 to the crew's quality score."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Mutiny",
+					"entries": [
+						"A poorly led or mistreated crew might turn against its officers. Once per day, if a crew's quality score is lower than 0, the captain must make a Charisma (Intimidation or Persuasion) check modified by the crew's quality score. If the check total is between 1 and 9, the crew's quality score decreases by 1.",
+						"If the check total is 0 or lower, the crew mutinies. They become hostile to the officers and might attempt to kill them, imprison them, or throw them overboard. The crew can be cowed into obedience through violence, combat, or offers of treasure and other rewards. When the DM ends the mutiny, the crew's quality score increases by {@dice 1d4}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Shore Leave",
+					"entries": [
+						"Life aboard a ship is a constant wear on the crew. Spending time in port allows the crew to relax and regain its composure.",
+						"If a crew's quality score is 3 or lower, the score increases by 1 for each day the crew spends in port or ashore."
+					]
+				}
+			],
+			"source": "UAOfShipsAndSea",
+			"page": 6
+		},
+		{
+			"type": "section",
+			"name": "Travel at Sea",
+			"entries": [
+				"Here are rules to help adjudicate travel at sea, specifically travel of an hour or more. This material builds on the travel rules in the {@book Player's Handbook|PHB|8|travel pace} and the {@book Dungeon Master's Guide|DMG|8|Exploration}.",
+				{
+					"type": "entries",
+					"name": "Travel Pace",
+					"entries": [
+						"Ships travel at a speed given their stat blocks. Unlike with land travel, players can't choose to move at a faster pace, though they can choose to go slower.",
+						"If a ship's mode of movement takes damage, it might be slowed. For every decrease of 10 feet in speed, reduce the ship's pace by 1 mile per hour and 24 miles per day."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Activity While Traveling",
+					"entries": [
+						"The activities available to a ship's crew and passengers are a bit different from the options available to a group traveling by land. Refer to \"Activity While Traveling\" in {@book chapter 8|PHB|8|Activity While Traveling} of the Player's Handbook for more information on some of the topics discussed below.",
+						"A number of activities are restricted to certain officers, unless the DM rules otherwise. For example, a bard might be allowed to engage in the raise morale activity by playing bawdy songs on deck to lift the crew's spirits.",
+						"The party's pace has no effect on the activities they can engage in while traveling by ship.",
+						{
+							"type": "entries",
+							"name": "Draw a Map",
+							"entries": [
+								"A ship's captain often undertakes this activity, producing a map that records the ship's progress and helps the crew get back on course if they get lost. No ability check is required."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Forage",
+							"entries": [
+								"The character casts out fishing lines, keeping an eye out for sources of food, making a Wisdom (Survival) check when the DM calls for it."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Raise Morale (First Mate Only)",
+							"entries": [
+								"The first mate can manage the crew's time to grant extended breaks, provide instruction, and improve morale. Once per day, if the crew's quality score is 3 or lower, the first mate can make a DC 15 Charisma (Persuasion) check. On a successful check, the crew's quality score increases by 1."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Navigate (Quartermaster Only)",
+							"entries": [
+								"The quartermaster can try to prevent the group from becoming lost, making a Wisdom (Survival) check when the DM calls for it. (See \"{@book Becoming Lost|dmg|5|becoming lost}\" in chapter 5 of the Dungeon Master's Guide for more information.)"
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Noticing Threats",
+							"entries": [
+								"Use the passive Wisdom (Perception) score of the characters or the crew to determine whether anyone on the ship notices a hidden threat. The crew has a passive Wisdom (Perception) score equal to 10 + the crew's quality score. The DM might decide that a threat can be noticed only by characters in a specific area of the ship. For example, only characters below deck might have a chance to hear or spot a creature hiding on board."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Repair (Bosun Only)",
+							"entries": [
+								"The ship's bosun can undertake this activity. At the end of the day, the bosun can make a Strength check using carpenter's tools. On a 15 or higher, each damaged component regains hit points equal to {@dice 1d6} + the crew's quality score (minimum of 1 hit point). A component other than the hull that had 0 hit points becomes functional again."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Stealth (Captain Only)",
+							"entries": [
+								"The ship's captain can engage in this activity only if the weather conditions restrict visibility, such as in heavy fog. The ship makes a Dexterity check with a bonus equal to the crew's quality score to determine if it can hide."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hazards",
+					"entries": [
+						"Hazards come in two basic types: environmental hazards, such as storms or turbulent waters, and other events, such as a fire aboard the ship or a plague outbreak.",
+						{
+							"type": "entries",
+							"name": "Environmental Hazards",
+							"entries": [
+								"Icebergs choke a misty sea. Winds and towering waves threaten to capsize a ship. Snowstorms batter ships that venture north too late in the year. These are all examples of environmental hazards that can last for days and demand a crew's attention.",
+								"Each day a ship spends involved in a hazard requires the officers to each make a special ability check, as shown on the Hazard Checks table. This check takes the place of any other activities that the officer might undertake and represents the officer's contribution to keeping the ship afloat.",
+								{
+									"type": "table",
+									"caption": "Hazard Checks",
+									"colLabels": [
+										"Officer",
+										"Check"
+									],
+									"colStyles": [
+										"col-xs-4",
+										"col-xs-8"
+									],
+									"rows": [
+										[
+											"Captain",
+											"Intelligence (water vehicles)"
+										],
+										[
+											"First mate",
+											"mate Charisma (Intimidation)"
+										],
+										[
+											"Bosun",
+											"Strength (carpenter's tools)"
+										],
+										[
+											"Quartermaster ",
+											"Wisdom (Nature)"
+										],
+										[
+											"Surgeon",
+											"Intelligence (Medicine)"
+										],
+										[
+											"Cook",
+											"Constitution (cook's utensils)"
+										]
+									]
+								},
+								"If there is no one available to make a check, treat the result as a 0.",
+								"Finally, roll a {@dice d20} for the crew, using its quality score as a modifier to the roll. Add up all of these checks and then refer to the Hazard Check Results table. That table shows if the ship has met with disaster or success in surviving that day of the hazard.",
+								{
+									"type": "table",
+									"caption": "Hazard Check Results",
+									"colLabels": [
+										"Check Total",
+										"Result"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"140+",
+											"{@b Great Success.} The crew's quality score increases by 1 for {@dice 1d4} days."
+										],
+										[
+											"105\u2013139",
+											"{@b Success.} The ship survives unscathed."
+										],
+										[
+											"70\u2013104",
+											"{@b Partial Disaster.} Each component takes {@dice 4d10} bludgeoning damage. The crew's quality score is reduced by 1. The ship struggles, moving at half speed that day."
+										],
+										[
+											"0\u201369",
+											"{@b Disaster.} The ship's components each take {@dice 10d10} bludgeoning damage. The crew's quality score drops by 2, as several members of the crew are washed overboard and lost. The ship is blown off course and struggles to recover its bearings, failing to cover any distance that day."
+										]
+									]
+								},
+								"If you want to add variety to hazards, consider including some interesting complications. For example, a whirlpool might drag a ship to the Elemental Plane of Water on a disaster result, with the ship avoiding the vortex on any other result.",
+								"You can also add or subtract to the success thresholds in the Hazard Check Results table to reflect a hazard's danger. If you decide to do so, increase or decrease a threshold by 35."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Other Events",
+							"entries": [
+								"In addition to rough seas and daunting weather, a ship might face a number of other threats.",
+								"The hazards below serve as examples of what can go wrong on a ship. Each one requires a different officer to spend a day dealing with the hazard instead of engaging in other activity. As a rule of thumb, there is a 10 percent chance each day that one of the following events occurs.",
+								{
+									"type": "entries",
+									"name": "Emergency Maneuvers",
+									"entries": [
+										"The crew must react quickly to avoid a sudden threat. A kraken passes below the ship, threatening to capsize it in its wake, or the ship is about to crash into an uncharted reef. The captain must make a DC 15 Intelligence (water vehicles) check. On a failed check, the ship's hull takes {@dice 8d10} bludgeoning damage from the collision. On a successful check, the captain's quick direction keeps the ship out of harm."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Conflict",
+									"entries": [
+										"Life at sea is a mixture of monotony, hard work, and sudden moments of terror. The stress can wear on the stoutest sailor. Sometimes, that stress turns into conflict among the crew. If dissension spreads in the ranks, the first mate's activity that day must be spent making a DC 15 Charisma (Intimidation) check to control the crew. On a failed check, the crew's quality score decreases by {@dice 1d4}."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Fire",
+									"entries": [
+										"A fire at sea can render a ship unable to function. Pick a random component. It takes {@dice 4d10} fire damage unless the bosun succeeds on a DC 15 Strength (carpenter's tools) check."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Plague",
+									"entries": [
+										"An illness sweeps through the ranks, perhaps caused by rats or insects that made their way aboard. The surgeon must make a DC 15 Wisdom (Medicine) check. On a failed check, the crew's quality score decreases by 5 for {@dice 1d6} days."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Infestation",
+									"entries": [
+										"Beetles, rats, or other pests infest the ship, threatening its food stores. The cook must make a DC 15 Constitution (brewer's supplies) check to save what food they can. On a failed check, the crew has disadvantage on any checks involving its quality score until the ship has a chance to restock supplies."
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "UAOfShipsAndSea",
+			"page": 6
+		},
+		{
+			"type": "section",
+			"name": "Ships in Combat",
+			"entries": [
+				"This section provides guidance on using ships in combat.",
+				{
+					"type": "entries",
+					"name": "Ships and Initiative",
+					"entries": [
+						"A ship rolls initiative using its Dexterity, and it uses its crew's quality score as a modifier to that roll.",
+						"On a ship's turn, the captain decides which of the ship's actions to use."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Special Officer Actions",
+					"entries": [
+						"During an encounter, the captain, first mate, and bosun each have access to two special action options described below: Full Speed Ahead and Fire at Will.",
+						{
+							"type": "entries",
+							"name": "Full Speed Ahead",
+							"entries": [
+								"As an action while on deck, the captain, first mate, or bosun can exhort the crew to work harder and drive a ship forward. Roll a {@dice d6} and multiply the result by 5. Apply the total as a bonus to the ship's speed until the end of the ship's next turn. If this bonus is applied to a ship's speed when the ship is already moving faster than normal, use the higher result. Don't add the two bonuses together."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Fire at Will",
+							"entries": [
+								"As an action, the captain, first mate, or bosun aids the crew in aiming one of the ship's weapons. Select one of the ship's weapons that is within 10 feet of the officer. It gains advantage on the next attack roll it makes before the end of the ship's next turn."
+							]
+						}
+					]
+				}
+			],
+			"source": "UAOfShipsAndSea",
+			"page": 8
+		},
+		{
+			"type": "section",
+			"name": "Crashing a Ship",
+			"entries": [
+				"If a ship moves into the space occupied by a creature or object, it might crash. A ship avoids crashing if the creature or object is at least two sizes smaller than it.",
+				"When a ship crashes, it must immediately make a DC 10 Constitution saving throw. On a failed save, it takes damage to its hull based on the size of the creature or object it crashed into, as shown on the Crash Damage table. It also stops moving if the object or creature is bigger than it or one size smaller. Otherwise the ship continues moving and the creature or object moves to the nearest unoccupied space that is not in the ship's path. At the DM's discretion, an object that is forced to move but is fixed in place is instead destroyed",
+				"A creature struck must make a Dexterity saving throw with a DC equal to 10 + the ship's Strength modifier, taking damage based on the ship's size (as shown on the Crash Damage table) on a failed save, or half as much damage on a successful one.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-xs-6",
+						"col-xs-6 text-align-center"
+					],
+					"rows": [
+						[
+							"Small",
+							"{@dice 1d6}"
+						],
+						[
+							"Medium",
+							"{@dice 1d10}"
+						],
+						[
+							"Large",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantuan",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			],
+			"source": "UAOfShipsAndSea",
+			"page": 9
+		},
+		{
+			"type": "section",
+			"name": "Owning a Ship",
+			"entries": [
+				"If you purchase a ship, you have unlocked an exciting new venue for adventure and signed up for a mountain of logistical challenges. Keeping a ship functioning requires a tremendous amount of work.",
+				"The rules use a downtime activity\u2014managing a ship\u2014to abstractly represent the effort needed to keep a ship functioning, its supplies stocked, and its crew paid.",
+				"See the {@book Dungeon Master's Guide|1|downtime activities} and {@book Xanathar's Guide to Everything|2|downtime revisited} for more information on downtime activities.",
+				{
+					"type": "entries",
+					"name": "Downtime: Managing a Ship",
+					"entries": [
+						"By hiring a competent captain and crew and putting them to work hauling cargo or otherwise offering their services, you can make it possible for a ship to remain in good repair and even generate a profit for you between adventures.",
+						"Managing a ship is a downtime activity that requires time and effort to recruit an officer and crew. The ship is available for use when needed. Otherwise, the ship hauls passengers and cargo to cover the costs of maintaining the ship and paying the crew.",
+						{
+							"type": "entries",
+							"name": "Resources",
+							"entries": [
+								"It takes one week to recruit a crew and {@dice 100 + 4d6} gp to cover the costs of recruitment and supplies. Once you have paid these costs, you have a captain and a crew to maintain the ship."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Resolution",
+							"entries": [
+								"Once you have a working ship, it turns a small profit each month. At the end of every four weeks, you earn {@dice 5d20} gp."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Complications",
+							"entries": [
+								"A ship owner runs the risk of foul weather, a bad trade deal, or a mutiny. When rolling to determine your profit, if any of the {@dice d20} rolls are a 1, roll on the Ship Ownership Complications table (or the DM may create a suitable complication).",
+								{
+									"type": "table",
+									"caption": "Ship Ownership Complications",
+									"colLabels": [
+										"d6",
+										"Complication"
+									],
+									"colStyles": [
+										"col-xs-2 text-align-center",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"1",
+											"Your crew makes a bad bargain. You see no profit this month."
+										],
+										[
+											"2",
+											"Your ship and crew have been pressed into military service to hunt pirates for {@dice 1d4} months."
+										],
+										[
+											"3",
+											"A temple related to the sea or trade has accused your crew of disrespecting the gods, and no one will do business with your ship and crew. You lose {@dice 5d20} gp per month for {@dice 1d6} months or until the temple is mollified."
+										],
+										[
+											"4",
+											"Your ship and crew go missing and must be rescued from their captors."
+										],
+										[
+											"5",
+											"Your crew mutinies and is on the run from you."
+										],
+										[
+											"6",
+											"Your crew is caught smuggling illegal goods. They are imprisoned, and your ship impounded."
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"source": "UAOfShipsAndSea",
+			"page": 9
 		}
 	]
 }

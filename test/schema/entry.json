@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.5",
+	"version": "1.2.6",
 
 	"definitions" : {
 		"entry": {
@@ -21,6 +21,9 @@
 				},
 				"data": {
 					"type": "object"
+				},
+				"page": {
+					"type": "integer"
 				}
 			},
 			"required": [
@@ -52,6 +55,12 @@
 						"data": {
 							"description": "A generic object for storing special data for external use-cases.",
 							"type": "object"
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"],
@@ -82,6 +91,12 @@
 						},
 						"data": {
 							"type": "object"
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"],
@@ -654,6 +669,12 @@
 						},
 						"data": {
 							"type": "object"
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"],
@@ -672,6 +693,12 @@
 							"items": {
 								"$ref": "/Entry"
 							}
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
 						}
 					},
 					"required": ["entries"]
@@ -936,6 +963,119 @@
 			"required": [
 				"type",
 				"dataCreature"
+			]
+		},
+
+		"dataDamImmune": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dataDmgType"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"immune": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/damImmune"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["immune"]
+				}
+			]
+		},
+		"dataCondImmune": {
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dataConditions"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"special": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"preNote": {
+							"type": "string"
+						},
+						"conditionImmune": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/dataConditions"
+							}
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["conditionImmune"]
+				}
+			]
+		},
+		"dataConditions": {
+			"type": "string",
+			"enum": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"incapacitated",
+				"invisible",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned",
+				"unconscious",
+
+				"disease"
+			]
+		},
+		"dataDmgType": {
+			"type": "string",
+			"enum": [
+				"acid",
+				"bludgeoning",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"slashing",
+				"thunder"
 			]
 		}
 	},

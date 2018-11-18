@@ -11,8 +11,8 @@
  * See the docs for each function for full explanations.
  */
 class FilterBox {
-	static getSelectedSources () {
-		const parsed = StorageUtil.getForPage(FilterBox._STORAGE_NAME);
+	static async pGetSelectedSources () {
+		const parsed = await StorageUtil.pGet(FilterBox._STORAGE_NAME);
 		if (parsed) {
 			const sources = parsed[FilterBox.SOURCE_HEADER];
 			if (sources) {
@@ -56,14 +56,24 @@ class FilterBox {
 		this.multiHeaders = {};
 		this.$disabledOverlay = $(`<div class="homebrew-overlay"/>`);
 
-		this.storedValues = StorageUtil.getForPage(FilterBox._STORAGE_NAME);
-		this.storedVisible = StorageUtil.getForPage(FilterBox._STORAGE_NAME_VISIBLE);
-		this.storedGroupState = StorageUtil.getForPage(FilterBox._STORAGE_NAME_GROUP_STATE);
-		this.storedNestState = StorageUtil.getForPage(FilterBox._STORAGE_NAME_NEST_STATE);
 		this.$rendered = [];
 		this.dropdownVisible = false;
 		this.modeAndOr = "AND";
 		this.$txtCount = $(`<span style="margin-left: auto"/>`);
+	}
+
+	async pDoLoadState () {
+		this.storedValues = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME);
+		this.storedVisible = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_VISIBLE);
+		this.storedGroupState = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_GROUP_STATE);
+		this.storedNestState = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_NEST_STATE);
+	}
+
+	async _pDoSaveState () {
+		await StorageUtil.pSetForPage(FilterBox._STORAGE_NAME, this.getValues());
+		await StorageUtil.pSetForPage(FilterBox._STORAGE_NAME_VISIBLE, this._getVisible());
+		await StorageUtil.pSetForPage(FilterBox._STORAGE_NAME_GROUP_STATE, this._getGroupState());
+		await StorageUtil.pSetForPage(FilterBox._STORAGE_NAME_NEST_STATE, this._getNestState());
 	}
 
 	/**
@@ -97,7 +107,7 @@ class FilterBox {
 					<button id="fltr-reset" class="btn btn-xs btn-default">Reset</button>
 				</div>
 			</h4>
-			<hr>
+			<hr style="margin-top: 0; margin-bottom: 7px;">
 		</div>`).hide();
 
 		this._showAll = () => {
@@ -153,23 +163,7 @@ class FilterBox {
 			}
 		};
 
-		const addSaveHandler = () => {
-			window.addEventListener("beforeunload", () => {
-				const state = this.getValues();
-				StorageUtil.setForPage(FilterBox._STORAGE_NAME, state);
-				const display = this._getVisible();
-				StorageUtil.setForPage(FilterBox._STORAGE_NAME_VISIBLE, display);
-				const groupState = this._getGroupState();
-				StorageUtil.setForPage(FilterBox._STORAGE_NAME_GROUP_STATE, groupState);
-				const nestState = this._getNestState();
-				StorageUtil.setForPage(FilterBox._STORAGE_NAME_NEST_STATE, nestState);
-			});
-		};
-
-		if (firstRender) {
-			addResetHandler();
-			addSaveHandler();
-		}
+		if (firstRender) addResetHandler();
 
 		if (this.dropdownVisible) $filterButton.find("button").click();
 
@@ -1245,6 +1239,7 @@ class FilterBox {
 	 * @private
 	 */
 	_fireValChangeEvent () {
+		this._pDoSaveState();
 		const eventOut = new Event(FilterBox.EVNT_VALCHANGE);
 		this.inputGroup.dispatchEvent(eventOut);
 	}

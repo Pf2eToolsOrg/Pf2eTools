@@ -77,6 +77,7 @@ function navigation () {
 	LI('ul_dms', 'encountergen.html', 'Encounter Generator');
 	LI('ul_dms', 'lootgen.html', 'Loot Generator');
 	LI('ul_dms', 'objects.html', 'Objects');
+	LI('ul_dms', 'ships.html', 'Ships');
 	LI('ul_dms', 'trapshazards.html', 'Traps & Hazards');
 
 	LIDropdown('navbar', 'references', 'dropdown');

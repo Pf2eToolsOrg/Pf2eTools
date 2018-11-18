@@ -239,12 +239,13 @@
 <footer class="container">
 	<p class="text-align-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.66.0<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.66.5<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span>2018 5etools
 	</p>
 </footer>
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
@@ -258,19 +259,21 @@
 	const $demoRoller = $(`#demo_roller`);
 	$demoRoller.html(EntryRenderer.getDefaultRenderer().renderEntry(`{@dice ${$demoRoller.html()}}`));
 
-	if (!_Donate.notDonating()) {
-		const $wrpDon = $(`#don-wrapper`).show();
-		$(`<div><span class="glyphicon glyphicon-remove"></span></div>`).css({
-			position: "absolute",
-			top: 0,
-			right: 2,
-			cursor: "pointer"
-		}).click(() => {
-			StorageUtil.set("notDonating", true);
-			$wrpDon.remove();
-		}).appendTo($wrpDon);
-		_Donate.init();
-	}
+	(async () => {
+		if (!await _Donate.pNotDonating()) {
+			const $wrpDon = $(`#don-wrapper`).show();
+			$(`<div><span class="glyphicon glyphicon-remove"></span></div>`).css({
+				position: "absolute",
+				top: 0,
+				right: 2,
+				cursor: "pointer"
+			}).click(() => {
+				StorageUtil.pSet("pNotDonating", true);
+				$wrpDon.remove();
+			}).appendTo($wrpDon);
+			_Donate.init();
+		}
+	})();
 </script>
 </body>
 </html>

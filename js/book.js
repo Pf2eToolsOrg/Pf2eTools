@@ -36,7 +36,7 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
+		.catch(BrewUtil.pPurgeBrew)
 		.then(() => {
 			if (window.location.hash.length) {
 				BookUtil.booksHashChange();

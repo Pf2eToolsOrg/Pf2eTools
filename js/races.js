@@ -2,8 +2,17 @@
 const JSON_URL = "data/races.json";
 const JSON_FLUFF_URL = "data/fluff-races.json";
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+const ASI_SORT_POS = {
+	Strength: 0,
+	Dexterity: 1,
+	Constitution: 2,
+	Intelligence: 3,
+	Wisdom: 4,
+	Charisma: 5
+};
+
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
@@ -26,6 +35,13 @@ function getAbilityObjs (abils) {
 				ch.predefined.forEach(pre => {
 					Object.keys(pre).forEach(abil => out.add(makeAbilObj(abil, pre[abil])));
 				});
+			} else if (ch.weighted) {
+				// add every ability + weight combo
+				ch.weighted.from.forEach(f => {
+					ch.weighted.weights.forEach(w => {
+						out.add(makeAbilObj(f, w));
+					});
+				});
 			} else {
 				const by = ch.amount || 1;
 				ch.from.forEach(asi => out.add(makeAbilObj(asi, by)));
@@ -47,32 +63,31 @@ function getSpeedRating (speed) {
 let list;
 const sourceFilter = getSourceFilter();
 const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
+const asiFilter = new Filter({
+	header: "Ability Bonus (Including Subrace)",
+	items: [
+		"Strength +2",
+		"Strength +1",
+		"Dexterity +2",
+		"Dexterity +1",
+		"Constitution +2",
+		"Constitution +1",
+		"Intelligence +2",
+		"Intelligence +1",
+		"Wisdom +2",
+		"Wisdom +1",
+		"Charisma +2",
+		"Charisma +1"
+	]
+});
 let filterBox;
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
 		listClass: "races"
 	});
 
 	const jsonRaces = EntryRenderer.race.mergeSubraces(data.race);
-
-	const asiFilter = new Filter({
-		header: "Ability Bonus (Including Subrace)",
-		items: [
-			"Strength +2",
-			"Strength +1",
-			"Dexterity +2",
-			"Dexterity +1",
-			"Constitution +2",
-			"Constitution +1",
-			"Intelligence +2",
-			"Intelligence +1",
-			"Wisdom +2",
-			"Wisdom +1",
-			"Charisma +2",
-			"Charisma +1"
-		]
-	});
 	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk (Fast)", "Walk", "Walk (Slow)"]});
 	const traitFilter = new Filter({
 		header: "Traits",
@@ -124,7 +139,7 @@ function onJsonLoad (data) {
 		umbrellaItem: "Choose"
 	});
 
-	filterBox = initFilterBox(
+	filterBox = await pInitFilterBox(
 		sourceFilter,
 		asiFilter,
 		sizeFilter,
@@ -154,11 +169,11 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 
 			History.init(true);
@@ -212,6 +227,7 @@ function addRaces (data) {
 		// populate filters
 		sourceFilter.addIfAbsent(race._fSources);
 		sizeFilter.addIfAbsent(race.size);
+		asiFilter.addIfAbsent(race._fAbility);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	racesTable.append(tempString);
@@ -219,6 +235,7 @@ function addRaces (data) {
 	// sort filters
 	sourceFilter.items.sort(SortUtil.ascSort);
 	sizeFilter.items.sort(ascSortSize);
+	asiFilter.items.sort(ascSortAsi);
 
 	function ascSortSize (a, b) {
 		return SortUtil.ascSort(toNum(a), toNum(b));
@@ -233,6 +250,12 @@ function addRaces (data) {
 					return 1;
 			}
 		}
+	}
+
+	function ascSortAsi (a, b) {
+		const [aAbil, aScore] = a.split(" ");
+		const [bAbil, bScore] = b.split(" ");
+		return (ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil]) || (Number(bScore) - Number(aScore));
 	}
 
 	list.reIndex();

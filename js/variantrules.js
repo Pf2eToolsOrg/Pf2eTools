@@ -1,8 +1,8 @@
 "use strict";
 const JSON_URL = "data/variantrules.json";
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
@@ -13,13 +13,13 @@ let list;
 const sourceFilter = getSourceFilter();
 let filterBox;
 
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ['name', 'source', 'search'],
 		listClass: "variantRules"
 	});
 
-	filterBox = initFilterBox(sourceFilter);
+	filterBox = await pInitFilterBox(sourceFilter);
 
 	list.on("updated", () => {
 		filterBox.setCount(list.visibleItems.length, list.items.length);
@@ -42,7 +42,7 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
+		.catch(BrewUtil.pPurgeBrew)
 		.then(() => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});

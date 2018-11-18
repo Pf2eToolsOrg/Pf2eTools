@@ -32,14 +32,19 @@ class Board {
 		this.height = this.getInitialHeight();
 		this.sideMenu = new SideMenu(this);
 		this.menu = new AddMenu();
-		this.storage = StorageUtil.getStorage();
 		this.isFullscreen = false;
+		this.isLocked = false;
 
 		this.nextId = 1;
 		this.hoveringPanel = null;
 		this.availContent = {};
 		this.availRules = {};
+
 		this.$cbConfirmTabClose = null;
+		this.$btnFullscreen = null;
+		this.$btnLockPanels = null;
+
+		this._pDoSaveStateDebounced = MiscUtil.debounce(() => StorageUtil.pSet(DMSCREEN_STORAGE, this.getSaveableState()), 50);
 	}
 
 	getInitialWidth () {
@@ -150,28 +155,23 @@ class Board {
 		this.$creen.find(`.dm-screen-loading`).remove();
 	}
 
-	initialise () {
+	async pInitialise () {
 		this.doAdjust$creenCss();
 		this.doShowLoading();
 
-		this.pLoadIndex()
-			.then(() => {
-				if (this.hasSavedStateUrl()) {
-					this.doLoadUrlState();
-					this.initUnloadHandler();
-				} else if (this.hasSavedState()) {
-					this.doLoadState();
-					this.initUnloadHandler();
-				} else {
-					this.doCheckFillSpaces();
-					this.initUnloadHandler();
-				}
-			});
+		await this.pLoadIndex();
+		if (this.hasSavedStateUrl()) {
+			this.doLoadUrlState();
+		} else if (await this.pHasSavedState()) {
+			await this.pDoLoadState();
+		} else {
+			this.doCheckFillSpaces();
+		}
+		this.initGlobalHandlers();
 	}
 
-	initUnloadHandler () {
+	initGlobalHandlers () {
 		window.onhashchange = () => this.doLoadUrlState();
-		$(window).on("beforeunload", () => this.doSaveState());
 	}
 
 	pLoadIndex () {
@@ -303,6 +303,7 @@ class Board {
 				toDestroy.forEach(p => p.destroy());
 				this.sideMenu.doUpdateHistory()
 			} else this.destroyPanel(id);
+			this.doSaveStateDebounced();
 		}
 	}
 
@@ -310,11 +311,13 @@ class Board {
 		const ix = this.exiledPanels.findIndex(p => p.id === panel.id);
 		if (~ix) this.exiledPanels.splice(ix, 1);
 		this.panels[panel.id] = panel;
+		this.doSaveStateDebounced();
 	}
 
 	destroyPanel (id) {
 		const panelK = Object.keys(this.panels).find(k => this.panels[k].id === id);
 		if (panelK) delete this.panels[panelK];
+		this.doSaveStateDebounced();
 	}
 
 	doCheckFillSpaces () {
@@ -328,6 +331,7 @@ class Board {
 			}
 		}
 		Object.values(this.panels).forEach(p => p.render());
+		this.doSaveStateDebounced();
 	}
 
 	hasSavedStateUrl () {
@@ -343,8 +347,8 @@ class Board {
 		window.location.hash = "";
 	}
 
-	hasSavedState () {
-		return !!((this.storage.getItem(DMSCREEN_STORAGE) || "").trim());
+	async pHasSavedState () {
+		return !!await StorageUtil.pGet(DMSCREEN_STORAGE);
 	}
 
 	getSaveableState () {
@@ -352,17 +356,21 @@ class Board {
 			w: this.width,
 			h: this.height,
 			ctc: this.getConfirmTabClose(),
+			fs: this.isFullscreen,
+			lk: this.isLocked,
 			ps: Object.values(this.panels).map(p => p.getSaveableState()),
 			ex: this.exiledPanels.map(p => p.getSaveableState())
 		};
 	}
 
-	doSaveState () {
-		this.storage.setItem(DMSCREEN_STORAGE, JSON.stringify(this.getSaveableState()));
+	doSaveStateDebounced () {
+		this._pDoSaveStateDebounced();
 	}
 
 	doLoadStateFrom (toLoad) {
-		if (this.$cbConfirmTabClose) this.$cbConfirmTabClose.prop("checked", toLoad.ctc);
+		if (this.$cbConfirmTabClose) this.$cbConfirmTabClose.prop("checked", !!toLoad.ctc);
+		if (this.$btnFullscreen && (toLoad.fs !== !!this.isFullscreen)) this.$btnFullscreen.click();
+		if (this.$btnLockPanels && (toLoad.lk !== !!this.isLocked)) this.$btnLockPanels.click();
 
 		// re-exile
 		toLoad.ex.filter(Boolean).reverse().forEach(saved => {
@@ -383,24 +391,17 @@ class Board {
 		this.setDimensions(toLoad.w, toLoad.h);
 	}
 
-	doLoadState () {
-		const purgeSaved = () => {
+	async pDoLoadState () {
+		try {
+			const toLoad = await StorageUtil.pGet(DMSCREEN_STORAGE);
+			this.doLoadStateFrom(toLoad);
+		} catch (e) {
+			// on error, purge saved data and reset
 			window.alert("Error when loading DM screen! Purging saved data...");
-			this.storage.removeItem(DMSCREEN_STORAGE);
-		};
-
-		const raw = this.storage.getItem(DMSCREEN_STORAGE);
-		if (raw) {
-			try {
-				const toLoad = JSON.parse(raw);
-				this.doLoadStateFrom(toLoad);
-			} catch (e) {
-				// on error, purge saved data and reset
-				purgeSaved();
-				setTimeout(() => {
-					throw e
-				});
-			}
+			await StorageUtil.pRemove(DMSCREEN_STORAGE);
+			setTimeout(() => {
+				throw e
+			});
 		}
 	}
 
@@ -428,6 +429,7 @@ class Board {
 	addPanel (panel) {
 		this.panels[panel.id] = panel;
 		panel.render();
+		this.doSaveStateDebounced();
 	}
 }
 
@@ -469,22 +471,26 @@ class SideMenu {
 
 		const $wrpFullscreen = $(`<div class="dm-sidemenu-row-alt"></div>`).appendTo(this.$mnu);
 		const $btnFullscreen = $(`<button class="btn btn-primary">Toggle Fullscreen</button>`).appendTo($wrpFullscreen);
+		this.board.$btnFullscreen = $btnFullscreen;
 		$btnFullscreen.on("click", () => {
 			this.board.isFullscreen = !this.board.isFullscreen;
 			if (this.board.isFullscreen) $(`body`).addClass(`dm-screen-fullscreen`);
 			else $(`body`).removeClass(`dm-screen-fullscreen`);
 			this.board.doAdjust$creenCss();
+			this.board.doSaveStateDebounced();
 		});
-		const $btnLock = $(`<button class="btn btn-danger" title="Lock Panels"><span class="glyphicon glyphicon-lock"/></button>`).appendTo($wrpFullscreen);
-		$btnLock.on("click", () => {
+		const $btnLockPanels = $(`<button class="btn btn-danger" title="Lock Panels"><span class="glyphicon glyphicon-lock"/></button>`).appendTo($wrpFullscreen);
+		this.board.$btnLockPanels = $btnLockPanels;
+		$btnLockPanels.on("click", () => {
 			this.board.isLocked = !this.board.isLocked;
 			if (this.board.isLocked) {
 				$(`body`).addClass(`dm-screen-locked`);
-				$btnLock.removeClass(`btn-danger`).addClass(`btn-success`);
+				$btnLockPanels.removeClass(`btn-danger`).addClass(`btn-success`);
 			} else {
 				$(`body`).removeClass(`dm-screen-locked`);
-				$btnLock.addClass(`btn-danger`).removeClass(`btn-success`);
+				$btnLockPanels.addClass(`btn-danger`).removeClass(`btn-success`);
 			}
+			this.board.doSaveStateDebounced();
 		});
 		renderDivider();
 
@@ -613,6 +619,7 @@ class SideMenu {
 						this.doUpdateHistory();
 					}
 					MiscUtil.clearSelection();
+					this.board.doSaveStateDebounced();
 				});
 			});
 		});
@@ -962,7 +969,7 @@ class Panel {
 		this.set$ContentTab(
 			PANEL_TYP_TEXTBOX,
 			null,
-			$(`<div class="panel-content-wrapper-inner"/>`).append(NoteBox.make$Notebox(content)),
+			$(`<div class="panel-content-wrapper-inner"/>`).append(NoteBox.make$Notebox(this.board, content)),
 			title,
 			true
 		);
@@ -1339,7 +1346,7 @@ class Panel {
 				this.getReplacementPanel();
 			});
 
-			const joyMenu = new JoystickMenu(this);
+			const joyMenu = new JoystickMenu(this.board, this);
 			this.joyMenu = joyMenu;
 			joyMenu.initialise();
 
@@ -1501,8 +1508,10 @@ class Panel {
 			});
 		const $btnCloseTab = $(`<span class="glyphicon glyphicon-remove content-tab-remove"/>`)
 			.on("mousedown", (evt) => {
-				evt.stopPropagation();
-				if (!this.board.getConfirmTabClose() || (this.board.getConfirmTabClose() && confirm(`Are you sure you want to close tab "${this.title}"?`))) this.doCloseTab(ix);
+				if (evt.button === 0) {
+					evt.stopPropagation();
+					if (!this.board.getConfirmTabClose() || (this.board.getConfirmTabClose() && confirm(`Are you sure you want to close tab "${this.tabDatas[ix].title}"?`))) this.doCloseTab(ix);
+				}
 			}).appendTo($btnSelTab);
 		return $btnSelTab;
 	}
@@ -1565,6 +1574,7 @@ class Panel {
 			const tabData = this.tabDatas[ix];
 			this.set$Content(tabData.type, tabData.contentMeta, tabData.$content, tabData.title, tabData.tabCanRename, tabData.tabRenamed);
 		}
+		this.board.doSaveStateDebounced();
 	}
 
 	get$ContentWrapper () {
@@ -1705,7 +1715,8 @@ class Panel {
 }
 
 class JoystickMenu {
-	constructor (panel) {
+	constructor (board, panel) {
+		this.board = board;
 		this.panel = panel;
 
 		this.$ctrls = null;
@@ -1775,6 +1786,7 @@ class JoystickMenu {
 					her.doShowJoystick();
 				}
 				MiscUtil.clearSelection();
+				this.board.doSaveStateDebounced();
 			});
 		});
 
@@ -2124,7 +2136,11 @@ class AddMenuVideoTab extends AddMenuTab {
 			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
 			const $wrpYT = $(`<div class="tab-body-row"/>`).appendTo($tab);
-			const $iptUrlYT = $(`<input class="form-control" placeholder="Paste YouTube URL">`).appendTo($wrpYT);
+			const $iptUrlYT = $(`<input class="form-control" placeholder="Paste YouTube URL">`)
+				.on("keydown", (e) => {
+					if (e.which === 13) $btnAddYT.click();
+				})
+				.appendTo($wrpYT);
 			const $btnAddYT = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpYT);
 			$btnAddYT.on("click", () => {
 				let url = $iptUrlYT.val().trim();
@@ -2140,7 +2156,11 @@ class AddMenuVideoTab extends AddMenuTab {
 			});
 
 			const $wrpTwitch = $(`<div class="tab-body-row"/>`).appendTo($tab);
-			const $iptUrlTwitch = $(`<input class="form-control" placeholder="Paste Twitch URL">`).appendTo($wrpTwitch);
+			const $iptUrlTwitch = $(`<input class="form-control" placeholder="Paste Twitch URL">`)
+				.on("keydown", (e) => {
+					if (e.which === 13) $btnAddTwitch.click();
+				})
+				.appendTo($wrpTwitch);
 			const $btnAddTwitch = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpTwitch);
 			const $btnAddTwitchChat = $(`<button class="btn btn-primary">Embed Chat</button>`).appendTo($wrpTwitch);
 			const getTwitchM = (url) => {
@@ -2173,7 +2193,11 @@ class AddMenuVideoTab extends AddMenuTab {
 			});
 
 			const $wrpGeneric = $(`<div class="tab-body-row"/>`).appendTo($tab);
-			const $iptUrlGeneric = $(`<input class="form-control" placeholder="Paste any URL">`).appendTo($wrpGeneric);
+			const $iptUrlGeneric = $(`<input class="form-control" placeholder="Paste any URL">`)
+				.on("keydown", (e) => {
+					if (e.which === 13) $iptUrlGeneric.click();
+				})
+				.appendTo($wrpGeneric);
 			const $btnAddGeneric = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpGeneric);
 			$btnAddGeneric.on("click", () => {
 				let url = $iptUrlGeneric.val().trim();
@@ -2249,7 +2273,11 @@ class AddMenuImageTab extends AddMenuTab {
 			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
 
 			const $wrpUtl = $(`<div class="tab-body-row"/>`).appendTo($tab);
-			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`).appendTo($wrpUtl);
+			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`)
+				.on("keydown", (e) => {
+					if (e.which === 13) $btnAddUrl.click();
+				})
+				.appendTo($wrpUtl);
 			const $btnAddUrl = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUtl);
 			$btnAddUrl.on("click", () => {
 				let url = $iptUrl.val().trim();
@@ -2936,6 +2964,7 @@ class InitiativeTracker {
 					} else break;
 				} while ($curr);
 			} else checkSetFirstActive();
+			board.doSaveStateDebounced();
 		}
 
 		function makeRow (nameOrMeta = "", hp = "", init = "", isActive, source, conditions = [], rollHp = false) {
@@ -3108,9 +3137,17 @@ class InitiativeTracker {
 					</div>`).appendTo($wrpRows);
 					const $controls = $(`<div class="row mb-2"/>`).appendTo($wrpRows);
 					const [$wrpName, $wrpColor, $wrpTurns] = [...new Array(3)].map((it, i) => $(`<div class="col-xs-${i === 1 ? 2 : 5} text-align-center"/>`).appendTo($controls));
-					const $iptName = $(`<input class="form-control">`).appendTo($wrpName);
+					const $iptName = $(`<input class="form-control">`)
+						.on("keydown", (e) => {
+							if (e.which === 13) $btnAdd.click();
+						})
+						.appendTo($wrpName);
 					const $iptColor = $(`<input class="form-control" type="color" value="${MiscUtil.randomColor()}">`).appendTo($wrpColor);
-					const $iptTurns = $(`<input class="form-control" type="number" step="1" min="1" placeholder="Unlimited">`).appendTo($wrpTurns);
+					const $iptTurns = $(`<input class="form-control" type="number" step="1" min="1" placeholder="Unlimited">`)
+						.on("keydown", (e) => {
+							if (e.which === 13) $btnAdd.click();
+						})
+						.appendTo($wrpTurns);
 					const $wrpAdd = $(`<div class="row">`).appendTo($wrpRows);
 					const $wrpAddInner = $(`<div class="col-xs-12 text-align-center">`).appendTo($wrpAdd);
 					const $btnAdd = $(`<button class="btn btn-primary">Set Condition</button>`)
@@ -3193,6 +3230,8 @@ class InitiativeTracker {
 			conditions.forEach(c => addCondition(c.name, c.color, c.turns));
 			$wrpRow.appendTo($wrpEntries);
 
+			board.doSaveStateDebounced();
+
 			return $wrpRow;
 		}
 
@@ -3239,6 +3278,7 @@ class InitiativeTracker {
 				return first || second;
 			});
 			$wrpEntries.append(sorted);
+			board.doSaveStateDebounced();
 		}
 
 		function flipDir () {
@@ -3261,6 +3301,7 @@ class InitiativeTracker {
 			});
 			doSort(sort);
 			checkSetFirstActive();
+			board.doSaveStateDebounced();
 		}
 
 		function getRollName (monster) {
@@ -3378,8 +3419,11 @@ InitiativeTracker._uiImportAddPlayers = true;
 InitiativeTracker._uiImportAppendOnly = false;
 
 class NoteBox {
-	static make$Notebox (content) {
+	static make$Notebox (board, content) {
 		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports embedding (CTRL-click the text to activate the embed):\n • Clickable rollers,  [[1d20+2]]\n • Tags (as per the Demo page), {@creature goblin}">${content || ""}</textarea>`)
+			.on("keydown", () => {
+				board.doSaveStateDebounced();
+			})
 			.on("mousedown", (evt) => {
 				if (evt.ctrlKey) {
 					setTimeout(() => {
@@ -3535,8 +3579,8 @@ class UnitConverter {
 				$iptLeft.removeClass(`ipt-invalid`);
 			};
 
-			const val = $iptLeft.val();
-			if (!val && !val.trim()) {
+			const val = ($iptLeft.val() || "").trim();
+			if (!val) {
 				showValid();
 				$iptRight.val("");
 			} else if (mMaths.exec(val)) {
@@ -3553,6 +3597,7 @@ class UnitConverter {
 					$iptRight.val("")
 				}
 			} else showInvalid();
+			board.doSaveStateDebounced();
 		};
 
 		DmScreenUtil.bindTypingEnd($iptLeft, handleInput);
@@ -3577,6 +3622,20 @@ class UnitConverterUnit {
 		this.x1 = x1;
 		this.n2 = n2;
 		this.x2 = x2;
+	}
+}
+
+// TODO
+// a simple money converter, i.e.: input x electrum, y silver, z copper and get the total in gold, or in any other type of coin chosen.
+class MoneyConverter {
+	static make$Converter (board, state) {
+		const $wrpConverter = $(`<div class="dm_money"/>`);
+
+		$wrpConverter.data("getState", () => {
+			return {};
+		});
+
+		return $wrpConverter;
 	}
 }
 
@@ -3652,5 +3711,5 @@ window.addEventListener("load", () => {
 	// expose it for dbg purposes
 	window.DM_SCREEN = new Board();
 	EntryRenderer.hover.bindDmScreen(window.DM_SCREEN);
-	window.DM_SCREEN.initialise();
+	window.DM_SCREEN.pInitialise();
 });

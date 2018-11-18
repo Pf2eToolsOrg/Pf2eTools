@@ -118,7 +118,7 @@
 		<div class="form-group col-xs-12">
 			<button class="btn btn-default" onclick="Blacklist.export()">Export List</button>
 			<button class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
-			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">Reset List</button>
+			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.pReset()">Reset List</button>
 		</div>
 	</div>
 
@@ -152,6 +152,7 @@
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>

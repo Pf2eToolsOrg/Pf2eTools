@@ -3,8 +3,8 @@
 const JSON_URL = "data/optionalfeatures.json";
 const CLS_NONE = "list-entry-none";
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
@@ -66,8 +66,8 @@ const levelFilter = new Filter({
 });
 const prerequisiteFilter = new MultiFilter({name: "Prerequisite"}, pactFilter, patronFilter, spellFilter, levelFilter, featureFilter);
 let filterBox;
-function onJsonLoad (data) {
-	filterBox = initFilterBox(sourceFilter, typeFilter, prerequisiteFilter);
+async function onJsonLoad (data) {
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter, prerequisiteFilter);
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "prerequisite", "type", "sortIndex"],
@@ -96,11 +96,11 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 
 			History.init(true);

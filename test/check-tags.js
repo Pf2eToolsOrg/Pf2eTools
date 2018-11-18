@@ -56,7 +56,8 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"trap": "dmg",
 	"hazard": "dmg",
 	"deity": "phb",
-	"variantrule": "dmg"
+	"variantrule": "dmg",
+	"ship": "NONE"
 };
 
 const VALID_SKILLS = new Set([

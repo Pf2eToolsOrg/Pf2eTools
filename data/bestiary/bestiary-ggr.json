@@ -366,12 +366,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Options",
-					"entries": [
-						"The archon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The archon regains spent legendary actions at the start of its turn."
-					]
-				},
-				{
 					"name": "Rejoin Mount",
 					"entries": [
 						"If the archon isn't mounted, it magically teleports to its steed and mounts it as long as the archon and its steed are on the same plane of existence."
@@ -999,12 +993,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Options",
-					"entries": [
-						"Aurelia can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Aurelia regains spent legendary actions at the start of her turn."
-					]
-				},
-				{
 					"name": "Command Allies",
 					"entries": [
 						"Aurelia chooses up to three creatures she can see within 30 feet of her. If a chosen creature can see or hear Aurelia, it can immediately use its reaction to make one weapon attack, with advantage on the attack roll."
@@ -1299,12 +1287,6 @@
 				}
 			],
 			"legendary": [
-				{
-					"name": "Legendary Options",
-					"entries": [
-						"Niv-Mizzet can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Niv-Mizzet regains spent legendary actions at the start of his turn."
-					]
-				},
 				{
 					"name": "Cantrip",
 					"entries": [
@@ -2065,12 +2047,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Legendary Options",
-					"entries": [
-						"Trostani can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Trostani regains spent legendary actions at the start of her turn."
-					]
-				},
-				{
 					"name": "Voice of Harmony",
 					"entries": [
 						"Trostani makes one melee attack, with advantage on the attack roll."
@@ -2536,12 +2512,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Legendary Options",
-					"entries": [
-						"Rakdos can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Rakdos regains spent legendary actions at the start of his turn."
-					]
-				},
-				{
 					"name": "Sadistic Revelry",
 					"entries": [
 						"Each creature within 60 feet of Rakdos that is his ally or is {@condition charmed} by him must use its reaction to move up to half its speed toward the creature closest to it that it can see, provided it isn't already within 5 feet of that creature. It then must make one melee attack against that creature if it is able to do so."
@@ -2564,9 +2534,15 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Rakdos's spellcasting ability is Charisma (spell save DC 25). He can innately cast hellish rebuke (at 5th level) at will, requiring no material components."
+						"Rakdos's spellcasting ability is Charisma (spell save DC 25). He can innately cast {@spell hellish rebuke} (at 5th level) at will, requiring no material components."
 					],
-					"ability": "cha"
+					"will": [
+						"{@spell hellish rebuke}"
+					],
+					"ability": "cha",
+					"hidden": [
+						"will"
+					]
 				}
 			],
 			"isNamedCreature": true,
@@ -2901,12 +2877,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Legendary Options",
-					"entries": [
-						"Borborygmos can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Borborygmos regains spent legendary actions at the start of his turn."
-					]
-				},
-				{
 					"name": "Attack",
 					"entries": [
 						"Borborygmos makes a weapon attack."
@@ -3208,7 +3178,9 @@
 			"ac": [
 				{
 					"ac": 20,
-					"from": "stone armor"
+					"from": [
+						"stone armor"
+					]
 				}
 			],
 			"hp": {
@@ -5550,7 +5522,9 @@
 			"ac": [
 				{
 					"ac": 14,
-					"from": "piecemeal armor"
+					"from": [
+						"piecemeal armor"
+					]
 				}
 			],
 			"hp": {
@@ -6314,12 +6288,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Legenary Options",
-					"entries": [
-						"Zegana can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Zegana regains spent legendary actions at the start of her turn."
-					]
-				},
-				{
 					"name": "Adaptive Skin",
 					"entries": [
 						"Zegana gains resistance to one damage type of her choice-acid, fire, lightning, or thunder-until the start of her next turn."
@@ -6749,12 +6717,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Options",
-					"entries": [
-						"Isperia can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Isperia regains spent legendary actions at the start of her turn."
-					]
-				},
-				{
 					"name": "Claw Attack",
 					"entries": [
 						"Isperia makes one claw attack."
@@ -6777,7 +6739,15 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Isperia's innate spellcasting ability is Wisdom (spell save DC 23). Isperia can innately cast imprisonment twice per day, requiring no material components."
+						"Isperia's innate spellcasting ability is Wisdom (spell save DC 23). Isperia can innately cast {@spell imprisonment} twice per day, requiring no material components."
+					],
+					"daily": {
+						"2": [
+							"{@spell imprisonment}"
+						]
+					},
+					"hidden": [
+						"daily"
 					],
 					"ability": "wis"
 				},
@@ -7310,12 +7280,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Legendary Options",
-					"entries": [
-						"Lazav can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Lazav regains spent legendary actions at the start of his turn."
-					]
-				},
-				{
 					"name": "Attack",
 					"entries": [
 						"Lazav makes a weapon attack."
@@ -7377,9 +7341,9 @@
 		},
 		{
 			"name": "Anarch",
-			"size": "S",
+			"size": "M",
 			"type": {
-				"type": "or medium humanoid",
+				"type": "humanoid",
 				"tags": [
 					"any race"
 				]
@@ -7653,12 +7617,6 @@
 				}
 			],
 			"legendary": [
-				{
-					"name": "Options",
-					"entries": [
-						"The lich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The lich regains spent legendary actions at the start of its turn."
-					]
-				},
 				{
 					"name": "Cantrip",
 					"entries": [
@@ -8092,12 +8050,6 @@
 			],
 			"legendary": [
 				{
-					"name": "Legendary Options",
-					"entries": [
-						"Jarad can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Jarad regains spent legendary actions at the start of his turn. Cantrip. Jarad casts one of his cantrips."
-					]
-				},
-				{
 					"name": "Noxious Touch (Costs 2 Actions)",
 					"entries": [
 						"Jarad uses Noxious Touch."
@@ -8446,7 +8398,9 @@
 			"ac": [
 				{
 					"ac": 14,
-					"from": "natural armor",
+					"from": [
+						"natural armor"
+					],
 					"condition": "plus 1 for each other Obzedat"
 				}
 			],
@@ -8512,15 +8466,46 @@
 			"senses": "darkvision 60 ft.",
 			"trait": [
 				{
-					"name": "Scorchbringer {@recharge 4}",
+					"name": "Council of Five",
 					"entries": [
-						"null ghost within 30 feet of it"
+						"The ghost has a trait based on who it is, as shown below:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Enezesku: Enfeebling Ray.",
+									"entry": "Enezesku's Innate Spellcasting trait includes ray of enfeeblement, which he can cast at will."
+								},
+								{
+									"type": "item",
+									"name": "Fautomni: Undead Fortitude.",
+									"entry": "If damage reduces Fautomni to 0 hit points, he must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, Fautomni drops to 1 hit point instead."
+								},
+								{
+									"type": "item",
+									"name": "Karlov: Unnatural Vigor.",
+									"entry": "When Karlov regains hit points, he has advantage on attack rolls he makes on his next turn."
+								},
+								{
+									"type": "item",
+									"name": "Vuliev: Teleportation.",
+									"entry": "Vuliev's Innate Spellcasting trait includes misty step, which he can cast at will."
+								},
+								{
+									"type": "item",
+									"name": "Xil Xaxosz: Lingering Spite.",
+									"entry": "When Xil Xaxosz is reduced to 0 hit points, his incorporeal form explodes in a burst of necrotic energy. Each creature within 5 feet of him must make a DC 16 Constitution saving throw, taking 14 ({@damage 4d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+								}
+							]
+						}
 					]
 				},
 				{
-					"name": "Council of Five",
+					"name": "Ethereal Sight",
 					"entries": [
-						"The ghost has a trait based on who it is, as shown below: Enezesku: Enfeebling Ray. Enezesku's Innate Spellcasting trait includes ray of enfeeblement, which he can cast at will. Fautomni: Undead Fortitude. If damage reduces Fautomni to 0 hit points, he must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, Fautomni drops to 1 hit point instead. Karlov: Unnatural Vigor. When Karlov regains hit points, he has advantage on attack rolls he makes on his next turn. Vuliev: Teleportation. Vuliev's Innate Spellcasting trait includes misty step, which he can cast at will. Xil Xaxosz: Lingering Spite. When Xil Xaxosz is reduced to 0 hit points, his incorporeal form explodes in a burst of necrotic energy. Each creature within 5 feet of him must make a DC 16 Constitution saving throw, taking 14 ({@damage 4d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+						"The ghost can see 60 feet into the Ethereal Plane when it is on the Material Plane, and vice versa."
 					]
 				},
 				{
@@ -8556,13 +8541,10 @@
 					]
 				}
 			],
+			"legendaryHeader": [
+				"If five Obzedat ghosts are all within 30 feet of each other, they can collectively take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time, and only at the end of another creature's turn. Obzedat ghosts regain spent legendary actions at the start of the turn of the ghost with the highest initiative."
+			],
 			"legendary": [
-				{
-					"name": "Legendary Options",
-					"entries": [
-						"If five Obzedat ghosts are all within 30 feet of each other, they can collectively take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time, and only at the end of another creature's turn. Obzedat ghosts regain spent legendary actions at the start of the turn of the ghost with the highest initiative."
-					]
-				},
 				{
 					"name": "Forced Obedience",
 					"entries": [

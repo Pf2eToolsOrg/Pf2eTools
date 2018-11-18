@@ -1,18 +1,18 @@
 class ManageBrew {
 	static initialise () {
 		BrewUtil.pAddBrewData()
-			.then(() => BrewUtil.pAddLocalBrewData())
-			.catch(BrewUtil.purgeBrew)
+			.then(BrewUtil.pAddLocalBrewData)
+			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
-				ManageBrew.render();
+				ManageBrew.pRender();
 			})
 	}
 
-	static render () {
+	static async pRender () {
 		// standard brew manager
 		const $brew = $(`#brewmanager`).empty();
 		const $window = $(`<div style="position: relative;"/>`);
-		BrewUtil._renderBrewScreen($brew, $(`<div/>`), $window, false, () => ManageBrew.render());
+		await BrewUtil._pRenderBrewScreen($brew, $(`<div/>`), $window, false, async () => ManageBrew.pRender());
 
 		// brew meta manager
 		if (BrewUtil.homebrewMeta) {
@@ -54,7 +54,7 @@ class ManageBrew {
 									$(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`).appendTo($btns).click(() => {
 										delete BrewUtil.homebrewMeta[metaType][k];
 										if (!Object.keys(BrewUtil.homebrewMeta[metaType]).length) delete BrewUtil.homebrewMeta[metaType];
-										BrewUtil.storage.setItem(HOMEBREW_META_STORAGE, JSON.stringify(BrewUtil.homebrewMeta));
+										StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 										renderSection();
 									});
 								});

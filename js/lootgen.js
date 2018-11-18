@@ -320,7 +320,7 @@ class LootGen {
 							this._loadingSpells = false;
 							then();
 						})
-						.catch(BrewUtil.purgeBrew);
+						.catch(BrewUtil.pPurgeBrew);
 				});
 		}
 	}
@@ -460,7 +460,7 @@ const randomLootTables = {
 				}
 				return items;
 			})
-			.catch(BrewUtil.purgeBrew)
+			.catch(BrewUtil.pPurgeBrew)
 			.then(items => {
 				for (let item of items) {
 					let rarity = item.rarity;

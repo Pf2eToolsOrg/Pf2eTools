@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"type": "object",
 
 	"definitions": {
@@ -142,6 +142,24 @@
 											"type": "integer"
 										},
 										"cha": {
+											"type": "integer"
+										}
+									}
+								}
+							},
+							"weighted": {
+								"type": "object",
+								"properties": {
+									"from": {
+										"type": "array",
+										"items": {
+											"enum": ["str", "dex", "con", "int", "wis", "cha"]
+										},
+										"uniqueItems": true
+									},
+									"weights": {
+										"type": "array",
+										"items": {
 											"type": "integer"
 										}
 									}

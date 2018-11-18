@@ -19,6 +19,8 @@ $active-blue--light: #7398b7;
 $active-red: #8a1a1b;
 $active-red--light: #8a4b4b;
 
+$danger-red: #d9534f;
+
 $name-red: #822000;
 $bg-orange: #fdf1dc;
 
@@ -1214,6 +1216,7 @@ table.stats tr.trait td.subsuboption {
 	padding: 1px 1.5em;
 }
 
+.stat__header_underline,
 tr.mon-sect-header,
 tr#actions td,
 tr#reactions td,
@@ -2890,10 +2893,17 @@ table.stats div.statsBlockSectionHead > span.entry-title,
 table.stats div.statsBlockHead > span.entry-title,
 table.stats div.statsBlockSubHead > span.entry-title {
 	color: $name-red;
-	display: block;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
 	font-weight: 500;
+}
+
+.entry-title-page {
+	opacity: 0.3;
+	font-size: 1.6rem;
 }
 
 table.stats div.statsBlockSectionHead > span.entry-title {
@@ -3823,9 +3833,19 @@ table.stats tr.homebrew-hover {
 	}
 }
 
-.error-background {
-	background-color: $active-red--light;
+.error-background,
+.error-background[readonly],
+.error-background[disabled] {
+	background-color: $danger-red;
+	border: 1px solid red;
 	color: white;
+}
+
+.error-background:focus,
+.error-background[readonly]:focus,
+.error-background[disabled]:focus {
+	border-color: #f86393;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(248, 99, 147, 0.6);
 }
 
 /* Day Mode End */
@@ -4000,6 +4020,10 @@ table.stats tr.homebrew-hover {
 				border: 1px solid #ccc;
 				outline-offset: 0;
 				outline: none;
+			}
+
+			&.error-background[type='number'] {
+				border: 1px solid red;
 			}
 		}
 	}
@@ -4219,7 +4243,6 @@ table.stats tr.homebrew-hover {
 		color: $class-main-color;
 	}
 
-	.mon-sect-header,
 	#actions,
 	#reactions,
 	#legendaries,
@@ -4229,6 +4252,12 @@ table.stats tr.homebrew-hover {
 			border-bottom-color: $class-main-color;
 			color: $class-main-color;
 		}
+	}
+
+	.stat__header_underline,
+	tr.mon-sect-header {
+		border-bottom-color: $class-main-color;
+		color: $class-main-color;
 	}
 
 	.sourcePHB {

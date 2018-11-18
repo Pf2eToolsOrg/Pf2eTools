@@ -243,11 +243,11 @@ function pPostLoad () {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
 			.then(BrewUtil.pAddLocalBrewData)
-			.catch(BrewUtil.purgeBrew)
-			.then(() => {
+			.catch(BrewUtil.pPurgeBrew)
+			.then(async () => {
 				BrewUtil.makeBrewButton("manage-brew");
 				BrewUtil.bind({list, filterBox, sourceFilter});
-				ListUtil.loadState();
+				await ListUtil.pLoadState();
 
 				ListUtil.bindShowTableButton(
 					"btn-show-table",
@@ -274,8 +274,24 @@ function pPostLoad () {
 	})
 }
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	filterBox = await pInitFilterBox(
+		sourceFilter,
+		levelFilter,
+		classAndSubclassFilter,
+		raceFilter,
+		metaFilter,
+		schoolFilter,
+		damageFilter,
+		conditionFilter,
+		spellAttackFilter,
+		saveFilter,
+		checkFilter,
+		timeFilter,
+		durationFilter,
+		rangeFilter
+	);
+	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
 		.then(() => {
@@ -380,22 +396,7 @@ const rangeFilter = new Filter({
 		F_RNG_SPECIAL
 	]
 });
-const filterBox = initFilterBox(
-	sourceFilter,
-	levelFilter,
-	classAndSubclassFilter,
-	raceFilter,
-	metaFilter,
-	schoolFilter,
-	damageFilter,
-	conditionFilter,
-	spellAttackFilter,
-	saveFilter,
-	checkFilter,
-	timeFilter,
-	durationFilter,
-	rangeFilter
-);
+let filterBox;
 
 function pPageInit (loadedSources) {
 	tableDefault = $("#pagecontent").html();
@@ -513,7 +514,7 @@ function pPageInit (loadedSources) {
 			}
 			if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
 		})
-		.catch(BrewUtil.purgeBrew);
+		.catch(BrewUtil.pPurgeBrew);
 }
 
 function getSublistItem (spell, pinId) {

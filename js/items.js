@@ -1,7 +1,7 @@
 "use strict";
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
 	EntryRenderer.item.buildList((incItemList) => {
 		populateTablesAndFilters(incItemList);
 	}, {}, true);
@@ -54,7 +54,7 @@ const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.upperc
 const costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, allowGreater: true, suffix: "gp"});
 const attachedSpellsFilter = new Filter({header: "Attached Spells", displayFn: (it) => it.split("|")[0].toTitleCase()});
 let filterBox;
-function populateTablesAndFilters (data) {
+async function populateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
 		header: "Rarity",
 		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Other"]
@@ -67,7 +67,7 @@ function populateTablesAndFilters (data) {
 	});
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
 
-	filterBox = initFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, miscFilter, attachedSpellsFilter);
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, miscFilter, attachedSpellsFilter);
 
 	const mundaneOptions = {
 		valueNames: ["name", "type", "cost", "weight", "source"],
@@ -177,11 +177,11 @@ function populateTablesAndFilters (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 
 			History.init(true);
 			ExcludeUtil.checkShowAllExcluded(itemList, $(`#pagecontent`));
@@ -392,9 +392,11 @@ function loadhash (id) {
 
 	$content.find("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
 	$content.find("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") + (item.weightNote ? ` ${item.weightNote}` : "") : "");
-	$content.find("td span#rarity").html((item.tier ? ", " + item.tier : "") + (item.rarity && EntryRenderer.item.doRenderRarity(item.rarity) ? ", " + item.rarity : ""));
-	$content.find("td span#attunement").html(item.reqAttune ? item.reqAttune : "");
-	$content.find("td span#type").html(item.typeText === "Other" ? "" : item.typeText);
+
+	const [dispType, dispRarity, dispAttunement] = EntryRenderer.item.getTypeRarityAndAttunementText(item);
+	$content.find("td span#type").html(dispType);
+	$content.find("td span#rarity").html(dispRarity);
+	$content.find("td span#attunement").html(dispAttunement);
 
 	const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 	$content.find("span#damage").html(damage);

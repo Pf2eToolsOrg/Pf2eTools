@@ -12,7 +12,7 @@ window.PROF_MODE_DICE = "dice";
 window.PROF_DICE_MODE = PROF_MODE_BONUS;
 
 function imgError (x) {
-	$(x).closest("th").css("padding-right", "0.2em");
+	$(`#pagecontent th.name`).css("padding-right", "0.2em");
 	$(x).remove();
 	$(`.mon__wrp_hp`).css("max-width", "none");
 }
@@ -91,18 +91,41 @@ function pPostLoad () {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
 			.then(BrewUtil.pAddLocalBrewData)
-			.catch(BrewUtil.purgeBrew)
-			.then(() => {
+			.catch(BrewUtil.pPurgeBrew)
+			.then(async () => {
 				BrewUtil.makeBrewButton("manage-brew");
 				BrewUtil.bind({list, filterBox, sourceFilter});
-				ListUtil.loadState();
+				await ListUtil.pLoadState();
 				resolve();
 			});
 	})
 }
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+let filterBox;
+window.onload = async function load () {
+	filterBox = await pInitFilterBox(
+		sourceFilter,
+		crFilter,
+		typeFilter,
+		tagFilter,
+		environmentFilter,
+		defenceFilter,
+		conditionImmuneFilter,
+		traitFilter,
+		actionReactionFilter,
+		miscFilter,
+		sizeFilter,
+		speedFilter,
+		alignmentFilter,
+		saveFilter,
+		skillFilter,
+		senseFilter,
+		languageFilter,
+		acFilter,
+		averageHpFilter,
+		abilityScoreFilter
+	);
+	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	encounterBuilder.initUi();
 	pLoadMeta()
@@ -276,29 +299,6 @@ const miscFilter = new Filter({
 	deselFn: (it) => it === "Named NPC"
 });
 
-const filterBox = initFilterBox(
-	sourceFilter,
-	crFilter,
-	typeFilter,
-	tagFilter,
-	environmentFilter,
-	defenceFilter,
-	conditionImmuneFilter,
-	traitFilter,
-	actionReactionFilter,
-	miscFilter,
-	sizeFilter,
-	speedFilter,
-	alignmentFilter,
-	saveFilter,
-	skillFilter,
-	senseFilter,
-	languageFilter,
-	acFilter,
-	averageHpFilter,
-	abilityScoreFilter
-);
-
 function pPageInit (loadedSources) {
 	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addMonsters)}));
 	sourceFilter.items.sort(SortUtil.ascSort);
@@ -341,8 +341,8 @@ function pPageInit (loadedSources) {
 		return (evt, proxyEvt) => {
 			evt = proxyEvt || evt;
 			if (lastRendered.isScaled) {
-				if (evt.shiftKey) ListUtil.doSublistAdd(History.lastLoadedId, true, 5, getScaledData());
-				else ListUtil.doSublistAdd(History.lastLoadedId, true, 1, getScaledData());
+				if (evt.shiftKey) ListUtil.pDoSublistAdd(History.lastLoadedId, true, 5, getScaledData());
+				else ListUtil.pDoSublistAdd(History.lastLoadedId, true, 1, getScaledData());
 			} else ListUtil._genericAddButtonHandler(evt, baseHandlerOptions);
 		};
 	}
@@ -350,8 +350,8 @@ function pPageInit (loadedSources) {
 		return (evt, proxyEvt) => {
 			evt = proxyEvt || evt;
 			if (lastRendered.isScaled) {
-				if (evt.shiftKey) ListUtil.doSublistSubtract(History.lastLoadedId, 5, getScaledData());
-				else ListUtil.doSublistSubtract(History.lastLoadedId, 1, getScaledData());
+				if (evt.shiftKey) ListUtil.pDoSublistSubtract(History.lastLoadedId, 5, getScaledData());
+				else ListUtil.pDoSublistSubtract(History.lastLoadedId, 1, getScaledData());
 			} else ListUtil._genericSubtractButtonHandler(evt, baseHandlerOptions);
 		};
 	}
@@ -831,13 +831,15 @@ function renderStatblock (mon, isScaled) {
 		}
 
 		const imgLink = EntryRenderer.monster.getTokenUrl(mon);
+		$(`#float-token`).empty().append(`
+			<a href="${imgLink}" target="_blank">
+				<img src="${imgLink}" class="token" onerror="imgError(this)">
+			</a>`
+		);
 		$content.find("th.name").html(
 			`<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${mon.source.escapeQuotes()}')">${displayName}</span>
 			${mon.soundClip ? getPronunciationButton() : ""}
-		<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>
-		<a href="${imgLink}" target="_blank">
-			<img src="${imgLink}" class="token" onerror="imgError(this)">
-		</a>`
+		<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>`
 		);
 
 		// TODO most of this could be rolled into the string template above
@@ -1218,17 +1220,26 @@ function renderStatblock (mon, isScaled) {
 	// reset tabs
 	const statTab = EntryRenderer.utils.tabButton(
 		"Statblock",
-		() => $wrpBtnProf.append(profBtn),
+		() => {
+			$wrpBtnProf.append(profBtn);
+			$(`#float-token`).show();
+		},
 		buildStatsTab
 	);
 	const infoTab = EntryRenderer.utils.tabButton(
 		"Info",
-		() => profBtn = profBtn || $wrpBtnProf.children().detach(),
+		() => {
+			profBtn = profBtn || $wrpBtnProf.children().detach();
+			$(`#float-token`).hide();
+		},
 		buildFluffTab
 	);
 	const picTab = EntryRenderer.utils.tabButton(
 		"Images",
-		() => profBtn = profBtn || $wrpBtnProf.children().detach(),
+		() => {
+			profBtn = profBtn || $wrpBtnProf.children().detach();
+			$(`#float-token`).hide();
+		},
 		() => buildFluffTab(true)
 	);
 	EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
@@ -1292,27 +1303,27 @@ class EncounterBuilder {
 
 		const $btnGen = $(`.ecgen_rng`).click((evt) => {
 			evt.preventDefault();
-			this.doGenerateEncounter($btnGen.data("mode"))
+			this.pDoGenerateEncounter($btnGen.data("mode"))
 		});
 
 		$(`.ecgen_rng_easy`).click((evt) => {
 			evt.preventDefault();
-			this.doGenerateEncounter("easy");
+			this.pDoGenerateEncounter("easy");
 			$btnGen.data("mode", "easy").text("Random Easy");
 		});
 		$(`.ecgen_rng_medium`).click((evt) => {
 			evt.preventDefault();
-			this.doGenerateEncounter("medium");
+			this.pDoGenerateEncounter("medium");
 			$btnGen.data("mode", "medium").text("Random Medium");
 		});
 		$(`.ecgen_rng_hard`).click((evt) => {
 			evt.preventDefault();
-			this.doGenerateEncounter("hard");
+			this.pDoGenerateEncounter("hard");
 			$btnGen.data("mode", "hard").text("Random Hard");
 		});
 		$(`.ecgen_rng_deadly`).click((evt) => {
 			evt.preventDefault();
-			this.doGenerateEncounter("deadly");
+			this.pDoGenerateEncounter("deadly");
 			$btnGen.data("mode", "deadly").text("Random Deadly");
 		});
 
@@ -1327,15 +1338,15 @@ class EncounterBuilder {
 		$(`.ecgen__sv_file`).click(() => DataUtil.userDownload(`encounter`, this.getSaveableState()));
 		$(`.ecgen__ld_file`).click(() => {
 			DataUtil.userUpload((json) => {
-				this.doLoadState(json);
+				this.pDoLoadState(json);
 			});
 		});
-		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.reset());
+		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.pReset());
 	}
 
 	initState () {
-		EncounterUtil.pGetSavedState().then(savedState => {
-			if (savedState) this.doLoadState(savedState, true);
+		EncounterUtil.pGetSavedState().then(async savedState => {
+			if (savedState) await this.pDoLoadState(savedState, true);
 			else this.addInitialPlayerRows();
 			this.stateInit = true;
 		});
@@ -1345,15 +1356,15 @@ class EncounterBuilder {
 		this.addPlayerRow(first, true, ECGEN_BASE_PLAYERS);
 	}
 
-	reset (doAddRows = true, playersOnly) {
-		if (!playersOnly) ListUtil.doSublistRemoveAll();
+	async pReset (doAddRows = true, playersOnly) {
+		if (!playersOnly) ListUtil.pDoSublistRemoveAll();
 
 		this.removeAllPlayerRows();
 		if (doAddRows) this.addInitialPlayerRows();
 	}
 
-	doLoadState (savedState, playersOnly) {
-		this.reset(false, playersOnly);
+	async pDoLoadState (savedState, playersOnly) {
+		await this.pReset(false, playersOnly);
 		try {
 			if (savedState.p.length) {
 				savedState.p.forEach(({count, level}, i) => this.addPlayerRow(!i, false, count, level));
@@ -1364,7 +1375,7 @@ class EncounterBuilder {
 			}
 			this.updateDifficulty();
 		} catch (e) {
-			this.reset();
+			this.pReset();
 		}
 	}
 
@@ -1397,7 +1408,7 @@ class EncounterBuilder {
 		this._cache = null;
 	}
 
-	doGenerateEncounter (difficulty) {
+	async pDoGenerateEncounter (difficulty) {
 		const TIERS = ["easy", "medium", "hard", "deadly", "yikes"];
 
 		const xp = this.calculateXp();
@@ -1543,7 +1554,7 @@ class EncounterBuilder {
 			toLoad.sources = [...sources];
 			this._loadSublist(toLoad);
 		} else {
-			ListUtil.doSublistRemoveAll();
+			await ListUtil.pDoSublistRemoveAll();
 			this.updateDifficulty();
 		}
 	}
@@ -1583,8 +1594,8 @@ class EncounterBuilder {
 		evt.stopPropagation();
 		if (!evt.ctrlKey) evt.preventDefault();
 
-		if (add) ListUtil.doSublistAdd(ix, true, evt.shiftKey ? 5 : 1, lastRendered.isScaled ? getScaledData() : undefined);
-		else ListUtil.doSublistSubtract(ix, evt.shiftKey ? 5 : 1, lastRendered.isScaled ? getScaledData() : undefined);
+		if (add) ListUtil.pDoSublistAdd(ix, true, evt.shiftKey ? 5 : 1, lastRendered.isScaled ? getScaledData() : undefined);
+		else ListUtil.pDoSublistSubtract(ix, evt.shiftKey ? 5 : 1, lastRendered.isScaled ? getScaledData() : undefined);
 	}
 
 	handleShuffleClick (evt, ix) {

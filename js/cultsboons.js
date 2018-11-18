@@ -14,7 +14,7 @@ let cultsAndBoonsList;
 const sourceFilter = getSourceFilter();
 let filterBox;
 let list;
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ['name', "source", "type"],
 		listClass: "cultsboons",
@@ -26,7 +26,7 @@ function onJsonLoad (data) {
 		items: ["b", "c"],
 		displayFn: cultBoonTypeToFull
 	});
-	filterBox = initFilterBox(
+	filterBox = await pInitFilterBox(
 		sourceFilter,
 		typeFilter
 	);

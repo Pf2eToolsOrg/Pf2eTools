@@ -57,7 +57,7 @@ class BooksList {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
 			.then(BrewUtil.pAddLocalBrewData)
-			.catch(BrewUtil.purgeBrew)
+			.catch(BrewUtil.pPurgeBrew)
 			.then(() => BrewUtil.makeBrewButton("manage-brew"));
 	}
 

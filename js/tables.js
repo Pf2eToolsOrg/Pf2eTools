@@ -21,13 +21,13 @@ window.onload = function load () {
 const sourceFilter = getSourceFilter();
 let filterBox;
 let list;
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ["name", "source", "sort-name"],
 		listClass: "tablesdata"
 	});
 
-	filterBox = initFilterBox(
+	filterBox = await pInitFilterBox(
 		sourceFilter
 	);
 
@@ -52,11 +52,11 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 
 			History.init(true);
 			RollerUtil.addListRollButton();

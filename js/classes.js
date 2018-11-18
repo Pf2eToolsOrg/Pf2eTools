@@ -32,6 +32,7 @@ const ATB_DATA_FEATURE_ID = "data-flink-id";
 const ATB_DATA_SC_LIST = "data-subclass-list";
 
 let subclassComparisonView;
+let filterBox;
 
 // Exported to history.js, gets called on hash change
 function loadhash (id) {
@@ -377,8 +378,18 @@ class HashLoad {
 
 		// FLUFF
 		if (ClassDisplay.curClass.fluff) {
-			renderer.recursiveEntryRender({type: "section", name: ClassDisplay.curClass.name, entries: ClassDisplay.curClass.fluff}, renderStack, 0,
-				{prefix: `<tr class="text ${CLSS_CLASS_FLUFF}"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
+			renderStack.push(`<tr class="text ${CLSS_CLASS_FLUFF}"><td colspan="6">`);
+			ClassDisplay.curClass.fluff.forEach((f, i) => {
+				const toRender = Object.assign({}, f);
+				toRender.type = toRender.type || "section";
+				if (i === 0 && !toRender.name) toRender.name = ClassDisplay.curClass.name;
+				if (f.source && f.source !== SRC_PHB && toRender.entries) {
+					toRender.entries = MiscUtil.copy(toRender.entries);
+					toRender.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page ? `, page ${f.page}` : ""}.}`)
+				}
+				renderer.recursiveEntryRender(toRender, renderStack, 0);
+			});
+			renderStack.push(`</td></tr>`);
 		}
 
 		// FEATURE DESCRIPTIONS
@@ -472,7 +483,7 @@ class HashLoad {
 
 		// show/hide class features pill
 		HashLoad.makeGenericTogglePill("Class Features", CLSS_CLASS_FEATURES_ACTIVE, ID_CLASS_FEATURES_TOGGLE, HASH_HIDE_FEATURES, true, "Toggle class features");
-		if (ClassDisplay.curClass.fluff) HashLoad.makeGenericTogglePill("Info", CLSS_FLUFF_ACTIVE, ID_FLUFF_TOGGLE, HASH_SHOW_FLUFF, false, "Toggle class detail information (Source: Xanathar's Guide to Everything)");
+		if (ClassDisplay.curClass.fluff) HashLoad.makeGenericTogglePill("Info", CLSS_FLUFF_ACTIVE, ID_FLUFF_TOGGLE, HASH_SHOW_FLUFF, false, "Toggle class detail information");
 
 		// show/hide UA/other sources
 		HashLoad.makeSourceCyclePill();
@@ -1279,47 +1290,52 @@ const sourceFilter = new Filter({
 	selFn: (it) => it === "Core" || it === "Homebrew"
 });
 
-const filterBox = initFilterBox(sourceFilter);
-// filtering function
-$(filterBox).on(
-	FilterBox.EVNT_VALCHANGE,
-	ClassList.handleFilterChange
-);
-
-ClassList.classList = ListUtil.search({
-	valueNames: ['name', 'source', 'uniqueid'],
-	listClass: "classes"
-});
-
-BrewUtil.makeBrewButton("manage-brew");
-BrewUtil.bind({list: ClassList.classList, filterBox, sourceFilter});
-
-initCompareMode();
-initLinkGrabbers();
-ClassBookView.initButton();
-ExcludeUtil.initialise();
-SortUtil.initHandleFilterButtonClicks();
-
 let tableDefault = $("#pagecontent").html();
 let statsProfDefault = $("#statsprof").html();
 let classTableDefault = $("#classtable").html();
-
-DataUtil.class.loadJSON().then((data) => {
-	addClassData(data);
-
-	BrewUtil.pAddBrewData()
-		.then(handleBrew)
-		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
-			RollerUtil.addListRollButton();
-			History.init(true);
-			ExcludeUtil.checkShowAllExcluded(ClassData.classes, $(`#pagecontent`));
-		});
-});
 
 function handleBrew (homebrew) {
 	addClassData(homebrew);
 	addSubclassData(homebrew);
 	return Promise.resolve();
 }
+
+async function doPageInit () {
+	filterBox = await pInitFilterBox(sourceFilter);
+
+	// filtering function
+	$(filterBox).on(
+		FilterBox.EVNT_VALCHANGE,
+		ClassList.handleFilterChange
+	);
+
+	ClassList.classList = ListUtil.search({
+		valueNames: ['name', 'source', 'uniqueid'],
+		listClass: "classes"
+	});
+
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bind({list: ClassList.classList, filterBox, sourceFilter});
+
+	initCompareMode();
+	initLinkGrabbers();
+	ClassBookView.initButton();
+	await ExcludeUtil.pInitialise();
+	SortUtil.initHandleFilterButtonClicks();
+
+	DataUtil.class.loadJSON().then((data) => {
+		addClassData(data);
+
+		BrewUtil.pAddBrewData()
+			.then(handleBrew)
+			.then(BrewUtil.pAddLocalBrewData)
+			.catch(BrewUtil.pPurgeBrew)
+			.then(() => {
+				RollerUtil.addListRollButton();
+				History.init(true);
+				ExcludeUtil.checkShowAllExcluded(ClassData.classes, $(`#pagecontent`));
+			});
+	});
+}
+
+doPageInit();

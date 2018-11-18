@@ -45,7 +45,7 @@ UtilBookReference = {
 		function reset () {
 			bookData = [];
 			index.book.forEach(b => {
-				const data = JSON.parse(JSON.stringify(books[b.id.toLowerCase()]));
+				const data = {source: b.id, file: JSON.parse(JSON.stringify(books[b.id.toLowerCase()]))};
 				bookData.push(data);
 			});
 		}
@@ -54,13 +54,22 @@ UtilBookReference = {
 			reset();
 			const out = {};
 
+			function recursiveSetSource (ent, source) {
+				if (ent instanceof Array) {
+					ent.forEach(e => recursiveSetSource(e, source));
+				} else if (typeof ent === "object") {
+					if (ent.page) ent.source = source;
+					Object.values(ent).forEach(v => recursiveSetSource(v, source))
+				}
+			}
+
 			function isDesiredSect (ent) {
 				return ent.entries && ent.data && ent.data[refType.tag];
 			}
 
-			function recursiveAdd (ent) {
+			function recursiveAdd (ent, source) {
 				if (ent.entries) {
-					ent.entries = ent.entries.filter(nxt => recursiveAdd(nxt));
+					ent.entries = ent.entries.filter(nxt => recursiveAdd(nxt, source));
 				}
 
 				if (isDesiredSect(ent)) {
@@ -76,6 +85,7 @@ UtilBookReference = {
 					toAdd.type = "section";
 					const discard = !!toAdd.data.allowRefDupe;
 					delete toAdd.data;
+					recursiveSetSource(toAdd, source);
 					out[sect].sections.push(toAdd);
 					return discard;
 				} else {
@@ -84,9 +94,9 @@ UtilBookReference = {
 			}
 
 			bookData.forEach(book => {
-				book.data.forEach(chap => {
+				book.file.data.forEach(chap => {
 					if (chap.entries) {
-						recursiveAdd(chap);
+						recursiveAdd(chap, book.source);
 					}
 				})
 			});

@@ -92,8 +92,22 @@
 			text-align: center;
 		}
 
-		.pbuy__adv {
+		.pbuy__adv--visible {
 			display: none;
+		}
+
+		#pointbuy.pbuy__advanced_active .pbuy__adv--visible {
+			display: initial;
+		}
+
+		#pointbuy.pbuy__advanced_active .pbuy__adv--hidden {
+			display: none;
+		}
+
+		.pbuy__add_row_btn_wrap {
+			text-align: center;
+			width: 100%;
+			margin: 7px 0;
 		}
 	</style>
 </head>
@@ -145,7 +159,7 @@
 					<div style="display: flex; align-items: flex-end;">
 						<label class="split-column split-column--inline">
 							<span class="text-align-center">Budget</span>
-							<input class="form-control" id="budget" type="number" min="10" value="27">
+							<input class="form-control" id="budget" type="number" min="1" value="27" readonly>
 						</label>
 						<label class="split-column split-column--inline">
 							<span class="text-align-center">Remaining</span>
@@ -162,61 +176,61 @@
 							<td>Total</td>
 							<td>Mod</td>
 							<td class="choose"></td>
-							<td class="pbuy__adv"></td>
+							<td class="pbuy__adv--visible"></td>
 						</tr>
 						<tr id="str">
 							<td><b>STR</b></td>
-							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" value="8" class="base"></td>
 							<td><input type="number" class="racial" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="checkbox" class="choose"></td>
-							<td class="pbuy__adv"></td>
+							<td class="pbuy__adv--visible"></td>
 						</tr>
 						<tr id="dex">
 							<td><b>DEX</b></td>
-							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" value="8" class="base"></td>
 							<td><input type="number" class="racial" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="checkbox" class="choose"></td>
-							<td class="pbuy__adv"></td>
+							<td class="pbuy__adv--visible"></td>
 						</tr>
 						<tr id="con">
 							<td><b>CON</b></td>
-							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" value="8" class="base"></td>
 							<td><input type="number" class="racial" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="checkbox" class="choose"></td>
-							<td class="pbuy__adv"></td>
+							<td class="pbuy__adv--visible"></td>
 						</tr>
 						<tr id="int">
 							<td><b>INT</b></td>
-							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" value="8" class="base"></td>
 							<td><input type="number" class="racial" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="checkbox" class="choose"></td>
-							<td class="pbuy__adv"></td>
+							<td class="pbuy__adv--visible"></td>
 						</tr>
 						<tr id="wis">
 							<td><b>WIS</b></td>
-							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" value="8" class="base"></td>
 							<td><input type="number" class="racial" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="checkbox" class="choose"></td>
-							<td class="pbuy__adv"></td>
+							<td class="pbuy__adv--visible"></td>
 						</tr>
 						<tr id="cha">
 							<td><b>CHA</b></td>
-							<td><input type="number" min="8" max="15" value="8" data-prev="8" class="base"></td>
+							<td><input type="number" value="8" class="base"></td>
 							<td><input type="number" class="racial" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="number" readonly></td>
 							<td><input type="checkbox" class="choose"></td>
-							<td class="pbuy__adv"></td>
+							<td class="pbuy__adv--visible"></td>
 						</tr>
 					</table>
 
@@ -234,7 +248,7 @@
 				</div>
 
 				<div class="pbuy__split_item">
-					<label class="pbuy__adv"><input id="advanced" type="checkbox">Custom Rules</label> <!-- TODO remove this "advanced" class-->
+					<label><input id="advanced" type="checkbox">Custom Rules</label>
 					<table id="costs" class="pbuy__tbl_cost"></table>
 				</div>
 			</div>
@@ -242,6 +256,7 @@
 	</div>
 </main>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>

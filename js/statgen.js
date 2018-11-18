@@ -2,33 +2,112 @@
 const RACE_JSON_URL = "data/races.json";
 
 class StatGen {
-	init () {
+	static isValidState (state) {
+		if (!state) return false;
+		if (typeof state !== "object") return false;
+		if (!state.t || !state.m || !state.p) return false;
+		if (!Object.keys(state.t).length) return false;
+		return !Object.entries(state.t).some(([k, v]) => isNaN(Number(k)) || isNaN(Number(v)));
+	}
+
+	async init () {
 		this.amount = null;
 		this.count = null;
 		this.raceData = null;
 		this.$advanced = $(`#advanced`);
+		this.$budget = $(`#budget`);
+		this.budget = StatGen.DEFAULT_POINTS;
+		this.doSaveDebounced = MiscUtil.debounce(this.doSaveState, 200, true);
 
-		ExcludeUtil.initialise();
-		this.loadRaceJson();
+		await ExcludeUtil.pInitialise();
+		await this.pLoadRaceJson();
 		this.initialiseChangeHandlers();
 
-		// TODO load saved state here
+		// load from local storage
+		try {
+			const savedState = await StorageUtil.pGet(POINTBUY_STORAGE);
+			if (StatGen.isValidState(savedState)) this.doLoadStateFrom(savedState);
+			else this.savedState = MiscUtil.copy(StatGen.DEFAULT_COSTS);
+		} catch (e) {
+			this.savedState = MiscUtil.copy(StatGen.DEFAULT_COSTS);
+		}
+
+		// load from URL
+		try {
+			this.doLoadUrlState(true);
+		} catch (e) {
+			window.location.hash = "";
+		}
+
 		this.renderCostsTable();
 
 		this.$advanced.change(() => {
+			const isAdvanced = this.isAdvanced;
+			$(`#pointbuy`).toggleClass("pbuy__advanced_active", isAdvanced);
+			this.$budget.attr("readonly", !isAdvanced);
+
+			if (isAdvanced) this.$budget.val(this.budget);
+			else this.$budget.val(StatGen.DEFAULT_POINTS);
+
 			this.renderCostsTable();
-			// TODO update visible/etc
-		});
+			this.handleCostChanges();
+			this.doSaveDebounced();
+		}).change();
+
+		this.isInit = true;
 	}
 
-	async loadRaceJson () {
+	doLoadStateFrom (savedState) {
+		this.savedState = savedState.t;
+		this.$advanced.prop("checked", !!savedState.m.a);
+		this.$budget.val(savedState.p);
+		this.budget = savedState.p;
+		this.renderCostsTable();
+	}
+
+	doLoadUrlState (firstLoad) {
+		if (window.location.hash.length) {
+			const splitHash = window.location.hash.slice(1).split(",");
+			if (splitHash.length > 1) {
+				const toLoad = JSON.parse(decodeURIComponent(splitHash[1]));
+				if (StatGen.isValidState(toLoad)) {
+					this.doLoadStateFrom(toLoad);
+
+					if (firstLoad !== true) this.handleCostChanges();
+				}
+
+				location.replace("#pointbuy");
+			}
+		}
+	}
+
+	handleCostChanges () {
+		$(".base").each((i, e) => e.value = this.limit(e.value));
+		this.changeBase();
+	}
+
+	getSaveableState () {
+		return MiscUtil.copy({
+			t: this.savedState,
+			p: this.budget,
+			m: {
+				a: this.isAdvanced
+			}
+		})
+	}
+
+	doSaveState () {
+		StorageUtil.pSet(POINTBUY_STORAGE, this.getSaveableState());
+	}
+
+	async pLoadRaceJson () {
 		const data = await DataUtil.loadJSON(RACE_JSON_URL);
 
 		let brew;
 		try {
 			brew = await BrewUtil.pAddBrewData();
 		} catch (e) {
-			return BrewUtil.purgeBrew();
+			return BrewUtil.pPurgeBrew();
 		}
 
 		this.raceData = EntryRenderer.race.mergeSubraces(data.race);
@@ -41,14 +120,13 @@ class StatGen {
 		const titleStr = isCrypto ? "Numbers will be generated using Crypto.getRandomValues()" : "Numbers will be generated using Math.random()";
 		$(`#roller-mode`).html(`Cryptographically strong random generation: <span title="${titleStr}" class="crypto-${isCrypto}">${isCrypto ? `<span class="glyphicon glyphicon-lock"></span> enabled` : `<span class="glyphicon glyphicon-ban-circle"></span> not available`}</span>`);
 
-		$("#reset").click((evt) => {
+		$("#reset").click(() => {
 			$(".base").val(this.statMin);
 			$(".choose").prop("checked", false);
-			this.changeTotal();
-			this.changeBase(evt.target);
+			this.changeBase();
 		});
 
-		$(".base").on("input", (evt) => this.changeBase(evt.target));
+		$(".base").on("input", () => this.changeBase());
 		$("input.choose").on("change", (evt) => this.chooseRace(evt.target));
 
 		const races = this.raceData.map(x => ({name: x.name, source: x.source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
@@ -65,25 +143,111 @@ class StatGen {
 	}
 
 	renderCostsTable () {
+		$(`.pbuy__add_row_btn_wrap`).remove();
 		const $table = $(`#costs`);
 		$table.empty().append(`
 			<thead>
-				<tr>
-					<th>Score</th><th>Modifier</th><th>Point Cost</th>
-				</tr>
+				<tr><th>Score</th><th>Modifier</th><th>Point Cost</th><th class="pbuy__adv--visible"></th></tr>
 			</thead>
 		`);
 		const $tbody = $(`<tbody/>`).appendTo($table);
 
+		const renderState = (isAdvanced) => {
+			const state = isAdvanced ? this.savedState : StatGen.DEFAULT_COSTS;
+			const keys = Object.keys(state).map(Number).sort(SortUtil.ascSort);
+			for (let i = 0; i < keys.length; ++i) {
+				const k = keys[i]; const v = state[k];
+
+				const $row = $(`
+					<tr${isAdvanced ? ` class="pbuy__tbl_row"` : ""}>
+						<td>${k}</td>
+						<td>${Parser.getAbilityModifier(Number(k))}</td>
+						<td>
+							<span class="pbuy__adv--hidden">${v}</span>
+							<span class="pbuy__wrp_cost_ipt pbuy__adv--visible"/>
+						</td>
+						<td class="pbuy__adv--visible"/>
+					</tr>
+				`).appendTo($tbody);
+
+				$(`<input value="${v}" type="number">`).on("change", (evt) => {
+					state[k] = Number(evt.target.value);
+					this.doSaveDebounced();
+					this.handleCostChanges();
+				}).appendTo($row.find(`.pbuy__wrp_cost_ipt`));
+
+				if (isAdvanced && (i === 0 || i === keys.length - 1) && keys.length > 1) {
+					const $btnRm = $(`<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>`).click(() => {
+						delete state[k];
+						this.doSaveDebounced();
+
+						this.renderCostsTable();
+						this.handleCostChanges();
+					}).appendTo($row.find(`td`).last());
+				}
+			}
+		};
+
 		if (this.isAdvanced) {
-			// TODO
-		} else {
-			Object.entries(StatGen.DEFAULT_COSTS).forEach(([k, v]) => {
-				$tbody.append(`
-					<tr><td>${k}</td><td>${Parser.getAbilityModifier(Number(k))}</td><td>${v}</td></tr>
-				`);
-			});
-		}
+			renderState(true);
+
+			const $wrpBtnsTop = $(`<div class="pbuy__add_row_btn_wrap"/>`).insertBefore($table);
+
+			const $btnAddLow = $(`<button class="btn btn-xs btn-primary" style="margin-right: 7px;">Add Lower</button>`)
+				.click(() => {
+					const lowest = Object.keys(this.savedState).map(Number).sort(SortUtil.ascSort)[0];
+					if (lowest === 0) return alert("Can't go any lower!");
+
+					this.savedState[lowest - 1] = this.savedState[lowest];
+					this.doSaveDebounced();
+
+					this.renderCostsTable();
+				}).appendTo($wrpBtnsTop);
+
+			const $btnAddHigh = $(`<button class="btn btn-xs btn-primary" style="margin-right: 14px;">Add Higher</button>`)
+				.click(() => {
+					const highest = Object.keys(this.savedState).map(Number).sort(SortUtil.ascSort).reverse()[0];
+
+					this.savedState[highest + 1] = this.savedState[highest];
+					this.doSaveDebounced();
+
+					this.renderCostsTable();
+				}).appendTo($wrpBtnsTop);
+
+			const $btnReset = $(`<button class="btn btn-xs btn-default">Reset</button>`)
+				.click(() => {
+					this.savedState = MiscUtil.copy(StatGen.DEFAULT_COSTS);
+					this.budget = StatGen.DEFAULT_POINTS;
+					this.$budget.val(this.budget);
+					this.doSaveDebounced();
+
+					this.renderCostsTable();
+					this.handleCostChanges();
+				}).appendTo($wrpBtnsTop);
+
+			const $wrpBtnsBtm = $(`<div class="pbuy__add_row_btn_wrap" style="margin-top: 2rem;"/>`).insertAfter($table);
+			const $btnSaveFile = $(`<button class="btn btn-xs btn-primary" style="margin-right: 7px;">Save to File</button>`)
+				.click(() => DataUtil.userDownload(`statgen-pointbuy`, this.getSaveableState()))
+				.appendTo($wrpBtnsBtm);
+
+			const $btnLoadFile = $(`<button class="btn btn-xs btn-primary" style="margin-right: 14px;">Load from File</button>`)
+				.click(() => {
+					DataUtil.userUpload((json) => {
+						if (StatGen.isValidState(json)) {
+							this.doLoadStateFrom(json);
+							this.doSaveDebounced();
+							this.handleCostChanges();
+						} else return alert("Invalid save!");
+					});
+				}).appendTo($wrpBtnsBtm);
+
+			const $btnSaveUrl = $(`<button class="btn btn-xs btn-primary">Save to URL</button>`)
+				.click(() => {
+					const encoded = `${window.location.href.split("#")[0]}#pointbuy${HASH_PART_SEP}${encodeURIComponent(JSON.stringify(this.getSaveableState()))}`;
+					copyText(encoded);
+					showCopiedEffect($btnSaveUrl);
+				}).appendTo($wrpBtnsBtm);
+		} else renderState();
 	}
 
 	initialiseChangeHandlers () {
@@ -94,16 +258,28 @@ class StatGen {
 				let num = parseInt(ele.value);
 
 				if (isNaN(num)) ele.value = this.statMin;
-				else ele.value = Math.max(Math.min(num, this.statMax), this.statMin);
+				else ele.value = this.limit(num);
 
 				this.changeTotal();
 			})
 		});
+
+		this.$budget.on("change", () => {
+			this.changeBase();
+			if (this.isAdvanced) {
+				this.budget = Number(this.$budget.val());
+				this.doSaveDebounced();
+			}
+		});
+	}
+
+	limit (num) {
+		return Math.max(Math.min(num, this.statMax), this.statMin)
 	}
 
 	get statMin () {
 		if (this.isAdvanced) {
-			// TODO
+			return Object.keys(this.savedState).map(Number).sort(SortUtil.ascSort)[0];
 		} else {
 			return StatGen.DEFAULT_MIN;
 		}
@@ -111,7 +287,7 @@ class StatGen {
 
 	get statMax () {
 		if (this.isAdvanced) {
-			// TODO
+			return Object.keys(this.savedState).map(Number).sort(SortUtil.ascSort).reverse()[0];
 		} else {
 			return StatGen.DEFAULT_MAX;
 		}
@@ -119,7 +295,7 @@ class StatGen {
 
 	getPointBuyCost (n) {
 		if (this.isAdvanced) {
-			// TODO
+			return this.savedState[n];
 		} else {
 			return StatGen.DEFAULT_COSTS[n];
 		}
@@ -172,15 +348,24 @@ class StatGen {
 		}
 	}
 
-	changeBase (ele) {
-		const budget = Number($("#budget").val());
+	getCostAndBudget () {
+		const budget = Number(this.$budget.val());
 		let cost = 0;
-		$(".base").each((i, el) => cost += this.getPointBuyCost(Number(el.value)));
-		if (cost > budget) return ele.value = ele.dataset.prev;
-		ele.dataset.prev = ele.value;
-		$("#remaining").val(budget - cost);
+		$(".base").each((i, el) => cost += this.getPointBuyCost(this.limit(Number(el.value))));
+		return {cost, budget};
+	}
 
-		this.changeTotal()
+	checkBudget (costBudget) {
+		if (!costBudget) costBudget = this.getCostAndBudget();
+		$(`#remaining`).toggleClass("error-background", costBudget.cost > costBudget.budget);
+	}
+
+	changeBase () {
+		const constBudget = this.getCostAndBudget();
+		$("#remaining").val(constBudget.budget - constBudget.cost);
+		this.checkBudget(constBudget);
+
+		this.changeTotal();
 	}
 
 	changeTotal () {
@@ -229,6 +414,7 @@ StatGen.DEFAULT_COSTS = {
 };
 StatGen.DEFAULT_MIN = 8;
 StatGen.DEFAULT_MAX = 15;
+StatGen.DEFAULT_POINTS = 27;
 
 const statGen = new StatGen();
 
@@ -240,5 +426,6 @@ window.onhashchange = function hashchange () {
 	let hash = window.location.hash.slice(1);
 	$(".statmethod").hide();
 	if (hash === "") hash = "rolled";
-	$(`#${hash}`).show();
+	$(`#${hash.split(HASH_PART_SEP)[0]}`).show();
+	if (statGen.isInit) statGen.doLoadUrlState();
 };

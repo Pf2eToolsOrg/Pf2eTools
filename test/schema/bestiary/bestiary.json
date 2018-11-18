@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.6.0",
+	"version": "1.6.2",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -114,86 +114,10 @@
 				}
 			]
 		},
-		"dmgType": {
-			"type": "string",
-			"enum": [
-				"acid",
-				"bludgeoning",
-				"cold",
-				"fire",
-				"force",
-				"lightning",
-				"necrotic",
-				"piercing",
-				"poison",
-				"psychic",
-				"radiant",
-				"slashing",
-				"thunder"
-			]
-		},
-		"conditions": {
-			"type": "string",
-			"enum": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"grappled",
-				"incapacitated",
-				"invisible",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"restrained",
-				"stunned",
-				"unconscious",
-
-				"disease"
-			]
-		},
-		"damImmune": {
-			"oneOf": [
-				{
-					"$ref": "#/definitions/dmgType"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["special"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"immune": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/damImmune"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["immune"]
-				}
-			]
-		},
 		"damResist": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/dmgType"
+					"$ref": "/Entry#/definitions/dataDmgType"
 				},
 				{
 					"type": "object",
@@ -229,7 +153,7 @@
 		"damVuln": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/dmgType"
+					"$ref": "/Entry#/definitions/dataDmgType"
 				},
 				{
 					"type": "object",
@@ -259,42 +183,6 @@
 					},
 					"additionalProperties": false,
 					"required": ["vulnerable"]
-				}
-			]
-		},
-		"condImmune": {
-			"oneOf": [
-				{
-					"$ref": "#/definitions/conditions"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["special"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"conditionImmune": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/conditions"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["conditionImmune"]
 				}
 			]
 		},
@@ -385,7 +273,19 @@
 				"type": "string"
 			},
 			"size": {
-				"type": "string"
+				"type": "string",
+				"enum": [
+					"F",
+					"D",
+					"T",
+					"S",
+					"M",
+					"L",
+					"H",
+					"G",
+					"C",
+					"V"
+				]
 			},
 			"type": {
 				"anyOf": [
@@ -832,13 +732,13 @@
 			"conditionImmune": {
 				"type": "array",
 				"items": {
-					"$ref": "#/definitions/condImmune"
+					"$ref": "/Entry#/definitions/dataCondImmune"
 				}
 			},
 			"immune": {
 				"type": "array",
 				"items": {
-					"$ref": "#/definitions/damImmune"
+					"$ref": "/Entry#/definitions/dataDamImmune"
 				}
 			},
 			"spellcasting": {
@@ -921,6 +821,21 @@
 								}
 							},
 							"additionalProperties": false
+						},
+						"hidden": {
+							"description": "Allows the above properties to be specified, but not rendered. Useful if e.g. a creature can only cast one spell, and this is rendered in the header line.",
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": [
+									"constant",
+									"will",
+									"rest",
+									"daily",
+									"weekly",
+									"spells"
+								]
+							}
 						},
 						"footerEntries": {
 							"type": "array",
@@ -1014,6 +929,12 @@
 			},
 			"legendaryActions": {
 				"type": "number"
+			},
+			"legendaryHeader": {
+				"type": "array",
+				"items": {
+					"$ref": "/Entry"
+				}
 			},
 			"legendary": {
 				"type": "array",

@@ -14,7 +14,7 @@ function conditionDiseaseTypeToFull (type) {
 const sourceFilter = getSourceFilter();
 let filterBox;
 let list;
-function onJsonLoad (data) {
+async function onJsonLoad (data) {
 	list = ListUtil.search({
 		valueNames: ["name", "source", "type"],
 		listClass: "conditions"
@@ -26,7 +26,7 @@ function onJsonLoad (data) {
 		displayFn: conditionDiseaseTypeToFull,
 		deselFn: (it) => it === "d"
 	});
-	filterBox = initFilterBox(
+	filterBox = await pInitFilterBox(
 		sourceFilter,
 		typeFilter
 	);
@@ -52,11 +52,11 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 
 			History.init(true);
 			RollerUtil.addListRollButton();

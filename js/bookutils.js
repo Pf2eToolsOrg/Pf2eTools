@@ -7,11 +7,11 @@ const BookUtil = {
 
 	_getSelectors (scrollTo) {
 		return [
-			`.statsBlockSectionHead > .entry-title:textEquals("${scrollTo}")`,
-			`.statsBlockHead > .entry-title:textEquals("${scrollTo}")`,
-			`.statsBlockSubHead > .entry-title:textEquals("${scrollTo}")`,
-			`.statsBlockInset > .entry-title:textEquals("${scrollTo}")`,
-			`.statsInlineHead > .entry-title:textEquals("${scrollTo}.")`
+			`.statsBlockSectionHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.statsBlockHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.statsBlockSubHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.statsBlockInset > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.statsInlineHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}.")`
 		];
 	},
 
@@ -202,7 +202,7 @@ const BookUtil = {
 				const $allSects = $(`div.statsBlockSectionHead`);
 				const $toShow = $allSects.filter((i, e) => {
 					const $e = $(e);
-					const $match = $e.children().filter(`span.entry-title:textEquals("${sectionHeader}")`);
+					const $match = $e.children().filter(`span.entry-title-inner:textEquals("${sectionHeader}")`);
 					return $match.length;
 				});
 
@@ -337,6 +337,9 @@ const BookUtil = {
 			} else if (forceScroll) BookUtil.scrollClick(scrollTo, scrollIndex);
 		}
 
+		/**
+		 * Update the Previous/Next/To Top buttons at the top/bottom of the page
+		 */
 		(function updateControls () {
 			if (BookUtil.referenceId) {
 				const cnt = BookUtil.curRender.controls;
@@ -382,7 +385,7 @@ const BookUtil = {
 		});
 		$body.on(`click`, `.entry-title-inner`, function (evt) {
 			const $this = $(this);
-			const text = $this.text().replace(/\.$/, "");
+			const text = $this.text().trim().replace(/\.$/, "");
 
 			if (evt.shiftKey) {
 				copyText(text);
@@ -410,11 +413,11 @@ const BookUtil = {
 			return name.includes(Parser.SOURCE_JSON_TO_FULL[SRC_TYP]) ? name.replace(Parser.SOURCE_JSON_TO_FULL[SRC_TYP], Parser.sourceJsonToAbv(SRC_TYP)) : name;
 		}
 
-		function handleFound (fromIndex, homebrewData) {
+		async function pHandleFound (fromIndex, homebrewData) {
 			document.title = `${fromIndex.name} - 5etools`;
 			$(`.book-head-header`).html(cleanName(fromIndex.name));
-			$(`.book-head-message`).html("Browse content. Press F to find.");
-			BookUtil.loadBook(fromIndex, bookId, hashParts, homebrewData);
+			$(`.book-head-message`).html("Browse content. Press F to find, and G to go to page.");
+			await BookUtil.pLoadBook(fromIndex, bookId, hashParts, homebrewData);
 			currentPage();
 		}
 
@@ -428,24 +431,24 @@ const BookUtil = {
 
 		const [bookId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
 		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
-		if (fromIndex && !fromIndex.uniqueId) handleFound(fromIndex);
+		if (fromIndex && !fromIndex.uniqueId) pHandleFound(fromIndex);
 		else if (fromIndex && fromIndex.uniqueId) { // it's homebrew
 			BrewUtil.pAddBrewData() // to load existing data
 				.then((brew) => {
 					if (!brew[BookUtil.homebrewData]) handleNotFound();
 					const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 					if (!bookData) handleNotFound();
-					handleFound(fromIndex, bookData);
+					pHandleFound(fromIndex, bookData);
 				})
 				.catch(() => {
-					BrewUtil.purgeBrew();
+					BrewUtil.pPurgeBrew();
 					handleNotFound();
 				});
 		} else handleNotFound();
 	},
 
 	_renderer: new EntryRenderer().setEnumerateTitlesRel(true),
-	loadBook: (fromIndex, bookId, hashParts, homebrewData) => {
+	async pLoadBook (fromIndex, bookId, hashParts, homebrewData) {
 		function doPopulate (data) {
 			const allContents = $(`.contents-item`);
 			BookUtil.thisContents = allContents.filter(`[data-bookid="${UrlUtil.encodeForHash(bookId)}"]`);
@@ -458,7 +461,8 @@ const BookUtil = {
 		if (homebrewData) {
 			doPopulate(homebrewData);
 		} else {
-			DataUtil.loadJSON(`${BookUtil.baseDataUrl}${bookId.toLowerCase()}.json`).then(doPopulate);
+			const data = await DataUtil.loadJSON(`${BookUtil.baseDataUrl}${bookId.toLowerCase()}.json`);
+			doPopulate(data);
 		}
 	},
 
@@ -488,9 +492,12 @@ const BookUtil = {
 
 		BookUtil._$body.off("keypress");
 		BookUtil._$body.on("keypress", (e) => {
-			if ((e.key === "f" && noModifierKeys(e))) {
+			if (((e.key === "f" || e.key === "g") && noModifierKeys(e))) {
 				if (MiscUtil.isInInput(e)) return;
 				e.preventDefault();
+
+				const isPageMode = e.key === "g";
+
 				$(`span.temp`).contents().unwrap();
 				BookUtil._lastHighlight = null;
 				if (BookUtil._$findAll) BookUtil._$findAll.remove();
@@ -499,30 +506,37 @@ const BookUtil = {
 				});
 
 				const $results = $(`<div class="f-all-out">`);
-				const $srch = $(`<input class="form-control" placeholder="Find text...">`).on("keypress", (e) => {
+				const $srch = $(`<input class="form-control" placeholder="${isPageMode ? "Go to page number..." : "Find text..."}">`).on("keypress", (e) => {
 					e.stopPropagation();
+
 					if (e.key === "Enter" && noModifierKeys(e)) {
+						const term = $srch.val();
+						if (isPageMode) {
+							if (!/^\d+$/.exec(term.trim())) return alert(`Please enter a valid page number.`);
+						}
+
 						$results.html("");
 						const found = [];
 						const toSearch = BookUtil.curRender.data;
 						toSearch.forEach((section, i) => {
 							BookUtil._headerCounts = {};
-							searchEntriesFor(i, "", found, $srch.val(), section)
+							searchEntriesFor(i, "", found, term, section, isPageMode);
 						});
 						if (found.length) {
 							$results.show();
 							found.forEach(f => {
 								const $row = $(`<p class="f-result"/>`);
 								const $ptLink = $(`<span/>`);
+								const isLitTitle = f.headerMatches && !f.page;
 								const $link = $(
 									`<a href="#${getHash(f)}">
-									<i>${Parser.bookOrdinalToAbv(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name}${f.header ? ` \u2013 ${f.headerMatches ? `<span class="highlight">` : ""}${f.header}${f.headerMatches ? `</span>` : ""}` : ""}</i>
+									<i>${Parser.bookOrdinalToAbv(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name}${f.header ? ` \u2013 ${isLitTitle ? `<span class="highlight">` : ""}${f.header}${isLitTitle ? `</span>` : ""}` : ""}</i>
 								</a>`
 								);
 								$ptLink.append($link);
 								$row.append($ptLink);
 
-								if (f.previews) {
+								if (!isPageMode && f.previews) {
 									const $ptPreviews = $(`<a href="#${getHash(f)}"/>`).click(function () {
 										BookUtil.handleReNav(this);
 									});
@@ -550,6 +564,11 @@ const BookUtil = {
 
 									$link.on("click", () => $ptPreviews.click());
 								} else {
+									if (f.page) {
+										const $ptPage = $(`<span>Page ${f.page}</span>`);
+										$row.append($ptPage);
+									}
+
 									$link.click(function () {
 										BookUtil.handleReNav(this);
 									});
@@ -575,44 +594,50 @@ const BookUtil = {
 		}
 
 		const EXTRA_WORDS = 2;
-		function searchEntriesFor (chapterIndex, prevLastName, appendTo, term, obj) {
-			if (term === undefined || term === null) return;
-			const cleanTerm = term.toLowerCase().trim();
+		function searchEntriesFor (chapterIndex, prevLastName, appendTo, term, obj, isPageMode) {
+			if (term == null) return;
+			const cleanTerm = isPageMode ? Number(term.trim()) : term.toLowerCase().trim();
 			if (!cleanTerm) return;
 
 			if (isNamedEntry(obj)) {
 				if (BookUtil._headerCounts[obj.name] === undefined) BookUtil._headerCounts[obj.name] = 0;
 				else BookUtil._headerCounts[obj.name]++;
 			}
+
 			let lastName;
 			if (isNamedEntry(obj)) {
 				lastName = obj.name;
-				if (lastName.toLowerCase().includes(cleanTerm)) {
+				const matches = isPageMode ? obj.page === cleanTerm : lastName.toLowerCase().includes(cleanTerm);
+				if (matches) {
 					appendTo.push({
 						ch: chapterIndex,
 						header: lastName,
 						headerIndex: BookUtil._headerCounts[lastName],
 						term: term.trim(),
-						headerMatches: true
+						headerMatches: true,
+						page: obj.page
 					});
 				}
 			} else {
 				lastName = prevLastName;
 			}
+
 			if (obj.entries) {
-				obj.entries.forEach(e => searchEntriesFor(chapterIndex, lastName, appendTo, term, e))
+				obj.entries.forEach(e => searchEntriesFor(chapterIndex, lastName, appendTo, term, e, isPageMode))
 			} else if (obj.items) {
-				obj.items.forEach(e => searchEntriesFor(chapterIndex, lastName, appendTo, term, e))
+				obj.items.forEach(e => searchEntriesFor(chapterIndex, lastName, appendTo, term, e, isPageMode))
 			} else if (obj.rows) {
 				obj.rows.forEach(r => {
 					const toSearch = r.row ? r.row : r;
-					toSearch.forEach(c => searchEntriesFor(chapterIndex, lastName, appendTo, term, c));
+					toSearch.forEach(c => searchEntriesFor(chapterIndex, lastName, appendTo, term, c, isPageMode));
 				})
 			} else if (obj.tables) {
-				obj.tables.forEach(t => searchEntriesFor(chapterIndex, lastName, appendTo, term, t))
+				obj.tables.forEach(t => searchEntriesFor(chapterIndex, lastName, appendTo, term, t, isPageMode))
 			} else if (obj.entry) {
-				searchEntriesFor(chapterIndex, lastName, appendTo, term, obj.entry)
+				searchEntriesFor(chapterIndex, lastName, appendTo, term, obj.entry, isPageMode)
 			} else if (typeof obj === "string" || typeof obj === "number") {
+				if (isPageMode) return;
+
 				const renderStack = [];
 				BookUtil._renderer.recursiveEntryRender(obj, renderStack);
 				const rendered = $(`<p>${renderStack.join("")}</p>`).text();

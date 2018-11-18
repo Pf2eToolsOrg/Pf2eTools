@@ -481,6 +481,13 @@ Omnidexer.TO_INDEX = [
 		listProp: "tableGroup",
 		baseUrl: "tables.html",
 		hover: true
+	},
+	{
+		category: 31,
+		file: "ships.json",
+		listProp: "ship",
+		baseUrl: "ships.html",
+		hover: true
 	}
 ];
 

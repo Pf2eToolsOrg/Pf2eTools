@@ -618,12 +618,17 @@ function EntryRenderer () {
 
 		function handleEntriesOptionsOptFeaturePatron (self, incDepth) {
 			const inlineTitle = depth >= 2;
+			const pagePart = !inlineTitle && entry.page ? ` <span class="entry-title-page">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${entry.source}</span> ` : ""}p${entry.page}</span>` : "";
 			const nextDepth = incDepth ? depth + 1 : depth;
 			const styleString = getStyleString();
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
 			if (entry.name != null) self._handleTrackTitles(entry.name);
-			const headerSpan = entry.name !== undefined ? `<span class="entry-title" data-title-index="${self._headerIndex++}" ${self._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span></span> ` : "";
+			const headerSpan = entry.name ? `
+				<span class="entry-title" data-title-index="${self._headerIndex++}" ${self._getEnumeratedTitleRel(entry.name)}>
+				<span class="entry-title-inner">
+					${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}
+				</span>${pagePart}</span> ` : "";
 
 			if (depth === -1) {
 				if (!self._firstSection) {
@@ -1126,6 +1131,16 @@ function EntryRenderer () {
 								};
 								self._recursiveEntryRender(fauxEntry, textStack, depth);
 								break;
+							case "@ship":
+								fauxEntry.href.path = UrlUtil.PG_SHIPS;
+								// enable this if/when there's a printed source with ships
+								// if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_DMG;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_SHIPS,
+									source: source || "NONE" // || SRC_DMG // this too
+								};
+								self._recursiveEntryRender(fauxEntry, textStack, depth);
+								break;
 						}
 					}
 				} else textStack[0] += s;
@@ -1346,6 +1361,11 @@ EntryRenderer.utils = {
 		const otherSourceText = getAltSourceText("otherSources", "Also found in");
 
 		return `${[baseText, addSourceText, otherSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText) ? "." : ""}`;
+	},
+
+	getAbilityRoller (statblock, ability) {
+		const mod = Parser.getAbilityModifier(statblock[ability]);
+		return EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${mod}|${statblock[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
 	},
 
 	tabButton: (label, funcChange, funcPopulate) => {
@@ -1873,6 +1893,7 @@ EntryRenderer.race = {
 				if (s.ability) {
 					if (s.ability.overwrite || !cpy.ability) cpy.ability = {};
 					cpy.ability = Object.assign(cpy.ability, s.ability);
+					delete cpy.ability.overwrite;
 					delete s.ability;
 				}
 				if (s.entries) {
@@ -2240,9 +2261,14 @@ EntryRenderer.monster = {
 				.replace(/(?:adult|ancient|young) \w+ (dragon|dracolich)/gi, "$1");
 			return mon.isNamedCreature ? cleanDragons.split(" ")[0] : cleanDragons.toLowerCase();
 		}
-		const legendaryActions = mon.legendaryActions || 3;
-		const legendaryName = getCleanName();
-		return `${mon.isNamedCreature ? "" : "The "}${legendaryName} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${mon.isNamedCreature ? "" : "The "}${legendaryName} regains spent legendary actions at the start of its turn.`
+
+		if (mon.legendaryHeader) {
+			return mon.legendaryHeader.map(line => renderer.renderEntry(line)).join("</p><p>");
+		} else {
+			const legendaryActions = mon.legendaryActions || 3;
+			const legendaryName = getCleanName();
+			return `${mon.isNamedCreature ? "" : "The "}${legendaryName} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${mon.isNamedCreature ? "" : "The "}${legendaryName} regains spent legendary actions at the start of its turn.`
+		}
 	},
 
 	getSave (renderer, attr, mod) {
@@ -2378,11 +2404,6 @@ EntryRenderer.monster = {
 	getCompactRenderedString: (mon, renderer, options = {}) => {
 		renderer = renderer || EntryRenderer.getDefaultRenderer();
 
-		function makeAbilityRoller (ability) {
-			const mod = Parser.getAbilityModifier(mon[ability]);
-			return renderer.renderEntry(`{@d20 ${mod}|${mon[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
-		}
-
 		const renderStack = [];
 
 		renderStack.push(`
@@ -2429,12 +2450,12 @@ EntryRenderer.monster = {
 						<th class="col-xs-2 text-align-center">CHA</th>
 					</tr>	
 					<tr>
-						<td class="text-align-center">${makeAbilityRoller("str")}</td>
-						<td class="text-align-center">${makeAbilityRoller("dex")}</td>
-						<td class="text-align-center">${makeAbilityRoller("con")}</td>
-						<td class="text-align-center">${makeAbilityRoller("int")}</td>
-						<td class="text-align-center">${makeAbilityRoller("wis")}</td>
-						<td class="text-align-center">${makeAbilityRoller("cha")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(mon, "str")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(mon, "dex")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(mon, "con")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(mon, "int")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(mon, "wis")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(mon, "cha")}</td>
 					</tr>
 				</table>
 			</td></tr>
@@ -2494,12 +2515,13 @@ EntryRenderer.monster = {
 		for (let i = 0; i < spellcasting.length; i++) {
 			const renderStack = [];
 			let spellList = spellcasting[i];
+			const hidden = new Set(spellList.hidden || []);
 			const toRender = [{type: "entries", name: spellList.name, entries: spellList.headerEntries ? JSON.parse(JSON.stringify(spellList.headerEntries)) : []}];
 			if (spellList.constant || spellList.will || spellList.rest || spellList.daily || spellList.weekly) {
 				const tempList = {type: "list", "style": "list-hang-notitle", items: []};
-				if (spellList.constant) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: spellList.constant.join(", ")});
-				if (spellList.will) tempList.items.push({type: "itemSpell", name: `At will:`, entry: spellList.will.join(", ")});
-				if (spellList.rest) {
+				if (spellList.constant && !hidden.has("constant")) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: spellList.constant.join(", ")});
+				if (spellList.will && !hidden.has("will")) tempList.items.push({type: "itemSpell", name: `At will:`, entry: spellList.will.join(", ")});
+				if (spellList.rest && !hidden.has("rest")) {
 					for (let j = 9; j > 0; j--) {
 						let rest = spellList.rest;
 						if (rest[j]) tempList.items.push({type: "itemSpell", name: `${j}/rest:`, entry: rest[j].join(", ")});
@@ -2507,7 +2529,7 @@ EntryRenderer.monster = {
 						if (rest[jEach]) tempList.items.push({type: "itemSpell", name: `${j}/rest each:`, entry: rest[jEach].join(", ")});
 					}
 				}
-				if (spellList.daily) {
+				if (spellList.daily && !hidden.has("daily")) {
 					for (let j = 9; j > 0; j--) {
 						let daily = spellList.daily;
 						if (daily[j]) tempList.items.push({type: "itemSpell", name: `${j}/day:`, entry: daily[j].join(", ")});
@@ -2515,7 +2537,7 @@ EntryRenderer.monster = {
 						if (daily[jEach]) tempList.items.push({type: "itemSpell", name: `${j}/day each:`, entry: daily[jEach].join(", ")});
 					}
 				}
-				if (spellList.weekly) {
+				if (spellList.weekly && !hidden.has("weekly")) {
 					for (let j = 9; j > 0; j--) {
 						let weekly = spellList.weekly;
 						if (weekly[j]) tempList.items.push({type: "itemSpell", name: `${j}/week:`, entry: weekly[j].join(", ")});
@@ -2523,9 +2545,9 @@ EntryRenderer.monster = {
 						if (weekly[jEach]) tempList.items.push({type: "itemSpell", name: `${j}/week each:`, entry: weekly[jEach].join(", ")});
 					}
 				}
-				toRender[0].entries.push(tempList);
+				if (tempList.items.length) toRender[0].entries.push(tempList);
 			}
-			if (spellList.spells) {
+			if (spellList.spells && !hidden.has("spells")) {
 				const tempList = {type: "list", "style": "list-hang-notitle", items: []};
 				for (let j = 0; j < 10; j++) {
 					let spells = spellList.spells[j];
@@ -2635,6 +2657,23 @@ EntryRenderer.item = {
 		return [damage, damageType, propertiesTxt];
 	},
 
+	getTypeRarityAndAttunementText (item) {
+		const typeToDisplay = item.typeText === "Other" ? "" : item.typeText;
+		const rarityParts = [];
+		if (typeToDisplay) rarityParts.push(", ");
+		if (item.tier) {
+			rarityParts.push(item.tier);
+			rarityParts.push(", ");
+		}
+		const rarityToDisplay = item.rarity && EntryRenderer.item.doRenderRarity(item.rarity);
+		if (rarityToDisplay) {
+			rarityParts.push(item.rarity);
+			rarityParts.push(", ");
+		}
+		rarityParts.pop();
+		return [typeToDisplay.trim(), rarityParts.join("").trim(), (item.reqAttune ? item.reqAttune : "").trim()];
+	},
+
 	getCompactRenderedString: function (item) {
 		const renderer = EntryRenderer.getDefaultRenderer();
 
@@ -2642,7 +2681,8 @@ EntryRenderer.item = {
 
 		renderStack.push(EntryRenderer.utils.getNameTr(item, true));
 
-		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${item.typeText === "Other" ? "" : item.typeText}${`${item.tier ? `, ${item.tier}` : ""}${item.rarity && EntryRenderer.item.doRenderRarity(item.rarity) ? `, ${item.rarity}` : ""}`} ${item.reqAttune || ""}</td>`);
+		const typeRarityAttunement = EntryRenderer.item.getTypeRarityAndAttunementText(item).filter(Boolean).join(", ");
+		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${typeRarityAttunement}</td>`);
 
 		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr><td colspan="2">${item.value ? item.value + (item.weight ? ", " : "") : ""}${Parser.itemWeightToFull(item)}</td><td class="damageproperties" colspan="4">${damage} ${damageType} ${propertiesTxt}</tr>`);
@@ -2686,7 +2726,7 @@ EntryRenderer.item = {
 					(brew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
 					resolve();
 				})
-				.catch(BrewUtil.purgeBrew);
+				.catch(BrewUtil.pPurgeBrew);
 		});
 	},
 	/**
@@ -3173,6 +3213,131 @@ EntryRenderer.table = {
 	}
 };
 
+EntryRenderer.ship = {
+	getCompactRenderedString (ship) {
+		// TODO improve this if/when ships are added to a finalised product
+		return EntryRenderer.ship.getRenderedString(ship);
+	},
+
+	getRenderedString (ship) {
+		const renderer = EntryRenderer.getDefaultRenderer();
+
+		function getSectionTitle (title) {
+			return `<tr class="stat__header_underline"><td colspan="6"><span>${title}</span></td></tr>`
+		}
+
+		function getSectionHpPart (sect, each) {
+			if (!sect.ac && !sect.hp) return "";
+			return `
+				<div><b>Armor Class</b> ${sect.ac}</div>
+				<div><b>Hit Points</b> ${sect.hp}${each ? ` each` : ""}${sect.dt ? ` (damage threshold ${sect.dt})` : ""}${sect.hpNote ? `; ${sect.hpNote}` : ""}</div>
+			`;
+		}
+
+		function getControlSection (control) {
+			if (!control) return "";
+			return `
+				<tr class="stat__header_underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
+				<tr><td colspan="6">
+				${getSectionHpPart(control)}
+				<div>${renderer.renderEntry({entries: control.entries})}</div>
+				</td></tr>
+			`;
+		}
+
+		function getMovementSection (move) {
+			if (!move) return "";
+			function getLocomotionSection (loc) {
+				const asList = {
+					type: "list",
+					style: "list-hang-notitle",
+					items: [
+						{
+							type: "item",
+							name: `Locomotion (${loc.mode})`,
+							entries: loc.entries
+						}
+					]
+				};
+				return `<div>${renderer.renderEntry(asList)}</div>`;
+			}
+
+			return `
+				<tr class="stat__header_underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
+				<tr><td colspan="6">
+				${getSectionHpPart(move)}
+				${move.locomotion.map(getLocomotionSection)}
+				</td></tr>
+			`;
+		}
+
+		function getWeaponSection (weap) {
+			return `
+				<tr class="stat__header_underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
+				<tr><td colspan="6">
+				${getSectionHpPart(weap, !!weap.count)}
+				${renderer.renderEntry({entries: weap.entries})}
+				</td></tr>
+			`;
+		}
+
+		function getOtherSection (oth) {
+			return `
+				<tr class="stat__header_underline"><td colspan="6"><span>${oth.name}</span></td></tr>
+				<tr><td colspan="6">
+				${getSectionHpPart(oth)}
+				${renderer.renderEntry({entries: oth.entries})}
+				</td></tr>
+			`;
+		}
+
+		return `
+			${EntryRenderer.utils.getBorderTr()}
+			${EntryRenderer.utils.getNameTr(ship)}
+			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(ship.size)} vehicle${ship.dimensions ? `, (${ship.dimensions.join(" by ")})` : ""}</i><br></td></tr>
+			<tr class="text"><td colspan="6">
+				<div><b>Creature Capacity</b> ${ship.capCrew} crew${ship.capPassenger ? `, ${ship.capPassenger} passengers` : ""}</div>
+				${ship.capCargo ? `<div><b>Cargo Capacity</b> ${ship.capCargo} ton${ship.capCargo === 1 ? "" : "s"}</div>` : ""}
+				<div><b>Travel Pace</b> ${ship.pace} miles per hour (${ship.pace * 24} miles per day)</div>
+			</td></tr>
+			<tr><td colspan="6">
+				<table class="summary striped-even">
+					<tr>
+						<th class="col-xs-2 text-align-center">STR</th>
+						<th class="col-xs-2 text-align-center">DEX</th>
+						<th class="col-xs-2 text-align-center">CON</th>
+						<th class="col-xs-2 text-align-center">INT</th>
+						<th class="col-xs-2 text-align-center">WIS</th>
+						<th class="col-xs-2 text-align-center">CHA</th>
+					</tr>	
+					<tr>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(ship, "str")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(ship, "dex")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(ship, "con")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(ship, "int")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(ship, "wis")}</td>
+						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(ship, "cha")}</td>
+					</tr>
+				</table>
+			</td></tr>
+			<tr class="text"><td colspan="6">
+				${ship.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(ship.immune)}</div>` : ""}
+				${ship.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(ship.conditionImmune)}</div>` : ""}
+			</td></tr>
+			${getSectionTitle("Hull")}
+			<tr><td colspan="6">
+			${getSectionHpPart(ship.hull)}
+			</td></tr>
+			${(ship.control || []).map(getControlSection).join("")}
+			${(ship.movement || []).map(getMovementSection).join("")}
+			${(ship.weapon || []).map(getWeaponSection).join("")}
+			${(ship.other || []).map(getOtherSection).join("")}
+			${EntryRenderer.utils.getPageTr(ship)}
+			${EntryRenderer.utils.getBorderTr()}
+		`;
+	}
+};
+
 EntryRenderer.hover = {
 	linkCache: {},
 	_isInit: false,
@@ -3266,7 +3431,7 @@ EntryRenderer.hover = {
 						if (!data[listProp]) return;
 						populate(data, listProp);
 					})
-					.catch(BrewUtil.purgeBrew)
+					.catch(BrewUtil.pPurgeBrew)
 					.then(() => DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${baseUrl}index.json`))
 					.then((data) => {
 						const officialSources = {};
@@ -3310,7 +3475,7 @@ EntryRenderer.hover = {
 						});
 						resolve();
 					})
-					.catch(BrewUtil.purgeBrew);
+					.catch(BrewUtil.pPurgeBrew);
 			});
 		}
 
@@ -3367,7 +3532,7 @@ EntryRenderer.hover = {
 									if (revName) EntryRenderer.hover._addToCache(page, it.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), it);
 								});
 							})
-							.catch(BrewUtil.purgeBrew)
+							.catch(BrewUtil.pPurgeBrew)
 							.then(() => {
 								allItems.forEach(item => {
 									const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
@@ -3411,7 +3576,7 @@ EntryRenderer.hover = {
 							if (!data.race) return;
 							populate(data, "race");
 						})
-						.catch(BrewUtil.purgeBrew)
+						.catch(BrewUtil.pPurgeBrew)
 						.then(() => {
 							DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}data/races.json`).then((data) => {
 								const merged = EntryRenderer.race.mergeSubraces(data.race);
@@ -3453,6 +3618,10 @@ EntryRenderer.hover = {
 			}
 			case UrlUtil.PG_TABLES: {
 				loadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
+				break;
+			}
+			case UrlUtil.PG_SHIPS: {
+				loadSimple(page, "ships.json", "ship");
 				break;
 			}
 			default:
@@ -3780,6 +3949,8 @@ EntryRenderer.hover = {
 				return EntryRenderer.cultboon.getCompactRenderedString;
 			case UrlUtil.PG_TABLES:
 				return EntryRenderer.table.getCompactRenderedString;
+			case UrlUtil.PG_SHIPS:
+				return EntryRenderer.ship.getCompactRenderedString;
 			default:
 				return null;
 		}
@@ -4035,7 +4206,7 @@ EntryRenderer.dice = {
 		return `${count}d${faces}${drop ? `d${dropDir}${dropAmount}` : ""}${mod < 0 ? mod : mod > 0 ? `+${mod}` : ""}`;
 	},
 
-	init: () => {
+	async init () {
 		const $wrpRoll = $(`<div class="rollbox"/>`);
 		const $minRoll = $(`<div class="rollbox-min"><span class="glyphicon glyphicon-chevron-up"></span></div>`).on("click", () => {
 			EntryRenderer.dice._showBox();
@@ -4074,7 +4245,7 @@ EntryRenderer.dice = {
 
 		$(`body`).append($minRoll).append($wrpRoll);
 
-		EntryRenderer.dice.storage = JSON.parse(StorageUtil.getStorage().getItem(ROLLER_MACRO_STORAGE) || "{}");
+		EntryRenderer.dice.storage = await StorageUtil.pGet(ROLLER_MACRO_STORAGE) || {};
 	},
 
 	_prevHistory: () => {
@@ -4188,7 +4359,7 @@ EntryRenderer.dice = {
 			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`th.name .stats-name`).text();
 			if (titleMaybe) return titleMaybe;
 			// otherwise, use the section title, where applicable
-			titleMaybe = $(ele).closest(`div`).children(`.entry-title`).first().text();
+			titleMaybe = $(ele).closest(`div`).children(`.entry-title`).first().find(`.entry-title-inner`).text();
 			if (titleMaybe) {
 				titleMaybe = titleMaybe.replace(/[.,:]$/, "");
 			}
@@ -4345,8 +4516,8 @@ EntryRenderer.dice = {
 			return arr.length === desired;
 		}
 
-		function save () {
-			StorageUtil.set(ROLLER_MACRO_STORAGE, EntryRenderer.dice.storage);
+		async function pSave () {
+			await StorageUtil.pSet(ROLLER_MACRO_STORAGE, EntryRenderer.dice.storage);
 		}
 
 		if (com === "/help" || com === "/h") {
@@ -4381,8 +4552,8 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 							if (name.includes(" ") || name.includes("#")) showInvalid();
 							else {
 								EntryRenderer.dice.storage[name] = macro;
-								save();
-								EntryRenderer.dice._showMessage(`Saved macro <span class="out-roll-item-code">#${name}</span>`, EntryRenderer.dice.SYSTEM_USER);
+								pSave()
+									.then(() => EntryRenderer.dice._showMessage(`Saved macro <span class="out-roll-item-code">#${name}</span>`, EntryRenderer.dice.SYSTEM_USER));
 							}
 						} else {
 							showInvalid();
@@ -4393,8 +4564,8 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 						if (checkLength(others, 1)) {
 							if (EntryRenderer.dice.storage[others[0]]) {
 								delete EntryRenderer.dice.storage[others[0]];
-								save();
-								EntryRenderer.dice._showMessage(`Removed macro <span class="out-roll-item-code">#${others[0]}</span>`, EntryRenderer.dice.SYSTEM_USER);
+								pSave()
+									.then(() => EntryRenderer.dice._showMessage(`Removed macro <span class="out-roll-item-code">#${others[0]}</span>`, EntryRenderer.dice.SYSTEM_USER));
 							} else {
 								EntryRenderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${others[0]}</span> not found`, EntryRenderer.dice.SYSTEM_USER);
 							}

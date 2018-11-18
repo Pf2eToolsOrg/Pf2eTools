@@ -2,8 +2,8 @@
 
 const JSON_URL = "data/rewards.json";
 
-window.onload = function load () {
-	ExcludeUtil.initialise();
+window.onload = async function load () {
+	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
@@ -19,8 +19,8 @@ const typeFilter = new Filter({
 	]
 });
 let filterBox;
-function onJsonLoad (data) {
-	filterBox = initFilterBox(sourceFilter, typeFilter);
+async function onJsonLoad (data) {
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter);
 
 	list = ListUtil.search({
 		valueNames: ["name", "source"],
@@ -46,11 +46,11 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
-		.catch(BrewUtil.purgeBrew)
-		.then(() => {
+		.catch(BrewUtil.pPurgeBrew)
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
-			ListUtil.loadState();
+			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 
 			History.init(true);
