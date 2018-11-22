@@ -423,6 +423,8 @@ window.onload = function load () {
 };
 
 window.onhashchange = function hashchange () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+
 	let hash = window.location.hash.slice(1);
 	$(".statmethod").hide();
 	if (hash === "") hash = "rolled";

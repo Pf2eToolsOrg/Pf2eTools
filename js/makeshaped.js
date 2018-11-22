@@ -1110,6 +1110,8 @@ function rebuildShapedSources () {
 }
 
 window.onload = function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+
 	window.handleBrew = data => {
 		shapedConverter.getInputs()
 			.then(inputs => {

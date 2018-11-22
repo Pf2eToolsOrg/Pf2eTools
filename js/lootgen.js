@@ -821,6 +821,7 @@ const ViewManipulation = class ViewManipulation {
 const lootGen = new LootGen();
 
 window.addEventListener("load", function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 

@@ -240,6 +240,7 @@ function getSpellSource (spellName) {
 }
 
 function loadSources () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(`data/spells/index.json`)
 		.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/spells/${f}`))))
 		.then(spellData => {

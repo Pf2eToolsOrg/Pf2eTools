@@ -13,6 +13,7 @@ class BooksList {
 	}
 
 	onPageLoad () {
+		ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 		SortUtil.initHandleFilterButtonClicks();
 		DataUtil.loadJSON(this.contentsUrl).then(this.onJsonLoad.bind(this));
 	}

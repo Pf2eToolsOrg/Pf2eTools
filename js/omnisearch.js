@@ -40,16 +40,8 @@ const Omnisearch = {
 					clickFirst = true;
 					$searchSubmit.click();
 					break;
-				case 37: // left
-					e.preventDefault();
-					$(`.pg-left`).click();
-					break;
 				case 38: // up
 					e.preventDefault();
-					break;
-				case 39: // right
-					e.preventDefault();
-					$(`.pg-right`).click();
 					break;
 				case 40: // down
 					e.preventDefault();

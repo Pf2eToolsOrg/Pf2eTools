@@ -27,6 +27,7 @@ function getTableName (loc, table) {
 }
 
 window.onload = function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 

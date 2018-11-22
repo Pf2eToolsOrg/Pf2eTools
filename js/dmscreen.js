@@ -3708,6 +3708,7 @@ class DmScreenUtil {
 DmScreenUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
 
 window.addEventListener("load", () => {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	// expose it for dbg purposes
 	window.DM_SCREEN = new Board();
 	EntryRenderer.hover.bindDmScreen(window.DM_SCREEN);

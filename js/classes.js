@@ -1045,10 +1045,10 @@ class SubClassLoader {
 					const idTr = $e.closest(`tr[id]`);
 					const pTr = $e.closest(`tr`);
 					const textNodes = $e.find(`.entry-title-inner`).contents().filter(function () {
-						return this.nodeType === 3;
+						return this.nodeType === 3 && this.nodeValue.trim();
 					});
 					if (!textNodes.length) return;
-					const displayText = textNodes[0].nodeValue.replace(/[:.]$/g, "");
+					const displayText = textNodes[0].nodeValue.trim().replace(/[:.]$/g, "");
 					const scrollTo = $e.data("title-index");
 					makeScroller($navBody, idTr, pTr, pClass, displayText, scrollTo);
 				});

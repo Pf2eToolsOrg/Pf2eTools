@@ -12,9 +12,18 @@ window.PROF_MODE_DICE = "dice";
 window.PROF_DICE_MODE = PROF_MODE_BONUS;
 
 function imgError (x) {
-	$(`#pagecontent th.name`).css("padding-right", "0.2em");
+	$(`#pagecontent th.name`).css("padding-right", "0.3em");
 	$(x).remove();
 	$(`.mon__wrp_hp`).css("max-width", "none");
+}
+
+function handleStatblockScroll (event, ele) {
+	$(`#token_image`)
+		.toggle(ele.scrollTop < 32)
+		.css({
+			opacity: (32 - ele.scrollTop) / 32,
+			top: -ele.scrollTop
+		})
 }
 
 function getAllImmRest (toParse, key) {
@@ -833,7 +842,7 @@ function renderStatblock (mon, isScaled) {
 		const imgLink = EntryRenderer.monster.getTokenUrl(mon);
 		$(`#float-token`).empty().append(`
 			<a href="${imgLink}" target="_blank">
-				<img src="${imgLink}" class="token" onerror="imgError(this)">
+				<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)">
 			</a>`
 		);
 		$content.find("th.name").html(

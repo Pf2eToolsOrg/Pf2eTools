@@ -1038,6 +1038,10 @@ span {
 		color: #a2201f;
 	}
 
+	&.sourceLLK {
+		color: #6e7a71;
+	}
+
 	&.sourceAL {
 		color: #ed1c24;
 	}
@@ -1696,11 +1700,14 @@ img.token {
 	width: auto;
 	max-width: 11rem;
 	height: auto;
+	transition: opacity 0.034s, max-width 0.034s, right 0.034s;
 }
 
 img.token:hover {
 	max-width: 100%;
 	right: 0;
+	opacity: 1 !important;
+	transition: opacity 0.034s, max-width 0.034s, right 0.034s;
 }
 
 .classes table.stats {

@@ -5,6 +5,7 @@ let msbcr;
 let monsterfeatures;
 
 window.onload = function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(MSBCR_JSON_URL).then(addMSBCR);
 };
 

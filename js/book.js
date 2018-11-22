@@ -9,6 +9,7 @@ window.onload = function load () {
 	BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message book-loading-message">Loading...</td></tr>`);
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 

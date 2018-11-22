@@ -12,7 +12,13 @@
  */
 class FilterBox {
 	static async pGetSelectedSources () {
-		const parsed = await StorageUtil.pGet(FilterBox._STORAGE_NAME);
+		let parsed;
+		try {
+			parsed = await StorageUtil.pGet(FilterBox._STORAGE_NAME);
+		} catch (e) {
+			setTimeout(() => {throw e});
+			parsed = null;
+		}
 		if (parsed) {
 			const sources = parsed[FilterBox.SOURCE_HEADER];
 			if (sources) {
@@ -63,10 +69,18 @@ class FilterBox {
 	}
 
 	async pDoLoadState () {
-		this.storedValues = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME);
-		this.storedVisible = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_VISIBLE);
-		this.storedGroupState = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_GROUP_STATE);
-		this.storedNestState = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_NEST_STATE);
+		try {
+			this.storedValues = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME);
+			this.storedVisible = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_VISIBLE);
+			this.storedGroupState = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_GROUP_STATE);
+			this.storedNestState = await StorageUtil.pGetForPage(FilterBox._STORAGE_NAME_NEST_STATE);
+		} catch (e) {
+			setTimeout(() => {throw e});
+			this.storedValues = null;
+			this.storedVisible = null;
+			this.storedGroupState = null;
+			this.storedNestState = null;
+		}
 	}
 
 	async _pDoSaveState () {

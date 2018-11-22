@@ -2062,6 +2062,183 @@
 					"This suit of armor is reinforced with a magically enhanced metal alloy called mizzium, which is made in Izzet foundries. While you're wearing the armor, any critical hit against you becomes a normal hit. In addition, when you are subjected to a magical effect that allows you to make a Strength or Constitution saving throw to take only half damage, you instead take no damage if you succeed on the saving throw."
 				]
 			}
+		},
+		{
+			"name": "Blade of the Medusa",
+			"type": "GV",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"rarity": "Very Rare",
+				"source": "LLK",
+				"page": 53,
+				"reqAttune": true,
+				"curse": true,
+				"nameSuffix": " of the Medusa",
+				"entries": [
+					"When you attack a creature with this magic weapon and roll a 20 on the attack roll, the creature must make a DC 15 Constitution saving throw in addition to suffering the attack's normal effects. On a failed save, the creature is restrained and must make another Constitution saving throw at the end of each of its turns. If it successfully saves against this effect three times, the effect ends. If it fails its saves three times, it is turned to stone and subjected to the petrified condition for 1 hour.",
+					"A creature is immune to this effect if it is immune to damage of the weapon's type, does not have a body made of flesh, or has legendary actions.",
+					{
+						"name": "Curse",
+						"type": "entries",
+						"entries": [
+							"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with a {@spell remove curse} spell or similar magic, you are unwilling to part with the weapon. Whenever you attack a creature with this weapon and roll a 1 on the attack roll, you must succeed on a DC 15 Constitution saving throw or be {@condition restrained} and forced to make additional saves against being {@condition petrified}, as above."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Gambler's Blade",
+			"type": "GV",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"rarity": "Rare",
+				"source": "LLK",
+				"page": 55,
+				"reqAttune": true,
+				"curse": true,
+				"namePrefix": "Gambler's Blade ",
+				"entries": [
+					"Choose a magical bonus of +1 to +3. This sword gains that bonus to its attack and damage rolls. For each point of bonus you choose for the sword, you take a corresponding penalty (\u22121 to \u22123) to your death saving throws. You can change this magical bonus each day at dawn.",
+					{
+						"name": "Curse",
+						"type": "entries",
+						"entries": [
+							"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with a {@spell remove curse} spell or similar magic, you are unwilling to part with the weapon."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Polymorph Blade",
+			"type": "GV",
+			"requires": [
+				{
+					"sword": true
+				}
+			],
+			"inherits": {
+				"rarity": "Rare",
+				"source": "LLK",
+				"page": 56,
+				"reqAttune": true,
+				"curse": true,
+				"namePrefix": "Polymorph Blade ",
+				"entries": [
+					"When you attack a creature with this magic weapon and roll a 20 on the attack roll, the creature must make a DC 15 Wisdom saving throw in addition to suffering the attack's normal effects. On a failed save, the creature also suffers the effects of a {@spell polymorph} spell. Roll a d20 and consult the following table to determine the form the target creature is transformed into.",
+					{
+						"type": "table",
+						"caption": "",
+						"colLabels": [
+							"d20",
+							"New Form"
+						],
+						"colStyles": [
+							"col-xs-2 text-align-center",
+							"col-xs-10"
+						],
+						"rows": [
+							[
+								"1",
+								"{@creature Tyrannosaurus Rex}"
+							],
+							[
+								"2",
+								"{@creature Giant Ape}"
+							],
+							[
+								"3",
+								"{@creature Elephant}"
+							],
+							[
+								"4",
+								"{@creature Giant scorpion}"
+							],
+							[
+								"5",
+								"{@creature Rhinoceros}"
+							],
+							[
+								"6",
+								"{@creature Polar bear}"
+							],
+							[
+								"7",
+								"{@creature Giant toad}"
+							],
+							[
+								"8",
+								"{@creature Giant eagle}"
+							],
+							[
+								"9",
+								"{@creature Black bear}"
+							],
+							[
+								"10",
+								"{@creature Crocodile}"
+							],
+							[
+								"11",
+								"{@creature Wolf}"
+							],
+							[
+								"12",
+								"{@creature Riding Horse|mm|Horse}"
+							],
+							[
+								"13",
+								"{@creature Ox|VGM}"
+							],
+							[
+								"14",
+								"{@creature Giant frog}"
+							],
+							[
+								"15",
+								"{@creature Poisonous snake}"
+							],
+							[
+								"16",
+								"{@creature Hawk}"
+							],
+							[
+								"17",
+								"{@creature Octopus}"
+							],
+							[
+								"18",
+								"{@creature Cat}"
+							],
+							[
+								"19",
+								"{@creature Rat}"
+							],
+							[
+								"20",
+								"Rabbit"
+							]
+						]
+					},
+					"A creature is immune to this effect if it is immune to damage of the weapon's type, is a shapechanger, or has legendary actions.",
+					{
+						"name": "Curse",
+						"type": "entries",
+						"entries": [
+							"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with a {@spell remove curse} spell or similar magic, you are unwilling to part with the weapon. Whenever you attack a creature with this weapon and roll a 1 on the attack roll, you suffer the effect of a {@spell polymorph} spell for 1 hour, rolling on the table to determine your new form."
+						]
+					}
+				]
+			}
 		}
 	]
 }

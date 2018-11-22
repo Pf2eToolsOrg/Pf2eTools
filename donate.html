@@ -93,6 +93,7 @@
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 <script>
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
 		const pct = Number(dosh.donated) / Number(dosh.Goal);
 		$(`#don-total`).text(`€${dosh.Goal}`);

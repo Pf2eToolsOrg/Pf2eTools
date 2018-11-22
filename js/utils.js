@@ -1674,6 +1674,7 @@ SRC_WDH = "WDH";
 SRC_WDMM = "WDMM";
 SRC_GGR = "GGR";
 SRC_KKW = "KKW";
+SRC_LLK = "LLK";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1785,6 +1786,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_WDH] = "Waterdeep: Dragon Heist";
 Parser.SOURCE_JSON_TO_FULL[SRC_WDMM] = "Waterdeep: Dungeon of the Mad Mage";
 Parser.SOURCE_JSON_TO_FULL[SRC_GGR] = "Guildmasters' Guide to Ravnica";
 Parser.SOURCE_JSON_TO_FULL[SRC_KKW] = "Krenko's Way";
+Parser.SOURCE_JSON_TO_FULL[SRC_LLK] = "Lost Laboratory of Kwalish";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -1879,6 +1881,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_WDH] = "WDH";
 Parser.SOURCE_JSON_TO_ABV[SRC_WDMM] = "WDMM";
 Parser.SOURCE_JSON_TO_ABV[SRC_GGR] = "GGR";
 Parser.SOURCE_JSON_TO_ABV[SRC_KKW] = "KKW";
+Parser.SOURCE_JSON_TO_ABV[SRC_LLK] = "LLK";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -3088,10 +3091,8 @@ ListUtil = {
 				ListUtil._pLoadSavedSublist(store.items);
 			}
 		} catch (e) {
+			setTimeout(() => {throw e;});
 			await StorageUtil.pRemoveForPage("sublist");
-			setTimeout(() => {
-				throw e;
-			});
 		}
 	},
 
@@ -3116,10 +3117,13 @@ ListUtil = {
 	},
 
 	async pGetSelectedSources () {
-		const store = await StorageUtil.pGetForPage("sublist");
-		if (store && store.sources) {
-			return store.sources;
+		let store;
+		try {
+			store = await StorageUtil.pGetForPage("sublist");
+		} catch (e) {
+			setTimeout(() => {throw e});
 		}
+		if (store && store.sources) return store.sources;
 	},
 
 	initGenericPinnable: () => {
@@ -4089,11 +4093,12 @@ StorageUtil = {
 		StorageUtil._initAsync = true;
 
 		try {
-			await localforage.getItem("check");
+			await localforage.setItem("_storage_check", true);
 			return localforage;
 		} catch (e) {
 			StorageUtil.__fakeStorageAsync = {};
 			return {
+				pIsAsyncFake: true,
 				async setItem (k, v) {
 					StorageUtil.__fakeStorageAsync[k] = v;
 				},
@@ -4127,6 +4132,11 @@ StorageUtil = {
 		return !!StorageUtil.getSyncStorage().isSyncFake
 	},
 	// END SYNC METHOD /////////////////////////////////////////////////////////////////////////////////////////////////
+
+	async pIsAsyncFake () {
+		const storage = await StorageUtil.getAsyncStorage();
+		return !!storage.pIsAsyncFake;
+	},
 
 	async pSetForPage (key, value) {
 		const storage = await StorageUtil.getAsyncStorage();
@@ -5450,12 +5460,14 @@ ExcludeUtil = {
 			ExcludeUtil._excludes = await StorageUtil.pGet(EXCLUDES_STORAGE) || [];
 		} catch (e) {
 			window.alert("Error when loading content blacklist! Purging corrupt data...");
-			await StorageUtil.pRemove(EXCLUDES_STORAGE);
+			try {
+				await StorageUtil.pRemove(EXCLUDES_STORAGE);
+			} catch (e) {
+				setTimeout(() => {throw e});
+			}
 			ExcludeUtil._excludes = null;
 			window.location.hash = "";
-			setTimeout(() => {
-				throw e;
-			});
+			setTimeout(() => {throw e});
 		}
 	},
 
@@ -5605,6 +5617,8 @@ _Donate = {
 	},
 
 	async pNotDonating () {
-		return StorageUtil.isSyncFake() || StorageUtil.pGet("notDonating");
+		const isFake = await StorageUtil.pIsAsyncFake();
+		const isNotDonating = await StorageUtil.pGet("notDonating");
+		return isFake || isNotDonating;
 	}
 };

@@ -168,6 +168,9 @@ function EntryRenderer () {
 		const suffix = options.suffix === undefined || options.suffix === null ? null : options.suffix;
 		const forcePrefixSuffix = options.forcePrefixSuffix === undefined || options.forcePrefixSuffix === null ? false : options.forcePrefixSuffix;
 
+		let didRenderPrefix = false;
+		let didRenderSuffix = false;
+
 		if (forcePrefixSuffix) renderPrefix();
 		if (typeof entry === "object") {
 			// the root entry (e.g. "Rage" in barbarian "classFeatures") is assumed to be of type "entries"
@@ -186,7 +189,7 @@ function EntryRenderer () {
 						textStack[0] += `<ul ${entry.style ? `class="${entry.style}"` : ""}>`;
 						for (let i = 0; i < entry.items.length; i++) {
 							const style = getLiStyleClass(entry.items[i]);
-							this._recursiveEntryRender(entry.items[i], textStack, depth + 1, {prefix: `<li ${style ? `class="${style}"` : ""}>`, suffix: "</li>"});
+							this._recursiveEntryRender(entry.items[i], textStack, depth + 1, {prefix: `<li ${style ? `class="${style}"` : ""}>`, suffix: "</li>", forcePrefixSuffix: true});
 						}
 						textStack[0] += "</ul>";
 					}
@@ -434,14 +437,18 @@ function EntryRenderer () {
 		if (forcePrefixSuffix) renderSuffix();
 
 		function renderPrefix () {
+			if (didRenderPrefix) return;
 			if (prefix !== null) {
 				textStack[0] += prefix;
+				didRenderPrefix = true;
 			}
 		}
 
 		function renderSuffix () {
+			if (didRenderSuffix) return;
 			if (suffix !== null) {
 				textStack[0] += suffix;
+				didRenderSuffix = true;
 			}
 		}
 
@@ -2930,6 +2937,7 @@ EntryRenderer.item = {
 		const type = [];
 		const filterType = [];
 		const typeListText = [];
+		let showingBase = false;
 		if (item.wondrous) {
 			type.push("Wondrous Item");
 			filterType.push("Wondrous Item");
@@ -2949,10 +2957,13 @@ EntryRenderer.item = {
 			type.push(`${item.weaponCategory} Weapon${item.baseItem ? ` (${EntryRenderer.getDefaultRenderer().renderEntry(`{@item ${item.baseItem}`)})` : ""}`);
 			filterType.push(`${item.weaponCategory} Weapon`);
 			typeListText.push(`${item.weaponCategory} Weapon`);
+			showingBase = true;
 		}
 		if (item.type) {
 			const abv = Parser.itemTypeToAbv(item.type);
-			type.push(abv);
+			if (!showingBase && !!item.baseItem) {
+				type.push(`${abv} (${EntryRenderer.getDefaultRenderer().renderEntry(`{@item ${item.baseItem}`)})`);
+			} else type.push(abv);
 			filterType.push(abv);
 			typeListText.push(abv);
 		}

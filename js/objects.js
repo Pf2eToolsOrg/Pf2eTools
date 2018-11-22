@@ -2,6 +2,20 @@
 
 const JSON_URL = "data/objects.json";
 
+function imgError (x) {
+	$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
+	$(x).remove();
+}
+
+function handleStatblockScroll (event, ele) {
+	$(`#token_image`)
+		.toggle(ele.scrollTop < 32)
+		.css({
+			opacity: (32 - ele.scrollTop) / 32,
+			top: -ele.scrollTop
+		})
+}
+
 window.onload = async function load () {
 	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
@@ -129,14 +143,9 @@ function loadhash (jsonIndex) {
 	const imgLink = obj.tokenURL || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
 	$(`#float-token`).empty().append(`
 		<a href="${imgLink}" target="_blank">
-			<img src="${imgLink}" class="token" onerror="imgError(this)">
+			<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)">
 		</a>`
 	);
 
 	ListUtil.updateSelected();
-}
-
-function imgError (x) {
-	$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
-	$(x).remove();
 }

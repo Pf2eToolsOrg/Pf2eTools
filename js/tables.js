@@ -4,6 +4,8 @@ const JSON_URL = "data/tables.json";
 const renderer = EntryRenderer.getDefaultRenderer();
 
 window.onload = function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+
 	SortUtil.initHandleFilterButtonClicks();
 	Promise.all([GEN_JSON_URL, JSON_URL].map(url => DataUtil.loadJSON(url))).then((datas) => {
 		const combined = {};

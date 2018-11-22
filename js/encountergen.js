@@ -6,19 +6,14 @@ let encounterList;
 const renderer = EntryRenderer.getDefaultRenderer();
 
 function makeContentsBlock (i, loc) {
-	let out =
-		"<ul>";
-
+	let out = "<ul>";
 	loc.tables.forEach((t, j) => {
 		const tableName = getTableName(loc, t);
-		out +=
-			`<li>
-				<a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.location, loc.source, t.minlvl + "-" + t.maxlvl])}" title="${tableName}">${tableName}</a>
-			</li>`;
+		out += `<li>
+			<a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.location, loc.source, t.minlvl + "-" + t.maxlvl])}" title="${tableName}">${tableName}</a>
+		</li>`;
 	});
-
-	out +=
-		"</ul>";
+	out += "</ul>";
 	return out;
 }
 
@@ -27,6 +22,7 @@ function getTableName (loc, table) {
 }
 
 window.onload = function load () {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 

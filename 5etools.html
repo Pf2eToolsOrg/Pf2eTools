@@ -186,6 +186,9 @@
 					href="https://addons.mozilla.org/firefox/addon/tampermonkey/">Firefox</a>), and install the 5etools companion script using
 				this <a href="https://get.5e.tools/script/betteR20-5etools.user.js">link</a>! This
 				userscript allows you to import much of 5etools' data without paying a dime.</p>
+			<p><b>Please note: the script currently depends on <a href="https://ssstormy.github.io/roll20-enhancement-suite/">
+				Roll20 Enhancement Suite</a>, an external browser extension, to function.</b> Please ensure you have the
+				latest version of the Enhancement Suite installed in order to use the script.</p>
 			<p>As a player, you can import character options, spells, and items to quickly fill out a sheet. As a GM, you can make handout copies
 				of these, as well as import monsters, objects, and adventures.</p>
 			<p>To import monsters, your game must have a default character sheet. We strongly recommend using OGL
@@ -197,6 +200,9 @@
 			<h3>Use Discord?</h3>
 			<p>Now you can join our server using this <a href="https://discord.gg/AzyBjtQ" target="_blank">link!</a></p>
 			<h3>FAQ / Help</h3>
+			<p><b>Wiki.</b> We have a <a href="https://5etools.wikia.com/wiki/5eTool_Wiki">community-run wiki</a> which
+				you can browse for specific help on various topics, including
+				<a href="https://5etools.wikia.com/wiki/BetteRoll20">help for the Roll20 companion script</a>.</p>
 			<p><b>Browser Support.</b> We aim to fully support Chrome and Firefox. We have no plans to support any
 				Microsoft browsers. While generally adequate, other browsers (for example Safari and Opera) are not
 				officially supported; your experience may vary.</p>
@@ -239,7 +245,7 @@
 <footer class="container">
 	<p class="text-align-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.66.5<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.67.1<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span>2018 5etools
 	</p>
 </footer>
@@ -256,6 +262,8 @@
 <script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 <script>
+	ExcludeUtil.pInitialise();
+
 	const $demoRoller = $(`#demo_roller`);
 	$demoRoller.html(EntryRenderer.getDefaultRenderer().renderEntry(`{@dice ${$demoRoller.html()}}`));
 
@@ -268,7 +276,7 @@
 				right: 2,
 				cursor: "pointer"
 			}).click(() => {
-				StorageUtil.pSet("pNotDonating", true);
+				StorageUtil.pSet("notDonating", true);
 				$wrpDon.remove();
 			}).appendTo($wrpDon);
 			_Donate.init();

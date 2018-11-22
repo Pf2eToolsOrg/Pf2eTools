@@ -6713,7 +6713,7 @@
 			"type": "M",
 			"weaponCategory": "Martial",
 			"baseItem": "greataxe|phb",
-			"weight": "14",
+			"weight": "325",
 			"dmg1": "{@dice 3d12}",
 			"rarity": "Legendary",
 			"dmgType": "S",
@@ -20283,6 +20283,716 @@
 			"attachedSpells": [
 				"dream"
 			]
+		},
+		{
+			"name": "Nimblewright Detector",
+			"type": "OTH",
+			"rarity": "Unknown",
+			"source": "WDH",
+			"page": 47,
+			"entries": [
+				"To activate the nimblewright detector, a character must hold down its trigger. When the activated device comes within 500 feet of a nimblewright other than Nim, the umbrella begins to spin, whir, and click. The spinning, whirring, and clicking accelerates as the distance to the target lessens, reaching maximum velocity and volume when a nimblewright other than Nim is within 30 feet of the device."
+			]
+		},
+		{
+			"name": "Adjustable Stilts",
+			"type": "OTH",
+			"rarity": "Unknown",
+			"source": "WDH",
+			"page": 47,
+			"entries": [
+				"The stilts take 1 minute to put on or remove. They increase the height of any humanoid wearing them by 2 to 5 feet. Each stilt weighs 8 pounds and is 1 foot long when fully collapsed."
+			]
+		},
+		{
+			"name": "Backpack Parachute",
+			"type": "OTH",
+			"rarity": "Unknown",
+			"source": "WDH",
+			"page": 47,
+			"entries": [
+				"A humanoid wearing this piece of gear can deploy the parachute as a reaction while falling, or as an action otherwise. The parachute requires at least a 10-foot cube of unoccupied space in which to deploy, and it doesn't open fast enough to slow a fall of less than 60 feet. If it has sufficient time and space to deploy properly, the parachute allows its wearer to land without taking falling damage. Once it has been used, the parachute takes 10 minutes to repack."
+			]
+		},
+		{
+			"name": "Barking Box",
+			"type": "OTH",
+			"rarity": "Unknown",
+			"source": "WDH",
+			"page": 47,
+			"entries": [
+				"This metal cube, 6 inches on a side, has a crank on top. Using an action to wind the crank activates the box for 8 hours. While activated, the box barks whenever it detects vibrations within 15 feet of it, as long as the box and the source of the vibrations are in contact with the same ground or substance. A switch on one side of the box sets the device to emit either a small dog's bark or a large dog's bark."
+			]
+		},
+		{
+			"name": "Matchless Pipe",
+			"type": "OTH",
+			"rarity": "Unknown",
+			"source": "WDH",
+			"page": 47,
+			"entries": [
+				"A switch made of flint is built into the bowl of this fine wooden smoking pipe. With a few flicks of the switch, the pipe lights itself."
+			]
+		},
+		{
+			"name": "Deck of Several Things",
+			"wondrous": true,
+			"rarity": "Legendary",
+			"source": "LLK",
+			"page": 53,
+			"entries": [
+				"Stored in a leather pouch, this unique deck contains twenty-two colored cards made of some strong but unknown metal, each of which features a design printed as a mosaic of raised dots. Before you draw a card, you must declare how many cards you intend to draw and then draw them randomly (you can use an altered deck of playing cards to simulate the deck). Any cards drawn in excess of this number have no effect. Otherwise, as soon as you draw a card from the deck, its magic takes effect. You must draw each card no more than 1 hour after the previous draw. If you fail to draw the chosen number, the remaining number of cards fly from the deck on their own and take effect all at once.",
+				"Once a card is drawn, it fades from existence. Unless the card is the Fool or the Jester, the card reappears in the deck, making it possible to draw the same card twice.",
+				{
+					"type": "table",
+					"caption": "",
+					"colLabels": [
+						"{@dice 1d22|Playing Card}",
+						"Card"
+					],
+					"colStyles": [
+						"col-xs-6",
+						"col-xs-6"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								},
+								"entry": "Ace of diamonds"
+							},
+							"Vizier"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								},
+								"entry": "King of diamonds"
+							},
+							"Sun"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								},
+								"entry": "Queen&nbsp;of&nbsp;diamonds"
+							},
+							"Moon"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								},
+								"entry": "Jack of diamonds"
+							},
+							"Star"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								},
+								"entry": "Two of diamonds"
+							},
+							"Comet"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								},
+								"entry": "Ace of hearts"
+							},
+							"The Fates"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 7
+								},
+								"entry": "King of hearts"
+							},
+							"Throne"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 8
+								},
+								"entry": "Queen of hearts"
+							},
+							"Key"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 9
+								},
+								"entry": "Jack of hearts"
+							},
+							"Knight"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 10
+								},
+								"entry": "Two of hearts"
+							},
+							"Gem"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 11
+								},
+								"entry": "Ace of clubs"
+							},
+							"Talons"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 12
+								},
+								"entry": "King of clubs"
+							},
+							"The Void"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 13
+								},
+								"entry": "Queen of clubs"
+							},
+							"Flames"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 14
+								},
+								"entry": "Jack of clubs"
+							},
+							"Skull"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 15
+								},
+								"entry": "Two of clubs"
+							},
+							"Idiot"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 16
+								},
+								"entry": "Ace of spades"
+							},
+							"Donjon"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 17
+								},
+								"entry": "King of spades"
+							},
+							"Ruin"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 18
+								},
+								"entry": "Queen of spades"
+							},
+							"Euryale"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 19
+								},
+								"entry": "Jack of spades"
+							},
+							"Rogue"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 20
+								},
+								"entry": "Two of spades"
+							},
+							"Balance"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 21
+								},
+								"entry": "Joker (with TM)"
+							},
+							"Fool"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 22
+								},
+								"entry": "Joker (without TM)"
+							},
+							"Jester"
+						]
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Balance",
+					"entries": [
+						"Your mind suffers a wrenching alteration, causing your alignment to change for the duration of the adventure. Lawful becomes chaotic, good becomes evil, and vice versa. If you are true neutral or unaligned, this card has no effect on you."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Comet",
+					"entries": [
+						"If you single-handedly defeat the next hostile monster or group of monsters you encounter, you have advantage on ability checks made using one skill of your choice for the duration of the adventure. Otherwise, this card has no effect."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Donjon",
+					"entries": [
+						"You are instantly teleported to and confined within the prison of the Monastery of the Distressed Body (area M6). Everything you were wearing and carrying stays behind in the space you occupied when you disappeared. You draw no more cards."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Euryale",
+					"entries": [
+						"The card's medusa-like visage curses you. You take a \u22121 penalty on saving throws for the duration of the adventure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "The Fates",
+					"entries": [
+						"Reality's fabric unravels and spins anew, allowing you to avoid or erase one event as if it never happened. You can use the card's magic as soon as you draw the card or at any other point during the adventure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flames",
+					"entries": [
+						"The Grand Master of the Monastery of the Distressed Body becomes your enemy. The bone devil seeks your ruin, savoring your suffering before attempting to slay you. If the Grand Master has already been defeated, you gain the enmity of Garret Levistusson's patron \u2014 a similarly powerful devil."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fool",
+					"entries": [
+						"For the duration of the adventure, you lose proficiency with one skill or gain disadvantage on all checks made with one skill (with the skill and the penalty determined by the DM). Discard this card and draw from the deck again, counting both draws as one of your declared draws."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gem",
+					"entries": [
+						"The 1,000 gp hoard of the leprechaun from the Wilderness Encounters table (see appendix A) appears at your feet. If that treasure has already been claimed, you gain an equivalent hoard."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Idiot",
+					"entries": [
+						"Reduce your Intelligence by {@dice 1d4 + 1} (to a minimum score of 1) for the duration of the adventure. You can draw one additional card beyond your declared draws."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Jester",
+					"entries": [
+						"You gain proficiency in a skill of your choice for the duration of the adventure, or you can draw two additional cards beyond your declared draws."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Key",
+					"entries": [
+						"A common or uncommon magic weapon with which you are proficient, or a {@item spell scroll} featuring a spell of a level you can cast, appears in your hands. The DM chooses the weapon or spell, which you possess for the duration of this adventure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Knight",
+					"entries": [
+						"You gain the service of any of the NPCs in the \"{@book Hirelings|phb|5|services}\" section not currently with the party, who appears in a space you choose within 30 feet of you. The NPC serves you loyally for the duration of the adventure, believing that the fates have drawn them to you. You control this character."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moon",
+					"entries": [
+						"You are granted the ability to cast any spell of 5th level or lower, and can use that ability 1d3 times for the duration of the adventure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Rogue",
+					"entries": [
+						"An NPC of the DM's choice becomes secretly hostile toward you. The identity of your new enemy isn't known until the NPC or someone else reveals it. Any enchantment spell cast on the NPC at 6th level or higher can end the NPC's hostility toward you."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ruin",
+					"entries": [
+						"All forms of wealth that you carry or own, other than magic items, are lost to you. This wealth can be recovered either in the treasury of the Monastery of the Distressed Body (area M10) or Kwalish's lab in Daoine Gloine (area O7), whichever comes later in the adventure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Skull",
+					"entries": [
+						"You summon an avatar of death \u2014 a mechanical skeleton (use bone naga statistics) clad in a tattered black robe. It appears in a space of the DM's choice within 10 feet of you and attacks you, warning all others that you must win the battle alone. The avatar fights until you die or it drops to 0 hit points, whereupon it disappears. If anyone tries to help you, the helper summons its own avatar of death. A creature slain by an avatar of death can't be restored to life."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Star",
+					"entries": [
+						"Increase one of your ability scores by 1 for the duration of the adventure. The score can exceed 20 but can't exceed 24."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sun",
+					"entries": [
+						"You gain proficiency in the skill of your choice for the duration of the adventure. In addition, a common or uncommon wondrous item appears in your hands. The DM chooses the item, which you possess for the duration of this adventure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Talons",
+					"entries": [
+						"Every magic item you wear or carry is lost to you. These items can be recovered either in the treasury of the Monastery of the Distressed Body (area M10) or Kwalish's lab in Daoine Gloine (area O7), whichever comes later in the adventure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Throne",
+					"entries": [
+						"You gain proficiency in the {@skill Persuasion} skill and you double your proficiency bonus on checks made with that skill for the duration of the adventure. In addition, the Monastery of the Distressed Body's brains in jars regard you thereafter as the monastery's rightful master. You must defeat or otherwise clear out the Grand Master and its servants before you can claim the monastery as yours."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Vizier",
+					"entries": [
+						"At any one time you choose within the duration of the adventure, you can ask a question in meditation and mentally receive a truthful answer to that question. Besides information, the answer helps you solve a puzzling problem or other dilemma. In other words, the knowledge comes with wisdom on how to apply it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "The Void",
+					"entries": [
+						"This black card spells disaster. Your soul is drawn from your body and held within machinery in either the control room of the Monastery of the Distressed Body (area M8) or Kwalish's lab in Daoine Gloine (area O7), whichever comes later in the adventure. While your soul is trapped in this way, your body is {@condition incapacitated}. {@spell Divination}, {@spell contact other plane}, or a similar spell of 4th level or higher reveals the location of the machinery that holds your soul. You draw no more cards."
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Using the Deck of Several Things",
+					"entries": [
+						"The special nature of this deck (carried by Mary Greymalkin if she is used as an NPC) means that many of its effects operate only within and with respect to this specific adventure. This typically covers any time the characters spend between setting out for the Barrier Peaks and the resolution of whatever events transpire in Kwalish's lab (area O7).",
+						"For cards that effectively remove a character from play for a period of time (Donjon and the Void), you can allow a player to take on the role of one of the party's NPC hirelings, or introduce a temporary character as an NPC met during the party's journey. Alternatively, you can decide that only some aspect of the character's will disappears and is imprisoned, leaving the character to operate in a robotic state until freed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Galder's Bubble Pipe",
+			"wondrous": true,
+			"reqAttune": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"entries": [
+				"This finely carved pipe blows odorless bubbles instead of smoke when used. The pipe has 3 charges, and it regains all spent charges daily at dawn. While you hold the pipe, you can expend charges to gain access to the following properties:",
+				{
+					"type": "list",
+					"items": [
+						"You can cast {@spell fog cloud} as an action (1 charge).",
+						"You can cast {@spell misty step} as a bonus action (2 charges).",
+						"You can summon a {@creature steam mephit} as an action (3 charges). The mephit is friendly to you, obeys your verbal commands, and acts on its own turn in the initiative order. It disappears in a harmless puff of steam after 1 minute or if it ends its turn more than 60 feet from the pipe."
+					]
+				}
+			]
+		},
+		{
+			"name": "Heward's Hireling Armor",
+			"type": "LA",
+			"armor": true,
+			"baseItem": "leather armor|phb",
+			"weight": "10",
+			"rarity": "Very Rare",
+			"source": "LLK",
+			"ac": 12,
+			"page": 55,
+			"entries": [
+				"A number of Kwalish's experiments were attempts to research the works of the legendary mage Heward, who first crafted what he named hireling armor. While wearing this armor, you gain a +1 bonus to AC. In addition, the armor's animated straps can assist with the drawing and sheathing of weapons, such that you can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.",
+				"This armor also has six pockets, each of which is an extradimensional space. Each pocket can hold up to 20 pounds of material, not exceeding a volume of 2 cubic feet. The armor always weighs 10 pounds, regardless of its pockets' contents. Placing an object into one of the armor's pockets follows the normal rules for interacting with objects. Retrieving an item from a pocket of the armor requires you to use an action. When you reach into a pocket for a specific item, the item is always magically on top.",
+				"Placing the armor inside an extradimensional space created by a {@item bag of holding}, a {@item Heward's handy haversack}, or a similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it and deposited in a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
+			]
+		},
+		{
+			"name": "Ioun Stone, Supreme Intellect",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"reqAttune": true,
+			"entries": [
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
+				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
+				"You gain a +1 bonus to Intelligence checks while this faceted sphere orbits your head."
+			]
+		},
+		{
+			"name": "Ioun Stone, Historical Knowledge",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"reqAttune": true,
+			"entries": [
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
+				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
+				"You gain proficiency in the {@skill History} skill, or a +1 bonus to checks with that skill if already proficient, while this polished, steely sphere orbits your head."
+			]
+		},
+		{
+			"name": "Ioun Stone, Natural Knowledge",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"reqAttune": true,
+			"entries": [
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
+				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
+				"You gain proficiency in the {@skill Nature} skill, or a +1 bonus to checks with that skill if already proficient, while this burnished, brassy stone orbits your head."
+			]
+		},
+		{
+			"name": "Ioun Stone, Religious Knowledge",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"reqAttune": true,
+			"entries": [
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
+				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
+				"You gain proficiency in the {@skill Religion} skill, or a +1 bonus to checks with that skill if already proficient, while this tiny golden gem orbits your head."
+			]
+		},
+		{
+			"name": "Ioun Stone, Language Knowledge",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"reqAttune": true,
+			"entries": [
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
+				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
+				"You are fluent in one additional language while this pulsating bit of red jeweled crystal orbits your head. The DM chooses the language bestowed by the stone."
+			]
+		},
+		{
+			"name": "Ioun Stone, Self-Preservation",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"reqAttune": true,
+			"entries": [
+				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
+				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
+				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
+				"You gain a +1 bonus to Intelligence saving throws while this silvery gem orbits your head."
+			]
+		},
+		{
+			"name": "Leather Golem Armor",
+			"type": "LA",
+			"armor": true,
+			"baseItem": "leather armor|phb",
+			"weight": "10",
+			"rarity": "Rare",
+			"reqAttune": true,
+			"curse": true,
+			"source": "LLK",
+			"ac": 12,
+			"page": 55,
+			"entries": [
+				"Strange rituals have repurposed the body of a flesh golem into this partially sentient suit of leather armor. While wearing this armor, you gain a +1 bonus to AC and to saving throws against spells and other magical effects. In addition, you gain the following properties:",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "entries",
+							"name": "Immutable Form",
+							"entries": [
+								"You are immune to any spell or effect that would alter your form."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Lightning Absorption",
+							"entries": [
+								"You gain resistance to lightning damage. Whenever you take lightning damage, you gain 5 temporary hit points."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"This armor is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with a remove curse spell or similar magic, you are unwilling to part with the armor. In addition, while you wear the cursed armor, you gain the following properties:",
+						{
+							"type": "list",
+							"items": [
+								{
+									"type": "entries",
+									"name": "Aversion of Fire",
+									"entries": [
+										"If you take fire damage, you have disadvantage on attack rolls and ability checks until the end of your next turn."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Berserk",
+									"entries": [
+										"Whenever a critical hit is made against you, roll a d6. On a 6, the armor causes you to go berserk. On each of your turns while berserk, you attack the nearest creature you can see. If no creature is near enough to move to and attack, you attack an object, with preference for an object smaller than yourself. Once the armor causes you to go berserk, it cannot be removed. You continue to attack until you are incapacitated or until another creature is able to calm you with appropriate magic (such as a calm emotions spell) or a successful DC 15 Charisma (Persuasion) check."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Powered Armor",
+			"type": "HA",
+			"armor": true,
+			"baseItem": "plate armor|phb",
+			"weight": "65",
+			"rarity": "Legendary",
+			"reqAttune": true,
+			"source": "LLK",
+			"ac": 19,
+			"page": 56,
+			"entries": [
+				"Powered armor resembles a suit of unusual plate armor, with finely articulated joints connected by an oily, black, leather-like material. The armor has been worked to create the appearance of a heavily muscled warrior, and its great helm is unusual in that it has no openings \u2014 only a broad glass plate in the front with a second piece of glass above it. Strange plates, tubing, and large metal bosses adorn the armor in seemingly random fashion. On the back of the armor's left gauntlet is a rectangular metal box, from which projects a short rod tipped with a cone-shaped red crystal.",
+				"While wearing this armor, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You have a +1 bonus to AC.",
+						"Your Strength score is 18 (this has no effect if your Strength is already 18 or higher).",
+						"You have advantage on death saving throws."
+					]
+				},
+				"The armor has further capabilities that can be powered either by energy cells or by your own life energy. You can use a bonus action to draw power from an energy cell or sacrifice hit points to gain one of the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Emit a force field to gain {@dice 2d6 + 5} temporary hit points (1 charge or 5 hit points).",
+						"Activate boosters to gain a flying speed of 15 feet for 1 minute (1 charge or 5 hit points).",
+						"Fire arm-mounted laser: {@atk rw} {@hit 8} to hit, range 120 feet, one target. {@h}{@dice 2d6} radiant damage (1 charge or 5 hit points).",
+						"Translate any writing you can see in any nonmagical language, to a total of one thousand words over 1 minute (1 charge or 5 hit points).",
+						"Fill the armor with air, allowing you to breathe normally in any environment for up to 1 hour (1 charge or 5 hit points).",
+						"Gain darkvision to a range of 60 feet for up to 1 hour (1 charge or 5 hit points)."
+					]
+				},
+				"The armor can accept only one energy cell at a time. It is found with one energy cell attached, containing {@dice 2d10} charges.",
+				{
+					"type": "inset",
+					"name": "Powered Armor Options",
+					"entries": [
+						"Depending on where and how it appears in the adventure, you might wish to modify the features of Kwalish's legendary powered armor.",
+						{
+							"type": "entries",
+							"name": "Automatic Defenses",
+							"entries": [
+								"Unless Kwalish deactivates the suit's automatic defenses, no one can approach the armor without setting those defenses off. Treat the armor as a {@creature shield guardian} that has stored a {@spell magic missile} spell cast using a 4th-level spell slot. When the armor is reduced to 0 hit points, its defenses are rendered inert and it can be safely approached."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Battle of Wills",
+							"entries": [
+								"When donned by a new user, the armor deems itself superior and attempts to take possession of that user. The user must succeed on a DC 13 Charisma saving throw or be possessed by the armor. While possessed, the user is {@condition incapacitated} and loses control of its body but retains its awareness. The armor uses the possessed user's statistics (as adjusted by the armor), but doesn't gain access to the user's knowledge, features, or proficiencies.",
+								"Freeing a creature trapped inside the armor first requires defeating the armor's automatic defenses (as above). The trapped creature can also attempt a DC 20 Charisma saving throw each day at dawn. On a successful save, the armor no longer controls the creature and can be safely donned by that creature at any time."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Stasis",
+							"entries": [
+								"Whenever a creature wearing the armor drops to 0 hit points, the armor places that creature into a state of stasis. While in this state, the creature is stable and does not make death saving throws, but the armor takes control of the creature (as above). Additionally, the armor attempts to assume the identity of the user, assuring their allies that nothing is amiss. Freeing the user first requires defeating the armor's automatic defenses (as above). A creature in stasis does not make Charisma saving throws to break the armor's control."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Alternative Power",
+							"entries": [
+								"Powered armor originally required energy cells to fuel it, but was adapted by Kwalish to be fueled by the life energy of the creature wearing it. You might decide that the armor can also draw power from additional sources, or that energy cells can be recharged with the aid of a tinker, inventor, or artificer. It might also be possible for allies to connect to the armor through the use of magic that generates a conduit something like an astral silver cord. While so connected, a willing ally can give up hit points as a reaction to fuel the armor's abilities."
+							]
+						}
+					]
+				}
+			]
 		}
 	],
 	"itemGroup": [
@@ -20740,6 +21450,27 @@
 						"{@item Ioun Stone, Reserve}",
 						"{@item Ioun Stone, Strength}",
 						"{@item Ioun Stone, Sustenance}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Ioun Stone",
+			"wondrous": true,
+			"rarity": "Rare",
+			"source": "LLK",
+			"page": 55,
+			"reqAttune": true,
+			"entries": [
+				{
+					"type": "list",
+					"items": [
+						"{@item Ioun Stone, Supreme Intellect|LLK}",
+						"{@item Ioun Stone, Historical Knowledge|LLK}",
+						"{@item Ioun Stone, Natural Knowledge|LLK}",
+						"{@item Ioun Stone, Religious Knowledge|LLK}",
+						"{@item Ioun Stone, Language Knowledge|LLK}",
+						"{@item Ioun Stone, Self-Preservation|LLK}"
 					]
 				}
 			]
