@@ -11,8 +11,8 @@ class StatGen {
 	}
 
 	async init () {
-		this.amount = null;
-		this.count = null;
+		this.raceChoiceAmount = null;
+		this.raceChoiceCount = null;
 		this.raceData = null;
 		this.$advanced = $(`#advanced`);
 		this.$budget = $(`#budget`);
@@ -54,6 +54,27 @@ class StatGen {
 			this.doSaveDebounced();
 		}).change();
 
+		$(`#pbuy__save_file`)
+			.click(() => DataUtil.userDownload(`statgen-pointbuy`, this.getSaveableState()));
+
+		$(`#pbuy__load_file`)
+			.click(() => {
+				DataUtil.userUpload((json) => {
+					if (StatGen.isValidState(json)) {
+						this.doLoadStateFrom(json);
+						this.doSaveDebounced();
+						this.handleCostChanges();
+					} else return alert("Invalid save!");
+				});
+			});
+
+		const $btnSaveUrl = $(`#pbuy__save_url`)
+			.click(() => {
+				const encoded = `${window.location.href.split("#")[0]}#pointbuy${HASH_PART_SEP}${encodeURIComponent(JSON.stringify(this.getSaveableState()))}`;
+				copyText(encoded);
+				JqueryUtil.showCopiedEffect($btnSaveUrl);
+			});
+
 		this.isInit = true;
 	}
 
@@ -63,6 +84,17 @@ class StatGen {
 		this.$budget.val(savedState.p);
 		this.budget = savedState.p;
 		this.renderCostsTable();
+
+		const checkArray = (prop) => savedState[prop] && savedState[prop] instanceof Array && savedState[prop].length === 6;
+
+		const $cbsChoose = $(`.pbuy__cb_choose`);
+		if (checkArray("b")) $(`.base`).each((i, e) => e.value = savedState.b[i]);
+		if (checkArray("u")) $(`.pbuy__user_add`).each((i, e) => e.value = savedState.u[i]);
+		if (savedState.r) $(`#race`).val(savedState.r);
+
+		this.changeRace();
+		if (checkArray("c")) $cbsChoose.each((i, e) => $(e).prop("checked", savedState.c[i]));
+		$cbsChoose.each((i, e) => this.chooseRacialBonus(e, false));
 	}
 
 	doLoadUrlState (firstLoad) {
@@ -87,7 +119,15 @@ class StatGen {
 	}
 
 	getSaveableState () {
+		const mapToVals = (sel) => $(sel).map((i, e) => Number(e.value)).get();
+
 		return MiscUtil.copy({
+			b: mapToVals(`.base`),
+			u: mapToVals(`.pbuy__user_add`),
+			r: $(`#race`).val(),
+			c: $(`.pbuy__cb_choose`).map((i, e) => $(e).prop("checked")).get(),
+
+			// custom point-buy
 			t: this.savedState,
 			p: this.budget,
 			m: {
@@ -97,6 +137,7 @@ class StatGen {
 	}
 
 	doSaveState () {
+		if (!this.isInit) return;
 		StorageUtil.pSet(POINTBUY_STORAGE, this.getSaveableState());
 	}
 
@@ -122,12 +163,13 @@ class StatGen {
 
 		$("#reset").click(() => {
 			$(".base").val(this.statMin);
+			$(".pbuy__user_add").val(0);
 			$(".choose").prop("checked", false);
 			this.changeBase();
 		});
 
 		$(".base").on("input", () => this.changeBase());
-		$("input.choose").on("change", (evt) => this.chooseRace(evt.target));
+		$("input.choose").on("change", (evt) => this.chooseRacialBonus(evt.target));
 
 		const races = this.raceData.map(x => ({name: x.name, source: x.source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
 		const options = races.map(it => `<option value="${it.name}_${it.source}">${it.name} ${it.source !== SRC_PHB ? `[${Parser.sourceJsonToAbv(it.source)}]` : ""}</option>`).join("");
@@ -135,11 +177,8 @@ class StatGen {
 			.append(`<option value="">None</option>`)
 			.append(`<option value="_CUSTOM">Custom</option>`)
 			.append(options)
-			.change((evt) => this.changeRace(evt.target))
+			.change(() => this.changeRace())
 			.change();
-
-		if (window.location.hash) window.onhashchange();
-		else window.location.hash = "#rolled";
 	}
 
 	renderCostsTable () {
@@ -224,41 +263,30 @@ class StatGen {
 					this.renderCostsTable();
 					this.handleCostChanges();
 				}).appendTo($wrpBtnsTop);
-
-			const $wrpBtnsBtm = $(`<div class="pbuy__add_row_btn_wrap" style="margin-top: 2rem;"/>`).insertAfter($table);
-			const $btnSaveFile = $(`<button class="btn btn-xs btn-primary" style="margin-right: 7px;">Save to File</button>`)
-				.click(() => DataUtil.userDownload(`statgen-pointbuy`, this.getSaveableState()))
-				.appendTo($wrpBtnsBtm);
-
-			const $btnLoadFile = $(`<button class="btn btn-xs btn-primary" style="margin-right: 14px;">Load from File</button>`)
-				.click(() => {
-					DataUtil.userUpload((json) => {
-						if (StatGen.isValidState(json)) {
-							this.doLoadStateFrom(json);
-							this.doSaveDebounced();
-							this.handleCostChanges();
-						} else return alert("Invalid save!");
-					});
-				}).appendTo($wrpBtnsBtm);
-
-			const $btnSaveUrl = $(`<button class="btn btn-xs btn-primary">Save to URL</button>`)
-				.click(() => {
-					const encoded = `${window.location.href.split("#")[0]}#pointbuy${HASH_PART_SEP}${encodeURIComponent(JSON.stringify(this.getSaveableState()))}`;
-					copyText(encoded);
-					showCopiedEffect($btnSaveUrl);
-				}).appendTo($wrpBtnsBtm);
 		} else renderState();
 	}
 
 	initialiseChangeHandlers () {
 		$(`.base`).each((i, ele) => {
-			const input = $(ele);
-			input.on("change", (evt) => {
+			const $ipt = $(ele);
+			$ipt.on("change", (evt) => {
 				const ele = evt.target;
 				let num = parseInt(ele.value);
 
 				if (isNaN(num)) ele.value = this.statMin;
 				else ele.value = this.limit(num);
+
+				this.changeTotal();
+			})
+		});
+
+		$(`.pbuy__user_add`).each((i, ele) => {
+			const $ipt = $(ele);
+			$ipt.on("change", (evt) => {
+				const ele = evt.target;
+				let num = parseInt(ele.value);
+
+				if (isNaN(num)) ele.value = 0;
 
 				this.changeTotal();
 			})
@@ -301,33 +329,34 @@ class StatGen {
 		}
 	}
 
-	chooseRace (ele) {
-		if ($("input.choose:checked").length > this.count) return ele.checked = false;
+	chooseRacialBonus (ele, updateTotal = true) {
+		if ($("input.choose:checked").length > this.raceChoiceCount) return ele.checked = false;
 
 		$(".racial", ele.parentNode.parentNode)
-			.val(ele.checked ? this.amount : 0);
-		this.changeTotal();
+			.val(ele.checked ? this.raceChoiceAmount : 0);
+		if (updateTotal) this.changeTotal();
 	}
 
-	changeRace (ele) {
+	changeRace () {
 		const handleStats = (stats) => {
 			$(".racial").val(0);
 			Object.keys(stats).forEach(key => $(`#${key} .racial`).val(stats[key]));
 
 			this.changeTotal();
+			const $chooseHead = $("td.choose_head").hide();
 			$(".choose").hide().prop("checked", false);
 
 			if (!stats.choose) return;
 
 			const {from} = stats.choose[0];
-			this.amount = stats.choose[0].amount || 1;
-			this.count = stats.choose[0].count;
+			this.raceChoiceAmount = stats.choose[0].amount || 1;
+			this.raceChoiceCount = stats.choose[0].count;
 
-			$("td.choose").text(`Choose ${this.count}`).show();
+			$chooseHead.text(`Choose ${this.raceChoiceCount}`).show();
 			from.forEach(key => $(`#${key} .choose`).show())
 		};
 
-		const race = ele.value;
+		const race = $(`#race`).val();
 		if (race === "_CUSTOM") {
 			$(`#custom`).show();
 			const custom = $(`.custom`);
@@ -370,10 +399,12 @@ class StatGen {
 
 	changeTotal () {
 		$("#pointbuy tr[id]").each((i, el) => {
-			const [base, racial, total, mod] = $("input", el).get();
-			const raw = total.value = Number(base.value) + Number(racial.value);
+			const [base, racial, user, total, mod] = $(`input[type="number"]`, el).get();
+			const raw = total.value = Number(base.value) + Number(racial.value) + Number(user.value);
 			mod.value = Math.floor((raw - 10) / 2)
 		});
+
+		this.doSaveDebounced();
 	}
 
 	rollStats () {
@@ -418,16 +449,34 @@ StatGen.DEFAULT_POINTS = 27;
 
 const statGen = new StatGen();
 
-window.onload = function load () {
-	statGen.init();
+window.onload = async function load () {
+	await statGen.init();
+	hashchange();
 };
 
-window.onhashchange = function hashchange () {
+function hashchange () {
+	const VALID_HASHES = [
+		"rolled",
+		"array",
+		"pointbuy"
+	];
+
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 
-	let hash = window.location.hash.slice(1);
+	let hash = (window.location.hash.slice(1) || "").trim().toLowerCase();
+	const mode = (hash.split(HASH_PART_SEP) || [""])[0];
 	$(".statmethod").hide();
-	if (hash === "") hash = "rolled";
-	$(`#${hash.split(HASH_PART_SEP)[0]}`).show();
-	if (statGen.isInit) statGen.doLoadUrlState();
-};
+	if (!VALID_HASHES.includes(mode)) {
+		window.history.replaceState(
+			{},
+			document.title,
+			`${location.origin}${location.pathname}#rolled`
+		);
+		hashchange();
+	} else {
+		$(`#${mode}`).show();
+		if (statGen.isInit) statGen.doLoadUrlState();
+	}
+}
+
+window.onhashchange = hashchange;

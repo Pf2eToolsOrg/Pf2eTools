@@ -23,7 +23,7 @@ async function onJsonLoad (data) {
 	filterBox = await pInitFilterBox(sourceFilter, typeFilter);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source"],
+		valueNames: ["name", "source", "uniqueid"],
 		listClass: "rewards"
 	});
 	list.on("updated", () => {
@@ -78,8 +78,10 @@ function addRewards (data) {
 		tempString += `
 			<li class='row' ${FLTR_ID}='${rwI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${rwI}' href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-					<span class='name col-xs-10'>${reward.name}</span>
-					<span class='source col-xs-2 ${Parser.sourceJsonToColor(reward.source)}' title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>
+					<span class='name col-10'>${reward.name}</span>
+					<span class='source col-2 ${Parser.sourceJsonToColor(reward.source)}' title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>
+					
+					<span class="uniqueid hidden">${reward.uniqueId ? reward.uniqueId : rwI}</span>
 				</a>
 			</li>`;
 
@@ -129,7 +131,7 @@ function getSublistItem (reward, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-				<span class="name col-xs-12">${reward.name}</span>
+				<span class="name col-12">${reward.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

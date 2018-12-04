@@ -14,7 +14,7 @@ const booksList = new BooksList({
 	dataProp: "book",
 	rootPage: "book.html",
 	rowBuilderFn: (bk) => {
-		return `<span class="col-xs-12">${bk.name}</span>`;
+		return `<span class="col-12 name">${bk.name}</span>`;
 	}
 });
 

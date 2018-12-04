@@ -44,10 +44,10 @@ const adventuresList = new BooksList({
 	},
 	rootPage: "adventure.html",
 	rowBuilderFn: (adv) => {
-		return `<span class="col-xs-6 col-xs-6-2">${adv.name}</span>
-		<span class="col-xs-2 col-xs-2-5 adv-detail">${adv.storyline}</span>
-		<span class="col-xs-1 col-xs-1-3 adv-detail">${Adventures.getLevelsStr(adv)}</span>
-		<span class="col-xs-2 adv-detail">${Adventures.getDateStr(adv)}</span>`;
+		return `<span class="col-6-2 name">${adv.name}</span>
+		<span class="col-2-5 adv-detail">${adv.storyline}</span>
+		<span class="col-1-3 adv-detail">${Adventures.getLevelsStr(adv)}</span>
+		<span class="col-2 adv-detail">${Adventures.getDateStr(adv)}</span>`;
 	}
 });
 

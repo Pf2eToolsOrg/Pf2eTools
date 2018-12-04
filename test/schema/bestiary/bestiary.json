@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.6.2",
+	"version": "1.6.3",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -270,6 +270,7 @@
 				}
 			},
 			"group": {
+				"description": "A group name, indexed by search. E.g. searching \"Lycanthrope\" would otherwise fail to find anything",
 				"type": "string"
 			},
 			"size": {
@@ -386,17 +387,37 @@
 			"otherSources": {
 				"type": "array",
 				"items": {
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"source": {
+									"type": "string"
+								},
+								"page": {
+									"type": "integer"
+								}
+							},
+							"required": [
+								"source"
+							],
+							"additionalProperties": false
+						}
+					]
+				}
+			},
+			"externalSources": {
+				"description": "For homebrew use only.",
+				"type": "array",
+				"items": {
 					"type": "object",
 					"properties": {
-						"source": {
-							"type": "string"
-						},
-						"page": {
-							"type": "integer"
+						"entry": {
+							"$ref": "/Entry"
 						}
 					},
 					"required": [
-						"source"
+						"entry"
 					],
 					"additionalProperties": false
 				}
@@ -996,11 +1017,15 @@
 				"type": "object",
 				"properties": {
 					"entries": {
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "/Entry"
-							}
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					},
+					"images": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry#/definitions/entryImage"
 						}
 					}
 				}
@@ -1115,6 +1140,13 @@
 				"items": {
 					"type": "string",
 					"enum": ["B", "D", "SD", "T", "U"]
+				}
+			},
+			"footer": {
+				"description": "Intended for homebrew use only.",
+				"type": "array",
+				"items": {
+					"$ref": "/Entry"
 				}
 			}
 		},

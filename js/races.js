@@ -83,7 +83,7 @@ const asiFilter = new Filter({
 let filterBox;
 async function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ['name', 'ability', 'size', 'source', 'clean-name'],
+		valueNames: ['name', 'ability', 'size', 'source', 'clean-name', "uniqueid"],
 		listClass: "races"
 	});
 
@@ -216,11 +216,13 @@ function addRaces (data) {
 		tempString +=
 			`<li class="row" ${FLTR_ID}='${rcI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${rcI}' href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
-					<span class='name col-xs-4'>${race.name}</span>
-					<span class='ability col-xs-4'>${ability.asTextShort}</span>
-					<span class='size col-xs-2'>${Parser.sizeAbvToFull(race.size)}</span>
-					<span class='source col-xs-2 ${Parser.sourceJsonToColor(race.source)}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+					<span class='name col-4'>${race.name}</span>
+					<span class='ability col-4'>${ability.asTextShort}</span>
+					<span class='size col-2'>${Parser.sizeAbvToFull(race.size)}</span>
+					<span class='source col-2 ${Parser.sourceJsonToColor(race.source)}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
 					${bracketMatch ? `<span class="clean-name hidden">${bracketMatch[2]} ${bracketMatch[1]}</span>` : ""}
+					
+					<span class="uniqueid hidden">${race.uniqueId ? race.uniqueId : rcI}</span>
 				</a>
 			</li>`;
 
@@ -303,9 +305,9 @@ function getSublistItem (race, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
-				<span class="name col-xs-5">${race.name}</span>
-				<span class="ability col-xs-5">${race._slAbility}</span>
-				<span class="size col-xs-2">${Parser.sizeAbvToFull(race.size)}</span>
+				<span class="name col-5">${race.name}</span>
+				<span class="ability col-5">${race._slAbility}</span>
+				<span class="size col-2">${Parser.sizeAbvToFull(race.size)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

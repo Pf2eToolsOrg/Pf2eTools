@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.6",
+	"version": "1.2.7",
 
 	"definitions" : {
 		"entry": {
@@ -224,6 +224,20 @@
 					"properties": {
 						"type": {"const": "table"},
 						"caption": {"type" : "string"},
+						"intro": {
+							"description": "Primarily for homebrew use.",
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
+						"outro": {
+							"description": "Primarily for homebrew use.",
+							"type": "array",
+							"items": {
+								"$ref": "/Entry"
+							}
+						},
 						"style": {"type" : "string"},
 						"colLabels": {
 							"type": "array",

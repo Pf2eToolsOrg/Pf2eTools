@@ -1,7 +1,7 @@
 "use strict";
 
 window.addEventListener(
-	'load',
+	"DOMContentLoaded",
 	function () {
 		navigation();
 		currentPage();
@@ -10,6 +10,10 @@ window.addEventListener(
 
 const CHILD_PAGES = {
 	"adventure.html": "adventures.html"
+};
+
+const ALT_CHILD_PAGES = {
+	"book.html": "books.html"
 };
 
 function currentPage () {
@@ -26,10 +30,21 @@ function currentPage () {
 		}
 	}
 
-	const current = $(`li[data-page="${currentPage}"]`);
-	current.addClass("active");
-	current.siblings().removeClass("active");
-	current.parent().closest("li").addClass("active");
+	try {
+		let current = document.querySelector(`li[data-page="${currentPage}"]`);
+		if (current == null && currentPage.includes("#")) {
+			currentPage = currentPage.split("#")[0];
+			if (ALT_CHILD_PAGES[currentPage]) currentPage = ALT_CHILD_PAGES[currentPage];
+			current = document.querySelector(`li[data-page="${currentPage}"]`);
+		}
+		current.parentNode.childNodes.forEach(n => n.classList && n.classList.remove("active"));
+		current.classList.add("active");
+		let closestLi = current.parentNode;
+		while (closestLi !== null && closestLi.nodeName !== "LI") closestLi = closestLi.parentNode;
+		closestLi && closestLi.classList.add("active");
+	} catch (ignored) {
+		setTimeout(() => { throw ignored });
+	}
 }
 
 function navigation () {
@@ -91,15 +106,17 @@ function navigation () {
 	LI('ul_references', 'psionics.html', 'Psionics');
 	LI('ul_references', 'spells.html', 'Spells');
 
-	LI('navbar', 'statgen.html', 'Statgen', "rolled");
+	LI('navbar', 'statgen.html', 'Statgen');
 
 	LIDropdown('navbar', 'utils', 'dropdown');
 	A('utils', 'utils', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Utilities <span class='caret'></span>");
 	UL('utils', 'ul_utils', 'dropdown-menu');
 	LI('ul_utils', 'blacklist.html', 'Content Blacklist');
 	LI('ul_utils', 'managebrew.html', 'Manage All Homebrew');
-	LI('ul_utils', 'converter.html', 'Stat Block to JSON');
+	LIDivider('ul_utils');
 	LI('ul_utils', 'demo.html', 'Renderer Demo');
+	LI('ul_utils', 'converter.html', 'Text Converter');
+	LIDivider('ul_utils');
 	LI('ul_utils', 'roll20.html', 'Roll20 Script Help');
 	LI('ul_utils', 'makeshaped.html', 'Roll20 Shaped Sheet JS Builder');
 	LIDivider('ul_utils');
@@ -158,38 +175,15 @@ function navigation () {
 	 */
 	function LI (append_to_id, a_href, a_text, a_hash) {
 		const hashPart = a_hash ? `#${a_hash}`.toLowerCase() : "";
-		$(`#${append_to_id}`)
-			.append(`
-				<li role="presentation" id="${a_text.toLowerCase().replace(/\s+/g, '')}" data-page="${a_href}${hashPart}">
-					<a href="${a_href}${hashPart}">${a_text}</a>
-				</li>
-			`);
+		document.querySelector(`#${append_to_id}`).innerHTML += `
+			<li role="presentation" id="${a_text.toLowerCase().replace(/\s+/g, '')}" data-page="${a_href}${hashPart}">
+				<a href="${a_href}${hashPart}">${a_text}</a>
+			</li>
+		`;
 	}
 
 	function LIDivider (append_to_id) {
-		$(`#${append_to_id}`).append(`<li role="presentation" class="divider"></li>`);
-	}
-
-	/**
-	 * Adds a new outbound item to the navigation bar. Can be used either in root, or in a different UL.
-	 * @param {String} append_to_id - Which ID does this link belong too .
-	 * @param {String} a_href - Where does this link to.
-	 * @param {String} a_text - What text does this link have.
-	 * @param {String} a_target - Where does this link target too.
-	 * @param {String} a_title - What subtext does this link have.
-	 */
-	function LISpecial (append_to_id, a_href, a_text, a_target, a_title) {
-		const $li = `
-			<li role="presentation">
-				<a href="${a_href}" target="${a_target}" title="${a_title}" class="dropdown-ext-link">
-					<span>${a_text}</span>
-					<span class="glyphicon glyphicon-log-out"></span>
-				</a>
-			</li>
-		`;
-
-		const $appendTo = $(`#${append_to_id}`);
-		$appendTo.append($li);
+		document.querySelector(`#${append_to_id}`).innerHTML += `<li role="presentation" class="divider"></li>`;
 	}
 
 	/**
@@ -214,7 +208,7 @@ function navigation () {
 	 * @param {String} li_id - What ID should this LI have.
 	 * @param {String} a_class - What class(es) should this link have.
 	 * @param {String} a_href - Where does this link to.
-	 * @param {String} a_class - What should the link do when you click on it.
+	 * @param {Function} a_onclick - What should the link do when you click on it.
 	 */
 	function LISwitcher (append_to_id, li_id, a_class, a_href, a_onclick) {
 		const a = document.createElement('a');

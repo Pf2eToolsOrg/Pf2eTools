@@ -13,7 +13,7 @@ let filterBox;
 let list;
 async function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ["name", "trapType", "source"],
+		valueNames: ["name", "trapType", "source", "uniqueid"],
 		listClass: "trapshazards",
 		sortFunction: SortUtil.listSort
 	});
@@ -99,9 +99,11 @@ function addTrapsHazards (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${thI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${thI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-xs-6">${it.name}</span>
-					<span class="trapType col-xs-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
-					<span class="source col-xs-2 ${Parser.sourceJsonToColor(abvSource)}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
+					<span class="name col-6">${it.name}</span>
+					<span class="trapType col-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
+					<span class="source col-2 ${Parser.sourceJsonToColor(abvSource)}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
+					
+					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : thI}</span>
 				</a>
 			</li>
 		`;
@@ -151,8 +153,8 @@ function getSublistItem (it, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-xs-8">${it.name}</span>
-				<span class="type col-xs-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
+				<span class="name col-8">${it.name}</span>
+				<span class="type col-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

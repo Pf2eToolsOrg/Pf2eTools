@@ -17,7 +17,7 @@ let filterBox;
 let list;
 async function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ['name', "source", "type"],
+		valueNames: ['name', "source", "type", "uniqueid"],
 		listClass: "cultsboons",
 		sortFunction: SortUtil.listSort
 	});
@@ -47,13 +47,15 @@ async function onJsonLoad (data) {
 	cultsAndBoonsList = data.cult.concat(data.boon);
 
 	let tempString = "";
-	cultsAndBoonsList.forEach((it, i) => {
+	cultsAndBoonsList.forEach((it, bcI) => {
 		tempString += `
-			<li class="row" ${FLTR_ID}="${i}" onclick="ListUtil.toggleSelected(event, this)">
-				<a id="${i}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="type col-xs-3 text-align-center">${cultBoonTypeToFull(it._type)}</span>
-					<span class="name col-xs-7">${it.name}</span>
-					<span class="source col-xs-2 ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+			<li class="row" ${FLTR_ID}="${bcI}" onclick="ListUtil.toggleSelected(event, this)">
+				<a id="${bcI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
+					<span class="type col-3 text-align-center">${cultBoonTypeToFull(it._type)}</span>
+					<span class="name col-7">${it.name}</span>
+					<span class="source col-2 ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					
+					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : bcI}</span>
 				</a>
 			</li>`;
 

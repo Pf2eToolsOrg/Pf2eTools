@@ -91,8 +91,8 @@ function addTables (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${cdI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${cdI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class='name col-xs-10'>${it.name}</span>
-					<span class='source col-xs-2 text-align-center ${Parser.sourceJsonToColor(it.source)}' title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class='name col-10'>${it.name}</span>
+					<span class='source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)}' title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
 					<span class="hidden sort-name">${sortName}</span>
 				</a>
 			</li>`;
@@ -128,7 +128,7 @@ function getSublistItem (table, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(table)}">
-				<span class="name col-xs-12">${table.name}</span>		
+				<span class="name col-12">${table.name}</span>		
 				<span class="id hidden">${pinId}</span>				
 			</a>
 		</li>

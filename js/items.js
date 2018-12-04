@@ -3,7 +3,7 @@
 window.onload = async function load () {
 	await ExcludeUtil.pInitialise();
 	EntryRenderer.item.buildList((incItemList) => {
-		populateTablesAndFilters(incItemList);
+		populateTablesAndFilters({item: incItemList});
 	}, {}, true);
 };
 
@@ -70,14 +70,14 @@ async function populateTablesAndFilters (data) {
 	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, miscFilter, attachedSpellsFilter);
 
 	const mundaneOptions = {
-		valueNames: ["name", "type", "cost", "weight", "source"],
+		valueNames: ["name", "type", "cost", "weight", "source", "uniqueid"],
 		listClass: "mundane",
 		sortClass: "none",
 		sortFunction: sortItems
 	};
 	mundanelist = ListUtil.search(mundaneOptions);
 	const magicOptions = {
-		valueNames: ["name", "type", "weight", "rarity", "source"],
+		valueNames: ["name", "type", "weight", "rarity", "source", "uniqueid"],
 		listClass: "magic",
 		sortClass: "none",
 		sortFunction: sortItems
@@ -188,19 +188,21 @@ async function populateTablesAndFilters (data) {
 		});
 }
 
-function handleBrew (homebrew) {
+async function handleBrew (homebrew) {
 	(homebrew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
 	(homebrew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
-	addItems(homebrew.item);
-	return Promise.resolve();
+	addItems(homebrew);
+	if (homebrew.variant && homebrew.variant.length) {
+		const variants = await EntryRenderer.item.pGetGenericAndSpecificVariants(homebrew.variant);
+		addItems({item: variants});
+	}
 }
 
 let itemList = [];
 let itI = 0;
 function addItems (data) {
-	if (!data || !data.length) return;
-
-	itemList = itemList.concat(data);
+	if (!data.item || !data.item.length) return;
+	itemList = itemList.concat(data.item);
 
 	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
 
@@ -233,25 +235,29 @@ function addItems (data) {
 			liList["mundane"] += `
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
-					<span class="name col-xs-3">${name}</span>
-					<span class="type col-xs-4 col-xs-4-3">${curitem.typeListText}</span>
-					<span class="col-xs-1 col-xs-1-5 text-align-center">${curitem.value ? curitem.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
-					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
-					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="name col-3">${name}</span>
+					<span class="type col-4-3">${curitem.typeListText}</span>
+					<span class="col-1-5 text-align-center">${curitem.value ? curitem.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
+					<span class="col-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
+					<span class="source col-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
 					<span class="cost hidden">${curitem._fCost}</span>
 					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
+					
+					<span class="uniqueid hidden">${curitem.uniqueId ? curitem.uniqueId : itI}</span>
 				</a>
 			</li>`;
 		} else {
 			liList["magic"] += `
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(curitem)}" title="${name}">
-					<span class="name col-xs-3 col-xs-3-5">${name}</span>
-					<span class="type col-xs-3 col-xs-3-3">${curitem.typeListText}</span>
-					<span class="col-xs-1 col-xs-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
-					<span class="rarity col-xs-2">${rarity}</span>
-					<span class="source col-xs-1 col-xs-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="name col-3-5">${name}</span>
+					<span class="type col-3-3">${curitem.typeListText}</span>
+					<span class="col-1-5 text-align-center">${Parser.itemWeightToFull(curitem) || "\u2014"}</span>
+					<span class="rarity col-2">${rarity}</span>
+					<span class="source col-1-7 ${Parser.sourceJsonToColor(curitem.source)}" title="${sourceFull}">${sourceAbv}</span>
 					<span class="weight hidden">${Parser.weightValueToNumber(curitem.weight)}</span>
+					
+					<span class="uniqueid hidden">${curitem.uniqueId ? curitem.uniqueId : itI}</span>
 				</a>
 			</li>`;
 		}
@@ -341,10 +347,10 @@ function getSublistItem (item, pinId, addCount) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(item)}" title="${item.name}">
-				<span class="name col-xs-6">${item.name}</span>
-				<span class="weight text-align-center col-xs-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="price text-align-center col-xs-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
-				<span class="count text-align-center col-xs-2">${addCount || 1}</span>
+				<span class="name col-6">${item.name}</span>
+				<span class="weight text-align-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
+				<span class="price text-align-center col-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="count text-align-center col-2">${addCount || 1}</span>
 				<span class="cost hidden">${item._fCost}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
@@ -393,15 +399,13 @@ function loadhash (id) {
 	$content.find("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
 	$content.find("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") + (item.weightNote ? ` ${item.weightNote}` : "") : "");
 
-	const [dispType, dispRarity, dispAttunement] = EntryRenderer.item.getTypeRarityAndAttunementText(item);
-	$content.find("td span#type").html(dispType);
-	$content.find("td span#rarity").html(dispRarity);
-	$content.find("td span#attunement").html(dispAttunement);
-
 	const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
 	$content.find("span#damage").html(damage);
 	$content.find("span#damagetype").html(damageType);
 	$content.find("span#properties").html(propertiesTxt);
+
+	const typeRarityAttunement = EntryRenderer.item.getTypeRarityAndAttunementText(item).filter(Boolean).join(", ");
+	$content.find("#typerarityattunement").html(typeRarityAttunement);
 
 	$content.find("tr.text").remove();
 	const renderStack = [];
@@ -479,8 +483,8 @@ const TOOL_INS_ADDITIONAL_ENTRIES = [
 			"Activity", "DC"
 		],
 		"colStyles": [
-			"col-xs-10",
-			"col-xs-2 text-align-center"
+			"col-10",
+			"col-2 text-align-center"
 		],
 		"rows": [
 			["Identify a tune", "10"],
@@ -526,8 +530,8 @@ const TOOL_GS_ADDITIONAL_ENTRIES = [
 			"Activity", "DC"
 		],
 		"colStyles": [
-			"col-xs-10",
-			"col-xs-2 text-align-center"
+			"col-10",
+			"col-2 text-align-center"
 		],
 		"rows": [
 			["Catch a player cheating", "15"],

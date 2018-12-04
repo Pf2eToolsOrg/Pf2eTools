@@ -16,7 +16,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
@@ -77,13 +76,13 @@
 	<hr>
 
 	<div class="row">
-		<div class="form-group col-xs-12">
+		<div class="form-group col-12">
 			<button class="btn btn-default" onclick="Blacklist.addAllUa()">Exclude All UA, etc</button>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="form-group col-xs-3">
+		<div class="form-group col-3">
 			<label for="bl-source">Source</label>
 			<select class="loading form-control form-inline" id="bl-source" disabled>
 				<option class="loading-temp" value="loading">Loading...</option>
@@ -91,7 +90,7 @@
 			</select>
 		</div>
 
-		<div class="form-group col-xs-3">
+		<div class="form-group col-3">
 			<label for="bl-category">Category</label>
 			<select class="loading form-control form-inline" id="bl-category" disabled>
 				<option class="loading-temp" value="loading">Loading...</option>
@@ -99,7 +98,7 @@
 			</select>
 		</div>
 
-		<div class="form-group col-xs-3">
+		<div class="form-group col-3">
 			<label for="bl-name">Name</label>
 			<select class="loading form-control form-inline" id="bl-name" disabled>
 				<option class="loading-temp" value="loading">Loading...</option>
@@ -107,7 +106,7 @@
 			</select>
 		</div>
 
-		<div class="form-group col-xs-3">
+		<div class="form-group col-3">
 			<div style="padding-top: 25px;">
 				<button class="loading btn btn-default" onclick="Blacklist.add()" disabled>Add Exclusion</button>
 			</div>
@@ -115,7 +114,7 @@
 	</div>
 
 	<div class="row">
-		<div class="form-group col-xs-12">
+		<div class="form-group col-12">
 			<button class="btn btn-default" onclick="Blacklist.export()">Export List</button>
 			<button class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
 			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.pReset()">Reset List</button>
@@ -136,10 +135,10 @@
 		</div>
 
 		<div id="filtertools" class="sortlabel btn-group">
-			<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="source">Source</button>
-			<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="category">Category</button>
-			<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="name">Name</button>
-			<button class="col-xs-3 sort btn btn-default btn-xs" disabled>&nbsp;</button>
+			<button class="col-3 sort btn btn-default btn-xs" data-sort="source">Source</button>
+			<button class="col-3 sort btn btn-default btn-xs" data-sort="category">Category</button>
+			<button class="col-3 sort btn btn-default btn-xs" data-sort="name">Name</button>
+			<button class="col-3 sort btn btn-default btn-xs" disabled>&nbsp;</button>
 		</div>
 
 		<ul class="list-display-only blacklist"></ul>

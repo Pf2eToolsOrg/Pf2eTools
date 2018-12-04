@@ -46,26 +46,14 @@ function cleanFolder (folder) {
 	const files = listFiles(folder);
 	files
 		.filter(file => file.endsWith(".json"))
-		.map(file => {
-			console.log(`\tCleaning ${file}...`);
-			return {
-				name: file,
-				contents: readJSON(file)
-			};
-		})
-		.map(file => {
-			file.contents = JSON.stringify(file.contents, null, "\t") + "\n";
-			return file;
-		})
-		.map(file => {
-			file.contents = file.contents.replace(replacementRegex, (match) => {
-				return replacements[match];
-			});
-			return file;
-		})
 		.forEach(file => {
-			fs.writeFileSync(file.name, file.contents);
-		});
+			console.log(`\tCleaning ${file}...`);
+			let contents = readJSON(file);
+			contents = JSON.stringify(contents, null, "\t") + "\n";
+			contents = contents.replace(replacementRegex, (match) => replacements[match]);
+			contents = contents.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+			fs.writeFileSync(file, contents);
+		})
 }
 
 const data = `./data`;

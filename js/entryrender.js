@@ -195,7 +195,9 @@ function EntryRenderer () {
 					}
 					break;
 				case "table":
+					if (entry.intro) entry.intro.forEach(introEntry => this._recursiveEntryRender(introEntry, textStack, depth, {prefix: "<p>", suffix: "</p>"}));
 					renderTable(this);
+					if (entry.outro) entry.outro.forEach(outroEntry => this._recursiveEntryRender(outroEntry, textStack, depth, {prefix: "<p>", suffix: "</p>"}));
 					break;
 				case "tableGroup":
 					renderTableGroup(this);
@@ -303,7 +305,7 @@ function EntryRenderer () {
 					textStack[0] += (entry.value < 0 ? "" : "+") + entry.value;
 					break;
 				case "bonusSpeed":
-					textStack[0] += (entry.value < 0 ? "" : "+") + entry.value + "ft.";
+					textStack[0] += (entry.value < 0 ? "" : "+") + entry.value + " ft.";
 					break;
 				case "dice":
 					textStack[0] += EntryRenderer.getEntryDice(entry, entry.name);
@@ -422,6 +424,10 @@ function EntryRenderer () {
 					textStack[0] += `</div>`;
 					renderSuffix();
 					break;
+				}
+
+				case "code": {
+					textStack[0] += `<pre>${entry.preformatted}</pre>`;
 				}
 			}
 		} else if (typeof entry === "string") { // block
@@ -1271,11 +1277,11 @@ EntryRenderer.splitByTags = function (string) {
 		switch (char) {
 			case "{":
 				if (char2 === "@") {
+					inTag = true;
 					if (tagDepth++ > 0) {
 						curStr += char;
 					} else {
 						out.push(curStr);
-						inTag = false;
 						curStr = "";
 					}
 				} else {
@@ -1283,7 +1289,10 @@ EntryRenderer.splitByTags = function (string) {
 				}
 				break;
 			case "}":
-				if (--tagDepth === 0) {
+				if (!inTag) {
+					curStr += char;
+				} else if (--tagDepth === 0) {
+					inTag = false;
 					out.push(curStr);
 					curStr = "";
 				} else {
@@ -1340,7 +1349,7 @@ EntryRenderer.utils = {
 		return `<tr>
 					<th class="rnd-name name" colspan="6">
 						<div class="name-inner">
-							<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it._displayName || it.name}${suffix || ""}</span>
+							<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="EntryRenderer.utils._handleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it._displayName || it.name}${suffix || ""}</span>
 							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${EntryRenderer.utils.getSourceSubText(it)}">
 								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
 							</span>
@@ -1351,7 +1360,7 @@ EntryRenderer.utils = {
 
 	_handleNameClick (ele) {
 		copyText($(ele).text());
-		showCopiedEffect($(ele));
+		JqueryUtil.showCopiedEffect($(ele));
 	},
 
 	getPageTr: (it) => {
@@ -1360,14 +1369,23 @@ EntryRenderer.utils = {
 
 	_getPageTrText: (it) => {
 		function getAltSourceText (prop, introText) {
-			return it[prop] && it[prop].length ? `${introText} ${it[prop].map(as => `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page ? `, page ${as.page}` : ""}`).join("; ")}` : "";
+			if (it[prop] && it[prop].length) {
+				return `${introText} ${it[prop].map(as => {
+					if (as.entry) {
+						return EntryRenderer.getDefaultRenderer().renderEntry(as.entry);
+					} else {
+						return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page ? `, page ${as.page}` : ""}`;
+					}
+				}).join("; ")}`
+			} else return "";
 		}
 		const sourceSub = EntryRenderer.utils.getSourceSubText(it);
 		const baseText = it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
 		const addSourceText = getAltSourceText("additionalSources", "Additional information from");
 		const otherSourceText = getAltSourceText("otherSources", "Also found in");
+		const externalSourceText = getAltSourceText("externalSources", "External sources:");
 
-		return `${[baseText, addSourceText, otherSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText) ? "." : ""}`;
+		return `${[baseText, addSourceText, otherSourceText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || externalSourceText) ? "." : ""}`;
 	},
 
 	getAbilityRoller (statblock, ability) {
@@ -1854,9 +1872,9 @@ EntryRenderer.race = {
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-xs-4 text-align-center">Ability Scores</th>
-						<th class="col-xs-4 text-align-center">Size</th>
-						<th class="col-xs-4 text-align-center">Speed</th>
+						<th class="col-4 text-align-center">Ability Scores</th>
+						<th class="col-4 text-align-center">Size</th>
+						<th class="col-4 text-align-center">Speed</th>
 					</tr>
 					<tr>
 						<td class="text-align-center">${ability.asText}</td>
@@ -1966,7 +1984,6 @@ EntryRenderer.deity = {
 	},
 	getOrderedParts (deity, prefix, suffix) {
 		const parts = {};
-		if (deity.customProperties) Object.entries(deity.customProperties).forEach(([k, v]) => parts[k] = v);
 		Object.entries(EntryRenderer.deity._basePartTranslators).forEach(([k, v]) => {
 			const val = deity[v.prop];
 			if (val != null) {
@@ -1974,8 +1991,9 @@ EntryRenderer.deity = {
 				parts[k] = outVal;
 			}
 		});
+		if (deity.customProperties) Object.entries(deity.customProperties).forEach(([k, v]) => parts[k] = v);
 		const allKeys = Object.keys(parts).sort(SortUtil.ascSortLower);
-		return allKeys.map(k => `${prefix}<b>${k}: </b>${parts[k]}${suffix}`).join("");
+		return allKeys.map(k => `${prefix}<b>${k}: </b>${EntryRenderer.getDefaultRenderer().renderEntry(parts[k])}${suffix}`).join("");
 	},
 
 	getCompactRenderedString: (deity) => {
@@ -2449,12 +2467,12 @@ EntryRenderer.monster = {
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-xs-2 text-align-center">STR</th>
-						<th class="col-xs-2 text-align-center">DEX</th>
-						<th class="col-xs-2 text-align-center">CON</th>
-						<th class="col-xs-2 text-align-center">INT</th>
-						<th class="col-xs-2 text-align-center">WIS</th>
-						<th class="col-xs-2 text-align-center">CHA</th>
+						<th class="col-2 text-align-center">STR</th>
+						<th class="col-2 text-align-center">DEX</th>
+						<th class="col-2 text-align-center">CON</th>
+						<th class="col-2 text-align-center">INT</th>
+						<th class="col-2 text-align-center">WIS</th>
+						<th class="col-2 text-align-center">CHA</th>
 					</tr>	
 					<tr>
 						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(mon, "str")}</td>
@@ -2614,6 +2632,99 @@ EntryRenderer.monster = {
 
 	getTokenUrl (mon) {
 		return mon.tokenURL || UrlUtil.link(`img/${Parser.sourceJsonToAbv(mon.source)}/${mon.name.replace(/"/g, "")}.png`);
+	},
+
+	getFluff (mon, legendaryMeta, fluffJson) {
+		const fluff = mon.fluff || (fluffJson || {monster: []}).monster.find(it => (it.name === mon.name && it.source === mon.source));
+
+		if (!fluff) return null;
+
+		// TODO is this good enough? Need to check for lair blocks which are not the last, and tag them with
+		//   "data": {"lairRegionals": true}, and insert the lair/regional text there if available (do the current "append" otherwise)
+		function addLegendaryGroup () {
+			if (!fluff.appliedLegendaryGroups || !fluff.appliedLegendaryGroups[mon.legendaryGroup]) {
+				fluff.appliedLegendaryGroups = fluff.appliedLegendaryGroups || {[mon.legendaryGroup]: true};
+				const thisGroup = legendaryMeta[mon.legendaryGroup];
+				const handleProp = (prop, name) => {
+					if (thisGroup[prop]) {
+						fluff.type = "section";
+
+						fluff.entries.push({
+							type: "entries",
+							entries: [{
+								type: "entries",
+								name,
+								entries: thisGroup[prop]
+							}]
+						});
+					}
+				};
+				handleProp("lairActions", "Lair Actions");
+				handleProp("regionalEffects", "Regional Effects");
+			}
+		}
+
+		if (fluff.entries && mon.legendaryGroup && legendaryMeta[mon.legendaryGroup]) {
+			addLegendaryGroup(mon.legendaryGroup);
+		}
+
+		function handleRecursive (fluff) {
+			const cachedAppendCopy = fluff._appendCopy; // prevent _copy from overwriting this
+
+			if (fluff._copy) {
+				const cpy = fluffJson.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
+				// preserve these
+				const name = fluff.name;
+				const src = fluff.source;
+				const images = fluff.images;
+
+				// remove this
+				delete fluff._copy;
+
+				Object.assign(fluff, cpy);
+				fluff.name = name;
+				fluff.source = src;
+				if (images) fluff.images = images;
+
+				if (fluff.entries && mon.legendaryGroup && legendaryMeta[mon.legendaryGroup]) {
+					addLegendaryGroup();
+				}
+
+				handleRecursive(fluff);
+			}
+
+			if (cachedAppendCopy) {
+				const cpy = fluffJson.monster.find(it => cachedAppendCopy.name === it.name && cachedAppendCopy.source === it.source);
+				if (cpy.images) {
+					if (!fluff.images) fluff.images = cpy.images;
+					else fluff.images = fluff.images.concat(cpy.images);
+				}
+				if (cpy.entries) {
+					if (!fluff.entries) fluff.entries = cpy.entries;
+					else {
+						if ((cpy.entries[0] || {}).type !== "section") {
+							fluff.entries = fluff.entries.concat({type: "section", entries: cpy.entries})
+						} else fluff.entries = fluff.entries.concat(cpy.entries);
+					}
+				}
+				delete fluff._appendCopy;
+
+				fluff._copy = cpy._copy;
+				fluff._appendCopy = cpy._appendCopy;
+
+				if (fluff.entries && mon.legendaryGroup && legendaryMeta[mon.legendaryGroup]) {
+					addLegendaryGroup();
+				}
+
+				handleRecursive(fluff);
+			}
+		}
+
+		if (fluff._copy || fluff._appendCopy) {
+			handleRecursive(fluff);
+		}
+
+		return fluff;
 	}
 };
 DataUtil.dependencyMergers[UrlUtil.PG_BESTIARY] = EntryRenderer.monster.mergeCopy;
@@ -2665,20 +2776,11 @@ EntryRenderer.item = {
 	},
 
 	getTypeRarityAndAttunementText (item) {
-		const typeToDisplay = item.typeText === "Other" ? "" : item.typeText;
-		const rarityParts = [];
-		if (typeToDisplay) rarityParts.push(", ");
-		if (item.tier) {
-			rarityParts.push(item.tier);
-			rarityParts.push(", ");
-		}
-		const rarityToDisplay = item.rarity && EntryRenderer.item.doRenderRarity(item.rarity);
-		if (rarityToDisplay) {
-			rarityParts.push(item.rarity);
-			rarityParts.push(", ");
-		}
-		rarityParts.pop();
-		return [typeToDisplay.trim(), rarityParts.join("").trim(), (item.reqAttune ? item.reqAttune : "").trim()];
+		return [
+			item.typeText === "Other" ? "" : item.typeText.trim(),
+			[item.tier, (item.rarity && EntryRenderer.item.doRenderRarity(item.rarity) ? item.rarity : "")].map(it => (it || "").trim()).filter(it => it).join(", "),
+			(item.reqAttune || "").trim()
+		];
 	},
 
 	getCompactRenderedString: function (item) {
@@ -2714,12 +2816,14 @@ EntryRenderer.item = {
 	_propertyList: {},
 	_typeList: {},
 	_addProperty (p) {
+		if (EntryRenderer.item._propertyList[p.abbreviation]) return;
 		EntryRenderer.item._propertyList[p.abbreviation] = p.name ? JSON.parse(JSON.stringify(p)) : {
 			"name": p.entries[0].name.toLowerCase(),
 			"entries": p.entries
 		};
 	},
 	_addType (t) {
+		if (EntryRenderer.item._typeList[t.abbreviation]) return;
 		EntryRenderer.item._typeList[t.abbreviation] = t.name ? JSON.parse(JSON.stringify(t)) : {
 			"name": t.entries[0].name.toLowerCase(),
 			"entries": t.entries
@@ -2736,159 +2840,151 @@ EntryRenderer.item = {
 				.catch(BrewUtil.pPurgeBrew);
 		});
 	},
+	_addBasicPropertiesAndTypes (basicItemData) {
+		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
+		basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
+		basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
+	},
 	/**
 	 * Runs callback with itemList as argument
-	 * @param callback
+	 * @param callback Run with args: allItems.
 	 * @param urls optional overrides for default URLs
 	 * @param addGroups whether item groups should be included
 	 */
-	buildList: function (callback, urls, addGroups) {
+	async buildList (callback, urls, addGroups) {
 		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
-
 		if (!urls) urls = {};
 
-		// allows URLs to be overriden (used by roll20 script)
+		// allows URLs to be overridden (used by roll20 script)
 		const itemUrl = urls.items || `${EntryRenderer.getDefaultRenderer().baseUrl}data/items.json`;
 		const basicItemUrl = urls.basicitems || `${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`;
 		const magicVariantUrl = urls.magicvariants || `${EntryRenderer.getDefaultRenderer().baseUrl}data/magicvariants.json`;
 
-		loadItems()
-			.then(addBasicItemsAndTypes)
-			.then(addGenericVariants)
-			.then(createSpecificVariants)
-			.then(enhanceItems)
-			.then(callback);
+		const itemList = await pLoadItems();
+		const basicItems = await pAddBasicItemsAndTypes();
+		const genericVariants = await pAddGenericVariants();
+		const genericAndSpecificVariants = EntryRenderer.item._createSpecificVariants(basicItems, genericVariants);
+		const allItems = itemList.concat(basicItems).concat(genericAndSpecificVariants);
+		EntryRenderer.item._enhanceItems(allItems);
+		EntryRenderer.item._builtList = allItems;
+		callback(allItems);
 
-		function loadItems () {
-			return new Promise((resolve, reject) => {
-				DataUtil.loadJSON(itemUrl).then((itemData) => {
-					const items = itemData.item;
-					if (addGroups) {
-						itemData.itemGroup.forEach(it => it._isItemGroup = true);
-						resolve(items.concat(itemData.itemGroup || []));
-					} else resolve(items);
-				}, reject);
-			});
+		async function pLoadItems () {
+			const itemData = await DataUtil.loadJSON(itemUrl);
+			const items = itemData.item;
+			if (addGroups) {
+				itemData.itemGroup.forEach(it => it._isItemGroup = true);
+				return items.concat(itemData.itemGroup || []);
+			} else return items;
 		}
 
-		function addBasicItemsAndTypes (itemList) {
-			return new Promise((resolve, reject) => {
-				DataUtil.loadJSON(basicItemUrl).then((basicItemData) => {
-					const basicItems = basicItemData.basicitem;
-					// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
-					basicItemData.itemProperty.forEach(p => EntryRenderer.item._addProperty(p));
-					basicItemData.itemType.forEach(t => EntryRenderer.item._addType(t));
-					EntryRenderer.item._pAddBrewPropertiesAndTypes()
-						.then(() => resolve([itemList, basicItems]));
-				}, reject);
-			});
+		async function pAddBasicItemsAndTypes () {
+			const basicItemData = await DataUtil.loadJSON(basicItemUrl);
+			EntryRenderer.item._addBasicPropertiesAndTypes(basicItemData);
+			await EntryRenderer.item._pAddBrewPropertiesAndTypes();
+			return basicItemData.basicitem;
 		}
 
-		function addGenericVariants ([items, basicItems]) {
-			function addInheritedPropertiesToSelf (genericVariant) {
-				genericVariant.tier = genericVariant.inherits.tier;
-				genericVariant.rarity = genericVariant.inherits.rarity;
-				genericVariant.source = genericVariant.inherits.source;
-				genericVariant.page = genericVariant.inherits.page;
-				if (!genericVariant.entries && genericVariant.inherits.entries) {
-					genericVariant.entries = JSON.parse(JSON.stringify(genericVariant.inherits.entries));
+		async function pAddGenericVariants () {
+			const variantData = await DataUtil.loadJSON(magicVariantUrl);
+			const genericVariants = variantData.variant;
+			genericVariants.forEach(EntryRenderer.item._genericVariants_addInheritedPropertiesToSelf);
+			return genericVariants;
+		}
+	},
+
+	_createSpecificVariants (basicItems, genericVariants) {
+		function isMissingRequiredProperty (baseItem, genericVariant) {
+			return !~genericVariant.requires.findIndex(req => !~Object.keys(req).findIndex(reqK => baseItem[reqK] !== req[reqK]));
+		}
+
+		function hasExcludedProperty (baseItem, genericVariant) {
+			const curExcludes = genericVariant.excludes || {};
+			return !!Object.keys(curExcludes).find(key => {
+				if (curExcludes[key] instanceof Array) {
+					return (baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key].includes(it)) : curExcludes[key].includes(baseItem[key]));
 				}
-				if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
-				if (genericVariant.inherits.resist) genericVariant.resist = genericVariant.inherits.resist;
-				if (genericVariant.inherits.reqAttune) genericVariant.reqAttune = genericVariant.inherits.reqAttune;
-			}
-
-			return new Promise((resolve, reject) => {
-				DataUtil.loadJSON(magicVariantUrl).then((variantData) => {
-					const genericVariants = variantData.variant;
-					genericVariants.forEach(addInheritedPropertiesToSelf);
-					resolve([items, basicItems, genericVariants]);
-				}, reject);
+				return baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key] === it) : curExcludes[key] === baseItem[key];
 			});
 		}
 
-		function createSpecificVariants ([items, basicItems, genericVariants]) {
-			function isItemWithQuantity (baseItem) {
-				return baseItem.name.toLowerCase().indexOf(" (") !== -1;
-			}
-
-			function isMissingRequiredProperty (baseItem, genericVariant) {
-				return !~genericVariant.requires.findIndex(req => !~Object.keys(req).findIndex(reqK => baseItem[reqK] !== req[reqK]));
-			}
-
-			function hasExcludedProperty (baseItem, genericVariant) {
-				const curExcludes = genericVariant.excludes || {};
-				return !!Object.keys(curExcludes).find(key => {
-					if (curExcludes[key] instanceof Array) {
-						return (baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key].includes(it)) : curExcludes[key].includes(baseItem[key]));
-					}
-					return baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key] === it) : curExcludes[key] === baseItem[key];
-				});
-			}
-
-			function addSpecificVariantForEnhancing (genericVariant, base, specificVariant) {
-				genericVariant.variants = genericVariant.variants || [];
-				genericVariant.variants.push({
-					base,
-					specificVariant
-				});
-			}
-
-			function createSpecificVariant (baseItem, genericVariant) {
-				const inherits = genericVariant.inherits;
-				const specificVariant = JSON.parse(JSON.stringify(baseItem));
-				if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) specificVariant.entries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
-				delete specificVariant.value; // Magic items do not inherit the value of the non-magical item
-				specificVariant.category = "Specific Variant";
-				Object.keys(inherits).forEach((inheritedProperty) => {
-					if (inheritedProperty === "namePrefix") {
-						specificVariant.name = inherits.namePrefix + specificVariant.name;
-					} else if (inheritedProperty === "nameSuffix") {
-						specificVariant.name += inherits.nameSuffix;
-					} else if (inheritedProperty === "entries") {
-						for (let k = inherits.entries.length - 1; k > -1; k--) {
-							let tmpText = inherits.entries[k];
+		function createSpecificVariant (baseItem, genericVariant) {
+			const inherits = genericVariant.inherits;
+			const specificVariant = MiscUtil.copy(baseItem);
+			if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) specificVariant.entries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
+			delete specificVariant.value; // Magic items do not inherit the value of the non-magical item
+			specificVariant.category = "Specific Variant";
+			Object.keys(inherits).forEach((inheritedProperty) => {
+				switch (inheritedProperty) {
+					case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
+					case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
+					case "entries": {
+						inherits.entries.forEach(tmpText => {
 							if (typeof tmpText === "string") {
 								if (specificVariant.dmgType) tmpText = tmpText.replace(/{@dmgType}/g, Parser.dmgTypeToFull(specificVariant.dmgType));
 								if (inherits.genericBonus) tmpText = tmpText.replace(/{@genericBonus}/g, inherits.genericBonus);
-								if (tmpText.indexOf("{@lowerName}") !== -1) tmpText = tmpText.split("{@lowerName}").join(baseItem.name);
+								if (tmpText.includes("{@lowerName}")) tmpText = tmpText.replace(/{@lowerName}/g, baseItem.name);
 							}
 							specificVariant.entries.unshift(tmpText);
-						}
-					} else {
-						specificVariant[inheritedProperty] = inherits[inheritedProperty];
+						});
+						break;
 					}
-				});
-				addSpecificVariantForEnhancing(genericVariant, baseItem, specificVariant);
-				return specificVariant;
-			}
-
-			return new Promise((resolve) => {
-				const allItems = items.concat(basicItems).concat(genericVariants);
-
-				basicItems.forEach((curBaseItem) => {
-					curBaseItem.category = "Basic";
-					if (curBaseItem.entries === undefined) curBaseItem.entries = [];
-
-					if (isItemWithQuantity(curBaseItem)) return;
-
-					genericVariants.forEach((curGenericVariant) => {
-						if (isMissingRequiredProperty(curBaseItem, curGenericVariant)) return;
-						if (hasExcludedProperty(curBaseItem, curGenericVariant)) return;
-
-						allItems.push(createSpecificVariant(curBaseItem, curGenericVariant));
-					});
-				});
-
-				resolve(allItems);
+					default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
+				}
 			});
+
+			// track the specific variant on the parent generic, to later render as part of the stats
+			genericVariant.variants = genericVariant.variants || [];
+			genericVariant.variants.push({base: baseItem, specificVariant});
+
+			return specificVariant;
 		}
 
-		function enhanceItems (allItems) {
-			allItems.forEach((item) => EntryRenderer.item.enhanceItem(item));
-			EntryRenderer.item._builtList = allItems;
-			return Promise.resolve(allItems);
+		const genericAndSpecificVariants = [...genericVariants];
+		basicItems.forEach((curBaseItem) => {
+			curBaseItem.category = "Basic";
+			if (curBaseItem.entries == null) curBaseItem.entries = [];
+
+			if (curBaseItem.quantity) return; // e.g. "Arrows (20)"
+
+			genericVariants.forEach((curGenericVariant) => {
+				if (isMissingRequiredProperty(curBaseItem, curGenericVariant)) return;
+				if (hasExcludedProperty(curBaseItem, curGenericVariant)) return;
+
+				genericAndSpecificVariants.push(createSpecificVariant(curBaseItem, curGenericVariant));
+			});
+		});
+		return genericAndSpecificVariants;
+	},
+
+	_enhanceItems (allItems) {
+		allItems.forEach((item) => EntryRenderer.item.enhanceItem(item));
+		return allItems;
+	},
+
+	async pGetGenericAndSpecificVariants (variants, basicItemsUrl) {
+		basicItemsUrl = basicItemsUrl || `${EntryRenderer.getDefaultRenderer().baseUrl}data/basicitems.json`;
+
+		const basicItemData = await DataUtil.loadJSON(basicItemsUrl);
+		const basicItems = basicItemData.basicitem;
+		EntryRenderer.item._addBasicPropertiesAndTypes(basicItemData);
+		await EntryRenderer.item._pAddBrewPropertiesAndTypes();
+		variants.forEach(EntryRenderer.item._genericVariants_addInheritedPropertiesToSelf);
+		const genericAndSpecificVariants = EntryRenderer.item._createSpecificVariants(basicItems, variants);
+		return EntryRenderer.item._enhanceItems(genericAndSpecificVariants);
+	},
+
+	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
+		genericVariant.tier = genericVariant.inherits.tier;
+		genericVariant.rarity = genericVariant.inherits.rarity;
+		genericVariant.source = genericVariant.inherits.source;
+		genericVariant.page = genericVariant.inherits.page;
+		if (!genericVariant.entries && genericVariant.inherits.entries) {
+			genericVariant.entries = JSON.parse(JSON.stringify(genericVariant.inherits.entries));
 		}
+		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
+		if (genericVariant.inherits.resist) genericVariant.resist = genericVariant.inherits.resist;
+		if (genericVariant.inherits.reqAttune) genericVariant.reqAttune = genericVariant.inherits.reqAttune;
 	},
 
 	_priceRe: /^(\d+)(\w+)$/,
@@ -3314,12 +3410,12 @@ EntryRenderer.ship = {
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-xs-2 text-align-center">STR</th>
-						<th class="col-xs-2 text-align-center">DEX</th>
-						<th class="col-xs-2 text-align-center">CON</th>
-						<th class="col-xs-2 text-align-center">INT</th>
-						<th class="col-xs-2 text-align-center">WIS</th>
-						<th class="col-xs-2 text-align-center">CHA</th>
+						<th class="col-2 text-align-center">STR</th>
+						<th class="col-2 text-align-center">DEX</th>
+						<th class="col-2 text-align-center">CON</th>
+						<th class="col-2 text-align-center">INT</th>
+						<th class="col-2 text-align-center">WIS</th>
+						<th class="col-2 text-align-center">CHA</th>
 					</tr>	
 					<tr>
 						<td class="text-align-center">${EntryRenderer.utils.getAbilityRoller(ship, "str")}</td>
@@ -3379,6 +3475,13 @@ EntryRenderer.hover = {
 			data: {hoverTitle: entry.name}
 		};
 		return id;
+	},
+
+	__updateOnMouseHoverEntry (id, entry) {
+		EntryRenderer.hover._mouseHovers[id] = {
+			...entry,
+			data: {hoverTitle: entry.name}
+		};
 	},
 
 	bindOnMouseHoverEntry (entry, isBookContent) {
@@ -4109,15 +4212,32 @@ EntryRenderer.hover = {
 		ks.forEach(hovId => EntryRenderer.hover._teardownWindow(hovId));
 	},
 
-	bindPopoutButton: (toList, handlerGenerator) => {
+	bindPopoutButton (toList, handlerGenerator) {
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`)
 			.off("click")
-			.attr("title", "Popout Window");
-		$btnPop.on("click", handlerGenerator ? handlerGenerator(toList, $btnPop) : (evt) => {
+			.attr("title", "Popout Window (SHIFT for Source Data)");
+
+		const popoutCodeId = EntryRenderer.hover.__initOnMouseHoverEntry({});
+
+		$btnPop.on("click", handlerGenerator ? handlerGenerator(toList, $btnPop, popoutCodeId) : (evt) => {
 			if (History.lastLoadedId !== null) {
-				EntryRenderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
+				if (evt.shiftKey) {
+					EntryRenderer.hover.handlePopoutCode(evt, toList, $btnPop, popoutCodeId);
+				} else EntryRenderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
 			}
 		});
+	},
+
+	handlePopoutCode (evt, toList, $btnPop, popoutCodeId) {
+		const data = toList[History.lastLoadedId];
+		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(data));
+		EntryRenderer.hover.__updateOnMouseHoverEntry(popoutCodeId, {
+			type: "code",
+			name: `${data.name} \u2014 Source Data`,
+			preformatted: JSON.stringify(cleanCopy, null, 2)
+		});
+		$btnPop.attr("data-hover-active", false);
+		EntryRenderer.hover.mouseOverHoverTooltip({shiftKey: true, clientX: evt.clientX}, $btnPop.get(0), popoutCodeId, true);
 	},
 
 	doPopout: ($btnPop, list, index, clientX) => {
@@ -5241,6 +5361,50 @@ EntryRenderer.stripTags = function (str) {
 						return text.replace(/^{@i (.*?)}$/, "$1");
 					}
 
+					case "@h": return "Hit: ";
+
+					case "@atk": return EntryRenderer.attackTagToFull(text);
+
+					case "@chance":
+					case "@hit":
+					case "@recharge":
+					case "@damage":
+					case "@dice": {
+						const [rollText, displayText, name] = text.split("|");
+						switch (tag) {
+							case "@damage":
+							case "@dice": {
+								return displayText || rollText;
+							}
+							case "@hit": {
+								return displayText || (() => {
+									const n = Number(rollText);
+									if (isNaN(n)) {
+										throw new Error(`Could not parse "${rollText}" as a number!`)
+									}
+									return `${n >= 0 ? "+" : ""}${n}`;
+								})();
+							}
+							case "@recharge": {
+								const asNum = Number(rollText || 6);
+								if (isNaN(asNum)) {
+									throw new Error(`Could not parse "${rollText}" as a number!`)
+								}
+								return `(Recharge ${asNum}${asNum < 6 ? `\u20136` : ""})`;
+							}
+							case "@chance": {
+								return displayText || `${rollText} percent`;
+							}
+						}
+						throw new Error(`Unhandled tag ${tag}`);
+					}
+
+					case "@skill": {
+						return text;
+					}
+
+					case "@hazard":
+					case "@condition":
 					case "@spell":
 					case "@item":
 					case "@creature": {
@@ -5249,7 +5413,7 @@ EntryRenderer.stripTags = function (str) {
 					}
 					default: throw new Error(`Unhandled tag: "${tag}"`);
 				}
-			} else return str;
+			} else return it;
 		}).join("");
 	} return str;
 };

@@ -47,10 +47,10 @@ class ManageBrew {
 									const toDisplay = displayFn ? displayFn(BrewUtil.homebrewMeta, metaType, k) : k.toTitleCase();
 
 									const $row = $(`<li class="row manbrew__row">
-										<span class="action col-xs-10 manbrew__col--tall">${toDisplay}</span>
+										<span class="action col-10 manbrew__col--tall">${toDisplay}</span>
 									</li>`).appendTo($lst);
 
-									const $btns = $(`<span class="col-xs-2 text-align-right"/>`).appendTo($row);
+									const $btns = $(`<span class="col-2 text-align-right"/>`).appendTo($row);
 									$(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`).appendTo($btns).click(() => {
 										delete BrewUtil.homebrewMeta[metaType][k];
 										if (!Object.keys(BrewUtil.homebrewMeta[metaType]).length) delete BrewUtil.homebrewMeta[metaType];

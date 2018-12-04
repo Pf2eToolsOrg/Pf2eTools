@@ -117,8 +117,8 @@ class ClassList {
 	static _renderClass (classToRender, id) {
 		return `<li class="row" ${FLTR_ID}="${id}" ${classToRender.uniqueId ? `data-unique-id="${classToRender.uniqueId}"` : ""}>
 				<a id='${id}' href="${HashLoad.getClassHash(classToRender)}" title="${classToRender.name}">
-					<span class='name col-xs-8'>${classToRender.name}</span>
-					<span class='source col-xs-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}' title="${Parser.sourceJsonToFull(classToRender.source)}">
+					<span class='name col-8'>${classToRender.name}</span>
+					<span class='source col-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}' title="${Parser.sourceJsonToFull(classToRender.source)}">
 						${Parser.sourceJsonToAbv(classToRender.source)}
 					</span>
 					<span class="uniqueid hidden">${classToRender.uniqueId ? classToRender.uniqueId : id}</span>
@@ -133,6 +133,13 @@ class ClassData {
 		const newClasses = data.class;
 		if (!newClasses || !newClasses.length) return;
 
+		newClasses.forEach(c => {
+			c.subclasses = c.subclasses || [];
+			c.subclasses.forEach(sc => {
+				sc.source = sc.source || c.source; // default subclasses to same source as parent
+				sc.shortName = sc.shortName || sc.name; // ensure shortName
+			});
+		});
 		ClassData.sortSubclasses(newClasses);
 
 		newClasses.filter(c => SourceUtil.isNonstandardSource(c.source) || BrewUtil.hasSourceJson(c.source))
@@ -142,7 +149,16 @@ class ClassData {
 
 		ClassList.addClasses(newClasses);
 
-		if (!History.initialLoad) History.hashChange();
+		if (!History.initialLoad) {
+			if (data.class.some(c => c.uniqueId)) {
+				const filterVals = filterBox.getValues();
+				filterVals.Source.Homebrew = 1;
+				filterBox.setFromValues({
+					Source: Object.entries(filterVals.Source).filter(([k, v]) => v !== 0).map(([k, v]) => `${~v ? "" : "!"}${k.toLowerCase()}`)
+				});
+			}
+			History.hashChange();
+		}
 	}
 
 	static addSubclassData (data) {
@@ -166,12 +182,11 @@ class ClassData {
 
 	/**
 	 * Sorts subclasses of the classes given
-	 *
 	 * @param classes an Array of classes
 	 */
 	static sortSubclasses (classes) {
 		for (const c of classes) {
-			c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+			if (c.subclasses) c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 		}
 	}
 
@@ -181,10 +196,6 @@ class ClassData {
 
 	static cleanScSource (source) {
 		return Parser._getSourceStringFromSource(source);
-	}
-
-	static getSubclassFromPill ($pill) {
-		return ClassDisplay.curClass.subclasses.find(sc => sc.name === $pill.data("subclass") && (sc.source.source || sc.source) === $pill.data("source"));
 	}
 }
 ClassData.classes = [];
@@ -1268,7 +1279,7 @@ function initLinkGrabbers () {
 
 		if (evt.shiftKey) {
 			copyText($this.text().replace(/\.$/, ""));
-			showCopiedEffect($this);
+			JqueryUtil.showCopiedEffect($this);
 		} else {
 			const fTag = $this.closest(`tr`).attr("id");
 
@@ -1276,7 +1287,7 @@ function initLinkGrabbers () {
 				.filter(it => !it.startsWith(CLSS_HASH_FEATURE)).join(HASH_PART_SEP)}${HASH_PART_SEP}${fTag}`;
 
 			copyText(`${window.location.href.split("#")[0]}#${hash}`);
-			showCopiedEffect($this, "Copied link!");
+			JqueryUtil.showCopiedEffect($this, "Copied link!");
 		}
 	});
 }

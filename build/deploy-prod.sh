@@ -7,13 +7,12 @@ for f in js/*.js ; do npm run uglifyjs -- --compress --mangle -o "$f" -- "$f" ; 
 
 echo "Optimizing js."
 # Header / Day-Night mode
-npm run uglifyjs -- lib/js-cookie.js js/styleswitch.js js/navigation.js -o js/header.js -c -m
-rm lib/js-cookie.js js/styleswitch.js js/navigation.js
+npm run uglifyjs -- js/styleswitch.js js/navigation.js -o js/header.js -c -m
+rm js/styleswitch.js js/navigation.js
 
 find . -type f -name '*.html' -print0 |
     while IFS= read -r -d $'\0' line; do
-        sed -i -e 's;lib/js-cookie.js;js/header.js;g' $line
-        sed -n -i '/js\/styleswitch.js/!p' $line
+        sed -i -e 's;js/styleswitch.js;js/header.js;g' $line
         sed -n -i '/js\/navigation.js/!p' $line
     done
 

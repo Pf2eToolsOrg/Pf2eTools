@@ -16,7 +16,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<style>
@@ -96,22 +95,22 @@
 					</span>
 			</div>
 			<div id="filtertools-mundane" class="ele-mundane sortlabel btn-group">
-				<button class="col-xs-3 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-				<button class="col-xs-4 col-xs-4-3 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost <span class="caret_wrp"></span></button>
-				<button class="col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
-				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
+				<button class="col-3 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
+				<button class="col-4-3 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
+				<button class="col-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost <span class="caret_wrp"></span></button>
+				<button class="col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
+				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
 			</div>
 
 			<ul class="list mundane ele-mundane"></ul>
 			<h3 class="ele-mundane"><span class="side-label side-label--mundane clickable"></span></h3>
 
 			<div id="filtertools-magic" class="ele-magic sortlabel btn-group">
-				<button class="fullborder col-xs-3 col-xs-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-				<button class="fullborder col-xs-3 col-xs-3-3 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-				<button class="fullborder col-xs-1 col-xs-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
-				<button class="fullborder col-xs-2 sort btn btn-default btn-xs" data-sort="rarity" data-sortby="asc">Rarity <span class="caret_wrp"></span></button>
-				<button class="fullborder col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
+				<button class="fullborder col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
+				<button class="fullborder col-3-3 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
+				<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
+				<button class="fullborder col-2 sort btn btn-default btn-xs" data-sort="rarity" data-sortby="asc">Rarity <span class="caret_wrp"></span></button>
+				<button class="fullborder col-1-7 sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
 			</div>
 
 			<ul class="list magic ele-magic"></ul>
@@ -121,18 +120,18 @@
 		<div id="contentwrapper" class="view-col">
 			<div id="sublistcontainer" class="sublist">
 				<div id="sublistsort" class="sortlabel btn-group">
-					<button class="col-xs-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="weight">Weight</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="cost">Cost</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
+					<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="weight">Weight</button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="cost">Cost</button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
 				</div>
 				<ul class="list subitems">
 					<!-- populate with JS -->
 				</ul>
 				<div class="row">
-					<span class="col-xs-6 text-align-right">Total:</span>
-					<span class="col-xs-2 text-align-center no-wrap" id="totalweight"></span>
-					<span class="col-xs-2 text-align-center no-wrap" id="totalvalue"></span>
+					<span class="col-6 text-align-right">Total:</span>
+					<span class="col-2 text-align-center no-wrap" id="totalweight"></span>
+					<span class="col-2 text-align-center no-wrap" id="totalvalue"></span>
 				</div>
 			</div>
 

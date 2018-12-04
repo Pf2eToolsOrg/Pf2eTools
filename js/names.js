@@ -76,10 +76,10 @@ function loadhash (id) {
 					<caption>${tableName}</caption>
 					<thead>
 						<tr>
-							<th class="col-xs-2 text-align-center">
+							<th class="col-2 text-align-center">
 								<span class="roller" onclick="rollAgainstTable('${iLoad}', '${jLoad}')">d${diceType}</span>
 							</th>
-							<th class="col-xs-10">Name</th>
+							<th class="col-10">Name</th>
 						</tr>
 					</thead>`;
 
@@ -133,7 +133,7 @@ function rollAgainstTable (iLoad, jLoad) {
 	// add dice results
 	result = result.replace(RollerUtil.DICE_REGEX, function (match) {
 		const r = EntryRenderer.dice.parseRandomise2(match);
-		return `<span class="roller" onclick="reroll(this)">${match}</span> (<span class="result">${r}</span>)`
+		return `<span class="roller" onmousedown="event.preventDefault()" onclick="reroll(this)">${match}</span> (<span class="result">${r}</span>)`
 	});
 
 	EntryRenderer.dice.addRoll({name: `${race.race} - ${table.option}`}, `<span><strong>${pad(roll)}</strong> ${result}</span>`);
@@ -142,5 +142,5 @@ function rollAgainstTable (iLoad, jLoad) {
 function reroll (ele) {
 	const $ele = $(ele);
 	const resultRoll = EntryRenderer.dice.parseRandomise2($ele.html());
-	$ele.next(".result").html(resultRoll)
+	$ele.next(".result").html(resultRoll);
 }

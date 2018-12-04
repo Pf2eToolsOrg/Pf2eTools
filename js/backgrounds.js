@@ -24,7 +24,7 @@ window.onload = async function load () {
 
 function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ["name", "source", "skills"],
+		valueNames: ["name", "source", "skills", "uniqueid"],
 		listClass: "backgrounds"
 	});
 
@@ -86,9 +86,11 @@ function addBackgrounds (data) {
 		tempString +=
 			`<li class="row" ${FLTR_ID}="${bgI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${bgI}" href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
-					<span class="name col-xs-4">${bg.name.replace("Variant ", "")}</span>
-					<span class="skills col-xs-6">${skillDisplay}</span>
-					<span class="source col-xs-2 ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)}">${Parser.sourceJsonToAbv(bg.source)}</span>
+					<span class="name col-4">${bg.name.replace("Variant ", "")}</span>
+					<span class="skills col-6">${skillDisplay}</span>
+					<span class="source col-2 ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)}">${Parser.sourceJsonToAbv(bg.source)}</span>
+					
+					<span class="uniqueid hidden">${bg.uniqueId ? bg.uniqueId : bgI}</span>
 				</a>
 			</li>`;
 
@@ -144,8 +146,8 @@ function getSublistItem (bg, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
-				<span class="name col-xs-4">${bg.name}</span>
-				<span class="name col-xs-8">${EntryRenderer.background.getSkillSummary(bg.skillProficiencies || [], true)}</span>
+				<span class="name col-4">${bg.name}</span>
+				<span class="name col-8">${EntryRenderer.background.getSkillSummary(bg.skillProficiencies || [], true)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

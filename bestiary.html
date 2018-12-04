@@ -16,7 +16,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
@@ -56,10 +55,10 @@
 			</div>
 
 			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-xs-4 col-xs-4-2 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-				<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
-				<button class="col-xs-4 col-xs-4-1 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
-				<button class="col-xs-1 col-xs-1-7 sort btn btn-default btn-xs" data-sort="cr">CR  <span class="caret_wrp"></span></button>
+				<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+				<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
+				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR  <span class="caret_wrp"></span></button>
 			</div>
 
 			<ul class="list monsters">
@@ -70,7 +69,7 @@
 		<div id="contentwrapper" class="view-col">
 			<div class="ecgen__visible mb-4">
 				<div class="row">
-					<div class="col-xs-12 text-align-right">
+					<div class="col-12 text-align-right">
 						<div class="btn-group">
 							<button class="btn btn-info ecgen_rng" data-mode="medium">Random Medium</button>
 							<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -87,20 +86,20 @@
 				</div>
 			</div>
 
-			<div id="sublistcontainer" class="sublist">
+			<div id="sublistcontainer" class="sublist sublist--resizable">
 				<div id="sublistsort" class="sortlabel btn-group">
-					<button class="col-xs-5 sort btn btn-default btn-xs" data-sort="name">Name</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type</button>
-					<button class="col-xs-3 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="cr">CR</button>
-					<button class="col-xs-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
+					<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name</button>
+					<button class="col-3 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type</button>
+					<button class="col-3 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="cr">CR</button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
 				</div>
 				<ul class="list submonsters">
 					<!-- populate with JS -->
 				</ul>
 				<div class="row ecgen__hidden">
-					<span class="col-xs-7 text-align-right">Total:</span>
-					<span class="col-xs-5 no-wrap" id="totalcr" style="padding-left: 1px"></span>
+					<span class="col-7 text-align-right">Total:</span>
+					<span class="col-5 no-wrap" id="totalcr" style="padding-left: 1px"></span>
 				</div>
 			</div>
 
@@ -133,15 +132,15 @@
 				<h3>Group Info</h3>
 				<div class="row">
 					<!-- LHS -->
-					<div class="col-xs-6">
+					<div class="col-6">
 						<div class="row">
-							<div class="col-xs-3">Players:</div>
-							<div class="col-xs-3">Level:</div>
+							<div class="col-3">Players:</div>
+							<div class="col-3">Level:</div>
 						</div>
 
 
 						<div class="row ecgen__wrp_add_players">
-							<div class="col-xs-12">
+							<div class="col-12">
 								<button class="btn btn-info btn-xs ecgen__add_players">
 									<span class="glyphicon glyphicon-plus"></span> Add Another Level
 								</button>
@@ -150,7 +149,7 @@
 					</div>
 
 					<!-- RHS -->
-					<div class="col-xs-6 text-align-right">
+					<div class="col-6 text-align-right">
 						<div class="ecgen__easy">Easy: ? XP</div>
 						<div class="ecgen__medium">Medium: ? XP</div>
 						<div class="ecgen__hard">Hard: ? XP</div>
@@ -163,12 +162,12 @@
 				<hr class="ecgen__req_creatures">
 				<div class="row ecgen__req_creatures">
 					<!-- LHS -->
-					<div class="col-xs-6">
+					<div class="col-6">
 						<h3 class="ecgen__rating">Difficulty: ?</h3>
 					</div>
 
 					<!-- RHS -->
-					<div class="col-xs-6 text-align-right">
+					<div class="col-6 text-align-right">
 						<h4 class="ecgen__raw_total">Total XP: ?</h4>
 						<div><i class="ecgen__raw_per_player">(? per player)</i></div>
 						<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4 class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
@@ -178,7 +177,7 @@
 
 				<hr>
 				<div class="row">
-					<div class="col-xs-12 flex" style="justify-content: center">
+					<div class="col-12 flex" style="justify-content: center">
 						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_url">Save to URL</button>
 						<div style="width: 10px; height: 1px;"></div>
 						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_file">Save to File</button>
@@ -190,7 +189,7 @@
 
 				<hr>
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<button class="btn btn-default btn-xs ecgen__visible" style="margin: 0 auto;" id="btn-encounterstatblock">Back to Statblocks</button>
 					</div>
 				</div>

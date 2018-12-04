@@ -10,10 +10,10 @@ const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
 const CLS_PSIONICS = "psionics";
-const CLS_COL1 = "col-xs-5";
-const CLS_COL2 = "col-xs-2";
-const CLS_COL3 = "col-xs-2";
-const CLS_COL4 = "col-xs-2";
+const CLS_COL1 = "col-5";
+const CLS_COL2 = "col-2";
+const CLS_COL3 = "col-2";
+const CLS_COL4 = "col-2";
 const CLS_HIDDEN = "hidden";
 const CLS_LI_NONE = "list-entry-none";
 
@@ -61,7 +61,7 @@ async function onJsonLoad (data) {
 	filterBox = await pInitFilterBox(sourceFilter, typeFilter, orderFilter);
 
 	list = ListUtil.search({
-		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST],
+		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST, "uniqueid"],
 		listClass: CLS_PSIONICS,
 		sortFunction: SortUtil.listSort
 	});
@@ -175,6 +175,8 @@ function addPsionics (data) {
 					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
 					<span class='${LIST_ORDER} ${CLS_COL4} ${p._fOrder === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p._fOrder}</span>
 					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
+					
+					<span class="uniqueid hidden">${p.uniqueId ? p.uniqueId : psI}</span>
 				</a>
 			</li>
 		`;
@@ -224,9 +226,9 @@ function getSublistItem (p, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
-				<span class="name col-xs-6">${p.name}</span>
-				<span class="type col-xs-3">${Parser.psiTypeToFull(p.type)}</span>
-				<span class="order col-xs-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
+				<span class="name col-6">${p.name}</span>
+				<span class="type col-3">${Parser.psiTypeToFull(p.type)}</span>
+				<span class="order col-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

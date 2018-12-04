@@ -21,6 +21,7 @@ class BooksList {
 	onJsonLoad (data) {
 		const sortFunction = (a, b, o) => self.sortFn(self.dataList, a, b, o);
 		this.list = new List("listcontainer", {
+			valueNames: ["name"],
 			listClass: "books",
 			sortFunction
 		});

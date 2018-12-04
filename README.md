@@ -39,6 +39,9 @@ Targeting ES6 was the original intent, but more modern features have long since 
 #### Code
 - Use tabs over spaces.
 
+#### CSS
+- The [BEM](http://getbem.com/) ("Block Element Modifier") naming strategy should be used where possible.
+
 #### Data/Text
 - When "tagging" references in data (e.g. `{@creature goblin}`), the following rules apply:
 	- Only tag references which are _intended as references_. For example, the Wizard class in `You gain one cantrip of your choice from the wizard spell list` should be tagged, whereas the Wizard class in `Together, a group of seven powerful wizards sought to contain the demon` should not be tagged. One is a reference to the mechanical class, one is merely the casual usage of the word "wizard." 

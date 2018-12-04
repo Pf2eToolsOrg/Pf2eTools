@@ -13,7 +13,7 @@ let filterBox;
 let list;
 async function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ["name", "source"],
+		valueNames: ["name", "source", "uniqueid"],
 		listClass: "ships",
 		sortFunction: SortUtil.listSort
 	});
@@ -76,8 +76,10 @@ function addShips (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${shI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${shI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-xs-10">${it.name}</span>
-					<span class="source col-xs-2 ${Parser.sourceJsonToColor(abvSource)}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
+					<span class="name col-10">${it.name}</span>
+					<span class="source col-2 ${Parser.sourceJsonToColor(abvSource)}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
+					
+					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : shI}</span>
 				</a>
 			</li>
 		`;
@@ -126,7 +128,7 @@ function getSublistItem (it, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-xs-12">${it.name}</span>
+				<span class="name col-12">${it.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

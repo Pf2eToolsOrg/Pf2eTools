@@ -59,8 +59,8 @@ class LootGen {
 					<caption>${itemsTable.name}</caption>
 					<thead>
 					<tr>
-						<th class="col-xs-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
-						<th class="col-xs-10">Magic Item</th>
+						<th class="col-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
+						<th class="col-10">Magic Item</th>
 					</tr>
 					</thead>
 				</table>
@@ -684,8 +684,8 @@ const randomLootTables = {
 				<caption>Table for ${tier} Magic items that are ${rarity}</caption>
 				<thead>
 				<tr>
-					<th class="col-xs-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
-					<th class="col-xs-10">${tier} ${rarity} Magic Items</th>
+					<th class="col-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
+					<th class="col-10">${tier} ${rarity} Magic Items</th>
 				</tr>
 				</thead>
 			</table>`);

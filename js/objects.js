@@ -3,8 +3,8 @@
 const JSON_URL = "data/objects.json";
 
 function imgError (x) {
+	if (x) $(x).remove();
 	$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
-	$(x).remove();
 }
 
 function handleStatblockScroll (event, ele) {
@@ -25,7 +25,7 @@ window.onload = async function load () {
 let list;
 function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ["name", "size", "source"],
+		valueNames: ["name", "size", "source", "uniqueid"],
 		listClass: "objects",
 		sortFunction: SortUtil.listSort
 	});
@@ -77,9 +77,11 @@ function addObjects (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${obI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${obI}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-					<span class="name col-xs-8">${obj.name}</span>
-					<span class="size col-xs-2">${Parser.sizeAbvToFull(obj.size)}</span>
-					<span class="source col-xs-2 ${Parser.sourceJsonToColor(obj.source)}" title="${Parser.sourceJsonToFull(obj.source)}">${abvSource}</span>
+					<span class="name col-8">${obj.name}</span>
+					<span class="size col-2">${Parser.sizeAbvToFull(obj.size)}</span>
+					<span class="source col-2 ${Parser.sourceJsonToColor(obj.source)}" title="${Parser.sourceJsonToFull(obj.source)}">${abvSource}</span>
+					
+					<span class="uniqueid hidden">${obj.uniqueId ? obj.uniqueId : obI}</span>
 				</a>
 			</li>
 		`;
@@ -98,14 +100,16 @@ function addObjects (data) {
 	});
 	ListUtil.bindPinButton();
 	EntryRenderer.hover.bindPopoutButton(objectsList);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 }
 
 function getSublistItem (obj, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-				<span class="name col-xs-9">${obj.name}</span>
-				<span class="ability col-xs-3">${Parser.sizeAbvToFull(obj.size)}</span>
+				<span class="name col-9">${obj.name}</span>
+				<span class="ability col-3">${Parser.sizeAbvToFull(obj.size)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -140,12 +144,15 @@ function loadhash (jsonIndex) {
 		${EntryRenderer.utils.getBorderTr()}
 	`);
 
-	const imgLink = obj.tokenURL || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
-	$(`#float-token`).empty().append(`
-		<a href="${imgLink}" target="_blank">
-			<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)">
-		</a>`
-	);
+	const $floatToken = $(`#float-token`).empty();
+	if (obj.tokenURL || !obj.uniqueId) {
+		const imgLink = obj.tokenURL || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
+		$floatToken.append(`
+			<a href="${imgLink}" target="_blank">
+				<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)" alt="${obj.name}">
+			</a>`
+		);
+	} else imgError();
 
 	ListUtil.updateSelected();
 }

@@ -16,7 +16,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
 
-	<script type="text/javascript" src="lib/js-cookie.js"></script>
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 
@@ -181,7 +180,7 @@
 			margin-bottom: 0;
 		}
 
-		.dm-sidemenu-history-item .panel-content-wrapper.panel-content-wrapper-tabs {
+		.sidemenu__history-item .panel-content-wrapper.panel-content-wrapper-tabs {
 			height: 100%;
 			margin-bottom: 0;
 		}
@@ -581,111 +580,21 @@
 			margin-right: 0;
 		}
 
-		.dm-sidemenu {
-			z-index: 60;
-			position: fixed;
-			top: 0;
-			bottom: 0;
-			left: -260px;
-			width: 250px;
-			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-			transition: left 0.1s;
-			cursor: default;
-			display: flex;
-			flex-direction: column;
-			padding: 3px;
-		}
-
-		.dm-sidemenu-toggle {
-			position: absolute;
+		.sidemenu__toggle {
 			top: -35px;
-			left: -7px;
-			width: 32px;
-			height: 32px;
-			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-			cursor: pointer;
-			z-index: 60;
-			transition: left 0.1s;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
-			padding: 3px 4px;
 		}
 
-		body.dm-screen-fullscreen .dm-sidemenu-toggle {
+		body.dm-screen-fullscreen .sidemenu__toggle {
 			top: 12px;
+			left: -12px;
 		}
 
-		.dm-sidemenu-hotzone {
-			position: fixed;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			width: 1px;
-		}
-
-		.dm-sidemenu-burger {
-			height: 3px;
-			box-shadow: inset 0 0 1px 0 #888;
-		}
-
-		.dm-sidemenu-toggle:hover .dm-sidemenu {
-			left: 0;
-			transition: left 0.1s;
-		}
-
-		.dm-sidemenu-row {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 5px;
-		}
-
-		.dm-sidemenu-row-alt {
-			width: 100%;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			margin-bottom: 5px;
-		}
-
-		.dm-sidemenu-row-vert {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
-			align-items: center;
-		}
-
-		.dm-sidemenu-row-divider {
-			height: 1px;
-			width: calc(100% - 12px);
-			margin: 7px 2px;
-		}
-
-		.dm-sidemenu-row-label {
-			min-width: 46px;
-			flex-shrink: 0;
-		}
-
-		.dm-sidemenu-row-label--cb-label {
-			font-weight: initial;
-			display: flex;
-			margin-bottom: 0;
-			justify-content: center;
-			width: 100%;
-		}
-
-		input[type=checkbox].dm-sidemenu-row-label-cb {
-			margin-left: 7px;
-		}
-
-		.dm-sidemenu-history {
+		.sidemenu__history {
 			overflow-y: auto;
 			padding: 4px;
 		}
 
-		.dm-sidemenu-history-item {
+		.sidemenu__history-item {
 			position: relative;
 			overflow: hidden;
 			height: 80px;
@@ -696,12 +605,12 @@
 			box-shadow: 0 0 5px 0 #000000a0;
 		}
 
-		.dm-sidemenu-history-item .panel-content-wrapper {
+		.sidemenu__history-item .panel-content-wrapper {
 			overflow-y: hidden;
 			user-select: none;
 		}
 
-		.dm-sidemenu-history-item-cover {
+		.sidemenu__history-item-cover {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -720,7 +629,7 @@
 			border-bottom-left-radius: 5px;
 		}
 
-		.dm-sidemenu-history-item-cover:hover .panel-history-control-remove-wrapper {
+		.sidemenu__history-item-cover:hover .panel-history-control-remove-wrapper {
 			opacity: 1;
 			transition: opacity 0.1s;
 		}
@@ -750,7 +659,7 @@
 			transition: opacity 0.1s;
 		}
 
-		.dm-sidemenu-history-item-cover:hover .panel-history-control-middle {
+		.sidemenu__history-item-cover:hover .panel-history-control-middle {
 			opacity: 1;
 			transition: opacity 0.1s;
 		}
@@ -915,6 +824,70 @@
 		.dm_money {
 			width: 100%;
 			height: 100%;
+			padding-top: 22px;
+		}
+
+		.dm_money__rows {
+			overflow-y: scroll;
+		}
+
+		.dm_money__ctrl {
+			margin-top: 6px;
+			padding-top: 3px;
+			border-top: 1px solid #ccc;
+			flex-shrink: 0;
+		}
+
+		.dm_money__ctrl__lhs {
+			display: flex;
+			flex-direction: column;
+			padding: 3px;
+		}
+
+		.dm_money__ctrl__lhs > * {
+			margin-bottom: 3px;
+		}
+
+		.dm_money__ctrl__lhs > *:last-child {
+			margin-bottom: 0;
+		}
+
+		.dm_money__ctrl__rhs {
+			display: flex;
+			flex-direction: column;
+			padding: 3px;
+		}
+
+		.dm_money__ctrl__rhs > * {
+			margin-bottom: 3px;
+		}
+
+		.dm_money__ctrl__rhs > *:last-child {
+			margin-bottom: 0;
+		}
+
+		.dm_money__out,
+		.dm_money__out[disabled] {
+			text-align: right;
+			background: #0000;
+		}
+
+		.dm_money__row {
+			width: 100%;
+			display: flex;
+			margin-bottom: 3px;
+		}
+
+		.dm_money__row:last-child {
+			margin-bottom: 0;
+		}
+
+		.dm_money__row > * {
+			margin-right: 3px;
+		}
+
+		.dm_money__row > *:last-child {
+			margin-right: 0;
 		}
 
 		@media (max-width: 767px) {
@@ -963,12 +936,12 @@
 		</ul>
 	</nav>
 	<div class="dm-screen">
-		<div class="dm-sidemenu-toggle">
-			<div class="dm-sidemenu-hotzone"></div>
-			<div class="dm-sidemenu-burger"></div>
-			<div class="dm-sidemenu-burger"></div>
-			<div class="dm-sidemenu-burger"></div>
-			<div class="dm-sidemenu"></div>
+		<div class="sidemenu__toggle">
+			<div class="sidemenu__hotzone"></div>
+			<div class="sidemenu__burger"></div>
+			<div class="sidemenu__burger"></div>
+			<div class="sidemenu__burger"></div>
+			<div class="sidemenu"></div>
 		</div>
 	</div>
 </div>

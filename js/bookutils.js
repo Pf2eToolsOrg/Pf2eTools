@@ -389,12 +389,12 @@ const BookUtil = {
 
 			if (evt.shiftKey) {
 				copyText(text);
-				showCopiedEffect($this);
+				JqueryUtil.showCopiedEffect($this);
 			} else {
 				const hashParts = [BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")].map(it => UrlUtil.encodeForHash(it));
 				const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, ...hashParts];
 				copyText(toCopy.join(HASH_PART_SEP));
-				showCopiedEffect($this, "Copied link!");
+				JqueryUtil.showCopiedEffect($this, "Copied link!");
 			}
 		});
 	},
@@ -717,6 +717,16 @@ const BookUtil = {
 				};
 			}
 		}
+	},
+
+	addScrollTopFloat () {
+		const $wrpTop = $(`<div class="bk__to-top"/>`).appendTo($("body"));
+		const $btnToTop = $(`<button class="btn btn-sm btn-default" title="To Top"><span class="glyphicon glyphicon-arrow-up"/></button>`).appendTo($wrpTop).click(() => MiscUtil.scrollPageTop());
+
+		$(window).on("scroll", () => {
+			if ($(window).scrollTop() > 50) $wrpTop.addClass("bk__to-top--scrolled");
+			else $wrpTop.removeClass("bk__to-top--scrolled");
+		});
 	}
 };
 

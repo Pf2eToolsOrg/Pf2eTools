@@ -955,8 +955,8 @@
 								"Quest"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1558,8 +1558,8 @@
 								"Rumor"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1674,8 +1674,8 @@
 								"Ekene-Afa's Price"
 							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-6 text-align-right"
+								"col-6",
+								"col-6 text-align-right"
 							],
 							"rows": [
 								[
@@ -1725,8 +1725,8 @@
 								"Ifan's Price"
 							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-6 text-align-right"
+								"col-6",
+								"col-6 text-align-right"
 							],
 							"rows": [
 								[
@@ -1884,8 +1884,8 @@
 								"Wakanga's Price"
 							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-6 text-align-right"
+								"col-6",
+								"col-6 text-align-right"
 							],
 							"rows": [
 								[
@@ -2716,7 +2716,7 @@
 								"Rumor"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -2880,7 +2880,7 @@
 					"entries": [
 						"The following diseases can affect giants and humanoids exploring the jungles of Chult. Remember that lesser restoration and similar magic can cure a disease.",
 						{
-							"type": "entries",
+							"type": "inset",
 							"name": "A Cure for Dead Characters",
 							"entries": [
 								"If a player character dies while exploring the wilds of Chult, an NPC guide might suggest that the party take its dead member to the ghost village of Mbala. A powerful witch is rumored to dwell there. According to local legends, the witch forged a pact with the Lord of Bones, a god who granted her the power to create zombies that retain their former personalities. For more information on the socalled witch, see \"Mbala\" later in this chapter."
@@ -2892,17 +2892,17 @@
 					"type": "entries",
 					"name": "Mad Monkey Fever",
 					"entries": [
-						"A magical mist creeps through the jungles of Chult. Contact with this thin, blue, odorless mist can infect giants and humanoids with mad monkey fever. A dispel magic spell destroys the mist in a 20-foot square starting at a point chosen by the caster within the spell's range. An encounter with this mist typically covers 1d6 such areas (400-2,400 square feet).",
-						"A giant or humanoid that comes into contact with the mist must succeed on a DC 13 Constitution saving throw or become infected with mad monkey fever. The infected creature gains a random form of long-term madness (roll on the Long-Term Madness table in chapter 8 of the Dungeon Master's Guide) that manifests 1d6 hours after infection and lasts for the duration (1d10 × 10 hours). If the madness is allowed to run its full course, the creature must repeat the saving throw at the end of the madness. If the second saving throw fails, the creature suffers another bout of long-term madness (roll again on the table) that lasts for the normal duration. The madness symptoms continue until the disease ends."
+						"A magical mist creeps through the jungles of Chult. Contact with this thin, blue, odorless mist can infect giants and humanoids with mad monkey fever. A {@spell dispel magic} spell destroys the mist in a 20-foot square starting at a point chosen by the caster within the spell's range. An encounter with this mist typically covers {@dice 1d6} such areas (400-2,400 square feet).",
+						"A giant or humanoid that comes into contact with the mist must succeed on a DC 13 Constitution saving throw or become infected with mad monkey fever. The infected creature gains a random form of long-term madness (roll on the {@table Long-Term Madness} table in chapter 8 of the Dungeon Master's Guide) that manifests {@dice 1d6} hours after infection and lasts for the duration ({@dice 1d10 × 10} hours). If the madness is allowed to run its full course, the creature must repeat the saving throw at the end of the madness. If the second saving throw fails, the creature suffers another bout of long-term madness (roll again on the table) that lasts for the normal duration. The madness symptoms continue until the disease ends."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Shivering Sickness",
 					"entries": [
-						"Insects native to the jungles and marshes of Chult carry this disease, shivering sickness. The easiest protection against it is a coating of insect-repelling salve on all exposed skin (for the cost of insect repellent, see {@i \"Buying a Special Item\"}.",
-						"A giant or humanoid that takes damage from insect swarms or from giant centipedes, giant scorpions, or giant wasps is exposed to the disease at the end of the encounter. Those who haven't applied insect repellent since their previous long rest are exposed to the disease when they finish a long rest.",
-						"A giant or humanoid exposed to the disease must succeed on a DC 11 Constitution saving throw or become infected. A creature with natural armor has advantage on the saving throw. It takes 2d6 hours for symptoms to manifest in an infected creature. Symptoms include blurred vision, disorientation, and a sudden drop in body temperature that causes uncontrollable shivering and chattering of the teeth.",
+						"Insects native to the jungles and marshes of Chult carry this disease, shivering sickness. The easiest protection against it is a coating of insect-repelling salve on all exposed skin (for the cost of insect repellent, see {@adventure \"Buying a Special Item\"|ToA|1|Buying a Special Item}.",
+						"A giant or humanoid that takes damage from {@creature Swarm of Insects|mm|insect swarms} or from {@creature giant centipede|mm|giant centipedes}, {@creature giant scorpion|mm|giant scorpions}, or {@creature giant wasp|mm|giant wasps} is exposed to the disease at the end of the encounter. Those who haven't applied insect repellent since their previous long rest are exposed to the disease when they finish a long rest.",
+						"A giant or humanoid exposed to the disease must succeed on a DC 11 Constitution saving throw or become infected. A creature with natural armor has advantage on the saving throw. It takes {@dice 2d6} hours for symptoms to manifest in an infected creature. Symptoms include blurred vision, disorientation, and a sudden drop in body temperature that causes uncontrollable shivering and chattering of the teeth.",
 						"Once symptoms begin, the infected creature regains only half the normal number of hit points from spending Hit Dice and no hit points from a long rest. The infected creature also has disadvantage on ability checks and attack rolls. At the end of a long rest, an infected creature repeats the saving throw, shaking off the disease on a successful save."
 					]
 				},
@@ -2910,7 +2910,7 @@
 					"type": "entries",
 					"name": "Throat Leeches",
 					"entries": [
-						"Minuscule parasites known as throat leeches infect the water in Chult's forests, swamps, and rivers. Any giant or humanoid that swallows tainted water must succeed on a DC 12 Constitution saving throw or be infested with throat leeches. Immediate symptoms include throat inflammation and shortness of breath. After 1d6 hours, the infected character gains 1 level of {@condition exhaustion} that can't be removed (except as described below) until the disease is cured. At the end of each long rest, the infected creature must repeat the saving throw. On a failed save, the creature's {@condition exhaustion} increases by 1 level; on a successful save, the creature's {@condition exhaustion} decreases by 1 level. If a successful saving throw reduces the infected creature's level of {@condition exhaustion} below 1, the creature recovers from the disease.",
+						"Minuscule parasites known as throat leeches infect the water in Chult's forests, swamps, and rivers. Any giant or humanoid that swallows tainted water must succeed on a DC 12 Constitution saving throw or be infested with throat leeches. Immediate symptoms include throat inflammation and shortness of breath. After {@dice 1d6} hours, the infected character gains 1 level of {@condition exhaustion} that can't be removed (except as described below) until the disease is cured. At the end of each long rest, the infected creature must repeat the saving throw. On a failed save, the creature's {@condition exhaustion} increases by 1 level; on a successful save, the creature's {@condition exhaustion} decreases by 1 level. If a successful saving throw reduces the infected creature's level of {@condition exhaustion} below 1, the creature recovers from the disease.",
 						"Explorers can avoid contracting throat leeches by drinking only rainwater or water that's been boiled or magically purified."
 					]
 				},
@@ -3448,7 +3448,7 @@
 								"Result"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -5093,7 +5093,7 @@
 								"Discovery"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -5922,7 +5922,7 @@
 								"What Happens"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -6326,7 +6326,7 @@
 								"Ruin Contents"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -6386,7 +6386,7 @@
 								"Ruin Contents"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -6439,7 +6439,7 @@
 								"Ruin Contents"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -6492,7 +6492,7 @@
 								"Creatures"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -6525,7 +6525,7 @@
 								"Plant"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -7273,7 +7273,7 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -8258,7 +8258,7 @@
 										"Reinforcement"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -8420,7 +8420,7 @@
 								"Result"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -8497,7 +8497,7 @@
 										"Development"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										"",
 										""
 									],
@@ -9491,8 +9491,8 @@
 										"Key Shape"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -10276,7 +10276,7 @@
 										"Effect"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -10335,7 +10335,7 @@
 							"type": "entries",
 							"name": "Secret Doors",
 							"entries": [
-								"Secret doors are set into the back walls of two alcoves- one to the north and the other to the south. The secret door to the south has edges made of flint. Opening this door creates sparks that ignite the odorless gas in {@area 5>11} (see that area for details)."
+								"Secret doors are set into the back walls of two alcoves\u2014one to the north and the other to the south. The secret door to the south has edges made of flint. Opening this door creates sparks that ignite the odorless gas in {@area 5>11} (see that area for details)."
 							]
 						},
 						{
@@ -11698,7 +11698,7 @@
 								"Effect"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -12358,7 +12358,7 @@
 								"Rune"
 							],
 							"colStyles": [
-								"col-xs-1 text-align-center",
+								"col-1 text-align-center",
 								""
 							],
 							"rows": [
@@ -12928,7 +12928,7 @@
 										"Discovery"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -13879,7 +13879,7 @@
 										"Conjunction Effect"
 									],
 									"colStyles": [
-										"col-xs-1 text-align-center",
+										"col-1 text-align-center",
 										""
 									],
 									"rows": [
@@ -14849,8 +14849,8 @@
 						"Result"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -14871,8 +14871,8 @@
 						"Encounter"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -14928,8 +14928,8 @@
 						"Encounter"
 					],
 					"colStyles": [
-						"col-xs-2 text-align-center",
-						"col-xs-10"
+						"col-2 text-align-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -15082,8 +15082,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15104,8 +15104,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15126,8 +15126,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15148,8 +15148,8 @@
 										"Encounter"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15272,8 +15272,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15294,8 +15294,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15316,8 +15316,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15338,8 +15338,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15630,8 +15630,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15652,8 +15652,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15674,8 +15674,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15696,8 +15696,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15932,8 +15932,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15954,8 +15954,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15976,8 +15976,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -15998,8 +15998,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16186,8 +16186,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16208,8 +16208,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16230,8 +16230,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16252,8 +16252,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16384,8 +16384,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16406,8 +16406,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16424,12 +16424,12 @@
 									"type": "table",
 									"caption": "Wilderness River Chance - Low",
 									"colLabels": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16450,8 +16450,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16654,8 +16654,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16676,8 +16676,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16698,8 +16698,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16720,8 +16720,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16936,8 +16936,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16958,8 +16958,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -16980,8 +16980,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -17002,8 +17002,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -17178,8 +17178,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -17200,8 +17200,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -17222,8 +17222,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -17244,8 +17244,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -17398,8 +17398,8 @@
 								"Cache"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -17523,8 +17523,8 @@
 								"Result"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -17788,8 +17788,8 @@
 								"Remains"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -17889,8 +17889,8 @@
 								"Situation"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -18056,8 +18056,8 @@
 								"Cubs"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -18134,8 +18134,8 @@
 								"Plant"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -18236,8 +18236,8 @@
 								"Result"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -18378,8 +18378,8 @@
 								"Zombies Appearing"
 							],
 							"colStyles": [
-								"col-xs-2 text-align-center",
-								"col-xs-10"
+								"col-2 text-align-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -18483,8 +18483,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -18583,8 +18583,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -18651,8 +18651,8 @@
 										"Result"
 									],
 									"colStyles": [
-										"col-xs-2 text-align-center",
-										"col-xs-10"
+										"col-2 text-align-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -18762,8 +18762,8 @@
 								"Cost"
 							],
 							"colStyles": [
-								"col-xs-6",
-								"col-xs-6 text-align-right"
+								"col-6",
+								"col-6 text-align-right"
 							],
 							"rows": [
 								[

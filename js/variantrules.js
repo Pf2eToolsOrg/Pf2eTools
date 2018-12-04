@@ -31,8 +31,9 @@ async function onJsonLoad (data) {
 	);
 
 	const subList = ListUtil.initSublist({
-		valueNames: ["name"],
-		listClass: "subVariantRules"
+		valueNames: ["name", "id"],
+		listClass: "subVariantRules",
+		getSublistRow: getSublistItem
 	});
 	ListUtil.initGenericPinnable();
 
@@ -43,9 +44,10 @@ async function onJsonLoad (data) {
 		.then(handleBrew)
 		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.pPurgeBrew)
-		.then(() => {
+		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({list, filterBox, sourceFilter});
+			await ListUtil.pLoadState();
 
 			History.init(true);
 			ExcludeUtil.checkShowAllExcluded(rulesList, $(`#pagecontent`));
@@ -78,8 +80,8 @@ function addVariantRules (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${rlI}" onclick="ListUtil.toggleSelected(event, this)">
 				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(curRule)}" title="${curRule.name}">
-					<span class="name col-xs-10">${curRule.name}</span>
-					<span class="source col-xs-2 ${Parser.sourceJsonToColor(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
+					<span class="name col-10">${curRule.name}</span>
+					<span class="source col-2 ${Parser.sourceJsonToColor(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>
 				</a>
 			</li>`;
@@ -111,7 +113,7 @@ function getSublistItem (rule, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
-				<span class="name col-xs-12">${rule.name}</span>
+				<span class="name col-12">${rule.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

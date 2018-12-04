@@ -307,10 +307,28 @@ class TagHit {
 	}
 }
 
+class JsonClean {
+	static getClean (json) {
+		json = json.replace(JsonClean.REPLACEMENT_REGEX, (match) => JsonClean.REPLACEMENTS[match]);
+		return json.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+	}
+}
+JsonClean.REPLACEMENTS = {
+	"—": "\\u2014",
+	"–": "\\u2013",
+	"−": "\\u2212",
+	"’": "'",
+	"“": '\\"',
+	"”": '\\"',
+	"…": "..."
+};
+JsonClean.REPLACEMENT_REGEX = new RegExp(Object.keys(JsonClean.REPLACEMENTS).join("|"), 'g');
+
 if (typeof module !== "undefined") {
 	module.exports = {
 		AcConvert,
 		TagAttack,
-		TagHit
+		TagHit,
+		JsonClean
 	};
 }

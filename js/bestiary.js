@@ -12,8 +12,8 @@ window.PROF_MODE_DICE = "dice";
 window.PROF_DICE_MODE = PROF_MODE_BONUS;
 
 function imgError (x) {
+	if (x) $(x).remove();
 	$(`#pagecontent th.name`).css("padding-right", "0.3em");
-	$(x).remove();
 	$(`.mon__wrp_hp`).css("max-width", "none");
 }
 
@@ -23,7 +23,16 @@ function handleStatblockScroll (event, ele) {
 		.css({
 			opacity: (32 - ele.scrollTop) / 32,
 			top: -ele.scrollTop
-		})
+		});
+}
+
+const _MISC_FILTER_SPELLCASTER = "Spellcaster, ";
+function ascSortMiscFilter (a, b) {
+	if (a.includes(_MISC_FILTER_SPELLCASTER) && b.includes(_MISC_FILTER_SPELLCASTER)) {
+		a = Parser.attFullToAbv(a.replace(_MISC_FILTER_SPELLCASTER, ""));
+		b = Parser.attFullToAbv(b.replace(_MISC_FILTER_SPELLCASTER, ""));
+		return SortUtil.ascSortAtts(b, a);
+	} else return SortUtil.ascSort(a, b);
 }
 
 function getAllImmRest (toParse, key) {
@@ -313,7 +322,7 @@ function pPageInit (loadedSources) {
 	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list = ListUtil.search({
-		valueNames: ["name", "source", "type", "cr", "group", "alias"],
+		valueNames: ["name", "source", "type", "cr", "group", "alias", "uniqueid"],
 		listClass: "monsters",
 		sortFunction: sortMonsters
 	});
@@ -597,12 +606,14 @@ function addMonsters (data) {
 			`<li class="row" ${FLTR_ID}="${mI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 					${EncounterBuilder.getButtons(mI)}
-					<span class="ecgen__name name col-xs-4 col-xs-4-2">${mon.name}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}${EntryRenderer.utils.getSourceSubText(mon)}" class="col-xs-2 source ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
-					<span class="type col-xs-4 col-xs-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
-					<span class="col-xs-1 col-xs-1-7 text-align-center cr">${mon._pCr}</span>
+					<span class="ecgen__name name col-4-2">${mon.name}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}${EntryRenderer.utils.getSourceSubText(mon)}" class="col-2 source ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
+					<span class="type col-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
+					<span class="col-1-7 text-align-center cr">${mon._pCr}</span>
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
 					<span class="alias hidden">${(mon.alias || []).map(it => `"${it}"`).join(",")}</span>
+					
+					<span class="uniqueid hidden">${mon.uniqueId ? mon.uniqueId : mI}</span>
 				</a>
 			</li>`;
 
@@ -621,7 +632,16 @@ function addMonsters (data) {
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
-		if (mon.spellcasting) mon._fMisc.push("Spellcaster");
+		if (mon.spellcasting) {
+			mon._fMisc.push("Spellcaster");
+			mon.spellcasting.forEach(sc => {
+				if (sc.ability) {
+					const scAbility = `${_MISC_FILTER_SPELLCASTER}${Parser.attAbvToFull(sc.ability)}`;
+					mon._fMisc.push(scAbility);
+					miscFilter.addIfAbsent(scAbility);
+				}
+			});
+		}
 		if (mon.isNPC) mon._fMisc.push("Named NPC");
 		if (mon.legendaryGroup && meta[mon.legendaryGroup]) {
 			if (meta[mon.legendaryGroup].lairActions) mon._fMisc.push("Lair Actions");
@@ -638,6 +658,7 @@ function addMonsters (data) {
 	crFilter.items.sort(SortUtil.ascSortCr);
 	typeFilter.items.sort(SortUtil.ascSort);
 	tagFilter.items.sort(SortUtil.ascSort);
+	miscFilter.items.sort(ascSortMiscFilter);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -651,10 +672,14 @@ function addMonsters (data) {
 		primaryLists: [list]
 	});
 
-	function popoutHandlerGenerator (toList, $btnPop) {
+	function popoutHandlerGenerator (toList, $btnPop, popoutCodeId) {
 		return (evt) => {
-			if (lastRendered.mon != null && lastRendered.isScaled) EntryRenderer.hover.doPopoutPreloaded($btnPop, lastRendered.mon, evt.clientX);
-			else if (History.lastLoadedId !== null) EntryRenderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
+			if (evt.shiftKey) {
+				EntryRenderer.hover.handlePopoutCode(evt, toList, $btnPop, popoutCodeId);
+			} else {
+				if (lastRendered.mon != null && lastRendered.isScaled) EntryRenderer.hover.doPopoutPreloaded($btnPop, lastRendered.mon, evt.clientX);
+				else if (History.lastLoadedId !== null) EntryRenderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
+			}
 		};
 	}
 
@@ -702,20 +727,20 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 				<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 					<a href="#${UrlUtil.autoEncodeHash(mon)}${subHash}" title="${mon._displayName || mon.name}" draggable="false">
 						${EncounterBuilder.getButtons(pinId, true)}
-						<span class="name ecgen__name--sub col-xs-5">${mon._displayName || mon.name}</span>
-						<span class="type col-xs-3 ecgen__hidden">${mon._pTypes.asText.uppercaseFirst()}</span>
+						<span class="name ecgen__name--sub col-5">${mon._displayName || mon.name}</span>
+						<span class="type col-3 ecgen__hidden">${mon._pTypes.asText.uppercaseFirst()}</span>
 						
-						<span class="type col-xs-1 col-xs-1-5 help--hover ecgen__visible" onmouseover="EncounterBuilder.doStatblockMouseOver(event, this, ${pinId}, ${mon._isScaledCr})">Statblock</span>
-						<span class="type col-xs-1 col-xs-1-5 ecgen__visible help--hover" ${EncounterBuilder.getTokenMouseOver(mon)}>Token</span>
+						<span class="type col-1-5 help--hover ecgen__visible" onmouseover="EncounterBuilder.doStatblockMouseOver(event, this, ${pinId}, ${mon._isScaledCr})">Statblock</span>
+						<span class="type col-1-5 ecgen__visible help--hover" ${EncounterBuilder.getTokenMouseOver(mon)}>Token</span>
 						
-						<span class="cr col-xs-2 text-align-center ${mon._pCr !== "Unknown" ? "ecgen__hidden" : ""}">${mon._pCr}</span>
+						<span class="cr col-2 text-align-center ${mon._pCr !== "Unknown" ? "ecgen__hidden" : ""}">${mon._pCr}</span>
 						${mon._pCr !== "Unknown" ? `
-							<span class="col-xs-2 text-align-center ecgen__visible">
+							<span class="col-2 text-align-center ecgen__visible">
 								<input value="${mon._pCr}" onchange="encounterBuilder.doCrChange(this, ${pinId}, ${mon._isScaledCr})" class="ecgen__cr_input">
 							</span>
 						` : ""}
 						
-						<span class="count col-xs-2 text-align-center">${addCount || 1}</span>
+						<span class="count col-2 text-align-center">${addCount || 1}</span>
 						<span class="id hidden">${data.uid ? "" : pinId}</span>
 						<span class="uid hidden">${data.uid || ""}</span>
 					</a>
@@ -839,16 +864,20 @@ function renderStatblock (mon, isScaled) {
 			</button>`;
 		}
 
-		const imgLink = EntryRenderer.monster.getTokenUrl(mon);
-		$(`#float-token`).empty().append(`
-			<a href="${imgLink}" target="_blank">
-				<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)">
-			</a>`
-		);
+		const $floatToken = $(`#float-token`).empty();
+		if (mon.tokenURL || !mon.uniqueId) {
+			const imgLink = EntryRenderer.monster.getTokenUrl(mon);
+			$floatToken.append(`
+				<a href="${imgLink}" target="_blank">
+					<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)" alt="${mon.name}">
+				</a>`
+			);
+		} else imgError();
+
 		$content.find("th.name").html(
 			`<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${mon.source.escapeQuotes()}')">${displayName}</span>
 			${mon.soundClip ? getPronunciationButton() : ""}
-		<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>`
+			<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>`
 		);
 
 		// TODO most of this could be rolled into the string template above
@@ -978,7 +1007,9 @@ function renderStatblock (mon, isScaled) {
 			source: mon.source,
 			sourceSub: mon.sourceSub,
 			page: mon.page,
-			otherSources: mon.otherSources
+			otherSources: mon.otherSources,
+			additionalSources: mon.additionalSources,
+			externalSources: mon.externalSources
 		};
 		const additional = mon.additionalSources ? JSON.parse(JSON.stringify(mon.additionalSources)) : [];
 		if (mon.variant && mon.variant.length > 1) {
@@ -1048,6 +1079,9 @@ function renderStatblock (mon, isScaled) {
 		});
 
 		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
+		function _addSpacesToDiceExp (exp) {
+			return exp.replace(/([^0-9d])/gi, " $1 ").replace(/\s+/g, " ");
+		}
 		// inline rollers
 		// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
@@ -1084,7 +1118,7 @@ function renderStatblock (mon, isScaled) {
 				try {
 					// if we have proficiency bonus, convert the roller
 					if (expectedPB > 0) {
-						const profDiceString = `${expert}d${pB * (3 - expert)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+						const profDiceString = _addSpacesToDiceExp(`${expert}d${pB * (3 - expert)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
 
 						$(this).attr("data-roll-prof-bonus", $(this).text());
 						$(this).attr("data-roll-prof-dice", profDiceString);
@@ -1094,7 +1128,7 @@ function renderStatblock (mon, isScaled) {
 						const nu = `
 							(function(it) {
 								if (PROF_DICE_MODE === PROF_MODE_DICE) {
-									EntryRenderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20+${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
+									EntryRenderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20 + ${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
 								} else {
 									${cached.replace(/this/g, "it")}
 								}
@@ -1121,9 +1155,9 @@ function renderStatblock (mon, isScaled) {
 
 				if (expectedPB > 0) {
 					const withoutPB = dc - expectedPB;
-					const profDiceString = `1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`;
+					const profDiceString = _addSpacesToDiceExp(`1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
 
-					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onmousedown="event.preventDefault()" onclick="dcRollerClick(event, this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
+					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onmousedown="window.PROF_DICE_MODE === window.PROF_MODE_DICE &&  event.preventDefault()" onclick="dcRollerClick(event, this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
 				} else {
 					return match; // if there was no proficiency bonus to work with, fall back on this
 				}
@@ -1142,61 +1176,13 @@ function renderStatblock (mon, isScaled) {
 		$content.append(EntryRenderer.utils.getBorderTr());
 		renderer.setFirstSection(true);
 
-		function handleFluff (data) {
-			const fluff = mon.fluff || data.monster.find(it => (it.name === mon.name && it.source === mon.source));
+		function renderFluff (data) {
+			const fluff = EntryRenderer.monster.getFluff(mon, meta, data);
 
 			if (!fluff) {
 				$td.empty();
 				$td.append(HTML_NO_INFO);
 				return;
-			}
-
-			function handleRecursive (fluff) {
-				const cachedAppendCopy = fluff._appendCopy; // prevent _copy from overwriting this
-
-				if (fluff._copy) {
-					const cpy = data.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source);
-					// preserve these
-					const name = fluff.name;
-					const src = fluff.source;
-					const images = fluff.images;
-
-					// remove this
-					delete fluff._copy;
-
-					Object.assign(fluff, cpy);
-					fluff.name = name;
-					fluff.source = src;
-					if (images) fluff.images = images;
-
-					handleRecursive(fluff);
-				}
-
-				if (cachedAppendCopy) {
-					const cpy = data.monster.find(it => cachedAppendCopy.name === it.name && cachedAppendCopy.source === it.source);
-					if (cpy.images) {
-						if (!fluff.images) fluff.images = cpy.images;
-						else fluff.images = fluff.images.concat(cpy.images);
-					}
-					if (cpy.entries) {
-						if (!fluff.entries) fluff.entries = cpy.entries;
-						else {
-							if (cpy.entries.type !== "section") {
-								fluff.entries = fluff.entries.concat({type: "section", entries: cpy.entries})
-							} else fluff.entries = fluff.entries.concat(cpy.entries);
-						}
-					}
-					delete fluff._appendCopy;
-
-					fluff._copy = cpy._copy;
-					fluff._appendCopy = cpy._appendCopy;
-
-					handleRecursive(fluff);
-				}
-			}
-
-			if (fluff._copy || fluff._appendCopy) {
-				handleRecursive(fluff);
 			}
 
 			if (showImages) {
@@ -1217,8 +1203,8 @@ function renderStatblock (mon, isScaled) {
 		}
 
 		if (ixFluff[mon.source] || mon.fluff) {
-			if (mon.fluff) handleFluff();
-			else DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source]).then(handleFluff);
+			if (mon.fluff) renderFluff();
+			else DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source]).then(renderFluff);
 		} else {
 			$td.empty();
 			if (showImages) $td.append(HTML_NO_IMAGES);
@@ -1265,6 +1251,7 @@ function handleUnknownHash (link, sub) {
 }
 
 function dcRollerClick (event, ele, exp) {
+	if (window.PROF_DICE_MODE === PROF_MODE_BONUS) return;
 	const it = {
 		type: "dice",
 		rollable: true,
@@ -1342,7 +1329,7 @@ class EncounterBuilder {
 			const encounterPart = UrlUtil.packSubHash(EncounterUtil.SUB_HASH_PREFIX, [JSON.stringify(this.getSaveableState())], true);
 			const parts = [location.href, encounterPart];
 			copyText(parts.join(HASH_PART_SEP));
-			showCopiedEffect($btnSvUrl);
+			JqueryUtil.showCopiedEffect($btnSvUrl);
 		});
 		$(`.ecgen__sv_file`).click(() => DataUtil.userDownload(`encounter`, this.getSaveableState()));
 		$(`.ecgen__ld_file`).click(() => {
@@ -1836,18 +1823,18 @@ class EncounterBuilder {
 	static getPlayerRow (isFirst, count, level) {
 		return `
 			<div class="row mb-2 ecgen__player_group">
-				<div class="col-xs-3">
+				<div class="col-3">
 					<select class="ecgen__player_group__count" onchange="encounterBuilder.updateDifficulty()">
 					${[...new Array(12)].map((_, i) => `<option ${(count === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}
 					</select>
 				</div>
-				<div class="col-xs-3">
+				<div class="col-3">
 					<select class="ecgen__player_group__level" onchange="encounterBuilder.updateDifficulty()" >
 						${[...new Array(20)].map((_, i) => `<option ${(level === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}
 					</select>
 				</div>
 				${!isFirst ? `
-				<div class="col-xs-3 flex" style="margin-left: -20px; align-items: center;">
+				<div class="col-3 flex" style="margin-left: -20px; align-items: center;">
 					<button class="btn btn-danger btn-xs ecgen__del_players" onclick="encounterBuilder.removePlayerRow(this)">
 						<span class="glyphicon glyphicon-remove" title="Remove Player Group"></span>
 					</button>
@@ -1859,7 +1846,7 @@ class EncounterBuilder {
 
 	static getButtons (monId, isSublist) {
 		return `
-			<span class="ecgen__visible ${isSublist ? "col-xs-1 col-xs-1-5" : "col-xs-1"} no-wrap" onclick="event.preventDefault()">
+			<span class="ecgen__visible ${isSublist ? "col-1-5" : "col-1"} no-wrap" onclick="event.preventDefault()">
 				<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1)" oncontextmenu="encounterBuilder.handleContext(event)">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>

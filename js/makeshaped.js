@@ -1160,7 +1160,7 @@ window.onload = function load () {
 		const shapedJS = $('#shapedJS');
 		shapedJS.select();
 		document.execCommand('Copy');
-		showCopiedEffect($('#copyJS'));
+		JqueryUtil.showCopiedEffect($('#copyJS'));
 	});
 	$(`#selectAll`).change(function () {
 		$(`.shaped-source:not([disabled])`).prop("checked", $(this).prop("checked"));
