@@ -77,9 +77,6 @@
 		{
 			"name": "Ammunition +1",
 			"type": "GV",
-			"entries": [
-				"You have a +1 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
-			],
 			"requires": [
 				{
 					"ammunition": true
@@ -93,7 +90,7 @@
 				"page": 150,
 				"nameSuffix": " +1",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 				],
 				"modifier": [
 					{
@@ -116,9 +113,6 @@
 		{
 			"name": "Ammunition +2",
 			"type": "GV",
-			"entries": [
-				"You have a +2 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
-			],
 			"requires": [
 				{
 					"ammunition": true
@@ -132,7 +126,7 @@
 				"page": 150,
 				"nameSuffix": " +2",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 				],
 				"modifier": [
 					{
@@ -155,9 +149,6 @@
 		{
 			"name": "Ammunition +3",
 			"type": "GV",
-			"entries": [
-				"You have a +3 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
-			],
 			"requires": [
 				{
 					"ammunition": true
@@ -171,7 +162,7 @@
 				"page": 150,
 				"nameSuffix": " +3",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 				],
 				"modifier": [
 					{
@@ -217,9 +208,6 @@
 		{
 			"name": "Armor +1",
 			"type": "GV",
-			"entries": [
-				"You have a +1 bonus to AC while wearing this armor."
-			],
 			"requires": [
 				{
 					"armor": true
@@ -233,7 +221,7 @@
 				"page": 152,
 				"nameSuffix": " +1",
 				"entries": [
-					"You have a {@genericBonus} bonus to AC while wearing this armor."
+					"You have a {=genericBonus} bonus to AC while wearing this armor."
 				],
 				"modifier": [
 					{
@@ -249,9 +237,6 @@
 		{
 			"name": "Armor +2",
 			"type": "GV",
-			"entries": [
-				"You have a +2 bonus to AC while wearing this armor."
-			],
 			"requires": [
 				{
 					"armor": true
@@ -265,7 +250,7 @@
 				"page": 152,
 				"nameSuffix": " +2",
 				"entries": [
-					"You have a {@genericBonus} bonus to AC while wearing this armor."
+					"You have a {=genericBonus} bonus to AC while wearing this armor."
 				],
 				"modifier": [
 					{
@@ -281,9 +266,6 @@
 		{
 			"name": "Armor +3",
 			"type": "GV",
-			"entries": [
-				"You have a +3 bonus to AC while wearing this armor."
-			],
 			"requires": [
 				{
 					"armor": true
@@ -297,7 +279,7 @@
 				"page": 152,
 				"nameSuffix": " +3",
 				"entries": [
-					"You have a {@genericBonus} bonus to AC while wearing this armor."
+					"You have a {=genericBonus} bonus to AC while wearing this armor."
 				],
 				"modifier": [
 					{
@@ -532,8 +514,8 @@
 				"page": 152,
 				"nameSuffix": " of Slaying",
 				"entries": [
-					"A {@lowerName} of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both <i>{@lowerName}s of dragon slaying</i> and <i>{@lowerName}s of blue dragon slaying</i>. If a creature belonging to the type, race, or group associated with a {@lowerName} of slaying takes damage from the {@lowerName}, the creature must make a DC 17 Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
-					"Once a {@lowerName} of slaying deals its extra damage to a creature, it becomes a nonmagical {@lowerName}."
+					"{=baseName/at} {=baseName/l} of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both {@i {=baseName/l}s of dragon slaying} and {@i {=baseName/l}s of blue dragon slaying}. If a creature belonging to the type, race, or group associated with {=baseName/a} {=baseName/l} of slaying takes damage from the {=baseName/l}, the creature must make a DC 17 Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
+					"Once {=baseName/a} {=baseName/l} of slaying deals its extra damage to a creature, it becomes a nonmagical {=baseName/l}."
 				]
 			}
 		},
@@ -1527,9 +1509,6 @@
 		{
 			"name": "Shield, +1",
 			"type": "GV",
-			"entries": [
-				"While holding this shield, you have a +1 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-			],
 			"requires": [
 				{
 					"type": "S"
@@ -1543,7 +1522,7 @@
 				"page": 200,
 				"nameSuffix": " +1",
 				"entries": [
-					"While holding this shield, you have a {@genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
 				],
 				"modifier": [
 					{
@@ -1559,9 +1538,6 @@
 		{
 			"name": "Shield, +2",
 			"type": "GV",
-			"entries": [
-				"While holding this shield, you have a +2 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-			],
 			"requires": [
 				{
 					"type": "S"
@@ -1575,7 +1551,7 @@
 				"page": 200,
 				"nameSuffix": " +2",
 				"entries": [
-					"While holding this shield, you have a {@genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
 				],
 				"modifier": [
 					{
@@ -1591,9 +1567,6 @@
 		{
 			"name": "Shield, +3",
 			"type": "GV",
-			"entries": [
-				"While holding this shield, you have a +3 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-			],
 			"requires": [
 				{
 					"type": "S"
@@ -1607,7 +1580,7 @@
 				"page": 200,
 				"nameSuffix": " +3",
 				"entries": [
-					"While holding this shield, you have a {@genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
 				],
 				"modifier": [
 					{
@@ -1803,6 +1776,10 @@
 			"excludes": {
 				"name": "Net"
 			},
+			"entries": [
+				"When you roll a 20 with this magic weapon, the target takes an extra 7 damage of the weapon's type.",
+				"{@i Note: According to the SRD, it is an extra {@dice 2d6} damage.}"
+			],
 			"inherits": {
 				"tier": "Major",
 				"rarity": "Rare",
@@ -1810,8 +1787,8 @@
 				"page": 209,
 				"namePrefix": "Vicious ",
 				"entries": [
-					"When you roll a 20 with this magic weapon, the target takes an extra 7 {@dmgType} damage.",
-					"{@i Note: According to the SRD, it is an extra {@dice 2d6} {@dmgType} damage.}"
+					"When you roll a 20 with this magic weapon, the target takes an extra 7 {=dmgType} damage.",
+					"{@i Note: According to the SRD, it is an extra {@dice 2d6} {=dmgType} damage.}"
 				]
 			}
 		},
@@ -1875,9 +1852,6 @@
 		{
 			"name": "Weapon (no damage) +1",
 			"type": "GV",
-			"entries": [
-				"You have a +1 bonus to attack rolls made with this weapon."
-			],
 			"requires": [
 				{
 					"name": "Net"
@@ -1891,16 +1865,13 @@
 				"page": 213,
 				"nameSuffix": " +1",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack rolls made with this weapon."
+					"You have a {=genericBonus} bonus to attack rolls made with this weapon."
 				]
 			}
 		},
 		{
 			"name": "Weapon (no damage) +2",
 			"type": "GV",
-			"entries": [
-				"You have a +2 bonus to attack rolls made with this weapon."
-			],
 			"requires": [
 				{
 					"name": "Net"
@@ -1914,16 +1885,13 @@
 				"page": 213,
 				"nameSuffix": " +2",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack rolls made with this weapon."
+					"You have a {=genericBonus} bonus to attack rolls made with this weapon."
 				]
 			}
 		},
 		{
 			"name": "Weapon (no damage) +3",
 			"type": "GV",
-			"entries": [
-				"You have a +3 bonus to attack rolls made with this weapon."
-			],
 			"requires": [
 				{
 					"name": "Net"
@@ -1937,16 +1905,13 @@
 				"page": 213,
 				"nameSuffix": " +3",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack rolls made with this weapon."
+					"You have a {=genericBonus} bonus to attack rolls made with this weapon."
 				]
 			}
 		},
 		{
 			"name": "Weapon +1",
 			"type": "GV",
-			"entries": [
-				"You have a +1 bonus to attack and damage rolls made with this weapon."
-			],
 			"requires": [
 				{
 					"weapon": true
@@ -1963,16 +1928,13 @@
 				"page": 213,
 				"nameSuffix": " +1",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack and damage rolls made with this weapon."
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this weapon."
 				]
 			}
 		},
 		{
 			"name": "Weapon +2",
 			"type": "GV",
-			"entries": [
-				"You have a +2 bonus to attack and damage rolls made with this weapon."
-			],
 			"requires": [
 				{
 					"weapon": true
@@ -1989,16 +1951,13 @@
 				"page": 213,
 				"nameSuffix": " +2",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack and damage rolls made with this weapon."
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this weapon."
 				]
 			}
 		},
 		{
 			"name": "Weapon +3",
 			"type": "GV",
-			"entries": [
-				"You have a +3 bonus to attack and damage rolls made with this weapon."
-			],
 			"requires": [
 				{
 					"weapon": true
@@ -2015,7 +1974,7 @@
 				"page": 213,
 				"nameSuffix": " +3",
 				"entries": [
-					"You have a {@genericBonus} bonus to attack and damage rolls made with this weapon."
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this weapon."
 				]
 			}
 		},

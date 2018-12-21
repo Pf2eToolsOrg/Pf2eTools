@@ -345,6 +345,7 @@ class StatGen {
 			this.changeTotal();
 			const $chooseHead = $("td.choose_head").hide();
 			$(".choose").hide().prop("checked", false);
+			$(".pbuy__choose_dummy").hide();
 
 			if (!stats.choose) return;
 
@@ -353,7 +354,7 @@ class StatGen {
 			this.raceChoiceCount = stats.choose[0].count;
 
 			$chooseHead.text(`Choose ${this.raceChoiceCount}`).show();
-			from.forEach(key => $(`#${key} .choose`).show())
+			Parser.ABIL_ABVS.forEach(abi => $(`#${abi} .${from.includes(abi) ? "choose" : "pbuy__choose_dummy"}`).show());
 		};
 
 		const race = $(`#race`).val();

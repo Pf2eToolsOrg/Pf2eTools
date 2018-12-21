@@ -1,4 +1,7 @@
 ## 5e.tools
+
+[![Build Status](https://ci.develop.5etools.com/api/badges/5eTools/5etoolsR20/status.svg)](https://ci.develop.5etools.com/5eTools/5etoolsR20)
+
 Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
 
 [Join the 5etools Discord here!](https://discord.gg/AzyBjtQ)

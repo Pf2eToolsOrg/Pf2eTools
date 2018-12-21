@@ -1,6 +1,5 @@
 "use strict";
 const LOOT_JSON_URL = "data/loot.json";
-const ITEMS_URL = "data/items.json";
 const MULT_SIGN = "×";
 const MAX_HIST = 9;
 const renderer = new EntryRenderer();
@@ -14,10 +13,19 @@ const CHALLENGE_RATING_RANGE = {
 	17: "17\u201420"
 };
 
+const STORAGE_BASIC_CR = "lootgen-basic-cr";
+const STORAGE_BASIC_HOARD = "lootgen-basic-hoard";
+const STORAGE_TABLE_SEL = "lootgen-table-sel";
+const STORAGE_PARTY_CUMULATIVE = "lootgen-char-cumulative";
+const STORAGE_PARTY_CLOSEST_TIER = "lootgen-closest-tier";
+
 class LootGen {
 	constructor () {
 		this._spells = null;
 		this._loadingSpells = false;
+	}
+
+	doPreLoadInit () {
 		$("#rollAgaintTable").click(() => {
 			const $selViewTable = $("#table-sel");
 			const val = $selViewTable.val();
@@ -25,14 +33,34 @@ class LootGen {
 			$selViewTable.toggleClass("error-background", val === "");
 			if (val === "") return;
 
-			lootGen.rollAgainstTable(val);
+			lootGen.pRollAgainstTable(val);
 		});
+
+		const $basicCr = $(`#cr`);
+		const storedBasicCr = SessionStorageUtil.get(STORAGE_BASIC_CR);
+		if (storedBasicCr != null) $basicCr.val(storedBasicCr);
+		$basicCr.change(() => SessionStorageUtil.set(STORAGE_BASIC_CR, $basicCr.val()));
+
+		const $basicHoard = $(`#hoard`);
+		const storedBasicHoard = SessionStorageUtil.get(STORAGE_BASIC_HOARD);
+		if (storedBasicHoard != null) $basicHoard.prop("checked", storedBasicHoard);
+		$basicHoard.change(() => SessionStorageUtil.set(STORAGE_BASIC_HOARD, $basicHoard.prop("checked")));
+	}
+
+	doPostLoadInit () {
+		const $selTables = $(`#table-sel`);
+		const storedTableSel = SessionStorageUtil.get(STORAGE_TABLE_SEL);
+		if (storedTableSel != null) {
+			$selTables.val(storedTableSel);
+			$selTables.change();
+		}
+		$selTables.change(() => SessionStorageUtil.set(STORAGE_TABLE_SEL, $selTables.val()));
 	}
 
 	loadLoot (lootData) {
 		lootList = lootData;
 		$("button.id-clear").click(() => lootOutput.clear());
-		$("button#genloot").click(LootGen.rollLoot);
+		$("button#genloot").click(LootGen.pRollLoot);
 		const $selTables = $(`#table-sel`);
 		lootData.magicitems.forEach((t, i) => {
 			$selTables.append(`<option value="${i}">${t.name}</option>`);
@@ -40,7 +68,7 @@ class LootGen {
 		$selTables.on("change", () => {
 			const v = $selTables.val();
 			if (v) $("#table-sel").removeClass("error-background");
-			this.displayTable(v);
+			this.pDisplayTable(v, !$(`#container-loot-table`).hasClass("hidden") && $(".id-showLootTable").prop("checked"));
 		});
 	}
 
@@ -49,150 +77,183 @@ class LootGen {
 		return lastItem.max != null ? lastItem.max : lastItem.min;
 	}
 
-	displayTable (arrayEntry) {
+	async pDisplayTable (arrayEntry, doShow = false) {
 		const itemsTable = lootList.magicitems[arrayEntry];
 		if (arrayEntry === "") $("div#classtable").hide();
 		else {
-			const html = $(`
+			const $table = $(`
 				<hr/>
 				<table id="stats">
 					<caption>${itemsTable.name}</caption>
-					<thead>
+					<tbody>
 					<tr>
-						<th class="col-2 text-align-center"><span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry});">d100</span></th>
+						<th class="col-2 text-align-center"><span class="roller" onclick="lootGen.pRollAgainstTable(${arrayEntry});">d100</span></th>
 						<th class="col-10">Magic Item</th>
 					</tr>
-					</thead>
+					</tbody>
 				</table>
 				<small><strong>Source:</strong> <em>${Parser.sourceJsonToFull(itemsTable.source)}</em>, page ${itemsTable.page}</small>
 			`);
-			itemsTable.table.forEach(it => {
+
+			const $tbody = $table.find("tbody");
+			const promises = itemsTable.table.map(async it => {
+				const $out = [];
+
+				const primaryLink = await LootGen.p$ParseLink(it);
 				const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
-				html.find('thead').append(`<tr><td class="text-align-center">${range}</td><td>${LootGen.parseLink(it.item)}${it.table ? ` (roll <span class="roller" onclick="lootGen.rollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td></tr>`);
+				const primary$Element = $(`<tr>
+					<td class="text-align-center">${range}</td>
+					<td><div data-r/>${it.table ? `(roll <span class="roller" onclick="lootGen.pRollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td>
+				</tr>`).swap(primaryLink);
+				$out.push(primary$Element);
+
 				if (it.table) {
-					it.table.forEach(r => {
-						html.find('thead').append(`<tr><td></td><td><span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span> ${LootGen.parseLink(r.item)}</td></tr>`);
+					const subPromises = it.table.map(async r => {
+						const subLink = await LootGen.p$ParseLink(r);
+						return $(`<tr>
+							<td/>
+							<td>
+								<span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span>
+								<div data-r/>
+							</td>
+						</tr>`).swap(subLink);
 					});
+					const sub$Elements = await Promise.all(subPromises);
+					sub$Elements.forEach($e => $out.push($e));
 				}
+
+				return $out;
 			});
-			$("div#classtable").html(html).toggle($(".id-showLootTable").prop("checked"));
+
+			const $toAppend = await Promise.all(promises);
+			$toAppend.forEach($eles => $eles.forEach($e => $e.appendTo($tbody)));
+
+			$("div#classtable").empty().append($table).toggle(doShow);
 		}
 	}
 
-	randomItemHtml (ixTable, parentRoll) {
+	async p$GetRandomItemHtml (ixTable, parentRoll) {
 		const table = lootList.magicitems[ixTable];
 		const rowRoll = parentRoll || LootGen.randomNumber(1, 100);
 		const row = GenUtil.getFromTable(table.table, rowRoll);
 
-		function getMessage () {
-			const item = LootGen.parseLink(row.item, {rollSpellScroll: true});
-			return `<ul><li class="split">
-				<span>${item} (rolled ${rowRoll})</span>
-				<span class="roller" onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</span>
-			</li></ul>`;
+		async function p$GetMessage () {
+			const $item = await LootGen.p$ParseLink(row, {rollSpellScroll: true, rollChoices: true});
+			return $(`<ul><li class="split">
+				<span><div data-r/> (rolled ${rowRoll})</span>
+				<span class="roller" onclick="lootGen.pRerollItem(this, ${ixTable})">[reroll]</span>
+			</li></ul>`).swap($item);
 		}
 
-		function getMessageSub () {
+		async function p$GetMessageSub () {
 			const subTableMax = LootGen.getMaxRoll(row.table);
 			const roll = LootGen.randomNumber(1, subTableMax);
 			const rolled = GenUtil.getFromTable(row.table, roll);
-			const item = LootGen.parseLink(rolled.item, {rollSpellScroll: true});
+			const $item = await LootGen.p$ParseLink(rolled, {rollSpellScroll: true, rollChoices: true});
 
-			return `<ul><li class="split">
-				<span>${item} (rolled ${roll})</span>
-				<span class="roller" onclick="lootGen.rerollItem(this, ${ixTable})">[reroll]</span>
-			</li></ul>`;
+			return $(`<ul><li class="split">
+				<span><div data-r/> (rolled ${roll})</span>
+				<span class="roller" onclick="lootGen.pRerollItem(this, ${ixTable})">[reroll]</span>
+			</li></ul>`).swap($item);
 		}
 
-		return row.table ? getMessageSub() : getMessage();
+		return row.table ? p$GetMessageSub() : p$GetMessage();
 	}
 
 	static itemTitleHtml (table) {
 		return $(`<div class="id-top">Rolled against <strong>${table.name}</strong>:</div>`);
 	}
 
-	rollAgainstTable (ixTable, parentRoll) {
+	async pRollAgainstTable (ixTable, parentRoll) {
 		const table = lootList.magicitems[ixTable];
 		const rowRoll = parentRoll || LootGen.randomNumber(1, 100);
 		const title = LootGen.itemTitleHtml(table);
 
-		lootOutput.add($(this.randomItemHtml(ixTable, rowRoll)), title);
+		lootOutput.add(await this.p$GetRandomItemHtml(ixTable, rowRoll), title);
 	}
 
-	rerollItem (el, ixTable) {
+	async pRerollItem (el, ixTable) {
 		const $el = $(el);
 		const roll = LootGen.randomNumber(1, 100);
-		const $element = $(this.randomItemHtml(ixTable, roll));
+		const $element = await this.p$GetRandomItemHtml(ixTable, roll);
 
 		$el.parents("ul").replaceWith($element);
 	}
 
-	static rollLoot () {
+	static async pRollLoot () {
 		const cr = $("#cr").val();
 		const hoard = $("#hoard").prop("checked");
 		const $el = $("<ul></ul>");
-		const tableset = hoard ? lootList.hoard : lootList.individual;
-		let curtable = null;
-		for (let i = 0; i < tableset.length; i++) if (cr >= tableset[i].mincr && cr <= tableset[i].maxcr) curtable = tableset[i];
-		if (!curtable) return;
-		const lootroll = LootGen.randomNumber(1, 100);
-		const loottable = curtable.table;
+		const tableSet = hoard ? lootList.hoard : lootList.individual;
+		let curTable = null;
+		for (let i = 0; i < tableSet.length; i++) if (cr >= tableSet[i].mincr && cr <= tableSet[i].maxcr) curTable = tableSet[i];
+		if (!curTable) return;
+		const lootRoll = LootGen.randomNumber(1, 100);
+		const lootTable = curTable.table;
 		let loot = null;
-		for (let i = 0; i < loottable.length; i++) if (lootroll >= loottable[i].min && lootroll <= loottable[i].max) loot = loottable[i];
+		for (let i = 0; i < lootTable.length; i++) if (lootRoll >= lootTable[i].min && lootRoll <= lootTable[i].max) loot = lootTable[i];
+
 		if (!loot) return;
+
 		if (hoard) {
 			const treasure = [];
-			treasure.push(lootGen.getFormattedCoinsForDisplay(curtable.coins));
-			const artgems = loot.gems ? loot.gems : (loot.artobjects ? loot.artobjects : null);
-			if (artgems) {
-				let artgemstable = loot.artobjects ? lootList.artobjects : lootList.gemstones;
-				for (let i = 0; i < artgemstable.length; i++) if (artgemstable[i].type === artgems.type) artgemstable = artgemstable[i];
-				const roll = EntryRenderer.dice.parseRandomise2(artgems.amount);
+			treasure.push(lootGen.getFormattedCoinsForDisplay(curTable.coins));
+			const artAndGems = loot.gems ? loot.gems : (loot.artobjects ? loot.artobjects : null);
+			if (artAndGems) {
+				let artAndGemsTable = loot.artobjects ? lootList.artobjects : lootList.gemstones;
+				for (let i = 0; i < artAndGemsTable.length; i++) if (artAndGemsTable[i].type === artAndGems.type) artAndGemsTable = artAndGemsTable[i];
+				const roll = EntryRenderer.dice.parseRandomise2(artAndGems.amount);
 				const gems = [];
-				for (let i = 0; i < roll; i++) gems.push(artgemstable.table[LootGen.randomNumber(0, artgemstable.table.length - 1)]);
-				$el.append(`<li>${Parser._addCommas(artgems.type)} gp ${loot.artobjects ? "art object" : "gemstone"}${roll > 1 ? "s" : ""}${roll > 1 ? ` (${MULT_SIGN}${roll})` : ""}:<ul>${lootGen.sortArrayAndCountDupes(gems)}</ul></li>`);
+				for (let i = 0; i < roll; i++) gems.push(artAndGemsTable.table[LootGen.randomNumber(0, artAndGemsTable.table.length - 1)]);
+				$(`
+					<li>${Parser._addCommas(artAndGems.type)} gp ${loot.artobjects ? "art object" : "gemstone"}${roll > 1 ? "s" : ""}${roll > 1 ? ` (${MULT_SIGN}${roll})` : ""}:
+					<ul data-r/>
+					</li>
+				`).swap(lootGen.$getSortedDeduplicatedList(gems)).appendTo($el);
 			}
+
 			if (loot.magicitems) {
-				const magicitemtabletype = [];
-				const magicitemtableamounts = [];
-				magicitemtabletype.push(loot.magicitems.type.split(",")[0]);
-				magicitemtableamounts.push(loot.magicitems.amount.split(",")[0]);
+				const magicItemTableType = [];
+				const magicItemTableAmounts = [];
+				magicItemTableType.push(loot.magicitems.type.split(",")[0]);
+				magicItemTableAmounts.push(loot.magicitems.amount.split(",")[0]);
 				if (loot.magicitems.type.indexOf(",") !== -1) {
-					magicitemtabletype.push(loot.magicitems.type.split(",")[1]);
-					magicitemtableamounts.push(loot.magicitems.amount.split(",")[1]);
+					magicItemTableType.push(loot.magicitems.type.split(",")[1]);
+					magicItemTableAmounts.push(loot.magicitems.amount.split(",")[1]);
 				}
-				for (let v = 0; v < magicitemtabletype.length; v++) {
-					const curtype = magicitemtabletype[v];
-					const curamount = magicitemtableamounts[v];
-					let magicitemstable = lootList.magicitems;
-					let tablearrayentry = 0;
-					for (let i = 0; i < magicitemstable.length; i++) {
-						if (magicitemstable[i].type === curtype) {
-							tablearrayentry = i;
-							magicitemstable = magicitemstable[tablearrayentry];
+				for (let v = 0; v < magicItemTableType.length; v++) {
+					const curType = magicItemTableType[v];
+					const curAmount = magicItemTableAmounts[v];
+					let magicItemsTable = lootList.magicitems;
+					let tableArrayEntry = 0;
+					for (let i = 0; i < magicItemsTable.length; i++) {
+						if (magicItemsTable[i].type === curType) {
+							tableArrayEntry = i;
+							magicItemsTable = magicItemsTable[tableArrayEntry];
 						}
 					}
-					const roll = EntryRenderer.dice.parseRandomise2(curamount);
-					const magicitems = [];
+					const roll = EntryRenderer.dice.parseRandomise2(curAmount);
+					const magicItems = [];
 					for (let i = 0; i < roll; i++) {
-						const itemRoll = LootGen.randomNumber(1, 100);
-						const curmagicitem = GenUtil.getFromTable(magicitemstable.table, itemRoll);
+						const {itemRoll, rolled} = LootGen.__getRolledItemFromTable(magicItemsTable);
 
-						const nestedRoll = curmagicitem.table ? LootGen.randomNumber(0, curmagicitem.table.length - 1) : null;
-						const rolled = curmagicitem.table ? curmagicitem.table[nestedRoll] : curmagicitem.item;
-						magicitems.push({
-							result: LootGen.parseLink(rolled, {rollSpellScroll: true}),
-							roll: itemRoll
+						magicItems.push({
+							rolled: rolled,
+							$render: LootGen.p$ParseLink(rolled, {rollSpellScroll: true, rollChoices: true}),
+							roll: itemRoll,
+							table: magicItemsTable
 						});
 					}
-					$el.append(`
+					const magicItemResults = await Promise.all(magicItems.map(it => it.$render));
+					magicItems.forEach((it, i) => it.$render = magicItemResults[i]);
+					$(`
 						<li>
 							Magic Item${roll > 1 ? "s" : ""}
-							(<span class="roller" onclick="lootGen.displayTable(${tablearrayentry});">Table ${curtype}</span>)
-							${magicitems.length > 1 ? ` (${MULT_SIGN}${magicitems.length})` : ""}:
-							<ul>${lootGen.sortArrayAndCountDupes(magicitems)}</ul>
+							(<span class="roller" onclick="MiscUtil.scrollPageTop() || lootGen.pDisplayTable(${tableArrayEntry}, true);">Table ${curType}</span>)
+							${magicItems.length > 1 ? ` (${MULT_SIGN}${magicItems.length})` : ""}:
+							<ul data-r/>
 						</li>
-					`);
+					`).swap(lootGen.$getSortedItemList(magicItems)).appendTo($el)
 				}
 			}
 			for (let i = 0; i < treasure.length; i++) $el.prepend(`<li>${treasure[i]}</li>`);
@@ -205,27 +266,77 @@ class LootGen {
 		lootOutput.add($el, title);
 	}
 
-	sortArrayAndCountDupes (arr) {
-		let rolls = [];
+	/**
+	 * @param arr An array of strings.
+	 */
+	$getSortedDeduplicatedList (arr) {
+		const sorted = arr.sort(SortUtil.ascSort);
 
-		function getRollPart () {
-			return rolls.length ? ` <span class="text-muted">(Rolled ${rolls.join(", ")})</span>` : "";
-		}
-
-		arr.sort();
+		const $ulOut = $(`<ul/>`);
 		let current = null;
-		let cnt = 0;
-		let result = "";
-		arr.forEach(r => {
-			if ((r.result || r) !== current) {
-				if (cnt > 0) result += `<li>${current}${getRollPart()}${cnt > 1 ? `, ${MULT_SIGN}${cnt} ` : ""}</li>`;
-				current = (r.result || r);
-				cnt = 1;
-				rolls = r.roll != null ? [r.roll] : [];
-			} else cnt++;
+		let count = 0;
+		const addToOutput = () => $(`<li><span>${current}${count > 1 ? `, ${MULT_SIGN}${count} ` : ""}</span></li>`)
+			.appendTo($ulOut);
+		sorted.forEach(r => {
+			if (current == null || r !== current) {
+				if (count > 0) addToOutput();
+				current = r;
+				count = 1;
+			} else count++;
 		});
-		if (cnt > 0) result += `<li>${current}${getRollPart()}${cnt > 1 ? `, ${MULT_SIGN}${cnt} ` : ""}</li>`;
-		return result;
+		if (count > 0) addToOutput();
+		return $ulOut;
+	}
+
+	/**
+	 * @param arr An array of objects:
+	 * {
+	 *     rolled: "string rolled"
+	 *     $render: $ele
+	 * 	   roll: numberRolled,
+	 * 	   table: { ... magic item table ... }
+	 * }
+	 */
+	$getSortedItemList (arr) {
+		const sorted = arr.sort((a, b) => SortUtil.ascSort(a.rolled, b.rolled));
+
+		const $ulOut = $(`<ul/>`);
+
+		sorted.forEach(current => {
+			const $rollPart = $(`<span class="text-muted">(Rolled ${current.roll})</span>`);
+
+			const $reroll = $(`<span class="roller">[reroll]</span>`).click(async () => {
+				const {itemRoll, rolled} = LootGen.__getRolledItemFromTable(current.table);
+				$rollPart.text(`(Rolled ${itemRoll})`);
+				const new$Render = await LootGen.p$ParseLink(rolled, {rollSpellScroll: true, rollChoices: true});
+				current.$render.replaceWith(new$Render);
+				current.$render = new$Render;
+			});
+
+			$(`<li class="split">
+					<span><span data-r="$render"/> <span data-r="$rollPart"/></span>
+					<span data-r="$reroll"/>
+			</li>`)
+				.swap({
+					$render: current.$render,
+					$rollPart,
+					$reroll
+				})
+				.appendTo($ulOut)
+		});
+
+		return $ulOut;
+	}
+
+	static __getRolledItemFromTable (magicItemsTable) {
+		const itemRoll = LootGen.randomNumber(1, 100);
+		const curMagicItem = GenUtil.getFromTable(magicItemsTable.table, itemRoll);
+
+		const rolled = curMagicItem.table
+			? curMagicItem.table[LootGen.randomNumber(0, curMagicItem.table.length - 1)]
+			: curMagicItem;
+
+		return {itemRoll, rolled};
 	}
 
 	getFormattedCoinsForDisplay (loot) {
@@ -283,17 +394,57 @@ class LootGen {
 		return renderer.renderEntry(`{@filter see all ${Parser.spLevelToFullLevelText(level, true)} spells|spells|level=${level}}`);
 	}
 
-	static parseLink (rawText, options = {}) {
+	static async p$ParseLink (result, options = {}) {
+		function mapToChooseObj (it) {
+			return typeof it === "string" ? {name: it, source: SRC_DMG} : it;
+		}
+
+		const $out = $(`<span/>`);
+		const rawText = result.item || (() => {
+			const it = Object.values(Object.values(result.choose)[0])[0];
+			return typeof it === "string" ? `{@item ${it}}` : `{@item ${it.name}|${it.source}}`;
+		})();
+
 		if (rawText.indexOf("{@item ") !== -1) {
-			const stack = [];
-			renderer.recursiveEntryRender(rawText, stack);
-			if (options.rollSpellScroll && rawText.toLowerCase().startsWith("{@item spell scroll")) {
-				const m = /spell scroll \((.*?)\)/.exec(rawText.toLowerCase());
-				const level = m[1] === "cantrip" ? 0 : Number(m[1][0]); // 1st letter is the spell level
-				stack.push(lootGen.returnSpellHtml(level));
+			const txt = renderer.renderEntry(rawText);
+			$out.append(txt);
+		} else $out.append(rawText);
+
+		if (options.rollSpellScroll && result.spellLevel != null) {
+			$out.append(" ").append(lootGen.getSpell$ele(result.spellLevel));
+		}
+
+		if (options.rollChoices && result.choose) {
+			const allChoices = [];
+
+			if (result.choose.fromGeneric) {
+				allChoices.push(...(await Promise.all(result.choose.fromGeneric.map(mapToChooseObj).map(it => EntryRenderer.hover.pCacheAndGet(UrlUtil.PG_ITEMS, it.source, UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it)))))
+					.map(it => it.variants)
+					.flat());
 			}
-			return stack.join("");
-		} else return rawText;
+
+			if (result.choose.fromGroup) {
+				allChoices.push(...(await Promise.all(result.choose.fromGroup.map(mapToChooseObj).map(it => EntryRenderer.hover.pCacheAndGet(UrlUtil.PG_ITEMS, it.source, UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it)))))
+					.flat()
+					.map(it => it.items.map(x => {
+						const [name, source] = [...x.split("|")];
+						return EntryRenderer.hover._getFromCache(UrlUtil.PG_ITEMS, source || SRC_DMG, UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS]({name, source: source || SRC_DMG}));
+					}))
+					.flat());
+			}
+
+			if (result.choose.fromItems) {
+				allChoices.push(...(await Promise.all(result.choose.fromItems.map(mapToChooseObj).map(it => EntryRenderer.hover.pCacheAndGet(UrlUtil.PG_ITEMS, it.source, UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it))))));
+			}
+
+			if (result.choose.fromLoaded) {
+				allChoices.push(...result.choose.fromLoaded);
+			}
+
+			$out.append(" ").append(lootGen.getGenericVariant$ele(allChoices));
+		}
+
+		return $out;
 	}
 
 	hasLoadedSpells () {
@@ -325,30 +476,45 @@ class LootGen {
 		}
 	}
 
-	returnSpellHtml (level) {
-		if (this.hasLoadedSpells()) {
-			return `
-				<em>(
-					<span>${renderer.renderEntry(this.getRandomSpell(level))}
-						<a class="clickable" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>
-					</span>
-					or ${LootGen._getOrViewSpellsPart(level)}
-				)</em>
-			`;
-		}
-		return `<em>(<span class="roller" onclick="lootGen.loadRollSpell.bind(lootGen)(this, ${level})">roll</span> or ${LootGen._getOrViewSpellsPart(level)})</em>`;
+	getGenericVariant$ele (allVariants) {
+		const getRandomItem = () => {
+			const wrpItem = RollerUtil.rollOnArray(allVariants);
+			const item = wrpItem.specificVariant || wrpItem;
+			return `{@item ${item.name}|${item.source}}`
+		};
+		const handleReroll = () => $wrpItem.empty().append(renderer.renderEntry(getRandomItem()));
+
+		const $roll = $(`<span class="roller" onmousedown="event.preventDefault()">[reroll]</span>`).click(() => handleReroll());
+		const $wrpItem = $(`<span/>`).append(renderer.renderEntry(getRandomItem()));
+
+		return $(`<em>(<span><span data-r="$wrpItem"/> <span data-r="$roll"/></span>)</em>`)
+			.swap({
+				$wrpItem,
+				$roll
+			});
 	}
 
-	loadRollSpell (ele, level) {
+	getSpell$ele (level) {
+		if (this.hasLoadedSpells()) {
+			const $roll = $(`<span class="roller" onmousedown="event.preventDefault()">[reroll]</span>`).click(() => this.loadRollSpell($roll.parent(), level));
+			return $(`<em>(<span>${renderer.renderEntry(this.getRandomSpell(level))} <div data-r/></span> or ${LootGen._getOrViewSpellsPart(level)})</em>`).swap($roll);
+		}
+		const $spnRoll = $(`<span class="roller">roll</span>`).click(() => this.loadRollSpell($spnRoll.parent(), level));
+		return $(`<em>(<div data-r/> or ${LootGen._getOrViewSpellsPart(level)})</em>`).swap($spnRoll);
+	}
+
+	loadRollSpell ($ele, level) {
 		const output = () => {
-			$(ele)
+			const $roll = $(`<span class="roller" onmousedown="event.preventDefault()">[reroll]</span>`)
+				.click(() => this.loadRollSpell($roll.parent(), level));
+			$ele
 				.removeClass("roller").attr("onclick", "")
 				.html(`${renderer.renderEntry(this.getRandomSpell(level))} `)
-				.append($(`<a class="clickable" target="_empty" onclick='lootGen.loadRollSpell.bind(lootGen)($(this).parent(), ${level})'>[reroll]</a>`));
+				.append($roll);
 		};
 
 		if (!this.hasLoadedSpells()) {
-			$(ele).html(`[loading...]`);
+			$ele.html(`[loading...]`);
 			this.loadSpells(() => output());
 		} else {
 			output();
@@ -447,50 +613,47 @@ const randomLootTables = {
 		}
 	},
 
-	init () {
-		let items;
-		DataUtil.loadJSON(ITEMS_URL)
-			.then(loadedItems => {
-				items = loadedItems.item;
-				return BrewUtil.pAddBrewData();
-			})
-			.then(brew => {
-				if (brew && brew.item) {
-					brew.item.forEach(item => items.push(item));
-				}
-				return items;
-			})
-			.catch(BrewUtil.pPurgeBrew)
-			.then(items => {
-				for (let item of items) {
-					let rarity = item.rarity;
-					let tier = item.tier || "Other";
-					if (!randomLootTables._items[tier]) {
-						randomLootTables._items[tier] = {};
-					}
-					let tableTier = randomLootTables._items[tier];
-					if (!tableTier[rarity]) {
-						tableTier[rarity] = [];
-					}
-					tableTier[rarity].push(item);
-				}
-				return randomLootTables._items;
-			})
-			.then(itemList => {
-				const $selector = $(randomLootTables._selectorTarget);
-				for (let nameTier of Object.keys(itemList)) {
-					let keys = Object.keys(itemList[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex(val => val === a) - randomLootTables._rarityOrder.findIndex((val) => val === b));
-					for (let nameRarity of keys) {
-						if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
-							$selector.append(`<option value="${nameTier}-${nameRarity}">${nameTier} ${nameRarity}</option>`);
-						}
-					}
-				}
-			});
+	async init () {
+		const stockItems = await EntryRenderer.item.buildList();
+		let brewItems = [];
+		try {
+			const homebrew = await BrewUtil.pAddBrewData();
+			brewItems = await EntryRenderer.item.getItemsFromHomebrew(homebrew);
+		} catch (e) {
+			BrewUtil.pPurgeBrew();
+			setTimeout(() => { throw e });
+		}
+		const allItems = stockItems.concat(brewItems);
 
-		if (SessionStorageUtil.get("lootgen-char-cumulative") === false) $("#char-cumulative").prop("checked", false);
-		$("#closest-tier").prop("checked", SessionStorageUtil.get("lootgen-closest-tier"));
-		$("#random-magic-item-select-tier").toggle(!SessionStorageUtil.get("lootgen-closest-tier"));
+		for (const item of allItems) {
+			if (item.category === "Specific Variant") continue;
+			if (item.noDisplay) continue;
+			let rarity = item.rarity;
+			let tier = item.tier || "Other";
+			if (!randomLootTables._items[tier]) {
+				randomLootTables._items[tier] = {};
+			}
+			let tableTier = randomLootTables._items[tier];
+			if (!tableTier[rarity]) {
+				tableTier[rarity] = [];
+			}
+			tableTier[rarity].push(item);
+		}
+
+		const itemList = randomLootTables._items;
+		const $selector = $(randomLootTables._selectorTarget);
+		for (let nameTier of Object.keys(itemList)) {
+			let keys = Object.keys(itemList[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex(val => val === a) - randomLootTables._rarityOrder.findIndex((val) => val === b));
+			for (let nameRarity of keys) {
+				if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
+					$selector.append(`<option value="${nameTier}-${nameRarity}">${nameTier} ${nameRarity}</option>`);
+				}
+			}
+		}
+
+		if (SessionStorageUtil.get(STORAGE_PARTY_CUMULATIVE) === false) $("#char-cumulative").prop("checked", false);
+		$("#closest-tier").prop("checked", SessionStorageUtil.get(STORAGE_PARTY_CLOSEST_TIER));
+		$("#random-magic-item-select-tier").toggle(!SessionStorageUtil.get(STORAGE_PARTY_CLOSEST_TIER));
 		randomLootTables.setEvents();
 	},
 
@@ -509,14 +672,14 @@ const randomLootTables = {
 
 		$cumulative.change((evt) => {
 			const toggled = evt.currentTarget.checked;
-			SessionStorageUtil.set("lootgen-char-cumulative", toggled);
+			SessionStorageUtil.set(STORAGE_PARTY_CUMULATIVE, toggled);
 		});
 
 		$closestTier.change((evt) => {
 			const toggled = evt.currentTarget.checked;
 			$(".slider").toggle(toggled);
 			$("#random-magic-item-select-tier").toggle(!toggled);
-			SessionStorageUtil.set("lootgen-closest-tier", toggled);
+			SessionStorageUtil.set(STORAGE_PARTY_CLOSEST_TIER, toggled);
 		});
 
 		$charLevel.change((evt) => {
@@ -553,16 +716,16 @@ const randomLootTables = {
 			$(".id-showLootTable").prop("checked") ? $classTable.show() : $classTable.hide();
 		});
 
-		$("#get-random-item-from-table").click(() => {
+		$("#get-random-item-from-table").click(async () => {
 			let [tier, rarity] = $randomFromLootTable.val().split("-");
 			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
 			if (tier && rarity) {
-				const $ul = $(`<ul data-rarity="${rarity}" data-tier="${tier}"></ul>`).append(randomLootTables.getRandomItemHtml(tier, rarity));
+				const $ul = $(`<ul data-rarity="${rarity}" data-tier="${tier}"></ul>`).append(await randomLootTables.p$GetRandomItemHtml(tier, rarity));
 				lootOutput.add($ul, `Rolled on the table for <strong>${tier} ${rarity}</strong> items`);
 			}
 		});
 
-		$("#get-group-of-items-for-character").click(() => {
+		$("#get-group-of-items-for-character").click(async () => {
 			let level;
 			const useClosestTier = $("#closest-tier").prop("checked");
 			const accumulateTiers = $("#char-cumulative").prop("checked") && !useClosestTier; // ignored if slider is used
@@ -576,25 +739,25 @@ const randomLootTables = {
 			const $el = $(`<div/>`);
 
 			const itemCount = {};
-			ObjUtil.forEachDeep(
+			await ObjUtil.pForEachDeep(
 				itemsNeeded,
-				function (rarityValues, path) {
+				async function (rarityValues, path) {
 					let tier = path[0];
 					let $tier = $(`<ul data-tier="${tier}"><li>${tier} items</li></ul>`);
 
-					Object.keys(rarityValues).forEach(rarity => {
+					await Promise.all(Object.keys(rarityValues).map(async rarity => {
 						let count = rarityValues[rarity];
 						let $rarity = $(`<ul data-rarity="${rarity}"><li>${rarity} items(${count})</li></ul>`);
 						let $items = $(`<ul data-tier="${tier}"></ul>`);
 						itemCount[tier] = (itemCount[tier] || 0) + count;
-						for (let i = 0; i < count; i++) {
-							$items.append(randomLootTables.getRandomItemHtml(tier, rarity));
-						}
+						const $toAppend = await Promise.all([...new Array(count)].map(async () => randomLootTables.p$GetRandomItemHtml(tier, rarity)));
+						$toAppend.forEach($e => $items.append($e));
+
 						if ($items.find("li").length > 0) {
 							$rarity.append($items);
 							$tier.append($rarity);
 						}
-					});
+					}));
 					if (itemCount[tier]) $el.append($tier);
 				},
 				{depth: 1}
@@ -648,8 +811,22 @@ const randomLootTables = {
 		return count;
 	},
 
-	createLink (item) {
-		return LootGen.parseLink(`{@item ${item.name}|${item.source}`, {rollSpellScroll: true});
+	async p$CreateLink (item) {
+		const fauxResult = (() => {
+			if (item.category === "Generic Variant" && item.variants && item.variants.length) {
+				return {
+					item: `{@item ${item.name}|${item.source}}`,
+					choose: {
+						fromLoaded: item.variants
+					}
+				}
+			} else {
+				return {
+					item: `{@item ${item.name}|${item.source}}`
+				};
+			}
+		})();
+		return LootGen.p$ParseLink(fauxResult, {rollSpellScroll: true, rollChoices: true});
 	},
 
 	getRandomItem (tier, rarity) {
@@ -657,21 +834,22 @@ const randomLootTables = {
 		return {roll, item: randomLootTables._items[tier][rarity][roll]};
 	},
 
-	getRandomItemHtml (tier, rarity) {
+	async p$GetRandomItemHtml (tier, rarity) {
 		const {roll, item} = randomLootTables.getRandomItem(tier, rarity);
+		const $link = await randomLootTables.p$CreateLink(item);
 		return $(`
 			<li class="split">
-				<span><span>${randomLootTables.createLink(item)}</span> (Rolled ${roll + 1})</span>
-				<span class="roller" onclick="randomLootTables.rerollItem(this)">[reroll]</span>
+				<span><span data-r/> <span class="text-muted">(Rolled ${roll + 1})</span></span>
+				<span class="roller" onclick="randomLootTables.pRerollItem(this)">[reroll]</span>
 			</li>
-		`);
+		`).swap($link);
 	},
 
-	rerollItem (ele) {
+	async pRerollItem (ele) {
 		const $ele = $(ele);
 		const rarity = $ele.closest("[data-rarity]").attr("data-rarity");
 		const tier = $ele.closest("[data-tier]").attr("data-tier");
-		$ele.parent("li").replaceWith(randomLootTables.getRandomItemHtml(tier, rarity));
+		$ele.parent("li").replaceWith(await randomLootTables.p$GetRandomItemHtml(tier, rarity));
 	},
 
 	displayTable (itemsArray, tier, rarity) {
@@ -682,15 +860,15 @@ const randomLootTables = {
 			<hr/>
 			<table id="stats">
 				<caption>Table for ${tier} Magic items that are ${rarity}</caption>
-				<thead>
+				<tbody>
 				<tr>
 					<th class="col-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
 					<th class="col-10">${tier} ${rarity} Magic Items</th>
 				</tr>
-				</thead>
+				</tbody>
 			</table>`);
 			itemsArray.forEach((item, index) => {
-				html.find('thead').append(`<tr><td class="text-align-center">${index + 1}</td><td>${LootGen.parseLink("{@item " + item.name + "|" + item.source + "}")}`);
+				html.find("tbody").append(`<tr><td class="text-align-center">${index + 1}</td><td>${EntryRenderer.getDefaultRenderer().renderEntry(`{@item ${item.name}|${item.source}}`)}`);
 			});
 			$("div#classtable").html(html);
 		}
@@ -740,7 +918,7 @@ const ViewManipulation = class ViewManipulation {
 		this._containers = (function (views) {
 			const containers = {};
 			views.forEach(view => {
-				let container = ViewManipulation.returnContainerName(view);
+				let container = ViewManipulation.getContainerName(view);
 				containers[view] = $(`#${container}`);
 			});
 			return containers;
@@ -749,29 +927,29 @@ const ViewManipulation = class ViewManipulation {
 		this._buttons = (function (names) {
 			const buttons = {};
 			names.forEach(name => {
-				let button = ViewManipulation.returnButtonName(name);
+				let button = ViewManipulation.getButtonName(name);
 				buttons[name] = $("#" + button);
 			});
 			return buttons;
 		}(viewNames));
 
-		this.setClicks();
-		this.switchView(SessionStorageUtil.get(this.returnStorageName()) || viewNames[0]);
+		this.initClickHandlers();
+		this.switchView(SessionStorageUtil.get(this.getStorageName()) || viewNames[0]);
 	}
 
-	returnStorageName () {
-		return `view-${this.name}`;
+	getStorageName () {
+		return `lootgen-view-${this.name}`;
 	}
 
-	static returnName (nameStr) {
+	static getName (nameStr) {
 		return nameStr.split("-").slice(1).join("-");
 	}
 
-	static returnContainerName (view) {
+	static getContainerName (view) {
 		return `container-${view}`;
 	}
 
-	static returnButtonName (view) {
+	static getButtonName (view) {
 		return `btn-${view}`;
 	}
 
@@ -781,10 +959,10 @@ const ViewManipulation = class ViewManipulation {
 		}
 	}
 
-	setClicks () {
+	initClickHandlers () {
 		this.each(this._buttons, view => {
 			view.click(evt => {
-				const name = ViewManipulation.returnName(evt.currentTarget.id);
+				const name = ViewManipulation.getName(evt.currentTarget.id);
 				this.switchView(name);
 			});
 		});
@@ -798,7 +976,7 @@ const ViewManipulation = class ViewManipulation {
 			$container.toggleClass("hidden", name !== view);
 			this.emit("change", name);
 		});
-		SessionStorageUtil.set(this.returnStorageName(), name);
+		SessionStorageUtil.set(this.getStorageName(), name);
 	}
 
 	on (name, func) {
@@ -821,8 +999,12 @@ const ViewManipulation = class ViewManipulation {
 const lootGen = new LootGen();
 
 window.addEventListener("load", function load () {
+	lootGen.doPreLoadInit();
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	DataUtil.loadJSON(LOOT_JSON_URL).then(lootGen.loadLoot.bind(lootGen));
+	DataUtil.loadJSON(LOOT_JSON_URL).then(data => {
+		lootGen.loadLoot(data);
+		lootGen.doPostLoadInit();
+	});
 	$(`body`).on("mousedown", ".roller", (e) => e.preventDefault());
 
 	views.mainView = new ViewManipulation("lootgen-tables", ["lootgen", "loot-table", "random-magic-item"]);

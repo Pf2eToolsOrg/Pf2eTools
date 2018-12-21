@@ -5,16 +5,16 @@ window.onload = doPageInit;
 String.prototype.split_handleColon = String.prototype.split_handleColon ||
 	function (str) {
 		const colonStr = `${str.trim()}:`;
-		if (this.startsWith(colonStr)) return this.split(colonStr).map(it => it.trim());
-		else return this.split(str);
+		if (this.toLowerCase().startsWith(colonStr.toLowerCase())) return this.split(new RegExp(colonStr, "ig")).map(it => it.trim());
+		else return this.split(new RegExp(str, "ig"));
 	};
 
 String.prototype.indexOf_handleColon = String.prototype.indexOf_handleColon ||
 	function (str) {
 		const colonStr = `${str.trim()}:`;
-		const idxColon = this.indexOf(colonStr);
+		const idxColon = this.toLowerCase().indexOf(colonStr.toLowerCase());
 		if (~idxColon) return idxColon;
-		return this.indexOf(str);
+		return this.toLowerCase().indexOf(str.toLowerCase());
 	};
 
 class ConverterUi {
@@ -721,7 +721,7 @@ class StatblockConverter {
 					continue;
 				}
 				const abilities = curLine.split("|").map(it => it.trim()).filter(Boolean);
-				["str", "dex", "con", "int", "wis", "cha"].map((abi, j) => stats[abi] = StatblockConverter._tryGetStat(abilities[j]));
+				Parser.ABIL_ABVS.map((abi, j) => stats[abi] = StatblockConverter._tryGetStat(abilities[j]));
 				parsed++;
 				continue;
 			}
@@ -884,6 +884,8 @@ class StatblockConverter {
 		);
 		TagAttack.tryTagAttacks(stats, (atk) => this._ui.showWarning(`Manual attack tagging required for "${atk}"`));
 		TagHit.tryTagHits(stats);
+		TraitsActionsTag.tryRun(stats);
+		LanguageTag.tryRun(stats);
 		doCleanup();
 	}
 
@@ -1074,8 +1076,10 @@ class StatblockConverter {
 
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
 	static _getCleanInput (ipt) {
-		// convert minus signs to hyphens
-		return ipt.replace(/[−–]/g, "-");
+		return ipt
+			.replace(/[−–]/g, "-") // convert minus signs to hyphens
+			.replace(/(\d\d?\s+\([-+]\d\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`) // collapse multi-line ability scores
+		;
 	}
 
 	_getCleanName (line) {
@@ -1088,7 +1092,7 @@ class StatblockConverter {
 		stats.type = StatblockConverter._tryParseType(stats.type);
 
 		stats.alignment = line.split(", ")[1].toLowerCase();
-		stats.alignment = StatblockConverter.ALIGNMENT_MAP[stats.alignment] || stats.alignment;
+		AlignmentConvert.tryConvertAlignment(stats);
 	}
 
 	static _setCleanHp (stats, line) {
@@ -1204,7 +1208,7 @@ class StatblockConverter {
 	}
 
 	static _setCleanDamageRes (stats, line) {
-		stats.resist = (line.includes("Resistances") ? line.split_handleColon("Resistances") : line.split_handleColon("Resistance"))[1].trim();
+		stats.resist = (line.toLowerCase().includes("resistances") ? line.split_handleColon("Resistances") : line.split_handleColon("Resistance"))[1].trim();
 		stats.resist = StatblockConverter._tryParseDamageResVulnImmune(stats.resist, "resist");
 	}
 
@@ -1279,23 +1283,6 @@ class StatblockConverter {
 		}
 	}
 }
-StatblockConverter.ALIGNMENT_MAP = {
-	"any non-good alignment": ["L", "NX", "C", "NY", "E"],
-	"any non-lawful alignment": ["NX", "C", "G", "NY", "E"],
-	"any chaotic alignment": ["C", "G", "NY", "E"],
-	"any evil alignment": ["L", "NX", "C", "E"],
-	"any alignment": ["A"],
-	"unaligned": ["U"],
-	"neutral": ["N"],
-	"chaotic evil": ["C", "E"],
-	"chaotic neutral": ["C", "N"],
-	"chaotic good": ["C", "G"],
-	"neutral good": ["N", "G"],
-	"neutral evil": ["N", "E"],
-	"lawful evil": ["L", "E"],
-	"lawful neutral": ["L", "N"],
-	"lawful good": ["L", "G"]
-};
 StatblockConverter.SPELL_SRC_MAP = {};
 StatblockConverter.SKILL_SPACE_MAP = {
 	"sleightofhand": "sleight of hand",

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const ut = require('../js/utils.js');
+const er = require('../js/entryrender.js');
 const utS = require("../node/util-search-index");
 const bu = require("../js/bookutils");
 
@@ -8,11 +9,13 @@ console.time(TIME_TAG);
 
 const MSG = {
 	LinkCheck: "",
-	AttachedSpellCheck: "",
+	AttachedSpellAndGroupItemsCheck: "",
 	BraceCheck: "",
 	FilterCheck: "",
 	ScaleDiceCheck: "",
-	AreaCheck: ""
+	StripTagTest: "",
+	AreaCheck: "",
+	LootCheck: ""
 };
 
 const TAG_TO_PAGE = {
@@ -224,35 +227,43 @@ LinkCheck.re = /{@(spell|item|class|creature|condition|disease|background|race|o
 LinkCheck.skillRe = /{@skill (.*?)(\|.*?)?}/g;
 LinkCheck.actionRe = /{@action (.*?)(\|.*?)?}/g;
 
-class AttachedSpellCheck {
+class AttachedSpellAndGroupItemsCheck {
 	static run () {
-		function getEncoded (str) {
+		function getEncoded (str, tag) {
 			const [name, source] = str.split("|");
-			return `${TAG_TO_PAGE["spell"]}#${UrlUtil.encodeForHash([name, source || TAG_TO_DEFAULT_SOURCE["spell"]])}`.toLowerCase().trim();
+			return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, source || TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
 		}
 
 		function checkRoot (file, root, name, source) {
-			function checkDuplicates () {
-				const asUrls = root.attachedSpells.map(getEncoded);
+			function checkDuplicates (prop, tag) {
+				const asUrls = root[prop].map(it => getEncoded(it, tag));
 
-				if (asUrls.length !== new Set(asUrls).size) MSG.AttachedSpellCheck += `Duplicate attached spells in ${file} for ${source}, ${name}: ${asUrls.filter(s => asUrls.filter(it => it === s).length > 1).join(", ")}\n`;
+				if (asUrls.length !== new Set(asUrls).size) MSG.AttachedSpellAndGroupItemsCheck += `Duplicate ${prop} in ${file} for ${source}, ${name}: ${asUrls.filter(s => asUrls.filter(it => it === s).length > 1).join(", ")}\n`;
+			}
+
+			function checkExists (prop, tag) {
+				root[prop].forEach(s => {
+					const url = getEncoded(s, tag);
+					if (!ALL_URLS.has(url)) MSG.AttachedSpellAndGroupItemsCheck += `Missing link: ${s} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+				})
 			}
 
 			if (root) {
 				if (root.attachedSpells) {
-					checkDuplicates();
+					checkDuplicates("attachedSpells", "spell");
+					checkExists("attachedSpells", "spell");
+				}
 
-					root.attachedSpells.forEach(s => {
-						const url = getEncoded(s);
-						if (!ALL_URLS.has(url)) MSG.AttachedSpellCheck += `Missing link: ${s} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
-					})
+				if (root.items) {
+					checkDuplicates("items", "item");
+					checkExists("items", "item");
 				}
 
 				if (root.baseItem) {
 					const url = `${TAG_TO_PAGE.item}#${UrlUtil.encodeForHash(root.baseItem.split("|"))}`.toLowerCase().trim()
 						.replace(/%5c/gi, "");
 					if (!ALL_URLS.has(url)) {
-						MSG.AttachedSpellCheck += `Missing link: ${root.baseItem} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+						MSG.AttachedSpellAndGroupItemsCheck += `Missing link: ${root.baseItem} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 					}
 				}
 			}
@@ -260,6 +271,7 @@ class AttachedSpellCheck {
 
 		const items = require(`../data/items.json`);
 		items.item.forEach(it => checkRoot("data/items.json", it, it.name, it.source));
+		items.itemGroup.forEach(it => checkRoot("data/items.json", it, it.name, it.source));
 
 		const magicVariants = require(`../data/magicvariants.json`);
 		magicVariants.variant.forEach(va => checkRoot("data/magicvariants.json", va, va.name, va.source) || (va.inherits && checkRoot("data/magicvariants.json", va.inherits, `${va.name} (inherits)`, va.source)));
@@ -343,6 +355,25 @@ class ScaleDiceCheck {
 	}
 }
 
+class StripTagTest {
+	static addHandlers () {
+		PRIMITIVE_HANDLERS.string.push(StripTagTest.checkString);
+	}
+
+	static checkString (file, str) {
+		try {
+			EntryRenderer.stripTags(str)
+		} catch (e) {
+			if (!StripTagTest._seenErrors.has(e.message)) {
+				StripTagTest._seenErrors.add(e.message);
+				if (MSG.StripTagTest) MSG.StripTagTest = `${MSG.StripTagTest.trim()}\n`;
+				MSG.StripTagTest += `Tag stripper error: ${e.message}\n`;
+			}
+		}
+	}
+}
+StripTagTest._seenErrors = new Set();
+
 class AreaCheck {
 	static _buildMap (file, data) {
 		AreaCheck.headerMap = bu.BookUtil._buildHeaderMap(data, file);
@@ -378,18 +409,52 @@ class AreaCheck {
 AreaCheck.errorSet = new Set();
 AreaCheck.fileMatcher = /^(adventure-).*\.json/;
 
+class LootCheck {
+	static run () {
+		function handleItem (it) {
+			const toCheck = typeof it === "string" ? {name: it, source: SRC_DMG} : it;
+			const url = `${TAG_TO_PAGE["item"]}#${UrlUtil.encodeForHash([toCheck.name, toCheck.source])}`.toLowerCase().trim();
+			if (!ALL_URLS.has(url)) MSG.LootCheck += `Missing link: ${JSON.stringify(it)} in file "${LootCheck.file}" (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+		}
+
+		const loot = require(`../${LootCheck.file}`);
+		loot.magicitems.forEach(it => {
+			if (it.table) {
+				it.table.forEach(row => {
+					if (row.choose) {
+						if (row.choose.fromGeneric) {
+							row.choose.fromGeneric.forEach(handleItem);
+						}
+
+						if (row.choose.fromGroup) {
+							row.choose.fromGroup.forEach(handleItem);
+						}
+
+						if (row.choose.fromItems) {
+							row.choose.fromItems.forEach(handleItem);
+						}
+					}
+				});
+			}
+		})
+	}
+}
+LootCheck.file = `data/loot.json`;
+
 LinkCheck.addHandlers();
 BraceCheck.addHandlers();
 FilterCheck.addHandlers();
 ScaleDiceCheck.addHandlers();
+StripTagTest.addHandlers();
 
 fileRecurse("./data", (file) => {
 	const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
 	dataRecurse(file, contents, PRIMITIVE_HANDLERS);
 });
 
-AttachedSpellCheck.run();
+AttachedSpellAndGroupItemsCheck.run();
 AreaCheck.run();
+LootCheck.run();
 
 let outMessage = "";
 Object.entries(MSG).forEach(([k, v]) => {

@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.7",
+	"version": "1.2.8",
 
 	"definitions" : {
 		"entry": {
@@ -386,6 +386,10 @@
 				{
 					"properties": {
 						"type": {"const": "list"},
+						"columns": {
+							"description": "Number of columns the content should be split into. Note that the full value is only displayed on wide screens, and screens below certain widths will see an appropriately reduced number of columns.",
+							"type": "integer"
+						},
 						"style": {
 							"type": "string"
 						},

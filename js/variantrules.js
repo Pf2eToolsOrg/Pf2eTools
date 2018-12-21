@@ -81,7 +81,7 @@ function addVariantRules (data) {
 			<li class="row" ${FLTR_ID}="${rlI}" onclick="ListUtil.toggleSelected(event, this)">
 				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(curRule)}" title="${curRule.name}">
 					<span class="name col-10">${curRule.name}</span>
-					<span class="source col-2 ${Parser.sourceJsonToColor(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>
 				</a>
 			</li>`;

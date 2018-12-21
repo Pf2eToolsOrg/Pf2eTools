@@ -577,7 +577,7 @@ function addSpells (data) {
 		if (spell.meta && spell.meta.technomagic) levelText += " (tec.)";
 
 		// add eldritch knight and arcane trickster
-		if (spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
+		if (spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
 			spell.classes.fromSubclass.push({
 				class: {name: STR_FIGHTER, source: SRC_PHB},
@@ -593,7 +593,7 @@ function addSpells (data) {
 		}
 
 		// add divine soul, favored soul v2, favored soul v3
-		if (spell.classes.fromClassList.filter(c => c.name === STR_CLERIC && c.source === SRC_PHB).length) {
+		if (spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === STR_CLERIC && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
 			spell.classes.fromSubclass.push({
 				class: {name: STR_SORCERER, source: SRC_PHB},
@@ -610,7 +610,7 @@ function addSpells (data) {
 		}
 
 		// add high elf
-		if (spell.level === 0 && spell.classes && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
+		if (spell.level === 0 && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
 			(spell.races || (spell.races = [])).push({
 				name: "Elf (High)",
 				source: SRC_PHB,
@@ -639,7 +639,7 @@ function addSpells (data) {
 		// used for filtering
 		spell._fSources = ListUtil.getCompleteSources(spell);
 		spell._fMeta = getMetaFilterObj(spell);
-		spell._fClasses = spell.classes.fromClassList.map(c => getClassFilterStr(c));
+		spell._fClasses = spell.classes.fromClassList ? spell.classes.fromClassList.map(c => getClassFilterStr(c)) : [];
 		spell._fSubclasses = spell.classes.fromSubclass
 			? spell.classes.fromSubclass.map(c => new FilterItem({
 				item: getClassFilterStr(c.subclass),
@@ -658,7 +658,7 @@ function addSpells (data) {
 			<li class="row" ${FLTR_ID}="${spI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${spI}" href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
 					<span class="name col-2-9">${spell.name}</span>
-					<span class="source col-1-7 ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
+					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
 					<span class="level col-1-5">${levelText}</span>
 					<span class="time col-1-7">${getTblTimeStr(spell.time[0])}</span>
 					<span class="school col-1-2 school_${spell.school}" title="${Parser.spSchoolAbvToFull(spell.school)}">${Parser.spSchoolAbvToShort(spell.school)}</span>

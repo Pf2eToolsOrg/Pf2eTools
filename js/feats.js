@@ -95,7 +95,7 @@ function addFeats (data) {
 			<li class="row" ${FLTR_ID}="${ftI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${ftI}" href="#${UrlUtil.autoEncodeHash(feat)}" title="${name}">
 					<span class="name col-3-8">${name}</span>
-					<span class="source col-1-7 ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>
+					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>
 					<span class="ability col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
 					<span class="prerequisite col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
 					

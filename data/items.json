@@ -269,7 +269,7 @@
 			]
 		},
 		{
-			"name": "Amulet of Proof Against Detection and Location",
+			"name": "Amulet of Proof against Detection and Location",
 			"wondrous": true,
 			"weight": "1",
 			"tier": "Major",
@@ -514,6 +514,7 @@
 			"page": 152,
 			"reqAttune": true,
 			"curse": true,
+			"baseItem": "plate armor|phb",
 			"entries": [
 				"While wearing this armor, you have resistance to bludgeoning damage.",
 				{
@@ -539,6 +540,7 @@
 			"page": 152,
 			"reqAttune": true,
 			"curse": true,
+			"baseItem": "plate armor|phb",
 			"entries": [
 				"While wearing this armor, you have resistance to piercing damage.",
 				{
@@ -564,6 +566,7 @@
 			"page": 152,
 			"reqAttune": true,
 			"curse": true,
+			"baseItem": "plate armor|phb",
 			"entries": [
 				"While wearing this armor, you have resistance to slashing damage.",
 				{
@@ -20195,7 +20198,7 @@
 			"type": "OTH",
 			"rarity": "Uncommon",
 			"source": "WDMM",
-			"reqAttune": "by a human",
+			"reqAttune": "by a humanoid",
 			"entries": [
 				"The Circlet of Human Perfection transforms its attuned wearer into an attractive human of average height and weight. The circlet chooses the physical characteristics of the form, such as age, gender, skin color, hair color, and voice. Except for size, the wearer's statistics and racial traits don't change, nor do items worn or carried by the wearer. Removing the circlet ends the effect."
 			]
@@ -20992,6 +20995,70 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Copper Zib",
+			"type": "$",
+			"rarity": "None",
+			"value": "1cp",
+			"source": "GGR",
+			"page": 9
+		},
+		{
+			"name": "Silver 25-Zib Coin",
+			"type": "$",
+			"rarity": "None",
+			"value": "25cp",
+			"source": "GGR",
+			"page": 9
+		},
+		{
+			"name": "Electrum 50-Zib Coin",
+			"type": "$",
+			"rarity": "None",
+			"value": "1ep",
+			"source": "GGR",
+			"page": 9
+		},
+		{
+			"name": "Gold Zino",
+			"type": "$",
+			"rarity": "None",
+			"value": "1gp",
+			"source": "GGR",
+			"page": 9
+		},
+		{
+			"name": "Gold 5-Zib Coin",
+			"type": "$",
+			"rarity": "None",
+			"value": "5gp",
+			"source": "GGR",
+			"page": 9
+		},
+		{
+			"name": "Copper Alms-Coin",
+			"type": "$",
+			"rarity": "None",
+			"value": "1cp",
+			"source": "GGR",
+			"page": 9
+		},
+		{
+			"name": "Platinum 10-Zino Coin",
+			"type": "$",
+			"rarity": "None",
+			"value": "1pp",
+			"source": "GGR",
+			"page": 9
+		},
+		{
+			"name": "Platinum 100-Zino Coin",
+			"type": "$",
+			"rarity": "None",
+			"value": "10pp",
+			"source": "GGR",
+			"page": 9
 		}
 	],
 	"itemGroup": [
@@ -21002,17 +21069,12 @@
 			"rarity": "None",
 			"source": "PHB",
 			"page": 151,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Crystal|phb}",
-						"{@item Orb|phb}",
-						"{@item Rod|phb}",
-						"{@item Staff|phb}",
-						"{@item Wand|phb}"
-					]
-				}
+			"items": [
+				"Crystal|phb",
+				"Orb|phb",
+				"Rod|phb",
+				"Staff|phb",
+				"Wand|phb"
 			]
 		},
 		{
@@ -21022,16 +21084,11 @@
 			"rarity": "None",
 			"source": "PHB",
 			"page": 151,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Sprig of mistletoe|phb}",
-						"{@item Totem|phb}",
-						"{@item Wooden staff|phb}",
-						"{@item Yew wand|phb}"
-					]
-				}
+			"items": [
+				"Sprig of mistletoe|phb",
+				"Totem|phb",
+				"Wooden staff|phb",
+				"Yew wand|phb"
 			]
 		},
 		{
@@ -21041,15 +21098,10 @@
 			"rarity": "None",
 			"source": "PHB",
 			"page": 151,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Amulet|phb}",
-						"{@item Emblem|phb}",
-						"{@item Reliquary|phb}"
-					]
-				}
+			"items": [
+				"Amulet|phb",
+				"Emblem|phb",
+				"Reliquary|phb"
 			]
 		},
 		{
@@ -21060,22 +21112,17 @@
 			"rarity": "Uncommon",
 			"source": "DMG",
 			"page": 188,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Potion of Acid Resistance}",
-						"{@item Potion of Cold Resistance}",
-						"{@item Potion of Fire Resistance}",
-						"{@item Potion of Force Resistance}",
-						"{@item Potion of Lightning Resistance}",
-						"{@item Potion of Necrotic Resistance}",
-						"{@item Potion of Poison Resistance}",
-						"{@item Potion of Psychic Resistance}",
-						"{@item Potion of Radiant Resistance}",
-						"{@item Potion of Thunder Resistance}"
-					]
-				}
+			"items": [
+				"Potion of Acid Resistance",
+				"Potion of Cold Resistance",
+				"Potion of Fire Resistance",
+				"Potion of Force Resistance",
+				"Potion of Lightning Resistance",
+				"Potion of Necrotic Resistance",
+				"Potion of Poison Resistance",
+				"Potion of Psychic Resistance",
+				"Potion of Radiant Resistance",
+				"Potion of Thunder Resistance"
 			]
 		},
 		{
@@ -21084,22 +21131,17 @@
 			"rarity": "Varies",
 			"source": "DMG",
 			"page": 200,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Spell Scroll (Cantrip)}",
-						"{@item Spell Scroll (1st Level)}",
-						"{@item Spell Scroll (2nd Level)}",
-						"{@item Spell Scroll (3rd Level)}",
-						"{@item Spell Scroll (4th Level)}",
-						"{@item Spell Scroll (5th Level)}",
-						"{@item Spell Scroll (6th Level)}",
-						"{@item Spell Scroll (7th Level)}",
-						"{@item Spell Scroll (8th Level)}",
-						"{@item Spell Scroll (9th Level)}"
-					]
-				}
+			"items": [
+				"Spell Scroll (Cantrip)",
+				"Spell Scroll (1st Level)",
+				"Spell Scroll (2nd Level)",
+				"Spell Scroll (3rd Level)",
+				"Spell Scroll (4th Level)",
+				"Spell Scroll (5th Level)",
+				"Spell Scroll (6th Level)",
+				"Spell Scroll (7th Level)",
+				"Spell Scroll (8th Level)",
+				"Spell Scroll (9th Level)"
 			]
 		},
 		{
@@ -21109,20 +21151,15 @@
 			"rarity": "Rare",
 			"source": "DMG",
 			"page": 199,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Scroll of Protection from Aberrations}",
-						"{@item Scroll of Protection from Beasts}",
-						"{@item Scroll of Protection from Celestials}",
-						"{@item Scroll of Protection from Elementals}",
-						"{@item Scroll of Protection from Fey}",
-						"{@item Scroll of Protection from Fiends}",
-						"{@item Scroll of Protection from Plants}",
-						"{@item Scroll of Protection from Undead}"
-					]
-				}
+			"items": [
+				"Scroll of Protection from Aberrations",
+				"Scroll of Protection from Beasts",
+				"Scroll of Protection from Celestials",
+				"Scroll of Protection from Elementals",
+				"Scroll of Protection from Fey",
+				"Scroll of Protection from Fiends",
+				"Scroll of Protection from Plants",
+				"Scroll of Protection from Undead"
 			]
 		},
 		{
@@ -21132,19 +21169,14 @@
 			"rarity": "Uncommon",
 			"source": "DMG",
 			"page": 167,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Elemental Gem, Blue Sapphire}",
-						"{@item Elemental Gem, Emerald}",
-						"{@item Elemental Gem, Red Corundum}",
-						"{@item Elemental Gem, Yellow Diamond}"
-					]
-				}
-			],
 			"attachedSpells": [
 				"conjure elemental"
+			],
+			"items": [
+				"Elemental Gem, Blue Sapphire",
+				"Elemental Gem, Emerald",
+				"Elemental Gem, Red Corundum",
+				"Elemental Gem, Yellow Diamond"
 			]
 		},
 		{
@@ -21159,22 +21191,17 @@
 			"source": "DMG",
 			"page": 165,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Black Dragon Scale Mail}",
-						"{@item Blue Dragon Scale Mail}",
-						"{@item Brass Dragon Scale Mail}",
-						"{@item Bronze Dragon Scale Mail}",
-						"{@item Copper Dragon Scale Mail}",
-						"{@item Gold Dragon Scale Mail}",
-						"{@item Green Dragon Scale Mail}",
-						"{@item Red Dragon Scale Mail}",
-						"{@item Silver Dragon Scale Mail}",
-						"{@item White Dragon Scale Mail}"
-					]
-				}
+			"items": [
+				"Black Dragon Scale Mail",
+				"Blue Dragon Scale Mail",
+				"Brass Dragon Scale Mail",
+				"Bronze Dragon Scale Mail",
+				"Copper Dragon Scale Mail",
+				"Gold Dragon Scale Mail",
+				"Green Dragon Scale Mail",
+				"Red Dragon Scale Mail",
+				"Silver Dragon Scale Mail",
+				"White Dragon Scale Mail"
 			]
 		},
 		{
@@ -21185,22 +21212,17 @@
 			"source": "DMG",
 			"page": 162,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Armor of Acid Resistance}",
-						"{@item Armor of Cold Resistance}",
-						"{@item Armor of Fire Resistance}",
-						"{@item Armor of Force Resistance}",
-						"{@item Armor of Lightning Resistance}",
-						"{@item Armor of Necrotic Resistance}",
-						"{@item Armor of Poison Resistance}",
-						"{@item Armor of Psychic Resistance}",
-						"{@item Armor of Radiant Resistance}",
-						"{@item Armor of Thunder Resistance}"
-					]
-				}
+			"items": [
+				"Armor of Acid Resistance",
+				"Armor of Cold Resistance",
+				"Armor of Fire Resistance",
+				"Armor of Force Resistance",
+				"Armor of Lightning Resistance",
+				"Armor of Necrotic Resistance",
+				"Armor of Poison Resistance",
+				"Armor of Psychic Resistance",
+				"Armor of Radiant Resistance",
+				"Armor of Thunder Resistance"
 			]
 		},
 		{
@@ -21211,22 +21233,17 @@
 			"source": "DMG",
 			"page": 192,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Ring of Acid Resistance}",
-						"{@item Ring of Cold Resistance}",
-						"{@item Ring of Fire Resistance}",
-						"{@item Ring of Force Resistance}",
-						"{@item Ring of Lightning Resistance}",
-						"{@item Ring of Necrotic Resistance}",
-						"{@item Ring of Poison Resistance}",
-						"{@item Ring of Psychic Resistance}",
-						"{@item Ring of Radiant Resistance}",
-						"{@item Ring of Thunder Resistance}"
-					]
-				}
+			"items": [
+				"Ring of Acid Resistance",
+				"Ring of Cold Resistance",
+				"Ring of Fire Resistance",
+				"Ring of Force Resistance",
+				"Ring of Lightning Resistance",
+				"Ring of Necrotic Resistance",
+				"Ring of Poison Resistance",
+				"Ring of Psychic Resistance",
+				"Ring of Radiant Resistance",
+				"Ring of Thunder Resistance"
 			]
 		},
 		{
@@ -21246,21 +21263,16 @@
 			"source": "DMG",
 			"page": 206,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Sword of Answering (Answerer)}",
-						"{@item Sword of Answering (Back Talker)}",
-						"{@item Sword of Answering (Concluder)}",
-						"{@item Sword of Answering (Last Quip)}",
-						"{@item Sword of Answering (Rebutter)}",
-						"{@item Sword of Answering (Replier)}",
-						"{@item Sword of Answering (Retorter)}",
-						"{@item Sword of Answering (Scather)}",
-						"{@item Sword of Answering (Squelcher)}"
-					]
-				}
+			"items": [
+				"Sword of Answering (Answerer)",
+				"Sword of Answering (Back Talker)",
+				"Sword of Answering (Concluder)",
+				"Sword of Answering (Last Quip)",
+				"Sword of Answering (Rebutter)",
+				"Sword of Answering (Replier)",
+				"Sword of Answering (Retorter)",
+				"Sword of Answering (Scather)",
+				"Sword of Answering (Squelcher)"
 			]
 		},
 		{
@@ -21270,16 +21282,11 @@
 			"rarity": "Very Rare",
 			"source": "DMG",
 			"page": 157,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Carpet of Flying, 3 ft. × 5 ft.}",
-						"{@item Carpet of Flying, 4 ft. × 6 ft.}",
-						"{@item Carpet of Flying, 5 ft. × 7 ft.}",
-						"{@item Carpet of Flying, 6 ft. × 9 ft.}"
-					]
-				}
+			"items": [
+				"Carpet of Flying, 3 ft. × 5 ft.",
+				"Carpet of Flying, 4 ft. × 6 ft.",
+				"Carpet of Flying, 5 ft. × 7 ft.",
+				"Carpet of Flying, 6 ft. × 9 ft."
 			]
 		},
 		{
@@ -21290,15 +21297,10 @@
 			"rarity": "Uncommon",
 			"source": "DMG",
 			"page": 154,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Bag of Tricks, Gray}",
-						"{@item Bag of Tricks, Rust}",
-						"{@item Bag of Tricks, Tan}"
-					]
-				}
+			"items": [
+				"Bag of Tricks, Gray",
+				"Bag of Tricks, Rust",
+				"Bag of Tricks, Tan"
 			]
 		},
 		{
@@ -21308,18 +21310,13 @@
 			"source": "DMG",
 			"page": 155,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Belt of Cloud Giant Strength}",
-						"{@item Belt of Fire Giant Strength}",
-						"{@item Belt of Frost Giant Strength}",
-						"{@item Belt of Hill Giant Strength}",
-						"{@item Belt of Stone Giant Strength}",
-						"{@item Belt of Storm Giant Strength}"
-					]
-				}
+			"items": [
+				"Belt of Cloud Giant Strength",
+				"Belt of Fire Giant Strength",
+				"Belt of Frost Giant Strength",
+				"Belt of Hill Giant Strength",
+				"Belt of Stone Giant Strength",
+				"Belt of Storm Giant Strength"
 			]
 		},
 		{
@@ -21329,18 +21326,13 @@
 			"rarity": "Varies",
 			"source": "DMG",
 			"page": 187,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Potion of Cloud Giant Strength}",
-						"{@item Potion of Fire Giant Strength}",
-						"{@item Potion of Frost Giant Strength}",
-						"{@item Potion of Hill Giant Strength}",
-						"{@item Potion of Stone Giant Strength}",
-						"{@item Potion of Storm Giant Strength}"
-					]
-				}
+			"items": [
+				"Potion of Cloud Giant Strength",
+				"Potion of Fire Giant Strength",
+				"Potion of Frost Giant Strength",
+				"Potion of Hill Giant Strength",
+				"Potion of Stone Giant Strength",
+				"Potion of Storm Giant Strength"
 			]
 		},
 		{
@@ -21351,16 +21343,11 @@
 			"rarity": "Very Rare",
 			"source": "DMG",
 			"page": 180,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Manual of Clay Golems}",
-						"{@item Manual of Flesh Golems}",
-						"{@item Manual of Iron Golems}",
-						"{@item Manual of Stone Golems}"
-					]
-				}
+			"items": [
+				"Manual of Clay Golems",
+				"Manual of Flesh Golems",
+				"Manual of Iron Golems",
+				"Manual of Stone Golems"
 			]
 		},
 		{
@@ -21369,21 +21356,16 @@
 			"rarity": "Varies",
 			"source": "DMG",
 			"page": 169,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Figurine of Wondrous Power, Bronze Griffon}",
-						"{@item Figurine of Wondrous Power, Ebony Fly}",
-						"{@item Figurine of Wondrous Power, Golden Lions}",
-						"{@item Figurine of Wondrous Power, Ivory Goats}",
-						"{@item Figurine of Wondrous Power, Marble Elephant}",
-						"{@item Figurine of Wondrous Power, Obsidian Steed}",
-						"{@item Figurine of Wondrous Power, Onyx Dog}",
-						"{@item Figurine of Wondrous Power, Serpentine Owl}",
-						"{@item Figurine of Wondrous Power, Silver Raven}"
-					]
-				}
+			"items": [
+				"Figurine of Wondrous Power, Bronze Griffon",
+				"Figurine of Wondrous Power, Ebony Fly",
+				"Figurine of Wondrous Power, Golden Lions",
+				"Figurine of Wondrous Power, Ivory Goats",
+				"Figurine of Wondrous Power, Marble Elephant",
+				"Figurine of Wondrous Power, Obsidian Steed",
+				"Figurine of Wondrous Power, Onyx Dog",
+				"Figurine of Wondrous Power, Serpentine Owl",
+				"Figurine of Wondrous Power, Silver Raven"
 			]
 		},
 		{
@@ -21392,16 +21374,11 @@
 			"rarity": "Varies",
 			"source": "DMG",
 			"page": 175,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Horn of Valhalla, Brass}",
-						"{@item Horn of Valhalla, Bronze}",
-						"{@item Horn of Valhalla, Iron}",
-						"{@item Horn of Valhalla, Silver}"
-					]
-				}
+			"items": [
+				"Horn of Valhalla, Brass",
+				"Horn of Valhalla, Bronze",
+				"Horn of Valhalla, Iron",
+				"Horn of Valhalla, Silver"
 			]
 		},
 		{
@@ -21410,18 +21387,13 @@
 			"rarity": "Rare",
 			"source": "DMG",
 			"page": 188,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Quaal's Feather Token, Anchor}",
-						"{@item Quaal's Feather Token, Bird}",
-						"{@item Quaal's Feather Token, Fan}",
-						"{@item Quaal's Feather Token, Swan Boat}",
-						"{@item Quaal's Feather Token, Tree}",
-						"{@item Quaal's Feather Token, Whip}"
-					]
-				}
+			"items": [
+				"Quaal's Feather Token, Anchor",
+				"Quaal's Feather Token, Bird",
+				"Quaal's Feather Token, Fan",
+				"Quaal's Feather Token, Swan Boat",
+				"Quaal's Feather Token, Tree",
+				"Quaal's Feather Token, Whip"
 			]
 		},
 		{
@@ -21431,26 +21403,21 @@
 			"source": "DMG",
 			"page": 176,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Ioun Stone, Absorption}",
-						"{@item Ioun Stone, Agility}",
-						"{@item Ioun Stone, Awareness}",
-						"{@item Ioun Stone, Fortitude}",
-						"{@item Ioun Stone, Greater Absorption}",
-						"{@item Ioun Stone, Insight}",
-						"{@item Ioun Stone, Intellect}",
-						"{@item Ioun Stone, Leadership}",
-						"{@item Ioun Stone, Mastery}",
-						"{@item Ioun Stone, Protection}",
-						"{@item Ioun Stone, Regeneration}",
-						"{@item Ioun Stone, Reserve}",
-						"{@item Ioun Stone, Strength}",
-						"{@item Ioun Stone, Sustenance}"
-					]
-				}
+			"items": [
+				"Ioun Stone, Absorption",
+				"Ioun Stone, Agility",
+				"Ioun Stone, Awareness",
+				"Ioun Stone, Fortitude",
+				"Ioun Stone, Greater Absorption",
+				"Ioun Stone, Insight",
+				"Ioun Stone, Intellect",
+				"Ioun Stone, Leadership",
+				"Ioun Stone, Mastery",
+				"Ioun Stone, Protection",
+				"Ioun Stone, Regeneration",
+				"Ioun Stone, Reserve",
+				"Ioun Stone, Strength",
+				"Ioun Stone, Sustenance"
 			]
 		},
 		{
@@ -21460,18 +21427,13 @@
 			"source": "LLK",
 			"page": 55,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Ioun Stone, Supreme Intellect|LLK}",
-						"{@item Ioun Stone, Historical Knowledge|LLK}",
-						"{@item Ioun Stone, Natural Knowledge|LLK}",
-						"{@item Ioun Stone, Religious Knowledge|LLK}",
-						"{@item Ioun Stone, Language Knowledge|LLK}",
-						"{@item Ioun Stone, Self-Preservation|LLK}"
-					]
-				}
+			"items": [
+				"Ioun Stone, Supreme Intellect|LLK",
+				"Ioun Stone, Historical Knowledge|LLK",
+				"Ioun Stone, Natural Knowledge|LLK",
+				"Ioun Stone, Religious Knowledge|LLK",
+				"Ioun Stone, Language Knowledge|LLK",
+				"Ioun Stone, Self-Preservation|LLK"
 			]
 		},
 		{
@@ -21482,19 +21444,14 @@
 			"source": "DMG",
 			"page": 176,
 			"reqAttune": "by a Bard",
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Instrument of the Bards, Anstruth Harp}",
-						"{@item Instrument of the Bards, Canaith Mandolin}",
-						"{@item Instrument of the Bards, Cli Lyre}",
-						"{@item Instrument of the Bards, Doss Lute}",
-						"{@item Instrument of the Bards, Fochlucan Bandore}",
-						"{@item Instrument of the Bards, Mac-Fuirmidh Cittern}",
-						"{@item Instrument of the Bards, Ollamh Harp}"
-					]
-				}
+			"items": [
+				"Instrument of the Bards, Anstruth Harp",
+				"Instrument of the Bards, Canaith Mandolin",
+				"Instrument of the Bards, Cli Lyre",
+				"Instrument of the Bards, Doss Lute",
+				"Instrument of the Bards, Fochlucan Bandore",
+				"Instrument of the Bards, Mac-Fuirmidh Cittern",
+				"Instrument of the Bards, Ollamh Harp"
 			]
 		},
 		{
@@ -21504,22 +21461,19 @@
 			"reqAttune": "by a member of the relevant guild",
 			"rarity": "Varies",
 			"entries": [
-				"Associated with a particular guild, a guild keyrune is a ceremonial, stylized key, about 1 foot long, made from carved stone. Not a literal key, the item is a badge of authority that gives its bearer access to privileged places in its guild's headquarters and outposts. At the DM's discretion, a character might be given a keyrune upon attaining a renown score of 25 in their guild.",
-				{
-					"type": "list",
-					"items": [
-						"{@item Azorius Keyrune|GGR}",
-						"{@item Boros Keyrune|GGR}",
-						"{@item Dimir Keyrune|GGR}",
-						"{@item Golgari Keyrune|GGR}",
-						"{@item Gruul Keyrune|GGR}",
-						"{@item Izzet Keyrune|GGR}",
-						"{@item Orzhov Keyrune|GGR}",
-						"{@item Rakdos Keyrune|GGR}",
-						"{@item Selesnya Keyrune|GGR}",
-						"{@item Simic Keyrune|GGR}"
-					]
-				}
+				"Associated with a particular guild, a guild keyrune is a ceremonial, stylized key, about 1 foot long, made from carved stone. Not a literal key, the item is a badge of authority that gives its bearer access to privileged places in its guild's headquarters and outposts. At the DM's discretion, a character might be given a keyrune upon attaining a renown score of 25 in their guild."
+			],
+			"items": [
+				"Azorius Keyrune|GGR",
+				"Boros Keyrune|GGR",
+				"Dimir Keyrune|GGR",
+				"Golgari Keyrune|GGR",
+				"Gruul Keyrune|GGR",
+				"Izzet Keyrune|GGR",
+				"Orzhov Keyrune|GGR",
+				"Rakdos Keyrune|GGR",
+				"Selesnya Keyrune|GGR",
+				"Simic Keyrune|GGR"
 			]
 		},
 		{
@@ -21529,24 +21483,21 @@
 			"reqAttune": true,
 			"rarity": "Uncommon",
 			"entries": [
-				"A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of the guild's recognition and favor.",
-				{
-					"type": "list",
-					"items": [
-						"{@item Azorius Guild Signet|GGR}",
-						"{@item Boros Guild Signet|GGR}",
-						"{@item Dimir Guild Signet|GGR}",
-						"{@item Golgari Guild Signet|GGR}",
-						"{@item Gruul Guild Signet|GGR}",
-						"{@item Izzet Guild Signet|GGR}",
-						"{@item Orzhov Guild Signet|GGR}",
-						"{@item Rakdos Guild Signet|GGR}",
-						"{@item Selesnya Guild Signet|GGR}",
-						"{@item Simic Guild Signet|GGR}"
-					]
-				}
+				"A guild signet is sometimes awarded to a guild member whose renown score in that guild is 5 or higher, as a reward for performing special services for the guild. Aside from its magical properties, the ring is also an indicator of the guild's recognition and favor."
 			],
-			"charges": 3
+			"charges": 3,
+			"items": [
+				"Azorius Guild Signet|GGR",
+				"Boros Guild Signet|GGR",
+				"Dimir Guild Signet|GGR",
+				"Golgari Guild Signet|GGR",
+				"Gruul Guild Signet|GGR",
+				"Izzet Guild Signet|GGR",
+				"Orzhov Guild Signet|GGR",
+				"Rakdos Guild Signet|GGR",
+				"Selesnya Guild Signet|GGR",
+				"Simic Guild Signet|GGR"
+			]
 		},
 		{
 			"name": "Ring of Elemental Command",
@@ -21556,18 +21507,34 @@
 			"source": "DMG",
 			"page": 190,
 			"reqAttune": true,
-			"entries": [
-				{
-					"type": "list",
-					"items": [
-						"{@item Ring of Air Elemental Command}",
-						"{@item Ring of Earth Elemental Command}",
-						"{@item Ring of Fire Elemental Command}",
-						"{@item Ring of Water Elemental Command}"
-					]
-				}
-			],
-			"charges": 5
+			"charges": 5,
+			"items": [
+				"Ring of Air Elemental Command",
+				"Ring of Earth Elemental Command",
+				"Ring of Fire Elemental Command",
+				"Ring of Water Elemental Command"
+			]
+		},
+		{
+			"name": "Armor of Vulnerability",
+			"type": "HA",
+			"armor": true,
+			"weight": "65",
+			"ac": 18,
+			"strength": "15",
+			"stealth": true,
+			"tier": "Major",
+			"rarity": "Rare",
+			"source": "DMG",
+			"page": 152,
+			"reqAttune": true,
+			"curse": true,
+			"baseItem": "plate armor|phb",
+			"items": [
+				"Armor of Vulnerability (Bludgeoning)",
+				"Armor of Vulnerability (Piercing)",
+				"Armor of Vulnerability (Slashing)"
+			]
 		}
 	]
 }

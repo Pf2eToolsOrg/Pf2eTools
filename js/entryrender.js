@@ -41,7 +41,7 @@ function EntryRenderer () {
 
 	/**
 	 * Set the base url for rendered links.
-	 * Usage: `renderer.setBaseUrl("https://www.cool.site/")` (note the "http" prefix and "/" suffix)
+	 * Usage: `renderer.setBaseUrl("https://www.example.com/")` (note the "http" prefix and "/" suffix)
 	 * @param url to use
 	 */
 	this.setBaseUrl = function (url) {
@@ -186,7 +186,8 @@ function EntryRenderer () {
 				case "list":
 					if (entry.items) {
 						if (entry.name) textStack[0] += `<p class="list-name">${entry.name}</p>`;
-						textStack[0] += `<ul ${entry.style ? `class="${entry.style}"` : ""}>`;
+						const cssClasses = getListCssClasses();
+						textStack[0] += `<ul ${cssClasses ? `class="${cssClasses}"` : ""}>`;
 						for (let i = 0; i < entry.items.length; i++) {
 							const style = getLiStyleClass(entry.items[i]);
 							this._recursiveEntryRender(entry.items[i], textStack, depth + 1, {prefix: `<li ${style ? `class="${style}"` : ""}>`, suffix: "</li>", forcePrefixSuffix: true});
@@ -480,6 +481,15 @@ function EntryRenderer () {
 			renderSuffix();
 		}
 
+		function getListCssClasses () {
+			if (entry.style || entry.columns) {
+				const out = [];
+				if (entry.style) out.push(entry.style);
+				if (entry.columns) out.push(`columns-${entry.columns}`);
+				return out.join(" ");
+			} else return null;
+		}
+
 		function renderTableGroup (self) {
 			entry.tables.forEach(t => self._recursiveEntryRender(t, textStack, depth, {}));
 		}
@@ -631,7 +641,7 @@ function EntryRenderer () {
 
 		function handleEntriesOptionsOptFeaturePatron (self, incDepth) {
 			const inlineTitle = depth >= 2;
-			const pagePart = !inlineTitle && entry.page ? ` <span class="entry-title-page">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${entry.source}</span> ` : ""}p${entry.page}</span>` : "";
+			const pagePart = !inlineTitle && entry.page ? ` <span class="entry-title-page">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>` : "";
 			const nextDepth = incDepth ? depth + 1 : depth;
 			const styleString = getStyleString();
 			const dataString = getDataString();
@@ -704,10 +714,11 @@ function EntryRenderer () {
 
 		function renderString (self) {
 			const tagSplit = EntryRenderer.splitByTags(entry);
-			for (let i = 0; i < tagSplit.length; i++) {
+			const len = tagSplit.length;
+			for (let i = 0; i < len; i++) {
 				const s = tagSplit[i];
-				if (s === undefined || s === null || s === "") continue;
-				if (s.charAt(0) === "@") {
+				if (!s) continue;
+				if (s[0] === "@") {
 					const [tag, text] = EntryRenderer.splitFirstSpace(s);
 
 					if (tag === "@bold" || tag === "@b" || tag === "@italic" || tag === "@i" || tag === "@strike" || tag === "@s" || tag === "@note" || tag === "@atk" || tag === "@h") {
@@ -902,6 +913,10 @@ function EntryRenderer () {
 							text: displayText
 						};
 						self._recursiveEntryRender(fauxEntry, textStack, depth);
+					} else if (tag === "@footnote") {
+						const [displayText, footnoteText, optTitle] = text.split("|");
+						const onMouseOver = EntryRenderer.hover.createOnMouseHover([footnoteText, optTitle ? `{@note ${optTitle}}` : ""].filter(Boolean));
+						textStack[0] += `<span class="help" ${onMouseOver}>${displayText}</span>`;
 					} else if (tag === "@homebrew") {
 						const [newText, oldText] = text.split("|");
 						const tooltip = [];
@@ -1221,6 +1236,41 @@ function EntryRenderer () {
 	};
 }
 
+EntryRenderer.applyProperties = function (entry, object) {
+	const propSplit = EntryRenderer.splitByPropertyInjectors(entry);
+	const len = propSplit.length;
+	if (len === 1) return entry;
+
+	let textStack = "";
+
+	for (let i = 0; i < len; i++) {
+		const s = propSplit[i];
+		if (!s) continue;
+		if (s[0] === "=") {
+			const [path, modifiers] = s.substring(1).split("/");
+			let fromProp = object[path];
+
+			if (modifiers) {
+				for (const modifier of modifiers) {
+					switch (modifier) {
+						case "a": // render "a"/"an" depending on prop value
+							fromProp = EntryRenderer.applyProperties._leadingAn.has(fromProp[0].toLowerCase()) ? "an" : "a";
+							break;
+
+						case "l": fromProp = fromProp.toLowerCase(); break; // convert text to lower case
+						case "t": fromProp = fromProp.toTitleCase(); break; // title-case text
+						case "u": fromProp = fromProp.toUpperCase(); break; // uppercase text
+					}
+				}
+			}
+			textStack += fromProp;
+		} else textStack += s;
+	}
+
+	return textStack;
+};
+EntryRenderer.applyProperties._leadingAn = new Set(["a", "e", "i", "o", "u"]);
+
 EntryRenderer.attackTagToFull = function (tagStr) {
 	function renderTag (tags) {
 		return `${tags.includes("m") ? "Melee " : tags.includes("r") ? "Ranged " : tags.includes("a") ? "Area " : ""}${tags.includes("w") ? "Weapon " : tags.includes("s") ? "Spell " : ""}`;
@@ -1264,49 +1314,55 @@ EntryRenderer.splitFirstSpace = function (string) {
 	return firstIndex === -1 ? [string, ""] : [string.substr(0, firstIndex), string.substr(firstIndex + 1)];
 };
 
-EntryRenderer.splitByTags = function (string) {
-	let tagDepth = 0;
-	let inTag = false;
-	let char, char2;
-	const out = [];
-	let curStr = "";
-	for (let i = 0; i < string.length; ++i) {
-		char = string.charAt(i);
-		char2 = i < string.length - 1 ? string.charAt(i + 1) : null;
+EntryRenderer._splitByTagsBase = function (leadingCharacter) {
+	return function (string) {
+		let tagDepth = 0;
+		let inTag = false;
+		let char, char2;
+		const out = [];
+		let curStr = "";
+		const len = string.length;
+		for (let i = 0; i < len; ++i) {
+			char = string[i];
+			char2 = string[i + 1];
 
-		switch (char) {
-			case "{":
-				if (char2 === "@") {
-					inTag = true;
-					if (tagDepth++ > 0) {
-						curStr += char;
+			switch (char) {
+				case "{":
+					if (char2 === leadingCharacter) {
+						inTag = true;
+						if (tagDepth++ > 0) {
+							curStr += char;
+						} else {
+							out.push(curStr);
+							curStr = "";
+						}
 					} else {
+						curStr += char;
+					}
+					break;
+				case "}":
+					if (!inTag) {
+						curStr += char;
+					} else if (--tagDepth === 0) {
+						inTag = false;
 						out.push(curStr);
 						curStr = "";
+					} else {
+						curStr += char;
 					}
-				} else {
+					break;
+				default:
 					curStr += char;
-				}
-				break;
-			case "}":
-				if (!inTag) {
-					curStr += char;
-				} else if (--tagDepth === 0) {
-					inTag = false;
-					out.push(curStr);
-					curStr = "";
-				} else {
-					curStr += char;
-				}
-				break;
-			default:
-				curStr += char;
+			}
 		}
-	}
-	if (curStr.length > 0) out.push(curStr);
+		if (curStr.length > 0) out.push(curStr);
 
-	return out;
+		return out;
+	}
 };
+
+EntryRenderer.splitByTags = EntryRenderer._splitByTagsBase("@");
+EntryRenderer.splitByPropertyInjectors = EntryRenderer._splitByTagsBase("=");
 
 EntryRenderer.getEntryDice = function (entry, name) {
 	function getDiceAsStr () {
@@ -1444,6 +1500,60 @@ EntryRenderer.utils = {
 
 		toAdd.reverse().forEach($t => $wrpTab.prepend($t));
 		(initialTab || toAdd[toAdd.length - 1]).click();
+	},
+
+	/**
+	 * @param isImageTab True if this is the "Images" tab, false otherwise
+	 * @param $content The statblock wrapper
+	 * @param record Item to build tab for (e.g. a monster; an item)
+	 * @param fnFluffBuilder Function which builds the final fluff object from available data (handling any merges/etc)
+	 * @param fluffUrl Fluff data URL
+	 * @param fnCheckSourceInIndex Function which returns true if the record's source has a fluff data file
+	 */
+	buildFluffTab (isImageTab, $content, record, fnFluffBuilder, fluffUrl, fnCheckSourceInIndex) {
+		const renderer = EntryRenderer.getDefaultRenderer();
+
+		$content.append(EntryRenderer.utils.getBorderTr());
+		$content.append(EntryRenderer.utils.getNameTr(record));
+		const $tr = $(`<tr class="text"/>`);
+		$content.append($tr);
+		const $td = $(`<td colspan="6" class="text"/>`).appendTo($tr);
+		$content.append(EntryRenderer.utils.getBorderTr());
+		renderer.setFirstSection(true);
+
+		function renderFluff (data) {
+			const fluff = fnFluffBuilder(data);
+
+			if (!fluff) {
+				$td.empty().append(HTML_NO_INFO);
+				return;
+			}
+
+			if (isImageTab) {
+				if (fluff.images) {
+					fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
+				} else {
+					$td.append(HTML_NO_IMAGES);
+				}
+			} else {
+				if (fluff.entries) {
+					const depth = fluff.type === "section" ? -1 : 2;
+					if (fluff.type !== "section") renderer.setFirstSection(false);
+					$td.append(renderer.renderEntry({type: fluff.type, entries: fluff.entries}, depth));
+				} else {
+					$td.append(HTML_NO_INFO);
+				}
+			}
+		}
+
+		if (fnCheckSourceInIndex(record.source) || record.fluff) {
+			if (record.fluff) renderFluff();
+			else DataUtil.loadJSON(fluffUrl).then(renderFluff);
+		} else {
+			$td.empty();
+			if (isImageTab) $td.append(HTML_NO_IMAGES);
+			else $td.append(HTML_NO_INFO);
+		}
 	}
 };
 
@@ -2852,7 +2962,11 @@ EntryRenderer.item = {
 	 * @param addGroups whether item groups should be included
 	 */
 	async buildList (callback, urls, addGroups) {
-		if (EntryRenderer.item._builtList) return callback(EntryRenderer.item._builtList);
+		addGroups = !!addGroups;
+		if (EntryRenderer.item._builtList) {
+			if (callback) return callback(addGroups ? EntryRenderer.item._builtList : EntryRenderer.item._builtList.filter(it => !it._isItemGroup));
+			return addGroups ? EntryRenderer.item._builtList : EntryRenderer.item._builtList.filter(it => !it._isItemGroup);
+		}
 		if (!urls) urls = {};
 
 		// allows URLs to be overridden (used by roll20 script)
@@ -2867,15 +2981,14 @@ EntryRenderer.item = {
 		const allItems = itemList.concat(basicItems).concat(genericAndSpecificVariants);
 		EntryRenderer.item._enhanceItems(allItems);
 		EntryRenderer.item._builtList = allItems;
-		callback(allItems);
+		if (callback) return callback(allItems);
+		return allItems;
 
 		async function pLoadItems () {
 			const itemData = await DataUtil.loadJSON(itemUrl);
 			const items = itemData.item;
-			if (addGroups) {
-				itemData.itemGroup.forEach(it => it._isItemGroup = true);
-				return items.concat(itemData.itemGroup || []);
-			} else return items;
+			itemData.itemGroup.forEach(it => it._isItemGroup = true);
+			return [...items, ...itemData.itemGroup];
 		}
 
 		async function pAddBasicItemsAndTypes () {
@@ -2919,13 +3032,11 @@ EntryRenderer.item = {
 					case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
 					case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
 					case "entries": {
-						inherits.entries.forEach(tmpText => {
-							if (typeof tmpText === "string") {
-								if (specificVariant.dmgType) tmpText = tmpText.replace(/{@dmgType}/g, Parser.dmgTypeToFull(specificVariant.dmgType));
-								if (inherits.genericBonus) tmpText = tmpText.replace(/{@genericBonus}/g, inherits.genericBonus);
-								if (tmpText.includes("{@lowerName}")) tmpText = tmpText.replace(/{@lowerName}/g, baseItem.name);
+						inherits.entries.forEach((ent, i) => {
+							if (typeof ent === "string") {
+								ent = EntryRenderer.applyProperties(ent, EntryRenderer.item._getInjectableProps(baseItem, inherits));
 							}
-							specificVariant.entries.unshift(tmpText);
+							specificVariant.entries.splice(i, 0, ent);
 						});
 						break;
 					}
@@ -2934,6 +3045,7 @@ EntryRenderer.item = {
 			});
 
 			// track the specific variant on the parent generic, to later render as part of the stats
+			// TAG ITEM_VARIANTS
 			genericVariant.variants = genericVariant.variants || [];
 			genericVariant.variants.push({base: baseItem, specificVariant});
 
@@ -2974,13 +3086,21 @@ EntryRenderer.item = {
 		return EntryRenderer.item._enhanceItems(genericAndSpecificVariants);
 	},
 
+	_getInjectableProps (baseItem, inherits) {
+		return {
+			baseName: baseItem.name,
+			dmgType: baseItem.dmgType ? Parser.dmgTypeToFull(baseItem.dmgType) : null,
+			genericBonus: inherits.genericBonus
+		}
+	},
+
 	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
 		genericVariant.tier = genericVariant.inherits.tier;
 		genericVariant.rarity = genericVariant.inherits.rarity;
 		genericVariant.source = genericVariant.inherits.source;
 		genericVariant.page = genericVariant.inherits.page;
 		if (!genericVariant.entries && genericVariant.inherits.entries) {
-			genericVariant.entries = JSON.parse(JSON.stringify(genericVariant.inherits.entries));
+			genericVariant.entries = MiscUtil.copy(genericVariant.inherits.entries.map(ent => typeof ent === "string" ? EntryRenderer.applyProperties(ent, genericVariant.inherits) : ent));
 		}
 		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
 		if (genericVariant.inherits.resist) genericVariant.resist = genericVariant.inherits.resist;
@@ -3091,10 +3211,15 @@ EntryRenderer.item = {
 		}
 		item.attunementCategory = attunement;
 
-		// add some pre-text for item groups
-		if (item._isItemGroup && item.entries) {
-			const ixList = item.entries.findIndex(it => it.type === "list");
-			if (~ixList) item.entries.splice(ixList, 0, "Multiple variants of this item exist, as listed below:");
+		// handle item groups
+		if (item._isItemGroup) {
+			item.entries.push(
+				"Multiple variants of this item exist, as listed below:",
+				{
+					type: "list",
+					items: item.items.map(it => typeof it === "string" ? `{@item ${it}}` : `{@item ${it.name}|${it.source}}`)
+				}
+			);
 		}
 
 		// format price nicely
@@ -3108,8 +3233,8 @@ EntryRenderer.item = {
 
 		(function addBaseItemList (item) {
 			// item.variants was added during generic variant creation
+			// TAG ITEM_VARIANTS
 			const variants = item.variants;
-			delete item.variants;
 
 			function createItemLink (item) {
 				return `{@item ${item.name}|${item.source}}`;
@@ -3132,6 +3257,17 @@ EntryRenderer.item = {
 				});
 			}
 		})(item);
+	},
+
+	async getItemsFromHomebrew (homebrew) {
+		(homebrew.itemProperty || []).forEach(p => EntryRenderer.item._addProperty(p));
+		(homebrew.itemType || []).forEach(t => EntryRenderer.item._addType(t));
+		let items = homebrew.item || [];
+		if (homebrew.variant && homebrew.variant.length) {
+			const variants = await EntryRenderer.item.pGetGenericAndSpecificVariants(homebrew.variant);
+			items = items.concat(variants);
+		}
+		return items;
 	},
 
 	// flip e.g. "longsword +1" to "+1 longsword"
@@ -3955,8 +4091,9 @@ EntryRenderer.hover = {
 				evt.stopPropagation();
 				altTeardown();
 			}).appendTo($brdTopRhs);
+		const $wrpStats = $(`<div class="hoverbox__table_wrp"/>`).append($stats);
 		$hov.append($brdrTop)
-			.append($stats)
+			.append($wrpStats)
 			.append(`<div class="hoverborder ${isBookContent ? "hoverborder-book" : ""}"></div>`);
 
 		$body.append($hov);
@@ -5357,25 +5494,31 @@ EntryRenderer.stripTags = function (str) {
 			if (it.startsWith("@")) {
 				const [tag, text] = EntryRenderer.splitFirstSpace(it);
 				switch (tag) {
-					case "@i": {
-						return text.replace(/^{@i (.*?)}$/, "$1");
-					}
+					case "@b":
+					case "@bold":
+					case "@i":
+					case "@italic":
+					case "@s":
+					case "@strike":
+						return text.replace(/^{@(i|italic|b|bold|s|strike) (.*?)}$/, "$1");
 
 					case "@h": return "Hit: ";
 
 					case "@atk": return EntryRenderer.attackTagToFull(text);
 
 					case "@chance":
-					case "@hit":
-					case "@recharge":
+					case "@d20":
 					case "@damage":
-					case "@dice": {
-						const [rollText, displayText, name] = text.split("|");
+					case "@dice":
+					case "@hit":
+					case "@recharge": {
+						const [rollText, displayText] = text.split("|");
 						switch (tag) {
 							case "@damage":
 							case "@dice": {
 								return displayText || rollText;
 							}
+							case "@d20":
 							case "@hit": {
 								return displayText || (() => {
 									const n = Number(rollText);
@@ -5396,21 +5539,68 @@ EntryRenderer.stripTags = function (str) {
 								return displayText || `${rollText} percent`;
 							}
 						}
-						throw new Error(`Unhandled tag ${tag}`);
+						throw new Error(`Unhandled tag: ${tag}`);
 					}
 
+					case "@action":
+					case "@note":
+					case "@sense":
 					case "@skill": {
 						return text;
 					}
 
-					case "@hazard":
+					case "@5etools":
+					case "@adventure":
+					case "@book":
+					case "@filter":
+					case "@footnote":
+					case "@link":
+					case "@scaledice": {
+						const parts = text.split("|");
+						return parts[0];
+					}
+
+					case "@area":
+					case "@background":
+					case "@boon":
+					case "@class":
 					case "@condition":
-					case "@spell":
+					case "@creature":
+					case "@cult":
+					case "@disease":
+					case "@feat":
+					case "@hazard":
 					case "@item":
-					case "@creature": {
+					case "@object":
+					case "@optfeature":
+					case "@psionic":
+					case "@race":
+					case "@reward":
+					case "@ship":
+					case "@spell":
+					case "@table":
+					case "@trap":
+					case "@variantrule": {
 						const parts = text.split("|");
 						return parts.length >= 3 ? parts[2] : parts[0];
 					}
+
+					case "@deity": {
+						const parts = text.split("|");
+						return parts.length >= 4 ? parts[3] : parts[0];
+					}
+
+					case "@homebrew": {
+						const [newText, oldText] = text.split("|");
+						if (newText && oldText) {
+							return `${newText} [this is a homebrew addition, replacing the following: "${oldText}"]`;
+						} else if (newText) {
+							return `${newText} [this is a homebrew addition]`;
+						} else if (oldText) {
+							return `[the following text has been removed due to homebrew: ${oldText}]`;
+						} else throw new Error(`Homebrew tag had neither old nor new text!`);
+					}
+
 					default: throw new Error(`Unhandled tag: "${tag}"`);
 				}
 			} else return it;

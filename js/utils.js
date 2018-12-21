@@ -170,6 +170,14 @@ String.prototype.toSpellCase = String.prototype.toSpellCase ||
 		return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
 	};
 
+String.prototype.toCamelCase = String.prototype.toCamelCase ||
+	function () {
+		return this.split(" ").map((word, index) => {
+			if (index === 0) return word.toLowerCase();
+			return `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`;
+		}).join("");
+	};
+
 // FIXME remove polyfill at ~the end of October 2018
 String.prototype.trimStart = String.prototype.trimStart ||
 	function () {
@@ -265,7 +273,7 @@ Array.prototype.peek = Array.prototype.peek ||
 	};
 
 StrUtil = {
-	NAME_REGEX: /^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| )?)+([.!])+/g,
+	NAME_REGEX: /^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| |-)?)+([.!])+/g,
 
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
@@ -315,7 +323,7 @@ class AbilityData {
 }
 
 function utils_getAbilityData (abObj) {
-	const ABILITIES = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
+	const ABILITIES = Parser.ABIL_ABVS.map(it => it.uppercaseFirst());
 	const mainAbs = [];
 	const asCollection = [];
 	const areNegative = [];
@@ -653,6 +661,31 @@ Parser.SKILL_TO_ATB_ABV = {
 
 Parser.skillToAbilityAbv = function (skill) {
 	return Parser._parse_aToB(Parser.SKILL_TO_ATB_ABV, skill);
+};
+
+Parser.SKILL_TO_SHORT = {
+	"athletics": "ath",
+	"acrobatics": "acro",
+	"sleight of hand": "soh",
+	"stealth": "slth",
+	"arcana": "arc",
+	"history": "hist",
+	"investigation": "invn",
+	"nature": "natr",
+	"religion": "reli",
+	"animal handling": "hndl",
+	"insight": "ins",
+	"medicine": "med",
+	"perception": "perp",
+	"survival": "surv",
+	"deception": "decp",
+	"intimidation": "intm",
+	"performance": "perf",
+	"persuasion": "pers"
+};
+
+Parser.skillToShort = function (skill) {
+	return Parser._parse_aToB(Parser.SKILL_TO_SHORT, skill);
 };
 
 Parser.dragonColorToFull = function (c) {
@@ -996,7 +1029,7 @@ Parser.spClassesToFull = function (classes, textOnly) {
 };
 
 Parser.spMainClassesToFull = function (classes, textOnly) {
-	return classes.fromClassList
+	return (classes.fromClassList || [])
 		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
 		.map(c => textOnly ? c.name : `<span title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</span>`)
 		.join(", ");
@@ -1180,7 +1213,9 @@ Parser.prereqPactToFull = function (pact) {
 
 Parser.prereqPatronToShort = function (patron) {
 	if (patron === STR_ANY) return STR_ANY;
-	return /^The (.*?)$/.exec(patron)[1];
+	const mThe = /^The (.*?)$/.exec(patron);
+	if (mThe) return mThe[1];
+	return patron;
 };
 
 // NOTE: These need to be reflected in omnidexer.js to be indexed
@@ -1371,6 +1406,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
 };
+
+Parser.ABIL_ABVS = ["str", "dex", "con", "int", "wis", "cha"];
 
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
@@ -1738,6 +1775,7 @@ SRC_UARoE = SRC_UA_PREFIX + "RacesOfEberron";
 SRC_UARoR = SRC_UA_PREFIX + "RacesOfRavnica";
 SRC_UAWGE = SRC_UA_PREFIX + "WGE";
 SRC_UAOSS = SRC_UA_PREFIX + "OfShipsAndSea";
+SRC_UASIK = SRC_UA_PREFIX + "Sidekicks";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -1843,6 +1881,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UARoE] = UA_PREFIX + "Races of Eberron";
 Parser.SOURCE_JSON_TO_FULL[SRC_UARoR] = UA_PREFIX + "Races of Ravnica";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAWGE] = "Wayfinder's Guide to Eberron";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAOSS] = UA_PREFIX + "Of Ships and the Sea";
+Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = UA_PREFIX + "Sidekicks";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -1938,6 +1977,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UARoE] = "UARoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_UARoR] = "UARoR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAWGE] = "WGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAOSS] = "UAOSS";
+Parser.SOURCE_JSON_TO_ABV[SRC_UASIK] = "UASIK";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2214,6 +2254,41 @@ function isEmpty (obj) {
 }
 
 JqueryUtil = {
+	initEnhancements () {
+		JqueryUtil.addSelectors();
+
+		$.fn.extend({
+			/**
+			 * Has two modes; either:
+			 * Takes a jQuery object and replaces elements with `data-r-<n>` with the nth position arg, e.g.
+			 * $(`<div><div>my <span>initial</span> html <div data-r="0"/> <div data-r="1"/></div>`)
+			 *
+			 * or:
+			 * Takes a jQuery object and replaces elements with `data-r-<id>` with the element at key id
+			 * $(`<div><div>my <span>initial</span> html <div data-r="foo"/> <div data-r="bar"/></div>`)
+			 */
+			swap: function (...$toSwap) {
+				if ($toSwap.length === 1 && !($toSwap[0] instanceof jQuery)) {
+					Object.entries($toSwap[0]).forEach(([k, $v]) => {
+						this.find(`[data-r="${k}"]`).replaceWith($v);
+					});
+				} else {
+					$toSwap.forEach(ts => {
+						this.find(`[data-r]`).first().replaceWith(ts);
+					});
+				}
+
+				return this;
+			}
+		});
+
+		$.event.special.destroyed = {
+			remove: function (o) {
+				if (o.handler) o.handler();
+			}
+		}
+	},
+
 	addSelectors () {
 		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 		$.expr[':'].textEquals = (el, i, m) => {
@@ -2263,7 +2338,7 @@ JqueryUtil = {
 					if (bubble) {
 						const diffProgress = 0.5 - progress;
 						animationOptions.top = `${diffProgress > 0 ? "-" : "+"}=40`;
-						$temp.css("transform", `rotate(${seed * 500 * progress}deg)`);
+						$temp.css("transform", `rotate(${seed > 0.5 ? "-" : ""}${seed * 500 * progress}deg)`);
 					}
 				}
 			}
@@ -2271,7 +2346,7 @@ JqueryUtil = {
 	}
 };
 
-if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.addSelectors);
+if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.initEnhancements);
 
 function copyText (text) {
 	const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
@@ -2295,21 +2370,21 @@ ObjUtil = {
 		recursive(source, target, 1);
 	},
 
-	forEachDeep (source, callback, options = {depth: Infinity, callEachLevel: false}) {
+	async pForEachDeep (source, pCallback, options = {depth: Infinity, callEachLevel: false}) {
 		const path = [];
-		const diveDeep = function (val, path, depth = 0) {
-			if (options.callEachLevel || typeof val !== 'object' || options.depth === depth) {
-				callback(val, path, depth);
+		const pDiveDeep = async function (val, path, depth = 0) {
+			if (options.callEachLevel || typeof val !== "object" || options.depth === depth) {
+				await pCallback(val, path, depth);
 			}
-			if (options.depth !== depth && typeof val === 'object') {
-				Object.keys(val).forEach(key => {
+			if (options.depth !== depth && typeof val === "object") {
+				for (const key of Object.keys(val)) {
 					path.push(key);
-					diveDeep(val[key], path, depth + 1);
-				});
+					await pDiveDeep(val[key], path, depth + 1);
+				}
 			}
 			path.pop();
 		};
-		diveDeep(source, path);
+		await pDiveDeep(source, path);
 	}
 };
 
@@ -3770,9 +3845,8 @@ SortUtil = {
 		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
 	},
 
-	_attrOrder: ["str", "dex", "con", "int", "wis", "cha"],
 	ascSortAtts (a, b) {
-		return SortUtil._attrOrder.indexOf(b) - SortUtil._attrOrder.indexOf(a);
+		return Parser.ABIL_ABVS.indexOf(b) - Parser.ABIL_ABVS.indexOf(a);
 	},
 
 	ascSort$Options ($select) {
@@ -4447,6 +4521,9 @@ BrewUtil = {
 					<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
 					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank">README</a>, or stop by our <a href="https://discord.gg/WH6kdUn" target="_blank">Discord</a>.</i></p>
 					<hr class="manbrew__hr">
+					<div class="manbrew__load_all_wrp">
+						<button class="btn btn-default btn-xs manbrew__load_all" disabled title="(Excluding samples)">Add All</button>
+					</div>
 					<input type="search" class="search manbrew__search form-control" placeholder="Find homebrew..." style="width: 100%">
 					<div class="filtertools manbrew__filtertools sortlabel btn-group">
 						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
@@ -4458,9 +4535,6 @@ BrewUtil = {
 					<ul class="list brew-list">
 						<li><section><span style="font-style: italic;">Loading...</span></section></li>
 					</ul>
-					<div class="manbrew__load_all_wrp">
-						<button class="btn btn-default btn-xs manbrew__load_all" disabled title="(Excluding samples)">Add All</button>
-					</div>
 				</div>
 			`);
 			const $nxt = makeNextOverlay(getBrewOnClose);
@@ -4523,7 +4597,7 @@ BrewUtil = {
 			const timestamps = await DataUtil.brew.pLoadTimestamps();
 			const collectionIndex = await DataUtil.brew.pLoadCollectionIndex();
 			const collectionFiles = (() => {
-				const dirs = new Set(getBrewDirs());
+				const dirs = new Set(getBrewDirs().map(dir => BrewUtil._dirToCat(dir)));
 				return Object.keys(collectionIndex).filter(k => collectionIndex[k].find(it => dirs.has(it)));
 			})();
 
@@ -4700,8 +4774,8 @@ BrewUtil = {
 						$overlay2.click();
 					} else {
 						await Promise.all(toDel.map(async it => {
-							const pDeleteFn = getPDeleteFunction(it.category_raw);
-							await pDeleteFn(it.uid, false);
+							const pDeleteFn = BrewUtil._getPDeleteFunction(it.category_raw);
+							await pDeleteFn(it.uid);
 						}));
 						await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 						populateList();
@@ -4856,23 +4930,19 @@ BrewUtil = {
 			reader.readAsText(input.files[readIndex++]);
 		}
 
-		function getIndex (arrName, uniqueId, isChild) {
-			return BrewUtil.homebrew[arrName].findIndex(it => isChild ? it.parentUniqueId : it.uniqueId === uniqueId);
-		}
-
 		async function pDeleteSource (source, doConfirm) {
 			if (doConfirm && !window.confirm(`Are you sure you want to remove all homebrew with${source ? ` source "${Parser.sourceJsonToFull(source)}"` : `out a source`}?`)) return;
 
 			await Promise.all(BrewUtil._getBrewCategories().map(async k => {
 				const cat = BrewUtil.homebrew[k];
-				const pDeleteFn = getPDeleteFunction(k);
+				const pDeleteFn = BrewUtil._getPDeleteFunction(k);
 				const toDel = [];
 				cat.forEach(it => {
 					if (it.source === source) {
 						toDel.push(it.uniqueId);
 					}
 				});
-				await Promise.all(toDel.map(async uId => pDeleteFn(uId, false)));
+				await Promise.all(toDel.map(async uId => pDeleteFn(uId)));
 			}));
 			await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 			BrewUtil.removeJsonSource(source);
@@ -4886,108 +4956,98 @@ BrewUtil = {
 			window.location.hash = "";
 			if (BrewUtil._filterBox) BrewUtil._filterBox._fireValChangeEvent();
 		}
+	},
 
-		async function pDoRemove (arrName, uniqueId, doRefresh, isChild) {
-			const index = getIndex(arrName, uniqueId, isChild);
-			if (~index) {
-				BrewUtil.homebrew[arrName].splice(index, 1);
-				if (doRefresh) await pRefreshBrewList();
-				if (BrewUtil._lists) {
-					BrewUtil._lists.forEach(l => l.remove(isChild ? "parentuniqueid" : "uniqueid", uniqueId));
-					if (doRefresh) History.hashChange();
+	async _pDoRemove (arrName, uniqueId, isChild) {
+		function getIndex (arrName, uniqueId, isChild) {
+			return BrewUtil.homebrew[arrName].findIndex(it => isChild ? it.parentUniqueId : it.uniqueId === uniqueId);
+		}
+
+		const index = getIndex(arrName, uniqueId, isChild);
+		if (~index) {
+			BrewUtil.homebrew[arrName].splice(index, 1);
+			if (BrewUtil._lists) {
+				BrewUtil._lists.forEach(l => l.remove(isChild ? "parentuniqueid" : "uniqueid", uniqueId));
+			}
+		}
+	},
+
+	_getPDeleteFunction (category) {
+		switch (category) {
+			case "spell":
+			case "monster":
+			case "background":
+			case "feat":
+			case "optionalfeature":
+			case "race":
+			case "object":
+			case "trap":
+			case "hazard":
+			case "deity":
+			case "item":
+			case "variant":
+			case "itemType":
+			case "itemProperty":
+			case "reward":
+			case "psionic":
+			case "variantrule":
+			case "legendaryGroup":
+			case "condition":
+			case "disease":
+			case "table":
+			case "tableGroup":
+			case "ship": return BrewUtil._genPDeleteGenericBrew(category);
+			case "subclass": return BrewUtil._pDeleteSubclassBrew;
+			case "class": return BrewUtil._pDeleteClassBrew;
+			case "adventure":
+			case "book": return BrewUtil._genPDeleteGenericBookBrew(category);
+			case "adventureData":
+			case "bookData": return () => {}; // Do nothing, handled by deleting the associated book/adventure
+			default: throw new Error(`No homebrew delete function defined for category ${category}`);
+		}
+	},
+
+	async _pDeleteClassBrew (uniqueId) {
+		await BrewUtil._pDoRemove("class", uniqueId);
+	},
+
+	async _pDeleteSubclassBrew (uniqueId) {
+		let subClass;
+		let index = 0;
+		for (; index < BrewUtil.homebrew.subclass.length; ++index) {
+			if (BrewUtil.homebrew.subclass[index].uniqueId === uniqueId) {
+				subClass = BrewUtil.homebrew.subclass[index];
+				break;
+			}
+		}
+		if (subClass) {
+			const forClass = subClass.class;
+			BrewUtil.homebrew.subclass.splice(index, 1);
+			await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
+
+			if (typeof ClassData !== "undefined") {
+				const c = ClassData.classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
+
+				const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
+				if (~indexInClass) {
+					c.subclasses.splice(indexInClass, 1);
+					c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
 				}
 			}
 		}
+	},
 
-		function getPDeleteFunction (category) {
-			switch (category) {
-				case "spell":
-				case "monster":
-				case "background":
-				case "feat":
-				case "optionalfeature":
-				case "race":
-				case "object":
-				case "trap":
-				case "hazard":
-				case "deity":
-				case "item":
-				case "variant":
-				case "itemType":
-				case "itemProperty":
-				case "reward":
-				case "psionic":
-				case "variantrule":
-				case "legendaryGroup":
-				case "condition":
-				case "disease":
-				case "table":
-				case "tableGroup":
-				case "ship":
-					return genPDeleteGenericBrew(category);
-				case "subclass":
-					return pDeleteSubclassBrew;
-				case "class":
-					return pDeleteClassBrew;
-				case "adventure":
-				case "book":
-					return genPDeleteGenericBookBrew(category);
-				case "adventureData":
-				case "bookData":
-					// Do nothing, handled by deleting the associated adventure
-					return () => {};
-				default:
-					throw new Error(`No homebrew delete function defined for category ${category}`);
-			}
-		}
+	_genPDeleteGenericBrew (category) {
+		return async (uniqueId) => {
+			await BrewUtil._pDoRemove(category, uniqueId);
+		};
+	},
 
-		async function pDeleteClassBrew (uniqueId, doRefresh) {
-			await pDoRemove("class", uniqueId, doRefresh);
-		}
-
-		async function pDeleteSubclassBrew (uniqueId, doRefresh) {
-			let subClass;
-			let index = 0;
-			for (; index < BrewUtil.homebrew.subclass.length; ++index) {
-				if (BrewUtil.homebrew.subclass[index].uniqueId === uniqueId) {
-					subClass = BrewUtil.homebrew.subclass[index];
-					break;
-				}
-			}
-			if (subClass) {
-				const forClass = subClass.class;
-				BrewUtil.homebrew.subclass.splice(index, 1);
-				await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
-
-				if (typeof ClassData !== "undefined") {
-					const c = ClassData.classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
-
-					const indexInClass = c.subclasses.findIndex(it => it.uniqueId === uniqueId);
-					if (~indexInClass) {
-						c.subclasses.splice(indexInClass, 1);
-						c.subclasses = c.subclasses.sort((a, b) => SortUtil.ascSort(a.name, b.name));
-					}
-				}
-
-				if (doRefresh) {
-					await pRefreshBrewList();
-					window.location.hash = "";
-				}
-			}
-		}
-
-		function genPDeleteGenericBrew (category) {
-			return async (uniqueId, doRefresh) => {
-				await pDoRemove(category, uniqueId, doRefresh);
-			};
-		}
-
-		function genPDeleteGenericBookBrew (category) {
-			return async (uniqueId, doRefresh) => {
-				await pDoRemove(category, uniqueId, false);
-				await pDoRemove(`${category}Data`, uniqueId, doRefresh, true);
-			};
-		}
+	_genPDeleteGenericBookBrew (category) {
+		return async (uniqueId) => {
+			await BrewUtil._pDoRemove(category, uniqueId);
+			await BrewUtil._pDoRemove(`${category}Data`, uniqueId, true);
+		};
 	},
 
 	manageBrew: () => {
@@ -5036,17 +5096,35 @@ BrewUtil = {
 		});
 
 		// store
-		function checkAndAdd (prop) {
-			const areNew = [];
+		async function pCheckAndAdd (prop) {
 			if (!BrewUtil.homebrew[prop]) BrewUtil.homebrew[prop] = [];
-			const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
-			json[prop].forEach(it => {
-				if (!existingIds.find(id => it.uniqueId === id)) {
+			if (IS_DEPLOYED) {
+				// in production mode, skip any existing brew
+				const areNew = [];
+				const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
+				json[prop].forEach(it => {
+					if (!existingIds.find(id => it.uniqueId === id)) {
+						BrewUtil.homebrew[prop].push(it);
+						areNew.push(it);
+					}
+				});
+				return areNew;
+			} else {
+				// in development mode, replace any existing brew
+				const existing = {};
+				BrewUtil.homebrew[prop].forEach(it => {
+					existing[it.source] = (existing[it.source] || {});
+					existing[it.source][it.name] = it.uniqueId;
+				});
+				const pDeleteFn = BrewUtil._getPDeleteFunction(prop);
+				await Promise.all(json[prop].map(async it => {
+					if (existing[it.source] && existing[it.source][it.name]) {
+						await pDeleteFn(existing[it.source][it.name]);
+					}
 					BrewUtil.homebrew[prop].push(it);
-					areNew.push(it);
-				}
-			});
-			return areNew;
+				}));
+				return json[prop];
+			}
 		}
 
 		function checkAndAddMetaGetNewSources () {
@@ -5084,7 +5162,7 @@ BrewUtil = {
 			BrewUtil.homebrew = json;
 		} else {
 			sourcesToAdd = checkAndAddMetaGetNewSources(); // adding source(s) to Filter should happen in per-page addX functions
-			BrewUtil._STORABLE.forEach(k => toAdd[k] = checkAndAdd(k)); // only add if unique ID not already present
+			await Promise.all(BrewUtil._STORABLE.map(async k => toAdd[k] = await pCheckAndAdd(k))); // only add if unique ID not already present
 		}
 		await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
@@ -5394,6 +5472,22 @@ CryptUtil = {
 			return h;
 		} else if (typeof obj === "number") return obj;
 		else throw new Error(`No hashCode implementation for ${obj}`);
+	},
+
+	uid () { // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+		if (RollerUtil.isCrypto()) {
+			return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
+		} else {
+			let d = Date.now();
+			if (typeof performance !== "undefined" && typeof performance.now === "function") {
+				d += performance.now();
+			}
+			return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+				const r = (d + Math.random() * 16) % 16 | 0;
+				d = Math.floor(d / 16);
+				return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+			});
+		}
 	}
 };
 
@@ -5684,6 +5778,47 @@ EncounterUtil = {
 	}
 };
 EncounterUtil.SUB_HASH_PREFIX = "encounter";
+
+// REACTOR =============================================================================================================
+class Reactor {
+	constructor () {
+		this.rvents = {};
+	}
+
+	_registerEvent (eventName) {
+		this.rvents[eventName] = new ReactorEvent(eventName);
+	}
+
+	fire (eventName, eventArgs) {
+		if (this.rvents[eventName]) this.rvents[eventName].callbacks.forEach(callback => callback(eventArgs));
+	}
+
+	on (eventName, callback) {
+		if (!this.rvents[eventName]) this._registerEvent(eventName);
+		this.rvents[eventName]._registerCallback(callback);
+	}
+
+	off (eventName, callback) {
+		if (!this.rvents[eventName]) return;
+		this.rvents[eventName]._unregisterCallback(callback);
+	}
+}
+
+class ReactorEvent {
+	constructor (name) {
+		this.name = name;
+		this.callbacks = [];
+	}
+
+	_registerCallback (callback) {
+		this.callbacks.push(callback);
+	}
+
+	_unregisterCallback (callback) {
+		const ix = this.callbacks.indexOf(callback);
+		this.callbacks.splice(ix, 1);
+	}
+}
 
 // LEGAL NOTICE ========================================================================================================
 if (!IS_ROLL20 && typeof window !== "undefined") {

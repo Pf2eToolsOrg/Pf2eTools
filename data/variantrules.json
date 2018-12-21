@@ -8919,6 +8919,82 @@
 			],
 			"source": "UAOfShipsAndSea",
 			"page": 9
+		},
+		{
+			"source": "UASidekicks",
+			"page": 1,
+			"type": "section",
+			"name": "Sidekicks",
+			"entries": [
+				"This article gives you a straightforward way to play and level up a sidekick in Dungeons & Dragons. The rules presented here take a creature with a low challenge rating and give it levels as you gain levels.",
+				"On your adventures, you sometimes meet a townsperson, an animal, or another creature and forge a special relationship with them. That creature might even join you on your adventures, which usually sparks this question: how does this sidekick get better as you gain levels? As you become more powerful, the foes you face are likely to become too dangerous for Vera the {@creature guard}, Biscuit the {@creature mastiff}, or another companion you befriended in the early days of your adventuring career. This article answers the question, giving your sidekick a clear path of advancement.",
+				{
+					"type": "section",
+					"name": "Sidekick Stats",
+					"entries": [
+						"In these rules, a sidekick is a creature who is your friend and who accompanies you on adventures. It's essentially a second character you play. (The DM might decide to play it instead, or you could co-play it with other players at the table.)",
+						"The sidekick can be any type of creature with a stat block in the Monster Manual or another D&D book, but it must meet these prerequisites:",
+						{
+							"type": "list",
+							"items": [
+								"Its challenge rating must be {@filter 1 or lower|bestiary|cr=0;1/8;1/4;1/2;1|miscellaneous=!swarm}. To gain the {@class expert sidekick|UASidekicks|expert} or {@class spellcaster sidekick|UASidekicks|spellcaster} class, the creature must have {@filter at least one language in its stat block that it can speak|bestiary|cr=0;1/8;1/4;1/2;1|miscellaneous=!swarm|languages=ab;aq;au;c;ce;!cs;d;dr;ds;du;e;g;gi;go;gth;h;i;ig;o;oth;p;s;t;tc;tp;u;x;xx}.",
+								"The two of you must be friends."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Customization for Any CR",
+							"entries": [
+								"The Dungeon Master's Guide offers guidance on customizing a monster, including giving it levels in a class. That approach works with any monster in the game, but it can be complicated, since it requires the monster's challenge rating to be recalculated. The approach to sidekicks in this article focuses on giving levels to a low-CR creature without ever having to recalculate its CR."
+							]
+						}
+					]
+				},
+				{
+					"type": "section",
+					"name": "Gaining a Sidekick Class",
+					"entries": [
+						"When your sidekick joins you, it gains a sidekick class. Choose which class it will have for the rest of its career: {@class warrior sidekick|uasidekicks|warrior}, {@class expert sidekick|uasidekicks|expert}, or {@class spellcaster sidekick|uasidekicks|spellcaster}. They are reminiscent of the classes available to player characters but are simpler.",
+						"To gain the expert or the spellcaster class, a creature must have at least one language in its stat block that it can speak.",
+						{
+							"type": "entries",
+							"name": "Leveling Up a Sidekick",
+							"entries": [
+								"Whenever you gain a level, your sidekick also gains a level. It doesn't matter how much of your recent adventures the sidekick experienced; the sidekick levels up because of a combination of the adventures it shares with you and its own training."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Hit Points",
+							"entries": [
+								"Whenever the sidekick gains a level, it gains one Hit Die, and its hit point maximum increases. To determine the amount of the increase, roll the Hit Die (the type of die appears in the sidekick's stat block), and add its Constitution modifier. It gains a minimum of 1 hit point per level."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Proficiency Bonus",
+							"entries": [
+								"Once your companion has a sidekick class, the sidekick's proficiency bonus is determined by its level in that class, as shown in the class's table. Whenever the sidekick's proficiency bonus increases by 1, add 1 to the to-hit modifier of all the attacks in its stat block, and increase the DCs in its stat block by 1."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Ability Score Increases",
+							"entries": [
+								"Whenever the sidekick gains the Ability Score Improvement class feature, remember to adjust anything in its stat block that relies on an ability modifier that you increase with the feature. For example, if the sidekick has an attack that uses Strength, increase the attack's modifiers to hit and damage if the sidekick's Strength modifier increases.",
+								"If it's unclear whether a melee attack in the stat block uses Strength or Dexterity, the attack can use either."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Multiattack vs. Extra Attack",
+							"entries": [
+								"Your sidekick might have the Multiattack action in its stat block. If it does and it gains the Extra Attack class feature, remember that Extra Attack works with the Attack action, not the Multiattack action. In short, you can't use Extra Attack with Multiattack."
+							]
+						}
+					]
+				}
+			]
 		}
 	]
 }

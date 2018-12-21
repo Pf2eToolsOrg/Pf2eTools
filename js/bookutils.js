@@ -418,7 +418,7 @@ const BookUtil = {
 			$(`.book-head-header`).html(cleanName(fromIndex.name));
 			$(`.book-head-message`).html("Browse content. Press F to find, and G to go to page.");
 			await BookUtil.pLoadBook(fromIndex, bookId, hashParts, homebrewData);
-			currentPage();
+			NavBar.highlightCurrentPage();
 		}
 
 		function handleNotFound () {
@@ -606,7 +606,7 @@ const BookUtil = {
 
 			let lastName;
 			if (isNamedEntry(obj)) {
-				lastName = obj.name;
+				lastName = EntryRenderer.stripTags(obj.name);
 				const matches = isPageMode ? obj.page === cleanTerm : lastName.toLowerCase().includes(cleanTerm);
 				if (matches) {
 					appendTo.push({
@@ -717,16 +717,6 @@ const BookUtil = {
 				};
 			}
 		}
-	},
-
-	addScrollTopFloat () {
-		const $wrpTop = $(`<div class="bk__to-top"/>`).appendTo($("body"));
-		const $btnToTop = $(`<button class="btn btn-sm btn-default" title="To Top"><span class="glyphicon glyphicon-arrow-up"/></button>`).appendTo($wrpTop).click(() => MiscUtil.scrollPageTop());
-
-		$(window).on("scroll", () => {
-			if ($(window).scrollTop() > 50) $wrpTop.addClass("bk__to-top--scrolled");
-			else $wrpTop.removeClass("bk__to-top--scrolled");
-		});
 	}
 };
 

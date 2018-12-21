@@ -29,6 +29,10 @@ $link-blue: #337ab7;
 $border-grey: #ccc;
 $border-grey--trans: #cccccca0;
 
+@mixin shadow-1 () {
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
 .code {
 	font-family: 'Courier New', monospace;
 }
@@ -45,8 +49,45 @@ $border-grey--trans: #cccccca0;
 	user-select: none;
 }
 
+.roller {
+	color: $link-blue;
+	cursor: pointer;
+}
+
 .full-width {
 	width: 100%;
+}
+
+.columns-2 {
+	column-count: 2;
+
+	@media (max-width: 768px) {
+		column-count: 1;
+	}
+}
+
+.columns-3 {
+	column-count: 3;
+
+	@media (max-width: 768px) {
+		column-count: 2;
+	}
+
+	@media (max-width: 480px) {
+		column-count: 1;
+	}
+}
+
+.columns-4 {
+	column-count: 4;
+
+	@media (max-width: 768px) {
+		column-count: 3;
+	}
+
+	@media (max-width: 480px) {
+		column-count: 2;
+	}
 }
 
 html {
@@ -77,7 +118,7 @@ body::-webkit-scrollbar {
 }
 
 header {
-	padding: 2px 15px;
+	padding: 0 15px 1px;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.475);
 
 	h1 {
@@ -101,9 +142,10 @@ header {
 }
 
 dialog {
+	@include shadow-1();
+
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 4px;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
 .dialog-wrapper {
@@ -201,6 +243,8 @@ dialog.dialog-modal {
 }
 
 #legal-notice {
+	@include shadow-1();
+
 	position: fixed;
 	z-index: 10000;
 	bottom: 0;
@@ -212,7 +256,6 @@ dialog.dialog-modal {
 	justify-content: space-evenly;
 	font-weight: bold;
 	padding: 3rem;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	background: #f8f8f8;
 }
@@ -259,6 +302,8 @@ dialog.dialog-modal {
 
 /* side menu */
 .sidemenu {
+	@include shadow-1();
+
 	background: white;
 	border: 1px solid $border-grey;
 
@@ -268,7 +313,6 @@ dialog.dialog-modal {
 	bottom: 0;
 	left: -260px;
 	width: 250px;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	transition: left 0.1s;
 	cursor: default;
 	display: flex;
@@ -277,6 +321,8 @@ dialog.dialog-modal {
 }
 
 .sidemenu__toggle {
+	@include shadow-1();
+
 	background: lightgrey;
 
 	position: absolute;
@@ -285,7 +331,6 @@ dialog.dialog-modal {
 	left: -7px;
 	width: 32px;
 	height: 32px;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	cursor: pointer;
 	transition: left 0.1s;
 	display: flex;
@@ -380,11 +425,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 }
 
 #omnisearch-output {
+	@include shadow-1();
+
 	position: absolute;
 	z-index: 100;
 	padding: 0.2em 0.7em;
 	border-radius: 0.2em;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	border: 1px solid rgba(0, 0, 0, 0.15);
 
 	&.scrolled {
@@ -528,11 +574,8 @@ input[type=checkbox].sidemenu__row__label__cb {
 	max-width: 45vw;
 	z-index: 200;
 	box-shadow: 0 0 12px 0 black;
-	max-height: 96vh;
-	overflow-y: auto;
 	animation-name: kf-fade-in, kf-pop-in;
 	animation-duration: 150ms, 75ms;
-	transform: translateZ(0);
 
 	&--popout {
 		box-shadow: initial;
@@ -552,6 +595,13 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 	&::-webkit-scrollbar {
 		width: 4px;
+	}
+
+	&__table_wrp {
+		max-height: 94vh;
+		overflow-y: scroll;
+		background: #f0f0f0;
+		transform: translateZ(0);
 	}
 
 	p {
@@ -608,7 +658,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 	}
 }
 
-.hoverborder[data-display-title=true] ~ table.stats,
+.hoverborder[data-display-title=true] ~ .hoverbox__table_wrp,
 .hoverborder[data-display-title=true] ~ .hoverborder {
 	display: none;
 }
@@ -625,12 +675,13 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 /* roller */
 .rollbox-min {
+	@include shadow-1();
+
 	position: fixed;
 	z-index: 100;
 	right: 7px;
 	bottom: 0;
 	color: rgba(255, 255, 255, 0.7);
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	width: 24px;
 	height: 24px;
 	cursor: pointer;
@@ -644,12 +695,13 @@ input[type=checkbox].sidemenu__row__label__cb {
 }
 
 .rollbox {
+	@include shadow-1();
+
 	display: none;
 	position: fixed;
 	width: 260px;
 	height: 335px;
 	z-index: 110;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	right: 1em;
 	bottom: 0;
@@ -779,7 +831,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 .manbrew {
 	&__hr {
-		margin: 5px 0 12px;
+		margin: 5px 0;
 	}
 
 	&__source {
@@ -830,7 +882,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 	&__load_all_wrp {
 		display: flex;
 		justify-content: flex-end;
-		margin-bottom: 2px;
+		margin-bottom: 5px;
 	}
 }
 
@@ -1287,7 +1339,7 @@ th#author {
 	font-size: 0.9em;
 }
 
-.monster th.name {
+.monster th.mon__name--token {
 	padding-right: calc(11.2rem + 2px);
 }
 
@@ -1398,11 +1450,6 @@ p.second {
 	margin-top: 1em;
 }
 
-span.roller {
-	color: $link-blue;
-	cursor: pointer;
-}
-
 span.result {
 	font-style: italic;
 }
@@ -1429,12 +1476,8 @@ div#lootoutput {
 	input[type=number],
 	input[type=checkbox],
 	.inputwrap {
-		left: 15em;
 		text-align: right;
-		clear: both;
-		margin-bottom: 2px;
 		width: 6em;
-		float: right;
 	}
 
 	select {
@@ -1463,19 +1506,21 @@ div#lootoutput {
 	}
 
 	label span.explanation {
+		@include shadow-1();
+
 		display: none;
 		font-weight: normal;
 		position: absolute;
 		background: white;
 		border-radius: 3px;
+		z-index: 1;
 		padding: 3px;
+		width: 18em;
+		font-size: 0.8em;
 	}
 
 	label:hover span.explanation {
 		display: block;
-		width: 18em;
-		font-size: 0.8em;
-		z-index: 1;
 	}
 
 	input#hd:focus {
@@ -1486,6 +1531,7 @@ div#lootoutput {
 #msbcr {
 	text-align: center;
 	font-size: 0.8em;
+	margin: 0 auto;
 }
 
 #msbcr th {
@@ -1505,29 +1551,6 @@ div#lootoutput {
 
 #instructions p {
 	font-size: small;
-}
-
-#monsterfeatures tr:nth-child(odd) {
-	background-color: lightgrey;
-}
-
-#monsterfeatures tr th {
-	font-size: 0.8em;
-	vertical-align: bottom;
-	padding: 0.2em 0.7em;
-}
-
-#monsterfeatures tr td {
-	cursor: pointer;
-	font-size: 0.8em;
-	padding: 0.2em 0.7em;
-	vertical-align: top;
-}
-
-#monsterfeatures tr td input[type=number] {
-	width: 3em;
-	vertical-align: middle;
-	text-align: right;
 }
 
 #expectedcr {
@@ -2212,6 +2235,19 @@ table.stats.stats-book table.printbook-bestiary-entry {
 
 /* Bootstrap overrides */
 
+.input-xs {
+	height: 22px;
+	padding: 1px 5px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+}
+
+select.input-xs {
+	height: 22px;
+	line-height: 22px;
+}
+
 .flex-label {
 	display: inline-flex;
 	align-items: center;
@@ -2224,6 +2260,11 @@ table.stats.stats-book table.printbook-bestiary-entry {
 
 .fade {
 	transition: opacity 0.05s linear;
+}
+
+.dropdown-menu--side {
+	top: -10px;
+	left: 100%;
 }
 
 .nav > li {
@@ -2268,9 +2309,14 @@ table.stats.stats-book table.printbook-bestiary-entry {
 %col-base {
 	position: relative;
 	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 7px;
+	padding-left: 7px;
 	float: left;
+}
+
+.row {
+	margin-right: -7px;
+	margin-left: -7px;
 }
 
 .col-12 {
@@ -3466,6 +3512,10 @@ span.showhide {
 	padding: 1px 7px;
 }
 
+.caret--right {
+	transform: rotate(270deg);
+}
+
 .caret--reverse {
 	transform: rotate(180deg);
 }
@@ -3956,10 +4006,11 @@ table.stats span.para-continue-indented {
 }
 
 .f-all-out {
+	@include shadow-1();
+
 	overflow-y: auto;
 	max-height: 400px;
 	width: 100%;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	padding: 0.2em 0.7em;
 	border-radius: 0.2em;
@@ -4003,19 +4054,21 @@ table.stats {
 
 @media only screen and (min-width: 1600px) {
 	#listcontainer.book-contents {
+		@include shadow-1();
+
 		background: white;
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	}
 }
 
 .shadow-big {
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	@include shadow-1();
 }
 
 table.stats.stats-book,
 table.stats.stats-book--hover {
+	@include shadow-1();
+
 	background: white;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 
 	::selection {
 		background: #242527;
@@ -4658,6 +4711,10 @@ table.stats tr.homebrew-hover {
 		background: #565656;
 	}
 
+	.hoverbox__table_wrp {
+		background: $bg-color;
+	}
+
 	.wrp-stats-table {
 		border-top: 1px solid #565656;
 		border-bottom: 1px solid #565656;
@@ -4879,7 +4936,6 @@ table.stats tr.homebrew-hover {
 	ul.list li:nth-child(odd),
 	ul.list.encounters > li > ul > li:nth-child(odd),
 	ul.list.names > li > ul > li:nth-child(odd),
-	#monsterfeatures tr:nth-child(odd),
 	ul.bk-headers li:nth-child(odd) {
 		background: rgba(0, 0, 0, 0.31);
 	}

@@ -66,6 +66,12 @@ const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull})
 const asiFilter = new Filter({
 	header: "Ability Bonus (Including Subrace)",
 	items: [
+		"Any Strength Increase",
+		"Any Dexterity Increase",
+		"Any Constitution Increase",
+		"Any Intelligence Increase",
+		"Any Wisdom Increase",
+		"Any Charisma Increase",
 		"Strength +2",
 		"Strength +1",
 		"Dexterity +2",
@@ -136,7 +142,7 @@ async function onJsonLoad (data) {
 			"Terran",
 			"Undercommon"
 		],
-		umbrellaItem: "Choose"
+		umbrellaItems: ["Choose"]
 	});
 
 	filterBox = await pInitFilterBox(
@@ -200,7 +206,13 @@ function addRaces (data) {
 		if (ExcludeUtil.isExcluded(race.name, "race", race.source)) continue;
 
 		const ability = race.ability ? utils_getAbilityData(race.ability) : {asTextShort: "None"};
-		race._fAbility = race.ability ? getAbilityObjs(race.ability).map(a => mapAbilityObjToFull(a)) : []; // used for filtering
+		if (race.ability) {
+			const abils = getAbilityObjs(race.ability);
+			race._fAbility = abils.map(a => mapAbilityObjToFull(a));
+			const increases = {};
+			abils.filter(it => it.amount > 0).forEach(it => increases[it.asi] = true);
+			Object.keys(increases).forEach(it => race._fAbility.push(`Any ${Parser.attAbvToFull(it)} Increase`));
+		} else race._fAbility = [];
 		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, getSpeedRating(race.speed.walk)].filter(it => it) : getSpeedRating(race.speed);
 		race._fMisc = [
 			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
@@ -219,7 +231,7 @@ function addRaces (data) {
 					<span class='name col-4'>${race.name}</span>
 					<span class='ability col-4'>${ability.asTextShort}</span>
 					<span class='size col-2'>${Parser.sizeAbvToFull(race.size)}</span>
-					<span class='source col-2 ${Parser.sourceJsonToColor(race.source)}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+					<span class='source col-2 text-align-center ${Parser.sourceJsonToColor(race.source)}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
 					${bracketMatch ? `<span class="clean-name hidden">${bracketMatch[2]} ${bracketMatch[1]}</span>` : ""}
 					
 					<span class="uniqueid hidden">${race.uniqueId ? race.uniqueId : rcI}</span>
@@ -255,9 +267,19 @@ function addRaces (data) {
 	}
 
 	function ascSortAsi (a, b) {
-		const [aAbil, aScore] = a.split(" ");
-		const [bAbil, bScore] = b.split(" ");
-		return (ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil]) || (Number(bScore) - Number(aScore));
+		if (a.startsWith("Any") && b.startsWith("Any")) {
+			const aAbil = a.replace("Any", "").replace("Increase", "").trim();
+			const bAbil = b.replace("Any", "").replace("Increase", "").trim();
+			return ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil];
+		} else if (a.startsWith("Any")) {
+			return -1;
+		} else if (b.startsWith("Any")) {
+			return 1;
+		} else {
+			const [aAbil, aScore] = a.split(" ");
+			const [bAbil, bScore] = b.split(" ");
+			return (ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil]) || (Number(bScore) - Number(aScore));
+		}
 	}
 
 	list.reIndex();

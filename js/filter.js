@@ -1340,8 +1340,11 @@ class Filter {
 	 *   deselFn: a function, defaults items as "do not match this" if `deselFn(item)` is true
 	 *
 	 *   (OPTIONAL)
-	 *   umbrellaItem: e.g. "Choose Any"; an item that should allow anything containing it to always be displayed when
-	 *     checking for other items in the filter
+	 *   umbrellaItems: e.g. "Choose Any"; an array of items that should allow anything containing it to always be
+	 *     displayed when checking for other items in the filter
+	 *
+	 *   (OPTIONAL)
+	 *   umbrellaExcludes: items that shouldn't be included in umbrellaItems
 	 *
 	 */
 	constructor (options) {
@@ -1352,7 +1355,8 @@ class Filter {
 		this.deselFn = options.deselFn;
 		this.attrName = options.attrName;
 		this.minimalUI = options.minimalUI;
-		this.umbrellaItem = options.umbrellaItem;
+		this.umbrellaItems = options.umbrellaItems;
+		this.umbrellaExcludes = options.umbrellaExcludes;
 	}
 
 	/**
@@ -1360,7 +1364,7 @@ class Filter {
 	 * @param item the item to add
 	 */
 	addIfAbsent (item) {
-		if (!item) return;
+		if (item == null) return;
 		if (item instanceof Array) item.forEach(it => this.addIfAbsent(it));
 		else if (!this.items.find(it => Filter._checkMatches(it, item))) this.items.push(item);
 	}
@@ -1396,16 +1400,13 @@ class Filter {
 		}
 
 		const isUmbrella = () => {
-			if (this.umbrellaItem) {
-				if (this.umbrellaItem instanceof Array) {
-					return toCheck &&
-					toCheck instanceof Array ? this.umbrellaItem.find(u => toCheck.includes(u)) : this.umbrellaItem.includes(toCheck) &&
-						(this.umbrellaItem.find(u => map[toCheckVal(u)] === 0) || this.umbrellaItem.find(u => map[toCheckVal(u)] === 1));
-				} else {
-					return toCheck &&
-					toCheck instanceof Array ? toCheck.includes(this.umbrellaItem) : toCheck === this.umbrellaItem &&
-						(map[toCheckVal(this.umbrellaItem)] === 0 || map[toCheckVal(this.umbrellaItem)] === 1);
-				}
+			if (this.umbrellaItems) {
+				if (!toCheck) return false;
+
+				if (this.umbrellaExcludes && this.umbrellaExcludes.some(it => map[it])) return false;
+
+				return (toCheck instanceof Array ? this.umbrellaItems.find(u => toCheck.includes(u)) : this.umbrellaItems.includes(toCheck)) &&
+					(this.umbrellaItems.find(u => map[toCheckVal(u)] === 0) || this.umbrellaItems.find(u => map[toCheckVal(u)] === 1));
 			}
 		};
 
@@ -1494,8 +1495,6 @@ class FilterItem {
 	 *   `group` (optional) group this item belongs to, if it's part of a GroupedFilter
 	 *   `nest` (optional) nest this item belongs to
 	 *   `nestHidden` (optional) if nested, default visibility state
-	 *
-	 *   `customData` (optional) free data storage
 	 */
 	constructor (options) {
 		this.item = options.item;
@@ -1526,6 +1525,7 @@ class RangeFilter extends Filter {
 	}
 
 	_addNumberIfAbsent (number) {
+		if (number == null || isNaN(number)) return;
 		if (this.min == null && this.max == null) this.min = this.max = number;
 		else {
 			const oMin = this.min;

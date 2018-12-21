@@ -105,7 +105,7 @@ class ClassList {
 			const curClass = newClasses[i];
 			if (ExcludeUtil.isExcluded(curClass.name, "class", curClass.source)) continue;
 
-			curClass._fSource = BrewUtil.hasSourceJson(curClass.source) ? "Homebrew" : SourceUtil.isNonstandardSource(curClass.source) ? "Others" : "Core";
+			curClass._fSource = curClass.source === SRC_UASIK ? "Sidekicks" : BrewUtil.hasSourceJson(curClass.source) ? "Homebrew" : SourceUtil.isNonstandardSource(curClass.source) ? "Others" : "Core";
 			sourceFilter.addIfAbsent(curClass._fSource);
 			const id = i + previousClassAmount;
 			tempString += ClassList._renderClass(curClass, id);
@@ -143,7 +143,7 @@ class ClassData {
 		ClassData.sortSubclasses(newClasses);
 
 		newClasses.filter(c => SourceUtil.isNonstandardSource(c.source) || BrewUtil.hasSourceJson(c.source))
-			.forEach(ClassData.markSameSourceSubclassesAsForceStandard);
+			.forEach(ClassData.markSameSourceSubclassesAndFluffAsForceStandard);
 
 		ClassData.classes = ClassData.classes.concat(newClasses);
 
@@ -190,8 +190,9 @@ class ClassData {
 		}
 	}
 
-	static markSameSourceSubclassesAsForceStandard (clazz) {
-		clazz.subclasses.filter(subClass => subClass.source === clazz.source).forEach(subClass => subClass.source = {"source": subClass.source, "forceStandard": true});
+	static markSameSourceSubclassesAndFluffAsForceStandard (clazz) {
+		if (clazz.fluff) clazz.fluff.filter(f => f.source === clazz.source).forEach(f => f.source = {source: f.source, forceStandard: true});
+		clazz.subclasses.filter(subClass => subClass.source === clazz.source).forEach(subClass => subClass.source = {source: subClass.source, forceStandard: true});
 	}
 
 	static cleanScSource (source) {
@@ -254,14 +255,21 @@ class HashLoad {
 
 		// SUMMARY SIDEBAR =================================================================================================
 		// hit dice and HP
-		const hdEntry = {toRoll: `${ClassDisplay.curClass.hd.number}d${ClassDisplay.curClass.hd.faces}`, rollable: true};
-		$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry, "Hit die"));
-		$("td#hp div#hp1stlevel span").html(ClassDisplay.curClass.hd.faces + " + your Constitution modifier");
-		$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry, "Hit die")} (or ${
-			(ClassDisplay.curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${ClassDisplay.curClass.name} level after 1st`);
+		if (ClassDisplay.curClass.hd) {
+			$("td#hp").show();
+			const hdEntry = {toRoll: `${ClassDisplay.curClass.hd.number}d${ClassDisplay.curClass.hd.faces}`, rollable: true};
+			$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry, "Hit die"));
+			$("td#hp div#hp1stlevel span").html(ClassDisplay.curClass.hd.faces + " + your Constitution modifier");
+			$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry, "Hit die")} (or ${
+				(ClassDisplay.curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${ClassDisplay.curClass.name} level after 1st`);
+		} else {
+			$("td#hp").hide();
+		}
 
 		// save proficiency
-		$("td#prof div#saves span").html(ClassDisplay.curClass.proficiency.map(p => Parser.attAbvToFull(p)).join(", "));
+		if (ClassDisplay.curClass.proficiency) {
+			$("td#prof div#saves span").html(ClassDisplay.curClass.proficiency.map(p => Parser.attAbvToFull(p)).join(", "));
+		}
 
 		// starting proficiencies
 		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a === "light" || a === "medium" || a === "heavy" ? a + " armor" : a).join(", ");
@@ -270,11 +278,14 @@ class HashLoad {
 		const renderSkillsProfs = (skillProfs) => getSkillProfString(skillProfs);
 
 		const sProfs = ClassDisplay.curClass.startingProficiencies;
-		const profSel = $("td#prof");
-		profSel.find("div#armor span").html(sProfs.armor === undefined ? STR_PROF_NONE : renderArmorProfs(sProfs.armor));
-		profSel.find("div#weapons span").html(sProfs.weapons === undefined ? STR_PROF_NONE : renderWeaponsProfs(sProfs.weapons));
-		profSel.find("div#tools span").html(sProfs.tools === undefined ? STR_PROF_NONE : renderToolsProfs(sProfs.tools));
-		profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : renderSkillsProfs(sProfs.skills));
+		if (sProfs) {
+			const profSel = $("td#prof");
+			profSel.find("div#armor span").html(sProfs.armor === undefined ? STR_PROF_NONE : renderArmorProfs(sProfs.armor));
+			profSel.find("div#weapons span").html(sProfs.weapons === undefined ? STR_PROF_NONE : renderWeaponsProfs(sProfs.weapons));
+			profSel.find("div#tools span").html(sProfs.tools === undefined ? STR_PROF_NONE : renderToolsProfs(sProfs.tools));
+			profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : renderSkillsProfs(sProfs.skills));
+		}
+		$("td#prof").toggle(!!(ClassDisplay.curClass.proficiency || sProfs));
 
 		function getSkillProfString (skills) {
 			const numString = Parser.numberToString(skills.choose);
@@ -282,11 +293,16 @@ class HashLoad {
 		}
 
 		// starting equipment
-		const sEquip = ClassDisplay.curClass.startingEquipment;
-		const fromBackground = sEquip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "";
-		const defList = sEquip.default.length === 0 ? "" : `<ul><li>${sEquip.default.map(it => EntryRenderer.getDefaultRenderer().renderEntry(it)).join("</li><li>")}</ul>`;
-		const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${EntryRenderer.getDefaultRenderer().renderEntry(sEquip.goldAlternative)} gp to buy your own equipment.</p>`;
-		$("#equipment").find("div").html(`${fromBackground}${defList}${goldAlt}`);
+		if (ClassDisplay.curClass.startingEquipment) {
+			const $equipment = $("#equipment").show();
+			const sEquip = ClassDisplay.curClass.startingEquipment;
+			const fromBackground = sEquip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "";
+			const defList = sEquip.default.length === 0 ? "" : `<ul><li>${sEquip.default.map(it => EntryRenderer.getDefaultRenderer().renderEntry(it)).join("</li><li>")}</ul>`;
+			const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${EntryRenderer.getDefaultRenderer().renderEntry(sEquip.goldAlternative)} gp to buy your own equipment.</p>`;
+			$equipment.find("div").html(`${fromBackground}${defList}${goldAlt}`);
+		} else {
+			$("#equipment").hide();
+		}
 
 		// multiclassing requirements and proficiencies
 		if (ClassDisplay.curClass.multiclassing) {
@@ -316,6 +332,12 @@ class HashLoad {
 		} else {
 			$("#multiclassing").hide();
 		}
+
+		$(`#statsprof_divider`).toggle(!!(ClassDisplay.curClass.hd ||
+			ClassDisplay.curClass.proficiency ||
+			ClassDisplay.curClass.startingProficiencies ||
+			ClassDisplay.curClass.startingEquipment ||
+			ClassDisplay.curClass.multiclassing));
 
 		// FEATURE TABLE ===================================================================================================
 		renderer.resetHeaderIndex();
@@ -1333,6 +1355,7 @@ async function doPageInit () {
 	ClassBookView.initButton();
 	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
+	Omnisearch.addScrollTopFloat();
 
 	DataUtil.class.loadJSON().then((data) => {
 		addClassData(data);

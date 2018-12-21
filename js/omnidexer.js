@@ -113,6 +113,7 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		listProp: "class",
 		baseUrl: "classes.html",
 		deepIndex: (primary, it) => {
+			if (!it.subclasses) return [];
 			return it.subclasses.map(sc => ({
 				n: `${primary.parentName}; ${sc.name}`,
 				s: sc.source,

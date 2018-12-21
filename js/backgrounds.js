@@ -88,7 +88,7 @@ function addBackgrounds (data) {
 				<a id="${bgI}" href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
 					<span class="name col-4">${bg.name.replace("Variant ", "")}</span>
 					<span class="skills col-6">${skillDisplay}</span>
-					<span class="source col-2 ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)}">${Parser.sourceJsonToAbv(bg.source)}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)}">${Parser.sourceJsonToAbv(bg.source)}</span>
 					
 					<span class="uniqueid hidden">${bg.uniqueId ? bg.uniqueId : bgI}</span>
 				</a>

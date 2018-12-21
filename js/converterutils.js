@@ -307,6 +307,335 @@ class TagHit {
 	}
 }
 
+class AlignmentConvert {
+	static tryConvertAlignment (m, cbMan) {
+		const a = m.alignment;
+		if (!AlignmentConvert.ALIGNMENTS[a]) {
+			if (cbMan) cbMan(a);
+		} else {
+			m.alignment = AlignmentConvert.ALIGNMENTS[a];
+		}
+	}
+}
+AlignmentConvert.ALIGNMENTS = {
+	"lawful good": ["L", "G"],
+	"neutral good": ["N", "G"],
+	"chaotic good": ["C", "G"],
+	"chaotic neutral": ["C", "N"],
+	"lawful evil": ["L", "E"],
+	"lawful neutral": ["L", "N"],
+	"neutral evil": ["L", "E"],
+	"chaotic evil": ["C", "E"],
+
+	"good": ["G"],
+	"lawful": ["L"],
+	"neutral": ["N"],
+	"chaotic": ["C"],
+	"evil": ["E"],
+
+	"unaligned": ["U"],
+
+	"any alignment": ["A"],
+
+	"any non-good alignment": ["L", "NX", "C", "NY", "E"],
+	"any non-lawful alignment": ["NX", "C", "G", "NY", "E"],
+
+	"any chaotic alignment": ["C", "G", "NY", "E"],
+	"any evil alignment": ["L", "NX", "C", "E"],
+	"any lawful alignment": ["L", "G", "NY", "E"],
+	"any good alignment": ["L", "NX", "C", "G"],
+
+	// TODO general auto-detect for percentage-weighted alignments
+	"neutral good (50%) or neutral evil (50%)": [{alignment: ["N", "G"], chance: 50}, {
+		alignment: ["N", "E"],
+		chance: 50
+	}],
+	"chaotic good (75%) or neutral evil (25%)": [{alignment: ["C", "G"], chance: 75}, {
+		alignment: ["N", "E"],
+		chance: 25
+	}],
+	"chaotic good or chaotic neutral": [{alignment: ["C", "G"]}, {alignment: ["C", "N"]}],
+	"lawful neutral or lawful evil": [{alignment: ["L", "N"]}, {alignment: ["L", "E"]}],
+	"neutral evil (50%) or lawful evil (50%)": [{alignment: ["N", "E"], chance: 50}, {
+		alignment: ["L", "E"],
+		chance: 50
+	}]
+};
+
+class TraitsActionsTag {
+	static tryRun (m, cbMan) {
+		function doTag (prop, outProp) {
+			function isTraits () {
+				return prop === "trait";
+			}
+
+			if (m[prop]) {
+				m[prop].forEach(t => {
+					if (!t.name) return;
+					t.name = t.name.trim();
+
+					const cleanName = t.name.toLowerCase();
+					const mapped = TraitsActionsTag.tags[prop][cleanName];
+					if (mapped) {
+						m[outProp] = m[outProp] || [];
+						if (mapped === true) {
+							m[outProp].push(t.name);
+						} else {
+							m[outProp].push(mapped)
+						}
+					} else if (isTraits() && cleanName.startsWith("keen ")) {
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Keen Senses");
+					} else if (isTraits() && cleanName.startsWith("legendary resistance")) {
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Legendary Resistances");
+					} else if (isTraits() && cleanName.endsWith(" absorption")) {
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Damage Absorption");
+					} else {
+						if (cbMan) {
+							cbMan(prop, outProp, cleanName);
+						}
+					}
+				})
+			}
+		}
+		if (m.traitTags) m.traitTags = [];
+		if (m.actionTags) m.actionTags = [];
+
+		doTag("trait", "traitTags");
+		doTag("action", "actionTags");
+		doTag("reaction", "actionTags");
+
+		if (m.traitTags && !m.traitTags.length) delete m.traitTags;
+		if (m.actionTags && !m.actionTags.length) delete m.actionTags;
+	}
+}
+TraitsActionsTag.tags = { // true = map directly; string = map to this string
+	trait: {
+		"turn immunity": true,
+		"brute": true,
+		"antimagic susceptibility": true,
+		"sneak attack": true,
+		"sneak attack (1/turn)": "Sneak Attack",
+		"reckless": true,
+		"web sense": true,
+		"flyby": true,
+		"pounce": true,
+		"water breathing": true,
+
+		"turn resistance": true,
+		"turn defiance": "Turn Resistance",
+		"turning defiance": "Turn Resistance",
+		"turn resistance aura": "Turn Resistance",
+		"undead fortitude": true,
+
+		"aggressive": true,
+		"illumination": true,
+		"rampage": true,
+		"rejuvenation": true,
+		"web walker": true,
+		"incorporeal movement": true,
+
+		"keen hearing and smell": "Keen Senses",
+		"keen sight and smell": "Keen Senses",
+		"keen hearing and sight": "Keen Senses",
+		"keen hearing": "Keen Senses",
+		"keen smell": "Keen Senses",
+		"keen senses": true,
+
+		"hold breath": true,
+
+		"charge": true,
+
+		"fey ancestry": true,
+
+		"siege monster": true,
+
+		"pack tactics": true,
+
+		"regeneration": true,
+
+		"shapechanger": true,
+
+		"false appearance": true,
+
+		"spider climb": true,
+
+		"sunlight sensitivity": true,
+		"sunlight hypersensitivity": "Sunlight Sensitivity",
+		"light sensitivity": true,
+
+		"amphibious": true,
+
+		"legendary resistance (1/day)": "Legendary Resistances",
+		"legendary resistance (2/day)": "Legendary Resistances",
+		"legendary resistance (3/day)": "Legendary Resistances",
+		"legendary resistance (5/day)": "Legendary Resistances",
+
+		"magic weapon": "Magic Weapons",
+		"magic weapons": true,
+
+		"magic resistance": true,
+		"spell immunity": "Magic Resistance",
+
+		"ambush": "Ambusher",
+		"ambusher": true,
+
+		"amorphous": true,
+		"amorphous form": "Amorphous",
+
+		"death burst": true,
+		"death throes": "Death Burst",
+
+		"devil's sight": true,
+		"devil sight": "Devil's Sight",
+
+		"immutable form": true
+	},
+	action: {
+		"multiattack": true,
+		"frightful presence": true,
+		"teleport": true,
+		"swallow": true,
+		"tentacle": "Tentacles",
+		"tentacles": true
+	},
+	reaction: {
+		"parry": true
+	},
+	legendary: {
+		// unused
+	}
+};
+
+class LanguageTag {
+	static tryRun (m, cbAll, cbTracked) {
+		if (m.languages) {
+			m.languages = m.languages.trim();
+			if (m.languages === "-" ||
+				m.languages === "--" ||
+				m.languages === "\u2014" ||
+				m.languages === "\u2013" ||
+				m.languages === "\u2212" ||
+				m.languages === "none") {
+				delete m.languages;
+				return;
+			} else {
+				m.languages = m.languages.replace(/but can(not|'t) speak/ig, "but can't speak")
+			}
+
+			m.languages.split(", ").map(it => it.trim()).filter(it => it).forEach(l => {
+				if (cbAll) cbAll(l);
+
+				Object.keys(LanguageTag.LANGUAGE_MAP).forEach(k => {
+					const v = LanguageTag.LANGUAGE_MAP[k];
+
+					const re = new RegExp(`(^|[^-a-zA-Z])${k}([^-a-zA-Z]|$)`, "g");
+
+					if (re.exec(l)) {
+						if ((v === "XX" || v === "X") && (l.includes("knew in life") || l.includes("spoke in life"))) return;
+						if (/(one|the) languages? of its creator/i.exec(l)) return;
+
+						if (cbTracked) cbTracked(v);
+
+						m.languageTags = m.languageTags || [];
+						if (!m.languageTags.includes(v)) {
+							m.languageTags.push(v);
+						}
+					}
+				})
+			});
+		}
+	}
+}
+LanguageTag.LANGUAGE_MAP = {
+	"Abyssal": "AB",
+	"Aquan": "AQ",
+	"Auran": "AU",
+	"Celestial": "CE",
+	"Common": "C",
+	"can't speak": "CS",
+	"Draconic": "DR",
+	"Dwarvish": "D",
+	"Elvish": "E",
+	"Giant": "GI",
+	"Gnomish": "G",
+	"Goblin": "GO",
+	"Halfling": "H",
+	"Infernal": "I",
+	"Orc": "O",
+	"Primordial": "P",
+	"Sylvan": "S",
+	"Terran": "T",
+	"Undercommon": "U",
+	"Aarakocra": "OTH",
+	"one additional": "X",
+	"Blink Dog": "OTH",
+	"Bothii": "OTH",
+	"Bullywug": "OTH",
+	"one other language": "X",
+	"plus six more": "X",
+	"plus two more languages": "X",
+	"up to five other languages": "X",
+	"Druidic": "DU",
+	"Giant Eagle": "OTH",
+	"Giant Elk": "OTH",
+	"Giant Owl": "OTH",
+	"Gith": "GTH",
+	"Grell": "OTH",
+	"Grung": "OTH",
+	"Homarid": "OTH",
+	"Hook Horror": "OTH",
+	"Ice Toad": "OTH",
+	"Ixitxachitl": "OTH",
+	"Kruthik": "OTH",
+	"Netherese": "OTH",
+	"Olman": "OTH",
+	"Otyugh": "OTH",
+	"Primal": "OTH",
+	"Sahuagin": "OTH",
+	"Sphinx": "OTH",
+	"Thayan": "OTH",
+	"Thri-kreen": "OTH",
+	"Tlincalli": "OTH",
+	"Troglodyte": "OTH",
+	"Umber Hulk": "OTH",
+	"Vegepygmy": "OTH",
+	"Winter Wolf": "OTH",
+	"Worg": "OTH",
+	"Yeti": "OTH",
+	"Yikaria": "OTH",
+	"all": "XX",
+	"all but rarely speaks": "XX",
+	"any one language": "X",
+	"any two languages": "X",
+	"any three languages": "X",
+	"any four languages": "X",
+	"any five languages": "X",
+	"any six languages": "X",
+	"one language of its creator's choice": "X",
+	"two other languages": "X",
+	"telepathy": "TP",
+	"thieves' cant": "TC",
+	"Thieves' cant": "TC",
+	"Deep Speech": "DS",
+	"Gnoll": "OTH",
+	"Ignan": "IG",
+	"Modron": "OTH",
+	"Slaad": "OTH",
+	"all languages": "XX",
+	"any language": "X"
+};
+
+class LanguageSpeakerTag {
+	static tryRun (m) {
+		if (m.languages && (m.languages.toLowerCase().includes("can't speak") || m.languages.toLowerCase().includes("cannot speak"))) {
+			m.languageSpeaks = false;
+		}
+	}
+}
+
 class JsonClean {
 	static getClean (json) {
 		json = json.replace(JsonClean.REPLACEMENT_REGEX, (match) => JsonClean.REPLACEMENTS[match]);
@@ -329,6 +658,9 @@ if (typeof module !== "undefined") {
 		AcConvert,
 		TagAttack,
 		TagHit,
+		AlignmentConvert,
+		TraitsActionsTag,
+		LanguageTag,
 		JsonClean
 	};
 }

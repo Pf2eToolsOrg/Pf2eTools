@@ -39,9 +39,10 @@
 				<span class="input-group-addon btn-default flex-1 clickable" id="btn-loot-table">Loot Tables</span>
 				<span class="input-group-addon btn-default flex-1 clickable" id="btn-random-magic-item">Party Loot</span>
 			</div>
-			<div id="container-lootgen">
+
+			<div id="container-lootgen" class="hidden">
 				<br/>
-				<form id="controls">
+				<div id="controls">
 					<div class="input-group">
 						<span class="input-group-addon">Challenge Rating</span>
 						<select class="form-control clickable" id="cr">
@@ -57,17 +58,17 @@
 						</span>
 					</div>
 					<br/>
-					<button class="col-9 btn btn-default" id="genloot" type="button">Roll Loot!</button>
-					<button class="col-2-9 btn btn-default pull-right id-clear" type="button">Clear</button>
+					<button class="col-9 btn btn-default" id="genloot">Roll Loot!</button>
+					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
 					<p>
 						<small>Based on the tables and rules in the
 							<a href="book.html#DMG,7,treasure%20tables,0" target="_blank"><em>Dungeon Master's Guide</em>, pages 133-149.</a>
 						</small>
 					</p>
-				</form>
+				</div>
 			</div>
 
-			<div id="container-loot-table">
+			<div id="container-loot-table" class="hidden">
 				<div class="mb-2"></div>
 				<div class="input-group">
 					<span class="input-group-addon btn-default clickable" id="btn-dmg-loot-table">DMG</span>
@@ -118,7 +119,7 @@
 				</div>
 			</div>
 
-			<div id="container-random-magic-item">
+			<div id="container-random-magic-item" class="hidden">
 				<br/>
 				<p>
 					Generates a set of magical items for a party, based on the tables and rules in <a href="book.html#XGE,2,awarding%20magic%20items" target="_blank"><em>Xanathar's Guide to Everything</em>, pages 135</a>.
@@ -126,7 +127,7 @@
 				<p><i>
 					If the "Exact Level" option is selected, the output will include a proportional number of items for any partially-completed tier.
 				</i></p>
-				<form>
+				<div>
 					<div class="mb-3">
 						<div class="input-group">
 							<span class="input-group-addon" style="width: 10%" id="selectCharLevel">Character Level</span>
@@ -151,7 +152,7 @@
 							</label>
 						</span>
 					</div>
-				</form>
+				</div>
 				<br>
 				<div style="display: flex; justify-content: space-between">
 					<button class="col-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a Party</button>
@@ -171,7 +172,6 @@
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
-<script type="text/javascript" src="lib/bootstrap.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>

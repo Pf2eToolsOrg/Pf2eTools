@@ -212,7 +212,8 @@ const alignmentFilter = new Filter({
 const languageFilter = new Filter({
 	header: "Languages",
 	displayFn: (k) => languages[k],
-	umbrellaItem: ["X", "XX"]
+	umbrellaItems: ["X", "XX"],
+	umbrellaExcludes: ["CS"]
 });
 const senseFilter = new Filter({
 	header: "Senses",
@@ -227,7 +228,7 @@ const skillFilter = new Filter({
 const saveFilter = new Filter({
 	header: "Saves",
 	displayFn: Parser.attAbvToFull,
-	items: ["str", "dex", "con", "int", "wis", "cha"]
+	items: [...Parser.ABIL_ABVS]
 });
 const environmentFilter = new Filter({
 	header: "Environment",
@@ -469,23 +470,19 @@ function calculateEncounterXp (data, playerCount = ECGEN_BASE_PLAYERS) {
 	// "When making this calculation, don't count any monsters whose challenge rating is significantly below the average
 	// challenge rating of the other monsters in the group unless you think the weak monsters significantly contribute
 	// to the difficulty of the encounter." -- DMG, p. 82
-	//   -> a shamelessly vague definition, so define it as: do a moving average of the CRs in largest-first order,
-	//      stopping when the next CR is below half the current average; use the current average as the cutoff point.
 	const crCutoff = (() => {
-		let avg = null;
-		let relevantCount = null;
-		for (const it of data) {
-			if (avg == null) {
-				avg = it.cr;
-				relevantCount = it.count;
-			} else if (it.cr < avg / 2) {
-				break;
-			} else {
-				avg = ((avg *= relevantCount) + (it.cr * it.count)) / (relevantCount + it.count);
-				relevantCount += it.count;
-			}
+		// no cutoff for CR 0-2
+		if (data[0].cr <= 2) {
+			return 0;
+		} else {
+			let totalCount = 0;
+			const averageCr = data.map(it => {
+				totalCount += it.count;
+				return it.cr * it.count;
+			}).reduce((a, b) => a + b, 0) / totalCount;
+			// cutoff: creatures with less than two-thirds average CR
+			return averageCr * 0.66;
 		}
-		return avg;
 	})();
 
 	data.forEach(it => {
@@ -607,7 +604,7 @@ function addMonsters (data) {
 				<a id=${mI} href="#${UrlUtil.autoEncodeHash(mon)}" title="${mon.name}">
 					${EncounterBuilder.getButtons(mI)}
 					<span class="ecgen__name name col-4-2">${mon.name}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}${EntryRenderer.utils.getSourceSubText(mon)}" class="col-2 source ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}${EntryRenderer.utils.getSourceSubText(mon)}" class="col-2 source text-align-center ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
 					<span class="type col-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-1-7 text-align-center cr">${mon._pCr}</span>
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
@@ -797,7 +794,7 @@ function renderStatblock (mon, isScaled) {
 	function buildStatsTab () {
 		$content.append(`
 		${EntryRenderer.utils.getBorderTr()}
-		<tr><th class="name" colspan="6">Name <span class="source" title="Source book">SRC</span></th></tr>
+		<tr><th class="name mon__name--token" colspan="6">Name <span class="source" title="Source book">SRC</span></th></tr>
 		<tr><td id="sizetypealignment" colspan="6"><span id="size">${Parser.sizeAbvToFull(mon.size)}</span> <span id="type">type</span>, <span id="alignment">alignment</span></td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr><td colspan="6"><strong>Armor Class</strong> <span id="ac">## (source)</span></td></tr>
@@ -874,7 +871,7 @@ function renderStatblock (mon, isScaled) {
 			);
 		} else imgError();
 
-		$content.find("th.name").html(
+		$content.find(".mon__name--token").html(
 			`<span class="stats-name copyable" onclick="EntryRenderer.utils._handleNameClick(this, '${mon.source.escapeQuotes()}')">${displayName}</span>
 			${mon.soundClip ? getPronunciationButton() : ""}
 			<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>`
@@ -1165,51 +1162,15 @@ function renderStatblock (mon, isScaled) {
 		});
 	}
 
-	function buildFluffTab (showImages) {
-		$content.append(EntryRenderer.utils.getBorderTr());
-		const name = $(EntryRenderer.utils.getNameTr(mon));
-		name.find(`th`).css("padding-right", "0.3em");
-		$content.append(name);
-		const $tr = $(`<tr class='text'/>`);
-		$content.append($tr);
-		const $td = $(`<td colspan='6' class='text'/>`).appendTo($tr);
-		$content.append(EntryRenderer.utils.getBorderTr());
-		renderer.setFirstSection(true);
-
-		function renderFluff (data) {
-			const fluff = EntryRenderer.monster.getFluff(mon, meta, data);
-
-			if (!fluff) {
-				$td.empty();
-				$td.append(HTML_NO_INFO);
-				return;
-			}
-
-			if (showImages) {
-				if (fluff.images) {
-					fluff.images.forEach(img => $td.append(renderer.renderEntry(img, 1)));
-				} else {
-					$td.append(HTML_NO_IMAGES);
-				}
-			} else {
-				if (fluff.entries) {
-					const depth = fluff.type === "section" ? -1 : 2;
-					if (fluff.type !== "section") renderer.setFirstSection(false);
-					$td.append(renderer.renderEntry({type: fluff.type, entries: fluff.entries}, depth));
-				} else {
-					$td.append(HTML_NO_INFO);
-				}
-			}
-		}
-
-		if (ixFluff[mon.source] || mon.fluff) {
-			if (mon.fluff) renderFluff();
-			else DataUtil.loadJSON(JSON_DIR + ixFluff[mon.source]).then(renderFluff);
-		} else {
-			$td.empty();
-			if (showImages) $td.append(HTML_NO_IMAGES);
-			else $td.append(HTML_NO_INFO);
-		}
+	function buildFluffTab (isImageTab) {
+		return EntryRenderer.utils.buildFluffTab(
+			isImageTab,
+			$content,
+			mon,
+			EntryRenderer.monster.getFluff.bind(null, mon, meta),
+			`${JSON_DIR}${ixFluff[mon.source]}`,
+			(source) => ixFluff[mon.source]
+		);
 	}
 
 	// reset tabs

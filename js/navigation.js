@@ -1,228 +1,365 @@
 "use strict";
+class NavBar {
+	static init () {
+		// render the visible elements ASAP
+		window.addEventListener(
+			"DOMContentLoaded",
+			function () {
+				NavBar.initElements();
+				NavBar.highlightCurrentPage();
+			}
+		);
+		window.addEventListener("load", NavBar.initHandlers);
+	}
 
-window.addEventListener(
-	"DOMContentLoaded",
-	function () {
-		navigation();
-		currentPage();
-	}, false
-);
+	static initElements () {
+		const navBar = document.getElementById("navbar");
 
-const CHILD_PAGES = {
+		addLi(navBar, "5etools.html", "Home");
+
+		const ulRules = addDropdown(navBar, "Rules");
+		addLi(ulRules, "quickreference.html", "Quick Reference");
+		addLi(ulRules, "variantrules.html", "Variant & Optional Rules");
+		addLi(ulRules, "tables.html", "Tables");
+		addDivider(ulRules);
+		addLi(ulRules, "book.html", "Dungeon Master's Guide", false, "DMG");
+		addLi(ulRules, "book.html", "Monster Manual", false, "MM");
+		addLi(ulRules, "book.html", "Player's Handbook", false, "PHB");
+		addDivider(ulRules);
+		addLi(ulRules, "book.html", "Guildmasters' Guide to Ravnica", false, "GGR");
+		addLi(ulRules, "book.html", "Mordenkainen's Tome of Foes", false, "MTF");
+		addLi(ulRules, "book.html", "Sword Coast Adventurer's Guide", false, "SCAG");
+		addLi(ulRules, "book.html", "Volo's Guide to Monsters", false, "VGM");
+		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", false, "XGE");
+		addDivider(ulRules);
+		addLi(ulRules, "book.html", "Adventurers League", false, "AL");
+		addDivider(ulRules);
+		addLi(ulRules, "books.html", "View All/Homebrew");
+
+		const ulPlayers = addDropdown(navBar, "Player Options");
+		addLi(ulPlayers, "classes.html", "Classes");
+		addLi(ulPlayers, "optionalfeatures.html", "Class Feature Options");
+		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
+		addLi(ulPlayers, "feats.html", "Feats");
+		addLi(ulPlayers, "races.html", "Races");
+		addLi(ulPlayers, "lifegen.html", "This Is Your Life");
+		addLi(ulPlayers, "names.html", "Names");
+
+		const ulDms = addDropdown(navBar, "DM Tools");
+		addLi(ulDms, "dmscreen.html", "DM Screen");
+		addDivider(ulDms);
+		const ulAdventures = addDropdown(ulDms, "Adventures", true);
+		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
+		addDivider(ulAdventures);
+		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", true, "LMoP");
+		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", true, "HotDQ");
+		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", true, "RoT");
+		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", true, "LMoP");
+		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", true, "HotDQ");
+		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", true, "RoT");
+		addLi(ulAdventures, "adventure.html", "Princes of the Apocalypse", true, "PotA");
+		addLi(ulAdventures, "adventure.html", "Out of the Abyss", true, "OotA");
+		addLi(ulAdventures, "adventure.html", "Curse of Strahd", true, "CoS");
+		addLi(ulAdventures, "adventure.html", "Storm King's Thunder", true, "SKT");
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Sunless Citadel", true, "TftYP-TSC");
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Forge of Fury", true, "TftYP-TFoF");
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Hidden Shrine of Tamoachan", true, "TftYP-THSoT");
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: White Plume Mountain", true, "TftYP-WPM");
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Dead in Thay", true, "TftYP-DiT");
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Against the Giants", true, "TftYP-AtG");
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Tomb of Horrors", true, "TftYP-ToH");
+		addLi(ulAdventures, "adventure.html", "Tomb of Annihilation", true, "ToA");
+		addLi(ulAdventures, "adventure.html", "The Tortle Package", true, "TTP");
+		addLi(ulAdventures, "adventure.html", "Waterdeep: Dragon Heist", true, "WDH");
+		addLi(ulAdventures, "adventure.html", "Lost Laboratory of Kwalish", true, "LLK");
+		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", true, "WDMM");
+		addLi(ulAdventures, "adventure.html", "Krenko's Way", true, "KKW");
+		addLi(ulDms, "crcalculator.html", "CR Calculator");
+		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");
+		addLi(ulDms, "encountergen.html", "Encounter Generator");
+		addLi(ulDms, "lootgen.html", "Loot Generator");
+		addLi(ulDms, "objects.html", "Objects");
+		addLi(ulDms, "ships.html", "Ships");
+		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
+
+		const ulReferences = addDropdown(navBar, "References");
+		addLi(ulReferences, "bestiary.html", "Bestiary");
+		addLi(ulReferences, "conditionsdiseases.html", "Conditions & Diseases");
+		addLi(ulReferences, "deities.html", "Deities");
+		addLi(ulReferences, "items.html", "Items");
+		addLi(ulReferences, "rewards.html", "Other Rewards");
+		addLi(ulReferences, "psionics.html", "Psionics");
+		addLi(ulReferences, "spells.html", "Spells");
+
+		addLi(navBar, "statgen.html", "Statgen");
+
+		const ulUtils = addDropdown(navBar, "Utilities");
+		addLi(ulUtils, "blacklist.html", "Content Blacklist");
+		addLi(ulUtils, "managebrew.html", "Manage All Homebrew");
+		addDivider(ulUtils);
+		addLi(ulUtils, "demo.html", "Renderer Demo");
+		addLi(ulUtils, "converter.html", "Text Converter");
+		addDivider(ulUtils);
+		addLi(ulUtils, "roll20.html", "Roll20 Script Help");
+		addLi(ulUtils, "makeshaped.html", "Roll20 Shaped Sheet JS Builder");
+		addDivider(ulUtils);
+		addLi(ulUtils, "donate.html", "Donate");
+
+		addNightModeToggle(navBar);
+
+		/**
+		 * Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
+		 * @param appendTo - Element to append this link to.
+		 * @param aHref - Where does this link to.
+		 * @param aText - What text does this link have.
+		 * @param [isSide] - True if this item
+		 * @param [aHash] - Optional hash to be appended to the base href
+		 */
+		function addLi (appendTo, aHref, aText, isSide, aHash) {
+			const hashPart = aHash ? `#${aHash}`.toLowerCase() : "";
+
+			const li = document.createElement("li");
+			li.setAttribute("role", "presentation");
+			li.setAttribute("id", aText.toLowerCase().replace(/\s+/g, ""));
+			li.setAttribute("data-page", `${aHref}${hashPart}`);
+			if (isSide) {
+				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this) }
+			} else {
+				li.onmouseenter = function () { NavBar.handleItemMouseEnter(this) }
+			}
+
+			const a = document.createElement("a");
+			a.href = `${aHref}${hashPart}`;
+			a.innerHTML = aText;
+
+			li.appendChild(a);
+			appendTo.appendChild(li);
+		}
+
+		function addDivider (appendTo) {
+			const li = document.createElement("li");
+			li.setAttribute("role", "presentation");
+			li.className = "divider";
+
+			appendTo.appendChild(li);
+		}
+
+		/**
+		 * Adds a new dropdown starting list to the navigation bar
+		 * @param {String} appendTo - Element to append this link to.
+		 * @param {String} text - Dropdown text.
+		 * @param {boolean} [isSide=false] - If this is a sideways dropdown.
+		 */
+		function addDropdown (appendTo, text, isSide = false) {
+			const li = document.createElement("li");
+			li.setAttribute("role", "presentation");
+			li.className = "dropdown";
+			if (isSide) {
+				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this); };
+			} else {
+				li.onmouseenter = function () { NavBar.handleItemMouseEnter(this); };
+			}
+
+			const a = document.createElement("a");
+			a.className = "dropdown-toggle";
+			a.href = "#";
+			a.setAttribute("role", "button");
+			a.onclick = function (event) { NavBar.handleDropdownClick(this, event, isSide); };
+			if (isSide) {
+				a.onmouseenter = function () { NavBar.handleSideDropdownMouseEnter(this); };
+				a.onmouseleave = function () { NavBar.handleSideDropdownMouseLeave(this); };
+			}
+			a.innerHTML = `${text} <span class="caret ${isSide ? "caret--right" : ""}"></span>`;
+
+			const ul = document.createElement("li");
+			ul.className = `dropdown-menu ${isSide ? "dropdown-menu--side" : ""}`;
+			ul.onclick = function (event) { event.stopPropagation(); };
+
+			li.appendChild(a);
+			li.appendChild(ul);
+			appendTo.appendChild(li);
+			return ul;
+		}
+
+		/**
+		 * Special LI for the Day/Night Switcher
+		 */
+		function addNightModeToggle (appendTo) {
+			const li = document.createElement("li");
+			li.setAttribute("role", "presentation");
+
+			const a = document.createElement("a");
+			a.href = "#";
+			a.className = "nightModeToggle";
+			a.onclick = function (event) { event.preventDefault(); styleSwitcher.toggleActiveStyleSheet(); };
+			a.innerHTML = styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode";
+
+			li.appendChild(a);
+			appendTo.appendChild(li);
+		}
+	}
+
+	static highlightCurrentPage () {
+		let currentPage = window.location.pathname;
+		currentPage = currentPage.substr(currentPage.lastIndexOf("/") + 1);
+
+		if (!currentPage) currentPage = "5etools.html";
+
+		let isSecondLevel = false;
+		if (currentPage.toLowerCase() === "book.html" || currentPage.toLowerCase() === "adventure.html") {
+			const hashPart = window.location.hash.split(",")[0];
+			if (hashPart) {
+				if (currentPage.toLowerCase() === "adventure.html") isSecondLevel = true;
+				currentPage += hashPart.toLowerCase();
+			}
+		}
+		if (currentPage.toLowerCase() === "adventures.html") isSecondLevel = true;
+
+		try {
+			let current = document.querySelector(`li[data-page="${currentPage}"]`);
+			if (current == null && currentPage.includes("#")) {
+				currentPage = currentPage.split("#")[0];
+				if (NavBar.ALT_CHILD_PAGES[currentPage]) currentPage = NavBar.ALT_CHILD_PAGES[currentPage];
+				current = document.querySelector(`li[data-page="${currentPage}"]`);
+			}
+			current.parentNode.childNodes.forEach(n => n.classList && n.classList.remove("active"));
+			current.classList.add("active");
+
+			let closestLi = current.parentNode;
+			const setNearestParentActive = () => {
+				while (closestLi !== null && closestLi.nodeName !== "LI") closestLi = closestLi.parentNode;
+				closestLi && closestLi.classList.add("active");
+			};
+			setNearestParentActive();
+			if (isSecondLevel) {
+				closestLi = closestLi.parentNode;
+				setNearestParentActive();
+			}
+		} catch (ignored) { setTimeout(() => { throw ignored }); }
+	}
+
+	static initHandlers () {
+		NavBar._dropdowns = [...document.getElementById("navbar").querySelectorAll(`li.dropdown`)];
+		document.addEventListener("click", () => NavBar._dropdowns.forEach(ele => ele.classList.remove("open")));
+		document.addEventListener("mousemove", evt => {
+			NavBar._mouseX = evt.clientX;
+			NavBar._mouseY = evt.clientY;
+		});
+
+		NavBar._clearAllTimers();
+	}
+
+	static handleDropdownClick (ele, event, isSide) {
+		event.preventDefault();
+		event.stopPropagation();
+		if (isSide) return;
+		NavBar._openDropdown(ele);
+	}
+
+	static _openDropdown (fromLink) {
+		const noRemove = new Set();
+		let parent = fromLink.parentNode;
+		parent.classList.add("open");
+		noRemove.add(parent);
+
+		while (parent.nodeName !== "NAV") {
+			parent = parent.parentNode;
+			if (parent.nodeName === "LI") {
+				parent.classList.add("open");
+				noRemove.add(parent);
+			}
+		}
+
+		NavBar._dropdowns.filter(ele => !noRemove.has(ele)).forEach(ele => ele.classList.remove("open"));
+	}
+
+	static handleItemMouseEnter (ele) {
+		const $ele = $(ele);
+		const timerIds = $ele.siblings("[data-timer-id]").map((i, e) => ({$ele: $(e), timerId: $(e).data("timer-id")})).get();
+		timerIds.forEach(({$ele, timerId}) => {
+			if (NavBar._timersOpen[timerId]) {
+				clearTimeout(NavBar._timersOpen[timerId]);
+				delete NavBar._timersOpen[timerId];
+			}
+
+			if (!NavBar._timersClose[timerId] && $ele.hasClass("open")) {
+				const getTimeoutFn = () => {
+					if (NavBar._timerMousePos[timerId]) {
+						const [xStart, yStart] = NavBar._timerMousePos[timerId];
+						// for generalised use, this should be made check against the bounding box for the side menu
+						// and possibly also check Y pos; e.g.
+						// || NavBar._mouseY > yStart + NavBar.MIN_MOVE_PX
+						if (NavBar._mouseX > xStart + NavBar.MIN_MOVE_PX) {
+							NavBar._timerMousePos[timerId] = [NavBar._mouseX, NavBar._mouseY];
+							NavBar._timersClose[timerId] = setTimeout(() => getTimeoutFn(), NavBar.DROP_TIME / 2);
+						} else {
+							$ele.removeClass("open");
+							delete NavBar._timersClose[timerId];
+						}
+					} else {
+						$ele.removeClass("open");
+						delete NavBar._timersClose[timerId];
+					}
+				};
+
+				NavBar._timersClose[timerId] = setTimeout(() => getTimeoutFn(), NavBar.DROP_TIME);
+			}
+		});
+	}
+
+	static handleSideItemMouseEnter (ele) {
+		const timerId = $(ele).closest(`li.dropdown`).data("timer-id");
+		if (NavBar._timersClose[timerId]) {
+			clearTimeout(NavBar._timersClose[timerId]);
+			delete NavBar._timersClose[timerId];
+			delete NavBar._timerMousePos[timerId];
+		}
+	}
+
+	static handleSideDropdownMouseEnter (ele) {
+		const $ele = $(ele);
+		const timerId = $ele.parent().data("timer-id") || NavBar._timerId++;
+		$ele.parent().attr("data-timer-id", timerId);
+
+		if (NavBar._timersClose[timerId]) {
+			clearTimeout(NavBar._timersClose[timerId]);
+			delete NavBar._timersClose[timerId];
+		}
+
+		if (!NavBar._timersOpen[timerId]) {
+			NavBar._timersOpen[timerId] = setTimeout(() => {
+				NavBar._openDropdown(ele);
+				delete NavBar._timersOpen[timerId];
+				NavBar._timerMousePos[timerId] = [NavBar._mouseX, NavBar._mouseY];
+			}, NavBar.DROP_TIME);
+		}
+	}
+
+	static handleSideDropdownMouseLeave (ele) {
+		const $ele = $(ele);
+		if (!$ele.parent().data("timer-id")) return;
+		const timerId = $ele.parent().data("timer-id");
+		clearTimeout(NavBar._timersOpen[timerId]);
+		delete NavBar._timersOpen[timerId];
+	}
+
+	static _clearAllTimers () {
+		Object.entries(NavBar._timersOpen).forEach(([k, v]) => {
+			clearTimeout(v);
+			delete NavBar._timersOpen[k];
+		});
+	}
+}
+NavBar.DROP_TIME = 250;
+NavBar.MIN_MOVE_PX = 7;
+NavBar.ALT_CHILD_PAGES = {
+	"book.html": "books.html",
 	"adventure.html": "adventures.html"
 };
-
-const ALT_CHILD_PAGES = {
-	"book.html": "books.html"
-};
-
-function currentPage () {
-	let currentPage = window.location.pathname;
-	currentPage = currentPage.substr(currentPage.lastIndexOf('/') + 1);
-
-	if (!currentPage) currentPage = "5etools.html";
-	if (CHILD_PAGES[currentPage]) currentPage = CHILD_PAGES[currentPage];
-
-	if (currentPage.toLowerCase() === "book.html") {
-		const hashPart = window.location.hash.split(",")[0];
-		if (hashPart) {
-			currentPage += hashPart.toLowerCase();
-		}
-	}
-
-	try {
-		let current = document.querySelector(`li[data-page="${currentPage}"]`);
-		if (current == null && currentPage.includes("#")) {
-			currentPage = currentPage.split("#")[0];
-			if (ALT_CHILD_PAGES[currentPage]) currentPage = ALT_CHILD_PAGES[currentPage];
-			current = document.querySelector(`li[data-page="${currentPage}"]`);
-		}
-		current.parentNode.childNodes.forEach(n => n.classList && n.classList.remove("active"));
-		current.classList.add("active");
-		let closestLi = current.parentNode;
-		while (closestLi !== null && closestLi.nodeName !== "LI") closestLi = closestLi.parentNode;
-		closestLi && closestLi.classList.add("active");
-	} catch (ignored) {
-		setTimeout(() => { throw ignored });
-	}
-}
-
-function navigation () {
-	LI('navbar', '5etools.html', 'Home');
-
-	LIDropdown('navbar', 'rules', 'dropdown');
-	A('rules', 'ruleOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Rules <span class='caret'></span>");
-	UL('rules', 'ul_rules', 'dropdown-menu');
-	LI('ul_rules', 'quickreference.html', 'Quick Reference');
-	LI('ul_rules', 'variantrules.html', 'Variant & Optional Rules');
-	LI('ul_rules', 'tables.html', 'Tables');
-	LIDivider('ul_rules');
-	LI('ul_rules', 'book.html', "Dungeon Master's Guide", "DMG");
-	LI('ul_rules', 'book.html', "Monster Manual", "MM");
-	LI('ul_rules', 'book.html', "Player's Handbook", "PHB");
-	LIDivider('ul_rules');
-	LI('ul_rules', 'book.html', "Guildmasters' Guide to Ravnica", "GGR");
-	LI('ul_rules', 'book.html', "Mordenkainen's Tome of Foes", "MTF");
-	LI('ul_rules', 'book.html', "Sword Coast Adventurer's Guide", "SCAG");
-	LI('ul_rules', 'book.html', "Volo's Guide to Monsters", "VGM");
-	LI('ul_rules', 'book.html', "Xanathar's Guide to Everything", "XGE");
-	LIDivider('ul_rules');
-	LI('ul_rules', 'book.html', "Adventurers League", "AL");
-	LIDivider('ul_rules');
-	LI('ul_rules', 'books.html', "View All/Homebrew");
-
-	LIDropdown('navbar', 'players', 'dropdown');
-	A('players', 'playerOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Player Options <span class='caret'></span>");
-	UL('players', 'ul_players', 'dropdown-menu');
-	LI('ul_players', 'classes.html', 'Classes');
-	LI('ul_players', 'optionalfeatures.html', 'Class Feature Options');
-	LI('ul_players', 'backgrounds.html', 'Backgrounds');
-	LI('ul_players', 'feats.html', 'Feats');
-	LI('ul_players', 'races.html', 'Races');
-	LI('ul_players', 'lifegen.html', 'This Is Your Life');
-	LI('ul_players', 'names.html', 'Names');
-
-	LIDropdown('navbar', 'dms', 'dropdown');
-	A('dms', 'dmOption', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "DM Tools <span class='caret'></span>");
-	UL('dms', 'ul_dms', 'dropdown-menu');
-	LI('ul_dms', 'adventures.html', 'Adventures');
-	LI('ul_dms', 'crcalculator.html', 'CR Calculator');
-	LI('ul_dms', 'cultsboons.html', 'Cults & Demonic Boons');
-	LI('ul_dms', 'dmscreen.html', 'DM Screen');
-	LI('ul_dms', 'encountergen.html', 'Encounter Generator');
-	LI('ul_dms', 'lootgen.html', 'Loot Generator');
-	LI('ul_dms', 'objects.html', 'Objects');
-	LI('ul_dms', 'ships.html', 'Ships');
-	LI('ul_dms', 'trapshazards.html', 'Traps & Hazards');
-
-	LIDropdown('navbar', 'references', 'dropdown');
-	A('references', 'references', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "References <span class='caret'></span>");
-	UL('references', 'ul_references', 'dropdown-menu');
-	LI('ul_references', 'bestiary.html', 'Bestiary');
-	LI('ul_references', 'conditionsdiseases.html', 'Conditions & Diseases');
-	LI('ul_references', 'deities.html', 'Deities');
-	LI('ul_references', 'items.html', 'Items');
-	LI('ul_references', 'rewards.html', 'Other Rewards');
-	LI('ul_references', 'psionics.html', 'Psionics');
-	LI('ul_references', 'spells.html', 'Spells');
-
-	LI('navbar', 'statgen.html', 'Statgen');
-
-	LIDropdown('navbar', 'utils', 'dropdown');
-	A('utils', 'utils', 'dropdown-toggle', 'dropdown', '#', 'button', 'true', 'false', "Utilities <span class='caret'></span>");
-	UL('utils', 'ul_utils', 'dropdown-menu');
-	LI('ul_utils', 'blacklist.html', 'Content Blacklist');
-	LI('ul_utils', 'managebrew.html', 'Manage All Homebrew');
-	LIDivider('ul_utils');
-	LI('ul_utils', 'demo.html', 'Renderer Demo');
-	LI('ul_utils', 'converter.html', 'Text Converter');
-	LIDivider('ul_utils');
-	LI('ul_utils', 'roll20.html', 'Roll20 Script Help');
-	LI('ul_utils', 'makeshaped.html', 'Roll20 Shaped Sheet JS Builder');
-	LIDivider('ul_utils');
-	LI('ul_utils', 'donate.html', 'Donate');
-
-	LISwitcher('navbar', 'daynightMode', 'nightModeToggle', '#', 'styleSwitcher.toggleActiveStyleSheet(); return false;');
-
-	/**
-	 * Adds a link for the LIDropdowns
-	 * @param {String} append_to_id - Which ID does this link belong too .
-	 * @param {String} _id - What ID should this link have.
-	 * @param {String} _class - What class(es) should this link have.
-	 * @param {String} _datatoggle - What type of datatoggle.
-	 * @param {String} _href - Where does this link to.
-	 * @param {String} _role - Specific role.
-	 * @param {String} _ariahaspop - Aria has pop.
-	 * @param {String} _ariaexpanded - Default state.
-	 * @param {String} _text - Text of the link.
-	 */
-	function A (append_to_id, _id, _class, _datatoggle, _href, _role, _ariahaspop, _ariaexpanded, _text) {
-		const a = document.createElement('a');
-		a.id = _id;
-		a.className = _class;
-		a.setAttribute('data-toggle', _datatoggle);
-		a.href = _href;
-		a.setAttribute('role', _role);
-		a.setAttribute('aria-haspopup', _ariahaspop);
-		a.setAttribute('aria-expanded', _ariaexpanded);
-		a.innerHTML = _text;
-
-		const appendTo = document.getElementById(append_to_id);
-		appendTo.appendChild(a);
-	}
-
-	/**
-	 * Adds a new list to the navigation bar
-	 * @param {String} append_to_id - Which ID does this link belong too .
-	 * @param {String} ul_id - What ID should this UL have.
-	 * @param {String} _class - What class(es) should this link have.
-	 */
-	function UL (append_to_id, ul_id, _class) {
-		const ul = document.createElement('ul');
-		ul.id = ul_id;
-		ul.className = _class;
-
-		const appendTo = document.getElementById(append_to_id);
-		appendTo.appendChild(ul);
-	}
-
-	/**
-	 * Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
-	 * @param append_to_id - Which ID does this link belong too .
-	 * @param a_href - Where does this link to.
-	 * @param a_text - What text does this link have.
-	 * @param a_hash - Optional hash to be appended to the base href
-	 */
-	function LI (append_to_id, a_href, a_text, a_hash) {
-		const hashPart = a_hash ? `#${a_hash}`.toLowerCase() : "";
-		document.querySelector(`#${append_to_id}`).innerHTML += `
-			<li role="presentation" id="${a_text.toLowerCase().replace(/\s+/g, '')}" data-page="${a_href}${hashPart}">
-				<a href="${a_href}${hashPart}">${a_text}</a>
-			</li>
-		`;
-	}
-
-	function LIDivider (append_to_id) {
-		document.querySelector(`#${append_to_id}`).innerHTML += `<li role="presentation" class="divider"></li>`;
-	}
-
-	/**
-	 * Adds a new dropdown starting list to the navigation bar
-	 * @param {String} append_to_id - Which ID does this link belong too .
-	 * @param {String} li_id - What ID should this LI have.
-	 * @param {String} _class - What class(es) should this LI have.
-	 */
-	function LIDropdown (append_to_id, li_id, _class) {
-		const li = document.createElement('li');
-		li.id = li_id;
-		li.setAttribute('role', 'presentation');
-		li.className = _class;
-
-		const appendTo = document.getElementById(append_to_id);
-		appendTo.appendChild(li);
-	}
-
-	/**
-	 * Special LI for the Day/Night Switcher
-	 * @param {String} append_to_id - Which ID does this link belong too .
-	 * @param {String} li_id - What ID should this LI have.
-	 * @param {String} a_class - What class(es) should this link have.
-	 * @param {String} a_href - Where does this link to.
-	 * @param {Function} a_onclick - What should the link do when you click on it.
-	 */
-	function LISwitcher (append_to_id, li_id, a_class, a_href, a_onclick) {
-		const a = document.createElement('a');
-		a.href = a_href;
-		a.className = a_class;
-		a.setAttribute('onclick', a_onclick);
-		a.innerHTML = styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode";
-
-		const li = document.createElement('li');
-		li.id = li_id;
-		li.setAttribute('role', 'presentation');
-		li.appendChild(a);
-
-		const appendTo = document.getElementById(append_to_id);
-		appendTo.appendChild(li);
-	}
-}
+NavBar._timerId = 1;
+NavBar._timersOpen = {};
+NavBar._timersClose = {};
+NavBar._timerMousePos = {};
+NavBar._mouseX = null;
+NavBar._mouseY = null;
+NavBar.init();

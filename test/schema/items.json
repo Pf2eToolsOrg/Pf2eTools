@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.6",
+	"version": "1.2.0",
 	"type": "object",
 	"definitions": {
 		"item": {
@@ -212,6 +212,13 @@
 					"items": {
 						"type": "string"
 					}
+				},
+				"items": {
+					"description": "This is required for itemGroup entries.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				}
 			},
 			"required": [
@@ -225,7 +232,6 @@
 	"properties": {
 		"item": {
 			"type": "array",
-			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/item"
 			}
@@ -233,7 +239,6 @@
 		"itemGroup": {
 			"description": "Used to create fake item entries for groups of related items, often referred to as a single item (e.g. arcane foci)",
 			"type": "array",
-			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/item"
 			}
