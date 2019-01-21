@@ -4098,13 +4098,23 @@ DataUtil = {
 			delete data._meta.dependencies;
 		}
 
-		if (data._meta && data._meta.additionalSources) {
-			await Promise.all(Object.entries(data._meta.additionalSources).map(async ([prop, sources]) => {
-				const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
-				const additionalData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
-				additionalData.forEach(ad => data[prop] = (data[prop] || []).concat(ad[prop]));
+		if (data._meta && data._meta.otherSources) {
+			await Promise.all(Object.entries(data._meta.otherSources).map(async ([prop, sources]) => {
+				const toLoads = await Promise.all(Object.entries(sources).map(async ([source, findWith]) => ({
+					findWith,
+					url: await DataUtil.pGetLoadableByMeta(prop, source)
+				})));
+
+				const additionalData = await Promise.all(toLoads.map(async ({findWith, url}) => ({findWith, sourceData: await DataUtil.loadJSON(url)})));
+
+				additionalData.forEach(dataAndSource => {
+					const findWith = dataAndSource.findWith;
+					const ad = dataAndSource.sourceData;
+					const toAppend = ad[prop].filter(it => it.otherSources && it.otherSources.find(os => os.source === findWith));
+					if (toAppend.length) data[prop] = (data[prop] || []).concat(toAppend);
+				});
 			}));
-			delete data._meta.additionalSources;
+			delete data._meta.otherSources;
 		}
 	},
 

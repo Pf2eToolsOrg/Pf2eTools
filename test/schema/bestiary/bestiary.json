@@ -1358,12 +1358,12 @@
 						}
 					}
 				},
-				"additionalSources": {
+				"otherSources": {
 					"type": "object",
 					"properties": {
 						"monster": {
-							"type": "array",
-							"items": {"type": "string"}
+							"description": "Keys are other sources to be loaded; values are `otherSources` sources from that source to search for.",
+							"type": "object"
 						}
 					}
 				}
