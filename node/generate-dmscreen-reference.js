@@ -16,7 +16,7 @@ const index = utB.UtilBookReference.getIndex(
 
 fs.writeFileSync("data/generated/bookref-dmscreen.json", JSON.stringify(index).replace(/\s+\u2014\s+?/g, "\\u2014"), "utf8");
 
-function flattenReferenceIndex (ref) {
+function flattenReferenceIndex (ref, skipHeaders) {
 	const outMeta = {
 		name: {},
 		id: {},
@@ -54,7 +54,8 @@ function flattenReferenceIndex (ref) {
 				meta.section[c.name] = sectionId++;
 			}
 
-			c.headers.forEach(h => {
+			if (skipHeaders) return;
+			(c.headers || []).forEach(h => {
 				out.push({
 					id: indexId++,
 					b: meta.id[book.id], // book

@@ -1,4 +1,5 @@
 "use strict";
+
 const JSON_URL = "data/conditionsdiseases.json";
 const entryRenderer = EntryRenderer.getDefaultRenderer();
 
@@ -52,15 +53,17 @@ async function onJsonLoad (data) {
 	addConditions(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
+			BrewUtil.bind({filterBox, sourceFilter});
 			await ListUtil.pLoadState();
+			RollerUtil.addListRollButton();
+			ListUtil.addListShowHide();
 
 			History.init(true);
-			RollerUtil.addListRollButton();
 		});
 }
 

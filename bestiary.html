@@ -28,6 +28,84 @@
 		#wrp-profbonusdice {
 			display: inline-block;
 		}
+
+		.ecgen_active .row--bestiary_sublist {
+			cursor: default;
+		}
+
+		.ecgen_active .row--bestiary_sublist:hover {
+			background: initial;
+		}
+
+		.ecgen__players_head_advanced {
+			display: none;
+			align-items: center;
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 2px;
+			padding-bottom: 3px;
+			font-variant: small-caps;
+		}
+
+		.ecgen__group_lhs--advanced {
+			overflow-x: auto;
+		}
+
+		.ecgen__group_lhs--advanced .ecgen__players_head_simple {
+			display: none;
+		}
+
+		.ecgen__group_lhs--advanced .ecgen__players_head_advanced {
+			display: inline-flex;
+		}
+
+		.ecgen__del_players_filler {
+			width: 16px;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.ecgen__player_advanced_flex {
+			align-items: center;
+		}
+
+		.ecgen__player_advanced__name,
+		.ecgen__player_advanced__name_head {
+			width: 100px;
+		}
+
+		.ecgen__player_advanced_extra_foot {
+			display: flex;
+			align-items: baseline;
+			justify-content: center;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.ecgen__player_advanced__level {
+			text-align: right;
+		}
+
+		.ecgen__player_advanced_narrow {
+			width: 40px;
+		}
+
+		.ecgen__wrp_add_players {
+			display: flex;
+		}
+
+		.ecgen__wrp_add_players_btn_wrp {
+			width: calc(140px + 0.5rem);
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.ecgen__player_head_tall {
+			height: 22px;
+		}
+
+		.ecgen__advanced_help {
+			display: none;
+		}
 	</style>
 </head>
 
@@ -56,9 +134,9 @@
 
 			<div id="filtertools" class="sortlabel btn-group">
 				<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 				<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
 				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR  <span class="caret_wrp"></span></button>
+				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 			</div>
 
 			<ul class="list monsters">
@@ -71,8 +149,8 @@
 				<div class="row">
 					<div class="col-12 text-align-right">
 						<div class="btn-group">
-							<button class="btn btn-info ecgen_rng" data-mode="medium">Random Medium</button>
-							<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+							<button class="btn btn-primary ecgen_rng" data-mode="medium">Random Medium</button>
+							<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown">
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
@@ -132,24 +210,47 @@
 				<h3>Group Info</h3>
 				<div class="row">
 					<!-- LHS -->
-					<div class="col-6">
-						<div class="row">
-							<div class="col-3">Players:</div>
-							<div class="col-3">Level:</div>
+					<div class="col-8 ecgen__group_lhs">
+						<div class="row ecgen__players_head_simple">
+							<div class="col-2">Players:</div>
+							<div class="col-2">Level:</div>
+						</div>
+
+						<div class="ecgen__players_head_advanced">
+							<div class="ecgen__player_advanced__name_head mr-1 ecgen__player_head_tall">Name</div>
+							<div class="ecgen__player_advanced_narrow text-align-center mr-1 ecgen__player_head_tall">Level</div>
+							<button class="btn btn-primary btn-xs ecgen__advanced_add_col" onclick="encounterBuilder.addAdvancedColumn()" title="Add Column">
+								<span class="glyphicon glyphicon-list-alt"></span>
+							</button>
 						</div>
 
 
-						<div class="row ecgen__wrp_add_players">
-							<div class="col-12">
-								<button class="btn btn-info btn-xs ecgen__add_players">
+						<div class="ecgen__wrp_add_players mb-1">
+							<div class="ecgen__wrp_add_players_btn_wrp">
+								<button class="btn btn-primary btn-xs ecgen__add_players">
 									<span class="glyphicon glyphicon-plus"></span> Add Another Level
 								</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<label class="inline-flex" style="font-weight: initial;">
+									<span style="margin-right: 5px;">Advanced Mode</span>
+									<input type="checkbox" class="ecgen__players_advanced">
+								</label>
+							</div>
+						</div>
+
+						<div class="row ecgen__advanced_help">
+							<div class="col-12">
+								<i>Additional columns will be imported into the DM Screen.</i>
 							</div>
 						</div>
 					</div>
 
 					<!-- RHS -->
-					<div class="col-6 text-align-right">
+					<div class="col-4 text-align-right">
 						<div class="ecgen__easy">Easy: ? XP</div>
 						<div class="ecgen__medium">Medium: ? XP</div>
 						<div class="ecgen__hard">Hard: ? XP</div>
@@ -210,6 +311,7 @@
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/bestiary.js"></script>
+<script type="text/javascript" src="js/bestiary-encounterbuilder.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

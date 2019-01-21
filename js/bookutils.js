@@ -314,7 +314,9 @@ const BookUtil = {
 			const textStack = [];
 			BookUtil._renderer.setFirstSection(true);
 			BookUtil._renderer.resetHeaderIndex();
-			BookUtil._renderer.recursiveEntryRender(data[chapter], textStack);
+			// TODO use -1 universally as "entire book"
+			if (chapter === -1) data.forEach(d => BookUtil._renderer.recursiveEntryRender(d, textStack));
+			else BookUtil._renderer.recursiveEntryRender(data[chapter], textStack);
 			BookUtil.renderArea.append(`<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>`);
 			renderNavButtons();
 
@@ -383,17 +385,17 @@ const BookUtil = {
 		$body.on(`mousedown`, `.entry-title-inner`, function (evt) {
 			evt.preventDefault();
 		});
-		$body.on(`click`, `.entry-title-inner`, function (evt) {
+		$body.on(`click`, `.entry-title-inner`, async function (evt) {
 			const $this = $(this);
 			const text = $this.text().trim().replace(/\.$/, "");
 
 			if (evt.shiftKey) {
-				copyText(text);
+				await MiscUtil.pCopyTextToClipboard(text);
 				JqueryUtil.showCopiedEffect($this);
 			} else {
 				const hashParts = [BookUtil.curRender.chapter, text, $this.parent().data("title-relative-index")].map(it => UrlUtil.encodeForHash(it));
 				const toCopy = [`${window.location.href.split("#")[0]}#${BookUtil.curRender.curAdvId}`, ...hashParts];
-				copyText(toCopy.join(HASH_PART_SEP));
+				await MiscUtil.pCopyTextToClipboard(toCopy.join(HASH_PART_SEP));
 				JqueryUtil.showCopiedEffect($this, "Copied link!");
 			}
 		});
@@ -429,7 +431,8 @@ const BookUtil = {
 			}
 		}
 
-		const [bookId, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
+		const [bookIdRaw, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
+		const bookId = decodeURIComponent(bookIdRaw);
 		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 		if (fromIndex && !fromIndex.uniqueId) pHandleFound(fromIndex);
 		else if (fromIndex && fromIndex.uniqueId) { // it's homebrew
@@ -440,9 +443,9 @@ const BookUtil = {
 					if (!bookData) handleNotFound();
 					pHandleFound(fromIndex, bookData);
 				})
-				.catch(() => {
+				.catch(e => {
 					BrewUtil.pPurgeBrew();
-					handleNotFound();
+					setTimeout(() => { throw e; });
 				});
 		} else handleNotFound();
 	},
@@ -512,7 +515,12 @@ const BookUtil = {
 					if (e.key === "Enter" && noModifierKeys(e)) {
 						const term = $srch.val();
 						if (isPageMode) {
-							if (!/^\d+$/.exec(term.trim())) return alert(`Please enter a valid page number.`);
+							if (!/^\d+$/.exec(term.trim())) {
+								return JqueryUtil.doToast({
+									content: `Please enter a valid page number.`,
+									type: "danger"
+								});
+							}
 						}
 
 						$results.html("");

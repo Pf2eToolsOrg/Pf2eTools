@@ -1,3 +1,5 @@
+"use strict";
+
 // a simple money converter, i.e.: input x electrum, y silver, z copper and get the total in gold, or in any other type of coin chosen.
 class MoneyConverter {
 	static make$Converter (board, state) {
@@ -179,8 +181,8 @@ class MoneyConverter {
 			});
 		const $iptOut = $(`<input class="form-control input-sm dm_money__out" disabled/>`)
 			.appendTo($wrpCtrlLhs)
-			.mousedown(() => {
-				copyText($iptOut.val());
+			.mousedown(async () => {
+				await MiscUtil.pCopyTextToClipboard($iptOut.val());
 				JqueryUtil.showCopiedEffect($iptOut);
 			});
 

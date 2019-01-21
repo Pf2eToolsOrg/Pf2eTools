@@ -162,7 +162,12 @@ class FilterBox {
 		$hdrLineInner.append(this.$txtCount);
 		if (!this.filterList[0].minimalUI) $outer.append($hdrLine).append(makeDivider());
 		for (let i = 0; i < this.filterList.length; ++i) {
-			$outer.append(makeOuterItem(this, i, this.filterList[i], this.$miniView));
+			const f = this.filterList[i];
+
+			// skip rendering any not-yet-used filters
+			if (f instanceof Filter && f.items.length === 0) continue;
+
+			$outer.append(makeOuterItem(this, i, f, this.$miniView));
 			if (i < this.filterList.length - 1) $outer.append(makeDivider());
 		}
 		$inputGroup.prepend($filterButton);
@@ -384,6 +389,7 @@ class FilterBox {
 
 				const $showHide = $(`<button class="btn btn-default btn-xs btn-meta show-hide-button ${minimalClass}" style="margin-left: 5px;">Hide</button>`).appendTo($line);
 
+				// FIXME this bugs out in some unknown cases
 				const doShow = () => {
 					$showHide.text("Hide");
 					$grid.show();
@@ -633,7 +639,7 @@ class FilterBox {
 					);
 
 					// If re-render, use previous values. Otherwise, if there's stored values, stored values. Otherwise, default the pills
-					if (curValues) {
+					if (curValues && curValues[filter.header]) {
 						let valNum = curValues[filter.header][iText];
 						if (valNum < 0) valNum = 2;
 						_setter($pill, $miniPill, FilterBox._PILL_STATES[valNum], iText, iChangeFn, true);
@@ -1314,7 +1320,7 @@ FilterBox._STORAGE_NAME_GROUP_STATE = "filterStateGroupState";
 FilterBox._STORAGE_NAME_NEST_STATE = "filterStateNestState";
 FilterBox._SUB_HASH_PREFIX = "filter";
 
-class Filter {
+class FilterBase {
 	/**
 	 * A single filter category
 	 *
@@ -1392,6 +1398,8 @@ class Filter {
 	 */
 	toDisplay (valObj, toCheck) {
 		const map = valObj[this.header];
+		if (!map) return true; // discount any filters which were not rendered
+
 		const totals = map._totals;
 
 		function toCheckVal (tc) {
@@ -1486,6 +1494,8 @@ class Filter {
 	}
 }
 
+class Filter extends FilterBase {}
+
 class FilterItem {
 	/**
 	 * An alternative to string `Filter.items` with a change-handling function
@@ -1505,7 +1515,7 @@ class FilterItem {
 	}
 }
 
-class RangeFilter extends Filter {
+class RangeFilter extends FilterBase {
 	constructor (options) {
 		super(options);
 		this.min = options.min;
@@ -1550,6 +1560,7 @@ class RangeFilter extends Filter {
 
 	toDisplay (valObj, toCheck) {
 		const range = valObj[this.header];
+		if (!range) return true; // discount any filters which were not rendered
 
 		// match everything if filter is set to complete range
 		if (toCheck == null) return range.min === this.min && range.max === this.max;
@@ -1570,11 +1581,11 @@ class RangeFilter extends Filter {
 	}
 }
 
-class SearchFilter extends Filter {
+class SearchFilter extends FilterBase {
 
 }
 
-class GroupedFilter extends Filter {
+class GroupedFilter extends FilterBase {
 	/**
 	 * An extension of the basic filter, which enables visual grouping of elements.
 	 * @param options As with `Filter`, with two extra fields:

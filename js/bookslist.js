@@ -1,3 +1,5 @@
+"use strict";
+
 class BooksList {
 	constructor (options) {
 		this.contentsUrl = options.contentsUrl;

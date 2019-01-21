@@ -92,7 +92,8 @@ if (fs.existsSync("./img")) {
 		"bestiary",
 		"roll20",
 		"book",
-		"items"
+		"items",
+		"races"
 	]);
 
 	fs.readdirSync("./img")

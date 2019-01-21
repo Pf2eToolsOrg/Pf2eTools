@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"type": "object",
 	"definitions": {
 		"item": {
@@ -218,6 +218,36 @@
 					"type": "array",
 					"items": {
 						"type": "string"
+					}
+				},
+				"ability": {
+					"description": "Item ability score adjustments.",
+					"type": "object",
+					"properties": {
+						"choose": {
+							"type": "array"
+						},
+						"static": {
+							"type": "object"
+						},
+						"str":  {
+							"type": "integer"
+						},
+						"dex": {
+							"type": "integer"
+						},
+						"con":  {
+							"type": "integer"
+						},
+						"int": {
+							"type": "integer"
+						},
+						"wis":  {
+							"type": "integer"
+						},
+						"cha": {
+							"type": "integer"
+						}
 					}
 				}
 			},

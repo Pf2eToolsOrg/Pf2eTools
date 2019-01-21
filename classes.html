@@ -27,6 +27,12 @@
 			display: none;
 		}
 
+		.cls__squash_header {
+			overflow: hidden;
+			max-height: 32px;
+			display: block;
+		}
+
 		table#stats > tbody > tr > td {
 			padding: 0 0.8em;
 		}
@@ -254,7 +260,7 @@
 <header class="hidden-xs hidden-sm">
 	<div class="container">
 
-		<h1>Class List</h1>
+		<h1>Classes</h1>
 		<p>Search by name on the left, click class name to display on the right.</p>
 	</div>
 </header>
@@ -262,7 +268,7 @@
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
-<main class="container bodyContent classes">
+<main class="container classes">
 
 	<div class="row">
 		<div class="col-sm-3" id="listcontainer">

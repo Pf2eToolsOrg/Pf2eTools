@@ -1,3 +1,5 @@
+"use strict";
+
 class ManageBrew {
 	static initialise () {
 		BrewUtil.pAddBrewData()

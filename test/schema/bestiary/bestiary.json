@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.6.4",
+	"version": "1.9.0",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -946,7 +946,15 @@
 				}
 			},
 			"legendaryGroup": {
-				"type": "string"
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					}
+				}
 			},
 			"legendaryActions": {
 				"type": "number"
@@ -1009,26 +1017,47 @@
 					"additionalProperties": false
 				}
 			},
-			"tokenURL": {
+			"tokenUrl": {
 				"type": "string"
 			},
 			"fluff": {
 				"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
-				"type": "object",
-				"properties": {
-					"entries": {
-						"type": "array",
-						"items": {
-							"$ref": "/Entry"
+				"oneOf": [
+					{
+						"type": "object",
+						"properties": {
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry"
+								}
+							},
+							"images": {
+								"type": "array",
+								"items": {
+									"$ref": "/Entry#/definitions/entryImage"
+								}
+							}
 						}
 					},
-					"images": {
-						"type": "array",
-						"items": {
-							"$ref": "/Entry#/definitions/entryImage"
+					{
+						"description": "A reference to a \"monsterFluff\" array item",
+						"type": "object",
+						"properties": {
+							"_monsterFluff": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									}
+								}
+							}
 						}
 					}
-				}
+				]
 			},
 			"isNamedCreature": {
 				"type": "boolean"
@@ -1151,6 +1180,99 @@
 			}
 		},
 
+		"copyModifier": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "replaceTxt"},
+						"replace": {"type":  "string"},
+						"with": {"type":  "string"},
+						"flags":  {"type":  "string"}
+					},
+					"required": ["replace", "with"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "appendStr"},
+						"str": {"type":  "string"},
+						"joiner": {"type":  "string"}
+					},
+					"required": ["str"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "prependArr"},
+						"items": {
+							"oneOf": [
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "appendArr"},
+						"items": {
+							"oneOf": [
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "replaceArr"},
+						"replace": {"type":  "string"},
+						"with": {
+							"oneOf": [
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["replace", "with"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "removeArr"},
+						"names": {
+							"oneOf": [
+								{"type":  "string"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["names"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "calculateProp"},
+						"prop": {"type": "string"},
+						"formula": {"type": "string"}
+					},
+					"required": ["prop", "formula"],
+					"additionalProperties": false
+				}
+			]
+		},
+
 		"creature": {
 			"oneOf": [
 				{
@@ -1187,16 +1309,25 @@
 							"properties": {
 								"name": {"type": "string"},
 								"source": {"type": "string"},
-								"replacers": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"replace": {"type": "string"},
-											"with": {"type": "string"},
-											"flags": {"type": "string"}
-										},
-										"required": ["replace", "with"]
+								"_mod": {
+									"type": "object",
+									"patternProperties": {
+										".*": {
+											"oneOf": [
+												{
+													"type": "string"
+												},
+												{
+													"$ref": "#/definitions/copyModifier"
+												},
+												{
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/copyModifier"
+													}
+												}
+											]
+										}
 									}
 								}
 							},
@@ -1219,8 +1350,22 @@
 			"type": "object",
 			"properties": {
 				"dependencies": {
-					"type": "array",
-					"items": {"type": "string"}
+					"type": "object",
+					"properties": {
+						"monster": {
+							"type": "array",
+							"items": {"type": "string"}
+						}
+					}
+				},
+				"additionalSources": {
+					"type": "object",
+					"properties": {
+						"monster": {
+							"type": "array",
+							"items": {"type": "string"}
+						}
+					}
 				}
 			}
 		}

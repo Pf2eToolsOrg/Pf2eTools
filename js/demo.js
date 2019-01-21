@@ -1,6 +1,7 @@
 "use strict";
 
 const JSON_URL = "data/demo.json";
+const STORAGE_LOCATION = "demoInput";
 
 window.onload = loadJson;
 
@@ -9,7 +10,7 @@ function loadJson () {
 	DataUtil.loadJSON(JSON_URL).then(initDemo)
 }
 
-function initDemo (data) {
+async function initDemo (data) {
 	const defaultJson = data.data[0];
 
 	const renderer = new EntryRenderer();
@@ -35,7 +36,7 @@ function initDemo (data) {
 		try {
 			json = JSON.parse(editor.getValue());
 		} catch (e) {
-			$msg.html(`Invalid JSON! We recommend using <a href="https://jsonlint.com/" target="_blank">JSONLint</a>.`);
+			$msg.html(`Invalid JSON! We recommend using <a href="https://jsonlint.com/" target="_blank" rel="noopener">JSONLint</a>.`);
 			setTimeout(() => {
 				throw e
 			});
@@ -58,7 +59,21 @@ function initDemo (data) {
 		editor.selection.moveCursorToPosition({row: 0, column: 0});
 	}
 
-	demoReset();
+	try {
+		const prevInput = await StorageUtil.pGetForPage(STORAGE_LOCATION);
+		if (prevInput) {
+			editor.setValue(prevInput, -1);
+			demoRender();
+		} else demoReset();
+	} catch (ignored) {
+		setTimeout(() => { throw ignored; });
+		demoReset();
+	}
+
+	const renderAndSaveDebounced = MiscUtil.debounce(() => {
+		demoRender();
+		StorageUtil.pSetForPage(STORAGE_LOCATION, editor.getValue());
+	}, 150);
 
 	$btnReset.on("click", () => {
 		demoReset();
@@ -66,7 +81,7 @@ function initDemo (data) {
 	$btnRender.on("click", () => {
 		demoRender();
 	});
-	$in.on("change", () => {
-		demoRender();
+	editor.on("change", () => {
+		renderAndSaveDebounced();
 	});
 }

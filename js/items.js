@@ -65,7 +65,7 @@ async function populateTablesAndFilters (data) {
 		items: ["Basic", "Generic Variant", "Specific Variant", "Other"],
 		deselFn: (it) => it === "Specific Variant"
 	});
-	const miscFilter = new Filter({header: "Miscellaneous", items: ["Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
+	const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
 
 	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, miscFilter, attachedSpellsFilter);
 
@@ -159,9 +159,6 @@ async function populateTablesAndFilters (data) {
 		});
 	});
 
-	RollerUtil.addListRollButton();
-	addListShowHide();
-
 	const subList = ListUtil.initSublist(
 		{
 			valueNames: ["name", "weight", "price", "count", "id"],
@@ -176,12 +173,15 @@ async function populateTablesAndFilters (data) {
 	addItems(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
 			BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
 			await ListUtil.pLoadState();
+			RollerUtil.addListRollButton();
+			ListUtil.addListShowHide();
 
 			History.init(true);
 			ExcludeUtil.checkShowAllExcluded(itemList, $(`#pagecontent`));
@@ -223,6 +223,7 @@ function addItems (data) {
 		if (curitem.curse) curitem._fMisc.push("Cursed");
 		const isMundane = rarity === "None" || rarity === "Unknown" || category === "Basic";
 		curitem._fMisc.push(isMundane ? "Mundane" : "Magic");
+		if (curitem.ability) curitem._fMisc.push("Ability Score Adjustment");
 		if (curitem.charges) curitem._fMisc.push("Charges");
 		curitem._fCost = Parser.coinValueToNumber(curitem.value);
 
@@ -400,8 +401,7 @@ function loadhash (id) {
 		$content.find("span#damagetype").html(damageType);
 		$content.find("span#properties").html(propertiesTxt);
 
-		const typeRarityAttunement = EntryRenderer.item.getTypeRarityAndAttunementText(item).filter(Boolean).join(", ");
-		$content.find("#typerarityattunement").html(typeRarityAttunement);
+		$content.find("#typerarityattunement").html(EntryRenderer.item.getTypeRarityAndAttunementText(item));
 
 		$content.find("tr.text").remove();
 		const renderStack = [];
@@ -412,7 +412,7 @@ function loadhash (id) {
 
 		// tools, artisan tools, instruments, gaming sets
 		if (type === "T" || type === "AT" || type === "INS" || type === "GS") {
-			renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${UrlUtil.encodeForHash(["Tool Proficiencies", "XGE"])}" target="_blank">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
+			renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${UrlUtil.encodeForHash(["Tool Proficiencies", "XGE"])}">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
 			if (type === "INS") {
 				const additionEntriesList = {type: "entries", entries: TOOL_INS_ADDITIONAL_ENTRIES};
 				renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
@@ -470,7 +470,7 @@ function loadhash (id) {
 	);
 
 	// only display the "Info" tab if there's some fluff info--currently (2018-12-13), no official item has text fluff
-	if (item.fluff) EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
+	if (item.fluff && item.fluff.entries) EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
 	else EntryRenderer.utils.bindTabButtons(statTab, picTab);
 
 	ListUtil.updateSelected();

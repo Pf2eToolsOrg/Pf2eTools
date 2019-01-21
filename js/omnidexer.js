@@ -1,3 +1,5 @@
+"use strict";
+
 if (typeof require !== "undefined") {
 	require('../js/utils.js');
 	require('../js/entryrender.js');
@@ -88,7 +90,7 @@ class Omnidexer {
  */
 Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 	{
-		category: 1,
+		category: Parser.CAT_ID_CREATURE,
 		dir: "bestiary",
 		primary: "name",
 		source: "source",
@@ -97,7 +99,7 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		hover: true
 	},
 	{
-		category: 2,
+		category: Parser.CAT_ID_SPELL,
 		dir: "spells",
 		primary: "name",
 		source: "source",
@@ -106,7 +108,7 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		hover: true
 	},
 	{
-		category: 5,
+		category: Parser.CAT_ID_CLASS,
 		dir: "class",
 		primary: "name",
 		source: "source",
@@ -122,7 +124,7 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		}
 	},
 	{
-		category: 30,
+		category: Parser.CAT_ID_CLASS_FEATURE,
 		dir: "class",
 		primary: "name",
 		source: "source",
@@ -165,7 +167,7 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 					});
 					scFeatureI++;
 				} else if (gainSubclassFeatures.length > 1) {
-					throw new Error(`Multiple subclass features gained at level ${i + 1} for class "${it.name}" from source "${it.source}"!`)
+					setTimeout(() => { throw new Error(`Multiple subclass features gained at level ${i + 1} for class "${it.name}" from source "${it.source}"!`) });
 				}
 			});
 			return out;
@@ -200,35 +202,35 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
  */
 Omnidexer.TO_INDEX = [
 	{
-		category: 3,
+		category: Parser.CAT_ID_BACKGROUND,
 		file: "backgrounds.json",
 		listProp: "background",
 		baseUrl: "backgrounds.html",
 		hover: true
 	},
 	{
-		category: 4,
+		category: Parser.CAT_ID_ITEM,
 		file: "basicitems.json",
 		listProp: "basicitem",
 		baseUrl: "items.html",
 		hover: true
 	},
 	{
-		category: 6,
+		category: Parser.CAT_ID_CONDITION,
 		file: "conditionsdiseases.json",
 		listProp: "condition",
 		baseUrl: "conditionsdiseases.html",
 		hover: true
 	},
 	{
-		category: 7,
+		category: Parser.CAT_ID_FEAT,
 		file: "feats.json",
 		listProp: "feat",
 		baseUrl: "feats.html",
 		hover: true
 	},
 	{
-		category: 8,
+		category: Parser.CAT_ID_ELDRITCH_INVOCATION,
 		file: "optionalfeatures.json",
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
@@ -236,7 +238,7 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "EI")
 	},
 	{
-		category: 22,
+		category: Parser.CAT_ID_METAMAGIC,
 		file: "optionalfeatures.json",
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
@@ -244,7 +246,7 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MM")
 	},
 	{
-		category: 23,
+		category: Parser.CAT_ID_MANEUVER_BATTLEMASTER,
 		file: "optionalfeatures.json",
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
@@ -252,7 +254,7 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MV:B")
 	},
 	{
-		category: 26,
+		category: Parser.CAT_ID_MANEUVER_CAVALIER,
 		file: "optionalfeatures.json",
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
@@ -260,7 +262,7 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MV:C2-UA")
 	},
 	{
-		category: 27,
+		category: Parser.CAT_ID_ARCANE_SHOT,
 		file: "optionalfeatures.json",
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
@@ -270,7 +272,7 @@ Omnidexer.TO_INDEX = [
 		}
 	},
 	{
-		category: 28,
+		category: Parser.CAT_ID_OPTIONAL_FEATURE_OTHER,
 		file: "optionalfeatures.json",
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
@@ -278,7 +280,7 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "OTH")
 	},
 	{
-		category: 29,
+		category: Parser.CAT_ID_FIGHTING_STYLE,
 		file: "optionalfeatures.json",
 		listProp: "optionalfeature",
 		baseUrl: "optionalfeatures.html",
@@ -286,21 +288,37 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "FS:F") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:B") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:R") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:P")
 	},
 	{
-		category: 4,
+		category: Parser.CAT_ID_PACT_BOON,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "PB")
+	},
+	{
+		category: Parser.CAT_ID_ELEMENTAL_DISCIPLINE,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "ED")
+	},
+	{
+		category: Parser.CAT_ID_ITEM,
 		file: "items.json",
 		listProp: "item",
 		baseUrl: "items.html",
 		hover: true
 	},
 	{
-		category: 4,
+		category: Parser.CAT_ID_ITEM,
 		file: "items.json",
 		listProp: "itemGroup",
 		baseUrl: "items.html",
 		hover: true
 	},
 	{
-		category: 9,
+		category: Parser.CAT_ID_PSIONIC,
 		file: "psionics.json",
 		listProp: "psionic",
 		baseUrl: "psionics.html",
@@ -311,7 +329,7 @@ Omnidexer.TO_INDEX = [
 		hover: true
 	},
 	{
-		category: 10,
+		category: Parser.CAT_ID_RACE,
 		file: "races.json",
 		listProp: "race",
 		baseUrl: "races.html",
@@ -327,14 +345,14 @@ Omnidexer.TO_INDEX = [
 		hover: true
 	},
 	{
-		category: 11,
+		category: Parser.CAT_ID_OTHER_REWARD,
 		file: "rewards.json",
 		listProp: "reward",
 		baseUrl: "rewards.html",
 		hover: true
 	},
 	{
-		category: 12,
+		category: Parser.CAT_ID_VARIANT_OPTIONAL_RULE,
 		file: "variantrules.json",
 		listProp: "variantrule",
 		baseUrl: "variantrules.html",
@@ -357,14 +375,14 @@ Omnidexer.TO_INDEX = [
 		}
 	},
 	{
-		category: 13,
+		category: Parser.CAT_ID_ADVENTURE,
 		file: "adventures.json",
 		source: "id",
 		listProp: "adventure",
 		baseUrl: "adventure.html"
 	},
 	{
-		category: 4,
+		category: Parser.CAT_ID_ITEM,
 		file: "magicvariants.json",
 		source: "inherits.source",
 		page: "inherits.page",
@@ -391,7 +409,7 @@ Omnidexer.TO_INDEX = [
 		hover: true
 	},
 	{
-		category: 14,
+		category: Parser.CAT_ID_DEITY,
 		file: "deities.json",
 		postLoad: DataUtil.deity.doPostLoad,
 		listProp: "deity",
@@ -400,28 +418,28 @@ Omnidexer.TO_INDEX = [
 		filter: (it) => it.reprinted
 	},
 	{
-		category: 15,
+		category: Parser.CAT_ID_OBJECT,
 		file: "objects.json",
 		listProp: "object",
 		baseUrl: "objects.html",
 		hover: true
 	},
 	{
-		category: 16,
+		category: Parser.CAT_ID_TRAP,
 		file: "trapshazards.json",
 		listProp: "trap",
 		baseUrl: "trapshazards.html",
 		hover: true
 	},
 	{
-		category: 17,
+		category: Parser.CAT_ID_HAZARD,
 		file: "trapshazards.json",
 		listProp: "hazard",
 		baseUrl: "trapshazards.html",
 		hover: true
 	},
 	{
-		category: 18,
+		category: Parser.CAT_ID_QUICKREF,
 		file: "generated/bookref-quick.json",
 		listProp: "data.bookref-quick",
 		baseUrl: "quickreference.html",
@@ -449,42 +467,42 @@ Omnidexer.TO_INDEX = [
 		}
 	},
 	{
-		category: 19,
+		category: Parser.CAT_ID_CULT,
 		file: "cultsboons.json",
 		listProp: "cult",
 		baseUrl: "cultsboons.html",
 		hover: true
 	},
 	{
-		category: 20,
+		category: Parser.CAT_ID_BOON,
 		file: "cultsboons.json",
 		listProp: "boon",
 		baseUrl: "cultsboons.html",
 		hover: true
 	},
 	{
-		category: 21,
+		category: Parser.CAT_ID_DISEASE,
 		file: "conditionsdiseases.json",
 		listProp: "disease",
 		baseUrl: "conditionsdiseases.html",
 		hover: true
 	},
 	{
-		category: 24,
+		category: Parser.CAT_ID_TABLE,
 		file: "generated/gendata-tables.json",
 		listProp: "table",
 		baseUrl: "tables.html",
 		hover: true
 	},
 	{
-		category: 25,
+		category: Parser.CAT_ID_TABLE_GROUP,
 		file: "generated/gendata-tables.json",
 		listProp: "tableGroup",
 		baseUrl: "tables.html",
 		hover: true
 	},
 	{
-		category: 31,
+		category: Parser.CAT_ID_SHIP,
 		file: "ships.json",
 		listProp: "ship",
 		baseUrl: "ships.html",

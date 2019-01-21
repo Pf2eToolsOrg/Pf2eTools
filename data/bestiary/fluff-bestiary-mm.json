@@ -5339,6 +5339,7 @@
 		{
 			"name": "Half-Red Dragon Veteran",
 			"source": "MM",
+			"type": "section",
 			"images": [
 				{
 					"type": "image",
@@ -5351,11 +5352,21 @@
 			"entries": [
 				"When a dragon in polymorphed form mates with another creature, the union sometimes produces half dragon offspring. A creature might also transform into a half-dragon as a result of a mad wizard's spell or a ritual bath in dragon's blood. In all these cases, the result is a creature that combines the essence of a dragon with the form of its original race. Regardless of their origins, all half-dragons have similar features and appearance, gaining special senses, resistance to destructive energy, and a breath weapon.",
 				{
-					"name": "Draconic Nature",
 					"type": "entries",
 					"entries": [
-						"Half-dragons are incapable of having natural born offspring. Those that wish to propagate must find other ways to do so, almost always involving magic. By way of compensation, half dragons are blessed with long life. Barring unforeseen misfortune, a typical half-dragon's life expectancy is twice that of its no draconic line, so that a half-dragon human might live more than a century and a half.",
-						"Half-dragons inherit personality traits common to their draconic heritage, so that half-gold dragons are often shy and secretive, while half-copper dragons are impish and playful. Half-green dragons are deceitful, while half-white dragons are often dim-witted brutes. These traits are tempered by a half-dragon's other lineage, but greed, arrogance, and paranoia are qualities that even good-aligned half-dragons often possess."
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"name": "Draconic Nature",
+									"type": "entries",
+									"entries": [
+										"Half-dragons are incapable of having natural born offspring. Those that wish to propagate must find other ways to do so, almost always involving magic. By way of compensation, half dragons are blessed with long life. Barring unforeseen misfortune, a typical half-dragon's life expectancy is twice that of its no draconic line, so that a half-dragon human might live more than a century and a half.",
+										"Half-dragons inherit personality traits common to their draconic heritage, so that half-gold dragons are often shy and secretive, while half-copper dragons are impish and playful. Half-green dragons are deceitful, while half-white dragons are often dim-witted brutes. These traits are tempered by a half-dragon's other lineage, but greed, arrogance, and paranoia are qualities that even good-aligned half-dragons often possess."
+									]
+								}
+							]
+						}
 					]
 				},
 				{
@@ -5363,101 +5374,116 @@
 					"name": "Half-Dragon Template",
 					"entries": [
 						"A beast, humanoid, giant, or monstrosity can become a half-dragon. When a creature becomes a half-dragon, it retains all its statistics except as noted below.",
-						"Senses. The half-dragon gains blindsight with a radius of 10 feet and darkvision with a radius of 60 feet.",
-						"Resistances. The half-dragon gains resistance to a type of damage based on its color.",
 						{
-							"type": "table",
-							"colLabels": [
-								"Color",
-								"Damage Resistance"
-							],
-							"colStyles": [
-								"col-6",
-								"col-6"
-							],
-							"rows": [
-								[
-									"Black or copper",
-									"Acid"
-								],
-								[
-									"Blue or bronze",
-									"Lightning"
-								],
-								[
-									"Brass, gold, or red",
-									"Fire"
-								],
-								[
-									"Green",
-									"Poison"
-								],
-								[
-									"Silver or white",
-									"Cold"
-								]
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Challenge",
+									"entries": [
+										"To avoid recalculating the creature's challenge rating, apply the template only to a creature that meets the optional prerequisite in the Breath Weapon table below. Otherwise, use the guidelines in the Dungeon Master's Guide to recalculate the rating after you apply the template."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Senses",
+									"entries": [
+										"The half-dragon gains blindsight with a radius of 10 feet and darkvision with a radius of 60 feet."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Resistances",
+									"entries": [
+										"The half-dragon gains resistance to a type of damage based on its color.",
+										{
+											"type": "table",
+											"colLabels": [
+												"Color",
+												"Damage Resistance"
+											],
+											"colStyles": [
+												"col-6",
+												"col-6"
+											],
+											"rows": [
+												[
+													"Black or copper",
+													"Acid"
+												],
+												[
+													"Blue or bronze",
+													"Lightning"
+												],
+												[
+													"Brass, gold, or red",
+													"Fire"
+												],
+												[
+													"Green",
+													"Poison"
+												],
+												[
+													"Silver or white",
+													"Cold"
+												]
+											]
+										}
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Languages",
+									"entries": [
+										"The half-dragon speaks Draconic in addition to any other languages it knows."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "New Action: Breath Weapon",
+									"entries": [
+										"The half-dragon has the breath weapon of its dragon half. The half-dragon's size determines how this action functions.",
+										{
+											"type": "table",
+											"colLabels": [
+												"Size",
+												"Breath Weapon",
+												"Optional Prerequisite"
+											],
+											"colStyles": [
+												"col-4",
+												"col-4",
+												"col-4"
+											],
+											"rows": [
+												[
+													"Large or smaller",
+													"As a wyrmling",
+													"Challenge 2 or higher"
+												],
+												[
+													"Huge",
+													"As a young dragon",
+													"Challenge 7 or higher"
+												],
+												[
+													"Gargantuan",
+													"As an adult dragon",
+													"Challenge 8 or higher"
+												]
+											]
+										}
+									]
+								}
 							]
 						},
-						"Languages. The half-dragon speaks Draconic in addition to any other languages it knows.",
-						"New Action: Breath Weapon. The half-dragon has the breath weapon of its dragon half. The half-dragon's size determines how this action functions.",
 						{
-							"type": "table",
-							"colLabels": [
-								"Size",
-								"Breath Weapon"
-							],
-							"colStyles": [
-								"col-6",
-								"col-6"
-							],
-							"rows": [
-								[
-									"Large or smaller",
-									"As a wyrmling"
-								],
-								[
-									"Huge",
-									"As a young dragon"
-								],
-								[
-									"Gargantuan",
-									"As an adult dragon"
-								]
+							"type": "entries",
+							"name": "Sample Half-Dragon",
+							"entries": [
+								"Here the half-dragon template has been applied to a human {@creature veteran} to create a half-red dragon veteran. {@item Splint armor|phb} has been replaced with {@item plate armor|phb|plate}."
 							]
-						},
-						"Challenge Rating. To avoid recalculating the creature's challenge rating, apply the template only to a creature that meets the optional prerequisite in the Breath Weapon table below. Otherwise, use the guidelines in the Dungeon Master's Guide to recalculate the rating after you apply the template.\"",
-						{
-							"type": "table",
-							"colLabels": [
-								"Size",
-								"Breath Weapon",
-								"Optional Prerequisite"
-							],
-							"colStyles": [
-								"col-4",
-								"col-4",
-								"col-4"
-							],
-							"rows": [
-								[
-									"Large or smaller",
-									"As a wyrmling",
-									"Challenge 2 or higher"
-								],
-								[
-									"Huge",
-									"As a young dragon",
-									"Challenge 7 or higher"
-								],
-								[
-									"Gargantuan",
-									"As an adult dragon",
-									"Challenge 8 or higher"
-								]
-							]
-						},
-						"Sample Half-Dragon",
-						"Here the half-dragon template has been applied to a human veteran to create a half-red dragon veteran. Splint armor has been replaced with plate."
+						}
 					]
 				}
 			]
@@ -8562,11 +8588,14 @@
 				}
 			],
 			"entries": [
-				"A revenant forms from the soul of a mortal who met a cruel and undeserving fate. It claws its way back into the world to seek revenge against the one who wronged it. The revenant reclaims its mortal body and superficially resembles a zombie. However, instead of lifeless eyes, a revenant's eyes burn with resolve and flare in the presence of its adversary. If the revenant's original body was destroyed or is otherwise unavailable, the",
-				"spirit of the revenant enters another humanoid corpse.",
-				"Regardless of the body the revenant uses as a vessel, its adversary always recognizes the revenant for what",
-				"it truly is.",
-				"Hunger for Revenge. A revenant has only one year to exact revenge. When its adversary dies, or if the revenant fails to kill its adversary before its time runs out, it crumbles to dust and its soul fades into the afterlife. If its foe is too powerful for the revenant to destroy on its own, it seeks worthy allies to help it fulfill its quest.",
+				"A revenant forms from the soul of a mortal who met a cruel and undeserving fate. It claws its way back into the world to seek revenge against the one who wronged it. The revenant reclaims its mortal body and superficially resembles a zombie. However, instead of lifeless eyes, a revenant's eyes burn with resolve and flare in the presence of its adversary. If the revenant's original body was destroyed or is otherwise unavailable, the spirit of the revenant enters another humanoid corpse. Regardless of the body the revenant uses as a vessel, its adversary always recognizes the revenant for what it truly is.",
+				{
+					"type": "entries",
+					"name": "Hunger for Revenge",
+					"entries": [
+						"A revenant has only one year to exact revenge. When its adversary dies, or if the revenant fails to kill its adversary before its time runs out, it crumbles to dust and its soul fades into the afterlife. If its foe is too powerful for the revenant to destroy on its own, it seeks worthy allies to help it fulfill its quest."
+					]
+				},
 				{
 					"name": "Divine Justice",
 					"type": "entries",
@@ -10201,9 +10230,7 @@
 					"type": "inset",
 					"name": "Strahd von Zarovich",
 					"entries": [
-						"A brilliant thinker and capable warrior in life, Strahd von Zarovich fought in countless battles for his people. When war",
-						"and killing finally stripped him of his youth and strength, he",
-						"settled in the remote valley of Barovia and built a castle on a towering pinnacle, from which he could survey his lands. His brother Sergei came to live with him in Castle Ravenloft, becoming Strahd's adviser and constant companion.",
+						"A brilliant thinker and capable warrior in life, Strahd von Zarovich fought in countless battles for his people. When war and killing finally stripped him of his youth and strength, he settled in the remote valley of Barovia and built a castle on a towering pinnacle, from which he could survey his lands. His brother Sergei came to live with him in Castle Ravenloft, becoming Strahd's adviser and constant companion.",
 						"In his brother, Strahd saw everything he had lost. Sergei was handsome and young, while Strahd had become old and scarred. Resentment colored their relationship, eventually turning into hatred. Strahd's beloved, Tatyana, spurned him for Sergei, whom she pledged to marry.",
 						"In a desperate attempt to win Tatyana's heart, Strahd forged a pact with dark powers that made him immortal. At the wedding of Sergei and Tatyana, he confronted his brother and killed him. Tatyana fled and flung herself from Ravenloft's walls. Strahd's guards, seeing him for a monster, shot him with arrows. But he did not die. He became a vampire-the first vampire, according to many sages.",
 						"In the centuries since his transformation, Strahd's lust for life and youth have only grown. He broods in his dark castle, cursing the living for stealing away what he lost, and never admitting his hand in the tragedy he created."
@@ -11932,6 +11959,7 @@
 		{
 			"name": "Shadow Dragon",
 			"source": "MM",
+			"type": "section",
 			"images": [
 				{
 					"type": "image",
@@ -11942,26 +11970,98 @@
 				}
 			],
 			"entries": [
-				"Shadow dragons are true dragons that were either born in the Shadowfell or transformed by years spent within its dismal confines. Some shadow dragons embrace the Shadowfell for its bleak landscapes and desolation. Others seek to return to the Material Plane, hungry to spread the darkness and evil of the Plane of Shadow.",
 				{
 					"type": "entries",
-					"name": "Dark Portals",
 					"entries": [
-						"Portals to the Shadowfell manifest in forlorn places and the deep gloom of subterranean caverns. The dragons that lair in such places often discover these portals and find themselves transported to a new realm. Ancient dragons that sleep in their lairs for months or years at a time might find themselves spirited away, never knowing that a portal has formed without their knowledge as they dream."
+						{
+							"type": "entries",
+							"entries": [
+								"Shadow dragons are true dragons that were either born in the Shadowfell or transformed by years spent within its dismal confines. Some shadow dragons embrace the Shadowfell for its bleak landscapes and desolation. Others seek to return to the Material Plane, hungry to spread the darkness and evil of the Plane of Shadow.",
+								{
+									"type": "entries",
+									"name": "Dark Portals",
+									"entries": [
+										"Portals to the Shadowfell manifest in forlorn places and the deep gloom of subterranean caverns. The dragons that lair in such places often discover these portals and find themselves transported to a new realm. Ancient dragons that sleep in their lairs for months or years at a time might find themselves spirited away, never knowing that a portal has formed without their knowledge as they dream."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Recast in Shadow",
+									"entries": [
+										"The transformation to a shadow dragon happens over a period of years, during which time a dragon's scales lose their luster and fade to a charcoal hue. Its leathery wings become translucent, its eyes paling to pools of opalescent gray. Shadow dragons find sunlight abhorrent, and they are weaker in bright light than they are in darkness. Darkness makes the dragon fade to a spectral shadow of its former self. The magical nature of dragons holds an attraction for the Shadowfell, which seems somehow to crave the might and majesty of these great reptiles. The Shadowfell also has a dispiriting effect on its denizens, such that the longer a creature remains on the plane, the more it accepts the plane's malaise. As months and years pass for a dragon on the Shadowfell, it becomes aware of the transformation being wrought upon it, and yet can do nothing to prevent it."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Back in the World",
+									"entries": [
+										"A shadow dragon is so suffused with the power of the Shadowfell that even a return to the Material Plane can't undo its transformation. Some shadow dragons attempt to lure other creatures from the mortal realm back to the Shadowfell to keep them company, at least until they tire of their guests and devour them. Others are happy to leave the Shadowfell behind forever, understanding that treasure and power are easier to come by in the Material Plane."
+									]
+								}
+							]
+						}
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Recast in Shadow",
+					"name": "Shadow Dragon Template",
 					"entries": [
-						"The transformation to a shadow dragon happens over a period of years, during which time a dragon's scales lose their luster and fade to a charcoal hue. Its leathery wings become translucent, its eyes paling to pools of opalescent gray. Shadow dragons find sunlight abhorrent, and they are weaker in bright light than they are in darkness. Darkness makes the dragon fade to a spectral shadow of its former self. The magical nature of dragons holds an attraction for the Shadowfell, which seems somehow to crave the might and majesty of these great reptiles. The Shadowfell also has a dispiriting effect on its denizens, such that the longer a creature remains on the plane, the more it accepts the plane's malaise. As months and years pass for a dragon on the Shadowfell, it becomes aware of the transformation being wrought upon it, and yet can do nothing to prevent it."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Back in the World",
-					"entries": [
-						"A shadow dragon is so suffused with the power of the Shadowfell that even a return to the Material Plane can't undo its transformation. Some shadow dragons attempt to lure other creatures from the mortal realm back to the Shadowfell to keep them company, at least until they tire of their guests and devour them. Others are happy to leave the Shadowfell behind forever, understanding that treasure and power are easier to come by in the Material Plane."
+						"Only a true dragon can transform into a shadow dragon, and only if it is born in the Shadowfell or remains there for several years. A dracolich can't be turned into a shadow dragon, since it loses its draconic nature when it becomes undead.",
+						"When a dragon becomes a shadow dragon, it retains its statistics except as described below. The shadow dragon might retain or lose any or all of its lair actions or inherit new ones, as the DM sees fit.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Damage Resistances",
+									"entries": [
+										"The dragon has resistance to necrotic damage."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Skill Proficiency: Stealth",
+									"entries": [
+										"The dragon's proficiency bonus is doubled for its Dexterity ({@skill Stealth}) checks."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Living Shadow",
+									"entries": [
+										"While in dim light or darkness, the dragon has resistance to damage that isn't force, psychic, or radiant."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Shadow Stealth",
+									"entries": [
+										"While in dim light or darkness, the dragon can take the {@action Hide} action as a bonus action."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Sunlight Sensitivity",
+									"entries": [
+										"While in sunlight, the dragon has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "New Action: Bite",
+									"entries": [
+										"If the dragon deals acid, cold, fire, lightning, or poison damage with its bite, change that damage type to necrotic."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "New Action: Shadow Breath",
+									"entries": [
+										"Any damage-dealing breath weapon possessed by the dragon deals necrotic damage instead of its original damage type. A humanoid reduced to 0 hit points by this damage dies, and an undead shadow rises from its corpse and acts immediately after the dragon in the initiative count. The shadow is under the dragon's control."
+									]
+								}
+							]
+						}
 					]
 				}
 			]

@@ -1,4 +1,5 @@
 "use strict";
+
 const JSON_URL = "data/cultsboons.json";
 
 window.onload = function load () {
@@ -79,6 +80,10 @@ async function onJsonLoad (data) {
 		itemList: cultsAndBoonsList,
 		primaryLists: [list]
 	});
+
+	RollerUtil.addListRollButton();
+	ListUtil.addListShowHide();
+
 	History.init(true);
 }
 

@@ -24,6 +24,8 @@ const PANEL_TYP_MONEY_CONVERTER = 9;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
+const PANEL_TYP_ADVENTURES = 13;
+const PANEL_TYP_BOOKS = 14;
 const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_GENERIC_EMBED = 90;
 
@@ -44,6 +46,8 @@ class Board {
 		this.hoveringPanel = null;
 		this.availContent = {};
 		this.availRules = {};
+		this.availAdventures = {};
+		this.availBooks = {};
 
 		this.$cbConfirmTabClose = null;
 		this.$btnFullscreen = null;
@@ -181,91 +185,151 @@ class Board {
 		$(window).resize(() => this.reactor.fire("panelResize"));
 	}
 
-	pLoadIndex () {
-		return new Promise(resolve => {
-			elasticlunr.clearStopWords();
-			EntryRenderer.item.populatePropertyAndTypeReference().then(() => DataUtil.loadJSON("data/generated/bookref-dmscreen-index.json")).then((data) => {
-				this.availRules.ALL = elasticlunr(function () {
-					this.addField("b");
-					this.addField("s");
+	async pLoadIndex () {
+		elasticlunr.clearStopWords();
+		await EntryRenderer.item.populatePropertyAndTypeReference();
+
+		// rules
+		await (async () => {
+			const data = await DataUtil.loadJSON("data/generated/bookref-dmscreen-index.json");
+			this.availRules.ALL = elasticlunr(function () {
+				this.addField("b");
+				this.addField("s");
+				this.addField("p");
+				this.addField("n");
+				this.addField("h");
+				this.setRef("id");
+			});
+			SearchUtil.removeStemmer(this.availRules.ALL);
+
+			data.data.forEach(d => {
+				d.n = data._meta.name[d.b];
+				d.b = data._meta.id[d.b];
+				d.s = data._meta.section[d.s];
+				this.availRules.ALL.addDoc(d);
+			});
+		})();
+
+		async function pDoBuildAdvantureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
+			const data = await DataUtil.loadJSON(dataPath);
+			indexStorage.ALL = elasticlunr(function () {
+				this.addField(indexIdField);
+				this.addField("c");
+				this.addField("n");
+				this.addField("p");
+				this.addField("o");
+				this.setRef("id");
+			});
+			SearchUtil.removeStemmer(indexStorage.ALL);
+
+			let bookOrAdventureId = 0;
+			data[dataProp].forEach(adventureOrBook => {
+				indexStorage[adventureOrBook.id] = elasticlunr(function () {
+					this.addField(indexIdField);
+					this.addField("c");
+					this.addField("n");
 					this.addField("p");
-					this.addField("n");
-					this.addField("h");
+					this.addField("o");
 					this.setRef("id");
 				});
-				SearchUtil.removeStemmer(this.availRules.ALL);
+				SearchUtil.removeStemmer(indexStorage[adventureOrBook.id]);
 
-				data.data.forEach(d => {
-					d.n = data._meta.name[d.b];
-					d.b = data._meta.id[d.b];
-					d.s = data._meta.section[d.s];
-					this.availRules.ALL.addDoc(d);
-				});
+				adventureOrBook.contents.forEach((chap, i) => {
+					const chapDoc = {
+						[indexIdField]: adventureOrBook.id,
+						n: adventureOrBook.name,
+						c: chap.name,
+						p: i,
+						id: bookOrAdventureId++
+					};
+					if (chap.ordinal) chapDoc.o = Parser.bookOrdinalToAbv(chap.ordinal, true);
 
-				return DataUtil.loadJSON("search/index.json");
-			}).then((data) => {
-				function hasBadCat (d) {
-					return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF || d.c === Parser.CAT_ID_CLASS_FEATURE;
-				}
-
-				function fromDeepIndex (d) {
-					return d.d; // flag for "deep indexed" content that refers to the same item
-				}
-
-				this.availContent.ALL = elasticlunr(function () {
-					this.addField("n");
-					this.addField("s");
-					this.setRef("id");
-				});
-				SearchUtil.removeStemmer(this.availContent.ALL);
-				// Add main site index
-				let ixMax = 0;
-				data.forEach(d => {
-					if (hasBadCat(d) || fromDeepIndex(d)) return;
-					d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-					if (!this.availContent[d.cf]) {
-						this.availContent[d.cf] = elasticlunr(function () {
-							this.addField("n");
-							this.addField("s");
-							this.setRef("id");
-						});
-						SearchUtil.removeStemmer(this.availContent[d.cf]);
-					}
-					this.availContent.ALL.addDoc(d);
-					this.availContent[d.cf].addDoc(d);
-					ixMax = Math.max(ixMax, d.id);
-				});
-
-				// Add homebrew
-				Omnisearch.highestId = Math.max(ixMax, Omnisearch.highestId);
-				BrewUtil.pGetSearchIndex().then(index => {
-					index.forEach(d => {
-						if (hasBadCat(d) || fromDeepIndex(d)) return;
-						d.cf = Parser.pageCategoryToFull(d.c);
-						d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-						this.availContent.ALL.addDoc(d);
-						this.availContent[d.cf].addDoc(d);
-					});
-
-					// add tabs
-					const omniTab = new AddMenuSearchTab(this.availContent);
-					omniTab.setSpotlight(true);
-					const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
-					const embedTab = new AddMenuVideoTab();
-					const imageTab = new AddMenuImageTab();
-					const specialTab = new AddMenuSpecialTab();
-
-					this.menu.addTab(omniTab).addTab(ruleTab).addTab(imageTab).addTab(embedTab).addTab(specialTab);
-
-					this.menu.render();
-
-					this.sideMenu.render();
-
-					resolve();
-					this.doHideLoading();
+					indexStorage.ALL.addDoc(chapDoc);
+					indexStorage[adventureOrBook.id].addDoc(chapDoc);
 				});
 			});
-		});
+		}
+
+		// adventures
+		await pDoBuildAdvantureOrAdventureIndex(`data/adventures.json`, "adventure", this.availAdventures, "a");
+
+		// books
+		await pDoBuildAdvantureOrAdventureIndex(`data/books.json`, "book", this.availBooks, "b");
+
+		// search
+		await (async () => {
+			const data = await DataUtil.loadJSON("search/index.json");
+
+			function hasBadCat (d) {
+				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF || d.c === Parser.CAT_ID_CLASS_FEATURE;
+			}
+
+			function fromDeepIndex (d) {
+				return d.d; // flag for "deep indexed" content that refers to the same item
+			}
+
+			this.availContent.ALL = elasticlunr(function () {
+				this.addField("n");
+				this.addField("s");
+				this.setRef("id");
+			});
+			SearchUtil.removeStemmer(this.availContent.ALL);
+			// Add main site index
+			let ixMax = 0;
+			data.forEach(d => {
+				if (hasBadCat(d) || fromDeepIndex(d)) return;
+				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
+				if (!this.availContent[d.cf]) {
+					this.availContent[d.cf] = elasticlunr(function () {
+						this.addField("n");
+						this.addField("s");
+						this.setRef("id");
+					});
+					SearchUtil.removeStemmer(this.availContent[d.cf]);
+				}
+				this.availContent.ALL.addDoc(d);
+				this.availContent[d.cf].addDoc(d);
+				ixMax = Math.max(ixMax, d.id);
+			});
+
+			// Add homebrew
+			Omnisearch.highestId = Math.max(ixMax, Omnisearch.highestId);
+
+			const brewIndex = await BrewUtil.pGetSearchIndex();
+
+			brewIndex.forEach(d => {
+				if (hasBadCat(d) || fromDeepIndex(d)) return;
+				d.cf = Parser.pageCategoryToFull(d.c);
+				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
+				this.availContent.ALL.addDoc(d);
+				this.availContent[d.cf].addDoc(d);
+			});
+
+			// add tabs
+			const omniTab = new AddMenuSearchTab(this.availContent);
+			omniTab.setSpotlight(true);
+			const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
+			const adventureTab = new AddMenuSearchTab(this.availAdventures, "adventures");
+			const bookTab = new AddMenuSearchTab(this.availBooks, "books");
+			const embedTab = new AddMenuVideoTab();
+			const imageTab = new AddMenuImageTab();
+			const specialTab = new AddMenuSpecialTab();
+
+			this.menu
+				.addTab(omniTab)
+				.addTab(ruleTab)
+				.addTab(adventureTab)
+				.addTab(bookTab)
+				.addTab(imageTab)
+				.addTab(embedTab)
+				.addTab(specialTab);
+
+			this.menu.render();
+
+			this.sideMenu.render();
+
+			this.doHideLoading();
+		})();
 	}
 
 	getPanel (x, y) {
@@ -404,11 +468,12 @@ class Board {
 			this.doLoadStateFrom(toLoad);
 		} catch (e) {
 			// on error, purge saved data and reset
-			window.alert("Error when loading DM screen! Purging saved data...");
-			await StorageUtil.pRemove(DMSCREEN_STORAGE);
-			setTimeout(() => {
-				throw e
+			JqueryUtil.doToast({
+				content: "Error when loading DM screen! Purged saved data. (See the log for more information.)",
+				type: "danger"
 			});
+			await StorageUtil.pRemove(DMSCREEN_STORAGE);
+			setTimeout(() => { throw e; });
 		}
 	}
 
@@ -484,8 +549,8 @@ class SideMenu {
 		this.board.$btnFullscreen = $btnFullscreen;
 		$btnFullscreen.on("click", () => {
 			this.board.isFullscreen = !this.board.isFullscreen;
-			if (this.board.isFullscreen) $(`body`).addClass(`dm-screen-fullscreen`);
-			else $(`body`).removeClass(`dm-screen-fullscreen`);
+			if (this.board.isFullscreen) $(`body`).addClass(`is-fullscreen`);
+			else $(`body`).removeClass(`is-fullscreen`);
 			this.board.doAdjust$creenCss();
 			this.board.doSaveStateDebounced();
 			this.board.reactor.fire("panelResize")
@@ -497,7 +562,6 @@ class SideMenu {
 			if (this.board.isLocked) {
 				$(`body`).addClass(`dm-screen-locked`);
 				$btnLockPanels.removeClass(`btn-danger`).addClass(`btn-success`);
-				this.board.doStopMovingPanels();
 			} else {
 				$(`body`).removeClass(`dm-screen-locked`);
 				$btnLockPanels.addClass(`btn-danger`).removeClass(`btn-success`);
@@ -521,9 +585,9 @@ class SideMenu {
 		});
 		const $wrpSaveLoadUrl = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpSaveLoad);
 		const $btnSaveLink = $(`<button class="btn btn-primary">Save to URL</button>`).appendTo($wrpSaveLoadUrl);
-		$btnSaveLink.on("click", () => {
+		$btnSaveLink.on("click", async () => {
 			const encoded = `${window.location.href.split("#")[0]}#${encodeURIComponent(JSON.stringify(this.board.getSaveableState()))}`;
-			copyText(encoded);
+			await MiscUtil.pCopyTextToClipboard(encoded);
 			JqueryUtil.showCopiedEffect($btnSaveLink);
 		});
 		renderDivider();
@@ -691,7 +755,7 @@ class Panel {
 					const page = saved.c.p;
 					const source = saved.c.s;
 					const hash = saved.c.u;
-					p.doPopulate_Stats(page, source, hash, skipSetTab);
+					p.doPopulate_Stats(page, source, hash, skipSetTab); // FIXME skipSetTab is never used
 					return p;
 				}
 				case PANEL_TYP_CREATURE_SCALED_CR: {
@@ -699,14 +763,26 @@ class Panel {
 					const source = saved.c.s;
 					const hash = saved.c.u;
 					const cr = saved.c.cr;
-					p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab);
+					p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab); // FIXME skipSetTab is never used
 					return p;
 				}
 				case PANEL_TYP_RULES: {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
 					const header = saved.c.h;
-					p.doPopulate_Rules(book, chapter, header, skipSetTab);
+					p.doPopulate_Rules(book, chapter, header, skipSetTab); // FIXME skipSetTab is never used
+					return p;
+				}
+				case PANEL_TYP_ADVENTURES: {
+					const adventure = saved.c.a;
+					const chapter = saved.c.c;
+					p.doPopulate_Adventures(adventure, chapter, skipSetTab); // FIXME skipSetTab is never used
+					return p;
+				}
+				case PANEL_TYP_BOOKS: {
+					const book = saved.c.b;
+					const chapter = saved.c.c;
+					p.doPopulate_Books(book, chapter, skipSetTab); // FIXME skipSetTab is never used
 					return p;
 				}
 				case PANEL_TYP_ROLLBOX:
@@ -948,6 +1024,52 @@ class Panel {
 				meta,
 				$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
 				rule.name || ""
+			);
+		});
+	}
+
+	doPopulate_Adventures (adventure, chapter) {
+		const meta = {a: adventure, c: chapter};
+		const ix = this.set$TabLoading(
+			PANEL_TYP_ADVENTURES,
+			meta
+		);
+		adventureLoader.pFill(adventure).then(() => {
+			const data = adventureLoader.getFromCache(adventure, chapter);
+			const it = `
+				<tr class="text"><td colspan="6">
+				${EntryRenderer.getDefaultRenderer().setFirstSection(true).renderEntry(data)}
+				</td></tr>
+			`;
+			this.set$Tab(
+				ix,
+				PANEL_TYP_ADVENTURES,
+				meta,
+				$(`<div class="panel-content-wrapper-inner"><table class="stats stats-book--hover">${it}</table></div>`),
+				data.name || ""
+			);
+		});
+	}
+
+	doPopulate_Books (book, chapter) {
+		const meta = {b: book, c: chapter};
+		const ix = this.set$TabLoading(
+			PANEL_TYP_BOOKS,
+			meta
+		);
+		bookLoader.pFill(book).then(() => {
+			const data = bookLoader.getFromCache(book, chapter);
+			const it = `
+				<tr class="text"><td colspan="6">
+				${EntryRenderer.getDefaultRenderer().setFirstSection(true).renderEntry(data)}
+				</td></tr>
+			`;
+			this.set$Tab(
+				ix,
+				PANEL_TYP_BOOKS,
+				meta,
+				$(`<div class="panel-content-wrapper-inner"><table class="stats stats-book--hover">${it}</table></div>`),
+				data.name || ""
 			);
 		});
 	}
@@ -1300,7 +1422,7 @@ class Panel {
 
 	doRenderTitle () {
 		const displayText = this.title !== TITLE_LOADING &&
-			(this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_CREATURE_SCALED_CR || this.type === PANEL_TYP_RULES) ? this.title : "";
+			(this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_CREATURE_SCALED_CR || this.type === PANEL_TYP_RULES || this.type === PANEL_TYP_ADVENTURES || this.type === PANEL_TYP_BOOKS) ? this.title : "";
 
 		this.$pnlTitle.text(displayText);
 		if (!displayText) this.$pnlTitle.addClass("hidden");
@@ -1522,7 +1644,7 @@ class Panel {
 
 	_get$BtnSelTab (ix, title, tabCanRename) {
 		title = title || "[Untitled]";
-		const $btnSelTab = $(`<button class="btn btn-default content-tab ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title">${title}</span></button>`)
+		const $btnSelTab = $(`<span class="btn btn-default content-tab ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title">${title}</span></span>`)
 			.on("mousedown", (evt) => {
 				if (evt.which === 1) {
 					this.setActiveTab(ix);
@@ -1697,6 +1819,24 @@ class Panel {
 							b: contentMeta.b,
 							c: contentMeta.c,
 							h: contentMeta.h
+						}
+					};
+				case PANEL_TYP_ADVENTURES:
+					return {
+						t: type,
+						r: toSaveTitle,
+						c: {
+							a: contentMeta.a,
+							c: contentMeta.c
+						}
+					};
+				case PANEL_TYP_BOOKS:
+					return {
+						t: type,
+						r: toSaveTitle,
+						c: {
+							b: contentMeta.b,
+							c: contentMeta.c
 						}
 					};
 				case PANEL_TYP_TEXTBOX:
@@ -2208,7 +2348,10 @@ class AddMenuVideoTab extends AddMenuTab {
 					this.menu.doClose();
 					$iptUrlYT.val("");
 				} else {
-					alert(`Please enter a URL of the form: "https://www.youtube.com/watch?v=XXXXXXX"`);
+					JqueryUtil.doToast({
+						content: `Please enter a URL of the form: "https://www.youtube.com/watch?v=XXXXXXX"`,
+						type: "danger"
+					});
 				}
 			});
 
@@ -2232,7 +2375,10 @@ class AddMenuVideoTab extends AddMenuTab {
 					this.menu.doClose();
 					$iptUrlTwitch.val("");
 				} else {
-					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
+					JqueryUtil.doToast({
+						content: `Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`,
+						type: "danger"
+					});
 				}
 			});
 
@@ -2245,7 +2391,10 @@ class AddMenuVideoTab extends AddMenuTab {
 					this.menu.doClose();
 					$iptUrlTwitch.val("");
 				} else {
-					alert(`Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`);
+					JqueryUtil.doToast({
+						content: `Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`,
+						type: "danger"
+					});
 				}
 			});
 
@@ -2262,7 +2411,10 @@ class AddMenuVideoTab extends AddMenuTab {
 					this.menu.pnl.doPopulate_GenericEmbed(url);
 					this.menu.doClose();
 				} else {
-					alert(`Please enter a URL`);
+					JqueryUtil.doToast({
+						content: `Please enter a URL!`,
+						type: "danger"
+					});
 				}
 			});
 
@@ -2282,7 +2434,7 @@ class AddMenuImageTab extends AddMenuTab {
 			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
 
 			const $wrpImgur = $(`<div class="tab-body-row"/>`).appendTo($tab);
-			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
+			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank" rel="noopener">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
 				const input = evt.target;
 				const reader = new FileReader();
@@ -2304,12 +2456,16 @@ class AddMenuImageTab extends AddMenuTab {
 						},
 						error: (error) => {
 							try {
-								alert(`Failed to upload: ${JSON.parse(error.responseText).data.error}`);
-							} catch (e) {
-								alert("Failed to upload: Unknown error");
-								setTimeout(() => {
-									throw e
+								JqueryUtil.doToast({
+									content: `Failed to upload: ${JSON.parse(error.responseText).data.error}`,
+									type: "danger"
 								});
+							} catch (e) {
+								JqueryUtil.doToast({
+									content: "Failed to upload: Unknown error",
+									type: "danger"
+								});
+								setTimeout(() => { throw e });
 							}
 							this.menu.pnl.doPopulate_Empty(ix);
 						}
@@ -2342,7 +2498,10 @@ class AddMenuImageTab extends AddMenuTab {
 					this.menu.pnl.doPopulate_Image(url);
 					this.menu.doClose();
 				} else {
-					alert(`Please enter a URL`);
+					JqueryUtil.doToast({
+						content: `Please enter a URL!`,
+						type: "danger"
+					});
 				}
 			});
 
@@ -2455,9 +2614,19 @@ class AddMenuListTab extends AddMenuTab {
 }
 
 class AddMenuSearchTab extends AddMenuTab {
+	static _getTitle (subType) {
+		switch (subType) {
+			case "content": return "Content";
+			case "rules": return "Rules";
+			case "adventures": return "Adventures";
+			case "books": return "Books";
+			default: throw new Error(`Unhandled search tab subtype: "${subType}"`);
+		}
+	}
+
 	constructor (indexes, subType = "content") {
-		super(subType === "content" ? "Content" : "Rules");
-		this.tabId = this.genTabId(subType === "content" ? "content" : "rules");
+		super(AddMenuSearchTab._getTitle(subType));
+		this.tabId = this.genTabId(subType);
 		this.indexes = indexes;
 		this.cat = "ALL";
 		this.subType = subType;
@@ -2467,6 +2636,82 @@ class AddMenuSearchTab extends AddMenuTab {
 		this.$results = null;
 		this.showMsgIpt = null;
 		this.doSearch = null;
+	}
+
+	_getSearchOptions () {
+		switch (this.subType) {
+			case "content": return {
+				fields: {
+					n: {boost: 5, expand: true},
+					s: {expand: true}
+				},
+				bool: "AND",
+				expand: true
+			};
+			case "rules": return {
+				fields: {
+					h: {boost: 5, expand: true},
+					s: {expand: true}
+				},
+				bool: "AND",
+				expand: true
+			};
+			case "adventures":
+			case "books": return {
+				fields: {
+					c: {boost: 5, expand: true},
+					n: {expand: true}
+				},
+				bool: "AND",
+				expand: true
+			};
+			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
+		}
+	}
+
+	_get$Row (r) {
+		switch (this.subType) {
+			case "content": return $(`
+				<div class="panel-tab-results-row">
+					<span>${r.doc.n}</span>
+					<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
+				</div>
+			`);
+			case "rules": return $(`
+				<div class="panel-tab-results-row">
+					<span>${r.doc.h}</span>
+					<span><i>${r.doc.n}, ${r.doc.s}</i></span>
+				</div>
+			`);
+			case "adventures":
+			case "books": return $(`
+				<div class="panel-tab-results-row">
+					<span>${r.doc.c}</span>
+					<span><i>${r.doc.n}${r.doc.o ? `, ${r.doc.o}` : ""}</i></span>
+				</div>
+			`);
+			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
+		}
+	}
+
+	_getAllTitle () {
+		switch (this.subType) {
+			case "content": return "All Categories";
+			case "rules": return "All Categories";
+			case "adventures": return "All Adventures";
+			case "books": return "All Books";
+			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
+		}
+	}
+
+	_getCatOptionText (it) {
+		switch (this.subType) {
+			case "content": return it;
+			case "rules": return it;
+			case "adventures":
+			case "books": return Parser.sourceJsonToFull(it);
+			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
+		}
 	}
 
 	render () {
@@ -2493,24 +2738,7 @@ class AddMenuSearchTab extends AddMenuTab {
 			const srch = this.$srch.val().trim();
 			const MAX_RESULTS = 75; // hard cap results
 
-			const searchOptions = this.subType === "content"
-				? {
-					fields: {
-						n: {boost: 5, expand: true},
-						s: {expand: true}
-					},
-					bool: "AND",
-					expand: true
-				}
-				: {
-					fields: {
-						h: {boost: 5, expand: true},
-						s: {expand: true}
-					},
-					bool: "AND",
-					expand: true
-				};
-
+			const searchOptions = this._getSearchOptions();
 			const index = this.indexes[this.cat];
 			const results = index.search(srch, searchOptions);
 			const resultCount = results.length ? results.length : index.documentStore.length;
@@ -2519,34 +2747,30 @@ class AddMenuSearchTab extends AddMenuTab {
 			this.$results.empty();
 			if (toProcess.length) {
 				const handleClick = (r) => {
-					if (this.subType === "content") {
-						const page = UrlUtil.categoryToPage(r.doc.c);
-						const source = r.doc.s;
-						const hash = r.doc.u;
+					switch (this.subType) {
+						case "content": {
+							const page = UrlUtil.categoryToPage(r.doc.c);
+							const source = r.doc.s;
+							const hash = r.doc.u;
 
-						this.menu.pnl.doPopulate_Stats(page, source, hash);
-					} else {
-						this.menu.pnl.doPopulate_Rules(r.doc.b, r.doc.p, r.doc.h);
+							this.menu.pnl.doPopulate_Stats(page, source, hash);
+							break;
+						}
+						case "rules": {
+							this.menu.pnl.doPopulate_Rules(r.doc.b, r.doc.p, r.doc.h);
+							break;
+						}
+						case "adventures": {
+							this.menu.pnl.doPopulate_Adventures(r.doc.a, r.doc.p);
+							break;
+						}
+						case "books": {
+							this.menu.pnl.doPopulate_Books(r.doc.b, r.doc.p);
+							break;
+						}
+						default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
 					}
 					this.menu.doClose();
-				};
-
-				const get$Row = (r) => {
-					if (this.subType === "content") {
-						return $(`
-							<div class="panel-tab-results-row">
-								<span>${r.doc.n}</span>
-								<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
-							</div>
-						`);
-					} else {
-						return $(`
-							<div class="panel-tab-results-row">
-								<span>${r.doc.h}</span>
-								<span><i>${r.doc.n}, ${r.doc.s}</i></span>
-							</div>
-						`);
-					}
 				};
 
 				if (flags.doClickFirst) {
@@ -2558,7 +2782,7 @@ class AddMenuSearchTab extends AddMenuTab {
 				const res = toProcess.slice(0, MAX_RESULTS); // hard cap at 75 results
 
 				res.forEach(r => {
-					get$Row(r).on("click", () => handleClick(r)).appendTo(this.$results);
+					this._get$Row(r).on("click", () => handleClick(r)).appendTo(this.$results);
 				});
 
 				if (resultCount > MAX_RESULTS) {
@@ -2577,10 +2801,12 @@ class AddMenuSearchTab extends AddMenuTab {
 
 			const $selCat = $(`
 				<select class="form-control panel-tab-cat">
-					<option value="ALL">All Categories</option>
+					<option value="ALL">${this._getAllTitle()}</option>
 				</select>
-			`).appendTo($wrpCtrls);
-			Object.keys(this.indexes).sort().filter(it => it !== "ALL").forEach(it => $selCat.append(`<option value="${it}">${it}</option>`));
+			`).appendTo($wrpCtrls).toggle(Object.keys(this.indexes).length !== 1);
+			Object.keys(this.indexes).sort().filter(it => it !== "ALL").forEach(it => {
+				$selCat.append(`<option value="${it}">${this._getCatOptionText(it)}</option>`)
+			});
 			$selCat.on("change", () => {
 				this.cat = $selCat.val();
 				this.doSearch();
@@ -2611,23 +2837,21 @@ class AddMenuSearchTab extends AddMenuTab {
 }
 
 class RuleLoader {
-	static pFill (book) {
-		return DataUtil.loadJSON(`data/generated/${book}.json`).then(data => new Promise((resolve) => {
-			const $$$ = RuleLoader.cache;
+	static async pFill (book) {
+		const $$$ = RuleLoader.cache;
+		if ($$$[book]) return $$$[book];
 
-			Object.keys(data.data).forEach(b => {
-				const ref = data.data[b];
-				if (!$$$[b]) $$$[b] = {};
-				ref.forEach((c, i) => {
-					if (!$$$[b][i]) $$$[b][i] = {};
-					c.entries.forEach(s => {
-						$$$[b][i][s.name] = s;
-					});
-				})
+		const data = DataUtil.loadJSON(`data/generated/${book}.json`);
+		Object.keys(data.data).forEach(b => {
+			const ref = data.data[b];
+			if (!$$$[b]) $$$[b] = {};
+			ref.forEach((c, i) => {
+				if (!$$$[b][i]) $$$[b][i] = {};
+				c.entries.forEach(s => {
+					$$$[b][i][s.name] = s;
+				});
 			});
-
-			resolve();
-		}));
+		});
 	}
 
 	static getFromCache (book, chapter, header) {
@@ -2635,6 +2859,39 @@ class RuleLoader {
 	}
 }
 RuleLoader.cache = {};
+
+class AdventureOrBookLoader {
+	constructor (type) {
+		this._type = type;
+		this._cache = {};
+	}
+
+	_getJsonPath (bookOrAdventure) {
+		switch (this._type) {
+			case "adventure": return `data/adventure/adventure-${bookOrAdventure.toLowerCase()}.json`
+			case "book": return `data/book/book-${bookOrAdventure.toLowerCase()}.json`
+			default: throw new Error(`Unknown loader type "${this._type}"`)
+		}
+	}
+
+	async pFill (bookOrAdventure) {
+		if (this._cache[bookOrAdventure]) return this._cache[bookOrAdventure];
+
+		const data = await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
+		this._cache[bookOrAdventure] = {};
+		data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
+	}
+
+	getFromCache (adventure, chapter) {
+		return this._cache[adventure][chapter];
+	}
+}
+
+class AdventureLoader extends AdventureOrBookLoader { constructor () { super("adventure"); } }
+class BookLoader extends AdventureOrBookLoader { constructor () { super("book"); } }
+
+const adventureLoader = new AdventureLoader();
+const bookLoader = new BookLoader();
 
 class NoteBox {
 	static make$Notebox (board, content) {
@@ -2923,14 +3180,34 @@ class DmScreenUtil {
 		});
 	}
 
-	static getShow$Modal (title, cbClose) {
+	/**
+	 * @param titleOrOpts Modal title, or an object of options, which are:
+	 *   - `title` The modal title.
+	 *   - `fullHeight` If the modal should take up (almost) the full height of the screen.
+	 *   - `fullWidth` if the modal should take up (almost) the full width of the screen.
+	 *   - `cbClose` Callback run when the modal is closed.
+	 * @param cbClose Callback run when the modal is closed.
+	 * @returns JQuery Modal inner wrapper, to have content added as required.
+	 */
+	static getShow$Modal (titleOrOpts, cbClose) {
+		const opts = typeof titleOrOpts === "string" ? {} : titleOrOpts;
+		if (typeof titleOrOpts === "string") {
+			opts.title = titleOrOpts;
+			opts.cbClose = cbClose;
+		}
+
+		const addStyles = [];
+		if (opts.fullHeight) {
+			addStyles.push(`height: 100%`);
+		}
+
 		const $modal = $(`<div class="panel-addmenu">`);
-		const $scroller = $(`<div class="panel-addmenu-inner--modal-scroller"/>`);
-		const $modalInner = $(`<div class="panel-addmenu-inner panel-addmenu-inner--modal dropdown-menu"><h4>${title}</h4><div data-r/></div>`).swap($scroller)
+		const $scroller = $(`<div class="panel-addmenu-modal-scroller"/>`).data("close", () => $modal.click());
+		const $modalInner = $(`<div class="panel-addmenu-inner panel-addmenu-inner--modal dropdown-menu${opts.fullWidth ? ` panel-addmenu-inner--large-modal` : ""}"${addStyles.length ? ` style="${addStyles.join(";")}"` : ""}><h4>${opts.title}</h4><div data-r/></div>`).swap($scroller)
 			.appendTo($modal).click(e => e.stopPropagation());
 		const doClose = () => $modal.remove();
 		$modal.click(() => {
-			cbClose();
+			if (opts.cbClose) opts.cbClose();
 			doClose();
 		});
 		$(`body`).append($modal);
@@ -2945,8 +3222,9 @@ class DmScreenUtil {
 		return $(`<${tag} class="tab-body-row"/>`).appendTo($modalInner);
 	}
 
-	static getAddModal$RowCb ($modalInner, labelText, objectWithProp, propName) {
+	static getAddModal$RowCb ($modalInner, labelText, objectWithProp, propName, helpText) {
 		const $row = DmScreenUtil._getAdd$Row($modalInner, "label").addClass(`tab-body-row--cb`);
+		if (helpText) $row.attr("title", helpText);
 		$row.append(`<span>${labelText}</span>`);
 		const $cb = $(`<input type="checkbox">`).appendTo($row)
 			.prop("checked", objectWithProp[propName])

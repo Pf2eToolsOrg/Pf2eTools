@@ -1,3 +1,5 @@
+"use strict";
+
 class InitiativeTracker {
 	static make$Tracker (board, state) {
 		const ALPHA = "ALPHA";
@@ -17,6 +19,10 @@ class InitiativeTracker {
 			importIsAddPlayers: _propDefaultTrue(state.p),
 			importIsAppend: _propDefaultFalse(state.a),
 			statsAddColumns: _propDefaultFalse(state.k),
+			playerInitShowExactHp: _propDefaultFalse(state.piH),
+			playerInitHideNewMonster: _propDefaultTrue(state.piV),
+			playerInitShowOrdinals: _propDefaultFalse(state.piO),
+			playerInitShortTokens: _propDefaultTrue(state.piS),
 			statsCols: state.c || []
 		};
 
@@ -33,10 +39,34 @@ class InitiativeTracker {
 		board.reactor.on("panelResize", handleResize);
 		$wrpTracker.on("destroyed", () => board.reactor.off("panelResize", handleResize));
 
+		const p2pMeta = {rows: [], serverInfo: null};
+		const _sendStateToClients = () => {
+			if (p2pMeta.serverInfo === null) return;
+
+			p2pMeta.rows = p2pMeta.rows.filter(r => !r.isDeleted);
+			p2pMeta.serverInfo = p2pMeta.serverInfo.filter(r => {
+				if (r.isDeleted) {
+					r.server.close();
+					return false;
+				} else return true;
+			});
+
+			const toSend = getPlayerFriendlyState();
+			try {
+				p2pMeta.serverInfo.filter(info => info.server.isActive).forEach(info => info.server.sendMessage(toSend));
+			} catch (e) { setTimeout(() => { throw e; }) }
+		};
+		const sendStateToClientsDebounced = MiscUtil.debounce(_sendStateToClients, 100); // long delay to avoid network spam
+
+		const doUpdateExternalStates = () => {
+			board.doSaveStateDebounced();
+			sendStateToClientsDebounced();
+		};
+
 		const makeImportSettingsModal = () => {
-			const $modalInner = DmScreenUtil.getShow$Modal("Import Settings", () => board.doSaveStateDebounced());
+			const $modalInner = DmScreenUtil.getShow$Modal("Import Settings", () => doUpdateExternalStates());
 			DmScreenUtil.addModal$Sep($modalInner);
-			DmScreenUtil.getAddModal$RowCb($modalInner, "Roll hit points", cfg, "isRollHp");
+			DmScreenUtil.getAddModal$RowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
 			DmScreenUtil.getAddModal$RowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
 			DmScreenUtil.getAddModal$RowCb($modalInner, "Add players", cfg, "importIsAddPlayers");
 			DmScreenUtil.getAddModal$RowCb($modalInner, "Add to existing tracker state", cfg, "importIsAppend");
@@ -48,8 +78,13 @@ class InitiativeTracker {
 			switch (Number($selectedMenu.data("ctx-id"))) {
 				case 0:
 					EncounterUtil.pGetSavedState().then(savedState => {
-						if (savedState) convertAndLoadBestiaryList(savedState);
-						else alert(`No saved encounter! Please first go to the Bestiary and create one.`);
+						if (savedState) convertAndLoadBestiaryList(savedState.data);
+						else {
+							JqueryUtil.doToast({
+								content: `No saved encounter! Please first go to the Bestiary and create one.`,
+								type: "warning"
+							});
+						}
 					});
 					break;
 				case 1:
@@ -73,9 +108,9 @@ class InitiativeTracker {
 				<div class="dm-init-row-mid"/>
 
 				<div class="dm-init-row-rhs">
-					<div class="dm-init-header dm-init-header--input" title="Hit Points">HP</div>
+					<div class="dm-init-header dm-init-header--input dm-init-header--input-wide" title="Hit Points">HP</div>
 					<div class="dm-init-header dm-init-header--input" title="Initiative Score">#</div>
-					<div style="width: 20px;"/>
+					<div style="width: 43px;"/>
 				</div>
 			</div>
 		`).appendTo($wrpTop);
@@ -84,14 +119,18 @@ class InitiativeTracker {
 
 		const $wrpControls = $(`<div class="dm-init-wrp-controls"/>`).appendTo($wrpTracker);
 
-		const $wrpAddNext = $(`<div/>`).appendTo($wrpControls);
-		const $wrpAdd = $(`<div class="btn-group"/>`).appendTo($wrpAddNext);
+		const $wrpAddNext = $(`<div class="flex"/>`).appendTo($wrpControls);
+		const $wrpAdd = $(`<div class="btn-group flex"/>`).appendTo($wrpAddNext);
 		const $btnAdd = $(`<button class="btn btn-primary btn-xs dm-init-lockable" title="Add Player"><span class="glyphicon glyphicon-plus"/></button>`).appendTo($wrpAdd);
 		const $btnAddMonster = $(`<button class="btn btn-success btn-xs dm-init-lockable mr-2" title="Add Monster"><span class="glyphicon glyphicon-print"/></button>`).appendTo($wrpAdd);
-		$(`<button class="btn btn-default btn-xs" title="Next Turn"><span class="glyphicon glyphicon-step-forward"/></button>`).appendTo($wrpAddNext)
+		$(`<button class="btn btn-default btn-xs mr-2" title="Next Turn"><span class="glyphicon glyphicon-step-forward"/></button>`).appendTo($wrpAddNext)
 			.click(() => setNextActive());
+		const $iptRound = $(`<input class="form-control ipt-sm dm_init__rounds" type="number" min="1" title="Round">`)
+			.val(state.n || 1)
+			.change(() => doUpdateExternalStates())
+			.appendTo($wrpAddNext);
 
-		const $wrpSort = $(`<div class="btn-group"/>`).appendTo($wrpControls);
+		const $wrpSort = $(`<div class="btn-group flex"/>`).appendTo($wrpControls);
 		$(`<button title="Sort Alphabetically" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-sort-by-alphabet"/></button>`).appendTo($wrpSort)
 			.click(() => {
 				if (cfg.sort === ALPHA) flipDir();
@@ -105,8 +144,305 @@ class InitiativeTracker {
 				doSort(NUM);
 			});
 
-		const $wrpUtils = $(`<div/>`).appendTo($wrpControls);
-		const $wrpLockSettings = $(`<div class="btn-group"/>`).appendTo($wrpUtils);
+		const $wrpUtils = $(`<div class="flex"/>`).appendTo($wrpControls);
+		$(`<button class="btn btn-primary btn-xs mr-2" title="Player Window"><span class="glyphicon glyphicon-user"/></button>`)
+			.appendTo($wrpUtils)
+			.click(() => {
+				// nop on receiving a message; we want to send only
+				// TODO expand this, to allow e.g. players to set statuses or assign damage/healing (at DM approval?)
+				const _DM_MESSAGE_RECEIVER = () => {};
+				const _DM_ERROR_HANDLER = function (err) {
+					if (!this.isClosed) {
+						JqueryUtil.doToast({
+							content: `Server error:\n${err ? err.message || err : "(Unknown error)"}`,
+							type: "danger"
+						});
+					}
+				};
+
+				const $modalInner = DmScreenUtil.getShow$Modal({
+					title: "Configure Player View",
+					fullWidth: true,
+					fullHeight: true,
+					cbClose: () => {
+						if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.detach());
+					}
+				});
+
+				const $wrpHelp = DmScreenUtil._getAdd$Row($modalInner, "div");
+				const $btnAltGenAll = $(`<button class="btn btn-primary btn-text-insert">Generate All</button>`).click(() => $btnGenServerTokens.click());
+				const $btnAltCopyAll = $(`<button class="btn btn-primary btn-text-insert">Copy Server Tokens</button>`).click(() => $btnCopyServers.click());
+				$(`<div class="row full-width">
+					<div class="col-12">
+						<p>
+						The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a DM's initiative tracker. Players should use the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a> page to connect to the DM's instance. As a DM, the usage is as follows:
+						<ol>
+								<li>Add the required number of players, and input (preferably unique) player names.</li>
+								<li>Click "<div data-r="$btnAltGenAll"/>," which will generate a "server token" per player. You can click "<div data-r="$btnAltCopyAll"/>" to copy them all as a single block of text, or click on the "Server Token" values to copy them individually. Distribute these tokens to your players (via a messaging service of your choice; we recommend <a href="https://discordapp.com/">Discord</a>). Each player should paste their token into the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a>, following the instructions provided therein.</li>
+								<li>
+									Get a resulting "client token" from each player via a messaging service of your choice. Then, either:
+									<ol type="a">
+										<li>Click the "Accept Multiple Clients" button, and paste in text containing multiple client tokens. <b>This will try to find tokens in <i>any</i> text, ignoring everything else.</b> Pasting a chatroom log (containing, for example, usernames and timestamps mixed with tokens) is the expected usage.</li>
+										<li>Paste each token into the appropriate "Client Token" field and "Accept Client" on each. A token can be identified by the slugified player name in the first few characters.</li>
+									</ol>
+								</li>
+							</ol>
+						</p>
+						<p>Once a player's client has been "accepted," it will receive updates from the DM's tracker. <i>Please note that this system is highly experimental. Your experience may vary.</i></p>
+					</div>
+				</div>`).swap({$btnAltGenAll, $btnAltCopyAll}).appendTo($wrpHelp);
+
+				DmScreenUtil.addModal$Sep($modalInner);
+
+				const $wrpTop = DmScreenUtil._getAdd$Row($modalInner, "div");
+
+				const $btnAddClient = $(`<button class="btn btn-xs btn-primary" title="Add Client">Add Player</button>`).click(() => addClientRow());
+
+				const $btnCopyServers = $(`<button class="btn btn-xs btn-primary" title="Copy any available server tokens to the clipboard">Copy Server Tokens</button>`)
+					.click(async () => {
+						const targetRows = p2pMeta.rows.filter(it => !it.isDeleted && !it.$iptTokenClient.attr("disabled"));
+						if (!targetRows.length) {
+							JqueryUtil.doToast({
+								content: `No free server tokens to copy. Generate some!`,
+								type: "warning"
+							});
+						} else {
+							await MiscUtil.pCopyTextToClipboard(targetRows.map(it => it.$iptTokenServer.val()).join("\n\n"));
+							JqueryUtil.showCopiedEffect($btnGenServerTokens);
+						}
+					});
+
+				const $btnAcceptClients = $(`<button class="btn btn-xs btn-primary" title="Open a prompt into which text containing client tokens can be pasted">Accept Multiple Clients</button>`)
+					.click(() => {
+						const $modalInnerAccept = DmScreenUtil.getShow$Modal({title: "Accept Multiple Clients"});
+
+						const $iptText = $(`<textarea class="form-control dm_init__pl_textarea block mb-2"/>`)
+							.keydown(() => $iptText.removeClass("error-background"));
+
+						const $btnAccept = $(`<button class="btn btn-xs btn-primary block text-align-center" title="Add Client">Accept Multiple Clients</button>`)
+							.click(async () => {
+								$iptText.removeClass("error-background");
+								const txt = $iptText.val();
+								if (!txt.trim() || !PeerUtil.containsAnyTokens(txt)) {
+									$iptText.addClass("error-background");
+								} else {
+									const connected = await PeerUtil.pConnectClientsToServers(p2pMeta.serverInfo, txt);
+									connected.forEach(serverInfo => {
+										serverInfo.rowMeta.$iptTokenClient.val(serverInfo._tempTokenToDisplay || "").attr("disabled", true);
+										serverInfo.rowMeta.$btnAcceptClientToken.attr("disabled", true);
+										delete serverInfo._tempTokenToDisplay;
+									});
+									$modalInnerAccept.data("close")();
+									sendStateToClientsDebounced();
+								}
+							});
+
+						$(`<div>
+							<p>Paste text containing one or more client tokens, and click "Accept Multiple Clients"</p>
+							<div data-r="$iptText"/>
+							<div class="flex-vh-center"><div data-r="$btnAccept"/></div>
+						</div>`).swap({$iptText, $btnAccept}).appendTo($modalInnerAccept)
+					});
+
+				$(`
+					<div class="row full-width">
+						<div class="col-12">
+							<div class="flex-inline-v-center mr-2">
+								<span class="mr-1">Add a player (client):</span>
+								<div data-r="$btnAddClient"/>
+							</div>
+							<div class="flex-inline-v-center mr-2">
+								<span class="mr-1">Copy all un-paired server tokens:</span>
+								<div data-r="$btnCopyServers"/>
+							</div>
+							<div class="flex-inline-v-center mr-2">
+								<span class="mr-1">Mass-accept clients:</span>
+								<div data-r="$btnAcceptClients"/>
+							</div>
+						</div>
+					</div>
+				`).swap({$btnAddClient, $btnCopyServers, $btnAcceptClients}).appendTo($wrpTop);
+
+				DmScreenUtil.addModal$Sep($modalInner);
+
+				const pHandleGenerateButtonPress = async rowMetas => {
+					const targetRows = rowMetas.filter(it => !it.isDeleted).filter(it => !it.isActive);
+					if (targetRows.every(it => it.isActive)) {
+						return JqueryUtil.doToast({
+							content: "No rows require Server Token generation!",
+							type: "warning"
+						});
+					}
+
+					let anyInvalidNames = false;
+					targetRows.forEach(r => {
+						r.$iptName.removeClass("error-background");
+						if (!r.$iptName.val().trim()) {
+							anyInvalidNames = true;
+							r.$iptName.addClass("error-background");
+						}
+					});
+					if (anyInvalidNames) return;
+
+					const names = targetRows.map(r => {
+						r.isActive = true;
+
+						r.$iptName.attr("disabled", true);
+						r.$btnGenServerToken.attr("disabled", true);
+
+						return r.$iptName.val();
+					});
+
+					if (p2pMeta.serverInfo) {
+						await p2pMeta.serverInfo;
+
+						const serverInfo = await PeerUtil.pInitialiseServersAddToExisting(
+							names,
+							p2pMeta.serverInfo,
+							_DM_MESSAGE_RECEIVER,
+							_DM_ERROR_HANDLER,
+							{shortTokens: !!cfg.playerInitShortTokens}
+						);
+
+						return targetRows.map((r, i) => {
+							r.name = serverInfo[i].name;
+							r.serverInfo = serverInfo[i];
+							r.$iptTokenServer.val(serverInfo[i].textifiedSdp).attr("disabled", false);
+
+							serverInfo[i].rowMeta = r;
+
+							r.$iptTokenClient.attr("disabled", false);
+							r.$btnAcceptClientToken.attr("disabled", false);
+
+							return serverInfo[i].textifiedSdp;
+						});
+					} else {
+						p2pMeta.serverInfo = new Promise(async resolve => {
+							p2pMeta.serverInfo = await PeerUtil.pInitialiseServers(names, _DM_MESSAGE_RECEIVER, _DM_ERROR_HANDLER, {shortTokens: !!cfg.playerInitShortTokens});
+
+							targetRows.forEach((r, i) => {
+								r.name = p2pMeta.serverInfo[i].name;
+								r.serverInfo = p2pMeta.serverInfo[i];
+								r.$iptTokenServer.val(p2pMeta.serverInfo[i].textifiedSdp).attr("disabled", false);
+
+								p2pMeta.serverInfo[i].rowMeta = r;
+
+								r.$iptTokenClient.attr("disabled", false);
+								r.$btnAcceptClientToken.attr("disabled", false);
+							});
+
+							resolve();
+						});
+
+						await p2pMeta.serverInfo;
+						return targetRows.map(r => r.serverInfo.textifiedSdp);
+					}
+				};
+
+				const $btnGenServerTokens = $(`<button class="btn btn-primary btn-xs">Generate All</button>`)
+					.click(() => pHandleGenerateButtonPress(p2pMeta.rows));
+
+				DmScreenUtil._getAdd$Row($modalInner, "div")
+					.append(`
+					<div class="row full-width">
+						<div class="col-2 bold">Player Name</div>
+						<div class="col-3-5 bold">Server Token</div>
+						<div class="col-1 text-align-center"><div data-r="$btnGenServerTokens"/></div>
+						<div class="col-3-5 bold">Client Token</div>
+					</div>
+				`).swap({$btnGenServerTokens});
+
+				const _get$rowTemplate = () => $(`
+					<div class="row full-width mb-2 flex">
+						<div class="col-2"><div data-r="$iptName"/></div>
+						<div class="col-3-5"><div data-r="$iptTokenServer"/></div>
+						<div class="col-1 flex-vh-center"><div data-r="$btnGenServerToken"/></div>
+						<div class="col-3-5"><div data-r="$iptTokenClient"/></div>
+						<div class="col-1-5 flex-vh-center"><div data-r="$btnAcceptClientToken"/></div>
+						<div class="col-0-5 flex-vh-center"><div data-r="$btnDeleteClient"/></div>
+					</div>
+				`);
+
+				const addClientRow = () => {
+					const rowMeta = {id: CryptUtil.uid()};
+
+					const $iptName = $(`<input class="form-control input-sm">`)
+						.keydown(evt => {
+							$iptName.removeClass("error-background");
+							if (evt.which === 13) $btnGenServerToken.click();
+						});
+
+					const $iptTokenServer = $(`<input class="form-control input-sm copyable code" readonly disabled>`)
+						.click(async () => {
+							await MiscUtil.pCopyTextToClipboard($iptTokenServer.val());
+							JqueryUtil.showCopiedEffect($iptTokenServer);
+						});
+
+					const $btnGenServerToken = $(`<button class="btn btn-xs btn-primary" title="Generate Server Token">Generate</button>`)
+						.click(() => pHandleGenerateButtonPress([rowMeta]));
+
+					const $iptTokenClient = $(`<input class="form-control input-sm code" disabled>`)
+						.keydown(evt => {
+							$iptTokenClient.removeClass("error-background");
+							if (evt.which === 13) $btnAcceptClientToken.click();
+						});
+
+					const $btnAcceptClientToken = $(`<button class="btn btn-xs btn-primary" title="Accept Client Token" disabled>Accept Client</button>`)
+						.click(async () => {
+							const token = $iptTokenClient.val();
+							if (PeerUtil.isValidToken(token)) {
+								try {
+									await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], token);
+									$iptTokenClient.prop("disabled", true);
+									$btnAcceptClientToken.prop("disabled", true);
+									sendStateToClientsDebounced();
+								} catch (e) {
+									JqueryUtil.doToast({
+										content: `Failed to accept client token! Are you sure it was valid? (See the log for more details.)`,
+										type: "error"
+									});
+									setTimeout(() => { throw e; });
+								}
+							} else $iptTokenClient.addClass("error-background");
+						});
+
+					const $btnDeleteClient = $(`<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"/></button>`)
+						.click(() => {
+							rowMeta.$row.remove();
+							rowMeta.isDeleted = true;
+							if (rowMeta.serverInfo) {
+								rowMeta.serverInfo.server.close();
+								rowMeta.serverInfo.isDeleted = true;
+							}
+
+							if (!$wrpRowsInner.find(`.row`).length) addClientRow();
+						});
+
+					rowMeta.$row = _get$rowTemplate().swap({
+						$iptName,
+						$iptTokenServer,
+						$btnGenServerToken,
+						$iptTokenClient,
+						$btnAcceptClientToken,
+						$btnDeleteClient
+					}).appendTo($wrpRowsInner);
+
+					rowMeta.$iptName = $iptName;
+					rowMeta.$iptTokenServer = $iptTokenServer;
+					rowMeta.$btnGenServerToken = $btnGenServerToken;
+					rowMeta.$iptTokenClient = $iptTokenClient;
+					rowMeta.$btnAcceptClientToken = $btnAcceptClientToken;
+					p2pMeta.rows.push(rowMeta);
+				};
+
+				const $wrpRows = DmScreenUtil._getAdd$Row($modalInner, "div");
+				const $wrpRowsInner = $(`<div class="full-width"/>`).appendTo($wrpRows);
+
+				if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.appendTo($wrpRowsInner));
+				else addClientRow();
+			});
+
+		const $wrpLockSettings = $(`<div class="btn-group flex"/>`).appendTo($wrpUtils);
 		const $btnLock = $(`<button class="btn btn-danger btn-xs" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></button>`).appendTo($wrpLockSettings);
 		$btnLock.on("click", () => {
 			if (cfg.isLocked) {
@@ -121,6 +457,7 @@ class InitiativeTracker {
 			cfg.isLocked = !cfg.isLocked;
 			handleStatColsChange();
 		});
+
 		$(`<button class="btn btn-default btn-xs mr-2"><span class="glyphicon glyphicon-cog"></span></button>`)
 			.appendTo($wrpLockSettings)
 			.click(() => {
@@ -128,11 +465,16 @@ class InitiativeTracker {
 					"Settings",
 					() => {
 						handleStatColsChange();
-						board.doSaveStateDebounced();
+						doUpdateExternalStates();
 					}
 				);
 				DmScreenUtil.addModal$Sep($modalInner);
 				DmScreenUtil.getAddModal$RowCb($modalInner, "Roll hit points", cfg, "isRollHp");
+				DmScreenUtil.addModal$Sep($modalInner);
+				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Show exact HP", cfg, "playerInitShowExactHp");
+				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
+				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
+				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
 				DmScreenUtil.addModal$Sep($modalInner);
 
 				const $cbStats = DmScreenUtil.getAddModal$RowCb($modalInner, "Additional Columns", cfg, "statsAddColumns");
@@ -144,14 +486,14 @@ class InitiativeTracker {
 						<div class="row dm_init__stats_row">
 							<div class="col-1-3"/>
 							<div class="col-4-9">Auto-Fill With...</div>
-							<div class="col-2-7">Abbreviation</div>
+							<div class="col-2-5">Abbreviation</div>
 							<div class="col-1-7 text-align-center">Editable?</div>
 						</div>
 					`);
 				const $wrpTblStats = DmScreenUtil._getAdd$Row($modalInner, "div").addClass("tab-body-row--stats");
 
 				(() => {
-					const $wrpStatsRows = $(`<div class="dm_init__stats_rows"/>`).appendTo($wrpTblStats);
+					const $wrpStatsRows = $(`<div class="dm_init__stats_rows mb-2"/>`).appendTo($wrpTblStats);
 					const $wrpBtn = $(`<div class="text-align-center"/>`).appendTo($wrpTblStats);
 
 					const addRow = (thisCfg) => {
@@ -162,6 +504,7 @@ class InitiativeTracker {
 								po: null, // populate with... (previous value)
 								a: "", // abbreviation
 								e: true, // editable
+								v: false, // is player-visible
 								o: cfg.statsCols.filter(it => !it.isDeleted).length + 1 // order
 							};
 							cfg.statsCols.push(thisCfg);
@@ -179,20 +522,25 @@ class InitiativeTracker {
 							thisCfg.po = thisCfg.p || null;
 							thisCfg.p = $selPre.val() || "";
 
-							board.doSaveStateDebounced();
+							doUpdateExternalStates();
 						});
 						if (thisCfg.p) {
 							$selPre.val(thisCfg.p);
 						}
 
-						const $iptAbv = $(`<input class="form-control input-xs" placeholder="Abbreviation" value="${(thisCfg.a || "").escapeQuotes()}">`).change(() => {
+						const $iptAbv = $(`<input class="form-control input-xs" value="${(thisCfg.a || "").escapeQuotes()}">`).change(() => {
 							thisCfg.a = $iptAbv.val();
-							board.doSaveStateDebounced();
+							doUpdateExternalStates();
 						});
 
 						const $cbEditable = $(`<input type="checkbox">`).prop("checked", !!thisCfg.e).change(() => {
 							thisCfg.e = $cbEditable.prop("checked");
-							board.doSaveStateDebounced();
+							doUpdateExternalStates();
+						});
+
+						const $btnVisible = InitiativeTracker.get$btnPlayerVisible(thisCfg.v, () => {
+							thisCfg.v = $btnVisible.hasClass("btn-primary");
+							doUpdateExternalStates();
 						});
 
 						const $btnDel = $(`<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"/></button>`).click(() => {
@@ -201,7 +549,7 @@ class InitiativeTracker {
 							if (!$wrpTblStats.find(`.dm_init__stats_row`).length) {
 								addRow();
 							}
-							board.doSaveStateDebounced();
+							doUpdateExternalStates();
 						});
 
 						const saveOrders = () => {
@@ -221,7 +569,7 @@ class InitiativeTracker {
 							if ($row.prev().length) {
 								$row.prev().before($row);
 								saveOrders();
-								board.doSaveStateDebounced();
+								doUpdateExternalStates();
 							}
 						});
 
@@ -229,7 +577,7 @@ class InitiativeTracker {
 							if ($row.next().length) {
 								$row.next().after($row);
 								saveOrders();
-								board.doSaveStateDebounced();
+								doUpdateExternalStates();
 							}
 						});
 
@@ -239,11 +587,12 @@ class InitiativeTracker {
 								<div class="col-1-3 dm_init__stats_up_down--spacer"></div>
 
 								<div class="col-4-9"><div data-r="$selPre"/></div>
-								<div class="col-3"><div data-r="$iptAbv"/></div>
+								<div class="col-2-8"><div data-r="$iptAbv"/></div>
 								<div class="col-1 text-align-center"><div data-r="$cbEditable"/></div>
-								<div class="col-1-5 text-align-center dm_init__stats_del"><div data-r="$btnDel"/></div>
+								<div class="col-1 text-align-center"><div data-r="$btnVisible"/></div>
+								<div class="col-1 text-align-center dm_init__stats_del"><div data-r="$btnDel"/></div>
 							</div>
-						`).appendTo($wrpStatsRows).swap({$selPre, $iptAbv, $cbEditable, $btnDel, $btnUp, $btnDown});
+						`).appendTo($wrpStatsRows).swap({$selPre, $iptAbv, $cbEditable, $btnVisible, $btnDel, $btnUp, $btnDown});
 					};
 
 					$(`<button class="btn btn-xs btn-default"><span class="glyphicon-plus glyphicon dm_init__stats_add"/></button>`)
@@ -278,7 +627,7 @@ class InitiativeTracker {
 
 		$btnAdd.on("click", () => {
 			if (cfg.isLocked) return;
-			makeRow();
+			makeRow({isVisible: true});
 			doSort(cfg.sort);
 			checkSetFirstActive();
 		});
@@ -360,12 +709,23 @@ class InitiativeTracker {
 						const count = getCount();
 						if (isNaN(count) || count < 1) return;
 
-						makeRow(name, undefined, undefined, false, source, undefined, $cbRoll.prop("checked"));
+						makeRow({
+							nameOrMeta: name,
+							source,
+							isRollHp: $cbRoll.prop("checked")
+						});
 						if (count > 1) {
-							for (let i = 1; i < count; ++i) makeRow(name, undefined, undefined, false, source, undefined, $cbRoll.prop("checked"));
+							for (let i = 1; i < count; ++i) {
+								makeRow({
+									nameOrMeta: name,
+									source,
+									isRollHp: $cbRoll.prop("checked")
+								});
+							}
 						}
 						doSort(cfg.sort);
 						checkSetFirstActive();
+						doUpdateExternalStates();
 						doClose();
 					};
 
@@ -420,7 +780,7 @@ class InitiativeTracker {
 		function getSaveableState () {
 			const rows = $wrpEntries.find(`.dm-init-row`).map((i, e) => {
 				const $row = $(e);
-				const $conds = $row.find(`.dm-init-cond`);
+				const $conds = $row.find(`.init__cond`);
 				const $iptDisplayName = $row.find(`input.displayName`);
 				const n = $iptDisplayName.length ? {
 					n: $row.find(`input.name`).val(),
@@ -431,10 +791,12 @@ class InitiativeTracker {
 					n,
 					k: getStatColsState($row),
 					h: $row.find(`input.hp`).val(),
+					g: $row.find(`input.hp-max`).val(),
 					i: $row.find(`input.score`).val(),
 					a: 0 + $row.hasClass(`dm-init-row-active`),
 					s: $row.find(`input.source`).val(),
-					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : []
+					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
+					v: $row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`)
 				}
 			}).get();
 			return {
@@ -446,7 +808,53 @@ class InitiativeTracker {
 				p: cfg.importIsAddPlayers,
 				a: cfg.importIsAppend,
 				k: cfg.statsAddColumns,
-				c: cfg.statsCols.filter(it => !it.isDeleted)
+				piH: cfg.playerInitShowExactHp,
+				piV: cfg.playerInitHideNewMonster,
+				piO: cfg.playerInitShowOrdinals,
+				piS: cfg.playerInitShortTokens,
+				c: cfg.statsCols.filter(it => !it.isDeleted),
+				n: $iptRound.val()
+			};
+		}
+
+		function getPlayerFriendlyState () {
+			const visibleStatsCols = cfg.statsCols.filter(it => !it.isDeleted && it.v).map(({id, a, o}) => ({id, a, o})); // id, abbreviation, order
+
+			const rows = $wrpEntries.find(`.dm-init-row`).map((i, e) => {
+				const $row = $(e);
+
+				// if the row is player-hidden
+				if (!$row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`)) return false;
+
+				const statCols = getStatColsState($row);
+				const statsVals = statCols.filter(it => visibleStatsCols.find(sc => sc.id === it.id));
+
+				const $conds = $row.find(`.init__cond`);
+
+				const out = {
+					n: $row.find(`input.name`).val(),
+					i: $row.find(`input.score`).val(),
+					a: 0 + $row.hasClass(`dm-init-row-active`),
+					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
+					k: statsVals
+				};
+
+				const hp = Number($row.find(`input.hp`).val());
+				const hpMax = Number($row.find(`input.hp-max`).val());
+				if (cfg.playerInitShowExactHp) {
+					out.h = hp;
+					out.g = hpMax;
+				} else {
+					out.hh = isNaN(hp) || isNaN(hpMax) ? -1 : InitiativeTrackerUtil.getWoundLevel(100 * hp / hpMax);
+				}
+				if (cfg.playerInitShowOrdinals) out.o = $row.find(`.dm_init__number`).attr("data-number");
+
+				return out;
+			}).get().filter(Boolean);
+			return {
+				r: rows,
+				c: visibleStatsCols,
+				n: $iptRound.val()
 			};
 		}
 
@@ -459,7 +867,7 @@ class InitiativeTracker {
 				const $e = $(e);
 
 				// tick down any conditions
-				const $conds = $e.find(`.dm-init-cond`);
+				const $conds = $e.find(`.init__cond`);
 				if ($conds.length) $conds.each((i, e) => $(e).data("doTickDown")());
 
 				$e.removeClass(`dm-init-row-active`);
@@ -482,10 +890,31 @@ class InitiativeTracker {
 					} else break;
 				} while ($curr);
 			} else checkSetFirstActive();
-			board.doSaveStateDebounced();
+			doUpdateExternalStates();
 		}
 
-		function makeRow (nameOrMeta = "", hp = "", init = "", isActive, source, conditions = [], rollHp = false, statsCols) {
+		function makeRow (opts) {
+			let {
+				nameOrMeta,
+				hp,
+				hpMax,
+				init,
+				isActive,
+				source,
+				conditions,
+				rollHp,
+				statsCols,
+				isVisible
+			} = Object.assign({
+				nameOrMeta: "",
+				hp: "",
+				hpMax: "",
+				init: "",
+				conditions: [],
+				rollHp: false,
+				isVisible: !cfg.playerInitHideNewMonster
+			}, opts || {});
+
 			const isMon = !!source;
 			if (nameOrMeta instanceof Object) {
 				// unpack saved
@@ -499,7 +928,7 @@ class InitiativeTracker {
 			const $wrpRow = $(`<div class="dm-init-row ${isActive ? "dm-init-row-active" : ""}"/>`);
 
 			const $wrpLhs = $(`<div class="dm-init-row-lhs"/>`).appendTo($wrpRow);
-			const $iptName = $(`<input class="form-control input-sm name dm-init-lockable dm-init-row-input ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
+			const $iptName = $(`<input class="form-control input-sm name dm-init-name dm-init-lockable dm-init-row-input ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
 			$iptName.on("change", () => doSort(ALPHA));
 			if (isMon) {
 				const $rows = $wrpEntries.find(`.dm-init-row`);
@@ -534,16 +963,15 @@ class InitiativeTracker {
 				$(`<button class="btn btn-success btn-xs dm-init-lockable" title="Add Another (SHIFT for Roll New)" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>`)
 					.click((evt) => {
 						if (cfg.isLocked) return;
-						makeRow(
+						makeRow({
 							nameOrMeta,
-							"",
-							evt.shiftKey ? "" : $iptScore.val(),
-							$wrpRow.hasClass("dm-init-row-active"),
+							init: evt.shiftKey ? "" : $iptScore.val(),
+							isActive: $wrpRow.hasClass("dm-init-row-active"),
 							source,
-							[],
-							cfg.isRollHp,
-							evt.shiftKey ? null : getStatColsState($wrpRow)
-						);
+							rollHp: cfg.isRollHp,
+							statsCols: evt.shiftKey ? null : getStatColsState($wrpRow),
+							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary")
+						});
 						doSort(cfg.sort);
 					}).appendTo($monName);
 				$(`<input class="source hidden" value="${source}">`).appendTo($wrpLhs);
@@ -555,82 +983,17 @@ class InitiativeTracker {
 			}
 
 			function addCondition (name, color, turns) {
-				const state = {
-					name: name,
-					color: color,
-					turns: turns ? Number(turns) : null
-				};
-
-				const tickDown = (fromClick) => {
-					if (fromClick && state.turns == null) $cond.data("doRemove")(); // remove permanent conditions
-					if (state.turns == null) return;
-					else state.turns--;
-					if (state.turns <= 0) $cond.data("doRemove")();
-					else $cond.data("doRender")(fromClick);
-				};
-
-				const tickUp = (fromClick) => {
-					if (fromClick && state.turns == null) state.turns = 0; // convert permanent condition
-					if (state.turns == null) return;
-					else state.turns++;
-					$cond.data("doRender")(fromClick);
-				};
-
-				const render = (fromClick) => {
-					const turnsText = `${state.turns} turn${state.turns > 1 ? "s" : ""} remaining`;
-					const ttpText = state.name && state.turns ? `${state.name.escapeQuotes()} (${turnsText})` : state.name ? state.name.escapeQuotes() : state.turns ? turnsText : "";
-					const getBar = () => {
-						const style = state.turns == null || state.turns > 3
-							? `background-image: linear-gradient(45deg, ${state.color} 41.67%, transparent 41.67%, transparent 50%, ${state.color} 50%, ${state.color} 91.67%, transparent 91.67%, transparent 100%); background-size: 8.49px 8.49px;`
-							: `background: ${state.color};`;
-						return `<div class="dm-init-cond-bar" style="${style}"/>`
-					};
-					const inner = state.turns
-						? [...new Array(Math.min(state.turns, 3))].map(() => getBar()).join("")
-						: getBar();
-					$cond.attr("title", ttpText);
-
-					$cond.tooltip({trigger: "hover"});
-					if (ttpText) {
-						// update tooltips
-						$cond.tooltip("enable").tooltip("fixTitle");
-						if (fromClick) $cond.tooltip("show");
-					} else $cond.tooltip("disable");
-
-					$cond.html(inner);
-				};
-
-				const $cond = $(`<div class="dm-init-cond"/>`)
-					.data("doRender", render)
-					.data("doRemove", () => $cond.tooltip("destroy").remove())
-					.data("doTickDown", tickDown)
-					.data("doTickUp", tickUp)
-					.data("getState", () => JSON.parse(JSON.stringify(state)))
-					.on("contextmenu", (e) => e.ctrlKey || (e.preventDefault() || tickDown(true)))
-					.click(() => tickUp(true))
-					.appendTo($conds);
-				if (name) {
-					const cond = InitiativeTracker.CONDITIONS.find(it => it.condName !== null && it.name.toLowerCase() === name.toLowerCase().trim());
-					if (cond) {
-						$cond.on("mouseover", (evt) => {
-							if (evt.shiftKey) {
-								evt.shiftKey = false;
-								EntryRenderer.hover.mouseOver(
-									evt,
-									$cond[0],
-									UrlUtil.PG_CONDITIONS_DISEASES,
-									SRC_PHB,
-									UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES]({name: cond.condName || cond.name, source: SRC_PHB})
-								);
-							}
-						})
-					}
-				}
-				render();
+				const $cond = InitiativeTrackerUtil.get$condition({
+					name,
+					color,
+					turns,
+					onStateChange: () => doUpdateExternalStates()
+				});
+				$cond.appendTo($conds);
 			}
 
 			const $wrpConds = $(`<div class="split"/>`).appendTo($wrpLhs);
-			const $conds = $(`<div class="dm-init-wrp-conds"/>`).appendTo($wrpConds);
+			const $conds = $(`<div class="init__wrp_conds"/>`).appendTo($wrpConds);
 			$(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition" tabindex="-1"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
@@ -641,7 +1004,7 @@ class InitiativeTracker {
 
 					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
 
-					const conds = InitiativeTracker.CONDITIONS;
+					const conds = InitiativeTrackerUtil.CONDITIONS;
 					for (let i = 0; i < conds.length; i += 3) {
 						const $row = $(`<div class="row mb-2"/>`).appendTo($wrpRows);
 						const populateCol = (cond) => {
@@ -689,65 +1052,105 @@ class InitiativeTracker {
 			$(`<div class="dm-init-row-mid"/>`).appendTo($wrpRow);
 
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
-			let curHp = hp;
+			const hpVals = {
+				curHp: hp,
+				maxHp: hpMax
+			};
 
-			const $iptHp = $(`<input class="form-control input-sm hp dm-init-row-input text-align-right" placeholder="HP" value="${curHp}">`)
+			const doUpdateHpColors = () => {
+				const woundLevel = InitiativeTrackerUtil.getWoundLevel(100 * Number($iptHp.val()) / Number($iptHpMax.val()));
+				if (~woundLevel) {
+					const woundMeta = InitiativeTrackerUtil.getWoundMeta(woundLevel);
+					$iptHp.css("color", woundMeta.color);
+					$iptHpMax.css("color", woundMeta.color);
+				} else {
+					$iptHp.css("color", "");
+					$iptHpMax.css("color", "");
+				}
+			};
+
+			const $iptHp = $(`<input class="form-control input-sm hp dm-init-row-input text-align-right dm_init__hp dm_init__hp--current" value="${hpVals.curHp}">`)
+				.change(() => {
+					handleMathInput($iptHp, "curHp");
+					doUpdateExternalStates();
+					doUpdateHpColors();
+				})
 				.click(() => $iptHp.select())
 				.appendTo($wrpRhs);
-			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable dm-init-row-input text-align-right" placeholder="#" type="number" value="${init}">`)
+			$wrpRhs.append(`<div class="dm_init__hp_slash">/</div>`);
+			const $iptHpMax = $(`<input class="form-control input-sm hp-max dm-init-row-input dm_init__hp dm_init__hp--max" value="${hpVals.maxHp}">`)
+				.change(() => {
+					handleMathInput($iptHpMax, "maxHp");
+					doUpdateExternalStates();
+					doUpdateHpColors();
+				})
+				.click(() => $iptHpMax.select())
+				.appendTo($wrpRhs);
+
+			doUpdateHpColors();
+
+			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable dm-init-row-input text-align-center dm_init__ipt--rhs" type="number" value="${init}">`)
 				.on("change", () => doSort(NUM))
 				.click(() => $iptScore.select())
 				.appendTo($wrpRhs);
 
-			if (isMon && (curHp === "" || init === "")) {
+			if (isMon && (hpVals.curHp === "" || hpVals.maxHp === "" || init === "")) {
 				const doUpdate = () => {
 					const m = EntryRenderer.hover._getFromCache(UrlUtil.PG_BESTIARY, source, hash);
 
 					// set or roll HP
 					if (!rollHp && m.hp.average) {
-						curHp = m.hp.average;
-						$iptHp.val(curHp);
+						hpVals.curHp = hpVals.maxHp = m.hp.average;
+						$iptHp.val(hpVals.curHp);
+						$iptHpMax.val(hpVals.maxHp);
 					} else if (rollHp && m.hp.formula) {
-						curHp = EntryRenderer.dice.roll2(m.hp.formula, {
+						const roll = EntryRenderer.dice.roll2(m.hp.formula, {
 							user: false,
 							name: getRollName(m),
 							label: "HP"
 						});
-						$iptHp.val(curHp);
+						hpVals.curHp = hpVals.maxHp = roll;
+						$iptHp.val(roll);
+						$iptHpMax.val(roll);
 					}
 
 					// roll initiative
 					if (!init) {
 						$iptScore.val(rollInitiative(m));
 					}
+
+					doUpdateHpColors();
 				};
 
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY]({name: name, source: source});
 				if (EntryRenderer.hover._isCached(UrlUtil.PG_BESTIARY, source, hash)) doUpdate();
 				else {
 					EntryRenderer.hover._doFillThenCall(UrlUtil.PG_BESTIARY, source, hash, () => {
-						if (!curHp) doUpdate();
+						if (!hpVals.curHp) doUpdate();
 					});
 				}
 			}
 
-			$iptHp.on("change", () => {
-				const nxt = $iptHp.val().trim();
-				if (nxt && /^[-+0-9]*$/.exec(curHp) && /^[-+0-9]*$/.exec(nxt)) {
+			const handleMathInput = ($ipt, prop) => {
+				const nxt = $ipt.val().trim();
+				if (nxt && /^[-+0-9]*$/.exec(hpVals[prop]) && /^[-+0-9]*$/.exec(nxt)) {
 					const m = /^[+-]\d+/.exec(nxt);
 					const parts = nxt.split(/([+-]\d+)/).filter(it => it);
 					let temp = 0;
 					parts.forEach(p => temp += Number(p));
 					if (m) {
-						curHp = Number(curHp) + temp;
+						hpVals[prop] = Number(hpVals[prop]) + temp;
 					} else if (/[-+]/.exec(nxt)) {
-						curHp = temp;
+						hpVals[prop] = temp;
 					} else {
-						curHp = Number(nxt);
+						hpVals[prop] = Number(nxt);
 					}
-					$iptHp.val(curHp);
-				}
-			});
+					$ipt.val(hpVals[prop]);
+				} else hpVals[prop] = nxt;
+			};
+
+			InitiativeTracker.get$btnPlayerVisible(isVisible, doUpdateExternalStates, "dm-init-row-btn", "dm_init__btn_eye")
+				.appendTo($wrpRhs);
 
 			$(`<button class="btn btn-danger btn-xs dm-init-row-btn dm-init-lockable" title="Delete" tabindex="-1"><span class="glyphicon glyphicon-trash"/></button>`)
 				.appendTo($wrpRhs)
@@ -755,13 +1158,14 @@ class InitiativeTracker {
 					if (cfg.isLocked) return;
 					if ($wrpRow.hasClass(`dm-init-row-active`) && $wrpEntries.find(`.dm-init-row`).length > 1) setNextActive();
 					$wrpRow.remove();
+					doUpdateExternalStates();
 				});
 
 			populateRowStatCols($wrpRow, statsCols);
 			conditions.forEach(c => addCondition(c.name, c.color, c.turns));
 			$wrpRow.appendTo($wrpEntries);
 
-			board.doSaveStateDebounced();
+			doUpdateExternalStates();
 
 			return $wrpRow;
 		}
@@ -795,8 +1199,8 @@ class InitiativeTracker {
 			$mid.empty();
 
 			cfg.statsCols.forEach(c => {
-				const $ipt = $(`<input class="form-control input-sm dm_init__stat_ipt" ${!cfg.isLocked && (c.e || !isMon) ? "" : "disabled"}>`)
-					.change(() => board.doSaveStateDebounced());
+				const $ipt = $(`<input class="form-control input-sm dm_init__stat_ipt text-align-center" ${!cfg.isLocked && (c.e || !isMon) ? "" : "disabled"}>`)
+					.change(() => doUpdateExternalStates());
 
 				const populateFromBlock = () => {
 					const meta = InitiativeTracker.STAT_COLUMNS[c.p];
@@ -805,7 +1209,7 @@ class InitiativeTracker {
 						const populateStats = async () => {
 							const mon = await EntryRenderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash);
 							$ipt.val(meta.get(mon));
-							board.doSaveStateDebounced();
+							doUpdateExternalStates();
 						};
 						populateStats();
 					}
@@ -856,7 +1260,9 @@ class InitiativeTracker {
 						} else break;
 					}
 				}
-				board.doSaveStateDebounced();
+				$iptRound.val(Number($iptRound.val() || 0) + 1);
+
+				doUpdateExternalStates();
 			}
 		}
 
@@ -886,7 +1292,7 @@ class InitiativeTracker {
 				return first || second;
 			});
 			$wrpEntries.append(sorted);
-			board.doSaveStateDebounced();
+			doUpdateExternalStates();
 		}
 
 		function flipDir () {
@@ -897,6 +1303,8 @@ class InitiativeTracker {
 			$wrpEntries.empty();
 			cfg.sort = NUM;
 			cfg.dir = DESC;
+			$(`.dm_init__rounds`).val(1);
+			doUpdateExternalStates();
 		}
 
 		let firstLoad = true;
@@ -905,12 +1313,23 @@ class InitiativeTracker {
 			firstLoad = false;
 
 			(state.r || []).forEach(r => {
-				makeRow(r.n, r.h, r.i, r.a, r.s, r.c, false, r.k);
+				makeRow({
+					nameOrMeta: r.n,
+					hp: r.h,
+					hpMax: r.g,
+					init: r.i,
+					isActive: r.a,
+					source: r.s,
+					conditions: r.c,
+					statsCols: r.k,
+					isVisible: r.v
+				});
 			});
 			doSort(cfg.sort);
 			checkSetFirstActive();
 			handleStatColsChange();
-			board.doSaveStateDebounced();
+			doUpdateExternalStates();
+			if (!firstLoad && !noReset) $(`.dm_init__rounds`).val(1);
 		}
 
 		function getRollName (monster) {
@@ -947,18 +1366,76 @@ class InitiativeTracker {
 				r: []
 			};
 
-			if (bestiaryList.p && cfg.importIsAddPlayers) {
-				bestiaryList.p.forEach(playerGroup => {
-					[...new Array(playerGroup.count || 1)].forEach(() => {
-						toLoad.r.push({
-							n: ``,
-							h: "",
-							i: "",
-							a: 0,
-							c: []
+			if (cfg.importIsAddPlayers) {
+				if (bestiaryList.a) { // advanced encounter builder
+					if (bestiaryList.d) {
+						const colNameIndex = {};
+						(bestiaryList.c || []).forEach((colName, i) => colNameIndex[i] = (colName || "").toLowerCase());
+
+						// mark all old stats cols for deletion
+						cfg.statsCols.forEach(col => col.isDeleted = true);
+
+						const colIndex = {};
+						let hpIndex = null;
+						(bestiaryList.c || []).forEach((colName, i) => {
+							if ((colName || "").toLowerCase() === "hp") {
+								hpIndex = i;
+								return;
+							}
+
+							const newCol = {
+								id: CryptUtil.uid(),
+								p: "", // populate with...
+								po: null, // populate with... (previous value)
+								a: colName || "", // abbreviation
+								e: true, // editable
+								v: false, // player-visible
+								o: i
+							};
+							colIndex[i] = newCol;
+							cfg.statsCols.push(newCol);
 						});
-					});
-				});
+
+						bestiaryList.d.forEach(playerDetails => {
+							const row = {
+								n: playerDetails.n || "", // name
+								i: "", // score
+								a: 0, // is active?
+								c: [], // conditions
+								v: true
+							};
+
+							if (playerDetails.x && playerDetails.x.length) { // extra stats
+								row.k = playerDetails.x.map((val, i) => {
+									if (i === hpIndex) return null;
+									return {id: colIndex[i].id, v: val || ""};
+								}).filter(Boolean);
+
+								if (hpIndex != null) {
+									row.h = row.g = (playerDetails.x[hpIndex] || "").trim();
+								} else row.h = row.g = "";
+							} else row.h = row.g = "";
+
+							toLoad.r.push(row);
+						});
+					}
+				} else {
+					if (bestiaryList.p) {
+						bestiaryList.p.forEach(playerGroup => {
+							[...new Array(playerGroup.count || 1)].forEach(() => {
+								toLoad.r.push({
+									n: ``,
+									h: "",
+									g: "",
+									i: "",
+									a: 0,
+									c: [],
+									v: true
+								});
+							});
+						});
+					}
+				}
 			}
 
 			if (bestiaryList.l && bestiaryList.l.items) {
@@ -997,6 +1474,7 @@ class InitiativeTracker {
 						const groupInit = cfg.importIsRollGroups ? rollInitiative(it.monster) : null;
 						const groupHp = cfg.importIsRollGroups ? getOrRollHp(it.monster) : null;
 						[...new Array(it.count || 1)].forEach(() => {
+							const hp = `${cfg.importIsRollGroups ? groupHp : getOrRollHp(it.monster)}`;
 							toLoad.r.push({
 								n: {
 									name: it.monster.name,
@@ -1007,13 +1485,18 @@ class InitiativeTracker {
 								a: 0,
 								s: it.monster.source,
 								c: [],
-								h: `${cfg.importIsRollGroups ? groupHp : getOrRollHp(it.monster)}`
+								h: hp,
+								g: hp
 							});
 						});
 					});
 					loadState(toLoad, cfg.importIsAppend);
+					handleStatColsChange();
 				});
-			} else loadState(toLoad, cfg.importIsAppend);
+			} else {
+				loadState(toLoad, cfg.importIsAppend);
+				handleStatColsChange();
+			}
 		}
 
 		loadState(state);
@@ -1021,84 +1504,18 @@ class InitiativeTracker {
 
 		return $wrpTracker;
 	}
-}
-InitiativeTracker.CONDITIONS = [
-	{
-		name: "Blinded",
-		color: "#434343"
-	},
-	{
-		name: "Charmed",
-		color: "#f01789"
-	},
-	{
-		name: "Concentrating",
-		color: "#009f7a",
-		condName: null
-	},
-	{
-		name: "Deafened",
-		color: "#c7d0d3"
-	},
-	{
-		name: "Drunk",
-		color: "#ffcc00"
-	},
-	{
-		name: "Exhausted",
-		color: "#947a47",
-		condName: "Exhaustion"
-	},
-	{
-		name: "Frightened",
-		color: "#c9ca18"
-	},
-	{
-		name: "Grappled",
-		color: "#8784a0"
-	},
-	{
-		name: "Incapacitated",
-		color: "#3165a0"
-	},
-	{
-		name: "Invisible",
-		color: "#7ad2d6"
-	},
-	{
-		name: "!!On Fire!!",
-		color: "#ff6800",
-		condName: null
-	},
-	{
-		name: "Paralyzed",
-		color: "#c00900"
-	},
-	{
-		name: "Petrified",
-		color: "#a0a0a0"
-	},
-	{
-		name: "Poisoned",
-		color: "#4dc200"
-	},
-	{
-		name: "Prone",
-		color: "#5e60a0"
-	},
-	{
-		name: "Restrained",
-		color: "#d98000"
-	},
-	{
-		name: "Stunned",
-		color: "#a23bcb"
-	},
-	{
-		name: "Unconscious",
-		color: "#1c2383"
+
+	static get$btnPlayerVisible (isVisible, fnOnClick, ...additionalClasses) {
+		const $btnVisible = $(`<button class="btn ${isVisible ? `btn-primary` : `btn-default`} btn-xs ${additionalClasses.join(" ")}" title="${isVisible ? "Shown" : "Hidden"} in player view" tabindex="-1"><span class="glyphicon ${isVisible ? `glyphicon-eye-open` : `glyphicon-eye-close`}"/></button>`)
+			.on("click", () => {
+				$btnVisible.toggleClass("btn-primary").toggleClass("btn-default");
+				$btnVisible.find(`.glyphicon`).toggleClass("glyphicon-eye-open").toggleClass("glyphicon-eye-close");
+				$btnVisible.attr("title", $btnVisible.hasClass("btn-primary") ? "Shown in Player View" : "Hidden in Player View");
+				fnOnClick();
+			});
+		return $btnVisible;
 	}
-];
+}
 InitiativeTracker._GET_STAT_COLUMN_HR = () => ({isHr: true});
 InitiativeTracker.STAT_COLUMNS = {
 	hpFormula: {

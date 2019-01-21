@@ -1,4 +1,5 @@
 "use strict";
+
 const JSON_URL = "data/backgrounds.json";
 const JSON_FLUFF_URL = "data/fluff-backgrounds.json";
 const renderer = EntryRenderer.getDefaultRenderer();
@@ -47,13 +48,15 @@ function onJsonLoad (data) {
 	addBackgrounds(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
+			BrewUtil.bind({filterBox, sourceFilter});
 			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
+			ListUtil.addListShowHide();
 
 			History.init(true);
 			ExcludeUtil.checkShowAllExcluded(bgList, $(`#pagecontent`));

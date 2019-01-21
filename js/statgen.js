@@ -1,4 +1,5 @@
 "use strict";
+
 const RACE_JSON_URL = "data/races.json";
 
 class StatGen {
@@ -64,14 +65,19 @@ class StatGen {
 						this.doLoadStateFrom(json);
 						this.doSaveDebounced();
 						this.handleCostChanges();
-					} else return alert("Invalid save!");
+					} else {
+						return JqueryUtil.doToast({
+							content: `Invalid save file!`,
+							type: "danger"
+						});
+					}
 				});
 			});
 
 		const $btnSaveUrl = $(`#pbuy__save_url`)
-			.click(() => {
+			.click(async () => {
 				const encoded = `${window.location.href.split("#")[0]}#pointbuy${HASH_PART_SEP}${encodeURIComponent(JSON.stringify(this.getSaveableState()))}`;
-				copyText(encoded);
+				await MiscUtil.pCopyTextToClipboard(encoded);
 				JqueryUtil.showCopiedEffect($btnSaveUrl);
 			});
 
@@ -235,7 +241,12 @@ class StatGen {
 			const $btnAddLow = $(`<button class="btn btn-xs btn-primary" style="margin-right: 7px;">Add Lower</button>`)
 				.click(() => {
 					const lowest = Object.keys(this.savedState).map(Number).sort(SortUtil.ascSort)[0];
-					if (lowest === 0) return alert("Can't go any lower!");
+					if (lowest === 0) {
+						return JqueryUtil.doToast({
+							content: "Can't go any lower!",
+							type: "danger"
+						});
+					}
 
 					this.savedState[lowest - 1] = this.savedState[lowest];
 					this.doSaveDebounced();
@@ -330,6 +341,7 @@ class StatGen {
 	}
 
 	chooseRacialBonus (ele, updateTotal = true) {
+		if (this.raceChoiceAmount == null) return;
 		if ($("input.choose:checked").length > this.raceChoiceCount) return ele.checked = false;
 
 		$(".racial", ele.parentNode.parentNode)
@@ -347,7 +359,11 @@ class StatGen {
 			$(".choose").hide().prop("checked", false);
 			$(".pbuy__choose_dummy").hide();
 
-			if (!stats.choose) return;
+			if (!stats.choose) {
+				this.raceChoiceAmount = null;
+				this.raceChoiceCount = null;
+				return;
+			}
 
 			const {from} = stats.choose[0];
 			this.raceChoiceAmount = stats.choose[0].amount || 1;

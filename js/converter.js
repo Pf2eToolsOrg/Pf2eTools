@@ -3,10 +3,48 @@
 window.onload = doPageInit;
 
 String.prototype.split_handleColon = String.prototype.split_handleColon ||
-	function (str) {
+	function (str, maxSplits = Number.MAX_SAFE_INTEGER) {
+		if (str === "") return this.split("");
+
 		const colonStr = `${str.trim()}:`;
-		if (this.toLowerCase().startsWith(colonStr.toLowerCase())) return this.split(new RegExp(colonStr, "ig")).map(it => it.trim());
-		else return this.split(new RegExp(str, "ig"));
+		const isColon = this.toLowerCase().startsWith(colonStr.toLowerCase());
+
+		const re = isColon ? new RegExp(colonStr, "ig") : new RegExp(str, "ig");
+		const targetString = isColon ? colonStr : str;
+
+		let m = re.exec(this);
+		let splits = 0;
+		const out = [];
+		const indexes = [];
+
+		while (m && splits < maxSplits) {
+			indexes.push(m.index);
+
+			splits++;
+			m = re.exec(this);
+		}
+
+		if (indexes.length === 1) {
+			out.push(this.substring(0, indexes[0]));
+			out.push(this.substring(indexes[0] + targetString.length, this.length));
+		} else {
+			for (let i = 0; i < indexes.length - 1; ++i) {
+				const start = indexes[i];
+
+				if (i === 0) {
+					out.push(this.substring(0, start));
+				}
+
+				const end = indexes[i + 1];
+				out.push(this.substring(start + targetString.length, end));
+
+				if (i === indexes.length - 2) {
+					out.push(this.substring(end + targetString.length, this.length))
+				}
+			}
+		}
+
+		return out.map(it => it.trim());
 	};
 
 String.prototype.indexOf_handleColon = String.prototype.indexOf_handleColon ||
@@ -27,18 +65,28 @@ class ConverterUi {
 		this._tableConverter = null;
 
 		this._menuAccess = null;
+
+		this._saveInputDebounced = MiscUtil.debounce(() => StorageUtil.pSetForPage(ConverterUi.STORAGE_INPUT, this._editorIn.getValue()), 50);
+
+		this._storedSettings = StorageUtil.syncGetForPage(ConverterUi.STORAGE_SETTINGS) || {};
+		this._saveSettingsDebounced = MiscUtil.debounce(() => StorageUtil.syncSetForPage(ConverterUi.STORAGE_SETTINGS, this._storedSettings), 50);
 	}
 
 	set statblockConverter (statblockConverter) { this._statblockConverter = statblockConverter; }
 
 	set tableConverter (tableConverter) { this._tableConverter = tableConverter; }
 
-	init (bestiarySources) {
+	async init (bestiarySources) {
 		this._editorIn = ace.edit("converter_input");
 		this._editorIn.setOptions({
 			wrap: true,
 			showPrintMargin: false
 		});
+		try {
+			const prevInput = await StorageUtil.pGetForPage(ConverterUi.STORAGE_INPUT);
+			if (prevInput) this._editorIn.setValue(prevInput, -1);
+		} catch (ignored) { setTimeout(() => { throw ignored; }) }
+		this._editorIn.on("change", () => this._saveInputDebounced());
 
 		this._editorOut = ace.edit("converter_output");
 		this._editorOut.setOptions({
@@ -59,7 +107,10 @@ class ConverterUi {
 				};
 				DataUtil.userDownload(`converter-output`, out);
 			} else {
-				alert("Nothing to download!");
+				JqueryUtil.doToast({
+					content: "Nothing to download!",
+					type: "danger"
+				});
 			}
 		});
 
@@ -100,7 +151,7 @@ class ConverterUi {
 		const $mnu = $(`.sidemenu`);
 		const renderDivider = ($menu, heavy) => $menu.append(`<hr class="sidemenu__row__divider ${heavy ? "sidemenu__row__divider--heavy" : ""}">`);
 
-		const prevParser = StorageUtil.syncGetForPage(ConverterUi.STORAGE_PARSER);
+		const prevParser = this._storedSettings.parser;
 
 		const $wrpParser = $(`<div class="sidemenu__row"><div class="sidemenu__row__label">Mode</div></div>`).appendTo($mnu);
 		const $selParser = $(`
@@ -109,7 +160,8 @@ class ConverterUi {
 				<option>Table</option>
 			</select>
 		`).appendTo($wrpParser).change(() => {
-			StorageUtil.syncSetForPage(ConverterUi.STORAGE_PARSER, $selParser.val());
+			this._storedSettings.parser = $selParser.val();
+			this._saveSettingsDebounced();
 			switch ($selParser.val()) {
 				case "Statblock": renderStatblockSidemenu(); break;
 				case "Table": renderTableSidemenu(); break;
@@ -137,8 +189,11 @@ class ConverterUi {
 					</select>
 				`)
 				.appendTo($wrpMode)
-				.change(() => StorageUtil.syncSetForPage(ConverterUi.STORAGE_MODE, $selMode.val()));
-			const prevMode = StorageUtil.syncGetForPage(ConverterUi.STORAGE_MODE);
+				.change(() => {
+					this._storedSettings.statblockMode = $selMode.val();
+					this._saveSettingsDebounced();
+				});
+			const prevMode = this._storedSettings.statblockMode;
 			if (prevMode) $selMode.val(prevMode);
 
 			const $wrpTitle = $(`<div class="sidemenu__row"><label class="sidemenu__row__label sidemenu__row__label--cb-label" title="Should the creature's name be converted to title-case? Useful when pasting a name which is all-caps."><span>Title-Case Name</span></label></div>`).appendTo($wrpCustom);
@@ -219,22 +274,44 @@ class ConverterUi {
 
 			$wrpCustom.empty();
 
-			$(`<div class="sidemenu__row">
-				<small>Currently supports HTML only.</small>
-			</div>`).appendTo($wrpCustom);
+			const $wrpMode = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpCustom);
+			const $selMode = $(`
+					<select class="form-control input-sm select-inline">
+							<option value="html" selected>Parse as HTML</option>
+							<option value="md">Parse as Markdown</option>
+					</select>
+				`)
+				.appendTo($wrpMode)
+				.change(() => {
+					this._storedSettings.tableMode = $selMode.val();
+					this._saveSettingsDebounced();
+				});
+			const prevMode = this._storedSettings.tableMode;
+			if (prevMode) $selMode.val(prevMode);
 
 			renderDivider($wrpCustom);
 
 			const $wrpSample = $(`<div class="sidemenu__row"/>`).appendTo($wrpCustom);
-			$(`<button class="btn btn-sm btn-default" style="width: 100%;">Sample HTML</button>`)
-				.appendTo($wrpSample).click(() => tableConverter.showSample("html"));
+
+			$(`<button class="btn btn-sm btn-default">Sample HTML</button>`)
+				.appendTo($wrpSample).click(() => {
+					tableConverter.showSample("html");
+					$selMode.val("html").change();
+				});
+			$(`<button class="btn btn-sm btn-default">Sample Markdown</button>`)
+				.appendTo($wrpSample).click(() => {
+					tableConverter.showSample("md");
+					$selMode.val("md").change();
+				});
 
 			this._menuAccess.handleParse = () => {
-				this._tableConverter.doParseHtml(false);
+				if ($selMode.val() === "html") this._tableConverter.doParseHtml(false);
+				else this._tableConverter.doParseMarkdown(false);
 			};
 
 			this._menuAccess.handleParseAndAdd = () => {
-				this._tableConverter.doParseHtml(true);
+				if ($selMode.val() === "html") this._tableConverter.doParseHtml(true);
+				else this._tableConverter.doParseMarkdown(true);
 			};
 		};
 
@@ -252,7 +329,7 @@ class ConverterUi {
 
 	doCleanAndOutput (obj, append) {
 		const asString = JSON.stringify(obj, null, "\t");
-		const asCleanString = JsonClean.getClean(asString);
+		const asCleanString = TextClean.getCleanedJson(asString);
 		if (append) {
 			this.outText = `${asCleanString},\n${ui.outText}`;
 			this._hasAppended = true;
@@ -268,7 +345,7 @@ class ConverterUi {
 
 	set outText (text) { return this._editorOut.setValue(text, -1); }
 
-	get inText () { return this._editorIn.getValue(); }
+	get inText () { return TextClean.getReplacedQuotesText((this._editorIn.getValue() || "").trim()); }
 
 	set inText (text) { return this._editorIn.setValue(text, -1); }
 
@@ -276,8 +353,8 @@ class ConverterUi {
 
 	get source () { return this._menuAccess.getSource(); }
 }
-ConverterUi.STORAGE_PARSER = "converterParser";
-ConverterUi.STORAGE_MODE = "converterMode";
+ConverterUi.STORAGE_INPUT = "converterInput";
+ConverterUi.STORAGE_SETTINGS = "converterSettings";
 ConverterUi.STORAGE_SOURCES = "converterSources";
 
 class StatblockConverter {
@@ -299,7 +376,9 @@ class StatblockConverter {
 		}
 
 		if (!this._ui.inText || !this._ui.inText.trim()) return this._ui.showWarning("No input!");
-		const toConvert = StatblockConverter._getCleanInput(this._ui.inText).split("\n");
+		const toConvert = StatblockConverter._getCleanInput(this._ui.inText)
+			.replace(/(\d\d?\s+\([-+]\d\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`) // collapse multi-line ability scores
+			.split("\n");
 		const stats = {};
 		stats.source = this._ui.source;
 		// for the user to fill out
@@ -327,7 +406,7 @@ class StatblockConverter {
 
 			// armor class
 			if (i === 2) {
-				stats.ac = curLine.split_handleColon("Armor Class ")[1];
+				stats.ac = curLine.split_handleColon("Armor Class ", 1)[1];
 				continue;
 			}
 
@@ -513,6 +592,19 @@ class StatblockConverter {
 				if (stats.legendary.length === 0) delete stats.legendary;
 			}
 		}
+
+		(function doCleanLegendaryActionHeader () {
+			if (stats.legendary) {
+				stats.legendary = stats.legendary.map(it => {
+					if (!it.name.trim() && !it.entries.length) return null;
+					const m = /can take (\d) legendary actions/gi.exec(it.entries[0]);
+					if (!it.name.trim() && m) {
+						if (m[1] !== "3") stats.legendaryActions = Number(m[1]);
+						return null;
+					} else return it;
+				}).filter(Boolean);
+			}
+		})();
 
 		this._doStatblockPostProcess(stats);
 		this._ui.doCleanAndOutput(stats, append);
@@ -886,6 +978,7 @@ class StatblockConverter {
 		TagHit.tryTagHits(stats);
 		TraitsActionsTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
+		SensesTag.tryRun(stats);
 		doCleanup();
 	}
 
@@ -954,7 +1047,7 @@ class StatblockConverter {
 		let spellcasting = [];
 
 		function parseSpellcasting (trait) {
-			const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
+			const splitter = StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX;
 
 			function getParsedSpells (thisLine) {
 				let spellPart = thisLine.substring(thisLine.indexOf(": ") + 2).trim();
@@ -1078,7 +1171,6 @@ class StatblockConverter {
 	static _getCleanInput (ipt) {
 		return ipt
 			.replace(/[−–]/g, "-") // convert minus signs to hyphens
-			.replace(/(\d\d?\s+\([-+]\d\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`) // collapse multi-line ability scores
 		;
 	}
 
@@ -1088,15 +1180,15 @@ class StatblockConverter {
 
 	static _setCleanSizeTypeAlignment (stats, line) {
 		stats.size = line[0].toUpperCase();
-		stats.type = line.split(",")[0].split(" ").splice(1).join(" ");
+		stats.type = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[0].split(" ").splice(1).join(" ");
 		stats.type = StatblockConverter._tryParseType(stats.type);
 
-		stats.alignment = line.split(", ")[1].toLowerCase();
+		stats.alignment = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[1].toLowerCase();
 		AlignmentConvert.tryConvertAlignment(stats);
 	}
 
 	static _setCleanHp (stats, line) {
-		const rawHp = line.split_handleColon("Hit Points ")[1];
+		const rawHp = line.split_handleColon("Hit Points ", 1)[1];
 		// split HP into average and formula
 		const m = /^(\d+) \((.*?)\)$/.exec(rawHp);
 		if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
@@ -1170,7 +1262,7 @@ class StatblockConverter {
 	}
 
 	static _setCleanSaves (stats, line) {
-		stats.save = line.split_handleColon("Saving Throws")[1].trim();
+		stats.save = line.split_handleColon("Saving Throws", 1)[1].trim();
 		// convert to object format
 		if (stats.save && stats.save.trim()) {
 			const spl = stats.save.split(",").map(it => it.trim().toLowerCase()).filter(it => it);
@@ -1184,7 +1276,7 @@ class StatblockConverter {
 	}
 
 	static _setCleanSkills (stats, line) {
-		stats.skill = line.split_handleColon("Skills")[1].trim().toLowerCase();
+		stats.skill = line.split_handleColon("Skills", 1)[1].trim().toLowerCase();
 		const split = stats.skill.split(",");
 		const newSkills = {};
 		try {
@@ -1203,27 +1295,27 @@ class StatblockConverter {
 	}
 
 	static _setCleanDamageVuln (stats, line) {
-		stats.vulnerable = line.split_handleColon("Vulnerabilities")[1].trim();
+		stats.vulnerable = line.split_handleColon("Vulnerabilities", 1)[1].trim();
 		stats.vulnerable = StatblockConverter._tryParseDamageResVulnImmune(stats.vulnerable, "vulnerable");
 	}
 
 	static _setCleanDamageRes (stats, line) {
-		stats.resist = (line.toLowerCase().includes("resistances") ? line.split_handleColon("Resistances") : line.split_handleColon("Resistance"))[1].trim();
+		stats.resist = (line.toLowerCase().includes("resistances") ? line.split_handleColon("Resistances", 1) : line.split_handleColon("Resistance", 1))[1].trim();
 		stats.resist = StatblockConverter._tryParseDamageResVulnImmune(stats.resist, "resist");
 	}
 
 	static _setCleanDamageImm (stats, line) {
-		stats.immune = line.split_handleColon("Immunities")[1].trim();
+		stats.immune = line.split_handleColon("Immunities", 1)[1].trim();
 		stats.immune = StatblockConverter._tryParseDamageResVulnImmune(stats.immune, "immune");
 	}
 
 	static _setCleanConditionImm (stats, line) {
-		stats.conditionImmune = line.split_handleColon("Immunities")[1];
+		stats.conditionImmune = line.split_handleColon("Immunities", 1)[1];
 		stats.conditionImmune = StatblockConverter._tryParseDamageResVulnImmune(stats.conditionImmune, "conditionImmune");
 	}
 
 	static _setCleanSenses (stats, line) {
-		const senses = line.toLowerCase().split_handleColon("senses")[1].trim();
+		const senses = line.toLowerCase().split_handleColon("senses", 1)[1].trim();
 		const tempSenses = [];
 		senses.split(",").forEach(s => {
 			s = s.trim();
@@ -1237,12 +1329,12 @@ class StatblockConverter {
 	}
 
 	static _setCleanLanguages (stats, line) {
-		stats.languages = line.split_handleColon("Languages")[1].trim();
+		stats.languages = line.split_handleColon("Languages", 1)[1].trim();
 		if (stats.languages && /^([-–‒—]|\\u201\d)$/.exec(stats.languages.trim())) delete stats.languages;
 	}
 
 	static _setCleanCr (stats, line) {
-		stats.cr = line.split_handleColon("Challenge")[1].trim().split("(")[0].trim();
+		stats.cr = line.split_handleColon("Challenge", 1)[1].trim().split("(")[0].trim();
 	}
 
 	static _hasEntryContent (trait) {
@@ -1395,6 +1487,7 @@ class TableConverter {
 	showSample (format) {
 		switch (format) {
 			case "html": this._ui.inText = TableConverter.SAMPLE_HTML; break;
+			case "md": this._ui.inText = TableConverter.SAMPLE_MARKDOWN; break;
 			default: throw new Error(`Unknown format "${format}"`)
 		}
 	}
@@ -1469,75 +1562,7 @@ class TableConverter {
 				$table.find(`tr`).each(handleTableRow);
 			}
 
-			// Post-processing
-			(function normalizeCellCounts () {
-				// pad all rows to max width
-				const maxWidth = Math.max(tbl.colLabels, ...tbl.rows.map(it => it.length));
-				tbl.rows.forEach(row => {
-					while (row.length < maxWidth) row.push("");
-				});
-			})();
-
-			(function doCalculateWidths () {
-				const BASE_CHAR_CAP = 200; // assume tables are approx 200 characters wide
-
-				// total the
-				const avgWidths = (() => {
-					if (!tbl.rows.length) return null;
-					const out = [...new Array(tbl.rows[0].length)].map(() => 0);
-					tbl.rows.forEach(r => {
-						r.forEach((cell, i) => {
-							out[i] += Math.min(BASE_CHAR_CAP, cell.length);
-						});
-					});
-					return out.map(it => it / tbl.rows.length);
-				})();
-
-				if (avgWidths != null) {
-					const totalWidths = avgWidths.reduce((a, b) => a + b, 0);
-					const redistributedWidths = (() => {
-						const MIN = totalWidths / 12;
-						const sorted = avgWidths.map((it, i) => ({ix: i, val: it})).sort((a, b) => SortUtil.ascSort(a.val, b.val));
-
-						for (let i = 0; i < sorted.length - 1; ++i) {
-							const it = sorted[i];
-							if (it.val < MIN) {
-								const diff = MIN - it.val;
-								sorted[i].val = MIN;
-								const toSteal = diff / sorted.length - (i + 1);
-								for (let j = i + 1; j < sorted.length; ++j) {
-									sorted[j].val -= toSteal;
-								}
-							}
-						}
-
-						return sorted.sort((a, b) => SortUtil.ascSort(a.ix, b.ix)).map(it => it.val);
-					})();
-					let nmlxWidths = redistributedWidths.map(it => it / totalWidths);
-					while (nmlxWidths.reduce((a, b) => a + b, 0) > 1) {
-						const diff = 1 - nmlxWidths.reduce((a, b) => a + b, 0);
-						nmlxWidths = nmlxWidths.map(it => it + diff / nmlxWidths.length);
-					}
-					const twelfthWidths = nmlxWidths.map(it => Math.round(it * 12));
-					tbl.colStyles = twelfthWidths.map(it => `col-${it}`);
-				}
-			})();
-
-			(function doCheckDiceCol () {
-				// check if first column is dice
-				let isDiceCol0 = true;
-				tbl.rows.forEach(r => {
-					if (isNaN(Number(r[0]))) isDiceCol0 = false;
-				});
-				if (isDiceCol0) tbl.colStyles[0] += " text-align-center";
-			})();
-
-			(function tagRowDice () {
-				tbl.rows = tbl.rows.map(r => r.map(c => c.replace(RollerUtil.DICE_REGEX, `{@dice $&}`)));
-			})();
-
-			TableConverter._doCleanTable(tbl);
-
+			this._postProcessTable(tbl);
 			this._ui.doCleanAndOutput(tbl, append);
 		};
 
@@ -1545,13 +1570,145 @@ class TableConverter {
 		if ($input.is("table")) {
 			handleTable($input);
 		} else {
-			// TODO pull out any preceeding text to use as the caption; pass this in
+			// TODO pull out any preceding text to use as the caption; pass this in
 			const caption = "";
 			$input.find("table").each((i, e) => {
 				const $table = $(e);
 				handleTable($table, caption);
 			});
 		}
+	}
+
+	doParseMarkdown (append) {
+		if (!this._ui.inText || !this._ui.inText.trim()) return this._ui.showWarning("No input!");
+
+		const handleTable = (lines, caption) => {
+			// trim leading/trailing pipes if they're uniformly present
+			const contentLines = lines.filter(l => l && l.trim());
+			if (contentLines.every(l => l.trim().startsWith("|"))) {
+				lines = lines.map(l => l.replace(/^\s*\|(.*?)$/, "$1"));
+			}
+			if (contentLines.every(l => l.trim().endsWith("|"))) {
+				lines = lines.map(l => l.replace(/^(.*?)\|\s*$/, "$1"));
+			}
+
+			const tbl = {
+				type: "table",
+				caption,
+				colLabels: [],
+				colStyles: [],
+				rows: []
+			};
+
+			let seenHeaderBreak = false;
+			let alignment = [];
+			lines.map(l => l.trim()).filter(Boolean).forEach(l => {
+				const cells = l.split("|").map(it => it.trim());
+				if (cells.length) {
+					if (cells.every(c => !c || !!/^:?\s*---+\s*:?$/.exec(c))) { // a header break
+						alignment = cells.map(c => {
+							if (c.startsWith(":") && c.endsWith(":")) {
+								return "text-align-center";
+							} else if (c.startsWith(":")) {
+								return "text-align-left";
+							} else if (c.endsWith(":")) {
+								return "text-align-right";
+							} else {
+								return "";
+							}
+						});
+						seenHeaderBreak = true;
+					} else if (seenHeaderBreak) {
+						tbl.rows.push(cells);
+					} else {
+						tbl.colLabels = cells;
+					}
+				}
+			});
+
+			tbl.colStyles = alignment;
+
+			this._postProcessTable(tbl);
+			this._ui.doCleanAndOutput(tbl, append);
+		};
+
+		// TODO feed in caption
+		handleTable(this._ui.inText.split("\n"));
+	}
+
+	_postProcessTable (tbl) {
+		// Post-processing
+		(function normalizeCellCounts () {
+			// pad all rows to max width
+			const maxWidth = Math.max(tbl.colLabels, ...tbl.rows.map(it => it.length));
+			tbl.rows.forEach(row => {
+				while (row.length < maxWidth) row.push("");
+			});
+		})();
+
+		(function doCalculateWidths () {
+			const BASE_CHAR_CAP = 200; // assume tables are approx 200 characters wide
+
+			// total the
+			const avgWidths = (() => {
+				if (!tbl.rows.length) return null;
+				const out = [...new Array(tbl.rows[0].length)].map(() => 0);
+				tbl.rows.forEach(r => {
+					r.forEach((cell, i) => {
+						out[i] += Math.min(BASE_CHAR_CAP, cell.length);
+					});
+				});
+				return out.map(it => it / tbl.rows.length);
+			})();
+
+			if (avgWidths != null) {
+				const totalWidths = avgWidths.reduce((a, b) => a + b, 0);
+				const redistributedWidths = (() => {
+					const MIN = totalWidths / 12;
+					const sorted = avgWidths.map((it, i) => ({ix: i, val: it})).sort((a, b) => SortUtil.ascSort(a.val, b.val));
+
+					for (let i = 0; i < sorted.length - 1; ++i) {
+						const it = sorted[i];
+						if (it.val < MIN) {
+							const diff = MIN - it.val;
+							sorted[i].val = MIN;
+							const toSteal = diff / sorted.length - (i + 1);
+							for (let j = i + 1; j < sorted.length; ++j) {
+								sorted[j].val -= toSteal;
+							}
+						}
+					}
+
+					return sorted.sort((a, b) => SortUtil.ascSort(a.ix, b.ix)).map(it => it.val);
+				})();
+				let nmlxWidths = redistributedWidths.map(it => it / totalWidths);
+				while (nmlxWidths.reduce((a, b) => a + b, 0) > 1) {
+					const diff = 1 - nmlxWidths.reduce((a, b) => a + b, 0);
+					nmlxWidths = nmlxWidths.map(it => it + diff / nmlxWidths.length);
+				}
+				const twelfthWidths = nmlxWidths.map(it => Math.round(it * 12));
+
+				twelfthWidths.forEach((it, i) => {
+					const widthPart = `col-${it}`;
+					tbl.colStyles[i] = tbl.colStyles[i] ? `${tbl.colStyles[i]} ${widthPart}` : widthPart;
+				});
+			}
+		})();
+
+		(function doCheckDiceCol () {
+			// check if first column is dice
+			let isDiceCol0 = true;
+			tbl.rows.forEach(r => {
+				if (isNaN(Number(r[0]))) isDiceCol0 = false;
+			});
+			if (isDiceCol0 && !tbl.colStyles.includes("text-align-center")) tbl.colStyles[0] += " text-align-center";
+		})();
+
+		(function tagRowDice () {
+			tbl.rows = tbl.rows.map(r => r.map(c => c.replace(RollerUtil.DICE_REGEX, `{@dice $&}`)));
+		})();
+
+		TableConverter._doCleanTable(tbl);
 	}
 }
 TableConverter.SAMPLE_HTML =
@@ -1591,6 +1748,13 @@ TableConverter.SAMPLE_HTML =
     </tr>
   </tbody>
 </table>`;
+TableConverter.SAMPLE_MARKDOWN =
+`| Character Level | Low Magic Campaign                                                                | Standard Campaign                                                                                | High Magic Campaign                                                                                                     |
+|-----------------|-----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| 1st–4th         | Normal starting equipment                                                         | Normal starting equipment                                                                        | Normal starting equipment                                                                                               |
+| 5th–10th        | 500 gp plus 1d10 × 25 gp, normal starting equipment                               | 500 gp plus 1d10 × 25 gp, normal starting equipment                                              | 500 gp plus 1d10 × 25 gp, one uncommon magic item, normal starting equipment                                            |
+| 11th–16th       | 5,000 gp plus 1d10 × 250 gp, one uncommon magic item, normal starting equipment   | 5,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment                 | 5,000 gp plus 1d10 × 250 gp, three uncommon magic items, one rare item, normal starting equipment                       |
+| 17th–20th       | 20,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment | 20,000 gp plus 1d10 × 250 gp, two uncommon magic items, one rare item, normal starting equipment | 20,000 gp plus 1d10 × 250 gp, three uncommon magic items, two rare items, one very rare item, normal starting equipment |`;
 
 const statblockConverter = new StatblockConverter();
 const tableConverter = new TableConverter();

@@ -1,9 +1,17 @@
 {
 	"_meta": {
-		"dependencies": [
-			"MTF",
-			"VGM"
-		]
+		"dependencies": {
+			"monster": [
+				"MM",
+				"VGM"
+			]
+		},
+		"additionalSources": {
+			"monster": [
+				"MTF",
+				"VGM"
+			]
+		}
 	},
 	"monster": [
 		{
@@ -405,7 +413,10 @@
 					]
 				}
 			],
-			"legendaryGroup": "Halaster Blackcloak",
+			"legendaryGroup": {
+				"name": "Halaster Blackcloak",
+				"source": "WDMM"
+			},
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
@@ -1185,7 +1196,10 @@
 					]
 				}
 			],
-			"legendaryGroup": "Vampire",
+			"legendaryGroup": {
+				"name": "Vampire",
+				"source": "MM"
+			},
 			"legendary": [
 				{
 					"name": "Move",
@@ -1219,6 +1233,1669 @@
 				"C",
 				"D"
 			]
+		},
+		{
+			"name": "Big Xorn",
+			"source": "WDMM",
+			"page": 51,
+			"cr": "8",
+			"size": "L",
+			"hp": {
+				"formula": "9d10 + 54",
+				"average": 103
+			},
+			"str": 20,
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The xorn makes three claw attacks and one bite attack."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}22 ({@damage 5d6 + 5}) piercing damage."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}9 ({@damage 1d8 + 5}) slashing damage."
+					]
+				}
+			],
+			"_copy": {
+				"name": "Xorn",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Captain N'ghathrod",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 250,
+			"hp": {
+				"average": 111,
+				"formula": "13d8 + 13"
+			},
+			"_copy": {
+				"name": "Mind Flayer Arcanist",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mind flayer",
+						"with": "Captain N'ghathrod",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Awakened Brown Bear",
+			"source": "WDMM",
+			"page": 72,
+			"_copy": {
+				"name": "Brown Bear",
+				"source": "MM",
+				"_trait": {
+					"name": "Awakened",
+					"source": "PHB"
+				}
+			}
+		},
+		{
+			"name": "Awakened Elk",
+			"source": "WDMM",
+			"page": 72,
+			"_copy": {
+				"name": "Elk",
+				"source": "MM",
+				"_trait": {
+					"name": "Awakened",
+					"source": "PHB"
+				}
+			}
+		},
+		{
+			"name": "Awakened Giant Wasp",
+			"source": "WDMM",
+			"page": 72,
+			"_copy": {
+				"name": "Giant Wasp",
+				"source": "MM",
+				"_trait": {
+					"name": "Awakened",
+					"source": "PHB"
+				}
+			}
+		},
+		{
+			"name": "Giant Flying Spider",
+			"source": "WDMM",
+			"page": 150,
+			"speed": {
+				"walk": 30,
+				"climb": 30,
+				"fly": 40
+			},
+			"_copy": {
+				"name": "Giant Spider",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Haungharassk",
+			"size": "H",
+			"type": "beast",
+			"source": "WDMM",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				6
+			],
+			"hp": {
+				"average": 52,
+				"formula": "7d12 + 7"
+			},
+			"speed": {
+				"walk": 10,
+				"climb": 10
+			},
+			"str": 20,
+			"dex": 3,
+			"con": 13,
+			"int": 3,
+			"wis": 10,
+			"cha": 10,
+			"passive": 10,
+			"cr": "0",
+			"page": 258,
+			"trait": [
+				{
+					"name": "Salt Sensitivity",
+					"entries": [
+						"A pound of salt thrown onto the snail's skin deals {@dice 1d6} acid damage to the creature."
+					]
+				},
+				{
+					"name": "Magical Properties",
+					"entries": [
+						"A creature that uses an action to touch the living snail gains 6 temporary hit points that last for 24 hours. Any creature or object that touches the living snail also gains the benefit of a {@spell remove curse} spell. The snail loses these magical properties if it dies."
+					]
+				}
+			]
+		},
+		{
+			"name": "Animated Ballista",
+			"size": "L",
+			"type": "construct",
+			"source": "WDMM",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				15
+			],
+			"hp": {
+				"average": 50,
+				"formula": "50d1"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 10,
+			"con": 10,
+			"int": 3,
+			"wis": 3,
+			"cha": 1,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"passive": 6,
+			"cr": "2",
+			"page": 39,
+			"senses": "blindsight 120 ft. (blind beyond this radius)",
+			"action": [
+				{
+					"name": "Magic Bolt",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}16 ({@damage 3d10}) fire damage"
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Animated Statue of Lolth",
+			"source": "WDMM",
+			"page": 142,
+			"cr": "11",
+			"size": "H",
+			"languages": "understands Abyssal but can't speak",
+			"hp": {
+				"average": 230,
+				"formula": "20d12 + 100"
+			},
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "golem",
+						"with": "statue"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Spider Climb",
+							"entries": [
+								"The statue can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Crystal Golem",
+			"source": "WDMM",
+			"page": 210,
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Illumination",
+								"entries": [
+									"The golem magically sheds bright light in a 30-foot radius and dim light for an additional 30 feet. This light goes out when the golem is destroyed."
+								]
+							},
+							{
+								"name": "Light Intensity",
+								"entries": [
+									"Any creature that starts its turn within 10 feet of the illuminated golem and can see the golem must succeed on a DC 17 Wisdom saving throw or be {@condition blinded} until the start of the creature's next turn.",
+									"A creature can avert its eyes to avoid the saving throw at the start of its turn. If the creature does so, it can't see the golem until the start of its next turn, when it can avert its eyes again. If the creature looks at the golem in the meantime, it must immediately make the save."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Halaster Horror",
+			"source": "WDMM",
+			"page": 129,
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The Halaster horror makes two staff attacks."
+					]
+				},
+				{
+					"name": "Staff",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage."
+					]
+				}
+			],
+			"_copy": {
+				"name": "Helmed Horror",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "helmed",
+						"with": "Halaster"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Spell Immunity",
+						"with": {
+							"name": "Spell Immunity",
+							"entries": [
+								"The Halaster horror is immune to the {@spell cone of cold}, {@spell disintegrate}, and {@spell fireball} spells."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Iron Spider",
+			"size": "L",
+			"type": "construct",
+			"source": "WDMM",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				19
+			],
+			"hp": {
+				"average": 80,
+				"formula": "80d1"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 18,
+			"dex": 10,
+			"con": 10,
+			"int": 3,
+			"wis": 3,
+			"cha": 1,
+			"immune": [
+				"psychic",
+				"poison"
+			],
+			"passive": 6,
+			"cr": "Unknown",
+			"page": 165,
+			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"trait": [
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"The iron spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Shoot",
+					"entries": [
+						"As an action, the iron spider can shoot out a 6-inch-thick web cable up to 50 feet long, attaching the far end of the cable to a solid surface up to 50 feet away from it. Once it creates 200 feet of web cable, the spider can't produce any more cable until the next dawn."
+					]
+				},
+				{
+					"name": "Detach",
+					"entries": [
+						"As a bonus action, the iron spider can detach the other end of the cable from itself and attach it to a solid surface within 10 feet of it."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb"
+			],
+			"senseTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Mad Golem",
+			"source": "WDMM",
+			"page": 254,
+			"cr": "12",
+			"hp": {
+				"average": 264,
+				"formula": "23d12 + 115"
+			},
+			"int": 9,
+			"cha": 9,
+			"languages": "understands Abyssal, Celestial, Common, Draconic, Dwarvish, Elvish, Infernal, and Undercommon but can't speak",
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Slam",
+						"with": {
+							"name": "Slam",
+							"entries": [
+								"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}24 ({@damage 4d8 + 6}) bludgeoning damage."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Maddgoth's Homunculus",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 96,
+			"cr": "2",
+			"size": "L",
+			"hp": {
+				"average": 55,
+				"formula": "10d10"
+			},
+			"str": 15,
+			"languages": "understands Abyssal, Common, Draconic, and Gnomish but can't speak",
+			"_copy": {
+				"name": "Homunculus",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Bite",
+						"with": {
+							"name": "Bite",
+							"entries": [
+								"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}{@damage 2d6 + 2} piercing damage, and the target must succeed on a DC 10 Constitution saving throw or be {@condition poisoned} for 1 minute. If the saving throw fails by 5 or more, the target is instead {@condition poisoned} for 5 ({@dice 1d10}) minutes and {@condition unconscious} while {@condition poisoned} in this way."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Otto",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 96,
+			"cr": "3",
+			"size": "L",
+			"hp": {
+				"average": 104,
+				"formula": "16d10 + 16"
+			},
+			"str": 18,
+			"_copy": {
+				"name": "Faerie Dragon (Violet)",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Bite",
+						"with": {
+							"name": "Bite",
+							"entries": [
+								"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. {@h}{@damage 2d6 + 4} piercing damage."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Metal Wasp",
+			"source": "WDMM",
+			"page": 173,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"senses": "darkvision 60 ft.",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"_copy": {
+				"name": "Giant Wasp",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Shockerstomper",
+			"size": "G",
+			"type": "construct",
+			"source": "WDMM",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				18
+			],
+			"hp": {
+				"average": 300,
+				"formula": "300d1"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 23,
+			"dex": 10,
+			"con": 20,
+			"int": 1,
+			"wis": 1,
+			"cha": 1,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"passive": 5,
+			"cr": "14",
+			"page": 174,
+			"senses": "blindsight out to a range of 60 feet and blind beyond this radius",
+			"trait": [
+				{
+					"name": "Disable",
+					"entries": [
+						"When a leg drops to 0 hit points, it is disabled, and Shockerstomper can use a reaction to detach it from its main body. Whenever one of its legs is disabled, Shockerstomper's walking speed is reduced by 10 feet. The whole contraption topples over and shuts down if four of its seven legs are disabled."
+					]
+				},
+				{
+					"name": "Electrified Surface",
+					"entries": [
+						"A creature that ends its turn in contact with Shockerstomper's body (saucer or turrets) must make a DC 15 Constitution saving throw, taking 22 ({@damage 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Immutable Form",
+					"entries": [
+						"Shockerstomper is immune to any spell or effect that would alter its form."
+					]
+				},
+				{
+					"name": "Control Module",
+					"entries": [
+						"A creature atop or above Shockerstomper's platform can locate its control module with a successful DC 15 Intelligence (Investigation) check or Wisdom (Perception) check. As an action, a character can try to open the control module's access panel, either by tearing it off with a successful DC 25 Strength (Athletics) check or by dislodging it with thieves' tools and a successful DC 25 Dexterity check. Behind the panel, embedded in the floor of the control module, is a 5-foot-diameter pulsating crystal hemisphere with AC 10, 25 hit points, and immunity to poison and psychic damage. Destroying the crystal hemisphere shuts down Shockerstomper."
+					]
+				},
+				{
+					"name": "Lightning Turret",
+					"entries": [
+						"A character can try to plug the nozzle of a lightning turret with a 10-pound rock or similar object, doing so with a successful DC 15 Strength (Athletics) check. A plugged turret can't shoot lightning until a creature uses an action to try to clear the obstruction, which requires another successful DC 15 Strength ({@skill Athletics}) check. Shockerstomper has no ability to clear an obstruction itself."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Shockerstomper makes three Lightning Turret attacks and two Stomp attacks."
+					]
+				},
+				{
+					"name": "Lightning Turret",
+					"entries": [
+						"The turret shoots a magical lightning bolt at one creature within 60 feet of Shockerstomper. The target must make a DC 15 Dexterity saving throw, taking 44 ({@damage 8d10}) lightning damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Stomp",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one creature. {@h}22 ({@damage 3d10 + 6}) bludgeoning damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Immutable Form"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"senseTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Animated Stove",
+			"size": "L",
+			"type": "construct",
+			"source": "WDMM",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				17
+			],
+			"hp": {
+				"average": 50,
+				"formula": "50d1"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 10,
+			"con": 10,
+			"int": 3,
+			"wis": 3,
+			"cha": 1,
+			"passive": 6,
+			"cr": "3",
+			"page": 0,
+			"senses": "blindsight out to a range of 30 feet and is blind beyond this distance.",
+			"action": [
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d8 + 2}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Belch Fire {@recharge 4}",
+					"entries": [
+						"The stove belches fire in a 15-foot cone. Each creature in the area must make a DC 10 Dexterity saving throw, taking 22 ({@damage 4d10}) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Stalagma Steelshadow",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "WDMM",
+			"page": 273,
+			"alignment": [
+				"L",
+				"E"
+			],
+			"languages": "Draconic, Dwarvish, Terran",
+			"_copy": {
+				"name": "Adult Silver Dragon",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Breath Weapons {@recharge 5}",
+						"with": {
+							"name": "Breath Weapons {@recharge 5}",
+							"entries": [
+								"The dragon uses one of the following breath weapons.",
+								{
+									"type": "list",
+									"style": "list-hang-notitle",
+									"items": [
+										{
+											"type": "item",
+											"name": "Acid Breath.",
+											"entry": "The dragon exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 58 ({@damage 13d8}) acid damage on a failed save, or half as much damage on a successful one."
+										},
+										{
+											"type": "item",
+											"name": "Paralyzing Breath.",
+											"entry": "The dragon exhales paralyzing gas in a 60-foot cone. Each creature in that area must succeed on a DC 20 Constitution saving throw or be {@condition paralyzed} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+										}
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Umbraxakar",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 241,
+			"alignment": [
+				"N",
+				"E"
+			],
+			"_copy": {
+				"name": "Adult Bronze Dragon",
+				"source": "MM",
+				"_trait": {
+					"name": "Shadow Dragon",
+					"source": "MM"
+				}
+			}
+		},
+		{
+			"name": "Poison Weird",
+			"source": "WDMM",
+			"page": 127,
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Invisible in Water",
+					"entries": [
+						"The weird is {@condition invisible} while fully immersed in toxic brew."
+					]
+				},
+				{
+					"name": "Brew Bound",
+					"entries": [
+						"The weird dies if forced to leave the basin of toxic brew it inhabits, or if a {@spell purify food and drink} spell is cast on the brew."
+					]
+				},
+				{
+					"name": "Poisonous Body",
+					"entries": [
+						"A creature takes 10 ({@damage 3d6}) poison damage at the start of each of its turns while {@condition grappled} by a poison weird."
+					]
+				}
+			],
+			"_copy": {
+				"name": "Water Weird",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "water weird",
+						"with": "poison weird"
+					}
+				}
+			}
+		},
+		{
+			"name": "Carrion Ogre",
+			"source": "WDMM",
+			"page": 189,
+			"int": 1,
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The creature makes two attacks: one with its tentacles and one with its bite."
+					]
+				},
+				{
+					"name": "Tentacles",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one creature. {@h}4 ({@damage 1d4 + 2}) poison damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 minute. Until this poison ends, the target is {@condition paralyzed}. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d4 + 2}) piercing damage."
+					]
+				}
+			],
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"type": "entries",
+							"name": "Tied Down",
+							"entries": [
+								"While lashed to the floor, the creature is {@condition prone} and {@condition restrained}. It also suffers from two levels of {@condition exhaustion}."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Emberosa",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 185,
+			"hp": {
+				"average": 221,
+				"formula": "13d12 + 78"
+			},
+			"_copy": {
+				"name": "Fire Giant",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Fireball",
+							"entries": [
+								"{@atk rw} {@hit 11} to hit, range 60/240 ft., one target. {@h}29 ({@damage 4d10 + 7}) fire damage."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Berlain",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 283,
+			"alignment": [
+				"C",
+				"E"
+			],
+			"type": "abberation",
+			"languages": "Common, Deep Speech, Grell, Undercommon",
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Berlain",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Extra Parts",
+							"entries": [
+								"As a bonus action, Berlain can use her extra mouth and arms to cast any cantrip she has prepared."
+							]
+						}
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Berlain is an 18th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). Berlain can cast disguise self and invisibility at will and has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell mage armor}*",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell mirror image}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell polymorph}",
+								"{@spell fire shield}",
+								"{@spell stoneskin}*"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cone of cold}",
+								"{@spell scrying}",
+								"{@spell wall of force}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell teleport}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}*"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					},
+					"footerEntries": [
+						"*Berlain casts these spells on herself before combat."
+					],
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Cassiok Shadowdusk",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 287,
+			"alignment": [
+				"C",
+				"E"
+			],
+			"type": "abberation",
+			"languages": "Common, Deep Speech, Infernal, Undercommon",
+			"ac": [
+				14,
+				{
+					"ac": 17,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"save": {
+				"str": "+2",
+				"dex": "+4",
+				"con": "+3",
+				"int": "+11",
+				"wis": "+8",
+				"cha": "+5"
+			},
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Cassiok",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Cassiok carries a {@item staff of power} that grants him a +2 bonus to Armor Class, spell attack rolls, and saving throws. His insectoid physiology prevents him from making melee attacks with the staff. If reduced to 20 hit points or fewer, Cassiok uses his next action to break his staff in a retributive strike."
+							]
+						}
+					},
+					"action": "remove"
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Cassiok is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 19, {@hit 11} to hit with spell attacks). Cassiok can cast disguise self and invisibility at will and has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell mage armor}*",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell mirror image}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell phantasmal killer}",
+								"{@spell fire shield}",
+								"{@spell stoneskin}*"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cone of cold}",
+								"{@spell scrying}",
+								"{@spell wall of force}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell teleport}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}*"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					},
+					"footerEntries": [
+						"*Cassiok casts these spells on himself before combat."
+					],
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Valtagar Steelshadow",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 271,
+			"alignment": [
+				"L",
+				"E"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"senses": "darkvision 120 ft.",
+			"languages": "Common, Dwarvish, Infernal, Terran, Troglodyte, Undercommon",
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Valtagar",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Duergar Resilience",
+							"entries": [
+								"Valtagar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
+							]
+						}
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Enlarge (Recharges after a Short or Long Rest)",
+								"entries": [
+									"For 1 minute, Valtagar magically increases in size, along with anything he is wearing or carrying. While enlarged, Valtagar is Large, doubles its damage dice on Strength-based weapon attacks, and makes Strength checks and Strength saving throws with advantage. If Valtagar lacks the room to become Large, he attains the maximum size possible in the space available."
+								]
+							},
+							{
+								"name": "Invisibility (Recharges after a Short or Long Rest)",
+								"entries": [
+									"Valtagar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Valtagar wears or carries is invisible with him."
+								]
+							}
+						]
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Valtagar is an 18th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). Valtagar can cast disguise self and invisibility at will and has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell mage armor}*",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell mirror image}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell Otiluke's resilient sphere}",
+								"{@spell fire shield}",
+								"{@spell stoneskin}*"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cone of cold}",
+								"{@spell scrying}",
+								"{@spell wall of force}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell teleport}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}*"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					},
+					"footerEntries": [
+						"*Valtagar casts these spells on herself before combat."
+					],
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Deformed Duergar",
+			"source": "WDMM",
+			"page": 180,
+			"hp": {
+				"average": 40,
+				"formula": "4d8 + 4"
+			},
+			"_copy": {
+				"name": "Duergar",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Extra Arm",
+								"entries": [
+									"As a bonus action, the duergar can make an attack with its javelin."
+								]
+							},
+							{
+								"name": "Deformed Head",
+								"entries": [
+									"The duergar has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition charmed}, {@condition frightened}, {@condition stunned}, or knocked {@condition unconscious}."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Sundeth",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 304,
+			"alignment": [
+				"C",
+				"E"
+			],
+			"size": "L",
+			"languages": "Common, Giant",
+			"senses": "darkvision 60 ft.",
+			"_copy": {
+				"name": "Champion",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the champion",
+						"with": "Sundeth",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Kavil",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 205,
+			"alignment": [
+				"N",
+				"E"
+			],
+			"languages": "Dwarvish, Common, Giant, Undercommon",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Kavil",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Gray Ooze",
+			"source": "WDMM",
+			"page": 243,
+			"cr": "8",
+			"hp": {
+				"average": 152,
+				"formula": "16d12 + 48"
+			},
+			"str": 18,
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"As an action, it can make two attacks with its pseudopods."
+					]
+				},
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) bludgeoning damage plus 21 ({@damage 6d6}) acid damage, or 42 ({@dice 12d6}) acid damage while the ooze is enlarged. If the target is wearing nonmagical metal armor, its armor is partly corroded and takes a permanent and cumulative \u22121 penalty to the AC it offers. The armor is destroyed if the penalty reduces its AC to 10."
+					]
+				},
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"entries": [
+						"For 1 minute, the ooze magically increases in size. While enlarged, the ooze is Gargantuan, doubles its damage dice with its pseudopod attack, and makes Strength checks and Strength saving throws with advantage."
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"entries": [
+						"The ooze magically turns {@condition invisible} for up to 1 hour until it attacks, it uses its Enlarge, or its concentration is broken (as if concentrating on a spell)."
+					]
+				}
+			],
+			"_copy": {
+				"name": "Gray Ooze",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Intelligent Black Pudding",
+			"source": "WDMM",
+			"page": 244,
+			"int": 14,
+			"languages": "understands Elvish and Undercommon, but can't speak",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The pudding's spellcasting ability is Intelligence (spell save DC 12, +4 to hit with spell attacks). It can cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell dancing lights}",
+						"{@spell mage hand}"
+					],
+					"daily": {
+						"1": [
+							"{@spell Melf's acid arrow}"
+						],
+						"3e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}",
+							"{@spell shield}"
+						]
+					},
+					"ability": "int"
+				}
+			],
+			"_copy": {
+				"name": "Black Pudding",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Gorka Tharn",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 257,
+			"languages": "Dwarvish, Undercommon",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The mummy lord is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 17, {@hit 9} to hit with spell attacks). The mummy lord has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell sacred flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell guiding bolt}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell silence}",
+								"{@spell spiritual weapon}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell dispel magic}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell stone shape}",
+								"{@spell guardian of faith}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell contagion}",
+								"{@spell insect plague}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell harm}"
+							]
+						}
+					},
+					"ability": "wis"
+				}
+			],
+			"_copy": {
+				"name": "Mummy Lord",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Enlarge (Recharges after a Short or Long Rest)",
+								"entries": [
+									"For 1 minute, the mummy lord magically increases in size, along with anything it is wearing or carrying. While enlarged, the mummy lord is Large, doubles its damage dice with its Rotting Fist attack, and makes Strength checks and Strength saving throws with advantage. If the mummy lord lacks the room to become Large, it attains the maximum size possible in the space available."
+								]
+							},
+							{
+								"name": "Invisibility (Recharges after a Short or Long Rest)",
+								"entries": [
+									"The mummy lord magically turns {@condition invisible} for up to 1 hour or until it attacks, it casts a spell, it uses its Enlarge, or its concentration is broken (as if concentrating on a spell). Any equipment the mummy lord wears or carries is {@condition invisible} with it.",
+									"The stalagmite in the northwest alcove is hollow and serves as Gorka Tharn's sarcophagus. The mummy lord is lodged inside the stalagmite's funnel-shaped interior. When it awakens, the mummy lord uses a {@spell stone shape} spell to create an opening large enough for it to emerge. It destroys any intruders in its lair, then returns to its sarcophagus and its slumber.",
+									"At the bottom of the stalagmite's hollow cavity, four 1-foot-tall clay urns contain Gorka Tharn's preserved internal organs, including the mummy lord's shriveled heart. Only by destroying the heart can the characters prevent the mummy lord from rejuvenating. The heart is a Tiny object with AC 5, 25 hit points, and immunity to all damage except fire."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Nester",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 131,
+			"type": "undead",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"languages": "understands Auran, Common, Draconic, Dwarvish, Giant, and Terran, but can't speak",
+			"senses": "darkvision 60 ft.",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Nester is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). Nester can cast disguise self and invisibility at will and has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell identify}",
+								"{@spell mage armor}*",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell mirror image}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell animate dead}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell fire shield}",
+								"{@spell stoneskin}*"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cone of cold}",
+								"{@spell Rary's telepathic bond}",
+								"{@spell wall of force}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell teleport}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}*"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					},
+					"footerEntries": [
+						"*Nester casts these spells on himself before combat."
+					],
+					"ability": "int"
+				}
+			],
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Nester",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Trenzia",
+			"isNPC": true,
+			"source": "WDMM",
+			"page": 32,
+			"resist": [
+				"fire",
+				"necrotic",
+				"piercing"
+			],
+			"immune": [
+				"lightning",
+				"cold",
+				"poison"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Trenzia is a 5th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). She requires no somatic or material components to cast its spells. Trenzia has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}"
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell blur}",
+								"{@spell flaming sphere}"
+							]
+						},
+						"3": {
+							"slots": 1,
+							"spells": [
+								"{@spell lightning bolt}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Trenzia uses Lightning Ray twice."
+					]
+				},
+				{
+					"name": "Fire Ray",
+					"entries": [
+						"{@atk rs} {@hit 5} to hit, range 30 ft., one target. {@h}10 ({@damage 3d6}) lightning damage."
+					]
+				}
+			],
+			"_copy": {
+				"name": "Flameskull",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the flameskull",
+						"with": "Nester",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Undead Bulette",
+			"source": "WDMM",
+			"page": 0,
+			"hp": {
+				"average": 125,
+				"formula": "9d10 + 45"
+			},
+			"vulnerable": [
+				"radiant"
+			],
+			"immune": [
+				"poison"
+			],
+			"resistance": [
+				"necrotic"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"_copy": {
+				"name": "Bulette",
+				"source": "MM"
+			}
 		}
 	]
 }

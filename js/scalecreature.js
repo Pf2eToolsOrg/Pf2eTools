@@ -1305,7 +1305,7 @@
 			return str.replace(/DC (\d+)/g, (m0, m1) => {
 				const curDc = Number(m1);
 				const origDc = curDc + pbIn - pbOut;
-				const outDc = Math.max(13, getAdjustedDcFlat(origDc));
+				const outDc = Math.max(10, getAdjustedDcFlat(origDc));
 				if (curDc === outDc) return m0;
 
 				if (["int", "wis", "cha"].includes(castingAbility)) {

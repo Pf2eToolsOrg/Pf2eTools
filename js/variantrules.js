@@ -1,4 +1,5 @@
 "use strict";
+
 const JSON_URL = "data/variantrules.json";
 
 window.onload = async function load () {
@@ -37,17 +38,17 @@ async function onJsonLoad (data) {
 	});
 	ListUtil.initGenericPinnable();
 
-	addListShowHide();
-
 	addVariantRules(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
+			BrewUtil.bind({filterBox, sourceFilter});
 			await ListUtil.pLoadState();
+			ListUtil.addListShowHide();
 
 			History.init(true);
 			ExcludeUtil.checkShowAllExcluded(rulesList, $(`#pagecontent`));

@@ -165,6 +165,20 @@ String.prototype.toTitleCase = String.prototype.toTitleCase ||
 		return str;
 	};
 
+String.prototype.toSentenceCase = String.prototype.toSentenceCase ||
+	function () {
+		const out = [];
+		const re = /([^.!?]+)([.!?]\s*|$)/gi;
+		let m;
+		do {
+			m = re.exec(this);
+			if (m) {
+				out.push(m[0].toLowerCase().uppercaseFirst());
+			}
+		} while (m);
+		return out.join("");
+	};
+
 String.prototype.toSpellCase = String.prototype.toSpellCase ||
 	function () {
 		return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
@@ -273,7 +287,8 @@ Array.prototype.peek = Array.prototype.peek ||
 	};
 
 StrUtil = {
-	NAME_REGEX: /^(([A-Z0-9ota][a-z0-9'’`]+|[aI])( \(.*\)| |-)?)+([.!])+/g,
+	NAME_REGEX: /^(([A-Z0-9ota][a-z0-9'’`:]+|[aI])( \(.*\)| |-)?)+([.!])+/g,
+	COMMAS_NOT_IN_PARENTHESES_REGEX: /,\s?(?![^(]*\))/g,
 
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
@@ -540,7 +555,7 @@ Parser.getAbilityModifier = function (abilityScore) {
 Parser.getSpeedString = (it) => {
 	function procSpeed (propName) {
 		function addSpeed (s) {
-			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)}ft.${getCond(s)}`);
+			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
 		}
 
 		if (it.speed[propName] || propName === "walk") addSpeed(it.speed[propName] || 0);
@@ -552,7 +567,7 @@ Parser.getSpeedString = (it) => {
 	}
 
 	function getCond (speedProp) {
-		return speedProp.condition ? ` ${speedProp.condition}` : "";
+		return speedProp.condition ? ` ${EntryRenderer.getDefaultRenderer().renderEntry(speedProp.condition)}` : "";
 	}
 
 	const stack = [];
@@ -783,7 +798,7 @@ Parser.sourceJsonToColor = function (source) {
 };
 
 Parser.stringToSlug = function (str) {
-	return str.toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+	return str.trim().toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
 };
 
 Parser.stringToCasedSlug = function (str) {
@@ -875,11 +890,21 @@ Parser.numberToString = function (num) {
 };
 
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
-Parser.spSchoolAbvToFull = function (school) {
-	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
-	if (Parser.SP_SCHOOL_ABV_TO_FULL[school]) return out;
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].full;
+Parser.spSchoolAndSubschoolsAbvsToFull = function (school, subschools) {
+	if (!subschools || !subschools.length) return Parser.spSchoolAbvToFull(school);
+	else return `${Parser.spSchoolAbvToFull(school)} (${subschools.map(sub => Parser.spSchoolAbvToFull(sub)).join(", ")})`;
+};
+
+Parser.spSchoolAbvToFull = function (schoolOrSubschool) {
+	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, schoolOrSubschool);
+	if (Parser.SP_SCHOOL_ABV_TO_FULL[schoolOrSubschool]) return out;
+	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool]) return BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool].full;
 	return out;
+};
+
+Parser.spSchoolAndSubschoolsAbvsShort = function (school, subschools) {
+	if (!subschools || !subschools.length) return Parser.spSchoolAbvToShort(school);
+	else return `${Parser.spSchoolAbvToShort(school)} (${subschools.map(sub => Parser.spSchoolAbvToShort(sub)).join(", ")})`;
 };
 
 Parser.spSchoolAbvToShort = function (school) {
@@ -914,9 +939,9 @@ Parser.spMetaToFull = function (meta) {
 	return "";
 };
 
-Parser.spLevelSchoolMetaToFull = function (level, school, meta) {
+Parser.spLevelSchoolMetaToFull = function (level, school, meta, subschools) {
 	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : Parser.spLevelToFull(level) + "-level";
-	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAbvToFull(school)} ${levelPart}` : `${levelPart} ${Parser.spSchoolAbvToFull(school).toLowerCase()}`;
+	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAndSubschoolsAbvsToFull(school, subschools)} ${levelPart}` : `${levelPart} ${Parser.spSchoolAndSubschoolsAbvsToFull(school, subschools).toLowerCase()}`;
 	return levelSchoolStr + Parser.spMetaToFull(meta);
 };
 
@@ -1059,6 +1084,23 @@ Parser.SPELL_ATTACK_TYPE_TO_FULL["O"] = "Other/Unknown";
 
 Parser.spAttackTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SPELL_ATTACK_TYPE_TO_FULL, type);
+};
+
+Parser.SPELL_AREA_TYPE_TO_FULL = {
+	ST: "Single Target",
+	MT: "Multiple Targets",
+	C: "Cube",
+	N: "Cone",
+	Y: "Cylinder",
+	S: "Sphere",
+	R: "Circle",
+	Q: "Square",
+	L: "Line",
+	H: "Hemisphere",
+	W: "Wall"
+};
+Parser.spAreaTypeToFull = function (type) {
+	return Parser._parse_aToB(Parser.SPELL_AREA_TYPE_TO_FULL, type);
 };
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
@@ -1220,6 +1262,7 @@ Parser.prereqPatronToShort = function (patron) {
 
 // NOTE: These need to be reflected in omnidexer.js to be indexed
 Parser.OPT_FEATURE_TYPE_TO_FULL = {
+	ED: "Elemental Discipline",
 	EI: "Eldritch Invocation",
 	MM: "Metamagic",
 	"MV:B": "Maneuver, Battlemaster",
@@ -1231,7 +1274,8 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"FS:F": "Fighting Style; Fighter",
 	"FS:B": "Fighting Style; Bard",
 	"FS:P": "Fighting Style; Paladin",
-	"FS:R": "Fighting Style; Ranger"
+	"FS:R": "Fighting Style; Ranger",
+	"PB": "Pact Boon"
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1335,6 +1379,8 @@ Parser.CAT_ID_OPTIONAL_FEATURE_OTHER = 28;
 Parser.CAT_ID_FIGHTING_STYLE = 29;
 Parser.CAT_ID_CLASS_FEATURE = 30;
 Parser.CAT_ID_SHIP = 31;
+Parser.CAT_ID_PACT_BOON = 32;
+Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1368,6 +1414,8 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "Optional Feature"
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FIGHTING_STYLE] = "Fighting Style";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP] = "Ship";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PACT_BOON] = "Pact Boon";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Discipline";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1402,6 +1450,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FIGHTING_STYLE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_METAMAGIC] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PACT_BOON] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "optionalfeature";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -2343,18 +2393,66 @@ JqueryUtil = {
 				}
 			}
 		);
+	},
+
+	_dropdownInit: false,
+	bindDropdownButton ($ele) {
+		if (!JqueryUtil._dropdownInit) {
+			JqueryUtil._dropdownInit = true;
+			document.addEventListener("click", () => [...document.querySelectorAll(`.open`)].filter(ele => !(ele.className || "").split(" ").includes(`dropdown--navbar`)).forEach(ele => ele.classList.remove("open")));
+			$ele.click(() => setTimeout(() => $ele.parent().addClass("open"), 1)); // defer to allow the above to complete
+		}
+	},
+
+	_activeToast: [],
+	/**
+	 * @param options A string of content, or an object of options, which are:
+	 *   - `content` Toast contents. Support jQuery objects.
+	 *   - `type` Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger")
+	 */
+	doToast (options) {
+		if (typeof options === "string") {
+			options = {
+				content: options,
+				type: "info"
+			};
+		}
+
+		const doCleanup = ($toast) => {
+			$toast.removeClass("toast--animate");
+			setTimeout(() => $toast.remove(), 85);
+			JqueryUtil._activeToast.splice(JqueryUtil._activeToast.indexOf($toast), 1);
+		};
+
+		const $btnToastDismiss = $(`<button class="btn toast__btn-close"><span class="glyphicon glyphicon-remove"/></button>`)
+			.click(() => doCleanup($toast));
+
+		const $toast = $(`
+				<div class="toast alert-${options.type || "info"}">
+					<div class="toast__wrp-content"><div data-r="$content"/></div>
+					<div class="toast__wrp-control"><div data-r="$btnToastDismiss"/></div>
+				</div>
+			`)
+			.swap({$content: options.content, $btnToastDismiss})
+			.prependTo($(`body`))
+			.data("pos", 0);
+
+		setTimeout(() => $toast.addClass(`toast--animate`), 5);
+		setTimeout(() => doCleanup($toast), 5000);
+
+		if (JqueryUtil._activeToast.length) {
+			JqueryUtil._activeToast.forEach($oldToast => {
+				const pos = $oldToast.data("pos");
+				$oldToast.data("pos", pos + 1);
+				if (pos === 2) doCleanup($oldToast);
+			});
+		}
+
+		JqueryUtil._activeToast.push($toast);
 	}
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.initEnhancements);
-
-function copyText (text) {
-	const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
-	$(`body`).append($temp);
-	$temp.select();
-	document.execCommand("Copy");
-	$temp.remove();
-}
 
 ObjUtil = {
 	mergeWith (source, target, fnMerge, options = {depth: 1}) {
@@ -2392,6 +2490,25 @@ ObjUtil = {
 MiscUtil = {
 	copy (obj) {
 		return JSON.parse(JSON.stringify(obj));
+	},
+
+	async pCopyTextToClipboard (text) {
+		function doCompatabilityCopy () {
+			const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
+			$(`body`).append($temp);
+			$temp.select();
+			document.execCommand("Copy");
+			$temp.remove();
+		}
+
+		if (navigator && navigator.permissions) {
+			try {
+				const access = await navigator.permissions.query({name: "clipboard-write"});
+				if (access.state === "granted" || access.state === "prompt") {
+					await navigator.clipboard.writeText(text);
+				} else doCompatabilityCopy();
+			} catch (e) { doCompatabilityCopy(); }
+		} else doCompatabilityCopy();
 	},
 
 	getProperty (object, ...path) {
@@ -2555,11 +2672,12 @@ MiscUtil = {
 		return function () {
 			const context = this;
 			const args = arguments;
+
 			const later = function () {
 				timeout = null;
-				func.apply(context, args);
 				if (!immediate) func.apply(context, args);
 			};
+
 			const callNow = immediate && !timeout;
 			clearTimeout(timeout);
 			timeout = setTimeout(later, waitTime);
@@ -2912,7 +3030,7 @@ ListUtil = {
 		}
 
 		$ele.on("mousedown", (evt) => {
-			if (evt.which === 1) {
+			if (evt.which === 1 && evt.target === $ele[0]) {
 				evt.preventDefault();
 				if (evt.offsetY > $ele.height() - BORDER_SIZE) {
 					mousePos = evt.clientY;
@@ -2984,11 +3102,11 @@ ListUtil = {
 	bindDownloadButton: () => {
 		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-download`, `download`);
 		$btn.off("click")
-			.on("click", (evt) => {
+			.on("click", async evt => {
 				if (evt.shiftKey) {
 					const toEncode = JSON.stringify(ListUtil._getExportableSublist());
 					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true))];
-					copyText(parts.join(HASH_PART_SEP));
+					await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 					JqueryUtil.showCopiedEffect($btn);
 				} else {
 					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
@@ -3084,7 +3202,12 @@ ListUtil = {
 	},
 
 	async pDoSublistAdd (index, doFinalise, addCount, data) {
-		if (index == null) return alert("Please first view something from the list");
+		if (index == null) {
+			return JqueryUtil.doToast({
+				content: "Please first view something from the list.",
+				type: "danger"
+			});
+		}
 
 		const count = ListUtil._getPinnedCount(index, data) || 0;
 		addCount = addCount || 1;
@@ -3144,7 +3267,7 @@ ListUtil = {
 			.map(it => {
 				const $elm = $(it.elm);
 				sources.add(ListUtil._allItems[Number($elm.attr(FLTR_ID))].source);
-				return {h: $elm.find(`a`).prop("hash").slice(1).split(HASH_PART_SEP)[0], c: $elm.find(".count").text() || undefined, uid: $elm.find(`.uid`).text() || undefined};
+				return {h: $elm.find(`a`).prop("hash").slice(1).split(HASH_PART_SEP)[0], c: $elm.find(".count").first().text() || undefined, uid: $elm.find(`.uid`).text() || undefined};
 			});
 		return {items: toSave, sources: Array.from(sources)};
 	},
@@ -3245,7 +3368,7 @@ ListUtil = {
 		}).filter(it => it);
 
 		const promises = toLoad.map(it => ListUtil.pDoSublistAdd(it.index, false, it.addCount, it.data));
-		return Promise.all(promises).then(async resolved => {
+		return Promise.all(promises).then(async () => {
 			await ListUtil._pFinaliseSublist(true);
 		});
 	},
@@ -3303,7 +3426,10 @@ ListUtil = {
 				.map(it => $(it.elm).find(`a`));
 
 			if ($eles.length <= 1) {
-				alert("Not enough entries to roll!");
+				JqueryUtil.doToast({
+					content: "Not enough entries to roll!",
+					type: "danger"
+				});
 				return ListUtil._isRolling = false;
 			}
 
@@ -3491,8 +3617,8 @@ ListUtil = {
 		const $btnCsv = $(`<button class="btn btn-primary mr-3">Download CSV</button>`).click(() => {
 			DataUtil.userDownloadText(`${title}.csv`, getAsCsv());
 		}).appendTo($pnlBtns);
-		const $btnCopy = $(`<button class="btn btn-primary">Copy CSV to Clipboard</button>`).click(() => {
-			copyText(getAsCsv());
+		const $btnCopy = $(`<button class="btn btn-primary">Copy CSV to Clipboard</button>`).click(async () => {
+			await MiscUtil.pCopyTextToClipboard(getAsCsv());
 			JqueryUtil.showCopiedEffect($btnCopy);
 		}).appendTo($pnlBtns);
 		$modalInner.append(`<hr>`);
@@ -3512,6 +3638,37 @@ ListUtil = {
 		});
 		temp += `</tbody></table>`;
 		$modalInner.append(temp);
+	},
+
+	addListShowHide () {
+		const toInjectShow = `
+			<div class="col-12" id="showsearch">
+				<button class="btn btn-block btn-default btn-xs" type="button">Show Search</button>
+				<br>
+			</div>
+		`;
+
+		const toInjectHide = `
+			<button class="btn btn-default" id="hidesearch">Hide</button>
+		`;
+
+		$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
+		$(`#contentwrapper`).prepend(toInjectShow);
+
+		const listContainer = $(`#listcontainer`);
+		const showSearchWrpr = $("div#showsearch");
+		const hideSearchBtn = $("button#hidesearch");
+		// collapse/expand search button
+		hideSearchBtn.click(function () {
+			listContainer.hide();
+			showSearchWrpr.show();
+			hideSearchBtn.hide();
+		});
+		showSearchWrpr.find("button").click(function () {
+			listContainer.show();
+			showSearchWrpr.hide();
+			hideSearchBtn.show();
+		});
 	}
 };
 
@@ -3644,11 +3801,11 @@ UrlUtil = {
 		const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
 		$btn.addClass("btn-copy-effect")
 			.off("click")
-			.on("click", (evt) => {
+			.on("click", async evt => {
 				let url = window.location.href;
 
 				const toHash = filterBox.getAsSubHashes();
-				parts = Object.keys(toHash).map(hK => {
+				let parts = Object.keys(toHash).map(hK => {
 					const hV = toHash[hK];
 					return UrlUtil.packSubHash(hK, hV, true);
 				});
@@ -3659,7 +3816,7 @@ UrlUtil = {
 				}
 				parts.unshift(url);
 
-				copyText(parts.join(HASH_PART_SEP));
+				await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 				JqueryUtil.showCopiedEffect($btn);
 			})
 			.attr("title", "Get Link to Filters (SHIFT adds List)")
@@ -3746,6 +3903,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_CONDITIONS_DISEASES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SHIP] = UrlUtil.PG_SHIPS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
@@ -3877,32 +4036,14 @@ SortUtil = {
 DataUtil = {
 	_loaded: {},
 
-	loadJSON: function (url, ...otherData) { // FIXME otherData doesn't get returned, as resolve() can only return a single value
-		return new Promise((resolve, reject) => {
-			function handleAlreadyLoaded (url) {
-				resolve(DataUtil._loaded[url], otherData);
-			}
+	async loadJSON (url, ...otherData) { // FIXME otherData doesn't get returned, as resolve() can only return a single value
+		const procUrl = UrlUtil.link(url);
 
-			if (this._loaded[url]) {
-				handleAlreadyLoaded(url);
-				return;
-			}
+		if (DataUtil._loaded[url]) {
+			return DataUtil._loaded[url] // , otherData
+		}
 
-			const procUrl = UrlUtil.link(url);
-			if (this._loaded[procUrl]) {
-				handleAlreadyLoaded(procUrl);
-				return;
-			}
-
-			const request = getRequest(procUrl);
-			if (procUrl !== url) {
-				request.onerror = function () {
-					const fallbackRequest = getRequest(url);
-					fallbackRequest.send();
-				};
-			}
-			request.send();
-
+		const data = await new Promise((resolve, reject) => {
 			function getRequest (toUrl) {
 				const request = new XMLHttpRequest();
 				request.open("GET", toUrl, true);
@@ -3919,31 +4060,62 @@ DataUtil = {
 				request.onerror = (e) => reject(new Error(`Error during JSON request: ${e}`));
 				return request;
 			}
+
+			const request = getRequest(procUrl);
+			if (procUrl !== url) {
+				request.onerror = function () {
+					const fallbackRequest = getRequest(url);
+					fallbackRequest.send();
+				};
+			}
+			request.send();
 		});
+
+		await DataUtil.pDoMetaMerge(data);
+
+		return data;
 	},
 
-	multiLoadJSON: function (toLoads, onEachLoadFunction, onFinalLoadFunction, getDependencyLoadable) {
+	async pDoMetaMerge (data) {
+		if (data._meta && data._meta.dependencies) {
+			await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
+				if (!data[prop]) return; // if e.g. monster dependencies are declared, but there are no monsters to merge with, bail out
+
+				const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
+				const dependencyData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
+				const flatDependencyData = dependencyData.map(dd => dd[prop]).flat();
+				await Promise.all(data[prop].map(async entry => {
+					if (entry._copy) {
+						switch (prop) {
+							case "monster": {
+								return EntryRenderer.monster.pMergeCopy(flatDependencyData, entry);
+							}
+							default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
+						}
+					}
+				}));
+			}));
+			delete data._meta.dependencies;
+		}
+
+		if (data._meta && data._meta.additionalSources) {
+			await Promise.all(Object.entries(data._meta.additionalSources).map(async ([prop, sources]) => {
+				const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
+				const additionalData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
+				additionalData.forEach(ad => data[prop] = (data[prop] || []).concat(ad[prop]));
+			}));
+			delete data._meta.additionalSources;
+		}
+	},
+
+	async multiLoadJSON (toLoads, onEachLoadFunction, onFinalLoadFunction) {
 		if (!toLoads.length) onFinalLoadFunction([]);
-		return Promise.all(toLoads.map(tl => this.loadJSON(tl.url))).then(datas => {
-			let dependencies = [];
-			datas.forEach((data, i) => {
-				const deps = MiscUtil.getProperty(data, "_meta", "dependencies");
-				if (deps) deps.forEach(d => dependencies.push(getDependencyLoadable(d)));
-				if (onEachLoadFunction) onEachLoadFunction(toLoads[i], data);
-			});
-			// avoid double-loading dependencies
-			if (dependencies.length) dependencies = dependencies.filter(it => !toLoads.find(({url}) => url === it.url));
-			if (dependencies.length) {
-				// does this need to handle arbitrary dependency nesting? Because it doesn't
-				return Promise.all(dependencies.map(tl => this.loadJSON(tl.url, tl.url))).then(depDatas => {
-					depDatas.forEach((data, i) => {
-						if (onEachLoadFunction) onEachLoadFunction(dependencies[i], data);
-					});
-					datas = datas.concat(depDatas);
-					return Promise.resolve(onFinalLoadFunction(datas));
-				});
-			} else return Promise.resolve(onFinalLoadFunction(datas));
-		});
+
+		const datas = await Promise.all(toLoads.map(tl => DataUtil.loadJSON(tl.url)));
+		if (onEachLoadFunction) {
+			datas.forEach((data, i) => onEachLoadFunction(toLoads[i], data));
+		}
+		return onFinalLoadFunction(datas);
 	},
 
 	userDownload: function (filename, data) {
@@ -3956,7 +4128,7 @@ DataUtil = {
 
 	getCsv (headers, rows) {
 		function escapeCsv (str) {
-			return `"${str.replace(/"/g, `""`)}"`;
+			return `"${str.replace(/"/g, `""`).replace(/ +/g, " ").replace(/\n\n+/gi, "\n\n")}"`;
 		}
 
 		function toCsv (row) {
@@ -3998,7 +4170,17 @@ DataUtil = {
 		return cpy;
 	},
 
-	dependencyMergers: {},
+	async pGetLoadableByMeta (key, value) {
+		// TODO in future, allow value to be e.g. a string (assumed to be an official data's source); an object e.g. `{type: external, url: <>}`,...
+		switch (key) {
+			case "monster": {
+				const index = await DataUtil.loadJSON(`data/bestiary/index.json`);
+				if (!index[value]) throw new Error(`Bestiary index did not contain source "${value}"`);
+				return `data/bestiary/${index[value]}`;
+			}
+			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
+		}
+	},
 
 	class: {
 		loadJSON: function (baseUrl = "") {
@@ -4073,38 +4255,6 @@ DataUtil = {
 		}
 	}
 };
-
-// SHOW/HIDE SEARCH ====================================================================================================
-function addListShowHide () {
-	const toInjectShow = `
-		<div class="col-12" id="showsearch">
-			<button class="btn btn-block btn-default btn-xs" type="button">Show Search</button>
-			<br>
-		</div>
-	`;
-
-	const toInjectHide = `
-		<button class="btn btn-default" id="hidesearch">Hide</button>
-	`;
-
-	$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
-	$(`#contentwrapper`).prepend(toInjectShow);
-
-	const listContainer = $(`#listcontainer`);
-	const showSearchWrpr = $("div#showsearch");
-	const hideSearchBtn = $("button#hidesearch");
-	// collapse/expand search button
-	hideSearchBtn.click(function () {
-		listContainer.hide();
-		showSearchWrpr.show();
-		hideSearchBtn.hide();
-	});
-	showSearchWrpr.find("button").click(function () {
-		listContainer.show();
-		showSearchWrpr.hide();
-		hideSearchBtn.show();
-	});
-}
 
 // ROLLING =============================================================================================================
 RollerUtil = {
@@ -4282,7 +4432,7 @@ StorageUtil = {
 	isSyncFake () {
 		return !!StorageUtil.getSyncStorage().isSyncFake
 	},
-	// END SYNC METHOD /////////////////////////////////////////////////////////////////////////////////////////////////
+	// END SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////
 
 	async pIsAsyncFake () {
 		const storage = await StorageUtil.getAsyncStorage();
@@ -4413,15 +4563,16 @@ BrewUtil = {
 	},
 
 	async pPurgeBrew (error) {
-		window.alert("Error when loading homebrew! Purging corrupt data...");
+		JqueryUtil.doToast({
+			content: "Error when loading homebrew! Purged homebrew data. (See the log for more information.)",
+			type: "danger"
+		});
 		await StorageUtil.pRemove(HOMEBREW_STORAGE);
 		StorageUtil.syncRemove(HOMEBREW_META_STORAGE);
 		BrewUtil.homebrew = null;
 		window.location.hash = "";
 		if (error) {
-			setTimeout(() => {
-				throw error;
-			}, 1);
+			setTimeout(() => { throw error; });
 		}
 	},
 
@@ -4463,6 +4614,7 @@ BrewUtil = {
 		if (cat === "bookData") return "Book Text";
 		if (cat === "itemProperty") return "Item Property";
 		if (cat === "variant") return "Magic Item Variant";
+		if (cat === "monsterFluff") return "Monster Fluff";
 		return cat.uppercaseFirst();
 	},
 	async _pRenderBrewScreen ($appendTo, $overlay, $window, isModal, getBrewOnClose) {
@@ -4505,11 +4657,17 @@ BrewUtil = {
 			try {
 				parsedUrl = new URL(enteredUrl);
 			} catch (e) {
-				window.alert('The entered URL does not seem to be valid.');
+				JqueryUtil.doToast({
+					content: `The provided URL does not appear to be valid.`,
+					type: "danger"
+				});
 				return;
 			}
 			BrewUtil.addBrewRemote(null, parsedUrl.href).catch(() => {
-				window.alert('Could not load homebrew from the given URL.');
+				JqueryUtil.doToast({
+					content: "Could not load homebrew from the provided URL.",
+					type: "danger"
+				});
 			});
 		});
 
@@ -4519,7 +4677,7 @@ BrewUtil = {
 				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
 					<h4><span>Get Homebrew</span></h4>
 					<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
-					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank">README</a>, or stop by our <a href="https://discord.gg/WH6kdUn" target="_blank">Discord</a>.</i></p>
+					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank" rel="noopener">README</a>, or stop by our <a href="https://discord.gg/WH6kdUn" target="_blank" rel="noopener">Discord</a>.</i></p>
 					<hr class="manbrew__hr">
 					<div class="manbrew__load_all_wrp">
 						<button class="btn btn-default btn-xs manbrew__load_all" disabled title="(Excluding samples)">Add All</button>
@@ -4637,7 +4795,7 @@ BrewUtil = {
 										<span class="col-3 author">${it._brewAuthor}</span>
 										<span class="col-2 category text-align-center">${it._brewCat}</span>
 										<span class="col-2 timestamp text-align-center">${it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : ""}</span>
-										<span class="col-1 source manbrew__source"><a href="${it.download_url}" target="_blank">View Raw</a></span>
+										<span class="col-1 source manbrew__source"><a href="${it.download_url}" target="_blank" rel="noopener">View Raw</a></span>
 									</section>
 								</li>`;
 						});
@@ -4666,7 +4824,7 @@ BrewUtil = {
 			.append(" ")
 			.append($btnLoadFromUrl)
 			.append(" ")
-			.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank"><button class="btn btn-default btn-sm btn-file">Browse Source Repository</button></a>`);
+			.append(`<a href="https://github.com/TheGiddyLimit/homebrew" target="_blank" rel="noopener"><button class="btn btn-default btn-sm btn-file">Browse Source Repository</button></a>`);
 		if (!isModal) $btnWrp.append(" ").append($btnDelAll);
 
 		$overlay.append($window);
@@ -4709,7 +4867,7 @@ BrewUtil = {
 								out.extraInfo = ` (${Parser.psiTypeToFull(bru.type)})`;
 								break;
 							case "itemProperty": {
-								if (bru.entries) out.name = EntryRenderer.findName(bru.entries)
+								if (bru.entries) out.name = EntryRenderer.findName(bru.entries);
 								if (!out.name) out.name = bru.abbreviation;
 								break;
 							}
@@ -4824,7 +4982,7 @@ BrewUtil = {
 						switch (page) {
 							case UrlUtil.PG_SPELLS: return ["spell"];
 							case UrlUtil.PG_CLASSES: return ["class", "subclass"];
-							case UrlUtil.PG_BESTIARY: return ["monster", "legendaryGroup"];
+							case UrlUtil.PG_BESTIARY: return ["monster", "legendaryGroup", "monsterFluff"];
 							case UrlUtil.PG_BACKGROUNDS: return ["background"];
 							case UrlUtil.PG_FEATS: return ["feat"];
 							case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
@@ -4860,7 +5018,7 @@ BrewUtil = {
 					const $row = $(`<li class="row manbrew__row">
 						<span class="col-5 manbrew__col--tall source manbrew__source">${isGroup ? "<i>" : ""}${src.full}${isGroup ? "</i>" : ""}</span>
 						<span class="col-4 manbrew__col--tall authors">${validAuthors}</span>
-						<${src.url ? "a" : "span"} class="col-1 manbrew__col--tall text-align-center" ${src.url ? `href="${src.url}" target="_blank"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
+						<${src.url ? "a" : "span"} class="col-1 manbrew__col--tall text-align-center" ${src.url ? `href="${src.url}" target="_blank" rel="noopener"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
 					</li>`);
 					createButtons(src, $row);
 					$ul.append($row);
@@ -4916,6 +5074,8 @@ BrewUtil = {
 			reader.onload = async () => {
 				const text = reader.result;
 				const json = JSON.parse(text);
+
+				await DataUtil.pDoMetaMerge(json);
 
 				await BrewUtil.pDoHandleBrewJson(json, page, pRefreshBrewList);
 				await ExcludeUtil.pSetList(json.blacklist || []);
@@ -4976,6 +5136,7 @@ BrewUtil = {
 		switch (category) {
 			case "spell":
 			case "monster":
+			case "monsterFluff":
 			case "background":
 			case "feat":
 			case "optionalfeature":
@@ -5066,7 +5227,7 @@ BrewUtil = {
 	},
 
 	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure", "book", "ship", "magicvariant"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "background", "feat", "optionalfeature", "race", "deity", "item", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "ship"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "deity", "item", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "ship"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
@@ -5559,6 +5720,17 @@ Array.prototype.filterIndex = Array.prototype.filterIndex ||
 		return out;
 	};
 
+Array.prototype.equals = Array.prototype.equals ||
+	function (that) {
+		if (!that) return false;
+		const len = this.length;
+		if (len !== that.length) return false;
+		for (let i = 0; i < len; ++i) {
+			if (this[i] !== that[i]) return false;
+		}
+		return true;
+	};
+
 // OVERLAY VIEW ========================================================================================================
 /**
  * Relies on:
@@ -5661,7 +5833,10 @@ ExcludeUtil = {
 		try {
 			ExcludeUtil._excludes = await StorageUtil.pGet(EXCLUDES_STORAGE) || [];
 		} catch (e) {
-			window.alert("Error when loading content blacklist! Purging corrupt data...");
+			JqueryUtil.doToast({
+				content: "Error when loading content blacklist! Purged blacklist data. (See the log for more information.)",
+				type: "danger"
+			});
 			try {
 				await StorageUtil.pRemove(EXCLUDES_STORAGE);
 			} catch (e) {
@@ -5730,14 +5905,20 @@ ExcludeUtil = {
 
 // ENCOUNTERS ==========================================================================================================
 EncounterUtil = {
-	pGetSavedState () {
-		return new Promise(resolve => {
-			EncounterUtil._pHasSavedStateLocal().then(hasLocal => {
-				if (EncounterUtil._hasSavedStateUrl()) resolve(EncounterUtil._getSavedStateUrl());
-				else if (hasLocal) EncounterUtil._pGetSavedStateLocal().then(local => resolve(local));
-				else resolve(null);
-			});
-		});
+	async pGetSavedState () {
+		if (await EncounterUtil._pHasSavedStateLocal()) {
+			if (await EncounterUtil._hasSavedStateUrl()) {
+				return {
+					type: "url",
+					data: EncounterUtil._getSavedStateUrl()
+				};
+			} else {
+				return {
+					type: "local",
+					data: await EncounterUtil._pGetSavedStateLocal()
+				};
+			}
+		} else return null;
 	},
 
 	_hasSavedStateUrl () {
@@ -5765,11 +5946,12 @@ EncounterUtil = {
 		try {
 			return await StorageUtil.pGet(ENCOUNTER_STORAGE);
 		} catch (e) {
-			alert("Error when loading encounters! Purging saved data...");
-			await StorageUtil.pRemove(ENCOUNTER_STORAGE);
-			setTimeout(() => {
-				throw e;
+			JqueryUtil.doToast({
+				content: "Error when loading encounters! Purged encounter data. (See the log for more information.)",
+				type: "danger"
 			});
+			await StorageUtil.pRemove(ENCOUNTER_STORAGE);
+			setTimeout(() => { throw e; });
 		}
 	},
 

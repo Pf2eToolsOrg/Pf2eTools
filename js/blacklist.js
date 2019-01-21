@@ -1,3 +1,5 @@
+"use strict";
+
 class Blacklist {
 	static getDisplayCategory (cat) {
 		if (cat === "variantrule") return "Variant Rule";
@@ -69,9 +71,9 @@ class Blacklist {
 				Promise.resolve();
 			}).then(() => DataUtil.class.loadJSON())
 			.then(classData => {
-				classData.class.forEach(c => c.subclasses.forEach(sc => sc.class = c.name));
+				classData.class.forEach(c => (c.subclasses || []).forEach(sc => sc.class = c.name));
 				classData.subclass = classData.subclass || [];
-				classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses));
+				classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses || []));
 				mergeData(classData);
 				Promise.resolve();
 			}).then(() => {
@@ -127,7 +129,7 @@ class Blacklist {
 
 					Blacklist._renderList();
 
-					const $page = $(`.bodyContent`);
+					const $page = $(`#main_content`);
 					$page.find(`.loading`).prop("disabled", false);
 					$page.find(`.loading-temp`).remove();
 				})

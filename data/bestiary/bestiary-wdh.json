@@ -1,9 +1,15 @@
 {
 	"_meta": {
-		"dependencies": [
-			"MM",
-			"VGM"
-		]
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"additionalSources": {
+			"monster": [
+				"VGM"
+			]
+		}
 	},
 	"monster": [
 		{
@@ -11,13 +17,14 @@
 			"_copy": {
 				"name": "Bandit Captain",
 				"source": "MM",
-				"replacers": [
-					{
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
 						"replace": "the captain",
 						"with": "Embric",
 						"flags": "i"
 					}
-				]
+				}
 			},
 			"isNPC": true,
 			"type": {
@@ -62,24 +69,21 @@
 			"_copy": {
 				"name": "Priest",
 				"source": "MM",
-				"replacers": [
-					{
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
 						"replace": "the priest",
 						"with": "Avi",
 						"flags": "i"
-					}
-				],
-				"arrayModifiers": {
+					},
 					"trait": {
-						"mode": "prepend",
-						"data": [
-							{
-								"name": "Control Water",
-								"entries": [
-									"At will, Avi can control the flow and shape of water in a 5-foot cube, or cause the water to freeze for up to 1 hour."
-								]
-							}
-						]
+						"mode": "prependArr",
+						"items": {
+							"name": "Control Water",
+							"entries": [
+								"At will, Avi can control the flow and shape of water in a 5-foot cube, or cause the water to freeze for up to 1 hour."
+							]
+						}
 					}
 				}
 			},

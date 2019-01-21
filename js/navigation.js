@@ -1,4 +1,5 @@
 "use strict";
+
 class NavBar {
 	static init () {
 		// render the visible elements ASAP
@@ -19,7 +20,7 @@ class NavBar {
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
-		addLi(ulRules, "variantrules.html", "Variant & Optional Rules");
+		addLi(ulRules, "variantrules.html", "Variant & Optional Rules/Misc");
 		addLi(ulRules, "tables.html", "Tables");
 		addDivider(ulRules);
 		addLi(ulRules, "book.html", "Dungeon Master's Guide", false, "DMG");
@@ -51,9 +52,6 @@ class NavBar {
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addDivider(ulAdventures);
-		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", true, "LMoP");
-		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", true, "HotDQ");
-		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", true, "RoT");
 		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", true, "LMoP");
 		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", true, "HotDQ");
 		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", true, "RoT");
@@ -95,6 +93,7 @@ class NavBar {
 
 		const ulUtils = addDropdown(navBar, "Utilities");
 		addLi(ulUtils, "blacklist.html", "Content Blacklist");
+		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
 		addLi(ulUtils, "managebrew.html", "Manage All Homebrew");
 		addDivider(ulUtils);
 		addLi(ulUtils, "demo.html", "Renderer Demo");
@@ -153,7 +152,7 @@ class NavBar {
 		function addDropdown (appendTo, text, isSide = false) {
 			const li = document.createElement("li");
 			li.setAttribute("role", "presentation");
-			li.className = "dropdown";
+			li.className = "dropdown dropdown--navbar";
 			if (isSide) {
 				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this); };
 			} else {
@@ -227,7 +226,7 @@ class NavBar {
 
 			let closestLi = current.parentNode;
 			const setNearestParentActive = () => {
-				while (closestLi !== null && closestLi.nodeName !== "LI") closestLi = closestLi.parentNode;
+				while (closestLi !== null && (closestLi.nodeName !== "LI" || !closestLi.classList.contains("dropdown"))) closestLi = closestLi.parentNode;
 				closestLi && closestLi.classList.add("active");
 			};
 			setNearestParentActive();
@@ -239,7 +238,7 @@ class NavBar {
 	}
 
 	static initHandlers () {
-		NavBar._dropdowns = [...document.getElementById("navbar").querySelectorAll(`li.dropdown`)];
+		NavBar._dropdowns = [...document.getElementById("navbar").querySelectorAll(`li.dropdown--navbar`)];
 		document.addEventListener("click", () => NavBar._dropdowns.forEach(ele => ele.classList.remove("open")));
 		document.addEventListener("mousemove", evt => {
 			NavBar._mouseX = evt.clientX;

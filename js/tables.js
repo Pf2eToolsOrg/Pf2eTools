@@ -1,4 +1,5 @@
 "use strict";
+
 const GEN_JSON_URL = "data/generated/gendata-tables.json";
 const JSON_URL = "data/tables.json";
 const renderer = EntryRenderer.getDefaultRenderer();
@@ -53,15 +54,17 @@ async function onJsonLoad (data) {
 	addTables(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
+			BrewUtil.bind({filterBox, sourceFilter});
 			await ListUtil.pLoadState();
+			RollerUtil.addListRollButton();
+			ListUtil.addListShowHide();
 
 			History.init(true);
-			RollerUtil.addListRollButton();
 		});
 }
 

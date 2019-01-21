@@ -11,6 +11,12 @@ class GenTables {
 	}
 
 	loadBooks () {
+		/*
+		const temp = JSON.parse(fs.readFileSync(`path/to/some/file`, "utf-8"));
+		temp.book[0].bookData = temp.bookData[0];
+		return [temp.book[0]];
+		 */
+
 		const index = JSON.parse(fs.readFileSync(`./data/books.json`, "utf-8"));
 		return index.book.map(idx => {
 			if (!GenTables.BOOK_BLACKLIST[idx.id]) {

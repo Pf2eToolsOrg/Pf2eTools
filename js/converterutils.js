@@ -26,7 +26,7 @@ class AcConvert {
 
 				const from = [];
 
-				const splitter = new RegExp(/,\s?(?![^(]*\))/, "g"); // split on commas not within parentheses
+				const splitter = StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX;
 
 				const parts = brak.split(splitter).map(it => it.trim());
 
@@ -362,6 +362,14 @@ AlignmentConvert.ALIGNMENTS = {
 	}]
 };
 
+class TagUtil {
+	static isNoneOrEmpty (str) {
+		if (!str || !str.trim()) return false;
+		return !!TagUtil.NONE_EMPTY_REGEX.exec(str);
+	}
+}
+TagUtil.NONE_EMPTY_REGEX = /^(([-\u2014\u2013\u2221])+|none)$/gi;
+
 class TraitsActionsTag {
 	static tryRun (m, cbMan) {
 		function doTag (prop, outProp) {
@@ -513,12 +521,7 @@ class LanguageTag {
 	static tryRun (m, cbAll, cbTracked) {
 		if (m.languages) {
 			m.languages = m.languages.trim();
-			if (m.languages === "-" ||
-				m.languages === "--" ||
-				m.languages === "\u2014" ||
-				m.languages === "\u2013" ||
-				m.languages === "\u2212" ||
-				m.languages === "none") {
+			if (TagUtil.isNoneOrEmpty(m.languages)) {
 				delete m.languages;
 				return;
 			} else {
@@ -628,21 +631,52 @@ LanguageTag.LANGUAGE_MAP = {
 	"any language": "X"
 };
 
-class LanguageSpeakerTag {
-	static tryRun (m) {
-		if (m.languages && (m.languages.toLowerCase().includes("can't speak") || m.languages.toLowerCase().includes("cannot speak"))) {
-			m.languageSpeaks = false;
+class SensesTag {
+	static tryRun (m, cbAll) {
+		if (m.senses) {
+			if (TagUtil.isNoneOrEmpty(m.senses)) {
+				delete m.senses;
+			} else {
+				const senseTags = new Set();
+				m.senses.toLowerCase().split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX).map(it => it.trim())
+					.forEach(s => {
+						Object.entries(SensesTag.TAGS).forEach(([k, v]) => {
+							if (s.includes(k)) {
+								if (v === "D" && /\d\d\d ft/.exec(s)) senseTags.add("SD");
+								else senseTags.add(v);
+							}
+						});
+
+						if (cbAll) cbAll(s);
+					});
+
+				if (senseTags.size === 0) delete m.senseTags;
+				else m.senseTags = [...senseTags];
+			}
 		}
 	}
 }
+SensesTag.TAGS = {
+	"blindsight": "B",
+	"darkvision": "D",
+	"tremorsense": "T",
+	"truesight": "U"
+};
 
-class JsonClean {
-	static getClean (json) {
-		json = json.replace(JsonClean.REPLACEMENT_REGEX, (match) => JsonClean.REPLACEMENTS[match]);
-		return json.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+class TextClean {
+	static getCleanedJson (str) {
+		str = str.replace(TextClean.REPLACEMENT_REGEX, (match) => TextClean.REPLACEMENTS[match]);
+		return str.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+	}
+
+	static getReplacedQuotesText (str) {
+		return str
+			.replace(/’/g, "'")
+			.replace(/[“”]/g, `"`)
+			.replace(/…/g, `...`)
 	}
 }
-JsonClean.REPLACEMENTS = {
+TextClean.REPLACEMENTS = {
 	"—": "\\u2014",
 	"–": "\\u2013",
 	"−": "\\u2212",
@@ -651,7 +685,7 @@ JsonClean.REPLACEMENTS = {
 	"”": '\\"',
 	"…": "..."
 };
-JsonClean.REPLACEMENT_REGEX = new RegExp(Object.keys(JsonClean.REPLACEMENTS).join("|"), 'g');
+TextClean.REPLACEMENT_REGEX = new RegExp(Object.keys(TextClean.REPLACEMENTS).join("|"), 'g');
 
 if (typeof module !== "undefined") {
 	module.exports = {
@@ -661,6 +695,7 @@ if (typeof module !== "undefined") {
 		AlignmentConvert,
 		TraitsActionsTag,
 		LanguageTag,
-		JsonClean
+		SensesTag,
+		TextClean
 	};
 }

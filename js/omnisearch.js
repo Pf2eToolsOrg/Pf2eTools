@@ -1,3 +1,5 @@
+"use strict";
+
 const Omnisearch = {
 	_PLACEHOLDER_TEXT: "Search everywhere...",
 	_searchIndex: null,

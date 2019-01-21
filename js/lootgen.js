@@ -1,4 +1,5 @@
 "use strict";
+
 const LOOT_JSON_URL = "data/loot.json";
 const MULT_SIGN = "×";
 const MAX_HIST = 9;

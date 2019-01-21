@@ -1,4 +1,5 @@
 "use strict";
+
 const MONSTER_STATS_BY_CR_JSON_URL = "data/msbcr.json";
 const MONSTER_FEATURES_JSON_URL = "data/monsterfeatures.json";
 let msbcr;
@@ -52,6 +53,7 @@ function addMonsterFeatures (mfData) {
 		calculateCr();
 	});
 
+	// when clicking a row in the "Monster Statistics by Challenge Rating" table
 	$("#msbcr tr").not(":has(th)").click(function () {
 		$("#expectedcr").val($(this).children("td:eq(0)").html());
 		const [minHp, maxHp] = $(this).children("td:eq(4)").html().split("-").map(it => parseInt(it));

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.2.5",
-	"title": "SpellsArray",
+	"version": "1.3.0",
+	"title": "Spells",
 	"type": "object",
 
 	"definitions": {
@@ -26,6 +26,13 @@
 						"C",
 						"P"
 					]
+				},
+				"subschools": {
+					"description": "For homebrew use only.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				},
 				"meta": {
 					"type": "object",
@@ -322,6 +329,13 @@
 				},
 				"isHeal": {
 					"type": "boolean"
+				},
+				"areaTags": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["ST", "MT", "R", "N", "C","Y", "H", "L", "S", "Q", "W"]
+					}
 				}
 			},
 			"required": [

@@ -10,7 +10,7 @@ const JSON_ITEM_TYPE = "type";
 const JSON_ITEM_MODES = "modes";
 const JSON_ITEM_SUBMODES = "submodes";
 const CLS_PSIONICS = "psionics";
-const CLS_COL1 = "col-5";
+const CLS_COL1 = "col-6";
 const CLS_COL2 = "col-2";
 const CLS_COL3 = "col-2";
 const CLS_COL4 = "col-2";
@@ -75,8 +75,6 @@ async function onJsonLoad (data) {
 		handleFilterChange
 	);
 
-	RollerUtil.addListRollButton();
-
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "type", "order", "id"],
 		listClass: "subpsionics",
@@ -123,11 +121,12 @@ async function onJsonLoad (data) {
 	addPsionics(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
+		.then(() => BrewUtil.bind({list}))
 		.then(BrewUtil.pAddLocalBrewData)
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list, filterBox, sourceFilter});
+			BrewUtil.bind({filterBox, sourceFilter});
 			await ListUtil.pLoadState();
 
 			ListUtil.bindShowTableButton(
@@ -144,6 +143,8 @@ async function onJsonLoad (data) {
 			);
 
 			RollerUtil.addListRollButton();
+			ListUtil.addListShowHide();
+
 			History.init(true);
 			ExcludeUtil.checkShowAllExcluded(psionicList, $(`#pagecontent`));
 		});
@@ -171,11 +172,11 @@ function addPsionics (data) {
 			<li class='row' ${FLTR_ID}="${psI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${psI}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
-					<span class='${LIST_SOURCE} ${CLS_COL2} text-align-center' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
 					<span class='${LIST_ORDER} ${CLS_COL4} ${p._fOrder === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p._fOrder}</span>
-					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
+					<span class='${LIST_SOURCE} ${CLS_COL2} text-align-center' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					
+					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
 					<span class="uniqueid hidden">${p.uniqueId ? p.uniqueId : psI}</span>
 				</a>
 			</li>
